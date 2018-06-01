@@ -75,7 +75,10 @@ public class AuroraActivity extends BaseActivity implements View.OnClickListener
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
+        if (viewPager != null && viewPager.getCurrentItem() > 0) {
+            viewPager.setCurrentItem(0, true);
+        } else
+            super.onBackPressed();
     }
 
     @Override
