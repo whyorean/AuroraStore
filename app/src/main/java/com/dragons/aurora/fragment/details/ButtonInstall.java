@@ -5,12 +5,12 @@ import android.content.Context;
 import android.view.View;
 
 import com.dragons.aurora.InstallationState;
-import com.dragons.aurora.InstallerFactory;
 import com.dragons.aurora.Paths;
 import com.dragons.aurora.R;
 import com.dragons.aurora.activities.AuroraActivity;
 import com.dragons.aurora.downloader.DownloadState;
 import com.dragons.aurora.model.App;
+import com.dragons.aurora.task.InstallTask;
 
 public class ButtonInstall extends Button {
 
@@ -43,6 +43,6 @@ public class ButtonInstall extends Button {
     protected void onButtonClick(View v) {
         disable(R.string.details_installing);
         ((NotificationManager) activity.getSystemService(Context.NOTIFICATION_SERVICE)).cancel(app.getDisplayName().hashCode());
-        InstallerFactory.get(activity).verifyAndInstall(app);
+        new InstallTask(activity, app).execute();
     }
 }
