@@ -18,12 +18,18 @@ import android.widget.TextView;
 import com.dragons.aurora.R;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class PermissionGroup extends LinearLayout {
+
+    static private final String[] permissionPrefixes = new String[]{
+            "android"
+    };
+    static private final String permissionSuffix = ".permission.";
 
     private PermissionGroupInfo permissionGroupInfo;
     private Map<String, String> permissionMap = new HashMap<>();
@@ -51,6 +57,20 @@ public class PermissionGroup extends LinearLayout {
         init();
     }
 
+    static private String getReadableLabel(String label, String packageName) {
+        if (TextUtils.isEmpty(label)) {
+            return "";
+        }
+        List<String> permissionPrefixesList = new ArrayList<>(Arrays.asList(permissionPrefixes));
+        permissionPrefixesList.add(packageName);
+        for (String permissionPrefix : permissionPrefixesList) {
+            if (label.startsWith(permissionPrefix + permissionSuffix)) {
+                return label.substring((permissionPrefix + permissionSuffix).length()).replace("_", " ").toLowerCase();
+            }
+        }
+        return label;
+    }
+
     public void setPermissionGroupInfo(final PermissionGroupInfo permissionGroupInfo) {
         this.permissionGroupInfo = permissionGroupInfo;
         ImageView imageView = (ImageView) findViewById(R.id.permission_group_icon);
@@ -61,7 +81,7 @@ public class PermissionGroup extends LinearLayout {
     public void addPermission(PermissionInfo permissionInfo) {
         CharSequence label = permissionInfo.loadLabel(pm);
         CharSequence description = permissionInfo.loadDescription(pm);
-        permissionMap.put(TextUtils.isEmpty(label) ? "" : label.toString(), TextUtils.isEmpty(description) ? "" : description.toString());
+        permissionMap.put(getReadableLabel(label.toString(), permissionInfo.packageName), TextUtils.isEmpty(description) ? "" : description.toString());
         List<String> permissionLabels = new ArrayList<>(permissionMap.keySet());
         Collections.sort(permissionLabels);
         LinearLayout permissionLabelsView = findViewById(R.id.permission_labels);
