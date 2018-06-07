@@ -6,7 +6,7 @@
     <string name="about_github">"GitHub"</string>
     <string name="about_opensource">"مكتبات مفتوحة المصدر"</string>
     <string name="about_telegram">"التليجرام"</string>
-    <string name="about_xda">"صفحة المطور XDA"</string>
+    <string name="about_xda">"صفحة المطور"</string>
     <string name="account_dummy_email">"anonymous@anonymous"</string>
     <string name="acc_dummy">"تسجيل الدخول كمجهول"</string>
     <string name="acc_dummy_name">"مجهول"</string>
@@ -18,14 +18,6 @@
     <string name="action_acc_switch">"اضغط للتبديل"</string>
     <string name="action_acc_txt">"حساب Aurora"</string>
     <string name="action_categories">"الاقسام"</string>
-    <string name="action_filter">"فلتر"</string>
-    <string name="action_filter_apps_with_ads">"تطبيقات تحتوي على اعلانات"</string>
-    <string name="action_filter_category">"الفئة : %1$s"</string>
-    <string name="action_filter_downloads">"التنزيلات : %1$s"</string>
-    <string name="action_filter_gsf_dependent_apps">"يعتمد على خدمات قوقل"</string>
-    <string name="action_filter_paid_apps">"تطبيقات مدفوعة"</string>
-    <string name="action_filter_rating">"التقييم : %1$s"</string>
-    <string name="action_filter_system_apps">"تطبيقات النظام"</string>
     <string name="action_get_local_apk">"الحصول على ملف apk محلي"</string>
     <string name="action_home">"الرئيسية"</string>
     <string name="action_myApps">"تطبيقاتي"</string>
@@ -225,7 +217,7 @@
     <string name="list_app_blacklisted">"القائمة السوداء"</string>
     <string name="list_app_depends_on_gsf">"يعتمد على خدمات قوقل"</string>
     <string name="list_app_has_ads">"يحتوي إعلانات"</string>
-    <string name="list_app_independent_from_gsf">"يعتمد على خدمات قوقل"</string>
+    <string name="list_app_independent_from_gsf">"لا يعتمد على خدمات قوقل"</string>
     <string name="list_app_no_ads">"بدون إعلانات"</string>
     <string name="list_app_system">"تطبيق النظام"</string>
     <string name="list_app_user">"تطبيق المستخدم"</string>
@@ -250,9 +242,6 @@
     <string name="manual_download_compatible">"تم ملء حقل شفرة الإصدار مسبقًا بأحدث رمز متوافق مع هذا التطبيق. إذا كنت تريد الإصدار السابق ، فما عليك سوى إدخال رقم أصغر من الحالي. إذا لم يقم مطوّر البرامج بحذف ملف apk الخاص بالإصدار السابق من متجر Play ، فقد تتمكن من بدء التنزيل"</string>
     <string name="manual_download_hint_version_code">"رمز الإصدار هنا"</string>
     <string name="manual_download_incompatible">"يعتبر متجر Google Play أن هذا التطبيق غير متوافق مع جهازك. وهذا يعني أن رمز الإصدار لم يتم إرجاعه من قبل خادم Google Play Store."</string>
-    <string name="manual_download_warning">"تتيح لك هذه الصفحة اختيار إصدار التطبيق لتنزيله يدويًا. رمز الإصدار هو رقم يحدد إصدار التطبيق. يبدأ من 1 ويتزايد بواسطة مطور التطبيق في كل مرة يكون فيها إصدارًا جديدًا. يتيح لك متجر Play عادةً تنزيل أحدث ملف apk متوافق مع جهازك. عن طريق تقديم هذا الرقم يدويًا ، قد تتمكن من الحصول على إصدارات أخرى أيضًا.
-
-ضع في اعتبارك أن تنزيل إصدارات عشوائية من التطبيقات لا يدعمه متجر Google Play. يعتمد نجاحك على تخمين محظوظ لرمز الإصدار. حتى إذا كنت على حق ، وبدء التنزيل ، فقد تحصل على ملف apk غير متوافق. و على الأرجح ، أنت تضيع وقتك!"</string>
     <string name="notification_download_complete">"تم التحميل. اضغط للتثبيت."</string>
     <string name="notification_download_complete_new_permissions">"تم التحميل. الأذونات الجديدة المطلوبة."</string>
     <string name="notification_download_complete_new_permissions_toast">"تم تحميل %1$s . يطلب إصدار جديد من التطبيق المزيد من الأذونات. تحقق من قائمة الأذونات الجديدة."</string>
@@ -334,4 +323,31 @@
     <string name="testing_program_section_opted_out_title">"التسجيل في اختبار بيتا"</string>
     <string name="top_categories">"اعلى الفئات"</string>
     <string name="warn_app_purchase">"عملية شراء التطبيق غير متاحة بعد ، مع إعادة التوجيه إلى PlayStore Web"</string>
+    <string name="acc_dummy_summary">"تسجيل الدخول باستخدام بيانات اعتماد وهمية المقدمة من قبل متجر Aurora ، لن تتمكن من الوصول إلى عمليات شراء التطبيق باستخدام الحسابات الوهمية."</string>
+    <string name="action_filter_misc">"عام"</string>
+    <string name="action_filter_build">"البناء"</string>
+    <string name="action_filter_apply">"تطبيق"</string>
+    <string name="action_search_history_apps">"تاريخ البحث"</string>
+    <string name="pref_theme_title">"ثيم التطبيق"</string>
+    <string name="pref_theme_title_summary">"تفاصيل"</string>
+    <string name="action_filter">"الفلاتر"</string>
+    <string name="action_filter_apps_with_ads">"تطبيقات تحتوي على إعلانات"</string>
+    <string name="action_filter_category">"الفئات"</string>
+    <string name="action_filter_downloads">"التنزيلات"</string>
+    <string name="action_filter_gsf_dependent_apps">"يعتمد على خدمات قوقل"</string>
+    <string name="action_filter_paid_apps">"مدفوع"</string>
+    <string name="action_filter_rating">"التقييمات"</string>
+    <string name="action_filter_system_apps">"تطبيق النظام"</string>
+    <string name="action_filter_all">"الكل"</string>
+    <string name="manual_download_disclaimer">"تنبيه"</string>
+    <string name="manual_download_warning">"تتيح لك هذه الصفحة اختيار إصدار التطبيق يدويًا لتنزيله\ n \ n .
+تذكّر أن تنزيل إصدارات عشوائية من التطبيقات لا يدعمه متجر Google Play. يعتمد نجاحك على تخمين محظوظ لرمز الإصدار. حتى إذا كنت على حق ، وبدأ التنزيل ، فقد تحصل على ملف apk غير متوافق."</string>
+    <string name="ohh_snap_text">"حدث خطأ ما."</string>
+    <string name="ohh_snap_retry">"اعد المحاولة"</string>
+    <string name="pref_app_ui">"الواجهة الملونة"</string>
+    <string name="pref_app_ui_summary">"جعل واجهة المستخدم الملونة عن طريق سحب الألوان من أيقونات التطبيق."</string>
+    <string name="pref_app_swipe">"سحب الصفحات"</string>
+    <string name="pref_app_swipe_summary">"اسحب على صفحات للتبديل بينهما."</string>
+    <string name="pref_app_ime">"عرض لوحة المفاتيح"</string>
+    <string name="pref_app_ime_summary">"عرض لوحة المفاتيح عند البحث بشكل افتراضي."</string>
 </resources>

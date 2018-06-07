@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="about_app">"Aurora es una alternativa open-source a la Play Store. Te permite descargar las apps de la Play Store. Puede actualizar tus apps y buscar nuevas."</string>
+    <string name="about_app">"Aurora es una alternativa open-source a la Play Store, la cual te permite descargar las apps de la Play Store además de actualizar las que ya tienes"</string>
     <string name="about_contributors">"Contribuidores"</string>
     <string name="about_devs">"Desarrolladores"</string>
     <string name="about_github">"GitHub"</string>
     <string name="about_opensource">"Librerías open-source"</string>
     <string name="about_telegram">"Telegram"</string>
-    <string name="about_xda">"Hilo del desarrollador en XDA"</string>
+    <string name="about_xda">"XDA"</string>
     <string name="account_dummy_email">"anónimo@anónimo"</string>
     <string name="acc_dummy">"Entrar como Anónimo"</string>
     <string name="acc_dummy_name">"Anónimo"</string>
@@ -18,14 +18,6 @@
     <string name="action_acc_switch">"Tocar para cambiar"</string>
     <string name="action_acc_txt">"Cuentas de Aurora"</string>
     <string name="action_categories">"Categorías"</string>
-    <string name="action_filter">"Filtros"</string>
-    <string name="action_filter_apps_with_ads">"Apps con anuncios"</string>
-    <string name="action_filter_category">"Categoría: %1$s"</string>
-    <string name="action_filter_downloads">"Descargas: %1$s"</string>
-    <string name="action_filter_gsf_dependent_apps">"Depende de Google"</string>
-    <string name="action_filter_paid_apps">"Apps de pago"</string>
-    <string name="action_filter_rating">"Valoración: %1$s"</string>
-    <string name="action_filter_system_apps">"Apps del sistema"</string>
     <string name="action_get_local_apk">"Obtener APK local"</string>
     <string name="action_home">"Inicio"</string>
     <string name="action_myApps">"Mis Apps"</string>
@@ -51,7 +43,7 @@
     <string name="action_switch_google">"Cambiar a Google"</string>
     <string name="action_unignore">"Quitar de lista negra"</string>
     <string name="action_unwhitelist">"Ignorar actualizaciones"</string>
-    <string name="action_updates">"Actualizaciones"</string>
+    <string name="action_updates">"Actualizar"</string>
     <string name="action_welcome_msg">"Bienvenido a Aurora"</string>
     <string name="action_whitelist">"Lista para actualizaciones"</string>
     <string name="activity_title_search">"Resultados para %1$s"</string>
@@ -138,12 +130,12 @@
     <string name="dialog_message_logging_in_provided_by_user">"Intentando iniciar sesión con tus credenciales"</string>
     <string name="dialog_message_logout">"¿Seguro de que quieres cerrar sesión?"</string>
     <string name="dialog_message_package_id">"Hay un paquete con el mismo nombre. ¿Quieres ir a su página de detalles?"</string>
-    <string name="dialog_message_reboot_required">"Los cambios serán aplicados despues de un reinicio. ¿Reiniciar ahora?"</string>
+    <string name="dialog_message_reboot_required">"Los cambios serán aplicados después de un reinicio. ¿Reiniciar ahora?"</string>
     <string name="dialog_message_remounting_system">"Trabajando en la partición del sistema. Esto puede tomar un tiempo"</string>
     <string name="dialog_message_switching_in_predefined">"Intentando cambiar entre cuentas predeterminadas"</string>
     <string name="dialog_message_system_app_self">"Usar permisos privilegiados para la instalación de las apps requiere que Aurora sea una app del sistema.
 
-El proceso es imperfecto y especifico del fabricante, asi que podría no funcionar.
+El proceso es imperfecto y especifico del fabricante, así que podría no funcionar.
 
 ¿Quieres hacerlo?"</string>
     <string name="dialog_message_system_app_warning_to_normal">"Has elegido convertir una app del sistema en app de usuario. Muchas aplicaciones del sistema requieren serlo para funcionar.
@@ -240,16 +232,13 @@ Selecciona \"Crear Contraseña\" para ser redirigido a la página para crearla."
 ¿Activar las actualizaciones diarias?"</string>
     <string name="list_update_automatic_switch">"Activar"</string>
     <string name="list_update_all">"Actualizar todo"</string>
-    <string name="list_update_all_txt">"Actulización(es) disponibles: %1$s"</string>
-    <string name="list_update_chk_txt">"Buscando actualizaciones..."</string>
+    <string name="list_update_all_txt">"Actualización(es) disponibles: %1$s"</string>
+    <string name="list_update_chk_txt">"Buscando actualizaciones…"</string>
     <string name="list_update_recheck">"Comprobar"</string>
-    <string name="list_updating">"Actualizando..."</string>
+    <string name="list_updating">"Actualizando…"</string>
     <string name="manual_download_compatible">"El código de versión ha sido rellenado automáticamente con la última versión compatible. Si quieres una versión anterior, tan solo introduce un código menor. Si el dessarrollador no ha eliminado los apk anteriores, tal vez puedas descargarlo."</string>
     <string name="manual_download_hint_version_code">"Introduce el código de versión"</string>
     <string name="manual_download_incompatible">"La Google Play Store considera esta app incompatible con tu dispositivo. Esto quiere decir que la versión de la app no ha podido ser obtenida desde el servidor de la Google Play Store"</string>
-    <string name="manual_download_warning">"Esta página te permite escoger manualmente una versión de la app. El código de versión es un identificador de una versión de la app. Comienza desde 1 y aumenta con cada versión. Normalmente la Play Store solo te permite descargar la última versión compatible con tu dispositivo. Al introducir este número manualmente tal vez puedas obtener otras versiones.
-
-Ten en cuenta que descargar versiones aleatorias no esta soportado por la Google Play Store. Tu éxito depende de la suerte que tengas adivinando el código de la versión. Incluso si consigues el código correcto, podrías obtener un apk incompatible. ¡Lo más seguro es que pierdas el tiempo!"</string>
     <string name="notification_download_complete">"Descargar completa. Toca para instalar"</string>
     <string name="notification_download_complete_new_permissions">"Descarga completa. Nuevos permisos solicitados"</string>
     <string name="notification_download_complete_new_permissions_toast">"%1$s descargado. La nueva versión requiere nuevos permisos. Comprueba la lista de permisos."</string>
@@ -282,7 +271,7 @@ Ten en cuenta que descargar versiones aleatorias no esta soportado por la Google
     <string name="pref_background_update_interval_daily">"Diariamente"</string>
     <string name="pref_background_update_interval_hourly">"Cada hora"</string>
     <string name="pref_background_update_interval_manually">"Manualmente"</string>
-    <string name="pref_background_update_interval_never">"Solo cuando cuando Aurora se abra"</string>
+    <string name="pref_background_update_interval_never">"Solo cuando Aurora se abra"</string>
     <string name="pref_background_update_interval_weekly">"Semanalmente"</string>
     <string name="pref_background_update_wifi_only">"Solo por Wi-Fi"</string>
     <string name="pref_category_installation">"Instalación"</string>
@@ -291,7 +280,7 @@ Ten en cuenta que descargar versiones aleatorias no esta soportado por la Google
     <string name="pref_category_updates">"Actualizaciones"</string>
     <string name="pref_delete_apk_after_install">"Borrar .apk después de instalar"</string>
     <string name="pref_delete_apk_after_install_summary_off">"Los .apk no serán borrados después de instalar"</string>
-    <string name="pref_delete_apk_after_install_summary_on">"Los .apk serán borrados despues de instalar"</string>
+    <string name="pref_delete_apk_after_install_summary_on">"Los .apk serán borrados después de instalar"</string>
     <string name="pref_device_to_pretend_to_be">"Fingir ser otro dispositivo"</string>
     <string name="pref_device_to_pretend_to_be_default">"Información original de tu dispositivo"</string>
     <string name="pref_device_to_pretend_to_be_notice">"Si colocas las definiciones de dispositivo en %1$s aparecerán en esta lista"</string>
@@ -331,4 +320,30 @@ Ten en cuenta que descargar versiones aleatorias no esta soportado por la Google
     <string name="testing_program_section_opted_out_title">"Conviértete en beta tester"</string>
     <string name="top_categories">"Categorías populares"</string>
     <string name="warn_app_purchase">"Compra de apps aún no disponible, redirigiendo a la web de la Play Store"</string>
+    <string name="acc_dummy_summary">"Inicia sesión con credenciales anónimas proporcionadas por Aurora, no podrás acceder a tus compras con esta cuenta"</string>
+    <string name="action_filter_misc">"Misceláneos"</string>
+    <string name="action_filter_build">"Tipo"</string>
+    <string name="action_filter_apply">"Aplicar"</string>
+    <string name="action_search_history_apps">"Apps recientes"</string>
+    <string name="pref_theme_title">"Seleccionar tema"</string>
+    <string name="pref_theme_title_summary">"Cambia entre Claro/Oscuro/AMOLED"</string>
+    <string name="action_filter">"Filtros"</string>
+    <string name="action_filter_apps_with_ads">"Con anuncios"</string>
+    <string name="action_filter_category">"Categoría"</string>
+    <string name="action_filter_downloads">"Descargas"</string>
+    <string name="action_filter_gsf_dependent_apps">"Depende de Google"</string>
+    <string name="action_filter_paid_apps">"De pago"</string>
+    <string name="action_filter_rating">"Valoración"</string>
+    <string name="action_filter_system_apps">"Del sistema"</string>
+    <string name="action_filter_all">"Todos"</string>
+    <string name="manual_download_disclaimer">"¡AVISO!"</string>
+    <string name="manual_download_warning">"Esta página te permite elegir manualmente la versión a descargar de la app \n\nTen en cuenta que descargar versiones aleatorias de las apps no está soportado por la Play Store. Tú éxito depende de acertar el código de la versión. Incluso si aciertas y logras descargar, podrías obtener un APK incompatible"</string>
+    <string name="ohh_snap_text">"¡Ups! Algo no salió bien"</string>
+    <string name="ohh_snap_retry">"Reintentar"</string>
+    <string name="pref_app_ui">"Color de la interfaz"</string>
+    <string name="pref_app_ui_summary">"Haz la interfaz más colorida tomando el color de los iconos de las apps"</string>
+    <string name="pref_app_swipe">"Desliz"</string>
+    <string name="pref_app_swipe_summary">"Desliza para cambiar de página"</string>
+    <string name="pref_app_ime">"Mostrar teclado"</string>
+    <string name="pref_app_ime_summary">"Muestra el teclado al abrir la búsqueda"</string>
 </resources>

@@ -18,14 +18,6 @@
     <string name="action_acc_switch">"Appuyez pour changer"</string>
     <string name="action_acc_txt">"Comptes Aurora"</string>
     <string name="action_categories">"Catégories"</string>
-    <string name="action_filter">"Filtre(s)"</string>
-    <string name="action_filter_apps_with_ads">"Applications contenant de la publicité"</string>
-    <string name="action_filter_category">"Catégorie: %1$s"</string>
-    <string name="action_filter_downloads">"Téléchargements: %1$s"</string>
-    <string name="action_filter_gsf_dependent_apps">"Applications dépendantes des GSF"</string>
-    <string name="action_filter_paid_apps">"Applications payantes"</string>
-    <string name="action_filter_rating">"Note: %1$s"</string>
-    <string name="action_filter_system_apps">"Applications système"</string>
     <string name="action_get_local_apk">"Enregistrer l'APK"</string>
     <string name="action_home">"Accueil"</string>
     <string name="action_myApps">"Mes applications"</string>
@@ -240,8 +232,6 @@ Appuyez sur \"Créer un mot de passe\" pour être redirigé vers la page de cré
 
 Vérifier tous les jours les mises à jour ?"</string>
     <string name="list_update_automatic_switch">"Vérifier"</string>
-
-    <!-- Fuzzy -->
     <string name="list_update_all">"Tout M-à-J"</string>
     <string name="list_update_all_txt">"Mise(s) à jour  : %1$s"</string>
     <string name="list_update_chk_txt">"Recherche des mises à jour"</string>
@@ -250,9 +240,6 @@ Vérifier tous les jours les mises à jour ?"</string>
     <string name="manual_download_compatible">"Le champ \"Code de la version\" a été pré-rempli avec la dernière version de l'application compatible avec votre appareil. Si vous voulez une version précédente, choisissez un nombre inférieur : si le développeur n'a pas supprimé l'APK du Play Store, le téléchargement devrait commencer."</string>
     <string name="manual_download_hint_version_code">"code de la version ici"</string>
     <string name="manual_download_incompatible">"Le Play Store considère cette application incompatible avec votre appareil. Cela signifie que le code de la version n'a pas été renvoyé par le serveur Play Store"</string>
-    <string name="manual_download_warning">"Cette page vous laisse choisir manuellement la version à télécharger. Le code de version identifie la version d'une application. Il commence à 1, et est incrémenté à chaque fois que le développeur publie une nouvelle version. Normalement, le Play Store ne propose que l'APK le plus récent compatible avec votre appareil, mais il est parfois possible d'obtenir les versions précédentes.
-
-Cette fonctionnalité n'est normalement pas proposée par le Google Play Store, il faut donc trouver au hasard le bon code de version, et l'APK obtenu peut ne pas être compatible avec votre appareil. Cette fonctionnalité est recommandée pour les utilisateurs les plus avancés !"</string>
     <string name="notification_download_complete">"Téléchargement terminé. Appuyez pour installer."</string>
     <string name="notification_download_complete_new_permissions">"Téléchargement terminé. Nouvelles permissions requises."</string>
     <string name="notification_download_complete_new_permissions_toast">"%1$s téléchargé. La nouvelle version de l'application nécessite de nouvelles permissions. Consultez la liste des permissions."</string>
@@ -334,4 +321,30 @@ Cette fonctionnalité n'est normalement pas proposée par le Google Play Store, 
     <string name="testing_program_section_opted_out_title">"Devenir un testeur"</string>
     <string name="top_categories">"Top catégories"</string>
     <string name="warn_app_purchase">"L'achat d'applications n'est pas encore disponible. Vous allez être redirigé vers le PlayStore Web"</string>
+    <string name="acc_dummy_summary">"Login with anonymous credentials provided by Aurora Store, you would not be able to access your app purchases with dummy accounts."</string>
+    <string name="action_filter_misc">"Misc"</string>
+    <string name="action_filter_build">"Build"</string>
+    <string name="action_filter_apply">"Apply"</string>
+    <string name="action_search_history_apps">"Your Recent Apps"</string>
+    <string name="pref_theme_title">"Select Theme"</string>
+    <string name="pref_theme_title_summary">"Switch between Light/Dark/AMOLED"</string>
+    <string name="action_filter">"Filters"</string>
+    <string name="action_filter_apps_with_ads">"Apps with ads"</string>
+    <string name="action_filter_category">"Category"</string>
+    <string name="action_filter_downloads">"Downloads"</string>
+    <string name="action_filter_gsf_dependent_apps">"GSF Dependent"</string>
+    <string name="action_filter_paid_apps">"Paid"</string>
+    <string name="action_filter_rating">"Ratings"</string>
+    <string name="action_filter_system_apps">"System apps"</string>
+    <string name="action_filter_all">"All"</string>
+    <string name="manual_download_disclaimer">"Disclaimer"</string>
+    <string name="manual_download_warning">"This page lets you manually choose the version of the app to download.\n\nKeep in mind that downloading arbitrary versions of apps is not supported by Google Play Store. Your success depends on a lucky guess of the version code. Even if you guess right and you get the download to start, you might get an incompatible apk."</string>
+    <string name="ohh_snap_text">"Something went wrong"</string>
+    <string name="ohh_snap_retry">"Retry"</string>
+    <string name="pref_app_ui">"Color UI"</string>
+    <string name="pref_app_ui_summary">"Make UI colorful by drawing colors from app icons."</string>
+    <string name="pref_app_swipe">"Swipe pages"</string>
+    <string name="pref_app_swipe_summary">"Swipe on pages to switch between them."</string>
+    <string name="pref_app_ime">"Show IME"</string>
+    <string name="pref_app_ime_summary">"Show keyboard on Search by default."</string>
 </resources>

@@ -18,14 +18,6 @@
     <string name="action_acc_switch">"Tocca per cambiare"</string>
     <string name="action_acc_txt">"Account Aurora"</string>
     <string name="action_categories">"Categorie"</string>
-    <string name="action_filter">"Filtro"</string>
-    <string name="action_filter_apps_with_ads">"App con pubblicità"</string>
-    <string name="action_filter_category">"Categoria: %1$s"</string>
-    <string name="action_filter_downloads">"Download: %1$s"</string>
-    <string name="action_filter_gsf_dependent_apps">"App dipendenti da GSF"</string>
-    <string name="action_filter_paid_apps">"App a pagamento"</string>
-    <string name="action_filter_rating">"Valutazione: %1$s"</string>
-    <string name="action_filter_system_apps">"App di sistema"</string>
     <string name="action_get_local_apk">"Ottieni file apk in locale"</string>
     <string name="action_home">"Home"</string>
     <string name="action_myApps">"Le mie app"</string>
@@ -71,7 +63,7 @@
     <string name="category_trending">"Di tendenza"</string>
     <string name="content_flagged">"Segnalazione inviata."</string>
     <string name="credentials_hint_email">"Email o numero di telefono"</string>
-    <string name="credentials_hint_password">"Inserisci password"</string>
+    <string name="credentials_hint_password">"Password"</string>
     <string name="credentials_logo_txt">"Accedi"</string>
     <string name="credentials_message">"Ricorda che l'uso di questa app viola le condizioni d'uso di Play Store.
 Potrebbe essere più sicuro usare un account Google dedicato che abbia eseguito l'accesso a Play Store almeno una volta e abbia accettato le condizioni d'uso."</string>
@@ -138,15 +130,13 @@ Potrebbe essere più sicuro usare un account Google dedicato che abbia eseguito 
     <string name="dialog_message_logging_in_predefined">"Tentativo di accesso con le credenziali fornite da Aurora Store"</string>
     <string name="dialog_message_logging_in_provided_by_user">"Tentativo di accesso con le tue credenziali"</string>
     <string name="dialog_message_logout">"Sei sicuro di voler uscire?"</string>
-
-    <!-- Java "packages" are not translated in Italian. It's developer jargon. -->
     <string name="dialog_message_package_id">"C'è un package con lo stesso"</string>
     <string name="dialog_message_reboot_required">"Le modifiche saranno applicate dopo il riavvio. Riavviare ora?"</string>
     <string name="dialog_message_remounting_system">"Sono in corso operazioni nella partizione /system. Potrebbe volerci un po' di tempo."</string>
     <string name="dialog_message_switching_in_predefined">"Tentativo di accesso con un altro account fittizio"</string>
     <string name="dialog_message_system_app_self">"L'uso di permessi privilegiati per l'installazione automatica richiede che Aurora sia una app di sistema.
 
-Il processo non è supportato nativamente e dipende dal produttore, per cui potrebbe non funzionare.
+Il processo non è supportato nativamente ma dipende dal produttore, per cui potrebbe non funzionare.
 
 Vuoi continuare?"</string>
     <string name="dialog_message_system_app_warning_to_normal">"Hai scelto di convertire una app di sistema in una normale app. La maggior parte delle app di sistema necessita di questo stato per funzionare.
@@ -184,13 +174,13 @@ Tocca su \"Crea password\" per aprire la pagina di creazione password."</string>
     <string name="dialog_two_factor_create_password">"Crea password"</string>
     <string name="done">"Fatto"</string>
     <string name="download_manager_ERROR_BLOCKED">"Download fallito a causa dei controlli di NetworkPolicyManager sull'applicazione richiesta. Controlla le tue impostazioni."</string>
-    <string name="download_manager_ERROR_CANNOT_RESUME">"Some possibly transient error occurred but we can not resume the download. Retry later."</string>
+    <string name="download_manager_ERROR_CANNOT_RESUME">"Un errore transitorio ha impedito il download e non è possibile riprendere l'operazione. Riprova più tardi."</string>
     <string name="download_manager_ERROR_DEVICE_NOT_FOUND">"Nessun supporto di memorizzazione esterno trovato. Forse la SD non è stata montata."</string>
     <string name="download_manager_ERROR_FILE_ERROR">"Errore di memoria sconosciuto."</string>
     <string name="download_manager_ERROR_HTTP_DATA_ERROR">"È avvenuto un errore al livello HTTP durante la ricezione o l'elaborazione di dati."</string>
     <string name="download_manager_ERROR_INSUFFICIENT_SPACE">"Spazio libero insufficiente."</string>
     <string name="download_manager_ERROR_TOO_MANY_REDIRECTS">"Troppi reindirizzamenti."</string>
-    <string name="download_manager_ERROR_UNHANDLED_HTTP_CODE">"HTTP code was received that download manager can not handle. This is a server error."</string>
+    <string name="download_manager_ERROR_UNHANDLED_HTTP_CODE">"Errore server: è stato restituito un codice d'errore HTTP sconosciuto."</string>
     <string name="download_manager_ERROR_UNKNOWN">"Errore sconosciuto."</string>
     <string name="early_access">"Accesso anticipato"</string>
     <string name="error_could_not_download">"Impossibile scaricare."</string>
@@ -248,9 +238,6 @@ Tocca su \"Crea password\" per aprire la pagina di creazione password."</string>
     <string name="manual_download_compatible">"Il campo di testo del codice di versione è stato precompilato con l'ultimo disponibile per questo dispositivo. Se desideri scaricare una versione precedente, inserisci un codice inferiore a questo Se il file apk è ancora disponibile su Play Store, verrà avviato il download."</string>
     <string name="manual_download_hint_version_code">"Inserisci il numero di versione"</string>
     <string name="manual_download_incompatible">"Google Play Store considera questa app come non compatibile con il dispositivo. Questo significa che il codice di versione non è stato restituito dai server di Google Play Store."</string>
-    <string name="manual_download_warning">"Questa schermata consente di scegliere manualmente quale versione dell'app scaricare. Il codice di versione è un numero che identifica la versione di una app, che tipicamente parte da 1 ed è incrementato dallo sviluppatore ad ogni aggiornamento. Normalmente Play Store consente di scaricare solo l'ultima versione compatibile con il tuo dispositivo, qui però viene data la possibilità di scaricare manualmente la versione desiderata.
-
-Fai attenzione perché il download di una versione arbitraria di una app non è supportato da Google Play Store. Il successo dell'operazione dipende inoltre dall'indovinare il codice esatto, e comunque potresti ottenere un file apk non compatibile con il tuo dispositivo."</string>
     <string name="notification_download_complete">"Scaricamento completato. Tocca per installare."</string>
     <string name="notification_download_complete_new_permissions">"Scaricamento completato. Sono richiesti nuovi permessi."</string>
     <string name="notification_download_complete_new_permissions_toast">"%1$s scaricata. La nuova versione necessita di più permessi, controlla la lista delle autorizzazioni."</string>
@@ -266,11 +253,11 @@ Fai attenzione perché il download di una versione arbitraria di una app non è 
     <string name="notification_updates_available_title">"Aggiornamenti disponibili."</string>
     <string name="no_permissions">"Nessuna autorizzazione richiesta."</string>
     <string name="pref_app_language">"Seleziona lingua"</string>
-    <string name="pref_app_language_cat">"Lingua di Aurora"</string>
+    <string name="pref_app_language_cat">"Lingua di Aurora Store"</string>
     <string name="pref_auto_install">"Installa app immediatamente"</string>
-    <string name="pref_auto_install_summary_off">"Le app saranno installate quando l'utente tocca sulla notifica di completamento"</string>
+    <string name="pref_auto_install_summary_off">"Le app saranno installate quando toccherai la notifica di completamento"</string>
     <string name="pref_auto_install_summary_on">"Gli aggiornamenti saranno installati al completamento del download"</string>
-    <string name="pref_auto_whitelist">"Auto whitelist"</string>
+    <string name="pref_auto_whitelist">"Whitelist automatica"</string>
     <string name="pref_auto_whitelist_summary_off">"Dovrai aggiungere manualmente le app alla whitelist"</string>
     <string name="pref_auto_whitelist_summary_on">"Le applicazioni installate da Aurora saranno aggiunte automaticamente alla whitelist"</string>
     <string name="pref_background_update_download">"Scarica anche gli aggiornamenti"</string>
@@ -314,8 +301,8 @@ Fai attenzione perché il download di una versione arbitraria di una app non è 
     <string name="pref_requested_language">"Lingua delle richieste verso Play Store"</string>
     <string name="pref_requested_language_default">"Lingua predefinita"</string>
     <string name="pref_update_list_black">"Modifica la backlist delle app"</string>
-    <string name="pref_update_list_white">"Modifica la whitelist delle app"</string>
-    <string name="pref_update_list_white_or_black">"Black or white list of apps for update"</string>
+    <string name="pref_update_list_white">"Modifica la whitelist"</string>
+    <string name="pref_update_list_white_or_black">"Usa blacklist o whitelist per gli aggiornamenti delle app"</string>
     <string name="pref_update_list_white_or_black_black">"Gli aggiornamenti per le app selezionate saranno ignorati"</string>
     <string name="pref_update_list_white_or_black_white">"Verranno controllati gli aggiornamenti solo per le app selezionate"</string>
     <string name="search_filter">"Tutte le app"</string>
@@ -332,4 +319,30 @@ Fai attenzione perché il download di una versione arbitraria di una app non è 
     <string name="testing_program_section_opted_out_title">"Diventa un beta tester"</string>
     <string name="top_categories">"Categorie principali"</string>
     <string name="warn_app_purchase">"L'acquisto di app non è ancora disponibile. Redirezionamento a Play Store web"</string>
+    <string name="acc_dummy_summary">"Accedendo con un account fornito da Aurora non sarà possibile installare le app a pagamento che hai acquistato."</string>
+    <string name="action_filter_misc">"Varie"</string>
+    <string name="action_filter_build">"Compila"</string>
+    <string name="action_filter_apply">"Applica"</string>
+    <string name="action_search_history_apps">"App recenti"</string>
+    <string name="pref_theme_title">"Seleziona tema"</string>
+    <string name="pref_theme_title_summary">"Cambia tema"</string>
+    <string name="action_filter">"Filtri"</string>
+    <string name="action_filter_apps_with_ads">"App con pubblicità"</string>
+    <string name="action_filter_category">"Categoria"</string>
+    <string name="action_filter_downloads">"Download"</string>
+    <string name="action_filter_gsf_dependent_apps">"Dipendenti da GSF"</string>
+    <string name="action_filter_paid_apps">"A pagamento"</string>
+    <string name="action_filter_rating">"Valutazione"</string>
+    <string name="action_filter_system_apps">"App di sistema"</string>
+    <string name="action_filter_all">"Tutte"</string>
+    <string name="manual_download_disclaimer">"Attenzione"</string>
+    <string name="manual_download_warning">"Questa pagina consente di selezionare la versione dell'app da scaricare.\n\nRicorda che Google Play Store non consente ufficialmente di scaricare versioni arbitrarie di app. La riuscita dell'operazione dipende dall'indovinare il codice di versione corretto e, anche in caso di successo, potresti ottenere un file apk incompatibile."</string>
+    <string name="ohh_snap_text">"Qualcosa è andato storto"</string>
+    <string name="ohh_snap_retry">"Riprova"</string>
+    <string name="pref_app_ui">"Color UI"</string>
+    <string name="pref_app_ui_summary">"Make UI colorful by drawing colors from app icons."</string>
+    <string name="pref_app_swipe">"Swipe pages"</string>
+    <string name="pref_app_swipe_summary">"Swipe on pages to switch between them."</string>
+    <string name="pref_app_ime">"Show IME"</string>
+    <string name="pref_app_ime_summary">"Show keyboard on Search by default."</string>
 </resources>

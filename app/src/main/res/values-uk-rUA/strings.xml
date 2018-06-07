@@ -12,14 +12,6 @@
     <string name="action_about">Про програму</string>
     <string name="action_accounts">Аккаунти</string>
     <string name="action_categories">Категорії</string>
-    <string name="action_filter">Фільтри</string>
-    <string name="action_filter_apps_with_ads">Програми з рекламою</string>
-    <string name="action_filter_category">Категорія: %1$s</string>
-    <string name="action_filter_downloads">Завантаження: %1$s</string>
-    <string name="action_filter_gsf_dependent_apps">Програми із залежністю від GSF</string>
-    <string name="action_filter_paid_apps">Платні програми</string>
-    <string name="action_filter_rating">Оцінка: %1$s</string>
-    <string name="action_filter_system_apps">Системні програми</string>
     <string name="action_get_local_apk">Отримати apk файл</string>
     <string name="action_ignore">Ігнорувати оновлення</string>
     <string name="action_login">Увійти</string>

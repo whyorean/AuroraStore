@@ -11,24 +11,16 @@
     <string name="acc_dummy">"Connexion anonyme"</string>
     <string name="acc_dummy_name">"Anonyme"</string>
     <string name="acc_google">"Se connecter avec Google"</string>
-    <string name="acc_save">"Sauvegarder le compte"</string>
+    <string name="acc_save">"Se souvenir"</string>
     <string name="action_about">"À propos"</string>
     <string name="action_accounts">"Comptes"</string>
     <string name="action_acc_add">"Ajouter un compte Google"</string>
     <string name="action_acc_switch">"Appuyez pour changer"</string>
     <string name="action_acc_txt">"Comptes Aurora"</string>
     <string name="action_categories">"Catégories"</string>
-    <string name="action_filter">"Filtre(s)"</string>
-    <string name="action_filter_apps_with_ads">"Applications contenant de la publicité"</string>
-    <string name="action_filter_category">"Catégorie: %1$s"</string>
-    <string name="action_filter_downloads">"Téléchargements: %1$s"</string>
-    <string name="action_filter_gsf_dependent_apps">"Applications dépendantes des GSF"</string>
-    <string name="action_filter_paid_apps">"Applications payantes"</string>
-    <string name="action_filter_rating">"Note: %1$s"</string>
-    <string name="action_filter_system_apps">"Applications système"</string>
     <string name="action_get_local_apk">"Enregistrer l'APK"</string>
     <string name="action_home">"Accueil"</string>
-    <string name="action_myApps">"Mes applications"</string>
+    <string name="action_myApps">"Mes applis"</string>
     <string name="action_ignore">"Liste noire"</string>
     <string name="action_ignore_ext">"Ajouter à la liste noire"</string>
     <string name="action_login">"Se connecter"</string>
@@ -41,13 +33,13 @@
     <string name="action_or">"OU"</string>
     <string name="action_refresh">"Actualiser le token"</string>
     <string name="action_remove">"Enlever"</string>
-    <string name="action_search_history">"Historique des recherches"</string>
+    <string name="action_search_history">"Historique"</string>
     <string name="action_search_clearHistory">"Effacer tout"</string>
-    <string name="action_search_title">"Chercher des applications &amp; des jeux"</string>
+    <string name="action_search_title">"Chercher des applications et jeux"</string>
     <string name="action_select">"Sélectionnez un compte pour se connecter"</string>
     <string name="action_settings">"Réglages"</string>
     <string name="action_spoofed">"Usurpation"</string>
-    <string name="action_switch_dummy">"Changer de compte"</string>
+    <string name="action_switch_dummy">"Changer"</string>
     <string name="action_switch_google">"Chamger de compte"</string>
     <string name="action_unignore">"Retirer de la liste noire"</string>
     <string name="action_unwhitelist">"Ignorer les mises à jour"</string>
@@ -71,7 +63,7 @@
     <string name="category_trending">"Tendance"</string>
     <string name="content_flagged">"Demande envoyée."</string>
     <string name="credentials_hint_email">"Email ou téléphone"</string>
-    <string name="credentials_hint_password">"Entrez votre mot de passe"</string>
+    <string name="credentials_hint_password">"Mot de passe"</string>
     <string name="credentials_logo_txt">"Se connecter"</string>
     <string name="credentials_message">"Utiliser Aurora se fait en violation des conditions d'utilisation du Play Store T&amp;C.
 Il est recommandé d'utiliser un compte Google jetable, qui a été utilisé au moins une fois avec le Play Store, et qui a accepté ses conditions d'utilisation T&amp;;C."</string>
@@ -221,17 +213,17 @@ Appuyez sur \"Créer un mot de passe\" pour être redirigé vers la page de cré
     <string name="header_usr_name">"Aurora"</string>
     <string name="header_usr_noEmail">"Se connecter en utilisant Aurora"</string>
     <string name="list_app_blacklisted">"Sur liste noire"</string>
-    <string name="list_app_depends_on_gsf">"Dépendante des GSF"</string>
-    <string name="list_app_has_ads">"contient des publicités"</string>
-    <string name="list_app_independent_from_gsf">"Indépendante des GSF"</string>
-    <string name="list_app_no_ads">"pas de publicités"</string>
+    <string name="list_app_depends_on_gsf">"GSF"</string>
+    <string name="list_app_has_ads">"Avec publicités"</string>
+    <string name="list_app_independent_from_gsf">"Sans GSF"</string>
+    <string name="list_app_no_ads">"Sans publicités"</string>
     <string name="list_app_system">"Application système"</string>
     <string name="list_app_user">"Application utilisateur"</string>
     <string name="list_app_whitelisted">"Sur liste blanche"</string>
     <string name="list_empty_query">"Aucune recherches récentes"</string>
     <string name="list_empty_search">"Aucune applications trouvées"</string>
     <string name="list_empty_updates">"Aucune application à metre à jour"</string>
-    <string name="list_installed_title">"Mes Applications &amp; Jeux"</string>
+    <string name="list_installed_title">"Mes Applications et Jeux"</string>
     <string name="list_installed_summary">"Installées depuis le PlayStore"</string>
     <string name="list_installed_system">"Afficher les applications utilisateur seulement"</string>
     <string name="list_line_2_updatable">"Mise à jour le %1$s"</string>
@@ -240,8 +232,6 @@ Appuyez sur \"Créer un mot de passe\" pour être redirigé vers la page de cré
 
 Vérifier tous les jours les mises à jour ?"</string>
     <string name="list_update_automatic_switch">"Vérifier"</string>
-
-    <!-- Fuzzy -->
     <string name="list_update_all">"Tout M-à-J"</string>
     <string name="list_update_all_txt">"Mise(s) à jour  : %1$s"</string>
     <string name="list_update_chk_txt">"Recherche des mises à jour"</string>
@@ -250,9 +240,6 @@ Vérifier tous les jours les mises à jour ?"</string>
     <string name="manual_download_compatible">"Le champ \"Code de la version\" a été pré-rempli avec la dernière version de l'application compatible avec votre appareil. Si vous voulez une version précédente, choisissez un nombre inférieur : si le développeur n'a pas supprimé l'APK du Play Store, le téléchargement devrait commencer."</string>
     <string name="manual_download_hint_version_code">"code de la version ici"</string>
     <string name="manual_download_incompatible">"Le Play Store considère cette application incompatible avec votre appareil. Cela signifie que le code de la version n'a pas été renvoyé par le serveur Play Store"</string>
-    <string name="manual_download_warning">"Cette page vous laisse choisir manuellement la version à télécharger. Le code de version identifie la version d'une application. Il commence à 1, et est incrémenté à chaque fois que le développeur publie une nouvelle version. Normalement, le Play Store ne propose que l'APK le plus récent compatible avec votre appareil, mais il est parfois possible d'obtenir les versions précédentes.
-
-Cette fonctionnalité n'est normalement pas proposée par le Google Play Store, il faut donc trouver au hasard le bon code de version, et l'APK obtenu peut ne pas être compatible avec votre appareil. Cette fonctionnalité est recommandée pour les utilisateurs les plus avancés !"</string>
     <string name="notification_download_complete">"Téléchargement terminé. Appuyez pour installer."</string>
     <string name="notification_download_complete_new_permissions">"Téléchargement terminé. Nouvelles permissions requises."</string>
     <string name="notification_download_complete_new_permissions_toast">"%1$s téléchargé. La nouvelle version de l'application nécessite de nouvelles permissions. Consultez la liste des permissions."</string>
@@ -281,7 +268,7 @@ Cette fonctionnalité n'est normalement pas proposée par le Google Play Store, 
     <string name="pref_background_update_install">"Installer les mises à jour (root)"</string>
     <string name="pref_background_update_install_summary_off">"Vous ne recevez qu'une notification"</string>
     <string name="pref_background_update_install_summary_on">"Installer les mises à jour si trouvées (root)"</string>
-    <string name="pref_background_update_interval">"Vérifier les mises à jours périodiquement"</string>
+    <string name="pref_background_update_interval">"Vérification des mises à jour"</string>
     <string name="pref_background_update_interval_daily">"Une fois par jour"</string>
     <string name="pref_background_update_interval_hourly">"Une fois par heure"</string>
     <string name="pref_background_update_interval_manually">"Manuellement"</string>
@@ -292,7 +279,7 @@ Cette fonctionnalité n'est normalement pas proposée par le Google Play Store, 
     <string name="pref_category_spoofing">"Usurpation"</string>
     <string name="pref_category_ui">"Interface"</string>
     <string name="pref_category_updates">"Mises à jour"</string>
-    <string name="pref_delete_apk_after_install">"Supprimer l'APK après l'installation"</string>
+    <string name="pref_delete_apk_after_install">"Supprimer l'apk après installation"</string>
     <string name="pref_delete_apk_after_install_summary_off">"Les fichiers .apk sont conservés après installation"</string>
     <string name="pref_delete_apk_after_install_summary_on">"Les fichiers .apk sont supprimés après installation"</string>
     <string name="pref_device_to_pretend_to_be">"Se faire passer pour un autre appareil"</string>
@@ -304,7 +291,7 @@ Cette fonctionnalité n'est normalement pas proposée par le Google Play Store, 
     <string name="pref_download_deltas_summary_on">"Seules les modifications sont téléchargées pendant les mises à jour"</string>
     <string name="pref_download_directory">"Dossier de téléchargements"</string>
     <string name="pref_installation_method">"Méthode d'installation"</string>
-    <string name="pref_installation_method_default">"Méthode d'installation par défaut, pas d'installation en arrière plan"</string>
+    <string name="pref_installation_method_default">"Pas d'installation en arrière-plan (par défaut)"</string>
     <string name="pref_installation_method_privileged">"Utiliser les permissions système"</string>
     <string name="pref_installation_method_root">"Utiliser les droits root"</string>
     <string name="pref_message_fallback">"Essayer de définir un dossier de secours (%1$s) ?"</string>
@@ -334,4 +321,30 @@ Cette fonctionnalité n'est normalement pas proposée par le Google Play Store, 
     <string name="testing_program_section_opted_out_title">"Devenir un testeur"</string>
     <string name="top_categories">"Top catégories"</string>
     <string name="warn_app_purchase">"L'achat d'applications n'est pas encore disponible. Vous allez être redirigé vers le PlayStore Web"</string>
+    <string name="acc_dummy_summary">"Se connecter avec un compte anonyme fourni par Aurora Store. Vous ne pourrez accéder à vos applications payantes avec ce compte."</string>
+    <string name="action_filter_misc">"Autres"</string>
+    <string name="action_filter_build">"Type"</string>
+    <string name="action_filter_apply">"Appliquer"</string>
+    <string name="action_search_history_apps">"Applications récentes"</string>
+    <string name="pref_theme_title">"Thème"</string>
+    <string name="pref_theme_title_summary">"Sélectionner un thème (Clair/Sombre/AMOLED)"</string>
+    <string name="action_filter">"Filtres"</string>
+    <string name="action_filter_apps_with_ads">"Avec publicité"</string>
+    <string name="action_filter_category">"Catégorie"</string>
+    <string name="action_filter_downloads">"Téléchargements"</string>
+    <string name="action_filter_gsf_dependent_apps">"Dépendant des GSF"</string>
+    <string name="action_filter_paid_apps">"Achetées"</string>
+    <string name="action_filter_rating">"Note"</string>
+    <string name="action_filter_system_apps">"Applis systeme"</string>
+    <string name="action_filter_all">"Tous"</string>
+    <string name="manual_download_disclaimer">"Avertissement"</string>
+    <string name="manual_download_warning">"Cette page vous laisse choisir manuellement la version à télécharger. Cette fonctionnalité n'est normalement pas proposée par le PlayStore. Vous devrez donc trouver au hasard le bon code de version. L'APK téléchargé peut ne pas être compatible avec votre appareil."</string>
+    <string name="ohh_snap_text">"Une erreur s'est produite"</string>
+    <string name="ohh_snap_retry">"Réessayer"</string>
+    <string name="pref_app_ui">"Icônes colorées"</string>
+    <string name="pref_app_ui_summary">"Afficher en couleur les icônes de l'application"</string>
+    <string name="pref_app_swipe">"Balayage des pages"</string>
+    <string name="pref_app_swipe_summary">"Balayer pour changer de pages"</string>
+    <string name="pref_app_ime">"Affichage auto du clavier"</string>
+    <string name="pref_app_ime_summary">"Afficher automatiquement le clavier lors d'une recherche"</string>
 </resources>
