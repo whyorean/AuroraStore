@@ -22,23 +22,22 @@
 package com.dragons.aurora.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.PopupMenu;
 import android.widget.RatingBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.dragons.aurora.R;
+import com.dragons.aurora.Util;
 import com.dragons.aurora.activities.AuroraActivity;
 import com.dragons.aurora.activities.DetailsActivity;
 import com.dragons.aurora.fragment.details.ButtonDownload;
-import com.dragons.aurora.fragment.details.ButtonUninstall;
-import com.dragons.aurora.fragment.details.DownloadOptions;
 import com.dragons.aurora.model.App;
 import com.squareup.picasso.Picasso;
 
@@ -75,43 +74,32 @@ public class RecyclerAppsAdapter extends RecyclerView.Adapter<RecyclerAppsAdapte
     @Override
     public void onBindViewHolder(@NonNull RecyclerAppsAdapter.ViewHolder holder, int position) {
         final App app = appsToAdd.get(position);
-
-        holder.appName.setText(app.getDisplayName());
-        setText(holder.view, holder.appRating, R.string.details_rating, app.getRating().getAverage());
-        holder.appRatingBar.setRating(app.getRating().getStars(1));
+        final boolean isInstalled = Util.isAlreadyInstalled(context, app.getPackageName());
 
         Picasso
                 .with(context)
                 .load(app.getIconInfo().getUrl())
                 .placeholder(R.color.transparent)
                 .into(holder.appIcon);
-
+        setText(holder.view, holder.appRating, R.string.details_rating, app.getRating().getAverage());
+        holder.appName.setText(Util.getSimpleName(app.getDisplayName()));
+        holder.appRatingBar.setRating(app.getRating().getAverage() / 5.0f);
         holder.appContainer.setOnClickListener(v -> {
             Context context = holder.view.getContext();
             context.startActivity(DetailsActivity.getDetailsIntent(context, app.getPackageName()));
         });
 
-        holder.menu_3dot.setOnClickListener(v -> {
-            PopupMenu popup = new PopupMenu(v.getContext(), v);
-            popup.inflate(R.menu.menu_download);
-            new DownloadOptions((AuroraActivity) context, app).inflate(popup.getMenu());
-            popup.getMenu().findItem(R.id.action_download).setVisible(new ButtonDownload((AuroraActivity) context, app).shouldBeVisible());
-            popup.getMenu().findItem(R.id.action_uninstall).setVisible(app.isInstalled());
-            popup.setOnMenuItemClickListener(item -> {
-                switch (item.getItemId()) {
-                    case R.id.action_download:
-                        new ButtonDownload((AuroraActivity) context, app).checkAndDownload();
-                        break;
-                    case R.id.action_uninstall:
-                        new ButtonUninstall((AuroraActivity) context, app).uninstall();
-                        remove(position);
-                        break;
-                    default:
-                        return new DownloadOptions((AuroraActivity) context, app).onContextItemSelected(item);
+        if (isInstalled)
+            holder.get_run.setImageResource(R.drawable.ic_featured_launch);
+
+        holder.get_run.setOnClickListener(v -> {
+            if (isInstalled) {
+                Intent launchIntent = Util.getLaunchIntent((AuroraActivity) context, app);
+                if (launchIntent != null) {
+                    context.startActivity(launchIntent);
                 }
-                return false;
-            });
-            popup.show();
+            } else
+                new ButtonDownload((AuroraActivity) context, app).checkAndDownload();
         });
     }
 
@@ -137,7 +125,7 @@ public class RecyclerAppsAdapter extends RecyclerView.Adapter<RecyclerAppsAdapte
         private TextView appRating;
         private RatingBar appRatingBar;
         private ImageView appIcon;
-        private ImageView menu_3dot;
+        private ImageView get_run;
 
         public ViewHolder(View view) {
             super(view);
@@ -147,7 +135,7 @@ public class RecyclerAppsAdapter extends RecyclerView.Adapter<RecyclerAppsAdapte
             appRating = view.findViewById(R.id.app_rating);
             appRatingBar = view.findViewById(R.id.app_ratingbar);
             appIcon = view.findViewById(R.id.app_icon);
-            menu_3dot = view.findViewById(R.id.menu_3dot);
+            get_run = view.findViewById(R.id.get_run);
         }
     }
 

@@ -21,9 +21,13 @@
 
 package com.dragons.aurora;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.content.res.TypedArray;
 import android.graphics.drawable.GradientDrawable;
+import android.os.Build;
 import android.preference.PreferenceManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
@@ -180,6 +184,31 @@ public class Util {
             return false;
     }
 
+    public static boolean isAlreadyInstalled(Context context, String packageName) {
+        try {
+            context.getPackageManager().getApplicationInfo(packageName, 0);
+            return true;
+        } catch (PackageManager.NameNotFoundException e) {
+            return false;
+        }
+    }
+
+    public static Intent getLaunchIntent(Activity activity, App app) {
+        Intent i = activity.getPackageManager().getLaunchIntentForPackage(app.getPackageName());
+        boolean isTv = Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && ((AuroraApplication) activity.getApplication()).isTv();
+        if (isTv) {
+            Intent l = activity.getPackageManager().getLeanbackLaunchIntentForPackage(app.getPackageName());
+            if (null != l) {
+                i = l;
+            }
+        }
+        if (i == null) {
+            return null;
+        }
+        i.addCategory(isTv ? Intent.CATEGORY_LEANBACK_LAUNCHER : Intent.CATEGORY_LAUNCHER);
+        return i;
+    }
+
     public static boolean isDark(Context context) {
         String Theme = PreferenceFragment.getString(context, "PREFERENCE_THEME");
         switch (Theme) {
@@ -218,5 +247,19 @@ public class Util {
         recyclerView.setLayoutAnimation(controller);
         recyclerView.getAdapter().notifyDataSetChanged();
         recyclerView.scheduleLayoutAnimation();
+    }
+
+    public static String getSimpleName(String oldName) {
+        if (oldName.contains(":"))
+            return oldName.substring(0, oldName.indexOf(":"));
+        else if (oldName.contains("&"))
+            return oldName.substring(0, oldName.indexOf("&"));
+        else if (oldName.contains("-"))
+            return oldName.substring(0, oldName.indexOf("-"));
+        else if (oldName.contains("+"))
+            return oldName.substring(0, oldName.indexOf("+"));
+        else if (oldName.contains("("))
+            return oldName.substring(0, oldName.indexOf("("));
+        else return oldName;
     }
 }

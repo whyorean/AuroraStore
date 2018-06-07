@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Aurora Store
   ~ Copyright (C) 2018  Rahul Kumar Patel <whyorean@gmail.com>
   ~
@@ -22,12 +21,12 @@
 
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="115dp"
-    android:layout_height="135dp"
+    android:layout_width="128dp"
+    android:layout_height="172dp"
     android:layout_margin="2dp"
     app:cardBackgroundColor="?android:attr/panelBackground"
     app:cardCornerRadius="10dp"
-    app:cardElevation="1dp"
+    app:cardElevation="2dp"
     app:cardPreventCornerOverlap="false"
     app:cardUseCompatPadding="true">
 
@@ -45,68 +44,87 @@
             android:padding="15dp"
             app:srcCompat="@drawable/ic_placeholder" />
 
-        <RelativeLayout
+        <TextView
+            android:id="@+id/app_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/app_icon"
-            android:orientation="horizontal"
-            android:paddingEnd="8dp"
-            android:paddingStart="8dp">
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="-5dp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:textAlignment="center"
+            android:textSize="14sp" />
 
-            <TextView
-                android:id="@+id/app_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ellipsize="marquee"
-                android:fontFamily="@font/google_sans_bold"
-                android:scrollHorizontally="true"
-                android:singleLine="true"
-                android:textAlignment="textStart"
-                android:textColor="?android:attr/textColorPrimary"
-                android:textSize="12sp" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height=".5dp"
+            android:layout_above="@+id/bottom_actions"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/gray" />
 
-            <RelativeLayout
-                android:layout_width="match_parent"
+        <LinearLayout
+            android:id="@+id/bottom_actions"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:layout_alignParentBottom="true"
+            android:gravity="center"
+            android:weightSum="4">
+
+            <LinearLayout
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/app_name"
-                android:layout_marginBottom="4dp"
+                android:layout_weight="2"
+                android:gravity="center"
                 android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/app_rating"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:fontFamily="@font/google_sans"
-                    android:textSize="12sp" />
+                    android:layout_gravity="center"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginStart="5dp"
+                    android:textSize="13sp" />
 
                 <RatingBar
                     android:id="@+id/app_ratingbar"
                     style="?android:attr/ratingBarStyleSmall"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_toEndOf="@id/app_rating"
+                    android:layout_gravity="center"
+                    android:alpha=".8"
                     android:isIndicator="true"
                     android:max="1"
                     android:numStars="1"
-                    android:scaleX=".5"
-                    android:scaleY=".5"
-                    android:theme="@style/RatingBar2" />
-
-                <ImageView
-                    android:id="@+id/menu_3dot"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:background="?android:selectableItemBackgroundBorderless"
                     android:scaleX=".8"
                     android:scaleY=".8"
-                    android:src="@drawable/ic_3dots" />
+                    android:theme="@style/RatingBar2" />
+            </LinearLayout>
 
-            </RelativeLayout>
+            <View
+                android:layout_width=".5dp"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/gray" />
 
-        </RelativeLayout>
+            <ImageView
+                android:id="@+id/get_run"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="2"
+                android:alpha=".6"
+                android:background="?android:selectableItemBackgroundBorderless"
+                android:cropToPadding="true"
+                android:scaleX=".6"
+                android:scaleY=".6"
+                android:src="@drawable/ic_featured_download" />
+        </LinearLayout>
 
     </RelativeLayout>
 
