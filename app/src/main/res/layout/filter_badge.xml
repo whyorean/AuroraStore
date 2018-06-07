@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Aurora Store
   ~ Copyright (C) 2018  Rahul Kumar Patel <whyorean@gmail.com>
   ~
@@ -20,61 +19,52 @@
   ~ along with Aurora Store.  If not, see <http://www.gnu.org/licenses/>.
   -->
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/badge_container"
+<com.github.florent37.shapeofview.shapes.RoundRectView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/filter_sheet"
     android:layout_width="wrap_content"
     android:layout_height="38dp"
     android:layout_margin="5dp"
-    android:background="@drawable/badge_bg"
-    android:clipToPadding="true"
-    android:elevation="1dp"
-    android:padding="8dp">
+    android:elevation="0dp"
+    app:shape_roundRect_bottomLeftRadius="20dp"
+    app:shape_roundRect_bottomRightRadius="20dp"
+    app:shape_roundRect_topLeftRadius="20dp"
+    app:shape_roundRect_topRightRadius="20dp">
 
-    <com.github.florent37.shapeofview.shapes.CircleView
-        android:id="@+id/badge_dot_c"
-        android:layout_width="12dp"
-        android:layout_height="12dp"
-        android:layout_centerVertical="true"
-        android:layout_marginStart="5dp">
+    <RelativeLayout
+        android:id="@+id/badge_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?android:attr/panelBackground"
+        android:padding="8dp">
 
-        <View
-            android:id="@+id/badge_dot"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/colorGold" />
+        <com.github.florent37.shapeofview.shapes.CircleView
+            android:id="@+id/badge_dot_c"
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="5dp">
 
-    </com.github.florent37.shapeofview.shapes.CircleView>
+            <View
+                android:id="@+id/badge_dot"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/colorGold" />
 
-    <TextView
-        android:id="@+id/badge_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_marginEnd="5dp"
-        android:layout_marginStart="5dp"
-        android:layout_toEndOf="@+id/badge_dot_c"
-        android:ellipsize="end"
-        android:gravity="center"
-        android:singleLine="true"
-        android:textColor="?android:attr/textColorPrimary" />
+        </com.github.florent37.shapeofview.shapes.CircleView>
 
-    <com.github.florent37.shapeofview.shapes.CircleView
-        android:id="@+id/badge_cancel"
-        android:layout_width="12dp"
-        android:layout_height="12dp"
-        android:layout_centerVertical="true"
-        android:layout_marginEnd="5dp"
-        android:layout_toEndOf="@+id/badge_text"
-        android:visibility="gone">
-
-        <ImageView
+        <TextView
+            android:id="@+id/badge_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:background="@color/lightGray"
-            android:src="@drawable/ic_cancel"
-            android:tint="@color/darkGray" />
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="5dp"
+            android:layout_marginStart="5dp"
+            android:layout_toEndOf="@+id/badge_dot_c"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:singleLine="true"
+            android:textColor="?android:attr/textColorPrimary" />
 
-    </com.github.florent37.shapeofview.shapes.CircleView>
-
-</RelativeLayout>
+    </RelativeLayout>
+</com.github.florent37.shapeofview.shapes.RoundRectView>

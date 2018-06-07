@@ -21,16 +21,10 @@
 
 package com.dragons.custom;
 
-import android.animation.ArgbEvaluator;
-import android.animation.ValueAnimator;
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
 import android.graphics.Color;
-import android.preference.PreferenceManager;
 import android.support.v4.graphics.ColorUtils;
-import android.support.v4.view.ViewCompat;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.RelativeLayout;
@@ -103,36 +97,21 @@ public class FilterBadge extends RelativeLayout {
         badgeDot.setBackgroundColor(color);
     }
 
-    public void animateBadge() {
-        ValueAnimator colorAnimation = ValueAnimator.ofObject(new ArgbEvaluator(), ColorUtils.setAlphaComponent(dotColor, 50), dotColor);
-        colorAnimation.setDuration(350);
-        colorAnimation.addUpdateListener(animator ->
-                ViewCompat.setBackgroundTintList(badgeContainer, ColorStateList.valueOf(
-                        ColorUtils.setAlphaComponent((int) animator.getAnimatedValue(),
-                                200))));
-        colorAnimation.start();
-    }
-
     private void init(Context context) {
         View view = inflate(context, R.layout.filter_badge, this);
         badgeContainer = view.findViewById(R.id.badge_container);
         badgeDot = view.findViewById(R.id.badge_dot);
         badgeText = view.findViewById(R.id.badge_text);
-        badgeCancel = view.findViewById(R.id.badge_cancel);
     }
 
     private void setupBadge() {
         if (!isBadgeChecked()) {
-            badgeDot.setVisibility(VISIBLE);
             badgeText.setTextColor(Util.getStyledAttribute(context, android.R.attr.textColorPrimary));
-            badgeContainer.setBackgroundTintList(null);
-            badgeCancel.setVisibility(GONE);
+            badgeContainer.setBackgroundColor(ColorUtils.setAlphaComponent(dotColor, 20));
             badgeChecked = false;
         } else {
-            badgeDot.setVisibility(GONE);
             badgeText.setTextColor(Color.WHITE);
-            animateBadge();
-            badgeCancel.setVisibility(VISIBLE);
+            badgeContainer.setBackgroundColor(ColorUtils.setAlphaComponent(dotColor, 200));
             badgeChecked = true;
         }
 
@@ -148,12 +127,11 @@ public class FilterBadge extends RelativeLayout {
     }
 
     public boolean getFilterPreferences() {
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-        return prefs.getBoolean(key, true);
+        return Util.getBoolean(context, key);
     }
 
     public void setFilterPreferences(boolean value) {
-        PreferenceManager.getDefaultSharedPreferences(context).edit().putBoolean(key, value).apply();
+        Util.putBoolean(context, key, value);
         badgeChecked = value;
     }
 }

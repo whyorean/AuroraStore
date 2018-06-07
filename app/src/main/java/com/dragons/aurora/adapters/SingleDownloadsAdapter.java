@@ -21,16 +21,12 @@
 
 package com.dragons.aurora.adapters;
 
-import android.animation.ArgbEvaluator;
-import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v4.graphics.ColorUtils;
-import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -116,21 +112,11 @@ public class SingleDownloadsAdapter extends RecyclerView.Adapter<SingleDownloads
     private void toggleBadge(boolean toggle) {
         if (toggle) {
             viewHolder.badgeText.setTextColor(Color.WHITE);
-            paintBadge(viewHolder);
+            viewHolder.badgeContainer.setBackgroundColor(ColorUtils.setAlphaComponent(dotColor, 200));
         } else {
             viewHolder.badgeText.setTextColor(Util.getStyledAttribute(context, android.R.attr.textColorPrimary));
-            viewHolder.badgeContainer.setBackgroundTintList(null);
+            viewHolder.badgeContainer.setBackgroundColor(ColorUtils.setAlphaComponent(dotColor, 20));
         }
-    }
-
-    private void paintBadge(ViewHolder holder) {
-        ValueAnimator colorAnimation = ValueAnimator.ofObject(new ArgbEvaluator(), ColorUtils.setAlphaComponent(dotColor, 50), dotColor);
-        colorAnimation.setDuration(350);
-        colorAnimation.addUpdateListener(animator ->
-                ViewCompat.setBackgroundTintList(holder.badgeContainer, ColorStateList.valueOf(
-                        ColorUtils.setAlphaComponent((int) animator.getAnimatedValue(),
-                                180))));
-        colorAnimation.start();
     }
 
     private boolean isLastPref(int position) {
