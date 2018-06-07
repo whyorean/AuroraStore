@@ -19,7 +19,11 @@ public class GlobalDownloadReceiver extends DownloadReceiver {
     private NotificationManagerWrapper notificationManager;
 
     @Override
-    protected void process(Context c, Intent i) {
+    protected void process(final Context c, final Intent i) {
+        new Thread(() -> processInBackground(c, i)).start();
+    }
+
+    private void processInBackground(Context c, Intent i) {
         notificationManager = new NotificationManagerWrapper(c);
         App app = state.getApp();
 
