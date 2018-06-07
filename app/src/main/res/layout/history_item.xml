@@ -13,6 +13,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="5dp"
+        android:layoutDirection="ltr"
         android:background="@drawable/outline_bg"
         android:backgroundTint="@color/colorRed"
         android:padding="2dp">

@@ -1,51 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/perm_card"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="5dp"
-    android:animateLayoutChanges="true"
-    android:background="@drawable/outline_bg"
-    android:orientation="vertical"
-    android:padding="5dp">
-
-    <TextView
-        android:id="@+id/permissions_header"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:animateLayoutChanges="true"
-        android:drawableEnd="@drawable/ic_expand_more"
-        android:fontFamily="@font/google_sans_bold"
-        android:gravity="center|start"
-        android:padding="5dp"
-        android:text="@string/details_permissions"
-        android:textAllCaps="true"
-        android:textColor="?android:attr/textColorPrimary"
-        android:textSize="14sp" />
+    android:layout_marginEnd="5dp"
+    android:layout_marginStart="5dp"
+    android:layout_marginTop="5dp"
+    app:cardBackgroundColor="?android:attr/panelBackground"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="1dp"
+    app:cardPreventCornerOverlap="false"
+    app:cardUseCompatPadding="true">
 
     <LinearLayout
-        android:id="@+id/permissions_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:animateLayoutChanges="true"
         android:orientation="vertical"
-        android:padding="5dp"
-        android:visibility="gone">
-
-        <LinearLayout
-            android:id="@+id/permissions_container_widgets"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" />
+        android:padding="5dp">
 
         <TextView
-            android:id="@+id/permissions_none"
+            android:id="@+id/permissions_header"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:animateLayoutChanges="true"
+            android:drawableEnd="@drawable/ic_expand_more"
             android:fontFamily="@font/google_sans_bold"
-            android:text="@string/no_permissions"
-            android:textSize="16sp"
-            android:visibility="gone" />
+            android:gravity="center|start"
+            android:padding="5dp"
+            android:text="@string/details_permissions"
+            android:textAllCaps="true"
+            android:textColor="?android:attr/textColorPrimary"
+            android:textSize="14sp" />
+
+        <LinearLayout
+            android:id="@+id/permissions_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:animateLayoutChanges="true"
+            android:orientation="vertical"
+            android:padding="5dp"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:id="@+id/permissions_container_widgets"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+
+            <TextView
+                android:id="@+id/permissions_none"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/google_sans_bold"
+                android:text="@string/no_permissions"
+                android:textSize="16sp"
+                android:visibility="gone" />
+        </LinearLayout>
     </LinearLayout>
-</LinearLayout>
+</android.support.v7.widget.CardView>

@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.support.v7.graphics.Palette;
+import android.support.v7.widget.CardView;
 import android.text.Html;
 import android.text.TextUtils;
 import android.text.format.Formatter;
@@ -279,7 +280,7 @@ public class GeneralDetails extends AbstractHelper {
     }
 
     private void drawDescription(App app) {
-        LinearLayout changelogLayout = fragment.getActivity().findViewById(R.id.changelog_container);
+        CardView changelogLayout = fragment.getActivity().findViewById(R.id.changelog_container);
         ImageView showLessMore = fragment.getActivity().findViewById(R.id.showLessMore);
         TextView showLessMoreTxt = fragment.getActivity().findViewById(R.id.showLessMoreTxt);
 

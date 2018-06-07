@@ -5,6 +5,7 @@ import android.content.pm.PermissionGroupInfo;
 import android.content.pm.PermissionInfo;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.dragons.aurora.R;
 import com.dragons.aurora.fragment.DetailsFragment;
@@ -28,7 +29,20 @@ public class Permissions extends AbstractHelper {
 
     @Override
     public void draw() {
-        initExpandableGroup(R.id.permissions_header, R.id.permissions_container, v -> addPermissionWidgets());
+        TextView viewHeader = fragment.getActivity().findViewById(R.id.permissions_header);
+        LinearLayout viewContainer = fragment.getActivity().findViewById(R.id.permissions_container);
+
+        viewHeader.setOnClickListener(v -> {
+            boolean isExpanded = viewContainer.getVisibility() == View.VISIBLE;
+            if (isExpanded) {
+                viewContainer.setVisibility(View.GONE);
+                ((TextView) v).setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_expand_more, 0);
+            } else {
+                addPermissionWidgets();
+                viewContainer.setVisibility(View.VISIBLE);
+                ((TextView) v).setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_expand_less, 0);
+            }
+        });
     }
 
     private void addPermissionWidgets() {

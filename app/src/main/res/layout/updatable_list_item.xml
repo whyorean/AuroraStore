@@ -13,6 +13,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="6dp"
         android:background="@drawable/outline_bg_black"
+        android:layoutDirection="ltr"
         android:padding="2dp">
 
         <ImageView
