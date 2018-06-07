@@ -33,9 +33,9 @@ public abstract class AccountsHelper extends Fragment {
 
     protected void LoginFirst() {
         new AlertDialog.Builder(getContext())
-                .setTitle("Logged Out ?")
+                .setTitle(R.string.action_login)
                 .setMessage(R.string.header_usr_noEmail)
-                .setPositiveButton("Login", (dialogInterface, i) -> startActivity(new Intent(getActivity(), LoginActivity.class)))
+                .setPositiveButton(R.string.action_login, (dialogInterface, i) -> startActivity(new Intent(getActivity(), LoginActivity.class)))
                 .setCancelable(false)
                 .show();
     }
