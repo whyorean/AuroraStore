@@ -16,9 +16,6 @@
             <enum name="Mono" value="0" />
             <enum name="Duo" value="1" />
         </attr>
-        <attr name="MonoTagName" format="string" />
-        <attr name="DualTagName0" format="string" />
-        <attr name="DualTagName1" format="string" />
     </declare-styleable>
 
     <declare-styleable name="AdaptiveToolbar">

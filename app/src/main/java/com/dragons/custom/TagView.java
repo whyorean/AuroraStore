@@ -1,4 +1,4 @@
-package com.dragons.aurora.view;
+package com.dragons.custom;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -11,10 +11,8 @@ import com.dragons.aurora.R;
 
 public class TagView extends RelativeLayout {
 
-    static int style;
-    static String mono_title, dual_title0, dual_title1;
-    TextView mono, dual0, dual1;
-    TypedArray a;
+    private int style;
+    private TextView mono, dual0, dual1;
 
     public TagView(Context context) {
         super(context);
@@ -27,12 +25,9 @@ public class TagView extends RelativeLayout {
     }
 
     private void init(Context context, AttributeSet attrs) {
-        a = context.getTheme().obtainStyledAttributes(attrs, R.styleable.TagView, 0, 0);
+        TypedArray a = context.getTheme().obtainStyledAttributes(attrs, R.styleable.TagView, 0, 0);
         try {
             style = a.getInteger(R.styleable.TagView_TagStyle, 0);
-            mono_title = a.getString(R.styleable.TagView_MonoTagName);
-            dual_title0 = a.getString(R.styleable.TagView_DualTagName0);
-            dual_title1 = a.getString(R.styleable.TagView_DualTagName1);
         } finally {
             a.recycle();
         }
@@ -49,44 +44,24 @@ public class TagView extends RelativeLayout {
     private void MonoTagView(Context context) {
         View root = inflate(context, R.layout.tagview_mono, this);
         mono = root.findViewById(R.id.tag_mono_txt);
-        if (mono_title != null)
-            mono.setText(mono_title);
     }
 
     private void DualTagView(Context context) {
         View root = inflate(context, R.layout.tagview_duo, this);
         dual0 = root.findViewById(R.id.tag_dual_txt0);
-        if (dual_title0 != null) {
-            dual0.setText(dual_title0);
-        }
         dual1 = root.findViewById(R.id.tag_dual_txt1);
-        if (dual_title1 != null) {
-            dual1.setText(dual_title1);
-        }
     }
 
     public void setMono_title(String mono_title) {
-        TagView.mono_title = mono_title;
+        if (mono != null) mono.setText(mono_title);
     }
 
     public void setDual_title0(String dual_title0) {
-        TagView.dual_title0 = dual_title0;
+        if (dual0 != null) dual0.setText(dual_title0);
     }
 
     public void setDual_title1(String dual_title1) {
-        TagView.dual_title1 = dual_title1;
-    }
-
-    public void setMonoOnClickListener(OnClickListener onClickListener) {
-        mono.setOnClickListener(onClickListener);
-    }
-
-    public void setDual0OnClickListener(OnClickListener onClickListener) {
-        dual0.setOnClickListener(onClickListener);
-    }
-
-    public void setDual1OnClickListener(OnClickListener onClickListener) {
-        dual1.setOnClickListener(onClickListener);
+        if (dual1 != null) dual1.setText(dual_title1);
     }
 
     public int getStyle() {
@@ -94,6 +69,6 @@ public class TagView extends RelativeLayout {
     }
 
     public void setStyle(int style) {
-        TagView.style = style;
+        this.style = style;
     }
 }

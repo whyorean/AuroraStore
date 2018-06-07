@@ -21,7 +21,7 @@ import com.dragons.aurora.task.CategoryTaskHelper;
 import com.dragons.aurora.task.FeaturedTaskHelper;
 import com.dragons.aurora.view.AdaptiveToolbar;
 import com.dragons.aurora.view.MoreAppsCard;
-import com.dragons.aurora.view.TagView;
+import com.dragons.custom.TagView;
 import com.squareup.picasso.Picasso;
 
 public class HomeFragment extends UtilFragment {
@@ -100,8 +100,15 @@ public class HomeFragment extends UtilFragment {
         TagView tagView = v.findViewById(viewID);
         if (tagView.getStyle() == 0)
             tagView.setMono_title(new CategoryManager(getContext()).getCategoryName(Category));
-        tagView.setOnClickListener(click -> getActivity().startActivity(CategoryAppsActivity.start(v.getContext(), Category)));
-
+        else {
+            if (Category.contains("GAME_"))
+                tagView.setDual_title0(getString(R.string.tagview_games));
+            else
+                tagView.setDual_title0(getString(R.string.tagview_family));
+            tagView.setDual_title1(new CategoryManager(getContext()).getCategoryName(Category));
+        }
+        tagView.setOnClickListener(click -> getActivity()
+                .startActivity(CategoryAppsActivity.start(v.getContext(), Category)));
     }
 
     protected void setupTopFeatured() {

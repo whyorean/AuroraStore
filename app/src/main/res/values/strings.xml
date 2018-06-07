@@ -312,6 +312,8 @@
     <string name="search_filter">All apps</string>
     <string name="search_title">Search</string>
     <string name="submit">Submit</string>
+    <string name="tagview_games">Games</string>
+    <string name="tagview_family">Family</string>
     <string name="testing_program_opt_in">join</string>
     <string name="testing_program_opt_out">leave</string>
     <string name="testing_program_review_dialog_content_hint">Enter feedback about the app</string>
