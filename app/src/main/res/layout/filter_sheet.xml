@@ -101,7 +101,7 @@
                     android:layout_below="@+id/category_title0"
                     app:badge_dotColor="@color/colorRed"
                     app:badge_filter_key="FILTER_GSF_DEPENDENT_APPS"
-                    app:badge_title="GSF Dependant" />
+                    app:badge_title="@string/action_filter_gsf_dependent_apps" />
 
                 <com.dragons.custom.FilterBadge
                     android:id="@+id/filter_ads"
@@ -111,7 +111,7 @@
                     android:layout_toEndOf="@+id/filter_gsf"
                     app:badge_dotColor="@color/colorPurple"
                     app:badge_filter_key="FILTER_APPS_WITH_ADS"
-                    app:badge_title="Apps with Ads" />
+                    app:badge_title="@string/action_filter_apps_with_ads" />
 
                 <com.dragons.custom.FilterBadge
                     android:id="@+id/filter_paid"
@@ -120,7 +120,7 @@
                     android:layout_below="@+id/filter_gsf"
                     app:badge_dotColor="@color/colorOrange"
                     app:badge_filter_key="FILTER_PAID_APPS"
-                    app:badge_title="Paid" />
+                    app:badge_title="@string/action_filter_paid_apps" />
 
             </RelativeLayout>
 
