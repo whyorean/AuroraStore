@@ -1,28 +1,10 @@
-<!-- Copyright (C) 2017 Flaticon under CreativeCommon License -->
-<vector android:height="24dp" android:viewportHeight="512.0"
-    android:viewportWidth="512.0" android:width="24dp" xmlns:android="http://schemas.android.com/apk/res/android">
-    <path android:fillColor="#8CC63F" android:pathData="M256,256m-256,0a256,256 0,1 1,512 0a256,256 0,1 1,-512 0"/>
-    <path android:fillColor="#8CC63F" android:pathData="M509.1,294.3L336.4,121.5L78,322.4l44.9,44.9l-23.7,13.2l130.1,130.1C238.1,511.5 247,512 256,512C384.4,512 490.7,417.5 509.1,294.3z"/>
-    <path android:fillColor="#E0E0E0" android:pathData="M260.7,380.6l-107,0l15.4,-79.4l76.2,0z"/>
-    <path android:fillColor="#C0C0C0" android:pathData="M245.3,301.2l-38.3,0l0,79.4l53.7,0z"/>
-    <path android:fillColor="#1A1A1A" android:pathData="M78,121.5h258.3v183h-258.3z"/>
-    <path android:fillColor="#FF000000" android:pathData="M207,121.5h129.4v183h-129.4z"/>
-    <path android:fillColor="#35CCFF" android:pathData="M95.7,138.7h223.1v173.5h-223.1z"/>
-    <path android:fillColor="#00BAFF" android:pathData="M207,138.7h111.7v173.5h-111.7z"/>
-    <path android:fillColor="#FFFFFF" android:pathData="M78,269.7h258.3v52.8h-258.3z"/>
-    <path android:fillColor="#E0E0E0" android:pathData="M207,269.7h129.4v52.8h-129.4z"/>
-    <path android:fillColor="#E0E0E0" android:pathData="M207.2,293.1m-11.4,0a11.4,11.4 0,1 1,22.7 0a11.4,11.4 0,1 1,-22.7 0"/>
-    <path android:fillColor="#C0C0C0" android:pathData="M207.2,281.8c-0.1,0 -0.1,0 -0.2,0v22.7c0.1,0 0.1,0 0.2,0c6.3,0 11.4,-5.1 11.4,-11.4C218.6,286.8 213.5,281.8 207.2,281.8z"/>
-    <path android:fillColor="#333333" android:pathData="M242,243h189.5v123h-189.5z"/>
-    <path android:fillColor="#1A1A1A" android:pathData="M336,243h95.5v123h-95.5z"/>
-    <path android:fillColor="#35CCFF" android:pathData="M255.3,256.3h162.9v105.7h-162.9z"/>
-    <path android:fillColor="#00BAFF" android:pathData="M336,256.3h82.2v105.7h-82.2z"/>
-    <path android:fillColor="#1A1A1A" android:pathData="M232.9,352.2h207.7v28.3h-207.7z"/>
-    <path android:fillColor="#FF000000" android:pathData="M336,352.2h104.6v28.3h-104.6z"/>
-    <path android:fillColor="#333333" android:pathData="M99.3,220.9h91.4v159.7h-91.4z"/>
-    <path android:fillColor="#1A1A1A" android:pathData="M145,220.9h45.7v159.7h-45.7z"/>
-    <path android:fillColor="#B9EAFF" android:pathData="M108.9,230.6h72.2v125h-72.2z"/>
-    <path android:fillColor="#35CCFF" android:pathData="M145,230.6h36.1v125h-36.1z"/>
-    <path android:fillColor="#4D4D4D" android:pathData="M145,367.3m-7.2,0a7.2,7.2 0,1 1,14.3 0a7.2,7.2 0,1 1,-14.3 0"/>
-    <path android:fillColor="#333333" android:pathData="M145,360.2c-0,0 -0,0 -0,0v14.3c0,0 0,0 0,0c4,0 7.2,-3.2 7.2,-7.2C152.2,363.4 149,360.2 145,360.2z"/>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportHeight="24.0"
+    android:viewportWidth="24.0">
+    <path
+        android:fillAlpha=".75"
+        android:fillColor="?android:attr/colorForeground"
+        android:pathData="M3,4H20A2,2 0,0 1,22 6V8H18V6H5V18H14V20H3A2,2 0,0 1,1 18V6A2,2 0,0 1,3 4M17,10H23A1,1 0,0 1,24 11V21A1,1 0,0 1,23 22H17A1,1 0,0 1,16 21V11A1,1 0,0 1,17 10M18,12V19H22V12H18Z" />
 </vector>

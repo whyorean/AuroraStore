@@ -117,10 +117,21 @@ public class Util {
         PreferenceManager.getDefaultSharedPreferences(context).edit().putString(key, TextUtils.join(DELIMITER, set)).apply();
     }
 
+    static public void putString(Context context, String key, String value) {
+        PreferenceManager.getDefaultSharedPreferences(context).edit().putString(key, value).apply();
+    }
+
+    static public void putInteger(Context context, String key, int value) {
+        PreferenceManager.getDefaultSharedPreferences(context).edit().putInt(key, value).apply();
+    }
+
     static public void putBoolean(Context context, String key, boolean value) {
         PreferenceManager.getDefaultSharedPreferences(context).edit().putBoolean(key, value).apply();
     }
 
+    public static int getInteger(Context context, String key) {
+        return PreferenceManager.getDefaultSharedPreferences(context).getInt(key, 0);
+    }
 
     public static Boolean getBoolean(Context context, String key) {
         return PreferenceManager.getDefaultSharedPreferences(context).getBoolean(key, false);
@@ -261,5 +272,12 @@ public class Util {
         else if (oldName.contains("("))
             return oldName.substring(0, oldName.indexOf("("));
         else return oldName;
+    }
+
+    public static void completeCheckout(Context context) {
+        putBoolean(context, "LOGGED_IN", false);
+        putString(context, "GOOGLE_NAME", "");
+        putString(context, "GOOGLE_URL", "");
+        new PlayStoreApiAuthenticator(context).logout();
     }
 }

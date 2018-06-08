@@ -21,30 +21,45 @@
 
 package com.dragons.aurora.fragment;
 
-import android.content.res.ColorStateList;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.v4.widget.ImageViewCompat;
-import android.view.Display;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.dragons.aurora.PlayStoreApiAuthenticator;
 import com.dragons.aurora.R;
 import com.dragons.aurora.SpoofDeviceManager;
+import com.dragons.aurora.Util;
+import com.dragons.aurora.activities.DeviceInfoActivity;
+import com.squareup.picasso.Picasso;
 
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Locale;
+import java.util.Map;
 import java.util.Properties;
-import java.util.TimeZone;
+
+import static com.dragons.aurora.fragment.PreferenceFragment.PREFERENCE_DEVICE_TO_PRETEND_TO_BE;
+import static com.dragons.aurora.fragment.PreferenceFragment.PREFERENCE_DEVICE_TO_PRETEND_TO_BE_INDEX;
+import static com.dragons.aurora.fragment.PreferenceFragment.PREFERENCE_REQUESTED_LANGUAGE;
+import static com.dragons.aurora.fragment.PreferenceFragment.PREFERENCE_REQUESTED_LANGUAGE_INDEX;
 
 public class SpoofFragment extends UtilFragment {
 
+    static String LineageURl = "https://wiki.lineageos.org/images/devices/";
+
     private String deviceName;
-    private ImageView spoofed;
-    private Display mDisplay;
-    private View v;
+    private View view;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -54,64 +69,175 @@ public class SpoofFragment extends UtilFragment {
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        if (v != null) {
-            if ((ViewGroup) v.getParent() != null)
-                ((ViewGroup) v.getParent()).removeView(v);
-            return v;
+        if (view != null) {
+            if ((ViewGroup) view.getParent() != null)
+                ((ViewGroup) view.getParent()).removeView(view);
+            return view;
         }
 
-        v = inflater.inflate(R.layout.app_device_inc, container, false);
-
-        deviceName = PreferenceFragment.getString(getActivity(), PreferenceFragment.PREFERENCE_DEVICE_TO_PRETEND_TO_BE);
-        spoofed = (ImageView) v.findViewById(R.id.spoofed_indicator);
-        mDisplay = (this).getActivity().getWindowManager().getDefaultDisplay();
+        view = inflater.inflate(R.layout.fragment_spoof, container, false);
 
         if (isSpoofed())
             drawSpoofedDevice();
         else
             drawDevice();
-        return v;
+
+        setupLanguage();
+        setupDevice();
+        return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (isSpoofed())
+            drawSpoofedDevice();
+        else
+            drawDevice();
     }
 
     public boolean isSpoofed() {
+        deviceName = PreferenceFragment.getString(getActivity(), PreferenceFragment.PREFERENCE_DEVICE_TO_PRETEND_TO_BE);
         return (deviceName.contains("device-"));
     }
 
     public void drawDevice() {
-        ImageViewCompat.setImageTintList(spoofed, ColorStateList.valueOf((getResources().getColor(R.color.colorGreen))));
+        Picasso
+                .with(getContext())
+                .load(LineageURl + Build.DEVICE + ".png")
+                .placeholder(ContextCompat.getDrawable(getContext(), R.drawable.ic_device))
+                .into((ImageView) view.findViewById(R.id.device_avatar));
+
         setText(R.id.device_model, R.string.device_model, Build.MODEL, Build.DEVICE);
-        setText(R.id.device_manufacturer, R.string.device_manufacturer, Build.MANUFACTURER);
-        setText(R.id.device_architect, R.string.device_board, Build.BOARD);
-        setText(R.id.device_timezone, R.string.device_timezone, (CharSequence) TimeZone.getDefault().getDisplayName());
-        setText(R.id.device_resolution, R.string.device_res, mDisplay.getWidth(), mDisplay.getHeight());
-        setText(R.id.device_api, R.string.device_api, Build.VERSION.SDK);
-        setText(R.id.device_cpu, R.string.device_cpu, Build.CPU_ABI);
+        setText(R.id.device_manufacturer, Build.MANUFACTURER);
+        setText(R.id.device_architect, Build.BOARD);
     }
 
     public void drawSpoofedDevice() {
-        ImageViewCompat.setImageTintList(spoofed, ColorStateList.valueOf((getResources().getColor(R.color.colorRed))));
-
         Properties properties = new SpoofDeviceManager(this.getActivity()).getProperties(deviceName);
         String Model = properties.getProperty("UserReadableName");
 
+        Picasso
+                .with(getContext())
+                .load(LineageURl + properties.getProperty("Build.DEVICE") + ".png")
+                .placeholder(ContextCompat.getDrawable(getContext(), R.drawable.ic_device))
+                .into((ImageView) view.findViewById(R.id.device_avatar));
+
         setText(R.id.device_model, R.string.device_model, Model.substring(0, Model.indexOf('(')), properties.getProperty("Build.DEVICE"));
-        setText(R.id.device_manufacturer, R.string.device_manufacturer, properties.getProperty("Build.MANUFACTURER"));
-        setText(R.id.device_architect, R.string.device_board, properties.getProperty("Build.HARDWARE"));
-        setText(R.id.device_timezone, R.string.device_timezone, properties.getProperty("TimeZone"));
-        setText(R.id.device_resolution, R.string.device_res, properties.getProperty("Screen.Width"), properties.getProperty("Screen.Height"));
-        setText(R.id.device_api, R.string.device_api, properties.getProperty("Build.VERSION.SDK_INT"));
-        String Platforms = properties.getProperty("Platforms");
-        setText(R.id.device_cpu, R.string.device_cpu, Platforms.substring(0, Platforms.indexOf(',')));
+        setText(R.id.device_manufacturer, properties.getProperty("Build.MANUFACTURER"));
+        setText(R.id.device_architect, properties.getProperty("Build.HARDWARE"));
     }
 
+    void setupLanguage() {
+        Spinner spinner = (Spinner) view.findViewById(R.id.spoof_language);
+        Map<String, String> locales = getLanguageKeyValueMap();
+        String[] localeList = locales.values().toArray(new String[0]);
+        String[] localeKeys = locales.keySet().toArray(new String[0]);
+
+        ArrayAdapter<CharSequence> adapter = new ArrayAdapter<>(
+                getContext(),
+                android.R.layout.simple_spinner_item,
+                localeList
+        );
+
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+        spinner.setSelection(Util.getInteger(getContext(), PREFERENCE_REQUESTED_LANGUAGE_INDEX), true);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (position > 0) {
+                    try {
+                        new PlayStoreApiAuthenticator(getActivity()).getApi().setLocale(new Locale(localeKeys[position]));
+                        Util.putString(getContext(), PREFERENCE_REQUESTED_LANGUAGE, localeKeys[position]);
+                        Util.putInteger(getContext(), PREFERENCE_REQUESTED_LANGUAGE_INDEX, position);
+                    } catch (IOException e) {
+                        // Should be impossible to get to preferences with incorrect credentials
+                    }
+                }
+
+                if (position == 0) {
+                    Util.putString(getContext(), PREFERENCE_REQUESTED_LANGUAGE, "");
+                    Util.putInteger(getContext(), PREFERENCE_REQUESTED_LANGUAGE_INDEX, 0);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+    }
+
+    void setupDevice() {
+        Spinner spinner = view.findViewById(R.id.spoof_device);
+        Map<String, String> devices = getDeviceKeyValueMap();
+
+        String[] deviceList = devices.values().toArray(new String[0]);
+        String[] deviceKeys = devices.keySet().toArray(new String[0]);
+
+        ArrayAdapter<CharSequence> adapter = new ArrayAdapter<>(
+                getContext(),
+                android.R.layout.simple_spinner_item,
+                deviceList
+        );
+
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+        spinner.setSelection(Util.getInteger(getContext(), PREFERENCE_DEVICE_TO_PRETEND_TO_BE_INDEX), true);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (position > 0) {
+                    Intent i = new Intent(getContext(), DeviceInfoActivity.class);
+                    i.putExtra(DeviceInfoActivity.INTENT_DEVICE_NAME, deviceKeys[position]);
+                    i.putExtra(DeviceInfoActivity.INTENT_DEVICE_INDEX, position);
+                    getContext().startActivity(i);
+                }
+                if (position == 0) {
+                    Util.putString(getContext(), PREFERENCE_DEVICE_TO_PRETEND_TO_BE, "");
+                    Util.putInteger(getContext(), PREFERENCE_DEVICE_TO_PRETEND_TO_BE_INDEX, 0);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+    }
 
     protected void setText(int viewId, String text) {
-        TextView textView = (TextView) v.findViewById(viewId);
+        TextView textView = (TextView) view.findViewById(viewId);
         if (null != textView)
             textView.setText(text);
     }
 
     protected void setText(int viewId, int stringId, Object... text) {
         setText(viewId, this.getString(stringId, text));
+    }
+
+    protected Map<String, String> getDeviceKeyValueMap() {
+        Map<String, String> devices = new SpoofDeviceManager(getContext()).getDevices();
+        devices = Util.sort(devices);
+        Util.addToStart(
+                (LinkedHashMap<String, String>) devices,
+                "",
+                view.getContext().getString(R.string.pref_device_to_pretend_to_be_default)
+        );
+        return devices;
+    }
+
+    protected Map<String, String> getLanguageKeyValueMap() {
+        Map<String, String> languages = new HashMap<>();
+        for (Locale locale : Locale.getAvailableLocales()) {
+            String displayName = locale.getDisplayName();
+            displayName = displayName.substring(0, 1).toUpperCase(Locale.getDefault()) + displayName.substring(1);
+            languages.put(locale.toString(), displayName);
+        }
+        languages = Util.sort(languages);
+        Util.addToStart((LinkedHashMap<String, String>) languages, "",
+                getActivity().getString(R.string.pref_requested_language_default));
+        return languages;
     }
 }

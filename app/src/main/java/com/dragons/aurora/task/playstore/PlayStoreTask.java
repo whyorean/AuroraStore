@@ -29,6 +29,7 @@ import com.dragons.aurora.ContextUtil;
 import com.dragons.aurora.CredentialsEmptyException;
 import com.dragons.aurora.PlayStoreApiAuthenticator;
 import com.dragons.aurora.R;
+import com.dragons.aurora.Util;
 import com.dragons.aurora.fragment.PreferenceFragment;
 import com.dragons.aurora.playstoreapiv2.AuthException;
 import com.dragons.aurora.task.AppProvidedCredentialsTask;
@@ -115,8 +116,8 @@ abstract public class PlayStoreTask<T> extends TaskWithProgress<T> {
             new AppProvidedCredentialsTask(context).refreshToken();
             return;
         } else {
-            ContextUtil.toast(this.context, R.string.error_incorrect_password);
-            new PlayStoreApiAuthenticator(context).logout();
+            ContextUtil.toast(context, R.string.error_incorrect_password);
+            Util.completeCheckout(context);
         }
         if (ContextUtil.isAlive(context)) {
             //Mehh!

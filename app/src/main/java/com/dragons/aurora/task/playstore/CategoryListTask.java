@@ -26,6 +26,7 @@ import android.text.TextUtils;
 
 import com.dragons.aurora.CategoryManager;
 import com.dragons.aurora.PlayStoreApiAuthenticator;
+import com.dragons.aurora.fragment.PreferenceFragment;
 import com.dragons.aurora.playstoreapiv2.DocV2;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 import com.dragons.aurora.playstoreapiv2.ListResponse;
@@ -74,9 +75,10 @@ public class CategoryListTask extends ExceptionTask {
     }
 
     private Locale getLocale(Context context) {
-        return new Locale.Builder()
-                .setLanguage(context.getResources().getConfiguration().locale.getLanguage())
-                .setRegion(context.getResources().getConfiguration().locale.getCountry())
-                .build();
+        String locale = PreferenceFragment.getString(context, PreferenceFragment.PREFERENCE_REQUESTED_LANGUAGE);
+        if (TextUtils.isEmpty(locale))
+            return Locale.getDefault();
+        else
+            return new Locale(locale);
     }
 }

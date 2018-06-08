@@ -298,6 +298,8 @@
     <string name="pref_background_update_wifi_only">On Wi-Fi only</string>
     <string name="pref_category_installation">Installation</string>
     <string name="pref_category_spoofing">Spoofing</string>
+    <string name="pref_category_spoof_device">Spoof Device</string>
+    <string name="pref_category_spoof_lang">Spoof Language</string>
     <string name="pref_category_ui">User Interface</string>
     <string name="pref_category_updates">Updates</string>
     <string name="pref_delete_apk_after_install">Delete .apk after installation</string>

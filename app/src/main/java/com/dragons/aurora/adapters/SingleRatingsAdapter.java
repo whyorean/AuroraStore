@@ -118,7 +118,6 @@ public class SingleRatingsAdapter extends RecyclerView.Adapter<SingleRatingsAdap
             viewHolder.badgeContainer.setBackgroundColor(ColorUtils.setAlphaComponent(dotColor, 20));
         }
     }
-    
     private boolean isLastPref(int position) {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         return prefs.getFloat("FILTER_RATING", 0.0f) == Float.parseFloat(mValues[position]);

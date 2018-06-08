@@ -112,12 +112,6 @@
             android:launchMode="singleInstance" />
 
         <activity
-            android:name=".activities.DeviceActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize|locale"
-            android:label="@string/action_spoofed"
-            android:launchMode="singleInstance" />
-
-        <activity
             android:name=".activities.AuroraActivity"
             android:configChanges="keyboardHidden|orientation|screenSize|locale"
             android:launchMode="singleInstance"

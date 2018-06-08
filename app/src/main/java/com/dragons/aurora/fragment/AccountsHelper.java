@@ -28,6 +28,7 @@ import android.support.v7.app.AlertDialog;
 
 import com.dragons.aurora.PlayStoreApiAuthenticator;
 import com.dragons.aurora.R;
+import com.dragons.aurora.Util;
 import com.dragons.aurora.activities.LoginActivity;
 import com.dragons.aurora.task.AppProvidedCredentialsTask;
 import com.dragons.aurora.task.UserProvidedCredentialsTask;
@@ -63,7 +64,7 @@ public abstract class AccountsHelper extends Fragment {
 
     public void switchDummy() {
         if (isLoggedIn())
-            new PlayStoreApiAuthenticator(getContext()).logout();
+            Util.completeCheckout(getContext());
 
         AppProvidedCredentialsTask.LoginTask task = new AppProvidedCredentialsTask.LoginTask(getContext());
         task.setContext(getContext());
@@ -77,7 +78,7 @@ public abstract class AccountsHelper extends Fragment {
 
     public void loginWithDummy() {
         if (isLoggedIn())
-            new PlayStoreApiAuthenticator(getContext()).logout();
+            Util.completeCheckout(getContext());
         new AppProvidedCredentialsTask(getContext()).logInWithPredefinedAccount();
     }
 

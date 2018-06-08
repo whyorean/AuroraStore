@@ -21,37 +21,60 @@
 
 package com.dragons.aurora.activities;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.text.TextUtils;
 import android.util.Log;
-import android.widget.TableLayout;
-import android.widget.TableRow;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.dragons.aurora.ContextUtil;
 import com.dragons.aurora.R;
 import com.dragons.aurora.SpoofDeviceManager;
+import com.dragons.aurora.Util;
+import com.dragons.aurora.playstoreapiv2.PropertiesDeviceInfoProvider;
+import com.dragons.aurora.view.PropCard;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
 import java.util.Properties;
+
+import static com.dragons.aurora.fragment.PreferenceFragment.PREFERENCE_DEVICE_TO_PRETEND_TO_BE;
+import static com.dragons.aurora.fragment.PreferenceFragment.PREFERENCE_DEVICE_TO_PRETEND_TO_BE_INDEX;
 
 public class DeviceInfoActivity extends AuroraActivity {
 
     public static final String INTENT_DEVICE_NAME = "INTENT_DEVICE_NAME";
+    public static final String INTENT_DEVICE_INDEX = "INTENT_DEVICE_INDEX";
+    private String deviceName;
+    private int deviceIndex;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.deviceinfo_activity_layout);
+        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+        getWindow().setStatusBarColor(getResources().getColor(R.color.semi_transparent));
         onNewIntent(getIntent());
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
-        String deviceName = intent.getStringExtra(INTENT_DEVICE_NAME);
+        deviceName = intent.getStringExtra(INTENT_DEVICE_NAME);
+        deviceIndex = intent.getIntExtra(INTENT_DEVICE_INDEX, 0);
         if (TextUtils.isEmpty(deviceName)) {
             Log.e(getClass().getSimpleName(), "No device name given");
             finish();
@@ -59,35 +82,58 @@ public class DeviceInfoActivity extends AuroraActivity {
         }
 
         Properties properties = new SpoofDeviceManager(this).getProperties(deviceName);
-        setTitle(properties.getProperty("UserReadableName"));
+        ((TextView) findViewById(R.id.aurora_title)).setText(properties.getProperty("UserReadableName"));
         List<String> keys = new ArrayList<>();
         for (Object key : properties.keySet()) {
             keys.add((String) key);
         }
-        Collections.sort(keys);
 
-        TableLayout table = (TableLayout) findViewById(R.id.device_info);
+        Collections.sort(keys);
+        LinearLayout root = findViewById(R.id.device_info);
         for (String key : keys) {
-            addRow(table, key, ((String) properties.get(key)).replace(",", ", "));
+            addCards(root, key, ((String) properties.get(key)).replace(",", ", "));
         }
+
+        setupButtons();
     }
 
-    private void addRow(TableLayout parent, String key, String value) {
-        TableRow.LayoutParams rowParams = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT);
+    private void addCards(LinearLayout root, String key, String value) {
+        root.addView(new PropCard(this, key, value));
+    }
 
-        TextView textViewKey = new TextView(this);
-        textViewKey.setText(key);
-        textViewKey.setLayoutParams(rowParams);
+    private void setupButtons() {
+        ImageView toolbar_back = findViewById(R.id.toolbar_back);
+        toolbar_back.setOnClickListener(click -> onBackPressed());
 
-        TextView textViewValue = new TextView(this);
-        textViewValue.setText(value);
-        textViewValue.setLayoutParams(rowParams);
+        FloatingActionButton incognito_fab = findViewById(R.id.incognito_fab);
+        incognito_fab.show();
+        incognito_fab.setOnClickListener(click -> showConfirmationDialog());
+    }
 
-        TableRow tableRow = new TableRow(this);
-        tableRow.setLayoutParams(new TableLayout.LayoutParams(TableLayout.LayoutParams.WRAP_CONTENT, TableLayout.LayoutParams.WRAP_CONTENT));
-        tableRow.addView(textViewKey);
-        tableRow.addView(textViewValue);
+    private boolean isDeviceDefinitionValid(String spoofDevice) {
+        PropertiesDeviceInfoProvider deviceInfoProvider = new PropertiesDeviceInfoProvider();
+        deviceInfoProvider.setProperties(new SpoofDeviceManager(this).getProperties(spoofDevice));
+        deviceInfoProvider.setLocaleString(Locale.getDefault().toString());
+        return deviceInfoProvider.isValid();
+    }
 
-        parent.addView(tableRow);
+    private void showConfirmationDialog() {
+        new AlertDialog.Builder(this)
+                .setMessage(R.string.pref_device_to_pretend_to_be_toast)
+                .setTitle(R.string.dialog_title_logout)
+                .setPositiveButton(R.string.action_logout, (dialogInterface, i) -> {
+                    if (!TextUtils.isEmpty(deviceName) && !isDeviceDefinitionValid(deviceName)) {
+                        ContextUtil.toast(this, R.string.error_invalid_device_definition);
+                    } else {
+                        Util.putString(this, PREFERENCE_DEVICE_TO_PRETEND_TO_BE, deviceName);
+                        Util.putInteger(this, PREFERENCE_DEVICE_TO_PRETEND_TO_BE_INDEX, deviceIndex);
+                    }
+                    Util.completeCheckout(this);
+                    dialogInterface.dismiss();
+                    startActivity(new Intent(this, LoginActivity.class));
+                    this.finish();
+                })
+                .setNegativeButton(android.R.string.cancel, null)
+                .show();
     }
 }

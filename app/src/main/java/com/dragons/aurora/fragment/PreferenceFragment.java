@@ -46,10 +46,8 @@ import com.dragons.aurora.Util;
 import com.dragons.aurora.activities.AuroraActivity;
 import com.dragons.aurora.fragment.preference.Blacklist;
 import com.dragons.aurora.fragment.preference.CheckUpdates;
-import com.dragons.aurora.fragment.preference.Device;
 import com.dragons.aurora.fragment.preference.DownloadDirectory;
 import com.dragons.aurora.fragment.preference.InstallationMethod;
-import com.dragons.aurora.fragment.preference.Language;
 
 public class PreferenceFragment extends android.preference.PreferenceFragment {
 
@@ -62,7 +60,9 @@ public class PreferenceFragment extends android.preference.PreferenceFragment {
     public static final String PREFERENCE_BACKGROUND_UPDATE_WIFI_ONLY = "PREFERENCE_BACKGROUND_UPDATE_WIFI_ONLY";
     public static final String PREFERENCE_BACKGROUND_UPDATE_INSTALL = "PREFERENCE_BACKGROUND_UPDATE_INSTALL";
     public static final String PREFERENCE_REQUESTED_LANGUAGE = "PREFERENCE_REQUESTED_LANGUAGE";
+    public static final String PREFERENCE_REQUESTED_LANGUAGE_INDEX = "PREFERENCE_REQUESTED_LANGUAGE_INDEX";
     public static final String PREFERENCE_DEVICE_TO_PRETEND_TO_BE = "PREFERENCE_DEVICE_TO_PRETEND_TO_BE";
+    public static final String PREFERENCE_DEVICE_TO_PRETEND_TO_BE_INDEX = "PREFERENCE_DEVICE_TO_PRETEND_TO_BE_INDEX";
     public static final String PREFERENCE_INSTALLATION_METHOD = "PREFERENCE_INSTALLATION_METHOD";
     public static final String PREFERENCE_NO_IMAGES = "PREFERENCE_NO_IMAGES";
     public static final String PREFERENCE_DOWNLOAD_DIRECTORY = "PREFERENCE_DOWNLOAD_DIRECTORY";
@@ -112,9 +112,7 @@ public class PreferenceFragment extends android.preference.PreferenceFragment {
         setupThemes(getActivity());
         setupSwitches(getActivity());
         drawBlackList();
-        drawLanguages();
         drawUpdatesCheck();
-        drawDevices();
         drawInstallationMethod();
         new DownloadDirectory(this).setPreference((EditTextPreference) findPreference(PREFERENCE_DOWNLOAD_DIRECTORY)).draw();
     }
@@ -141,18 +139,6 @@ public class PreferenceFragment extends android.preference.PreferenceFragment {
         checkUpdatesFragment.setAlsoInstall((CheckBoxPreference) findPreference(PREFERENCE_BACKGROUND_UPDATE_INSTALL));
         checkUpdatesFragment.setAlsoDownload((CheckBoxPreference) findPreference(PREFERENCE_BACKGROUND_UPDATE_DOWNLOAD));
         checkUpdatesFragment.draw();
-    }
-
-    private void drawLanguages() {
-        Language languageFragment = new Language(this);
-        languageFragment.setListPreference((ListPreference) findPreference(PREFERENCE_REQUESTED_LANGUAGE));
-        languageFragment.draw();
-    }
-
-    private void drawDevices() {
-        Device languageFragment = new Device(this);
-        languageFragment.setListPreference((ListPreference) findPreference(PREFERENCE_DEVICE_TO_PRETEND_TO_BE));
-        languageFragment.draw();
     }
 
     private void drawInstallationMethod() {

@@ -141,6 +141,9 @@ public class AuroraActivity extends BaseActivity implements View.OnClickListener
             case R.id.action_settings:
                 startActivity(new Intent(getApplicationContext(), PreferenceActivity.class));
                 break;
+            case R.id.action_spoof:
+                startActivity(new Intent(getApplicationContext(), SpoofActivity.class));
+                break;
         }
     }
 }

@@ -28,7 +28,6 @@ import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -36,6 +35,7 @@ import android.widget.TextView;
 import com.dragons.aurora.CircleTransform;
 import com.dragons.aurora.PlayStoreApiAuthenticator;
 import com.dragons.aurora.R;
+import com.dragons.aurora.Util;
 import com.dragons.aurora.activities.LoginActivity;
 import com.dragons.aurora.task.UserProvidedCredentialsTask;
 import com.github.florent37.shapeofview.shapes.CircleView;
@@ -190,8 +190,7 @@ public class AccountsFragment extends UtilFragment {
                 .setMessage(R.string.dialog_message_logout)
                 .setTitle(R.string.dialog_title_logout)
                 .setPositiveButton(android.R.string.yes, (dialogInterface, i) -> {
-                    checkOut();
-                    new PlayStoreApiAuthenticator(getContext()).logout();
+                    Util.completeCheckout(getContext());
                     dialogInterface.dismiss();
                     getActivity().finish();
                     startActivity(new Intent(getContext(), LoginActivity.class));
