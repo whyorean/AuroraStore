@@ -21,6 +21,7 @@
 
 package com.dragons.aurora.fragment;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -40,6 +41,7 @@ import com.dragons.aurora.R;
 import com.dragons.aurora.SpoofDeviceManager;
 import com.dragons.aurora.Util;
 import com.dragons.aurora.activities.DeviceInfoActivity;
+import com.dragons.aurora.activities.LoginActivity;
 import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
@@ -195,8 +197,7 @@ public class SpoofFragment extends UtilFragment {
                     getContext().startActivity(i);
                 }
                 if (position == 0) {
-                    Util.putString(getContext(), PREFERENCE_DEVICE_TO_PRETEND_TO_BE, "");
-                    Util.putInteger(getContext(), PREFERENCE_DEVICE_TO_PRETEND_TO_BE_INDEX, 0);
+                    showConfirmationDialog();
                 }
             }
 
@@ -239,5 +240,20 @@ public class SpoofFragment extends UtilFragment {
         Util.addToStart((LinkedHashMap<String, String>) languages, "",
                 getActivity().getString(R.string.pref_requested_language_default));
         return languages;
+    }
+
+    private void showConfirmationDialog() {
+        new AlertDialog.Builder(getContext())
+                .setMessage(R.string.pref_device_to_pretend_to_be_toast)
+                .setTitle(R.string.dialog_title_logout)
+                .setPositiveButton(R.string.action_logout, (dialogInterface, i) -> {
+                    Util.putString(getContext(), PREFERENCE_DEVICE_TO_PRETEND_TO_BE, "");
+                    Util.putInteger(getContext(), PREFERENCE_DEVICE_TO_PRETEND_TO_BE_INDEX, 0);
+                    Util.completeCheckout(getContext());
+                    dialogInterface.dismiss();
+                    startActivity(new Intent(getContext(), LoginActivity.class));
+                })
+                .setNegativeButton(android.R.string.cancel, null)
+                .show();
     }
 }
