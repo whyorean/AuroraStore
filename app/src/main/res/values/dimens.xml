@@ -33,7 +33,7 @@
 
     <!-- Appbar dimensions -->
     <dimen name="appbar_bar_height">86dp</dimen>
-    <dimen name="appbar_bar_height_margin">48dp</dimen>
+    <dimen name="appbar_bar_height_margin">50dp</dimen>
     <dimen name="appbar_bar_elevation">10dp</dimen>
 
     <dimen name="appbar_icon_padding">15dp</dimen>

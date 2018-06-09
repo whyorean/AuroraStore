@@ -26,6 +26,7 @@ import android.support.annotation.MenuRes;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomSheetBehavior;
 import android.support.v4.widget.NestedScrollView;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
@@ -38,10 +39,9 @@ import com.dragons.aurora.R;
 public class CustomAppBar extends NestedScrollView {
 
     public static final String MORE_ICON_TAG = "more_icon_tag";
-
+    private static final int sColumnWidth = 60;
     private BottomSheetBehavior bottomSheetBehavior;
     private ImageView showLessMore;
-
     private OnClickListener onMoreClickListener = new OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -53,7 +53,6 @@ public class CustomAppBar extends NestedScrollView {
             }
         }
     };
-
     private BottomSheetBehavior.BottomSheetCallback bottomSheetCallback = new BottomSheetBehavior.BottomSheetCallback() {
         @Override
         public void onStateChanged(@NonNull View bottomSheet, int newState) {
@@ -106,7 +105,6 @@ public class CustomAppBar extends NestedScrollView {
     public void setSecondaryMenu(@MenuRes int menuRes, OnClickListener onClickListener) {
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.secondary_menu_items_recyler);
         recyclerView.setNestedScrollingEnabled(false);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
         MenuSecondaryItemsAdapter menuSecondaryItemsAdapter = new MenuSecondaryItemsAdapter(getContext(), menuRes, onClickListener);
         recyclerView.setAdapter(menuSecondaryItemsAdapter);
     }
@@ -127,6 +125,5 @@ public class CustomAppBar extends NestedScrollView {
     public void expand() {
         bottomSheetBehavior.setState(BottomSheetBehavior.PEEK_HEIGHT_AUTO);
     }
-
 }
 

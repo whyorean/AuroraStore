@@ -139,6 +139,7 @@
                         android:layout_marginTop="10dp"
                         android:layout_toEndOf="@+id/device_avatar"
                         android:ellipsize="end"
+                        android:textAlignment="viewStart"
                         android:fontFamily="@font/google_sans_bold"
                         android:singleLine="true"
                         android:textColor="?android:attr/textColorPrimary"

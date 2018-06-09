@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Aurora Store
   ~ Copyright (C) 2018  Rahul Kumar Patel <whyorean@gmail.com>
   ~
@@ -52,8 +51,8 @@
                 android:id="@+id/nav_items_recycler"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
                 android:layout_marginEnd="4dp"
+                android:layout_marginStart="4dp"
                 android:gravity="fill_horizontal"
                 android:orientation="horizontal"
                 app:layoutManager="android.support.v7.widget.LinearLayoutManager" />
@@ -61,22 +60,24 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height=".8dp"
+                android:layout_marginEnd="25dp"
                 android:layout_marginStart="25dp"
                 android:layout_marginTop="5dp"
-                android:layout_marginEnd="25dp"
                 android:background="@drawable/list_divider" />
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/secondary_menu_items_recyler"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="15dp"
                 android:layout_marginBottom="10dp"
-                android:orientation="horizontal"
-                android:paddingStart="8dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
+                android:orientation="vertical"
                 android:paddingEnd="8dp"
-                app:layoutManager="android.support.v7.widget.LinearLayoutManager" />
+                android:paddingStart="8dp"
+                app:layoutManager="android.support.v7.widget.GridLayoutManager"
+                app:spanCount="2" />
         </LinearLayout>
     </com.github.florent37.shapeofview.shapes.RoundRectView>
 </RelativeLayout>
