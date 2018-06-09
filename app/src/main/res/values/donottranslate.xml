@@ -34,18 +34,4 @@
     <string name="details_installs" translatable="false">"%1$s"</string>
     <string name="details_rating" translatable="false">"%1$.1f"</string>
     <string name="details_rating_specific" translatable="false">"%1$d  ★  %2$d"</string>
-    <string name="dev_name1" translatable="false">"Rahul Patel"</string>
-    <string name="dev_mail1" translatable="false">"whyorean@gmail.com"</string>
-    <string name="dev_country1" translatable="false">"Bangalore, India"</string>
-    <string name="dev_name2" translatable="false">"Sergey Yeriomin"</string>
-    <string name="dev_mail2" translatable="false">"yalp.store.dev@gmail.com"</string>
-    <string name="dev_country2" translatable="false">"Saint-Petersburg, Russia"</string>
-    <string name="dev_name3">Iacob Ionut</string>
-    <string name="dev_email3">paulionut2003@gmail.com</string>
-    <string name="dev_country3">Bacau, Romania</string>
-    <string name="dev1_imgURL">"https://avatars2.githubusercontent.com/u/21051221"</string>
-    <string name="dev2_imgURL">"https://avatars0.githubusercontent.com/u/554737"</string>
-    <string name="linkGit">"https://github.com/TheAurora/Aurora-Store"</string>
-    <string name="linkXDA">"https://forum.xda-developers.com/android/apps-games/galaxy-playstore-alternative-t3739733"</string>
-    <string name="linkTelegram">"https://t.me/AuroraOfficial"</string>
 </resources>

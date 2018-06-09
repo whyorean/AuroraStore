@@ -23,10 +23,15 @@
     <string name="about_app">Aurora is an open source alternative to Play Store, it lets you download apps from Play Store. It can search for updates of installed apps and lets you search for other apps.</string>
     <string name="about_contributors">Contributors</string>
     <string name="about_devs">Developers</string>
+    <string name="about_fdroid">F-Droid</string>
     <string name="about_github">GitHub</string>
+    <string name="about_gitlab">GitLab</string>
+    <string name="about_gitlab_summary">Get AuroraStore source code from Aurora OSS on GitLab.</string>
     <string name="about_opensource">Open source libraries</string>
     <string name="about_telegram">Telegram</string>
+    <string name="about_telegram_summary">Join Aurora Support group for discussions or suggestions.</string>
     <string name="about_xda">Dev Thread</string>
+    <string name="about_xda_summary">See AuroraStore XDA thread for discussions or suggestions.</string>
     <string name="account_dummy_email">anonymous@anonymous</string>
     <string name="acc_dummy">Login as Anonymous</string>
     <string name="acc_dummy_summary">Login with anonymous credentials provided by Aurora Store, you would not be able to access your app purchases with dummy accounts.</string>
@@ -138,7 +143,7 @@
     <string name="details_run">Open</string>
     <string name="details_saved_in_downloads">Saved in your Downloads folder</string>
     <string name="details_share">Share</string>
-    <string name="details_signature_mismatch">The new version is signed with a different key to the old one. To install the new version, the old one must be uninstalled first. Please do this and try again. (Note that uninstalling will erase any internal data stored by the application)</string>
+    <string name="details_signature_mismatch">The new version is signed with a different title to the old one. To install the new version, the old one must be uninstalled first. Please do this and try again. (Note that uninstalling will erase any internal data stored by the application)</string>
     <string name="details_size">"%1$s"</string>
     <string name="details_uninstall">Uninstall</string>
     <string name="details_update">Update</string>

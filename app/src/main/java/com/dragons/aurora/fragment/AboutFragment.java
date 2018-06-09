@@ -21,26 +21,28 @@
 
 package com.dragons.aurora.fragment;
 
-import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.dragons.aurora.CircleTransform;
 import com.dragons.aurora.R;
-import com.squareup.picasso.Picasso;
+import com.dragons.aurora.view.LinkCard;
 
 public class AboutFragment extends UtilFragment {
 
-    private View v;
+    private final int linkIcons[] = {
+            R.drawable.ic_gitlab,
+            R.drawable.ic_xda,
+            R.drawable.ic_telegram
+    };
+    private View view;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -50,65 +52,41 @@ public class AboutFragment extends UtilFragment {
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        if (v != null) {
-            if ((ViewGroup) v.getParent() != null)
-                ((ViewGroup) v.getParent()).removeView(v);
-            return v;
+        if (view != null) {
+            if ((ViewGroup) view.getParent() != null)
+                ((ViewGroup) view.getParent()).removeView(view);
+            return view;
         }
-        v = inflater.inflate(R.layout.app_abt_inc, container, false);
+        view = inflater.inflate(R.layout.app_abt_inc, container, false);
 
-        getActivity().setTitle(R.string.action_about);
+        ((TextView) view.findViewById(R.id.aurora_title)).setText(R.string.action_about);
+        ((ImageView) view.findViewById(R.id.toolbar_back)).setOnClickListener(click -> getActivity().onBackPressed());
 
         drawVersion();
-        drawActions();
-        drawDevCard(R.string.dev1_imgURL, (ImageView) v.findViewById(R.id.dev1_avatar));
-        drawDevCard(R.string.dev2_imgURL, (ImageView) v.findViewById(R.id.dev2_avatar));
-        drawList(getResources().getStringArray(R.array.contributors), ((TextView) v.findViewById(R.id.contributors)));
-        drawList(getResources().getStringArray(R.array.opensource), ((TextView) v.findViewById(R.id.opensource)));
-
-        return v;
+        drawLinks();
+        return view;
     }
 
     private void drawVersion() {
         try {
             PackageInfo packageInfo = getActivity().getPackageManager().getPackageInfo(getActivity().getPackageName(), 0);
-            ((TextView) v.findViewById(R.id.app_version)).setText(packageInfo.versionName + "." + packageInfo.versionCode);
+            ((TextView) view.findViewById(R.id.app_version)).setText(packageInfo.versionName + "." + packageInfo.versionCode);
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }
     }
 
-    private void drawActions() {
-        final Intent browserIntent = new Intent(Intent.ACTION_VIEW);
-        ((TextView) v.findViewById(R.id.github)).setOnClickListener(v -> {
-            browserIntent.setData(Uri.parse(getResources().getString(R.string.linkGit)));
-            startActivity(browserIntent);
-        });
-        ((TextView) v.findViewById(R.id.xda)).setOnClickListener(v -> {
-            browserIntent.setData(Uri.parse(getResources().getString(R.string.linkXDA)));
-            startActivity(browserIntent);
-        });
-        ((TextView) v.findViewById(R.id.telegram)).setOnClickListener(v -> {
-            browserIntent.setData(Uri.parse(getResources().getString(R.string.linkTelegram)));
-            startActivity(browserIntent);
-        });
-    }
-
-    private void drawDevCard(int URL, ImageView imageView) {
-        Picasso.with(this.getActivity())
-                .load(getResources().getString(URL))
-                .placeholder(ContextCompat.getDrawable(getContext(),R.drawable.ic_user_placeholder))
-                .transform(new CircleTransform())
-                .into(imageView);
-    }
-
-    private void drawList(String[] List, TextView tv) {
-        StringBuilder builder = new StringBuilder();
-        for (String s : List) {
-            builder.append("◉  ");
-            builder.append(s);
-            builder.append("\n");
-        }
-        (tv).setText(builder.toString().trim());
+    public void drawLinks() {
+        LinearLayout linkContainer = view.findViewById(R.id.linkContainer);
+        String[] linkURLS = getResources().getStringArray(R.array.linkURLS);
+        String[] linkTitles = getResources().getStringArray(R.array.linkTitles);
+        String[] linkSummary = getResources().getStringArray(R.array.linkSummary);
+        int index = 0;
+        for (String URL : linkURLS)
+            linkContainer.addView(new LinkCard(getContext(),
+                    URL,
+                    linkTitles[index],
+                    linkSummary[index],
+                    linkIcons[index++]));
     }
 }

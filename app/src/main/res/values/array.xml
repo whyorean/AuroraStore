@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Aurora Store
   ~ Copyright (C) 2018  Rahul Kumar Patel <whyorean@gmail.com>
   ~
@@ -140,5 +139,20 @@
         <item>Light</item>
         <item>Dark</item>
         <item>Black</item>
+    </string-array>
+    <string-array name="linkURLS">
+        <item>"https://gitlab.com/AuroraOSS/AuroraStore"</item>
+        <item>"https://forum.xda-developers.com/android/apps-games/galaxy-playstore-alternative-t3739733"</item>
+        <item>"https://t.me/AuroraOfficial"</item>
+    </string-array>
+    <string-array name="linkTitles">
+        <item>"GitLab"</item>
+        <item>"XDA Developers"</item>
+        <item>"Telegram"</item>
+    </string-array>
+    <string-array name="linkSummary">
+        <item>@string/about_gitlab_summary</item>
+        <item>@string/about_xda_summary</item>
+        <item>@string/about_telegram_summary</item>
     </string-array>
 </resources>

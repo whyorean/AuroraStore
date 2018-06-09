@@ -1,0 +1,59 @@
+<!--
+  ~ Aurora Store
+  ~ Copyright (C) 2018  Rahul Kumar Patel <whyorean@gmail.com>
+  ~
+  ~ Yalp Store
+  ~ Copyright (C) 2018 Sergey Yeriomin <yeriomin@gmail.com>
+  ~
+  ~ Aurora Store (a fork of Yalp Store )is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 2 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ Aurora Store is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with Aurora Store.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportHeight="453.67966"
+    android:viewportWidth="492.50943">
+    <path
+        android:fillColor="#fc6d26"
+        android:fillType="evenOdd"
+        android:pathData="M491.6,259.4l-27.6,-84.8L409.4,6.5c-2.8,-8.6 -15,-8.6 -17.9,0l-54.6,168.1H155.6l-54.6,-168.1c-2.8,-8.6 -15,-8.6 -17.9,0L28.5,174.6 0.9,259.4c-2.5,7.7 0.2,16.2 6.8,21l238.5,173.3 238.5,-173.3c6.6,-4.8 9.3,-13.3 6.8,-21" />
+    <path
+        android:fillColor="#e24329"
+        android:fillType="evenOdd"
+        android:pathData="M246.3,453.7l90.7,-279.1h-181.4z" />
+    <path
+        android:fillColor="#fc6d26"
+        android:fillType="evenOdd"
+        android:pathData="M246.3,453.7l-90.7,-279.1h-127.1z" />
+    <path
+        android:fillColor="#fca326"
+        android:fillType="evenOdd"
+        android:pathData="M28.5,174.6L0.9,259.4c-2.5,7.7 0.2,16.2 6.8,21l238.5,173.3z" />
+    <path
+        android:fillColor="#e24329"
+        android:fillType="evenOdd"
+        android:pathData="M28.5,174.6h127.1L101,6.5c-2.8,-8.6 -15,-8.6 -17.9,0z" />
+    <path
+        android:fillColor="#fc6d26"
+        android:fillType="evenOdd"
+        android:pathData="M246.3,453.7l90.7,-279.1h127.1z" />
+    <path
+        android:fillColor="#fca326"
+        android:fillType="evenOdd"
+        android:pathData="M464,174.6l27.6,84.8c2.5,7.7 -0.2,16.2 -6.8,21L246.3,453.7z" />
+    <path
+        android:fillColor="#e24329"
+        android:fillType="evenOdd"
+        android:pathData="M464,174.6h-127.1L391.6,6.5c2.8,-8.6 15,-8.6 17.9,0z" />
+</vector>
