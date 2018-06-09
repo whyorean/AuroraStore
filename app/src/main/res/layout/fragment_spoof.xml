@@ -74,7 +74,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:fontFamily="@font/google_sans_bold"
-                android:text="@string/app_name"
+                android:text="Aurora"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="22sp" />

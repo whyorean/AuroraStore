@@ -20,7 +20,7 @@
   -->
 
 <resources>
-    <string name="app_name" translatable="false">Aurora</string>
+    <string name="app_name" translatable="false">Aurora Store</string>
     <string name="expansion_file_main" translatable="false">"%1$s - Main expansion"</string>
     <string name="expansion_file_patch" translatable="false">"%1$s - Secondary expansion"</string>
     <string name="two_items" translatable="false">"%1$s %2$s"</string>
