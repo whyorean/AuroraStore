@@ -24,6 +24,7 @@ package com.dragons.aurora.fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -95,7 +96,7 @@ public class HomeFragment extends UtilFragment {
         if (isGoogle()) {
             Picasso.with(getActivity())
                     .load(PreferenceFragment.getString(getActivity(), "GOOGLE_URL"))
-                    .placeholder(R.drawable.ic_user_placeholder)
+                    .placeholder(ContextCompat.getDrawable(getContext(),R.drawable.ic_user_placeholder))
                     .transform(new CircleTransform())
                     .into(adtb.getAvatar_icon());
         } else {

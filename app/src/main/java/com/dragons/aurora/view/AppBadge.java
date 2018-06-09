@@ -22,6 +22,7 @@
 package com.dragons.aurora.view;
 
 import android.content.Context;
+import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
@@ -76,7 +77,7 @@ public abstract class AppBadge extends ListItem {
             Picasso
                     .with(view.getContext())
                     .load(imageSource.getUrl())
-                    .placeholder(R.drawable.ic_placeholder)
+                    .placeholder(ContextCompat.getDrawable(view.getContext(),R.drawable.ic_placeholder))
                     .into(imageView);
         }
     }

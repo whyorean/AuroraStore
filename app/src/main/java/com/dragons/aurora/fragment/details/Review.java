@@ -22,6 +22,7 @@
 package com.dragons.aurora.fragment.details;
 
 import android.preference.PreferenceManager;
+import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
@@ -147,7 +148,7 @@ public class Review extends AbstractHelper {
         Picasso
                 .with(fragment.getActivity())
                 .load(review.getUserPhotoUrl())
-                .placeholder(R.drawable.ic_user_placeholder)
+                .placeholder(ContextCompat.getDrawable(fragment.getContext(),R.drawable.ic_user_placeholder))
                 .transform(new CircleTransform())
                 .into((ImageView) reviewLayout.findViewById(R.id.avatar));
 

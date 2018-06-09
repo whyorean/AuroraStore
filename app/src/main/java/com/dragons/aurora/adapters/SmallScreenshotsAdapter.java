@@ -25,6 +25,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.support.annotation.NonNull;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -61,7 +62,7 @@ public class SmallScreenshotsAdapter extends RecyclerView.Adapter<SmallScreensho
         String url = ssholder.url.get(position);
         Picasso.with(context)
                 .load(url)
-                .placeholder(R.drawable.screenshot_bg)
+                .placeholder(ContextCompat.getDrawable(context,R.drawable.screenshot_bg))
                 .into(holder.ss_image);
         holder.ss_image.setOnClickListener(v -> {
             Intent intent = new Intent(context, FullscreenImageActivity.class);

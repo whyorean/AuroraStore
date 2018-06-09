@@ -27,6 +27,7 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -96,7 +97,7 @@ public class AboutFragment extends UtilFragment {
     private void drawDevCard(int URL, ImageView imageView) {
         Picasso.with(this.getActivity())
                 .load(getResources().getString(URL))
-                .placeholder(R.drawable.ic_user_placeholder)
+                .placeholder(ContextCompat.getDrawable(getContext(),R.drawable.ic_user_placeholder))
                 .transform(new CircleTransform())
                 .into(imageView);
     }

@@ -25,6 +25,7 @@ import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -180,7 +181,7 @@ public class AccountsFragment extends UtilFragment {
     private void loadAvatar(String Url) {
         Picasso.with(getActivity())
                 .load(Url)
-                .placeholder(R.drawable.ic_dummy_avatar)
+                .placeholder(ContextCompat.getDrawable(getContext(),R.drawable.ic_dummy_avatar))
                 .transform(new CircleTransform())
                 .into(((ImageView) v.findViewById(R.id.accounts_AvatarG)));
     }
