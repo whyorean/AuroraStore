@@ -21,3 +21,7 @@ In **Aurora** I will try my best to solve this issues, and provided a clean mate
 * [YalpStore](https://github.com/yeriomin/YalpStore)
 * [AppCrawler](https://github.com/Akdeniz/google-play-crawler)
 * [Raccoon](https://github.com/onyxbits/raccoon4/)
+
+[<img src="https://f-droid.org/badge/get-it-on.png"
+      alt="Get it on F-Droid"
+      height="80">](https://f-droid.org/packages/com.dragons.aurora/)
