@@ -37,8 +37,6 @@ public class CategoryAppsActivity extends AuroraActivity {
 
     static public Intent start(Context context, String categoryId) {
         Intent intent = new Intent(context, CategoryAppsActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
-        intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
         intent.putExtra(INTENT_CATEGORY_ID, categoryId);
         return intent;
     }

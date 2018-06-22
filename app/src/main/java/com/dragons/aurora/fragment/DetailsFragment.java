@@ -28,6 +28,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.dragons.aurora.PlayStoreApiAuthenticator;
 import com.dragons.aurora.R;
@@ -69,6 +70,14 @@ public class DetailsFragment extends DetailsAppTaskHelper {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.details_activity_layout, container, false);
+        Button retry_details = view.findViewById(R.id.ohhSnap_retry);
+        retry_details.setOnClickListener(click -> {
+            if (isLoggedIn() && isConnected(getContext())) {
+                hide(view, R.id.ohhSnap);
+                show(view, R.id.progress);
+                fetchDetails();
+            }
+        });
         return view;
     }
 
@@ -88,22 +97,19 @@ public class DetailsFragment extends DetailsAppTaskHelper {
     }
 
     @Override
-    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-        super.onCreateContextMenu(menu, v, menuInfo);
-        new DownloadOptions((AuroraActivity) this.getActivity(), app).inflate(menu);
-    }
-
-    @Override
-    public boolean onContextItemSelected(MenuItem item) {
-        return new DownloadOptions((AuroraActivity) this.getActivity(), app).onContextItemSelected(item);
-    }
-
-    @Override
     public void onPause() {
         if (null != downloadOrInstallFragment) {
             downloadOrInstallFragment.unregisterReceivers();
         }
         super.onPause();
+    }
+
+    @Override
+    public void onDestroyView() {
+        if (null != downloadOrInstallFragment) {
+            downloadOrInstallFragment.unregisterReceivers();
+        }
+        super.onDestroyView();
     }
 
     @Override
@@ -118,8 +124,12 @@ public class DetailsFragment extends DetailsAppTaskHelper {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(app -> {
                     DetailsFragment.app = app;
-                    this.redrawDetails(app);
-                }, this::processException);
+                    redrawDetails(app);
+                }, err -> {
+                    hide(view, R.id.progress);
+                    show(view, R.id.ohhSnap);
+                    processException(err);
+                });
     }
 
     public void redrawDetails(App app) {

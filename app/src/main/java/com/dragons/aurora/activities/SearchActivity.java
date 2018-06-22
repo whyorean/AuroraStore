@@ -35,6 +35,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.dragons.aurora.R;
 import com.dragons.aurora.adapters.SingleDownloadsAdapter;
@@ -50,7 +51,7 @@ public class SearchActivity extends AuroraActivity implements SingleDownloadsAda
 
     private String query;
     private FloatingActionButton filter_fab;
-    private RoundRectView filter_sheet;
+    private LinearLayout filter_sheet;
 
     private BottomSheetBehavior filter_Behavior;
     private SingleDownloadsAdapter singleDownloadAdapter;

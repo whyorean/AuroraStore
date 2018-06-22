@@ -75,15 +75,18 @@ public class SearchHistoryTask extends ExceptionTask {
     }
 
     public void addRecentApps(String packageName) {
-        Set<String> set = readFromPref("APP_HISTORY");
+        ArrayList<String> oldList = getAppHistoryList();
+        oldList.add(packageName);
+        Set<String> newSet = new HashSet<>();
+        newSet.addAll(oldList);
+        writeToPref("APP_HISTORY", newSet);
+    }
 
-        ArrayList<String> currList = new ArrayList<>();
-        currList.addAll(set);
-        currList.add(packageName);
-
-        set.clear();
-        set.addAll(currList);
-        writeToPref("APP_HISTORY", set);
+    public ArrayList<String> getAppHistoryList() {
+        Set<String> oldSet = readFromPref("APP_HISTORY");
+        ArrayList<String> oldList = new ArrayList<>();
+        oldList.addAll(oldSet);
+        return oldList;
     }
 
     public ArrayList<String> getHistoryList() {

@@ -36,6 +36,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.dragons.aurora.CategoryManager;
 import com.dragons.aurora.R;
@@ -62,7 +63,7 @@ public class CategoryAppsFragment extends CategoryAppsTask implements SingleDown
     @BindView(R.id.filter_fab)
     FloatingActionButton filter_fab;
     @BindView(R.id.filter_sheet)
-    RoundRectView filter_sheet;
+    LinearLayout filter_sheet;
 
     BottomSheetBehavior filter_Behavior;
     CategoryFilterAdapter categoryFilterAdapter;

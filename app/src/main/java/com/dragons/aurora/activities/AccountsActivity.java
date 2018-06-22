@@ -47,7 +47,6 @@ public class AccountsActivity extends AuroraActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        startActivity(new Intent(this, AuroraActivity.class));
         this.finish();
     }
 

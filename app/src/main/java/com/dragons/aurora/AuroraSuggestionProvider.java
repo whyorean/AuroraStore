@@ -122,6 +122,6 @@ public class AuroraSuggestionProvider extends ContentProvider {
     }
 
     private Object[] constructSuggestionRow(SearchSuggestEntry entry, int id) {
-        return new Object[]{id, entry.getSuggestedQuery(), entry.getSuggestedQuery(), R.drawable.ic_update};
+        return new Object[]{id, entry.getSuggestedQuery(), entry.getSuggestedQuery(), R.drawable.ic_search};
     }
 }

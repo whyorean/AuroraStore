@@ -133,7 +133,7 @@ public class SearchFragment extends SearchHistoryTask implements HistoryItemTouc
                 searchView.setIconified(true);
                 searchView.clearFocus();
                 setQuery(query);
-                return false;
+                return true;
             }
         });
 
@@ -149,7 +149,7 @@ public class SearchFragment extends SearchHistoryTask implements HistoryItemTouc
                 cursor.moveToPosition(position);
                 String suggestion = cursor.getString(2);
                 searchView.setQuery(suggestion, true);
-                return false;
+                return true;
             }
         });
     }

@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Aurora Store
   ~ Copyright (C) 2018  Rahul Kumar Patel <whyorean@gmail.com>
   ~
@@ -20,38 +19,32 @@
   ~ along with Aurora Store.  If not, see <http://www.gnu.org/licenses/>.
   -->
 
-<com.github.florent37.shapeofview.shapes.RoundRectView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/filter_sheet"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="15dp"
-    android:layout_marginBottom="15dp"
-    android:elevation="10dp"
+    android:background="?android:attr/panelBackground"
     android:nestedScrollingEnabled="false"
     android:orientation="vertical"
     app:behavior_hideable="true"
     app:behavior_peekHeight="0dp"
-    app:layout_behavior="android.support.design.widget.BottomSheetBehavior"
-    app:shape_roundRect_topLeftRadius="20dp"
-    app:shape_roundRect_topRightRadius="20dp">
+    app:layout_behavior="android.support.design.widget.BottomSheetBehavior">
 
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="?android:attr/panelBackground"
-        android:padding="5dp">
+        android:layout_height="wrap_content">
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:padding="5dp">
 
             <RelativeLayout
                 android:id="@+id/filter_top"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp">
+                android:layout_marginTop="5dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -87,8 +80,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
-                    android:layout_marginStart="10dp"
                     android:layout_marginBottom="5dp"
+                    android:layout_marginStart="10dp"
                     android:fontFamily="@font/google_sans_bold"
                     android:text="@string/action_filter_misc"
                     android:textAllCaps="true"
@@ -138,8 +131,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
-                    android:layout_marginStart="10dp"
                     android:layout_marginBottom="5dp"
+                    android:layout_marginStart="10dp"
                     android:fontFamily="@font/google_sans_bold"
                     android:text="@string/action_filter_build"
                     android:textAllCaps="true"
@@ -170,9 +163,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/filter_cat2"
+                android:layout_marginBottom="5dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginBottom="5dp"
                 android:fontFamily="@font/google_sans_bold"
                 android:text="@string/action_filter_rating"
                 android:textAllCaps="true"
@@ -196,9 +189,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/filter_ratings"
+                android:layout_marginBottom="5dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginBottom="5dp"
                 android:fontFamily="@font/google_sans_bold"
                 android:text="@string/action_filter_downloads"
                 android:textAllCaps="true"
@@ -221,7 +214,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/filter_downloads"
-                android:layout_margin="10dp">
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp">
 
                 <Button
                     android:id="@+id/filter_apply"
@@ -245,4 +239,4 @@
 
     </android.support.v4.widget.NestedScrollView>
 
-</com.github.florent37.shapeofview.shapes.RoundRectView>
+</LinearLayout>

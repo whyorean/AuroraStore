@@ -25,7 +25,6 @@
     android:id="@+id/adtoolbar_layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@android:color/transparent"
     android:orientation="vertical"
     app:layout_scrollFlags="scroll|exitUntilCollapsed|enterAlways|snap">
 
@@ -33,7 +32,6 @@
         android:id="@+id/adtb_head"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?android:attr/colorBackground"
         android:paddingBottom="12dp">
 
         <ImageView

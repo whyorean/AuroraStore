@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Aurora Store
   ~ Copyright (C) 2018  Rahul Kumar Patel <whyorean@gmail.com>
   ~
@@ -24,6 +23,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.dragons.aurora"
     android:installLocation="internalOnly">
+
+    <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:resizeable="true"
+        android:smallScreens="true"
+        android:xlargeScreens="true" />
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -57,8 +64,7 @@
 
         <activity
             android:name=".activities.SearchActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize|locale"
-            android:launchMode="singleInstance">
+            android:configChanges="orientation">
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
@@ -91,31 +97,24 @@
 
         <activity
             android:name=".activities.CategoryListActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize|locale"
-            android:launchMode="singleInstance" />
+            android:configChanges="orientation" />
 
         <activity
             android:name=".activities.CategoryAppsActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize|locale"
-            android:launchMode="singleInstance"
-            android:windowSoftInputMode="adjustPan" />
+            android:configChanges="orientation" />
 
         <activity
             android:name=".activities.ManualDownloadActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize|locale"
-            android:label="@string/action_manual"
-            android:launchMode="singleInstance" />
+            android:configChanges="orientation"
+            android:label="@string/action_manual" />
 
         <activity
             android:name=".activities.DeviceInfoActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize|locale"
-            android:launchMode="singleInstance" />
+            android:configChanges="orientation" />
 
         <activity
             android:name=".activities.AuroraActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize|locale"
-            android:launchMode="singleInstance"
-            android:windowSoftInputMode="adjustPan">
+            android:configChanges="orientation">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -134,7 +133,7 @@
 
         <activity
             android:name=".activities.DetailsActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize|locale">
+            android:configChanges="orientation">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
@@ -160,27 +159,27 @@
 
         <activity
             android:name=".activities.FullscreenImageActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize|locale" />
+            android:configChanges="orientation" />
 
         <activity
             android:name=".activities.AccountsActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize|locale" />
+            android:configChanges="orientation" />
 
         <activity
             android:name=".activities.PreferenceActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize|locale" />
+            android:configChanges="orientation" />
 
         <activity
             android:name=".activities.SpoofActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize|locale" />
+            android:configChanges="orientation" />
 
         <activity
             android:name=".activities.AboutActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize|locale" />
+            android:configChanges="orientation" />
 
         <activity
             android:name=".activities.LoginActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize|locale" />
+            android:configChanges="orientation" />
 
         <provider
             android:name="com.dragons.aurora.FileProvider"

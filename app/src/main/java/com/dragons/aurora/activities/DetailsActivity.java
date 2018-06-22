@@ -37,8 +37,6 @@ public class DetailsActivity extends AuroraActivity {
 
     static public Intent getDetailsIntent(Context context, String packageName) {
         Intent intent = new Intent(context, DetailsActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
-        intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
         intent.putExtra(DetailsActivity.INTENT_PACKAGE_NAME, packageName);
         return intent;
     }

@@ -22,7 +22,6 @@
 package com.dragons.aurora.fragment.details;
 
 import android.preference.PreferenceManager;
-import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,7 +30,6 @@ import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
-import com.dragons.aurora.CircleTransform;
 import com.dragons.aurora.PlayStoreApiAuthenticator;
 import com.dragons.aurora.R;
 import com.dragons.aurora.ReviewStorageIterator;
@@ -66,7 +64,7 @@ public class Review extends AbstractHelper {
 
         TextView viewHeader = fragment.getActivity().findViewById(R.id.review_header);
         LinearLayout viewContainer = fragment.getActivity().findViewById(R.id.reviews_container);
-        show(fragment.getView(),R.id.rev_card);
+        show(fragment.getView(), R.id.rev_card);
         viewHeader.setOnClickListener(v -> {
             boolean isExpanded = viewContainer.getVisibility() == View.VISIBLE;
             if (isExpanded) {
@@ -79,7 +77,7 @@ public class Review extends AbstractHelper {
         });
 
         initReviewListControls();
-
+        ((RatingBar) fragment.getActivity().findViewById(R.id.average_rating_star)).setRating(app.getRating().getAverage() / 5.0f);
         setText(fragment.getView(), R.id.average_rating, R.string.details_rating, app.getRating().getAverage());
         for (int starNum = 1; starNum <= 5; starNum++) {
             setText(fragment.getView(), averageStarIds[starNum - 1], R.string.details_rating_specific, starNum, app.getRating().getStars(starNum));
@@ -131,12 +129,14 @@ public class Review extends AbstractHelper {
     }
 
     public void showReviews(List<com.dragons.aurora.model.Review> reviews) {
-        fragment.getActivity().findViewById(R.id.reviews_previous).setVisibility(iterator.hasPrevious() ? View.VISIBLE : View.INVISIBLE);
-        fragment.getActivity().findViewById(R.id.reviews_next).setVisibility(iterator.hasNext() ? View.VISIBLE : View.INVISIBLE);
-        LinearLayout listView = (LinearLayout) fragment.getActivity().findViewById(R.id.reviews_list);
-        listView.removeAllViews();
-        for (com.dragons.aurora.model.Review review : reviews) {
-            addReviewToList(review, listView);
+        if (fragment.getActivity() != null) {
+            fragment.getActivity().findViewById(R.id.reviews_previous).setVisibility(iterator.hasPrevious() ? View.VISIBLE : View.INVISIBLE);
+            fragment.getActivity().findViewById(R.id.reviews_next).setVisibility(iterator.hasNext() ? View.VISIBLE : View.INVISIBLE);
+            LinearLayout listView = (LinearLayout) fragment.getActivity().findViewById(R.id.reviews_list);
+            listView.removeAllViews();
+            for (com.dragons.aurora.model.Review review : reviews) {
+                addReviewToList(review, listView);
+            }
         }
     }
 
@@ -162,8 +162,7 @@ public class Review extends AbstractHelper {
         Picasso
                 .with(fragment.getActivity())
                 .load(review.getUserPhotoUrl())
-                .placeholder(ContextCompat.getDrawable(fragment.getContext(), R.drawable.ic_user_placeholder))
-                .transform(new CircleTransform())
+                .placeholder(R.color.transparent)
                 .into((ImageView) reviewLayout.findViewById(R.id.avatar));
 
         parent.addView(reviewLayout);

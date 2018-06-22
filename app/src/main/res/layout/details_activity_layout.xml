@@ -25,6 +25,49 @@
     android:layout_height="match_parent"
     android:background="@android:color/transparent">
 
+    <RelativeLayout
+        android:id="@+id/ohhSnap"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_above="@+id/ohhSnap_txt"
+            android:layout_centerHorizontal="true"
+            android:alpha=".75"
+            android:src="@drawable/ic_err" />
+
+        <TextView
+            android:id="@+id/ohhSnap_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/google_sans"
+            android:text="@string/ohh_snap_text"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/ohhSnap_retry"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:layout_below="@+id/ohhSnap_txt"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/button_positive"
+            android:fontFamily="@font/google_sans"
+            android:maxLines="1"
+            android:padding="5dp"
+            android:text="@string/ohh_snap_retry"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="12sp" />
+    </RelativeLayout>
+
     <com.dragons.aurora.view.CustomNestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -118,16 +161,6 @@
 
                         <!-- Action : Download, Update, Uninstall -->
                         <include layout="@layout/app_actions_inc" />
-
-                        <ImageView
-                            android:id="@+id/ratingLabelImg"
-                            android:layout_width="18dp"
-                            android:layout_height="18dp"
-                            android:layout_gravity="end|bottom"
-                            android:layout_marginStart="5dp"
-                            android:alpha="0.7"
-                            android:padding="2dp"
-                            android:src="@drawable/ic_audience" />
 
                     </LinearLayout>
 

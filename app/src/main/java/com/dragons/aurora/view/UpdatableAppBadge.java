@@ -217,12 +217,13 @@ public class UpdatableAppBadge extends AppBadge {
     private void getPalette(Bitmap bitmap) {
         Palette.from(bitmap)
                 .generate(palette -> {
-                    paintButton(palette.getDarkVibrantColor(Color.DKGRAY), update);
-                    paintButton(palette.getDarkVibrantColor(Color.DKGRAY), install);
+                    int color = palette.getDarkVibrantColor(palette.getDominantColor(Color.DKGRAY));
+                    paintButton(color, update);
+                    paintButton(color, install);
                     if (!Util.isDark(context)) {
-                        paintTextView(palette.getDarkVibrantColor(Color.DKGRAY), changes);
-                        paintLayout(palette.getDarkVibrantColor(Color.DKGRAY), R.id.view_background);
-                        paintLLayout(palette.getDarkVibrantColor(Color.DKGRAY), R.id.changes_container);
+                        paintTextView(color, changes);
+                        paintLayout(color, R.id.view_background);
+                        paintLLayout(color, R.id.changes_container);
                     }
                 });
     }

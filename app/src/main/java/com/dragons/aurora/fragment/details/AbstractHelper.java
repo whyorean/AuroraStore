@@ -62,7 +62,8 @@ public abstract class AbstractHelper {
     }
 
     protected void setText(View v, int viewId, int stringId, Object... text) {
-        setText(v, viewId, v.getResources().getString(stringId, text));
+        if (v != null)
+            setText(v, viewId, v.getResources().getString(stringId, text));
     }
 
     protected boolean isLoggedIn() {

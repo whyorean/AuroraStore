@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Aurora Store
   ~ Copyright (C) 2018  Rahul Kumar Patel <whyorean@gmail.com>
   ~
@@ -24,8 +23,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="300dp"
     android:layout_height="150dp"
-    app:cardElevation="1dp"
     app:cardCornerRadius="5dp"
+    app:cardElevation="1dp"
     app:cardUseCompatPadding="true">
 
     <RelativeLayout
@@ -38,8 +37,7 @@
             android:id="@+id/app_background"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scaleType="centerCrop"
-            android:background="@drawable/featured_games_default_gradient" />
+            android:scaleType="centerCrop" />
 
         <RelativeLayout
             android:id="@+id/app_data"

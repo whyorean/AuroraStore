@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Aurora Store
   ~ Copyright (C) 2018  Rahul Kumar Patel <whyorean@gmail.com>
   ~
@@ -34,9 +33,8 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="5dp"
+        android:background="@drawable/outline_bg_black"
         android:layoutDirection="ltr"
-        android:background="@drawable/outline_bg"
-        android:backgroundTint="@color/colorRed"
         android:padding="2dp">
 
         <ImageView
@@ -46,6 +44,8 @@
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:layout_marginEnd="10dp"
+            android:scaleX=".75"
+            android:scaleY=".75"
             android:src="@drawable/ic_delete"
             android:tint="@color/white" />
 
@@ -54,13 +54,11 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginEnd="10dp"
-            android:layout_toEndOf="@id/delete_icon"
+            android:layout_toStartOf="@id/delete_icon"
             android:text="@string/delete"
-            android:textColor="#fff"
-            android:textSize="15sp" />
+            android:textColor="@color/white" />
 
     </RelativeLayout>
-
 
     <android.support.v7.widget.CardView
         android:id="@+id/view_foreground"
@@ -78,44 +76,56 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:padding="5dp">
+            android:padding="2dp">
 
             <ImageView
                 android:id="@+id/searchIcon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
-                android:layout_marginStart="2dp"
-                android:layout_marginTop="5dp"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="8dp"
                 android:src="@drawable/ic_search" />
 
             <TextView
                 android:id="@+id/query"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="5dp"
+                android:layout_marginStart="5dp"
                 android:layout_toEndOf="@id/searchIcon"
+                android:layout_toStartOf="@+id/divider"
                 android:ellipsize="end"
                 android:fontFamily="@font/google_sans"
                 android:maxLines="1"
-                android:paddingEnd="10dp"
-                android:paddingStart="10dp"
+                android:textAlignment="gravity"
                 android:textColor="?android:attr/textColorPrimary"
-                android:textSize="14sp" />
+                android:textSize="16sp" />
+
+            <View
+                android:id="@+id/divider"
+                android:layout_width="1dp"
+                android:layout_height="16dp"
+                android:layout_centerInParent="true"
+                android:layout_margin="5dp"
+                android:background="@color/gray" />
 
             <TextView
                 android:id="@+id/queryTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/query"
-                android:layout_marginTop="2dp"
-                android:layout_toEndOf="@id/searchIcon"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="5dp"
+                android:layout_marginStart="5dp"
+                android:layout_toEndOf="@+id/divider"
                 android:ellipsize="end"
                 android:fontFamily="@font/google_sans"
                 android:maxLines="1"
-                android:paddingEnd="10dp"
-                android:paddingStart="10dp"
                 android:textColor="?android:attr/textColorSecondary"
-                android:textSize="12sp" />
+                android:textSize="14sp" />
+
         </RelativeLayout>
 
     </android.support.v7.widget.CardView>

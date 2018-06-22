@@ -66,7 +66,7 @@ public class CategoryListFragment extends CategoryListTask {
             return v;
         }
 
-        v = inflater.inflate(R.layout.app_category_inc, container, false);
+        v = inflater.inflate(R.layout.fragment_categories, container, false);
 
         if (isLoggedIn() && categoryManager.categoryListEmpty())
             getAllCategories();

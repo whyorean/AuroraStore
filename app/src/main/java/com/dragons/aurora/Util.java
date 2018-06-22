@@ -221,17 +221,20 @@ public class Util {
     }
 
     public static boolean isDark(Context context) {
-        String Theme = PreferenceFragment.getString(context, "PREFERENCE_THEME");
-        switch (Theme) {
-            case "Light":
-                return false;
-            case "Dark":
-                return true;
-            case "Black":
-                return true;
-            default:
-                return false;
+        if (context != null) {
+            String Theme = PreferenceFragment.getString(context, "PREFERENCE_THEME");
+            switch (Theme) {
+                case "Light":
+                    return false;
+                case "Dark":
+                    return true;
+                case "Black":
+                    return true;
+                default:
+                    return false;
+            }
         }
+        return false;
     }
 
     public static int getStyledAttribute(Context context, int styleID) {

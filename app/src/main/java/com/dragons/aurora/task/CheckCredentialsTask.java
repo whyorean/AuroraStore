@@ -33,6 +33,7 @@ import com.dragons.aurora.ContextUtil;
 import com.dragons.aurora.CredentialsEmptyException;
 import com.dragons.aurora.FirstLaunchChecker;
 import com.dragons.aurora.R;
+import com.dragons.aurora.Util;
 import com.dragons.aurora.fragment.PreferenceFragment;
 import com.dragons.aurora.playstoreapiv2.AuthException;
 import com.dragons.aurora.playstoreapiv2.GooglePlayException;
@@ -54,7 +55,7 @@ public abstract class CheckCredentialsTask extends PlayStoreTask<Void> {
             new FirstLaunchChecker(context).setLoggedIn();
             if (caller instanceof CloneableTask) {
                 Log.i(getClass().getSimpleName(), caller.getClass().getSimpleName() + " is cloneable. Retrying.");
-                ((PlayStoreTask) ((CloneableTask) caller).clone()).execute(new String[]{});
+                ((PlayStoreTask) ((CloneableTask) caller).clone()).execute((Object[]) new String[]{});
             }
         }
     }
@@ -89,6 +90,7 @@ public abstract class CheckCredentialsTask extends PlayStoreTask<Void> {
             getTwoFactorAuthDialog().show();
         } else {
             ContextUtil.toast(context, R.string.error_incorrect_password);
+            Util.completeCheckout(context);
         }
     }
 

@@ -26,6 +26,7 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.graphics.Palette;
 import android.support.v7.widget.CardView;
 import android.text.Html;
@@ -69,62 +70,63 @@ public class GeneralDetails extends AbstractHelper {
     }
 
     private void drawAppBadge(App app) {
-        ImageView appIcon = fragment.getActivity().findViewById(R.id.icon);
-        ImageView app_menu3dot = fragment.getActivity().findViewById(R.id.app_menu3dot);
-        RelativeLayout relativeLayout = fragment.getActivity().findViewById(R.id.details_header);
-        ImageSource imageSource = app.getIconInfo();
-        if (null != imageSource.getApplicationInfo()) {
-            appIcon.setImageDrawable(fragment.getContext().getPackageManager().getApplicationIcon(imageSource.getApplicationInfo()));
-            if (Util.getBoolean(fragment.getContext(), "COLOR_UI")) {
-                Bitmap bitmap = getBitmapFromDrawable(appIcon.getDrawable());
-                getPalette(bitmap);
-            }
-        } else {
-            Picasso
-                    .with(fragment.getActivity())
-                    .load(imageSource.getUrl())
-                    .placeholder(R.color.transparent)
-                    .into(appIcon, new Callback() {
-                        @Override
-                        public void onSuccess() {
-                            Bitmap bitmap = ((BitmapDrawable) appIcon.getDrawable()).getBitmap();
-                            if (bitmap != null && Util.getBoolean(fragment.getContext(), "COLOR_UI"))
-                                getPalette(bitmap);
-                        }
-
-                        @Override
-                        public void onError() {
-                            if (Util.isDark(fragment.getContext()))
-                                relativeLayout.setBackgroundColor(Color.LTGRAY);
-                            else
-                                relativeLayout.setBackgroundColor(Color.DKGRAY);
-                        }
-                    });
-        }
-
-        setText(fragment.getView(), R.id.displayName, app.getDisplayName());
-        setText(fragment.getView(), R.id.packageName, R.string.details_developer, app.getDeveloperName());
-        drawVersion(fragment.getActivity().findViewById(R.id.versionString), app);
-        drawBackground(fragment.getView().findViewById(R.id.app_background));
-
-
-        app_menu3dot.setOnClickListener(v -> {
-            AuroraActivity activity = (AuroraActivity) fragment.getActivity();
-            PopupMenu popup = new PopupMenu(v.getContext(), v);
-            popup.inflate(R.menu.menu_download);
-            new DownloadOptions(activity, app).inflate(popup.getMenu());
-            popup.getMenu().findItem(R.id.action_download).setVisible(false);
-            popup.getMenu().findItem(R.id.action_uninstall).setVisible(false);
-            popup.getMenu().findItem(R.id.action_manual).setVisible(true);
-            popup.setOnMenuItemClickListener(item -> {
-                switch (item.getItemId()) {
-                    default:
-                        return new DownloadOptions(activity, app).onContextItemSelected(item);
+        if (fragment.getActivity() != null) {
+            ImageView appIcon = fragment.getActivity().findViewById(R.id.icon);
+            ImageView app_menu3dot = fragment.getActivity().findViewById(R.id.app_menu3dot);
+            RelativeLayout relativeLayout = fragment.getActivity().findViewById(R.id.details_header);
+            ImageSource imageSource = app.getIconInfo();
+            if (null != imageSource.getApplicationInfo()) {
+                appIcon.setImageDrawable(fragment.getActivity().getPackageManager().getApplicationIcon(imageSource.getApplicationInfo()));
+                if (Util.getBoolean(fragment.getContext(), "COLOR_UI")) {
+                    Bitmap bitmap = getBitmapFromDrawable(appIcon.getDrawable());
+                    getPalette(bitmap);
                 }
-            });
-            popup.show();
-        });
+            } else {
+                Picasso
+                        .with(fragment.getActivity())
+                        .load(imageSource.getUrl())
+                        .placeholder(R.color.transparent)
+                        .into(appIcon, new Callback() {
+                            @Override
+                            public void onSuccess() {
+                                Bitmap bitmap = ((BitmapDrawable) appIcon.getDrawable()).getBitmap();
+                                if (bitmap != null && Util.getBoolean(fragment.getContext(), "COLOR_UI"))
+                                    getPalette(bitmap);
+                            }
 
+                            @Override
+                            public void onError() {
+                                if (Util.isDark(fragment.getContext()))
+                                    relativeLayout.setBackgroundColor(Color.LTGRAY);
+                                else
+                                    relativeLayout.setBackgroundColor(Color.DKGRAY);
+                            }
+                        });
+            }
+
+            setText(fragment.getView(), R.id.displayName, app.getDisplayName());
+            setText(fragment.getView(), R.id.packageName, R.string.details_developer, app.getDeveloperName());
+            drawVersion(fragment.getActivity().findViewById(R.id.versionString), app);
+            drawBackground(fragment.getActivity().findViewById(R.id.app_background));
+
+
+            app_menu3dot.setOnClickListener(v -> {
+                AuroraActivity activity = (AuroraActivity) fragment.getActivity();
+                PopupMenu popup = new PopupMenu(v.getContext(), v);
+                popup.inflate(R.menu.menu_download);
+                new DownloadOptions(activity, app).inflate(popup.getMenu());
+                popup.getMenu().findItem(R.id.action_download).setVisible(false);
+                popup.getMenu().findItem(R.id.action_uninstall).setVisible(false);
+                popup.getMenu().findItem(R.id.action_manual).setVisible(true);
+                popup.setOnMenuItemClickListener(item -> {
+                    switch (item.getItemId()) {
+                        default:
+                            return new DownloadOptions(activity, app).onContextItemSelected(item);
+                    }
+                });
+                popup.show();
+            });
+        }
     }
 
     private void drawBackground(ImageView appBackground) {
@@ -141,8 +143,8 @@ public class GeneralDetails extends AbstractHelper {
     private void getPalette(Bitmap bitmap) {
         Palette.from(bitmap).generate(palette ->
                 paintEmAll(palette.getDarkVibrantColor(Util.isDark(fragment.getContext())
-                        ? Color.LTGRAY
-                        : Color.DKGRAY)
+                        ? palette.getDominantColor(Color.LTGRAY)
+                        : palette.getDominantColor(Color.DKGRAY))
                 ));
     }
 
@@ -166,51 +168,55 @@ public class GeneralDetails extends AbstractHelper {
     }
 
     private void drawGeneralDetails(App app) {
-        if (app.isEarlyAccess()) {
-            setText(fragment.getView(), R.id.rating, R.string.early_access);
-        } else {
-            setText(fragment.getView(), R.id.rating, R.string.details_rating, app.getRating().getAverage());
+        if (fragment.getActivity() != null) {
+            if (app.isEarlyAccess()) {
+                setText(fragment.getView(), R.id.rating, R.string.early_access);
+            } else {
+                setText(fragment.getView(), R.id.rating, R.string.details_rating, app.getRating().getAverage());
+            }
+
+            setText(fragment.getView(), R.id.installs, R.string.details_installs, Util.addDiPrefix(app.getInstalls()));
+            setText(fragment.getView(), R.id.updated, R.string.details_updated, app.getUpdated());
+            setText(fragment.getView(), R.id.size, R.string.details_size, Formatter.formatShortFileSize(fragment.getActivity(), app.getSize()));
+            setText(fragment.getView(), R.id.category, R.string.details_category, new CategoryManager(fragment.getActivity()).getCategoryName(app.getCategoryId()));
+            setText(fragment.getView(), R.id.rating_lable, R.string.details_updated, app.getLabeledRating());
+            setText(fragment.getView(), R.id.google_dependencies, app.getDependencies().isEmpty()
+                    ? R.string.list_app_independent_from_gsf
+                    : R.string.list_app_depends_on_gsf);
+            if (app.getPrice() != null && app.getPrice().isEmpty())
+                setText(fragment.getView(), R.id.price, R.string.category_appFree);
+            else
+                setText(fragment.getView(), R.id.price, app.getPrice());
+            setText(fragment.getView(), R.id.contains_ads, app.containsAds() ? R.string.details_contains_ads : R.string.details_no_ads);
+
+            ImageView categoryImg = fragment.getActivity().findViewById(R.id.categoryImage);
+            ImageView ratingImg = fragment.getActivity().findViewById(R.id.rating_img);
+
+            Picasso
+                    .with(fragment.getActivity())
+                    .load(app.getCategoryIconUrl())
+                    .placeholder(ContextCompat.getDrawable(fragment.getActivity(), R.drawable.ic_categories))
+                    .into(categoryImg);
+            Picasso
+                    .with(fragment.getActivity())
+                    .load(app.getRatingURL())
+                    .placeholder(ContextCompat.getDrawable(fragment.getActivity(), R.drawable.ic_audience))
+                    .into(ratingImg);
+
+            drawOfferDetails(app);
+            drawChanges(app);
+
+            if (app.getVersionCode() == 0) {
+                show(fragment.getView(), R.id.updated);
+                show(fragment.getView(), R.id.size);
+            }
+
+            show(fragment.getView(), R.id.mainCard);
+            show(fragment.getView(), R.id.app_detail);
+            show(fragment.getView(), R.id.general_card);
+            show(fragment.getView(), R.id.related_links);
+            hide(fragment.getView(), R.id.progress);
         }
-
-        setText(fragment.getView(), R.id.installs, R.string.details_installs, Util.addDiPrefix(app.getInstalls()));
-        setText(fragment.getView(), R.id.updated, R.string.details_updated, app.getUpdated());
-        setText(fragment.getView(), R.id.size, R.string.details_size, Formatter.formatShortFileSize(fragment.getActivity(), app.getSize()));
-        setText(fragment.getView(), R.id.category, R.string.details_category, new CategoryManager(fragment.getActivity()).getCategoryName(app.getCategoryId()));
-
-        setText(fragment.getView(), R.id.google_dependencies, app.getDependencies().isEmpty()
-                ? R.string.list_app_independent_from_gsf
-                : R.string.list_app_depends_on_gsf);
-        if (app.getPrice() != null && app.getPrice().isEmpty())
-            setText(fragment.getView(), R.id.price, R.string.category_appFree);
-        else
-            setText(fragment.getView(), R.id.price, app.getPrice());
-        setText(fragment.getView(), R.id.contains_ads, app.containsAds() ? R.string.details_contains_ads : R.string.details_no_ads);
-
-        ImageView ratingImg = fragment.getView().findViewById(R.id.ratingLabelImg);
-        Picasso
-                .with(fragment.getActivity())
-                .load(app.getRatingURL())
-                .into(ratingImg);
-
-        ImageView categoryImg = fragment.getView().findViewById(R.id.categoryImage);
-        Picasso
-                .with(fragment.getActivity())
-                .load(app.getCategoryIconUrl())
-                .placeholder(fragment.getContext().getDrawable(R.drawable.ic_categories))
-                .into(categoryImg);
-
-        drawOfferDetails(app);
-        drawChanges(app);
-
-        if (app.getVersionCode() == 0) {
-            show(fragment.getView(), R.id.updated);
-            show(fragment.getView(), R.id.size);
-        }
-
-        show(fragment.getView(), R.id.mainCard);
-        show(fragment.getView(), R.id.app_detail);
-        show(fragment.getView(), R.id.general_card);
-        hide(fragment.getView(), R.id.progress);
     }
 
     private void drawChanges(App app) {
@@ -264,10 +270,9 @@ public class GeneralDetails extends AbstractHelper {
             }
             String newVersion = versionName;
             if (currentVersion.equals(newVersion)) {
-                currentVersion += " (" + info.versionCode;
-                newVersion = app.getVersionCode() + ")";
+                newVersion = String.valueOf(app.getVersionCode());
             }
-            textView.setText(fragment.getActivity().getString(R.string.details_versionName_updatable, currentVersion, newVersion));
+            textView.setText(newVersion);
             setText(fragment.getView(), R.id.download, fragment.getActivity().getString(R.string.details_update));
         } catch (PackageManager.NameNotFoundException e) {
             // We've checked for that already
@@ -275,25 +280,27 @@ public class GeneralDetails extends AbstractHelper {
     }
 
     private void drawDescription(App app) {
-        CardView changelogLayout = fragment.getActivity().findViewById(R.id.changelog_container);
-        TextView showLessMoreTxt = fragment.getActivity().findViewById(R.id.showLessMoreTxt);
+        if (fragment.getActivity() != null) {
+            CardView changelogLayout = fragment.getActivity().findViewById(R.id.changelog_container);
+            TextView showLessMoreTxt = fragment.getActivity().findViewById(R.id.showLessMoreTxt);
 
-        if (TextUtils.isEmpty(app.getDescription())) {
-            hide(fragment.getView(), R.id.more_card);
-            return;
-        } else {
-            show(fragment.getView(), R.id.more_card);
-            setText(fragment.getView(), R.id.d_moreinf, Html.fromHtml(app.getDescription()).toString());
-        }
-
-        showLessMoreTxt.setOnClickListener(v -> {
-            if (changelogLayout.getVisibility() == View.GONE) {
-                show(fragment.getView(), R.id.changelog_container);
-                showLessMoreTxt.setText(R.string.details_less);
+            if (TextUtils.isEmpty(app.getDescription())) {
+                hide(fragment.getView(), R.id.more_card);
+                return;
             } else {
-                hide(fragment.getView(), R.id.changelog_container);
-                showLessMoreTxt.setText(R.string.details_more);
+                show(fragment.getView(), R.id.more_card);
+                setText(fragment.getView(), R.id.d_moreinf, Html.fromHtml(app.getDescription()).toString());
             }
-        });
+
+            showLessMoreTxt.setOnClickListener(v -> {
+                if (changelogLayout.getVisibility() == View.GONE) {
+                    show(fragment.getView(), R.id.changelog_container);
+                    showLessMoreTxt.setText(R.string.details_less);
+                } else {
+                    hide(fragment.getView(), R.id.changelog_container);
+                    showLessMoreTxt.setText(R.string.details_more);
+                }
+            });
+        }
     }
 }

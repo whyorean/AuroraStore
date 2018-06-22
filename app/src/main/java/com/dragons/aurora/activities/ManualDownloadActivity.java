@@ -112,7 +112,12 @@ public class ManualDownloadActivity extends DetailsActivity {
         ((TextView) findViewById(R.id.displayName)).setText(app.getDisplayName());
         ((TextView) findViewById(R.id.packageName)).setText(app.getPackageName());
         ((TextView) findViewById(R.id.versionString)).setText(String.valueOf(app.getVersionCode()));
-
+        if (app.getPrice() != null && app.getPrice().isEmpty())
+            ((TextView) findViewById(R.id.price)).setText(R.string.category_appFree);
+        else
+            ((TextView) findViewById(R.id.price)).setText(app.getPrice());
+        ((TextView) findViewById(R.id.contains_ads)).setText(app.containsAds() ? R.string.details_contains_ads : R.string.details_no_ads);
+        findViewById(R.id.app_menu3dot).setVisibility(View.GONE);
         ScrollView disclaimer = findViewById(R.id.disclaimer);
         ImageView showLessMore = findViewById(R.id.show_LessMore);
         showLessMore.setOnClickListener(v -> {

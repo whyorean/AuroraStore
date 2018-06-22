@@ -109,6 +109,7 @@ public class ClusterTaskHelper {
 
     private void setupListView(RecyclerView recyclerView, List<App> appsToAdd) {
         recyclerView.setHasFixedSize(true);
+        recyclerView.setItemViewCacheSize(20);
         recyclerView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
         recyclerView.setLayoutAnimation(AnimationUtils.loadLayoutAnimation(context, R.anim.layout_anim));
         recyclerView.setAdapter(new RecyclerAppsAdapter(context, appsToAdd));

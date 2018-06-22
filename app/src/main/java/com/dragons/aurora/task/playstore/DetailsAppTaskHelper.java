@@ -38,6 +38,7 @@ import java.io.IOException;
 public abstract class DetailsAppTaskHelper extends ExceptionTask {
 
     protected Context context;
+    protected PackageManager pm;
 
     public void setContext(Context context) {
         this.context = context;
@@ -49,13 +50,15 @@ public abstract class DetailsAppTaskHelper extends ExceptionTask {
         if (response.hasUserReview()) {
             app.setUserReview(ReviewBuilder.build(response.getUserReview()));
         }
-        PackageManager pm = this.getActivity().getPackageManager();
-        try {
-            app.getPackageInfo().applicationInfo = pm.getApplicationInfo(packageName, 0);
-            app.getPackageInfo().versionCode = pm.getPackageInfo(packageName, 0).versionCode;
-            app.setInstalled(true);
-        } catch (PackageManager.NameNotFoundException e) {
-            // App is not installed
+        if (this.getActivity() != null) {
+            pm = this.getActivity().getPackageManager();
+            try {
+                app.getPackageInfo().applicationInfo = pm.getApplicationInfo(packageName, 0);
+                app.getPackageInfo().versionCode = pm.getPackageInfo(packageName, 0).versionCode;
+                app.setInstalled(true);
+            } catch (PackageManager.NameNotFoundException e) {
+                // App is not installed
+            }
         }
         return app;
     }

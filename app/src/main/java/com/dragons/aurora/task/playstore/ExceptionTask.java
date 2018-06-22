@@ -82,7 +82,7 @@ public abstract class ExceptionTask extends UtilFragment {
                     : e.getMessage()
             ;
         }
-        ContextUtil.toastLong(this.getActivity(), message);
+        ContextUtil.toastShort(getContext(), message);
     }
 
     protected void processAuthException(AuthException e) {

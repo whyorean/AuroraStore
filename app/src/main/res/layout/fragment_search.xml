@@ -27,7 +27,6 @@
     android:layout_height="match_parent"
     android:layout_marginBottom="8dp"
     android:animateLayoutChanges="true"
-    android:background="?android:attr/colorBackground"
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".fragment.SearchFragment">
