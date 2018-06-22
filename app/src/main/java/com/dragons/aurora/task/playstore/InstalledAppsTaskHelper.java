@@ -23,6 +23,7 @@ package com.dragons.aurora.task.playstore;
 
 import android.text.TextUtils;
 
+import com.dragons.aurora.CertUtils;
 import com.dragons.aurora.model.App;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 
@@ -45,6 +46,8 @@ public abstract class InstalledAppsTaskHelper extends UpdatableAppsTaskHelper {
             if (TextUtils.isEmpty(packageName) || !installedApps.containsKey(packageName)) {
                 continue;
             }
+            if (CertUtils.isFDroidApp(getContext(), packageName))
+                continue;
             App installedApp = installedApps.get(packageName);
             appFromMarket = addInstalledAppInfo(appFromMarket, installedApp);
             allMarketApps.add(appFromMarket);

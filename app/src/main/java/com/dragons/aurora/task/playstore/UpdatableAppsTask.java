@@ -26,6 +26,7 @@ import android.preference.PreferenceManager;
 import android.text.TextUtils;
 
 import com.dragons.aurora.BlackWhiteListManager;
+import com.dragons.aurora.CertUtils;
 import com.dragons.aurora.ContextUtil;
 import com.dragons.aurora.PlayStoreApiAuthenticator;
 import com.dragons.aurora.R;
@@ -59,6 +60,8 @@ public class UpdatableAppsTask extends PlayStorePayloadTask<List<App>> {
             if (TextUtils.isEmpty(packageName) || !installedApps.containsKey(packageName)) {
                 continue;
             }
+            if (CertUtils.isFDroidApp(context, packageName))
+                continue;
             App installedApp = installedApps.get(packageName);
             appFromMarket = addInstalledAppInfo(appFromMarket, installedApp);
             if (installedApp.getVersionCode() < appFromMarket.getVersionCode()) {

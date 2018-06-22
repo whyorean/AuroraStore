@@ -26,6 +26,7 @@ import android.text.TextUtils;
 
 import com.dragons.aurora.BlackWhiteListManager;
 import com.dragons.aurora.BuildConfig;
+import com.dragons.aurora.CertUtils;
 import com.dragons.aurora.PlayStoreApiAuthenticator;
 import com.dragons.aurora.fragment.PreferenceFragment;
 import com.dragons.aurora.model.App;
@@ -56,6 +57,8 @@ public abstract class UpdatableAppsTaskHelper extends ExceptionTask {
             if (TextUtils.isEmpty(packageName) || !installedApps.containsKey(packageName)) {
                 continue;
             }
+            if (CertUtils.isFDroidApp(getContext(), packageName))
+                continue;
             App installedApp = installedApps.get(packageName);
             appFromMarket = addInstalledAppInfo(appFromMarket, installedApp);
             if (installedApp.getVersionCode() < appFromMarket.getVersionCode()) {
