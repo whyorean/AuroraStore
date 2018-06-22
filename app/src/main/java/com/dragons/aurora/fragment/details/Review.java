@@ -64,6 +64,20 @@ public class Review extends AbstractHelper {
         else
             getTask(true).execute();
 
+        TextView viewHeader = fragment.getActivity().findViewById(R.id.review_header);
+        LinearLayout viewContainer = fragment.getActivity().findViewById(R.id.reviews_container);
+        show(fragment.getView(),R.id.rev_card);
+        viewHeader.setOnClickListener(v -> {
+            boolean isExpanded = viewContainer.getVisibility() == View.VISIBLE;
+            if (isExpanded) {
+                viewContainer.setVisibility(View.GONE);
+                ((TextView) v).setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_expand_more, 0);
+            } else {
+                viewContainer.setVisibility(View.VISIBLE);
+                ((TextView) v).setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_expand_less, 0);
+            }
+        });
+
         initReviewListControls();
 
         setText(fragment.getView(), R.id.average_rating, R.string.details_rating, app.getRating().getAverage());
@@ -148,7 +162,7 @@ public class Review extends AbstractHelper {
         Picasso
                 .with(fragment.getActivity())
                 .load(review.getUserPhotoUrl())
-                .placeholder(ContextCompat.getDrawable(fragment.getContext(),R.drawable.ic_user_placeholder))
+                .placeholder(ContextCompat.getDrawable(fragment.getContext(), R.drawable.ic_user_placeholder))
                 .transform(new CircleTransform())
                 .into((ImageView) reviewLayout.findViewById(R.id.avatar));
 

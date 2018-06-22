@@ -22,6 +22,7 @@
 package com.dragons.aurora.fragment.details;
 
 import android.content.Intent;
+import android.view.View;
 import android.widget.ImageView;
 
 import com.dragons.aurora.R;
@@ -39,6 +40,7 @@ public class Share extends AbstractHelper {
     @Override
     public void draw() {
         ImageView share = (ImageView) fragment.getActivity().findViewById(R.id.share);
+        share.setVisibility(View.VISIBLE);
         share.setOnClickListener(v -> {
             Intent i = new Intent(Intent.ACTION_SEND);
             i.setType("text/plain");

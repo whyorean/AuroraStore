@@ -69,7 +69,6 @@ public class DetailsFragment extends DetailsAppTaskHelper {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.details_activity_layout, container, false);
-        view.findViewById(R.id.fab_finish).setOnClickListener(v -> getActivity().finish());
         return view;
     }
 

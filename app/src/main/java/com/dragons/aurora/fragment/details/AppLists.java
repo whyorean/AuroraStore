@@ -69,7 +69,7 @@ public class AppLists extends AbstractHelper {
     }
 
     private void addAppsByThisDeveloper() {
-        ViewUtils.findViewById(fragment.getActivity(), R.id.apps_by_same_developer_cnt).setVisibility(View.VISIBLE);
+        ViewUtils.findViewById(fragment.getActivity(), R.id.apps_by_same_developer).setVisibility(View.VISIBLE);
         ImageView imageView = fragment.getActivity().findViewById(R.id.apps_by_same_developer);
         imageView.setVisibility(View.VISIBLE);
         imageView.setOnClickListener(v -> {

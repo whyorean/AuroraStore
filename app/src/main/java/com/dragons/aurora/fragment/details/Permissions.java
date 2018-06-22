@@ -52,7 +52,7 @@ public class Permissions extends AbstractHelper {
     public void draw() {
         TextView viewHeader = fragment.getActivity().findViewById(R.id.permissions_header);
         LinearLayout viewContainer = fragment.getActivity().findViewById(R.id.permissions_container);
-
+        show(fragment.getView(), R.id.perm_card);
         viewHeader.setOnClickListener(v -> {
             boolean isExpanded = viewContainer.getVisibility() == View.VISIBLE;
             if (isExpanded) {

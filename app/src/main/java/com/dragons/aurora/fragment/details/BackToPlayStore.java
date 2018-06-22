@@ -46,7 +46,7 @@ public class BackToPlayStore extends AbstractHelper {
         if (!isPlayStoreInstalled() || !app.isInPlayStore()) {
             return;
         }
-        ViewUtils.findViewById(fragment.getActivity(), R.id.to_play_store_cnt).setVisibility(View.VISIBLE);
+        ViewUtils.findViewById(fragment.getActivity(), R.id.to_play_store).setVisibility(View.VISIBLE);
         ImageView toPlayStore = (ImageView) fragment.getActivity().findViewById(R.id.to_play_store);
         toPlayStore.setVisibility(View.VISIBLE);
         toPlayStore.setOnClickListener(v -> {

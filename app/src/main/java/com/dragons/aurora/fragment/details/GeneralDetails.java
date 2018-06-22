@@ -35,7 +35,6 @@ import android.text.util.Linkify;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -56,10 +55,6 @@ import java.util.List;
 
 public class GeneralDetails extends AbstractHelper {
 
-    private TextView appInfo;
-    private TextView appReviews;
-    private TextView appExtras;
-
     public GeneralDetails(DetailsFragment fragment, App app) {
         super(fragment, app);
     }
@@ -75,6 +70,7 @@ public class GeneralDetails extends AbstractHelper {
 
     private void drawAppBadge(App app) {
         ImageView appIcon = fragment.getActivity().findViewById(R.id.icon);
+        ImageView app_menu3dot = fragment.getActivity().findViewById(R.id.app_menu3dot);
         RelativeLayout relativeLayout = fragment.getActivity().findViewById(R.id.details_header);
         ImageSource imageSource = app.getIconInfo();
         if (null != imageSource.getApplicationInfo()) {
@@ -112,7 +108,7 @@ public class GeneralDetails extends AbstractHelper {
         drawBackground(fragment.getView().findViewById(R.id.app_background));
 
 
-        appIcon.setOnClickListener(v -> {
+        app_menu3dot.setOnClickListener(v -> {
             AuroraActivity activity = (AuroraActivity) fragment.getActivity();
             PopupMenu popup = new PopupMenu(v.getContext(), v);
             popup.inflate(R.menu.menu_download);
@@ -160,18 +156,13 @@ public class GeneralDetails extends AbstractHelper {
         if (!Util.isDark(fragment.getContext())) {
             paintTextView(color, R.id.beta_header);
             paintTextView(color, R.id.permissions_header);
+            paintTextView(color, R.id.review_header);
             paintTextView(color, R.id.exodus_title);
             paintTextView(color, R.id.changes_upper);
             paintTextView(color, R.id.showLessMoreTxt);
         }
         paintLLayout(color, R.id.changes_container);
         paintImageView(color, R.id.privacy_ico);
-        paintImageViewBg(color, R.id.apps_similar);
-        paintImageViewBg(color, R.id.apps_recommended);
-        paintImageViewBg(color, R.id.apps_by_same_developer);
-        paintImageViewBg(color, R.id.to_play_store);
-        paintImageViewBg(color, R.id.share);
-        paintImageViewBg(color, R.id.system_app_info);
     }
 
     private void drawGeneralDetails(App app) {
@@ -215,23 +206,6 @@ public class GeneralDetails extends AbstractHelper {
             show(fragment.getView(), R.id.updated);
             show(fragment.getView(), R.id.size);
         }
-
-        appInfo = fragment.getActivity().findViewById(R.id.d_app_info);
-        appReviews = fragment.getActivity().findViewById(R.id.d_reviews);
-        appExtras = fragment.getActivity().findViewById(R.id.d_additional_info);
-
-        appInfo.setOnClickListener(v -> {
-            textViewHopper(appInfo, appReviews, appExtras);
-            contentViewHopper(R.id.app_info_layout, R.id.reviews_layout, R.id.additional_info_layout);
-        });
-        appReviews.setOnClickListener(v -> {
-            textViewHopper(appReviews, appExtras, appInfo);
-            contentViewHopper(R.id.reviews_layout, R.id.app_info_layout, R.id.additional_info_layout);
-        });
-        appExtras.setOnClickListener(v -> {
-            textViewHopper(appExtras, appReviews, appInfo);
-            contentViewHopper(R.id.additional_info_layout, R.id.app_info_layout, R.id.reviews_layout);
-        });
 
         show(fragment.getView(), R.id.mainCard);
         show(fragment.getView(), R.id.app_detail);
@@ -302,7 +276,6 @@ public class GeneralDetails extends AbstractHelper {
 
     private void drawDescription(App app) {
         CardView changelogLayout = fragment.getActivity().findViewById(R.id.changelog_container);
-        ImageView showLessMore = fragment.getActivity().findViewById(R.id.showLessMore);
         TextView showLessMoreTxt = fragment.getActivity().findViewById(R.id.showLessMoreTxt);
 
         if (TextUtils.isEmpty(app.getDescription())) {
@@ -313,28 +286,14 @@ public class GeneralDetails extends AbstractHelper {
             setText(fragment.getView(), R.id.d_moreinf, Html.fromHtml(app.getDescription()).toString());
         }
 
-        showLessMore.setOnClickListener(v -> {
+        showLessMoreTxt.setOnClickListener(v -> {
             if (changelogLayout.getVisibility() == View.GONE) {
                 show(fragment.getView(), R.id.changelog_container);
                 showLessMoreTxt.setText(R.string.details_less);
-                showLessMore.animate().rotation(180).start();
             } else {
                 hide(fragment.getView(), R.id.changelog_container);
                 showLessMoreTxt.setText(R.string.details_more);
-                showLessMore.animate().rotation(0).start();
             }
         });
-    }
-
-    private void textViewHopper(TextView A, TextView B, TextView C) {
-        A.setAlpha(1.0f);
-        B.setAlpha(0.5f);
-        C.setAlpha(0.5f);
-    }
-
-    private void contentViewHopper(int viewA, int viewB, int viewC) {
-        show(fragment.getView(), viewA);
-        hide(fragment.getView(), viewB);
-        hide(fragment.getView(), viewC);
     }
 }

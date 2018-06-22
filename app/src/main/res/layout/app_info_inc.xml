@@ -69,4 +69,12 @@
             android:textAlignment="viewStart"
             android:textSize="12sp" />
     </LinearLayout>
+    <ImageView
+        android:id="@+id/app_menu3dot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="?android:selectableItemBackgroundBorderless"
+        android:scaleX=".9"
+        android:scaleY=".9"
+        android:src="@drawable/ic_3dots" />
 </LinearLayout>
