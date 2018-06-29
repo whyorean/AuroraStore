@@ -155,4 +155,14 @@
         <item>@string/about_xda_summary</item>
         <item>@string/about_telegram_summary</item>
     </string-array>
+    <string-array name="SUBCATEGORY_LABEL">
+        <item>@string/pref_app_subcategory_free</item>
+        <item>@string/pref_app_subcategory_grossing</item>
+        <item>@string/pref_app_subcategory_trending</item>
+    </string-array>
+    <string-array name="SUBCATEGORY_VALUE">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
 </resources>

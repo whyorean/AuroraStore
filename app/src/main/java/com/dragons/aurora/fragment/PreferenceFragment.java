@@ -109,7 +109,8 @@ public class PreferenceFragment extends android.preference.PreferenceFragment {
         ImageView toolbar_back = this.getActivity().findViewById(R.id.toolbar_back);
         toolbar_back.setOnClickListener(click -> getActivity().onBackPressed());
         addPreferencesFromResource(R.xml.settings);
-        setupThemes(getActivity());
+        setupThemes();
+        setupSubCategory();
         setupSwitches(getActivity());
         drawBlackList();
         drawUpdatesCheck();
@@ -179,12 +180,24 @@ public class PreferenceFragment extends android.preference.PreferenceFragment {
         });
     }
 
-    private void setupThemes(Context c) {
+    private void setupThemes() {
         ListPreference preference_theme = (ListPreference) this.findPreference("PREFERENCE_THEME");
         preference_theme.setSummary(preference_theme.getEntry());
 
         preference_theme.setOnPreferenceChangeListener((preference, newTheme) -> {
             getPreferenceManager().getSharedPreferences().edit().putString("PREFERENCE_THEME", (String) newTheme).apply();
+            restartHome();
+            getActivity().finishAndRemoveTask();
+            return false;
+        });
+    }
+
+    private void setupSubCategory() {
+        ListPreference preference_subcategory = (ListPreference) this.findPreference("PREFERENCE_SUBCATEGORY");
+        preference_subcategory.setSummary(preference_subcategory.getEntry());
+
+        preference_subcategory.setOnPreferenceChangeListener((preference, newTheme) -> {
+            getPreferenceManager().getSharedPreferences().edit().putString("PREFERENCE_SUBCATEGORY", (String) newTheme).apply();
             restartHome();
             getActivity().finishAndRemoveTask();
             return false;

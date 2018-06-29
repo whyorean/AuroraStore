@@ -283,6 +283,11 @@
     <string name="pref_app_swipe_summary">Swipe on pages to switch between them.</string>
     <string name="pref_app_ime">Search IME</string>
     <string name="pref_app_ime_summary">Show keyboard on Search by default.</string>
+    <string name="pref_app_subcategory">App Subcategory</string>
+    <string name="pref_app_subcategory_summary">Select the subcategory of Home Screen Apps</string>
+    <string name="pref_app_subcategory_free">Top Free</string>
+    <string name="pref_app_subcategory_grossing">Top Grossing</string>
+    <string name="pref_app_subcategory_trending">Top Trending</string>
     <string name="pref_auto_install">Install apps immediately</string>
     <string name="pref_auto_install_summary_off">Apps are installed when the user touches the completion notification</string>
     <string name="pref_auto_install_summary_on">Apps are installed as soon as the download completes</string>

@@ -36,6 +36,7 @@ import android.widget.RelativeLayout;
 import com.dragons.aurora.CategoryManager;
 import com.dragons.aurora.CircleTransform;
 import com.dragons.aurora.R;
+import com.dragons.aurora.Util;
 import com.dragons.aurora.activities.AccountsActivity;
 import com.dragons.aurora.activities.CategoryAppsActivity;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
@@ -96,7 +97,7 @@ public class HomeFragment extends UtilFragment {
         if (isGoogle()) {
             Picasso.with(getActivity())
                     .load(PreferenceFragment.getString(getActivity(), "GOOGLE_URL"))
-                    .placeholder(ContextCompat.getDrawable(getContext(),R.drawable.ic_user_placeholder))
+                    .placeholder(ContextCompat.getDrawable(getContext(), R.drawable.ic_user_placeholder))
                     .transform(new CircleTransform())
                     .into(adtb.getAvatar_icon());
         } else {
@@ -138,13 +139,13 @@ public class HomeFragment extends UtilFragment {
         RecyclerView topGrossingApps = view.findViewById(R.id.top_featured_apps);
 
         new FeaturedTaskHelper(getContext(), topGrossingGames).getCategoryApps("GAME",
-                GooglePlayAPI.SUBCATEGORY.TOP_GROSSING);
+                getSubCategory());
         new FeaturedTaskHelper(getContext(), topGrossingApps).getCategoryApps("APPLICATION",
-                GooglePlayAPI.SUBCATEGORY.TOP_GROSSING);
+                getSubCategory());
     }
 
     protected void drawCategories() {
-        GooglePlayAPI.SUBCATEGORY subcategory = GooglePlayAPI.SUBCATEGORY.TOP_GROSSING;
+        GooglePlayAPI.SUBCATEGORY subcategory = getSubCategory();
         LinearLayout topLinksLayout = view.findViewById(R.id.top_links);
         topLinksLayout.setVisibility(View.VISIBLE);
         topLinksLayout.addView(buildAppsCard("TOOLS", subcategory,
@@ -169,5 +170,22 @@ public class HomeFragment extends UtilFragment {
 
         new CategoryTaskHelper(getActivity(), recyclerView).getCategoryApps(categoryId, subcategory);
         return moreAppsCard;
+    }
+
+    private GooglePlayAPI.SUBCATEGORY getSubCategory() {
+        GooglePlayAPI.SUBCATEGORY subcategory = null;
+        switch (PreferenceFragment.getString(getContext(), "PREFERENCE_SUBCATEGORY")) {
+            case "1":
+                subcategory = GooglePlayAPI.SUBCATEGORY.TOP_FREE;
+                break;
+            case "2":
+                subcategory = GooglePlayAPI.SUBCATEGORY.TOP_GROSSING;
+                break;
+            case "3":
+                subcategory = GooglePlayAPI.SUBCATEGORY.MOVERS_SHAKERS;
+                break;
+                default:subcategory = GooglePlayAPI.SUBCATEGORY.TOP_GROSSING;
+        }
+        return subcategory;
     }
 }
