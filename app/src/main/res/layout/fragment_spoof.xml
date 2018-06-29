@@ -313,6 +313,142 @@
 
             </android.support.v7.widget.CardView>
 
+            <android.support.v7.widget.CardView
+                android:id="@+id/device_location"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/device_language"
+                android:layout_marginBottom="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="10dp"
+                android:minHeight="76dp"
+                app:cardBackgroundColor="?android:attr/panelBackground"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="2dp"
+                app:cardPreventCornerOverlap="false"
+                app:cardUseCompatPadding="true">
+
+                <RelativeLayout
+                    android:id="@+id/location_header"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/location_img"
+                        android:layout_width="56dp"
+                        android:layout_height="56dp"
+                        android:layout_centerVertical="true"
+                        android:layout_margin="5dp"
+                        android:alpha=".75"
+                        android:padding="10dp"
+                        android:src="@drawable/ic_map_marker" />
+
+                    <TextView
+                        android:id="@+id/spoof_location_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:layout_toEndOf="@id/location_img"
+                        android:fontFamily="@font/google_sans_bold"
+                        android:text="@string/pref_category_spoof_location"
+                        android:textColor="?android:attr/textColorPrimary"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/spoof_location_summary"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/spoof_location_title"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginEnd="5dp"
+                        android:layout_marginStart="5dp"
+                        android:layout_toEndOf="@id/location_img"
+                        android:ellipsize="end"
+                        android:text="@string/pref_requested_location_summary" />
+
+                    <Spinner
+                        android:id="@+id/spoof_location"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/spoof_location_summary"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginStart="-2dp"
+                        android:layout_toEndOf="@id/location_img" />
+                </RelativeLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/text_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/device_location"
+                android:layout_marginBottom="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="10dp"
+                app:cardBackgroundColor="?android:attr/panelBackground"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="1dp"
+                app:cardPreventCornerOverlap="false"
+                app:cardUseCompatPadding="true">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp">
+
+                    <ImageView
+                        android:id="@+id/show_LessMore"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_margin="5dp"
+                        app:srcCompat="@drawable/ic_expand_more_24" />
+
+                    <TextView
+                        android:id="@+id/textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="5dp"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/google_sans_bold"
+                        android:text="@string/location_spoof_readme"
+                        android:textAlignment="viewStart"
+                        android:textColor="?android:attr/textColorPrimary"
+                        android:textSize="18sp" />
+
+                    <ScrollView
+                        android:id="@+id/disclaimer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/show_LessMore"
+                        android:layout_marginTop="5dp"
+                        android:visibility="gone">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/location_spoof_warning" />
+
+                            <TextView
+                                android:id="@+id/compatibility"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:paddingTop="15dp"
+                                android:text="@string/location_spoof_howtos" />
+
+                        </LinearLayout>
+                    </ScrollView>
+                </RelativeLayout>
+
+            </android.support.v7.widget.CardView>
+
         </RelativeLayout>
 
     </ScrollView>

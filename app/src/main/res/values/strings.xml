@@ -63,6 +63,8 @@
     <string name="action_ignore_ext">Add to Blacklist</string>
     <string name="action_login">Login</string>
     <string name="action_logout">Log out</string>
+    <string name="action_enable">Enable</string>
+    <string name="action_disable">Disable</string>
     <string name="action_make_normal">Convert to normal app</string>
     <string name="action_make_system">Convert to system app</string>
     <string name="action_manual">Manual download</string>
@@ -259,6 +261,9 @@
     <string name="manual_download_hint_version_code">version code here</string>
     <string name="manual_download_incompatible">Google Play Store considers this app incompatible with your device. This means version code has not been returned by the Google Play Store server.</string>
     <string name="manual_download_warning">This page lets you manually choose the version of the app to download.\n\nKeep in mind that downloading arbitrary versions of apps is not supported by Google Play Store. Your success depends on a lucky guess of the version code. Even if you guess right and you get the download to start, you might get an incompatible apk.</string>
+    <string name="location_spoof_warning">Location Spoof allows you to download Geo restricted apps, you will need a VPN connection to establish the connection.</string>
+    <string name="location_spoof_howtos">1. Enable Developer Options from Settings\n2. Set Aurora as Default Mock Location App\n3. Select the Spoof Location from app\n4. Turn On VPN to select country or region\n5. Restart the app and enjoy.</string>
+    <string name="location_spoof_readme">ReadMe</string>
     <string name="notification_download_complete">Download complete. Touch to install.</string>
     <string name="notification_download_complete_new_permissions">Download complete. New permissions requested.</string>
     <string name="notification_download_complete_new_permissions_toast">"%1$s downloaded. New version of the app requests more permissions. Check the new permissions list."</string>
@@ -311,6 +316,7 @@
     <string name="pref_category_spoofing">Spoofing</string>
     <string name="pref_category_spoof_device">Spoof Device</string>
     <string name="pref_category_spoof_lang">Spoof Language</string>
+    <string name="pref_category_spoof_location">Spoof Location</string>
     <string name="pref_category_ui">User Interface</string>
     <string name="pref_category_updates">Updates</string>
     <string name="pref_delete_apk_after_install">Delete .apk after installation</string>
@@ -336,6 +342,9 @@
     <string name="pref_no_root">This option is only available on rooted devices</string>
     <string name="pref_requested_language">Play Store requests language</string>
     <string name="pref_requested_language_default">Your default language</string>
+    <string name="pref_requested_location_summary">Aurora Store must be set as default Mock Location Application</string>
+    <string name="pref_requested_location_enable">You need to manually enable MockLocation from Developer Options.</string>
+    <string name="pref_requested_location_disable">You need to manually disable MockLocation from Developer Options to disable it completely.</string>
     <string name="pref_theme_title">Select Theme</string>
     <string name="pref_theme_title_summary">Switch between Light/Dark/AMOLED</string>
     <string name="pref_update_list_black">Change apps black list</string>

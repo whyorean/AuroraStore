@@ -165,4 +165,33 @@
         <item>2</item>
         <item>3</item>
     </string-array>
+    <string-array name="geoLocation">
+        <item>Default</item>
+        <item>Canberra, Australia</item>
+        <item>Brussels, Belgium</item>
+        <item>Brasilia, Brazil</item>
+        <item>Ottawa, Canada</item>
+        <item>Beijing, China</item>
+        <item>Copenhagen, Denmark</item>
+        <item>Helsinki, Finland</item>
+        <item>Paris, France</item>
+        <item>Germany, Berlin</item>
+        <item>Athens, Greece</item>
+        <item>New Delhi, India</item>
+        <item>Rome, Italy</item>
+        <item>Kuala Lumpur, Malaysia</item>
+        <item>Mexico, Mexico</item>
+        <item>Lisbon, Portugal</item>
+        <item>Seoul, Republic of Korea</item>
+        <item>Riyadh, Saudi Arabia</item>
+        <item>Madrid, Spain</item>
+        <item>Stockholm, Sweden</item>
+        <item>Bern, Switzerland</item>
+        <item>Ankara, Turkey</item>
+        <item>Kiev, Ukraine</item>
+        <item>Abu Dhabi, UAE</item>
+        <item>London, UK</item>
+        <item>Washington DC, USA</item>
+        <item>Hanoi, Viet Nam</item>
+    </string-array>
 </resources>

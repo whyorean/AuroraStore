@@ -23,6 +23,7 @@ package com.dragons.aurora.fragment;
 
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.location.Address;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -33,6 +34,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -42,11 +44,13 @@ import com.dragons.aurora.SpoofDeviceManager;
 import com.dragons.aurora.Util;
 import com.dragons.aurora.activities.DeviceInfoActivity;
 import com.dragons.aurora.activities.LoginActivity;
+import com.dragons.aurora.task.SpoofTask;
 import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Properties;
@@ -55,6 +59,7 @@ import static com.dragons.aurora.fragment.PreferenceFragment.PREFERENCE_DEVICE_T
 import static com.dragons.aurora.fragment.PreferenceFragment.PREFERENCE_DEVICE_TO_PRETEND_TO_BE_INDEX;
 import static com.dragons.aurora.fragment.PreferenceFragment.PREFERENCE_REQUESTED_LANGUAGE;
 import static com.dragons.aurora.fragment.PreferenceFragment.PREFERENCE_REQUESTED_LANGUAGE_INDEX;
+import static com.dragons.aurora.fragment.PreferenceFragment.PREFERENCE_REQUESTED_LOCATION_INDEX;
 
 public class SpoofFragment extends UtilFragment {
 
@@ -62,6 +67,7 @@ public class SpoofFragment extends UtilFragment {
 
     private String deviceName;
     private View view;
+    private List<Address> addresses;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -78,6 +84,17 @@ public class SpoofFragment extends UtilFragment {
         }
 
         view = inflater.inflate(R.layout.fragment_spoof, container, false);
+        ScrollView disclaimer = view.findViewById(R.id.disclaimer);
+        ImageView showLessMore = view.findViewById(R.id.show_LessMore);
+        showLessMore.setOnClickListener(v -> {
+            if (disclaimer.getVisibility() == View.GONE) {
+                disclaimer.setVisibility(View.VISIBLE);
+                showLessMore.animate().rotation(180).start();
+            } else {
+                disclaimer.setVisibility(View.GONE);
+                showLessMore.animate().rotation(0).start();
+            }
+        });
 
         if (isSpoofed())
             drawSpoofedDevice();
@@ -86,6 +103,7 @@ public class SpoofFragment extends UtilFragment {
 
         setupLanguage();
         setupDevice();
+        setupLocations();
         return view;
     }
 
@@ -208,6 +226,35 @@ public class SpoofFragment extends UtilFragment {
         });
     }
 
+    void setupLocations() {
+        Spinner spinner = view.findViewById(R.id.spoof_location);
+        String geoLocations[] = getContext().getResources().getStringArray(R.array.geoLocation);
+        ArrayAdapter<CharSequence> adapter = new ArrayAdapter<>(
+                getContext(),
+                android.R.layout.simple_spinner_item,
+                geoLocations
+        );
+
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+        spinner.setSelection(Util.getInteger(getContext(), PREFERENCE_REQUESTED_LOCATION_INDEX), true);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                SpoofTask spoofTask = new SpoofTask();
+                spoofTask.setContext(getContext());
+                spoofTask.setGeoLocation(geoLocations[position]);
+                spoofTask.setPosition(position);
+                spoofTask.execute();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+    }
+
     protected void setText(int viewId, String text) {
         TextView textView = (TextView) view.findViewById(viewId);
         if (null != textView)
@@ -256,4 +303,5 @@ public class SpoofFragment extends UtilFragment {
                 .setNegativeButton(android.R.string.cancel, null)
                 .show();
     }
+
 }
