@@ -143,17 +143,20 @@
     <string-array name="linkURLS">
         <item>"https://gitlab.com/AuroraOSS/AuroraStore"</item>
         <item>"https://forum.xda-developers.com/android/apps-games/galaxy-playstore-alternative-t3739733"</item>
-        <item>"https://t.me/AuroraOfficial"</item>
+        <item>"https://t.me/AuroraSupport"</item>
+        <item>"https://f-droid.org/en/packages/com.dragons.aurora/"</item>
     </string-array>
     <string-array name="linkTitles">
-        <item>"GitLab"</item>
-        <item>"XDA Developers"</item>
-        <item>"Telegram"</item>
+        <item>@string/about_gitlab</item>
+        <item>@string/about_xda</item>
+        <item>@string/about_telegram</item>
+        <item>@string/about_fdroid</item>
     </string-array>
     <string-array name="linkSummary">
         <item>@string/about_gitlab_summary</item>
         <item>@string/about_xda_summary</item>
         <item>@string/about_telegram_summary</item>
+        <item>@string/about_fdroid_summary</item>
     </string-array>
     <string-array name="SUBCATEGORY_LABEL">
         <item>@string/pref_app_subcategory_free</item>

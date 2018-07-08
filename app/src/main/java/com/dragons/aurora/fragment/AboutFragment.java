@@ -40,7 +40,8 @@ public class AboutFragment extends AccountsHelper {
     private final int linkIcons[] = {
             R.drawable.ic_gitlab,
             R.drawable.ic_xda,
-            R.drawable.ic_telegram
+            R.drawable.ic_telegram,
+            R.drawable.ic_fdroid
     };
     private View view;
 

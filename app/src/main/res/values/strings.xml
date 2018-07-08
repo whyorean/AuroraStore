@@ -30,6 +30,7 @@
     <string name="about_opensource">Open source libraries</string>
     <string name="about_telegram">Telegram</string>
     <string name="about_telegram_summary">Join Aurora Support group for discussions or suggestions.</string>
+    <string name="about_fdroid_summary">Get Aurora on F-Droid Repo</string>
     <string name="about_xda">Dev Thread</string>
     <string name="about_xda_summary">See AuroraStore XDA thread for discussions or suggestions.</string>
     <string name="account_dummy_email">anonymous@anonymous</string>
