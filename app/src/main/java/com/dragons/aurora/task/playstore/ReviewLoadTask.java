@@ -57,7 +57,7 @@ public class ReviewLoadTask extends PlayStorePayloadTask<List<Review>> {
     @Override
     protected void onPostExecute(List<Review> reviews) {
         super.onPostExecute(reviews);
-        if (success()) {
+        if (success() && fragment != null) {
             fragment.showReviews(reviews);
         } else {
             Log.e(DetailsActivity.class.getSimpleName(), "Could not get reviews: " + getException().getMessage());

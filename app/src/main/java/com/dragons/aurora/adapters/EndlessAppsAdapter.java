@@ -24,6 +24,7 @@ package com.dragons.aurora.adapters;
 import android.content.Context;
 import android.support.annotation.NonNull;
 
+import com.dragons.aurora.activities.AuroraActivity;
 import com.dragons.aurora.activities.DetailsActivity;
 import com.dragons.aurora.model.App;
 import com.dragons.aurora.view.SearchResultAppBadge;
@@ -33,12 +34,10 @@ import java.util.List;
 public class EndlessAppsAdapter extends InstalledAppsAdapter {
 
     private List<App> appsToAdd;
-    private Context context;
     private InstalledAppsAdapter.ViewHolder viewHolder;
 
     public EndlessAppsAdapter(Context context, List<App> appsToAdd) {
-        super(context, appsToAdd);
-        this.context = context;
+        super((AuroraActivity) context, appsToAdd);
         this.appsToAdd = appsToAdd;
     }
 

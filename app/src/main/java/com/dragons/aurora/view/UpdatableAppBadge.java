@@ -57,6 +57,7 @@ import java.util.TimerTask;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+import static com.dragons.aurora.AuroraApplication.COLOR_UI;
 import static com.dragons.aurora.Util.isAlreadyQueued;
 
 public class UpdatableAppBadge extends AppBadge {
@@ -112,7 +113,7 @@ public class UpdatableAppBadge extends AppBadge {
     @Override
     protected void drawIcon(ImageView icon) {
         super.drawIcon(icon);
-        if (Util.getBoolean(context, "COLOR_UI")) {
+        if (COLOR_UI) {
             Bitmap bitmap = getBitmapFromDrawable(icon.getDrawable());
             getPalette(bitmap);
         }

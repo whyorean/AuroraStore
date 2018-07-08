@@ -36,6 +36,9 @@ import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+import static com.dragons.aurora.Util.hide;
+import static com.dragons.aurora.Util.isConnected;
+
 public class TopTrendingApps extends TopFreeApps {
     @BindView(R.id.endless_apps_list)
     RecyclerView recyclerView;

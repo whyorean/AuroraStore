@@ -38,10 +38,8 @@ import java.util.List;
 public class UpdatableAppsAdapter extends RecyclerView.Adapter<UpdatableAppsAdapter.ViewHolder> {
 
     public List<App> appsToAdd;
-    private Context context;
 
-    public UpdatableAppsAdapter(Context context, List<App> appsToAdd) {
-        this.context = context;
+    public UpdatableAppsAdapter(List<App> appsToAdd) {
         this.appsToAdd = appsToAdd;
     }
 

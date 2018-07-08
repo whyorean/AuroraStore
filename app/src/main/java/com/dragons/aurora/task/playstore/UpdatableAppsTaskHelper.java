@@ -96,9 +96,8 @@ public abstract class UpdatableAppsTaskHelper extends ExceptionTask {
 
     protected Map<String, App> getInstalledApps() {
         InstalledAppsTask task = new InstalledAppsTask();
-        task.setContext(this.getActivity());
-        task.setIncludeSystemApps(true);
-        return task.getInstalledApps(false);
+        task.setContext(getContext());
+        return task.getInstalledApps();
     }
 
     protected App addInstalledAppInfo(App appFromMarket, App installedApp) {

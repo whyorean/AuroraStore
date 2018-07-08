@@ -60,7 +60,6 @@ public class Blacklist extends Abstract {
     @Override
     public void draw() {
         AppListTask task = new AppListTask(appList);
-        task.setIncludeSystemApps(true);
         task.execute();
 
         Preference.OnPreferenceChangeListener listener = new BlackListOnPreferenceChangeListener(appList, autoWhitelist);

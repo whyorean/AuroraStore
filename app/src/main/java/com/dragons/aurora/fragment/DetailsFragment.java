@@ -55,6 +55,10 @@ import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
+import static com.dragons.aurora.Util.hide;
+import static com.dragons.aurora.Util.isConnected;
+import static com.dragons.aurora.Util.show;
+
 public class DetailsFragment extends DetailsAppTaskHelper {
 
     public static App app;

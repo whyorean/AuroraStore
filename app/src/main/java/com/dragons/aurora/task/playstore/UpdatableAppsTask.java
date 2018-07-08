@@ -99,8 +99,7 @@ public class UpdatableAppsTask extends PlayStorePayloadTask<List<App>> {
     private Map<String, App> getInstalledApps() {
         InstalledAppsTask task = new InstalledAppsTask();
         task.setContext(context);
-        task.setIncludeSystemApps(true);
-        return task.getInstalledApps(false);
+        return task.getInstalledApps();
     }
 
     private List<App> getAppsFromPlayStore(GooglePlayAPI api, Collection<String> packageNames) throws IOException {
@@ -116,26 +115,24 @@ public class UpdatableAppsTask extends PlayStorePayloadTask<List<App>> {
 
     private Map<String, App> filterBlacklistedApps(Map<String, App> apps) {
         Set<String> packageNames = new HashSet<>(apps.keySet());
-        if (PreferenceManager.getDefaultSharedPreferences(context).getString(PreferenceFragment.PREFERENCE_UPDATE_LIST_WHITE_OR_BLACK, PreferenceFragment.LIST_BLACK).equals(PreferenceFragment.LIST_BLACK)) {
+        if (PreferenceManager.getDefaultSharedPreferences(context).getString(
+                PreferenceFragment.PREFERENCE_UPDATE_LIST_WHITE_OR_BLACK,
+                PreferenceFragment.LIST_BLACK).equals(PreferenceFragment.LIST_BLACK))
             packageNames.removeAll(new BlackWhiteListManager(context).get());
-        } else {
+        else
             packageNames.retainAll(new BlackWhiteListManager(context).get());
-        }
         Map<String, App> result = new HashMap<>();
-        for (App app : apps.values()) {
-            if (packageNames.contains(app.getPackageName())) {
+        for (App app : apps.values())
+            if (packageNames.contains(app.getPackageName()))
                 result.put(app.getPackageName(), app);
-            }
-        }
         return result;
     }
 
     private List<App> getRemoteAppList(GooglePlayAPI api, List<String> packageNames) throws IOException {
         List<App> apps = new ArrayList<>();
         for (BulkDetailsEntry details : api.bulkDetails(packageNames).getEntryList()) {
-            if (!details.hasDoc()) {
+            if (!details.hasDoc())
                 continue;
-            }
             apps.add(AppBuilder.build(details.getDoc()));
         }
         Collections.sort(apps);

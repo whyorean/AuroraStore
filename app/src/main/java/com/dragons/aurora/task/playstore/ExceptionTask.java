@@ -28,8 +28,8 @@ import com.dragons.aurora.ContextUtil;
 import com.dragons.aurora.CredentialsEmptyException;
 import com.dragons.aurora.PlayStoreApiAuthenticator;
 import com.dragons.aurora.R;
+import com.dragons.aurora.fragment.AccountsHelper;
 import com.dragons.aurora.fragment.PreferenceFragment;
-import com.dragons.aurora.fragment.UtilFragment;
 import com.dragons.aurora.playstoreapiv2.AuthException;
 import com.dragons.aurora.task.AppProvidedCredentialsTask;
 import com.percolate.caffeine.ToastUtils;
@@ -42,7 +42,7 @@ import java.net.UnknownHostException;
 
 import javax.net.ssl.SSLHandshakeException;
 
-public abstract class ExceptionTask extends UtilFragment {
+public abstract class ExceptionTask extends AccountsHelper {
 
     protected Throwable exception;
 

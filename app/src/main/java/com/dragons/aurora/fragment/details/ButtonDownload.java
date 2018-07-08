@@ -174,9 +174,7 @@ public class ButtonDownload extends Button {
             task.setDownloadProgressBarUpdater(progressBarUpdater);
             task.setTriggeredBy(triggeredBy);
             task.setApp(app);
-            task.setErrorView(errorView);
             task.setContext(context);
-            task.setProgressIndicator(progressIndicator);
             task.setFragment(buttonDownload);
             return task;
         }

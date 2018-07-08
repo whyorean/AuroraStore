@@ -39,7 +39,7 @@ public class SystemAppPage extends AbstractHelper {
 
     @Override
     public void draw() {
-        ImageView systemAppInfo = (ImageView) fragment.getActivity().findViewById(R.id.system_app_info);
+        ImageView systemAppInfo = view.findViewById(R.id.system_app_info);
 
         if (!app.isInstalled()) {
             hide(fragment.getView(), R.id.system_app_info);
@@ -51,7 +51,7 @@ public class SystemAppPage extends AbstractHelper {
 
     private void startActivity() {
         try {
-            fragment.getActivity().startActivity(getIntent());
+            context.startActivity(getIntent());
         } catch (ActivityNotFoundException e) {
             Log.w(getClass().getSimpleName(), "Could not find system app activity");
         }

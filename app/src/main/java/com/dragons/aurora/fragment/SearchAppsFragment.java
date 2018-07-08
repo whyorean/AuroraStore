@@ -53,6 +53,9 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
+import static com.dragons.aurora.Util.hide;
+import static com.dragons.aurora.Util.isConnected;
+
 public class SearchAppsFragment extends SearchTask {
 
     @BindView(R.id.search_apps_list)

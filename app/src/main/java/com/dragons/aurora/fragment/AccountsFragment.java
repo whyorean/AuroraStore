@@ -43,7 +43,12 @@ import com.github.florent37.shapeofview.shapes.CircleView;
 import com.percolate.caffeine.ViewUtils;
 import com.squareup.picasso.Picasso;
 
-public class AccountsFragment extends UtilFragment {
+import static com.dragons.aurora.Util.hide;
+import static com.dragons.aurora.Util.isConnected;
+import static com.dragons.aurora.Util.setText;
+import static com.dragons.aurora.Util.show;
+
+public class AccountsFragment extends AccountsHelper {
 
     private boolean isSecAvailable;
     private String myEmail;

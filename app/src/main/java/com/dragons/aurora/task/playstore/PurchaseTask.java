@@ -55,9 +55,7 @@ public class PurchaseTask extends DeliveryDataTask implements CloneableTask {
         task.setDownloadProgressBarUpdater(progressBarUpdater);
         task.setTriggeredBy(triggeredBy);
         task.setApp(app);
-        task.setErrorView(errorView);
         task.setContext(context);
-        task.setProgressIndicator(progressIndicator);
         return task;
     }
 

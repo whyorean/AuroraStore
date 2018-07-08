@@ -45,13 +45,13 @@ public class Permissions extends AbstractHelper {
 
     public Permissions(DetailsFragment fragment, App app) {
         super(fragment, app);
-        pm = fragment.getActivity().getPackageManager();
+        pm = context.getPackageManager();
     }
 
     @Override
     public void draw() {
-        TextView viewHeader = fragment.getActivity().findViewById(R.id.permissions_header);
-        LinearLayout viewContainer = fragment.getActivity().findViewById(R.id.permissions_container);
+        TextView viewHeader = view.findViewById(R.id.permissions_header);
+        LinearLayout viewContainer = view.findViewById(R.id.permissions_container);
         show(fragment.getView(), R.id.perm_card);
         viewHeader.setOnClickListener(v -> {
             boolean isExpanded = viewContainer.getVisibility() == View.VISIBLE;
@@ -76,7 +76,7 @@ public class Permissions extends AbstractHelper {
             PermissionGroup widget;
             PermissionGroupInfo permissionGroupInfo = getPermissionGroupInfo(permissionInfo);
             if (!permissionGroupWidgets.containsKey(permissionGroupInfo.name)) {
-                widget = new PermissionGroup(fragment.getActivity());
+                widget = new PermissionGroup(context);
                 widget.setPermissionGroupInfo(permissionGroupInfo);
                 widget.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
                 permissionGroupWidgets.put(permissionGroupInfo.name, widget);
@@ -85,14 +85,14 @@ public class Permissions extends AbstractHelper {
             }
             widget.addPermission(permissionInfo);
         }
-        LinearLayout container = fragment.getActivity().findViewById(R.id.permissions_container_widgets);
+        LinearLayout container = view.findViewById(R.id.permissions_container_widgets);
         container.removeAllViews();
         List<String> permissionGroupLabels = new ArrayList<>(permissionGroupWidgets.keySet());
         Collections.sort(permissionGroupLabels);
         for (String permissionGroupLabel : permissionGroupLabels) {
             container.addView(permissionGroupWidgets.get(permissionGroupLabel));
         }
-        fragment.getActivity().findViewById(R.id.permissions_none).setVisibility(permissionGroupWidgets.isEmpty() ? View.VISIBLE : View.GONE);
+        view.findViewById(R.id.permissions_none).setVisibility(permissionGroupWidgets.isEmpty() ? View.VISIBLE : View.GONE);
     }
 
     private PermissionInfo getPermissionInfo(String permissionName) {

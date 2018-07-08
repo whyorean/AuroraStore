@@ -46,19 +46,19 @@ public class BackToPlayStore extends AbstractHelper {
         if (!isPlayStoreInstalled() || !app.isInPlayStore()) {
             return;
         }
-        ViewUtils.findViewById(fragment.getActivity(), R.id.to_play_store).setVisibility(View.VISIBLE);
-        ImageView toPlayStore = (ImageView) fragment.getActivity().findViewById(R.id.to_play_store);
+        ViewUtils.findViewById(view, R.id.to_play_store).setVisibility(View.VISIBLE);
+        ImageView toPlayStore = view.findViewById(R.id.to_play_store);
         toPlayStore.setVisibility(View.VISIBLE);
         toPlayStore.setOnClickListener(v -> {
             Intent i = new Intent(Intent.ACTION_VIEW);
             i.setData(Uri.parse(PurchaseTask.URL_PURCHASE + app.getPackageName()));
-            fragment.getActivity().startActivity(i);
+            context.startActivity(i);
         });
     }
 
     private boolean isPlayStoreInstalled() {
         try {
-            return null != fragment.getActivity().getPackageManager().getPackageInfo(PLAY_STORE_PACKAGE_NAME, 0);
+            return null != context.getPackageManager().getPackageInfo(PLAY_STORE_PACKAGE_NAME, 0);
         } catch (PackageManager.NameNotFoundException e) {
             return false;
         }

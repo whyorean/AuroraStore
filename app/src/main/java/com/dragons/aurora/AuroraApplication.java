@@ -22,7 +22,6 @@
 package com.dragons.aurora;
 
 import android.app.Application;
-import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.res.Configuration;
@@ -40,6 +39,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AuroraApplication extends Application {
+
+    public static boolean COLOR_UI;
 
     private boolean isBackgroundUpdating = false;
     private List<String> pendingUpdates = new ArrayList<>();
@@ -89,6 +90,7 @@ public class AuroraApplication extends Application {
         PreferenceManager.setDefaultValues(this, R.xml.settings, false);
         registerDownloadReceiver();
         registerInstallReceiver();
+        getSavedPrefs();
     }
 
     private void registerDownloadReceiver() {
@@ -115,5 +117,9 @@ public class AuroraApplication extends Application {
     public boolean isTv() {
         int uiMode = getResources().getConfiguration().uiMode;
         return (uiMode & Configuration.UI_MODE_TYPE_MASK) == Configuration.UI_MODE_TYPE_TELEVISION;
+    }
+
+    public void getSavedPrefs() {
+        COLOR_UI = Util.getBoolean(getApplicationContext(), "COLOR_UI");
     }
 }

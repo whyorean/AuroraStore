@@ -36,6 +36,7 @@ import android.widget.Button;
 import com.dragons.aurora.PlayStoreApiAuthenticator;
 import com.dragons.aurora.R;
 import com.dragons.aurora.Util;
+import com.dragons.aurora.activities.AuroraActivity;
 import com.dragons.aurora.adapters.InstalledAppsAdapter;
 import com.dragons.aurora.model.App;
 import com.dragons.aurora.task.playstore.InstalledAppsTaskHelper;
@@ -50,6 +51,10 @@ import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
+
+import static com.dragons.aurora.Util.hide;
+import static com.dragons.aurora.Util.isConnected;
+import static com.dragons.aurora.Util.show;
 
 public class InstalledAppsFragment extends InstalledAppsTaskHelper {
 
@@ -132,7 +137,7 @@ public class InstalledAppsFragment extends InstalledAppsTaskHelper {
     }
 
     protected void setupRecycler(List<App> appsToAdd) {
-        installedAppsAdapter = new InstalledAppsAdapter(getActivity(), appsToAdd);
+        installedAppsAdapter = new InstalledAppsAdapter((AuroraActivity) getActivity(), appsToAdd);
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getActivity()));
         recyclerView.setLayoutAnimation(AnimationUtils.loadLayoutAnimation(getContext(), R.anim.layout_anim));
         recyclerView.setAdapter(installedAppsAdapter);

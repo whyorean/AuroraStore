@@ -50,7 +50,6 @@ import com.dragons.aurora.adapters.UpdatableAppsAdapter;
 import com.dragons.aurora.model.App;
 import com.dragons.aurora.notification.CancelDownloadService;
 import com.dragons.aurora.task.playstore.UpdatableAppsTaskHelper;
-import com.github.florent37.shapeofview.shapes.RoundRectView;
 import com.percolate.caffeine.ToastUtils;
 
 import java.util.ArrayList;
@@ -63,6 +62,11 @@ import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
+
+import static com.dragons.aurora.Util.hide;
+import static com.dragons.aurora.Util.isConnected;
+import static com.dragons.aurora.Util.setText;
+import static com.dragons.aurora.Util.show;
 
 public class UpdatableAppsFragment extends UpdatableAppsTaskHelper implements UpdatableRecyclerItemTouchHelper.UpdatableRecyclerItemTouchListener {
 
@@ -285,7 +289,7 @@ public class UpdatableAppsFragment extends UpdatableAppsTaskHelper implements Up
     }
 
     protected void setupRecycler(List<App> appsToAdd) {
-        updatableAppsAdapter = new UpdatableAppsAdapter(getActivity(), appsToAdd);
+        updatableAppsAdapter = new UpdatableAppsAdapter(appsToAdd);
         recyclerView.setItemViewCacheSize(20);
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getActivity()));
         recyclerView.setLayoutAnimation(AnimationUtils.loadLayoutAnimation(getContext(), R.anim.layout_anim));

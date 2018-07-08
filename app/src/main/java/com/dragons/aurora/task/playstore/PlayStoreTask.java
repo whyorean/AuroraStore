@@ -46,7 +46,6 @@ import javax.net.ssl.SSLHandshakeException;
 abstract public class PlayStoreTask<T> extends TaskWithProgress<T> {
 
     protected Throwable exception;
-    protected TextView errorView;
 
     static public boolean noNetwork(Throwable e) {
         return e instanceof UnknownHostException
@@ -56,10 +55,6 @@ abstract public class PlayStoreTask<T> extends TaskWithProgress<T> {
                 || e instanceof SocketTimeoutException
                 || (null != e && null != e.getCause() && noNetwork(e.getCause()))
                 ;
-    }
-
-    public void setErrorView(TextView errorView) {
-        this.errorView = errorView;
     }
 
     public Throwable getException() {
@@ -100,11 +95,7 @@ abstract public class PlayStoreTask<T> extends TaskWithProgress<T> {
                     : e.getMessage()
             ;
         }
-        if (null != this.errorView) {
-            // this.errorView.setText(message);
-        } else {
-            ContextUtil.toastLong(this.context, message);
-        }
+        ContextUtil.toastLong(this.context, message);
     }
 
     protected void processAuthException(AuthException e) {
@@ -119,10 +110,6 @@ abstract public class PlayStoreTask<T> extends TaskWithProgress<T> {
             ContextUtil.toast(context, R.string.error_incorrect_password);
             Util.completeCheckout(context);
         }
-        if (ContextUtil.isAlive(context)) {
-            //Mehh!
-        } else {
-            Log.e(getClass().getSimpleName(), "AuthException happened and the provided context is not ui capable");
-        }
+        Log.e(getClass().getSimpleName(), "AuthException happened and the provided context is not ui capable");
     }
 }

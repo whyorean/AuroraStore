@@ -48,6 +48,8 @@ import com.squareup.picasso.Picasso;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import static com.dragons.aurora.AuroraApplication.COLOR_UI;
+
 public class ManualDownloadActivity extends DetailsActivity {
 
     public static App app;
@@ -139,7 +141,7 @@ public class ManualDownloadActivity extends DetailsActivity {
                     @Override
                     public void onSuccess() {
                         Bitmap bitmap = ((BitmapDrawable) appIcon.getDrawable()).getBitmap();
-                        if (bitmap != null && Util.getBoolean(appIcon.getContext(), "COLOR_UI"))
+                        if (bitmap != null && COLOR_UI)
                             getPalette(bitmap);
                     }
 

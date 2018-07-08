@@ -61,7 +61,7 @@ import static com.dragons.aurora.fragment.PreferenceFragment.PREFERENCE_REQUESTE
 import static com.dragons.aurora.fragment.PreferenceFragment.PREFERENCE_REQUESTED_LANGUAGE_INDEX;
 import static com.dragons.aurora.fragment.PreferenceFragment.PREFERENCE_REQUESTED_LOCATION_INDEX;
 
-public class SpoofFragment extends UtilFragment {
+public class SpoofFragment extends AccountsHelper {
 
     static String LineageURl = "https://wiki.lineageos.org/images/devices/";
 

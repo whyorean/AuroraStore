@@ -59,21 +59,21 @@ public class Video extends AbstractHelper {
         String vID = getID(app.getVideoUrl());
         String URL = "https://img.youtube.com/vi/" + vID + "/hqdefault.jpg";
 
-        ImageView imageView = fragment.getActivity().findViewById(R.id.thumbnail);
+        ImageView imageView = view.findViewById(R.id.thumbnail);
 
-        Picasso.with(fragment.getActivity())
+        Picasso.with(context)
                 .load(URL)
                 .fit()
                 .placeholder(android.R.color.transparent)
                 .centerCrop()
                 .into(imageView);
 
-        fragment.getActivity().findViewById(R.id.app_video).setVisibility(View.VISIBLE);
+        view.findViewById(R.id.app_video).setVisibility(View.VISIBLE);
 
-        ImageView play = fragment.getActivity().findViewById(R.id.vid_play);
+        ImageView play = view.findViewById(R.id.vid_play);
         play.setOnClickListener(v -> {
             try {
-                fragment.getActivity().startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(app.getVideoUrl())));
+                context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(app.getVideoUrl())));
             } catch (ActivityNotFoundException e) {
                 Log.i(getClass().getSimpleName(), "Something is wrong with WebView");
             }

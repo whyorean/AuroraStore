@@ -47,14 +47,14 @@ public class Screenshot extends AbstractHelper {
 
     private void drawGallery() {
         List<SmallScreenshotsAdapter.Holder> SSAdapter = new ArrayList<>();
-        RecyclerView gallery = fragment.getActivity().findViewById(R.id.screenshots_gallery);
+        RecyclerView gallery = view.findViewById(R.id.screenshots_gallery);
 
         for (int i = 0; i < app.getScreenshotUrls().size(); i++)
             SSAdapter.add(new SmallScreenshotsAdapter.Holder(app.getScreenshotUrls()));
 
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(fragment.getActivity(), LinearLayoutManager.HORIZONTAL, false);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false);
         gallery.setNestedScrollingEnabled(false);
-        gallery.setAdapter(new SmallScreenshotsAdapter(SSAdapter, fragment.getActivity()));
+        gallery.setAdapter(new SmallScreenshotsAdapter(SSAdapter, context));
         gallery.setLayoutManager(layoutManager);
     }
 }

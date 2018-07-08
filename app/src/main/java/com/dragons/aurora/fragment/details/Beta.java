@@ -68,23 +68,22 @@ public class Beta extends AbstractHelper {
 
         setText(fragment.getView(), R.id.beta_email, app.getTestingProgramEmail());
 
-        editText = fragment.getActivity().findViewById(R.id.beta_comment);
+        editText = view.findViewById(R.id.beta_comment);
 
-        fragment.getActivity().findViewById(R.id.beta_card).setVisibility(View.VISIBLE);
+        view.findViewById(R.id.beta_card).setVisibility(View.VISIBLE);
 
-        fragment.getActivity().findViewById(R.id.beta_feedback)
+        view.findViewById(R.id.beta_feedback)
                 .setVisibility(app.isTestingProgramOptedIn()
                         ? View.VISIBLE
                         : View.GONE);
 
-        fragment.getActivity().findViewById(R.id.beta_subscribe_button)
-                .setOnClickListener(new BetaOnClickListener(fragment
-                        .getActivity().findViewById(R.id.beta_message), app));
+        view.findViewById(R.id.beta_subscribe_button)
+                .setOnClickListener(new BetaOnClickListener(view.findViewById(R.id.beta_message), app));
 
-        fragment.getActivity().findViewById(R.id.beta_submit_button)
+        view.findViewById(R.id.beta_submit_button)
                 .setOnClickListener(v -> initBetaTask(new BetaFeedbackSubmitTask()).execute());
 
-        fragment.getActivity().findViewById(R.id.beta_delete_button)
+        view.findViewById(R.id.beta_delete_button)
                 .setOnClickListener(v -> initBetaTask(new BetaFeedbackDeleteTask()).execute());
 
         if (null != app.getUserReview() && !TextUtils.isEmpty(app.getUserReview().getComment())) {
@@ -96,7 +95,7 @@ public class Beta extends AbstractHelper {
     private BetaFeedbackTask initBetaTask(BetaFeedbackTask task) {
         task.setPackageName(app.getPackageName());
         task.setEditText(editText);
-        task.setDeleteButton(fragment.getActivity().findViewById(R.id.beta_delete_button));
+        task.setDeleteButton(view.findViewById(R.id.beta_delete_button));
         return task;
     }
 

@@ -47,10 +47,14 @@ public abstract class AbstractHelper {
 
     protected DetailsFragment fragment;
     protected App app;
+    protected View view;
+    protected Context context;
 
     public AbstractHelper(DetailsFragment fragment, App app) {
         this.fragment = fragment;
         this.app = app;
+        this.view=fragment.getView();
+        this.context=fragment.getContext();
     }
 
     abstract public void draw();
@@ -91,37 +95,37 @@ public abstract class AbstractHelper {
     }
 
     protected void paintButton(int color, int buttonId) {
-        android.widget.Button button = fragment.getActivity().findViewById(buttonId);
+        android.widget.Button button = view.findViewById(buttonId);
         if (button != null)
             ViewCompat.setBackgroundTintList(button, ColorStateList.valueOf(color));
     }
 
     protected void paintRLayout(int color, int layoutId) {
-        RelativeLayout relativeLayout = fragment.getActivity().findViewById(layoutId);
+        RelativeLayout relativeLayout = view.findViewById(layoutId);
         if (relativeLayout != null)
             relativeLayout.setBackgroundColor(color);
     }
 
     void paintLLayout(int color, int viewID) {
-        LinearLayout layout = fragment.getActivity().findViewById(viewID);
+        LinearLayout layout = view.findViewById(viewID);
         if (layout != null && !Util.isDark(fragment.getContext()))
             ViewCompat.setBackgroundTintList(layout, ColorStateList.valueOf(ColorUtils.setAlphaComponent(color, 50)));
     }
 
     protected void paintTextView(int color, int textViewId) {
-        TextView textView = fragment.getActivity().findViewById(textViewId);
+        TextView textView = view.findViewById(textViewId);
         if (textView != null)
             textView.setTextColor(color);
     }
 
     protected void paintImageView(int color, int imageViewId) {
-        ImageView imageView = fragment.getActivity().findViewById(imageViewId);
+        ImageView imageView = view.findViewById(imageViewId);
         if (imageView != null)
             imageView.setColorFilter(color);
     }
 
     protected void paintImageViewBg(int color, int imageViewId) {
-        ImageView imageView = fragment.getActivity().findViewById(imageViewId);
+        ImageView imageView = view.findViewById(imageViewId);
         if (imageView != null)
             imageView.setBackgroundColor(color);
     }

@@ -33,12 +33,16 @@ import android.provider.Settings;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.util.TypedValue;
+import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.view.animation.LayoutAnimationController;
+import android.widget.TextView;
 
 import com.dragons.aurora.downloader.DownloadState;
 import com.dragons.aurora.fragment.PreferenceFragment;
 import com.dragons.aurora.model.App;
+import com.percolate.caffeine.PhoneUtils;
+import com.percolate.caffeine.ViewUtils;
 
 import java.io.Closeable;
 import java.io.File;
@@ -283,5 +287,27 @@ public class Util {
         putString(context, "GOOGLE_NAME", "");
         putString(context, "GOOGLE_URL", "");
         new PlayStoreApiAuthenticator(context).logout();
+    }
+
+    public static boolean isConnected(Context c) {
+        return PhoneUtils.isNetworkAvailable(c);
+    }
+
+    public static void hide(View v, int viewID) {
+        ViewUtils.findViewById(v, viewID).setVisibility(View.GONE);
+    }
+
+    public static void show(View v, int viewID) {
+        ViewUtils.findViewById(v, viewID).setVisibility(View.VISIBLE);
+    }
+
+    public static void setText(View v, int viewId, String text) {
+        TextView textView = ViewUtils.findViewById(v, viewId);
+        if (null != textView)
+            textView.setText(text);
+    }
+
+    public static void setText(View v, int viewId, int stringId, Object... text) {
+        setText(v, viewId, v.getResources().getString(stringId, text));
     }
 }

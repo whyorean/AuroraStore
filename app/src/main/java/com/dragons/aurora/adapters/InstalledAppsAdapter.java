@@ -45,11 +45,11 @@ import java.util.List;
 public class InstalledAppsAdapter extends RecyclerView.Adapter<InstalledAppsAdapter.ViewHolder> {
 
     public List<App> appsToAdd;
-    private Context context;
+    private AuroraActivity activity;
     private ViewHolder viewHolder;
 
-    public InstalledAppsAdapter(Context context, List<App> appsToAdd) {
-        this.context = context;
+    public InstalledAppsAdapter(AuroraActivity activity, List<App> appsToAdd) {
+        this.activity = activity;
         this.appsToAdd = appsToAdd;
     }
 
@@ -97,24 +97,24 @@ public class InstalledAppsAdapter extends RecyclerView.Adapter<InstalledAppsAdap
         setup3dotMenu(viewHolder, app, position);
     }
 
-    public void setup3dotMenu(ViewHolder viewHolder, App app, int position) {
+    void setup3dotMenu(ViewHolder viewHolder, App app, int position) {
         viewHolder.menu_3dot.setOnClickListener(v -> {
             PopupMenu popup = new PopupMenu(v.getContext(), v);
             popup.inflate(R.menu.menu_download);
-            new DownloadOptions((AuroraActivity) context, app).inflate(popup.getMenu());
-            popup.getMenu().findItem(R.id.action_download).setVisible(new ButtonDownload((AuroraActivity) context, app).shouldBeVisible());
+            new DownloadOptions(activity, app).inflate(popup.getMenu());
+            popup.getMenu().findItem(R.id.action_download).setVisible(new ButtonDownload(activity, app).shouldBeVisible());
             popup.getMenu().findItem(R.id.action_uninstall).setVisible(app.isInstalled());
             popup.setOnMenuItemClickListener(item -> {
                 switch (item.getItemId()) {
                     case R.id.action_download:
-                        new ButtonDownload((AuroraActivity) context, app).checkAndDownload();
+                        new ButtonDownload(activity, app).checkAndDownload();
                         break;
                     case R.id.action_uninstall:
-                        new ButtonUninstall((AuroraActivity) context, app).uninstall();
+                        new ButtonUninstall(activity, app).uninstall();
                         remove(position);
                         break;
                     default:
-                        return new DownloadOptions((AuroraActivity) context, app).onContextItemSelected(item);
+                        return new DownloadOptions(activity, app).onContextItemSelected(item);
                 }
                 return false;
             });

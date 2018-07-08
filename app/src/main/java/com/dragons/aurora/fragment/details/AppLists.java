@@ -47,7 +47,7 @@ public class AppLists extends AbstractHelper {
 
     @Override
     public void draw() {
-        LinearLayout relatedLinksLayout = fragment.getActivity().findViewById(R.id.cluster_links);
+        LinearLayout relatedLinksLayout = view.findViewById(R.id.cluster_links);
         for (String label : app.getRelatedLinks().keySet()) {
             relatedLinksLayout.setVisibility(View.VISIBLE);
             relatedLinksLayout.addView(buildClusterAppsCard(app.getRelatedLinks().get(label), label));
@@ -69,15 +69,15 @@ public class AppLists extends AbstractHelper {
     }
 
     private void addAppsByThisDeveloper() {
-        ViewUtils.findViewById(fragment.getActivity(), R.id.apps_by_same_developer).setVisibility(View.VISIBLE);
-        ImageView imageView = fragment.getActivity().findViewById(R.id.apps_by_same_developer);
+        ViewUtils.findViewById(view, R.id.apps_by_same_developer).setVisibility(View.VISIBLE);
+        ImageView imageView = view.findViewById(R.id.apps_by_same_developer);
         imageView.setVisibility(View.VISIBLE);
         imageView.setOnClickListener(v -> {
             Intent intent = new Intent(fragment.getActivity(), SearchActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             intent.setAction(Intent.ACTION_SEARCH);
             intent.putExtra(SearchManager.QUERY, SearchActivity.PUB_PREFIX + app.getDeveloperName());
-            fragment.getActivity().startActivity(intent);
+            context.startActivity(intent);
         });
     }
 }

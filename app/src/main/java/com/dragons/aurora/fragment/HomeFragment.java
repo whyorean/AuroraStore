@@ -47,7 +47,9 @@ import com.dragons.aurora.view.MoreAppsCard;
 import com.dragons.custom.TagView;
 import com.squareup.picasso.Picasso;
 
-public class HomeFragment extends UtilFragment {
+import static com.dragons.aurora.Util.isConnected;
+
+public class HomeFragment extends AccountsHelper {
 
     private AdaptiveToolbar adtb;
     private View view;

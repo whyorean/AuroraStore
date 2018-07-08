@@ -51,6 +51,9 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
+import static com.dragons.aurora.Util.hide;
+import static com.dragons.aurora.Util.isConnected;
+
 public class TopFreeApps extends CategoryAppsTask {
 
     @BindView(R.id.endless_apps_list)
@@ -127,10 +130,10 @@ public class TopFreeApps extends CategoryAppsTask {
 
     protected void setupListView(List<App> appsToAdd) {
         progress.setVisibility(View.GONE);
-        LinearLayoutManager mLayoutManager = new LinearLayoutManager(this.getActivity());
+        LinearLayoutManager mLayoutManager = new LinearLayoutManager(getContext());
         endlessAppsAdapter = new EndlessAppsAdapter(getActivity(), appsToAdd);
         recyclerView.setLayoutManager(mLayoutManager);
-        recyclerView.setLayoutAnimation(AnimationUtils.loadLayoutAnimation(this.getActivity(), R.anim.layout_anim));
+        recyclerView.setLayoutAnimation(AnimationUtils.loadLayoutAnimation(getContext(), R.anim.layout_anim));
         recyclerView.setAdapter(endlessAppsAdapter);
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
