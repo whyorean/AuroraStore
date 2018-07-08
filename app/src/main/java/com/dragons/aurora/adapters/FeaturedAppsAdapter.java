@@ -23,10 +23,9 @@ package com.dragons.aurora.adapters;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.Color;
-import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.GradientDrawable;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.graphics.ColorUtils;
 import android.support.v7.graphics.Palette;
 import android.support.v7.widget.RecyclerView;
@@ -39,6 +38,14 @@ import android.widget.RatingBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.DataSource;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.load.engine.GlideException;
+import com.bumptech.glide.load.resource.bitmap.BitmapTransitionOptions;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.RequestOptions;
+import com.bumptech.glide.request.target.Target;
 import com.dragons.aurora.R;
 import com.dragons.aurora.activities.AuroraActivity;
 import com.dragons.aurora.activities.DetailsActivity;
@@ -46,7 +53,6 @@ import com.dragons.aurora.fragment.details.ButtonDownload;
 import com.dragons.aurora.fragment.details.ButtonUninstall;
 import com.dragons.aurora.fragment.details.DownloadOptions;
 import com.dragons.aurora.model.App;
-import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -113,47 +119,49 @@ public class FeaturedAppsAdapter extends RecyclerView.Adapter<FeaturedAppsAdapte
     }
 
     private void drawBackground(App app, ViewHolder holder) {
-        Picasso.with(context)
+        Glide.with(context)
+                .asBitmap()
                 .load(app.getPageBackgroundImage().getUrl())
-                .placeholder(R.color.transparent)
-                .into(holder.appBackground, new com.squareup.picasso.Callback() {
+                .apply(new RequestOptions()
+                        .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
+                        .placeholder(R.color.transparent))
+                .transition(new BitmapTransitionOptions().crossFade())
+                .listener(new RequestListener<Bitmap>() {
                     @Override
-                    public void onSuccess() {
-                        Bitmap bitmap = ((BitmapDrawable) holder.appBackground.getDrawable()).getBitmap();
-                        if (bitmap != null)
-                            getPalette(bitmap, holder);
+                    public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Bitmap> target, boolean isFirstResource) {
+                        return false;
                     }
 
                     @Override
-                    public void onError() {
-                        holder.appName.setTextColor(Color.WHITE);
-                        holder.appData.setBackgroundColor(Color.DKGRAY);
+                    public boolean onResourceReady(Bitmap resource, Object model, Target<Bitmap> target, DataSource dataSource, boolean isFirstResource) {
+                        getPalette(resource, holder);
+                        return false;
                     }
-                });
+                })
+                .into(holder.appBackground);
     }
 
     private void drawIcon(App app, ViewHolder holder) {
-        Picasso.with(context)
+        Glide.with(context)
                 .load(app.getIconInfo().getUrl())
-                .placeholder(R.color.transparent)
+                .apply(new RequestOptions()
+                        .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
+                        .placeholder(R.color.transparent))
                 .into(holder.appIcon);
     }
 
     private void getPalette(Bitmap bitmap, ViewHolder holder) {
         Palette.from(bitmap)
-                .generate(palette -> {
-                    Palette.Swatch mySwatch = palette.getDarkVibrantSwatch();
-                    if (mySwatch != null) {
-                        paintEmAll(palette.getDarkVibrantColor(Color.DKGRAY), holder);
-                    }
-                });
+                .generate(palette -> paintEmAll(palette, holder));
     }
 
-    private void paintEmAll(int color, ViewHolder holder) {
-        GradientDrawable gradientDrawable = new GradientDrawable(GradientDrawable.Orientation.BOTTOM_TOP,
-                new int[]{ColorUtils.setAlphaComponent(color, 150), 0x05000000});
-        gradientDrawable.setCornerRadius(0f);
-        holder.appData.setBackground(gradientDrawable);
+    private void paintEmAll(Palette palette, ViewHolder holder) {
+        Palette.Swatch swatch = palette.getDarkVibrantSwatch();
+        if (swatch != null) {
+            GradientDrawable gradientDrawable = new GradientDrawable(GradientDrawable.Orientation.BOTTOM_TOP,
+                    new int[]{ColorUtils.setAlphaComponent(swatch.getRgb(), 150), 0x05000000});
+            holder.appData.setBackground(gradientDrawable);
+        }
     }
 
     protected void setText(TextView textView, String text) {
@@ -180,7 +188,6 @@ public class FeaturedAppsAdapter extends RecyclerView.Adapter<FeaturedAppsAdapte
         private ImageView appIcon;
         private ImageView appBackground;
         private ImageView appMenu3Dot;
-
 
         ViewHolder(View view) {
             super(view);

@@ -29,6 +29,9 @@ import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
+import com.bumptech.glide.request.RequestOptions;
 import com.dragons.aurora.R;
 import com.dragons.aurora.ReviewStorageIterator;
 import com.dragons.aurora.builders.UserReviewDialogBuilder;
@@ -36,7 +39,6 @@ import com.dragons.aurora.fragment.DetailsFragment;
 import com.dragons.aurora.model.App;
 import com.dragons.aurora.task.playstore.ReviewDeleteTask;
 import com.dragons.aurora.task.playstore.ReviewLoadTask;
-import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -152,10 +154,13 @@ public class Review extends AbstractHelper {
                     review.getTitle()
             ));
             ((TextView) reviewLayout.findViewById(R.id.comment)).setText(review.getComment());
-            Picasso
-                    .with(fragment.getActivity())
+            Glide
+                    .with(context)
                     .load(review.getUserPhotoUrl())
-                    .placeholder(R.color.transparent)
+                    .apply(new RequestOptions()
+                            .placeholder(R.color.transparent)
+                            .circleCrop())
+                    .transition(new DrawableTransitionOptions().crossFade())
                     .into((ImageView) reviewLayout.findViewById(R.id.avatar));
             parent.addView(reviewLayout);
         }

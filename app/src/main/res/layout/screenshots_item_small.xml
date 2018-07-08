@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Aurora Store
   ~ Copyright (C) 2018  Rahul Kumar Patel <whyorean@gmail.com>
   ~
@@ -20,21 +19,12 @@
   ~ along with Aurora Store.  If not, see <http://www.gnu.org/licenses/>.
   -->
 
-<com.github.florent37.shapeofview.shapes.RoundRectView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+<ImageView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scrn_itm_s"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_margin="2dp"
-    app:shape_roundRect_bottomLeftRadius="8dp"
-    app:shape_roundRect_bottomRightRadius="8dp"
-    app:shape_roundRect_topLeftRadius="8dp"
-    app:shape_roundRect_topRightRadius="8dp">
-
-    <ImageView
-        android:id="@+id/scrn_itm_s"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        android:focusable="true"
-        android:scaleType="centerCrop" />
-</com.github.florent37.shapeofview.shapes.RoundRectView>
+    android:layout_margin="4dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:scaleType="centerCrop" />

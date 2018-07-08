@@ -24,8 +24,8 @@ package com.dragons.aurora.activities;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
-import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.graphics.Palette;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -37,13 +37,19 @@ import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.DataSource;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.load.engine.GlideException;
+import com.bumptech.glide.load.resource.bitmap.BitmapTransitionOptions;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.RequestOptions;
+import com.bumptech.glide.request.target.Target;
 import com.dragons.aurora.R;
 import com.dragons.aurora.Util;
 import com.dragons.aurora.fragment.details.DownloadOrInstall;
 import com.dragons.aurora.model.App;
 import com.dragons.aurora.task.playstore.PurchaseCheckTask;
-import com.squareup.picasso.Callback;
-import com.squareup.picasso.Picasso;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -133,23 +139,28 @@ public class ManualDownloadActivity extends DetailsActivity {
         });
 
         ImageView appIcon = findViewById(R.id.icon);
-        Picasso
-                .with(this)
+
+        Glide.with(this)
+                .asBitmap()
                 .load(app.getIconInfo().getUrl())
-                .placeholder(R.color.transparent)
-                .into((ImageView) findViewById(R.id.icon), new Callback() {
+                .apply(new RequestOptions()
+                        .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
+                        .placeholder(R.color.transparent))
+                .transition(new BitmapTransitionOptions().crossFade())
+                .listener(new RequestListener<Bitmap>() {
                     @Override
-                    public void onSuccess() {
-                        Bitmap bitmap = ((BitmapDrawable) appIcon.getDrawable()).getBitmap();
-                        if (bitmap != null && COLOR_UI)
-                            getPalette(bitmap);
+                    public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Bitmap> target, boolean isFirstResource) {
+                        return false;
                     }
 
                     @Override
-                    public void onError() {
-
+                    public boolean onResourceReady(Bitmap resource, Object model, Target<Bitmap> target, DataSource dataSource, boolean isFirstResource) {
+                        if (COLOR_UI)
+                            getPalette(resource);
+                        return false;
                     }
-                });
+                })
+                .into(appIcon);
     }
 
     private void getPalette(Bitmap bitmap) {

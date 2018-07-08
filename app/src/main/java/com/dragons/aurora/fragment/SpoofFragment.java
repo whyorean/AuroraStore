@@ -38,6 +38,8 @@ import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.dragons.aurora.PlayStoreApiAuthenticator;
 import com.dragons.aurora.R;
 import com.dragons.aurora.SpoofDeviceManager;
@@ -45,7 +47,6 @@ import com.dragons.aurora.Util;
 import com.dragons.aurora.activities.DeviceInfoActivity;
 import com.dragons.aurora.activities.LoginActivity;
 import com.dragons.aurora.task.SpoofTask;
-import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -67,7 +68,6 @@ public class SpoofFragment extends AccountsHelper {
 
     private String deviceName;
     private View view;
-    private List<Address> addresses;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -122,12 +122,7 @@ public class SpoofFragment extends AccountsHelper {
     }
 
     public void drawDevice() {
-        Picasso
-                .with(getContext())
-                .load(LineageURl + Build.DEVICE + ".png")
-                .placeholder(ContextCompat.getDrawable(getContext(), R.drawable.ic_device))
-                .into((ImageView) view.findViewById(R.id.device_avatar));
-
+        getDeviceImg(LineageURl + Build.DEVICE + ".png");
         setText(R.id.device_model, R.string.device_model, Build.MODEL, Build.DEVICE);
         setText(R.id.device_manufacturer, Build.MANUFACTURER);
         setText(R.id.device_architect, Build.BOARD);
@@ -136,13 +131,7 @@ public class SpoofFragment extends AccountsHelper {
     public void drawSpoofedDevice() {
         Properties properties = new SpoofDeviceManager(this.getActivity()).getProperties(deviceName);
         String Model = properties.getProperty("UserReadableName");
-
-        Picasso
-                .with(getContext())
-                .load(LineageURl + properties.getProperty("Build.DEVICE") + ".png")
-                .placeholder(ContextCompat.getDrawable(getContext(), R.drawable.ic_device))
-                .into((ImageView) view.findViewById(R.id.device_avatar));
-
+        getDeviceImg(LineageURl + properties.getProperty("Build.DEVICE") + ".png");
         setText(R.id.device_model, R.string.device_model, Model.substring(0, Model.indexOf('(')), properties.getProperty("Build.DEVICE"));
         setText(R.id.device_manufacturer, properties.getProperty("Build.MANUFACTURER"));
         setText(R.id.device_architect, properties.getProperty("Build.HARDWARE"));
@@ -253,6 +242,15 @@ public class SpoofFragment extends AccountsHelper {
 
             }
         });
+    }
+
+    protected void getDeviceImg(String url) {
+        Glide
+                .with(getContext())
+                .load(url)
+                .apply(new RequestOptions().placeholder(ContextCompat.getDrawable(getContext(), R.drawable.ic_device)))
+                .into((ImageView) view.findViewById(R.id.device_avatar));
+
     }
 
     protected void setText(int viewId, String text) {

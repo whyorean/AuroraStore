@@ -25,16 +25,20 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.support.annotation.NonNull;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.load.resource.bitmap.CenterCrop;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
+import com.bumptech.glide.request.RequestOptions;
 import com.dragons.aurora.R;
 import com.dragons.aurora.activities.FullscreenImageActivity;
-import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -60,10 +64,15 @@ public class SmallScreenshotsAdapter extends RecyclerView.Adapter<SmallScreensho
     public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
         final SmallScreenshotsAdapter.Holder ssholder = this.ssholder.get(position);
         String url = ssholder.url.get(position);
-        Picasso.with(context)
+        Glide
+                .with(context)
                 .load(url)
-                .placeholder(ContextCompat.getDrawable(context,R.drawable.screenshot_bg))
+                .apply(new RequestOptions()
+                        .transforms(new CenterCrop(), new RoundedCorners(25))
+                        .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC))
+                .transition(new DrawableTransitionOptions().crossFade())
                 .into(holder.ss_image);
+
         holder.ss_image.setOnClickListener(v -> {
             Intent intent = new Intent(context, FullscreenImageActivity.class);
             intent.putExtra(FullscreenImageActivity.INTENT_SCREENSHOT_NUMBER, position);

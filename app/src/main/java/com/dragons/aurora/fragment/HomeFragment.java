@@ -33,10 +33,10 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.dragons.aurora.CategoryManager;
-import com.dragons.aurora.CircleTransform;
 import com.dragons.aurora.R;
-import com.dragons.aurora.Util;
 import com.dragons.aurora.activities.AccountsActivity;
 import com.dragons.aurora.activities.CategoryAppsActivity;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
@@ -45,7 +45,6 @@ import com.dragons.aurora.task.FeaturedTaskHelper;
 import com.dragons.aurora.view.AdaptiveToolbar;
 import com.dragons.aurora.view.MoreAppsCard;
 import com.dragons.custom.TagView;
-import com.squareup.picasso.Picasso;
 
 import static com.dragons.aurora.Util.isConnected;
 
@@ -97,10 +96,12 @@ public class HomeFragment extends AccountsHelper {
 
     protected void setUser() {
         if (isGoogle()) {
-            Picasso.with(getActivity())
+            Glide
+                    .with(getContext())
                     .load(PreferenceFragment.getString(getActivity(), "GOOGLE_URL"))
-                    .placeholder(ContextCompat.getDrawable(getContext(), R.drawable.ic_user_placeholder))
-                    .transform(new CircleTransform())
+                    .apply(new RequestOptions()
+                            .placeholder(ContextCompat.getDrawable(getContext(), R.drawable.ic_user_placeholder))
+                            .circleCrop())
                     .into(adtb.getAvatar_icon());
         } else {
             (adtb.getAvatar_icon()).setImageDrawable(getResources()
@@ -186,7 +187,8 @@ public class HomeFragment extends AccountsHelper {
             case "3":
                 subcategory = GooglePlayAPI.SUBCATEGORY.MOVERS_SHAKERS;
                 break;
-                default:subcategory = GooglePlayAPI.SUBCATEGORY.TOP_GROSSING;
+            default:
+                subcategory = GooglePlayAPI.SUBCATEGORY.TOP_GROSSING;
         }
         return subcategory;
     }

@@ -33,7 +33,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.dragons.aurora.CircleTransform;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 import com.dragons.aurora.PlayStoreApiAuthenticator;
 import com.dragons.aurora.R;
 import com.dragons.aurora.Util;
@@ -41,7 +43,6 @@ import com.dragons.aurora.activities.LoginActivity;
 import com.dragons.aurora.task.UserProvidedCredentialsTask;
 import com.github.florent37.shapeofview.shapes.CircleView;
 import com.percolate.caffeine.ViewUtils;
-import com.squareup.picasso.Picasso;
 
 import static com.dragons.aurora.Util.hide;
 import static com.dragons.aurora.Util.isConnected;
@@ -184,10 +185,13 @@ public class AccountsFragment extends AccountsHelper {
     }
 
     private void loadAvatar(String Url) {
-        Picasso.with(getActivity())
+        Glide
+                .with(getContext())
                 .load(Url)
-                .placeholder(ContextCompat.getDrawable(getContext(),R.drawable.ic_dummy_avatar))
-                .transform(new CircleTransform())
+                .apply(new RequestOptions()
+                        .placeholder(ContextCompat.getDrawable(getContext(), R.drawable.ic_dummy_avatar))
+                        .circleCrop()
+                        .diskCacheStrategy(DiskCacheStrategy.DATA))
                 .into(((ImageView) v.findViewById(R.id.accounts_AvatarG)));
     }
 

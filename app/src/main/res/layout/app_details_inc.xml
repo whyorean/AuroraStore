@@ -117,7 +117,6 @@
                 android:layout_width="28dp"
                 android:layout_height="28dp"
                 android:alpha="0.7"
-                android:src="@drawable/ic_categories"
                 android:tint="?android:attr/colorForeground" />
 
             <TextView

@@ -43,7 +43,7 @@ public class InstalledAppBadge extends AppBadge {
         if (manager.contains(app.getPackageName())) {
             line3.add(c.getString(manager.isBlack() ? R.string.list_app_blacklisted : R.string.list_app_whitelisted));
         }
-        drawIcon((ImageView) view.findViewById(R.id.icon));
+        drawIcon(view.findViewById(R.id.icon));
         super.draw();
     }
 }

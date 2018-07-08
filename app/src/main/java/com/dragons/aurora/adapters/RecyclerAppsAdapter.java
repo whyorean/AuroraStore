@@ -33,13 +33,14 @@ import android.widget.RatingBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.dragons.aurora.R;
 import com.dragons.aurora.Util;
 import com.dragons.aurora.activities.AuroraActivity;
 import com.dragons.aurora.activities.DetailsActivity;
 import com.dragons.aurora.fragment.details.ButtonDownload;
 import com.dragons.aurora.model.App;
-import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -76,10 +77,10 @@ public class RecyclerAppsAdapter extends RecyclerView.Adapter<RecyclerAppsAdapte
         final App app = appsToAdd.get(position);
         final boolean isInstalled = Util.isAlreadyInstalled(context, app.getPackageName());
 
-        Picasso
+        Glide
                 .with(context)
                 .load(app.getIconInfo().getUrl())
-                .placeholder(R.color.transparent)
+                .apply(new RequestOptions().placeholder(R.color.transparent))
                 .into(holder.appIcon);
         setText(holder.view, holder.appRating, R.string.details_rating, app.getRating().getAverage());
         holder.appName.setText(Util.getSimpleName(app.getDisplayName()));

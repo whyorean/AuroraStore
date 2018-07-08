@@ -28,12 +28,15 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
+import com.bumptech.glide.request.RequestOptions;
 import com.dragons.aurora.NetworkState;
 import com.dragons.aurora.R;
 import com.dragons.aurora.fragment.PreferenceFragment;
 import com.dragons.aurora.model.App;
 import com.dragons.aurora.model.ImageSource;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -74,10 +77,13 @@ public abstract class AppBadge extends ListItem {
         if (null != imageSource.getApplicationInfo() && !noImages()) {
             imageView.setImageDrawable(imageView.getContext().getPackageManager().getApplicationIcon(imageSource.getApplicationInfo()));
         } else if (!noImages()) {
-            Picasso
+            Glide
                     .with(view.getContext())
                     .load(imageSource.getUrl())
-                    .placeholder(ContextCompat.getDrawable(view.getContext(),R.drawable.ic_placeholder))
+                    .apply(RequestOptions
+                            .placeholderOf(ContextCompat.getDrawable(view.getContext(), R.drawable.ic_placeholder))
+                            .diskCacheStrategy(DiskCacheStrategy.ALL))
+                    .transition(new DrawableTransitionOptions().crossFade())
                     .into(imageView);
         }
     }

@@ -113,7 +113,7 @@
     <string-array name="opensource">
         <item>JavaXDelta</item>
         <item>Chainfire SuperSU</item>
-        <item>SquareUp Picasso</item>
+        <item>Bumptech Glide</item>
         <item>SquareUp OKHTTP</item>
         <item>Play Store API</item>
         <item>AOSP CardView</item>

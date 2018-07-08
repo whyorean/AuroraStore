@@ -29,8 +29,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.dragons.aurora.R;
-import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -57,9 +58,10 @@ public class BigScreenshotsAdapter extends RecyclerView.Adapter<BigScreenshotsAd
     public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
         bsholder = this.ssholder.get(position);
         String url = bsholder.url.get(position);
-        Picasso.with(context)
+        Glide
+                .with(context)
                 .load(url)
-                .placeholder(android.R.color.transparent)
+                .apply(new RequestOptions().placeholder(android.R.color.transparent))
                 .into(holder.ss_image);
     }
 

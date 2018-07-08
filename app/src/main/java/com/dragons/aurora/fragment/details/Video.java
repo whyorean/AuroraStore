@@ -29,10 +29,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
+import com.bumptech.glide.request.RequestOptions;
 import com.dragons.aurora.R;
 import com.dragons.aurora.fragment.DetailsFragment;
 import com.dragons.aurora.model.App;
-import com.squareup.picasso.Picasso;
 
 public class Video extends AbstractHelper {
 
@@ -61,11 +63,11 @@ public class Video extends AbstractHelper {
 
         ImageView imageView = view.findViewById(R.id.thumbnail);
 
-        Picasso.with(context)
+        Glide
+                .with(context)
                 .load(URL)
-                .fit()
-                .placeholder(android.R.color.transparent)
-                .centerCrop()
+                .apply(new RequestOptions().centerCrop().placeholder(android.R.color.transparent))
+                .transition(new DrawableTransitionOptions().crossFade())
                 .into(imageView);
 
         view.findViewById(R.id.app_video).setVisibility(View.VISIBLE);

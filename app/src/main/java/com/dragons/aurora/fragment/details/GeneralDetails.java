@@ -25,7 +25,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Color;
-import android.graphics.drawable.BitmapDrawable;
+import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.graphics.Palette;
 import android.support.v7.widget.CardView;
@@ -37,9 +37,18 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.Priority;
+import com.bumptech.glide.load.DataSource;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.load.engine.GlideException;
+import com.bumptech.glide.load.resource.bitmap.BitmapTransitionOptions;
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.RequestOptions;
+import com.bumptech.glide.request.target.Target;
 import com.dragons.aurora.CategoryManager;
 import com.dragons.aurora.R;
 import com.dragons.aurora.Util;
@@ -47,8 +56,6 @@ import com.dragons.aurora.activities.AuroraActivity;
 import com.dragons.aurora.fragment.DetailsFragment;
 import com.dragons.aurora.model.App;
 import com.dragons.aurora.model.ImageSource;
-import com.squareup.picasso.Callback;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -75,7 +82,6 @@ public class GeneralDetails extends AbstractHelper {
         if (view != null) {
             ImageView appIcon = view.findViewById(R.id.icon);
             ImageView app_menu3dot = view.findViewById(R.id.app_menu3dot);
-            RelativeLayout relativeLayout = view.findViewById(R.id.details_header);
             ImageSource imageSource = app.getIconInfo();
             if (null != imageSource.getApplicationInfo()) {
                 appIcon.setImageDrawable(context.getPackageManager().getApplicationIcon(imageSource.getApplicationInfo()));
@@ -84,26 +90,28 @@ public class GeneralDetails extends AbstractHelper {
                     getPalette(bitmap);
                 }
             } else {
-                Picasso
-                        .with(context)
+                Glide.with(context)
+                        .asBitmap()
                         .load(imageSource.getUrl())
-                        .placeholder(R.color.transparent)
-                        .into(appIcon, new Callback() {
+                        .apply(new RequestOptions()
+                                .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
+                                .placeholder(R.color.transparent)
+                                .priority(Priority.HIGH))
+                        .transition(new BitmapTransitionOptions().crossFade())
+                        .listener(new RequestListener<Bitmap>() {
                             @Override
-                            public void onSuccess() {
-                                Bitmap bitmap = ((BitmapDrawable) appIcon.getDrawable()).getBitmap();
-                                if (bitmap != null && COLOR_UI)
-                                    getPalette(bitmap);
+                            public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Bitmap> target, boolean isFirstResource) {
+                                return false;
                             }
 
                             @Override
-                            public void onError() {
-                                if (Util.isDark(fragment.getContext()))
-                                    relativeLayout.setBackgroundColor(Color.LTGRAY);
-                                else
-                                    relativeLayout.setBackgroundColor(Color.DKGRAY);
+                            public boolean onResourceReady(Bitmap resource, Object model, Target<Bitmap> target, DataSource dataSource, boolean isFirstResource) {
+                                if (COLOR_UI)
+                                    getPalette(resource);
+                                return false;
                             }
-                        });
+                        })
+                        .into(appIcon);
             }
 
             setText(view, R.id.displayName, app.getDisplayName());
@@ -133,10 +141,12 @@ public class GeneralDetails extends AbstractHelper {
 
     private void drawBackground(ImageView appBackground) {
         if (null != app.getPageBackgroundImage().getUrl())
-            Picasso
+            Glide
                     .with(context)
                     .load(app.getPageBackgroundImage().getUrl())
-                    .placeholder(R.color.transparent)
+                    .apply(new RequestOptions()
+                            .placeholder(R.color.transparent)
+                            .priority(Priority.HIGH))
                     .into(appBackground);
         else
             appBackground.setVisibility(View.GONE);
@@ -194,15 +204,18 @@ public class GeneralDetails extends AbstractHelper {
             ImageView categoryImg = view.findViewById(R.id.categoryImage);
             ImageView ratingImg = view.findViewById(R.id.rating_img);
 
-            Picasso
-                    .with(context)
+            Glide.with(context)
                     .load(app.getCategoryIconUrl())
-                    .placeholder(ContextCompat.getDrawable(context, R.drawable.ic_categories))
+                    .apply(new RequestOptions()
+                            .placeholder(ContextCompat.getDrawable(context, R.drawable.ic_categories))
+                            .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC))
                     .into(categoryImg);
-            Picasso
-                    .with(context)
+
+            Glide.with(context)
                     .load(app.getRatingURL())
-                    .placeholder(ContextCompat.getDrawable(context, R.drawable.ic_audience))
+                    .apply(new RequestOptions()
+                            .placeholder(ContextCompat.getDrawable(context,R.drawable.ic_audience))
+                            .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC))
                     .into(ratingImg);
 
             drawOfferDetails(app);

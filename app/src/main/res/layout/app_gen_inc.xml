@@ -93,8 +93,7 @@
                 android:id="@+id/rating_img"
                 android:layout_width="18dp"
                 android:layout_height="18dp"
-                android:alpha="0.7"
-                android:src="@drawable/ic_audience" />
+                android:alpha="0.7" />
 
             <TextView
                 android:id="@+id/rating_lable"
