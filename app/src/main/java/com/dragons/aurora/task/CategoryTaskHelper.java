@@ -28,6 +28,8 @@ import android.util.Log;
 import android.view.animation.AnimationUtils;
 
 import com.dragons.aurora.AppListIteratorHelper;
+import com.dragons.aurora.ContextUtil;
+import com.dragons.aurora.CredentialsEmptyException;
 import com.dragons.aurora.PlayStoreApiAuthenticator;
 import com.dragons.aurora.R;
 import com.dragons.aurora.adapters.RecyclerAppsAdapter;
@@ -72,20 +74,24 @@ public class CategoryTaskHelper {
 
     private List<App> getApps(String categoryId, GooglePlayAPI.SUBCATEGORY subCategory) throws IOException {
         List<App> apps = new ArrayList<>();
-        AppListIteratorHelper iterator = new AppListIteratorHelper(new CategoryAppsIterator(
-                new PlayStoreApiAuthenticator(context).getApi(), categoryId, subCategory));
+        AppListIteratorHelper iterator = null;
 
         try {
+            iterator = new AppListIteratorHelper(new CategoryAppsIterator(
+                    new PlayStoreApiAuthenticator(context).getApi(), categoryId, subCategory));
             iterator.setGooglePlayApi(new PlayStoreApiAuthenticator(context).getApi());
         } catch (IOException e) {
-            Log.e(getClass().getSimpleName(), "Building an api object from preferences failed");
+            if (e instanceof CredentialsEmptyException)
+                ContextUtil.toastShort(context, "You are logged out");
+            else
+                Log.e(getClass().getSimpleName(), "Building an api object from preferences failed");
         }
 
-        if (!iterator.hasNext()) {
+        if (iterator != null && !iterator.hasNext()) {
             return new ArrayList<>();
         }
 
-        while (iterator.hasNext() && apps.isEmpty()) {
+        while (iterator != null && iterator.hasNext() && apps.isEmpty()) {
             try {
                 apps.addAll(iterator.next());
             } catch (IteratorGooglePlayException e) {
