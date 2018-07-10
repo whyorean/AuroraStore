@@ -136,7 +136,7 @@ public class SpoofTask extends AsyncTask<Void, Void, Void> {
     protected Void doInBackground(Void... voids) {
         if (position == 0) {
             Util.putInteger(context, PREFERENCE_REQUESTED_LOCATION_INDEX, 0);
-            setMockDialog(false);
+            ((SpoofActivity) context).runOnUiThread(() -> setMockDialog(false));
         } else
             mockLocation(geoLocation);
 
