@@ -48,6 +48,7 @@ import com.dragons.aurora.fragment.preference.Blacklist;
 import com.dragons.aurora.fragment.preference.CheckUpdates;
 import com.dragons.aurora.fragment.preference.DownloadDirectory;
 import com.dragons.aurora.fragment.preference.InstallationMethod;
+import com.dragons.aurora.helpers.Prefs;
 
 public class PreferenceFragment extends android.preference.PreferenceFragment {
 
@@ -151,31 +152,31 @@ public class PreferenceFragment extends android.preference.PreferenceFragment {
 
     private void setupSwitches(Context context) {
         SwitchPreference colors = (SwitchPreference) this.findPreference("COLOR_UI");
-        colors.setChecked(Util.getBoolean(context, "COLOR_UI"));
+        colors.setChecked(Prefs.getBoolean(context, "COLOR_UI"));
         colors.setOnPreferenceChangeListener(new OnListPreferenceChangeListener() {
             @Override
             public boolean onPreferenceChange(Preference preference, Object newValue) {
-                Util.putBoolean(context, "COLOR_UI", (boolean) newValue);
+                Prefs.putBoolean(context, "COLOR_UI", (boolean) newValue);
                 return true;
             }
         });
 
         SwitchPreference ime = (SwitchPreference) this.findPreference("SHOW_IME");
-        ime.setChecked(Util.getBoolean(context, "SHOW_IME"));
+        ime.setChecked(Prefs.getBoolean(context, "SHOW_IME"));
         ime.setOnPreferenceChangeListener(new OnListPreferenceChangeListener() {
             @Override
             public boolean onPreferenceChange(Preference preference, Object newValue) {
-                Util.putBoolean(context, "SHOW_IME", (boolean) newValue);
+                Prefs.putBoolean(context, "SHOW_IME", (boolean) newValue);
                 return true;
             }
         });
 
         SwitchPreference swipe_pages = (SwitchPreference) this.findPreference("SWIPE_PAGES");
-        swipe_pages.setChecked(Util.getBoolean(context, "SWIPE_PAGES"));
+        swipe_pages.setChecked(Prefs.getBoolean(context, "SWIPE_PAGES"));
         swipe_pages.setOnPreferenceChangeListener(new OnListPreferenceChangeListener() {
             @Override
             public boolean onPreferenceChange(Preference preference, Object newValue) {
-                Util.putBoolean(context, "SWIPE_PAGES", (boolean) newValue);
+                Prefs.putBoolean(context, "SWIPE_PAGES", (boolean) newValue);
                 return true;
             }
         });

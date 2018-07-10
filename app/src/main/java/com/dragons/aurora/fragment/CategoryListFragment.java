@@ -35,6 +35,7 @@ import com.dragons.aurora.CategoryManager;
 import com.dragons.aurora.R;
 import com.dragons.aurora.adapters.AllCategoriesAdapter;
 import com.dragons.aurora.adapters.TopCategoriesAdapter;
+import com.dragons.aurora.helpers.Accountant;
 import com.dragons.aurora.task.playstore.CategoryListTask;
 import com.percolate.caffeine.ViewUtils;
 
@@ -49,7 +50,7 @@ import static com.dragons.aurora.Util.show;
 
 public class CategoryListFragment extends CategoryListTask {
 
-    private View v;
+    private View view;
     private SwipeRefreshLayout swipeRefreshLayout;
     private Disposable loadApps;
     private CategoryManager categoryManager;
@@ -63,33 +64,31 @@ public class CategoryListFragment extends CategoryListTask {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        if (v != null) {
-            if ((ViewGroup) v.getParent() != null)
-                ((ViewGroup) v.getParent()).removeView(v);
-            return v;
+        if (view != null) {
+            if ((ViewGroup) view.getParent() != null)
+                ((ViewGroup) view.getParent()).removeView(view);
+            return view;
         }
-
-        v = inflater.inflate(R.layout.fragment_categories, container, false);
-
-        if (isLoggedIn() && categoryManager.categoryListEmpty())
+        view = inflater.inflate(R.layout.fragment_categories, container, false);
+        if (Accountant.isLoggedIn(getContext()) && categoryManager.categoryListEmpty())
             getAllCategories();
         else {
             setupAllCategories();
             setupTopCategories();
         }
 
-        swipeRefreshLayout = ViewUtils.findViewById(v, R.id.swipe_refresh_layout);
+        swipeRefreshLayout = ViewUtils.findViewById(view, R.id.swipe_refresh_layout);
         swipeRefreshLayout.setOnRefreshListener(() -> {
-            if (isLoggedIn()) getAllCategories();
+            if (Accountant.isLoggedIn(getContext())) getAllCategories();
             else swipeRefreshLayout.setRefreshing(false);
         });
-        return v;
+        return view;
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        if (isLoggedIn() && categoryManager.categoryListEmpty())
+        if (Accountant.isLoggedIn(getContext()) && categoryManager.categoryListEmpty())
             getAllCategories();
     }
 
@@ -99,32 +98,32 @@ public class CategoryListFragment extends CategoryListTask {
     }
 
     protected void setupTopCategories() {
-        RecyclerView recyclerView = ViewUtils.findViewById(v, R.id.top_cat_view);
+        RecyclerView recyclerView = ViewUtils.findViewById(view, R.id.top_cat_view);
         recyclerView.setAdapter(new TopCategoriesAdapter(this.getActivity(), getResources().getStringArray(R.array.topCategories)));
     }
 
     protected void setupAllCategories() {
-        show(v, R.id.all_cat_view);
-        RecyclerView recyclerView = ViewUtils.findViewById(v, R.id.all_cat_view);
+        show(view, R.id.all_cat_view);
+        RecyclerView recyclerView = ViewUtils.findViewById(view, R.id.all_cat_view);
         recyclerView.setAdapter(new AllCategoriesAdapter(this.getActivity(), categoryManager.getCategoriesFromSharedPreferences()));
         recyclerView.setLayoutAnimation(AnimationUtils.loadLayoutAnimation(getContext(), R.anim.layout_anim));
     }
 
     protected void getAllCategories() {
-        show(v, R.id.loading_cat);
-        hide(v, R.id.all_cat_view);
-        if (isDummy())
-            refreshMyToken();
+        show(view, R.id.loading_cat);
+        hide(view, R.id.all_cat_view);
+        if (Accountant.isDummy(getContext()))
+            Accountant.refreshMyToken(getContext());
         loadApps = Observable.fromCallable(() -> getResult(getContext()))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe((result) -> {
                     if (result) {
-                        if (v != null) {
+                        if (view != null) {
                             setupTopCategories();
                             setupAllCategories();
                             swipeRefreshLayout.setRefreshing(false);
-                            hide(v, R.id.loading_cat);
+                            hide(view, R.id.loading_cat);
                         }
                     }
                 }, this::processException);

@@ -44,6 +44,7 @@ import com.dragons.aurora.R;
 import com.dragons.aurora.Util;
 import com.dragons.aurora.activities.SearchActivity;
 import com.dragons.aurora.adapters.SearchHistoryAdapter;
+import com.dragons.aurora.helpers.Prefs;
 import com.dragons.aurora.task.playstore.SearchHistoryTask;
 import com.dragons.aurora.view.ClusterAppsCard;
 
@@ -111,7 +112,7 @@ public class SearchFragment extends SearchHistoryTask implements HistoryItemTouc
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
         if (isVisibleToUser) {
-            if (search_layout != null && Util.getBoolean(view.getContext(), "SHOW_IME"))
+            if (search_layout != null && Prefs.getBoolean(view.getContext(), "SHOW_IME"))
                 search_layout.performClick();
         }
     }

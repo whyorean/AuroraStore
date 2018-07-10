@@ -39,6 +39,7 @@ import com.dragons.aurora.BuildConfig;
 import com.dragons.aurora.R;
 import com.dragons.aurora.Util;
 import com.dragons.aurora.activities.SpoofActivity;
+import com.dragons.aurora.helpers.Prefs;
 
 import java.io.IOException;
 import java.util.List;
@@ -117,7 +118,7 @@ public class SpoofTask extends AsyncTask<Void, Void, Void> {
                 mockLocation.setElapsedRealtimeNanos(SystemClock.elapsedRealtimeNanos());
                 locationManager.setTestProviderLocation(mocLocationProvider, mockLocation);
                 mockEnabled = true;
-                Util.putInteger(context, PREFERENCE_REQUESTED_LOCATION_INDEX, position);
+                Prefs.putInteger(context, PREFERENCE_REQUESTED_LOCATION_INDEX, position);
             } catch (SecurityException e) {
                 Log.e(getClass().getSimpleName(), e.getMessage());
                 ((SpoofActivity) context).runOnUiThread(() -> setMockDialog(true));
@@ -135,7 +136,7 @@ public class SpoofTask extends AsyncTask<Void, Void, Void> {
     @Override
     protected Void doInBackground(Void... voids) {
         if (position == 0) {
-            Util.putInteger(context, PREFERENCE_REQUESTED_LOCATION_INDEX, 0);
+            Prefs.putInteger(context, PREFERENCE_REQUESTED_LOCATION_INDEX, 0);
             ((SpoofActivity) context).runOnUiThread(() -> setMockDialog(false));
         } else
             mockLocation(geoLocation);

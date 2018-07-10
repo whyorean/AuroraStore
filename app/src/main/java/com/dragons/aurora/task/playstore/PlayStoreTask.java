@@ -31,6 +31,7 @@ import com.dragons.aurora.PlayStoreApiAuthenticator;
 import com.dragons.aurora.R;
 import com.dragons.aurora.Util;
 import com.dragons.aurora.fragment.PreferenceFragment;
+import com.dragons.aurora.helpers.Accountant;
 import com.dragons.aurora.playstoreapiv2.AuthException;
 import com.dragons.aurora.task.AppProvidedCredentialsTask;
 import com.dragons.aurora.task.TaskWithProgress;
@@ -108,7 +109,7 @@ abstract public class PlayStoreTask<T> extends TaskWithProgress<T> {
             return;
         } else {
             ContextUtil.toast(context, R.string.error_incorrect_password);
-            Util.completeCheckout(context);
+            Accountant.completeCheckout(context);
         }
         Log.e(getClass().getSimpleName(), "AuthException happened and the provided context is not ui capable");
     }

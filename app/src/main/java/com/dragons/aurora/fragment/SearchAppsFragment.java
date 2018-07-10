@@ -38,6 +38,7 @@ import com.dragons.aurora.PlayStoreApiAuthenticator;
 import com.dragons.aurora.R;
 import com.dragons.aurora.activities.AuroraActivity;
 import com.dragons.aurora.adapters.EndlessAppsAdapter;
+import com.dragons.aurora.helpers.Accountant;
 import com.dragons.aurora.model.App;
 import com.dragons.aurora.playstoreapiv2.SearchIterator;
 import com.dragons.aurora.task.playstore.SearchTask;
@@ -87,14 +88,14 @@ public class SearchAppsFragment extends SearchTask {
         adaptiveToolbar.getTitle1().setVisibility(View.GONE);
         Button ohhSnap_retry = view.findViewById(R.id.ohhSnap_retry);
         ohhSnap_retry.setOnClickListener(click -> {
-            if (isLoggedIn() && isConnected(getContext())) {
+            if (Accountant.isLoggedIn(getContext()) && isConnected(getContext())) {
                 hide(view, R.id.ohhSnap);
                 fetchSearchAppsList(false);
             }
         });
         Button retry_querry = view.findViewById(R.id.recheck_query);
         retry_querry.setOnClickListener(click -> {
-            if (isLoggedIn() && isConnected(getContext())) {
+            if (Accountant.isLoggedIn(getContext()) && isConnected(getContext())) {
                 hide(view, R.id.unicorn);
                 fetchSearchAppsList(false);
             }

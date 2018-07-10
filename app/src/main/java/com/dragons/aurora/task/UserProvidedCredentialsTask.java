@@ -38,9 +38,10 @@ import com.dragons.aurora.CredentialsEmptyException;
 import com.dragons.aurora.GoogleAccountInfo;
 import com.dragons.aurora.PlayStoreApiAuthenticator;
 import com.dragons.aurora.R;
-import com.dragons.aurora.Util;
 import com.dragons.aurora.activities.AccountsActivity;
 import com.dragons.aurora.fragment.PreferenceFragment;
+import com.dragons.aurora.helpers.Accountant;
+import com.dragons.aurora.helpers.Prefs;
 import com.dragons.aurora.playstoreapiv2.AuthException;
 
 import java.util.ArrayList;
@@ -48,9 +49,18 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
+import static com.dragons.aurora.helpers.Prefs.DUMMY_ACC;
+import static com.dragons.aurora.helpers.Prefs.GOOGLE_ACC;
+import static com.dragons.aurora.helpers.Prefs.GOOGLE_EMAIL;
+import static com.dragons.aurora.helpers.Prefs.GOOGLE_NAME;
+import static com.dragons.aurora.helpers.Prefs.GOOGLE_PASSWORD;
+import static com.dragons.aurora.helpers.Prefs.GOOGLE_URL;
+import static com.dragons.aurora.helpers.Prefs.LOGGED_IN;
+import static com.dragons.aurora.helpers.Prefs.SEC_ACCOUNT;
+import static com.dragons.aurora.helpers.Prefs.USED_EMAILS_SET;
+
 public class UserProvidedCredentialsTask extends CheckCredentialsTask {
 
-    static private final String USED_EMAILS_SET = "USED_EMAILS_SET";
     private String Email;
     private Context context;
 
@@ -74,26 +84,26 @@ public class UserProvidedCredentialsTask extends CheckCredentialsTask {
     }
 
     private List<String> getUsedEmails() {
-        List<String> emails = new ArrayList<>(Util.getStringSet(context, USED_EMAILS_SET));
+        List<String> emails = new ArrayList<>(Prefs.getStringSet(context, USED_EMAILS_SET));
         Collections.sort(emails);
         return emails;
     }
 
     private void setGooglePrefs(String email, String password) {
-        PreferenceManager.getDefaultSharedPreferences(context).edit().putBoolean("SEC_ACCOUNT", true).apply();
-        PreferenceManager.getDefaultSharedPreferences(context).edit().putString("GOOGLE_EMAIL", email).apply();
-        PreferenceManager.getDefaultSharedPreferences(context).edit().putString("GOOGLE_PASSWORD", password).apply();
+        Prefs.putBoolean(context, SEC_ACCOUNT, true);
+        Prefs.putString(context, GOOGLE_EMAIL, email);
+        Prefs.putString(context, GOOGLE_PASSWORD, password);
     }
 
     public void removeGooglePrefs() {
-        PreferenceManager.getDefaultSharedPreferences(context).edit().putBoolean("SEC_ACCOUNT", false).apply();
-        PreferenceManager.getDefaultSharedPreferences(context).edit().putString("GOOGLE_EMAIL", "").apply();
-        PreferenceManager.getDefaultSharedPreferences(context).edit().putString("GOOGLE_PASSWORD", "").apply();
+        Prefs.putBoolean(context, SEC_ACCOUNT, false);
+        Prefs.putString(context, GOOGLE_EMAIL, "");
+        Prefs.putString(context, GOOGLE_PASSWORD, "");
     }
 
     public void withSavedGoogle() {
-        String email = PreferenceFragment.getString(context, "GOOGLE_EMAIL");
-        String password = PreferenceFragment.getString(context, "GOOGLE_PASSWORD");
+        String email = Prefs.getString(context, GOOGLE_EMAIL);
+        String password = Prefs.getString(context, GOOGLE_PASSWORD);
         getUserCredentialsTask().execute(email, password);
     }
 
@@ -123,7 +133,7 @@ public class UserProvidedCredentialsTask extends CheckCredentialsTask {
             if (checkBox.isChecked()) {
                 setGooglePrefs(email, password);
             }
-            Util.completeCheckout(context);
+            Accountant.completeCheckout(context);
             getUserCredentialsTask().execute(email, password);
         });
 
@@ -162,9 +172,9 @@ public class UserProvidedCredentialsTask extends CheckCredentialsTask {
     }
 
     private void addUsedEmail(String email) {
-        Set<String> emailsSet = Util.getStringSet(context, "USED_EMAILS_SET");
+        Set<String> emailsSet = Prefs.getStringSet(context, USED_EMAILS_SET);
         emailsSet.add(email);
-        Util.putStringSet(context, "USED_EMAILS_SET", emailsSet);
+        Prefs.putStringSet(context, USED_EMAILS_SET, emailsSet);
     }
 
     @Override
@@ -199,11 +209,11 @@ public class UserProvidedCredentialsTask extends CheckCredentialsTask {
             url = "I dont fucking care";
         }
 
-        PreferenceManager.getDefaultSharedPreferences(context).edit().putString("GOOGLE_NAME", name).apply();
-        PreferenceManager.getDefaultSharedPreferences(context).edit().putString("GOOGLE_URL", url).apply();
-        PreferenceManager.getDefaultSharedPreferences(context).edit().putBoolean("LOGGED_IN", true).apply();
-        PreferenceManager.getDefaultSharedPreferences(context).edit().putBoolean("GOOGLE_ACC", true).apply();
-        PreferenceManager.getDefaultSharedPreferences(context).edit().putBoolean("DUMMY_ACC", false).apply();
+        Prefs.putString(context, GOOGLE_NAME, name);
+        Prefs.putString(context, GOOGLE_URL, url);
+        Prefs.putBoolean(context, LOGGED_IN, true);
+        Prefs.putBoolean(context, GOOGLE_ACC, true);
+        Prefs.putBoolean(context, DUMMY_ACC, false);
 
         if (context instanceof AccountsActivity)
             ((AccountsActivity) context).userChanged();

@@ -32,6 +32,7 @@ import android.preference.PreferenceManager;
 import android.util.Log;
 
 import com.dragons.aurora.downloader.DownloadManagerInterface;
+import com.dragons.aurora.helpers.Prefs;
 
 import java.io.File;
 import java.io.IOException;
@@ -120,6 +121,6 @@ public class AuroraApplication extends Application {
     }
 
     public void getSavedPrefs() {
-        COLOR_UI = Util.getBoolean(getApplicationContext(), "COLOR_UI");
+        COLOR_UI = Prefs.getBoolean(getApplicationContext(), "COLOR_UI");
     }
 }

@@ -23,9 +23,7 @@ package com.dragons.aurora.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.view.ContextMenu;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -47,6 +45,7 @@ import com.dragons.aurora.fragment.details.Screenshot;
 import com.dragons.aurora.fragment.details.Share;
 import com.dragons.aurora.fragment.details.SystemAppPage;
 import com.dragons.aurora.fragment.details.Video;
+import com.dragons.aurora.helpers.Accountant;
 import com.dragons.aurora.model.App;
 import com.dragons.aurora.task.playstore.DetailsAppTaskHelper;
 import com.percolate.caffeine.ToastUtils;
@@ -63,9 +62,9 @@ public class DetailsFragment extends DetailsAppTaskHelper {
 
     public static App app;
 
-    protected View view;
-    protected DownloadOrInstall downloadOrInstallFragment;
-    protected String packageName;
+    private View view;
+    private DownloadOrInstall downloadOrInstallFragment;
+    private String packageName;
 
     public static UpdatableAppsFragment newInstance() {
         return new UpdatableAppsFragment();
@@ -76,7 +75,7 @@ public class DetailsFragment extends DetailsAppTaskHelper {
         view = inflater.inflate(R.layout.details_activity_layout, container, false);
         Button retry_details = view.findViewById(R.id.ohhSnap_retry);
         retry_details.setOnClickListener(click -> {
-            if (isLoggedIn() && isConnected(getContext())) {
+            if (Accountant.isLoggedIn(getContext()) && isConnected(getContext())) {
                 hide(view, R.id.ohhSnap);
                 show(view, R.id.progress);
                 fetchDetails();
@@ -88,12 +87,11 @@ public class DetailsFragment extends DetailsAppTaskHelper {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         Bundle arguments = getArguments();
         if (arguments != null) {
             packageName = arguments.getString("PackageName");
 
-            if (isConnected(getContext()) && isLoggedIn())
+            if (isConnected(getContext()) && Accountant.isLoggedIn(getContext()))
                 fetchDetails();
             else
                 ToastUtils.quickToast(getContext(), "Make sure you are Connected & Logged in");

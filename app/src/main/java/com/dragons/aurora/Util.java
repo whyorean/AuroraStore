@@ -28,10 +28,7 @@ import android.content.pm.PackageManager;
 import android.content.res.TypedArray;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
-import android.preference.PreferenceManager;
-import android.provider.Settings;
 import android.support.v7.widget.RecyclerView;
-import android.text.TextUtils;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.animation.AnimationUtils;
@@ -47,18 +44,14 @@ import com.percolate.caffeine.ViewUtils;
 import java.io.Closeable;
 import java.io.File;
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.Comparator;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.Set;
 import java.util.TreeMap;
 
 public class Util {
 
-    private static final String DELIMITER = ",";
     private static final Map<Integer, String> siPrefixes = new HashMap<>();
     private static final Map<Integer, String> diPrefixes = new HashMap<>();
 
@@ -109,37 +102,6 @@ public class Util {
         map.put(key, value);
         map.putAll(clonedMap);
         return map;
-    }
-
-    static public Set<String> getStringSet(Context context, String key) {
-        return new HashSet<>(Arrays.asList(TextUtils.split(
-                PreferenceManager.getDefaultSharedPreferences(context).getString(key, ""),
-                DELIMITER
-        )));
-    }
-
-    static public void putStringSet(Context context, String key, Set<String> set) {
-        PreferenceManager.getDefaultSharedPreferences(context).edit().putString(key, TextUtils.join(DELIMITER, set)).apply();
-    }
-
-    static public void putString(Context context, String key, String value) {
-        PreferenceManager.getDefaultSharedPreferences(context).edit().putString(key, value).apply();
-    }
-
-    static public void putInteger(Context context, String key, int value) {
-        PreferenceManager.getDefaultSharedPreferences(context).edit().putInt(key, value).apply();
-    }
-
-    static public void putBoolean(Context context, String key, boolean value) {
-        PreferenceManager.getDefaultSharedPreferences(context).edit().putBoolean(key, value).apply();
-    }
-
-    public static int getInteger(Context context, String key) {
-        return PreferenceManager.getDefaultSharedPreferences(context).getInt(key, 0);
-    }
-
-    public static Boolean getBoolean(Context context, String key) {
-        return PreferenceManager.getDefaultSharedPreferences(context).getBoolean(key, false);
     }
 
     static public int parseInt(String intAsString, int defaultValue) {
@@ -280,13 +242,6 @@ public class Util {
         else if (oldName.contains("("))
             return oldName.substring(0, oldName.indexOf("("));
         else return oldName;
-    }
-
-    public static void completeCheckout(Context context) {
-        putBoolean(context, "LOGGED_IN", false);
-        putString(context, "GOOGLE_NAME", "");
-        putString(context, "GOOGLE_URL", "");
-        new PlayStoreApiAuthenticator(context).logout();
     }
 
     public static boolean isConnected(Context c) {

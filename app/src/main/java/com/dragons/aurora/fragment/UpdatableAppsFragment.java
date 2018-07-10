@@ -47,6 +47,7 @@ import com.dragons.aurora.UpdateAllReceiver;
 import com.dragons.aurora.UpdateChecker;
 import com.dragons.aurora.Util;
 import com.dragons.aurora.adapters.UpdatableAppsAdapter;
+import com.dragons.aurora.helpers.Accountant;
 import com.dragons.aurora.model.App;
 import com.dragons.aurora.notification.CancelDownloadService;
 import com.dragons.aurora.task.playstore.UpdatableAppsTaskHelper;
@@ -123,14 +124,14 @@ public class UpdatableAppsFragment extends UpdatableAppsTaskHelper implements Up
         ButterKnife.bind(this, view);
 
         swipeRefreshLayout.setOnRefreshListener(() -> {
-            if (isLoggedIn() && isConnected(getContext()) && !isAlreadyUpdating())
+            if (Accountant.isLoggedIn(getContext()) && isConnected(getContext()) && !isAlreadyUpdating())
                 loadUpdatableApps();
             else
                 swipeRefreshLayout.setRefreshing(false);
         });
 
         recheck_update.setOnClickListener(click -> {
-            if (isLoggedIn() && isConnected(getContext())) {
+            if (Accountant.isLoggedIn(getContext()) && isConnected(getContext())) {
                 hide(view, R.id.unicorn);
                 updates_txt.setText(R.string.list_update_chk_txt);
                 loadUpdatableApps();
@@ -138,7 +139,7 @@ public class UpdatableAppsFragment extends UpdatableAppsTaskHelper implements Up
         });
 
         retry_update.setOnClickListener(click -> {
-            if (isLoggedIn() && isConnected(getContext())) {
+            if (Accountant.isLoggedIn(getContext()) && isConnected(getContext())) {
                 hide(view, R.id.ohhSnap);
                 if (updatableAppsAdapter == null || updatableAppsAdapter.getItemCount() <= 0) {
                     updates_txt.setText(R.string.list_update_chk_txt);
@@ -155,12 +156,12 @@ public class UpdatableAppsFragment extends UpdatableAppsTaskHelper implements Up
     @Override
     public void onResume() {
         super.onResume();
-        if (isLoggedIn() && updatableApps.isEmpty() || recheck) {
+        if (Accountant.isLoggedIn(getContext()) && updatableApps.isEmpty() || recheck) {
             recheck = false;
             loadUpdatableApps();
         } else if (updatableApps.size() > 0)
             setText(view, R.id.updates_txt, R.string.list_update_all_txt, updatableApps.size());
-        else if (!isLoggedIn())
+        else if (!Accountant.isLoggedIn(getContext()))
             ToastUtils.quickToast(getActivity(), "You need to Login First", true);
         else {
             new UpdateAllReceiver(this);

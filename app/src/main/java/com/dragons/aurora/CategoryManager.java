@@ -24,6 +24,8 @@ package com.dragons.aurora;
 import android.content.Context;
 import android.preference.PreferenceManager;
 
+import com.dragons.aurora.helpers.Prefs;
+
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
@@ -51,7 +53,7 @@ public class CategoryManager {
     }
 
     public void save(String parent, Map<String, String> categories) {
-        Util.putStringSet(context, parent, categories.keySet());
+        Prefs.putStringSet(context, parent, categories.keySet());
         for (String categoryId : categories.keySet()) {
             translator.putString(categoryId, categories.get(categoryId));
         }
@@ -61,12 +63,12 @@ public class CategoryManager {
         return null == chosenCategoryId
                 || chosenCategoryId.equals(TOP)
                 || appCategoryId.equals(chosenCategoryId)
-                || Util.getStringSet(context, chosenCategoryId).contains(appCategoryId)
+                || Prefs.getStringSet(context, chosenCategoryId).contains(appCategoryId)
                 ;
     }
 
     public boolean categoryListEmpty() {
-        Set<String> topSet = Util.getStringSet(context, TOP);
+        Set<String> topSet = Prefs.getStringSet(context, TOP);
         if (topSet.isEmpty()) {
             return true;
         }
@@ -77,7 +79,7 @@ public class CategoryManager {
 
     public Map<String, String> getCategoriesFromSharedPreferences() {
         Map<String, String> categories = new TreeMap<>();
-        Set<String> topSet = Util.getStringSet(context, TOP);
+        Set<String> topSet = Prefs.getStringSet(context, TOP);
         for (String topCategoryId : topSet) {
             categories.put(topCategoryId, translator.getString(topCategoryId));
         }

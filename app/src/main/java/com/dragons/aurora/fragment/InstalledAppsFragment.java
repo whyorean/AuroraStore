@@ -38,6 +38,8 @@ import com.dragons.aurora.R;
 import com.dragons.aurora.Util;
 import com.dragons.aurora.activities.AuroraActivity;
 import com.dragons.aurora.adapters.InstalledAppsAdapter;
+import com.dragons.aurora.helpers.Accountant;
+import com.dragons.aurora.helpers.Prefs;
 import com.dragons.aurora.model.App;
 import com.dragons.aurora.task.playstore.InstalledAppsTaskHelper;
 
@@ -95,16 +97,15 @@ public class InstalledAppsFragment extends InstalledAppsTaskHelper {
 
         view = inflater.inflate(R.layout.app_installed_inc, container, false);
         ButterKnife.bind(this, view);
-
         swipeRefreshLayout.setOnRefreshListener(() -> {
-            if (isLoggedIn() && isConnected(getContext()))
+            if (Accountant.isLoggedIn(getContext()) && isConnected(getContext()))
                 loadMarketApps();
             else
                 swipeRefreshLayout.setRefreshing(false);
         });
 
         retry_update.setOnClickListener(click -> {
-            if (isLoggedIn() && isConnected(getContext())) {
+            if (Accountant.isLoggedIn(getContext()) && isConnected(getContext())) {
                 hide(view, R.id.ohhSnap);
                 if (installedAppsAdapter == null || installedAppsAdapter.getItemCount() <= 0)
                     loadMarketApps();
@@ -114,9 +115,9 @@ public class InstalledAppsFragment extends InstalledAppsTaskHelper {
         includeSystem.setChecked(PreferenceFragment.getBoolean(getContext(), "INCLUDE_SYSTEM"));
         includeSystem.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if (isChecked)
-                Util.putBoolean(getContext(), "INCLUDE_SYSTEM", true);
+                Prefs.putBoolean(getContext(), "INCLUDE_SYSTEM", true);
             else
-                Util.putBoolean(getContext(), "INCLUDE_SYSTEM", false);
+                Prefs.putBoolean(getContext(), "INCLUDE_SYSTEM", false);
             loadMarketApps();
         });
 
@@ -126,7 +127,7 @@ public class InstalledAppsFragment extends InstalledAppsTaskHelper {
     @Override
     public void onResume() {
         super.onResume();
-        if (isLoggedIn() && installedApps.isEmpty())
+        if (Accountant.isLoggedIn(getContext()) && installedApps.isEmpty())
             loadMarketApps();
     }
 

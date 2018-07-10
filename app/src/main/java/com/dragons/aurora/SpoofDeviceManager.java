@@ -28,6 +28,8 @@ import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.dragons.aurora.helpers.Prefs;
+
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -104,7 +106,7 @@ public class SpoofDeviceManager {
     }
 
     private Map<String, String> getDevicesFromSharedPreferences() {
-        Set<String> deviceNames = Util.getStringSet(context, DEVICES_LIST_KEY);
+        Set<String> deviceNames = Prefs.getStringSet(context, DEVICES_LIST_KEY);
         Map<String, String> devices = new HashMap<>();
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         for (String name : deviceNames) {
@@ -114,7 +116,7 @@ public class SpoofDeviceManager {
     }
 
     private void putDevicesToSharedPreferences(Map<String, String> devices) {
-        Util.putStringSet(context, DEVICES_LIST_KEY, devices.keySet());
+        Prefs.putStringSet(context, DEVICES_LIST_KEY, devices.keySet());
         SharedPreferences.Editor prefs = PreferenceManager.getDefaultSharedPreferences(context).edit();
         for (String name : devices.keySet()) {
             prefs.putString(name, devices.get(name));

@@ -25,6 +25,7 @@ import android.util.Log;
 
 import com.dragons.aurora.AppListIterator;
 import com.dragons.aurora.PlayStoreApiAuthenticator;
+import com.dragons.aurora.helpers.Accountant;
 import com.dragons.aurora.model.App;
 import com.dragons.aurora.model.Filter;
 import com.dragons.aurora.playstoreapiv2.GooglePlayException;
@@ -75,7 +76,7 @@ abstract public class CategoryAppsTask extends ExceptionTask {
                 if (noNetwork(e.getCause())) {
                     throw (IOException) e.getCause();
                 } else if (e.getCause() instanceof GooglePlayException
-                        && ((GooglePlayException) e.getCause()).getCode() == 401 && isDummy()) {
+                        && ((GooglePlayException) e.getCause()).getCode() == 401 && Accountant.isDummy(getContext())) {
                     new AppProvidedCredentialsTask(getContext()).refreshToken();
                     iterator.setGooglePlayApi(new PlayStoreApiAuthenticator(getContext()).getApi());
                     apps.addAll(getNextBatch(iterator));

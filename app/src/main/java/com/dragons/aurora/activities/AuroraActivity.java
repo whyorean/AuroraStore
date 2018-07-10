@@ -31,8 +31,9 @@ import android.support.v4.app.ActivityCompat;
 import android.view.View;
 
 import com.dragons.aurora.R;
-import com.dragons.aurora.Util;
 import com.dragons.aurora.adapters.ViewPagerAdapter;
+import com.dragons.aurora.helpers.Accountant;
+import com.dragons.aurora.helpers.Prefs;
 import com.dragons.aurora.model.App;
 import com.dragons.aurora.view.CustomViewPager;
 import com.dragons.custom.CustomAppBar;
@@ -42,9 +43,8 @@ import butterknife.ButterKnife;
 
 public class AuroraActivity extends BaseActivity implements View.OnClickListener {
 
-    static public App app;
-    static int static_pos = -9;
-
+    public static App app;
+    public static int static_pos = -9;
     @BindView(R.id.view_pager)
     CustomViewPager viewPager;
     @BindView(R.id.bottom_bar)
@@ -64,12 +64,11 @@ public class AuroraActivity extends BaseActivity implements View.OnClickListener
             getWindow().setStatusBarColor(getResources().getColor(R.color.semi_transparent));
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-
         bottm_bar.setNavigationMenu(R.menu.main_menu, this);
         bottm_bar.setSecondaryMenu(R.menu.nav_menu, this);
         viewPager.setAdapter(new ViewPagerAdapter(this, getSupportFragmentManager()));
         viewPager.setOffscreenPageLimit(3);
-        if (Util.getBoolean(this, "SWIPE_PAGES"))
+        if (Prefs.getBoolean(this, "SWIPE_PAGES"))
             viewPager.setScroll(true);
         ActivityCompat.requestPermissions(this,
                 new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
@@ -79,9 +78,6 @@ public class AuroraActivity extends BaseActivity implements View.OnClickListener
     protected void onResume() {
         super.onResume();
         invalidateOptionsMenu();
-        if (logout) {
-            finish();
-        }
         if (static_pos != -9) {
             viewPager.setCurrentItem(static_pos, true);
             static_pos = -9;

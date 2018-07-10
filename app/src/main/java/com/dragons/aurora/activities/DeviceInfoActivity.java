@@ -35,7 +35,8 @@ import android.widget.TextView;
 import com.dragons.aurora.ContextUtil;
 import com.dragons.aurora.R;
 import com.dragons.aurora.SpoofDeviceManager;
-import com.dragons.aurora.Util;
+import com.dragons.aurora.helpers.Accountant;
+import com.dragons.aurora.helpers.Prefs;
 import com.dragons.aurora.playstoreapiv2.PropertiesDeviceInfoProvider;
 import com.dragons.aurora.view.PropCard;
 
@@ -125,10 +126,10 @@ public class DeviceInfoActivity extends AuroraActivity {
                     if (!TextUtils.isEmpty(deviceName) && !isDeviceDefinitionValid(deviceName)) {
                         ContextUtil.toast(this, R.string.error_invalid_device_definition);
                     } else {
-                        Util.putString(this, PREFERENCE_DEVICE_TO_PRETEND_TO_BE, deviceName);
-                        Util.putInteger(this, PREFERENCE_DEVICE_TO_PRETEND_TO_BE_INDEX, deviceIndex);
+                        Prefs.putString(this, PREFERENCE_DEVICE_TO_PRETEND_TO_BE, deviceName);
+                        Prefs.putInteger(this, PREFERENCE_DEVICE_TO_PRETEND_TO_BE_INDEX, deviceIndex);
                     }
-                    Util.completeCheckout(this);
+                    Accountant.completeCheckout(this);
                     dialogInterface.dismiss();
                     startActivity(new Intent(this, LoginActivity.class));
                     this.finish();

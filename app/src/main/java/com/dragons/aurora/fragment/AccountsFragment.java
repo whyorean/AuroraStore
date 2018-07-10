@@ -38,8 +38,8 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
 import com.dragons.aurora.PlayStoreApiAuthenticator;
 import com.dragons.aurora.R;
-import com.dragons.aurora.Util;
 import com.dragons.aurora.activities.LoginActivity;
+import com.dragons.aurora.helpers.Accountant;
 import com.dragons.aurora.task.UserProvidedCredentialsTask;
 import com.github.florent37.shapeofview.shapes.CircleView;
 import com.percolate.caffeine.ViewUtils;
@@ -53,7 +53,7 @@ public class AccountsFragment extends AccountsHelper {
 
     private boolean isSecAvailable;
     private String myEmail;
-    private View v;
+    private View view;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -63,33 +63,33 @@ public class AccountsFragment extends AccountsHelper {
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        if (v != null) {
-            if ((ViewGroup) v.getParent() != null)
-                ((ViewGroup) v.getParent()).removeView(v);
-            return v;
+        if (view != null) {
+            if ((ViewGroup) view.getParent() != null)
+                ((ViewGroup) view.getParent()).removeView(view);
+            return view;
         }
 
-        v = inflater.inflate(R.layout.app_acc_inc, container, false);
+        view = inflater.inflate(R.layout.app_acc_inc, container, false);
 
-        ImageView toolbar_back = v.findViewById(R.id.toolbar_back);
+        ImageView toolbar_back = view.findViewById(R.id.toolbar_back);
         toolbar_back.setOnClickListener(click -> getActivity().onBackPressed());
 
         myEmail = PreferenceFragment.getString(getActivity(), PlayStoreApiAuthenticator.PREFERENCE_EMAIL);
         isSecAvailable = PreferenceFragment.getBoolean(getActivity(), "SEC_ACCOUNT");
 
-        if (isLoggedIn() && isGoogle())
+        if (Accountant.isLoggedIn(getContext()) && Accountant.isGoogle(getContext()))
             drawGoogle();
-        else if (isLoggedIn() && isDummy())
+        else if (Accountant.isLoggedIn(getContext()) && Accountant.isDummy(getContext()))
             drawDummy();
-        return v;
+        return view;
     }
 
     private void drawDummy() {
-        show(v, R.id.dummyIndicator);
+        show(view, R.id.dummyIndicator);
         setAvatar(R.drawable.ic_dummy_avatar);
-        setText(v, R.id.account_name, R.string.acc_dummy_name);
-        setText(v, R.id.account_email, myEmail);
-        setText(v, R.id.account_gsf, R.string.device_gsfID, PreferenceFragment.getString(getActivity(),
+        setText(view, R.id.account_name, R.string.acc_dummy_name);
+        setText(view, R.id.account_email, myEmail);
+        setText(view, R.id.account_gsf, R.string.device_gsfID, PreferenceFragment.getString(getActivity(),
                 PlayStoreApiAuthenticator.PREFERENCE_GSF_ID));
         if (isSecAvailable)
             drawEmptyGoogle();
@@ -102,17 +102,17 @@ public class AccountsFragment extends AccountsHelper {
     private void drawGoogle() {
         drawEmptyDummy();
 
-        hide(v, R.id.emptyCard);
-        show(v, R.id.googleCard);
-        show(v, R.id.googleIndicator);
+        hide(view, R.id.emptyCard);
+        show(view, R.id.googleCard);
+        show(view, R.id.googleIndicator);
 
-        setText(v, R.id.account_nameG, PreferenceFragment.getString(getActivity(), "GOOGLE_NAME"));
-        setText(v, R.id.account_emailG, myEmail);
-        setText(v, R.id.account_gsf, R.string.device_gsfID, PreferenceFragment.getString(getActivity(),
+        setText(view, R.id.account_nameG, PreferenceFragment.getString(getActivity(), "GOOGLE_NAME"));
+        setText(view, R.id.account_emailG, myEmail);
+        setText(view, R.id.account_gsf, R.string.device_gsfID, PreferenceFragment.getString(getActivity(),
                 PlayStoreApiAuthenticator.PREFERENCE_GSF_ID));
 
-        TextView switchGoogle = ViewUtils.findViewById(v, R.id.btn_switchG);
-        switchGoogle.setOnClickListener(view -> switchGoogle());
+        TextView switchGoogle = ViewUtils.findViewById(view, R.id.btn_switchG);
+        switchGoogle.setOnClickListener(view -> Accountant.switchGoogle(getContext()));
 
         if (isConnected(getActivity()))
             loadAvatar(PreferenceFragment.getString(getActivity(), "GOOGLE_URL"));
@@ -121,66 +121,66 @@ public class AccountsFragment extends AccountsHelper {
     }
 
     private void drawEmptyDummy() {
-        show(v, R.id.dummy_tapToSwitch);
-        setText(v, R.id.account_name, R.string.acc_dummy_name);
-        setText(v, R.id.account_email, R.string.account_dummy_email);
-        LinearLayout dummyCard = ViewUtils.findViewById(v, R.id.dummyLayout);
-        dummyCard.setOnClickListener(v -> loginWithDummy());
+        show(view, R.id.dummy_tapToSwitch);
+        setText(view, R.id.account_name, R.string.acc_dummy_name);
+        setText(view, R.id.account_email, R.string.account_dummy_email);
+        LinearLayout dummyCard = ViewUtils.findViewById(view, R.id.dummyLayout);
+        dummyCard.setOnClickListener(v -> Accountant.loginWithDummy(getContext()));
     }
 
     private void drawEmptyGoogle() {
-        LinearLayout googleCard = ViewUtils.findViewById(v, R.id.googleLayout);
-        TextView removeAccount = ViewUtils.findViewById(v, R.id.btn_remove);
-        show(v, R.id.googleCard);
-        show(v, R.id.btn_remove);
-        show(v, R.id.google_tapToSwitch);
-        setText(v, R.id.account_nameG, PreferenceFragment.getString(getActivity(), "GOOGLE_NAME"));
-        setText(v, R.id.account_emailG, PreferenceFragment.getString(getActivity(), "GOOGLE_EMAIL"));
+        LinearLayout googleCard = ViewUtils.findViewById(view, R.id.googleLayout);
+        TextView removeAccount = ViewUtils.findViewById(view, R.id.btn_remove);
+        show(view, R.id.googleCard);
+        show(view, R.id.btn_remove);
+        show(view, R.id.google_tapToSwitch);
+        setText(view, R.id.account_nameG, PreferenceFragment.getString(getActivity(), "GOOGLE_NAME"));
+        setText(view, R.id.account_emailG, PreferenceFragment.getString(getActivity(), "GOOGLE_EMAIL"));
         googleCard.setOnClickListener(click -> new UserProvidedCredentialsTask(getContext()).withSavedGoogle());
         removeAccount.setOnClickListener(click -> {
             new UserProvidedCredentialsTask(getContext()).removeGooglePrefs();
-            hide(v, R.id.googleCard);
-            show(v, R.id.emptyCard);
+            hide(view, R.id.googleCard);
+            show(view, R.id.emptyCard);
         });
     }
 
     private void drawEmpty() {
-        show(v, R.id.emptyCard);
-        CircleView add_account = v.findViewById(R.id.add_account);
-        add_account.setOnClickListener(v -> switchGoogle());
+        show(view, R.id.emptyCard);
+        CircleView add_account = view.findViewById(R.id.add_account);
+        add_account.setOnClickListener(v -> Accountant.switchGoogle(getContext()));
     }
 
     private void drawDummyButtons() {
-        TextView logout = ViewUtils.findViewById(v, R.id.btn_logout);
-        TextView switchDummy = ViewUtils.findViewById(v, R.id.btn_switch);
-        TextView refreshToken = ViewUtils.findViewById(v, R.id.btn_refresh);
+        TextView logout = ViewUtils.findViewById(view, R.id.btn_logout);
+        TextView switchDummy = ViewUtils.findViewById(view, R.id.btn_switch);
+        TextView refreshToken = ViewUtils.findViewById(view, R.id.btn_refresh);
 
-        if (isDummy()) {
-            show(v, R.id.btn_logout);
-            show(v, R.id.btn_switch);
-            show(v, R.id.btn_refresh);
+        if (Accountant.isDummy(getContext())) {
+            show(view, R.id.btn_logout);
+            show(view, R.id.btn_switch);
+            show(view, R.id.btn_refresh);
         }
 
         logout.setOnClickListener(view -> showLogOutDialog());
-        switchDummy.setOnClickListener(view -> switchDummy());
-        refreshToken.setOnClickListener(view -> refreshMyToken());
+        switchDummy.setOnClickListener(view -> Accountant.switchDummy(getContext()));
+        refreshToken.setOnClickListener(view -> Accountant.refreshMyToken(getContext()));
     }
 
     private void drawGoogleButtons() {
-        TextView logout = ViewUtils.findViewById(v, R.id.btn_logoutG);
-        TextView switchDummy = ViewUtils.findViewById(v, R.id.btn_switchG);
+        TextView logout = ViewUtils.findViewById(view, R.id.btn_logoutG);
+        TextView switchDummy = ViewUtils.findViewById(view, R.id.btn_switchG);
 
-        if (isGoogle()) {
-            show(v, R.id.btn_logoutG);
-            show(v, R.id.btn_switchG);
+        if (Accountant.isGoogle(getContext())) {
+            show(view, R.id.btn_logoutG);
+            show(view, R.id.btn_switchG);
         }
 
         logout.setOnClickListener(view -> showLogOutDialog());
-        switchDummy.setOnClickListener(view -> switchGoogle());
+        switchDummy.setOnClickListener(view -> Accountant.switchGoogle(getContext()));
     }
 
     private void setAvatar(int avatar) {
-        ImageView avatar_view = v.findViewById(R.id.accounts_Avatar);
+        ImageView avatar_view = view.findViewById(R.id.accounts_Avatar);
         avatar_view.setImageResource(avatar);
     }
 
@@ -192,7 +192,7 @@ public class AccountsFragment extends AccountsHelper {
                         .placeholder(ContextCompat.getDrawable(getContext(), R.drawable.ic_dummy_avatar))
                         .circleCrop()
                         .diskCacheStrategy(DiskCacheStrategy.DATA))
-                .into(((ImageView) v.findViewById(R.id.accounts_AvatarG)));
+                .into(((ImageView) view.findViewById(R.id.accounts_AvatarG)));
     }
 
     private void showLogOutDialog() {
@@ -200,7 +200,7 @@ public class AccountsFragment extends AccountsHelper {
                 .setMessage(R.string.dialog_message_logout)
                 .setTitle(R.string.dialog_title_logout)
                 .setPositiveButton(android.R.string.yes, (dialogInterface, i) -> {
-                    Util.completeCheckout(getContext());
+                    Accountant.completeCheckout(getContext());
                     dialogInterface.dismiss();
                     getActivity().finish();
                     startActivity(new Intent(getContext(), LoginActivity.class));

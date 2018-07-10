@@ -36,6 +36,7 @@ import android.widget.ImageView;
 
 import com.dragons.aurora.ContextUtil;
 import com.dragons.aurora.R;
+import com.dragons.aurora.helpers.Accountant;
 import com.dragons.aurora.task.AppProvidedCredentialsTask;
 import com.dragons.aurora.task.UserProvidedCredentialsTask;
 
@@ -57,7 +58,7 @@ public class LoginActivity extends AuroraActivity {
             init();
         }
 
-        if (isLoggedIn()) {
+        if (Accountant.isLoggedIn(this)) {
             finish();
         }
     }
@@ -104,7 +105,7 @@ public class LoginActivity extends AuroraActivity {
         new Timer().scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
-                if (isLoggedIn())
+                if (Accountant.isLoggedIn(getApplicationContext()))
                     finish();
             }
         }, 0, 500);

@@ -39,6 +39,7 @@ import com.dragons.aurora.CategoryManager;
 import com.dragons.aurora.R;
 import com.dragons.aurora.activities.AccountsActivity;
 import com.dragons.aurora.activities.CategoryAppsActivity;
+import com.dragons.aurora.helpers.Accountant;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 import com.dragons.aurora.task.CategoryTaskHelper;
 import com.dragons.aurora.task.FeaturedTaskHelper;
@@ -62,7 +63,6 @@ public class HomeFragment extends AccountsHelper {
             return view;
         }
         view = inflater.inflate(R.layout.fragment_home, container, false);
-
         adtb = view.findViewById(R.id.adtb);
         adtb.getAvatar_icon().setOnClickListener(v -> {
             Intent intent = new Intent(getContext(), AccountsActivity.class);
@@ -80,7 +80,7 @@ public class HomeFragment extends AccountsHelper {
     @Override
     public void onResume() {
         super.onResume();
-        if (isLoggedIn()) {
+        if (Accountant.isLoggedIn(getContext())) {
             if (isConnected(getContext())) {
                 setUser();
                 if (topLinks.getVisibility() == View.GONE) {
@@ -90,12 +90,12 @@ public class HomeFragment extends AccountsHelper {
             }
         } else {
             resetUser();
-            LoginFirst();
+            Accountant.LoginFirst(getContext());
         }
     }
 
     protected void setUser() {
-        if (isGoogle()) {
+        if (Accountant.isGoogle(getContext())) {
             Glide
                     .with(getContext())
                     .load(PreferenceFragment.getString(getActivity(), "GOOGLE_URL"))

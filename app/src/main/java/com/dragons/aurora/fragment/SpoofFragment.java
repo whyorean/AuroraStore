@@ -23,7 +23,6 @@ package com.dragons.aurora.fragment;
 
 import android.app.AlertDialog;
 import android.content.Intent;
-import android.location.Address;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -46,12 +45,13 @@ import com.dragons.aurora.SpoofDeviceManager;
 import com.dragons.aurora.Util;
 import com.dragons.aurora.activities.DeviceInfoActivity;
 import com.dragons.aurora.activities.LoginActivity;
+import com.dragons.aurora.helpers.Accountant;
+import com.dragons.aurora.helpers.Prefs;
 import com.dragons.aurora.task.SpoofTask;
 
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Properties;
@@ -151,23 +151,23 @@ public class SpoofFragment extends AccountsHelper {
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
-        spinner.setSelection(Util.getInteger(getContext(), PREFERENCE_REQUESTED_LANGUAGE_INDEX), true);
+        spinner.setSelection(Prefs.getInteger(getContext(), PREFERENCE_REQUESTED_LANGUAGE_INDEX), true);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (position > 0) {
                     try {
                         new PlayStoreApiAuthenticator(getActivity()).getApi().setLocale(new Locale(localeKeys[position]));
-                        Util.putString(getContext(), PREFERENCE_REQUESTED_LANGUAGE, localeKeys[position]);
-                        Util.putInteger(getContext(), PREFERENCE_REQUESTED_LANGUAGE_INDEX, position);
+                        Prefs.putString(getContext(), PREFERENCE_REQUESTED_LANGUAGE, localeKeys[position]);
+                        Prefs.putInteger(getContext(), PREFERENCE_REQUESTED_LANGUAGE_INDEX, position);
                     } catch (IOException e) {
                         // Should be impossible to get to preferences with incorrect credentials
                     }
                 }
 
                 if (position == 0) {
-                    Util.putString(getContext(), PREFERENCE_REQUESTED_LANGUAGE, "");
-                    Util.putInteger(getContext(), PREFERENCE_REQUESTED_LANGUAGE_INDEX, 0);
+                    Prefs.putString(getContext(), PREFERENCE_REQUESTED_LANGUAGE, "");
+                    Prefs.putInteger(getContext(), PREFERENCE_REQUESTED_LANGUAGE_INDEX, 0);
                 }
             }
 
@@ -193,7 +193,7 @@ public class SpoofFragment extends AccountsHelper {
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
-        spinner.setSelection(Util.getInteger(getContext(), PREFERENCE_DEVICE_TO_PRETEND_TO_BE_INDEX), true);
+        spinner.setSelection(Prefs.getInteger(getContext(), PREFERENCE_DEVICE_TO_PRETEND_TO_BE_INDEX), true);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -226,7 +226,7 @@ public class SpoofFragment extends AccountsHelper {
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
-        spinner.setSelection(Util.getInteger(getContext(), PREFERENCE_REQUESTED_LOCATION_INDEX), true);
+        spinner.setSelection(Prefs.getInteger(getContext(), PREFERENCE_REQUESTED_LOCATION_INDEX), true);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -292,9 +292,9 @@ public class SpoofFragment extends AccountsHelper {
                 .setMessage(R.string.pref_device_to_pretend_to_be_toast)
                 .setTitle(R.string.dialog_title_logout)
                 .setPositiveButton(R.string.action_logout, (dialogInterface, i) -> {
-                    Util.putString(getContext(), PREFERENCE_DEVICE_TO_PRETEND_TO_BE, "");
-                    Util.putInteger(getContext(), PREFERENCE_DEVICE_TO_PRETEND_TO_BE_INDEX, 0);
-                    Util.completeCheckout(getContext());
+                    Prefs.putString(getContext(), PREFERENCE_DEVICE_TO_PRETEND_TO_BE, "");
+                    Prefs.putInteger(getContext(), PREFERENCE_DEVICE_TO_PRETEND_TO_BE_INDEX, 0);
+                    Accountant.completeCheckout(getContext());
                     dialogInterface.dismiss();
                     startActivity(new Intent(getContext(), LoginActivity.class));
                 })

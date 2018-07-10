@@ -35,6 +35,7 @@ import com.dragons.aurora.FirstLaunchChecker;
 import com.dragons.aurora.R;
 import com.dragons.aurora.Util;
 import com.dragons.aurora.fragment.PreferenceFragment;
+import com.dragons.aurora.helpers.Accountant;
 import com.dragons.aurora.playstoreapiv2.AuthException;
 import com.dragons.aurora.playstoreapiv2.GooglePlayException;
 import com.dragons.aurora.playstoreapiv2.TokenDispenserException;
@@ -90,7 +91,7 @@ public abstract class CheckCredentialsTask extends PlayStoreTask<Void> {
             getTwoFactorAuthDialog().show();
         } else {
             ContextUtil.toast(context, R.string.error_incorrect_password);
-            Util.completeCheckout(context);
+            Accountant.completeCheckout(context);
         }
     }
 

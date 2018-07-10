@@ -36,6 +36,7 @@ import com.dragons.aurora.AppListIterator;
 import com.dragons.aurora.PlayStoreApiAuthenticator;
 import com.dragons.aurora.R;
 import com.dragons.aurora.adapters.EndlessAppsAdapter;
+import com.dragons.aurora.helpers.Accountant;
 import com.dragons.aurora.model.App;
 import com.dragons.aurora.playstoreapiv2.CategoryAppsIterator;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
@@ -98,14 +99,14 @@ public class TopFreeApps extends CategoryAppsTask {
         fetchCategoryApps(false);
         Button ohhSnap_retry = view.findViewById(R.id.ohhSnap_retry);
         ohhSnap_retry.setOnClickListener(click -> {
-            if (isLoggedIn() && isConnected(getContext())) {
+            if (Accountant.isLoggedIn(getContext()) && isConnected(getContext())) {
                 hide(view, R.id.ohhSnap);
                 fetchCategoryApps(false);
             }
         });
         Button retry_querry = view.findViewById(R.id.recheck_query);
         retry_querry.setOnClickListener(click -> {
-            if (isLoggedIn() && isConnected(getContext())) {
+            if (Accountant.isLoggedIn(getContext()) && isConnected(getContext())) {
                 hide(view, R.id.unicorn);
                 fetchCategoryApps(false);
             }

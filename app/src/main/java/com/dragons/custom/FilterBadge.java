@@ -32,6 +32,7 @@ import android.widget.TextView;
 
 import com.dragons.aurora.R;
 import com.dragons.aurora.Util;
+import com.dragons.aurora.helpers.Prefs;
 import com.github.florent37.shapeofview.shapes.CircleView;
 
 public class FilterBadge extends RelativeLayout {
@@ -127,11 +128,11 @@ public class FilterBadge extends RelativeLayout {
     }
 
     public boolean getFilterPreferences() {
-        return Util.getBoolean(context, key);
+        return Prefs.getBoolean(context, key);
     }
 
     public void setFilterPreferences(boolean value) {
-        Util.putBoolean(context, key, value);
+        Prefs.putBoolean(context, key, value);
         badgeChecked = value;
     }
 }
