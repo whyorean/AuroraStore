@@ -49,7 +49,7 @@ import com.dragons.custom.TagView;
 
 import static com.dragons.aurora.Util.isConnected;
 
-public class HomeFragment extends AccountsHelper {
+public class HomeFragment extends BaseFragment {
 
     private AdaptiveToolbar adtb;
     private View view;

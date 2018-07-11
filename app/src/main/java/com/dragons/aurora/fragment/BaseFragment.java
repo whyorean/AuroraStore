@@ -23,6 +23,7 @@ package com.dragons.aurora.fragment;
 
 import android.support.v4.app.Fragment;
 
-public abstract class AccountsHelper extends Fragment {
+public abstract class BaseFragment extends Fragment {
+
 
 }

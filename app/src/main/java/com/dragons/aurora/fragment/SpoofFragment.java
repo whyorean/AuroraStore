@@ -35,7 +35,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.Spinner;
-import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
@@ -62,9 +61,12 @@ import static com.dragons.aurora.fragment.PreferenceFragment.PREFERENCE_REQUESTE
 import static com.dragons.aurora.fragment.PreferenceFragment.PREFERENCE_REQUESTED_LANGUAGE_INDEX;
 import static com.dragons.aurora.fragment.PreferenceFragment.PREFERENCE_REQUESTED_LOCATION_INDEX;
 
-public class SpoofFragment extends AccountsHelper {
+public class SpoofFragment extends BaseFragment {
 
-    static String LineageURl = "https://wiki.lineageos.org/images/devices/";
+    public static final String LineageURl = "https://wiki.lineageos.org/images/devices/";
+    public static final String BUILD_DEVICE = "Build.DEVICE";
+    public static final String BUILD_MANUFACTURER = "Build.MANUFACTURER";
+    public static final String BUILD_HARDWARE = "Build.HARDWARE";
 
     private String deviceName;
     private View view;
@@ -123,18 +125,18 @@ public class SpoofFragment extends AccountsHelper {
 
     public void drawDevice() {
         getDeviceImg(LineageURl + Build.DEVICE + ".png");
-        setText(R.id.device_model, R.string.device_model, Build.MODEL, Build.DEVICE);
-        setText(R.id.device_manufacturer, Build.MANUFACTURER);
-        setText(R.id.device_architect, Build.BOARD);
+        Util.setText(view, R.id.device_model, R.string.device_model, Build.MODEL, Build.DEVICE);
+        Util.setText(view, R.id.device_manufacturer, Build.MANUFACTURER);
+        Util.setText(view, R.id.device_architect, Build.BOARD);
     }
 
     public void drawSpoofedDevice() {
         Properties properties = new SpoofDeviceManager(this.getActivity()).getProperties(deviceName);
         String Model = properties.getProperty("UserReadableName");
-        getDeviceImg(LineageURl + properties.getProperty("Build.DEVICE") + ".png");
-        setText(R.id.device_model, R.string.device_model, Model.substring(0, Model.indexOf('(')), properties.getProperty("Build.DEVICE"));
-        setText(R.id.device_manufacturer, properties.getProperty("Build.MANUFACTURER"));
-        setText(R.id.device_architect, properties.getProperty("Build.HARDWARE"));
+        getDeviceImg(LineageURl + properties.getProperty(BUILD_DEVICE) + ".png");
+        Util.setText(view, R.id.device_model, R.string.device_model, Model.substring(0, Model.indexOf('(')), properties.getProperty(BUILD_DEVICE));
+        Util.setText(view, R.id.device_manufacturer, properties.getProperty(BUILD_MANUFACTURER));
+        Util.setText(view, R.id.device_architect, properties.getProperty(BUILD_HARDWARE));
     }
 
     void setupLanguage() {
@@ -251,16 +253,6 @@ public class SpoofFragment extends AccountsHelper {
                 .apply(new RequestOptions().placeholder(ContextCompat.getDrawable(getContext(), R.drawable.ic_device)))
                 .into((ImageView) view.findViewById(R.id.device_avatar));
 
-    }
-
-    protected void setText(int viewId, String text) {
-        TextView textView = (TextView) view.findViewById(viewId);
-        if (null != textView)
-            textView.setText(text);
-    }
-
-    protected void setText(int viewId, int stringId, Object... text) {
-        setText(viewId, this.getString(stringId, text));
     }
 
     protected Map<String, String> getDeviceKeyValueMap() {

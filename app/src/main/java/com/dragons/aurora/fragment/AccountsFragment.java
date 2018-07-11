@@ -49,7 +49,7 @@ import static com.dragons.aurora.Util.isConnected;
 import static com.dragons.aurora.Util.setText;
 import static com.dragons.aurora.Util.show;
 
-public class AccountsFragment extends AccountsHelper {
+public class AccountsFragment extends BaseFragment {
 
     private boolean isSecAvailable;
     private String myEmail;

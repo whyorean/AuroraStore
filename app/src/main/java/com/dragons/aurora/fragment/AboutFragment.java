@@ -35,7 +35,7 @@ import android.widget.TextView;
 import com.dragons.aurora.R;
 import com.dragons.aurora.view.LinkCard;
 
-public class AboutFragment extends AccountsHelper {
+public class AboutFragment extends BaseFragment {
 
     private final int linkIcons[] = {
             R.drawable.ic_gitlab,
