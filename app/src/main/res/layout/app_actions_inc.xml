@@ -105,6 +105,7 @@
         android:maxLines="1"
         android:padding="5dp"
         android:text="@string/details_install"
+        android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="12sp"
         android:visibility="gone" />
