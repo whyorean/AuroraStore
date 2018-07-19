@@ -24,10 +24,6 @@
     <string name="about_app">"Aurora, Play Store'un açık kaynak alternatifidir, Play Store'dan uygulama indirmenize izin verir. Yüklü uygulamaların güncellemelerini ve diğer uygulamaları arayabilmenizi sağlar."</string>
 
     <!-- Son kullanıcı odaklı olarak basitleştirildi. -->
-    <string name="about_contributors">"Katkıda bulunanlar"</string>
-    <string name="about_devs">"Geliştiriciler"</string>
-    <string name="about_github">"GitHub"</string>
-    <string name="about_opensource">"Açık kaynak kütüphaneler"</string>
     <string name="about_telegram">"Telegram"</string>
     <string name="about_xda">"Geliştirici Konusu"</string>
     <string name="account_dummy_email">"anonim@anonim"</string>
@@ -74,19 +70,14 @@
     <string name="action_welcome_msg">"Aurora'ya Hoş Geldiniz"</string>
     <string name="action_whitelist">"Güncellemeler için beyaz liste"</string>
     <string name="activity_title_search">"%1$s için sonuçlar"</string>
-    <string name="activity_title_updates_only">"Güncellemeler"</string>
     <string name="all_categories">"Bütün kategoriler"</string>
     <string name="apps_by">"%1$s tarafından uygulamalar"</string>
     <string name="availability_restriction_country">"Bu öğe ülkenizde kullanılamıyor."</string>
     <string name="availability_restriction_generic">"Öğe kullanılamıyor."</string>
     <string name="availability_restriction_hardware_app">"Cihazınız bu sürümle uyumlu değil."</string>
     <string name="category_appFree">"Ücretsiz"</string>
-    <string name="category_communityApps">"Aurora topluluğunu taban alan"</string>
-    <string name="category_fdroidApps">"FDroid'deki uygulamalar"</string>
     <string name="category_topFree">"En İyi Ücretsiz"</string>
     <string name="category_topGrossing">"En Çok Hasılat Yapanlar"</string>
-    <string name="category_topMusicVideo">"Müzik ve Ses"</string>
-    <string name="category_topUtility">"Araçlar"</string>
 
     <!-- Trend kelimesi Türkçe olmadığı ve başka uygulamalarda bu kelimenin Eğilimler olarak çevrilmesinden dolayı Eğilimler olarak çevirisi yapılmıştır. -->
     <string name="category_trending">"Eğilimler"</string>
@@ -94,22 +85,16 @@
     <string name="credentials_hint_email">"E-posta veya telefon"</string>
     <string name="credentials_hint_password">"Şifreni gir"</string>
     <string name="credentials_logo_txt">"Giriş yap"</string>
-    <string name="credentials_message">"Bu uygulamayı kullanmanın Play Store kullanım koşullarını ihlal ettiğini unutmayın.
-Google Play Store'a en az bir kez giriş yapmış ve Play Store kullanım koşullarını kabul etmiş bir Google hesabı kullanmak muhtemelen daha güvenli olacaktır."</string>
     <string name="credentials_title">"Google hesabı erişimi"</string>
     <string name="delete">"Sil"</string>
     <string name="delta_disabled">"Delta güncellemeler devre dışı"</string>
     <string name="delta_enabled">"Delta güncellemeler etkin"</string>
-    <string name="details_appExtras">"Daha fazla bilgi"</string>
-    <string name="details_appInfo">"Uygulama detayları"</string>
     <string name="details_appReview">"İncelemeler"</string>
     <string name="details_cancel">"İptal"</string>
     <string name="details_category">"%1$s"</string>
     <string name="details_contains_ads">"Reklam içerir"</string>
     <string name="details_could_not_copy_apk">"Apk kopyalanamadı"</string>
-    <string name="details_changelog">"Değişim günlüğü"</string>
     <string name="details_changelog_empty">"Değişim günlüğü yok"</string>
-    <string name="details_description">"Devamını oku"</string>
     <string name="details_developer">"%1$s"</string>
     <string name="details_download">"İndir"</string>
     <string name="details_download_checking">"Kontrol ediliyor"</string>
@@ -140,26 +125,14 @@ Google Play Store'a en az bir kez giriş yapmış ve Play Store kullanım koşul
     <string name="details_update">"Güncelle"</string>
     <string name="details_updated">"%1$s"</string>
     <string name="details_versionName">"%1$s"</string>
-    <string name="details_versionName_updatable">"%1$s → %2$s"</string>
-    <string name="details_wishList">"İstek listesine ekle"</string>
     <string name="details_you_rated_this_app">"Sizin değerlendirmeniz"</string>
-    <string name="device_api">"API : %1$s"</string>
-    <string name="device_board">"Anakart : %1$s"</string>
-    <string name="device_cpu">"%1$s"</string>
     <string name="device_gsfID">"GHÇ ID : %1$s"</string>
-    <string name="device_manufacturer">"Marka : %1$s"</string>
     <string name="device_model">"%1$s ( %2$s )"</string>
-    <string name="device_res">"%1$s x %2$s"</string>
-    <string name="device_timezone">"Saat dilimi : %1$s"</string>
-    <string name="dialog_account_type_predefined">"Sahte bir Aurora hesabıyla"</string>
-    <string name="dialog_account_type_provided_by_user">"Kendi Google hesabınızla"</string>
-    <string name="dialog_account_type_title">"Google Play Store'da nasıl oturum açmak istersiniz?"</string>
     <string name="dialog_message_busybox_not_available">"Sistem uygulamalarıyla çalışmak için busybox kurulu ve root erişimli bir cihaz gerekmekte. Şimdi Busybox yükleyici için bir arama yapmak ister misiniz?"</string>
     <string name="dialog_message_checking_busybox">"Sistem uygulamaları ile çalışmak için bazı araçlar gerekir.  Araçlar kontrol ediliyor."</string>
     <string name="dialog_message_logging_in_predefined">"Aurora tarafından sağlanan bilgilerle giriş yapılıyor"</string>
     <string name="dialog_message_logging_in_provided_by_user">"Verdiğiniz bilgiler ile giriş yapılıyor"</string>
     <string name="dialog_message_logout">"Çıkış yapmak istediğinizden emin misiniz?"</string>
-    <string name="dialog_message_package_id">"Aynı isimli bir paket mevcut. O uygulamanın sayfasına gitmek ister misiniz?"</string>
     <string name="dialog_message_reboot_required">"Değişiklikler yeniden başlatıldıktan sonra uygulanır. Yeniden başlatmak ister misiniz?"</string>
     <string name="dialog_message_remounting_system">"/system bölümü ile çalışılıyor. Bu işlem biraz zaman alabilir."</string>
     <string name="dialog_message_switching_in_predefined">"Sahte hesaplar arasında geçiş yapılıyor"</string>
@@ -192,10 +165,8 @@ Lütfen Aurora Store'a adanmış bir uygulama şifresi oluşturun ve onunla giri
     <string name="dialog_title_checking_busybox">"Busybox mevcudiyeti kontrol ediliyor"</string>
     <string name="dialog_title_logging_in">"Giriş yapılıyor"</string>
     <string name="dialog_title_logout">"Çıkış yap?"</string>
-    <string name="dialog_title_package_id">"Bu isimde bir paket mevcut"</string>
     <string name="dialog_title_reboot_required">"Yeniden başlatma gerekiyor"</string>
     <string name="dialog_title_remounting_system">"/system bölümü ile çalışılıyor"</string>
-    <string name="dialog_title_switching">"Sahte hesap değiştiriliyor"</string>
     <string name="dialog_title_system_app_self">"Aurora sistem uygulamasına dönüştürülüyor"</string>
     <string name="dialog_title_system_app_warning">"Dikkat!"</string>
     <string name="dialog_title_two_factor">"2 Adımlı Doğrulama"</string>
@@ -232,7 +203,6 @@ Lütfen Aurora Store'a adanmış bir uygulama şifresi oluşturun ve onunla giri
     <!-- Daha güzel bir fikri olan var mı bölüm için? -->
     <string name="exodus_title">"Aurora Protect"</string>
     <string name="exodus_viewMore">"Detayları Görüntüle"</string>
-    <string name="first_login_message">"Kendi hesabınızı kullanmak için menüden \"Çıkış yap\"ı seçin"</string>
     <string name="flagging_title">"Alakasız olarak işaretle"</string>
     <string name="flag_graphic_violence">"Görsel şiddet"</string>
     <string name="flag_harmful_prompt">"Cihazınıza veya verilerinize gelen zararı açıklayınız:"</string>
@@ -245,7 +215,6 @@ Lütfen Aurora Store'a adanmış bir uygulama şifresi oluşturun ve onunla giri
     <string name="flag_page_description">"İtirazınızı tanımlayın"</string>
     <string name="flag_pharma_content">"Yasadışı reçete ve diğer uyuşturucular"</string>
     <string name="flag_sexual_content">"Cinsel içerik"</string>
-    <string name="header_usr_name">"Aurora"</string>
     <string name="header_usr_noEmail">"Aurora'yı kullanmak için giriş yapın"</string>
     <string name="list_app_blacklisted">"Kara listeye eklendi"</string>
     <string name="list_app_depends_on_gsf">"GHÇ'ne bağımlı"</string>
@@ -289,8 +258,6 @@ Günlük uygulama güncellemeleri açılsın mı?"</string>
     <string name="notification_updates_available_message">"%1$d uygulama için güncelleme mevcut."</string>
     <string name="notification_updates_available_title">"Uygulama güncellemesi mevcut."</string>
     <string name="no_permissions">"Hiçbir izin kullanılmadı."</string>
-    <string name="pref_app_language">"Dil seçin"</string>
-    <string name="pref_app_language_cat">"Aurora Dili"</string>
     <string name="pref_auto_install">"Uygulamaları doğrudan yükle"</string>
     <string name="pref_auto_install_summary_off">"Uygulamaları bildirime dokunulduğunda yükle"</string>
     <string name="pref_auto_install_summary_on">"Uygulamalar indirildikten hemen sonra yüklenir"</string>
@@ -311,7 +278,6 @@ Günlük uygulama güncellemeleri açılsın mı?"</string>
     <string name="pref_background_update_interval_weekly">"Haftalık"</string>
     <string name="pref_background_update_wifi_only">"Sadece Wi-Fi üzerinde"</string>
     <string name="pref_category_installation">"Yükleme"</string>
-    <string name="pref_category_spoofing">"Kandırma"</string>
     <string name="pref_category_ui">"Kullanıcı Arayüzü"</string>
     <string name="pref_category_updates">"Güncellemeler"</string>
     <string name="pref_delete_apk_after_install">"Kurulumdan sonra .apk'yı sil"</string>
@@ -319,7 +285,6 @@ Günlük uygulama güncellemeleri açılsın mı?"</string>
     <string name="pref_delete_apk_after_install_summary_on">"Apk'lar artık yüklendikten sonra silinecek"</string>
     <string name="pref_device_to_pretend_to_be">"Başka bir cihaz gibi davran"</string>
     <string name="pref_device_to_pretend_to_be_default">"Orijinal cihaz bilgileriniz"</string>
-    <string name="pref_device_to_pretend_to_be_notice">"Eğer cihaz tanımlamanızı %1$s kısmına girerseniz, listede gözükürler."</string>
     <string name="pref_device_to_pretend_to_be_toast">"Bu değişiklik sadece yeniden giriş yaptığınızda uygulanır"</string>
     <string name="pref_download_deltas">"Delta güncellemeleri"</string>
     <string name="pref_download_deltas_summary_off">"Her seferinde bütün apk indirilir"</string>
@@ -357,7 +322,6 @@ Günlük uygulama güncellemeleri açılsın mı?"</string>
     <string name="testing_program_section_opted_out_propagating_message">"Beta programından çıkarılmanız birkaç dakika alabilir."</string>
     <string name="testing_program_section_opted_out_title">"Beta kullanıcısı ol"</string>
     <string name="top_categories">"En çok tutulan kategoriler"</string>
-    <string name="warn_app_purchase">"Uygulama satın alma henüz kullanılamıyor, Google Play web sayfasına yönlendiriliyor"</string>
     <string name="acc_dummy_summary">"Aurora Store tarafından sağlanan bilgilerle giriş yaparsanız, sahte hesaplarla satın aldıklarınıza erişemeyebilirsiniz."</string>
     <string name="action_filter_misc">"Diğer"</string>
     <string name="action_filter_build">"İnşa et"</string>
@@ -367,12 +331,10 @@ Günlük uygulama güncellemeleri açılsın mı?"</string>
     <string name="pref_theme_title_summary">"Beyaz/Koyu/Siyah temalar arasında geçiş yapın"</string>
     <string name="action_filter">"Filtreler"</string>
     <string name="action_filter_apps_with_ads">"Reklamlı uygulamalar"</string>
-    <string name="action_filter_category">"Kategoriler"</string>
     <string name="action_filter_downloads">"İndirmeler"</string>
     <string name="action_filter_gsf_dependent_apps">"GHÇ Gerektiren"</string>
     <string name="action_filter_paid_apps">"Paralı"</string>
     <string name="action_filter_rating">"Oylamalar"</string>
-    <string name="action_filter_system_apps">"Sistem uygulamaları"</string>
     <string name="action_filter_all">"All"</string>
     <string name="manual_download_disclaimer">"Disclaimer"</string>
     <string name="manual_download_warning">"This page lets you manually choose the version of the app to download.\n\nKeep in mind that downloading arbitrary versions of apps is not supported by Google Play Store. Your success depends on a lucky guess of the version code. Even if you guess right and you get the download to start, you might get an incompatible apk."</string>

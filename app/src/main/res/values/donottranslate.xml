@@ -30,7 +30,6 @@
     <string name="content_description_review_previous_page" translatable="false">"Previous review page"</string>
     <string name="content_description_review_next_page" translatable="false">"Next review page"</string>
     <string name="content_description_app_icon" translatable="false">"App icon"</string>
-    <string name="content_description_cancel_download" translatable="false">"Cancel download"</string>
     <string name="details_installs" translatable="false">"%1$s"</string>
     <string name="details_rating" translatable="false">"%1$.1f"</string>
     <string name="details_rating_specific" translatable="false">"%1$d  ★  %2$d"</string>

@@ -19,10 +19,6 @@
 
 <resources>
     <string name="about_app">"Aurora Store це альтернативний Google Play Store з відкритим кодом, дозволяє завантажувати додатки з Google Play Store. Також Aurora дозволяє оновлювати встановлені додатки та шукати нові."</string>
-    <string name="about_contributors">"Учасники проекту"</string>
-    <string name="about_devs">"Розробники"</string>
-    <string name="about_github">"GitHub"</string>
-    <string name="about_opensource">"Бібліотеки з відкритим кодом"</string>
     <string name="about_telegram">"Канал в Телеграм"</string>
     <string name="about_xda">"Тема на XDA"</string>
     <string name="account_dummy_email">"Анонімна пошта"</string>
@@ -65,42 +61,29 @@
     <string name="action_welcome_msg">"Вітаємо в Aurora"</string>
     <string name="action_whitelist">"Білий список для оновлення"</string>
     <string name="activity_title_search">"Результати %1$s"</string>
-    <string name="activity_title_updates_only">"Оновлення"</string>
     <string name="all_categories">"Усі категорії"</string>
     <string name="apps_by">"Програми %1$s"</string>
     <string name="availability_restriction_country">"Цей пункт недосяжний у вашій країні."</string>
     <string name="availability_restriction_generic">"Цей пункт недосяжний."</string>
     <string name="availability_restriction_hardware_app">"Ваш пристрій не сумісний з цією версією."</string>
     <string name="category_appFree">"Безкоштовно"</string>
-    <string name="category_communityApps">"Based on Aurora Community"</string>
-    <string name="category_fdroidApps">"Додатки з FDroid"</string>
     <string name="category_topFree">"Топ безкоштовних"</string>
     <string name="category_topGrossing">"Найпопулярніші"</string>
-    <string name="category_topMusicVideo">"Music &amp; Audio"</string>
-    <string name="category_topUtility">"Tools &amp; Utilities"</string>
     <string name="category_trending">"В тренді"</string>
     <string name="content_flagged">"Зауваження прийнято."</string>
     <string name="credentials_hint_email">"Email або номер телефону"</string>
     <string name="credentials_hint_password">"Введіть пароль"</string>
     <string name="credentials_logo_txt">"Увійти"</string>
-    <string name="credentials_message">"Використати свій аккаунт Google.
-
-Майте на увазі, що використання цього додатка порушує правила використання Play Store
-Ймовірно безпечніше використовувати одноразовий аккаунт Google, який входив в Play Store хоча б один раз і прийняв умови використання Play Store."</string>
     <string name="credentials_title">"Доступ до аккаунту Google"</string>
     <string name="delete">"Видалити"</string>
     <string name="delta_disabled">"Дельта оновлення вимкнуті"</string>
     <string name="delta_enabled">"Дельта оновления увімкнені"</string>
-    <string name="details_appExtras">"Додаткова інформація"</string>
-    <string name="details_appInfo">"Інформація"</string>
     <string name="details_appReview">"Відгуки"</string>
     <string name="details_cancel">"Відміна"</string>
     <string name="details_category">"%1$s"</string>
     <string name="details_contains_ads">"Містить рекламу"</string>
     <string name="details_could_not_copy_apk">"Не вдалось скопіювати apk"</string>
-    <string name="details_changelog">"Список змін"</string>
     <string name="details_changelog_empty">"Немає доступного списку змін."</string>
-    <string name="details_description">"Читати далі"</string>
     <string name="details_developer">"%1$s"</string>
     <string name="details_download">"Завантажити"</string>
     <string name="details_download_checking">"Перевірка"</string>
@@ -131,26 +114,14 @@
     <string name="details_update">"Оновлення"</string>
     <string name="details_updated">"Оновлено : %1$s"</string>
     <string name="details_versionName">"%1$s"</string>
-    <string name="details_versionName_updatable">"%1$s → %2$s"</string>
-    <string name="details_wishList">"Додати до списку бажань"</string>
     <string name="details_you_rated_this_app">"Ви оцінили цю програму:"</string>
-    <string name="device_api">"API : %1$s"</string>
-    <string name="device_board">"Плата : %1$s"</string>
-    <string name="device_cpu">"%1$s"</string>
     <string name="device_gsfID">"GSF ID : %1$s"</string>
-    <string name="device_manufacturer">"Виробник : %1$s"</string>
     <string name="device_model">"%1$s ( %2$s )"</string>
-    <string name="device_res">"%1$s x %2$s"</string>
-    <string name="device_timezone">"Часовий пояс : %1$s"</string>
-    <string name="dialog_account_type_predefined">"Увійти з аккаунту Aurora Store"</string>
-    <string name="dialog_account_type_provided_by_user">"Увійти в свій аккаунт Google"</string>
-    <string name="dialog_account_type_title">"Як ви хочете увійти в Google Play Store?"</string>
     <string name="dialog_message_busybox_not_available">"Необхідний пристрій з рут-правами і встановленим busybox. Знайти інсталятор busybox?"</string>
     <string name="dialog_message_checking_busybox">"Для роботи з системними додатками потрібні певні системні інструменти."</string>
     <string name="dialog_message_logging_in_predefined">"Спроба входу з обліковими даними Aurora Store"</string>
     <string name="dialog_message_logging_in_provided_by_user">"Спроба входу з введеними обліковими даними"</string>
     <string name="dialog_message_logout">"Ви впевнені, що хочете вийти?"</string>
-    <string name="dialog_message_package_id">"Вже є додаток з таким іменем. Бажаєте перейти до властивостей програми?"</string>
     <string name="dialog_message_reboot_required">"Зміни вступлять в силу після перезавантаження. Перезавантажити зараз?"</string>
     <string name="dialog_message_remounting_system">"Працюємо з розділом /system. Це може зайняти деякий час."</string>
     <string name="dialog_message_switching_in_predefined">"Спроба переключитися між фіктивними обліковими записами"</string>
@@ -183,10 +154,8 @@
     <string name="dialog_title_checking_busybox">"Перевірка наявності busybox"</string>
     <string name="dialog_title_logging_in">"Вхід"</string>
     <string name="dialog_title_logout">"Вийти?"</string>
-    <string name="dialog_title_package_id">"Програма з цим іменем пакета існує"</string>
     <string name="dialog_title_reboot_required">"Потрібне перезавантаження"</string>
     <string name="dialog_title_remounting_system">"Робота з розділом /system"</string>
-    <string name="dialog_title_switching">"Switching Dummy"</string>
     <string name="dialog_title_system_app_self">"Переміщення Aurora в систему"</string>
     <string name="dialog_title_system_app_warning">"Увага!"</string>
     <string name="dialog_title_two_factor">"Двухфакторна аутентифікація"</string>
@@ -218,7 +187,6 @@
     <string name="exodus_powered">"Powered by Exodus"</string>
     <string name="exodus_title">"Aurora Protect"</string>
     <string name="exodus_viewMore">"Переглянути деталі"</string>
-    <string name="first_login_message">"Щоб використовувати свій аккаунт виберіть Увійти в меню"</string>
     <string name="flagging_title">"Повідомити про не відповідний вміст"</string>
     <string name="flag_graphic_violence">"Сцени насильства"</string>
     <string name="flag_harmful_prompt">"Опишіть шкоду, заподіяну вашому пристрою або даними:"</string>
@@ -231,7 +199,6 @@
     <string name="flag_page_description">"Причина, по якій ви вважаєте цей контент або додаток неприйнятним:"</string>
     <string name="flag_pharma_content">"Незаконний рецепт або інший препарат"</string>
     <string name="flag_sexual_content">"Еротичний контент"</string>
-    <string name="header_usr_name">"Aurora"</string>
     <string name="header_usr_noEmail">"Увійдіть, щоб використовувати Aurora"</string>
     <string name="list_app_blacklisted">"У чорному списку"</string>
     <string name="list_app_depends_on_gsf">"залежить від GSF"</string>
@@ -275,8 +242,6 @@ Turn daily updates on ?"</string>
     <string name="notification_updates_available_message">"Оновлення доступні для %1$d додатків."</string>
     <string name="notification_updates_available_title">"Доступні оновлення програми."</string>
     <string name="no_permissions">"Дозволи не використовуються."</string>
-    <string name="pref_app_language">"Виберіть мову"</string>
-    <string name="pref_app_language_cat">"Aurora Language"</string>
     <string name="pref_auto_install">"Негайне
  встановлення додатків"</string>
     <string name="pref_auto_install_summary_off">"Додатки встановлюються, коли користувач натискає на повідомлення про завершення завантаження."</string>
@@ -298,7 +263,6 @@ Turn daily updates on ?"</string>
     <string name="pref_background_update_interval_weekly">"Кожну неділю"</string>
     <string name="pref_background_update_wifi_only">"Тільки по Wi-Fi"</string>
     <string name="pref_category_installation">"Встановлення"</string>
-    <string name="pref_category_spoofing">"Імітація"</string>
     <string name="pref_category_ui">"Інтерфейс користувача"</string>
     <string name="pref_category_updates">"Оновлення"</string>
     <string name="pref_delete_apk_after_install">"Видалення .apk після встановлення"</string>
@@ -306,7 +270,6 @@ Turn daily updates on ?"</string>
     <string name="pref_delete_apk_after_install_summary_on">"Зараз .apk файли видаляються після встановлення."</string>
     <string name="pref_device_to_pretend_to_be">"Прикидатися іншим пристроєм"</string>
     <string name="pref_device_to_pretend_to_be_default">"Оригінальна інформація про пристрій"</string>
-    <string name="pref_device_to_pretend_to_be_notice">"Якщо ви помістите опис пристроїв у% 1 $ s, вони появляться в цьому списку"</string>
     <string name="pref_device_to_pretend_to_be_toast">"Зміни вступлять в силу після повторного входу в аккаунт!"</string>
     <string name="pref_download_deltas">"Дельта оновлення"</string>
     <string name="pref_download_deltas_summary_off">"Зараз завантажується весь apk файл."</string>
@@ -342,7 +305,6 @@ Turn daily updates on ?"</string>
     <string name="testing_program_section_opted_out_propagating_message">"Вихід з програми бета-тестування може зайняти кілька хвилин."</string>
     <string name="testing_program_section_opted_out_title">"Стати бета-тестером"</string>
     <string name="top_categories">"Популярні категорії"</string>
-    <string name="warn_app_purchase">"Купівля додатків поки недоступна!"</string>
     <string name="acc_dummy_summary">"Login with anonymous credentials provided by Aurora Store, you would not be able to access your app purchases with dummy accounts."</string>
     <string name="action_filter_misc">"Опції"</string>
     <string name="action_filter_build">"Build"</string>
@@ -352,12 +314,10 @@ Turn daily updates on ?"</string>
     <string name="pref_theme_title_summary">"Switch between Light/Dark/AMOLED"</string>
     <string name="action_filter">"Сортування"</string>
     <string name="action_filter_apps_with_ads">"З рекламою"</string>
-    <string name="action_filter_category">"Category"</string>
     <string name="action_filter_downloads">"По завантаженням"</string>
     <string name="action_filter_gsf_dependent_apps">"З привязкою GFS"</string>
     <string name="action_filter_paid_apps">"Тільки платні"</string>
     <string name="action_filter_rating">"За рейтингом"</string>
-    <string name="action_filter_system_apps">"Системні програми"</string>
     <string name="action_filter_all">"Всі"</string>
     <string name="manual_download_disclaimer">"Disclaimer"</string>
     <string name="manual_download_warning">"На цій сторінці ви можете вручну вибрати версію програми для завантаження. Код версії - це номер, який визначає версію програми. Він починається з 1 і збільшується розробником програми кожен раз, коли появляється нова версія. Зазвичай Play Store дозволяє завантажувати тільки останню версію програми, сумісну з вашим пристроєм. Шляхом ручного введення номера зможете отримати і інші версії. N майте на увазі, що завантаження довільних версій програми не підтримується в Google Play Store. Успіх залежить від вдало підібраного версії коду версії. Навіть якщо вам пощастить і почнеться завантаження, ви можете отримати несумісний apk. Швидше за все ви витрачаєте свій час!"</string>

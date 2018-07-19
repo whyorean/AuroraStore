@@ -22,14 +22,10 @@
 
 <resources>
     <dimen name="icon_size">64dp</dimen>
-    <dimen name="icon_size_cat_top">78dp</dimen>
     <dimen name="icon_size_big">72dp</dimen>
     <dimen name="icon_size_med">48dp</dimen>
     <dimen name="icon_size_cat">36dp</dimen>
     <dimen name="icon_size_small">24dp</dimen>
-    <dimen name="card_height_small">100dp</dimen>
-
-    <dimen name="toolbar_height">76dp</dimen>
 
     <!-- Appbar dimensions -->
     <dimen name="appbar_bar_height">86dp</dimen>

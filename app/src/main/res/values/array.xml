@@ -40,10 +40,6 @@
         <item>@string/pref_background_update_interval_daily</item>
         <item>@string/pref_background_update_interval_weekly</item>
     </string-array>
-    <string-array name="accountType">
-        <item>@string/dialog_account_type_provided_by_user</item>
-        <item>@string/dialog_account_type_predefined</item>
-    </string-array>
     <string-array name="installationMethodValues" translatable="false">
         <item>default</item>
         <item>root</item>
@@ -95,31 +91,6 @@
         <item> > 10 M </item>
         <item> > 50 M </item>
         <item> > 100 M </item>
-    </string-array>
-    <string-array name="contributors">
-        <item>Nick Kountouriotis @SkiesOfAzel</item>
-        <item>Krzysztof Szczepański @MOVZX</item>
-        <item>Fabian @Faerbit</item>
-        <item>waweic</item>
-        <item>justmix4</item>
-        <item>Poussinou</item>
-        <item>Jakub Vynikal @Vynikal</item>
-        <item>Vavun</item>
-        <item>Maykel Moya @mmoya</item>
-        <item>Andrés Hernández @auroszx</item>
-        <item>Jan Gutowski @Switch123456789</item>
-        <item>naofum</item>
-    </string-array>
-    <string-array name="opensource">
-        <item>JavaXDelta</item>
-        <item>Chainfire SuperSU</item>
-        <item>Bumptech Glide</item>
-        <item>SquareUp OKHTTP</item>
-        <item>Play Store API</item>
-        <item>AOSP CardView</item>
-        <item>AOSP AppCompat</item>
-        <item>AOSP Design</item>
-        <item>Commons-Net</item>
     </string-array>
     <string-array name="topCategories">
         <item>PHOTOGRAPHY</item>
