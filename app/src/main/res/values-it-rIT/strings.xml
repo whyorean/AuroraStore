@@ -1,10 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Aurora Store
   ~ Copyright (C) 2018  Rahul Kumar Patel <whyorean@gmail.com>
-  ~
-  ~ Yalp Store
-  ~ Copyright (C) 2018 Sergey Yeriomin <yeriomin@gmail.com>
   ~
   ~ Aurora Store (a fork of Yalp Store )is free software: you can redistribute it and/or modify
   ~ it under the terms of the GNU General Public License as published by
@@ -51,7 +47,7 @@
     <string name="action_manual">"Download manuale"</string>
     <string name="action_more">"Mostra di più"</string>
     <string name="action_ok">"OK"</string>
-    <string name="action_or">"O"</string>
+    <string name="action_or">"OPPURE"</string>
     <string name="action_refresh">"Aggiorna token"</string>
     <string name="action_remove">"Rimuovi"</string>
     <string name="action_search_history">"Storico delle ricerche"</string>
@@ -61,7 +57,7 @@
     <string name="action_settings">"Impostazioni"</string>
     <string name="action_spoofed">"Spoof"</string>
     <string name="action_switch_dummy">"Cambia account anonimo"</string>
-    <string name="action_switch_google">"Passa a account google"</string>
+    <string name="action_switch_google">"Passa a account Google"</string>
     <string name="action_unignore">"Rimuovi dalla blacklist"</string>
     <string name="action_unwhitelist">"Ignora aggiornamenti"</string>
     <string name="action_updates">"Aggiornamenti"</string>
@@ -133,7 +129,7 @@ Potrebbe essere più sicuro usare un account Google dedicato che abbia eseguito 
     <string name="details_updated">"%1$s"</string>
     <string name="details_versionName">"%1$s"</string>
     <string name="details_versionName_updatable">"%1$s → %2$s"</string>
-    <string name="details_wishList">"Aggiunti alla lista dei desideri"</string>
+    <string name="details_wishList">"Aggiungi alla lista dei desideri"</string>
     <string name="details_you_rated_this_app">"La tua valutazione"</string>
     <string name="device_api">"API : %1$s"</string>
     <string name="device_board">"Piattaforma: %1$s"</string>
@@ -144,14 +140,14 @@ Potrebbe essere più sicuro usare un account Google dedicato che abbia eseguito 
     <string name="device_res">"%1$s x %2$s"</string>
     <string name="device_timezone">"Fuso orario: %1$s"</string>
     <string name="dialog_account_type_predefined">"Con un account fittizio di Aurora Store"</string>
-    <string name="dialog_account_type_provided_by_user">"Con il tuo account Google"</string>
+    <string name="dialog_account_type_provided_by_user">"Con il mio account Google"</string>
     <string name="dialog_account_type_title">"Come vuoi accedere a Google Play Store?"</string>
     <string name="dialog_message_busybox_not_available">"Per funzionare con le app di sistema è necessario che il dispositivo sia dotato di permessi di root con Busybox installato. Vuoi cercare ora un installatore di Busybox?"</string>
     <string name="dialog_message_checking_busybox">"Per funzionare con le app di sistema sono necessari alcuni strumenti. Controllo in corso…"</string>
     <string name="dialog_message_logging_in_predefined">"Tentativo di accesso con le credenziali fornite da Aurora Store"</string>
     <string name="dialog_message_logging_in_provided_by_user">"Tentativo di accesso con le tue credenziali"</string>
     <string name="dialog_message_logout">"Sei sicuro di voler uscire?"</string>
-    <string name="dialog_message_package_id">"C'è un package con lo stesso"</string>
+    <string name="dialog_message_package_id">"C'è un package con questo stesso nome. Vuoi andare direttamente alla pagina dei dettagli?"</string>
     <string name="dialog_message_reboot_required">"Le modifiche saranno applicate dopo il riavvio. Riavviare ora?"</string>
     <string name="dialog_message_remounting_system">"Sono in corso operazioni nella partizione /system. Potrebbe volerci un po' di tempo."</string>
     <string name="dialog_message_switching_in_predefined">"Tentativo di accesso con un altro account fittizio"</string>
@@ -196,7 +192,7 @@ Tocca su \"Crea password\" per aprire la pagina di creazione password."</string>
     <string name="done">"Fatto"</string>
     <string name="download_manager_ERROR_BLOCKED">"Download fallito a causa dei controlli di NetworkPolicyManager sull'applicazione richiesta. Controlla le tue impostazioni."</string>
     <string name="download_manager_ERROR_CANNOT_RESUME">"Un errore transitorio ha impedito il download e non è possibile riprendere l'operazione. Riprova più tardi."</string>
-    <string name="download_manager_ERROR_DEVICE_NOT_FOUND">"Nessun supporto di memorizzazione esterno trovato. Forse la SD non è stata montata."</string>
+    <string name="download_manager_ERROR_DEVICE_NOT_FOUND">"Nessun supporto di memorizzazione esterno trovato: la scheda SD potrebbe non essere montata."</string>
     <string name="download_manager_ERROR_FILE_ERROR">"Errore di memoria sconosciuto."</string>
     <string name="download_manager_ERROR_HTTP_DATA_ERROR">"È avvenuto un errore al livello HTTP durante la ricezione o l'elaborazione di dati."</string>
     <string name="download_manager_ERROR_INSUFFICIENT_SPACE">"Spazio libero insufficiente."</string>
@@ -249,14 +245,16 @@ Tocca su \"Crea password\" per aprire la pagina di creazione password."</string>
     <string name="list_installed_system">"Mostra solo app utente"</string>
     <string name="list_line_2_updatable">"Aggiornata il %1$s"</string>
     <string name="list_update_automatic">"Mantieni app aggiornate"</string>
-    <string name="list_update_automatic_summ">"Gli aggiornamenti portano con sé nuove funzionalità. Aurora aggiornerà le app solo su rete Wi-Fi."</string>
+    <string name="list_update_automatic_summ">"Gli aggiornamenti portano con sé nuove funzionalità. Aurora aggiornerà le app solo su rete Wi-Fi.
+
+Vuoi attivare gli aggiornamenti giornalieri?"</string>
     <string name="list_update_automatic_switch">"Abilita"</string>
     <string name="list_update_all">"Aggiorna tutte"</string>
     <string name="list_update_all_txt">"Aggiornamento(i) disponibile(i): %1$s"</string>
     <string name="list_update_chk_txt">"Controllo aggiornamenti…"</string>
     <string name="list_update_recheck">"Ricontrolla"</string>
     <string name="list_updating">"Aggiornamento in corso…"</string>
-    <string name="manual_download_compatible">"Il campo di testo del codice di versione è stato precompilato con l'ultimo disponibile per questo dispositivo. Se desideri scaricare una versione precedente, inserisci un codice inferiore a questo Se il file apk è ancora disponibile su Play Store, verrà avviato il download."</string>
+    <string name="manual_download_compatible">"Il campo di testo del codice di versione è stato precompilato con l'ultimo disponibile per questo dispositivo. Se desideri scaricare una versione precedente, inserisci un codice inferiore a questo. Se il file apk è ancora disponibile su Play Store, verrà avviato il download."</string>
     <string name="manual_download_hint_version_code">"Inserisci il numero di versione"</string>
     <string name="manual_download_incompatible">"Google Play Store considera questa app come non compatibile con il dispositivo. Questo significa che il codice di versione non è stato restituito dai server di Google Play Store."</string>
     <string name="notification_download_complete">"Scaricamento completato. Tocca per installare."</string>
@@ -268,7 +266,7 @@ Tocca su \"Crea password\" per aprire la pagina di creazione password."</string>
     <string name="notification_download_progress">"Scaricate %1$s di %2$s"</string>
     <string name="notification_download_starting">"Avvio download"</string>
     <string name="notification_installation_complete">"Aggiornamento installato."</string>
-    <string name="notification_installation_failed">"Installazione aggiornamenti fallita."</string>
+    <string name="notification_installation_failed">"Installazione aggiornamento fallita."</string>
     <string name="notification_not_privileged">"Permessi di installazione non accordati"</string>
     <string name="notification_updates_available_message">"Aggiornamenti disponibili per %1$s app."</string>
     <string name="notification_updates_available_title">"Aggiornamenti disponibili."</string>
@@ -339,7 +337,7 @@ Tocca su \"Crea password\" per aprire la pagina di creazione password."</string>
     <string name="testing_program_section_opted_out_propagating_message">"Potrebbero volerci alcuni minuti per essere rimosso dal programma beta."</string>
     <string name="testing_program_section_opted_out_title">"Diventa un beta tester"</string>
     <string name="top_categories">"Categorie principali"</string>
-    <string name="warn_app_purchase">"L'acquisto di app non è ancora disponibile. Redirezionamento a Play Store web"</string>
+    <string name="warn_app_purchase">"L'acquisto di app non è ancora disponibile. Redirezionamento a Play Store web…"</string>
     <string name="acc_dummy_summary">"Accedendo con un account fornito da Aurora non sarà possibile installare le app a pagamento che hai acquistato."</string>
     <string name="action_filter_misc">"Varie"</string>
     <string name="action_filter_build">"Compila"</string>
@@ -360,10 +358,35 @@ Tocca su \"Crea password\" per aprire la pagina di creazione password."</string>
     <string name="manual_download_warning">"Questa pagina consente di selezionare la versione dell'app da scaricare.\n\nRicorda che Google Play Store non consente ufficialmente di scaricare versioni arbitrarie di app. La riuscita dell'operazione dipende dall'indovinare il codice di versione corretto e, anche in caso di successo, potresti ottenere un file apk incompatibile."</string>
     <string name="ohh_snap_text">"Qualcosa è andato storto"</string>
     <string name="ohh_snap_retry">"Riprova"</string>
-    <string name="pref_app_ui">"Color UI"</string>
-    <string name="pref_app_ui_summary">"Make UI colorful by drawing colors from app icons."</string>
-    <string name="pref_app_swipe">"Swipe pages"</string>
-    <string name="pref_app_swipe_summary">"Swipe on pages to switch between them."</string>
-    <string name="pref_app_ime">"Show IME"</string>
-    <string name="pref_app_ime_summary">"Show keyboard on Search by default."</string>
+    <string name="pref_app_ui">"Colore interfaccia"</string>
+    <string name="pref_app_ui_summary">"Arricchisci l'interfaccia con i colori delle icone delle app"</string>
+    <string name="pref_app_swipe">"Sfoglia pagine"</string>
+    <string name="pref_app_swipe_summary">"Trascina le pagine per scorrere."</string>
+    <string name="pref_app_ime">"Mostra metodo di input"</string>
+    <string name="pref_app_ime_summary">"Mostra subito la tastiera nella schermata di ricerca."</string>
+    <string name="tagview_games">"Giochi"</string>
+    <string name="tagview_family">"Famiglia"</string>
+    <string name="pref_category_spoof_device">"Simula dispositivo"</string>
+    <string name="pref_category_spoof_lang">"Simula lingua"</string>
+    <string name="about_fdroid">"F-Droid"</string>
+    <string name="about_gitlab">"GitLab"</string>
+    <string name="about_gitlab_summary">"Ottieni il codice sorgente di Aurora da Aurora OSS su GitLab."</string>
+    <string name="about_telegram_summary">"Unisciti al gruppo di supporto di Aurora per discussioni e suggerimenti."</string>
+    <string name="about_xda_summary">"Sfoglia il thread di Aurora su XDA per discussioni e suggerimenti."</string>
+    <string name="about_fdroid_summary">"Ottieni Aurora da F-Droid"</string>
+    <string name="action_enable">"Abilita"</string>
+    <string name="action_disable">"Disabilita"</string>
+    <string name="details_run_with">"Apri con"</string>
+    <string name="location_spoof_warning">"La Posizione fittizia consente di scaricare app con restrizioni geografiche, ma richiede una VPN per stabilire la connessione."</string>
+    <string name="location_spoof_howtos">"1. Abilita le Opzioni sviluppatore dalla app Impostazioni\n2. Imposta Aurora come app predefinita di posizione fittizia\n3. Seleziona Posizione Fittizia dalla app\n4. Attiva la VPN  per selezionare la nazione o la regione\n5. Riavvia la app e goditela."</string>
+    <string name="location_spoof_readme">"LEGGIMI"</string>
+    <string name="pref_app_subcategory">"Sottocategoria app"</string>
+    <string name="pref_app_subcategory_summary">"Seleziona la sottocategoria delle app nella schermata Home"</string>
+    <string name="pref_app_subcategory_free">"Più popolari"</string>
+    <string name="pref_app_subcategory_grossing">"Più redditizie"</string>
+    <string name="pref_app_subcategory_trending">"Di tendenza"</string>
+    <string name="pref_category_spoof_location">"Posizione fittizia"</string>
+    <string name="pref_requested_location_summary">"Aurora deve essere impostata come app predefinita di posizione fittizia"</string>
+    <string name="pref_requested_location_enable">"Dovrai abilitare manualmente la posizione fittizia dalle Opzioni sviluppatore."</string>
+    <string name="pref_requested_location_disable">"Dovrai disabilitare manualmente la posizione fittizia dalle Opzioni sviluppatore per disattivare completamente questa funzione."</string>
 </resources>

@@ -3,9 +3,6 @@
   ~ Aurora Store
   ~ Copyright (C) 2018  Rahul Kumar Patel <whyorean@gmail.com>
   ~
-  ~ Yalp Store
-  ~ Copyright (C) 2018 Sergey Yeriomin <yeriomin@gmail.com>
-  ~
   ~ Aurora Store (a fork of Yalp Store )is free software: you can redistribute it and/or modify
   ~ it under the terms of the GNU General Public License as published by
   ~ the Free Software Foundation, either version 2 of the License, or
@@ -97,7 +94,7 @@ Il est recommandé d'utiliser un compte Google jetable, qui a été utilisé au 
     <string name="details_appReview">"Évaluations"</string>
     <string name="details_cancel">"Annuler"</string>
     <string name="details_category">"%1$s"</string>
-    <string name="details_contains_ads">"Contient des publicités"</string>
+    <string name="details_contains_ads">"Publicités"</string>
     <string name="details_could_not_copy_apk">"Impossible de copier l'APK"</string>
     <string name="details_changelog">"Liste des modifications"</string>
     <string name="details_changelog_empty">"Aucune liste de modifications disponible"</string>
@@ -243,7 +240,9 @@ Appuyez sur \"Créer un mot de passe\" pour être redirigé vers la page de cré
     <string name="list_app_whitelisted">"Sur liste blanche"</string>
     <string name="list_empty_query">"Aucune recherches récentes"</string>
     <string name="list_empty_search">"Aucune applications trouvées"</string>
-    <string name="list_empty_updates">"Aucune application à metre à jour"</string>
+
+    <!-- typo corrigée > "mettre" plutôt que "metre" -->
+    <string name="list_empty_updates">"Aucune application à mettre à jour"</string>
     <string name="list_installed_title">"Mes Applications et Jeux"</string>
     <string name="list_installed_summary">"Installées depuis le PlayStore"</string>
     <string name="list_installed_system">"Afficher les applications utilisateur seulement"</string>
@@ -368,4 +367,29 @@ Vérifier tous les jours les mises à jour ?"</string>
     <string name="pref_app_swipe_summary">"Balayer pour changer de pages"</string>
     <string name="pref_app_ime">"Affichage auto du clavier"</string>
     <string name="pref_app_ime_summary">"Afficher automatiquement le clavier lors d'une recherche"</string>
+    <string name="tagview_games">"Jeux"</string>
+    <string name="tagview_family">"Famille"</string>
+    <string name="pref_category_spoof_device">"Usurpation de l'appareil"</string>
+    <string name="pref_category_spoof_lang">"Usurpation de la langue"</string>
+    <string name="about_fdroid">"F-Droid"</string>
+    <string name="about_gitlab">"GitLab"</string>
+    <string name="about_gitlab_summary">"Voir le code source de AuroraStore disponible sur le site Gitlab"</string>
+    <string name="about_telegram_summary">"Rejoindre le groupe officiel de AuroraStore sur Telegram"</string>
+    <string name="about_xda_summary">"Voir le thread de AuroraStore sur le site XDA"</string>
+    <string name="about_fdroid_summary">"Get Aurora on F-Droid Repo"</string>
+    <string name="action_enable">"Enable"</string>
+    <string name="action_disable">"Disable"</string>
+    <string name="details_run_with">"Open with"</string>
+    <string name="location_spoof_warning">"Location Spoof allows you to download Geo restricted apps, you will need a VPN connection to establish the connection."</string>
+    <string name="location_spoof_howtos">"1. Enable Developer Options from Settings\n2. Set Aurora as Default Mock Location App\n3. Select the Spoof Location from app\n4. Turn On VPN to select country or region\n5. Restart the app and enjoy."</string>
+    <string name="location_spoof_readme">"ReadMe"</string>
+    <string name="pref_app_subcategory">"App Subcategory"</string>
+    <string name="pref_app_subcategory_summary">"Select the subcategory of Home Screen Apps"</string>
+    <string name="pref_app_subcategory_free">"Top Free"</string>
+    <string name="pref_app_subcategory_grossing">"Top Grossing"</string>
+    <string name="pref_app_subcategory_trending">"Top Trending"</string>
+    <string name="pref_category_spoof_location">"Spoof Location"</string>
+    <string name="pref_requested_location_summary">"Aurora Store must be set as default Mock Location Application"</string>
+    <string name="pref_requested_location_enable">"You need to manually enable MockLocation from Developer Options."</string>
+    <string name="pref_requested_location_disable">"You need to manually disable MockLocation from Developer Options to disable it completely."</string>
 </resources>

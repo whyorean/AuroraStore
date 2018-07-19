@@ -1,10 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Aurora Store
   ~ Copyright (C) 2018  Rahul Kumar Patel <whyorean@gmail.com>
-  ~
-  ~ Yalp Store
-  ~ Copyright (C) 2018 Sergey Yeriomin <yeriomin@gmail.com>
   ~
   ~ Aurora Store (a fork of Yalp Store )is free software: you can redistribute it and/or modify
   ~ it under the terms of the GNU General Public License as published by
@@ -56,13 +52,13 @@
     <string name="action_remove">"Usuń"</string>
     <string name="action_search_history">"Historia wyszukiwania"</string>
     <string name="action_search_clearHistory">"Wyczyść wszystko"</string>
-    <string name="action_search_title">"Szukaj Aplikacje i Gry"</string>
+    <string name="action_search_title">"Szukaj Gry i Aplikacje"</string>
     <string name="action_select">"Wybierz konto aby sie zalogować"</string>
     <string name="action_settings">"Ustawienia"</string>
     <string name="action_spoofed">"Podmień"</string>
-    <string name="action_switch_dummy">"Zmień na Anonimowe"</string>
-    <string name="action_switch_google">"Zmień na Google"</string>
-    <string name="action_unignore">"Usuń z ignorowanych"</string>
+    <string name="action_switch_dummy">"Przełącz na Anonimowe"</string>
+    <string name="action_switch_google">"Przełącz na Google"</string>
+    <string name="action_unignore">"Przestań ignorować"</string>
     <string name="action_unwhitelist">"Ignoruj aktualizacje"</string>
     <string name="action_updates">"Aktualizacje"</string>
     <string name="action_welcome_msg">"Witaj w Aurora"</string>
@@ -74,7 +70,7 @@
     <string name="availability_restriction_country">"Aplikacja niedostępna w twoim kraju."</string>
     <string name="availability_restriction_generic">"Aplikacja niedostępna."</string>
     <string name="availability_restriction_hardware_app">"Twoje urządzenie jest niekompatybilne z tą wersją."</string>
-    <string name="category_appFree">"Darmowa"</string>
+    <string name="category_appFree">"Darmowe"</string>
     <string name="category_communityApps">"W oparciu o społeczność Aurora"</string>
     <string name="category_fdroidApps">"Aplikacje z F-Droid"</string>
     <string name="category_topFree">"Najlepsze Darmowe"</string>
@@ -86,12 +82,12 @@
     <string name="credentials_hint_email">"Email lub telefon"</string>
     <string name="credentials_hint_password">"Podaj hasło"</string>
     <string name="credentials_logo_txt">"Zaloguj"</string>
-    <string name="credentials_message">"Keep in mind that using this app violates Play Store T&amp;C.
-It would probably be safer to use a throwaway Google account which has logged in to Play Store at least once and has accepted Play Store T&amp;C."</string>
+    <string name="credentials_message">"Pamiętaj że ta aplikacja narusza regulamin Google.
+Najlepiej użyć konta które przynajmniej raz było zalogowane w Sklepie Google i zaakceptowało regulamin Sklepu Google."</string>
     <string name="credentials_title">"Dostęp przez konto Google"</string>
     <string name="delete">"Usuń"</string>
-    <string name="delta_disabled">"Wyłączone aktualizacje przyrostowe"</string>
-    <string name="delta_enabled">"Włączone aktualizacje przyrostowe"</string>
+    <string name="delta_disabled">"Aktualizacje przyrostowe wyłączone"</string>
+    <string name="delta_enabled">"Aktualizacje przyrostowe włączone"</string>
     <string name="details_appExtras">"Dodatkowe informacje"</string>
     <string name="details_appInfo">"Informacje"</string>
     <string name="details_appReview">"Opinie"</string>
@@ -117,23 +113,24 @@ It would probably be safer to use a throwaway Google account which has logged in
     <string name="details_no_ads">"Bez reklam"</string>
     <string name="details_permissions">"Uprawnienia"</string>
     <string name="details_playstore">"Sklep Google Play"</string>
-    <string name="details_purchase">"Zakup"</string>
+    <string name="details_purchase">"Kup"</string>
     <string name="details_rate_this_app">"Oceń aplikacje"</string>
     <string name="details_review_dialog_fields_optional">"Możesz zostawić wszystko puste."</string>
-    <string name="details_review_dialog_review_comment_hint">"tu wpisz komentarz"</string>
-    <string name="details_review_dialog_review_title_hint">"skrócony komentarz"</string>
+    <string name="details_review_dialog_review_comment_hint">"tutaj komentarz"</string>
+    <string name="details_review_dialog_review_title_hint">"tutaj tytuł"</string>
     <string name="details_review_dialog_title">"Dodać coś jeszcze?"</string>
     <string name="details_run">"Otwórz"</string>
     <string name="details_saved_in_downloads">"Zapisany w katalogu Download"</string>
     <string name="details_share">"Udostępnij"</string>
-    <string name="details_signature_mismatch">"The new version is signed with a different key to the old one. To install the new version, the old one must be uninstalled first. Please do this and try again. (Note that uninstalling will erase any internal data stored by the application)"</string>
+    <string name="details_signature_mismatch">"Nowa wersja jest podpisana innym kluczem. Aby zainstalować nową trzeba najpierw odinstalować starą. Zrób to i spróbuj ponownie.
+(Pamiętaj że odinstalowanie równa się utracie danych przechowywanych przez aplikacje)"</string>
     <string name="details_size">"%1$s"</string>
     <string name="details_uninstall">"Odinstaluj"</string>
     <string name="details_update">"Aktualizuj"</string>
     <string name="details_updated">"%1$s"</string>
     <string name="details_versionName">"%1$s"</string>
     <string name="details_versionName_updatable">"%1$s → %2$s"</string>
-    <string name="details_wishList">"Dodaj do białej listy"</string>
+    <string name="details_wishList">"Dodaj do obserwowanych"</string>
     <string name="details_you_rated_this_app">"Twoja ocena"</string>
     <string name="device_api">"API : %1$s"</string>
     <string name="device_board">"Platforma: %1$s"</string>
@@ -146,7 +143,7 @@ It would probably be safer to use a throwaway Google account which has logged in
     <string name="dialog_account_type_predefined">"Używając konta Aurora Store"</string>
     <string name="dialog_account_type_provided_by_user">"Używając osobistego konta Google"</string>
     <string name="dialog_account_type_title">"Chciałbyś się zalogować do Sklepu Google Play?"</string>
-    <string name="dialog_message_busybox_not_available">"A rooted device with busybox installed is required to work with system apps. Search for a busybox installer now?"</string>
+    <string name="dialog_message_busybox_not_available">"Zrootowane urządzenie wymaga zainstalowanego busybox-a aby pracowac z aplikacjami systemowymi. Wyszukać instalator busybox-a?"</string>
     <string name="dialog_message_checking_busybox">"Wymagane są konkretne narzędzia do pracy z aplikacjami systemowymi. Sprawdzam czy są dostępne."</string>
     <string name="dialog_message_logging_in_predefined">"Próba zalogowania się danymi dostarczonymi przez Sklep Aurora"</string>
     <string name="dialog_message_logging_in_provided_by_user">"Próba zalogowania się danymi dostarczonymi przez ciebie"</string>
@@ -155,21 +152,21 @@ It would probably be safer to use a throwaway Google account which has logged in
     <string name="dialog_message_reboot_required">"Zmiany bedą widocznie po restarcie. Zrestartować  teraz?"</string>
     <string name="dialog_message_remounting_system">"Pracuje z partycją /system. To może chwile potrwać."</string>
     <string name="dialog_message_switching_in_predefined">"Próbuje przełączyć miedzy kontami anonimowymi"</string>
-    <string name="dialog_message_system_app_self">"Using privileged permissions to allow background installation of apps requires making Aurora Store a system app.
+    <string name="dialog_message_system_app_self">"Aby móc instalować aplikacje w tle wymagane są uprawnienia systemowe. Aby je uzyskać Sklep Aurora mu być aplikacją systemową.
 
-The process is imperfect and vendor-specific, so it might not work.
+Proces konwersji nie jest idealny dlatego może nie zadziałać.
 
-Do it?"</string>
-    <string name="dialog_message_system_app_warning_to_normal">"You have selected to convert a system app into a normal app. Most system apps need to be system apps to work.
+Zrobić to?"</string>
+    <string name="dialog_message_system_app_warning_to_normal">"Wybrałeś(aś) konwersje aplikacji systemowej na użytkownika. Większość aplikacji syatemowych musi taka być aby działać poprawnie.
 
-Keep in mind that the conversion process is NOT supported by the Android OS and therefore is NOT safe and NOT guaranteed to work.
+Pamiętaj że proces konwersji NIE JEST wspierany przez system Android, a także NIE JEST bezpieczny i NIE gwarantuje działania.
 
-Do not do it out of curiosity. It might break your device. Backup your device before trying."</string>
-    <string name="dialog_message_system_app_warning_to_system">"You have selected to convert the app into system app. Most apps do not need to be system apps to work.
+Nie rób tego z ciekawości gdyż możesz uszkodzić swoje urządzenie. Zrób kopie danych przed podjęciem próby."</string>
+    <string name="dialog_message_system_app_warning_to_system">"Wybrałeś(aś) konwersje aplikacji na systemową. Większość aplikacji nie musi taka być aby działać poprawnie.
 
-Keep in mind that the conversion process is NOT supported by the Android OS and therefore is NOT safe and NOT guaranteed to work.
+Pamiętaj że proces konwersji NIE JEST wspierany przez system Android, a także NIE JEST bezpieczny i NIE gwarantuje działania.
 
-Do not do it out of curiosity. It might break your device. Backup your device before trying."</string>
+Nie rób tego z ciekawości gdyż możesz uszkodzić swoje urządzenie. Zrób kopie danych przed podjęciem próby."</string>
     <string name="dialog_message_system_app_warning_uninstall">"Are you sure you want to remove this system app? System apps are placed into your device by device vendor and are most likely required for it to function as intended.
 
 Keep in mind that removing system apps is NOT supported by the Android OS and therefore is NOT safe and NOT guaranteed to work.
@@ -188,7 +185,7 @@ Tap \"Create password\" to be redirected to password creation page."</string>
     <string name="dialog_title_reboot_required">"Restart wymagany"</string>
     <string name="dialog_title_remounting_system">"Pracuje z partycją /system"</string>
     <string name="dialog_title_switching">"Przełączanie na konto anonimowe"</string>
-    <string name="dialog_title_system_app_self">"Konretowanie Aurora na aplikacje systemową"</string>
+    <string name="dialog_title_system_app_self">"Konwertowanie Aurora na aplikacje systemową"</string>
     <string name="dialog_title_system_app_warning">"Ostrzeżenie!"</string>
     <string name="dialog_title_two_factor">"Weryfikacja 2-etapowa"</string>
     <string name="dialog_two_factor_cancel">"Nie teraz"</string>
@@ -218,10 +215,10 @@ Tap \"Create password\" to be redirected to password creation page."</string>
     <string name="exodus_powered">"Obsługiwane przez Exodus"</string>
     <string name="exodus_title">"Ochrona Aurora"</string>
     <string name="exodus_viewMore">"Zobacz szczegóły"</string>
-    <string name="first_login_message">"To use your own account choose Log out in the menu"</string>
+    <string name="first_login_message">"Aby używać własnego konta wybierz \"Wyloguj\" z menu"</string>
     <string name="flagging_title">"Oznacz jako niepoprawne"</string>
     <string name="flag_graphic_violence">"Przemoc Graficzna"</string>
-    <string name="flag_harmful_prompt">"Describe the harm caused to your device or data:"</string>
+    <string name="flag_harmful_prompt">"Opisz szkody spowodowane twojemu urzędzeniu lub danym:"</string>
     <string name="flag_harmful_to_device">"Szkodliwe dla urządzenia lub danych"</string>
     <string name="flag_hateful_content">"Treści szerzące nienawiść lub obraźliwe"</string>
     <string name="flag_impersonation_copycat">"Naśladownictwo lub podszywanie się"</string>
@@ -232,25 +229,24 @@ Tap \"Create password\" to be redirected to password creation page."</string>
     <string name="flag_pharma_content">"Nielegalne recepty lub inne leki/narkotyki"</string>
     <string name="flag_sexual_content">"Treści seksualne"</string>
     <string name="header_usr_name">"Aurora"</string>
-    <string name="header_usr_noEmail">"Kindly login to use Aurora"</string>
+    <string name="header_usr_noEmail">"Proszę się zalogować aby używać Aurora"</string>
     <string name="list_app_blacklisted">"Ignorowane"</string>
     <string name="list_app_depends_on_gsf">"Zależne od GFS"</string>
     <string name="list_app_has_ads">"ma reklamy"</string>
     <string name="list_app_independent_from_gsf">"Niezależny od GFS"</string>
     <string name="list_app_no_ads">"bez reklam"</string>
     <string name="list_app_system">"Aplikacja systemowa"</string>
-    <string name="list_app_user">"Aplikacja użytkownika
-"</string>
+    <string name="list_app_user">"Aplikacja użytkownika"</string>
     <string name="list_app_whitelisted">"Obserwowane"</string>
     <string name="list_empty_query">"Brak ostatnich wyszukiwań"</string>
     <string name="list_empty_search">"Nie znaleziono aplikacji"</string>
     <string name="list_empty_updates">"Brak aplikacji do aktualizacji"</string>
-    <string name="list_installed_title">"Moje Aplikacje &amp; Gry"</string>
-    <string name="list_installed_summary">"Zainstalowane i aplilacje systemowe z PlayStore"</string>
+    <string name="list_installed_title">"Moje gry i aplikacje"</string>
+    <string name="list_installed_summary">"Wszystkie zainstalowane i systemowe aplikacje z Play Store"</string>
     <string name="list_installed_system">"Pokaż tylko aplikacje użytkownika"</string>
     <string name="list_line_2_updatable">"Zaktualizowany %1$s"</string>
     <string name="list_update_automatic">"Aktualizacje automatyczne"</string>
-    <string name="list_update_automatic_summ">"Aktualizację zapewniają ci nowe funkcję i bezpieczeństwo. Odbywać się bedą tylko przez WiFi.
+    <string name="list_update_automatic_summ">"Aktualizację zapewniają ci nowe funkcję. Aurora bedzie aktualizować tylko przez WiFi.
 
 Włączyć codzienne aktualizacje?"</string>
     <string name="list_update_automatic_switch">"Włącz"</string>
@@ -258,15 +254,15 @@ Włączyć codzienne aktualizacje?"</string>
     <string name="list_update_all_txt">"Aktualizacji dostępnych: %1$s"</string>
     <string name="list_update_chk_txt">"Sprawdzanie aktualizacji.."</string>
     <string name="list_update_recheck">"Sprawdz ponownie"</string>
-    <string name="list_updating">"Aktualizowanie…"</string>
-    <string name="manual_download_compatible">"Version code field has been pre-filled with this app's latest compatible version code. If you want the previous version, simply input a number smaller than the current. If the developer has not deleted the apk of the previous version from Play Store, you might be able to start the download."</string>
+    <string name="list_updating">"Aktualizowanie..."</string>
+    <string name="manual_download_compatible">"Pole numeru wersji jest automatycznie uzupełniany przez ostatni kompatybilną wartość. Jeśli potrzebujesz wcześniejszej wersji wpisz wartość mniejszą od obecnej. Jeśli twórca nie usunął pliku apk tej wersji z Sklepu Google Play, powinno rozpocząć się pobieranie."</string>
     <string name="manual_download_hint_version_code">"kod wersji tutaj"</string>
-    <string name="manual_download_incompatible">"Google Play Store considers this app incompatible with your device. This means version code has not been returned by the Google Play Store server."</string>
+    <string name="manual_download_incompatible">"Sklep Google Play uważa tą aplikacje za niekompatybilną z twoim urządzeniem. Oznacza to że numer wersji nie jest zwracany przez serwer Sklepu Google."</string>
     <string name="notification_download_complete">"Pobieranie ukończone. Kliknij aby zainstalować."</string>
     <string name="notification_download_complete_new_permissions">"Pobrano. Poproszono o nowe uprawnienia"</string>
-    <string name="notification_download_complete_new_permissions_toast">"%1$s downloaded. New version of the app requests more permissions. Check the new permissions list."</string>
-    <string name="notification_download_complete_signature_mismatch">"Pobrano, ale wystąpiła niezgodność sygnatur."</string>
-    <string name="notification_download_complete_signature_mismatch_toast">"%1$s downloaded. But apk signature does not match installed app. You might have to uninstall it first."</string>
+    <string name="notification_download_complete_new_permissions_toast">"%1$s pobrano. Nowa wersja wymaga nowych uprawnień. Sprawdź listę uprawnień."</string>
+    <string name="notification_download_complete_signature_mismatch">"Pobrano. Wystąpiła niezgodność sygnatur."</string>
+    <string name="notification_download_complete_signature_mismatch_toast">"%1$s pobrano. Sygnatura aplikacji nie zgadza się z wersją zainstalowaną. Musisz najpierw odinstalować zainstalowaną aplikacje."</string>
     <string name="notification_download_complete_toast">"%1$s pobrano. Naciśnij przycisk instaluj lub powiadomienie aby zainstalować."</string>
     <string name="notification_download_progress">"%1$s z %2$s pobrano"</string>
     <string name="notification_download_starting">"Rozpoczynanie pobierania"</string>
@@ -283,7 +279,7 @@ Włączyć codzienne aktualizacje?"</string>
     <string name="pref_auto_install_summary_on">"Instalowanie natychmiast po pobraniu"</string>
     <string name="pref_auto_whitelist">"Automatycznie obserwuj"</string>
     <string name="pref_auto_whitelist_summary_off">"Musisz dodać do obserwowanych ręcznie"</string>
-    <string name="pref_auto_whitelist_summary_on">"Apps installed by Aurora Store are automatically whitelisted"</string>
+    <string name="pref_auto_whitelist_summary_on">"Aplikacje instalowane przez Aurora automatycznie są dodawane do listy obserwowanych"</string>
     <string name="pref_background_update_download">"Pobieraj również aktualizacje"</string>
     <string name="pref_background_update_download_summary_off">"Tylko dostajesz powiadomienie"</string>
     <string name="pref_background_update_download_summary_on">"Pobieranie aktualizacji jeśli zostaną znalezione"</string>
@@ -306,7 +302,7 @@ Włączyć codzienne aktualizacje?"</string>
     <string name="pref_delete_apk_after_install_summary_on">"Pliki .apk usuwane natychmiast po instalacji"</string>
     <string name="pref_device_to_pretend_to_be">"Przedstawiaj się jako inne urządzenie"</string>
     <string name="pref_device_to_pretend_to_be_default">"Orginalne dane urządzenia"</string>
-    <string name="pref_device_to_pretend_to_be_notice">"If you put device definitions into %1$s they will appear in this list"</string>
+    <string name="pref_device_to_pretend_to_be_notice">"Jeśli umieścisz definicje urządzeń w %1$s pojawią sie ona na tej liście"</string>
     <string name="pref_device_to_pretend_to_be_toast">"Zmiana bedzie zastosowana po ponownym zalogowaniu"</string>
     <string name="pref_download_deltas">"Aktualizacje przyrostowe"</string>
     <string name="pref_download_deltas_summary_off">"Pełny plik jest pobierany"</string>
@@ -324,49 +320,74 @@ Włączyć codzienne aktualizacje?"</string>
     <string name="pref_no_root">"Opcja dostępna wyłącznie na zrootowanych urządzeniach"</string>
     <string name="pref_requested_language">"Żądany język dla Play Store"</string>
     <string name="pref_requested_language_default">"Domyślny język"</string>
-    <string name="pref_update_list_black">"Zmień list ignorowanych"</string>
-    <string name="pref_update_list_white">"Zmień liste wybranych"</string>
-    <string name="pref_update_list_white_or_black">"Lista wybranych lub ignorowanych aplikacji do aktualizacji"</string>
+    <string name="pref_update_list_black">"Edytuj liste ignorowanych"</string>
+    <string name="pref_update_list_white">"Edytuj liste obserwowanych"</string>
+    <string name="pref_update_list_white_or_black">"Lista obserwowanych lub ignorowanych aplikacji do aktualizacji"</string>
     <string name="pref_update_list_white_or_black_black">"Wybrane aplikacje bedą ignorowane przy sprawdzaniu aktualizacji"</string>
-    <string name="pref_update_list_white_or_black_white">"Dla wybranych aplikacji bedą sorawdzane aktualizacje."</string>
+    <string name="pref_update_list_white_or_black_white">"Dla wybranych aplikacji bedą sprawdzane aktualizacje."</string>
     <string name="search_filter">"Wszystkie"</string>
     <string name="search_title">"Szukaj"</string>
     <string name="submit">"Wyślij"</string>
     <string name="testing_program_opt_in">"dołącz"</string>
     <string name="testing_program_opt_out">"opuść"</string>
     <string name="testing_program_review_dialog_content_hint">"Zostaw ocene o aplikacji"</string>
-    <string name="testing_program_section_opted_in_message">"App updates will include beta versions. If you leave this app's beta program, you will no longer get beta updates."</string>
-    <string name="testing_program_section_opted_in_propagating_message">"In a few minutes, you'll be added to the beta program. You can then update to the beta version of this app, if available."</string>
+    <string name="testing_program_section_opted_in_message">"Aktualizacje bedą zawierać wersje beta. Jeśli opuścisz beta-testy danej aplikacji, to nie bedziesz dostawał wersji beta."</string>
+    <string name="testing_program_section_opted_in_propagating_message">"W ciągu kilku minut zostaniesz dodany do programu testów. Następnie bedziesz mógł zaktualizować aplikacje do wersji testowej jeś dostępna."</string>
     <string name="testing_program_section_opted_in_title">"Jesteś beta testerem"</string>
-    <string name="testing_program_section_opted_out_message">"Try new features before they're made public. Give your feedback directly to the developer."</string>
+    <string name="testing_program_section_opted_out_message">"Wypróbuj nowe funkcje zanim będą publiczne. Wysyłaj opinie bezpośrednio do dewelopera."</string>
     <string name="testing_program_section_opted_out_propagating_message">"Opuszczenie beta testów może zająć kilka minut."</string>
     <string name="testing_program_section_opted_out_title">"Zostań beta testerem"</string>
     <string name="top_categories">"Najlepsze kategorie"</string>
     <string name="warn_app_purchase">"Zakupy w aplk. niedostępne, przekierowanie na strone PlayStore"</string>
-    <string name="acc_dummy_summary">"Login with anonymous credentials provided by Aurora Store, you would not be able to access your app purchases with dummy accounts."</string>
+    <string name="acc_dummy_summary">"Logowanie z użyciem danych anonimowych udostępnianych przez Sklep Aurora. Nie bedziesz miał dostępu do swoich zakupów przez konto anonimowe."</string>
     <string name="action_filter_misc">"Różne"</string>
     <string name="action_filter_build">"Wersja"</string>
     <string name="action_filter_apply">"Filtruj"</string>
     <string name="action_search_history_apps">"Twoje ostatnie aplikacje"</string>
     <string name="pref_theme_title">"Wybierz motyw"</string>
-    <string name="pref_theme_title_summary">"Switch between Light/Dark/AMOLED"</string>
+    <string name="pref_theme_title_summary">"Przełącz między Jasnym/Ciemnym/AMOLED"</string>
     <string name="action_filter">"Filtry"</string>
     <string name="action_filter_apps_with_ads">"Z reklamami"</string>
     <string name="action_filter_category">"Kategoria"</string>
-    <string name="action_filter_downloads">"Pobrania"</string>
+    <string name="action_filter_downloads">"Ilość pobrań"</string>
     <string name="action_filter_gsf_dependent_apps">"Zalezy od GFS"</string>
     <string name="action_filter_paid_apps">"Płatne"</string>
     <string name="action_filter_rating">"Oceny"</string>
     <string name="action_filter_system_apps">"Aplilacje systemowe"</string>
     <string name="action_filter_all">"Wszystkie"</string>
-    <string name="manual_download_disclaimer">"Disclaimer"</string>
+    <string name="manual_download_disclaimer">"Ostrzeżenie"</string>
     <string name="manual_download_warning">"This page lets you manually choose the version of the app to download.\n\nKeep in mind that downloading arbitrary versions of apps is not supported by Google Play Store. Your success depends on a lucky guess of the version code. Even if you guess right and you get the download to start, you might get an incompatible apk."</string>
     <string name="ohh_snap_text">"Coś poszło nie tak"</string>
     <string name="ohh_snap_retry">"Ponów"</string>
-    <string name="pref_app_ui">"Color UI"</string>
-    <string name="pref_app_ui_summary">"Make UI colorful by drawing colors from app icons."</string>
-    <string name="pref_app_swipe">"Swipe pages"</string>
-    <string name="pref_app_swipe_summary">"Swipe on pages to switch between them."</string>
-    <string name="pref_app_ime">"Show IME"</string>
-    <string name="pref_app_ime_summary">"Show keyboard on Search by default."</string>
+    <string name="pref_app_ui">"Kolor Interfejsu"</string>
+    <string name="pref_app_ui_summary">"UI bedzię kolorowe przez rysowanie kolorów z ikon."</string>
+    <string name="pref_app_swipe">"Przewijaj strony"</string>
+    <string name="pref_app_swipe_summary">"Przesuń po stronie aby przełączyć się na kolejną"</string>
+    <string name="pref_app_ime">"Pokaż IME"</string>
+    <string name="pref_app_ime_summary">"Domyślnie pokazuj klawiature w Wyszukiwaniu"</string>
+    <string name="tagview_games">"Gry"</string>
+    <string name="tagview_family">"Rodzina"</string>
+    <string name="pref_category_spoof_device">"Udawaj urządzenie"</string>
+    <string name="pref_category_spoof_lang">"Podmieniaj język"</string>
+    <string name="about_fdroid">"F-Droid"</string>
+    <string name="about_gitlab">"GitLab"</string>
+    <string name="about_gitlab_summary">"Pobierz kod źródłowy AuroraStore z Aurora OOS na GitLab-ie"</string>
+    <string name="about_telegram_summary">"Dołącz do grupy Aurora Support aby dyskutować lub sugerować ulepszenia."</string>
+    <string name="about_xda_summary">"Zobacz wątek na XDA aby podyskutować i zaproponować sugestie."</string>
+    <string name="about_fdroid_summary">"Get Aurora on F-Droid Repo"</string>
+    <string name="action_enable">"Enable"</string>
+    <string name="action_disable">"Disable"</string>
+    <string name="details_run_with">"Open with"</string>
+    <string name="location_spoof_warning">"Location Spoof allows you to download Geo restricted apps, you will need a VPN connection to establish the connection."</string>
+    <string name="location_spoof_howtos">"1. Enable Developer Options from Settings\n2. Set Aurora as Default Mock Location App\n3. Select the Spoof Location from app\n4. Turn On VPN to select country or region\n5. Restart the app and enjoy."</string>
+    <string name="location_spoof_readme">"ReadMe"</string>
+    <string name="pref_app_subcategory">"App Subcategory"</string>
+    <string name="pref_app_subcategory_summary">"Select the subcategory of Home Screen Apps"</string>
+    <string name="pref_app_subcategory_free">"Top Free"</string>
+    <string name="pref_app_subcategory_grossing">"Top Grossing"</string>
+    <string name="pref_app_subcategory_trending">"Top Trending"</string>
+    <string name="pref_category_spoof_location">"Spoof Location"</string>
+    <string name="pref_requested_location_summary">"Aurora Store must be set as default Mock Location Application"</string>
+    <string name="pref_requested_location_enable">"You need to manually enable MockLocation from Developer Options."</string>
+    <string name="pref_requested_location_disable">"You need to manually disable MockLocation from Developer Options to disable it completely."</string>
 </resources>

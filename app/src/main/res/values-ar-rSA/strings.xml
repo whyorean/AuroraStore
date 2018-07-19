@@ -3,9 +3,6 @@
   ~ Aurora Store
   ~ Copyright (C) 2018  Rahul Kumar Patel <whyorean@gmail.com>
   ~
-  ~ Yalp Store
-  ~ Copyright (C) 2018 Sergey Yeriomin <yeriomin@gmail.com>
-  ~
   ~ Aurora Store (a fork of Yalp Store )is free software: you can redistribute it and/or modify
   ~ it under the terms of the GNU General Public License as published by
   ~ the Free Software Foundation, either version 2 of the License, or
@@ -59,7 +56,7 @@
     <string name="action_search_title">"بحث عن التطبيقات و الألعاب"</string>
     <string name="action_select">"اختر حساب لتسجيل الدخول"</string>
     <string name="action_settings">"الإعدادات"</string>
-    <string name="action_spoofed">"تحايل"</string>
+    <string name="action_spoofed">"التحايل"</string>
     <string name="action_switch_dummy">"تبديل الحساب الوهمي"</string>
     <string name="action_switch_google">"تبديل حساب قوقل"</string>
     <string name="action_unignore">"حذف من القائمة السوداء"</string>
@@ -78,7 +75,7 @@
     <string name="category_communityApps">"مقترحة بواسطة مجتمع Aurora"</string>
     <string name="category_fdroidApps">"تطبيقات على F-droid"</string>
     <string name="category_topFree">"الأعلى مجانية"</string>
-    <string name="category_topGrossing">"الأعلى تصعدا"</string>
+    <string name="category_topGrossing">"الأعلى صعودا"</string>
     <string name="category_topMusicVideo">"الموسيقى و الصوتيات"</string>
     <string name="category_topUtility">"الأدوات و المرافق"</string>
     <string name="category_trending">"الأكثر رواجا"</string>
@@ -146,8 +143,8 @@
     <string name="dialog_account_type_predefined">"مع حساب متجر وهمي لمتجر Aurora"</string>
     <string name="dialog_account_type_provided_by_user">"مع حساب Google الخاص بك"</string>
     <string name="dialog_account_type_title">"كيف تريد تسجيل الدخول إلى متجر Google Play?"</string>
-    <string name="dialog_message_busybox_not_available">"مطلوب جهاز يحتوي على روت مع busybox مثبت للعمل مع تطبيقات النظام. البحث عن المثبت مشغول الآن؟"</string>
-    <string name="dialog_message_checking_busybox">"مطلوب بعض أدوات النظام للعمل مع تطبيقات النظام. التحقق مما إذا كانت متوفرة "</string>
+    <string name="dialog_message_busybox_not_available">"مطلوب جهاز يحتوي على روت مع busybox مثبت للعمل مع تطبيقات النظام. البحث عن busybox الآن؟"</string>
+    <string name="dialog_message_checking_busybox">"مطلوب بعض أدوات النظام للعمل مع تطبيقات النظام. التحقق مما إذا كانت متوفرة."</string>
     <string name="dialog_message_logging_in_predefined">"محاولة تسجيل الدخول باستخدام بيانات الاعتماد التي يوفرها متجر Aurora"</string>
     <string name="dialog_message_logging_in_provided_by_user">"محاولة تسجيل الدخول باستخدام بيانات الاعتماد التي قدمتها"</string>
     <string name="dialog_message_logout">"هل أنت متأكد أنك تريد تسجيل الخروج؟"</string>
@@ -201,7 +198,7 @@
     <string name="download_manager_ERROR_FILE_ERROR">"خطأ غير معروف في تخزين الملفات."</string>
     <string name="download_manager_ERROR_HTTP_DATA_ERROR">"حدث خطأ في تلقي البيانات أو معالجتها على مستوى HTTP."</string>
     <string name="download_manager_ERROR_INSUFFICIENT_SPACE">"مساحة تخزين غير كافية."</string>
-    <string name="download_manager_ERROR_TOO_MANY_REDIRECTS">"عدد كبير جدًا من عمليات إعادة التوجيه."</string>
+    <string name="download_manager_ERROR_TOO_MANY_REDIRECTS">"هنالك عدد كبير جدًا من عمليات إعادة التوجيه."</string>
     <string name="download_manager_ERROR_UNHANDLED_HTTP_CODE">"تم استلام كود HTTP الذي لا يستطيع مدير التنزيل التعامل معه. هذا خطأ في الخادم."</string>
     <string name="download_manager_ERROR_UNKNOWN">"خطأ غير معروف."</string>
     <string name="early_access">"الوصول المبكر"</string>
@@ -249,7 +246,7 @@
     <string name="list_installed_title">"تطبيقاتي و ألعابي"</string>
     <string name="list_installed_summary">"جميع التطبيقات المثبتة وتطبيقات النظام من PlayStore"</string>
     <string name="list_installed_system">"عرض تطبيقات المستخدم فقط"</string>
-    <string name="list_line_2_updatable">"تحديث في %1$s"</string>
+    <string name="list_line_2_updatable">"تم تحديثه بتاريخ %1$s"</string>
     <string name="list_update_automatic">"ابق تطبيقاتك محدثة"</string>
     <string name="list_update_automatic_summ">"التحديثات تجلب لك أفضل الميزات الجديدة. سيقوم Aurora بتحديث التطبيقات عبر WiFi فقط.
 
@@ -271,7 +268,7 @@
     <string name="notification_download_complete_toast">"تم تنزيل%1$s . اضغط زر التثبيت أو الإخطار لتثبيت."</string>
     <string name="notification_download_progress">"تم تحميل %1$s من %2$s"</string>
     <string name="notification_download_starting">"بدأ التنزيل"</string>
-    <string name="notification_installation_complete">"التحديث مثبت."</string>
+    <string name="notification_installation_complete">"تم تثبيت التحديث."</string>
     <string name="notification_installation_failed">"فشل تثبيت التحديث."</string>
     <string name="notification_not_privileged">"لم يتم منح إذن التثبيت"</string>
     <string name="notification_updates_available_message">"تتوفر التحديثات لـ %1$d من تطبيقاتك."</string>
@@ -366,9 +363,38 @@
     <string name="ohh_snap_text">"حدث خطأ ما."</string>
     <string name="ohh_snap_retry">"اعد المحاولة"</string>
     <string name="pref_app_ui">"الواجهة الملونة"</string>
-    <string name="pref_app_ui_summary">"جعل واجهة المستخدم الملونة عن طريق سحب الألوان من أيقونات التطبيق."</string>
+    <string name="pref_app_ui_summary">"جعل واجهة المستخدم ملونة عن طريق سحب الألوان من أيقونات التطبيق."</string>
     <string name="pref_app_swipe">"سحب الصفحات"</string>
     <string name="pref_app_swipe_summary">"اسحب على صفحات للتبديل بينهما."</string>
     <string name="pref_app_ime">"عرض لوحة المفاتيح"</string>
     <string name="pref_app_ime_summary">"عرض لوحة المفاتيح عند البحث بشكل افتراضي."</string>
+    <string name="tagview_games">"الالعاب"</string>
+    <string name="tagview_family">"العائلة"</string>
+    <string name="pref_category_spoof_device">"نوع الجهاز"</string>
+    <string name="pref_category_spoof_lang">"اللغة"</string>
+    <string name="about_fdroid">"اف-درويد"</string>
+    <string name="about_gitlab">"GitLab"</string>
+    <string name="about_gitlab_summary">"احصل على الشفرة المصدرية لمتجر Aurora من Aurora OSS على GitLab."</string>
+    <string name="about_telegram_summary">"انضم إلى مجموعة دعم Aurora للمناقشات والاقتراحات."</string>
+    <string name="about_xda_summary">"انظر موضوع أورورا على XDA للمناقشات والاقتراحات."</string>
+    <string name="about_fdroid_summary">"احصل على متجر Aurora من مستودع F-Droid"</string>
+    <string name="action_enable">"تفعيل"</string>
+    <string name="action_disable">"تعطيل"</string>
+    <string name="details_run_with">"فتح بواسطة"</string>
+    <string name="location_spoof_warning">"يتيح لك الموقع الوهمي تنزيل التطبيقات المقيدة جغرافيا ، ستحتاج إلى اتصال VPN لإتمام العملية."</string>
+    <string name="location_spoof_howtos">"1. تمكين خيارات المطور من الإعدادات
+2.اختيار متجر تطبيقات Aurora
+3. حدده كتطبيق لمحاكاة الموقع
+4. شغِّل الشبكة الظاهرية الخاصة VPN لتحديد البلد أو المنطقة
+5. إعادة تشغيل التطبيق والاستمتاع"</string>
+    <string name="location_spoof_readme">"اقرأني"</string>
+    <string name="pref_app_subcategory">"فئة التطبيقات المختارة"</string>
+    <string name="pref_app_subcategory_summary">"اختر فئة من التطبيقات ليتم عرضها في القائمة الرئيسية لتطبيق"</string>
+    <string name="pref_app_subcategory_free">"الاعلى مجانية"</string>
+    <string name="pref_app_subcategory_grossing">"الاكثر صعودا"</string>
+    <string name="pref_app_subcategory_trending">"الاكثر رواجا"</string>
+    <string name="pref_category_spoof_location">"الموقع الوهمي"</string>
+    <string name="pref_requested_location_summary">"يجب تعيين متجر Aurora كتطبيق الموقع الوهمي الافتراضي."</string>
+    <string name="pref_requested_location_enable">"تحتاج إلى تمكين \"الموقع الوهمي\" يدويًا من خيارات المطورين."</string>
+    <string name="pref_requested_location_disable">"تحتاج إلى تعطيل الموقع الوهمي يدويا من خيارات المطور لتعطيله بالكامل."</string>
 </resources>

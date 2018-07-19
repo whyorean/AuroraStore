@@ -3,9 +3,6 @@
   ~ Aurora Store
   ~ Copyright (C) 2018  Rahul Kumar Patel <whyorean@gmail.com>
   ~
-  ~ Yalp Store
-  ~ Copyright (C) 2018 Sergey Yeriomin <yeriomin@gmail.com>
-  ~
   ~ Aurora Store (a fork of Yalp Store )is free software: you can redistribute it and/or modify
   ~ it under the terms of the GNU General Public License as published by
   ~ the Free Software Foundation, either version 2 of the License, or
@@ -21,13 +18,13 @@
   -->
 
 <resources>
-    <string name="about_app">"Aurora es una alternativa open-source a la Play Store, la cual te permite descargar las apps de la Play Store además de actualizar las que ya tienes"</string>
+    <string name="about_app">"Aurora es una alternativa open-source para la Play Store, la cual te permite descargar las apps disponibles Play Store además de actualizar las que ya tienes."</string>
     <string name="about_contributors">"Contribuidores"</string>
     <string name="about_devs">"Desarrolladores"</string>
     <string name="about_github">"GitHub"</string>
     <string name="about_opensource">"Librerías open-source"</string>
     <string name="about_telegram">"Telegram"</string>
-    <string name="about_xda">"XDA"</string>
+    <string name="about_xda">"Hilo en XDA"</string>
     <string name="account_dummy_email">"anónimo@anónimo"</string>
     <string name="acc_dummy">"Entrar como Anónimo"</string>
     <string name="acc_dummy_name">"Anónimo"</string>
@@ -47,7 +44,7 @@
     <string name="action_login">"Iniciar sesión"</string>
     <string name="action_logout">"Cerrar sesión"</string>
     <string name="action_make_normal">"Convertir a app del usuario"</string>
-    <string name="action_make_system">"Convertir a app del sistema"</string>
+    <string name="action_make_system">"Convertir en app del sistema"</string>
     <string name="action_manual">"Descarga manual"</string>
     <string name="action_more">"Más"</string>
     <string name="action_ok">"OK"</string>
@@ -59,7 +56,7 @@
     <string name="action_search_title">"Buscar apps y juegos"</string>
     <string name="action_select">"Selecciona una cuenta"</string>
     <string name="action_settings">"Ajustes"</string>
-    <string name="action_spoofed">"Simular"</string>
+    <string name="action_spoofed">"Emulación"</string>
     <string name="action_switch_dummy">"Cambiar a anónimo"</string>
     <string name="action_switch_google">"Cambiar a Google"</string>
     <string name="action_unignore">"Quitar de lista negra"</string>
@@ -125,7 +122,7 @@
     <string name="details_run">"Abrir"</string>
     <string name="details_saved_in_downloads">"Guardado en descargas"</string>
     <string name="details_share">"Compartir"</string>
-    <string name="details_signature_mismatch">"Esta nueva versión tiene una firma diferente. Para instalarla, la versión antigua debe ser desinstalada antes. Por favor, desinstalala y prueba de nuevo"</string>
+    <string name="details_signature_mismatch">"Esta nueva versión tiene una firma diferente. Para instalarla, la versión antigua debe ser desinstalada antes. Por favor, desinstálala y prueba de nuevo. (Ten en cuenta que al desinstalarla se borrarán todos sus datos)"</string>
     <string name="details_size">"%1$s"</string>
     <string name="details_uninstall">"Desinstalar"</string>
     <string name="details_update">"Actualizar"</string>
@@ -146,7 +143,7 @@
     <string name="dialog_account_type_provided_by_user">"Con tu propia cuenta de Google"</string>
     <string name="dialog_account_type_title">"¿Cómo te gustaría iniciar sesión?"</string>
     <string name="dialog_message_busybox_not_available">"Se requiere un dispositivo rooteado y con Busybox. ¿Buscar un instalador de Busybox?"</string>
-    <string name="dialog_message_checking_busybox">"Algunas funciones del sistema requieren trabar con apps del sistema. Comprobando su disponibilidad"</string>
+    <string name="dialog_message_checking_busybox">"Algunas funciones del sistema requieren trabajar con apps del sistema. Comprobando su disponibilidad"</string>
     <string name="dialog_message_logging_in_predefined">"Intentando iniciar sesión con las credenciales de Aurora Store"</string>
     <string name="dialog_message_logging_in_provided_by_user">"Intentando iniciar sesión con tus credenciales"</string>
     <string name="dialog_message_logout">"¿Seguro de que quieres cerrar sesión?"</string>
@@ -156,7 +153,7 @@
     <string name="dialog_message_switching_in_predefined">"Intentando cambiar entre cuentas predeterminadas"</string>
     <string name="dialog_message_system_app_self">"Usar permisos privilegiados para la instalación de las apps requiere que Aurora sea una app del sistema.
 
-El proceso es imperfecto y especifico del fabricante, así que podría no funcionar.
+El proceso es imperfecto y específico del fabricante, así que podría no funcionar.
 
 ¿Quieres hacerlo?"</string>
     <string name="dialog_message_system_app_warning_to_normal">"Has elegido convertir una app del sistema en app de usuario. Muchas aplicaciones del sistema requieren serlo para funcionar.
@@ -248,7 +245,7 @@ Selecciona \"Crear Contraseña\" para ser redirigido a la página para crearla."
     <string name="list_installed_system">"Mostrar solo apps del usuario"</string>
     <string name="list_line_2_updatable">"Actualizado el %1$s"</string>
     <string name="list_update_automatic">"Mantén tus apps actualizadas"</string>
-    <string name="list_update_automatic_summ">"Actualizar te mantiene con las nuevas mejoras. Aurora únicamente actualizará sobre WifI
+    <string name="list_update_automatic_summ">"Actualizar te mantiene con las nuevas mejoras. Aurora únicamente actualizará sobre Wifi
 
 ¿Activar las actualizaciones diarias?"</string>
     <string name="list_update_automatic_switch">"Activar"</string>
@@ -296,7 +293,7 @@ Selecciona \"Crear Contraseña\" para ser redirigido a la página para crearla."
     <string name="pref_background_update_interval_weekly">"Semanalmente"</string>
     <string name="pref_background_update_wifi_only">"Solo por Wi-Fi"</string>
     <string name="pref_category_installation">"Instalación"</string>
-    <string name="pref_category_spoofing">"Simulación"</string>
+    <string name="pref_category_spoofing">"Emulación"</string>
     <string name="pref_category_ui">"Interfaz de usuario"</string>
     <string name="pref_category_updates">"Actualizaciones"</string>
     <string name="pref_delete_apk_after_install">"Borrar .apk después de instalar"</string>
@@ -367,4 +364,29 @@ Selecciona \"Crear Contraseña\" para ser redirigido a la página para crearla."
     <string name="pref_app_swipe_summary">"Desliza para cambiar de página"</string>
     <string name="pref_app_ime">"Mostrar teclado"</string>
     <string name="pref_app_ime_summary">"Muestra el teclado al abrir la búsqueda"</string>
+    <string name="tagview_games">"Juegos"</string>
+    <string name="tagview_family">"Familia"</string>
+    <string name="pref_category_spoof_device">"Emular dispositivo"</string>
+    <string name="pref_category_spoof_lang">"Emular idioma"</string>
+    <string name="about_fdroid">"F-Droid"</string>
+    <string name="about_gitlab">"GitLab"</string>
+    <string name="about_gitlab_summary">"Consigue el código fuente de Aurora desde GitLab"</string>
+    <string name="about_telegram_summary">"Únete al grupo de soporte de Aurora para discusiones y sugerencias"</string>
+    <string name="about_xda_summary">"Mira el hilo en XDA para discusiones y sugerencias"</string>
+    <string name="about_fdroid_summary">"Descarga Aurora en nuestro repositorio de F-Droid"</string>
+    <string name="action_enable">"Habilitar"</string>
+    <string name="action_disable">"Deshabilitar"</string>
+    <string name="details_run_with">"Abrir con"</string>
+    <string name="location_spoof_warning">"La Simulación de Ubicación te permite descargar aplicaciones con restricción geográfica. Necesitarás una VPN para establecer la conexión."</string>
+    <string name="location_spoof_howtos">"1. Selecciona Aurora como aplicación para simular ubicación en opciones de desarrollo\n2. Elige la ubicación que desees\n3. Enciende la VPN y selecciona el país\n4. Reinicia la app y disfruta."</string>
+    <string name="location_spoof_readme">"Leeme"</string>
+    <string name="pref_app_subcategory">"Subcategoría de la aplicación"</string>
+    <string name="pref_app_subcategory_summary">"Selecciona la subcategoría de las aplicaciones de la pantalla de inicio"</string>
+    <string name="pref_app_subcategory_free">"Mejores Gratis"</string>
+    <string name="pref_app_subcategory_grossing">"Mayores ingresos"</string>
+    <string name="pref_app_subcategory_trending">"Más utilizadas"</string>
+    <string name="pref_category_spoof_location">"Simular Localización"</string>
+    <string name="pref_requested_location_summary">"Aurora Store debe ser seleccionada como aplicación para simular ubicación."</string>
+    <string name="pref_requested_location_enable">"Debes activar la simulación de ubicación desde opciones de desarrollo."</string>
+    <string name="pref_requested_location_disable">"Para desactivarla completamente desactiva la simulación de ubicación desde opciones de desarrollo."</string>
 </resources>

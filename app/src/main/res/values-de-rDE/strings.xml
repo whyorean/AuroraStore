@@ -1,10 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Aurora Store
   ~ Copyright (C) 2018  Rahul Kumar Patel <whyorean@gmail.com>
-  ~
-  ~ Yalp Store
-  ~ Copyright (C) 2018 Sergey Yeriomin <yeriomin@gmail.com>
   ~
   ~ Aurora Store (a fork of Yalp Store )is free software: you can redistribute it and/or modify
   ~ it under the terms of the GNU General Public License as published by
@@ -25,7 +21,6 @@
     <string name="about_contributors">"Mitwirkende"</string>
     <string name="about_devs">"Entwickler"</string>
     <string name="about_github">"GitHub"</string>
-    <string name="about_gitlab">GitLab</string>
     <string name="about_opensource">"Quelloffene Bibliotheken"</string>
     <string name="about_telegram">"Telegram"</string>
     <string name="about_xda">"Entwickler-Beitrag"</string>
@@ -221,7 +216,7 @@ Zur Play-Store-Webseite weiterleiten?"</string>
     <string name="exodus_powered">"Bereitgestellt von Exodus"</string>
     <string name="exodus_title">"Aurora Protect"</string>
     <string name="exodus_viewMore">"Details anzeigen"</string>
-    <string name="first_login_message">"Wähle im Menü "Abmelden", um dein eigenes Konto zu benutzen."</string>
+    <string name="first_login_message">"Wähle im Menü Abmelden, um dein eigenes Konto zu benutzen."</string>
     <string name="flagging_title">"Als unangebracht markieren"</string>
     <string name="flag_graphic_violence">"Grafische Gewalt"</string>
     <string name="flag_harmful_prompt">"Beschreibe den auf dem Gerät oder den Daten entstandenen Schaden:"</string>
@@ -345,7 +340,7 @@ Tägliche Aktualisierungen aktivieren?"</string>
     <string name="testing_program_section_opted_out_title">"Werde ein Beta-Tester"</string>
     <string name="top_categories">"Top Kategorien"</string>
     <string name="warn_app_purchase">"App kaufen ist derzeit nicht möglich, Weiterleitung zu PlayStore Web"</string>
-    <string name="acc_dummy_summary">"Anmelden mit einem anonymen, von Aurora bereitgestellten Anmeldeinformationen, Dummy mit welchem kein Zugriff auf deine gekauften Apps besteht."</string>
+    <string name="acc_dummy_summary">"Melde dich mit einem anonymen Dummy Account an. Anmeldeinformationen hierzu werden vom Aurora Store zur Verfügung gestellt. Mit diesem Account besteht kein Zugriff auf deine gekauften Apps."</string>
     <string name="action_filter_misc">"Sonstige"</string>
     <string name="action_filter_build">"Build"</string>
     <string name="action_filter_apply">"Anwenden"</string>
@@ -362,7 +357,7 @@ Tägliche Aktualisierungen aktivieren?"</string>
     <string name="action_filter_system_apps">"System-Apps"</string>
     <string name="action_filter_all">"Alle"</string>
     <string name="manual_download_disclaimer">"Haftungsausschluss"</string>
-    <string name="manual_download_warning">"Diese Seite lässt dich manuell die Version der App auswählen.\n\nBeachte, dass das Herunterladen von "</string>
+    <string name="manual_download_warning">"Diese Seite lässt dich manuell die Version der App auswählen.\n\nBeachte, dass das Herunterladen von abweichenden App Versionen nicht vom Google Play Store unterstützt wird. Dein Erfolg hängt vom Glück beim Raten der Versionsnummer ab. Selbst wenn du richtig geraten hast und der Download startet, erhälst du eventuell eine inkompatible APK."</string>
     <string name="ohh_snap_text">"Etwas ist fehlgeschlagen"</string>
     <string name="ohh_snap_retry">"Erneut versuchen"</string>
     <string name="pref_app_ui">"UI-Farben"</string>
@@ -375,4 +370,25 @@ Tägliche Aktualisierungen aktivieren?"</string>
     <string name="tagview_family">"Familie"</string>
     <string name="pref_category_spoof_device">"Spoof Device"</string>
     <string name="pref_category_spoof_lang">"Spoof Language"</string>
+    <string name="about_fdroid">"F-Droid"</string>
+    <string name="about_gitlab">"GitLab"</string>
+    <string name="about_gitlab_summary">"Beziehe den AuroraStore Quellcode von Aurora OSS auf GitLab"</string>
+    <string name="about_telegram_summary">"Tritt der Aurora Support Gruppe für Diskussionen und Vorschläge bei."</string>
+    <string name="about_xda_summary">"Schau dir den AuroraStore Beitrag auf XDA für Diskussionen und Vorschläge an."</string>
+    <string name="about_fdroid_summary">"Beziehe Aurora aus dem F-Droid Repo"</string>
+    <string name="action_enable">"Aktivieren"</string>
+    <string name="action_disable">"Deaktivieren"</string>
+    <string name="details_run_with">"Öffnen mit"</string>
+    <string name="location_spoof_warning">"Location Spoof erlaubt dir Standort beschränkte Apps herunterzuladen. Du benötigst däfür eine VPN Verbindung."</string>
+    <string name="location_spoof_howtos">"1. Aktiviere die Entwickleroptionen in den Einstellungen\n2. Benutze Aurora als Standard App für simulierte Standorte\n3. Wähle Spoof Location in der App\n4. Starte eine VPN Verbindung für ein Land oder eine Region\n5. Starte die App neue und genieße es."</string>
+    <string name="location_spoof_readme">"Lies Mich"</string>
+    <string name="pref_app_subcategory">"App Unterkategorie"</string>
+    <string name="pref_app_subcategory_summary">"Wähle die Unterkategorie der Apps auf dem Home Bildschirm"</string>
+    <string name="pref_app_subcategory_free">"Kostenlos"</string>
+    <string name="pref_app_subcategory_grossing">"Erfolgreichste"</string>
+    <string name="pref_app_subcategory_trending">"Trends"</string>
+    <string name="pref_category_spoof_location">"Spoof Location"</string>
+    <string name="pref_requested_location_summary">"Aurora Store muss Standardmässig für die simulierten Standorte gewählt werden"</string>
+    <string name="pref_requested_location_enable">"Du musst manuell den simulierten Standort in den Entwickleroptionen aktivieren."</string>
+    <string name="pref_requested_location_disable">"Du musst manuell den simulierten Standort in den Entwickleroptionen deaktivieren, um es vollständig zu deaktivieren."</string>
 </resources>

@@ -1,10 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Aurora Store
   ~ Copyright (C) 2018  Rahul Kumar Patel <whyorean@gmail.com>
-  ~
-  ~ Yalp Store
-  ~ Copyright (C) 2018 Sergey Yeriomin <yeriomin@gmail.com>
   ~
   ~ Aurora Store (a fork of Yalp Store )is free software: you can redistribute it and/or modify
   ~ it under the terms of the GNU General Public License as published by
@@ -59,7 +55,7 @@
     <string name="action_search_title">"Поиск приложений и игр"</string>
     <string name="action_select">"Выберите аккаунт для входа"</string>
     <string name="action_settings">"Настройки"</string>
-    <string name="action_spoofed">"Притвориться"</string>
+    <string name="action_spoofed">"Имитация"</string>
     <string name="action_switch_dummy">"Сменить аккаунт"</string>
     <string name="action_switch_google">"Сменить аккаунт"</string>
     <string name="action_unignore">"Убрать из чёрного списка"</string>
@@ -162,17 +158,17 @@
 Продолжить?"</string>
     <string name="dialog_message_system_app_warning_to_normal">"Вы собираетесь сделать приложение пользовательским. Большинству системных приложений требуется быть системными для работы.
 
-Имейте в виду, что процесс преобразования в пользовательское приложение НЕ поддерживается ОС Android и поэтому НЕ безопасен и можен НЕ сработать.
+Имейте в виду, что процесс преобразования в пользовательское приложение НЕ поддерживается ОС Android и поэтому НЕ безопасен и может НЕ сработать.
 
 Не делайте это из любопытства. Это может сломать ваше устройство. Сделайте бэкап перед началом."</string>
     <string name="dialog_message_system_app_warning_to_system">"Вы собираетесь сделать приложение системным. Большинству приложений не требуется быть системными для работы.
 
-Имейте в виду, что процесс преобразования в системное приложение НЕ поддерживается ОС Android и поэтому НЕ безопасен и можен НЕ сработать.
+Имейте в виду, что процесс преобразования в системное приложение НЕ поддерживается ОС Android и поэтому НЕ безопасен и может НЕ сработать.
 
 Не делайте это из любопытства. Это может сломать ваше устройство. Сделайте бэкап перед началом."</string>
     <string name="dialog_message_system_app_warning_uninstall">"Вы уверены, что хотите удалить это системное приложение? Системные приложения установлены поставщиком устройства и, скорее всего, необходимы для его нормальной работы.
 
-Имейте в виду, что удаление системных приложений НЕ поддерживается ОС Android и поэтому НЕ безопасно и можен НЕ сработать.
+Имейте в виду, что удаление системных приложений НЕ поддерживается ОС Android и поэтому НЕ безопасно и может НЕ сработать.
 
 Не делайте это из любопытства. Это может сломать ваше устройство. Сделайте бэкап перед началом."</string>
     <string name="dialog_message_two_factor">"Похоже вы включили двухфакторную аутентификацию для своего аккаунта.
@@ -291,7 +287,7 @@
     <string name="pref_background_update_install_summary_off">"Только уведомление"</string>
     <string name="pref_background_update_install_summary_on">"Обновления устанавливаются автоматически (root)"</string>
     <string name="pref_background_update_interval">"Период проверки обновлений"</string>
-    <string name="pref_background_update_interval_daily">"Еженедневно"</string>
+    <string name="pref_background_update_interval_daily">"Ежедневно"</string>
     <string name="pref_background_update_interval_hourly">"Ежечасно"</string>
     <string name="pref_background_update_interval_manually">"Вручную"</string>
     <string name="pref_background_update_interval_never">"При запуске Aurora Store"</string>
@@ -369,4 +365,29 @@
     <string name="pref_app_swipe_summary">"Свайп для перехода между страницами."</string>
     <string name="pref_app_ime">"Отображение клавиатуры"</string>
     <string name="pref_app_ime_summary">"Отображать клавиатуру на странице поиска по умолчанию."</string>
+    <string name="tagview_games">"Игры"</string>
+    <string name="tagview_family">"Для всей семьи"</string>
+    <string name="pref_category_spoof_device">"Устройство"</string>
+    <string name="pref_category_spoof_lang">"Язык"</string>
+    <string name="about_fdroid">"F-Droid"</string>
+    <string name="about_gitlab">"GitLab"</string>
+    <string name="about_gitlab_summary">"Исходный код Aurora на странице проекта Aurora OSS на GitLab."</string>
+    <string name="about_telegram_summary">"Присоединяйтесь к обсуждению или вносите предложения в группе поддержки Aurora."</string>
+    <string name="about_xda_summary">"Присоединяйтесь к обсуждению или вносите предложения в теме Aurora на XDA."</string>
+    <string name="about_fdroid_summary">"Скачать Aurora из репозитория F-Droid"</string>
+    <string name="action_enable">"Включить"</string>
+    <string name="action_disable">"Отключить"</string>
+    <string name="details_run_with">"Открыть с помощью"</string>
+    <string name="location_spoof_warning">"Подделка местоположения позволяет загружать приложения недоступные для вашего региона, для использования этой функции вам понадобится настроить VPN-соединение."</string>
+    <string name="location_spoof_howtos">"1. Включите параметры для разработчиков в настройках \ n2. Установите Aurora в качестве приложения для фиктивного местоположения \ n3. Выберите подделку местоположения в приложении \ n4. Включите VPN, чтобы выбрать страну или регион \ n5. Перезапустите приложение и наслаждайтесь."</string>
+    <string name="location_spoof_readme">"Прочти меня"</string>
+    <string name="pref_app_subcategory">"Предпочитаемая подкатегория"</string>
+    <string name="pref_app_subcategory_summary">"Выберите подкатегорию приложений отображаемую на домашнем экране"</string>
+    <string name="pref_app_subcategory_free">"Топ бесплатных"</string>
+    <string name="pref_app_subcategory_grossing">"Бестселлеры"</string>
+    <string name="pref_app_subcategory_trending">"В тренде"</string>
+    <string name="pref_category_spoof_location">"Подделка местоположения"</string>
+    <string name="pref_requested_location_summary">"Aurora Store должна быть установлена как приложение для фиктивных местоположений"</string>
+    <string name="pref_requested_location_enable">"Вам необходимо вручную включить использование фиктивных местоположений из параметров для разработчиков."</string>
+    <string name="pref_requested_location_disable">"Вам необходимо вручную отключить использование фиктивных местоположений из параметров для разработчиков, для полного отключения функции."</string>
 </resources>
