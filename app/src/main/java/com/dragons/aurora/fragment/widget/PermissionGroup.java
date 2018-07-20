@@ -37,6 +37,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.dragons.aurora.R;
+import com.dragons.aurora.Util;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -96,7 +97,7 @@ public class PermissionGroup extends LinearLayout {
         this.permissionGroupInfo = permissionGroupInfo;
         ImageView imageView = (ImageView) findViewById(R.id.permission_group_icon);
         imageView.setImageDrawable(getPermissionGroupIcon(permissionGroupInfo));
-        imageView.setColorFilter(android.R.attr.colorForeground);
+        imageView.setColorFilter(Util.getStyledAttribute(imageView.getContext(), android.R.attr.colorForeground));
     }
 
     public void addPermission(PermissionInfo permissionInfo) {
