@@ -22,7 +22,6 @@
 package com.dragons.aurora.view;
 
 import android.content.Context;
-import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
@@ -80,10 +79,10 @@ public abstract class AppBadge extends ListItem {
             Glide
                     .with(view.getContext())
                     .load(imageSource.getUrl())
-                    .apply(RequestOptions
-                            .placeholderOf(ContextCompat.getDrawable(view.getContext(), R.drawable.ic_placeholder))
-                            .diskCacheStrategy(DiskCacheStrategy.ALL))
-                    .transition(new DrawableTransitionOptions().crossFade())
+                    .apply(new RequestOptions()
+                            .placeholder(R.drawable.ic_placeholder)
+                            .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
+                            .dontAnimate())
                     .into(imageView);
         }
     }
