@@ -21,30 +21,32 @@
 
 package com.dragons.aurora.fragment.details;
 
+import android.content.Context;
+import android.view.View;
 import android.widget.TextView;
 
-import com.dragons.aurora.activities.AuroraActivity;
 import com.dragons.aurora.model.App;
 
 public abstract class Abstract {
-
-    protected AuroraActivity activity;
+    protected View view;
     protected App app;
+    protected Context context;
 
-    public Abstract(AuroraActivity activity, App app) {
-        this.activity = activity;
+    public Abstract(Context context, View view, App app) {
+        this.context = context;
+        this.view = view;
         this.app = app;
     }
 
     abstract public void draw();
 
     protected void setText(int viewId, String text) {
-        TextView textView = (TextView) activity.findViewById(viewId);
+        TextView textView = view.findViewById(viewId);
         if (null != textView)
             textView.setText(text);
     }
 
     protected void setText(int viewId, int stringId, Object... text) {
-        setText(viewId, activity.getString(stringId, text));
+        setText(viewId, view.getResources().getString(stringId, text));
     }
 }

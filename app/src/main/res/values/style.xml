@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Aurora Store
   ~ Copyright (C) 2018  Rahul Kumar Patel <whyorean@gmail.com>
   ~
@@ -22,36 +21,31 @@
 
 <resources>
 
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="android:windowAnimationStyle">@style/CustomActivityAnimation</item>
-        <item name="android:windowDisablePreview">true</item>
-        <item name="android:colorPrimary">?android:attr/colorBackground</item>
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="android:windowActivityTransitions">true</item>
+        <item name="android:colorPrimary">@color/colorPrimary</item>
         <item name="android:colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="android:colorAccent">@color/colorAccent</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:panelBackground">@color/white</item>
         <item name="android:strokeColor">@color/strokeLight</item>
         <item name="android:toolbarStyle">@style/ThemeOverlay.AppCompat.Light</item>
-        <item name="android:textViewStyle">@style/RobotoTextViewStyle</item>
     </style>
 
-    <style name="AppTheme.Dark" parent="Theme.AppCompat.NoActionBar">
-        <item name="android:windowAnimationStyle">@style/CustomActivityAnimation</item>
-        <item name="android:windowDisablePreview">true</item>
-        <item name="android:colorPrimary">?android:attr/colorBackground</item>
+    <style name="AppTheme.Dark" parent="Theme.MaterialComponents.NoActionBar">
+        <item name="android:windowActivityTransitions">true</item>
+        <item name="android:colorPrimary">#343434</item>
         <item name="android:colorPrimaryDark">#242424</item>
         <item name="android:colorAccent">@color/colorAccent</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:strokeColor">@color/strokeDark</item>
         <item name="android:panelBackground">#343434</item>
         <item name="android:toolbarStyle">@style/ThemeOverlay.AppCompat</item>
-        <item name="android:textViewStyle">@style/RobotoTextViewStyle</item>
     </style>
 
-    <style name="AppTheme.Black" parent="Theme.AppCompat.NoActionBar">
-        <item name="android:windowAnimationStyle">@style/CustomActivityAnimation</item>
-        <item name="android:windowDisablePreview">true</item>
-        <item name="android:colorPrimary">?android:attr/colorBackground</item>
+    <style name="AppTheme.Black" parent="Theme.MaterialComponents.NoActionBar">
+        <item name="android:windowActivityTransitions">true</item>
+        <item name="android:colorPrimary">@color/black</item>
         <item name="android:colorPrimaryDark">@color/black</item>
         <item name="android:colorBackground">@color/black</item>
         <item name="android:windowBackground">@color/black</item>
@@ -60,33 +54,21 @@
         <item name="android:strokeColor">@color/strokeBlack</item>
         <item name="android:panelBackground">@color/black</item>
         <item name="android:toolbarStyle">@style/ThemeOverlay.AppCompat</item>
-        <item name="android:textViewStyle">@style/RobotoTextViewStyle</item>
     </style>
 
-    <style name="CustomActivityAnimation" parent="@android:style/Animation.Activity">
-        <item name="android:taskOpenEnterAnimation">@anim/slide_in_right</item>
-        <item name="android:taskOpenExitAnimation">@anim/slide_out_left</item>
-        <item name="android:taskCloseEnterAnimation">@anim/slide_in_left</item>
-        <item name="android:taskCloseExitAnimation">@anim/slide_out_right</item>
-    </style>
-
-    <style name="RatingBar" parent="Theme.AppCompat">
+    <style name="RatingBar" parent="Theme.MaterialComponents">
         <item name="colorControlNormal">@color/lightGray</item>
         <item name="colorControlActivated">@color/white</item>
     </style>
 
-    <style name="RatingBar2" parent="Theme.AppCompat">
+    <style name="RatingBar2" parent="Theme.MaterialComponents">
         <item name="colorControlNormal">@color/gray</item>
         <item name="colorControlActivated">@color/darkGray</item>
     </style>
 
-    <style name="RatingBarReviews" parent="Theme.AppCompat">
+    <style name="RatingBarReviews" parent="Theme.MaterialComponents">
         <item name="colorControlNormal">@color/colorGold</item>
         <item name="colorControlActivated">@color/colorGold</item>
-    </style>
-
-    <style name="RobotoTextViewStyle" parent="android:Widget.TextView">
-        <item name="android:fontFamily">@font/google_sans</item>
     </style>
 
 </resources>

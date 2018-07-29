@@ -21,12 +21,13 @@
 
 package com.dragons.aurora.adapters;
 
-import android.app.SearchManager;
-import android.content.Context;
-import android.content.Intent;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.CardView;
-import android.support.v7.widget.RecyclerView;
+import android.os.Bundle;
+
+import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,7 +35,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.dragons.aurora.R;
-import com.dragons.aurora.activities.SearchActivity;
+import com.dragons.aurora.fragment.SearchAppsFragment;
+import com.dragons.aurora.fragment.SearchFragment;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -46,11 +48,11 @@ import java.util.concurrent.TimeUnit;
 public class SearchHistoryAdapter extends RecyclerView.Adapter<SearchHistoryAdapter.ViewHolder> {
 
     public ArrayList<String> queryHistory;
-    private Context c;
+    private SearchFragment fragment;
 
-    public SearchHistoryAdapter(ArrayList<String> queryHistory, Context c) {
+    public SearchHistoryAdapter(SearchFragment fragment, ArrayList<String> queryHistory) {
+        this.fragment = fragment;
         this.queryHistory = queryHistory;
-        this.c = c;
     }
 
     public void add(int position, String query) {
@@ -72,7 +74,7 @@ public class SearchHistoryAdapter extends RecyclerView.Adapter<SearchHistoryAdap
     @Override
     public SearchHistoryAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View view = inflater.inflate(R.layout.history_item, parent, false);
+        View view = inflater.inflate(R.layout.item_history, parent, false);
         return new ViewHolder(view);
     }
 
@@ -80,10 +82,18 @@ public class SearchHistoryAdapter extends RecyclerView.Adapter<SearchHistoryAdap
     public void onBindViewHolder(@NonNull SearchHistoryAdapter.ViewHolder holder, final int position) {
         setQuery(holder.query, holder.time, queryHistory.get(position));
         holder.viewForeground.setOnClickListener(v -> {
-            Intent i = new Intent(c.getApplicationContext(), SearchActivity.class);
-            i.setAction(Intent.ACTION_SEARCH);
-            i.putExtra(SearchManager.QUERY, holder.query.getText());
-            c.startActivity(i);
+            final String query = holder.query.getText().toString();
+            SearchAppsFragment searchAppsFragment = new SearchAppsFragment();
+            Bundle arguments = new Bundle();
+            arguments.putString("SearchQuery", query);
+            arguments.putString("SearchTitle", query);
+            searchAppsFragment.setArguments(arguments);
+            fragment.getChildFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.container, searchAppsFragment)
+                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                    .addToBackStack(null)
+                    .commit();
         });
     }
 

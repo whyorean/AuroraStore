@@ -21,6 +21,7 @@
 
 package com.dragons.aurora;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -43,6 +44,7 @@ public final class CertUtils {
         X509Certificate[] certs = null;
         PackageManager pm = context.getApplicationContext().getPackageManager();
         try {
+            @SuppressLint("PackageManagerGetSignatures")
             PackageInfo pkgInfo = pm.getPackageInfo(packageName, PackageManager.GET_SIGNATURES);
             if (certificateFactory == null)
                 certificateFactory = CertificateFactory.getInstance("X509");

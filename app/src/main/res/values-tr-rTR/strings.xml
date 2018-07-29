@@ -237,7 +237,7 @@ Lütfen Aurora Store'a adanmış bir uygulama şifresi oluşturun ve onunla giri
 Günlük uygulama güncellemeleri açılsın mı?"</string>
     <string name="list_update_automatic_switch">"Aç"</string>
     <string name="list_update_all">"Güncelle"</string>
-    <string name="list_update_all_txt">"Mevcut güncelleme : %1$s"</string>
+    <string name="list_update_all_txt">"Mevcut güncelleme"</string>
     <string name="list_update_chk_txt">"Güncellemeler denetleniyor"</string>
     <string name="list_update_recheck">"Yeniden kontrol et"</string>
     <string name="list_updating">"Güncelleniyor…"</string>

@@ -109,7 +109,7 @@ public class UserProvidedCredentialsTask extends CheckCredentialsTask {
 
     public void logInWithGoogleAccount() {
         Dialog ad = new Dialog(context);
-        ad.setContentView(R.layout.credentials_dialog_layout);
+        ad.setContentView(R.layout.dialog_credentials);
         ad.setTitle(context.getString(R.string.credentials_title));
         ad.setCancelable(false);
 

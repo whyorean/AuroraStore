@@ -21,6 +21,8 @@
 
 package com.dragons.aurora.task.playstore;
 
+import android.content.Context;
+
 import com.dragons.aurora.model.App;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 
@@ -32,6 +34,11 @@ public class BetaToggleTask extends PlayStorePayloadTask<Void> {
 
     public BetaToggleTask(App app) {
         this.app = app;
+    }
+
+    @Override
+    public void setContext(Context context) {
+        super.setContext(context);
     }
 
     @Override

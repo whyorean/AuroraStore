@@ -31,6 +31,8 @@ import android.view.View;
 import com.dragons.aurora.R;
 import com.dragons.aurora.fragment.DetailsFragment;
 
+import androidx.fragment.app.FragmentTransaction;
+
 public class DetailsActivity extends AuroraActivity {
 
     static private final String INTENT_PACKAGE_NAME = "INTENT_PACKAGE_NAME";
@@ -44,18 +46,12 @@ public class DetailsActivity extends AuroraActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.helper_activity_alt);
+        setContentView(R.layout.activity_helper_alt);
         getWindow().getDecorView().setSystemUiVisibility(
                 View.SYSTEM_UI_FLAG_LAYOUT_STABLE
                         | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
         getWindow().setStatusBarColor(getResources().getColor(R.color.semi_transparent));
         onNewIntent(getIntent());
-    }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        finish();
     }
 
     @Override
@@ -90,6 +86,10 @@ public class DetailsActivity extends AuroraActivity {
         Bundle arguments = new Bundle();
         arguments.putString("PackageName", packageName);
         detailsFragment.setArguments(arguments);
-        getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, detailsFragment).commit();
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.container, detailsFragment)
+                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                .commit();
     }
 }

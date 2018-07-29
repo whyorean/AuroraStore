@@ -168,4 +168,11 @@
         <item>Washington DC, USA</item>
         <item>Hanoi, Viet Nam</item>
     </string-array>
+    <integer-array name="tab_colors">
+        <item>@color/colorAccent</item>
+        <item>@color/colorRed</item>
+        <item>@color/colorOrange</item>
+        <item>@color/colorGreen</item>
+        <item>@color/colorCyan</item>
+    </integer-array>
 </resources>

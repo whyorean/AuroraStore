@@ -220,7 +220,7 @@ Selecciona \"Crear Contraseña\" para ser redirigido a la página para crearla."
 ¿Activar las actualizaciones diarias?"</string>
     <string name="list_update_automatic_switch">"Activar"</string>
     <string name="list_update_all">"Actualizar todo"</string>
-    <string name="list_update_all_txt">"Actualización(es) disponibles: %1$s"</string>
+    <string name="list_update_all_txt">"Actualización(es) disponibles"</string>
     <string name="list_update_chk_txt">"Buscando actualizaciones…"</string>
     <string name="list_update_recheck">"Comprobar"</string>
     <string name="list_updating">"Actualizando…"</string>

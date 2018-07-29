@@ -32,8 +32,8 @@ import android.util.Log;
 import com.dragons.aurora.ContextUtil;
 import com.dragons.aurora.CredentialsEmptyException;
 import com.dragons.aurora.FirstLaunchChecker;
+import com.dragons.aurora.PlayStoreApiAuthenticator;
 import com.dragons.aurora.R;
-import com.dragons.aurora.Util;
 import com.dragons.aurora.fragment.PreferenceFragment;
 import com.dragons.aurora.helpers.Accountant;
 import com.dragons.aurora.playstoreapiv2.AuthException;
@@ -43,6 +43,8 @@ import com.dragons.aurora.task.playstore.CloneableTask;
 import com.dragons.aurora.task.playstore.PlayStoreTask;
 
 import java.io.IOException;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public abstract class CheckCredentialsTask extends PlayStoreTask<Void> {
 
@@ -87,16 +89,17 @@ public abstract class CheckCredentialsTask extends PlayStoreTask<Void> {
     protected void processAuthException(AuthException e) {
         if (e instanceof CredentialsEmptyException) {
             Log.w(getClass().getSimpleName(), "Credentials empty");
-        } else if (null != e.getTwoFactorUrl()) {
+        } else if (null != e.getTwoFactorUrl() && context instanceof AppCompatActivity) {
             getTwoFactorAuthDialog().show();
         } else {
             ContextUtil.toast(context, R.string.error_incorrect_password);
+            new PlayStoreApiAuthenticator(context).logout();
             Accountant.completeCheckout(context);
         }
     }
 
     private AlertDialog getTwoFactorAuthDialog() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        AlertDialog.Builder builder = new AlertDialog.Builder(context, R.style.ThemeOverlay_MaterialComponents_Dialog);
         return builder
                 .setMessage(R.string.dialog_message_two_factor)
                 .setTitle(R.string.dialog_title_two_factor)
@@ -112,14 +115,11 @@ public abstract class CheckCredentialsTask extends PlayStoreTask<Void> {
                                 } else {
                                     Log.e(getClass().getSimpleName(), "No application available to handle http links... very strange");
                                 }
-                                android.os.Process.killProcess(android.os.Process.myPid());
+                                dialog.dismiss();
                             }
                         }
                 )
-                .setNegativeButton(
-                        R.string.dialog_two_factor_cancel,
-                        (dialog, which) -> android.os.Process.killProcess(android.os.Process.myPid())
-                )
+                .setNegativeButton(R.string.dialog_two_factor_cancel, (dialog, which) -> dialog.dismiss())
                 .create();
     }
 }

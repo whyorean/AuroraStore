@@ -37,6 +37,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+    <uses-permission android:name="android.permission.VIBRATE" />
 
     <uses-permission
         android:name="android.permission.ACCESS_MOCK_LOCATION"
@@ -105,10 +106,6 @@
         </activity>
 
         <activity
-            android:name=".activities.CategoryListActivity"
-            android:configChanges="orientation" />
-
-        <activity
             android:name=".activities.CategoryAppsActivity"
             android:configChanges="orientation" />
 
@@ -172,7 +169,12 @@
 
         <activity
             android:name=".activities.AccountsActivity"
-            android:configChanges="orientation" />
+            android:configChanges="orientation">
+            <intent-filter>
+                <action android:name=".activities.AccountsActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
 
         <activity
             android:name=".activities.PreferenceActivity"
@@ -180,15 +182,30 @@
 
         <activity
             android:name=".activities.SpoofActivity"
-            android:configChanges="orientation" />
+            android:configChanges="orientation">
+            <intent-filter>
+                <action android:name=".activities.SpoofActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
 
         <activity
             android:name=".activities.AboutActivity"
-            android:configChanges="orientation" />
+            android:configChanges="orientation">
+            <intent-filter>
+                <action android:name=".activities.AboutActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
 
         <activity
             android:name=".activities.LoginActivity"
             android:configChanges="orientation" />
+        <activity android:name=".activities.UpdatableAppsActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+            </intent-filter>
+        </activity>
 
         <provider
             android:name="com.dragons.aurora.FileProvider"
@@ -209,7 +226,7 @@
         <receiver android:name="com.dragons.aurora.UpdateChecker" />
 
         <receiver
-            android:name="com.dragons.aurora.BootReceiver"
+            android:name="com.dragons.aurora.recievers.BootReceiver"
             android:enabled="true"
             android:exported="true">
             <intent-filter>

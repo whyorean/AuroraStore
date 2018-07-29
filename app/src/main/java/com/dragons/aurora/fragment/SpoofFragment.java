@@ -25,8 +25,6 @@ import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,6 +52,9 @@ import java.util.LinkedHashMap;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Properties;
+
+import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 
 import static com.dragons.aurora.fragment.PreferenceFragment.PREFERENCE_DEVICE_TO_PRETEND_TO_BE;
 import static com.dragons.aurora.fragment.PreferenceFragment.PREFERENCE_DEVICE_TO_PRETEND_TO_BE_INDEX;
@@ -118,19 +119,19 @@ public class SpoofFragment extends BaseFragment {
             drawDevice();
     }
 
-    public boolean isSpoofed() {
+    private boolean isSpoofed() {
         deviceName = PreferenceFragment.getString(getActivity(), PreferenceFragment.PREFERENCE_DEVICE_TO_PRETEND_TO_BE);
         return (deviceName.contains("device-"));
     }
 
-    public void drawDevice() {
+    private void drawDevice() {
         getDeviceImg(LineageURl + Build.DEVICE + ".png");
         Util.setText(view, R.id.device_model, R.string.device_model, Build.MODEL, Build.DEVICE);
         Util.setText(view, R.id.device_manufacturer, Build.MANUFACTURER);
         Util.setText(view, R.id.device_architect, Build.BOARD);
     }
 
-    public void drawSpoofedDevice() {
+    private void drawSpoofedDevice() {
         Properties properties = new SpoofDeviceManager(this.getActivity()).getProperties(deviceName);
         String Model = properties.getProperty("UserReadableName");
         getDeviceImg(LineageURl + properties.getProperty(BUILD_DEVICE) + ".png");
@@ -139,7 +140,7 @@ public class SpoofFragment extends BaseFragment {
         Util.setText(view, R.id.device_architect, properties.getProperty(BUILD_HARDWARE));
     }
 
-    void setupLanguage() {
+    private void setupLanguage() {
         Spinner spinner = (Spinner) view.findViewById(R.id.spoof_language);
         Map<String, String> locales = getLanguageKeyValueMap();
         String[] localeList = locales.values().toArray(new String[0]);
@@ -180,7 +181,7 @@ public class SpoofFragment extends BaseFragment {
         });
     }
 
-    void setupDevice() {
+    private void setupDevice() {
         Spinner spinner = view.findViewById(R.id.spoof_device);
         Map<String, String> devices = getDeviceKeyValueMap();
 
@@ -217,7 +218,7 @@ public class SpoofFragment extends BaseFragment {
         });
     }
 
-    void setupLocations() {
+    private void setupLocations() {
         Spinner spinner = view.findViewById(R.id.spoof_location);
         String geoLocations[] = getContext().getResources().getStringArray(R.array.geoLocation);
         ArrayAdapter<CharSequence> adapter = new ArrayAdapter<>(
@@ -246,7 +247,7 @@ public class SpoofFragment extends BaseFragment {
         });
     }
 
-    protected void getDeviceImg(String url) {
+    private void getDeviceImg(String url) {
         Glide
                 .with(getContext())
                 .load(url)
@@ -255,7 +256,7 @@ public class SpoofFragment extends BaseFragment {
 
     }
 
-    protected Map<String, String> getDeviceKeyValueMap() {
+    private Map<String, String> getDeviceKeyValueMap() {
         Map<String, String> devices = new SpoofDeviceManager(getContext()).getDevices();
         devices = Util.sort(devices);
         Util.addToStart(
@@ -266,7 +267,7 @@ public class SpoofFragment extends BaseFragment {
         return devices;
     }
 
-    protected Map<String, String> getLanguageKeyValueMap() {
+    private Map<String, String> getLanguageKeyValueMap() {
         Map<String, String> languages = new HashMap<>();
         for (Locale locale : Locale.getAvailableLocales()) {
             String displayName = locale.getDisplayName();
@@ -280,7 +281,7 @@ public class SpoofFragment extends BaseFragment {
     }
 
     private void showConfirmationDialog() {
-        new AlertDialog.Builder(getContext())
+        new AlertDialog.Builder(getContext(), R.style.ThemeOverlay_MaterialComponents_Dialog)
                 .setMessage(R.string.pref_device_to_pretend_to_be_toast)
                 .setTitle(R.string.dialog_title_logout)
                 .setPositiveButton(R.string.action_logout, (dialogInterface, i) -> {

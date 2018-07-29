@@ -23,8 +23,7 @@ package com.dragons.aurora.adapters;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,14 +38,22 @@ import com.dragons.aurora.R;
 import com.dragons.aurora.Util;
 import com.dragons.aurora.activities.AuroraActivity;
 import com.dragons.aurora.activities.DetailsActivity;
+import com.dragons.aurora.fragment.DetailsFragment;
+import com.dragons.aurora.fragment.HomeFragment;
 import com.dragons.aurora.fragment.details.ButtonDownload;
 import com.dragons.aurora.model.App;
 
 import java.util.List;
 
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.RecyclerView;
+
 public class RecyclerAppsAdapter extends RecyclerView.Adapter<RecyclerAppsAdapter.ViewHolder> {
 
     private List<App> appsToAdd;
+    private Fragment fragment;
     private Context context;
 
     public RecyclerAppsAdapter(Context context, List<App> appsToAdd) {
@@ -54,40 +61,49 @@ public class RecyclerAppsAdapter extends RecyclerView.Adapter<RecyclerAppsAdapte
         this.appsToAdd = appsToAdd;
     }
 
-    public void add(int position, App app) {
-        appsToAdd.add(position, app);
-        notifyItemInserted(position);
+    public RecyclerAppsAdapter(DetailsFragment fragment, List<App> appsToAdd) {
+        this.fragment = fragment;
+        this.context = fragment.getContext();
+        this.appsToAdd = appsToAdd;
     }
 
-    public void remove(int position) {
-        appsToAdd.remove(position);
-        notifyItemRemoved(position);
+    public RecyclerAppsAdapter(HomeFragment fragment, List<App> appsToAdd) {
+        this.fragment = fragment;
+        this.context = fragment.getContext();
+        this.appsToAdd = appsToAdd;
     }
 
     @NonNull
     @Override
     public RecyclerAppsAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View view = inflater.inflate(R.layout.recycler_list_item, parent, false);
+        View view = inflater.inflate(R.layout.item_recyclers, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerAppsAdapter.ViewHolder holder, int position) {
-        final App app = appsToAdd.get(position);
-        final boolean isInstalled = Util.isAlreadyInstalled(context, app.getPackageName());
+        App app = appsToAdd.get(position);
+        boolean isInstalled = Util.isAlreadyInstalled(context, app.getPackageName());
 
-        Glide
-                .with(context)
-                .load(app.getIconInfo().getUrl())
-                .apply(new RequestOptions().placeholder(R.color.transparent))
-                .into(holder.appIcon);
-        setText(holder.view, holder.appRating, R.string.details_rating, app.getRating().getAverage());
         holder.appName.setText(Util.getSimpleName(app.getDisplayName()));
         holder.appRatingBar.setRating(app.getRating().getAverage() / 5.0f);
+        setText(holder.view, holder.appRating, R.string.details_rating, app.getRating().getAverage());
+
         holder.appContainer.setOnClickListener(v -> {
-            Context context = holder.view.getContext();
-            context.startActivity(DetailsActivity.getDetailsIntent(context, app.getPackageName()));
+            if (fragment instanceof DetailsFragment) {
+                DetailsFragment detailsFragment = new DetailsFragment();
+                Bundle arguments = new Bundle();
+                arguments.putString("PackageName", app.getPackageName());
+                detailsFragment.setArguments(arguments);
+                fragment.getFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.container, detailsFragment)
+                        .addToBackStack(app.getPackageName())
+                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                        .commit();
+            } else
+                context.startActivity(DetailsActivity.getDetailsIntent(context, app.getPackageName()));
         });
 
         if (isInstalled)
@@ -100,8 +116,14 @@ public class RecyclerAppsAdapter extends RecyclerView.Adapter<RecyclerAppsAdapte
                     context.startActivity(launchIntent);
                 }
             } else
-                new ButtonDownload((AuroraActivity) context, app).checkAndDownload();
+                new ButtonDownload(context, fragment.getView(), app).checkAndDownload();
         });
+
+        Glide
+                .with(context)
+                .load(app.getIconInfo().getUrl())
+                .apply(new RequestOptions().placeholder(R.color.transparent))
+                .into(holder.appIcon);
     }
 
     protected void setText(TextView textView, String text) {
@@ -139,5 +161,4 @@ public class RecyclerAppsAdapter extends RecyclerView.Adapter<RecyclerAppsAdapte
             get_run = view.findViewById(R.id.get_run);
         }
     }
-
 }

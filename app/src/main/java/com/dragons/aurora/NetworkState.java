@@ -46,10 +46,8 @@ public class NetworkState {
     static public boolean isVpn(Context context) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             return isVpnLollipop(context);
-        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-            return isVpnHoneycomb();
         } else {
-            return false;
+            return isVpnHoneycomb();
         }
     }
 
@@ -87,11 +85,7 @@ public class NetworkState {
         if (null == connectivityManager) {
             return true;
         }
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN) {
-            return isActiveNetworkMetered(connectivityManager);
-        } else {
-            return connectivityManager.isActiveNetworkMetered();
-        }
+        return connectivityManager.isActiveNetworkMetered();
     }
 
     static private boolean isActiveNetworkMetered(ConnectivityManager connectivityManager) {

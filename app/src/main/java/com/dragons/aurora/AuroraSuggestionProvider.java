@@ -28,7 +28,6 @@ import android.database.Cursor;
 import android.database.MatrixCursor;
 import android.net.Uri;
 import android.provider.BaseColumns;
-import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -39,6 +38,8 @@ import com.dragons.aurora.playstoreapiv2.SearchSuggestEntry;
 
 import java.io.File;
 import java.io.IOException;
+
+import androidx.annotation.NonNull;
 
 public class AuroraSuggestionProvider extends ContentProvider {
 

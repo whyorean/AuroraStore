@@ -104,14 +104,14 @@
             android:layout_height="wrap_content"
             android:layout_margin="5dp">
 
-            <android.support.v7.widget.CardView
+            <androidx.cardview.widget.CardView
                 android:id="@+id/device_info"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:minHeight="72dp"
                 app:cardBackgroundColor="?android:attr/panelBackground"
-                app:cardCornerRadius="10dp"
+                app:cardCornerRadius="5dp"
                 app:cardElevation="2dp"
                 app:cardPreventCornerOverlap="false"
                 app:cardUseCompatPadding="true">
@@ -179,9 +179,9 @@
 
                 </RelativeLayout>
 
-            </android.support.v7.widget.CardView>
+            </androidx.cardview.widget.CardView>
 
-            <android.support.v7.widget.CardView
+            <androidx.cardview.widget.CardView
                 android:id="@+id/device_card"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -191,7 +191,7 @@
                 android:layout_marginStart="10dp"
                 android:minHeight="76dp"
                 app:cardBackgroundColor="?android:attr/panelBackground"
-                app:cardCornerRadius="10dp"
+                app:cardCornerRadius="5dp"
                 app:cardElevation="2dp"
                 app:cardPreventCornerOverlap="false"
                 app:cardUseCompatPadding="true">
@@ -245,9 +245,9 @@
                         android:layout_toEndOf="@id/spoof_device_img" />
                 </RelativeLayout>
 
-            </android.support.v7.widget.CardView>
+            </androidx.cardview.widget.CardView>
 
-            <android.support.v7.widget.CardView
+            <androidx.cardview.widget.CardView
                 android:id="@+id/device_language"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -257,7 +257,7 @@
                 android:layout_marginStart="10dp"
                 android:minHeight="76dp"
                 app:cardBackgroundColor="?android:attr/panelBackground"
-                app:cardCornerRadius="10dp"
+                app:cardCornerRadius="5dp"
                 app:cardElevation="2dp"
                 app:cardPreventCornerOverlap="false"
                 app:cardUseCompatPadding="true">
@@ -311,9 +311,9 @@
                         android:layout_toEndOf="@id/spoof_img" />
                 </RelativeLayout>
 
-            </android.support.v7.widget.CardView>
+            </androidx.cardview.widget.CardView>
 
-            <android.support.v7.widget.CardView
+            <androidx.cardview.widget.CardView
                 android:id="@+id/device_location"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -323,7 +323,7 @@
                 android:layout_marginStart="10dp"
                 android:minHeight="76dp"
                 app:cardBackgroundColor="?android:attr/panelBackground"
-                app:cardCornerRadius="10dp"
+                app:cardCornerRadius="5dp"
                 app:cardElevation="2dp"
                 app:cardPreventCornerOverlap="false"
                 app:cardUseCompatPadding="true">
@@ -376,9 +376,9 @@
                         android:layout_toEndOf="@id/location_img" />
                 </RelativeLayout>
 
-            </android.support.v7.widget.CardView>
+            </androidx.cardview.widget.CardView>
 
-            <android.support.v7.widget.CardView
+            <androidx.cardview.widget.CardView
                 android:id="@+id/text_card"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -387,7 +387,7 @@
                 android:layout_marginEnd="10dp"
                 android:layout_marginStart="10dp"
                 app:cardBackgroundColor="?android:attr/panelBackground"
-                app:cardCornerRadius="10dp"
+                app:cardCornerRadius="5dp"
                 app:cardElevation="1dp"
                 app:cardPreventCornerOverlap="false"
                 app:cardUseCompatPadding="true">
@@ -447,7 +447,7 @@
                     </ScrollView>
                 </RelativeLayout>
 
-            </android.support.v7.widget.CardView>
+            </androidx.cardview.widget.CardView>
 
         </RelativeLayout>
 

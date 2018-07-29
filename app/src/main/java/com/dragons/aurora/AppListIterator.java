@@ -64,7 +64,7 @@ public class AppListIterator implements Iterator {
         return iterator.hasNext();
     }
 
-    protected boolean shouldSkip(App app) {
+    private boolean shouldSkip(App app) {
         return (!filter.isPaidApps() && !app.isFree())
                 || (!filter.isAppsWithAds() && app.containsAds())
                 || (!filter.isGsfDependentApps() && !app.getDependencies().isEmpty())
@@ -73,7 +73,7 @@ public class AppListIterator implements Iterator {
                 ;
     }
 
-    protected void addApp(List<App> apps, App app) {
+    private void addApp(List<App> apps, App app) {
         if (shouldSkip(app)) {
             Log.i(getClass().getSimpleName(), "Filtering out " + app.getPackageName());
         } else {

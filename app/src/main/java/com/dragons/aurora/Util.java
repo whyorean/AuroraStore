@@ -28,7 +28,7 @@ import android.content.pm.PackageManager;
 import android.content.res.TypedArray;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
-import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.animation.AnimationUtils;
@@ -36,8 +36,9 @@ import android.view.animation.LayoutAnimationController;
 import android.widget.TextView;
 
 import com.dragons.aurora.downloader.DownloadState;
-import com.dragons.aurora.fragment.PreferenceFragment;
+import com.dragons.aurora.helpers.Prefs;
 import com.dragons.aurora.model.App;
+import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 import com.percolate.caffeine.PhoneUtils;
 import com.percolate.caffeine.ViewUtils;
 
@@ -49,6 +50,9 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.TreeMap;
+
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 public class Util {
 
@@ -151,7 +155,7 @@ public class Util {
     public static boolean shouldDownload(Context context, App app) {
         File apk = Paths.getApkPath(context, app.getPackageName(), app.getVersionCode());
         return (!apk.exists() || apk.length() != app.getSize() || !DownloadState.get(app.getPackageName()).isEverythingSuccessful())
-                && (app.isInPlayStore() || app.getPackageName().equals(BuildConfig.APPLICATION_ID));
+                && (app.isInPlayStore() || app.getPackageName().equals(BuildConfig.APPLICATION_ID) && !isAlreadyQueued(app));
     }
 
     public static boolean isAlreadyQueued(App app) {
@@ -189,7 +193,7 @@ public class Util {
 
     public static boolean isDark(Context context) {
         if (context != null) {
-            String Theme = PreferenceFragment.getString(context, "PREFERENCE_THEME");
+            String Theme = Prefs.getString(context, "PREFERENCE_THEME");
             switch (Theme) {
                 case "Light":
                     return false;
@@ -222,12 +226,22 @@ public class Util {
         return gd;
     }
 
-    public static void reloadRecycler(final RecyclerView recyclerView) {
-        final Context context = recyclerView.getContext();
-        final LayoutAnimationController controller = AnimationUtils.loadLayoutAnimation(context, R.anim.layout_anim);
+    public static void reloadRecycler(RecyclerView recyclerView) {
+        Context context = recyclerView.getContext();
+        LayoutAnimationController controller = AnimationUtils.loadLayoutAnimation(context, R.anim.layout_anim);
         recyclerView.setLayoutAnimation(controller);
         recyclerView.getAdapter().notifyDataSetChanged();
         recyclerView.scheduleLayoutAnimation();
+    }
+
+    public static void setColors(Context mContext, SwipeRefreshLayout swipeRefreshLayout) {
+        swipeRefreshLayout.setColorSchemeColors(
+                mContext.getResources().getColor(R.color.colorAccent),
+                mContext.getResources().getColor(R.color.colorGreen),
+                mContext.getResources().getColor(R.color.colorRed),
+                mContext.getResources().getColor(R.color.colorOrange),
+                mContext.getResources().getColor(R.color.colorGold)
+        );
     }
 
     public static String getSimpleName(String oldName) {
@@ -264,5 +278,46 @@ public class Util {
 
     public static void setText(View v, int viewId, int stringId, Object... text) {
         setText(v, viewId, v.getResources().getString(stringId, text));
+    }
+
+    public static GooglePlayAPI.SUBCATEGORY getSubCategory(Context context) {
+        GooglePlayAPI.SUBCATEGORY subcategory = null;
+        switch (Prefs.getString(context, "PREFERENCE_SUBCATEGORY")) {
+            case "1":
+                subcategory = GooglePlayAPI.SUBCATEGORY.TOP_FREE;
+                break;
+            case "2":
+                subcategory = GooglePlayAPI.SUBCATEGORY.TOP_GROSSING;
+                break;
+            case "3":
+                subcategory = GooglePlayAPI.SUBCATEGORY.MOVERS_SHAKERS;
+                break;
+            default:
+                subcategory = GooglePlayAPI.SUBCATEGORY.TOP_GROSSING;
+        }
+        return subcategory;
+    }
+
+    public static int getThemeFromPref(Context context) {
+        String Theme = Prefs.getString(context, "PREFERENCE_THEME");
+        switch (Theme) {
+            case "Light":
+                return R.style.AppTheme;
+            case "Dark":
+                return R.style.AppTheme_Dark;
+            case "Black":
+                return R.style.AppTheme_Black;
+            default:
+                return R.style.AppTheme;
+        }
+    }
+
+    public static void setText(TextView textView, String text) {
+        if (!TextUtils.isEmpty(text)) {
+            textView.setText(text);
+            textView.setVisibility(View.VISIBLE);
+        } else {
+            textView.setVisibility(View.GONE);
+        }
     }
 }

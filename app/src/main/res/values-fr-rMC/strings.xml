@@ -225,7 +225,7 @@ Vérifier tous les jours les mises à jour ?"</string>
 
     <!-- Fuzzy -->
     <string name="list_update_all">"Tout M-à-J"</string>
-    <string name="list_update_all_txt">"Mise(s) à jour  : %1$s"</string>
+    <string name="list_update_all_txt">"Mise(s) à jour"</string>
     <string name="list_update_chk_txt">"Recherche des mises à jour"</string>
     <string name="list_update_recheck">"Revérifier"</string>
     <string name="list_updating">"Mise à jour en cours…"</string>

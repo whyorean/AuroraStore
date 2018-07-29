@@ -23,7 +23,6 @@ package com.dragons.aurora.builders;
 
 import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 
 import com.dragons.aurora.BuildConfig;
 import com.dragons.aurora.R;
@@ -35,21 +34,13 @@ public class SystemRemountDialogBuilder extends AlertDialog.Builder {
 
     private SystemRemountTask primaryTask;
 
-    public SystemRemountDialogBuilder(Context context) {
-        super(context);
-        setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                primaryTask.execute();
-                dialog.dismiss();
-            }
+    public SystemRemountDialogBuilder(Context context, int themeResId) {
+        super(context, themeResId);
+        setPositiveButton(android.R.string.yes, (dialog, which) -> {
+            primaryTask.execute();
+            dialog.dismiss();
         });
-        setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-            }
-        });
+        setNegativeButton(android.R.string.cancel, (dialog, which) -> dialog.dismiss());
     }
 
     public SystemRemountDialogBuilder setPrimaryTask(SystemRemountTask primaryTask) {

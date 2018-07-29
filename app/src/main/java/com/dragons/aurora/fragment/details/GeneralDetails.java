@@ -25,10 +25,6 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Color;
-import android.support.annotation.Nullable;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.graphics.Palette;
-import android.support.v7.widget.CardView;
 import android.text.Html;
 import android.text.TextUtils;
 import android.text.format.Formatter;
@@ -45,7 +41,6 @@ import com.bumptech.glide.load.DataSource;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.load.resource.bitmap.BitmapTransitionOptions;
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.Target;
@@ -60,6 +55,11 @@ import com.dragons.aurora.model.ImageSource;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
+import androidx.core.content.ContextCompat;
+import androidx.palette.graphics.Palette;
 
 import static com.dragons.aurora.AuroraApplication.COLOR_UI;
 
@@ -119,19 +119,18 @@ public class GeneralDetails extends AbstractHelper {
             drawVersion(view.findViewById(R.id.versionString), app);
             drawBackground(view.findViewById(R.id.app_background));
 
-
             app_menu3dot.setOnClickListener(v -> {
                 AuroraActivity activity = (AuroraActivity) context;
                 PopupMenu popup = new PopupMenu(v.getContext(), v);
                 popup.inflate(R.menu.menu_download);
-                new DownloadOptions(activity, app).inflate(popup.getMenu());
+                new DownloadOptions(context, view, app).inflate(popup.getMenu());
                 popup.getMenu().findItem(R.id.action_download).setVisible(false);
                 popup.getMenu().findItem(R.id.action_uninstall).setVisible(false);
                 popup.getMenu().findItem(R.id.action_manual).setVisible(true);
                 popup.setOnMenuItemClickListener(item -> {
                     switch (item.getItemId()) {
                         default:
-                            return new DownloadOptions(activity, app).onContextItemSelected(item);
+                            return new DownloadOptions(context, view, app).onContextItemSelected(item);
                     }
                 });
                 popup.show();
@@ -214,7 +213,7 @@ public class GeneralDetails extends AbstractHelper {
             Glide.with(context)
                     .load(app.getRatingURL())
                     .apply(new RequestOptions()
-                            .placeholder(ContextCompat.getDrawable(context,R.drawable.ic_audience))
+                            .placeholder(ContextCompat.getDrawable(context, R.drawable.ic_audience))
                             .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC))
                     .into(ratingImg);
 

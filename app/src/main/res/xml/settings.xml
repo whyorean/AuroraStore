@@ -21,12 +21,26 @@
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <EditTextPreference
-        android:defaultValue="Download"
-        android:key="PREFERENCE_DOWNLOAD_DIRECTORY"
-        android:selectAllOnFocus="true"
-        android:singleLine="true"
-        android:title="@string/pref_download_directory" />
+    <PreferenceCategory android:title="Extras">
+        <Preference
+            android:key="PREF_ACCOUNTS"
+            android:summary="More about us"
+            android:title="@string/action_about">
+            <intent android:action=".activities.AboutActivity" />
+        </Preference>
+        <Preference
+            android:key="PREF_SPOFF"
+            android:summary="Whole bunch on bitchery"
+            android:title="@string/action_spoofed">
+            <intent android:action=".activities.SpoofActivity" />
+        </Preference>
+        <EditTextPreference
+            android:defaultValue="Download"
+            android:key="PREFERENCE_DOWNLOAD_DIRECTORY"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:title="@string/pref_download_directory" />
+    </PreferenceCategory>
     <PreferenceCategory android:title="@string/pref_category_ui">
         <ListPreference
             android:defaultValue="Light"
@@ -40,6 +54,11 @@
             android:key="COLOR_UI"
             android:summary="@string/pref_app_ui_summary"
             android:title="@string/pref_app_ui" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="COLOR_NAV"
+            android:summary="@string/pref_app_bottom_ui_summary"
+            android:title="@string/pref_app_bottom_ui" />
         <SwitchPreference
             android:defaultValue="false"
             android:key="SWIPE_PAGES"

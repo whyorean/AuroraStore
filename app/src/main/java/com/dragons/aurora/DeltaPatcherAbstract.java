@@ -41,5 +41,5 @@ abstract public class DeltaPatcherAbstract {
         patch = Paths.getDeltaPath(context, app.getPackageName(), app.getVersionCode());
     }
 
-    abstract boolean patch();
+    public abstract boolean patch();
 }

@@ -18,91 +18,64 @@
   ~ You should have received a copy of the GNU General Public License
   ~ along with Aurora Store.  If not, see <http://www.gnu.org/licenses/>.
   -->
-
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/container"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/top_cat"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="15dp"
-        android:fontFamily="@font/google_sans"
-        android:gravity="start"
-        android:text="@string/top_categories"
-        android:textColor="?android:attr/textColorPrimary"
-        android:textSize="15sp"
-        android:textStyle="bold" />
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/top_cat_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/top_cat"
-        android:nestedScrollingEnabled="false"
-        android:orientation="horizontal"
-        app:layoutManager="android.support.v7.widget.LinearLayoutManager" />
-
-    <TextView
-        android:id="@+id/all_cat"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/top_cat_view"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="15dp"
-        android:fontFamily="@font/google_sans"
-        android:gravity="start"
-        android:text="@string/all_categories"
-        android:textColor="?android:attr/textColorPrimary"
-        android:textSize="15sp"
-        android:textStyle="bold" />
-
-    <android.support.v4.widget.SwipeRefreshLayout
-        android:id="@+id/swipe_refresh_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/all_cat"
-        android:layout_marginStart="6dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="6dp"
-        android:layout_marginBottom="8dp">
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/all_cat_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:nestedScrollingEnabled="false"
-            app:layoutManager="android.support.v7.widget.GridLayoutManager"
-            app:spanCount="2" />
+        android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/empty"
+            android:id="@+id/top_cat"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
-    </android.support.v4.widget.SwipeRefreshLayout>
-
-    <LinearLayout
-        android:id="@+id/loading_cat"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:gravity="center"
-        android:visibility="gone">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Loading Categories .."
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="15dp"
+            android:fontFamily="@font/google_sans_bold"
+            android:gravity="start"
+            android:text="@string/top_categories"
+            android:textColor="?android:attr/textColorPrimary"
             android:textSize="16sp" />
-    </LinearLayout>
 
-</RelativeLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/top_cat_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/top_cat"
+            android:nestedScrollingEnabled="false"
+            android:orientation="horizontal" />
+
+        <TextView
+            android:id="@+id/all_cat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/top_cat_view"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="15dp"
+            android:fontFamily="@font/google_sans_bold"
+            android:gravity="start"
+            android:text="@string/all_categories"
+            android:textColor="?android:attr/textColorPrimary"
+            android:textSize="16sp" />
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipe_refresh_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/all_cat">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/all_cat_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:spanCount="2" />
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    </RelativeLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

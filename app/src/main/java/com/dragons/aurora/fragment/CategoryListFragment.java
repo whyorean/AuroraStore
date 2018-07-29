@@ -22,23 +22,26 @@
 package com.dragons.aurora.fragment;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
 
 import com.dragons.aurora.CategoryManager;
+import com.dragons.aurora.GridAutoFitLayoutManager;
 import com.dragons.aurora.R;
+import com.dragons.aurora.Util;
 import com.dragons.aurora.adapters.AllCategoriesAdapter;
 import com.dragons.aurora.adapters.TopCategoriesAdapter;
 import com.dragons.aurora.helpers.Accountant;
 import com.dragons.aurora.task.playstore.CategoryListTask;
 import com.percolate.caffeine.ViewUtils;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
@@ -79,7 +82,8 @@ public class CategoryListFragment extends CategoryListTask {
 
         swipeRefreshLayout = ViewUtils.findViewById(view, R.id.swipe_refresh_layout);
         swipeRefreshLayout.setOnRefreshListener(() -> {
-            if (Accountant.isLoggedIn(getContext())) getAllCategories();
+            if (Accountant.isLoggedIn(getContext()) && Util.isConnected(getActivity()))
+                getAllCategories();
             else swipeRefreshLayout.setRefreshing(false);
         });
         return view;
@@ -97,23 +101,23 @@ public class CategoryListFragment extends CategoryListTask {
         super.onStop();
     }
 
-    protected void setupTopCategories() {
+    private void setupTopCategories() {
         RecyclerView recyclerView = ViewUtils.findViewById(view, R.id.top_cat_view);
-        recyclerView.setAdapter(new TopCategoriesAdapter(this.getActivity(), getResources().getStringArray(R.array.topCategories)));
-    }
-
-    protected void setupAllCategories() {
-        show(view, R.id.all_cat_view);
-        RecyclerView recyclerView = ViewUtils.findViewById(view, R.id.all_cat_view);
-        recyclerView.setAdapter(new AllCategoriesAdapter(this.getActivity(), categoryManager.getCategoriesFromSharedPreferences()));
+        recyclerView.setAdapter(new TopCategoriesAdapter(this, getResources().getStringArray(R.array.topCategories)));
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
         recyclerView.setLayoutAnimation(AnimationUtils.loadLayoutAnimation(getContext(), R.anim.layout_anim));
     }
 
-    protected void getAllCategories() {
-        show(view, R.id.loading_cat);
+    private void setupAllCategories() {
+        show(view, R.id.all_cat_view);
+        RecyclerView recyclerView = ViewUtils.findViewById(view, R.id.all_cat_view);
+        recyclerView.setAdapter(new AllCategoriesAdapter(this, categoryManager.getCategoriesFromSharedPreferences()));
+        recyclerView.setLayoutManager(new GridAutoFitLayoutManager(getContext(), 200));
+        recyclerView.setLayoutAnimation(AnimationUtils.loadLayoutAnimation(getContext(), R.anim.layout_anim));
+    }
+
+    private void getAllCategories() {
         hide(view, R.id.all_cat_view);
-        if (Accountant.isDummy(getContext()))
-            Accountant.refreshMyToken(getContext());
         loadApps = Observable.fromCallable(() -> getResult(getContext()))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -123,7 +127,6 @@ public class CategoryListFragment extends CategoryListTask {
                             setupTopCategories();
                             setupAllCategories();
                             swipeRefreshLayout.setRefreshing(false);
-                            hide(view, R.id.loading_cat);
                         }
                     }
                 }, this::processException);

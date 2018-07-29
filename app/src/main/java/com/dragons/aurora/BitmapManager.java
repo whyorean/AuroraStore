@@ -27,6 +27,7 @@ import android.graphics.BitmapFactory;
 import android.util.Log;
 
 import com.dragons.aurora.fragment.PreferenceFragment;
+import com.percolate.caffeine.PhoneUtils;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -81,7 +82,7 @@ public class BitmapManager {
 
     public BitmapManager(Context context) {
         baseDir = context.getCacheDir();
-        noImages = PreferenceFragment.getBoolean(context, PreferenceFragment.PREFERENCE_NO_IMAGES) && NetworkState.isMetered(context);
+        noImages = PreferenceFragment.getBoolean(context, PreferenceFragment.PREFERENCE_NO_IMAGES) && PhoneUtils.isConnectedMobile(context);
     }
 
     static private boolean isStoredAndValid(File cached) {

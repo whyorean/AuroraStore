@@ -23,12 +23,14 @@ package com.dragons.aurora.fragment.details;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.AsyncTask;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.dragons.aurora.BlackWhiteListManager;
 import com.dragons.aurora.BuildConfig;
@@ -38,6 +40,7 @@ import com.dragons.aurora.R;
 import com.dragons.aurora.activities.AuroraActivity;
 import com.dragons.aurora.activities.ManualDownloadActivity;
 import com.dragons.aurora.builders.FlagDialogBuilder;
+import com.dragons.aurora.fragment.ManualFragment;
 import com.dragons.aurora.model.App;
 import com.dragons.aurora.task.CheckShellTask;
 import com.dragons.aurora.task.ConvertToNormalTask;
@@ -46,8 +49,8 @@ import com.dragons.aurora.task.SystemRemountTask;
 
 public class DownloadOptions extends Abstract {
 
-    public DownloadOptions(AuroraActivity activity, App app) {
-        super(activity, app);
+    public DownloadOptions(Context context, View view, App app) {
+        super(context, view, app);
     }
 
     @Override
@@ -55,14 +58,14 @@ public class DownloadOptions extends Abstract {
     }
 
     public void inflate(Menu menu) {
-        MenuInflater inflater = activity.getMenuInflater();
+        MenuInflater inflater = ((AuroraActivity) context).getMenuInflater();
         inflater.inflate(R.menu.menu_download, menu);
         if (!isInstalled(app)) {
             return;
         }
         menu.findItem(R.id.action_get_local_apk).setVisible(true);
         menu.findItem(R.id.action_manual).setVisible(true);
-        BlackWhiteListManager manager = new BlackWhiteListManager(activity);
+        BlackWhiteListManager manager = new BlackWhiteListManager(context);
         boolean isContained = manager.contains(app.getPackageName());
         if (manager.isBlack()) {
             menu.findItem(R.id.action_unignore).setVisible(isContained);
@@ -82,37 +85,37 @@ public class DownloadOptions extends Abstract {
         switch (item.getItemId()) {
             case R.id.action_ignore:
             case R.id.action_whitelist:
-                new BlackWhiteListManager(activity).add(app.getPackageName());
+                new BlackWhiteListManager(context).add(app.getPackageName());
                 draw();
                 return true;
             case R.id.action_unignore:
             case R.id.action_unwhitelist:
-                new BlackWhiteListManager(activity).remove(app.getPackageName());
+                new BlackWhiteListManager(context).remove(app.getPackageName());
                 draw();
                 return true;
             case R.id.action_manual:
-                ManualDownloadActivity.app = app;
-                activity.startActivity(new Intent(activity, ManualDownloadActivity.class));
+                ManualFragment.app = app;
+                context.startActivity(new Intent(context, ManualDownloadActivity.class));
                 return true;
             case R.id.action_get_local_apk:
-                new CopyTask(activity).execute(app);
+                new CopyTask((AuroraActivity) context).execute(app);
                 return true;
             case R.id.action_make_system:
-                checkAndExecute(new ConvertToSystemTask(activity, app));
+                checkAndExecute(new ConvertToSystemTask(context, app));
                 return true;
             case R.id.action_make_normal:
-                checkAndExecute(new ConvertToNormalTask(activity, app));
+                checkAndExecute(new ConvertToNormalTask(context, app));
                 return true;
             case R.id.action_flag:
-                new FlagDialogBuilder().setActivity(activity).setApp(app).build().show();
+                new FlagDialogBuilder().setActivity((AuroraActivity) context).setApp(app).build().show();
                 return true;
             default:
-                return activity.onContextItemSelected(item);
+                return ((AuroraActivity) context).onContextItemSelected(item);
         }
     }
 
     private void checkAndExecute(SystemRemountTask primaryTask) {
-        CheckShellTask checkShellTask = new CheckShellTask(activity);
+        CheckShellTask checkShellTask = new CheckShellTask(context);
         checkShellTask.setPrimaryTask(primaryTask);
         checkShellTask.execute();
     }
@@ -128,7 +131,7 @@ public class DownloadOptions extends Abstract {
 
     private boolean isInstalled(App app) {
         try {
-            activity.getPackageManager().getPackageInfo(app.getPackageName(), 0);
+            context.getPackageManager().getPackageInfo(app.getPackageName(), 0);
             return true;
         } catch (PackageManager.NameNotFoundException e) {
             return false;

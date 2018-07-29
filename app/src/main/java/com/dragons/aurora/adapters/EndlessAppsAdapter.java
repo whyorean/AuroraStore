@@ -22,45 +22,42 @@
 package com.dragons.aurora.adapters;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
 
+import com.dragons.aurora.R;
+import com.dragons.aurora.Util;
 import com.dragons.aurora.activities.AuroraActivity;
-import com.dragons.aurora.activities.DetailsActivity;
+import com.dragons.aurora.fragment.InstalledAppsFragment;
+import com.dragons.aurora.fragment.SearchAppsFragment;
+import com.dragons.aurora.fragment.TopFreeApps;
 import com.dragons.aurora.model.App;
-import com.dragons.aurora.view.SearchResultAppBadge;
 
 import java.util.List;
 
+import androidx.annotation.NonNull;
+
 public class EndlessAppsAdapter extends InstalledAppsAdapter {
 
-    private List<App> appsToAdd;
-    private InstalledAppsAdapter.ViewHolder viewHolder;
-
-    public EndlessAppsAdapter(Context context, List<App> appsToAdd) {
-        super((AuroraActivity) context, appsToAdd);
-        this.appsToAdd = appsToAdd;
+    public EndlessAppsAdapter(SearchAppsFragment fragment, List<App> appsToAdd) {
+        super(fragment, appsToAdd);
     }
 
-    @Override
-    public void setViewHolder(ViewHolder viewHolder) {
-        this.viewHolder = viewHolder;
+    public EndlessAppsAdapter(TopFreeApps fragment, List<App> appsToAdd) {
+        super(fragment, appsToAdd);
     }
+
 
     @Override
     public void onBindViewHolder(@NonNull InstalledAppsAdapter.ViewHolder holder, int position) {
-        setViewHolder(holder);
-        final App app = appsToAdd.get(position);
-        final SearchResultAppBadge searchResultAppBadge = new SearchResultAppBadge();
+        super.onBindViewHolder(holder, position);
+    }
 
-        searchResultAppBadge.setApp(app);
-        searchResultAppBadge.setView(holder.view);
-        searchResultAppBadge.draw();
-
-        viewHolder.list_container.setOnClickListener(v -> {
-            Context context = viewHolder.view.getContext();
-            context.startActivity(DetailsActivity.getDetailsIntent(context, app.getPackageName()));
-        });
-
-        setup3dotMenu(viewHolder, app, position);
+    @Override
+    public void getDetails(Context mContext, List<String> Version, List<String> Extra, App app) {
+        Version.add(mContext.getString(R.string.details_size, Util.addSiPrefix((int) app.getSize())));
+        if (!app.isEarlyAccess())
+            Version.add(mContext.getString(R.string.details_rating, (app.getRating().getAverage())) + " ★");
+        Extra.add(app.getPrice());
+        Extra.add(mContext.getString(app.containsAds() ? R.string.list_app_has_ads : R.string.list_app_no_ads));
+        Extra.add(mContext.getString(app.getDependencies().isEmpty() ? R.string.list_app_independent_from_gsf : R.string.list_app_depends_on_gsf));
     }
 }

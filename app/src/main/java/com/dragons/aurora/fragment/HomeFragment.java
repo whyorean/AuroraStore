@@ -21,11 +21,7 @@
 
 package com.dragons.aurora.fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -33,27 +29,32 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
 import com.dragons.aurora.CategoryManager;
 import com.dragons.aurora.R;
-import com.dragons.aurora.activities.AccountsActivity;
+import com.dragons.aurora.Util;
 import com.dragons.aurora.activities.CategoryAppsActivity;
 import com.dragons.aurora.helpers.Accountant;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 import com.dragons.aurora.task.CategoryTaskHelper;
 import com.dragons.aurora.task.FeaturedTaskHelper;
-import com.dragons.aurora.view.AdaptiveToolbar;
-import com.dragons.aurora.view.MoreAppsCard;
+import com.dragons.custom.MoreAppsCard;
 import com.dragons.custom.TagView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.RecyclerView;
 
 import static com.dragons.aurora.Util.isConnected;
 
 public class HomeFragment extends BaseFragment {
 
-    private AdaptiveToolbar adtb;
     private View view;
     private LinearLayout topLinks;
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -63,18 +64,14 @@ public class HomeFragment extends BaseFragment {
             return view;
         }
         view = inflater.inflate(R.layout.fragment_home, container, false);
-        adtb = view.findViewById(R.id.adtb);
-        adtb.getAvatar_icon().setOnClickListener(v -> {
-            Intent intent = new Intent(getContext(), AccountsActivity.class);
-            intent.putExtra("account_profile_animate", true);
-            startActivity(intent);
-        });
-
-        initTags();
-
-        topLinks = view.findViewById(R.id.top_links);
-
         return view;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        addTags();
+        topLinks = view.findViewById(R.id.top_links);
     }
 
     @Override
@@ -82,39 +79,15 @@ public class HomeFragment extends BaseFragment {
         super.onResume();
         if (Accountant.isLoggedIn(getContext())) {
             if (isConnected(getContext())) {
-                setUser();
                 if (topLinks.getVisibility() == View.GONE) {
                     setupTopFeatured();
                     drawCategories();
                 }
             }
-        } else {
-            resetUser();
-            Accountant.LoginFirst(getContext());
         }
     }
 
-    protected void setUser() {
-        if (Accountant.isGoogle(getContext())) {
-            Glide
-                    .with(getContext())
-                    .load(PreferenceFragment.getString(getActivity(), "GOOGLE_URL"))
-                    .apply(new RequestOptions()
-                            .placeholder(ContextCompat.getDrawable(getContext(), R.drawable.ic_user_placeholder))
-                            .circleCrop())
-                    .into(adtb.getAvatar_icon());
-        } else {
-            (adtb.getAvatar_icon()).setImageDrawable(getResources()
-                    .getDrawable(R.drawable.ic_dummy_avatar));
-        }
-    }
-
-    protected void resetUser() {
-        (adtb.getAvatar_icon()).setImageDrawable(getResources()
-                .getDrawable(R.drawable.ic_user_placeholder));
-    }
-
-    protected void initTags() {
+    private void addTags() {
         setupTag(view, R.id.tag_gamesAction, "GAME_ACTION");
         setupTag(view, R.id.tag_family, "FAMILY");
         setupTag(view, R.id.tag_gamesRacing, "GAME_RACING");
@@ -122,7 +95,7 @@ public class HomeFragment extends BaseFragment {
         setupTag(view, R.id.tag_social, "SOCIAL");
     }
 
-    protected void setupTag(View v, int viewID, String Category) {
+    private void setupTag(View v, int viewID, String Category) {
         TagView tagView = v.findViewById(viewID);
         if (tagView.getStyle() == 0)
             tagView.setMono_title(new CategoryManager(getContext()).getCategoryName(Category));
@@ -137,20 +110,18 @@ public class HomeFragment extends BaseFragment {
                 .startActivity(CategoryAppsActivity.start(v.getContext(), Category)));
     }
 
-    protected void setupTopFeatured() {
+    private void setupTopFeatured() {
         RecyclerView topGrossingGames = view.findViewById(R.id.top_featured_games);
         RecyclerView topGrossingApps = view.findViewById(R.id.top_featured_apps);
-
-        new FeaturedTaskHelper(getContext(), topGrossingGames).getCategoryApps("GAME",
-                getSubCategory());
-        new FeaturedTaskHelper(getContext(), topGrossingApps).getCategoryApps("APPLICATION",
-                getSubCategory());
+        new FeaturedTaskHelper(this, topGrossingGames).getCategoryApps("GAME",
+                Util.getSubCategory(getContext()));
+        new FeaturedTaskHelper(this, topGrossingApps).getCategoryApps("APPLICATION",
+                Util.getSubCategory(getContext()));
     }
 
-    protected void drawCategories() {
-        GooglePlayAPI.SUBCATEGORY subcategory = getSubCategory();
+    private void drawCategories() {
+        GooglePlayAPI.SUBCATEGORY subcategory = Util.getSubCategory(getContext());
         LinearLayout topLinksLayout = view.findViewById(R.id.top_links);
-        topLinksLayout.setVisibility(View.VISIBLE);
         topLinksLayout.addView(buildAppsCard("TOOLS", subcategory,
                 new CategoryManager(getContext()).getCategoryName("TOOLS")));
         topLinksLayout.addView(buildAppsCard("COMMUNICATION", subcategory,
@@ -159,37 +130,18 @@ public class HomeFragment extends BaseFragment {
                 new CategoryManager(getContext()).getCategoryName("MUSIC_AND_AUDIO")));
         topLinksLayout.addView(buildAppsCard("PERSONALIZATION", subcategory,
                 new CategoryManager(getContext()).getCategoryName("PERSONALIZATION")));
+        topLinksLayout.setVisibility(View.VISIBLE);
     }
 
     private MoreAppsCard buildAppsCard(String categoryId, GooglePlayAPI.SUBCATEGORY subcategory, String label) {
         MoreAppsCard moreAppsCard = new MoreAppsCard(getContext(), categoryId, label);
-
         RecyclerView recyclerView = moreAppsCard.findViewById(R.id.m_apps_recycler);
         RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
                 ViewGroup.LayoutParams.WRAP_CONTENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT);
         moreAppsCard.setLayoutParams(params);
         moreAppsCard.setGravity(Gravity.CENTER_VERTICAL);
-
         new CategoryTaskHelper(getActivity(), recyclerView).getCategoryApps(categoryId, subcategory);
         return moreAppsCard;
-    }
-
-    private GooglePlayAPI.SUBCATEGORY getSubCategory() {
-        GooglePlayAPI.SUBCATEGORY subcategory = null;
-        switch (PreferenceFragment.getString(getContext(), "PREFERENCE_SUBCATEGORY")) {
-            case "1":
-                subcategory = GooglePlayAPI.SUBCATEGORY.TOP_FREE;
-                break;
-            case "2":
-                subcategory = GooglePlayAPI.SUBCATEGORY.TOP_GROSSING;
-                break;
-            case "3":
-                subcategory = GooglePlayAPI.SUBCATEGORY.MOVERS_SHAKERS;
-                break;
-            default:
-                subcategory = GooglePlayAPI.SUBCATEGORY.TOP_GROSSING;
-        }
-        return subcategory;
     }
 }

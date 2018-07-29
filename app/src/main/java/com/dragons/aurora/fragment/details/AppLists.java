@@ -23,7 +23,6 @@ package com.dragons.aurora.fragment.details;
 
 import android.app.SearchManager;
 import android.content.Intent;
-import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,8 +35,10 @@ import com.dragons.aurora.activities.SearchActivity;
 import com.dragons.aurora.fragment.DetailsFragment;
 import com.dragons.aurora.model.App;
 import com.dragons.aurora.task.ClusterTaskHelper;
-import com.dragons.aurora.view.ClusterAppsCard;
+import com.dragons.custom.ClusterAppsCard;
 import com.percolate.caffeine.ViewUtils;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 public class AppLists extends AbstractHelper {
 
@@ -48,8 +49,8 @@ public class AppLists extends AbstractHelper {
     @Override
     public void draw() {
         LinearLayout relatedLinksLayout = view.findViewById(R.id.cluster_links);
+        relatedLinksLayout.setVisibility(View.VISIBLE);
         for (String label : app.getRelatedLinks().keySet()) {
-            relatedLinksLayout.setVisibility(View.VISIBLE);
             relatedLinksLayout.addView(buildClusterAppsCard(app.getRelatedLinks().get(label), label));
         }
         addAppsByThisDeveloper();
@@ -64,7 +65,7 @@ public class AppLists extends AbstractHelper {
         clusterAppsCard.setLayoutParams(params);
         clusterAppsCard.setGravity(Gravity.CENTER_VERTICAL);
 
-        new ClusterTaskHelper(fragment.getContext(), recyclerView).getClusterApps(URL);
+        new ClusterTaskHelper(fragment, recyclerView).getClusterApps(URL);
         return clusterAppsCard;
     }
 

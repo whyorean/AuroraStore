@@ -22,16 +22,14 @@
 package com.dragons.aurora.fragment;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import com.dragons.aurora.PlayStoreApiAuthenticator;
 import com.dragons.aurora.R;
-import com.dragons.aurora.activities.AuroraActivity;
-import com.dragons.aurora.activities.DetailsActivity;
 import com.dragons.aurora.fragment.details.AppLists;
 import com.dragons.aurora.fragment.details.BackToPlayStore;
 import com.dragons.aurora.fragment.details.Beta;
@@ -50,8 +48,11 @@ import com.dragons.aurora.model.App;
 import com.dragons.aurora.task.playstore.DetailsAppTaskHelper;
 import com.percolate.caffeine.ToastUtils;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
 import static com.dragons.aurora.Util.hide;
@@ -65,22 +66,16 @@ public class DetailsFragment extends DetailsAppTaskHelper {
     private View view;
     private DownloadOrInstall downloadOrInstallFragment;
     private String packageName;
-
-    public static UpdatableAppsFragment newInstance() {
-        return new UpdatableAppsFragment();
-    }
+    private Disposable disposable;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.details_activity_layout, container, false);
-        Button retry_details = view.findViewById(R.id.ohhSnap_retry);
-        retry_details.setOnClickListener(click -> {
-            if (Accountant.isLoggedIn(getContext()) && isConnected(getContext())) {
-                hide(view, R.id.ohhSnap);
-                show(view, R.id.progress);
-                fetchDetails();
-            }
-        });
+        if (view != null) {
+            if ((ViewGroup) view.getParent() != null)
+                ((ViewGroup) view.getParent()).removeView(view);
+            return view;
+        }
+        view = inflater.inflate(R.layout.fragment_details, container, false);
         return view;
     }
 
@@ -90,12 +85,27 @@ public class DetailsFragment extends DetailsAppTaskHelper {
         Bundle arguments = getArguments();
         if (arguments != null) {
             packageName = arguments.getString("PackageName");
-
             if (isConnected(getContext()) && Accountant.isLoggedIn(getContext()))
                 fetchDetails();
             else
                 ToastUtils.quickToast(getContext(), "Make sure you are Connected & Logged in");
         }
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        Button retry_details = view.findViewById(R.id.ohhSnap_retry);
+        retry_details.setOnClickListener(click -> {
+            if (Accountant.isLoggedIn(getContext()) && isConnected(getContext())) {
+                hide(view, R.id.ohhSnap);
+                show(view, R.id.progress);
+                fetchDetails();
+            }
+        });
+
+        ImageView action_back = view.findViewById(R.id.action_back);
+        action_back.setOnClickListener(c -> getActivity().onBackPressed());
     }
 
     @Override
@@ -120,8 +130,8 @@ public class DetailsFragment extends DetailsAppTaskHelper {
         super.onResume();
     }
 
-    public void fetchDetails() {
-        Observable.fromCallable(() -> getResult(new PlayStoreApiAuthenticator(this.getActivity()).getApi(), packageName))
+    private void fetchDetails() {
+        disposable = Observable.fromCallable(() -> getResult(new PlayStoreApiAuthenticator(this.getActivity()).getApi(), packageName))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(app -> {
@@ -134,7 +144,7 @@ public class DetailsFragment extends DetailsAppTaskHelper {
                 });
     }
 
-    public void redrawDetails(App app) {
+    private void redrawDetails(App app) {
         new GeneralDetails(this, app).draw();
         new ExodusPrivacy(this, app).draw();
         new Permissions(this, app).draw();
@@ -150,10 +160,9 @@ public class DetailsFragment extends DetailsAppTaskHelper {
         if (null != downloadOrInstallFragment) {
             downloadOrInstallFragment.unregisterReceivers();
         }
-
-        downloadOrInstallFragment = new DownloadOrInstall((DetailsActivity) this.getActivity(), app);
+        downloadOrInstallFragment = new DownloadOrInstall(getContext(), view, app);
         redrawButtons();
-        new DownloadOptions((AuroraActivity) this.getActivity(), app).draw();
+        new DownloadOptions(getContext(), view, app).draw();
     }
 
     private void redrawButtons() {

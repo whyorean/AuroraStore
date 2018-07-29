@@ -23,7 +23,6 @@ package com.dragons.aurora.fragment.preference;
 
 import android.Manifest;
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.preference.EditTextPreference;
 import android.preference.Preference;
@@ -54,15 +53,12 @@ public class DownloadDirectory extends Abstract {
     @Override
     public void draw() {
         preference.setSummary(Paths.getDownloadPath(activity.getActivity()).getAbsolutePath());
-        preference.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-            @Override
-            public boolean onPreferenceClick(Preference preference) {
-                AuroraPermissionManager permissionManager = new AuroraPermissionManager(activity.getActivity());
-                if (!permissionManager.checkPermission()) {
-                    permissionManager.requestPermission();
-                }
-                return true;
+        preference.setOnPreferenceClickListener(preference -> {
+            AuroraPermissionManager permissionManager = new AuroraPermissionManager(activity.getActivity());
+            if (!permissionManager.checkPermission()) {
+                permissionManager.requestPermission();
             }
+            return true;
         });
         preference.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
             @Override
@@ -106,28 +102,19 @@ public class DownloadDirectory extends Abstract {
             }
 
             private AlertDialog getFallbackDialog() {
-                return new AlertDialog.Builder(activity.getActivity())
+                return new AlertDialog.Builder(activity.getActivity(), R.style.ThemeOverlay_MaterialComponents_Dialog)
                         .setMessage(
                                 activity.getString(R.string.error_downloads_directory_not_writable)
                                         + "\n\n"
                                         + activity.getString(R.string.pref_message_fallback, Paths.FALLBACK_DIRECTORY)
                         )
-                        .setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.dismiss();
-                            }
+                        .setNegativeButton(android.R.string.cancel, (dialog, which) -> dialog.dismiss())
+                        .setPositiveButton(android.R.string.yes, (dialog, which) -> {
+                            preference.setText(Paths.FALLBACK_DIRECTORY);
+                            preference.getOnPreferenceChangeListener().onPreferenceChange(preference, Paths.FALLBACK_DIRECTORY);
+                            dialog.dismiss();
                         })
-                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                preference.setText(Paths.FALLBACK_DIRECTORY);
-                                preference.getOnPreferenceChangeListener().onPreferenceChange(preference, Paths.FALLBACK_DIRECTORY);
-                                dialog.dismiss();
-                            }
-                        })
-                        .create()
-                        ;
+                        .create();
             }
         });
     }

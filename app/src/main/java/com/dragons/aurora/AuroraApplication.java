@@ -33,6 +33,10 @@ import android.util.Log;
 
 import com.dragons.aurora.downloader.DownloadManagerInterface;
 import com.dragons.aurora.helpers.Prefs;
+import com.dragons.aurora.recievers.DetailsInstallReceiver;
+import com.dragons.aurora.recievers.GlobalDownloadReceiver;
+import com.dragons.aurora.recievers.GlobalInstallReceiver;
+import com.dragons.aurora.recievers.UpdateAllReceiver;
 
 import java.io.File;
 import java.io.IOException;

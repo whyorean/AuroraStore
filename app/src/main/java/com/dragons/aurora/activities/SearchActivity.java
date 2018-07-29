@@ -24,38 +24,19 @@ package com.dragons.aurora.activities;
 import android.app.SearchManager;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.support.annotation.NonNull;
-import android.support.design.widget.BottomSheetBehavior;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 
 import com.dragons.aurora.R;
-import com.dragons.aurora.adapters.SingleDownloadsAdapter;
-import com.dragons.aurora.adapters.SingleRatingsAdapter;
 import com.dragons.aurora.fragment.SearchAppsFragment;
-import com.github.florent37.shapeofview.shapes.RoundRectView;
 
 import java.util.regex.Pattern;
 
-public class SearchActivity extends AuroraActivity implements SingleDownloadsAdapter.SingleClickListener, SingleRatingsAdapter.SingleClickListener {
+public class SearchActivity extends AuroraActivity {
 
     public static final String PUB_PREFIX = "pub:";
 
     private String query;
-    private FloatingActionButton filter_fab;
-    private LinearLayout filter_sheet;
-
-    private BottomSheetBehavior filter_Behavior;
-    private SingleDownloadsAdapter singleDownloadAdapter;
-    private SingleRatingsAdapter singleRatingAdapter;
 
     static protected boolean actionIs(Intent intent, String action) {
         return null != intent && null != intent.getAction() && intent.getAction().equals(action);
@@ -64,53 +45,7 @@ public class SearchActivity extends AuroraActivity implements SingleDownloadsAda
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.search_activity);
-
-        filter_sheet = findViewById(R.id.filter_sheet);
-        filter_Behavior = BottomSheetBehavior.from(filter_sheet);
-        filter_Behavior.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
-            @Override
-            public void onStateChanged(@NonNull View bottomSheet, int newState) {
-                switch (newState) {
-                    case BottomSheetBehavior.STATE_HIDDEN:
-                        break;
-                    case BottomSheetBehavior.STATE_EXPANDED:
-                        filter_fab.hide();
-                        break;
-                    case BottomSheetBehavior.STATE_COLLAPSED:
-                        filter_fab.show();
-                        break;
-                    case BottomSheetBehavior.STATE_DRAGGING:
-                        break;
-                    case BottomSheetBehavior.STATE_SETTLING:
-                        break;
-                }
-            }
-
-            @Override
-            public void onSlide(@NonNull View bottomSheet, float slideOffset) {
-
-            }
-        });
-
-        filter_fab = findViewById(R.id.filter_fab);
-        filter_fab.show();
-        filter_fab.setOnClickListener(v -> toggleBottomSheet());
-
-        setupDownloadsFilter();
-        setupRatingsFilter();
-
-        Button filter_apply = findViewById(R.id.filter_apply);
-        filter_apply.setOnClickListener(click -> {
-            toggleBottomSheet();
-            new Handler(Looper.getMainLooper()).postDelayed(() -> {
-                getCategoryApps(query, getTitleString());
-            }, 500);
-        });
-
-        ImageView close_sheet = filter_sheet.findViewById(R.id.close_sheet);
-        close_sheet.setOnClickListener(v -> toggleBottomSheet());
-
+        setContentView(R.layout.activity_helper_alt);
         onNewIntent(getIntent());
     }
 
@@ -131,47 +66,6 @@ public class SearchActivity extends AuroraActivity implements SingleDownloadsAda
             this.query = newQuery;
             setTitle(getTitleString());
             getCategoryApps(query, getTitleString());
-        }
-    }
-
-    @Override
-    public void onDownloadBadgeClickListener() {
-        singleDownloadAdapter.notifyDataSetChanged();
-    }
-
-    @Override
-    public void onRatingBadgeClickListener() {
-        singleRatingAdapter.notifyDataSetChanged();
-    }
-
-
-    public void setupDownloadsFilter() {
-        RecyclerView filter_downloads = filter_sheet.findViewById(R.id.filter_downloads);
-        singleDownloadAdapter = new SingleDownloadsAdapter(this,
-                getResources().getStringArray(R.array.filterDownloadsLabels),
-                getResources().getStringArray(R.array.filterDownloadsValues));
-        singleDownloadAdapter.setOnDownloadBadgeClickListener(this);
-        filter_downloads.setItemViewCacheSize(10);
-        filter_downloads.setAdapter(singleDownloadAdapter);
-    }
-
-    public void setupRatingsFilter() {
-        RecyclerView filter_ratings = filter_sheet.findViewById(R.id.filter_ratings);
-        singleRatingAdapter = new SingleRatingsAdapter(this,
-                getResources().getStringArray(R.array.filterRatingLabels),
-                getResources().getStringArray(R.array.filterRatingValues));
-        singleRatingAdapter.setOnRatingBadgeClickListener(this);
-        filter_ratings.setItemViewCacheSize(10);
-        filter_ratings.setAdapter(singleRatingAdapter);
-    }
-
-    public void toggleBottomSheet() {
-        if (filter_Behavior.getState() != BottomSheetBehavior.STATE_EXPANDED) {
-            filter_Behavior.setState(BottomSheetBehavior.STATE_EXPANDED);
-            filter_fab.hide();
-        } else {
-            filter_Behavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
-            filter_fab.show();
         }
     }
 
@@ -214,7 +108,9 @@ public class SearchActivity extends AuroraActivity implements SingleDownloadsAda
         arguments.putString("SearchQuery", query);
         arguments.putString("SearchTitle", title);
         searchAppsFragment.setArguments(arguments);
-        getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, searchAppsFragment).commit();
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.container, searchAppsFragment).commit();
     }
 
 }

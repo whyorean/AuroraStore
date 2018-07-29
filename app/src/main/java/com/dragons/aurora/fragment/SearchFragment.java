@@ -23,58 +23,58 @@ package com.dragons.aurora.fragment;
 
 import android.app.SearchManager;
 import android.content.Context;
-import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.CardView;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.SearchView;
-import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.dragons.aurora.HistoryItemTouchHelper;
 import com.dragons.aurora.PlayStoreApiAuthenticator;
 import com.dragons.aurora.R;
-import com.dragons.aurora.Util;
-import com.dragons.aurora.activities.SearchActivity;
+import com.dragons.aurora.activities.DetailsActivity;
 import com.dragons.aurora.adapters.SearchHistoryAdapter;
 import com.dragons.aurora.helpers.Prefs;
 import com.dragons.aurora.task.playstore.SearchHistoryTask;
-import com.dragons.aurora.view.ClusterAppsCard;
+import com.dragons.custom.ClusterAppsCard;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.SearchView;
+import androidx.cardview.widget.CardView;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.ItemTouchHelper;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
-public class SearchFragment extends SearchHistoryTask implements HistoryItemTouchHelper.RecyclerItemTouchHelperListener {
-    @BindView(R.id.searchClusterApp)
-    ClusterAppsCard clusterAppsCard;
-    @BindView(R.id.m_apps_recycler)
-    RecyclerView clusterRecycler;
-    @BindView(R.id.searchHistory)
-    RecyclerView recyclerView;
-    @BindView(R.id.search_layout)
-    CardView search_layout;
-    @BindView(R.id.emptyView)
-    TextView emptyView;
-    @BindView(R.id.clearAll)
-    TextView clearAll;
+import static com.dragons.aurora.activities.SearchActivity.PUB_PREFIX;
 
+public class SearchFragment extends SearchHistoryTask implements HistoryItemTouchHelper.RecyclerItemTouchHelperListener {
+    private SearchView searchToolbar;
+    private ClusterAppsCard clusterAppsCard;
+    private RecyclerView clusterRecycler;
+    private RecyclerView recyclerView;
+    private CardView search_layout;
+    private TextView emptyView;
+    private Button clearAll;
     private View view;
     private ArrayList<String> currList;
     private SearchHistoryAdapter searchHistoryAdapter;
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -83,11 +83,8 @@ public class SearchFragment extends SearchHistoryTask implements HistoryItemTouc
                 ((ViewGroup) view.getParent()).removeView(view);
             return view;
         }
-
         view = inflater.inflate(R.layout.fragment_search, container, false);
-        SearchView searchToolbar = view.findViewById(R.id.search_apps);
-        ButterKnife.bind(this, view);
-
+        init();
         clearAll.setOnClickListener(v -> clearAll());
         search_layout.setOnClickListener(v -> {
             searchToolbar.setFocusable(true);
@@ -95,11 +92,25 @@ public class SearchFragment extends SearchHistoryTask implements HistoryItemTouc
             searchToolbar.requestFocusFromTouch();
             searchToolbar.setQuery("", false);
         });
+        return view;
+    }
 
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
         addQueryTextListener(searchToolbar);
         setupSearchHistory();
         getHistoryApps(getRecentAppsList());
-        return view;
+    }
+
+    private void init() {
+        searchToolbar = view.findViewById(R.id.search_apps);
+        clusterAppsCard = view.findViewById(R.id.searchClusterApp);
+        clusterRecycler = view.findViewById(R.id.m_apps_recycler);
+        recyclerView = view.findViewById(R.id.searchHistory);
+        search_layout = view.findViewById(R.id.search_layout);
+        emptyView = view.findViewById(R.id.emptyView);
+        clearAll = view.findViewById(R.id.clearAll);
     }
 
     @Override
@@ -117,8 +128,8 @@ public class SearchFragment extends SearchHistoryTask implements HistoryItemTouc
         }
     }
 
-    protected void addQueryTextListener(SearchView searchView) {
-        SearchManager searchManager = (SearchManager) getActivity().getSystemService(Context.SEARCH_SERVICE);
+    private void addQueryTextListener(SearchView searchView) {
+        SearchManager searchManager = (SearchManager) getContext().getSystemService(Context.SEARCH_SERVICE);
         if (null != searchManager) {
             searchView.setSearchableInfo(searchManager.getSearchableInfo(getActivity().getComponentName()));
         }
@@ -156,21 +167,19 @@ public class SearchFragment extends SearchHistoryTask implements HistoryItemTouc
     }
 
     private void setQuery(String query) {
-        if (looksLikeAPackageId(query))
+        if (looksLikeAPackageId(query)) {
             addRecentApps(query);
-        else
+            getContext().startActivity(DetailsActivity.getDetailsIntent(getContext(), query));
+        } else {
             addHistory(query);
-
-        Intent i = new Intent(getContext(), SearchActivity.class);
-        i.setAction(Intent.ACTION_SEARCH);
-        i.putExtra(SearchManager.QUERY, query);
-        startActivity(i);
+            getCategoryApps(query);
+        }
     }
 
     private void setupSearchHistory() {
         currList = getHistoryList();
         toggleEmptyRecycle(currList);
-        searchHistoryAdapter = new SearchHistoryAdapter(currList, getContext());
+        searchHistoryAdapter = new SearchHistoryAdapter(this, currList);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setNestedScrollingEnabled(false);
@@ -220,7 +229,7 @@ public class SearchFragment extends SearchHistoryTask implements HistoryItemTouc
         }
     }
 
-    public void getHistoryApps(ArrayList<String> appList) {
+    private void getHistoryApps(ArrayList<String> appList) {
         if (!appList.isEmpty()) {
             TextView clusterTitle = clusterAppsCard.findViewById(R.id.m_apps_title);
             clusterTitle.setText(R.string.action_search_history_apps);
@@ -244,4 +253,26 @@ public class SearchFragment extends SearchHistoryTask implements HistoryItemTouc
             updateHistoryPref();
         }
     }
+
+    private void getCategoryApps(String query) {
+        SearchAppsFragment searchAppsFragment = new SearchAppsFragment();
+        Bundle arguments = new Bundle();
+        arguments.putString("SearchQuery", query);
+        arguments.putString("SearchTitle", getTitleString(query));
+        searchAppsFragment.setArguments(arguments);
+        getChildFragmentManager()
+                .beginTransaction()
+                .replace(R.id.container, searchAppsFragment)
+                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                .addToBackStack(null)
+                .commit();
+    }
+
+    private String getTitleString(String query) {
+        return query.startsWith(PUB_PREFIX)
+                ? getString(R.string.apps_by, query.substring(PUB_PREFIX.length()))
+                : getString(R.string.activity_title_search, query)
+                ;
+    }
+
 }

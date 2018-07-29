@@ -24,8 +24,6 @@ package com.dragons.aurora.fragment;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,6 +41,9 @@ import com.dragons.aurora.helpers.Accountant;
 import com.dragons.aurora.task.UserProvidedCredentialsTask;
 import com.github.florent37.shapeofview.shapes.CircleView;
 import com.percolate.caffeine.ViewUtils;
+
+import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 
 import static com.dragons.aurora.Util.hide;
 import static com.dragons.aurora.Util.isConnected;
@@ -69,7 +70,7 @@ public class AccountsFragment extends BaseFragment {
             return view;
         }
 
-        view = inflater.inflate(R.layout.app_acc_inc, container, false);
+        view = inflater.inflate(R.layout.fragment_accounts, container, false);
 
         ImageView toolbar_back = view.findViewById(R.id.toolbar_back);
         toolbar_back.setOnClickListener(click -> getActivity().onBackPressed());
@@ -196,7 +197,7 @@ public class AccountsFragment extends BaseFragment {
     }
 
     private void showLogOutDialog() {
-        new AlertDialog.Builder(getActivity())
+        new AlertDialog.Builder(getActivity(), R.style.ThemeOverlay_MaterialComponents_Dialog)
                 .setMessage(R.string.dialog_message_logout)
                 .setTitle(R.string.dialog_title_logout)
                 .setPositiveButton(android.R.string.yes, (dialogInterface, i) -> {

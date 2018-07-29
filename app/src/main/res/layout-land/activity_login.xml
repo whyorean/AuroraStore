@@ -94,7 +94,7 @@
         </RelativeLayout>
     </FrameLayout>
 
-    <android.support.v4.widget.NestedScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="2"
@@ -106,13 +106,13 @@
             android:layout_marginTop="10dp"
             android:paddingBottom="10dp">
 
-            <android.support.v7.widget.CardView
+            <androidx.cardview.widget.CardView
                 android:id="@+id/google_card"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 app:cardBackgroundColor="?android:attr/panelBackground"
-                app:cardCornerRadius="10dp"
+                app:cardCornerRadius="5dp"
                 app:cardElevation="1dp"
                 app:cardPreventCornerOverlap="false"
                 app:cardUseCompatPadding="true">
@@ -133,8 +133,8 @@
                         android:id="@+id/textView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignBottom="@+id/imageView4"
                         android:layout_alignTop="@+id/imageView4"
+                        android:layout_alignBottom="@+id/imageView4"
                         android:layout_marginStart="10dp"
                         android:layout_toEndOf="@+id/imageView4"
                         android:ellipsize="end"
@@ -145,7 +145,7 @@
                         android:textColor="?android:attr/textColorPrimary"
                         android:textSize="18sp" />
 
-                    <android.support.v7.widget.AppCompatAutoCompleteTextView
+                    <androidx.appcompat.widget.AppCompatAutoCompleteTextView
                         android:id="@+id/emailg"
                         android:layout_width="match_parent"
                         android:layout_height="36dp"
@@ -157,8 +157,8 @@
                         android:completionThreshold="1"
                         android:hint="@string/credentials_hint_email"
                         android:inputType="textEmailAddress"
-                        android:paddingEnd="10dp"
                         android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
                         android:textAlignment="viewStart" />
 
                     <RelativeLayout
@@ -177,8 +177,8 @@
                             android:fontFamily="normal"
                             android:hint="@string/credentials_hint_password"
                             android:inputType="textPassword"
-                            android:paddingEnd="10dp"
                             android:paddingStart="10dp"
+                            android:paddingEnd="10dp"
                             android:textAlignment="viewStart" />
 
                         <ImageView
@@ -217,19 +217,16 @@
 
                         <Button
                             android:id="@+id/button_okg"
-                            style="@style/Widget.AppCompat.Button.Borderless"
+                            style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
                             android:layout_width="wrap_content"
-                            android:layout_height="32dp"
+                            android:layout_height="wrap_content"
                             android:layout_marginEnd="10dp"
-                            android:background="@drawable/button_positive"
-                            android:text="@string/action_login"
-                            android:textColor="@color/white"
-                            android:textSize="12sp" />
+                            android:text="@string/action_login" />
                     </LinearLayout>
 
                 </RelativeLayout>
 
-            </android.support.v7.widget.CardView>
+            </androidx.cardview.widget.CardView>
 
             <TextView
                 android:id="@+id/or_txt"
@@ -241,13 +238,13 @@
                 android:text="@string/action_or"
                 android:textSize="16sp" />
 
-            <android.support.v7.widget.CardView
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/or_txt"
                 android:layout_margin="10dp"
                 app:cardBackgroundColor="?android:attr/panelBackground"
-                app:cardCornerRadius="10dp"
+                app:cardCornerRadius="5dp"
                 app:cardElevation="1dp"
                 app:cardPreventCornerOverlap="false"
                 app:cardUseCompatPadding="true">
@@ -268,8 +265,8 @@
                         android:id="@+id/textView4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignBottom="@+id/anonymous_holder"
                         android:layout_alignTop="@+id/anonymous_holder"
+                        android:layout_alignBottom="@+id/anonymous_holder"
                         android:layout_marginStart="10dp"
                         android:layout_toEndOf="@+id/anonymous_holder"
                         android:ellipsize="end"
@@ -285,8 +282,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/anonymous_holder"
-                        android:layout_marginEnd="10dp"
                         android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
                         android:ellipsize="none"
                         android:padding="5dp"
                         android:text="@string/acc_dummy_summary"
@@ -295,23 +292,20 @@
 
                     <Button
                         android:id="@+id/btn_ok_anm"
-                        style="@style/Widget.AppCompat.Button.Borderless"
+                        style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
                         android:layout_width="wrap_content"
-                        android:layout_height="32dp"
-                        android:layout_alignParentEnd="true"
+                        android:layout_height="wrap_content"
                         android:layout_below="@+id/textView5"
-                        android:layout_marginBottom="5dp"
-                        android:layout_marginEnd="10dp"
+                        android:layout_alignParentEnd="true"
                         android:layout_marginTop="5dp"
-                        android:background="@drawable/button_positive"
-                        android:text="@string/action_ok"
-                        android:textColor="@color/white"
-                        android:textSize="12sp" />
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="5dp"
+                        android:text="@string/action_ok" />
                 </RelativeLayout>
 
-            </android.support.v7.widget.CardView>
+            </androidx.cardview.widget.CardView>
         </RelativeLayout>
 
-    </android.support.v4.widget.NestedScrollView>
+    </androidx.core.widget.NestedScrollView>
 
 </LinearLayout>

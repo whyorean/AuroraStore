@@ -21,25 +21,25 @@
 
 package com.dragons.aurora.fragment.details;
 
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.view.View;
 
 import com.dragons.aurora.R;
-import com.dragons.aurora.activities.AuroraActivity;
 import com.dragons.aurora.model.App;
 import com.dragons.aurora.task.CheckShellTask;
 import com.dragons.aurora.task.UninstallSystemAppTask;
 
 public class ButtonUninstall extends Button {
 
-    public ButtonUninstall(AuroraActivity activity, App app) {
-        super(activity, app);
+    public ButtonUninstall(Context context, View view, App app) {
+        super(context, view, app);
     }
 
     @Override
     protected View getButton() {
-        return activity.findViewById(R.id.uninstall);
+        return view.findViewById(R.id.uninstall);
     }
 
     @Override
@@ -56,9 +56,9 @@ public class ButtonUninstall extends Button {
         if (isSystemAndReadyForPermanentUninstall()) {
             askAndUninstall();
         } else {
-            activity.startActivity(new Intent(Intent.ACTION_DELETE, Uri.parse("package:" + app.getPackageName())));
+            context.startActivity(new Intent(Intent.ACTION_DELETE, Uri.parse("package:" + app.getPackageName())));
         }
-        View buttonRun = activity.findViewById(R.id.run);
+        View buttonRun = view.findViewById(R.id.run);
         if (buttonRun != null)
             buttonRun.setVisibility(View.GONE);
     }
@@ -72,8 +72,8 @@ public class ButtonUninstall extends Button {
     }
 
     private void askAndUninstall() {
-        CheckShellTask checkShellTask = new CheckShellTask(activity);
-        checkShellTask.setPrimaryTask(new UninstallSystemAppTask(activity, app));
+        CheckShellTask checkShellTask = new CheckShellTask(context);
+        checkShellTask.setPrimaryTask(new UninstallSystemAppTask(context, app));
         checkShellTask.execute();
     }
 }

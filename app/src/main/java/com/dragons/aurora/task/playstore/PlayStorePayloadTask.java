@@ -21,6 +21,8 @@
 
 package com.dragons.aurora.task.playstore;
 
+import android.content.Context;
+
 import com.dragons.aurora.PlayStoreApiAuthenticator;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 import com.dragons.aurora.playstoreapiv2.IteratorGooglePlayException;
@@ -30,6 +32,11 @@ import java.io.IOException;
 abstract public class PlayStorePayloadTask<T> extends PlayStoreTask<T> {
 
     abstract protected T getResult(GooglePlayAPI api, String... arguments) throws IOException;
+
+    @Override
+    public void setContext(Context context) {
+        super.setContext(context);
+    }
 
     @Override
     protected T doInBackground(String... arguments) {

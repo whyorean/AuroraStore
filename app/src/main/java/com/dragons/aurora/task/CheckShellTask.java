@@ -141,29 +141,21 @@ public class CheckShellTask extends TaskWithProgress<Boolean> {
     }
 
     private void askAndExecute(SystemRemountTask task) {
-        new SystemRemountDialogBuilder(context)
+        new SystemRemountDialogBuilder(context, R.style.ThemeOverlay_MaterialComponents_Dialog)
                 .setPrimaryTask(task)
                 .show()
         ;
     }
 
     private void showBusyboxDialog() {
-        new AlertDialog.Builder(context)
+        new AlertDialog.Builder(context, R.style.ThemeOverlay_MaterialComponents_Dialog)
                 .setMessage(R.string.dialog_message_busybox_not_available)
                 .setTitle(R.string.dialog_title_busybox_not_available)
-                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        context.startActivity(getBusyboxSearchIntent());
-                        dialog.dismiss();
-                    }
+                .setPositiveButton(android.R.string.yes, (dialog, which) -> {
+                    context.startActivity(getBusyboxSearchIntent());
+                    dialog.dismiss();
                 })
-                .setNegativeButton(R.string.dialog_two_factor_cancel, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                })
+                .setNegativeButton(R.string.dialog_two_factor_cancel, (dialog, which) -> dialog.dismiss())
                 .show()
         ;
     }

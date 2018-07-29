@@ -19,31 +19,25 @@
   ~ along with Aurora Store.  If not, see <http://www.gnu.org/licenses/>.
   -->
 
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/action_home"
         android:icon="@drawable/ic_home"
-        android:title="@string/action_home"
-        app:showAsAction="ifRoom|always" />
+        android:title="@string/action_home" />
     <item
         android:id="@+id/action_myapps"
         android:icon="@drawable/ic_apps"
-        android:title="@string/action_myApps"
-        app:showAsAction="ifRoom|always" />
+        android:title="@string/action_myApps" />
     <item
         android:id="@+id/action_updates"
         android:icon="@drawable/ic_update"
-        android:title="@string/action_updates"
-        app:showAsAction="ifRoom|always" />
+        android:title="@string/action_updates" />
     <item
         android:id="@+id/action_categories"
         android:icon="@drawable/ic_categories"
-        android:title="@string/action_categories"
-        app:showAsAction="ifRoom|always" />
+        android:title="@string/action_categories" />
     <item
         android:id="@+id/action_search"
         android:icon="@drawable/ic_search"
-        android:title="@string/search_title"
-        app:showAsAction="ifRoom|always" />
+        android:title="@string/search_title" />
 </menu>

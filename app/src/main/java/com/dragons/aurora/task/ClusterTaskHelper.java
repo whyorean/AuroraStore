@@ -22,8 +22,6 @@
 package com.dragons.aurora.task;
 
 import android.content.Context;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.animation.AnimationUtils;
 
@@ -31,6 +29,7 @@ import com.dragons.aurora.AppListIteratorHelper;
 import com.dragons.aurora.PlayStoreApiAuthenticator;
 import com.dragons.aurora.R;
 import com.dragons.aurora.adapters.RecyclerAppsAdapter;
+import com.dragons.aurora.fragment.DetailsFragment;
 import com.dragons.aurora.fragment.PreferenceFragment;
 import com.dragons.aurora.model.App;
 import com.dragons.aurora.playstoreapiv2.GooglePlayException;
@@ -41,6 +40,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
@@ -50,12 +51,14 @@ import static com.dragons.aurora.task.playstore.PlayStoreTask.noNetwork;
 
 public class ClusterTaskHelper {
 
+    private DetailsFragment fragment;
     private Context context;
     private RecyclerView recyclerView;
     private Disposable disposable;
 
-    public ClusterTaskHelper(Context context, RecyclerView recyclerView) {
-        this.context = context;
+    public ClusterTaskHelper(DetailsFragment fragment, RecyclerView recyclerView) {
+        this.fragment = fragment;
+        this.context = fragment.getContext();
         this.recyclerView = recyclerView;
     }
 
@@ -66,7 +69,7 @@ public class ClusterTaskHelper {
                 .subscribe((appList) -> {
                     if (!appList.isEmpty())
                         setupListView(recyclerView, appList);
-                });
+                }, err -> Log.e(getClass().getSimpleName(), err.getMessage()));
     }
 
     private List<App> getApps(String clusterUrl) throws IOException {
@@ -112,6 +115,6 @@ public class ClusterTaskHelper {
         recyclerView.setItemViewCacheSize(20);
         recyclerView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
         recyclerView.setLayoutAnimation(AnimationUtils.loadLayoutAnimation(context, R.anim.layout_anim));
-        recyclerView.setAdapter(new RecyclerAppsAdapter(context, appsToAdd));
+        recyclerView.setAdapter(new RecyclerAppsAdapter(fragment, appsToAdd));
     }
 }

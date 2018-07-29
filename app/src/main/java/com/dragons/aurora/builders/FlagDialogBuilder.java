@@ -68,7 +68,7 @@ public class FlagDialogBuilder {
     }
 
     public AlertDialog build() {
-        return new AlertDialog.Builder(activity)
+        return new AlertDialog.Builder(activity, R.style.ThemeOverlay_MaterialComponents_Dialog)
                 .setTitle(R.string.flag_page_description)
                 .setNegativeButton(
                         android.R.string.cancel,
@@ -114,7 +114,7 @@ public class FlagDialogBuilder {
 
         public AlertDialog build() {
             final EditText editText = new EditText(context);
-            return new AlertDialog.Builder(context)
+            return new AlertDialog.Builder(context, R.style.ThemeOverlay_MaterialComponents_Dialog)
                     .setTitle(reason == GooglePlayAPI.ABUSE.HARMFUL_TO_DEVICE_OR_DATA
                             ? R.string.flag_harmful_prompt
                             : R.string.flag_other_concern_prompt

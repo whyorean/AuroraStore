@@ -22,24 +22,29 @@
 package com.dragons.aurora.task;
 
 import android.content.Context;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.animation.AnimationUtils;
 
 import com.dragons.aurora.R;
 import com.dragons.aurora.adapters.FeaturedAppsAdapter;
+import com.dragons.aurora.fragment.HomeFragment;
 import com.dragons.aurora.model.App;
 
 import java.util.List;
 
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 public class FeaturedTaskHelper extends CategoryTaskHelper {
 
+    private Fragment fragment;
     private Context context;
     private RecyclerView recyclerView;
 
-    public FeaturedTaskHelper(Context context, RecyclerView recyclerView) {
-        super(context, recyclerView);
-        this.context = context;
+    public FeaturedTaskHelper(HomeFragment fragment, RecyclerView recyclerView) {
+        super(fragment.getContext(), recyclerView);
+        this.fragment = fragment;
+        this.context = fragment.getContext();
         this.recyclerView = recyclerView;
     }
 
@@ -48,6 +53,6 @@ public class FeaturedTaskHelper extends CategoryTaskHelper {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
         recyclerView.setLayoutAnimation(AnimationUtils.loadLayoutAnimation(context, R.anim.layout_anim));
-        recyclerView.setAdapter(new FeaturedAppsAdapter(context, appsToAdd));
+        recyclerView.setAdapter(new FeaturedAppsAdapter(fragment, appsToAdd));
     }
 }

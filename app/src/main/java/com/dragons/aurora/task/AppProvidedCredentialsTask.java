@@ -28,13 +28,11 @@ import android.util.Log;
 import com.dragons.aurora.PlayStoreApiAuthenticator;
 import com.dragons.aurora.R;
 import com.dragons.aurora.activities.AccountsActivity;
-import com.dragons.aurora.activities.AuroraActivity;
-import com.dragons.aurora.activities.DetailsActivity;
-import com.dragons.aurora.fragment.DetailsFragment;
-import com.dragons.aurora.fragment.InstalledAppsFragment;
-import com.dragons.aurora.fragment.UpdatableAppsFragment;
+import com.dragons.aurora.helpers.Prefs;
 
 import java.io.IOException;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class AppProvidedCredentialsTask extends CheckCredentialsTask {
 
@@ -55,9 +53,21 @@ public class AppProvidedCredentialsTask extends CheckCredentialsTask {
     }
 
     public void refreshToken() {
-        RefreshTokenTask task = new RefreshTokenTask(context);
-        task.setContext(context);
-        task.execute();
+        if (!Prefs.getBoolean(context, "REFRESH_ASKED")) {
+            RefreshTokenTask task = new RefreshTokenTask(context);
+            task.setContext(context);
+            task.execute();
+            //If not refresh in 8 Secs
+            new Timer().scheduleAtFixedRate(new TimerTask() {
+                @Override
+                public void run() {
+                    Prefs.putBoolean(context, "REFRESH_ASKED", false);
+                    cancel();
+                }
+            }, 8000, 1000);
+
+        } else
+            Log.i(getClass().getSimpleName(), "New token pending");
     }
 
     @Override
@@ -85,18 +95,20 @@ public class AppProvidedCredentialsTask extends CheckCredentialsTask {
         }
 
         @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            Prefs.putBoolean(context, "REFRESH_ASKED", true);
+        }
+
+        @Override
         protected void onPostExecute(Void result) {
             super.onPostExecute(result);
-
             if (success()) {
+                Prefs.putBoolean(context, "REFRESH_ASKED", false);
+
                 if (context instanceof AccountsActivity)
                     ((AccountsActivity) context).notifyTokenRefreshed();
-                else if (context instanceof DetailsActivity)
-                    DetailsFragment.newInstance();
-                else if (context instanceof AuroraActivity) {
-                    UpdatableAppsFragment.newInstance();
-                    InstalledAppsFragment.newInstance();
-                } else
+                else
                     Log.i(getClass().getSimpleName(), "Token Refreshed");
             }
         }

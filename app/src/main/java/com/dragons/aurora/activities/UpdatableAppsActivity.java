@@ -25,22 +25,16 @@ import android.os.Bundle;
 
 import com.dragons.aurora.R;
 import com.dragons.aurora.fragment.UpdatableAppsFragment;
-import com.dragons.aurora.view.AdaptiveToolbar;
 
 public class UpdatableAppsActivity extends AuroraActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        setContentView(R.layout.helper_activity);
-
-        AdaptiveToolbar dadtb = findViewById(R.id.d_adtb);
-        dadtb.getAction_icon().setOnClickListener((v -> this.onBackPressed()));
-
+        setContentView(R.layout.activity_helper_alt);
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.content_frame, new UpdatableAppsFragment())
+                .replace(R.id.container, new UpdatableAppsFragment())
                 .commit();
     }
 
@@ -48,12 +42,6 @@ public class UpdatableAppsActivity extends AuroraActivity {
     public void onBackPressed() {
         super.onBackPressed();
         finish();
-    }
-
-    @Override
-    public boolean onSupportNavigateUp() {
-        onBackPressed();
-        return true;
     }
 }
 

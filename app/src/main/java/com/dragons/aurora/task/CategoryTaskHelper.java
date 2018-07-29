@@ -22,8 +22,6 @@
 package com.dragons.aurora.task;
 
 import android.content.Context;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.animation.AnimationUtils;
 
@@ -34,16 +32,19 @@ import com.dragons.aurora.PlayStoreApiAuthenticator;
 import com.dragons.aurora.R;
 import com.dragons.aurora.adapters.RecyclerAppsAdapter;
 import com.dragons.aurora.fragment.PreferenceFragment;
+import com.dragons.aurora.helpers.Accountant;
 import com.dragons.aurora.model.App;
+import com.dragons.aurora.playstoreapiv2.AuthException;
 import com.dragons.aurora.playstoreapiv2.CategoryAppsIterator;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 import com.dragons.aurora.playstoreapiv2.GooglePlayException;
-import com.dragons.aurora.playstoreapiv2.IteratorGooglePlayException;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
@@ -69,6 +70,10 @@ public class CategoryTaskHelper {
                 .subscribe((appList) -> {
                     if (!appList.isEmpty())
                         setupListView(recyclerView, appList);
+                }, err -> {
+                    if (err instanceof AuthException)
+                        processAuthException((AuthException) err);
+                    Log.e(getClass().getSimpleName(), err.getMessage());
                 });
     }
 
@@ -94,7 +99,7 @@ public class CategoryTaskHelper {
         while (iterator != null && iterator.hasNext() && apps.isEmpty()) {
             try {
                 apps.addAll(iterator.next());
-            } catch (IteratorGooglePlayException e) {
+            } catch (Exception e) {
                 if (null == e.getCause()) {
                     continue;
                 }
@@ -102,13 +107,13 @@ public class CategoryTaskHelper {
                     throw (IOException) e.getCause();
                 } else if (e.getCause() instanceof GooglePlayException
                         && ((GooglePlayException) e.getCause()).getCode() == 401
-                        && PreferenceFragment.getBoolean(context, PlayStoreApiAuthenticator.PREFERENCE_APP_PROVIDED_EMAIL)
-                        ) {
+                        && Accountant.isDummy(context)) {
                     PlayStoreApiAuthenticator authenticator = new PlayStoreApiAuthenticator(context);
                     authenticator.refreshToken();
                     iterator.setGooglePlayApi(authenticator.getApi());
                     apps.addAll(iterator.next());
                 }
+                Log.i(getClass().getSimpleName(), e.getMessage());
             }
         }
         return apps;
@@ -120,5 +125,19 @@ public class CategoryTaskHelper {
         recyclerView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
         recyclerView.setLayoutAnimation(AnimationUtils.loadLayoutAnimation(context, R.anim.layout_anim));
         recyclerView.setAdapter(new RecyclerAppsAdapter(context, appsToAdd));
+    }
+
+    protected void processAuthException(AuthException e) {
+        if (e instanceof CredentialsEmptyException) {
+            Log.i(getClass().getSimpleName(), "Credentials empty");
+            //TODO:Let user decide between dummy or google account
+            Accountant.loginWithDummy(context);
+        } else if (e.getCode() == 401 && PreferenceFragment.getBoolean(context, PlayStoreApiAuthenticator.PREFERENCE_APP_PROVIDED_EMAIL)) {
+            Log.i(getClass().getSimpleName(), "Token is stale");
+            new AppProvidedCredentialsTask(context).refreshToken();
+        } else {
+            ContextUtil.toast(context, R.string.error_incorrect_password);
+            new PlayStoreApiAuthenticator(context).logout();
+        }
     }
 }

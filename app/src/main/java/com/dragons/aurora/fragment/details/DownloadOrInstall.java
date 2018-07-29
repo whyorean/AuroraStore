@@ -21,47 +21,58 @@
 
 package com.dragons.aurora.fragment.details;
 
-import com.dragons.aurora.DetailsDownloadReceiver;
-import com.dragons.aurora.DetailsInstallReceiver;
+import android.content.Context;
+import android.view.View;
+
 import com.dragons.aurora.activities.DetailsActivity;
+import com.dragons.aurora.activities.ManualDownloadActivity;
 import com.dragons.aurora.model.App;
+import com.dragons.aurora.recievers.DetailsDownloadReceiver;
+import com.dragons.aurora.recievers.DetailsInstallReceiver;
 
 public class DownloadOrInstall extends Abstract {
 
     private DetailsDownloadReceiver downloadReceiver;
     private DetailsInstallReceiver installReceiver;
 
-    public DownloadOrInstall(DetailsActivity activity, App app) {
-        super(activity, app);
+    public DownloadOrInstall(Context context, View view, App app) {
+        super(context, view, app);
     }
 
     @Override
     public void draw() {
-        new ButtonUninstall(activity, app).draw();
-        new ButtonDownload(activity, app).draw();
-        new ButtonCancel(activity, app).draw();
-        new ButtonInstall(activity, app).draw();
-        new ButtonRun(activity, app).draw();
-        new ButtonRedirect(activity, app).draw();
+        new ButtonUninstall(context, view, app).draw();
+        new ButtonCancel(context, view, app).draw();
+        new ButtonDownload(context, view, app).draw();
+        new ButtonInstall(context, view, app).draw();
+        new ButtonRun(context, view, app).draw();
+        new ButtonRedirect(context, view, app).draw();
     }
 
     public void download() {
-        new ButtonDownload(activity, app).download();
+        new ButtonDownload(context, view, app).download();
     }
 
     public void unregisterReceivers() {
-        activity.unregisterReceiver(downloadReceiver);
+        context.unregisterReceiver(downloadReceiver);
         downloadReceiver = null;
-        activity.unregisterReceiver(installReceiver);
+        context.unregisterReceiver(installReceiver);
         installReceiver = null;
     }
 
     public void registerReceivers() {
         if (null == downloadReceiver) {
-            downloadReceiver = new DetailsDownloadReceiver((DetailsActivity) activity, app.getPackageName());
+            if (context instanceof ManualDownloadActivity)
+                downloadReceiver = new DetailsDownloadReceiver((ManualDownloadActivity) context, app.getPackageName());
+            else
+                downloadReceiver = new DetailsDownloadReceiver((DetailsActivity) context, app.getPackageName());
         }
         if (null == installReceiver) {
-            installReceiver = new DetailsInstallReceiver((DetailsActivity) activity, app.getPackageName());
+            if (context instanceof ManualDownloadActivity)
+
+                installReceiver = new DetailsInstallReceiver((ManualDownloadActivity) context, app.getPackageName());
+            else
+                installReceiver = new DetailsInstallReceiver((DetailsActivity) context, app.getPackageName());
         }
     }
 }

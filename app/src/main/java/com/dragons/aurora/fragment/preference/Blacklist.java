@@ -61,7 +61,6 @@ public class Blacklist extends Abstract {
     public void draw() {
         AppListTask task = new AppListTask(appList);
         task.execute();
-
         Preference.OnPreferenceChangeListener listener = new BlackListOnPreferenceChangeListener(appList, autoWhitelist);
         blackOrWhite.setOnPreferenceChangeListener(listener);
         listener.onPreferenceChange(blackOrWhite, blackOrWhite.getValue());

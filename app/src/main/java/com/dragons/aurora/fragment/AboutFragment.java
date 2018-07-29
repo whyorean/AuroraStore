@@ -24,7 +24,6 @@ package com.dragons.aurora.fragment;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,7 +32,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.dragons.aurora.R;
-import com.dragons.aurora.view.LinkCard;
+import com.dragons.custom.LinkCard;
+
+import androidx.annotation.NonNull;
 
 public class AboutFragment extends BaseFragment {
 
@@ -58,7 +59,7 @@ public class AboutFragment extends BaseFragment {
                 ((ViewGroup) view.getParent()).removeView(view);
             return view;
         }
-        view = inflater.inflate(R.layout.app_abt_inc, container, false);
+        view = inflater.inflate(R.layout.fragment_about, container, false);
 
         ((TextView) view.findViewById(R.id.aurora_title)).setText(R.string.action_about);
         ((ImageView) view.findViewById(R.id.toolbar_back)).setOnClickListener(click -> getActivity().onBackPressed());
@@ -77,7 +78,7 @@ public class AboutFragment extends BaseFragment {
         }
     }
 
-    public void drawLinks() {
+    private void drawLinks() {
         LinearLayout linkContainer = view.findViewById(R.id.linkContainer);
         String[] linkURLS = getResources().getStringArray(R.array.linkURLS);
         String[] linkTitles = getResources().getStringArray(R.array.linkTitles);

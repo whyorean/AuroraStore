@@ -31,19 +31,19 @@ import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.SystemClock;
-import android.support.v4.app.NotificationCompat;
-import android.support.v4.content.ContextCompat;
 import android.util.Log;
 
 import com.dragons.aurora.BuildConfig;
 import com.dragons.aurora.R;
-import com.dragons.aurora.Util;
 import com.dragons.aurora.activities.SpoofActivity;
 import com.dragons.aurora.helpers.Prefs;
 
 import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
+
+import androidx.core.app.NotificationCompat;
+import androidx.core.content.ContextCompat;
 
 import static android.content.Context.LOCATION_SERVICE;
 import static com.dragons.aurora.fragment.PreferenceFragment.PREFERENCE_REQUESTED_LOCATION_INDEX;
@@ -152,7 +152,7 @@ public class SpoofTask extends AsyncTask<Void, Void, Void> {
     }
 
     private void setMockDialog(boolean set) {
-        new AlertDialog.Builder(context)
+        new AlertDialog.Builder(context, R.style.ThemeOverlay_MaterialComponents_Dialog)
                 .setTitle(R.string.pref_category_spoof_location)
                 .setMessage(set ? R.string.pref_requested_location_enable : R.string.pref_requested_location_disable)
                 .setPositiveButton(set ? R.string.action_enable : R.string.action_disable, (dialogInterface, i) -> {

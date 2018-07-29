@@ -220,7 +220,7 @@
 Включить ежедневную проверку обновлений ?"</string>
     <string name="list_update_automatic_switch">"Включить"</string>
     <string name="list_update_all">"Обновить всё"</string>
-    <string name="list_update_all_txt">"Доступны обновления : %1$s"</string>
+    <string name="list_update_all_txt">"Доступны обновления"</string>
     <string name="list_update_chk_txt">"Проверка обновлений …"</string>
     <string name="list_update_recheck">"Перепроверить"</string>
     <string name="list_updating">"Обновление…"</string>

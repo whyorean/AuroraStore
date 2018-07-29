@@ -22,8 +22,6 @@
 package com.dragons.aurora.fragment;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,29 +32,48 @@ import com.dragons.aurora.R;
 import com.dragons.aurora.helpers.Accountant;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.RecyclerView;
 
 import static com.dragons.aurora.Util.hide;
 import static com.dragons.aurora.Util.isConnected;
 
 public class TopGrossingApps extends TopFreeApps {
-    @BindView(R.id.endless_apps_list)
-    RecyclerView recyclerView;
-    @BindView(R.id.unicorn)
-    RelativeLayout unicorn;
-    @BindView(R.id.ohhSnap)
-    RelativeLayout ohhSnap;
-    @BindView(R.id.progress)
-    RelativeLayout progress;
+    private View view;
+    private RecyclerView recyclerView;
+    private RelativeLayout unicorn;
+    private RelativeLayout ohhSnap;
+    private RelativeLayout progress;
+
+    @Override
+    public RelativeLayout getUnicorn() {
+        return unicorn;
+    }
+
+    @Override
+    public RelativeLayout getOhhSnap() {
+        return ohhSnap;
+    }
+
+    @Override
+    public RelativeLayout getProgress() {
+        return progress;
+    }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.app_endless_inc, container, false);
-        ButterKnife.bind(this, view);
+        view = inflater.inflate(R.layout.fragment_endless_categorized, container, false);
+        init();
         setIterator(setupIterator(CategoryAppsFragment.categoryId, GooglePlayAPI.SUBCATEGORY.TOP_GROSSING));
         setRecyclerView(recyclerView);
         fetchCategoryApps(false);
+        return view;
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
         Button ohhSnap_retry = view.findViewById(R.id.ohhSnap_retry);
         ohhSnap_retry.setOnClickListener(click -> {
             if (Accountant.isLoggedIn(getContext()) && isConnected(getContext())) {
@@ -71,6 +88,12 @@ public class TopGrossingApps extends TopFreeApps {
                 fetchCategoryApps(false);
             }
         });
-        return view;
+    }
+
+    private void init() {
+        recyclerView = view.findViewById(R.id.endless_apps_list);
+        unicorn = view.findViewById(R.id.unicorn);
+        ohhSnap = view.findViewById(R.id.ohhSnap);
+        progress = view.findViewById(R.id.progress);
     }
 }

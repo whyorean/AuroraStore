@@ -221,7 +221,7 @@ Zur Play-Store-Webseite weiterleiten?"</string>
 Tägliche Aktualisierungen aktivieren?"</string>
     <string name="list_update_automatic_switch">"Schalte an"</string>
     <string name="list_update_all">"Alle aktualisieren"</string>
-    <string name="list_update_all_txt">"Aktualisierung(en) verfügbar: %1$s"</string>
+    <string name="list_update_all_txt">"Aktualisierung(en) verfügbar"</string>
     <string name="list_update_chk_txt">"Suche nach Aktualisierungen…"</string>
     <string name="list_update_recheck">"Erneut suchen"</string>
     <string name="list_updating">"Aktualisiere…"</string>

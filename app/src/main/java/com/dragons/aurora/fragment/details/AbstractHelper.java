@@ -27,9 +27,6 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.support.annotation.NonNull;
-import android.support.v4.graphics.ColorUtils;
-import android.support.v4.view.ViewCompat;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -43,6 +40,10 @@ import com.dragons.aurora.model.App;
 import com.percolate.caffeine.PhoneUtils;
 import com.percolate.caffeine.ViewUtils;
 
+import androidx.annotation.NonNull;
+import androidx.core.graphics.ColorUtils;
+import androidx.core.view.ViewCompat;
+
 public abstract class AbstractHelper {
 
     protected DetailsFragment fragment;
@@ -53,8 +54,8 @@ public abstract class AbstractHelper {
     public AbstractHelper(DetailsFragment fragment, App app) {
         this.fragment = fragment;
         this.app = app;
-        this.view=fragment.getView();
-        this.context=fragment.getContext();
+        this.view = fragment.getView();
+        this.context = fragment.getContext();
     }
 
     abstract public void draw();
@@ -68,22 +69,6 @@ public abstract class AbstractHelper {
     protected void setText(View v, int viewId, int stringId, Object... text) {
         if (v != null)
             setText(v, viewId, v.getResources().getString(stringId, text));
-    }
-
-    protected boolean isLoggedIn() {
-        return PreferenceFragment.getBoolean(fragment.getActivity(), "LOGGED_IN");
-    }
-
-    protected boolean isDummy() {
-        return PreferenceFragment.getBoolean(fragment.getActivity(), "DUMMY_ACC");
-    }
-
-    protected boolean isGoogle() {
-        return PreferenceFragment.getBoolean(fragment.getActivity(), "GOOGLE_ACC");
-    }
-
-    protected boolean isConnected(Context c) {
-        return PhoneUtils.isNetworkAvailable(c);
     }
 
     protected void hide(View v, int viewID) {
@@ -122,12 +107,6 @@ public abstract class AbstractHelper {
         ImageView imageView = view.findViewById(imageViewId);
         if (imageView != null)
             imageView.setColorFilter(color);
-    }
-
-    protected void paintImageViewBg(int color, int imageViewId) {
-        ImageView imageView = view.findViewById(imageViewId);
-        if (imageView != null)
-            imageView.setBackgroundColor(color);
     }
 
     @NonNull

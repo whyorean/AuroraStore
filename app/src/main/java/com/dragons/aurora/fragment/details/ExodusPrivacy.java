@@ -54,7 +54,11 @@ public class ExodusPrivacy extends AbstractHelper {
 
     @Override
     public void draw() {
-        getExodusReport(fragment.getActivity(), "https://reports.exodus-privacy.eu.org/api/search/" + app.getPackageName());
+        try {
+            getExodusReport(fragment.getActivity(), "https://reports.exodus-privacy.eu.org/api/search/" + app.getPackageName());
+        } catch (NullPointerException e) {
+            Log.i(getClass().getSimpleName(), "Probably App Switched");
+        }
     }
 
     private void getExodusReport(Context context, String EXODUS_PATH) {

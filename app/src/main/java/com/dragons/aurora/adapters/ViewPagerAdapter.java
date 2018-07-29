@@ -21,24 +21,26 @@
 
 package com.dragons.aurora.adapters;
 
-import android.content.Context;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
+import android.util.SparseArray;
+import android.view.ViewGroup;
 
-import com.dragons.aurora.R;
 import com.dragons.aurora.fragment.CategoryListFragment;
 import com.dragons.aurora.fragment.HomeFragment;
 import com.dragons.aurora.fragment.InstalledAppsFragment;
 import com.dragons.aurora.fragment.SearchFragment;
 import com.dragons.aurora.fragment.UpdatableAppsFragment;
 
-public class ViewPagerAdapter extends FragmentPagerAdapter {
-    private Context mContext;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentStatePagerAdapter;
 
-    public ViewPagerAdapter(Context context, FragmentManager fragmentManager) {
+public class ViewPagerAdapter extends FragmentStatePagerAdapter {
+
+    private SparseArray<Fragment> registeredFragments = new SparseArray<>();
+
+    public ViewPagerAdapter(FragmentManager fragmentManager) {
         super(fragmentManager);
-        mContext = context;
     }
 
     @Override
@@ -64,22 +66,22 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
         return 5;
     }
 
+    @NonNull
     @Override
-    public CharSequence getPageTitle(int position) {
-        switch (position) {
-            case 0:
-                return mContext.getString(R.string.action_home);
-            case 1:
-                return mContext.getString(R.string.action_myApps);
-            case 2:
-                return mContext.getString(R.string.action_updates);
-            case 3:
-                return mContext.getString(R.string.action_categories);
-            case 4:
-                return mContext.getString(R.string.search_title);
-            default:
-                return null;
-        }
+    public Object instantiateItem(ViewGroup container, int position) {
+        Fragment fragment = (Fragment) super.instantiateItem(container, position);
+        registeredFragments.put(position, fragment);
+        return fragment;
+    }
+
+    @Override
+    public void destroyItem(ViewGroup container, int position, Object object) {
+        registeredFragments.remove(position);
+        super.destroyItem(container, position, object);
+    }
+
+    public Fragment getRegisteredFragment(int position) {
+        return registeredFragments.get(position);
     }
 
 }

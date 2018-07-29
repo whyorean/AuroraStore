@@ -21,15 +21,16 @@
 
 package com.dragons.aurora.task.playstore;
 
+import android.content.Context;
+import android.content.Intent;
 import android.text.TextUtils;
 import android.util.Log;
-import android.widget.TextView;
 
 import com.dragons.aurora.ContextUtil;
 import com.dragons.aurora.CredentialsEmptyException;
 import com.dragons.aurora.PlayStoreApiAuthenticator;
 import com.dragons.aurora.R;
-import com.dragons.aurora.Util;
+import com.dragons.aurora.activities.LoginActivity;
 import com.dragons.aurora.fragment.PreferenceFragment;
 import com.dragons.aurora.helpers.Accountant;
 import com.dragons.aurora.playstoreapiv2.AuthException;
@@ -67,6 +68,11 @@ abstract public class PlayStoreTask<T> extends TaskWithProgress<T> {
     }
 
     @Override
+    public void setContext(Context context) {
+        super.setContext(context);
+    }
+
+    @Override
     protected void onPostExecute(T result) {
         super.onPostExecute(result);
         if (exception != null) {
@@ -88,29 +94,36 @@ abstract public class PlayStoreTask<T> extends TaskWithProgress<T> {
 
     protected void processIOException(IOException e) {
         String message;
-        if (noNetwork(e)) {
-            message = this.context.getString(R.string.error_no_network);
-        } else {
-            message = TextUtils.isEmpty(e.getMessage())
-                    ? this.context.getString(R.string.error_network_other, e.getClass().getName())
-                    : e.getMessage()
-            ;
-        }
-        ContextUtil.toastLong(this.context, message);
+        if (context != null) {
+            if (noNetwork(e)) {
+                message = context.getString(R.string.error_no_network);
+            } else {
+                message = TextUtils.isEmpty(e.getMessage())
+                        ? context.getString(R.string.error_network_other, e.getClass().getName())
+                        : e.getMessage()
+                ;
+            }
+            ContextUtil.toastLong(this.context, message);
+        } else Log.i(getClass().getSimpleName(), "No Network Connection");
     }
 
     protected void processAuthException(AuthException e) {
         if (e instanceof CredentialsEmptyException) {
             Log.i(getClass().getSimpleName(), "Credentials empty");
             new AppProvidedCredentialsTask(context).logInWithPredefinedAccount();
+            return;
         } else if (e.getCode() == 401 && PreferenceFragment.getBoolean(context, PlayStoreApiAuthenticator.PREFERENCE_APP_PROVIDED_EMAIL)) {
             Log.i(getClass().getSimpleName(), "Token is stale");
             new AppProvidedCredentialsTask(context).refreshToken();
             return;
         } else {
             ContextUtil.toast(context, R.string.error_incorrect_password);
+            new PlayStoreApiAuthenticator(context).logout();
             Accountant.completeCheckout(context);
         }
-        Log.e(getClass().getSimpleName(), "AuthException happened and the provided context is not ui capable");
+        if (ContextUtil.isAlive(context))
+            context.startActivity(new Intent(context, LoginActivity.class));
+        else
+            Log.e(getClass().getSimpleName(), "AuthException happened and the provided context is not ui capable");
     }
 }

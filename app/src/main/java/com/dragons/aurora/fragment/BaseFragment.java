@@ -21,9 +21,15 @@
 
 package com.dragons.aurora.fragment;
 
-import android.support.v4.app.Fragment;
+import androidx.fragment.app.Fragment;
 
-public abstract class BaseFragment extends Fragment {
+import com.dragons.aurora.BackPressImpl;
+import com.dragons.aurora.OnBackPressListener;
 
+public abstract class BaseFragment extends Fragment implements OnBackPressListener {
 
+    @Override
+    public boolean onBackPressed() {
+        return new BackPressImpl(this).onBackPressed();
+    }
 }

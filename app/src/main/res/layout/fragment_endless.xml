@@ -19,67 +19,46 @@
   ~ along with Aurora Store.  If not, see <http://www.gnu.org/licenses/>.
   -->
 
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/container"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <com.dragons.aurora.view.AdaptiveToolbar
-        android:id="@+id/adaptive_toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:ToolbarStyle="Details" />
+    android:layout_height="match_parent"
+    android:background="?android:attr/colorBackground">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:nestedScrollingEnabled="false"
-        android:orientation="vertical"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        android:layout_height="wrap_content">
 
-        <android.support.v7.widget.CardView
-            android:id="@+id/category_tabs_cnt"
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/category_tabs"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="2dp"
-            android:layout_marginEnd="6dp"
-            android:layout_marginStart="6dp"
-            android:layout_marginTop="2dp"
-            app:cardBackgroundColor="?android:attr/panelBackground"
-            app:cardCornerRadius="10dp"
-            app:cardElevation="1dp"
-            app:cardPreventCornerOverlap="false"
-            app:cardUseCompatPadding="true">
+            android:layout_height="48dp"
+            android:background="?android:attr/colorBackground"
+            app:tabGravity="fill"
+            app:tabIndicatorHeight="2dp"
+            app:tabMode="scrollable"
+            app:tabPaddingEnd="10dp"
+            app:tabPaddingStart="10dp"
+            app:tabSelectedTextColor="@color/colorAccent" />
 
-            <android.support.design.widget.TabLayout
-                android:id="@+id/category_tabs"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
-                android:layout_marginStart="10dp"
-                app:tabIndicatorHeight="4dp"
-                app:tabMode="scrollable"
-                app:tabSelectedTextColor="@color/colorAccent" />
-        </android.support.v7.widget.CardView>
-
-        <android.support.v4.view.ViewPager
+        <androidx.viewpager.widget.ViewPager
             android:id="@+id/view_pager"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@id/category_tabs_cnt" />
+            android:layout_below="@id/category_tabs" />
     </RelativeLayout>
 
-    <include layout="@layout/filter_sheet" />
-
-    <android.support.design.widget.FloatingActionButton
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/filter_fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
-        android:layout_margin="15dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="65dp"
         android:src="@drawable/ic_filter"
         android:tint="@color/white"
         app:fabSize="normal"
         app:layout_anchorGravity="top|end" />
 
-</android.support.design.widget.CoordinatorLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

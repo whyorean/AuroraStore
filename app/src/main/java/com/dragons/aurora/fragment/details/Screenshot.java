@@ -21,16 +21,13 @@
 
 package com.dragons.aurora.fragment.details;
 
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-
 import com.dragons.aurora.R;
 import com.dragons.aurora.adapters.SmallScreenshotsAdapter;
 import com.dragons.aurora.fragment.DetailsFragment;
 import com.dragons.aurora.model.App;
 
-import java.util.ArrayList;
-import java.util.List;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class Screenshot extends AbstractHelper {
 
@@ -46,15 +43,8 @@ public class Screenshot extends AbstractHelper {
     }
 
     private void drawGallery() {
-        List<SmallScreenshotsAdapter.Holder> SSAdapter = new ArrayList<>();
-        RecyclerView gallery = view.findViewById(R.id.screenshots_gallery);
-
-        for (int i = 0; i < app.getScreenshotUrls().size(); i++)
-            SSAdapter.add(new SmallScreenshotsAdapter.Holder(app.getScreenshotUrls()));
-
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false);
-        gallery.setNestedScrollingEnabled(false);
-        gallery.setAdapter(new SmallScreenshotsAdapter(SSAdapter, context));
-        gallery.setLayoutManager(layoutManager);
+        RecyclerView mRecyclerView = view.findViewById(R.id.screenshots_gallery);
+        mRecyclerView.setAdapter(new SmallScreenshotsAdapter(app.getScreenshotUrls(), context));
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
     }
 }

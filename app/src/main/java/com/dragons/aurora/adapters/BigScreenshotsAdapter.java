@@ -22,27 +22,27 @@
 package com.dragons.aurora.adapters;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.dragons.aurora.R;
 
 import java.util.List;
 
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
 public class BigScreenshotsAdapter extends RecyclerView.Adapter<BigScreenshotsAdapter.ViewHolder> {
 
-    private BigScreenshotsAdapter.Holder bsholder;
-    private List<BigScreenshotsAdapter.Holder> ssholder;
+    private List<String> URLs;
     private Context context;
 
-    public BigScreenshotsAdapter(List<BigScreenshotsAdapter.Holder> FeaturedAppsH, Context context) {
-        this.ssholder = FeaturedAppsH;
+    public BigScreenshotsAdapter(List<String> URLs, Context context) {
+        this.URLs = URLs;
         this.context = context;
     }
 
@@ -50,32 +50,22 @@ public class BigScreenshotsAdapter extends RecyclerView.Adapter<BigScreenshotsAd
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.screenshots_item_big, parent, false);
+                .inflate(R.layout.item_screenshots_big, parent, false);
         return new ViewHolder(itemView);
     }
 
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
-        bsholder = this.ssholder.get(position);
-        String url = bsholder.url.get(position);
         Glide
                 .with(context)
-                .load(url)
-                .apply(new RequestOptions().placeholder(android.R.color.transparent))
+                .load(URLs.get(position))
+                .transition(new DrawableTransitionOptions().crossFade())
                 .into(holder.ss_image);
     }
 
     @Override
     public int getItemCount() {
-        return ssholder.size();
-    }
-
-    public static class Holder {
-        List<String> url;
-
-        public Holder(List<String> url) {
-            this.url = url;
-        }
+        return URLs.size();
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {

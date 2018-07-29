@@ -22,16 +22,16 @@
 package com.dragons.aurora.adapters;
 
 import android.content.Context;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentStatePagerAdapter;
 
 import com.dragons.aurora.R;
 import com.dragons.aurora.fragment.TopFreeApps;
 import com.dragons.aurora.fragment.TopGrossingApps;
 import com.dragons.aurora.fragment.TopTrendingApps;
 
-public class CategoryFilterAdapter extends FragmentPagerAdapter {
+public class CategoryFilterAdapter extends FragmentStatePagerAdapter {
     private Context mContext;
 
     public CategoryFilterAdapter(Context context, FragmentManager fragmentManager) {

@@ -36,6 +36,7 @@ import android.widget.ImageView;
 
 import com.dragons.aurora.ContextUtil;
 import com.dragons.aurora.R;
+import com.dragons.aurora.Util;
 import com.dragons.aurora.helpers.Accountant;
 import com.dragons.aurora.task.AppProvidedCredentialsTask;
 import com.dragons.aurora.task.UserProvidedCredentialsTask;
@@ -43,18 +44,19 @@ import com.dragons.aurora.task.UserProvidedCredentialsTask;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class LoginActivity extends AuroraActivity {
+public class LoginActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_login);
         getWindow().getDecorView().setSystemUiVisibility(
                 View.SYSTEM_UI_FLAG_LAYOUT_STABLE
                         | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
         getWindow().setStatusBarColor(Color.TRANSPARENT);
 
-        if (isConnected()) {
+        if (Util.isConnected(this)) {
             init();
         }
 

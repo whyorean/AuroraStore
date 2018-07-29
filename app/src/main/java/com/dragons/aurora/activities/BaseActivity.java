@@ -22,34 +22,16 @@
 package com.dragons.aurora.activities;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 
-import com.dragons.aurora.R;
-import com.dragons.aurora.fragment.PreferenceFragment;
-import com.percolate.caffeine.PhoneUtils;
+import com.dragons.aurora.Util;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public abstract class BaseActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTheme(Util.getThemeFromPref(this));
         super.onCreate(savedInstanceState);
-    }
-
-    protected boolean isConnected() {
-        return PhoneUtils.isNetworkAvailable(this);
-    }
-
-    protected int getThemeFromPref() {
-        String Theme = PreferenceFragment.getString(this, "PREFERENCE_THEME");
-        switch (Theme) {
-            case "Light":
-                return R.style.AppTheme;
-            case "Dark":
-                return R.style.AppTheme_Dark;
-            case "Black":
-                return R.style.AppTheme_Black;
-            default:
-                return R.style.AppTheme;
-        }
     }
 }

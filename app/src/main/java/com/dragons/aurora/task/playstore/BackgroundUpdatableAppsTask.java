@@ -32,10 +32,8 @@ import android.util.Log;
 import com.dragons.aurora.AuroraApplication;
 import com.dragons.aurora.InstallerAbstract;
 import com.dragons.aurora.InstallerFactory;
-import com.dragons.aurora.NetworkState;
 import com.dragons.aurora.Paths;
 import com.dragons.aurora.R;
-import com.dragons.aurora.UpdateAllReceiver;
 import com.dragons.aurora.activities.UpdatableAppsActivity;
 import com.dragons.aurora.downloader.DownloadManagerAdapter;
 import com.dragons.aurora.downloader.DownloadManagerFactory;
@@ -43,6 +41,8 @@ import com.dragons.aurora.downloader.DownloadState;
 import com.dragons.aurora.fragment.PreferenceFragment;
 import com.dragons.aurora.model.App;
 import com.dragons.aurora.notification.NotificationManagerWrapper;
+import com.dragons.aurora.recievers.UpdateAllReceiver;
+import com.percolate.caffeine.PhoneUtils;
 
 import java.util.List;
 
@@ -94,10 +94,7 @@ public class BackgroundUpdatableAppsTask extends UpdatableAppsTask implements Cl
                 (PreferenceFragment.getBoolean(context, PreferenceFragment.PREFERENCE_BACKGROUND_UPDATE_DOWNLOAD)
                         && (DownloadManagerFactory.get(context) instanceof DownloadManagerAdapter
                         || !PreferenceFragment.getBoolean(context, PreferenceFragment.PREFERENCE_BACKGROUND_UPDATE_WIFI_ONLY)
-                        || !NetworkState.isMetered(context)
-                )
-                )
-                ;
+                        || !PhoneUtils.isConnectedMobile(context)));
     }
 
     private void process(Context context, List<App> apps) {
@@ -140,8 +137,7 @@ public class BackgroundUpdatableAppsTask extends UpdatableAppsTask implements Cl
     private void notifyUpdatesFound(Context context, int updatesCount) {
         Intent i = new Intent(context, UpdatableAppsActivity.class);
         i.setAction(Intent.ACTION_VIEW);
-        new NotificationManagerWrapper(context).show(
-                i,
+        new NotificationManagerWrapper(context).show(i,
                 context.getString(R.string.notification_updates_available_title),
                 context.getString(R.string.notification_updates_available_message, updatesCount)
         );

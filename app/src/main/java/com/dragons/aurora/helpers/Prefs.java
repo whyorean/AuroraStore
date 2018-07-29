@@ -28,6 +28,7 @@ import java.util.Set;
 
 public class Prefs {
 
+    public static final String REFRESH_ASKED = "REFRESH_ASKED";
     public static final String LOGGED_IN = "LOGGED_IN";
     public static final String GOOGLE_ACC = "GOOGLE_ACC";
     public static final String DUMMY_ACC = "DUMMY_ACC";

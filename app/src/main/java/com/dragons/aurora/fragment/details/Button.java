@@ -21,18 +21,23 @@
 
 package com.dragons.aurora.fragment.details;
 
+import android.content.Context;
 import android.content.pm.PackageManager;
 import android.view.View;
 
-import com.dragons.aurora.activities.AuroraActivity;
 import com.dragons.aurora.model.App;
 
 public abstract class Button extends Abstract {
 
     protected View button;
 
-    public Button(AuroraActivity activity, App app) {
+   /* public Button(AuroraActivity activity, App app) {
         super(activity, app);
+        this.button = getButton();
+    }*/
+
+    public Button(Context context, View view, App app) {
+        super(context, view, app);
         this.button = getButton();
     }
 
@@ -62,7 +67,7 @@ public abstract class Button extends Abstract {
 
     protected boolean isInstalled() {
         try {
-            activity.getPackageManager().getPackageInfo(app.getPackageName(), 0);
+            context.getPackageManager().getPackageInfo(app.getPackageName(), 0);
             return true;
         } catch (PackageManager.NameNotFoundException e) {
             return false;

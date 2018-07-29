@@ -30,8 +30,6 @@ import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceManager;
 import android.preference.SwitchPreference;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -49,6 +47,9 @@ import com.dragons.aurora.fragment.preference.CheckUpdates;
 import com.dragons.aurora.fragment.preference.DownloadDirectory;
 import com.dragons.aurora.fragment.preference.InstallationMethod;
 import com.dragons.aurora.helpers.Prefs;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 public class PreferenceFragment extends android.preference.PreferenceFragment {
 
@@ -157,6 +158,16 @@ public class PreferenceFragment extends android.preference.PreferenceFragment {
             @Override
             public boolean onPreferenceChange(Preference preference, Object newValue) {
                 Prefs.putBoolean(context, "COLOR_UI", (boolean) newValue);
+                return true;
+            }
+        });
+
+        SwitchPreference bottom_colors = (SwitchPreference) this.findPreference("COLOR_NAV");
+        bottom_colors.setChecked(Prefs.getBoolean(context, "COLOR_NAV"));
+        bottom_colors.setOnPreferenceChangeListener(new OnListPreferenceChangeListener() {
+            @Override
+            public boolean onPreferenceChange(Preference preference, Object newValue) {
+                Prefs.putBoolean(context, "COLOR_NAV", (boolean) newValue);
                 return true;
             }
         });

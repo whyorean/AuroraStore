@@ -23,8 +23,8 @@
 <resources>
 
     <!--DefaultTheme-->
-    <color name="colorPrimary">#ffffff</color>
-    <color name="colorPrimaryDark">#d6d6d6</color>
+    <color name="colorPrimary">#FFFFFF</color>
+    <color name="colorPrimaryDark">#F5F5F5</color>
     <color name="colorAccent">#4285F4</color>
 
     <!--Basic-->

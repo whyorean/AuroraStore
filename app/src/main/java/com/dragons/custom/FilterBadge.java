@@ -24,7 +24,7 @@ package com.dragons.custom;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
-import android.support.v4.graphics.ColorUtils;
+import androidx.core.graphics.ColorUtils;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.RelativeLayout;
@@ -40,7 +40,6 @@ public class FilterBadge extends RelativeLayout {
     private boolean badgeChecked;
     private RelativeLayout badgeContainer;
     private View badgeDot;
-    private CircleView badgeCancel;
     private TextView badgeText;
     private String title;
     private String key;
@@ -99,7 +98,7 @@ public class FilterBadge extends RelativeLayout {
     }
 
     private void init(Context context) {
-        View view = inflate(context, R.layout.filter_badge, this);
+        View view = inflate(context, R.layout.item_filter_badge, this);
         badgeContainer = view.findViewById(R.id.badge_container);
         badgeDot = view.findViewById(R.id.badge_dot);
         badgeText = view.findViewById(R.id.badge_text);

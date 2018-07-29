@@ -47,7 +47,7 @@ public abstract class ExceptionTask extends BaseFragment {
 
     protected Throwable exception;
 
-    protected static boolean noNetwork(Throwable e) {
+    public static boolean noNetwork(Throwable e) {
         return e instanceof UnknownHostException
                 || e instanceof SSLHandshakeException
                 || e instanceof ConnectException
@@ -67,7 +67,9 @@ public abstract class ExceptionTask extends BaseFragment {
             processAuthException((AuthException) e);
         } else if (e instanceof IOException) {
             processIOException((IOException) e);
-        } else {
+        } else if (e instanceof NullPointerException)
+            Log.e("Null Exception", "Probably App Switched");
+        else {
             Log.e(getClass().getSimpleName(), "Unknown exception " + e.getClass().getName() + " " + e.getMessage());
             e.printStackTrace();
         }
@@ -95,7 +97,6 @@ public abstract class ExceptionTask extends BaseFragment {
             Log.i(getClass().getSimpleName(), "Token is stale");
             new AppProvidedCredentialsTask(getContext()).refreshToken();
         } else {
-            ToastUtils.quickToast(getActivity(), e.getMessage());
             ContextUtil.toast(this.getActivity(), R.string.error_incorrect_password);
             new PlayStoreApiAuthenticator(this.getActivity()).logout();
         }

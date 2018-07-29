@@ -25,7 +25,6 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.PendingIntent;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
@@ -35,8 +34,11 @@ import com.dragons.aurora.model.App;
 import com.dragons.aurora.notification.IgnoreUpdatesService;
 import com.dragons.aurora.notification.NotificationBuilder;
 import com.dragons.aurora.notification.NotificationManagerWrapper;
+import com.dragons.aurora.recievers.DetailsInstallReceiver;
 
 import java.io.File;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public abstract class InstallerAbstract {
 
@@ -88,7 +90,7 @@ public abstract class InstallerAbstract {
             Log.i(getClass().getSimpleName(), "Signature mismatch for " + app.getPackageName());
             ((AuroraApplication) context.getApplicationContext()).removePendingUpdate(app.getPackageName());
             if (ContextUtil.isAlive(context)) {
-                getSignatureMismatchDialog(app).show();
+                ((AppCompatActivity) context).runOnUiThread(() -> getSignatureMismatchDialog(app).show());
             } else {
                 notifySignatureMismatch(app);
             }
@@ -115,30 +117,16 @@ public abstract class InstallerAbstract {
     }
 
     private AlertDialog getSignatureMismatchDialog(final App app) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        AlertDialog.Builder builder = new AlertDialog.Builder(context, R.style.ThemeOverlay_MaterialComponents_Dialog);
         builder
                 .setMessage(R.string.details_signature_mismatch)
-                .setPositiveButton(
-                        android.R.string.ok,
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int id) {
-                                dialog.cancel();
-                            }
-                        }
-                )
-        ;
+                .setPositiveButton(android.R.string.ok, (dialog, id) -> dialog.cancel());
         if (new BlackWhiteListManager(context).isUpdatable(app.getPackageName())) {
             builder.setNegativeButton(
-                    R.string.action_ignore,
-                    new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int id) {
-                            context.startService(getIgnoreIntent(app));
-                            dialog.cancel();
-                        }
-                    }
-            );
+                    R.string.action_ignore, (dialog, id) -> {
+                        context.startService(getIgnoreIntent(app));
+                        dialog.cancel();
+                    });
         }
         return builder.create();
     }

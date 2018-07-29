@@ -1,0 +1,270 @@
+<!--
+  ~ Aurora Store
+  ~ Copyright (C) 2018  Rahul Kumar Patel <whyorean@gmail.com>
+  ~
+  ~ Yalp Store
+  ~ Copyright (C) 2018 Sergey Yeriomin <yeriomin@gmail.com>
+  ~
+  ~ Aurora Store (a fork of Yalp Store )is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 2 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ Aurora Store is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with Aurora Store.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?android:attr/colorBackground">
+
+    <com.dragons.custom.CustomNestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:animateLayoutChanges="true"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/details_header"
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:background="?android:attr/colorPrimaryDark">
+
+                <ImageView
+                    android:id="@+id/app_background"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop" />
+
+                <ImageView
+                    android:id="@+id/action_back"
+                    android:layout_marginTop="24dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:background="?android:selectableItemBackgroundBorderless"
+                    android:padding="10dp"
+                    android:src="@drawable/ic_arrow_left" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="-40dp"
+                android:layout_marginEnd="6dp"
+                android:animateLayoutChanges="true"
+                android:orientation="vertical">
+
+                <!-- App Header -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/mainCard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:visibility="gone"
+                    app:cardBackgroundColor="?android:attr/panelBackground"
+                    app:cardCornerRadius="5dp"
+                    app:cardElevation="1dp"
+                    app:cardPreventCornerOverlap="false"
+                    app:cardUseCompatPadding="true">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="5dp">
+
+                        <!-- App Info : Icon, Name, Developer, Version -->
+                        <include layout="@layout/include_details_main" />
+
+                        <!-- Download ProgressBar & Ads -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:animateLayoutChanges="true"
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            android:weightSum="6">
+
+                            <ProgressBar
+                                android:id="@+id/download_progress"
+                                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                                android:layout_width="0dp"
+                                android:layout_height="2dp"
+                                android:layout_weight="5.3"
+                                android:indeterminate="true"
+                                android:progressBackgroundTint="@color/gray"
+                                android:progressDrawable="@drawable/progressbar_bg"
+                                android:visibility="invisible" />
+
+                            <TextView
+                                android:id="@+id/progressCents"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight=".7"
+                                android:fontFamily="@font/google_sans"
+                                android:gravity="end"
+                                android:paddingStart="3dp"
+                                android:paddingEnd="3dp"
+                                android:textSize="12sp"
+                                android:visibility="invisible" />
+                        </LinearLayout>
+
+                        <!-- Action : Download, Update, Uninstall -->
+                        <include layout="@layout/include_details_actions" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <!-- App Info -->
+                <LinearLayout
+                    android:id="@+id/app_info_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:animateLayoutChanges="true"
+                    android:orientation="vertical">
+
+                    <!-- App Details -->
+                    <include layout="@layout/include_details_subinfo" />
+
+                    <!-- Changelog -->
+                    <include layout="@layout/include_details_changelog" />
+
+                    <!-- Read More -->
+                    <include layout="@layout/include_details_readmore" />
+
+                    <!-- Screenshot -->
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/screenshots_gallery"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp" />
+
+                    <!-- General -->
+                    <include layout="@layout/include_details_info" />
+
+                    <!-- Exodus -->
+                    <include layout="@layout/include_details_exodus" />
+
+                    <!-- Reviews -->
+                    <include layout="@layout/include_details_reviews" />
+
+                    <!-- Permissions -->
+                    <include layout="@layout/include_details_permissions" />
+
+                    <!-- App Video -->
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/app_video"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginEnd="5dp"
+                        android:visibility="gone"
+                        app:cardBackgroundColor="?android:attr/panelBackground"
+                        app:cardCornerRadius="5dp"
+                        app:cardElevation="1dp"
+                        app:cardPreventCornerOverlap="false"
+                        app:cardUseCompatPadding="true">
+
+                        <ImageView
+                            android:id="@+id/thumbnail"
+                            android:layout_width="match_parent"
+                            android:layout_height="200dp"
+                            android:src="?android:attr/colorPrimaryDark" />
+
+                        <ImageView
+                            android:id="@+id/vid_play"
+                            android:layout_width="@dimen/icon_size"
+                            android:layout_height="@dimen/icon_size"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true"
+                            android:layout_gravity="center"
+                            android:alpha="0.5"
+                            android:src="@drawable/ic_play" />
+                    </androidx.cardview.widget.CardView>
+
+                    <!-- Beta -->
+                    <include layout="@layout/include_details_beta" />
+
+                    <LinearLayout
+                        android:id="@+id/cluster_links"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="start"
+                        android:orientation="vertical"
+                        android:visibility="gone" />
+
+                    <!-- Bottom Actions -->
+                    <include layout="@layout/include_details_bottom" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </com.dragons.custom.CustomNestedScrollView>
+
+    <RelativeLayout
+        android:id="@+id/ohhSnap"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_above="@+id/ohhSnap_txt"
+            android:layout_centerHorizontal="true"
+            android:alpha=".75"
+            android:src="@drawable/ic_err" />
+
+        <TextView
+            android:id="@+id/ohhSnap_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="10dp"
+            android:text="@string/ohh_snap_text"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/ohhSnap_retry"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ohhSnap_txt"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
+            android:maxLines="1"
+            android:text="@string/ohh_snap_retry" />
+    </RelativeLayout>
+
+    <ProgressBar
+        android:id="@+id/progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:indeterminate="true"
+        android:padding="5dp" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

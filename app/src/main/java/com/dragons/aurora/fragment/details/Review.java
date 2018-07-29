@@ -36,6 +36,7 @@ import com.dragons.aurora.R;
 import com.dragons.aurora.ReviewStorageIterator;
 import com.dragons.aurora.builders.UserReviewDialogBuilder;
 import com.dragons.aurora.fragment.DetailsFragment;
+import com.dragons.aurora.helpers.Accountant;
 import com.dragons.aurora.model.App;
 import com.dragons.aurora.task.playstore.ReviewDeleteTask;
 import com.dragons.aurora.task.playstore.ReviewLoadTask;
@@ -92,7 +93,7 @@ public class Review extends AbstractHelper {
     }
 
     private boolean isReviewable(App app) {
-        return app.isInstalled() && isGoogle() && !app.isTestingProgramOptedIn();
+        return app.isInstalled() && Accountant.isGoogle(context) && !app.isTestingProgramOptedIn();
     }
 
     public void fillUserReview(com.dragons.aurora.model.Review review) {
@@ -146,7 +147,7 @@ public class Review extends AbstractHelper {
 
     private void addReviewToList(com.dragons.aurora.model.Review review, ViewGroup parent) {
         if (fragment != null && fragment.isVisible()) {
-            LinearLayout reviewLayout = (LinearLayout) fragment.getLayoutInflater().inflate(R.layout.review_list_item, parent, false);
+            LinearLayout reviewLayout = (LinearLayout) fragment.getLayoutInflater().inflate(R.layout.item_review_list, parent, false);
             ((TextView) reviewLayout.findViewById(R.id.author)).setText(review.getUserName());
             ((TextView) reviewLayout.findViewById(R.id.title)).setText(context.getString(
                     R.string.two_items,

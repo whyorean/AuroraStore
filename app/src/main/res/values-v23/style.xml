@@ -22,9 +22,8 @@
 
 <resources>
 
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="android:windowAnimationStyle">@style/CustomActivityAnimation</item>
-        <item name="android:windowDisablePreview">true</item>
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="android:windowActivityTransitions">true</item>
         <item name="android:colorPrimary">?android:attr/colorBackground</item>
         <item name="android:colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="android:colorAccent">@color/colorAccent</item>
@@ -33,12 +32,10 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:windowLightStatusBar">true</item>
         <item name="android:toolbarStyle">@style/ThemeOverlay.AppCompat.Light</item>
-        <item name="android:textViewStyle">@style/RobotoTextViewStyle</item>
     </style>
 
-    <style name="AppTheme.Dark" parent="Theme.AppCompat.NoActionBar">
-        <item name="android:windowAnimationStyle">@style/CustomActivityAnimation</item>
-        <item name="android:windowDisablePreview">true</item>
+    <style name="AppTheme.Dark" parent="Theme.MaterialComponents.NoActionBar">
+        <item name="android:windowActivityTransitions">true</item>
         <item name="android:colorPrimary">?android:attr/colorBackground</item>
         <item name="android:colorPrimaryDark">#242424</item>
         <item name="android:colorAccent">@color/colorAccent</item>
@@ -47,12 +44,10 @@
         <item name="android:panelBackground">#454545</item>
         <item name="android:windowLightStatusBar">false</item>
         <item name="android:toolbarStyle">@style/ThemeOverlay.AppCompat</item>
-        <item name="android:textViewStyle">@style/RobotoTextViewStyle</item>
     </style>
 
-    <style name="AppTheme.Black" parent="Theme.AppCompat.NoActionBar">
-        <item name="android:windowAnimationStyle">@style/CustomActivityAnimation</item>
-        <item name="android:windowDisablePreview">true</item>
+    <style name="AppTheme.Black" parent="Theme.MaterialComponents.NoActionBar">
+        <item name="android:windowActivityTransitions">true</item>
         <item name="android:colorPrimary">?android:attr/colorBackground</item>
         <item name="android:colorPrimaryDark">@color/black</item>
         <item name="android:colorBackground">@color/black</item>
@@ -63,7 +58,6 @@
         <item name="android:panelBackground">@color/black</item>
         <item name="android:windowLightStatusBar">false</item>
         <item name="android:toolbarStyle">@style/ThemeOverlay.AppCompat</item>
-        <item name="android:textViewStyle">@style/RobotoTextViewStyle</item>
     </style>
 
 </resources>

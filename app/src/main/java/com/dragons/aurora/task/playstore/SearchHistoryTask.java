@@ -22,8 +22,6 @@
 package com.dragons.aurora.task.playstore;
 
 import android.preference.PreferenceManager;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.animation.AnimationUtils;
 
@@ -44,9 +42,12 @@ import java.util.Locale;
 import java.util.Set;
 import java.util.regex.Pattern;
 
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 public class SearchHistoryTask extends ExceptionTask {
 
-    public Set<String> readFromPref(String Key) {
+    protected Set<String> readFromPref(String Key) {
         Set<String> set = PreferenceManager
                 .getDefaultSharedPreferences(getContext())
                 .getStringSet(Key, null);
@@ -56,7 +57,7 @@ public class SearchHistoryTask extends ExceptionTask {
             return new HashSet<>();
     }
 
-    public void writeToPref(String Key, Set<String> newAppSet) {
+    protected void writeToPref(String Key, Set<String> newAppSet) {
         PreferenceManager
                 .getDefaultSharedPreferences(getContext())
                 .edit()

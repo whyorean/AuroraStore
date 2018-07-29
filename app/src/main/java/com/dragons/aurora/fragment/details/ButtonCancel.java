@@ -21,13 +21,13 @@
 
 package com.dragons.aurora.fragment.details;
 
+import android.content.Context;
 import android.content.Intent;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.dragons.aurora.R;
-import com.dragons.aurora.activities.AuroraActivity;
 import com.dragons.aurora.downloader.DownloadState;
 import com.dragons.aurora.model.App;
 import com.dragons.aurora.notification.CancelDownloadService;
@@ -35,13 +35,14 @@ import com.percolate.caffeine.ViewUtils;
 
 public class ButtonCancel extends Button {
 
-    ButtonCancel(AuroraActivity activity, App app) {
-        super(activity, app);
+
+    public ButtonCancel(Context context, View view, App app) {
+        super(context, view, app);
     }
 
     @Override
     protected android.widget.Button getButton() {
-        return (android.widget.Button) activity.findViewById(R.id.cancel);
+        return (android.widget.Button) view.findViewById(R.id.cancel);
     }
 
     @Override
@@ -51,14 +52,14 @@ public class ButtonCancel extends Button {
 
     @Override
     protected void onButtonClick(View button) {
-        Intent intentCancel = new Intent(activity.getApplicationContext(), CancelDownloadService.class);
+        Intent intentCancel = new Intent(context, CancelDownloadService.class);
         intentCancel.putExtra(CancelDownloadService.PACKAGE_NAME, app.getPackageName());
-        activity.startService(intentCancel);
+        context.startService(intentCancel);
         button.setVisibility(View.GONE);
 
-        android.widget.Button buttonDownload = ViewUtils.findViewById(activity, R.id.download);
-        ProgressBar progressBar = ViewUtils.findViewById(activity, R.id.download_progress);
-        TextView progressCents = ViewUtils.findViewById(activity, R.id.progressCents);
+        android.widget.Button buttonDownload = ViewUtils.findViewById(view, R.id.download);
+        ProgressBar progressBar = ViewUtils.findViewById(view, R.id.download_progress);
+        TextView progressCents = ViewUtils.findViewById(view, R.id.progressCents);
 
         buttonDownload.setVisibility(View.VISIBLE);
         buttonDownload.setEnabled(true);

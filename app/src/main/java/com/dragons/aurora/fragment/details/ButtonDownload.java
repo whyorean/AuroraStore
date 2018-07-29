@@ -21,6 +21,7 @@
 
 package com.dragons.aurora.fragment.details;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.util.Log;
@@ -32,11 +33,14 @@ import com.dragons.aurora.AuroraPermissionManager;
 import com.dragons.aurora.BuildConfig;
 import com.dragons.aurora.ContextUtil;
 import com.dragons.aurora.Paths;
+import com.dragons.aurora.PlayStoreApiAuthenticator;
 import com.dragons.aurora.R;
 import com.dragons.aurora.activities.AuroraActivity;
+import com.dragons.aurora.activities.DetailsActivity;
 import com.dragons.aurora.activities.ManualDownloadActivity;
 import com.dragons.aurora.downloader.DownloadProgressBarUpdater;
 import com.dragons.aurora.downloader.DownloadState;
+import com.dragons.aurora.helpers.Prefs;
 import com.dragons.aurora.model.App;
 import com.dragons.aurora.playstoreapiv2.AndroidAppDeliveryData;
 import com.dragons.aurora.task.playstore.PurchaseTask;
@@ -52,25 +56,33 @@ public class ButtonDownload extends Button {
     private ProgressBar progressBar;
     private TextView progressCents;
 
-    public ButtonDownload(AuroraActivity activity, App app) {
-        super(activity, app);
+    public ButtonDownload(Context context, View view, App app) {
+        super(context, view, app);
     }
+
 
     @Override
     protected android.widget.Button getButton() {
         if (app.getPrice() != null && !app.isFree()) {
             setText(R.id.download, R.string.details_purchase);
-            return (android.widget.Button) activity.findViewById(R.id.download);
-        } else
-            return (android.widget.Button) activity.findViewById(R.id.download);
+            return (android.widget.Button) view.findViewById(R.id.download);
+        } else if (context instanceof DetailsActivity
+                && view.findViewById(R.id.cancel).getVisibility() == View.VISIBLE)
+            return null;
+        else
+            return (android.widget.Button) view.findViewById(R.id.download);
     }
 
     @Override
     public boolean shouldBeVisible() {
-        File apk = Paths.getApkPath(activity, app.getPackageName(), app.getVersionCode());
-        return (!apk.exists() || apk.length() != app.getSize() || !DownloadState.get(app.getPackageName()).isEverythingSuccessful())
+        File apk = Paths.getApkPath(context, app.getPackageName(), app.getVersionCode());
+        return (!apk.exists()
+                || apk.length() != app.getSize()
+                || !DownloadState.get(app.getPackageName()).isEverythingSuccessful())
+                && (app.isFree() || !Prefs.getBoolean(context, PlayStoreApiAuthenticator.PREFERENCE_APP_PROVIDED_EMAIL))
                 && (app.isInPlayStore() || app.getPackageName().equals(BuildConfig.APPLICATION_ID))
-                && (getInstalledVersionCode() != app.getVersionCode() || activity instanceof ManualDownloadActivity);
+                && (getInstalledVersionCode() != app.getVersionCode() || context instanceof ManualDownloadActivity)
+                ;
     }
 
     @Override
@@ -79,15 +91,19 @@ public class ButtonDownload extends Button {
     }
 
     public void checkAndDownload() {
-        View buttonDownload = activity.findViewById(R.id.download);
-        View buttonCancel = activity.findViewById(R.id.cancel);
+        View buttonDownload = view.findViewById(R.id.download);
+        View buttonCancel = view.findViewById(R.id.cancel);
 
         if (null != buttonDownload) buttonDownload.setVisibility(View.GONE);
 
-        AuroraPermissionManager permissionManager = new AuroraPermissionManager(activity);
+        AuroraPermissionManager permissionManager;
+        if (context instanceof ManualDownloadActivity)
+            permissionManager = new AuroraPermissionManager((ManualDownloadActivity) context);
+        else
+            permissionManager = new AuroraPermissionManager((AuroraActivity) context);
 
-        if (app.getVersionCode() == 0 && !(activity instanceof ManualDownloadActivity)) {
-            activity.startActivity(new Intent(activity, ManualDownloadActivity.class));
+        if (app.getVersionCode() == 0 && !(context instanceof ManualDownloadActivity)) {
+            context.startActivity(new Intent(context, ManualDownloadActivity.class));
         } else if (permissionManager.checkPermission()) {
             Log.i(getClass().getSimpleName(), "Write permission granted");
             download();
@@ -106,11 +122,11 @@ public class ButtonDownload extends Button {
     public void draw() {
         super.draw();
         DownloadState state = DownloadState.get(app.getPackageName());
-        if (Paths.getApkPath(activity, app.getPackageName(), app.getVersionCode()).exists()
+        if (Paths.getApkPath(context, app.getPackageName(), app.getVersionCode()).exists()
                 && !state.isEverythingSuccessful()
                 ) {
-            progressBar = ViewUtils.findViewById(activity, R.id.download_progress);
-            progressCents = ViewUtils.findViewById(activity, R.id.progressCents);
+            progressBar = ViewUtils.findViewById(view, R.id.download_progress);
+            progressCents = ViewUtils.findViewById(view, R.id.progressCents);
             if (null != progressBar && null != progressCents) {
                 new DownloadProgressBarUpdater(app.getPackageName(), progressBar, progressCents).execute(PurchaseTask.UPDATE_INTERVAL);
             }
@@ -118,45 +134,49 @@ public class ButtonDownload extends Button {
     }
 
     public void download() {
-        boolean writePermission = new AuroraPermissionManager(activity).checkPermission();
+        boolean writePermission;
+        if (context instanceof ManualDownloadActivity)
+            writePermission = new AuroraPermissionManager((ManualDownloadActivity) context).checkPermission();
+        else
+            writePermission = new AuroraPermissionManager((AuroraActivity) context).checkPermission();
         Log.i(getClass().getSimpleName(), "Write permission granted - " + writePermission);
         if (writePermission && prepareDownloadsDir()) {
             getPurchaseTask().execute();
         } else {
-            File dir = Paths.getDownloadPath(activity);
+            File dir = Paths.getDownloadPath(context);
             Log.i(getClass().getSimpleName(), dir.getAbsolutePath() + " exists=" + dir.exists() + ", isDirectory=" + dir.isDirectory() + ", writable=" + dir.canWrite());
-            ContextUtil.toast(this.activity.getApplicationContext(), R.string.error_downloads_directory_not_writable);
+            ContextUtil.toast(context, R.string.error_downloads_directory_not_writable);
         }
     }
 
     private boolean prepareDownloadsDir() {
-        File dir = Paths.getDownloadPath(activity);
+        File dir = Paths.getDownloadPath(context);
         if (!dir.exists()) {
             dir.mkdirs();
         }
         return dir.exists() && dir.isDirectory() && dir.canWrite();
     }
 
+    private int getInstalledVersionCode() {
+        try {
+            return context.getPackageManager().getPackageInfo(app.getPackageName(), 0).versionCode;
+        } catch (PackageManager.NameNotFoundException e) {
+            return 0;
+        }
+    }
+
     private LocalPurchaseTask getPurchaseTask() {
         LocalPurchaseTask purchaseTask = new LocalPurchaseTask();
         purchaseTask.setFragment(this);
-        progressBar = ViewUtils.findViewById(activity, R.id.download_progress);
-        progressCents = ViewUtils.findViewById(activity, R.id.progressCents);
+        progressBar = ViewUtils.findViewById(view, R.id.download_progress);
+        progressCents = ViewUtils.findViewById(view, R.id.progressCents);
         if (null != progressBar && null != progressCents) {
             purchaseTask.setDownloadProgressBarUpdater(new DownloadProgressBarUpdater(app.getPackageName(), progressBar, progressCents));
         }
         purchaseTask.setApp(app);
-        purchaseTask.setContext(activity);
-        purchaseTask.setTriggeredBy(activity instanceof ManualDownloadActivity ? MANUAL_DOWNLOAD_BUTTON : DOWNLOAD_BUTTON);
+        purchaseTask.setContext(context);
+        purchaseTask.setTriggeredBy(context instanceof ManualDownloadActivity ? MANUAL_DOWNLOAD_BUTTON : DOWNLOAD_BUTTON);
         return purchaseTask;
-    }
-
-    private int getInstalledVersionCode() {
-        try {
-            return activity.getPackageManager().getPackageInfo(app.getPackageName(), 0).versionCode;
-        } catch (PackageManager.NameNotFoundException e) {
-            return 0;
-        }
     }
 
     static class LocalPurchaseTask extends PurchaseTask {

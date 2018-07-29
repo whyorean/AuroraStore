@@ -91,7 +91,7 @@ public abstract class SystemRemountTask extends TaskWithProgress<List<String>> {
     }
 
     private void showRebootDialog() {
-        new AlertDialog.Builder(context)
+        new AlertDialog.Builder(context, R.style.ThemeOverlay_MaterialComponents_Dialog)
                 .setMessage(R.string.dialog_message_reboot_required)
                 .setTitle(R.string.dialog_title_reboot_required)
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {

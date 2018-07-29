@@ -15,21 +15,31 @@
 #-keepclassmembers class fqcn.of.javascript.interface.for.webview {
 #   public *;
 #}
--dontobfuscate
+
+-allowaccessmodification
+-dontskipnonpubliclibraryclasses
+-dontwarn sun.misc.Unsafe
+-dontwarn okhttp3.**
+-dontwarn okio.**
+-dontwarn javax.annotation.**
+-dontwarn com.squareup.okhttp.**
+-dontwarn com.bumptech.glide.load.resource.bitmap.VideoDecoder
 -keep public interface android.content.pm.IPackageInstallObserver { *; }
 -keep class android.content.pm.IPackageInstallObserver$Stub { *; }
 -keep public class com.dragons.aurora.InstallerPrivileged$* { *; }
 -keep public class com.google.protobuf.ExtensionRegistryLite { *; }
 -keep public class com.google.protobuf.ExtensionRegistry { *; }
 -keep final class com.google.protobuf.ExtensionRegistryFactory { *; }
--optimizations !code/simplification/arithmetic,!field/*,!class/merging/*,!code/allocation/variable
--dontwarn sun.misc.Unsafe
--optimizationpasses 5
--allowaccessmodification
--dontskipnonpubliclibraryclasses
--renamesourcefileattribute SourceFile
+-keep public class * implements com.bumptech.glide.module.GlideModule
+-keep public class * extends com.bumptech.glide.module.AppGlideModule
+-keep public enum com.bumptech.glide.load.ImageHeaderParser$** {
+  **[] $VALUES;
+  public *;
+}
 -keepattributes SourceFile,LineNumberTable
--dontwarn okhttp3.**
--dontwarn okio.**
--dontwarn javax.annotation.**
--dontwarn com.squareup.okhttp.**
+-keepattributes LocalVariableTable, LocalVariableTypeTable
+-keepattributes *Annotation*, Signature, Exception
+-optimizations !code/simplification/arithmetic,!field/*,!class/merging/*,!code/allocation/variable,!method/removal/parameter
+-optimizationpasses 5
+-renamesourcefileattribute SourceFile
+-repackageclasses

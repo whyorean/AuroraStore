@@ -22,18 +22,12 @@
 package com.dragons.aurora.adapters;
 
 import android.content.Context;
+import android.content.res.ColorStateList;
 import android.graphics.Bitmap;
-import android.graphics.drawable.GradientDrawable;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.graphics.ColorUtils;
-import android.support.v7.graphics.Palette;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.PopupMenu;
 import android.widget.RatingBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -47,7 +41,6 @@ import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.Target;
 import com.dragons.aurora.R;
-import com.dragons.aurora.activities.AuroraActivity;
 import com.dragons.aurora.activities.DetailsActivity;
 import com.dragons.aurora.fragment.details.ButtonDownload;
 import com.dragons.aurora.fragment.details.ButtonUninstall;
@@ -56,28 +49,37 @@ import com.dragons.aurora.model.App;
 
 import java.util.List;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.PopupMenu;
+import androidx.fragment.app.Fragment;
+import androidx.palette.graphics.Palette;
+import androidx.recyclerview.widget.RecyclerView;
+
 public class FeaturedAppsAdapter extends RecyclerView.Adapter<FeaturedAppsAdapter.ViewHolder> {
 
     private List<App> appsToAdd;
+    private Fragment fragment;
     private Context context;
 
-    public FeaturedAppsAdapter(Context context, List<App> appsToAdd) {
-        this.context = context;
+    public FeaturedAppsAdapter(Fragment fragment, List<App> appsToAdd) {
+        this.fragment = fragment;
+        this.context = fragment.getContext();
         this.appsToAdd = appsToAdd;
     }
+
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.features_apps_adapter, parent, false);
+                .inflate(R.layout.item_featured, parent, false);
         return new ViewHolder(itemView);
     }
 
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
-        final App app = appsToAdd.get(position);
-
+        App app = appsToAdd.get(position);
         holder.appName.setText(app.getDisplayName());
         holder.appRatingBar.setRating(app.getRating().getStars(1));
         setText(holder.view, holder.appRating, R.string.details_rating, app.getRating().getAverage());
@@ -93,8 +95,8 @@ public class FeaturedAppsAdapter extends RecyclerView.Adapter<FeaturedAppsAdapte
         holder.appMenu3Dot.setOnClickListener(v -> {
             PopupMenu popup = new PopupMenu(v.getContext(), v);
             popup.inflate(R.menu.menu_download);
-            new DownloadOptions((AuroraActivity) context, app).inflate(popup.getMenu());
-            popup.getMenu().findItem(R.id.action_download).setVisible(new ButtonDownload((AuroraActivity) context, app).shouldBeVisible());
+            new DownloadOptions(context, fragment.getView(), app).inflate(popup.getMenu());
+            popup.getMenu().findItem(R.id.action_download).setVisible(new ButtonDownload(context, fragment.getView(), app).shouldBeVisible());
             popup.getMenu().findItem(R.id.action_uninstall).setVisible(app.isInstalled());
             popup.getMenu().findItem(R.id.action_manual).setVisible(app.isInstalled());
             popup.setOnMenuItemClickListener(item -> {
@@ -104,13 +106,13 @@ public class FeaturedAppsAdapter extends RecyclerView.Adapter<FeaturedAppsAdapte
                     case R.id.action_unignore:
                     case R.id.action_unwhitelist:
                     case R.id.action_download:
-                        new ButtonDownload((AuroraActivity) context, app).checkAndDownload();
+                        new ButtonDownload(context, fragment.getView(), app).checkAndDownload();
                         break;
                     case R.id.action_uninstall:
-                        new ButtonUninstall((AuroraActivity) context, app).uninstall();
+                        new ButtonUninstall(context, fragment.getView(), app).uninstall();
                         break;
                     default:
-                        return new DownloadOptions((AuroraActivity) context, app).onContextItemSelected(item);
+                        return new DownloadOptions(context, fragment.getView(), app).onContextItemSelected(item);
                 }
                 return false;
             });
@@ -123,7 +125,7 @@ public class FeaturedAppsAdapter extends RecyclerView.Adapter<FeaturedAppsAdapte
                 .asBitmap()
                 .load(app.getPageBackgroundImage().getUrl())
                 .apply(new RequestOptions()
-                        .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
+                        .diskCacheStrategy(DiskCacheStrategy.ALL)
                         .placeholder(R.color.transparent))
                 .transition(new BitmapTransitionOptions().crossFade())
                 .listener(new RequestListener<Bitmap>() {
@@ -145,7 +147,7 @@ public class FeaturedAppsAdapter extends RecyclerView.Adapter<FeaturedAppsAdapte
         Glide.with(context)
                 .load(app.getIconInfo().getUrl())
                 .apply(new RequestOptions()
-                        .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
+                        .diskCacheStrategy(DiskCacheStrategy.ALL)
                         .placeholder(R.color.transparent))
                 .into(holder.appIcon);
     }
@@ -156,11 +158,14 @@ public class FeaturedAppsAdapter extends RecyclerView.Adapter<FeaturedAppsAdapte
     }
 
     private void paintEmAll(Palette palette, ViewHolder holder) {
-        Palette.Swatch swatch = palette.getDarkVibrantSwatch();
+        Palette.Swatch swatch = palette.getDominantSwatch();
         if (swatch != null) {
-            GradientDrawable gradientDrawable = new GradientDrawable(GradientDrawable.Orientation.BOTTOM_TOP,
-                    new int[]{ColorUtils.setAlphaComponent(swatch.getRgb(), 150), 0x05000000});
-            holder.appData.setBackground(gradientDrawable);
+            holder.appData.setBackgroundColor(swatch.getRgb());
+            holder.appName.setTextColor(swatch.getBodyTextColor());
+            holder.appRating.setTextColor(swatch.getTitleTextColor());
+            holder.appMenu3Dot.setColorFilter(swatch.getBodyTextColor());
+            holder.appRatingBar.setProgressTintList(ColorStateList.valueOf(swatch.getTitleTextColor()));
+            holder.appRatingBar.getProgressDrawable().setTint(swatch.getBodyTextColor());
         }
     }
 

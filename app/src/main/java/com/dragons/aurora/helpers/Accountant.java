@@ -20,7 +20,6 @@ package com.dragons.aurora.helpers;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.AlertDialog;
 
 import com.dragons.aurora.PlayStoreApiAuthenticator;
 import com.dragons.aurora.R;
@@ -28,11 +27,14 @@ import com.dragons.aurora.activities.LoginActivity;
 import com.dragons.aurora.task.AppProvidedCredentialsTask;
 import com.dragons.aurora.task.UserProvidedCredentialsTask;
 
+import androidx.appcompat.app.AlertDialog;
+
 import static com.dragons.aurora.helpers.Prefs.DUMMY_ACC;
 import static com.dragons.aurora.helpers.Prefs.GOOGLE_ACC;
 import static com.dragons.aurora.helpers.Prefs.GOOGLE_NAME;
 import static com.dragons.aurora.helpers.Prefs.GOOGLE_URL;
 import static com.dragons.aurora.helpers.Prefs.LOGGED_IN;
+import static com.dragons.aurora.helpers.Prefs.REFRESH_ASKED;
 
 public class Accountant {
 
@@ -49,12 +51,18 @@ public class Accountant {
     }
 
     public static void LoginFirst(Context context) {
-        new AlertDialog.Builder(context)
-                .setTitle(R.string.action_login)
-                .setMessage(R.string.header_usr_noEmail)
-                .setPositiveButton(R.string.action_login, (dialogInterface, i) -> context.startActivity(new Intent(context, LoginActivity.class)))
-                .setCancelable(false)
-                .show();
+        if (!Prefs.getBoolean(context, "LOGIN_PROMPTED")) {
+            new AlertDialog.Builder(context, R.style.ThemeOverlay_MaterialComponents_Dialog)
+                    .setTitle(R.string.action_login)
+                    .setMessage(R.string.header_usr_noEmail)
+                    .setPositiveButton(R.string.action_login, (dialogInterface, i) -> {
+                        context.startActivity(new Intent(context, LoginActivity.class));
+                        Prefs.putBoolean(context, "LOGIN_PROMPTED", false);
+                    })
+                    .setCancelable(false)
+                    .show();
+            Prefs.putBoolean(context, "LOGIN_PROMPTED", true);
+        }
     }
 
     public static void switchDummy(Context context) {
@@ -83,6 +91,7 @@ public class Accountant {
 
     public static void completeCheckout(Context context) {
         Prefs.putBoolean(context, LOGGED_IN, false);
+        Prefs.putBoolean(context, REFRESH_ASKED, false);
         Prefs.putString(context, GOOGLE_NAME, "");
         Prefs.putString(context, GOOGLE_URL, "");
         new PlayStoreApiAuthenticator(context).logout();

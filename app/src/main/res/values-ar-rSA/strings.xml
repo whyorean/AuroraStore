@@ -222,7 +222,7 @@
 تشغيل التحديثات اليومية ؟"</string>
     <string name="list_update_automatic_switch">"تفعيل"</string>
     <string name="list_update_all">"تحديث الكل"</string>
-    <string name="list_update_all_txt">"التحديثات المتاحة  : %1$s"</string>
+    <string name="list_update_all_txt">"التحديثات المتاحة"</string>
     <string name="list_update_chk_txt">"البحث عن تحديثات…"</string>
     <string name="list_update_recheck">"إعادة المحاولة"</string>
     <string name="list_updating">"تحديث …"</string>

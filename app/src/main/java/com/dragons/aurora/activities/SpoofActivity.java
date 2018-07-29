@@ -32,13 +32,13 @@ public class SpoofActivity extends AuroraActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.helper_activity_alt);
+        setContentView(R.layout.activity_helper_alt);
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE
                 | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
         getWindow().setStatusBarColor(getResources().getColor(R.color.semi_transparent));
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.content_frame, new SpoofFragment())
+                .replace(R.id.container, new SpoofFragment())
                 .commit();
     }
 

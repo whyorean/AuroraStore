@@ -21,34 +21,42 @@
 
 package com.dragons.aurora.fragment;
 
+import android.app.Dialog;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import com.dragons.aurora.AppListIterator;
+import com.dragons.aurora.CredentialsEmptyException;
+import com.dragons.aurora.EndlessRecyclerViewScrollListener;
+import com.dragons.aurora.GridAutoFitLayoutManager;
 import com.dragons.aurora.PlayStoreApiAuthenticator;
 import com.dragons.aurora.R;
-import com.dragons.aurora.activities.AuroraActivity;
 import com.dragons.aurora.adapters.EndlessAppsAdapter;
+import com.dragons.aurora.adapters.SingleDownloadsAdapter;
+import com.dragons.aurora.adapters.SingleRatingsAdapter;
 import com.dragons.aurora.helpers.Accountant;
 import com.dragons.aurora.model.App;
 import com.dragons.aurora.playstoreapiv2.SearchIterator;
 import com.dragons.aurora.task.playstore.SearchTask;
-import com.dragons.aurora.view.AdaptiveToolbar;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.io.IOException;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
@@ -57,50 +65,30 @@ import io.reactivex.schedulers.Schedulers;
 import static com.dragons.aurora.Util.hide;
 import static com.dragons.aurora.Util.isConnected;
 
-public class SearchAppsFragment extends SearchTask {
+public class SearchAppsFragment extends SearchTask implements SingleDownloadsAdapter.SingleClickListener, SingleRatingsAdapter.SingleClickListener {
 
-    @BindView(R.id.search_apps_list)
-    RecyclerView recyclerView;
-    @BindView(R.id.adaptive_toolbar)
-    AdaptiveToolbar adaptiveToolbar;
-    @BindView(R.id.unicorn)
-    RelativeLayout unicorn;
-    @BindView(R.id.ohhSnap)
-    RelativeLayout ohhSnap;
-    @BindView(R.id.progress)
-    RelativeLayout progress;
-
+    private View view;
+    private RecyclerView recyclerView;
+    private RelativeLayout unicorn;
+    private RelativeLayout ohhSnap;
+    private RelativeLayout progress;
+    private FloatingActionButton filter_fab;
+    private SingleDownloadsAdapter singleDownloadAdapter;
+    private SingleRatingsAdapter singleRatingAdapter;
     private String title;
+    private String query;
     private boolean setLooper = true;
     private boolean loading = true;
-    private int oldItems, visibleItems, totalItems;
-    private View view;
     private AppListIterator iterator;
-    private EndlessAppsAdapter endlessAppsAdapter;
     private Disposable disposable;
+    private EndlessAppsAdapter endlessAppsAdapter;
 
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_search_list, container, false);
-        ButterKnife.bind(this, view);
-        adaptiveToolbar.getAction_icon().setOnClickListener((v -> this.getActivity().onBackPressed()));
-        adaptiveToolbar.getTitle0().setText(title);
-        adaptiveToolbar.getTitle1().setVisibility(View.GONE);
-        Button ohhSnap_retry = view.findViewById(R.id.ohhSnap_retry);
-        ohhSnap_retry.setOnClickListener(click -> {
-            if (Accountant.isLoggedIn(getContext()) && isConnected(getContext())) {
-                hide(view, R.id.ohhSnap);
-                fetchSearchAppsList(false);
-            }
-        });
-        Button retry_querry = view.findViewById(R.id.recheck_query);
-        retry_querry.setOnClickListener(click -> {
-            if (Accountant.isLoggedIn(getContext()) && isConnected(getContext())) {
-                hide(view, R.id.unicorn);
-                fetchSearchAppsList(false);
-            }
-        });
-        return view;
+    public String getQuery() {
+        return query;
+    }
+
+    public void setQuery(String query) {
+        this.query = query;
     }
 
     @Override
@@ -108,62 +96,147 @@ public class SearchAppsFragment extends SearchTask {
         super.onCreate(savedInstanceState);
         Bundle arguments = getArguments();
         if (arguments != null) {
-            String query = arguments.getString("SearchQuery");
+            setQuery(arguments.getString("SearchQuery"));
             title = arguments.getString("SearchTitle");
-            iterator = setupIterator(query);
+            iterator = setupIterator(getQuery());
             fetchSearchAppsList(false);
         } else
             Log.e(this.getClass().getName(), "No category id provided");
     }
 
-    protected AppListIterator setupIterator(String query) {
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        view = inflater.inflate(R.layout.fragment_search_list, container, false);
+        init();
+        return view;
+    }
+
+    private void init() {
+        recyclerView = view.findViewById(R.id.search_apps_list);
+        unicorn = view.findViewById(R.id.unicorn);
+        ohhSnap = view.findViewById(R.id.ohhSnap);
+        progress = view.findViewById(R.id.progress);
+        filter_fab = view.findViewById(R.id.filter_fab);
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        Button ohhSnap_retry = view.findViewById(R.id.ohhSnap_retry);
+        ohhSnap_retry.setOnClickListener(click -> {
+            if (Accountant.isLoggedIn(getContext()) && isConnected(getContext())) {
+                hide(view, R.id.ohhSnap);
+                iterator = setupIterator(getQuery());
+                fetchSearchAppsList(false);
+            }
+        });
+        Button retry_querry = view.findViewById(R.id.recheck_query);
+        retry_querry.setOnClickListener(click -> {
+            if (Accountant.isLoggedIn(getContext()) && isConnected(getContext())) {
+                hide(view, R.id.unicorn);
+                iterator = setupIterator(getQuery());
+                fetchSearchAppsList(false);
+            }
+        });
+        filter_fab.show();
+        filter_fab.setOnClickListener(v -> getFilterDialog());
+    }
+
+    @Override
+    public void onDownloadBadgeClickListener() {
+        singleDownloadAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onRatingBadgeClickListener() {
+        singleRatingAdapter.notifyDataSetChanged();
+    }
+
+    private void getFilterDialog() {
+        Dialog ad = new Dialog(getContext());
+        ad.setContentView(R.layout.dialog_filter);
+        ad.setCancelable(true);
+
+        WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams();
+        layoutParams.copyFrom(ad.getWindow().getAttributes());
+        layoutParams.width = WindowManager.LayoutParams.MATCH_PARENT;
+        layoutParams.height = WindowManager.LayoutParams.WRAP_CONTENT;
+        layoutParams.gravity = Gravity.CENTER;
+
+        ad.getWindow().setAttributes(layoutParams);
+
+        RecyclerView filter_downloads = ad.findViewById(R.id.filter_downloads);
+        singleDownloadAdapter = new SingleDownloadsAdapter(getContext(),
+                getResources().getStringArray(R.array.filterDownloadsLabels),
+                getResources().getStringArray(R.array.filterDownloadsValues));
+        singleDownloadAdapter.setOnDownloadBadgeClickListener(this);
+        filter_downloads.setItemViewCacheSize(10);
+        filter_downloads.setLayoutManager(new GridAutoFitLayoutManager(getContext(), 120));
+        filter_downloads.setLayoutAnimation(AnimationUtils.loadLayoutAnimation(getContext(), R.anim.layout_anim));
+        filter_downloads.setAdapter(singleDownloadAdapter);
+
+        RecyclerView filter_ratings = ad.findViewById(R.id.filter_ratings);
+        singleRatingAdapter = new SingleRatingsAdapter(getContext(),
+                getResources().getStringArray(R.array.filterRatingLabels),
+                getResources().getStringArray(R.array.filterRatingValues));
+        singleRatingAdapter.setOnRatingBadgeClickListener(this);
+        filter_ratings.setItemViewCacheSize(10);
+        filter_ratings.setLayoutManager(new GridAutoFitLayoutManager(getContext(), 120));
+        filter_ratings.setLayoutAnimation(AnimationUtils.loadLayoutAnimation(getContext(), R.anim.layout_anim));
+        filter_ratings.setAdapter(singleRatingAdapter);
+
+        Button filter_apply = ad.findViewById(R.id.filter_apply);
+        filter_apply.setOnClickListener(click -> {
+            ad.dismiss();
+            iterator = setupIterator(getQuery());
+            fetchSearchAppsList(false);
+        });
+
+        ImageView close_sheet = ad.findViewById(R.id.close_sheet);
+        close_sheet.setOnClickListener(v -> ad.dismiss());
+
+        ad.show();
+
+    }
+
+    private AppListIterator setupIterator(String query) {
         AppListIterator iterator;
         try {
             iterator = new AppListIterator(new SearchIterator(new PlayStoreApiAuthenticator(getContext()).getApi(), query));
-            iterator.setFilter(new FilterMenu((AuroraActivity) getContext()).getFilterPreferences());
+            iterator.setFilter(new FilterMenu(getContext()).getFilterPreferences());
             return iterator;
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (Exception e) {
+            if (e instanceof CredentialsEmptyException)
+                Log.e(getClass().getSimpleName(), "Credentials Empty Exception");
+            else
+                e.printStackTrace();
             return null;
         }
     }
 
-    protected void setupListView(List<App> appsToAdd) {
+    private void setupListView(List<App> appsToAdd) {
         progress.setVisibility(View.GONE);
-        LinearLayoutManager mLayoutManager = new LinearLayoutManager(this.getActivity());
-        endlessAppsAdapter = new EndlessAppsAdapter(getActivity(), appsToAdd);
+        LinearLayoutManager mLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
+        endlessAppsAdapter = new EndlessAppsAdapter(this, appsToAdd);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setLayoutAnimation(AnimationUtils.loadLayoutAnimation(this.getActivity(), R.anim.layout_anim));
         recyclerView.setAdapter(endlessAppsAdapter);
-        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+        EndlessRecyclerViewScrollListener mEndlessRecyclerViewScrollListener = new EndlessRecyclerViewScrollListener(mLayoutManager) {
             @Override
-            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-                if ((visibleItems + oldItems) >= totalItems + 2 || endlessAppsAdapter.getItemCount() > 20)
-                    setLooper = false;
-                if (dy > 0) {
-                    visibleItems = mLayoutManager.getChildCount();
-                    totalItems = mLayoutManager.getItemCount();
-                    oldItems = mLayoutManager.findFirstVisibleItemPosition();
-
-                    if (loading && !setLooper) {
-                        if ((visibleItems + oldItems) >= totalItems - 2) {
-                            loading = false;
-                            fetchSearchAppsList(true);
-                        }
-                    }
-                }
+            public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
+                fetchSearchAppsList(true);
             }
-        });
-        getLooper();
+        };
+        recyclerView.addOnScrollListener(mEndlessRecyclerViewScrollListener);
     }
 
-    public void fetchSearchAppsList(boolean loadMore) {
+    private void fetchSearchAppsList(boolean shouldIterate) {
         disposable = Observable.fromCallable(() -> getResult(iterator))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(appList -> {
                     if (view != null) {
-                        if (loadMore) {
+                        if (shouldIterate) {
                             loading = true;
                             addApps(appList);
                         } else
@@ -175,19 +248,20 @@ public class SearchAppsFragment extends SearchTask {
                 });
     }
 
-    public void addApps(List<App> appsToAdd) {
+    private void addApps(List<App> appsToAdd) {
         if (!appsToAdd.isEmpty()) {
             for (App app : appsToAdd)
                 endlessAppsAdapter.add(app);
             endlessAppsAdapter.notifyItemInserted(endlessAppsAdapter.getItemCount() - 1);
         }
-        getLooper();
-    }
-
-    public void getLooper() {
-        if (iterator.hasNext() && setLooper)
-            fetchSearchAppsList(true);
-        else if (!iterator.hasNext() && endlessAppsAdapter.getItemCount() <= 0)
-            unicorn.setVisibility(View.VISIBLE);
+        if (iterator.hasNext() && endlessAppsAdapter.getItemCount() < 10) {
+            new Timer().scheduleAtFixedRate(new TimerTask() {
+                @Override
+                public void run() {
+                    fetchSearchAppsList(true);
+                    cancel();
+                }
+            }, 1500, 1000);
+        }
     }
 }

@@ -141,7 +141,7 @@ public class PurchaseTask extends DeliveryDataTask implements CloneableTask {
     }
 
     private AlertDialog getNotPurchasedDialog(Context c) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(c);
+        AlertDialog.Builder builder = new AlertDialog.Builder(c, R.style.ThemeOverlay_MaterialComponents_Dialog);
         builder
                 .setMessage(R.string.error_not_purchased)
                 .setPositiveButton(

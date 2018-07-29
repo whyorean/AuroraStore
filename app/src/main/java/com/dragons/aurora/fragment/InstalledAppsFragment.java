@@ -22,16 +22,12 @@
 package com.dragons.aurora.fragment;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.SwitchCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.Switch;
 
 import com.dragons.aurora.PlayStoreApiAuthenticator;
 import com.dragons.aurora.R;
@@ -47,8 +43,10 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
@@ -60,16 +58,11 @@ import static com.dragons.aurora.Util.show;
 
 public class InstalledAppsFragment extends InstalledAppsTaskHelper {
 
-    @BindView(R.id.swipe_refresh_layout)
-    SwipeRefreshLayout swipeRefreshLayout;
-    @BindView(R.id.installed_apps_list)
-    RecyclerView recyclerView;
-    @BindView(R.id.ohhSnap_retry)
-    Button retry_update;
-    @BindView(R.id.includeSystem)
-    SwitchCompat includeSystem;
-
     private View view;
+    private SwipeRefreshLayout swipeRefreshLayout;
+    private RecyclerView recyclerView;
+    private Button retry_update;
+    private Switch includeSystem;
     private Disposable loadApps;
     private List<App> installedApps = new ArrayList<>(new HashSet<>());
     private InstalledAppsAdapter installedAppsAdapter;
@@ -95,8 +88,12 @@ public class InstalledAppsFragment extends InstalledAppsTaskHelper {
             return view;
         }
 
-        view = inflater.inflate(R.layout.app_installed_inc, container, false);
-        ButterKnife.bind(this, view);
+        view = inflater.inflate(R.layout.fragment_installed, container, false);
+        recyclerView = view.findViewById(R.id.installed_apps_list);
+        swipeRefreshLayout = view.findViewById(R.id.swipe_refresh_layout);
+        retry_update = view.findViewById(R.id.ohhSnap_retry);
+        includeSystem = view.findViewById(R.id.includeSystem);
+        Util.setColors(getContext(), swipeRefreshLayout);
         swipeRefreshLayout.setOnRefreshListener(() -> {
             if (Accountant.isLoggedIn(getContext()) && isConnected(getContext()))
                 loadMarketApps();
@@ -137,14 +134,14 @@ public class InstalledAppsFragment extends InstalledAppsTaskHelper {
         swipeRefreshLayout.setRefreshing(false);
     }
 
-    protected void setupRecycler(List<App> appsToAdd) {
-        installedAppsAdapter = new InstalledAppsAdapter((AuroraActivity) getActivity(), appsToAdd);
+    private void setupRecycler(List<App> appsToAdd) {
+        installedAppsAdapter = new InstalledAppsAdapter(this, appsToAdd);
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getActivity()));
         recyclerView.setLayoutAnimation(AnimationUtils.loadLayoutAnimation(getContext(), R.anim.layout_anim));
         recyclerView.setAdapter(installedAppsAdapter);
     }
 
-    public void loadMarketApps() {
+    private void loadMarketApps() {
         swipeRefreshLayout.setRefreshing(true);
         loadApps = Observable.fromCallable(() -> getInstalledApps(new PlayStoreApiAuthenticator(this.getActivity()).getApi(), includeSystem.isChecked()))
                 .subscribeOn(Schedulers.io())

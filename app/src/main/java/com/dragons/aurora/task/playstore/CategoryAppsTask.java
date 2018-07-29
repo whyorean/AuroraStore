@@ -28,6 +28,7 @@ import com.dragons.aurora.PlayStoreApiAuthenticator;
 import com.dragons.aurora.helpers.Accountant;
 import com.dragons.aurora.model.App;
 import com.dragons.aurora.model.Filter;
+import com.dragons.aurora.playstoreapiv2.AuthException;
 import com.dragons.aurora.playstoreapiv2.GooglePlayException;
 import com.dragons.aurora.playstoreapiv2.IteratorGooglePlayException;
 import com.dragons.aurora.task.AppProvidedCredentialsTask;
@@ -61,7 +62,7 @@ abstract public class CategoryAppsTask extends ExceptionTask {
 
         setIterator(iterator);
 
-        if (!iterator.hasNext()) {
+        if (iterator != null && !iterator.hasNext()) {
             return new ArrayList<>();
         }
 
@@ -73,10 +74,12 @@ abstract public class CategoryAppsTask extends ExceptionTask {
                 if (null == e.getCause()) {
                     continue;
                 }
+                if (e.getCause() instanceof AuthException) {
+                    processAuthException((AuthException) e.getCause());
+                }
                 if (noNetwork(e.getCause())) {
                     throw (IOException) e.getCause();
-                } else if (e.getCause() instanceof GooglePlayException
-                        && ((GooglePlayException) e.getCause()).getCode() == 401 && Accountant.isDummy(getContext())) {
+                } else if (e.getCause() instanceof GooglePlayException && ((GooglePlayException) e.getCause()).getCode() == 401 && Accountant.isDummy(getContext())) {
                     new AppProvidedCredentialsTask(getContext()).refreshToken();
                     iterator.setGooglePlayApi(new PlayStoreApiAuthenticator(getContext()).getApi());
                     apps.addAll(getNextBatch(iterator));

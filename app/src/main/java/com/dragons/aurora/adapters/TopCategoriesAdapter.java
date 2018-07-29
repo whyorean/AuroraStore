@@ -21,10 +21,8 @@
 
 package com.dragons.aurora.adapters;
 
-import android.content.Context;
+import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,34 +30,49 @@ import android.widget.TextView;
 
 import com.dragons.aurora.R;
 import com.dragons.aurora.SharedPreferencesTranslator;
-import com.dragons.aurora.activities.CategoryAppsActivity;
+import com.dragons.aurora.fragment.CategoryAppsFragment;
+import com.dragons.aurora.fragment.CategoryListFragment;
 import com.percolate.caffeine.ViewUtils;
+
+import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class TopCategoriesAdapter extends RecyclerView.Adapter<TopCategoriesAdapter.ViewHolder> {
 
-    private Context context;
     private String[] categories;
+    private CategoryListFragment fragment;
 
     private SharedPreferencesTranslator translator;
 
-    public TopCategoriesAdapter(Context context, String[] topCategories) {
+    public TopCategoriesAdapter(CategoryListFragment fragment, String[] topCategories) {
+        this.fragment = fragment;
         this.categories = topCategories;
-        this.context = context;
-        this.translator = new SharedPreferencesTranslator(PreferenceManager.getDefaultSharedPreferences(context));
+        this.translator = new SharedPreferencesTranslator(PreferenceManager.getDefaultSharedPreferences(fragment.getContext()));
     }
 
     @NonNull
     @Override
     public TopCategoriesAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.top_cat_item, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_category_top, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
         holder.topLabel.setText(translator.getString(categories[position]));
-        holder.topLabel.setOnClickListener(v ->
-                context.startActivity(CategoryAppsActivity.start(context, categories[holder.getAdapterPosition()])));
+        holder.topLabel.setOnClickListener(v -> {
+            CategoryAppsFragment categoryAppsFragment = new CategoryAppsFragment();
+            Bundle arguments = new Bundle();
+            arguments.putString("CategoryId", categories[position]);
+            categoryAppsFragment.setArguments(arguments);
+            fragment.getChildFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.container, categoryAppsFragment)
+                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                    .addToBackStack("CAT")
+                    .commit();
+        });
     }
 
     @Override

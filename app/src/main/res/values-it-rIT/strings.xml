@@ -219,7 +219,7 @@ Tocca su \"Crea password\" per aprire la pagina di creazione password."</string>
 Vuoi attivare gli aggiornamenti giornalieri?"</string>
     <string name="list_update_automatic_switch">"Abilita"</string>
     <string name="list_update_all">"Aggiorna tutte"</string>
-    <string name="list_update_all_txt">"Aggiornamento(i) disponibile(i): %1$s"</string>
+    <string name="list_update_all_txt">"Aggiornamento(i) disponibile(i)"</string>
     <string name="list_update_chk_txt">"Controllo aggiornamenti…"</string>
     <string name="list_update_recheck">"Ricontrolla"</string>
     <string name="list_updating">"Aggiornamento in corso…"</string>

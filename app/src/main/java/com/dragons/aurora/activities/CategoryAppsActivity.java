@@ -44,7 +44,7 @@ public class CategoryAppsActivity extends AuroraActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.helper_activity_alt);
+        setContentView(R.layout.activity_helper_alt);
         onNewIntent(getIntent());
     }
 
@@ -81,6 +81,8 @@ public class CategoryAppsActivity extends AuroraActivity {
         Bundle arguments = new Bundle();
         arguments.putString("CategoryId", categoryId);
         categoryAppsFragment.setArguments(arguments);
-        getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, categoryAppsFragment).commit();
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.container, categoryAppsFragment).commit();
     }
 }

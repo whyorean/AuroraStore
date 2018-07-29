@@ -24,8 +24,6 @@ package com.dragons.aurora.adapters;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,13 +40,16 @@ import com.dragons.aurora.activities.FullscreenImageActivity;
 
 import java.util.List;
 
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
 public class SmallScreenshotsAdapter extends RecyclerView.Adapter<SmallScreenshotsAdapter.ViewHolder> {
 
-    private List<SmallScreenshotsAdapter.Holder> ssholder;
+    private List<String> URLs;
     private Context context;
 
-    public SmallScreenshotsAdapter(List<SmallScreenshotsAdapter.Holder> FeaturedAppsH, Context context) {
-        this.ssholder = FeaturedAppsH;
+    public SmallScreenshotsAdapter(List<String> URLs, Context context) {
+        this.URLs = URLs;
         this.context = context;
     }
 
@@ -56,19 +57,17 @@ public class SmallScreenshotsAdapter extends RecyclerView.Adapter<SmallScreensho
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.screenshots_item_small, parent, false);
+                .inflate(R.layout.item_screenshots_small, parent, false);
         return new ViewHolder(itemView);
     }
 
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
-        final SmallScreenshotsAdapter.Holder ssholder = this.ssholder.get(position);
-        String url = ssholder.url.get(position);
         Glide
                 .with(context)
-                .load(url)
+                .load(URLs.get(position))
                 .apply(new RequestOptions()
-                        .transforms(new CenterCrop(), new RoundedCorners(25))
+                        .transforms(new CenterCrop(), new RoundedCorners(15))
                         .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC))
                 .transition(new DrawableTransitionOptions().crossFade())
                 .into(holder.ss_image);
@@ -82,15 +81,7 @@ public class SmallScreenshotsAdapter extends RecyclerView.Adapter<SmallScreensho
 
     @Override
     public int getItemCount() {
-        return ssholder.size();
-    }
-
-    public static class Holder {
-        List<String> url;
-
-        public Holder(List<String> url) {
-            this.url = url;
-        }
+        return URLs.size();
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {

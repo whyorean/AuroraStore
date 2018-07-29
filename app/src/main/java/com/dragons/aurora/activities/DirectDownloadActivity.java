@@ -32,7 +32,7 @@ import com.dragons.aurora.model.App;
 import com.dragons.aurora.task.playstore.DetailsTask;
 import com.dragons.aurora.task.playstore.PurchaseTask;
 
-public class DirectDownloadActivity extends AuroraActivity {
+public class DirectDownloadActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

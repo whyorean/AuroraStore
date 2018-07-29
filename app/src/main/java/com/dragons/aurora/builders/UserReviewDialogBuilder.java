@@ -46,7 +46,7 @@ public class UserReviewDialogBuilder {
 
     public Dialog show(final com.dragons.aurora.model.Review review) {
         dialog = new Dialog(context);
-        dialog.setContentView(R.layout.review_dialog_layout);
+        dialog.setContentView(R.layout.dialog_review);
 
         getCommentView().setText(review.getComment());
         getTitleView().setText(review.getTitle());
@@ -55,12 +55,7 @@ public class UserReviewDialogBuilder {
         dialog.setCancelable(true);
         dialog.setTitle(R.string.details_review_dialog_title);
         dialog.findViewById(R.id.review_dialog_done).setOnClickListener(new DoneOnClickListener(review));
-        dialog.findViewById(R.id.review_dialog_cancel).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-            }
-        });
+        dialog.findViewById(R.id.review_dialog_cancel).setOnClickListener(v -> dialog.dismiss());
         dialog.show();
         return dialog;
     }
@@ -77,7 +72,7 @@ public class UserReviewDialogBuilder {
 
         private final com.dragons.aurora.model.Review review;
 
-        public DoneOnClickListener(com.dragons.aurora.model.Review review) {
+        private DoneOnClickListener(com.dragons.aurora.model.Review review) {
             this.review = review;
         }
 

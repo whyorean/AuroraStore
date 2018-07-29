@@ -224,7 +224,7 @@ Rediriger vers la page Web Play Store?"</string>
 Activer les mises à jour quotidiennes?"</string>
     <string name="list_update_automatic_switch">"Allumer"</string>
     <string name="list_update_all">"Tout mettre à jour"</string>
-    <string name="list_update_all_txt">"Mise à jour (s) disponible (s):% 1 $ s"</string>
+    <string name="list_update_all_txt">"Mise à jour (s) disponible (s)"</string>
     <string name="list_update_chk_txt">"Vérification des mises à jour .."</string>
     <string name="list_update_recheck">"Revérifier"</string>
     <string name="list_updating">"Mise à jour …"</string>

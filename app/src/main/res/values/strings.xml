@@ -123,9 +123,9 @@
     <string name="details_playstore">Play Store</string>
     <string name="details_purchase">Purchase</string>
     <string name="details_rate_this_app">Rate this app</string>
-    <string name="details_review_dialog_fields_optional">You can leave everything blank.</string>
-    <string name="details_review_dialog_review_comment_hint">comment here</string>
-    <string name="details_review_dialog_review_title_hint">title here</string>
+    <string name="details_review_dialog_fields_optional">You can leave everything blank</string>
+    <string name="details_review_dialog_review_comment_hint">Comment here</string>
+    <string name="details_review_dialog_review_title_hint">Title here</string>
     <string name="details_review_dialog_title">Anything else to add?</string>
     <string name="details_run">Open</string>
     <string name="details_run_with">Open with</string>
@@ -221,7 +221,7 @@
     <string name="list_update_automatic_summ">Updates bring you the best new features. Aurora will only update apps over WiFi.\n\nTurn daily updates on ?</string>
     <string name="list_update_automatic_switch">Turn On</string>
     <string name="list_update_all">Update All</string>
-    <string name="list_update_all_txt">Update(s) available : %1$s"</string>
+    <string name="list_update_all_txt">Update(s) available"</string>
     <string name="list_update_chk_txt">Checking for updates..</string>
     <string name="list_update_recheck">Recheck</string>
     <string name="list_updating">Updating…</string>
@@ -251,6 +251,8 @@
     <string name="ohh_snap_retry">Retry</string>
     <string name="pref_app_ui">Color UI</string>
     <string name="pref_app_ui_summary">Make UI colorful by drawing colors from app icons.</string>
+    <string name="pref_app_bottom_ui">Color Bottom Navbar</string>
+    <string name="pref_app_bottom_ui_summary">Set colors to Bottom Navigation</string>
     <string name="pref_app_swipe">Swipe pages</string>
     <string name="pref_app_swipe_summary">Swipe on pages to switch between them.</string>
     <string name="pref_app_ime">Search IME</string>

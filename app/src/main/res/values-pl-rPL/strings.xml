@@ -220,7 +220,7 @@ Tap \"Create password\" to be redirected to password creation page."</string>
 Włączyć codzienne aktualizacje?"</string>
     <string name="list_update_automatic_switch">"Włącz"</string>
     <string name="list_update_all">"Aktualizuj"</string>
-    <string name="list_update_all_txt">"Aktualizacji dostępnych: %1$s"</string>
+    <string name="list_update_all_txt">"Aktualizacji dostępnych"</string>
     <string name="list_update_chk_txt">"Sprawdzanie aktualizacji.."</string>
     <string name="list_update_recheck">"Sprawdz ponownie"</string>
     <string name="list_updating">"Aktualizowanie..."</string>

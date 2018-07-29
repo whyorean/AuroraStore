@@ -114,7 +114,7 @@ public class PermissionGroup extends LinearLayout {
     }
 
     private void init() {
-        inflate(getContext(), R.layout.permission_group_widget_layout, this);
+        inflate(getContext(), R.layout.layout_permission, this);
         pm = getContext().getPackageManager();
     }
 
@@ -145,7 +145,7 @@ public class PermissionGroup extends LinearLayout {
         }
         CharSequence label = null == permissionGroupInfo ? "" : permissionGroupInfo.loadLabel(pm);
         final String title = TextUtils.isEmpty(label) ? "" : label.toString();
-        return v -> new AlertDialog.Builder(getContext())
+        return v -> new AlertDialog.Builder(getContext(), R.style.ThemeOverlay_MaterialComponents_Dialog)
                 .setIcon(getPermissionGroupIcon(permissionGroupInfo))
                 .setTitle((title.equals(permissionGroupInfo.name) || title.equals(permissionGroupInfo.packageName)) ? "" : title)
                 .setMessage(message)

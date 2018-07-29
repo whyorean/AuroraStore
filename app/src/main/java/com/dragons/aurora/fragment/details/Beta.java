@@ -29,6 +29,7 @@ import android.widget.TextView;
 import com.dragons.aurora.ContextUtil;
 import com.dragons.aurora.R;
 import com.dragons.aurora.fragment.DetailsFragment;
+import com.dragons.aurora.helpers.Accountant;
 import com.dragons.aurora.model.App;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 import com.dragons.aurora.task.playstore.BetaToggleTask;
@@ -46,11 +47,13 @@ public class Beta extends AbstractHelper {
 
     @Override
     public void draw() {
-        if (isDummy() && app.isTestingProgramAvailable() && app.isTestingProgramOptedIn()) {
-            new BetaToggleTask(app).execute();
+        if (Accountant.isDummy(context) && app.isTestingProgramAvailable() && app.isTestingProgramOptedIn()) {
+            BetaToggleTask mBetaToggleTask = new BetaToggleTask(app);
+            mBetaToggleTask.setContext(context);
+            mBetaToggleTask.execute();
             return;
         }
-        if (!app.isInstalled() || !app.isTestingProgramAvailable() || isDummy()) {
+        if (!app.isInstalled() || !app.isTestingProgramAvailable() || Accountant.isDummy(context)) {
             return;
         }
 
