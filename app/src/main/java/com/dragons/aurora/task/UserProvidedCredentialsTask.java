@@ -21,21 +21,24 @@
 
 package com.dragons.aurora.task;
 
-import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
 import android.preference.PreferenceManager;
 import android.text.InputType;
 import android.text.TextUtils;
+import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.dragons.aurora.ContextUtil;
 import com.dragons.aurora.CredentialsEmptyException;
-import com.dragons.aurora.GoogleAccountInfo;
 import com.dragons.aurora.PlayStoreApiAuthenticator;
 import com.dragons.aurora.R;
 import com.dragons.aurora.activities.AccountsActivity;
@@ -43,6 +46,9 @@ import com.dragons.aurora.fragment.PreferenceFragment;
 import com.dragons.aurora.helpers.Accountant;
 import com.dragons.aurora.helpers.Prefs;
 import com.dragons.aurora.playstoreapiv2.AuthException;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -185,32 +191,35 @@ public class UserProvidedCredentialsTask extends CheckCredentialsTask {
         }
     }
 
-    @SuppressLint("StaticFieldLeak")
     private void setUser() {
         Email = PreferenceFragment.getString(context, PlayStoreApiAuthenticator.PREFERENCE_EMAIL);
-        new GoogleAccountInfo(Email) {
-            @Override
-            public void onPostExecute(String result) {
-                parseRAW(result);
-            }
-        }.execute();
+        getJSON(Email);
     }
 
-    private void parseRAW(String rawData) {
-        String PICASAWEB = "picasaweb";
-        String UNKNOWN = "Unknown user.";
-        String name;
-        String url;
-        if (rawData.contains(PICASAWEB) && !rawData.contains(UNKNOWN)) {
-            name = rawData.substring(rawData.indexOf("<name>") + 6, rawData.indexOf("</name>"));
-            url = rawData.substring(rawData.indexOf("<gphoto:thumbnail>") + 18, rawData.lastIndexOf("</gphoto:thumbnail>"));
-        } else {
-            name = Email;
-            url = "I dont fucking care";
-        }
+    private void getJSON(String ID) {
+        RequestQueue mRequestQueue = Volley.newRequestQueue(context);
+        JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.GET,
+                "http://picasaweb.google.com/data/entry/api/user/" + ID + "?alt=json",
+                null,
+                obj -> parseJSON(obj, true),
+                error -> parseJSON(new JSONObject(), false));
+        mRequestQueue.add(jsonObjReq);
+    }
 
-        Prefs.putString(context, GOOGLE_NAME, name);
-        Prefs.putString(context, GOOGLE_URL, url);
+    private void parseJSON(JSONObject obj, Boolean success) {
+        String Username = Email;
+        String ImgURL = "https://imgur.com/qgNTGK1.png";
+        if (success) {
+            try {
+                JSONObject mJsonObject = obj.getJSONObject("entry");
+                Username = mJsonObject.getJSONObject("gphoto$nickname").getString("$t");
+                ImgURL = mJsonObject.getJSONObject("gphoto$thumbnail").getString("$t");
+            } catch (JSONException e) {
+                Log.e(getClass().getSimpleName(), e.getMessage());
+            }
+        }
+        Prefs.putString(context, GOOGLE_NAME, Username);
+        Prefs.putString(context, GOOGLE_URL, ImgURL);
         Prefs.putBoolean(context, LOGGED_IN, true);
         Prefs.putBoolean(context, GOOGLE_ACC, true);
         Prefs.putBoolean(context, DUMMY_ACC, false);
