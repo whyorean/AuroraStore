@@ -42,6 +42,8 @@ import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 import com.percolate.caffeine.PhoneUtils;
 import com.percolate.caffeine.ViewUtils;
 
+import org.json.JSONArray;
+
 import java.io.Closeable;
 import java.io.File;
 import java.io.IOException;
@@ -319,5 +321,15 @@ public class Util {
         } else {
             textView.setVisibility(View.GONE);
         }
+    }
+
+    public static String[] getStringArray(JSONArray array) {
+        if (array == null)
+            return null;
+        String[] arr = new String[array.length()];
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = array.optString(i);
+        }
+        return arr;
     }
 }

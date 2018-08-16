@@ -1,0 +1,98 @@
+<!--
+  ~ Aurora Store
+  ~ Copyright (C) 2018  Rahul Kumar Patel <whyorean@gmail.com>
+  ~
+  ~ Yalp Store
+  ~ Copyright (C) 2018 Sergey Yeriomin <yeriomin@gmail.com>
+  ~
+  ~ Aurora Store (a fork of Yalp Store )is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 2 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ Aurora Store is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with Aurora Store.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/exodus_head"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:background="@color/exodusPrimaryDark">
+
+            <ImageView
+                android:id="@+id/exodus_img"
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/ic_exodus" />
+        </RelativeLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/exodus_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/action_container"
+            android:layout_below="@id/exodus_head"
+            android:layout_margin="5dp" />
+
+        <LinearLayout
+            android:id="@+id/action_container"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_below="@id/changes_container"
+            android:layout_alignParentBottom="true"
+            android:background="@color/exodusPrimaryDark"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_close"
+                style="@style/Widget.MaterialComponents.Button.TextButton.Dialog"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="?android:attr/selectableItemBackground"
+                android:maxLines="1"
+                android:padding="5dp"
+                android:text="@android:string/cancel"
+                android:textAllCaps="false"
+                android:textColor="@color/exodusTextPrimary" />
+
+            <View
+                android:id="@+id/div3"
+                android:layout_width=".5dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@color/exodusTextPrimary" />
+
+            <Button
+                android:id="@+id/btn_report"
+                style="@style/Widget.MaterialComponents.Button.TextButton.Dialog"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="?android:attr/selectableItemBackground"
+                android:maxLines="1"
+                android:padding="5dp"
+                android:text="@string/exodus_viewReport"
+                android:textAllCaps="false"
+                android:textColor="@color/exodusTextPrimary" />
+
+        </LinearLayout>
+    </RelativeLayout>
+</merge>

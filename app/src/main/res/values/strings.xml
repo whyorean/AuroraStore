@@ -188,7 +188,8 @@
     <string name="exodus_noTracker">Contains no trackers</string>
     <string name="exodus_powered">Powered by Exodus</string>
     <string name="exodus_title">Aurora Protect</string>
-    <string name="exodus_viewMore">View Details</string>
+    <string name="exodus_viewMore">View</string>
+    <string name="exodus_viewReport">View Report</string>
     <string name="flagging_title">Flag as inappropriate</string>
     <string name="flag_graphic_violence">Graphic violence</string>
     <string name="flag_harmful_prompt">Describe the harm caused to your device or data:</string>

@@ -58,4 +58,9 @@
     <color name="colorGold">#FFBF00</color>
     <color name="colorPink">#F50057</color>
     <color name="colorLime">#CDDC39</color>
+
+    <!--Exodus-->
+    <color name="exodusPrimary">#684971</color>
+    <color name="exodusPrimaryDark">#3D3144</color>
+    <color name="exodusTextPrimary">#BBB</color>
 </resources>

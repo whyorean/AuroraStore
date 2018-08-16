@@ -166,6 +166,7 @@ public class GeneralDetails extends AbstractHelper {
         paintButton(color, R.id.run);
         paintButton(color, R.id.beta_subscribe_button);
         paintButton(color, R.id.beta_submit_button);
+        paintButton(color, R.id.moreButton);
         if (!Util.isDark(fragment.getContext())) {
             paintTextView(color, R.id.beta_header);
             paintTextView(color, R.id.permissions_header);

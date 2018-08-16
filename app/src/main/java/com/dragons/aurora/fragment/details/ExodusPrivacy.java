@@ -22,13 +22,16 @@
 package com.dragons.aurora.fragment.details;
 
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Paint;
 import android.net.Uri;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
-import android.widget.TextView;
+import android.view.WindowManager;
+import android.view.animation.AnimationUtils;
+import android.widget.Button;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -36,17 +39,31 @@ import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.dragons.aurora.R;
+import com.dragons.aurora.Util;
+import com.dragons.aurora.adapters.ExodusAdapter;
 import com.dragons.aurora.fragment.DetailsFragment;
 import com.dragons.aurora.model.App;
+import com.dragons.aurora.model.ExodusTracker;
 import com.percolate.caffeine.ViewUtils;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
+
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import static com.android.volley.VolleyLog.TAG;
 
 public class ExodusPrivacy extends AbstractHelper {
+
+    private String AppID;
+    private JSONArray trackersIDs;
 
     public ExodusPrivacy(DetailsFragment fragment, App app) {
         super(fragment, app);
@@ -69,10 +86,9 @@ public class ExodusPrivacy extends AbstractHelper {
                 JSONObject exodusReport = response.getJSONObject(app.getPackageName());
                 JSONArray reportsArray = exodusReport.getJSONArray("reports");
                 JSONObject trackersReport = reportsArray.getJSONObject(0);
-                JSONArray trackers = trackersReport.getJSONArray("trackers");
-                String appId = trackersReport.getString("id");
-                drawExodus(trackers, appId);
-                Log.i("EXODUS_PRIVACY", trackers.toString());
+                trackersIDs = trackersReport.getJSONArray("trackers");
+                AppID = trackersReport.getString("id");
+                drawExodus(trackersIDs, AppID);
             } catch (JSONException e) {
                 Log.i("EXODUS_PRIVACY", "Error occurred at Exodus Privacy");
             }
@@ -82,17 +98,94 @@ public class ExodusPrivacy extends AbstractHelper {
 
     private void drawExodus(JSONArray appTrackers, String appId) {
         if (fragment.getActivity() != null) {
-            ViewUtils.findViewById(fragment.getActivity(), R.id.exodus_card).setVisibility(View.VISIBLE);
+            ViewUtils.findViewById(view, R.id.exodus_card).setVisibility(View.VISIBLE);
             if (appTrackers.length() > 0) {
-                setText(fragment.getView(), R.id.exodus_description, R.string.exodus_hasTracker, appTrackers.length());
+                setText(view, R.id.exodus_description, R.string.exodus_hasTracker, appTrackers.length());
             } else {
-                setText(fragment.getView(), R.id.exodus_description, R.string.exodus_noTracker);
+                setText(view, R.id.exodus_description, R.string.exodus_noTracker);
             }
 
-            TextView viewMore = fragment.getActivity().findViewById(R.id.viewMore);
-            viewMore.setPaintFlags(viewMore.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
-            viewMore.setOnClickListener(click -> fragment.getActivity().startActivity(new Intent(Intent.ACTION_VIEW,
-                    Uri.parse("https://reports.exodus-privacy.eu.org/reports/" + appId + "/"))));
+
+            Button moreButton = view.findViewById(R.id.moreButton);
+            if (trackersIDs.isNull(0))
+                moreButton.setVisibility(View.GONE);
+            moreButton.setOnClickListener(v -> {
+                showDialog();
+            });
+        }
+    }
+
+    private void showDialog() {
+        Dialog ad = new Dialog(context);
+        ad.setContentView(R.layout.dialog_exodus);
+        ad.setCancelable(true);
+
+        WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams();
+        layoutParams.copyFrom(ad.getWindow().getAttributes());
+        layoutParams.width = WindowManager.LayoutParams.MATCH_PARENT;
+        layoutParams.height = WindowManager.LayoutParams.WRAP_CONTENT;
+        layoutParams.gravity = Gravity.CENTER;
+
+        ad.getWindow().setAttributes(layoutParams);
+
+        RecyclerView mRecyclerView = ad.findViewById(R.id.exodus_recycler);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
+        mRecyclerView.setLayoutAnimation(AnimationUtils.loadLayoutAnimation(context, R.anim.layout_anim));
+        mRecyclerView.setAdapter(new ExodusAdapter(context, getTrackerData(trackersIDs)));
+
+        Button btn_report = ad.findViewById(R.id.btn_report);
+        Button btn_close = ad.findViewById(R.id.btn_close);
+
+        btn_report.setOnClickListener(v -> context.startActivity(new Intent(Intent.ACTION_VIEW,
+                Uri.parse("https://reports.exodus-privacy.eu.org/reports/" + AppID + "/"))));
+        btn_close.setOnClickListener(v -> ad.dismiss());
+
+        ad.show();
+    }
+
+    private List<ExodusTracker> getTrackerData(JSONArray trackersIDs) {
+        List<ExodusTracker> mExodusTrackers = new ArrayList<>();
+        ArrayList<JSONObject> trackerObjects = getTrackerObjects(Util.getStringArray(trackersIDs));
+
+        for (JSONObject obj : trackerObjects) {
+            ExodusTracker mExodusTracker = null;
+            try {
+                mExodusTracker = new ExodusTracker(
+                        obj.getString("name"),
+                        obj.getString("website"),
+                        obj.getString("code_signature"),
+                        obj.getString("creation_date"));
+            } catch (JSONException e) {
+                Log.e("Bazinga", e.getMessage());
+            }
+            if (mExodusTracker != null)
+                mExodusTrackers.add(mExodusTracker);
+        }
+        return mExodusTrackers;
+    }
+
+    private ArrayList<JSONObject> getTrackerObjects(String[] IDs) {
+        ArrayList<JSONObject> trackerObjects = new ArrayList<>();
+        for (String ID : IDs) {
+            trackerObjects.add(getOfflineTrackerObj(ID));
+        }
+        return trackerObjects;
+    }
+
+    private JSONObject getOfflineTrackerObj(String trackerID) {
+        String ExodusJSON = null;
+        try {
+            InputStream mInputStream = context.getAssets().open("exodus_trackers.json");
+            byte[] mByte = new byte[mInputStream.available()];
+            mInputStream.read(mByte);
+            mInputStream.close();
+            ExodusJSON = new String(mByte, "UTF-8");
+            JSONArray mJsonArray = new JSONArray(ExodusJSON);
+            JSONObject mJsonObject = mJsonArray.getJSONObject(0);
+            return mJsonObject.getJSONObject(trackerID);
+        } catch (IOException | JSONException e) {
+            e.printStackTrace();
+            return null;
         }
     }
 }
