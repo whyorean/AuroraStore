@@ -109,6 +109,7 @@
     <string name="details_developer">"%1$s"</string>
     <string name="details_download">Get</string>
     <string name="details_download_checking">Checking</string>
+    <string name="details_download_queued">Queued</string>
     <string name="details_download_not_available">Not available</string>
     <string name="details_install">Install</string>
     <string name="details_installed">"Installed successfully"</string>

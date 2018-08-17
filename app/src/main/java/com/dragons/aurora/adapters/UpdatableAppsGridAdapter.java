@@ -47,9 +47,9 @@ import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.Target;
 import com.dragons.aurora.BlackWhiteListManager;
 import com.dragons.aurora.R;
+import com.dragons.aurora.Util;
 import com.dragons.aurora.activities.AuroraActivity;
 import com.dragons.aurora.activities.DetailsActivity;
-import com.dragons.aurora.downloader.DownloadState;
 import com.dragons.aurora.fragment.UpdatableAppsFragment;
 import com.dragons.aurora.fragment.details.ButtonDownload;
 import com.dragons.aurora.model.App;
@@ -198,13 +198,17 @@ public class UpdatableAppsGridAdapter extends RecyclerView.Adapter<UpdatableApps
                 })
                 .into(AppBanner);
 
-        DownloadState state = DownloadState.get(app.getPackageName());
-        if (state != null && !state.isEverythingSuccessful()) {
-            Update.setText("Queued");
+        if (Util.isAlreadyQueued(app)) {
+            Update.setText(mContext.getResources().getString(R.string.details_download_queued));
             Update.setEnabled(false);
         }
 
-        Update.setOnClickListener(v -> new ButtonDownload(fragment.getContext(), fragment.getView(), app).checkAndDownload());
+        Update.setOnClickListener(v -> {
+            new ButtonDownload(fragment.getContext(), fragment.getView(), app).checkAndDownload();
+            Update.setText(mContext.getResources().getString(R.string.details_download_queued));
+            Update.setEnabled(false);
+        });
+
         Blacklist.setOnClickListener(v -> {
             new BlackWhiteListManager(mContext).add(app.getPackageName());
             ad.dismiss();

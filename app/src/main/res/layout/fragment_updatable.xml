@@ -42,39 +42,47 @@
 
             <TextView
                 android:id="@+id/updates_txt"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginStart="5dp"
                 android:layout_marginEnd="5dp"
+                android:layout_toStartOf="@id/action_container"
                 android:fontFamily="@font/google_sans_bold"
                 android:text="@string/list_update_chk_txt"
                 android:textColor="?android:attr/textColorPrimary"
                 android:textSize="18sp" />
 
-            <Button
-                android:id="@+id/update_all"
+            <LinearLayout
+                android:id="@+id/action_container"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:background="@drawable/button_positive"
-                android:maxLines="1"
-                android:text="@string/list_update_all"
-                android:textAllCaps="false"
-                android:visibility="gone" />
+                android:layout_alignParentEnd="true">
 
-            <Button
-                android:id="@+id/update_cancel"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:maxLines="1"
-                android:text="@string/details_cancel"
-                android:textAllCaps="false"
-                android:textColor="@color/colorRed"
-                android:visibility="gone" />
+                <Button
+                    android:id="@+id/update_all"
+                    style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/button_positive"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="@string/list_update_all"
+                    android:textAllCaps="false"
+                    android:visibility="gone" />
 
+                <Button
+                    android:id="@+id/update_cancel"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="@string/details_cancel"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorRed"
+                    android:visibility="gone" />
+            </LinearLayout>
         </RelativeLayout>
 
         <LinearLayout
