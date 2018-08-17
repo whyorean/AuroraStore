@@ -35,9 +35,7 @@ import android.widget.TextView;
 
 import com.dragons.aurora.Util;
 import com.dragons.aurora.fragment.DetailsFragment;
-import com.dragons.aurora.fragment.PreferenceFragment;
 import com.dragons.aurora.model.App;
-import com.percolate.caffeine.PhoneUtils;
 import com.percolate.caffeine.ViewUtils;
 
 import androidx.annotation.NonNull;
@@ -46,6 +44,7 @@ import androidx.core.view.ViewCompat;
 
 public abstract class AbstractHelper {
 
+    public static int color;
     protected DetailsFragment fragment;
     protected App app;
     protected View view;
@@ -79,31 +78,31 @@ public abstract class AbstractHelper {
         ViewUtils.findViewById(v, viewID).setVisibility(View.VISIBLE);
     }
 
-    protected void paintButton(int color, int buttonId) {
+    protected void paintButton(int buttonId) {
         android.widget.Button button = view.findViewById(buttonId);
         if (button != null)
             ViewCompat.setBackgroundTintList(button, ColorStateList.valueOf(color));
     }
 
-    protected void paintRLayout(int color, int layoutId) {
+    protected void paintRLayout(int layoutId) {
         RelativeLayout relativeLayout = view.findViewById(layoutId);
         if (relativeLayout != null)
             relativeLayout.setBackgroundColor(color);
     }
 
-    void paintLLayout(int color, int viewID) {
+    void paintLLayout(int viewID) {
         LinearLayout layout = view.findViewById(viewID);
         if (layout != null && !Util.isDark(fragment.getContext()))
             ViewCompat.setBackgroundTintList(layout, ColorStateList.valueOf(ColorUtils.setAlphaComponent(color, 50)));
     }
 
-    protected void paintTextView(int color, int textViewId) {
+    protected void paintTextView(int textViewId) {
         TextView textView = view.findViewById(textViewId);
         if (textView != null)
             textView.setTextColor(color);
     }
 
-    protected void paintImageView(int color, int imageViewId) {
+    protected void paintImageView(int imageViewId) {
         ImageView imageView = view.findViewById(imageViewId);
         if (imageView != null)
             imageView.setColorFilter(color);

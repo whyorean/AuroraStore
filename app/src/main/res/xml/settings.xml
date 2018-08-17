@@ -21,16 +21,14 @@
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <PreferenceCategory android:title="Extras">
+    <PreferenceCategory android:title="@string/action_settings">
         <Preference
             android:key="PREF_ACCOUNTS"
-            android:summary="More about us"
             android:title="@string/action_about">
             <intent android:action=".activities.AboutActivity" />
         </Preference>
         <Preference
             android:key="PREF_SPOFF"
-            android:summary="Whole bunch on bitchery"
             android:title="@string/action_spoofed">
             <intent android:action=".activities.SpoofActivity" />
         </Preference>

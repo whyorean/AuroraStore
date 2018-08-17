@@ -30,8 +30,13 @@
         <RelativeLayout
             android:id="@+id/exodus_head"
             android:layout_width="match_parent"
-            android:layout_height="120dp"
-            android:background="@color/exodusPrimaryDark">
+            android:layout_height="120dp">
+
+            <ImageView
+                android:id="@+id/exodus_img_bg"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/exodusPrimaryDark" />
 
             <ImageView
                 android:id="@+id/exodus_img"

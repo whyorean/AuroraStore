@@ -25,6 +25,7 @@ package com.dragons.aurora.fragment.details;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.util.Log;
 import android.view.Gravity;
@@ -32,6 +33,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -42,6 +44,7 @@ import com.dragons.aurora.R;
 import com.dragons.aurora.Util;
 import com.dragons.aurora.adapters.ExodusAdapter;
 import com.dragons.aurora.fragment.DetailsFragment;
+import com.dragons.aurora.helpers.Prefs;
 import com.dragons.aurora.model.App;
 import com.dragons.aurora.model.ExodusTracker;
 import com.percolate.caffeine.ViewUtils;
@@ -55,6 +58,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.palette.graphics.Palette;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -88,7 +92,7 @@ public class ExodusPrivacy extends AbstractHelper {
                 JSONObject trackersReport = reportsArray.getJSONObject(0);
                 trackersIDs = trackersReport.getJSONArray("trackers");
                 AppID = trackersReport.getString("id");
-                drawExodus(trackersIDs, AppID);
+                drawExodus(trackersIDs);
             } catch (JSONException e) {
                 Log.i("EXODUS_PRIVACY", "Error occurred at Exodus Privacy");
             }
@@ -96,7 +100,7 @@ public class ExodusPrivacy extends AbstractHelper {
         mRequestQueue.add(jsonObjReq);
     }
 
-    private void drawExodus(JSONArray appTrackers, String appId) {
+    private void drawExodus(JSONArray appTrackers) {
         if (fragment.getActivity() != null) {
             ViewUtils.findViewById(view, R.id.exodus_card).setVisibility(View.VISIBLE);
             if (appTrackers.length() > 0) {
@@ -110,12 +114,12 @@ public class ExodusPrivacy extends AbstractHelper {
             if (trackersIDs.isNull(0))
                 moreButton.setVisibility(View.GONE);
             moreButton.setOnClickListener(v -> {
-                showDialog();
+                showDialog(AbstractHelper.color);
             });
         }
     }
 
-    private void showDialog() {
+    private void showDialog(int color) {
         Dialog ad = new Dialog(context);
         ad.setContentView(R.layout.dialog_exodus);
         ad.setCancelable(true);
@@ -127,6 +131,14 @@ public class ExodusPrivacy extends AbstractHelper {
         layoutParams.gravity = Gravity.CENTER;
 
         ad.getWindow().setAttributes(layoutParams);
+
+        if (Prefs.getBoolean(context, "COLOR_UI")) {
+            ImageView mImageView = ad.findViewById(R.id.exodus_img_bg);
+            mImageView.setBackgroundColor(color);
+            Bitmap mBitmap = Bitmap.createBitmap(100, 100, Bitmap.Config.ARGB_8888);
+            mBitmap.eraseColor(color);
+            getPalette(mBitmap, ad);
+        }
 
         RecyclerView mRecyclerView = ad.findViewById(R.id.exodus_recycler);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
@@ -141,6 +153,19 @@ public class ExodusPrivacy extends AbstractHelper {
         btn_close.setOnClickListener(v -> ad.dismiss());
 
         ad.show();
+    }
+
+    private void getPalette(Bitmap bitmap, Dialog ad) {
+        Palette.from(bitmap).generate(palette ->
+        {
+            Palette.Swatch mSwatch = palette.getDominantSwatch();
+            if (mSwatch != null) {
+                ad.findViewById(R.id.action_container).setBackgroundColor(mSwatch.getRgb());
+                ad.findViewById(R.id.div3).setBackgroundColor(mSwatch.getBodyTextColor());
+                ((Button) ad.findViewById(R.id.btn_report)).setTextColor(mSwatch.getBodyTextColor());
+                ((Button) ad.findViewById(R.id.btn_close)).setTextColor(mSwatch.getBodyTextColor());
+            }
+        });
     }
 
     private List<ExodusTracker> getTrackerData(JSONArray trackersIDs) {

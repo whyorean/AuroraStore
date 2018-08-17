@@ -152,31 +152,34 @@ public class GeneralDetails extends AbstractHelper {
     }
 
     private void getPalette(Bitmap bitmap) {
-        Palette.from(bitmap).generate(palette ->
-                paintEmAll(palette.getDarkVibrantColor(Util.isDark(fragment.getContext())
+        Palette.from(bitmap).generate(palette -> {
+            if (palette != null)
+                paintEmAll(palette.getDarkVibrantColor(Util.isDark(context)
                         ? palette.getDominantColor(Color.LTGRAY)
                         : palette.getDominantColor(Color.DKGRAY))
-                ));
+                );
+        });
     }
 
     private void paintEmAll(int color) {
-        paintRLayout(color, R.id.details_header);
-        paintButton(color, R.id.download);
-        paintButton(color, R.id.install);
-        paintButton(color, R.id.run);
-        paintButton(color, R.id.beta_subscribe_button);
-        paintButton(color, R.id.beta_submit_button);
-        paintButton(color, R.id.moreButton);
+        AbstractHelper.color = color;
+        paintRLayout(R.id.details_header);
+        paintButton(R.id.download);
+        paintButton(R.id.install);
+        paintButton(R.id.run);
+        paintButton(R.id.beta_subscribe_button);
+        paintButton(R.id.beta_submit_button);
+        paintButton(R.id.moreButton);
         if (!Util.isDark(fragment.getContext())) {
-            paintTextView(color, R.id.beta_header);
-            paintTextView(color, R.id.permissions_header);
-            paintTextView(color, R.id.review_header);
-            paintTextView(color, R.id.exodus_title);
-            paintTextView(color, R.id.changes_upper);
-            paintTextView(color, R.id.showLessMoreTxt);
+            paintTextView(R.id.beta_header);
+            paintTextView(R.id.permissions_header);
+            paintTextView(R.id.review_header);
+            paintTextView(R.id.exodus_title);
+            paintTextView(R.id.changes_upper);
+            paintTextView(R.id.showLessMoreTxt);
         }
-        paintLLayout(color, R.id.changes_container);
-        paintImageView(color, R.id.privacy_ico);
+        paintLLayout(R.id.changes_container);
+        paintImageView(R.id.privacy_ico);
     }
 
     private void drawGeneralDetails(App app) {
