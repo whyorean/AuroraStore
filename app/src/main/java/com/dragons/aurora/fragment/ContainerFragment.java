@@ -172,9 +172,11 @@ public class ContainerFragment extends Fragment implements UpdatableAppsFragment
 
     @Override
     public void setUpdateCount(int count) {
-        AHNotification notification = new AHNotification.Builder()
-                .setText(String.valueOf(count))
-                .build();
-        bottomNavigationView.setNotification(notification, 2);
+        if (count > 0) {
+            AHNotification notification = new AHNotification.Builder()
+                    .setText(String.valueOf(count))
+                    .build();
+            bottomNavigationView.setNotification(notification, 2);
+        }
     }
 }
