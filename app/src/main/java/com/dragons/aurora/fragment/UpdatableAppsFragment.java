@@ -22,6 +22,7 @@
 package com.dragons.aurora.fragment;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -51,6 +52,7 @@ import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import io.reactivex.Observable;
@@ -64,7 +66,6 @@ import static com.dragons.aurora.Util.show;
 
 public class UpdatableAppsFragment extends UpdatableAppsTaskHelper {
 
-    private static final int sColumnWidth = 128;
     public static boolean recheck = false;
     public UpdatableAppsGridAdapter updatableAppsAdapter;
     private SwipeRefreshLayout swipeRefreshLayout;
@@ -214,10 +215,15 @@ public class UpdatableAppsFragment extends UpdatableAppsTaskHelper {
     }
 
     private void setupRecycler(List<App> appsToAdd) {
-        updatableAppsAdapter = new UpdatableAppsGridAdapter(this, (AuroraActivity) getActivity(), appsToAdd);
-        recyclerView.setLayoutManager(new GridAutoFitLayoutManager(getContext(), 128));
-        recyclerView.setLayoutAnimation(AnimationUtils.loadLayoutAnimation(getContext(), R.anim.layout_anim));
+        if (getDisplayDensity() <= 420) {
+            recyclerView.setLayoutManager(new GridAutoFitLayoutManager(getContext(), 128));
+            updatableAppsAdapter = new UpdatableAppsGridAdapter(this, (AuroraActivity) getActivity(), appsToAdd,true);
+        } else {
+            recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+            updatableAppsAdapter = new UpdatableAppsGridAdapter(this, (AuroraActivity) getActivity(), appsToAdd,false);
+        }
         recyclerView.setAdapter(updatableAppsAdapter);
+        recyclerView.setLayoutAnimation(AnimationUtils.loadLayoutAnimation(getContext(), R.anim.layout_anim));
     }
 
     private void addButtons() {
@@ -247,6 +253,10 @@ public class UpdatableAppsFragment extends UpdatableAppsTaskHelper {
         show(view, R.id.unicorn);
         update.setVisibility(View.GONE);
         cancel.setVisibility(View.GONE);
+    }
+
+    private float getDisplayDensity() {
+        return (Resources.getSystem().getDisplayMetrics().densityDpi);
     }
 
     public interface OnUpdateListener {

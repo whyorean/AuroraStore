@@ -33,6 +33,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -52,6 +53,8 @@ import com.dragons.aurora.activities.AuroraActivity;
 import com.dragons.aurora.activities.DetailsActivity;
 import com.dragons.aurora.fragment.UpdatableAppsFragment;
 import com.dragons.aurora.fragment.details.ButtonDownload;
+import com.dragons.aurora.fragment.details.ButtonUninstall;
+import com.dragons.aurora.fragment.details.DownloadOptions;
 import com.dragons.aurora.model.App;
 
 import java.util.List;
@@ -67,6 +70,7 @@ public class UpdatableAppsGridAdapter extends RecyclerView.Adapter<UpdatableApps
     public List<App> appsToAdd;
     private UpdatableAppsFragment fragment;
     private Context mContext;
+    private Boolean isGrid;
 
     //DialogViews
     private TextView AppTitle;
@@ -76,10 +80,11 @@ public class UpdatableAppsGridAdapter extends RecyclerView.Adapter<UpdatableApps
     private Button Blacklist;
     private Button Update;
 
-    public UpdatableAppsGridAdapter(UpdatableAppsFragment fragment, AuroraActivity activity, List<App> appsToAdd) {
+    public UpdatableAppsGridAdapter(UpdatableAppsFragment fragment, AuroraActivity activity, List<App> appsToAdd, Boolean isGrid) {
         this.fragment = fragment;
         this.appsToAdd = appsToAdd;
         this.mContext = fragment.getContext();
+        this.isGrid = isGrid;
     }
 
     public void add(int position, App app) {
@@ -107,8 +112,10 @@ public class UpdatableAppsGridAdapter extends RecyclerView.Adapter<UpdatableApps
     @Override
     public UpdatableAppsGridAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View view = inflater.inflate(R.layout.item_updatable_grid, parent, false);
-        return new ViewHolder(view);
+        if (isGrid)
+            return new ViewHolder(inflater.inflate(R.layout.item_updatable_grid, parent, false));
+        else
+            return new ViewHolder(inflater.inflate(R.layout.item_updatable, parent, false));
     }
 
     @Override
@@ -144,6 +151,36 @@ public class UpdatableAppsGridAdapter extends RecyclerView.Adapter<UpdatableApps
             }
             getPopup(app);
             return true;
+        });
+
+        if ((!isGrid)) {
+            holder.AppMenu.setVisibility(View.VISIBLE);
+            holder.AppMenu.setOnClickListener(v -> setup3dotMenu(holder, app, position));
+        }
+    }
+
+    private void setup3dotMenu(ViewHolder viewHolder, App app, int position) {
+        viewHolder.AppMenu.setOnClickListener(v -> {
+            PopupMenu popup = new PopupMenu(v.getContext(), v);
+            popup.inflate(R.menu.menu_download);
+            new DownloadOptions(fragment.getContext(), fragment.getView(), app).inflate(popup.getMenu());
+            popup.getMenu().findItem(R.id.action_download).setVisible(new ButtonDownload(fragment.getContext(), fragment.getView(), app).shouldBeVisible());
+            popup.getMenu().findItem(R.id.action_uninstall).setVisible(app.isInstalled());
+            popup.setOnMenuItemClickListener(item -> {
+                switch (item.getItemId()) {
+                    case R.id.action_download:
+                        new ButtonDownload(fragment.getContext(), fragment.getView(), app).checkAndDownload();
+                        break;
+                    case R.id.action_uninstall:
+                        new ButtonUninstall(fragment.getContext(), fragment.getView(), app).uninstall();
+                        remove(position);
+                        break;
+                    default:
+                        return new DownloadOptions(fragment.getContext(), fragment.getView(), app).onContextItemSelected(item);
+                }
+                return false;
+            });
+            popup.show();
         });
     }
 
@@ -255,6 +292,7 @@ public class UpdatableAppsGridAdapter extends RecyclerView.Adapter<UpdatableApps
 
         private CardView AppCard;
         private ImageView AppIcon;
+        private ImageView AppMenu;
         private TextView AppTitle;
         private TextView AppSize;
         private TextView AppExtra;
@@ -263,6 +301,7 @@ public class UpdatableAppsGridAdapter extends RecyclerView.Adapter<UpdatableApps
             super(view);
             AppCard = view.findViewById(R.id.app_card);
             AppIcon = view.findViewById(R.id.app_icon);
+            AppMenu = view.findViewById(R.id.menu_3dot);
             AppTitle = view.findViewById(R.id.app_title);
             AppSize = view.findViewById(R.id.app_size);
             AppExtra = view.findViewById(R.id.app_extra);

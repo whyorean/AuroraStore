@@ -205,9 +205,8 @@ public class InstalledAppsAdapter extends RecyclerView.Adapter<InstalledAppsAdap
         public ViewHolder(View view) {
             super(view);
             this.view = view;
-            AppContainer = view.findViewById(R.id.list_container);
+            AppContainer = view.findViewById(R.id.app_card);
             AppIcon = view.findViewById(R.id.app_icon);
-
             AppMenu = view.findViewById(R.id.menu_3dot);
             AppTitle = view.findViewById(R.id.app_title);
             AppVersion = view.findViewById(R.id.app_version);
