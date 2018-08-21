@@ -105,7 +105,7 @@ public class CategoryListFragment extends CategoryListTask {
         RecyclerView recyclerView = ViewUtils.findViewById(view, R.id.top_cat_view);
         recyclerView.setAdapter(new TopCategoriesAdapter(this, getResources().getStringArray(R.array.topCategories)));
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
-        recyclerView.setLayoutAnimation(AnimationUtils.loadLayoutAnimation(getContext(), R.anim.layout_anim));
+        recyclerView.setLayoutAnimation(AnimationUtils.loadLayoutAnimation(getContext(), R.anim.anim_falldown));
     }
 
     private void setupAllCategories() {
@@ -113,7 +113,7 @@ public class CategoryListFragment extends CategoryListTask {
         RecyclerView recyclerView = ViewUtils.findViewById(view, R.id.all_cat_view);
         recyclerView.setAdapter(new AllCategoriesAdapter(this, categoryManager.getCategoriesFromSharedPreferences()));
         recyclerView.setLayoutManager(new GridAutoFitLayoutManager(getContext(), 200));
-        recyclerView.setLayoutAnimation(AnimationUtils.loadLayoutAnimation(getContext(), R.anim.layout_anim));
+        recyclerView.setLayoutAnimation(AnimationUtils.loadLayoutAnimation(getContext(), R.anim.anim_falldown));
     }
 
     private void getAllCategories() {

@@ -21,11 +21,13 @@
 
 package com.dragons.aurora.fragment;
 
+import android.animation.LayoutTransition;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.ScaleAnimation;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
@@ -122,15 +124,13 @@ public class HomeFragment extends BaseFragment {
     private void drawCategories() {
         GooglePlayAPI.SUBCATEGORY subcategory = Util.getSubCategory(getContext());
         LinearLayout topLinksLayout = view.findViewById(R.id.top_links);
+        topLinksLayout.setVisibility(View.VISIBLE);
         topLinksLayout.addView(buildAppsCard("TOOLS", subcategory,
                 new CategoryManager(getContext()).getCategoryName("TOOLS")));
         topLinksLayout.addView(buildAppsCard("COMMUNICATION", subcategory,
                 new CategoryManager(getContext()).getCategoryName("COMMUNICATION")));
         topLinksLayout.addView(buildAppsCard("MUSIC_AND_AUDIO", subcategory,
                 new CategoryManager(getContext()).getCategoryName("MUSIC_AND_AUDIO")));
-        topLinksLayout.addView(buildAppsCard("PERSONALIZATION", subcategory,
-                new CategoryManager(getContext()).getCategoryName("PERSONALIZATION")));
-        topLinksLayout.setVisibility(View.VISIBLE);
     }
 
     private MoreAppsCard buildAppsCard(String categoryId, GooglePlayAPI.SUBCATEGORY subcategory, String label) {

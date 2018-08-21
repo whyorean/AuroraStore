@@ -114,7 +114,7 @@ public class CategoryAppsFragment extends CategoryAppsTask implements SingleDown
         singleDownloadAdapter.setOnDownloadBadgeClickListener(this);
         filter_downloads.setItemViewCacheSize(10);
         filter_downloads.setLayoutManager(new GridAutoFitLayoutManager(getContext(), 120));
-        filter_downloads.setLayoutAnimation(AnimationUtils.loadLayoutAnimation(getContext(), R.anim.layout_anim));
+        filter_downloads.setLayoutAnimation(AnimationUtils.loadLayoutAnimation(getContext(), R.anim.anim_falldown));
         filter_downloads.setAdapter(singleDownloadAdapter);
 
         RecyclerView filter_ratings = ad.findViewById(R.id.filter_ratings);
@@ -124,7 +124,7 @@ public class CategoryAppsFragment extends CategoryAppsTask implements SingleDown
         singleRatingAdapter.setOnRatingBadgeClickListener(this);
         filter_ratings.setItemViewCacheSize(10);
         filter_ratings.setLayoutManager(new GridAutoFitLayoutManager(getContext(), 120));
-        filter_ratings.setLayoutAnimation(AnimationUtils.loadLayoutAnimation(getContext(), R.anim.layout_anim));
+        filter_ratings.setLayoutAnimation(AnimationUtils.loadLayoutAnimation(getContext(), R.anim.anim_falldown));
         filter_ratings.setAdapter(singleRatingAdapter);
 
         Button filter_apply = ad.findViewById(R.id.filter_apply);

@@ -172,7 +172,7 @@ public class SearchAppsFragment extends SearchTask implements SingleDownloadsAda
         singleDownloadAdapter.setOnDownloadBadgeClickListener(this);
         filter_downloads.setItemViewCacheSize(10);
         filter_downloads.setLayoutManager(new GridAutoFitLayoutManager(getContext(), 120));
-        filter_downloads.setLayoutAnimation(AnimationUtils.loadLayoutAnimation(getContext(), R.anim.layout_anim));
+        filter_downloads.setLayoutAnimation(AnimationUtils.loadLayoutAnimation(getContext(), R.anim.anim_falldown));
         filter_downloads.setAdapter(singleDownloadAdapter);
 
         RecyclerView filter_ratings = ad.findViewById(R.id.filter_ratings);
@@ -182,7 +182,7 @@ public class SearchAppsFragment extends SearchTask implements SingleDownloadsAda
         singleRatingAdapter.setOnRatingBadgeClickListener(this);
         filter_ratings.setItemViewCacheSize(10);
         filter_ratings.setLayoutManager(new GridAutoFitLayoutManager(getContext(), 120));
-        filter_ratings.setLayoutAnimation(AnimationUtils.loadLayoutAnimation(getContext(), R.anim.layout_anim));
+        filter_ratings.setLayoutAnimation(AnimationUtils.loadLayoutAnimation(getContext(), R.anim.anim_falldown));
         filter_ratings.setAdapter(singleRatingAdapter);
 
         Button filter_apply = ad.findViewById(R.id.filter_apply);
@@ -219,7 +219,7 @@ public class SearchAppsFragment extends SearchTask implements SingleDownloadsAda
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         endlessAppsAdapter = new EndlessAppsAdapter(this, appsToAdd);
         recyclerView.setLayoutManager(mLayoutManager);
-        recyclerView.setLayoutAnimation(AnimationUtils.loadLayoutAnimation(this.getActivity(), R.anim.layout_anim));
+        recyclerView.setLayoutAnimation(AnimationUtils.loadLayoutAnimation(this.getActivity(), R.anim.anim_falldown));
         recyclerView.setAdapter(endlessAppsAdapter);
         EndlessRecyclerViewScrollListener mEndlessRecyclerViewScrollListener = new EndlessRecyclerViewScrollListener(mLayoutManager) {
             @Override

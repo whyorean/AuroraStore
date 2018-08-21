@@ -39,6 +39,7 @@ import com.dragons.aurora.UpdateChecker;
 import com.dragons.aurora.Util;
 import com.dragons.aurora.activities.AuroraActivity;
 import com.dragons.aurora.adapters.UpdatableAppsGridAdapter;
+import com.dragons.aurora.database.Jessie;
 import com.dragons.aurora.helpers.Accountant;
 import com.dragons.aurora.model.App;
 import com.dragons.aurora.notification.CancelDownloadService;
@@ -46,11 +47,15 @@ import com.dragons.aurora.recievers.UpdateAllReceiver;
 import com.dragons.aurora.task.playstore.UpdatableAppsTaskHelper;
 import com.percolate.caffeine.ToastUtils;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -65,8 +70,6 @@ import static com.dragons.aurora.Util.isConnected;
 import static com.dragons.aurora.Util.show;
 
 public class UpdatableAppsFragment extends UpdatableAppsTaskHelper {
-
-    public static boolean recheck = false;
     public UpdatableAppsGridAdapter updatableAppsAdapter;
     private SwipeRefreshLayout swipeRefreshLayout;
     private RecyclerView recyclerView;
@@ -75,6 +78,7 @@ public class UpdatableAppsFragment extends UpdatableAppsTaskHelper {
     private Button recheck_update;
     private Button retry_update;
     private TextView updates_txt;
+    private Jessie mJessie;
     private List<App> updatableApps = new ArrayList<>(new HashSet<>());
     private UpdateAllReceiver updateAllReceiver;
     private View view;
@@ -82,10 +86,6 @@ public class UpdatableAppsFragment extends UpdatableAppsTaskHelper {
     private OnUpdateListener mOnUpdateListener;
 
     public UpdatableAppsFragment() {
-    }
-
-    public static UpdatableAppsFragment newInstance() {
-        return new UpdatableAppsFragment();
     }
 
     private Boolean isAlreadyUpdating() {
@@ -110,10 +110,18 @@ public class UpdatableAppsFragment extends UpdatableAppsTaskHelper {
         }
         view = inflater.inflate(R.layout.fragment_updatable, container, false);
         init();
+        return view;
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        mJessie = new Jessie(getContext());
+
         Util.setColors(getContext(), swipeRefreshLayout);
         swipeRefreshLayout.setOnRefreshListener(() -> {
             if (Accountant.isLoggedIn(getContext()) && isConnected(getContext()) && !isAlreadyUpdating())
-                loadUpdatableApps();
+                fetchFromServer();
             else
                 swipeRefreshLayout.setRefreshing(false);
         });
@@ -133,7 +141,6 @@ public class UpdatableAppsFragment extends UpdatableAppsTaskHelper {
                 }
             }
         });
-        return view;
     }
 
     private void init() {
@@ -157,8 +164,7 @@ public class UpdatableAppsFragment extends UpdatableAppsTaskHelper {
     @Override
     public void onResume() {
         super.onResume();
-        if (Accountant.isLoggedIn(getContext()) && updatableApps.isEmpty() || recheck) {
-            recheck = false;
+        if (Accountant.isLoggedIn(getContext()) && updatableApps.isEmpty()) {
             loadUpdatableApps();
         } else if (!Accountant.isLoggedIn(getContext()))
             ToastUtils.quickToast(getActivity(), "You need to Login First", true);
@@ -169,6 +175,7 @@ public class UpdatableAppsFragment extends UpdatableAppsTaskHelper {
     public void onPause() {
         super.onPause();
         getContext().unregisterReceiver(updateAllReceiver);
+        updateAllReceiver = null;
         swipeRefreshLayout.setRefreshing(false);
     }
 
@@ -181,6 +188,16 @@ public class UpdatableAppsFragment extends UpdatableAppsTaskHelper {
 
     private void loadUpdatableApps() {
         swipeRefreshLayout.setRefreshing(true);
+        if (mJessie.isJsonAvailable(Jessie.JSON_UPDATES)) {
+            JSONArray mJsonArray = mJessie.readJsonArrayFromFile(Jessie.JSON_UPDATES);
+            List<App> mApps = mJessie.getAppsFromJsonArray(mJsonArray);
+            setupList(mApps);
+        } else
+            fetchFromServer();
+    }
+
+    private void fetchFromServer() {
+        swipeRefreshLayout.setRefreshing(true);
         loadApps = Observable.fromCallable(() -> getUpdatableApps(new PlayStoreApiAuthenticator(this.getActivity()).getApi()))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -188,8 +205,7 @@ public class UpdatableAppsFragment extends UpdatableAppsTaskHelper {
                     if (view != null) {
                         updatableApps.clear();
                         updatableApps.addAll(appList);
-                        setupList(updatableApps);
-                        swipeRefreshLayout.setRefreshing(false);
+                        addToDatabase(updatableApps);
                     }
                 }, err -> {
                     swipeRefreshLayout.setRefreshing(false);
@@ -198,9 +214,17 @@ public class UpdatableAppsFragment extends UpdatableAppsTaskHelper {
                 });
     }
 
+    private void addToDatabase(List<App> mAppList) {
+        List<JSONObject> mJsonObjects = mJessie.getJsonObjects(mAppList);
+        JSONArray mJsonArray = mJessie.getJsonArray(mJsonObjects);
+        mJessie.writeJsonToFile(Jessie.JSON_UPDATES, mJsonArray);
+        setupList(mAppList);
+    }
+
     private void setupList(List<App> updatableApps) {
         if (mOnUpdateListener != null)
             mOnUpdateListener.setUpdateCount(updatableApps.size());
+
         if (updatableApps.isEmpty())
             removeButtons();
         else
@@ -212,18 +236,19 @@ public class UpdatableAppsFragment extends UpdatableAppsTaskHelper {
             updatableAppsAdapter.appsToAdd = updatableApps;
             Util.reloadRecycler(recyclerView);
         }
+        swipeRefreshLayout.setRefreshing(false);
     }
 
     private void setupRecycler(List<App> appsToAdd) {
         if (getDisplayDensity() <= 420) {
             recyclerView.setLayoutManager(new GridAutoFitLayoutManager(getContext(), 128));
-            updatableAppsAdapter = new UpdatableAppsGridAdapter(this, (AuroraActivity) getActivity(), appsToAdd,true);
+            updatableAppsAdapter = new UpdatableAppsGridAdapter(this, appsToAdd, true);
         } else {
-            recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
-            updatableAppsAdapter = new UpdatableAppsGridAdapter(this, (AuroraActivity) getActivity(), appsToAdd,false);
+            recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false));
+            updatableAppsAdapter = new UpdatableAppsGridAdapter(this, appsToAdd, false);
         }
         recyclerView.setAdapter(updatableAppsAdapter);
-        recyclerView.setLayoutAnimation(AnimationUtils.loadLayoutAnimation(getContext(), R.anim.layout_anim));
+        recyclerView.setLayoutAnimation(AnimationUtils.loadLayoutAnimation(getContext(), R.anim.anim_falldown));
     }
 
     private void addButtons() {

@@ -22,12 +22,6 @@
 package com.dragons.aurora.adapters;
 
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,38 +29,54 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.dragons.aurora.R;
+import com.dragons.aurora.database.Jessie;
 import com.dragons.aurora.fragment.SearchAppsFragment;
 import com.dragons.aurora.fragment.SearchFragment;
+import com.dragons.aurora.model.History;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
+import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.RecyclerView;
+
 public class SearchHistoryAdapter extends RecyclerView.Adapter<SearchHistoryAdapter.ViewHolder> {
 
-    public ArrayList<String> queryHistory;
+    private List<History> mHistoryList;
     private SearchFragment fragment;
+    private Jessie mJessie;
 
-    public SearchHistoryAdapter(SearchFragment fragment, ArrayList<String> queryHistory) {
+    public SearchHistoryAdapter(SearchFragment fragment, List<History> mHistoryList) {
         this.fragment = fragment;
-        this.queryHistory = queryHistory;
+        this.mHistoryList = mHistoryList;
+        mJessie = new Jessie(fragment.getContext());
     }
 
-    public void add(int position, String query) {
-        queryHistory.add(position, query);
+    public void add(int position, History mHistory) {
+        mJessie.addSingleHistory(mHistory);
+        mHistoryList.add(mHistory);
         notifyItemInserted(position);
     }
 
     public void remove(int position) {
-        queryHistory.remove(position);
+        mJessie.removeHistoryFromJson(position);
+        mHistoryList.remove(position);
         notifyItemRemoved(position);
     }
 
-    public void remove(String query) {
-        queryHistory.remove(query);
+    public void clear() {
+        mJessie.removeJson(Jessie.JSON_HISTORY);
+        mHistoryList.clear();
+        notifyDataSetChanged();
+    }
+
+    public void reload() {
         notifyDataSetChanged();
     }
 
@@ -80,7 +90,10 @@ public class SearchHistoryAdapter extends RecyclerView.Adapter<SearchHistoryAdap
 
     @Override
     public void onBindViewHolder(@NonNull SearchHistoryAdapter.ViewHolder holder, final int position) {
-        setQuery(holder.query, holder.time, queryHistory.get(position));
+        History mHistory = mHistoryList.get(position);
+        holder.query.setText(mHistory.getQuery());
+        holder.date.setText(getDiffString((int) getDiff(mHistory.getDate())));
+
         holder.viewForeground.setOnClickListener(v -> {
             final String query = holder.query.getText().toString();
             SearchAppsFragment searchAppsFragment = new SearchAppsFragment();
@@ -99,13 +112,7 @@ public class SearchHistoryAdapter extends RecyclerView.Adapter<SearchHistoryAdap
 
     @Override
     public int getItemCount() {
-        return queryHistory.size();
-    }
-
-    private void setQuery(TextView name, TextView time, String datedQuery) {
-        String[] temp = datedQuery.split(":");
-        name.setText(temp[0]);
-        time.setText(getDiffString((int) getDiff(temp[1])));
+        return mHistoryList.size();
     }
 
     private long getDiff(String queryDate) {
@@ -133,12 +140,12 @@ public class SearchHistoryAdapter extends RecyclerView.Adapter<SearchHistoryAdap
         public CardView viewForeground;
         RelativeLayout viewBackground;
         TextView query;
-        TextView time;
+        TextView date;
 
         ViewHolder(View view) {
             super(view);
             query = view.findViewById(R.id.query);
-            time = view.findViewById(R.id.queryTime);
+            date = view.findViewById(R.id.queryTime);
             viewBackground = view.findViewById(R.id.view_background);
             viewForeground = view.findViewById(R.id.view_foreground);
         }

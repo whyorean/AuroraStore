@@ -142,7 +142,7 @@ public class ExodusPrivacy extends AbstractHelper {
 
         RecyclerView mRecyclerView = ad.findViewById(R.id.exodus_recycler);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
-        mRecyclerView.setLayoutAnimation(AnimationUtils.loadLayoutAnimation(context, R.anim.layout_anim));
+        mRecyclerView.setLayoutAnimation(AnimationUtils.loadLayoutAnimation(context, R.anim.anim_falldown));
         mRecyclerView.setAdapter(new ExodusAdapter(context, getTrackerData(trackersIDs)));
 
         Button btn_report = ad.findViewById(R.id.btn_report);

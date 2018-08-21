@@ -51,6 +51,7 @@ import com.dragons.aurora.R;
 import com.dragons.aurora.Util;
 import com.dragons.aurora.activities.AuroraActivity;
 import com.dragons.aurora.activities.DetailsActivity;
+import com.dragons.aurora.database.Jessie;
 import com.dragons.aurora.fragment.UpdatableAppsFragment;
 import com.dragons.aurora.fragment.details.ButtonDownload;
 import com.dragons.aurora.fragment.details.ButtonUninstall;
@@ -72,6 +73,9 @@ public class UpdatableAppsGridAdapter extends RecyclerView.Adapter<UpdatableApps
     private Context mContext;
     private Boolean isGrid;
 
+    //Database Manager
+    private Jessie mJessie;
+
     //DialogViews
     private TextView AppTitle;
     private TextView AppSize;
@@ -80,11 +84,12 @@ public class UpdatableAppsGridAdapter extends RecyclerView.Adapter<UpdatableApps
     private Button Blacklist;
     private Button Update;
 
-    public UpdatableAppsGridAdapter(UpdatableAppsFragment fragment, AuroraActivity activity, List<App> appsToAdd, Boolean isGrid) {
+    public UpdatableAppsGridAdapter(UpdatableAppsFragment fragment, List<App> appsToAdd, Boolean isGrid) {
         this.fragment = fragment;
         this.appsToAdd = appsToAdd;
         this.mContext = fragment.getContext();
         this.isGrid = isGrid;
+        mJessie = new Jessie(mContext);
     }
 
     public void add(int position, App app) {
@@ -102,6 +107,7 @@ public class UpdatableAppsGridAdapter extends RecyclerView.Adapter<UpdatableApps
         for (App app : appsToAdd) {
             if (app.getPackageName().equals(packageName)) {
                 remove(i);
+                mJessie.removeAppFromJson(Jessie.JSON_UPDATES, i);
                 break;
             }
             i++;

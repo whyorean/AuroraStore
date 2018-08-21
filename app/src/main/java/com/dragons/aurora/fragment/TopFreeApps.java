@@ -153,7 +153,7 @@ public class TopFreeApps extends CategoryAppsTask {
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(getContext());
         endlessAppsAdapter = new EndlessAppsAdapter(this, appsToAdd);
         recyclerView.setLayoutManager(mLayoutManager);
-        recyclerView.setLayoutAnimation(AnimationUtils.loadLayoutAnimation(getContext(), R.anim.layout_anim));
+        recyclerView.setLayoutAnimation(AnimationUtils.loadLayoutAnimation(getContext(), R.anim.anim_falldown));
         recyclerView.setAdapter(endlessAppsAdapter);
         EndlessRecyclerViewScrollListener mEndlessRecyclerViewScrollListener = new EndlessRecyclerViewScrollListener(mLayoutManager) {
             @Override

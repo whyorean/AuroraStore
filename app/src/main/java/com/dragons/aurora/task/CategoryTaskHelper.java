@@ -31,13 +31,16 @@ import com.dragons.aurora.CredentialsEmptyException;
 import com.dragons.aurora.PlayStoreApiAuthenticator;
 import com.dragons.aurora.R;
 import com.dragons.aurora.adapters.RecyclerAppsAdapter;
-import com.dragons.aurora.fragment.PreferenceFragment;
+import com.dragons.aurora.database.Jessie;
 import com.dragons.aurora.helpers.Accountant;
 import com.dragons.aurora.model.App;
 import com.dragons.aurora.playstoreapiv2.AuthException;
 import com.dragons.aurora.playstoreapiv2.CategoryAppsIterator;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 import com.dragons.aurora.playstoreapiv2.GooglePlayException;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -54,27 +57,52 @@ import static com.dragons.aurora.task.playstore.PlayStoreTask.noNetwork;
 
 public class CategoryTaskHelper {
 
-    private Context context;
+    protected Context context;
     private RecyclerView recyclerView;
     private Disposable disposable;
+    private String categoryID;
+    private Jessie mJessie;
 
     public CategoryTaskHelper(Context context, RecyclerView recyclerView) {
         this.context = context;
         this.recyclerView = recyclerView;
+        mJessie = new Jessie(context);
+    }
+
+    public String getCategoryID() {
+        return categoryID;
+    }
+
+    public void setCategoryID(String categoryID) {
+        this.categoryID = categoryID;
     }
 
     public void getCategoryApps(String categoryId, GooglePlayAPI.SUBCATEGORY subCategory) {
-        disposable = Observable.fromCallable(() -> getApps(categoryId, subCategory))
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe((appList) -> {
-                    if (!appList.isEmpty())
-                        setupListView(recyclerView, appList);
-                }, err -> {
-                    if (err instanceof AuthException)
-                        processAuthException((AuthException) err);
-                    Log.e(getClass().getSimpleName(), err.getMessage());
-                });
+        setCategoryID(categoryId);
+        if (mJessie.isJsonAvailable(categoryId)) {
+            JSONArray mJsonArray = mJessie.readJsonArrayFromFile(categoryId);
+            List<App> mApps = mJessie.getAppsFromJsonArray(mJsonArray);
+            setupListView(recyclerView, mApps);
+        } else {
+            disposable = Observable.fromCallable(() -> getApps(categoryId, subCategory))
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe((appList) -> {
+                        if (!appList.isEmpty())
+                            addToDatabase(appList);
+                    }, err -> {
+                        if (err instanceof AuthException)
+                            processAuthException((AuthException) err);
+                        Log.e(getClass().getSimpleName(), err.getMessage());
+                    });
+        }
+    }
+
+    private void addToDatabase(List<App> mAppList) {
+        List<JSONObject> mJsonObjects = mJessie.getJsonObjects(mAppList);
+        JSONArray mJsonArray = mJessie.getJsonArray(mJsonObjects);
+        mJessie.writeJsonToFile(getCategoryID(), mJsonArray);
+        setupListView(recyclerView, mAppList);
     }
 
     private List<App> getApps(String categoryId, GooglePlayAPI.SUBCATEGORY subCategory) throws IOException {
@@ -120,23 +148,21 @@ public class CategoryTaskHelper {
     }
 
     public void setupListView(RecyclerView recyclerView, List<App> appsToAdd) {
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setItemViewCacheSize(20);
         recyclerView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
-        recyclerView.setLayoutAnimation(AnimationUtils.loadLayoutAnimation(context, R.anim.layout_anim));
+        recyclerView.setLayoutAnimation(AnimationUtils.loadLayoutAnimation(context, R.anim.anim_slideright));
         recyclerView.setAdapter(new RecyclerAppsAdapter(context, appsToAdd));
     }
 
-    protected void processAuthException(AuthException e) {
+    private void processAuthException(AuthException e) {
         if (e instanceof CredentialsEmptyException) {
             Log.i(getClass().getSimpleName(), "Credentials empty");
-            //TODO:Let user decide between dummy or google account
             Accountant.loginWithDummy(context);
-        } else if (e.getCode() == 401 && PreferenceFragment.getBoolean(context, PlayStoreApiAuthenticator.PREFERENCE_APP_PROVIDED_EMAIL)) {
+        } else if (e.getCode() == 401 && Accountant.isDummy(context)) {
             Log.i(getClass().getSimpleName(), "Token is stale");
-            new AppProvidedCredentialsTask(context).refreshToken();
+            Accountant.refreshMyToken(context);
         } else {
             ContextUtil.toast(context, R.string.error_incorrect_password);
+            Log.e(getClass().getSimpleName(), e.getMessage());
             new PlayStoreApiAuthenticator(context).logout();
         }
     }

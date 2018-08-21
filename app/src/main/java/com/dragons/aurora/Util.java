@@ -230,7 +230,7 @@ public class Util {
 
     public static void reloadRecycler(RecyclerView recyclerView) {
         Context context = recyclerView.getContext();
-        LayoutAnimationController controller = AnimationUtils.loadLayoutAnimation(context, R.anim.layout_anim);
+        LayoutAnimationController controller = AnimationUtils.loadLayoutAnimation(context, R.anim.anim_falldown);
         recyclerView.setLayoutAnimation(controller);
         recyclerView.getAdapter().notifyDataSetChanged();
         recyclerView.scheduleLayoutAnimation();

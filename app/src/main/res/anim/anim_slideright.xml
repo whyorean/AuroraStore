@@ -21,6 +21,6 @@
   -->
 
 <layoutAnimation xmlns:android="http://schemas.android.com/apk/res/android"
-    android:animation="@anim/recycler_anim"
+    android:animation="@anim/item_slideright"
     android:animationOrder="normal"
     android:delay="15%" />

@@ -21,7 +21,6 @@
 
 package com.dragons.aurora.task;
 
-import android.content.Context;
 import android.view.animation.AnimationUtils;
 
 import com.dragons.aurora.R;
@@ -38,21 +37,16 @@ import androidx.recyclerview.widget.RecyclerView;
 public class FeaturedTaskHelper extends CategoryTaskHelper {
 
     private Fragment fragment;
-    private Context context;
-    private RecyclerView recyclerView;
 
     public FeaturedTaskHelper(HomeFragment fragment, RecyclerView recyclerView) {
         super(fragment.getContext(), recyclerView);
         this.fragment = fragment;
-        this.context = fragment.getContext();
-        this.recyclerView = recyclerView;
     }
 
     @Override
     public void setupListView(RecyclerView recyclerView, List<App> appsToAdd) {
-        recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
-        recyclerView.setLayoutAnimation(AnimationUtils.loadLayoutAnimation(context, R.anim.layout_anim));
+        recyclerView.setLayoutAnimation(AnimationUtils.loadLayoutAnimation(context, R.anim.anim_slideright));
         recyclerView.setAdapter(new FeaturedAppsAdapter(fragment, appsToAdd));
     }
 }

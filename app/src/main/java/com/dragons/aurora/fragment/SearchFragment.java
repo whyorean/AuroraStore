@@ -25,9 +25,11 @@ import android.app.SearchManager;
 import android.content.Context;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -35,14 +37,25 @@ import com.dragons.aurora.HistoryItemTouchHelper;
 import com.dragons.aurora.PlayStoreApiAuthenticator;
 import com.dragons.aurora.R;
 import com.dragons.aurora.activities.DetailsActivity;
+import com.dragons.aurora.adapters.RecyclerAppsAdapter;
 import com.dragons.aurora.adapters.SearchHistoryAdapter;
+import com.dragons.aurora.database.Jessie;
 import com.dragons.aurora.helpers.Prefs;
-import com.dragons.aurora.task.playstore.SearchHistoryTask;
+import com.dragons.aurora.model.App;
+import com.dragons.aurora.model.AppBuilder;
+import com.dragons.aurora.model.History;
+import com.dragons.aurora.playstoreapiv2.DetailsResponse;
+import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
+import com.dragons.aurora.task.playstore.ExceptionTask;
 import com.dragons.custom.ClusterAppsCard;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
+import org.json.JSONArray;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+import java.util.Locale;
+import java.util.regex.Pattern;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -53,23 +66,21 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import io.reactivex.Observable;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.schedulers.Schedulers;
 
 import static com.dragons.aurora.activities.SearchActivity.PUB_PREFIX;
 
-public class SearchFragment extends SearchHistoryTask implements HistoryItemTouchHelper.RecyclerItemTouchHelperListener {
+public class SearchFragment extends ExceptionTask implements HistoryItemTouchHelper.RecyclerItemTouchHelperListener {
     private SearchView searchToolbar;
     private ClusterAppsCard clusterAppsCard;
-    private RecyclerView clusterRecycler;
-    private RecyclerView recyclerView;
+    private RecyclerView searchHistoryRecyclerView;
+    private RecyclerView searchHistoryAppRecyclerView;
     private CardView search_layout;
     private TextView emptyView;
     private Button clearAll;
     private View view;
-    private ArrayList<String> currList;
+    private Jessie mJessie;
     private SearchHistoryAdapter searchHistoryAdapter;
+    private RecyclerAppsAdapter searchHistoryAppAdapter;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -85,6 +96,27 @@ public class SearchFragment extends SearchHistoryTask implements HistoryItemTouc
         }
         view = inflater.inflate(R.layout.fragment_search, container, false);
         init();
+        return view;
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        mJessie = new Jessie(getContext());
+        addQueryTextListener(searchToolbar);
+        setupHistory();
+        setupAppHistory();
+    }
+
+    private void init() {
+        searchToolbar = view.findViewById(R.id.search_apps);
+        clusterAppsCard = view.findViewById(R.id.searchClusterApp);
+        searchHistoryRecyclerView = view.findViewById(R.id.searchHistory);
+        searchHistoryAppRecyclerView = view.findViewById(R.id.m_apps_recycler);
+        search_layout = view.findViewById(R.id.search_layout);
+        emptyView = view.findViewById(R.id.emptyView);
+        clearAll = view.findViewById(R.id.clearAll);
+
         clearAll.setOnClickListener(v -> clearAll());
         search_layout.setOnClickListener(v -> {
             searchToolbar.setFocusable(true);
@@ -92,31 +124,11 @@ public class SearchFragment extends SearchHistoryTask implements HistoryItemTouc
             searchToolbar.requestFocusFromTouch();
             searchToolbar.setQuery("", false);
         });
-        return view;
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        addQueryTextListener(searchToolbar);
-        setupSearchHistory();
-        getHistoryApps(getRecentAppsList());
-    }
-
-    private void init() {
-        searchToolbar = view.findViewById(R.id.search_apps);
-        clusterAppsCard = view.findViewById(R.id.searchClusterApp);
-        clusterRecycler = view.findViewById(R.id.m_apps_recycler);
-        recyclerView = view.findViewById(R.id.searchHistory);
-        search_layout = view.findViewById(R.id.search_layout);
-        emptyView = view.findViewById(R.id.emptyView);
-        clearAll = view.findViewById(R.id.clearAll);
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        updateSearchHistory();
     }
 
     @Override
@@ -125,6 +137,9 @@ public class SearchFragment extends SearchHistoryTask implements HistoryItemTouc
         if (isVisibleToUser) {
             if (search_layout != null && Prefs.getBoolean(view.getContext(), "SHOW_IME"))
                 search_layout.performClick();
+
+            if (searchHistoryAdapter != null)
+                searchHistoryAdapter.reload();
         }
     }
 
@@ -168,93 +183,88 @@ public class SearchFragment extends SearchHistoryTask implements HistoryItemTouc
 
     private void setQuery(String query) {
         if (looksLikeAPackageId(query)) {
-            addRecentApps(query);
+            getAppDetail(query);
             getContext().startActivity(DetailsActivity.getDetailsIntent(getContext(), query));
         } else {
-            addHistory(query);
-            getCategoryApps(query);
+            History mHistory = new History();
+            mHistory.setQuery(query);
+            mHistory.setDate(new SimpleDateFormat("dd/MM/yyyy",
+                    Locale.getDefault()).format(new Date()));
+            if (searchHistoryAdapter != null)
+                searchHistoryAdapter.add(searchHistoryAdapter.getItemCount() + 1, mHistory);
+            else
+                mJessie.addSingleHistory(mHistory);
+            getQuerriedApps(query);
         }
     }
 
-    private void setupSearchHistory() {
-        currList = getHistoryList();
-        toggleEmptyRecycle(currList);
-        searchHistoryAdapter = new SearchHistoryAdapter(this, currList);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setNestedScrollingEnabled(false);
-        recyclerView.setAdapter(searchHistoryAdapter);
+    private void setupHistory() {
+        if (mJessie.isJsonAvailable(Jessie.JSON_HISTORY)) {
+            JSONArray mJsonArray = mJessie.readJsonArrayFromFile(Jessie.JSON_HISTORY);
+            List<History> mHistoryList = mJessie.getHistoryFromJsonArray(mJsonArray);
+            setupSearchHistory(mHistoryList);
+            toggleViews(false);
+        } else {
+            toggleViews(true);
+        }
+    }
+
+    private void setupAppHistory() {
+        if (mJessie.isJsonAvailable(Jessie.JSON_APP_HISTORY)) {
+            JSONArray mJsonArray = mJessie.readJsonArrayFromFile(Jessie.JSON_APP_HISTORY);
+            List<App> mAppList = mJessie.getAppsFromJsonArray(mJsonArray);
+            setupAppSearchHistory(mAppList);
+            clusterAppsCard.setVisibility(View.VISIBLE);
+        } else
+            clusterAppsCard.setVisibility(View.GONE);
+    }
+
+    private void setupSearchHistory(List<History> mHistoryList) {
+        searchHistoryAdapter = new SearchHistoryAdapter(this, mHistoryList);
+        searchHistoryRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        searchHistoryRecyclerView.setItemAnimator(new DefaultItemAnimator());
+        searchHistoryRecyclerView.setAdapter(searchHistoryAdapter);
         new ItemTouchHelper(
                 new HistoryItemTouchHelper(0, ItemTouchHelper.LEFT, this))
-                .attachToRecyclerView(recyclerView);
+                .attachToRecyclerView(searchHistoryRecyclerView);
     }
 
-    private void updateSearchHistory() {
-        if (searchHistoryAdapter != null) {
-            currList = getHistoryList();
-            toggleEmptyRecycle(currList);
-            searchHistoryAdapter.queryHistory = currList;
-            searchHistoryAdapter.notifyDataSetChanged();
-        }
-    }
-
-    private void updateHistoryPref() {
-        Set<String> updatedSet = new HashSet<>();
-        updatedSet.addAll(currList);
-        writeToPref("SEARCH_HISTORY", updatedSet);
-        if (recyclerView.getAdapter().getItemCount() == 0) {
-            toggleEmptyRecycle(currList);
-        }
+    private void setupAppSearchHistory(List<App> appsToAdd) {
+        searchHistoryAppAdapter = new RecyclerAppsAdapter(this, appsToAdd);
+        searchHistoryAppRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+        searchHistoryAppRecyclerView.setLayoutAnimation(AnimationUtils.loadLayoutAnimation(getContext(), R.anim.anim_slideright));
+        searchHistoryAppRecyclerView.setAdapter(searchHistoryAppAdapter);
     }
 
     private void clearAll() {
-        if (searchHistoryAdapter != null) {
-            currList = new ArrayList<>();
-            searchHistoryAdapter.queryHistory = currList;
-            searchHistoryAdapter.notifyDataSetChanged();
-        }
-        writeToPref("SEARCH_HISTORY", new HashSet<>());
-        writeToPref("APP_HISTORY", new HashSet<>());
+        if (searchHistoryAdapter != null)
+            searchHistoryAdapter.clear();
+        if (searchHistoryAppAdapter != null)
+            searchHistoryAppAdapter.clear();
+        toggleViews(true);
         clusterAppsCard.setVisibility(View.GONE);
-        toggleEmptyRecycle(currList);
     }
 
-    private void toggleEmptyRecycle(ArrayList<String> currList) {
-        if (currList.isEmpty()) {
-            recyclerView.setVisibility(View.GONE);
+    private void toggleViews(Boolean shouldHide) {
+        if (shouldHide) {
+            searchHistoryRecyclerView.setVisibility(View.GONE);
             emptyView.setVisibility(View.VISIBLE);
         } else {
-            recyclerView.setVisibility(View.VISIBLE);
+            searchHistoryRecyclerView.setVisibility(View.VISIBLE);
             emptyView.setVisibility(View.GONE);
         }
-    }
-
-    private void getHistoryApps(ArrayList<String> appList) {
-        if (!appList.isEmpty()) {
-            TextView clusterTitle = clusterAppsCard.findViewById(R.id.m_apps_title);
-            clusterTitle.setText(R.string.action_search_history_apps);
-            clusterTitle.setTextSize(18);
-            Observable.fromCallable(() -> getHistoryApps(new PlayStoreApiAuthenticator(this.getActivity()).getApi(), appList))
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe((appToAdd) -> {
-                        if (view != null) {
-                            setupRecyclerView(clusterRecycler, appToAdd);
-                        }
-                    }, this::processException);
-        } else clusterAppsCard.setVisibility(View.GONE);
     }
 
     @Override
     public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction, int position) {
         if (viewHolder instanceof SearchHistoryAdapter.ViewHolder) {
             searchHistoryAdapter.remove(position);
-            currList = searchHistoryAdapter.queryHistory;
-            updateHistoryPref();
+            if (searchHistoryAdapter.getItemCount() < 1)
+                clearAll();
         }
     }
 
-    private void getCategoryApps(String query) {
+    private void getQuerriedApps(String query) {
         SearchAppsFragment searchAppsFragment = new SearchAppsFragment();
         Bundle arguments = new Bundle();
         arguments.putString("SearchQuery", query);
@@ -273,6 +283,26 @@ public class SearchFragment extends SearchHistoryTask implements HistoryItemTouc
                 ? getString(R.string.apps_by, query.substring(PUB_PREFIX.length()))
                 : getString(R.string.activity_title_search, query)
                 ;
+    }
+
+    private boolean looksLikeAPackageId(String query) {
+        if (TextUtils.isEmpty(query)) {
+            return false;
+        }
+        String pattern = "([\\p{L}_$][\\p{L}\\p{N}_$]*\\.)+[\\p{L}_$][\\p{L}\\p{N}_$]*";
+        Pattern r = Pattern.compile(pattern);
+        return r.matcher(query).matches();
+    }
+
+    private void getAppDetail(String packageName) {
+        try {
+            GooglePlayAPI api = new PlayStoreApiAuthenticator(this.getActivity()).getApi();
+            DetailsResponse response = api.details(packageName);
+            App mApp = AppBuilder.build(response);
+            mJessie.addSingleApp(mApp);
+        } catch (Exception e) {
+            processException(e);
+        }
     }
 
 }

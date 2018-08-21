@@ -31,7 +31,7 @@ ext.isBeta = true
 
 android {
     compileSdkVersion 28
-    buildToolsVersion '27.0.3'
+    buildToolsVersion '28.0.2'
 
     defaultConfig {
         applicationId "com.dragons.aurora"
