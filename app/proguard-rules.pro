@@ -38,7 +38,7 @@
 }
 -keepattributes SourceFile,LineNumberTable
 -keepattributes LocalVariableTable, LocalVariableTypeTable
--keepattributes *Annotation*, Signature, Exception
+-keepattributes *Annotation*, Signature, Exception, InnerClasses
 -optimizations !code/simplification/arithmetic,!field/*,!class/merging/*,!code/allocation/variable,!method/removal/parameter
 -optimizationpasses 5
 -renamesourcefileattribute SourceFile
