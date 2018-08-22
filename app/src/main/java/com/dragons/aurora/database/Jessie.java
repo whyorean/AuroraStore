@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.util.Log;
 
+import com.dragons.aurora.helpers.Prefs;
 import com.dragons.aurora.model.App;
 import com.dragons.aurora.model.History;
 import com.dragons.aurora.model.ImageSource;
@@ -20,8 +21,10 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
-import java.util.SplittableRandom;
+
+import static com.dragons.aurora.fragment.PreferenceFragment.PREFERENCE_DATABASE_VALIDITY;
 
 public class Jessie {
 
@@ -31,7 +34,8 @@ public class Jessie {
     public static String JSON_APP_HISTORY = "APP_HISTORY";
 
     private String TAG = "JESSIE";
-
+    private String DIR = "/Database/";
+    private String EXT = ".json";
     private Context mContext;
 
     /*
@@ -42,6 +46,9 @@ public class Jessie {
 
     public Jessie(Context mContext) {
         this.mContext = mContext;
+        File mFile = new File(getPath());
+        if (!mFile.exists() && !mFile.isDirectory())
+            mFile.mkdirs();
     }
 
     /*
@@ -60,7 +67,7 @@ public class Jessie {
     public void writeJsonToFile(String filename, JSONArray mJsonArray) {
         if (mJsonArray != null) {
             try {
-                FileWriter mFileWriter = new FileWriter(mContext.getFilesDir().getPath() + "/" + filename + ".json");
+                FileWriter mFileWriter = new FileWriter(getPath() + filename + EXT);
                 mFileWriter.write(mJsonArray.toString());
                 mFileWriter.flush();
                 mFileWriter.close();
@@ -72,7 +79,7 @@ public class Jessie {
 
     public JSONArray readJsonArrayFromFile(String JsonName) {
         try {
-            File mFile = new File(mContext.getFilesDir().getPath() + "/" + JsonName + ".json");
+            File mFile = new File(getPath() + JsonName + EXT);
             FileInputStream mFileInputStream = new FileInputStream(mFile);
             int size = mFileInputStream.available();
             byte[] buffer = new byte[size];
@@ -87,16 +94,47 @@ public class Jessie {
     }
 
     public boolean isJsonAvailable(String JsonName) {
-        return (new File(mContext.getFilesDir().getPath() + "/" + JsonName + ".json").exists());
+        return (new File(getPath() + JsonName + EXT).exists());
+    }
+
+    public String getPath() {
+        return mContext.getFilesDir().getPath() + DIR;
+    }
+
+    public Boolean isJasonValid(String JsonName) {
+        Date lastModified = getLastModified(JsonName);
+        Date currentDate = new Date();
+        long diff = currentDate.getTime() - lastModified.getTime();
+        int diffHours = (int) (diff / (1000 * 60 * 60));
+        int validHours = Integer.parseInt(Prefs.getString(mContext, PREFERENCE_DATABASE_VALIDITY));
+        return diffHours <= validHours;
+    }
+
+    public Date getLastModified(String JsonName) {
+        File mFile = new File(getPath() + JsonName);
+        if (mFile.exists())
+            return new Date(mFile.lastModified());
+        else
+            return new Date();
     }
 
     public void removeJson(String JsonName) {
         if (isJsonAvailable(JsonName)) {
-            File mFile = new File(mContext.getFilesDir().getPath() + "/" + JsonName + ".json");
+            File mFile = new File(getPath() + JsonName + EXT);
             mFile.delete();
         } else Log.i(TAG, "File does not exixts");
     }
 
+    public void removeDatabase() {
+        File mDir = new File(getPath());
+        if (mDir.exists() && mDir.isDirectory()) {
+            String[] contents = mDir.list();
+            for (String content : contents) {
+                if (!content.contains("HISTORY"))
+                    new File(mDir, content).delete();
+            }
+        } else Log.i(TAG, "Directory does not exixts");
+    }
 
     /*
      *

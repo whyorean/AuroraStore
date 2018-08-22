@@ -188,7 +188,7 @@ public class UpdatableAppsFragment extends UpdatableAppsTaskHelper {
 
     private void loadUpdatableApps() {
         swipeRefreshLayout.setRefreshing(true);
-        if (mJessie.isJsonAvailable(Jessie.JSON_UPDATES)) {
+        if (mJessie.isJsonAvailable(Jessie.JSON_UPDATES) && mJessie.isJasonValid(Jessie.JSON_UPDATES)) {
             JSONArray mJsonArray = mJessie.readJsonArrayFromFile(Jessie.JSON_UPDATES);
             List<App> mApps = mJessie.getAppsFromJsonArray(mJsonArray);
             setupList(mApps);

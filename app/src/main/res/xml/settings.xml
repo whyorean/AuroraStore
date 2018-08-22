@@ -150,4 +150,17 @@
             android:key="PREFERENCE_INSTALLATION_METHOD"
             android:title="@string/pref_installation_method" />
     </PreferenceCategory>
+    <PreferenceCategory android:title="@string/pref_database_title">
+        <Preference
+            android:key="PREFERENCE_DATABASE_CLEAR"
+            android:summary="@string/pref_database_clear_summary"
+            android:title="@string/pref_database_clear" />
+        <ListPreference
+            android:defaultValue="24"
+            android:entries="@array/database_validity_labels"
+            android:entryValues="@array/database_validity_values"
+            android:key="PREFERENCE_DATABASE_VALIDITY"
+            android:summary="@string/pref_database_refresh_summary"
+            android:title="@string/pref_database_refresh" />
+    </PreferenceCategory>
 </PreferenceScreen>

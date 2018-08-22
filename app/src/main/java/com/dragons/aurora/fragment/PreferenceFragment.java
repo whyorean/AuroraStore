@@ -42,11 +42,13 @@ import com.dragons.aurora.OnListPreferenceChangeListener;
 import com.dragons.aurora.R;
 import com.dragons.aurora.Util;
 import com.dragons.aurora.activities.AuroraActivity;
+import com.dragons.aurora.database.Jessie;
 import com.dragons.aurora.fragment.preference.Blacklist;
 import com.dragons.aurora.fragment.preference.CheckUpdates;
 import com.dragons.aurora.fragment.preference.DownloadDirectory;
 import com.dragons.aurora.fragment.preference.InstallationMethod;
 import com.dragons.aurora.helpers.Prefs;
+import com.percolate.caffeine.ToastUtils;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -71,6 +73,8 @@ public class PreferenceFragment extends android.preference.PreferenceFragment {
     public static final String PREFERENCE_DOWNLOAD_DIRECTORY = "PREFERENCE_DOWNLOAD_DIRECTORY";
     public static final String PREFERENCE_DOWNLOAD_DELTAS = "PREFERENCE_DOWNLOAD_DELTAS";
     public static final String PREFERENCE_AUTO_WHITELIST = "PREFERENCE_AUTO_WHITELIST";
+    public static final String PREFERENCE_DATABASE_CLEAR = "PREFERENCE_DATABASE_CLEAR";
+    public static final String PREFERENCE_DATABASE_VALIDITY = "PREFERENCE_DATABASE_VALIDITY";
 
     public static final String INSTALLATION_METHOD_DEFAULT = "default";
     public static final String INSTALLATION_METHOD_ROOT = "root";
@@ -118,6 +122,8 @@ public class PreferenceFragment extends android.preference.PreferenceFragment {
         drawBlackList();
         drawUpdatesCheck();
         drawInstallationMethod();
+        setupDatabaseClear(getActivity());
+        setupDatabaseValidity();
         new DownloadDirectory(this).setPreference((EditTextPreference) findPreference(PREFERENCE_DOWNLOAD_DIRECTORY)).draw();
     }
 
@@ -197,8 +203,8 @@ public class PreferenceFragment extends android.preference.PreferenceFragment {
         ListPreference preference_theme = (ListPreference) this.findPreference("PREFERENCE_THEME");
         preference_theme.setSummary(preference_theme.getEntry());
 
-        preference_theme.setOnPreferenceChangeListener((preference, newTheme) -> {
-            getPreferenceManager().getSharedPreferences().edit().putString("PREFERENCE_THEME", (String) newTheme).apply();
+        preference_theme.setOnPreferenceChangeListener((preference, value) -> {
+            getPreferenceManager().getSharedPreferences().edit().putString("PREFERENCE_THEME", (String) value).apply();
             restartHome();
             getActivity().finishAndRemoveTask();
             return false;
@@ -209,12 +215,32 @@ public class PreferenceFragment extends android.preference.PreferenceFragment {
         ListPreference preference_subcategory = (ListPreference) this.findPreference("PREFERENCE_SUBCATEGORY");
         preference_subcategory.setSummary(preference_subcategory.getEntry());
 
-        preference_subcategory.setOnPreferenceChangeListener((preference, newTheme) -> {
-            getPreferenceManager().getSharedPreferences().edit().putString("PREFERENCE_SUBCATEGORY", (String) newTheme).apply();
+        preference_subcategory.setOnPreferenceChangeListener((preference, value) -> {
+            getPreferenceManager().getSharedPreferences().edit().putString("PREFERENCE_SUBCATEGORY", (String) value).apply();
             restartHome();
             getActivity().finishAndRemoveTask();
             return false;
         });
+    }
+
+    private void setupDatabaseClear(Context mContext) {
+        Preference mPreference = (Preference) this.findPreference(PREFERENCE_DATABASE_CLEAR);
+        mPreference.setOnPreferenceClickListener(preference -> {
+            Jessie mJessie = new Jessie(mContext);
+            mJessie.removeDatabase();
+            ToastUtils.quickToast(mContext, mContext.getString(R.string.pref_database_cleared));
+            return false;
+        });
+    }
+
+    private void setupDatabaseValidity() {
+        ListPreference mListPreference = (ListPreference) this.findPreference(PREFERENCE_DATABASE_VALIDITY);
+        mListPreference.setSummary(mListPreference.getEntry());
+        mListPreference.setOnPreferenceChangeListener((preference, value) -> {
+            getPreferenceManager().getSharedPreferences().edit().putString(PREFERENCE_DATABASE_VALIDITY, (String) value).apply();
+            return false;
+        });
+
     }
 
     private void restartHome() {

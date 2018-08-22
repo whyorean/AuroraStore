@@ -139,6 +139,22 @@
         <item>2</item>
         <item>3</item>
     </string-array>
+    <string-array name="database_validity_labels">
+        <item>7 Days</item>
+        <item>3 Days</item>
+        <item>1 Day</item>
+        <item>12 Hours</item>
+        <item>6 Hours</item>
+        <item>3 Hours</item>
+    </string-array>
+    <string-array name="database_validity_values">
+        <item>168</item>
+        <item>72</item>
+        <item>24</item>
+        <item>12</item>
+        <item>6</item>
+        <item>3</item>
+    </string-array>
     <string-array name="geoLocation">
         <item>Default</item>
         <item>Canberra, Australia</item>

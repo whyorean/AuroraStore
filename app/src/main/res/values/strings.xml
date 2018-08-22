@@ -321,6 +321,12 @@
     <string name="pref_update_list_white_or_black">Black or white list of apps for update</string>
     <string name="pref_update_list_white_or_black_black">Chosen apps are going to be ignored when checking for updates</string>
     <string name="pref_update_list_white_or_black_white">Only the chosen apps will be checked for updates</string>
+    <string name="pref_database_title">Database</string>
+    <string name="pref_database_clear">Clear Database</string>
+    <string name="pref_database_cleared">Database Removed</string>
+    <string name="pref_database_clear_summary">Deletes all Local JSON files</string>
+    <string name="pref_database_refresh">Database Validity</string>
+    <string name="pref_database_refresh_summary">Select database validity period</string>
     <string name="search_filter">All apps</string>
     <string name="search_title">Search</string>
     <string name="submit">Submit</string>

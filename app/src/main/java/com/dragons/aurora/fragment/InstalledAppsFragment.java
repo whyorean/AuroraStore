@@ -151,7 +151,7 @@ public class InstalledAppsFragment extends InstalledAppsTaskHelper {
 
     private void loadMarketApps() {
         swipeRefreshLayout.setRefreshing(true);
-        if (mJessie.isJsonAvailable(Jessie.JSON_INSTALLED)) {
+        if (mJessie.isJsonAvailable(Jessie.JSON_INSTALLED) && mJessie.isJasonValid(Jessie.JSON_INSTALLED)) {
             JSONArray mJsonArray = mJessie.readJsonArrayFromFile(Jessie.JSON_INSTALLED);
             List<App> mApps = mJessie.getAppsFromJsonArray(mJsonArray);
             setupList(mApps);

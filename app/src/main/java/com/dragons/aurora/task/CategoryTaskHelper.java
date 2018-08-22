@@ -79,7 +79,7 @@ public class CategoryTaskHelper {
 
     public void getCategoryApps(String categoryId, GooglePlayAPI.SUBCATEGORY subCategory) {
         setCategoryID(categoryId);
-        if (mJessie.isJsonAvailable(categoryId)) {
+        if (mJessie.isJsonAvailable(categoryId) && mJessie.isJasonValid(categoryId)) {
             JSONArray mJsonArray = mJessie.readJsonArrayFromFile(categoryId);
             List<App> mApps = mJessie.getAppsFromJsonArray(mJsonArray);
             setupListView(recyclerView, mApps);
