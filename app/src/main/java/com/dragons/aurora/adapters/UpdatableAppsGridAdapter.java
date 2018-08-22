@@ -161,7 +161,7 @@ public class UpdatableAppsGridAdapter extends RecyclerView.Adapter<UpdatableApps
 
         if ((!isGrid)) {
             holder.AppMenu.setVisibility(View.VISIBLE);
-            holder.AppMenu.setOnClickListener(v -> setup3dotMenu(holder, app, position));
+            setup3dotMenu(holder, app, position);
         }
     }
 

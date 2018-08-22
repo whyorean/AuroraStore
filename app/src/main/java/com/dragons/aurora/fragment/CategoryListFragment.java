@@ -112,7 +112,7 @@ public class CategoryListFragment extends CategoryListTask {
         show(view, R.id.all_cat_view);
         RecyclerView recyclerView = ViewUtils.findViewById(view, R.id.all_cat_view);
         recyclerView.setAdapter(new AllCategoriesAdapter(this, categoryManager.getCategoriesFromSharedPreferences()));
-        recyclerView.setLayoutManager(new GridAutoFitLayoutManager(getContext(), 200));
+        recyclerView.setLayoutManager(new GridAutoFitLayoutManager(getContext(), 150));
         recyclerView.setLayoutAnimation(AnimationUtils.loadLayoutAnimation(getContext(), R.anim.anim_falldown));
     }
 

@@ -37,7 +37,6 @@ import com.dragons.aurora.PlayStoreApiAuthenticator;
 import com.dragons.aurora.R;
 import com.dragons.aurora.UpdateChecker;
 import com.dragons.aurora.Util;
-import com.dragons.aurora.activities.AuroraActivity;
 import com.dragons.aurora.adapters.UpdatableAppsGridAdapter;
 import com.dragons.aurora.database.Jessie;
 import com.dragons.aurora.helpers.Accountant;
@@ -240,7 +239,7 @@ public class UpdatableAppsFragment extends UpdatableAppsTaskHelper {
     }
 
     private void setupRecycler(List<App> appsToAdd) {
-        if (getDisplayDensity() <= 420) {
+        if (getDisplayDensity() >= 400) {
             recyclerView.setLayoutManager(new GridAutoFitLayoutManager(getContext(), 128));
             updatableAppsAdapter = new UpdatableAppsGridAdapter(this, appsToAdd, true);
         } else {
@@ -281,7 +280,7 @@ public class UpdatableAppsFragment extends UpdatableAppsTaskHelper {
     }
 
     private float getDisplayDensity() {
-        return (Resources.getSystem().getDisplayMetrics().densityDpi);
+        return (Resources.getSystem().getConfiguration().screenWidthDp);
     }
 
     public interface OnUpdateListener {
