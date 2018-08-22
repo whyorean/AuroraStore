@@ -21,7 +21,6 @@
 
 package com.dragons.aurora.task;
 
-import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
@@ -44,6 +43,7 @@ import com.dragons.aurora.task.playstore.PlayStoreTask;
 
 import java.io.IOException;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 public abstract class CheckCredentialsTask extends PlayStoreTask<Void> {
@@ -99,7 +99,7 @@ public abstract class CheckCredentialsTask extends PlayStoreTask<Void> {
     }
 
     private AlertDialog getTwoFactorAuthDialog() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(context, R.style.ThemeOverlay_MaterialComponents_Dialog);
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
         return builder
                 .setMessage(R.string.dialog_message_two_factor)
                 .setTitle(R.string.dialog_title_two_factor)

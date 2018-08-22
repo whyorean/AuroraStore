@@ -21,7 +21,6 @@
 
 package com.dragons.aurora.fragment;
 
-import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -43,6 +42,7 @@ import com.github.florent37.shapeofview.shapes.CircleView;
 import com.percolate.caffeine.ViewUtils;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.core.content.ContextCompat;
 
 import static com.dragons.aurora.Util.hide;
@@ -197,7 +197,7 @@ public class AccountsFragment extends BaseFragment {
     }
 
     private void showLogOutDialog() {
-        new AlertDialog.Builder(getActivity(), R.style.ThemeOverlay_MaterialComponents_Dialog)
+        new AlertDialog.Builder(getActivity())
                 .setMessage(R.string.dialog_message_logout)
                 .setTitle(R.string.dialog_title_logout)
                 .setPositiveButton(android.R.string.yes, (dialogInterface, i) -> {

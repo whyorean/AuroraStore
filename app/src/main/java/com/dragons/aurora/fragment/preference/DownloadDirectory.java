@@ -22,7 +22,6 @@
 package com.dragons.aurora.fragment.preference;
 
 import android.Manifest;
-import android.app.AlertDialog;
 import android.content.pm.PackageManager;
 import android.preference.EditTextPreference;
 import android.preference.Preference;
@@ -36,6 +35,8 @@ import com.dragons.aurora.fragment.PreferenceFragment;
 
 import java.io.File;
 import java.io.IOException;
+
+import androidx.appcompat.app.AlertDialog;
 
 public class DownloadDirectory extends Abstract {
 
@@ -102,7 +103,7 @@ public class DownloadDirectory extends Abstract {
             }
 
             private AlertDialog getFallbackDialog() {
-                return new AlertDialog.Builder(activity.getActivity(), R.style.ThemeOverlay_MaterialComponents_Dialog)
+                return new AlertDialog.Builder(activity.getActivity())
                         .setMessage(
                                 activity.getString(R.string.error_downloads_directory_not_writable)
                                         + "\n\n"

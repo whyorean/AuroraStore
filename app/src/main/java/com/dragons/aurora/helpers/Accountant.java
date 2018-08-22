@@ -52,7 +52,7 @@ public class Accountant {
 
     public static void LoginFirst(Context context) {
         if (!Prefs.getBoolean(context, "LOGIN_PROMPTED")) {
-            new AlertDialog.Builder(context, R.style.ThemeOverlay_MaterialComponents_Dialog)
+            new AlertDialog.Builder(context)
                     .setTitle(R.string.action_login)
                     .setMessage(R.string.header_usr_noEmail)
                     .setPositiveButton(R.string.action_login, (dialogInterface, i) -> {

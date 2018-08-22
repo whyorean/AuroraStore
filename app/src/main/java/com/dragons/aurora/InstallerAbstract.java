@@ -22,7 +22,6 @@
 package com.dragons.aurora;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
@@ -38,6 +37,7 @@ import com.dragons.aurora.recievers.DetailsInstallReceiver;
 
 import java.io.File;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 public abstract class InstallerAbstract {
@@ -117,7 +117,7 @@ public abstract class InstallerAbstract {
     }
 
     private AlertDialog getSignatureMismatchDialog(final App app) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(context, R.style.ThemeOverlay_MaterialComponents_Dialog);
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder
                 .setMessage(R.string.details_signature_mismatch)
                 .setPositiveButton(android.R.string.ok, (dialog, id) -> dialog.cancel());

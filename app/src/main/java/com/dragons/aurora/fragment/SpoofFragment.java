@@ -21,7 +21,6 @@
 
 package com.dragons.aurora.fragment;
 
-import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -54,6 +53,7 @@ import java.util.Map;
 import java.util.Properties;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.core.content.ContextCompat;
 
 import static com.dragons.aurora.fragment.PreferenceFragment.PREFERENCE_DEVICE_TO_PRETEND_TO_BE;
@@ -281,7 +281,7 @@ public class SpoofFragment extends BaseFragment {
     }
 
     private void showConfirmationDialog() {
-        new AlertDialog.Builder(getContext(), R.style.ThemeOverlay_MaterialComponents_Dialog)
+        new AlertDialog.Builder(getContext())
                 .setMessage(R.string.pref_device_to_pretend_to_be_toast)
                 .setTitle(R.string.dialog_title_logout)
                 .setPositiveButton(R.string.action_logout, (dialogInterface, i) -> {

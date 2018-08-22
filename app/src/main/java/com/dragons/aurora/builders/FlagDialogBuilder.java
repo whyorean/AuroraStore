@@ -21,7 +21,6 @@
 
 package com.dragons.aurora.builders;
 
-import android.app.AlertDialog;
 import android.content.Context;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -31,6 +30,8 @@ import com.dragons.aurora.activities.AuroraActivity;
 import com.dragons.aurora.model.App;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 import com.dragons.aurora.task.playstore.FlagTask;
+
+import androidx.appcompat.app.AlertDialog;
 
 public class FlagDialogBuilder {
 
@@ -68,7 +69,7 @@ public class FlagDialogBuilder {
     }
 
     public AlertDialog build() {
-        return new AlertDialog.Builder(activity, R.style.ThemeOverlay_MaterialComponents_Dialog)
+        return new AlertDialog.Builder(activity)
                 .setTitle(R.string.flag_page_description)
                 .setNegativeButton(
                         android.R.string.cancel,
@@ -114,7 +115,7 @@ public class FlagDialogBuilder {
 
         public AlertDialog build() {
             final EditText editText = new EditText(context);
-            return new AlertDialog.Builder(context, R.style.ThemeOverlay_MaterialComponents_Dialog)
+            return new AlertDialog.Builder(context)
                     .setTitle(reason == GooglePlayAPI.ABUSE.HARMFUL_TO_DEVICE_OR_DATA
                             ? R.string.flag_harmful_prompt
                             : R.string.flag_other_concern_prompt

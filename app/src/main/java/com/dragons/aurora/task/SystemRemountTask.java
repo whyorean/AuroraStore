@@ -21,7 +21,6 @@
 
 package com.dragons.aurora.task;
 
-import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.util.Log;
@@ -32,6 +31,7 @@ import com.dragons.aurora.model.App;
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.appcompat.app.AlertDialog;
 import eu.chainfire.libsuperuser.Shell;
 
 public abstract class SystemRemountTask extends TaskWithProgress<List<String>> {
@@ -91,7 +91,7 @@ public abstract class SystemRemountTask extends TaskWithProgress<List<String>> {
     }
 
     private void showRebootDialog() {
-        new AlertDialog.Builder(context, R.style.ThemeOverlay_MaterialComponents_Dialog)
+        new AlertDialog.Builder(context)
                 .setMessage(R.string.dialog_message_reboot_required)
                 .setTitle(R.string.dialog_title_reboot_required)
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {

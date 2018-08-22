@@ -21,7 +21,6 @@
 
 package com.dragons.aurora.activities;
 
-import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -45,6 +44,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 import java.util.Properties;
+
+import androidx.appcompat.app.AlertDialog;
 
 import static com.dragons.aurora.fragment.PreferenceFragment.PREFERENCE_DEVICE_TO_PRETEND_TO_BE;
 import static com.dragons.aurora.fragment.PreferenceFragment.PREFERENCE_DEVICE_TO_PRETEND_TO_BE_INDEX;
@@ -119,7 +120,7 @@ public class DeviceInfoActivity extends BaseActivity {
     }
 
     private void showConfirmationDialog() {
-        new AlertDialog.Builder(this, R.style.ThemeOverlay_MaterialComponents_Dialog)
+        new AlertDialog.Builder(this)
                 .setMessage(R.string.pref_device_to_pretend_to_be_toast)
                 .setTitle(R.string.dialog_title_logout)
                 .setPositiveButton(R.string.action_logout, (dialogInterface, i) -> {

@@ -21,10 +21,8 @@
 
 package com.dragons.aurora.task;
 
-import android.app.AlertDialog;
 import android.app.SearchManager;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.util.Log;
 
@@ -38,6 +36,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import androidx.appcompat.app.AlertDialog;
 import eu.chainfire.libsuperuser.Shell;
 
 public class CheckShellTask extends TaskWithProgress<Boolean> {
@@ -148,7 +147,7 @@ public class CheckShellTask extends TaskWithProgress<Boolean> {
     }
 
     private void showBusyboxDialog() {
-        new AlertDialog.Builder(context, R.style.ThemeOverlay_MaterialComponents_Dialog)
+        new AlertDialog.Builder(context)
                 .setMessage(R.string.dialog_message_busybox_not_available)
                 .setTitle(R.string.dialog_title_busybox_not_available)
                 .setPositiveButton(android.R.string.yes, (dialog, which) -> {

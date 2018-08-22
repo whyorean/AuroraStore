@@ -21,7 +21,6 @@
 
 package com.dragons.aurora.task.playstore;
 
-import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -40,6 +39,8 @@ import com.dragons.aurora.playstoreapiv2.AuthException;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 
 import java.io.IOException;
+
+import androidx.appcompat.app.AlertDialog;
 
 public class PurchaseTask extends DeliveryDataTask implements CloneableTask {
 
@@ -141,7 +142,7 @@ public class PurchaseTask extends DeliveryDataTask implements CloneableTask {
     }
 
     private AlertDialog getNotPurchasedDialog(Context c) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(c, R.style.ThemeOverlay_MaterialComponents_Dialog);
+        AlertDialog.Builder builder = new AlertDialog.Builder(c);
         builder
                 .setMessage(R.string.error_not_purchased)
                 .setPositiveButton(

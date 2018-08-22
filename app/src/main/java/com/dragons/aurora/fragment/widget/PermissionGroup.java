@@ -22,7 +22,6 @@
 package com.dragons.aurora.fragment.widget;
 
 import android.annotation.TargetApi;
-import android.app.AlertDialog;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.content.pm.PermissionGroupInfo;
@@ -45,6 +44,8 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import androidx.appcompat.app.AlertDialog;
 
 public class PermissionGroup extends LinearLayout {
 
@@ -145,7 +146,7 @@ public class PermissionGroup extends LinearLayout {
         }
         CharSequence label = null == permissionGroupInfo ? "" : permissionGroupInfo.loadLabel(pm);
         final String title = TextUtils.isEmpty(label) ? "" : label.toString();
-        return v -> new AlertDialog.Builder(getContext(), R.style.ThemeOverlay_MaterialComponents_Dialog)
+        return v -> new AlertDialog.Builder(getContext())
                 .setIcon(getPermissionGroupIcon(permissionGroupInfo))
                 .setTitle((title.equals(permissionGroupInfo.name) || title.equals(permissionGroupInfo.packageName)) ? "" : title)
                 .setMessage(message)

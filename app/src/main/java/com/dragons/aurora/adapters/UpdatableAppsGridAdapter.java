@@ -49,7 +49,6 @@ import com.bumptech.glide.request.target.Target;
 import com.dragons.aurora.BlackWhiteListManager;
 import com.dragons.aurora.R;
 import com.dragons.aurora.Util;
-import com.dragons.aurora.activities.AuroraActivity;
 import com.dragons.aurora.activities.DetailsActivity;
 import com.dragons.aurora.database.Jessie;
 import com.dragons.aurora.fragment.UpdatableAppsFragment;

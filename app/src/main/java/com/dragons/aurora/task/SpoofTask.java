@@ -18,7 +18,6 @@
 
 package com.dragons.aurora.task;
 
-import android.app.AlertDialog;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Context;
@@ -42,6 +41,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.core.app.NotificationCompat;
 import androidx.core.content.ContextCompat;
 
@@ -152,7 +152,7 @@ public class SpoofTask extends AsyncTask<Void, Void, Void> {
     }
 
     private void setMockDialog(boolean set) {
-        new AlertDialog.Builder(context, R.style.ThemeOverlay_MaterialComponents_Dialog)
+        new AlertDialog.Builder(context)
                 .setTitle(R.string.pref_category_spoof_location)
                 .setMessage(set ? R.string.pref_requested_location_enable : R.string.pref_requested_location_disable)
                 .setPositiveButton(set ? R.string.action_enable : R.string.action_disable, (dialogInterface, i) -> {
