@@ -21,8 +21,8 @@
 
 package com.dragons.aurora.fragment.preference;
 
-import android.preference.ListPreference;
-import android.preference.Preference;
+import androidx.preference.ListPreference;
+import androidx.preference.Preference;
 
 import com.dragons.aurora.fragment.PreferenceFragment;
 

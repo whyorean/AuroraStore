@@ -125,7 +125,7 @@
             android:summaryOff="@string/pref_auto_whitelist_summary_off"
             android:summaryOn="@string/pref_auto_whitelist_summary_on"
             android:title="@string/pref_auto_whitelist" />
-        <com.dragons.aurora.MultiSelectListPreference
+        <MultiSelectListPreference
             android:key="PREFERENCE_UPDATE_LIST"
             android:persistent="true"
             android:title="@string/pref_update_list_black" />

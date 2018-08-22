@@ -23,9 +23,6 @@ package com.dragons.aurora.fragment.preference;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
-import android.preference.CheckBoxPreference;
-import android.preference.ListPreference;
-import android.preference.Preference;
 
 import com.dragons.aurora.BuildConfig;
 import com.dragons.aurora.R;
@@ -33,6 +30,10 @@ import com.dragons.aurora.UpdateChecker;
 import com.dragons.aurora.Util;
 import com.dragons.aurora.fragment.PreferenceFragment;
 import com.dragons.aurora.task.CheckSuTask;
+
+import androidx.preference.CheckBoxPreference;
+import androidx.preference.ListPreference;
+import androidx.preference.Preference;
 
 public class CheckUpdates extends Abstract {
 

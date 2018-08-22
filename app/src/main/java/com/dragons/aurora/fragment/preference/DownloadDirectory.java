@@ -23,8 +23,6 @@ package com.dragons.aurora.fragment.preference;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
-import android.preference.EditTextPreference;
-import android.preference.Preference;
 import android.util.Log;
 
 import com.dragons.aurora.AuroraPermissionManager;
@@ -37,6 +35,8 @@ import java.io.File;
 import java.io.IOException;
 
 import androidx.appcompat.app.AlertDialog;
+import androidx.preference.EditTextPreference;
+import androidx.preference.Preference;
 
 public class DownloadDirectory extends Abstract {
 

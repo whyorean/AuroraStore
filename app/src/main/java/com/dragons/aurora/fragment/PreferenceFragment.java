@@ -24,12 +24,6 @@ package com.dragons.aurora.fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.preference.CheckBoxPreference;
-import android.preference.EditTextPreference;
-import android.preference.ListPreference;
-import android.preference.Preference;
-import android.preference.PreferenceManager;
-import android.preference.SwitchPreference;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,8 +31,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.dragons.aurora.AuroraPermissionManager;
-import com.dragons.aurora.MultiSelectListPreference;
-import com.dragons.aurora.OnListPreferenceChangeListener;
 import com.dragons.aurora.R;
 import com.dragons.aurora.Util;
 import com.dragons.aurora.activities.AuroraActivity;
@@ -52,8 +44,15 @@ import com.percolate.caffeine.ToastUtils;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.preference.CheckBoxPreference;
+import androidx.preference.EditTextPreference;
+import androidx.preference.ListPreference;
+import androidx.preference.MultiSelectListPreference;
+import androidx.preference.Preference;
+import androidx.preference.PreferenceManager;
+import androidx.preference.SwitchPreference;
 
-public class PreferenceFragment extends android.preference.PreferenceFragment {
+public class PreferenceFragment extends androidx.preference.PreferenceFragment {
 
     public static final String PREFERENCE_AUTO_INSTALL = "PREFERENCE_AUTO_INSTALL";
     public static final String PREFERENCE_UPDATE_LIST_WHITE_OR_BLACK = "PREFERENCE_UPDATE_LIST_WHITE_OR_BLACK";
@@ -128,6 +127,10 @@ public class PreferenceFragment extends android.preference.PreferenceFragment {
     }
 
     @Override
+    public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
+    }
+
+    @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[], @NonNull int[] grantResults) {
         if (!AuroraPermissionManager.isGranted(requestCode, permissions, grantResults)) {
             Log.i(getClass().getSimpleName(), "User denied the write permission");
@@ -160,42 +163,32 @@ public class PreferenceFragment extends android.preference.PreferenceFragment {
     private void setupSwitches(Context context) {
         SwitchPreference colors = (SwitchPreference) this.findPreference("COLOR_UI");
         colors.setChecked(Prefs.getBoolean(context, "COLOR_UI"));
-        colors.setOnPreferenceChangeListener(new OnListPreferenceChangeListener() {
-            @Override
-            public boolean onPreferenceChange(Preference preference, Object newValue) {
-                Prefs.putBoolean(context, "COLOR_UI", (boolean) newValue);
-                return true;
-            }
+
+        colors.setOnPreferenceChangeListener((preference, newValue) -> {
+            Prefs.putBoolean(context, "COLOR_UI", (boolean) newValue);
+            return true;
         });
+
 
         SwitchPreference bottom_colors = (SwitchPreference) this.findPreference("COLOR_NAV");
         bottom_colors.setChecked(Prefs.getBoolean(context, "COLOR_NAV"));
-        bottom_colors.setOnPreferenceChangeListener(new OnListPreferenceChangeListener() {
-            @Override
-            public boolean onPreferenceChange(Preference preference, Object newValue) {
-                Prefs.putBoolean(context, "COLOR_NAV", (boolean) newValue);
-                return true;
-            }
+        bottom_colors.setOnPreferenceChangeListener((preference, newValue) -> {
+            Prefs.putBoolean(context, "COLOR_NAV", (boolean) newValue);
+            return true;
         });
 
         SwitchPreference ime = (SwitchPreference) this.findPreference("SHOW_IME");
         ime.setChecked(Prefs.getBoolean(context, "SHOW_IME"));
-        ime.setOnPreferenceChangeListener(new OnListPreferenceChangeListener() {
-            @Override
-            public boolean onPreferenceChange(Preference preference, Object newValue) {
-                Prefs.putBoolean(context, "SHOW_IME", (boolean) newValue);
-                return true;
-            }
+        ime.setOnPreferenceChangeListener((preference, newValue) -> {
+            Prefs.putBoolean(context, "SHOW_IME", (boolean) newValue);
+            return true;
         });
 
         SwitchPreference swipe_pages = (SwitchPreference) this.findPreference("SWIPE_PAGES");
         swipe_pages.setChecked(Prefs.getBoolean(context, "SWIPE_PAGES"));
-        swipe_pages.setOnPreferenceChangeListener(new OnListPreferenceChangeListener() {
-            @Override
-            public boolean onPreferenceChange(Preference preference, Object newValue) {
-                Prefs.putBoolean(context, "SWIPE_PAGES", (boolean) newValue);
-                return true;
-            }
+        swipe_pages.setOnPreferenceChangeListener((preference, newValue) -> {
+            Prefs.putBoolean(context, "SWIPE_PAGES", (boolean) newValue);
+            return true;
         });
     }
 

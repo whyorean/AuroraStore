@@ -24,8 +24,6 @@ package com.dragons.aurora.fragment.preference;
 import android.Manifest;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.preference.ListPreference;
-import android.preference.Preference;
 import android.widget.Toast;
 
 import com.dragons.aurora.BuildConfig;
@@ -35,6 +33,9 @@ import com.dragons.aurora.model.App;
 import com.dragons.aurora.task.CheckShellTask;
 import com.dragons.aurora.task.CheckSuTask;
 import com.dragons.aurora.task.ConvertToSystemTask;
+
+import androidx.preference.ListPreference;
+import androidx.preference.Preference;
 
 class OnInstallationMethodChangeListener implements Preference.OnPreferenceChangeListener {
 
@@ -96,21 +97,21 @@ class OnInstallationMethodChangeListener implements Preference.OnPreferenceChang
         @Override
         protected void onPostExecute(Void aVoid) {
             if (!available) {
-                Toast.makeText(activity.getActivity().getApplicationContext(), R.string.pref_not_privileged, Toast.LENGTH_LONG).show();
+                Toast.makeText(fragment.getActivity().getApplicationContext(), R.string.pref_not_privileged, Toast.LENGTH_LONG).show();
                 return;
             }
             showPrivilegedInstallationDialog();
         }
 
         private void showPrivilegedInstallationDialog() {
-            CheckShellTask checkShellTask = new CheckShellTask(activity.getActivity());
-            checkShellTask.setPrimaryTask(new ConvertToSystemTask(activity.getActivity(), getSelf()));
+            CheckShellTask checkShellTask = new CheckShellTask(fragment.getActivity());
+            checkShellTask.setPrimaryTask(new ConvertToSystemTask(fragment.getActivity(), getSelf()));
             checkShellTask.execute();
         }
 
         private App getSelf() {
             PackageInfo Aurora = new PackageInfo();
-            Aurora.applicationInfo = activity.getActivity().getApplicationInfo();
+            Aurora.applicationInfo = fragment.getActivity().getApplicationInfo();
             Aurora.packageName = BuildConfig.APPLICATION_ID;
             Aurora.versionCode = BuildConfig.VERSION_CODE;
             return new App(Aurora);

@@ -21,11 +21,6 @@
   -->
 
 <resources>
-    <declare-styleable name="MultiSelectListPreference">
-        <attr name="android:entries" />
-        <attr name="android:entryValues" />
-    </declare-styleable>
-
     <declare-styleable name="MoreAppsCard">
         <attr name="CardTitle" format="string" />
         <attr name="AppsCategory" format="string" />

@@ -21,11 +21,6 @@
 
 package com.dragons.aurora.fragment.preference;
 
-import android.preference.CheckBoxPreference;
-import android.preference.ListPreference;
-import android.preference.Preference;
-
-import com.dragons.aurora.MultiSelectListPreference;
 import com.dragons.aurora.R;
 import com.dragons.aurora.Util;
 import com.dragons.aurora.fragment.PreferenceFragment;
@@ -34,6 +29,11 @@ import com.dragons.aurora.task.InstalledAppsTask;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import androidx.preference.CheckBoxPreference;
+import androidx.preference.ListPreference;
+import androidx.preference.MultiSelectListPreference;
+import androidx.preference.Preference;
 
 public class Blacklist extends Abstract {
 
