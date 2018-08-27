@@ -21,13 +21,11 @@
 
 package com.dragons.aurora.fragment;
 
-import android.animation.LayoutTransition;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.ScaleAnimation;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
@@ -45,13 +43,17 @@ import com.dragons.custom.TagView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 import static com.dragons.aurora.Util.isConnected;
 
 public class HomeFragment extends BaseFragment {
 
+    @BindView(R.id.top_links)
+    LinearLayout topLinks;
+
     private View view;
-    private LinearLayout topLinks;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -60,12 +62,8 @@ public class HomeFragment extends BaseFragment {
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        if (view != null) {
-            if ((ViewGroup) view.getParent() != null)
-                ((ViewGroup) view.getParent()).removeView(view);
-            return view;
-        }
         view = inflater.inflate(R.layout.fragment_home, container, false);
+        ButterKnife.bind(this, view);
         return view;
     }
 
@@ -73,7 +71,6 @@ public class HomeFragment extends BaseFragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         addTags();
-        topLinks = view.findViewById(R.id.top_links);
     }
 
     @Override

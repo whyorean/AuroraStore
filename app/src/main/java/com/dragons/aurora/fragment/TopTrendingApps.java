@@ -35,17 +35,28 @@ import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 import static com.dragons.aurora.Util.hide;
 import static com.dragons.aurora.Util.isConnected;
 
 public class TopTrendingApps extends TopFreeApps {
 
+    @BindView(R.id.endless_apps_list)
+    RecyclerView recyclerView;
+    @BindView(R.id.unicorn)
+    RelativeLayout unicorn;
+    @BindView(R.id.ohhSnap)
+    RelativeLayout ohhSnap;
+    @BindView(R.id.progress)
+    RelativeLayout progress;
+    @BindView(R.id.ohhSnap_retry)
+    Button ohhSnap_retry;
+    @BindView(R.id.recheck_query)
+    Button retry_query;
+
     private View view;
-    private RecyclerView recyclerView;
-    private RelativeLayout unicorn;
-    private RelativeLayout ohhSnap;
-    private RelativeLayout progress;
 
     @Override
     public RelativeLayout getUnicorn() {
@@ -70,7 +81,7 @@ public class TopTrendingApps extends TopFreeApps {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_endless_categorized, container, false);
-        init();
+        ButterKnife.bind(this, view);
         setIterator(setupIterator(CategoryAppsFragment.categoryId, GooglePlayAPI.SUBCATEGORY.MOVERS_SHAKERS));
         setRecyclerView(recyclerView);
         fetchCategoryApps(false);
@@ -80,26 +91,17 @@ public class TopTrendingApps extends TopFreeApps {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        Button ohhSnap_retry = view.findViewById(R.id.ohhSnap_retry);
         ohhSnap_retry.setOnClickListener(click -> {
             if (Accountant.isLoggedIn(getContext()) && isConnected(getContext())) {
                 hide(view, R.id.ohhSnap);
                 fetchCategoryApps(false);
             }
         });
-        Button retry_query = view.findViewById(R.id.recheck_query);
         retry_query.setOnClickListener(click -> {
             if (Accountant.isLoggedIn(getContext()) && isConnected(getContext())) {
                 hide(view, R.id.unicorn);
                 fetchCategoryApps(false);
             }
         });
-    }
-
-    private void init() {
-        recyclerView = view.findViewById(R.id.endless_apps_list);
-        unicorn = view.findViewById(R.id.unicorn);
-        ohhSnap = view.findViewById(R.id.ohhSnap);
-        progress = view.findViewById(R.id.progress);
     }
 }

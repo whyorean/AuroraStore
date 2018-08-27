@@ -23,7 +23,9 @@ package com.dragons.aurora.fragment.details;
 
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.dragons.aurora.ContextUtil;
@@ -37,9 +39,23 @@ import com.dragons.aurora.task.playstore.PlayStorePayloadTask;
 
 import java.io.IOException;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class Beta extends AbstractHelper {
 
-    private EditText editText;
+    @BindView(R.id.beta_comment)
+    EditText editText;
+    @BindView(R.id.beta_card)
+    LinearLayout beta_card;
+    @BindView(R.id.beta_feedback)
+    LinearLayout beta_feedback;
+    @BindView(R.id.beta_subscribe_button)
+    Button beta_subscribe_button;
+    @BindView(R.id.beta_submit_button)
+    Button beta_submit_button;
+    @BindView(R.id.beta_delete_button)
+    Button beta_delete_button;
 
     public Beta(DetailsFragment fragment, App app) {
         super(fragment, app);
@@ -47,6 +63,7 @@ public class Beta extends AbstractHelper {
 
     @Override
     public void draw() {
+        ButterKnife.bind(this, view);
         if (Accountant.isDummy(context) && app.isTestingProgramAvailable() && app.isTestingProgramOptedIn()) {
             BetaToggleTask mBetaToggleTask = new BetaToggleTask(app);
             mBetaToggleTask.setContext(context);
@@ -57,41 +74,29 @@ public class Beta extends AbstractHelper {
             return;
         }
 
-        setText(fragment.getView(), R.id.beta_header, app.isTestingProgramOptedIn()
+        setText(view, R.id.beta_header, app.isTestingProgramOptedIn()
                 ? R.string.testing_program_section_opted_in_title
                 : R.string.testing_program_section_opted_out_title);
 
-        setText(fragment.getView(), R.id.beta_message, app.isTestingProgramOptedIn()
+        setText(view, R.id.beta_message, app.isTestingProgramOptedIn()
                 ? R.string.testing_program_section_opted_in_message
                 : R.string.testing_program_section_opted_out_message);
 
-        setText(fragment.getView(), R.id.beta_subscribe_button, app.isTestingProgramOptedIn()
+        setText(view, R.id.beta_subscribe_button, app.isTestingProgramOptedIn()
                 ? R.string.testing_program_opt_out
                 : R.string.testing_program_opt_in);
 
         setText(fragment.getView(), R.id.beta_email, app.getTestingProgramEmail());
 
-        editText = view.findViewById(R.id.beta_comment);
-
-        view.findViewById(R.id.beta_card).setVisibility(View.VISIBLE);
-
-        view.findViewById(R.id.beta_feedback)
-                .setVisibility(app.isTestingProgramOptedIn()
-                        ? View.VISIBLE
-                        : View.GONE);
-
-        view.findViewById(R.id.beta_subscribe_button)
-                .setOnClickListener(new BetaOnClickListener(view.findViewById(R.id.beta_message), app));
-
-        view.findViewById(R.id.beta_submit_button)
-                .setOnClickListener(v -> initBetaTask(new BetaFeedbackSubmitTask()).execute());
-
-        view.findViewById(R.id.beta_delete_button)
-                .setOnClickListener(v -> initBetaTask(new BetaFeedbackDeleteTask()).execute());
+        beta_card.setVisibility(View.VISIBLE);
+        beta_feedback.setVisibility(app.isTestingProgramOptedIn() ? View.VISIBLE : View.GONE);
+        beta_subscribe_button.setOnClickListener(new BetaOnClickListener(view.findViewById(R.id.beta_message), app));
+        beta_submit_button.setOnClickListener(v -> initBetaTask(new BetaFeedbackSubmitTask()).execute());
+        beta_delete_button.setOnClickListener(v -> initBetaTask(new BetaFeedbackDeleteTask()).execute());
 
         if (null != app.getUserReview() && !TextUtils.isEmpty(app.getUserReview().getComment())) {
             editText.setText(app.getUserReview().getComment());
-            show(fragment.getView(), R.id.beta_delete_button);
+            show(view, R.id.beta_delete_button);
         }
     }
 

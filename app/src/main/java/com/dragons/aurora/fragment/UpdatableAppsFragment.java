@@ -59,9 +59,11 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
+import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
 
 import static com.dragons.aurora.Util.hide;
@@ -69,19 +71,28 @@ import static com.dragons.aurora.Util.isConnected;
 import static com.dragons.aurora.Util.show;
 
 public class UpdatableAppsFragment extends UpdatableAppsTaskHelper {
+
     public UpdatableAppsGridAdapter updatableAppsAdapter;
-    private SwipeRefreshLayout swipeRefreshLayout;
-    private RecyclerView recyclerView;
-    private Button update;
-    private Button cancel;
-    private Button recheck_update;
-    private Button retry_update;
-    private TextView updates_txt;
+    @BindView(R.id.swipe_refresh_layout)
+    SwipeRefreshLayout swipeRefreshLayout;
+    @BindView(R.id.updatable_apps_list)
+    RecyclerView recyclerView;
+    @BindView(R.id.update_all)
+    Button update;
+    @BindView(R.id.update_cancel)
+    Button cancel;
+    @BindView(R.id.recheck_updates)
+    Button recheck_update;
+    @BindView(R.id.ohhSnap_retry)
+    Button retry_update;
+    @BindView(R.id.updates_txt)
+    TextView updates_txt;
+
+    private View view;
     private Jessie mJessie;
     private List<App> updatableApps = new ArrayList<>(new HashSet<>());
+    private CompositeDisposable mDisposable = new CompositeDisposable();
     private UpdateAllReceiver updateAllReceiver;
-    private View view;
-    private Disposable loadApps;
     private OnUpdateListener mOnUpdateListener;
 
     public UpdatableAppsFragment() {
@@ -102,13 +113,8 @@ public class UpdatableAppsFragment extends UpdatableAppsTaskHelper {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (view != null) {
-            if ((ViewGroup) view.getParent() != null)
-                ((ViewGroup) view.getParent()).removeView(view);
-            return view;
-        }
         view = inflater.inflate(R.layout.fragment_updatable, container, false);
-        init();
+        ButterKnife.bind(this, view);
         return view;
     }
 
@@ -127,29 +133,17 @@ public class UpdatableAppsFragment extends UpdatableAppsTaskHelper {
         recheck_update.setOnClickListener(click -> {
             if (Accountant.isLoggedIn(getContext()) && isConnected(getContext())) {
                 hide(view, R.id.unicorn);
-                updates_txt.setText(R.string.list_update_chk_txt);
-                loadUpdatableApps();
+                fetchFromServer();
             }
         });
         retry_update.setOnClickListener(click -> {
             if (Accountant.isLoggedIn(getContext()) && isConnected(getContext())) {
                 hide(view, R.id.ohhSnap);
                 if (updatableAppsAdapter == null || updatableAppsAdapter.getItemCount() <= 0) {
-                    updates_txt.setText(R.string.list_update_chk_txt);
-                    loadUpdatableApps();
+                    fetchFromServer();
                 }
             }
         });
-    }
-
-    private void init() {
-        swipeRefreshLayout = view.findViewById(R.id.swipe_refresh_layout);
-        recyclerView = view.findViewById(R.id.updatable_apps_list);
-        update = view.findViewById(R.id.update_all);
-        cancel = view.findViewById(R.id.update_cancel);
-        recheck_update = view.findViewById(R.id.recheck_updates);
-        retry_update = view.findViewById(R.id.ohhSnap_retry);
-        updates_txt = view.findViewById(R.id.updates_txt);
     }
 
     private void onAttachToParentFragment(Fragment fragment) {
@@ -178,6 +172,12 @@ public class UpdatableAppsFragment extends UpdatableAppsTaskHelper {
         swipeRefreshLayout.setRefreshing(false);
     }
 
+    @Override
+    public void onDestroy() {
+        mDisposable.dispose();
+        super.onDestroy();
+    }
+
     private void launchUpdateAll() {
         ((AuroraApplication) getActivity().getApplicationContext()).setBackgroundUpdating(true);
         new UpdateChecker().onReceive(getActivity(), getActivity().getIntent());
@@ -190,16 +190,19 @@ public class UpdatableAppsFragment extends UpdatableAppsTaskHelper {
         if (mJessie.isJsonAvailable(Jessie.JSON_UPDATES) && mJessie.isJasonValid(Jessie.JSON_UPDATES)) {
             JSONArray mJsonArray = mJessie.readJsonArrayFromFile(Jessie.JSON_UPDATES);
             List<App> mApps = mJessie.getAppsFromJsonArray(mJsonArray);
-            setupList(mApps);
+            updatableApps.clear();
+            updatableApps.addAll(mApps);
+            setupList(updatableApps);
         } else
             fetchFromServer();
     }
 
     private void fetchFromServer() {
-        swipeRefreshLayout.setRefreshing(true);
-        loadApps = Observable.fromCallable(() -> getUpdatableApps(new PlayStoreApiAuthenticator(this.getActivity()).getApi()))
+        mDisposable.add(Observable.fromCallable(() -> getUpdatableApps(new PlayStoreApiAuthenticator(this.getActivity()).getApi()))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
+                .doOnSubscribe(start -> swipeRefreshLayout.setRefreshing(true))
+                .doOnTerminate(() -> swipeRefreshLayout.setRefreshing(false))
                 .subscribe((appList) -> {
                     if (view != null) {
                         updatableApps.clear();
@@ -207,10 +210,9 @@ public class UpdatableAppsFragment extends UpdatableAppsTaskHelper {
                         addToDatabase(updatableApps);
                     }
                 }, err -> {
-                    swipeRefreshLayout.setRefreshing(false);
                     processException(err);
                     show(view, R.id.ohhSnap);
-                });
+                }));
     }
 
     private void addToDatabase(List<App> mAppList) {

@@ -29,6 +29,7 @@
         android:id="@+id/ohhSnap"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginBottom="?actionBarSize"
         android:visibility="gone">
 
         <ImageView
@@ -60,12 +61,12 @@
             android:maxLines="1"
             android:text="@string/ohh_snap_retry" />
     </RelativeLayout>
-
-
+    
     <RelativeLayout
         android:id="@+id/unicorn"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginBottom="?actionBarSize"
         android:visibility="gone">
 
         <TextView
@@ -95,7 +96,9 @@
     <RelativeLayout
         android:id="@+id/progress"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginBottom="?actionBarSize"
+        android:visibility="gone">
 
         <ProgressBar
             android:layout_width="wrap_content"

@@ -49,23 +49,35 @@ import java.util.TimerTask;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
+import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
 
 import static com.dragons.aurora.Util.hide;
 import static com.dragons.aurora.Util.isConnected;
 
 public class TopFreeApps extends CategoryAppsTask {
+
+    @BindView(R.id.endless_apps_list)
+    RecyclerView recyclerView;
+    @BindView(R.id.unicorn)
+    RelativeLayout unicorn;
+    @BindView(R.id.ohhSnap)
+    RelativeLayout ohhSnap;
+    @BindView(R.id.progress)
+    RelativeLayout progress;
+    @BindView(R.id.ohhSnap_retry)
+    Button ohhSnap_retry;
+    @BindView(R.id.recheck_query)
+    Button retry_query;
+
     private View view;
-    private RecyclerView recyclerView;
-    private RelativeLayout unicorn;
-    private RelativeLayout ohhSnap;
-    private RelativeLayout progress;
     private AppListIterator iterator;
     private EndlessAppsAdapter endlessAppsAdapter;
-    private Disposable disposable;
+    private CompositeDisposable mDisposable = new CompositeDisposable();
 
     public RelativeLayout getUnicorn() {
         return unicorn;
@@ -102,7 +114,7 @@ public class TopFreeApps extends CategoryAppsTask {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_endless_categorized, container, false);
-        init();
+        ButterKnife.bind(this,view);
         setRecyclerView(recyclerView);
         setIterator(setupIterator(CategoryAppsFragment.categoryId, GooglePlayAPI.SUBCATEGORY.TOP_FREE));
         fetchCategoryApps(false);
@@ -110,19 +122,14 @@ public class TopFreeApps extends CategoryAppsTask {
     }
 
     private void init() {
-        recyclerView = view.findViewById(R.id.endless_apps_list);
-        unicorn = view.findViewById(R.id.unicorn);
-        ohhSnap = view.findViewById(R.id.ohhSnap);
-        progress = view.findViewById(R.id.progress);
-        Button ohhSnap_retry = view.findViewById(R.id.ohhSnap_retry);
         ohhSnap_retry.setOnClickListener(click -> {
             if (Accountant.isLoggedIn(getContext()) && isConnected(getContext())) {
                 hide(view, R.id.ohhSnap);
                 fetchCategoryApps(false);
             }
         });
-        Button retry_querry = view.findViewById(R.id.recheck_query);
-        retry_querry.setOnClickListener(click -> {
+
+        retry_query.setOnClickListener(click -> {
             if (Accountant.isLoggedIn(getContext()) && isConnected(getContext())) {
                 hide(view, R.id.unicorn);
                 fetchCategoryApps(false);
@@ -165,9 +172,11 @@ public class TopFreeApps extends CategoryAppsTask {
     }
 
     protected void fetchCategoryApps(boolean shouldIterate) {
-        disposable = Observable.fromCallable(() -> getResult(iterator))
+        mDisposable.add(Observable.fromCallable(() -> getResult(iterator))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
+                .doOnSubscribe(start -> progress.setVisibility(View.VISIBLE))
+                .doOnTerminate(() -> progress.setVisibility(View.GONE))
                 .subscribe(appList -> {
                     if (shouldIterate) {
                         addApps(appList);
@@ -176,7 +185,7 @@ public class TopFreeApps extends CategoryAppsTask {
                 }, err -> {
                     processException(err);
                     getOhhSnap().setVisibility(View.VISIBLE);
-                });
+                }));
     }
 
     private void addApps(List<App> appsToAdd) {

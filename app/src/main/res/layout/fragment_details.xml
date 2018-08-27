@@ -191,7 +191,7 @@
                             android:src="?android:attr/colorPrimaryDark" />
 
                         <ImageView
-                            android:id="@+id/vid_play"
+                            android:id="@+id/video_play"
                             android:layout_width="@dimen/icon_size"
                             android:layout_height="@dimen/icon_size"
                             android:layout_centerHorizontal="true"

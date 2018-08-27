@@ -51,9 +51,11 @@ import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
+import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
 
 import static com.dragons.aurora.Util.hide;
@@ -61,18 +63,23 @@ import static com.dragons.aurora.Util.isConnected;
 import static com.dragons.aurora.Util.show;
 
 public class InstalledAppsFragment extends InstalledAppsTaskHelper {
+
+    @BindView(R.id.swipe_refresh_layout)
+    SwipeRefreshLayout swipeRefreshLayout;
+    @BindView(R.id.installed_apps_list)
+    RecyclerView recyclerView;
+    @BindView(R.id.ohhSnap_retry)
+    Button retry_update;
+    @BindView(R.id.includeSystem)
+    Switch includeSystem;
+
     private View view;
-    private SwipeRefreshLayout swipeRefreshLayout;
-    private RecyclerView recyclerView;
-    private Button retry_update;
-    private Switch includeSystem;
-    private Disposable loadApps;
     private Jessie mJessie;
     private List<App> installedApps = new ArrayList<>(new HashSet<>());
     private InstalledAppsAdapter installedAppsAdapter;
+    private CompositeDisposable mDisposable = new CompositeDisposable();
 
-    public static InstalledAppsFragment newInstance() {
-        return new InstalledAppsFragment();
+    public InstalledAppsFragment() {
     }
 
     @Override
@@ -85,12 +92,8 @@ public class InstalledAppsFragment extends InstalledAppsTaskHelper {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (view != null) {
-            if ((ViewGroup) view.getParent() != null)
-                ((ViewGroup) view.getParent()).removeView(view);
-            return view;
-        }
         view = inflater.inflate(R.layout.fragment_installed, container, false);
+        ButterKnife.bind(this, view);
         return view;
     }
 
@@ -98,11 +101,6 @@ public class InstalledAppsFragment extends InstalledAppsTaskHelper {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mJessie = new Jessie(getContext());
-
-        recyclerView = view.findViewById(R.id.installed_apps_list);
-        swipeRefreshLayout = view.findViewById(R.id.swipe_refresh_layout);
-        retry_update = view.findViewById(R.id.ohhSnap_retry);
-        includeSystem = view.findViewById(R.id.includeSystem);
 
         Util.setColors(getContext(), swipeRefreshLayout);
         swipeRefreshLayout.setOnRefreshListener(() -> {
@@ -132,14 +130,21 @@ public class InstalledAppsFragment extends InstalledAppsTaskHelper {
     @Override
     public void onResume() {
         super.onResume();
-        if (Accountant.isLoggedIn(getContext()) && installedApps.isEmpty())
+        if (Accountant.isLoggedIn(getContext()) && installedApps.isEmpty()) {
             loadMarketApps();
+        }
     }
 
     @Override
     public void onStop() {
         super.onStop();
         swipeRefreshLayout.setRefreshing(false);
+    }
+
+    @Override
+    public void onDestroy() {
+        mDisposable.dispose();
+        super.onDestroy();
     }
 
     private void setupRecycler(List<App> appsToAdd) {
@@ -150,19 +155,22 @@ public class InstalledAppsFragment extends InstalledAppsTaskHelper {
     }
 
     private void loadMarketApps() {
-        swipeRefreshLayout.setRefreshing(true);
         if (mJessie.isJsonAvailable(Jessie.JSON_INSTALLED) && mJessie.isJasonValid(Jessie.JSON_INSTALLED)) {
             JSONArray mJsonArray = mJessie.readJsonArrayFromFile(Jessie.JSON_INSTALLED);
             List<App> mApps = mJessie.getAppsFromJsonArray(mJsonArray);
-            setupList(mApps);
+            installedApps.clear();
+            installedApps.addAll(mApps);
+            setupList(installedApps);
         } else
             fetchFromServer();
     }
 
     private void fetchFromServer() {
-        loadApps = Observable.fromCallable(() -> getInstalledApps(new PlayStoreApiAuthenticator(this.getActivity()).getApi(), includeSystem.isChecked()))
+        mDisposable.add(Observable.fromCallable(() -> getInstalledApps(new PlayStoreApiAuthenticator(this.getActivity()).getApi(), includeSystem.isChecked()))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
+                .doOnSubscribe(start -> swipeRefreshLayout.setRefreshing(true))
+                .doOnTerminate(() -> swipeRefreshLayout.setRefreshing(false))
                 .subscribe((appList) -> {
                     if (view != null) {
                         installedApps.clear();
@@ -170,10 +178,9 @@ public class InstalledAppsFragment extends InstalledAppsTaskHelper {
                         addToDatabase(installedApps);
                     }
                 }, err -> {
-                    swipeRefreshLayout.setRefreshing(false);
                     processException(err);
                     show(view, R.id.ohhSnap);
-                });
+                }));
     }
 
     private void addToDatabase(List<App> mAppList) {

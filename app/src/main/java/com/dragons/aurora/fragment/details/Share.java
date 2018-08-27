@@ -31,7 +31,7 @@ import com.dragons.aurora.model.App;
 
 public class Share extends AbstractHelper {
 
-    static private String PLAYSTORE_LINK_PREFIX = "https://play.google.com/store/apps/details?id=";
+    static private String PLAYSTORE_LINK_PREFIX = "https://video_play.google.com/store/apps/details?id=";
 
     public Share(DetailsFragment fragment, App app) {
         super(fragment, app);

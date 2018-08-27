@@ -64,8 +64,6 @@ public class AuroraActivity extends BaseActivity {
     public void onBackPressed() {
         if (!containerFragment.onBackPressed()) {
             super.onBackPressed();
-        } else {
-            //Just Ignore
         }
     }
 

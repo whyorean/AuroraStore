@@ -31,11 +31,6 @@ public abstract class Button extends Abstract {
 
     protected View button;
 
-   /* public Button(AuroraActivity activity, App app) {
-        super(activity, app);
-        this.button = getButton();
-    }*/
-
     public Button(Context context, View view, App app) {
         super(context, view, app);
         this.button = getButton();

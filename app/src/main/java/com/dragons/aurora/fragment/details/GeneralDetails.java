@@ -47,7 +47,6 @@ import com.bumptech.glide.request.target.Target;
 import com.dragons.aurora.CategoryManager;
 import com.dragons.aurora.R;
 import com.dragons.aurora.Util;
-import com.dragons.aurora.activities.AuroraActivity;
 import com.dragons.aurora.fragment.DetailsFragment;
 import com.dragons.aurora.model.App;
 import com.dragons.aurora.model.ImageSource;
@@ -60,10 +59,29 @@ import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 import androidx.palette.graphics.Palette;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 import static com.dragons.aurora.AuroraApplication.COLOR_UI;
 
 public class GeneralDetails extends AbstractHelper {
+
+    @BindView(R.id.app_background)
+    ImageView appBackground;
+    @BindView(R.id.icon)
+    ImageView appIcon;
+    @BindView(R.id.app_menu3dot)
+    ImageView app_menu3dot;
+    @BindView(R.id.categoryImage)
+    ImageView categoryImg;
+    @BindView(R.id.rating_img)
+    ImageView ratingImg;
+    @BindView(R.id.changelog_container)
+    CardView changelogLayout;
+    @BindView(R.id.showLessMoreTxt)
+    TextView showLessMoreTxt;
+    @BindView(R.id.versionString)
+    TextView app_version;
 
     public GeneralDetails(DetailsFragment fragment, App app) {
         super(fragment, app);
@@ -71,17 +89,16 @@ public class GeneralDetails extends AbstractHelper {
 
     @Override
     public void draw() {
-        drawAppBadge(app);
+        ButterKnife.bind(this, view);
+        drawAppBadge();
         if (app.isInPlayStore()) {
-            drawGeneralDetails(app);
-            drawDescription(app);
+            drawGeneralDetails();
+            drawDescription();
         }
     }
 
-    private void drawAppBadge(App app) {
+    private void drawAppBadge() {
         if (view != null) {
-            ImageView appIcon = view.findViewById(R.id.icon);
-            ImageView app_menu3dot = view.findViewById(R.id.app_menu3dot);
             ImageSource imageSource = app.getIconInfo();
             if (null != imageSource.getApplicationInfo()) {
                 appIcon.setImageDrawable(context.getPackageManager().getApplicationIcon(imageSource.getApplicationInfo()));
@@ -116,11 +133,10 @@ public class GeneralDetails extends AbstractHelper {
 
             setText(view, R.id.displayName, app.getDisplayName());
             setText(view, R.id.packageName, R.string.details_developer, app.getDeveloperName());
-            drawVersion(view.findViewById(R.id.versionString), app);
-            drawBackground(view.findViewById(R.id.app_background));
+            drawVersion(app);
+            drawBackground();
 
             app_menu3dot.setOnClickListener(v -> {
-                AuroraActivity activity = (AuroraActivity) context;
                 PopupMenu popup = new PopupMenu(v.getContext(), v);
                 popup.inflate(R.menu.menu_download);
                 new DownloadOptions(context, view, app).inflate(popup.getMenu());
@@ -138,7 +154,7 @@ public class GeneralDetails extends AbstractHelper {
         }
     }
 
-    private void drawBackground(ImageView appBackground) {
+    private void drawBackground() {
         if (null != app.getPageBackgroundImage().getUrl())
             Glide
                     .with(context)
@@ -182,7 +198,7 @@ public class GeneralDetails extends AbstractHelper {
         paintImageView(R.id.privacy_ico);
     }
 
-    private void drawGeneralDetails(App app) {
+    private void drawGeneralDetails() {
         if (context != null) {
             if (app.isEarlyAccess()) {
                 setText(view, R.id.rating, R.string.early_access);
@@ -204,9 +220,6 @@ public class GeneralDetails extends AbstractHelper {
                 setText(view, R.id.price, app.getPrice());
             setText(view, R.id.contains_ads, app.containsAds() ? R.string.details_contains_ads : R.string.details_no_ads);
 
-            ImageView categoryImg = view.findViewById(R.id.categoryImage);
-            ImageView ratingImg = view.findViewById(R.id.rating_img);
-
             Glide.with(context)
                     .load(app.getCategoryIconUrl())
                     .apply(new RequestOptions()
@@ -221,8 +234,8 @@ public class GeneralDetails extends AbstractHelper {
                             .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC))
                     .into(ratingImg);
 
-            drawOfferDetails(app);
-            drawChanges(app);
+            drawOfferDetails();
+            drawChanges();
 
             if (app.getVersionCode() == 0) {
                 show(view, R.id.updated);
@@ -237,7 +250,7 @@ public class GeneralDetails extends AbstractHelper {
         }
     }
 
-    private void drawChanges(App app) {
+    private void drawChanges() {
         String changes = app.getChanges();
         if (TextUtils.isEmpty(changes)) {
             hide(view, R.id.changes_container);
@@ -247,7 +260,7 @@ public class GeneralDetails extends AbstractHelper {
         }
     }
 
-    private void drawOfferDetails(App app) {
+    private void drawOfferDetails() {
         List<String> keyList = new ArrayList<>(app.getOfferDetails().keySet());
         Collections.reverse(keyList);
         for (String key : keyList) {
@@ -270,13 +283,13 @@ public class GeneralDetails extends AbstractHelper {
         }
     }
 
-    private void drawVersion(TextView textView, App app) {
+    private void drawVersion(App app) {
         String versionName = app.getVersionName();
         if (TextUtils.isEmpty(versionName)) {
             return;
         }
-        textView.setText(context.getString(R.string.details_versionName, versionName));
-        textView.setVisibility(View.VISIBLE);
+        app_version.setText(context.getString(R.string.details_versionName, versionName));
+        app_version.setVisibility(View.VISIBLE);
         if (!app.isInstalled()) {
             return;
         }
@@ -290,17 +303,15 @@ public class GeneralDetails extends AbstractHelper {
             if (currentVersion.equals(newVersion)) {
                 newVersion = String.valueOf(app.getVersionCode());
             }
-            textView.setText(newVersion);
+            app_version.setText(newVersion);
             setText(view, R.id.download, context.getString(R.string.details_update));
         } catch (PackageManager.NameNotFoundException e) {
             // We've checked for that already
         }
     }
 
-    private void drawDescription(App app) {
+    private void drawDescription() {
         if (context != null) {
-            CardView changelogLayout = view.findViewById(R.id.changelog_container);
-            TextView showLessMoreTxt = view.findViewById(R.id.showLessMoreTxt);
 
             if (TextUtils.isEmpty(app.getDescription())) {
                 hide(view, R.id.more_card);

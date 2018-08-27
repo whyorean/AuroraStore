@@ -39,7 +39,19 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class Permissions extends AbstractHelper {
+
+    @BindView(R.id.permissions_header)
+    TextView viewHeader;
+    @BindView(R.id.permissions_container)
+    LinearLayout viewContainer;
+    @BindView(R.id.permissions_container_widgets)
+    LinearLayout container;
+    @BindView(R.id.permissions_none)
+    TextView permissions_none;
 
     private PackageManager pm;
 
@@ -50,9 +62,8 @@ public class Permissions extends AbstractHelper {
 
     @Override
     public void draw() {
-        TextView viewHeader = view.findViewById(R.id.permissions_header);
-        LinearLayout viewContainer = view.findViewById(R.id.permissions_container);
-        show(fragment.getView(), R.id.perm_card);
+        ButterKnife.bind(this, view);
+        show(view, R.id.perm_card);
         viewHeader.setOnClickListener(v -> {
             boolean isExpanded = viewContainer.getVisibility() == View.VISIBLE;
             if (isExpanded) {
@@ -83,16 +94,18 @@ public class Permissions extends AbstractHelper {
             } else {
                 widget = permissionGroupWidgets.get(permissionGroupInfo.name);
             }
-            widget.addPermission(permissionInfo);
+            if (widget != null) {
+                widget.addPermission(permissionInfo);
+            }
         }
-        LinearLayout container = view.findViewById(R.id.permissions_container_widgets);
+
         container.removeAllViews();
         List<String> permissionGroupLabels = new ArrayList<>(permissionGroupWidgets.keySet());
         Collections.sort(permissionGroupLabels);
         for (String permissionGroupLabel : permissionGroupLabels) {
             container.addView(permissionGroupWidgets.get(permissionGroupLabel));
         }
-        view.findViewById(R.id.permissions_none).setVisibility(permissionGroupWidgets.isEmpty() ? View.VISIBLE : View.GONE);
+        permissions_none.setVisibility(permissionGroupWidgets.isEmpty() ? View.VISIBLE : View.GONE);
     }
 
     private PermissionInfo getPermissionInfo(String permissionName) {

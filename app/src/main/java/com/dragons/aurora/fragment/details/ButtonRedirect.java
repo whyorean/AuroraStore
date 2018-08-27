@@ -52,7 +52,7 @@ public class ButtonRedirect extends Button {
     @Override
     protected void onButtonClick(View v) {
         Intent intent = new Intent(Intent.ACTION_VIEW);
-        intent.setData(Uri.parse("https://play.google.com/store/apps/details?id=" + app.getPackageName()));
+        intent.setData(Uri.parse("https://video_play.google.com/store/apps/details?id=" + app.getPackageName()));
         Intent chooser = Intent.createChooser(intent, context.getString(R.string.details_run_with));
         if (intent.resolveActivity(context.getPackageManager()) != null) {
             context.startActivity(chooser);

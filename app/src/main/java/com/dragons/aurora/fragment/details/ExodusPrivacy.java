@@ -34,6 +34,7 @@ import android.view.WindowManager;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -47,7 +48,6 @@ import com.dragons.aurora.fragment.DetailsFragment;
 import com.dragons.aurora.helpers.Prefs;
 import com.dragons.aurora.model.App;
 import com.dragons.aurora.model.ExodusTracker;
-import com.percolate.caffeine.ViewUtils;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -61,10 +61,17 @@ import java.util.List;
 import androidx.palette.graphics.Palette;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 import static com.android.volley.VolleyLog.TAG;
 
 public class ExodusPrivacy extends AbstractHelper {
+
+    @BindView(R.id.exodus_card)
+    LinearLayout exodus_card;
+    @BindView(R.id.moreButton)
+    Button moreButton;
 
     private String AppID;
     private JSONArray trackersIDs;
@@ -75,6 +82,7 @@ public class ExodusPrivacy extends AbstractHelper {
 
     @Override
     public void draw() {
+        ButterKnife.bind(this, view);
         try {
             getExodusReport(fragment.getActivity(), "https://reports.exodus-privacy.eu.org/api/search/" + app.getPackageName());
         } catch (NullPointerException e) {
@@ -102,20 +110,17 @@ public class ExodusPrivacy extends AbstractHelper {
 
     private void drawExodus(JSONArray appTrackers) {
         if (fragment.getActivity() != null) {
-            ViewUtils.findViewById(view, R.id.exodus_card).setVisibility(View.VISIBLE);
+            exodus_card.setVisibility(View.VISIBLE);
             if (appTrackers.length() > 0) {
                 setText(view, R.id.exodus_description, R.string.exodus_hasTracker, appTrackers.length());
             } else {
                 setText(view, R.id.exodus_description, R.string.exodus_noTracker);
             }
 
-
-            Button moreButton = view.findViewById(R.id.moreButton);
             if (trackersIDs.isNull(0))
                 moreButton.setVisibility(View.GONE);
-            moreButton.setOnClickListener(v -> {
-                showDialog(AbstractHelper.color);
-            });
+            else
+                moreButton.setOnClickListener(v -> showDialog(AbstractHelper.color));
         }
     }
 

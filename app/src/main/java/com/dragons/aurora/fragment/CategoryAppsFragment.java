@@ -33,6 +33,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
 import com.dragons.aurora.GridAutoFitLayoutManager;
 import com.dragons.aurora.R;
 import com.dragons.aurora.adapters.CategoryFilterAdapter;
@@ -43,35 +44,44 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class CategoryAppsFragment extends CategoryAppsTask implements SingleDownloadsAdapter.SingleClickListener, SingleRatingsAdapter.SingleClickListener {
 
     public static String categoryId;
-    private ViewPager viewPager;
-    private TabLayout tabLayout;
-    private FloatingActionButton filter_fab;
 
+    @BindView(R.id.view_pager)
+    ViewPager viewPager;
+    @BindView(R.id.category_tabs)
+    TabLayout tabLayout;
+    @BindView(R.id.filter_fab)
+    FloatingActionButton filter_fab;
+
+    private View view;
     private CategoryFilterAdapter categoryFilterAdapter;
     private SingleDownloadsAdapter singleDownloadAdapter;
     private SingleRatingsAdapter singleRatingAdapter;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_endless, container, false);
-        viewPager = view.findViewById(R.id.view_pager);
-        tabLayout = view.findViewById(R.id.category_tabs);
-        filter_fab = view.findViewById(R.id.filter_fab);
+        view = inflater.inflate(R.layout.fragment_endless, container, false);
+        ButterKnife.bind(this, view);
+        return view;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         categoryFilterAdapter = new CategoryFilterAdapter(getActivity(), getActivity().getSupportFragmentManager());
         viewPager.setAdapter(categoryFilterAdapter);
         viewPager.setOffscreenPageLimit(3);
         tabLayout.setupWithViewPager(viewPager);
-
         filter_fab.show();
         filter_fab.setOnClickListener(v -> getFilterDialog());
-
-        return view;
     }
 
     @Override
@@ -92,6 +102,12 @@ public class CategoryAppsFragment extends CategoryAppsTask implements SingleDown
             categoryId = arguments.getString("CategoryId");
         else
             Log.e(this.getClass().getName(), "No category id provided");
+    }
+
+    @Override
+    public void onDestroy() {
+        Glide.with(this).pauseAllRequests();
+        super.onDestroy();
     }
 
     private void getFilterDialog() {

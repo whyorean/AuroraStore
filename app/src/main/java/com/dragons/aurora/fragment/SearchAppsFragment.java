@@ -34,6 +34,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
+import com.bumptech.glide.Glide;
 import com.dragons.aurora.AppListIterator;
 import com.dragons.aurora.CredentialsEmptyException;
 import com.dragons.aurora.EndlessRecyclerViewScrollListener;
@@ -57,9 +58,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
+import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
 
 import static com.dragons.aurora.Util.hide;
@@ -67,21 +70,30 @@ import static com.dragons.aurora.Util.isConnected;
 
 public class SearchAppsFragment extends SearchTask implements SingleDownloadsAdapter.SingleClickListener, SingleRatingsAdapter.SingleClickListener {
 
+    @BindView(R.id.search_apps_list)
+    RecyclerView recyclerView;
+    @BindView(R.id.unicorn)
+    RelativeLayout unicorn;
+    @BindView(R.id.ohhSnap)
+    RelativeLayout ohhSnap;
+    @BindView(R.id.progress)
+    RelativeLayout progress;
+    @BindView(R.id.filter_fab)
+    FloatingActionButton filter_fab;
+    @BindView(R.id.ohhSnap_retry)
+    Button ohhSnap_retry;
+    @BindView(R.id.recheck_query)
+    Button retry_query;
+
     private View view;
-    private RecyclerView recyclerView;
-    private RelativeLayout unicorn;
-    private RelativeLayout ohhSnap;
-    private RelativeLayout progress;
-    private FloatingActionButton filter_fab;
-    private SingleDownloadsAdapter singleDownloadAdapter;
-    private SingleRatingsAdapter singleRatingAdapter;
     private String title;
     private String query;
-    private boolean setLooper = true;
-    private boolean loading = true;
+    private Boolean loading;
     private AppListIterator iterator;
-    private Disposable disposable;
+    private CompositeDisposable mDisposable = new CompositeDisposable();
     private EndlessAppsAdapter endlessAppsAdapter;
+    private SingleDownloadsAdapter singleDownloadAdapter;
+    private SingleRatingsAdapter singleRatingAdapter;
 
     public String getQuery() {
         return query;
@@ -107,22 +119,13 @@ public class SearchAppsFragment extends SearchTask implements SingleDownloadsAda
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_search_list, container, false);
-        init();
+        ButterKnife.bind(this, view);
         return view;
-    }
-
-    private void init() {
-        recyclerView = view.findViewById(R.id.search_apps_list);
-        unicorn = view.findViewById(R.id.unicorn);
-        ohhSnap = view.findViewById(R.id.ohhSnap);
-        progress = view.findViewById(R.id.progress);
-        filter_fab = view.findViewById(R.id.filter_fab);
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        Button ohhSnap_retry = view.findViewById(R.id.ohhSnap_retry);
         ohhSnap_retry.setOnClickListener(click -> {
             if (Accountant.isLoggedIn(getContext()) && isConnected(getContext())) {
                 hide(view, R.id.ohhSnap);
@@ -130,8 +133,7 @@ public class SearchAppsFragment extends SearchTask implements SingleDownloadsAda
                 fetchSearchAppsList(false);
             }
         });
-        Button retry_querry = view.findViewById(R.id.recheck_query);
-        retry_querry.setOnClickListener(click -> {
+        retry_query.setOnClickListener(click -> {
             if (Accountant.isLoggedIn(getContext()) && isConnected(getContext())) {
                 hide(view, R.id.unicorn);
                 iterator = setupIterator(getQuery());
@@ -140,6 +142,13 @@ public class SearchAppsFragment extends SearchTask implements SingleDownloadsAda
         });
         filter_fab.show();
         filter_fab.setOnClickListener(v -> getFilterDialog());
+    }
+
+    @Override
+    public void onDestroy() {
+        Glide.with(this).pauseAllRequests();
+        mDisposable.dispose();
+        super.onDestroy();
     }
 
     @Override
@@ -216,7 +225,7 @@ public class SearchAppsFragment extends SearchTask implements SingleDownloadsAda
 
     private void setupListView(List<App> appsToAdd) {
         progress.setVisibility(View.GONE);
-        LinearLayoutManager mLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
+        LinearLayoutManager mLayoutManager = new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false);
         endlessAppsAdapter = new EndlessAppsAdapter(this, appsToAdd);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setLayoutAnimation(AnimationUtils.loadLayoutAnimation(this.getActivity(), R.anim.anim_falldown));
@@ -231,7 +240,7 @@ public class SearchAppsFragment extends SearchTask implements SingleDownloadsAda
     }
 
     private void fetchSearchAppsList(boolean shouldIterate) {
-        disposable = Observable.fromCallable(() -> getResult(iterator))
+        mDisposable.add(Observable.fromCallable(() -> getResult(iterator))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(appList -> {
@@ -245,7 +254,7 @@ public class SearchAppsFragment extends SearchTask implements SingleDownloadsAda
                 }, err -> {
                     processException(err);
                     ohhSnap.setVisibility(View.VISIBLE);
-                });
+                }));
     }
 
     private void addApps(List<App> appsToAdd) {

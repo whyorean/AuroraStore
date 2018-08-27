@@ -66,17 +66,28 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 import static com.dragons.aurora.activities.SearchActivity.PUB_PREFIX;
 
 public class SearchFragment extends ExceptionTask implements HistoryItemTouchHelper.RecyclerItemTouchHelperListener {
-    private SearchView searchToolbar;
-    private ClusterAppsCard clusterAppsCard;
-    private RecyclerView searchHistoryRecyclerView;
-    private RecyclerView searchHistoryAppRecyclerView;
-    private CardView search_layout;
-    private TextView emptyView;
-    private Button clearAll;
+
+    @BindView(R.id.search_apps)
+    SearchView searchToolbar;
+    @BindView(R.id.search_layout)
+    CardView search_layout;
+    @BindView(R.id.searchHistory)
+    RecyclerView searchHistoryRecyclerView;
+    @BindView(R.id.m_apps_recycler)
+    RecyclerView searchHistoryAppRecyclerView;
+    @BindView(R.id.searchClusterApp)
+    ClusterAppsCard clusterAppsCard;
+    @BindView(R.id.emptyView)
+    TextView emptyView;
+    @BindView(R.id.clearAll)
+    Button clearAll;
+
     private View view;
     private Jessie mJessie;
     private SearchHistoryAdapter searchHistoryAdapter;
@@ -89,13 +100,8 @@ public class SearchFragment extends ExceptionTask implements HistoryItemTouchHel
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        if (view != null) {
-            if ((ViewGroup) view.getParent() != null)
-                ((ViewGroup) view.getParent()).removeView(view);
-            return view;
-        }
         view = inflater.inflate(R.layout.fragment_search, container, false);
-        init();
+        ButterKnife.bind(this, view);
         return view;
     }
 
@@ -106,16 +112,6 @@ public class SearchFragment extends ExceptionTask implements HistoryItemTouchHel
         addQueryTextListener(searchToolbar);
         setupHistory();
         setupAppHistory();
-    }
-
-    private void init() {
-        searchToolbar = view.findViewById(R.id.search_apps);
-        clusterAppsCard = view.findViewById(R.id.searchClusterApp);
-        searchHistoryRecyclerView = view.findViewById(R.id.searchHistory);
-        searchHistoryAppRecyclerView = view.findViewById(R.id.m_apps_recycler);
-        search_layout = view.findViewById(R.id.search_layout);
-        emptyView = view.findViewById(R.id.emptyView);
-        clearAll = view.findViewById(R.id.clearAll);
 
         clearAll.setOnClickListener(v -> clearAll());
         search_layout.setOnClickListener(v -> {

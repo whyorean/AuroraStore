@@ -42,9 +42,11 @@ import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
+import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
 
 import static com.dragons.aurora.Util.hide;
@@ -53,9 +55,11 @@ import static com.dragons.aurora.Util.show;
 
 public class CategoryListFragment extends CategoryListTask {
 
+    @BindView(R.id.swipe_refresh_layout)
+    SwipeRefreshLayout swipeRefreshLayout;
+
     private View view;
-    private SwipeRefreshLayout swipeRefreshLayout;
-    private Disposable loadApps;
+    private CompositeDisposable mDisposable = new CompositeDisposable();
     private CategoryManager categoryManager;
 
     @Override
@@ -66,13 +70,9 @@ public class CategoryListFragment extends CategoryListTask {
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
-        if (view != null) {
-            if ((ViewGroup) view.getParent() != null)
-                ((ViewGroup) view.getParent()).removeView(view);
-            return view;
-        }
         view = inflater.inflate(R.layout.fragment_categories, container, false);
+        ButterKnife.bind(this, view);
+
         if (Accountant.isLoggedIn(getContext()) && categoryManager.categoryListEmpty())
             getAllCategories();
         else {
@@ -80,7 +80,7 @@ public class CategoryListFragment extends CategoryListTask {
             setupTopCategories();
         }
 
-        swipeRefreshLayout = ViewUtils.findViewById(view, R.id.swipe_refresh_layout);
+        Util.setColors(getContext(), swipeRefreshLayout);
         swipeRefreshLayout.setOnRefreshListener(() -> {
             if (Accountant.isLoggedIn(getContext()) && Util.isConnected(getActivity()))
                 getAllCategories();
@@ -97,8 +97,9 @@ public class CategoryListFragment extends CategoryListTask {
     }
 
     @Override
-    public void onStop() {
-        super.onStop();
+    public void onDestroy() {
+        mDisposable.dispose();
+        super.onDestroy();
     }
 
     private void setupTopCategories() {
@@ -112,23 +113,24 @@ public class CategoryListFragment extends CategoryListTask {
         show(view, R.id.all_cat_view);
         RecyclerView recyclerView = ViewUtils.findViewById(view, R.id.all_cat_view);
         recyclerView.setAdapter(new AllCategoriesAdapter(this, categoryManager.getCategoriesFromSharedPreferences()));
-        recyclerView.setLayoutManager(new GridAutoFitLayoutManager(getContext(), 150));
+        recyclerView.setLayoutManager(new GridAutoFitLayoutManager(getContext(), 180));
         recyclerView.setLayoutAnimation(AnimationUtils.loadLayoutAnimation(getContext(), R.anim.anim_falldown));
     }
 
     private void getAllCategories() {
         hide(view, R.id.all_cat_view);
-        loadApps = Observable.fromCallable(() -> getResult(getContext()))
+        mDisposable.add(Observable.fromCallable(() -> getResult(getContext()))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
+                .doOnSubscribe(start -> swipeRefreshLayout.setRefreshing(true))
+                .doOnTerminate(() -> swipeRefreshLayout.setRefreshing(false))
                 .subscribe((result) -> {
                     if (result) {
                         if (view != null) {
                             setupTopCategories();
                             setupAllCategories();
-                            swipeRefreshLayout.setRefreshing(false);
                         }
                     }
-                }, this::processException);
+                }, this::processException));
     }
 }

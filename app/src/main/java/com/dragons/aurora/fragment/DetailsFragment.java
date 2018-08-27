@@ -28,6 +28,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
 import com.dragons.aurora.PlayStoreApiAuthenticator;
 import com.dragons.aurora.R;
 import com.dragons.aurora.fragment.details.AppLists;
@@ -50,9 +51,11 @@ import com.percolate.caffeine.ToastUtils;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
+import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
 
 import static com.dragons.aurora.Util.hide;
@@ -63,10 +66,15 @@ public class DetailsFragment extends DetailsAppTaskHelper {
 
     public static App app;
 
+    @BindView(R.id.ohhSnap_retry)
+    Button retry_details;
+    @BindView(R.id.action_back)
+    ImageView action_back;
+
     private View view;
     private DownloadOrInstall downloadOrInstallFragment;
+    private CompositeDisposable mDisposable = new CompositeDisposable();
     private String packageName;
-    private Disposable disposable;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -76,6 +84,7 @@ public class DetailsFragment extends DetailsAppTaskHelper {
             return view;
         }
         view = inflater.inflate(R.layout.fragment_details, container, false);
+        ButterKnife.bind(this, view);
         return view;
     }
 
@@ -95,7 +104,6 @@ public class DetailsFragment extends DetailsAppTaskHelper {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        Button retry_details = view.findViewById(R.id.ohhSnap_retry);
         retry_details.setOnClickListener(click -> {
             if (Accountant.isLoggedIn(getContext()) && isConnected(getContext())) {
                 hide(view, R.id.ohhSnap);
@@ -103,8 +111,6 @@ public class DetailsFragment extends DetailsAppTaskHelper {
                 fetchDetails();
             }
         });
-
-        ImageView action_back = view.findViewById(R.id.action_back);
         action_back.setOnClickListener(c -> getActivity().onBackPressed());
     }
 
@@ -121,6 +127,8 @@ public class DetailsFragment extends DetailsAppTaskHelper {
         if (null != downloadOrInstallFragment) {
             downloadOrInstallFragment.unregisterReceivers();
         }
+        Glide.with(this).pauseAllRequests();
+        mDisposable.dispose();
         super.onDestroyView();
     }
 
@@ -131,7 +139,7 @@ public class DetailsFragment extends DetailsAppTaskHelper {
     }
 
     private void fetchDetails() {
-        disposable = Observable.fromCallable(() -> getResult(new PlayStoreApiAuthenticator(this.getActivity()).getApi(), packageName))
+        mDisposable.add(Observable.fromCallable(() -> getResult(new PlayStoreApiAuthenticator(this.getActivity()).getApi(), packageName))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(app -> {
@@ -141,7 +149,7 @@ public class DetailsFragment extends DetailsAppTaskHelper {
                     hide(view, R.id.progress);
                     show(view, R.id.ohhSnap);
                     processException(err);
-                });
+                }));
     }
 
     private void redrawDetails(App app) {

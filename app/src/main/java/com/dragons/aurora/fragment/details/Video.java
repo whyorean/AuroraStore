@@ -41,13 +41,17 @@ import com.dragons.aurora.R;
 import com.dragons.aurora.fragment.DetailsFragment;
 import com.dragons.aurora.model.App;
 
-import org.json.JSONException;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 import static com.android.volley.VolleyLog.TAG;
 
 public class Video extends AbstractHelper {
 
-    private ImageView mImageView;
+    @BindView(R.id.thumbnail)
+    ImageView video_thumbnail;
+    @BindView(R.id.video_play)
+    ImageView video_play;
 
     public Video(DetailsFragment fragment, App app) {
         super(fragment, app);
@@ -55,16 +59,15 @@ public class Video extends AbstractHelper {
 
     @Override
     public void draw() {
+        ButterKnife.bind(this, view);
         if (TextUtils.isEmpty(app.getVideoUrl())) {
             return;
         }
 
-        mImageView = view.findViewById(R.id.thumbnail);
         getVideoThumbURL(app.getVideoUrl());
         view.findViewById(R.id.app_video).setVisibility(View.VISIBLE);
 
-        ImageView play = view.findViewById(R.id.vid_play);
-        play.setOnClickListener(v -> {
+        video_play.setOnClickListener(v -> {
             try {
                 context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(app.getVideoUrl())));
             } catch (ActivityNotFoundException e) {
@@ -80,14 +83,15 @@ public class Video extends AbstractHelper {
                 null,
                 obj -> {
                     try {
-                        Glide
-                                .with(context)
-                                .load(obj.getString("thumbnail_url"))
-                                .apply(new RequestOptions().centerCrop().placeholder(android.R.color.transparent))
-                                .transition(new DrawableTransitionOptions().crossFade())
-                                .into(mImageView);
-                    } catch (JSONException e) {
-                        e.printStackTrace();
+                        if (context != null)
+                            Glide
+                                    .with(context)
+                                    .load(obj.getString("thumbnail_url"))
+                                    .apply(new RequestOptions().centerCrop().placeholder(android.R.color.transparent))
+                                    .transition(new DrawableTransitionOptions().crossFade())
+                                    .into(video_thumbnail);
+                    } catch (Exception e) {
+                        Log.e(getClass().getSimpleName(), e.getMessage());
                     }
                 }, error -> VolleyLog.d(TAG, "Error: " + error.getMessage()));
         mRequestQueue.add(jsonObjReq);
