@@ -29,6 +29,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 
@@ -110,7 +111,6 @@ public class InstalledAppsAdapter extends RecyclerView.Adapter<InstalledAppsAdap
         App app = appsToAdd.get(position);
         List<String> Version = new ArrayList<>();
         List<String> Extra = new ArrayList<>();
-        Vibrator vibe = (Vibrator) fragment.getActivity().getSystemService(Context.VIBRATOR_SERVICE);
 
         holder.AppTitle.setText(app.getDisplayName());
         getDetails(fragment.getContext(), Version, Extra, app);
@@ -123,12 +123,6 @@ public class InstalledAppsAdapter extends RecyclerView.Adapter<InstalledAppsAdap
             fragment.startActivity(intent);
         });
 
-        holder.AppContainer.setOnLongClickListener(v -> {
-            if (vibe != null) {
-                vibe.vibrate(10);
-            }
-            return true;
-        });
 
         Glide
                 .with(fragment.getContext())
@@ -194,7 +188,7 @@ public class InstalledAppsAdapter extends RecyclerView.Adapter<InstalledAppsAdap
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         public View view;
-        private CardView AppContainer;
+        private LinearLayout AppContainer;
         private ImageView AppMenu;
         private ImageView AppIcon;
         private TextView AppTitle;

@@ -32,6 +32,7 @@ import android.view.WindowManager;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.dragons.aurora.GridAutoFitLayoutManager;
@@ -53,6 +54,7 @@ import butterknife.ButterKnife;
 public class CategoryAppsFragment extends CategoryAppsTask implements SingleDownloadsAdapter.SingleClickListener, SingleRatingsAdapter.SingleClickListener {
 
     public static String categoryId;
+    public static String categoryName;
 
     @BindView(R.id.view_pager)
     ViewPager viewPager;
@@ -60,6 +62,8 @@ public class CategoryAppsFragment extends CategoryAppsTask implements SingleDown
     TabLayout tabLayout;
     @BindView(R.id.filter_fab)
     FloatingActionButton filter_fab;
+    @BindView(R.id.categoryTitle)
+    TextView categoryTitle;
 
     private View view;
     private CategoryFilterAdapter categoryFilterAdapter;
@@ -76,6 +80,8 @@ public class CategoryAppsFragment extends CategoryAppsTask implements SingleDown
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        if (!categoryName.isEmpty())
+            categoryTitle.setText(categoryName);
         categoryFilterAdapter = new CategoryFilterAdapter(getActivity(), getActivity().getSupportFragmentManager());
         viewPager.setAdapter(categoryFilterAdapter);
         viewPager.setOffscreenPageLimit(3);
@@ -98,9 +104,10 @@ public class CategoryAppsFragment extends CategoryAppsTask implements SingleDown
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Bundle arguments = getArguments();
-        if (arguments != null)
+        if (arguments != null) {
             categoryId = arguments.getString("CategoryId");
-        else
+            categoryName = arguments.getString("CategoryName");
+        } else
             Log.e(this.getClass().getName(), "No category id provided");
     }
 

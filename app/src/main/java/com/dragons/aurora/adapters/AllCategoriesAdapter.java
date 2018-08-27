@@ -106,12 +106,13 @@ public class AllCategoriesAdapter extends RecyclerView.Adapter<AllCategoriesAdap
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
-        holder.topLabel.setText(translator.getString(new ArrayList<>(categories.keySet()).get(holder.getAdapterPosition())));
-        holder.topImage.setImageDrawable(context.getResources().getDrawable(categoriesImg[holder.getAdapterPosition()]));
+        holder.topLabel.setText(translator.getString(new ArrayList<>(categories.keySet()).get(position)));
+        holder.topImage.setImageDrawable(context.getResources().getDrawable(categoriesImg[position]));
         holder.topContainer.setOnClickListener(v -> {
             CategoryAppsFragment categoryAppsFragment = new CategoryAppsFragment();
             Bundle arguments = new Bundle();
             arguments.putString("CategoryId", new ArrayList<>(categories.keySet()).get(position));
+            arguments.putString("CategoryName", translator.getString(new ArrayList<>(categories.keySet()).get(position)));
             categoryAppsFragment.setArguments(arguments);
             fragment.getChildFragmentManager()
                     .beginTransaction()

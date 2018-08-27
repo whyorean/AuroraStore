@@ -33,7 +33,9 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
+import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
 import com.bumptech.glide.Glide;
 import com.dragons.aurora.AppListIterator;
 import com.dragons.aurora.CredentialsEmptyException;
@@ -51,11 +53,13 @@ import com.dragons.aurora.task.playstore.SearchTask;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Timer;
 import java.util.TimerTask;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
@@ -84,6 +88,10 @@ public class SearchAppsFragment extends SearchTask implements SingleDownloadsAda
     Button ohhSnap_retry;
     @BindView(R.id.recheck_query)
     Button retry_query;
+    @BindView(R.id.searchTitle)
+    TextView searchTitle;
+
+    private AHBottomNavigation mBottomNavigationView;
 
     private View view;
     private String title;
@@ -126,6 +134,8 @@ public class SearchAppsFragment extends SearchTask implements SingleDownloadsAda
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        if (!title.isEmpty())
+            searchTitle.setText(title);
         ohhSnap_retry.setOnClickListener(click -> {
             if (Accountant.isLoggedIn(getContext()) && isConnected(getContext())) {
                 hide(view, R.id.ohhSnap);
@@ -142,6 +152,7 @@ public class SearchAppsFragment extends SearchTask implements SingleDownloadsAda
         });
         filter_fab.show();
         filter_fab.setOnClickListener(v -> getFilterDialog());
+        mBottomNavigationView = Objects.requireNonNull(getActivity()).findViewById(R.id.navigation);
     }
 
     @Override
@@ -229,6 +240,9 @@ public class SearchAppsFragment extends SearchTask implements SingleDownloadsAda
         endlessAppsAdapter = new EndlessAppsAdapter(this, appsToAdd);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setLayoutAnimation(AnimationUtils.loadLayoutAnimation(this.getActivity(), R.anim.anim_falldown));
+        DividerItemDecoration itemDecorator = new DividerItemDecoration(recyclerView.getContext(), DividerItemDecoration.VERTICAL);
+        itemDecorator.setDrawable(getResources().getDrawable(R.drawable.list_divider));
+        recyclerView.addItemDecoration(itemDecorator);
         recyclerView.setAdapter(endlessAppsAdapter);
         EndlessRecyclerViewScrollListener mEndlessRecyclerViewScrollListener = new EndlessRecyclerViewScrollListener(mLayoutManager) {
             @Override
@@ -237,6 +251,19 @@ public class SearchAppsFragment extends SearchTask implements SingleDownloadsAda
             }
         };
         recyclerView.addOnScrollListener(mEndlessRecyclerViewScrollListener);
+        recyclerView.setOnFlingListener(new RecyclerView.OnFlingListener() {
+            @Override
+            public boolean onFling(int velocityX, int velocityY) {
+                if (velocityY < 0) {
+                    filter_fab.show();
+                    mBottomNavigationView.restoreBottomNavigation(true);
+                } else if (velocityY > 0) {
+                    filter_fab.hide();
+                    mBottomNavigationView.hideBottomNavigation(true);
+                }
+                return false;
+            }
+        });
     }
 
     private void fetchSearchAppsList(boolean shouldIterate) {

@@ -27,7 +27,6 @@ import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.dragons.aurora.R;
@@ -36,11 +35,13 @@ import com.dragons.aurora.activities.AccountsActivity;
 import com.dragons.aurora.activities.PreferenceActivity;
 import com.google.android.material.appbar.AppBarLayout;
 
+import androidx.appcompat.widget.Toolbar;
+
 public class AdaptiveToolbar extends AppBarLayout {
 
     static int style;
     View root;
-    RelativeLayout layout;
+    Toolbar layout;
     ImageView action_icon;
     ImageView profile_icon;
     ImageView prefs_icon;

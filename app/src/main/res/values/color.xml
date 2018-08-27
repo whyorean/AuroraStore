@@ -35,6 +35,7 @@
     <color name="gray">#BDBDBD</color>
     <color name="darkGray">#616161</color>
     <color name="lightGray">#EEEEEE</color>
+    <color name="scrim">#22000000</color>
 
     <!--Stroke-->
     <color name="strokeLight">#33545454</color>

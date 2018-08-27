@@ -65,6 +65,7 @@ public class TopCategoriesAdapter extends RecyclerView.Adapter<TopCategoriesAdap
             CategoryAppsFragment categoryAppsFragment = new CategoryAppsFragment();
             Bundle arguments = new Bundle();
             arguments.putString("CategoryId", categories[position]);
+            arguments.putString("CategoryName", translator.getString(categories[position]));
             categoryAppsFragment.setArguments(arguments);
             fragment.getChildFragmentManager()
                     .beginTransaction()

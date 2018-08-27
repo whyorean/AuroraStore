@@ -41,16 +41,22 @@ import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 import static com.dragons.aurora.Util.isConnected;
 
 public class ContainerFragment extends Fragment implements UpdatableAppsFragment.OnUpdateListener {
 
-    private CustomViewPager mViewPager;
-    private AdaptiveToolbar mAdaptiveToolbar;
+    @BindView(R.id.viewpager)
+    CustomViewPager mViewPager;
+    @BindView(R.id.adtb)
+    AdaptiveToolbar mAdaptiveToolbar;
+    @BindView(R.id.navigation)
+    AHBottomNavigation bottomNavigationView;
+
     private View view;
     private ViewPagerAdapter mViewPagerAdapter;
-    private AHBottomNavigation bottomNavigationView;
 
     public ContainerFragment() {
     }
@@ -63,9 +69,7 @@ public class ContainerFragment extends Fragment implements UpdatableAppsFragment
             return view;
         }
         view = inflater.inflate(R.layout.fragment_container, container, false);
-        mAdaptiveToolbar = view.findViewById(R.id.adtb);
-        mViewPager = view.findViewById(R.id.viewpager);
-        bottomNavigationView = view.findViewById(R.id.navigation);
+        ButterKnife.bind(this, view);
         if (Prefs.getBoolean(getContext(), "SWIPE_PAGES"))
             mViewPager.setScroll(true);
         else
@@ -132,7 +136,7 @@ public class ContainerFragment extends Fragment implements UpdatableAppsFragment
     }
 
     private void setupBottomNav() {
-        int[] tabColors = getContext().getResources().getIntArray(R.array.tab_colors);
+        int[] tabColors = getResources().getIntArray(R.array.tab_colors);
         AHBottomNavigationAdapter navigationAdapter = new AHBottomNavigationAdapter(getActivity(), R.menu.main_menu);
         navigationAdapter.setupWithBottomNavigation(bottomNavigationView, tabColors);
         if (Prefs.getBoolean(getContext(), "COLOR_NAV"))

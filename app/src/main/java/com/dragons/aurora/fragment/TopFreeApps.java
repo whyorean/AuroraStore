@@ -30,6 +30,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 
+import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
 import com.dragons.aurora.AppListIterator;
 import com.dragons.aurora.CredentialsEmptyException;
 import com.dragons.aurora.EndlessRecyclerViewScrollListener;
@@ -41,12 +42,16 @@ import com.dragons.aurora.model.App;
 import com.dragons.aurora.playstoreapiv2.CategoryAppsIterator;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 import com.dragons.aurora.task.playstore.CategoryAppsTask;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Timer;
 import java.util.TimerTask;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
@@ -74,6 +79,9 @@ public class TopFreeApps extends CategoryAppsTask {
     @BindView(R.id.recheck_query)
     Button retry_query;
 
+    private FloatingActionButton filter_fab;
+    private AHBottomNavigation mBottomNavigationView;
+
     private View view;
     private AppListIterator iterator;
     private EndlessAppsAdapter endlessAppsAdapter;
@@ -89,10 +97,6 @@ public class TopFreeApps extends CategoryAppsTask {
 
     public RelativeLayout getProgress() {
         return progress;
-    }
-
-    public void setProgress(RelativeLayout progress) {
-        this.progress = progress;
     }
 
     public RecyclerView getRecyclerView() {
@@ -114,14 +118,16 @@ public class TopFreeApps extends CategoryAppsTask {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_endless_categorized, container, false);
-        ButterKnife.bind(this,view);
+        ButterKnife.bind(this, view);
         setRecyclerView(recyclerView);
         setIterator(setupIterator(CategoryAppsFragment.categoryId, GooglePlayAPI.SUBCATEGORY.TOP_FREE));
         fetchCategoryApps(false);
         return view;
     }
 
-    private void init() {
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
         ohhSnap_retry.setOnClickListener(click -> {
             if (Accountant.isLoggedIn(getContext()) && isConnected(getContext())) {
                 hide(view, R.id.ohhSnap);
@@ -135,6 +141,9 @@ public class TopFreeApps extends CategoryAppsTask {
                 fetchCategoryApps(false);
             }
         });
+
+        filter_fab = Objects.requireNonNull(getActivity()).findViewById(R.id.filter_fab);
+        mBottomNavigationView = Objects.requireNonNull(getActivity()).findViewById(R.id.navigation);
     }
 
     protected AppListIterator setupIterator(String categoryId, GooglePlayAPI.SUBCATEGORY subcategory) {
@@ -156,11 +165,13 @@ public class TopFreeApps extends CategoryAppsTask {
     }
 
     private void setupListView(List<App> appsToAdd) {
-        getProgress().setVisibility(View.GONE);
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(getContext());
         endlessAppsAdapter = new EndlessAppsAdapter(this, appsToAdd);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setLayoutAnimation(AnimationUtils.loadLayoutAnimation(getContext(), R.anim.anim_falldown));
+        DividerItemDecoration itemDecorator = new DividerItemDecoration(recyclerView.getContext(), DividerItemDecoration.VERTICAL);
+        itemDecorator.setDrawable(getResources().getDrawable(R.drawable.list_divider));
+        recyclerView.addItemDecoration(itemDecorator);
         recyclerView.setAdapter(endlessAppsAdapter);
         EndlessRecyclerViewScrollListener mEndlessRecyclerViewScrollListener = new EndlessRecyclerViewScrollListener(mLayoutManager) {
             @Override
@@ -169,13 +180,25 @@ public class TopFreeApps extends CategoryAppsTask {
             }
         };
         recyclerView.addOnScrollListener(mEndlessRecyclerViewScrollListener);
+        recyclerView.setOnFlingListener(new RecyclerView.OnFlingListener() {
+            @Override
+            public boolean onFling(int velocityX, int velocityY) {
+                if (velocityY < 0) {
+                    filter_fab.show();
+                    mBottomNavigationView.restoreBottomNavigation(true);
+                } else if (velocityY > 0) {
+                    filter_fab.hide();
+                    mBottomNavigationView.hideBottomNavigation(true);
+                }
+                return false;
+            }
+        });
     }
 
     protected void fetchCategoryApps(boolean shouldIterate) {
         mDisposable.add(Observable.fromCallable(() -> getResult(iterator))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .doOnSubscribe(start -> progress.setVisibility(View.VISIBLE))
                 .doOnTerminate(() -> progress.setVisibility(View.GONE))
                 .subscribe(appList -> {
                     if (shouldIterate) {

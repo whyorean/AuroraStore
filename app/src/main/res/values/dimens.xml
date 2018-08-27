@@ -27,5 +27,6 @@
     <dimen name="icon_size_cat">36dp</dimen>
     <dimen name="icon_size_small">24dp</dimen>
 
-    <dimen name="bottomnav_margin">52dp</dimen>
+    <dimen name="appbar_title_height">48dp</dimen>
+    <dimen name="bottomnav_margin">50dp</dimen>
 </resources>

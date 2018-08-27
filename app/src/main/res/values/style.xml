@@ -71,4 +71,33 @@
         <item name="colorControlActivated">@color/colorGold</item>
     </style>
 
+    <!-- Toolbar & AppBar -->
+
+    <style name="AppTheme.PopupTheme" parent="ThemeOverlay.MaterialComponents" />
+
+    <style name="Widget.Toolbar" parent="Widget.AppCompat.Toolbar">
+        <item name="titleTextAppearance">@style/TextAppearance.Widget.AppCompat.Toolbar.Title</item>
+        <item name="popupTheme">@style/AppTheme.PopupTheme</item>
+    </style>
+
+    <style name="Widget.AppBar" parent="@style/Widget.Design.AppBarLayout">
+        <item name="popupTheme">@style/AppTheme.PopupTheme</item>
+        <item name="android:background">?android:colorBackground</item>
+        <item name="android:elevation">8dp</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <!-- Tab Layout -->
+    <style name="Widget.Aurora.Tabs" parent="@style/Widget.MaterialComponents.TabLayout.Colored">
+        <item name="tabTextAppearance">@style/TextAppearance.Aurora.Tab</item>
+        <item name="tabIndicator">@drawable/tab_indicator</item>
+    </style>
+
+    <style name="TextAppearance.Aurora.Tab" parent="@style/TextAppearance.MaterialComponents.Tab">
+        <item name="android:fontFamily">@font/google_sans</item>
+        <item name="android:textColor">@color/tab_text</item>
+        <item name="android:textStyle">bold</item>
+        <item name="textAllCaps">false</item>
+    </style>
+
 </resources>

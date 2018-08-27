@@ -29,6 +29,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.Switch;
 
+import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
 import com.dragons.aurora.PlayStoreApiAuthenticator;
 import com.dragons.aurora.R;
 import com.dragons.aurora.Util;
@@ -45,9 +46,11 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Objects;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -72,6 +75,8 @@ public class InstalledAppsFragment extends InstalledAppsTaskHelper {
     Button retry_update;
     @BindView(R.id.includeSystem)
     Switch includeSystem;
+
+    private AHBottomNavigation mBottomNavigationView;
 
     private View view;
     private Jessie mJessie;
@@ -101,7 +106,7 @@ public class InstalledAppsFragment extends InstalledAppsTaskHelper {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mJessie = new Jessie(getContext());
-
+        mBottomNavigationView = Objects.requireNonNull(getActivity()).findViewById(R.id.navigation);
         Util.setColors(getContext(), swipeRefreshLayout);
         swipeRefreshLayout.setOnRefreshListener(() -> {
             if (Accountant.isLoggedIn(getContext()) && isConnected(getContext()))
@@ -151,7 +156,21 @@ public class InstalledAppsFragment extends InstalledAppsTaskHelper {
         installedAppsAdapter = new InstalledAppsAdapter(this, appsToAdd);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false));
         recyclerView.setLayoutAnimation(AnimationUtils.loadLayoutAnimation(getContext(), R.anim.anim_falldown));
+        DividerItemDecoration itemDecorator = new DividerItemDecoration(recyclerView.getContext(), DividerItemDecoration.VERTICAL);
+        itemDecorator.setDrawable(getResources().getDrawable(R.drawable.list_divider));
+        recyclerView.addItemDecoration(itemDecorator);
         recyclerView.setAdapter(installedAppsAdapter);
+        recyclerView.setOnFlingListener(new RecyclerView.OnFlingListener() {
+            @Override
+            public boolean onFling(int velocityX, int velocityY) {
+                if (velocityY < 0) {
+                    mBottomNavigationView.restoreBottomNavigation(true);
+                } else if (velocityY > 0) {
+                    mBottomNavigationView.hideBottomNavigation(true);
+                }
+                return false;
+            }
+        });
     }
 
     private void loadMarketApps() {

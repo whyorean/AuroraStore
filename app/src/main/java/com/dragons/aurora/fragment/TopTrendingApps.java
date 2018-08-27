@@ -74,11 +74,6 @@ public class TopTrendingApps extends TopFreeApps {
     }
 
     @Override
-    public void setProgress(RelativeLayout progress) {
-        super.setProgress(progress);
-    }
-
-    @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_endless_categorized, container, false);
         ButterKnife.bind(this, view);

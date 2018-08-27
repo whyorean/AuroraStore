@@ -20,11 +20,8 @@
   ~ along with Aurora Store.  If not, see <http://www.gnu.org/licenses/>.
   -->
 
-<inset xmlns:android="http://schemas.android.com/apk/res/android"
-    android:insetLeft="10dp"
-    android:insetRight="10dp" >
-    <shape>
-        <solid android:color="@color/gray" />
-        <corners android:radius="2.0dip" />
-    </shape>
-</inset>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="@color/gray"/>
+    <size android:height="0.5dp"/>
+</shape>
