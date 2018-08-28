@@ -22,6 +22,7 @@
 package com.dragons.aurora.fragment;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,7 +54,7 @@ import static com.dragons.aurora.Util.hide;
 import static com.dragons.aurora.Util.show;
 
 
-public class CategoryListFragment extends CategoryListTask {
+public class CategoryListFragment extends BaseFragment {
 
     @BindView(R.id.swipe_refresh_layout)
     SwipeRefreshLayout swipeRefreshLayout;
@@ -61,6 +62,7 @@ public class CategoryListFragment extends CategoryListTask {
     private View view;
     private CompositeDisposable mDisposable = new CompositeDisposable();
     private CategoryManager categoryManager;
+    private CategoryListTask mTask;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -70,23 +72,28 @@ public class CategoryListFragment extends CategoryListTask {
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         view = inflater.inflate(R.layout.fragment_categories, container, false);
         ButterKnife.bind(this, view);
+        return view;
+    }
 
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        mTask = new CategoryListTask(getContext());
         if (Accountant.isLoggedIn(getContext()) && categoryManager.categoryListEmpty())
             getAllCategories();
         else {
             setupAllCategories();
             setupTopCategories();
         }
-
         Util.setColors(getContext(), swipeRefreshLayout);
         swipeRefreshLayout.setOnRefreshListener(() -> {
             if (Accountant.isLoggedIn(getContext()) && Util.isConnected(getActivity()))
                 getAllCategories();
             else swipeRefreshLayout.setRefreshing(false);
         });
-        return view;
     }
 
     @Override
@@ -119,7 +126,7 @@ public class CategoryListFragment extends CategoryListTask {
 
     private void getAllCategories() {
         hide(view, R.id.all_cat_view);
-        mDisposable.add(Observable.fromCallable(() -> getResult(getContext()))
+        mDisposable.add(Observable.fromCallable(() -> mTask.getResult())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnSubscribe(start -> swipeRefreshLayout.setRefreshing(true))
@@ -131,6 +138,6 @@ public class CategoryListFragment extends CategoryListTask {
                             setupAllCategories();
                         }
                     }
-                }, this::processException));
+                }, err -> Log.e(getTag(), err.getMessage())));
     }
 }

@@ -21,6 +21,7 @@
 
 package com.dragons.aurora.task.playstore;
 
+import android.content.Context;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -28,12 +29,11 @@ import com.dragons.aurora.ContextUtil;
 import com.dragons.aurora.CredentialsEmptyException;
 import com.dragons.aurora.PlayStoreApiAuthenticator;
 import com.dragons.aurora.R;
-import com.dragons.aurora.fragment.BaseFragment;
 import com.dragons.aurora.fragment.PreferenceFragment;
 import com.dragons.aurora.helpers.Accountant;
 import com.dragons.aurora.playstoreapiv2.AuthException;
+import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 import com.dragons.aurora.task.AppProvidedCredentialsTask;
-import com.percolate.caffeine.ToastUtils;
 
 import java.io.IOException;
 import java.net.ConnectException;
@@ -43,9 +43,15 @@ import java.net.UnknownHostException;
 
 import javax.net.ssl.SSLHandshakeException;
 
-public abstract class ExceptionTask extends BaseFragment {
+public class ExceptionTask {
 
+    protected Context context;
+    protected GooglePlayAPI api;
     protected Throwable exception;
+
+    public ExceptionTask(Context context) {
+        this.context = context;
+    }
 
     public static boolean noNetwork(Throwable e) {
         return e instanceof UnknownHostException
@@ -57,11 +63,27 @@ public abstract class ExceptionTask extends BaseFragment {
                 ;
     }
 
+    public GooglePlayAPI getApi() throws IOException {
+        return new PlayStoreApiAuthenticator(context).getApi();
+    }
+
+    public void setApi(GooglePlayAPI api) {
+        this.api = api;
+    }
+
+    public Context getContext() {
+        return context;
+    }
+
+    public void setContext(Context context) {
+        this.context = context;
+    }
+
     protected boolean success() {
         return null == exception;
     }
 
-    protected void processException(Throwable e) {
+    public void processException(Throwable e) {
         Log.d(getClass().getSimpleName(), e.getClass().getName() + " caught during a google api request: " + e.getMessage());
         if (e instanceof AuthException) {
             processAuthException((AuthException) e);
@@ -77,13 +99,10 @@ public abstract class ExceptionTask extends BaseFragment {
 
     protected void processIOException(IOException e) {
         String message;
-        if (noNetwork(e) && this.getActivity() != null) {
-            message = this.getActivity().getString(R.string.error_no_network);
+        if (noNetwork(e) && context != null) {
+            message = context.getString(R.string.error_no_network);
         } else {
-            message = TextUtils.isEmpty(e.getMessage())
-                    ? this.getActivity().getString(R.string.error_network_other, e.getClass().getName())
-                    : e.getMessage()
-            ;
+            message = TextUtils.isEmpty(e.getMessage()) ? context.getString(R.string.error_network_other, e.getClass().getName()) : e.getMessage();
         }
         ContextUtil.toastShort(getContext(), message);
     }
@@ -93,12 +112,12 @@ public abstract class ExceptionTask extends BaseFragment {
             Log.i(getClass().getSimpleName(), "Credentials empty");
             //TODO:Let user decide between dummy or google account
             Accountant.loginWithDummy(getContext());
-        } else if (e.getCode() == 401 && PreferenceFragment.getBoolean(this.getActivity(), PlayStoreApiAuthenticator.PREFERENCE_APP_PROVIDED_EMAIL)) {
+        } else if (e.getCode() == 401 && PreferenceFragment.getBoolean(context, PlayStoreApiAuthenticator.PREFERENCE_APP_PROVIDED_EMAIL)) {
             Log.i(getClass().getSimpleName(), "Token is stale");
             new AppProvidedCredentialsTask(getContext()).refreshToken();
         } else {
-            ContextUtil.toast(this.getActivity(), R.string.error_incorrect_password);
-            new PlayStoreApiAuthenticator(this.getActivity()).logout();
+            ContextUtil.toast(context, R.string.error_incorrect_password);
+            new PlayStoreApiAuthenticator(context).logout();
         }
     }
 }

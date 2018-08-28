@@ -29,17 +29,12 @@ import android.widget.Button;
 import android.widget.RelativeLayout;
 
 import com.dragons.aurora.R;
-import com.dragons.aurora.helpers.Accountant;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
-
-import static com.dragons.aurora.Util.hide;
-import static com.dragons.aurora.Util.isConnected;
 
 public class TopGrossingApps extends TopFreeApps {
 
@@ -56,47 +51,15 @@ public class TopGrossingApps extends TopFreeApps {
     @BindView(R.id.recheck_query)
     Button retry_query;
 
-    private View view;
-
-    @Override
-    public RelativeLayout getUnicorn() {
-        return unicorn;
-    }
-
-    @Override
-    public RelativeLayout getOhhSnap() {
-        return ohhSnap;
-    }
-
-    @Override
-    public RelativeLayout getProgress() {
-        return progress;
-    }
-
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_endless_categorized, container, false);
+        View view = inflater.inflate(R.layout.fragment_endless_categorized, container, false);
         ButterKnife.bind(this, view);
-        setIterator(setupIterator(CategoryAppsFragment.categoryId, GooglePlayAPI.SUBCATEGORY.TOP_GROSSING));
-        setRecyclerView(recyclerView);
-        fetchCategoryApps(false);
         return view;
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        ohhSnap_retry.setOnClickListener(click -> {
-            if (Accountant.isLoggedIn(getContext()) && isConnected(getContext())) {
-                hide(view, R.id.ohhSnap);
-                fetchCategoryApps(false);
-            }
-        });
-        retry_query.setOnClickListener(click -> {
-            if (Accountant.isLoggedIn(getContext()) && isConnected(getContext())) {
-                hide(view, R.id.unicorn);
-                fetchCategoryApps(false);
-            }
-        });
+    public void init() {
+        setIterator(setupIterator(CategoryAppsFragment.categoryId, GooglePlayAPI.SUBCATEGORY.TOP_GROSSING));
     }
 }

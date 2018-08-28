@@ -73,19 +73,8 @@ public class SpoofFragment extends BaseFragment {
     private View view;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        this.setRetainInstance(true);
-    }
-
-    @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        if (view != null) {
-            if ((ViewGroup) view.getParent() != null)
-                ((ViewGroup) view.getParent()).removeView(view);
-            return view;
-        }
-
+        super.onCreate(savedInstanceState);
         view = inflater.inflate(R.layout.fragment_spoof, container, false);
         ScrollView disclaimer = view.findViewById(R.id.disclaimer);
         ImageView showLessMore = view.findViewById(R.id.show_LessMore);

@@ -40,7 +40,6 @@ import com.dragons.aurora.R;
 import com.dragons.aurora.adapters.CategoryFilterAdapter;
 import com.dragons.aurora.adapters.SingleDownloadsAdapter;
 import com.dragons.aurora.adapters.SingleRatingsAdapter;
-import com.dragons.aurora.task.playstore.CategoryAppsTask;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 
@@ -51,10 +50,9 @@ import androidx.viewpager.widget.ViewPager;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class CategoryAppsFragment extends CategoryAppsTask implements SingleDownloadsAdapter.SingleClickListener, SingleRatingsAdapter.SingleClickListener {
+public class CategoryAppsFragment extends BaseFragment implements SingleDownloadsAdapter.SingleClickListener, SingleRatingsAdapter.SingleClickListener {
 
     public static String categoryId;
-    public static String categoryName;
 
     @BindView(R.id.view_pager)
     ViewPager viewPager;
@@ -65,23 +63,27 @@ public class CategoryAppsFragment extends CategoryAppsTask implements SingleDown
     @BindView(R.id.categoryTitle)
     TextView categoryTitle;
 
-    private View view;
     private CategoryFilterAdapter categoryFilterAdapter;
     private SingleDownloadsAdapter singleDownloadAdapter;
     private SingleRatingsAdapter singleRatingAdapter;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_endless, container, false);
+        super.onCreate(savedInstanceState);
+        View view = inflater.inflate(R.layout.fragment_endless, container, false);
         ButterKnife.bind(this, view);
+        Bundle arguments = getArguments();
+        if (arguments != null) {
+            categoryId = arguments.getString("CategoryId");
+            categoryTitle.setText(arguments.getString("CategoryName"));
+        } else
+            Log.e(this.getClass().getName(), "No category id provided");
         return view;
     }
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        if (!categoryName.isEmpty())
-            categoryTitle.setText(categoryName);
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
         categoryFilterAdapter = new CategoryFilterAdapter(getActivity(), getActivity().getSupportFragmentManager());
         viewPager.setAdapter(categoryFilterAdapter);
         viewPager.setOffscreenPageLimit(3);
@@ -98,17 +100,6 @@ public class CategoryAppsFragment extends CategoryAppsTask implements SingleDown
     @Override
     public void onRatingBadgeClickListener() {
         singleRatingAdapter.notifyDataSetChanged();
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        Bundle arguments = getArguments();
-        if (arguments != null) {
-            categoryId = arguments.getString("CategoryId");
-            categoryName = arguments.getString("CategoryName");
-        } else
-            Log.e(this.getClass().getName(), "No category id provided");
     }
 
     @Override

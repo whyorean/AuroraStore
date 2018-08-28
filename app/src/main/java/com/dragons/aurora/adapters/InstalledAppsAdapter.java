@@ -23,7 +23,6 @@ package com.dragons.aurora.adapters;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Vibrator;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -41,6 +40,7 @@ import com.dragons.aurora.BlackWhiteListManager;
 import com.dragons.aurora.R;
 import com.dragons.aurora.activities.DetailsActivity;
 import com.dragons.aurora.fragment.InstalledAppsFragment;
+import com.dragons.aurora.fragment.MoreCategoryApps;
 import com.dragons.aurora.fragment.SearchAppsFragment;
 import com.dragons.aurora.fragment.TopFreeApps;
 import com.dragons.aurora.fragment.details.ButtonDownload;
@@ -52,7 +52,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -63,6 +62,12 @@ public class InstalledAppsAdapter extends RecyclerView.Adapter<InstalledAppsAdap
     private Fragment fragment;
 
     //Constructors
+
+    public InstalledAppsAdapter(MoreCategoryApps fragment, List<App> appsToAdd) {
+        this.fragment = fragment;
+        this.appsToAdd = appsToAdd;
+        manager = new BlackWhiteListManager(fragment.getContext());
+    }
 
     public InstalledAppsAdapter(InstalledAppsFragment fragment, List<App> appsToAdd) {
         this.fragment = fragment;

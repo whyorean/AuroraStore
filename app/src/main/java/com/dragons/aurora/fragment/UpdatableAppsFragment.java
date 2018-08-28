@@ -24,6 +24,7 @@ package com.dragons.aurora.fragment;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,7 +34,6 @@ import android.widget.TextView;
 
 import com.dragons.aurora.AuroraApplication;
 import com.dragons.aurora.GridAutoFitLayoutManager;
-import com.dragons.aurora.PlayStoreApiAuthenticator;
 import com.dragons.aurora.R;
 import com.dragons.aurora.UpdateChecker;
 import com.dragons.aurora.Util;
@@ -70,7 +70,7 @@ import static com.dragons.aurora.Util.hide;
 import static com.dragons.aurora.Util.isConnected;
 import static com.dragons.aurora.Util.show;
 
-public class UpdatableAppsFragment extends UpdatableAppsTaskHelper {
+public class UpdatableAppsFragment extends BaseFragment {
 
     public UpdatableAppsGridAdapter updatableAppsAdapter;
     @BindView(R.id.swipe_refresh_layout)
@@ -94,6 +94,7 @@ public class UpdatableAppsFragment extends UpdatableAppsTaskHelper {
     private CompositeDisposable mDisposable = new CompositeDisposable();
     private UpdateAllReceiver updateAllReceiver;
     private OnUpdateListener mOnUpdateListener;
+    private UpdatableAppsTaskHelper mTaskHelper;
 
     public UpdatableAppsFragment() {
     }
@@ -105,8 +106,6 @@ public class UpdatableAppsFragment extends UpdatableAppsTaskHelper {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.setHasOptionsMenu(true);
-        this.setRetainInstance(true);
         onAttachToParentFragment(getParentFragment());
     }
 
@@ -122,7 +121,7 @@ public class UpdatableAppsFragment extends UpdatableAppsTaskHelper {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mJessie = new Jessie(getContext());
-
+        mTaskHelper = new UpdatableAppsTaskHelper(getContext());
         Util.setColors(getContext(), swipeRefreshLayout);
         swipeRefreshLayout.setOnRefreshListener(() -> {
             if (Accountant.isLoggedIn(getContext()) && isConnected(getContext()) && !isAlreadyUpdating())
@@ -198,21 +197,19 @@ public class UpdatableAppsFragment extends UpdatableAppsTaskHelper {
     }
 
     private void fetchFromServer() {
-        mDisposable.add(Observable.fromCallable(() -> getUpdatableApps(new PlayStoreApiAuthenticator(this.getActivity()).getApi()))
+        mDisposable.add(Observable.fromCallable(() -> mTaskHelper.getUpdatableApps())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnSubscribe(start -> swipeRefreshLayout.setRefreshing(true))
                 .doOnTerminate(() -> swipeRefreshLayout.setRefreshing(false))
+                .doOnError(err -> show(view, R.id.ohhSnap))
                 .subscribe((appList) -> {
                     if (view != null) {
                         updatableApps.clear();
                         updatableApps.addAll(appList);
                         addToDatabase(updatableApps);
                     }
-                }, err -> {
-                    processException(err);
-                    show(view, R.id.ohhSnap);
-                }));
+                }, err -> Log.e(getTag(), err.getMessage())));
     }
 
     private void addToDatabase(List<App> mAppList) {

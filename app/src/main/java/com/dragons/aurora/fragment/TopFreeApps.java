@@ -42,6 +42,7 @@ import com.dragons.aurora.model.App;
 import com.dragons.aurora.playstoreapiv2.CategoryAppsIterator;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 import com.dragons.aurora.task.playstore.CategoryAppsTask;
+import com.dragons.aurora.task.playstore.ExceptionTask;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
@@ -61,10 +62,9 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
 
-import static com.dragons.aurora.Util.hide;
 import static com.dragons.aurora.Util.isConnected;
 
-public class TopFreeApps extends CategoryAppsTask {
+public class TopFreeApps extends BaseFragment {
 
     @BindView(R.id.endless_apps_list)
     RecyclerView recyclerView;
@@ -78,14 +78,36 @@ public class TopFreeApps extends CategoryAppsTask {
     Button ohhSnap_retry;
     @BindView(R.id.recheck_query)
     Button retry_query;
-
     private FloatingActionButton filter_fab;
     private AHBottomNavigation mBottomNavigationView;
-
-    private View view;
     private AppListIterator iterator;
     private EndlessAppsAdapter endlessAppsAdapter;
     private CompositeDisposable mDisposable = new CompositeDisposable();
+    private CategoryAppsTask mTask;
+
+    public Button getOhhSnap_retry() {
+        return ohhSnap_retry;
+    }
+
+    public Button getRetry_query() {
+        return retry_query;
+    }
+
+    public AppListIterator getIterator() {
+        return iterator;
+    }
+
+    public void setIterator(AppListIterator iterator) {
+        this.iterator = iterator;
+    }
+
+    public CategoryAppsTask getTask() {
+        return mTask;
+    }
+
+    public void setTask(CategoryAppsTask mTask) {
+        this.mTask = mTask;
+    }
 
     public RelativeLayout getUnicorn() {
         return unicorn;
@@ -107,37 +129,29 @@ public class TopFreeApps extends CategoryAppsTask {
         this.recyclerView = recyclerView;
     }
 
-    public AppListIterator getIterator() {
-        return iterator;
-    }
-
-    public void setIterator(AppListIterator iterator) {
-        this.iterator = iterator;
-    }
-
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_endless_categorized, container, false);
+        View view = inflater.inflate(R.layout.fragment_endless_categorized, container, false);
         ButterKnife.bind(this, view);
-        setRecyclerView(recyclerView);
-        setIterator(setupIterator(CategoryAppsFragment.categoryId, GooglePlayAPI.SUBCATEGORY.TOP_FREE));
-        fetchCategoryApps(false);
         return view;
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        ohhSnap_retry.setOnClickListener(click -> {
+        init();
+        setTask(new CategoryAppsTask(getContext()));
+        fetchCategoryApps(false);
+
+        getOhhSnap_retry().setOnClickListener(click -> {
             if (Accountant.isLoggedIn(getContext()) && isConnected(getContext())) {
-                hide(view, R.id.ohhSnap);
+                getOhhSnap().setVisibility(View.GONE);
                 fetchCategoryApps(false);
             }
         });
-
-        retry_query.setOnClickListener(click -> {
+        getRetry_query().setOnClickListener(click -> {
             if (Accountant.isLoggedIn(getContext()) && isConnected(getContext())) {
-                hide(view, R.id.unicorn);
+                getUnicorn().setVisibility(View.GONE);
                 fetchCategoryApps(false);
             }
         });
@@ -146,22 +160,8 @@ public class TopFreeApps extends CategoryAppsTask {
         mBottomNavigationView = Objects.requireNonNull(getActivity()).findViewById(R.id.navigation);
     }
 
-    protected AppListIterator setupIterator(String categoryId, GooglePlayAPI.SUBCATEGORY subcategory) {
-        AppListIterator iterator;
-        try {
-            iterator = new AppListIterator(new CategoryAppsIterator(
-                    new PlayStoreApiAuthenticator(getContext()).getApi(),
-                    categoryId,
-                    subcategory));
-            iterator.setFilter(new FilterMenu(getContext()).getFilterPreferences());
-            return iterator;
-        } catch (Exception e) {
-            if (e instanceof CredentialsEmptyException)
-                Log.e(getClass().getSimpleName(), "Credentials Empty Exception");
-            else
-                Log.e(getClass().getSimpleName(), e.getMessage());
-            return null;
-        }
+    public void init() {
+        setIterator(setupIterator(CategoryAppsFragment.categoryId, GooglePlayAPI.SUBCATEGORY.TOP_FREE));
     }
 
     private void setupListView(List<App> appsToAdd) {
@@ -195,20 +195,36 @@ public class TopFreeApps extends CategoryAppsTask {
         });
     }
 
-    protected void fetchCategoryApps(boolean shouldIterate) {
-        mDisposable.add(Observable.fromCallable(() -> getResult(iterator))
+    protected AppListIterator setupIterator(String categoryId, GooglePlayAPI.SUBCATEGORY subcategory) {
+        try {
+            iterator = new AppListIterator(new CategoryAppsIterator(
+                    new PlayStoreApiAuthenticator(getContext()).getApi(),
+                    categoryId,
+                    subcategory));
+            iterator.setFilter(new FilterMenu(getContext()).getFilterPreferences());
+            return iterator;
+        } catch (Exception e) {
+            if (e instanceof CredentialsEmptyException) {
+                new ExceptionTask(getContext()).processException(e);
+                Log.e(getClass().getSimpleName(), "Credentials Empty Exception");
+            } else
+                Log.e(getClass().getSimpleName(), e.getMessage());
+            return null;
+        }
+    }
+
+    private void fetchCategoryApps(boolean shouldIterate) {
+        mDisposable.add(Observable.fromCallable(() -> getTask().getResult(getIterator()))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnTerminate(() -> progress.setVisibility(View.GONE))
+                .doOnError(err -> ohhSnap.setVisibility(View.VISIBLE))
                 .subscribe(appList -> {
                     if (shouldIterate) {
                         addApps(appList);
                     } else
                         setupListView(appList);
-                }, err -> {
-                    processException(err);
-                    getOhhSnap().setVisibility(View.VISIBLE);
-                }));
+                }, err -> Log.e(getTag(), err.getMessage())));
     }
 
     private void addApps(List<App> appsToAdd) {
@@ -224,7 +240,8 @@ public class TopFreeApps extends CategoryAppsTask {
                     fetchCategoryApps(true);
                     cancel();
                 }
-            }, 1500, 1000);
+            }, 2500, 1000);
         }
     }
+
 }

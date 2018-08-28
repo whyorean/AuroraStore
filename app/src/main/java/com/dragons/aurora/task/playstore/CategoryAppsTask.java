@@ -21,6 +21,7 @@
 
 package com.dragons.aurora.task.playstore;
 
+import android.content.Context;
 import android.util.Log;
 
 import com.dragons.aurora.AppListIterator;
@@ -37,10 +38,14 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-abstract public class CategoryAppsTask extends ExceptionTask {
+public class CategoryAppsTask extends ExceptionTask {
 
     protected Filter filter;
     protected AppListIterator iterator;
+
+    public CategoryAppsTask(Context context) {
+        super(context);
+    }
 
     public AppListIterator getIterator() {
         return iterator;
@@ -58,7 +63,7 @@ abstract public class CategoryAppsTask extends ExceptionTask {
         this.filter = filter;
     }
 
-    protected List<App> getResult(AppListIterator iterator) throws IOException {
+    public List<App> getResult(AppListIterator iterator) {
 
         setIterator(iterator);
 
@@ -78,10 +83,10 @@ abstract public class CategoryAppsTask extends ExceptionTask {
                     processAuthException((AuthException) e.getCause());
                 }
                 if (noNetwork(e.getCause())) {
-                    throw (IOException) e.getCause();
+                    processIOException((IOException) e.getCause());
                 } else if (e.getCause() instanceof GooglePlayException && ((GooglePlayException) e.getCause()).getCode() == 401 && Accountant.isDummy(getContext())) {
                     new AppProvidedCredentialsTask(getContext()).refreshToken();
-                    iterator.setGooglePlayApi(new PlayStoreApiAuthenticator(getContext()).getApi());
+                    setIterator(iterator);
                     apps.addAll(getNextBatch(iterator));
                 }
             }

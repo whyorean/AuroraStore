@@ -21,6 +21,8 @@
 
 package com.dragons.aurora.task.playstore;
 
+import android.content.Context;
+
 import com.dragons.aurora.AppListIterator;
 import com.dragons.aurora.CategoryManager;
 import com.dragons.aurora.activities.AuroraActivity;
@@ -33,8 +35,12 @@ import java.util.List;
 
 public class SearchTask extends CategoryAppsTask {
 
+    public SearchTask(Context context) {
+        super(context);
+    }
+
     @Override
-    protected List<App> getNextBatch(AppListIterator iterator) {
+    public List<App> getNextBatch(AppListIterator iterator) {
         CategoryManager categoryManager = new CategoryManager(getContext());
         Filter filter = new FilterMenu((AuroraActivity) getContext()).getFilterPreferences();
         List<App> apps = new ArrayList<>();

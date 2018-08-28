@@ -25,8 +25,7 @@ import android.content.Context;
 
 import com.dragons.aurora.R;
 import com.dragons.aurora.Util;
-import com.dragons.aurora.activities.AuroraActivity;
-import com.dragons.aurora.fragment.InstalledAppsFragment;
+import com.dragons.aurora.fragment.MoreCategoryApps;
 import com.dragons.aurora.fragment.SearchAppsFragment;
 import com.dragons.aurora.fragment.TopFreeApps;
 import com.dragons.aurora.model.App;
@@ -36,6 +35,10 @@ import java.util.List;
 import androidx.annotation.NonNull;
 
 public class EndlessAppsAdapter extends InstalledAppsAdapter {
+
+    public EndlessAppsAdapter(MoreCategoryApps fragment, List<App> appsToAdd) {
+        super(fragment, appsToAdd);
+    }
 
     public EndlessAppsAdapter(SearchAppsFragment fragment, List<App> appsToAdd) {
         super(fragment, appsToAdd);

@@ -25,10 +25,8 @@ import android.content.Context;
 import android.text.TextUtils;
 
 import com.dragons.aurora.CategoryManager;
-import com.dragons.aurora.PlayStoreApiAuthenticator;
 import com.dragons.aurora.fragment.PreferenceFragment;
 import com.dragons.aurora.playstoreapiv2.DocV2;
-import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 import com.dragons.aurora.playstoreapiv2.ListResponse;
 
 import java.io.IOException;
@@ -38,15 +36,22 @@ import java.util.Map;
 
 public class CategoryListTask extends ExceptionTask {
 
-    protected boolean getResult(Context context) throws IOException {
-        CategoryManager categoryManager = new CategoryManager(context);
+    public CategoryListTask(Context context) {
+        super(context);
+    }
 
-        GooglePlayAPI api = new PlayStoreApiAuthenticator(context).getApi();
-        api.setLocale(getLocale(context));
-        Map<String, String> topCategories = buildCategoryMap(api.categoriesList());
-        categoryManager.save(CategoryManager.TOP, topCategories);
-        for (String categoryId : topCategories.keySet()) {
-            categoryManager.save(categoryId, buildCategoryMap(api.categoriesList(categoryId)));
+    public boolean getResult() {
+        CategoryManager categoryManager = new CategoryManager(context);
+        try {
+            api = getApi();
+            api.setLocale(getLocale(context));
+            Map<String, String> topCategories = buildCategoryMap(api.categoriesList());
+            categoryManager.save(CategoryManager.TOP, topCategories);
+            for (String categoryId : topCategories.keySet()) {
+                categoryManager.save(categoryId, buildCategoryMap(api.categoriesList(categoryId)));
+            }
+        } catch (IOException e) {
+            processException(e);
         }
         return true;
     }
@@ -61,7 +66,7 @@ public class CategoryListTask extends ExceptionTask {
                 if (!category.hasUnknownCategoryContainer()
                         || !category.getUnknownCategoryContainer().hasCategoryIdContainer()
                         || !category.getUnknownCategoryContainer().getCategoryIdContainer().hasCategoryId()
-                        ) {
+                ) {
                     continue;
                 }
                 String categoryId = category.getUnknownCategoryContainer().getCategoryIdContainer().getCategoryId();

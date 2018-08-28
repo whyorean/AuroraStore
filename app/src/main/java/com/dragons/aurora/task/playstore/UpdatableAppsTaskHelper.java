@@ -21,6 +21,7 @@
 
 package com.dragons.aurora.task.playstore;
 
+import android.content.Context;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
 
@@ -43,37 +44,47 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 
-public abstract class UpdatableAppsTaskHelper extends ExceptionTask {
+public class UpdatableAppsTaskHelper extends ExceptionTask {
 
-    protected List<App> getUpdatableApps(GooglePlayAPI api) throws IOException {
-        api.toc();
+    public UpdatableAppsTaskHelper(Context context) {
+        super(context);
+    }
+
+    public List<App> getUpdatableApps() {
         List<App> updatableApps = new ArrayList<>();
-        updatableApps.clear();
-        Map<String, App> installedApps = getInstalledApps();
-        for (App appFromMarket : getAppsFromPlayStore(api, filterBlacklistedApps(installedApps).keySet())) {
-            String packageName = appFromMarket.getPackageName();
-            if (TextUtils.isEmpty(packageName) || !installedApps.containsKey(packageName)) {
-                continue;
+        try {
+            api = getApi();
+            api.toc();
+            updatableApps.clear();
+            Map<String, App> installedApps = getInstalledApps();
+            for (App appFromMarket : getAppsFromPlayStore(api, filterBlacklistedApps(installedApps).keySet())) {
+                String packageName = appFromMarket.getPackageName();
+                if (TextUtils.isEmpty(packageName) || !installedApps.containsKey(packageName)) {
+                    continue;
+                }
+                if (CertUtils.isFDroidApp(getContext(), packageName))
+                    continue;
+                App installedApp = installedApps.get(packageName);
+                appFromMarket = addInstalledAppInfo(appFromMarket, installedApp);
+                if (installedApp != null && installedApp.getVersionCode() < appFromMarket.getVersionCode()) {
+                    updatableApps.add(appFromMarket);
+                }
             }
-            if (CertUtils.isFDroidApp(getContext(), packageName))
-                continue;
-            App installedApp = installedApps.get(packageName);
-            appFromMarket = addInstalledAppInfo(appFromMarket, installedApp);
-            if (installedApp.getVersionCode() < appFromMarket.getVersionCode()) {
-                updatableApps.add(appFromMarket);
+            if (!new BlackWhiteListManager(context).isUpdatable(BuildConfig.APPLICATION_ID)) {
+                return updatableApps;
             }
-        }
-        if (!new BlackWhiteListManager(this.getActivity()).isUpdatable(BuildConfig.APPLICATION_ID)) {
-            return updatableApps;
+        } catch (IOException e) {
+            processException(e);
         }
         return updatableApps;
     }
 
     protected List<App> getAppsFromPlayStore(GooglePlayAPI api, Collection<String> packageNames) throws IOException {
         List<App> appsFromPlayStore = new ArrayList<>();
-        boolean builtInAccount = PreferenceFragment.getBoolean(this.getActivity(), PlayStoreApiAuthenticator.PREFERENCE_APP_PROVIDED_EMAIL);
+        boolean builtInAccount = PreferenceFragment.getBoolean(context, PlayStoreApiAuthenticator.PREFERENCE_APP_PROVIDED_EMAIL);
         for (App app : getRemoteAppList(api, new ArrayList<>(packageNames))) {
             if (!builtInAccount || app.isFree()) {
                 appsFromPlayStore.add(app);
@@ -82,7 +93,7 @@ public abstract class UpdatableAppsTaskHelper extends ExceptionTask {
         return appsFromPlayStore;
     }
 
-    protected List<App> getRemoteAppList(GooglePlayAPI api, List<String> packageNames) throws IOException {
+    private List<App> getRemoteAppList(GooglePlayAPI api, List<String> packageNames) throws IOException {
         List<App> apps = new ArrayList<>();
         for (BulkDetailsEntry details : api.bulkDetails(packageNames).getEntryList()) {
             if (!details.hasDoc()) {
@@ -111,14 +122,14 @@ public abstract class UpdatableAppsTaskHelper extends ExceptionTask {
         return appFromMarket;
     }
 
-    protected Map<String, App> filterBlacklistedApps(Map<String, App> apps) {
+    private Map<String, App> filterBlacklistedApps(Map<String, App> apps) {
         Set<String> packageNames = new HashSet<>(apps.keySet());
-        if (PreferenceManager.getDefaultSharedPreferences(this.getActivity()).getString(
+        if (Objects.equals(PreferenceManager.getDefaultSharedPreferences(context).getString(
                 PreferenceFragment.PREFERENCE_UPDATE_LIST_WHITE_OR_BLACK,
-                PreferenceFragment.LIST_BLACK).equals(PreferenceFragment.LIST_BLACK)) {
-            packageNames.removeAll(new BlackWhiteListManager(this.getActivity()).get());
+                PreferenceFragment.LIST_BLACK), PreferenceFragment.LIST_BLACK)) {
+            packageNames.removeAll(new BlackWhiteListManager(context).get());
         } else {
-            packageNames.retainAll(new BlackWhiteListManager(this.getActivity()).get());
+            packageNames.retainAll(new BlackWhiteListManager(context).get());
         }
         Map<String, App> result = new HashMap<>();
         for (App app : apps.values()) {
@@ -127,15 +138,5 @@ public abstract class UpdatableAppsTaskHelper extends ExceptionTask {
             }
         }
         return result;
-    }
-
-    protected Map<String, App> filterSystemApps(Map<String, App> apps) {
-        Map<String, App> installedApps = new HashMap<>();
-        for (App app : apps.values()) {
-            if (!app.isSystem()) {
-                installedApps.put(app.getPackageName(), app);
-            }
-        }
-        return installedApps;
     }
 }

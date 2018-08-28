@@ -79,14 +79,16 @@ public class SpoofTask extends AsyncTask<Void, Void, Void> {
 
     private void mockLocation(String mockLocation) {
         addresses = getAddress(mockLocation);
-        spoofLocation(addresses.get(0).getLatitude(), addresses.get(0).getLongitude());
-        setGeoLocation(addresses.get(0).getAddressLine(0));
+        //if (!addresses.isEmpty()) {
+            spoofLocation(addresses.get(0).getLatitude(), addresses.get(0).getLongitude());
+            setGeoLocation(addresses.get(0).getAddressLine(0));
+       // }
     }
 
     private List<Address> getAddress(String geoLocation) {
         Geocoder geocoder = new Geocoder(context, Locale.getDefault());
         try {
-            addresses = geocoder.getFromLocationName(geoLocation, 1);
+            addresses = geocoder.getFromLocationName(geoLocation, 3);
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -22,6 +22,7 @@
 package com.dragons.aurora.fragment;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,7 +31,6 @@ import android.widget.Button;
 import android.widget.Switch;
 
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
-import com.dragons.aurora.PlayStoreApiAuthenticator;
 import com.dragons.aurora.R;
 import com.dragons.aurora.Util;
 import com.dragons.aurora.adapters.InstalledAppsAdapter;
@@ -65,7 +65,7 @@ import static com.dragons.aurora.Util.hide;
 import static com.dragons.aurora.Util.isConnected;
 import static com.dragons.aurora.Util.show;
 
-public class InstalledAppsFragment extends InstalledAppsTaskHelper {
+public class InstalledAppsFragment extends BaseFragment {
 
     @BindView(R.id.swipe_refresh_layout)
     SwipeRefreshLayout swipeRefreshLayout;
@@ -83,15 +83,9 @@ public class InstalledAppsFragment extends InstalledAppsTaskHelper {
     private List<App> installedApps = new ArrayList<>(new HashSet<>());
     private InstalledAppsAdapter installedAppsAdapter;
     private CompositeDisposable mDisposable = new CompositeDisposable();
+    private InstalledAppsTaskHelper mTaskHelper;
 
     public InstalledAppsFragment() {
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        this.setHasOptionsMenu(true);
-        this.setRetainInstance(true);
     }
 
     @Override
@@ -106,6 +100,7 @@ public class InstalledAppsFragment extends InstalledAppsTaskHelper {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mJessie = new Jessie(getContext());
+        mTaskHelper = new InstalledAppsTaskHelper(getContext());
         mBottomNavigationView = Objects.requireNonNull(getActivity()).findViewById(R.id.navigation);
         Util.setColors(getContext(), swipeRefreshLayout);
         swipeRefreshLayout.setOnRefreshListener(() -> {
@@ -128,7 +123,7 @@ public class InstalledAppsFragment extends InstalledAppsTaskHelper {
                 Prefs.putBoolean(getContext(), "INCLUDE_SYSTEM", true);
             else
                 Prefs.putBoolean(getContext(), "INCLUDE_SYSTEM", false);
-            loadMarketApps();
+            fetchFromServer();
         });
     }
 
@@ -185,21 +180,19 @@ public class InstalledAppsFragment extends InstalledAppsTaskHelper {
     }
 
     private void fetchFromServer() {
-        mDisposable.add(Observable.fromCallable(() -> getInstalledApps(new PlayStoreApiAuthenticator(this.getActivity()).getApi(), includeSystem.isChecked()))
+        mDisposable.add(Observable.fromCallable(() -> mTaskHelper.getInstalledApps(includeSystem.isChecked()))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnSubscribe(start -> swipeRefreshLayout.setRefreshing(true))
                 .doOnTerminate(() -> swipeRefreshLayout.setRefreshing(false))
+                .doOnError(err -> show(view, R.id.ohhSnap))
                 .subscribe((appList) -> {
                     if (view != null) {
                         installedApps.clear();
                         installedApps.addAll(appList);
                         addToDatabase(installedApps);
                     }
-                }, err -> {
-                    processException(err);
-                    show(view, R.id.ohhSnap);
-                }));
+                }, err -> Log.e(getTag(), err.getMessage())));
     }
 
     private void addToDatabase(List<App> mAppList) {

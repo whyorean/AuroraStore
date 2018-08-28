@@ -22,6 +22,7 @@
 package com.dragons.aurora.fragment;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,7 +30,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
-import com.dragons.aurora.PlayStoreApiAuthenticator;
 import com.dragons.aurora.R;
 import com.dragons.aurora.fragment.details.AppLists;
 import com.dragons.aurora.fragment.details.BackToPlayStore;
@@ -62,7 +62,7 @@ import static com.dragons.aurora.Util.hide;
 import static com.dragons.aurora.Util.isConnected;
 import static com.dragons.aurora.Util.show;
 
-public class DetailsFragment extends DetailsAppTaskHelper {
+public class DetailsFragment extends BaseFragment {
 
     public static App app;
 
@@ -75,6 +75,7 @@ public class DetailsFragment extends DetailsAppTaskHelper {
     private DownloadOrInstall downloadOrInstallFragment;
     private CompositeDisposable mDisposable = new CompositeDisposable();
     private String packageName;
+    private DetailsAppTaskHelper mTaskHelper;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -85,12 +86,7 @@ public class DetailsFragment extends DetailsAppTaskHelper {
         }
         view = inflater.inflate(R.layout.fragment_details, container, false);
         ButterKnife.bind(this, view);
-        return view;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+        mTaskHelper = new DetailsAppTaskHelper(getContext());
         Bundle arguments = getArguments();
         if (arguments != null) {
             packageName = arguments.getString("PackageName");
@@ -99,6 +95,7 @@ public class DetailsFragment extends DetailsAppTaskHelper {
             else
                 ToastUtils.quickToast(getContext(), "Make sure you are Connected & Logged in");
         }
+        return view;
     }
 
     @Override
@@ -139,16 +136,17 @@ public class DetailsFragment extends DetailsAppTaskHelper {
     }
 
     private void fetchDetails() {
-        mDisposable.add(Observable.fromCallable(() -> getResult(new PlayStoreApiAuthenticator(this.getActivity()).getApi(), packageName))
+        mDisposable.add(Observable.fromCallable(() -> mTaskHelper.getResult(packageName))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
+                .doOnTerminate(() -> hide(view, R.id.progress))
                 .subscribe(app -> {
                     DetailsFragment.app = app;
                     redrawDetails(app);
                 }, err -> {
                     hide(view, R.id.progress);
                     show(view, R.id.ohhSnap);
-                    processException(err);
+                    Log.e(getTag(), err.getMessage());
                 }));
     }
 

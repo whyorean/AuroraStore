@@ -71,7 +71,7 @@ import butterknife.ButterKnife;
 
 import static com.dragons.aurora.activities.SearchActivity.PUB_PREFIX;
 
-public class SearchFragment extends ExceptionTask implements HistoryItemTouchHelper.RecyclerItemTouchHelperListener {
+public class SearchFragment extends BaseFragment implements HistoryItemTouchHelper.RecyclerItemTouchHelperListener {
 
     @BindView(R.id.search_apps)
     SearchView searchToolbar;
@@ -94,12 +94,8 @@ public class SearchFragment extends ExceptionTask implements HistoryItemTouchHel
     private RecyclerAppsAdapter searchHistoryAppAdapter;
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
-    @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         view = inflater.inflate(R.layout.fragment_search, container, false);
         ButterKnife.bind(this, view);
         return view;
@@ -297,8 +293,7 @@ public class SearchFragment extends ExceptionTask implements HistoryItemTouchHel
             App mApp = AppBuilder.build(response);
             mJessie.addSingleApp(mApp);
         } catch (Exception e) {
-            processException(e);
+            new ExceptionTask(getContext()).processException(e);
         }
     }
-
 }

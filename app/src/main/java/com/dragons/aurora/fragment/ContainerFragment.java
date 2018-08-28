@@ -63,11 +63,7 @@ public class ContainerFragment extends Fragment implements UpdatableAppsFragment
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        if (view != null) {
-            if ((ViewGroup) view.getParent() != null)
-                ((ViewGroup) view.getParent()).removeView(view);
-            return view;
-        }
+        super.onCreate(savedInstanceState);
         view = inflater.inflate(R.layout.fragment_container, container, false);
         ButterKnife.bind(this, view);
         if (Prefs.getBoolean(getContext(), "SWIPE_PAGES"))

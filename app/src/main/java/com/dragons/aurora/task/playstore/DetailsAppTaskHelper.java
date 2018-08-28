@@ -23,6 +23,7 @@ package com.dragons.aurora.task.playstore;
 
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.util.Log;
 
 import com.dragons.aurora.ContextUtil;
 import com.dragons.aurora.R;
@@ -30,43 +31,49 @@ import com.dragons.aurora.model.App;
 import com.dragons.aurora.model.AppBuilder;
 import com.dragons.aurora.model.ReviewBuilder;
 import com.dragons.aurora.playstoreapiv2.DetailsResponse;
-import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 import com.dragons.aurora.playstoreapiv2.GooglePlayException;
 
 import java.io.IOException;
 
-public abstract class DetailsAppTaskHelper extends ExceptionTask {
+public class DetailsAppTaskHelper extends ExceptionTask {
 
-    protected Context context;
-    protected PackageManager pm;
+    private App app;
+
+    public DetailsAppTaskHelper(Context context) {
+        super(context);
+    }
 
     public void setContext(Context context) {
         this.context = context;
     }
 
-    protected App getResult(GooglePlayAPI api, String packageName) throws IOException {
-        DetailsResponse response = api.details(packageName);
-        App app = AppBuilder.build(response);
-        if (response.hasUserReview()) {
-            app.setUserReview(ReviewBuilder.build(response.getUserReview()));
-        }
-        if (this.getActivity() != null) {
-            pm = this.getActivity().getPackageManager();
-            try {
+    public App getResult(String packageName) {
+        try {
+            api = getApi();
+            DetailsResponse response = api.details(packageName);
+            app = AppBuilder.build(response);
+            if (response.hasUserReview()) {
+                app.setUserReview(ReviewBuilder.build(response.getUserReview()));
+            }
+            if (context != null) {
+                PackageManager pm = context.getPackageManager();
                 app.getPackageInfo().applicationInfo = pm.getApplicationInfo(packageName, 0);
                 app.getPackageInfo().versionCode = pm.getPackageInfo(packageName, 0).versionCode;
                 app.setInstalled(true);
-            } catch (PackageManager.NameNotFoundException e) {
-                // App is not installed
             }
+        } catch (IOException e) {
+            processException(e);
+            Log.e(getClass().getSimpleName(), e.getMessage());
+        } catch (PackageManager.NameNotFoundException e) {
+            Log.e(getClass().getSimpleName(), e.getMessage());
         }
         return app;
     }
 
     @Override
     protected void processIOException(IOException e) {
-        if (null != e && e instanceof GooglePlayException && ((GooglePlayException) e).getCode() == 404) {
-            ContextUtil.toast(this.getActivity(), R.string.details_not_available_on_play_store);
+        if (e instanceof GooglePlayException && ((GooglePlayException) e).getCode() == 404) {
+            ContextUtil.toast(context, R.string.details_not_available_on_play_store);
         }
     }
 }

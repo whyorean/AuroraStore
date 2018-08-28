@@ -21,37 +21,57 @@
 
 package com.dragons.aurora.task.playstore;
 
+import android.content.Context;
 import android.text.TextUtils;
 
 import com.dragons.aurora.CertUtils;
 import com.dragons.aurora.model.App;
-import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public abstract class InstalledAppsTaskHelper extends UpdatableAppsTaskHelper {
+public class InstalledAppsTaskHelper extends UpdatableAppsTaskHelper {
 
-    protected List<App> getInstalledApps(GooglePlayAPI api, boolean removeSystem) throws IOException {
-        api.toc();
+    public InstalledAppsTaskHelper(Context context) {
+        super(context);
+    }
+
+    public List<App> getInstalledApps(boolean removeSystem) {
         List<App> allMarketApps = new ArrayList<>();
-        allMarketApps.clear();
-        Map<String, App> installedApps = getInstalledApps();
-        if (removeSystem)
-            installedApps = filterSystemApps(installedApps);
-        for (App appFromMarket : getAppsFromPlayStore(api, installedApps.keySet())) {
-            String packageName = appFromMarket.getPackageName();
-            if (TextUtils.isEmpty(packageName) || !installedApps.containsKey(packageName)) {
-                continue;
+        try {
+            api = getApi();
+            api.toc();
+            allMarketApps.clear();
+            Map<String, App> installedApps = getInstalledApps();
+            if (removeSystem)
+                installedApps = filterSystemApps(installedApps);
+            for (App appFromMarket : getAppsFromPlayStore(api, installedApps.keySet())) {
+                String packageName = appFromMarket.getPackageName();
+                if (TextUtils.isEmpty(packageName) || !installedApps.containsKey(packageName)) {
+                    continue;
+                }
+                if (CertUtils.isFDroidApp(getContext(), packageName))
+                    continue;
+                App installedApp = installedApps.get(packageName);
+                appFromMarket = addInstalledAppInfo(appFromMarket, installedApp);
+                allMarketApps.add(appFromMarket);
             }
-            if (CertUtils.isFDroidApp(getContext(), packageName))
-                continue;
-            App installedApp = installedApps.get(packageName);
-            appFromMarket = addInstalledAppInfo(appFromMarket, installedApp);
-            allMarketApps.add(appFromMarket);
+        } catch (IOException e) {
+            processException(e);
         }
         return allMarketApps;
+    }
+
+    private Map<String, App> filterSystemApps(Map<String, App> apps) {
+        Map<String, App> installedApps = new HashMap<>();
+        for (App app : apps.values()) {
+            if (!app.isSystem()) {
+                installedApps.put(app.getPackageName(), app);
+            }
+        }
+        return installedApps;
     }
 }

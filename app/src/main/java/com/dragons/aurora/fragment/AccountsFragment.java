@@ -57,21 +57,9 @@ public class AccountsFragment extends BaseFragment {
     private View view;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        this.setRetainInstance(true);
-    }
-
-    @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        if (view != null) {
-            if ((ViewGroup) view.getParent() != null)
-                ((ViewGroup) view.getParent()).removeView(view);
-            return view;
-        }
-
+        super.onCreate(savedInstanceState);
         view = inflater.inflate(R.layout.fragment_accounts, container, false);
-
         ImageView toolbar_back = view.findViewById(R.id.toolbar_back);
         toolbar_back.setOnClickListener(click -> getActivity().onBackPressed());
 
