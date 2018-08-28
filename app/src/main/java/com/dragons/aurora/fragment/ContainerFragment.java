@@ -150,19 +150,19 @@ public class ContainerFragment extends Fragment implements UpdatableAppsFragment
         bottomNavigationView.setOnTabSelectedListener((position, wasSelected) -> {
             switch (position) {
                 case 0:
-                    mViewPager.setCurrentItem(0);
+                    mViewPager.setCurrentItem(0, true);
                     return true;
                 case 1:
-                    mViewPager.setCurrentItem(1);
+                    mViewPager.setCurrentItem(1, true);
                     return true;
                 case 2:
-                    mViewPager.setCurrentItem(2);
+                    mViewPager.setCurrentItem(2, true);
                     return true;
                 case 3:
-                    mViewPager.setCurrentItem(3);
+                    mViewPager.setCurrentItem(3, true);
                     return true;
                 case 4:
-                    mViewPager.setCurrentItem(4);
+                    mViewPager.setCurrentItem(4, true);
                     return true;
             }
             return true;
