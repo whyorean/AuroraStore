@@ -27,6 +27,7 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -93,7 +94,10 @@ public abstract class AbstractHelper {
     void paintLLayout(int viewID) {
         LinearLayout layout = view.findViewById(viewID);
         if (layout != null && !Util.isDark(fragment.getContext()))
-            ViewCompat.setBackgroundTintList(layout, ColorStateList.valueOf(ColorUtils.setAlphaComponent(color, 50)));
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+                ViewCompat.setBackgroundTintList(layout, ColorStateList.valueOf(ColorUtils.setAlphaComponent(color, 50)));
+            else
+                layout.setBackgroundColor(ColorUtils.setAlphaComponent(color, 50));
     }
 
     protected void paintTextView(int textViewId) {
