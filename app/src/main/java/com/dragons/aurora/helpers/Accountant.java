@@ -94,6 +94,7 @@ public class Accountant {
         Prefs.putBoolean(context, REFRESH_ASKED, false);
         Prefs.putString(context, GOOGLE_NAME, "");
         Prefs.putString(context, GOOGLE_URL, "");
+        Prefs.putBoolean(context, "LOGIN_PROMPTED", false);
         new PlayStoreApiAuthenticator(context).logout();
     }
 }

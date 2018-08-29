@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Aurora Store
   ~ Copyright (C) 2018  Rahul Kumar Patel <whyorean@gmail.com>
   ~
@@ -27,12 +26,12 @@
     android:background="?android:attr/colorBackground"
     android:baselineAligned="false"
     android:orientation="horizontal"
-    android:weightSum="2">
+    android:weightSum="3">
 
     <FrameLayout
         android:id="@+id/top_artwork"
         android:layout_width="0dp"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_weight="1">
 
         <com.github.florent37.shapeofview.shapes.DiagonalView
@@ -79,10 +78,11 @@
 
             <TextView
                 android:id="@+id/welcome"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:fontFamily="@font/google_sans_bold"
+                android:maxLines="2"
                 android:padding="5dp"
                 android:text="@string/action_acc_txt"
                 android:textAlignment="center"
@@ -106,31 +106,27 @@
     <ScrollView
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:paddingBottom="10dp"
-        android:paddingTop="28dp">
+        android:layout_weight="2"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-
             <androidx.cardview.widget.CardView
                 android:id="@+id/dummyCard"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="200dp"
                 android:layout_margin="10dp"
-                android:elevation="5dp"
-                app:cardBackgroundColor="?android:attr/panelBackground"
-                app:cardCornerRadius="5dp">
+                app:cardCornerRadius="5dp"
+                app:cardElevation="2dp">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    android:layout_margin="5dp"
-                    android:orientation="vertical"
-                    android:padding="8dp">
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
                     <LinearLayout
                         android:id="@+id/dummyLayout"
@@ -148,9 +144,7 @@
                                 android:layout_width="76dp"
                                 android:layout_height="76dp"
                                 android:layout_centerHorizontal="true"
-                                android:background="?android:attr/selectableItemBackgroundBorderless"
-                                android:clickable="true"
-                                android:focusable="true"
+                                android:layout_margin="@dimen/margin_img"
                                 app:srcCompat="@drawable/ic_user_placeholder" />
 
                             <ImageView
@@ -158,6 +152,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentEnd="true"
+                                android:layout_margin="@dimen/margin_img"
                                 android:src="@drawable/ic_checked"
                                 android:tint="@color/colorGreen"
                                 android:visibility="gone" />
@@ -199,49 +194,32 @@
                         android:gravity="end"
                         android:orientation="horizontal">
 
-                        <TextView
+                        <Button
                             android:id="@+id/btn_refresh"
+                            style="@style/Widget.Aurora.BorderlessButton.Compact"
                             android:layout_width="wrap_content"
-                            android:layout_height="32dp"
+                            android:layout_height="wrap_content"
                             android:layout_toStartOf="@id/btn_switch"
-                            android:background="@drawable/button_positive"
-                            android:ellipsize="end"
-                            android:gravity="center"
-                            android:paddingEnd="15dp"
-                            android:paddingStart="15dp"
-                            android:singleLine="true"
                             android:text="@string/action_refresh"
-                            android:textColor="@color/white"
                             android:visibility="gone" />
 
-                        <TextView
+                        <Button
                             android:id="@+id/btn_switch"
+                            style="@style/Widget.Aurora.BorderlessButton.Compact"
                             android:layout_width="wrap_content"
-                            android:layout_height="32dp"
+                            android:layout_height="wrap_content"
                             android:layout_toStartOf="@id/btn_logout"
-                            android:background="@drawable/button_positive"
-                            android:ellipsize="end"
-                            android:gravity="center"
-                            android:paddingEnd="15dp"
-                            android:paddingStart="15dp"
-                            android:singleLine="true"
                             android:text="@string/action_switch_dummy"
-                            android:textColor="@color/white"
                             android:visibility="gone" />
 
-                        <TextView
+                        <Button
                             android:id="@+id/btn_logout"
+                            style="@style/Widget.Aurora.BorderlessButton.Compact"
                             android:layout_width="wrap_content"
-                            android:layout_height="32dp"
+                            android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"
-                            android:background="@drawable/button_negative"
-                            android:ellipsize="end"
-                            android:gravity="center"
-                            android:paddingEnd="15dp"
-                            android:paddingStart="15dp"
-                            android:singleLine="true"
                             android:text="@string/action_logout"
-                            android:textColor="@color/white"
+                            android:textColor="@color/colorRed"
                             android:visibility="gone" />
                     </RelativeLayout>
 
@@ -252,18 +230,15 @@
             <androidx.cardview.widget.CardView
                 android:id="@+id/emptyCard"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="200dp"
                 android:layout_margin="10dp"
-                app:cardBackgroundColor="?android:attr/panelBackground"
-                app:cardElevation="2dp"
                 android:visibility="gone"
-                app:cardCornerRadius="5dp">
+                app:cardCornerRadius="5dp"
+                app:cardElevation="2dp">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    android:layout_margin="5dp"
-                    android:padding="8dp">
+                    android:layout_height="match_parent">
 
                     <com.github.florent37.shapeofview.shapes.CircleView
                         android:id="@+id/add_account"
@@ -301,18 +276,15 @@
             <androidx.cardview.widget.CardView
                 android:id="@+id/googleCard"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="200dp"
                 android:layout_margin="10dp"
-                app:cardBackgroundColor="?android:attr/panelBackground"
-               app:cardElevation="2dp"
                 android:visibility="gone"
-                app:cardCornerRadius="5dp">
+                app:cardCornerRadius="5dp"
+                app:cardElevation="2dp">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    android:layout_margin="5dp"
-                    android:padding="8dp">
+                    android:layout_height="match_parent">
 
                     <LinearLayout
                         android:id="@+id/googleLayout"
@@ -330,9 +302,7 @@
                                 android:layout_width="76dp"
                                 android:layout_height="76dp"
                                 android:layout_centerHorizontal="true"
-                                android:background="?android:attr/selectableItemBackgroundBorderless"
-                                android:clickable="true"
-                                android:focusable="true"
+                                android:layout_margin="@dimen/margin_img"
                                 app:srcCompat="@drawable/ic_user_placeholder" />
 
                             <ImageView
@@ -340,6 +310,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentEnd="true"
+                                android:layout_margin="@dimen/margin_img"
                                 android:src="@drawable/ic_checked"
                                 android:tint="@color/colorGreen"
                                 android:visibility="gone" />
@@ -381,49 +352,32 @@
                         android:gravity="end"
                         android:orientation="horizontal">
 
-                        <TextView
+                        <Button
                             android:id="@+id/btn_switchG"
+                            style="@style/Widget.Aurora.BorderlessButton.Compact"
                             android:layout_width="wrap_content"
-                            android:layout_height="32dp"
+                            android:layout_height="wrap_content"
                             android:layout_toStartOf="@id/btn_logoutG"
-                            android:background="@drawable/button_positive"
-                            android:ellipsize="end"
-                            android:gravity="center"
-                            android:paddingEnd="15dp"
-                            android:paddingStart="15dp"
-                            android:singleLine="true"
                             android:text="@string/action_switch_google"
-                            android:textColor="@color/white"
                             android:visibility="gone" />
 
-                        <TextView
+                        <Button
                             android:id="@+id/btn_logoutG"
+                            style="@style/Widget.Aurora.BorderlessButton.Compact"
                             android:layout_width="wrap_content"
-                            android:layout_height="32dp"
+                            android:layout_height="wrap_content"
                             android:layout_toStartOf="@id/btn_remove"
-                            android:background="@drawable/button_negative"
-                            android:ellipsize="end"
-                            android:gravity="center"
-                            android:paddingEnd="15dp"
-                            android:paddingStart="15dp"
-                            android:singleLine="true"
                             android:text="@string/action_logout"
-                            android:textColor="@color/white"
+                            android:textColor="@color/colorRed"
                             android:visibility="gone" />
 
-                        <TextView
+                        <Button
                             android:id="@+id/btn_remove"
+                            style="@style/Widget.Aurora.BorderlessButton.Compact"
                             android:layout_width="wrap_content"
-                            android:layout_height="32dp"
+                            android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"
-                            android:background="@drawable/button_negative"
-                            android:ellipsize="end"
-                            android:gravity="center"
-                            android:paddingEnd="15dp"
-                            android:paddingStart="15dp"
-                            android:singleLine="true"
                             android:text="@string/action_remove"
-                            android:textColor="@color/white"
                             android:visibility="gone" />
                     </RelativeLayout>
 

@@ -26,6 +26,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -42,6 +43,7 @@ import com.github.florent37.shapeofview.shapes.CircleView;
 import com.percolate.caffeine.ViewUtils;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.core.content.ContextCompat;
 
@@ -60,17 +62,33 @@ public class AccountsFragment extends BaseFragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         view = inflater.inflate(R.layout.fragment_accounts, container, false);
+        return view;
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
         ImageView toolbar_back = view.findViewById(R.id.toolbar_back);
         toolbar_back.setOnClickListener(click -> getActivity().onBackPressed());
 
         myEmail = PreferenceFragment.getString(getActivity(), PlayStoreApiAuthenticator.PREFERENCE_EMAIL);
         isSecAvailable = PreferenceFragment.getBoolean(getActivity(), "SEC_ACCOUNT");
+        init();
+    }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        init();
+    }
+
+    private void init() {
         if (Accountant.isLoggedIn(getContext()) && Accountant.isGoogle(getContext()))
             drawGoogle();
         else if (Accountant.isLoggedIn(getContext()) && Accountant.isDummy(getContext()))
             drawDummy();
-        return view;
+        else
+            getContext().startActivity(new Intent(getContext(), LoginActivity.class));
     }
 
     private void drawDummy() {
@@ -100,7 +118,7 @@ public class AccountsFragment extends BaseFragment {
         setText(view, R.id.account_gsf, R.string.device_gsfID, PreferenceFragment.getString(getActivity(),
                 PlayStoreApiAuthenticator.PREFERENCE_GSF_ID));
 
-        TextView switchGoogle = ViewUtils.findViewById(view, R.id.btn_switchG);
+        Button switchGoogle = ViewUtils.findViewById(view, R.id.btn_switchG);
         switchGoogle.setOnClickListener(view -> Accountant.switchGoogle(getContext()));
 
         if (isConnected(getActivity()))
@@ -140,9 +158,9 @@ public class AccountsFragment extends BaseFragment {
     }
 
     private void drawDummyButtons() {
-        TextView logout = ViewUtils.findViewById(view, R.id.btn_logout);
-        TextView switchDummy = ViewUtils.findViewById(view, R.id.btn_switch);
-        TextView refreshToken = ViewUtils.findViewById(view, R.id.btn_refresh);
+        Button logout = ViewUtils.findViewById(view, R.id.btn_logout);
+        Button switchDummy = ViewUtils.findViewById(view, R.id.btn_switch);
+        Button refreshToken = ViewUtils.findViewById(view, R.id.btn_refresh);
 
         if (Accountant.isDummy(getContext())) {
             show(view, R.id.btn_logout);
@@ -156,8 +174,8 @@ public class AccountsFragment extends BaseFragment {
     }
 
     private void drawGoogleButtons() {
-        TextView logout = ViewUtils.findViewById(view, R.id.btn_logoutG);
-        TextView switchDummy = ViewUtils.findViewById(view, R.id.btn_switchG);
+        Button logout = ViewUtils.findViewById(view, R.id.btn_logoutG);
+        Button switchDummy = ViewUtils.findViewById(view, R.id.btn_switchG);
 
         if (Accountant.isGoogle(getContext())) {
             show(view, R.id.btn_logoutG);

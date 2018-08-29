@@ -28,7 +28,6 @@ import android.content.res.Configuration;
 import android.net.http.HttpResponseCache;
 import android.os.Handler;
 import android.os.HandlerThread;
-import android.preference.PreferenceManager;
 import android.util.Log;
 
 import com.dragons.aurora.downloader.DownloadManagerInterface;
@@ -42,6 +41,8 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import androidx.preference.PreferenceManager;
 
 public class AuroraApplication extends Application {
 

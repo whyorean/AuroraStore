@@ -22,8 +22,10 @@
 package com.dragons.aurora.builders;
 
 import android.content.Context;
+import android.view.Gravity;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 
 import com.dragons.aurora.R;
 import com.dragons.aurora.activities.AuroraActivity;
@@ -69,13 +71,13 @@ public class FlagDialogBuilder {
     }
 
     public AlertDialog build() {
-        return new AlertDialog.Builder(activity)
+        return new AlertDialog.Builder(activity, R.style.ThemeOverlay_MaterialComponents_Dialog_Alert)
                 .setTitle(R.string.flag_page_description)
                 .setNegativeButton(
                         android.R.string.cancel,
                         (dialog, which) -> dialog.dismiss()
                 )
-                .setAdapter(new ArrayAdapter<>(activity, android.R.layout.select_dialog_singlechoice, reasonLabels),
+                .setAdapter(new ArrayAdapter<>(activity, R.layout.item_dialog_singlechoice, reasonLabels),
                         (dialog, which) -> {
                             FlagTask task = new FlagTask();
                             task.setContext(activity);
@@ -83,7 +85,7 @@ public class FlagDialogBuilder {
                             GooglePlayAPI.ABUSE reason = reasonIds[which];
                             task.setReason(reason);
                             if (reason == GooglePlayAPI.ABUSE.HARMFUL_TO_DEVICE_OR_DATA || reason == GooglePlayAPI.ABUSE.OTHER) {
-                                new ExplanationDialogBuilder().setContext(activity).setTask(task).setReason(reason).build().show();
+                                new ExplanationDialogBuilder().setContext(activity).setTask(task).setReason(reason).build();
                             } else {
                                 task.execute();
                             }
@@ -113,26 +115,32 @@ public class FlagDialogBuilder {
             return this;
         }
 
-        public AlertDialog build() {
+        public void build() {
+            LinearLayout container = new LinearLayout(context);
             final EditText editText = new EditText(context);
-            return new AlertDialog.Builder(context)
-                    .setTitle(reason == GooglePlayAPI.ABUSE.HARMFUL_TO_DEVICE_OR_DATA
-                            ? R.string.flag_harmful_prompt
-                            : R.string.flag_other_concern_prompt
-                    )
-                    .setView(editText)
-                    .setNegativeButton(
-                            android.R.string.cancel,
-                            (dialog, which) -> dialog.dismiss()
-                    )
+            editText.setGravity(android.view.Gravity.TOP | Gravity.START);
+            container.setOrientation(LinearLayout.VERTICAL);
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.MATCH_PARENT,
+                    LinearLayout.LayoutParams.WRAP_CONTENT);
+            params.setMargins(15, 15, 15, 15);
+            container.setLayoutParams(params);
+            container.addView(editText, params);
+            AlertDialog.Builder builder = new AlertDialog.Builder(context, R.style.ThemeOverlay_MaterialComponents_Dialog_Alert);
+            builder.setTitle(reason == GooglePlayAPI.ABUSE.HARMFUL_TO_DEVICE_OR_DATA
+                    ? R.string.flag_harmful_prompt
+                    : R.string.flag_other_concern_prompt)
+                    .setView(container)
+                    .setNegativeButton(android.R.string.cancel, (dialog, which) -> dialog.dismiss())
                     .setPositiveButton(
                             android.R.string.yes,
                             (dialog, which) -> {
                                 task.setExplanation(editText.getText().toString());
                                 task.execute();
                                 dialog.dismiss();
-                            }
-                    ).create();
+                            })
+                    .create()
+                    .show();
         }
     }
 }

@@ -19,9 +19,9 @@
   ~ along with Aurora Store.  If not, see <http://www.gnu.org/licenses/>.
   -->
 
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<androidx.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <PreferenceCategory android:title="@string/action_settings">
+    <PreferenceCategory>
         <Preference
             android:icon="@drawable/ic_about_alt"
             android:key="PREF_ACCOUNTS"
@@ -42,7 +42,9 @@
             android:singleLine="true"
             android:title="@string/pref_download_directory" />
     </PreferenceCategory>
-    <PreferenceCategory android:title="@string/pref_category_ui">
+    <PreferenceCategory
+        android:layout="@layout/preference_aurora_category"
+        android:title="@string/pref_category_ui">
         <ListPreference
             android:defaultValue="Light"
             android:entries="@array/THEMES_LABELS"
@@ -91,7 +93,9 @@
             android:summary="@string/pref_app_subcategory_summary"
             android:title="@string/pref_app_subcategory" />
     </PreferenceCategory>
-    <PreferenceCategory android:title="@string/pref_category_updates">
+    <PreferenceCategory
+        android:layout="@layout/preference_aurora_category"
+        android:title="@string/pref_category_updates">
         <CheckBoxPreference
             android:defaultValue="false"
             android:icon="@drawable/ic_delta"
@@ -148,7 +152,9 @@
             android:persistent="true"
             android:title="@string/pref_update_list_black" />
     </PreferenceCategory>
-    <PreferenceCategory android:title="@string/pref_category_installation">
+    <PreferenceCategory
+        android:layout="@layout/preference_aurora_category"
+        android:title="@string/pref_category_installation">
         <CheckBoxPreference
             android:defaultValue="false"
             android:icon="@drawable/ic_settings_alt"
@@ -171,7 +177,9 @@
             android:key="PREFERENCE_INSTALLATION_METHOD"
             android:title="@string/pref_installation_method" />
     </PreferenceCategory>
-    <PreferenceCategory android:title="@string/pref_database_title">
+    <PreferenceCategory
+        android:layout="@layout/preference_aurora_category"
+        android:title="@string/pref_database_title">
         <Preference
             android:icon="@drawable/ic_database"
             android:key="PREFERENCE_DATABASE_CLEAR"
@@ -186,4 +194,4 @@
             android:summary="@string/pref_database_refresh_summary"
             android:title="@string/pref_database_refresh" />
     </PreferenceCategory>
-</PreferenceScreen>
+</androidx.preference.PreferenceScreen>

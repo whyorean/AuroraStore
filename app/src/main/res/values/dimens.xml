@@ -26,7 +26,12 @@
     <dimen name="icon_size_med">48dp</dimen>
     <dimen name="icon_size_cat">36dp</dimen>
     <dimen name="icon_size_small">24dp</dimen>
-
+    
+    <dimen name="margin_img">5dp</dimen>
+    <dimen name="margin_textview">5dp</dimen>
     <dimen name="appbar_title_height">48dp</dimen>
+    <dimen name="preference_title_height">40dp</dimen>
     <dimen name="bottomnav_margin">50dp</dimen>
+
+    <dimen name="padding_borderless_button">16dp</dimen>
 </resources>
