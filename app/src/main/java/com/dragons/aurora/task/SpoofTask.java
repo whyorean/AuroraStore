@@ -38,6 +38,7 @@ import com.dragons.aurora.activities.SpoofActivity;
 import com.dragons.aurora.helpers.Prefs;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -79,20 +80,29 @@ public class SpoofTask extends AsyncTask<Void, Void, Void> {
 
     private void mockLocation(String mockLocation) {
         addresses = getAddress(mockLocation);
-        //if (!addresses.isEmpty()) {
+        if (addresses.isEmpty()) {
+            Log.i(getClass().getSimpleName(), "Could not get Address");
+        } else {
             spoofLocation(addresses.get(0).getLatitude(), addresses.get(0).getLongitude());
             setGeoLocation(addresses.get(0).getAddressLine(0));
-       // }
+        }
     }
 
     private List<Address> getAddress(String geoLocation) {
         Geocoder geocoder = new Geocoder(context, Locale.getDefault());
         try {
-            addresses = geocoder.getFromLocationName(geoLocation, 3);
+            List<Address> AllAddress = geocoder.getFromLocationName(geoLocation, 5);
+            List<Address> ValidAddress = new ArrayList<>(AllAddress.size());
+            for (Address address : AllAddress) {
+                if (address.hasLatitude() && address.hasLongitude()) {
+                    ValidAddress.add(address);
+                }
+            }
+            return ValidAddress;
         } catch (IOException e) {
             e.printStackTrace();
+            return new ArrayList<>();
         }
-        return addresses;
     }
 
     private void spoofLocation(double latitude, double longitude) {
@@ -142,7 +152,6 @@ public class SpoofTask extends AsyncTask<Void, Void, Void> {
             ((SpoofActivity) context).runOnUiThread(() -> setMockDialog(false));
         } else
             mockLocation(geoLocation);
-
         return null;
     }
 
@@ -169,7 +178,7 @@ public class SpoofTask extends AsyncTask<Void, Void, Void> {
         NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(context, BuildConfig.APPLICATION_ID)
                 .setAutoCancel(true)
                 .setSmallIcon(R.drawable.ic_map_marker)
-                .setBadgeIconType(R.mipmap.ic_launcher_round)
+                .setBadgeIconType(NotificationCompat.BADGE_ICON_LARGE)
                 .setColorized(true)
                 .setColor(ContextCompat.getColor(context, R.color.colorOrange))
                 .setContentTitle("Aurora Location Spoof")
