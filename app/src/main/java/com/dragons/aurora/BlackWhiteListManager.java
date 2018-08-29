@@ -24,12 +24,10 @@ package com.dragons.aurora;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
-import android.text.TextUtils;
 
 import com.dragons.aurora.fragment.PreferenceFragment;
+import com.dragons.aurora.helpers.Prefs;
 
-import java.util.Arrays;
-import java.util.HashSet;
 import java.util.Set;
 
 public class BlackWhiteListManager {
@@ -41,10 +39,7 @@ public class BlackWhiteListManager {
 
     public BlackWhiteListManager(Context context) {
         preferences = PreferenceManager.getDefaultSharedPreferences(context);
-        blackWhiteSet = new HashSet<>(Arrays.asList(TextUtils.split(
-                preferences.getString(PreferenceFragment.PREFERENCE_UPDATE_LIST, ""),
-                DELIMITER
-        )));
+        blackWhiteSet = Prefs.getStringSet(context, PreferenceFragment.PREFERENCE_UPDATE_LIST);
         if (blackWhiteSet.size() == 1 && blackWhiteSet.contains("")) {
             blackWhiteSet.clear();
         }
@@ -90,11 +85,6 @@ public class BlackWhiteListManager {
     }
 
     private void save() {
-        SharedPreferences.Editor editor = preferences.edit();
-        editor.putString(
-                PreferenceFragment.PREFERENCE_UPDATE_LIST,
-                TextUtils.join(DELIMITER, blackWhiteSet)
-        );
-        editor.commit();
+        Prefs.putStringSet(preferences, PreferenceFragment.PREFERENCE_UPDATE_LIST, blackWhiteSet);
     }
 }
