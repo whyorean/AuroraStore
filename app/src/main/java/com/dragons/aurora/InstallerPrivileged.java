@@ -117,7 +117,7 @@ public class InstallerPrivileged extends InstallerBackground {
         Class<?>[] types = new Class[]{Uri.class, IPackageInstallObserver.class, int.class, String.class};
         try {
             pm.getClass().getMethod("installPackage", types).invoke(pm, Uri.fromFile(apkFile), new InstallObserver(app), INSTALL_REPLACE_EXISTING, BuildConfig.APPLICATION_ID);
-        } catch (NoSuchMethodException | IllegalArgumentException | IllegalAccessException | InvocationTargetException e) {
+        } catch (NoSuchMethodException | IllegalArgumentException | IllegalAccessException | InvocationTargetException | NullPointerException e) {
             Log.e(getClass().getSimpleName(), "Could not start privileged installation: " + e.getClass().getName() + " " + e.getMessage());
             ((AuroraApplication) context.getApplicationContext()).removePendingUpdate(app.getPackageName());
             sendBroadcast(app.getPackageName(), false);
