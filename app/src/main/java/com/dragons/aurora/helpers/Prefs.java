@@ -23,6 +23,7 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
@@ -75,6 +76,12 @@ public class Prefs {
         )));
     }
 
+
+    public static void putListString(Context context,String key, ArrayList<String> stringList) {
+        String[] myStringList = stringList.toArray(new String[stringList.size()]);
+        PreferenceManager.getDefaultSharedPreferences(context).edit().putString(key, TextUtils.join("‚‗‚", myStringList)).apply();
+    }
+
     static public void putStringSet(Context context, String key, Set<String> set) {
         putStringSet(getDefaultSharedPreferences(context), key, set);
     }
@@ -94,6 +101,11 @@ public class Prefs {
 
     public static String getString(Context context, String key) {
         return PreferenceManager.getDefaultSharedPreferences(context).getString(key, "");
+    }
+
+    public static ArrayList<String> getListString(Context context,String key) {
+        return new ArrayList<String>(Arrays.asList(TextUtils.split(
+                PreferenceManager.getDefaultSharedPreferences(context).getString(key, ""), "‚‗‚")));
     }
 
 }

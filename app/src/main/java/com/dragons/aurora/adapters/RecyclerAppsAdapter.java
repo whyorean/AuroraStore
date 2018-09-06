@@ -38,13 +38,14 @@ import com.dragons.aurora.R;
 import com.dragons.aurora.Util;
 import com.dragons.aurora.activities.AuroraActivity;
 import com.dragons.aurora.activities.DetailsActivity;
-import com.dragons.aurora.database.Jessie;
 import com.dragons.aurora.fragment.DetailsFragment;
 import com.dragons.aurora.fragment.HomeFragment;
 import com.dragons.aurora.fragment.SearchFragment;
 import com.dragons.aurora.fragment.details.ButtonDownload;
+import com.dragons.aurora.helpers.Prefs;
 import com.dragons.aurora.model.App;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import androidx.annotation.NonNull;
@@ -52,12 +53,13 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
+import static com.dragons.aurora.fragment.SearchFragment.HISTORY_APP;
+
 public class RecyclerAppsAdapter extends RecyclerView.Adapter<RecyclerAppsAdapter.ViewHolder> {
 
     private List<App> appsToAdd;
     private Fragment fragment;
     private Context context;
-    private Jessie mJessie;
 
     public RecyclerAppsAdapter(Context context, List<App> appsToAdd) {
         this.context = context;
@@ -74,7 +76,6 @@ public class RecyclerAppsAdapter extends RecyclerView.Adapter<RecyclerAppsAdapte
         this.fragment = fragment;
         this.context = fragment.getContext();
         this.appsToAdd = appsToAdd;
-        mJessie = new Jessie(context);
     }
 
     public RecyclerAppsAdapter(HomeFragment fragment, List<App> appsToAdd) {
@@ -84,8 +85,8 @@ public class RecyclerAppsAdapter extends RecyclerView.Adapter<RecyclerAppsAdapte
     }
 
     public void clear() {
-        if (fragment instanceof SearchFragment && mJessie != null)
-            mJessie.removeJson(Jessie.JSON_APP_HISTORY);
+        if (fragment instanceof SearchFragment)
+            Prefs.putListString(context, HISTORY_APP, new ArrayList<>());
         appsToAdd.clear();
         notifyDataSetChanged();
     }

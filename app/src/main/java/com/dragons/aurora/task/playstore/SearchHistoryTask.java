@@ -19,27 +19,35 @@
  * along with Aurora Store.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-// Top-level build file where you can add configuration options common to all sub-projects/modules.
+package com.dragons.aurora.task.playstore;
 
-buildscript {
-    repositories {
-        google()
-        jcenter()
-    }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:3.3.0-alpha08'
-    }
-}
+import android.content.Context;
 
-allprojects {
-    repositories {
-        google()
-        maven { url 'https://jitpack.io' }
-        maven { url "https://maven.google.com" }
-        jcenter()
-    }
-}
+import com.dragons.aurora.model.App;
+import com.dragons.aurora.model.AppBuilder;
+import com.dragons.aurora.playstoreapiv2.DetailsResponse;
 
-task clean(type: Delete) {
-    delete rootProject.buildDir
+import java.util.ArrayList;
+import java.util.List;
+
+public class SearchHistoryTask extends ExceptionTask {
+
+    public SearchHistoryTask(Context context) {
+        super(context);
+    }
+
+    public List<App> getHistoryApps(ArrayList<String> currList) {
+        List<App> apps = new ArrayList<>();
+        for (String packageName : currList) {
+            try {
+                DetailsResponse response = getApi().details(packageName);
+                App app = AppBuilder.build(response);
+                apps.add(app);
+            } catch (Exception e) {
+                processException(e);
+            }
+        }
+        return apps;
+    }
+
 }

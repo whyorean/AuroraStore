@@ -6,7 +6,6 @@ import android.util.Log;
 
 import com.dragons.aurora.helpers.Prefs;
 import com.dragons.aurora.model.App;
-import com.dragons.aurora.model.History;
 import com.dragons.aurora.model.ImageSource;
 import com.dragons.aurora.model.Rating;
 
@@ -30,8 +29,6 @@ public class Jessie {
 
     public static String JSON_INSTALLED = "INSTALLED";
     public static String JSON_UPDATES = "UPDATES";
-    public static String JSON_HISTORY = "HISTORY";
-    public static String JSON_APP_HISTORY = "APP_HISTORY";
 
     private String TAG = "JESSIE";
     private String DIR = "/Database/";
@@ -110,7 +107,7 @@ public class Jessie {
         return diffHours <= validHours;
     }
 
-    public Date getLastModified(String JsonName) {
+    private Date getLastModified(String JsonName) {
         File mFile = new File(getPath() + JsonName);
         if (mFile.exists())
             return new Date(mFile.lastModified());
@@ -122,7 +119,7 @@ public class Jessie {
         if (isJsonAvailable(JsonName)) {
             File mFile = new File(getPath() + JsonName + EXT);
             mFile.delete();
-        } else Log.i(TAG, "File does not exixts");
+        } else Log.i(TAG, "File does not exist");
     }
 
     public void removeDatabase() {
@@ -133,7 +130,7 @@ public class Jessie {
                 if (!content.contains("HISTORY"))
                     new File(mDir, content).delete();
             }
-        } else Log.i(TAG, "Directory does not exixts");
+        } else Log.i(TAG, "Directory does not exist");
     }
 
     /*
@@ -220,83 +217,4 @@ public class Jessie {
         mJsonArray.remove(position);
         writeJsonToFile(JsonName, mJsonArray);
     }
-
-    /*
-     *
-     * Methods to Manage History
-     *
-     */
-
-    public JSONObject getHistoryObject(History mHistory) {
-        JSONObject mJsonObject = new JSONObject();
-        if (mHistory != null) {
-            try {
-                mJsonObject.put("history_query", mHistory.getQuery());
-                mJsonObject.put("history_date", mHistory.getDate());
-            } catch (JSONException e) {
-                Log.e(TAG, e.getMessage());
-            }
-        }
-        return mJsonObject;
-    }
-
-    public List<JSONObject> getHistoryObjects(List<History> mHistoryList) {
-        List<JSONObject> mJsonObjects = new ArrayList<>();
-        for (History mHistory : mHistoryList) {
-            mJsonObjects.add(getHistoryObject(mHistory));
-        }
-        return mJsonObjects;
-    }
-
-    public List<History> getHistoryFromJsonArray(JSONArray mJsonArray) {
-        List<History> mHistoryList = new ArrayList<>();
-        try {
-            for (int i = 0; i < mJsonArray.length(); i++) {
-                JSONObject mJsonObject = mJsonArray.getJSONObject(i);
-                History mHistory = new History();
-                mHistory.setQuery(mJsonObject.getString("history_query"));
-                mHistory.setDate(mJsonObject.getString("history_date"));
-                mHistoryList.add(mHistory);
-            }
-            return mHistoryList;
-        } catch (JSONException e) {
-            Log.e(TAG, e.getMessage());
-            return new ArrayList<>();
-        }
-    }
-
-    /*
-     *
-     * Methods to Update History from JSON
-     *
-     */
-
-    public void removeHistoryFromJson(int position) {
-        JSONArray mJsonArray = readJsonArrayFromFile(JSON_HISTORY);
-        mJsonArray.remove(position);
-        writeJsonToFile(JSON_HISTORY, mJsonArray);
-    }
-
-    public void addSingleHistory(History mHistory) {
-        JSONObject mJsonObject = getHistoryObject(mHistory);
-        JSONArray mJsonArray;
-        if (isJsonAvailable(JSON_HISTORY))
-            mJsonArray = readJsonArrayFromFile(JSON_HISTORY);
-        else
-            mJsonArray = new JSONArray();
-        mJsonArray.put(mJsonObject);
-        writeJsonToFile(JSON_HISTORY, mJsonArray);
-    }
-
-    public void addSingleApp(App mApp) {
-        JSONObject mJsonObject = getAppObject(mApp);
-        JSONArray mJsonArray;
-        if (isJsonAvailable(JSON_APP_HISTORY))
-            mJsonArray = readJsonArrayFromFile(JSON_APP_HISTORY);
-        else
-            mJsonArray = new JSONArray();
-        mJsonArray.put(mJsonObject);
-        writeJsonToFile(JSON_APP_HISTORY, mJsonArray);
-    }
-
 }

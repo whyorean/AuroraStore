@@ -26,6 +26,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,27 +35,22 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.dragons.aurora.HistoryItemTouchHelper;
-import com.dragons.aurora.PlayStoreApiAuthenticator;
 import com.dragons.aurora.R;
 import com.dragons.aurora.activities.DetailsActivity;
 import com.dragons.aurora.adapters.RecyclerAppsAdapter;
 import com.dragons.aurora.adapters.SearchHistoryAdapter;
-import com.dragons.aurora.database.Jessie;
 import com.dragons.aurora.helpers.Prefs;
 import com.dragons.aurora.model.App;
-import com.dragons.aurora.model.AppBuilder;
-import com.dragons.aurora.model.History;
-import com.dragons.aurora.playstoreapiv2.DetailsResponse;
-import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
-import com.dragons.aurora.task.playstore.ExceptionTask;
+import com.dragons.aurora.task.playstore.SearchHistoryTask;
 import com.dragons.custom.ClusterAppsCard;
 
-import org.json.JSONArray;
-
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
+import java.util.Set;
 import java.util.regex.Pattern;
 
 import androidx.annotation.NonNull;
@@ -63,15 +59,23 @@ import androidx.appcompat.widget.SearchView;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import io.reactivex.Observable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.schedulers.Schedulers;
 
 import static com.dragons.aurora.activities.SearchActivity.PUB_PREFIX;
 
 public class SearchFragment extends BaseFragment implements HistoryItemTouchHelper.RecyclerItemTouchHelperListener {
+
+    public static String HISTORY_LIST = "HISTORY_LIST";
+    public static String HISTORY_APP = "HISTORY_APP";
 
     @BindView(R.id.search_apps)
     SearchView searchToolbar;
@@ -89,9 +93,11 @@ public class SearchFragment extends BaseFragment implements HistoryItemTouchHelp
     Button clearAll;
 
     private View view;
-    private Jessie mJessie;
+    private ArrayList<String> mQueryList;
+    private ArrayList<String> mAppList;
     private SearchHistoryAdapter searchHistoryAdapter;
     private RecyclerAppsAdapter searchHistoryAppAdapter;
+    private CompositeDisposable mDisposable = new CompositeDisposable();
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -104,7 +110,6 @@ public class SearchFragment extends BaseFragment implements HistoryItemTouchHelp
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mJessie = new Jessie(getContext());
         addQueryTextListener(searchToolbar);
         setupHistory();
         setupAppHistory();
@@ -119,18 +124,15 @@ public class SearchFragment extends BaseFragment implements HistoryItemTouchHelp
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
-    }
-
-    @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
         if (isVisibleToUser) {
             if (search_layout != null && Prefs.getBoolean(view.getContext(), "SHOW_IME"))
                 search_layout.performClick();
 
-            if (searchHistoryAdapter != null)
+            if (searchHistoryAdapter == null)
+                setupHistory();
+            else
                 searchHistoryAdapter.reload();
         }
     }
@@ -175,26 +177,39 @@ public class SearchFragment extends BaseFragment implements HistoryItemTouchHelp
 
     private void setQuery(String query) {
         if (looksLikeAPackageId(query)) {
-            getAppDetail(query);
+            setAppToPref(query);
             getContext().startActivity(DetailsActivity.getDetailsIntent(getContext(), query));
         } else {
-            History mHistory = new History();
-            mHistory.setQuery(query);
-            mHistory.setDate(new SimpleDateFormat("dd/MM/yyyy",
-                    Locale.getDefault()).format(new Date()));
-            if (searchHistoryAdapter != null)
-                searchHistoryAdapter.add(searchHistoryAdapter.getItemCount() + 1, mHistory);
-            else
-                mJessie.addSingleHistory(mHistory);
-            getQuerriedApps(query);
+            String mDatedQuerry = query.concat(":").concat(new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date()));
+            setQueryToPref(mDatedQuerry);
+            getQueriedApps(query);
         }
     }
 
+    private void setQueryToPref(String query) {
+        mQueryList = Prefs.getListString(getContext(), HISTORY_LIST);
+        mQueryList.add(0, query);
+        Prefs.putListString(getContext(), HISTORY_LIST, mQueryList);
+        if (searchHistoryAdapter != null)
+            searchHistoryAdapter.reload();
+        else
+            setupSearchHistory(mQueryList);
+    }
+
+    private void setAppToPref(String query) {
+        mAppList = Prefs.getListString(getContext(), HISTORY_APP);
+        mAppList.add(0, query);
+        //Removes dupes
+        Set<String> mAppSet = new HashSet<>(mAppList);
+        mAppList.clear();
+        mAppList.addAll(mAppSet);
+        Prefs.putListString(getContext(), HISTORY_APP, mAppList);
+    }
+
     private void setupHistory() {
-        if (mJessie.isJsonAvailable(Jessie.JSON_HISTORY)) {
-            JSONArray mJsonArray = mJessie.readJsonArrayFromFile(Jessie.JSON_HISTORY);
-            List<History> mHistoryList = mJessie.getHistoryFromJsonArray(mJsonArray);
-            setupSearchHistory(mHistoryList);
+        mQueryList = Prefs.getListString(getContext(), HISTORY_LIST);
+        if (!mQueryList.isEmpty()) {
+            setupSearchHistory(mQueryList);
             toggleViews(false);
         } else {
             toggleViews(true);
@@ -202,19 +217,20 @@ public class SearchFragment extends BaseFragment implements HistoryItemTouchHelp
     }
 
     private void setupAppHistory() {
-        if (mJessie.isJsonAvailable(Jessie.JSON_APP_HISTORY)) {
-            JSONArray mJsonArray = mJessie.readJsonArrayFromFile(Jessie.JSON_APP_HISTORY);
-            List<App> mAppList = mJessie.getAppsFromJsonArray(mJsonArray);
-            setupAppSearchHistory(mAppList);
-            clusterAppsCard.setVisibility(View.VISIBLE);
+        mAppList = Prefs.getListString(getContext(), HISTORY_APP);
+        if (!mQueryList.isEmpty()) {
+            getHistoryApps(mAppList);
         } else
             clusterAppsCard.setVisibility(View.GONE);
     }
 
-    private void setupSearchHistory(List<History> mHistoryList) {
+    private void setupSearchHistory(ArrayList<String> mHistoryList) {
         searchHistoryAdapter = new SearchHistoryAdapter(this, mHistoryList);
         searchHistoryRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         searchHistoryRecyclerView.setItemAnimator(new DefaultItemAnimator());
+        DividerItemDecoration itemDecorator = new DividerItemDecoration(searchHistoryRecyclerView.getContext(), DividerItemDecoration.VERTICAL);
+        itemDecorator.setDrawable(getResources().getDrawable(R.drawable.list_divider));
+        searchHistoryRecyclerView.addItemDecoration(itemDecorator);
         searchHistoryRecyclerView.setAdapter(searchHistoryAdapter);
         new ItemTouchHelper(
                 new HistoryItemTouchHelper(0, ItemTouchHelper.LEFT, this))
@@ -256,7 +272,7 @@ public class SearchFragment extends BaseFragment implements HistoryItemTouchHelp
         }
     }
 
-    private void getQuerriedApps(String query) {
+    private void getQueriedApps(String query) {
         SearchAppsFragment searchAppsFragment = new SearchAppsFragment();
         Bundle arguments = new Bundle();
         arguments.putString("SearchQuery", query);
@@ -286,14 +302,17 @@ public class SearchFragment extends BaseFragment implements HistoryItemTouchHelp
         return r.matcher(query).matches();
     }
 
-    private void getAppDetail(String packageName) {
-        try {
-            GooglePlayAPI api = new PlayStoreApiAuthenticator(this.getActivity()).getApi();
-            DetailsResponse response = api.details(packageName);
-            App mApp = AppBuilder.build(response);
-            mJessie.addSingleApp(mApp);
-        } catch (Exception e) {
-            new ExceptionTask(getContext()).processException(e);
-        }
+    private void getHistoryApps(ArrayList<String> appList) {
+        TextView clusterTitle = clusterAppsCard.findViewById(R.id.m_apps_title);
+        clusterTitle.setText(R.string.action_search_history_apps);
+        SearchHistoryTask mTask = new SearchHistoryTask(getContext());
+        mDisposable.add(Observable.fromCallable(() -> mTask.getHistoryApps(appList))
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnComplete(() -> clusterAppsCard.setVisibility(View.VISIBLE))
+                .doOnError(err -> clusterAppsCard.setVisibility(View.GONE))
+                .subscribe((appToAdd) -> {
+                    setupAppSearchHistory(appToAdd);
+                }, err -> Log.e(getTag(), err.getMessage())));
     }
 }

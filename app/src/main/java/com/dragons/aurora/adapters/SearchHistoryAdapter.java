@@ -29,55 +29,62 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.dragons.aurora.R;
-import com.dragons.aurora.database.Jessie;
 import com.dragons.aurora.fragment.SearchAppsFragment;
 import com.dragons.aurora.fragment.SearchFragment;
-import com.dragons.aurora.model.History;
+import com.dragons.aurora.helpers.Prefs;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
+import static com.dragons.aurora.activities.SearchActivity.PUB_PREFIX;
+import static com.dragons.aurora.fragment.SearchFragment.HISTORY_LIST;
+
 public class SearchHistoryAdapter extends RecyclerView.Adapter<SearchHistoryAdapter.ViewHolder> {
 
-    private List<History> mHistoryList;
+    private ArrayList<String> mQueryList;
     private SearchFragment fragment;
-    private Jessie mJessie;
 
-    public SearchHistoryAdapter(SearchFragment fragment, List<History> mHistoryList) {
+    public SearchHistoryAdapter(SearchFragment fragment, ArrayList<String> mQueryList) {
         this.fragment = fragment;
-        this.mHistoryList = mHistoryList;
-        mJessie = new Jessie(fragment.getContext());
+        this.mQueryList = mQueryList;
     }
 
-    public void add(int position, History mHistory) {
-        mJessie.addSingleHistory(mHistory);
-        mHistoryList.add(mHistory);
+    public void add(int position, String mHistory) {
+        mQueryList.add(mHistory);
         notifyItemInserted(position);
     }
 
     public void remove(int position) {
-        mJessie.removeHistoryFromJson(position);
-        mHistoryList.remove(position);
+        mQueryList.remove(position);
+        updatePrefList();
         notifyItemRemoved(position);
     }
 
     public void clear() {
-        mJessie.removeJson(Jessie.JSON_HISTORY);
-        mHistoryList.clear();
+        mQueryList.clear();
+        clearPrefList();
         notifyDataSetChanged();
     }
 
     public void reload() {
+        mQueryList = Prefs.getListString(fragment.getContext(), HISTORY_LIST);
         notifyDataSetChanged();
+    }
+
+    private void updatePrefList() {
+        Prefs.putListString(fragment.getContext(), HISTORY_LIST, mQueryList);
+    }
+
+    private void clearPrefList() {
+        Prefs.putListString(fragment.getContext(), HISTORY_LIST, new ArrayList<>());
     }
 
     @NonNull
@@ -90,16 +97,15 @@ public class SearchHistoryAdapter extends RecyclerView.Adapter<SearchHistoryAdap
 
     @Override
     public void onBindViewHolder(@NonNull SearchHistoryAdapter.ViewHolder holder, final int position) {
-        History mHistory = mHistoryList.get(position);
-        holder.query.setText(mHistory.getQuery());
-        holder.date.setText(getDiffString((int) getDiff(mHistory.getDate())));
-
+        String mDatedQuery[] = mQueryList.get(position).split(":");
+        holder.query.setText(mDatedQuery[0]);
+        holder.date.setText(getDiffString((int) getDiff(mDatedQuery[1])));
         holder.viewForeground.setOnClickListener(v -> {
             final String query = holder.query.getText().toString();
             SearchAppsFragment searchAppsFragment = new SearchAppsFragment();
             Bundle arguments = new Bundle();
             arguments.putString("SearchQuery", query);
-            arguments.putString("SearchTitle", query);
+            arguments.putString("SearchTitle", getTitleString(query));
             searchAppsFragment.setArguments(arguments);
             fragment.getChildFragmentManager()
                     .beginTransaction()
@@ -112,7 +118,7 @@ public class SearchHistoryAdapter extends RecyclerView.Adapter<SearchHistoryAdap
 
     @Override
     public int getItemCount() {
-        return mHistoryList.size();
+        return mQueryList.size();
     }
 
     private long getDiff(String queryDate) {
@@ -136,8 +142,15 @@ public class SearchHistoryAdapter extends RecyclerView.Adapter<SearchHistoryAdap
         return "";
     }
 
+    private String getTitleString(String query) {
+        return query.startsWith(PUB_PREFIX)
+                ? fragment.getString(R.string.apps_by, query.substring(PUB_PREFIX.length()))
+                : fragment.getString(R.string.activity_title_search, query)
+                ;
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder {
-        public CardView viewForeground;
+        public RelativeLayout viewForeground;
         RelativeLayout viewBackground;
         TextView query;
         TextView date;

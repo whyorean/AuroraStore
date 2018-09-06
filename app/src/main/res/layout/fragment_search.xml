@@ -62,14 +62,21 @@
                 app:searchIcon="@drawable/ic_search" />
         </androidx.cardview.widget.CardView>
 
+        <com.dragons.custom.ClusterAppsCard
+            android:id="@+id/searchClusterApp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/search_layout"
+            android:layout_margin="4dp" />
+
         <LinearLayout
             android:id="@+id/history_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/search_layout"
-            android:layout_marginStart="12dp"
-            android:layout_marginEnd="12dp"
-            android:orientation="horizontal">
+            android:layout_below="@+id/searchClusterApp"
+            android:orientation="horizontal"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp">
 
             <TextView
                 android:id="@+id/textView4"
@@ -93,38 +100,32 @@
                 android:textColor="?android:attr/textColorSecondary" />
         </LinearLayout>
 
-        <RelativeLayout
+        <androidx.cardview.widget.CardView
             android:id="@+id/searchCard"
             android:layout_width="match_parent"
-            android:layout_height="250dp"
+            android:layout_height="wrap_content"
             android:layout_below="@+id/history_layout"
+            android:layout_margin="8dp"
             android:animateLayoutChanges="true"
-            android:padding="8dp">
+            app:cardCornerRadius="5dp"
+            app:cardElevation="1dp"
+            app:cardPreventCornerOverlap="false">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/searchHistory"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="400dp"
                 android:scrollbars="vertical" />
 
             <TextView
                 android:id="@+id/emptyView"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="60dp"
                 android:layout_gravity="center"
-                android:background="@drawable/outline_bg"
                 android:gravity="center"
-                android:padding="16dp"
                 android:text="@string/list_empty_query"
                 android:textColor="?attr/colorAccent"
-                android:textSize="16sp" />
-        </RelativeLayout>
-
-        <com.dragons.custom.ClusterAppsCard
-            android:id="@+id/searchClusterApp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/searchCard"
-            android:layout_margin="4dp" />
+                android:textSize="18sp" />
+        </androidx.cardview.widget.CardView>
     </RelativeLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
