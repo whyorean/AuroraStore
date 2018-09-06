@@ -42,11 +42,9 @@ public class AdaptiveToolbar extends AppBarLayout {
     static int style;
     View root;
     Toolbar layout;
-    ImageView action_icon;
     ImageView profile_icon;
     ImageView prefs_icon;
     TextView title0;
-    TextView title1;
 
     public AdaptiveToolbar(Context context) {
         super(context);
@@ -67,11 +65,9 @@ public class AdaptiveToolbar extends AppBarLayout {
         }
         root = inflate(context, R.layout.layout_toolbar, this);
         layout = root.findViewById(R.id.layout);
-        action_icon = root.findViewById(R.id.app_icon);
         profile_icon = root.findViewById(R.id.account_icon);
         prefs_icon = root.findViewById(R.id.prefs_icon);
         title0 = root.findViewById(R.id.app_title0);
-        title1 = root.findViewById(R.id.app_title1);
         switch (getStyle()) {
             case 0:
                 homeToolbar(context);
@@ -87,13 +83,8 @@ public class AdaptiveToolbar extends AppBarLayout {
         if (profile_icon.getVisibility() != VISIBLE) {
             profile_icon.setVisibility(VISIBLE);
         }
-        action_icon.setImageResource(R.mipmap.ic_launcher);
-        action_icon.setPadding(0, 0, 0, 0);
-        action_icon.setContentDescription("home");
         setBackgroundColor(Util.getStyledAttribute(context, android.R.attr.colorPrimary));
-        title0.setText("Aurora");
-        title1.setText("Store");
-        title1.setVisibility(VISIBLE);
+        title0.setText(context.getString(R.string.app_name));
     }
 
     private void detailsToolbar(Context context) {
@@ -101,20 +92,6 @@ public class AdaptiveToolbar extends AppBarLayout {
             profile_icon.setVisibility(GONE);
         }
         setBackgroundColor(Util.getStyledAttribute(context, android.R.attr.colorPrimary));
-        action_icon.setImageResource(R.drawable.ic_chevron_left);
-        action_icon.setPadding(6, 6, 6, 6);
-        action_icon.setContentDescription("details");
-    }
-
-
-    public void setTitle(String title) {
-        if (title0 != null)
-            title0.setText(title);
-    }
-
-    public void setSubtitle(String subtitle) {
-        if (title1 != null)
-            title1.setText(subtitle);
     }
 
     public void setupActions(Context context) {

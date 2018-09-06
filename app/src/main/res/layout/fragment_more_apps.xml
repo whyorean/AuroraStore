@@ -31,7 +31,9 @@
         style="@style/Widget.AppBar"
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
-        android:animateLayoutChanges="true">
+        android:animateLayoutChanges="true"
+        android:background="?android:attr/colorAccent"
+        app:elevation="0dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -41,7 +43,7 @@
 
             <TextView
                 android:id="@+id/categoryTitle"
-                style="@style/TextAppearance.AppCompat.Title"
+                style="@style/TextAppearance.Aurora.Title"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -49,7 +51,7 @@
                 android:layout_weight="9"
                 android:fontFamily="@font/google_sans"
                 android:singleLine="true"
-                android:textColor="?android:textColorPrimary" />
+                android:textColor="@color/white" />
 
             <ProgressBar
                 android:id="@+id/global_progress"

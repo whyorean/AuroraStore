@@ -218,7 +218,7 @@ public class SearchFragment extends BaseFragment implements HistoryItemTouchHelp
 
     private void setupAppHistory() {
         mAppList = Prefs.getListString(getContext(), HISTORY_APP);
-        if (!mQueryList.isEmpty()) {
+        if (!mAppList.isEmpty()) {
             getHistoryApps(mAppList);
         } else
             clusterAppsCard.setVisibility(View.GONE);

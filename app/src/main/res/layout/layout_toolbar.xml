@@ -32,42 +32,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/app_icon"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="5dp"
-            android:layout_marginEnd="5dp"
-            app:srcCompat="@mipmap/ic_launcher_round" />
-
         <TextView
             android:id="@+id/app_title0"
-            style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/app_icon"
-            android:layout_alignBottom="@+id/app_icon"
-            android:layout_centerVertical="true"
-            android:layout_toEndOf="@+id/app_icon"
-            android:fontFamily="@font/google_sans_bold"
-            android:gravity="center"
-            android:text="Aurora" />
-
-        <TextView
-            android:id="@+id/app_title1"
-            style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+            style="@style/TextAppearance.Aurora.Toolbar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_marginStart="2dp"
-            android:layout_toEndOf="@+id/app_title0"
-            android:fontFamily="@font/google_sans"
-            android:gravity="center"
-            android:text="Store"
-            android:textColor="?android:textColorSecondary" />
+            android:text="Aurora Store" />
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
@@ -79,20 +52,24 @@
                 android:id="@+id/account_icon"
                 android:layout_width="36dp"
                 android:layout_height="36dp"
+                android:layout_centerVertical="true"
+                android:layout_toStartOf="@id/prefs_icon"
                 android:background="?android:attr/selectableItemBackgroundBorderless"
                 android:padding="5dp"
                 android:src="@drawable/ic_dummy_avatar" />
 
             <ImageView
                 android:id="@+id/prefs_icon"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:alpha=".80"
                 android:background="?android:attr/selectableItemBackgroundBorderless"
-                android:padding="8dp"
                 android:src="@drawable/ic_settings"
                 android:tint="?android:attr/textColorTertiary" />
 
-        </LinearLayout>
+        </RelativeLayout>
 
     </RelativeLayout>
 

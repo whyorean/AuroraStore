@@ -32,32 +32,16 @@
         android:orientation="vertical"
         app:layout_scrollFlags="scroll|enterAlways|snap">
 
-        <TextView
-            android:id="@+id/myApps_title"
-            style="@style/TextAppearance.AppCompat.Medium"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/appbar_title_height"
-            android:fontFamily="@font/google_sans_bold"
-            android:gravity="center_vertical"
-            android:paddingStart="10dp"
-            android:paddingEnd="10dp"
-            android:text="@string/list_installed_title"
-            android:textColor="?android:attr/textColorPrimary"
-            app:layout_scrollFlags="scroll|snap|exitUntilCollapsed" />
-
         <Switch
             android:id="@+id/includeSystem"
-            style="@style/TextAppearance.AppCompat.Widget.Switch"
+            style="@style/TextAppearance.Aurora.SubTitle"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/appbar_title_height"
-            android:background="@color/scrim"
-            android:fontFamily="@font/google_sans"
+            android:layout_height="?actionBarSize"
+            android:background="?android:attr/colorAccent"
             android:paddingStart="10dp"
             android:paddingEnd="10dp"
             android:text="@string/list_installed_system"
-            android:textAlignment="viewStart"
-            android:textAllCaps="false"
-            android:textColor="?android:attr/textColorSecondary" />
+            android:textColor="@color/white" />
     </com.google.android.material.appbar.AppBarLayout>
 
     <RelativeLayout
