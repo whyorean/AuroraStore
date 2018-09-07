@@ -24,204 +24,46 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?android:attr/colorBackground">
+    android:background="?android:attr/colorBackground"
+    android:fitsSystemWindows="true">
 
-    <com.dragons.custom.CustomNestedScrollView
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
+        android:theme="@style/ThemeOverlay.MaterialComponents.ActionBar">
 
-        <LinearLayout
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/collapsingToolbar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:animateLayoutChanges="true"
-            android:orientation="vertical">
+            android:layout_height="200dp"
+            android:background="?android:attr/colorPrimaryDark"
+            app:collapsedTitleTextAppearance="@style/TextAppearance.Aurora.CollapsingToolbar"
+            app:contentScrim="?android:attr/colorPrimary"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:statusBarScrim="?android:attr/colorPrimary">
 
-            <RelativeLayout
-                android:id="@+id/details_header"
-                android:layout_width="match_parent"
-                android:layout_height="180dp"
-                android:background="?android:attr/colorPrimaryDark">
-
-                <ImageView
-                    android:id="@+id/app_background"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:scaleType="centerCrop" />
-
-                <ImageView
-                    android:id="@+id/action_back"
-                    android:layout_marginTop="24dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:background="?android:selectableItemBackgroundBorderless"
-                    android:padding="10dp"
-                    android:src="@drawable/ic_arrow_left" />
-            </RelativeLayout>
-
-            <LinearLayout
+            <ImageView
+                android:id="@+id/app_background"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginStart="6dp"
-                android:layout_marginTop="-40dp"
-                android:layout_marginEnd="6dp"
-                android:animateLayoutChanges="true"
-                android:orientation="vertical">
+                android:fitsSystemWindows="true"
+                android:scaleType="centerCrop"
+                app:layout_collapseMode="parallax" />
 
-                <!-- App Header -->
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/mainCard"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginEnd="5dp"
-                    android:visibility="gone"
-                    app:cardBackgroundColor="?android:attr/panelBackground"
-                    app:cardCornerRadius="5dp"
-                    app:cardElevation="1dp"
-                    app:cardPreventCornerOverlap="false"
-                    app:cardUseCompatPadding="true">
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize"
+                app:layout_collapseMode="pin"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed"
+                app:navigationIcon="?attr/homeAsUpIndicator"
+                app:popupTheme="@style/ThemeOverlay.MaterialComponents.Light" />
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:padding="5dp">
+    </com.google.android.material.appbar.AppBarLayout>
 
-                        <!-- App Info : Icon, Name, Developer, Version -->
-                        <include layout="@layout/include_details_main" />
-
-                        <!-- Download ProgressBar & Ads -->
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="5dp"
-                            android:animateLayoutChanges="true"
-                            android:gravity="center"
-                            android:orientation="horizontal"
-                            android:weightSum="6">
-
-                            <ProgressBar
-                                android:id="@+id/download_progress"
-                                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-                                android:layout_width="0dp"
-                                android:layout_height="2dp"
-                                android:layout_weight="5.3"
-                                android:indeterminate="true"
-                                android:progressBackgroundTint="@color/gray"
-                                android:progressDrawable="@drawable/progressbar_bg"
-                                android:visibility="invisible" />
-
-                            <TextView
-                                android:id="@+id/progressCents"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight=".7"
-                                android:fontFamily="@font/google_sans"
-                                android:gravity="end"
-                                android:paddingStart="3dp"
-                                android:paddingEnd="3dp"
-                                android:textSize="12sp"
-                                android:visibility="invisible" />
-                        </LinearLayout>
-
-                        <!-- Action : Download, Update, Uninstall -->
-                        <include layout="@layout/include_details_actions" />
-
-                    </LinearLayout>
-
-                </androidx.cardview.widget.CardView>
-
-                <!-- App Info -->
-                <LinearLayout
-                    android:id="@+id/app_info_layout"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:animateLayoutChanges="true"
-                    android:orientation="vertical">
-
-                    <!-- App Details -->
-                    <include layout="@layout/include_details_subinfo" />
-
-                    <!-- Changelog -->
-                    <include layout="@layout/include_details_changelog" />
-
-                    <!-- Read More -->
-                    <include layout="@layout/include_details_readmore" />
-
-                    <!-- Screenshot -->
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/screenshots_gallery"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="5dp" />
-
-                    <!-- General -->
-                    <include layout="@layout/include_details_info" />
-
-                    <!-- Exodus -->
-                    <include layout="@layout/include_details_exodus" />
-
-                    <!-- Reviews -->
-                    <include layout="@layout/include_details_reviews" />
-
-                    <!-- Permissions -->
-                    <include layout="@layout/include_details_permissions" />
-
-                    <!-- App Video -->
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/app_video"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginEnd="5dp"
-                        android:visibility="gone"
-                        app:cardBackgroundColor="?android:attr/panelBackground"
-                        app:cardCornerRadius="5dp"
-                        app:cardElevation="1dp"
-                        app:cardPreventCornerOverlap="false"
-                        app:cardUseCompatPadding="true">
-
-                        <ImageView
-                            android:id="@+id/thumbnail"
-                            android:layout_width="match_parent"
-                            android:layout_height="200dp"
-                            android:src="?android:attr/colorPrimaryDark" />
-
-                        <ImageView
-                            android:id="@+id/video_play"
-                            android:layout_width="@dimen/icon_size"
-                            android:layout_height="@dimen/icon_size"
-                            android:layout_centerHorizontal="true"
-                            android:layout_centerVertical="true"
-                            android:layout_gravity="center"
-                            android:alpha="0.5"
-                            android:src="@drawable/ic_play" />
-                    </androidx.cardview.widget.CardView>
-
-                    <!-- Beta -->
-                    <include layout="@layout/include_details_beta" />
-
-                    <LinearLayout
-                        android:id="@+id/cluster_links"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="start"
-                        android:orientation="vertical"
-                        android:visibility="gone" />
-
-                    <!-- Bottom Actions -->
-                    <include layout="@layout/include_details_bottom" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-    </com.dragons.custom.CustomNestedScrollView>
+    <include layout="@layout/include_details_all" />
 
     <RelativeLayout
         android:id="@+id/ohhSnap"

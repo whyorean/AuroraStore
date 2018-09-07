@@ -20,11 +20,9 @@
   -->
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/more_card"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="5dp"
     android:animateLayoutChanges="true"
     android:orientation="vertical"
     android:transitionGroup="true"
@@ -35,31 +33,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="10dp"
         android:background="?attr/selectableItemBackgroundBorderless"
+        android:padding="5dp"
         android:text="@string/details_more"
         android:textAlignment="center"
-        android:textSize="16sp" />
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/changelog_container"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:visibility="gone"
-        app:cardBackgroundColor="?android:attr/panelBackground"
-        app:cardCornerRadius="5dp"
-        app:cardElevation="1dp"
-        app:cardPreventCornerOverlap="false"
-        app:cardUseCompatPadding="true">
-
-        <TextView
-            android:id="@+id/d_moreinf"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:fontFamily="@font/google_sans"
-            android:textSize="13sp" />
-    </androidx.cardview.widget.CardView>
-
+        android:textAppearance="@style/TextAppearance.Aurora.SubTitle.Compact" />
 </LinearLayout>

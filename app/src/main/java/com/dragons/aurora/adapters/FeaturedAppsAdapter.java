@@ -101,10 +101,6 @@ public class FeaturedAppsAdapter extends RecyclerView.Adapter<FeaturedAppsAdapte
             popup.getMenu().findItem(R.id.action_manual).setVisible(app.isInstalled());
             popup.setOnMenuItemClickListener(item -> {
                 switch (item.getItemId()) {
-                    case R.id.action_ignore:
-                    case R.id.action_whitelist:
-                    case R.id.action_unignore:
-                    case R.id.action_unwhitelist:
                     case R.id.action_download:
                         new ButtonDownload(context, fragment.getView(), app).checkAndDownload();
                         break;

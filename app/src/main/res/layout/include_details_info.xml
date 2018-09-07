@@ -19,88 +19,88 @@
   ~ along with Aurora Store.  If not, see <http://www.gnu.org/licenses/>.
   -->
 
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/general_card"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginEnd="5dp"
-    android:layout_marginStart="5dp"
     android:layout_marginTop="5dp"
-    android:visibility="gone"
-    app:cardBackgroundColor="?android:attr/panelBackground"
-    app:cardCornerRadius="5dp"
-    app:cardElevation="1dp"
-    app:cardPreventCornerOverlap="false"
-    app:cardUseCompatPadding="true">
+    android:background="?android:attr/panelBackground"
+    android:orientation="vertical"
+    android:padding="10dp">
 
-    <HorizontalScrollView
+    <RelativeLayout
+        android:id="@+id/layout_update"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="5dp"
-        android:scrollbars="none">
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp">
 
-        <LinearLayout
+        <ImageView
+            android:id="@+id/img_update"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:paddingEnd="10dp"
-            android:paddingStart="10dp">
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_update" />
 
-            <ImageView
-                android:layout_width="18dp"
-                android:layout_height="18dp"
-                android:alpha="0.7"
-                android:src="@drawable/ic_update" />
+        <TextView
+            android:id="@+id/txt_updated"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/img_update"
+            android:fontFamily="@font/google_sans_bold"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp" />
+    </RelativeLayout>
 
-            <TextView
-                android:id="@+id/updated"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:fontFamily="@font/google_sans_bold" />
+    <RelativeLayout
+        android:id="@+id/layout_google_dependencies"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp">
 
-            <View
-                android:layout_width="1dp"
-                android:layout_height="28dp"
-                android:layout_gravity="center_vertical"
-                android:layout_margin="8dp"
-                android:background="@color/gray" />
+        <ImageView
+            android:id="@+id/img_google_dependencies"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_google_play" />
 
-            <ImageView
-                android:layout_width="18dp"
-                android:layout_height="18dp"
-                android:alpha="0.7"
-                android:src="@drawable/ic_google_play" />
+        <TextView
+            android:id="@+id/txt_google_dependencies"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/img_google_dependencies"
+            android:fontFamily="@font/google_sans_bold"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp" />
+    </RelativeLayout>
 
-            <TextView
-                android:id="@+id/google_dependencies"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:fontFamily="@font/google_sans_bold" />
+    <RelativeLayout
+        android:id="@+id/layout_rating"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp">
 
-            <View
-                android:layout_width="1dp"
-                android:layout_height="28dp"
-                android:layout_gravity="center_vertical"
-                android:layout_margin="8dp"
-                android:background="@color/gray" />
+        <ImageView
+            android:id="@+id/rating_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:scaleX=".75"
+            android:scaleY=".75" />
 
-            <ImageView
-                android:id="@+id/rating_img"
-                android:layout_width="18dp"
-                android:layout_height="18dp"
-                android:alpha="0.7" />
+        <TextView
+            android:id="@+id/txt_rating"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/rating_img"
+            android:fontFamily="@font/google_sans_bold"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp" />
+    </RelativeLayout>
 
-            <TextView
-                android:id="@+id/rating_lable"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:fontFamily="@font/google_sans_bold" />
-        </LinearLayout>
-    </HorizontalScrollView>
-</androidx.cardview.widget.CardView>
+</LinearLayout>

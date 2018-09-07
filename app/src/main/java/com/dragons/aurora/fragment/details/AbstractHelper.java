@@ -27,14 +27,12 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.dragons.aurora.Util;
 import com.dragons.aurora.fragment.DetailsFragment;
 import com.dragons.aurora.model.App;
 import com.percolate.caffeine.ViewUtils;
@@ -46,6 +44,8 @@ import androidx.core.view.ViewCompat;
 public abstract class AbstractHelper {
 
     public static int color;
+    public static int colorText;
+
     protected DetailsFragment fragment;
     protected App app;
     protected View view;
@@ -93,23 +93,25 @@ public abstract class AbstractHelper {
 
     void paintLLayout(int viewID) {
         LinearLayout layout = view.findViewById(viewID);
-        if (layout != null && !Util.isDark(fragment.getContext()))
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
-                ViewCompat.setBackgroundTintList(layout, ColorStateList.valueOf(ColorUtils.setAlphaComponent(color, 50)));
-            else
-                layout.setBackgroundColor(ColorUtils.setAlphaComponent(color, 50));
+        layout.setBackgroundColor(ColorUtils.setAlphaComponent(color, 100));
     }
 
     protected void paintTextView(int textViewId) {
         TextView textView = view.findViewById(textViewId);
         if (textView != null)
-            textView.setTextColor(color);
+            textView.setTextColor(colorText);
     }
 
     protected void paintImageView(int imageViewId) {
         ImageView imageView = view.findViewById(imageViewId);
         if (imageView != null)
             imageView.setColorFilter(color);
+    }
+
+    protected void paintImageViewBackground(int imageViewId) {
+        ImageView imageView = view.findViewById(imageViewId);
+        if (imageView != null)
+            ViewCompat.setBackgroundTintList(imageView, ColorStateList.valueOf(color));
     }
 
     @NonNull

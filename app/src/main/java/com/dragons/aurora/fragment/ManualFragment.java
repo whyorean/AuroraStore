@@ -62,7 +62,9 @@ import static com.dragons.aurora.AuroraApplication.COLOR_UI;
 public class ManualFragment extends BaseFragment {
 
     public static App app;
+
     private int latestVersionCode;
+    private DownloadOrInstall downloadOrInstallFragment;
     private View view;
 
     @Override
@@ -77,6 +79,9 @@ public class ManualFragment extends BaseFragment {
     @Override
     public void onPause() {
         super.onPause();
+        if (null != downloadOrInstallFragment) {
+            downloadOrInstallFragment.unregisterReceivers();
+        }
         app.setVersionCode(latestVersionCode);
     }
 
@@ -95,7 +100,7 @@ public class ManualFragment extends BaseFragment {
             ((EditText) view.findViewById(R.id.version_code)).setHint(String.valueOf(latestVersionCode));
         }
 
-        DownloadOrInstall downloadOrInstallFragment = new DownloadOrInstall(getContext(), view, app);
+        downloadOrInstallFragment = new DownloadOrInstall(getContext(), view, app);
         ManualDownloadTextWatcher textWatcher = new ManualDownloadTextWatcher(app,
                 view.findViewById(R.id.download),
                 view.findViewById(R.id.install),

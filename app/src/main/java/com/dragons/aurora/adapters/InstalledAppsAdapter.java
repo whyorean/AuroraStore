@@ -162,7 +162,7 @@ public class InstalledAppsAdapter extends RecyclerView.Adapter<InstalledAppsAdap
 
     private void setup3dotMenu(ViewHolder viewHolder, App app, int position) {
         viewHolder.AppMenu.setOnClickListener(v -> {
-            PopupMenu popup = new PopupMenu(v.getContext(), v);
+            PopupMenu popup = new PopupMenu(fragment.getContext(), v);
             popup.inflate(R.menu.menu_download);
             new DownloadOptions(fragment.getContext(), fragment.getView(), app).inflate(popup.getMenu());
             popup.getMenu().findItem(R.id.action_download).setVisible(new ButtonDownload(fragment.getContext(), fragment.getView(), app).shouldBeVisible());

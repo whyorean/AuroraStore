@@ -98,9 +98,10 @@
                     app:cardPreventCornerOverlap="false"
                     app:cardUseCompatPadding="true">
 
-                    <RelativeLayout
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:orientation="vertical"
                         android:padding="8dp">
 
                         <include
@@ -111,7 +112,6 @@
                             android:id="@+id/version_code"
                             android:layout_width="match_parent"
                             android:layout_height="36dp"
-                            android:layout_below="@+id/app_info"
                             android:layout_marginStart="5dp"
                             android:layout_marginTop="10dp"
                             android:layout_marginEnd="5dp"
@@ -123,46 +123,8 @@
                             android:paddingEnd="10dp"
                             android:textAlignment="viewStart" />
 
-                        <include
-                            android:id="@+id/app_action_button"
-                            layout="@layout/include_details_actions"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/version_code" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/app_action_button"
-                            android:layout_margin="5dp"
-                            android:animateLayoutChanges="true"
-                            android:gravity="center"
-                            android:orientation="horizontal"
-                            android:weightSum="6">
-
-                            <ProgressBar
-                                android:id="@+id/download_progress"
-                                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-                                android:layout_width="0dp"
-                                android:layout_height="2dp"
-                                android:layout_weight="5.3"
-                                android:indeterminate="true"
-                                android:progressBackgroundTint="@color/gray"
-                                android:visibility="gone" />
-
-                            <TextView
-                                android:id="@+id/progressCents"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight=".7"
-                                android:fontFamily="@font/google_sans"
-                                android:gravity="end"
-                                android:paddingStart="3dp"
-                                android:paddingEnd="3dp"
-                                android:textSize="12sp"
-                                android:visibility="gone" />
-                        </LinearLayout>
-                    </RelativeLayout>
+                        <include layout="@layout/include_details_actions_main" />
+                    </LinearLayout>
 
                 </androidx.cardview.widget.CardView>
 
@@ -170,7 +132,10 @@
                     android:id="@+id/text_card"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
                     app:cardBackgroundColor="?android:attr/panelBackground"
                     app:cardCornerRadius="5dp"
                     app:cardElevation="1dp"

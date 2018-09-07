@@ -20,7 +20,7 @@
     android:shape="oval">
     <corners android:radius="8dp" />
     <size
-        android:width="100dp"
-        android:height="100dp" />
+        android:width="48dp"
+        android:height="48dp" />
     <solid android:color="?android:attr/panelBackground" />
 </shape>

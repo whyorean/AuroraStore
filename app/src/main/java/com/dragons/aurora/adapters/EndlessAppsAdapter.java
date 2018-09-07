@@ -56,7 +56,7 @@ public class EndlessAppsAdapter extends InstalledAppsAdapter {
 
     @Override
     public void getDetails(Context mContext, List<String> Version, List<String> Extra, App app) {
-        Version.add(mContext.getString(R.string.details_size, Util.addSiPrefix((int) app.getSize())));
+        Version.add(Util.addSiPrefix((int) app.getSize()));
         if (!app.isEarlyAccess())
             Version.add(mContext.getString(R.string.details_rating, (app.getRating().getAverage())) + " ★");
         Extra.add(app.getPrice());

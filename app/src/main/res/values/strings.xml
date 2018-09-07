@@ -101,12 +101,11 @@
     <string name="delta_disabled">Delta updates disabled</string>
     <string name="delta_enabled">Delta updates enabled</string>
     <string name="details_appReview">Reviews</string>
+    <string name="details_appReviewsAll">Read All Reviews</string>
     <string name="details_cancel">Cancel</string>
-    <string name="details_category">"%1$s"</string>
     <string name="details_contains_ads">Contains ads</string>
     <string name="details_could_not_copy_apk">Could not copy apk</string>
     <string name="details_changelog_empty">No changelog available</string>
-    <string name="details_developer">"%1$s"</string>
     <string name="details_download">Get</string>
     <string name="details_download_checking">Checking</string>
     <string name="details_download_queued">Queued</string>
@@ -133,11 +132,8 @@
     <string name="details_saved_in_downloads">Saved in your Downloads folder</string>
     <string name="details_share">Share</string>
     <string name="details_signature_mismatch">The new version is signed with a different title to the old one. To install the new version, the old one must be uninstalled first. Please do this and try again. (Note that uninstalling will erase any internal data stored by the application)</string>
-    <string name="details_size">"%1$s"</string>
     <string name="details_uninstall">Uninstall</string>
     <string name="details_update">Update</string>
-    <string name="details_updated">"%1$s"</string>
-    <string name="details_versionName">"%1$s"</string>
     <string name="details_you_rated_this_app">Your rating</string>
     <string name="device_gsfID">"GSF ID : %1$s"</string>
     <string name="device_model">"%1$s ( %2$s )"</string>

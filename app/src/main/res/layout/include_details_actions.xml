@@ -69,20 +69,6 @@
         android:visibility="gone" />
 
     <Button
-        android:id="@+id/cancel"
-        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginEnd="5dp"
-        android:layout_weight="1"
-        android:maxLines="1"
-        android:text="@string/details_cancel"
-        android:textAllCaps="false"
-        android:textColor="@color/colorRed"
-        android:visibility="gone" />
-
-    <Button
         android:id="@+id/install"
         style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
         android:layout_width="wrap_content"

@@ -23,38 +23,34 @@
 
     <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="android:windowActivityTransitions">true</item>
-        <item name="android:colorPrimary">@color/colorPrimary</item>
-        <item name="android:colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="android:colorAccent">@color/colorAccent</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorControlActivated">?colorPrimary</item>
         <item name="android:panelBackground">@color/white</item>
         <item name="android:strokeColor">@color/strokeLight</item>
+        <item name="android:statusBarColor">?colorPrimaryDark</item>
         <item name="android:preferenceStyle">@style/Preference.Aurora</item>
         <item name="android:toolbarStyle">@style/ThemeOverlay.AppCompat.Light</item>
     </style>
 
     <style name="AppTheme.Dark" parent="Theme.MaterialComponents.NoActionBar">
-        <item name="android:windowActivityTransitions">true</item>
-        <item name="android:colorPrimary">#343434</item>
-        <item name="android:colorPrimaryDark">#242424</item>
-        <item name="android:colorAccent">@color/colorAccent</item>
+        <item name="colorPrimary">#343434</item>
+        <item name="colorPrimaryDark">#242424</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:strokeColor">@color/strokeDark</item>
         <item name="android:panelBackground">#343434</item>
-        <item name="android:toolbarStyle">@style/ThemeOverlay.AppCompat</item>
+        <item name="android:preferenceStyle">@style/Preference.Aurora</item>
+        <item name="android:toolbarStyle">@style/ThemeOverlay.AppCompat.Light</item>
     </style>
 
-    <style name="AppTheme.Black" parent="Theme.MaterialComponents.NoActionBar">
-        <item name="android:windowActivityTransitions">true</item>
-        <item name="android:colorPrimary">@color/black</item>
-        <item name="android:colorPrimaryDark">@color/black</item>
+    <style name="AppTheme.Black" parent="AppTheme.Dark">
+        <item name="colorPrimary">@color/black</item>
+        <item name="colorPrimaryDark">@color/black</item>
         <item name="android:colorBackground">@color/black</item>
         <item name="android:windowBackground">@color/black</item>
-        <item name="android:colorAccent">@color/colorAccent</item>
-        <item name="colorAccent">@color/colorAccent</item>
         <item name="android:strokeColor">@color/strokeBlack</item>
         <item name="android:panelBackground">@color/black</item>
-        <item name="android:toolbarStyle">@style/ThemeOverlay.AppCompat</item>
     </style>
 
     <!-- RatingBar Style -->
@@ -77,6 +73,14 @@
     <style name="Widget.Aurora" parent="@android:style/Widget" />
 
     <!-- TextView Styles -->
+    <style name="TextAppearance.Aurora.CollapsingToolbar" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:fontFamily">@font/google_sans</item>
+        <item name="android:letterSpacing">0.050</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:ellipsize">marquee</item>
+    </style>
+
     <style name="TextAppearance.Aurora.Toolbar" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
         <item name="android:fontFamily">@font/google_sans</item>
         <item name="android:letterSpacing">0.050</item>
@@ -108,6 +112,19 @@
         <item name="android:textSize">16sp</item>
     </style>
 
+    <style name="TextAppearance.Aurora.SubTitle.Compact" parent="TextAppearance.Aurora.SubTitle">
+        <item name="android:letterSpacing">0.015</item>
+    </style>
+
+    <style name="TextAppearance.Aurora.Body" parent="@style/TextAppearance.AppCompat.Body1">
+        <item name="android:textColor">?android:textColorSecondary</item>
+    </style>
+
+    <style name="TextAppearance.Aurora.TextView" parent="@android:style/Widget.Material.TextView">
+        <item name="android:textAppearance">@style/TextAppearance.Aurora.Body</item>
+        <item name="android:lineSpacingMultiplier">@dimen/text_line_spacing</item>
+    </style>
+
     <!-- Toolbar & AppBar -->
     <style name="AppTheme.PopupTheme" parent="ThemeOverlay.MaterialComponents" />
 
@@ -137,13 +154,30 @@
         <item name="android:fontFamily">@font/google_sans</item>
     </style>
 
-    <!-- Dialog Preference -->
+    <!-- Dialog -->
     <style name="Preference.Aurora" parent="PreferenceThemeOverlay">
         <item name="android:scrollbars">vertical</item>
         <item name="dialogPreferenceStyle">@style/ThemeOverlay.MaterialComponents.Dialog</item>
     </style>
 
-    <!-- Custom Buttons -->
+    <style name="Theme.Aurora.Dialog" parent="@style/Theme.MaterialComponents.Light.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:textViewStyle">@style/TextAppearance.Aurora.TextView</item>
+    </style>
+
+    <style name="Theme.Aurora.Dialog.Dark" parent="@style/Theme.MaterialComponents.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:textViewStyle">@style/TextAppearance.Aurora.TextView</item>
+    </style>
+
+    <style name="Widget.Aurora.Dialog">
+        <item name="android:background">@drawable/dialog_bg</item>
+        <item name="android:elevation">@dimen/dialog_elevation</item>
+    </style>
+
+    <!-- Button Styles -->
     <style name="Widget.Aurora.BorderlessButton" parent="@style/Widget.MaterialComponents.Button.TextButton">
         <item name="android:fontFamily">@font/google_sans</item>
         <item name="android:textStyle">bold</item>

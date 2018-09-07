@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.dragons.aurora.R;
@@ -56,7 +57,7 @@ public class ExodusAdapter extends RecyclerView.Adapter<ExodusAdapter.ViewHolder
         TextView TrackerName;
         TextView TrackerSignature;
         TextView TrackerDate;
-        CardView TrackerCard;
+        RelativeLayout TrackerCard;
 
         ViewHolder(View v) {
             super(v);

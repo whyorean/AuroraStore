@@ -23,19 +23,45 @@ package com.dragons.aurora.fragment.details;
 
 import android.content.Context;
 import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.ViewSwitcher;
 
+import com.dragons.aurora.R;
 import com.dragons.aurora.model.App;
+
+import androidx.annotation.Nullable;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public abstract class Abstract {
     protected View view;
     protected App app;
     protected Context context;
 
+
+    @BindView(R.id.viewSwitcher)
+    @Nullable
+    ViewSwitcher mViewSwitcher;
+    @BindView(R.id.view1)
+    @Nullable
+    LinearLayout actions_layout;
+    @BindView(R.id.view2)
+    @Nullable
+    LinearLayout progress_layout;
+    @BindView(R.id.download_progress)
+    @Nullable
+    ProgressBar progressBar;
+    @BindView(R.id.download_progress_txt)
+    @Nullable
+    TextView progressCents;
+
     public Abstract(Context context, View view, App app) {
         this.context = context;
         this.view = view;
         this.app = app;
+        ButterKnife.bind(this, view);
     }
 
     abstract public void draw();

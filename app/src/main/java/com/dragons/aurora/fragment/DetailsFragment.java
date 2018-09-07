@@ -27,7 +27,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.dragons.aurora.R;
@@ -47,10 +46,12 @@ import com.dragons.aurora.fragment.details.Video;
 import com.dragons.aurora.helpers.Accountant;
 import com.dragons.aurora.model.App;
 import com.dragons.aurora.task.playstore.DetailsAppTaskHelper;
+import com.dragons.aurora.task.playstore.ExceptionTask;
 import com.percolate.caffeine.ToastUtils;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.Toolbar;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.reactivex.Observable;
@@ -68,13 +69,14 @@ public class DetailsFragment extends BaseFragment {
 
     @BindView(R.id.ohhSnap_retry)
     Button retry_details;
-    @BindView(R.id.action_back)
-    ImageView action_back;
+    @BindView(R.id.toolbar)
+    Toolbar mToolbar;
 
     private View view;
     private DownloadOrInstall downloadOrInstallFragment;
     private CompositeDisposable mDisposable = new CompositeDisposable();
     private String packageName;
+    private ExceptionTask mExceptionTask;
     private DetailsAppTaskHelper mTaskHelper;
 
     @Override
@@ -87,6 +89,7 @@ public class DetailsFragment extends BaseFragment {
         view = inflater.inflate(R.layout.fragment_details, container, false);
         ButterKnife.bind(this, view);
         mTaskHelper = new DetailsAppTaskHelper(getContext());
+        mExceptionTask = new ExceptionTask(getContext());
         Bundle arguments = getArguments();
         if (arguments != null) {
             packageName = arguments.getString("PackageName");
@@ -108,7 +111,7 @@ public class DetailsFragment extends BaseFragment {
                 fetchDetails();
             }
         });
-        action_back.setOnClickListener(c -> getActivity().onBackPressed());
+        mToolbar.setNavigationOnClickListener(v -> getActivity().onBackPressed());
     }
 
     @Override

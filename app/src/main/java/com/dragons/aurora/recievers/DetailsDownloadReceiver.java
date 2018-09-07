@@ -24,7 +24,8 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ProgressBar;
+import android.widget.LinearLayout;
+import android.widget.ViewSwitcher;
 
 import com.dragons.aurora.ContextUtil;
 import com.dragons.aurora.R;
@@ -41,7 +42,6 @@ import java.lang.ref.WeakReference;
 public class DetailsDownloadReceiver extends DownloadReceiver {
 
     private WeakReference<Activity> activityRef;
-    private Activity activity;
     private String packageName;
 
     public DetailsDownloadReceiver(DetailsActivity activity, String packageName) {
@@ -60,14 +60,16 @@ public class DetailsDownloadReceiver extends DownloadReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         super.onReceive(context, intent);
+        Activity activity;
         if (context instanceof ManualDownloadActivity)
             activity = (ManualDownloadActivity) activityRef.get();
         else
             activity = (DetailsActivity) activityRef.get();
 
-        if (null == activity || !ContextUtil.isAlive(activity)) {
+        if (!ContextUtil.isAlive(activity)) {
             return;
         }
+
         if (null == state) {
             if (actionIs(intent, DownloadManagerInterface.ACTION_DOWNLOAD_CANCELLED)) {
                 cleanup();
@@ -80,11 +82,13 @@ public class DetailsDownloadReceiver extends DownloadReceiver {
         if (!state.getApp().getPackageName().equals(packageName)) {
             return;
         }
-        if (actionIs(intent, DownloadManagerInterface.ACTION_DOWNLOAD_COMPLETE) && isDelta(state.getApp())) {
+        if (actionIs(intent, DownloadManagerInterface.ACTION_DOWNLOAD_COMPLETE)
+                && isDelta(state.getApp())) {
             return;
         }
         state.setFinished(downloadId);
-        if (DownloadManagerFactory.get(context).success(downloadId) && !actionIs(intent, DownloadManagerInterface.ACTION_DOWNLOAD_CANCELLED)) {
+        if (DownloadManagerFactory.get(context).success(downloadId)
+                && !actionIs(intent, DownloadManagerInterface.ACTION_DOWNLOAD_CANCELLED)) {
             state.setSuccessful(downloadId);
         }
         if (!state.isEverythingFinished()) {
@@ -106,13 +110,21 @@ public class DetailsDownloadReceiver extends DownloadReceiver {
         if (!state.isEverythingSuccessful()) {
             return;
         }
-        Button buttonDownload = (Button) activityRef.get().findViewById(R.id.download);
+
+        ViewSwitcher mViewSwitcher = activityRef.get().findViewById(R.id.viewSwitcher);
+        LinearLayout action_layout = activityRef.get().findViewById(R.id.view1);
+        LinearLayout progress_layout = activityRef.get().findViewById(R.id.view2);
+        Button buttonDownload = activityRef.get().findViewById(R.id.download);
+        Button buttonInstall = activityRef.get().findViewById(R.id.install);
+
+        if (mViewSwitcher.getCurrentView() == progress_layout)
+            mViewSwitcher.showPrevious();
+
         buttonDownload.setVisibility(View.GONE);
-        Button buttonInstall = (Button) activityRef.get().findViewById(R.id.install);
         buttonInstall.setVisibility(View.VISIBLE);
+
         if (PreferenceFragment.getBoolean(context, PreferenceFragment.PREFERENCE_AUTO_INSTALL)
-                && !state.getTriggeredBy().equals(DownloadState.TriggeredBy.MANUAL_DOWNLOAD_BUTTON)
-                ) {
+                && !state.getTriggeredBy().equals(DownloadState.TriggeredBy.MANUAL_DOWNLOAD_BUTTON)) {
             buttonInstall.setEnabled(false);
             buttonInstall.setText(R.string.details_installing);
         } else {
@@ -122,16 +134,11 @@ public class DetailsDownloadReceiver extends DownloadReceiver {
     }
 
     private void cleanup() {
-        ProgressBar progressBar = (ProgressBar) activityRef.get().findViewById(R.id.download_progress);
-        if (null != progressBar) {
-            progressBar.setVisibility(View.GONE);
-            progressBar.setProgress(0);
-        }
-        Button buttonCancel = (Button) activityRef.get().findViewById(R.id.cancel);
-        if (null != buttonCancel) {
+        Button buttonCancel = activityRef.get().findViewById(R.id.cancel);
+        Button buttonDownload = activityRef.get().findViewById(R.id.download);
+        if (null != buttonCancel && buttonDownload != null) {
             buttonCancel.setVisibility(View.GONE);
+            buttonDownload.setEnabled(true);
         }
-        Button buttonDownload = (Button) activityRef.get().findViewById(R.id.download);
-        buttonDownload.setEnabled(true);
     }
 }

@@ -48,16 +48,19 @@ import com.dragons.aurora.CategoryManager;
 import com.dragons.aurora.R;
 import com.dragons.aurora.Util;
 import com.dragons.aurora.fragment.DetailsFragment;
+import com.dragons.aurora.fragment.DetailsFragmentMore;
 import com.dragons.aurora.model.App;
 import com.dragons.aurora.model.ImageSource;
+import com.google.android.material.appbar.CollapsingToolbarLayout;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 import androidx.annotation.Nullable;
-import androidx.cardview.widget.CardView;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.palette.graphics.Palette;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -72,16 +75,19 @@ public class GeneralDetails extends AbstractHelper {
     ImageView appIcon;
     @BindView(R.id.app_menu3dot)
     ImageView app_menu3dot;
-    @BindView(R.id.categoryImage)
+    @BindView(R.id.img_category)
     ImageView categoryImg;
-    @BindView(R.id.rating_img)
-    ImageView ratingImg;
-    @BindView(R.id.changelog_container)
-    CardView changelogLayout;
     @BindView(R.id.showLessMoreTxt)
     TextView showLessMoreTxt;
     @BindView(R.id.versionString)
     TextView app_version;
+    @BindView(R.id.toolbar)
+    Toolbar mToolbar;
+    @BindView(R.id.collapsingToolbar)
+    CollapsingToolbarLayout mCollapsingToolbarLayout;
+
+    private int colorPrimary = Color.LTGRAY;
+    private int colorPrimaryText = Color.DKGRAY;
 
     public GeneralDetails(DetailsFragment fragment, App app) {
         super(fragment, app);
@@ -94,6 +100,7 @@ public class GeneralDetails extends AbstractHelper {
         if (app.isInPlayStore()) {
             drawGeneralDetails();
             drawDescription();
+            setupReadMore();
         }
     }
 
@@ -132,7 +139,9 @@ public class GeneralDetails extends AbstractHelper {
             }
 
             setText(view, R.id.displayName, app.getDisplayName());
-            setText(view, R.id.packageName, R.string.details_developer, app.getDeveloperName());
+            setText(view, R.id.packageName, app.getDeveloperName());
+            mCollapsingToolbarLayout.setTitle(app.getDisplayName());
+            mCollapsingToolbarLayout.setExpandedTitleColor(context.getResources().getColor(android.R.color.transparent));
             drawVersion(app);
             drawBackground();
 
@@ -156,12 +165,11 @@ public class GeneralDetails extends AbstractHelper {
 
     private void drawBackground() {
         if (null != app.getPageBackgroundImage().getUrl())
-            Glide
-                    .with(context)
+            Glide.with(context)
                     .load(app.getPageBackgroundImage().getUrl())
                     .apply(new RequestOptions()
-                            .placeholder(R.color.transparent)
-                            .priority(Priority.HIGH))
+                            .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
+                            .placeholder(R.color.transparent))
                     .into(appBackground);
         else
             appBackground.setVisibility(View.GONE);
@@ -170,16 +178,24 @@ public class GeneralDetails extends AbstractHelper {
     private void getPalette(Bitmap bitmap) {
         Palette.from(bitmap).generate(palette -> {
             if (palette != null)
-                paintEmAll(palette.getDarkVibrantColor(Util.isDark(context)
-                        ? palette.getDominantColor(Color.LTGRAY)
-                        : palette.getDominantColor(Color.DKGRAY))
-                );
+                paintEmAll(palette);
         });
     }
 
-    private void paintEmAll(int color) {
-        AbstractHelper.color = color;
-        paintRLayout(R.id.details_header);
+    private void paintEmAll(Palette palette) {
+        Palette.Swatch mSwatch = palette.getDominantSwatch();
+        //Make sure we get a fallback swatch if DominantSwatch is not available
+        if (mSwatch == null)
+            mSwatch = palette.getVibrantSwatch();
+
+        if (mSwatch != null) {
+            colorPrimary = mSwatch.getRgb();
+            colorPrimaryText = mSwatch.getBodyTextColor();
+        }
+
+        AbstractHelper.color = colorPrimary;
+        AbstractHelper.colorText = colorPrimaryText;
+
         paintButton(R.id.download);
         paintButton(R.id.install);
         paintButton(R.id.run);
@@ -189,13 +205,17 @@ public class GeneralDetails extends AbstractHelper {
         if (!Util.isDark(fragment.getContext())) {
             paintTextView(R.id.beta_header);
             paintTextView(R.id.permissions_header);
-            paintTextView(R.id.review_header);
             paintTextView(R.id.exodus_title);
             paintTextView(R.id.changes_upper);
             paintTextView(R.id.showLessMoreTxt);
+            paintTextView(R.id.txt_readAll);
         }
         paintLLayout(R.id.changes_container);
         paintImageView(R.id.privacy_ico);
+        paintImageViewBackground(R.id.img_star);
+        paintImageViewBackground(R.id.img_downloads);
+        paintImageViewBackground(R.id.img_storage);
+        paintImageViewBackground(R.id.img_category);
     }
 
     private void drawGeneralDetails() {
@@ -206,14 +226,10 @@ public class GeneralDetails extends AbstractHelper {
                 setText(view, R.id.rating, R.string.details_rating, app.getRating().getAverage());
             }
 
-            setText(view, R.id.installs, R.string.details_installs, Util.addDiPrefix(app.getInstalls()));
-            setText(view, R.id.updated, R.string.details_updated, app.getUpdated());
-            setText(view, R.id.size, R.string.details_size, Formatter.formatShortFileSize(context, app.getSize()));
-            setText(view, R.id.category, R.string.details_category, new CategoryManager(context).getCategoryName(app.getCategoryId()));
-            setText(view, R.id.rating_lable, R.string.details_updated, app.getLabeledRating());
-            setText(view, R.id.google_dependencies, app.getDependencies().isEmpty()
-                    ? R.string.list_app_independent_from_gsf
-                    : R.string.list_app_depends_on_gsf);
+            setText(view, R.id.installs, Util.addDiPrefix(app.getInstalls()));
+            setText(view, R.id.size, Formatter.formatShortFileSize(context, app.getSize()));
+            setText(view, R.id.category, new CategoryManager(context).getCategoryName(app.getCategoryId()));
+
             if (app.getPrice() != null && app.getPrice().isEmpty())
                 setText(view, R.id.price, R.string.category_appFree);
             else
@@ -227,24 +243,15 @@ public class GeneralDetails extends AbstractHelper {
                             .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC))
                     .into(categoryImg);
 
-            Glide.with(context)
-                    .load(app.getRatingURL())
-                    .apply(new RequestOptions()
-                            .placeholder(ContextCompat.getDrawable(context, R.drawable.ic_audience))
-                            .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC))
-                    .into(ratingImg);
-
             drawOfferDetails();
             drawChanges();
 
             if (app.getVersionCode() == 0) {
-                show(view, R.id.updated);
                 show(view, R.id.size);
             }
 
-            show(view, R.id.mainCard);
+            show(view, R.id.layout_main);
             show(view, R.id.app_detail);
-            show(view, R.id.general_card);
             show(view, R.id.related_links);
             hide(view, R.id.progress);
         }
@@ -288,7 +295,7 @@ public class GeneralDetails extends AbstractHelper {
         if (TextUtils.isEmpty(versionName)) {
             return;
         }
-        app_version.setText(context.getString(R.string.details_versionName, versionName));
+        app_version.setText(versionName);
         app_version.setVisibility(View.VISIBLE);
         if (!app.isInstalled()) {
             return;
@@ -318,18 +325,22 @@ public class GeneralDetails extends AbstractHelper {
                 return;
             } else {
                 show(view, R.id.more_card);
-                setText(view, R.id.d_moreinf, Html.fromHtml(app.getDescription()).toString());
+                setText(view, R.id.content_readMore, Html.fromHtml(app.getDescription()).toString());
             }
-
-            showLessMoreTxt.setOnClickListener(v -> {
-                if (changelogLayout.getVisibility() == View.GONE) {
-                    show(view, R.id.changelog_container);
-                    showLessMoreTxt.setText(R.string.details_less);
-                } else {
-                    hide(view, R.id.changelog_container);
-                    showLessMoreTxt.setText(R.string.details_more);
-                }
-            });
         }
+    }
+
+    private void setupReadMore() {
+        showLessMoreTxt.setOnClickListener(v -> {
+            DetailsFragmentMore mDetailsFragmentMore = new DetailsFragmentMore();
+            mDetailsFragmentMore.setApp(app);
+            fragment.getFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.container, mDetailsFragmentMore)
+                    .addToBackStack("MORE")
+                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                    .commit();
+        });
+
     }
 }

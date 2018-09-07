@@ -27,7 +27,6 @@ import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.dragons.aurora.adapters.DebugHttpClientAdapter;
 import com.dragons.aurora.adapters.NativeHttpClientAdapter;
 import com.dragons.aurora.fragment.PreferenceFragment;
 import com.dragons.aurora.model.LoginInfo;
@@ -169,7 +168,7 @@ public class PlayStoreApiAuthenticator {
     private com.dragons.aurora.playstoreapiv2.PlayStoreApiBuilder getBuilder(LoginInfo loginInfo) {
         fill(loginInfo);
         return new com.dragons.aurora.playstoreapiv2.PlayStoreApiBuilder()
-                .setHttpClient(BuildConfig.DEBUG ? new DebugHttpClientAdapter() : new NativeHttpClientAdapter())
+                .setHttpClient(new NativeHttpClientAdapter())
                 .setDeviceInfoProvider(getDeviceInfoProvider())
                 .setLocale(loginInfo.getLocale())
                 .setEmail(loginInfo.getEmail())

@@ -41,6 +41,19 @@
         android:src="@drawable/app_dev"
         android:visibility="gone" />
 
+    <!-- Permissions -->
+    <ImageView
+        android:id="@+id/app_permissions"
+        android:layout_width="@dimen/icon_size_med"
+        android:layout_height="@dimen/icon_size_med"
+        android:layout_margin="5dp"
+        android:background="@drawable/circle_bg"
+        android:clickable="true"
+        android:elevation="2dp"
+        android:focusable="true"
+        android:padding="12dp"
+        android:src="@drawable/ic_perm_shield" />
+
     <!-- PlayStore link -->
     <ImageView
         android:id="@+id/to_play_store"

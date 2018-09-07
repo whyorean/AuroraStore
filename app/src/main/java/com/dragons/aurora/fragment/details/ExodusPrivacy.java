@@ -35,6 +35,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -59,6 +60,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import androidx.palette.graphics.Palette;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
@@ -69,7 +71,7 @@ import static com.android.volley.VolleyLog.TAG;
 public class ExodusPrivacy extends AbstractHelper {
 
     @BindView(R.id.exodus_card)
-    LinearLayout exodus_card;
+    RelativeLayout exodus_card;
     @BindView(R.id.moreButton)
     Button moreButton;
 
@@ -137,7 +139,7 @@ public class ExodusPrivacy extends AbstractHelper {
 
         ad.getWindow().setAttributes(layoutParams);
 
-        if (Prefs.getBoolean(context, "COLOR_UI")) {
+        if (Prefs.getBoolean(context, "PREFERENCE_COLOR_UI")) {
             ImageView mImageView = ad.findViewById(R.id.exodus_img_bg);
             mImageView.setBackgroundColor(color);
             Bitmap mBitmap = Bitmap.createBitmap(100, 100, Bitmap.Config.ARGB_8888);
@@ -146,8 +148,11 @@ public class ExodusPrivacy extends AbstractHelper {
         }
 
         RecyclerView mRecyclerView = ad.findViewById(R.id.exodus_recycler);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(context, RecyclerView.VERTICAL, false));
         mRecyclerView.setLayoutAnimation(AnimationUtils.loadLayoutAnimation(context, R.anim.anim_falldown));
+        DividerItemDecoration itemDecorator = new DividerItemDecoration(mRecyclerView.getContext(), DividerItemDecoration.VERTICAL);
+        itemDecorator.setDrawable(context.getResources().getDrawable(R.drawable.list_divider));
+        mRecyclerView.addItemDecoration(itemDecorator);
         mRecyclerView.setAdapter(new ExodusAdapter(context, getTrackerData(trackersIDs)));
 
         Button btn_report = ad.findViewById(R.id.btn_report);

@@ -36,6 +36,7 @@ import com.dragons.aurora.R;
 import com.dragons.aurora.ReviewStorageIterator;
 import com.dragons.aurora.builders.UserReviewDialogBuilder;
 import com.dragons.aurora.fragment.DetailsFragment;
+import com.dragons.aurora.fragment.DetailsFragmentReviews;
 import com.dragons.aurora.helpers.Accountant;
 import com.dragons.aurora.model.App;
 import com.dragons.aurora.task.playstore.ReviewDeleteTask;
@@ -43,9 +44,16 @@ import com.dragons.aurora.task.playstore.ReviewLoadTask;
 
 import java.util.List;
 
+import androidx.fragment.app.FragmentTransaction;
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class Review extends AbstractHelper {
 
     static private int[] averageStarIds = new int[]{R.id.average_stars1, R.id.average_stars2, R.id.average_stars3, R.id.average_stars4, R.id.average_stars5};
+
+    @BindView(R.id.txt_readAll)
+    TextView txt_readAll;
 
     private ReviewStorageIterator iterator;
 
@@ -58,32 +66,18 @@ public class Review extends AbstractHelper {
 
     @Override
     public void draw() {
+        ButterKnife.bind(this, view);
         if (!app.isInPlayStore() || app.isEarlyAccess())
             return;
         else
             getTask(true).execute();
-
-        TextView viewHeader = view.findViewById(R.id.review_header);
-        LinearLayout viewContainer = view.findViewById(R.id.reviews_container);
-        show(fragment.getView(), R.id.rev_card);
-        viewHeader.setOnClickListener(v -> {
-            boolean isExpanded = viewContainer.getVisibility() == View.VISIBLE;
-            if (isExpanded) {
-                viewContainer.setVisibility(View.GONE);
-                ((TextView) v).setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_expand_more, 0);
-            } else {
-                viewContainer.setVisibility(View.VISIBLE);
-                ((TextView) v).setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_expand_less, 0);
-            }
-        });
-
-        initReviewListControls();
+        setupLoadMore();
         ((RatingBar) view.findViewById(R.id.average_rating_star)).setRating(app.getRating().getAverage() / 5.0f);
         setText(fragment.getView(), R.id.average_rating, R.string.details_rating, app.getRating().getAverage());
         for (int starNum = 1; starNum <= 5; starNum++) {
             setText(fragment.getView(), averageStarIds[starNum - 1], R.string.details_rating_specific, starNum, app.getRating().getStars(starNum));
         }
-
+        show(view, R.id.reviews_container);
         view.findViewById(R.id.user_review_container).setVisibility(isReviewable(app) ? View.VISIBLE : View.GONE);
         com.dragons.aurora.model.Review review = app.getUserReview();
         initUserReviewControls(app);
@@ -127,8 +121,6 @@ public class Review extends AbstractHelper {
     }
 
     public void showReviews(List<com.dragons.aurora.model.Review> reviews) {
-        view.findViewById(R.id.reviews_previous).setVisibility(iterator.hasPrevious() ? View.VISIBLE : View.INVISIBLE);
-        view.findViewById(R.id.reviews_next).setVisibility(iterator.hasNext() ? View.VISIBLE : View.INVISIBLE);
         LinearLayout listView = view.findViewById(R.id.reviews_list);
         listView.removeAllViews();
         for (com.dragons.aurora.model.Review review : reviews) {
@@ -167,12 +159,6 @@ public class Review extends AbstractHelper {
         }
     }
 
-    private void initReviewListControls() {
-        View.OnClickListener listener = v -> getTask(v.getId() == R.id.reviews_next).execute();
-        view.findViewById(R.id.reviews_previous).setOnClickListener(listener);
-        view.findViewById(R.id.reviews_next).setOnClickListener(listener);
-    }
-
     private void initUserReviewControls(final App app) {
         ((RatingBar) view.findViewById(R.id.user_stars)).setOnRatingBarChangeListener((ratingBar, rating, fromUser) -> {
             if (!fromUser) {
@@ -200,5 +186,19 @@ public class Review extends AbstractHelper {
         } else {
             textView.setVisibility(View.GONE);
         }
+    }
+
+    private void setupLoadMore() {
+        txt_readAll.setOnClickListener(v -> {
+            DetailsFragmentReviews mDetailsFragmentMore = new DetailsFragmentReviews();
+            mDetailsFragmentMore.setApp(app);
+            fragment.getFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.container, mDetailsFragmentMore)
+                    .addToBackStack("MORE")
+                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                    .commit();
+        });
+
     }
 }

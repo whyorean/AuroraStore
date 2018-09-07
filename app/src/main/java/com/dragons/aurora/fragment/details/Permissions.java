@@ -21,136 +21,45 @@
 
 package com.dragons.aurora.fragment.details;
 
-import android.content.pm.PackageManager;
-import android.content.pm.PermissionGroupInfo;
-import android.content.pm.PermissionInfo;
-import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.widget.ImageView;
 
 import com.dragons.aurora.R;
+import com.dragons.aurora.dialogs.PermissionsDialog;
 import com.dragons.aurora.fragment.DetailsFragment;
-import com.dragons.aurora.fragment.widget.PermissionGroup;
 import com.dragons.aurora.model.App;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class Permissions extends AbstractHelper {
 
-    @BindView(R.id.permissions_header)
-    TextView viewHeader;
-    @BindView(R.id.permissions_container)
-    LinearLayout viewContainer;
-    @BindView(R.id.permissions_container_widgets)
-    LinearLayout container;
-    @BindView(R.id.permissions_none)
-    TextView permissions_none;
-
-    private PackageManager pm;
+    @BindView(R.id.app_permissions)
+    ImageView app_permissions;
 
     public Permissions(DetailsFragment fragment, App app) {
         super(fragment, app);
-        pm = context.getPackageManager();
     }
 
     @Override
     public void draw() {
         ButterKnife.bind(this, view);
-        show(view, R.id.perm_card);
-        viewHeader.setOnClickListener(v -> {
-            boolean isExpanded = viewContainer.getVisibility() == View.VISIBLE;
-            if (isExpanded) {
-                viewContainer.setVisibility(View.GONE);
-                ((TextView) v).setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_expand_more, 0);
-            } else {
-                addPermissionWidgets();
-                viewContainer.setVisibility(View.VISIBLE);
-                ((TextView) v).setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_expand_less, 0);
-            }
+        app_permissions.setOnClickListener(v -> {
+            showPermissions();
         });
     }
 
-    private void addPermissionWidgets() {
-        Map<String, PermissionGroup> permissionGroupWidgets = new HashMap<>();
-        for (String permissionName : app.getPermissions()) {
-            PermissionInfo permissionInfo = getPermissionInfo(permissionName);
-            if (null == permissionInfo) {
-                continue;
-            }
-            PermissionGroup widget;
-            PermissionGroupInfo permissionGroupInfo = getPermissionGroupInfo(permissionInfo);
-            if (!permissionGroupWidgets.containsKey(permissionGroupInfo.name)) {
-                widget = new PermissionGroup(context);
-                widget.setPermissionGroupInfo(permissionGroupInfo);
-                widget.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
-                permissionGroupWidgets.put(permissionGroupInfo.name, widget);
-            } else {
-                widget = permissionGroupWidgets.get(permissionGroupInfo.name);
-            }
-            if (widget != null) {
-                widget.addPermission(permissionInfo);
-            }
-        }
 
-        container.removeAllViews();
-        List<String> permissionGroupLabels = new ArrayList<>(permissionGroupWidgets.keySet());
-        Collections.sort(permissionGroupLabels);
-        for (String permissionGroupLabel : permissionGroupLabels) {
-            container.addView(permissionGroupWidgets.get(permissionGroupLabel));
+    private void showPermissions() {
+        FragmentTransaction ft = fragment.getFragmentManager().beginTransaction();
+        Fragment prev = fragment.getFragmentManager().findFragmentByTag("dialog");
+        if (prev != null) {
+            ft.remove(prev);
         }
-        permissions_none.setVisibility(permissionGroupWidgets.isEmpty() ? View.VISIBLE : View.GONE);
-    }
-
-    private PermissionInfo getPermissionInfo(String permissionName) {
-        try {
-            return pm.getPermissionInfo(permissionName, 0);
-        } catch (PackageManager.NameNotFoundException e) {
-            return null;
-        }
-    }
-
-    private PermissionGroupInfo getPermissionGroupInfo(PermissionInfo permissionInfo) {
-        PermissionGroupInfo permissionGroupInfo;
-        if (null == permissionInfo.group) {
-            permissionGroupInfo = getFakePermissionGroupInfo(permissionInfo.packageName);
-        } else {
-            try {
-                permissionGroupInfo = pm.getPermissionGroupInfo(permissionInfo.group, 0);
-            } catch (PackageManager.NameNotFoundException e) {
-                permissionGroupInfo = getFakePermissionGroupInfo(permissionInfo.packageName);
-            }
-        }
-        if (permissionGroupInfo.icon == 0) {
-            permissionGroupInfo.icon = R.drawable.ic_permission_android;
-        }
-        return permissionGroupInfo;
-    }
-
-    private PermissionGroupInfo getFakePermissionGroupInfo(String packageName) {
-        PermissionGroupInfo permissionGroupInfo = new PermissionGroupInfo();
-        switch (packageName) {
-            case "android":
-                permissionGroupInfo.icon = R.drawable.ic_permission_android;
-                permissionGroupInfo.name = "android";
-                break;
-            case "com.google.android.gsf":
-            case "com.android.vending":
-                permissionGroupInfo.icon = R.drawable.ic_permission_google;
-                permissionGroupInfo.name = "google";
-                break;
-            default:
-                permissionGroupInfo.icon = R.drawable.ic_permission_unknown;
-                permissionGroupInfo.name = "unknown";
-                break;
-        }
-        return permissionGroupInfo;
-
+        ft.addToBackStack(null);
+        PermissionsDialog profileFragment = new PermissionsDialog();
+        profileFragment.setApp(app);
+        profileFragment.show(ft, "dialog");
     }
 }

@@ -83,11 +83,9 @@
     <string name="delta_enabled">"Mises à jour delta activées"</string>
     <string name="details_appReview">"Évaluations"</string>
     <string name="details_cancel">"Annuler"</string>
-    <string name="details_category">"%1$s"</string>
     <string name="details_contains_ads">"Contient des publicités"</string>
     <string name="details_could_not_copy_apk">"Impossible de copier l'APK"</string>
     <string name="details_changelog_empty">"Aucune liste de modifications disponible"</string>
-    <string name="details_developer">"%1$s"</string>
     <string name="details_download">"Obtenir"</string>
     <string name="details_download_checking">"Vérifier"</string>
     <string name="details_download_not_available">"Pas disponible"</string>
@@ -112,11 +110,8 @@
     <string name="details_saved_in_downloads">"Sauvegardé dans votre dossier Downloads"</string>
     <string name="details_share">"Partager"</string>
     <string name="details_signature_mismatch">"La nouvelle version est signée avec une clé différente de l'ancienne. Pour installer la nouvelle version, l'ancienne doit être désinstallée d'abord. Puis réessayez. (Note : désinstaller l'application effacera les données stockées sur le téléphone)"</string>
-    <string name="details_size">"%1$s"</string>
     <string name="details_uninstall">"Désinstaller"</string>
     <string name="details_update">"Mise à jour"</string>
-    <string name="details_updated">"%1$s"</string>
-    <string name="details_versionName">"%1$s"</string>
     <string name="details_you_rated_this_app">"Votre évaluation"</string>
     <string name="device_gsfID">"ID GSF : %1$s"</string>
     <string name="device_model">"%1$s ( %2$s )"</string>

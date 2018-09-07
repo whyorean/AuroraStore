@@ -23,40 +23,36 @@
 
     <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="android:windowActivityTransitions">true</item>
-        <item name="android:colorPrimary">?android:attr/colorBackground</item>
-        <item name="android:colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="android:colorAccent">@color/colorAccent</item>
+        <item name="colorPrimary">?android:attr/colorBackground</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
         <item name="android:panelBackground">@color/white</item>
         <item name="android:strokeColor">@color/strokeLight</item>
-        <item name="colorAccent">@color/colorAccent</item>
         <item name="android:windowLightStatusBar">true</item>
         <item name="android:toolbarStyle">@style/ThemeOverlay.AppCompat.Light</item>
     </style>
 
     <style name="AppTheme.Dark" parent="Theme.MaterialComponents.NoActionBar">
         <item name="android:windowActivityTransitions">true</item>
-        <item name="android:colorPrimary">?android:attr/colorBackground</item>
-        <item name="android:colorPrimaryDark">#242424</item>
-        <item name="android:colorAccent">@color/colorAccent</item>
+        <item name="colorPrimary">#343434</item>
+        <item name="colorPrimaryDark">#242424</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:strokeColor">@color/strokeDark</item>
         <item name="android:panelBackground">#454545</item>
         <item name="android:windowLightStatusBar">false</item>
-        <item name="android:toolbarStyle">@style/ThemeOverlay.AppCompat</item>
+        <item name="android:toolbarStyle">@style/ThemeOverlay.AppCompat.Light</item>
     </style>
 
-    <style name="AppTheme.Black" parent="Theme.MaterialComponents.NoActionBar">
+    <style name="AppTheme.Black" parent="AppTheme.Dark">
         <item name="android:windowActivityTransitions">true</item>
-        <item name="android:colorPrimary">?android:attr/colorBackground</item>
-        <item name="android:colorPrimaryDark">@color/black</item>
+        <item name="colorPrimary">?android:attr/colorBackground</item>
+        <item name="colorPrimaryDark">@color/black</item>
         <item name="android:colorBackground">@color/black</item>
         <item name="android:windowBackground">@color/black</item>
         <item name="android:colorAccent">@color/colorAccent</item>
-        <item name="colorAccent">@color/colorAccent</item>
         <item name="android:strokeColor">@color/strokeBlack</item>
         <item name="android:panelBackground">@color/black</item>
         <item name="android:windowLightStatusBar">false</item>
-        <item name="android:toolbarStyle">@style/ThemeOverlay.AppCompat</item>
     </style>
 
 </resources>

@@ -24,8 +24,6 @@ package com.dragons.aurora.fragment.details;
 import android.content.Context;
 import android.content.Intent;
 import android.view.View;
-import android.widget.ProgressBar;
-import android.widget.TextView;
 
 import com.dragons.aurora.R;
 import com.dragons.aurora.downloader.DownloadState;
@@ -47,7 +45,12 @@ public class ButtonCancel extends Button {
 
     @Override
     protected boolean shouldBeVisible() {
-        return !DownloadState.get(app.getPackageName()).isEverythingFinished();
+        boolean isVisible = !DownloadState.get(app.getPackageName()).isEverythingFinished();
+        if (isVisible) {
+            if (mViewSwitcher.getCurrentView() == actions_layout)
+                mViewSwitcher.showNext();
+        }
+        return isVisible;
     }
 
     @Override
@@ -56,15 +59,9 @@ public class ButtonCancel extends Button {
         intentCancel.putExtra(CancelDownloadService.PACKAGE_NAME, app.getPackageName());
         context.startService(intentCancel);
         button.setVisibility(View.GONE);
-
+        switchViews();
         android.widget.Button buttonDownload = ViewUtils.findViewById(view, R.id.download);
-        ProgressBar progressBar = ViewUtils.findViewById(view, R.id.download_progress);
-        TextView progressCents = ViewUtils.findViewById(view, R.id.progressCents);
-
         buttonDownload.setVisibility(View.VISIBLE);
         buttonDownload.setEnabled(true);
-        progressBar.setProgress(0);
-        progressBar.setVisibility(View.GONE);
-        progressCents.setVisibility(View.GONE);
     }
 }

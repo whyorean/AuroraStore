@@ -49,6 +49,7 @@ import com.dragons.aurora.task.SystemRemountTask;
 
 public class DownloadOptions extends Abstract {
 
+
     public DownloadOptions(Context context, View view, App app) {
         super(context, view, app);
     }

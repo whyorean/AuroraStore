@@ -25,6 +25,7 @@ import com.dragons.aurora.PlayStoreApiAuthenticator;
 import com.dragons.aurora.R;
 import com.dragons.aurora.activities.LoginActivity;
 import com.dragons.aurora.task.AppProvidedCredentialsTask;
+import com.dragons.aurora.task.LoginTask;
 import com.dragons.aurora.task.UserProvidedCredentialsTask;
 
 import androidx.appcompat.app.AlertDialog;
@@ -69,7 +70,7 @@ public class Accountant {
         if (isLoggedIn(context))
             completeCheckout(context);
 
-        AppProvidedCredentialsTask.LoginTask task = new AppProvidedCredentialsTask.LoginTask(context);
+        LoginTask task = new LoginTask(context);
         task.setContext(context);
         task.prepareDialog(R.string.dialog_message_switching_in_predefined, R.string.dialog_title_logging_in);
         task.execute();

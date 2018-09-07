@@ -1,0 +1,136 @@
+<!--
+  ~ Aurora Store
+  ~ Copyright (C) 2018  Rahul Kumar Patel <whyorean@gmail.com>
+  ~
+  ~ Yalp Store
+  ~ Copyright (C) 2018 Sergey Yeriomin <yeriomin@gmail.com>
+  ~
+  ~ Aurora Store (a fork of Yalp Store )is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 2 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ Aurora Store is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with Aurora Store.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipToPadding="false"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true"
+        android:orientation="vertical">
+
+        <!-- App Header -->
+        <LinearLayout
+            android:id="@+id/layout_main"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="5dp"
+            android:visibility="gone">
+
+            <!-- App Info : Icon, Name, Developer, Version -->
+            <include layout="@layout/include_details_main" />
+
+            <!-- Action : Download, Update, Uninstall -->
+            <include layout="@layout/include_details_actions_main" />
+
+        </LinearLayout>
+
+        <include layout="@layout/include_divider"/>
+
+        <!-- App Details -->
+        <include layout="@layout/include_details_subinfo" />
+
+        <include layout="@layout/include_divider"/>
+
+        <!-- Changelog -->
+        <include layout="@layout/include_details_changelog" />
+
+        <!-- Read More -->
+        <include layout="@layout/include_details_readmore" />
+
+        <!-- Screenshot -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/screenshots_gallery"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp" />
+
+        <!-- App Info -->
+        <LinearLayout
+            android:id="@+id/app_info_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:animateLayoutChanges="true"
+            android:orientation="vertical">
+
+            <!-- Reviews -->
+            <include layout="@layout/include_details_reviews" />
+
+            <!-- Exodus -->
+            <include layout="@layout/include_details_exodus" />
+
+            <!-- App Video -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/app_video"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="5dp"
+                android:visibility="gone"
+                app:cardBackgroundColor="?android:attr/panelBackground"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="1dp"
+                app:cardPreventCornerOverlap="false"
+                app:cardUseCompatPadding="true">
+
+                <ImageView
+                    android:id="@+id/thumbnail"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:src="?android:attr/colorPrimaryDark" />
+
+                <ImageView
+                    android:id="@+id/video_play"
+                    android:layout_width="@dimen/icon_size"
+                    android:layout_height="@dimen/icon_size"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:alpha="0.5"
+                    android:src="@drawable/ic_play" />
+            </androidx.cardview.widget.CardView>
+
+            <!-- Beta -->
+            <include layout="@layout/include_details_beta" />
+
+            <LinearLayout
+                android:id="@+id/cluster_links"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:orientation="vertical"
+                android:visibility="gone" />
+
+            <!-- Bottom Actions -->
+            <include layout="@layout/include_details_bottom" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>

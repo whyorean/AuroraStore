@@ -67,8 +67,7 @@ public class ButtonUninstall extends Button {
         return app.isSystem()
                 && null != app.getPackageInfo().applicationInfo
                 && null != app.getPackageInfo().applicationInfo.sourceDir
-                && app.getPackageInfo().applicationInfo.sourceDir.startsWith("/system/")
-                ;
+                && app.getPackageInfo().applicationInfo.sourceDir.startsWith("/system/");
     }
 
     private void askAndUninstall() {

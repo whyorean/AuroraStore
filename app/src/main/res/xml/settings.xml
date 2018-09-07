@@ -24,13 +24,13 @@
     <PreferenceCategory>
         <Preference
             android:icon="@drawable/ic_about_alt"
-            android:key="PREF_ACCOUNTS"
+            android:key="PREFERENCE_ACCOUNTS"
             android:title="@string/action_about">
             <intent android:action=".activities.AboutActivity" />
         </Preference>
         <Preference
             android:icon="@drawable/ic_incognito_alt"
-            android:key="PREF_SPOFF"
+            android:key="PREFERENCE_SPOOF"
             android:title="@string/action_spoofed">
             <intent android:action=".activities.SpoofActivity" />
         </Preference>
@@ -56,25 +56,25 @@
         <SwitchPreference
             android:defaultValue="true"
             android:icon="@drawable/ic_color"
-            android:key="COLOR_UI"
+            android:key="PREFERENCE_COLOR_UI"
             android:summary="@string/pref_app_ui_summary"
             android:title="@string/pref_app_ui" />
         <SwitchPreference
             android:defaultValue="false"
             android:icon="@drawable/ic_color"
-            android:key="COLOR_NAV"
+            android:key="PREFERENCE_COLOR_NAV"
             android:summary="@string/pref_app_bottom_ui_summary"
             android:title="@string/pref_app_bottom_ui" />
         <SwitchPreference
             android:defaultValue="false"
             android:icon="@drawable/ic_swipe"
-            android:key="SWIPE_PAGES"
+            android:key="PREFERENCE_SWIPE_PAGES"
             android:summary="@string/pref_app_swipe_summary"
             android:title="@string/pref_app_swipe" />
         <SwitchPreference
             android:defaultValue="false"
             android:icon="@drawable/ic_keyboard"
-            android:key="SHOW_IME"
+            android:key="PREFERENCE_SHOW_IME"
             android:summary="@string/pref_app_ime_summary"
             android:title="@string/pref_app_ime" />
         <CheckBoxPreference

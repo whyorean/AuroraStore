@@ -23,11 +23,12 @@
     android:id="@+id/changes_container"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="5dp"
     android:animateLayoutChanges="true"
-    android:background="@drawable/outline_bg"
     android:minHeight="100dp"
     android:orientation="vertical"
+    android:layout_marginTop="15dp"
+    android:layout_marginBottom="10dp"
+    android:padding="5dp"
     android:visibility="gone">
 
     <TextView

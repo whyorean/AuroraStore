@@ -161,33 +161,33 @@ public class PreferenceFragment extends androidx.preference.PreferenceFragment {
     }
 
     private void setupSwitches(Context context) {
-        SwitchPreference colors = (SwitchPreference) this.findPreference("COLOR_UI");
-        colors.setChecked(Prefs.getBoolean(context, "COLOR_UI"));
+        SwitchPreference colors = (SwitchPreference) this.findPreference("PREFERENCE_COLOR_UI");
+        colors.setChecked(Prefs.getBoolean(context, "PREFERENCE_COLOR_UI"));
 
         colors.setOnPreferenceChangeListener((preference, newValue) -> {
-            Prefs.putBoolean(context, "COLOR_UI", (boolean) newValue);
+            Prefs.putBoolean(context, "PREFERENCE_COLOR_UI", (boolean) newValue);
             return true;
         });
 
 
-        SwitchPreference bottom_colors = (SwitchPreference) this.findPreference("COLOR_NAV");
-        bottom_colors.setChecked(Prefs.getBoolean(context, "COLOR_NAV"));
+        SwitchPreference bottom_colors = (SwitchPreference) this.findPreference("PREFERENCE_COLOR_NAV");
+        bottom_colors.setChecked(Prefs.getBoolean(context, "PREFERENCE_COLOR_NAV"));
         bottom_colors.setOnPreferenceChangeListener((preference, newValue) -> {
-            Prefs.putBoolean(context, "COLOR_NAV", (boolean) newValue);
+            Prefs.putBoolean(context, "PREFERENCE_COLOR_NAV", (boolean) newValue);
             return true;
         });
 
-        SwitchPreference ime = (SwitchPreference) this.findPreference("SHOW_IME");
-        ime.setChecked(Prefs.getBoolean(context, "SHOW_IME"));
+        SwitchPreference ime = (SwitchPreference) this.findPreference("PREFERENCE_SHOW_IME");
+        ime.setChecked(Prefs.getBoolean(context, "PREFERENCE_SHOW_IME"));
         ime.setOnPreferenceChangeListener((preference, newValue) -> {
-            Prefs.putBoolean(context, "SHOW_IME", (boolean) newValue);
+            Prefs.putBoolean(context, "PREFERENCE_SHOW_IME", (boolean) newValue);
             return true;
         });
 
-        SwitchPreference swipe_pages = (SwitchPreference) this.findPreference("SWIPE_PAGES");
-        swipe_pages.setChecked(Prefs.getBoolean(context, "SWIPE_PAGES"));
+        SwitchPreference swipe_pages = (SwitchPreference) this.findPreference("PREFERENCE_SWIPE_PAGES");
+        swipe_pages.setChecked(Prefs.getBoolean(context, "PREFERENCE_SWIPE_PAGES"));
         swipe_pages.setOnPreferenceChangeListener((preference, newValue) -> {
-            Prefs.putBoolean(context, "SWIPE_PAGES", (boolean) newValue);
+            Prefs.putBoolean(context, "PREFERENCE_SWIPE_PAGES", (boolean) newValue);
             return true;
         });
     }

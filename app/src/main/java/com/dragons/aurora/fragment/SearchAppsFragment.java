@@ -249,10 +249,12 @@ public class SearchAppsFragment extends BaseFragment implements SingleDownloadsA
             public boolean onFling(int velocityX, int velocityY) {
                 if (velocityY < 0) {
                     filter_fab.show();
-                    mBottomNavigationView.restoreBottomNavigation(true);
+                    if (mBottomNavigationView != null)
+                        mBottomNavigationView.restoreBottomNavigation(true);
                 } else if (velocityY > 0) {
                     filter_fab.hide();
-                    mBottomNavigationView.hideBottomNavigation(true);
+                    if (mBottomNavigationView != null)
+                        mBottomNavigationView.hideBottomNavigation(true);
                 }
                 return false;
             }

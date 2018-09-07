@@ -30,6 +30,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
+import com.dragons.aurora.Aurora;
 import com.dragons.aurora.R;
 import com.dragons.aurora.activities.SearchActivity;
 import com.dragons.aurora.fragment.DetailsFragment;
@@ -39,6 +40,8 @@ import com.dragons.custom.ClusterAppsCard;
 import com.percolate.caffeine.ViewUtils;
 
 import androidx.recyclerview.widget.RecyclerView;
+
+import static com.dragons.aurora.activities.SearchActivity.PUB_PREFIX;
 
 public class AppLists extends AbstractHelper {
 
@@ -77,7 +80,7 @@ public class AppLists extends AbstractHelper {
             Intent intent = new Intent(fragment.getActivity(), SearchActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             intent.setAction(Intent.ACTION_SEARCH);
-            intent.putExtra(SearchManager.QUERY, SearchActivity.PUB_PREFIX + app.getDeveloperName());
+            intent.putExtra(SearchManager.QUERY, PUB_PREFIX + app.getDeveloperName());
             context.startActivity(intent);
         });
     }

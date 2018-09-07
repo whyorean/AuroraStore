@@ -26,7 +26,7 @@
     android:orientation="vertical"
     android:padding="6dip">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
@@ -36,42 +36,41 @@
             android:id="@+id/avatar"
             android:layout_width="48dip"
             android:layout_height="48dip"
-            android:layout_marginEnd="6dip"
             android:layout_marginStart="6dip"
+            android:layout_marginEnd="6dip"
             android:contentDescription="@string/content_description_review_author_avatar" />
 
-        <LinearLayout
-            android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/author"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginStart="5dp"
-            android:orientation="vertical">
+            android:layout_toEndOf="@id/avatar"
+            android:fontFamily="@font/google_sans_bold"
+            android:textAlignment="viewStart"
+            android:textAppearance="@style/TextAppearance.Aurora.SubTitle.Compact" />
 
-            <TextView
-                android:id="@+id/author"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/google_sans_bold"
-                android:textAlignment="viewStart"
-                android:textSize="16sp" />
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/author"
+            android:layout_toEndOf="@id/avatar"
+            android:textAlignment="viewStart"
+            android:textAppearance="@style/TextAppearance.Aurora.Body" />
 
-            <TextView
-                android:id="@+id/title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textAlignment="viewStart"
-                android:textSize="14sp" />
 
-        </LinearLayout>
+        <TextView
+            android:id="@+id/comment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/title"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@id/avatar"
+            android:textAlignment="viewStart"
+            android:textAppearance="@style/TextAppearance.Aurora.TextView"
+            android:textSize="12sp" />
 
-    </LinearLayout>
+    </RelativeLayout>
 
-    <TextView
-        android:id="@+id/comment"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:textAlignment="viewStart"
-        android:textSize="12sp" />
 
 </LinearLayout>

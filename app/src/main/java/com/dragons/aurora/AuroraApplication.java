@@ -126,6 +126,6 @@ public class AuroraApplication extends Application {
     }
 
     public void getSavedPrefs() {
-        COLOR_UI = Prefs.getBoolean(getApplicationContext(), "COLOR_UI");
+        COLOR_UI = Prefs.getBoolean(getApplicationContext(), "PREFERENCE_COLOR_UI");
     }
 }

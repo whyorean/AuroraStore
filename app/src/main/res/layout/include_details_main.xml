@@ -29,8 +29,8 @@
         android:id="@+id/icon"
         android:layout_width="@dimen/icon_size"
         android:layout_height="@dimen/icon_size"
-        android:layout_marginEnd="6dp"
         android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
         android:contentDescription="@string/content_description_app_icon"
         android:src="@android:color/transparent" />
 
@@ -45,16 +45,15 @@
             android:id="@+id/displayName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/google_sans_bold"
             android:textAlignment="viewStart"
             android:textColor="?android:attr/textColorPrimary"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/packageName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/google_sans"
             android:singleLine="true"
             android:textAlignment="viewStart"
             android:textColor="?android:attr/textColorSecondary"
@@ -108,4 +107,5 @@
         android:scaleX=".9"
         android:scaleY=".9"
         android:src="@drawable/ic_3dots" />
+
 </LinearLayout>

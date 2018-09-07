@@ -60,6 +60,13 @@ public abstract class Button extends Abstract {
         button.setEnabled(false);
     }
 
+    void switchViews() {
+        if (mViewSwitcher.getCurrentView() == actions_layout)
+            mViewSwitcher.showNext();
+        else if (mViewSwitcher.getCurrentView() == progress_layout)
+            mViewSwitcher.showPrevious();
+    }
+
     protected boolean isInstalled() {
         try {
             context.getPackageManager().getPackageInfo(app.getPackageName(), 0);

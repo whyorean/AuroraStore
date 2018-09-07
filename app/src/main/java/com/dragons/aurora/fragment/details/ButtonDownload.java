@@ -26,14 +26,11 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.util.Log;
 import android.view.View;
-import android.widget.ProgressBar;
-import android.widget.TextView;
 
 import com.dragons.aurora.AuroraPermissionManager;
 import com.dragons.aurora.BuildConfig;
 import com.dragons.aurora.ContextUtil;
 import com.dragons.aurora.Paths;
-import com.dragons.aurora.PlayStoreApiAuthenticator;
 import com.dragons.aurora.R;
 import com.dragons.aurora.activities.AuroraActivity;
 import com.dragons.aurora.activities.DetailsActivity;
@@ -43,18 +40,16 @@ import com.dragons.aurora.downloader.DownloadState;
 import com.dragons.aurora.helpers.Prefs;
 import com.dragons.aurora.model.App;
 import com.dragons.aurora.playstoreapiv2.AndroidAppDeliveryData;
+import com.dragons.aurora.task.playstore.LocalPurchaseTask;
 import com.dragons.aurora.task.playstore.PurchaseTask;
-import com.percolate.caffeine.ViewUtils;
 
 import java.io.File;
 
+import static com.dragons.aurora.PlayStoreApiAuthenticator.PREFERENCE_APP_PROVIDED_EMAIL;
 import static com.dragons.aurora.downloader.DownloadState.TriggeredBy.DOWNLOAD_BUTTON;
 import static com.dragons.aurora.downloader.DownloadState.TriggeredBy.MANUAL_DOWNLOAD_BUTTON;
 
 public class ButtonDownload extends Button {
-
-    private ProgressBar progressBar;
-    private TextView progressCents;
 
     public ButtonDownload(Context context, View view, App app) {
         super(context, view, app);
@@ -76,18 +71,16 @@ public class ButtonDownload extends Button {
     @Override
     public boolean shouldBeVisible() {
         File apk = Paths.getApkPath(context, app.getPackageName(), app.getVersionCode());
-        return (!apk.exists()
-                || apk.length() != app.getSize()
-                || !DownloadState.get(app.getPackageName()).isEverythingSuccessful())
-                && (app.isFree() || !Prefs.getBoolean(context, PlayStoreApiAuthenticator.PREFERENCE_APP_PROVIDED_EMAIL))
+        return (!apk.exists() || apk.length() != app.getSize() || !DownloadState.get(app.getPackageName()).isEverythingSuccessful())
+                && (app.isFree() || !Prefs.getBoolean(context, PREFERENCE_APP_PROVIDED_EMAIL))
                 && (app.isInPlayStore() || app.getPackageName().equals(BuildConfig.APPLICATION_ID))
-                && (getInstalledVersionCode() != app.getVersionCode() || context instanceof ManualDownloadActivity)
-                ;
+                && (getInstalledVersionCode() != app.getVersionCode() || context instanceof ManualDownloadActivity);
     }
 
     @Override
     protected void onButtonClick(View v) {
         checkAndDownload();
+        switchViews();
     }
 
     public void checkAndDownload() {
@@ -123,10 +116,7 @@ public class ButtonDownload extends Button {
         super.draw();
         DownloadState state = DownloadState.get(app.getPackageName());
         if (Paths.getApkPath(context, app.getPackageName(), app.getVersionCode()).exists()
-                && !state.isEverythingSuccessful()
-                ) {
-            progressBar = ViewUtils.findViewById(view, R.id.download_progress);
-            progressCents = ViewUtils.findViewById(view, R.id.progressCents);
+                && !state.isEverythingSuccessful()) {
             if (null != progressBar && null != progressCents) {
                 new DownloadProgressBarUpdater(app.getPackageName(), progressBar, progressCents).execute(PurchaseTask.UPDATE_INTERVAL);
             }
@@ -168,8 +158,6 @@ public class ButtonDownload extends Button {
     private LocalPurchaseTask getPurchaseTask() {
         LocalPurchaseTask purchaseTask = new LocalPurchaseTask();
         purchaseTask.setFragment(this);
-        progressBar = ViewUtils.findViewById(view, R.id.download_progress);
-        progressCents = ViewUtils.findViewById(view, R.id.progressCents);
         if (null != progressBar && null != progressCents) {
             purchaseTask.setDownloadProgressBarUpdater(new DownloadProgressBarUpdater(app.getPackageName(), progressBar, progressCents));
         }
@@ -177,43 +165,5 @@ public class ButtonDownload extends Button {
         purchaseTask.setContext(context);
         purchaseTask.setTriggeredBy(context instanceof ManualDownloadActivity ? MANUAL_DOWNLOAD_BUTTON : DOWNLOAD_BUTTON);
         return purchaseTask;
-    }
-
-    static class LocalPurchaseTask extends PurchaseTask {
-
-        private ButtonDownload buttonDownload;
-
-        public LocalPurchaseTask setFragment(ButtonDownload fragment) {
-            this.buttonDownload = fragment;
-            return this;
-        }
-
-        @Override
-        public LocalPurchaseTask clone() {
-            LocalPurchaseTask task = new LocalPurchaseTask();
-            task.setDownloadProgressBarUpdater(progressBarUpdater);
-            task.setTriggeredBy(triggeredBy);
-            task.setApp(app);
-            task.setContext(context);
-            task.setFragment(buttonDownload);
-            return task;
-        }
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-        }
-
-        @Override
-        protected void onPostExecute(AndroidAppDeliveryData deliveryData) {
-            super.onPostExecute(deliveryData);
-            if (!success()) {
-                buttonDownload.draw();
-                if (null != getRestrictionString()) {
-                    ContextUtil.toastLong(context, getRestrictionString());
-                    Log.i(getClass().getSimpleName(), "No download link returned, app restriction is " + app.getRestriction());
-                }
-            }
-        }
     }
 }
