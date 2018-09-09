@@ -26,7 +26,6 @@ import android.content.Context;
 import android.preference.PreferenceManager;
 import android.text.InputType;
 import android.text.TextUtils;
-import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.CheckBox;
@@ -37,6 +36,7 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.dragons.aurora.Aurora;
 import com.dragons.aurora.ContextUtil;
 import com.dragons.aurora.CredentialsEmptyException;
 import com.dragons.aurora.PlayStoreApiAuthenticator;
@@ -55,15 +55,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
-import static com.dragons.aurora.helpers.Prefs.DUMMY_ACC;
-import static com.dragons.aurora.helpers.Prefs.GOOGLE_ACC;
-import static com.dragons.aurora.helpers.Prefs.GOOGLE_EMAIL;
-import static com.dragons.aurora.helpers.Prefs.GOOGLE_NAME;
-import static com.dragons.aurora.helpers.Prefs.GOOGLE_PASSWORD;
-import static com.dragons.aurora.helpers.Prefs.GOOGLE_URL;
-import static com.dragons.aurora.helpers.Prefs.LOGGED_IN;
-import static com.dragons.aurora.helpers.Prefs.SEC_ACCOUNT;
-import static com.dragons.aurora.helpers.Prefs.USED_EMAILS_SET;
+import timber.log.Timber;
 
 public class UserProvidedCredentialsTask extends CheckCredentialsTask {
 
@@ -85,31 +77,31 @@ public class UserProvidedCredentialsTask extends CheckCredentialsTask {
         AutoCompleteTextView editEmail = (AutoCompleteTextView) ad.findViewById(R.id.email);
         editEmail.setAdapter(new ArrayAdapter<>(context, android.R.layout.simple_dropdown_item_1line, getUsedEmails()));
         String previousEmail = "";
-        editEmail.setText(PreferenceManager.getDefaultSharedPreferences(context).getString(PlayStoreApiAuthenticator.PREFERENCE_EMAIL, previousEmail));
+        editEmail.setText(PreferenceManager.getDefaultSharedPreferences(context).getString(Aurora.PREFERENCE_EMAIL, previousEmail));
         return editEmail;
     }
 
     private List<String> getUsedEmails() {
-        List<String> emails = new ArrayList<>(Prefs.getStringSet(context, USED_EMAILS_SET));
+        List<String> emails = new ArrayList<>(Prefs.getStringSet(context, Aurora.USED_EMAILS_SET));
         Collections.sort(emails);
         return emails;
     }
 
     private void setGooglePrefs(String email, String password) {
-        Prefs.putBoolean(context, SEC_ACCOUNT, true);
-        Prefs.putString(context, GOOGLE_EMAIL, email);
-        Prefs.putString(context, GOOGLE_PASSWORD, password);
+        Prefs.putBoolean(context, Aurora.SEC_ACCOUNT, true);
+        Prefs.putString(context, Aurora.GOOGLE_EMAIL, email);
+        Prefs.putString(context, Aurora.GOOGLE_PASSWORD, password);
     }
 
     public void removeGooglePrefs() {
-        Prefs.putBoolean(context, SEC_ACCOUNT, false);
-        Prefs.putString(context, GOOGLE_EMAIL, "");
-        Prefs.putString(context, GOOGLE_PASSWORD, "");
+        Prefs.putBoolean(context, Aurora.SEC_ACCOUNT, false);
+        Prefs.putString(context, Aurora.GOOGLE_EMAIL, "");
+        Prefs.putString(context, Aurora.GOOGLE_PASSWORD, "");
     }
 
     public void withSavedGoogle() {
-        String email = Prefs.getString(context, GOOGLE_EMAIL);
-        String password = Prefs.getString(context, GOOGLE_PASSWORD);
+        String email = Prefs.getString(context, Aurora.GOOGLE_EMAIL);
+        String password = Prefs.getString(context, Aurora.GOOGLE_PASSWORD);
         getUserCredentialsTask().execute(email, password);
     }
 
@@ -160,7 +152,7 @@ public class UserProvidedCredentialsTask extends CheckCredentialsTask {
                 || params[1] == null
                 || TextUtils.isEmpty(params[0])
                 || TextUtils.isEmpty(params[1])
-                ) {
+        ) {
             exception = new CredentialsEmptyException();
             return null;
         }
@@ -178,9 +170,9 @@ public class UserProvidedCredentialsTask extends CheckCredentialsTask {
     }
 
     private void addUsedEmail(String email) {
-        Set<String> emailsSet = Prefs.getStringSet(context, USED_EMAILS_SET);
+        Set<String> emailsSet = Prefs.getStringSet(context, Aurora.USED_EMAILS_SET);
         emailsSet.add(email);
-        Prefs.putStringSet(context, USED_EMAILS_SET, emailsSet);
+        Prefs.putStringSet(context, Aurora.USED_EMAILS_SET, emailsSet);
     }
 
     @Override
@@ -192,7 +184,7 @@ public class UserProvidedCredentialsTask extends CheckCredentialsTask {
     }
 
     private void setUser() {
-        Email = PreferenceFragment.getString(context, PlayStoreApiAuthenticator.PREFERENCE_EMAIL);
+        Email = PreferenceFragment.getString(context, Aurora.PREFERENCE_EMAIL);
         getJSON(Email);
     }
 
@@ -215,14 +207,14 @@ public class UserProvidedCredentialsTask extends CheckCredentialsTask {
                 Username = mJsonObject.getJSONObject("gphoto$nickname").getString("$t");
                 ImgURL = mJsonObject.getJSONObject("gphoto$thumbnail").getString("$t");
             } catch (JSONException e) {
-                Log.e(getClass().getSimpleName(), e.getMessage());
+                Timber.e(e.getMessage());
             }
         }
-        Prefs.putString(context, GOOGLE_NAME, Username);
-        Prefs.putString(context, GOOGLE_URL, ImgURL);
-        Prefs.putBoolean(context, LOGGED_IN, true);
-        Prefs.putBoolean(context, GOOGLE_ACC, true);
-        Prefs.putBoolean(context, DUMMY_ACC, false);
+        Prefs.putString(context, Aurora.GOOGLE_NAME, Username);
+        Prefs.putString(context, Aurora.GOOGLE_URL, ImgURL);
+        Prefs.putBoolean(context, Aurora.LOGGED_IN, true);
+        Prefs.putBoolean(context, Aurora.GOOGLE_ACC, true);
+        Prefs.putBoolean(context, Aurora.DUMMY_ACC, false);
 
         if (context instanceof AccountsActivity)
             ((AccountsActivity) context).userChanged();

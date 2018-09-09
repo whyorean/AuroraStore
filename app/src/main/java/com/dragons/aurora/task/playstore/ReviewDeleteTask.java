@@ -21,13 +21,12 @@
 
 package com.dragons.aurora.task.playstore;
 
-import android.util.Log;
-
-import com.dragons.aurora.activities.DetailsActivity;
 import com.dragons.aurora.fragment.details.Review;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 
 import java.io.IOException;
+
+import timber.log.Timber;
 
 public class ReviewDeleteTask extends PlayStorePayloadTask<Void> {
 
@@ -48,7 +47,7 @@ public class ReviewDeleteTask extends PlayStorePayloadTask<Void> {
         if (success()) {
             fragment.clearUserReview();
         } else {
-            Log.e(DetailsActivity.class.getSimpleName(), "Error deleting the review: " + getException().getMessage());
+            Timber.e("Error deleting the review: %s", getException().getMessage());
         }
     }
 }

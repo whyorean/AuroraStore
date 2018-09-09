@@ -26,11 +26,12 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
-import android.util.Log;
 
 import java.net.NetworkInterface;
 import java.net.SocketException;
 import java.util.Collections;
+
+import timber.log.Timber;
 
 import static android.content.Context.CONNECTIVITY_SERVICE;
 import static android.net.ConnectivityManager.TYPE_MOBILE;
@@ -70,7 +71,7 @@ public class NetworkState {
         try {
             for (NetworkInterface ni : Collections.list(NetworkInterface.getNetworkInterfaces())) {
                 if (ni.isUp() && (ni.getName().startsWith("tun") || ni.getName().startsWith("ppp"))) {
-                    Log.i(NetworkState.class.getSimpleName(), "VPN seems to be on: " + ni.getName());
+                    Timber.i("VPN seems to be on: " + ni.getName());
                     return true;
                 }
             }

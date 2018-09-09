@@ -28,7 +28,6 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Looper;
 import android.os.RemoteException;
-import android.util.Log;
 
 import com.dragons.aurora.model.App;
 
@@ -36,6 +35,8 @@ import java.io.File;
 import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 import java.util.Map;
+
+import timber.log.Timber;
 
 public class InstallerPrivileged extends InstallerBackground {
 
@@ -95,7 +96,7 @@ public class InstallerPrivileged extends InstallerBackground {
             return false;
         }
         if (context.getPackageManager().checkPermission(Manifest.permission.INSTALL_PACKAGES, BuildConfig.APPLICATION_ID) != PackageManager.PERMISSION_GRANTED) {
-            Log.i(getClass().getSimpleName(), Manifest.permission.INSTALL_PACKAGES + " not granted");
+            Timber.i("%s not granted", Manifest.permission.INSTALL_PACKAGES);
             ((AuroraApplication) context.getApplicationContext()).removePendingUpdate(app.getPackageName());
             notifyAndToast(R.string.notification_not_privileged, R.string.pref_not_privileged, app);
             return false;
@@ -108,7 +109,7 @@ public class InstallerPrivileged extends InstallerBackground {
         InstallationState.setInstalling(app.getPackageName());
         File apkFile = Paths.getApkPath(context, app.getPackageName(), app.getVersionCode());
         if (!apkFile.exists()) {
-            Log.e(getClass().getSimpleName(), "Installation requested for apk " + apkFile.getAbsolutePath() + " which does not exist");
+            Timber.e("Installation requested for apk " + apkFile.getAbsolutePath() + " which does not exist");
             ((AuroraApplication) context.getApplicationContext()).removePendingUpdate(app.getPackageName());
             sendBroadcast(app.getPackageName(), false);
             return;
@@ -118,7 +119,7 @@ public class InstallerPrivileged extends InstallerBackground {
         try {
             pm.getClass().getMethod("installPackage", types).invoke(pm, Uri.fromFile(apkFile), new InstallObserver(app), INSTALL_REPLACE_EXISTING, BuildConfig.APPLICATION_ID);
         } catch (NoSuchMethodException | IllegalArgumentException | IllegalAccessException | InvocationTargetException | NullPointerException e) {
-            Log.e(getClass().getSimpleName(), "Could not start privileged installation: " + e.getClass().getName() + " " + e.getMessage());
+            Timber.e("Could not start privileged installation: " + e.getClass().getName() + " " + e.getMessage());
             ((AuroraApplication) context.getApplicationContext()).removePendingUpdate(app.getPackageName());
             sendBroadcast(app.getPackageName(), false);
         }
@@ -134,7 +135,7 @@ public class InstallerPrivileged extends InstallerBackground {
 
         @Override
         public void packageInstalled(String packageName, int returnCode) throws RemoteException {
-            Log.i(getClass().getSimpleName(), "Installation of " + packageName + " complete with code " + returnCode);
+            Timber.i("Installation of " + packageName + " complete with code " + returnCode);
             boolean success = returnCode > 0;
             if (success) {
                 InstallationState.setSuccess(packageName);
@@ -145,7 +146,7 @@ public class InstallerPrivileged extends InstallerBackground {
             Looper.prepare();
             postInstallationResult(app, success);
             if (errors.containsKey(returnCode)) {
-                Log.e(getClass().getSimpleName(), errors.get(returnCode));
+                Timber.e(errors.get(returnCode));
             }
             Looper.loop();
         }

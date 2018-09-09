@@ -24,12 +24,13 @@ package com.dragons.aurora.fragment.details;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
-import android.util.Log;
 import android.widget.ImageView;
 
 import com.dragons.aurora.R;
 import com.dragons.aurora.fragment.DetailsFragment;
 import com.dragons.aurora.model.App;
+
+import timber.log.Timber;
 
 public class SystemAppPage extends AbstractHelper {
 
@@ -53,7 +54,7 @@ public class SystemAppPage extends AbstractHelper {
         try {
             context.startActivity(getIntent());
         } catch (ActivityNotFoundException e) {
-            Log.w(getClass().getSimpleName(), "Could not find system app activity");
+            Timber.w("Could not find system app activity");
         }
     }
 

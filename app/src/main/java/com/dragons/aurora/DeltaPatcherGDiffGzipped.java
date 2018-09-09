@@ -22,7 +22,6 @@
 package com.dragons.aurora;
 
 import android.content.Context;
-import android.util.Log;
 
 import com.dragons.aurora.model.App;
 
@@ -31,6 +30,8 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.zip.GZIPInputStream;
+
+import timber.log.Timber;
 
 public class DeltaPatcherGDiffGzipped extends DeltaPatcherGDiff {
 
@@ -51,7 +52,7 @@ public class DeltaPatcherGDiffGzipped extends DeltaPatcherGDiff {
             }
             return true;
         } catch (IOException e) {
-            Log.e(DeltaPatcherGDiff.class.getSimpleName(), "Could not unzip the patch: " + e.getMessage());
+            Timber.e("Could not unzip the patch: %s", e.getMessage());
             return false;
         } finally {
             Util.closeSilently(fileOutputStream);
@@ -62,12 +63,12 @@ public class DeltaPatcherGDiffGzipped extends DeltaPatcherGDiff {
     @Override
     public boolean patch() {
         File patchUncompressed = new File(patch.getAbsolutePath() + ".unpacked");
-        Log.i(DeltaPatcherGDiff.class.getSimpleName(), "Decompressing");
+        Timber.i("Decompressing");
         File patchCompressed = patch;
         if (!GUnZip(patchCompressed, patchUncompressed)) {
             return false;
         }
-        Log.i(DeltaPatcherGDiff.class.getSimpleName(), "Deleting " + patchCompressed);
+        Timber.i("Deleting %s", patchCompressed);
         patchCompressed.delete();
         patch = patchUncompressed;
         return super.patch();

@@ -26,7 +26,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,6 +33,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.dragons.aurora.Aurora;
 import com.dragons.aurora.HistoryItemTouchHelper;
 import com.dragons.aurora.R;
 import com.dragons.aurora.activities.DetailsActivity;
@@ -69,8 +69,7 @@ import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
-
-import static com.dragons.aurora.activities.SearchActivity.PUB_PREFIX;
+import timber.log.Timber;
 
 public class SearchFragment extends BaseFragment implements HistoryItemTouchHelper.RecyclerItemTouchHelperListener {
 
@@ -287,8 +286,8 @@ public class SearchFragment extends BaseFragment implements HistoryItemTouchHelp
     }
 
     private String getTitleString(String query) {
-        return query.startsWith(PUB_PREFIX)
-                ? getString(R.string.apps_by, query.substring(PUB_PREFIX.length()))
+        return query.startsWith(Aurora.PUB_PREFIX)
+                ? getString(R.string.apps_by, query.substring(Aurora.PUB_PREFIX.length()))
                 : getString(R.string.activity_title_search, query)
                 ;
     }
@@ -313,6 +312,6 @@ public class SearchFragment extends BaseFragment implements HistoryItemTouchHelp
                 .doOnError(err -> clusterAppsCard.setVisibility(View.GONE))
                 .subscribe((appToAdd) -> {
                     setupAppSearchHistory(appToAdd);
-                }, err -> Log.e(getTag(), err.getMessage())));
+                }, err -> Timber.e(err.getMessage())));
     }
 }

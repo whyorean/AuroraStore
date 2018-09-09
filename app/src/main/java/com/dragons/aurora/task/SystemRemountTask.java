@@ -23,7 +23,6 @@ package com.dragons.aurora.task;
 
 import android.content.Context;
 import android.content.DialogInterface;
-import android.util.Log;
 
 import com.dragons.aurora.R;
 import com.dragons.aurora.model.App;
@@ -33,6 +32,7 @@ import java.util.List;
 
 import androidx.appcompat.app.AlertDialog;
 import eu.chainfire.libsuperuser.Shell;
+import timber.log.Timber;
 
 public abstract class SystemRemountTask extends TaskWithProgress<List<String>> {
 
@@ -80,7 +80,7 @@ public abstract class SystemRemountTask extends TaskWithProgress<List<String>> {
         super.onPostExecute(output);
         if (null != output) {
             for (String outputLine : output) {
-                Log.i(getClass().getSimpleName(), outputLine);
+                Timber.i(outputLine);
             }
         }
         showRebootDialog();

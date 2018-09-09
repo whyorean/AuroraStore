@@ -25,10 +25,10 @@ import android.content.Context;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
 
+import com.dragons.aurora.Aurora;
 import com.dragons.aurora.BlackWhiteListManager;
 import com.dragons.aurora.BuildConfig;
 import com.dragons.aurora.CertUtils;
-import com.dragons.aurora.PlayStoreApiAuthenticator;
 import com.dragons.aurora.fragment.PreferenceFragment;
 import com.dragons.aurora.model.App;
 import com.dragons.aurora.model.AppBuilder;
@@ -84,7 +84,7 @@ public class UpdatableAppsTaskHelper extends ExceptionTask {
 
     protected List<App> getAppsFromPlayStore(GooglePlayAPI api, Collection<String> packageNames) throws IOException {
         List<App> appsFromPlayStore = new ArrayList<>();
-        boolean builtInAccount = PreferenceFragment.getBoolean(context, PlayStoreApiAuthenticator.PREFERENCE_APP_PROVIDED_EMAIL);
+        boolean builtInAccount = PreferenceFragment.getBoolean(context, Aurora.PREFERENCE_APP_PROVIDED_EMAIL);
         for (App app : getRemoteAppList(api, new ArrayList<>(packageNames))) {
             if (!builtInAccount || app.isFree()) {
                 appsFromPlayStore.add(app);
@@ -125,8 +125,8 @@ public class UpdatableAppsTaskHelper extends ExceptionTask {
     private Map<String, App> filterBlacklistedApps(Map<String, App> apps) {
         Set<String> packageNames = new HashSet<>(apps.keySet());
         if (Objects.equals(PreferenceManager.getDefaultSharedPreferences(context).getString(
-                PreferenceFragment.PREFERENCE_UPDATE_LIST_WHITE_OR_BLACK,
-                PreferenceFragment.LIST_BLACK), PreferenceFragment.LIST_BLACK)) {
+                Aurora.PREFERENCE_UPDATE_LIST_WHITE_OR_BLACK,
+                Aurora.LIST_BLACK), Aurora.LIST_BLACK)) {
             packageNames.removeAll(new BlackWhiteListManager(context).get());
         } else {
             packageNames.retainAll(new BlackWhiteListManager(context).get());

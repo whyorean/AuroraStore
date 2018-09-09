@@ -26,7 +26,6 @@ import android.content.BroadcastReceiver;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 
 import com.dragons.aurora.R;
 import com.dragons.aurora.fragment.ContainerFragment;
@@ -34,6 +33,7 @@ import com.dragons.aurora.model.App;
 
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentManager;
+import timber.log.Timber;
 
 public class AuroraActivity extends BaseActivity {
 
@@ -75,7 +75,7 @@ public class AuroraActivity extends BaseActivity {
         try {
             super.unregisterReceiver(receiver);
         } catch (IllegalArgumentException e) {
-            Log.e(getClass().getSimpleName(), e.getMessage());
+            Timber.e(e.getMessage());
         }
     }
 

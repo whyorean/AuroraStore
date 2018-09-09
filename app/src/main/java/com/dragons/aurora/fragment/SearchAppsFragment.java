@@ -23,7 +23,6 @@ package com.dragons.aurora.fragment;
 
 import android.app.Dialog;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -68,6 +67,7 @@ import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
+import timber.log.Timber;
 
 import static com.dragons.aurora.Util.hide;
 import static com.dragons.aurora.Util.isConnected;
@@ -122,7 +122,7 @@ public class SearchAppsFragment extends BaseFragment implements SingleDownloadsA
             iterator = setupIterator(getQuery());
             fetchSearchAppsList(false);
         } else
-            Log.e(this.getClass().getName(), "No category id provided");
+            Timber.e("No category id provided");
         return view;
     }
 
@@ -220,7 +220,7 @@ public class SearchAppsFragment extends BaseFragment implements SingleDownloadsA
             return iterator;
         } catch (Exception e) {
             if (e instanceof CredentialsEmptyException)
-                Log.e(getClass().getSimpleName(), "Credentials Empty Exception");
+                Timber.e("Credentials Empty Exception");
             else
                 e.printStackTrace();
             return null;
@@ -273,7 +273,7 @@ public class SearchAppsFragment extends BaseFragment implements SingleDownloadsA
                         } else
                             setupListView(appList);
                     }
-                }, err -> Log.e(getTag(), err.getMessage())));
+                }, err -> Timber.e(err.getMessage())));
     }
 
     private void addApps(List<App> appsToAdd) {

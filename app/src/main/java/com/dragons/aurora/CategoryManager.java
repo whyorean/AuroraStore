@@ -31,9 +31,6 @@ import java.util.Set;
 import java.util.TreeMap;
 
 public class CategoryManager {
-
-    public static final String TOP = "0_CATEGORY_TOP";
-
     private Context context;
     private SharedPreferencesTranslator translator;
 
@@ -46,7 +43,7 @@ public class CategoryManager {
         if (null == categoryId) {
             return "";
         }
-        if (categoryId.equals(TOP)) {
+        if (categoryId.equals(Aurora.TOP)) {
             return context.getString(R.string.search_filter);
         }
         return translator.getString(categoryId);
@@ -61,14 +58,14 @@ public class CategoryManager {
 
     public boolean fits(String appCategoryId, String chosenCategoryId) {
         return null == chosenCategoryId
-                || chosenCategoryId.equals(TOP)
+                || chosenCategoryId.equals(Aurora.TOP)
                 || appCategoryId.equals(chosenCategoryId)
                 || Prefs.getStringSet(context, chosenCategoryId).contains(appCategoryId)
                 ;
     }
 
     public boolean categoryListEmpty() {
-        Set<String> topSet = Prefs.getStringSet(context, TOP);
+        Set<String> topSet = Prefs.getStringSet(context, Aurora.TOP);
         if (topSet.isEmpty()) {
             return true;
         }
@@ -79,7 +76,7 @@ public class CategoryManager {
 
     public Map<String, String> getCategoriesFromSharedPreferences() {
         Map<String, String> categories = new TreeMap<>();
-        Set<String> topSet = Prefs.getStringSet(context, TOP);
+        Set<String> topSet = Prefs.getStringSet(context, Aurora.TOP);
         for (String topCategoryId : topSet) {
             categories.put(topCategoryId, translator.getString(topCategoryId));
         }

@@ -24,7 +24,6 @@ package com.dragons.aurora.task;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 
 import com.dragons.aurora.ContextUtil;
 import com.dragons.aurora.R;
@@ -38,6 +37,7 @@ import java.util.Map;
 
 import androidx.appcompat.app.AlertDialog;
 import eu.chainfire.libsuperuser.Shell;
+import timber.log.Timber;
 
 public class CheckShellTask extends TaskWithProgress<Boolean> {
 
@@ -86,8 +86,8 @@ public class CheckShellTask extends TaskWithProgress<Boolean> {
         Map<String, Boolean> flags = processOutput(output);
         availableCoreutils = flags.get(COMMAND_MV) && flags.get(COMMAND_RM) && flags.get(COMMAND_MKDIR) && flags.get(COMMAND_CHMOD);
         availableBusybox = flags.get(COMMAND_BUSYBOX);
-        Log.i(getClass().getSimpleName(), "Coreutils available " + availableCoreutils);
-        Log.i(getClass().getSimpleName(), "Busybox available " + availableBusybox);
+        Timber.i("Coreutils available %s", availableCoreutils);
+        Timber.i("Busybox available %s", availableBusybox);
         return true;
     }
 
@@ -106,7 +106,7 @@ public class CheckShellTask extends TaskWithProgress<Boolean> {
             flags.put(command, false);
         }
         for (String line : output) {
-            Log.d(getClass().getSimpleName(), line);
+            Timber.d(line);
             for (String command : COMMANDS) {
                 if (line.contains(command + COMMAND_RETURNED)) {
                     int returnCode = Integer.parseInt(line.substring((command + COMMAND_RETURNED).length()).trim());

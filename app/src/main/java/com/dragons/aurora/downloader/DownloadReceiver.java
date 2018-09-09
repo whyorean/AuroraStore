@@ -25,10 +25,11 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
-import android.util.Log;
 
 import com.dragons.aurora.Paths;
 import com.dragons.aurora.model.App;
+
+import timber.log.Timber;
 
 abstract public class DownloadReceiver extends BroadcastReceiver {
 
@@ -48,7 +49,7 @@ abstract public class DownloadReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         this.context = context;
         downloadId = intent.getLongExtra(DownloadManagerInterface.EXTRA_DOWNLOAD_ID, 0L);
-        Log.i(getClass().getSimpleName(), intent.getAction() + " (" + downloadId + ") received");
+        Timber.i(intent.getAction() + " (" + downloadId + ") received");
         if (downloadId == 0) {
             return;
         }

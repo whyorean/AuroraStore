@@ -27,7 +27,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
-import android.util.Log;
 
 import com.dragons.aurora.model.App;
 import com.dragons.aurora.notification.IgnoreUpdatesService;
@@ -39,6 +38,7 @@ import java.io.File;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import timber.log.Timber;
 
 public abstract class InstallerAbstract {
 
@@ -46,7 +46,7 @@ public abstract class InstallerAbstract {
     protected boolean background;
 
     public InstallerAbstract(Context context) {
-        Log.i(getClass().getSimpleName(), "Installer chosen");
+        Timber.i("Installer chosen");
         this.context = context;
         background = !(context instanceof Activity);
     }
@@ -73,7 +73,7 @@ public abstract class InstallerAbstract {
 
     public void verifyAndInstall(App app) {
         if (verify(app)) {
-            Log.i(getClass().getSimpleName(), "Installing " + app.getPackageName());
+            Timber.i("Installing %s", app.getPackageName());
             install(app);
         } else {
             sendBroadcast(app.getPackageName(), false);
@@ -83,11 +83,11 @@ public abstract class InstallerAbstract {
     protected boolean verify(App app) {
         File apkPath = Paths.getApkPath(context, app.getPackageName(), app.getVersionCode());
         if (!apkPath.exists()) {
-            Log.w(getClass().getSimpleName(), apkPath.getAbsolutePath() + " does not exist");
+            Timber.w("%s does not exist", apkPath.getAbsolutePath());
             return false;
         }
         if (!new ApkSignatureVerifier(context).match(app.getPackageName(), apkPath)) {
-            Log.i(getClass().getSimpleName(), "Signature mismatch for " + app.getPackageName());
+            Timber.i("Signature mismatch for %s", app.getPackageName());
             ((AuroraApplication) context.getApplicationContext()).removePendingUpdate(app.getPackageName());
             if (ContextUtil.isAlive(context)) {
                 ((AppCompatActivity) context).runOnUiThread(() -> getSignatureMismatchDialog(app).show());

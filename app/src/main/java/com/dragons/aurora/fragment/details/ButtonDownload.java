@@ -27,6 +27,7 @@ import android.content.pm.PackageManager;
 import android.util.Log;
 import android.view.View;
 
+import com.dragons.aurora.Aurora;
 import com.dragons.aurora.AuroraPermissionManager;
 import com.dragons.aurora.BuildConfig;
 import com.dragons.aurora.ContextUtil;
@@ -39,13 +40,11 @@ import com.dragons.aurora.downloader.DownloadProgressBarUpdater;
 import com.dragons.aurora.downloader.DownloadState;
 import com.dragons.aurora.helpers.Prefs;
 import com.dragons.aurora.model.App;
-import com.dragons.aurora.playstoreapiv2.AndroidAppDeliveryData;
 import com.dragons.aurora.task.playstore.LocalPurchaseTask;
 import com.dragons.aurora.task.playstore.PurchaseTask;
 
 import java.io.File;
 
-import static com.dragons.aurora.PlayStoreApiAuthenticator.PREFERENCE_APP_PROVIDED_EMAIL;
 import static com.dragons.aurora.downloader.DownloadState.TriggeredBy.DOWNLOAD_BUTTON;
 import static com.dragons.aurora.downloader.DownloadState.TriggeredBy.MANUAL_DOWNLOAD_BUTTON;
 
@@ -72,7 +71,7 @@ public class ButtonDownload extends Button {
     public boolean shouldBeVisible() {
         File apk = Paths.getApkPath(context, app.getPackageName(), app.getVersionCode());
         return (!apk.exists() || apk.length() != app.getSize() || !DownloadState.get(app.getPackageName()).isEverythingSuccessful())
-                && (app.isFree() || !Prefs.getBoolean(context, PREFERENCE_APP_PROVIDED_EMAIL))
+                && (app.isFree() || !Prefs.getBoolean(context, Aurora.PREFERENCE_APP_PROVIDED_EMAIL))
                 && (app.isInPlayStore() || app.getPackageName().equals(BuildConfig.APPLICATION_ID))
                 && (getInstalledVersionCode() != app.getVersionCode() || context instanceof ManualDownloadActivity);
     }

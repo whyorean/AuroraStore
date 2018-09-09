@@ -27,7 +27,6 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.text.TextUtils;
 import android.text.format.Formatter;
-import android.util.Log;
 
 import com.dragons.aurora.R;
 import com.dragons.aurora.Util;
@@ -45,6 +44,8 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+
+import timber.log.Timber;
 
 public class HttpURLConnectionDownloadTask extends AsyncTask<String, Long, Boolean> {
 
@@ -100,7 +101,7 @@ public class HttpURLConnectionDownloadTask extends AsyncTask<String, Long, Boole
     @Override
     protected void onCancelled() {
         super.onCancelled();
-        Log.i(getClass().getSimpleName(), "Cancelled download " + downloadId);
+        Timber.i("Cancelled download %s", downloadId);
         targetFile.delete();
         onPostExecute(false);
     }
@@ -138,8 +139,7 @@ public class HttpURLConnectionDownloadTask extends AsyncTask<String, Long, Boole
                         .setMessage(context.getString(
                                 R.string.notification_download_progress,
                                 Formatter.formatFileSize(context, progress),
-                                Formatter.formatFileSize(context, max)
-                        ))
+                                Formatter.formatFileSize(context, max)))
                         .setTitle(title)
                         .setIntent(new Intent())
                         .setProgress((int) max, (int) progress)
@@ -178,7 +178,7 @@ public class HttpURLConnectionDownloadTask extends AsyncTask<String, Long, Boole
         try {
             copyStream(in, out, fileSize);
         } catch (IOException e) {
-            Log.e(getClass().getSimpleName(), "Could not read: " + e.getMessage());
+            Timber.e("Could not read: %s", e.getMessage());
             DownloadManagerFake.putStatus(downloadId, DownloadManagerInterface.ERROR_HTTP_DATA_ERROR);
             Util.closeSilently(out);
             targetFile.delete();
@@ -209,7 +209,7 @@ public class HttpURLConnectionDownloadTask extends AsyncTask<String, Long, Boole
             try {
                 out.write(buffer, 0, bytesRead);
             } catch (IOException e) {
-                Log.e(getClass().getSimpleName(), "Could not write file: " + e.getMessage());
+                Timber.e("Could not write file: %s", e.getMessage());
                 DownloadManagerFake.putStatus(downloadId, DownloadManagerInterface.ERROR_FILE_ERROR);
                 Util.closeSilently(out);
                 targetFile.delete();

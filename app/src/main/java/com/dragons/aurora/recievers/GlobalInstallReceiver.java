@@ -25,8 +25,8 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.text.TextUtils;
-import android.util.Log;
 
+import com.dragons.aurora.Aurora;
 import com.dragons.aurora.AuroraApplication;
 import com.dragons.aurora.BlackWhiteListManager;
 import com.dragons.aurora.InstallationState;
@@ -37,6 +37,8 @@ import com.dragons.aurora.fragment.PreferenceFragment;
 import com.dragons.aurora.model.App;
 
 import java.io.File;
+
+import timber.log.Timber;
 
 public class GlobalInstallReceiver extends BroadcastReceiver {
 
@@ -72,11 +74,11 @@ public class GlobalInstallReceiver extends BroadcastReceiver {
     }
 
     static private boolean needToRemoveApk(Context context) {
-        return PreferenceFragment.getBoolean(context, PreferenceFragment.PREFERENCE_DELETE_APK_AFTER_INSTALL);
+        return PreferenceFragment.getBoolean(context, Aurora.PREFERENCE_DELETE_APK_AFTER_INSTALL);
     }
 
     static private boolean needToAutoWhitelist(Context context) {
-        return PreferenceFragment.getBoolean(context, PreferenceFragment.PREFERENCE_AUTO_WHITELIST);
+        return PreferenceFragment.getBoolean(context, Aurora.PREFERENCE_AUTO_WHITELIST);
     }
 
     static private App getApp(Context context, String packageName) {
@@ -85,14 +87,14 @@ public class GlobalInstallReceiver extends BroadcastReceiver {
         try {
             app = new App(pm.getPackageInfo(packageName, PackageManager.GET_META_DATA));
         } catch (PackageManager.NameNotFoundException e) {
-            Log.e(GlobalInstallReceiver.class.getSimpleName(), "Install broadcast received, but package " + packageName + " not found");
+            Timber.e("Install broadcast received, but package " + packageName + " not found");
         }
         return app;
     }
 
     static private boolean wasInstalled(Context context, String packageName) {
         return InstallationState.isInstalled(packageName)
-                || (PreferenceFragment.getString(context, PreferenceFragment.INSTALLATION_METHOD_DEFAULT).equals(PreferenceFragment.INSTALLATION_METHOD_DEFAULT)
+                || (PreferenceFragment.getString(context, Aurora.INSTALLATION_METHOD_DEFAULT).equals(Aurora.INSTALLATION_METHOD_DEFAULT)
                 && DownloadState.get(packageName).isEverythingFinished()
         )
                 ;
@@ -105,13 +107,13 @@ public class GlobalInstallReceiver extends BroadcastReceiver {
             return;
         }
         String packageName = intent.getData().getSchemeSpecificPart();
-        Log.i(getClass().getSimpleName(), "Finished installation of " + packageName);
+        Timber.i("Finished installation of %s", packageName);
         if (TextUtils.isEmpty(packageName)) {
             return;
         }
         BlackWhiteListManager manager = new BlackWhiteListManager(context);
         if (actionIsInstall(intent) && wasInstalled(context, packageName) && needToAutoWhitelist(context) && !manager.isBlack()) {
-            Log.i(getClass().getSimpleName(), "Whitelisting " + packageName);
+            Timber.i("Whitelisting %s", packageName);
             manager.add(packageName);
         }
         if (null != DetailsFragment.app && packageName.equals(DetailsFragment.app.getPackageName())) {
@@ -122,7 +124,7 @@ public class GlobalInstallReceiver extends BroadcastReceiver {
             App app = getApp(context, packageName);
             File apkPath = Paths.getApkPath(context, app.getPackageName(), app.getVersionCode());
             boolean deleted = apkPath.delete();
-            Log.i(getClass().getSimpleName(), "Removed " + apkPath + " successfully: " + deleted);
+            Timber.i("Removed " + apkPath + " successfully: " + deleted);
         }
     }
 }

@@ -26,7 +26,6 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
-import android.util.Log;
 
 import com.dragons.aurora.helpers.Prefs;
 
@@ -41,6 +40,8 @@ import java.util.Properties;
 import java.util.Set;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
+
+import timber.log.Timber;
 
 public class SpoofDeviceManager {
 
@@ -71,10 +72,10 @@ public class SpoofDeviceManager {
     public Properties getProperties(String entryName) {
         File defaultDirectoryFile = new File(Paths.getDownloadPath(context), entryName);
         if (defaultDirectoryFile.exists()) {
-            Log.i(getClass().getSimpleName(), "Loading device info from " + defaultDirectoryFile.getAbsolutePath());
+            Timber.i("Loading device info from %s", defaultDirectoryFile.getAbsolutePath());
             return getProperties(defaultDirectoryFile);
         } else {
-            Log.i(getClass().getSimpleName(), "Loading device info from " + getApkFile() + "/" + entryName);
+            Timber.i("Loading device info from " + getApkFile() + "/" + entryName);
             JarFile jarFile = getApkAsJar();
             if (null == jarFile || null == jarFile.getEntry(entryName)) {
                 Properties empty = new Properties();
@@ -90,7 +91,7 @@ public class SpoofDeviceManager {
         try {
             properties.load(jarFile.getInputStream(entry));
         } catch (IOException e) {
-            Log.e(getClass().getSimpleName(), "Could not read " + entry.getName());
+            Timber.e("Could not read %s", entry.getName());
         }
         return properties;
     }
@@ -100,7 +101,7 @@ public class SpoofDeviceManager {
         try {
             properties.load(new BufferedInputStream(new FileInputStream(file)));
         } catch (IOException e) {
-            Log.e(getClass().getSimpleName(), "Could not read " + file.getName());
+            Timber.e("Could not read %s", file.getName());
         }
         return properties;
     }
@@ -121,7 +122,7 @@ public class SpoofDeviceManager {
         for (String name : devices.keySet()) {
             prefs.putString(name, devices.get(name));
         }
-        prefs.commit();
+        prefs.apply();
     }
 
     private Map<String, String> getDevicesFromApk() {
@@ -148,7 +149,7 @@ public class SpoofDeviceManager {
                 return new JarFile(apk);
             }
         } catch (IOException e) {
-            Log.e(getClass().getSimpleName(), "Could not open Aurora Store apk as a jar file: " + e.getMessage());
+            Timber.e("Could not open Aurora Store apk as a jar file: %s", e.getMessage());
         }
         return null;
     }

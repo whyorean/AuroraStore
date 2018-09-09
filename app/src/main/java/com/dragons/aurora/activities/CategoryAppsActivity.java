@@ -24,11 +24,12 @@ package com.dragons.aurora.activities;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 
 import com.dragons.aurora.CategoryManager;
 import com.dragons.aurora.R;
 import com.dragons.aurora.fragment.MoreCategoryApps;
+
+import timber.log.Timber;
 
 public class CategoryAppsActivity extends AuroraActivity {
 
@@ -64,7 +65,7 @@ public class CategoryAppsActivity extends AuroraActivity {
         super.onNewIntent(intent);
         String categoryId = intent.getStringExtra(INTENT_CATEGORY_ID);
         if (null == categoryId) {
-            Log.w(getClass().getSimpleName(), "No category id");
+            Timber.w("No category id");
         } else {
             setTitle(new CategoryManager(this).getCategoryName(categoryId));
             getCategoryApps(categoryId);

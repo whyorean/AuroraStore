@@ -22,7 +22,6 @@
 package com.dragons.aurora.downloader;
 
 import android.content.Context;
-import android.util.Log;
 
 import com.dragons.aurora.Paths;
 import com.dragons.aurora.model.App;
@@ -33,6 +32,8 @@ import com.dragons.aurora.task.HttpURLConnectionDownloadTask;
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
+
+import timber.log.Timber;
 
 public class DownloadManagerFake extends DownloadManagerAbstract {
 
@@ -48,7 +49,7 @@ public class DownloadManagerFake extends DownloadManagerAbstract {
 
     @Override
     public long enqueue(App app, AndroidAppDeliveryData deliveryData, Type type) {
-        Log.i(getClass().getSimpleName(), "Downloading " + type.name() + " for " + app.getPackageName());
+        Timber.i("Downloading " + type.name() + " for " + app.getPackageName());
         String url = getUrl(deliveryData, type);
         long downloadId = url.hashCode();
         statuses.put(downloadId, DownloadManagerInterface.IN_PROGRESS);

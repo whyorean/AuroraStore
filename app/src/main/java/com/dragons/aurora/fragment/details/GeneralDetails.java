@@ -29,7 +29,6 @@ import android.text.Html;
 import android.text.TextUtils;
 import android.text.format.Formatter;
 import android.text.util.Linkify;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
@@ -64,6 +63,7 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.palette.graphics.Palette;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import timber.log.Timber;
 
 import static com.dragons.aurora.AuroraApplication.COLOR_UI;
 
@@ -284,7 +284,7 @@ public class GeneralDetails extends AbstractHelper {
             itemView.setAutoLinkMask(Linkify.ALL);
             itemView.setText(context.getString(R.string.two_items, key, Html.fromHtml(value)));
         } catch (RuntimeException e) {
-            Log.w(getClass().getSimpleName(), "System WebView missing: " + e.getMessage());
+            Timber.w("System WebView missing: %s", e.getMessage());
             itemView.setAutoLinkMask(0);
             itemView.setText(context.getString(R.string.two_items, key, Html.fromHtml(value)));
         }

@@ -22,7 +22,6 @@
 package com.dragons.aurora.fragment;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -61,6 +60,7 @@ import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
+import timber.log.Timber;
 
 import static com.dragons.aurora.Util.isConnected;
 
@@ -206,9 +206,9 @@ public class TopFreeApps extends BaseFragment {
         } catch (Exception e) {
             if (e instanceof CredentialsEmptyException) {
                 new ExceptionTask(getContext()).processException(e);
-                Log.e(getClass().getSimpleName(), "Credentials Empty Exception");
+                Timber.e("Credentials Empty Exception");
             } else
-                Log.e(getClass().getSimpleName(), e.getMessage());
+                Timber.e(e.getMessage());
             return null;
         }
     }
@@ -224,7 +224,7 @@ public class TopFreeApps extends BaseFragment {
                         addApps(appList);
                     } else
                         setupListView(appList);
-                }, err -> Log.e(getTag(), err.getMessage())));
+                }, err -> Timber.e(err.getMessage())));
     }
 
     private void addApps(List<App> appsToAdd) {

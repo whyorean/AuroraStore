@@ -26,7 +26,6 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -56,6 +55,7 @@ import java.util.TimerTask;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.palette.graphics.Palette;
+import timber.log.Timber;
 
 import static com.dragons.aurora.AuroraApplication.COLOR_UI;
 
@@ -207,7 +207,7 @@ public class ManualFragment extends BaseFragment {
                 downloadButton.setVisibility(View.VISIBLE);
                 restartTimer();
             } catch (NumberFormatException e) {
-                Log.w(getClass().getSimpleName(), s.toString() + " is not a number");
+                Timber.w("%s is not a number", s.toString());
             }
         }
 

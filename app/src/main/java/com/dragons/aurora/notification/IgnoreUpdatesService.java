@@ -25,10 +25,11 @@ import android.app.IntentService;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.text.TextUtils;
-import android.util.Log;
 
 import com.dragons.aurora.BlackWhiteListManager;
 import com.dragons.aurora.Paths;
+
+import timber.log.Timber;
 
 public class IgnoreUpdatesService extends IntentService {
 
@@ -43,10 +44,10 @@ public class IgnoreUpdatesService extends IntentService {
     protected void onHandleIntent(Intent intent) {
         String packageName = intent.getStringExtra(PACKAGE_NAME);
         if (TextUtils.isEmpty(packageName)) {
-            Log.w(getClass().getSimpleName(), "No package name provided in the intent");
+            Timber.w("No package name provided in the intent");
             return;
         }
-        Log.i(getClass().getSimpleName(), "Adding " + packageName + " to ignore list");
+        Timber.i("Adding " + packageName + " to ignore list");
         BlackWhiteListManager manager = new BlackWhiteListManager(getApplicationContext());
         if (manager.isBlack()) {
             manager.add(packageName);

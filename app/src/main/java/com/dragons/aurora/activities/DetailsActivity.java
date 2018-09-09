@@ -25,12 +25,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 
 import com.dragons.aurora.R;
 import com.dragons.aurora.fragment.DetailsFragment;
 
 import androidx.fragment.app.FragmentTransaction;
+import timber.log.Timber;
 
 public class DetailsActivity extends AuroraActivity {
 
@@ -55,11 +55,11 @@ public class DetailsActivity extends AuroraActivity {
 
         final String packageName = getIntentPackageName(intent);
         if (TextUtils.isEmpty(packageName)) {
-            Log.e(this.getClass().getName(), "No package name provided");
+            Timber.e("No package name provided");
             finish();
             return;
         }
-        Log.i(getClass().getSimpleName(), "Getting info about " + packageName);
+        Timber.i("Getting info about %s", packageName);
         grabDetails(packageName);
     }
 

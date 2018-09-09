@@ -24,12 +24,12 @@ package com.dragons.aurora.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.dragons.aurora.Aurora;
 import com.dragons.aurora.ContextUtil;
 import com.dragons.aurora.R;
 import com.dragons.aurora.SpoofDeviceManager;
@@ -46,14 +46,10 @@ import java.util.Locale;
 import java.util.Properties;
 
 import androidx.appcompat.app.AlertDialog;
-
-import static com.dragons.aurora.fragment.PreferenceFragment.PREFERENCE_DEVICE_TO_PRETEND_TO_BE;
-import static com.dragons.aurora.fragment.PreferenceFragment.PREFERENCE_DEVICE_TO_PRETEND_TO_BE_INDEX;
+import timber.log.Timber;
 
 public class DeviceInfoActivity extends BaseActivity {
 
-    public static final String INTENT_DEVICE_NAME = "INTENT_DEVICE_NAME";
-    public static final String INTENT_DEVICE_INDEX = "INTENT_DEVICE_INDEX";
     private String deviceName;
     private int deviceIndex;
 
@@ -75,10 +71,10 @@ public class DeviceInfoActivity extends BaseActivity {
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
-        deviceName = intent.getStringExtra(INTENT_DEVICE_NAME);
-        deviceIndex = intent.getIntExtra(INTENT_DEVICE_INDEX, 0);
+        deviceName = intent.getStringExtra(Aurora.INTENT_DEVICE_NAME);
+        deviceIndex = intent.getIntExtra(Aurora.INTENT_DEVICE_INDEX, 0);
         if (TextUtils.isEmpty(deviceName)) {
-            Log.e(getClass().getSimpleName(), "No device name given");
+            Timber.e("No device name given");
             finish();
             return;
         }
@@ -127,8 +123,8 @@ public class DeviceInfoActivity extends BaseActivity {
                     if (!TextUtils.isEmpty(deviceName) && !isDeviceDefinitionValid(deviceName)) {
                         ContextUtil.toast(this, R.string.error_invalid_device_definition);
                     } else {
-                        Prefs.putString(this, PREFERENCE_DEVICE_TO_PRETEND_TO_BE, deviceName);
-                        Prefs.putInteger(this, PREFERENCE_DEVICE_TO_PRETEND_TO_BE_INDEX, deviceIndex);
+                        Prefs.putString(this, Aurora.PREFERENCE_DEVICE_TO_PRETEND_TO_BE, deviceName);
+                        Prefs.putInteger(this, Aurora.PREFERENCE_DEVICE_TO_PRETEND_TO_BE_INDEX, deviceIndex);
                     }
                     Accountant.completeCheckout(this);
                     dialogInterface.dismiss();

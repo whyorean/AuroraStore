@@ -23,7 +23,6 @@ package com.dragons.aurora.downloader;
 
 import android.content.Context;
 import android.os.StatFs;
-import android.util.Log;
 
 import com.dragons.aurora.InstalledApkCopier;
 import com.dragons.aurora.Paths;
@@ -32,6 +31,8 @@ import com.dragons.aurora.playstoreapiv2.AndroidAppDeliveryData;
 import com.dragons.aurora.playstoreapiv2.AppFileMetadata;
 
 import java.io.File;
+
+import timber.log.Timber;
 
 public class Downloader {
 
@@ -44,9 +45,9 @@ public class Downloader {
     }
 
     static private void prepare(File file, long expectedSize) {
-        Log.i(Downloader.class.getSimpleName(), "file.exists()=" + file.exists() + " file.length()=" + file.length() + " metadata.getSize()=" + expectedSize);
+        Timber.i("file.exists()=" + file.exists() + " file.length()=" + file.length() + " metadata.getSize()=" + expectedSize);
         if (file.exists() && file.length() != expectedSize) {
-            Log.i(Downloader.class.getSimpleName(), "Deleted old file: " + file.delete());
+            Timber.i("Deleted old file: %s", file.delete());
         }
         file.getParentFile().mkdirs();
     }

@@ -21,6 +21,7 @@
 
 package com.dragons.aurora.fragment.preference;
 
+import com.dragons.aurora.Aurora;
 import com.dragons.aurora.R;
 import com.dragons.aurora.Util;
 import com.dragons.aurora.fragment.PreferenceFragment;
@@ -79,7 +80,7 @@ public class Blacklist extends Abstract {
         @Override
         public boolean onPreferenceChange(Preference preference, Object newValue) {
             String value = (String) newValue;
-            boolean isBlackList = null != value && value.equals(PreferenceFragment.LIST_BLACK);
+            boolean isBlackList = null != value && value.equals(Aurora.LIST_BLACK);
             appList.setTitle(appList.getContext().getString(
                     isBlackList
                             ? R.string.pref_update_list_black

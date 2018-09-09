@@ -24,7 +24,6 @@ package com.dragons.aurora.notification;
 import android.app.IntentService;
 import android.content.Intent;
 import android.text.TextUtils;
-import android.util.Log;
 
 import com.dragons.aurora.AuroraApplication;
 import com.dragons.aurora.downloader.DownloadManagerFactory;
@@ -33,6 +32,8 @@ import com.dragons.aurora.downloader.DownloadState;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import timber.log.Timber;
 
 public class CancelDownloadService extends IntentService {
 
@@ -51,7 +52,7 @@ public class CancelDownloadService extends IntentService {
         long downloadId = intent.getLongExtra(DOWNLOAD_ID, 0L);
         String packageName = intent.getStringExtra(PACKAGE_NAME);
         if (downloadId == 0 && TextUtils.isEmpty(packageName)) {
-            Log.w(getClass().getSimpleName(), "No download id or package name provided in the intent");
+            Timber.w("No download id or package name provided in the intent");
         }
         List<Long> downloadIds = new ArrayList<>();
         if (downloadId != 0) {
@@ -67,7 +68,7 @@ public class CancelDownloadService extends IntentService {
     }
 
     private void cancel(long downloadId) {
-        Log.i(getClass().getSimpleName(), "Cancelling download " + downloadId);
+        Timber.i("Cancelling download %s", downloadId);
         dm.cancel(downloadId);
     }
 }

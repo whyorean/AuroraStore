@@ -28,7 +28,6 @@ import android.content.res.Configuration;
 import android.net.http.HttpResponseCache;
 import android.os.Handler;
 import android.os.HandlerThread;
-import android.util.Log;
 
 import com.dragons.aurora.downloader.DownloadManagerInterface;
 import com.dragons.aurora.helpers.Prefs;
@@ -43,6 +42,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import androidx.preference.PreferenceManager;
+import timber.log.Timber;
 
 public class AuroraApplication extends Application {
 
@@ -87,10 +87,11 @@ public class AuroraApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        Timber.plant(new AuroraLogTree());
         try {
             HttpResponseCache.install(new File(getCacheDir(), "http"), 5 * 1024 * 1024);
         } catch (IOException e) {
-            Log.e(getClass().getSimpleName(), "Could not register cache " + e.getMessage());
+            Timber.e("Could not register cache %s", e.getMessage());
         }
 
         PreferenceManager.setDefaultValues(this, R.xml.settings, false);
@@ -126,6 +127,6 @@ public class AuroraApplication extends Application {
     }
 
     public void getSavedPrefs() {
-        COLOR_UI = Prefs.getBoolean(getApplicationContext(), "PREFERENCE_COLOR_UI");
+        COLOR_UI = Prefs.getBoolean(getApplicationContext(), Aurora.PREFERENCE_COLOR_UI);
     }
 }

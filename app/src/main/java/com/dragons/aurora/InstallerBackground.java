@@ -22,11 +22,12 @@
 package com.dragons.aurora;
 
 import android.content.Context;
-import android.util.Log;
 
 import com.dragons.aurora.activities.DetailsActivity;
 import com.dragons.aurora.model.App;
 import com.dragons.aurora.notification.NotificationManagerWrapper;
+
+import timber.log.Timber;
 
 abstract public class InstallerBackground extends InstallerAbstract {
 
@@ -42,7 +43,7 @@ abstract public class InstallerBackground extends InstallerAbstract {
             return false;
         }
         if (background && !new PermissionsComparator(context).isSame(app)) {
-            Log.i(getClass().getSimpleName(), "New permissions for " + app.getPackageName());
+            Timber.i("New permissions for %s", app.getPackageName());
             ((AuroraApplication) context.getApplicationContext()).removePendingUpdate(app.getPackageName());
             notifyNewPermissions(app);
             return false;

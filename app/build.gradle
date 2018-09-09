@@ -63,13 +63,13 @@ android {
 
 dependencies {
     //UI
-    implementation 'androidx.appcompat:appcompat:1.0.0-rc01'
-    implementation 'androidx.palette:palette:1.0.0-rc01'
-    implementation 'androidx.cardview:cardview:1.0.0-rc01'
-    implementation 'androidx.preference:preference:1.0.0-rc01'
-    implementation 'androidx.recyclerview:recyclerview:1.0.0-rc01'
+    implementation 'androidx.appcompat:appcompat:1.0.0-rc02'
+    implementation 'androidx.palette:palette:1.0.0-rc02'
+    implementation 'androidx.cardview:cardview:1.0.0-rc02'
+    implementation 'androidx.preference:preference:1.0.0-rc02'
+    implementation 'androidx.recyclerview:recyclerview:1.0.0-rc02'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.0-alpha2'
-    implementation 'com.google.android.material:material:1.0.0-rc01'
+    implementation 'com.google.android.material:material:1.0.0-rc02'
     implementation 'com.aurelhubert:ahbottomnavigation:2.1.0'
     implementation 'com.github.florent37:shapeofview:1.3.0'
 
@@ -82,6 +82,7 @@ dependencies {
     implementation 'com.github.Chainfire:libsuperuser:-SNAPSHOT'
     implementation 'com.squareup.okhttp3:okhttp:3.10.0'
     implementation 'com.github.percolate:caffeine:0.4.7'
+    implementation 'com.jakewharton.timber:timber:4.7.1'
     implementation 'commons-net:commons-net:3.6'
 
     //ButterKnife

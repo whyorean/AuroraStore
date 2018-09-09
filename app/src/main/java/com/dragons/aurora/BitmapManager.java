@@ -24,9 +24,8 @@ package com.dragons.aurora;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.util.Log;
 
-import com.dragons.aurora.fragment.PreferenceFragment;
+import com.dragons.aurora.helpers.Prefs;
 import com.percolate.caffeine.PhoneUtils;
 
 import java.io.File;
@@ -45,6 +44,8 @@ import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLSession;
 import javax.net.ssl.X509TrustManager;
+
+import timber.log.Timber;
 
 public class BitmapManager {
 
@@ -82,7 +83,7 @@ public class BitmapManager {
 
     public BitmapManager(Context context) {
         baseDir = context.getCacheDir();
-        noImages = PreferenceFragment.getBoolean(context, PreferenceFragment.PREFERENCE_NO_IMAGES) && PhoneUtils.isConnectedMobile(context);
+        noImages = Prefs.getBoolean(context, Aurora.PREFERENCE_NO_IMAGES) && PhoneUtils.isConnectedMobile(context);
     }
 
     static private boolean isStoredAndValid(File cached) {
@@ -99,7 +100,7 @@ public class BitmapManager {
             options.inDither = false;
             return BitmapFactory.decodeStream(new FileInputStream(cached), null, options);
         } catch (IOException e) {
-            Log.e(BitmapManager.class.getSimpleName(), "Could not get cached bitmap: " + e.getClass().getName() + " " + e.getMessage());
+            Timber.e("Could not get cached bitmap: " + e.getClass().getName() + " " + e.getMessage());
             return null;
         }
     }
@@ -138,7 +139,7 @@ public class BitmapManager {
 
             return BitmapFactory.decodeStream(input, null, options);
         } catch (IOException e) {
-            Log.e(BitmapManager.class.getSimpleName(), "Could not get icon from " + url + " " + e.getMessage());
+            Timber.e("Could not get icon from " + url + " " + e.getMessage());
         }
         return null;
     }

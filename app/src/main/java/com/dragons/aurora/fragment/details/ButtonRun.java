@@ -26,11 +26,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Build;
-import android.util.Log;
 import android.view.View;
 
 import com.dragons.aurora.R;
 import com.dragons.aurora.model.App;
+
+import timber.log.Timber;
 
 public class ButtonRun extends Button {
 
@@ -59,7 +60,7 @@ public class ButtonRun extends Button {
             try {
                 context.startActivity(i);
             } catch (ActivityNotFoundException e) {
-                Log.e(getClass().getName(), "getLaunchIntentForPackage returned an intent, but starting the activity failed for " + app.getPackageName());
+                Timber.e("getLaunchIntentForPackage returned an intent, but starting the activity failed for %s", app.getPackageName());
             }
         }
     }

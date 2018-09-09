@@ -23,6 +23,7 @@ package com.dragons.aurora.task.playstore;
 
 import android.text.TextUtils;
 
+import com.dragons.aurora.Aurora;
 import com.dragons.aurora.CategoryManager;
 import com.dragons.aurora.playstoreapiv2.DocV2;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
@@ -61,7 +62,7 @@ abstract public class CategoryTask extends PlayStorePayloadTask<Void> {
     @Override
     protected Void getResult(GooglePlayAPI api, String... arguments) throws IOException {
         Map<String, String> topCategories = buildCategoryMap(api.categoriesList());
-        manager.save(CategoryManager.TOP, topCategories);
+        manager.save(Aurora.TOP, topCategories);
         for (String categoryId : topCategories.keySet()) {
             manager.save(categoryId, buildCategoryMap(api.categoriesList(categoryId)));
         }
@@ -78,7 +79,7 @@ abstract public class CategoryTask extends PlayStorePayloadTask<Void> {
                 if (!category.hasUnknownCategoryContainer()
                         || !category.getUnknownCategoryContainer().hasCategoryIdContainer()
                         || !category.getUnknownCategoryContainer().getCategoryIdContainer().hasCategoryId()
-                        ) {
+                ) {
                     continue;
                 }
                 String categoryId = category.getUnknownCategoryContainer().getCategoryIdContainer().getCategoryId();

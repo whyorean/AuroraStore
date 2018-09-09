@@ -32,17 +32,6 @@ import static androidx.preference.PreferenceManager.getDefaultSharedPreferences;
 
 public class Prefs {
 
-    public static final String REFRESH_ASKED = "REFRESH_ASKED";
-    public static final String LOGGED_IN = "LOGGED_IN";
-    public static final String GOOGLE_ACC = "GOOGLE_ACC";
-    public static final String DUMMY_ACC = "DUMMY_ACC";
-    public static final String GOOGLE_NAME = "GOOGLE_NAME";
-    public static final String GOOGLE_URL = "GOOGLE_URL";
-    public static final String GOOGLE_EMAIL = "GOOGLE_EMAIL";
-    public static final String GOOGLE_PASSWORD = "GOOGLE_PASSWORD";
-    public static final String SEC_ACCOUNT = "SEC_ACCOUNT";
-    public static final String USED_EMAILS_SET = "USED_EMAILS_SET";
-
     private static final String DELIMITER = ",";
 
     public static void putString(Context context, String key, String value) {

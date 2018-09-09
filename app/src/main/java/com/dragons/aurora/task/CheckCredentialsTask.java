@@ -21,13 +21,11 @@
 
 package com.dragons.aurora.task;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
-import android.preference.PreferenceManager;
 import android.text.TextUtils;
-import android.util.Log;
 
+import com.dragons.aurora.Aurora;
 import com.dragons.aurora.ContextUtil;
 import com.dragons.aurora.CredentialsEmptyException;
 import com.dragons.aurora.FirstLaunchChecker;
@@ -35,6 +33,7 @@ import com.dragons.aurora.PlayStoreApiAuthenticator;
 import com.dragons.aurora.R;
 import com.dragons.aurora.fragment.PreferenceFragment;
 import com.dragons.aurora.helpers.Accountant;
+import com.dragons.aurora.helpers.Prefs;
 import com.dragons.aurora.playstoreapiv2.AuthException;
 import com.dragons.aurora.playstoreapiv2.GooglePlayException;
 import com.dragons.aurora.playstoreapiv2.TokenDispenserException;
@@ -45,6 +44,7 @@ import java.io.IOException;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import timber.log.Timber;
 
 public abstract class CheckCredentialsTask extends PlayStoreTask<Void> {
 
@@ -57,7 +57,7 @@ public abstract class CheckCredentialsTask extends PlayStoreTask<Void> {
         if (success()) {
             new FirstLaunchChecker(context).setLoggedIn();
             if (caller instanceof CloneableTask) {
-                Log.i(getClass().getSimpleName(), caller.getClass().getSimpleName() + " is cloneable. Retrying.");
+                Timber.i("%s is cloneable. Retrying.", caller.getClass().getSimpleName());
                 ((PlayStoreTask) ((CloneableTask) caller).clone()).execute((Object[]) new String[]{});
             }
         }
@@ -66,8 +66,8 @@ public abstract class CheckCredentialsTask extends PlayStoreTask<Void> {
     @Override
     protected void processException(Throwable e) {
         super.processException(e);
-        if ((e instanceof GooglePlayException && ((GooglePlayException) e).getCode() == 500)
-                || (e instanceof AuthException
+        if ((e instanceof GooglePlayException
+                && ((GooglePlayException) e).getCode() == 500) || (e instanceof AuthException
                 && !TextUtils.isEmpty(((AuthException) e).getTwoFactorUrl()))) {
             return;
         }
@@ -79,7 +79,7 @@ public abstract class CheckCredentialsTask extends PlayStoreTask<Void> {
         if (e instanceof TokenDispenserException) {
             ContextUtil.toast(context, R.string.error_token_dispenser_problem);
         } else if (e instanceof GooglePlayException && ((GooglePlayException) e).getCode() == 500) {
-            PreferenceManager.getDefaultSharedPreferences(context).edit().putString(PreferenceFragment.PREFERENCE_BACKGROUND_UPDATE_INTERVAL, "-1").apply();
+            Prefs.putString(context, Aurora.PREFERENCE_BACKGROUND_UPDATE_INTERVAL, "-1");
             ContextUtil.toast(context, R.string.error_invalid_device_definition);
             context.startActivity(new Intent(context, PreferenceFragment.class));
         }
@@ -88,7 +88,7 @@ public abstract class CheckCredentialsTask extends PlayStoreTask<Void> {
     @Override
     protected void processAuthException(AuthException e) {
         if (e instanceof CredentialsEmptyException) {
-            Log.w(getClass().getSimpleName(), "Credentials empty");
+            Timber.w("Credentials empty");
         } else if (null != e.getTwoFactorUrl() && context instanceof AppCompatActivity) {
             getTwoFactorAuthDialog().show();
         } else {
@@ -105,18 +105,15 @@ public abstract class CheckCredentialsTask extends PlayStoreTask<Void> {
                 .setTitle(R.string.dialog_title_two_factor)
                 .setPositiveButton(
                         R.string.dialog_two_factor_create_password,
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                Intent i = new Intent(Intent.ACTION_VIEW);
-                                i.setData(Uri.parse(APP_PASSWORDS_URL));
-                                if (i.resolveActivity(context.getPackageManager()) != null) {
-                                    context.startActivity(i);
-                                } else {
-                                    Log.e(getClass().getSimpleName(), "No application available to handle http links... very strange");
-                                }
-                                dialog.dismiss();
+                        (dialog, which) -> {
+                            Intent i = new Intent(Intent.ACTION_VIEW);
+                            i.setData(Uri.parse(APP_PASSWORDS_URL));
+                            if (i.resolveActivity(context.getPackageManager()) != null) {
+                                context.startActivity(i);
+                            } else {
+                                Timber.e("No application available to handle http links... very strange");
                             }
+                            dialog.dismiss();
                         }
                 )
                 .setNegativeButton(R.string.dialog_two_factor_cancel, (dialog, which) -> dialog.dismiss())

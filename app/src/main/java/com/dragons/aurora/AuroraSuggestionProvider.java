@@ -29,7 +29,6 @@ import android.database.MatrixCursor;
 import android.net.Uri;
 import android.provider.BaseColumns;
 import android.text.TextUtils;
-import android.util.Log;
 
 import com.dragons.aurora.fragment.PreferenceFragment;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
@@ -40,6 +39,7 @@ import java.io.File;
 import java.io.IOException;
 
 import androidx.annotation.NonNull;
+import timber.log.Timber;
 
 public class AuroraSuggestionProvider extends ContentProvider {
 
@@ -66,14 +66,14 @@ public class AuroraSuggestionProvider extends ContentProvider {
             fill(cursor, uri);
         } catch (GooglePlayException e) {
             if (e.getCode() == 401
-                    && PreferenceFragment.getBoolean(getContext(), PlayStoreApiAuthenticator.PREFERENCE_APP_PROVIDED_EMAIL)
-                    ) {
+                    && PreferenceFragment.getBoolean(getContext(), Aurora.PREFERENCE_APP_PROVIDED_EMAIL)
+            ) {
                 refreshAndRetry(cursor, uri);
             } else {
-                Log.e(getClass().getSimpleName(), e.getClass().getName() + ": " + e.getMessage());
+                Timber.e(Aurora.TAG, e.getMessage());
             }
         } catch (Throwable e) {
-            Log.e(getClass().getSimpleName(), e.getClass().getName() + ": " + e.getMessage());
+            Timber.e(Aurora.TAG, e.getMessage());
         }
         return cursor;
     }
@@ -98,7 +98,7 @@ public class AuroraSuggestionProvider extends ContentProvider {
             new PlayStoreApiAuthenticator(getContext()).refreshToken();
             fill(cursor, uri);
         } catch (Throwable e) {
-            Log.e(getClass().getSimpleName(), e.getClass().getName() + ": " + e.getMessage());
+            Timber.e(Aurora.TAG, e.getMessage());
         }
     }
 

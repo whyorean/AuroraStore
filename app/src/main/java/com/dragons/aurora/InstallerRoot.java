@@ -22,13 +22,13 @@
 package com.dragons.aurora;
 
 import android.content.Context;
-import android.util.Log;
 
 import com.dragons.aurora.model.App;
 
 import java.util.List;
 
 import eu.chainfire.libsuperuser.Shell;
+import timber.log.Timber;
 
 public class InstallerRoot extends InstallerBackground {
 
@@ -53,7 +53,7 @@ public class InstallerRoot extends InstallerBackground {
         List<String> lines = Shell.SU.run("pm install -i \"" + BuildConfig.APPLICATION_ID + "\" -r " + file);
         if (null != lines) {
             for (String line : lines) {
-                Log.i(getClass().getSimpleName(), line);
+                Timber.i(line);
             }
         }
         return null != lines && lines.size() == 1 && lines.get(0).equals("Success");

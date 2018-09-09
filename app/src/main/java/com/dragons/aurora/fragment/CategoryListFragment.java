@@ -22,7 +22,6 @@
 package com.dragons.aurora.fragment;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,6 +48,7 @@ import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
+import timber.log.Timber;
 
 import static com.dragons.aurora.Util.hide;
 import static com.dragons.aurora.Util.show;
@@ -138,6 +138,6 @@ public class CategoryListFragment extends BaseFragment {
                             setupAllCategories();
                         }
                     }
-                }, err -> Log.e(getTag(), err.getMessage())));
+                }, err -> Timber.e(err.getMessage())));
     }
 }

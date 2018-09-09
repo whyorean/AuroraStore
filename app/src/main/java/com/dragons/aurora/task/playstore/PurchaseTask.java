@@ -24,7 +24,6 @@ package com.dragons.aurora.task.playstore;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.util.Log;
 import android.view.WindowManager;
 
 import com.dragons.aurora.ContextUtil;
@@ -41,6 +40,7 @@ import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 import java.io.IOException;
 
 import androidx.appcompat.app.AlertDialog;
+import timber.log.Timber;
 
 public class PurchaseTask extends DeliveryDataTask implements CloneableTask {
 
@@ -85,17 +85,17 @@ public class PurchaseTask extends DeliveryDataTask implements CloneableTask {
                     }
                 } else {
                     context.sendBroadcast(new Intent(DownloadManagerInterface.ACTION_DOWNLOAD_CANCELLED));
-                    Log.e(getClass().getSimpleName(), app.getPackageName() + " not enough storage space");
+                    Timber.e("%s not enough storage space", app.getPackageName());
                     throw new IOException(context.getString(R.string.download_manager_ERROR_INSUFFICIENT_SPACE));
                 }
             } catch (IllegalArgumentException | SecurityException e) {
                 context.sendBroadcast(new Intent(DownloadManagerInterface.ACTION_DOWNLOAD_CANCELLED));
-                Log.e(getClass().getSimpleName(), app.getPackageName() + " unknown storage error: " + e.getClass().getName() + ": " + e.getMessage());
+                Timber.e(app.getPackageName() + " unknown storage error: " + e.getClass().getName() + ": " + e.getMessage());
                 throw new IOException(context.getString(R.string.download_manager_ERROR_FILE_ERROR));
             }
         } else {
             context.sendBroadcast(new Intent(DownloadManagerInterface.ACTION_DOWNLOAD_CANCELLED));
-            Log.e(getClass().getSimpleName(), app.getPackageName() + " no download link returned");
+            Timber.e("%s no download link returned", app.getPackageName());
         }
         return deliveryData;
     }
@@ -112,11 +112,11 @@ public class PurchaseTask extends DeliveryDataTask implements CloneableTask {
         if (getException() instanceof NotPurchasedException
                 && triggeredBy.equals(DownloadState.TriggeredBy.DOWNLOAD_BUTTON)
                 && triggeredBy.equals(DownloadState.TriggeredBy.MANUAL_DOWNLOAD_BUTTON)
-                ) {
+        ) {
             try {
                 getNotPurchasedDialog(context).show();
-            } catch (WindowManager.BadTokenException e1) {
-                Log.e(getClass().getSimpleName(), "Could not create purchase error dialog: " + e1.getMessage());
+            } catch (WindowManager.BadTokenException e) {
+                Timber.e("Could not create purchase error dialog: %s", e.getMessage());
             }
         }
     }
@@ -134,7 +134,7 @@ public class PurchaseTask extends DeliveryDataTask implements CloneableTask {
             if (ContextUtil.isAlive(context)) {
                 ContextUtil.toast(context, R.string.details_download_not_available);
             } else {
-                Log.w(getClass().getSimpleName(), app.getPackageName() + " not available");
+                Timber.w("%s not available", app.getPackageName());
             }
         } else {
             super.processAuthException(e);

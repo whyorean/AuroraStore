@@ -22,7 +22,6 @@
 package com.dragons.aurora;
 
 import android.content.Context;
-import android.util.Log;
 
 import com.dragons.aurora.model.App;
 
@@ -33,21 +32,23 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
+import timber.log.Timber;
+
 public class InstalledApkCopier {
 
     static public boolean copy(Context context, App app) {
         File destination = Paths.getApkPath(context, app.getPackageName(), app.getInstalledVersionCode());
         if (destination.exists()) {
-            Log.i(InstalledApkCopier.class.getSimpleName(), destination.toString() + " exists");
+            Timber.i("%s exists", destination.toString());
             return true;
         }
         File currentApk = getCurrentApk(app);
         if (null == currentApk) {
-            Log.e(InstalledApkCopier.class.getSimpleName(), "applicationInfo.sourceDir is empty");
+            Timber.e("applicationInfo.sourceDir is empty");
             return false;
         }
         if (!currentApk.exists()) {
-            Log.e(InstalledApkCopier.class.getSimpleName(), currentApk + " does not exist");
+            Timber.e("%s does not exist", currentApk);
             return false;
         }
         return copy(currentApk, destination);
@@ -80,7 +81,7 @@ public class InstalledApkCopier {
             out.flush();
             return true;
         } catch (IOException e) {
-            Log.e(InstalledApkCopier.class.getSimpleName(), e.getClass().getName() + " " + e.getMessage());
+            Timber.e(e.getClass().getName() + " " + e.getMessage());
             return false;
         } finally {
             Util.closeSilently(in);

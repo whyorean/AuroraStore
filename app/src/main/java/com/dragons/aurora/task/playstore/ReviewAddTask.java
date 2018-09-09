@@ -21,15 +21,14 @@
 
 package com.dragons.aurora.task.playstore;
 
-import android.util.Log;
-
-import com.dragons.aurora.activities.DetailsActivity;
 import com.dragons.aurora.model.Review;
 import com.dragons.aurora.model.ReviewBuilder;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 import com.dragons.aurora.playstoreapiv2.ReviewResponse;
 
 import java.io.IOException;
+
+import timber.log.Timber;
 
 public class ReviewAddTask extends PlayStorePayloadTask<Review> {
 
@@ -65,7 +64,7 @@ public class ReviewAddTask extends PlayStorePayloadTask<Review> {
         if (success()) {
             fragment.fillUserReview(review);
         } else {
-            Log.e(DetailsActivity.class.getSimpleName(), "Error adding the review: " + getException().getMessage());
+            Timber.e("Error adding the review: %s", getException().getMessage());
             getException().printStackTrace();
         }
     }

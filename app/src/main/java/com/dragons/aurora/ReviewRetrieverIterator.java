@@ -21,8 +21,6 @@
 
 package com.dragons.aurora;
 
-import android.util.Log;
-
 import com.dragons.aurora.model.Review;
 import com.dragons.aurora.model.ReviewBuilder;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
@@ -30,6 +28,8 @@ import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import timber.log.Timber;
 
 public class ReviewRetrieverIterator extends ReviewIterator {
 
@@ -53,7 +53,7 @@ public class ReviewRetrieverIterator extends ReviewIterator {
         } catch (IOException e) {
             // Review list does not seem important enough to let tha app crash if something happens here
             // TODO: It is unclear if this error even should be shown in the UI
-            Log.i(getClass().getSimpleName(), e.getClass().getName() + ": " + e.getMessage());
+            Timber.i(e.getClass().getName() + ": " + e.getMessage());
         }
         return list;
     }

@@ -23,6 +23,7 @@ package com.dragons.aurora.task;
 
 import android.os.AsyncTask;
 
+import com.dragons.aurora.Aurora;
 import com.dragons.aurora.ContextUtil;
 import com.dragons.aurora.R;
 import com.dragons.aurora.fragment.PreferenceFragment;
@@ -43,8 +44,8 @@ public class CheckSuTask extends AsyncTask<Void, Void, Void> {
     @Override
     protected void onPostExecute(Void aVoid) {
         if (!available) {
-            ((CheckBoxPreference) fragment.findPreference(PreferenceFragment.PREFERENCE_BACKGROUND_UPDATE_INSTALL)).setChecked(false);
-            ((ListPreference) fragment.findPreference(PreferenceFragment.PREFERENCE_INSTALLATION_METHOD)).setValueIndex(0);
+            ((CheckBoxPreference) fragment.findPreference(Aurora.PREFERENCE_BACKGROUND_UPDATE_INSTALL)).setChecked(false);
+            ((ListPreference) fragment.findPreference(Aurora.PREFERENCE_INSTALLATION_METHOD)).setValueIndex(0);
             ContextUtil.toast(fragment.getActivity().getApplicationContext(), R.string.pref_no_root);
         }
     }

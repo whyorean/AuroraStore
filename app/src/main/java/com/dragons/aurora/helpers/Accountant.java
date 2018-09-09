@@ -21,6 +21,7 @@ package com.dragons.aurora.helpers;
 import android.content.Context;
 import android.content.Intent;
 
+import com.dragons.aurora.Aurora;
 import com.dragons.aurora.PlayStoreApiAuthenticator;
 import com.dragons.aurora.R;
 import com.dragons.aurora.activities.LoginActivity;
@@ -30,25 +31,18 @@ import com.dragons.aurora.task.UserProvidedCredentialsTask;
 
 import androidx.appcompat.app.AlertDialog;
 
-import static com.dragons.aurora.helpers.Prefs.DUMMY_ACC;
-import static com.dragons.aurora.helpers.Prefs.GOOGLE_ACC;
-import static com.dragons.aurora.helpers.Prefs.GOOGLE_NAME;
-import static com.dragons.aurora.helpers.Prefs.GOOGLE_URL;
-import static com.dragons.aurora.helpers.Prefs.LOGGED_IN;
-import static com.dragons.aurora.helpers.Prefs.REFRESH_ASKED;
-
 public class Accountant {
 
     public static Boolean isGoogle(Context context) {
-        return Prefs.getBoolean(context, GOOGLE_ACC);
+        return Prefs.getBoolean(context, Aurora.GOOGLE_ACC);
     }
 
     public static Boolean isDummy(Context context) {
-        return Prefs.getBoolean(context, DUMMY_ACC);
+        return Prefs.getBoolean(context, Aurora.DUMMY_ACC);
     }
 
     public static Boolean isLoggedIn(Context context) {
-        return Prefs.getBoolean(context, LOGGED_IN);
+        return Prefs.getBoolean(context, Aurora.LOGGED_IN);
     }
 
     public static void LoginFirst(Context context) {
@@ -91,10 +85,10 @@ public class Accountant {
     }
 
     public static void completeCheckout(Context context) {
-        Prefs.putBoolean(context, LOGGED_IN, false);
-        Prefs.putBoolean(context, REFRESH_ASKED, false);
-        Prefs.putString(context, GOOGLE_NAME, "");
-        Prefs.putString(context, GOOGLE_URL, "");
+        Prefs.putBoolean(context, Aurora.LOGGED_IN, false);
+        Prefs.putBoolean(context, Aurora.REFRESH_ASKED, false);
+        Prefs.putString(context, Aurora.GOOGLE_NAME, "");
+        Prefs.putString(context, Aurora.GOOGLE_URL, "");
         Prefs.putBoolean(context, "LOGIN_PROMPTED", false);
         new PlayStoreApiAuthenticator(context).logout();
     }

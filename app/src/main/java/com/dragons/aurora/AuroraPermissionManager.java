@@ -25,9 +25,10 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.pm.PackageManager;
 import android.os.Build;
-import android.util.Log;
 
 import java.lang.ref.WeakReference;
+
+import timber.log.Timber;
 
 public class AuroraPermissionManager {
 
@@ -48,7 +49,7 @@ public class AuroraPermissionManager {
 
     public boolean checkPermission() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && null != activityRef.get()) {
-            Log.i(getClass().getSimpleName(), "Checking if write permission is granted");
+            Timber.i("Checking if write permission is granted");
             return activityRef.get().checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED;
         }
         return true;
@@ -56,7 +57,7 @@ public class AuroraPermissionManager {
 
     public void requestPermission() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && null != activityRef.get()) {
-            Log.i(getClass().getSimpleName(), "Requesting the write permission");
+            Timber.i("Requesting the write permission");
             activityRef.get().requestPermissions(
                     new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
                     PERMISSIONS_REQUEST_CODE

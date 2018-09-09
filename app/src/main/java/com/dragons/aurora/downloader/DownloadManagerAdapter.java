@@ -26,12 +26,14 @@ import android.app.DownloadManager;
 import android.content.Context;
 import android.database.Cursor;
 import android.os.Build;
-import android.util.Log;
 import android.util.Pair;
 
-import com.dragons.aurora.fragment.PreferenceFragment;
+import com.dragons.aurora.Aurora;
+import com.dragons.aurora.helpers.Prefs;
 import com.dragons.aurora.model.App;
 import com.dragons.aurora.playstoreapiv2.AndroidAppDeliveryData;
+
+import timber.log.Timber;
 
 @TargetApi(Build.VERSION_CODES.GINGERBREAD)
 public class DownloadManagerAdapter extends DownloadManagerAbstract {
@@ -48,7 +50,7 @@ public class DownloadManagerAdapter extends DownloadManagerAbstract {
     @Override
     public long enqueue(App app, AndroidAppDeliveryData deliveryData, Type type) {
         DownloadManager.Request request;
-        Log.i(getClass().getSimpleName(), "Downloading " + type.name() + " for " + app.getPackageName());
+        Timber.i("Downloading " + type.name() + " for " + app.getPackageName());
         switch (type) {
             case APK:
                 request = new DownloadRequestBuilderApk(context, app, deliveryData).build();
@@ -66,8 +68,8 @@ public class DownloadManagerAdapter extends DownloadManagerAbstract {
                 throw new RuntimeException("Unknown request type");
         }
         if (DownloadState.get(app.getPackageName()).getTriggeredBy().equals(DownloadState.TriggeredBy.SCHEDULED_UPDATE)
-                && PreferenceFragment.getBoolean(context, PreferenceFragment.PREFERENCE_BACKGROUND_UPDATE_WIFI_ONLY)
-                ) {
+                && Prefs.getBoolean(context, Aurora.PREFERENCE_BACKGROUND_UPDATE_WIFI_ONLY)
+        ) {
             request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI);
         }
         long downloadId = dm.enqueue(request);

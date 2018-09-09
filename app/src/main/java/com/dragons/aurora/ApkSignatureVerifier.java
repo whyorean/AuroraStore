@@ -25,12 +25,13 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
 import android.os.Build;
-import android.util.Log;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
+
+import timber.log.Timber;
 
 /**
  * NOTE: Silly Android API naming: APK signatures are actually certificates!
@@ -82,7 +83,7 @@ class ApkSignatureVerifier {
             try {
                 outputStream.write(sig.toByteArray());
             } catch (IOException e) {
-                Log.e(getClass().getSimpleName(), "Should not happen! Concatenating signatures failed");
+                Timber.e("Should not happen! Concatenating signatures failed");
             }
         }
 

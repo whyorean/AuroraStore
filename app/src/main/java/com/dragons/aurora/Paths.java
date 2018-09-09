@@ -22,31 +22,23 @@
 package com.dragons.aurora;
 
 import android.content.Context;
-import android.os.Build;
 import android.os.Environment;
 import android.preference.PreferenceManager;
-
-import com.dragons.aurora.fragment.PreferenceFragment;
 
 import java.io.File;
 
 public class Paths {
-
-    static public final String FALLBACK_DIRECTORY = "Android/data/" + BuildConfig.APPLICATION_ID + "/files";
-
     static public File getStorageRoot(Context context) {
         File storageRoot = Environment.getExternalStorageDirectory();
         File[] externalFilesDirs = getExternalFilesDirs(context);
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP
-                || externalFilesDirs.length < 2
-                || (Environment.isExternalStorageEmulated(storageRoot) && !Environment.isExternalStorageRemovable(storageRoot))
-                ) {
+        if (externalFilesDirs.length < 2 || Environment.isExternalStorageEmulated(storageRoot)
+                && !Environment.isExternalStorageRemovable(storageRoot)) {
             return storageRoot;
         }
         for (File file : externalFilesDirs) {
             try {
                 if (Environment.isExternalStorageEmulated(file) && !Environment.isExternalStorageRemovable(file)) {
-                    return new File(file.getAbsolutePath().replace(FALLBACK_DIRECTORY, ""));
+                    return new File(file.getAbsolutePath().replace(Aurora.FALLBACK_DIRECTORY, ""));
                 }
             } catch (IllegalArgumentException e) {
                 // The checks throw exceptions if Environment.getStorageVolume(File path) returns null
@@ -59,7 +51,7 @@ public class Paths {
     static public File getDownloadPath(Context context) {
         return new File(
                 getStorageRoot(context),
-                PreferenceManager.getDefaultSharedPreferences(context).getString(PreferenceFragment.PREFERENCE_DOWNLOAD_DIRECTORY, "")
+                PreferenceManager.getDefaultSharedPreferences(context).getString(Aurora.PREFERENCE_DOWNLOAD_DIRECTORY, "")
         );
     }
 
@@ -79,9 +71,6 @@ public class Paths {
     }
 
     static private File[] getExternalFilesDirs(Context context) {
-        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT
-                ? context.getExternalFilesDirs(null)
-                : new File[]{new File(Environment.getExternalStorageDirectory(), FALLBACK_DIRECTORY)}
-                ;
+        return context.getExternalFilesDirs(null);
     }
 }

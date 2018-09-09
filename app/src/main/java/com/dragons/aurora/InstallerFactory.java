@@ -23,18 +23,18 @@ package com.dragons.aurora;
 
 import android.content.Context;
 
-import com.dragons.aurora.fragment.PreferenceFragment;
+import com.dragons.aurora.helpers.Prefs;
 
 public class InstallerFactory {
 
     static public InstallerAbstract get(Context context) {
-        String userChoice = PreferenceFragment.getString(context, PreferenceFragment.PREFERENCE_INSTALLATION_METHOD);
+        String userChoice = Prefs.getString(context, Aurora.PREFERENCE_INSTALLATION_METHOD);
         switch (userChoice) {
-            case PreferenceFragment.INSTALLATION_METHOD_PRIVILEGED:
+            case Aurora.INSTALLATION_METHOD_PRIVILEGED:
                 return new InstallerPrivileged(context);
-            case PreferenceFragment.INSTALLATION_METHOD_ROOT:
+            case Aurora.INSTALLATION_METHOD_ROOT:
                 return new InstallerRoot(context);
-            case PreferenceFragment.INSTALLATION_METHOD_DEFAULT:
+            case Aurora.INSTALLATION_METHOD_DEFAULT:
             default:
                 return new InstallerDefault(context);
         }

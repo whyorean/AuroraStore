@@ -2,8 +2,8 @@ package com.dragons.aurora.database;
 
 import android.content.Context;
 import android.content.pm.PackageInfo;
-import android.util.Log;
 
+import com.dragons.aurora.Aurora;
 import com.dragons.aurora.helpers.Prefs;
 import com.dragons.aurora.model.App;
 import com.dragons.aurora.model.ImageSource;
@@ -23,7 +23,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import static com.dragons.aurora.fragment.PreferenceFragment.PREFERENCE_DATABASE_VALIDITY;
+import timber.log.Timber;
 
 public class Jessie {
 
@@ -69,7 +69,7 @@ public class Jessie {
                 mFileWriter.flush();
                 mFileWriter.close();
             } catch (IOException e) {
-                Log.e(TAG, e.getMessage());
+                Timber.e(e.getMessage());
             }
         }
     }
@@ -85,7 +85,7 @@ public class Jessie {
             String mResponse = new String(buffer, StandardCharsets.UTF_8);
             return new JSONArray(mResponse);
         } catch (IOException | JSONException e) {
-            Log.e(TAG, e.getMessage());
+            Timber.e(e.getMessage());
             return new JSONArray();
         }
     }
@@ -103,7 +103,7 @@ public class Jessie {
         Date currentDate = new Date();
         long diff = currentDate.getTime() - lastModified.getTime();
         int diffHours = (int) (diff / (1000 * 60 * 60));
-        int validHours = Integer.parseInt(Prefs.getString(mContext, PREFERENCE_DATABASE_VALIDITY));
+        int validHours = Integer.parseInt(Prefs.getString(mContext, Aurora.PREFERENCE_DATABASE_VALIDITY));
         return diffHours <= validHours;
     }
 
@@ -119,7 +119,7 @@ public class Jessie {
         if (isJsonAvailable(JsonName)) {
             File mFile = new File(getPath() + JsonName + EXT);
             mFile.delete();
-        } else Log.i(TAG, "File does not exist");
+        } else Timber.i("File does not exist");
     }
 
     public void removeDatabase() {
@@ -130,7 +130,7 @@ public class Jessie {
                 if (!content.contains("HISTORY"))
                     new File(mDir, content).delete();
             }
-        } else Log.i(TAG, "Directory does not exist");
+        } else Timber.i("Directory does not exist");
     }
 
     /*
@@ -155,7 +155,7 @@ public class Jessie {
                 mAppObject.put("app_rating", mApp.getRating().getAverage());
                 mAppObject.put("app_installed", mApp.isInstalled());
             } catch (JSONException e) {
-                Log.e(TAG, e.getMessage());
+                Timber.e(e.getMessage());
             }
         }
         return mAppObject;
@@ -201,7 +201,7 @@ public class Jessie {
             }
             return mApps;
         } catch (JSONException e) {
-            Log.e(TAG, e.getMessage());
+            Timber.e(e.getMessage());
             return new ArrayList<>();
         }
     }

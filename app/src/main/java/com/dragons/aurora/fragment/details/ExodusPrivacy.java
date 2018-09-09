@@ -21,20 +21,17 @@
 
 package com.dragons.aurora.fragment.details;
 
-
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.android.volley.Request;
@@ -65,6 +62,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import timber.log.Timber;
 
 import static com.android.volley.VolleyLog.TAG;
 
@@ -88,7 +86,7 @@ public class ExodusPrivacy extends AbstractHelper {
         try {
             getExodusReport(fragment.getActivity(), "https://reports.exodus-privacy.eu.org/api/search/" + app.getPackageName());
         } catch (NullPointerException e) {
-            Log.i(getClass().getSimpleName(), "Probably App Switched");
+            Timber.i("Probably App Switched");
         }
     }
 
@@ -104,7 +102,7 @@ public class ExodusPrivacy extends AbstractHelper {
                 AppID = trackersReport.getString("id");
                 drawExodus(trackersIDs);
             } catch (JSONException e) {
-                Log.i("EXODUS_PRIVACY", "Error occurred at Exodus Privacy");
+                Timber.i("Error occurred at Exodus Privacy");
             }
         }, error -> VolleyLog.d(TAG, "Error: " + error.getMessage()));
         mRequestQueue.add(jsonObjReq);
@@ -191,7 +189,7 @@ public class ExodusPrivacy extends AbstractHelper {
                         obj.getString("code_signature"),
                         obj.getString("creation_date"));
             } catch (JSONException e) {
-                Log.e("Bazinga", e.getMessage());
+                Timber.e(e.getMessage());
             }
             if (mExodusTracker != null)
                 mExodusTrackers.add(mExodusTracker);

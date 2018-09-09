@@ -23,8 +23,8 @@ package com.dragons.aurora.fragment.preference;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
-import android.util.Log;
 
+import com.dragons.aurora.Aurora;
 import com.dragons.aurora.AuroraPermissionManager;
 import com.dragons.aurora.ContextUtil;
 import com.dragons.aurora.Paths;
@@ -37,6 +37,7 @@ import java.io.IOException;
 import androidx.appcompat.app.AlertDialog;
 import androidx.preference.EditTextPreference;
 import androidx.preference.Preference;
+import timber.log.Timber;
 
 public class DownloadDirectory extends Abstract {
 
@@ -67,7 +68,7 @@ public class DownloadDirectory extends Abstract {
                 String newValue = (String) o;
                 boolean result = checkNewValue(newValue);
                 if (!result) {
-                    if (ContextUtil.isAlive(activity.getActivity()) && !((EditTextPreference) preference).getText().equals(Paths.FALLBACK_DIRECTORY)) {
+                    if (ContextUtil.isAlive(activity.getActivity()) && !((EditTextPreference) preference).getText().equals(Aurora.FALLBACK_DIRECTORY)) {
                         getFallbackDialog().show();
                     } else {
                         ContextUtil.toast(activity.getActivity(), R.string.error_downloads_directory_not_writable);
@@ -76,7 +77,7 @@ public class DownloadDirectory extends Abstract {
                     try {
                         preference.setSummary(new File(Paths.getStorageRoot(activity.getActivity()), newValue).getCanonicalPath());
                     } catch (IOException e) {
-                        Log.i(getClass().getName(), "checkNewValue returned true, but drawing the path \"" + newValue + "\" in the summary failed... strange");
+                        Timber.i("checkNewValue returned true, but drawing the path \"" + newValue + "\" in the summary failed... strange");
                         return false;
                     }
                 }
@@ -107,12 +108,12 @@ public class DownloadDirectory extends Abstract {
                         .setMessage(
                                 activity.getString(R.string.error_downloads_directory_not_writable)
                                         + "\n\n"
-                                        + activity.getString(R.string.pref_message_fallback, Paths.FALLBACK_DIRECTORY)
+                                        + activity.getString(R.string.pref_message_fallback, Aurora.FALLBACK_DIRECTORY)
                         )
                         .setNegativeButton(android.R.string.cancel, (dialog, which) -> dialog.dismiss())
                         .setPositiveButton(android.R.string.yes, (dialog, which) -> {
-                            preference.setText(Paths.FALLBACK_DIRECTORY);
-                            preference.getOnPreferenceChangeListener().onPreferenceChange(preference, Paths.FALLBACK_DIRECTORY);
+                            preference.setText(Aurora.FALLBACK_DIRECTORY);
+                            preference.getOnPreferenceChangeListener().onPreferenceChange(preference, Aurora.FALLBACK_DIRECTORY);
                             dialog.dismiss();
                         })
                         .create();

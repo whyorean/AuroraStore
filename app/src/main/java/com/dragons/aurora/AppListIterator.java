@@ -21,8 +21,6 @@
 
 package com.dragons.aurora;
 
-import android.util.Log;
-
 import com.dragons.aurora.model.App;
 import com.dragons.aurora.model.AppBuilder;
 import com.dragons.aurora.model.Filter;
@@ -32,6 +30,8 @@ import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+
+import timber.log.Timber;
 
 public class AppListIterator implements Iterator {
 
@@ -75,7 +75,7 @@ public class AppListIterator implements Iterator {
 
     private void addApp(List<App> apps, App app) {
         if (shouldSkip(app)) {
-            Log.i(getClass().getSimpleName(), "Filtering out " + app.getPackageName());
+            Timber.i("Filtering out " + app.getPackageName());
         } else {
             apps.add(app);
         }

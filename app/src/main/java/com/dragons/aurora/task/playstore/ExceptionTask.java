@@ -22,17 +22,20 @@
 package com.dragons.aurora.task.playstore;
 
 import android.content.Context;
+import android.content.Intent;
 import android.text.TextUtils;
-import android.util.Log;
 
+import com.dragons.aurora.Aurora;
 import com.dragons.aurora.ContextUtil;
 import com.dragons.aurora.CredentialsEmptyException;
 import com.dragons.aurora.PlayStoreApiAuthenticator;
 import com.dragons.aurora.R;
+import com.dragons.aurora.activities.LoginActivity;
 import com.dragons.aurora.fragment.PreferenceFragment;
 import com.dragons.aurora.helpers.Accountant;
 import com.dragons.aurora.playstoreapiv2.AuthException;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
+import com.dragons.aurora.playstoreapiv2.GooglePlayException;
 import com.dragons.aurora.task.AppProvidedCredentialsTask;
 
 import java.io.IOException;
@@ -42,6 +45,8 @@ import java.net.SocketTimeoutException;
 import java.net.UnknownHostException;
 
 import javax.net.ssl.SSLHandshakeException;
+
+import timber.log.Timber;
 
 public class ExceptionTask {
 
@@ -84,40 +89,50 @@ public class ExceptionTask {
     }
 
     public void processException(Throwable e) {
-        Log.d(getClass().getSimpleName(), e.getClass().getName() + " caught during a google api request: " + e.getMessage());
+        Timber.d("Caught during a google api request: %s", e.getMessage());
         if (e instanceof AuthException) {
             processAuthException((AuthException) e);
         } else if (e instanceof IOException) {
             processIOException((IOException) e);
         } else if (e instanceof NullPointerException)
-            Log.e("Null Exception", "Probably App Switched");
+            Timber.e("Probably App Switched");
         else {
-            Log.e(getClass().getSimpleName(), "Unknown exception " + e.getClass().getName() + " " + e.getMessage());
+            Timber.e("Unknown exception " + e.getClass().getName() + " " + e.getMessage());
             e.printStackTrace();
         }
     }
 
     protected void processIOException(IOException e) {
         String message;
-        if (noNetwork(e) && context != null) {
-            message = context.getString(R.string.error_no_network);
-        } else {
-            message = TextUtils.isEmpty(e.getMessage()) ? context.getString(R.string.error_network_other, e.getClass().getName()) : e.getMessage();
-        }
-        ContextUtil.toastShort(getContext(), message);
+        if (context != null) {
+            if (noNetwork(e)) {
+                message = context.getString(R.string.error_no_network);
+            } else {
+                message = TextUtils.isEmpty(e.getMessage())
+                        ? context.getString(R.string.error_network_other, Aurora.TAG)
+                        : e.getMessage();
+            }
+            ContextUtil.toastLong(this.context, message);
+        } else Timber.i("No Network Connection");
     }
 
     protected void processAuthException(AuthException e) {
         if (e instanceof CredentialsEmptyException) {
-            Log.i(getClass().getSimpleName(), "Credentials empty");
-            //TODO:Let user decide between dummy or google account
+            Timber.i("Credentials empty");
             Accountant.loginWithDummy(getContext());
-        } else if (e.getCode() == 401 && PreferenceFragment.getBoolean(context, PlayStoreApiAuthenticator.PREFERENCE_APP_PROVIDED_EMAIL)) {
-            Log.i(getClass().getSimpleName(), "Token is stale");
-            new AppProvidedCredentialsTask(getContext()).refreshToken();
+            return;
+        } else if (e.getCode() == 401 && PreferenceFragment.getBoolean(context, Aurora.PREFERENCE_APP_PROVIDED_EMAIL)) {
+            Timber.i("Token is stale");
+            new AppProvidedCredentialsTask(context).refreshToken();
+            return;
         } else {
             ContextUtil.toast(context, R.string.error_incorrect_password);
             new PlayStoreApiAuthenticator(context).logout();
+            Accountant.completeCheckout(context);
         }
+        if (ContextUtil.isAlive(context))
+            context.startActivity(new Intent(context, LoginActivity.class));
+        else
+            Timber.e("AuthException happened and the provided context is not ui capable");
     }
 }

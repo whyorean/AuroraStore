@@ -1,13 +1,14 @@
 package com.dragons.aurora.task;
 
 import android.content.Context;
-import android.util.Log;
 
 import com.dragons.aurora.PlayStoreApiAuthenticator;
 import com.dragons.aurora.activities.AccountsActivity;
 import com.dragons.aurora.helpers.Prefs;
 
 import java.io.IOException;
+
+import timber.log.Timber;
 
 public class RefreshTokenTask extends AppProvidedCredentialsTask {
 
@@ -37,7 +38,7 @@ public class RefreshTokenTask extends AppProvidedCredentialsTask {
             if (context instanceof AccountsActivity)
                 ((AccountsActivity) context).notifyTokenRefreshed();
             else
-                Log.i(getClass().getSimpleName(), "Token Refreshed");
+                Timber.i("Token Refreshed");
         }
     }
 }

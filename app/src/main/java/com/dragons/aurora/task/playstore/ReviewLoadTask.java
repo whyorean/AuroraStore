@@ -21,15 +21,14 @@
 
 package com.dragons.aurora.task.playstore;
 
-import android.util.Log;
-
 import com.dragons.aurora.ReviewStorageIterator;
-import com.dragons.aurora.activities.DetailsActivity;
 import com.dragons.aurora.model.Review;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 
 import java.io.IOException;
 import java.util.List;
+
+import timber.log.Timber;
 
 public class ReviewLoadTask extends PlayStorePayloadTask<List<Review>> {
 
@@ -60,7 +59,7 @@ public class ReviewLoadTask extends PlayStorePayloadTask<List<Review>> {
         if (success() && fragment != null) {
             fragment.showReviews(reviews);
         } else {
-            Log.e(DetailsActivity.class.getSimpleName(), "Could not get reviews: " + getException().getMessage());
+            Timber.e("Could not get reviews: %s", getException().getMessage());
         }
     }
 }

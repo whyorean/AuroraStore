@@ -21,11 +21,10 @@
 
 package com.dragons.aurora.task.playstore;
 
-import android.util.Log;
-
+import com.dragons.aurora.Aurora;
 import com.dragons.aurora.NotPurchasedException;
 import com.dragons.aurora.R;
-import com.dragons.aurora.fragment.PreferenceFragment;
+import com.dragons.aurora.helpers.Prefs;
 import com.dragons.aurora.model.App;
 import com.dragons.aurora.playstoreapiv2.AndroidAppDeliveryData;
 import com.dragons.aurora.playstoreapiv2.BuyResponse;
@@ -33,6 +32,8 @@ import com.dragons.aurora.playstoreapiv2.DeliveryResponse;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 
 import java.io.IOException;
+
+import timber.log.Timber;
 
 public class DeliveryDataTask extends PlayStorePayloadTask<AndroidAppDeliveryData> {
 
@@ -57,14 +58,14 @@ public class DeliveryDataTask extends PlayStorePayloadTask<AndroidAppDeliveryDat
             if (buyResponse.hasPurchaseStatusResponse()
                     && buyResponse.getPurchaseStatusResponse().hasAppDeliveryData()
                     && buyResponse.getPurchaseStatusResponse().getAppDeliveryData().hasDownloadUrl()
-                    ) {
+            ) {
                 deliveryData = buyResponse.getPurchaseStatusResponse().getAppDeliveryData();
             }
             if (buyResponse.hasDownloadToken()) {
                 downloadToken = buyResponse.getDownloadToken();
             }
         } catch (IOException e) {
-            Log.w(getClass().getSimpleName(), "Purchase for " + app.getPackageName() + " failed with " + e.getClass().getName() + ": " + e.getMessage());
+            Timber.w("Purchase for " + app.getPackageName() + " failed with " + e.getClass().getName() + ": " + e.getMessage());
         }
     }
 
@@ -79,7 +80,7 @@ public class DeliveryDataTask extends PlayStorePayloadTask<AndroidAppDeliveryDat
         );
         if (deliveryResponse.hasAppDeliveryData()
                 && deliveryResponse.getAppDeliveryData().hasDownloadUrl()
-                ) {
+        ) {
             deliveryData = deliveryResponse.getAppDeliveryData();
         } else {
             throw new NotPurchasedException();
@@ -100,7 +101,7 @@ public class DeliveryDataTask extends PlayStorePayloadTask<AndroidAppDeliveryDat
     }
 
     private boolean shouldDownloadDelta() {
-        return PreferenceFragment.getBoolean(context, PreferenceFragment.PREFERENCE_DOWNLOAD_DELTAS)
+        return Prefs.getBoolean(context, Aurora.PREFERENCE_DOWNLOAD_DELTAS)
                 && app.getInstalledVersionCode() < app.getVersionCode()
                 ;
     }

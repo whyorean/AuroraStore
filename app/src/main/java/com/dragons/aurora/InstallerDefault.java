@@ -22,9 +22,10 @@
 package com.dragons.aurora;
 
 import android.content.Context;
-import android.util.Log;
 
 import com.dragons.aurora.model.App;
+
+import timber.log.Timber;
 
 public class InstallerDefault extends InstallerAbstract {
 
@@ -35,7 +36,7 @@ public class InstallerDefault extends InstallerAbstract {
     @Override
     public boolean verify(App app) {
         if (background) {
-            Log.i(getClass().getSimpleName(), "Background installation is not supported by default installer");
+            Timber.i("Background installation is not supported by default installer");
             return false;
         }
         return super.verify(app);

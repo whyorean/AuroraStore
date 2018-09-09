@@ -22,7 +22,6 @@
 package com.dragons.aurora.task.playstore;
 
 import android.content.Context;
-import android.util.Log;
 
 import com.dragons.aurora.AppListIterator;
 import com.dragons.aurora.PlayStoreApiAuthenticator;
@@ -37,6 +36,8 @@ import com.dragons.aurora.task.AppProvidedCredentialsTask;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import timber.log.Timber;
 
 public class CategoryAppsTask extends ExceptionTask {
 
@@ -55,7 +56,7 @@ public class CategoryAppsTask extends ExceptionTask {
         try {
             iterator.setGooglePlayApi(new PlayStoreApiAuthenticator(getContext()).getApi());
         } catch (IOException e) {
-            Log.e(getClass().getSimpleName(), "Building an api object from preferences failed");
+            Timber.e("Building an api object from preferences failed");
         }
     }
 

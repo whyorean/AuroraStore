@@ -22,7 +22,6 @@
 package com.dragons.aurora.task;
 
 import android.content.Context;
-import android.util.Log;
 
 import com.dragons.aurora.R;
 import com.dragons.aurora.helpers.Prefs;
@@ -30,6 +29,8 @@ import com.dragons.aurora.helpers.Prefs;
 import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
+
+import timber.log.Timber;
 
 public class AppProvidedCredentialsTask extends CheckCredentialsTask {
 
@@ -62,9 +63,8 @@ public class AppProvidedCredentialsTask extends CheckCredentialsTask {
                     cancel();
                 }
             }, 8000, 1000);
-
         } else
-            Log.i(getClass().getSimpleName(), "New token pending");
+            Timber.i("New token pending");
     }
 
     @Override

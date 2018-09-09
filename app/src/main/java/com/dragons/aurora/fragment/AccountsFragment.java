@@ -34,6 +34,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
+import com.dragons.aurora.Aurora;
 import com.dragons.aurora.PlayStoreApiAuthenticator;
 import com.dragons.aurora.R;
 import com.dragons.aurora.activities.LoginActivity;
@@ -71,7 +72,7 @@ public class AccountsFragment extends BaseFragment {
         ImageView toolbar_back = view.findViewById(R.id.toolbar_back);
         toolbar_back.setOnClickListener(click -> getActivity().onBackPressed());
 
-        myEmail = PreferenceFragment.getString(getActivity(), PlayStoreApiAuthenticator.PREFERENCE_EMAIL);
+        myEmail = PreferenceFragment.getString(getActivity(), Aurora.PREFERENCE_EMAIL);
         isSecAvailable = PreferenceFragment.getBoolean(getActivity(), "SEC_ACCOUNT");
         init();
     }
@@ -97,7 +98,7 @@ public class AccountsFragment extends BaseFragment {
         setText(view, R.id.account_name, R.string.acc_dummy_name);
         setText(view, R.id.account_email, myEmail);
         setText(view, R.id.account_gsf, R.string.device_gsfID, PreferenceFragment.getString(getActivity(),
-                PlayStoreApiAuthenticator.PREFERENCE_GSF_ID));
+                Aurora.PREFERENCE_GSF_ID));
         if (isSecAvailable)
             drawEmptyGoogle();
         else
@@ -116,7 +117,7 @@ public class AccountsFragment extends BaseFragment {
         setText(view, R.id.account_nameG, PreferenceFragment.getString(getActivity(), "GOOGLE_NAME"));
         setText(view, R.id.account_emailG, myEmail);
         setText(view, R.id.account_gsf, R.string.device_gsfID, PreferenceFragment.getString(getActivity(),
-                PlayStoreApiAuthenticator.PREFERENCE_GSF_ID));
+                Aurora.PREFERENCE_GSF_ID));
 
         Button switchGoogle = ViewUtils.findViewById(view, R.id.btn_switchG);
         switchGoogle.setOnClickListener(view -> Accountant.switchGoogle(getContext()));

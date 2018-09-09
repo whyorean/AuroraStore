@@ -22,7 +22,6 @@
 package com.dragons.aurora.task;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.animation.AnimationUtils;
 
 import com.dragons.aurora.AppListIteratorHelper;
@@ -50,8 +49,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
+import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
+import timber.log.Timber;
 
 import static com.dragons.aurora.task.playstore.PlayStoreTask.noNetwork;
 
@@ -59,7 +59,7 @@ public class CategoryTaskHelper {
 
     protected Context context;
     private RecyclerView recyclerView;
-    private Disposable disposable;
+    private CompositeDisposable mDisposable = new CompositeDisposable();
     private String categoryID;
     private Jessie mJessie;
 
@@ -84,7 +84,7 @@ public class CategoryTaskHelper {
             List<App> mApps = mJessie.getAppsFromJsonArray(mJsonArray);
             setupListView(recyclerView, mApps);
         } else {
-            disposable = Observable.fromCallable(() -> getApps(categoryId, subCategory))
+            mDisposable.add(Observable.fromCallable(() -> getApps(categoryId, subCategory))
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe((appList) -> {
@@ -93,8 +93,8 @@ public class CategoryTaskHelper {
                     }, err -> {
                         if (err instanceof AuthException)
                             processAuthException((AuthException) err);
-                        Log.e(getClass().getSimpleName(), err.getMessage());
-                    });
+                        Timber.e(err);
+                    }));
         }
     }
 
@@ -117,7 +117,7 @@ public class CategoryTaskHelper {
             if (e instanceof CredentialsEmptyException)
                 ContextUtil.toastShort(context, "You are logged out");
             else
-                Log.e(getClass().getSimpleName(), "Building an api object from preferences failed");
+                Timber.e("Building an api object from preferences failed");
         }
 
         if (iterator != null && !iterator.hasNext()) {
@@ -141,7 +141,7 @@ public class CategoryTaskHelper {
                     iterator.setGooglePlayApi(authenticator.getApi());
                     apps.addAll(iterator.next());
                 }
-                Log.i(getClass().getSimpleName(), e.getMessage());
+                Timber.i(e.getMessage());
             }
         }
         return apps;
@@ -155,14 +155,14 @@ public class CategoryTaskHelper {
 
     private void processAuthException(AuthException e) {
         if (e instanceof CredentialsEmptyException) {
-            Log.i(getClass().getSimpleName(), "Credentials empty");
+            Timber.i("Credentials empty");
             Accountant.loginWithDummy(context);
         } else if (e.getCode() == 401 && Accountant.isDummy(context)) {
-            Log.i(getClass().getSimpleName(), "Token is stale");
+            Timber.i("Token is stale");
             Accountant.refreshMyToken(context);
         } else {
             ContextUtil.toast(context, R.string.error_incorrect_password);
-            Log.e(getClass().getSimpleName(), e.getMessage());
+            Timber.e(e);
             new PlayStoreApiAuthenticator(context).logout();
         }
     }

@@ -26,6 +26,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.widget.Toast;
 
+import com.dragons.aurora.Aurora;
 import com.dragons.aurora.BuildConfig;
 import com.dragons.aurora.R;
 import com.dragons.aurora.fragment.PreferenceFragment;
@@ -49,11 +50,11 @@ class OnInstallationMethodChangeListener implements Preference.OnPreferenceChang
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         String oldValue = ((ListPreference) preference).getValue();
         if (null != oldValue && !oldValue.equals(newValue)) {
-            if (PreferenceFragment.INSTALLATION_METHOD_PRIVILEGED.equals(newValue)) {
+            if (Aurora.INSTALLATION_METHOD_PRIVILEGED.equals(newValue)) {
                 if (!checkPrivileged()) {
                     return false;
                 }
-            } else if (PreferenceFragment.INSTALLATION_METHOD_ROOT.equals(newValue)) {
+            } else if (Aurora.INSTALLATION_METHOD_ROOT.equals(newValue)) {
                 new CheckSuTask(activity).execute();
             }
         }
@@ -67,10 +68,10 @@ class OnInstallationMethodChangeListener implements Preference.OnPreferenceChang
         }
         int summaryId;
         switch (installationMethod) {
-            case PreferenceFragment.INSTALLATION_METHOD_PRIVILEGED:
+            case Aurora.INSTALLATION_METHOD_PRIVILEGED:
                 summaryId = R.string.pref_installation_method_privileged;
                 break;
-            case PreferenceFragment.INSTALLATION_METHOD_ROOT:
+            case Aurora.INSTALLATION_METHOD_ROOT:
                 summaryId = R.string.pref_installation_method_root;
                 break;
             default:

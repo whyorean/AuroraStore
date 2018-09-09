@@ -30,8 +30,8 @@ import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.SystemClock;
-import android.util.Log;
 
+import com.dragons.aurora.Aurora;
 import com.dragons.aurora.BuildConfig;
 import com.dragons.aurora.R;
 import com.dragons.aurora.activities.SpoofActivity;
@@ -45,16 +45,15 @@ import java.util.Locale;
 import androidx.appcompat.app.AlertDialog;
 import androidx.core.app.NotificationCompat;
 import androidx.core.content.ContextCompat;
+import timber.log.Timber;
 
 import static android.content.Context.LOCATION_SERVICE;
-import static com.dragons.aurora.fragment.PreferenceFragment.PREFERENCE_REQUESTED_LOCATION_INDEX;
 
 public class SpoofTask extends AsyncTask<Void, Void, Void> {
 
     private LocationManager locationManager;
     private String mocLocationProvider;
     private Location mockLocation;
-    private List<Address> addresses;
     private Context context;
     private String geoLocation;
     private Boolean mockEnabled = false;
@@ -79,9 +78,9 @@ public class SpoofTask extends AsyncTask<Void, Void, Void> {
     }
 
     private void mockLocation(String mockLocation) {
-        addresses = getAddress(mockLocation);
+        List<Address> addresses = getAddress(mockLocation);
         if (addresses.isEmpty()) {
-            Log.i(getClass().getSimpleName(), "Could not get Address");
+            Timber.i("Could not get Address");
         } else {
             spoofLocation(addresses.get(0).getLatitude(), addresses.get(0).getLongitude());
             setGeoLocation(addresses.get(0).getAddressLine(0));
@@ -130,13 +129,13 @@ public class SpoofTask extends AsyncTask<Void, Void, Void> {
                 mockLocation.setElapsedRealtimeNanos(SystemClock.elapsedRealtimeNanos());
                 locationManager.setTestProviderLocation(mocLocationProvider, mockLocation);
                 mockEnabled = true;
-                Prefs.putInteger(context, PREFERENCE_REQUESTED_LOCATION_INDEX, position);
+                Prefs.putInteger(context, Aurora.PREFERENCE_REQUESTED_LOCATION_INDEX, position);
             } catch (SecurityException e) {
-                Log.e(getClass().getSimpleName(), e.getMessage());
+                Timber.e(e.getMessage());
                 ((SpoofActivity) context).runOnUiThread(() -> setMockDialog(true));
             }
         } else
-            Log.i(getClass().getSimpleName(), "No location provider found!");
+            Timber.i("No location provider found!");
     }
 
     @Override
@@ -148,7 +147,7 @@ public class SpoofTask extends AsyncTask<Void, Void, Void> {
     @Override
     protected Void doInBackground(Void... voids) {
         if (position == 0) {
-            Prefs.putInteger(context, PREFERENCE_REQUESTED_LOCATION_INDEX, 0);
+            Prefs.putInteger(context, Aurora.PREFERENCE_REQUESTED_LOCATION_INDEX, 0);
             ((SpoofActivity) context).runOnUiThread(() -> setMockDialog(false));
         } else
             mockLocation(geoLocation);

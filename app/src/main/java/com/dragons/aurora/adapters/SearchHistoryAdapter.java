@@ -28,6 +28,7 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.dragons.aurora.Aurora;
 import com.dragons.aurora.R;
 import com.dragons.aurora.fragment.SearchAppsFragment;
 import com.dragons.aurora.fragment.SearchFragment;
@@ -44,7 +45,6 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
-import static com.dragons.aurora.activities.SearchActivity.PUB_PREFIX;
 import static com.dragons.aurora.fragment.SearchFragment.HISTORY_LIST;
 
 public class SearchHistoryAdapter extends RecyclerView.Adapter<SearchHistoryAdapter.ViewHolder> {
@@ -143,8 +143,8 @@ public class SearchHistoryAdapter extends RecyclerView.Adapter<SearchHistoryAdap
     }
 
     private String getTitleString(String query) {
-        return query.startsWith(PUB_PREFIX)
-                ? fragment.getString(R.string.apps_by, query.substring(PUB_PREFIX.length()))
+        return query.startsWith(Aurora.PUB_PREFIX)
+                ? fragment.getString(R.string.apps_by, query.substring(Aurora.PUB_PREFIX.length()))
                 : fragment.getString(R.string.activity_title_search, query)
                 ;
     }

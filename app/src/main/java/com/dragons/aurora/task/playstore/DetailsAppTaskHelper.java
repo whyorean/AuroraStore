@@ -23,7 +23,6 @@ package com.dragons.aurora.task.playstore;
 
 import android.content.Context;
 import android.content.pm.PackageManager;
-import android.util.Log;
 
 import com.dragons.aurora.ContextUtil;
 import com.dragons.aurora.R;
@@ -34,6 +33,8 @@ import com.dragons.aurora.playstoreapiv2.DetailsResponse;
 import com.dragons.aurora.playstoreapiv2.GooglePlayException;
 
 import java.io.IOException;
+
+import timber.log.Timber;
 
 public class DetailsAppTaskHelper extends ExceptionTask {
 
@@ -63,9 +64,9 @@ public class DetailsAppTaskHelper extends ExceptionTask {
             }
         } catch (IOException e) {
             processException(e);
-            Log.e(getClass().getSimpleName(), e.getMessage());
+            Timber.e(e.getMessage());
         } catch (PackageManager.NameNotFoundException e) {
-            Log.e(getClass().getSimpleName(), e.getMessage());
+            Timber.e(e.getMessage());
         }
         return app;
     }

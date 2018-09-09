@@ -24,8 +24,9 @@ package com.dragons.aurora.task.playstore;
 import android.content.Context;
 import android.text.TextUtils;
 
+import com.dragons.aurora.Aurora;
 import com.dragons.aurora.CategoryManager;
-import com.dragons.aurora.fragment.PreferenceFragment;
+import com.dragons.aurora.helpers.Prefs;
 import com.dragons.aurora.playstoreapiv2.DocV2;
 import com.dragons.aurora.playstoreapiv2.ListResponse;
 
@@ -46,7 +47,7 @@ public class CategoryListTask extends ExceptionTask {
             api = getApi();
             api.setLocale(getLocale(context));
             Map<String, String> topCategories = buildCategoryMap(api.categoriesList());
-            categoryManager.save(CategoryManager.TOP, topCategories);
+            categoryManager.save(Aurora.TOP, topCategories);
             for (String categoryId : topCategories.keySet()) {
                 categoryManager.save(categoryId, buildCategoryMap(api.categoriesList(categoryId)));
             }
@@ -80,7 +81,7 @@ public class CategoryListTask extends ExceptionTask {
     }
 
     private Locale getLocale(Context context) {
-        String locale = PreferenceFragment.getString(context, PreferenceFragment.PREFERENCE_REQUESTED_LANGUAGE);
+        String locale = Prefs.getString(context, Aurora.PREFERENCE_REQUESTED_LANGUAGE);
         if (TextUtils.isEmpty(locale))
             return Locale.getDefault();
         else

@@ -25,12 +25,13 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 
 import com.dragons.aurora.AuroraPermissionManager;
 import com.dragons.aurora.model.App;
 import com.dragons.aurora.task.playstore.DetailsTask;
 import com.dragons.aurora.task.playstore.PurchaseTask;
+
+import timber.log.Timber;
 
 public class DirectDownloadActivity extends BaseActivity {
 
@@ -47,7 +48,7 @@ public class DirectDownloadActivity extends BaseActivity {
             finish();
             return;
         }
-        Log.i(getClass().getSimpleName(), "Getting package " + packageName);
+        Timber.i("Getting package %s", packageName);
 
         DetailsAndPurchaseTask task = new DetailsAndPurchaseTask();
         task.setPackageName(packageName);
@@ -59,13 +60,13 @@ public class DirectDownloadActivity extends BaseActivity {
     private String getIntentPackageName() {
         Intent intent = getIntent();
         if (!intent.hasExtra(Intent.EXTRA_TEXT) || TextUtils.isEmpty(intent.getStringExtra(Intent.EXTRA_TEXT))) {
-            Log.w(getClass().getSimpleName(), "Intent does not have " + Intent.EXTRA_TEXT);
+            Timber.tag(getClass().getSimpleName()).w("Intent does not have %s", Intent.EXTRA_TEXT);
             return null;
         }
         try {
             return Uri.parse(intent.getStringExtra(Intent.EXTRA_TEXT)).getQueryParameter("id");
         } catch (UnsupportedOperationException e) {
-            Log.w(getClass().getSimpleName(), "Could not parse URI " + intent.getStringExtra(Intent.EXTRA_TEXT) + ": " + e.getMessage());
+            Timber.tag(getClass().getSimpleName()).w("Could not parse URI " + intent.getStringExtra(Intent.EXTRA_TEXT) + ": " + e.getMessage());
             return null;
         }
     }

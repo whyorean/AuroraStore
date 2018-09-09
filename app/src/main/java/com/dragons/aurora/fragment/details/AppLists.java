@@ -41,8 +41,6 @@ import com.percolate.caffeine.ViewUtils;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import static com.dragons.aurora.activities.SearchActivity.PUB_PREFIX;
-
 public class AppLists extends AbstractHelper {
 
     public AppLists(DetailsFragment fragment, App app) {
@@ -80,7 +78,7 @@ public class AppLists extends AbstractHelper {
             Intent intent = new Intent(fragment.getActivity(), SearchActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             intent.setAction(Intent.ACTION_SEARCH);
-            intent.putExtra(SearchManager.QUERY, PUB_PREFIX + app.getDeveloperName());
+            intent.putExtra(SearchManager.QUERY, Aurora.PUB_PREFIX + app.getDeveloperName());
             context.startActivity(intent);
         });
     }

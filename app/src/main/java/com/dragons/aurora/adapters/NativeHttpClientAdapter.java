@@ -23,7 +23,6 @@ package com.dragons.aurora.adapters;
 
 import android.net.Uri;
 import android.text.TextUtils;
-import android.util.Log;
 
 import com.dragons.aurora.Util;
 import com.dragons.aurora.playstoreapiv2.AuthException;
@@ -45,6 +44,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.zip.GZIPInputStream;
+
+import timber.log.Timber;
 
 public class NativeHttpClientAdapter extends HttpClientAdapter {
 
@@ -181,7 +182,7 @@ public class NativeHttpClientAdapter extends HttpClientAdapter {
         addBody(connection, body);
 
         byte[] content = new byte[0];
-        Log.i(getClass().getSimpleName(), "Requesting " + connection.getURL().toString());
+        Timber.i("Requesting %s", connection.getURL().toString());
         connection.connect();
 
         int code = 0;
@@ -193,21 +194,21 @@ public class NativeHttpClientAdapter extends HttpClientAdapter {
             // The solution is stop using HttpURLConnection entirely...
             // Luckily, it seems to happen when the token gets stale,
             // which means it can be fixed by redoing the request with a new token
-            Log.e(getClass().getSimpleName(), "Buggy HttpURLConnection implementation detected");
+            Timber.e("Buggy HttpURLConnection implementation detected");
             throw new AuthException("Actually this is a NullPointerException thrown by a buggy implementation of HttpURLConnection", 401);
         }
         try {
             code = connection.getResponseCode();
-            Log.i(getClass().getSimpleName(), "HTTP result code " + code);
+            Timber.i("HTTP result code %s", code);
             content = readFully(connection.getInputStream(), isGzip);
         } catch (IOException e) {
             content = readFully(connection.getErrorStream(), isGzip);
-            Log.e(getClass().getSimpleName(), "IOException " + e.getClass().getName() + " " + e.getMessage());
+            Timber.e("IOException " + e.getClass().getName() + " " + e.getMessage());
             if (code < 400) {
                 throw e;
             }
         } catch (Throwable e) {
-            Log.e(getClass().getSimpleName(), "Unknown exception " + e.getClass().getName() + " " + e.getMessage());
+            Timber.e("Unknown exception " + e.getClass().getName() + " " + e.getMessage());
         } finally {
             connection.disconnect();
         }

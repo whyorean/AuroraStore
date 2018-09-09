@@ -24,12 +24,12 @@ package com.dragons.aurora.fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.dragons.aurora.Aurora;
 import com.dragons.aurora.AuroraPermissionManager;
 import com.dragons.aurora.R;
 import com.dragons.aurora.Util;
@@ -51,35 +51,9 @@ import androidx.preference.MultiSelectListPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceManager;
 import androidx.preference.SwitchPreference;
+import timber.log.Timber;
 
 public class PreferenceFragment extends androidx.preference.PreferenceFragment {
-
-    public static final String PREFERENCE_AUTO_INSTALL = "PREFERENCE_AUTO_INSTALL";
-    public static final String PREFERENCE_UPDATE_LIST_WHITE_OR_BLACK = "PREFERENCE_UPDATE_LIST_WHITE_OR_BLACK";
-    public static final String PREFERENCE_UPDATE_LIST = "PREFERENCE_UPDATE_LIST";
-    public static final String PREFERENCE_BACKGROUND_UPDATE_INTERVAL = "PREFERENCE_BACKGROUND_UPDATE_INTERVAL";
-    public static final String PREFERENCE_DELETE_APK_AFTER_INSTALL = "PREFERENCE_DELETE_APK_AFTER_INSTALL";
-    public static final String PREFERENCE_BACKGROUND_UPDATE_DOWNLOAD = "PREFERENCE_BACKGROUND_UPDATE_DOWNLOAD";
-    public static final String PREFERENCE_BACKGROUND_UPDATE_WIFI_ONLY = "PREFERENCE_BACKGROUND_UPDATE_WIFI_ONLY";
-    public static final String PREFERENCE_BACKGROUND_UPDATE_INSTALL = "PREFERENCE_BACKGROUND_UPDATE_INSTALL";
-    public static final String PREFERENCE_REQUESTED_LANGUAGE = "PREFERENCE_REQUESTED_LANGUAGE";
-    public static final String PREFERENCE_REQUESTED_LANGUAGE_INDEX = "PREFERENCE_REQUESTED_LANGUAGE_INDEX";
-    public static final String PREFERENCE_DEVICE_TO_PRETEND_TO_BE = "PREFERENCE_DEVICE_TO_PRETEND_TO_BE";
-    public static final String PREFERENCE_DEVICE_TO_PRETEND_TO_BE_INDEX = "PREFERENCE_DEVICE_TO_PRETEND_TO_BE_INDEX";
-    public static final String PREFERENCE_REQUESTED_LOCATION_INDEX = "PREFERENCE_REQUESTED_LOCATION_INDEX";
-    public static final String PREFERENCE_INSTALLATION_METHOD = "PREFERENCE_INSTALLATION_METHOD";
-    public static final String PREFERENCE_NO_IMAGES = "PREFERENCE_NO_IMAGES";
-    public static final String PREFERENCE_DOWNLOAD_DIRECTORY = "PREFERENCE_DOWNLOAD_DIRECTORY";
-    public static final String PREFERENCE_DOWNLOAD_DELTAS = "PREFERENCE_DOWNLOAD_DELTAS";
-    public static final String PREFERENCE_AUTO_WHITELIST = "PREFERENCE_AUTO_WHITELIST";
-    public static final String PREFERENCE_DATABASE_CLEAR = "PREFERENCE_DATABASE_CLEAR";
-    public static final String PREFERENCE_DATABASE_VALIDITY = "PREFERENCE_DATABASE_VALIDITY";
-
-    public static final String INSTALLATION_METHOD_DEFAULT = "default";
-    public static final String INSTALLATION_METHOD_ROOT = "root";
-    public static final String INSTALLATION_METHOD_PRIVILEGED = "privileged";
-
-    public static final String LIST_BLACK = "black";
 
     static public boolean getBoolean(Context context, String key) {
         return PreferenceManager.getDefaultSharedPreferences(context).getBoolean(key, false);
@@ -92,14 +66,14 @@ public class PreferenceFragment extends androidx.preference.PreferenceFragment {
     static public int getUpdateInterval(Context context) {
         return Util.parseInt(
                 PreferenceManager.getDefaultSharedPreferences(context).getString(
-                        PreferenceFragment.PREFERENCE_BACKGROUND_UPDATE_INTERVAL, "-1"),
+                        Aurora.PREFERENCE_BACKGROUND_UPDATE_INTERVAL, "-1"),
                 -1
         );
     }
 
     static public boolean canInstallInBackground(Context context) {
-        return getString(context, PREFERENCE_INSTALLATION_METHOD).equals(INSTALLATION_METHOD_ROOT)
-                || getString(context, PREFERENCE_INSTALLATION_METHOD).equals(INSTALLATION_METHOD_PRIVILEGED)
+        return getString(context, Aurora.PREFERENCE_INSTALLATION_METHOD).equals(Aurora.INSTALLATION_METHOD_ROOT)
+                || getString(context, Aurora.PREFERENCE_INSTALLATION_METHOD).equals(Aurora.INSTALLATION_METHOD_PRIVILEGED)
                 ;
     }
 
@@ -123,7 +97,7 @@ public class PreferenceFragment extends androidx.preference.PreferenceFragment {
         drawInstallationMethod();
         setupDatabaseClear(getActivity());
         setupDatabaseValidity();
-        new DownloadDirectory(this).setPreference((EditTextPreference) findPreference(PREFERENCE_DOWNLOAD_DIRECTORY)).draw();
+        new DownloadDirectory(this).setPreference((EditTextPreference) findPreference(Aurora.PREFERENCE_DOWNLOAD_DIRECTORY)).draw();
     }
 
     @Override
@@ -133,71 +107,70 @@ public class PreferenceFragment extends androidx.preference.PreferenceFragment {
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[], @NonNull int[] grantResults) {
         if (!AuroraPermissionManager.isGranted(requestCode, permissions, grantResults)) {
-            Log.i(getClass().getSimpleName(), "User denied the write permission");
+            Timber.i("User denied the write permission");
             getActivity().finish();
         }
     }
 
     private void drawBlackList() {
         Blacklist blacklistFragment = new Blacklist(this);
-        blacklistFragment.setBlackOrWhite((ListPreference) findPreference(PREFERENCE_UPDATE_LIST_WHITE_OR_BLACK));
-        blacklistFragment.setAppList((MultiSelectListPreference) findPreference(PREFERENCE_UPDATE_LIST));
-        blacklistFragment.setAutoWhitelist((CheckBoxPreference) findPreference(PREFERENCE_AUTO_WHITELIST));
+        blacklistFragment.setBlackOrWhite((ListPreference) findPreference(Aurora.PREFERENCE_UPDATE_LIST_WHITE_OR_BLACK));
+        blacklistFragment.setAppList((MultiSelectListPreference) findPreference(Aurora.PREFERENCE_UPDATE_LIST));
+        blacklistFragment.setAutoWhitelist((CheckBoxPreference) findPreference(Aurora.PREFERENCE_AUTO_WHITELIST));
         blacklistFragment.draw();
     }
 
     private void drawUpdatesCheck() {
         CheckUpdates checkUpdatesFragment = new CheckUpdates(this);
-        checkUpdatesFragment.setCheckForUpdates((ListPreference) findPreference(PREFERENCE_BACKGROUND_UPDATE_INTERVAL));
-        checkUpdatesFragment.setAlsoInstall((CheckBoxPreference) findPreference(PREFERENCE_BACKGROUND_UPDATE_INSTALL));
-        checkUpdatesFragment.setAlsoDownload((CheckBoxPreference) findPreference(PREFERENCE_BACKGROUND_UPDATE_DOWNLOAD));
+        checkUpdatesFragment.setCheckForUpdates((ListPreference) findPreference(Aurora.PREFERENCE_BACKGROUND_UPDATE_INTERVAL));
+        checkUpdatesFragment.setAlsoInstall((CheckBoxPreference) findPreference(Aurora.PREFERENCE_BACKGROUND_UPDATE_INSTALL));
+        checkUpdatesFragment.setAlsoDownload((CheckBoxPreference) findPreference(Aurora.PREFERENCE_BACKGROUND_UPDATE_DOWNLOAD));
         checkUpdatesFragment.draw();
     }
 
     private void drawInstallationMethod() {
         InstallationMethod installationMethodFragment = new InstallationMethod(this);
-        installationMethodFragment.setInstallationMethodPreference((ListPreference) findPreference(PREFERENCE_INSTALLATION_METHOD));
+        installationMethodFragment.setInstallationMethodPreference((ListPreference) findPreference(Aurora.PREFERENCE_INSTALLATION_METHOD));
         installationMethodFragment.draw();
     }
 
     private void setupSwitches(Context context) {
-        SwitchPreference colors = (SwitchPreference) this.findPreference("PREFERENCE_COLOR_UI");
-        colors.setChecked(Prefs.getBoolean(context, "PREFERENCE_COLOR_UI"));
+        SwitchPreference colors = (SwitchPreference) this.findPreference(Aurora.PREFERENCE_COLOR_UI);
+        colors.setChecked(Prefs.getBoolean(context, Aurora.PREFERENCE_COLOR_UI));
 
         colors.setOnPreferenceChangeListener((preference, newValue) -> {
-            Prefs.putBoolean(context, "PREFERENCE_COLOR_UI", (boolean) newValue);
+            Prefs.putBoolean(context, Aurora.PREFERENCE_COLOR_UI, (boolean) newValue);
             return true;
         });
 
-
-        SwitchPreference bottom_colors = (SwitchPreference) this.findPreference("PREFERENCE_COLOR_NAV");
-        bottom_colors.setChecked(Prefs.getBoolean(context, "PREFERENCE_COLOR_NAV"));
+        SwitchPreference bottom_colors = (SwitchPreference) this.findPreference(Aurora.PREFERENCE_COLOR_NAV);
+        bottom_colors.setChecked(Prefs.getBoolean(context, Aurora.PREFERENCE_COLOR_NAV));
         bottom_colors.setOnPreferenceChangeListener((preference, newValue) -> {
-            Prefs.putBoolean(context, "PREFERENCE_COLOR_NAV", (boolean) newValue);
+            Prefs.putBoolean(context, Aurora.PREFERENCE_COLOR_NAV, (boolean) newValue);
             return true;
         });
 
-        SwitchPreference ime = (SwitchPreference) this.findPreference("PREFERENCE_SHOW_IME");
-        ime.setChecked(Prefs.getBoolean(context, "PREFERENCE_SHOW_IME"));
+        SwitchPreference ime = (SwitchPreference) this.findPreference(Aurora.PREFERENCE_SHOW_IME);
+        ime.setChecked(Prefs.getBoolean(context, Aurora.PREFERENCE_SHOW_IME));
         ime.setOnPreferenceChangeListener((preference, newValue) -> {
-            Prefs.putBoolean(context, "PREFERENCE_SHOW_IME", (boolean) newValue);
+            Prefs.putBoolean(context, Aurora.PREFERENCE_SHOW_IME, (boolean) newValue);
             return true;
         });
 
-        SwitchPreference swipe_pages = (SwitchPreference) this.findPreference("PREFERENCE_SWIPE_PAGES");
-        swipe_pages.setChecked(Prefs.getBoolean(context, "PREFERENCE_SWIPE_PAGES"));
+        SwitchPreference swipe_pages = (SwitchPreference) this.findPreference(Aurora.PREFERENCE_SWIPE_PAGES);
+        swipe_pages.setChecked(Prefs.getBoolean(context, Aurora.PREFERENCE_SWIPE_PAGES));
         swipe_pages.setOnPreferenceChangeListener((preference, newValue) -> {
-            Prefs.putBoolean(context, "PREFERENCE_SWIPE_PAGES", (boolean) newValue);
+            Prefs.putBoolean(context, Aurora.PREFERENCE_SWIPE_PAGES, (boolean) newValue);
             return true;
         });
     }
 
     private void setupThemes() {
-        ListPreference preference_theme = (ListPreference) this.findPreference("PREFERENCE_THEME");
+        ListPreference preference_theme = (ListPreference) this.findPreference(Aurora.PREFERENCE_THEME);
         preference_theme.setSummary(preference_theme.getEntry());
 
         preference_theme.setOnPreferenceChangeListener((preference, value) -> {
-            getPreferenceManager().getSharedPreferences().edit().putString("PREFERENCE_THEME", (String) value).apply();
+            getPreferenceManager().getSharedPreferences().edit().putString(Aurora.PREFERENCE_THEME, (String) value).apply();
             restartHome();
             getActivity().finishAndRemoveTask();
             return false;
@@ -205,11 +178,11 @@ public class PreferenceFragment extends androidx.preference.PreferenceFragment {
     }
 
     private void setupSubCategory() {
-        ListPreference preference_subcategory = (ListPreference) this.findPreference("PREFERENCE_SUBCATEGORY");
+        ListPreference preference_subcategory = (ListPreference) this.findPreference(Aurora.PREFERENCE_SUBCATEGORY);
         preference_subcategory.setSummary(preference_subcategory.getEntry());
 
         preference_subcategory.setOnPreferenceChangeListener((preference, value) -> {
-            getPreferenceManager().getSharedPreferences().edit().putString("PREFERENCE_SUBCATEGORY", (String) value).apply();
+            getPreferenceManager().getSharedPreferences().edit().putString(Aurora.PREFERENCE_SUBCATEGORY, (String) value).apply();
             restartHome();
             getActivity().finishAndRemoveTask();
             return false;
@@ -217,7 +190,7 @@ public class PreferenceFragment extends androidx.preference.PreferenceFragment {
     }
 
     private void setupDatabaseClear(Context mContext) {
-        Preference mPreference = (Preference) this.findPreference(PREFERENCE_DATABASE_CLEAR);
+        Preference mPreference = (Preference) this.findPreference(Aurora.PREFERENCE_DATABASE_CLEAR);
         mPreference.setOnPreferenceClickListener(preference -> {
             Jessie mJessie = new Jessie(mContext);
             mJessie.removeDatabase();
@@ -227,10 +200,10 @@ public class PreferenceFragment extends androidx.preference.PreferenceFragment {
     }
 
     private void setupDatabaseValidity() {
-        ListPreference mListPreference = (ListPreference) this.findPreference(PREFERENCE_DATABASE_VALIDITY);
+        ListPreference mListPreference = (ListPreference) this.findPreference(Aurora.PREFERENCE_DATABASE_VALIDITY);
         mListPreference.setSummary(mListPreference.getEntry());
         mListPreference.setOnPreferenceChangeListener((preference, value) -> {
-            getPreferenceManager().getSharedPreferences().edit().putString(PREFERENCE_DATABASE_VALIDITY, (String) value).apply();
+            getPreferenceManager().getSharedPreferences().edit().putString(Aurora.PREFERENCE_DATABASE_VALIDITY, (String) value).apply();
             return false;
         });
 

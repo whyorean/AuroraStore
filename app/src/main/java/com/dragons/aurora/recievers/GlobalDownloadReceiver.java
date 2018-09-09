@@ -20,8 +20,8 @@ package com.dragons.aurora.recievers;
 
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 
+import com.dragons.aurora.Aurora;
 import com.dragons.aurora.AuroraApplication;
 import com.dragons.aurora.ContextUtil;
 import com.dragons.aurora.DeltaPatcherFactory;
@@ -34,10 +34,13 @@ import com.dragons.aurora.downloader.DownloadManagerInterface;
 import com.dragons.aurora.downloader.DownloadReceiver;
 import com.dragons.aurora.downloader.DownloadState;
 import com.dragons.aurora.fragment.PreferenceFragment;
+import com.dragons.aurora.helpers.Prefs;
 import com.dragons.aurora.model.App;
 import com.dragons.aurora.notification.NotificationManagerWrapper;
 
 import java.io.File;
+
+import timber.log.Timber;
 
 public class GlobalDownloadReceiver extends DownloadReceiver {
 
@@ -60,7 +63,7 @@ public class GlobalDownloadReceiver extends DownloadReceiver {
         if (isDelta(app)) {
             patchSuccess = DeltaPatcherFactory.get(context, app).patch();
             if (!patchSuccess) {
-                Log.e(getClass().getSimpleName(), "Delta patching failed for " + app.getPackageName());
+                Timber.e("Delta patching failed for %s", app.getPackageName());
                 return;
             }
         }
@@ -88,16 +91,16 @@ public class GlobalDownloadReceiver extends DownloadReceiver {
 
     private void verifyAndInstall(App app, DownloadState.TriggeredBy triggeredBy) {
         if (shouldInstall(triggeredBy)) {
-            Log.i(getClass().getSimpleName(), "Launching installer for " + app.getPackageName());
+            Timber.i("Launching installer for %s", app.getPackageName());
             InstallerAbstract installer = InstallerFactory.get(context);
             if (triggeredBy.equals(DownloadState.TriggeredBy.DOWNLOAD_BUTTON)
-                    && PreferenceFragment.getBoolean(context, PreferenceFragment.PREFERENCE_AUTO_INSTALL)
-                    ) {
+                    && PreferenceFragment.getBoolean(context, Aurora.PREFERENCE_AUTO_INSTALL)
+            ) {
                 installer.setBackground(false);
             }
             installer.verifyAndInstall(app);
         } else {
-            Log.i(getClass().getSimpleName(), "Notifying about download completion of " + app.getPackageName());
+            Timber.i("Notifying about download completion of %s", app.getPackageName());
             notifyDownloadComplete(app);
             ((AuroraApplication) context.getApplicationContext()).removePendingUpdate(app.getPackageName());
         }
@@ -125,11 +128,11 @@ public class GlobalDownloadReceiver extends DownloadReceiver {
     private boolean shouldInstall(DownloadState.TriggeredBy triggeredBy) {
         switch (triggeredBy) {
             case DOWNLOAD_BUTTON:
-                return PreferenceFragment.getBoolean(context, PreferenceFragment.PREFERENCE_AUTO_INSTALL);
+                return Prefs.getBoolean(context, Aurora.PREFERENCE_AUTO_INSTALL);
             case UPDATE_ALL_BUTTON:
                 return PreferenceFragment.canInstallInBackground(context);
             case SCHEDULED_UPDATE:
-                return PreferenceFragment.canInstallInBackground(context) && PreferenceFragment.getBoolean(context, PreferenceFragment.PREFERENCE_BACKGROUND_UPDATE_INSTALL);
+                return PreferenceFragment.canInstallInBackground(context) && Prefs.getBoolean(context, Aurora.PREFERENCE_BACKGROUND_UPDATE_INSTALL);
             case MANUAL_DOWNLOAD_BUTTON:
             default:
                 return false;

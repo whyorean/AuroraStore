@@ -27,8 +27,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
-import android.util.Log;
 
+import com.dragons.aurora.Aurora;
 import com.dragons.aurora.AuroraApplication;
 import com.dragons.aurora.InstallerAbstract;
 import com.dragons.aurora.InstallerFactory;
@@ -45,6 +45,8 @@ import com.dragons.aurora.recievers.UpdateAllReceiver;
 import com.percolate.caffeine.PhoneUtils;
 
 import java.util.List;
+
+import timber.log.Timber;
 
 public class BackgroundUpdatableAppsTask extends UpdatableAppsTask implements CloneableTask {
 
@@ -69,7 +71,7 @@ public class BackgroundUpdatableAppsTask extends UpdatableAppsTask implements Cl
             return;
         }
         int updatesCount = this.updatableApps.size();
-        Log.i(this.getClass().getName(), "Found updates for " + updatesCount + " apps");
+        Timber.i("Found updates for " + updatesCount + " apps");
         if (updatesCount == 0) {
             context.sendBroadcast(new Intent(UpdateAllReceiver.ACTION_ALL_UPDATES_COMPLETE), null);
             return;
@@ -87,13 +89,13 @@ public class BackgroundUpdatableAppsTask extends UpdatableAppsTask implements Cl
             writePermission = context.checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED;
         }
         if (!writePermission) {
-            Log.i(getClass().getSimpleName(), "Write permission not granted");
+            Timber.i("Write permission not granted");
             return false;
         }
         return forceUpdate ||
-                (PreferenceFragment.getBoolean(context, PreferenceFragment.PREFERENCE_BACKGROUND_UPDATE_DOWNLOAD)
+                (PreferenceFragment.getBoolean(context, Aurora.PREFERENCE_BACKGROUND_UPDATE_DOWNLOAD)
                         && (DownloadManagerFactory.get(context) instanceof DownloadManagerAdapter
-                        || !PreferenceFragment.getBoolean(context, PreferenceFragment.PREFERENCE_BACKGROUND_UPDATE_WIFI_ONLY)
+                        || !PreferenceFragment.getBoolean(context, Aurora.PREFERENCE_BACKGROUND_UPDATE_WIFI_ONLY)
                         || !PhoneUtils.isConnectedMobile(context)));
     }
 
@@ -117,7 +119,7 @@ public class BackgroundUpdatableAppsTask extends UpdatableAppsTask implements Cl
     }
 
     private void download(Context context, App app) {
-        Log.i(getClass().getSimpleName(), "Starting download of update for " + app.getPackageName());
+        Timber.i("Starting download of update for %s", app.getPackageName());
         DownloadState state = DownloadState.get(app.getPackageName());
         state.setApp(app);
         getPurchaseTask(context, app).execute();

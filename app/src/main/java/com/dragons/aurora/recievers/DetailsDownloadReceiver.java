@@ -27,6 +27,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ViewSwitcher;
 
+import com.dragons.aurora.Aurora;
 import com.dragons.aurora.ContextUtil;
 import com.dragons.aurora.R;
 import com.dragons.aurora.activities.DetailsActivity;
@@ -35,7 +36,7 @@ import com.dragons.aurora.downloader.DownloadManagerFactory;
 import com.dragons.aurora.downloader.DownloadManagerInterface;
 import com.dragons.aurora.downloader.DownloadReceiver;
 import com.dragons.aurora.downloader.DownloadState;
-import com.dragons.aurora.fragment.PreferenceFragment;
+import com.dragons.aurora.helpers.Prefs;
 
 import java.lang.ref.WeakReference;
 
@@ -122,9 +123,9 @@ public class DetailsDownloadReceiver extends DownloadReceiver {
 
         buttonDownload.setVisibility(View.GONE);
         buttonInstall.setVisibility(View.VISIBLE);
-
-        if (PreferenceFragment.getBoolean(context, PreferenceFragment.PREFERENCE_AUTO_INSTALL)
-                && !state.getTriggeredBy().equals(DownloadState.TriggeredBy.MANUAL_DOWNLOAD_BUTTON)) {
+        if (Prefs.getBoolean(context, Aurora.PREFERENCE_AUTO_INSTALL)
+                && !state.getTriggeredBy().equals(DownloadState.TriggeredBy.MANUAL_DOWNLOAD_BUTTON)
+        ) {
             buttonInstall.setEnabled(false);
             buttonInstall.setText(R.string.details_installing);
         } else {

@@ -22,10 +22,10 @@
 package com.dragons.aurora.task;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.animation.AnimationUtils;
 
 import com.dragons.aurora.AppListIteratorHelper;
+import com.dragons.aurora.Aurora;
 import com.dragons.aurora.PlayStoreApiAuthenticator;
 import com.dragons.aurora.R;
 import com.dragons.aurora.adapters.RecyclerAppsAdapter;
@@ -46,6 +46,7 @@ import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
+import timber.log.Timber;
 
 import static com.dragons.aurora.task.playstore.PlayStoreTask.noNetwork;
 
@@ -69,7 +70,7 @@ public class ClusterTaskHelper {
                 .subscribe((appList) -> {
                     if (!appList.isEmpty())
                         setupListView(recyclerView, appList);
-                }, err -> Log.e(getClass().getSimpleName(), err.getMessage()));
+                }, err -> Timber.e(err));
     }
 
     private List<App> getApps(String clusterUrl) throws IOException {
@@ -80,7 +81,7 @@ public class ClusterTaskHelper {
         try {
             iterator.setGooglePlayApi(new PlayStoreApiAuthenticator(context).getApi());
         } catch (IOException e) {
-            Log.e(getClass().getSimpleName(), "Building an api object from preferences failed");
+            Timber.e("Building an api object from preferences failed");
         }
 
         if (!iterator.hasNext()) {
@@ -98,8 +99,8 @@ public class ClusterTaskHelper {
                     throw (IOException) e.getCause();
                 } else if (e.getCause() instanceof GooglePlayException
                         && ((GooglePlayException) e.getCause()).getCode() == 401
-                        && PreferenceFragment.getBoolean(context, PlayStoreApiAuthenticator.PREFERENCE_APP_PROVIDED_EMAIL)
-                        ) {
+                        && PreferenceFragment.getBoolean(context, Aurora.PREFERENCE_APP_PROVIDED_EMAIL)
+                ) {
                     PlayStoreApiAuthenticator authenticator = new PlayStoreApiAuthenticator(context);
                     authenticator.refreshToken();
                     iterator.setGooglePlayApi(authenticator.getApi());

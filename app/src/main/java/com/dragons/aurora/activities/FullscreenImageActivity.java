@@ -23,7 +23,6 @@ package com.dragons.aurora.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
 
@@ -35,6 +34,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.PagerSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.SnapHelper;
+import timber.log.Timber;
 
 import static com.dragons.aurora.fragment.DetailsFragment.app;
 
@@ -60,7 +60,7 @@ public class FullscreenImageActivity extends AppCompatActivity {
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
         if (null == app) {
-            Log.w(getClass().getSimpleName(), "No app stored");
+            Timber.w("No app stored");
             finish();
             return;
         }

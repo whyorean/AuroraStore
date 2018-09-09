@@ -21,13 +21,15 @@
 
 package com.dragons.aurora.model;
 
+import com.dragons.aurora.Aurora;
+
 public class Filter {
 
     private boolean systemApps;
     private boolean appsWithAds;
     private boolean paidApps;
     private boolean gsfDependentApps;
-    private String category = com.dragons.aurora.CategoryManager.TOP;
+    private String category = Aurora.TOP;
     private float rating;
     private int downloads;
 

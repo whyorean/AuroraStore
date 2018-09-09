@@ -1,7 +1,6 @@
 package com.dragons.aurora.fragment;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,6 +28,7 @@ import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
+import timber.log.Timber;
 
 public class DetailsFragmentReviews extends BaseFragment {
 
@@ -76,7 +76,7 @@ public class DetailsFragmentReviews extends BaseFragment {
         mDisposable.add(Observable.fromCallable(() -> mTask.getReviews())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .doOnError(err -> Log.e(getTag(), err.getMessage()))
+                .doOnError(err -> Timber.e(err.getMessage()))
                 .subscribe(mReviewList -> {
                     if (shouldIterate)
                         addReviews(mReviewList);
@@ -97,7 +97,7 @@ public class DetailsFragmentReviews extends BaseFragment {
         EndlessRecyclerViewScrollListener mEndlessRecyclerViewScrollListener = new EndlessRecyclerViewScrollListener(mLayoutManager) {
             @Override
             public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
-                    getReviews(true);
+                getReviews(true);
             }
         };
         mRecyclerView.addOnScrollListener(mEndlessRecyclerViewScrollListener);

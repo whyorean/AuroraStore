@@ -23,7 +23,6 @@ package com.dragons.aurora.fragment;
 
 import android.app.Dialog;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -49,6 +48,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import timber.log.Timber;
 
 public class CategoryAppsFragment extends BaseFragment implements SingleDownloadsAdapter.SingleClickListener, SingleRatingsAdapter.SingleClickListener {
 
@@ -77,7 +77,7 @@ public class CategoryAppsFragment extends BaseFragment implements SingleDownload
             categoryId = arguments.getString("CategoryId");
             categoryTitle.setText(arguments.getString("CategoryName"));
         } else
-            Log.e(this.getClass().getName(), "No category id provided");
+            Timber.e("No category id provided");
         return view;
     }
 

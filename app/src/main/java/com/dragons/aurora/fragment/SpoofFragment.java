@@ -35,6 +35,7 @@ import android.widget.Spinner;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.dragons.aurora.Aurora;
 import com.dragons.aurora.PlayStoreApiAuthenticator;
 import com.dragons.aurora.R;
 import com.dragons.aurora.SpoofDeviceManager;
@@ -56,18 +57,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.core.content.ContextCompat;
 
-import static com.dragons.aurora.fragment.PreferenceFragment.PREFERENCE_DEVICE_TO_PRETEND_TO_BE;
-import static com.dragons.aurora.fragment.PreferenceFragment.PREFERENCE_DEVICE_TO_PRETEND_TO_BE_INDEX;
-import static com.dragons.aurora.fragment.PreferenceFragment.PREFERENCE_REQUESTED_LANGUAGE;
-import static com.dragons.aurora.fragment.PreferenceFragment.PREFERENCE_REQUESTED_LANGUAGE_INDEX;
-import static com.dragons.aurora.fragment.PreferenceFragment.PREFERENCE_REQUESTED_LOCATION_INDEX;
-
 public class SpoofFragment extends BaseFragment {
 
     public static final String LineageURl = "https://wiki.lineageos.org/images/devices/";
-    public static final String BUILD_DEVICE = "Build.DEVICE";
-    public static final String BUILD_MANUFACTURER = "Build.MANUFACTURER";
-    public static final String BUILD_HARDWARE = "Build.HARDWARE";
 
     private String deviceName;
     private View view;
@@ -109,7 +101,7 @@ public class SpoofFragment extends BaseFragment {
     }
 
     private boolean isSpoofed() {
-        deviceName = PreferenceFragment.getString(getActivity(), PreferenceFragment.PREFERENCE_DEVICE_TO_PRETEND_TO_BE);
+        deviceName = PreferenceFragment.getString(getActivity(), Aurora.PREFERENCE_DEVICE_TO_PRETEND_TO_BE);
         return (deviceName.contains("device-"));
     }
 
@@ -123,10 +115,10 @@ public class SpoofFragment extends BaseFragment {
     private void drawSpoofedDevice() {
         Properties properties = new SpoofDeviceManager(this.getActivity()).getProperties(deviceName);
         String Model = properties.getProperty("UserReadableName");
-        getDeviceImg(LineageURl + properties.getProperty(BUILD_DEVICE) + ".png");
-        Util.setText(view, R.id.device_model, R.string.device_model, Model.substring(0, Model.indexOf('(')), properties.getProperty(BUILD_DEVICE));
-        Util.setText(view, R.id.device_manufacturer, properties.getProperty(BUILD_MANUFACTURER));
-        Util.setText(view, R.id.device_architect, properties.getProperty(BUILD_HARDWARE));
+        getDeviceImg(LineageURl + properties.getProperty(Aurora.BUILD_DEVICE) + ".png");
+        Util.setText(view, R.id.device_model, R.string.device_model, Model.substring(0, Model.indexOf('(')), properties.getProperty(Aurora.BUILD_DEVICE));
+        Util.setText(view, R.id.device_manufacturer, properties.getProperty(Aurora.BUILD_MANUFACTURER));
+        Util.setText(view, R.id.device_architect, properties.getProperty(Aurora.BUILD_HARDWARE));
     }
 
     private void setupLanguage() {
@@ -143,23 +135,23 @@ public class SpoofFragment extends BaseFragment {
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
-        spinner.setSelection(Prefs.getInteger(getContext(), PREFERENCE_REQUESTED_LANGUAGE_INDEX), true);
+        spinner.setSelection(Prefs.getInteger(getContext(), Aurora.PREFERENCE_REQUESTED_LANGUAGE_INDEX), true);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (position > 0) {
                     try {
                         new PlayStoreApiAuthenticator(getActivity()).getApi().setLocale(new Locale(localeKeys[position]));
-                        Prefs.putString(getContext(), PREFERENCE_REQUESTED_LANGUAGE, localeKeys[position]);
-                        Prefs.putInteger(getContext(), PREFERENCE_REQUESTED_LANGUAGE_INDEX, position);
+                        Prefs.putString(getContext(), Aurora.PREFERENCE_REQUESTED_LANGUAGE, localeKeys[position]);
+                        Prefs.putInteger(getContext(), Aurora.PREFERENCE_REQUESTED_LANGUAGE_INDEX, position);
                     } catch (IOException e) {
                         // Should be impossible to get to preferences with incorrect credentials
                     }
                 }
 
                 if (position == 0) {
-                    Prefs.putString(getContext(), PREFERENCE_REQUESTED_LANGUAGE, "");
-                    Prefs.putInteger(getContext(), PREFERENCE_REQUESTED_LANGUAGE_INDEX, 0);
+                    Prefs.putString(getContext(), Aurora.PREFERENCE_REQUESTED_LANGUAGE, "");
+                    Prefs.putInteger(getContext(), Aurora.PREFERENCE_REQUESTED_LANGUAGE_INDEX, 0);
                 }
             }
 
@@ -185,14 +177,14 @@ public class SpoofFragment extends BaseFragment {
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
-        spinner.setSelection(Prefs.getInteger(getContext(), PREFERENCE_DEVICE_TO_PRETEND_TO_BE_INDEX), true);
+        spinner.setSelection(Prefs.getInteger(getContext(), Aurora.PREFERENCE_DEVICE_TO_PRETEND_TO_BE_INDEX), true);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (position > 0) {
                     Intent i = new Intent(getContext(), DeviceInfoActivity.class);
-                    i.putExtra(DeviceInfoActivity.INTENT_DEVICE_NAME, deviceKeys[position]);
-                    i.putExtra(DeviceInfoActivity.INTENT_DEVICE_INDEX, position);
+                    i.putExtra(Aurora.INTENT_DEVICE_NAME, deviceKeys[position]);
+                    i.putExtra(Aurora.INTENT_DEVICE_INDEX, position);
                     getContext().startActivity(i);
                 }
                 if (position == 0) {
@@ -218,7 +210,7 @@ public class SpoofFragment extends BaseFragment {
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
-        spinner.setSelection(Prefs.getInteger(getContext(), PREFERENCE_REQUESTED_LOCATION_INDEX), true);
+        spinner.setSelection(Prefs.getInteger(getContext(), Aurora.PREFERENCE_REQUESTED_LOCATION_INDEX), true);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -242,7 +234,6 @@ public class SpoofFragment extends BaseFragment {
                 .load(url)
                 .apply(new RequestOptions().placeholder(ContextCompat.getDrawable(getContext(), R.drawable.ic_device)))
                 .into((ImageView) view.findViewById(R.id.device_avatar));
-
     }
 
     private Map<String, String> getDeviceKeyValueMap() {
@@ -274,8 +265,8 @@ public class SpoofFragment extends BaseFragment {
                 .setMessage(R.string.pref_device_to_pretend_to_be_toast)
                 .setTitle(R.string.dialog_title_logout)
                 .setPositiveButton(R.string.action_logout, (dialogInterface, i) -> {
-                    Prefs.putString(getContext(), PREFERENCE_DEVICE_TO_PRETEND_TO_BE, "");
-                    Prefs.putInteger(getContext(), PREFERENCE_DEVICE_TO_PRETEND_TO_BE_INDEX, 0);
+                    Prefs.putString(getContext(), Aurora.PREFERENCE_DEVICE_TO_PRETEND_TO_BE, "");
+                    Prefs.putInteger(getContext(), Aurora.PREFERENCE_DEVICE_TO_PRETEND_TO_BE_INDEX, 0);
                     Accountant.completeCheckout(getContext());
                     dialogInterface.dismiss();
                     startActivity(new Intent(getContext(), LoginActivity.class));

@@ -24,9 +24,10 @@ package com.dragons.aurora.downloader;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Build;
-import android.util.Log;
 
 import com.dragons.aurora.NetworkState;
+
+import timber.log.Timber;
 
 public class DownloadManagerFactory {
 
@@ -34,7 +35,7 @@ public class DownloadManagerFactory {
 
     static public DownloadManagerInterface get(Context context) {
         if (!nativeDownloadManagerEnabled(context) || nougatVpn(context)
-                ) {
+        ) {
             return new DownloadManagerFake(context);
         } else {
             return new DownloadManagerAdapter(context);
@@ -46,7 +47,7 @@ public class DownloadManagerFactory {
         try {
             state = context.getPackageManager().getApplicationEnabledSetting(DOWNLOAD_MANAGER_PACKAGE_NAME);
         } catch (Throwable e) {
-            Log.w(DownloadManagerFactory.class.getSimpleName(), "Could not check DownloadManager status: " + e.getMessage());
+            Timber.w("Could not check DownloadManager status: %s", e.getMessage());
         }
         return !(state == PackageManager.COMPONENT_ENABLED_STATE_DISABLED
                 || state == PackageManager.COMPONENT_ENABLED_STATE_DISABLED_USER

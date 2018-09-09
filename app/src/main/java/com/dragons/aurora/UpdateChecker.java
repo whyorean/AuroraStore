@@ -27,9 +27,10 @@ import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 
 import com.dragons.aurora.task.playstore.BackgroundUpdatableAppsTask;
+
+import timber.log.Timber;
 
 public class UpdateChecker extends BroadcastReceiver {
 
@@ -39,7 +40,7 @@ public class UpdateChecker extends BroadcastReceiver {
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         alarmManager.cancel(pendingIntent);
         if (interval > 0) {
-            Log.i(UpdateChecker.class.getSimpleName(), "Enabling periodic update checks");
+            Timber.i("Enabling periodic update checks");
             alarmManager.setRepeating(
                     AlarmManager.RTC_WAKEUP,
                     System.currentTimeMillis(),
@@ -51,7 +52,7 @@ public class UpdateChecker extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        Log.i(getClass().getSimpleName(), "Started");
+        Timber.i("Started");
         BackgroundUpdatableAppsTask task = new BackgroundUpdatableAppsTask();
         task.setForceUpdate(context instanceof Activity);
         task.setContext(context);

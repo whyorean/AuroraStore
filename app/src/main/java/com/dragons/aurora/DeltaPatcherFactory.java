@@ -22,7 +22,6 @@
 package com.dragons.aurora;
 
 import android.content.Context;
-import android.util.Log;
 
 import com.dragons.aurora.model.App;
 
@@ -30,6 +29,8 @@ import java.io.File;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.util.zip.GZIPInputStream;
+
+import timber.log.Timber;
 
 public class DeltaPatcherFactory {
 
@@ -49,7 +50,7 @@ public class DeltaPatcherFactory {
             raf = new RandomAccessFile(f, "r");
             magic = raf.read() & 0xff | ((raf.read() << 8) & 0xff00);
         } catch (IOException e) {
-            Log.e(DeltaPatcherGDiff.class.getSimpleName(), "Could not check if patch is gzipped");
+            Timber.e("Could not check if patch is gzipped");
         } finally {
             Util.closeSilently(raf);
         }

@@ -25,7 +25,6 @@ import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -43,6 +42,7 @@ import com.dragons.aurora.model.App;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import timber.log.Timber;
 
 import static com.android.volley.VolleyLog.TAG;
 
@@ -71,7 +71,7 @@ public class Video extends AbstractHelper {
             try {
                 context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(app.getVideoUrl())));
             } catch (ActivityNotFoundException e) {
-                Log.i(getClass().getSimpleName(), "Something is wrong with WebView");
+                Timber.i("Something is wrong with WebView");
             }
         });
     }
@@ -91,7 +91,7 @@ public class Video extends AbstractHelper {
                                     .transition(new DrawableTransitionOptions().crossFade())
                                     .into(video_thumbnail);
                     } catch (Exception e) {
-                        Log.e(getClass().getSimpleName(), e.getMessage());
+                        Timber.e(e.getMessage());
                     }
                 }, error -> VolleyLog.d(TAG, "Error: " + error.getMessage()));
         mRequestQueue.add(jsonObjReq);

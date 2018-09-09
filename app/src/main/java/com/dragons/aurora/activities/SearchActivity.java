@@ -25,16 +25,16 @@ import android.app.SearchManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 
+import com.dragons.aurora.Aurora;
 import com.dragons.aurora.R;
 import com.dragons.aurora.fragment.SearchAppsFragment;
 
 import java.util.regex.Pattern;
 
-public class SearchActivity extends AuroraActivity {
+import timber.log.Timber;
 
-    public static final String PUB_PREFIX = "pub:";
+public class SearchActivity extends AuroraActivity {
 
     private String query;
 
@@ -55,13 +55,13 @@ public class SearchActivity extends AuroraActivity {
 
         String newQuery = getQuery(intent);
         if (looksLikeAPackageId(newQuery)) {
-            Log.i(getClass().getSimpleName(), "Following search suggestion to app page: " + newQuery);
+            Timber.i("Following search suggestion to app page: %s", newQuery);
             startActivity(DetailsActivity.getDetailsIntent(this, newQuery));
             finish();
             return;
         }
 
-        Log.i(getClass().getSimpleName(), "Searching: " + newQuery);
+        Timber.i("Searching: %s", newQuery);
         if (null != newQuery && !newQuery.equals(this.query)) {
             this.query = newQuery;
             setTitle(getTitleString());
@@ -70,8 +70,8 @@ public class SearchActivity extends AuroraActivity {
     }
 
     private String getTitleString() {
-        return query.startsWith(PUB_PREFIX)
-                ? getString(R.string.apps_by, query.substring(PUB_PREFIX.length()))
+        return query.startsWith(Aurora.PUB_PREFIX)
+                ? getString(R.string.apps_by, query.substring(Aurora.PUB_PREFIX.length()))
                 : getString(R.string.activity_title_search, query)
                 ;
     }
@@ -80,9 +80,7 @@ public class SearchActivity extends AuroraActivity {
         if (intent.getScheme() != null
                 && (intent.getScheme().equals("market")
                 || intent.getScheme().equals("http")
-                || intent.getScheme().equals("https")
-        )
-                ) {
+                || intent.getScheme().equals("https"))) {
             return intent.getData().getQueryParameter("q");
         }
         if (actionIs(intent, Intent.ACTION_SEARCH)) {
@@ -112,5 +110,4 @@ public class SearchActivity extends AuroraActivity {
                 .beginTransaction()
                 .replace(R.id.container, searchAppsFragment).commit();
     }
-
 }

@@ -25,21 +25,18 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
-import com.dragons.aurora.fragment.PreferenceFragment;
 import com.dragons.aurora.helpers.Prefs;
 
 import java.util.Set;
 
 public class BlackWhiteListManager {
 
-    static private final String DELIMITER = ",";
-
     private SharedPreferences preferences;
     private Set<String> blackWhiteSet;
 
     public BlackWhiteListManager(Context context) {
         preferences = PreferenceManager.getDefaultSharedPreferences(context);
-        blackWhiteSet = Prefs.getStringSet(context, PreferenceFragment.PREFERENCE_UPDATE_LIST);
+        blackWhiteSet = Prefs.getStringSet(context, Aurora.PREFERENCE_UPDATE_LIST);
         if (blackWhiteSet.size() == 1 && blackWhiteSet.contains("")) {
             blackWhiteSet.clear();
         }
@@ -61,7 +58,7 @@ public class BlackWhiteListManager {
     }
 
     public boolean isBlack() {
-        return preferences.getString(PreferenceFragment.PREFERENCE_UPDATE_LIST_WHITE_OR_BLACK, PreferenceFragment.LIST_BLACK).equals(PreferenceFragment.LIST_BLACK);
+        return preferences.getString(Aurora.PREFERENCE_UPDATE_LIST_WHITE_OR_BLACK, Aurora.LIST_BLACK).equals(Aurora.LIST_BLACK);
     }
 
     public boolean isUpdatable(String packageName) {
@@ -85,6 +82,6 @@ public class BlackWhiteListManager {
     }
 
     private void save() {
-        Prefs.putStringSet(preferences, PreferenceFragment.PREFERENCE_UPDATE_LIST, blackWhiteSet);
+        Prefs.putStringSet(preferences, Aurora.PREFERENCE_UPDATE_LIST, blackWhiteSet);
     }
 }

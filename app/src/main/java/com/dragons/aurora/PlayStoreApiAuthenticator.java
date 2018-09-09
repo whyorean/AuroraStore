@@ -25,10 +25,8 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
-import android.util.Log;
 
 import com.dragons.aurora.adapters.NativeHttpClientAdapter;
-import com.dragons.aurora.fragment.PreferenceFragment;
 import com.dragons.aurora.model.LoginInfo;
 import com.dragons.aurora.playstoreapiv2.ApiBuilderException;
 import com.dragons.aurora.playstoreapiv2.AuthException;
@@ -41,14 +39,9 @@ import com.dragons.aurora.task.playstore.PlayStoreTask;
 import java.io.IOException;
 import java.util.Locale;
 
+import timber.log.Timber;
+
 public class PlayStoreApiAuthenticator {
-
-    public static final String PREFERENCE_EMAIL = "PREFERENCE_EMAIL";
-    public static final String PREFERENCE_APP_PROVIDED_EMAIL = "PREFERENCE_APP_PROVIDED_EMAIL";
-    public static final String PREFERENCE_GSF_ID = "PREFERENCE_GSF_ID";
-
-    private static final String PREFERENCE_AUTH_TOKEN = "PREFERENCE_AUTH_TOKEN";
-    private static final String PREFERENCE_LAST_USED_TOKEN_DISPENSER = "PREFERENCE_LAST_USED_TOKEN_DISPENSER";
 
     static private final int RETRIES = 5;
     private static GooglePlayAPI api;
@@ -70,8 +63,8 @@ public class PlayStoreApiAuthenticator {
         LoginInfo loginInfo = new LoginInfo();
         api = build(loginInfo);
         PreferenceManager.getDefaultSharedPreferences(context).edit()
-                .putBoolean(PREFERENCE_APP_PROVIDED_EMAIL, true)
-                .putString(PREFERENCE_LAST_USED_TOKEN_DISPENSER, loginInfo.getTokenDispenserUrl())
+                .putBoolean(Aurora.PREFERENCE_APP_PROVIDED_EMAIL, true)
+                .putString(Aurora.PREFERENCE_LAST_USED_TOKEN_DISPENSER, loginInfo.getTokenDispenserUrl())
                 .apply()
         ;
     }
@@ -81,42 +74,41 @@ public class PlayStoreApiAuthenticator {
         loginInfo.setEmail(email);
         loginInfo.setPassword(password);
         api = build(loginInfo);
-        PreferenceManager.getDefaultSharedPreferences(context).edit().remove(PREFERENCE_APP_PROVIDED_EMAIL).apply();
+        PreferenceManager.getDefaultSharedPreferences(context).edit().remove(Aurora.PREFERENCE_APP_PROVIDED_EMAIL).apply();
     }
 
     public void refreshToken() throws IOException {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-        prefs.edit().remove(PREFERENCE_AUTH_TOKEN).apply();
-        String email = prefs.getString(PREFERENCE_EMAIL, "");
+        prefs.edit().remove(Aurora.PREFERENCE_AUTH_TOKEN).apply();
+        String email = prefs.getString(Aurora.PREFERENCE_EMAIL, "");
         if (TextUtils.isEmpty(email)) {
             throw new CredentialsEmptyException();
         }
         LoginInfo loginInfo = new LoginInfo();
         loginInfo.setEmail(email);
-        loginInfo.setTokenDispenserUrl(prefs.getString(PREFERENCE_LAST_USED_TOKEN_DISPENSER, ""));
+        loginInfo.setTokenDispenserUrl(prefs.getString(Aurora.PREFERENCE_LAST_USED_TOKEN_DISPENSER, ""));
         api = build(loginInfo);
         PreferenceManager.getDefaultSharedPreferences(context).edit()
-                .putBoolean(PREFERENCE_APP_PROVIDED_EMAIL, true)
-                .putString(PREFERENCE_LAST_USED_TOKEN_DISPENSER, loginInfo.getTokenDispenserUrl())
+                .putBoolean(Aurora.PREFERENCE_APP_PROVIDED_EMAIL, true)
+                .putString(Aurora.PREFERENCE_LAST_USED_TOKEN_DISPENSER, loginInfo.getTokenDispenserUrl())
                 .apply()
         ;
     }
 
     public void logout() {
         PreferenceManager.getDefaultSharedPreferences(context).edit()
-                .remove(PREFERENCE_EMAIL)
-                .remove(PREFERENCE_GSF_ID)
-                .remove(PREFERENCE_AUTH_TOKEN)
-                .remove(PREFERENCE_LAST_USED_TOKEN_DISPENSER)
-                .remove(PREFERENCE_APP_PROVIDED_EMAIL)
-                .apply()
-        ;
+                .remove(Aurora.PREFERENCE_EMAIL)
+                .remove(Aurora.PREFERENCE_GSF_ID)
+                .remove(Aurora.PREFERENCE_AUTH_TOKEN)
+                .remove(Aurora.PREFERENCE_LAST_USED_TOKEN_DISPENSER)
+                .remove(Aurora.PREFERENCE_APP_PROVIDED_EMAIL)
+                .apply();
         api = null;
     }
 
     private GooglePlayAPI buildFromPreferences() throws IOException {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-        String email = prefs.getString(PREFERENCE_EMAIL, "");
+        String email = prefs.getString(Aurora.PREFERENCE_EMAIL, "");
         if (TextUtils.isEmpty(email)) {
             throw new CredentialsEmptyException();
         }
@@ -151,15 +143,15 @@ public class PlayStoreApiAuthenticator {
                 }
                 loginInfo.setTokenDispenserUrl(null);
                 SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-                if (prefs.getBoolean(PREFERENCE_APP_PROVIDED_EMAIL, false)) {
+                if (prefs.getBoolean(Aurora.PREFERENCE_APP_PROVIDED_EMAIL, false)) {
                     loginInfo.setEmail(null);
-                    prefs.edit().remove(PREFERENCE_GSF_ID).apply();
+                    prefs.edit().remove(Aurora.PREFERENCE_GSF_ID).apply();
                 }
                 tried++;
                 if (tried >= retries) {
                     throw e;
                 }
-                Log.i(getClass().getSimpleName(), "Login retry #" + tried);
+                Timber.i("Login retry : %s", tried);
             }
         }
         return null;
@@ -182,7 +174,7 @@ public class PlayStoreApiAuthenticator {
     private DeviceInfoProvider getDeviceInfoProvider() {
         DeviceInfoProvider deviceInfoProvider;
         String spoofDevice = PreferenceManager.getDefaultSharedPreferences(context)
-                .getString(PreferenceFragment.PREFERENCE_DEVICE_TO_PRETEND_TO_BE, "");
+                .getString(Aurora.PREFERENCE_DEVICE_TO_PRETEND_TO_BE, "");
         if (TextUtils.isEmpty(spoofDevice)) {
             deviceInfoProvider = new NativeDeviceInfoProvider();
             ((NativeDeviceInfoProvider) deviceInfoProvider).setContext(context);
@@ -197,10 +189,10 @@ public class PlayStoreApiAuthenticator {
 
     private void fill(LoginInfo loginInfo) {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-        String locale = prefs.getString(PreferenceFragment.PREFERENCE_REQUESTED_LANGUAGE, "");
+        String locale = prefs.getString(Aurora.PREFERENCE_REQUESTED_LANGUAGE, "");
         loginInfo.setLocale(TextUtils.isEmpty(locale) ? Locale.getDefault() : new Locale(locale));
-        loginInfo.setGsfId(prefs.getString(PREFERENCE_GSF_ID, ""));
-        loginInfo.setToken(prefs.getString(PREFERENCE_AUTH_TOKEN, ""));
+        loginInfo.setGsfId(prefs.getString(Aurora.PREFERENCE_GSF_ID, ""));
+        loginInfo.setToken(prefs.getString(Aurora.PREFERENCE_AUTH_TOKEN, ""));
         if (TextUtils.isEmpty(loginInfo.getTokenDispenserUrl())) {
             loginInfo.setTokenDispenserUrl(tokenDispenserMirrors.get());
         }
@@ -208,9 +200,9 @@ public class PlayStoreApiAuthenticator {
 
     private void save(LoginInfo loginInfo) {
         PreferenceManager.getDefaultSharedPreferences(context).edit()
-                .putString(PREFERENCE_EMAIL, loginInfo.getEmail())
-                .putString(PREFERENCE_GSF_ID, loginInfo.getGsfId())
-                .putString(PREFERENCE_AUTH_TOKEN, loginInfo.getToken())
+                .putString(Aurora.PREFERENCE_EMAIL, loginInfo.getEmail())
+                .putString(Aurora.PREFERENCE_GSF_ID, loginInfo.getGsfId())
+                .putString(Aurora.PREFERENCE_AUTH_TOKEN, loginInfo.getToken())
                 .apply()
         ;
     }
