@@ -139,6 +139,7 @@ public class ContainerFragment extends Fragment implements UpdatableAppsFragment
             bottomNavigationView.setColored(true);
         else
             bottomNavigationView.setDefaultBackgroundColor(Util.getStyledAttribute(getContext(), android.R.attr.colorPrimary));
+        bottomNavigationView.setAccentColor(Util.getStyledAttribute(getContext(), R.attr.colorAccent));
         bottomNavigationView.setBehaviorTranslationEnabled(true);
         bottomNavigationView.setTranslucentNavigationEnabled(true);
         bottomNavigationView.setTitleState(AHBottomNavigation.TitleState.ALWAYS_SHOW);

@@ -99,6 +99,12 @@ public abstract class AbstractHelper {
     protected void paintTextView(int textViewId) {
         TextView textView = view.findViewById(textViewId);
         if (textView != null)
+            textView.setTextColor(color);
+    }
+
+    protected void paintTextViewTxt(int textViewId) {
+        TextView textView = view.findViewById(textViewId);
+        if (textView != null)
             textView.setTextColor(colorText);
     }
 

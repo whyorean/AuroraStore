@@ -206,7 +206,7 @@ public class GeneralDetails extends AbstractHelper {
             paintTextView(R.id.beta_header);
             paintTextView(R.id.permissions_header);
             paintTextView(R.id.exodus_title);
-            paintTextView(R.id.changes_upper);
+            paintTextViewTxt(R.id.changes_upper);
             paintTextView(R.id.showLessMoreTxt);
             paintTextView(R.id.txt_readAll);
         }

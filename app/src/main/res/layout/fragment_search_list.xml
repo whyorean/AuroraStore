@@ -34,7 +34,7 @@
 
         <TextView
             android:id="@+id/searchTitle"
-            style="@style/TextAppearance.Aurora.Title"
+            style="@style/TextAppearance.Aurora.SubTitle"
             android:layout_width="match_parent"
             android:layout_height="?actionBarSize"
             android:background="?android:attr/colorAccent"

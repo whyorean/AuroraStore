@@ -34,12 +34,12 @@
 
         <TextView
             android:id="@+id/categoryTitle"
-            style="@style/TextAppearance.Aurora.Title"
+            style="@style/TextAppearance.Aurora.SubTitle"
             android:layout_width="match_parent"
             android:layout_height="?actionBarSize"
             android:background="?android:attr/colorAccent"
             android:gravity="center_vertical"
-            android:paddingStart="10dp"
+            android:paddingStart="15dp"
             android:paddingEnd="10dp"
             android:textColor="@color/white"
             app:layout_scrollFlags="scroll|snap|exitUntilCollapsed" />
