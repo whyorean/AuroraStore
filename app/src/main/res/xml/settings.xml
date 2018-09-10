@@ -132,7 +132,7 @@
             android:summaryOn="@string/pref_background_update_install_summary_on"
             android:title="@string/pref_background_update_install" />
         <ListPreference
-            android:defaultValue="black"
+            android:defaultValue="BLACK"
             android:entries="@array/blackOrWhiteLabels"
             android:entryValues="@array/blackOrWhiteValues"
             android:icon="@drawable/ic_blacklist_alt"
@@ -170,7 +170,7 @@
             android:summaryOn="@string/pref_delete_apk_after_install_summary_on"
             android:title="@string/pref_delete_apk_after_install" />
         <ListPreference
-            android:defaultValue="default"
+            android:defaultValue="DEFAULT"
             android:entries="@array/installationMethodLabels"
             android:entryValues="@array/installationMethodValues"
             android:icon="@drawable/ic_settings_alt2"

@@ -21,8 +21,8 @@
 
 <resources>
     <string-array name="blackOrWhiteValues" translatable="false">
-        <item>black</item>
-        <item>white</item>
+        <item>BLACK</item>
+        <item>WHITE</item>
     </string-array>
     <string-array name="blackOrWhiteLabels">
         <item>@string/pref_update_list_white_or_black_black</item>
@@ -41,9 +41,9 @@
         <item>@string/pref_background_update_interval_weekly</item>
     </string-array>
     <string-array name="installationMethodValues" translatable="false">
-        <item>default</item>
-        <item>root</item>
-        <item>privileged</item>
+        <item>DEFAULT</item>
+        <item>ROOT</item>
+        <item>PRIVILEGED</item>
     </string-array>
     <string-array name="installationMethodLabels">
         <item>@string/pref_installation_method_default</item>

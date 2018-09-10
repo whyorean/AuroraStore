@@ -84,8 +84,8 @@ public class PreferenceFragment extends androidx.preference.PreferenceFragment {
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         ImageView toolbar_back = this.getActivity().findViewById(R.id.toolbar_back);
         toolbar_back.setOnClickListener(click -> getActivity().onBackPressed());
         addPreferencesFromResource(R.xml.settings);

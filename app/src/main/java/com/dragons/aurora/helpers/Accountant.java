@@ -46,17 +46,17 @@ public class Accountant {
     }
 
     public static void LoginFirst(Context context) {
-        if (!Prefs.getBoolean(context, "LOGIN_PROMPTED")) {
+        if (!Prefs.getBoolean(context, Aurora.LOGIN_PROMPTED)) {
             new AlertDialog.Builder(context)
                     .setTitle(R.string.action_login)
                     .setMessage(R.string.header_usr_noEmail)
                     .setPositiveButton(R.string.action_login, (dialogInterface, i) -> {
                         context.startActivity(new Intent(context, LoginActivity.class));
-                        Prefs.putBoolean(context, "LOGIN_PROMPTED", false);
+                        Prefs.putBoolean(context, Aurora.LOGIN_PROMPTED, false);
                     })
                     .setCancelable(false)
                     .show();
-            Prefs.putBoolean(context, "LOGIN_PROMPTED", true);
+            Prefs.putBoolean(context, Aurora.LOGIN_PROMPTED, true);
         }
     }
 
@@ -89,7 +89,7 @@ public class Accountant {
         Prefs.putBoolean(context, Aurora.REFRESH_ASKED, false);
         Prefs.putString(context, Aurora.GOOGLE_NAME, "");
         Prefs.putString(context, Aurora.GOOGLE_URL, "");
-        Prefs.putBoolean(context, "LOGIN_PROMPTED", false);
+        Prefs.putBoolean(context, Aurora.LOGIN_PROMPTED, false);
         new PlayStoreApiAuthenticator(context).logout();
     }
 }

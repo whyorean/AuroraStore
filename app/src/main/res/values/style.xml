@@ -117,7 +117,7 @@
     </style>
 
     <style name="TextAppearance.Aurora.Body" parent="@style/TextAppearance.AppCompat.Body1">
-        <item name="android:textColor">?android:textColorSecondary</item>
+        <item name="android:textColor">?android:attr/textColorSecondary</item>
     </style>
 
     <style name="TextAppearance.Aurora.TextView" parent="@android:style/Widget.Material.TextView">

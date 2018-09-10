@@ -27,7 +27,7 @@ import android.view.View;
 import com.dragons.aurora.R;
 import com.dragons.aurora.fragment.SpoofFragment;
 
-public class SpoofActivity extends AuroraActivity {
+public class SpoofActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

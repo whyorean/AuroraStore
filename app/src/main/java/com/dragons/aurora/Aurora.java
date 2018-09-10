@@ -39,6 +39,7 @@ public class Aurora {
     public static final String INSTALLATION_METHOD_PRIVILEGED = "PRIVILEGED";
     public static final String INSTALLATION_METHOD_DEFAULT = "DEFAULT";
     public static final String LIST_BLACK = "BLACK";
+    public static final String LOGIN_PROMPTED = "LOGIN_PROMPTED";
     public static final String REFRESH_ASKED = "REFRESH_ASKED";
     public static final String LOGGED_IN = "LOGGED_IN";
     public static final String GOOGLE_ACC = "GOOGLE_ACC";

@@ -28,6 +28,7 @@ import com.aurelhubert.ahbottomnavigation.AHBottomNavigationAdapter;
 import com.aurelhubert.ahbottomnavigation.notification.AHNotification;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.dragons.aurora.Aurora;
 import com.dragons.aurora.OnBackPressListener;
 import com.dragons.aurora.R;
 import com.dragons.aurora.Util;
@@ -66,7 +67,7 @@ public class ContainerFragment extends Fragment implements UpdatableAppsFragment
         super.onCreate(savedInstanceState);
         view = inflater.inflate(R.layout.fragment_container, container, false);
         ButterKnife.bind(this, view);
-        if (Prefs.getBoolean(getContext(), "SWIPE_PAGES"))
+        if (Prefs.getBoolean(getContext(), Aurora.PREFERENCE_SWIPE_PAGES))
             mViewPager.setScroll(true);
         else
             mViewPager.setScroll(false);
@@ -135,11 +136,12 @@ public class ContainerFragment extends Fragment implements UpdatableAppsFragment
         int[] tabColors = getResources().getIntArray(R.array.tab_colors);
         AHBottomNavigationAdapter navigationAdapter = new AHBottomNavigationAdapter(getActivity(), R.menu.main_menu);
         navigationAdapter.setupWithBottomNavigation(bottomNavigationView, tabColors);
-        if (Prefs.getBoolean(getContext(), "COLOR_NAV"))
+        if (Prefs.getBoolean(getContext(), Aurora.PREFERENCE_COLOR_NAV))
             bottomNavigationView.setColored(true);
-        else
+        else {
             bottomNavigationView.setDefaultBackgroundColor(Util.getStyledAttribute(getContext(), android.R.attr.colorPrimary));
-        bottomNavigationView.setAccentColor(Util.getStyledAttribute(getContext(), R.attr.colorAccent));
+            bottomNavigationView.setAccentColor(Util.getStyledAttribute(getContext(), R.attr.colorAccent));
+        }
         bottomNavigationView.setBehaviorTranslationEnabled(true);
         bottomNavigationView.setTranslucentNavigationEnabled(true);
         bottomNavigationView.setTitleState(AHBottomNavigation.TitleState.ALWAYS_SHOW);
