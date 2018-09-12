@@ -24,10 +24,11 @@ package com.dragons.aurora.fragment.preference;
 import android.Manifest;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.widget.Toast;
 
 import com.dragons.aurora.Aurora;
 import com.dragons.aurora.BuildConfig;
+import com.dragons.aurora.ContextUtil;
+import com.dragons.aurora.InstallerAurora;
 import com.dragons.aurora.R;
 import com.dragons.aurora.fragment.PreferenceFragment;
 import com.dragons.aurora.model.App;
@@ -50,7 +51,12 @@ class OnInstallationMethodChangeListener implements Preference.OnPreferenceChang
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         String oldValue = ((ListPreference) preference).getValue();
         if (null != oldValue && !oldValue.equals(newValue)) {
-            if (Aurora.INSTALLATION_METHOD_PRIVILEGED.equals(newValue)) {
+            if (Aurora.INSTALLATION_METHOD_AURORA.equals(newValue)) {
+                if (!InstallerAurora.isExtensionAvailable(activity.getActivity())) {
+                    ContextUtil.toast(activity.getActivity(), R.string.pref_installation_method_aurora_unavailable);
+                    return false;
+                }
+            } else if (Aurora.INSTALLATION_METHOD_PRIVILEGED.equals(newValue)) {
                 if (!checkPrivileged()) {
                     return false;
                 }
@@ -68,6 +74,9 @@ class OnInstallationMethodChangeListener implements Preference.OnPreferenceChang
         }
         int summaryId;
         switch (installationMethod) {
+            case Aurora.INSTALLATION_METHOD_AURORA:
+                summaryId = R.string.pref_installation_method_aurora;
+                break;
             case Aurora.INSTALLATION_METHOD_PRIVILEGED:
                 summaryId = R.string.pref_installation_method_privileged;
                 break;
@@ -98,7 +107,7 @@ class OnInstallationMethodChangeListener implements Preference.OnPreferenceChang
         @Override
         protected void onPostExecute(Void aVoid) {
             if (!available) {
-                Toast.makeText(fragment.getActivity().getApplicationContext(), R.string.pref_not_privileged, Toast.LENGTH_LONG).show();
+                ContextUtil.toast(fragment.getActivity(), R.string.pref_not_privileged);
                 return;
             }
             showPrivilegedInstallationDialog();

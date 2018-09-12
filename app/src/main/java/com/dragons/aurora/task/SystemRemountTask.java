@@ -94,20 +94,11 @@ public abstract class SystemRemountTask extends TaskWithProgress<List<String>> {
         new AlertDialog.Builder(context)
                 .setMessage(R.string.dialog_message_reboot_required)
                 .setTitle(R.string.dialog_title_reboot_required)
-                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        new RebootTask().execute();
-                        dialog.dismiss();
-                    }
+                .setPositiveButton(android.R.string.yes, (dialog, which) -> {
+                    new RebootTask().execute();
+                    dialog.dismiss();
                 })
-                .setNegativeButton(R.string.dialog_two_factor_cancel, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                })
-                .show()
-        ;
+                .setNegativeButton(R.string.dialog_two_factor_cancel, (dialog, which) -> dialog.dismiss())
+                .show();
     }
 }

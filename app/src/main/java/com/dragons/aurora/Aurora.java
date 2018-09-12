@@ -35,6 +35,7 @@ public class Aurora {
     public static final String PREFERENCE_SWIPE_PAGES = "PREFERENCE_SWIPE_PAGES";
     public static final String PREFERENCE_COLOR_NAV = "PREFERENCE_COLOR_NAV";
     public static final String PREFERENCE_SHOW_IME = "PREFERENCE_SHOW_IME";
+    public static final String INSTALLATION_METHOD_AURORA = "AURORA";
     public static final String INSTALLATION_METHOD_ROOT = "ROOT";
     public static final String INSTALLATION_METHOD_PRIVILEGED = "PRIVILEGED";
     public static final String INSTALLATION_METHOD_DEFAULT = "DEFAULT";

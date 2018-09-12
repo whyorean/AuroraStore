@@ -298,6 +298,8 @@
     <string name="pref_installation_method">Installation method</string>
     <string name="pref_installation_method_default">Default installation dialog, no background installs</string>
     <string name="pref_installation_method_privileged">Using system permissions</string>
+    <string name="pref_installation_method_aurora">Using Aurora services</string>
+    <string name="pref_installation_method_aurora_unavailable">Aurora Services not installed</string>
     <string name="pref_installation_method_root">Using root</string>
     <string name="pref_message_fallback">Attempt to set a fallback directory (%1$s)?</string>
     <string name="pref_not_privileged">Only available if Aurora is a system app</string>

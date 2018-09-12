@@ -55,11 +55,9 @@ public class ConvertToSystemTask extends SystemRemountTask {
 
     private String getTargetPath() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            return "/system/priv-app/" + app.getPackageName() + "/" + app.getPackageName() + ".apk";
-        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            return "/system/priv-app/" + app.getPackageName() + ".apk";
+            return "/system/priv-app/" + app.getPackageName() + File.separator + app.getPackageName() + ".apk";
         } else {
-            return "/system/app/" + app.getPackageName() + ".apk";
+            return "/system/priv-app/" + app.getPackageName() + ".apk";
         }
     }
 }

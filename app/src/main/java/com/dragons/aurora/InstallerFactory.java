@@ -30,6 +30,8 @@ public class InstallerFactory {
     static public InstallerAbstract get(Context context) {
         String userChoice = Prefs.getString(context, Aurora.PREFERENCE_INSTALLATION_METHOD);
         switch (userChoice) {
+            case Aurora.INSTALLATION_METHOD_AURORA:
+                return new InstallerAurora(context);
             case Aurora.INSTALLATION_METHOD_PRIVILEGED:
                 return new InstallerPrivileged(context);
             case Aurora.INSTALLATION_METHOD_ROOT:
