@@ -44,17 +44,13 @@ public class AboutFragment extends BaseFragment {
             R.drawable.ic_telegram,
             R.drawable.ic_fdroid
     };
-    private View view;
 
+    private View view;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         view = inflater.inflate(R.layout.fragment_about, container, false);
-
-        ((TextView) view.findViewById(R.id.aurora_title)).setText(R.string.action_about);
-        ((ImageView) view.findViewById(R.id.toolbar_back)).setOnClickListener(click -> getActivity().onBackPressed());
-
         drawVersion();
         drawLinks();
         return view;

@@ -18,159 +18,79 @@
   ~ You should have received a copy of the GNU General Public License
   ~ along with Aurora Store.  If not, see <http://www.gnu.org/licenses/>.
   -->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:weightSum="3">
-
-    <FrameLayout
-        android:id="@+id/top_artwork"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
-
-        <com.github.florent37.shapeofview.shapes.DiagonalView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:shape_diagonal_angle="5"
-            app:shape_diagonal_direction="left"
-            app:shape_diagonal_position="bottom">
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/header_grad2" />
-        </com.github.florent37.shapeofview.shapes.DiagonalView>
-
-
-        <com.github.florent37.shapeofview.shapes.DiagonalView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:alpha=".8"
-            app:shape_diagonal_angle="10"
-            app:shape_diagonal_direction="right"
-            app:shape_diagonal_position="bottom">
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/header_grad1" />
-        </com.github.florent37.shapeofview.shapes.DiagonalView>
-
-        <RelativeLayout
-            android:id="@+id/topView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <ImageView
-                android:id="@+id/toolbar_back"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="28dp"
-                android:background="?android:selectableItemBackgroundBorderless"
-                android:padding="10dp"
-                android:src="@drawable/ic_arrow_left" />
-
-            <TextView
-                android:id="@+id/aurora_title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:fontFamily="@font/google_sans_bold"
-                android:padding="5dp"
-                android:textAlignment="center"
-                android:textColor="@color/white"
-                android:textSize="22sp" />
-        </RelativeLayout>
-
-    </FrameLayout>
+    android:layout_height="match_parent">
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="2"
-        android:fadeScrollbars="true"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        android:layout_height="match_parent"
+        android:scrollbars="none">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:background="?android:attr/colorBackground"
             android:orientation="vertical"
             android:padding="5dp">
 
-            <androidx.cardview.widget.CardView
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:cardBackgroundColor="?android:attr/panelBackground"
-                app:cardCornerRadius="5dp"
-                app:cardElevation="2dp"
-                app:cardUseCompatPadding="true"
-                app:contentPadding="5dp">
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-                <RelativeLayout
+                <ImageView
+                    android:id="@+id/launcher_icon"
+                    android:layout_width="@dimen/icon_size_big"
+                    android:layout_height="@dimen/icon_size_big"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp"
+                    android:src="@mipmap/ic_launcher" />
+
+                <TextView
+                    android:id="@+id/app_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/launcher_icon"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/app_name"
+                    android:textAppearance="@style/TextAppearance.Aurora.Title" />
+
+                <TextView
+                    android:id="@+id/app_version"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/app_name"
+                    android:layout_centerHorizontal="true"
+                    android:fontFamily="@font/google_sans"
+                    android:gravity="center"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/about_app"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="vertical">
+                    android:layout_below="@+id/app_version"
+                    android:fontFamily="@font/google_sans"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="@string/about_app"
+                    android:textSize="14sp" />
 
-                    <ImageView
-                        android:id="@+id/launcher_icon"
-                        android:layout_width="@dimen/icon_size_big"
-                        android:layout_height="@dimen/icon_size_big"
-                        android:layout_centerHorizontal="true"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginTop="5dp"
-                        android:src="@mipmap/ic_launcher" />
-
-                    <TextView
-                        android:id="@+id/app_name"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/launcher_icon"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginTop="8dp"
-                        android:fontFamily="@font/google_sans_bold"
-                        android:gravity="center"
-                        android:text="@string/app_name"
-                        android:textSize="18sp" />
-
-                    <TextView
-                        android:id="@+id/app_version"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/app_name"
-                        android:layout_centerHorizontal="true"
-                        android:fontFamily="@font/google_sans"
-                        android:gravity="center"
-                        android:textSize="14sp" />
-
-                    <TextView
-                        android:id="@+id/about_app"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_below="@+id/app_version"
-                        android:fontFamily="@font/google_sans"
-                        android:gravity="center"
-                        android:padding="10dp"
-                        android:text="@string/about_app"
-                        android:textSize="14sp" />
-                </RelativeLayout>
-            </androidx.cardview.widget.CardView>
+            </RelativeLayout>
 
             <LinearLayout
                 android:id="@+id/linkContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:weightSum="4" />
+                android:orientation="vertical" />
 
         </LinearLayout>
 
     </ScrollView>
 
-</LinearLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
 

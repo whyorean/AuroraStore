@@ -27,19 +27,26 @@ import android.view.View;
 import com.dragons.aurora.R;
 import com.dragons.aurora.fragment.AboutFragment;
 
+import androidx.appcompat.widget.Toolbar;
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class AboutActivity extends BaseActivity {
+
+    @BindView(R.id.toolbar)
+    Toolbar mToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_helper_alt);
-        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
-        getWindow().setStatusBarColor(getResources().getColor(R.color.semi_transparent));
+        setContentView(R.layout.activity_helper);
+        ButterKnife.bind(this);
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.container, new AboutFragment())
                 .commit();
+        mToolbar.setTitle(getString(R.string.action_about));
+        mToolbar.setNavigationOnClickListener(v -> onBackPressed());
     }
 
     @Override
