@@ -49,7 +49,7 @@
     <color name="colorShade04">@color/colorBlue</color>
 
     <!--More Colors-->
-    <color name="colorPurple">#6200EE</color>
+    <color name="colorPurple">#4527A0</color>
     <color name="colorCyan">#00BCD4</color>
     <color name="colorBlue">#0088cc</color>
     <color name="colorRed">#F44336</color>
@@ -57,9 +57,10 @@
     <color name="colorGreenAlt">#8BC34A</color>
     <color name="colorOrange">#FF9800</color>
     <color name="colorGold">#FFBF00</color>
-    <color name="colorPink">#F50057</color>
+    <color name="colorPink">#d81b60</color>
     <color name="colorLime">#CDDC39</color>
     <color name="colorYellow">#FCD230</color>
+    <color name="colorTeal">#00796b</color>
 
     <!--Exodus-->
     <color name="exodusPrimary">#684971</color>

@@ -22,25 +22,31 @@
 package com.dragons.aurora.activities;
 
 import android.os.Bundle;
-import android.view.View;
 
 import com.dragons.aurora.R;
 import com.dragons.aurora.fragment.PreferenceFragment;
 
+import androidx.appcompat.widget.Toolbar;
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 
 public class PreferenceActivity extends BaseActivity {
+
+    @BindView(R.id.toolbar)
+    Toolbar mToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_preferences);
-        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
-        getWindow().setStatusBarColor(getResources().getColor(R.color.semi_transparent));
+        setContentView(R.layout.activity_helper);
+        ButterKnife.bind(this);
         getFragmentManager()
                 .beginTransaction()
                 .replace(R.id.container, new PreferenceFragment())
                 .commit();
+        mToolbar.setTitle(getString(R.string.action_settings));
+        mToolbar.setNavigationOnClickListener(v -> onBackPressed());
     }
 
     @Override

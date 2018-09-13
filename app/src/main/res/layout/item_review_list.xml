@@ -63,12 +63,12 @@
             android:id="@+id/comment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="?android:attr/textColorSecondary"
             android:layout_below="@id/title"
             android:layout_marginTop="10dp"
             android:layout_toEndOf="@id/avatar"
             android:textAlignment="viewStart"
             android:textAppearance="@style/TextAppearance.Aurora.TextView"
+            android:textColor="?android:attr/textColorSecondary"
             android:textSize="12sp" />
 
     </RelativeLayout>

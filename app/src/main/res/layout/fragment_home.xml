@@ -52,8 +52,8 @@
                 <HorizontalScrollView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginBottom="12dp"
                     android:layout_marginTop="12dp"
+                    android:layout_marginBottom="12dp"
                     android:nestedScrollingEnabled="false"
                     android:scrollbars="none">
 
@@ -66,40 +66,40 @@
                             android:id="@+id/tag_gamesAction"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
-                            android:layout_marginEnd="6dp"
                             android:layout_marginStart="6dp"
+                            android:layout_marginEnd="6dp"
                             app:TagStyle="Duo" />
 
                         <com.dragons.custom.TagView
                             android:id="@+id/tag_family"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginEnd="6dp"
                             android:layout_marginStart="6dp"
+                            android:layout_marginEnd="6dp"
                             app:TagStyle="Mono" />
 
                         <com.dragons.custom.TagView
                             android:id="@+id/tag_gamesRacing"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
-                            android:layout_marginEnd="6dp"
                             android:layout_marginStart="6dp"
+                            android:layout_marginEnd="6dp"
                             app:TagStyle="Duo" />
 
                         <com.dragons.custom.TagView
                             android:id="@+id/tag_travel"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginEnd="6dp"
                             android:layout_marginStart="6dp"
+                            android:layout_marginEnd="6dp"
                             app:TagStyle="Mono" />
 
                         <com.dragons.custom.TagView
                             android:id="@+id/tag_social"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginEnd="6dp"
                             android:layout_marginStart="6dp"
+                            android:layout_marginEnd="6dp"
                             app:TagStyle="Mono" />
 
                     </LinearLayout>

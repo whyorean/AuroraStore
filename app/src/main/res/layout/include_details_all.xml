@@ -49,12 +49,12 @@
 
         </LinearLayout>
 
-        <include layout="@layout/include_divider"/>
+        <include layout="@layout/include_divider" />
 
         <!-- App Details -->
         <include layout="@layout/include_details_subinfo" />
 
-        <include layout="@layout/include_divider"/>
+        <include layout="@layout/include_divider" />
 
         <!-- Changelog -->
         <include layout="@layout/include_details_changelog" />
