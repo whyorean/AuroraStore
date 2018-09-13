@@ -19,79 +19,10 @@
   ~ along with Aurora Store.  If not, see <http://www.gnu.org/licenses/>.
   -->
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-
-    <FrameLayout
-        android:id="@+id/top_artwork"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <com.github.florent37.shapeofview.shapes.DiagonalView
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:alpha=".8"
-            app:shape_diagonal_angle="5"
-            app:shape_diagonal_direction="left"
-            app:shape_diagonal_position="bottom">
-
-            <View
-                android:id="@+id/diagonalView1"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/header_grad2" />
-
-        </com.github.florent37.shapeofview.shapes.DiagonalView>
-
-        <com.github.florent37.shapeofview.shapes.DiagonalView
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:alpha=".8"
-            app:shape_diagonal_angle="10"
-            app:shape_diagonal_direction="right"
-            app:shape_diagonal_position="bottom">
-
-            <View
-                android:id="@+id/diagonalView2"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/header_grad1" />
-        </com.github.florent37.shapeofview.shapes.DiagonalView>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/aurora"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:fontFamily="@font/google_sans_bold"
-                android:text="Aurora"
-                android:textAlignment="center"
-                android:textColor="@color/white"
-                android:textSize="22sp" />
-
-            <TextView
-                android:id="@+id/store"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:alpha=".75"
-                android:fontFamily="@font/google_sans"
-                android:text="Spoof"
-                android:textColor="@color/white"
-                android:textSize="22sp" />
-
-        </LinearLayout>
-
-    </FrameLayout>
+    android:layout_height="match_parent">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -102,17 +33,15 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp">
+            android:padding="5dp">
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/device_info"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:minHeight="72dp"
-                app:cardBackgroundColor="?android:attr/panelBackground"
+                android:minHeight="76dp"
                 app:cardCornerRadius="5dp"
-                app:cardElevation="2dp"
+                app:cardElevation="1dp"
                 app:cardPreventCornerOverlap="false"
                 app:cardUseCompatPadding="true">
 
@@ -127,55 +56,52 @@
                         android:layout_width="56dp"
                         android:layout_height="56dp"
                         android:layout_gravity="center"
-                        android:layout_margin="5dp"
+                        android:layout_margin="10dp"
                         android:padding="10dp"
                         android:src="@drawable/ic_device" />
 
-                    <TextView
-                        android:id="@+id/device_model"
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_toEndOf="@+id/device_avatar"
-                        android:ellipsize="end"
-                        android:fontFamily="@font/google_sans_bold"
-                        android:singleLine="true"
-                        android:textAlignment="viewStart"
-                        android:textColor="?android:attr/textColorPrimary"
-                        android:textSize="16sp" />
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/device_model"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_toEndOf="@+id/device_avatar">
+                        android:layout_toEndOf="@id/device_avatar"
+                        android:orientation="vertical"
+                        android:padding="5dp">
 
                         <TextView
-                            android:id="@+id/device_manufacturer"
-                            android:layout_width="wrap_content"
+                            android:id="@+id/device_model"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_centerVertical="true" />
+                            android:textAppearance="@style/TextAppearance.Aurora.Title" />
 
-                        <View
-                            android:id="@+id/divider"
-                            android:layout_width="1dp"
-                            android:layout_height="10dp"
-                            android:layout_centerVertical="true"
-                            android:layout_marginStart="5dp"
-                            android:layout_marginEnd="5dp"
-                            android:layout_toEndOf="@id/device_manufacturer"
-                            android:background="@color/gray" />
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
 
-                        <TextView
-                            android:id="@+id/device_architect"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerVertical="true"
-                            android:layout_toEndOf="@+id/divider" />
-                    </RelativeLayout>
+                            <TextView
+                                android:id="@+id/device_manufacturer"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true" />
+
+                            <View
+                                android:id="@+id/divider"
+                                android:layout_width="1dp"
+                                android:layout_height="10dp"
+                                android:layout_centerVertical="true"
+                                android:layout_marginStart="5dp"
+                                android:layout_marginEnd="5dp"
+                                android:layout_toEndOf="@id/device_manufacturer"
+                                android:background="@color/gray" />
+
+                            <TextView
+                                android:id="@+id/device_architect"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_toEndOf="@+id/divider" />
+                        </RelativeLayout>
+
+                    </LinearLayout>
 
                 </RelativeLayout>
 
@@ -186,13 +112,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/device_info"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="10dp"
                 android:minHeight="76dp"
-                app:cardBackgroundColor="?android:attr/panelBackground"
                 app:cardCornerRadius="5dp"
-                app:cardElevation="2dp"
+                app:cardElevation="1dp"
                 app:cardPreventCornerOverlap="false"
                 app:cardUseCompatPadding="true">
 
@@ -206,43 +128,39 @@
                         android:layout_width="56dp"
                         android:layout_height="56dp"
                         android:layout_centerVertical="true"
-                        android:layout_margin="5dp"
+                        android:layout_margin="10dp"
                         android:alpha=".75"
                         android:padding="10dp"
                         android:src="@drawable/ic_incognito" />
 
-                    <TextView
-                        android:id="@+id/spoof_device_title"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="5dp"
-                        android:layout_toEndOf="@id/spoof_device_img"
-                        android:fontFamily="@font/google_sans_bold"
-                        android:text="@string/pref_category_spoof_device"
-                        android:textColor="?android:attr/textColorPrimary"
-                        android:textSize="16sp" />
-
-                    <TextView
-                        android:id="@+id/spoof_device_summary"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/spoof_device_title"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginEnd="5dp"
-                        android:layout_marginBottom="5dp"
-                        android:layout_toEndOf="@id/spoof_device_img"
-                        android:ellipsize="end"
-                        android:maxLines="2"
-                        android:text="@string/pref_device_to_pretend_to_be" />
-
-                    <Spinner
-                        android:id="@+id/spoof_device"
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/spoof_device_summary"
-                        android:layout_marginStart="-2dp"
-                        android:layout_marginBottom="5dp"
-                        android:layout_toEndOf="@id/spoof_device_img" />
+                        android:layout_toEndOf="@id/spoof_device_img"
+                        android:orientation="vertical"
+                        android:padding="5dp">
+
+                        <TextView
+                            android:id="@+id/spoof_device_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/pref_category_spoof_device"
+                            android:textAppearance="@style/TextAppearance.Aurora.Title" />
+
+                        <TextView
+                            android:id="@+id/spoof_device_summary"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/pref_device_to_pretend_to_be" />
+
+                        <Spinner
+                            android:id="@+id/spoof_device"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="-8dp" />
+                    </LinearLayout>
+
+
                 </RelativeLayout>
 
             </androidx.cardview.widget.CardView>
@@ -252,13 +170,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/device_card"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="10dp"
                 android:minHeight="76dp"
-                app:cardBackgroundColor="?android:attr/panelBackground"
                 app:cardCornerRadius="5dp"
-                app:cardElevation="2dp"
+                app:cardElevation="1dp"
                 app:cardPreventCornerOverlap="false"
                 app:cardUseCompatPadding="true">
 
@@ -272,43 +186,39 @@
                         android:layout_width="56dp"
                         android:layout_height="56dp"
                         android:layout_centerVertical="true"
-                        android:layout_margin="5dp"
+                        android:layout_margin="10dp"
                         android:alpha=".75"
                         android:padding="10dp"
                         android:src="@drawable/ic_translate" />
 
-                    <TextView
-                        android:id="@+id/spoof_language_title"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="5dp"
-                        android:layout_toEndOf="@id/spoof_img"
-                        android:fontFamily="@font/google_sans_bold"
-                        android:text="@string/pref_category_spoof_lang"
-                        android:textColor="?android:attr/textColorPrimary"
-                        android:textSize="16sp" />
-
-                    <TextView
-                        android:id="@+id/spoof_language_summary"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/spoof_language_title"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginEnd="5dp"
-                        android:layout_marginBottom="5dp"
-                        android:layout_toEndOf="@id/spoof_img"
-                        android:ellipsize="end"
-                        android:maxLines="2"
-                        android:text="@string/pref_requested_language" />
-
-                    <Spinner
-                        android:id="@+id/spoof_language"
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/spoof_language_summary"
-                        android:layout_marginStart="-2dp"
-                        android:layout_marginBottom="5dp"
-                        android:layout_toEndOf="@id/spoof_img" />
+                        android:layout_toEndOf="@id/spoof_img"
+                        android:orientation="vertical"
+                        android:padding="5dp">
+
+                        <TextView
+                            android:id="@+id/spoof_language_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/pref_category_spoof_lang"
+                            android:textAppearance="@style/TextAppearance.Aurora.Title" />
+
+                        <TextView
+                            android:id="@+id/spoof_language_summary"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:ellipsize="end"
+                            android:maxLines="2"
+                            android:text="@string/pref_requested_language" />
+
+                        <Spinner
+                            android:id="@+id/spoof_language"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="-8dp" />
+                    </LinearLayout>
                 </RelativeLayout>
 
             </androidx.cardview.widget.CardView>
@@ -318,13 +228,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/device_language"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="10dp"
                 android:minHeight="76dp"
                 app:cardBackgroundColor="?android:attr/panelBackground"
                 app:cardCornerRadius="5dp"
-                app:cardElevation="2dp"
+                app:cardElevation="1dp"
                 app:cardPreventCornerOverlap="false"
                 app:cardUseCompatPadding="true">
 
@@ -338,42 +245,37 @@
                         android:layout_width="56dp"
                         android:layout_height="56dp"
                         android:layout_centerVertical="true"
-                        android:layout_margin="5dp"
+                        android:layout_margin="10dp"
                         android:alpha=".75"
                         android:padding="10dp"
                         android:src="@drawable/ic_map_marker" />
 
-                    <TextView
-                        android:id="@+id/spoof_location_title"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="5dp"
-                        android:layout_toEndOf="@id/location_img"
-                        android:fontFamily="@font/google_sans_bold"
-                        android:text="@string/pref_category_spoof_location"
-                        android:textColor="?android:attr/textColorPrimary"
-                        android:textSize="16sp" />
-
-                    <TextView
-                        android:id="@+id/spoof_location_summary"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/spoof_location_title"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginEnd="5dp"
-                        android:layout_marginBottom="5dp"
-                        android:layout_toEndOf="@id/location_img"
-                        android:ellipsize="end"
-                        android:text="@string/pref_requested_location_summary" />
-
-                    <Spinner
-                        android:id="@+id/spoof_location"
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/spoof_location_summary"
-                        android:layout_marginStart="-2dp"
-                        android:layout_marginBottom="5dp"
-                        android:layout_toEndOf="@id/location_img" />
+                        android:layout_toEndOf="@id/location_img"
+                        android:orientation="vertical"
+                        android:padding="5dp">
+
+                        <TextView
+                            android:id="@+id/spoof_location_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/pref_category_spoof_location"
+                            android:textAppearance="@style/TextAppearance.Aurora.Title" />
+
+                        <TextView
+                            android:id="@+id/spoof_location_summary"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/pref_requested_location_summary" />
+
+                        <Spinner
+                            android:id="@+id/spoof_location"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="-8dp" />
+                    </LinearLayout>
                 </RelativeLayout>
 
             </androidx.cardview.widget.CardView>
@@ -383,10 +285,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/device_location"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="10dp"
-                app:cardBackgroundColor="?android:attr/panelBackground"
                 app:cardCornerRadius="5dp"
                 app:cardElevation="1dp"
                 app:cardPreventCornerOverlap="false"
@@ -409,14 +307,12 @@
                         android:id="@+id/textView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
                         android:layout_marginTop="5dp"
                         android:ellipsize="end"
-                        android:fontFamily="@font/google_sans_bold"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
                         android:text="@string/location_spoof_readme"
-                        android:textAlignment="viewStart"
-                        android:textColor="?android:attr/textColorPrimary"
-                        android:textSize="18sp" />
+                        android:textAppearance="@style/TextAppearance.Aurora.Title" />
 
                     <ScrollView
                         android:id="@+id/disclaimer"
@@ -424,6 +320,8 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/show_LessMore"
                         android:layout_marginTop="5dp"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
                         android:visibility="gone">
 
                         <LinearLayout
@@ -453,4 +351,4 @@
 
     </ScrollView>
 
-</LinearLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

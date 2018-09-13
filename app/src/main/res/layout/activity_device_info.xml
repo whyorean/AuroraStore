@@ -23,90 +23,32 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:elevation="0dp">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            app:navigationIcon="?homeAsUpIndicator"
+            app:titleTextAppearance="@style/TextAppearance.Aurora.Toolbar" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <FrameLayout
-            android:id="@+id/top_artwork"
+        <LinearLayout
+            android:id="@+id/device_info"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <com.github.florent37.shapeofview.shapes.DiagonalView
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:alpha=".8"
-                app:shape_diagonal_angle="5"
-                app:shape_diagonal_direction="left"
-                app:shape_diagonal_position="bottom">
-
-                <View
-                    android:id="@+id/diagonalView1"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/header_grad2" />
-
-            </com.github.florent37.shapeofview.shapes.DiagonalView>
-
-            <com.github.florent37.shapeofview.shapes.DiagonalView
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:alpha=".8"
-                app:shape_diagonal_angle="10"
-                app:shape_diagonal_direction="right"
-                app:shape_diagonal_position="bottom">
-
-                <View
-                    android:id="@+id/diagonalView2"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/header_grad1" />
-            </com.github.florent37.shapeofview.shapes.DiagonalView>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:id="@+id/toolbar_back"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="28dp"
-                    android:background="?android:selectableItemBackgroundBorderless"
-                    android:padding="10dp"
-                    android:src="@drawable/ic_arrow_left" />
-
-                <TextView
-                    android:id="@+id/aurora_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:fontFamily="@font/google_sans_bold"
-                    android:text="@string/app_name"
-                    android:textAlignment="center"
-                    android:textColor="@color/white"
-                    android:textSize="22sp" />
-
-            </RelativeLayout>
-
-        </FrameLayout>
-
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_margin="10dp"
-            android:layout_weight="1">
-
-            <LinearLayout
-                android:id="@+id/device_info"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="5dp" />
-        </ScrollView>
-    </LinearLayout>
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="5dp" />
+    </ScrollView>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/incognito_fab"

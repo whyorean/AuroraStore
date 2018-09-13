@@ -24,10 +24,7 @@ package com.dragons.aurora.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.View;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.dragons.aurora.Aurora;
 import com.dragons.aurora.ContextUtil;
@@ -46,9 +43,19 @@ import java.util.Locale;
 import java.util.Properties;
 
 import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.widget.Toolbar;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import timber.log.Timber;
 
 public class DeviceInfoActivity extends BaseActivity {
+
+    @BindView(R.id.toolbar)
+    Toolbar mToolbar;
+    @BindView(R.id.incognito_fab)
+    FloatingActionButton incognito_fab;
+    @BindView(R.id.device_info)
+    LinearLayout root;
 
     private String deviceName;
     private int deviceIndex;
@@ -57,9 +64,8 @@ public class DeviceInfoActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_device_info);
-        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
-        getWindow().setStatusBarColor(getResources().getColor(R.color.semi_transparent));
+        ButterKnife.bind(this);
+        mToolbar.setNavigationOnClickListener(v -> onBackPressed());
         onNewIntent(getIntent());
     }
 
@@ -80,14 +86,13 @@ public class DeviceInfoActivity extends BaseActivity {
         }
 
         Properties properties = new SpoofDeviceManager(this).getProperties(deviceName);
-        ((TextView) findViewById(R.id.aurora_title)).setText(properties.getProperty("UserReadableName"));
+        mToolbar.setTitle(properties.getProperty("UserReadableName"));
         List<String> keys = new ArrayList<>();
         for (Object key : properties.keySet()) {
             keys.add((String) key);
         }
 
         Collections.sort(keys);
-        LinearLayout root = findViewById(R.id.device_info);
         for (String key : keys) {
             addCards(root, key, ((String) properties.get(key)).replace(",", ", "));
         }
@@ -100,10 +105,7 @@ public class DeviceInfoActivity extends BaseActivity {
     }
 
     private void setupButtons() {
-        ImageView toolbar_back = findViewById(R.id.toolbar_back);
-        toolbar_back.setOnClickListener(click -> onBackPressed());
-
-        FloatingActionButton incognito_fab = findViewById(R.id.incognito_fab);
+        incognito_fab = findViewById(R.id.incognito_fab);
         incognito_fab.show();
         incognito_fab.setOnClickListener(click -> showConfirmationDialog());
     }
