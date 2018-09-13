@@ -22,6 +22,6 @@
     <shape android:shape="rectangle">
         <size android:height="2dp" />
         <corners android:radius="1dp" />
-        <solid android:color="?colorPrimary" />
+        <solid android:color="?colorAccent" />
     </shape>
 </inset>

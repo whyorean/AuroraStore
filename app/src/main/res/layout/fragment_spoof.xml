@@ -35,7 +35,7 @@
             android:layout_height="wrap_content"
             android:padding="5dp">
 
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/device_info"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -105,9 +105,9 @@
 
                 </RelativeLayout>
 
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/device_card"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -163,9 +163,9 @@
 
                 </RelativeLayout>
 
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/device_language"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -221,15 +221,14 @@
                     </LinearLayout>
                 </RelativeLayout>
 
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/device_location"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/device_language"
                 android:minHeight="76dp"
-                app:cardBackgroundColor="?android:attr/panelBackground"
                 app:cardCornerRadius="5dp"
                 app:cardElevation="1dp"
                 app:cardPreventCornerOverlap="false"
@@ -278,9 +277,9 @@
                     </LinearLayout>
                 </RelativeLayout>
 
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/text_card"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -345,7 +344,7 @@
                     </ScrollView>
                 </RelativeLayout>
 
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
         </RelativeLayout>
 

@@ -46,9 +46,11 @@
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/category_tabs"
-            style="@style/Widget.Aurora.Tabs"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/appbar_title_height" />
+            android:layout_height="@dimen/appbar_title_height"
+            android:background="?android:colorBackground"
+            app:tabIndicator="@drawable/tab_indicator"
+            app:tabTextAppearance="@style/TextAppearance.Aurora.Tab" />
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.viewpager.widget.ViewPager

@@ -40,14 +40,13 @@
             android:textColor="?android:attr/textColorPrimary"
             android:textSize="16sp" />
 
-        <androidx.cardview.widget.CardView
+        <com.google.android.material.card.MaterialCardView
             android:id="@+id/search_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/search_title"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
-            app:cardBackgroundColor="?android:attr/panelBackground"
             app:cardCornerRadius="5dp"
             app:cardElevation="1dp">
 
@@ -60,7 +59,7 @@
                 app:queryBackground="@android:color/transparent"
                 app:queryHint="@string/action_search_title"
                 app:searchIcon="@drawable/ic_search" />
-        </androidx.cardview.widget.CardView>
+        </com.google.android.material.card.MaterialCardView>
 
         <com.dragons.custom.ClusterAppsCard
             android:id="@+id/searchClusterApp"
@@ -100,7 +99,7 @@
                 android:textColor="?android:attr/textColorSecondary" />
         </LinearLayout>
 
-        <androidx.cardview.widget.CardView
+        <com.google.android.material.card.MaterialCardView
             android:id="@+id/searchCard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -126,6 +125,6 @@
                 android:text="@string/list_empty_query"
                 android:textColor="?attr/colorAccent"
                 android:textSize="18sp" />
-        </androidx.cardview.widget.CardView>
+        </com.google.android.material.card.MaterialCardView>
     </RelativeLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

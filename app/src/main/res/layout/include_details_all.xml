@@ -84,7 +84,7 @@
             <include layout="@layout/include_details_exodus" />
 
             <!-- App Video -->
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/app_video"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -113,7 +113,7 @@
                     android:layout_gravity="center"
                     android:alpha="0.5"
                     android:src="@drawable/ic_play" />
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
             <!-- Beta -->
             <include layout="@layout/include_details_beta" />

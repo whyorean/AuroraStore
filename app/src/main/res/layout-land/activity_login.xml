@@ -106,12 +106,11 @@
             android:layout_marginTop="10dp"
             android:paddingBottom="10dp">
 
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/google_card"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                app:cardBackgroundColor="?android:attr/panelBackground"
                 app:cardCornerRadius="5dp"
                 app:cardElevation="1dp"
                 app:cardPreventCornerOverlap="false"
@@ -226,7 +225,7 @@
 
                 </RelativeLayout>
 
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
             <TextView
                 android:id="@+id/or_txt"
@@ -238,12 +237,11 @@
                 android:text="@string/action_or"
                 android:textSize="16sp" />
 
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/or_txt"
                 android:layout_margin="10dp"
-                app:cardBackgroundColor="?android:attr/panelBackground"
                 app:cardCornerRadius="5dp"
                 app:cardElevation="1dp"
                 app:cardPreventCornerOverlap="false"
@@ -303,7 +301,7 @@
                         android:text="@string/action_ok" />
                 </RelativeLayout>
 
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
         </RelativeLayout>
 
     </androidx.core.widget.NestedScrollView>

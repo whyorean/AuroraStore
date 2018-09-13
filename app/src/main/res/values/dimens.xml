@@ -34,6 +34,7 @@
     <dimen name="bottomnav_margin">50dp</dimen>
     <dimen name="padding_borderless_button">16dp</dimen>
     <item name="text_line_spacing" format="float" type="dimen">1.2</item>
+    <item name="card_stroke" format="float" type="dimen">1.0</item>
 
     <dimen name="margin_normal">16dp</dimen>
     <dimen name="margin_small">8dp</dimen>

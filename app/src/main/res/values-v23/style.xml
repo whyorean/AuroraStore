@@ -53,6 +53,7 @@
         <item name="android:strokeColor">@color/strokeBlack</item>
         <item name="android:panelBackground">@color/black</item>
         <item name="android:windowLightStatusBar">false</item>
+        <item name="materialCardViewStyle">@style/Widget.Aurora.Card.Black</item>
     </style>
 
 </resources>

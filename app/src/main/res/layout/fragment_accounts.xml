@@ -113,7 +113,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/dummyCard"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
@@ -223,9 +223,9 @@
 
                 </RelativeLayout>
 
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/emptyCard"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
@@ -269,9 +269,9 @@
                         android:textSize="16sp" />
 
                 </RelativeLayout>
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/googleCard"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
@@ -380,7 +380,7 @@
                     </RelativeLayout>
 
                 </RelativeLayout>
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
         </LinearLayout>
 
