@@ -183,10 +183,14 @@ public class GeneralDetails extends AbstractHelper {
     }
 
     private void paintEmAll(Palette palette) {
-        Palette.Swatch mSwatch = palette.getDominantSwatch();
-        //Make sure we get a fallback swatch if DominantSwatch is not available
+        Palette.Swatch mSwatch = palette.getDarkVibrantSwatch();
+        //Make sure we get a fallback swatch if DarkVibrantSwatch is not available
         if (mSwatch == null)
             mSwatch = palette.getVibrantSwatch();
+
+        //Make sure we get another fallback swatch if VibrantSwatch is not available
+        if (mSwatch == null)
+            mSwatch = palette.getDominantSwatch();
 
         if (mSwatch != null) {
             colorPrimary = mSwatch.getRgb();
