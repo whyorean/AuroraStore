@@ -38,7 +38,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:orientation="vertical"
-            android:padding="8dp">
+            android:padding="5dp">
 
             <TextView
                 android:id="@+id/prop_key"

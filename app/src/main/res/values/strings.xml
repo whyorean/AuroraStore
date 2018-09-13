@@ -225,7 +225,7 @@
     <string name="list_updating">Updating…</string>
     <string name="manual_download_compatible">Version code field has been pre-filled with this app\'s latest compatible version code. If you want the previous version, simply input a number smaller than the current. If the developer has not deleted the apk of the previous version from Play Store, you might be able to start the download.</string>
     <string name="manual_download_disclaimer">Disclaimer</string>
-    <string name="manual_download_hint_version_code">version code here</string>
+    <string name="manual_download_hint_version_code">Version code</string>
     <string name="manual_download_incompatible">Google Play Store considers this app incompatible with your device. This means version code has not been returned by the Google Play Store server.</string>
     <string name="manual_download_warning">This page lets you manually choose the version of the app to download.\n\nKeep in mind that downloading arbitrary versions of apps is not supported by Google Play Store. Your success depends on a lucky guess of the version code. Even if you guess right and you get the download to start, you might get an incompatible apk.</string>
     <string name="location_spoof_warning">Location Spoof allows you to download Geo restricted apps, you will need a VPN connection to establish the connection.</string>

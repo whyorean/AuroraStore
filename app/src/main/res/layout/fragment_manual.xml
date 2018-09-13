@@ -24,181 +24,122 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-        <FrameLayout
-            android:id="@+id/top_artwork"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="5dp">
 
-            <com.github.florent37.shapeofview.shapes.DiagonalView
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:alpha=".8"
-                app:shape_diagonal_angle="5"
-                app:shape_diagonal_direction="left"
-                app:shape_diagonal_position="bottom">
-
-                <View
-                    android:id="@+id/diagonalView1"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@color/gray" />
-
-            </com.github.florent37.shapeofview.shapes.DiagonalView>
-
-            <com.github.florent37.shapeofview.shapes.DiagonalView
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:alpha=".8"
-                app:shape_diagonal_angle="10"
-                app:shape_diagonal_direction="right"
-                app:shape_diagonal_position="bottom">
-
-                <View
-                    android:id="@+id/diagonalView2"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@color/darkGray" />
-            </com.github.florent37.shapeofview.shapes.DiagonalView>
-
-            <TextView
-                android:id="@+id/aurora"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:fontFamily="@font/google_sans_bold"
-                android:text="@string/app_name"
-                android:textAlignment="center"
-                android:textColor="@color/white"
-                android:textSize="22sp" />
-
-        </FrameLayout>
-
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <LinearLayout
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/widget_card"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_margin="10dp"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="1dp"
+                app:cardPreventCornerOverlap="false"
+                app:cardUseCompatPadding="true">
 
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/widget_card"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    app:cardBackgroundColor="?android:attr/panelBackground"
-                    app:cardCornerRadius="5dp"
-                    app:cardElevation="1dp"
-                    app:cardPreventCornerOverlap="false"
-                    app:cardUseCompatPadding="true">
+                    android:orientation="vertical"
+                    android:padding="8dp">
 
-                    <LinearLayout
+                    <include
+                        android:id="@+id/app_info"
+                        layout="@layout/include_details_main" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="@string/manual_download_hint_version_code">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/text_input"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <include layout="@layout/include_details_actions_main" />
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/text_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="1dp"
+                app:cardPreventCornerOverlap="false"
+                app:cardUseCompatPadding="true">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp">
+
+                    <ImageView
+                        android:id="@+id/show_LessMore"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_margin="5dp"
+                        app:srcCompat="@drawable/ic_expand_more_24" />
+
+                    <TextView
+                        android:id="@+id/textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="5dp"
+                        android:ellipsize="end"
+                        android:text="@string/manual_download_disclaimer"
+                        android:textAppearance="@style/TextAppearance.Aurora.Title" />
+
+                    <ScrollView
+                        android:id="@+id/disclaimer"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:padding="8dp">
+                        android:layout_below="@+id/show_LessMore"
+                        android:layout_marginTop="5dp"
+                        android:visibility="visible">
 
-                        <include
-                            android:id="@+id/app_info"
-                            layout="@layout/include_details_main" />
-
-                        <EditText
-                            android:id="@+id/version_code"
+                        <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="36dp"
-                            android:layout_marginStart="5dp"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginEnd="5dp"
-                            android:layout_marginBottom="10dp"
-                            android:background="@drawable/outline_bg"
-                            android:hint="@string/manual_download_hint_version_code"
-                            android:inputType="number"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
                             android:paddingStart="10dp"
-                            android:paddingEnd="10dp"
-                            android:textAlignment="viewStart" />
+                            android:paddingEnd="10dp">
 
-                        <include layout="@layout/include_details_actions_main" />
-                    </LinearLayout>
-
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/text_card"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginBottom="10dp"
-                    app:cardBackgroundColor="?android:attr/panelBackground"
-                    app:cardCornerRadius="5dp"
-                    app:cardElevation="1dp"
-                    app:cardPreventCornerOverlap="false"
-                    app:cardUseCompatPadding="true">
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="8dp">
-
-                        <ImageView
-                            android:id="@+id/show_LessMore"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentEnd="true"
-                            android:layout_margin="5dp"
-                            app:srcCompat="@drawable/ic_expand_more_24" />
-
-                        <TextView
-                            android:id="@+id/textView"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="10dp"
-                            android:layout_marginTop="2dp"
-                            android:ellipsize="end"
-                            android:fontFamily="@font/google_sans_bold"
-                            android:text="@string/manual_download_disclaimer"
-                            android:textAlignment="viewStart"
-                            android:textColor="?android:attr/textColorPrimary"
-                            android:textSize="18sp" />
-
-                        <ScrollView
-                            android:id="@+id/disclaimer"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/show_LessMore"
-                            android:layout_marginTop="5dp"
-                            android:visibility="gone">
-
-                            <LinearLayout
+                            <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:orientation="vertical">
+                                android:text="@string/manual_download_warning" />
 
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="@string/manual_download_warning" />
+                            <TextView
+                                android:id="@+id/compatibility"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:paddingTop="15dp"
+                                android:text="@string/manual_download_incompatible" />
 
-                                <TextView
-                                    android:id="@+id/compatibility"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:paddingTop="15dp"
-                                    android:text="@string/manual_download_incompatible" />
+                        </LinearLayout>
+                    </ScrollView>
+                </RelativeLayout>
 
-                            </LinearLayout>
-                        </ScrollView>
-                    </RelativeLayout>
+            </com.google.android.material.card.MaterialCardView>
 
-                </androidx.cardview.widget.CardView>
-            </LinearLayout>
-        </ScrollView>
-    </LinearLayout>
+        </LinearLayout>
+
+    </ScrollView>
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -21,11 +21,13 @@
 
 package com.dragons.aurora.activities;
 
+import android.content.BroadcastReceiver;
 import android.os.Bundle;
 
 import com.dragons.aurora.Util;
 
 import androidx.appcompat.app.AppCompatActivity;
+import timber.log.Timber;
 
 public abstract class BaseActivity extends AppCompatActivity {
 
@@ -33,5 +35,17 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         setTheme(Util.getThemeFromPref(this));
         super.onCreate(savedInstanceState);
+    }
+
+    @Override
+    public void unregisterReceiver(BroadcastReceiver receiver) {
+        if (null == receiver) {
+            return;
+        }
+        try {
+            super.unregisterReceiver(receiver);
+        } catch (IllegalArgumentException e) {
+            Timber.e(e.getMessage());
+        }
     }
 }
