@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <!--
   ~ Aurora Store
   ~ Copyright (C) 2018  Rahul Kumar Patel <whyorean@gmail.com>
@@ -20,17 +19,13 @@
   ~ along with Aurora Store.  If not, see <http://www.gnu.org/licenses/>.
   -->
 
-<inset xmlns:android="http://schemas.android.com/apk/res/android"
-    android:insetLeft="2dp"
-    android:insetRight="2dp">
-    <ripple android:color="@color/colorPrimary">
-        <item>
-            <shape xmlns:android="http://schemas.android.com/apk/res/android"
-                android:shape="rectangle">
-                <solid android:color="?android:attr/panelBackground" />
-                <corners android:radius="250dp" />
-                <stroke android:width="1dp" android:color="?android:attr/strokeColor"/>
-            </shape>
-        </item>
-    </ripple>
-</inset>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24.0"
+    android:viewportHeight="24.0">
+    <path
+        android:fillAlpha=".85"
+        android:fillColor="@color/black"
+        android:pathData="M12,2A10,10 0,0 1,22 12A10,10 0,0 1,12 22A10,10 0,0 1,2 12A10,10 0,0 1,12 2M11,16.5L18,9.5L16.59,8.09L11,13.67L7.91,10.59L6.5,12L11,16.5Z" />
+</vector>

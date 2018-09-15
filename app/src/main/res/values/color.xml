@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Aurora Store
   ~ Copyright (C) 2018  Rahul Kumar Patel <whyorean@gmail.com>
   ~
@@ -66,4 +65,17 @@
     <color name="exodusPrimary">#684971</color>
     <color name="exodusPrimaryDark">#3D3144</color>
     <color name="exodusTextPrimary">#BBB</color>
+
+    <integer-array name="color_shades">
+        <item>@color/colorAccent</item>
+        <item>@color/colorRed</item>
+        <item>@color/colorOrange</item>
+        <item>@color/colorGreen</item>
+        <item>@color/colorCyan</item>
+        <item>@color/colorGreenAlt</item>
+        <item>@color/colorGold</item>
+        <item>@color/colorTeal</item>
+        <item>@color/colorPink</item>
+        <item>@color/colorPurple</item>
+    </integer-array>
 </resources>

@@ -30,6 +30,7 @@
         <item name="android:strokeColor">@color/strokeLight</item>
         <item name="android:windowLightStatusBar">true</item>
         <item name="android:toolbarStyle">@style/ThemeOverlay.AppCompat.Light</item>
+        <item name="chipStyle">@style/Widget.Aurora.FilterChip</item>
     </style>
 
     <style name="AppTheme.Dark" parent="Theme.MaterialComponents.NoActionBar">
@@ -41,6 +42,7 @@
         <item name="android:panelBackground">#454545</item>
         <item name="android:windowLightStatusBar">false</item>
         <item name="android:toolbarStyle">@style/ThemeOverlay.AppCompat.Light</item>
+        <item name="chipStyle">@style/Widget.Aurora.FilterChip</item>
     </style>
 
     <style name="AppTheme.Black" parent="AppTheme.Dark">

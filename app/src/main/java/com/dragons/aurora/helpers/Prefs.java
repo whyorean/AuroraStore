@@ -42,6 +42,10 @@ public class Prefs {
         PreferenceManager.getDefaultSharedPreferences(context).edit().putInt(key, value).apply();
     }
 
+    public static void putFloat(Context context, String key, float value) {
+        PreferenceManager.getDefaultSharedPreferences(context).edit().putFloat(key, value).apply();
+    }
+
     public static void putBoolean(Context context, String key, boolean value) {
         PreferenceManager.getDefaultSharedPreferences(context).edit().putBoolean(key, value).apply();
     }
@@ -82,6 +86,10 @@ public class Prefs {
 
     public static int getInteger(Context context, String key) {
         return PreferenceManager.getDefaultSharedPreferences(context).getInt(key, 0);
+    }
+
+    public static float getFloat(Context context, String key) {
+        return PreferenceManager.getDefaultSharedPreferences(context).getFloat(key, 0.0f);
     }
 
     public static Boolean getBoolean(Context context, String key) {

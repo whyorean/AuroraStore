@@ -21,36 +21,29 @@
 
 package com.dragons.aurora.fragment;
 
-import android.app.Dialog;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
-import android.view.animation.AnimationUtils;
-import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.dragons.aurora.GridAutoFitLayoutManager;
 import com.dragons.aurora.R;
 import com.dragons.aurora.adapters.CategoryFilterAdapter;
-import com.dragons.aurora.adapters.SingleDownloadsAdapter;
-import com.dragons.aurora.adapters.SingleRatingsAdapter;
+import com.dragons.aurora.dialogs.FilterDialog;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.RecyclerView;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import timber.log.Timber;
 
-public class CategoryAppsFragment extends BaseFragment implements SingleDownloadsAdapter.SingleClickListener, SingleRatingsAdapter.SingleClickListener {
+public class CategoryAppsFragment extends BaseFragment {
 
     public static String categoryId;
 
@@ -64,8 +57,6 @@ public class CategoryAppsFragment extends BaseFragment implements SingleDownload
     TextView categoryTitle;
 
     private CategoryFilterAdapter categoryFilterAdapter;
-    private SingleDownloadsAdapter singleDownloadAdapter;
-    private SingleRatingsAdapter singleRatingAdapter;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -93,63 +84,23 @@ public class CategoryAppsFragment extends BaseFragment implements SingleDownload
     }
 
     @Override
-    public void onDownloadBadgeClickListener() {
-        singleDownloadAdapter.notifyDataSetChanged();
-    }
-
-    @Override
-    public void onRatingBadgeClickListener() {
-        singleRatingAdapter.notifyDataSetChanged();
-    }
-
-    @Override
     public void onDestroy() {
         Glide.with(this).pauseAllRequests();
         super.onDestroy();
     }
 
     private void getFilterDialog() {
-        Dialog ad = new Dialog(getContext());
-        ad.setContentView(R.layout.dialog_filter);
-        ad.setCancelable(true);
-
-        WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams();
-        layoutParams.copyFrom(ad.getWindow().getAttributes());
-        layoutParams.width = WindowManager.LayoutParams.MATCH_PARENT;
-        layoutParams.height = WindowManager.LayoutParams.WRAP_CONTENT;
-        layoutParams.gravity = Gravity.CENTER;
-
-        ad.getWindow().setAttributes(layoutParams);
-
-        RecyclerView filter_downloads = ad.findViewById(R.id.filter_downloads);
-        singleDownloadAdapter = new SingleDownloadsAdapter(getContext(),
-                getResources().getStringArray(R.array.filterDownloadsLabels),
-                getResources().getStringArray(R.array.filterDownloadsValues));
-        singleDownloadAdapter.setOnDownloadBadgeClickListener(this);
-        filter_downloads.setItemViewCacheSize(10);
-        filter_downloads.setLayoutManager(new GridAutoFitLayoutManager(getContext(), 120));
-        filter_downloads.setLayoutAnimation(AnimationUtils.loadLayoutAnimation(getContext(), R.anim.anim_falldown));
-        filter_downloads.setAdapter(singleDownloadAdapter);
-
-        RecyclerView filter_ratings = ad.findViewById(R.id.filter_ratings);
-        singleRatingAdapter = new SingleRatingsAdapter(getContext(),
-                getResources().getStringArray(R.array.filterRatingLabels),
-                getResources().getStringArray(R.array.filterRatingValues));
-        singleRatingAdapter.setOnRatingBadgeClickListener(this);
-        filter_ratings.setItemViewCacheSize(10);
-        filter_ratings.setLayoutManager(new GridAutoFitLayoutManager(getContext(), 120));
-        filter_ratings.setLayoutAnimation(AnimationUtils.loadLayoutAnimation(getContext(), R.anim.anim_falldown));
-        filter_ratings.setAdapter(singleRatingAdapter);
-
-        Button filter_apply = ad.findViewById(R.id.filter_apply);
-        filter_apply.setOnClickListener(click -> {
-            ad.dismiss();
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        Fragment prev = getFragmentManager().findFragmentByTag("dialog");
+        if (prev != null) {
+            ft.remove(prev);
+        }
+        ft.addToBackStack(null);
+        FilterDialog filterDialog = new FilterDialog();
+        filterDialog.setOnApplyListener(v -> {
+            filterDialog.dismiss();
             viewPager.setAdapter(categoryFilterAdapter);
         });
-
-        ImageView close_sheet = ad.findViewById(R.id.close_sheet);
-        close_sheet.setOnClickListener(v -> ad.dismiss());
-
-        ad.show();
+        filterDialog.show(ft, "dialog");
     }
 }

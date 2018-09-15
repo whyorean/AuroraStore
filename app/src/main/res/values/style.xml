@@ -32,6 +32,7 @@
         <item name="android:statusBarColor">?colorPrimaryDark</item>
         <item name="android:preferenceStyle">@style/Preference.Aurora</item>
         <item name="android:toolbarStyle">@style/ThemeOverlay.AppCompat.Light</item>
+        <item name="chipStyle">@style/Widget.Aurora.FilterChip</item>
     </style>
 
     <style name="AppTheme.Dark" parent="Theme.MaterialComponents.NoActionBar">
@@ -42,6 +43,7 @@
         <item name="android:panelBackground">#343434</item>
         <item name="android:preferenceStyle">@style/Preference.Aurora</item>
         <item name="android:toolbarStyle">@style/ThemeOverlay.AppCompat.Light</item>
+        <item name="chipStyle">@style/Widget.Aurora.FilterChip</item>
     </style>
 
     <style name="AppTheme.Black" parent="AppTheme.Dark">
@@ -117,6 +119,13 @@
 
     <style name="TextAppearance.Aurora.SubTitle.Compact" parent="TextAppearance.Aurora.SubTitle">
         <item name="android:letterSpacing">0.015</item>
+    </style>
+
+    <style name="TextAppearance.Aurora.ChipText" parent="TextAppearance.Aurora.Title">
+        <item name="android:letterSpacing">0.015</item>
+        <item name="android:fontFamily">@font/google_sans</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">14sp</item>
     </style>
 
     <style name="TextAppearance.Aurora.Body" parent="@style/TextAppearance.AppCompat.Body1">
@@ -219,6 +228,12 @@
 
     <style name="Widget.Aurora.Card.Black" parent="@style/CardView.Dark">
         <item name="cardBackgroundColor">@color/black</item>
+    </style>
+
+    <style name="Widget.Aurora.FilterChip" parent="Widget.MaterialComponents.Chip.Filter">
+        <item name="android:textAppearance">@style/TextAppearance.Aurora.ChipText</item>
+        <item name="checkedIcon">@drawable/ic_chip_checked</item>
+        <item name="chipEndPadding">10dp</item>
     </style>
 
 </resources>

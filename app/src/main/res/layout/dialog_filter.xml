@@ -16,197 +16,146 @@
   ~ along with Aurora Store.  If not, see <http://www.gnu.org/licenses/>.
   -->
 
-<merge xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/Widget.Aurora.Dialog"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:minWidth="400dp"
+    android:orientation="vertical">
 
-    <ScrollView
+    <RelativeLayout
+        android:id="@+id/filter_top"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="?actionBarSize">
 
-        <RelativeLayout
-            android:id="@+id/filter_sheet"
-            android:layout_width="match_parent"
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="5dp">
+            android:layout_centerInParent="true"
+            android:text="@string/action_filter"
+            android:textAppearance="@style/TextAppearance.Aurora.Title" />
 
-            <RelativeLayout
-                android:id="@+id/filter_top"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp">
+        <ImageView
+            android:id="@+id/close_filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="5dp"
+            android:background="?android:selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_cancel" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:fontFamily="@font/google_sans_bold"
-                    android:text="@string/action_filter"
-                    android:textColor="?android:attr/colorForeground"
-                    android:textSize="16sp" />
+    </RelativeLayout>
 
-                <ImageView
-                    android:id="@+id/close_sheet"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:background="?android:selectableItemBackgroundBorderless"
-                    android:scaleX=".8"
-                    android:scaleY=".8"
-                    android:src="@drawable/ic_expand_more_24" />
+    <TextView
+        android:id="@+id/category_misc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:text="@string/action_filter_misc"
+        android:textAppearance="@style/TextAppearance.Aurora.Title" />
 
-            </RelativeLayout>
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/micsc_chips"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        app:chipSpacingHorizontal="@dimen/margin_small"
+        app:chipSpacingVertical="@dimen/margin_normal">
 
-            <RelativeLayout
-                android:id="@+id/filter_cat0"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/filter_top"
-                android:layout_marginTop="10dp"
-                android:orientation="horizontal">
+        <com.google.android.material.chip.Chip
+            android:id="@+id/filter_gfs"
+            style="@style/Widget.MaterialComponents.Chip.Entry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/action_filter_gsf_dependent_apps"
+            android:textAppearance="@style/TextAppearance.Aurora.ChipText"
+            app:checkedIcon="@drawable/ic_chip_checked"
+            app:chipEndPadding="5dp"
+            app:chipStartPadding="5dp"
+            app:closeIconEnabled="false" />
 
-                <TextView
-                    android:id="@+id/category_title0"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginBottom="5dp"
-                    android:fontFamily="@font/google_sans_bold"
-                    android:text="@string/action_filter_misc"
-                    android:textAllCaps="true"
-                    android:textColor="?android:attr/colorForeground" />
+        <com.google.android.material.chip.Chip
+            android:id="@+id/filter_paid"
+            style="@style/Widget.MaterialComponents.Chip.Entry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/action_filter_paid_apps"
+            android:textAppearance="@style/TextAppearance.Aurora.ChipText"
+            app:checkedIcon="@drawable/ic_chip_checked"
+            app:chipEndPadding="5dp"
+            app:chipStartPadding="5dp"
+            app:closeIconEnabled="false" />
 
-                <com.dragons.custom.FilterBadge
-                    android:id="@+id/filter_gsf"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/category_title0"
-                    app:badge_dotColor="@color/colorRed"
-                    app:badge_filter_key="FILTER_GSF_DEPENDENT_APPS"
-                    app:badge_title="@string/action_filter_gsf_dependent_apps" />
+        <com.google.android.material.chip.Chip
+            android:id="@+id/filter_ads"
+            style="@style/Widget.MaterialComponents.Chip.Entry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/action_filter_apps_with_ads"
+            android:textAppearance="@style/TextAppearance.Aurora.ChipText"
+            app:checkedIcon="@drawable/ic_chip_checked"
+            app:chipEndPadding="5dp"
+            app:chipStartPadding="5dp"
+            app:closeIconEnabled="false" />
 
-                <com.dragons.custom.FilterBadge
-                    android:id="@+id/filter_ads"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/category_title0"
-                    android:layout_toEndOf="@+id/filter_gsf"
-                    app:badge_dotColor="@color/colorPurple"
-                    app:badge_filter_key="FILTER_APPS_WITH_ADS"
-                    app:badge_title="@string/action_filter_apps_with_ads" />
+    </com.google.android.material.chip.ChipGroup>
 
-                <com.dragons.custom.FilterBadge
-                    android:id="@+id/filter_paid"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/filter_gsf"
-                    app:badge_dotColor="@color/colorOrange"
-                    app:badge_filter_key="FILTER_PAID_APPS"
-                    app:badge_title="@string/action_filter_paid_apps" />
+    <TextView
+        android:id="@+id/category_rating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:text="@string/action_filter_rating"
+        android:textAppearance="@style/TextAppearance.Aurora.Title" />
 
-            </RelativeLayout>
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/rating_chips"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        app:chipSpacingHorizontal="@dimen/margin_small"
+        app:chipSpacingVertical="@dimen/margin_normal"
+        app:singleSelection="true" />
 
-            <RelativeLayout
-                android:id="@+id/filter_cat2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/filter_cat0"
-                android:layout_marginTop="15dp"
-                android:orientation="horizontal"
-                android:visibility="gone">
 
-                <TextView
-                    android:id="@+id/category_title2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginBottom="5dp"
-                    android:fontFamily="@font/google_sans_bold"
-                    android:text="@string/action_filter_build"
-                    android:textAllCaps="true"
-                    android:textColor="?android:attr/colorForeground"
-                    android:textSize="14sp" />
+    <TextView
+        android:id="@+id/category_downloads"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:text="@string/action_filter_downloads"
+        android:textAppearance="@style/TextAppearance.Aurora.Title" />
 
-                <com.dragons.custom.FilterBadge
-                    android:id="@+id/filter_beta"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/category_title2"
-                    app:badge_dotColor="@color/colorCyan"
-                    app:badge_title="Beta" />
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/download_chips"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        app:chipSpacingHorizontal="@dimen/margin_small"
+        app:chipSpacingVertical="@dimen/margin_normal"
+        app:singleSelection="true" />
 
-                <com.dragons.custom.FilterBadge
-                    android:id="@+id/filter_early"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/category_title2"
-                    android:layout_toEndOf="@+id/filter_beta"
-                    app:badge_dotColor="@color/colorRed"
-                    app:badge_title="Early Access" />
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/filter_apply"
+        style="@style/Widget.Aurora.RaisedButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_margin="5dp"
+        android:text="@string/action_filter_apply" />
 
-            </RelativeLayout>
-
-            <TextView
-                android:id="@+id/category_title3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/filter_cat2"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="5dp"
-                android:fontFamily="@font/google_sans_bold"
-                android:text="@string/action_filter_rating"
-                android:textAllCaps="true"
-                android:textColor="?android:attr/colorForeground"
-                android:textSize="14sp" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/filter_ratings"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/category_title3"
-                android:layout_marginTop="10dp"
-                android:scrollbars="none" />
-
-            <TextView
-                android:id="@+id/category_title4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/filter_ratings"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="5dp"
-                android:fontFamily="@font/google_sans_bold"
-                android:text="@string/action_filter_downloads"
-                android:textAllCaps="true"
-                android:textColor="?android:attr/colorForeground"
-                android:textSize="14sp" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/filter_downloads"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/category_title4"
-                android:layout_marginTop="10dp"
-                android:scrollbars="none" />
-
-            <Button
-                android:id="@+id/filter_apply"
-                style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/filter_downloads"
-                android:layout_alignParentEnd="true"
-                android:background="@drawable/button_positive"
-                android:maxLines="1"
-                android:padding="5dp"
-                android:text="@string/action_filter_apply"
-                android:textAllCaps="false"
-                android:textSize="14sp" />
-
-        </RelativeLayout>
-    </ScrollView>
-</merge>
+</LinearLayout>

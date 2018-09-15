@@ -21,16 +21,12 @@
 
 package com.dragons.aurora.fragment;
 
-import android.app.Dialog;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -39,12 +35,10 @@ import com.bumptech.glide.Glide;
 import com.dragons.aurora.AppListIterator;
 import com.dragons.aurora.CredentialsEmptyException;
 import com.dragons.aurora.EndlessRecyclerViewScrollListener;
-import com.dragons.aurora.GridAutoFitLayoutManager;
 import com.dragons.aurora.PlayStoreApiAuthenticator;
 import com.dragons.aurora.R;
 import com.dragons.aurora.adapters.EndlessAppsAdapter;
-import com.dragons.aurora.adapters.SingleDownloadsAdapter;
-import com.dragons.aurora.adapters.SingleRatingsAdapter;
+import com.dragons.aurora.dialogs.FilterDialog;
 import com.dragons.aurora.helpers.Accountant;
 import com.dragons.aurora.model.App;
 import com.dragons.aurora.playstoreapiv2.SearchIterator;
@@ -58,6 +52,8 @@ import java.util.TimerTask;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -72,7 +68,7 @@ import timber.log.Timber;
 import static com.dragons.aurora.Util.hide;
 import static com.dragons.aurora.Util.isConnected;
 
-public class SearchAppsFragment extends BaseFragment implements SingleDownloadsAdapter.SingleClickListener, SingleRatingsAdapter.SingleClickListener {
+public class SearchAppsFragment extends BaseFragment {
 
     @BindView(R.id.search_apps_list)
     RecyclerView recyclerView;
@@ -98,8 +94,6 @@ public class SearchAppsFragment extends BaseFragment implements SingleDownloadsA
     private AppListIterator iterator;
     private CompositeDisposable mDisposable = new CompositeDisposable();
     private EndlessAppsAdapter endlessAppsAdapter;
-    private SingleDownloadsAdapter singleDownloadAdapter;
-    private SingleRatingsAdapter singleRatingAdapter;
     private SearchTask mTask;
 
     public String getQuery() {
@@ -155,61 +149,20 @@ public class SearchAppsFragment extends BaseFragment implements SingleDownloadsA
         super.onDestroy();
     }
 
-    @Override
-    public void onDownloadBadgeClickListener() {
-        singleDownloadAdapter.notifyDataSetChanged();
-    }
-
-    @Override
-    public void onRatingBadgeClickListener() {
-        singleRatingAdapter.notifyDataSetChanged();
-    }
-
     private void getFilterDialog() {
-        Dialog ad = new Dialog(getContext());
-        ad.setContentView(R.layout.dialog_filter);
-        ad.setCancelable(true);
-
-        WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams();
-        layoutParams.copyFrom(ad.getWindow().getAttributes());
-        layoutParams.width = WindowManager.LayoutParams.MATCH_PARENT;
-        layoutParams.height = WindowManager.LayoutParams.WRAP_CONTENT;
-        layoutParams.gravity = Gravity.CENTER;
-
-        ad.getWindow().setAttributes(layoutParams);
-
-        RecyclerView filter_downloads = ad.findViewById(R.id.filter_downloads);
-        singleDownloadAdapter = new SingleDownloadsAdapter(getContext(),
-                getResources().getStringArray(R.array.filterDownloadsLabels),
-                getResources().getStringArray(R.array.filterDownloadsValues));
-        singleDownloadAdapter.setOnDownloadBadgeClickListener(this);
-        filter_downloads.setItemViewCacheSize(10);
-        filter_downloads.setLayoutManager(new GridAutoFitLayoutManager(getContext(), 120));
-        filter_downloads.setLayoutAnimation(AnimationUtils.loadLayoutAnimation(getContext(), R.anim.anim_falldown));
-        filter_downloads.setAdapter(singleDownloadAdapter);
-
-        RecyclerView filter_ratings = ad.findViewById(R.id.filter_ratings);
-        singleRatingAdapter = new SingleRatingsAdapter(getContext(),
-                getResources().getStringArray(R.array.filterRatingLabels),
-                getResources().getStringArray(R.array.filterRatingValues));
-        singleRatingAdapter.setOnRatingBadgeClickListener(this);
-        filter_ratings.setItemViewCacheSize(10);
-        filter_ratings.setLayoutManager(new GridAutoFitLayoutManager(getContext(), 120));
-        filter_ratings.setLayoutAnimation(AnimationUtils.loadLayoutAnimation(getContext(), R.anim.anim_falldown));
-        filter_ratings.setAdapter(singleRatingAdapter);
-
-        Button filter_apply = ad.findViewById(R.id.filter_apply);
-        filter_apply.setOnClickListener(click -> {
-            ad.dismiss();
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        Fragment prev = getFragmentManager().findFragmentByTag("dialog");
+        if (prev != null) {
+            ft.remove(prev);
+        }
+        ft.addToBackStack(null);
+        FilterDialog filterDialog = new FilterDialog();
+        filterDialog.setOnApplyListener(v -> {
+            filterDialog.dismiss();
             iterator = setupIterator(getQuery());
             fetchSearchAppsList(false);
         });
-
-        ImageView close_sheet = ad.findViewById(R.id.close_sheet);
-        close_sheet.setOnClickListener(v -> ad.dismiss());
-
-        ad.show();
-
+        filterDialog.show(ft, "dialog");
     }
 
     private AppListIterator setupIterator(String query) {
