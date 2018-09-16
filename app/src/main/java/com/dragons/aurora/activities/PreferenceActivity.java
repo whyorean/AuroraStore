@@ -25,6 +25,7 @@ import android.os.Bundle;
 
 import com.dragons.aurora.R;
 import com.dragons.aurora.fragment.PreferenceFragment;
+import com.dragons.aurora.helpers.Prefs;
 
 import androidx.appcompat.widget.Toolbar;
 import butterknife.BindView;
@@ -39,6 +40,7 @@ public class PreferenceActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTheme();
         setContentView(R.layout.activity_helper);
         ButterKnife.bind(this);
         getFragmentManager()
@@ -59,6 +61,21 @@ public class PreferenceActivity extends BaseActivity {
     public boolean onSupportNavigateUp() {
         onBackPressed();
         return true;
+    }
+
+    private void setTheme() {
+        String Theme = Prefs.getString(this, "PREFERENCE_THEME");
+        switch (Theme) {
+            case "Light":
+                setTheme(R.style.Preference_Aurora_Light);
+                break;
+            case "Dark":
+                setTheme(R.style.Preference_Aurora_Dark);
+                break;
+            case "Black":
+                setTheme(R.style.Preference_Aurora_Black);
+                break;
+        }
     }
 
 }

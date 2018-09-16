@@ -58,6 +58,26 @@
         </item>
     </style>
 
+    <style name="Preference.Aurora.Light" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="Preference.Aurora.Dark" parent="Theme.AppCompat.NoActionBar">
+        <item name="colorPrimary">#343434</item>
+        <item name="colorPrimaryDark">#242424</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="Preference.Aurora.Black" parent="Preference.Aurora.Dark">
+        <item name="colorPrimary">@color/black</item>
+        <item name="colorPrimaryDark">@color/black</item>
+        <item name="android:colorBackground">@color/black</item>
+        <item name="android:windowBackground">@color/black</item>
+        <item name="android:background">@color/black</item>
+    </style>
+
     <!-- RatingBar Style -->
 
     <style name="RatingBar" parent="Theme.MaterialComponents">
