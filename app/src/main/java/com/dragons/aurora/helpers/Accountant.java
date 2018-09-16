@@ -70,10 +70,6 @@ public class Accountant {
         task.execute();
     }
 
-    public static void switchGoogle(Context context) {
-        new UserProvidedCredentialsTask(context).logInWithGoogleAccount();
-    }
-
     public static void loginWithDummy(Context context) {
         if (isLoggedIn(context))
             completeCheckout(context);

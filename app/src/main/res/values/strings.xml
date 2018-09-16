@@ -34,6 +34,8 @@
     <string name="acc_dummy_summary">Login with anonymous credentials provided by Aurora Store, you would not be able to access your app purchases with dummy accounts.</string>
     <string name="acc_dummy_name">Anonymous</string>
     <string name="acc_google">Login with Google</string>
+    <string name="acc_google_summary">Aurora Store violates Google Play Terms of Services 3.3, so your google account may be disabled, however no such report of accounts being disabled are reported so far, use at your own risk.</string>
+    <string name="acc_google_tos">Read Google\'s Terms"</string>
     <string name="acc_save">Save Account</string>
     <string name="action_about">About</string>
     <string name="action_accounts">Accounts</string>
@@ -93,8 +95,8 @@
     <string name="category_topGrossing">Top Grossing</string>
     <string name="category_trending">Trending</string>
     <string name="content_flagged">Objection submitted.</string>
-    <string name="credentials_hint_email">Email or phone</string>
-    <string name="credentials_hint_password">Enter your password</string>
+    <string name="credentials_hint_email">Username</string>
+    <string name="credentials_hint_password">Password</string>
     <string name="credentials_logo_txt">Sign in</string>
     <string name="credentials_title">Google account access</string>
     <string name="delete">Delete</string>

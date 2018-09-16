@@ -19,178 +19,127 @@
   ~ along with Aurora Store.  If not, see <http://www.gnu.org/licenses/>.
   -->
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="?android:attr/colorBackground"
-    android:orientation="vertical"
-    android:weightSum="3">
+    android:layout_height="match_parent">
 
-    <FrameLayout
-        android:id="@+id/top_artwork"
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
-
-        <com.github.florent37.shapeofview.shapes.DiagonalView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:shape_diagonal_angle="5"
-            app:shape_diagonal_direction="left"
-            app:shape_diagonal_position="bottom">
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/header_grad2" />
-        </com.github.florent37.shapeofview.shapes.DiagonalView>
-
-
-        <com.github.florent37.shapeofview.shapes.DiagonalView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:alpha=".8"
-            app:shape_diagonal_angle="10"
-            app:shape_diagonal_direction="right"
-            app:shape_diagonal_position="bottom">
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/header_grad1" />
-        </com.github.florent37.shapeofview.shapes.DiagonalView>
+        android:layout_height="wrap_content"
+        android:background="?colorAccent"
+        app:elevation="0dp">
 
         <RelativeLayout
             android:id="@+id/topView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <ImageView
-                android:id="@+id/toolbar_back"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="28dp"
-                android:background="?android:selectableItemBackgroundBorderless"
-                android:padding="10dp"
-                android:src="@drawable/ic_arrow_left" />
+            android:layout_height="200dp">
 
             <TextView
-                android:id="@+id/welcome"
-                android:layout_width="match_parent"
+                android:id="@+id/accounts_title"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:fontFamily="@font/google_sans_bold"
-                android:padding="5dp"
                 android:text="@string/action_acc_txt"
-                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.Aurora.Title"
                 android:textColor="@color/white"
-                android:textSize="22sp" />
+                android:textSize="24sp" />
 
             <TextView
                 android:id="@+id/account_gsf"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/welcome"
-                android:fontFamily="@font/google_sans"
-                android:textAlignment="center"
-                android:textColor="@color/lightGray"
-                android:textSize="14sp" />
+                android:layout_below="@id/accounts_title"
+                android:layout_centerHorizontal="true"
+                android:textAppearance="@style/TextAppearance.Aurora.SubTitle"
+                android:textColor="@color/white" />
 
         </RelativeLayout>
-
-    </FrameLayout>
+    </com.google.android.material.appbar.AppBarLayout>
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="2"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp">
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="wrap_content">
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/dummyCard"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_margin="10dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
                 app:cardCornerRadius="5dp"
-                app:cardElevation="2dp">
+                app:cardElevation="2dp"
+                app:cardUseCompatPadding="true">
 
-                <RelativeLayout
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
-                    <LinearLayout
-                        android:id="@+id/dummyLayout"
+                    <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:padding="5dp">
 
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center">
-
-                            <ImageView
-                                android:id="@+id/accounts_Avatar"
-                                android:layout_width="76dp"
-                                android:layout_height="76dp"
-                                android:layout_centerHorizontal="true"
-                                android:layout_margin="@dimen/margin_img"
-                                app:srcCompat="@drawable/ic_user_placeholder" />
-
-                            <ImageView
-                                android:id="@+id/dummyIndicator"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentEnd="true"
-                                android:layout_margin="@dimen/margin_img"
-                                android:src="@drawable/ic_checked"
-                                android:tint="@color/colorGreen"
-                                android:visibility="gone" />
-                        </RelativeLayout>
+                        <ImageView
+                            android:id="@+id/avatar_dummy"
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:layout_margin="10dp"
+                            app:srcCompat="@drawable/ic_dummy_avatar" />
 
                         <TextView
                             android:id="@+id/account_name"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/google_sans_bold"
-                            android:gravity="center"
-                            android:textSize="20sp" />
+                            android:layout_marginTop="12dp"
+                            android:layout_toEndOf="@id/avatar_dummy"
+                            android:paddingStart="5dp"
+                            android:paddingEnd="5dp"
+                            android:textAppearance="@style/TextAppearance.Aurora.Title" />
 
                         <TextView
                             android:id="@+id/account_email"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/google_sans"
-                            android:gravity="center"
-                            android:textSize="16sp" />
+                            android:layout_below="@+id/account_name"
+                            android:layout_toEndOf="@id/avatar_dummy"
+                            android:paddingStart="5dp"
+                            android:paddingEnd="5dp"
+                            android:textAppearance="@style/TextAppearance.Aurora.SubTitle" />
 
                         <TextView
                             android:id="@+id/dummy_tapToSwitch"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
+                            android:layout_below="@id/account_email"
+                            android:layout_toEndOf="@id/avatar_dummy"
                             android:fontFamily="@font/google_sans"
-                            android:gravity="center"
+                            android:paddingStart="5dp"
+                            android:paddingEnd="5dp"
                             android:text="@string/action_acc_switch"
-                            android:textSize="14sp"
                             android:visibility="gone" />
 
-                    </LinearLayout>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/avatar_dummy"
+                            android:paddingStart="10dp"
+                            android:paddingEnd="10dp"
+                            android:paddingBottom="10dp"
+                            android:text="@string/acc_dummy_summary" />
+
+                    </RelativeLayout>
 
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentBottom="true"
-                        android:gravity="end"
-                        android:orientation="horizontal">
+                        android:gravity="end">
 
                         <Button
                             android:id="@+id/btn_refresh"
@@ -199,6 +148,7 @@
                             android:layout_height="wrap_content"
                             android:layout_toStartOf="@id/btn_switch"
                             android:text="@string/action_refresh"
+                            android:textColor="?colorAccent"
                             android:visibility="gone" />
 
                         <Button
@@ -208,6 +158,7 @@
                             android:layout_height="wrap_content"
                             android:layout_toStartOf="@id/btn_logout"
                             android:text="@string/action_switch_dummy"
+                            android:textColor="?colorAccent"
                             android:visibility="gone" />
 
                         <Button
@@ -221,152 +172,96 @@
                             android:visibility="gone" />
                     </RelativeLayout>
 
-                </RelativeLayout>
+                </LinearLayout>
 
-            </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/emptyCard"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_margin="10dp"
-                android:visibility="gone"
-                app:cardCornerRadius="5dp"
-                app:cardElevation="2dp">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <com.github.florent37.shapeofview.shapes.CircleView
-                        android:id="@+id/add_account"
-                        android:layout_width="64dp"
-                        android:layout_height="64dp"
-                        android:layout_centerInParent="true"
-                        android:background="?android:selectableItemBackgroundBorderless"
-                        app:shape_circle_borderColor="@color/colorRed"
-                        app:shape_circle_borderWidth="1dp">
-
-                        <ImageButton
-                            android:id="@+id/add_secondary"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:background="@android:color/transparent"
-                            android:clickable="false"
-                            android:focusable="false"
-                            app:srcCompat="@drawable/ic_add" />
-                    </com.github.florent37.shapeofview.shapes.CircleView>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/add_account"
-                        android:layout_marginTop="10dp"
-                        android:fontFamily="@font/google_sans"
-                        android:gravity="center"
-                        android:text="@string/action_acc_add"
-                        android:textSize="16sp" />
-
-                </RelativeLayout>
             </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/googleCard"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_margin="10dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/dummyCard"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
                 android:visibility="gone"
                 app:cardCornerRadius="5dp"
-                app:cardElevation="2dp">
+                app:cardElevation="2dp"
+                app:cardUseCompatPadding="true">
 
-                <RelativeLayout
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
-                    <LinearLayout
-                        android:id="@+id/googleLayout"
+                    <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:padding="5dp">
 
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center">
-
-                            <ImageView
-                                android:id="@+id/accounts_AvatarG"
-                                android:layout_width="76dp"
-                                android:layout_height="76dp"
-                                android:layout_centerHorizontal="true"
-                                android:layout_margin="@dimen/margin_img"
-                                app:srcCompat="@drawable/ic_user_placeholder" />
-
-                            <ImageView
-                                android:id="@+id/googleIndicator"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentEnd="true"
-                                android:layout_margin="@dimen/margin_img"
-                                android:src="@drawable/ic_checked"
-                                android:tint="@color/colorGreen"
-                                android:visibility="gone" />
-                        </RelativeLayout>
+                        <ImageView
+                            android:id="@+id/avatar_google"
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:layout_margin="10dp"
+                            app:srcCompat="@drawable/ic_user_placeholder" />
 
                         <TextView
                             android:id="@+id/account_nameG"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/google_sans_bold"
-                            android:gravity="center"
-                            android:textSize="20sp" />
+                            android:layout_marginTop="12dp"
+                            android:layout_toEndOf="@id/avatar_google"
+                            android:paddingStart="5dp"
+                            android:paddingEnd="5dp"
+                            android:textAppearance="@style/TextAppearance.Aurora.Title" />
 
                         <TextView
                             android:id="@+id/account_emailG"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/google_sans"
-                            android:gravity="center"
-                            android:textSize="16sp" />
+                            android:layout_below="@id/account_nameG"
+                            android:layout_toEndOf="@id/avatar_google"
+                            android:paddingStart="5dp"
+                            android:paddingEnd="5dp"
+                            android:textAppearance="@style/TextAppearance.Aurora.SubTitle" />
 
                         <TextView
                             android:id="@+id/google_tapToSwitch"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
+                            android:layout_below="@id/account_emailG"
+                            android:layout_toEndOf="@id/avatar_google"
                             android:fontFamily="@font/google_sans"
-                            android:gravity="center"
+                            android:paddingStart="5dp"
+                            android:paddingEnd="5dp"
                             android:text="@string/action_acc_switch"
-                            android:textSize="14sp"
                             android:visibility="gone" />
 
-                    </LinearLayout>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/avatar_google"
+                            android:paddingStart="10dp"
+                            android:paddingEnd="10dp"
+                            android:paddingBottom="10dp"
+                            android:text="@string/acc_google_summary" />
+
+                    </RelativeLayout>
 
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentBottom="true"
-                        android:gravity="end"
-                        android:orientation="horizontal">
+                        android:gravity="end">
 
                         <Button
                             android:id="@+id/btn_switchG"
                             style="@style/Widget.Aurora.BorderlessButton.Compact"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_toStartOf="@id/btn_logoutG"
-                            android:text="@string/action_switch_google"
-                            android:visibility="gone" />
-
-                        <Button
-                            android:id="@+id/btn_logoutG"
-                            style="@style/Widget.Aurora.BorderlessButton.Compact"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
                             android:layout_toStartOf="@id/btn_remove"
-                            android:text="@string/action_logout"
-                            android:textColor="@color/colorRed"
+                            android:text="@string/action_switch_google"
+                            android:textColor="?colorAccent"
                             android:visibility="gone" />
 
                         <Button
@@ -374,16 +269,75 @@
                             style="@style/Widget.Aurora.BorderlessButton.Compact"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_alignParentEnd="true"
+                            android:layout_toStartOf="@+id/btn_logoutG"
                             android:text="@string/action_remove"
+                            android:textColor="@color/colorRed"
+                            android:visibility="gone" />
+
+                        <Button
+                            android:id="@+id/btn_logoutG"
+                            style="@style/Widget.Aurora.BorderlessButton.Compact"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:text="@string/action_logout"
+                            android:textColor="@color/colorRed"
                             android:visibility="gone" />
                     </RelativeLayout>
 
-                </RelativeLayout>
+                </LinearLayout>
+
             </com.google.android.material.card.MaterialCardView>
 
-        </LinearLayout>
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/googleCard"
+                android:layout_alignParentBottom="true"
+                android:layout_marginTop="15dp"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:scrollbars="none">
+
+                <com.google.android.material.chip.ChipGroup
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    app:chipSpacing="@dimen/margin_small"
+                    app:singleLine="true">
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip_tos"
+                        style="@style/Widget.MaterialComponents.Chip.Action"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/acc_google_tos"
+                        android:textColor="?android:attr/textColorPrimary"
+                        app:chipBackgroundColor="?android:panelBackground"
+                        app:chipIcon="@drawable/ic_add_alt"
+                        app:chipIconTint="@color/colorAccent"
+                        app:chipStrokeColor="?android:strokeColor" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip_add"
+                        style="@style/Widget.MaterialComponents.Chip.Action"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@id/chip_tos"
+                        android:text="@string/action_acc_add"
+                        android:textColor="?android:attr/textColorPrimary"
+                        android:visibility="gone"
+                        app:chipBackgroundColor="?android:panelBackground"
+                        app:chipIcon="@drawable/ic_add_alt"
+                        app:chipIconTint="@color/colorAccent"
+                        app:chipStrokeColor="?android:strokeColor" />
+
+                </com.google.android.material.chip.ChipGroup>
+
+            </HorizontalScrollView>
+
+        </RelativeLayout>
 
     </ScrollView>
 
-</LinearLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -21,38 +21,25 @@
 
 package com.dragons.aurora.task;
 
-import android.app.Dialog;
 import android.content.Context;
-import android.preference.PreferenceManager;
-import android.text.InputType;
 import android.text.TextUtils;
-import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
-import android.widget.CheckBox;
-import android.widget.EditText;
-import android.widget.ImageView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.dragons.aurora.Aurora;
-import com.dragons.aurora.ContextUtil;
 import com.dragons.aurora.CredentialsEmptyException;
 import com.dragons.aurora.PlayStoreApiAuthenticator;
 import com.dragons.aurora.R;
 import com.dragons.aurora.activities.AccountsActivity;
 import com.dragons.aurora.fragment.PreferenceFragment;
-import com.dragons.aurora.helpers.Accountant;
 import com.dragons.aurora.helpers.Prefs;
 import com.dragons.aurora.playstoreapiv2.AuthException;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 import java.util.Set;
 
 import timber.log.Timber;
@@ -73,21 +60,7 @@ public class UserProvidedCredentialsTask extends CheckCredentialsTask {
         return task;
     }
 
-    private AutoCompleteTextView getEmailInput(Dialog ad) {
-        AutoCompleteTextView editEmail = (AutoCompleteTextView) ad.findViewById(R.id.email);
-        editEmail.setAdapter(new ArrayAdapter<>(context, android.R.layout.simple_dropdown_item_1line, getUsedEmails()));
-        String previousEmail = "";
-        editEmail.setText(PreferenceManager.getDefaultSharedPreferences(context).getString(Aurora.PREFERENCE_EMAIL, previousEmail));
-        return editEmail;
-    }
-
-    private List<String> getUsedEmails() {
-        List<String> emails = new ArrayList<>(Prefs.getStringSet(context, Aurora.USED_EMAILS_SET));
-        Collections.sort(emails);
-        return emails;
-    }
-
-    private void setGooglePrefs(String email, String password) {
+    public void setGooglePrefs(String email, String password) {
         Prefs.putBoolean(context, Aurora.SEC_ACCOUNT, true);
         Prefs.putString(context, Aurora.GOOGLE_EMAIL, email);
         Prefs.putString(context, Aurora.GOOGLE_PASSWORD, password);
@@ -103,46 +76,6 @@ public class UserProvidedCredentialsTask extends CheckCredentialsTask {
         String email = Prefs.getString(context, Aurora.GOOGLE_EMAIL);
         String password = Prefs.getString(context, Aurora.GOOGLE_PASSWORD);
         getUserCredentialsTask().execute(email, password);
-    }
-
-    public void logInWithGoogleAccount() {
-        Dialog ad = new Dialog(context);
-        ad.setContentView(R.layout.dialog_credentials);
-        ad.setTitle(context.getString(R.string.credentials_title));
-        ad.setCancelable(false);
-
-        AutoCompleteTextView editEmail = getEmailInput(ad);
-        EditText editPassword = ad.findViewById(R.id.password);
-        final CheckBox checkBox = ad.findViewById(R.id.checkboxSave);
-
-        editEmail.setText("");
-
-        ad.findViewById(R.id.button_exit).setOnClickListener(v -> ad.dismiss());
-        ad.findViewById(R.id.button_ok).setOnClickListener(view -> {
-            Context c = view.getContext();
-            String email = editEmail.getText().toString();
-            String password = editPassword.getText().toString();
-            if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password)) {
-                ContextUtil.toast(c.getApplicationContext(), R.string.error_credentials_empty);
-                return;
-            }
-            ad.dismiss();
-
-            if (checkBox.isChecked()) {
-                setGooglePrefs(email, password);
-            }
-            Accountant.completeCheckout(context);
-            getUserCredentialsTask().execute(email, password);
-        });
-
-        ad.findViewById(R.id.toggle_password_visibility).setOnClickListener(v -> {
-            boolean passwordVisible = !TextUtils.isEmpty((String) v.getTag());
-            v.setTag(passwordVisible ? null : "tag");
-            ((ImageView) v).setImageResource(passwordVisible ? R.drawable.ic_visibility_on : R.drawable.ic_visibility_off);
-            editPassword.setInputType(passwordVisible ? InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD : InputType.TYPE_CLASS_TEXT);
-        });
-
-        ad.show();
     }
 
     @Override
@@ -207,7 +140,7 @@ public class UserProvidedCredentialsTask extends CheckCredentialsTask {
                 Username = mJsonObject.getJSONObject("gphoto$nickname").getString("$t");
                 ImgURL = mJsonObject.getJSONObject("gphoto$thumbnail").getString("$t");
             } catch (JSONException e) {
-                Timber.e(e.getMessage());
+                Timber.e(e);
             }
         }
         Prefs.putString(context, Aurora.GOOGLE_NAME, Username);

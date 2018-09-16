@@ -55,7 +55,6 @@
                 android:layout_centerVertical="true"
                 android:layout_toStartOf="@id/prefs_icon"
                 android:background="?android:attr/selectableItemBackgroundBorderless"
-                android:padding="5dp"
                 android:src="@drawable/ic_dummy_avatar" />
 
             <ImageView
@@ -64,6 +63,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
+                android:layout_marginStart="5dp"
                 android:alpha=".80"
                 android:background="?android:attr/selectableItemBackgroundBorderless"
                 android:src="@drawable/ic_settings"

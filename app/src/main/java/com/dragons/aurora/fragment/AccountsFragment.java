@@ -22,31 +22,36 @@
 package com.dragons.aurora.fragment;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.widget.RelativeLayout;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
 import com.dragons.aurora.Aurora;
-import com.dragons.aurora.PlayStoreApiAuthenticator;
 import com.dragons.aurora.R;
 import com.dragons.aurora.activities.LoginActivity;
+import com.dragons.aurora.dialogs.LoginDialog;
 import com.dragons.aurora.helpers.Accountant;
+import com.dragons.aurora.helpers.Prefs;
 import com.dragons.aurora.task.UserProvidedCredentialsTask;
-import com.github.florent37.shapeofview.shapes.CircleView;
-import com.percolate.caffeine.ViewUtils;
+import com.google.android.material.card.MaterialCardView;
+import com.google.android.material.chip.Chip;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 import static com.dragons.aurora.Util.hide;
 import static com.dragons.aurora.Util.isConnected;
@@ -54,6 +59,33 @@ import static com.dragons.aurora.Util.setText;
 import static com.dragons.aurora.Util.show;
 
 public class AccountsFragment extends BaseFragment {
+
+    private static final String urlTOS = "https://www.google.com/mobile/android/market-tos.html";
+
+    @BindView(R.id.chip_tos)
+    Chip chipTOS;
+    @BindView(R.id.chip_add)
+    Chip chipAdd;
+    @BindView(R.id.btn_logout)
+    Button logout_dummy;
+    @BindView(R.id.btn_logoutG)
+    Button logout_google;
+    @BindView(R.id.btn_refresh)
+    Button refresh_dummy;
+    @BindView(R.id.btn_switch)
+    Button switch_dummy;
+    @BindView(R.id.btn_switchG)
+    Button switch_google;
+    @BindView(R.id.btn_remove)
+    Button remove_google;
+    @BindView(R.id.avatar_dummy)
+    ImageView avatar_dummy;
+    @BindView(R.id.avatar_google)
+    ImageView avatar_google;
+    @BindView(R.id.dummyCard)
+    MaterialCardView layout_dummy;
+    @BindView(R.id.googleCard)
+    MaterialCardView layout_google;
 
     private boolean isSecAvailable;
     private String myEmail;
@@ -63,17 +95,15 @@ public class AccountsFragment extends BaseFragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         view = inflater.inflate(R.layout.fragment_accounts, container, false);
+        ButterKnife.bind(this, view);
         return view;
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        ImageView toolbar_back = view.findViewById(R.id.toolbar_back);
-        toolbar_back.setOnClickListener(click -> getActivity().onBackPressed());
-
-        myEmail = PreferenceFragment.getString(getActivity(), Aurora.PREFERENCE_EMAIL);
-        isSecAvailable = PreferenceFragment.getBoolean(getActivity(), "SEC_ACCOUNT");
+        myEmail = Prefs.getString(getActivity(), Aurora.PREFERENCE_EMAIL);
+        isSecAvailable = Prefs.getBoolean(getActivity(), Aurora.SEC_ACCOUNT);
         init();
     }
 
@@ -90,19 +120,24 @@ public class AccountsFragment extends BaseFragment {
             drawDummy();
         else
             getContext().startActivity(new Intent(getContext(), LoginActivity.class));
+
+        chipTOS.setChipStrokeWidth(2);
+        chipAdd.setChipStrokeWidth(2);
+        chipTOS.setOnClickListener(v -> getContext().startActivity(new Intent(Intent.ACTION_VIEW,
+                Uri.parse(urlTOS))));
+        chipAdd.setOnClickListener(v -> showGoogleDialog());
     }
 
     private void drawDummy() {
-        show(view, R.id.dummyIndicator);
-        setAvatar(R.drawable.ic_dummy_avatar);
+        avatar_dummy.setImageResource(R.drawable.ic_dummy_avatar);
         setText(view, R.id.account_name, R.string.acc_dummy_name);
         setText(view, R.id.account_email, myEmail);
-        setText(view, R.id.account_gsf, R.string.device_gsfID, PreferenceFragment.getString(getActivity(),
+        setText(view, R.id.account_gsf, R.string.device_gsfID, Prefs.getString(getActivity(),
                 Aurora.PREFERENCE_GSF_ID));
         if (isSecAvailable)
             drawEmptyGoogle();
         else
-            drawEmpty();
+            show(view, R.id.chip_add);
 
         drawDummyButtons();
     }
@@ -110,20 +145,18 @@ public class AccountsFragment extends BaseFragment {
     private void drawGoogle() {
         drawEmptyDummy();
 
-        hide(view, R.id.emptyCard);
+        hide(view, R.id.chip_add);
         show(view, R.id.googleCard);
-        show(view, R.id.googleIndicator);
 
-        setText(view, R.id.account_nameG, PreferenceFragment.getString(getActivity(), "GOOGLE_NAME"));
+        setText(view, R.id.account_nameG, Prefs.getString(getActivity(), Aurora.GOOGLE_NAME));
         setText(view, R.id.account_emailG, myEmail);
-        setText(view, R.id.account_gsf, R.string.device_gsfID, PreferenceFragment.getString(getActivity(),
+        setText(view, R.id.account_gsf, R.string.device_gsfID, Prefs.getString(getActivity(),
                 Aurora.PREFERENCE_GSF_ID));
 
-        Button switchGoogle = ViewUtils.findViewById(view, R.id.btn_switchG);
-        switchGoogle.setOnClickListener(view -> Accountant.switchGoogle(getContext()));
+        switch_google.setOnClickListener(view -> showGoogleDialog());
 
         if (isConnected(getActivity()))
-            loadAvatar(PreferenceFragment.getString(getActivity(), "GOOGLE_URL"));
+            loadAvatar(Prefs.getString(getActivity(), Aurora.GOOGLE_URL));
 
         drawGoogleButtons();
     }
@@ -132,64 +165,55 @@ public class AccountsFragment extends BaseFragment {
         show(view, R.id.dummy_tapToSwitch);
         setText(view, R.id.account_name, R.string.acc_dummy_name);
         setText(view, R.id.account_email, R.string.account_dummy_email);
-        LinearLayout dummyCard = ViewUtils.findViewById(view, R.id.dummyLayout);
-        dummyCard.setOnClickListener(v -> Accountant.loginWithDummy(getContext()));
+        layout_dummy.setOnClickListener(v -> Accountant.loginWithDummy(getContext()));
     }
 
     private void drawEmptyGoogle() {
-        LinearLayout googleCard = ViewUtils.findViewById(view, R.id.googleLayout);
-        TextView removeAccount = ViewUtils.findViewById(view, R.id.btn_remove);
         show(view, R.id.googleCard);
         show(view, R.id.btn_remove);
         show(view, R.id.google_tapToSwitch);
-        setText(view, R.id.account_nameG, PreferenceFragment.getString(getActivity(), "GOOGLE_NAME"));
-        setText(view, R.id.account_emailG, PreferenceFragment.getString(getActivity(), "GOOGLE_EMAIL"));
-        googleCard.setOnClickListener(click -> new UserProvidedCredentialsTask(getContext()).withSavedGoogle());
-        removeAccount.setOnClickListener(click -> {
+
+        setText(view, R.id.account_nameG, Prefs.getString(getActivity(), Aurora.GOOGLE_NAME));
+        setText(view, R.id.account_emailG, Prefs.getString(getActivity(), Aurora.GOOGLE_EMAIL));
+
+        layout_google.setOnClickListener(click -> new UserProvidedCredentialsTask(getContext()).withSavedGoogle());
+        remove_google.setOnClickListener(click -> {
             new UserProvidedCredentialsTask(getContext()).removeGooglePrefs();
             hide(view, R.id.googleCard);
-            show(view, R.id.emptyCard);
+            show(view, R.id.chip_add);
         });
     }
 
-    private void drawEmpty() {
-        show(view, R.id.emptyCard);
-        CircleView add_account = view.findViewById(R.id.add_account);
-        add_account.setOnClickListener(v -> Accountant.switchGoogle(getContext()));
+    private void showGoogleDialog() {
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        Fragment prev = getFragmentManager().findFragmentByTag("dialog");
+        if (prev != null) {
+            ft.remove(prev);
+        }
+        ft.addToBackStack(null);
+        LoginDialog loginDialog = new LoginDialog();
+        loginDialog.show(ft, "dialog");
     }
 
-    private void drawDummyButtons() {
-        Button logout = ViewUtils.findViewById(view, R.id.btn_logout);
-        Button switchDummy = ViewUtils.findViewById(view, R.id.btn_switch);
-        Button refreshToken = ViewUtils.findViewById(view, R.id.btn_refresh);
 
+    private void drawDummyButtons() {
         if (Accountant.isDummy(getContext())) {
             show(view, R.id.btn_logout);
             show(view, R.id.btn_switch);
             show(view, R.id.btn_refresh);
         }
-
-        logout.setOnClickListener(view -> showLogOutDialog());
-        switchDummy.setOnClickListener(view -> Accountant.switchDummy(getContext()));
-        refreshToken.setOnClickListener(view -> Accountant.refreshMyToken(getContext()));
+        logout_dummy.setOnClickListener(view -> showLogOutDialog());
+        switch_dummy.setOnClickListener(view -> Accountant.switchDummy(getContext()));
+        refresh_dummy.setOnClickListener(view -> Accountant.refreshMyToken(getContext()));
     }
 
     private void drawGoogleButtons() {
-        Button logout = ViewUtils.findViewById(view, R.id.btn_logoutG);
-        Button switchDummy = ViewUtils.findViewById(view, R.id.btn_switchG);
-
         if (Accountant.isGoogle(getContext())) {
             show(view, R.id.btn_logoutG);
             show(view, R.id.btn_switchG);
         }
-
-        logout.setOnClickListener(view -> showLogOutDialog());
-        switchDummy.setOnClickListener(view -> Accountant.switchGoogle(getContext()));
-    }
-
-    private void setAvatar(int avatar) {
-        ImageView avatar_view = view.findViewById(R.id.accounts_Avatar);
-        avatar_view.setImageResource(avatar);
+        logout_google.setOnClickListener(view -> showLogOutDialog());
+        switch_google.setOnClickListener(view -> showGoogleDialog());
     }
 
     private void loadAvatar(String Url) {
@@ -197,10 +221,10 @@ public class AccountsFragment extends BaseFragment {
                 .with(getContext())
                 .load(Url)
                 .apply(new RequestOptions()
-                        .placeholder(ContextCompat.getDrawable(getContext(), R.drawable.ic_dummy_avatar))
+                        .placeholder(ContextCompat.getDrawable(getContext(), R.drawable.ic_user_placeholder))
                         .circleCrop()
                         .diskCacheStrategy(DiskCacheStrategy.DATA))
-                .into(((ImageView) view.findViewById(R.id.accounts_AvatarG)));
+                .into(avatar_google);
     }
 
     private void showLogOutDialog() {

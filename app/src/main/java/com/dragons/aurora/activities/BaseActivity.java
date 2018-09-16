@@ -22,8 +22,11 @@
 package com.dragons.aurora.activities;
 
 import android.content.BroadcastReceiver;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 
+import com.dragons.aurora.R;
 import com.dragons.aurora.Util;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -34,6 +37,10 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setTheme(Util.getThemeFromPref(this));
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+            getWindow().setStatusBarColor(Color.TRANSPARENT);
+        else
+            getWindow().setStatusBarColor(getResources().getColor(R.color.semi_transparent));
         super.onCreate(savedInstanceState);
     }
 

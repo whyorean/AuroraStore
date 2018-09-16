@@ -19,90 +19,55 @@
   ~ along with Aurora Store.  If not, see <http://www.gnu.org/licenses/>.
   -->
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="?android:attr/colorBackground">
 
-    <FrameLayout
-        android:id="@+id/top_artwork"
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <com.github.florent37.shapeofview.shapes.DiagonalView
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            app:shape_diagonal_angle="5"
-            app:shape_diagonal_direction="left"
-            app:shape_diagonal_position="bottom">
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/header_grad2" />
-        </com.github.florent37.shapeofview.shapes.DiagonalView>
-
-
-        <com.github.florent37.shapeofview.shapes.DiagonalView
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:alpha=".8"
-            app:shape_diagonal_angle="10"
-            app:shape_diagonal_direction="right"
-            app:shape_diagonal_position="bottom">
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/header_grad1" />
-        </com.github.florent37.shapeofview.shapes.DiagonalView>
-
+        android:layout_height="wrap_content"
+        android:background="?colorAccent"
+        app:elevation="0dp">
 
         <RelativeLayout
             android:id="@+id/topView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center">
+            android:layout_height="200dp">
 
             <TextView
-                android:id="@+id/welcome"
-                android:layout_width="match_parent"
+                android:id="@+id/accounts_title"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:fontFamily="@font/google_sans_bold"
-                android:padding="10dp"
+                android:layout_centerInParent="true"
                 android:text="@string/action_welcome_msg"
-                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.Aurora.Title"
                 android:textColor="@color/white"
-                android:textSize="22sp" />
+                android:textSize="24sp" />
 
             <TextView
                 android:id="@+id/selectAccount"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/welcome"
-                android:fontFamily="@font/google_sans"
+                android:layout_below="@id/accounts_title"
+                android:layout_centerHorizontal="true"
                 android:text="@string/action_select"
-                android:textAlignment="center"
-                android:textColor="@color/lightGray"
-                android:textSize="14sp" />
+                android:textAppearance="@style/TextAppearance.Aurora.SubTitle"
+                android:textColor="@color/white" />
 
         </RelativeLayout>
-    </FrameLayout>
+    </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/top_artwork"
-        android:fillViewport="true">
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:paddingBottom="10dp">
 
             <com.google.android.material.card.MaterialCardView
@@ -121,83 +86,64 @@
                     android:padding="5dp">
 
                     <ImageView
-                        android:id="@+id/imageView4"
+                        android:id="@+id/google_icon"
                         android:layout_width="36dp"
                         android:layout_height="36dp"
                         android:layout_margin="10dp"
                         app:srcCompat="@drawable/ic_google" />
 
                     <TextView
-                        android:id="@+id/textView"
+                        android:id="@+id/google_title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignTop="@+id/imageView4"
-                        android:layout_alignBottom="@+id/imageView4"
-                        android:layout_marginStart="10dp"
-                        android:layout_toEndOf="@+id/imageView4"
-                        android:ellipsize="end"
-                        android:fontFamily="@font/google_sans_bold"
-                        android:singleLine="true"
+                        android:layout_alignBottom="@+id/google_icon"
+                        android:layout_toEndOf="@+id/google_icon"
                         android:text="@string/acc_google"
-                        android:textAlignment="viewStart"
-                        android:textColor="?android:attr/textColorPrimary"
-                        android:textSize="18sp" />
+                        android:textAppearance="@style/TextAppearance.Aurora.Title"
+                        android:textSize="20sp" />
 
-                    <androidx.appcompat.widget.AppCompatAutoCompleteTextView
-                        android:id="@+id/emailg"
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/email_google_layout"
                         android:layout_width="match_parent"
-                        android:layout_height="36dp"
-                        android:layout_below="@+id/imageView4"
-                        android:layout_margin="10dp"
-                        android:layout_marginTop="32dp"
-                        android:autofillHints="emailAddress"
-                        android:background="@drawable/outline_bg"
-                        android:completionThreshold="1"
-                        android:hint="@string/credentials_hint_email"
-                        android:inputType="textEmailAddress"
-                        android:paddingStart="10dp"
-                        android:paddingEnd="10dp"
-                        android:textAlignment="viewStart" />
-
-                    <RelativeLayout
-                        android:id="@+id/password_layoutg"
-                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/emailg">
+                        android:layout_below="@id/google_title"
+                        android:layout_marginTop="10dp"
+                        android:hint="@string/credentials_hint_email"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp">
 
-                        <EditText
-                            android:id="@+id/passwordg"
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/email_google"
                             android:layout_width="match_parent"
-                            android:layout_height="36dp"
-                            android:layout_margin="10dp"
-                            android:autofillHints="password"
-                            android:background="@drawable/outline_bg"
-                            android:fontFamily="normal"
-                            android:hint="@string/credentials_hint_password"
-                            android:inputType="textPassword"
-                            android:paddingStart="10dp"
-                            android:paddingEnd="10dp"
-                            android:textAlignment="viewStart" />
-
-                        <ImageView
-                            android:id="@+id/toggle_password_visibility"
-                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_alignEnd="@+id/passwordg"
-                            android:layout_centerHorizontal="true"
-                            android:layout_centerVertical="true"
-                            android:layout_marginEnd="12dp"
-                            android:alpha=".6"
-                            android:src="@drawable/ic_visibility_on"
-                            android:tint="?android:attr/colorForeground" />
-                    </RelativeLayout>
+                            android:inputType="textAutoComplete"
+                            android:singleLine="true" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/password_google_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/email_google_layout"
+                        android:hint="@string/credentials_hint_password"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/password_google"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textPassword"
+                            android:singleLine="true" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
 
                     <LinearLayout
                         android:id="@+id/password_layout_extg"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/password_layoutg"
-                        android:layout_marginBottom="5dp"
+                        android:layout_below="@id/password_google_layout"
                         android:gravity="end"
                         android:orientation="horizontal"
                         android:weightSum="2">
@@ -215,10 +161,9 @@
 
                         <Button
                             android:id="@+id/button_okg"
-                            style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+                            style="@style/Widget.MaterialComponents.Button.TextButton"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginEnd="10dp"
                             android:text="@string/action_login" />
                     </LinearLayout>
 
@@ -259,44 +204,35 @@
                         app:srcCompat="@drawable/ic_dummy_avatar" />
 
                     <TextView
-                        android:id="@+id/textView4"
+                        android:id="@+id/dummy_title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignTop="@+id/anonymous_holder"
                         android:layout_alignBottom="@+id/anonymous_holder"
-                        android:layout_marginStart="10dp"
                         android:layout_toEndOf="@+id/anonymous_holder"
-                        android:ellipsize="end"
-                        android:fontFamily="@font/google_sans_bold"
-                        android:singleLine="true"
                         android:text="@string/acc_dummy"
-                        android:textAlignment="viewStart"
-                        android:textColor="?android:attr/textColorPrimary"
-                        android:textSize="18sp" />
+                        android:textAppearance="@style/TextAppearance.Aurora.Title"
+                        android:textSize="20sp" />
 
                     <TextView
-                        android:id="@+id/textView5"
+                        android:id="@+id/dummy_desc"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/anonymous_holder"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginEnd="10dp"
                         android:ellipsize="none"
                         android:padding="5dp"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
                         android:text="@string/acc_dummy_summary"
                         android:textAlignment="viewStart"
                         android:textSize="14sp" />
 
                     <Button
                         android:id="@+id/btn_ok_anm"
-                        style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+                        style="@style/Widget.MaterialComponents.Button.TextButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/textView5"
+                        android:layout_below="@+id/dummy_desc"
                         android:layout_alignParentEnd="true"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginEnd="10dp"
-                        android:layout_marginBottom="5dp"
                         android:text="@string/action_ok" />
                 </RelativeLayout>
 
@@ -305,4 +241,4 @@
 
     </androidx.core.widget.NestedScrollView>
 
-</RelativeLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

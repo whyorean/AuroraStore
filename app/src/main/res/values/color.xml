@@ -30,7 +30,7 @@
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
     <color name="transparent">#0000</color>
-    <color name="semi_transparent">#33000000</color>
+    <color name="semi_transparent">#11000000</color>
     <color name="gray">#BDBDBD</color>
     <color name="darkGray">#616161</color>
     <color name="lightGray">#EEEEEE</color>
