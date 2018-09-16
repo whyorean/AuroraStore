@@ -24,138 +24,148 @@
     android:minWidth="400dp"
     android:orientation="vertical">
 
-    <RelativeLayout
-        android:id="@+id/filter_top"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="?actionBarSize">
+        android:layout_height="match_parent"
+        android:scrollbars="none">
 
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="@string/action_filter"
-            android:textAppearance="@style/TextAppearance.Aurora.Title" />
+            android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/close_filter"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:layout_margin="5dp"
-            android:background="?android:selectableItemBackgroundBorderless"
-            android:src="@drawable/ic_cancel" />
+            <RelativeLayout
+                android:id="@+id/filter_top"
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize">
 
-    </RelativeLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="@string/action_filter"
+                    android:textAppearance="@style/TextAppearance.Aurora.Title" />
 
-    <TextView
-        android:id="@+id/category_misc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:paddingStart="10dp"
-        android:paddingEnd="10dp"
-        android:text="@string/action_filter_misc"
-        android:textAppearance="@style/TextAppearance.Aurora.Title" />
+                <ImageView
+                    android:id="@+id/close_filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_margin="5dp"
+                    android:background="?android:selectableItemBackgroundBorderless"
+                    android:src="@drawable/ic_cancel" />
 
-    <com.google.android.material.chip.ChipGroup
-        android:id="@+id/micsc_chips"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:paddingStart="10dp"
-        android:paddingEnd="10dp"
-        app:chipSpacingHorizontal="@dimen/margin_small"
-        app:chipSpacingVertical="@dimen/margin_normal">
+            </RelativeLayout>
 
-        <com.google.android.material.chip.Chip
-            android:id="@+id/filter_gfs"
-            style="@style/Widget.MaterialComponents.Chip.Entry"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/action_filter_gsf_dependent_apps"
-            android:textAppearance="@style/TextAppearance.Aurora.ChipText"
-            app:checkedIcon="@drawable/ic_chip_checked"
-            app:chipEndPadding="5dp"
-            app:chipStartPadding="5dp"
-            app:closeIconEnabled="false" />
+            <TextView
+                android:id="@+id/category_misc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:text="@string/action_filter_misc"
+                android:textAppearance="@style/TextAppearance.Aurora.Title" />
 
-        <com.google.android.material.chip.Chip
-            android:id="@+id/filter_paid"
-            style="@style/Widget.MaterialComponents.Chip.Entry"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/action_filter_paid_apps"
-            android:textAppearance="@style/TextAppearance.Aurora.ChipText"
-            app:checkedIcon="@drawable/ic_chip_checked"
-            app:chipEndPadding="5dp"
-            app:chipStartPadding="5dp"
-            app:closeIconEnabled="false" />
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/micsc_chips"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                app:chipSpacingHorizontal="@dimen/margin_small"
+                app:chipSpacingVertical="@dimen/margin_normal">
 
-        <com.google.android.material.chip.Chip
-            android:id="@+id/filter_ads"
-            style="@style/Widget.MaterialComponents.Chip.Entry"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/action_filter_apps_with_ads"
-            android:textAppearance="@style/TextAppearance.Aurora.ChipText"
-            app:checkedIcon="@drawable/ic_chip_checked"
-            app:chipEndPadding="5dp"
-            app:chipStartPadding="5dp"
-            app:closeIconEnabled="false" />
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/filter_gfs"
+                    style="@style/Widget.MaterialComponents.Chip.Entry"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/action_filter_gsf_dependent_apps"
+                    android:textAppearance="@style/TextAppearance.Aurora.ChipText"
+                    app:checkedIcon="@drawable/ic_chip_checked"
+                    app:chipEndPadding="5dp"
+                    app:chipStartPadding="5dp"
+                    app:closeIconEnabled="false" />
 
-    </com.google.android.material.chip.ChipGroup>
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/filter_paid"
+                    style="@style/Widget.MaterialComponents.Chip.Entry"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/action_filter_paid_apps"
+                    android:textAppearance="@style/TextAppearance.Aurora.ChipText"
+                    app:checkedIcon="@drawable/ic_chip_checked"
+                    app:chipEndPadding="5dp"
+                    app:chipStartPadding="5dp"
+                    app:closeIconEnabled="false" />
 
-    <TextView
-        android:id="@+id/category_rating"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:paddingStart="10dp"
-        android:paddingEnd="10dp"
-        android:text="@string/action_filter_rating"
-        android:textAppearance="@style/TextAppearance.Aurora.Title" />
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/filter_ads"
+                    style="@style/Widget.MaterialComponents.Chip.Entry"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/action_filter_apps_with_ads"
+                    android:textAppearance="@style/TextAppearance.Aurora.ChipText"
+                    app:checkedIcon="@drawable/ic_chip_checked"
+                    app:chipEndPadding="5dp"
+                    app:chipStartPadding="5dp"
+                    app:closeIconEnabled="false" />
 
-    <com.google.android.material.chip.ChipGroup
-        android:id="@+id/rating_chips"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:paddingStart="10dp"
-        android:paddingEnd="10dp"
-        app:chipSpacingHorizontal="@dimen/margin_small"
-        app:chipSpacingVertical="@dimen/margin_normal"
-        app:singleSelection="true" />
+            </com.google.android.material.chip.ChipGroup>
 
+            <TextView
+                android:id="@+id/category_rating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:text="@string/action_filter_rating"
+                android:textAppearance="@style/TextAppearance.Aurora.Title" />
 
-    <TextView
-        android:id="@+id/category_downloads"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:paddingStart="10dp"
-        android:paddingEnd="10dp"
-        android:text="@string/action_filter_downloads"
-        android:textAppearance="@style/TextAppearance.Aurora.Title" />
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/rating_chips"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                app:chipSpacingHorizontal="@dimen/margin_small"
+                app:chipSpacingVertical="@dimen/margin_normal"
+                app:singleSelection="true" />
 
-    <com.google.android.material.chip.ChipGroup
-        android:id="@+id/download_chips"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:paddingStart="10dp"
-        android:paddingEnd="10dp"
-        app:chipSpacingHorizontal="@dimen/margin_small"
-        app:chipSpacingVertical="@dimen/margin_normal"
-        app:singleSelection="true" />
+            <TextView
+                android:id="@+id/category_downloads"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:text="@string/action_filter_downloads"
+                android:textAppearance="@style/TextAppearance.Aurora.Title" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/filter_apply"
-        style="@style/Widget.Aurora.RaisedButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="end"
-        android:layout_margin="5dp"
-        android:text="@string/action_filter_apply" />
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/download_chips"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                app:chipSpacingHorizontal="@dimen/margin_small"
+                app:chipSpacingVertical="@dimen/margin_normal"
+                app:singleSelection="true" />
 
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/filter_apply"
+                style="@style/Widget.Aurora.RaisedButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_margin="5dp"
+                android:text="@string/action_filter_apply" />
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

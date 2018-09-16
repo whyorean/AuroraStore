@@ -41,18 +41,21 @@ public class LinkCard extends RelativeLayout {
     ImageView card_icon;
     TextView card_title;
     TextView card_summary;
+
     private String title;
     private String summary;
     private String linkURL;
+    private boolean shouldClick;
     private int cardIconID;
 
-    public LinkCard(Context context, String linkURL, String title, String summary, int cardIconID) {
+    public LinkCard(Context context, String linkURL, String title, String summary, int cardIconID, boolean shouldClick) {
         super(context);
         this.context = context;
         this.linkURL = linkURL;
         this.title = title;
         this.summary = summary;
         this.cardIconID = cardIconID;
+        this.shouldClick = shouldClick;
         init(context);
     }
 
@@ -71,10 +74,11 @@ public class LinkCard extends RelativeLayout {
         card_summary.setText(summary);
         card_icon.setImageResource(cardIconID);
 
-        link_card.setOnClickListener(click -> {
-            final Intent browserIntent = new Intent(Intent.ACTION_VIEW);
-            browserIntent.setData(Uri.parse(linkURL));
-            context.startActivity(browserIntent);
-        });
+        if (shouldClick)
+            link_card.setOnClickListener(click -> {
+                final Intent browserIntent = new Intent(Intent.ACTION_VIEW);
+                browserIntent.setData(Uri.parse(linkURL));
+                context.startActivity(browserIntent);
+            });
     }
 }

@@ -27,18 +27,21 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.dragons.aurora.R;
+import com.dragons.aurora.dialogs.PaymentDialog;
 import com.dragons.custom.LinkCard;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 public class AboutFragment extends BaseFragment {
 
     private final int linkIcons[] = {
+            R.drawable.ic_paypal,
             R.drawable.ic_gitlab,
             R.drawable.ic_xda,
             R.drawable.ic_telegram,
@@ -67,6 +70,20 @@ public class AboutFragment extends BaseFragment {
 
     private void drawLinks() {
         LinearLayout linkContainer = view.findViewById(R.id.linkContainer);
+        LinkCard paytmCard = new LinkCard(getContext(), "", "Paytm", "Support development,Paytm Karo!", R.drawable.ic_paytm, false);
+        paytmCard.setOnClickListener(v -> {
+            FragmentTransaction ft = getFragmentManager().beginTransaction();
+            Fragment prev = getFragmentManager().findFragmentByTag("dialog");
+            if (prev != null) {
+                ft.remove(prev);
+            }
+            ft.addToBackStack(null);
+            PaymentDialog paymentDialog = new PaymentDialog();
+            paymentDialog.show(ft, "dialog");
+        });
+
+        linkContainer.addView(paytmCard);
+
         String[] linkURLS = getResources().getStringArray(R.array.linkURLS);
         String[] linkTitles = getResources().getStringArray(R.array.linkTitles);
         String[] linkSummary = getResources().getStringArray(R.array.linkSummary);
@@ -76,6 +93,7 @@ public class AboutFragment extends BaseFragment {
                     URL,
                     linkTitles[index],
                     linkSummary[index],
-                    linkIcons[index++]));
+                    linkIcons[index++],
+                    true));
     }
 }
