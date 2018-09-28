@@ -22,6 +22,7 @@
 package com.dragons.aurora.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Bitmap;
 import android.view.LayoutInflater;
@@ -42,9 +43,10 @@ import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.Target;
 import com.dragons.aurora.R;
 import com.dragons.aurora.activities.DetailsActivity;
+import com.dragons.aurora.activities.ManualDownloadActivity;
+import com.dragons.aurora.fragment.ManualFragment;
 import com.dragons.aurora.fragment.details.ButtonDownload;
 import com.dragons.aurora.fragment.details.ButtonUninstall;
-import com.dragons.aurora.fragment.details.DownloadOptions;
 import com.dragons.aurora.model.App;
 
 import java.util.List;
@@ -95,10 +97,9 @@ public class FeaturedAppsAdapter extends RecyclerView.Adapter<FeaturedAppsAdapte
         holder.appMenu3Dot.setOnClickListener(v -> {
             PopupMenu popup = new PopupMenu(v.getContext(), v);
             popup.inflate(R.menu.menu_download);
-            new DownloadOptions(context, fragment.getView(), app).inflate(popup.getMenu());
             popup.getMenu().findItem(R.id.action_download).setVisible(new ButtonDownload(context, fragment.getView(), app).shouldBeVisible());
             popup.getMenu().findItem(R.id.action_uninstall).setVisible(app.isInstalled());
-            popup.getMenu().findItem(R.id.action_manual).setVisible(app.isInstalled());
+            popup.getMenu().findItem(R.id.action_manual).setVisible(true);
             popup.setOnMenuItemClickListener(item -> {
                 switch (item.getItemId()) {
                     case R.id.action_download:
@@ -107,8 +108,10 @@ public class FeaturedAppsAdapter extends RecyclerView.Adapter<FeaturedAppsAdapte
                     case R.id.action_uninstall:
                         new ButtonUninstall(context, fragment.getView(), app).uninstall();
                         break;
-                    default:
-                        return new DownloadOptions(context, fragment.getView(), app).onContextItemSelected(item);
+                    case R.id.action_manual:
+                        ManualFragment.app = app;
+                        context.startActivity(new Intent(context, ManualDownloadActivity.class));
+                        break;
                 }
                 return false;
             });
