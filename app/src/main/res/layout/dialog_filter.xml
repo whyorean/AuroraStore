@@ -18,6 +18,7 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     style="@style/Widget.Aurora.Dialog"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -32,7 +33,11 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_marginTop="@dimen/margin_normal"
+            android:layout_marginBottom="@dimen/spacing_normal"
+            android:orientation="vertical"
+            android:paddingHorizontal="@dimen/margin_large"
+            tools:targetApi="o">
 
             <RelativeLayout
                 android:id="@+id/filter_top"
@@ -164,7 +169,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
-                android:layout_margin="5dp"
+                android:layout_marginStart="@dimen/spacing_normal"
+                android:layout_marginTop="@dimen/margin_normal"
+                android:layout_marginBottom="@dimen/margin_normal"
                 android:text="@string/action_filter_apply" />
         </LinearLayout>
     </ScrollView>

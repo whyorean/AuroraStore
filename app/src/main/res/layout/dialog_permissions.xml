@@ -21,7 +21,11 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:scrollbars="none">
+        android:layout_marginTop="@dimen/spacing_normal"
+        android:layout_marginBottom="@dimen/margin_normal"
+        android:paddingHorizontal="@dimen/margin_large"
+        android:scrollbars="none"
+        tools:targetApi="o">
 
         <LinearLayout
             android:id="@+id/permissions_container"

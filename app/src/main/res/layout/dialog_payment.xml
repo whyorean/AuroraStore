@@ -21,16 +21,21 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     style="@style/Widget.Aurora.Dialog"
     android:layout_width="match_parent"
-    android:layout_height="400dp"
+    android:layout_height="wrap_content"
+    android:gravity="center"
     android:minWidth="400dp"
     android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="5dp">
+        android:layout_marginTop="@dimen/margin_large"
+        android:layout_marginBottom="@dimen/spacing_normal"
+        android:paddingHorizontal="@dimen/margin_large"
+        tools:targetApi="o">
 
         <ImageView
             android:id="@+id/paytm_icon"
@@ -43,19 +48,18 @@
             android:id="@+id/paytm_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
             android:layout_marginTop="15dp"
             android:layout_toEndOf="@+id/paytm_icon"
             android:text="Paytm"
             android:textAppearance="@style/TextAppearance.Aurora.DialogTitle" />
-
-        <ImageView
-            android:id="@+id/paytm_qr"
-            android:layout_width="300dp"
-            android:layout_height="300dp"
-            android:layout_below="@+id/paytm_title"
-            android:layout_centerInParent="true"
-            android:layout_margin="25dp" />
-
     </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/paytm_qr"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_marginTop="@dimen/margin_normal"
+        android:layout_marginBottom="@dimen/margin_normal" />
 
 </LinearLayout>

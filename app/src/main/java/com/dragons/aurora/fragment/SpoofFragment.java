@@ -42,6 +42,7 @@ import com.dragons.aurora.SpoofDeviceManager;
 import com.dragons.aurora.Util;
 import com.dragons.aurora.activities.DeviceInfoActivity;
 import com.dragons.aurora.activities.LoginActivity;
+import com.dragons.aurora.dialogs.GenericDialog;
 import com.dragons.aurora.helpers.Accountant;
 import com.dragons.aurora.helpers.Prefs;
 import com.dragons.aurora.task.SpoofTask;
@@ -54,8 +55,9 @@ import java.util.Map;
 import java.util.Properties;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 public class SpoofFragment extends BaseFragment {
 
@@ -261,18 +263,26 @@ public class SpoofFragment extends BaseFragment {
     }
 
     private void showConfirmationDialog() {
-        new AlertDialog.Builder(getContext())
-                .setMessage(R.string.pref_device_to_pretend_to_be_toast)
-                .setTitle(R.string.dialog_title_logout)
-                .setPositiveButton(R.string.action_logout, (dialogInterface, i) -> {
-                    Prefs.putString(getContext(), Aurora.PREFERENCE_DEVICE_TO_PRETEND_TO_BE, "");
-                    Prefs.putInteger(getContext(), Aurora.PREFERENCE_DEVICE_TO_PRETEND_TO_BE_INDEX, 0);
-                    Accountant.completeCheckout(getContext());
-                    dialogInterface.dismiss();
-                    startActivity(new Intent(getContext(), LoginActivity.class));
-                })
-                .setNegativeButton(android.R.string.cancel, null)
-                .show();
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        Fragment prev = getFragmentManager().findFragmentByTag("dialog");
+        if (prev != null) {
+            ft.remove(prev);
+        }
+        ft.addToBackStack(null);
+        GenericDialog mDialog = new GenericDialog();
+        mDialog.setDialogTitle(getString(R.string.dialog_title_logout));
+        mDialog.setDialogMessage(getString(R.string.pref_device_to_pretend_to_be_toast));
+        mDialog.setPositiveButton(getString(R.string.action_logout), v -> {
+            Prefs.putString(getContext(), Aurora.PREFERENCE_DEVICE_TO_PRETEND_TO_BE, "");
+            Prefs.putInteger(getContext(), Aurora.PREFERENCE_DEVICE_TO_PRETEND_TO_BE_INDEX, 0);
+            Accountant.completeCheckout(getContext());
+            mDialog.dismiss();
+            startActivity(new Intent(getContext(), LoginActivity.class));
+        });
+        mDialog.setNegativeButton(getString(android.R.string.cancel), v -> {
+            mDialog.dismiss();
+        });
+        mDialog.show(ft, "dialog");
     }
 
 }

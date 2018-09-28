@@ -27,7 +27,6 @@ import com.dragons.aurora.R;
 import com.dragons.aurora.activities.LoginActivity;
 import com.dragons.aurora.task.AppProvidedCredentialsTask;
 import com.dragons.aurora.task.LoginTask;
-import com.dragons.aurora.task.UserProvidedCredentialsTask;
 
 import androidx.appcompat.app.AlertDialog;
 
@@ -43,21 +42,6 @@ public class Accountant {
 
     public static Boolean isLoggedIn(Context context) {
         return Prefs.getBoolean(context, Aurora.LOGGED_IN);
-    }
-
-    public static void LoginFirst(Context context) {
-        if (!Prefs.getBoolean(context, Aurora.LOGIN_PROMPTED)) {
-            new AlertDialog.Builder(context)
-                    .setTitle(R.string.action_login)
-                    .setMessage(R.string.header_usr_noEmail)
-                    .setPositiveButton(R.string.action_login, (dialogInterface, i) -> {
-                        context.startActivity(new Intent(context, LoginActivity.class));
-                        Prefs.putBoolean(context, Aurora.LOGIN_PROMPTED, false);
-                    })
-                    .setCancelable(false)
-                    .show();
-            Prefs.putBoolean(context, Aurora.LOGIN_PROMPTED, true);
-        }
     }
 
     public static void switchDummy(Context context) {

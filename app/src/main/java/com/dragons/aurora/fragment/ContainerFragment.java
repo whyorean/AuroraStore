@@ -18,6 +18,7 @@
 
 package com.dragons.aurora.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,15 +33,19 @@ import com.dragons.aurora.Aurora;
 import com.dragons.aurora.OnBackPressListener;
 import com.dragons.aurora.R;
 import com.dragons.aurora.Util;
+import com.dragons.aurora.activities.LoginActivity;
 import com.dragons.aurora.adapters.ViewPagerAdapter;
+import com.dragons.aurora.dialogs.GenericDialog;
 import com.dragons.aurora.helpers.Accountant;
 import com.dragons.aurora.helpers.Prefs;
 import com.dragons.custom.AdaptiveToolbar;
 import com.dragons.custom.CustomViewPager;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -56,7 +61,6 @@ public class ContainerFragment extends Fragment implements UpdatableAppsFragment
     @BindView(R.id.navigation)
     AHBottomNavigation bottomNavigationView;
 
-    private View view;
     private ViewPagerAdapter mViewPagerAdapter;
 
     public ContainerFragment() {
@@ -65,8 +69,20 @@ public class ContainerFragment extends Fragment implements UpdatableAppsFragment
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        view = inflater.inflate(R.layout.fragment_container, container, false);
+        return inflater.inflate(R.layout.fragment_container, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(this, view);
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        mViewPagerAdapter = new ViewPagerAdapter(getChildFragmentManager());
+        mViewPager.setAdapter(mViewPagerAdapter);
         if (Prefs.getBoolean(getContext(), Aurora.PREFERENCE_SWIPE_PAGES))
             mViewPager.setScroll(true);
         else
@@ -89,14 +105,6 @@ public class ContainerFragment extends Fragment implements UpdatableAppsFragment
             }
         });
         setupBottomNav();
-        return view;
-    }
-
-    @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewPagerAdapter = new ViewPagerAdapter(getChildFragmentManager());
-        mViewPager.setAdapter(mViewPagerAdapter);
     }
 
     @Override
@@ -108,7 +116,27 @@ public class ContainerFragment extends Fragment implements UpdatableAppsFragment
             }
         } else {
             resetUser();
-            Accountant.LoginFirst(getContext());
+            askLogin();
+        }
+    }
+
+    private void askLogin() {
+        if (!Prefs.getBoolean(getContext(), Aurora.LOGIN_PROMPTED)) {
+            FragmentTransaction ft = getFragmentManager().beginTransaction();
+            Fragment prev = getFragmentManager().findFragmentByTag("login");
+            if (prev != null) {
+                ft.remove(prev);
+            }
+            ft.addToBackStack(null);
+            GenericDialog mDialog = new GenericDialog();
+            mDialog.setDialogTitle(getString(R.string.action_login));
+            mDialog.setDialogMessage(getString(R.string.header_usr_noEmail));
+            mDialog.setPositiveButton(getString(R.string.action_login), v -> {
+                getContext().startActivity(new Intent(getContext(), LoginActivity.class));
+                Prefs.putBoolean(getContext(), Aurora.LOGIN_PROMPTED, false);
+            });
+            mDialog.show(ft, "login");
+            Prefs.putBoolean(getContext(), Aurora.LOGIN_PROMPTED, true);
         }
     }
 

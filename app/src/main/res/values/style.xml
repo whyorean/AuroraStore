@@ -157,6 +157,12 @@
         <item name="android:lineSpacingMultiplier">@dimen/text_line_spacing</item>
     </style>
 
+    <style name="TextAppearance.Aurora.DialogContent" parent="@style/TextAppearance.AppCompat.Body1">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">?android:textColorSecondary</item>
+        <item name="android:gravity">start</item>
+    </style>
+
     <!-- Toolbar & AppBar -->
     <style name="AppTheme.PopupTheme" parent="ThemeOverlay.MaterialComponents" />
 
@@ -187,12 +193,14 @@
     </style>
 
     <style name="Theme.Aurora.Dialog" parent="@style/Theme.MaterialComponents.Light.Dialog">
+        <item name="colorPrimary">@color/colorAccent</item>
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:backgroundDimEnabled">false</item>
         <item name="android:textViewStyle">@style/TextAppearance.Aurora.TextView</item>
     </style>
 
     <style name="Theme.Aurora.Dialog.Dark" parent="@style/Theme.MaterialComponents.Dialog">
+        <item name="colorPrimary">@color/colorAccent</item>
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:backgroundDimEnabled">false</item>
         <item name="android:textViewStyle">@style/TextAppearance.Aurora.TextView</item>

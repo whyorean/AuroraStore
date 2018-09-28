@@ -2,14 +2,12 @@
 
 <CheckedTextView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@android:id/text1"
-    style="@style/Widget.Aurora.CheckedTextView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="5dp"
     android:checkMark="?android:attr/listChoiceIndicatorSingle"
     android:ellipsize="marquee"
     android:gravity="center_vertical"
     android:minHeight="?android:attr/listPreferredItemHeight"
-    android:paddingStart="15dip"
+    android:paddingStart="25dip"
     android:paddingEnd="15dip"
-    android:textColor="?android:attr/textColorAlertDialogListItem" />
+    android:textAppearance="@style/TextAppearance.Aurora.SubTitle.Compact" />

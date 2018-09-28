@@ -29,7 +29,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -37,6 +36,7 @@ import com.bumptech.glide.request.RequestOptions;
 import com.dragons.aurora.Aurora;
 import com.dragons.aurora.R;
 import com.dragons.aurora.activities.LoginActivity;
+import com.dragons.aurora.dialogs.GenericDialog;
 import com.dragons.aurora.dialogs.LoginDialog;
 import com.dragons.aurora.helpers.Accountant;
 import com.dragons.aurora.helpers.Prefs;
@@ -46,7 +46,6 @@ import com.google.android.material.chip.Chip;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
@@ -228,16 +227,26 @@ public class AccountsFragment extends BaseFragment {
     }
 
     private void showLogOutDialog() {
-        new AlertDialog.Builder(getActivity())
-                .setMessage(R.string.dialog_message_logout)
-                .setTitle(R.string.dialog_title_logout)
-                .setPositiveButton(android.R.string.yes, (dialogInterface, i) -> {
-                    Accountant.completeCheckout(getContext());
-                    dialogInterface.dismiss();
-                    getActivity().finish();
-                    startActivity(new Intent(getContext(), LoginActivity.class));
-                })
-                .setNegativeButton(android.R.string.cancel, null)
-                .show();
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        Fragment prev = getFragmentManager().findFragmentByTag("login");
+        if (prev != null) {
+            ft.remove(prev);
+        }
+        ft.addToBackStack(null);
+        GenericDialog mDialog = new GenericDialog();
+        mDialog.setDialogTitle(getString(R.string.dialog_title_logout));
+        mDialog.setDialogMessage(getString(R.string.dialog_message_logout));
+        mDialog.setPositiveButton(getString(android.R.string.yes), v -> {
+            Accountant.completeCheckout(getContext());
+            mDialog.dismiss();
+            getActivity().finish();
+            startActivity(new Intent(getContext(), LoginActivity.class));
+        });
+        mDialog.setNegativeButton(getString(android.R.string.cancel), v -> {
+            mDialog.dismiss();
+        });
+        mDialog.show(ft, "login");
     }
+
+
 }
