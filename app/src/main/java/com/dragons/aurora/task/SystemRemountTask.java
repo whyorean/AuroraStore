@@ -22,7 +22,6 @@
 package com.dragons.aurora.task;
 
 import android.content.Context;
-import android.content.DialogInterface;
 
 import com.dragons.aurora.R;
 import com.dragons.aurora.model.App;
@@ -58,20 +57,11 @@ public abstract class SystemRemountTask extends TaskWithProgress<List<String>> {
     }
 
     @Override
-    protected void onPreExecute() {
-        prepareDialog(
-                R.string.dialog_message_remounting_system,
-                R.string.dialog_title_remounting_system
-        );
-        super.onPreExecute();
-    }
-
-    @Override
     protected List<String> doInBackground(String... params) {
         List<String> commands = new ArrayList<>();
-        commands.add(MOUNT_RW);
+        commands.add(getBusyboxCommand(MOUNT_RW));
         commands.addAll(getCommands());
-        commands.add(MOUNT_RO);
+        commands.add(getBusyboxCommand(MOUNT_RO));
         return Shell.SU.run(commands);
     }
 
@@ -82,8 +72,8 @@ public abstract class SystemRemountTask extends TaskWithProgress<List<String>> {
             for (String outputLine : output) {
                 Timber.i(outputLine);
             }
+            showRebootDialog();
         }
-        showRebootDialog();
     }
 
     protected String getBusyboxCommand(String command) {

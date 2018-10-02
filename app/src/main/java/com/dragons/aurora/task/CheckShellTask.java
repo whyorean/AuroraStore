@@ -29,11 +29,7 @@ import com.dragons.aurora.ContextUtil;
 import com.dragons.aurora.R;
 import com.dragons.aurora.activities.SearchActivity;
 import com.dragons.aurora.builders.SystemRemountDialogBuilder;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import com.scottyab.rootbeer.RootBeer;
 
 import androidx.appcompat.app.AlertDialog;
 import eu.chainfire.libsuperuser.Shell;
@@ -41,30 +37,9 @@ import timber.log.Timber;
 
 public class CheckShellTask extends TaskWithProgress<Boolean> {
 
-    static private final int RETURN_CODE_NOT_FOUND = 127;
-    static private final String COMMAND_ECHO = "echo ";
-    static private final String COMMAND_RETURNED = " returned ";
-    static private final String COMMAND_CODE = "$?";
-    static private final String COMMAND_MV = "mv";
-    static private final String COMMAND_RM = "rm";
-    static private final String COMMAND_MKDIR = "mkdir";
-    static private final String COMMAND_CHMOD = "chmod";
-    static private final String COMMAND_CHOWN = "chown";
-    static private final String COMMAND_CHGRP = "chgrp";
-    static private final String COMMAND_BUSYBOX = "busybox";
-    static private final String[] COMMANDS = new String[]{
-            COMMAND_MV,
-            COMMAND_RM,
-            COMMAND_MKDIR,
-            COMMAND_CHMOD,
-            COMMAND_CHOWN,
-            COMMAND_CHGRP,
-            COMMAND_BUSYBOX
-    };
-
-    private boolean availableCoreutils;
-    private boolean availableBusybox;
     private SystemRemountTask primaryTask;
+    private boolean isSUAvail = false;
+    private boolean isBBAvail = false;
 
     public CheckShellTask(Context context) {
         setContext(context);
@@ -76,54 +51,23 @@ public class CheckShellTask extends TaskWithProgress<Boolean> {
 
     @Override
     protected Boolean doInBackground(String... params) {
-        if (!Shell.SU.available()) {
+        RootBeer mRootBeer = new RootBeer(context);
+
+        isBBAvail = mRootBeer.checkForBusyBoxBinary();
+        isSUAvail = mRootBeer.isRooted();
+
+        if (!isBBAvail) {
             return false;
         }
-        List<String> output = Shell.SU.run(getCommands());
-        if (null == output) {
+
+        if (!isSUAvail)
             return false;
-        }
-        Map<String, Boolean> flags = processOutput(output);
-        availableCoreutils = flags.get(COMMAND_MV) && flags.get(COMMAND_RM) && flags.get(COMMAND_MKDIR) && flags.get(COMMAND_CHMOD);
-        availableBusybox = flags.get(COMMAND_BUSYBOX);
-        Timber.i("Coreutils available %s", availableCoreutils);
-        Timber.i("Busybox available %s", availableBusybox);
+
+        if (!Shell.SU.available())
+            return false;
+
+        Timber.i("Root & Busybox is available ");
         return true;
-    }
-
-    private List<String> getCommands() {
-        List<String> commands = new ArrayList<>();
-        for (String command : COMMANDS) {
-            commands.add(command);
-            commands.add(COMMAND_ECHO + command + COMMAND_RETURNED + COMMAND_CODE);
-        }
-        return commands;
-    }
-
-    private Map<String, Boolean> processOutput(List<String> output) {
-        Map<String, Boolean> flags = new HashMap<>();
-        for (String command : COMMANDS) {
-            flags.put(command, false);
-        }
-        for (String line : output) {
-            Timber.d(line);
-            for (String command : COMMANDS) {
-                if (line.contains(command + COMMAND_RETURNED)) {
-                    int returnCode = Integer.parseInt(line.substring((command + COMMAND_RETURNED).length()).trim());
-                    flags.put(command, returnCode != RETURN_CODE_NOT_FOUND);
-                }
-            }
-        }
-        return flags;
-    }
-
-    @Override
-    protected void onPreExecute() {
-        prepareDialog(
-                R.string.dialog_message_checking_busybox,
-                R.string.dialog_title_checking_busybox
-        );
-        super.onPreExecute();
     }
 
     @Override
@@ -131,23 +75,16 @@ public class CheckShellTask extends TaskWithProgress<Boolean> {
         super.onPostExecute(result);
         if (!result || !ContextUtil.isAlive(context)) {
             ContextUtil.toast(context.getApplicationContext(), R.string.pref_no_root);
-        } else if (!availableBusybox && !availableCoreutils) {
+        } else if (!isBBAvail) {
             showBusyboxDialog();
         } else {
-            primaryTask.setBusybox(availableBusybox);
+            primaryTask.setBusybox(true);
             askAndExecute(primaryTask);
         }
     }
 
-    private void askAndExecute(SystemRemountTask task) {
-        new SystemRemountDialogBuilder(context, R.style.ThemeOverlay_MaterialComponents_Dialog)
-                .setPrimaryTask(task)
-                .show()
-        ;
-    }
-
     private void showBusyboxDialog() {
-        new AlertDialog.Builder(context)
+        new AlertDialog.Builder(context, R.style.ThemeOverlay_MaterialComponents_Dialog)
                 .setMessage(R.string.dialog_message_busybox_not_available)
                 .setTitle(R.string.dialog_title_busybox_not_available)
                 .setPositiveButton(android.R.string.yes, (dialog, which) -> {
@@ -165,5 +102,11 @@ public class CheckShellTask extends TaskWithProgress<Boolean> {
         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         i.putExtra(SearchManager.QUERY, "busybox");
         return i;
+    }
+
+    private void askAndExecute(SystemRemountTask task) {
+        new SystemRemountDialogBuilder(context, R.style.ThemeOverlay_MaterialComponents_Dialog)
+                .setPrimaryTask(task)
+                .show();
     }
 }

@@ -36,6 +36,7 @@ public class DetailsInstallReceiver extends BroadcastReceiver {
 
     static public final String ACTION_PACKAGE_REPLACED_NON_SYSTEM = "ACTION_PACKAGE_REPLACED_NON_SYSTEM";
     static public final String ACTION_PACKAGE_INSTALLATION_FAILED = "ACTION_PACKAGE_INSTALLATION_FAILED";
+    static public final String ACTION_UNINSTALL_PACKAGE_FAILED = "ACTION_UNINSTALL_PACKAGE_FAILED";
 
     private WeakReference<Activity> activityRef;
     private Activity activity;
@@ -77,10 +78,12 @@ public class DetailsInstallReceiver extends BroadcastReceiver {
         filter.addAction(Intent.ACTION_PACKAGE_REMOVED);
         filter.addAction(Intent.ACTION_PACKAGE_FULLY_REMOVED);
         filter.addAction(Intent.ACTION_PACKAGE_INSTALL);
+        filter.addAction(Intent.ACTION_UNINSTALL_PACKAGE);
         filter.addAction(Intent.ACTION_PACKAGE_ADDED);
         filter.addAction(Intent.ACTION_PACKAGE_REPLACED);
         filter.addAction(ACTION_PACKAGE_REPLACED_NON_SYSTEM);
         filter.addAction(ACTION_PACKAGE_INSTALLATION_FAILED);
+        filter.addAction(ACTION_UNINSTALL_PACKAGE_FAILED);
         return filter;
     }
 }

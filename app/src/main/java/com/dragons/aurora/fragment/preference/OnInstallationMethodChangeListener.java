@@ -39,6 +39,8 @@ import com.dragons.aurora.task.ConvertToSystemTask;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 
+import static com.dragons.aurora.Util.isExtensionAvailable;
+
 class OnInstallationMethodChangeListener implements Preference.OnPreferenceChangeListener {
 
     private PreferenceFragment activity;
@@ -52,7 +54,7 @@ class OnInstallationMethodChangeListener implements Preference.OnPreferenceChang
         String oldValue = ((ListPreference) preference).getValue();
         if (null != oldValue && !oldValue.equals(newValue)) {
             if (Aurora.INSTALLATION_METHOD_AURORA.equals(newValue)) {
-                if (!InstallerAurora.isExtensionAvailable(activity.getActivity())) {
+                if (!isExtensionAvailable(activity.getActivity())) {
                     ContextUtil.toast(activity.getActivity(), R.string.pref_installation_method_aurora_unavailable);
                     return false;
                 }

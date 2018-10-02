@@ -4,7 +4,6 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
-import android.net.Uri;
 import android.os.IBinder;
 import android.os.RemoteException;
 
@@ -18,10 +17,9 @@ import static com.dragons.aurora.Aurora.PRIVILEGED_EXTENSION_PACKAGE_NAME;
 import static com.dragons.aurora.Aurora.PRIVILEGED_EXTENSION_SERVICE_INTENT;
 import static com.dragons.aurora.Util.isExtensionAvailable;
 
-public class InstallerAurora extends InstallerAbstract {
-    public static final int ACTION_INSTALL_REPLACE_EXISTING = 2;
+public class UninstallerAurora extends UninstallerAbstract {
 
-    public InstallerAurora(Context context) {
+    public UninstallerAurora(Context context) {
         super(context);
     }
 
@@ -34,15 +32,14 @@ public class InstallerAurora extends InstallerAbstract {
     }
 
     @Override
-    protected void install(final App app) {
-        InstallationState.setInstalling(app.getPackageName());
+    protected void uninstall(final App app) {
         ServiceConnection mServiceConnection = new ServiceConnection() {
             public void onServiceConnected(ComponentName name, IBinder binder) {
                 IPrivilegedService service = IPrivilegedService.Stub.asInterface(binder);
                 IPrivilegedCallback callback = new IPrivilegedCallback.Stub() {
                     @Override
                     public void handleResult(String packageName, int returnCode) throws RemoteException {
-                        Timber.i("Installation of " + packageName + " complete with code " + returnCode);
+                        Timber.i("Uninstallation of " + packageName + " complete with code " + returnCode);
                         sendBroadcast(packageName, returnCode > 0);
                     }
                 };
@@ -52,12 +49,9 @@ public class InstallerAurora extends InstallerAbstract {
                         sendBroadcast(app.getPackageName(), false);
                         return;
                     }
-                    service.installPackage(
-                            Uri.fromFile(Paths.getApkPath(context, app.getPackageName(), app.getVersionCode())),
-                            ACTION_INSTALL_REPLACE_EXISTING,
-                            BuildConfig.APPLICATION_ID,
-                            callback
-                    );
+
+                    service.deletePackage(app.getPackageName(), 1, callback);
+
                 } catch (RemoteException e) {
                     Timber.e("Connecting to privileged service failed");
                     sendBroadcast(app.getPackageName(), false);

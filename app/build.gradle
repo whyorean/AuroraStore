@@ -79,6 +79,7 @@ dependencies {
     implementation 'com.android.volley:volley:1.1.0'
     implementation 'com.nothome:javaxdelta:2.0.1'
     implementation 'com.github.Chainfire:libsuperuser:-SNAPSHOT'
+    implementation 'com.scottyab:rootbeer-lib:0.0.7'
     implementation 'com.squareup.okhttp3:okhttp:3.10.0'
     implementation 'com.github.percolate:caffeine:0.4.7'
     implementation 'com.jakewharton.timber:timber:4.7.1'

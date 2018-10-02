@@ -22,12 +22,15 @@
 package com.dragons.aurora;
 
 import android.app.Activity;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.content.pm.PackageManager;
 import android.content.res.TypedArray;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
+import android.os.IBinder;
 import android.text.TextUtils;
 import android.util.TypedValue;
 import android.view.View;
@@ -55,6 +58,9 @@ import java.util.TreeMap;
 
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
+import static com.dragons.aurora.Aurora.PRIVILEGED_EXTENSION_PACKAGE_NAME;
+import static com.dragons.aurora.Aurora.PRIVILEGED_EXTENSION_SERVICE_INTENT;
 
 public class Util {
 
@@ -331,5 +337,37 @@ public class Util {
             arr[i] = array.optString(i);
         }
         return arr;
+    }
+
+    public static boolean isExtensionInstalled(Context context) {
+        PackageManager pm = context.getPackageManager();
+        try {
+            pm.getPackageInfo(PRIVILEGED_EXTENSION_PACKAGE_NAME, PackageManager.GET_ACTIVITIES);
+            return true;
+        } catch (PackageManager.NameNotFoundException e) {
+            return false;
+        }
+    }
+
+    public static boolean isExtensionAvailable(Context context) {
+        if (!isExtensionInstalled(context)) {
+            return false;
+        }
+        ServiceConnection serviceConnection = new ServiceConnection() {
+            public void onServiceConnected(ComponentName name, IBinder service) {
+            }
+
+            public void onServiceDisconnected(ComponentName name) {
+            }
+        };
+        Intent serviceIntent = new Intent(PRIVILEGED_EXTENSION_SERVICE_INTENT);
+        serviceIntent.setPackage(PRIVILEGED_EXTENSION_PACKAGE_NAME);
+
+        try {
+            context.getApplicationContext().bindService(serviceIntent, serviceConnection, Context.BIND_AUTO_CREATE);
+            return true;
+        } catch (SecurityException e) {
+            return false;
+        }
     }
 }

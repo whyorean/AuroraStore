@@ -26,10 +26,13 @@ import android.content.Intent;
 import android.net.Uri;
 import android.view.View;
 
+import com.dragons.aurora.Aurora;
 import com.dragons.aurora.R;
+import com.dragons.aurora.helpers.Prefs;
 import com.dragons.aurora.model.App;
 import com.dragons.aurora.task.CheckShellTask;
 import com.dragons.aurora.task.UninstallSystemAppTask;
+import com.dragons.aurora.task.UninstallTask;
 
 public class ButtonUninstall extends Button {
 
@@ -53,19 +56,26 @@ public class ButtonUninstall extends Button {
     }
 
     public void uninstall() {
+        if (Aurora.INSTALLATION_METHOD_AURORA.equals(Prefs.getString(context, Aurora.PREFERENCE_INSTALLATION_METHOD)))
+            uncheckedUninstall();
+        else
+            checkedUninstall();
+    }
+
+    private void uncheckedUninstall() {
+        new UninstallTask(context, app).execute();
+    }
+
+    private void checkedUninstall() {
         if (isSystemAndReadyForPermanentUninstall()) {
             askAndUninstall();
         } else {
             context.startActivity(new Intent(Intent.ACTION_DELETE, Uri.parse("package:" + app.getPackageName())));
         }
-        View buttonRun = view.findViewById(R.id.run);
-        if (buttonRun != null)
-            buttonRun.setVisibility(View.GONE);
     }
 
     private boolean isSystemAndReadyForPermanentUninstall() {
-        return app.isSystem()
-                && null != app.getPackageInfo().applicationInfo
+        return null != app.getPackageInfo().applicationInfo
                 && null != app.getPackageInfo().applicationInfo.sourceDir
                 && app.getPackageInfo().applicationInfo.sourceDir.startsWith("/system/");
     }
