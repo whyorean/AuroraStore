@@ -70,7 +70,7 @@ public class DetailsInstallReceiver extends BroadcastReceiver {
             return;
         }
         if (activity instanceof DetailsActivity)
-            ((DetailsActivity) activity).grabDetails(DetailsFragment.app.getPackageName());
+            ((DetailsActivity) activity).redrawDetails(DetailsFragment.app.getPackageName());
     }
 
     private IntentFilter getFilter() {

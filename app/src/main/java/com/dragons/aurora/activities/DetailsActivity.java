@@ -21,20 +21,23 @@
 
 package com.dragons.aurora.activities;
 
+import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 
+import com.dragons.aurora.OnAppInstalledListener;
 import com.dragons.aurora.R;
 import com.dragons.aurora.fragment.DetailsFragment;
 
 import androidx.fragment.app.FragmentTransaction;
 import timber.log.Timber;
 
-public class DetailsActivity extends AuroraActivity {
+public class DetailsActivity extends AuroraActivity implements OnAppInstalledListener {
 
     static private final String INTENT_PACKAGE_NAME = "INTENT_PACKAGE_NAME";
+    private OnAppInstalledListener mListener;
 
     static public Intent getDetailsIntent(Context context, String packageName) {
         Intent intent = new Intent(context, DetailsActivity.class);
@@ -43,10 +46,19 @@ public class DetailsActivity extends AuroraActivity {
     }
 
     @Override
+    public void onAttachFragment(Fragment fragment) {
+        super.onAttachFragment(fragment);
+        if (fragment instanceof OnAppInstalledListener) {
+            mListener = (OnAppInstalledListener) fragment;
+        }
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_helper_alt);
         onNewIntent(getIntent());
+        mListener = (OnAppInstalledListener) this;
     }
 
     @Override
@@ -86,5 +98,14 @@ public class DetailsActivity extends AuroraActivity {
                 .replace(R.id.container, detailsFragment)
                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                 .commit();
+    }
+
+    public void redrawDetails(String packageName) {
+        mListener.removeApp(packageName);
+        grabDetails(packageName);
+    }
+
+    @Override
+    public void removeApp(String packageName) {
     }
 }

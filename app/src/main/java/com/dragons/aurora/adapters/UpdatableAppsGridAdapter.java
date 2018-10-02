@@ -47,6 +47,7 @@ import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.Target;
 import com.dragons.aurora.BlackWhiteListManager;
+import com.dragons.aurora.OnAppInstalledListener;
 import com.dragons.aurora.R;
 import com.dragons.aurora.Util;
 import com.dragons.aurora.activities.DetailsActivity;
@@ -65,7 +66,7 @@ import androidx.cardview.widget.CardView;
 import androidx.palette.graphics.Palette;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class UpdatableAppsGridAdapter extends RecyclerView.Adapter<UpdatableAppsGridAdapter.ViewHolder> {
+public class UpdatableAppsGridAdapter extends RecyclerView.Adapter<UpdatableAppsGridAdapter.ViewHolder> implements OnAppInstalledListener {
 
     public List<App> appsToAdd;
     private UpdatableAppsFragment fragment;
@@ -291,6 +292,11 @@ public class UpdatableAppsGridAdapter extends RecyclerView.Adapter<UpdatableApps
     @Override
     public int getItemCount() {
         return appsToAdd.size();
+    }
+
+    @Override
+    public void removeApp(String packageName) {
+        remove(packageName);
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
