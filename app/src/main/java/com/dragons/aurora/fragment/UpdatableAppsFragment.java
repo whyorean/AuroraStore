@@ -165,20 +165,20 @@ public class UpdatableAppsFragment extends BaseFragment {
 
     @Override
     public void onPause() {
-        super.onPause();
-        getContext().unregisterReceiver(updateAllReceiver);
-        updateAllReceiver = null;
         swipeRefreshLayout.setRefreshing(false);
+        super.onPause();
     }
 
     @Override
     public void onDestroy() {
+        getContext().unregisterReceiver(updateAllReceiver);
+        updateAllReceiver = null;
         mDisposable.dispose();
         super.onDestroy();
     }
 
     private void launchUpdateAll() {
-        ((AuroraApplication) getActivity().getApplicationContext()).setBackgroundUpdating(true);
+        ((AuroraApplication) getActivity().getApplication()).setBackgroundUpdating(true);
         new UpdateChecker().onReceive(getActivity(), getActivity().getIntent());
         hide(view, R.id.update_all);
         show(view, R.id.update_cancel);
@@ -200,7 +200,10 @@ public class UpdatableAppsFragment extends BaseFragment {
         mDisposable.add(Observable.fromCallable(() -> mTaskHelper.getUpdatableApps())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .doOnSubscribe(start -> swipeRefreshLayout.setRefreshing(true))
+                .doOnSubscribe(start -> {
+                    swipeRefreshLayout.setRefreshing(true);
+                    updates_txt.setText(R.string.list_update_chk_txt);
+                })
                 .doOnTerminate(() -> swipeRefreshLayout.setRefreshing(false))
                 .doOnError(err -> show(view, R.id.ohhSnap))
                 .subscribe((appList) -> {
@@ -223,10 +226,13 @@ public class UpdatableAppsFragment extends BaseFragment {
         if (mOnUpdateListener != null)
             mOnUpdateListener.setUpdateCount(updatableApps.size());
 
-        if (updatableApps.isEmpty())
+        if (updatableApps.isEmpty()) {
             removeButtons();
-        else
+            updates_txt.setText("");
+        } else {
             addButtons();
+            updates_txt.setText(R.string.list_update_all_txt);
+        }
 
         if (recyclerView.getAdapter() == null)
             setupRecycler(updatableApps);
@@ -262,10 +268,10 @@ public class UpdatableAppsFragment extends BaseFragment {
         });
         cancel.setOnClickListener(v -> {
             for (App app : updatableApps) {
-                getContext().startService(new Intent(getContext().getApplicationContext(), CancelDownloadService.class)
+                getContext().startService(new Intent(getContext(), CancelDownloadService.class)
                         .putExtra(CancelDownloadService.PACKAGE_NAME, app.getPackageName()));
             }
-            ((AuroraApplication) getActivity().getApplicationContext()).setBackgroundUpdating(false);
+            ((AuroraApplication) getActivity().getApplication()).setBackgroundUpdating(false);
             update.setVisibility(View.VISIBLE);
             cancel.setVisibility(View.GONE);
             mOnUpdateListener.setUpdateCount(updatableApps.size());

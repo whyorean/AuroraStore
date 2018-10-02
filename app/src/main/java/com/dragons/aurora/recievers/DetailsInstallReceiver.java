@@ -28,6 +28,7 @@ import android.text.TextUtils;
 import com.dragons.aurora.ContextUtil;
 import com.dragons.aurora.activities.DetailsActivity;
 import com.dragons.aurora.activities.ManualDownloadActivity;
+import com.dragons.aurora.adapters.UpdatableAppsGridAdapter;
 import com.dragons.aurora.fragment.DetailsFragment;
 
 import java.lang.ref.WeakReference;
@@ -86,4 +87,5 @@ public class DetailsInstallReceiver extends BroadcastReceiver {
         filter.addAction(ACTION_UNINSTALL_PACKAGE_FAILED);
         return filter;
     }
+
 }

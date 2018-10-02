@@ -51,7 +51,6 @@
                 android:layout_marginEnd="5dp"
                 android:layout_toStartOf="@id/action_container"
                 android:requiresFadingEdge="vertical"
-                android:text="@string/list_update_chk_txt"
                 android:textColor="@color/white" />
 
             <LinearLayout
