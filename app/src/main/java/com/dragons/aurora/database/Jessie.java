@@ -154,6 +154,7 @@ public class Jessie {
                 mAppObject.put("app_updated", mApp.getUpdated().isEmpty() ? "" : mApp.getUpdated());
                 mAppObject.put("app_rating", mApp.getRating().getAverage());
                 mAppObject.put("app_installed", mApp.isInstalled());
+                mAppObject.put("app_system", mApp.isSystem());
             } catch (JSONException e) {
                 Timber.e(e.getMessage());
             }
@@ -197,6 +198,7 @@ public class Jessie {
                 mApp.setSize(mJsonObject.getLong("app_size"));
                 mApp.setUpdated(mJsonObject.getString("app_updated"));
                 mApp.setChanges(mJsonObject.getString("app_changes"));
+                mApp.setSystem(mJsonObject.getBoolean("app_system"));
                 mApps.add(mApp);
             }
             return mApps;
