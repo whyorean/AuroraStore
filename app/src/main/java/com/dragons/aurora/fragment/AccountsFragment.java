@@ -103,7 +103,6 @@ public class AccountsFragment extends BaseFragment {
         super.onActivityCreated(savedInstanceState);
         myEmail = Prefs.getString(getActivity(), Aurora.PREFERENCE_EMAIL);
         isSecAvailable = Prefs.getBoolean(getActivity(), Aurora.SEC_ACCOUNT);
-        init();
     }
 
     @Override
@@ -118,7 +117,7 @@ public class AccountsFragment extends BaseFragment {
         else if (Accountant.isLoggedIn(getContext()) && Accountant.isDummy(getContext()))
             drawDummy();
         else
-            getContext().startActivity(new Intent(getContext(), LoginActivity.class));
+            askLogin();
 
         chipTOS.setChipStrokeWidth(2);
         chipAdd.setChipStrokeWidth(2);
@@ -248,5 +247,21 @@ public class AccountsFragment extends BaseFragment {
         mDialog.show(ft, "login");
     }
 
-
+    private void askLogin() {
+            FragmentTransaction ft = getFragmentManager().beginTransaction();
+            Fragment prev = getFragmentManager().findFragmentByTag("login");
+            if (prev != null) {
+                ft.remove(prev);
+            }
+            ft.addToBackStack(null);
+            GenericDialog mDialog = new GenericDialog();
+            mDialog.setDialogTitle(getString(R.string.action_login));
+            mDialog.setDialogMessage(getString(R.string.header_usr_noEmail));
+            mDialog.setPositiveButton(getString(R.string.action_login), v -> {
+                mDialog.dismiss();
+                getContext().startActivity(new Intent(getContext(), LoginActivity.class));
+            });
+            mDialog.setNegativeButton("Not now", v -> getActivity().finishAndRemoveTask());
+            mDialog.show(ft, "login");
+    }
 }

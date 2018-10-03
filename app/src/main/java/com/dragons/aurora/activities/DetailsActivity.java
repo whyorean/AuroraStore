@@ -21,7 +21,6 @@
 
 package com.dragons.aurora.activities;
 
-import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -43,14 +42,6 @@ public class DetailsActivity extends AuroraActivity implements OnAppInstalledLis
         Intent intent = new Intent(context, DetailsActivity.class);
         intent.putExtra(DetailsActivity.INTENT_PACKAGE_NAME, packageName);
         return intent;
-    }
-
-    @Override
-    public void onAttachFragment(Fragment fragment) {
-        super.onAttachFragment(fragment);
-        if (fragment instanceof OnAppInstalledListener) {
-            mListener = (OnAppInstalledListener) fragment;
-        }
     }
 
     @Override

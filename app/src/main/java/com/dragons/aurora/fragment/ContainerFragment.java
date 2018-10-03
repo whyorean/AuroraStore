@@ -122,6 +122,7 @@ public class ContainerFragment extends Fragment implements UpdatableAppsFragment
 
     private void askLogin() {
         if (!Prefs.getBoolean(getContext(), Aurora.LOGIN_PROMPTED)) {
+            Prefs.putBoolean(getContext(), Aurora.LOGIN_PROMPTED, true);
             FragmentTransaction ft = getFragmentManager().beginTransaction();
             Fragment prev = getFragmentManager().findFragmentByTag("login");
             if (prev != null) {
@@ -132,11 +133,11 @@ public class ContainerFragment extends Fragment implements UpdatableAppsFragment
             mDialog.setDialogTitle(getString(R.string.action_login));
             mDialog.setDialogMessage(getString(R.string.header_usr_noEmail));
             mDialog.setPositiveButton(getString(R.string.action_login), v -> {
-                getContext().startActivity(new Intent(getContext(), LoginActivity.class));
                 Prefs.putBoolean(getContext(), Aurora.LOGIN_PROMPTED, false);
+                mDialog.dismiss();
+                getContext().startActivity(new Intent(getContext(), LoginActivity.class));
             });
             mDialog.show(ft, "login");
-            Prefs.putBoolean(getContext(), Aurora.LOGIN_PROMPTED, true);
         }
     }
 
