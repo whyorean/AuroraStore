@@ -84,10 +84,6 @@ public class MoreCategoryApps extends BaseFragment{
     Button ohhSnap_retry;
     @BindView(R.id.recheck_query)
     Button retry_query;
-    @BindView(R.id.categoryTitle)
-    TextView categoryTitle;
-    @BindView(R.id.global_progress)
-    ProgressBar globalProgress;
     @BindView(R.id.filter_fab)
     FloatingActionButton filter_fab;
 
@@ -103,7 +99,6 @@ public class MoreCategoryApps extends BaseFragment{
         Bundle arguments = getArguments();
         if (arguments != null) {
             categoryId = arguments.getString("CategoryId");
-            categoryTitle.setText(arguments.getString("CategoryName"));
             mTask = new CategoryAppsTask(getContext());
             iterator = getIterator(categoryId, Util.getSubCategory(getContext()));
             fetchCategoryApps(false);
@@ -200,8 +195,6 @@ public class MoreCategoryApps extends BaseFragment{
         mDisposable.add(Observable.fromCallable(() -> mTask.getResult(iterator))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .doOnSubscribe(start -> globalProgress.setVisibility(View.VISIBLE))
-                .doOnTerminate((() -> globalProgress.setVisibility(View.GONE)))
                 .doOnError(err -> ohhSnap.setVisibility(View.VISIBLE))
                 .subscribe(appList -> {
                     if (shouldIterate) {

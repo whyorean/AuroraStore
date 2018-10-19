@@ -29,6 +29,9 @@ import com.dragons.aurora.CategoryManager;
 import com.dragons.aurora.R;
 import com.dragons.aurora.fragment.MoreCategoryApps;
 
+import androidx.appcompat.widget.Toolbar;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import timber.log.Timber;
 
 public class CategoryAppsActivity extends AuroraActivity {
@@ -41,10 +44,15 @@ public class CategoryAppsActivity extends AuroraActivity {
         return intent;
     }
 
+    @BindView(R.id.toolbar)
+    Toolbar mToolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_helper_alt);
+        setContentView(R.layout.activity_helper);
+        ButterKnife.bind(this);
+        mToolbar.setNavigationOnClickListener(v -> onBackPressed());
         onNewIntent(getIntent());
     }
 
@@ -67,7 +75,7 @@ public class CategoryAppsActivity extends AuroraActivity {
         if (null == categoryId) {
             Timber.w("No category id");
         } else {
-            setTitle(new CategoryManager(this).getCategoryName(categoryId));
+            mToolbar.setTitle(new CategoryManager(this).getCategoryName(categoryId));
             getCategoryApps(categoryId);
         }
     }
