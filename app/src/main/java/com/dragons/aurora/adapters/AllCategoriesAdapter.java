@@ -28,6 +28,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.dragons.aurora.R;
@@ -129,9 +130,10 @@ public class AllCategoriesAdapter extends RecyclerView.Adapter<AllCategoriesAdap
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
+
         TextView topLabel;
         ImageView topImage;
-        CardView topContainer;
+        RelativeLayout topContainer;
 
         ViewHolder(View v) {
             super(v);
