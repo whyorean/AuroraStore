@@ -30,19 +30,25 @@
         android:id="@+id/appbar"
         style="@style/Widget.AppBar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        app:elevation="1dp">
 
-        <TextView
-            android:id="@+id/searchTitle"
-            style="@style/TextAppearance.Aurora.SubTitle"
+        <EditText
+            android:id="@+id/searchQuery"
             android:layout_width="match_parent"
-            android:layout_height="?actionBarSize"
-            android:background="?android:attr/colorAccent"
-            android:gravity="center_vertical"
-            android:paddingStart="10dp"
-            android:paddingEnd="10dp"
-            android:textColor="@color/white"
-            app:layout_scrollFlags="scroll|snap|exitUntilCollapsed" />
+            android:layout_height="50dp"
+            android:layout_centerVertical="true"
+            android:layout_margin="5dp"
+            android:background="@drawable/search_bg"
+            android:drawableEnd="@drawable/ic_edit"
+            android:elevation="1dp"
+            android:hint="@string/action_search_title"
+            android:imeOptions="actionSearch|flagNoFullscreen"
+            android:inputType="text"
+            android:layoutDirection="locale"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:selectAllOnFocus="true" />
     </com.google.android.material.appbar.AppBarLayout>
 
     <LinearLayout
@@ -150,6 +156,7 @@
                 android:scrollbarStyle="outsideOverlay"
                 android:scrollbars="vertical" />
         </RelativeLayout>
+
     </LinearLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton

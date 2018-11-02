@@ -21,14 +21,17 @@
 
 package com.dragons.aurora.fragment;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
 import com.bumptech.glide.Glide;
@@ -84,8 +87,8 @@ public class SearchAppsFragment extends BaseFragment {
     Button ohhSnap_retry;
     @BindView(R.id.recheck_query)
     Button retry_query;
-    @BindView(R.id.searchTitle)
-    TextView searchTitle;
+    @BindView(R.id.searchQuery)
+    EditText searchQuery;
 
     private AHBottomNavigation mBottomNavigationView;
 
@@ -111,7 +114,7 @@ public class SearchAppsFragment extends BaseFragment {
         Bundle arguments = getArguments();
         if (arguments != null) {
             setQuery(arguments.getString("SearchQuery"));
-            searchTitle.setText(arguments.getString("SearchTitle"));
+            searchQuery.setText(getQuery());
             mTask = new SearchTask(getContext());
             iterator = setupIterator(getQuery());
             fetchSearchAppsList(false);
@@ -140,6 +143,7 @@ public class SearchAppsFragment extends BaseFragment {
         filter_fab.show();
         filter_fab.setOnClickListener(v -> getFilterDialog());
         mBottomNavigationView = Objects.requireNonNull(getActivity()).findViewById(R.id.navigation);
+        setupQueryEdit();
     }
 
     @Override
@@ -147,6 +151,27 @@ public class SearchAppsFragment extends BaseFragment {
         Glide.with(this).pauseAllRequests();
         mDisposable.dispose();
         super.onDestroy();
+    }
+
+    private void setupQueryEdit() {
+        searchQuery.setOnFocusChangeListener((v, hasFocus) -> {
+            if (hasFocus)
+                searchQuery.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_search, 0);
+            else
+                searchQuery.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_edit, 0);
+        });
+        searchQuery.setOnEditorActionListener((v, actionId, event) -> {
+            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                query = searchQuery.getText().toString();
+                iterator = setupIterator(getQuery());
+                fetchSearchAppsList(false);
+                searchQuery.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_edit, 0);
+                InputMethodManager imm = (InputMethodManager) v.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+                return true;
+            } else
+                return false;
+        });
     }
 
     private void getFilterDialog() {

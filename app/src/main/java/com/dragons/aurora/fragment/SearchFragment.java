@@ -31,6 +31,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.dragons.aurora.Aurora;
@@ -56,7 +57,6 @@ import java.util.regex.Pattern;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.SearchView;
-import androidx.cardview.widget.CardView;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.DividerItemDecoration;
@@ -77,9 +77,9 @@ public class SearchFragment extends BaseFragment implements HistoryItemTouchHelp
     public static String HISTORY_APP = "HISTORY_APP";
 
     @BindView(R.id.search_apps)
-    SearchView searchToolbar;
+    SearchView searchView;
     @BindView(R.id.search_layout)
-    CardView search_layout;
+    RelativeLayout search_layout;
     @BindView(R.id.searchHistory)
     RecyclerView searchHistoryRecyclerView;
     @BindView(R.id.m_apps_recycler)
@@ -109,16 +109,16 @@ public class SearchFragment extends BaseFragment implements HistoryItemTouchHelp
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        addQueryTextListener(searchToolbar);
+        addQueryTextListener();
         setupHistory();
         setupAppHistory();
 
         clearAll.setOnClickListener(v -> clearAll());
         search_layout.setOnClickListener(v -> {
-            searchToolbar.setFocusable(true);
-            searchToolbar.setIconified(false);
-            searchToolbar.requestFocusFromTouch();
-            searchToolbar.setQuery("", false);
+            searchView.setFocusable(true);
+            searchView.setIconified(false);
+            searchView.requestFocusFromTouch();
+            searchView.setQuery("", false);
         });
     }
 
@@ -136,11 +136,12 @@ public class SearchFragment extends BaseFragment implements HistoryItemTouchHelp
         }
     }
 
-    private void addQueryTextListener(SearchView searchView) {
+    private void addQueryTextListener() {
         SearchManager searchManager = (SearchManager) getContext().getSystemService(Context.SEARCH_SERVICE);
         if (null != searchManager) {
             searchView.setSearchableInfo(searchManager.getSearchableInfo(getActivity().getComponentName()));
         }
+
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextChange(String query) {
@@ -149,8 +150,6 @@ public class SearchFragment extends BaseFragment implements HistoryItemTouchHelp
 
             @Override
             public boolean onQueryTextSubmit(String query) {
-                searchView.setQuery("", false);
-                searchView.setIconified(true);
                 searchView.clearFocus();
                 setQuery(query);
                 return true;
@@ -177,10 +176,11 @@ public class SearchFragment extends BaseFragment implements HistoryItemTouchHelp
     private void setQuery(String query) {
         if (looksLikeAPackageId(query)) {
             setAppToPref(query);
+            searchView.setQuery("", false);
             getContext().startActivity(DetailsActivity.getDetailsIntent(getContext(), query));
         } else {
-            String mDatedQuerry = query.concat(":").concat(new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date()));
-            setQueryToPref(mDatedQuerry);
+            String mDatedQuery = query.concat(":").concat(new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date()));
+            setQueryToPref(mDatedQuery);
             getQueriedApps(query);
         }
     }
