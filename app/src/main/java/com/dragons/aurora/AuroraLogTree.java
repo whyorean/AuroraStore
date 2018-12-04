@@ -40,6 +40,18 @@ public class AuroraLogTree extends Timber.DebugTree {
         }
     }
 
+    public static void uproot() {
+        File directory = new File(Environment.getExternalStorageDirectory() + File.separator + Aurora.TAG);
+        deleteRecursive(directory);
+    }
+
+    public static void deleteRecursive(File fileOrDirectory) {
+        if (fileOrDirectory.isDirectory() && fileOrDirectory.listFiles() != null)
+                for (File child : fileOrDirectory.listFiles())
+                    deleteRecursive(child);
+        fileOrDirectory.delete();
+    }
+
     @Override
     protected void log(int priority, String tag, @NotNull String message, Throwable t) {
         try {

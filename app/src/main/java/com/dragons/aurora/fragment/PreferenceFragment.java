@@ -27,7 +27,16 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.preference.CheckBoxPreference;
+import androidx.preference.EditTextPreference;
+import androidx.preference.ListPreference;
+import androidx.preference.MultiSelectListPreference;
+import androidx.preference.Preference;
+import androidx.preference.PreferenceManager;
+import androidx.preference.SwitchPreference;
 
 import com.dragons.aurora.Aurora;
 import com.dragons.aurora.AuroraPermissionManager;
@@ -42,15 +51,6 @@ import com.dragons.aurora.fragment.preference.InstallationMethod;
 import com.dragons.aurora.helpers.Prefs;
 import com.percolate.caffeine.ToastUtils;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.preference.CheckBoxPreference;
-import androidx.preference.EditTextPreference;
-import androidx.preference.ListPreference;
-import androidx.preference.MultiSelectListPreference;
-import androidx.preference.Preference;
-import androidx.preference.PreferenceManager;
-import androidx.preference.SwitchPreference;
 import timber.log.Timber;
 
 public class PreferenceFragment extends androidx.preference.PreferenceFragment {

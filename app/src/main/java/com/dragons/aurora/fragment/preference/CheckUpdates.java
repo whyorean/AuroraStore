@@ -24,16 +24,16 @@ package com.dragons.aurora.fragment.preference;
 import android.Manifest;
 import android.content.pm.PackageManager;
 
+import androidx.preference.CheckBoxPreference;
+import androidx.preference.ListPreference;
+import androidx.preference.Preference;
+
 import com.dragons.aurora.BuildConfig;
 import com.dragons.aurora.R;
 import com.dragons.aurora.UpdateChecker;
 import com.dragons.aurora.Util;
 import com.dragons.aurora.fragment.PreferenceFragment;
 import com.dragons.aurora.task.CheckSuTask;
-
-import androidx.preference.CheckBoxPreference;
-import androidx.preference.ListPreference;
-import androidx.preference.Preference;
 
 public class CheckUpdates extends Abstract {
 
@@ -60,16 +60,13 @@ public class CheckUpdates extends Abstract {
     @Override
     public void draw() {
         checkForUpdates.setSummary(activity.getString(getUpdateSummaryStringId(checkForUpdates.getValue())));
-        checkForUpdates.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
-            @Override
-            public boolean onPreferenceChange(Preference preference, Object newValue) {
-                int interval = Util.parseInt((String) newValue, 0);
-                UpdateChecker.enable(activity.getActivity(), interval);
-                preference.setSummary(activity.getString(getUpdateSummaryStringId((String) newValue)));
-                alsoDownload.setEnabled(interval > 0);
-                alsoInstall.setEnabled(interval > 0);
-                return true;
-            }
+        checkForUpdates.setOnPreferenceChangeListener((preference, newValue) -> {
+            int interval = Util.parseInt((String) newValue, 0);
+            UpdateChecker.enable(activity.getActivity(), interval);
+            preference.setSummary(activity.getString(getUpdateSummaryStringId((String) newValue)));
+            alsoDownload.setEnabled(interval > 0);
+            alsoInstall.setEnabled(interval > 0);
+            return true;
         });
         checkForUpdates.getOnPreferenceChangeListener().onPreferenceChange(checkForUpdates, checkForUpdates.getValue());
         alsoInstall.setOnPreferenceChangeListener(new AlsoInstallOnPreferenceChangeListener());

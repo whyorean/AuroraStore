@@ -135,6 +135,8 @@
     <string name="details_share">Share</string>
     <string name="details_signature_mismatch">The new version is signed with a different title to the old one. To install the new version, the old one must be uninstalled first. Please do this and try again. (Note that uninstalling will erase any internal data stored by the application)</string>
     <string name="details_uninstall">Uninstall</string>
+    <string name="details_favourite_add">Add to favourites</string>
+    <string name="details_favourite_remove">Remove from favourites</string>
     <string name="details_update">Update</string>
     <string name="details_you_rated_this_app">Your rating</string>
     <string name="device_gsfID">"GSF ID : %1$s"</string>

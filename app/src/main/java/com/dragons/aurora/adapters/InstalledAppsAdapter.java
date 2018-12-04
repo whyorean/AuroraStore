@@ -163,22 +163,19 @@ public class InstalledAppsAdapter extends RecyclerView.Adapter<InstalledAppsAdap
     private void setup3dotMenu(ViewHolder viewHolder, App app, int position) {
         viewHolder.AppMenu.setOnClickListener(v -> {
             PopupMenu popup = new PopupMenu(fragment.getContext(), v);
-            popup.inflate(R.menu.menu_download);
-            new DownloadOptions(fragment.getContext(), fragment.getView(), app).inflate(popup.getMenu());
-            popup.getMenu().findItem(R.id.action_download).setVisible(new ButtonDownload(fragment.getContext(), fragment.getView(), app).shouldBeVisible());
-            popup.getMenu().findItem(R.id.action_uninstall).setVisible(app.isInstalled());
-            popup.getMenu().findItem(R.id.action_manual).setVisible(true);
+            DownloadOptions mDownloadOptions = new DownloadOptions(fragment.getContext(), fragment.getView(), app);
+            mDownloadOptions.inflate(popup.getMenu());
             popup.setOnMenuItemClickListener(item -> {
                 switch (item.getItemId()) {
                     case R.id.action_download:
-                        new ButtonDownload(fragment.getContext(), fragment.getView(), app).checkAndDownload();
+                        new ButtonDownload(fragment.getContext(), fragment.getView(), app).download();
                         break;
                     case R.id.action_uninstall:
                         new ButtonUninstall(fragment.getContext(), fragment.getView(), app).uninstall();
                         remove(position);
                         break;
                     default:
-                        return new DownloadOptions(fragment.getContext(), fragment.getView(), app).onContextItemSelected(item);
+                        return mDownloadOptions.onContextItemSelected(item);
                 }
                 return false;
             });

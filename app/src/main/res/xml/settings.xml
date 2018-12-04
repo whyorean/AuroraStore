@@ -36,6 +36,13 @@
             android:title="@string/action_spoofed">
             <intent android:action=".activities.SpoofActivity" />
         </Preference>
+        <Preference
+            android:layout="@layout/item_preference"
+            android:icon="@drawable/ic_dating"
+            android:key="PREFERENCE_FAV"
+            android:title="@string/action_about">
+            <intent android:action=".activities.FavouriteActivity" />
+        </Preference>
         <EditTextPreference
             android:layout="@layout/item_preference"
             android:defaultValue="Download"

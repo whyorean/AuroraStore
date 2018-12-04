@@ -48,6 +48,10 @@
         android:name="android.permission.INSTALL_PACKAGES"
         tools:ignore="ProtectedPermissions" />
 
+    <uses-permission
+        android:name="android.permission.REQUEST_DELETE_PACKAGES"
+        tools:ignore="ProtectedPermissions" />
+
     <uses-feature
         android:name="android.software.leanback"
         android:required="false" />
@@ -202,9 +206,11 @@
         <activity
             android:name=".activities.LoginActivity"
             android:configChanges="orientation" />
-        <activity android:name=".activities.UpdatableAppsActivity">
+
+        <activity android:name=".activities.FavouriteActivity" android:configChanges="orientation">
             <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
+                <action android:name=".activities.FavouriteActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
 

@@ -26,6 +26,14 @@
         android:title="@string/details_download"
         android:visible="false" />
     <item
+        android:id="@+id/action_favourite_add"
+        android:title="@string/details_favourite_add"
+        android:visible="false" />
+    <item
+        android:id="@+id/action_favourite_remove"
+        android:title="@string/details_favourite_remove"
+        android:visible="false" />
+    <item
         android:id="@+id/action_uninstall"
         android:title="@string/details_uninstall"
         android:visible="false" />

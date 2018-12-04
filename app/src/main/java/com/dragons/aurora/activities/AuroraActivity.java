@@ -23,21 +23,24 @@ package com.dragons.aurora.activities;
 
 import android.Manifest;
 import android.content.BroadcastReceiver;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+
+import androidx.core.app.ActivityCompat;
+import androidx.fragment.app.FragmentManager;
 
 import com.dragons.aurora.R;
 import com.dragons.aurora.fragment.ContainerFragment;
 import com.dragons.aurora.model.App;
 
-import androidx.core.app.ActivityCompat;
-import androidx.fragment.app.FragmentManager;
 import timber.log.Timber;
 
 public class AuroraActivity extends BaseActivity {
 
     public static App app;
+    public static boolean showUpdates;
 
     private ContainerFragment containerFragment;
 
@@ -50,6 +53,10 @@ public class AuroraActivity extends BaseActivity {
             getWindow().setStatusBarColor(getResources().getColor(R.color.semi_transparent));
 
         setContentView(R.layout.activity_main);
+
+        Intent mIntent = getIntent();
+        if (mIntent != null && mIntent.getAction() != null)
+            showUpdates = (mIntent.getAction().equals(Intent.ACTION_VIEW));
 
         if (savedInstanceState == null)
             init();

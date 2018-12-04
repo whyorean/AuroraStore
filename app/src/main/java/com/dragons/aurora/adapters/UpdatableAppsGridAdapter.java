@@ -20,6 +20,7 @@ package com.dragons.aurora.adapters;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Vibrator;
 import android.text.Html;
@@ -36,6 +37,12 @@ import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
+import androidx.palette.graphics.Palette;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.Priority;
 import com.bumptech.glide.load.DataSource;
@@ -51,7 +58,9 @@ import com.dragons.aurora.OnAppInstalledListener;
 import com.dragons.aurora.R;
 import com.dragons.aurora.Util;
 import com.dragons.aurora.activities.DetailsActivity;
+import com.dragons.aurora.activities.ManualDownloadActivity;
 import com.dragons.aurora.database.Jessie;
+import com.dragons.aurora.fragment.ManualFragment;
 import com.dragons.aurora.fragment.UpdatableAppsFragment;
 import com.dragons.aurora.fragment.details.ButtonDownload;
 import com.dragons.aurora.fragment.details.ButtonUninstall;
@@ -60,17 +69,11 @@ import com.dragons.aurora.model.App;
 
 import java.util.List;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.cardview.widget.CardView;
-import androidx.palette.graphics.Palette;
-import androidx.recyclerview.widget.RecyclerView;
-
 public class UpdatableAppsGridAdapter extends RecyclerView.Adapter<UpdatableAppsGridAdapter.ViewHolder> implements OnAppInstalledListener {
 
     public List<App> appsToAdd;
     private UpdatableAppsFragment fragment;
-    private Context mContext;
+    private Context context;
     private Boolean isGrid;
 
     //Database Manager
@@ -87,9 +90,9 @@ public class UpdatableAppsGridAdapter extends RecyclerView.Adapter<UpdatableApps
     public UpdatableAppsGridAdapter(UpdatableAppsFragment fragment, List<App> appsToAdd, Boolean isGrid) {
         this.fragment = fragment;
         this.appsToAdd = appsToAdd;
-        this.mContext = fragment.getContext();
+        this.context = fragment.getContext();
         this.isGrid = isGrid;
-        mJessie = new Jessie(mContext);
+        mJessie = new Jessie(context);
     }
 
     public void add(int position, App app) {
@@ -127,7 +130,7 @@ public class UpdatableAppsGridAdapter extends RecyclerView.Adapter<UpdatableApps
     @Override
     public void onBindViewHolder(@NonNull UpdatableAppsGridAdapter.ViewHolder holder, int position) {
         App app = appsToAdd.get(position);
-        Vibrator vibe = (Vibrator) mContext.getSystemService(Context.VIBRATOR_SERVICE);
+        Vibrator vibe = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
         String date = "?";
 
         if (!TextUtils.isEmpty(app.getUpdated())) {
@@ -137,18 +140,18 @@ public class UpdatableAppsGridAdapter extends RecyclerView.Adapter<UpdatableApps
         }
 
         holder.AppTitle.setText(app.getDisplayName());
-        holder.AppSize.setText(Formatter.formatShortFileSize(mContext, app.getSize()));
+        holder.AppSize.setText(Formatter.formatShortFileSize(context, app.getSize()));
         holder.AppExtra.setText(date);
 
         Glide
-                .with(mContext)
+                .with(context)
                 .load(app.getIconInfo().getUrl())
                 .apply(new RequestOptions().diskCacheStrategy(DiskCacheStrategy.ALL))
                 .transition(new DrawableTransitionOptions().crossFade())
                 .into(holder.AppIcon);
 
         holder.AppCard.setOnClickListener(v -> {
-            mContext.startActivity(DetailsActivity.getDetailsIntent(mContext, app.getPackageName()));
+            context.startActivity(DetailsActivity.getDetailsIntent(context, app.getPackageName()));
         });
 
         holder.AppCard.setOnLongClickListener(v -> {
@@ -167,22 +170,24 @@ public class UpdatableAppsGridAdapter extends RecyclerView.Adapter<UpdatableApps
 
     private void setup3dotMenu(ViewHolder viewHolder, App app, int position) {
         viewHolder.AppMenu.setOnClickListener(v -> {
-            PopupMenu popup = new PopupMenu(v.getContext(), v);
-            popup.inflate(R.menu.menu_download);
-            new DownloadOptions(fragment.getContext(), fragment.getView(), app).inflate(popup.getMenu());
-            popup.getMenu().findItem(R.id.action_download).setVisible(new ButtonDownload(fragment.getContext(), fragment.getView(), app).shouldBeVisible());
-            popup.getMenu().findItem(R.id.action_uninstall).setVisible(app.isInstalled());
+            PopupMenu popup = new PopupMenu(context, v);
+            DownloadOptions mDownloadOptions = new DownloadOptions(context, fragment.getView(), app);
+            mDownloadOptions.inflate(popup.getMenu());
             popup.setOnMenuItemClickListener(item -> {
                 switch (item.getItemId()) {
                     case R.id.action_download:
-                        new ButtonDownload(fragment.getContext(), fragment.getView(), app).checkAndDownload();
+                        new ButtonDownload(context, fragment.getView(), app).download();
                         break;
                     case R.id.action_uninstall:
                         new ButtonUninstall(fragment.getContext(), fragment.getView(), app).uninstall();
                         remove(position);
                         break;
+                    case R.id.action_manual:
+                        ManualFragment.app = app;
+                        context.startActivity(new Intent(context, ManualDownloadActivity.class));
+                        break;
                     default:
-                        return new DownloadOptions(fragment.getContext(), fragment.getView(), app).onContextItemSelected(item);
+                        return mDownloadOptions.onContextItemSelected(item);
                 }
                 return false;
             });
@@ -191,7 +196,7 @@ public class UpdatableAppsGridAdapter extends RecyclerView.Adapter<UpdatableApps
     }
 
     private void getPopup(App app) {
-        Dialog ad = new Dialog(mContext);
+        Dialog ad = new Dialog(context);
         ad.setContentView(R.layout.dialog_app_details);
         ad.setCancelable(true);
 
@@ -213,14 +218,14 @@ public class UpdatableAppsGridAdapter extends RecyclerView.Adapter<UpdatableApps
         Update = ad.findViewById(R.id.btn_update);
 
         AppTitle.setText(app.getDisplayName());
-        AppSize.setText(Formatter.formatShortFileSize(mContext, app.getSize()));
+        AppSize.setText(Formatter.formatShortFileSize(context, app.getSize()));
         if (app.getChanges().isEmpty())
             AppChangelog.setText(R.string.details_changelog_empty);
         else
             AppChangelog.setText(Html.fromHtml(app.getChanges()).toString());
         AppExtra.setText(app.getUpdated());
 
-        Glide.with(mContext)
+        Glide.with(context)
                 .asBitmap()
                 .load(app.getPageBackgroundImage().getUrl())
                 .apply(new RequestOptions()
@@ -242,18 +247,18 @@ public class UpdatableAppsGridAdapter extends RecyclerView.Adapter<UpdatableApps
                 .into(AppBanner);
 
         if (Util.isAlreadyQueued(app)) {
-            Update.setText(mContext.getResources().getString(R.string.details_download_queued));
+            Update.setText(context.getResources().getString(R.string.details_download_queued));
             Update.setEnabled(false);
         }
 
         Update.setOnClickListener(v -> {
             new ButtonDownload(fragment.getContext(), fragment.getView(), app).checkAndDownload();
-            Update.setText(mContext.getResources().getString(R.string.details_download_queued));
+            Update.setText(context.getResources().getString(R.string.details_download_queued));
             Update.setEnabled(false);
         });
 
         Blacklist.setOnClickListener(v -> {
-            new BlackWhiteListManager(mContext).add(app.getPackageName());
+            new BlackWhiteListManager(context).add(app.getPackageName());
             ad.dismiss();
             remove(app.getPackageName());
         });

@@ -35,6 +35,7 @@ import android.view.View;
 import com.dragons.aurora.BlackWhiteListManager;
 import com.dragons.aurora.BuildConfig;
 import com.dragons.aurora.ContextUtil;
+import com.dragons.aurora.FavouriteListManager;
 import com.dragons.aurora.InstalledApkCopier;
 import com.dragons.aurora.R;
 import com.dragons.aurora.activities.AuroraActivity;
@@ -62,10 +63,21 @@ public class DownloadOptions extends Abstract {
         MenuInflater inflater = ((AuroraActivity) context).getMenuInflater();
         inflater.inflate(R.menu.menu_download, menu);
         if (!isInstalled(app)) {
+            menu.findItem(R.id.action_download).setVisible(true);
             return;
         }
         menu.findItem(R.id.action_get_local_apk).setVisible(true);
         menu.findItem(R.id.action_manual).setVisible(true);
+
+        FavouriteListManager favouriteListManager = new FavouriteListManager(context);
+        boolean isFav = favouriteListManager.contains(app.getPackageName());
+        if (isFav) {
+            menu.findItem(R.id.action_favourite_add).setVisible(false);
+            menu.findItem(R.id.action_favourite_remove).setVisible(true);
+        } else {
+            menu.findItem(R.id.action_favourite_add).setVisible(true);
+            menu.findItem(R.id.action_favourite_remove).setVisible(false);
+        }
         BlackWhiteListManager manager = new BlackWhiteListManager(context);
         boolean isContained = manager.contains(app.getPackageName());
         if (manager.isBlack()) {
@@ -84,15 +96,19 @@ public class DownloadOptions extends Abstract {
 
     public boolean onContextItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+            case R.id.action_favourite_add:
+                new FavouriteListManager(context).add(app.getPackageName());
+                return true;
+            case R.id.action_favourite_remove:
+                new FavouriteListManager(context).remove(app.getPackageName());
+                return true;
             case R.id.action_ignore:
             case R.id.action_whitelist:
                 new BlackWhiteListManager(context).add(app.getPackageName());
-                draw();
                 return true;
             case R.id.action_unignore:
             case R.id.action_unwhitelist:
                 new BlackWhiteListManager(context).remove(app.getPackageName());
-                draw();
                 return true;
             case R.id.action_manual:
                 ManualFragment.app = app;

@@ -19,29 +19,30 @@
  * along with Aurora Store.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.dragons.aurora.activities;
+package com.dragons.aurora.fragment;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+import androidx.annotation.NonNull;
 
 import com.dragons.aurora.R;
-import com.dragons.aurora.fragment.UpdatableAppsFragment;
 
-public class UpdatableAppsActivity extends AuroraActivity {
+public class FavouriteFragment extends BaseFragment {
+
+    private View view;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_helper_alt);
-        getSupportFragmentManager()
-                .beginTransaction()
-                .replace(R.id.container, new UpdatableAppsFragment())
-                .commit();
+        view = inflater.inflate(R.layout.fragment_fav, container, false);
+        return view;
     }
 
     @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        finish();
+    public void onResume() {
+        super.onResume();
     }
 }
-

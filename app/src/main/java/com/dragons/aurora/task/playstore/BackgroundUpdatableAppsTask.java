@@ -34,7 +34,7 @@ import com.dragons.aurora.InstallerAbstract;
 import com.dragons.aurora.InstallerFactory;
 import com.dragons.aurora.Paths;
 import com.dragons.aurora.R;
-import com.dragons.aurora.activities.UpdatableAppsActivity;
+import com.dragons.aurora.activities.AuroraActivity;
 import com.dragons.aurora.downloader.DownloadManagerAdapter;
 import com.dragons.aurora.downloader.DownloadManagerFactory;
 import com.dragons.aurora.downloader.DownloadState;
@@ -137,8 +137,9 @@ public class BackgroundUpdatableAppsTask extends UpdatableAppsTask implements Cl
     }
 
     private void notifyUpdatesFound(Context context, int updatesCount) {
-        Intent i = new Intent(context, UpdatableAppsActivity.class);
+        Intent i = new Intent(context, AuroraActivity.class);
         i.setAction(Intent.ACTION_VIEW);
+        AuroraActivity.showUpdates = true;
         new NotificationManagerWrapper(context).show(i,
                 context.getString(R.string.notification_updates_available_title),
                 context.getString(R.string.notification_updates_available_message, updatesCount)

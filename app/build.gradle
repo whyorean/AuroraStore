@@ -31,7 +31,6 @@ ext.isBeta = true
 
 android {
     compileSdkVersion 28
-    buildToolsVersion '28.0.2'
 
     defaultConfig {
         applicationId "com.dragons.aurora"
@@ -86,9 +85,6 @@ dependencies {
     implementation 'commons-net:commons-net:3.6'
 
     //ButterKnife
-    repositories {
-        maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
-    }
     implementation 'com.jakewharton:butterknife:9.0.0-SNAPSHOT'
     annotationProcessor 'com.jakewharton:butterknife-compiler:9.0.0-SNAPSHOT'
 
@@ -97,7 +93,7 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0'
 
     //APIs
-    implementation 'com.github.whyorean:playstore-api-v2:2.0'
+    implementation 'com.github.whyorean:playstore-api-v2:2.1'
 }
 
 private Integer generateVersionCode() {

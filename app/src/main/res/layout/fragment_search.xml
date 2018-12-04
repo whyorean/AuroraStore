@@ -40,33 +40,28 @@
             android:textColor="?android:attr/textColorPrimary"
             android:textSize="16sp" />
 
-        <RelativeLayout
-            android:id="@+id/search_layout"
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/search_apps"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/search_title"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
             android:background="@drawable/all_category_bg"
-            android:elevation="1dp">
-
-            <androidx.appcompat.widget.SearchView
-                android:id="@+id/search_apps"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:imeOptions="actionSearch|flagNoFullscreen"
-                android:inputType="text"
-                android:layoutDirection="locale"
-                app:queryBackground="@android:color/transparent"
-                app:queryHint="@string/action_search_title"
-                app:searchIcon="@drawable/ic_search" />
-        </RelativeLayout>
+            android:elevation="1dp"
+            android:imeOptions="actionSearch"
+            android:inputType="text"
+            android:layoutDirection="locale"
+            app:iconifiedByDefault="false"
+            app:queryBackground="@android:color/transparent"
+            app:queryHint="@string/action_search_title"
+            app:searchIcon="@drawable/ic_search" />
 
         <com.dragons.custom.ClusterAppsCard
             android:id="@+id/searchClusterApp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/search_layout"
+            android:layout_below="@id/search_apps"
             android:layout_margin="4dp" />
 
         <LinearLayout

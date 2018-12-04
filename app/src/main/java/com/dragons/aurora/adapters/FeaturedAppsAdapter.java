@@ -29,9 +29,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.PopupMenu;
 import android.widget.RatingBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.palette.graphics.Palette;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.DataSource;
@@ -47,16 +54,10 @@ import com.dragons.aurora.activities.ManualDownloadActivity;
 import com.dragons.aurora.fragment.ManualFragment;
 import com.dragons.aurora.fragment.details.ButtonDownload;
 import com.dragons.aurora.fragment.details.ButtonUninstall;
+import com.dragons.aurora.fragment.details.DownloadOptions;
 import com.dragons.aurora.model.App;
 
 import java.util.List;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.widget.PopupMenu;
-import androidx.fragment.app.Fragment;
-import androidx.palette.graphics.Palette;
-import androidx.recyclerview.widget.RecyclerView;
 
 public class FeaturedAppsAdapter extends RecyclerView.Adapter<FeaturedAppsAdapter.ViewHolder> {
 
@@ -95,15 +96,13 @@ public class FeaturedAppsAdapter extends RecyclerView.Adapter<FeaturedAppsAdapte
         drawIcon(app, holder);
 
         holder.appMenu3Dot.setOnClickListener(v -> {
-            PopupMenu popup = new PopupMenu(v.getContext(), v);
-            popup.inflate(R.menu.menu_download);
-            popup.getMenu().findItem(R.id.action_download).setVisible(new ButtonDownload(context, fragment.getView(), app).shouldBeVisible());
-            popup.getMenu().findItem(R.id.action_uninstall).setVisible(app.isInstalled());
-            popup.getMenu().findItem(R.id.action_manual).setVisible(true);
+            PopupMenu popup = new PopupMenu(fragment.getContext(), v);
+            DownloadOptions mDownloadOptions = new DownloadOptions(fragment.getContext(), fragment.getView(), app);
+            mDownloadOptions.inflate(popup.getMenu());
             popup.setOnMenuItemClickListener(item -> {
                 switch (item.getItemId()) {
                     case R.id.action_download:
-                        new ButtonDownload(context, fragment.getView(), app).checkAndDownload();
+                        new ButtonDownload(context, fragment.getView(), app).download();
                         break;
                     case R.id.action_uninstall:
                         new ButtonUninstall(context, fragment.getView(), app).uninstall();
@@ -112,6 +111,8 @@ public class FeaturedAppsAdapter extends RecyclerView.Adapter<FeaturedAppsAdapte
                         ManualFragment.app = app;
                         context.startActivity(new Intent(context, ManualDownloadActivity.class));
                         break;
+                    default:
+                        return mDownloadOptions.onContextItemSelected(item);
                 }
                 return false;
             });

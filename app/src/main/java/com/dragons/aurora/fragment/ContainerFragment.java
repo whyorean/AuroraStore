@@ -24,6 +24,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.viewpager.widget.ViewPager;
+
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationAdapter;
 import com.aurelhubert.ahbottomnavigation.notification.AHNotification;
@@ -33,6 +40,7 @@ import com.dragons.aurora.Aurora;
 import com.dragons.aurora.OnBackPressListener;
 import com.dragons.aurora.R;
 import com.dragons.aurora.Util;
+import com.dragons.aurora.activities.AuroraActivity;
 import com.dragons.aurora.activities.LoginActivity;
 import com.dragons.aurora.adapters.ViewPagerAdapter;
 import com.dragons.aurora.dialogs.GenericDialog;
@@ -41,12 +49,6 @@ import com.dragons.aurora.helpers.Prefs;
 import com.dragons.custom.AdaptiveToolbar;
 import com.dragons.custom.CustomViewPager;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.core.content.ContextCompat;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.viewpager.widget.ViewPager;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -195,6 +197,10 @@ public class ContainerFragment extends Fragment implements UpdatableAppsFragment
             }
             return true;
         });
+        if (AuroraActivity.showUpdates) {
+            mViewPager.setCurrentItem(2, true);
+            AuroraActivity.showUpdates = false;
+        }
     }
 
     public boolean onBackPressed() {

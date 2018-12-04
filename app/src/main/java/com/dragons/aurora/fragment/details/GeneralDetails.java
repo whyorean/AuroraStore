@@ -147,17 +147,12 @@ public class GeneralDetails extends AbstractHelper {
 
             app_menu3dot.setOnClickListener(v -> {
                 PopupMenu popup = new PopupMenu(v.getContext(), v);
-                popup.inflate(R.menu.menu_download);
-                new DownloadOptions(context, view, app).inflate(popup.getMenu());
+                DownloadOptions mDownloadOptions = new DownloadOptions(context, view, app);
+                mDownloadOptions.inflate(popup.getMenu());
                 popup.getMenu().findItem(R.id.action_download).setVisible(false);
                 popup.getMenu().findItem(R.id.action_uninstall).setVisible(false);
                 popup.getMenu().findItem(R.id.action_manual).setVisible(true);
-                popup.setOnMenuItemClickListener(item -> {
-                    switch (item.getItemId()) {
-                        default:
-                            return new DownloadOptions(context, view, app).onContextItemSelected(item);
-                    }
-                });
+                popup.setOnMenuItemClickListener(mDownloadOptions::onContextItemSelected);
                 popup.show();
             });
         }

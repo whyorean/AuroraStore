@@ -132,7 +132,7 @@ public class NativeHttpClientAdapter extends HttpClientAdapter {
 
     @Override
     public byte[] postWithoutBody(String url, Map<String, String> urlParams, Map<String, String> headers) throws IOException {
-        return post(buildUrl(url, urlParams), new HashMap<>(), headers);
+        return post(buildUrl(url, urlParams), new byte[0], headers);
     }
 
     @Override

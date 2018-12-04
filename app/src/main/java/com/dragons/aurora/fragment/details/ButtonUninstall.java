@@ -24,6 +24,8 @@ package com.dragons.aurora.fragment.details;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
+import android.util.Log;
 import android.view.View;
 
 import com.dragons.aurora.Aurora;
@@ -70,7 +72,17 @@ public class ButtonUninstall extends Button {
         if (isSystemAndReadyForPermanentUninstall()) {
             askAndUninstall();
         } else {
-            context.startActivity(new Intent(Intent.ACTION_DELETE, Uri.parse("package:" + app.getPackageName())));
+            Uri uri = Uri.fromParts("package", app.getPackageName(), null);
+            Intent intent = new Intent();
+            intent.setData(uri);
+
+            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.P) {
+                intent.setAction(Intent.ACTION_DELETE);
+            } else {
+                intent.setAction(Intent.ACTION_UNINSTALL_PACKAGE);
+                intent.putExtra(Intent.EXTRA_RETURN_RESULT, true);
+            }
+            context.startActivity(intent);
         }
     }
 
