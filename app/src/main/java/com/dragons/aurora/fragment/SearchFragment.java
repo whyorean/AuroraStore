@@ -51,7 +51,7 @@ import com.dragons.aurora.adapters.RecyclerAppsAdapter;
 import com.dragons.aurora.adapters.SearchHistoryAdapter;
 import com.dragons.aurora.helpers.Prefs;
 import com.dragons.aurora.model.App;
-import com.dragons.aurora.task.playstore.SearchHistoryTask;
+import com.dragons.aurora.task.playstore.AppDetailsTask;
 import com.dragons.custom.ClusterAppsCard;
 
 import java.text.SimpleDateFormat;
@@ -294,8 +294,8 @@ public class SearchFragment extends BaseFragment implements HistoryItemTouchHelp
     private void getHistoryApps(ArrayList<String> appList) {
         TextView clusterTitle = clusterAppsCard.findViewById(R.id.m_apps_title);
         clusterTitle.setText(R.string.action_search_history_apps);
-        SearchHistoryTask mTask = new SearchHistoryTask(getContext());
-        mDisposable.add(Observable.fromCallable(() -> mTask.getHistoryApps(appList))
+        AppDetailsTask mTask = new AppDetailsTask(getContext());
+        mDisposable.add(Observable.fromCallable(() -> mTask.getAppDetails(appList))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnComplete(() -> clusterAppsCard.setVisibility(View.VISIBLE))

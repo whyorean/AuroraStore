@@ -62,12 +62,6 @@ public class DownloadOptions extends Abstract {
     public void inflate(Menu menu) {
         MenuInflater inflater = ((AuroraActivity) context).getMenuInflater();
         inflater.inflate(R.menu.menu_download, menu);
-        if (!isInstalled(app)) {
-            menu.findItem(R.id.action_download).setVisible(true);
-            return;
-        }
-        menu.findItem(R.id.action_get_local_apk).setVisible(true);
-        menu.findItem(R.id.action_manual).setVisible(true);
 
         FavouriteListManager favouriteListManager = new FavouriteListManager(context);
         boolean isFav = favouriteListManager.contains(app.getPackageName());
@@ -78,6 +72,15 @@ public class DownloadOptions extends Abstract {
             menu.findItem(R.id.action_favourite_add).setVisible(true);
             menu.findItem(R.id.action_favourite_remove).setVisible(false);
         }
+
+        menu.findItem(R.id.action_manual).setVisible(true);
+
+        if (!isInstalled(app)) {
+            menu.findItem(R.id.action_download).setVisible(true);
+            return;
+        }
+        menu.findItem(R.id.action_get_local_apk).setVisible(true);
+
         BlackWhiteListManager manager = new BlackWhiteListManager(context);
         boolean isContained = manager.contains(app.getPackageName());
         if (manager.isBlack()) {

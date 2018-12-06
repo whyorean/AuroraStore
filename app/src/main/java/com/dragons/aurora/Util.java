@@ -30,6 +30,7 @@ import android.content.pm.PackageManager;
 import android.content.res.TypedArray;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
+import android.os.Environment;
 import android.os.IBinder;
 import android.text.TextUtils;
 import android.util.TypedValue;
@@ -37,6 +38,9 @@ import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.view.animation.LayoutAnimationController;
 import android.widget.TextView;
+
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.dragons.aurora.downloader.DownloadState;
 import com.dragons.aurora.helpers.Prefs;
@@ -55,9 +59,6 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.TreeMap;
-
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import static com.dragons.aurora.Aurora.PRIVILEGED_EXTENSION_PACKAGE_NAME;
 import static com.dragons.aurora.Aurora.PRIVILEGED_EXTENSION_SERVICE_INTENT;
@@ -369,5 +370,18 @@ public class Util {
         } catch (SecurityException e) {
             return false;
         }
+    }
+
+    public static boolean checkBaseDirectory() {
+        boolean success = new File(Util.getBaseDirectory()).exists();
+        return success || createBaseDirectory();
+    }
+
+    public static boolean createBaseDirectory() {
+        return new File(Util.getBaseDirectory()).mkdir();
+    }
+
+    public static String getBaseDirectory() {
+        return Environment.getExternalStorageDirectory() + File.separator + Aurora.TAG + File.separator;
     }
 }

@@ -58,6 +58,8 @@ public class Aurora {
     public static final String TOP = "0_CATEGORY_TOP";
     public static final String PUB_PREFIX = "pub:";
     public static final String TAG = "AuroraStore";
+    public static final String LOG = "Logs";
+    public static final String FILES = "Files";
     public static final String FILTER_SYSTEM_APPS = "FILTER_SYSTEM_APPS";
     public static final String FILTER_APPS_WITH_ADS = "FILTER_APPS_WITH_ADS";
     public static final String FILTER_PAID_APPS = "FILTER_PAID_APPS";

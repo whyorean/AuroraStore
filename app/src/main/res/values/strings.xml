@@ -39,6 +39,7 @@
     <string name="acc_save">Save Account</string>
     <string name="action_about">About</string>
     <string name="action_accounts">Accounts</string>
+    <string name="action_favourites">Favourite Apps</string>
     <string name="action_acc_add">Add Google Account</string>
     <string name="action_acc_switch">Tap to switch</string>
     <string name="action_acc_txt">Aurora Accounts</string>
@@ -100,6 +101,7 @@
     <string name="credentials_logo_txt">Sign in</string>
     <string name="credentials_title">Google account access</string>
     <string name="delete">Delete</string>
+    <string name="remove">Remove</string>
     <string name="delta_disabled">Delta updates disabled</string>
     <string name="delta_enabled">Delta updates enabled</string>
     <string name="details_appReview">Reviews</string>
@@ -215,6 +217,7 @@
     <string name="list_empty_query">No recent searches</string>
     <string name="list_empty_search">No apps found</string>
     <string name="list_empty_updates">No apps need to be updated</string>
+    <string name="list_empty_fav">No Favourites</string>
     <string name="list_installed_title">My Apps &amp; Games</string>
     <string name="list_installed_summary">All Installed and System Apps from PlayStore</string>
     <string name="list_installed_system">Show user apps only</string>
@@ -227,6 +230,9 @@
     <string name="list_update_chk_txt">Checking for updates..</string>
     <string name="list_update_recheck">Recheck</string>
     <string name="list_updating">Updating…</string>
+    <string name="list_installed">Installed</string>
+    <string name="list_not_installd">Not Installed</string>
+    <string name="list_selected">Apps Selected : %1$d</string>
     <string name="manual_download_compatible">Version code field has been pre-filled with this app\'s latest compatible version code. If you want the previous version, simply input a number smaller than the current. If the developer has not deleted the apk of the previous version from Play Store, you might be able to start the download.</string>
     <string name="manual_download_disclaimer">Disclaimer</string>
     <string name="manual_download_hint_version_code">Version code</string>

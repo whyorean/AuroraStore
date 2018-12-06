@@ -25,39 +25,52 @@ import android.content.Context;
 
 import com.dragons.aurora.helpers.Prefs;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Set;
 
 public class FavouriteListManager {
 
-    private Set<String> favouriteSet;
     private Context context;
+    private ArrayList<String> favouriteList;
 
     public FavouriteListManager(Context context) {
         this.context = context;
-        favouriteSet = Prefs.getStringSet(context, Aurora.PREFERENCE_FAV_LIST);
+        favouriteList = Prefs.getListString(context, Aurora.PREFERENCE_FAV_LIST);
     }
 
     public boolean add(String s) {
-        boolean result = favouriteSet.add(s);
+        boolean result = favouriteList.add(s);
         save();
         return result;
     }
 
-    public Set<String> get() {
-        return favouriteSet;
+    public boolean addAll(ArrayList<String> arrayList) {
+        boolean result = favouriteList.addAll(arrayList);
+        //-----------------Remove Dupes--------------------//
+        Set<String> mAppSet = new HashSet<>(favouriteList);
+        favouriteList.clear();
+        favouriteList.addAll(mAppSet);
+        //-------------------------------------------------//
+        save();
+        return result;
+    }
+
+    public ArrayList<String> get() {
+        return favouriteList;
     }
 
     public boolean contains(String packageName) {
-        return favouriteSet.contains(packageName);
+        return favouriteList.contains(packageName);
     }
 
     public boolean remove(String packageName) {
-        boolean result = favouriteSet.remove(packageName);
+        boolean result = favouriteList.remove(packageName);
         save();
         return result;
     }
 
     private void save() {
-        Prefs.putStringSet(context, Aurora.PREFERENCE_FAV_LIST, favouriteSet);
+        Prefs.putListString(context, Aurora.PREFERENCE_FAV_LIST, favouriteList);
     }
 }

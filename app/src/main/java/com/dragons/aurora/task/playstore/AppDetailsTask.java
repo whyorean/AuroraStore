@@ -30,13 +30,13 @@ import com.dragons.aurora.playstoreapiv2.DetailsResponse;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SearchHistoryTask extends ExceptionTask {
+public class AppDetailsTask extends ExceptionTask {
 
-    public SearchHistoryTask(Context context) {
+    public AppDetailsTask(Context context) {
         super(context);
     }
 
-    public List<App> getHistoryApps(ArrayList<String> currList) {
+    public List<App> getAppDetails(ArrayList<String> currList) {
         List<App> apps = new ArrayList<>();
         for (String packageName : currList) {
             try {

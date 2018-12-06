@@ -27,7 +27,6 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.dragons.aurora.R;
 import com.dragons.aurora.fragment.FavouriteFragment;
-import com.dragons.aurora.fragment.SpoofFragment;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -48,17 +47,5 @@ public class FavouriteActivity extends BaseActivity {
                 .commit();
         mToolbar.setTitle("Favourite Apps");
         mToolbar.setNavigationOnClickListener(v -> onBackPressed());
-    }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        finish();
-    }
-
-    @Override
-    public boolean onSupportNavigateUp() {
-        onBackPressed();
-        return true;
     }
 }

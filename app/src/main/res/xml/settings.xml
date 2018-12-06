@@ -23,31 +23,31 @@
 
     <PreferenceCategory>
         <Preference
-            android:layout="@layout/item_preference"
             android:icon="@drawable/ic_about_alt"
             android:key="PREFERENCE_ACCOUNTS"
+            android:layout="@layout/item_preference"
             android:title="@string/action_about">
             <intent android:action=".activities.AboutActivity" />
         </Preference>
         <Preference
-            android:layout="@layout/item_preference"
             android:icon="@drawable/ic_incognito_alt"
             android:key="PREFERENCE_SPOOF"
+            android:layout="@layout/item_preference"
             android:title="@string/action_spoofed">
             <intent android:action=".activities.SpoofActivity" />
         </Preference>
         <Preference
-            android:layout="@layout/item_preference"
-            android:icon="@drawable/ic_dating"
+            android:icon="@drawable/ic_fav_alt"
             android:key="PREFERENCE_FAV"
-            android:title="@string/action_about">
+            android:layout="@layout/item_preference"
+            android:title="@string/action_favourites">
             <intent android:action=".activities.FavouriteActivity" />
         </Preference>
         <EditTextPreference
-            android:layout="@layout/item_preference"
             android:defaultValue="Download"
             android:icon="@drawable/ic_download_alt2"
             android:key="PREFERENCE_DOWNLOAD_DIRECTORY"
+            android:layout="@layout/item_preference"
             android:selectAllOnFocus="true"
             android:singleLine="true"
             android:title="@string/pref_download_directory" />
@@ -56,57 +56,57 @@
         android:layout="@layout/preference_aurora_category"
         android:title="@string/pref_category_ui">
         <ListPreference
-            android:layout="@layout/item_preference"
             android:defaultValue="Light"
             android:entries="@array/THEMES_LABELS"
             android:entryValues="@array/THEMES_VALUES"
             android:icon="@drawable/ic_theme"
             android:key="PREFERENCE_THEME"
+            android:layout="@layout/item_preference"
             android:summary="@string/pref_theme_title_summary"
             android:title="@string/pref_theme_title" />
         <SwitchPreference
-            android:layout="@layout/item_preference"
             android:defaultValue="true"
             android:icon="@drawable/ic_color"
             android:key="PREFERENCE_COLOR_UI"
+            android:layout="@layout/item_preference"
             android:summary="@string/pref_app_ui_summary"
             android:title="@string/pref_app_ui" />
         <SwitchPreference
-            android:layout="@layout/item_preference"
             android:defaultValue="false"
             android:icon="@drawable/ic_color"
             android:key="PREFERENCE_COLOR_NAV"
+            android:layout="@layout/item_preference"
             android:summary="@string/pref_app_bottom_ui_summary"
             android:title="@string/pref_app_bottom_ui" />
         <SwitchPreference
-            android:layout="@layout/item_preference"
             android:defaultValue="false"
             android:icon="@drawable/ic_swipe"
             android:key="PREFERENCE_SWIPE_PAGES"
+            android:layout="@layout/item_preference"
             android:summary="@string/pref_app_swipe_summary"
             android:title="@string/pref_app_swipe" />
         <SwitchPreference
-            android:layout="@layout/item_preference"
             android:defaultValue="false"
             android:icon="@drawable/ic_keyboard"
             android:key="PREFERENCE_SHOW_IME"
+            android:layout="@layout/item_preference"
             android:summary="@string/pref_app_ime_summary"
             android:title="@string/pref_app_ime" />
         <CheckBoxPreference
-            android:layout="@layout/item_preference"
             android:defaultValue="false"
             android:icon="@drawable/ic_wifi"
             android:key="PREFERENCE_NO_IMAGES"
+            android:layout="@layout/item_preference"
             android:summaryOff="@string/pref_no_images_summary_off"
             android:summaryOn="@string/pref_no_images_summary_on"
             android:title="@string/pref_no_images" />
         <ListPreference
-            android:layout="@layout/item_preference"
             android:defaultValue="2"
             android:entries="@array/SUBCATEGORY_LABEL"
             android:entryValues="@array/SUBCATEGORY_VALUE"
             android:icon="@drawable/ic_categories_alt"
             android:key="PREFERENCE_SUBCATEGORY"
+            android:layout="@layout/item_preference"
             android:summary="@string/pref_app_subcategory_summary"
             android:title="@string/pref_app_subcategory" />
     </PreferenceCategory>
@@ -114,66 +114,66 @@
         android:layout="@layout/preference_aurora_category"
         android:title="@string/pref_category_updates">
         <CheckBoxPreference
-            android:layout="@layout/item_preference"
             android:defaultValue="false"
             android:icon="@drawable/ic_delta"
             android:key="PREFERENCE_DOWNLOAD_DELTAS"
+            android:layout="@layout/item_preference"
             android:summaryOff="@string/pref_download_deltas_summary_off"
             android:summaryOn="@string/pref_download_deltas_summary_on"
             android:title="@string/pref_download_deltas" />
         <ListPreference
-            android:layout="@layout/item_preference"
             android:defaultValue="-1"
             android:entries="@array/updateIntervalLabels"
             android:entryValues="@array/updateIntervalValues"
             android:icon="@drawable/ic_update_alt"
             android:key="PREFERENCE_BACKGROUND_UPDATE_INTERVAL"
+            android:layout="@layout/item_preference"
             android:title="@string/pref_background_update_interval" />
         <CheckBoxPreference
-            android:layout="@layout/item_preference"
             android:defaultValue="false"
             android:icon="@drawable/ic_notification_alt"
             android:key="PREFERENCE_BACKGROUND_UPDATE_DOWNLOAD"
+            android:layout="@layout/item_preference"
             android:summaryOff="@string/pref_background_update_download_summary_off"
             android:summaryOn="@string/pref_background_update_download_summary_on"
             android:title="@string/pref_background_update_download" />
         <CheckBoxPreference
-            android:layout="@layout/item_preference"
             android:defaultValue="true"
             android:dependency="PREFERENCE_BACKGROUND_UPDATE_DOWNLOAD"
             android:icon="@drawable/ic_wifi"
             android:key="PREFERENCE_BACKGROUND_UPDATE_WIFI_ONLY"
+            android:layout="@layout/item_preference"
             android:title="@string/pref_background_update_wifi_only" />
         <CheckBoxPreference
-            android:layout="@layout/item_preference"
             android:defaultValue="false"
             android:dependency="PREFERENCE_BACKGROUND_UPDATE_DOWNLOAD"
             android:icon="@drawable/ic_settings_alt2"
             android:key="PREFERENCE_BACKGROUND_UPDATE_INSTALL"
+            android:layout="@layout/item_preference"
             android:summaryOff="@string/pref_background_update_install_summary_off"
             android:summaryOn="@string/pref_background_update_install_summary_on"
             android:title="@string/pref_background_update_install" />
         <ListPreference
-            android:layout="@layout/item_preference"
             android:defaultValue="BLACK"
             android:entries="@array/blackOrWhiteLabels"
             android:entryValues="@array/blackOrWhiteValues"
             android:icon="@drawable/ic_blacklist_alt"
             android:key="PREFERENCE_UPDATE_LIST_WHITE_OR_BLACK"
+            android:layout="@layout/item_preference"
             android:title="@string/pref_update_list_white_or_black" />
         <CheckBoxPreference
-            android:layout="@layout/item_preference"
             android:defaultValue="false"
             android:enabled="false"
             android:icon="@drawable/ic_whitelist"
             android:key="PREFERENCE_AUTO_WHITELIST"
+            android:layout="@layout/item_preference"
             android:summaryOff="@string/pref_auto_whitelist_summary_off"
             android:summaryOn="@string/pref_auto_whitelist_summary_on"
             android:title="@string/pref_auto_whitelist" />
         <MultiSelectListPreference
-            android:layout="@layout/item_preference"
             android:icon="@drawable/ic_blacklist_alt2"
             android:key="PREFERENCE_UPDATE_LIST"
+            android:layout="@layout/item_preference"
             android:persistent="true"
             android:title="@string/pref_update_list_black" />
     </PreferenceCategory>
@@ -181,46 +181,46 @@
         android:layout="@layout/preference_aurora_category"
         android:title="@string/pref_category_installation">
         <CheckBoxPreference
-            android:layout="@layout/item_preference"
             android:defaultValue="false"
             android:icon="@drawable/ic_settings_alt"
             android:key="PREFERENCE_AUTO_INSTALL"
+            android:layout="@layout/item_preference"
             android:summaryOff="@string/pref_auto_install_summary_off"
             android:summaryOn="@string/pref_auto_install_summary_on"
             android:title="@string/pref_auto_install" />
         <CheckBoxPreference
-            android:layout="@layout/item_preference"
             android:defaultValue="true"
             android:icon="@drawable/ic_clean"
             android:key="PREFERENCE_DELETE_APK_AFTER_INSTALL"
+            android:layout="@layout/item_preference"
             android:summaryOff="@string/pref_delete_apk_after_install_summary_off"
             android:summaryOn="@string/pref_delete_apk_after_install_summary_on"
             android:title="@string/pref_delete_apk_after_install" />
         <ListPreference
-            android:layout="@layout/item_preference"
             android:defaultValue="DEFAULT"
             android:entries="@array/installationMethodLabels"
             android:entryValues="@array/installationMethodValues"
             android:icon="@drawable/ic_settings_alt2"
             android:key="PREFERENCE_INSTALLATION_METHOD"
+            android:layout="@layout/item_preference"
             android:title="@string/pref_installation_method" />
     </PreferenceCategory>
     <PreferenceCategory
         android:layout="@layout/preference_aurora_category"
         android:title="@string/pref_database_title">
         <Preference
-            android:layout="@layout/item_preference"
             android:icon="@drawable/ic_database"
             android:key="PREFERENCE_DATABASE_CLEAR"
+            android:layout="@layout/item_preference"
             android:summary="@string/pref_database_clear_summary"
             android:title="@string/pref_database_clear" />
         <ListPreference
-            android:layout="@layout/item_preference"
             android:defaultValue="24"
             android:entries="@array/database_validity_labels"
             android:entryValues="@array/database_validity_values"
             android:icon="@drawable/ic_validity"
             android:key="PREFERENCE_DATABASE_VALIDITY"
+            android:layout="@layout/item_preference"
             android:summary="@string/pref_database_refresh_summary"
             android:title="@string/pref_database_refresh" />
     </PreferenceCategory>

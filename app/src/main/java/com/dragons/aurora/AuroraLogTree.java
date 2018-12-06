@@ -1,6 +1,5 @@
 package com.dragons.aurora;
 
-import android.os.Environment;
 import android.util.Log;
 
 import org.jetbrains.annotations.NotNull;
@@ -41,21 +40,21 @@ public class AuroraLogTree extends Timber.DebugTree {
     }
 
     public static void uproot() {
-        File directory = new File(Environment.getExternalStorageDirectory() + File.separator + Aurora.TAG);
-        deleteRecursive(directory);
+        File directory = new File(Util.getBaseDirectory() + Aurora.LOG);
+        deleteChild(directory);
     }
 
-    public static void deleteRecursive(File fileOrDirectory) {
-        if (fileOrDirectory.isDirectory() && fileOrDirectory.listFiles() != null)
-                for (File child : fileOrDirectory.listFiles())
-                    deleteRecursive(child);
-        fileOrDirectory.delete();
+    private static void deleteChild(File directory) {
+        if (directory.isDirectory() && directory.listFiles() != null)
+            for (File child : directory.listFiles())
+                child.delete();
     }
 
     @Override
     protected void log(int priority, String tag, @NotNull String message, Throwable t) {
         try {
-            File directory = new File(Environment.getExternalStorageDirectory() + File.separator + Aurora.TAG);
+            Util.checkBaseDirectory();
+            File directory = new File(Util.getBaseDirectory() + Aurora.LOG);
             if (!directory.exists())
                 directory.mkdir();
 
@@ -63,7 +62,7 @@ public class AuroraLogTree extends Timber.DebugTree {
             String logTimeStamp = new SimpleDateFormat("E MMM dd yyyy 'at' hh:mm:ss:SSS aaa", Locale.getDefault()).format(new Date());
             String fileExt = fileNameTimeStamp + ".html";
 
-            File file = new File(Environment.getExternalStorageDirectory() + File.separator + Aurora.TAG + File.separator + fileExt);
+            File file = new File(Util.getBaseDirectory() + Aurora.LOG + File.separator + fileExt);
             file.createNewFile();
 
             if (file.exists()) {
