@@ -1,0 +1,23 @@
+<androidx.preference.PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ListPreference
+        app:defaultValue="light"
+        app:entries="@array/pref_themes"
+        app:entryValues="@array/pref_themes_values"
+        app:key="PREFERENCE_THEME"
+        app:title="@string/pref_ui_theme_title"
+        app:useSimpleSummaryProvider="true" />
+
+    <SwitchPreferenceCompat
+        app:defaultValue="true"
+        app:key="PREFERENCE_UI_CARD_STYLE"
+        app:summary="@string/pref_ui_card_summary"
+        app:title="@string/pref_ui_card_title" />
+
+    <SwitchPreferenceCompat
+        app:defaultValue="true"
+        app:key="PREFERENCE_FEATURED_SNAP"
+        app:summary="@string/pref_ui_snap_summary"
+        app:title="@string/pref_ui_snap_title" />
+
+</androidx.preference.PreferenceScreen>

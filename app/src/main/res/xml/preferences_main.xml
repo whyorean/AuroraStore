@@ -1,0 +1,47 @@
+<androidx.preference.PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <Preference
+        app:fragment="com.aurora.store.fragment.BlacklistFragment"
+        app:icon="@drawable/ic_spoof_alt"
+        app:title="@string/action_ignore" />
+
+    <Preference
+        app:fragment="com.aurora.store.activity.SettingsActivity$DownloaderFragment"
+        app:icon="@drawable/ic_downloads"
+        app:title="@string/pref_app_download" />
+
+    <Preference
+        app:fragment="com.aurora.store.fragment.FavouriteFragment"
+        app:icon="@drawable/ic_fav"
+        app:title="@string/action_favourites" />
+
+    <Preference
+        app:fragment="com.aurora.store.activity.SettingsActivity$FilterFragment"
+        app:icon="@drawable/ic_filter_apps"
+        app:title="@string/action_filter" />
+
+    <Preference
+        app:fragment="com.aurora.store.activity.SettingsActivity$InstallationFragment"
+        app:icon="@drawable/ic_installation"
+        app:title="@string/action_installations" />
+
+    <Preference
+        app:fragment="com.aurora.store.activity.SettingsActivity$NotificationFragment"
+        app:icon="@drawable/ic_notifications"
+        app:title="@string/pref_app_notification" />
+
+    <Preference
+        app:fragment="com.aurora.store.activity.SettingsActivity$NetworkFragment"
+        app:icon="@drawable/ic_network"
+        app:title="@string/pref_app_network" />
+
+    <Preference
+        app:fragment="com.aurora.store.fragment.SpoofFragment"
+        app:icon="@drawable/ic_spoof_alt"
+        app:title="@string/action_spoofed" />
+
+    <Preference
+        app:fragment="com.aurora.store.activity.SettingsActivity$UIFragment"
+        app:icon="@drawable/ic_ui"
+        app:title="@string/pref_app_ui" />
+</androidx.preference.PreferenceScreen>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scrollbars="none"
+    app:layout_scrollFlags="snap">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <HorizontalScrollView
+            android:id="@+id/chip_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.chip.ChipGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingVertical="@dimen/margin_small"
+                android:paddingStart="@dimen/margin_medium"
+                app:singleLine="true">
+
+                <com.aurora.store.view.CustomChip
+                    style="@style/Widget.MaterialComponents.Chip.Info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/chip_top_free"
+                    app:category="GAME"
+                    app:subCategory="TOP_FREE" />
+
+                <com.aurora.store.view.CustomChip
+                    style="@style/Widget.MaterialComponents.Chip.Info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/chip_top_grossing"
+                    app:category="GAME"
+                    app:subCategory="TOP_GROSSING" />
+
+                <com.aurora.store.view.CustomChip
+                    style="@style/Widget.MaterialComponents.Chip.Info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/chip_top_trending"
+                    app:category="GAME"
+                    app:subCategory="MOVERS_SHAKERS" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/all_chip"
+                    style="@style/Widget.MaterialComponents.Chip.Info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/bulk_layout"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    android:text="@string/chip_all_games" />
+            </com.google.android.material.chip.ChipGroup>
+        </HorizontalScrollView>
+
+        <LinearLayout
+            android:id="@+id/bulk_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/chip_group"
+            android:orientation="vertical" />
+    </RelativeLayout>
+</androidx.core.widget.NestedScrollView>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<com.google.android.material.chip.ChipGroup xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/app_detail"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="8dp"
+    android:visibility="gone"
+    app:itemSpacing="5dp"
+    app:lineSpacing="2dp">
+
+    <com.google.android.material.chip.Chip
+        android:id="@+id/rating"
+        style="@style/Widget.MaterialComponents.Chip.Info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:chipIcon="@drawable/ic_star" />
+
+    <com.google.android.material.chip.Chip
+        android:id="@+id/txt_google_dependencies"
+        style="@style/Widget.MaterialComponents.Chip.Info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:chipIcon="@drawable/ic_google_play" />
+
+</com.google.android.material.chip.ChipGroup>

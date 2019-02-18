@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--LightTheme-->
+    <color name="colorAccent">@color/colorBlue</color>
+    <color name="colorPrimary">@color/colorWhite</color>
+    <color name="colorPrimaryDark">@color/colorWhite</color>
+
+    <!--Dark Theme-->
+    <color name="colorDarkAccent">#FFCF44</color>
+    <color name="colorDarkPrimary">#27272F</color>
+    <color name="colorDarkPrimaryDark">#27272F</color>
+
+    <color name="colorWhite">#FFF</color>
+
+    <color name="colorGrey">#848484</color>
+    <color name="colorGreyLight">#E5E5E5</color>
+
+    <color name="colorScrim">#11000000</color>
+    <color name="colorScrimAccent">#224768FD</color>
+    <color name="colorScrimWhite">#88FFFFFF</color>
+    <color name="colorScrimBlack">#66000000</color>
+    <color name="colorTransparent">#00000000</color>
+
+    <color name="colorTeal">#31e7b6</color>
+    <color name="colorBlue">#4768FD</color>
+    <color name="colorOrange">#ff6c00</color>
+    <color name="colorPurple">#4527A0</color>
+    <color name="colorCyan">#00BCD4</color>
+    <color name="colorRed">#F44336</color>
+    <color name="colorGreen">#4CAF50</color>
+    <color name="colorGreenAlt">#8BC34A</color>
+    <color name="colorGold">#FFBF00</color>
+    <color name="colorPink">#d81b60</color>
+    <color name="colorBlack">#000</color>
+
+    <!--Shades-->
+    <color name="colorShade01">@color/colorRed</color>
+    <color name="colorShade02">@color/colorGreen</color>
+    <color name="colorShade03">@color/colorOrange</color>
+    <color name="colorShade04">@color/colorBlue</color>
+
+    <integer-array name="colorShades">
+        <item>@color/colorAccent</item>
+        <item>@color/colorRed</item>
+        <item>@color/colorOrange</item>
+        <item>@color/colorGreen</item>
+        <item>@color/colorCyan</item>
+        <item>@color/colorGreenAlt</item>
+        <item>@color/colorGold</item>
+        <item>@color/colorTeal</item>
+        <item>@color/colorPink</item>
+        <item>@color/colorPurple</item>
+    </integer-array>
+</resources>

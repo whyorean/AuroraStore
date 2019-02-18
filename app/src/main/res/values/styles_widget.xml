@@ -1,0 +1,99 @@
+<resources>
+
+    <!-- RatingBar Style -->
+    <style name="RatingBar" parent="Theme.MaterialComponents">
+        <item name="colorControlNormal">@color/colorGrey</item>
+        <item name="colorControlActivated">@color/colorGrey</item>
+    </style>
+
+    <style name="RatingBarReviews" parent="Theme.MaterialComponents">
+        <item name="colorControlNormal">@color/colorGold</item>
+        <item name="colorControlActivated">@color/colorGold</item>
+    </style>
+
+    <!-- Toolbar & AppBar -->
+    <style name="AppTheme.PopupTheme" parent="ThemeOverlay.MaterialComponents.Light" />
+
+    <style name="AppTheme.PopupTheme.Dark" parent="ThemeOverlay.MaterialComponents.Dark" />
+
+    <style name="Widget.Toolbar" parent="Widget.AppCompat.Toolbar">
+        <item name="android:background">?android:attr/colorBackground</item>
+        <item name="titleTextAppearance">@style/TextAppearance.Aurora.Toolbar.Title</item>
+        <item name="subtitleTextAppearance">@style/TextAppearance.Aurora.Toolbar.SubTitle</item>
+        <item name="popupTheme">@style/AppTheme.PopupTheme</item>
+    </style>
+
+    <style name="Widget.Toolbar.Dark" parent="Widget.AppCompat.Toolbar">
+        <item name="android:background">?android:attr/colorBackground</item>
+        <item name="titleTextAppearance">@style/TextAppearance.Aurora.Toolbar.Title</item>
+        <item name="subtitleTextAppearance">@style/TextAppearance.Aurora.Toolbar.SubTitle</item>
+        <item name="popupTheme">@style/AppTheme.PopupTheme.Dark</item>
+    </style>
+
+    <style name="Widget.AppBar" parent="@style/Widget.Design.AppBarLayout">
+        <item name="popupTheme">@style/AppTheme.PopupTheme</item>
+        <item name="android:background">?android:attr/colorBackground</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <!-- Chips -->
+    <style name="Widget.MaterialComponents.Chip.Info" parent="@style/Widget.MaterialComponents.Chip.Action">
+        <item name="iconStartPadding">2dp</item>
+        <item name="enforceTextAppearance">true</item>
+        <item name="rippleColor">@color/colorTransparent</item>
+        <item name="chipBackgroundColor">?android:attr/colorBackground</item>
+        <item name="chipEndPadding">4dp</item>
+        <item name="chipStartPadding">4dp</item>
+        <item name="chipStrokeWidth">1dp</item>
+        <item name="chipStrokeColor">@color/colorGreyLight</item>
+        <item name="android:textAppearance">@style/TextAppearance.Aurora.Filter</item>
+    </style>
+
+    <style name="Widget.Aurora.FilterChip" parent="Widget.MaterialComponents.Chip.Filter">
+        <item name="checkedIcon">@drawable/ic_chip_checked</item>
+        <item name="android:textAppearance">@style/TextAppearance.Aurora.Filter</item>
+        <item name="chipEndPadding">8dp</item>
+    </style>
+
+    <!-- Bottom Navigation -->
+    <style name="Widget.Aurora.BottomNav" parent="@style/Widget.MaterialComponents.BottomNavigationView">
+        <item name="itemIconTint">@color/color_selector</item>
+        <item name="itemTextColor">@color/color_selector</item>
+        <item name="labelVisibilityMode">labeled</item>
+    </style>
+
+    <!-- BottomSheet -->
+    <style name="BottomSheet" parent="@style/Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@drawable/bottomsheet_bg</item>
+    </style>
+
+    <style name="BaseBottomSheetDialog" parent="@style/AppTheme">
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowBackground">@color/colorScrimWhite</item>
+        <item name="android:windowAnimationStyle">@style/Animation.Design.BottomSheetDialog</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="bottomSheetStyle">@style/BottomSheet</item>
+    </style>
+
+    <style name="BaseBottomSheetDialog.Dark" parent="@style/AppTheme.Dark">
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowBackground">@color/colorScrimBlack</item>
+        <item name="android:windowAnimationStyle">@style/Animation.Design.BottomSheetDialog</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="bottomSheetStyle">@style/BottomSheet</item>
+    </style>
+
+    <style name="BaseBottomSheetDialog.Black" parent="@style/AppTheme.Black">
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowBackground">@color/colorScrimBlack</item>
+        <item name="android:windowAnimationStyle">@style/Animation.Design.BottomSheetDialog</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="bottomSheetStyle">@style/BottomSheet</item>
+    </style>
+
+    <style name="BottomSheetDialogTheme" parent="BaseBottomSheetDialog" />
+
+    <style name="BottomSheetDialogTheme.Dark" parent="BaseBottomSheetDialog.Dark" />
+
+    <style name="BottomSheetDialogTheme.Black" parent="BaseBottomSheetDialog.Black" />
+</resources>

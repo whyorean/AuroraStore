@@ -1,0 +1,116 @@
+<resources>
+    <string-array name="filterRatingValues" translatable="false">
+        <item>0</item>
+        <item>1.0</item>
+        <item>2.0</item>
+        <item>3.0</item>
+        <item>4.0</item>
+        <item>4.5</item>
+        <item>4.7</item>
+    </string-array>
+
+    <string-array name="filterRatingLabels" translatable="false">
+        <item>@string/action_filter_all</item>
+        <item> 1 + </item>
+        <item> 2 + </item>
+        <item> 3 + </item>
+        <item> 4 + </item>
+        <item> 4.5 + </item>
+        <item> 4.7 + </item>
+    </string-array>
+
+    <string-array name="filterDownloadsValues" translatable="false">
+        <item>0</item>
+        <item>100</item>
+        <item>1000</item>
+        <item>10000</item>
+        <item>50000</item>
+        <item>100000</item>
+        <item>1000000</item>
+        <item>10000000</item>
+        <item>50000000</item>
+        <item>100000000</item>
+    </string-array>
+
+    <string-array name="filterDownloadsLabels" translatable="false">
+        <item>@string/action_filter_all</item>
+        <item> > 100 </item>
+        <item> > 1 K </item>
+        <item> > 10 K </item>
+        <item> > 50 K </item>
+        <item> > 100 K </item>
+        <item> > 1 M </item>
+        <item> > 10 M </item>
+        <item> > 50 M </item>
+        <item> > 100 M </item>
+    </string-array>
+
+    <string-array name="geoLocation">
+        <item>Default</item>
+        <item>Canberra, Australia</item>
+        <item>Brussels, Belgium</item>
+        <item>Brasilia, Brazil</item>
+        <item>Ottawa, Canada</item>
+        <item>Beijing, China</item>
+        <item>Copenhagen, Denmark</item>
+        <item>Helsinki, Finland</item>
+        <item>Paris, France</item>
+        <item>Germany, Berlin</item>
+        <item>Athens, Greece</item>
+        <item>New Delhi, India</item>
+        <item>Rome, Italy</item>
+        <item>Kuala Lumpur, Malaysia</item>
+        <item>Mexico, Mexico</item>
+        <item>Lisbon, Portugal</item>
+        <item>Seoul, Republic of Korea</item>
+        <item>Riyadh, Saudi Arabia</item>
+        <item>Madrid, Spain</item>
+        <item>Stockholm, Sweden</item>
+        <item>Bern, Switzerland</item>
+        <item>Ankara, Turkey</item>
+        <item>Kiev, Ukraine</item>
+        <item>Abu Dhabi, UAE</item>
+        <item>London, UK</item>
+        <item>Washington DC, USA</item>
+        <item>Hanoi, Viet Nam</item>
+    </string-array>
+
+    <string-array name="pref_themes">
+        <item>Light</item>
+        <item>Dark</item>
+        <item>Black</item>
+    </string-array>
+
+    <string-array name="pref_themes_values">
+        <item>light</item>
+        <item>dark</item>
+        <item>black</item>
+    </string-array>
+
+    <string-array name="pref_notification_priority">
+        <item>Default</item>
+        <item>High</item>
+        <item>Max</item>
+    </string-array>
+
+    <string-array name="pref_notification_priority_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+    <string-array name="pref_installation_method">
+        <item>Native</item>
+        <item>Root</item>
+    </string-array>
+
+    <string-array name="pref_installation_method_values">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+
+    <string-array name="proxyTypeValues" translatable="false">
+        <item>HTTP</item>
+        <item>SOCKS</item>
+    </string-array>
+</resources>

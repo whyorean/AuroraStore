@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.aurora.store">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+    <uses-permission android:name="android.permission.REQUEST_DELETE_PACKAGES" />
+    <uses-permission android:name="android.permission.INSTALL_PACKAGES" />
+
+    <uses-permission
+        android:name="android.permission.ACCESS_MOCK_LOCATION"
+        tools:ignore="MockLocation" />
+
+    <uses-feature
+        android:name="android.hardware.location.gps"
+        android:required="false" />
+
+    <application
+        android:name=".AuroraApplication"
+        android:allowBackup="true"
+        android:allowClearUserData="true"
+        android:fullBackupContent="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true"
+        tools:ignore="GoogleAppIndexingWarning">
+
+        <activity android:name=".activity.AuroraActivity">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
+        </activity>
+        <activity android:name=".activity.DetailsActivity" />
+        <activity android:name=".activity.FullscreenImageActivity" />
+        <activity
+            android:name=".activity.DownloadsActivity"
+            android:label="@string/menu_downloads" />
+        <activity
+            android:name=".activity.AccountsActivity"
+            android:label="@string/action_accounts" />
+        <activity
+            android:name=".activity.SettingsActivity"
+            android:label="@string/action_settings"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".activity.CategoriesActivity" />
+        <activity android:name=".activity.IntroActivity" />
+        <activity android:name=".activity.ManualDownloadActivity" />
+        <activity android:name=".activity.DeviceInfoActivity" />
+        <activity android:name=".activity.LeaderBoardActivity" />
+
+        <provider
+            android:name=".provider.AuroraSuggestionProvider"
+            android:authorities="com.aurora.store.provider.AuroraSuggestionProvider"
+            android:enabled="true"
+            android:exported="false" />
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.aurora.store.fileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/paths" />
+        </provider>
+
+        <receiver android:name=".receiver.InstallReceiver" />
+        <receiver android:name=".receiver.DownloadCancelReceiver" />
+        <receiver android:name=".receiver.DownloadPauseReceiver" />
+        <receiver android:name=".receiver.DownloadResumeReceiver" />
+
+        <service android:name=".installer.SplitService" />
+    </application>
+
+</manifest>

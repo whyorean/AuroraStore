@@ -1,0 +1,28 @@
+<androidx.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <SwitchPreferenceCompat
+        android:key="PREFERENCE_ENABLE_PROXY"
+        android:title="@string/pref_proxy_enable"
+        app:defaultValue="false" />
+    <ListPreference
+        android:defaultValue="HTTP"
+        android:dependency="PREFERENCE_ENABLE_PROXY"
+        android:entries="@array/proxyTypeValues"
+        android:entryValues="@array/proxyTypeValues"
+        android:key="PREFERENCE_PROXY_TYPE"
+        android:title="@string/pref_proxy_type"
+        app:useSimpleSummaryProvider="true" />
+    <EditTextPreference
+        android:defaultValue="127.0.0.1"
+        android:dependency="PREFERENCE_ENABLE_PROXY"
+        android:key="PREFERENCE_PROXY_HOST"
+        android:title="@string/pref_proxy_host"
+        app:useSimpleSummaryProvider="true" />
+    <EditTextPreference
+        android:defaultValue="8118"
+        android:dependency="PREFERENCE_ENABLE_PROXY"
+        android:inputType="number"
+        android:key="PREFERENCE_PROXY_PORT"
+        android:title="@string/pref_proxy_port"
+        app:useSimpleSummaryProvider="true" />
+</androidx.preference.PreferenceScreen>

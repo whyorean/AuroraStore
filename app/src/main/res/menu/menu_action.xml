@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_favourite"
+        android:icon="@drawable/ic_fav"
+        android:title="@string/details_favourite_add"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_download"
+        android:title="@string/details_download"
+        android:visible="false" />
+    <item
+        android:id="@+id/action_downloads"
+        android:title="@string/menu_downloads"
+        android:visible="false" />
+    <item
+        android:title="@string/details_uninstall"
+        android:visible="false" />
+    <item
+        android:title="@string/action_ignore"
+        android:visible="false" />
+    <item
+        android:title="@string/action_unignore"
+        android:visible="false" />
+    <item
+        android:title="@string/action_unwhitelist"
+        android:visible="false" />
+    <item
+        android:title="@string/action_whitelist"
+        android:visible="false" />
+    <item
+        android:id="@+id/action_manual"
+        android:title="@string/action_manual" />
+    <item
+        android:title="@string/action_get_local_apk"
+        android:visible="false" />
+    <item
+        android:title="@string/action_make_system"
+        android:visible="false" />
+    <item
+        android:title="@string/action_make_normal"
+        android:visible="false" />
+    <item
+        android:title="@string/flagging_title"
+        android:visible="false" />
+</menu>

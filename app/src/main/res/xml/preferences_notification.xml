@@ -1,0 +1,16 @@
+<androidx.preference.PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <SwitchPreferenceCompat
+        app:defaultValue="true"
+        app:key="PREFERENCE_NOTIFICATION_TOGGLE"
+        app:summary="@string/pref_notification_summary"
+        app:title="@string/pref_notification_title" />
+
+    <ListPreference
+        app:defaultValue="0"
+        app:entries="@array/pref_notification_priority"
+        app:entryValues="@array/pref_notification_priority_values"
+        app:key="PREFERENCE_NOTIFICATION_PRIORITY"
+        app:summary="@string/pref_notification_priority_summary"
+        app:title="@string/pref_notification_priority_title" />
+</androidx.preference.PreferenceScreen>

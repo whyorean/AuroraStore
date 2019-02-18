@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<inset xmlns:android="http://schemas.android.com/apk/res/android"
+    android:insetLeft="@dimen/margin_xxsmall"
+    android:insetTop="@dimen/margin_small"
+    android:insetRight="@dimen/margin_xxsmall">
+    <shape android:shape="rectangle">
+        <corners
+            android:topLeftRadius="@dimen/bottom_sheet_corner_radius"
+            android:topRightRadius="@dimen/bottom_sheet_corner_radius" />
+        <padding android:top="@dimen/bottom_sheet_top_padding" />
+        <solid android:color="?android:attr/colorBackground" />
+    </shape>
+</inset>

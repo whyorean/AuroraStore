@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?android:selectableItemBackground">
+
+    <ImageView
+        android:id="@+id/tracker_icon"
+        android:layout_width="@dimen/icon_size_med"
+        android:layout_height="@dimen/icon_size_med"
+        android:layout_centerVertical="true"
+        android:layout_margin="@dimen/margin_small"
+        app:srcCompat="@drawable/ic_exodus_alt" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_margin="5dp"
+        android:layout_toEndOf="@+id/tracker_icon"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tracker_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textSize="14sp"
+            android:textAppearance="@style/TextAppearance.Aurora.Title" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tracker_signature"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textAppearance="?android:textAppearanceListItemSecondary" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tracker_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textAppearance="?android:textAppearanceListItemSecondary"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+</RelativeLayout>

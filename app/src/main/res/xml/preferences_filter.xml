@@ -1,0 +1,14 @@
+<androidx.preference.PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <SwitchPreferenceCompat
+        app:defaultValue="false"
+        app:key="PREFERENCE_FILTER_GOOGLE"
+        app:summary="@string/pref_filter_google_summary"
+        app:title="@string/pref_filter_google_title" />
+
+    <SwitchPreferenceCompat
+        app:defaultValue="true"
+        app:key="PREFERENCE_FILTER_FDROID"
+        app:summary="@string/pref_filter_fdroid_summary"
+        app:title="@string/pref_filter_fdroid_title" />
+</androidx.preference.PreferenceScreen>

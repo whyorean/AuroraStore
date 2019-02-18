@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CustomChip">
+        <attr name="category" format="string" />
+        <attr name="subCategory" format="string" />
+    </declare-styleable>
+</resources>

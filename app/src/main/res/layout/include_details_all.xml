@@ -1,0 +1,115 @@
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/scroll_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipToPadding="false"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:animateLayoutChanges="true"
+        android:orientation="vertical">
+
+        <!-- App Header -->
+        <LinearLayout
+            android:id="@+id/layout_main"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="invisible">
+
+            <!-- App Info : Icon, Name, Developer, Version -->
+            <include layout="@layout/include_details_main" />
+
+            <!-- Action : Download, Update, Uninstall -->
+            <include layout="@layout/include_details_actions_main" />
+
+        </LinearLayout>
+
+        <!-- App Details -->
+        <include layout="@layout/include_details_subinfo" />
+
+        <!-- Changelog -->
+        <include layout="@layout/include_details_changelog" />
+
+        <!-- Read More -->
+        <include layout="@layout/include_details_readmore" />
+
+        <!-- Screenshot -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/screenshots_gallery"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <!-- App Info -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:animateLayoutChanges="true"
+            android:orientation="vertical">
+
+            <!-- Reviews -->
+            <include layout="@layout/include_details_reviews" />
+
+            <!-- Exodus -->
+            <include layout="@layout/include_details_exodus" />
+
+            <!-- App Video -->
+            <RelativeLayout
+                android:id="@+id/app_video"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:visibility="gone">
+
+                <ImageView
+                    android:id="@+id/thumbnail"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:scaleType="centerCrop"
+                    android:src="?android:attr/colorPrimaryDark" />
+
+                <ImageView
+                    android:id="@+id/video_play"
+                    android:layout_width="@dimen/icon_size"
+                    android:layout_height="@dimen/icon_size"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:background="@drawable/circle_bg_light"
+                    android:elevation="1dp"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_play" />
+            </RelativeLayout>
+
+            <!-- Beta -->
+            <include layout="@layout/include_details_beta" />
+
+            <LinearLayout
+                android:id="@+id/cluster_links"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:orientation="vertical"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:id="@+id/developer_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:background="@drawable/generic_padded_bg"
+                android:gravity="start"
+                android:orientation="vertical"
+                android:visibility="gone" />
+
+            <!-- Bottom Actions -->
+            <include layout="@layout/include_details_bottom" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>

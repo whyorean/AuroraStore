@@ -1,0 +1,75 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/exodus_card"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/margin_small"
+    android:background="@drawable/generic_padded_bg"
+    android:visibility="gone">
+
+    <ImageView
+        android:id="@+id/privacy_ico"
+        android:layout_width="@dimen/icon_size_med"
+        android:layout_height="@dimen/icon_size_med"
+        android:layout_alignParentStart="true"
+        android:src="@drawable/ic_exodus_alt" />
+
+    <LinearLayout
+        android:id="@+id/exodus_details"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_normal"
+        android:layout_toEndOf="@id/privacy_ico"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/exodus_title"
+            android:textAlignment="viewStart"
+            android:textAppearance="@style/TextAppearance.Aurora.SubTitle" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/exodus_powered"
+            android:textAlignment="viewStart"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/exodus_details"
+        android:layout_alignStart="@+id/exodus_details"
+        android:layout_toEndOf="@id/privacy_ico"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/exodus_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/moreButton"
+            android:layout_marginBottom="6dp"
+            android:layout_toStartOf="@+id/moreButton"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textAlignment="viewStart"
+            android:textSize="14sp"
+            app:autoSizeMaxTextSize="14sp"
+            app:autoSizeMinTextSize="10sp"
+            app:autoSizeTextType="uniform" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/moreButton"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="4dp"
+            android:text="@string/exodus_viewMore"
+            app:strokeWidth="1dp" />
+    </RelativeLayout>
+
+</RelativeLayout>

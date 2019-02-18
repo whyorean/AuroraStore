@@ -1,0 +1,6 @@
+<resources>
+    <string name="two_items" translatable="false">"%1$s %2$s"</string>
+    <string name="content_description_review_author_avatar" translatable="false">"Review author avatar"</string>
+    <string name="content_description_app_icon" translatable="false">"App icon"</string>
+    <string name="details_rating" translatable="false">"%1$.1f"</string>
+</resources>

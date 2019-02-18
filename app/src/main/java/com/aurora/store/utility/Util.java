@@ -1,0 +1,366 @@
+package com.aurora.store.utility;
+
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
+import android.content.res.TypedArray;
+import android.os.Build;
+import android.util.TypedValue;
+import android.view.View;
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
+import com.aurora.store.Constants;
+import com.aurora.store.R;
+import com.aurora.store.model.App;
+import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
+import com.tonyodev.fetch2.Status;
+
+import org.json.JSONArray;
+
+import java.net.SocketException;
+import java.net.SocketTimeoutException;
+import java.net.UnknownHostException;
+import java.text.DecimalFormat;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Locale;
+import java.util.Map;
+import java.util.TreeMap;
+
+import javax.net.ssl.SSLHandshakeException;
+
+public class Util {
+
+    private static final Map<Integer, String> siPrefixes = new HashMap<>();
+    private static final Map<Integer, String> diPrefixes = new HashMap<>();
+
+    static {
+        siPrefixes.put(0, "");
+        siPrefixes.put(3, " KB");
+        siPrefixes.put(6, " MB");
+        siPrefixes.put(9, " GB");
+    }
+
+    static {
+        diPrefixes.put(0, "");
+        diPrefixes.put(3, " K");
+        diPrefixes.put(6, " Million");
+        diPrefixes.put(9, " Billion");
+    }
+
+    static public Map<String, String> sort(Map<String, String> unsorted) {
+
+        class CaseInsensitiveComparator implements Comparator<String> {
+
+            @Override
+            public int compare(String s1, String s2) {
+                return s1.compareToIgnoreCase(s2);
+            }
+        }
+
+        Map<String, String> sortedByKey = new TreeMap<>(new CaseInsensitiveComparator());
+        sortedByKey.putAll(swapKeysValues(unsorted));
+        Map<String, String> sorted = new LinkedHashMap<>();
+        for (String value : sortedByKey.keySet()) {
+            sorted.put(sortedByKey.get(value), value);
+        }
+        return sorted;
+    }
+
+    private static <K, V> Map<V, K> swapKeysValues(Map<K, V> map) {
+        Map<V, K> swapped = new HashMap<>();
+        for (Map.Entry<K, V> entry : map.entrySet()) {
+            swapped.put(entry.getValue(), entry.getKey());
+        }
+        return swapped;
+    }
+
+    static public void addToStart(LinkedHashMap<String, String> map, String key, String value) {
+        LinkedHashMap<String, String> clonedMap = (LinkedHashMap<String, String>) map.clone();
+        map.clear();
+        map.put(key, value);
+        map.putAll(clonedMap);
+    }
+
+    static public String addSiPrefix(Integer integer) {
+        int tempValue = integer;
+        int order = 0;
+        while (tempValue >= 1000.0) {
+            tempValue /= 1000.0;
+            order += 3;
+        }
+        return tempValue + siPrefixes.get(order);
+    }
+
+    static public String addDiPrefix(Integer integer) {
+        int tempValue = integer;
+        int order = 0;
+        while (tempValue >= 1000.0) {
+            tempValue /= 1000.0;
+            order += 3;
+        }
+        return tempValue + diPrefixes.get(order);
+    }
+
+    public static SharedPreferences getPrefs(Context context) {
+        return context.getSharedPreferences(
+                Constants.SHARED_PREFERENCES_KEY, Context.MODE_PRIVATE);
+    }
+
+    public static int parseInt(String intAsString, int defaultValue) {
+        try {
+            return Integer.parseInt(intAsString);
+        } catch (NumberFormatException e) {
+            return defaultValue;
+        }
+    }
+
+    public static boolean noNetwork(Throwable e) {
+        return e instanceof UnknownHostException
+                || e instanceof SSLHandshakeException
+                || e instanceof SocketException
+                || e instanceof SocketTimeoutException
+                || (null != e && null != e.getCause() && noNetwork(e.getCause()));
+    }
+
+    public static App getInstalledApp(PackageManager packageManager, String packageName) {
+        try {
+            App app = new App(packageManager.getPackageInfo(packageName,
+                    PackageManager.GET_META_DATA | PackageManager.GET_PERMISSIONS));
+            app.setDisplayName(packageManager.getApplicationLabel(
+                    app.getPackageInfo().applicationInfo).toString());
+            return app;
+        } catch (PackageManager.NameNotFoundException e) {
+            return null;
+        }
+    }
+
+    @Nullable
+    public static String getAppLabel(Context c, String packageName) {
+        try {
+            PackageManager pm = c.getPackageManager();
+            ApplicationInfo appInfo = pm.getApplicationInfo(packageName, 0);
+            return pm.getApplicationLabel(appInfo).toString();
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    public static boolean isInstalled(Context context, App app) {
+        try {
+            context.getPackageManager().getPackageInfo(app.getPackageName(), 0);
+            return true;
+        } catch (PackageManager.NameNotFoundException e) {
+            return false;
+        }
+    }
+
+    public static String[] getStringArray(JSONArray array) {
+        if (array == null)
+            return null;
+        String[] arr = new String[array.length()];
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = array.optString(i);
+        }
+        return arr;
+    }
+
+    public static int getColorAttribute(Context context, int styleID) {
+        TypedArray arr = context.obtainStyledAttributes(new TypedValue().data, new int[]{styleID});
+        int styledColor = arr.getColor(0, -1);
+        arr.recycle();
+        return styledColor;
+    }
+
+    public static GooglePlayAPI.SUBCATEGORY getSubCategory(Context context) {
+        switch (PrefUtil.getString(context, "PREFERENCE_SUBCATEGORY")) {
+            case "1":
+                return GooglePlayAPI.SUBCATEGORY.TOP_FREE;
+            case "2":
+                return GooglePlayAPI.SUBCATEGORY.TOP_GROSSING;
+            case "3":
+                return GooglePlayAPI.SUBCATEGORY.MOVERS_SHAKERS;
+            default:
+                return GooglePlayAPI.SUBCATEGORY.TOP_FREE;
+        }
+    }
+
+    public static GooglePlayAPI.SUBCATEGORY getSubCategory(String subcategory) {
+        switch (subcategory) {
+            case "TOP_FREE":
+                return GooglePlayAPI.SUBCATEGORY.TOP_FREE;
+            case "TOP_GROSSING":
+                return GooglePlayAPI.SUBCATEGORY.TOP_GROSSING;
+            case "MOVERS_SHAKERS":
+                return GooglePlayAPI.SUBCATEGORY.MOVERS_SHAKERS;
+            default:
+                return GooglePlayAPI.SUBCATEGORY.TOP_FREE;
+        }
+    }
+
+    @NonNull
+    public static String getETAString(@NonNull final Context context, final long etaInMilliSeconds) {
+        if (etaInMilliSeconds < 0) {
+            return "";
+        }
+        int seconds = (int) (etaInMilliSeconds / 1000);
+        long hours = seconds / 3600;
+        seconds -= hours * 3600;
+        long minutes = seconds / 60;
+        seconds -= minutes * 60;
+        if (hours > 0) {
+            return context.getString(R.string.download_eta_hrs, hours, minutes, seconds);
+        } else if (minutes > 0) {
+            return context.getString(R.string.download_eta_min, minutes, seconds);
+        } else {
+            return context.getString(R.string.download_eta_sec, seconds);
+        }
+    }
+
+    @NonNull
+    public static String getDownloadSpeedString(@NonNull Context context, long downloadedBytesPerSecond) {
+        if (downloadedBytesPerSecond < 0) {
+            return "";
+        }
+        double kb = (double) downloadedBytesPerSecond / (double) 1000;
+        double mb = kb / (double) 1000;
+        final DecimalFormat decimalFormat = new DecimalFormat(".##");
+        if (mb >= 1) {
+            return context.getString(R.string.download_speed_mb, decimalFormat.format(mb));
+        } else if (kb >= 1) {
+            return context.getString(R.string.download_speed_kb, decimalFormat.format(kb));
+        } else {
+            return context.getString(R.string.download_speed_bytes, downloadedBytesPerSecond);
+        }
+    }
+
+
+    public static String humanReadableByteSpeed(long bytes, boolean si) {
+        int unit = si ? 1000 : 1024;
+        if (bytes < unit) return bytes + " B";
+        int exp = (int) (Math.log(bytes) / Math.log(unit));
+        String pre = (si ? "kMGTPE" : "KMGTPE").charAt(exp - 1) + (si ? "" : "i");
+        return String.format(Locale.getDefault(), "%.1f %sB/s",
+                bytes / Math.pow(unit, exp), pre);
+    }
+
+    public static String humanReadableByteValue(long bytes, boolean si) {
+        int unit = si ? 1000 : 1024;
+        if (bytes < unit) return bytes + " B";
+        int exp = (int) (Math.log(bytes) / Math.log(unit));
+        String pre = (si ? "kMGTPE" : "KMGTPE").charAt(exp - 1) + (si ? "" : "i");
+        return String.format(Locale.getDefault(), "%.1f %sB",
+                bytes / Math.pow(unit, exp), pre);
+    }
+
+    public static String getStatus(Status status) {
+        switch (status) {
+            case NONE:
+                return "None";
+            case ADDED:
+                return "Added";
+            case FAILED:
+                return "Failed";
+            case PAUSED:
+                return "Paused";
+            case QUEUED:
+                return "Queued";
+            case DELETED:
+                return "Deleted";
+            case REMOVED:
+                return "Removed";
+            case CANCELLED:
+                return "Cancelled";
+            case COMPLETED:
+                return "Completed";
+            case DOWNLOADING:
+                return "Downloading";
+            default:
+                return "--";
+        }
+    }
+
+    public static void hide(View v, int viewID) {
+        v.findViewById(viewID).setVisibility(View.GONE);
+    }
+
+    public static void show(View v, int viewID) {
+        v.findViewById(viewID).setVisibility(View.VISIBLE);
+    }
+
+    public static void setText(View v, int viewId, String text) {
+        TextView textView = v.findViewById(viewId);
+        if (null != textView)
+            textView.setText(text);
+    }
+
+    public static void setText(View v, int viewId, int stringId, Object... text) {
+        setText(v, viewId, v.getResources().getString(stringId, text));
+    }
+
+    public static String getTheme(Context context) {
+        return getPrefs(context).getString(Constants.PREFERENCE_THEME, "light");
+    }
+
+    public static boolean isLegacyCardEnabled(Context context) {
+        return getPrefs(context).getBoolean(Constants.PREFERENCE_UI_CARD_STYLE, true);
+    }
+
+    public static boolean snapPagerEnabled(Context context) {
+        return getPrefs(context).getBoolean(Constants.PREFERENCE_FEATURED_SNAP, true);
+    }
+
+    public static boolean filterGoogleAppsEnabled(Context context) {
+        return getPrefs(context).getBoolean(Constants.PREFERENCE_FILTER_GOOGLE, false);
+    }
+
+    public static boolean filterFDroidAppsEnabled(Context context) {
+        return getPrefs(context).getBoolean(Constants.PREFERENCE_FILTER_F_DROID, true);
+    }
+
+    public static boolean isDownloadWifiOnly(Context context) {
+        return getPrefs(context).getBoolean(Constants.PREFERENCE_DOWNLOAD_WIFI, false);
+    }
+
+    public static boolean shouldDeleteApk(Context context) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+            return true;
+        } else
+            return getPrefs(context).getBoolean(Constants.PREFERENCE_INSTALLATION_DELETE, false);
+    }
+
+    public static boolean shouldAutoInstallApk(Context context) {
+        return getPrefs(context).getBoolean(Constants.PREFERENCE_INSTALLATION_AUTO, false);
+    }
+
+    public static int getActiveDownloadCount(Context context) {
+        return getPrefs(context).getInt(Constants.PREFERENCE_DOWNLOAD_ACTIVE, 3);
+    }
+
+    public static boolean isFetchDebugEnabled(Context context) {
+        return getPrefs(context).getBoolean(Constants.PREFERENCE_DOWNLOAD_DEBUG, false);
+    }
+
+    public static boolean isNotificationEnabled(Context context) {
+        return getPrefs(context).getBoolean(Constants.PREFERENCE_NOTIFICATION_TOGGLE, true);
+    }
+
+    public static int getNotificationPriority(Context context) {
+        String prefValue = getPrefs(context).getString(Constants.PREFERENCE_NOTIFICATION_PRIORITY, "");
+        switch (prefValue) {
+            case "0":
+                return 0;
+            case "1":
+                return 1;
+            case "2":
+                return 2;
+            default:
+                return 0;
+        }
+    }
+}

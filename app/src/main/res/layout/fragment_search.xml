@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/search_apps"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginStart="@dimen/margin_small"
+            android:layout_marginEnd="@dimen/margin_small"
+            android:background="@drawable/search_bg"
+            android:imeOptions="actionSearch"
+            android:inputType="text"
+            android:layoutDirection="locale"
+            android:paddingVertical="@dimen/margin_medium"
+            app:iconifiedByDefault="false"
+            app:queryBackground="@android:color/transparent"
+            app:queryHint="@string/title_search"
+            app:searchIcon="@drawable/ic_round_search" />
+
+        <RelativeLayout
+            android:id="@+id/history_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/search_apps"
+            android:layout_marginTop="@dimen/margin_normal"
+            android:orientation="horizontal"
+            android:paddingStart="@dimen/margin_medium">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toStartOf="@+id/clearAll"
+                android:text="@string/action_search_history"
+                android:textAppearance="@style/TextAppearance.Aurora.Header" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/clearAll"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/margin_small"
+                android:singleLine="true"
+                android:text="@string/action_search_clearHistory"
+                android:textColor="?android:attr/textColorSecondary"
+                app:rippleColor="@color/colorGreyLight" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/history_layout"
+            android:layout_margin="@dimen/margin_small"
+            android:animateLayoutChanges="true"
+            android:background="@drawable/generic_bg">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/searchHistory"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="vertical" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/emptyView"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="@string/list_empty_query"
+                android:textColor="?attr/colorAccent"
+                android:textSize="18sp" />
+        </RelativeLayout>
+    </RelativeLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

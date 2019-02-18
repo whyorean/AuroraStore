@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/margin_small"
+    android:background="@drawable/generic_padded_bg">
+
+    <ImageView
+        android:id="@+id/avatar"
+        android:layout_width="@dimen/icon_size_cat"
+        android:layout_height="@dimen/icon_size_cat"
+        android:layout_marginStart="@dimen/margin_small"
+        android:contentDescription="@string/content_description_review_author_avatar" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/author"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_small"
+        android:layout_marginTop="@dimen/margin_small"
+        android:layout_marginEnd="@dimen/margin_small"
+        android:layout_toEndOf="@id/avatar"
+        android:textAlignment="viewStart"
+        android:textAppearance="@style/TextAppearance.Aurora.SubTitle"
+        android:textColor="?android:attr/textColorPrimary" />
+
+    <RelativeLayout
+        android:id="@+id/rating_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/author"
+        android:layout_alignStart="@id/avatar"
+        android:layout_marginTop="@dimen/margin_normal"
+        android:layout_marginEnd="@dimen/margin_small">
+
+        <RatingBar
+            android:id="@+id/rating"
+            style="?ratingBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:max="5"
+            android:numStars="5"
+            android:stepSize="1"
+            android:textAlignment="viewStart"
+            android:textAppearance="@style/TextAppearance.Aurora.Body" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/margin_small"
+            android:layout_marginTop="@dimen/margin_xxsmall"
+            android:layout_toEndOf="@id/rating"
+            android:textAlignment="viewStart"
+            android:textColor="?android:attr/textColorPrimary"
+            android:textSize="12sp" />
+    </RelativeLayout>
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/comment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rating_layout"
+        android:layout_alignStart="@id/avatar"
+        android:layout_alignEnd="@id/author"
+        android:layout_marginTop="@dimen/margin_xxsmall"
+        android:layout_toEndOf="@id/avatar"
+        android:fadingEdgeLength="32sp"
+        android:maxLines="3"
+        android:requiresFadingEdge="horizontal"
+        android:textColor="?android:attr/textColorSecondary"
+        android:textSize="12sp" />
+
+</RelativeLayout>

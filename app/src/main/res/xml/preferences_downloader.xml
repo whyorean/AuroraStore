@@ -1,0 +1,24 @@
+<androidx.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <EditTextPreference
+        app:key="PREFERENCE_DOWNLOAD_DIRECTORY"
+        app:title="@string/pref_downloader_path_title" />
+
+    <SwitchPreferenceCompat
+        app:defaultValue="false"
+        app:key="PREFERENCE_DOWNLOAD_WIFI"
+        app:title="@string/pref_downloader_wifi_title" />
+
+    <SeekBarPreference
+        android:defaultValue="3"
+        android:key="PREFERENCE_DOWNLOAD_ACTIVE"
+        android:max="8"
+        android:summary="@string/pref_downloader_active_summary"
+        android:title="@string/pref_downloader_active_title" />
+
+    <SwitchPreferenceCompat
+        android:summary="@string/pref_downloader_debug_summary"
+        app:defaultValue="false"
+        app:key="PREFERENCE_DOWNLOAD_DEBUG"
+        app:title="@string/pref_downloader_debug_title" />
+</androidx.preference.PreferenceScreen>

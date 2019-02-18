@@ -1,0 +1,65 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        multiDexEnabled true
+
+        applicationId "com.aurora.store"
+        minSdkVersion 21
+        targetSdkVersion 28
+        versionCode 0
+        versionName "3.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation group: 'commons-io', name: 'commons-io', version: '2.6'
+
+    //UI-Libs
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'com.google.android.material:material:1.1.0-alpha04'
+
+    //Utils
+    implementation 'com.android.volley:volley:1.1.0'
+    implementation 'androidx.annotation:annotation:1.0.2'
+    implementation 'org.apache.commons:commons-text:1.4'
+
+    //PlayStoreApi
+    implementation 'com.github.whyorean:playstore-api-v2:2.1'
+
+    //OkHTTP3
+    implementation 'com.squareup.okhttp3:okhttp:3.12.1'
+    implementation 'com.squareup.okhttp3:okhttp-urlconnection:3.12.1'
+
+    //RX-Java2
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.0'
+
+    //ButterKnife
+    implementation 'com.jakewharton:butterknife:10.0.0'
+    implementation 'androidx.preference:preference:1.1.0-alpha03'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:10.0.0'
+
+    //Glide
+    implementation 'com.github.bumptech.glide:glide:4.8.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0'
+
+    //Fetch - Downloader
+    implementation "com.tonyodev.fetch2:fetch2:2.3.6"
+    implementation "com.tonyodev.fetch2okhttp:fetch2okhttp:2.3.6"
+}
+repositories {
+    mavenCentral()
+}

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<inset xmlns:android="http://schemas.android.com/apk/res/android"
+    android:insetLeft="@dimen/margin_small"
+    android:insetRight="@dimen/margin_small">
+    <shape android:shape="rectangle">
+        <size android:height="2dp" />
+        <corners android:radius="5dp" />
+        <solid android:color="?android:colorAccent" />
+    </shape>
+</inset>

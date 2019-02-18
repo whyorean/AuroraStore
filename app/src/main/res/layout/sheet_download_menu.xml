@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:targetApi="o">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/download_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/margin_normal"
+        android:layout_marginBottom="@dimen/margin_small"
+        android:paddingHorizontal="@dimen/margin_normal"
+        android:text="@string/details_download"
+        android:textAppearance="@style/TextAppearance.Aurora.DialogTitle" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/download_menu_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_small"
+        android:layout_marginBottom="@dimen/margin_small"
+        android:nestedScrollingEnabled="false"
+        android:paddingHorizontal="@dimen/margin_small" />
+</LinearLayout>

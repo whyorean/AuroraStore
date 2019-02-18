@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/reviews_container"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp"
+    android:orientation="vertical"
+    android:visibility="invisible">
+
+    <com.google.android.material.chip.Chip
+        style="@style/Widget.MaterialComponents.Chip.Action"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="@dimen/margin_xsmall"
+        android:clickable="false"
+        android:text="@string/details_rating_reviews"
+        app:chipBackgroundColor="?android:attr/colorBackground"
+        app:chipStrokeColor="?android:attr/colorControlNormal"
+        app:chipStrokeWidth=".75dp"
+        app:iconStartPadding="4dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:baselineAligned="false"
+        android:paddingStart="@dimen/margin_normal"
+        android:paddingEnd="@dimen/margin_normal"
+        android:weightSum="4">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:padding="@dimen/margin_small">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/average_rating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="@dimen/margin_xxsmall"
+                android:textAppearance="@style/TextAppearance.Aurora.Title"
+                android:textSize="36sp"
+                android:textStyle="normal" />
+
+            <RatingBar
+                android:id="@+id/average_rating_star"
+                style="?ratingBarStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:clickable="false"
+                android:numStars="5"
+                android:stepSize=".5" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/count_stars"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:textAppearance="@style/TextAppearance.Aurora.Body" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/avg_rating_layout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:orientation="vertical" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/user_review_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_normal"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/rate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/details_rate_this_app"
+                android:textAppearance="@style/TextAppearance.Aurora.SubTitle"
+                android:textSize="18sp" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_xxsmall"
+                android:text="@string/details_why_rate_this_app"
+                android:textSize="12sp" />
+
+            <RatingBar
+                android:id="@+id/user_stars"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:numStars="5"
+                android:scaleX=".75"
+                android:scaleY=".75"
+                android:stepSize="1"
+                android:theme="@style/RatingBarReviews" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/user_comment_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/user_title"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.Aurora.Body" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/user_comment"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.Aurora.Body"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/review_delete"
+            style="@style/Widget.MaterialComponents.Chip.Action"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/delete"
+            android:visibility="gone"
+            app:chipBackgroundColor="?android:attr/colorBackground"
+            app:chipStrokeColor="@color/colorGreyLight"
+            app:chipStrokeWidth="1dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/reviews_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:orientation="vertical" />
+
+    <com.google.android.material.chip.Chip
+        android:id="@+id/txt_readAll"
+        style="@style/Widget.MaterialComponents.Chip.Action"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/details_appReviewsAll"
+        android:textSize="14sp"
+        app:chipBackgroundColor="?android:attr/colorBackground"
+        app:chipIcon="@drawable/ic_read_more"
+        app:chipStrokeColor="?android:attr/colorControlNormal"
+        app:chipStrokeWidth=".75dp"
+        app:iconStartPadding="4dp" />
+
+</LinearLayout>

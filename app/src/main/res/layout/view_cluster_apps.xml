@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/cluster_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:paddingVertical="@dimen/margin_xsmall"
+        android:paddingStart="@dimen/margin_medium"
+        android:textAppearance="@style/TextAppearance.Aurora.Header" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/cluster_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/cluster_name" />
+
+</RelativeLayout>
