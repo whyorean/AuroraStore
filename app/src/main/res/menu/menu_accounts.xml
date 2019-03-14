@@ -24,6 +24,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
+        android:id="@+id/action_setting"
         android:icon="@drawable/ic_settings"
         android:title="@string/menu_setting"
         android:visible="true"

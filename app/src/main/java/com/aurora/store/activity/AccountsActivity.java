@@ -21,6 +21,7 @@
 package com.aurora.store.activity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -32,6 +33,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.aurora.store.R;
 import com.aurora.store.fragment.AccountsFragment;
+import com.aurora.store.utility.Log;
 import com.aurora.store.utility.ThemeUtil;
 
 import butterknife.BindView;
@@ -39,9 +41,12 @@ import butterknife.ButterKnife;
 
 public class AccountsActivity extends AppCompatActivity {
 
+    private static final String URL_TOS = "https://www.google.com/mobile/android/market-tos.html";
+    private static final String URL_LICENSE = "https://gitlab.com/AuroraOSS/AuroraStore/raw/master/LICENSE";
+    private static final String URL_DISCLAIMER = "https://gitlab.com/AuroraOSS/AuroraStore/raw/master/DISCLAIMER";
+
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
-
 
     private ActionBar mActionBar;
     private ThemeUtil mThemeUtil = new ThemeUtil();
@@ -69,13 +74,16 @@ public class AccountsActivity extends AppCompatActivity {
                 onBackPressed();
                 return true;
             case R.id.action_setting:
-                startActivity(new Intent(this, DownloadsActivity.class));
+                startActivity(new Intent(this, SettingsActivity.class));
                 return true;
             case R.id.action_terms:
+                openWebView(URL_TOS);
                 return true;
             case R.id.action_disclaimer:
+                openWebView(URL_DISCLAIMER);
                 return true;
             case R.id.action_license:
+                openWebView(URL_LICENSE);
                 return true;
         }
         return super.onOptionsItemSelected(menuItem);
@@ -104,5 +112,13 @@ public class AccountsActivity extends AppCompatActivity {
                 .replace(R.id.content, fragment)
                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                 .commitAllowingStateLoss();
+    }
+
+    private void openWebView(String URL){
+        try{
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(URL)));
+        }catch (Exception e){
+            Log.e("No WebView found !");
+        }
     }
 }
