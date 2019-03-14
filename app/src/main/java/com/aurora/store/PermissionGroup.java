@@ -37,9 +37,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AlertDialog;
-
+import com.aurora.store.utility.Util;
 import com.aurora.store.utility.ViewUtil;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -132,15 +132,18 @@ public class PermissionGroup extends LinearLayout {
     }
 
     private Drawable getPermissionGroupIcon(PermissionGroupInfo permissionGroupInfo) {
+        Drawable drawable;
         try {
-            return Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP_MR1
+            drawable = Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP_MR1
                     ? getContext().getResources().getDrawable(permissionGroupInfo.icon, getContext().getTheme())
                     : getContext().getResources().getDrawable(permissionGroupInfo.icon);
         } catch (Resources.NotFoundException e) {
-            return Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP_MR1
+            drawable = Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP_MR1
                     ? permissionGroupInfo.loadUnbadgedIcon(pm)
                     : permissionGroupInfo.loadIcon(pm);
         }
+        drawable.setTint(Util.getColorAttribute(getContext(), R.attr.colorAccent));
+        return drawable;
     }
 
     private OnClickListener getOnClickListener(final String message) {
@@ -149,10 +152,16 @@ public class PermissionGroup extends LinearLayout {
         }
         CharSequence label = null == permissionGroupInfo ? "" : permissionGroupInfo.loadLabel(pm);
         final String title = TextUtils.isEmpty(label) ? "" : label.toString();
-        return v -> new AlertDialog.Builder(getContext())
-                .setIcon(getPermissionGroupIcon(permissionGroupInfo))
-                .setTitle((title.equals(permissionGroupInfo.name) || title.equals(permissionGroupInfo.packageName)) ? "" : title)
-                .setMessage(message)
-                .show();
+        return v -> {
+            MaterialAlertDialogBuilder mBuilder = new MaterialAlertDialogBuilder(getContext())
+                    .setIcon(getPermissionGroupIcon(permissionGroupInfo))
+                    .setTitle((title.equals(permissionGroupInfo.name) || title.equals(permissionGroupInfo.packageName)) ? "" : title)
+                    .setMessage(message)
+                    .setPositiveButton(android.R.string.ok, (dialog, which) -> {
+                        dialog.dismiss();
+                    });
+            mBuilder.create();
+            mBuilder.show();
+        };
     }
 }
