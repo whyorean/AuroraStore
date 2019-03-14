@@ -10,6 +10,7 @@
         <item name="android:windowBackground">@color/colorPrimary</item>
         <item name="android:windowDisablePreview">true</item>
         <item name="android:navigationBarColor">@color/colorPrimaryDark</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">true</item>
         <item name="android:colorBackground">@color/colorPrimary</item>
         <item name="chipStyle">@style/Widget.Aurora.FilterChip</item>
     </style>
@@ -24,6 +25,7 @@
         <item name="android:windowBackground">@color/colorDarkPrimary</item>
         <item name="android:windowDisablePreview">true</item>
         <item name="android:navigationBarColor">@color/colorDarkPrimary</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">false</item>
         <item name="android:colorBackground">@color/colorDarkPrimary</item>
         <item name="chipStyle">@style/Widget.Aurora.FilterChip</item>
     </style>
@@ -38,6 +40,7 @@
         <item name="android:windowBackground">@color/colorBlack</item>
         <item name="android:windowDisablePreview">true</item>
         <item name="android:navigationBarColor">@color/colorBlack</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">false</item>
         <item name="android:colorBackground">@color/colorBlack</item>
         <item name="chipStyle">@style/Widget.Aurora.FilterChip</item>
     </style>

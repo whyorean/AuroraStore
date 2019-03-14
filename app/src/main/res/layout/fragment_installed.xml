@@ -15,8 +15,6 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <include layout="@layout/include_divider" />
-
             <com.google.android.material.switchmaterial.SwitchMaterial
                 android:id="@+id/switch_system"
                 style="@style/Widget.MaterialComponents.CompoundButton.Switch"
@@ -27,8 +25,6 @@
                 android:text="@string/list_installed_system"
                 android:textAppearance="@style/TextAppearance.Aurora.SubTitle"
                 app:useMaterialThemeColors="false" />
-
-            <include layout="@layout/include_divider" />
 
             <com.aurora.store.view.CustomSwipeToRefresh
                 android:id="@+id/swipe_layout"

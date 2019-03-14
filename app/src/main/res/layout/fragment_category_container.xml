@@ -11,8 +11,6 @@
         android:orientation="vertical"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <include layout="@layout/include_divider" />
-
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/category_tabs"
             android:layout_width="match_parent"

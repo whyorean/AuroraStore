@@ -9,8 +9,6 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <include layout="@layout/include_divider" />
-
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -41,8 +39,6 @@
                 android:text="@string/action_clear_all" />
 
         </RelativeLayout>
-
-        <include layout="@layout/include_divider" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view"

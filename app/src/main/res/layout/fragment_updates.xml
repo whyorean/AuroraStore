@@ -14,8 +14,6 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <include layout="@layout/include_divider" />
-
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -46,8 +44,6 @@
                     android:text="@string/list_update_all" />
 
             </RelativeLayout>
-
-            <include layout="@layout/include_divider" />
 
             <com.aurora.store.view.CustomSwipeToRefresh
                 android:id="@+id/swipe_layout"
