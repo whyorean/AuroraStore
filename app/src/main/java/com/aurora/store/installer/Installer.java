@@ -26,6 +26,7 @@ package com.aurora.store.installer;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.net.Uri;
 import android.os.Build;
 
@@ -96,6 +97,8 @@ public class Installer {
         }
 
         SplitPackageInstallerAbstract installer = getInstallationMethod(context);
+        context.registerReceiver(installer.getBroadcastReceiver(),
+                new IntentFilter(SplitService.ACTION_INSTALLATION_STATUS_NOTIFICATION));
         long sessionID = installer.createInstallationSession(apkFiles);
         installer.startInstallationSession(sessionID);
         installer.addStatusListener((installationID, installationStatus, packageNameOrErrorDescription) -> {
@@ -157,6 +160,7 @@ public class Installer {
     }
 
     private void unregisterReceiver(SplitPackageInstallerAbstract mInstaller) {
-        context.unregisterReceiver(mInstaller.getBroadcastReceiver());
+        if (mInstaller.getBroadcastReceiver() != null)
+            context.unregisterReceiver(mInstaller.getBroadcastReceiver());
     }
 }

@@ -24,6 +24,7 @@
 package com.aurora.store.installer;
 
 import android.content.Context;
+import android.content.IntentFilter;
 import android.content.pm.PackageInfo;
 import android.util.Log;
 

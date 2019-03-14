@@ -76,8 +76,6 @@ public abstract class SplitPackageInstallerAbstract {
                 }
             }
         };
-        context.registerReceiver(broadcastReceiver, new
-                IntentFilter(SplitService.ACTION_INSTALLATION_STATUS_NOTIFICATION));
     }
 
     public BroadcastReceiver getBroadcastReceiver() {
