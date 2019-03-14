@@ -20,7 +20,10 @@
 
 package com.aurora.store.utility;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
@@ -35,12 +38,15 @@ import androidx.annotation.Nullable;
 
 import com.aurora.store.Constants;
 import com.aurora.store.R;
+import com.aurora.store.activity.AuroraActivity;
 import com.aurora.store.model.App;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 import com.tonyodev.fetch2.Status;
 
 import org.json.JSONArray;
 
+import java.net.InetSocketAddress;
+import java.net.Proxy;
 import java.net.SocketException;
 import java.net.SocketTimeoutException;
 import java.net.UnknownHostException;
@@ -370,6 +376,31 @@ public class Util {
         return getPrefs(context).getBoolean(Constants.PREFERENCE_NOTIFICATION_TOGGLE, true);
     }
 
+    public static boolean isNetworkProxyEnabled(Context context) {
+        return getPrefs(context).getBoolean(Constants.PREFERENCE_ENABLE_PROXY, false);
+    }
+
+    public static Proxy.Type getProxyType(Context context) {
+        String proxyType = getPrefs(context).getString(Constants.PREFERENCE_PROXY_TYPE, "HTTP");
+        switch (proxyType) {
+            case "HTTP":
+                return Proxy.Type.HTTP;
+            case "SOCKS":
+                return Proxy.Type.SOCKS;
+            case "DIRECT":
+                return Proxy.Type.DIRECT;
+            default:
+                return Proxy.Type.HTTP;
+        }
+    }
+
+    public static Proxy getNetworkProxy(Context context) {
+        String proxyHost = getPrefs(context).getString(Constants.PREFERENCE_PROXY_HOST, "127.0.0.1");
+        String proxyPort = getPrefs(context).getString(Constants.PREFERENCE_PROXY_PORT, "8118");
+        int port = proxyPort !=null ? Integer.valueOf(proxyPort) : 8118;
+        return new Proxy(getProxyType(context), new InetSocketAddress(proxyHost, port));
+    }
+
     public static int getNotificationPriority(Context context) {
         String prefValue = getPrefs(context).getString(Constants.PREFERENCE_NOTIFICATION_PRIORITY, "");
         switch (prefValue) {
@@ -382,5 +413,15 @@ public class Util {
             default:
                 return 0;
         }
+    }
+
+    public static void restartApp(Context context){
+        Intent mStartActivity = new Intent(context, AuroraActivity.class);
+        int mPendingIntentId = 1337;
+        PendingIntent mPendingIntent = PendingIntent.getActivity(context, mPendingIntentId, mStartActivity,
+                PendingIntent.FLAG_CANCEL_CURRENT);
+        AlarmManager mgr = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+        mgr.set(AlarmManager.RTC, System.currentTimeMillis() + 100, mPendingIntent);
+        System.exit(0);
     }
 }

@@ -50,6 +50,7 @@
     <string name="action_ignore">Blacklist</string>
     <string name="action_installations">Installations</string>
     <string name="action_installed">Installed</string>
+    <string name="action_later">Later</string>
     <string name="action_logging_in">Logging in</string>
     <string name="action_login">Login</string>
     <string name="action_logout">Log out</string>
@@ -60,6 +61,7 @@
     <string name="action_next">Next</string>
     <string name="action_pause">Pause</string>
     <string name="action_remove">Remove</string>
+    <string name="action_restart">Restart</string>
     <string name="action_resume">Resume</string>
     <string name="action_retry">Retry</string>
     <string name="action_retry_ing">Retrying</string>
@@ -195,6 +197,7 @@
     <string name="pref_device_to_pretend_to_be">Pretend to be a different device</string>
     <string name="pref_device_to_pretend_to_be_default">Your original device info</string>
     <string name="pref_device_to_pretend_to_be_toast">This change will be applied after you re-login</string>
+    <string name="pref_dialog_to_apply_restart">This setting will be applied after you restart app</string>
     <string name="pref_downloader_active_summary">Maximum number of active downloads</string>
     <string name="pref_downloader_active_title">Active Download</string>
     <string name="pref_downloader_debug_summary">Enable download debugging to get detailed logs</string>

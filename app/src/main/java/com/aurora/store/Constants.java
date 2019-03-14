@@ -70,4 +70,8 @@ public class Constants {
     public static final String PREFERENCE_NOTIFICATION_TOGGLE = "PREFERENCE_NOTIFICATION_TOGGLE";
     public static final String PREFERENCE_NOTIFICATION_PRIORITY = "PREFERENCE_NOTIFICATION_PRIORITY";
     public static final String PREFERENCE_FAVOURITE_LIST = "PREFERENCE_FAVOURITE_LIST";
+    public static final String PREFERENCE_ENABLE_PROXY = "PREFERENCE_ENABLE_PROXY";
+    public static final String PREFERENCE_PROXY_HOST = "PREFERENCE_PROXY_HOST";
+    public static final String PREFERENCE_PROXY_PORT = "PREFERENCE_PROXY_PORT";
+    public static final String PREFERENCE_PROXY_TYPE = "PREFERENCE_PROXY_TYPE";
 }

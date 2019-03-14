@@ -47,6 +47,7 @@ import com.aurora.store.utility.PathUtil;
 import com.aurora.store.utility.PrefUtil;
 import com.aurora.store.utility.ThemeUtil;
 import com.aurora.store.utility.Util;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import java.io.File;
 import java.io.IOException;
@@ -56,6 +57,8 @@ import butterknife.ButterKnife;
 
 public class SettingsActivity extends AppCompatActivity implements
         PreferenceFragmentCompat.OnPreferenceStartFragmentCallback {
+
+    public static boolean shouldRestart = false;
 
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
@@ -76,6 +79,8 @@ public class SettingsActivity extends AppCompatActivity implements
         getSupportFragmentManager().addOnBackStackChangedListener(() -> {
             if (getSupportFragmentManager().getBackStackEntryCount() == 0) {
                 setTitle(R.string.action_settings);
+                if (shouldRestart)
+                    askRestart();
             }
         });
     }
@@ -128,6 +133,20 @@ public class SettingsActivity extends AppCompatActivity implements
             actionBar.setDisplayShowCustomEnabled(true);
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
+    }
+
+    private void askRestart() {
+        MaterialAlertDialogBuilder mBuilder = new MaterialAlertDialogBuilder(this)
+                .setTitle(getString(R.string.dialog_title_logout))
+                .setMessage(getString(R.string.pref_dialog_to_apply_restart))
+                .setPositiveButton(getString(R.string.action_restart), (dialog, which) -> {
+                    Util.restartApp(this);
+                })
+                .setNegativeButton(getString(R.string.action_later), (dialog, which) -> {
+                    dialog.dismiss();
+                });
+        mBuilder.create();
+        mBuilder.show();
     }
 
     public static class SettingsFragment extends PreferenceFragmentCompat {
@@ -284,12 +303,37 @@ public class SettingsActivity extends AppCompatActivity implements
         }
     }
 
-    public static class NetworkFragment extends PreferenceFragmentCompat {
+    public static class NetworkFragment extends PreferenceFragmentCompat implements SharedPreferences.OnSharedPreferenceChangeListener {
+
+        Context context;
+        SharedPreferences mPrefs;
+
+        @Override
+        public void onAttach(@NonNull Context context) {
+            super.onAttach(context);
+            this.context = context;
+        }
 
         @Override
         public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
             getPreferenceManager().setSharedPreferencesName(Constants.SHARED_PREFERENCES_KEY);
             setPreferencesFromResource(R.xml.preferences_network, rootKey);
+        }
+
+        @Override
+        public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+            super.onViewCreated(view, savedInstanceState);
+            mPrefs = Util.getPrefs(context);
+            mPrefs.registerOnSharedPreferenceChangeListener(this);
+        }
+
+        @Override
+        public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+            switch (key) {
+                case Constants.PREFERENCE_ENABLE_PROXY:
+                    SettingsActivity.shouldRestart = true;
+                    break;
+            }
         }
     }
 
@@ -331,6 +375,7 @@ public class SettingsActivity extends AppCompatActivity implements
         public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
             switch (key) {
                 case Constants.PREFERENCE_FEATURED_SNAP:
+                    SettingsActivity.shouldRestart = true;
                     break;
             }
         }

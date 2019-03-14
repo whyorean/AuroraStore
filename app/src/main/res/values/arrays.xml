@@ -130,6 +130,7 @@
     </string-array>
 
     <string-array name="proxyTypeValues" translatable="false">
+        <item>DIRECT</item>
         <item>HTTP</item>
         <item>SOCKS</item>
     </string-array>

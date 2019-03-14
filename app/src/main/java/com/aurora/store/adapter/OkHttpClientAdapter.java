@@ -20,6 +20,9 @@
 
 package com.aurora.store.adapter;
 
+import android.content.Context;
+
+import com.aurora.store.utility.Util;
 import com.dragons.aurora.playstoreapiv2.AuthException;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 import com.dragons.aurora.playstoreapiv2.GooglePlayException;
@@ -44,11 +47,16 @@ public class OkHttpClientAdapter extends HttpClientAdapter {
 
     private OkHttpClient client;
 
-    public OkHttpClientAdapter() {
-        client = new OkHttpClient.Builder()
-                .connectTimeout(10, TimeUnit.SECONDS)
-                .readTimeout(10, TimeUnit.SECONDS)
-                .build();
+    public OkHttpClientAdapter(Context context) {
+        OkHttpClient.Builder builder = new OkHttpClient.Builder();
+        builder.connectTimeout(20, TimeUnit.SECONDS);
+        builder.readTimeout(20, TimeUnit.SECONDS);
+        builder.writeTimeout(20, TimeUnit.SECONDS);
+
+        if (Util.isNetworkProxyEnabled(context))
+            builder.proxy(Util.getNetworkProxy(context));
+
+        client = builder.build();
     }
 
     @Override

@@ -178,7 +178,7 @@ public class PlayStoreApiAuthenticator {
     private com.dragons.aurora.playstoreapiv2.PlayStoreApiBuilder getBuilder(LoginInfo loginInfo) {
         fill(loginInfo);
         return new com.dragons.aurora.playstoreapiv2.PlayStoreApiBuilder()
-                .setHttpClient(new OkHttpClientAdapter())
+                .setHttpClient(new OkHttpClientAdapter(context))
                 .setDeviceInfoProvider(getDeviceInfoProvider())
                 .setLocale(loginInfo.getLocale())
                 .setEmail(loginInfo.getEmail())
