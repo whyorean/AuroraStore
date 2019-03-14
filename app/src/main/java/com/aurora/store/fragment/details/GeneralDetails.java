@@ -31,21 +31,19 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.aurora.store.GlideApp;
 import com.aurora.store.R;
 import com.aurora.store.fragment.DetailsFragment;
 import com.aurora.store.manager.CategoryManager;
 import com.aurora.store.model.App;
-import com.aurora.store.model.ImageSource;
 import com.aurora.store.sheet.MoreInfoSheet;
 import com.aurora.store.utility.Log;
 import com.aurora.store.utility.TextUtil;
 import com.aurora.store.utility.Util;
 import com.aurora.store.utility.ViewUtil;
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.Priority;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.bumptech.glide.load.resource.bitmap.BitmapTransitionOptions;
-import com.bumptech.glide.request.RequestOptions;
+import com.bumptech.glide.load.resource.bitmap.CenterCrop;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.google.android.material.chip.Chip;
 
 import java.util.ArrayList;
@@ -94,21 +92,10 @@ public class GeneralDetails extends AbstractHelper {
 
     private void drawAppBadge() {
         if (view != null) {
-            ImageSource imageSource = app.getIconInfo();
-            if (null != imageSource.getApplicationInfo()) {
-                appIcon.setImageDrawable(context.getPackageManager().getApplicationIcon(imageSource.getApplicationInfo()));
-            } else {
-                Glide.with(context)
-                        .asBitmap()
-                        .load(imageSource.getUrl())
-                        .apply(new RequestOptions()
-                                .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
-                                .placeholder(R.color.colorTransparent)
-                                .priority(Priority.HIGH))
-                        .transition(new BitmapTransitionOptions().crossFade())
-                        .into(appIcon);
-            }
-
+            GlideApp.with(context)
+                    .load(app.getIconInfo().getUrl())
+                    .transition(new DrawableTransitionOptions().crossFade())
+                    .into(appIcon);
             setText(view, R.id.displayName, app.getDisplayName());
             setText(view, R.id.packageName, app.getDeveloperName());
             drawVersion();
