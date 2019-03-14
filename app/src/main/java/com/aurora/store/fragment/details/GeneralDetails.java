@@ -31,13 +31,14 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.aurora.store.manager.CategoryManager;
 import com.aurora.store.R;
 import com.aurora.store.fragment.DetailsFragment;
+import com.aurora.store.manager.CategoryManager;
 import com.aurora.store.model.App;
 import com.aurora.store.model.ImageSource;
 import com.aurora.store.sheet.MoreInfoSheet;
 import com.aurora.store.utility.Log;
+import com.aurora.store.utility.TextUtil;
 import com.aurora.store.utility.Util;
 import com.aurora.store.utility.ViewUtil;
 import com.bumptech.glide.Glide;
@@ -149,12 +150,12 @@ public class GeneralDetails extends AbstractHelper {
 
     private void drawChanges() {
         String changes = app.getChanges();
-        if (TextUtils.isEmpty(changes)) {
-            hide(view, R.id.changes_container);
-        } else {
+        String description = app.getDescription();
+        if (TextUtil.isEmpty(changes))
+            setText(view, R.id.changes_upper, Html.fromHtml(TextUtil.emptyIfNull(description)).toString());
+        else
             setText(view, R.id.changes_upper, Html.fromHtml(changes).toString());
-            show(view, R.id.changes_container);
-        }
+        show(view, R.id.changes_container);
     }
 
     private void drawOfferDetails() {
