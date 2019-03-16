@@ -349,6 +349,10 @@ public class Util {
         return getPrefs(context).getBoolean(Constants.PREFERENCE_FILTER_F_DROID, true);
     }
 
+    public static boolean filterSearchNonPersistent(Context context) {
+        return getPrefs(context).getBoolean(Constants.PREFERENCE_FILTER_SEARCH, true);
+    }
+
     public static boolean isDownloadWifiOnly(Context context) {
         return getPrefs(context).getBoolean(Constants.PREFERENCE_DOWNLOAD_WIFI, false);
     }

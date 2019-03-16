@@ -51,6 +51,7 @@ import com.aurora.store.sheet.FilterBottomSheet;
 import com.aurora.store.task.SearchTask;
 import com.aurora.store.utility.Log;
 import com.aurora.store.utility.NetworkUtil;
+import com.aurora.store.utility.Util;
 import com.aurora.store.utility.ViewUtil;
 import com.aurora.store.view.ErrorView;
 import com.bumptech.glide.Glide;
@@ -142,6 +143,8 @@ public class SearchAppsFragment extends BaseFragment implements BaseFragment.Eve
         mDisposable.dispose();
         if (mBottomNavigationView != null)
             ViewUtil.showBottomNav(mBottomNavigationView, true);
+        if (Util.filterSearchNonPersistent(context))
+            new Filter(context).resetFilterPreferences();
         super.onDestroy();
     }
 

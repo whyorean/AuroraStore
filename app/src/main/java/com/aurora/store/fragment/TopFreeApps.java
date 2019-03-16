@@ -124,8 +124,6 @@ public class TopFreeApps extends BaseFragment implements BaseFragment.EventListe
         try {
             iterator = new CustomAppListIterator(new CategoryAppsIterator(new PlayStoreApiAuthenticator(getContext()).getApi(), categoryId,
                     subcategory));
-            iterator.setEnableFilter(true);
-            iterator.setFilter(new Filter(getContext()).getFilterPreferences());
             return iterator;
         } catch (Exception err) {
             processException(err);

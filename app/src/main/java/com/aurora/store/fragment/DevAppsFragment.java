@@ -124,8 +124,6 @@ public class DevAppsFragment extends BaseFragment implements BaseFragment.EventL
         CustomAppListIterator iterator;
         try {
             iterator = new CustomAppListIterator(new SearchIterator(new PlayStoreApiAuthenticator(getContext()).getApi(), query));
-            iterator.setEnableFilter(true);
-            iterator.setFilter(new Filter(getContext()).getFilterPreferences());
             return iterator;
         } catch (Exception e) {
             processException(e);
