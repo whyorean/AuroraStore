@@ -23,7 +23,7 @@
     <Preference
         app:fragment="com.aurora.store.fragment.BlacklistFragment"
         app:icon="@drawable/ic_spoof_alt"
-        app:title="@string/action_ignore" />
+        app:title="@string/action_blacklist" />
 
     <Preference
         app:fragment="com.aurora.store.activity.SettingsActivity$DownloaderFragment"

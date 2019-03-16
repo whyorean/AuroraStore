@@ -26,9 +26,12 @@
 
     <string name="action_accounts">Accounts</string>
     <string name="action_ask">Ask</string>
+    <string name="action_blacklist">Blacklist</string>
     <string name="action_cancel">Cancel</string>
     <string name="action_clear">Clear</string>
     <string name="action_clear_all">Clear All</string>
+    <string name="action_convert_local">Convert Local</string>
+    <string name="action_convert_system">Convert System</string>
     <string name="action_copied">Link copied to clipboard</string>
     <string name="action_copy">Copy Link</string>
     <string name="action_disable">Disable</string>
@@ -45,9 +48,9 @@
     <string name="action_filter_misc">Misc</string>
     <string name="action_filter_paid_apps">Paid</string>
     <string name="action_filter_rating">Ratings</string>
-    <string name="action_get_local_apk">Get local apk</string>
+    <string name="action_flag">Report App</string>
+    <string name="action_get_local_apk">Get Local APK</string>
     <string name="action_home">Home</string>
-    <string name="action_ignore">Blacklist</string>
     <string name="action_installations">Installations</string>
     <string name="action_installed">Installed</string>
     <string name="action_later">Later</string>
@@ -72,9 +75,10 @@
     <string name="action_spoofed">Spoof</string>
     <string name="action_submit">Submit</string>
     <string name="action_unignore">Remove from blacklist</string>
+    <string name="action_uninstall">Uninstall</string>
     <string name="action_unwhitelist">Ignore updates</string>
     <string name="action_updates">Updates</string>
-    <string name="action_whitelist">Whitelist for updates</string>
+    <string name="action_whitelist">Whitelist</string>
 
     <string name="apps_by">Apps by %s</string>
     <string name="availability_restriction_country">"This item isn't available in your country."</string>
@@ -100,6 +104,7 @@
     <string name="details_contains_ads">Contains ads</string>
     <string name="details_download">Download</string>
     <string name="details_favourite_add">Add to favourites</string>
+    <string name="details_favourite_remove">Remove from favourites</string>
     <string name="details_install">Install</string>
     <string name="details_installing">Installing</string>
     <string name="details_more">Read More</string>
@@ -111,7 +116,6 @@
     <string name="details_reviews">App reviews</string>
     <string name="details_run">Open</string>
     <string name="details_share">Share</string>
-    <string name="details_uninstall">Uninstall</string>
     <string name="details_update">Update</string>
     <string name="details_why_rate_this_app">Tell others what you think</string>
     <string name="details_you_rated_this_app">Your rating</string>
@@ -251,4 +255,9 @@
     <string name="title_search_result">"Results for %s"</string>
     <string name="title_updates">Available Updates</string>
     <string name="title_welcome">Welcome</string>
+
+    <string name="toast_apk_blacklisted">Blacklisted</string>
+    <string name="toast_apk_whitelisted">Whitelisted</string>
+    <string name="toast_apk_copy_success">APK copied successfully</string>
+    <string name="toast_apk_copy_failure">Failed to copy APK</string>
 </resources>

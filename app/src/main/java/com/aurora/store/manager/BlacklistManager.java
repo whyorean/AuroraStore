@@ -40,6 +40,25 @@ public class BlacklistManager {
         return PrefUtil.getStringSet(context, Constants.PREFERENCE_BLACKLIST_APPS_SET);
     }
 
+    public boolean isBackListed(String packageName){
+        Set<String> hiddenApps = PrefUtil.getStringSet(context, Constants.PREFERENCE_BLACKLIST_APPS_SET);
+        return  hiddenApps.contains(packageName);
+    }
+
+    public void addToBlacklist(String packageName) {
+        Set<String> hiddenApps = PrefUtil.getStringSet(context, Constants.PREFERENCE_BLACKLIST_APPS_SET);
+        hiddenApps.add(packageName);
+        PrefUtil.putStringSet(context, Constants.PREFERENCE_BLACKLIST_APPS_SET, hiddenApps);
+    }
+
+    public void removeFromBlacklist(String packageName) {
+        Set<String> hiddenApps = PrefUtil.getStringSet(context, Constants.PREFERENCE_BLACKLIST_APPS_SET);
+        if (hiddenApps != null && !hiddenApps.isEmpty()) {
+            hiddenApps.remove(packageName);
+        }
+        PrefUtil.putStringSet(context, Constants.PREFERENCE_BLACKLIST_APPS_SET, hiddenApps);
+    }
+
     public void addSelectionsToBlackList(Set<String> set) {
         PrefUtil.putStringSet(context, Constants.PREFERENCE_BLACKLIST_APPS_SET, set);
     }

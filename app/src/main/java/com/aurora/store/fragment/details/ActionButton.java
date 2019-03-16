@@ -25,7 +25,6 @@ import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
-import android.net.Uri;
 import android.os.Build;
 import android.text.TextUtils;
 import android.view.View;
@@ -189,16 +188,7 @@ public class ActionButton extends AbstractHelper {
 
     private View.OnClickListener uninstallAppListener() {
         return v -> {
-            Uri uri = Uri.fromParts("package", app.getPackageName(), null);
-            Intent intent = new Intent();
-            intent.setData(uri);
-            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.P) {
-                intent.setAction(Intent.ACTION_DELETE);
-            } else {
-                intent.setAction(Intent.ACTION_UNINSTALL_PACKAGE);
-                intent.putExtra(Intent.EXTRA_RETURN_RESULT, true);
-            }
-            context.startActivity(intent);
+            new Installer(context).uninstall(app);
         };
     }
 

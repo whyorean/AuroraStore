@@ -37,6 +37,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.aurora.store.ErrorType;
+import com.aurora.store.ListType;
 import com.aurora.store.R;
 import com.aurora.store.activity.AuroraActivity;
 import com.aurora.store.adapter.UpdatableAppsAdapter;
@@ -170,7 +171,7 @@ public class UpdatesFragment extends BaseFragment implements BaseFragment.EventL
 
     private void setupRecycler(List<App> mApps) {
         customSwipeToRefresh.setRefreshing(false);
-        updatableAppsAdapter = new UpdatableAppsAdapter(context, mApps);
+        updatableAppsAdapter = new UpdatableAppsAdapter(context, mApps, ListType.UPDATES);
         recyclerView.setAdapter(updatableAppsAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(context, RecyclerView.VERTICAL, false));
         recyclerView.setLayoutAnimation(AnimationUtils.loadLayoutAnimation(context, R.anim.anim_falldown));

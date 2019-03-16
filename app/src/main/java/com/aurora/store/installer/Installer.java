@@ -131,6 +131,19 @@ public class Installer {
         });
     }
 
+    public void uninstall(App app){
+        Uri uri = Uri.fromParts("package", app.getPackageName(), null);
+        Intent intent = new Intent();
+        intent.setData(uri);
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.P) {
+            intent.setAction(Intent.ACTION_DELETE);
+        } else {
+            intent.setAction(Intent.ACTION_UNINSTALL_PACKAGE);
+            intent.putExtra(Intent.EXTRA_RETURN_RESULT, true);
+        }
+        context.startActivity(intent);
+    }
+
     private SplitPackageInstallerAbstract getInstallationMethod(Context context) {
         String prefValue = PrefUtil.getString(context, Constants.PREFERENCE_INSTALLATION_METHOD);
         switch (prefValue) {

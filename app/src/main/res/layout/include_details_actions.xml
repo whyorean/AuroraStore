@@ -36,7 +36,7 @@
         android:layout_marginEnd="5dp"
         android:layout_toStartOf="@+id/btn_positive"
         android:maxLines="1"
-        android:text="@string/details_uninstall"
+        android:text="@string/action_uninstall"
         android:textColor="@color/colorRed"
         android:visibility="gone"
         app:strokeColor="@color/colorRed"

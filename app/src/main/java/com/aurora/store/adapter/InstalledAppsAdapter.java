@@ -30,12 +30,18 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.aurora.store.GlideApp;
+import com.aurora.store.ListType;
 import com.aurora.store.R;
+import com.aurora.store.activity.AuroraActivity;
+import com.aurora.store.activity.CategoriesActivity;
 import com.aurora.store.activity.DetailsActivity;
+import com.aurora.store.activity.LeaderBoardActivity;
 import com.aurora.store.model.App;
+import com.aurora.store.sheet.AppMenuSheet;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 
@@ -49,10 +55,12 @@ public class InstalledAppsAdapter extends RecyclerView.Adapter<InstalledAppsAdap
 
     public List<App> appsToAdd;
     private Context context;
+    private ListType listType;
 
-    public InstalledAppsAdapter(Context context, List<App> appsToAdd) {
+    public InstalledAppsAdapter(Context context, List<App> appsToAdd, ListType listType) {
         this.context = context;
         this.appsToAdd = appsToAdd;
+        this.listType = listType;
     }
 
     public void add(int position, App app) {
@@ -94,12 +102,31 @@ public class InstalledAppsAdapter extends RecyclerView.Adapter<InstalledAppsAdap
             context.startActivity(intent);
         });
 
+        holder.itemView.setOnLongClickListener(v -> {
+            final AppMenuSheet menuSheet = new AppMenuSheet();
+            menuSheet.setApp(app);
+            menuSheet.setListType(listType);
+            menuSheet.show(getFragmentManager(), "BOTTOM_MENU_SHEET");
+            return false;
+        });
+
         GlideApp
                 .with(context)
                 .load(app.getIconInfo().getUrl())
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .transition(new DrawableTransitionOptions().crossFade())
                 .into(holder.AppIcon);
+    }
+
+    private FragmentManager getFragmentManager() {
+        if (context instanceof DetailsActivity)
+            return ((DetailsActivity) context).getSupportFragmentManager();
+        else if (context instanceof CategoriesActivity)
+            return ((CategoriesActivity) context).getSupportFragmentManager();
+        else if (context instanceof LeaderBoardActivity)
+            return ((LeaderBoardActivity) context).getSupportFragmentManager();
+        else
+            return ((AuroraActivity) context).getSupportFragmentManager();
     }
 
     public void getDetails(Context mContext, List<String> Version, List<String> Extra, App app) {

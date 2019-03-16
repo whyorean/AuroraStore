@@ -31,11 +31,20 @@ import java.io.File;
 
 public class PathUtil {
 
+    static public File getApkPath(String packageName, int version) {
+        String filename = packageName + "." + String.valueOf(version) + ".apk";
+        return new File(getRootApkCopyPath(), filename);
+    }
+
     static public String getRootApkPath(Context context) {
         if (isCustomPath(context))
             return PrefUtil.getString(context, Constants.PREFERENCE_DOWNLOAD_DIRECTORY);
         else
             return getBaseDirectory(context);
+    }
+
+    static public String getRootApkCopyPath() {
+        return getBaseCopyDirectory();
     }
 
     static public String getLocalApkPath(Context context, App app) {
@@ -76,5 +85,9 @@ public class PathUtil {
             return context.getFilesDir().getPath();
         } else
             return Environment.getExternalStorageDirectory().getPath() + "/Aurora";
+    }
+
+    static public String getBaseCopyDirectory() {
+        return Environment.getExternalStorageDirectory().getPath() + "/Aurora/Copy/APK";
     }
 }

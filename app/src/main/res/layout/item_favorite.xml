@@ -75,7 +75,7 @@
             android:layout_centerVertical="true"
             android:layout_marginStart="@dimen/margin_small"
             android:layout_marginEnd="@dimen/margin_normal"
-            android:contentDescription="@string/content_description_app_icon" />
+            android:contentDescription="@string/content_description_icon" />
 
         <RelativeLayout
             android:layout_width="match_parent"

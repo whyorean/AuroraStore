@@ -33,9 +33,12 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.aurora.store.GlideApp;
+import com.aurora.store.ListType;
 import com.aurora.store.R;
+import com.aurora.store.activity.AuroraActivity;
 import com.aurora.store.activity.DetailsActivity;
 import com.aurora.store.model.App;
+import com.aurora.store.sheet.AppMenuSheet;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 
@@ -49,10 +52,12 @@ public class UpdatableAppsAdapter extends RecyclerView.Adapter<UpdatableAppsAdap
 
     public List<App> appsToAdd;
     private Context context;
+    private ListType listType;
 
-    public UpdatableAppsAdapter(Context context, List<App> appsToAdd) {
+    public UpdatableAppsAdapter(Context context, List<App> appsToAdd, ListType listType) {
         this.context = context;
         this.appsToAdd = appsToAdd;
+        this.listType = listType;
     }
 
     public void add(int position, App app) {
@@ -92,6 +97,14 @@ public class UpdatableAppsAdapter extends RecyclerView.Adapter<UpdatableAppsAdap
             Intent intent = new Intent(context, DetailsActivity.class);
             intent.putExtra("INTENT_PACKAGE_NAME", app.getPackageName());
             context.startActivity(intent);
+        });
+
+        viewHolder.itemView.setOnLongClickListener(v -> {
+            final AppMenuSheet menuSheet = new AppMenuSheet();
+            menuSheet.setApp(app);
+            menuSheet.setListType(listType);
+            menuSheet.show(((AuroraActivity) context).getSupportFragmentManager(), "BOTTOM_MENU_SHEET");
+            return false;
         });
 
         GlideApp

@@ -34,10 +34,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.aurora.store.Constants;
 import com.aurora.store.ErrorType;
+import com.aurora.store.ListType;
 import com.aurora.store.R;
 import com.aurora.store.activity.AuroraActivity;
 import com.aurora.store.adapter.InstalledAppsAdapter;
@@ -161,7 +161,7 @@ public class InstalledFragment extends BaseFragment implements BaseFragment.Even
 
     private void setupRecycler(List<App> mApps) {
         mSwipeRefreshLayout.setRefreshing(false);
-        mAdapter = new InstalledAppsAdapter(context, mApps);
+        mAdapter = new InstalledAppsAdapter(context, mApps, ListType.INSTALLED);
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(context, RecyclerView.VERTICAL, false));
         mRecyclerView.setLayoutAnimation(AnimationUtils.loadLayoutAnimation(context, R.anim.anim_falldown));

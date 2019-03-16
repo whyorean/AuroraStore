@@ -31,40 +31,42 @@ import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.aurora.store.ListType;
 import com.aurora.store.R;
-import com.aurora.store.adapter.DownloadMenuAdapter;
+import com.aurora.store.adapter.AppMenuAdapter;
+import com.aurora.store.model.App;
 import com.aurora.store.view.CustomBottomSheetDialogFragment;
-import com.tonyodev.fetch2.Download;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class DownloadMenuSheet extends CustomBottomSheetDialogFragment {
+public class AppMenuSheet extends CustomBottomSheetDialogFragment {
 
     @BindView(R.id.menu_title)
-    TextView downloadTitle;
+    TextView txtTitle;
     @BindView(R.id.menu_recycler)
-    RecyclerView menuRecyclerView;
-    private Download download;
-    private String title;
+    RecyclerView recyclerView;
 
-    public DownloadMenuSheet() {
+    private App app;
+    private ListType listType;
+
+    public AppMenuSheet() {
     }
 
-    public Download getDownload() {
-        return download;
+    public ListType getListType() {
+        return listType;
     }
 
-    public void setDownload(Download download) {
-        this.download = download;
+    public void setListType(ListType listType) {
+        this.listType = listType;
     }
 
-    public String getTitle() {
-        return title;
+    public App getApp() {
+        return app;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setApp(App app) {
+        this.app = app;
     }
 
     @Override
@@ -77,9 +79,9 @@ public class DownloadMenuSheet extends CustomBottomSheetDialogFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        downloadTitle.setText(getTitle());
-        menuRecyclerView.setNestedScrollingEnabled(false);
-        menuRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false));
-        menuRecyclerView.setAdapter(new DownloadMenuAdapter(this, getDownload()));
+        txtTitle.setText(app.getDisplayName());
+        recyclerView.setNestedScrollingEnabled(false);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false));
+        recyclerView.setAdapter(new AppMenuAdapter(this, getApp(), getListType()));
     }
 }

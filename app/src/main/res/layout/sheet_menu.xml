@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Aurora Store
   ~ Copyright (C) 2019, Rahul Kumar Patel <whyorean@gmail.com>
   ~
@@ -28,18 +27,19 @@
     tools:targetApi="o">
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/download_title"
+        android:id="@+id/menu_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="@dimen/margin_normal"
         android:layout_marginBottom="@dimen/margin_small"
+        android:ellipsize="end"
+        android:maxLines="1"
         android:paddingHorizontal="@dimen/margin_normal"
-        android:text="@string/details_download"
         android:textAppearance="@style/TextAppearance.Aurora.DialogTitle" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/download_menu_recycler"
+        android:id="@+id/menu_recycler"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_small"

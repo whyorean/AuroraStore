@@ -89,12 +89,10 @@ public class DetailsActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(final Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_action, menu);
+        getMenuInflater().inflate(R.menu.menu_app_details, menu);
         menu.findItem(R.id.action_favourite).setIcon(favouriteListManager.contains(packageName)
                 ? R.drawable.ic_favourite_red
                 : R.drawable.ic_favourite_remove);
-        menu.findItem(R.id.action_manual).setVisible(true);
-        menu.findItem(R.id.action_downloads).setVisible(true);
         return true;
     }
 

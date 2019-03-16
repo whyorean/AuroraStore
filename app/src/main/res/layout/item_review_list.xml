@@ -30,7 +30,7 @@
         android:layout_width="@dimen/icon_size_cat"
         android:layout_height="@dimen/icon_size_cat"
         android:layout_marginStart="@dimen/margin_small"
-        android:contentDescription="@string/content_description_review_author_avatar" />
+        android:contentDescription="@string/content_description_icon" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/author"
