@@ -214,7 +214,7 @@
     <string name="pref_filter_google_title">Filter Google Apps</string>
     <string name="pref_filter_search_summary">Search filters are reset on each search. Turn off to save search filters</string>
     <string name="pref_filter_search_title">Use Non-Persistent Search Filter</string>
-    <string name="pref_install_auto_summary">On devices running Android Pie APKs gets deleted by default</string>
+    <string name="pref_install_auto_summary">Apps are installed instantly after download completes</string>
     <string name="pref_install_auto_title">Auto Install APKs Post-Download</string>
     <string name="pref_install_delete_summary">On devices running Android Pie APKs gets deleted by default</string>
     <string name="pref_install_delete_title">Delete Apk Post-Install</string>
