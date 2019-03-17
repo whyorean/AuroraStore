@@ -99,6 +99,7 @@ public class ActionButton extends AbstractHelper {
 
     private boolean isPaused;
     private boolean isSplit;
+    private boolean hasObb;
     private int requestId;
 
     private CompositeDisposable compositeDisposable = new CompositeDisposable();
@@ -268,6 +269,11 @@ public class ActionButton extends AbstractHelper {
     private void initiateDownload(AndroidAppDeliveryData deliveryData) {
         List<Split> splitList = deliveryData.getSplitList();
         List<Request> requestList = new ArrayList<>();
+        List<Request> requestListObb = RequestBuilder.buildObbRequestList(context, app, deliveryData);
+
+        if (!requestListObb.isEmpty()) {
+            hasObb = true;
+        }
 
         if (!splitList.isEmpty()) {
             isSplit = true;
@@ -292,6 +298,12 @@ public class ActionButton extends AbstractHelper {
         if (isSplit) {
             fetch.enqueue(requestList, updatedRequestList -> {
                 Log.i("Downloading Splits : %s", app.getPackageName());
+            });
+        }
+
+        if (hasObb) {
+            fetch.enqueue(requestListObb, updatedRequestList -> {
+                Log.i("Downloading ObbFiles : %s", app.getPackageName());
             });
         }
     }

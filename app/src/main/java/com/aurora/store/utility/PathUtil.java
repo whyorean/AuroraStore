@@ -55,12 +55,22 @@ public class PathUtil {
         return getLocalSplitPath(context, app.getPackageName(), app.getVersionCode(), tag);
     }
 
+    static public String getObbPath(App app, boolean main) {
+        return getObbPath(app.getPackageName(), app.getVersionCode(), main);
+    }
+
     static public String getLocalApkPath(Context context, String packageName, int versionCode) {
         return getRootApkPath(context) + "/" + packageName + "." + versionCode + ".apk";
     }
 
     static private String getLocalSplitPath(Context context, String packageName, int versionCode, String tag) {
         return getRootApkPath(context) + "/" + packageName + "." + versionCode + "." + tag + ".apk";
+    }
+
+    static public String getObbPath(String packageName, int version, boolean main) {
+        String obbDir = Environment.getExternalStorageDirectory() + "/Android/obb/" + packageName;
+        String filename = (main ? "/main" : "/patch") + "." + String.valueOf(version) + "." + packageName + ".obb";
+        return obbDir + filename;
     }
 
     static private boolean isCustomPath(Context context) {

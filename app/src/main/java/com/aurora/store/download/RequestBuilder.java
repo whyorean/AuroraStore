@@ -24,8 +24,10 @@ import android.content.Context;
 
 import com.aurora.store.model.App;
 import com.aurora.store.utility.PathUtil;
+import com.aurora.store.utility.TextUtil;
 import com.aurora.store.utility.Util;
 import com.dragons.aurora.playstoreapiv2.AndroidAppDeliveryData;
+import com.dragons.aurora.playstoreapiv2.AppFileMetadata;
 import com.dragons.aurora.playstoreapiv2.Split;
 import com.tonyodev.fetch2.NetworkType;
 import com.tonyodev.fetch2.Priority;
@@ -138,6 +140,59 @@ public class RequestBuilder {
             requestList.add(splitRequest);
             splitRequest.setGroupId(id);
             requestList.add(splitRequest);
+        }
+        return requestList;
+    }
+
+    /*
+     *
+     * Build Obb Download Request from URL
+     * @param Context - Application Context
+     * @param App -  App object
+     * @param Url -  APK Url
+     * @param isMain - boolean to determine obb type
+     * @return Request
+     *
+     */
+
+    public static Request buildObbRequest(Context context, App app, String Url, boolean isMain) {
+        Request request;
+        request = new Request(Url, PathUtil.getObbPath(app, isMain));
+        request.setPriority(Priority.HIGH);
+        if (Util.isDownloadWifiOnly(context))
+            request.setNetworkType(NetworkType.WIFI_ONLY);
+        else
+            request.setNetworkType(NetworkType.ALL);
+        request.setTag(app.getPackageName());
+        return request;
+    }
+
+
+    /*
+     *
+     * Build Obb App Download RequestList from DeliveryDataList and GroupId
+     * @param Context - Application Context
+     * @param AndroidAppDeliveryData -  App object
+     * @param groupId - Request GroupId
+     * @return RequestList
+     *
+     */
+
+    public static List<Request> buildObbRequestList(Context context, App app, AndroidAppDeliveryData appDeliveryData) {
+        List<Request> requestList = new ArrayList<>();
+        if (appDeliveryData.getAdditionalFileList().size() == 1) {
+            AppFileMetadata obbFileMetadata = appDeliveryData.getAdditionalFile(0);
+            if (TextUtil.isEmpty(obbFileMetadata.getDownloadUrlGzipped()))
+                requestList.add(buildObbRequest(context, app, obbFileMetadata.getDownloadUrl(), true));
+            else
+                requestList.add(buildObbRequest(context, app, obbFileMetadata.getDownloadUrlGzipped(), true));
+        }
+        if (appDeliveryData.getAdditionalFileList().size() == 2) {
+            AppFileMetadata obbFileMetadata = appDeliveryData.getAdditionalFile(1);
+            if (TextUtil.isEmpty(obbFileMetadata.getDownloadUrlGzipped()))
+                requestList.add(buildObbRequest(context, app, obbFileMetadata.getDownloadUrl(), false));
+            else
+                requestList.add(buildObbRequest(context, app, obbFileMetadata.getDownloadUrlGzipped(), false));
         }
         return requestList;
     }
