@@ -31,10 +31,12 @@ import com.aurora.store.R;
 import com.aurora.store.activity.AccountsActivity;
 import com.aurora.store.api.PlayStoreApiAuthenticator;
 import com.aurora.store.exception.CredentialsEmptyException;
+import com.aurora.store.iterator.CustomAppListIterator;
 import com.aurora.store.utility.Accountant;
 import com.aurora.store.utility.ContextUtil;
 import com.aurora.store.utility.Log;
 import com.dragons.aurora.playstoreapiv2.AuthException;
+import com.dragons.aurora.playstoreapiv2.SearchIterator;
 
 import java.io.IOException;
 import java.net.UnknownHostException;
@@ -48,6 +50,8 @@ import static com.aurora.store.utility.Util.noNetwork;
 
 public abstract class BaseFragment extends Fragment {
 
+
+    protected CustomAppListIterator iterator;
     protected CompositeDisposable mDisposable = new CompositeDisposable();
 
     private Context context;
@@ -58,6 +62,17 @@ public abstract class BaseFragment extends Fragment {
         super.onAttach(context);
         eventListenerImpl = (EventListenerImpl) this;
         this.context = context;
+    }
+
+    protected CustomAppListIterator getIterator(String query) {
+        CustomAppListIterator iterator;
+        try {
+            iterator = new CustomAppListIterator(new SearchIterator(new PlayStoreApiAuthenticator(getContext()).getApi(), query));
+            return iterator;
+        } catch (Exception e) {
+            processException(e);
+            return null;
+        }
     }
 
     public void processException(Throwable e) {

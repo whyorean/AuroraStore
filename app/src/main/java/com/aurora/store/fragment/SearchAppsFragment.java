@@ -44,8 +44,6 @@ import com.aurora.store.Filter;
 import com.aurora.store.R;
 import com.aurora.store.activity.AuroraActivity;
 import com.aurora.store.adapter.EndlessAppsAdapter;
-import com.aurora.store.api.PlayStoreApiAuthenticator;
-import com.aurora.store.iterator.CustomAppListIterator;
 import com.aurora.store.model.App;
 import com.aurora.store.sheet.FilterBottomSheet;
 import com.aurora.store.task.SearchTask;
@@ -55,7 +53,6 @@ import com.aurora.store.utility.Util;
 import com.aurora.store.utility.ViewUtil;
 import com.aurora.store.view.ErrorView;
 import com.bumptech.glide.Glide;
-import com.dragons.aurora.playstoreapiv2.SearchIterator;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -65,7 +62,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
 
 public class SearchAppsFragment extends BaseFragment implements BaseFragment.EventListenerImpl {
@@ -87,8 +83,6 @@ public class SearchAppsFragment extends BaseFragment implements BaseFragment.Eve
     private View view;
     private String query;
     private BottomNavigationView mBottomNavigationView;
-    private CustomAppListIterator iterator;
-    private CompositeDisposable mDisposable = new CompositeDisposable();
     private EndlessAppsAdapter endlessAppsAdapter;
     private SearchTask mSearchTask;
 
@@ -101,7 +95,7 @@ public class SearchAppsFragment extends BaseFragment implements BaseFragment.Eve
     }
 
     @Override
-    public void onAttach(Context context) {
+    public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         this.context = context;
         mSearchTask = new SearchTask(context);
@@ -158,7 +152,9 @@ public class SearchAppsFragment extends BaseFragment implements BaseFragment.Eve
         searchQuery.setOnEditorActionListener((v, actionId, event) -> {
             if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                 query = searchQuery.getText().toString();
-                iterator = setupIterator(getQuery());
+                iterator = getIterator(getQuery());
+                iterator.setEnableFilter(true);
+                iterator.setFilter(new Filter(getContext()).getFilterPreferences());
                 fetchSearchAppsList(false);
                 searchQuery.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_edit, 0);
                 InputMethodManager imm = (InputMethodManager) v.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -171,6 +167,7 @@ public class SearchAppsFragment extends BaseFragment implements BaseFragment.Eve
 
     private void getFilterDialog() {
         FilterBottomSheet filterSheet = new FilterBottomSheet();
+        filterSheet.setCancelable(true);
         filterSheet.setOnApplyListener(v -> {
             filterSheet.dismiss();
             recyclerView.removeAllViewsInLayout();
@@ -179,22 +176,12 @@ public class SearchAppsFragment extends BaseFragment implements BaseFragment.Eve
         filterSheet.show(getChildFragmentManager(), "FILTER");
     }
 
-    private CustomAppListIterator setupIterator(String query) {
-        CustomAppListIterator iterator;
-        try {
-            iterator = new CustomAppListIterator(new SearchIterator(new PlayStoreApiAuthenticator(getContext()).getApi(), query));
+    private void fetchSearchAppsList(boolean shouldIterate) {
+        if (!shouldIterate) {
+            iterator = getIterator(getQuery());
             iterator.setEnableFilter(true);
             iterator.setFilter(new Filter(getContext()).getFilterPreferences());
-            return iterator;
-        } catch (Exception e) {
-            processException(e);
-            return null;
         }
-    }
-
-    private void fetchSearchAppsList(boolean shouldIterate) {
-        if (!shouldIterate)
-            iterator = setupIterator(getQuery());
         mDisposable.add(Observable.fromCallable(() -> mSearchTask.getSearchResults(iterator))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

@@ -37,18 +37,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.aurora.store.EndlessScrollListener;
 import com.aurora.store.ErrorType;
-import com.aurora.store.Filter;
 import com.aurora.store.R;
 import com.aurora.store.adapter.EndlessAppsAdapter;
-import com.aurora.store.api.PlayStoreApiAuthenticator;
-import com.aurora.store.iterator.CustomAppListIterator;
 import com.aurora.store.model.App;
 import com.aurora.store.task.SearchTask;
 import com.aurora.store.utility.Log;
 import com.aurora.store.utility.NetworkUtil;
 import com.aurora.store.view.ErrorView;
 import com.bumptech.glide.Glide;
-import com.dragons.aurora.playstoreapiv2.SearchIterator;
 import com.google.android.material.chip.Chip;
 
 import java.util.List;
@@ -77,7 +73,6 @@ public class DevAppsFragment extends BaseFragment implements BaseFragment.EventL
 
     private Context context;
     private View view;
-    private CustomAppListIterator iterator;
     private CompositeDisposable mDisposable = new CompositeDisposable();
     private EndlessAppsAdapter endlessAppsAdapter;
     private SearchTask mSearchTask;
@@ -97,7 +92,7 @@ public class DevAppsFragment extends BaseFragment implements BaseFragment.EventL
         if (arguments != null) {
             String query = arguments.getString("SearchQuery");
             chipDevName.setText(arguments.getString("SearchTitle"));
-            iterator = setupIterator(query);
+            iterator = getIterator(query);
             if (NetworkUtil.isConnected(context))
                 fetchDevAppsList(false);
             else
@@ -118,17 +113,6 @@ public class DevAppsFragment extends BaseFragment implements BaseFragment.EventL
         Glide.with(this).pauseAllRequests();
         mDisposable.dispose();
         super.onDestroy();
-    }
-
-    private CustomAppListIterator setupIterator(String query) {
-        CustomAppListIterator iterator;
-        try {
-            iterator = new CustomAppListIterator(new SearchIterator(new PlayStoreApiAuthenticator(getContext()).getApi(), query));
-            return iterator;
-        } catch (Exception e) {
-            processException(e);
-            return null;
-        }
     }
 
     private void fetchDevAppsList(boolean shouldIterate) {
