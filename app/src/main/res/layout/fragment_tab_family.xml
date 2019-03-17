@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Aurora Store
   ~ Copyright (C) 2019, Rahul Kumar Patel <whyorean@gmail.com>
   ~
@@ -34,13 +33,14 @@
         <HorizontalScrollView
             android:id="@+id/chip_group"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:scrollbars="none">
 
             <com.google.android.material.chip.ChipGroup
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingVertical="@dimen/margin_small"
-                android:paddingStart="@dimen/margin_medium"
+                android:paddingStart="@dimen/margin_small"
                 app:singleLine="true">
 
                 <com.aurora.store.view.CustomChip
