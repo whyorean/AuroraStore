@@ -28,7 +28,7 @@
 
     <SwitchPreferenceCompat
         app:defaultValue="true"
-        app:key="PREFERENCE_FILTER_FDROID"
+        app:key="PREFERENCE_FILTER_F_DROID"
         app:summary="@string/pref_filter_fdroid_summary"
         app:title="@string/pref_filter_fdroid_title" />
 

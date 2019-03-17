@@ -199,6 +199,7 @@ public class SettingsActivity extends AppCompatActivity implements
 
         private void setupActiveDownloads() {
             seekBarPreference = findPreference(Constants.PREFERENCE_DOWNLOAD_ACTIVE);
+            seekBarPreference.setShowSeekBarValue(true);
             seekBarPreference.setOnPreferenceChangeListener((preference, newValue) -> {
                 PrefUtil.putInteger(context, Constants.PREFERENCE_DOWNLOAD_ACTIVE, seekBarPreference.getValue());
                 return true;
