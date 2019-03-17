@@ -103,7 +103,7 @@ public class UpdatableApps extends AllApps {
 
     private Map<String, App> filterBlacklistedApps(Map<String, App> apps) {
         Set<String> packageNames = new HashSet<>(apps.keySet());
-        packageNames.removeAll(new BlacklistManager(context).getBlacklistedApps());
+        packageNames.removeAll(new BlacklistManager(context).get());
         Map<String, App> result = new HashMap<>();
         for (App app : apps.values()) {
             if (packageNames.contains(app.getPackageName())) {

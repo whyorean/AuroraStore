@@ -41,7 +41,6 @@ import java.net.UnknownHostException;
 
 import io.reactivex.Flowable;
 import io.reactivex.Observable;
-import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
 
@@ -128,7 +127,7 @@ public abstract class BaseFragment extends Fragment {
         mDisposable.add(Flowable.fromCallable(() ->
                 new PlayStoreApiAuthenticator(context).refreshToken())
                 .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
+                .observeOn(Schedulers.computation())
                 .subscribe((success) -> {
                     if (success) {
                         Log.i("Token Refreshed");
@@ -141,7 +140,6 @@ public abstract class BaseFragment extends Fragment {
                     Log.e("Token Refresh Login failed %s", err.getMessage());
                     eventListenerImpl.onLoginFailed();
                 }));
-        mDisposable.dispose();
     }
 
     public interface EventListenerImpl {

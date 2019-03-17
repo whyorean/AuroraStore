@@ -133,6 +133,13 @@ public class ViewUtil {
             hideWithAnimation(view);
     }
 
+    public static void setVisibility(View view, boolean visibility, boolean noAnim) {
+        if (noAnim)
+            view.setVisibility(visibility ? View.VISIBLE : View.INVISIBLE);
+        else
+            setVisibility(view, visibility);
+    }
+
     public static List<MenuEntry> parseMenu(Context context, @MenuRes int menuRes) {
         List<MenuEntry> menuEntryList = new ArrayList<>();
         PopupMenu p = new PopupMenu(context, null);

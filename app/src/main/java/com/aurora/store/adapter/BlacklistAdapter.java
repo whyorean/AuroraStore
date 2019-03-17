@@ -21,8 +21,6 @@
 package com.aurora.store.adapter;
 
 import android.content.Context;
-import android.content.pm.PackageManager;
-import android.content.pm.ResolveInfo;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,15 +30,14 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.aurora.store.GlideApp;
 import com.aurora.store.R;
-import com.aurora.store.model.Packages;
+import com.aurora.store.model.App;
 
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -48,29 +45,13 @@ import butterknife.ButterKnife;
 
 public class BlacklistAdapter extends SelectableAdapter<BlacklistAdapter.ViewHolder> {
 
-    private List<Packages> packagesList;
+    private List<App> appList = new ArrayList<>();
     private ItemClickListener itemClickListener;
 
-    public BlacklistAdapter(Context context, List<ResolveInfo> resolveInfos, ItemClickListener itemClickListener) {
+    public BlacklistAdapter(Context context, List<App> appList, ItemClickListener itemClickListener) {
         super(context);
         this.itemClickListener = itemClickListener;
-
-        PackageManager mPackageManager = context.getPackageManager();
-        Set<String> mBlackListSet = new HashSet<>();
-        mBlackListSet.add("com.aurora.store");
-        mBlackListSet.add("com.google.android.gms");
-        mBlackListSet.add("Services Framework Proxy");
-        mBlackListSet.add("com.android.vending");
-        mBlackListSet.add("");
-
-        packagesList = new ArrayList<>();
-        for (int i = 0; i < resolveInfos.size(); i++) {
-            ResolveInfo mResolveInfo = resolveInfos.get(i);
-            String mPackageName = mResolveInfo.activityInfo.packageName;
-            if (!mBlackListSet.contains(mPackageName)) {
-                packagesList.add(new Packages(mResolveInfo, mPackageName, mPackageManager));
-            }
-        }
+        this.appList = appList;
     }
 
     @NotNull
@@ -82,27 +63,36 @@ public class BlacklistAdapter extends SelectableAdapter<BlacklistAdapter.ViewHol
 
     @Override
     public void onBindViewHolder(@NotNull ViewHolder viewHolder, int position) {
-        viewHolder.label.setText(packagesList.get(position).getLabel());
-        viewHolder.icon.setImageDrawable(packagesList.get(position).getIcon());
-        viewHolder.checkBox.setChecked(isSelected(packagesList.get(position).getPackageName()));
+        final App app = appList.get(position);
+        viewHolder.label.setText(app.getDisplayName());
+        viewHolder.packageName.setText(app.getPackageName());
+        viewHolder.checkBox.setChecked(isSelected(app.getPackageName()));
+        GlideApp
+                .with(context)
+                .load(app.getIconInfo().getUrl())
+                .into(viewHolder.icon);
     }
 
     @Override
     public int getItemCount() {
-        return packagesList.size();
+        return appList.size();
     }
 
     @Override
     public void toggleSelection(int position) {
-        String packageName = packagesList.get(position).getPackageName();
+        String packageName = appList.get(position).getPackageName();
         if (mSelections.contains(packageName)) {
             mSelections.remove(packageName);
+            mBlacklistManager.remove(packageName);
         } else {
             mSelections.add(packageName);
         }
         notifyItemChanged(position);
     }
 
+    public int getSelectedCount() {
+        return mSelections.size();
+    }
 
     public interface ItemClickListener {
         void onItemClicked(int position);
@@ -112,6 +102,8 @@ public class BlacklistAdapter extends SelectableAdapter<BlacklistAdapter.ViewHol
 
         @BindView(R.id.label)
         TextView label;
+        @BindView(R.id.packageName)
+        TextView packageName;
         @BindView(R.id.icon)
         ImageView icon;
         @BindView(R.id.check)

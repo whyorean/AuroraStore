@@ -114,11 +114,11 @@ public class AppMenuAdapter extends RecyclerView.Adapter<AppMenuAdapter.ViewHold
                 });
                 break;
             case R.id.action_blacklist:
-                BlacklistManager blacklistManager = new BlacklistManager(context);
-                if (blacklistManager.isBackListed(app.getPackageName())) {
+                final BlacklistManager blacklistManager = new BlacklistManager(context);
+                if (blacklistManager.contains(app.getPackageName())) {
                     holder.menu_title.setText(R.string.action_whitelist);
                     view.setOnClickListener(v -> {
-                        blacklistManager.removeFromBlacklist(app.getPackageName());
+                        blacklistManager.remove(app.getPackageName());
                         menuSheet.dismissAllowingStateLoss();
                         Toast.makeText(context, context.getString(R.string.toast_apk_whitelisted),
                                 Toast.LENGTH_SHORT).show();
@@ -126,7 +126,7 @@ public class AppMenuAdapter extends RecyclerView.Adapter<AppMenuAdapter.ViewHold
                 } else {
                     holder.menu_title.setText(R.string.action_blacklist);
                     view.setOnClickListener(v -> {
-                        blacklistManager.addToBlacklist(app.getPackageName());
+                        blacklistManager.add(app.getPackageName());
                         menuSheet.dismissAllowingStateLoss();
                         Toast.makeText(context, context.getString(R.string.toast_apk_blacklisted),
                                 Toast.LENGTH_SHORT).show();

@@ -25,50 +25,59 @@ import android.content.Context;
 import com.aurora.store.Constants;
 import com.aurora.store.utility.PrefUtil;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
 public class BlacklistManager {
 
     private Context context;
+    private ArrayList<String> blackList;
 
     public BlacklistManager(Context context) {
         this.context = context;
+        blackList = PrefUtil.getListString(context, Constants.PREFERENCE_BLACKLIST_APPS_LIST);
     }
 
-    public Set<String> getBlacklistedApps() {
-        return PrefUtil.getStringSet(context, Constants.PREFERENCE_BLACKLIST_APPS_SET);
+    public boolean add(String s) {
+        ArrayList<String> arrayList = new ArrayList<>();
+        arrayList.add(s);
+        boolean result = addAll(arrayList);
+        save();
+        return result;
     }
 
-    public boolean isBackListed(String packageName){
-        Set<String> hiddenApps = PrefUtil.getStringSet(context, Constants.PREFERENCE_BLACKLIST_APPS_SET);
-        return  hiddenApps.contains(packageName);
+    public boolean addAll(ArrayList<String> arrayList) {
+        boolean result = blackList.addAll(arrayList);
+        Set<String> mAppSet = new HashSet<>(blackList);
+        blackList.clear();
+        blackList.addAll(mAppSet);
+        save();
+        return result;
     }
 
-    public void addToBlacklist(String packageName) {
-        Set<String> hiddenApps = PrefUtil.getStringSet(context, Constants.PREFERENCE_BLACKLIST_APPS_SET);
-        hiddenApps.add(packageName);
-        PrefUtil.putStringSet(context, Constants.PREFERENCE_BLACKLIST_APPS_SET, hiddenApps);
+    public ArrayList<String> get() {
+        return blackList;
     }
 
-    public void removeFromBlacklist(String packageName) {
-        Set<String> hiddenApps = PrefUtil.getStringSet(context, Constants.PREFERENCE_BLACKLIST_APPS_SET);
-        if (hiddenApps != null && !hiddenApps.isEmpty()) {
-            hiddenApps.remove(packageName);
-        }
-        PrefUtil.putStringSet(context, Constants.PREFERENCE_BLACKLIST_APPS_SET, hiddenApps);
+    public boolean contains(String packageName) {
+        return blackList.contains(packageName);
     }
 
-    public void addSelectionsToBlackList(Set<String> set) {
-        PrefUtil.putStringSet(context, Constants.PREFERENCE_BLACKLIST_APPS_SET, set);
+    public boolean remove(String packageName) {
+        boolean result = blackList.remove(packageName);
+        save();
+        return result;
     }
 
-    public void removeSelectionsFromBlackList(Set<String> set) {
-        Set<String> hiddenApps = PrefUtil.getStringSet(context, Constants.PREFERENCE_BLACKLIST_APPS_SET);
-        if (hiddenApps != null && !hiddenApps.isEmpty()) {
-            set.removeAll(hiddenApps);
-        }
-        PrefUtil.putStringSet(context, Constants.PREFERENCE_BLACKLIST_APPS_SET, set);
+    public boolean removeAll(ArrayList<String> packageList) {
+        boolean result = blackList.removeAll(packageList);
+        save();
+        return result;
+    }
+
+    private void save() {
+        PrefUtil.putListString(context, Constants.PREFERENCE_BLACKLIST_APPS_LIST, blackList);
     }
 
     public Set<String> getGoogleApps() {

@@ -26,21 +26,19 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.aurora.store.manager.BlacklistManager;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
 
 abstract class SelectableAdapter<VH extends RecyclerView.ViewHolder> extends RecyclerView.Adapter<VH> {
 
-    protected Set<String> mSelections;
+    protected ArrayList<String> mSelections;
     protected Context context;
-    private BlacklistManager mBlacklistManager;
+    protected BlacklistManager mBlacklistManager;
 
     SelectableAdapter(Context context) {
         this.context = context;
         mBlacklistManager = new BlacklistManager(context);
-        Set<String> blacklistedApps = mBlacklistManager.getBlacklistedApps();
-        mSelections = new HashSet<>();
-
+        ArrayList<String> blacklistedApps = mBlacklistManager.get();
+        mSelections = new ArrayList<>();
         if (blacklistedApps != null && !blacklistedApps.isEmpty()) {
             mSelections.addAll(blacklistedApps);
         }
@@ -54,14 +52,11 @@ abstract class SelectableAdapter<VH extends RecyclerView.ViewHolder> extends Rec
     }
 
     public void addSelectionsToBlackList() {
-        mBlacklistManager.addSelectionsToBlackList(mSelections);
+        mBlacklistManager.addAll(mSelections);
     }
 
-    public void removeSelectionsToBlackList() {
-        Set<String> blacklistedApps = mBlacklistManager.getBlacklistedApps();
-        if (blacklistedApps != null && !blacklistedApps.isEmpty()) {
-            mSelections.removeAll(blacklistedApps);
-        }
-        mBlacklistManager.removeSelectionsFromBlackList(mSelections);
+    public void removeSelectionsFromBlackList() {
+        mBlacklistManager.removeAll(mSelections);
+        mSelections = new ArrayList<>();
     }
 }

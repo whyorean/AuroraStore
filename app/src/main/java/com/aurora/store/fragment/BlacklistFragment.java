@@ -21,37 +21,50 @@
 package com.aurora.store.fragment;
 
 import android.content.Context;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.content.pm.ResolveInfo;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.ViewSwitcher;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.aurora.store.manager.BlacklistManager;
+import com.aurora.store.ErrorType;
 import com.aurora.store.R;
 import com.aurora.store.adapter.BlacklistAdapter;
+import com.aurora.store.model.App;
+import com.aurora.store.task.InstalledApps;
+import com.aurora.store.utility.Log;
+import com.aurora.store.utility.ViewUtil;
+import com.aurora.store.view.CustomSwipeToRefresh;
+import com.aurora.store.view.ErrorView;
 
-import java.util.Collections;
 import java.util.List;
-import java.util.Set;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import io.reactivex.Observable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
 
 
-public class BlacklistFragment extends Fragment implements BlacklistAdapter.ItemClickListener {
+public class BlacklistFragment extends BaseFragment implements BlacklistAdapter.ItemClickListener, BaseFragment.EventListenerImpl {
 
-    @BindView(R.id.recycler_view)
+    @BindView(R.id.view_switcher)
+    ViewSwitcher mViewSwitcher;
+    @BindView(R.id.content_view)
+    LinearLayout layoutContent;
+    @BindView(R.id.err_view)
+    LinearLayout layoutError;
+    @BindView(R.id.swipe_layout)
+    CustomSwipeToRefresh customSwipeToRefresh;
+    @BindView(R.id.recycler)
     RecyclerView mRecyclerView;
     @BindView(R.id.btn_clear_all)
     Button btnClearAll;
@@ -59,7 +72,6 @@ public class BlacklistFragment extends Fragment implements BlacklistAdapter.Item
     TextView txtBlacklist;
 
     private Context context;
-    private BlacklistManager mBlacklistManager;
     private BlacklistAdapter mAdapter;
 
     @Override
@@ -79,9 +91,14 @@ public class BlacklistFragment extends Fragment implements BlacklistAdapter.Item
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mBlacklistManager = new BlacklistManager(context);
-        setupRecycler();
+        setErrorView(ErrorType.UNKNOWN);
+        loadAllApps();
         setupClearAll();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
     }
 
     private void updateBlackListedApps() {
@@ -90,18 +107,59 @@ public class BlacklistFragment extends Fragment implements BlacklistAdapter.Item
 
     private void clearBlackListedApps() {
         if (mAdapter != null) {
-            mAdapter.removeSelectionsToBlackList();
+            mAdapter.removeSelectionsFromBlackList();
             mAdapter.notifyDataSetChanged();
             txtBlacklist.setText(getString(R.string.list_blacklist_none));
         }
     }
 
-    private void setupRecycler() {
-        List<ResolveInfo> mInstalledPackages = getInstalledApps();
-        mAdapter = new BlacklistAdapter(context, mInstalledPackages, this);
+    private void loadAllApps() {
+        InstalledApps mTaskHelper = new InstalledApps(context);
+        mDisposable.add(Observable.fromCallable(() -> mTaskHelper.getInstalledApps(false))
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnSubscribe(subscription -> customSwipeToRefresh.setRefreshing(true))
+                .subscribe((appList) -> {
+                    if (appList.isEmpty()) {
+                        setErrorView(ErrorType.NO_APPS);
+                        switchViews(true);
+                    } else {
+                        switchViews(false);
+                        setupRecycler(appList);
+                    }
+                }, err -> {
+                    Log.e(err.getMessage());
+                    processException(err);
+                }));
+    }
+
+    private void setupRecycler(List<App> appList) {
+        customSwipeToRefresh.setRefreshing(false);
+        mAdapter = new BlacklistAdapter(context, appList, this);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(context, RecyclerView.VERTICAL, false));
         mRecyclerView.setAdapter(mAdapter);
+        updateCount();
+    }
+
+    private void setErrorView(ErrorType errorType) {
+        layoutError.removeAllViews();
+        layoutError.addView(new ErrorView(context, errorType, retry()));
+    }
+
+    private View.OnClickListener retry() {
+        return v -> {
+            loadAllApps();
+            ((Button) v).setText(getString(R.string.action_retry_ing));
+            ((Button) v).setEnabled(false);
+        };
+    }
+
+    private void switchViews(boolean showError) {
+        if (mViewSwitcher.getCurrentView() == layoutContent && showError)
+            mViewSwitcher.showNext();
+        else if (mViewSwitcher.getCurrentView() == layoutError && !showError)
+            mViewSwitcher.showPrevious();
     }
 
     private void setupClearAll() {
@@ -110,24 +168,37 @@ public class BlacklistFragment extends Fragment implements BlacklistAdapter.Item
         });
     }
 
+    private void updateCount() {
+        int count = mAdapter.getSelectedCount();
+        String txtCount = new StringBuilder()
+                .append(getResources().getString(R.string.list_blacklist))
+                .append(" : ")
+                .append(count).toString();
+        txtBlacklist.setText(count > 0 ? txtCount : getString(R.string.list_blacklist_none));
+        ViewUtil.setVisibility(btnClearAll, count > 0, true);
+    }
+
     @Override
     public void onItemClicked(int position) {
         mAdapter.toggleSelection(position);
         updateBlackListedApps();
-        int count = mBlacklistManager.getBlacklistedApps().size();
-        String txtCount = new StringBuilder()
-                .append(getResources().getString(R.string.list_blacklist))
-                .append(" : ")
-                .append(mBlacklistManager.getBlacklistedApps().size()).toString();
-        txtBlacklist.setText(count > 0 ? txtCount : getString(R.string.list_blacklist_none));
+        updateCount();
     }
 
-    private List<ResolveInfo> getInstalledApps() {
-        PackageManager packageManager = context.getPackageManager();
-        Intent intent = new Intent(Intent.ACTION_MAIN, null);
-        intent.addCategory(Intent.CATEGORY_LAUNCHER);
-        List<ResolveInfo> installedApps = packageManager.queryIntentActivities(intent, PackageManager.GET_META_DATA);
-        Collections.sort(installedApps, new ResolveInfo.DisplayNameComparator(packageManager));
-        return installedApps;
+    @Override
+    public void onLoggedIn() {
+        loadAllApps();
+    }
+
+    @Override
+    public void onLoginFailed() {
+        setErrorView(ErrorType.UNKNOWN);
+        switchViews(true);
+    }
+
+    @Override
+    public void onNetworkFailed() {
+        setErrorView(ErrorType.NO_NETWORK);
+        switchViews(true);
     }
 }
