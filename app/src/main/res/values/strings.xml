@@ -21,7 +21,10 @@
 <resources>
 
     <string name="account_dummy">Anonymous</string>
+    <string name="account_dummy_desc">Login using Anonymous Account ?</string>
     <string name="account_google">Google Account</string>
+    <string name="account_logout">Logout from Aurora ?</string>
+    <string name="account_prompt_login">Kindly login to continue</string>
     <string name="account_switch">Switch account</string>
 
     <string name="action_accounts">Accounts</string>

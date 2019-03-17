@@ -37,7 +37,6 @@ import android.widget.ViewSwitcher;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.aurora.store.utility.Accountant;
 import com.aurora.store.Constants;
 import com.aurora.store.GlideApp;
 import com.aurora.store.R;
@@ -45,11 +44,13 @@ import com.aurora.store.activity.AuroraActivity;
 import com.aurora.store.activity.IntroActivity;
 import com.aurora.store.api.PlayStoreApiAuthenticator;
 import com.aurora.store.task.UserProfiler;
+import com.aurora.store.utility.Accountant;
 import com.aurora.store.utility.Log;
 import com.aurora.store.utility.PrefUtil;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 import com.dragons.aurora.playstoreapiv2.Image;
 import com.google.android.material.chip.Chip;
+import com.google.android.material.textfield.TextInputEditText;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -89,9 +90,9 @@ public class AccountsFragment extends BaseFragment implements BaseFragment.Event
     @BindView(R.id.user_mail)
     TextView txtMail;
     @BindView(R.id.txt_input_email)
-    TextView txtInputEmail;
+    TextInputEditText txtInputEmail;
     @BindView(R.id.txt_input_password)
-    TextView txtInputPassword;
+    TextInputEditText txtInputPassword;
     @BindView(R.id.user_account_chip)
     Chip accountSwitch;
     @BindView(R.id.progress_bar)
@@ -104,7 +105,8 @@ public class AccountsFragment extends BaseFragment implements BaseFragment.Event
     Button btnNegative;
 
     private Context context;
-    private boolean dummyAcc = false;
+    private boolean isDummy = false;
+    private boolean isLoggedIn = false;
     private CompositeDisposable mCompositeDisposable = new CompositeDisposable();
 
     @Override
@@ -123,13 +125,7 @@ public class AccountsFragment extends BaseFragment implements BaseFragment.Event
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        dummyAcc = Accountant.isDummy(context);
         init();
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
     }
 
     @Override
@@ -155,29 +151,31 @@ public class AccountsFragment extends BaseFragment implements BaseFragment.Event
     }
 
     private void init() {
-        setupView();
-        setupAccType();
-        setupActions();
+        isLoggedIn = Accountant.isLoggedIn(context);
+        isDummy = Accountant.isDummy(context);
         mProgressBar.setVisibility(View.INVISIBLE);
+        setupView();
+        setupAccountType();
+        setupActions();
     }
 
     private void setupView() {
-        if (Accountant.isLoggedIn(context)) {
-            switchTopViews(true);
-            switchBottomViews(true);
-            if (Accountant.isDummy(context))
+        if (isLoggedIn) {
+            if (isDummy)
                 loadDummyData();
             else
                 loadGoogleData();
-        } else {
-            switchTopViews(false);
-            switchBottomViews(false);
         }
+        switchTopViews(isLoggedIn);
+        switchLoginViews(!isDummy);
+        switchBottomViews(isLoggedIn);
+        switchButtonState(isLoggedIn);
     }
 
-    private void setupAccType() {
-        dummyAcc = Accountant.isDummy(context);
-        accountSwitch.setText(dummyAcc ? R.string.account_dummy : R.string.account_google);
+    private void setupAccountType() {
+        accountSwitch.setEnabled(!isLoggedIn);
+        accountSwitch.setClickable(!isLoggedIn);
+        accountSwitch.setText(isDummy ? R.string.account_dummy : R.string.account_google);
     }
 
     private void setupActions() {
@@ -229,37 +227,41 @@ public class AccountsFragment extends BaseFragment implements BaseFragment.Event
         btnPositiveAlt.setText(logging ? R.string.action_logging_in : R.string.action_login);
         btnPositive.setEnabled(!logging);
         btnPositiveAlt.setEnabled(!logging);
-        mProgressBar.setVisibility(logging ? View.VISIBLE : View.INVISIBLE);
     }
 
     private View.OnClickListener logoutListener() {
         return v -> {
             Accountant.completeCheckout(context);
-            switchTopViews(false);
-            switchBottomViews(false);
-            switchButtonState(false);
+            init();
         };
     }
 
     private View.OnClickListener loginListener() {
         return v -> {
-            if (dummyAcc) {
+            if (isDummy) {
                 logInWithDummy();
             } else {
-                logInWithGoogle(txtInputEmail.getText().toString(), txtInputPassword.getText().toString());
+                final String email = txtInputEmail.getText().toString();
+                final String password = txtInputPassword.getText().toString();
+                if (email.isEmpty())
+                    txtInputEmail.setError("?");
+                if (password.isEmpty())
+                    txtInputPassword.setError("?");
+                if (!email.isEmpty() && !password.isEmpty())
+                    logInWithGoogle(email, password);
             }
         };
     }
 
     private View.OnClickListener switchAccountListener() {
         return v -> {
-            if (dummyAcc) {
-                dummyAcc = false;
+            if (isDummy) {
+                isDummy = false;
                 accountSwitch.setText(R.string.account_google);
                 if (!Accountant.isLoggedIn(context))
                     switchLoginViews(true);
             } else {
-                dummyAcc = true;
+                isDummy = true;
                 accountSwitch.setText(R.string.account_dummy);
                 if (!Accountant.isLoggedIn(context))
                     switchLoginViews(false);
@@ -272,6 +274,7 @@ public class AccountsFragment extends BaseFragment implements BaseFragment.Event
         mCompositeDisposable.add(Observable.fromCallable(() ->
                 new PlayStoreApiAuthenticator(context).login())
                 .subscribeOn(Schedulers.io())
+                .doOnSubscribe(sub -> mProgressBar.setVisibility(View.VISIBLE))
                 .observeOn(Schedulers.computation())
                 .subscribe((success) -> {
                     if (success) {
@@ -296,10 +299,11 @@ public class AccountsFragment extends BaseFragment implements BaseFragment.Event
         mCompositeDisposable.add(Observable.fromCallable(() ->
                 new PlayStoreApiAuthenticator(context).login(email, password))
                 .subscribeOn(Schedulers.io())
+                .doOnSubscribe(sub -> mProgressBar.setVisibility(View.VISIBLE))
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe((success) -> {
                     if (success) {
-                        Log.d("Google Login Successful");
+                        Log.i("Google Login Successful");
                         runOnUiThread(() -> {
                             Accountant.saveGoogle(context);
                             getUserInfo();

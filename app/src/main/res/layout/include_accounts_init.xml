@@ -50,7 +50,7 @@
         android:layout_marginTop="@dimen/margin_small"
         android:layout_marginBottom="@dimen/margin_normal"
         android:gravity="center_vertical"
-        android:text="Kindly login to continue"
+        android:text="@string/account_prompt_login"
         android:textAppearance="@style/TextAppearance.Aurora.Body"
         android:textSize="14sp" />
 </RelativeLayout>

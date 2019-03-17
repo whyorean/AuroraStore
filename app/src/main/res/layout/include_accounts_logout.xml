@@ -30,7 +30,7 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:layout_marginBottom="@dimen/margin_medium"
-        android:text="Logout from Aurora ?" />
+        android:text="@string/account_logout" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_negative"

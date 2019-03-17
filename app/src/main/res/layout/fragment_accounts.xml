@@ -85,8 +85,7 @@
                     android:layout_below="@id/user_account_type"
                     android:layout_centerHorizontal="true"
                     android:text="@string/account_google"
-                    app:chipIcon="@drawable/ic_action"
-                    app:rippleColor="@color/colorGreyLight" />
+                    app:rippleColor="@color/colorScrim" />
             </RelativeLayout>
 
             <ViewSwitcher
