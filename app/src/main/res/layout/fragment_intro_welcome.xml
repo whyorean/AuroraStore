@@ -56,8 +56,9 @@
             android:layout_below="@+id/app_name"
             android:layout_margin="@dimen/margin_normal"
             android:background="@drawable/generic_padded_bg"
-            android:text="@string/desc_welcome"
-            android:textAlignment="center"
+            android:text="@string/app_log"
+            android:typeface="monospace"
+            android:textAlignment="viewStart"
             android:textColor="?android:attr/textColorPrimary" />
 
         <RelativeLayout

@@ -1,0 +1,36 @@
+<!--
+  ~ Aurora Store
+  ~ Copyright (C) 2019, Rahul Kumar Patel <whyorean@gmail.com>
+  ~
+  ~ Aurora Store is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 2 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ Aurora Store is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with Aurora Store.  If not, see <http://www.gnu.org/licenses/>.
+  ~
+  ~
+  -->
+
+<resources>
+    <string name="app_log" translatable="false">
+        \n Changelog : v3.0.1
+        \n
+        \n • Written from scratch
+        \n • Added support for Split APKs
+        \n • Added in-app Download Manager
+        \n • Added new improved Notification Manager
+        \n • New UI based on latest MD Guidelines
+        \n • Deployed dedicated token-dispenser
+        \n • Improved Blacklist Manager
+        \n • Added Favourite Apps Manager
+        \n • and more..
+
+    </string>
+</resources>
