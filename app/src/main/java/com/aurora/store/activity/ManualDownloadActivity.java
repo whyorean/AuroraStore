@@ -152,6 +152,10 @@ public class ManualDownloadActivity extends AppCompatActivity {
         setText(R.id.txt_rating, app.getLabeledRating());
         setText(R.id.txt_installs, Util.addDiPrefix(app.getInstalls()));
         setText(R.id.txt_size, Formatter.formatShortFileSize(this, app.getSize()));
+        setText(R.id.txt_updated,app.getUpdated());
+        setText(R.id.txt_google_dependencies,app.getDependencies().isEmpty()
+                ? R.string.list_app_independent_from_gsf
+                : R.string.list_app_depends_on_gsf);
     }
 
     private void drawEditText() {

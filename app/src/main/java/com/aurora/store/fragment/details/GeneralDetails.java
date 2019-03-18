@@ -41,8 +41,6 @@ import com.aurora.store.utility.Log;
 import com.aurora.store.utility.TextUtil;
 import com.aurora.store.utility.Util;
 import com.aurora.store.utility.ViewUtil;
-import com.bumptech.glide.load.resource.bitmap.CenterCrop;
-import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.google.android.material.chip.Chip;
 
