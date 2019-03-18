@@ -108,7 +108,7 @@ public class GeneralNotification extends NotificationBase {
                 manager.createNotificationChannel(channel);
                 builder.setChannelId(channel.getId());
             }
-            Glide.with(context)
+            Glide.with(context.getApplicationContext())
                     .asBitmap()
                     .load(app.getIconInfo().getUrl())
                     .into(new SimpleTarget<Bitmap>() {
