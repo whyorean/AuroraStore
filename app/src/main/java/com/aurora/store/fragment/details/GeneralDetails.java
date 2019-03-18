@@ -97,7 +97,8 @@ public class GeneralDetails extends AbstractHelper {
                     .transition(new DrawableTransitionOptions().crossFade())
                     .into(appIcon);
             setText(view, R.id.displayName, app.getDisplayName());
-            setText(view, R.id.packageName, app.getDeveloperName());
+            setText(view, R.id.packageName, app.getPackageName());
+            setText(view, R.id.devName, app.getDeveloperName());
             drawVersion();
         }
     }

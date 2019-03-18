@@ -126,7 +126,8 @@ public class ManualDownloadActivity extends AppCompatActivity {
         }
 
         setText(R.id.displayName, app.getDisplayName());
-        setText(R.id.packageName, app.getDeveloperName());
+        setText(R.id.packageName, app.getPackageName());
+        setText(R.id.devName, app.getDeveloperName());
         drawVersion();
         drawGeneralDetails();
         drawEditText();

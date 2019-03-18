@@ -60,6 +60,17 @@
             android:layout_centerHorizontal="true"
             android:singleLine="true"
             android:textAlignment="viewStart"
+            android:textIsSelectable="true"
+            android:textSize="12sp" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/devName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/packageName"
+            android:layout_centerHorizontal="true"
+            android:singleLine="true"
+            android:textAlignment="viewStart"
             android:textColor="?android:attr/colorAccent"
             android:textSize="16sp" />
 
@@ -67,7 +78,7 @@
             android:id="@+id/versionString"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/packageName"
+            android:layout_below="@id/devName"
             android:layout_centerHorizontal="true"
             android:singleLine="true"
             android:textAlignment="viewStart"
