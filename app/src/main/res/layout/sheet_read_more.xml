@@ -45,6 +45,7 @@
             android:id="@+id/content_readMore"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textIsSelectable="true"
             android:padding="@dimen/margin_small"
             android:textColor="?android:attr/textColorPrimary" />
     </androidx.core.widget.NestedScrollView>
