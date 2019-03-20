@@ -50,4 +50,4 @@ Thereby avoding the various concerned *userdata & privacy issues.
 * [Raccoon](https://github.com/onyxbits/raccoon4)
 * [SAI](https://github.com/Aefyr/SAI)
 
-[<img src="https://f-droid.org/badge/get-it-on.png" alt="Get it on F-Droid" height="60">](https://f-droid.org/packages/com.dragons.aurora/) [<img src="https://poeditor.com/public/images/logo_small.png" alt="Join POEditor">](https://poeditor.com/join/project/oRXLiul6hZ) 
+[<img src="https://f-droid.org/badge/get-it-on.png" alt="Get it on F-Droid" height="60">](https://f-droid.org/packages/com.dragons.aurora/) [<img src="https://poeditor.com/public/images/logo_small.png" alt="Join POEditor">](https://poeditor.com/join/project/54swaCpFXJ) 
