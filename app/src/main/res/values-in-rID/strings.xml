@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~ Aurora Store
+  ~ Copyright (C) 2019, Rahul Kumar Patel <whyorean@gmail.com>
+  ~
+  ~ Aurora Store is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 2 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ Aurora Store is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with Aurora Store.  If not, see <http://www.gnu.org/licenses/>.
+  ~
+  ~
+  -->
+
+<resources>
+    <string name="account_dummy">Anonim</string>
+    <string name="account_dummy_desc">Login menggunakan Akun Anonim?</string>
+    <string name="account_google">Akun Google</string>
+    <string name="account_logout">Logout dari Aurora?</string>
+    <string name="account_prompt_login">Mohon login untuk melanjutkan</string>
+    <string name="account_switch">Ganti akun</string>
+
+    <string name="action_accounts">Akun</string>
+    <string name="action_ask">Meminta</string>
+    <string name="action_blacklist">Blacklist</string>
+    <string name="action_cancel">Membatalkan</string>
+    <string name="action_clear">Bersih</string>
+    <string name="action_clear_all">Bersihkan semua</string>
+    <string name="action_convert_local">Konversi Lokal</string>
+    <string name="action_convert_system">Konversi Sistem</string>
+    <string name="action_copied">Tautan disalin ke papan klip</string>
+    <string name="action_copy">Salin tautan</string>
+    <string name="action_disable">Nonaktifkan</string>
+    <string name="action_done">Selesai</string>
+    <string name="action_enable">Memungkinkan</string>
+    <string name="action_export">Ekspor</string>
+    <string name="action_favourites">Aplikasi Favorit</string>
+    <string name="action_filter">Filter</string>
+    <string name="action_filter_all">Semua</string>
+    <string name="action_filter_apply">Menerapkan</string>
+    <string name="action_filter_apps_with_ads">Aplikasi dengan iklan</string>
+    <string name="action_filter_downloads">Unduhan</string>
+    <string name="action_filter_gsf_dependent_apps">Tergantung GSF</string>
+    <string name="action_filter_misc">Lain-lain</string>
+    <string name="action_filter_paid_apps">Dibayar</string>
+    <string name="action_filter_rating">Peringkat</string>
+    <string name="action_flag">Laporkan Aplikasi</string>
+    <string name="action_get_local_apk">Dapatkan APK Lokal</string>
+    <string name="action_home">Rumah</string>
+    <string name="action_installations">Instalasi</string>
+    <string name="action_installed">Diinstal</string>
+    <string name="action_later">Kemudian</string>
+    <string name="action_logging_in">Masuk</string>
+    <string name="action_login">Masuk</string>
+    <string name="action_logout">Keluar</string>
+    <string name="action_make_normal">Konversikan ke aplikasi normal</string>
+    <string name="action_make_system">Konversikan ke aplikasi sistem</string>
+    <string name="action_manual">Manual download</string>
+    <string name="action_more">Lebih</string>
+    <string name="action_next">Berikutnya</string>
+    <string name="action_pause">Jeda</string>
+    <string name="action_remove">Menghapus</string>
+    <string name="action_restart">Restart</string>
+    <string name="action_resume">Resume</string>
+    <string name="action_retry">Mencoba kembali</string>
+    <string name="action_retry_ing">Coba lagi</string>
+    <string name="action_search">Pencarian</string>
+    <string name="action_search_clearHistory">Bersihkan semua</string>
+    <string name="action_search_history">Sejarah pencarian</string>
+    <string name="action_settings">Pengaturan</string>
+    <string name="action_spoofed">Menipu</string>
+    <string name="action_submit">Menyerahkan</string>
+    <string name="action_unignore">Hapus dari daftar hitam</string>
+    <string name="action_uninstall">Uninstall</string>
+    <string name="action_unwhitelist">Abaikan pembaruan</string>
+    <string name="action_updates">Pembaruan</string>
+    <string name="action_whitelist">Daftar putih</string>
+
+    <string name="apps_by">Aplikasi oleh %s</string>
+    <string name="availability_restriction_country">"Item ini tidak tersedia di negara Anda."</string>
+    <string name="availability_restriction_generic">"Item ini tidak tersedia."</string>
+    <string name="availability_restriction_hardware_app">"Perangkat Anda tidak kompatibel dengan versi ini."</string>
+    <string name="category_appFree">Bebas</string>
+    <string name="category_topFree">Gratis Teratas</string>
+    <string name="category_topGrossing">Terlaris</string>
+    <string name="category_trending">Trending</string>
+
+    <string name="chip_all_apps">semua Kategori</string>
+    <string name="chip_all_family">Semua keluarga</string>
+    <string name="chip_all_games">Semua permainan</string>
+    <string name="chip_top_free">Gratis Teratas</string>
+    <string name="chip_top_grossing">Terlaris</string>
+    <string name="chip_top_trending">Trending</string>
+
+    <string name="delete">Menghapus</string>
+    <string name="desc_perm">Toko Aurora menggunakan izin berikut</string>
+
+    <string name="details_appReviewsAll">Baca Semua Ulasan</string>
+    <string name="details_contains_ads">Berisi iklan</string>
+    <string name="details_download">Download</string>
+    <string name="details_favourite_add">Tambahkan ke favorit</string>
+    <string name="details_favourite_remove">Hapus dari favorit</string>
+    <string name="details_install">Install</string>
+    <string name="details_installing">Menginstal</string>
+    <string name="details_more">Baca lebih lajut</string>
+    <string name="details_no_ads">Tidak ada iklan</string>
+    <string name="details_permissions">Izin aplikasi</string>
+    <string name="details_purchase">Membeli</string>
+    <string name="details_rate_this_app">Nilai aplikasi ini</string>
+    <string name="details_rating_reviews">Peringkat</string>
+    <string name="details_reviews">Ulasan aplikasi</string>
+    <string name="details_run">Buka</string>
+    <string name="details_share">Bagikan</string>
+    <string name="details_update">Update</string>
+    <string name="details_why_rate_this_app">Beri tahu orang lain apa pendapat Anda</string>
+    <string name="details_you_rated_this_app">Penilaianmu</string>
+
+    <string name="dialog_title_logout">Keluar ?</string>
+
+    <string name="download_cancel_all">Batalkan semua</string>
+    <string name="download_canceled">Dibatalkan</string>
+    <string name="download_clear_completed">Jelas selesai</string>
+    <string name="download_completed">Lengkap</string>
+    <string name="download_failed">Gagal</string>
+    <string name="download_force_clear_all">Paksa Bersihkan Semua</string>
+    <string name="download_pause_all">Jeda Semua</string>
+    <string name="download_paused">Dijeda</string>
+    <string name="download_progress">Mengunduh</string>
+    <string name="download_queued">Antri</string>
+    <string name="download_resume">Resume</string>
+    <string name="download_resume_all">Lanjutkan semuanya</string>
+
+    <string name="early_access">Akses awal</string>
+    <string name="error_app_not_found">Aplikasi tidak ditemukan</string>
+    <string name="error_incorrect_password">Email atau sandi salah</string>
+    <string name="error_invalid_device_definition">Definisi perangkat ditolak</string>
+    <string name="error_network_other">"Kesalahan jaringan: %s"</string>
+    <string name="error_no_network">Tidak ada koneksi jaringan</string>
+    <string name="error_search_not_found">Tidak ditemukan aplikasi yang cocok</string>
+    <string name="error_unknown">Terjadi kesalahan tidak dikenal</string>
+
+    <string name="exodus_hasTracker">Berisi pelacak %s</string>
+    <string name="exodus_noTracker">Tidak mengandung pelacak</string>
+    <string name="exodus_powered">Didukung oleh Exodus</string>
+    <string name="exodus_title">Aurora Protect</string>
+    <string name="exodus_title_alt">Laporan Keluaran</string>
+    <string name="exodus_viewMore">Melihat</string>
+    <string name="exodus_viewReport">Melihat laporan</string>
+
+    <string name="flagging_title">Tandai sebagai tidak pantas</string>
+
+    <string name="list_app_blacklisted_empty">Tidak Ada Aplikasi yang Di-Blacklist</string>
+    <string name="list_app_depends_on_gsf">Tergantung GSF</string>
+    <string name="list_app_has_ads">memiliki iklan</string>
+    <string name="list_app_independent_from_gsf">GSF independen</string>
+    <string name="list_app_no_ads">tidak ada iklan</string>
+    <string name="list_app_system">Aplikasi sistem</string>
+    <string name="list_app_user">Aplikasi pengguna</string>
+    <string name="list_blacklist">Aplikasi Daftar Hitam</string>
+    <string name="list_blacklist_none">Tidak Ada Aplikasi yang Di-Blacklist</string>
+    <string name="list_bulk_install">aplikasi diantrikan untuk pemasangan massal "</string>
+    <string name="list_empty_fav">Tidak ada favorit</string>
+    <string name="list_empty_query">Tidak ada pencarian terbaru</string>
+    <string name="list_empty_updates">Tidak ada pembaruan yang tersedia</string>
+    <string name="list_installed">Diinstal</string>
+    <string name="list_installed_system">Hanya tampilkan aplikasi pengguna</string>
+    <string name="list_not_installd">Tidak terpasang</string>
+    <string name="list_selected">Aplikasi Yang Dipilih: %d</string>
+    <string name="list_update_all">Perbarui Semua</string>
+    <string name="list_update_all_txt">pembaruan tersedia "</string>
+    <string name="list_updating">Memperbarui</string>
+
+    <string name="manual_download_disclaimer">Penolakan</string>
+    <string name="manual_download_incompatible">Google Play Store menganggap aplikasi ini tidak kompatibel dengan perangkat Anda. Ini berarti kode versi belum dikembalikan oleh server Google Play Store.</string>
+    <string name="manual_download_warning">Halaman ini memungkinkan Anda memilih versi aplikasi untuk diunduh secara manual. \ N \ nPerhatikan bahwa mengunduh versi aplikasi sewenang-wenang tidak didukung oleh Google Play Store. Keberhasilan Anda tergantung pada tebakan kode versi yang beruntung. Bahkan jika Anda menebak dengan benar dan Anda mendapatkan unduhan untuk memulai, Anda mungkin mendapatkan apk yang tidak kompatibel.</string>
+
+    <string name="menu_account">Akun</string>
+    <string name="menu_disclaimer">Penolakan</string>
+    <string name="menu_downloads">Unduhan</string>
+    <string name="menu_license">Lisensi</string>
+    <string name="menu_setting">Pengaturan</string>
+    <string name="menu_terms">Ketentuan layanan</string>
+
+    <string name="no_permissions">Tidak ada izin yang digunakan.</string>
+    <string name="notification_installation_complete">Berhasil Dipasang %s</string>
+    <string name="notification_installation_failed">Gagal memasang %s</string>
+    <string name="notification_installation_progress">Menginstal %s</string>
+
+    <string name="pref_app_download">Unduhan</string>
+    <string name="pref_app_network">Jaringan</string>
+    <string name="pref_app_notification">Notifikasi</string>
+    <string name="pref_app_ui">Antarmuka pengguna</string>
+    <string name="pref_category_spoof_device">Perangkat Spoof</string>
+    <string name="pref_category_spoof_lang">Bahasa Spoof</string>
+    <string name="pref_category_spoof_location">Lokasi spoof</string>
+    <string name="pref_device_to_pretend_to_be">Berpura-pura menjadi perangkat yang berbeda</string>
+    <string name="pref_device_to_pretend_to_be_default">Info perangkat asli Anda</string>
+    <string name="pref_device_to_pretend_to_be_toast">Perubahan ini akan diterapkan setelah Anda masuk kembali</string>
+    <string name="pref_dialog_to_apply_restart">Pengaturan ini akan diterapkan setelah Anda me-restart aplikasi</string>
+    <string name="pref_downloader_active_summary">Jumlah maksimum unduhan aktif</string>
+    <string name="pref_downloader_active_title">Active Download</string>
+    <string name="pref_downloader_debug_summary">Aktifkan unduhan debug untuk mendapatkan log terperinci</string>
+    <string name="pref_downloader_debug_title">Download debugging</string>
+    <string name="pref_downloader_path_title">Download Path</string>
+    <string name="pref_downloader_wifi_title">Unduh menggunakan wifi saja</string>
+    <string name="pref_filter_fdroid_summary">Menghapus Aplikasi F-droid dari daftar aplikasi</string>
+    <string name="pref_filter_fdroid_title">Filter Aplikasi F-droid</string>
+    <string name="pref_filter_google_summary">Menghapus semua Google Apps dari hasil Pencarian dan Kategori aplikasi</string>
+    <string name="pref_filter_google_title">Saring Google Apps</string>
+    <string name="pref_filter_search_summary">Filter pencarian direset pada setiap pencarian. Matikan untuk menyimpan filter pencarian</string>
+    <string name="pref_filter_search_title">Gunakan Filter Pencarian Non-Persisten</string>
+    <string name="pref_install_auto_summary">Aplikasi diinstal langsung setelah pengunduhan selesai</string>
+    <string name="pref_install_auto_title">Auto Install APKs Post-Download</string>
+    <string name="pref_install_delete_summary">Pada perangkat yang menjalankan Android Pie APK akan dihapus secara default</string>
+    <string name="pref_install_delete_title">Hapus Apk Pasca-Instalasi</string>
+    <string name="pref_install_mode_summary">Pilih Mode Instalasi APK</string>
+    <string name="pref_install_mode_title">Metode Instalasi</string>
+    <string name="pref_notification_priority_summary">Tetapkan tingkat prioritas untuk pemberitahuan aplikasi</string>
+    <string name="pref_notification_priority_title">Prioritas Pemberitahuan</string>
+    <string name="pref_notification_summary">Aktifkan Pemberitahuan Aurora</string>
+    <string name="pref_notification_title">Tampilkan Pemberitahuan</string>
+    <string name="pref_proxy_enable">Aktifkan proxy</string>
+    <string name="pref_proxy_host">Tuan rumah proxy</string>
+    <string name="pref_proxy_port">Port proxy</string>
+    <string name="pref_proxy_type">Jenis proxy</string>
+    <string name="pref_requested_language">Ubah bahasa permintaan API default</string>
+    <string name="pref_requested_language_default">Bahasa default Anda</string>
+    <string name="pref_requested_location_disable">Anda harus secara manual menonaktifkan MockLocation dari Opsi Pengembang untuk menonaktifkannya sepenuhnya.</string>
+    <string name="pref_requested_location_enable">Anda perlu secara manual mengaktifkan MockLocation dari Opsi Pengembang.</string>
+    <string name="pref_requested_location_summary">Toko Aurora harus ditetapkan sebagai Aplikasi Lokasi Mock default</string>
+    <string name="pref_ui_card_summary">Gunakan kartu gaya lama untuk aplikasi unggulan</string>
+    <string name="pref_ui_card_title">Kartu Aplikasi Gaya Lama</string>
+    <string name="pref_ui_snap_summary">Tampilkan hanya satu aplikasi pada gulir</string>
+    <string name="pref_ui_snap_title">Aktifkan SnapView untuk aplikasi</string>
+    <string name="pref_ui_theme_title">Tema</string>
+
+    <string name="testing_program_opt_in">Ikut</string>
+    <string name="testing_program_opt_out">Meninggalkan</string>
+    <string name="testing_program_review_dialog_content_hint">Masukkan umpan balik tentang aplikasi</string>
+    <string name="testing_program_section_opted_in_message">"Pembaruan aplikasi akan mencakup versi beta. Jika Anda meninggalkan program beta aplikasi ini, Anda tidak akan lagi mendapatkan pembaruan beta."</string>
+    <string name="testing_program_section_opted_in_propagating_message">"Dalam beberapa menit, kamu akan ditambahkan ke program beta. Kemudian kamu dapat memperbarui ke versi beta dari aplikasi ini, jika tersedia."</string>
+    <string name="testing_program_section_opted_in_title">"Kamu seorang beta tester"</string>
+    <string name="testing_program_section_opted_out_message">"Cobalah fitur baru sebelum dipublikasikan. Berikan tanggapan Anda langsung kepada pengembang."</string>
+    <string name="testing_program_section_opted_out_propagating_message">Butuh beberapa menit untuk menghapus Anda dari program beta.</string>
+    <string name="testing_program_section_opted_out_title">Menjadi penguji beta</string>
+
+    <string name="title_all_apps">Semua aplikasi</string>
+    <string name="title_home">Toko Aurora</string>
+    <string name="title_installed">Aplikasi saya</string>
+    <string name="title_perm">Izin</string>
+    <string name="title_search">Cari Aplikasi</string>
+    <string name="title_search_result">"Hasil untuk %s"</string>
+    <string name="title_updates">Pembaruan yang Tersedia</string>
+    <string name="title_welcome">Selamat datang</string>
+
+    <string name="toast_apk_blacklisted">Daftar Hitam</string>
+    <string name="toast_apk_whitelisted">Daftar putih</string>
+    <string name="toast_apk_copy_success">APK berhasil disalin</string>
+    <string name="toast_apk_copy_failure">Gagal menyalin APK</string>
+</resources>

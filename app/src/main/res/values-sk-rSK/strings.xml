@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~ Aurora Store
+  ~ Copyright (C) 2019, Rahul Kumar Patel <whyorean@gmail.com>
+  ~
+  ~ Aurora Store is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 2 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ Aurora Store is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with Aurora Store.  If not, see <http://www.gnu.org/licenses/>.
+  ~
+  ~
+  -->
+
+<resources>
+    <string name="account_dummy">anonymný</string>
+    <string name="account_dummy_desc">Prihlásiť pomocou anonymného účtu?</string>
+    <string name="account_google">Účet Google</string>
+    <string name="account_logout">Odhlásiť sa z Aurory?</string>
+    <string name="account_prompt_login">Ak chcete pokračovať, láskavo sa prihláste</string>
+    <string name="account_switch">Prepnúť účet</string>
+
+    <string name="action_accounts">účty</string>
+    <string name="action_ask">Opýtať sa</string>
+    <string name="action_blacklist">čierna listina</string>
+    <string name="action_cancel">Zrušiť</string>
+    <string name="action_clear">jasný</string>
+    <string name="action_clear_all">Zmazať všetko</string>
+    <string name="action_convert_local">Konvertovať miestne</string>
+    <string name="action_convert_system">Konvertovať systém</string>
+    <string name="action_copied">Odkaz skopírovaný do schránky</string>
+    <string name="action_copy">Skopírovať odkaz</string>
+    <string name="action_disable">zakázať</string>
+    <string name="action_done">hotový</string>
+    <string name="action_enable">umožniť</string>
+    <string name="action_export">Export</string>
+    <string name="action_favourites">Obľúbené aplikácie</string>
+    <string name="action_filter">filtre</string>
+    <string name="action_filter_all">všetko</string>
+    <string name="action_filter_apply">platiť</string>
+    <string name="action_filter_apps_with_ads">Aplikácie s reklamami</string>
+    <string name="action_filter_downloads">K stiahnutiu</string>
+    <string name="action_filter_gsf_dependent_apps">Závislé od GSF</string>
+    <string name="action_filter_misc">rôzne</string>
+    <string name="action_filter_paid_apps">zaplatil</string>
+    <string name="action_filter_rating">hodnotenie</string>
+    <string name="action_flag">Report App</string>
+    <string name="action_get_local_apk">Získať miestny APK</string>
+    <string name="action_home">Domov</string>
+    <string name="action_installations">zariadenie</string>
+    <string name="action_installed">nainštalovaný</string>
+    <string name="action_later">neskôr</string>
+    <string name="action_logging_in">Prihlasovanie</string>
+    <string name="action_login">Prihlásiť sa</string>
+    <string name="action_logout">Odhlásiť sa</string>
+    <string name="action_make_normal">Previesť na normálnu aplikáciu</string>
+    <string name="action_make_system">Previesť na systémovú aplikáciu</string>
+    <string name="action_manual">Manuálne prevzatie</string>
+    <string name="action_more">viac</string>
+    <string name="action_next">Ďalšie</string>
+    <string name="action_pause">Pauza</string>
+    <string name="action_remove">odstrániť</string>
+    <string name="action_restart">Reštart</string>
+    <string name="action_resume">Pokračovať</string>
+    <string name="action_retry">Skúsiť znova</string>
+    <string name="action_retry_ing">Retrying</string>
+    <string name="action_search">Vyhľadávanie</string>
+    <string name="action_search_clearHistory">Zmazať všetko</string>
+    <string name="action_search_history">História vyhľadávania</string>
+    <string name="action_settings">nastavenie</string>
+    <string name="action_spoofed">strašidlo</string>
+    <string name="action_submit">Predložiť</string>
+    <string name="action_unignore">Odstrániť z čiernej listiny</string>
+    <string name="action_uninstall">Uninstall</string>
+    <string name="action_unwhitelist">Ignorovať aktualizácie</string>
+    <string name="action_updates">aktualizácie</string>
+    <string name="action_whitelist">whitelist</string>
+
+    <string name="apps_by">Aplikácie od %s</string>
+    <string name="availability_restriction_country">Táto položka nie je vo vašej krajine k dispozícii.“</string>
+    <string name="availability_restriction_generic">"Táto položka nie je k dispozícii."</string>
+    <string name="availability_restriction_hardware_app">"Vaše zariadenie nie je kompatibilné s touto verziou."</string>
+    <string name="category_appFree">zadarmo</string>
+    <string name="category_topFree">Top Bezplatne</string>
+    <string name="category_topGrossing">Top Grossing</string>
+    <string name="category_trending">Trending</string>
+
+    <string name="chip_all_apps">Všetky kategórie</string>
+    <string name="chip_all_family">Všetky rodiny</string>
+    <string name="chip_all_games">Všetky hry</string>
+    <string name="chip_top_free">Top Bezplatne</string>
+    <string name="chip_top_grossing">Top Grossing</string>
+    <string name="chip_top_trending">Trending</string>
+
+    <string name="delete">vymazať</string>
+    <string name="desc_perm">Aurora Store používa nasledujúce povolenia</string>
+
+    <string name="details_appReviewsAll">Prečítajte si všetky recenzie</string>
+    <string name="details_contains_ads">Obsahuje reklamy</string>
+    <string name="details_download">Stiahnuť ▼</string>
+    <string name="details_favourite_add">Pridať do obľúbených</string>
+    <string name="details_favourite_remove">Odstrániť z obľúbených</string>
+    <string name="details_install">inštalovať</string>
+    <string name="details_installing">inštalácia</string>
+    <string name="details_more">Čítaj viac</string>
+    <string name="details_no_ads">Žiadne reklamy</string>
+    <string name="details_permissions">Povolenia aplikácií</string>
+    <string name="details_purchase">nákup</string>
+    <string name="details_rate_this_app">Ohodnoť túto aplikáciu</string>
+    <string name="details_rating_reviews">hodnotenie</string>
+    <string name="details_reviews">Recenzie aplikácií</string>
+    <string name="details_run">Otvorené</string>
+    <string name="details_share">zdieľam</string>
+    <string name="details_update">aktualizovať</string>
+    <string name="details_why_rate_this_app">Povedzte ostatným, čo si myslíte</string>
+    <string name="details_you_rated_this_app">Vaše hodnotenie</string>
+
+    <string name="dialog_title_logout">Odhlásiť sa ?</string>
+
+    <string name="download_cancel_all">Zrušiť všetko</string>
+    <string name="download_canceled">zrušený</string>
+    <string name="download_clear_completed">Čistenie dokončené</string>
+    <string name="download_completed">dokončený</string>
+    <string name="download_failed">neúspešný</string>
+    <string name="download_force_clear_all">Vynútiť vymazanie všetkých</string>
+    <string name="download_pause_all">Pozastaviť všetko</string>
+    <string name="download_paused">odmlčal</string>
+    <string name="download_progress">sťahovanie</string>
+    <string name="download_queued">vo fronte</string>
+    <string name="download_resume">Pokračovať</string>
+    <string name="download_resume_all">Obnoviť všetko</string>
+
+    <string name="early_access">Skorý prístup</string>
+    <string name="error_app_not_found">Aplikácia sa nenašla</string>
+    <string name="error_incorrect_password">nesprávny email alebo heslo</string>
+    <string name="error_invalid_device_definition">Definícia zariadenia bola zamietnutá</string>
+    <string name="error_network_other">"Chyba siete: %s"</string>
+    <string name="error_no_network">Žiadne sieťové pripojenie</string>
+    <string name="error_search_not_found">Nenašla sa žiadna zodpovedajúca aplikácia</string>
+    <string name="error_unknown">Vyskytla sa neznáma chyba</string>
+
+    <string name="exodus_hasTracker">Obsahuje %s trackers</string>
+    <string name="exodus_noTracker">Neobsahuje žiadne sledovače</string>
+    <string name="exodus_powered">Powered by Exodus</string>
+    <string name="exodus_title">Aurora Protect</string>
+    <string name="exodus_title_alt">Exodus Report</string>
+    <string name="exodus_viewMore">vyhliadka</string>
+    <string name="exodus_viewReport">Pozrieť si správu</string>
+
+    <string name="flagging_title">označiť ako nevhodné</string>
+
+    <string name="list_app_blacklisted_empty">Žiadne aplikácie Blacklisted</string>
+    <string name="list_app_depends_on_gsf">Závislé od GSF</string>
+    <string name="list_app_has_ads">má reklamy</string>
+    <string name="list_app_independent_from_gsf">GSF nezávislý</string>
+    <string name="list_app_no_ads">žiadne reklamy</string>
+    <string name="list_app_system">Systémová aplikácia</string>
+    <string name="list_app_user">Používateľská aplikácia</string>
+    <string name="list_blacklist">Aplikácie na čiernej listine</string>
+    <string name="list_blacklist_none">Žiadne aplikácie Blacklisted</string>
+    <string name="list_bulk_install">Počet aplikácií vo fronte na hromadnú inštaláciu:</string>
+    <string name="list_empty_fav">Žiadne obľúbené položky</string>
+    <string name="list_empty_query">Žiadne nedávne vyhľadávania</string>
+    <string name="list_empty_updates">Nie sú k dispozícii žiadne aktualizácie</string>
+    <string name="list_installed">nainštalovaný</string>
+    <string name="list_installed_system">Zobraziť iba používateľské aplikácie</string>
+    <string name="list_not_installd">Nie je nainštalovaný</string>
+    <string name="list_selected">Aplikácie vybraté: %d</string>
+    <string name="list_update_all">Aktualizovať všetko</string>
+    <string name="list_update_all_txt">dostupné aktualizácie:</string>
+    <string name="list_updating">aktualizácie</string>
+
+    <string name="manual_download_disclaimer">dementi</string>
+    <string name="manual_download_incompatible">Obchod Google Play považuje túto aplikáciu za nekompatibilnú s vaším zariadením. To znamená, že server služby Google Play Store nevrátil kód verzie.</string>
+    <string name="manual_download_warning">Táto stránka vám umožňuje manuálne vybrať verziu aplikácie, ktorú si chcete prevziať. Upozorňujeme, že služba Google Play Store nepodporuje preberanie ľubovoľných verzií aplikácií. Váš úspech závisí od šťastného odhadu kódu verzie. Dokonca aj keď hádate správne a môžete začať sťahovať, môžete dostať nekompatibilný apk.</string>
+
+    <string name="menu_account">účty</string>
+    <string name="menu_disclaimer">dementi</string>
+    <string name="menu_downloads">K stiahnutiu</string>
+    <string name="menu_license">licencie</string>
+    <string name="menu_setting">nastavenie</string>
+    <string name="menu_terms">Podmienky služby</string>
+
+    <string name="no_permissions">Nepoužívajú sa žiadne povolenia.</string>
+    <string name="notification_installation_complete">Úspešne nainštalované %s</string>
+    <string name="notification_installation_failed">Nepodarilo sa nainštalovať %s</string>
+    <string name="notification_installation_progress">Inštalácia %s</string>
+
+    <string name="pref_app_download">K stiahnutiu</string>
+    <string name="pref_app_network">sieť</string>
+    <string name="pref_app_notification">oznámenia</string>
+    <string name="pref_app_ui">Užívateľské rozhranie</string>
+    <string name="pref_category_spoof_device">Spoof Device</string>
+    <string name="pref_category_spoof_lang">Spoof Language</string>
+    <string name="pref_category_spoof_location">Spoof Poloha</string>
+    <string name="pref_device_to_pretend_to_be">Predstierajte, že ste iné zariadenie</string>
+    <string name="pref_device_to_pretend_to_be_default">Vaše pôvodné informácie o zariadení</string>
+    <string name="pref_device_to_pretend_to_be_toast">Táto zmena sa použije po opätovnom prihlásení</string>
+    <string name="pref_dialog_to_apply_restart">Toto nastavenie sa použije po reštartovaní aplikácie</string>
+    <string name="pref_downloader_active_summary">Maximálny počet aktívnych sťahovaní</string>
+    <string name="pref_downloader_active_title">Aktívne preberanie</string>
+    <string name="pref_downloader_debug_summary">Ak chcete získať podrobné protokoly, povoľte ladenie preberania</string>
+    <string name="pref_downloader_debug_title">Stiahnuť ladenie</string>
+    <string name="pref_downloader_path_title">Stiahnuť cestu</string>
+    <string name="pref_downloader_wifi_title">Prevziať iba pomocou wifi</string>
+    <string name="pref_filter_fdroid_summary">Odstráni aplikácie F-droid zo zoznamov aplikácií</string>
+    <string name="pref_filter_fdroid_title">Filtrovanie aplikácií F-droid</string>
+    <string name="pref_filter_google_summary">Odstráni všetky aplikácie Google Apps z výsledkov vyhľadávania a aplikácií kategórie</string>
+    <string name="pref_filter_google_title">Filtrovať Aplikácie Google</string>
+    <string name="pref_filter_search_summary">Filtre vyhľadávania sa pri každom vyhľadávaní obnovia. Ak chcete uložiť filtre vyhľadávania, vypnite ho</string>
+    <string name="pref_filter_search_title">Použite filter s nepretržitým vyhľadávaním</string>
+    <string name="pref_install_auto_summary">Aplikácie sa inštalujú okamžite po dokončení sťahovania</string>
+    <string name="pref_install_auto_title">Automaticky nainštalovať APKs Post-Download</string>
+    <string name="pref_install_delete_summary">Na zariadeniach so systémom Android Pie sa APK predvolene vymažú</string>
+    <string name="pref_install_delete_title">Odstráňte Apk Post-Install</string>
+    <string name="pref_install_mode_summary">Vyberte režim inštalácie APK</string>
+    <string name="pref_install_mode_title">Spôsob inštalácie</string>
+    <string name="pref_notification_priority_summary">Nastavenie úrovne priority pre upozornenie na aplikáciu</string>
+    <string name="pref_notification_priority_title">Priorita oznámenia</string>
+    <string name="pref_notification_summary">Povoliť upozornenia Aurora</string>
+    <string name="pref_notification_title">Zobraziť upozornenia</string>
+    <string name="pref_proxy_enable">Povoliť server proxy</string>
+    <string name="pref_proxy_host">Hostiteľ proxy</string>
+    <string name="pref_proxy_port">Proxy port</string>
+    <string name="pref_proxy_type">Typ proxy</string>
+    <string name="pref_requested_language">Zmeniť predvolený jazyk žiadosti o rozhranie API</string>
+    <string name="pref_requested_language_default">Váš predvolený jazyk</string>
+    <string name="pref_requested_location_disable">Ak chcete počítač úplne vypnúť, musíte ho vypnúť manuálne.</string>
+    <string name="pref_requested_location_enable">Musíte manuálne povoliť MockLocation z možností vývojára.</string>
+    <string name="pref_requested_location_summary">Aplikácia Aurora Store musí byť nastavená ako predvolená aplikácia Mock Location Application</string>
+    <string name="pref_ui_card_summary">Použite karty staršieho štýlu pre odporúčané aplikácie</string>
+    <string name="pref_ui_card_title">Legacy Style App karty</string>
+    <string name="pref_ui_snap_summary">Zobraziť iba jednu aplikáciu na rolovanie</string>
+    <string name="pref_ui_snap_title">Povoliť aplikáciu SnapView pre aplikácie</string>
+    <string name="pref_ui_theme_title">téma</string>
+
+    <string name="testing_program_opt_in">pripojiť</string>
+    <string name="testing_program_opt_out">zanechať</string>
+    <string name="testing_program_review_dialog_content_hint">Zadajte spätnú väzbu o aplikácii</string>
+    <string name="testing_program_section_opted_in_message">"Aktualizácie aplikácií budú obsahovať verzie beta. Ak program beta tejto aplikácie opustíte, už nebudete dostávať aktualizácie beta."</string>
+    <string name="testing_program_section_opted_in_propagating_message">"Za pár minút budete pridaní do programu beta. Ak je to možné, môžete aktualizovať verziu beta tejto aplikácie."</string>
+    <string name="testing_program_section_opted_in_title">"Ste beta tester"</string>
+    <string name="testing_program_section_opted_out_message">Vyskúšajte nové funkcie predtým, ako budú zverejnené. Odošlite spätnú väzbu priamo vývojárovi.</string>
+    <string name="testing_program_section_opted_out_propagating_message">Odstránenie z programu beta môže trvať niekoľko minút.</string>
+    <string name="testing_program_section_opted_out_title">Staňte sa beta testerom</string>
+
+    <string name="title_all_apps">Všetky aplikácie</string>
+    <string name="title_home">Predajňa Aurora</string>
+    <string name="title_installed">Moje aplikácie</string>
+    <string name="title_perm">oprávnenie</string>
+    <string name="title_search">Vyhľadať aplikácie</string>
+    <string name="title_search_result">"Výsledky pre %s"</string>
+    <string name="title_updates">Dostupné aktualizácie</string>
+    <string name="title_welcome">vitajte</string>
+
+    <string name="toast_apk_blacklisted">čiernu listinu</string>
+    <string name="toast_apk_whitelisted">na zozname povolených</string>
+    <string name="toast_apk_copy_success">Aplikácia APK bola úspešne skopírovaná</string>
+    <string name="toast_apk_copy_failure">Nepodarilo sa skopírovať APK</string>
+</resources>

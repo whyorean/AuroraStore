@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~ Aurora Store
+  ~ Copyright (C) 2019, Rahul Kumar Patel <whyorean@gmail.com>
+  ~
+  ~ Aurora Store is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 2 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ Aurora Store is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with Aurora Store.  If not, see <http://www.gnu.org/licenses/>.
+  ~
+  ~
+  -->
+
+<resources>
+    <string name="account_dummy">مجهول</string>
+    <string name="account_dummy_desc">تسجيل الدخول باستخدام حساب مجهول؟</string>
+    <string name="account_google">حساب جوجل</string>
+    <string name="account_logout">الخروج من أورورا؟</string>
+    <string name="account_prompt_login">يرجى تسجيل الدخول للمتابعة</string>
+    <string name="account_switch">تبديل الحساب</string>
+
+    <string name="action_accounts">حسابات</string>
+    <string name="action_ask">يطلب</string>
+    <string name="action_blacklist">القائمة السوداء</string>
+    <string name="action_cancel">إلغاء</string>
+    <string name="action_clear">واضح</string>
+    <string name="action_clear_all">امسح الكل</string>
+    <string name="action_convert_local">تحويل محلي</string>
+    <string name="action_convert_system">تحويل النظام</string>
+    <string name="action_copied">تم نسخ الرابط إلى الحافظة</string>
+    <string name="action_copy">انسخ الرابط</string>
+    <string name="action_disable">تعطيل</string>
+    <string name="action_done">فعله</string>
+    <string name="action_enable">مكن</string>
+    <string name="action_export">تصدير</string>
+    <string name="action_favourites">التطبيقات المفضلة</string>
+    <string name="action_filter">مرشحات</string>
+    <string name="action_filter_all">الكل</string>
+    <string name="action_filter_apply">تطبيق</string>
+    <string name="action_filter_apps_with_ads">تطبيقات مع الإعلانات</string>
+    <string name="action_filter_downloads">التنزيلات</string>
+    <string name="action_filter_gsf_dependent_apps">GSF التابعة</string>
+    <string name="action_filter_misc">متفرقات</string>
+    <string name="action_filter_paid_apps">دفع</string>
+    <string name="action_filter_rating">تصنيفات</string>
+    <string name="action_flag">تقرير التطبيق</string>
+    <string name="action_get_local_apk">الحصول على APK المحلية</string>
+    <string name="action_home">الصفحة الرئيسية</string>
+    <string name="action_installations">المنشآت</string>
+    <string name="action_installed">المثبتة</string>
+    <string name="action_later">في وقت لاحق</string>
+    <string name="action_logging_in">تسجيل الدخول</string>
+    <string name="action_login">تسجيل الدخول</string>
+    <string name="action_logout">الخروج</string>
+    <string name="action_make_normal">تحويل إلى التطبيق العادي</string>
+    <string name="action_make_system">تحويل إلى تطبيق النظام</string>
+    <string name="action_manual">اليدوي تحميل</string>
+    <string name="action_more">أكثر من</string>
+    <string name="action_next">التالى</string>
+    <string name="action_pause">وقفة</string>
+    <string name="action_remove">إزالة</string>
+    <string name="action_restart">إعادة بدء</string>
+    <string name="action_resume">استئنف</string>
+    <string name="action_retry">إعادة المحاولة</string>
+    <string name="action_retry_ing">إعادة المحاولة</string>
+    <string name="action_search">بحث</string>
+    <string name="action_search_clearHistory">امسح الكل</string>
+    <string name="action_search_history">سجل البحث</string>
+    <string name="action_settings">الإعدادات</string>
+    <string name="action_spoofed">محاكاة ساخرة</string>
+    <string name="action_submit">خضع</string>
+    <string name="action_unignore">إزالة من القائمة السوداء</string>
+    <string name="action_uninstall">الغاء التثبيت</string>
+    <string name="action_unwhitelist">تجاهل التحديثات</string>
+    <string name="action_updates">التحديثات</string>
+    <string name="action_whitelist">القائمة البيضاء</string>
+
+    <string name="apps_by">تطبيقات بواسطة٪ s</string>
+    <string name="availability_restriction_country">"هذا العنصر غير متاح في بلدك."</string>
+    <string name="availability_restriction_generic">"هذا العنصر غير متاح."</string>
+    <string name="availability_restriction_hardware_app">"جهازك غير متوافق مع هذا الإصدار."</string>
+    <string name="category_appFree">حر</string>
+    <string name="category_topFree">أعلى مجانا</string>
+    <string name="category_topGrossing">أعلى ارتفاع</string>
+    <string name="category_trending">الشائع</string>
+
+    <string name="chip_all_apps">جميع الفئات</string>
+    <string name="chip_all_family">كل العائلة</string>
+    <string name="chip_all_games">جميع الألعاب</string>
+    <string name="chip_top_free">أعلى مجانا</string>
+    <string name="chip_top_grossing">أعلى ارتفاع</string>
+    <string name="chip_top_trending">الشائع</string>
+
+    <string name="delete">حذف</string>
+    <string name="desc_perm">يستخدم Aurora Store الأذونات التالية</string>
+
+    <string name="details_appReviewsAll">قراءة جميع الاستعراضات</string>
+    <string name="details_contains_ads">يحتوي على إعلانات</string>
+    <string name="details_download">تحميل</string>
+    <string name="details_favourite_add">أضف إلى المفضلة</string>
+    <string name="details_favourite_remove">إزالة من المفضلة</string>
+    <string name="details_install">التثبت</string>
+    <string name="details_installing">تثبيت</string>
+    <string name="details_more">قراءة المزيد</string>
+    <string name="details_no_ads">لا إعلانات</string>
+    <string name="details_permissions">أذونات التطبيق</string>
+    <string name="details_purchase">شراء</string>
+    <string name="details_rate_this_app">قيم هذا التطبيق</string>
+    <string name="details_rating_reviews">تصنيفات</string>
+    <string name="details_reviews">استعراض التطبيق</string>
+    <string name="details_run">افتح</string>
+    <string name="details_share">شارك</string>
+    <string name="details_update">تحديث</string>
+    <string name="details_why_rate_this_app">أخبر الآخرين برأيك</string>
+    <string name="details_you_rated_this_app">تقييمك</string>
+
+    <string name="dialog_title_logout">الخروج ؟</string>
+
+    <string name="download_cancel_all">ألغ الكل</string>
+    <string name="download_canceled">ألغيت</string>
+    <string name="download_clear_completed">مسح اكتمل</string>
+    <string name="download_completed">منجز</string>
+    <string name="download_failed">فشل</string>
+    <string name="download_force_clear_all">قوة مسح الكل</string>
+    <string name="download_pause_all">وقفة جميع</string>
+    <string name="download_paused">توقف</string>
+    <string name="download_progress">جارى التحميل</string>
+    <string name="download_queued">في قائمة الانتظار</string>
+    <string name="download_resume">استئنف</string>
+    <string name="download_resume_all">استئناف الكل</string>
+
+    <string name="early_access">الوصول المبكر</string>
+    <string name="error_app_not_found">التطبيق غير موجود</string>
+    <string name="error_incorrect_password">بريد أو كلمة مرورغير صحيحة</string>
+    <string name="error_invalid_device_definition">تم رفض تعريف الجهاز</string>
+    <string name="error_network_other">"خطأ في الشبكة:٪ s"</string>
+    <string name="error_no_network">لا يوجد اتصال شبكة</string>
+    <string name="error_search_not_found">لم يتم العثور على تطبيق مطابق</string>
+    <string name="error_unknown">حدث خطأ غير معروف</string>
+
+    <string name="exodus_hasTracker">يحتوي على تعقبات٪ s</string>
+    <string name="exodus_noTracker">لا يحتوي على تعقبات</string>
+    <string name="exodus_powered">مدعوم من Exodus</string>
+    <string name="exodus_title">الشفق حماية</string>
+    <string name="exodus_title_alt">تقرير الخروج</string>
+    <string name="exodus_viewMore">رأي</string>
+    <string name="exodus_viewReport">عرض التقرير</string>
+
+    <string name="flagging_title">تعليم كشيء ليس لائق</string>
+
+    <string name="list_app_blacklisted_empty">لا توجد تطبيقات قائمة سوداء</string>
+    <string name="list_app_depends_on_gsf">GSF تعتمد</string>
+    <string name="list_app_has_ads">لديه إعلانات</string>
+    <string name="list_app_independent_from_gsf">GSF مستقلة</string>
+    <string name="list_app_no_ads">لا إعلانات</string>
+    <string name="list_app_system">تطبيق النظام</string>
+    <string name="list_app_user">تطبيق المستخدم</string>
+    <string name="list_blacklist">تطبيقات قائمة سوداء</string>
+    <string name="list_blacklist_none">لا توجد تطبيقات قائمة سوداء</string>
+    <string name="list_bulk_install">قائمة انتظار التطبيق للتثبيت المجمع "</string>
+    <string name="list_empty_fav">لا المفضلة</string>
+    <string name="list_empty_query">لا عمليات البحث الأخيرة</string>
+    <string name="list_empty_updates">أية تحديثات متوفرة</string>
+    <string name="list_installed">المثبتة</string>
+    <string name="list_installed_system">إظهار تطبيقات المستخدم فقط</string>
+    <string name="list_not_installd">غير مثبت</string>
+    <string name="list_selected">التطبيقات المختارة:٪ d</string>
+    <string name="list_update_all">تحديث الجميع</string>
+    <string name="list_update_all_txt">التحديثات المتوفرة"</string>
+    <string name="list_updating">تحديث</string>
+
+    <string name="manual_download_disclaimer">تنصل</string>
+    <string name="manual_download_incompatible">يعتبر متجر Google Play هذا التطبيق غير متوافق مع جهازك. هذا يعني أنه لم يتم إرجاع رمز الإصدار بواسطة خادم متجر Google Play.</string>
+    <string name="manual_download_warning">تتيح لك هذه الصفحة اختيار إصدار التطبيق يدويًا لتنزيله. \ n \ n ضع في اعتبارك أن تنزيل إصدارات عشوائية من التطبيقات غير مدعوم من متجر Google Play. نجاحك يعتمد على تخمين الحظ لرمز الإصدار. حتى لو كنت تفكر بشكل صحيح وحصلت على بدء التنزيل ، فقد تحصل على apk غير متوافق.</string>
+
+    <string name="menu_account">حسابات</string>
+    <string name="menu_disclaimer">تنصل</string>
+    <string name="menu_downloads">التنزيلات</string>
+    <string name="menu_license">رخصة</string>
+    <string name="menu_setting">الإعدادات</string>
+    <string name="menu_terms">شروط الخدمة</string>
+
+    <string name="no_permissions">لا تستخدم أذونات.</string>
+    <string name="notification_installation_complete">تم التثبيت بنجاح٪ s%</string>
+    <string name="notification_installation_failed">فشل في تثبيت٪ s%</string>
+    <string name="notification_installation_progress">تثبيت٪ s%</string>
+
+    <string name="pref_app_download">التنزيلات</string>
+    <string name="pref_app_network">شبكة الاتصال</string>
+    <string name="pref_app_notification">إخطارات</string>
+    <string name="pref_app_ui">واجهة المستخدم</string>
+    <string name="pref_category_spoof_device">محاكاة ساخرة الجهاز</string>
+    <string name="pref_category_spoof_lang">محاكاة ساخرة اللغة</string>
+    <string name="pref_category_spoof_location">محاكاة ساخرة الموقع</string>
+    <string name="pref_device_to_pretend_to_be">أدعي أنه جهاز مختلف</string>
+    <string name="pref_device_to_pretend_to_be_default">معلومات جهازك الأصلي</string>
+    <string name="pref_device_to_pretend_to_be_toast">سيتم تطبيق هذا التغيير بعد إعادة تسجيل الدخول</string>
+    <string name="pref_dialog_to_apply_restart">سيتم تطبيق هذا الإعداد بعد إعادة تشغيل التطبيق</string>
+    <string name="pref_downloader_active_summary">الحد الأقصى لعدد التنزيلات النشطة</string>
+    <string name="pref_downloader_active_title">تحميل نشط</string>
+    <string name="pref_downloader_debug_summary">تمكين تنزيل الأخطاء للحصول على سجلات مفصلة</string>
+    <string name="pref_downloader_debug_title">تنزيل تصحيح الأخطاء</string>
+    <string name="pref_downloader_path_title">تحميل المسار</string>
+    <string name="pref_downloader_wifi_title">تنزيل باستخدام wifi فقط</string>
+    <string name="pref_filter_fdroid_summary">يزيل تطبيقات F-droid من قوائم التطبيقات</string>
+    <string name="pref_filter_fdroid_title">تصفية تطبيقات F- الروبوت</string>
+    <string name="pref_filter_google_summary">يزيل جميع تطبيقات Google من نتائج البحث وتطبيقات الفئات</string>
+    <string name="pref_filter_google_title">تصفية تطبيقات Google</string>
+    <string name="pref_filter_search_summary">تتم إعادة تعيين عوامل تصفية البحث على كل بحث. أطفئ لحفظ مرشحات البحث</string>
+    <string name="pref_filter_search_title">استخدم فلتر البحث غير الثابت</string>
+    <string name="pref_install_auto_summary">يتم تثبيت التطبيقات على الفور بعد اكتمال التنزيل</string>
+    <string name="pref_install_auto_title">تثبيت تلقائي لـ APKs بعد التنزيل</string>
+    <string name="pref_install_delete_summary">على الأجهزة التي تعمل بنظام Android Pie APKs يتم حذفها افتراضيًا</string>
+    <string name="pref_install_delete_title">حذف APK بعد التثبيت</string>
+    <string name="pref_install_mode_summary">حدد وضع APK التثبيت</string>
+    <string name="pref_install_mode_title">طريقة التثبيت</string>
+    <string name="pref_notification_priority_summary">تعيين مستوى الأولوية لإشعار التطبيق</string>
+    <string name="pref_notification_priority_title">أولوية الإخطار</string>
+    <string name="pref_notification_summary">تمكين إشعارات أورورا</string>
+    <string name="pref_notification_title">إظهار الإخطارات</string>
+    <string name="pref_proxy_enable">تمكين الوكيل</string>
+    <string name="pref_proxy_host">مضيف الوكيل</string>
+    <string name="pref_proxy_port">منفذ وكيل</string>
+    <string name="pref_proxy_type">نوع الوكيل</string>
+    <string name="pref_requested_language">تغيير لغة طلب واجهة برمجة التطبيقات الافتراضية</string>
+    <string name="pref_requested_language_default">لغتك الافتراضية</string>
+    <string name="pref_requested_location_disable">تحتاج إلى تعطيل MockLocation يدويًا من "خيارات المطور" لتعطيله تمامًا.</string>
+    <string name="pref_requested_location_enable">تحتاج إلى تمكين MockLocation يدويًا من خيارات المطور.</string>
+    <string name="pref_requested_location_summary">يجب تعيين متجر Aurora كتطبيق افتراضي لموقع Mock</string>
+    <string name="pref_ui_card_summary">استخدم بطاقات النمط القديمة للتطبيقات المميزة</string>
+    <string name="pref_ui_card_title">بطاقات تطبيقات Legacy Style</string>
+    <string name="pref_ui_snap_summary">عرض تطبيق واحد فقط في التمرير</string>
+    <string name="pref_ui_snap_title">تمكين SnapView للتطبيقات</string>
+    <string name="pref_ui_theme_title">موضوع</string>
+
+    <string name="testing_program_opt_in">انضم</string>
+    <string name="testing_program_opt_out">غادر</string>
+    <string name="testing_program_review_dialog_content_hint">أدخل ملاحظات حول التطبيق</string>
+    <string name="testing_program_section_opted_in_message">"ستتضمن تحديثات التطبيق إصدارات بيتا. إذا تركت برنامج بيتا لهذا التطبيق ، فلن تحصل على تحديثات بيتا بعد الآن."</string>
+    <string name="testing_program_section_opted_in_propagating_message">"في غضون بضع دقائق ، ستتم إضافتك إلى برنامج الإصدار التجريبي. يمكنك بعد ذلك التحديث إلى الإصدار التجريبي من هذا التطبيق ، إذا كان ذلك متاحًا."</string>
+    <string name="testing_program_section_opted_in_title">"أنت اختبار بيتا"</string>
+    <string name="testing_program_section_opted_out_message">"جرب ميزات جديدة قبل نشرها على الملأ. قدم ملاحظاتك للمطور مباشرةً."</string>
+    <string name="testing_program_section_opted_out_propagating_message">قد يستغرق الأمر بضع دقائق لإزالتك من البرنامج التجريبي.</string>
+    <string name="testing_program_section_opted_out_title">تصبح اختبار بيتا</string>
+
+    <string name="title_all_apps">كل التطبيقات</string>
+    <string name="title_home">أورورا المتجر</string>
+    <string name="title_installed">تطبيقاتي</string>
+    <string name="title_perm">أذونات</string>
+    <string name="title_search">بحث التطبيقات</string>
+    <string name="title_search_result">"نتائج لـ٪ s"</string>
+    <string name="title_updates">التحديثات المتاحة</string>
+    <string name="title_welcome">أهلا بك</string>
+
+    <string name="toast_apk_blacklisted">القائمة السوداء</string>
+    <string name="toast_apk_whitelisted">اللائحة البيضاء</string>
+    <string name="toast_apk_copy_success">تم نسخ APK بنجاح</string>
+    <string name="toast_apk_copy_failure">فشل في نسخ APK</string>
+</resources>

@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~ Aurora Store
+  ~ Copyright (C) 2019, Rahul Kumar Patel <whyorean@gmail.com>
+  ~
+  ~ Aurora Store is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 2 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ Aurora Store is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with Aurora Store.  If not, see <http://www.gnu.org/licenses/>.
+  ~
+  ~
+  -->
+
+<resources>
+    <string name="account_dummy">בעילום שם</string>
+    <string name="account_dummy_desc">כניסה באמצעות חשבון אנונימי?</string>
+    <string name="account_google">חשבון גוגל</string>
+    <string name="account_logout">יציאה מ- Aurora?</string>
+    <string name="account_prompt_login">חביב התחבר כדי להמשיך</string>
+    <string name="account_switch">החלף חשבון</string>
+
+    <string name="action_accounts">חשבונות</string>
+    <string name="action_ask">שאל</string>
+    <string name="action_blacklist">רשימה שחורה</string>
+    <string name="action_cancel">בטל</string>
+    <string name="action_clear">ברור</string>
+    <string name="action_clear_all">נקה הכל</string>
+    <string name="action_convert_local">המר מקומי</string>
+    <string name="action_convert_system">המרת מערכת</string>
+    <string name="action_copied">קישור הועתק ללוח</string>
+    <string name="action_copy">העתק קישור</string>
+    <string name="action_disable">השבת</string>
+    <string name="action_done">בוצע</string>
+    <string name="action_enable">הפעל</string>
+    <string name="action_export">יצא</string>
+    <string name="action_favourites">אפליקציות מועדפות</string>
+    <string name="action_filter">מסננים</string>
+    <string name="action_filter_all">את כל</string>
+    <string name="action_filter_apply">להגיש מועמדות</string>
+    <string name="action_filter_apps_with_ads">אפליקציות עם מודעות</string>
+    <string name="action_filter_downloads">הורדות</string>
+    <string name="action_filter_gsf_dependent_apps">GSF תלוי</string>
+    <string name="action_filter_misc">שונות</string>
+    <string name="action_filter_paid_apps">בתשלום</string>
+    <string name="action_filter_rating">דירוגים</string>
+    <string name="action_flag">דווח על יישום</string>
+    <string name="action_get_local_apk">קבל APK מקומי</string>
+    <string name="action_home">בית</string>
+    <string name="action_installations">התקנות</string>
+    <string name="action_installed">מותקן</string>
+    <string name="action_later">יותר מאוחר</string>
+    <string name="action_logging_in">מתחבר</string>
+    <string name="action_login">התחברות</string>
+    <string name="action_logout">להתנתק</string>
+    <string name="action_make_normal">המר לאפליקציה רגילה</string>
+    <string name="action_make_system">המר לאפליקציית מערכת</string>
+    <string name="action_manual">הורדה ידנית</string>
+    <string name="action_more">יותר</string>
+    <string name="action_next">הבא</string>
+    <string name="action_pause">השהה</string>
+    <string name="action_remove">הסר</string>
+    <string name="action_restart">איתחול</string>
+    <string name="action_resume">קורות חיים</string>
+    <string name="action_retry">נסה שוב</string>
+    <string name="action_retry_ing">מנסה שוב</string>
+    <string name="action_search">לחפש</string>
+    <string name="action_search_clearHistory">נקה הכל</string>
+    <string name="action_search_history">חפש היסטוריה</string>
+    <string name="action_settings">הגדרות</string>
+    <string name="action_spoofed">לזייף</string>
+    <string name="action_submit">שלח</string>
+    <string name="action_unignore">הסר מהרשימה השחורה</string>
+    <string name="action_uninstall">הסר את ההתקנה</string>
+    <string name="action_unwhitelist">התעלם מעודכונים</string>
+    <string name="action_updates">עדכונים</string>
+    <string name="action_whitelist">רשימת ההיתרים</string>
+
+    <string name="apps_by">אפליקציות של %s</string>
+    <string name="availability_restriction_country">"פריט זה אינו זמין בארץ שלך".</string>
+    <string name="availability_restriction_generic">"פריט זה אינו זמין."</string>
+    <string name="availability_restriction_hardware_app">"המכשיר שלך אינו תואם לגירסה זו."</string>
+    <string name="category_appFree">חופשי</string>
+    <string name="category_topFree">למעלה חינם</string>
+    <string name="category_topGrossing">למעלה גרוס</string>
+    <string name="category_trending">מגמות</string>
+
+    <string name="chip_all_apps">כל הקטגוריות</string>
+    <string name="chip_all_family">כל המשפחה</string>
+    <string name="chip_all_games">כל המשחקים</string>
+    <string name="chip_top_free">למעלה חינם</string>
+    <string name="chip_top_grossing">למעלה גרוס</string>
+    <string name="chip_top_trending">מגמות</string>
+
+    <string name="delete">מחק</string>
+    <string name="desc_perm">Aurora חנות משתמשת הרשאות הבאות</string>
+
+    <string name="details_appReviewsAll">קרא את כל הביקורות</string>
+    <string name="details_contains_ads">מכיל מודעות</string>
+    <string name="details_download">הורד</string>
+    <string name="details_favourite_add">הוסף למועדפים</string>
+    <string name="details_favourite_remove">הסר ממועדפים</string>
+    <string name="details_install">להתקין</string>
+    <string name="details_installing">מתקין</string>
+    <string name="details_more">קרא עוד</string>
+    <string name="details_no_ads">אין מודעות</string>
+    <string name="details_permissions">הרשאות אפליקציה</string>
+    <string name="details_purchase">רכישה</string>
+    <string name="details_rate_this_app">דרג את האפליקציה הזו</string>
+    <string name="details_rating_reviews">דירוגים</string>
+    <string name="details_reviews">ביקורות על אפליקציות</string>
+    <string name="details_run">פתח</string>
+    <string name="details_share">שתף</string>
+    <string name="details_update">עדכון</string>
+    <string name="details_why_rate_this_app">תגיד לאחרים מה אתה חושב</string>
+    <string name="details_you_rated_this_app">הדירוג שלך</string>
+
+    <string name="dialog_title_logout">להתנתק ?</string>
+
+    <string name="download_cancel_all">בטל הכל</string>
+    <string name="download_canceled">מבוטל</string>
+    <string name="download_clear_completed">הניקוי הושלם</string>
+    <string name="download_completed">הושלם</string>
+    <string name="download_failed">נכשל</string>
+    <string name="download_force_clear_all">אל תנקה את הכל</string>
+    <string name="download_pause_all">השהה הכל</string>
+    <string name="download_paused">מושהה</string>
+    <string name="download_progress">מוריד</string>
+    <string name="download_queued">בתור</string>
+    <string name="download_resume">קורות חיים</string>
+    <string name="download_resume_all">המשך את הכל</string>
+
+    <string name="early_access">גישה מוקדמת</string>
+    <string name="error_app_not_found">האפליקציה לא נמצאה</string>
+    <string name="error_incorrect_password">כתובת דוא"ל או סיסמה שגויים</string>
+    <string name="error_invalid_device_definition">הגדרת המכשיר נדחתה</string>
+    <string name="error_network_other">"שגיאת רשת: %s"</string>
+    <string name="error_no_network">אין חיבור רשת</string>
+    <string name="error_search_not_found">לא נמצאה אפליקציה תואמת</string>
+    <string name="error_unknown">אירעה שגיאה לא ידועה</string>
+
+    <string name="exodus_hasTracker">מכיל %s עוקבים</string>
+    <string name="exodus_noTracker">לא מכיל עוקבים</string>
+    <string name="exodus_powered">מופעל על ידי אקסודוס</string>
+    <string name="exodus_title">אורורה להגן</string>
+    <string name="exodus_title_alt">דו"ח אקסודוס</string>
+    <string name="exodus_viewMore">נוף</string>
+    <string name="exodus_viewReport">צפה בדוח</string>
+
+    <string name="flagging_title">סמן כלא ראוי</string>
+
+    <string name="list_app_blacklisted_empty">אין אפליקציות שחורות</string>
+    <string name="list_app_depends_on_gsf">תלות ב- GSF</string>
+    <string name="list_app_has_ads">יש מודעות</string>
+    <string name="list_app_independent_from_gsf">GSF עצמאית</string>
+    <string name="list_app_no_ads">אין מודעות</string>
+    <string name="list_app_system">יישום מערכת</string>
+    <string name="list_app_user">יישום משתמש</string>
+    <string name="list_blacklist">אפליקציות שחורות</string>
+    <string name="list_blacklist_none">אין אפליקציות שחורות</string>
+    <string name="list_bulk_install">אפליקציות בתור בתור התקנה בכמות גדולה "</string>
+    <string name="list_empty_fav">אין מועדפים</string>
+    <string name="list_empty_query">אין חיפושים אחרונים</string>
+    <string name="list_empty_updates">אין עדכונים זמינים</string>
+    <string name="list_installed">מותקן</string>
+    <string name="list_installed_system">הצג אפליקציות משתמש בלבד</string>
+    <string name="list_not_installd">לא מותקן</string>
+    <string name="list_selected">יישומים נבחרים:%d</string>
+    <string name="list_update_all">עדכן הכל</string>
+    <string name="list_update_all_txt">עדכונים זמינים"</string>
+    <string name="list_updating">מעדכן</string>
+
+    <string name="manual_download_disclaimer">כתב ויתור</string>
+    <string name="manual_download_incompatible">חנות Google Play סבורה שהיישום הזה אינו תואם למכשיר שלך. פירוש הדבר שקוד גרסה לא הוחזר על ידי שרת חנות Google Play.</string>
+    <string name="manual_download_warning">דף זה מאפשר לך לבחור באופן ידני את גרסת היישום להורדה. \ N \ n זכור כי הורדת חנות Google Play אינה נתמכת בגרסאות שרירותיות של אפליקציות. ההצלחה שלך תלויה בניחוש מזל של קוד הגירסה. גם אם אתה מניח נכון ואתה מקבל את ההורדה כדי להתחיל, אתה עלול לקבל apk לא תואם.</string>
+
+    <string name="menu_account">חשבונות</string>
+    <string name="menu_disclaimer">כתב ויתור</string>
+    <string name="menu_downloads">הורדות</string>
+    <string name="menu_license">רישיון</string>
+    <string name="menu_setting">הגדרות</string>
+    <string name="menu_terms">תנאי השירות</string>
+
+    <string name="no_permissions">לא נעשה שימוש בהרשאות.</string>
+    <string name="notification_installation_complete">הותקן בהצלחה %s</string>
+    <string name="notification_installation_failed">התקנת %s נכשלה</string>
+    <string name="notification_installation_progress">מתקין את %s</string>
+
+    <string name="pref_app_download">הורדות</string>
+    <string name="pref_app_network">רשת</string>
+    <string name="pref_app_notification">התראות</string>
+    <string name="pref_app_ui">ממשק משתמש</string>
+    <string name="pref_category_spoof_device">מכשיר לזייף</string>
+    <string name="pref_category_spoof_lang">שפה לזייף</string>
+    <string name="pref_category_spoof_location">מיקום שפוף</string>
+    <string name="pref_device_to_pretend_to_be">להעמיד פנים שהוא מכשיר אחר</string>
+    <string name="pref_device_to_pretend_to_be_default">פרטי המכשיר המקוריים שלך</string>
+    <string name="pref_device_to_pretend_to_be_toast">שינוי זה יחול לאחר שתתחבר מחדש</string>
+    <string name="pref_dialog_to_apply_restart">הגדרה זו תחול לאחר שתפעיל מחדש את האפליקציה</string>
+    <string name="pref_downloader_active_summary">מספר מרבי של הורדות פעילות</string>
+    <string name="pref_downloader_active_title">הורדה פעילה</string>
+    <string name="pref_downloader_debug_summary">אפשר להוריד באגים כדי לקבל יומנים מפורטים</string>
+    <string name="pref_downloader_debug_title">הורד באגים</string>
+    <string name="pref_downloader_path_title">הורד נתיב</string>
+    <string name="pref_downloader_wifi_title">הורדה באמצעות WiFi בלבד</string>
+    <string name="pref_filter_fdroid_summary">מסיר אפליקציות F-droid מרשימות אפליקציות</string>
+    <string name="pref_filter_fdroid_title">מסנן F-Droid Apps</string>
+    <string name="pref_filter_google_summary">מסיר את כל Google Apps מתוצאות החיפוש ומיישומי הקטגוריות</string>
+    <string name="pref_filter_google_title">סנן את Google Apps</string>
+    <string name="pref_filter_search_summary">מסנני החיפוש מאופסים בכל חיפוש. כבה כדי לשמור מסנני חיפוש</string>
+    <string name="pref_filter_search_title">השתמש במסנן חיפוש שאינו מתמשך</string>
+    <string name="pref_install_auto_summary">האפליקציות מותקנות באופן מיידי לאחר השלמת ההורדה</string>
+    <string name="pref_install_auto_title">אוטומטי התקנת APKs שלאחר ההורדה</string>
+    <string name="pref_install_delete_summary">במכשירים שבהם פועל Android Apps Pie APK נמחק כברירת מחדל</string>
+    <string name="pref_install_delete_title">מחק Apk Post-Install</string>
+    <string name="pref_install_mode_summary">בחר מצב של התקנת APK</string>
+    <string name="pref_install_mode_title">שיטת התקנה</string>
+    <string name="pref_notification_priority_summary">הגדר רמת עדיפות עבור הודעת האפליקציה</string>
+    <string name="pref_notification_priority_title">עדיפות הודעה</string>
+    <string name="pref_notification_summary">הפעל הודעות Aurora</string>
+    <string name="pref_notification_title">תראה התראות</string>
+    <string name="pref_proxy_enable">הפעל proxy</string>
+    <string name="pref_proxy_host">מארח פרוקסי</string>
+    <string name="pref_proxy_port">יציאת פרוקסי</string>
+    <string name="pref_proxy_type">סוג פרוקסי</string>
+    <string name="pref_requested_language">שנה את שפת בקשת ברירת המחדל של ממשק API</string>
+    <string name="pref_requested_language_default">שפת ברירת המחדל שלך</string>
+    <string name="pref_requested_location_disable">אתה צריך לבטל באופן ידני MockLocation מאפשרויות מפתח כדי להשבית אותו לחלוטין.</string>
+    <string name="pref_requested_location_enable">אתה צריך לאפשר באופן ידני MockLocation מאפשרויות מפתח.</string>
+    <string name="pref_requested_location_summary">Aurora חנות חייב להיות מוגדר ברירת המחדל Mock מיקום יישום</string>
+    <string name="pref_ui_card_summary">השתמש בכרטיסי סגנון מדור קודם עבור יישומים נבחרים</string>
+    <string name="pref_ui_card_title">כרטיסי עיצוב מדור קודם</string>
+    <string name="pref_ui_snap_summary">הצג רק אפליקציה אחת בגלילה</string>
+    <string name="pref_ui_snap_title">הפעל SnapView לאפליקציות</string>
+    <string name="pref_ui_theme_title">נושא</string>
+
+    <string name="testing_program_opt_in">הצטרף</string>
+    <string name="testing_program_opt_out">לעזוב</string>
+    <string name="testing_program_review_dialog_content_hint">הזן משוב על האפליקציה</string>
+    <string name="testing_program_section_opted_in_message">"עדכוני האפליקציה יכללו גרסאות ביטא, אם תצא מתוכנית הביטא של האפליקציה הזו, לא תקבל עוד עדכוני ביטא".</string>
+    <string name="testing_program_section_opted_in_propagating_message">"בעוד מספר דקות, תתווסף לתוכנית הביטא, תוכל לעדכן לגרסת הביטא של האפליקציה הזו, אם זמינה".</string>
+    <string name="testing_program_section_opted_in_title">"אתה בודק ביתא"</string>
+    <string name="testing_program_section_opted_out_message">"נסה תכונות חדשות לפני פרסוםן, תן משוב ישירות למפתח."</string>
+    <string name="testing_program_section_opted_out_propagating_message">ייתכן שיחלפו מספר דקות כדי להסיר אותך מתוכנית הביטא.</string>
+    <string name="testing_program_section_opted_out_title">הפוך בודק ביתא</string>
+
+    <string name="title_all_apps">כל היישומים</string>
+    <string name="title_home">חנות אורורה</string>
+    <string name="title_installed">האפליקציות שלי</string>
+    <string name="title_perm">הרשאות</string>
+    <string name="title_search">חפש ב- Google Apps</string>
+    <string name="title_search_result">"תוצאות עבור %s"</string>
+    <string name="title_updates">עדכונים זמינים</string>
+    <string name="title_welcome">ברוך הבא</string>
+
+    <string name="toast_apk_blacklisted">ברשימה השחורה</string>
+    <string name="toast_apk_whitelisted">רשימת ההיתרים</string>
+    <string name="toast_apk_copy_success">APK הועתק בהצלחה</string>
+    <string name="toast_apk_copy_failure">נכשל בהעתקת ה- APK</string>
+</resources>

@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~ Aurora Store
+  ~ Copyright (C) 2019, Rahul Kumar Patel <whyorean@gmail.com>
+  ~
+  ~ Aurora Store is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 2 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ Aurora Store is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with Aurora Store.  If not, see <http://www.gnu.org/licenses/>.
+  ~
+  ~
+  -->
+
+<resources>
+    <string name="account_dummy">Anonim</string>
+    <string name="account_dummy_desc">Anonim Hesap kullanarak giriş yap?</string>
+    <string name="account_google">Google hesabı</string>
+    <string name="account_logout">Aurora\'dan çıkış?</string>
+    <string name="account_prompt_login">Lütfen devam etmek için giriş yapın</string>
+    <string name="account_switch">Hesap değiştir</string>
+
+    <string name="action_accounts">Hesaplar</string>
+    <string name="action_ask">Sor</string>
+    <string name="action_blacklist">kara liste</string>
+    <string name="action_cancel">İptal etmek</string>
+    <string name="action_clear">Açık</string>
+    <string name="action_clear_all">Hepsini temizle</string>
+    <string name="action_convert_local">Yerel Dönüştür</string>
+    <string name="action_convert_system">Dönüştürme sistemi</string>
+    <string name="action_copied">link kopyalandı</string>
+    <string name="action_copy">Bağlantıyı kopyala</string>
+    <string name="action_disable">Devre dışı</string>
+    <string name="action_done">tamam</string>
+    <string name="action_enable">etkinleştirme</string>
+    <string name="action_export">ihracat</string>
+    <string name="action_favourites">Favori Uygulamalar</string>
+    <string name="action_filter">Filtreler</string>
+    <string name="action_filter_all">Her şey</string>
+    <string name="action_filter_apply">Uygulamak</string>
+    <string name="action_filter_apps_with_ads">Reklamlı uygulamalar</string>
+    <string name="action_filter_downloads">İndirilenler</string>
+    <string name="action_filter_gsf_dependent_apps">GSF Bağımlı</string>
+    <string name="action_filter_misc">Çeşitli</string>
+    <string name="action_filter_paid_apps">Ücretli</string>
+    <string name="action_filter_rating">Puanlar</string>
+    <string name="action_flag">Uygulamayı Bildir</string>
+    <string name="action_get_local_apk">Yerel olsun APK</string>
+    <string name="action_home">Ev</string>
+    <string name="action_installations">tesisat</string>
+    <string name="action_installed">Kurulmuş</string>
+    <string name="action_later">Sonra</string>
+    <string name="action_logging_in">Giriş</string>
+    <string name="action_login">Oturum aç</string>
+    <string name="action_logout">Çıkış Yap</string>
+    <string name="action_make_normal">Normal uygulamaya dönüştür</string>
+    <string name="action_make_system">Sistem uygulamasına dönüştür</string>
+    <string name="action_manual">Manuel indirme</string>
+    <string name="action_more">Daha</string>
+    <string name="action_next">Sonraki</string>
+    <string name="action_pause">Duraklat</string>
+    <string name="action_remove">Kaldır</string>
+    <string name="action_restart">Tekrar başlat</string>
+    <string name="action_resume">Devam et</string>
+    <string name="action_retry">Tekrar dene</string>
+    <string name="action_retry_ing">Tekrar deniyor</string>
+    <string name="action_search">Arama</string>
+    <string name="action_search_clearHistory">Hepsini temizle</string>
+    <string name="action_search_history">Arama geçmişi</string>
+    <string name="action_settings">Ayarlar</string>
+    <string name="action_spoofed">sazanlama</string>
+    <string name="action_submit">Gönder</string>
+    <string name="action_unignore">Kara listeden çıkar</string>
+    <string name="action_uninstall">Kaldırma</string>
+    <string name="action_unwhitelist">Güncellemeleri yoksay</string>
+    <string name="action_updates">Güncellemeler</string>
+    <string name="action_whitelist">Beyaz liste</string>
+
+    <string name="apps_by"> %s tarafından sunulan uygulamalar</string>
+    <string name="availability_restriction_country">"Bu ürün ülkenizde mevcut değil."</string>
+    <string name="availability_restriction_generic">"Bu öğe mevcut değil."</string>
+    <string name="availability_restriction_hardware_app">"Cihazınız bu sürümle uyumlu değil."</string>
+    <string name="category_appFree">Ücretsiz</string>
+    <string name="category_topFree">En Bedava</string>
+    <string name="category_topGrossing">En yüksek hasılat</string>
+    <string name="category_trending">Trend</string>
+
+    <string name="chip_all_apps">Tüm Kategoriler</string>
+    <string name="chip_all_family">Bütün aile</string>
+    <string name="chip_all_games">Bütün oyunlar</string>
+    <string name="chip_top_free">En Bedava</string>
+    <string name="chip_top_grossing">En yüksek hasılat</string>
+    <string name="chip_top_trending">Trend</string>
+
+    <string name="delete">silmek</string>
+    <string name="desc_perm">Aurora Mağazası aşağıdaki izinleri kullanır</string>
+
+    <string name="details_appReviewsAll">Tüm Yorumları Oku</string>
+    <string name="details_contains_ads">Reklam içerir</string>
+    <string name="details_download">İndir</string>
+    <string name="details_favourite_add">Favorilere ekle</string>
+    <string name="details_favourite_remove">Favorilerinden kaldır</string>
+    <string name="details_install">kurmak</string>
+    <string name="details_installing">yükleme</string>
+    <string name="details_more">Daha fazla oku</string>
+    <string name="details_no_ads">Reklam yok</string>
+    <string name="details_permissions">Uygulama izinleri</string>
+    <string name="details_purchase">Satın alma</string>
+    <string name="details_rate_this_app">Bu uygulamayı oyla</string>
+    <string name="details_rating_reviews">Puanlar</string>
+    <string name="details_reviews">Uygulama yorumları</string>
+    <string name="details_run">Açık</string>
+    <string name="details_share">Pay</string>
+    <string name="details_update">Güncelleştirme</string>
+    <string name="details_why_rate_this_app">Başkalarına ne düşündüğünü söyle</string>
+    <string name="details_you_rated_this_app">Sizin dereceniz</string>
+
+    <string name="dialog_title_logout">Çıkış Yap ?</string>
+
+    <string name="download_cancel_all">Hepsini iptal et</string>
+    <string name="download_canceled">İptal edildi</string>
+    <string name="download_clear_completed">Tamamlananları Temizle</string>
+    <string name="download_completed">Tamamlanan</string>
+    <string name="download_failed">Başarısız oldu</string>
+    <string name="download_force_clear_all">Tümünü Temizle</string>
+    <string name="download_pause_all">Hepsini durdur</string>
+    <string name="download_paused">Durduruldu</string>
+    <string name="download_progress">İndirilmesi</string>
+    <string name="download_queued">Sıraya alındı</string>
+    <string name="download_resume">Devam et</string>
+    <string name="download_resume_all">Tümünü Devam Et</string>
+
+    <string name="early_access">Erken erişim</string>
+    <string name="error_app_not_found">Uygulama bulunamadı</string>
+    <string name="error_incorrect_password">yanlış eposta adresi veya şifre</string>
+    <string name="error_invalid_device_definition">Cihaz tanımı reddedildi</string>
+    <string name="error_network_other">"Ağ hatası: %s"</string>
+    <string name="error_no_network">Ağ bağlantısı yok</string>
+    <string name="error_search_not_found">Eşleşen uygulama bulunamadı</string>
+    <string name="error_unknown">Bilinmeyen hata oluştu</string>
+
+    <string name="exodus_hasTracker"> %s izci içerir</string>
+    <string name="exodus_noTracker">İzleyici içermiyor</string>
+    <string name="exodus_powered">Exodus tarafından desteklenmektedir</string>
+    <string name="exodus_title">Aurora Koru</string>
+    <string name="exodus_title_alt">Çıkış Raporu</string>
+    <string name="exodus_viewMore">Görünüm</string>
+    <string name="exodus_viewReport">Raporu görüntüle</string>
+
+    <string name="flagging_title">Uygunsuz olarak işaretle</string>
+
+    <string name="list_app_blacklisted_empty">Kara Listeye Alınan Uygulama Yok</string>
+    <string name="list_app_depends_on_gsf">GSF\'ye bağımlı</string>
+    <string name="list_app_has_ads">reklam var</string>
+    <string name="list_app_independent_from_gsf">GSF bağımsız</string>
+    <string name="list_app_no_ads">reklam yok</string>
+    <string name="list_app_system">Sistem uygulaması</string>
+    <string name="list_app_user">Kullanıcı uygulaması</string>
+    <string name="list_blacklist">Kara Listeye Alınmış Uygulamalar</string>
+    <string name="list_blacklist_none">Kara Listeye Alınan Uygulama Yok</string>
+    <string name="list_bulk_install">toplu yükleme için sıraya konan uygulama (lar) "</string>
+    <string name="list_empty_fav">Sık Kullanılan yok</string>
+    <string name="list_empty_query">Son arama yok</string>
+    <string name="list_empty_updates">Güncelleme yok</string>
+    <string name="list_installed">Kurulmuş</string>
+    <string name="list_installed_system">Yalnızca kullanıcı uygulamalarını göster</string>
+    <string name="list_not_installd">Yüklü değil</string>
+    <string name="list_selected">Seçilen Uygulamalar: %d</string>
+    <string name="list_update_all">Tümünü Güncelle</string>
+    <string name="list_update_all_txt">güncellemeler mevcut"</string>
+    <string name="list_updating">Güncelleniyor</string>
+
+    <string name="manual_download_disclaimer">feragat</string>
+    <string name="manual_download_incompatible">Google Play Store, bu uygulamayı cihazınızla uyumlu olmadığını düşünüyor. Bu, sürüm kodunun Google Play Store sunucusu tarafından döndürülmediği anlamına gelir.</string>
+    <string name="manual_download_warning">Bu sayfa, indirilecek uygulamanın sürümünü manuel olarak seçmenize izin verir. \ N \ nUygulamaların rastgele sürümlerini indirmenin Google Play Store tarafından desteklenmediğini unutmayın. Başarınız, sürüm kodunun şanslı bir tahminine bağlıdır. Doğru tahmin etseniz ve indirme işlemini başlasanız bile, uyumsuz bir apk elde edebilirsiniz.</string>
+
+    <string name="menu_account">Hesaplar</string>
+    <string name="menu_disclaimer">feragat</string>
+    <string name="menu_downloads">İndirilenler</string>
+    <string name="menu_license">Lisans</string>
+    <string name="menu_setting">Ayarlar</string>
+    <string name="menu_terms">Kullanım Şartları</string>
+
+    <string name="no_permissions">Hiçbir izin kullanılmıyor.</string>
+    <string name="notification_installation_complete"> %s başarıyla yüklendi</string>
+    <string name="notification_installation_failed"> %s yüklenemedi</string>
+    <string name="notification_installation_progress"> %s yükleniyor</string>
+
+    <string name="pref_app_download">İndirilenler</string>
+    <string name="pref_app_network">Ağ</string>
+    <string name="pref_app_notification">Bildirimler</string>
+    <string name="pref_app_ui">Kullanıcı arayüzü</string>
+    <string name="pref_category_spoof_device">Sahte Cihaz</string>
+    <string name="pref_category_spoof_lang">Sahte Dil</string>
+    <string name="pref_category_spoof_location">Sahte Konum</string>
+    <string name="pref_device_to_pretend_to_be">Farklı bir cihaz gibi davran</string>
+    <string name="pref_device_to_pretend_to_be_default">Orijinal cihaz bilgileriniz</string>
+    <string name="pref_device_to_pretend_to_be_toast">Bu değişiklik, yeniden giriş yaptıktan sonra uygulanacak</string>
+    <string name="pref_dialog_to_apply_restart">Bu ayar, uygulamayı yeniden başlattıktan sonra uygulanacak</string>
+    <string name="pref_downloader_active_summary">Maksimum aktif indirme sayısı</string>
+    <string name="pref_downloader_active_title">Aktif İndirme</string>
+    <string name="pref_downloader_debug_summary">Detaylı günlükler almak için indirme hata ayıklamasını etkinleştir</string>
+    <string name="pref_downloader_debug_title">Hata ayıklama indir</string>
+    <string name="pref_downloader_path_title">İndirme Yolu</string>
+    <string name="pref_downloader_wifi_title">Sadece wifi kullanarak indir</string>
+    <string name="pref_filter_fdroid_summary">F-droid Uygulamalarını uygulama listelerinden kaldırır</string>
+    <string name="pref_filter_fdroid_title">F-droid Uygulamalarını Filtrele</string>
+    <string name="pref_filter_google_summary">Tüm Google Apps’i Arama sonuçlarından ve Kategori uygulamalarından kaldırır</string>
+    <string name="pref_filter_google_title">Google Apps’ı Filtrele</string>
+    <string name="pref_filter_search_summary">Her aramada arama filtreleri sıfırlanır. Arama filtrelerini kaydetmek için kapatın</string>
+    <string name="pref_filter_search_title">Kalıcı Olmayan Arama Filtresi Kullan</string>
+    <string name="pref_install_auto_summary">İndirme işlemi tamamlandıktan sonra uygulamalar anında yüklenir</string>
+    <string name="pref_install_auto_title">Otomatik Yükleme APK İndirme Sonrası</string>
+    <string name="pref_install_delete_summary">Android Pasta APK\'lerini çalıştıran cihazlarda varsayılan olarak silinir</string>
+    <string name="pref_install_delete_title">Apk Yükleme Sonrası Sil</string>
+    <string name="pref_install_mode_summary">APK Kurulumu Modunu Seçin</string>
+    <string name="pref_install_mode_title">Yükleme metodu</string>
+    <string name="pref_notification_priority_summary">Uygulama bildirimi için öncelik seviyesini belirle</string>
+    <string name="pref_notification_priority_title">Bildirim önceliği</string>
+    <string name="pref_notification_summary">Aurora Bildirimlerini Etkinleştir</string>
+    <string name="pref_notification_title">Bildirimleri göster</string>
+    <string name="pref_proxy_enable">Proxy\'yi etkinleştir</string>
+    <string name="pref_proxy_host">Vekalet sahibi</string>
+    <string name="pref_proxy_port">Proxy bağlantı noktası</string>
+    <string name="pref_proxy_type">Proxy türü</string>
+    <string name="pref_requested_language">Varsayılan API istek dilini değiştir</string>
+    <string name="pref_requested_language_default">Varsayılan dil</string>
+    <string name="pref_requested_location_disable">Tamamen devre dışı bırakmak için MockLocation\'ı Geliştirici Seçeneklerinden el ile devre dışı bırakmanız gerekir.</string>
+    <string name="pref_requested_location_enable">Geliştirici Seçeneklerinden MockLocation\'ı manuel olarak etkinleştirmeniz gerekir.</string>
+    <string name="pref_requested_location_summary">Aurora Mağazası varsayılan Sahte Konum Uygulaması olarak ayarlanmalıdır</string>
+    <string name="pref_ui_card_summary">Öne çıkan uygulamalar için eski stil kartlarını kullanın</string>
+    <string name="pref_ui_card_title">Eski Stil Uygulama Kartları</string>
+    <string name="pref_ui_snap_summary">Kaydırmada yalnızca bir uygulama göster</string>
+    <string name="pref_ui_snap_title">Uygulamalar için SnapView\'ü etkinleştirin</string>
+    <string name="pref_ui_theme_title">Tema</string>
+
+    <string name="testing_program_opt_in">Katılmak</string>
+    <string name="testing_program_opt_out">Ayrılmak</string>
+    <string name="testing_program_review_dialog_content_hint">Uygulama hakkında geri bildirim girin</string>
+    <string name="testing_program_section_opted_in_message">"Uygulama güncellemeleri beta sürümlerini içerecektir. Bu uygulamanın beta programından çıkarsanız, artık beta güncellemeleri almayacaksınız."</string>
+    <string name="testing_program_section_opted_in_propagating_message">"Birkaç dakika içinde, beta programına eklenirsiniz. Ardından, bu uygulamanın beta sürümüne güncelleyebilirsiniz."</string>
+    <string name="testing_program_section_opted_in_title">"Sen bir beta testcisin"</string>
+    <string name="testing_program_section_opted_out_message">"Yeni özellikleri herkese açık hale getirmeden önce deneyin. Geri bildiriminizi doğrudan geliştiriciye verin."</string>
+    <string name="testing_program_section_opted_out_propagating_message">Sizi beta programdan çıkarmak birkaç dakika sürebilir.</string>
+    <string name="testing_program_section_opted_out_title">Beta testçisi ol</string>
+
+    <string name="title_all_apps">Tüm uygulamalar</string>
+    <string name="title_home">Aurora Mağazası</string>
+    <string name="title_installed">Benim uygulamalarım</string>
+    <string name="title_perm">İzinler</string>
+    <string name="title_search">Uygulama Ara</string>
+    <string name="title_search_result">Msgstr " %s sonuçları"</string>
+    <string name="title_updates">Mevcut Güncellemeler</string>
+    <string name="title_welcome">Hoşgeldiniz</string>
+
+    <string name="toast_apk_blacklisted">Blacklisted</string>
+    <string name="toast_apk_whitelisted">Beyaz Listede</string>
+    <string name="toast_apk_copy_success">APK başarıyla kopyalandı</string>
+    <string name="toast_apk_copy_failure">Kopyalanamadı APK</string>
+</resources>

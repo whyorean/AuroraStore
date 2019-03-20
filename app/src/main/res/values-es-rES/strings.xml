@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~ Aurora Store
+  ~ Copyright (C) 2019, Rahul Kumar Patel <whyorean@gmail.com>
+  ~
+  ~ Aurora Store is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 2 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ Aurora Store is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with Aurora Store.  If not, see <http://www.gnu.org/licenses/>.
+  ~
+  ~
+  -->
+
+<resources>
+
+    <string name="account_dummy">Anónimo</string>
+    <string name="account_dummy_desc">Iniciar sesión usando una cuenta anónima?</string>
+    <string name="account_google">Cuenta Google</string>
+    <string name="account_logout">Cerrar sesión de Aurora?</string>
+    <string name="account_prompt_login">Por favor inicie sesión para continuar</string>
+    <string name="account_switch">Cambiar cuenta</string>
+
+    <string name="action_accounts">Cuentas</string>
+    <string name="action_ask">Pedir</string>
+    <string name="action_blacklist">Lista negra</string>
+    <string name="action_cancel">Cancelar</string>
+    <string name="action_clear">Claro</string>
+    <string name="action_clear_all">Limpiar todo</string>
+    <string name="action_convert_local">Convertir Local</string>
+    <string name="action_convert_system">Convertir sistema</string>
+    <string name="action_copied">Enlace copiado al portapapeles</string>
+    <string name="action_copy">Copiar link</string>
+    <string name="action_disable">Inhabilitar</string>
+    <string name="action_done">Hecho</string>
+    <string name="action_enable">Habilitar</string>
+    <string name="action_export">Exportar</string>
+    <string name="action_favourites">Aplicaciones favoritas</string>
+    <string name="action_filter">Filtros</string>
+    <string name="action_filter_all">Todos</string>
+    <string name="action_filter_apply">Aplicar</string>
+    <string name="action_filter_apps_with_ads">Apps con anuncios</string>
+    <string name="action_filter_downloads">Descargas</string>
+    <string name="action_filter_gsf_dependent_apps">Dependiente de GSF</string>
+    <string name="action_filter_misc">Misceláneo</string>
+    <string name="action_filter_paid_apps">Pagado</string>
+    <string name="action_filter_rating">Calificaciones</string>
+    <string name="action_flag">Aplicación de informe</string>
+    <string name="action_get_local_apk">Obtener APK local</string>
+    <string name="action_home">Casa</string>
+    <string name="action_installations">Instalaciones</string>
+    <string name="action_installed">Instalado</string>
+    <string name="action_later">Luego</string>
+    <string name="action_logging_in">Iniciar sesión</string>
+    <string name="action_login">Iniciar sesión</string>
+    <string name="action_logout">Cerrar sesión</string>
+    <string name="action_make_normal">Convertir a la aplicación normal</string>
+    <string name="action_make_system">Convertir a aplicación del sistema</string>
+    <string name="action_manual">Descarga manual</string>
+    <string name="action_more">Más</string>
+    <string name="action_next">Siguiente</string>
+    <string name="action_pause">Pausa</string>
+    <string name="action_remove">retirar</string>
+    <string name="action_restart">Reiniciar</string>
+    <string name="action_resume">Currículum</string>
+    <string name="action_retry">Procesar de nuevo</string>
+    <string name="action_retry_ing">Reintentando</string>
+    <string name="action_search">Buscar</string>
+    <string name="action_search_clearHistory">Limpiar todo</string>
+    <string name="action_search_history">Buscar Historia</string>
+    <string name="action_settings">Ajustes</string>
+    <string name="action_spoofed">Parodia</string>
+    <string name="action_submit">Enviar</string>
+    <string name="action_unignore">Eliminar de la lista negra</string>
+    <string name="action_uninstall">Desinstalar</string>
+    <string name="action_unwhitelist">Ignorar actualizaciones</string>
+    <string name="action_updates">Actualizaciones</string>
+    <string name="action_whitelist">Lista blanca</string>
+
+    <string name="apps_by">Aplicaciones por %s</string>
+    <string name="availability_restriction_country">"Este artículo no está disponible en tu país".</string>
+    <string name="availability_restriction_generic">"Este artículo no está disponible".</string>
+    <string name="availability_restriction_hardware_app">"Su dispositivo no es compatible con esta versión".</string>
+    <string name="category_appFree">Gratis</string>
+    <string name="category_topFree">Top gratis</string>
+    <string name="category_topGrossing">Las de mayor recaudación</string>
+    <string name="category_trending">Tendencias</string>
+
+    <string name="chip_all_apps">todas las categorias</string>
+    <string name="chip_all_family">Toda la familia</string>
+    <string name="chip_all_games">Todos los juegos</string>
+    <string name="chip_top_free">Top gratis</string>
+    <string name="chip_top_grossing">Las de mayor recaudación</string>
+    <string name="chip_top_trending">Tendencias</string>
+
+    <string name="delete">Borrar</string>
+    <string name="desc_perm">La tienda Aurora utiliza los siguientes permisos</string>
+
+    <string name="details_appReviewsAll">Leer todos los comentarios</string>
+    <string name="details_contains_ads">Contiene anuncios</string>
+    <string name="details_download">Descargar</string>
+    <string name="details_favourite_add">Agregar a favoritos</string>
+    <string name="details_favourite_remove">Quitar de favoritos</string>
+    <string name="details_install">Instalar</string>
+    <string name="details_installing">Instalación</string>
+    <string name="details_more">Lee mas</string>
+    <string name="details_no_ads">No ads</string>
+    <string name="details_permissions">Permisos de aplicación</string>
+    <string name="details_purchase">Compra</string>
+    <string name="details_rate_this_app">Califica esta aplicación</string>
+    <string name="details_rating_reviews">Calificaciones</string>
+    <string name="details_reviews">Revisiones de aplicaciones</string>
+    <string name="details_run">Abierto</string>
+    <string name="details_share">Compartir</string>
+    <string name="details_update">Actualizar</string>
+    <string name="details_why_rate_this_app">Dile a los demás lo que piensas</string>
+    <string name="details_you_rated_this_app">Tu clasificación</string>
+
+    <string name="dialog_title_logout">Cerrar sesión ?</string>
+
+    <string name="download_cancel_all">Cancelalo todo</string>
+    <string name="download_canceled">Cancelado</string>
+    <string name="download_clear_completed">Despejado completo</string>
+    <string name="download_completed">Terminado</string>
+    <string name="download_failed">Ha fallado</string>
+    <string name="download_force_clear_all">Forzar Borrar todo</string>
+    <string name="download_pause_all">Pausar todo</string>
+    <string name="download_paused">En pausa</string>
+    <string name="download_progress">Descargando</string>
+    <string name="download_queued">En cola</string>
+    <string name="download_resume">Currículum</string>
+    <string name="download_resume_all">Resume todo</string>
+
+    <string name="early_access">Acceso temprano</string>
+    <string name="error_app_not_found">App no encontrada</string>
+    <string name="error_incorrect_password">Correo o contraseña incorrectos</string>
+    <string name="error_invalid_device_definition">Definición de dispositivo rechazada</string>
+    <string name="error_network_other">"Network error: %s"</string>
+    <string name="error_no_network">No hay conexion de red</string>
+    <string name="error_search_not_found">No se encontró ninguna aplicación coincidente</string>
+    <string name="error_unknown">Ocurrió un error desconocido</string>
+
+    <string name="exodus_hasTracker">Contiene %s trackers</string>
+    <string name="exodus_noTracker">No contiene rastreadores</string>
+    <string name="exodus_powered">Desarrollado por Exodus</string>
+    <string name="exodus_title">Aurora Protect</string>
+    <string name="exodus_title_alt">Informe de éxodo</string>
+    <string name="exodus_viewMore">Ver</string>
+    <string name="exodus_viewReport">Vista del informe</string>
+
+    <string name="flagging_title">Marcar como inapropiado</string>
+
+    <string name="list_app_blacklisted_empty">No hay aplicaciones en la lista negra</string>
+    <string name="list_app_depends_on_gsf">Dependiente de GSF</string>
+    <string name="list_app_has_ads">tiene anuncios</string>
+    <string name="list_app_independent_from_gsf">GSF independiente</string>
+    <string name="list_app_no_ads">no ads</string>
+    <string name="list_app_system">Aplicación del sistema</string>
+    <string name="list_app_user">Aplicación de usuario</string>
+    <string name="list_blacklist">Aplicaciones de la lista negra</string>
+    <string name="list_blacklist_none">No hay aplicaciones en la lista negra</string>
+    <string name="list_bulk_install">aplicación (es) en cola para instalación masiva "</string>
+    <string name="list_empty_fav">No hay favoritos</string>
+    <string name="list_empty_query">No hay búsquedas recientes</string>
+    <string name="list_empty_updates">No hay actualizaciones disponibles</string>
+    <string name="list_installed">Instalado</string>
+    <string name="list_installed_system">Mostrar solo aplicaciones de usuario</string>
+    <string name="list_not_installd">No instalado</string>
+    <string name="list_selected">Aplicaciones seleccionadas:% d</string>
+    <string name="list_update_all">Actualizar todo</string>
+    <string name="list_update_all_txt">actualizaciones disponibles"</string>
+    <string name="list_updating">Actualizando</string>
+
+    <string name="manual_download_disclaimer">Renuncia</string>
+    <string name="manual_download_incompatible">Google Play Store considera esta aplicación incompatible con su dispositivo. Esto significa que el servidor de Google Play Store no ha devuelto el código de la versión.</string>
+    <string name="manual_download_warning">Esta página le permite elegir manualmente la versión de la aplicación para descargar. \n \n Tenga en cuenta que la descarga de versiones arbitrarias de aplicaciones no es compatible con Google Play Store. Su éxito depende de la adivinación afortunada del código de la versión. Incluso si lo adivinas y consigues que comience la descarga, es posible que obtengas una apk incompatible.</string>
+
+    <string name="menu_account">Cuentas</string>
+    <string name="menu_disclaimer">Renuncia</string>
+    <string name="menu_downloads">Descargas</string>
+    <string name="menu_license">Licencia</string>
+    <string name="menu_setting">Ajustes</string>
+    <string name="menu_terms">Términos de servicio</string>
+
+    <string name="no_permissions">No se utilizan permisos.</string>
+    <string name="notification_installation_complete">Instalado exitosamente %s</string>
+    <string name="notification_installation_failed">Error al instalar %s</string>
+    <string name="notification_installation_progress">Instalando %s</string>
+
+    <string name="pref_app_download">Descargas</string>
+    <string name="pref_app_network">Red</string>
+    <string name="pref_app_notification">Notificaciones</string>
+    <string name="pref_app_ui">Interfaz de usuario</string>
+    <string name="pref_category_spoof_device">Dispositivo de falsificación</string>
+    <string name="pref_category_spoof_lang">Lenguaje falso</string>
+    <string name="pref_category_spoof_location">Ubicación de la parodia</string>
+    <string name="pref_device_to_pretend_to_be">Pretender ser un dispositivo diferente</string>
+    <string name="pref_device_to_pretend_to_be_default">La información de su dispositivo original</string>
+    <string name="pref_device_to_pretend_to_be_toast">Este cambio se aplicará después de que vuelva a iniciar sesión</string>
+    <string name="pref_dialog_to_apply_restart">Esta configuración se aplicará después de reiniciar la aplicación</string>
+    <string name="pref_downloader_active_summary">Número máximo de descargas activas</string>
+    <string name="pref_downloader_active_title">Descarga activa</string>
+    <string name="pref_downloader_debug_summary">Habilitar la depuración de descargas para obtener registros detallados</string>
+    <string name="pref_downloader_debug_title">Descargar depuración</string>
+    <string name="pref_downloader_path_title">Descargar ruta</string>
+    <string name="pref_downloader_wifi_title">Descargar usando solo wifi</string>
+    <string name="pref_filter_fdroid_summary">Elimina F-droid Apps de las listas de aplicaciones</string>
+    <string name="pref_filter_fdroid_title">Filtrar aplicaciones de F-droid</string>
+    <string name="pref_filter_google_summary">Elimina todas las aplicaciones de Google de los resultados de búsqueda y aplicaciones de categoría</string>
+    <string name="pref_filter_google_title">Filtrar aplicaciones de google</string>
+    <string name="pref_filter_search_summary">Los filtros de búsqueda se reinician en cada búsqueda. Desactivar para guardar filtros de búsqueda.</string>
+    <string name="pref_filter_search_title">Utilice un filtro de búsqueda no persistente</string>
+    <string name="pref_install_auto_summary">Las aplicaciones se instalan instantáneamente una vez que se completa la descarga</string>
+    <string name="pref_install_auto_title">Auto Instalar APKs Post-Descarga</string>
+    <string name="pref_install_delete_summary">En los dispositivos que ejecutan Android Pie, los archivos APK se eliminan de forma predeterminada</string>
+    <string name="pref_install_delete_title">Eliminar Apk Post-Install</string>
+    <string name="pref_install_mode_summary">Seleccione el modo de instalación de APK</string>
+    <string name="pref_install_mode_title">Metodo de instalacion</string>
+    <string name="pref_notification_priority_summary">Establecer nivel de prioridad para la notificación de la aplicación</string>
+    <string name="pref_notification_priority_title">Prioridad de notificación</string>
+    <string name="pref_notification_summary">Habilitar las notificaciones de Aurora</string>
+    <string name="pref_notification_title">Mostrar notificaciones</string>
+    <string name="pref_proxy_enable">Habilitar proxy</string>
+    <string name="pref_proxy_host">Servidor proxy</string>
+    <string name="pref_proxy_port">Puerto proxy</string>
+    <string name="pref_proxy_type">Tipo de proxy</string>
+    <string name="pref_requested_language">Cambiar el idioma de solicitud de API predeterminado</string>
+    <string name="pref_requested_language_default">Tu idioma predeterminado</string>
+    <string name="pref_requested_location_disable">Debe deshabilitar manualmente MockLocation desde las Opciones del desarrollador para deshabilitarlo por completo.</string>
+    <string name="pref_requested_location_enable">Debe habilitar manualmente MockLocation desde las Opciones del desarrollador.</string>
+    <string name="pref_requested_location_summary">Aurora Store debe configurarse como aplicación de ubicación simulada predeterminada</string>
+    <string name="pref_ui_card_summary">Usa tarjetas de estilo heredado para aplicaciones destacadas</string>
+    <string name="pref_ui_card_title">Tarjetas de aplicación de estilo heredado</string>
+    <string name="pref_ui_snap_summary">Mostrar solo una aplicación en scroll</string>
+    <string name="pref_ui_snap_title">Habilitar SnapView para aplicaciones</string>
+    <string name="pref_ui_theme_title">Tema</string>
+
+    <string name="testing_program_opt_in">Unirse</string>
+    <string name="testing_program_opt_out">Salir</string>
+    <string name="testing_program_review_dialog_content_hint">Introduzca comentarios sobre la aplicación</string>
+    <string name="testing_program_section_opted_in_message">"Las actualizaciones de la aplicación incluirán versiones beta. Si abandonas el programa beta de esta aplicación, ya no recibirás actualizaciones de la versión beta".</string>
+    <string name="testing_program_section_opted_in_propagating_message">"En unos minutos, serás agregado al programa beta. Luego puedes actualizar a la versión beta de esta aplicación, si está disponible".</string>
+    <string name="testing_program_section_opted_in_title">"Eres un probador beta"</string>
+    <string name="testing_program_section_opted_out_message">"Pruebe nuevas funciones antes de que se hagan públicas. Envíe sus comentarios directamente al desarrollador".</string>
+    <string name="testing_program_section_opted_out_propagating_message">Puede demorar unos minutos eliminarlo del programa beta.</string>
+    <string name="testing_program_section_opted_out_title">Conviértete en un probador beta</string>
+
+    <string name="title_all_apps">Todas las aplicaciones</string>
+    <string name="title_home">Aurora Store</string>
+    <string name="title_installed">Mis aplicaciones</string>
+    <string name="title_perm">Permisos</string>
+    <string name="title_search">Buscar aplicaciones</string>
+    <string name="title_search_result">"Resultados para %s"</string>
+    <string name="title_updates">Actualizaciones disponibles</string>
+    <string name="title_welcome">Bienvenido</string>
+
+    <string name="toast_apk_blacklisted">En la lista negra</string>
+    <string name="toast_apk_whitelisted">En la lista blanca</string>
+    <string name="toast_apk_copy_success">APK copiado correctamente</string>
+    <string name="toast_apk_copy_failure">Error al copiar el APK</string>
+    --></resources>

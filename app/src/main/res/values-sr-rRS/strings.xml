@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~ Aurora Store
+  ~ Copyright (C) 2019, Rahul Kumar Patel <whyorean@gmail.com>
+  ~
+  ~ Aurora Store is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 2 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ Aurora Store is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with Aurora Store.  If not, see <http://www.gnu.org/licenses/>.
+  ~
+  ~
+  -->
+
+<resources>
+    <string name="account_dummy">Анонимно</string>
+    <string name="account_dummy_desc">Пријавите се помоћу анонимног налога?</string>
+    <string name="account_google">Гоогле налог</string>
+    <string name="account_logout">Одјавите се из Ауроре?</string>
+    <string name="account_prompt_login">Љубазно се пријавите да бисте наставили</string>
+    <string name="account_switch">Промени налог</string>
+
+    <string name="action_accounts">Рачуни</string>
+    <string name="action_ask">Питати</string>
+    <string name="action_blacklist">Црна листа</string>
+    <string name="action_cancel">Поништити, отказати</string>
+    <string name="action_clear">Јасно</string>
+    <string name="action_clear_all">Избриши све</string>
+    <string name="action_convert_local">Цонверт Лоцал</string>
+    <string name="action_convert_system">Цонверт Систем</string>
+    <string name="action_copied">Веза је копирана у клипборд</string>
+    <string name="action_copy">Цопи Линк</string>
+    <string name="action_disable">Онемогући</string>
+    <string name="action_done">Готово</string>
+    <string name="action_enable">Омогући</string>
+    <string name="action_export">Извоз</string>
+    <string name="action_favourites">Омиљене апликације</string>
+    <string name="action_filter">Филтери</string>
+    <string name="action_filter_all">Све</string>
+    <string name="action_filter_apply">Применити</string>
+    <string name="action_filter_apps_with_ads">Апликације са огласима</string>
+    <string name="action_filter_downloads">Преузимања</string>
+    <string name="action_filter_gsf_dependent_apps">ГСФ Депендент</string>
+    <string name="action_filter_misc">Мисц</string>
+    <string name="action_filter_paid_apps">Паид</string>
+    <string name="action_filter_rating">Ратингс</string>
+    <string name="action_flag">Пријави апликацију</string>
+    <string name="action_get_local_apk">Преузмите локални АПК</string>
+    <string name="action_home">Кућа</string>
+    <string name="action_installations">Инсталације</string>
+    <string name="action_installed">Инсталлед</string>
+    <string name="action_later">Касније</string>
+    <string name="action_logging_in">Пријављивањем</string>
+    <string name="action_login">Пријавите се</string>
+    <string name="action_logout">Одјавити се</string>
+    <string name="action_make_normal">Претвори у нормалну апликацију</string>
+    <string name="action_make_system">Претвори у системску апликацију</string>
+    <string name="action_manual">Мануал довнлоад</string>
+    <string name="action_more">Више</string>
+    <string name="action_next">Следећи</string>
+    <string name="action_pause">Пауза</string>
+    <string name="action_remove">Уклони</string>
+    <string name="action_restart">Поново покренути</string>
+    <string name="action_resume">Резиме</string>
+    <string name="action_retry">Покушај поново</string>
+    <string name="action_retry_ing">Поновни покушај</string>
+    <string name="action_search">Претрага</string>
+    <string name="action_search_clearHistory">Избриши све</string>
+    <string name="action_search_history">Историја претраге</string>
+    <string name="action_settings">Подешавања</string>
+    <string name="action_spoofed">Спооф</string>
+    <string name="action_submit">прихвати</string>
+    <string name="action_unignore">Уклони из црне листе</string>
+    <string name="action_uninstall">Деинсталирај</string>
+    <string name="action_unwhitelist">Занемари ажурирања</string>
+    <string name="action_updates">Упдатес</string>
+    <string name="action_whitelist">Бела листа</string>
+
+    <string name="apps_by">Апликације од стране %s</string>
+    <string name="availability_restriction_country">"Ова ставка није доступна у вашој земљи."</string>
+    <string name="availability_restriction_generic">"Ова ставка није доступна."</string>
+    <string name="availability_restriction_hardware_app">"Ваш уређај није компатибилан са овом верзијом."</string>
+    <string name="category_appFree">бесплатно</string>
+    <string name="category_topFree">Топ Фрее</string>
+    <string name="category_topGrossing">Топ Гроссинг</string>
+    <string name="category_trending">Трендинг</string>
+
+    <string name="chip_all_apps">Све категорије</string>
+    <string name="chip_all_family">Алл Фамили</string>
+    <string name="chip_all_games">Све игре</string>
+    <string name="chip_top_free">Топ Фрее</string>
+    <string name="chip_top_grossing">Топ Гроссинг</string>
+    <string name="chip_top_trending">Трендинг</string>
+
+    <string name="delete">Обриши</string>
+    <string name="desc_perm">Аурора Сторе користи следеће дозволе</string>
+
+    <string name="details_appReviewsAll">Прочитајте све рецензије</string>
+    <string name="details_contains_ads">Садржи огласе</string>
+    <string name="details_download">Преузимање</string>
+    <string name="details_favourite_add">Додај у омиљено</string>
+    <string name="details_favourite_remove">Уклони из омиљених</string>
+    <string name="details_install">Инсталирај</string>
+    <string name="details_installing">Инсталирање</string>
+    <string name="details_more">Опширније</string>
+    <string name="details_no_ads">Нема огласа</string>
+    <string name="details_permissions">Дозволе за апликације</string>
+    <string name="details_purchase">Пурцхасе</string>
+    <string name="details_rate_this_app">Оцени ову апликацију</string>
+    <string name="details_rating_reviews">Ратингс</string>
+    <string name="details_reviews">Апп ревиевс</string>
+    <string name="details_run">Отвори</string>
+    <string name="details_share">Објави</string>
+    <string name="details_update">ажурирање</string>
+    <string name="details_why_rate_this_app">Реците другима шта мислите</string>
+    <string name="details_you_rated_this_app">Ваша оцјена</string>
+
+    <string name="dialog_title_logout">Одјавити се ?</string>
+
+    <string name="download_cancel_all">Откажи све</string>
+    <string name="download_canceled">Отказано</string>
+    <string name="download_clear_completed">Јасно завршен</string>
+    <string name="download_completed">Завршено</string>
+    <string name="download_failed">Није успео</string>
+    <string name="download_force_clear_all">Форце Цлеар Алл</string>
+    <string name="download_pause_all">Паузирај све</string>
+    <string name="download_paused">Паузирано</string>
+    <string name="download_progress">Преузимање</string>
+    <string name="download_queued">Куеуед</string>
+    <string name="download_resume">Резиме</string>
+    <string name="download_resume_all">Ресуме Алл</string>
+
+    <string name="early_access">Рани приступ</string>
+    <string name="error_app_not_found">Апликација није пронађена</string>
+    <string name="error_incorrect_password">неисправан е-маил или лозинка</string>
+    <string name="error_invalid_device_definition">Дефиниција уређаја је одбијена</string>
+    <string name="error_network_other">"Мрежна грешка: %s"</string>
+    <string name="error_no_network">Нема мрежне везе</string>
+    <string name="error_search_not_found">Није пронађена одговарајућа апликација</string>
+    <string name="error_unknown">Дошло је до непознате грешке</string>
+
+    <string name="exodus_hasTracker">Садржи %s трацкера</string>
+    <string name="exodus_noTracker">Не садржи трагаче</string>
+    <string name="exodus_powered">Поверед би Екодус</string>
+    <string name="exodus_title">Аурора Протецт</string>
+    <string name="exodus_title_alt">Екодус Репорт</string>
+    <string name="exodus_viewMore">Поглед</string>
+    <string name="exodus_viewReport">Погледај извештај</string>
+
+    <string name="flagging_title">Обиљежи као неприкладан</string>
+
+    <string name="list_app_blacklisted_empty">Нема апликација на црној листи</string>
+    <string name="list_app_depends_on_gsf">ГСФ зависи</string>
+    <string name="list_app_has_ads">има огласе</string>
+    <string name="list_app_independent_from_gsf">ГСФ индепендент</string>
+    <string name="list_app_no_ads">нема огласа</string>
+    <string name="list_app_system">Систем апп</string>
+    <string name="list_app_user">Корисничка апликација</string>
+    <string name="list_blacklist">Блацклистед Аппс</string>
+    <string name="list_blacklist_none">Нема апликација на црној листи</string>
+    <string name="list_bulk_install">апликације у низу за масовно инсталирање "</string>
+    <string name="list_empty_fav">Нема фаворита</string>
+    <string name="list_empty_query">Нема недавних претраживања</string>
+    <string name="list_empty_updates">Нема доступних ажурирања</string>
+    <string name="list_installed">Инсталлед</string>
+    <string name="list_installed_system">Прикажи само корисничке апликације</string>
+    <string name="list_not_installd">Није инсталирана</string>
+    <string name="list_selected">Изабране апликације: %d</string>
+    <string name="list_update_all">Упдате Алл</string>
+    <string name="list_update_all_txt">Доступно ажурирање "</string>
+    <string name="list_updating">Ажурирање</string>
+
+    <string name="manual_download_disclaimer">Дисцлаимер</string>
+    <string name="manual_download_incompatible">Гоогле Плаи Сторе сматра ову апликацију некомпатибилном са вашим уређајем. То значи да код верзије није враћен од стране сервера Гоогле Плаи продавнице.</string>
+    <string name="manual_download_warning">Ова страница вам омогућава да ручно одаберете верзију апликације за преузимање. Имајте на уму да Гоогле Плаи продавница не подржава преузимање произвољних верзија апликација. Ваш успех зависи од срећне претпоставке кода верзије. Чак и ако погодите исправно и када покренете преузимање, можда ћете добити некомпатибилан апк.</string>
+
+    <string name="menu_account">Рачуни</string>
+    <string name="menu_disclaimer">Дисцлаимер</string>
+    <string name="menu_downloads">Преузимања</string>
+    <string name="menu_license">Лиценца</string>
+    <string name="menu_setting">Подешавања</string>
+    <string name="menu_terms">Услови коришћења</string>
+
+    <string name="no_permissions">Не користе се дозволе.</string>
+    <string name="notification_installation_complete">Успешно инсталирано %s</string>
+    <string name="notification_installation_failed">Инсталација %s није успела</string>
+    <string name="notification_installation_progress">Инсталирање %s</string>
+
+    <string name="pref_app_download">Преузимања</string>
+    <string name="pref_app_network">Мрежа</string>
+    <string name="pref_app_notification">Обавештења</string>
+    <string name="pref_app_ui">Кориснички интерфејс</string>
+    <string name="pref_category_spoof_device">Спооф Девице</string>
+    <string name="pref_category_spoof_lang">Спооф Лангуаге</string>
+    <string name="pref_category_spoof_location">Спооф Лоцатион</string>
+    <string name="pref_device_to_pretend_to_be">Претварајте се да сте другачији уређај</string>
+    <string name="pref_device_to_pretend_to_be_default">Информације о оригиналном уређају</string>
+    <string name="pref_device_to_pretend_to_be_toast">Ова промена ће бити примењена након што се поново пријавите</string>
+    <string name="pref_dialog_to_apply_restart">Ово подешавање ће бити примењено након што поново покренете апликацију</string>
+    <string name="pref_downloader_active_summary">Максимални број активних преузимања</string>
+    <string name="pref_downloader_active_title">Ацтиве Довнлоад</string>
+    <string name="pref_downloader_debug_summary">Омогућите дебаговање преузимања да бисте добили детаљне дневнике</string>
+    <string name="pref_downloader_debug_title">Довнлоад дебуггинг</string>
+    <string name="pref_downloader_path_title">Довнлоад Патх</string>
+    <string name="pref_downloader_wifi_title">Преузмите само помоћу вифи-ја</string>
+    <string name="pref_filter_fdroid_summary">Уклања Ф-дроид апликације са листе апликација</string>
+    <string name="pref_filter_fdroid_title">Филтрирајте Ф-дроид апликације</string>
+    <string name="pref_filter_google_summary">Уклања све Гоогле Аппс из резултата претраге и категорија апликација</string>
+    <string name="pref_filter_google_title">Филтрирајте Гоогле Аппс</string>
+    <string name="pref_filter_search_summary">Филтери претраге се ресетују на свакој претрази. Искључите да бисте сачували филтере за претраживање</string>
+    <string name="pref_filter_search_title">Користите непостојан филтер претраживања</string>
+    <string name="pref_install_auto_summary">Апликације се инсталирају одмах након довршетка преузимања</string>
+    <string name="pref_install_auto_title">Ауто Инсталл АПКс Пост-Довнлоад</string>
+    <string name="pref_install_delete_summary">На уређајима који користе Андроид Пие АПК-ове се аутоматски бришу</string>
+    <string name="pref_install_delete_title">Обриши Апк Пост-Инсталл</string>
+    <string name="pref_install_mode_summary">Изаберите начин инсталације АПК-а</string>
+    <string name="pref_install_mode_title">Метод инсталације</string>
+    <string name="pref_notification_priority_summary">Подесите ниво приоритета за обавештења о апликацији</string>
+    <string name="pref_notification_priority_title">Приоритет обавештења</string>
+    <string name="pref_notification_summary">Омогући Аурора обавештења</string>
+    <string name="pref_notification_title">Покажи обавештења</string>
+    <string name="pref_proxy_enable">Омогући проки</string>
+    <string name="pref_proxy_host">Проки хост</string>
+    <string name="pref_proxy_port">Проки Порт</string>
+    <string name="pref_proxy_type">Проки типе</string>
+    <string name="pref_requested_language">Промените подразумевани језик захтева за АПИ</string>
+    <string name="pref_requested_language_default">Ваш подразумевани језик</string>
+    <string name="pref_requested_location_disable">Морате ручно да онемогућите МоцкЛоцатион из Девелопер Оптионс да бисте га у потпуности онемогућили.</string>
+    <string name="pref_requested_location_enable">Морате ручно омогућити МоцкЛоцатион из Девелопер Оптионс.</string>
+    <string name="pref_requested_location_summary">Аурора Сторе мора бити постављен као подразумевана Моцк Лоцатион Апплицатион</string>
+    <string name="pref_ui_card_summary">Користите застареле стилске картице за истакнуте апликације</string>
+    <string name="pref_ui_card_title">Легаци Стиле Апп Цардс</string>
+    <string name="pref_ui_snap_summary">Прикажи само једну апликацију на свитку</string>
+    <string name="pref_ui_snap_title">Омогући СнапВиев за апликације</string>
+    <string name="pref_ui_theme_title">Тхеме</string>
+
+    <string name="testing_program_opt_in">Придружити</string>
+    <string name="testing_program_opt_out">Леаве</string>
+    <string name="testing_program_review_dialog_content_hint">Унесите повратне информације о апликацији</string>
+    <string name="testing_program_section_opted_in_message">"Ажурирања апликације ће укључивати бета верзије. Ако напустите бета програм ове апликације, више нећете добити бета ажурирања."</string>
+    <string name="testing_program_section_opted_in_propagating_message">"За неколико минута бит ћете додани у бета програм. Након тога можете ажурирати бета верзију ове апликације, ако је доступна."</string>
+    <string name="testing_program_section_opted_in_title">"Ти си бета тестер"</string>
+    <string name="testing_program_section_opted_out_message">"Испробајте нове функције пре него што се објаве. Дајте повратне информације директно програмеру."</string>
+    <string name="testing_program_section_opted_out_propagating_message">Уклањање вас из бета програма може потрајати неколико минута.</string>
+    <string name="testing_program_section_opted_out_title">Постаните бета тестер</string>
+
+    <string name="title_all_apps">Све апликације</string>
+    <string name="title_home">Аурора Сторе</string>
+    <string name="title_installed">Моје апликације</string>
+    <string name="title_perm">Дозволе</string>
+    <string name="title_search">Сеарцх Аппс</string>
+    <string name="title_search_result">"Резултати за %s"</string>
+    <string name="title_updates">Доступна ажурирања</string>
+    <string name="title_welcome">Добродошли</string>
+
+    <string name="toast_apk_blacklisted">Блацклистед</string>
+    <string name="toast_apk_whitelisted">Вхителистед</string>
+    <string name="toast_apk_copy_success">АПК је успешно копирана</string>
+    <string name="toast_apk_copy_failure">Није успело копирање АПК-а</string>
+</resources>
