@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~ Aurora Store
+  ~ Copyright (C) 2019, Rahul Kumar Patel <whyorean@gmail.com>
+  ~
+  ~ Aurora Store is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 2 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ Aurora Store is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with Aurora Store.  If not, see <http://www.gnu.org/licenses/>.
+  ~
+  ~
+  -->
+
+<resources>
+    <string name="account_dummy">匿名</string>
+    <string name="account_dummy_desc">匿名アカウントを使用してログインしますか？</string>
+    <string name="account_google">Googleアカウント</string>
+    <string name="account_logout">オーロラからログアウトしますか？</string>
+    <string name="account_prompt_login">続行するにはログインしてください</string>
+    <string name="account_switch">アカウントを切り替える</string>
+
+    <string name="action_accounts">アカウント</string>
+    <string name="action_ask">尋ねる</string>
+    <string name="action_blacklist">ブラックリスト</string>
+    <string name="action_cancel">キャンセル</string>
+    <string name="action_clear">クリア</string>
+    <string name="action_clear_all">すべてクリア</string>
+    <string name="action_convert_local">ローカルに変換</string>
+    <string name="action_convert_system">変換システム</string>
+    <string name="action_copied">リンクをクリップボードにコピーしました</string>
+    <string name="action_copy">リンクをコピーする</string>
+    <string name="action_disable">無効にする</string>
+    <string name="action_done">完了</string>
+    <string name="action_enable">有効にする</string>
+    <string name="action_export">輸出する</string>
+    <string name="action_favourites">お気に入りのアプリ</string>
+    <string name="action_filter">フィルター</string>
+    <string name="action_filter_all">すべて</string>
+    <string name="action_filter_apply">適用する</string>
+    <string name="action_filter_apps_with_ads">広告付きアプリ</string>
+    <string name="action_filter_downloads">ダウンロード</string>
+    <string name="action_filter_gsf_dependent_apps">GSFに依存</string>
+    <string name="action_filter_misc">その他の</string>
+    <string name="action_filter_paid_apps">有料</string>
+    <string name="action_filter_rating">評価</string>
+    <string name="action_flag">アプリを報告</string>
+    <string name="action_get_local_apk">ローカルAPKを入手</string>
+    <string name="action_home">ホーム</string>
+    <string name="action_installations">インストール</string>
+    <string name="action_installed">インストール済み</string>
+    <string name="action_later">後</string>
+    <string name="action_logging_in">ログイン中</string>
+    <string name="action_login">ログイン</string>
+    <string name="action_logout">ログアウト</string>
+    <string name="action_make_normal">通常のアプリに変換</string>
+    <string name="action_make_system">システムアプリに変換</string>
+    <string name="action_manual">手動ダウンロード</string>
+    <string name="action_more">もっと</string>
+    <string name="action_next">次</string>
+    <string name="action_pause">一時停止</string>
+    <string name="action_remove">削除する</string>
+    <string name="action_restart">再起動</string>
+    <string name="action_resume">履歴書</string>
+    <string name="action_retry">リトライ</string>
+    <string name="action_retry_ing">再試行</string>
+    <string name="action_search">サーチ</string>
+    <string name="action_search_clearHistory">すべてクリア</string>
+    <string name="action_search_history">検索履歴</string>
+    <string name="action_settings">設定</string>
+    <string name="action_spoofed">なりすまし</string>
+    <string name="action_submit">提出する</string>
+    <string name="action_unignore">ブラックリストから削除</string>
+    <string name="action_uninstall">アンインストール</string>
+    <string name="action_unwhitelist">更新を無視する</string>
+    <string name="action_updates">更新情報</string>
+    <string name="action_whitelist">ホワイトリスト</string>
+
+    <string name="apps_by"> %sのアプリ</string>
+    <string name="availability_restriction_country">「このアイテムはあなたの国では利用できません。」</string>
+    <string name="availability_restriction_generic">「この商品は購入できません」</string>
+    <string name="availability_restriction_hardware_app">「あなたの端末はこのバージョンと互換性がありません。」</string>
+    <string name="category_appFree">無料</string>
+    <string name="category_topFree">トップフリー</string>
+    <string name="category_topGrossing">トップグロシング</string>
+    <string name="category_trending">トレンド</string>
+
+    <string name="chip_all_apps">すべてのカテゴリ</string>
+    <string name="chip_all_family">すべての家族</string>
+    <string name="chip_all_games">すべてのゲーム</string>
+    <string name="chip_top_free">トップフリー</string>
+    <string name="chip_top_grossing">トップグロシング</string>
+    <string name="chip_top_trending">トレンド</string>
+
+    <string name="delete">削除する</string>
+    <string name="desc_perm">Aurora Storeは以下の権限を使用します。</string>
+
+    <string name="details_appReviewsAll">すべてのレビューを読む</string>
+    <string name="details_contains_ads">広告が含まれています</string>
+    <string name="details_download">ダウンロード</string>
+    <string name="details_favourite_add">お気に入りに追加</string>
+    <string name="details_favourite_remove">お気に入りから削除</string>
+    <string name="details_install">インストール</string>
+    <string name="details_installing">インストール中</string>
+    <string name="details_more">続きを読む</string>
+    <string name="details_no_ads">No ads</string>
+    <string name="details_permissions">アプリの許可</string>
+    <string name="details_purchase">購入</string>
+    <string name="details_rate_this_app">このアプリを評価する</string>
+    <string name="details_rating_reviews">評価</string>
+    <string name="details_reviews">アプリレビュー</string>
+    <string name="details_run">開いた</string>
+    <string name="details_share">シェア</string>
+    <string name="details_update">更新</string>
+    <string name="details_why_rate_this_app">あなたが思うことを他の人に話す</string>
+    <string name="details_you_rated_this_app">あなたの評価</string>
+
+    <string name="dialog_title_logout">ログアウト ？</string>
+
+    <string name="download_cancel_all">すべてキャンセル</string>
+    <string name="download_canceled">キャンセル</string>
+    <string name="download_clear_completed">クリア完了</string>
+    <string name="download_completed">完了しました</string>
+    <string name="download_failed">失敗しました</string>
+    <string name="download_force_clear_all">すべてクリア</string>
+    <string name="download_pause_all">すべて一時停止</string>
+    <string name="download_paused">一時停止</string>
+    <string name="download_progress">ダウンロード中</string>
+    <string name="download_queued">待ち行列</string>
+    <string name="download_resume">履歴書</string>
+    <string name="download_resume_all">すべて再開</string>
+
+    <string name="early_access">早期アクセス</string>
+    <string name="error_app_not_found">アプリが見つかりません</string>
+    <string name="error_incorrect_password">間違ったメールアドレスまたはパスワード</string>
+    <string name="error_invalid_device_definition">デバイス定義が拒否されました</string>
+    <string name="error_network_other">"ネットワークエラー： %s"</string>
+    <string name="error_no_network">ネットワーク接続なし</string>
+    <string name="error_search_not_found">一致するアプリが見つかりません</string>
+    <string name="error_unknown">不明なエラーが発生しました</string>
+
+    <string name="exodus_hasTracker"> %sトラッカーを含みます</string>
+    <string name="exodus_noTracker">トラッカーを含みません</string>
+    <string name="exodus_powered">Exodusによって供給</string>
+    <string name="exodus_title">オーロラプロテクト</string>
+    <string name="exodus_title_alt">出国レポート</string>
+    <string name="exodus_viewMore">見る</string>
+    <string name="exodus_viewReport">レポートを見る</string>
+
+    <string name="flagging_title">不適切として報告</string>
+
+    <string name="list_app_blacklisted_empty">アプリはブラックリストに登録されていません</string>
+    <string name="list_app_depends_on_gsf">GSFに依存</string>
+    <string name="list_app_has_ads">広告があります</string>
+    <string name="list_app_independent_from_gsf">GSFに依存しない</string>
+    <string name="list_app_no_ads">no ads</string>
+    <string name="list_app_system">システムアプリ</string>
+    <string name="list_app_user">ユーザーアプリ</string>
+    <string name="list_blacklist">ブラックリストに登録されたアプリ</string>
+    <string name="list_blacklist_none">アプリはブラックリストに登録されていません</string>
+    <string name="list_bulk_install">一括インストールのためにキューに入れられたアプリ」</string>
+    <string name="list_empty_fav">お気に入りなし</string>
+    <string name="list_empty_query">最近の検索はありません</string>
+    <string name="list_empty_updates">利用可能なアップデートはありません</string>
+    <string name="list_installed">インストール済み</string>
+    <string name="list_installed_system">ユーザーアプリのみを表示</string>
+    <string name="list_not_installd">インストールされていない</string>
+    <string name="list_selected">選択されたアプリ：%d</string>
+    <string name="list_update_all">すべて更新</string>
+    <string name="list_update_all_txt">利用可能なアップデート」</string>
+    <string name="list_updating">更新中</string>
+
+    <string name="manual_download_disclaimer">免責事項</string>
+    <string name="manual_download_incompatible">Google Playストアでは、このアプリはお使いのデバイスと互換性がないと見なされます。これはバージョンコードがGoogle Playストアサーバーから返されていないことを意味します。</string>
+    <string name="manual_download_warning">このページでは、ダウンロードするアプリのバージョンを手動で選択できます。\ n \ n任意のバージョンのアプリのダウンロードはGoogle Playストアではサポートされていません。あなたの成功はバージョンコードの幸運な推測にかかっています。あなたが正しいと思い、ダウンロードを開始しても、あなたは互換性のないapkを得るかもしれません。</string>
+
+    <string name="menu_account">アカウント</string>
+    <string name="menu_disclaimer">免責事項</string>
+    <string name="menu_downloads">ダウンロード</string>
+    <string name="menu_license">ライセンス</string>
+    <string name="menu_setting">設定</string>
+    <string name="menu_terms">利用規約</string>
+
+    <string name="no_permissions">権限は使用されません。</string>
+    <string name="notification_installation_complete">正常にインストールされた %s</string>
+    <string name="notification_installation_failed"> %sをインストールできませんでした</string>
+    <string name="notification_installation_progress"> %sをインストール中</string>
+
+    <string name="pref_app_download">ダウンロード</string>
+    <string name="pref_app_network">ネットワーク</string>
+    <string name="pref_app_notification">通知</string>
+    <string name="pref_app_ui">ユーザーインターフェース</string>
+    <string name="pref_category_spoof_device">なりすまし装置</string>
+    <string name="pref_category_spoof_lang">なりすまし言語</string>
+    <string name="pref_category_spoof_location">偽装場所</string>
+    <string name="pref_device_to_pretend_to_be">別のデバイスのふりをする</string>
+    <string name="pref_device_to_pretend_to_be_default">元の端末情報</string>
+    <string name="pref_device_to_pretend_to_be_toast">この変更は再ログイン後に適用されます</string>
+    <string name="pref_dialog_to_apply_restart">この設定はアプリを再起動した後に適用されます</string>
+    <string name="pref_downloader_active_summary">アクティブダウンロードの最大数</string>
+    <string name="pref_downloader_active_title">アクティブダウンロード</string>
+    <string name="pref_downloader_debug_summary">ダウンロードログを有効にして詳細なログを取得する</string>
+    <string name="pref_downloader_debug_title">デバッグをダウンロードする</string>
+    <string name="pref_downloader_path_title">ダウンロードパス</string>
+    <string name="pref_downloader_wifi_title">無線LANのみを使用してダウンロードする</string>
+    <string name="pref_filter_fdroid_summary">アプリリストからF-droidアプリを削除します。</string>
+    <string name="pref_filter_fdroid_title">Fドロイドアプリを絞り込む</string>
+    <string name="pref_filter_google_summary">検索結果とカテゴリアプリからすべてのGoogle Appsを削除します。</string>
+    <string name="pref_filter_google_title">Google Appsをフィルタリング</string>
+    <string name="pref_filter_search_summary">検索フィルタは各検索でリセットされます。検索フィルタを保存するにはオフにします</string>
+    <string name="pref_filter_search_title">非持続検索フィルタを使用</string>
+    <string name="pref_install_auto_summary">ダウンロード完了後すぐにアプリがインストールされる</string>
+    <string name="pref_install_auto_title">自動インストールAPKダウンロード後</string>
+    <string name="pref_install_delete_summary">Android Pie APKを実行しているデバイスではデフォルトで削除されます</string>
+    <string name="pref_install_delete_title">インストール後のApkの削除</string>
+    <string name="pref_install_mode_summary">APKインストールモードの選択</string>
+    <string name="pref_install_mode_title">インストール方法</string>
+    <string name="pref_notification_priority_summary">アプリ通知の優先度を設定する</string>
+    <string name="pref_notification_priority_title">通知の優先度</string>
+    <string name="pref_notification_summary">Aurora通知を有効にする</string>
+    <string name="pref_notification_title">通知を表示</string>
+    <string name="pref_proxy_enable">プロキシを有効にする</string>
+    <string name="pref_proxy_host">プロキシホスト</string>
+    <string name="pref_proxy_port">プロキシポート</string>
+    <string name="pref_proxy_type">プロキシタイプ</string>
+    <string name="pref_requested_language">デフォルトのAPIリクエスト言語を変更する</string>
+    <string name="pref_requested_language_default">あなたのデフォルト言語</string>
+    <string name="pref_requested_location_disable">完全に無効にするには、Developer Optionsから手動でMockLocationを無効にする必要があります。</string>
+    <string name="pref_requested_location_enable">開発者向けオプションから手動でMockLocationを有効にする必要があります。</string>
+    <string name="pref_requested_location_summary">Aurora StoreはデフォルトのMock Locationアプリケーションとして設定する必要があります</string>
+    <string name="pref_ui_card_summary">注目のアプリにレガシースタイルのカードを使用する</string>
+    <string name="pref_ui_card_title">レガシースタイルのAppカード</string>
+    <string name="pref_ui_snap_summary">スクロールしているアプリを1つだけ表示する</string>
+    <string name="pref_ui_snap_title">アプリのSnapViewを有効にする</string>
+    <string name="pref_ui_theme_title">テーマ</string>
+
+    <string name="testing_program_opt_in">参加する</string>
+    <string name="testing_program_opt_out">立ち去る</string>
+    <string name="testing_program_review_dialog_content_hint">アプリに関するフィードバックを入力してください</string>
+    <string name="testing_program_section_opted_in_message">「アプリのアップデートにはベータ版が含まれます。このアプリのベータプログラムを終了すると、ベータ版のアップデートは入手できなくなります。」</string>
+    <string name="testing_program_section_opted_in_propagating_message">「数分で、ベータプログラムに追加されます。利用可能な場合は、このアプリのベータ版に更新できます。</string>
+    <string name="testing_program_section_opted_in_title">「あなたはベータテスターです」</string>
+    <string name="testing_program_section_opted_out_message">「新しい機能を公開する前に試してください。開発者に直接フィードバックをお願いします。」</string>
+    <string name="testing_program_section_opted_out_propagating_message">ベータプログラムからあなたを削除するのに数分かかることがあります。</string>
+    <string name="testing_program_section_opted_out_title">ベータテスターになる</string>
+
+    <string name="title_all_apps">すべてのアプリ</string>
+    <string name="title_home">Aurora Store</string>
+    <string name="title_installed">私のアプリ</string>
+    <string name="title_perm">許可</string>
+    <string name="title_search">アプリを検索</string>
+    <string name="title_search_result">"%s の結果"</string>
+    <string name="title_updates">利用可能なアップデート</string>
+    <string name="title_welcome">ようこそ</string>
+
+    <string name="toast_apk_blacklisted">ブラックリスト</string>
+    <string name="toast_apk_whitelisted">ホワイトリスト</string>
+    <string name="toast_apk_copy_success">APKは正常にコピーされました</string>
+    <string name="toast_apk_copy_failure">APKをコピーできませんでした</string>
+</resources>
