@@ -266,6 +266,10 @@
     <string name="title_updates">Available Updates</string>
     <string name="title_welcome">Welcome</string>
 
+    <string name="tab_explore">Explore Apps</string>
+    <string name="tab_games">Find Games</string>
+    <string name="tab_family">Kids &amp; Family</string>
+
     <string name="toast_apk_blacklisted">Blacklisted</string>
     <string name="toast_apk_whitelisted">Whitelisted</string>
     <string name="toast_apk_copy_success">APK copied successfully</string>

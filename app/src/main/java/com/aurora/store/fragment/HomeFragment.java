@@ -91,9 +91,9 @@ public class HomeFragment extends Fragment {
 
     private void init() {
         CategoryAdapter mTabAdapter = new CategoryAdapter(getChildFragmentManager());
-        mTabAdapter.addFragment(new ExploreFragment(), "Explore Apps");
-        mTabAdapter.addFragment(new GamesFragment(), "Find Games");
-        mTabAdapter.addFragment(new FamilyFragment(), "Kids & Family");
+        mTabAdapter.addFragment(new ExploreFragment(), getString(R.string.tab_explore));
+        mTabAdapter.addFragment(new GamesFragment(), getString(R.string.tab_games));
+        mTabAdapter.addFragment(new FamilyFragment(), getString(R.string.tab_family));
         mViewPager.setAdapter(mTabAdapter);
         mTabLayout.setupWithViewPager(mViewPager);
 
