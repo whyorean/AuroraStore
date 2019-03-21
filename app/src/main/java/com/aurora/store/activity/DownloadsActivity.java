@@ -136,6 +136,7 @@ public class DownloadsActivity extends AppCompatActivity {
             mActionBar.setDisplayShowCustomEnabled(true);
             mActionBar.setDisplayHomeAsUpEnabled(true);
             mActionBar.setElevation(0f);
+            mActionBar.setTitle(R.string.menu_downloads);
         }
     }
 

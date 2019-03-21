@@ -25,14 +25,14 @@ import android.content.Intent;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.aurora.store.R;
+import com.aurora.store.manager.LocaleManager;
 
 public class ThemeUtil {
-
-    public static final int PREF_DEFAULT_THEME = 0;
 
     private int currentTheme;
 
     public void onCreate(AppCompatActivity activity) {
+        new LocaleManager(activity).setLocale();
         currentTheme = getSelectedTheme(activity);
         activity.setTheme(currentTheme);
     }

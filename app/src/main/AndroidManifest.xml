@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Aurora Store
   ~ Copyright (C) 2019, Rahul Kumar Patel <whyorean@gmail.com>
   ~
@@ -65,7 +64,7 @@
                 android:name="android.app.searchable"
                 android:resource="@xml/searchable" />
         </activity>
-        <activity android:name=".activity.DetailsActivity" >
+        <activity android:name=".activity.DetailsActivity">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
@@ -89,15 +88,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.FullscreenImageActivity" />
-        <activity
-            android:name=".activity.DownloadsActivity"
-            android:label="@string/menu_downloads" />
-        <activity
-            android:name=".activity.AccountsActivity"
-            android:label="@string/action_accounts" />
+        <activity android:name=".activity.DownloadsActivity" />
+        <activity android:name=".activity.AccountsActivity" />
         <activity
             android:name=".activity.SettingsActivity"
-            android:label="@string/action_settings"
             android:theme="@style/AppTheme" />
         <activity android:name=".activity.CategoriesActivity" />
         <activity android:name=".activity.IntroActivity" />

@@ -384,6 +384,10 @@ public class Util {
         return getPrefs(context).getBoolean(Constants.PREFERENCE_ENABLE_PROXY, false);
     }
 
+    public static boolean isCustomLocaleEnabled(Context context) {
+        return getPrefs(context).getBoolean(Constants.PREFERENCE_LOCALE_CUSTOM, false);
+    }
+
     public static Proxy.Type getProxyType(Context context) {
         String proxyType = getPrefs(context).getString(Constants.PREFERENCE_PROXY_TYPE, "HTTP");
         switch (proxyType) {

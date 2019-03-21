@@ -35,7 +35,6 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
-import com.aurora.store.utility.Accountant;
 import com.aurora.store.Constants;
 import com.aurora.store.R;
 import com.aurora.store.adapter.CustomViewPagerAdapter;
@@ -43,6 +42,7 @@ import com.aurora.store.fragment.HomeFragment;
 import com.aurora.store.fragment.InstalledFragment;
 import com.aurora.store.fragment.SearchFragment;
 import com.aurora.store.fragment.UpdatesFragment;
+import com.aurora.store.utility.Accountant;
 import com.aurora.store.utility.PrefUtil;
 import com.aurora.store.utility.ThemeUtil;
 import com.aurora.store.view.CustomViewPager;
@@ -169,6 +169,7 @@ public class AuroraActivity extends AppCompatActivity {
         if (mActionBar != null) {
             mActionBar.setDisplayShowCustomEnabled(true);
             mActionBar.setElevation(0f);
+            mActionBar.setTitle(getString(R.string.app_name));
         }
     }
 

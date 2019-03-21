@@ -196,6 +196,7 @@
     <string name="notification_installation_progress">Installing %s</string>
 
     <string name="pref_app_download">Downloads</string>
+    <string name="pref_app_language">Language</string>
     <string name="pref_app_network">Network</string>
     <string name="pref_app_notification">Notifications</string>
     <string name="pref_app_ui">User Interface</string>
@@ -224,6 +225,9 @@
     <string name="pref_install_delete_title">Delete Apk Post-Install</string>
     <string name="pref_install_mode_summary">Select Mode of APK Installation</string>
     <string name="pref_install_mode_title">Installation Method</string>
+    <string name="pref_locale_custom_title">Custom Langage</string>
+    <string name="pref_locale_custom_summary">Enforce custom app language</string>
+    <string name="pref_locale_list_title">Select Locale</string>
     <string name="pref_notification_priority_summary">Set priority level for app notification</string>
     <string name="pref_notification_priority_title">Notification Priority</string>
     <string name="pref_notification_summary">Enable Aurora Notifications</string>

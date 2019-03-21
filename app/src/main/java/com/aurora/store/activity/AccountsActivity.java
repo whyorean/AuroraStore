@@ -102,6 +102,7 @@ public class AccountsActivity extends AppCompatActivity {
             mActionBar.setDisplayHomeAsUpEnabled(true);
             mActionBar.setDisplayShowCustomEnabled(true);
             mActionBar.setElevation(0f);
+            mActionBar.setTitle(getString(R.string.menu_account));
         }
     }
 
@@ -114,10 +115,10 @@ public class AccountsActivity extends AppCompatActivity {
                 .commitAllowingStateLoss();
     }
 
-    private void openWebView(String URL){
-        try{
+    private void openWebView(String URL) {
+        try {
             startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(URL)));
-        }catch (Exception e){
+        } catch (Exception e) {
             Log.e("No WebView found !");
         }
     }

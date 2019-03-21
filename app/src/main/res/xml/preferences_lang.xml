@@ -18,16 +18,21 @@
   ~
   -->
 
-<vector xmlns:android="http://schemas.android.com/apk/res/android"
-    android:width="24dp"
-    android:height="24dp"
-    android:viewportWidth="24"
-    android:viewportHeight="24">
-    <path
-        android:fillAlpha=".3"
-        android:fillColor="?android:attr/colorControlNormal"
-        android:pathData="M23.64,7c-0.45,-0.34 -4.93,-4 -11.64,-4C5.28,3 0.81,6.66 0.36,7L12,21.5 23.64,7z" />
-    <path
-        android:fillColor="?android:attr/colorControlNormal"
-        android:pathData="M3.53,10.94L12,21.5l8.47,-10.56c-0.43,-0.33 -3.66,-2.95 -8.47,-2.95s-8.04,2.62 -8.47,2.95z" />
-</vector>
+<androidx.preference.PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <SwitchPreferenceCompat
+        app:defaultValue="false"
+        app:key="PREFERENCE_LOCALE_CUSTOM"
+        app:summary="@string/pref_locale_custom_summary"
+        app:title="@string/pref_locale_custom_title" />
+
+    <ListPreference
+        app:defaultValue=""
+        app:dependency="PREFERENCE_LOCALE_CUSTOM"
+        app:entries="@array/pref_locale_names"
+        app:entryValues="@array/pref_locale_values"
+        app:key="PREFERENCE_LOCALE_LIST"
+        app:title="@string/pref_locale_list_title"
+        app:useSimpleSummaryProvider="true" />
+
+</androidx.preference.PreferenceScreen>

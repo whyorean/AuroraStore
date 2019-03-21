@@ -46,6 +46,11 @@
         app:title="@string/action_installations" />
 
     <Preference
+        app:fragment="com.aurora.store.activity.SettingsActivity$LanguageFragment"
+        app:icon="@drawable/ic_language"
+        app:title="@string/pref_app_language" />
+
+    <Preference
         app:fragment="com.aurora.store.activity.SettingsActivity$NotificationFragment"
         app:icon="@drawable/ic_notifications"
         app:title="@string/pref_app_notification" />

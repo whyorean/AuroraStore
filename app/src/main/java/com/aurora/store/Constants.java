@@ -75,4 +75,8 @@ public class Constants {
     public static final String PREFERENCE_PROXY_HOST = "PREFERENCE_PROXY_HOST";
     public static final String PREFERENCE_PROXY_PORT = "PREFERENCE_PROXY_PORT";
     public static final String PREFERENCE_PROXY_TYPE = "PREFERENCE_PROXY_TYPE";
+    public static final String PREFERENCE_LOCALE_CUSTOM = "PREFERENCE_LOCALE_CUSTOM";
+    public static final String PREFERENCE_LOCALE_LANG = "PREFERENCE_LOCALE_LANG";
+    public static final String PREFERENCE_LOCALE_LIST = "PREFERENCE_LOCALE_LIST";
+    public static final String PREFERENCE_LOCALE_COUNTRY = "PREFERENCE_LOCALE_COUNTRY";
 }

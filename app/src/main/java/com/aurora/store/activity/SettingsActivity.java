@@ -43,14 +43,17 @@ import androidx.preference.SeekBarPreference;
 
 import com.aurora.store.Constants;
 import com.aurora.store.R;
+import com.aurora.store.manager.LocaleManager;
 import com.aurora.store.utility.PathUtil;
 import com.aurora.store.utility.PrefUtil;
+import com.aurora.store.utility.TextUtil;
 import com.aurora.store.utility.ThemeUtil;
 import com.aurora.store.utility.Util;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -132,6 +135,7 @@ public class SettingsActivity extends AppCompatActivity implements
             actionBar.setElevation(0f);
             actionBar.setDisplayShowCustomEnabled(true);
             actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setTitle(R.string.menu_setting);
         }
     }
 
@@ -376,6 +380,58 @@ public class SettingsActivity extends AppCompatActivity implements
         public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
             switch (key) {
                 case Constants.PREFERENCE_FEATURED_SNAP:
+                    SettingsActivity.shouldRestart = true;
+                    break;
+            }
+        }
+    }
+
+    public static class LanguageFragment extends PreferenceFragmentCompat implements SharedPreferences.OnSharedPreferenceChangeListener {
+
+        Context context;
+        SharedPreferences mPrefs;
+        LocaleManager localeManager;
+
+        @Override
+        public void onAttach(@NonNull Context context) {
+            super.onAttach(context);
+            this.context = context;
+            localeManager = new LocaleManager(context);
+        }
+
+        @Override
+        public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
+            getPreferenceManager().setSharedPreferencesName(Constants.SHARED_PREFERENCES_KEY);
+            setPreferencesFromResource(R.xml.preferences_lang, rootKey);
+        }
+
+        @Override
+        public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+            super.onViewCreated(view, savedInstanceState);
+            mPrefs = Util.getPrefs(context);
+            mPrefs.registerOnSharedPreferenceChangeListener(this);
+
+            ListPreference localeList = findPreference(Constants.PREFERENCE_LOCALE_LIST);
+            localeList.setOnPreferenceChangeListener((preference, newValue) -> {
+                String choice = newValue.toString();
+                if (TextUtil.isEmpty(choice)) {
+                    PrefUtil.putBoolean(context, Constants.PREFERENCE_LOCALE_CUSTOM, false);
+                    localeManager.setNewLocale(Locale.getDefault(), false);
+                } else {
+                    String lang = choice.split("-")[0];
+                    String country = choice.split("-")[1];
+                    Locale locale = new Locale(lang, country);
+                    localeManager.setNewLocale(locale, true);
+                }
+                return true;
+            });
+        }
+
+        @Override
+        public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+            switch (key) {
+                case Constants.PREFERENCE_LOCALE_CUSTOM:
+                case Constants.PREFERENCE_LOCALE_LIST:
                     SettingsActivity.shouldRestart = true;
                     break;
             }
