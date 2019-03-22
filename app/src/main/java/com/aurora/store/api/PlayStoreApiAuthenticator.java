@@ -28,13 +28,14 @@ import android.content.SharedPreferences;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.aurora.store.utility.Accountant;
 import com.aurora.store.Constants;
-import com.aurora.store.manager.SpoofManager;
 import com.aurora.store.adapter.OkHttpClientAdapter;
 import com.aurora.store.exception.CredentialsEmptyException;
+import com.aurora.store.manager.LocaleManager;
+import com.aurora.store.manager.SpoofManager;
 import com.aurora.store.model.LoginInfo;
 import com.aurora.store.provider.NativeDeviceInfoProvider;
+import com.aurora.store.utility.Accountant;
 import com.aurora.store.utility.PrefUtil;
 import com.aurora.store.utility.Util;
 import com.dragons.aurora.playstoreapiv2.ApiBuilderException;
@@ -194,11 +195,11 @@ public class PlayStoreApiAuthenticator {
         if (TextUtils.isEmpty(spoofDevice)) {
             deviceInfoProvider = new NativeDeviceInfoProvider();
             ((NativeDeviceInfoProvider) deviceInfoProvider).setContext(context);
-            ((NativeDeviceInfoProvider) deviceInfoProvider).setLocaleString(Locale.getDefault().toString());
+            ((NativeDeviceInfoProvider) deviceInfoProvider).setLocaleString(new LocaleManager(context).getLocale().toString());
         } else {
             deviceInfoProvider = new PropertiesDeviceInfoProvider();
             ((PropertiesDeviceInfoProvider) deviceInfoProvider).setProperties(new SpoofManager(context).getProperties(spoofDevice));
-            ((PropertiesDeviceInfoProvider) deviceInfoProvider).setLocaleString(Locale.getDefault().toString());
+            ((PropertiesDeviceInfoProvider) deviceInfoProvider).setLocaleString(new LocaleManager(context).getLocale().toString());
         }
         return deviceInfoProvider;
     }
@@ -206,7 +207,9 @@ public class PlayStoreApiAuthenticator {
     private void fill(LoginInfo loginInfo) {
         prefs = Util.getPrefs(context.getApplicationContext());
         String locale = prefs.getString(Constants.PREFERENCE_REQUESTED_LANGUAGE, "");
-        loginInfo.setLocale(TextUtils.isEmpty(locale) ? Locale.getDefault() : new Locale(locale));
+        loginInfo.setLocale(TextUtils.isEmpty(locale)
+                ? new LocaleManager(context).getLocale()
+                : new Locale(locale));
         loginInfo.setGsfId(prefs.getString(Accountant.GSF_ID, ""));
         loginInfo.setToken(prefs.getString(Accountant.AUTH_TOKEN, ""));
         if (TextUtils.isEmpty(loginInfo.getTokenDispenserUrl())) {
