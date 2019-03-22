@@ -115,6 +115,7 @@
         <item>Lithuanian</item>
         <item>Polish</item>
         <item>Portuguese</item>
+        <item>Portuguese(BR)</item>
         <item>Romanian</item>
         <item>Russian</item>
         <item>Serbian</item>
@@ -147,6 +148,7 @@
         <item>lt-LT</item>
         <item>pl-PL</item>
         <item>pt-PT</item>
+        <item>pt-BR</item>
         <item>ro-RO</item>
         <item>ru-RU</item>
         <item>sr-SR</item>
