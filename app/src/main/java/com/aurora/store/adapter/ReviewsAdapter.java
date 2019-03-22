@@ -36,6 +36,7 @@ import com.aurora.store.GlideApp;
 import com.aurora.store.R;
 import com.aurora.store.model.Review;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import java.util.Calendar;
 import java.util.Collections;
@@ -97,6 +98,19 @@ public class ReviewsAdapter extends RecyclerView.Adapter<ReviewsAdapter.ViewHold
                 .circleCrop()
                 .transition(new DrawableTransitionOptions().crossFade())
                 .into(holder.Avatar);
+
+        holder.itemView.setOnClickListener(v -> {
+            MaterialAlertDialogBuilder mBuilder = new MaterialAlertDialogBuilder(context)
+                    .setIcon(holder.Avatar.getDrawable())
+                    .setTitle(mReview.getUserName())
+                    .setMessage(mReview.getComment())
+                    .setCancelable(false)
+                    .setPositiveButton(android.R.string.ok, (dialog, which) -> {
+                        dialog.dismiss();
+                    });
+            mBuilder.create();
+            mBuilder.show();
+        });
     }
 
     private String getDate(Review review) {

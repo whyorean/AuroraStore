@@ -25,12 +25,14 @@ import android.content.pm.PackageManager;
 
 import com.aurora.store.model.App;
 import com.aurora.store.model.AppBuilder;
+import com.aurora.store.model.Review;
 import com.aurora.store.model.ReviewBuilder;
+import com.aurora.store.utility.Accountant;
+import com.aurora.store.utility.Log;
 import com.dragons.aurora.playstoreapiv2.DetailsResponse;
+import com.dragons.aurora.playstoreapiv2.ReviewResponse;
 
 public class DetailsApp extends BaseTask {
-
-    private App app;
 
     public DetailsApp(Context context) {
         super(context);
@@ -43,21 +45,20 @@ public class DetailsApp extends BaseTask {
     public App getInfo(String packageName) throws Exception {
         api = getApi();
         DetailsResponse response = api.details(packageName);
-        app = AppBuilder.build(response);
-        if (response.hasUserReview()) {
-            app.setUserReview(ReviewBuilder.build(response.getUserReview()));
-        }
-        if (context != null) {
-            try {
-                PackageManager pm = context.getPackageManager();
-                app.getPackageInfo().applicationInfo = pm.getApplicationInfo(packageName, 0);
-                app.getPackageInfo().versionCode = pm.getPackageInfo(packageName, 0).versionCode;
-                app.setInstalled(true);
-            } catch (PackageManager.NameNotFoundException ignored) {
+        App app = AppBuilder.build(response);
+        if (app.getUserReview() != null && Accountant.isGoogle(context)) {
+            ReviewResponse reviewResponse = api.getReview(app.getPackageName());
+            if (reviewResponse.hasGetResponse() && reviewResponse.getGetResponse().getReviewCount() == 1) {
+                Review review = ReviewBuilder.build(reviewResponse.getGetResponse().getReview(0));
+                app.setUserReview(review);
             }
+        }
+        try {
+            PackageManager pm = context.getPackageManager();
+            app.getPackageInfo().applicationInfo = pm.getApplicationInfo(packageName, 0);
+            app.setInstalled(true);
+        } catch (PackageManager.NameNotFoundException ignored) {
         }
         return app;
     }
-
-
 }

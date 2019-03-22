@@ -20,6 +20,7 @@
 
 package com.aurora.store.sheet;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,10 +33,15 @@ import androidx.annotation.Nullable;
 import com.aurora.store.R;
 import com.aurora.store.model.App;
 import com.aurora.store.model.Review;
-import com.aurora.store.task.ReviewAdder;
+import com.aurora.store.model.ReviewBuilder;
+import com.aurora.store.task.BaseTask;
 import com.aurora.store.utility.Log;
 import com.aurora.store.view.CustomBottomSheetDialogFragment;
+import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
+import com.dragons.aurora.playstoreapiv2.ReviewResponse;
 import com.google.android.material.textfield.TextInputEditText;
+
+import java.io.IOException;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -80,12 +86,7 @@ public class UserReviewBottomSheet extends CustomBottomSheetDialogFragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
-        btnSubmit.setOnClickListener(v -> {
-            Review review = getReview();
-            submitUserReview(review);
-        });
-
+        btnSubmit.setOnClickListener(v -> submitUserReview(getReview()));
         btnCancel.setOnClickListener(v -> dismiss());
     }
 
@@ -96,9 +97,9 @@ public class UserReviewBottomSheet extends CustomBottomSheetDialogFragment {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe((success) -> {
                     if (success) {
-                        Log.e("Review Updated");
+                        Log.i("Review Updated");
                     } else {
-                        Log.e("Error deleting the review");
+                        Log.e("Error updating the review");
                     }
                 }, err -> Log.e(err.getMessage())));
 
@@ -114,5 +115,27 @@ public class UserReviewBottomSheet extends CustomBottomSheetDialogFragment {
         review.setRating(rating);
         review.setComment(comment);
         return review;
+    }
+
+    static class ReviewAdder extends BaseTask {
+
+        ReviewAdder(Context context) {
+            super(context);
+        }
+
+        boolean submit(String packageName, Review review) {
+            try {
+                GooglePlayAPI api = getApi();
+                ReviewResponse response = api.addOrEditReview(
+                        packageName,
+                        review.getComment(),
+                        review.getTitle(),
+                        review.getRating());
+                ReviewBuilder.build(response.getUserReview());
+                return true;
+            } catch (IOException e) {
+                return false;
+            }
+        }
     }
 }

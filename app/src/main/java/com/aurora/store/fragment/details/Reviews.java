@@ -46,6 +46,7 @@ import com.aurora.store.view.RatingView;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 import com.google.android.material.chip.Chip;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import java.io.IOException;
 import java.util.List;
@@ -95,41 +96,43 @@ public class Reviews extends AbstractHelper {
 
     @Override
     public void draw() {
-        ButterKnife.bind(this, view);
-        if (!app.isInPlayStore() || app.isEarlyAccess())
-            return;
-        else
-            mDisposable.add(Observable.fromCallable(() -> new ReviewLoader(context, iterator)
-                    .getReviews())
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(this::showReviews, err -> Log.e(err.getMessage())));
+        if (fragment != null && fragment.isVisible()) {
+            ButterKnife.bind(this, view);
+            if (!app.isInPlayStore() || app.isEarlyAccess())
+                return;
+            else
+                mDisposable.add(Observable.fromCallable(() -> new ReviewLoader(context, iterator)
+                        .getReviews())
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(this::showReviews, err -> Log.e(err.getMessage())));
 
-        averageRatingBar.setRating(app.getRating().getAverage());
-        txtAverageRating.setText(String.format(Locale.getDefault(), "%.1f", app.getRating().getAverage()));
+            averageRatingBar.setRating(app.getRating().getAverage());
+            txtAverageRating.setText(String.format(Locale.getDefault(), "%.1f", app.getRating().getAverage()));
 
-        int totalStars = 0;
-        for (int starNum = 1; starNum <= 5; starNum++) {
-            totalStars += app.getRating().getStars(starNum);
+            int totalStars = 0;
+            for (int starNum = 1; starNum <= 5; starNum++) {
+                totalStars += app.getRating().getStars(starNum);
+            }
+
+            txtCountStars.setText(String.valueOf(totalStars));
+            avgRatingLayout.addView(addAvgReviews(5, totalStars, app.getRating().getStars(5)));
+            avgRatingLayout.addView(addAvgReviews(4, totalStars, app.getRating().getStars(4)));
+            avgRatingLayout.addView(addAvgReviews(3, totalStars, app.getRating().getStars(3)));
+            avgRatingLayout.addView(addAvgReviews(2, totalStars, app.getRating().getStars(2)));
+            avgRatingLayout.addView(addAvgReviews(1, totalStars, app.getRating().getStars(1)));
+
+            ViewUtil.setVisibility(reviewLayout, true);
+            ViewUtil.setVisibility(userReviewLayout, isReviewable(app));
+
+            Review review = app.getUserReview();
+            if (null != review) {
+                fillUserReview(review);
+            }
+            initUserReviewControls(app);
+
+            setupLoadMore();
         }
-
-        txtCountStars.setText(String.valueOf(totalStars));
-        avgRatingLayout.addView(addAvgReviews(5, totalStars, app.getRating().getStars(5)));
-        avgRatingLayout.addView(addAvgReviews(4, totalStars, app.getRating().getStars(4)));
-        avgRatingLayout.addView(addAvgReviews(3, totalStars, app.getRating().getStars(3)));
-        avgRatingLayout.addView(addAvgReviews(2, totalStars, app.getRating().getStars(2)));
-        avgRatingLayout.addView(addAvgReviews(1, totalStars, app.getRating().getStars(1)));
-
-        ViewUtil.setVisibility(reviewLayout, true);
-        ViewUtil.setVisibility(userReviewLayout, isReviewable(app));
-
-        Review review = app.getUserReview();
-        if (null != review) {
-            fillUserReview(review);
-        }
-        initUserReviewControls(app);
-
-        setupLoadMore();
     }
 
     private RelativeLayout addAvgReviews(int number, int max, int rating) {
@@ -177,21 +180,37 @@ public class Reviews extends AbstractHelper {
     }
 
     private void addReviewToList(Review review, ViewGroup parent) {
-        if (fragment != null && fragment.isVisible()) {
-            RelativeLayout reviewLayout = (RelativeLayout) fragment.getLayoutInflater()
-                    .inflate(R.layout.item_review_list, parent, false);
-            ((TextView) reviewLayout.findViewById(R.id.author)).setText(review.getUserName());
-            ((RatingBar) reviewLayout.findViewById(R.id.rating)).setRating(review.getRating());
-            ((TextView) reviewLayout.findViewById(R.id.comment)).setText(review.getComment());
-            GlideApp
-                    .with(context)
-                    .load(review.getUserPhotoUrl())
-                    .placeholder(R.color.colorTransparent)
-                    .circleCrop()
-                    .transition(new DrawableTransitionOptions().crossFade())
-                    .into((ImageView) reviewLayout.findViewById(R.id.avatar));
-            parent.addView(reviewLayout);
-        }
+        RelativeLayout reviewLayout = (RelativeLayout) fragment.getLayoutInflater()
+                .inflate(R.layout.item_review_list, parent, false);
+        TextView txtAuthor = reviewLayout.findViewById(R.id.author);
+        txtAuthor.setText(review.getUserName());
+        RatingBar ratingBar = reviewLayout.findViewById(R.id.rating);
+        ratingBar.setRating(review.getRating());
+        TextView txtComment = reviewLayout.findViewById(R.id.comment);
+        txtComment.setText(review.getComment());
+        ImageView imageView = reviewLayout.findViewById(R.id.avatar);
+
+        GlideApp
+                .with(context)
+                .load(review.getUserPhotoUrl())
+                .placeholder(R.color.colorTransparent)
+                .circleCrop()
+                .transition(new DrawableTransitionOptions().crossFade())
+                .into(imageView);
+
+        reviewLayout.setOnClickListener(v -> {
+            MaterialAlertDialogBuilder mBuilder = new MaterialAlertDialogBuilder(context)
+                    .setIcon(imageView.getDrawable())
+                    .setTitle(review.getUserName())
+                    .setMessage(review.getComment())
+                    .setCancelable(false)
+                    .setPositiveButton(android.R.string.ok, (dialog, which) -> {
+                        dialog.dismiss();
+                    });
+            mBuilder.create();
+            mBuilder.show();
+        });
+        parent.addView(reviewLayout);
     }
 
     private void initUserReviewControls(final App app) {
@@ -239,7 +258,7 @@ public class Reviews extends AbstractHelper {
 
     static class ReviewRemover extends BaseTask {
 
-        public ReviewRemover(Context context) {
+        ReviewRemover(Context context) {
             super(context);
         }
 
@@ -259,7 +278,7 @@ public class Reviews extends AbstractHelper {
 
         private ReviewStorageIterator iterator;
 
-        public ReviewLoader(Context context, ReviewStorageIterator iterator) {
+        ReviewLoader(Context context, ReviewStorageIterator iterator) {
             super(context);
             this.iterator = iterator;
         }
