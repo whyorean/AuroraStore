@@ -40,4 +40,10 @@
         app:summary="@string/pref_ui_snap_summary"
         app:title="@string/pref_ui_snap_title" />
 
+    <SwitchPreferenceCompat
+        app:defaultValue="false"
+        app:key="PREFERENCE_TAB_MODE"
+        app:summary="@string/pref_ui_tab_mode_summary"
+        app:title="@string/pref_ui_tab_mode_title" />
+
 </androidx.preference.PreferenceScreen>

@@ -31,11 +31,12 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
-import com.aurora.store.manager.CategoryManager;
 import com.aurora.store.R;
 import com.aurora.store.adapter.CategoryAdapter;
+import com.aurora.store.manager.CategoryManager;
 import com.aurora.store.task.CategoryList;
 import com.aurora.store.utility.Log;
+import com.aurora.store.utility.Util;
 import com.google.android.material.tabs.TabLayout;
 
 import butterknife.BindView;
@@ -96,7 +97,9 @@ public class HomeFragment extends Fragment {
         mTabAdapter.addFragment(new FamilyFragment(), getString(R.string.tab_family));
         mViewPager.setAdapter(mTabAdapter);
         mTabLayout.setupWithViewPager(mViewPager);
-
+        mTabLayout.setTabMode(Util.isTabScrollable(context)
+                ? TabLayout.MODE_SCROLLABLE
+                : TabLayout.MODE_FIXED);
         attachIconsToTabs();
 
         mCategoryManager = new CategoryManager(getContext());

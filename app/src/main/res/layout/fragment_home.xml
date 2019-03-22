@@ -40,7 +40,7 @@
             app:tabIndicator="@drawable/tab_indicator"
             app:tabIndicatorColor="?android:attr/colorAccent"
             app:tabIndicatorHeight="2dp"
-            app:tabMode="scrollable"
+            app:tabMode="fixed"
             app:tabTextColor="@color/color_selector" />
 
         <androidx.viewpager.widget.ViewPager

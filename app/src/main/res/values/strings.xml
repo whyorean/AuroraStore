@@ -246,6 +246,8 @@
     <string name="pref_ui_snap_summary">Show only one app on scroll</string>
     <string name="pref_ui_snap_title">Enable SnapView for apps</string>
     <string name="pref_ui_theme_title">Theme</string>
+    <string name="pref_ui_tab_mode_title">Scrollable tabs</string>
+    <string name="pref_ui_tab_mode_summary">Enable to make tabs scrollable, recommended for low-dpi devices</string>
 
     <string name="testing_program_opt_in">Join</string>
     <string name="testing_program_opt_out">Leave</string>

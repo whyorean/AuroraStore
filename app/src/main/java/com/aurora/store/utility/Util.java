@@ -388,6 +388,10 @@ public class Util {
         return getPrefs(context).getBoolean(Constants.PREFERENCE_LOCALE_CUSTOM, false);
     }
 
+    public static boolean isTabScrollable(Context context) {
+        return getPrefs(context).getBoolean(Constants.PREFERENCE_TAB_MODE, false);
+    }
+
     public static Proxy.Type getProxyType(Context context) {
         String proxyType = getPrefs(context).getString(Constants.PREFERENCE_PROXY_TYPE, "HTTP");
         switch (proxyType) {

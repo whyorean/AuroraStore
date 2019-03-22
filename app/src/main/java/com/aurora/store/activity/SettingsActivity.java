@@ -380,6 +380,7 @@ public class SettingsActivity extends AppCompatActivity implements
         public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
             switch (key) {
                 case Constants.PREFERENCE_FEATURED_SNAP:
+                case Constants.PREFERENCE_TAB_MODE:
                     SettingsActivity.shouldRestart = true;
                     break;
             }
