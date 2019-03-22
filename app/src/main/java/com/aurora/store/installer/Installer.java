@@ -131,7 +131,7 @@ public class Installer {
         });
     }
 
-    public void uninstall(App app){
+    public void uninstall(App app) {
         Uri uri = Uri.fromParts("package", app.getPackageName(), null);
         Intent intent = new Intent();
         intent.setData(uri);
@@ -173,7 +173,9 @@ public class Installer {
     }
 
     private void unregisterReceiver(SplitPackageInstallerAbstract mInstaller) {
-        if (mInstaller.getBroadcastReceiver() != null)
+        try {
             context.unregisterReceiver(mInstaller.getBroadcastReceiver());
+        } catch (Exception ignored) {
+        }
     }
 }
