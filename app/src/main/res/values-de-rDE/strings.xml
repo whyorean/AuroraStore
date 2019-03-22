@@ -2,15 +2,15 @@
 <resources>
 <string name="account_dummy">"Anonym"</string>
 <string name="account_dummy_desc">"Mit einem anonymen Konto anmelden"</string>
-<string name="account_google">"Google Benutzerkonto"</string>
-<string name="account_logout">"Abmeldung von Aurora?"</string>
+<string name="account_google">"Google Konto"</string>
+<string name="account_logout">"Von Aurora abmelden?"</string>
 <string name="account_prompt_login">"Bitte melden Sie sich an, um fortzufahren"</string>
 <string name="account_switch">"Benutzer wechseln"</string>
 <string name="action_accounts">"Konten"</string>
 <string name="action_ask">"Fragen"</string>
-<string name="action_blacklist">"Schwarze Liste"</string>
-<string name="action_cancel">"Stornieren"</string>
-<string name="action_clear">"klar"</string>
+<string name="action_blacklist">"Ignorierliste"</string>
+<string name="action_cancel">"Abbrechen"</string>
+<string name="action_clear">"Löschen"</string>
 <string name="action_clear_all">"Alles löschen"</string>
 <string name="action_convert_local">"Lokal konvertieren"</string>
 <string name="action_convert_system">"System konvertieren"</string>
@@ -61,7 +61,7 @@
 <string name="action_unwhitelist">"Updates ignorieren"</string>
 <string name="action_updates">"Aktualisierung"</string>
 <string name="action_whitelist">"Whitelist"</string>
-<string name="apps_by">"Apps von %s"</string>
+<string name="apps_by">"Apps von% s"</string>
 <string name="availability_restriction_country">"Dieser Artikel ist in Ihrem Land nicht verfügbar."</string>
 <string name="availability_restriction_generic">"Dieser Artikel ist nicht verfügbar."</string>
 <string name="availability_restriction_hardware_app">"Ihr Gerät ist mit dieser Version nicht kompatibel."</string>
@@ -113,11 +113,11 @@
 <string name="error_app_not_found">"App nicht gefunden"</string>
 <string name="error_incorrect_password">"falsche Email oder Passwort"</string>
 <string name="error_invalid_device_definition">"Gerätedefinition abgelehnt"</string>
-<string name="error_network_other">"Netzwerkfehler: %s"</string>
+<string name="error_network_other">"Netzwerkfehler:% s"</string>
 <string name="error_no_network">"Keine Netzwerk Verbindung"</string>
 <string name="error_search_not_found">"Keine passende App gefunden"</string>
 <string name="error_unknown">"Unbekannter Fehler aufgetreten"</string>
-<string name="exodus_hasTracker">"Enthält %s Tracker"</string>
+<string name="exodus_hasTracker">"Enthält% s Tracker"</string>
 <string name="exodus_noTracker">"Enthält keine Tracker"</string>
 <string name="exodus_powered">"Angetrieben von Exodus"</string>
 <string name="exodus_title">"Aurora Protect"</string>
@@ -141,7 +141,7 @@
 <string name="list_installed">"Eingerichtet"</string>
 <string name="list_installed_system">"Nur Benutzeranwendungen anzeigen"</string>
 <string name="list_not_installd">"Nicht installiert"</string>
-<string name="list_selected">"Ausgewählte Apps: %d"</string>
+<string name="list_selected">"Ausgewählte Apps:% d"</string>
 <string name="list_update_all">"Alle aktualisieren"</string>
 <string name="list_update_all_txt">"Updates verfügbar"</string>
 <string name="list_updating">"Aktualisierung"</string>
@@ -157,9 +157,9 @@ Beachten Sie, dass der Download beliebiger Versionen von Apps nicht vom Google P
 <string name="menu_setting">"die Einstellungen"</string>
 <string name="menu_terms">"Nutzungsbedingungen"</string>
 <string name="no_permissions">"Es werden keine Berechtigungen verwendet."</string>
-<string name="notification_installation_complete">" %s erfolgreich installiert"</string>
-<string name="notification_installation_failed">" %s konnte nicht installiert werden"</string>
-<string name="notification_installation_progress">" %s wird installiert"</string>
+<string name="notification_installation_complete">"% S erfolgreich installiert"</string>
+<string name="notification_installation_failed">"% S konnte nicht installiert werden"</string>
+<string name="notification_installation_progress">"% S wird installiert"</string>
 <string name="pref_app_download">"Downloads"</string>
 <string name="pref_app_network">"Netzwerk"</string>
 <string name="pref_app_notification">"Benachrichtigungen"</string>
@@ -221,7 +221,7 @@ Beachten Sie, dass der Download beliebiger Versionen von Apps nicht vom Google P
 <string name="title_installed">"Meine Apps &amp; Spiele"</string>
 <string name="title_perm">"Berechtigungen"</string>
 <string name="title_search">"Suchen Sie nach Apps und Spielen"</string>
-<string name="title_search_result">"Ergebnisse für %s"</string>
+<string name="title_search_result">"Ergebnisse für% s"</string>
 <string name="title_updates">"Verfügbare Updates"</string>
 <string name="title_welcome">"Herzlich willkommen"</string>
 <string name="toast_apk_blacklisted">"Auf der schwarzen Liste"</string>
