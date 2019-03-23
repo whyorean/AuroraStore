@@ -141,7 +141,7 @@ public class SettingsActivity extends AppCompatActivity implements
 
     private void askRestart() {
         MaterialAlertDialogBuilder mBuilder = new MaterialAlertDialogBuilder(this)
-                .setTitle(getString(R.string.dialog_title_logout))
+                .setTitle(getString(R.string.action_restart))
                 .setMessage(getString(R.string.pref_dialog_to_apply_restart))
                 .setPositiveButton(getString(R.string.action_restart), (dialog, which) -> {
                     Util.restartApp(this);
