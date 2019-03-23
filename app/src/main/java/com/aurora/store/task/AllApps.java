@@ -26,6 +26,7 @@ import android.content.pm.PackageManager;
 
 import com.aurora.store.model.App;
 import com.aurora.store.utility.CertUtil;
+import com.aurora.store.utility.PackageUtil;
 import com.aurora.store.utility.Util;
 
 import java.util.HashMap;
@@ -44,7 +45,7 @@ public class AllApps extends BaseTask {
             if (null != packageInfo.applicationInfo && !packageInfo.applicationInfo.enabled) {
                 continue;
             }
-            App app = Util.getInstalledApp(pm, packageInfo.packageName);
+            App app = PackageUtil.getInstalledApp(pm, packageInfo.packageName);
             if (null != app) {
                 if (Util.filterFDroidAppsEnabled(context) && CertUtil.isFDroidApp(context, app.getPackageName()))
                     continue;

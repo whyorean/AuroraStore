@@ -25,7 +25,6 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -39,21 +38,22 @@ import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
-import com.aurora.store.utility.Accountant;
-import com.aurora.store.manager.CategoryManager;
 import com.aurora.store.Constants;
 import com.aurora.store.GlideApp;
 import com.aurora.store.R;
-import com.aurora.store.manager.SpoofManager;
 import com.aurora.store.activity.AccountsActivity;
 import com.aurora.store.activity.DeviceInfoActivity;
 import com.aurora.store.api.PlayStoreApiAuthenticator;
+import com.aurora.store.manager.CategoryManager;
+import com.aurora.store.manager.SpoofManager;
 import com.aurora.store.notification.QuickNotification;
 import com.aurora.store.task.GeoSpoofTask;
+import com.aurora.store.utility.Accountant;
 import com.aurora.store.utility.ContextUtil;
 import com.aurora.store.utility.Log;
 import com.aurora.store.utility.PrefUtil;
 import com.aurora.store.utility.Util;
+import com.aurora.store.utility.ViewUtil;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import org.jetbrains.annotations.NotNull;
@@ -133,18 +133,18 @@ public class SpoofFragment extends Fragment {
 
     private void drawDevice() {
         getDeviceImg(LineageURl + Build.DEVICE + ".png");
-        Util.setText(view, R.id.device_model, R.string.device_model, Build.MODEL, Build.DEVICE);
-        Util.setText(view, R.id.device_manufacturer, Build.MANUFACTURER);
-        Util.setText(view, R.id.device_architect, Build.BOARD);
+        ViewUtil.setText(view, R.id.device_model, R.string.device_model, Build.MODEL, Build.DEVICE);
+        ViewUtil.setText(view, R.id.device_manufacturer, Build.MANUFACTURER);
+        ViewUtil.setText(view, R.id.device_architect, Build.BOARD);
     }
 
     private void drawSpoofedDevice() {
         Properties properties = new SpoofManager(this.context).getProperties(deviceName);
         String Model = properties.getProperty("UserReadableName");
         getDeviceImg(LineageURl + properties.getProperty(Constants.BUILD_DEVICE) + ".png");
-        Util.setText(view, R.id.device_model, R.string.device_model, Model.substring(0, Model.indexOf('(')), properties.getProperty(Constants.BUILD_DEVICE));
-        Util.setText(view, R.id.device_manufacturer, properties.getProperty(Constants.BUILD_MANUFACTURER));
-        Util.setText(view, R.id.device_architect, properties.getProperty(Constants.BUILD_HARDWARE));
+        ViewUtil.setText(view, R.id.device_model, R.string.device_model, Model.substring(0, Model.indexOf('(')), properties.getProperty(Constants.BUILD_DEVICE));
+        ViewUtil.setText(view, R.id.device_manufacturer, properties.getProperty(Constants.BUILD_MANUFACTURER));
+        ViewUtil.setText(view, R.id.device_architect, properties.getProperty(Constants.BUILD_HARDWARE));
     }
 
     private void setupDevice() {

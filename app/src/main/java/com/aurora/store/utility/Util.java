@@ -25,8 +25,6 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageManager;
 import android.content.res.TypedArray;
 import android.os.Build;
 import android.util.TypedValue;
@@ -34,12 +32,10 @@ import android.view.View;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 
 import com.aurora.store.Constants;
 import com.aurora.store.R;
 import com.aurora.store.activity.AuroraActivity;
-import com.aurora.store.model.App;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 import com.tonyodev.fetch2.Status;
 
@@ -154,38 +150,6 @@ public class Util {
                 || (null != e && null != e.getCause() && noNetwork(e.getCause()));
     }
 
-    public static App getInstalledApp(PackageManager packageManager, String packageName) {
-        try {
-            App app = new App(packageManager.getPackageInfo(packageName,
-                    PackageManager.GET_META_DATA | PackageManager.GET_PERMISSIONS));
-            app.setDisplayName(packageManager.getApplicationLabel(
-                    app.getPackageInfo().applicationInfo).toString());
-            return app;
-        } catch (PackageManager.NameNotFoundException e) {
-            return null;
-        }
-    }
-
-    @Nullable
-    public static String getAppLabel(Context c, String packageName) {
-        try {
-            PackageManager pm = c.getPackageManager();
-            ApplicationInfo appInfo = pm.getApplicationInfo(packageName, 0);
-            return pm.getApplicationLabel(appInfo).toString();
-        } catch (Exception e) {
-            return null;
-        }
-    }
-
-    public static boolean isInstalled(Context context, App app) {
-        try {
-            context.getPackageManager().getPackageInfo(app.getPackageName(), 0);
-            return true;
-        } catch (PackageManager.NameNotFoundException e) {
-            return false;
-        }
-    }
-
     public static String[] getStringArray(JSONArray array) {
         if (array == null)
             return null;
@@ -265,7 +229,6 @@ public class Util {
         }
     }
 
-
     public static String humanReadableByteSpeed(long bytes, boolean si) {
         int unit = si ? 1000 : 1024;
         if (bytes < unit) return bytes + " B";
@@ -309,24 +272,6 @@ public class Util {
             default:
                 return "--";
         }
-    }
-
-    public static void hide(View v, int viewID) {
-        v.findViewById(viewID).setVisibility(View.GONE);
-    }
-
-    public static void show(View v, int viewID) {
-        v.findViewById(viewID).setVisibility(View.VISIBLE);
-    }
-
-    public static void setText(View v, int viewId, String text) {
-        TextView textView = v.findViewById(viewId);
-        if (null != textView)
-            textView.setText(text);
-    }
-
-    public static void setText(View v, int viewId, int stringId, Object... text) {
-        setText(v, viewId, v.getResources().getString(stringId, text));
     }
 
     public static String getTheme(Context context) {
@@ -409,7 +354,7 @@ public class Util {
     public static Proxy getNetworkProxy(Context context) {
         String proxyHost = getPrefs(context).getString(Constants.PREFERENCE_PROXY_HOST, "127.0.0.1");
         String proxyPort = getPrefs(context).getString(Constants.PREFERENCE_PROXY_PORT, "8118");
-        int port = proxyPort !=null ? Integer.valueOf(proxyPort) : 8118;
+        int port = proxyPort != null ? Integer.valueOf(proxyPort) : 8118;
         return new Proxy(getProxyType(context), new InetSocketAddress(proxyHost, port));
     }
 
@@ -427,7 +372,7 @@ public class Util {
         }
     }
 
-    public static void restartApp(Context context){
+    public static void restartApp(Context context) {
         Intent mStartActivity = new Intent(context, AuroraActivity.class);
         int mPendingIntentId = 1337;
         PendingIntent mPendingIntent = PendingIntent.getActivity(context, mPendingIntentId, mStartActivity,

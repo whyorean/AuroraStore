@@ -21,6 +21,12 @@
 package com.aurora.store.utility;
 
 import android.content.Context;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
+
+import androidx.annotation.Nullable;
+
+import com.aurora.store.model.App;
 
 import java.util.Map;
 
@@ -43,4 +49,35 @@ public class PackageUtil {
         PrefUtil.saveMap(context, pseudoMap, PSEUDO_PACKAGE_MAP);
     }
 
+    public static App getInstalledApp(PackageManager packageManager, String packageName) {
+        try {
+            App app = new App(packageManager.getPackageInfo(packageName,
+                    PackageManager.GET_META_DATA | PackageManager.GET_PERMISSIONS));
+            app.setDisplayName(packageManager.getApplicationLabel(
+                    app.getPackageInfo().applicationInfo).toString());
+            return app;
+        } catch (PackageManager.NameNotFoundException e) {
+            return null;
+        }
+    }
+
+    @Nullable
+    public static String getAppLabel(Context c, String packageName) {
+        try {
+            PackageManager pm = c.getPackageManager();
+            ApplicationInfo appInfo = pm.getApplicationInfo(packageName, 0);
+            return pm.getApplicationLabel(appInfo).toString();
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    public static boolean isInstalled(Context context, App app) {
+        try {
+            context.getPackageManager().getPackageInfo(app.getPackageName(), 0);
+            return true;
+        } catch (PackageManager.NameNotFoundException e) {
+            return false;
+        }
+    }
 }

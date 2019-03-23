@@ -84,6 +84,16 @@ public class ViewUtil {
         setText(textView, v.getResources().getString(stringId, text));
     }
 
+    public static void setText(View v, int viewId, String text) {
+        TextView textView = v.findViewById(viewId);
+        if (null != textView)
+            textView.setText(text);
+    }
+
+    public static void setText(View v, int viewId, int stringId, Object... text) {
+        setText(v, viewId, v.getResources().getString(stringId, text));
+    }
+
     public static void hideBottomNav(View view, boolean withAnimation) {
         ViewCompat.animate(view)
                 .translationY(view.getHeight())

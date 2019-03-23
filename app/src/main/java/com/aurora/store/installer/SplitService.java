@@ -31,8 +31,7 @@ import android.util.Log;
 
 import androidx.annotation.Nullable;
 
-import com.aurora.store.R;
-import com.aurora.store.utility.Util;
+import com.aurora.store.utility.PackageUtil;
 
 import java.util.Locale;
 
@@ -108,7 +107,7 @@ public class SplitService extends Service {
             case PackageInstaller.STATUS_FAILURE_BLOCKED:
                 String blocker = "Installation Blocked";
                 if (blockingPackage != null) {
-                    String appLabel = Util.getAppLabel(getApplicationContext(), blockingPackage);
+                    String appLabel = PackageUtil.getAppLabel(getApplicationContext(), blockingPackage);
                     if (appLabel != null)
                         blocker = appLabel;
                 }
