@@ -64,6 +64,8 @@ public class ExodusBottomSheet extends CustomBottomSheetDialogFragment {
     Button btn_report;
     @BindView(R.id.exodus_app_detail)
     TextView exodus_app_detail;
+    @BindView(R.id.exodus_app_version)
+    TextView exodus_app_version;
 
     private Context context;
     private ExodusReport mReport;
@@ -92,14 +94,13 @@ public class ExodusBottomSheet extends CustomBottomSheetDialogFragment {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false));
         mRecyclerView.setAdapter(new ExodusAdapter(getContext(), getTrackerData(mReport.getTrackerIds())));
 
+        exodus_app_detail.setText(mReport.getApp().getPackageName());
         StringBuilder sb = new StringBuilder();
-        sb.append(mReport.getApp().getPackageName());
-        sb.append(" | ");
         sb.append("v");
         sb.append(mReport.getVersion());
         sb.append(".");
         sb.append(mReport.getVersionCode());
-        exodus_app_detail.setText(sb);
+        exodus_app_version.setText(sb);
 
         btn_report.setOnClickListener(v -> context.startActivity(new Intent(Intent.ACTION_VIEW,
                 Uri.parse("https://reports.exodus-privacy.eu.org/reports/" + mReport.getAppId() + "/"))));
