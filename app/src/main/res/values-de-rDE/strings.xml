@@ -157,9 +157,9 @@ Beachten Sie, dass der Download beliebiger Versionen von Apps nicht vom Google P
 <string name="menu_setting">"die Einstellungen"</string>
 <string name="menu_terms">"Nutzungsbedingungen"</string>
 <string name="no_permissions">"Es werden keine Berechtigungen verwendet."</string>
-<string name="notification_installation_complete">"% S erfolgreich installiert"</string>
-<string name="notification_installation_failed">"% S konnte nicht installiert werden"</string>
-<string name="notification_installation_progress">"% S wird installiert"</string>
+<string name="notification_installation_complete">"%s erfolgreich installiert"</string>
+<string name="notification_installation_failed">"%s konnte nicht installiert werden"</string>
+<string name="notification_installation_progress">"%s wird installiert"</string>
 <string name="pref_app_download">"Downloads"</string>
 <string name="pref_app_network">"Netzwerk"</string>
 <string name="pref_app_notification">"Benachrichtigungen"</string>
