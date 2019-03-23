@@ -46,6 +46,7 @@ import com.aurora.store.model.App;
 import com.aurora.store.notification.GeneralNotification;
 import com.aurora.store.task.DeliveryData;
 import com.aurora.store.utility.Log;
+import com.aurora.store.utility.PackageUtil;
 import com.aurora.store.utility.PathUtil;
 import com.aurora.store.utility.Util;
 import com.aurora.store.utility.ViewUtil;
@@ -306,6 +307,9 @@ public class ActionButton extends AbstractHelper {
                 Log.i("Downloading ObbFiles : %s", app.getPackageName());
             });
         }
+
+        //Add <PackageName,DisplayName> to PseudoPackageMap
+        PackageUtil.addToPseudoPackageMap(context, app.getPackageName(), app.getDisplayName());
     }
 
     private FetchListener getFetchListener() {

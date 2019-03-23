@@ -87,7 +87,7 @@ public class PrefUtil {
         return Util.getPrefs(context.getApplicationContext()).getStringSet(key, new HashSet<>());
     }
 
-    public static void saveMap(Context context, Map<String, Integer> map, String key) {
+    public static void saveMap(Context context, Map<String, String> map, String key) {
         SharedPreferences mPreferences = Util.getPrefs(context);
         if (mPreferences != null) {
             JSONObject jsonObject = new JSONObject(map);
@@ -99,8 +99,8 @@ public class PrefUtil {
         }
     }
 
-    public static Map<String, Integer> getMap(Context context, String key) {
-        Map<String, Integer> outputMap = new HashMap<>();
+    public static Map<String, String> getMap(Context context, String key) {
+        Map<String, String> outputMap = new HashMap<>();
         SharedPreferences mPreferences = Util.getPrefs(context);
         try {
             if (mPreferences != null) {
@@ -109,7 +109,7 @@ public class PrefUtil {
                 Iterator<String> keysItr = jsonObject.keys();
                 while (keysItr.hasNext()) {
                     String k = keysItr.next();
-                    Integer value = (Integer) jsonObject.get(k);
+                    String value = (String) jsonObject.get(k);
                     outputMap.put(k, value);
                 }
             }

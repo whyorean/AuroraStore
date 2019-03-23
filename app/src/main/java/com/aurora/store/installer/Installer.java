@@ -37,6 +37,7 @@ import com.aurora.store.R;
 import com.aurora.store.model.App;
 import com.aurora.store.notification.QuickNotification;
 import com.aurora.store.utility.Log;
+import com.aurora.store.utility.PackageUtil;
 import com.aurora.store.utility.PathUtil;
 import com.aurora.store.utility.PrefUtil;
 import com.aurora.store.utility.Util;
@@ -108,7 +109,7 @@ public class Installer {
                     new QuickNotification(context).show(context.getString(R.string.app_name),
                             String.format(Locale.getDefault(),
                                     context.getString(R.string.notification_installation_failed),
-                                    packageName));
+                                    PackageUtil.getDisplayName(context,packageName)));
                     unregisterReceiver(installer);
                     break;
                 case INSTALLING:
@@ -116,13 +117,13 @@ public class Installer {
                     new QuickNotification(context).show(context.getString(R.string.app_name),
                             String.format(Locale.getDefault(),
                                     context.getString(R.string.notification_installation_progress),
-                                    packageName));
+                                    PackageUtil.getDisplayName(context,packageName)));
                     break;
                 case INSTALLATION_SUCCEED:
                     new QuickNotification(context).show(context.getString(R.string.app_name),
                             String.format(Locale.getDefault(),
                                     context.getString(R.string.notification_installation_complete),
-                                    packageName));
+                                    PackageUtil.getDisplayName(context,packageName)));
                     if (Util.shouldDeleteApk(context))
                         clearInstallationFiles(apkFiles);
                     unregisterReceiver(installer);
