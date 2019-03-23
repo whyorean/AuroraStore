@@ -48,7 +48,7 @@ public class AboutFragment extends Fragment {
     LinearLayout linkContainer;
 
     private Context context;
-    
+
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);

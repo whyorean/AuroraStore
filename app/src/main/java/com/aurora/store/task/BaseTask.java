@@ -22,13 +22,13 @@ package com.aurora.store.task;
 
 import android.content.Context;
 
-import com.aurora.store.manager.BlacklistManager;
 import com.aurora.store.api.PlayStoreApiAuthenticator;
 import com.aurora.store.model.App;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -59,10 +59,17 @@ public class BaseTask {
     }
 
     public List<App> filterGoogleApps(List<App> apps) {
-        Set<String> shitSet = new BlacklistManager(context).getGoogleApps();
+        Set<String> shitSet = new HashSet<>();
+        shitSet.add("com.chrome.beta");
+        shitSet.add("com.chrome.canary");
+        shitSet.add("com.chrome.dev");
+        shitSet.add("com.android.chrome");
+        shitSet.add("com.niksoftware.snapseed");
+        shitSet.add("com.google.toontastic");
+
         List<App> mApps = new ArrayList<>();
         for (App app : apps) {
-            if (!shitSet.contains(app.getPackageName())) {
+            if (!app.getPackageName().startsWith("com.google") && !shitSet.contains(app.getPackageName())) {
                 mApps.add(app);
             }
         }
