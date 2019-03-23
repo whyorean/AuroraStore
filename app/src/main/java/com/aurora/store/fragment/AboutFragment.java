@@ -77,7 +77,7 @@ public class AboutFragment extends Fragment {
                     .append("v")
                     .append(packageInfo.versionName)
                     .append(".")
-                    .append(packageInfo.getLongVersionCode()));
+                    .append(packageInfo.versionCode));
         } catch (Exception ignored) {
         }
     }
