@@ -139,7 +139,6 @@ public class RequestBuilder {
             final Request splitRequest = buildSplitRequest(context, app, split);
             requestList.add(splitRequest);
             splitRequest.setGroupId(id);
-            requestList.add(splitRequest);
         }
         return requestList;
     }
