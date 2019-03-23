@@ -95,8 +95,8 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0'
 
     //Fetch - Downloader
-    implementation "com.tonyodev.fetch2:fetch2:2.3.6"
-    implementation "com.tonyodev.fetch2okhttp:fetch2okhttp:2.3.6"
+    implementation "com.tonyodev.fetch2:fetch2:3.0.2"
+    implementation "com.tonyodev.fetch2okhttp:fetch2okhttp:3.0.2"
 }
 repositories {
     mavenCentral()

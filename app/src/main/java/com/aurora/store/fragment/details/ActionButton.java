@@ -284,7 +284,7 @@ public class ActionButton extends AbstractHelper {
         request = RequestBuilder.buildRequest(context, app, deliveryData.getDownloadUrl());
         fetchListener = getFetchListener();
         fetch.addListener(fetchListener);
-
+        
         if (isPaused)
             fetch.resume(requestId);
         else

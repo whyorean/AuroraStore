@@ -26,6 +26,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.Build;
 
+import com.aurora.store.NotificationProvider;
 import com.aurora.store.R;
 import com.aurora.store.model.App;
 import com.aurora.store.utility.Util;
@@ -99,7 +100,8 @@ public class GeneralNotification extends NotificationBase {
     }
 
     public void show() {
-        if (Util.isNotificationEnabled(context)) {
+        if (Util.isNotificationEnabled(context)
+                && Util.getNotificationProvider(context) == NotificationProvider.AURORA) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 channel = new NotificationChannel(context.getPackageName(),
                         context.getString(R.string.app_name),

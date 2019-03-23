@@ -226,6 +226,8 @@
     <string name="pref_downloader_active_title">Active Download</string>
     <string name="pref_downloader_debug_summary">Enable download debugging to get detailed logs</string>
     <string name="pref_downloader_debug_title">Download debugging</string>
+    <string name="pref_downloader_strategy_summary">Select default download strategy, recommended Parallel Strategy for fastest download</string>
+    <string name="pref_downloader_strategy_title">Download Strategy</string>
     <string name="pref_downloader_path_title">Download Path</string>
     <string name="pref_downloader_wifi_title">Download using wifi only</string>
     <string name="pref_filter_fdroid_summary">Removes F-droid Apps from app lists</string>
@@ -245,6 +247,8 @@
     <string name="pref_locale_list_title">Select Locale</string>
     <string name="pref_notification_priority_summary">Set priority level for app notification</string>
     <string name="pref_notification_priority_title">Notification Priority</string>
+    <string name="pref_notification_provider_summary">Select default notification provider</string>
+    <string name="pref_notification_provider_title">Notification Provider</string>
     <string name="pref_notification_summary">Enable Aurora Notifications</string>
     <string name="pref_notification_title">Show Notifications</string>
     <string name="pref_proxy_enable">Enable proxy</string>

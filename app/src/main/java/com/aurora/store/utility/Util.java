@@ -28,16 +28,16 @@ import android.content.SharedPreferences;
 import android.content.res.TypedArray;
 import android.os.Build;
 import android.util.TypedValue;
-import android.view.View;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
 import com.aurora.store.Constants;
+import com.aurora.store.NotificationProvider;
 import com.aurora.store.R;
 import com.aurora.store.activity.AuroraActivity;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 import com.tonyodev.fetch2.Status;
+import com.tonyodev.fetch2core.Downloader;
 
 import org.json.JSONArray;
 
@@ -369,6 +369,30 @@ public class Util {
                 return 2;
             default:
                 return 0;
+        }
+    }
+
+    public static NotificationProvider getNotificationProvider(Context context) {
+        String prefValue = getPrefs(context).getString(Constants.PREFERENCE_NOTIFICATION_PROVIDER, "");
+        switch (prefValue) {
+            case "0":
+                return NotificationProvider.NATIVE;
+            case "1":
+                return NotificationProvider.AURORA;
+            default:
+                return NotificationProvider.AURORA;
+        }
+    }
+
+    public static Downloader.FileDownloaderType getDownloadStrategy(Context context) {
+        String prefValue = getPrefs(context).getString(Constants.PREFERENCE_DOWNLOAD_STRATEGY, "");
+        switch (prefValue) {
+            case "0":
+                return Downloader.FileDownloaderType.SEQUENTIAL;
+            case "1":
+                return Downloader.FileDownloaderType.PARALLEL;
+            default:
+                return Downloader.FileDownloaderType.PARALLEL;
         }
     }
 

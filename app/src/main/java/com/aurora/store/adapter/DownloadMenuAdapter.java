@@ -109,7 +109,10 @@ public class DownloadMenuAdapter extends RecyclerView.Adapter<DownloadMenuAdapte
                     view.setAlpha(.5f);
                 } else
                     view.setOnClickListener(v -> {
-                        mFetch.resume(mDownload.getId());
+                        if (mDownload.getStatus() == Status.FAILED)
+                            mFetch.retry(mDownload.getId());
+                        else
+                            mFetch.resume(mDownload.getId());
                         menuSheet.dismissAllowingStateLoss();
                     });
                 break;

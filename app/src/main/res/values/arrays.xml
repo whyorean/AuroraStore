@@ -185,6 +185,26 @@
         <item>2</item>
     </string-array>
 
+    <string-array name="pref_notification_provider">
+        <item>Native Notification Provider</item>
+        <item>Aurora Notification Provider</item>
+    </string-array>
+
+    <string-array name="pref_notification_provider_values">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+
+    <string-array name="pref_download_strategy">
+        <item>Sequential Download</item>
+        <item>Parallel Download (Splits)</item>
+    </string-array>
+
+    <string-array name="pref_download_strategy_values">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+
     <string-array name="pref_installation_method">
         <item>Native</item>
         <item>Root</item>

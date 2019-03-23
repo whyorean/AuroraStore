@@ -160,7 +160,7 @@ public class SettingsActivity extends AppCompatActivity implements
         }
     }
 
-    public static class DownloaderFragment extends PreferenceFragmentCompat {
+    public static class DownloaderFragment extends PreferenceFragmentCompat implements SharedPreferences.OnSharedPreferenceChangeListener {
 
         Context context;
         EditTextPreference editTextPreference;
@@ -183,6 +183,12 @@ public class SettingsActivity extends AppCompatActivity implements
             super.onViewCreated(view, savedInstanceState);
             setupDownloadPath();
             setupActiveDownloads();
+
+            ListPreference stategyList = findPreference(Constants.PREFERENCE_DOWNLOAD_STRATEGY);
+            stategyList.setOnPreferenceChangeListener((preference, newValue) -> {
+                PrefUtil.putString(context, Constants.PREFERENCE_DOWNLOAD_STRATEGY, (String) newValue);
+                return true;
+            });
         }
 
         private void setupDownloadPath() {
@@ -204,8 +210,10 @@ public class SettingsActivity extends AppCompatActivity implements
         private void setupActiveDownloads() {
             seekBarPreference = findPreference(Constants.PREFERENCE_DOWNLOAD_ACTIVE);
             seekBarPreference.setShowSeekBarValue(true);
+            seekBarPreference.setMin(1);
             seekBarPreference.setOnPreferenceChangeListener((preference, newValue) -> {
-                PrefUtil.putInteger(context, Constants.PREFERENCE_DOWNLOAD_ACTIVE, seekBarPreference.getValue());
+                int value = (Integer) newValue;
+                PrefUtil.putInteger(context, Constants.PREFERENCE_DOWNLOAD_ACTIVE, value - 1);
                 return true;
             });
         }
@@ -223,6 +231,15 @@ public class SettingsActivity extends AppCompatActivity implements
                 return true;
             } catch (IOException e) {
                 return false;
+            }
+        }
+
+        @Override
+        public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+            switch (key) {
+                case Constants.PREFERENCE_DOWNLOAD_STRATEGY:
+                    SettingsActivity.shouldRestart = true;
+                    break;
             }
         }
     }
@@ -295,16 +312,27 @@ public class SettingsActivity extends AppCompatActivity implements
             mPrefs = Util.getPrefs(context);
             mPrefs.registerOnSharedPreferenceChangeListener(this);
 
-            ListPreference mThemeStyle = findPreference(Constants.PREFERENCE_NOTIFICATION_PRIORITY);
-            mThemeStyle.setOnPreferenceChangeListener((preference, newValue) -> {
+            ListPreference priorityList = findPreference(Constants.PREFERENCE_NOTIFICATION_PRIORITY);
+            priorityList.setOnPreferenceChangeListener((preference, newValue) -> {
                 PrefUtil.putString(context, Constants.PREFERENCE_NOTIFICATION_PRIORITY, (String) newValue);
+                return true;
+            });
+
+            ListPreference providerList = findPreference(Constants.PREFERENCE_NOTIFICATION_PROVIDER);
+            providerList.setOnPreferenceChangeListener((preference, newValue) -> {
+                PrefUtil.putString(context, Constants.PREFERENCE_NOTIFICATION_PROVIDER, (String) newValue);
                 return true;
             });
         }
 
         @Override
         public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-
+            switch (key) {
+                case Constants.PREFERENCE_NOTIFICATION_TOGGLE:
+                case Constants.PREFERENCE_NOTIFICATION_PROVIDER:
+                    SettingsActivity.shouldRestart = true;
+                    break;
+            }
         }
     }
 

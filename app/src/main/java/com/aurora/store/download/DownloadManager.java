@@ -22,12 +22,13 @@ package com.aurora.store.download;
 
 import android.content.Context;
 
+import com.aurora.store.Constants;
+import com.aurora.store.NotificationProvider;
 import com.aurora.store.utility.Util;
+import com.tonyodev.fetch2.DefaultFetchNotificationManager;
 import com.tonyodev.fetch2.Fetch;
 import com.tonyodev.fetch2.FetchConfiguration;
 import com.tonyodev.fetch2okhttp.OkHttpDownloader;
-
-import okhttp3.OkHttpClient;
 
 public class DownloadManager {
 
@@ -40,12 +41,14 @@ public class DownloadManager {
     }
 
     private void init() {
-        OkHttpClient okHttpClient = new OkHttpClient.Builder().build();
-        FetchConfiguration fetchConfiguration = new FetchConfiguration.Builder(context)
-                .setDownloadConcurrentLimit(Util.getActiveDownloadCount(context))
-                .setHttpDownloader(new OkHttpDownloader(okHttpClient))
-                .build();
-        fetch = Fetch.Impl.getInstance(fetchConfiguration);
+        FetchConfiguration.Builder fetchConfiguration = new FetchConfiguration.Builder(context);
+        fetchConfiguration.setHttpDownloader(new OkHttpDownloader(Util.getDownloadStrategy(context)));
+        fetchConfiguration.setNamespace(Constants.TAG);
+        if (Util.isNotificationEnabled(context) &&
+                Util.getNotificationProvider(context) == NotificationProvider.NATIVE)
+            fetchConfiguration.setNotificationManager(new DefaultFetchNotificationManager(context));
+        fetchConfiguration.setDownloadConcurrentLimit(Util.getActiveDownloadCount(context));
+        fetch = Fetch.Impl.getInstance(fetchConfiguration.build());
         if (Util.isFetchDebugEnabled(context))
             fetch.enableLogging(true);
     }
