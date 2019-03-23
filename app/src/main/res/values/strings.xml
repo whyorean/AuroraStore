@@ -228,6 +228,8 @@
     <string name="pref_downloader_debug_title">Download debugging</string>
     <string name="pref_downloader_strategy_summary">Select default download strategy, recommended Parallel Strategy for fastest download</string>
     <string name="pref_downloader_strategy_title">Download Strategy</string>
+    <string name="pref_downloader_strategy_sequential">Sequential Download</string>
+    <string name="pref_downloader_strategy_parallel">Parallel Download (Splits)</string>
     <string name="pref_downloader_path_title">Download Path</string>
     <string name="pref_downloader_wifi_title">Download using wifi only</string>
     <string name="pref_filter_fdroid_summary">Removes F-droid Apps from app lists</string>
@@ -242,13 +244,20 @@
     <string name="pref_install_delete_title">Delete Apk Post-Install</string>
     <string name="pref_install_mode_summary">Select Mode of APK Installation</string>
     <string name="pref_install_mode_title">Installation Method</string>
+    <string name="pref_install_mode_native">Native</string>
+    <string name="pref_install_mode_root">Root</string>
     <string name="pref_locale_custom_title">Custom Langage</string>
     <string name="pref_locale_custom_summary">Enforce custom app language</string>
     <string name="pref_locale_list_title">Select Locale</string>
     <string name="pref_notification_priority_summary">Set priority level for app notification</string>
     <string name="pref_notification_priority_title">Notification Priority</string>
+    <string name="pref_notification_priority_default">Default</string>
+    <string name="pref_notification_priority_high">High</string>
+    <string name="pref_notification_priority_max">Max</string>
     <string name="pref_notification_provider_summary">Select default notification provider</string>
     <string name="pref_notification_provider_title">Notification Provider</string>
+    <string name="pref_notification_provider_native">Native Notification Provider</string>
+    <string name="pref_notification_provider_aurora">Aurora Notification Provider</string>
     <string name="pref_notification_summary">Enable Aurora Notifications</string>
     <string name="pref_notification_title">Show Notifications</string>
     <string name="pref_proxy_enable">Enable proxy</string>
@@ -265,6 +274,9 @@
     <string name="pref_ui_snap_summary">Show only one app on scroll</string>
     <string name="pref_ui_snap_title">Enable SnapView for apps</string>
     <string name="pref_ui_theme_title">Theme</string>
+    <string name="pref_ui_theme_light">Light</string>
+    <string name="pref_ui_theme_dark">Dark</string>
+    <string name="pref_ui_theme_black">Black</string>
     <string name="pref_ui_tab_mode_title">Scrollable tabs</string>
     <string name="pref_ui_tab_mode_summary">Enable to make tabs scrollable, recommended for low-dpi devices</string>
 

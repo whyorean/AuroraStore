@@ -162,9 +162,9 @@
     </string-array>
 
     <string-array name="pref_themes">
-        <item>Light</item>
-        <item>Dark</item>
-        <item>Black</item>
+        <item>@string/pref_ui_theme_light</item>
+        <item>@string/pref_ui_theme_dark</item>
+        <item>@string/pref_ui_theme_black</item>
     </string-array>
 
     <string-array name="pref_themes_values">
@@ -174,9 +174,9 @@
     </string-array>
 
     <string-array name="pref_notification_priority">
-        <item>Default</item>
-        <item>High</item>
-        <item>Max</item>
+        <item>@string/pref_notification_priority_default</item>
+        <item>@string/pref_notification_priority_high</item>
+        <item>@string/pref_notification_priority_max</item>
     </string-array>
 
     <string-array name="pref_notification_priority_values">
@@ -186,8 +186,8 @@
     </string-array>
 
     <string-array name="pref_notification_provider">
-        <item>Native Notification Provider</item>
-        <item>Aurora Notification Provider</item>
+        <item>@string/pref_notification_provider_native</item>
+        <item>@string/pref_notification_provider_aurora</item>
     </string-array>
 
     <string-array name="pref_notification_provider_values">
@@ -196,8 +196,8 @@
     </string-array>
 
     <string-array name="pref_download_strategy">
-        <item>Sequential Download</item>
-        <item>Parallel Download (Splits)</item>
+        <item>@string/pref_downloader_strategy_sequential</item>
+        <item>@string/pref_downloader_strategy_parallel</item>
     </string-array>
 
     <string-array name="pref_download_strategy_values">
@@ -206,8 +206,8 @@
     </string-array>
 
     <string-array name="pref_installation_method">
-        <item>Native</item>
-        <item>Root</item>
+        <item>@string/pref_install_mode_native</item>
+        <item>@string/pref_install_mode_root</item>
     </string-array>
 
     <string-array name="pref_installation_method_values">
