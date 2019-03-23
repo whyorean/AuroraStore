@@ -119,8 +119,8 @@ public class Util {
         return tempValue + siPrefixes.get(order);
     }
 
-    static public String addDiPrefix(Integer integer) {
-        int tempValue = integer;
+    static public String addDiPrefix(Long integer) {
+        long tempValue = integer;
         int order = 0;
         while (tempValue >= 1000.0) {
             tempValue /= 1000.0;
@@ -134,9 +134,9 @@ public class Util {
                 Constants.SHARED_PREFERENCES_KEY, Context.MODE_PRIVATE);
     }
 
-    public static int parseInt(String intAsString, int defaultValue) {
+    public static long parseLong(String intAsString, long defaultValue) {
         try {
-            return Integer.parseInt(intAsString);
+            return Long.parseLong(intAsString);
         } catch (NumberFormatException e) {
             return defaultValue;
         }

@@ -93,10 +93,10 @@ public class AppBuilder {
         return app;
     }
 
-    static private int getInstallsNum(String installsRaw) {
+    static private long getInstallsNum(String installsRaw) {
         Matcher matcher = Pattern.compile("[\\d]+").matcher(installsRaw.replaceAll("[,\\.\\s]+", ""));
         if (matcher.find()) {
-            return Util.parseInt(matcher.group(0), 0);
+            return Util.parseLong(matcher.group(0), 0);
         }
         return 0;
     }

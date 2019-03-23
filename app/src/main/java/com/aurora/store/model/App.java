@@ -45,7 +45,7 @@ public class App implements Comparable<App> {
     private int offerType;
     private String updated;
     private long size;
-    private int installs;
+    private long installs;
     private Rating rating = new Rating();
     private String categoryIconUrl;
     private ImageSource pageBackgroundImage;
@@ -167,11 +167,11 @@ public class App implements Comparable<App> {
         this.size = size;
     }
 
-    public int getInstalls() {
+    public long getInstalls() {
         return installs;
     }
 
-    public void setInstalls(int installs) {
+    public void setInstalls(long installs) {
         this.installs = installs;
     }
 
