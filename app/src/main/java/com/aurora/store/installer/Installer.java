@@ -24,6 +24,7 @@
 package com.aurora.store.installer;
 
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -34,6 +35,7 @@ import androidx.core.content.FileProvider;
 
 import com.aurora.store.Constants;
 import com.aurora.store.R;
+import com.aurora.store.activity.DetailsActivity;
 import com.aurora.store.model.App;
 import com.aurora.store.notification.QuickNotification;
 import com.aurora.store.utility.Log;
@@ -109,7 +111,8 @@ public class Installer {
                     new QuickNotification(context).show(context.getString(R.string.app_name),
                             String.format(Locale.getDefault(),
                                     context.getString(R.string.notification_installation_failed),
-                                    PackageUtil.getDisplayName(context,packageName)));
+                                    PackageUtil.getDisplayName(context, packageName)),
+                            getContentIntent(packageName));
                     unregisterReceiver(installer);
                     break;
                 case INSTALLING:
@@ -117,13 +120,15 @@ public class Installer {
                     new QuickNotification(context).show(context.getString(R.string.app_name),
                             String.format(Locale.getDefault(),
                                     context.getString(R.string.notification_installation_progress),
-                                    PackageUtil.getDisplayName(context,packageName)));
+                                    PackageUtil.getDisplayName(context, packageName)),
+                            getContentIntent(packageName));
                     break;
                 case INSTALLATION_SUCCEED:
                     new QuickNotification(context).show(context.getString(R.string.app_name),
                             String.format(Locale.getDefault(),
                                     context.getString(R.string.notification_installation_complete),
-                                    PackageUtil.getDisplayName(context,packageName)));
+                                    PackageUtil.getDisplayName(context, packageName)),
+                            getContentIntent(packageName));
                     if (Util.shouldDeleteApk(context))
                         clearInstallationFiles(apkFiles);
                     unregisterReceiver(installer);
@@ -178,5 +183,11 @@ public class Installer {
             context.unregisterReceiver(mInstaller.getBroadcastReceiver());
         } catch (Exception ignored) {
         }
+    }
+
+    private PendingIntent getContentIntent(String packageName) {
+        Intent intent = new Intent(context, DetailsActivity.class);
+        intent.putExtra("INTENT_PACKAGE_NAME", packageName);
+        return PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
     }
 }

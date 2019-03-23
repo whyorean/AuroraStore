@@ -41,7 +41,7 @@ public class QuickNotification extends NotificationBase {
         super(context);
     }
 
-    public void show(String contentTitle, String contentText) {
+    public void show(String contentTitle, String contentText, PendingIntent contentIntent) {
         manager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         builder = new NotificationCompat.Builder(context, context.getPackageName())
                 .setAutoCancel(true)
@@ -54,6 +54,9 @@ public class QuickNotification extends NotificationBase {
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
                 .setSmallIcon(R.drawable.ic_notification)
                 .setVisibility(NotificationCompat.VISIBILITY_PUBLIC);
+
+        if(contentIntent!=null)
+            builder.setContentIntent(contentIntent);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             channel = new NotificationChannel(

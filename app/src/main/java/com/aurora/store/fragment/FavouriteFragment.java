@@ -77,7 +77,8 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
 
-public class FavouriteFragment extends BaseFragment implements SelectableViewHolder.ItemClickListener, FavouriteItemTouchHelper.RecyclerItemTouchHelperListener, BaseFragment.EventListenerImpl {
+public class FavouriteFragment extends BaseFragment implements SelectableViewHolder.ItemClickListener,
+        FavouriteItemTouchHelper.RecyclerItemTouchHelperListener, BaseFragment.EventListenerImpl {
 
     private static final int BULK_GROUP_ID = 1996;
 
@@ -173,14 +174,18 @@ public class FavouriteFragment extends BaseFragment implements SelectableViewHol
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe((deliveryDataList) -> {
-                        requestList = RequestBuilder.getBulkRequestList(context, deliveryDataList, selectedApps, BULK_GROUP_ID);
+                        requestList = RequestBuilder.getBulkRequestList(context, deliveryDataList,
+                                selectedApps, BULK_GROUP_ID);
                         if (!requestList.isEmpty())
                             fetch.enqueue(requestList, updatedRequestList -> {
                                 String bulkInstallText = new StringBuilder()
                                         .append(selectedApps.size())
                                         .append(StringUtils.SPACE)
                                         .append(context.getString(R.string.list_bulk_install)).toString();
-                                new QuickNotification(context).show(context.getString(R.string.app_name), bulkInstallText);
+                                new QuickNotification(context).show(
+                                        context.getString(R.string.app_name),
+                                        bulkInstallText,
+                                        null);
                             });
                     }, err -> Log.e(err.getMessage())));
         };
@@ -195,7 +200,8 @@ public class FavouriteFragment extends BaseFragment implements SelectableViewHol
                 for (String packageName : packageList)
                     fileOutputStream.write((packageName + System.lineSeparator()).getBytes());
                 fileOutputStream.close();
-                Toast.makeText(context, "List exported to" + PathUtil.getRootApkPath(context), Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "List exported to" + PathUtil.getRootApkPath(context),
+                        Toast.LENGTH_SHORT).show();
             }
         } catch (NullPointerException e) {
             Toast.makeText(context, "Could not create directory", Toast.LENGTH_SHORT).show();

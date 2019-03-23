@@ -251,7 +251,8 @@ public class SpoofFragment extends Fragment {
                             if (view != null) {
                                 new QuickNotification(context).show(
                                         "Aurora Location Spoof",
-                                        "Current Location : " + mLocation);
+                                        "Current Location : " + mLocation,
+                                        null);
                             }
                         }, err -> {
                             Log.e(err.getMessage());
