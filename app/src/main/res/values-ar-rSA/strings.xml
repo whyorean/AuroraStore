@@ -61,7 +61,7 @@
 <string name="action_unwhitelist">"تجاهل التحديثات"</string>
 <string name="action_updates">"التحديثات"</string>
 <string name="action_whitelist">"القائمة البيضاء"</string>
-<string name="apps_by">"تطبيقات بواسطة٪ s"</string>
+<string name="apps_by">"تطبيقات بواسطة %d"</string>
 <string name="availability_restriction_country">"هذا العنصر غير متاح في بلدك."</string>
 <string name="availability_restriction_generic">"هذا العنصر غير متاح."</string>
 <string name="availability_restriction_hardware_app">"جهازك غير متوافق مع هذا الإصدار."</string>
@@ -113,11 +113,11 @@
 <string name="error_app_not_found">"التطبيق غير موجود"</string>
 <string name="error_incorrect_password">"بريد أو كلمة المرور غير صحيحة"</string>
 <string name="error_invalid_device_definition">"تم رفض تعريف الجهاز"</string>
-<string name="error_network_other">"خطأ في الشبكة:٪ s"</string>
+<string name="error_network_other">"خطأ في الشبكة : %s"</string>
 <string name="error_no_network">"لا يوجد اتصال بالانترنت"</string>
 <string name="error_search_not_found">"لم يتم العثور على تطبيق مطابق"</string>
 <string name="error_unknown">"حدث خطأ غير معروف"</string>
-<string name="exodus_hasTracker">"يحتوي علي متعقبات٪ s"</string>
+<string name="exodus_hasTracker">"يحتوي على %s متعقبات"</string>
 <string name="exodus_noTracker">"لا يحتوي على متعقبات"</string>
 <string name="exodus_powered">"مدعوم من Exodus"</string>
 <string name="exodus_title">"الحماية"</string>
@@ -141,7 +141,7 @@
 <string name="list_installed">"المثبتة"</string>
 <string name="list_installed_system">"إظهار تطبيقات المستخدم فقط"</string>
 <string name="list_not_installd">"غير مثبت"</string>
-<string name="list_selected">"التطبيقات المختارة:٪ d"</string>
+<string name="list_selected">"التطبيقات المختارة : %d"</string>
 <string name="list_update_all">"تحديث الكل"</string>
 <string name="list_update_all_txt">"التحديثات المتوفرة"</string>
 <string name="list_updating">"جاري التحديث"</string>
@@ -157,9 +157,9 @@
 <string name="menu_setting">"الإعدادات"</string>
 <string name="menu_terms">"شروط الخدمة"</string>
 <string name="no_permissions">"لا اذونات مستخدمة"</string>
-<string name="notification_installation_complete">"تم التثبيت بنجاح٪ s%"</string>
-<string name="notification_installation_failed">"فشل التثبيت ٪ s%"</string>
-<string name="notification_installation_progress">"جاري التثبيت ٪ s%"</string>
+<string name="notification_installation_complete">"تم التثبيت بنجاح %s"</string>
+<string name="notification_installation_failed">"فشل التثبيت %s"</string>
+<string name="notification_installation_progress">"جاري تثبيت  %s"</string>
 <string name="pref_app_download">"التنزيلات"</string>
 <string name="pref_app_network">"شبكة الاتصال"</string>
 <string name="pref_app_notification">"اشعارات"</string>
@@ -221,7 +221,7 @@
 <string name="title_installed">"تطبيقاتي"</string>
 <string name="title_perm">"أذونات"</string>
 <string name="title_search">"بحث التطبيقات"</string>
-<string name="title_search_result">"نتائج ل"</string>
+<string name="title_search_result">"نتائج لـ %s"</string>
 <string name="title_updates">"التحديثات المتاحة"</string>
 <string name="title_welcome">"أهلا بك"</string>
 <string name="toast_apk_blacklisted">"القائمة السوداء"</string>
@@ -235,5 +235,6 @@
 <string name="tab_explore">"اكتشاف التطبيقات"</string>
 <string name="tab_games">"إيجاد العاب"</string>
 <string name="tab_family">"العائلة و الاطفال"</string>
-<string name="pref_ui_tab_mode_summary">"تمكين جعل علامات التبويب قابلة للتمرير ، موصى بها للأجهزة ذات النقاط المنخفضة للبوصة"</string>
+<string name="pref_ui_tab_mode_title">"تمرير علامات التبويب"</string>
+<string name="pref_ui_tab_mode_summary">"تمكين علامات التبويب قابلة للتمرير ، موصى بها للأجهزة ذات النقاط المنخفضة للبوصة"</string>
 </resources>
