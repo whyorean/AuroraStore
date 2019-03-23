@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Aurora Store
+  ~ Copyright (C) 2019, Rahul Kumar Patel <whyorean@gmail.com>
+  ~
+  ~ Aurora Store is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 2 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ Aurora Store is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with Aurora Store.  If not, see <http://www.gnu.org/licenses/>.
+  ~
+  ~
+  -->
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/launcher_icon"
+                    android:layout_width="@dimen/icon_size_big"
+                    android:layout_height="@dimen/icon_size_big"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/margin_xlarge"
+                    android:contentDescription="@string/content_description_icon"
+                    android:src="@mipmap/ic_launcher_round" />
+
+                <TextView
+                    android:id="@+id/app_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/launcher_icon"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/margin_normal"
+                    android:text="@string/app_name"
+                    android:textAppearance="@style/TextAppearance.Aurora.Title"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/app_version"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/app_name"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:gravity="center_vertical"
+                    android:textAppearance="@style/TextAppearance.Aurora.Body"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/app_india"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/app_version"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/margin_xsmall"
+                    android:text="Made with ❤ in India"
+                    android:gravity="center_vertical"
+                    android:textColor="?android:attr/textColorPrimary"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/about_app"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/app_india"
+                    android:layout_margin="@dimen/margin_normal"
+                    android:background="@drawable/generic_padded_bg"
+                    android:padding="@dimen/margin_normal"
+                    android:text="@string/about_app"
+                    android:textSize="14sp" />
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/linkContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
+

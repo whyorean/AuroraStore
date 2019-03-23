@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Aurora Store
+  ~ Copyright (C) 2019, Rahul Kumar Patel <whyorean@gmail.com>
+  ~
+  ~ Aurora Store is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 2 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ Aurora Store is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with Aurora Store.  If not, see <http://www.gnu.org/licenses/>.
+  ~
+  ~
+  -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/margin_normal"
+    android:layout_marginEnd="@dimen/margin_normal"
+    android:layout_marginBottom="@dimen/margin_small"
+    android:background="@drawable/generic_padded_bg"
+    android:padding="@dimen/margin_small">
+
+    <ImageView
+        android:contentDescription="@string/content_description_icon"
+        android:id="@+id/link_icon"
+        android:layout_width="@dimen/icon_size_med"
+        android:layout_height="@dimen/icon_size_med"
+        android:padding="@dimen/margin_small" />
+
+    <TextView
+        android:id="@+id/link_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/link_icon"
+        android:layout_marginStart="@dimen/margin_small"
+        android:layout_toEndOf="@+id/link_icon"
+        android:singleLine="true"
+        android:textAppearance="@style/TextAppearance.Aurora.SubTitle"
+        android:textColor="?android:attr/textColorPrimary"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/link_summary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/link_title"
+        android:layout_alignStart="@id/link_title"
+        android:layout_toEndOf="@+id/link_icon"
+        android:maxLines="2"
+        android:textAppearance="@style/TextAppearance.Aurora.Body" />
+
+</RelativeLayout>

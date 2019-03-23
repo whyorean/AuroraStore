@@ -21,6 +21,11 @@
 <androidx.preference.PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <Preference
+        app:fragment="com.aurora.store.fragment.AboutFragment"
+        app:icon="@drawable/ic_about"
+        app:title="@string/action_about" />
+
+    <Preference
         app:fragment="com.aurora.store.fragment.BlacklistFragment"
         app:icon="@drawable/ic_spoof_alt"
         app:title="@string/action_blacklist" />

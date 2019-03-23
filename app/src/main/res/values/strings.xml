@@ -21,6 +21,20 @@
   -->
 
 <resources>
+    <string name="about_app" >Aurora is an open source alternative to Play Store.
+        It lets you download apps, provides updates of installed apps and lets you search for apps &amp; games.
+        It also provides a list of trackers embedded in an app.
+    </string>
+    <string name="about_paypal">Paypal</string>
+    <string name="about_paypal_summary">Donate me on Paypal</string>
+    <string name="about_fdroid">F-Droid</string>
+    <string name="about_gitlab">GitLab</string>
+    <string name="about_gitlab_summary">Get AuroraStore source code from Aurora OSS on GitLab.</string>
+    <string name="about_telegram">Telegram</string>
+    <string name="about_telegram_summary">Join Aurora Support group for discussions or suggestions.</string>
+    <string name="about_fdroid_summary">Get Aurora on F-Droid Repo</string>
+    <string name="about_xda">Dev Thread</string>
+    <string name="about_xda_summary">See AuroraStore XDA thread for discussions or suggestions.</string>
 
     <string name="account_dummy">Anonymous</string>
     <string name="account_dummy_desc">Login using Anonymous Account ?</string>
@@ -29,6 +43,7 @@
     <string name="account_prompt_login">Kindly login to continue</string>
     <string name="account_switch">Switch account</string>
 
+    <string name="action_about">About</string>
     <string name="action_accounts">Accounts</string>
     <string name="action_ask">Ask</string>
     <string name="action_blacklist">Blacklist</string>

@@ -75,6 +75,7 @@ public class SettingsActivity extends AppCompatActivity implements
         setContentView(R.layout.activity_settings);
         ButterKnife.bind(this);
         setupActionBar();
+        setTitle(R.string.action_settings);
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.settings, new SettingsFragment())
@@ -135,7 +136,6 @@ public class SettingsActivity extends AppCompatActivity implements
             actionBar.setElevation(0f);
             actionBar.setDisplayShowCustomEnabled(true);
             actionBar.setDisplayHomeAsUpEnabled(true);
-            actionBar.setTitle(R.string.menu_setting);
         }
     }
 

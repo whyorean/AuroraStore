@@ -200,4 +200,28 @@
         <item>HTTP</item>
         <item>SOCKS</item>
     </string-array>
+
+    <string-array name="linkURLS">
+        <item>"https://paypal.me/whyorean"</item>
+        <item>"https://gitlab.com/AuroraOSS/AuroraStore"</item>
+        <item>"https://forum.xda-developers.com/android/apps-games/galaxy-playstore-alternative-t3739733"</item>
+        <item>"https://t.me/AuroraSupport"</item>
+        <item>"https://f-droid.org/en/packages/com.dragons.aurora/"</item>
+    </string-array>
+
+    <string-array name="linkTitles">
+        <item>@string/about_paypal</item>
+        <item>@string/about_gitlab</item>
+        <item>@string/about_xda</item>
+        <item>@string/about_telegram</item>
+        <item>@string/about_fdroid</item>
+    </string-array>
+
+    <string-array name="linkSummary">
+        <item>@string/about_paypal_summary</item>
+        <item>@string/about_gitlab_summary</item>
+        <item>@string/about_xda_summary</item>
+        <item>@string/about_telegram_summary</item>
+        <item>@string/about_fdroid_summary</item>
+    </string-array>
 </resources>
