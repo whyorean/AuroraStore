@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Aurora Store
   ~ Copyright (C) 2019, Rahul Kumar Patel <whyorean@gmail.com>
   ~
@@ -30,229 +29,190 @@
         android:fadeScrollbars="true"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
             <RelativeLayout
-                android:id="@+id/device_info"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/margin_medium"
                 android:minHeight="76dp">
 
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                <ImageView
+                    android:id="@+id/device_avatar"
+                    android:layout_width="@dimen/icon_size_big"
+                    android:layout_height="@dimen/icon_size_big"
+                    android:layout_centerHorizontal="true"
+                    android:layout_margin="@dimen/margin_small"
+                    android:contentDescription="@string/content_description_icon"
+                    android:src="@drawable/ic_device_avatar" />
 
-                    <ImageView
-                        android:id="@+id/device_avatar"
-                        android:layout_width="@dimen/icon_size_big"
-                        android:layout_height="@dimen/icon_size_big"
-                        android:layout_centerHorizontal="true"
-                        android:layout_margin="@dimen/margin_small"
-                        android:src="@drawable/ic_device_avatar" />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/device_model"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/device_avatar"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/margin_normal"
+                    android:textAppearance="@style/TextAppearance.Aurora.Title"
+                    android:textSize="20sp" />
 
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/device_model"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/device_avatar"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginTop="@dimen/margin_normal"
-                        android:textAppearance="@style/TextAppearance.Aurora.Title"
-                        android:textSize="20sp" />
-
-                    <RelativeLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/device_model"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginTop="@dimen/margin_xxsmall">
-
-                        <androidx.appcompat.widget.AppCompatTextView
-                            android:id="@+id/device_manufacturer"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerVertical="true"
-                            android:textAppearance="@style/TextAppearance.Aurora.Body" />
-
-                        <View
-                            android:id="@+id/divider"
-                            android:layout_width="1dp"
-                            android:layout_height="10dp"
-                            android:layout_centerVertical="true"
-                            android:layout_marginStart="5dp"
-                            android:layout_marginEnd="5dp"
-                            android:layout_toEndOf="@id/device_manufacturer"
-                            android:background="@color/colorGrey" />
-
-                        <androidx.appcompat.widget.AppCompatTextView
-                            android:id="@+id/device_architect"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerVertical="true"
-                            android:layout_toEndOf="@+id/divider"
-                            android:textAppearance="@style/TextAppearance.Aurora.Body" />
-                    </RelativeLayout>
-
-                </RelativeLayout>
-
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/device_info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/device_model"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginTop="@dimen/margin_xxsmall"
+                    android:textAppearance="@style/TextAppearance.Aurora.Body" />
             </RelativeLayout>
 
             <RelativeLayout
                 android:id="@+id/device_card"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/device_info"
-                android:layout_margin="@dimen/margin_medium"
+                android:layout_marginStart="@dimen/margin_normal"
+                android:layout_marginEnd="@dimen/margin_normal"
+                android:layout_marginBottom="@dimen/margin_normal"
                 android:background="@drawable/generic_padded_bg"
                 android:minHeight="76dp">
 
-                <RelativeLayout
+                <ImageView
+                    android:id="@+id/spoof_device_img"
+                    android:layout_width="@dimen/icon_size_med"
+                    android:layout_height="@dimen/icon_size_med"
+                    android:contentDescription="@string/content_description_icon"
+                    android:padding="10dp"
+                    android:src="@drawable/ic_incognito" />
+
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/spoof_device_img"
+                    android:orientation="vertical"
+                    android:padding="5dp">
 
-                    <ImageView
-                        android:id="@+id/spoof_device_img"
-                        android:layout_width="@dimen/icon_size_med"
-                        android:layout_height="@dimen/icon_size_med"
-                        android:padding="10dp"
-                        android:src="@drawable/ic_incognito" />
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/pref_category_spoof_device"
+                        android:textAppearance="@style/TextAppearance.Aurora.Title" />
 
-                    <LinearLayout
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_xxsmall"
+                        android:text="@string/pref_device_to_pretend_to_be"
+                        android:textAppearance="@style/TextAppearance.Aurora.Body" />
+
+                    <Spinner
+                        android:id="@+id/spoof_device"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_toEndOf="@id/spoof_device_img"
-                        android:orientation="vertical"
-                        android:padding="5dp">
-
-                        <androidx.appcompat.widget.AppCompatTextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/pref_category_spoof_device"
-                            android:textAppearance="@style/TextAppearance.Aurora.Title" />
-
-                        <androidx.appcompat.widget.AppCompatTextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/margin_xxsmall"
-                            android:text="@string/pref_device_to_pretend_to_be"
-                            android:textAppearance="@style/TextAppearance.Aurora.Body" />
-
-                        <Spinner
-                            android:id="@+id/spoof_device"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="-8dp" />
-                    </LinearLayout>
-
-
-                </RelativeLayout>
-
+                        android:layout_marginStart="-8dp"
+                        android:spinnerMode="dialog" />
+                </LinearLayout>
             </RelativeLayout>
 
             <RelativeLayout
                 android:id="@+id/device_language"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/device_card"
-                android:layout_margin="@dimen/margin_medium"
+                android:layout_marginStart="@dimen/margin_normal"
+                android:layout_marginEnd="@dimen/margin_normal"
+                android:layout_marginBottom="@dimen/margin_normal"
                 android:background="@drawable/generic_padded_bg"
                 android:minHeight="76dp">
 
-                <RelativeLayout
+
+                <ImageView
+                    android:id="@+id/spoof_img"
+                    android:layout_width="@dimen/icon_size_med"
+                    android:layout_height="@dimen/icon_size_med"
+                    android:contentDescription="@string/content_description_icon"
+                    android:padding="10dp"
+                    android:src="@drawable/ic_translate" />
+
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/spoof_img"
+                    android:orientation="vertical"
+                    android:padding="5dp">
 
-                    <ImageView
-                        android:id="@+id/spoof_img"
-                        android:layout_width="@dimen/icon_size_med"
-                        android:layout_height="@dimen/icon_size_med"
-                        android:padding="10dp"
-                        android:src="@drawable/ic_translate" />
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/pref_category_spoof_lang"
+                        android:textAppearance="@style/TextAppearance.Aurora.Title" />
 
-                    <LinearLayout
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_xxsmall"
+                        android:ellipsize="end"
+                        android:maxLines="2"
+                        android:text="@string/pref_requested_language"
+                        android:textAppearance="@style/TextAppearance.Aurora.Body" />
+
+                    <Spinner
+                        android:id="@+id/spoof_language"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_toEndOf="@id/spoof_img"
-                        android:orientation="vertical"
-                        android:padding="5dp">
-
-                        <androidx.appcompat.widget.AppCompatTextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/pref_category_spoof_lang"
-                            android:textAppearance="@style/TextAppearance.Aurora.Title" />
-
-                        <androidx.appcompat.widget.AppCompatTextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/margin_xxsmall"
-                            android:ellipsize="end"
-                            android:maxLines="2"
-                            android:text="@string/pref_requested_language"
-                            android:textAppearance="@style/TextAppearance.Aurora.Body" />
-
-                        <Spinner
-                            android:id="@+id/spoof_language"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="-8dp" />
-                    </LinearLayout>
-                </RelativeLayout>
-
+                        android:layout_marginStart="-8dp"
+                        android:spinnerMode="dialog" />
+                </LinearLayout>
             </RelativeLayout>
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/device_language"
-                android:layout_margin="@dimen/margin_medium"
+                android:layout_marginStart="@dimen/margin_normal"
+                android:layout_marginEnd="@dimen/margin_normal"
+                android:layout_marginBottom="@dimen/margin_normal"
                 android:background="@drawable/generic_padded_bg">
 
-                <RelativeLayout
+                <ImageView
+                    android:id="@+id/location_img"
+                    android:layout_width="@dimen/icon_size_med"
+                    android:layout_height="@dimen/icon_size_med"
+                    android:contentDescription="@string/content_description_icon"
+                    android:padding="10dp"
+                    android:src="@drawable/ic_map_marker" />
+
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/location_img"
+                    android:orientation="vertical"
+                    android:padding="5dp">
 
-                    <ImageView
-                        android:id="@+id/location_img"
-                        android:layout_width="@dimen/icon_size_med"
-                        android:layout_height="@dimen/icon_size_med"
-                        android:padding="10dp"
-                        android:src="@drawable/ic_map_marker" />
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/pref_category_spoof_location"
+                        android:textAppearance="@style/TextAppearance.Aurora.Title" />
 
-                    <LinearLayout
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_xxsmall"
+                        android:text="@string/pref_requested_location_summary"
+                        android:textAppearance="@style/TextAppearance.Aurora.Body" />
+
+                    <Spinner
+                        android:id="@+id/spoof_location"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_toEndOf="@id/location_img"
-                        android:orientation="vertical"
-                        android:padding="5dp">
-
-                        <androidx.appcompat.widget.AppCompatTextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/pref_category_spoof_location"
-                            android:textAppearance="@style/TextAppearance.Aurora.Title" />
-
-                        <androidx.appcompat.widget.AppCompatTextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/margin_xxsmall"
-                            android:text="@string/pref_requested_location_summary"
-                            android:textAppearance="@style/TextAppearance.Aurora.Body" />
-
-                        <Spinner
-                            android:id="@+id/spoof_location"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="-8dp" />
-                    </LinearLayout>
-                </RelativeLayout>
-
+                        android:layout_marginStart="-8dp"
+                        android:spinnerMode="dialog" />
+                </LinearLayout>
             </RelativeLayout>
 
-        </RelativeLayout>
+        </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>
 

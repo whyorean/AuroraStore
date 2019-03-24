@@ -31,15 +31,14 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import com.aurora.store.Constants;
-import com.aurora.store.GlideApp;
 import com.aurora.store.R;
 import com.aurora.store.activity.AccountsActivity;
 import com.aurora.store.activity.DeviceInfoActivity;
@@ -53,7 +52,6 @@ import com.aurora.store.utility.ContextUtil;
 import com.aurora.store.utility.Log;
 import com.aurora.store.utility.PrefUtil;
 import com.aurora.store.utility.Util;
-import com.aurora.store.utility.ViewUtil;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import org.jetbrains.annotations.NotNull;
@@ -74,10 +72,12 @@ import io.reactivex.schedulers.Schedulers;
 
 public class SpoofFragment extends Fragment {
 
-    private static final String LineageURl = "https://wiki.lineageos.org/images/devices/";
-
     @BindView(R.id.device_avatar)
     ImageView imgDeviceAvatar;
+    @BindView(R.id.device_model)
+    TextView txtDeviceModel;
+    @BindView(R.id.device_info)
+    TextView txtDeviceInfo;
     @BindView(R.id.spoof_device)
     Spinner mSpinnerDevice;
     @BindView(R.id.spoof_language)
@@ -88,7 +88,6 @@ public class SpoofFragment extends Fragment {
     private Context context;
     private CompositeDisposable mDisposable = new CompositeDisposable();
     private String deviceName;
-    private View view;
 
     @Override
     public void onAttach(@NotNull Context context) {
@@ -99,7 +98,7 @@ public class SpoofFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        view = inflater.inflate(R.layout.fragment_spoof, container, false);
+        View view = inflater.inflate(R.layout.fragment_spoof, container, false);
         ButterKnife.bind(this, view);
         return view;
     }
@@ -132,19 +131,29 @@ public class SpoofFragment extends Fragment {
     }
 
     private void drawDevice() {
-        getDeviceImg(LineageURl + Build.DEVICE + ".png");
-        ViewUtil.setText(view, R.id.device_model, R.string.device_model, Build.MODEL, Build.DEVICE);
-        ViewUtil.setText(view, R.id.device_manufacturer, Build.MANUFACTURER);
-        ViewUtil.setText(view, R.id.device_architect, Build.BOARD);
+        txtDeviceModel.setText(new StringBuilder()
+                .append(Build.MODEL)
+                .append(" | ")
+                .append(Build.DEVICE));
+
+        txtDeviceInfo.setText(new StringBuilder()
+                .append(Build.MANUFACTURER)
+                .append(" | ")
+                .append(Build.BOARD));
     }
 
     private void drawSpoofedDevice() {
         Properties properties = new SpoofManager(this.context).getProperties(deviceName);
         String Model = properties.getProperty("UserReadableName");
-        getDeviceImg(LineageURl + properties.getProperty(Constants.BUILD_DEVICE) + ".png");
-        ViewUtil.setText(view, R.id.device_model, R.string.device_model, Model.substring(0, Model.indexOf('(')), properties.getProperty(Constants.BUILD_DEVICE));
-        ViewUtil.setText(view, R.id.device_manufacturer, properties.getProperty(Constants.BUILD_MANUFACTURER));
-        ViewUtil.setText(view, R.id.device_architect, properties.getProperty(Constants.BUILD_HARDWARE));
+        txtDeviceModel.setText(new StringBuilder()
+                .append(Model.substring(0, Model.indexOf('(')))
+                .append(" | ")
+                .append(properties.getProperty(Constants.BUILD_DEVICE)));
+
+        txtDeviceInfo.setText(new StringBuilder()
+                .append(properties.getProperty(Constants.BUILD_MANUFACTURER))
+                .append(" | ")
+                .append(properties.getProperty(Constants.BUILD_HARDWARE)));
     }
 
     private void setupDevice() {
@@ -159,7 +168,7 @@ public class SpoofFragment extends Fragment {
                 deviceList
         );
 
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        adapter.setDropDownViewResource(R.layout.item_spinner);
         mSpinnerDevice.setAdapter(adapter);
         mSpinnerDevice.setSelection(PrefUtil.getInteger(context, Constants.PREFERENCE_DEVICE_TO_PRETEND_TO_BE_INDEX), true);
         mSpinnerDevice.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -194,30 +203,33 @@ public class SpoofFragment extends Fragment {
                 localeList
         );
 
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        adapter.setDropDownViewResource(R.layout.item_spinner);
         mSpinnerLanguage.setAdapter(adapter);
-        mSpinnerLanguage.setSelection(PrefUtil.getInteger(context, Constants.PREFERENCE_REQUESTED_LANGUAGE_INDEX), true);
+        mSpinnerLanguage.setSelection(PrefUtil.getInteger(context,
+                Constants.PREFERENCE_REQUESTED_LANGUAGE_INDEX), true);
         mSpinnerLanguage.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (position > 0) {
                     try {
-                        new PlayStoreApiAuthenticator(context).getApi().setLocale(new Locale(localeKeys[position]));
-                        PrefUtil.putString(context, Constants.PREFERENCE_REQUESTED_LANGUAGE, localeKeys[position]);
-                        PrefUtil.putInteger(context, Constants.PREFERENCE_REQUESTED_LANGUAGE_INDEX, position);
+                        new PlayStoreApiAuthenticator(context).getApi()
+                                .setLocale(new Locale(localeKeys[position]));
+                        PrefUtil.putString(context, Constants.PREFERENCE_REQUESTED_LANGUAGE,
+                                localeKeys[position]);
+                        PrefUtil.putInteger(context, Constants.PREFERENCE_REQUESTED_LANGUAGE_INDEX,
+                                position);
                     } catch (IOException e) {
                         Log.w(e.getMessage());
-                        ContextUtil.runOnUiThread(() -> {
-                            Toast.makeText(context, "You need to login first", Toast.LENGTH_LONG).show();
-                        });
+                        ContextUtil.runOnUiThread(() -> Toast.makeText(context,
+                                "You need to login first", Toast.LENGTH_LONG).show());
                     }
                 }
 
                 if (position == 0) {
                     PrefUtil.putString(context, Constants.PREFERENCE_REQUESTED_LANGUAGE, "");
-                    PrefUtil.putInteger(context, Constants.PREFERENCE_REQUESTED_LANGUAGE_INDEX, 0);
+                    PrefUtil.putInteger(context, Constants.PREFERENCE_REQUESTED_LANGUAGE_INDEX,
+                            0);
                 }
-
                 new CategoryManager(context).clearAll();
             }
 
@@ -234,12 +246,11 @@ public class SpoofFragment extends Fragment {
                 context,
                 android.R.layout.simple_spinner_item,
                 geoLocations);
-
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        adapter.setDropDownViewResource(R.layout.item_spinner);
         mSpinnerLocation.setAdapter(adapter);
-        mSpinnerLocation.setSelection(PrefUtil.getInteger(context, Constants.PREFERENCE_REQUESTED_LOCATION_INDEX), true);
+        mSpinnerLocation.setSelection(PrefUtil.getInteger(context,
+                Constants.PREFERENCE_REQUESTED_LOCATION_INDEX), true);
         mSpinnerLocation.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 final String mLocation = geoLocations[position];
@@ -254,9 +265,7 @@ public class SpoofFragment extends Fragment {
                                         "Current Location : " + mLocation,
                                         null);
                             }
-                        }, err -> {
-                            Log.e(err.getMessage());
-                        }));
+                        }, err -> Log.e(err.getMessage())));
             }
 
             @Override
@@ -264,15 +273,6 @@ public class SpoofFragment extends Fragment {
 
             }
         });
-    }
-
-    private void getDeviceImg(String url) {
-        GlideApp
-                .with(context)
-                .load(url)
-                .centerCrop()
-                .placeholder(ContextCompat.getDrawable(context, R.drawable.ic_device_avatar))
-                .into(imgDeviceAvatar);
     }
 
     private Map<String, String> getDeviceKeyValueMap() {
@@ -287,9 +287,7 @@ public class SpoofFragment extends Fragment {
     private Map<String, String> getLanguageKeyValueMap() {
         Map<String, String> languages = new HashMap<>();
         for (Locale locale : Locale.getAvailableLocales()) {
-            String displayName = locale.getDisplayName();
-            displayName = displayName.substring(0, 1).toUpperCase(Locale.getDefault()) + displayName.substring(1);
-            languages.put(locale.toString(), displayName);
+            languages.put(locale.toString(), locale.getDisplayName());
         }
         languages = Util.sort(languages);
         Util.addToStart((LinkedHashMap<String, String>) languages, "",
@@ -302,8 +300,10 @@ public class SpoofFragment extends Fragment {
                 .setTitle(getString(R.string.dialog_title_logout))
                 .setMessage(getString(R.string.pref_device_to_pretend_to_be_toast))
                 .setPositiveButton(getString(R.string.action_logout), (dialog, which) -> {
-                    PrefUtil.putString(context, Constants.PREFERENCE_DEVICE_TO_PRETEND_TO_BE, "");
-                    PrefUtil.putInteger(context, Constants.PREFERENCE_DEVICE_TO_PRETEND_TO_BE_INDEX, 0);
+                    PrefUtil.putString(context,
+                            Constants.PREFERENCE_DEVICE_TO_PRETEND_TO_BE, "");
+                    PrefUtil.putInteger(context,
+                            Constants.PREFERENCE_DEVICE_TO_PRETEND_TO_BE_INDEX, 0);
                     Accountant.completeCheckout(context);
                     startActivity(new Intent(context, AccountsActivity.class));
                 })
