@@ -109,8 +109,8 @@ public class Util {
         map.putAll(clonedMap);
     }
 
-    static public String addSiPrefix(Integer integer) {
-        int tempValue = integer;
+    static public String addSiPrefix(Long value) {
+        long tempValue = value;
         int order = 0;
         while (tempValue >= 1000.0) {
             tempValue /= 1000.0;
@@ -119,8 +119,8 @@ public class Util {
         return tempValue + siPrefixes.get(order);
     }
 
-    static public String addDiPrefix(Long integer) {
-        long tempValue = integer;
+    static public String addDiPrefix(Long value) {
+        long tempValue = value;
         int order = 0;
         while (tempValue >= 1000.0) {
             tempValue /= 1000.0;

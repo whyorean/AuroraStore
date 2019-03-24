@@ -27,6 +27,7 @@ import androidx.annotation.NonNull;
 import com.aurora.store.ListType;
 import com.aurora.store.R;
 import com.aurora.store.model.App;
+import com.aurora.store.utility.Log;
 import com.aurora.store.utility.Util;
 
 import java.util.List;
@@ -45,7 +46,7 @@ public class EndlessAppsAdapter extends InstalledAppsAdapter {
 
     @Override
     public void getDetails(Context mContext, List<String> Version, List<String> Extra, App app) {
-        Version.add(Util.addSiPrefix((int) app.getSize()));
+        Version.add(Util.addSiPrefix(app.getSize()));
         if (!app.isEarlyAccess())
             Version.add(mContext.getString(R.string.details_rating, (app.getRating().getAverage())) + " ★");
         Extra.add(app.getPrice());
