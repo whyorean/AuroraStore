@@ -335,7 +335,6 @@ public class ActionButton extends AbstractHelper {
 
     private FetchListener getFetchListener() {
         return new FetchListener() {
-
             @Override
             public void onWaitingNetwork(@NotNull Download download) {
 
@@ -354,7 +353,10 @@ public class ActionButton extends AbstractHelper {
             @Override
             public void onResumed(@NotNull Download download) {
                 if (download.getId() == request.getId()) {
-                    notification.notifyProgress(download.getProgress(), 0,
+                    int progress = download.getProgress();
+                    if (progress < 0)
+                        progress = 0;
+                    notification.notifyProgress(progress, 0,
                             request.getId());
                     progressBar.setIndeterminate(false);
                 }
@@ -378,18 +380,21 @@ public class ActionButton extends AbstractHelper {
             public void onProgress(@NotNull Download download, long etaInMilliSeconds,
                                    long downloadedBytesPerSecond) {
                 if (download.getId() == request.getId()) {
+                    int progress = download.getProgress();
+                    if (progress < 0)
+                        progress = 0;
                     btnCancel.setVisibility(View.VISIBLE);
-                    notification.notifyProgress(download.getProgress(), downloadedBytesPerSecond,
+                    notification.notifyProgress(progress, downloadedBytesPerSecond,
                             request.getId());
                     //Set intermediate to false, just in case xD
                     if (progressBar.isIndeterminate())
                         progressBar.setIndeterminate(false);
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                        progressBar.setProgress(download.getProgress(), true);
+                        progressBar.setProgress(progress, true);
                     } else
-                        progressBar.setProgress(download.getProgress());
+                        progressBar.setProgress(progress);
                     progressStatus.setText(R.string.download_progress);
-                    progressTxt.setText(new StringBuilder().append(download.getProgress()).append("%"));
+                    progressTxt.setText(new StringBuilder().append(progress).append("%"));
                 }
             }
 
