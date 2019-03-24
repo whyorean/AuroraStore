@@ -47,8 +47,9 @@
             android:layout_centerHorizontal="true"
             android:ellipsize="none"
             android:maxWidth="320dp"
+            android:textAlignment="center"
+            android:maxLines="2"
             android:requiresFadingEdge="horizontal"
-            android:singleLine="true"
             android:textAppearance="@style/TextAppearance.Aurora.Title"
             android:textSize="20sp" />
 
