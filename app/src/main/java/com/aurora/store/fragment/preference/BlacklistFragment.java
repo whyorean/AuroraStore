@@ -18,7 +18,7 @@
  *
  */
 
-package com.aurora.store.fragment;
+package com.aurora.store.fragment.preference;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -38,6 +38,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.aurora.store.ErrorType;
 import com.aurora.store.R;
 import com.aurora.store.adapter.BlacklistAdapter;
+import com.aurora.store.fragment.BaseFragment;
 import com.aurora.store.model.App;
 import com.aurora.store.task.InstalledApps;
 import com.aurora.store.utility.Log;

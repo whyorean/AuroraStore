@@ -18,7 +18,7 @@
  *
  */
 
-package com.aurora.store.fragment;
+package com.aurora.store.fragment.preference;
 
 import android.content.Context;
 import android.content.Intent;

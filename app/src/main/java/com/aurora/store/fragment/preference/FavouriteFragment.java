@@ -18,7 +18,7 @@
  *
  */
 
-package com.aurora.store.fragment;
+package com.aurora.store.fragment.preference;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -44,6 +44,7 @@ import com.aurora.store.adapter.FavouriteAppsAdapter;
 import com.aurora.store.adapter.SelectableViewHolder;
 import com.aurora.store.download.DownloadManager;
 import com.aurora.store.download.RequestBuilder;
+import com.aurora.store.fragment.BaseFragment;
 import com.aurora.store.manager.FavouriteListManager;
 import com.aurora.store.model.App;
 import com.aurora.store.notification.QuickNotification;
