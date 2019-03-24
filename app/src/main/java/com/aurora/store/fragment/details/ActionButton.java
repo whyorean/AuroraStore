@@ -214,9 +214,8 @@ public class ActionButton extends AbstractHelper {
                     .subscribe(deliveryData -> {
                         initiateDownload(deliveryData);
                     }, err -> {
-                        Log.e(err.getMessage());
                         runOnUiThread(() -> {
-                            Toast.makeText(context, "App not available", Toast.LENGTH_LONG).show();
+                            Toast.makeText(context, "App Not purchased", Toast.LENGTH_LONG).show();
                             draw();
                             switchViews(false);
                         });
@@ -284,7 +283,7 @@ public class ActionButton extends AbstractHelper {
         request = RequestBuilder.buildRequest(context, app, deliveryData.getDownloadUrl());
         fetchListener = getFetchListener();
         fetch.addListener(fetchListener);
-        
+
         if (isPaused)
             fetch.resume(requestId);
         else

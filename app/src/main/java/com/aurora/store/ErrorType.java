@@ -24,5 +24,6 @@ public enum ErrorType {
     NO_NETWORK,
     NO_APPS,
     NO_SEARCH,
-    UNKNOWN
+    UNKNOWN,
+    MALFORMED
 }

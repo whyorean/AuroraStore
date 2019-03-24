@@ -50,6 +50,7 @@
     <string name="action_cancel">Cancel</string>
     <string name="action_clear">Clear</string>
     <string name="action_clear_all">Clear All</string>
+    <string name="action_close">Close</string>
     <string name="action_convert_local">Convert Local</string>
     <string name="action_convert_system">Convert System</string>
     <string name="action_copied">Link copied to clipboard</string>

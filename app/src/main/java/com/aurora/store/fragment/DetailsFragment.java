@@ -36,6 +36,7 @@ import androidx.core.widget.NestedScrollView;
 
 import com.aurora.store.ErrorType;
 import com.aurora.store.R;
+import com.aurora.store.exception.MalformedRequestException;
 import com.aurora.store.fragment.details.ActionButton;
 import com.aurora.store.fragment.details.BackToPlayStore;
 import com.aurora.store.fragment.details.Beta;
@@ -53,8 +54,6 @@ import com.aurora.store.receiver.DetailsInstallReceiver;
 import com.aurora.store.task.DetailsApp;
 import com.aurora.store.utility.Log;
 import com.aurora.store.view.ErrorView;
-import com.dragons.aurora.playstoreapiv2.GooglePlayException;
-import com.google.android.material.snackbar.Snackbar;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -187,11 +186,11 @@ public class DetailsFragment extends BaseFragment implements BaseFragment.EventL
     @Override
     public void processException(Throwable e) {
         mDisposable.clear();
-        if (e.getCause() instanceof GooglePlayException && ((GooglePlayException) e).getCode() == 404) {
-            Snackbar.make(mContainer, "App Not Purchased", Snackbar.LENGTH_LONG).show();
+        if (e instanceof MalformedRequestException) {
+            setErrorView(ErrorType.MALFORMED);
+            switchViews(true);
         } else
             super.processException(e);
-
     }
 
     @Override

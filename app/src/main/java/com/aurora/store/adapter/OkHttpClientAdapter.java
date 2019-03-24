@@ -22,6 +22,7 @@ package com.aurora.store.adapter;
 
 import android.content.Context;
 
+import com.aurora.store.exception.MalformedRequestException;
 import com.aurora.store.utility.Util;
 import com.dragons.aurora.playstoreapiv2.AuthException;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
@@ -134,7 +135,7 @@ public class OkHttpClientAdapter extends HttpClientAdapter {
         } else if (code >= 500) {
             throw new GooglePlayException("Server error", code);
         } else if (code >= 400) {
-            throw new GooglePlayException("Malformed request", code);
+            throw new MalformedRequestException("Malformed Request", code);
         }
         return content;
     }
