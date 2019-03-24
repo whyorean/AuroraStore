@@ -99,8 +99,8 @@ public class Installer {
             }
         }
 
-        SplitPackageInstallerAbstract installer = getInstallationMethod(context);
-        context.registerReceiver(installer.getBroadcastReceiver(),
+        SplitPackageInstallerAbstract installer = getInstallationMethod(context.getApplicationContext());
+        context.getApplicationContext().registerReceiver(installer.getBroadcastReceiver(),
                 new IntentFilter(SplitService.ACTION_INSTALLATION_STATUS_NOTIFICATION));
         long sessionID = installer.createInstallationSession(apkFiles);
         installer.startInstallationSession(sessionID);
@@ -164,7 +164,7 @@ public class Installer {
 
     private void clearNotification(String packageName) {
         NotificationManager notificationManager = (NotificationManager)
-                context.getSystemService(Context.NOTIFICATION_SERVICE);
+                context.getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManager.cancel(packageName.hashCode());
     }
 
@@ -180,7 +180,7 @@ public class Installer {
 
     private void unregisterReceiver(SplitPackageInstallerAbstract mInstaller) {
         try {
-            context.unregisterReceiver(mInstaller.getBroadcastReceiver());
+            context.getApplicationContext().unregisterReceiver(mInstaller.getBroadcastReceiver());
         } catch (Exception ignored) {
         }
     }

@@ -24,7 +24,6 @@
 package com.aurora.store.installer;
 
 import android.content.Context;
-import android.content.IntentFilter;
 import android.content.pm.PackageInfo;
 import android.util.Log;
 
@@ -96,9 +95,6 @@ public class SplitPackageInstallerRooted extends SplitPackageInstaller {
             installationCompleted();
         } catch (Exception e) {
             Log.w(TAG, e);
-            dispatchCurrentSessionUpdate(InstallationStatus.INSTALLATION_FAILED,
-                    String.format(Locale.getDefault(), "Error Root : %s", e.getMessage()));
-            installationCompleted();
         }
     }
 

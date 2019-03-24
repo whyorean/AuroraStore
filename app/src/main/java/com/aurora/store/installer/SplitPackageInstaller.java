@@ -24,14 +24,10 @@
 package com.aurora.store.installer;
 
 import android.app.PendingIntent;
-import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.pm.PackageInstaller;
-
-import com.aurora.store.InstallationStatus;
-import com.aurora.store.utility.Log;
+import android.util.Log;
 
 import org.apache.commons.io.IOUtils;
 
@@ -40,6 +36,8 @@ import java.io.FileInputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.List;
+
+import static com.aurora.store.Constants.TAG;
 
 public class SplitPackageInstaller extends SplitPackageInstallerAbstract {
 
@@ -68,9 +66,7 @@ public class SplitPackageInstaller extends SplitPackageInstallerAbstract {
             session.commit(pendingIntent.getIntentSender());
             session.close();
         } catch (Exception e) {
-            Log.w(e.getMessage());
-            dispatchCurrentSessionUpdate(InstallationStatus.INSTALLATION_FAILED, null);
-            installationCompleted();
+            Log.w(TAG, e);
         }
     }
 }

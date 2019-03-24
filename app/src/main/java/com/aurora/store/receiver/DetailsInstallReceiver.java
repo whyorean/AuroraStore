@@ -39,9 +39,8 @@ public class DetailsInstallReceiver extends BroadcastReceiver {
 
     private String packageName;
 
-    public DetailsInstallReceiver(Context context, String packageName) {
+    public DetailsInstallReceiver(String packageName) {
         this.packageName = packageName;
-        context.registerReceiver(this, getFilter());
     }
 
     @Override
@@ -53,7 +52,7 @@ public class DetailsInstallReceiver extends BroadcastReceiver {
             ((DetailsActivity) context).redrawDetails(packageName);
     }
 
-    private IntentFilter getFilter() {
+    public IntentFilter getFilter() {
         IntentFilter filter = new IntentFilter();
         filter.addDataScheme("package");
         filter.addAction(Intent.ACTION_PACKAGE_REMOVED);

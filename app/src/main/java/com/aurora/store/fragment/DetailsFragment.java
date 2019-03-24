@@ -106,13 +106,14 @@ public class DetailsFragment extends BaseFragment implements BaseFragment.EventL
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mInstallReceiver = new DetailsInstallReceiver(context, packageName);
+        mInstallReceiver = new DetailsInstallReceiver(packageName);
         setErrorView(ErrorType.NO_APPS);
     }
 
     @Override
     public void onResume() {
         super.onResume();
+        context.registerReceiver(mInstallReceiver, mInstallReceiver.getFilter());
         if (mActionButton != null)
             mActionButton.draw();
     }
@@ -120,8 +121,10 @@ public class DetailsFragment extends BaseFragment implements BaseFragment.EventL
     @Override
     public void onDestroy() {
         super.onDestroy();
-        if (mInstallReceiver != null)
+        try {
             context.unregisterReceiver(mInstallReceiver);
+        } catch (Exception ignored) {
+        }
     }
 
     private void fetchDetails() {

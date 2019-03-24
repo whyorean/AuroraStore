@@ -26,6 +26,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.aurora.store.download.DownloadManager;
+import com.tonyodev.fetch2.Fetch;
 
 import static com.aurora.store.notification.GeneralNotification.REQUEST_ID;
 
@@ -36,7 +37,9 @@ public class DownloadCancelReceiver extends BroadcastReceiver {
         if ((extras != null)) {
             final int requestId = extras.getInt(REQUEST_ID, -1);
             final DownloadManager mDownloadManager = new DownloadManager(context);
-            mDownloadManager.getFetchInstance().cancel(requestId);
+            final Fetch fetch = mDownloadManager.getFetchInstance();
+            fetch.cancel(requestId);
+            fetch.delete(requestId);
         }
     }
 }

@@ -100,4 +100,8 @@ public class PathUtil {
     static public String getBaseCopyDirectory() {
         return Environment.getExternalStorageDirectory().getPath() + "/Aurora/Copy/APK";
     }
+
+    public static boolean fileExists(Context context, App app) {
+        return new File(PathUtil.getLocalApkPath(context, app)).exists();
+    }
 }

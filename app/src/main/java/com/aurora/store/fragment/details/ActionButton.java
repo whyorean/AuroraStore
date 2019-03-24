@@ -57,7 +57,6 @@ import com.tonyodev.fetch2.Error;
 import com.tonyodev.fetch2.Fetch;
 import com.tonyodev.fetch2.FetchListener;
 import com.tonyodev.fetch2.Request;
-import com.tonyodev.fetch2.Status;
 import com.tonyodev.fetch2core.DownloadBlock;
 
 import org.jetbrains.annotations.NotNull;
@@ -140,20 +139,26 @@ public class ActionButton extends AbstractHelper {
         fetch.getDownloads(downloadList -> {
             for (Download download : downloadList) {
                 if (download.getTag() != null && download.getTag().equals(app.getPackageName())) {
-                    if (download.getStatus() == Status.NONE) {
-                        btnPositive.setOnClickListener(downloadAppListener());
-                    } else if (download.getStatus() == Status.COMPLETED && !app.isInstalled()) {
-                        btnPositive.setOnClickListener(installAppListener());
-                    } else if (download.getStatus() == Status.DOWNLOADING
-                            || download.getStatus() == Status.QUEUED) {
-                        switchViews(true);
-                        request = download.getRequest();
-                        fetch.resume(download.getId());
-                        fetch.addListener(fetchListener = getFetchListener());
-                    } else if (download.getStatus() == Status.PAUSED) {
-                        btnPositive.setText(R.string.download_resume);
-                        isPaused = true;
-                        requestId = download.getId();
+                    request = download.getRequest();
+                    requestId = download.getId();
+                    switch (download.getStatus()) {
+                        case COMPLETED:
+                            if (!app.isInstalled() && PathUtil.fileExists(context, app))
+                                btnPositive.setOnClickListener(installAppListener());
+                            break;
+                        case DOWNLOADING:
+                        case QUEUED: {
+                            switchViews(true);
+                            fetch.addListener(fetchListener = getFetchListener());
+                        }
+                        break;
+                        case PAUSED: {
+                            isPaused = true;
+                            btnPositive.setOnClickListener(resumeAppListener());
+                        }
+                        break;
+                        default:
+                            btnPositive.setOnClickListener(downloadAppListener());
                     }
                 }
             }
@@ -207,6 +212,12 @@ public class ActionButton extends AbstractHelper {
         btnPositive.setText(R.string.details_download);
         return v -> {
             switchViews(true);
+            //Remove any previous requests
+            if (!isPaused) {
+                fetch.remove(requestId);
+                fetch.delete(requestId);
+            }
+
             compositeDisposable.add(Observable.fromCallable(() -> new DeliveryData(context)
                     .getDeliveryData(app))
                     .subscribeOn(Schedulers.io())
@@ -220,6 +231,16 @@ public class ActionButton extends AbstractHelper {
                             switchViews(false);
                         });
                     }));
+        };
+    }
+
+    private View.OnClickListener resumeAppListener() {
+        btnPositive.setText(R.string.download_resume);
+        return v -> {
+            switchViews(true);
+            fetchListener = getFetchListener();
+            fetch.addListener(fetchListener);
+            fetch.resume(requestId);
         };
     }
 
@@ -239,8 +260,9 @@ public class ActionButton extends AbstractHelper {
 
     private View.OnClickListener cancelDownloadListener() {
         return v -> {
-            if (fetch != null && request != null)
-                fetch.cancel(request.getId());
+            fetch.cancel(requestId);
+            fetch.delete(requestId);
+            draw();
         };
     }
 
