@@ -124,10 +124,12 @@ public class GeneralDetails extends AbstractHelper {
             txtRating.setText(app.getLabeledRating());
             txtInstalls.setText(app.getInstalls() == 0 ? "N/A" : Util.addDiPrefix(app.getInstalls()));
             txtSize.setText(app.getSize() == 0 ? "N/A" : Formatter.formatShortFileSize(context, app.getSize()));
+            setText(view, R.id.app_desc_short, TextUtil.emptyIfNull(app.getShortDescription()));
 
             drawOfferDetails();
             drawChanges();
 
+            show(view, R.id.app_desc_short);
             show(view, R.id.layout_main);
             //show(view, R.id.app_detail);
             show(view, R.id.related_links);

@@ -58,6 +58,7 @@ public class AppBuilder {
         App app = new App();
         app.setDisplayName(details.getTitle());
         app.setDescription(details.getDescriptionHtml());
+        app.setShortDescription(details.getDescriptionShort());
         app.setCategoryId(details.getRelatedLinks().getCategoryInfo().getAppCategory());
         app.setRestriction(details.getAvailability().getRestriction());
         if (details.getOfferCount() > 0) {
