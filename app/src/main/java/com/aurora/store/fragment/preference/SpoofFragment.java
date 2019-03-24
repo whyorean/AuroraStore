@@ -259,12 +259,10 @@ public class SpoofFragment extends Fragment {
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe((success) -> {
-                            if (view != null) {
-                                new QuickNotification(context).show(
-                                        "Aurora Location Spoof",
-                                        "Current Location : " + mLocation,
-                                        null);
-                            }
+                            new QuickNotification(context).show(
+                                    "Aurora Location Spoof",
+                                    "Current Location : " + mLocation,
+                                    null);
                         }, err -> Log.e(err.getMessage())));
             }
 

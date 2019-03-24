@@ -50,7 +50,6 @@ public class GeoSpoofTask {
     private Location mockLocation;
     private Context context;
     private String geoLocation;
-    private Boolean mockEnabled = false;
     private int position;
 
     public GeoSpoofTask(Context context, String geoLocation, int position) {
@@ -60,27 +59,27 @@ public class GeoSpoofTask {
     }
 
     public boolean spoof() {
-        init();
-        if (position == 0) {
-            PrefUtil.putInteger(context, Constants.PREFERENCE_REQUESTED_LOCATION_INDEX, 0);
-            ContextUtil.runOnUiThread(() -> setMockDialog(false));
-        } else
-            mockLocation(geoLocation);
-        return mockEnabled;
-    }
-
-    private void init() {
         locationManager = (LocationManager) context.getSystemService(LOCATION_SERVICE);
         mocLocationProvider = LocationManager.GPS_PROVIDER;
         mockLocation = new Location(mocLocationProvider);
+
+        int lastValue = PrefUtil.getInteger(context, Constants.PREFERENCE_REQUESTED_LOCATION_INDEX);
+
+        if (position == 0 && lastValue != 0) {
+            PrefUtil.putInteger(context, Constants.PREFERENCE_REQUESTED_LOCATION_INDEX, 0);
+            ContextUtil.runOnUiThread(() -> setMockDialog(false));
+            return false;
+        } else
+            return mockLocation(geoLocation);
     }
 
-    private void mockLocation(String mockLocation) {
+    private boolean mockLocation(String mockLocation) {
         List<Address> addresses = getAddress(mockLocation);
         if (addresses.isEmpty()) {
             Log.i("Could not get Address");
+            return false;
         } else {
-            spoofLocation(addresses.get(0).getLatitude(), addresses.get(0).getLongitude());
+            return spoofLocation(addresses.get(0).getLatitude(), addresses.get(0).getLongitude());
         }
     }
 
@@ -101,45 +100,44 @@ public class GeoSpoofTask {
         }
     }
 
-    private void spoofLocation(double latitude, double longitude) {
+    private boolean spoofLocation(double latitude, double longitude) {
         mocLocationProvider = LocationManager.GPS_PROVIDER;
         new Criteria().setAccuracy(Criteria.ACCURACY_FINE);
         locationManager = (LocationManager) context.getSystemService(LOCATION_SERVICE);
-        if (locationManager != null) {
-            try {
-                locationManager.addTestProvider(mocLocationProvider,
-                        false,
-                        false,
-                        false,
-                        false,
-                        true,
-                        true,
-                        true,
-                        0,
-                        500);
-                locationManager.setTestProviderEnabled(mocLocationProvider, true);
-                mockLocation.setLatitude(latitude);
-                mockLocation.setLongitude(longitude);
-                mockLocation.setAltitude(mockLocation.getAltitude());
-                mockLocation.setTime(System.currentTimeMillis());
-                mockLocation.setAccuracy(1);
-                mockLocation.setElapsedRealtimeNanos(SystemClock.elapsedRealtimeNanos());
-                locationManager.setTestProviderLocation(mocLocationProvider, mockLocation);
-                mockEnabled = true;
-                PrefUtil.putInteger(context, Constants.PREFERENCE_REQUESTED_LOCATION_INDEX, position);
-            } catch (SecurityException e) {
-                Log.e(e.getMessage());
-                ContextUtil.runOnUiThread(() -> setMockDialog(true));
-            } catch (Exception e) {
-                Log.e(e.getMessage());
-            }
-        } else
-            Log.i("No location provider found!");
+        try {
+            locationManager.addTestProvider(mocLocationProvider,
+                    false,
+                    false,
+                    false,
+                    false,
+                    true,
+                    true,
+                    true,
+                    0,
+                    500);
+            locationManager.setTestProviderEnabled(mocLocationProvider, true);
+            mockLocation.setLatitude(latitude);
+            mockLocation.setLongitude(longitude);
+            mockLocation.setAltitude(mockLocation.getAltitude());
+            mockLocation.setTime(System.currentTimeMillis());
+            mockLocation.setAccuracy(1);
+            mockLocation.setElapsedRealtimeNanos(SystemClock.elapsedRealtimeNanos());
+            locationManager.setTestProviderLocation(mocLocationProvider, mockLocation);
+            PrefUtil.putInteger(context, Constants.PREFERENCE_REQUESTED_LOCATION_INDEX, position);
+            return true;
+        } catch (SecurityException e) {
+            ContextUtil.runOnUiThread(() -> setMockDialog(true));
+            return false;
+        } catch (Exception e) {
+            Log.e(e.getMessage());
+            return false;
+        }
     }
 
     private void setMockDialog(boolean enable) {
         MaterialAlertDialogBuilder mBuilder = new MaterialAlertDialogBuilder(context)
                 .setTitle(R.string.pref_category_spoof_location)
+                .setCancelable(false)
                 .setMessage(enable
                         ? R.string.pref_requested_location_enable
                         : R.string.pref_requested_location_disable)
