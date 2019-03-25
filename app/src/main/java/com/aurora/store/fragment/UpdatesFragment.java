@@ -259,9 +259,10 @@ public class UpdatesFragment extends BaseFragment implements BaseFragment.EventL
                             String updateTxt = new StringBuilder()
                                     .append(updatableAppList.size())
                                     .append(StringUtils.SPACE)
-                                    .append(context.getString(R.string.list_update_all_txt)).toString();
-                            new QuickNotification(context).show(
-                                    context.getString(R.string.app_name),
+                                    .append(context.getString(R.string.list_update_all_queue_txt)).toString();
+                            QuickNotification.show(
+                                    context,
+                                    context.getString(R.string.action_updates),
                                     updateTxt,
                                     null);
                             btnUpdateAll.setOnClickListener(cancelAllListener());

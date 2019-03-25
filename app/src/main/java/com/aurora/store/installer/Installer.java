@@ -47,7 +47,6 @@ import com.aurora.store.utility.Util;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 public class Installer {
 
@@ -108,26 +107,26 @@ public class Installer {
             switch (installationStatus) {
                 case INSTALLATION_FAILED:
                     clearNotification(packageName);
-                    new QuickNotification(context).show(context.getString(R.string.app_name),
-                            String.format(Locale.getDefault(),
-                                    context.getString(R.string.notification_installation_failed),
-                                    PackageUtil.getDisplayName(context, packageName)),
+                    QuickNotification.show(
+                            context,
+                            PackageUtil.getDisplayName(context, packageName),
+                            context.getString(R.string.notification_installation_failed),
                             getContentIntent(packageName));
                     unregisterReceiver(installer);
                     break;
                 case INSTALLING:
                     clearNotification(packageName);
-                    new QuickNotification(context).show(context.getString(R.string.app_name),
-                            String.format(Locale.getDefault(),
-                                    context.getString(R.string.notification_installation_progress),
-                                    PackageUtil.getDisplayName(context, packageName)),
+                    QuickNotification.show(
+                            context,
+                            PackageUtil.getDisplayName(context, packageName),
+                            context.getString(R.string.notification_installation_progress),
                             getContentIntent(packageName));
                     break;
                 case INSTALLATION_SUCCEED:
-                    new QuickNotification(context).show(context.getString(R.string.app_name),
-                            String.format(Locale.getDefault(),
-                                    context.getString(R.string.notification_installation_complete),
-                                    PackageUtil.getDisplayName(context, packageName)),
+                    QuickNotification.show(
+                            context,
+                            PackageUtil.getDisplayName(context, packageName),
+                            context.getString(R.string.notification_installation_complete),
                             getContentIntent(packageName));
                     if (Util.shouldDeleteApk(context))
                         clearInstallationFiles(apkFiles);

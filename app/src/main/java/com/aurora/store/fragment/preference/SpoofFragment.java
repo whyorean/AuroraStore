@@ -259,7 +259,8 @@ public class SpoofFragment extends Fragment {
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe((success) -> {
-                            new QuickNotification(context).show(
+                            QuickNotification.show(
+                                    context,
                                     "Aurora Location Spoof",
                                     "Current Location : " + mLocation,
                                     null);

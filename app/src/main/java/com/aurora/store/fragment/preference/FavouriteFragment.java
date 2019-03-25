@@ -183,7 +183,8 @@ public class FavouriteFragment extends BaseFragment implements SelectableViewHol
                                         .append(selectedApps.size())
                                         .append(StringUtils.SPACE)
                                         .append(context.getString(R.string.list_bulk_install)).toString();
-                                new QuickNotification(context).show(
+                                QuickNotification.show(
+                                        context,
                                         context.getString(R.string.app_name),
                                         bulkInstallText,
                                         null);
