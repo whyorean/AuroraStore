@@ -35,8 +35,8 @@ import com.aurora.store.GlideApp;
 import com.aurora.store.R;
 import com.aurora.store.activity.DownloadsActivity;
 import com.aurora.store.download.DownloadManager;
-import com.aurora.store.model.App;
 import com.aurora.store.sheet.DownloadMenuSheet;
+import com.aurora.store.utility.PackageUtil;
 import com.aurora.store.utility.Util;
 import com.aurora.store.utility.ViewUtil;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -58,15 +58,13 @@ import butterknife.ButterKnife;
 
 public class DownloadsAdapter extends RecyclerView.Adapter<DownloadsAdapter.ViewHolder> {
 
-    public List<Download> downloadList;
-    public List<App> appsList;
+    private List<Download> downloadList;
     private Context context;
     private DownloadManager mDownloadManager;
 
-    public DownloadsAdapter(Context context, List<Download> downloadList, List<App> appsList) {
+    public DownloadsAdapter(Context context, List<Download> downloadList) {
         this.downloadList = downloadList;
         this.context = context;
-        this.appsList = appsList;
         mDownloadManager = new DownloadManager(context);
     }
 
@@ -95,18 +93,19 @@ public class DownloadsAdapter extends RecyclerView.Adapter<DownloadsAdapter.View
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position) {
         final Download download = downloadList.get(position);
-        final App app = appsList.get(position);
-        final Fetch mFetch = mDownloadManager.getFetchInstance();
-        mFetch.addListener(getFetchListener(download.getId(), viewHolder));
+        final Fetch fetch = mDownloadManager.getFetchInstance();
+        final String displayName = PackageUtil.getDisplayName(context, download.getTag());
+        final String iconURL = PackageUtil.getIconURL(context, download.getTag());
 
+        fetch.addListener(getFetchListener(download.getId(), viewHolder));
         GlideApp
                 .with(context)
-                .load(app.getIconInfo().getUrl())
+                .load(iconURL)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .transition(new DrawableTransitionOptions().crossFade())
                 .into(viewHolder.imgDownload);
 
-        viewHolder.txtTitle.setText(app.getDisplayName());
+        viewHolder.txtTitle.setText(displayName);
         viewHolder.txtStatus.setText(Util.getStatus(download.getStatus()));
         viewHolder.txtSize.setText(new StringBuilder()
                 .append(Util.humanReadableByteValue(download.getDownloaded(), true))
@@ -125,7 +124,7 @@ public class DownloadsAdapter extends RecyclerView.Adapter<DownloadsAdapter.View
 
         viewHolder.itemView.setOnClickListener(v -> {
             final DownloadMenuSheet menuSheet = new DownloadMenuSheet();
-            menuSheet.setTitle(app.getDisplayName());
+            menuSheet.setTitle(displayName);
             menuSheet.setDownload(download);
             menuSheet.show(((DownloadsActivity) context).getSupportFragmentManager(), "DOWNLOAD_SHEET");
         });
@@ -136,7 +135,7 @@ public class DownloadsAdapter extends RecyclerView.Adapter<DownloadsAdapter.View
         return downloadList.size();
     }
 
-    private FetchListener getFetchListener(int oldId, ViewHolder viewHolder) {
+    private FetchListener getFetchListener(int currentId, ViewHolder viewHolder) {
         return new FetchListener() {
 
             @Override
@@ -146,31 +145,31 @@ public class DownloadsAdapter extends RecyclerView.Adapter<DownloadsAdapter.View
 
             @Override
             public void onStarted(@NotNull Download download, @NotNull List<? extends DownloadBlock> list, int i) {
-                if (oldId == download.getId())
+                if (currentId == download.getId())
                     viewHolder.txtStatus.setText(Util.getStatus(download.getStatus()));
             }
 
             @Override
             public void onResumed(@NotNull Download download) {
-                if (oldId == download.getId())
+                if (currentId == download.getId())
                     viewHolder.txtStatus.setText(Util.getStatus(download.getStatus()));
             }
 
             @Override
             public void onRemoved(@NotNull Download download) {
-                if (oldId == download.getId())
+                if (currentId == download.getId())
                     viewHolder.txtStatus.setText(Util.getStatus(download.getStatus()));
             }
 
             @Override
             public void onQueued(@NotNull Download download, boolean waitingOnNetwork) {
-                if (oldId == download.getId())
+                if (currentId == download.getId())
                     viewHolder.txtStatus.setText(Util.getStatus(download.getStatus()));
             }
 
             @Override
             public void onProgress(@NotNull Download download, long etaInMilliSeconds, long downloadedBytesPerSecond) {
-                if (oldId == download.getId()) {
+                if (currentId == download.getId()) {
                     viewHolder.progressBar.setProgress(download.getProgress());
                     viewHolder.txtSpeed.setText(Util.humanReadableByteSpeed(downloadedBytesPerSecond, true));
                     viewHolder.txtProgress.setText(new StringBuilder().append(download.getProgress()).append("%"));
@@ -185,13 +184,13 @@ public class DownloadsAdapter extends RecyclerView.Adapter<DownloadsAdapter.View
 
             @Override
             public void onPaused(@NotNull Download download) {
-                if (oldId == download.getId())
+                if (currentId == download.getId())
                     viewHolder.txtStatus.setText(Util.getStatus(download.getStatus()));
             }
 
             @Override
             public void onError(@NotNull Download download, @NotNull Error error, @Nullable Throwable throwable) {
-                if (oldId == download.getId())
+                if (currentId == download.getId())
                     viewHolder.txtStatus.setText(Util.getStatus(download.getStatus()));
             }
 
@@ -202,13 +201,13 @@ public class DownloadsAdapter extends RecyclerView.Adapter<DownloadsAdapter.View
 
             @Override
             public void onDeleted(@NotNull Download download) {
-                if (oldId == download.getId())
+                if (currentId == download.getId())
                     viewHolder.txtStatus.setText(Util.getStatus(download.getStatus()));
             }
 
             @Override
             public void onCompleted(@NotNull Download download) {
-                if (oldId == download.getId()) {
+                if (currentId == download.getId()) {
                     viewHolder.txtStatus.setText(Util.getStatus(download.getStatus()));
                     ViewUtil.hideWithAnimation(viewHolder.txtSpeed);
                     ViewUtil.hideWithAnimation(viewHolder.txtETA);
@@ -217,7 +216,7 @@ public class DownloadsAdapter extends RecyclerView.Adapter<DownloadsAdapter.View
 
             @Override
             public void onCancelled(@NotNull Download download) {
-                if (oldId == download.getId())
+                if (currentId == download.getId())
                     viewHolder.txtStatus.setText(Util.getStatus(download.getStatus()));
             }
 
@@ -251,5 +250,4 @@ public class DownloadsAdapter extends RecyclerView.Adapter<DownloadsAdapter.View
             ButterKnife.bind(this, itemView);
         }
     }
-
 }

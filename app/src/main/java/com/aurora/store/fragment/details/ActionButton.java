@@ -48,6 +48,7 @@ import com.aurora.store.task.DeliveryData;
 import com.aurora.store.utility.Log;
 import com.aurora.store.utility.PackageUtil;
 import com.aurora.store.utility.PathUtil;
+import com.aurora.store.utility.SplitUtil;
 import com.aurora.store.utility.Util;
 import com.aurora.store.utility.ViewUtil;
 import com.dragons.aurora.playstoreapiv2.AndroidAppDeliveryData;
@@ -294,6 +295,7 @@ public class ActionButton extends AbstractHelper {
 
         if (!splitList.isEmpty()) {
             isSplit = true;
+            SplitUtil.addToList(context, app.getPackageName());
             requestList = RequestBuilder.buildSplitRequestList(context, app, splitList);
         }
 
@@ -317,8 +319,9 @@ public class ActionButton extends AbstractHelper {
                     Log.i("Downloading ObbFiles : %s", app.getPackageName()));
         }
 
-        //Add <PackageName,DisplayName> to PseudoPackageMap
+        //Add <PackageName,DisplayName> and <PackageName,IconURL> to PseudoMaps
         PackageUtil.addToPseudoPackageMap(context, app.getPackageName(), app.getDisplayName());
+        PackageUtil.addToPseudoURLMap(context, app.getPackageName(), app.getIconInfo().getUrl());
     }
 
     private FetchListener getFetchListener() {

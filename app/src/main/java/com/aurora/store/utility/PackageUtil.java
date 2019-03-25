@@ -32,21 +32,37 @@ import java.util.Map;
 
 public class PackageUtil {
 
-    public static final String PSEUDO_PACKAGE_MAP = "PSEUDO_PACKAGE_MAP";
+    private static final String PSEUDO_PACKAGE_MAP = "PSEUDO_PACKAGE_MAP";
+    private static final String PSEUDO_URL_MAP = "PSEUDO_URL_MAP";
 
     public static String getDisplayName(Context context, String packageName) {
         Map<String, String> pseudoMap = getPseudoPackageMap(context);
         return TextUtil.emptyIfNull(pseudoMap.get(packageName));
     }
 
-    public static Map<String, String> getPseudoPackageMap(Context context) {
+    public static String getIconURL(Context context, String packageName) {
+        Map<String, String> pseudoMap = getPseudoURLMap(context);
+        return TextUtil.emptyIfNull(pseudoMap.get(packageName));
+    }
+
+    private static Map<String, String> getPseudoPackageMap(Context context) {
         return PrefUtil.getMap(context, PSEUDO_PACKAGE_MAP);
+    }
+
+    private static Map<String, String> getPseudoURLMap(Context context) {
+        return PrefUtil.getMap(context, PSEUDO_URL_MAP);
     }
 
     public static void addToPseudoPackageMap(Context context, String packageName, String displayName) {
         Map<String, String> pseudoMap = getPseudoPackageMap(context);
         pseudoMap.put(packageName, displayName);
         PrefUtil.saveMap(context, pseudoMap, PSEUDO_PACKAGE_MAP);
+    }
+
+    public static void addToPseudoURLMap(Context context, String packageName, String iconURL) {
+        Map<String, String> pseudoMap = getPseudoURLMap(context);
+        pseudoMap.put(packageName, iconURL);
+        PrefUtil.saveMap(context, pseudoMap, PSEUDO_URL_MAP);
     }
 
     public static App getInstalledApp(PackageManager packageManager, String packageName) {

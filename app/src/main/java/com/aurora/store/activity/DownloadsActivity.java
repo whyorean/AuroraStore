@@ -35,24 +35,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.aurora.store.R;
 import com.aurora.store.adapter.DownloadsAdapter;
 import com.aurora.store.download.DownloadManager;
-import com.aurora.store.model.App;
-import com.aurora.store.task.BulkDetails;
-import com.aurora.store.utility.Log;
 import com.aurora.store.utility.ThemeUtil;
 import com.aurora.store.utility.ViewUtil;
 import com.tonyodev.fetch2.Download;
 import com.tonyodev.fetch2.Fetch;
 import com.tonyodev.fetch2.Status;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import io.reactivex.Observable;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.CompositeDisposable;
-import io.reactivex.schedulers.Schedulers;
 
 public class DownloadsActivity extends AppCompatActivity {
 
@@ -124,7 +116,7 @@ public class DownloadsActivity extends AppCompatActivity {
             } else {
                 ViewUtil.showWithAnimation(mRecyclerView);
                 ViewUtil.hideWithAnimation(placeholder);
-                getAppsList(downloadList);
+                setupRecycler(downloadList);
             }
         });
     }
@@ -183,32 +175,11 @@ public class DownloadsActivity extends AppCompatActivity {
         }
     }
 
-    private void getAppsList(List<Download> downloadList) {
-        List<String> packageList = getPackageNames(downloadList);
-        CompositeDisposable mDisposable = new CompositeDisposable();
-        mDisposable.add(Observable.fromCallable(() -> new BulkDetails(this).getRemoteAppList(packageList))
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe((appList) -> {
-                    setupRecycler(downloadList, appList);
-                }, err -> {
-                    Log.e(err.getMessage());
-                }));
-    }
-
-    private List<String> getPackageNames(List<Download> downloadList) {
-        List<String> appList = new ArrayList<>();
-        for (Download download : downloadList)
-            appList.add(download.getTag());
-        return appList;
-    }
-
-    private void setupRecycler(List<Download> downloadList, List<App> appList) {
-        DownloadsAdapter mAdapter = new DownloadsAdapter(this, downloadList, appList);
+    private void setupRecycler(List<Download> downloadList) {
+        DownloadsAdapter mAdapter = new DownloadsAdapter(this, downloadList);
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
         DividerItemDecoration itemDecorator = new DividerItemDecoration(mRecyclerView.getContext(), DividerItemDecoration.VERTICAL);
         mRecyclerView.addItemDecoration(itemDecorator);
     }
-
 }
