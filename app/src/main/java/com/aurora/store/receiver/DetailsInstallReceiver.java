@@ -49,7 +49,7 @@ public class DetailsInstallReceiver extends BroadcastReceiver {
             return;
         }
         if (context instanceof DetailsActivity)
-            ((DetailsActivity) context).redrawDetails(packageName);
+            ((DetailsActivity) context).redrawButtons();
     }
 
     public IntentFilter getFilter() {

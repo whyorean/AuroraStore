@@ -53,6 +53,7 @@ import com.aurora.store.model.App;
 import com.aurora.store.receiver.DetailsInstallReceiver;
 import com.aurora.store.task.DetailsApp;
 import com.aurora.store.utility.Log;
+import com.aurora.store.utility.PackageUtil;
 import com.aurora.store.view.ErrorView;
 
 import butterknife.BindView;
@@ -143,9 +144,7 @@ public class DetailsFragment extends BaseFragment implements BaseFragment.EventL
 
     private void draw(App mApp) {
         app = mApp;
-        mActionButton = new ActionButton(this, app);
-        mActionButton.draw();
-
+        drawButtons();
         new GeneralDetails(this, app).draw();
         new Screenshot(this, app).draw();
         new ExodusPrivacy(this, app).draw();
@@ -157,6 +156,13 @@ public class DetailsFragment extends BaseFragment implements BaseFragment.EventL
         new Reviews(this, app).draw();
         new Beta(this, app).draw();
         new ClusterDetails(this, app).draw();
+    }
+
+    public void drawButtons() {
+        if (PackageUtil.isInstalled(context, app))
+            app.setInstalled(true);
+        mActionButton = new ActionButton(this, app);
+        mActionButton.draw();
     }
 
     private void setErrorView(ErrorType errorType) {

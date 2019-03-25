@@ -65,7 +65,6 @@ import org.jetbrains.annotations.Nullable;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -194,9 +193,7 @@ public class ActionButton extends AbstractHelper {
     }
 
     private View.OnClickListener uninstallAppListener() {
-        return v -> {
-            new Installer(context).uninstall(app);
-        };
+        return v -> new Installer(context).uninstall(app);
     }
 
     private View.OnClickListener installAppListener() {
@@ -210,6 +207,7 @@ public class ActionButton extends AbstractHelper {
 
     private View.OnClickListener downloadAppListener() {
         btnPositive.setText(R.string.details_download);
+        btnPositive.setEnabled(true);
         return v -> {
             switchViews(true);
             //Remove any previous requests
@@ -222,15 +220,11 @@ public class ActionButton extends AbstractHelper {
                     .getDeliveryData(app))
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(deliveryData -> {
-                        initiateDownload(deliveryData);
-                    }, err -> {
-                        runOnUiThread(() -> {
-                            Toast.makeText(context, "App Not purchased", Toast.LENGTH_LONG).show();
-                            draw();
-                            switchViews(false);
-                        });
-                    }));
+                    .subscribe(this::initiateDownload, err -> runOnUiThread(() -> {
+                        Toast.makeText(context, "App Not purchased", Toast.LENGTH_LONG).show();
+                        draw();
+                        switchViews(false);
+                    })));
         };
     }
 
@@ -289,9 +283,10 @@ public class ActionButton extends AbstractHelper {
     }
 
     private void initiateDownload(AndroidAppDeliveryData deliveryData) {
-        List<Split> splitList = deliveryData.getSplitList();
+        final List<Split> splitList = deliveryData.getSplitList();
+        final List<Request> requestListObb = RequestBuilder.buildObbRequestList(context, app, deliveryData);
+
         List<Request> requestList = new ArrayList<>();
-        List<Request> requestListObb = RequestBuilder.buildObbRequestList(context, app, deliveryData);
 
         if (!requestListObb.isEmpty()) {
             hasObb = true;
@@ -309,24 +304,17 @@ public class ActionButton extends AbstractHelper {
         if (isPaused)
             fetch.resume(requestId);
         else
-            fetch.enqueue(request, updatedRequest -> {
-                Log.i("Downloading : %s", app.getPackageName());
-            }, error -> {
-                Log.e(Objects.requireNonNull(error.getThrowable()).getMessage() != null
-                        ? error.getThrowable().getMessage()
-                        : "Unknown error occurred while fetching APK");
-            });
+            fetch.enqueue(request, updatedRequest -> Log.i("Downloading : %s",
+                    app.getPackageName()), error -> Log.e("Unknown error occurred"));
 
         if (isSplit) {
-            fetch.enqueue(requestList, updatedRequestList -> {
-                Log.i("Downloading Splits : %s", app.getPackageName());
-            });
+            fetch.enqueue(requestList, updatedRequestList ->
+                    Log.i("Downloading Splits : %s", app.getPackageName()));
         }
 
         if (hasObb) {
-            fetch.enqueue(requestListObb, updatedRequestList -> {
-                Log.i("Downloading ObbFiles : %s", app.getPackageName());
-            });
+            fetch.enqueue(requestListObb, updatedRequestList ->
+                    Log.i("Downloading ObbFiles : %s", app.getPackageName()));
         }
 
         //Add <PackageName,DisplayName> to PseudoPackageMap

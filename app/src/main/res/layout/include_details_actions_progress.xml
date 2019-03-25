@@ -61,7 +61,9 @@
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
         android:background="?android:attr/selectableItemBackground"
+        android:clickable="true"
         android:elevation="1dp"
+        android:focusable="true"
         android:src="@drawable/ic_cancel"
         android:tint="@color/colorAccent"
         android:visibility="visible" />

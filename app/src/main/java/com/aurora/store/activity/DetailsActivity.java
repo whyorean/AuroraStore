@@ -53,6 +53,7 @@ public class DetailsActivity extends AppCompatActivity {
     Toolbar mToolbar;
 
     private String packageName;
+    private DetailsFragment detailsFragment;
     private ThemeUtil mThemeUtil = new ThemeUtil();
     private FavouriteListManager favouriteListManager;
 
@@ -106,8 +107,7 @@ public class DetailsActivity extends AppCompatActivity {
                 if (favouriteListManager.contains(packageName)) {
                     favouriteListManager.remove(packageName);
                     menuItem.setIcon(R.drawable.ic_favourite_remove);
-                }
-                else{
+                } else {
                     favouriteListManager.add(packageName);
                     menuItem.setIcon(R.drawable.ic_favourite_red);
                 }
@@ -166,7 +166,7 @@ public class DetailsActivity extends AppCompatActivity {
     }
 
     public void grabDetails(String packageName) {
-        DetailsFragment detailsFragment = new DetailsFragment();
+        detailsFragment = new DetailsFragment();
         Bundle arguments = new Bundle();
         arguments.putString("PackageName", packageName);
         detailsFragment.setArguments(arguments);
@@ -177,8 +177,9 @@ public class DetailsActivity extends AppCompatActivity {
                 .commitAllowingStateLoss();
     }
 
-    public void redrawDetails(String packageName) {
-        grabDetails(packageName);
+    public void redrawButtons() {
+        if (detailsFragment != null)
+            detailsFragment.drawButtons();
     }
 
 }
