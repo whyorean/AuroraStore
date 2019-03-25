@@ -26,6 +26,9 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.text.TextUtils;
 
+import com.aurora.store.R;
+import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -34,6 +37,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+
 
 public class App implements Comparable<App> {
 
@@ -51,7 +55,6 @@ public class App implements Comparable<App> {
     private ImageSource pageBackgroundImage;
     private String iconUrl;
     private String videoUrl;
-    private String ratingURL;
     private String changes;
     private String developerName;
     private String description;
@@ -59,6 +62,7 @@ public class App implements Comparable<App> {
     private Set<String> permissions = new HashSet<>();
     private boolean isInstalled;
     private boolean isFree;
+    private boolean isAd;
     private List<String> screenshotUrls = new ArrayList<>();
     private Review userReview;
     private String categoryId;
@@ -73,9 +77,9 @@ public class App implements Comparable<App> {
     private boolean testingProgramAvailable;
     private boolean testingProgramOptedIn;
     private String testingProgramEmail;
-    private int restriction;
-
+    private Restriction restriction;
     private String labeledRating;
+    private String instantAppLink;
 
     public App() {
         this.packageInfo = new PackageInfo();
@@ -85,8 +89,6 @@ public class App implements Comparable<App> {
         this.setPackageInfo(packageInfo);
         this.setVersionName(packageInfo.versionName);
         this.setVersionCode(packageInfo.versionCode);
-        this.setInstalled(true);
-        this.setSystem(null != packageInfo.applicationInfo && (packageInfo.applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0);
         if (null != packageInfo.requestedPermissions) {
             this.setPermissions(Arrays.asList(packageInfo.requestedPermissions));
         }
@@ -100,20 +102,14 @@ public class App implements Comparable<App> {
         this.labeledRating = labeledRating;
     }
 
-    public String getRatingURL() {
-        return ratingURL;
-    }
-
-    public void setRatingURL(String ratingURL) {
-        this.ratingURL = ratingURL;
-    }
-
     public PackageInfo getPackageInfo() {
         return packageInfo;
     }
 
     public void setPackageInfo(PackageInfo packageInfo) {
         this.packageInfo = packageInfo;
+        this.setInstalled(true);
+        this.setSystem(null != packageInfo.applicationInfo && (packageInfo.applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0);
     }
 
     public String getPackageName() {
@@ -243,20 +239,20 @@ public class App implements Comparable<App> {
         this.description = description;
     }
 
-    public String getShortDescription() {
-        return shortDescription;
-    }
-
-    public void setShortDescription(String shortDescription) {
-        this.shortDescription = shortDescription;
-    }
-
     public Set<String> getPermissions() {
         return permissions;
     }
 
     public void setPermissions(Collection<String> permissions) {
         this.permissions = new HashSet<>(permissions);
+    }
+
+    public String getShortDescription() {
+        return shortDescription;
+    }
+
+    public void setShortDescription(String shortDescription) {
+        this.shortDescription = shortDescription;
     }
 
     public boolean isInstalled() {
@@ -274,12 +270,27 @@ public class App implements Comparable<App> {
         return 0;
     }
 
+    public String getInstalledVersionName() {
+        if (null != packageInfo) {
+            return packageInfo.versionName;
+        }
+        return null;
+    }
+
     public boolean isFree() {
         return isFree;
     }
 
     public void setFree(boolean free) {
         isFree = free;
+    }
+
+    public boolean isAd() {
+        return isAd;
+    }
+
+    public void setAd(boolean ad) {
+        isAd = ad;
     }
 
     public List<String> getScreenshotUrls() {
@@ -378,16 +389,64 @@ public class App implements Comparable<App> {
         this.testingProgramEmail = testingProgramEmail;
     }
 
-    public int getRestriction() {
+    public Restriction getRestriction() {
         return restriction;
     }
 
-    public void setRestriction(int restriction) {
+    public void setRestriction(Restriction restriction) {
         this.restriction = restriction;
+    }
+
+    public String getInstantAppLink() {
+        return instantAppLink;
+    }
+
+    public void setInstantAppLink(String instantAppLink) {
+        this.instantAppLink = instantAppLink;
     }
 
     @Override
     public int compareTo(App o) {
         return getDisplayName().compareToIgnoreCase(o.getDisplayName());
+    }
+
+    public enum Restriction {
+
+        GENERIC(-1),
+        NOT_RESTRICTED(GooglePlayAPI.AVAILABILITY_NOT_RESTRICTED),
+        RESTRICTED_GEO(GooglePlayAPI.AVAILABILITY_RESTRICTED_GEO),
+        INCOMPATIBLE_DEVICE(GooglePlayAPI.AVAILABILITY_INCOMPATIBLE_DEVICE_APP);
+
+        public final int restriction;
+
+        Restriction(int restriction) {
+            this.restriction = restriction;
+        }
+
+        public static Restriction forInt(int restriction) {
+            switch (restriction) {
+                case GooglePlayAPI.AVAILABILITY_NOT_RESTRICTED:
+                    return NOT_RESTRICTED;
+                case GooglePlayAPI.AVAILABILITY_RESTRICTED_GEO:
+                    return RESTRICTED_GEO;
+                case GooglePlayAPI.AVAILABILITY_INCOMPATIBLE_DEVICE_APP:
+                    return INCOMPATIBLE_DEVICE;
+                default:
+                    return GENERIC;
+            }
+        }
+
+        public int getStringResId() {
+            switch (restriction) {
+                case GooglePlayAPI.AVAILABILITY_NOT_RESTRICTED:
+                    return 0;
+                case GooglePlayAPI.AVAILABILITY_RESTRICTED_GEO:
+                    return R.string.availability_restriction_country;
+                case GooglePlayAPI.AVAILABILITY_INCOMPATIBLE_DEVICE_APP:
+                    return R.string.availability_restriction_hardware_app;
+                default:
+                    return R.string.availability_restriction_generic;
+            }
+        }
     }
 }

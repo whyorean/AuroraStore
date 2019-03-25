@@ -23,9 +23,9 @@ package com.aurora.store.task;
 import android.content.Context;
 
 import com.aurora.store.Constants;
-import com.aurora.store.R;
 import com.aurora.store.exception.NotPurchasedException;
 import com.aurora.store.model.App;
+import com.aurora.store.utility.Accountant;
 import com.aurora.store.utility.Log;
 import com.aurora.store.utility.PrefUtil;
 import com.dragons.aurora.playstoreapiv2.AndroidAppDeliveryData;
@@ -74,27 +74,13 @@ public class DeliveryData extends BaseTask {
                 shouldDownloadDelta(app) ? app.getInstalledVersionCode() : 0,
                 app.getVersionCode(),
                 app.getOfferType(),
-                GooglePlayAPI.PATCH_FORMAT.GZIPPED_GDIFF,
                 downloadToken
         );
         if (deliveryResponse.hasAppDeliveryData()
                 && deliveryResponse.getAppDeliveryData().hasDownloadUrl()) {
             deliveryData = deliveryResponse.getAppDeliveryData();
-        } else {
+        } else if (!app.isFree() && Accountant.isDummy(context)) {
             throw new NotPurchasedException();
-        }
-    }
-
-    protected String getRestrictionString(App app) {
-        switch (app.getRestriction()) {
-            case GooglePlayAPI.AVAILABILITY_NOT_RESTRICTED:
-                return null;
-            case GooglePlayAPI.AVAILABILITY_RESTRICTED_GEO:
-                return context.getString(R.string.availability_restriction_country);
-            case GooglePlayAPI.AVAILABILITY_INCOMPATIBLE_DEVICE_APP:
-                return context.getString(R.string.availability_restriction_hardware_app);
-            default:
-                return context.getString(R.string.availability_restriction_generic);
         }
     }
 

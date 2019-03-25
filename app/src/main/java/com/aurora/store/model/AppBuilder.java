@@ -60,7 +60,7 @@ public class AppBuilder {
         app.setDescription(details.getDescriptionHtml());
         app.setShortDescription(details.getDescriptionShort());
         app.setCategoryId(details.getRelatedLinks().getCategoryInfo().getAppCategory());
-        app.setRestriction(details.getAvailability().getRestriction());
+        app.setRestriction(App.Restriction.forInt(details.getAvailability().getRestriction()));
         if (details.getOfferCount() > 0) {
             app.setOfferType(details.getOffer(0).getOfferType());
             app.setFree(details.getOffer(0).getMicros() == 0);
@@ -83,14 +83,17 @@ public class AppBuilder {
         app.setInPlayStore(true);
         app.setEarlyAccess(appDetails.hasEarlyAccessInfo());
         app.setTestingProgramAvailable(appDetails.hasTestingProgramInfo());
+        app.setLabeledRating(details.getRelatedLinks().getRated().getLabel());
+        app.setAd(details.getDetailsUrl().contains("nocache_isad=1"));
+        if (appDetails.getHasInstantLink() && !TextUtils.isEmpty(appDetails.getInstantLink())) {
+            app.setInstantAppLink(appDetails.getInstantLink());
+        }
         if (app.isTestingProgramAvailable()) {
             app.setTestingProgramOptedIn(appDetails.getTestingProgramInfo().hasSubscribed() && appDetails.getTestingProgramInfo().getSubscribed());
             app.setTestingProgramEmail(appDetails.getTestingProgramInfo().getTestingProgramEmail());
         }
         fillImages(app, details.getImageList());
         fillDependencies(app, appDetails);
-        app.setLabeledRating(details.getRelatedLinks().getRated().getLabel());
-        app.setRatingURL(details.getRelatedLinks().getRated().getImage().getImageUrl());
         return app;
     }
 
@@ -194,3 +197,4 @@ public class AppBuilder {
         return null;
     }
 }
+
