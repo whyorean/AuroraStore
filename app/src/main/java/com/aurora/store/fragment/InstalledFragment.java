@@ -81,7 +81,7 @@ public class InstalledFragment extends BaseFragment implements BaseFragment.Even
     private Context context;
     private BottomNavigationView mBottomNavigationView;
     private View view;
-    private List<App> mInstalledApps = new ArrayList<>(new HashSet<>());
+    private List<App> mInstalledApps = new ArrayList<>();
     private InstalledAppsAdapter mAdapter;
 
     @Override

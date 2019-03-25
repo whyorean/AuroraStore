@@ -91,7 +91,7 @@ public class UpdatesFragment extends BaseFragment implements BaseFragment.EventL
     private Context context;
     private BottomNavigationView bottomNavigationView;
     private View view;
-    private List<App> updatableAppList = new ArrayList<>(new HashSet<>());
+    private List<App> updatableAppList = new ArrayList<>();
     private List<Request> requestList;
     private UpdatableAppsAdapter updatableAppsAdapter;
     private Fetch fetch;
