@@ -53,6 +53,7 @@ import com.aurora.store.utility.Util;
 import com.aurora.store.utility.ViewUtil;
 import com.dragons.aurora.playstoreapiv2.AndroidAppDeliveryData;
 import com.dragons.aurora.playstoreapiv2.Split;
+import com.tonyodev.fetch2.AbstractFetchListener;
 import com.tonyodev.fetch2.Download;
 import com.tonyodev.fetch2.Error;
 import com.tonyodev.fetch2.Fetch;
@@ -325,11 +326,7 @@ public class ActionButton extends AbstractHelper {
     }
 
     private FetchListener getFetchListener() {
-        return new FetchListener() {
-            @Override
-            public void onWaitingNetwork(@NotNull Download download) {
-
-            }
+        return new AbstractFetchListener() {
 
             @Override
             public void onStarted(@NotNull Download download,
@@ -351,10 +348,6 @@ public class ActionButton extends AbstractHelper {
                             request.getId());
                     progressBar.setIndeterminate(false);
                 }
-            }
-
-            @Override
-            public void onRemoved(@NotNull Download download) {
             }
 
             @Override
@@ -403,16 +396,6 @@ public class ActionButton extends AbstractHelper {
             }
 
             @Override
-            public void onDownloadBlockUpdated(@NotNull Download download, @NotNull DownloadBlock downloadBlock, int i) {
-
-            }
-
-            @Override
-            public void onDeleted(@NotNull Download download) {
-
-            }
-
-            @Override
             public void onCompleted(@NotNull Download download) {
                 if (download.getId() == request.getId()) {
                     notification.notifyCompleted();
@@ -443,11 +426,6 @@ public class ActionButton extends AbstractHelper {
                     fetch.removeListener(fetchListener);
                     switchViews(false);
                 }
-            }
-
-            @Override
-            public void onAdded(@NotNull Download download) {
-
             }
         };
     }

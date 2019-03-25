@@ -30,12 +30,13 @@
         android:id="@+id/img_download"
         android:layout_width="@dimen/icon_size_med"
         android:layout_height="@dimen/icon_size_med"
+        android:layout_margin="@dimen/margin_xxsmall"
         android:src="@drawable/ic_placeholder" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
+        android:layout_marginStart="@dimen/margin_small"
         android:layout_toEndOf="@id/img_download"
         android:orientation="vertical">
 
@@ -88,7 +89,6 @@
                 android:id="@+id/txt_progress"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/app_version"
                 android:layout_alignParentEnd="true"
                 android:layout_marginStart="5dp"
                 android:ellipsize="end"

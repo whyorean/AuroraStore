@@ -41,12 +41,12 @@ import com.aurora.store.utility.Util;
 import com.aurora.store.utility.ViewUtil;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
+import com.tonyodev.fetch2.AbstractFetchListener;
 import com.tonyodev.fetch2.Download;
 import com.tonyodev.fetch2.Error;
 import com.tonyodev.fetch2.Fetch;
 import com.tonyodev.fetch2.FetchListener;
 import com.tonyodev.fetch2.Status;
-import com.tonyodev.fetch2core.DownloadBlock;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -118,7 +118,7 @@ public class DownloadsAdapter extends RecyclerView.Adapter<DownloadsAdapter.View
             viewHolder.txtETA.setText("");
             viewHolder.txtSpeed.setText("");
         } else if (download.getStatus() != Status.DOWNLOADING) {
-            viewHolder.txtETA.setText("Not available");
+            viewHolder.txtETA.setText("N/A");
             viewHolder.txtSpeed.setText("--/s");
         }
 
@@ -136,27 +136,10 @@ public class DownloadsAdapter extends RecyclerView.Adapter<DownloadsAdapter.View
     }
 
     private FetchListener getFetchListener(int currentId, ViewHolder viewHolder) {
-        return new FetchListener() {
-
-            @Override
-            public void onWaitingNetwork(@NotNull Download download) {
-
-            }
-
-            @Override
-            public void onStarted(@NotNull Download download, @NotNull List<? extends DownloadBlock> list, int i) {
-                if (currentId == download.getId())
-                    viewHolder.txtStatus.setText(Util.getStatus(download.getStatus()));
-            }
+        return new AbstractFetchListener() {
 
             @Override
             public void onResumed(@NotNull Download download) {
-                if (currentId == download.getId())
-                    viewHolder.txtStatus.setText(Util.getStatus(download.getStatus()));
-            }
-
-            @Override
-            public void onRemoved(@NotNull Download download) {
                 if (currentId == download.getId())
                     viewHolder.txtStatus.setText(Util.getStatus(download.getStatus()));
             }
@@ -190,19 +173,10 @@ public class DownloadsAdapter extends RecyclerView.Adapter<DownloadsAdapter.View
 
             @Override
             public void onError(@NotNull Download download, @NotNull Error error, @Nullable Throwable throwable) {
-                if (currentId == download.getId())
+                if (currentId == download.getId()) {
                     viewHolder.txtStatus.setText(Util.getStatus(download.getStatus()));
-            }
-
-            @Override
-            public void onDownloadBlockUpdated(@NotNull Download download, @NotNull DownloadBlock downloadBlock, int i) {
-
-            }
-
-            @Override
-            public void onDeleted(@NotNull Download download) {
-                if (currentId == download.getId())
-                    viewHolder.txtStatus.setText(Util.getStatus(download.getStatus()));
+                    viewHolder.clearStatus();
+                }
             }
 
             @Override
@@ -216,13 +190,10 @@ public class DownloadsAdapter extends RecyclerView.Adapter<DownloadsAdapter.View
 
             @Override
             public void onCancelled(@NotNull Download download) {
-                if (currentId == download.getId())
+                if (currentId == download.getId()) {
                     viewHolder.txtStatus.setText(Util.getStatus(download.getStatus()));
-            }
-
-            @Override
-            public void onAdded(@NotNull Download download) {
-
+                    viewHolder.clearStatus();
+                }
             }
         };
     }
@@ -248,6 +219,14 @@ public class DownloadsAdapter extends RecyclerView.Adapter<DownloadsAdapter.View
         ViewHolder(@NonNull View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
+        }
+
+        void clearStatus() {
+            txtProgress.setText("");
+            progressBar.setProgress(0);
+            txtSpeed.setText("--/s");
+            txtETA.setText("N/A");
+            txtSize.setText("--");
         }
     }
 }
