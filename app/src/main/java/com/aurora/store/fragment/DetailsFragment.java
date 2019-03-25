@@ -37,6 +37,7 @@ import androidx.core.widget.NestedScrollView;
 import com.aurora.store.ErrorType;
 import com.aurora.store.R;
 import com.aurora.store.exception.MalformedRequestException;
+import com.aurora.store.fragment.details.AbstractHelper;
 import com.aurora.store.fragment.details.ActionButton;
 import com.aurora.store.fragment.details.BackToPlayStore;
 import com.aurora.store.fragment.details.Beta;
@@ -124,6 +125,9 @@ public class DetailsFragment extends BaseFragment implements BaseFragment.EventL
         super.onDestroy();
         try {
             context.unregisterReceiver(mInstallReceiver);
+            mActionButton = null;
+            mTaskHelper = null;
+            mDisposable.clear();
         } catch (Exception ignored) {
         }
     }
@@ -145,16 +149,18 @@ public class DetailsFragment extends BaseFragment implements BaseFragment.EventL
     private void draw(App mApp) {
         app = mApp;
         drawButtons();
-        new GeneralDetails(this, app).draw();
-        new Screenshot(this, app).draw();
-        new ExodusPrivacy(this, app).draw();
-        new Permissions(this, app).draw();
-        new Video(this, app).draw();
-        new BackToPlayStore(this, app).draw();
-        new Share(this, app).draw();
-        new SystemAppPage(this, app).draw();
-        new Reviews(this, app).draw();
-        new Beta(this, app).draw();
+        mDisposable.add(Observable.just(
+                new GeneralDetails(this, app),
+                new Screenshot(this, app),
+                new Reviews(this, app),
+                new ExodusPrivacy(this, app),
+                new Permissions(this, app),
+                new Video(this, app),
+                new BackToPlayStore(this, app),
+                new Share(this, app),
+                new SystemAppPage(this, app),
+                new Beta(this, app))
+                .subscribe(AbstractHelper::draw));
         new ClusterDetails(this, app).draw();
     }
 
