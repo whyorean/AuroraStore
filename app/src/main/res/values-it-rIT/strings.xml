@@ -12,7 +12,7 @@
 <!-- Account -->
 <string name="action_accounts">"Profili"</string>
 <string name="action_ask">"Domanda"</string>
-<string name="action_blacklist">"Lista nera"</string>
+<string name="action_blacklist">"Blacklist"</string>
 <string name="action_cancel">"Annulla"</string>
 
 <!-- Cancella -->
@@ -33,12 +33,12 @@
 <!-- Applica -->
 <string name="action_filter_apply">"Applica"</string>
 <string name="action_filter_apps_with_ads">"App con annunci"</string>
-<string name="action_filter_downloads">"download"</string>
+<string name="action_filter_downloads">"Download"</string>
 <string name="action_filter_gsf_dependent_apps">"Dipendente da GSF"</string>
 <string name="action_filter_misc">"Varie"</string>
 
 <!-- A pagamento -->
-<string name="action_filter_paid_apps">"Pagato"</string>
+<string name="action_filter_paid_apps">"A pagamento"</string>
 
 <!-- Voto -->
 <string name="action_filter_rating">"Valutazioni"</string>
@@ -51,7 +51,7 @@
 <string name="action_installed">"Installato"</string>
 
 <!-- Più tardi -->
-<string name="action_later">"Dopo"</string>
+<string name="action_later">"Più tardi"</string>
 
 <!-- Effettuando il login -->
 <string name="action_logging_in">"Effettuando il login"</string>
@@ -72,7 +72,7 @@
 <string name="action_remove">"Rimuovi"</string>
 
 <!-- Riavvia -->
-<string name="action_restart">"Ricomincia"</string>
+<string name="action_restart">"Riavvia"</string>
 
 <!-- Riprendi -->
 <string name="action_resume">"Riprendi"</string>
@@ -106,21 +106,21 @@
 <string name="category_appFree">"Gratis"</string>
 
 <!-- Top gratuite -->
-<string name="category_topFree">"Top gratuito"</string>
-<string name="category_topGrossing">"Record di incassi"</string>
+<string name="category_topFree">"Più popolari"</string>
+<string name="category_topGrossing">"Più redditizie"</string>
 
 <!-- Di tendenza -->
-<string name="category_trending">"Trending"</string>
+<string name="category_trending">"Di tendenza"</string>
 <string name="chip_all_apps">"Tutte le categorie"</string>
 <string name="chip_all_family">"Tutta la famiglia"</string>
 <string name="chip_all_games">"Tutti i giochi"</string>
 
 <!-- Top gratuite -->
-<string name="chip_top_free">"Top gratuito"</string>
-<string name="chip_top_grossing">"Record di incassi"</string>
+<string name="chip_top_free">"Top gratuite"</string>
+<string name="chip_top_grossing">"Più redditizie"</string>
 
 <!-- Di tendenza -->
-<string name="chip_top_trending">"Trending"</string>
+<string name="chip_top_trending">"Di tendenza"</string>
 <string name="delete">"Elimina"</string>
 
 <!-- Aurora Store ha bisogno dei seguenti permessi -->
@@ -137,7 +137,7 @@
 <string name="details_install">"Installa"</string>
 <string name="details_installing">"Installazione"</string>
 <string name="details_more">"Leggi di più"</string>
-<string name="details_no_ads">"Nessun annuncio"</string>
+<string name="details_no_ads">"Senza annunci"</string>
 
 <!-- Permessi app -->
 <string name="details_permissions">"Autorizzazioni dell'app"</string>
@@ -155,11 +155,11 @@
 <string name="details_why_rate_this_app">"Dì agli altri cosa ne pensi"</string>
 
 <!-- Il tuo giudizio -->
-<string name="details_you_rated_this_app">"Il tuo punteggio"</string>
+<string name="details_you_rated_this_app">"La tua valutazione"</string>
 <string name="dialog_title_logout">"Disconnettersi ?"</string>
 <string name="download_cancel_all">"Annulla tutto"</string>
 <string name="download_canceled">"Annullato"</string>
-<string name="download_clear_completed">"Pulizia completata"</string>
+<string name="download_clear_completed">"Rimuovi i completati"</string>
 <string name="download_completed">"Completato"</string>
 
 <!-- Fallito -->
@@ -183,8 +183,8 @@
 <string name="exodus_noTracker">"Non contiene tracker"</string>
 <string name="exodus_powered">"Alimentato da Exodus"</string>
 <string name="exodus_title">"Aurora Protect"</string>
-<string name="exodus_title_alt">"Rapporto Esodo"</string>
-<string name="exodus_viewMore">"vista"</string>
+<string name="exodus_title_alt">"Rapporto Exodus"</string>
+<string name="exodus_viewMore">"Visualizza"</string>
 <string name="exodus_viewReport">"Visualizza rapporto"</string>
 <string name="flagging_title">"Segnala come inappropriato"</string>
 <string name="list_app_blacklisted_empty">"Nessuna app nella lista nera"</string>
@@ -194,9 +194,9 @@
 <string name="list_app_no_ads">"senza pubblicità"</string>
 <string name="list_app_system">"App di sistema"</string>
 <string name="list_app_user">"App utente"</string>
-<string name="list_blacklist">"App nella blacklist"</string>
+<string name="list_blacklist">"App nella lista nera"</string>
 <string name="list_blacklist_none">"Nessuna app nella lista nera"</string>
-<string name="list_bulk_install">"Applicazione (i) in coda per l'installazione di massa "</string>
+<string name="list_bulk_install">"Applicazione(i) in coda per l'installazione di massa"</string>
 <string name="list_empty_fav">"Nessun preferito"</string>
 <string name="list_empty_query">"Nessuna ricerca recente"</string>
 <string name="list_empty_updates">"Nessun aggiornamento disponibile"</string>
@@ -205,22 +205,19 @@
 <string name="list_not_installd">"Non installato"</string>
 <string name="list_selected">"App selezionate: %d/"</string>
 <string name="list_update_all">"Aggiorna tutto"</string>
-<string name="list_update_all_txt">"Aggiornamento (i) disponibile (i)"</string>
+<string name="list_update_all_txt">"Aggiornamento(i) disponibile(i)"</string>
 <string name="list_updating">"In aggiornamento"</string>
-<string name="manual_download_disclaimer">"disconoscimento"</string>
+<string name="manual_download_disclaimer">"Disclaimer"</string>
 <string name="manual_download_incompatible">"Google Play Store considera questa app incompatibile con il tuo dispositivo. Ciò significa che il codice di versione non è stato restituito dal server di Google Play Store."</string>
 <string name="manual_download_warning">"Questa pagina ti consente di scegliere manualmente la versione dell'app da scaricare. \ N \ nTenete presente che il download di versioni arbitrarie di app non è supportato da Google Play Store. Il tuo successo dipende da una supposizione fortunata del codice della versione. Anche se hai indovinato e il download è iniziato, potresti ottenere un apk incompatibile."</string>
 <string name="menu_account">"Profili"</string>
-<string name="menu_disclaimer">"disconoscimento"</string>
-<string name="menu_downloads">"download"</string>
+<string name="menu_disclaimer">"Disclaimer"</string>
+<string name="menu_downloads">"Download"</string>
 <string name="menu_license">"Licenza"</string>
 <string name="menu_setting">"Impostazioni"</string>
 <string name="menu_terms">"Termini di servizio"</string>
 <string name="no_permissions">"Non vengono utilizzate autorizzazioni."</string>
-<string name="notification_installation_complete">"Installato con successo %s"</string>
-<string name="notification_installation_failed">"Installazione di %s non riuscita"</string>
-<string name="notification_installation_progress">"Installazione di %s"</string>
-<string name="pref_app_download">"download"</string>
+<string name="pref_app_download">"Download"</string>
 <string name="pref_app_network">"Rete"</string>
 <string name="pref_app_notification">"Notifiche"</string>
 <string name="pref_app_ui">"Interfaccia utente"</string>
@@ -234,13 +231,13 @@
 <string name="pref_downloader_active_summary">"Numero massimo di download attivi"</string>
 <string name="pref_downloader_active_title">"Download attivo"</string>
 <string name="pref_downloader_debug_summary">"Abilita il debug del download per ottenere registri dettagliati"</string>
-<string name="pref_downloader_debug_title">"Scarica il debug"</string>
+<string name="pref_downloader_debug_title">"Debug download"</string>
 <string name="pref_downloader_path_title">"Percorso di download"</string>
 <string name="pref_downloader_wifi_title">"Scarica solo tramite Wi-Fi"</string>
 <string name="pref_filter_fdroid_summary">"Rimuove le app F-droid dagli elenchi di app"</string>
 <string name="pref_filter_fdroid_title">"Filtra le app F-droid"</string>
 <string name="pref_filter_google_summary">"Rimuove tutte le app di Google dai risultati di ricerca e dalle app di categoria"</string>
-<string name="pref_filter_google_title">"Filtra Google Apps"</string>
+<string name="pref_filter_google_title">"Filtra le Google Apps"</string>
 <string name="pref_filter_search_summary">"I filtri di ricerca vengono ripristinati su ogni ricerca. Disattiva per salvare i filtri di ricerca"</string>
 <string name="pref_filter_search_title">"Usa filtro di ricerca non persistente"</string>
 <string name="pref_install_auto_summary">"Le app vengono installate immediatamente al termine del download"</string>
@@ -280,14 +277,14 @@
 <string name="title_home">"Aurora Store"</string>
 <string name="title_installed">"Le mie applicazioni"</string>
 <string name="title_perm">"Permessi"</string>
-<string name="title_search">"Cerca app"</string>
+<string name="title_search">"Cerca applicazioni e giochi"</string>
 <string name="title_search_result">"Risultati per %s"</string>
 <string name="title_updates">"Aggiornamenti disponibili"</string>
 <string name="title_welcome">"Benvenuto"</string>
 <string name="toast_apk_blacklisted">"Nella lista nera"</string>
 <string name="toast_apk_whitelisted">"Nella lista bianca"</string>
 <string name="toast_apk_copy_success">"APK copiato correttamente"</string>
-<string name="toast_apk_copy_failure">"Impossibile copiare APK"</string>
+<string name="toast_apk_copy_failure">"Impossibile copiare l'APK"</string>
 <string name="pref_app_language">"Lingua"</string>
 <string name="pref_locale_custom_title">"Lingua Personalizzata"</string>
 <string name="pref_locale_custom_summary">"Forza lingua personalizzata"</string>
