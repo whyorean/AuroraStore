@@ -32,7 +32,7 @@ android {
         versionName "3.0"
 
         resConfigs "ar-rSA", "bg-rBG", "de-rDE", "es-rES", "fr-rFR", "gl-rES", "hi-rIN", "hr-rHR", "hu-rHU", "in-rID", "it-rIT", "iw-rIL", "ja-rJP", "ko-rKR", "lt-rLT",
-                "pl-rPL", "pt-rPT", "pt-rBR", "ro-rRO", "ru-rRU", "sk-rSK", "sr-rSR", "sv-rSE", "th-rTH", "tr-rTR", "uk-rUA", "vi-rVN", "zh-rCN"
+                "pl-rPL", "pt-rPT", "pt-rBR", "ro-rRO", "ru-rRU", "sk-rSK", "sr-rSR", "sv-rSE", "th-rTH", "tr-rTR", "uk-rUA", "vi-rVN", "zh-rCN", "zh-rTW"
     }
     buildTypes {
         release {

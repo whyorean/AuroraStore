@@ -99,7 +99,8 @@
         <item>Default</item>
         <item>Arabic</item>
         <item>Bulgarian</item>
-        <item>Chinese</item>
+        <item>Chinese Simplified</item>
+        <item>Chinese Traditional</item>
         <item>Croatian</item>
         <item>English</item>
         <item>French</item>
@@ -133,6 +134,7 @@
         <item>ar-SA</item>
         <item>bg-BG</item>
         <item>zh-CN</item>
+        <item>zh-TW</item>
         <item>hr-HR</item>
         <item>en-US</item>
         <item>fr-FR</item>
