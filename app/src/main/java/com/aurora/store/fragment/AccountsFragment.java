@@ -58,7 +58,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
 
 import static com.aurora.store.utility.ContextUtil.runOnUiThread;
@@ -107,7 +106,6 @@ public class AccountsFragment extends BaseFragment implements BaseFragment.Event
     private Context context;
     private boolean isDummy = false;
     private boolean isLoggedIn = false;
-    private CompositeDisposable mCompositeDisposable = new CompositeDisposable();
 
     @Override
     public void onAttach(@NotNull Context context) {
@@ -131,8 +129,7 @@ public class AccountsFragment extends BaseFragment implements BaseFragment.Event
     @Override
     public void onDestroy() {
         super.onDestroy();
-        mCompositeDisposable.clear();
-        mCompositeDisposable.dispose();
+        disposable.clear();
     }
 
     @Override
@@ -271,7 +268,7 @@ public class AccountsFragment extends BaseFragment implements BaseFragment.Event
 
     private void logInWithDummy() {
         switchButtonState(true);
-        mCompositeDisposable.add(Observable.fromCallable(() ->
+        disposable.add(Observable.fromCallable(() ->
                 new PlayStoreApiAuthenticator(context).login())
                 .subscribeOn(Schedulers.io())
                 .doOnSubscribe(sub -> mProgressBar.setVisibility(View.VISIBLE))
@@ -296,7 +293,7 @@ public class AccountsFragment extends BaseFragment implements BaseFragment.Event
 
     private void logInWithGoogle(String email, String password) {
         switchButtonState(true);
-        mCompositeDisposable.add(Observable.fromCallable(() ->
+        disposable.add(Observable.fromCallable(() ->
                 new PlayStoreApiAuthenticator(context).login(email, password))
                 .subscribeOn(Schedulers.io())
                 .doOnSubscribe(sub -> mProgressBar.setVisibility(View.VISIBLE))
@@ -322,7 +319,7 @@ public class AccountsFragment extends BaseFragment implements BaseFragment.Event
     }
 
     private void getUserInfo() {
-        mCompositeDisposable.add(Observable.fromCallable(() ->
+        disposable.add(Observable.fromCallable(() ->
                 new UserProfiler(context).getUserProfile())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

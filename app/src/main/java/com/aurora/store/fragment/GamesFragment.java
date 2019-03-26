@@ -36,10 +36,16 @@ import com.aurora.store.activity.CategoriesActivity;
 import com.aurora.store.view.FeaturedAppsView;
 import com.google.android.material.chip.Chip;
 
+import java.util.concurrent.TimeUnit;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import io.reactivex.Observable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.schedulers.Schedulers;
 
-public class GamesFragment extends BaseFragment implements BaseFragment.EventListenerImpl {
+public class GamesFragment extends ContainerFragment {
 
     @BindView(R.id.bulk_layout)
     LinearLayout bulk_layout;
@@ -62,7 +68,8 @@ public class GamesFragment extends BaseFragment implements BaseFragment.EventLis
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_tab_games, container, false);
         ButterKnife.bind(this, view);
         return view;
@@ -71,9 +78,6 @@ public class GamesFragment extends BaseFragment implements BaseFragment.EventLis
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        bulk_layout.addView(new FeaturedAppsView(context, "Action", "GAME_ACTION"));
-        bulk_layout.addView(new FeaturedAppsView(context, "Adventure", "GAME_ADVENTURE"));
-        bulk_layout.addView(new FeaturedAppsView(context, "Puzzle", "GAME_PUZZLE"));
         allChip.setOnClickListener(v -> {
             Intent intent = new Intent(context, CategoriesActivity.class);
             intent.putExtra("INTENT_CATEGORY", "GAME");
@@ -82,17 +86,30 @@ public class GamesFragment extends BaseFragment implements BaseFragment.EventLis
     }
 
     @Override
-    public void onLoggedIn() {
-
+    public void onResume() {
+        super.onResume();
+        if (bulk_layout.getChildCount() < 1)
+            addViews();
     }
 
     @Override
-    public void onLoginFailed() {
-
+    public void onDestroy() {
+        super.onDestroy();
+        disposable.clear();
     }
 
-    @Override
-    public void onNetworkFailed() {
-
+    private void addViews() {
+        bulk_layout.removeAllViews();
+        disposable.add(Observable.just(
+                new FeaturedAppsView(context, translator.getString("GAME_ACTION"), "GAME_ACTION"),
+                new FeaturedAppsView(context, translator.getString("GAME_ADVENTURE"), "GAME_ADVENTURE"),
+                new FeaturedAppsView(context, translator.getString("GAME_PUZZLE"), "GAME_PUZZLE"))
+                .zipWith(Observable.interval(16, TimeUnit.MILLISECONDS),
+                        (featuredAppsView, interval) -> featuredAppsView)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnNext(featuredAppsView -> bulk_layout.addView(featuredAppsView))
+                .subscribe()
+        );
     }
 }

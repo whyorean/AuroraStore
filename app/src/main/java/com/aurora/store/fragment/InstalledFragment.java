@@ -54,7 +54,6 @@ import com.google.android.material.switchmaterial.SwitchMaterial;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 
 import butterknife.BindView;
@@ -138,7 +137,7 @@ public class InstalledFragment extends BaseFragment implements BaseFragment.Even
 
     private void fetchData() {
         InstalledApps mTaskHelper = new InstalledApps(context);
-        mDisposable.add(Observable.fromCallable(() -> mTaskHelper.getInstalledApps(switchSystem.isChecked()))
+        disposable.add(Observable.fromCallable(() -> mTaskHelper.getInstalledApps(switchSystem.isChecked()))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnSubscribe(subscription -> mSwipeRefreshLayout.setRefreshing(true))

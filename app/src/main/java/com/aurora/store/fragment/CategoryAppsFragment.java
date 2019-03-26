@@ -28,6 +28,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
+import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
 import com.aurora.store.R;
@@ -42,7 +43,7 @@ import com.google.android.material.tabs.TabLayout;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class CategoryAppsFragment extends BaseFragment implements BaseFragment.EventListenerImpl {
+public class CategoryAppsFragment extends Fragment {
 
     public static String categoryId;
 
@@ -102,20 +103,5 @@ public class CategoryAppsFragment extends BaseFragment implements BaseFragment.E
             viewPager.setAdapter(new SubCategoryAdapter(getContext(), getChildFragmentManager()));
         });
         filterSheet.show(getChildFragmentManager(), "FILTER");
-    }
-
-    @Override
-    public void onLoggedIn() {
-
-    }
-
-    @Override
-    public void onLoginFailed() {
-
-    }
-
-    @Override
-    public void onNetworkFailed() {
-
     }
 }

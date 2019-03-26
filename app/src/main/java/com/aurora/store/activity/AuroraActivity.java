@@ -48,9 +48,14 @@ import com.aurora.store.utility.ThemeUtil;
 import com.aurora.store.view.CustomViewPager;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.util.concurrent.TimeUnit;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import io.reactivex.Observable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.schedulers.Schedulers;
 
 public class AuroraActivity extends AppCompatActivity {
 
@@ -175,15 +180,22 @@ public class AuroraActivity extends AppCompatActivity {
 
     private void setupViewPager() {
         mViewPagerAdapter = new CustomViewPagerAdapter(getSupportFragmentManager());
-        mViewPagerAdapter.addFragment(0, new HomeFragment());
-        mViewPagerAdapter.addFragment(1, new InstalledFragment());
-        mViewPagerAdapter.addFragment(2, new UpdatesFragment());
-        mViewPagerAdapter.addFragment(3, new SearchFragment());
-
-        mViewPager.setPagingEnabled(false);
-        mViewPager.setAdapter(mViewPagerAdapter);
-        mViewPager.setOffscreenPageLimit(4);
-        mViewPager.setCurrentItem(fragmentPos, true);
+        mDisposable.add(Observable.just(
+                new HomeFragment(),
+                new InstalledFragment(),
+                new UpdatesFragment(),
+                new SearchFragment())
+                .zipWith(Observable.interval(16, TimeUnit.MILLISECONDS), (fragment, interval) -> fragment)
+                .doOnNext(fragment -> mViewPagerAdapter.addFragment(fragmentPos++, fragment))
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnComplete(() -> {
+                    mViewPager.setAdapter(mViewPagerAdapter);
+                    mViewPager.setPagingEnabled(false);
+                    mViewPager.setOffscreenPageLimit(2);
+                    mViewPager.setCurrentItem(0, true);
+                })
+                .subscribe());
     }
 
     private void setupBottomNavigation() {

@@ -134,7 +134,7 @@ public class SearchAppsFragment extends BaseFragment implements BaseFragment.Eve
     @Override
     public void onDestroy() {
         Glide.with(this).pauseAllRequests();
-        mDisposable.dispose();
+        disposable.dispose();
         if (mBottomNavigationView != null)
             ViewUtil.showBottomNav(mBottomNavigationView, true);
         if (Util.filterSearchNonPersistent(context))
@@ -182,7 +182,7 @@ public class SearchAppsFragment extends BaseFragment implements BaseFragment.Eve
             iterator.setEnableFilter(true);
             iterator.setFilter(new Filter(getContext()).getFilterPreferences());
         }
-        mDisposable.add(Observable.fromCallable(() -> mSearchTask.getSearchResults(iterator))
+        disposable.add(Observable.fromCallable(() -> mSearchTask.getSearchResults(iterator))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(appList -> {

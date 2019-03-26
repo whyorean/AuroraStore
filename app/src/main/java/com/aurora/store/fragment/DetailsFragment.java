@@ -57,6 +57,8 @@ import com.aurora.store.utility.Log;
 import com.aurora.store.utility.PackageUtil;
 import com.aurora.store.view.ErrorView;
 
+import java.util.concurrent.TimeUnit;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.reactivex.Observable;
@@ -127,14 +129,14 @@ public class DetailsFragment extends BaseFragment implements BaseFragment.EventL
             context.unregisterReceiver(mInstallReceiver);
             mActionButton = null;
             mTaskHelper = null;
-            mDisposable.clear();
+            disposable.clear();
         } catch (Exception ignored) {
         }
     }
 
     private void fetchDetails() {
         mTaskHelper = new DetailsApp(getContext());
-        mDisposable.add(Observable.fromCallable(() -> mTaskHelper.getInfo(packageName))
+        disposable.add(Observable.fromCallable(() -> mTaskHelper.getInfo(packageName))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(app -> {
@@ -149,7 +151,7 @@ public class DetailsFragment extends BaseFragment implements BaseFragment.EventL
     private void draw(App mApp) {
         app = mApp;
         drawButtons();
-        mDisposable.add(Observable.just(
+        disposable.add(Observable.just(
                 new GeneralDetails(this, app),
                 new Screenshot(this, app),
                 new Reviews(this, app),
@@ -160,7 +162,11 @@ public class DetailsFragment extends BaseFragment implements BaseFragment.EventL
                 new Share(this, app),
                 new SystemAppPage(this, app),
                 new Beta(this, app))
-                .subscribe(AbstractHelper::draw));
+                .zipWith(Observable.interval(16, TimeUnit.MILLISECONDS), (abstractHelper, interval) -> abstractHelper)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnNext(AbstractHelper::draw)
+                .subscribe());
         new ClusterDetails(this, app).draw();
     }
 
@@ -200,7 +206,7 @@ public class DetailsFragment extends BaseFragment implements BaseFragment.EventL
 
     @Override
     public void processException(Throwable e) {
-        mDisposable.clear();
+        disposable.clear();
         if (e instanceof MalformedRequestException) {
             setErrorView(ErrorType.MALFORMED);
             switchViews(true);

@@ -54,11 +54,10 @@ public class HomeFragment extends Fragment {
     ViewPager mViewPager;
 
     private Context context;
-    private CategoryManager mCategoryManager;
-    private CompositeDisposable compositeDisposable = new CompositeDisposable();
+    private CompositeDisposable disposable = new CompositeDisposable();
 
     @Override
-    public void onAttach(Context context) {
+    public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         this.context = context;
     }
@@ -71,7 +70,8 @@ public class HomeFragment extends Fragment {
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         ButterKnife.bind(this, view);
         return view;
@@ -86,8 +86,8 @@ public class HomeFragment extends Fragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        compositeDisposable.clear();
-        compositeDisposable.dispose();
+        disposable.clear();
+        disposable.dispose();
     }
 
     private void init() {
@@ -95,6 +95,7 @@ public class HomeFragment extends Fragment {
         mTabAdapter.addFragment(new ExploreFragment(), getString(R.string.tab_explore));
         mTabAdapter.addFragment(new GamesFragment(), getString(R.string.tab_games));
         mTabAdapter.addFragment(new FamilyFragment(), getString(R.string.tab_family));
+
         mViewPager.setAdapter(mTabAdapter);
         mTabLayout.setupWithViewPager(mViewPager);
         mTabLayout.setTabMode(Util.isTabScrollable(context)
@@ -102,7 +103,7 @@ public class HomeFragment extends Fragment {
                 : TabLayout.MODE_FIXED);
         attachIconsToTabs();
 
-        mCategoryManager = new CategoryManager(getContext());
+        CategoryManager mCategoryManager = new CategoryManager(getContext());
         if (mCategoryManager.categoryListEmpty())
             getCategoriesFromAPI();
     }
@@ -121,13 +122,11 @@ public class HomeFragment extends Fragment {
     }
 
     private void getCategoriesFromAPI() {
-        compositeDisposable.add(Observable.fromCallable(() -> new CategoryList(getContext()).getResult())
+        disposable.add(Observable.fromCallable(() -> new CategoryList(getContext())
+                .getResult())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe((success) -> {
-                    if (success) {
-                        Log.i("CategoryList fetch completed");
-                    }
+                .subscribe(success -> {
                 }, err -> Log.e(err.getMessage())));
     }
 }

@@ -52,7 +52,7 @@ public abstract class BaseFragment extends Fragment {
 
 
     protected CustomAppListIterator iterator;
-    protected CompositeDisposable mDisposable = new CompositeDisposable();
+    protected CompositeDisposable disposable = new CompositeDisposable();
 
     private Context context;
     private EventListenerImpl eventListenerImpl;
@@ -76,7 +76,7 @@ public abstract class BaseFragment extends Fragment {
     }
 
     public void processException(Throwable e) {
-        mDisposable.clear();
+        disposable.clear();
         Log.d("GoogleAPI DownloadRequest Failed : %s", e.getMessage());
         if (e instanceof AuthException) {
             processAuthException((AuthException) e);
@@ -124,7 +124,7 @@ public abstract class BaseFragment extends Fragment {
     }
 
     private void logInWithDummy() {
-        mDisposable.add(Observable.fromCallable(() ->
+        disposable.add(Observable.fromCallable(() ->
                 new PlayStoreApiAuthenticator(context).login())
                 .subscribeOn(Schedulers.io())
                 .observeOn(Schedulers.computation())
@@ -139,7 +139,7 @@ public abstract class BaseFragment extends Fragment {
     }
 
     private void refreshToken() {
-        mDisposable.add(Flowable.fromCallable(() ->
+        disposable.add(Flowable.fromCallable(() ->
                 new PlayStoreApiAuthenticator(context).refreshToken())
                 .subscribeOn(Schedulers.io())
                 .observeOn(Schedulers.computation())

@@ -36,10 +36,15 @@ import com.aurora.store.activity.CategoriesActivity;
 import com.aurora.store.view.FeaturedAppsView;
 import com.google.android.material.chip.Chip;
 
+import java.util.concurrent.TimeUnit;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import io.reactivex.Observable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
 
-public class ExploreFragment extends BaseFragment implements BaseFragment.EventListenerImpl {
+public class ExploreFragment extends ContainerFragment {
 
     @BindView(R.id.all_chip)
     Chip allChip;
@@ -71,7 +76,6 @@ public class ExploreFragment extends BaseFragment implements BaseFragment.EventL
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        addViews();
         allChip.setOnClickListener(v -> {
             Intent intent = new Intent(context, CategoriesActivity.class);
             intent.putExtra("INTENT_CATEGORY", "APPLICATION");
@@ -86,24 +90,24 @@ public class ExploreFragment extends BaseFragment implements BaseFragment.EventL
             addViews();
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        disposable.clear();
+    }
+
     private void addViews() {
-        bulk_layout.addView(new FeaturedAppsView(context, "Personalization", "PERSONALIZATION"));
-        bulk_layout.addView(new FeaturedAppsView(context, "Communication", "COMMUNICATION"));
-        bulk_layout.addView(new FeaturedAppsView(context, "Tools", "TOOLS"));
-    }
-
-    @Override
-    public void onLoggedIn() {
         bulk_layout.removeAllViews();
-    }
-
-    @Override
-    public void onLoginFailed() {
-
-    }
-
-    @Override
-    public void onNetworkFailed() {
-
+        disposable.add(Observable.just(
+                new FeaturedAppsView(context, translator.getString("PERSONALIZATION"), "PERSONALIZATION"),
+                new FeaturedAppsView(context, translator.getString("COMMUNICATION"), "COMMUNICATION"),
+                new FeaturedAppsView(context, translator.getString("TOOLS"), "TOOLS"))
+                .zipWith(Observable.interval(16, TimeUnit.MILLISECONDS),
+                        (featuredAppsView, interval) -> featuredAppsView)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnNext(featuredAppsView -> bulk_layout.addView(featuredAppsView))
+                .subscribe()
+        );
     }
 }

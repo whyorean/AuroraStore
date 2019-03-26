@@ -116,7 +116,7 @@ public class BlacklistFragment extends BaseFragment implements BlacklistAdapter.
 
     private void loadAllApps() {
         InstalledApps mTaskHelper = new InstalledApps(context);
-        mDisposable.add(Observable.fromCallable(() -> mTaskHelper.getInstalledApps(false))
+        disposable.add(Observable.fromCallable(() -> mTaskHelper.getInstalledApps(false))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnSubscribe(subscription -> customSwipeToRefresh.setRefreshing(true))

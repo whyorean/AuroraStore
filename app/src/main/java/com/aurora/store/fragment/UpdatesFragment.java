@@ -59,7 +59,6 @@ import org.apache.commons.lang3.StringUtils;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 
 import butterknife.BindView;
@@ -141,7 +140,7 @@ public class UpdatesFragment extends BaseFragment implements BaseFragment.EventL
 
     private void fetchData() {
         UpdatableApps mTaskHelper = new UpdatableApps(context);
-        mDisposable.add(Observable.fromCallable(mTaskHelper::getUpdatableApps)
+        disposable.add(Observable.fromCallable(mTaskHelper::getUpdatableApps)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnSubscribe(subscription -> customSwipeToRefresh.setRefreshing(true))
@@ -248,7 +247,7 @@ public class UpdatesFragment extends BaseFragment implements BaseFragment.EventL
     }
 
     private void updateAllApps() {
-        mDisposable.add(Observable.fromCallable(() -> new BulkDeliveryData(context)
+        disposable.add(Observable.fromCallable(() -> new BulkDeliveryData(context)
                 .getDeliveryData(updatableAppList))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
