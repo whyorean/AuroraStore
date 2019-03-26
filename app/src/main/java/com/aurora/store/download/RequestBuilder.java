@@ -23,7 +23,9 @@ package com.aurora.store.download;
 import android.content.Context;
 
 import com.aurora.store.model.App;
+import com.aurora.store.utility.PackageUtil;
 import com.aurora.store.utility.PathUtil;
+import com.aurora.store.utility.SplitUtil;
 import com.aurora.store.utility.TextUtil;
 import com.aurora.store.utility.Util;
 import com.dragons.aurora.playstoreapiv2.AndroidAppDeliveryData;
@@ -210,15 +212,19 @@ public class RequestBuilder {
                                                    List<AndroidAppDeliveryData> deliveryDataList,
                                                    List<App> appList, int groupId) {
         List<Request> mRequestList = new ArrayList<>();
-        int index = 0;
-        for (AndroidAppDeliveryData deliveryData : deliveryDataList) {
-            List<Split> splitList = deliveryData.getSplitList();
-            if (!splitList.isEmpty())
-                mRequestList.addAll(buildSplitRequestList(context,
-                        appList.get(index), splitList, groupId));
-            mRequestList.add(buildRequest(context, appList.get(index),
-                    deliveryData.getDownloadUrl(), groupId));
-            index++;
+        for (int i = 0; i < deliveryDataList.size(); i++) {
+            final List<Split> splitList = deliveryDataList.get(i).getSplitList();
+            final App app = appList.get(i);
+            if (!splitList.isEmpty()) {
+                mRequestList.addAll(buildSplitRequestList(context, app, splitList, groupId));
+                SplitUtil.addToList(context, app.getPackageName());
+            }
+            mRequestList.add(buildRequest(context, app,
+                    deliveryDataList.get(i).getDownloadUrl(), groupId));
+
+            //Add <PackageName,DisplayName> and <PackageName,IconURL> to PseudoMaps
+            PackageUtil.addToPseudoPackageMap(context, app.getPackageName(), app.getDisplayName());
+            PackageUtil.addToPseudoURLMap(context, app.getPackageName(), app.getIconInfo().getUrl());
         }
         return mRequestList;
     }
