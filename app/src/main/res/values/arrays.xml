@@ -106,6 +106,7 @@
         <item>French</item>
         <item>Galician</item>
         <item>German</item>
+        <item>Greek</item>
         <item>Hebrew</item>
         <item>Hindi</item>
         <item>Hungarian</item>
@@ -140,6 +141,7 @@
         <item>fr-FR</item>
         <item>gl-ES</item>
         <item>de-DE</item>
+        <item>el-GR</item>
         <item>iw-IL</item>
         <item>hi-IN</item>
         <item>hu-HU</item>
