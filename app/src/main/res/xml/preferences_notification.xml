@@ -34,11 +34,11 @@
         app:summary="@string/pref_notification_priority_summary"
         app:title="@string/pref_notification_priority_title" />
 
-    <ListPreference
+    <!--<ListPreference
         app:defaultValue="1"
         app:entries="@array/pref_notification_provider"
         app:entryValues="@array/pref_notification_provider_values"
         app:key="PREFERENCE_NOTIFICATION_PROVIDER"
         app:summary="@string/pref_notification_provider_summary"
-        app:title="@string/pref_notification_provider_title" />
+        app:title="@string/pref_notification_provider_title" />-->
 </androidx.preference.PreferenceScreen>
