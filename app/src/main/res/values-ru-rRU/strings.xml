@@ -44,7 +44,7 @@
 <string name="action_manual">"Загрузить вручную"</string>
 <string name="action_more">"Ещё"</string>
 <string name="action_next">"Дальше"</string>
-<string name="action_pause">"Приостановить"</string>
+<string name="action_pause">"Пауза"</string>
 <string name="action_remove">"Удалить"</string>
 <string name="action_restart">"Перезапустить"</string>
 <string name="action_resume">"Возобновить"</string>
@@ -165,15 +165,6 @@
 
 <!-- Maybe fix original to "App not need extra permissions" -->
 <string name="no_permissions">"Приложение не требует дополнительных разрешений."</string>
-
-<!-- Fix original, add : -->
-<string name="notification_installation_complete">"Успешно установлено: %s"</string>
-
-<!-- Fix original, add : -->
-<string name="notification_installation_failed">"Не удалось установить: %s"</string>
-
-<!-- Fix original, add : -->
-<string name="notification_installation_progress">"Установка: %s"</string>
 <string name="pref_app_download">"Загрузки"</string>
 <string name="pref_app_network">"Соединение"</string>
 <string name="pref_app_notification">"Уведомления"</string>
@@ -196,6 +187,8 @@
 <string name="pref_filter_google_summary">"Убирает все приложения Google из результатов поиска и категорий"</string>
 <string name="pref_filter_google_title">"Скрывать приложения Gapps"</string>
 <string name="pref_filter_search_summary">"Сбрасывать фильтры поиска при каждом новом поиске. Отключите, чтобы фильтры сохранялись"</string>
+
+<!-- Invert toggle. "Use persistent search filter (○   )" -->
 <string name="pref_filter_search_title">"Не использовать постоянный фильтр поиска"</string>
 <string name="pref_install_auto_summary">"Устанавливать приложения сразу после завершения загрузки"</string>
 <string name="pref_install_auto_title">"Автоматическая установка"</string>
@@ -205,7 +198,7 @@
 <string name="pref_install_mode_title">"Способ установки"</string>
 
 <!-- Maybe more description -->
-<string name="pref_notification_priority_summary">"Приоритет для уведомлений"</string>
+<string name="pref_notification_priority_summary">"Приоритет уведомлений"</string>
 <string name="pref_notification_priority_title">"Приоритет уведомлений"</string>
 <string name="pref_notification_summary">"Включить уведомления Aurora"</string>
 <string name="pref_notification_title">"Показывать уведомления"</string>
@@ -252,5 +245,37 @@
 <string name="tab_games">"Игры"</string>
 
 <!-- Or "Семейные" -->
-<string name="tab_family">"Детские"</string>
+<string name="tab_family">"Для всей семьи"</string>
+<string name="pref_ui_tab_mode_title">"Прокручиваемые вкладки"</string>
+<string name="pref_ui_tab_mode_summary">"Делает вкладки прокручиваемыми, рекомендуется для устройств с маленьким разрешением"</string>
+<string name="about_app">"Aurora - это альтернатива Play Store с открытым исходным кодом.
+         Aurora позволяет искать, скачивать, устанавливать и обновлять приложения и игры.
+         Дополнительно Aurora отображает список трекеров, встроенных в приложение."</string>
+<string name="about_paypal">"Paypal"</string>
+<string name="about_paypal_summary">"Пожертвовать через Paypal"</string>
+<string name="about_fdroid">"F-Droid"</string>
+<string name="about_gitlab">"GitLab"</string>
+<string name="about_gitlab_summary">"Исходный код AuroraStore в Aurora OSS на GitLab."</string>
+<string name="about_telegram">"Telegram"</string>
+<string name="about_telegram_summary">"Присоединяйтесь к обсуждению или вносите предложения в группе поддержки."</string>
+<string name="about_fdroid_summary">"Скачать Aurora из репозитория F-Droid"</string>
+<string name="about_xda">"Тема разработчика"</string>
+<string name="about_xda_summary">"Присоединяйтесь к обсуждению или вносите предложения в теме разработчика на XDA."</string>
+<string name="action_about">"О программе"</string>
+<string name="pref_downloader_strategy_summary">"Выберите метод скачивания по умолчанию, рекомендуется метод параллельного скачивания, как более быстрый."</string>
+<string name="pref_downloader_strategy_title">"Метод скачивания"</string>
+<string name="pref_downloader_strategy_sequential">"Последовательное скачивание"</string>
+<string name="pref_downloader_strategy_parallel">"Параллельное скачивание (раздельное)"</string>
+<string name="pref_install_mode_native">"Обычный"</string>
+<string name="pref_install_mode_root">"С использованием root"</string>
+<string name="pref_notification_priority_default">"По-умолчанию"</string>
+<string name="pref_notification_priority_high">"Высокий"</string>
+<string name="pref_notification_priority_max">"Максимальный"</string>
+<string name="pref_notification_provider_summary">"Выбор провайдера уведомлений по умолчанию"</string>
+<string name="pref_notification_provider_title">"Провайдер уведомлений"</string>
+<string name="pref_notification_provider_native">"Встроенный провайдер уведомлений"</string>
+<string name="pref_notification_provider_aurora">"Провайдер уведомлений Aurora"</string>
+<string name="pref_ui_theme_light">"Светлая тема"</string>
+<string name="pref_ui_theme_dark">"Тёмная тема"</string>
+<string name="pref_ui_theme_black">"Чёрная тема"</string>
 </resources>
