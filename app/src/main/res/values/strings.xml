@@ -101,7 +101,7 @@
     <string name="action_updates">Updates</string>
     <string name="action_whitelist">Whitelist</string>
 
-    <string name="apps_by">Apps by %s</string>
+    <string name="apps_by">Apps by</string>
     <string name="availability_restriction_country">"This item isn't available in your country."</string>
     <string name="availability_restriction_generic">"This item isn't available."</string>
     <string name="availability_restriction_hardware_app">"Your device isn't compatible with this version."</string>
@@ -159,12 +159,12 @@
     <string name="error_app_not_found">App not found</string>
     <string name="error_incorrect_password">Incorrect email or password</string>
     <string name="error_invalid_device_definition">Device definition rejected</string>
-    <string name="error_network_other">"Network error: %s"</string>
+    <string name="error_network_other">"Network error"</string>
     <string name="error_no_network">No network connection</string>
     <string name="error_search_not_found">No matching app found</string>
     <string name="error_unknown">Unknown error occurred</string>
 
-    <string name="exodus_hasTracker">Contains %s trackers</string>
+    <string name="exodus_hasTracker">Contains trackers</string>
     <string name="exodus_noTracker">Contains no trackers</string>
     <string name="exodus_powered">Powered by Exodus</string>
     <string name="exodus_title">Aurora Protect</string>
@@ -190,7 +190,7 @@
     <string name="list_installed">Installed</string>
     <string name="list_installed_system">Show user apps only</string>
     <string name="list_not_installd">Not Installed</string>
-    <string name="list_selected">Apps Selected : %d</string>
+    <string name="list_selected">Apps Selected</string>
     <string name="list_update_all">Update All</string>
     <string name="list_update_all_txt">update(s) available"</string>
     <string name="list_update_all_queue_txt">update(s) queued</string>
@@ -299,7 +299,7 @@
     <string name="title_installed">My Apps &amp; Games</string>
     <string name="title_perm">Permissions</string>
     <string name="title_search">Search Apps &amp; Games</string>
-    <string name="title_search_result">"Results for %s"</string>
+    <string name="title_search_result">"Results for"</string>
     <string name="title_updates">Available Updates</string>
     <string name="title_welcome">Welcome</string>
 

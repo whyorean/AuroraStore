@@ -36,6 +36,7 @@ import com.aurora.store.model.ExodusReport;
 import com.aurora.store.sheet.ExodusBottomSheet;
 import com.aurora.store.utility.Log;
 
+import org.apache.commons.lang3.StringUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -97,8 +98,11 @@ public class ExodusPrivacy extends AbstractHelper {
         if (fragment.getActivity() != null) {
             exodus_card.setVisibility(View.VISIBLE);
             if (mReport.getTrackerIds().length() > 0) {
-                setText(view, R.id.exodus_description, R.string.exodus_hasTracker,
-                        mReport.getTrackerIds().length());
+                setText(view, R.id.exodus_description,
+                        new StringBuilder()
+                                .append(context.getString(R.string.exodus_hasTracker))
+                                .append(StringUtils.SPACE)
+                                .append(mReport.getTrackerIds().length()).toString());
             } else {
                 setText(view, R.id.exodus_description, R.string.exodus_noTracker);
             }

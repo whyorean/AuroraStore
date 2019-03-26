@@ -305,7 +305,11 @@ public class FavouriteFragment extends BaseFragment implements SelectableViewHol
             txtCount.setText("");
         } else {
             buttonInstall.setEnabled(true);
-            txtCount.setText(String.format(getString(R.string.list_selected), selectedApps.size()));
+            txtCount.setText(new StringBuilder()
+                    .append(getString(R.string.list_selected))
+                    .append(StringUtils.SPACE)
+                    .append(selectedApps.size())
+            );
         }
     }
 

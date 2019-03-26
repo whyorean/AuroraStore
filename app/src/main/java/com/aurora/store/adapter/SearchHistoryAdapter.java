@@ -38,6 +38,8 @@ import com.aurora.store.fragment.SearchAppsFragment;
 import com.aurora.store.fragment.SearchFragment;
 import com.aurora.store.utility.PrefUtil;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -144,9 +146,13 @@ public class SearchHistoryAdapter extends RecyclerView.Adapter<SearchHistoryAdap
 
     private String getTitleString(String query) {
         return query.startsWith(Constants.PUB_PREFIX)
-                ? fragment.getString(R.string.apps_by, query.substring(Constants.PUB_PREFIX.length()))
-                : fragment.getString(R.string.title_search_result, query)
-                ;
+                ? new StringBuilder().append(context.getString(R.string.apps_by))
+                .append(StringUtils.SPACE)
+                .append(query.substring(Constants.PUB_PREFIX.length())).toString()
+                : new StringBuilder()
+                .append(context.getString(R.string.title_search_result))
+                .append(StringUtils.SPACE)
+                .append(query).toString();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
