@@ -72,6 +72,8 @@ public class AuroraActivity extends AppCompatActivity {
     private ThemeUtil mThemeUtil = new ThemeUtil();
     private CompositeDisposable mDisposable = new CompositeDisposable();
     private int fragmentPos = 0;
+    private int fragmentCur = 0;
+    private boolean isSearchIntent = false;
 
     public BottomNavigationView getBottomNavigation() {
         return mBottomNavigationView;
@@ -109,6 +111,10 @@ public class AuroraActivity extends AppCompatActivity {
         Bundle mBundle = intent.getExtras();
         if (mBundle != null)
             fragmentPos = mBundle.getInt(Constants.INTENT_FRAGMENT_POSITION);
+        if (intent.getScheme() != null && intent.getScheme().equals("market")) {
+            fragmentCur = 3;
+            isSearchIntent = true;
+        }
     }
 
     @Override
@@ -193,7 +199,7 @@ public class AuroraActivity extends AppCompatActivity {
                     mViewPager.setAdapter(mViewPagerAdapter);
                     mViewPager.setPagingEnabled(false);
                     mViewPager.setOffscreenPageLimit(2);
-                    mViewPager.setCurrentItem(0, true);
+                    mViewPager.setCurrentItem(fragmentCur, true);
                 })
                 .subscribe());
     }
@@ -217,6 +223,8 @@ public class AuroraActivity extends AppCompatActivity {
             }
             return true;
         });
+        if (isSearchIntent)
+            mBottomNavigationView.setSelectedItemId(R.id.action_search);
     }
 
     private void checkPermissions() {
