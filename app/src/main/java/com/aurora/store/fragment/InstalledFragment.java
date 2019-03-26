@@ -80,8 +80,9 @@ public class InstalledFragment extends BaseFragment implements BaseFragment.Even
     private Context context;
     private BottomNavigationView mBottomNavigationView;
     private View view;
-    private List<App> mInstalledApps = new ArrayList<>();
-    private InstalledAppsAdapter mAdapter;
+    private List<App> installedAppList = new ArrayList<>();
+    private InstalledAppsAdapter adapter;
+    private InstalledApps installedAppTask;
 
     @Override
     public void onAttach(@NotNull Context context) {
@@ -101,7 +102,6 @@ public class InstalledFragment extends BaseFragment implements BaseFragment.Even
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         setErrorView(ErrorType.UNKNOWN);
-        fetchData();
 
         switchSystem.setChecked(PrefUtil.getBoolean(context, Constants.PREFERENCE_INCLUDE_SYSTEM));
         switchSystem.setOnCheckedChangeListener((buttonView, isChecked) -> {
@@ -112,11 +112,7 @@ public class InstalledFragment extends BaseFragment implements BaseFragment.Even
             fetchData();
         });
 
-        mSwipeRefreshLayout.setOnRefreshListener(() -> {
-            //TODO:Block Tokenizer to single task
-            fetchData();
-        });
-
+        mSwipeRefreshLayout.setOnRefreshListener(() -> fetchData());
         if (getActivity() instanceof AuroraActivity)
             mBottomNavigationView = ((AuroraActivity) getActivity()).getBottomNavigation();
     }
@@ -124,9 +120,8 @@ public class InstalledFragment extends BaseFragment implements BaseFragment.Even
     @Override
     public void onResume() {
         super.onResume();
-        if (mAdapter == null && mInstalledApps.isEmpty())
+        if (adapter == null && installedAppList.isEmpty())
             fetchData();
-
     }
 
     @Override
@@ -135,15 +130,25 @@ public class InstalledFragment extends BaseFragment implements BaseFragment.Even
         mSwipeRefreshLayout.setRefreshing(false);
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        disposable.clear();
+        installedAppList = null;
+        installedAppTask = null;
+        adapter = null;
+    }
+
     private void fetchData() {
-        InstalledApps mTaskHelper = new InstalledApps(context);
-        disposable.add(Observable.fromCallable(() -> mTaskHelper.getInstalledApps(switchSystem.isChecked()))
+        installedAppTask = new InstalledApps(context);
+        disposable.add(Observable.fromCallable(() -> installedAppTask
+                .getInstalledApps(switchSystem.isChecked()))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnSubscribe(subscription -> mSwipeRefreshLayout.setRefreshing(true))
                 .subscribe((mApps) -> {
                     if (view != null) {
-                        mInstalledApps = mApps;
+                        installedAppList = mApps;
                         if (mApps.isEmpty()) {
                             setErrorView(ErrorType.NO_APPS);
                             switchViews(true);
@@ -160,8 +165,8 @@ public class InstalledFragment extends BaseFragment implements BaseFragment.Even
 
     private void setupRecycler(List<App> mApps) {
         mSwipeRefreshLayout.setRefreshing(false);
-        mAdapter = new InstalledAppsAdapter(context, mApps, ListType.INSTALLED);
-        mRecyclerView.setAdapter(mAdapter);
+        adapter = new InstalledAppsAdapter(context, mApps, ListType.INSTALLED);
+        mRecyclerView.setAdapter(adapter);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(context, RecyclerView.VERTICAL, false));
         mRecyclerView.setLayoutAnimation(AnimationUtils.loadLayoutAnimation(context, R.anim.anim_falldown));
         mRecyclerView.setOnFlingListener(new RecyclerView.OnFlingListener() {

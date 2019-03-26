@@ -47,7 +47,7 @@ import butterknife.ButterKnife;
 
 public class DetailsActivity extends AppCompatActivity {
 
-    static private final String INTENT_PACKAGE_NAME = "INTENT_PACKAGE_NAME";
+    public static final String INTENT_PACKAGE_NAME = "INTENT_PACKAGE_NAME";
 
     @BindView(R.id.toolbar)
     Toolbar mToolbar;

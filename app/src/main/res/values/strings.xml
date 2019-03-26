@@ -21,7 +21,7 @@
   -->
 
 <resources>
-    <string name="about_app" >Aurora is an open source alternative to Play Store.
+    <string name="about_app">Aurora is an open source alternative to Play Store.
         It lets you download apps, provides updates of installed apps and lets you search for apps &amp; games.
         It also provides a list of trackers embedded in an app.
     </string>
@@ -193,7 +193,7 @@
     <string name="list_selected">Apps Selected : %d</string>
     <string name="list_update_all">Update All</string>
     <string name="list_update_all_txt">update(s) available"</string>
-    <string name="list_update_all_queue_txt">update(s) queued"</string>
+    <string name="list_update_all_queue_txt">update(s) queued</string>
     <string name="list_updating">Updating</string>
 
     <string name="manual_download_disclaimer">Disclaimer</string>
@@ -211,6 +211,8 @@
     <string name="notification_installation_complete">Successfully Installed</string>
     <string name="notification_installation_failed">Installation Failed</string>
     <string name="notification_installation_progress">Installing</string>
+    <string name="notification_installation_auto">Downloaded, click to install</string>
+    <string name="notification_installation_manual">Bundled Apk, manual action required</string>
 
     <string name="pref_app_download">Downloads</string>
     <string name="pref_app_language">Language</string>

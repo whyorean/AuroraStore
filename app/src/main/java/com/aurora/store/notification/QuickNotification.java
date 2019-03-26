@@ -24,16 +24,13 @@ import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Build;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
 
-import com.aurora.store.Constants;
 import com.aurora.store.R;
-import com.aurora.store.activity.AuroraActivity;
 
 public class QuickNotification extends NotificationBase {
 
@@ -62,7 +59,7 @@ public class QuickNotification extends NotificationBase {
                 .setContentTitle(contentTitle)
                 .setContentText(contentText)
                 .setOnlyAlertOnce(true)
-                .setPriority(NotificationCompat.PRIORITY_HIGH)
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                 .setSmallIcon(R.drawable.ic_notification)
                 .setVisibility(NotificationCompat.VISIBILITY_PUBLIC);
 
