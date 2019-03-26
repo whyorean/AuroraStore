@@ -45,12 +45,12 @@ public class NotificationFragment extends PreferenceFragmentCompat implements Sh
             return true;
         });
 
-        ListPreference providerList = findPreference(Constants.PREFERENCE_NOTIFICATION_PROVIDER);
+        /*ListPreference providerList = findPreference(Constants.PREFERENCE_NOTIFICATION_PROVIDER);
         assert providerList != null;
         providerList.setOnPreferenceChangeListener((preference, newValue) -> {
             PrefUtil.putString(context, Constants.PREFERENCE_NOTIFICATION_PROVIDER, (String) newValue);
             return true;
-        });
+        });*/
     }
 
     @Override
