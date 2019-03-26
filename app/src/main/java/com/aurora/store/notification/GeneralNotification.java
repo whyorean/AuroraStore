@@ -29,6 +29,7 @@ import android.os.Build;
 import com.aurora.store.NotificationProvider;
 import com.aurora.store.R;
 import com.aurora.store.model.App;
+import com.aurora.store.utility.NotificationUtil;
 import com.aurora.store.utility.Util;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.SimpleTarget;
@@ -59,15 +60,17 @@ public class GeneralNotification extends NotificationBase {
     }
 
     public void notifyProgress(int progress, long downloadedBytesPerSecond, int requestId) {
-        builder = getBuilder();
-        builder.setProgress(100, progress, false);
-        builder.setSubText(new StringBuilder().append(Util.humanReadableByteSpeed(downloadedBytesPerSecond, true)));
-        builder.setContentText(new StringBuilder().append(progress).append("%"));
-        builder.addAction(R.drawable.ic_resume, context.getString(R.string.action_pause),
-                getPauseIntent(requestId));
-        builder.addAction(R.drawable.ic_cancel, context.getString(R.string.action_cancel),
-                getCancelIntent(requestId));
-        show();
+        if (NotificationUtil.shouldNotify(context, app.getPackageName())) {
+            builder = getBuilder();
+            builder.setProgress(100, progress, false);
+            builder.setSubText(new StringBuilder().append(Util.humanReadableByteSpeed(downloadedBytesPerSecond, true)));
+            builder.setContentText(new StringBuilder().append(progress).append("%"));
+            builder.addAction(R.drawable.ic_resume, context.getString(R.string.action_pause),
+                    getPauseIntent(requestId));
+            builder.addAction(R.drawable.ic_cancel, context.getString(R.string.action_cancel),
+                    getCancelIntent(requestId));
+            show();
+        }
     }
 
     public void notifyQueued() {
@@ -80,6 +83,7 @@ public class GeneralNotification extends NotificationBase {
         builder = getBuilder();
         builder.setContentText(context.getString(R.string.download_failed));
         show();
+        NotificationUtil.updateDNDNotificationMap(context, app.getPackageName(), "");
     }
 
     public void notifyCompleted() {
@@ -90,6 +94,7 @@ public class GeneralNotification extends NotificationBase {
                 getInstallIntent());
         builder.setAutoCancel(true);
         show();
+        NotificationUtil.updateDNDNotificationMap(context, app.getPackageName(), "");
     }
 
     public void notifyCancelled() {
@@ -97,11 +102,12 @@ public class GeneralNotification extends NotificationBase {
         builder.setContentText(context.getString(R.string.download_canceled));
         builder.setProgress(0, 0, false);
         show();
+        NotificationUtil.updateDNDNotificationMap(context, app.getPackageName(), "");
     }
 
     public void show() {
-        if (Util.isNotificationEnabled(context)
-                && Util.getNotificationProvider(context) == NotificationProvider.AURORA) {
+        if (NotificationUtil.isNotificationEnabled(context)
+                && NotificationUtil.getNotificationProvider(context) == NotificationProvider.AURORA) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 channel = new NotificationChannel(context.getPackageName(),
                         context.getString(R.string.app_name),

@@ -24,6 +24,7 @@ import android.content.Context;
 
 import com.aurora.store.Constants;
 import com.aurora.store.NotificationProvider;
+import com.aurora.store.utility.NotificationUtil;
 import com.aurora.store.utility.Util;
 import com.tonyodev.fetch2.DefaultFetchNotificationManager;
 import com.tonyodev.fetch2.Fetch;
@@ -44,8 +45,8 @@ public class DownloadManager {
         FetchConfiguration.Builder fetchConfiguration = new FetchConfiguration.Builder(context);
         fetchConfiguration.setHttpDownloader(new OkHttpDownloader(Util.getDownloadStrategy(context)));
         fetchConfiguration.setNamespace(Constants.TAG);
-        if (Util.isNotificationEnabled(context) &&
-                Util.getNotificationProvider(context) == NotificationProvider.NATIVE)
+        if (NotificationUtil.isNotificationEnabled(context) &&
+                NotificationUtil.getNotificationProvider(context) == NotificationProvider.NATIVE)
             fetchConfiguration.setNotificationManager(new DefaultFetchNotificationManager(context));
         fetchConfiguration.setDownloadConcurrentLimit(Util.getActiveDownloadCount(context));
         fetch = Fetch.Impl.getInstance(fetchConfiguration.build());

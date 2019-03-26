@@ -321,10 +321,6 @@ public class Util {
         return getPrefs(context).getBoolean(Constants.PREFERENCE_DOWNLOAD_DEBUG, false);
     }
 
-    public static boolean isNotificationEnabled(Context context) {
-        return getPrefs(context).getBoolean(Constants.PREFERENCE_NOTIFICATION_TOGGLE, true);
-    }
-
     public static boolean isNetworkProxyEnabled(Context context) {
         return getPrefs(context).getBoolean(Constants.PREFERENCE_ENABLE_PROXY, false);
     }
@@ -356,32 +352,6 @@ public class Util {
         String proxyPort = getPrefs(context).getString(Constants.PREFERENCE_PROXY_PORT, "8118");
         int port = proxyPort != null ? Integer.valueOf(proxyPort) : 8118;
         return new Proxy(getProxyType(context), new InetSocketAddress(proxyHost, port));
-    }
-
-    public static int getNotificationPriority(Context context) {
-        String prefValue = getPrefs(context).getString(Constants.PREFERENCE_NOTIFICATION_PRIORITY, "");
-        switch (prefValue) {
-            case "0":
-                return 0;
-            case "1":
-                return 1;
-            case "2":
-                return 2;
-            default:
-                return 0;
-        }
-    }
-
-    public static NotificationProvider getNotificationProvider(Context context) {
-        String prefValue = getPrefs(context).getString(Constants.PREFERENCE_NOTIFICATION_PROVIDER, "");
-        switch (prefValue) {
-            case "0":
-                return NotificationProvider.NATIVE;
-            case "1":
-                return NotificationProvider.AURORA;
-            default:
-                return NotificationProvider.AURORA;
-        }
     }
 
     public static Downloader.FileDownloaderType getDownloadStrategy(Context context) {

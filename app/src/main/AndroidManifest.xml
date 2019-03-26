@@ -118,6 +118,7 @@
         <receiver android:name=".receiver.DownloadCancelReceiver" />
         <receiver android:name=".receiver.DownloadPauseReceiver" />
         <receiver android:name=".receiver.DownloadResumeReceiver" />
+        <receiver android:name=".receiver.NotificationDeleteReceiver" />
 
         <service android:name=".installer.SplitService" />
     </application>
