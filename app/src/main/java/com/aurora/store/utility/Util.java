@@ -309,6 +309,10 @@ public class Util {
             return getPrefs(context).getBoolean(Constants.PREFERENCE_INSTALLATION_DELETE, false);
     }
 
+    public static boolean isNativeInstallerEnforced(Context context) {
+        return getPrefs(context).getBoolean(Constants.PREFERENCE_INSTALLATION_TYPE, false);
+    }
+
     public static boolean shouldAutoInstallApk(Context context) {
         return getPrefs(context).getBoolean(Constants.PREFERENCE_INSTALLATION_AUTO, false);
     }

@@ -31,8 +31,16 @@
         app:summary="@string/pref_install_delete_summary"
         app:title="@string/pref_install_delete_title" />
 
+    <SwitchPreferenceCompat
+        app:defaultValue="false"
+        app:disableDependentsState="true"
+        app:key="PREFERENCE_INSTALLATION_TYPE"
+        app:summary="@string/pref_install_type_summary"
+        app:title="@string/pref_install_type_title" />
+
     <ListPreference
         app:defaultValue="0"
+        app:dependency="PREFERENCE_INSTALLATION_TYPE"
         app:entries="@array/pref_installation_method"
         app:entryValues="@array/pref_installation_method_values"
         app:key="PREFERENCE_INSTALLATION_METHOD"

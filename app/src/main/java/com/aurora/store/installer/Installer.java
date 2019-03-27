@@ -57,7 +57,10 @@ public class Installer {
     }
 
     public void install(App app) {
-        installSplit(app.getPackageName(), app.getVersionCode());
+        if (Util.isNativeInstallerEnforced(context))
+            install(app.getPackageName(), app.getVersionCode());
+        else
+            installSplit(app.getPackageName(), app.getVersionCode());
     }
 
     /*
