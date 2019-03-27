@@ -26,6 +26,7 @@
     android:layout_margin="@dimen/margin_xsmall"
     app:cardBackgroundColor="?android:attr/colorBackground"
     app:cardCornerRadius="5dp"
+    app:cardElevation="2dp"
     app:cardPreventCornerOverlap="false"
     app:rippleColor="@color/colorScrim">
 
@@ -37,10 +38,10 @@
             android:id="@+id/app_icon"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:padding="@dimen/margin_small"
             android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/margin_small"
             android:layout_marginBottom="@dimen/margin_xsmall"
-            android:layout_marginTop="@dimen/margin_small" />
+            android:padding="@dimen/margin_small" />
 
         <RelativeLayout
             android:layout_width="match_parent"
