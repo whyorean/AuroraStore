@@ -287,6 +287,7 @@
     <string name="pref_ui_theme_black">Black</string>
     <string name="pref_ui_tab_mode_title">Scrollable tabs</string>
     <string name="pref_ui_tab_mode_summary">Enable to make tabs scrollable, recommended for low-dpi devices</string>
+    <string name="pref_ui_tab_default_title">Select default tab</string>
 
     <string name="testing_program_opt_in">Join</string>
     <string name="testing_program_opt_out">Leave</string>

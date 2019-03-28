@@ -28,6 +28,14 @@
         app:title="@string/pref_ui_theme_title"
         app:useSimpleSummaryProvider="true" />
 
+    <ListPreference
+        app:defaultValue="0"
+        app:entries="@array/pref_default_tab"
+        app:entryValues="@array/pref_default_tab_values"
+        app:key="PREFERENCE_DEFAULT_TAB"
+        app:title="@string/pref_ui_tab_default_title"
+        app:useSimpleSummaryProvider="true" />
+
     <SwitchPreferenceCompat
         app:defaultValue="true"
         app:key="PREFERENCE_UI_CARD_STYLE"

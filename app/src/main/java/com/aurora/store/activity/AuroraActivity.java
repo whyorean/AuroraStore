@@ -45,6 +45,7 @@ import com.aurora.store.fragment.UpdatesFragment;
 import com.aurora.store.utility.Accountant;
 import com.aurora.store.utility.PrefUtil;
 import com.aurora.store.utility.ThemeUtil;
+import com.aurora.store.utility.Util;
 import com.aurora.store.view.CustomViewPager;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -85,6 +86,7 @@ public class AuroraActivity extends AppCompatActivity {
         mThemeUtil.onCreate(this);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        fragmentCur = Util.getDefaultTab(this);
         onNewIntent(getIntent());
 
         if (!PrefUtil.getBoolean(this, Constants.PREFERENCE_DO_NOT_SHOW_INTRO)) {
@@ -223,8 +225,12 @@ public class AuroraActivity extends AppCompatActivity {
             }
             return true;
         });
+
         if (isSearchIntent)
             mBottomNavigationView.setSelectedItemId(R.id.action_search);
+        if (fragmentCur != 0 && !isSearchIntent)
+            mBottomNavigationView.setSelectedItemId(mBottomNavigationView.getMenu()
+                    .getItem(fragmentCur).getItemId());
     }
 
     private void checkPermissions() {

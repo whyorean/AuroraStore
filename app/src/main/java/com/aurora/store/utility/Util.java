@@ -32,7 +32,6 @@ import android.util.TypedValue;
 import androidx.annotation.NonNull;
 
 import com.aurora.store.Constants;
-import com.aurora.store.NotificationProvider;
 import com.aurora.store.R;
 import com.aurora.store.activity.AuroraActivity;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
@@ -137,6 +136,14 @@ public class Util {
     public static long parseLong(String intAsString, long defaultValue) {
         try {
             return Long.parseLong(intAsString);
+        } catch (NumberFormatException e) {
+            return defaultValue;
+        }
+    }
+
+    public static int parseInt(String intAsString, int defaultValue) {
+        try {
+            return Integer.parseInt(intAsString);
         } catch (NumberFormatException e) {
             return defaultValue;
         }
@@ -368,6 +375,11 @@ public class Util {
             default:
                 return Downloader.FileDownloaderType.PARALLEL;
         }
+    }
+
+    public static int getDefaultTab(Context context) {
+        String value = getPrefs(context).getString(Constants.PREFERENCE_DEFAULT_TAB, "0");
+        return parseInt(value,0);
     }
 
     public static void restartApp(Context context) {

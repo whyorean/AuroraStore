@@ -177,6 +177,20 @@
         <item>black</item>
     </string-array>
 
+    <string-array name="pref_default_tab">
+        <item>@string/action_home</item>
+        <item>@string/action_installed</item>
+        <item>@string/action_updates</item>
+        <item>@string/action_search</item>
+    </string-array>
+
+    <string-array name="pref_default_tab_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+
     <string-array name="pref_notification_priority">
         <item>@string/pref_notification_priority_default</item>
         <item>@string/pref_notification_priority_high</item>

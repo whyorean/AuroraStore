@@ -47,6 +47,7 @@ public class Constants {
     public static final String FILTER_DOWNLOADS = "FILTER_DOWNLOADS";
 
     public static final String PREFERENCE_THEME = "PREFERENCE_THEME";
+    public static final String PREFERENCE_DEFAULT_TAB = "PREFERENCE_DEFAULT_TAB";
     public static final String PREFERENCE_UI_CARD_STYLE = "PREFERENCE_UI_CARD_STYLE";
     public static final String PREFERENCE_FEATURED_SNAP = "PREFERENCE_FEATURED_SNAP";
     public static final String PREFERENCE_TAB_MODE = "PREFERENCE_TAB_MODE";

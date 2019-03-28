@@ -48,6 +48,13 @@ public class UIFragment extends PreferenceFragmentCompat implements SharedPrefer
             }
             return true;
         });
+
+        ListPreference defaultTabList = findPreference(Constants.PREFERENCE_DEFAULT_TAB);
+        assert defaultTabList != null;
+        defaultTabList.setOnPreferenceChangeListener((preference, newValue) -> {
+            PrefUtil.putString(context, Constants.PREFERENCE_DEFAULT_TAB, newValue.toString());
+            return true;
+        });
     }
 
     @Override
