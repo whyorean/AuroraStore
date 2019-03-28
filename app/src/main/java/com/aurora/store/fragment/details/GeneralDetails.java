@@ -192,7 +192,10 @@ public class GeneralDetails extends AbstractHelper {
             if (currentVersion.equals(newVersion)) {
                 newVersion = String.valueOf(app.getVersionCode());
             }
-            app_version.setText(newVersion);
+            app_version.setText(new StringBuilder()
+                    .append(currentVersion)
+                    .append(" >> ")
+                    .append(newVersion));
         } catch (PackageManager.NameNotFoundException e) {
             // We've checked for that already
         }
