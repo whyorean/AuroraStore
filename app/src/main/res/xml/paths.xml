@@ -19,6 +19,9 @@
   -->
 
 <paths>
+    <root-path
+        name="apks"
+        path="." />
     <files-path
         name="files"
         path="." />
