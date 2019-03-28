@@ -61,7 +61,6 @@
 <string name="action_unwhitelist">"Ignorar actualizaciones"</string>
 <string name="action_updates">"Actualizaciones"</string>
 <string name="action_whitelist">"Lista Blanca"</string>
-<string name="apps_by">"Aplicaciones por %s"</string>
 <string name="availability_restriction_country">"Este elemento no está disponible en tu país"</string>
 <string name="availability_restriction_generic">"Este elemento no está disponible"</string>
 <string name="availability_restriction_hardware_app">"Tu dispositivo no es compatible con esta versión"</string>
@@ -99,7 +98,7 @@
 <string name="dialog_title_logout">"¿Cerrar sesión?"</string>
 <string name="download_cancel_all">"Cancelar Todo"</string>
 <string name="download_canceled">"Cancelado"</string>
-<string name="download_clear_completed">"Limpieza Completada"</string>
+<string name="download_clear_completed">"Limpiar completados"</string>
 <string name="download_completed">"Completado"</string>
 <string name="download_failed">"Fallido"</string>
 <string name="download_force_clear_all">"Forzar Borrar todo"</string>
@@ -113,11 +112,9 @@
 <string name="error_app_not_found">"Aplicación no encontrada"</string>
 <string name="error_incorrect_password">"Email o contraseña incorrectos"</string>
 <string name="error_invalid_device_definition">"Definición de dispositivo rechazada"</string>
-<string name="error_network_other">"Error de red: %s"</string>
 <string name="error_no_network">"Sin conexión"</string>
 <string name="error_search_not_found">"No se encontró ninguna aplicación coincidente"</string>
 <string name="error_unknown">"Ha ocurrido un error desconocido"</string>
-<string name="exodus_hasTracker">"Contiene %s trackers"</string>
 <string name="exodus_noTracker">"No contiene trackers"</string>
 <string name="exodus_powered">"Ofrecido por Exodus"</string>
 <string name="exodus_title">"Aurora Protect"</string>
@@ -141,7 +138,6 @@
 <string name="list_installed">"Instaladas"</string>
 <string name="list_installed_system">"Mostras aplicaciones de usuario"</string>
 <string name="list_not_installd">"No instaladas"</string>
-<string name="list_selected">"Aplicaciones Seleccionadas : %d"</string>
 <string name="list_update_all">"Actualizar Todo"</string>
 <string name="list_update_all_txt">"Actualizaciones disponibles"</string>
 <string name="list_updating">"Actualizando"</string>
@@ -218,7 +214,6 @@ Ten en cuenta que Google Play Store no admite la descarga de versiones arbitrari
 <string name="title_installed">"Mis Aplicaciones y Juegos"</string>
 <string name="title_perm">"Permisos"</string>
 <string name="title_search">"Buscar Aplicaciones y Juegos"</string>
-<string name="title_search_result">"Resultados para %s"</string>
 <string name="title_updates">"Actualizaciones Disponibles"</string>
 <string name="title_welcome">"Bienvenido"</string>
 <string name="toast_apk_blacklisted">"En la Lista Negra"</string>
@@ -269,4 +264,10 @@ También ofrece una lista de los trackers incrustados en una aplicación."</stri
 <string name="notification_installation_complete">"Instalado correctamente"</string>
 <string name="notification_installation_failed">"Instalación fallida"</string>
 <string name="notification_installation_progress">"Instalando"</string>
+<string name="apps_by">"Aplicaciones por"</string>
+<string name="error_network_other">"Error de red"</string>
+<string name="exodus_hasTracker">"Contiene trackers"</string>
+<string name="list_selected">"Aplicaciones Seleccionadas"</string>
+<string name="notification_installation_auto">"Descargada, pulsa para instalar"</string>
+<string name="title_search_result">"Resultados para"</string>
 </resources>
