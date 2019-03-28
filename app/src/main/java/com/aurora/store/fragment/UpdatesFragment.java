@@ -175,7 +175,7 @@ public class UpdatesFragment extends BaseFragment implements BaseFragment.EventL
                         updatableAppList = appList;
                         pseudoPackageAppMap = getPackageAppMap(appList);
                         if (appList.isEmpty()) {
-                            setErrorView(ErrorType.NO_APPS);
+                            setErrorView(ErrorType.NO_UPDATES);
                             switchViews(true);
                         } else {
                             switchViews(false);
@@ -221,7 +221,9 @@ public class UpdatesFragment extends BaseFragment implements BaseFragment.EventL
     private View.OnClickListener retry() {
         return v -> {
             fetchData();
-            ((Button) v).setText(getString(R.string.action_retry_ing));
+            ((Button) v).setText(updatableAppList.isEmpty()
+                    ? getString(R.string.action_recheck_ing)
+                    : getString(R.string.action_retry_ing));
             ((Button) v).setEnabled(false);
         };
     }

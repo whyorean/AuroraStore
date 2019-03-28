@@ -84,6 +84,8 @@
     <string name="action_more">More</string>
     <string name="action_next">Next</string>
     <string name="action_pause">Pause</string>
+    <string name="action_recheck">Recheck</string>
+    <string name="action_recheck_ing">Rechecking</string>
     <string name="action_remove">Remove</string>
     <string name="action_restart">Restart</string>
     <string name="action_resume">Resume</string>
