@@ -61,7 +61,6 @@
 <string name="action_unwhitelist">"Ignorați actualizările"</string>
 <string name="action_updates">"Actualizări"</string>
 <string name="action_whitelist">"Lista albă"</string>
-<string name="apps_by">"Aplicații de către %s"</string>
 <string name="availability_restriction_country">"Acest articol nu este disponibil în țara dvs."</string>
 <string name="availability_restriction_generic">"Acest element nu este disponibil."</string>
 <string name="availability_restriction_hardware_app">"Dispozitivul dvs. nu este compatibil cu această versiune."</string>
@@ -113,11 +112,9 @@
 <string name="error_app_not_found">"Aplicația nu a fost găsită"</string>
 <string name="error_incorrect_password">"Adresă de e-mail sau parolă incorecte"</string>
 <string name="error_invalid_device_definition">"Definiția dispozitivului a fost respinsă"</string>
-<string name="error_network_other">"Eroare de rețea: %s"</string>
 <string name="error_no_network">"Nu există nicio conexiune la rețea"</string>
 <string name="error_search_not_found">"Nu sa găsit nicio aplicație potrivită"</string>
 <string name="error_unknown">"Sa produs o eroare necunoscută"</string>
-<string name="exodus_hasTracker">"Conține %s trackere"</string>
 <string name="exodus_noTracker">"Nu conține trackere"</string>
 <string name="exodus_powered">"Realizat de Exodus"</string>
 <string name="exodus_title">"Aurora Protect"</string>
@@ -141,7 +138,6 @@
 <string name="list_installed">"instalat"</string>
 <string name="list_installed_system">"Afișați numai aplicațiile pentru utilizatori"</string>
 <string name="list_not_installd">"Nu este instalat"</string>
-<string name="list_selected">"Aplicațiile selectate: %d"</string>
 <string name="list_update_all">"Actualizați toate"</string>
 <string name="list_update_all_txt">"actualizare (e) disponibilă "</string>
 <string name="list_updating">"actualizarea"</string>
@@ -216,7 +212,6 @@
 <string name="title_installed">"Aplicatiile mele"</string>
 <string name="title_perm">"Permisiuni"</string>
 <string name="title_search">"Căutați aplicații"</string>
-<string name="title_search_result">"Rezultate pentru %s"</string>
 <string name="title_updates">"Actualizări disponibile"</string>
 <string name="title_welcome">"Bine ati venit"</string>
 <string name="toast_apk_blacklisted">"Pe lista neagră"</string>
