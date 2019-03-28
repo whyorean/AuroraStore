@@ -61,7 +61,6 @@
 <string name="action_unwhitelist">"Ігнорувати оновлення"</string>
 <string name="action_updates">"Оновлення"</string>
 <string name="action_whitelist">"Білий список"</string>
-<string name="apps_by">"Програми від %s"</string>
 <string name="availability_restriction_country">"Недоступно у вашій країні."</string>
 <string name="availability_restriction_generic">"Недоступно."</string>
 <string name="availability_restriction_hardware_app">"Ваш пристрій не сумісний з цією версією."</string>
@@ -113,11 +112,9 @@
 <string name="error_app_not_found">"Програму не знайдено"</string>
 <string name="error_incorrect_password">"Неправильна адреса електронної пошти чи пароль"</string>
 <string name="error_invalid_device_definition">"Визначення пристрою відхилено"</string>
-<string name="error_network_other">"Помилка мережі: %s"</string>
 <string name="error_no_network">"Немає мережного підключення"</string>
 <string name="error_search_not_found">"Не знайдено відповідних програм"</string>
 <string name="error_unknown">"Сталася невідома помилка"</string>
-<string name="exodus_hasTracker">"Містить %s трекерів"</string>
 <string name="exodus_noTracker">"Не містить трекерів"</string>
 <string name="exodus_powered">"Працює на Exodus"</string>
 <string name="exodus_title">"Aurora Protect"</string>
@@ -141,7 +138,6 @@
 <string name="list_installed">"Встановлено"</string>
 <string name="list_installed_system">"Показувати лише користувацькі програми"</string>
 <string name="list_not_installd">"Не встановлено"</string>
-<string name="list_selected">"Вибрані програми: %d"</string>
 <string name="list_update_all">"Оновити все"</string>
 <string name="list_update_all_txt">"доступно оновлень"</string>
 <string name="list_updating">"Оновлення"</string>
@@ -155,9 +151,6 @@
 <string name="menu_setting">"Налаштування"</string>
 <string name="menu_terms">"Умови"</string>
 <string name="no_permissions">"Дозволи не використовуються."</string>
-<string name="notification_installation_complete">"Успішно встановлено %s"</string>
-<string name="notification_installation_failed">"Не вдалося встановити %s"</string>
-<string name="notification_installation_progress">"Встановлення %s"</string>
 <string name="pref_app_download">"Завантаження"</string>
 <string name="pref_app_network">"Мережа"</string>
 <string name="pref_app_notification">"Сповіщення"</string>
@@ -219,7 +212,6 @@
 <string name="title_installed">"Програми та ігри"</string>
 <string name="title_perm">"Дозволи"</string>
 <string name="title_search">"Пошук програм та ігр"</string>
-<string name="title_search_result">"Результати для %s"</string>
 <string name="title_updates">"Доступні оновлення"</string>
 <string name="title_welcome">"Ласкаво просимо"</string>
 <string name="toast_apk_blacklisted">"Чорний список"</string>
