@@ -61,7 +61,6 @@
 <string name="action_unwhitelist">"Αγνόησε τις ενημερώσεις"</string>
 <string name="action_updates">"Ενημερώσεις"</string>
 <string name="action_whitelist">"Λευκή λίστα"</string>
-<string name="apps_by">"Εφαρμογές από %s"</string>
 <string name="availability_restriction_country">"Αυτό το αντικείμενο δεν είναι διαθέσιμο στην χώρα σας."</string>
 <string name="availability_restriction_generic">"Αυτό το αντικείμενο δεν είναι διαθέσιμο."</string>
 <string name="availability_restriction_hardware_app">"Η συσκευή σας δεν είναι συμβατή με αυτήν την έκδοση."</string>
@@ -113,11 +112,9 @@
 <string name="error_app_not_found">"Η εφαρμογή δεν βρέθηκε"</string>
 <string name="error_incorrect_password">"Λανθασμένο email ή κωδικός πρόσβασης"</string>
 <string name="error_invalid_device_definition">"Απορρίφθηκε το όρισμα συσκευής"</string>
-<string name="error_network_other">"Σφάλμα δικτύου: %s"</string>
 <string name="error_no_network">"Δεν υπάρχει σύνδεση δικτύου"</string>
 <string name="error_search_not_found">"Δεν βρέθηκε αντίστοιχη εφαρμογή"</string>
 <string name="error_unknown">"Άγνωστο Σφάλμα"</string>
-<string name="exodus_hasTracker">"Περιέχει %s ιχνηλάτες"</string>
 <string name="exodus_noTracker">"Δεν περιέχει ιχνηλάτες"</string>
 <string name="exodus_powered">"Powered by Exodus"</string>
 <string name="exodus_title">"Προστασία Aurora"</string>
@@ -141,7 +138,6 @@
 <string name="list_installed">"Εγκατεστημένες"</string>
 <string name="list_installed_system">"Προβολή εφαρμογών χρήστη μόνο"</string>
 <string name="list_not_installd">"Μη εγκατεστημένη"</string>
-<string name="list_selected">"Επιλεγμένες εφαρμογές: %d"</string>
 <string name="list_update_all">"Ενημέρωση Όλων"</string>
 <string name="list_update_all_txt">"ενημερώσεις διαθέσιμες"</string>
 <string name="list_updating">"Γίνεται ενημέρωση"</string>
@@ -218,7 +214,6 @@
 <string name="title_installed">"Οι εφαρμογές &amp; τα Παιχνίδια μου"</string>
 <string name="title_perm">"Άδειες"</string>
 <string name="title_search">"Αναζήτηση Εφαρμογών &amp; Παιχνιδιών"</string>
-<string name="title_search_result">"Αποτελέσματα για %s"</string>
 <string name="title_updates">"Διαθέσιμες Ενημερώσεις"</string>
 <string name="title_welcome">"Καλωσήρθατε"</string>
 <string name="toast_apk_blacklisted">"Στην μάυρη λίστα"</string>
@@ -235,8 +230,8 @@
 <string name="pref_ui_tab_mode_title">"Καρτέλες με δυνατότητα κύλισης"</string>
 <string name="pref_ui_tab_mode_summary">"Ενεργοποιήστε για να έχετε καρτέλες με δυνατότητα κύλισης, συνιστάται για συσκευές με χαμηλό dpi"</string>
 <string name="about_app">"Το Aurora μία ανοιχτού κώδικα εναλλακτική εφαρμογή για το Play Store.
-Επιτρέπει την λήψη εφαρμογών, παρέχει ενημερώσεις στις εγκατεστημένες εφαρμογές και επιτρέπει την αναζήτηση εφαρμογών &amp; παιχνιδιών.
-Επιτρέπει επίσης μία λίστα ιχνηλατών ενσωματωμένες σε μία εφαρμογή."</string>
+        Επιτρέπει την λήψη εφαρμογών, παρέχει ενημερώσεις στις εγκατεστημένες εφαρμογές και επιτρέπει την αναζήτηση εφαρμογών &amp; παιχνιδιών.
+        Επιτρέπει επίσης μία λίστα ιχνηλατών ενσωματωμένες σε μία εφαρμογή."</string>
 <string name="about_paypal">"PayPal"</string>
 <string name="about_paypal_summary">"Κάντε μου μία δωρεά στο PayPal"</string>
 <string name="about_fdroid">"F-Droid"</string>
@@ -248,7 +243,7 @@
 <string name="about_xda">"Dev Thread"</string>
 <string name="about_xda_summary">"Δείτε το νήμα του AuroraStore στο XDA για συζητήσεις ή προτάσεις."</string>
 <string name="action_about">"Σχετικά με μένα"</string>
-<string name="pref_downloader_strategy_summary">"Επιλογή προεπιλεγμένης στρατηγικής λήψης, προετείνεται η Παράλληλη Στρατηγική για γρηγορότερη λήψη"</string>
+<string name="pref_downloader_strategy_summary">"Επιλογή προεπιλεγμένης στρατηγικής λήψης, προτείνεται η Παράλληλη Στρατηγική για γρηγορότερη λήψη"</string>
 <string name="pref_downloader_strategy_title">"Στρατηγική Λήψης"</string>
 <string name="pref_downloader_strategy_sequential">"Διαδοχική Λήψη"</string>
 <string name="pref_downloader_strategy_parallel">"Παράλληλη Λήψη ()"</string>
@@ -264,9 +259,16 @@
 <string name="pref_ui_theme_light">"Φωτεινό"</string>
 <string name="pref_ui_theme_dark">"Σκοτεινό"</string>
 <string name="pref_ui_theme_black">"Μαύρο"</string>
-<string name="action_close"></string>
-<string name="list_update_all_queue_txt"></string>
-<string name="notification_installation_complete"></string>
-<string name="notification_installation_failed"></string>
-<string name="notification_installation_progress"></string>
+<string name="action_close">"Κλείσιμο"</string>
+<string name="list_update_all_queue_txt">"ενημερώσεις στην ουρά"</string>
+<string name="notification_installation_complete">"Εγκαταστάθηκε Επιτυχώς"</string>
+<string name="notification_installation_failed">"Η εγκατάσταση απέτυχε"</string>
+<string name="notification_installation_progress">"Εγκαθιστάται"</string>
+<string name="apps_by">"Εφαρμογές από"</string>
+<string name="error_network_other">"Σφάλμα δικτύου"</string>
+<string name="exodus_hasTracker">"Περιέχει ιχνηλάτες"</string>
+<string name="list_selected">"Επιλεγμένες Εφαρμογές"</string>
+<string name="notification_installation_auto">"Έγινε λήψη, πατήστε για εγκατάσταση"</string>
+<string name="notification_installation_manual">"Bundled αρχείο APK, απαιτείται χειροκίνητη ενέργεια"</string>
+<string name="title_search_result">"Αποτελέσματα για"</string>
 </resources>
