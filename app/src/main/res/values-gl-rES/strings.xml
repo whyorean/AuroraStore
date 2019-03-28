@@ -61,7 +61,6 @@
 <string name="action_unwhitelist">"Ignorar as actualizacións"</string>
 <string name="action_updates">"Actualizacións"</string>
 <string name="action_whitelist">"Lista branca"</string>
-<string name="apps_by">"Aplicacións por %s"</string>
 <string name="availability_restriction_country">"Este elemento non está dispoñible no teu país."</string>
 <string name="availability_restriction_generic">"Este elemento non está dispoñible."</string>
 <string name="availability_restriction_hardware_app">"O teu dispositivo non é compatible con esta versión."</string>
@@ -79,7 +78,7 @@
 <string name="desc_perm">"Aurora Store utiliza os seguintes permisos"</string>
 <string name="details_appReviewsAll">"Ler todas as opinións"</string>
 <string name="details_contains_ads">"Contén anuncios"</string>
-<string name="details_download">"Descarga"</string>
+<string name="details_download">"Descargar"</string>
 <string name="details_favourite_add">"Engadir a favoritos"</string>
 <string name="details_favourite_remove">"Eliminar de favoritos"</string>
 <string name="details_install">"Instalar"</string>
@@ -99,7 +98,7 @@
 <string name="dialog_title_logout">"Pechar sesión?"</string>
 <string name="download_cancel_all">"Cancelar todo"</string>
 <string name="download_canceled">"Cancelado"</string>
-<string name="download_clear_completed">"Limpeza Rematada"</string>
+<string name="download_clear_completed">"Limpar Rematados"</string>
 <string name="download_completed">"Completado"</string>
 <string name="download_failed">"Error"</string>
 <string name="download_force_clear_all">"Forzar Limpar Todo"</string>
@@ -113,11 +112,9 @@
 <string name="error_app_not_found">"Non se atopou a aplicación"</string>
 <string name="error_incorrect_password">"Correo electrónico ou contrasinal incorrecto"</string>
 <string name="error_invalid_device_definition">"Rexeitouse a definición do dispositivo"</string>
-<string name="error_network_other">"Erro de rede: %s"</string>
 <string name="error_no_network">"Non hai conexión de rede"</string>
 <string name="error_search_not_found">"Non se atopou ningunha aplicación coincidente"</string>
 <string name="error_unknown">"Produciuse un erro descoñecido"</string>
-<string name="exodus_hasTracker">"Contén %s trackers"</string>
 <string name="exodus_noTracker">"Non contén trackers"</string>
 <string name="exodus_powered">"Ofrecido por Exodus"</string>
 <string name="exodus_title">"Aurora Protect"</string>
@@ -141,7 +138,6 @@
 <string name="list_installed">"Instalado"</string>
 <string name="list_installed_system">"Mostrar só as aplicacións de usuario"</string>
 <string name="list_not_installd">"Non instalado"</string>
-<string name="list_selected">"Aplicacións Seleccionadas: %d"</string>
 <string name="list_update_all">"Actualizar Todo"</string>
 <string name="list_update_all_txt">"actualización(s) dispoñible(s)"</string>
 <string name="list_updating">"Actualizando"</string>
@@ -215,11 +211,10 @@ Lembra que Google Play Store non admite a descarga de versións arbitrarias de a
 <string name="testing_program_section_opted_out_title">"Convértete nun beta tester"</string>
 <string name="title_all_apps">"Todas as aplicacións"</string>
 <string name="title_home">"Aurora Store"</string>
-<string name="title_installed">"As miñas Aplicacións e Xogos"</string>
+<string name="title_installed">"Aplicacións"</string>
 <string name="title_perm">"Permisos"</string>
 <string name="title_search">"Buscar Aplicacións e Xogos"</string>
-<string name="title_search_result">"Resultados para %s"</string>
-<string name="title_updates">"Actualizacións Dispoñibles"</string>
+<string name="title_updates">"Actualizacións"</string>
 <string name="title_welcome">"Benvido"</string>
 <string name="toast_apk_blacklisted">"Na Lista Negra"</string>
 <string name="toast_apk_whitelisted">"Na Lista Branca"</string>
@@ -244,7 +239,7 @@ Tamén prové unha lista de trackers incluídos nunha aplicación."</string>
 <string name="about_gitlab_summary">"Obtén o código fonte en GitLab."</string>
 <string name="about_telegram">"Telegram"</string>
 <string name="about_telegram_summary">"Unirse ao grupo de Telegram para discusións e suxerencias."</string>
-<string name="about_fdroid_summary">"Obter Aurora en F-Droid"</string>
+<string name="about_fdroid_summary">"Obtén Aurora en F-Droid"</string>
 <string name="about_xda">"Fío de Desenvolvemento"</string>
 <string name="about_xda_summary">"Ver o fío de XDA para discusións e suxerencias."</string>
 <string name="action_about">"Acerca de"</string>
@@ -269,4 +264,10 @@ Tamén prové unha lista de trackers incluídos nunha aplicación."</string>
 <string name="notification_installation_complete">"Instalado Correctamente"</string>
 <string name="notification_installation_failed">"Erro ao Instalar"</string>
 <string name="notification_installation_progress">"Instalando"</string>
+<string name="apps_by">"Aplicacións por"</string>
+<string name="error_network_other">"Erro de rede"</string>
+<string name="exodus_hasTracker">"Contén trackers"</string>
+<string name="list_selected">"Aplicacións Seleccionadas"</string>
+<string name="notification_installation_auto">"Descargada, pulsa para instalar"</string>
+<string name="title_search_result">"Resultados para"</string>
 </resources>
