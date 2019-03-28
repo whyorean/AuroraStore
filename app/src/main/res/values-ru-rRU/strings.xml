@@ -20,7 +20,7 @@
 <string name="action_done">"Готово"</string>
 <string name="action_enable">"Включить"</string>
 <string name="action_export">"Экспортировать"</string>
-<string name="action_favourites">"Избранные приложения"</string>
+<string name="action_favourites">"Избранное"</string>
 <string name="action_filter">"Фильтры"</string>
 <string name="action_filter_all">"Все"</string>
 <string name="action_filter_apply">"Применить"</string>
@@ -32,9 +32,11 @@
 <string name="action_filter_rating">"Рейтинги"</string>
 <string name="action_flag">"Пожаловаться"</string>
 <string name="action_get_local_apk">"Сохранить установленный APK файл"</string>
-<string name="action_home">"Домой"</string>
+<string name="action_home">"Витрина"</string>
 <string name="action_installations">"Установка"</string>
-<string name="action_installed">"Приложения"</string>
+
+<!-- Там приложения и игры. Есть путаница с приложениями из маркета. Может "установленные?" -->
+<string name="action_installed">"Установленные"</string>
 <string name="action_later">"Позже"</string>
 <string name="action_logging_in">"Вход в систему"</string>
 <string name="action_login">"Войти"</string>
@@ -44,6 +46,8 @@
 <string name="action_manual">"Загрузить вручную"</string>
 <string name="action_more">"Ещё"</string>
 <string name="action_next">"Дальше"</string>
+
+<!-- С учётом "перезапустить" и "возобновить" по смыслу и по виду оптимальнее будет не пауза, а именно "приостановить". Больше по виду. -->
 <string name="action_pause">"Пауза"</string>
 <string name="action_remove">"Удалить"</string>
 <string name="action_restart">"Перезапустить"</string>
@@ -61,7 +65,6 @@
 <string name="action_unwhitelist">"Игнорировать обновления"</string>
 <string name="action_updates">"Обновления"</string>
 <string name="action_whitelist">"Белый список"</string>
-<string name="apps_by">"Приложения от %s"</string>
 <string name="availability_restriction_country">"Недоступно в вашей стране."</string>
 <string name="availability_restriction_generic">"Недоступно."</string>
 <string name="availability_restriction_hardware_app">"Ваше устройство не совместимо с данной версией."</string>
@@ -70,7 +73,7 @@
 <string name="category_topGrossing">"Бестселлеры"</string>
 <string name="category_trending">"Популярные"</string>
 <string name="chip_all_apps">"Все категории"</string>
-<string name="chip_all_family">"Для всей семьи"</string>
+<string name="chip_all_family">"Семейные"</string>
 <string name="chip_all_games">"Все игры"</string>
 <string name="chip_top_free">"Топ бесплатных"</string>
 <string name="chip_top_grossing">"Бестселлеры"</string>
@@ -86,7 +89,7 @@
 <string name="details_installing">"Установка"</string>
 <string name="details_more">"Читать дальше"</string>
 <string name="details_no_ads">"Без рекламы"</string>
-<string name="details_permissions">"Разрешения приложений"</string>
+<string name="details_permissions">"Разрешения приложения"</string>
 <string name="details_purchase">"Купить"</string>
 <string name="details_rate_this_app">"Оцените это приложение"</string>
 <string name="details_rating_reviews">"Рейтинги и обзоры"</string>
@@ -99,7 +102,7 @@
 <string name="dialog_title_logout">"Выйти?"</string>
 <string name="download_cancel_all">"Отменить все"</string>
 <string name="download_canceled">"Отменен"</string>
-<string name="download_clear_completed">"Очистка завершена"</string>
+<string name="download_clear_completed">"Очистить всё"</string>
 <string name="download_completed">"Загружено"</string>
 <string name="download_failed">"Не удалось скачать"</string>
 <string name="download_force_clear_all">"Принудительно очистить всё"</string>
@@ -113,17 +116,20 @@
 <string name="error_app_not_found">"Приложение не найдено"</string>
 <string name="error_incorrect_password">"Неверный email или пароль"</string>
 <string name="error_invalid_device_definition">"Некорректная информация об устройстве"</string>
-<string name="error_network_other">"Ошибка соединения: %s"</string>
 <string name="error_no_network">"Нет соединения"</string>
 <string name="error_search_not_found">"Не найдено"</string>
 <string name="error_unknown">"Неизвестная ошибка"</string>
-<string name="exodus_hasTracker">"Содержит трекеров:  %s"</string>
-<string name="exodus_noTracker">"Не содержит трекеры"</string>
-<string name="exodus_powered">"Использует Exodus"</string>
-<string name="exodus_title">"Aurora Protect"</string>
-<string name="exodus_title_alt">"Отчёт от Exodus"</string>
+<string name="exodus_noTracker">"Не содержит трекеров"</string>
+<string name="exodus_powered">"При поддержке Exodus"</string>
+
+<!-- Стрёмно как ни крути. Может вообще не переводить ? -->
+<string name="exodus_title">"Защита Aurora"</string>
+
+<!-- Логичее "Отчёт exodus" без "от", так как exodus не является персоной.
+https://exodus-privacy.eu.org/en/. Это как "отчёт от аваста" получается =) -->
+<string name="exodus_title_alt">"Отчёт Exodus"</string>
 <string name="exodus_viewMore">"Просмотр"</string>
-<string name="exodus_viewReport">"Посмотреть отчет"</string>
+<string name="exodus_viewReport">"Посмотреть отчёт"</string>
 <string name="flagging_title">"Отметить как неприемлемое"</string>
 <string name="list_app_blacklisted_empty">"В чёрном списке нет приложений"</string>
 <string name="list_app_depends_on_gsf">"Зависит от GSF"</string>
@@ -132,18 +138,23 @@
 <string name="list_app_no_ads">"Без рекламы"</string>
 <string name="list_app_system">"Системное приложение"</string>
 <string name="list_app_user">"Пользовательское приложение"</string>
-<string name="list_blacklist">"Приложения в чёрном списке"</string>
-<string name="list_blacklist_none">"В чёрном списке нет приложений"</string>
+
+<!-- "Приложения в чёрном списке" слишком длинно. Даже на не маленьких устройствах переносится на вторую строку -->
+<string name="list_blacklist">"В чёрном списке"</string>
+
+<!-- см. "Blacklisted Apps" -->
+<string name="list_blacklist_none">"Чёрный список пуст"</string>
 <string name="list_bulk_install">"приложений в очереди на установку"</string>
 <string name="list_empty_fav">"Список избранного пуст"</string>
 <string name="list_empty_query">"История поиска отсутствует"</string>
 <string name="list_empty_updates">"Нет доступных обновлений"</string>
-<string name="list_installed">"Установленые"</string>
+
+<!-- нн -->
+<string name="list_installed">"Установленные"</string>
 
 <!-- Скрыть системные shorten than показывать пользовательские -->
 <string name="list_installed_system">"Скрыть системные приложения"</string>
 <string name="list_not_installd">"Не установлено"</string>
-<string name="list_selected">"Выделено: %d"</string>
 <string name="list_update_all">"Обновить всё"</string>
 
 <!-- Required declension -->
@@ -181,11 +192,15 @@
 <string name="pref_downloader_debug_summary">"Включите отладку процесса загрузки, чтобы получить подробные логи"</string>
 <string name="pref_downloader_debug_title">"Отладка процесса скачивания"</string>
 <string name="pref_downloader_path_title">"Папка загрузок"</string>
-<string name="pref_downloader_wifi_title">"Скачивать только используя Wi-Fi"</string>
+
+<!-- Немного резало глаза "только используя" -->
+<string name="pref_downloader_wifi_title">"Скачивать используя только  Wi-Fi"</string>
 <string name="pref_filter_fdroid_summary">"Не показывать приложения из F-Droid в списках приложений"</string>
-<string name="pref_filter_fdroid_title">"Скрывать приложеня из F-Droid"</string>
+<string name="pref_filter_fdroid_title">"Скрывать приложения из F-Droid"</string>
 <string name="pref_filter_google_summary">"Убирает все приложения Google из результатов поиска и категорий"</string>
-<string name="pref_filter_google_title">"Скрывать приложения Gapps"</string>
+
+<!-- "Приложения gapps" звучит как: "приложения гугл приложения". Gapps это уже google apps. Так что или "скрывать gapps" или "скрывать приложения google". ИМХО -->
+<string name="pref_filter_google_title">"Скрывать приложения Google"</string>
 <string name="pref_filter_search_summary">"Сбрасывать фильтры поиска при каждом новом поиске. Отключите, чтобы фильтры сохранялись"</string>
 
 <!-- Invert toggle. "Use persistent search filter (○   )" -->
@@ -198,7 +213,7 @@
 <string name="pref_install_mode_title">"Способ установки"</string>
 
 <!-- Maybe more description -->
-<string name="pref_notification_priority_summary">"Приоритет уведомлений"</string>
+<string name="pref_notification_priority_summary">"Установка уровня приоритета для уведомлений"</string>
 <string name="pref_notification_priority_title">"Приоритет уведомлений"</string>
 <string name="pref_notification_summary">"Включить уведомления Aurora"</string>
 <string name="pref_notification_title">"Показывать уведомления"</string>
@@ -206,6 +221,8 @@
 <string name="pref_proxy_host">"Адрес"</string>
 <string name="pref_proxy_port">"Порт"</string>
 <string name="pref_proxy_type">"Тип прокси"</string>
+
+<!-- Теряется смысл назначения опции с текущим переводом. -->
 <string name="pref_requested_language">"Изменить требуемый по умолчанию язык"</string>
 <string name="pref_requested_language_default">"Ваш язык по умолчанию"</string>
 <string name="pref_requested_location_disable">"Вам необходимо вручную отключить использование фиктивных местоположений из параметров для разработчиков, для полного отключения функции."</string>
@@ -218,7 +235,7 @@
 <string name="pref_ui_theme_title">"Тема оформления"</string>
 <string name="testing_program_opt_in">"Присоединиться"</string>
 <string name="testing_program_opt_out">"Выйти"</string>
-<string name="testing_program_review_dialog_content_hint">"Напишите отзыв о приложении"</string>
+<string name="testing_program_review_dialog_content_hint">"Оставьте отзыв о приложении"</string>
 <string name="testing_program_section_opted_in_message">"Обновления приложения будут включать бета-версии. Если вы покинете программу бета-тестирования данного приложения, вы больше не будете получать тестируемые версии в обновлениях."</string>
 <string name="testing_program_section_opted_in_propagating_message">"В течение нескольких минут вы будете зарегистрированы в программе бета-тестирования. После этого вы сможете обновлять приложение до тестируемых версий, если они доступны."</string>
 <string name="testing_program_section_opted_in_title">"Вы — бета-тестер"</string>
@@ -227,12 +244,15 @@
 <string name="testing_program_section_opted_out_title">"Стать бета-тестером"</string>
 <string name="title_all_apps">"Все приложения"</string>
 <string name="title_home">"Aurora Store"</string>
-<string name="title_installed">"Мои приложения и игры"</string>
+
+<!-- Не надо добавлять "Мои", не на каждом устройстве эта надпись влазит полностью -->
+<string name="title_installed">"Приложения и игры"</string>
 <string name="title_perm">"Разрешения"</string>
 <string name="title_search">"Поиск приложений и игр"</string>
-<string name="title_search_result">"Результаты для %s"</string>
-<string name="title_updates">"Доступны обновления"</string>
+<string name="title_updates">"Доступные обновления"</string>
 <string name="title_welcome">"Добро пожаловать"</string>
+
+<!-- А это где вообще отображается ? -->
 <string name="toast_apk_blacklisted">"Добавлено в чёрный список"</string>
 <string name="toast_apk_whitelisted">"Добавлено в белый список"</string>
 <string name="toast_apk_copy_success">"Apk-файл успешно скопирован"</string>
@@ -245,7 +265,7 @@
 <string name="tab_games">"Игры"</string>
 
 <!-- Or "Семейные" -->
-<string name="tab_family">"Для всей семьи"</string>
+<string name="tab_family">"Семейные"</string>
 <string name="pref_ui_tab_mode_title">"Прокручиваемые вкладки"</string>
 <string name="pref_ui_tab_mode_summary">"Делает вкладки прокручиваемыми, рекомендуется для устройств с маленьким разрешением"</string>
 <string name="about_app">"Aurora - это альтернатива Play Store с открытым исходным кодом.
@@ -259,14 +279,16 @@
 <string name="about_telegram">"Telegram"</string>
 <string name="about_telegram_summary">"Присоединяйтесь к обсуждению или вносите предложения в группе поддержки."</string>
 <string name="about_fdroid_summary">"Скачать Aurora из репозитория F-Droid"</string>
-<string name="about_xda">"Тема разработчика"</string>
+<string name="about_xda">"XDA"</string>
 <string name="about_xda_summary">"Присоединяйтесь к обсуждению или вносите предложения в теме разработчика на XDA."</string>
 <string name="action_about">"О программе"</string>
 <string name="pref_downloader_strategy_summary">"Выберите метод скачивания по умолчанию, рекомендуется метод параллельного скачивания, как более быстрый."</string>
 <string name="pref_downloader_strategy_title">"Метод скачивания"</string>
 <string name="pref_downloader_strategy_sequential">"Последовательное скачивание"</string>
 <string name="pref_downloader_strategy_parallel">"Параллельное скачивание (раздельное)"</string>
-<string name="pref_install_mode_native">"Обычный"</string>
+
+<!-- Длинно, зато отражает смысл и влазит без проблем -->
+<string name="pref_install_mode_native">"Стандартный диалог установки"</string>
 <string name="pref_install_mode_root">"С использованием root"</string>
 <string name="pref_notification_priority_default">"По-умолчанию"</string>
 <string name="pref_notification_priority_high">"Высокий"</string>
@@ -278,4 +300,16 @@
 <string name="pref_ui_theme_light">"Светлая тема"</string>
 <string name="pref_ui_theme_dark">"Тёмная тема"</string>
 <string name="pref_ui_theme_black">"Чёрная тема"</string>
+<string name="action_close">"Закрыть"</string>
+<string name="list_update_all_queue_txt">"обновлений в очереди"</string>
+<string name="notification_installation_complete">"Успешно установлено"</string>
+<string name="notification_installation_failed">"Не удалось установить"</string>
+<string name="notification_installation_progress">"Устанавливается"</string>
+<string name="apps_by">"Приложения от"</string>
+<string name="error_network_other">"Ошибка соединения"</string>
+<string name="exodus_hasTracker">"Содержит трекеры"</string>
+<string name="list_selected">"Выбранные приложения"</string>
+<string name="notification_installation_auto">"Загружено, коснитесь для установки"</string>
+<string name="notification_installation_manual">"Предустановленное приложение, требуется участие пользователя"</string>
+<string name="title_search_result">"Результаты для"</string>
 </resources>
