@@ -38,7 +38,7 @@
 <string name="action_get_local_apk">"Obtenir l'APK Local"</string>
 <string name="action_home">"Accueil"</string>
 <string name="action_installations">"Installations"</string>
-<string name="action_installed">"installée"</string>
+<string name="action_installed">"Installées"</string>
 <string name="action_later">"Plus tard"</string>
 <string name="action_logging_in">"Se connecter"</string>
 <string name="action_login">"S'identifier"</string>
@@ -65,19 +65,18 @@
 <string name="action_unwhitelist">"Ignorer les mises à jour"</string>
 <string name="action_updates">"Mises à jour"</string>
 <string name="action_whitelist">"Liste blanche"</string>
-<string name="apps_by">"Applications de %s"</string>
 <string name="availability_restriction_country">"Cet article n'est pas disponible dans votre pays."</string>
 <string name="availability_restriction_generic">"Cet article n'est pas disponible."</string>
 <string name="availability_restriction_hardware_app">"Votre appareil n'est pas compatible avec cette version."</string>
 <string name="category_appFree">"Gratuit"</string>
 <string name="category_topFree">"Top gratuit"</string>
-<string name="category_topGrossing">"Top payant"</string>
+<string name="category_topGrossing">"Top rentable"</string>
 <string name="category_trending">"Tendances"</string>
 <string name="chip_all_apps">"Toutes catégories"</string>
 <string name="chip_all_family">"Toute la famille"</string>
 <string name="chip_all_games">"Tous les jeux"</string>
 <string name="chip_top_free">"Top gratuit"</string>
-<string name="chip_top_grossing">"Top payant"</string>
+<string name="chip_top_grossing">"Top rentable"</string>
 <string name="chip_top_trending">"Tendances"</string>
 <string name="delete">"Effacer"</string>
 <string name="desc_perm">"Aurora Store utilise les autorisations suivantes"</string>
@@ -117,12 +116,10 @@
 <string name="error_app_not_found">"App introuvable"</string>
 <string name="error_incorrect_password">"Email ou mot de passe incorrect"</string>
 <string name="error_invalid_device_definition">"Définition du périphérique rejetée"</string>
-<string name="error_network_other">"Erreur réseau: %s"</string>
 <string name="error_no_network">"Pas de connexion réseau"</string>
 <string name="error_search_not_found">"Aucune application correspondante trouvée"</string>
 <string name="error_unknown">"Une erreur inconnue s'est produite"</string>
-<string name="exodus_hasTracker">"Contient %s trackers"</string>
-<string name="exodus_noTracker">"Ne contient pas de trackers"</string>
+<string name="exodus_noTracker">"Ne contient pas de traqueurs"</string>
 <string name="exodus_powered">"Propulsé par Exodus"</string>
 <string name="exodus_title">"Aurora Protect"</string>
 <string name="exodus_title_alt">"Rapporter à Exodus"</string>
@@ -145,9 +142,8 @@
 <string name="list_installed">"Installée"</string>
 <string name="list_installed_system">"N'afficher que les applications utilisateur"</string>
 <string name="list_not_installd">"Pas installé"</string>
-<string name="list_selected">"Applications sélectionnées: %d"</string>
 <string name="list_update_all">"Tout mettre à jour"</string>
-<string name="list_update_all_txt">"mise à jour disponible"</string>
+<string name="list_update_all_txt">"mise(s) à jour disponible(s)"</string>
 <string name="list_updating">"Mise à jour"</string>
 <string name="manual_download_disclaimer">"Avertissement"</string>
 <string name="manual_download_incompatible">"Google Play Store considère cette application incompatible avec votre appareil. Cela signifie que le code de version n'a pas été renvoyé par le serveur Google Play Store."</string>
@@ -222,7 +218,6 @@ Gardez à l'esprit que le téléchargement de versions arbitraires d'application
 <string name="title_installed">"Mes applications &amp; Jeux"</string>
 <string name="title_perm">"Permissions"</string>
 <string name="title_search">"Rechercher des Applications &amp; Jeux"</string>
-<string name="title_search_result">"Résultats pour %s"</string>
 <string name="title_updates">"Mises à jour disponibles"</string>
 <string name="title_welcome">"Bienvenue"</string>
 <string name="toast_apk_blacklisted">"Sur liste noire"</string>
@@ -242,7 +237,7 @@ Gardez à l'esprit que le téléchargement de versions arbitraires d'application
 <string name="pref_ui_tab_mode_summary">"Activer pour rendre les onglets déroulants, recommandé pour les appareils à faible résolution"</string>
 <string name="about_app">"Aurora est une alternative open source du Play Store.
 Elle vous permet de télécharger des applications, fournit des mises à jour des applications installées et vous permet de rechercher des applications et des jeux.
-Elle fournit également une liste de trackers intégrés dans une application."</string>
+Elle fournit également une liste de traqueurs intégrés dans une application."</string>
 <string name="about_paypal">"Paypal"</string>
 <string name="about_paypal_summary">"Faire un don sur Paypal"</string>
 <string name="about_fdroid">"F-Droid"</string>
@@ -271,8 +266,15 @@ Elle fournit également une liste de trackers intégrés dans une application."<
 <string name="pref_ui_theme_dark">"Sombre"</string>
 <string name="pref_ui_theme_black">"Noir"</string>
 <string name="action_close">"Fermer"</string>
-<string name="list_update_all_queue_txt">"Mise à jour en attente"</string>
+<string name="list_update_all_queue_txt">"Mise(s) à jour en attente"</string>
 <string name="notification_installation_complete">"Installation réussie"</string>
 <string name="notification_installation_failed">"Echec de l'installation"</string>
 <string name="notification_installation_progress">"Installation"</string>
+<string name="apps_by">"Apps par"</string>
+<string name="error_network_other">"Erreur de réseau"</string>
+<string name="exodus_hasTracker">"Contient des traqueurs"</string>
+<string name="list_selected">"Apps sélectionnées"</string>
+<string name="notification_installation_auto">"Téléchargé, cliquez pour installer"</string>
+<string name="notification_installation_manual">"Apk en kit, action manuelle requise"</string>
+<string name="title_search_result">"Résultats pour"</string>
 </resources>
