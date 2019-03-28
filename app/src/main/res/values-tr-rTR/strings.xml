@@ -61,7 +61,6 @@
 <string name="action_unwhitelist">"Güncellemeleri yoksay"</string>
 <string name="action_updates">"Güncellemeler"</string>
 <string name="action_whitelist">"Beyaz liste"</string>
-<string name="apps_by">" %s tarafından sunulan uygulamalar"</string>
 <string name="availability_restriction_country">"Bu ürün ülkenizde mevcut değil."</string>
 <string name="availability_restriction_generic">"Bu öğe mevcut değil."</string>
 <string name="availability_restriction_hardware_app">"Cihazınız bu sürümle uyumlu değil."</string>
@@ -113,11 +112,9 @@
 <string name="error_app_not_found">"Uygulama bulunamadı"</string>
 <string name="error_incorrect_password">"yanlış eposta adresi veya şifre"</string>
 <string name="error_invalid_device_definition">"Cihaz tanımı reddedildi"</string>
-<string name="error_network_other">"Ağ hatası: %s"</string>
 <string name="error_no_network">"Ağ bağlantısı yok"</string>
 <string name="error_search_not_found">"Eşleşen uygulama bulunamadı"</string>
 <string name="error_unknown">"Bilinmeyen hata oluştu"</string>
-<string name="exodus_hasTracker">" %s izci içerir"</string>
 <string name="exodus_noTracker">"İzleyici içermiyor"</string>
 <string name="exodus_powered">"Exodus tarafından desteklenmektedir"</string>
 <string name="exodus_title">"Aurora Koru"</string>
@@ -141,7 +138,6 @@
 <string name="list_installed">"Kurulmuş"</string>
 <string name="list_installed_system">"Yalnızca kullanıcı uygulamalarını göster"</string>
 <string name="list_not_installd">"Yüklü değil"</string>
-<string name="list_selected">"Seçilen Uygulamalar: %d"</string>
 <string name="list_update_all">"Tümünü Güncelle"</string>
 <string name="list_update_all_txt">"güncellemeler mevcut"</string>
 <string name="list_updating">"Güncelleniyor"</string>
@@ -155,9 +151,6 @@
 <string name="menu_setting">"Ayarlar"</string>
 <string name="menu_terms">"Kullanım Şartları"</string>
 <string name="no_permissions">"Hiçbir izin kullanılmıyor."</string>
-<string name="notification_installation_complete">" %s başarıyla yüklendi"</string>
-<string name="notification_installation_failed">" %s yüklenemedi"</string>
-<string name="notification_installation_progress">" %s yükleniyor"</string>
 <string name="pref_app_download">"İndirilenler"</string>
 <string name="pref_app_network">"Ağ"</string>
 <string name="pref_app_notification">"Bildirimler"</string>
@@ -219,7 +212,6 @@
 <string name="title_installed">"Benim uygulamalarım"</string>
 <string name="title_perm">"İzinler"</string>
 <string name="title_search">"Uygulama Ara"</string>
-<string name="title_search_result">"Msgstr  %s sonuçları"</string>
 <string name="title_updates">"Mevcut Güncellemeler"</string>
 <string name="title_welcome">"Hoşgeldiniz"</string>
 <string name="toast_apk_blacklisted">"Blacklisted"</string>
