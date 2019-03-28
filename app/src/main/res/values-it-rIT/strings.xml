@@ -97,7 +97,6 @@
 <string name="action_unwhitelist">"Ignora gli aggiornamenti"</string>
 <string name="action_updates">"Aggiornamenti"</string>
 <string name="action_whitelist">"Lista Bianca"</string>
-<string name="apps_by">"App di %s"</string>
 <string name="availability_restriction_country">"Questo articolo non è disponibile nel tuo paese."</string>
 
 <!-- Quest'app non é disponibile -->
@@ -175,11 +174,9 @@
 <string name="error_app_not_found">"App non trovata"</string>
 <string name="error_incorrect_password">"email o password errati"</string>
 <string name="error_invalid_device_definition">"Definizione del dispositivo respinta"</string>
-<string name="error_network_other">"Errore di rete: %s"</string>
 <string name="error_no_network">"Nessuna connessione di rete"</string>
 <string name="error_search_not_found">"Nessuna app trovata"</string>
 <string name="error_unknown">"Errore sconosciuto"</string>
-<string name="exodus_hasTracker">"Contiene %s tracker"</string>
 <string name="exodus_noTracker">"Non contiene tracker"</string>
 <string name="exodus_powered">"Alimentato da Exodus"</string>
 <string name="exodus_title">"Aurora Protect"</string>
@@ -203,7 +200,6 @@
 <string name="list_installed">"Installato"</string>
 <string name="list_installed_system">"Mostra solo app utente"</string>
 <string name="list_not_installd">"Non installato"</string>
-<string name="list_selected">"App selezionate: %d/"</string>
 <string name="list_update_all">"Aggiorna tutto"</string>
 <string name="list_update_all_txt">"Aggiornamento(i) disponibile(i)"</string>
 <string name="list_updating">"In aggiornamento"</string>
@@ -278,7 +274,6 @@
 <string name="title_installed">"Le mie applicazioni"</string>
 <string name="title_perm">"Permessi"</string>
 <string name="title_search">"Cerca applicazioni e giochi"</string>
-<string name="title_search_result">"Risultati per %s"</string>
 <string name="title_updates">"Aggiornamenti disponibili"</string>
 <string name="title_welcome">"Benvenuto"</string>
 <string name="toast_apk_blacklisted">"Nella lista nera"</string>
