@@ -61,7 +61,6 @@
 <string name="action_unwhitelist">"Ignorar atualizações"</string>
 <string name="action_updates">"Atualizações"</string>
 <string name="action_whitelist">"Whitelist"</string>
-<string name="apps_by">"Aplicativos de %s"</string>
 <string name="availability_restriction_country">"Este item não está disponível em seu país."</string>
 <string name="availability_restriction_generic">"Este item não está disponível."</string>
 <string name="availability_restriction_hardware_app">"O seu dispositivo não é compatível com esta versão."</string>
@@ -113,11 +112,9 @@
 <string name="error_app_not_found">"App não encontrado"</string>
 <string name="error_incorrect_password">"senha ou email incorretos"</string>
 <string name="error_invalid_device_definition">"Definição de dispositivo rejeitada"</string>
-<string name="error_network_other">"Erro de rede: %s"</string>
 <string name="error_no_network">"Nenhuma conexão de rede"</string>
 <string name="error_search_not_found">"Nenhum aplicativo correspondente encontrado"</string>
 <string name="error_unknown">"Ocorreu um erro desconhecido"</string>
-<string name="exodus_hasTracker">"Contém rastreadores de %s"</string>
 <string name="exodus_noTracker">"Não contém rastreadores"</string>
 <string name="exodus_powered">"Alimentado por Êxodo"</string>
 <string name="exodus_title">"Aurora Protect"</string>
@@ -141,7 +138,6 @@
 <string name="list_installed">"Instalado"</string>
 <string name="list_installed_system">"Mostrar apenas aplicativos do usuário"</string>
 <string name="list_not_installd">"Não instalado"</string>
-<string name="list_selected">"Aplicativos selecionados: %d"</string>
 <string name="list_update_all">"Atualize tudo"</string>
 <string name="list_update_all_txt">"atualizações disponíveis"</string>
 <string name="list_updating">"Atualizando"</string>
@@ -216,7 +212,6 @@
 <string name="title_installed">"Meus aplicativos"</string>
 <string name="title_perm">"Permissões"</string>
 <string name="title_search">"Apps de pesquisa"</string>
-<string name="title_search_result">"Resultados para %s"</string>
 <string name="title_updates">"Atualizações Disponíveis"</string>
 <string name="title_welcome">"Bem vinda"</string>
 <string name="toast_apk_blacklisted">"Na lista negra"</string>
