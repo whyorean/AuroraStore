@@ -48,9 +48,6 @@
 
         </LinearLayout>
 
-        <!-- App Details -->
-        <include layout="@layout/include_details_subinfo" />
-
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/app_desc_short"
             android:layout_width="match_parent"
