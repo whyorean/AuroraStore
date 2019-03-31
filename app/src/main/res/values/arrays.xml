@@ -262,4 +262,18 @@
         <item>@string/about_telegram_summary</item>
         <item>@string/about_fdroid_summary</item>
     </string-array>
+
+    <string-array name="pref_update_interval_values">
+        <item>-1</item>
+        <item>3600000</item>
+        <item>86400000</item>
+        <item>604800000</item>
+    </string-array>
+
+    <string-array name="pref_update_interval">
+        <item>@string/pref_update_interval_manually</item>
+        <item>@string/pref_update_interval_hourly</item>
+        <item>@string/pref_update_interval_daily</item>
+        <item>@string/pref_update_interval_weekly</item>
+    </string-array>
 </resources>

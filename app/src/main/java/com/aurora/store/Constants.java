@@ -84,4 +84,5 @@ public class Constants {
     public static final String PREFERENCE_LOCALE_LANG = "PREFERENCE_LOCALE_LANG";
     public static final String PREFERENCE_LOCALE_LIST = "PREFERENCE_LOCALE_LIST";
     public static final String PREFERENCE_LOCALE_COUNTRY = "PREFERENCE_LOCALE_COUNTRY";
+    public static final String PREFERENCE_UPDATES_INTERVAL = "PREFERENCE_UPDATES_INTERVAL";
 }

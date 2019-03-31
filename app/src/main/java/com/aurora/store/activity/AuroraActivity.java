@@ -112,7 +112,7 @@ public class AuroraActivity extends AppCompatActivity {
         super.onNewIntent(intent);
         Bundle mBundle = intent.getExtras();
         if (mBundle != null)
-            fragmentPos = mBundle.getInt(Constants.INTENT_FRAGMENT_POSITION);
+            fragmentCur = mBundle.getInt(Constants.INTENT_FRAGMENT_POSITION);
         if (intent.getScheme() != null && intent.getScheme().equals("market")) {
             fragmentCur = 3;
             isSearchIntent = true;
