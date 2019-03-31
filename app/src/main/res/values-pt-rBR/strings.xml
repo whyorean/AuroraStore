@@ -138,7 +138,7 @@
 <string name="list_empty_query">"Nenhuma pesquisa recente"</string>
 <string name="list_empty_updates">"Nenhuma atualização disponível"</string>
 <string name="list_installed">"Instalados"</string>
-<string name="list_installed_system">"Mostrar somente aplicativos de usuário"</string>
+<string name="list_installed_system">"Mostrar somente aplicativos do usuário"</string>
 <string name="list_not_installd">"Não instalado"</string>
 <string name="list_update_all">"Atualizar todos"</string>
 <string name="list_update_all_txt">"atualização(ões) disponível(is)"</string>
@@ -225,7 +225,7 @@ Lembre-se que fazer o download de versões arbitrárias de aplicativos não é s
 <string name="pref_app_language">"Idioma"</string>
 <string name="pref_locale_custom_title">"Idioma personalizado"</string>
 <string name="pref_locale_custom_summary">"Forçar um idioma personalizado no aplicativo"</string>
-<string name="pref_locale_list_title">"Selecionar localidade"</string>
+<string name="pref_locale_list_title">"Escolher idioma"</string>
 <string name="tab_explore">"Aplicativos"</string>
 <string name="tab_games">"Jogos"</string>
 <string name="tab_family">"Família"</string>
@@ -271,4 +271,14 @@ Lembre-se que fazer o download de versões arbitrárias de aplicativos não é s
 <string name="notification_installation_auto">"Download concluído; toque para instalar"</string>
 <string name="notification_installation_manual">"APK empacotado; ação manual necessária"</string>
 <string name="title_search_result">"Resultados para"</string>
+<string name="action_recheck">"Verificar"</string>
+<string name="action_recheck_ing">"Verificando"</string>
+<string name="pref_install_type_summary">"Use o instalador nativo para instalar pacotes, interrompe instalações de Apk corrompidas"</string>
+<string name="pref_install_type_title">"Forçar instalador nativo"</string>
+<string name="pref_ui_tab_default_title">"Selecione a aba padrão"</string>
+<string name="pref_update_interval_title">"Intervalo das atualizações"</string>
+<string name="pref_update_interval_manually">"Manualmente"</string>
+<string name="pref_update_interval_hourly">"Por hora"</string>
+<string name="pref_update_interval_daily">"Semanal"</string>
+<string name="pref_update_interval_weekly">"Diário"</string>
 </resources>
