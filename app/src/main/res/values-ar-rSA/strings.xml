@@ -269,4 +269,14 @@
 <string name="notification_installation_auto">"تم تحميله اضغط لتثبيت"</string>
 <string name="notification_installation_manual">"تطبيق مجزئ, بحاجة الى تدخل من المستخدم"</string>
 <string name="title_search_result">"النتائج ل"</string>
+<string name="action_recheck">"إعادة الفحص"</string>
+<string name="action_recheck_ing">"جاري إعادة فحص"</string>
+<string name="pref_install_type_summary">"استخدم أداة التثبيت الافتراضية لتثبيت الحزم ، غير صالح مع التطبيقات المجزئة"</string>
+<string name="pref_install_type_title">"أجبار المثبت الافتراضي"</string>
+<string name="pref_ui_tab_default_title">"اختيار التبويب الافتراضي"</string>
+<string name="pref_update_interval_title">"الفاصل الزمني للتحديثات"</string>
+<string name="pref_update_interval_manually">"يدويا"</string>
+<string name="pref_update_interval_hourly">"كل ساعة"</string>
+<string name="pref_update_interval_daily">"اسبوعيا"</string>
+<string name="pref_update_interval_weekly">"يوميا"</string>
 </resources>
