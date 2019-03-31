@@ -26,7 +26,7 @@
 <string name="action_filter_apply">"应用"</string>
 <string name="action_filter_apps_with_ads">"带广告的应用"</string>
 <string name="action_filter_downloads">"下载"</string>
-<string name="action_filter_gsf_dependent_apps">"需要谷歌框架"</string>
+<string name="action_filter_gsf_dependent_apps">"依赖谷歌框架"</string>
 <string name="action_filter_misc">"杂项"</string>
 <string name="action_filter_paid_apps">"付费"</string>
 <string name="action_filter_rating">"评级"</string>
@@ -79,7 +79,7 @@
 <string name="details_appReviewsAll">"阅读所有评论"</string>
 <string name="details_contains_ads">"包含广告"</string>
 <string name="details_download">"下载"</string>
-<string name="details_favourite_add">"加入最喜欢的"</string>
+<string name="details_favourite_add">"加入收藏夹"</string>
 <string name="details_favourite_remove">"从收藏夹删除"</string>
 <string name="details_install">"安装"</string>
 <string name="details_installing">"安装中"</string>
@@ -105,11 +105,11 @@
 <string name="download_pause_all">"暂停全部"</string>
 <string name="download_paused">"已暂停"</string>
 <string name="download_progress">"下载中"</string>
-<string name="download_queued">"等待中"</string>
+<string name="download_queued">"排队中"</string>
 <string name="download_resume">"恢复"</string>
 <string name="download_resume_all">"全部恢复"</string>
 <string name="early_access">"早期访问"</string>
-<string name="error_app_not_found">"应用程序未找到"</string>
+<string name="error_app_not_found">"应用未找到"</string>
 <string name="error_incorrect_password">"错误的邮箱帐号或密码"</string>
 <string name="error_invalid_device_definition">"设备定义被拒绝"</string>
 <string name="error_no_network">"无网络连接"</string>
@@ -132,7 +132,7 @@
 <string name="list_blacklist">"列入黑名单的应用"</string>
 <string name="list_blacklist_none">"没有应用黑名单"</string>
 <string name="list_bulk_install">"排队等待批量安装的应用"</string>
-<string name="list_empty_fav">"没有收藏夹"</string>
+<string name="list_empty_fav">"没有收藏"</string>
 <string name="list_empty_query">"没有最近的搜索"</string>
 <string name="list_empty_updates">"没有可用的更新"</string>
 <string name="list_installed">"已安装"</string>
@@ -141,17 +141,17 @@
 <string name="list_update_all">"全部更新"</string>
 <string name="list_update_all_txt">"更新可用"</string>
 <string name="list_updating">"更新中"</string>
-<string name="manual_download_disclaimer">"放弃"</string>
+<string name="manual_download_disclaimer">"声明"</string>
 <string name="manual_download_incompatible">"Google Play商店认为此应用与您的设备不兼容。这意味着Google Play商店服务器尚未返回版本代码。"</string>
 <string name="manual_download_warning">"此页面允许您手动选择要下载的应用版本。
 请注意，Google Play商店不支持下载任意版本的应用。您的成功取决于对版本号的幸运猜测。即使你猜对了并开始下载，你可能会得到一个不兼容的apk应用。"</string>
 <string name="menu_account">"帐号"</string>
-<string name="menu_disclaimer">"放弃"</string>
+<string name="menu_disclaimer">"声明"</string>
 <string name="menu_downloads">"下载"</string>
 <string name="menu_license">"授权"</string>
 <string name="menu_setting">"设置"</string>
 <string name="menu_terms">"服务条款"</string>
-<string name="no_permissions">"没有使用权限。"</string>
+<string name="no_permissions">"不需要授予权限。"</string>
 <string name="pref_app_download">"下载"</string>
 <string name="pref_app_network">"网络"</string>
 <string name="pref_app_notification">"通知"</string>
@@ -169,9 +169,9 @@
 <string name="pref_downloader_debug_title">"下载调试"</string>
 <string name="pref_downloader_path_title">"下载位置"</string>
 <string name="pref_downloader_wifi_title">"仅使用wifi下载"</string>
-<string name="pref_filter_fdroid_summary">"从应用列表中删除从F-droid下载的应用"</string>
+<string name="pref_filter_fdroid_summary">"在应用列表中排除从F-droid下载的应用"</string>
 <string name="pref_filter_fdroid_title">"过滤从F-droid下载的应用"</string>
-<string name="pref_filter_google_summary">"从搜索结果和类别应用中删除所有Google应用"</string>
+<string name="pref_filter_google_summary">"从搜索结果和类别应用中排除所有Google应用"</string>
 <string name="pref_filter_google_title">"过滤Google应用"</string>
 <string name="pref_filter_search_summary">"每次搜索都会重置搜索过滤器。关闭以保存搜索过滤器"</string>
 <string name="pref_filter_search_title">"使用非持久搜索过滤器"</string>
@@ -189,7 +189,7 @@
 <string name="pref_proxy_host">"代理主机"</string>
 <string name="pref_proxy_port">"代理端口"</string>
 <string name="pref_proxy_type">"代理类型"</string>
-<string name="pref_requested_language">"更改默认API请求语言"</string>
+<string name="pref_requested_language">"更改默认语言请求API"</string>
 <string name="pref_requested_language_default">"您的默认语言"</string>
 <string name="pref_requested_location_disable">"您需要在开发者选项中禁用模拟位置以完全禁用它。"</string>
 <string name="pref_requested_location_enable">"您需要在开发者选项中启用模拟位置。"</string>
@@ -217,8 +217,8 @@
 <string name="title_welcome">"欢迎"</string>
 <string name="toast_apk_blacklisted">"列入黑名单"</string>
 <string name="toast_apk_whitelisted">"列入白名单"</string>
-<string name="toast_apk_copy_success">"APK已成功复制"</string>
-<string name="toast_apk_copy_failure">"无法复制APK"</string>
+<string name="toast_apk_copy_success">"APK已成功提取"</string>
+<string name="toast_apk_copy_failure">"无法提取APK"</string>
 <string name="pref_app_language">"语言"</string>
 <string name="pref_locale_custom_title">"自定义语言"</string>
 <string name="pref_locale_custom_summary">"强制自定义应用语言"</string>
@@ -228,6 +228,10 @@
 <string name="tab_family">"儿童与家庭"</string>
 <string name="pref_ui_tab_mode_title">"可滚动标签"</string>
 <string name="pref_ui_tab_mode_summary">"启用以使标签可滚动，建议用于低dpi设备"</string>
+<string name="about_app">"Aurora是Play商店的开源替代品。
+        它允许您下载应用，提供已安装应用的更新，并允许您搜索应用和游戏。
+        它还提供了嵌入在应用中的跟踪器列表。
+    "</string>
 <string name="about_paypal">"Paypal"</string>
 <string name="about_paypal_summary">"通过Paypal捐助我"</string>
 <string name="about_fdroid">"F-Droid"</string>
@@ -243,7 +247,7 @@
 <string name="pref_downloader_strategy_title">"下载方式"</string>
 <string name="pref_downloader_strategy_sequential">"顺序下载"</string>
 <string name="pref_downloader_strategy_parallel">"并行下载"</string>
-<string name="pref_install_mode_native">"系统"</string>
+<string name="pref_install_mode_native">"本地"</string>
 <string name="pref_install_mode_root">"Root"</string>
 <string name="pref_notification_priority_default">"默认"</string>
 <string name="pref_notification_priority_high">"高"</string>
@@ -255,4 +259,21 @@
 <string name="pref_ui_theme_light">"明亮"</string>
 <string name="pref_ui_theme_dark">"暗淡"</string>
 <string name="pref_ui_theme_black">"暗黑"</string>
+<string name="action_close">"关闭"</string>
+<string name="list_update_all_queue_txt">"更新队列"</string>
+<string name="notification_installation_complete">"安装成功"</string>
+<string name="notification_installation_failed">"安装失败"</string>
+<string name="notification_installation_progress">"正在安装"</string>
+<string name="error_network_other">"网络错误"</string>
+<string name="exodus_hasTracker">"包含跟踪器"</string>
+<string name="list_selected">"已选择的应用"</string>
+<string name="notification_installation_auto">"已下载，点击安装"</string>
+<string name="pref_install_type_summary">"使用本地安装程序来安装应用，无法批量安装"</string>
+<string name="pref_install_type_title">"强制使用本地安装器"</string>
+<string name="pref_ui_tab_default_title">"选择默认标签页"</string>
+<string name="pref_update_interval_title">"更新间隔"</string>
+<string name="pref_update_interval_manually">"手动"</string>
+<string name="pref_update_interval_hourly">"一小时"</string>
+<string name="pref_update_interval_daily">"一周"</string>
+<string name="pref_update_interval_weekly">"一天"</string>
 </resources>
