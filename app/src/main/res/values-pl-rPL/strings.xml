@@ -7,7 +7,7 @@
 <string name="account_prompt_login">"Zaloguj się, żeby kontynuować"</string>
 <string name="account_switch">"Przełącz konto"</string>
 <string name="action_accounts">"Konta"</string>
-<string name="action_ask">"Zapytać"</string>
+<string name="action_ask">"Zapytaj"</string>
 <string name="action_blacklist">"Czarna lista"</string>
 <string name="action_cancel">"Anuluj"</string>
 <string name="action_clear">"Wyczyść"</string>
@@ -33,7 +33,7 @@
 <string name="action_flag">"Zgłoś aplikację"</string>
 <string name="action_get_local_apk">"Uzyskaj lokalny plik APK"</string>
 <string name="action_home">"Główna"</string>
-<string name="action_installations">"Instalacje"</string>
+<string name="action_installations">"Instalacja"</string>
 <string name="action_installed">"Zainstalowane"</string>
 <string name="action_later">"Później"</string>
 <string name="action_logging_in">"Logowanie"</string>
@@ -153,7 +153,7 @@ Pamiętaj, że pobieranie dowolnych wersji aplikacji nie jest obsługiwane przez
 <string name="menu_setting">"Ustawienia"</string>
 <string name="menu_terms">"Warunki usługi"</string>
 <string name="no_permissions">"Nie przyznano uprawnień."</string>
-<string name="pref_app_download">"Pobrane"</string>
+<string name="pref_app_download">"Pobieranie"</string>
 <string name="pref_app_network">"Sieć"</string>
 <string name="pref_app_notification">"Powiadomienia"</string>
 <string name="pref_app_ui">"Interfejs użytkownika"</string>
@@ -165,7 +165,7 @@ Pamiętaj, że pobieranie dowolnych wersji aplikacji nie jest obsługiwane przez
 <string name="pref_device_to_pretend_to_be_toast">"Ta zmiana zostanie zastosowana po ponownym zalogowaniu"</string>
 <string name="pref_dialog_to_apply_restart">"To ustawienie zostanie zastosowane po ponownym uruchomieniu aplikacji"</string>
 <string name="pref_downloader_active_summary">"Maksymalna liczba aktywnych pobrań"</string>
-<string name="pref_downloader_active_title">"Aktualnie pobierane"</string>
+<string name="pref_downloader_active_title">"Aktywne pobierania"</string>
 <string name="pref_downloader_debug_summary">"Włącz debugowanie pobierania, aby uzyskać szczegółowe dzienniki"</string>
 <string name="pref_downloader_debug_title">"Debugowanie pobierania"</string>
 <string name="pref_downloader_path_title">"Ścieżka pobierania"</string>
@@ -252,7 +252,7 @@ Udostępnia również listę usług śledzących zaimplementowanych w aplikacjac
 <string name="pref_install_mode_root">"Root"</string>
 <string name="pref_notification_priority_default">"Domyślny"</string>
 <string name="pref_notification_priority_high">"Wysoki"</string>
-<string name="pref_notification_priority_max">"Maksymalny"</string>
+<string name="pref_notification_priority_max">"Najwyższy"</string>
 <string name="pref_notification_provider_summary">"Wybierz domyślnego dostawcę powiadomień"</string>
 <string name="pref_notification_provider_title">"Dostawca powiadomień"</string>
 <string name="pref_notification_provider_native">"Natywny dostawca powiadomień"</string>
