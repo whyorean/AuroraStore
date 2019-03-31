@@ -115,7 +115,7 @@
 <string name="chip_all_games">"Tutti i giochi"</string>
 
 <!-- Top gratuite -->
-<string name="chip_top_free">"Top gratuite"</string>
+<string name="chip_top_free">"Più popolari"</string>
 <string name="chip_top_grossing">"Più redditizie"</string>
 
 <!-- Di tendenza -->
@@ -289,4 +289,56 @@
 <string name="tab_family">"Bambini &amp; Famiglia"</string>
 <string name="pref_ui_tab_mode_title">"Schede scorrevoli"</string>
 <string name="pref_ui_tab_mode_summary">"Abilita per rendere le schede scorrevoli, raccomandato per dispositivi con dpi bassi"</string>
+<string name="about_app">"Aurora è una alternativa open source al Play Store.
+Permette di scaricare applicazioni, fornire aggiornamenti delle applicazioni installate e permette di cercare applicazioni e giochi
+Inoltre fornisce una lista di tracker incorporati in una applicazione"</string>
+<string name="about_paypal">"Paypal"</string>
+<string name="about_paypal_summary">"Donami su Paypal"</string>
+<string name="about_fdroid">"F-Droid"</string>
+<string name="about_gitlab">"GitLab"</string>
+<string name="about_gitlab_summary">"Ottieni il codice sorgente di Aurora Store da Aurora OSS su GitLab"</string>
+<string name="about_telegram">"Telegram"</string>
+<string name="about_telegram_summary">"Unisciti al gruppo di supporto per discussioni o suggerimenti"</string>
+<string name="about_fdroid_summary">"Ottieni Aurora sulla repo di F-Droid"</string>
+<string name="about_xda">"Thread sviluppatore"</string>
+<string name="about_xda_summary">"Vedi il thread su XDA di Aurora Store per discussioni o suggerimenti"</string>
+<string name="action_about">"Info"</string>
+<string name="pref_downloader_strategy_summary">"Seleziona la strategia download di default, è raccomandata la strategia parallela per download più veloci"</string>
+<string name="pref_downloader_strategy_title">"Strategia download"</string>
+<string name="pref_downloader_strategy_sequential">"Download sequenziale"</string>
+<string name="pref_downloader_strategy_parallel">"Download Parallelo (Divisi)"</string>
+<string name="pref_install_mode_native">"Nativo"</string>
+<string name="pref_install_mode_root">"Root"</string>
+<string name="pref_notification_priority_default">"Predefinita"</string>
+<string name="pref_notification_priority_high">"Alta"</string>
+<string name="pref_notification_priority_max">"Massima"</string>
+<string name="pref_notification_provider_summary">"Seleziona il provider di notifiche di default"</string>
+<string name="pref_notification_provider_title">"Provider notifiche"</string>
+<string name="pref_notification_provider_native">"Provider notifiche nativo"</string>
+<string name="pref_notification_provider_aurora">"Provider notifiche di Aurora"</string>
+<string name="pref_ui_theme_light">"Chiaro"</string>
+<string name="pref_ui_theme_dark">"Scuro"</string>
+<string name="pref_ui_theme_black">"Nero"</string>
+<string name="action_close">"Chiudi"</string>
+<string name="list_update_all_queue_txt">"Aggiornamento(i) in coda"</string>
+<string name="notification_installation_complete">"Installato con successo"</string>
+<string name="notification_installation_failed">"Installazione fallita"</string>
+<string name="notification_installation_progress">"Installazione"</string>
+<string name="apps_by">"Applicazioni di"</string>
+<string name="error_network_other">"Errore di connessione"</string>
+<string name="exodus_hasTracker">"Contiene trackers"</string>
+<string name="list_selected">"Applicazioni Selezionate"</string>
+<string name="notification_installation_auto">"Scaricato, tocca per installare"</string>
+<string name="notification_installation_manual">"Apk raggruppato, azione manuale richiesta"</string>
+<string name="title_search_result">"Risultati per"</string>
+<string name="action_recheck">"Ricontrolla"</string>
+<string name="action_recheck_ing">"Ricontrollo"</string>
+<string name="pref_install_type_summary">"Utilizza l'installer nativo per installare i pacchetti, rompe le installazioni degli apk raggruppati"</string>
+<string name="pref_install_type_title">"Forza l'installer nativo"</string>
+<string name="pref_ui_tab_default_title">"Seleziona la scheda di default"</string>
+<string name="pref_update_interval_title">"Intervallo aggiornamenti"</string>
+<string name="pref_update_interval_manually">"Manuale"</string>
+<string name="pref_update_interval_hourly">"Ogni ora"</string>
+<string name="pref_update_interval_daily">"Settimanale"</string>
+<string name="pref_update_interval_weekly">"Giornaliero"</string>
 </resources>
