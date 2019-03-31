@@ -37,3 +37,7 @@ gradle-app.setting
 
 #*.jar
 app/release/output.json
+
+#Exclude signing configurations & keystore
+signing.properties
+aurora.keystore
