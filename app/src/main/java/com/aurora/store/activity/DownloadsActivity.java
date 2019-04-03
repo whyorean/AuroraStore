@@ -55,13 +55,14 @@ public class DownloadsActivity extends AppCompatActivity {
     @BindView(R.id.placeholder)
     RelativeLayout placeholder;
 
-    private Fetch mFetch;
-    private ThemeUtil mThemeUtil = new ThemeUtil();
+    private Fetch fetch;
+    private DownloadsAdapter downloadsAdapter;
+    private ThemeUtil themeUtil = new ThemeUtil();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mThemeUtil.onCreate(this);
+        themeUtil.onCreate(this);
         setContentView(R.layout.activity_downloads);
         ButterKnife.bind(this);
 
@@ -103,13 +104,12 @@ public class DownloadsActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        mThemeUtil.onResume(this);
+        themeUtil.onResume(this);
     }
 
     private void init() {
-        DownloadManager mDownloadManager = new DownloadManager(this);
-        mFetch = mDownloadManager.getFetchInstance();
-        mFetch.getDownloads(downloadList -> {
+        fetch = new DownloadManager(this).getFetchInstance();
+        fetch.getDownloads(downloadList -> {
             if (downloadList.isEmpty()) {
                 ViewUtil.hideWithAnimation(mRecyclerView);
                 ViewUtil.showWithAnimation(placeholder);
@@ -133,51 +133,54 @@ public class DownloadsActivity extends AppCompatActivity {
     }
 
     private void cancelAll() {
-        mFetch.cancelAll();
-        init();
+        fetch.cancelAll();
+        downloadsAdapter.refreshList();
     }
 
     private void clearCompleted() {
-        mFetch.removeAllWithStatus(Status.COMPLETED);
-        init();
+        fetch.removeAllWithStatus(Status.COMPLETED);
+        downloadsAdapter.refreshList();
     }
 
     private void forceClearAll() {
-        mFetch.removeAllWithStatus(Status.ADDED);
-        mFetch.removeAllWithStatus(Status.CANCELLED);
-        mFetch.removeAllWithStatus(Status.COMPLETED);
-        mFetch.removeAllWithStatus(Status.DOWNLOADING);
-        mFetch.removeAllWithStatus(Status.FAILED);
-        mFetch.removeAllWithStatus(Status.PAUSED);
-        mFetch.removeAllWithStatus(Status.QUEUED);
+        fetch.deleteAllWithStatus(Status.ADDED);
+        fetch.deleteAllWithStatus(Status.CANCELLED);
+        fetch.deleteAllWithStatus(Status.COMPLETED);
+        fetch.deleteAllWithStatus(Status.DOWNLOADING);
+        fetch.deleteAllWithStatus(Status.FAILED);
+        fetch.deleteAllWithStatus(Status.PAUSED);
+        fetch.deleteAllWithStatus(Status.QUEUED);
         init();
     }
 
     private void pauseAll() {
-        if (mFetch != null) {
-            mFetch.getDownloads(mDownloads -> {
-                for (Download download : mDownloads)
+        if (fetch != null) {
+            fetch.getDownloads(downloadList -> {
+                for (Download download : downloadList)
                     if (download.getStatus() == Status.DOWNLOADING
                             || download.getStatus() == Status.QUEUED
                             || download.getStatus() == Status.ADDED)
-                        mFetch.pause(download.getId());
+                        fetch.pause(download.getId());
             });
+            downloadsAdapter.refreshList();
         }
     }
 
     private void resumeAll() {
-        if (mFetch != null) {
-            mFetch.getDownloads(mDownloads -> {
-                for (Download download : mDownloads)
-                    if (download.getStatus() == Status.PAUSED)
-                        mFetch.resume(download.getId());
+        if (fetch != null) {
+            fetch.getDownloads(downloadList -> {
+                for (Download download : downloadList)
+                    if (download.getStatus() == Status.PAUSED
+                            || download.getStatus() == Status.FAILED)
+                        fetch.resume(download.getId());
             });
+            downloadsAdapter.refreshList();
         }
     }
 
     private void setupRecycler(List<Download> downloadList) {
-        DownloadsAdapter mAdapter = new DownloadsAdapter(this, downloadList);
-        mRecyclerView.setAdapter(mAdapter);
+        downloadsAdapter = new DownloadsAdapter(this, downloadList);
+        mRecyclerView.setAdapter(downloadsAdapter);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
         DividerItemDecoration itemDecorator = new DividerItemDecoration(mRecyclerView.getContext(), DividerItemDecoration.VERTICAL);
         mRecyclerView.addItemDecoration(itemDecorator);

@@ -35,6 +35,7 @@ import android.widget.ViewSwitcher;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -47,12 +48,15 @@ import com.aurora.store.activity.DownloadsActivity;
 import com.aurora.store.adapter.UpdatableAppsAdapter;
 import com.aurora.store.download.DownloadManager;
 import com.aurora.store.download.RequestBuilder;
+import com.aurora.store.exception.MalformedRequestException;
 import com.aurora.store.installer.Installer;
+import com.aurora.store.manager.BlacklistManager;
 import com.aurora.store.model.App;
 import com.aurora.store.notification.QuickNotification;
 import com.aurora.store.receiver.InstallReceiver;
 import com.aurora.store.task.BulkDeliveryData;
 import com.aurora.store.task.UpdatableApps;
+import com.aurora.store.utility.ContextUtil;
 import com.aurora.store.utility.Log;
 import com.aurora.store.utility.SplitUtil;
 import com.aurora.store.utility.Util;
@@ -60,10 +64,12 @@ import com.aurora.store.utility.ViewUtil;
 import com.aurora.store.view.CustomSwipeToRefresh;
 import com.aurora.store.view.ErrorView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.tonyodev.fetch2.AbstractFetchListener;
+import com.google.android.material.snackbar.Snackbar;
+import com.tonyodev.fetch2.AbstractFetchGroupListener;
 import com.tonyodev.fetch2.Download;
 import com.tonyodev.fetch2.Fetch;
-import com.tonyodev.fetch2.FetchListener;
+import com.tonyodev.fetch2.FetchGroup;
+import com.tonyodev.fetch2.FetchGroupListener;
 import com.tonyodev.fetch2.Request;
 
 import org.apache.commons.lang3.StringUtils;
@@ -88,6 +94,8 @@ public class UpdatesFragment extends BaseFragment implements BaseFragment.EventL
 
     private static final int UPDATE_GROUP_ID = 1337;
 
+    @BindView(R.id.coordinator)
+    CoordinatorLayout coordinatorLayout;
     @BindView(R.id.view_switcher)
     ViewSwitcher mViewSwitcher;
     @BindView(R.id.content_view)
@@ -155,7 +163,6 @@ public class UpdatesFragment extends BaseFragment implements BaseFragment.EventL
     @Override
     public void onDestroy() {
         super.onDestroy();
-        fetch.close();
         disposable.clear();
         pseudoPackageAppMap = null;
         updatableAppList = null;
@@ -188,8 +195,10 @@ public class UpdatesFragment extends BaseFragment implements BaseFragment.EventL
     }
 
     private void checkOnGoingUpdates() {
-        fetch.getDownloadsInGroup(UPDATE_GROUP_ID, mDownloadList ->
-                onGoingUpdate = !mDownloadList.isEmpty());
+        fetch.getFetchGroup(UPDATE_GROUP_ID, downloadList -> {
+            if (!downloadList.getDownloads().isEmpty())
+                onGoingUpdate = downloadList.getGroupDownloadProgress() < 100;
+        });
     }
 
     private void setupRecycler(List<App> mApps) {
@@ -268,8 +277,6 @@ public class UpdatesFragment extends BaseFragment implements BaseFragment.EventL
         btnUpdateAll.setText(getString(R.string.action_cancel));
         btnUpdateAll.setEnabled(true);
         return v -> {
-            fetch.pauseGroup(UPDATE_GROUP_ID);
-            fetch.cancelGroup(UPDATE_GROUP_ID);
             fetch.deleteGroup(UPDATE_GROUP_ID);
             setupUpdateAll();
         };
@@ -298,7 +305,13 @@ public class UpdatesFragment extends BaseFragment implements BaseFragment.EventL
                         });
                         fetch.addListener(getListener());
                     }
-                }, err -> Log.e(err.getMessage())));
+                }, err -> {
+                    if (err instanceof MalformedRequestException) {
+                        ContextUtil.runOnUiThread(() -> btnUpdateAll.setOnClickListener(updateAllListener()));
+                        notifyStatus(coordinatorLayout, bottomNavigationView, err.getMessage());
+                    } else
+                        Log.e(err.getMessage());
+                }));
     }
 
     private Map<String, App> getPackageAppMap(List<App> appList) {
@@ -326,10 +339,26 @@ public class UpdatesFragment extends BaseFragment implements BaseFragment.EventL
         return PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
     }
 
-    private FetchListener getListener() {
-        return new AbstractFetchListener() {
+    private FetchGroupListener getListener() {
+        return new AbstractFetchGroupListener() {
+            @Override
+            public void onCompleted(int groupId, @NotNull Download download, @NotNull FetchGroup fetchGroup) {
+                super.onCompleted(groupId, download, fetchGroup);
+                if (groupId == UPDATE_GROUP_ID) {
+                    if (fetchGroup.getDownloadingDownloads().isEmpty()) {
+                        QuickNotification.show(
+                                context,
+                                context.getString(R.string.action_updates),
+                                "All updates downloaded",
+                                getContentIntent());
+                        ContextUtil.runOnUiThread(() -> btnUpdateAll.setOnClickListener(updateAllListener()));
+                    }
+                }
+            }
+
             @Override
             public void onCompleted(@NotNull Download download) {
+                super.onCompleted(download);
                 final String packageName = download.getTag();
                 if (pseudoPackageAppMap.containsKey(packageName)) {
                     final App app = pseudoPackageAppMap.get(packageName);
@@ -347,24 +376,42 @@ public class UpdatesFragment extends BaseFragment implements BaseFragment.EventL
                                         : getInstallIntent(app)
                         );
                 }
-                fetch.getDownloadsInGroup(UPDATE_GROUP_ID, groupDownloads ->
-                        groupDownloads.remove(download));
             }
 
             @Override
-            public void onQueued(@NotNull Download download, boolean waitingOnNetwork) {
-                final String packageName = download.getTag();
-                if (pseudoPackageAppMap.containsKey(packageName)) {
-                    final App app = pseudoPackageAppMap.get(packageName);
-                    assert app != null;
-                    QuickNotification.show(
-                            context,
-                            app.getDisplayName(),
-                            context.getString(R.string.download_queued),
-                            getContentIntent());
+            public void onProgress(int groupId, @NotNull Download download, long etaInMilliSeconds, long downloadedBytesPerSecond, @NotNull FetchGroup fetchGroup) {
+                super.onProgress(groupId, download, etaInMilliSeconds, downloadedBytesPerSecond, fetchGroup);
+            }
+
+            @Override
+            public void onQueued(int groupId, @NotNull Download download, boolean waitingNetwork, @NotNull FetchGroup fetchGroup) {
+                super.onQueued(groupId, download, waitingNetwork, fetchGroup);
+                if (groupId == UPDATE_GROUP_ID) {
+                    final String packageName = download.getTag();
+                    if (pseudoPackageAppMap.containsKey(packageName)) {
+                        final App app = pseudoPackageAppMap.get(packageName);
+                        assert app != null;
+                        QuickNotification.show(
+                                context,
+                                app.getDisplayName(),
+                                context.getString(R.string.download_queued),
+                                getContentIntent());
+                    }
                 }
             }
         };
+    }
+
+    @Override
+    public void notifyStatus(CoordinatorLayout coordinatorLayout, View anchorView, String packageName) {
+        final StringBuilder message = new StringBuilder()
+                .append(packageName)
+                .append(context.getString(R.string.error_app_download));
+        Snackbar snackbar = Snackbar.make(coordinatorLayout, message, Snackbar.LENGTH_LONG);
+        snackbar.setAnchorView(anchorView);
+        snackbar.setAction(R.string.action_blacklist, v -> new BlacklistManager(context).add(packageName));
+        snackbar.setActionTextColor(context.getResources().getColor(R.color.colorGold));
+        snackbar.show();
     }
 
     @Override

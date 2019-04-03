@@ -55,6 +55,7 @@ import com.dragons.aurora.playstoreapiv2.AndroidAppDeliveryData;
 import com.dragons.aurora.playstoreapiv2.Split;
 import com.tonyodev.fetch2.AbstractFetchListener;
 import com.tonyodev.fetch2.Download;
+import com.tonyodev.fetch2.EnqueueAction;
 import com.tonyodev.fetch2.Error;
 import com.tonyodev.fetch2.Fetch;
 import com.tonyodev.fetch2.FetchListener;
@@ -214,7 +215,6 @@ public class ActionButton extends AbstractHelper {
             switchViews(true);
             //Remove any previous requests
             if (!isPaused) {
-                fetch.remove(requestId);
                 fetch.delete(requestId);
             }
 
@@ -256,7 +256,6 @@ public class ActionButton extends AbstractHelper {
 
     private View.OnClickListener cancelDownloadListener() {
         return v -> {
-            fetch.cancel(requestId);
             fetch.delete(requestId);
             draw();
         };
@@ -301,6 +300,7 @@ public class ActionButton extends AbstractHelper {
         }
 
         request = RequestBuilder.buildRequest(context, app, deliveryData.getDownloadUrl());
+        request.setEnqueueAction(EnqueueAction.UPDATE_ACCORDINGLY);
         fetchListener = getFetchListener();
         fetch.addListener(fetchListener);
 
@@ -421,8 +421,7 @@ public class ActionButton extends AbstractHelper {
                     notification.notifyCancelled();
                     progressBar.setIndeterminate(true);
                     progressStatus.setText(R.string.download_canceled);
-                    fetch.remove(download.getId());
-                    fetch.delete(download.getId());
+                    fetch.cancel(download.getId());
                     fetch.removeListener(fetchListener);
                     switchViews(false);
                 }

@@ -20,11 +20,13 @@
 
 package com.aurora.store.sheet;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -33,22 +35,39 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.aurora.store.R;
 import com.aurora.store.adapter.DownloadMenuAdapter;
+import com.aurora.store.adapter.DownloadsAdapter;
+import com.aurora.store.download.DownloadManager;
+import com.aurora.store.utility.Util;
 import com.aurora.store.view.CustomBottomSheetDialogFragment;
 import com.tonyodev.fetch2.Download;
+import com.tonyodev.fetch2.Fetch;
+import com.tonyodev.fetch2.Status;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class DownloadMenuSheet extends CustomBottomSheetDialogFragment {
+public class DownloadMenuSheet extends CustomBottomSheetDialogFragment implements DownloadMenuAdapter.MenuClickListener {
 
     @BindView(R.id.menu_title)
     TextView downloadTitle;
     @BindView(R.id.menu_recycler)
     RecyclerView menuRecyclerView;
-    private Download download;
+
     private String title;
+    private Context context;
+    private Fetch fetch;
+    private Download download;
+    private DownloadsAdapter downloadsAdapter;
 
     public DownloadMenuSheet() {
+    }
+
+    public DownloadsAdapter getDownloadsAdapter() {
+        return downloadsAdapter;
+    }
+
+    public void setDownloadsAdapter(DownloadsAdapter downloadsAdapter) {
+        this.downloadsAdapter = downloadsAdapter;
     }
 
     public Download getDownload() {
@@ -68,6 +87,12 @@ public class DownloadMenuSheet extends CustomBottomSheetDialogFragment {
     }
 
     @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        this.context = context;
+    }
+
+    @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.sheet_menu, container, false);
         ButterKnife.bind(this, view);
@@ -77,9 +102,46 @@ public class DownloadMenuSheet extends CustomBottomSheetDialogFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        fetch = new DownloadManager(context).getFetchInstance();
         downloadTitle.setText(getTitle());
         menuRecyclerView.setNestedScrollingEnabled(false);
         menuRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false));
-        menuRecyclerView.setAdapter(new DownloadMenuAdapter(this, getDownload()));
+        menuRecyclerView.setAdapter(new DownloadMenuAdapter(context, download, this));
+    }
+
+    @Override
+    public void onMenuClicked(int position) {
+        switch (position) {
+            case 0:
+                Util.copyToClipBoard(context, download.getUrl());
+                Toast.makeText(context, context.getString(R.string.action_copied), Toast.LENGTH_LONG).show();
+                notifyAndDismiss();
+                break;
+            case 1:
+                fetch.pause(download.getId());
+                notifyAndDismiss();
+                break;
+            case 2:
+                if (download.getStatus() == Status.FAILED
+                        || download.getStatus() == Status.CANCELLED)
+                    fetch.retry(download.getId());
+                else
+                    fetch.resume(download.getId());
+                notifyAndDismiss();
+                break;
+            case 3:
+                fetch.cancel(download.getId());
+                notifyAndDismiss();
+                break;
+            case 4:
+                fetch.delete(download.getId());
+                notifyAndDismiss();
+                break;
+        }
+    }
+
+    private void notifyAndDismiss() {
+        getDownloadsAdapter().refreshList();
+        dismissAllowingStateLoss();
     }
 }

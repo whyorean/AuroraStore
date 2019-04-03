@@ -37,9 +37,9 @@ public class BulkDeliveryData extends DeliveryData {
         super(context);
     }
 
-    public List<AndroidAppDeliveryData> getDeliveryData(List<App> mAppList) throws IOException {
+    public List<AndroidAppDeliveryData> getDeliveryData(List<App> appList) throws IOException {
         GooglePlayAPI api = getApi();
-        for (App app : mAppList) {
+        for (App app : appList) {
             purchase(api, app);
             delivery(api, app);
             deliveryDataList.add(deliveryData);

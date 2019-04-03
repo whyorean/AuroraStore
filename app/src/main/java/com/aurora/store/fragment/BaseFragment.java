@@ -23,8 +23,10 @@ package com.aurora.store.fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
+import android.view.View;
 
 import androidx.annotation.NonNull;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.fragment.app.Fragment;
 
 import com.aurora.store.R;
@@ -37,6 +39,7 @@ import com.aurora.store.utility.ContextUtil;
 import com.aurora.store.utility.Log;
 import com.dragons.aurora.playstoreapiv2.AuthException;
 import com.dragons.aurora.playstoreapiv2.SearchIterator;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.io.IOException;
 import java.net.UnknownHostException;
@@ -73,6 +76,12 @@ public abstract class BaseFragment extends Fragment {
             processException(e);
             return null;
         }
+    }
+
+    public void notifyStatus(CoordinatorLayout coordinatorLayout, View anchorView, String message) {
+        Snackbar snackbar = Snackbar.make(coordinatorLayout, message, Snackbar.LENGTH_LONG);
+        snackbar.setAnchorView(anchorView);
+        snackbar.show();
     }
 
     public void processException(Throwable e) {

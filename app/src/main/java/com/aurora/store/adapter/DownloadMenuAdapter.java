@@ -20,26 +20,20 @@
 
 package com.aurora.store.adapter;
 
-import android.content.ClipData;
-import android.content.ClipboardManager;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.aurora.store.R;
-import com.aurora.store.download.DownloadManager;
 import com.aurora.store.model.MenuEntry;
-import com.aurora.store.sheet.DownloadMenuSheet;
 import com.aurora.store.utility.ViewUtil;
 import com.tonyodev.fetch2.Download;
-import com.tonyodev.fetch2.Fetch;
 import com.tonyodev.fetch2.Status;
 
 import java.util.List;
@@ -49,18 +43,16 @@ import butterknife.ButterKnife;
 
 public class DownloadMenuAdapter extends RecyclerView.Adapter<DownloadMenuAdapter.ViewHolder> {
 
-    private DownloadMenuSheet menuSheet;
     private Context context;
+    private Download download;
     private List<MenuEntry> menuEntryList;
-    private Fetch mFetch;
-    private Download mDownload;
+    private MenuClickListener listener;
 
-    public DownloadMenuAdapter(DownloadMenuSheet menuSheet, Download mDownload) {
-        this.menuSheet = menuSheet;
-        this.context = menuSheet.getContext();
-        this.mDownload = mDownload;
+    public DownloadMenuAdapter(Context context, Download download, MenuClickListener listener) {
+        this.context = context;
+        this.download = download;
+        this.listener = listener;
         menuEntryList = ViewUtil.parseMenu(context, R.menu.menu_download_single);
-        mFetch = new DownloadManager(context).getFetchInstance();
     }
 
     @NonNull
@@ -68,7 +60,7 @@ public class DownloadMenuAdapter extends RecyclerView.Adapter<DownloadMenuAdapte
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_sheet_menu_iconed, parent, false);
-        return new ViewHolder(itemView);
+        return new ViewHolder(itemView, listener);
     }
 
     @Override
@@ -81,56 +73,28 @@ public class DownloadMenuAdapter extends RecyclerView.Adapter<DownloadMenuAdapte
 
     private void attachMenuAction(MenuEntry menuEntry, View view) {
         switch (menuEntry.getResId()) {
-            case R.id.action_copy:
-                view.setOnClickListener(v -> {
-                    ClipboardManager clipboard = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
-                    ClipData clip = ClipData.newPlainText("Apk Url", mDownload.getUrl());
-                    clipboard.setPrimaryClip(clip);
-                    Toast.makeText(context, context.getString(R.string.action_copied), Toast.LENGTH_LONG).show();
-                    menuSheet.dismissAllowingStateLoss();
-                });
-                break;
             case R.id.action_pause:
-                if (mDownload.getStatus() == Status.PAUSED
-                        || mDownload.getStatus() == Status.COMPLETED) {
+                if (download.getStatus() == Status.PAUSED
+                        || download.getStatus() == Status.COMPLETED
+                        || download.getStatus() == Status.CANCELLED) {
                     view.setEnabled(false);
                     view.setAlpha(.5f);
-                } else
-                    view.setOnClickListener(v -> {
-                        mFetch.pause(mDownload.getId());
-                        menuSheet.dismissAllowingStateLoss();
-                    });
+                }
                 break;
             case R.id.action_resume:
-                if (mDownload.getStatus() == Status.DOWNLOADING
-                        || mDownload.getStatus() == Status.COMPLETED
-                        || mDownload.getStatus() == Status.QUEUED) {
+                if (download.getStatus() == Status.DOWNLOADING
+                        || download.getStatus() == Status.COMPLETED
+                        || download.getStatus() == Status.QUEUED) {
                     view.setEnabled(false);
                     view.setAlpha(.5f);
-                } else
-                    view.setOnClickListener(v -> {
-                        if (mDownload.getStatus() == Status.FAILED)
-                            mFetch.retry(mDownload.getId());
-                        else
-                            mFetch.resume(mDownload.getId());
-                        menuSheet.dismissAllowingStateLoss();
-                    });
+                }
                 break;
             case R.id.action_cancel:
-                if (mDownload.getStatus() == Status.COMPLETED) {
+                if (download.getStatus() == Status.COMPLETED
+                        || download.getStatus() == Status.CANCELLED) {
                     view.setAlpha(.5f);
                     view.setEnabled(false);
-                } else
-                    view.setOnClickListener(v -> {
-                        mFetch.cancel(mDownload.getId());
-                        menuSheet.dismissAllowingStateLoss();
-                    });
-                break;
-            case R.id.action_clear:
-                view.setOnClickListener(v -> {
-                    mFetch.delete(mDownload.getId());
-                    menuSheet.dismissAllowingStateLoss();
-                });
+                }
                 break;
         }
     }
@@ -140,15 +104,30 @@ public class DownloadMenuAdapter extends RecyclerView.Adapter<DownloadMenuAdapte
         return menuEntryList.size();
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder {
+    public interface MenuClickListener {
+        void onMenuClicked(int position);
+    }
+
+    class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         @BindView(R.id.menu_icon)
         ImageView menu_icon;
         @BindView(R.id.menu_title)
         TextView menu_title;
 
-        ViewHolder(@NonNull View itemView) {
+        private MenuClickListener listener;
+
+        ViewHolder(@NonNull View itemView, MenuClickListener listener) {
             super(itemView);
             ButterKnife.bind(this, itemView);
+            this.listener = listener;
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            if (listener != null) {
+                listener.onMenuClicked(getAdapterPosition());
+            }
         }
     }
 }

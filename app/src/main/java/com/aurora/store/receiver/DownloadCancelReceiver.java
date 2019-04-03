@@ -39,7 +39,6 @@ public class DownloadCancelReceiver extends BroadcastReceiver {
             final DownloadManager mDownloadManager = new DownloadManager(context);
             final Fetch fetch = mDownloadManager.getFetchInstance();
             fetch.cancel(requestId);
-            fetch.delete(requestId);
         }
     }
 }

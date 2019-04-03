@@ -60,26 +60,19 @@ public class DownloadsAdapter extends RecyclerView.Adapter<DownloadsAdapter.View
 
     private List<Download> downloadList;
     private Context context;
-    private DownloadManager mDownloadManager;
+    private Fetch fetch;
 
     public DownloadsAdapter(Context context, List<Download> downloadList) {
-        this.downloadList = downloadList;
         this.context = context;
-        mDownloadManager = new DownloadManager(context);
+        this.downloadList = downloadList;
+        fetch = new DownloadManager(context).getFetchInstance();
     }
 
-    public void add(int position, Download download) {
-        downloadList.add(position, download);
-        notifyItemInserted(position);
-    }
-
-    public void add(Download download) {
-        downloadList.add(download);
-    }
-
-    public void remove(int position) {
-        downloadList.remove(position);
-        notifyItemRemoved(position);
+    public void refreshList() {
+        fetch.getDownloads(result -> {
+            downloadList = result;
+            notifyDataSetChanged();
+        });
     }
 
     @NonNull
@@ -93,11 +86,11 @@ public class DownloadsAdapter extends RecyclerView.Adapter<DownloadsAdapter.View
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position) {
         final Download download = downloadList.get(position);
-        final Fetch fetch = mDownloadManager.getFetchInstance();
         final String displayName = PackageUtil.getDisplayName(context, download.getTag());
         final String iconURL = PackageUtil.getIconURL(context, download.getTag());
 
         fetch.addListener(getFetchListener(download.getId(), viewHolder));
+
         GlideApp
                 .with(context)
                 .load(iconURL)
@@ -126,6 +119,7 @@ public class DownloadsAdapter extends RecyclerView.Adapter<DownloadsAdapter.View
             final DownloadMenuSheet menuSheet = new DownloadMenuSheet();
             menuSheet.setTitle(displayName);
             menuSheet.setDownload(download);
+            menuSheet.setDownloadsAdapter(this);
             menuSheet.show(((DownloadsActivity) context).getSupportFragmentManager(), "DOWNLOAD_SHEET");
         });
     }
@@ -162,7 +156,6 @@ public class DownloadsAdapter extends RecyclerView.Adapter<DownloadsAdapter.View
                             .append("/")
                             .append(Util.humanReadableByteValue(download.getTotal(), true)));
                 }
-
             }
 
             @Override

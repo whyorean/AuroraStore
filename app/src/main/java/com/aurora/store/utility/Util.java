@@ -22,6 +22,8 @@ package com.aurora.store.utility;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -390,5 +392,11 @@ public class Util {
         AlarmManager mgr = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         mgr.set(AlarmManager.RTC, System.currentTimeMillis() + 100, mPendingIntent);
         System.exit(0);
+    }
+
+    public static void copyToClipBoard(Context context, String dataToCopy) {
+        ClipboardManager clipboard = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
+        ClipData clip = ClipData.newPlainText("Apk Url", dataToCopy);
+        clipboard.setPrimaryClip(clip);
     }
 }

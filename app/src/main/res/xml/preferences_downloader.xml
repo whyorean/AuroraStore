@@ -37,7 +37,7 @@
         android:title="@string/pref_downloader_active_title" />
 
     <ListPreference
-        app:defaultValue="1"
+        app:defaultValue="0"
         app:entries="@array/pref_download_strategy"
         app:entryValues="@array/pref_download_strategy_values"
         app:key="PREFERENCE_DOWNLOAD_STRATEGY"

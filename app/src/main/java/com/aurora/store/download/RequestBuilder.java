@@ -31,6 +31,7 @@ import com.aurora.store.utility.Util;
 import com.dragons.aurora.playstoreapiv2.AndroidAppDeliveryData;
 import com.dragons.aurora.playstoreapiv2.AppFileMetadata;
 import com.dragons.aurora.playstoreapiv2.Split;
+import com.tonyodev.fetch2.EnqueueAction;
 import com.tonyodev.fetch2.NetworkType;
 import com.tonyodev.fetch2.Priority;
 import com.tonyodev.fetch2.Request;
@@ -54,6 +55,7 @@ public class RequestBuilder {
         Request request;
         request = new Request(Url, PathUtil.getLocalApkPath(context, app));
         request.setPriority(Priority.HIGH);
+        request.setEnqueueAction(EnqueueAction.UPDATE_ACCORDINGLY);
         if (Util.isDownloadWifiOnly(context))
             request.setNetworkType(NetworkType.WIFI_ONLY);
         else
@@ -94,6 +96,7 @@ public class RequestBuilder {
         request = new Request(split.getDownloadUrl(),
                 PathUtil.getLocalSplitPath(context, app, split.getName()));
         request.setPriority(Priority.HIGH);
+        request.setEnqueueAction(EnqueueAction.UPDATE_ACCORDINGLY);
         if (Util.isDownloadWifiOnly(context))
             request.setNetworkType(NetworkType.WIFI_ONLY);
         else
@@ -159,6 +162,7 @@ public class RequestBuilder {
     public static Request buildObbRequest(Context context, App app, String Url, boolean isMain) {
         Request request;
         request = new Request(Url, PathUtil.getObbPath(app, isMain));
+        request.setEnqueueAction(EnqueueAction.UPDATE_ACCORDINGLY);
         request.setPriority(Priority.HIGH);
         if (Util.isDownloadWifiOnly(context))
             request.setNetworkType(NetworkType.WIFI_ONLY);

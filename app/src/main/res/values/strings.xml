@@ -158,6 +158,7 @@
     <string name="download_resume_all">Resume All</string>
 
     <string name="early_access">Early access</string>
+    <string name="error_app_download">can not ne downloaded</string>
     <string name="error_app_not_found">App not found</string>
     <string name="error_incorrect_password">Incorrect email or password</string>
     <string name="error_invalid_device_definition">Device definition rejected</string>

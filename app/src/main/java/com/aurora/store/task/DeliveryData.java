@@ -23,9 +23,11 @@ package com.aurora.store.task;
 import android.content.Context;
 
 import com.aurora.store.Constants;
+import com.aurora.store.exception.MalformedRequestException;
 import com.aurora.store.exception.NotPurchasedException;
 import com.aurora.store.model.App;
 import com.aurora.store.utility.Accountant;
+import com.aurora.store.utility.ContextUtil;
 import com.aurora.store.utility.Log;
 import com.aurora.store.utility.PrefUtil;
 import com.dragons.aurora.playstoreapiv2.AndroidAppDeliveryData;
@@ -51,7 +53,7 @@ public class DeliveryData extends BaseTask {
         return deliveryData;
     }
 
-    public void purchase(GooglePlayAPI api, App app) {
+    public void purchase(GooglePlayAPI api, App app) throws IOException {
         try {
             BuyResponse buyResponse = api.purchase(app.getPackageName(), app.getVersionCode(), app.getOfferType());
             if (buyResponse.hasPurchaseStatusResponse()
@@ -63,8 +65,8 @@ public class DeliveryData extends BaseTask {
                 downloadToken = buyResponse.getDownloadToken();
             }
         } catch (IOException e) {
-            Log.w("Purchase for " + app.getPackageName() + " failed with " + e.getClass().getName()
-                    + ": " + e.getMessage());
+            Log.d("Failed to purchase %s", app.getDisplayName());
+            throw new MalformedRequestException(app.getPackageName());
         }
     }
 
