@@ -159,6 +159,7 @@ public class SearchAppsFragment extends BaseFragment implements BaseFragment.Eve
                 searchQuery.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_edit, 0);
                 InputMethodManager imm = (InputMethodManager) v.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
                 imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+                searchQuery.clearFocus();
                 return true;
             } else
                 return false;
