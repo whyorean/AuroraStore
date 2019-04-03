@@ -65,7 +65,7 @@ public class SplitPackageInstallerRooted extends SplitPackageInstaller {
                 totalSize += apkFile.length();
 
             String result = ensureCommandSucceeded(root.exec(String.format(Locale.getDefault(),
-                    "pm install-create -r -S %d",
+                    "pm install-create -i com.android.vending -r -S %d",
                     totalSize)));
 
             Pattern sessionIdPattern = Pattern.compile("(\\d+)");
