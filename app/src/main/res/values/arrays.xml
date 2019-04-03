@@ -128,6 +128,7 @@
         <item>Turkish</item>
         <item>Ukrainian</item>
         <item>Vietnamese</item>
+        <item>Koffrora (Meme)</item>
     </string-array>
 
     <string-array name="pref_locale_values">
@@ -163,6 +164,7 @@
         <item>tr-TR</item>
         <item>uk-UA</item>
         <item>vi-VN</item>
+        <item>bh-IN</item>
     </string-array>
 
     <string-array name="pref_themes">
