@@ -71,7 +71,8 @@ dependencies {
 
     //UI-Libs
     implementation 'androidx.appcompat:appcompat:1.0.2'
-    implementation 'com.google.android.material:material:1.1.0-alpha04'
+    implementation 'androidx.preference:preference:1.1.0-alpha04'
+    implementation 'com.google.android.material:material:1.1.0-alpha05'
 
     //Utils
     implementation 'com.android.volley:volley:1.1.0'
@@ -82,25 +83,24 @@ dependencies {
     implementation 'com.github.whyorean:playstore-api-v2:2.1'
 
     //OkHTTP3
-    implementation 'com.squareup.okhttp3:okhttp:3.12.1'
-    implementation 'com.squareup.okhttp3:okhttp-urlconnection:3.12.1'
+    implementation 'com.squareup.okhttp3:okhttp:3.14.0'
+    implementation 'com.squareup.okhttp3:okhttp-urlconnection:3.14.0'
 
     //RX-Java2
-    implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
-    implementation 'io.reactivex.rxjava2:rxjava:2.2.0'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.8'
 
     //ButterKnife
-    implementation 'com.jakewharton:butterknife:10.0.0'
-    implementation 'androidx.preference:preference:1.1.0-alpha04'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:10.0.0'
+    implementation 'com.jakewharton:butterknife:10.1.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:10.1.0'
 
     //Glide
-    implementation 'com.github.bumptech.glide:glide:4.8.0'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0'
+    implementation 'com.github.bumptech.glide:glide:4.9.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
 
     //Fetch - Downloader
-    implementation "com.tonyodev.fetch2:fetch2:3.0.2"
-    implementation "com.tonyodev.fetch2okhttp:fetch2okhttp:3.0.2"
+    implementation "com.tonyodev.fetch2:fetch2:3.0.3"
+    implementation "com.tonyodev.fetch2okhttp:fetch2okhttp:3.0.3"
 }
 repositories {
     mavenCentral()
