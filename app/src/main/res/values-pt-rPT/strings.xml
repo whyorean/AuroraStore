@@ -89,7 +89,7 @@
 <string name="details_purchase">"Compra"</string>
 <string name="details_rate_this_app">"Avalie este aplicativo"</string>
 <string name="details_rating_reviews">"Classificações"</string>
-<string name="details_reviews">"Revisões de aplicativos"</string>
+<string name="details_reviews">"Revisões de aplicações"</string>
 <string name="details_run">"Abrir"</string>
 <string name="details_share">"Compartilhar"</string>
 <string name="details_update">"Atualizar"</string>
@@ -119,7 +119,7 @@
 <string name="exodus_powered">"Alimentado por Êxodo"</string>
 <string name="exodus_title">"Aurora Protect"</string>
 <string name="exodus_title_alt">"Relatório de Êxodo"</string>
-<string name="exodus_viewMore">"Visão"</string>
+<string name="exodus_viewMore">"Ver"</string>
 <string name="exodus_viewReport">"Exibir relatório"</string>
 <string name="flagging_title">"marcado como inapropriado"</string>
 <string name="list_app_blacklisted_empty">"Nenhum aplicativo na lista negra"</string>
@@ -196,11 +196,11 @@
 <string name="pref_ui_card_summary">"Use cartões de estilo legado para aplicativos em destaque"</string>
 <string name="pref_ui_card_title">"Legacy Style App Cards"</string>
 <string name="pref_ui_snap_summary">"Mostrar apenas um aplicativo no pergaminho"</string>
-<string name="pref_ui_snap_title">"Ativar o SnapView para aplicativos"</string>
+<string name="pref_ui_snap_title">"Ativar o SnapView para aplicações"</string>
 <string name="pref_ui_theme_title">"Tema"</string>
 <string name="testing_program_opt_in">"Junte-se"</string>
 <string name="testing_program_opt_out">"Sair"</string>
-<string name="testing_program_review_dialog_content_hint">"Insira o feedback sobre o aplicativo"</string>
+<string name="testing_program_review_dialog_content_hint">"Insira o feedback sobre a aplicação"</string>
 <string name="testing_program_section_opted_in_message">"As atualizações de aplicativos incluirão versões beta. Se você sair do programa beta deste aplicativo, não receberá mais atualizações beta."</string>
 <string name="testing_program_section_opted_in_propagating_message">"Em alguns minutos, você será adicionado ao programa beta. Você pode atualizar para a versão beta deste aplicativo, se disponível."</string>
 <string name="testing_program_section_opted_in_title">"You're a beta tester"</string>
