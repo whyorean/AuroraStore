@@ -268,7 +268,10 @@
 <string name="exodus_hasTracker">"包含跟踪器"</string>
 <string name="list_selected">"已选择的应用"</string>
 <string name="notification_installation_auto">"已下载，点击安装"</string>
-<string name="pref_install_type_summary">"使用本地安装程序来安装应用，无法批量安装"</string>
+<string name="notification_installation_manual">"捆绑的Apk，需要手动安装"</string>
+<string name="action_recheck">"重新载入"</string>
+<string name="action_recheck_ing">"重新载入中"</string>
+<string name="pref_install_type_summary">"使用系统安装程序来安装应用，无法安装捆绑的apk"</string>
 <string name="pref_install_type_title">"强制使用本地安装器"</string>
 <string name="pref_ui_tab_default_title">"选择默认标签页"</string>
 <string name="pref_update_interval_title">"更新间隔"</string>
