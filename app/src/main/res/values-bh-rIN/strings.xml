@@ -231,8 +231,8 @@ Keep in mind that downloading arbitrary versions of stupid apps is not supported
 <string name="pref_ui_tab_mode_summary">"
  Enable to make tabs scrollable, recommended for low-dpi devices"</string>
 <string name="about_app">"Aurora is an open source alternative to Play Store.
-It lets you download apps, provides updates of installed apps and lets you search for apps &amp; games.
-It also provides a list of trackers embedded in an app."</string>
+        It lets you download apps, provides updates of installed apps and lets you search for apps &amp; games.
+        It also provides a list of trackers embedded in an app."</string>
 <string name="about_paypal">"Paypal"</string>
 <string name="about_paypal_summary">"Donate me on Gaypal"</string>
 <string name="about_fdroid">"F-Droid"</string>
