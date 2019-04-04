@@ -303,8 +303,8 @@ Inoltre fornisce una lista di tracker incorporati in una applicazione"</string>
 <string name="about_xda">"Thread sviluppatore"</string>
 <string name="about_xda_summary">"Vedi il thread su XDA di Aurora Store per discussioni o suggerimenti"</string>
 <string name="action_about">"Info"</string>
-<string name="pref_downloader_strategy_summary">"Seleziona la strategia download di default, è raccomandata la strategia parallela per download più veloci"</string>
-<string name="pref_downloader_strategy_title">"Strategia download"</string>
+<string name="pref_downloader_strategy_summary">"Seleziona la modalità download predefinita, è raccomandata la modalità parallela per download più veloci"</string>
+<string name="pref_downloader_strategy_title">"Modalità download"</string>
 <string name="pref_downloader_strategy_sequential">"Download sequenziale"</string>
 <string name="pref_downloader_strategy_parallel">"Download Parallelo (Divisi)"</string>
 <string name="pref_install_mode_native">"Nativo"</string>
@@ -312,7 +312,7 @@ Inoltre fornisce una lista di tracker incorporati in una applicazione"</string>
 <string name="pref_notification_priority_default">"Predefinita"</string>
 <string name="pref_notification_priority_high">"Alta"</string>
 <string name="pref_notification_priority_max">"Massima"</string>
-<string name="pref_notification_provider_summary">"Seleziona il provider di notifiche di default"</string>
+<string name="pref_notification_provider_summary">"Seleziona il provider di notifiche predefinito"</string>
 <string name="pref_notification_provider_title">"Provider notifiche"</string>
 <string name="pref_notification_provider_native">"Provider notifiche nativo"</string>
 <string name="pref_notification_provider_aurora">"Provider notifiche di Aurora"</string>
@@ -335,7 +335,7 @@ Inoltre fornisce una lista di tracker incorporati in una applicazione"</string>
 <string name="action_recheck_ing">"Ricontrollo"</string>
 <string name="pref_install_type_summary">"Utilizza l'installer nativo per installare i pacchetti, rompe le installazioni degli apk raggruppati"</string>
 <string name="pref_install_type_title">"Forza l'installer nativo"</string>
-<string name="pref_ui_tab_default_title">"Seleziona la scheda di default"</string>
+<string name="pref_ui_tab_default_title">"Seleziona la scheda predefinita"</string>
 <string name="pref_update_interval_title">"Intervallo aggiornamenti"</string>
 <string name="pref_update_interval_manually">"Manuale"</string>
 <string name="pref_update_interval_hourly">"Ogni ora"</string>
