@@ -34,7 +34,7 @@
 <string name="action_get_local_apk">"Λήψη τοπικού APK"</string>
 <string name="action_home">"Αρχική"</string>
 <string name="action_installations">"Εγκαταστάσεις"</string>
-<string name="action_installed">"Εγκαταστημένο"</string>
+<string name="action_installed">"Εγκαταστημένες"</string>
 <string name="action_later">"Αργότερα"</string>
 <string name="action_logging_in">"Γίνεται σύνδεση"</string>
 <string name="action_login">"Σύνδεση"</string>
@@ -136,7 +136,7 @@
 <string name="list_empty_query">"Δεν υπάρχουν πρόσφατες αναζητήσεις"</string>
 <string name="list_empty_updates">"Δεν υπάρχουν ενημερώσεις διαθέσιμες"</string>
 <string name="list_installed">"Εγκατεστημένες"</string>
-<string name="list_installed_system">"Προβολή εφαρμογών χρήστη μόνο"</string>
+<string name="list_installed_system">"Προβολή μόνο εφαρμογών χρήστη"</string>
 <string name="list_not_installd">"Μη εγκατεστημένη"</string>
 <string name="list_update_all">"Ενημέρωση Όλων"</string>
 <string name="list_update_all_txt">"ενημερώσεις διαθέσιμες"</string>
@@ -223,13 +223,13 @@
 <string name="pref_app_language">"Γλώσσα"</string>
 <string name="pref_locale_custom_title">"Προσαρμοσμένη Γλώσσα"</string>
 <string name="pref_locale_custom_summary">"Επιβολή προσαρμοσμένης γλώσσας εφαρμογής"</string>
-<string name="pref_locale_list_title">"Επιλογή Τοποθεσίας"</string>
+<string name="pref_locale_list_title">"Επιλογή Γλώσσας"</string>
 <string name="tab_explore">"Εξερευνήστε Εφαρμογές"</string>
 <string name="tab_games">"Βρείτε Παιχνίδια"</string>
 <string name="tab_family">"Παιδιά &amp; Οικογένεια"</string>
 <string name="pref_ui_tab_mode_title">"Καρτέλες με δυνατότητα κύλισης"</string>
 <string name="pref_ui_tab_mode_summary">"Ενεργοποιήστε για να έχετε καρτέλες με δυνατότητα κύλισης, συνιστάται για συσκευές με χαμηλό dpi"</string>
-<string name="about_app">"Το Aurora μία ανοιχτού κώδικα εναλλακτική εφαρμογή για το Play Store.
+<string name="about_app">"Το Aurora είναι μία ανοιχτού κώδικα εναλλακτική εφαρμογή για το Play Store.
         Επιτρέπει την λήψη εφαρμογών, παρέχει ενημερώσεις στις εγκατεστημένες εφαρμογές και επιτρέπει την αναζήτηση εφαρμογών &amp; παιχνιδιών.
         Επιτρέπει επίσης μία λίστα ιχνηλατών ενσωματωμένες σε μία εφαρμογή."</string>
 <string name="about_paypal">"PayPal"</string>
@@ -246,7 +246,7 @@
 <string name="pref_downloader_strategy_summary">"Επιλογή προεπιλεγμένης στρατηγικής λήψης, προτείνεται η Παράλληλη Στρατηγική για γρηγορότερη λήψη"</string>
 <string name="pref_downloader_strategy_title">"Στρατηγική Λήψης"</string>
 <string name="pref_downloader_strategy_sequential">"Διαδοχική Λήψη"</string>
-<string name="pref_downloader_strategy_parallel">"Παράλληλη Λήψη ()"</string>
+<string name="pref_downloader_strategy_parallel">"Παράλληλη Λήψη"</string>
 <string name="pref_install_mode_native">"Ενσωματωμένη"</string>
 <string name="pref_install_mode_root">"Root"</string>
 <string name="pref_notification_priority_default">"Προεπιλεγμένη"</string>
@@ -271,4 +271,14 @@
 <string name="notification_installation_auto">"Έγινε λήψη, πατήστε για εγκατάσταση"</string>
 <string name="notification_installation_manual">"Bundled αρχείο APK, απαιτείται χειροκίνητη ενέργεια"</string>
 <string name="title_search_result">"Αποτελέσματα για"</string>
+<string name="action_recheck">"Επανέλεγχος"</string>
+<string name="action_recheck_ing">"Γίνεται επανέλεγχος"</string>
+<string name="pref_install_type_summary">"Χρήση ενσωματωμένου installer για εγκατάσταση πακέτων, σπάει την συμβατότητα εγκατάστασης bundled apk"</string>
+<string name="pref_install_type_title">"Επιβολή ενσωματωμένου Installer"</string>
+<string name="pref_ui_tab_default_title">"Επιλογή προεπιλεγμένης καρτέλας"</string>
+<string name="pref_update_interval_title">"Διάστημα ελέγχου για ενημερώσεις"</string>
+<string name="pref_update_interval_manually">"Χειροκίνητα"</string>
+<string name="pref_update_interval_hourly">"Ωριαία"</string>
+<string name="pref_update_interval_daily">"Εβδομαδιαία"</string>
+<string name="pref_update_interval_weekly">"Καθημερινά"</string>
 </resources>
