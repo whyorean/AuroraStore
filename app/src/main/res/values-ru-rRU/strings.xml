@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 <string name="account_dummy">"Анонимный"</string>
+
+<!-- Orifginal should be fixed. Space before question mark -->
 <string name="account_dummy_desc">"Войти, используя анонимный аккаунт?"</string>
 <string name="account_google">"Аккаунт Google"</string>
 <string name="account_logout">"Выйти из Aurora Store?"</string>
@@ -8,10 +10,12 @@
 <string name="account_switch">"Сменить аккаунт"</string>
 <string name="action_accounts">"Аккаунты"</string>
 <string name="action_ask">"Запросить"</string>
-<string name="action_blacklist">"Чёрный список"</string>
+
+<!-- Ожидается добавление отдельного стринга для названия категории в настройках, а это останется только для действия добавляющего приложение в чёрный список, а не как сейчас. -->
+<string name="action_blacklist">"Добавить в чёрный список"</string>
 <string name="action_cancel">"Отмена"</string>
 <string name="action_clear">"Очистить"</string>
-<string name="action_clear_all">"Очистить все"</string>
+<string name="action_clear_all">"Очистить всё"</string>
 <string name="action_convert_local">"Сделать пользовательским"</string>
 <string name="action_convert_system">"Сделать системным"</string>
 <string name="action_copied">"Ссылка скопирована в буфер обмена"</string>
@@ -32,13 +36,13 @@
 <string name="action_filter_rating">"Рейтинги"</string>
 <string name="action_flag">"Пожаловаться"</string>
 <string name="action_get_local_apk">"Сохранить установленный APK файл"</string>
-<string name="action_home">"Витрина"</string>
+<string name="action_home">"Главная"</string>
 <string name="action_installations">"Установка"</string>
 
 <!-- Там приложения и игры. Есть путаница с приложениями из маркета. Может "установленные?" -->
 <string name="action_installed">"Установленные"</string>
 <string name="action_later">"Позже"</string>
-<string name="action_logging_in">"Вход в систему"</string>
+<string name="action_logging_in">"Войти"</string>
 <string name="action_login">"Войти"</string>
 <string name="action_logout">"Выход"</string>
 <string name="action_make_normal">"Сделать пользовательским приложением"</string>
@@ -55,7 +59,7 @@
 <string name="action_retry">"Повторить"</string>
 <string name="action_retry_ing">"Повтор"</string>
 <string name="action_search">"Поиск"</string>
-<string name="action_search_clearHistory">"Очистить все"</string>
+<string name="action_search_clearHistory">"Очистить историю"</string>
 <string name="action_search_history">"История поиска"</string>
 <string name="action_settings">"Настройки"</string>
 <string name="action_spoofed">"Имитация"</string>
@@ -102,8 +106,8 @@
 <string name="dialog_title_logout">"Выйти?"</string>
 <string name="download_cancel_all">"Отменить все"</string>
 <string name="download_canceled">"Отменен"</string>
-<string name="download_clear_completed">"Очистить всё"</string>
-<string name="download_completed">"Загружено"</string>
+<string name="download_clear_completed">"Убрать завершённые"</string>
+<string name="download_completed">"Завершено"</string>
 <string name="download_failed">"Не удалось скачать"</string>
 <string name="download_force_clear_all">"Принудительно очистить всё"</string>
 <string name="download_pause_all">"Приостановить все"</string>
@@ -310,6 +314,18 @@ https://exodus-privacy.eu.org/en/. Это как "отчёт от аваста" 
 <string name="exodus_hasTracker">"Содержит трекеры"</string>
 <string name="list_selected">"Выбранные приложения"</string>
 <string name="notification_installation_auto">"Загружено, коснитесь для установки"</string>
-<string name="notification_installation_manual">"Предустановленное приложение, требуется участие пользователя"</string>
+<string name="notification_installation_manual">"Bundled APK, требуется участие пользователя"</string>
 <string name="title_search_result">"Результаты для"</string>
+<string name="action_recheck">"Перепроверить"</string>
+<string name="action_recheck_ing">"Перепроверка"</string>
+
+<!-- https://developer.android.com/guide/app-bundle -->
+<string name="pref_install_type_summary">"Использовать системный установщик для установки apk-файлов, ломает установку apk состоящих из нескольких частей."</string>
+<string name="pref_install_type_title">"Принудительно использовать системный установщик"</string>
+<string name="pref_ui_tab_default_title">"Вкладка по умолчанию"</string>
+<string name="pref_update_interval_title">"Частота проверки"</string>
+<string name="pref_update_interval_manually">"Вручную"</string>
+<string name="pref_update_interval_hourly">"Каждый час"</string>
+<string name="pref_update_interval_daily">"Раз в неделю"</string>
+<string name="pref_update_interval_weekly">"Раз в день"</string>
 </resources>
