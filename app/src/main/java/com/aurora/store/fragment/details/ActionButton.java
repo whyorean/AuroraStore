@@ -257,7 +257,9 @@ public class ActionButton extends AbstractHelper {
     private View.OnClickListener cancelDownloadListener() {
         return v -> {
             fetch.delete(requestId);
-            draw();
+            if (notification != null)
+                notification.notifyCancelled();
+            switchViews(false);
         };
     }
 
