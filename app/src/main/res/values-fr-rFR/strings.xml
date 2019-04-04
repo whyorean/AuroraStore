@@ -122,7 +122,7 @@
 <string name="exodus_noTracker">"Ne contient pas de traqueurs"</string>
 <string name="exodus_powered">"Propulsé par Exodus"</string>
 <string name="exodus_title">"Aurora Protect"</string>
-<string name="exodus_title_alt">"Rapporter à Exodus"</string>
+<string name="exodus_title_alt">"Rapport d'Exodus"</string>
 <string name="exodus_viewMore">"Voir"</string>
 <string name="exodus_viewReport">"Voir le rapport"</string>
 <string name="flagging_title">"Signaler comme inapproprié"</string>
@@ -275,6 +275,16 @@ Elle fournit également une liste de traqueurs intégrés dans une application."
 <string name="exodus_hasTracker">"Contient des traqueurs"</string>
 <string name="list_selected">"Apps sélectionnées"</string>
 <string name="notification_installation_auto">"Téléchargé, cliquez pour installer"</string>
-<string name="notification_installation_manual">"Apk en kit, action manuelle requise"</string>
+<string name="notification_installation_manual">"Apk groupée, action manuelle requise"</string>
 <string name="title_search_result">"Résultats pour"</string>
+<string name="action_recheck">"Revérifier"</string>
+<string name="action_recheck_ing">"Revérification"</string>
+<string name="pref_install_type_summary">"Utilisez le programme d'installation natif pour installer les paquets, casse les installations d'apk groupés."</string>
+<string name="pref_install_type_title">"Forcer le programme d'installation natif"</string>
+<string name="pref_ui_tab_default_title">"Sélectionner l'onglet par défaut"</string>
+<string name="pref_update_interval_title">"Intervalle de màj"</string>
+<string name="pref_update_interval_manually">"Manuellement"</string>
+<string name="pref_update_interval_hourly">"Toutes les heures"</string>
+<string name="pref_update_interval_daily">"Chaque semaine"</string>
+<string name="pref_update_interval_weekly">"Chaque jour"</string>
 </resources>
