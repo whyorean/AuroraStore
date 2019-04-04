@@ -165,9 +165,9 @@ Lembre-se que fazer o download de versões arbitrárias de aplicativos não é s
 <string name="pref_device_to_pretend_to_be">"Fingir ser outro aparelho"</string>
 <string name="pref_device_to_pretend_to_be_default">"Informações originais do seu aparelho"</string>
 <string name="pref_device_to_pretend_to_be_toast">"Essa mudança será aplicada depois de você entrar na conta novamente"</string>
-<string name="pref_dialog_to_apply_restart">"Essa configuração será aplicada depois de você reiniciar o aparelho"</string>
+<string name="pref_dialog_to_apply_restart">"Essa configuração será aplicada depois de você reiniciar o aplicativo"</string>
 <string name="pref_downloader_active_summary">"Número máximo de downloads simultâneos"</string>
-<string name="pref_downloader_active_title">"Download ativo"</string>
+<string name="pref_downloader_active_title">"Downloads ativos"</string>
 <string name="pref_downloader_debug_summary">"Ative a depuração de download para obter registros detalhados"</string>
 <string name="pref_downloader_debug_title">"Depuração de download"</string>
 <string name="pref_downloader_path_title">"Local para download"</string>
@@ -199,7 +199,7 @@ Lembre-se que fazer o download de versões arbitrárias de aplicativos não é s
 <string name="pref_requested_location_summary">"A Aurora Store precisa ser definida como o aplicativo de local fictício padrão"</string>
 <string name="pref_ui_card_summary">"Usar cartões no estilo antigo para aplicativos em destaque"</string>
 <string name="pref_ui_card_title">"Cartões de destaque antigos"</string>
-<string name="pref_ui_snap_summary">"Mostrar somente um aplicativo ao rolar"</string>
+<string name="pref_ui_snap_summary">"Mostrar somente um aplicativo por vez ao rolar"</string>
 <string name="pref_ui_snap_title">"Ativar SnapView para aplicativos"</string>
 <string name="pref_ui_theme_title">"Tema"</string>
 <string name="testing_program_opt_in">"Participar"</string>
@@ -273,12 +273,12 @@ Lembre-se que fazer o download de versões arbitrárias de aplicativos não é s
 <string name="title_search_result">"Resultados para"</string>
 <string name="action_recheck">"Verificar"</string>
 <string name="action_recheck_ing">"Verificando"</string>
-<string name="pref_install_type_summary">"Use o instalador nativo para instalar pacotes, interrompe instalações de Apk corrompidas"</string>
+<string name="pref_install_type_summary">"Use o instalador nativo para instalar pacotes; quebra a função de instalação de APKs empacotados"</string>
 <string name="pref_install_type_title">"Forçar instalador nativo"</string>
 <string name="pref_ui_tab_default_title">"Selecione a aba padrão"</string>
 <string name="pref_update_interval_title">"Intervalo das atualizações"</string>
 <string name="pref_update_interval_manually">"Manualmente"</string>
-<string name="pref_update_interval_hourly">"Por hora"</string>
-<string name="pref_update_interval_daily">"Semanal"</string>
-<string name="pref_update_interval_weekly">"Diário"</string>
+<string name="pref_update_interval_hourly">"A cada hora"</string>
+<string name="pref_update_interval_daily">"Semanalmente"</string>
+<string name="pref_update_interval_weekly">"Diariamente"</string>
 </resources>
