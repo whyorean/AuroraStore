@@ -269,4 +269,14 @@
 <string name="list_selected">"已選擇的應用"</string>
 <string name="notification_installation_auto">"已下載，點擊安裝"</string>
 <string name="notification_installation_manual">"被捆綁的 APK，需要手動操作"</string>
+<string name="action_recheck">"重新載入"</string>
+<string name="action_recheck_ing">"重新載入中"</string>
+<string name="pref_install_type_summary">"使用內建的安裝器安裝應用，將會破壞捆綁的 APK"</string>
+<string name="pref_install_type_title">"強制使用內建的安裝器"</string>
+<string name="pref_ui_tab_default_title">"選擇預設標籤"</string>
+<string name="pref_update_interval_title">"更新間隔"</string>
+<string name="pref_update_interval_manually">"手動"</string>
+<string name="pref_update_interval_hourly">"一小時"</string>
+<string name="pref_update_interval_daily">"一週"</string>
+<string name="pref_update_interval_weekly">"一天"</string>
 </resources>
