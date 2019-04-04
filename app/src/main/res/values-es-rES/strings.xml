@@ -271,8 +271,8 @@ También ofrece una lista de los trackers incrustados en una aplicación."</stri
 <string name="notification_installation_auto">"Descargada, pulsa para instalar"</string>
 <string name="notification_installation_manual">"APK partido, requiere instalación manual"</string>
 <string name="title_search_result">"Resultados para"</string>
-<string name="action_recheck">"Recomprobar"</string>
-<string name="action_recheck_ing">"Recomprobando"</string>
+<string name="action_recheck">"Comprobar"</string>
+<string name="action_recheck_ing">"Comprobando"</string>
 <string name="pref_install_type_summary">"Forzando la instalación nativa no podrás instalar APKs partidos"</string>
 <string name="pref_install_type_title">"Forzar instalador nativo"</string>
 <string name="pref_ui_tab_default_title">"Pestaña por defecto"</string>
