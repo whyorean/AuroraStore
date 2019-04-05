@@ -46,6 +46,7 @@ import com.aurora.store.HistoryItemTouchHelper;
 import com.aurora.store.R;
 import com.aurora.store.activity.DetailsActivity;
 import com.aurora.store.adapter.SearchHistoryAdapter;
+import com.aurora.store.utility.PackageUtil;
 import com.aurora.store.utility.PrefUtil;
 
 import org.jetbrains.annotations.NotNull;
@@ -127,8 +128,14 @@ public class SearchFragment extends BaseFragment implements BaseFragment.EventLi
             public boolean onSuggestionClick(int position) {
                 Cursor cursor = searchView.getSuggestionsAdapter().getCursor();
                 cursor.moveToPosition(position);
-                String suggestion = cursor.getString(2);
-                searchView.setQuery(suggestion, true);
+                if (position == 0) {
+                    searchView.setQuery(cursor.getString(2), true);
+                    searchView.setQuery(cursor.getString(1), false);
+                    PackageUtil.addToPseudoPackageMap(context,
+                            cursor.getString(2),
+                            cursor.getString(1));
+                } else
+                    searchView.setQuery(cursor.getString(1), true);
                 return true;
             }
         });
@@ -137,14 +144,19 @@ public class SearchFragment extends BaseFragment implements BaseFragment.EventLi
     private void setQuery(String query) {
         if (looksLikeAPackageId(query)) {
             context.startActivity(DetailsActivity.getDetailsIntent(getContext(), query));
+            saveQuery(PackageUtil.getAppLabel(context, query));
         } else {
-            String mDatedQuery = query
-                    .concat(":")
-                    .concat(new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
-                            .format(new Date()));
-            setQueryToPref(mDatedQuery);
             getQueriedApps(query);
+            saveQuery(query);
         }
+    }
+
+    private void saveQuery(String query) {
+        String mDatedQuery = query
+                .concat(":")
+                .concat(new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+                        .format(new Date()));
+        setQueryToPref(mDatedQuery);
     }
 
     private void setQueryToPref(String query) {

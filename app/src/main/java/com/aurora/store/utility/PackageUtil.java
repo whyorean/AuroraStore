@@ -24,6 +24,7 @@ import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.aurora.store.model.App;
@@ -77,14 +78,14 @@ public class PackageUtil {
         }
     }
 
-    @Nullable
+    @NonNull
     public static String getAppLabel(Context c, String packageName) {
         try {
             PackageManager pm = c.getPackageManager();
             ApplicationInfo appInfo = pm.getApplicationInfo(packageName, 0);
             return pm.getApplicationLabel(appInfo).toString();
         } catch (Exception e) {
-            return null;
+            return "";
         }
     }
 
