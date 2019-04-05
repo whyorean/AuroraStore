@@ -279,4 +279,6 @@
 <string name="pref_update_interval_hourly">"كل ساعة"</string>
 <string name="pref_update_interval_daily">"اسبوعيا"</string>
 <string name="pref_update_interval_weekly">"يوميا"</string>
+<string name="download_none">"لا تنزيلات"</string>
+<string name="error_app_download">"لا يمكن تحميله على"</string>
 </resources>
