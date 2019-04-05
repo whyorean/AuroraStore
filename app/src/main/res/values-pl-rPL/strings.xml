@@ -37,7 +37,7 @@
 <string name="action_installed">"Zainstalowane"</string>
 <string name="action_later">"Później"</string>
 <string name="action_logging_in">"Logowanie"</string>
-<string name="action_login">"Zaloguj Się"</string>
+<string name="action_login">"Zaloguj się"</string>
 <string name="action_logout">"Wyloguj"</string>
 <string name="action_make_normal">"Konwertuj normalną aplikację"</string>
 <string name="action_make_system">"Konwertuj na aplikację systemową"</string>
@@ -277,4 +277,11 @@ Udostępnia również listę usług śledzących zaimplementowanych w aplikacjac
 <string name="pref_install_type_summary">"Użyj natywnego instalatora do instalacji podzielonych plików APK"</string>
 <string name="pref_install_type_title">"Wymuś natywny instalator"</string>
 <string name="pref_ui_tab_default_title">"Wybierz domyślną zakładkę"</string>
+<string name="pref_update_interval_title">"Częstotliwość aktualizacji"</string>
+<string name="pref_update_interval_manually">"Ręcznie"</string>
+<string name="pref_update_interval_hourly">"Co godzinę"</string>
+<string name="pref_update_interval_daily">"Co tydzień"</string>
+<string name="pref_update_interval_weekly">"Codziennie"</string>
+<string name="download_none">"Brak pobrań"</string>
+<string name="error_app_download">"nie może być pobrana"</string>
 </resources>
