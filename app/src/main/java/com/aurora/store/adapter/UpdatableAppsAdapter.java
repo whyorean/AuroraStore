@@ -89,7 +89,7 @@ public class UpdatableAppsAdapter extends RecyclerView.Adapter<UpdatableAppsAdap
         List<String> Extra = new ArrayList<>();
 
         viewHolder.AppTitle.setText(app.getDisplayName());
-        getDetails(context, Version, Extra, app);
+        getDetails(Version, Extra, app);
         setText(viewHolder.AppVersion, TextUtils.join(" • ", Version));
         setText(viewHolder.AppExtra, TextUtils.join(" • ", Extra));
 
@@ -115,12 +115,9 @@ public class UpdatableAppsAdapter extends RecyclerView.Adapter<UpdatableAppsAdap
                 .into(viewHolder.AppIcon);
     }
 
-    private void getDetails(Context mContext, List<String> Version, List<String> Extra, App app) {
+    private void getDetails(List<String> Version, List<String> Extra, App app) {
         Version.add("v" + app.getVersionName() + "." + app.getVersionCode());
-        if (app.isSystem())
-            Extra.add(mContext.getString(R.string.list_app_system));
-        else
-            Extra.add(mContext.getString(R.string.list_app_user));
+        Extra.add(app.getUpdated());
     }
 
     protected void setText(TextView textView, String text) {
