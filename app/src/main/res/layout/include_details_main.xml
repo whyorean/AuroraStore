@@ -100,6 +100,12 @@
             android:paddingEnd="@dimen/margin_small">
 
             <com.google.android.material.chip.Chip
+                android:id="@+id/txt_updated"
+                style="@style/Widget.MaterialComponents.Chip.Info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <com.google.android.material.chip.Chip
                 android:id="@+id/price"
                 style="@style/Widget.MaterialComponents.Chip.Info"
                 android:layout_width="wrap_content"
@@ -131,12 +137,6 @@
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/txt_size"
-                style="@style/Widget.MaterialComponents.Chip.Info"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <com.google.android.material.chip.Chip
-                android:id="@+id/txt_updated"
                 style="@style/Widget.MaterialComponents.Chip.Info"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
