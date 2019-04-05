@@ -14,6 +14,13 @@ or without GooglePlayService or MicroG. Thereby avoding the various concerned *u
 Earlier based on Sergei Yeriomin's [Yalp store](https://github.com/yeriomin/YalpStore), v3.0 is a clean & complete rewrite from scratch that follows<br/>
 Material Design and runs on all devices running Android 5.0+.<br/>
 
+# Screenshots
+
+<img src="https://gitlab.com/AuroraOSS/AuroraStore/raw/master/fastlane/metadata/android/en-US/phoneScreenshots/ss001.png" height="400"><img src="https://gitlab.com/AuroraOSS/AuroraStore/raw/master/fastlane/metadata/android/en-US/phoneScreenshots/ss002.png" height="400">
+<img src="https://gitlab.com/AuroraOSS/AuroraStore/raw/master/fastlane/metadata/android/en-US/phoneScreenshots/ss003.png" height="400"><img src="https://gitlab.com/AuroraOSS/AuroraStore/raw/master/fastlane/metadata/android/en-US/phoneScreenshots/ss004.png" height="400">
+<img src="https://gitlab.com/AuroraOSS/AuroraStore/raw/master/fastlane/metadata/android/en-US/phoneScreenshots/ss005.png" height="400"><img src="https://gitlab.com/AuroraOSS/AuroraStore/raw/master/fastlane/metadata/android/en-US/phoneScreenshots/ss006.png" height="400">
+<img src="https://gitlab.com/AuroraOSS/AuroraStore/raw/master/fastlane/metadata/android/en-US/phoneScreenshots/ss007.png" height="400">
+
 # Features
 
 * Free | Libre software
