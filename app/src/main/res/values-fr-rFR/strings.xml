@@ -282,9 +282,11 @@ Elle fournit également une liste de traqueurs intégrés dans une application."
 <string name="pref_install_type_summary">"Utilisez le programme d'installation natif pour installer les paquets, casse les installations d'apk groupés."</string>
 <string name="pref_install_type_title">"Forcer le programme d'installation natif"</string>
 <string name="pref_ui_tab_default_title">"Sélectionner l'onglet par défaut"</string>
-<string name="pref_update_interval_title">"Intervalle de màj"</string>
+<string name="pref_update_interval_title">"Intervalle de mise à jour"</string>
 <string name="pref_update_interval_manually">"Manuellement"</string>
 <string name="pref_update_interval_hourly">"Toutes les heures"</string>
 <string name="pref_update_interval_daily">"Chaque semaine"</string>
 <string name="pref_update_interval_weekly">"Chaque jour"</string>
+<string name="download_none">"Pas de téléchargements"</string>
+<string name="error_app_download">"ne peut pas être téléchargé"</string>
 </resources>
