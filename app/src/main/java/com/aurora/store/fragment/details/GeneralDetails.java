@@ -54,6 +54,8 @@ import butterknife.ButterKnife;
 public class GeneralDetails extends AbstractHelper {
     @BindView(R.id.icon)
     ImageView appIcon;
+    @BindView(R.id.devName)
+    TextView txtDevName;
     @BindView(R.id.showLessMoreTxt)
     TextView showLessMoreTxt;
     @BindView(R.id.versionString)
@@ -97,6 +99,7 @@ public class GeneralDetails extends AbstractHelper {
             setText(view, R.id.displayName, app.getDisplayName());
             setText(view, R.id.packageName, app.getPackageName());
             setText(view, R.id.devName, app.getDeveloperName());
+            txtDevName.setOnClickListener(v -> showDevApps());
             drawVersion();
         }
     }

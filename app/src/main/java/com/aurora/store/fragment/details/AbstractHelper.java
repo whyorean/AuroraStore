@@ -22,11 +22,17 @@ package com.aurora.store.fragment.details;
 
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import androidx.fragment.app.FragmentTransaction;
+
+import com.aurora.store.Constants;
+import com.aurora.store.R;
 import com.aurora.store.activity.ManualDownloadActivity;
 import com.aurora.store.fragment.DetailsFragment;
+import com.aurora.store.fragment.DevAppsFragment;
 import com.aurora.store.model.App;
 
 import butterknife.ButterKnife;
@@ -61,6 +67,20 @@ public abstract class AbstractHelper {
     }
 
     abstract public void draw();
+
+    protected void showDevApps() {
+        DevAppsFragment devAppsFragment = new DevAppsFragment();
+        Bundle arguments = new Bundle();
+        arguments.putString("SearchQuery", Constants.PUB_PREFIX + app.getDeveloperName());
+        arguments.putString("SearchTitle", app.getDeveloperName());
+        devAppsFragment.setArguments(arguments);
+        fragment.getChildFragmentManager()
+                .beginTransaction()
+                .replace(R.id.container, devAppsFragment)
+                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                .addToBackStack(null)
+                .commit();
+    }
 
     protected void setText(View v, int viewId, String text) {
         TextView textView = view.findViewById(viewId);
