@@ -22,11 +22,13 @@ package com.aurora.store.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.text.Html;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -39,6 +41,7 @@ import com.aurora.store.activity.AuroraActivity;
 import com.aurora.store.activity.DetailsActivity;
 import com.aurora.store.model.App;
 import com.aurora.store.sheet.AppMenuSheet;
+import com.aurora.store.utility.ViewUtil;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 
@@ -50,7 +53,7 @@ import butterknife.ButterKnife;
 
 public class UpdatableAppsAdapter extends RecyclerView.Adapter<UpdatableAppsAdapter.ViewHolder> {
 
-    public List<App> appsToAdd;
+    private List<App> appsToAdd;
     private Context context;
     private ListType listType;
 
@@ -78,7 +81,7 @@ public class UpdatableAppsAdapter extends RecyclerView.Adapter<UpdatableAppsAdap
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View view = inflater.inflate(R.layout.item_installed, parent, false);
+        View view = inflater.inflate(R.layout.item_updatable, parent, false);
         return new ViewHolder(view);
     }
 
@@ -88,10 +91,11 @@ public class UpdatableAppsAdapter extends RecyclerView.Adapter<UpdatableAppsAdap
         List<String> Version = new ArrayList<>();
         List<String> Extra = new ArrayList<>();
 
-        viewHolder.AppTitle.setText(app.getDisplayName());
+        viewHolder.txtTitle.setText(app.getDisplayName());
         getDetails(Version, Extra, app);
-        setText(viewHolder.AppVersion, TextUtils.join(" • ", Version));
-        setText(viewHolder.AppExtra, TextUtils.join(" • ", Extra));
+        setText(viewHolder.txtVersion, TextUtils.join(" • ", Version));
+        setText(viewHolder.txtExtra, TextUtils.join(" • ", Extra));
+        setText(viewHolder.txtChanges, Html.fromHtml(app.getChanges()).toString());
 
         viewHolder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(context, DetailsActivity.class);
@@ -103,7 +107,8 @@ public class UpdatableAppsAdapter extends RecyclerView.Adapter<UpdatableAppsAdap
             final AppMenuSheet menuSheet = new AppMenuSheet();
             menuSheet.setApp(app);
             menuSheet.setListType(listType);
-            menuSheet.show(((AuroraActivity) context).getSupportFragmentManager(), "BOTTOM_MENU_SHEET");
+            menuSheet.show(((AuroraActivity) context).getSupportFragmentManager(),
+                    "BOTTOM_MENU_SHEET");
             return false;
         });
 
@@ -112,7 +117,20 @@ public class UpdatableAppsAdapter extends RecyclerView.Adapter<UpdatableAppsAdap
                 .load(app.getIconInfo().getUrl())
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .transition(new DrawableTransitionOptions().crossFade())
-                .into(viewHolder.AppIcon);
+                .into(viewHolder.imgIcon);
+
+        viewHolder.imgExpand.setOnClickListener(v -> {
+            if (viewHolder.layoutChanges.getHeight() == 0) {
+                ViewUtil.rotateView(v, false);
+                ViewUtil.expandView(viewHolder.layoutChanges,
+                        viewHolder.txtChanges.getHeight()
+                                + viewHolder.txtChangesTitle.getHeight()
+                                + 120 /*Padding & Margins*/);
+            } else {
+                ViewUtil.rotateView(v, true);
+                ViewUtil.collapseView(viewHolder.layoutChanges, 0);
+            }
+        });
     }
 
     private void getDetails(List<String> Version, List<String> Extra, App app) {
@@ -135,14 +153,24 @@ public class UpdatableAppsAdapter extends RecyclerView.Adapter<UpdatableAppsAdap
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
+        @BindView(R.id.layout_info)
+        RelativeLayout layoutInfo;
+        @BindView(R.id.layout_changes)
+        RelativeLayout layoutChanges;
         @BindView(R.id.app_icon)
-        ImageView AppIcon;
+        ImageView imgIcon;
         @BindView(R.id.app_title)
-        TextView AppTitle;
+        TextView txtTitle;
         @BindView(R.id.app_version)
-        TextView AppVersion;
+        TextView txtVersion;
         @BindView(R.id.app_extra)
-        TextView AppExtra;
+        TextView txtExtra;
+        @BindView(R.id.img_expand)
+        ImageView imgExpand;
+        @BindView(R.id.txt_title)
+        TextView txtChangesTitle;
+        @BindView(R.id.txt_changes)
+        TextView txtChanges;
 
         ViewHolder(@NonNull View itemView) {
             super(itemView);

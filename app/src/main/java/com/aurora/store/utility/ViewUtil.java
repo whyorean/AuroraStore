@@ -22,17 +22,21 @@ package com.aurora.store.utility;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
+import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.DecelerateInterpolator;
+import android.view.animation.RotateAnimation;
 import android.widget.TextView;
 
 import androidx.annotation.MenuRes;
@@ -49,6 +53,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ViewUtil {
+
+    public static int dpToPx(Context context, int dp) {
+        DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
+        return Math.round(dp * (displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT));
+    }
+
+    public static int pxToDp(Context context, int px) {
+        DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
+        return Math.round(px / (displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT));
+    }
 
     public static void setCustomColors(Context mContext, SwipeRefreshLayout swipeRefreshLayout) {
         swipeRefreshLayout.setColorSchemeColors(mContext
@@ -111,7 +125,7 @@ public class ViewUtil {
     }
 
     public static void showWithAnimation(View view) {
-        int mShortAnimationDuration = view.getResources().getInteger(
+        final int mShortAnimationDuration = view.getResources().getInteger(
                 android.R.integer.config_shortAnimTime);
         view.setAlpha(0f);
         view.setVisibility(View.VISIBLE);
@@ -123,7 +137,7 @@ public class ViewUtil {
     }
 
     public static void hideWithAnimation(View view) {
-        int mShortAnimationDuration = view.getResources().getInteger(
+        final int mShortAnimationDuration = view.getResources().getInteger(
                 android.R.integer.config_shortAnimTime);
         view.animate()
                 .alpha(0f)
@@ -134,6 +148,43 @@ public class ViewUtil {
                         view.setVisibility(View.GONE);
                     }
                 });
+    }
+
+    public static void rotateView(View view, boolean reverse) {
+        final RotateAnimation animation = new RotateAnimation(
+                reverse ? 180 : 0,
+                reverse ? 0 : 180,
+                (float) view.getWidth() / 2,
+                (float) view.getHeight() / 2);
+        animation.setDuration(300);
+        animation.setFillAfter(true);
+        view.startAnimation(animation);
+    }
+
+    public static void expandView(final View v, int targetHeight) {
+        int prevHeight = v.getHeight();
+        v.setVisibility(View.VISIBLE);
+        ValueAnimator valueAnimator = ValueAnimator.ofInt(prevHeight, targetHeight);
+        valueAnimator.addUpdateListener(animation -> {
+            v.getLayoutParams().height = (int) animation.getAnimatedValue();
+            v.requestLayout();
+        });
+        valueAnimator.setInterpolator(new DecelerateInterpolator());
+        valueAnimator.setDuration(300);
+        valueAnimator.start();
+    }
+
+    public static void collapseView(final View v, int targetHeight) {
+        int prevHeight = v.getHeight();
+        ValueAnimator valueAnimator = ValueAnimator.ofInt(prevHeight, targetHeight);
+        valueAnimator.setInterpolator(new DecelerateInterpolator());
+        valueAnimator.addUpdateListener(animation -> {
+            v.getLayoutParams().height = (int) animation.getAnimatedValue();
+            v.requestLayout();
+        });
+        valueAnimator.setInterpolator(new DecelerateInterpolator());
+        valueAnimator.setDuration(300);
+        valueAnimator.start();
     }
 
     public static void setVisibility(View view, boolean visibility) {
