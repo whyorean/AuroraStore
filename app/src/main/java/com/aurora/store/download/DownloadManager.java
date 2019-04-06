@@ -31,6 +31,10 @@ import com.tonyodev.fetch2.Fetch;
 import com.tonyodev.fetch2.FetchConfiguration;
 import com.tonyodev.fetch2okhttp.OkHttpDownloader;
 
+import java.util.concurrent.TimeUnit;
+
+import okhttp3.OkHttpClient;
+
 public class DownloadManager {
 
     private Context context;
@@ -42,8 +46,17 @@ public class DownloadManager {
     }
 
     private void init() {
+        OkHttpClient.Builder builder = new OkHttpClient.Builder();
+        builder.connectTimeout(20, TimeUnit.SECONDS);
+        builder.readTimeout(20, TimeUnit.SECONDS);
+        builder.writeTimeout(20, TimeUnit.SECONDS);
+
+        if (Util.isNetworkProxyEnabled(context))
+            builder.proxy(Util.getNetworkProxy(context));
+
+        OkHttpClient okHttpClient = builder.build();
         FetchConfiguration.Builder fetchConfiguration = new FetchConfiguration.Builder(context);
-        fetchConfiguration.setHttpDownloader(new OkHttpDownloader(Util.getDownloadStrategy(context)));
+        fetchConfiguration.setHttpDownloader(new OkHttpDownloader(okHttpClient, Util.getDownloadStrategy(context)));
         fetchConfiguration.setNamespace(Constants.TAG);
         if (NotificationUtil.isNotificationEnabled(context) &&
                 NotificationUtil.getNotificationProvider(context) == NotificationProvider.NATIVE)
