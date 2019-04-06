@@ -24,6 +24,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.text.Html;
 import android.text.TextUtils;
+import android.text.format.Formatter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -95,7 +96,9 @@ public class UpdatableAppsAdapter extends RecyclerView.Adapter<UpdatableAppsAdap
         getDetails(Version, Extra, app);
         setText(viewHolder.txtVersion, TextUtils.join(" • ", Version));
         setText(viewHolder.txtExtra, TextUtils.join(" • ", Extra));
-        setText(viewHolder.txtChanges, Html.fromHtml(app.getChanges()).toString());
+        setText(viewHolder.txtChanges, app.getChanges().isEmpty()
+                ? context.getString(R.string.details_no_changes)
+                : Html.fromHtml(app.getChanges()).toString());
 
         viewHolder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(context, DetailsActivity.class);
@@ -136,6 +139,7 @@ public class UpdatableAppsAdapter extends RecyclerView.Adapter<UpdatableAppsAdap
     private void getDetails(List<String> Version, List<String> Extra, App app) {
         Version.add("v" + app.getVersionName() + "." + app.getVersionCode());
         Extra.add(app.getUpdated());
+        Extra.add(app.getSize() == 0 ? "N/A" : Formatter.formatShortFileSize(context, app.getSize()));
     }
 
     protected void setText(TextView textView, String text) {
