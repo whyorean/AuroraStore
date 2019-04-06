@@ -38,6 +38,7 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.bumptech.glide.request.RequestOptions;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class FavouriteAppsAdapter extends RecyclerView.Adapter {
@@ -53,6 +54,8 @@ public class FavouriteAppsAdapter extends RecyclerView.Adapter {
         this.context = context;
         manager = new FavouriteListManager(context);
         appList.addAll(appsToAdd);
+        Collections.sort(appsToAdd, (App1, App2) ->
+                App1.getDisplayName().compareTo(App2.getDisplayName()));
     }
 
     public void add(int position, App app) {

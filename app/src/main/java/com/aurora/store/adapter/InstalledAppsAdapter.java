@@ -46,6 +46,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import butterknife.BindView;
@@ -53,27 +54,29 @@ import butterknife.ButterKnife;
 
 public class InstalledAppsAdapter extends RecyclerView.Adapter<InstalledAppsAdapter.ViewHolder> {
 
-    public List<App> appsToAdd;
+    public List<App> appList;
     private Context context;
     private ListType listType;
 
     public InstalledAppsAdapter(Context context, List<App> appsToAdd, ListType listType) {
         this.context = context;
-        this.appsToAdd = appsToAdd;
+        this.appList = appsToAdd;
         this.listType = listType;
+        Collections.sort(appsToAdd, (App1, App2) ->
+                App1.getDisplayName().compareTo(App2.getDisplayName()));
     }
 
     public void add(int position, App app) {
-        appsToAdd.add(position, app);
+        appList.add(position, app);
         notifyItemInserted(position);
     }
 
     public void add(App app) {
-        appsToAdd.add(app);
+        appList.add(app);
     }
 
     public void remove(int position) {
-        appsToAdd.remove(position);
+        appList.remove(position);
         notifyItemRemoved(position);
     }
 
@@ -87,7 +90,7 @@ public class InstalledAppsAdapter extends RecyclerView.Adapter<InstalledAppsAdap
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        App app = appsToAdd.get(position);
+        App app = appList.get(position);
         List<String> Version = new ArrayList<>();
         List<String> Extra = new ArrayList<>();
 
@@ -148,7 +151,7 @@ public class InstalledAppsAdapter extends RecyclerView.Adapter<InstalledAppsAdap
 
     @Override
     public int getItemCount() {
-        return appsToAdd.size();
+        return appList.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

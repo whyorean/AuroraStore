@@ -36,7 +36,7 @@ import com.aurora.store.model.App;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import butterknife.BindView;
@@ -45,13 +45,15 @@ import butterknife.ButterKnife;
 
 public class BlacklistAdapter extends SelectableAdapter<BlacklistAdapter.ViewHolder> {
 
-    private List<App> appList = new ArrayList<>();
+    private List<App> appList;
     private ItemClickListener itemClickListener;
 
     public BlacklistAdapter(Context context, List<App> appList, ItemClickListener itemClickListener) {
         super(context);
         this.itemClickListener = itemClickListener;
         this.appList = appList;
+        Collections.sort(appList, (App1, App2) ->
+                App1.getDisplayName().compareTo(App2.getDisplayName()));
     }
 
     @NotNull
