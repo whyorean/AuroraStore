@@ -9,3 +9,18 @@ Changelog : v3.0.1
 • Improved Blacklist Manager
 • Added Favourite Apps Manager
 • and more..
+
+Changelog : v3.0.2
+• Updated translations & added new Koffrora (Meme) locale
+• Enforced root install method to set installer as 'com.android.vending' allowing app to work that 
+   impose restricts if installed from other sources except Play Store.
+• Fix bugs related to search bar & search history
+• Fix bugs related to Downloader
+• Added option to view changelogs in updatable app list
+• UI improvements
+
+Changelog : v3.0.3
+• Sort app list in ascending order of app name
+• Enforced proxy network on download requests
+• Show update size in updatable app list
+• Disable quick notification completely if notifications are turned off
