@@ -75,9 +75,7 @@ public class AboutFragment extends Fragment {
             PackageInfo packageInfo = context.getPackageManager().getPackageInfo(getActivity().getPackageName(), 0);
             txtVersion.setText(new StringBuilder()
                     .append("v")
-                    .append(packageInfo.versionName)
-                    .append(".")
-                    .append(packageInfo.versionCode));
+                    .append(packageInfo.versionName));
         } catch (Exception ignored) {
         }
     }

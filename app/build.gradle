@@ -28,8 +28,8 @@ android {
         applicationId "com.aurora.store"
         minSdkVersion 21
         targetSdkVersion 28
-        versionCode 2
-        versionName "3.0"
+        versionCode 3
+        versionName "3.0.3"
 
         resConfigs "ar-rSA", "bh-rIN", "bg-rBG", "de-rDE", "es-rES", "el-rGR", "fr-rFR", "gl-rES", "hi-rIN", "hr-rHR", "hu-rHU", "in-rID", "it-rIT", "iw-rIL", "ja-rJP", "ko-rKR", "lt-rLT",
                 "pl-rPL", "pt-rPT", "pt-rBR", "ro-rRO", "ru-rRU", "sk-rSK", "sr-rSR", "sv-rSE", "th-rTH", "tr-rTR", "uk-rUA", "vi-rVN", "zh-rCN", "zh-rTW"
