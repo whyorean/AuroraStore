@@ -139,7 +139,7 @@
 <string name="list_installed_system">"Systemanwendungen ausblenden"</string>
 <string name="list_not_installd">"Nicht installiert"</string>
 <string name="list_update_all">"Alle aktualisieren"</string>
-<string name="list_update_all_txt">"Aktualisierungen verfügbar"</string>
+<string name="list_update_all_txt">"Updates verfügbar"</string>
 <string name="list_updating">"Aktualisiert..."</string>
 <string name="manual_download_disclaimer">"Haftungsausschluss"</string>
 <string name="manual_download_incompatible">"Der Google Play Store hält diese App für mit Ihrem Gerät nicht kompatibel. Das bedeutet, dass vom Google Play Store-Server kein Versionscode zurückgegeben wurde."</string>
@@ -171,7 +171,7 @@ Beachten Sie, dass der Download beliebiger Versionen von Apps nicht vom Google P
 <string name="pref_downloader_path_title">"Download-Pfad"</string>
 <string name="pref_downloader_wifi_title">"Nur im WLAN herunternladen"</string>
 <string name="pref_filter_fdroid_summary">"Blendet Apps von F-Droid aus."</string>
-<string name="pref_filter_fdroid_title">"Filtern Sie F-Droid-Apps"</string>
+<string name="pref_filter_fdroid_title">"Apps von F-Droid ausblenden"</string>
 <string name="pref_filter_google_summary">"Entfernt alle Google Apps aus den Suchergebnissen und Kategorie-Apps"</string>
 <string name="pref_filter_google_title">"Google-Apps filtern"</string>
 <string name="pref_filter_search_summary">"Suchfilter werden bei jeder Suche zurückgesetzt. Deaktivieren Sie diese Option, um Suchfilter zu speichern"</string>
@@ -213,7 +213,7 @@ Beachten Sie, dass der Download beliebiger Versionen von Apps nicht vom Google P
 <string name="title_home">"Aurora Store"</string>
 <string name="title_installed">"Meine Apps &amp; Spiele"</string>
 <string name="title_perm">"Berechtigungen"</string>
-<string name="title_search">"Nach Apps &amp; Spielen suchen"</string>
+<string name="title_search">"Apps &amp; Spiele suchen"</string>
 <string name="title_updates">"Verfügbare Updates"</string>
 <string name="title_welcome">"Herzlich willkommen"</string>
 <string name="toast_apk_blacklisted">"Wird ignoriert"</string>
@@ -229,16 +229,16 @@ Beachten Sie, dass der Download beliebiger Versionen von Apps nicht vom Google P
 <string name="tab_family">"Kinder &amp; Familie"</string>
 <string name="pref_ui_tab_mode_title">"Scrollbare Tabs"</string>
 <string name="pref_ui_tab_mode_summary">"Aktiviere, um Tabs scrollbar zu machen; empfohlen für Geräte mit geringer dpi"</string>
-<string name="about_app">"Aurora ist eine Open Source Alternative zum Play Store.
-Damit kann man Apps herunterladen, Updates installieren und nach Apps &amp; Spielen suchen.
-Zudem zeigt Aurora die Anzahl der in der jeweiligen App vorhandenen Tracker an."</string>
+<string name="about_app">"Aurora ist eine Open-Source-Alternative zum Google Play Store.
+Man kann nach Apps &amp; Spielen suchen, diese herunterladen und Updates installieren.
+Zudem zeigt Aurora die Anzahl der Tracker in der jeweiligen App an."</string>
 <string name="about_paypal">"PayPal"</string>
 <string name="about_paypal_summary">"Mir über PayPal spenden"</string>
 <string name="about_fdroid">"F-Droid"</string>
 <string name="about_gitlab">"GitLab"</string>
-<string name="about_gitlab_summary">"Den AuroraStore Source Code von Aurora OSS auf GitLab bekommen"</string>
+<string name="about_gitlab_summary">"Den Quellcode von Aurora Store auf GitLab betrachten."</string>
 <string name="about_telegram">"Telegram"</string>
-<string name="about_telegram_summary">"Trete der Aurora Support Gruppe für Diskussionen oder Verbesserungsvorschläge bei."</string>
+<string name="about_telegram_summary">"Tritt der Aurora Support Gruppe für Diskussionen oder Verbesserungsvorschläge bei."</string>
 <string name="about_fdroid_summary">"Aurora von F-Droid beziehen"</string>
 <string name="about_xda">"Entwickler Thread"</string>
 <string name="about_xda_summary">"Für Diskussion oder Verbesserungsvorschläge: xda Aurora Store Thread"</string>
@@ -276,9 +276,12 @@ Zudem zeigt Aurora die Anzahl der in der jeweiligen App vorhandenen Tracker an."
 <string name="pref_install_type_summary">"Nutze nativen Installer um Pakete zu installieren, bricht die gebündelte Apk Installation"</string>
 <string name="pref_install_type_title">"Erzwinge nativen Installer"</string>
 <string name="pref_ui_tab_default_title">"Standard-Tab auswählen"</string>
-<string name="pref_update_interval_title">"Update Intervall"</string>
+<string name="pref_update_interval_title">"Update-Intervall"</string>
 <string name="pref_update_interval_manually">"Manuell"</string>
 <string name="pref_update_interval_hourly">"Stündlich"</string>
 <string name="pref_update_interval_daily">"Wöchentlich"</string>
 <string name="pref_update_interval_weekly">"Täglich"</string>
+<string name="download_none">"Keine Downloads"</string>
+<string name="error_app_download">"kann nicht heruntergeladen werden"</string>
+<string name="details_new_changes">"Was ist neu"</string>
 </resources>
