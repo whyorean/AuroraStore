@@ -166,12 +166,12 @@ Pamiętaj, że pobieranie dowolnych wersji aplikacji nie jest obsługiwane przez
 <string name="pref_dialog_to_apply_restart">"To ustawienie zostanie zastosowane po ponownym uruchomieniu aplikacji"</string>
 <string name="pref_downloader_active_summary">"Maksymalna liczba aktywnych pobrań"</string>
 <string name="pref_downloader_active_title">"Aktywne pobierania"</string>
-<string name="pref_downloader_debug_summary">"Włącz debugowanie pobierania, aby uzyskać szczegółowe dzienniki"</string>
+<string name="pref_downloader_debug_summary">"Włącz debugowanie pobierania, aby uzyskać szczegółowe informacje"</string>
 <string name="pref_downloader_debug_title">"Debugowanie pobierania"</string>
 <string name="pref_downloader_path_title">"Ścieżka pobierania"</string>
 <string name="pref_downloader_wifi_title">"Pobierz tylko poprzez Wi-Fi"</string>
 <string name="pref_filter_fdroid_summary">"Usuń z list aplikacje pochodzące z F-droid"</string>
-<string name="pref_filter_fdroid_title">"Filtruj aplikacje pochodzące z  F-droid"</string>
+<string name="pref_filter_fdroid_title">"Filtruj aplikacje pochodzące z F-droid"</string>
 <string name="pref_filter_google_summary">"Usuń wszystkie Aplikacje Google z wyników wyszukiwania i kategorii aplikacji"</string>
 <string name="pref_filter_google_title">"Filtruj aplikacje Google"</string>
 <string name="pref_filter_search_summary">"Filtry wyszukiwania są resetowane przy każdym wyszukiwaniu. Wyłącz, aby zapisać filtry wyszukiwania"</string>
@@ -190,9 +190,9 @@ Pamiętaj, że pobieranie dowolnych wersji aplikacji nie jest obsługiwane przez
 <string name="pref_proxy_host">"Host proxy"</string>
 <string name="pref_proxy_port">"Port proxy"</string>
 <string name="pref_proxy_type">"Typ serwera proxy"</string>
-<string name="pref_requested_language">"Zmień domyślne API"</string>
+<string name="pref_requested_language">"Zmień domyślnie żądany język"</string>
 <string name="pref_requested_language_default">"Twój domyślny język"</string>
-<string name="pref_requested_location_disable">"Musisz ręcznie wyłączyć pozorowanie lokalizacji w opcjach programisty, aby całkowicie wyłączyć pozorację."</string>
+<string name="pref_requested_location_disable">"Musisz ręcznie wyłączyć pozorowanie lokalizacji w opcjach programisty, aby ją całkowicie wyłączyć."</string>
 <string name="pref_requested_location_enable">"Musisz ręcznie włączyć pozorowanie lokalizacji w opcjach programisty."</string>
 <string name="pref_requested_location_summary">"Sklep Aurora musi być ustawiony jako domyślna aplikacja do pozorowania lokalizacji"</string>
 <string name="pref_ui_card_summary">"Używaj starego stylu dla kart polecanych aplikacji"</string>
@@ -207,7 +207,7 @@ Pamiętaj, że pobieranie dowolnych wersji aplikacji nie jest obsługiwane przez
 <string name="testing_program_section_opted_in_propagating_message">"W ciągu kilku minut zostaniesz dodany do programu w wersji beta. Będziesz mógł zaktualizować aplikację do wersji beta, jeśli jest dostępna."</string>
 <string name="testing_program_section_opted_in_title">"Jesteś beta testerem"</string>
 <string name="testing_program_section_opted_out_message">"Wypróbuj nowe funkcje, zanim zostaną upublicznione. Prześlij swoją opinię bezpośrednio do programisty."</string>
-<string name="testing_program_section_opted_out_propagating_message">"Usunięcie Cię z programu beta może potrwać kilka minut."</string>
+<string name="testing_program_section_opted_out_propagating_message">"Opuszczenie programu beta testów może potrwać kilka minut."</string>
 <string name="testing_program_section_opted_out_title">"Zostań beta testerem"</string>
 <string name="title_all_apps">"Wszystkie aplikacje"</string>
 <string name="title_home">"Sklep Aurora"</string>
@@ -244,8 +244,8 @@ Udostępnia również listę usług śledzących zaimplementowanych w aplikacjac
 <string name="about_xda">"Wątek na XDA"</string>
 <string name="about_xda_summary">"Zobacz wątek na XDA, aby zaproponować sugestie."</string>
 <string name="action_about">"O aplikacji"</string>
-<string name="pref_downloader_strategy_summary">"Wybierz domyślną steategie pobierania, polecana strategia Równoległa do szybszego pobierania"</string>
-<string name="pref_downloader_strategy_title">"Strategia pobierania"</string>
+<string name="pref_downloader_strategy_summary">"Wybierz domyślny tryb pobierania, polecany tryb równoległy do szybszego pobierania"</string>
+<string name="pref_downloader_strategy_title">"Tryb pobierania"</string>
 <string name="pref_downloader_strategy_sequential">"Pobieranie sekwencyjne"</string>
 <string name="pref_downloader_strategy_parallel">"Pobieranie równoległe"</string>
 <string name="pref_install_mode_native">"Natywny"</string>
@@ -262,7 +262,7 @@ Udostępnia również listę usług śledzących zaimplementowanych w aplikacjac
 <string name="pref_ui_theme_black">"Czarny"</string>
 <string name="action_close">"Zamknij"</string>
 <string name="list_update_all_queue_txt">"aktualizacja(-i) w kolejce"</string>
-<string name="notification_installation_complete">"Zainstalowane z powodzeniem"</string>
+<string name="notification_installation_complete">"Zainstalowano poprawnie"</string>
 <string name="notification_installation_failed">"Instalacja nieudana"</string>
 <string name="notification_installation_progress">"Instalowanie"</string>
 <string name="apps_by">"Aplikacje od"</string>
@@ -274,7 +274,7 @@ Udostępnia również listę usług śledzących zaimplementowanych w aplikacjac
 <string name="title_search_result">"Wyniki dla"</string>
 <string name="action_recheck">"Sprawdź ponownie"</string>
 <string name="action_recheck_ing">"Ponowne sprawdzanie"</string>
-<string name="pref_install_type_summary">"Użyj natywnego instalatora do instalacji podzielonych plików APK"</string>
+<string name="pref_install_type_summary">"Użyj natywnego instalatora, psuje instalacje wielu pakietów"</string>
 <string name="pref_install_type_title">"Wymuś natywny instalator"</string>
 <string name="pref_ui_tab_default_title">"Wybierz domyślną zakładkę"</string>
 <string name="pref_update_interval_title">"Częstotliwość aktualizacji"</string>
@@ -284,4 +284,5 @@ Udostępnia również listę usług śledzących zaimplementowanych w aplikacjac
 <string name="pref_update_interval_weekly">"Codziennie"</string>
 <string name="download_none">"Brak pobrań"</string>
 <string name="error_app_download">"nie może być pobrana"</string>
+<string name="details_new_changes">"Co nowego"</string>
 </resources>
