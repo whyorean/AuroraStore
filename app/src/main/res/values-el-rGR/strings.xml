@@ -283,4 +283,5 @@
 <string name="pref_update_interval_weekly">"Καθημερινά"</string>
 <string name="download_none">"Δεν υπάρχουν λήψεις"</string>
 <string name="error_app_download">"δεν μπορεί να ληφθεί"</string>
+<string name="details_new_changes">"Τι νέο υπάρχει"</string>
 </resources>
