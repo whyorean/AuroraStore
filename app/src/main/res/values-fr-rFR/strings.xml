@@ -289,4 +289,5 @@ Elle fournit également une liste de traqueurs intégrés dans une application."
 <string name="pref_update_interval_weekly">"Chaque jour"</string>
 <string name="download_none">"Pas de téléchargements"</string>
 <string name="error_app_download">"ne peut pas être téléchargé"</string>
+<string name="details_new_changes">"Quoi de neuf"</string>
 </resources>
