@@ -11,7 +11,7 @@
 
 <!-- Account -->
 <string name="action_accounts">"Profili"</string>
-<string name="action_ask">"Domanda"</string>
+<string name="action_ask">"Chiedi"</string>
 <string name="action_blacklist">"Blacklist"</string>
 <string name="action_cancel">"Annulla"</string>
 
@@ -341,4 +341,7 @@ Inoltre fornisce una lista di tracker incorporati in una applicazione"</string>
 <string name="pref_update_interval_hourly">"Ogni ora"</string>
 <string name="pref_update_interval_daily">"Settimanale"</string>
 <string name="pref_update_interval_weekly">"Giornaliero"</string>
+<string name="download_none">"Nessun download"</string>
+<string name="error_app_download">"non può essere scaricato"</string>
+<string name="details_new_changes">"Novità"</string>
 </resources>
