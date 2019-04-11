@@ -328,4 +328,7 @@ https://exodus-privacy.eu.org/en/. Это как "отчёт от аваста" 
 <string name="pref_update_interval_hourly">"Каждый час"</string>
 <string name="pref_update_interval_daily">"Раз в неделю"</string>
 <string name="pref_update_interval_weekly">"Раз в день"</string>
+<string name="download_none">"Загрузки отсутствуют"</string>
+<string name="error_app_download">"Невозможно загрузить"</string>
+<string name="details_new_changes">"Что нового"</string>
 </resources>
