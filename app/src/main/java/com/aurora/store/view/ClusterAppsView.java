@@ -32,11 +32,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.aurora.store.R;
 import com.aurora.store.adapter.ClusterAppsAdapter;
-import com.aurora.store.model.App;
 import com.aurora.store.task.ClusterApps;
 import com.aurora.store.utility.Log;
-
-import java.util.List;
 
 import butterknife.BindView;
 import io.reactivex.Observable;
@@ -57,6 +54,7 @@ public class ClusterAppsView extends RelativeLayout {
     String clusterUrl;
 
     private CompositeDisposable disposable = new CompositeDisposable();
+    private ClusterAppsAdapter appsAdapter;
 
     public ClusterAppsView(Context context, String label, String clusterUrl) {
         super(context);
@@ -77,6 +75,7 @@ public class ClusterAppsView extends RelativeLayout {
         clusterName = view.findViewById(R.id.cluster_name);
         recyclerView = view.findViewById(R.id.cluster_recycler);
         clusterName.setText(label);
+        setupRecycler();
         fetchCategoryApps();
     }
 
@@ -87,15 +86,15 @@ public class ClusterAppsView extends RelativeLayout {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe((appList) -> {
                     if (!appList.isEmpty())
-                        setupRecycler(appList);
+                        appsAdapter.addData(appList);
                 }, err -> {
                     Log.e(err.getMessage());
                 }));
     }
 
-    private void setupRecycler(List<App> appList) {
+    private void setupRecycler() {
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(context, RecyclerView.HORIZONTAL, false);
-        ClusterAppsAdapter appsAdapter = new ClusterAppsAdapter(context, appList);
+        appsAdapter = new ClusterAppsAdapter(context);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setLayoutAnimation(AnimationUtils.loadLayoutAnimation(getContext(), R.anim.anim_slideright));
         recyclerView.setAdapter(appsAdapter);

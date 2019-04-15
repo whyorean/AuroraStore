@@ -29,7 +29,9 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.TypedArray;
 import android.os.Build;
+import android.os.IBinder;
 import android.util.TypedValue;
+import android.view.inputmethod.InputMethodManager;
 
 import androidx.annotation.NonNull;
 
@@ -381,7 +383,7 @@ public class Util {
 
     public static int getDefaultTab(Context context) {
         String value = getPrefs(context).getString(Constants.PREFERENCE_DEFAULT_TAB, "0");
-        return parseInt(value,0);
+        return parseInt(value, 0);
     }
 
     public static void restartApp(Context context) {
@@ -398,5 +400,16 @@ public class Util {
         ClipboardManager clipboard = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
         ClipData clip = ClipData.newPlainText("Apk Url", dataToCopy);
         clipboard.setPrimaryClip(clip);
+    }
+
+    public static void toggleSoftInput(Context context, boolean show) {
+        IBinder windowToken = ((AuroraActivity) context).getWindow().getDecorView().getWindowToken();
+        InputMethodManager inputMethodManager = (InputMethodManager)
+                context.getSystemService(Context.INPUT_METHOD_SERVICE);
+        if (inputMethodManager != null && windowToken != null)
+            if (show)
+                inputMethodManager.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
+            else
+                inputMethodManager.hideSoftInputFromWindow(windowToken, 0);
     }
 }

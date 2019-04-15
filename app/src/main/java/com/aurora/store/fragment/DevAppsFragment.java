@@ -94,7 +94,7 @@ public class DevAppsFragment extends BaseFragment implements BaseFragment.EventL
             chipDevName.setText(arguments.getString("SearchTitle"));
             iterator = getIterator(query);
             if (NetworkUtil.isConnected(context))
-                fetchDevAppsList(false);
+                setupRecycler();
             else
                 onNetworkFailed();
         } else
@@ -106,6 +106,13 @@ public class DevAppsFragment extends BaseFragment implements BaseFragment.EventL
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         setErrorView(ErrorType.UNKNOWN);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (endlessAppsAdapter == null || endlessAppsAdapter.isDataEmpty())
+            fetchDevAppsList(false);
     }
 
     @Override
@@ -128,7 +135,7 @@ public class DevAppsFragment extends BaseFragment implements BaseFragment.EventL
                             switchViews(true);
                         } else {
                             switchViews(false);
-                            setupRecycler(appList);
+                            endlessAppsAdapter.addData(appList);
                         }
                     }
                 }, err -> {
@@ -154,9 +161,9 @@ public class DevAppsFragment extends BaseFragment implements BaseFragment.EventL
         }
     }
 
-    private void setupRecycler(List<App> appsToAdd) {
+    private void setupRecycler() {
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false);
-        endlessAppsAdapter = new EndlessAppsAdapter(context, appsToAdd);
+        endlessAppsAdapter = new EndlessAppsAdapter(context);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setLayoutAnimation(AnimationUtils.loadLayoutAnimation(this.getActivity(), R.anim.anim_falldown));
         recyclerView.setAdapter(endlessAppsAdapter);

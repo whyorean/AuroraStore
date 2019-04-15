@@ -37,12 +37,9 @@ import com.aurora.store.R;
 import com.aurora.store.activity.LeaderBoardActivity;
 import com.aurora.store.adapter.ClusterAppsAdapter;
 import com.aurora.store.adapter.FeaturedAppsAdapter;
-import com.aurora.store.model.App;
 import com.aurora.store.task.FeaturedApps;
 import com.aurora.store.utility.Log;
 import com.aurora.store.utility.Util;
-
-import java.util.List;
 
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -59,6 +56,8 @@ public class FeaturedAppsView extends RelativeLayout {
     private RecyclerView recyclerView;
     private Button buttonMore;
     private CompositeDisposable mDisposable = new CompositeDisposable();
+    private ClusterAppsAdapter clusterAppsAdapter;
+    private FeaturedAppsAdapter featuredAppsAdapter;
 
     public FeaturedAppsView(Context context, String label, String categoryId) {
         super(context);
@@ -80,29 +79,32 @@ public class FeaturedAppsView extends RelativeLayout {
         buttonMore = view.findViewById(R.id.btn_more);
         categoryName.setText(label);
         buttonMore.setOnClickListener(openLeaderBoardActivity());
+        setupRecycler();
         fetchCategoryApps();
     }
 
     public void fetchCategoryApps() {
-        mDisposable.add(Observable.fromCallable(() ->
-                new FeaturedApps(getContext()).getApps(categoryId, Util.getSubCategory(getContext())))
+        mDisposable.add(Observable.fromCallable(() -> new FeaturedApps(getContext())
+                .getApps(categoryId, Util.getSubCategory(getContext())))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe((appList) -> {
                     if (!appList.isEmpty())
-                        setupRecycler(appList);
+                        if (Util.isLegacyCardEnabled(context))
+                            clusterAppsAdapter.addData(appList);
+                        else
+                            featuredAppsAdapter.addData(appList);
                 }, err -> {
                     Log.e(err.getMessage());
                 }));
     }
 
-    private void setupRecycler(List<App> appList) {
-        LinearLayoutManager mLayoutManager = new LinearLayoutManager(context, RecyclerView.HORIZONTAL, false);
-        recyclerView.setLayoutManager(mLayoutManager);
+    private void setupRecycler() {
+        featuredAppsAdapter = new FeaturedAppsAdapter(getContext());
+        clusterAppsAdapter = new ClusterAppsAdapter(getContext());
+        recyclerView.setLayoutManager(new LinearLayoutManager(context, RecyclerView.HORIZONTAL, false));
         recyclerView.setLayoutAnimation(AnimationUtils.loadLayoutAnimation(getContext(), R.anim.anim_slideright));
-        recyclerView.setAdapter(Util.isLegacyCardEnabled(context)
-                ? new ClusterAppsAdapter(context, appList)
-                : new FeaturedAppsAdapter(context, appList));
+        recyclerView.setAdapter(Util.isLegacyCardEnabled(context) ? clusterAppsAdapter : featuredAppsAdapter);
         if (Util.snapPagerEnabled(context) && !Util.isLegacyCardEnabled(context)) {
             PagerSnapHelper mSnapHelper = new PagerSnapHelper();
             mSnapHelper.attachToRecyclerView(recyclerView);

@@ -41,6 +41,8 @@ import com.aurora.store.fragment.DetailsFragment;
 import com.aurora.store.model.App;
 import com.bumptech.glide.request.RequestOptions;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import butterknife.BindView;
@@ -48,19 +50,29 @@ import butterknife.ButterKnife;
 
 public class ClusterAppsAdapter extends RecyclerView.Adapter<ClusterAppsAdapter.ViewHolder> {
 
-    private List<App> appList;
+    private List<App> appList = new ArrayList<>();
     private Fragment fragment;
     private Context context;
 
-    public ClusterAppsAdapter(Context context, List<App> appList) {
+    public ClusterAppsAdapter(Context context) {
         this.context = context;
-        this.appList = appList;
     }
 
-    public ClusterAppsAdapter(DetailsFragment fragment, List<App> appList) {
+    public ClusterAppsAdapter(DetailsFragment fragment) {
         this.fragment = fragment;
         this.context = fragment.getContext();
+    }
+
+    public void addData(List<App> appList) {
+        this.appList.clear();
         this.appList = appList;
+        Collections.sort(appList, (App1, App2) ->
+                App1.getDisplayName().compareTo(App2.getDisplayName()));
+        notifyDataSetChanged();
+    }
+
+    public boolean isDataEmpty() {
+        return appList.isEmpty();
     }
 
     @NonNull

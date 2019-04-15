@@ -22,7 +22,6 @@ package com.aurora.store.task;
 
 import android.content.Context;
 
-import com.aurora.store.api.PlayStoreApiAuthenticator;
 import com.aurora.store.iterator.CustomAppListIterator;
 import com.aurora.store.model.App;
 import com.aurora.store.utility.Util;
@@ -40,9 +39,9 @@ public class FeaturedApps extends BaseTask {
     }
 
     public List<App> getApps(String categoryId, GooglePlayAPI.SUBCATEGORY subCategory) throws IOException {
+        final GooglePlayAPI api = getApi();
+        final CustomAppListIterator iterator = new CustomAppListIterator(new CategoryAppsIterator(api, categoryId, subCategory));
         List<App> apps = new ArrayList<>();
-        CustomAppListIterator iterator = new CustomAppListIterator(new CategoryAppsIterator(getApi(), categoryId, subCategory));
-        iterator.setGooglePlayApi(new PlayStoreApiAuthenticator(context).getApi());
         while (iterator.hasNext() && apps.isEmpty()) {
             apps.addAll(iterator.next());
         }

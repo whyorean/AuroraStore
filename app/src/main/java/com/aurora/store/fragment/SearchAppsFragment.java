@@ -67,7 +67,7 @@ import io.reactivex.schedulers.Schedulers;
 public class SearchAppsFragment extends BaseFragment implements BaseFragment.EventListenerImpl {
 
     @BindView(R.id.view_switcher)
-    ViewSwitcher mViewSwitcher;
+    ViewSwitcher viewSwitcher;
     @BindView(R.id.content_view)
     LinearLayout layoutContent;
     @BindView(R.id.err_view)
@@ -82,9 +82,9 @@ public class SearchAppsFragment extends BaseFragment implements BaseFragment.Eve
     private Context context;
     private View view;
     private String query;
-    private BottomNavigationView mBottomNavigationView;
+    private BottomNavigationView bottomNavigationView;
     private EndlessAppsAdapter endlessAppsAdapter;
-    private SearchTask mSearchTask;
+    private SearchTask searchTask;
 
     private String getQuery() {
         return query;
@@ -98,7 +98,7 @@ public class SearchAppsFragment extends BaseFragment implements BaseFragment.Eve
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         this.context = context;
-        mSearchTask = new SearchTask(context);
+        searchTask = new SearchTask(context);
     }
 
     @Override
@@ -110,7 +110,7 @@ public class SearchAppsFragment extends BaseFragment implements BaseFragment.Eve
             setQuery(arguments.getString("SearchQuery"));
             searchQuery.setText(getQuery());
             if (NetworkUtil.isConnected(context)) {
-                fetchSearchAppsList(false);
+                setupRecycler();
             } else
                 onNetworkFailed();
         } else
@@ -126,17 +126,24 @@ public class SearchAppsFragment extends BaseFragment implements BaseFragment.Eve
         setupQueryEdit();
         setErrorView(ErrorType.UNKNOWN);
         if (getActivity() instanceof AuroraActivity)
-            mBottomNavigationView = ((AuroraActivity) getActivity()).getBottomNavigation();
-        if (mBottomNavigationView != null)
-            ViewUtil.hideBottomNav(mBottomNavigationView, true);
+            bottomNavigationView = ((AuroraActivity) getActivity()).getBottomNavigation();
+        if (bottomNavigationView != null)
+            ViewUtil.hideBottomNav(bottomNavigationView, true);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (endlessAppsAdapter == null || endlessAppsAdapter.isDataEmpty())
+            fetchSearchAppsList(false);
     }
 
     @Override
     public void onDestroy() {
         Glide.with(this).pauseAllRequests();
         disposable.dispose();
-        if (mBottomNavigationView != null)
-            ViewUtil.showBottomNav(mBottomNavigationView, true);
+        if (bottomNavigationView != null)
+            ViewUtil.showBottomNav(bottomNavigationView, true);
         if (Util.filterSearchNonPersistent(context))
             new Filter(context).resetFilterPreferences();
         super.onDestroy();
@@ -152,15 +159,20 @@ public class SearchAppsFragment extends BaseFragment implements BaseFragment.Eve
         searchQuery.setOnEditorActionListener((v, actionId, event) -> {
             if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                 query = searchQuery.getText().toString();
-                iterator = getIterator(getQuery());
-                iterator.setEnableFilter(true);
-                iterator.setFilter(new Filter(getContext()).getFilterPreferences());
-                fetchSearchAppsList(false);
-                searchQuery.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_edit, 0);
-                InputMethodManager imm = (InputMethodManager) v.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
-                imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
-                searchQuery.clearFocus();
-                return true;
+                try {
+                    iterator = getIterator(getQuery());
+                    iterator.setEnableFilter(true);
+                    iterator.setFilter(new Filter(getContext()).getFilterPreferences());
+                    fetchSearchAppsList(false);
+                    searchQuery.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_edit, 0);
+                    InputMethodManager imm = (InputMethodManager) v.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+                    searchQuery.clearFocus();
+                    return true;
+                } catch (Exception e) {
+                    processException(e);
+                    return false;
+                }
             } else
                 return false;
         });
@@ -179,11 +191,15 @@ public class SearchAppsFragment extends BaseFragment implements BaseFragment.Eve
 
     private void fetchSearchAppsList(boolean shouldIterate) {
         if (!shouldIterate) {
-            iterator = getIterator(getQuery());
-            iterator.setEnableFilter(true);
-            iterator.setFilter(new Filter(getContext()).getFilterPreferences());
+            try {
+                iterator = getIterator(getQuery());
+                iterator.setEnableFilter(true);
+                iterator.setFilter(new Filter(getContext()).getFilterPreferences());
+            } catch (Exception e) {
+                processException(e);
+            }
         }
-        disposable.add(Observable.fromCallable(() -> mSearchTask.getSearchResults(iterator))
+        disposable.add(Observable.fromCallable(() -> searchTask.getSearchResults(iterator))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(appList -> {
@@ -195,7 +211,8 @@ public class SearchAppsFragment extends BaseFragment implements BaseFragment.Eve
                             switchViews(true);
                         } else {
                             switchViews(false);
-                            setupRecycler(appList);
+                            if (endlessAppsAdapter != null)
+                                endlessAppsAdapter.addData(appList);
                         }
                     }
                 }, err -> {
@@ -215,9 +232,9 @@ public class SearchAppsFragment extends BaseFragment implements BaseFragment.Eve
         }
     }
 
-    private void setupRecycler(List<App> appsToAdd) {
+    private void setupRecycler() {
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false);
-        endlessAppsAdapter = new EndlessAppsAdapter(context, appsToAdd);
+        endlessAppsAdapter = new EndlessAppsAdapter(context);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setLayoutAnimation(AnimationUtils.loadLayoutAnimation(this.getActivity(), R.anim.anim_falldown));
         recyclerView.setAdapter(endlessAppsAdapter);
@@ -242,10 +259,10 @@ public class SearchAppsFragment extends BaseFragment implements BaseFragment.Eve
     }
 
     private void switchViews(boolean showError) {
-        if (mViewSwitcher.getCurrentView() == layoutContent && showError)
-            mViewSwitcher.showNext();
-        else if (mViewSwitcher.getCurrentView() == layoutError && !showError)
-            mViewSwitcher.showPrevious();
+        if (viewSwitcher.getCurrentView() == layoutContent && showError)
+            viewSwitcher.showNext();
+        else if (viewSwitcher.getCurrentView() == layoutError && !showError)
+            viewSwitcher.showPrevious();
     }
 
     private void setErrorView(ErrorType errorType) {

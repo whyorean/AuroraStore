@@ -46,15 +46,12 @@ import com.aurora.store.HistoryItemTouchHelper;
 import com.aurora.store.R;
 import com.aurora.store.activity.DetailsActivity;
 import com.aurora.store.adapter.SearchHistoryAdapter;
-import com.aurora.store.utility.PackageUtil;
 import com.aurora.store.utility.PrefUtil;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.Locale;
+import java.util.Calendar;
 import java.util.regex.Pattern;
 
 import butterknife.BindView;
@@ -72,7 +69,7 @@ public class SearchFragment extends BaseFragment implements BaseFragment.EventLi
     Button clearAll;
 
     private Context context;
-    private ArrayList<String> mQueryList;
+    private ArrayList<String> queryList;
     private SearchHistoryAdapter searchHistoryAdapter;
 
     @Override
@@ -92,14 +89,17 @@ public class SearchFragment extends BaseFragment implements BaseFragment.EventLi
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        addQueryTextListener();
+        setupSearch();
         setupHistory();
         clearAll.setOnClickListener(v -> clearAll());
     }
 
-    private void addQueryTextListener() {
+    private void setupSearch() {
         SearchManager searchManager = (SearchManager) context.getSystemService(Context.SEARCH_SERVICE);
         ComponentName componentName = getActivity().getComponentName();
+        searchView.setFocusable(true);
+        searchView.requestFocus();
+
         if (null != searchManager && componentName != null) {
             searchView.setSearchableInfo(searchManager.getSearchableInfo(componentName));
         }
@@ -131,9 +131,7 @@ public class SearchFragment extends BaseFragment implements BaseFragment.EventLi
                 if (position == 0) {
                     searchView.setQuery(cursor.getString(2), true);
                     searchView.setQuery(cursor.getString(1), false);
-                    PackageUtil.addToPseudoPackageMap(context,
-                            cursor.getString(2),
-                            cursor.getString(1));
+                    saveQuery(cursor.getString(1));
                 } else
                     searchView.setQuery(cursor.getString(1), true);
                 return true;
@@ -144,7 +142,6 @@ public class SearchFragment extends BaseFragment implements BaseFragment.EventLi
     private void setQuery(String query) {
         if (looksLikeAPackageId(query)) {
             context.startActivity(DetailsActivity.getDetailsIntent(getContext(), query));
-            saveQuery(PackageUtil.getAppLabel(context, query));
         } else {
             getQueriedApps(query);
             saveQuery(query);
@@ -152,27 +149,24 @@ public class SearchFragment extends BaseFragment implements BaseFragment.EventLi
     }
 
     private void saveQuery(String query) {
-        String mDatedQuery = query
-                .concat(":")
-                .concat(new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
-                        .format(new Date()));
+        String mDatedQuery = query + ":" + Calendar.getInstance().getTimeInMillis();
         setQueryToPref(mDatedQuery);
     }
 
     private void setQueryToPref(String query) {
-        mQueryList = PrefUtil.getListString(context, Constants.RECENT_HISTORY);
-        mQueryList.add(0, query);
-        PrefUtil.putListString(context, Constants.RECENT_HISTORY, mQueryList);
+        queryList = PrefUtil.getListString(context, Constants.RECENT_HISTORY);
+        queryList.add(0, query);
+        PrefUtil.putListString(context, Constants.RECENT_HISTORY, queryList);
         if (searchHistoryAdapter != null)
             searchHistoryAdapter.reload();
         else
-            setupSearchHistory(mQueryList);
+            setupSearchHistory(queryList);
     }
 
     private void setupHistory() {
-        mQueryList = PrefUtil.getListString(context, Constants.RECENT_HISTORY);
-        if (!mQueryList.isEmpty()) {
-            setupSearchHistory(mQueryList);
+        queryList = PrefUtil.getListString(context, Constants.RECENT_HISTORY);
+        if (!queryList.isEmpty()) {
+            setupSearchHistory(queryList);
             toggleViews(false);
         } else {
             toggleViews(true);

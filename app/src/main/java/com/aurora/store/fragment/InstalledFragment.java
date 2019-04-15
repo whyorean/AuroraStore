@@ -73,7 +73,7 @@ public class InstalledFragment extends BaseFragment implements BaseFragment.Even
     @BindView(R.id.swipe_layout)
     CustomSwipeToRefresh mSwipeRefreshLayout;
     @BindView(R.id.recycler)
-    RecyclerView mRecyclerView;
+    RecyclerView recyclerView;
     @BindView(R.id.switch_system)
     SwitchMaterial switchSystem;
 
@@ -115,19 +115,21 @@ public class InstalledFragment extends BaseFragment implements BaseFragment.Even
         mSwipeRefreshLayout.setOnRefreshListener(() -> fetchData());
         if (getActivity() instanceof AuroraActivity)
             mBottomNavigationView = ((AuroraActivity) getActivity()).getBottomNavigation();
-    }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        if (adapter == null && installedAppList.isEmpty())
-            fetchData();
+        setupRecycler();
     }
 
     @Override
     public void onPause() {
         super.onPause();
         mSwipeRefreshLayout.setRefreshing(false);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (adapter == null || adapter.isDataEmpty())
+            fetchData();
     }
 
     @Override
@@ -146,15 +148,17 @@ public class InstalledFragment extends BaseFragment implements BaseFragment.Even
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnSubscribe(subscription -> mSwipeRefreshLayout.setRefreshing(true))
-                .subscribe((mApps) -> {
+                .doOnTerminate(() -> mSwipeRefreshLayout.setRefreshing(false))
+                .subscribe((appList) -> {
                     if (view != null) {
-                        installedAppList = mApps;
-                        if (mApps.isEmpty()) {
+                        installedAppList = appList;
+                        if (appList.isEmpty()) {
                             setErrorView(ErrorType.NO_APPS);
                             switchViews(true);
                         } else {
                             switchViews(false);
-                            setupRecycler(mApps);
+                            if (adapter != null)
+                                adapter.addData(appList);
                         }
                     }
                 }, err -> {
@@ -163,13 +167,12 @@ public class InstalledFragment extends BaseFragment implements BaseFragment.Even
                 }));
     }
 
-    private void setupRecycler(List<App> mApps) {
-        mSwipeRefreshLayout.setRefreshing(false);
-        adapter = new InstalledAppsAdapter(context, mApps, ListType.INSTALLED);
-        mRecyclerView.setAdapter(adapter);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(context, RecyclerView.VERTICAL, false));
-        mRecyclerView.setLayoutAnimation(AnimationUtils.loadLayoutAnimation(context, R.anim.anim_falldown));
-        mRecyclerView.setOnFlingListener(new RecyclerView.OnFlingListener() {
+    private void setupRecycler() {
+        adapter = new InstalledAppsAdapter(context, ListType.INSTALLED);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(context, RecyclerView.VERTICAL, false));
+        recyclerView.setLayoutAnimation(AnimationUtils.loadLayoutAnimation(context, R.anim.anim_falldown));
+        recyclerView.setOnFlingListener(new RecyclerView.OnFlingListener() {
             @Override
             public boolean onFling(int velocityX, int velocityY) {
                 if (velocityY < 0) {

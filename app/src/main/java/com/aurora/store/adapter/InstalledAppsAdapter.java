@@ -54,16 +54,13 @@ import butterknife.ButterKnife;
 
 public class InstalledAppsAdapter extends RecyclerView.Adapter<InstalledAppsAdapter.ViewHolder> {
 
-    public List<App> appList;
+    public List<App> appList = new ArrayList<>();
     private Context context;
     private ListType listType;
 
-    public InstalledAppsAdapter(Context context, List<App> appsToAdd, ListType listType) {
+    public InstalledAppsAdapter(Context context, ListType listType) {
         this.context = context;
-        this.appList = appsToAdd;
         this.listType = listType;
-        Collections.sort(appsToAdd, (App1, App2) ->
-                App1.getDisplayName().compareTo(App2.getDisplayName()));
     }
 
     public void add(int position, App app) {
@@ -78,6 +75,18 @@ public class InstalledAppsAdapter extends RecyclerView.Adapter<InstalledAppsAdap
     public void remove(int position) {
         appList.remove(position);
         notifyItemRemoved(position);
+    }
+
+    public void addData(List<App> appList) {
+        this.appList.clear();
+        this.appList = appList;
+        Collections.sort(appList, (App1, App2) ->
+                App1.getDisplayName().compareTo(App2.getDisplayName()));
+        notifyDataSetChanged();
+    }
+
+    public boolean isDataEmpty() {
+        return appList.isEmpty();
     }
 
     @NonNull

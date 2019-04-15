@@ -40,12 +40,10 @@ import com.aurora.store.utility.PrefUtil;
 
 import org.apache.commons.lang3.StringUtils;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
-import java.util.concurrent.TimeUnit;
 
 public class SearchHistoryAdapter extends RecyclerView.Adapter<SearchHistoryAdapter.ViewHolder> {
 
@@ -101,7 +99,7 @@ public class SearchHistoryAdapter extends RecyclerView.Adapter<SearchHistoryAdap
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
         String[] mDatedQuery = mQueryList.get(position).split(":");
         holder.query.setText(mDatedQuery[0]);
-        holder.date.setText(getDiffString((int) getDiff(mDatedQuery[1])));
+        holder.date.setText(getQueryDate(mDatedQuery[1]));
         holder.viewForeground.setOnClickListener(v -> {
             final String query = holder.query.getText().toString();
             SearchAppsFragment searchAppsFragment = new SearchAppsFragment();
@@ -123,25 +121,14 @@ public class SearchHistoryAdapter extends RecyclerView.Adapter<SearchHistoryAdap
         return mQueryList.size();
     }
 
-    private long getDiff(String queryDate) {
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+    private String getQueryDate(String queryDate) {
         try {
-            Date curDate = simpleDateFormat.parse(new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date()));
-            return TimeUnit.DAYS.convert(curDate.getTime() - simpleDateFormat.parse(queryDate).getTime(), TimeUnit.MILLISECONDS);
-        } catch (ParseException e) {
-            e.printStackTrace();
-            return 0;
+            final long timeInMilli = Long.parseLong(queryDate);
+            final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd MMM", Locale.getDefault());
+            return simpleDateFormat.format(new Date(timeInMilli));
+        } catch (NumberFormatException e) {
+            return StringUtils.EMPTY;
         }
-    }
-
-    private String getDiffString(int diff) {
-        if (diff == 0)
-            return "Today";
-        if (diff == 1)
-            return "Yesterday";
-        else if (diff > 1)
-            return diff + " days before";
-        return "";
     }
 
     private String getTitleString(String query) {

@@ -34,10 +34,11 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.viewpager2.widget.ViewPager2;
 
 import com.aurora.store.Constants;
 import com.aurora.store.R;
-import com.aurora.store.adapter.CustomViewPagerAdapter;
+import com.aurora.store.adapter.ViewPager2Adapter;
 import com.aurora.store.fragment.HomeFragment;
 import com.aurora.store.fragment.InstalledFragment;
 import com.aurora.store.fragment.SearchFragment;
@@ -46,44 +47,38 @@ import com.aurora.store.utility.Accountant;
 import com.aurora.store.utility.PrefUtil;
 import com.aurora.store.utility.ThemeUtil;
 import com.aurora.store.utility.Util;
-import com.aurora.store.view.CustomViewPager;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-
-import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import io.reactivex.Observable;
-import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
-import io.reactivex.schedulers.Schedulers;
 
 public class AuroraActivity extends AppCompatActivity {
 
 
     @BindView(R.id.toolbar)
-    Toolbar mToolbar;
+    Toolbar toolbar;
     @BindView(R.id.viewpager)
-    CustomViewPager mViewPager;
+    ViewPager2 viewPager2;
     @BindView(R.id.bottom_navigation)
-    BottomNavigationView mBottomNavigationView;
+    BottomNavigationView bottomNavigationView;
 
-    private ActionBar mActionBar;
-    private CustomViewPagerAdapter mViewPagerAdapter;
-    private ThemeUtil mThemeUtil = new ThemeUtil();
-    private CompositeDisposable mDisposable = new CompositeDisposable();
+    private ActionBar actionBar;
+    private ViewPager2Adapter pager2Adapter;
+    private ThemeUtil themeUtil = new ThemeUtil();
+    private CompositeDisposable disposable = new CompositeDisposable();
     private int fragmentPos = 0;
     private int fragmentCur = 0;
     private boolean isSearchIntent = false;
 
     public BottomNavigationView getBottomNavigation() {
-        return mBottomNavigationView;
+        return bottomNavigationView;
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mThemeUtil.onCreate(this);
+        themeUtil.onCreate(this);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         fragmentCur = Util.getDefaultTab(this);
@@ -121,7 +116,7 @@ public class AuroraActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Fragment mFragment = mViewPagerAdapter.getRegisteredFragment(mViewPager.getCurrentItem());
+        Fragment mFragment = pager2Adapter.getItem(viewPager2.getCurrentItem());
         if (mFragment instanceof SearchFragment) {
             FragmentManager fm = mFragment.getChildFragmentManager();
             if (!fm.getFragments().isEmpty())
@@ -135,7 +130,7 @@ public class AuroraActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        mDisposable.clear();
+        disposable.clear();
     }
 
     @Override
@@ -166,8 +161,9 @@ public class AuroraActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        mThemeUtil.onResume(this);
-        if (mViewPagerAdapter == null)
+        themeUtil.onResume(this);
+        Util.toggleSoftInput(this, false);
+        if (pager2Adapter == null)
             init();
     }
 
@@ -176,60 +172,61 @@ public class AuroraActivity extends AppCompatActivity {
         return super.onSupportNavigateUp();
     }
 
+    @Override
+    protected void onUserLeaveHint() {
+        super.onUserLeaveHint();
+        Util.toggleSoftInput(this, false);
+    }
+
     private void setupActionbar() {
-        setSupportActionBar(mToolbar);
-        mActionBar = getSupportActionBar();
-        if (mActionBar != null) {
-            mActionBar.setDisplayShowCustomEnabled(true);
-            mActionBar.setElevation(0f);
-            mActionBar.setTitle(getString(R.string.app_name));
+        setSupportActionBar(toolbar);
+        actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayShowCustomEnabled(true);
+            actionBar.setElevation(0f);
+            actionBar.setTitle(getString(R.string.app_name));
         }
     }
 
     private void setupViewPager() {
-        mViewPagerAdapter = new CustomViewPagerAdapter(getSupportFragmentManager());
-        mDisposable.add(Observable.just(
-                new HomeFragment(),
-                new InstalledFragment(),
-                new UpdatesFragment(),
-                new SearchFragment())
-                .zipWith(Observable.interval(16, TimeUnit.MILLISECONDS), (fragment, interval) -> fragment)
-                .doOnNext(fragment -> mViewPagerAdapter.addFragment(fragmentPos++, fragment))
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .doOnComplete(() -> {
-                    mViewPager.setAdapter(mViewPagerAdapter);
-                    mViewPager.setPagingEnabled(false);
-                    mViewPager.setOffscreenPageLimit(2);
-                    mViewPager.setCurrentItem(fragmentCur, true);
-                })
-                .subscribe());
+        pager2Adapter = new ViewPager2Adapter(getSupportFragmentManager(), getLifecycle());
+        pager2Adapter.addFragment(new HomeFragment());
+        pager2Adapter.addFragment(new InstalledFragment());
+        pager2Adapter.addFragment(new UpdatesFragment());
+        pager2Adapter.addFragment(new SearchFragment());
+        viewPager2.setAdapter(pager2Adapter);
+        viewPager2.setUserInputEnabled(false);
+        viewPager2.setCurrentItem(fragmentCur, false);
     }
 
     private void setupBottomNavigation() {
-        mBottomNavigationView.setOnNavigationItemSelectedListener(menuItem -> {
-            mViewPager.setCurrentItem(menuItem.getOrder(), true);
+        bottomNavigationView.setOnNavigationItemSelectedListener(menuItem -> {
+            viewPager2.setCurrentItem(menuItem.getOrder(), false);
             switch (menuItem.getItemId()) {
                 case R.id.action_home:
-                    mActionBar.setTitle(getString(R.string.title_home));
+                    Util.toggleSoftInput(this, false);
+                    actionBar.setTitle(getString(R.string.title_home));
                     break;
                 case R.id.action_installed:
-                    mActionBar.setTitle(getString(R.string.title_installed));
+                    Util.toggleSoftInput(this, false);
+                    actionBar.setTitle(getString(R.string.title_installed));
                     break;
                 case R.id.action_updates:
-                    mActionBar.setTitle(getString(R.string.title_updates));
+                    Util.toggleSoftInput(this, false);
+                    actionBar.setTitle(getString(R.string.title_updates));
                     break;
                 case R.id.action_search:
-                    mActionBar.setTitle(getString(R.string.title_search));
+                    Util.toggleSoftInput(this, true);
+                    actionBar.setTitle(getString(R.string.title_search));
                     break;
             }
             return true;
         });
 
         if (isSearchIntent)
-            mBottomNavigationView.setSelectedItemId(R.id.action_search);
+            bottomNavigationView.setSelectedItemId(R.id.action_search);
         if (fragmentCur != 0 && !isSearchIntent)
-            mBottomNavigationView.setSelectedItemId(mBottomNavigationView.getMenu()
+            bottomNavigationView.setSelectedItemId(bottomNavigationView.getMenu()
                     .getItem(fragmentCur).getItemId());
     }
 

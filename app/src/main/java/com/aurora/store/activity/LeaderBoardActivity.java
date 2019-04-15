@@ -58,11 +58,11 @@ import io.reactivex.schedulers.Schedulers;
 public class LeaderBoardActivity extends AppCompatActivity {
 
     @BindView(R.id.toolbar)
-    Toolbar mToolbar;
+    Toolbar toolbar;
     @BindView(R.id.category_recycler)
     RecyclerView recyclerView;
 
-    private ThemeUtil mThemeUtil = new ThemeUtil();
+    private ThemeUtil themeUtil = new ThemeUtil();
     private CompositeDisposable mDisposable = new CompositeDisposable();
     private CustomAppListIterator iterator;
     private EndlessAppsAdapter endlessAppsAdapter;
@@ -82,7 +82,7 @@ public class LeaderBoardActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mThemeUtil.onCreate(this);
+        themeUtil.onCreate(this);
         setContentView(R.layout.activity_categories);
         ButterKnife.bind(this);
 
@@ -95,7 +95,7 @@ public class LeaderBoardActivity extends AppCompatActivity {
 
         setupActionbar();
         setIterator(setupIterator(category, Util.getSubCategory(subCategory)));
-        fetchCategoryApps(false);
+        setupListView();
     }
 
     @Override
@@ -126,11 +126,13 @@ public class LeaderBoardActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        mThemeUtil.onResume(this);
+        themeUtil.onResume(this);
+        if (endlessAppsAdapter == null || endlessAppsAdapter.isDataEmpty())
+            fetchCategoryApps(false);
     }
 
     private void setupActionbar() {
-        setSupportActionBar(mToolbar);
+        setSupportActionBar(toolbar);
         ActionBar mActionBar = getSupportActionBar();
         if (mActionBar != null) {
             mActionBar.setTitle(title);
@@ -149,9 +151,9 @@ public class LeaderBoardActivity extends AppCompatActivity {
         }
     }
 
-    private void setupListView(List<App> appsToAdd) {
+    private void setupListView() {
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
-        endlessAppsAdapter = new EndlessAppsAdapter(this, appsToAdd);
+        endlessAppsAdapter = new EndlessAppsAdapter(this);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setLayoutAnimation(AnimationUtils.loadLayoutAnimation(this, R.anim.anim_falldown));
         recyclerView.setAdapter(endlessAppsAdapter);
@@ -172,7 +174,7 @@ public class LeaderBoardActivity extends AppCompatActivity {
                     if (shouldIterate) {
                         addApps(appList);
                     } else
-                        setupListView(appList);
+                        endlessAppsAdapter.addData(appList);
                 }, err -> Log.e(err.getMessage())));
     }
 

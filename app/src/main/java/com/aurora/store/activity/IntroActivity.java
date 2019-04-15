@@ -23,14 +23,14 @@ package com.aurora.store.activity;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager2.widget.ViewPager2;
 
 import com.aurora.store.R;
-import com.aurora.store.adapter.CustomViewPagerAdapter;
+import com.aurora.store.adapter.ViewPager2Adapter;
 import com.aurora.store.fragment.AccountsFragment;
 import com.aurora.store.fragment.intro.PermissionFragment;
 import com.aurora.store.fragment.intro.WelcomeFragment;
 import com.aurora.store.utility.ThemeUtil;
-import com.aurora.store.view.CustomViewPager;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -38,7 +38,7 @@ import butterknife.ButterKnife;
 public class IntroActivity extends AppCompatActivity {
 
     @BindView(R.id.viewpager)
-    CustomViewPager mViewPager;
+    ViewPager2 viewPager2;
 
 
     private ThemeUtil mThemeUtil = new ThemeUtil();
@@ -59,15 +59,15 @@ public class IntroActivity extends AppCompatActivity {
     }
 
     private void init() {
-        CustomViewPagerAdapter mViewPagerAdapter = new CustomViewPagerAdapter(getSupportFragmentManager());
-        mViewPagerAdapter.addFragment(0, new WelcomeFragment());
-        mViewPagerAdapter.addFragment(1, new PermissionFragment());
-        mViewPagerAdapter.addFragment(2, new AccountsFragment());
-        mViewPager.setAdapter(mViewPagerAdapter);
-        mViewPager.setPagingEnabled(false);
+        ViewPager2Adapter mViewPagerAdapter = new ViewPager2Adapter(getSupportFragmentManager(), getLifecycle());
+        mViewPagerAdapter.addFragment(new WelcomeFragment());
+        mViewPagerAdapter.addFragment(new PermissionFragment());
+        mViewPagerAdapter.addFragment(new AccountsFragment());
+        viewPager2.setAdapter(mViewPagerAdapter);
+        viewPager2.setUserInputEnabled(false);
     }
 
     public void moveForward() {
-        mViewPager.setCurrentItem(mViewPager.getCurrentItem() + 1);
+        viewPager2.setCurrentItem(viewPager2.getCurrentItem() + 1);
     }
 }

@@ -43,6 +43,8 @@ import com.bumptech.glide.load.resource.bitmap.BitmapTransitionOptions;
 import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import butterknife.BindView;
@@ -51,11 +53,22 @@ import butterknife.ButterKnife;
 public class FeaturedAppsAdapter extends RecyclerView.Adapter<FeaturedAppsAdapter.ViewHolder> {
 
     private Context context;
-    private List<App> appList;
+    private List<App> appList = new ArrayList<>();
 
-    public FeaturedAppsAdapter(Context context, List<App> appList) {
+    public FeaturedAppsAdapter(Context context) {
         this.context = context;
+    }
+
+    public void addData(List<App> appList) {
+        this.appList.clear();
         this.appList = appList;
+        Collections.sort(appList, (App1, App2) ->
+                App1.getDisplayName().compareTo(App2.getDisplayName()));
+        notifyDataSetChanged();
+    }
+
+    public boolean isDataEmpty() {
+        return appList.isEmpty();
     }
 
     @NonNull

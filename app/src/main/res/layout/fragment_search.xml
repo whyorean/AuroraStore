@@ -61,8 +61,7 @@
                 android:maxLines="1"
                 android:text="@string/action_search_history"
                 android:textAppearance="@style/TextAppearance.Aurora.Header"
-                app:autoSizeMaxTextSize="16sp"
-                app:autoSizeMinTextSize="12sp"
+                app:autoSizeMinTextSize="14sp"
                 app:autoSizeTextType="uniform" />
 
             <com.google.android.material.button.MaterialButton
@@ -75,8 +74,8 @@
                 android:layout_marginEnd="@dimen/margin_small"
                 android:singleLine="true"
                 android:text="@string/action_search_clearHistory"
-                android:textColor="?android:attr/textColorSecondary"
-                app:rippleColor="@color/colorGreyLight" />
+                android:textAllCaps="false"
+                app:rippleColor="@color/colorScrimAccent" />
         </RelativeLayout>
 
         <RelativeLayout

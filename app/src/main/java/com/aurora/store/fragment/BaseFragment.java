@@ -92,7 +92,7 @@ public abstract class BaseFragment extends Fragment {
         } else if (e instanceof IOException) {
             processIOException((IOException) e);
         } else if (e instanceof NullPointerException)
-            Log.e("Probably App Switched");
+            Log.e("NPE ? Oh yeah !");
         else {
             Log.e("Unknown exception " + e.getClass().getName() + " " + e.getMessage());
             e.printStackTrace();

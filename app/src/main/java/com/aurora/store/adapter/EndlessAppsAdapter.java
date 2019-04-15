@@ -27,16 +27,14 @@ import androidx.annotation.NonNull;
 import com.aurora.store.ListType;
 import com.aurora.store.R;
 import com.aurora.store.model.App;
-import com.aurora.store.utility.Log;
 import com.aurora.store.utility.Util;
 
 import java.util.List;
 
 public class EndlessAppsAdapter extends InstalledAppsAdapter {
 
-
-    public EndlessAppsAdapter(Context context, List<App> appsToAdd) {
-        super(context, appsToAdd, ListType.ENDLESS);
+    public EndlessAppsAdapter(Context context) {
+        super(context, ListType.ENDLESS);
     }
 
     @Override

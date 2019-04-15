@@ -144,12 +144,13 @@ public class UpdatesFragment extends BaseFragment implements BaseFragment.EventL
         customSwipeToRefresh.setOnRefreshListener(() -> fetchData());
         if (getActivity() instanceof AuroraActivity)
             bottomNavigationView = ((AuroraActivity) getActivity()).getBottomNavigation();
+        setupRecycler();
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        if (adapter == null && updatableAppList.isEmpty())
+        if (adapter == null || adapter.isDataEmpty())
             fetchData();
         checkOnGoingUpdates();
     }
@@ -177,6 +178,7 @@ public class UpdatesFragment extends BaseFragment implements BaseFragment.EventL
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnSubscribe(subscription -> customSwipeToRefresh.setRefreshing(true))
+                .doOnTerminate(() -> customSwipeToRefresh.setRefreshing(false))
                 .subscribe((appList) -> {
                     if (view != null) {
                         updatableAppList = appList;
@@ -186,7 +188,8 @@ public class UpdatesFragment extends BaseFragment implements BaseFragment.EventL
                             switchViews(true);
                         } else {
                             switchViews(false);
-                            setupRecycler(appList);
+                            if (adapter != null)
+                                adapter.addData(appList);
                             updateCounter();
                             setupUpdateAll();
                         }
@@ -201,9 +204,8 @@ public class UpdatesFragment extends BaseFragment implements BaseFragment.EventL
         });
     }
 
-    private void setupRecycler(List<App> mApps) {
-        customSwipeToRefresh.setRefreshing(false);
-        adapter = new UpdatableAppsAdapter(context, mApps, ListType.UPDATES);
+    private void setupRecycler() {
+        adapter = new UpdatableAppsAdapter(context, ListType.UPDATES);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(context, RecyclerView.VERTICAL, false));
         recyclerView.setLayoutAnimation(AnimationUtils.loadLayoutAnimation(context, R.anim.anim_falldown));
