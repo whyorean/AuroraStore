@@ -27,14 +27,16 @@ import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 
+import com.aurora.store.utility.Log;
+
 public class NativeGsfVersionProvider {
 
     static private final String GOOGLE_SERVICES_PACKAGE_ID = "com.google.android.gms";
     static private final String GOOGLE_VENDING_PACKAGE_ID = "com.android.vending";
 
-    static private final int GOOGLE_SERVICES_VERSION_CODE = 10548448;
-    static private final int GOOGLE_VENDING_VERSION_CODE = 80798000;
-    static private final String GOOGLE_VENDING_VERSION_STRING = "7.9.80";
+    static private final int GOOGLE_SERVICES_VERSION_CODE = 16089037;
+    static private final int GOOGLE_VENDING_VERSION_CODE = 81431900;
+    static private final String GOOGLE_VENDING_VERSION_STRING = "14.3.19-all [0] [PR] 241809067";
 
     private int gsfVersionCode = 0;
     private int vendingVersionCode = 0;
@@ -47,9 +49,9 @@ public class NativeGsfVersionProvider {
             // com.google.android.gms not found
         }
         try {
-            PackageInfo pi = context.getPackageManager().getPackageInfo(GOOGLE_VENDING_PACKAGE_ID, 0);
-            vendingVersionCode = pi.versionCode;
-            vendingVersionString = pi.versionName;
+            PackageInfo packageInfo = context.getPackageManager().getPackageInfo(GOOGLE_VENDING_PACKAGE_ID, 0);
+            vendingVersionCode = packageInfo.versionCode;
+            vendingVersionString = packageInfo.versionName;
         } catch (PackageManager.NameNotFoundException e) {
             // com.android.vending not found
         }
@@ -58,21 +60,18 @@ public class NativeGsfVersionProvider {
     public int getGsfVersionCode(boolean defaultIfNotFound) {
         return defaultIfNotFound && gsfVersionCode < GOOGLE_SERVICES_VERSION_CODE
                 ? GOOGLE_SERVICES_VERSION_CODE
-                : gsfVersionCode
-                ;
+                : gsfVersionCode;
     }
 
     public int getVendingVersionCode(boolean defaultIfNotFound) {
         return defaultIfNotFound && vendingVersionCode < GOOGLE_VENDING_VERSION_CODE
                 ? GOOGLE_VENDING_VERSION_CODE
-                : vendingVersionCode
-                ;
+                : vendingVersionCode;
     }
 
     public String getVendingVersionString(boolean defaultIfNotFound) {
         return defaultIfNotFound && vendingVersionCode < GOOGLE_VENDING_VERSION_CODE
                 ? GOOGLE_VENDING_VERSION_STRING
-                : vendingVersionString
-                ;
+                : vendingVersionString;
     }
 }

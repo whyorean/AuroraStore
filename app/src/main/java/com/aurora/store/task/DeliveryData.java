@@ -27,7 +27,6 @@ import com.aurora.store.exception.MalformedRequestException;
 import com.aurora.store.exception.NotPurchasedException;
 import com.aurora.store.model.App;
 import com.aurora.store.utility.Accountant;
-import com.aurora.store.utility.ContextUtil;
 import com.aurora.store.utility.Log;
 import com.aurora.store.utility.PrefUtil;
 import com.dragons.aurora.playstoreapiv2.AndroidAppDeliveryData;
@@ -48,8 +47,11 @@ public class DeliveryData extends BaseTask {
 
     public AndroidAppDeliveryData getDeliveryData(App app) throws IOException {
         GooglePlayAPI api = getApi();
-        purchase(api, app);
-        delivery(api, app);
+        if (app.isFree()) {
+            purchase(api, app);
+            delivery(api, app);
+        } else
+            delivery(api, app);
         return deliveryData;
     }
 

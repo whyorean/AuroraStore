@@ -27,6 +27,7 @@ import android.opengl.GLES10;
 import android.text.TextUtils;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
@@ -47,7 +48,7 @@ public class EglExtensionProvider {
         }
         EGLDisplay display = egl10.eglGetDisplay(EGL10.EGL_DEFAULT_DISPLAY);
         egl10.eglInitialize(display, new int[2]);
-        int cf[] = new int[1];
+        int[] cf = new int[1];
         if (egl10.eglGetConfigs(display, null, 0, cf)) {
             EGLConfig[] configs = new EGLConfig[cf[0]];
             if (egl10.eglGetConfigs(display, configs, cf[0], cf)) {
@@ -77,7 +78,7 @@ public class EglExtensionProvider {
         return sorted;
     }
 
-    private static void addExtensionsForConfig(EGL10 egl10, EGLDisplay egldisplay, EGLConfig eglconfig, int ai[], int ai1[], Set<String> set) {
+    private static void addExtensionsForConfig(EGL10 egl10, EGLDisplay egldisplay, EGLConfig eglconfig, int[] ai, int[] ai1, Set<String> set) {
         EGLContext eglContext = egl10.eglCreateContext(egldisplay, eglconfig, EGL10.EGL_NO_CONTEXT, ai1);
         if (eglContext == EGL10.EGL_NO_CONTEXT) {
             return;
@@ -89,11 +90,9 @@ public class EglExtensionProvider {
             egl10.eglMakeCurrent(egldisplay, eglSurface, eglSurface, eglContext);
             String s = GLES10.glGetString(7939);
             if (!TextUtils.isEmpty(s)) {
-                String as[] = s.split(" ");
+                String[] as = s.split(" ");
                 int i = as.length;
-                for (int j = 0; j < i; j++) {
-                    set.add(as[j]);
-                }
+                set.addAll(Arrays.asList(as).subList(0, i));
             }
             egl10.eglMakeCurrent(egldisplay, EGL10.EGL_NO_SURFACE, EGL10.EGL_NO_SURFACE, EGL10.EGL_NO_CONTEXT);
             egl10.eglDestroySurface(egldisplay, eglSurface);

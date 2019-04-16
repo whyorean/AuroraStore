@@ -38,6 +38,7 @@ import com.dragons.aurora.playstoreapiv2.AndroidCheckinRequest;
 import com.dragons.aurora.playstoreapiv2.DeviceConfigurationProto;
 import com.dragons.aurora.playstoreapiv2.DeviceInfoProvider;
 
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -53,22 +54,11 @@ public class NativeDeviceInfoProvider implements DeviceInfoProvider {
     private String simOperator = "";
     private NativeGsfVersionProvider gsfVersionProvider;
 
-    static public List<String> getPlatforms() {
-        List<String> platforms = new ArrayList<>();
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            platforms = Arrays.asList(Build.SUPPORTED_ABIS);
-        } else {
-            if (!TextUtils.isEmpty(Build.CPU_ABI)) {
-                platforms.add(Build.CPU_ABI);
-            }
-            if (!TextUtils.isEmpty(Build.CPU_ABI2)) {
-                platforms.add(Build.CPU_ABI2);
-            }
-        }
-        return platforms;
+    private static List<String> getPlatforms() {
+        return Arrays.asList(Build.SUPPORTED_ABIS);
     }
 
-    static public List<String> getFeatures(Context context) {
+    static private List<String> getFeatures(Context context) {
         List<String> featureStringList = new ArrayList<>();
         for (FeatureInfo feature : context.getPackageManager().getSystemAvailableFeatures()) {
             if (!TextUtils.isEmpty(feature.name)) {
@@ -79,7 +69,7 @@ public class NativeDeviceInfoProvider implements DeviceInfoProvider {
         return featureStringList;
     }
 
-    static public List<String> getLocales(Context context) {
+    private static List<String> getLocales(Context context) {
         List<String> rawLocales = new ArrayList<>();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             rawLocales.addAll(Arrays.asList(context.getAssets().getLocales()));
@@ -99,7 +89,7 @@ public class NativeDeviceInfoProvider implements DeviceInfoProvider {
         return locales;
     }
 
-    static public List<String> getSharedLibraries(Context context) {
+    private static List<String> getSharedLibraries(Context context) {
         List<String> libraries = new ArrayList<>(Arrays.asList(context.getPackageManager().getSystemSharedLibraryNames()));
         Collections.sort(libraries);
         return libraries;
@@ -136,35 +126,36 @@ public class NativeDeviceInfoProvider implements DeviceInfoProvider {
     }
 
     public String getUserAgentString() {
-        return "Android-Finsky/" + gsfVersionProvider.getVendingVersionString(true) +
-                " (" + "api=3" +
-                ",versionCode=" + gsfVersionProvider.getVendingVersionCode(true) +
-                ",sdk=" + Build.VERSION.SDK_INT +
-                ",device=" + Build.DEVICE +
-                ",hardware=" + Build.HARDWARE +
-                ",product=" + Build.PRODUCT +
-                ",platformVersionRelease=" + Build.VERSION.RELEASE +
-                ",model=" + Build.MODEL +
-                ",buildId=" + Build.ID +
-                ",isWideScreen=" + (context.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE ? "1" : "0") +
-                ",supportedAbis=" + TextUtils.join(";", getPlatforms()) + ")";
+        return "Android-Finsky/" + URLEncoder.encode(gsfVersionProvider.getVendingVersionString(true)).replace("+", "%20")
+                + " ("
+                + "api=3" + ","
+                + "versionCode=" + gsfVersionProvider.getVendingVersionCode(true) + ","
+                + "sdk=" + Build.VERSION.SDK_INT + ","
+                + "device=" + Build.DEVICE + ","
+                + "hardware=" + Build.HARDWARE + ","
+                + "product=" + Build.PRODUCT + ","
+                + "platformVersionRelease=" + Build.VERSION.RELEASE + ","
+                + "model=" + URLEncoder.encode(Build.MODEL).replace("+", "%20")
+                + "buildId=" + Build.ID + ","
+                + "isWideScreen=" + (context.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE ? "1" : "0") + ","
+                + "supportedAbis=" + TextUtils.join(";", getPlatforms())
+                + ")";
     }
 
     public AndroidCheckinRequest generateAndroidCheckinRequest() {
         return AndroidCheckinRequest
                 .newBuilder()
                 .setId(0)
-                .setCheckin(getCheckinProto())
+                .setCheckin(getCheckInProto())
                 .setLocale(this.localeString)
                 .setTimeZone(TimeZone.getDefault().getID())
                 .setVersion(3)
                 .setDeviceConfiguration(getDeviceConfigurationProto())
                 .setFragment(0)
-                .build()
-                ;
+                .build();
     }
 
-    private AndroidCheckinProto getCheckinProto() {
+    private AndroidCheckinProto getCheckInProto() {
         return AndroidCheckinProto.newBuilder()
                 .setBuild(getBuildProto())
                 .setLastCheckinMsec(0)
@@ -172,8 +163,7 @@ public class NativeDeviceInfoProvider implements DeviceInfoProvider {
                 .setSimOperator(simOperator)
                 .setRoaming("mobile-notroaming")
                 .setUserNumber(0)
-                .build()
-                ;
+                .build();
     }
 
     private AndroidBuildProto getBuildProto() {

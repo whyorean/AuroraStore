@@ -26,7 +26,6 @@ package com.aurora.store.api;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.text.TextUtils;
-import android.util.Log;
 
 import com.aurora.store.Constants;
 import com.aurora.store.adapter.OkHttpClientAdapter;
@@ -36,12 +35,14 @@ import com.aurora.store.manager.SpoofManager;
 import com.aurora.store.model.LoginInfo;
 import com.aurora.store.provider.NativeDeviceInfoProvider;
 import com.aurora.store.utility.Accountant;
+import com.aurora.store.utility.Log;
 import com.aurora.store.utility.PrefUtil;
 import com.aurora.store.utility.Util;
 import com.dragons.aurora.playstoreapiv2.ApiBuilderException;
 import com.dragons.aurora.playstoreapiv2.AuthException;
 import com.dragons.aurora.playstoreapiv2.DeviceInfoProvider;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
+import com.dragons.aurora.playstoreapiv2.PlayStoreApiBuilder;
 import com.dragons.aurora.playstoreapiv2.PropertiesDeviceInfoProvider;
 import com.dragons.aurora.playstoreapiv2.TokenDispenserException;
 
@@ -52,7 +53,7 @@ public class PlayStoreApiAuthenticator {
 
     private static final int RETRIES = 5;
     private static final String tokenDispenserURL = "http://www.auroraoss.com:8080";
-    private static GooglePlayAPI api;
+    private volatile static GooglePlayAPI api;
 
     private Context context;
     private SharedPreferences prefs;
@@ -61,7 +62,7 @@ public class PlayStoreApiAuthenticator {
         this.context = context;
     }
 
-    public GooglePlayAPI getApi() throws IOException {
+    public synchronized GooglePlayAPI getApi() throws IOException {
         if (api == null) {
             api = buildFromPreferences();
         }
@@ -150,7 +151,7 @@ public class PlayStoreApiAuthenticator {
         int tried = 0;
         while (tried < retries) {
             try {
-                com.dragons.aurora.playstoreapiv2.PlayStoreApiBuilder builder = getBuilder(loginInfo);
+                PlayStoreApiBuilder builder = getBuilder(loginInfo);
                 GooglePlayAPI api = builder.build();
                 loginInfo.setEmail(builder.getEmail());
                 return api;
@@ -170,15 +171,15 @@ public class PlayStoreApiAuthenticator {
                 if (tried >= retries) {
                     throw e;
                 }
-                Log.i(Constants.TAG, "Login retry : " + tried);
+                Log.i("Login retry : " + tried);
             }
         }
         return null;
     }
 
-    private com.dragons.aurora.playstoreapiv2.PlayStoreApiBuilder getBuilder(LoginInfo loginInfo) {
+    private PlayStoreApiBuilder getBuilder(LoginInfo loginInfo) {
         fill(loginInfo);
-        return new com.dragons.aurora.playstoreapiv2.PlayStoreApiBuilder()
+        return new PlayStoreApiBuilder()
                 .setHttpClient(new OkHttpClientAdapter(context))
                 .setDeviceInfoProvider(getDeviceInfoProvider())
                 .setLocale(loginInfo.getLocale())
@@ -208,7 +209,7 @@ public class PlayStoreApiAuthenticator {
         prefs = Util.getPrefs(context.getApplicationContext());
         String locale = prefs.getString(Constants.PREFERENCE_REQUESTED_LANGUAGE, "");
         loginInfo.setLocale(TextUtils.isEmpty(locale)
-                ? new LocaleManager(context).getLocale()
+                ? Locale.getDefault()
                 : new Locale(locale));
         loginInfo.setGsfId(prefs.getString(Accountant.GSF_ID, ""));
         loginInfo.setToken(prefs.getString(Accountant.AUTH_TOKEN, ""));
