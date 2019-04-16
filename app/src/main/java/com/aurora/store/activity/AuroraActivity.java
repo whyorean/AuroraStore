@@ -111,7 +111,8 @@ public class AuroraActivity extends AppCompatActivity {
         if (intent.getScheme() != null && intent.getScheme().equals("market")) {
             fragmentCur = 3;
             isSearchIntent = true;
-        }
+        } else
+            fragmentCur = Util.getDefaultTab(this);
     }
 
     @Override
