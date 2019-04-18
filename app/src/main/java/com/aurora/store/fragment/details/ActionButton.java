@@ -256,7 +256,7 @@ public class ActionButton extends AbstractHelper {
 
     private View.OnClickListener cancelDownloadListener() {
         return v -> {
-            fetch.delete(requestId);
+            fetch.cancel(request.getId());
             if (notification != null)
                 notification.notifyCancelled();
             switchViews(false);
@@ -411,9 +411,6 @@ public class ActionButton extends AbstractHelper {
                         btnPositive.setEnabled(false);
                         new Installer(context).install(app);
                     }
-
-                    // Finally Remove FetchListener
-                    fetch.removeListener(fetchListener);
                 }
             }
 
@@ -423,8 +420,6 @@ public class ActionButton extends AbstractHelper {
                     notification.notifyCancelled();
                     progressBar.setIndeterminate(true);
                     progressStatus.setText(R.string.download_canceled);
-                    fetch.cancel(download.getId());
-                    fetch.removeListener(fetchListener);
                     switchViews(false);
                 }
             }
