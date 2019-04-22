@@ -23,6 +23,7 @@
     android:id="@+id/scroll_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingTop="@dimen/margin_normal"
     android:clipToPadding="false"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
@@ -44,7 +45,7 @@
             <include layout="@layout/include_details_main" />
 
             <!-- Action : Download, Update, Uninstall -->
-            <include layout="@layout/include_details_actions_main" />
+            <include layout="@layout/include_details_actions" />
 
         </LinearLayout>
 
@@ -55,12 +56,15 @@
             android:layout_marginTop="@dimen/margin_normal"
             android:layout_marginBottom="@dimen/margin_normal"
             android:background="@color/colorScrim"
-            android:minHeight="40dp"
+            android:minHeight="56dp"
             android:padding="@dimen/margin_small"
             android:textAlignment="center"
             android:textColor="?android:attr/textColorPrimary"
             android:textSize="16sp"
-            android:visibility="gone" />
+            android:visibility="gone"
+            app:autoSizeMaxTextSize="16sp"
+            app:autoSizeMinTextSize="12sp"
+            app:autoSizeTextType="uniform" />
 
         <!-- Changelog -->
         <include layout="@layout/include_details_changelog" />

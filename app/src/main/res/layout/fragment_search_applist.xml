@@ -20,59 +20,72 @@
 
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="?android:attr/colorBackground">
 
-    <com.google.android.material.appbar.AppBarLayout
-        style="@style/Widget.AppBar"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:elevation="0dp">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <EditText
             android:id="@+id/searchQuery"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:layout_centerVertical="true"
+            android:layout_gravity="center"
             android:layout_margin="@dimen/margin_small"
             android:background="@drawable/search_bg"
             android:drawableEnd="@drawable/ic_edit"
             android:hint="@string/title_search"
             android:imeOptions="actionSearch|flagNoFullscreen"
             android:inputType="text"
+            android:elevation="4dp"
             android:layoutDirection="locale"
             android:paddingStart="@dimen/margin_large"
             android:paddingEnd="@dimen/margin_normal"
             android:selectAllOnFocus="true" />
-    </com.google.android.material.appbar.AppBarLayout>
 
-    <ViewSwitcher
-        android:id="@+id/view_switcher"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-        <LinearLayout
-            android:id="@+id/content_view"
+        <ViewSwitcher
+            android:id="@+id/view_switcher"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/search_apps_list"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/content_view"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:scrollbarStyle="outsideOverlay"
-                android:scrollbars="vertical" />
-        </LinearLayout>
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-        <LinearLayout
-            android:id="@+id/err_view"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical" />
-    </ViewSwitcher>
+                <View
+                    android:id="@+id/gradient_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="32dp"
+                    android:background="@drawable/gradient_bg"
+                    android:translationZ="1dp" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/search_apps_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="-32dp"
+                    android:clipToPadding="false"
+                    android:paddingTop="@dimen/margin_normal"
+                    android:scrollbarStyle="outsideOverlay"
+                    android:scrollbars="vertical"
+                    tools:listitem="@layout/item_installed" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/err_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical" />
+        </ViewSwitcher>
+    </LinearLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/filter_fab"

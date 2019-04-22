@@ -39,6 +39,8 @@ import butterknife.ButterKnife;
 
 public abstract class AbstractHelper {
 
+    static private final String PLAY_STORE_PACKAGE_NAME = "com.android.vending";
+
     protected DetailsFragment fragment;
     protected App app;
     protected View view;
@@ -105,6 +107,14 @@ public abstract class AbstractHelper {
         try {
             context.getPackageManager().getPackageInfo(app.getPackageName(), 0);
             return true;
+        } catch (PackageManager.NameNotFoundException e) {
+            return false;
+        }
+    }
+
+    protected boolean isPlayStoreInstalled() {
+        try {
+            return null != context.getPackageManager().getPackageInfo(PLAY_STORE_PACKAGE_NAME, 0);
         } catch (PackageManager.NameNotFoundException e) {
             return false;
         }

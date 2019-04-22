@@ -39,6 +39,7 @@ import com.aurora.store.task.CategoryList;
 import com.aurora.store.utility.ContextUtil;
 import com.aurora.store.utility.Log;
 import com.aurora.store.utility.ThemeUtil;
+import com.aurora.store.utility.ViewUtil;
 import com.aurora.store.view.CustomGridLayoutManager;
 
 import java.util.Map;
@@ -127,7 +128,8 @@ public class CategoriesActivity extends AppCompatActivity {
     }
 
     private void setupAllCategories() {
-        mRecyclerView.setLayoutManager(new CustomGridLayoutManager(this, (Resources.getSystem().getDisplayMetrics().widthPixels) / 6));
+        mRecyclerView.setLayoutManager(new CustomGridLayoutManager(this,
+                ViewUtil.pxToDp(this, Resources.getSystem().getDisplayMetrics().widthPixels) / 3));
         mRecyclerView.setLayoutAnimation(AnimationUtils.loadLayoutAnimation(this, R.anim.anim_falldown));
         mRecyclerView.setAdapter(new CategoriesListAdapter(this, getCategories()));
     }

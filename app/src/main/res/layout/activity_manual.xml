@@ -61,7 +61,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
 
-            <include layout="@layout/include_details_actions_main" />
+            <include layout="@layout/include_details_actions" />
 
             <RelativeLayout
                 android:layout_width="match_parent"

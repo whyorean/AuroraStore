@@ -24,6 +24,13 @@
     android:layout_height="match_parent"
     android:background="?android:attr/colorBackground">
 
+    <View
+        android:id="@+id/gradient_view"
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:background="@drawable/gradient_bg"
+        android:translationZ="1dp" />
+
     <ViewSwitcher
         android:id="@+id/view_switcher"
         android:layout_width="match_parent"
@@ -33,7 +40,8 @@
         <LinearLayout
             android:id="@+id/content_view"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
             <include layout="@layout/include_details_all" />
         </LinearLayout>

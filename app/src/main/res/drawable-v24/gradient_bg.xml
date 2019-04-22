@@ -19,22 +19,10 @@
   ~
   -->
 
-<resources>
-    <dimen name="margin_xlarge">32dp</dimen>
-    <dimen name="margin_large">24dp</dimen>
-    <dimen name="margin_normal">16dp</dimen>
-    <dimen name="margin_medium">12dp</dimen>
-    <dimen name="margin_small">8dp</dimen>
-    <dimen name="margin_xsmall">6dp</dimen>
-    <dimen name="margin_xxsmall">4dp</dimen>
-
-    <dimen name="bottom_sheet_corner_radius">16dp</dimen>
-    <dimen name="bottom_sheet_top_padding">8dp</dimen>
-
-    <dimen name="icon_size">64dp</dimen>
-    <dimen name="icon_size_big">96dp</dimen>
-    <dimen name="icon_size_small">56dp</dimen>
-    <dimen name="icon_size_med">48dp</dimen>
-    <dimen name="icon_size_cat">36dp</dimen>
-
-</resources>
+<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle" >
+    <gradient
+        android:angle="270"
+        android:endColor="#00FFFFFF"
+        android:startColor="?android:colorBackground"
+        android:type="linear" />
+</shape>

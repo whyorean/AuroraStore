@@ -47,9 +47,9 @@
             android:layout_centerHorizontal="true"
             android:ellipsize="none"
             android:maxWidth="320dp"
-            android:textAlignment="center"
             android:maxLines="2"
             android:requiresFadingEdge="horizontal"
+            android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.Aurora.Title"
             android:textSize="20sp" />
 
@@ -91,13 +91,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/app_txt"
+        android:clipToPadding="false"
+        android:paddingStart="@dimen/margin_normal"
+        android:paddingEnd="@dimen/margin_normal"
         android:scrollbars="none">
 
         <com.google.android.material.chip.ChipGroup
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingStart="@dimen/margin_small"
-            android:paddingEnd="@dimen/margin_small">
+            android:layout_height="match_parent">
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/txt_updated"

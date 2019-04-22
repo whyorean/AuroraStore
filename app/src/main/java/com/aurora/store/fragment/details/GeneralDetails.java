@@ -134,8 +134,6 @@ public class GeneralDetails extends AbstractHelper {
 
             show(view, R.id.app_desc_short);
             show(view, R.id.layout_main);
-            //show(view, R.id.app_detail);
-            show(view, R.id.related_links);
         }
     }
 

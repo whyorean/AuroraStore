@@ -40,6 +40,12 @@
         <item name="android:textSize">16sp</item>
     </style>
 
+    <style name="TextAppearance.Aurora.Button" parent="TextAppearance.Aurora.Title">
+        <item name="android:letterSpacing">0.075</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
     <style name="TextAppearance.Aurora.Body" parent="@style/TextAppearance.AppCompat.Body1">
         <item name="android:textColor">?android:textColorSecondary</item>
         <item name="android:textSize">12sp</item>

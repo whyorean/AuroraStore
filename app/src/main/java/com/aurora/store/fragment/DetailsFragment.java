@@ -39,16 +39,12 @@ import com.aurora.store.R;
 import com.aurora.store.exception.MalformedRequestException;
 import com.aurora.store.fragment.details.AbstractHelper;
 import com.aurora.store.fragment.details.ActionButton;
-import com.aurora.store.fragment.details.BackToPlayStore;
+import com.aurora.store.fragment.details.AppLinks;
 import com.aurora.store.fragment.details.Beta;
-import com.aurora.store.fragment.details.ClusterDetails;
 import com.aurora.store.fragment.details.ExodusPrivacy;
 import com.aurora.store.fragment.details.GeneralDetails;
-import com.aurora.store.fragment.details.Permissions;
 import com.aurora.store.fragment.details.Reviews;
 import com.aurora.store.fragment.details.Screenshot;
-import com.aurora.store.fragment.details.Share;
-import com.aurora.store.fragment.details.SystemAppPage;
 import com.aurora.store.fragment.details.Video;
 import com.aurora.store.model.App;
 import com.aurora.store.receiver.DetailsInstallReceiver;
@@ -79,8 +75,6 @@ public class DetailsFragment extends BaseFragment implements BaseFragment.EventL
     CoordinatorLayout mContainer;
     @BindView(R.id.scroll_view)
     NestedScrollView mScrollView;
-    @BindView(R.id.btn_positive)
-    Button mButton;
 
     private Context context;
     private DetailsApp mTaskHelper;
@@ -156,18 +150,14 @@ public class DetailsFragment extends BaseFragment implements BaseFragment.EventL
                 new Screenshot(this, app),
                 new Reviews(this, app),
                 new ExodusPrivacy(this, app),
-                new Permissions(this, app),
                 new Video(this, app),
-                new BackToPlayStore(this, app),
-                new Share(this, app),
-                new SystemAppPage(this, app),
-                new Beta(this, app))
+                new Beta(this, app),
+                new AppLinks(this, app))
                 .zipWith(Observable.interval(16, TimeUnit.MILLISECONDS), (abstractHelper, interval) -> abstractHelper)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnNext(AbstractHelper::draw)
                 .subscribe());
-        new ClusterDetails(this, app).draw();
     }
 
     public void drawButtons() {

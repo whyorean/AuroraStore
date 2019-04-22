@@ -20,6 +20,7 @@
 
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -27,8 +28,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        android:layout_height="match_parent">
 
         <com.google.android.material.chip.Chip
             android:id="@+id/dev_name"
@@ -36,6 +36,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/margin_small"
             android:clickable="false"
             app:chipBackgroundColor="?android:attr/colorBackground"
             app:chipStrokeColor="@color/colorGreyLight"
@@ -50,14 +51,26 @@
             <LinearLayout
                 android:id="@+id/content_view"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <View
+                    android:id="@+id/gradient_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="32dp"
+                    android:background="@drawable/gradient_bg"
+                    android:translationZ="10dp" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/search_apps_list"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="-32dp"
+                    android:clipToPadding="false"
+                    android:paddingTop="@dimen/margin_normal"
                     android:scrollbarStyle="outsideOverlay"
-                    android:scrollbars="vertical" />
+                    android:scrollbars="vertical"
+                    tools:listitem="@layout/item_installed" />
             </LinearLayout>
 
             <LinearLayout

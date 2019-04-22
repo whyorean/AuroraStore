@@ -20,6 +20,7 @@
 
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -49,17 +50,28 @@
                 app:autoSizeTextType="uniform"
                 app:useMaterialThemeColors="false" />
 
+            <View
+                android:id="@+id/gradient_view"
+                android:layout_width="match_parent"
+                android:layout_height="32dp"
+                android:background="@drawable/gradient_bg"
+                android:translationZ="10dp" />
+
             <com.aurora.store.view.CustomSwipeToRefresh
                 android:id="@+id/swipe_layout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginTop="-32dp"
                 android:clipToPadding="false">
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recycler"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:scrollbars="vertical" />
+                    android:clipToPadding="false"
+                    android:paddingTop="@dimen/margin_normal"
+                    android:scrollbars="vertical"
+                    tools:listitem="@layout/item_installed" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:layout_width="match_parent"

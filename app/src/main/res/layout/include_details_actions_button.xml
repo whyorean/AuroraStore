@@ -1,0 +1,57 @@
+<!--
+  ~ Aurora Store
+  ~ Copyright (C) 2019, Rahul Kumar Patel <whyorean@gmail.com>
+  ~
+  ~ Aurora Store is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 2 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ Aurora Store is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with Aurora Store.  If not, see <http://www.gnu.org/licenses/>.
+  ~
+  ~
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="64dp"
+    android:gravity="center"
+    android:orientation="horizontal">
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_negative"
+        style="@style/Widget.MaterialComponents.Button"
+        android:layout_width="wrap_content"
+        android:layout_height="52dp"
+        android:layout_margin="@dimen/margin_xxsmall"
+        android:maxLines="1"
+        android:paddingStart="@dimen/margin_large"
+        android:paddingEnd="@dimen/margin_large"
+        android:text="@string/action_uninstall"
+        android:textAppearance="@style/TextAppearance.Aurora.Button"
+        android:visibility="gone"
+        app:backgroundTint="@color/colorRed"
+        app:cornerRadius="25dp"
+        app:icon="@drawable/ic_delete" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_positive"
+        style="@style/Widget.MaterialComponents.Button"
+        android:layout_width="wrap_content"
+        android:layout_height="52dp"
+        android:layout_margin="@dimen/margin_xxsmall"
+        android:maxLines="1"
+        android:paddingStart="@dimen/margin_large"
+        android:paddingEnd="@dimen/margin_large"
+        android:text="@string/details_download"
+        android:textAppearance="@style/TextAppearance.Aurora.Button"
+        app:cornerRadius="25dp"
+        app:icon="@drawable/ic_download" />
+</LinearLayout>

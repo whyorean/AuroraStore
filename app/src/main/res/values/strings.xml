@@ -180,6 +180,12 @@
 
     <string name="flagging_title">Flag as inappropriate</string>
 
+    <string name="link_dev">Developer</string>
+    <string name="link_prmission">Permission</string>
+    <string name="link_playstore">Play Store</string>
+    <string name="link_setting">Setting</string>
+    <string name="link_share">Share</string>
+
     <string name="list_app_blacklisted_empty">No Apps Blacklisted</string>
     <string name="list_app_depends_on_gsf">GSF dependent</string>
     <string name="list_app_has_ads">has ads</string>

@@ -53,6 +53,7 @@ import com.aurora.store.utility.Util;
 import com.aurora.store.utility.ViewUtil;
 import com.dragons.aurora.playstoreapiv2.AndroidAppDeliveryData;
 import com.dragons.aurora.playstoreapiv2.Split;
+import com.google.android.material.button.MaterialButton;
 import com.tonyodev.fetch2.AbstractFetchListener;
 import com.tonyodev.fetch2.Download;
 import com.tonyodev.fetch2.EnqueueAction;
@@ -81,9 +82,9 @@ import static com.aurora.store.utility.ContextUtil.runOnUiThread;
 public class ActionButton extends AbstractHelper {
 
     @BindView(R.id.btn_positive)
-    Button btnPositive;
+    MaterialButton btnPositive;
     @BindView(R.id.btn_negative)
-    Button btnNegative;
+    MaterialButton btnNegative;
     @BindView(R.id.viewSwitcher)
     ViewSwitcher mViewSwitcher;
     @BindView(R.id.view1)
@@ -184,6 +185,7 @@ public class ActionButton extends AbstractHelper {
             String currentVersion = info.versionName;
             if (info.versionCode == app.getVersionCode() || null == currentVersion) {
                 btnPositive.setText(R.string.details_run);
+                btnPositive.setIcon(context.getDrawable(R.drawable.ic_open));
                 btnPositive.setOnClickListener(openAppListener());
                 return;
             } else if (new File(PathUtil.getLocalApkPath(context, app.getPackageName(),
@@ -201,6 +203,7 @@ public class ActionButton extends AbstractHelper {
 
     private View.OnClickListener installAppListener() {
         btnPositive.setText(R.string.details_install);
+        btnPositive.setIcon(context.getDrawable(R.drawable.ic_installation_alt));
         return v -> {
             btnPositive.setText(R.string.details_installing);
             btnPositive.setEnabled(false);
@@ -210,6 +213,7 @@ public class ActionButton extends AbstractHelper {
 
     private View.OnClickListener downloadAppListener() {
         btnPositive.setText(R.string.details_download);
+        btnPositive.setIcon(context.getDrawable(R.drawable.ic_download));
         btnPositive.setEnabled(true);
         return v -> {
             switchViews(true);
@@ -232,6 +236,7 @@ public class ActionButton extends AbstractHelper {
 
     private View.OnClickListener resumeAppListener() {
         btnPositive.setText(R.string.download_resume);
+        btnPositive.setIcon(context.getDrawable(R.drawable.ic_resume));
         return v -> {
             switchViews(true);
             fetchListener = getFetchListener();
