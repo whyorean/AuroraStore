@@ -285,6 +285,6 @@ Lembre-se que fazer o download de versões arbitrárias de aplicativos não é s
 
 <!-- Precisa de alteração no código de localização para incluir o valor a ser expandido (nome do aplicativo). Não é possível traduzir corretamente sem essa alteração. -->
 <!-- Fuzzy -->
-<string name="error_app_download">": não foi possível fazer o download"</string>
+<string name="error_app_download">"Não foi possível fazer o download"</string>
 <string name="details_new_changes">"O que há de novo"</string>
 </resources>
