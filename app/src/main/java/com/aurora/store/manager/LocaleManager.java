@@ -25,7 +25,9 @@ public class LocaleManager {
     private Locale getCustomLocale() {
         String language = PrefUtil.getString(context, Constants.PREFERENCE_LOCALE_LANG);
         String country = PrefUtil.getString(context, Constants.PREFERENCE_LOCALE_COUNTRY);
-        return new Locale(language, country);
+        if (language.equals("b")) {
+            return new Locale(country);
+        } else return new Locale(language, country);
     }
 
     public void setLocale() {
