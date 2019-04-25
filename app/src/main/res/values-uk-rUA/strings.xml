@@ -81,7 +81,7 @@
 <string name="details_download">"Завантажити"</string>
 <string name="details_favourite_add">"Додати до улюбленного"</string>
 <string name="details_favourite_remove">"Видалити з вибраного"</string>
-<string name="details_install">"Встановіть"</string>
+<string name="details_install">"Встановити"</string>
 <string name="details_installing">"Встановлення"</string>
 <string name="details_more">"Докладніше"</string>
 <string name="details_no_ads">"Немає оголошень"</string>
@@ -90,7 +90,7 @@
 <string name="details_rate_this_app">"Оцініть цей додаток"</string>
 <string name="details_rating_reviews">"Рейтинги"</string>
 <string name="details_reviews">"Огляди програм"</string>
-<string name="details_run">"відкрити"</string>
+<string name="details_run">"Відкрити"</string>
 <string name="details_share">"Поділитись"</string>
 <string name="details_update">"Оновлення"</string>
 <string name="details_why_rate_this_app">"Розкажіть іншим, що ви думаєте"</string>
@@ -127,7 +127,7 @@
 <string name="list_app_has_ads">"містить рекламу"</string>
 <string name="list_app_independent_from_gsf">"не залежить від GSF"</string>
 <string name="list_app_no_ads">"не містить рекламу"</string>
-<string name="list_app_system">"Системна програма"</string>
+<string name="list_app_system">"Системний додаток"</string>
 <string name="list_app_user">"Додаток користувача"</string>
 <string name="list_blacklist">"Програми в чорному списку"</string>
 <string name="list_blacklist_none">"Не додано чорного списку"</string>
@@ -194,7 +194,7 @@
 <string name="pref_requested_location_enable">"Вам необхідно вручну увімкнути використання фіктивного місцезнаходження в параметрах розробника."</string>
 <string name="pref_requested_location_summary">"Aurora Store повинен бути встановленним, як програма для фіктивного місцезнаходження."</string>
 <string name="pref_ui_card_summary">"Використовуйте старий стиль карток для програм"</string>
-<string name="pref_ui_card_title">"Старий стил карток"</string>
+<string name="pref_ui_card_title">"Старий стиль карток"</string>
 <string name="pref_ui_snap_summary">"Показувати лише одну програму на строку"</string>
 <string name="pref_ui_snap_title">"Увімкнути SnapView для програм"</string>
 <string name="pref_ui_theme_title">"Тема"</string>
@@ -227,32 +227,47 @@
 <string name="tab_family">"Сімейні"</string>
 <string name="pref_ui_tab_mode_title">"Прокручувані вкладки"</string>
 <string name="pref_ui_tab_mode_summary">"Робить вкладки прокручуваними, рекомендується для пристроїв з маленьким розширенням дисплея"</string>
+<string name="about_app">"Aurora - це альтернатива Play Store з відкритим вихідним кодом. 
+Aurora дозволяє шукати, завантажувати, встановлювати та оновлювати додатки та ігри. 
+Додатково Aurora відображає список трекерів, вбудованих в додаток."</string>
 <string name="about_paypal">"Playpal"</string>
+<string name="about_paypal_summary">"Задонатити мені на PayPal"</string>
 <string name="about_fdroid">"F-Droid"</string>
 <string name="about_gitlab">"GitLab"</string>
+<string name="about_gitlab_summary">"Вихідний код Aurora Store в Aurora OSS на GitLab."</string>
 <string name="about_telegram">"Telegram"</string>
+<string name="about_telegram_summary">"Приєднуйтесь до обговорення або вносьте пропозиції в групі підтримки."</string>
+<string name="about_fdroid_summary">"Завантажити Aurora з репозиторію F-Droid"</string>
+<string name="about_xda">"Тема на XDA"</string>
+<string name="about_xda_summary">"Приєднуйтесь до обговорення або вносите пропозиції в темі розробника на XDA."</string>
 <string name="action_about">"Про додаток"</string>
+<string name="pref_downloader_strategy_summary">"Виберіть метод завантаження за замовчуванням, рекомендується метод паралельного завантаження, як більш швидкий."</string>
 <string name="pref_downloader_strategy_title">"Метод завантаження"</string>
 <string name="pref_downloader_strategy_sequential">"Послідовне завантаження"</string>
 <string name="pref_downloader_strategy_parallel">"Паралельне завантаження (Splits)"</string>
-<string name="pref_install_mode_native">"Стандартний метод установки"</string>
+<string name="pref_install_mode_native">"Вбудований метод установки"</string>
 <string name="pref_install_mode_root">"З використанням рут"</string>
 <string name="pref_notification_priority_default">"За замовчуванням"</string>
 <string name="pref_notification_priority_high">"Вискокий"</string>
 <string name="pref_notification_priority_max">"Максимальний"</string>
 <string name="pref_notification_provider_summary">"Вибір провайдера сповіщень за замовчуванням"</string>
 <string name="pref_notification_provider_title">"Провайдер сповіщень"</string>
+<string name="pref_notification_provider_native">"Вбудований провайдер сповіщень"</string>
+<string name="pref_notification_provider_aurora">"Провайдер сповіщень Aurora"</string>
 <string name="pref_ui_theme_light">"Світла"</string>
 <string name="pref_ui_theme_dark">"Темна"</string>
 <string name="pref_ui_theme_black">"Чорна"</string>
 <string name="action_close">"Відміна"</string>
+<string name="list_update_all_queue_txt">"оновлень у черзі"</string>
 <string name="notification_installation_complete">"Успішно установлено"</string>
 <string name="notification_installation_failed">"Помилка при установці"</string>
 <string name="notification_installation_progress">"Установка"</string>
 <string name="apps_by">"Додаток від"</string>
 <string name="error_network_other">"Помилка мережі"</string>
+<string name="exodus_hasTracker">"Містить трекери"</string>
 <string name="list_selected">"Вибрані додатки"</string>
 <string name="notification_installation_auto">"Заванжено, натисніть щоб встановити"</string>
+<string name="notification_installation_manual">"Bundled Apk, потрібні дії користувача"</string>
 <string name="title_search_result">"Результати для"</string>
 <string name="action_recheck">"Перепровірити"</string>
 <string name="action_recheck_ing">"Перепровірка"</string>
@@ -264,4 +279,7 @@
 <string name="pref_update_interval_hourly">"Кожну годину"</string>
 <string name="pref_update_interval_daily">"Кожен тиждень"</string>
 <string name="pref_update_interval_weekly">"Щодня"</string>
+<string name="download_none">"Немає завантажень"</string>
+<string name="error_app_download">"не може бути завантаженим"</string>
+<string name="details_new_changes">"Що нового"</string>
 </resources>
