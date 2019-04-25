@@ -112,7 +112,11 @@ public class GeneralDetails extends AbstractHelper {
                 setText(view, R.id.rating, R.string.details_rating, app.getRating().getAverage());
             }
 
-            setText(view, R.id.category, new CategoryManager(context).getCategoryName(app.getCategoryId()));
+            final String category = new CategoryManager(context).getCategoryName(app.getCategoryId());
+            if (TextUtil.isEmpty(category))
+                hide(view, R.id.category);
+            else
+                setText(view, R.id.category, new CategoryManager(context).getCategoryName(app.getCategoryId()));
 
             if (app.getPrice() != null && app.getPrice().isEmpty())
                 setText(view, R.id.price, R.string.category_appFree);
