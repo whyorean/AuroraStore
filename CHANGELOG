@@ -24,3 +24,8 @@ Changelog : v3.0.3
 • Enforced proxy network on download requests
 • Show update size in updatable app list
 • Disable quick notification completely if notifications are turned off
+
+Changelog : v3.0.4
+• Bug fixes & improvements 
+• Added new locales (Asturian, Catalan and Sardinian)
+• Added new spoof location : Tokyo, Japan
