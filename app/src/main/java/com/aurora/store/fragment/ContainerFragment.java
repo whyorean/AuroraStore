@@ -22,5 +22,4 @@ public class ContainerFragment extends Fragment {
         this.context = context;
         translator = new SharedPreferencesTranslator(Util.getPrefs(context));
     }
-
 }

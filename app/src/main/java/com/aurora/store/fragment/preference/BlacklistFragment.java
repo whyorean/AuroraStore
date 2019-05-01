@@ -187,19 +187,24 @@ public class BlacklistFragment extends BaseFragment implements BlacklistAdapter.
     }
 
     @Override
-    public void onLoggedIn() {
+    public void notifyLoggedIn() {
         loadAllApps();
     }
 
     @Override
-    public void onLoginFailed() {
+    public void notifyPermanentFailure() {
         setErrorView(ErrorType.UNKNOWN);
         switchViews(true);
     }
 
     @Override
-    public void onNetworkFailed() {
+    public void notifyNetworkFailure() {
         setErrorView(ErrorType.NO_NETWORK);
         switchViews(true);
+    }
+
+    @Override
+    public void notifyTokenExpired() {
+
     }
 }

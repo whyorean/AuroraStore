@@ -417,19 +417,24 @@ public class UpdatesFragment extends BaseFragment implements BaseFragment.EventL
     }
 
     @Override
-    public void onLoggedIn() {
-        fetchData();
+    public void notifyLoggedIn() {
+        ContextUtil.runOnUiThread(() -> fetchData());
     }
 
     @Override
-    public void onLoginFailed() {
+    public void notifyPermanentFailure() {
         setErrorView(ErrorType.UNKNOWN);
         switchViews(true);
     }
 
     @Override
-    public void onNetworkFailed() {
+    public void notifyNetworkFailure() {
         setErrorView(ErrorType.NO_NETWORK);
         switchViews(true);
+    }
+
+    @Override
+    public void notifyTokenExpired() {
+        notifyExpiredToken(coordinatorLayout, bottomNavigationView, context.getString(R.string.action_token_expired));
     }
 }

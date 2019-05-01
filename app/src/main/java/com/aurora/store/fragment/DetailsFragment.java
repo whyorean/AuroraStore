@@ -49,6 +49,7 @@ import com.aurora.store.fragment.details.Video;
 import com.aurora.store.model.App;
 import com.aurora.store.receiver.DetailsInstallReceiver;
 import com.aurora.store.task.DetailsApp;
+import com.aurora.store.utility.ContextUtil;
 import com.aurora.store.utility.Log;
 import com.aurora.store.utility.PackageUtil;
 import com.aurora.store.view.ErrorView;
@@ -72,7 +73,7 @@ public class DetailsFragment extends BaseFragment implements BaseFragment.EventL
     @BindView(R.id.err_view)
     LinearLayout layoutError;
     @BindView(R.id.container)
-    CoordinatorLayout mContainer;
+    CoordinatorLayout coordinatorLayout;
     @BindView(R.id.scroll_view)
     NestedScrollView mScrollView;
 
@@ -205,18 +206,23 @@ public class DetailsFragment extends BaseFragment implements BaseFragment.EventL
     }
 
     @Override
-    public void onLoggedIn() {
-        fetchDetails();
+    public void notifyLoggedIn() {
+        ContextUtil.runOnUiThread(() -> fetchDetails());
     }
 
     @Override
-    public void onLoginFailed() {
+    public void notifyPermanentFailure() {
 
     }
 
     @Override
-    public void onNetworkFailed() {
+    public void notifyNetworkFailure() {
         setErrorView(ErrorType.NO_NETWORK);
         switchViews(true);
+    }
+
+    @Override
+    public void notifyTokenExpired() {
+        notifyExpiredToken(coordinatorLayout, null, context.getString(R.string.action_token_expired));
     }
 }

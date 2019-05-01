@@ -27,6 +27,7 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.util.DisplayMetrics;
@@ -84,7 +85,7 @@ public class ViewUtil {
 
     public static int getStyledAttribute(Context context, int styleID) {
         TypedArray arr = context.obtainStyledAttributes(new TypedValue().data, new int[]{styleID});
-        int styledColor = arr.getColor(0, -1);
+        int styledColor = arr.getColor(0, Color.WHITE);
         arr.recycle();
         return styledColor;
     }

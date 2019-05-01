@@ -47,6 +47,7 @@ import com.aurora.store.adapter.EndlessAppsAdapter;
 import com.aurora.store.model.App;
 import com.aurora.store.sheet.FilterBottomSheet;
 import com.aurora.store.task.SearchTask;
+import com.aurora.store.utility.ContextUtil;
 import com.aurora.store.utility.Log;
 import com.aurora.store.utility.NetworkUtil;
 import com.aurora.store.utility.Util;
@@ -112,7 +113,7 @@ public class SearchAppsFragment extends BaseFragment implements BaseFragment.Eve
             if (NetworkUtil.isConnected(context)) {
                 setupRecycler();
             } else
-                onNetworkFailed();
+                notifyNetworkFailure();
         } else
             Log.e("No category id provided");
         return view;
@@ -283,20 +284,25 @@ public class SearchAppsFragment extends BaseFragment implements BaseFragment.Eve
     }
 
     @Override
-    public void onLoggedIn() {
-        fetchSearchAppsList(false);
+    public void notifyLoggedIn() {
+        ContextUtil.runOnUiThread(() -> fetchSearchAppsList(false));
     }
 
     @Override
-    public void onLoginFailed() {
+    public void notifyPermanentFailure() {
         setErrorView(ErrorType.UNKNOWN);
         switchViews(true);
 
     }
 
     @Override
-    public void onNetworkFailed() {
+    public void notifyNetworkFailure() {
         setErrorView(ErrorType.NO_NETWORK);
         switchViews(true);
+    }
+
+    @Override
+    public void notifyTokenExpired() {
+
     }
 }

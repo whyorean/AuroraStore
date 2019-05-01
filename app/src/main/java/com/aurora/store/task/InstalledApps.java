@@ -24,6 +24,7 @@ import android.content.Context;
 import android.text.TextUtils;
 
 import com.aurora.store.model.App;
+import com.dragons.aurora.playstoreapiv2.AuthException;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -38,6 +39,7 @@ public class InstalledApps extends UpdatableApps {
     }
 
     public List<App> getInstalledApps(boolean removeSystem) throws IOException {
+
         List<App> allMarketApps = new ArrayList<>();
         api = getApi();
         api.toc();

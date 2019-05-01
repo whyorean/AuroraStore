@@ -37,6 +37,7 @@ import com.aurora.store.iterator.CustomAppListIterator;
 import com.aurora.store.utility.Accountant;
 import com.aurora.store.utility.ContextUtil;
 import com.aurora.store.utility.Log;
+import com.aurora.store.utility.ViewUtil;
 import com.dragons.aurora.playstoreapiv2.AuthException;
 import com.dragons.aurora.playstoreapiv2.SearchIterator;
 import com.google.android.material.snackbar.Snackbar;
@@ -59,6 +60,7 @@ public abstract class BaseFragment extends Fragment {
 
     private Context context;
     private EventListenerImpl eventListenerImpl;
+    private boolean isRefreshing = false;
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -84,9 +86,17 @@ public abstract class BaseFragment extends Fragment {
         snackbar.show();
     }
 
+    public void notifyExpiredToken(CoordinatorLayout coordinatorLayout, View anchorView, String message) {
+        Snackbar snackbar = Snackbar.make(coordinatorLayout, message, Snackbar.LENGTH_LONG);
+        if (anchorView != null)
+            snackbar.setAnchorView(anchorView);
+        snackbar.setActionTextColor(ViewUtil.getStyledAttribute(context, R.attr.colorBackgroundFloating));
+        snackbar.setAction(context.getString(R.string.action_token_force_request), v -> refreshToken());
+        snackbar.show();
+    }
+
     public void processException(Throwable e) {
         disposable.clear();
-        Log.d("GoogleAPI DownloadRequest Failed : %s", e.getMessage());
         if (e instanceof AuthException) {
             processAuthException((AuthException) e);
         } else if (e instanceof IOException) {
@@ -105,7 +115,7 @@ public abstract class BaseFragment extends Fragment {
             if (noNetwork(e) || e instanceof UnknownHostException) {
                 message = context.getString(R.string.error_no_network);
                 ContextUtil.toastShort(context, message);
-                eventListenerImpl.onNetworkFailed();
+                eventListenerImpl.notifyNetworkFailure();
             } else {
                 message = TextUtils.isEmpty(e.getMessage())
                         ? context.getString(R.string.error_network_other)
@@ -124,6 +134,7 @@ public abstract class BaseFragment extends Fragment {
                 logInWithDummy();
         } else if (e.getCode() == 401 && Accountant.isDummy(context)) {
             Log.i("Token is stale");
+            eventListenerImpl.notifyTokenExpired();
             refreshToken();
         } else {
             ContextUtil.toast(context, R.string.error_incorrect_password);
@@ -141,36 +152,41 @@ public abstract class BaseFragment extends Fragment {
                     if (success) {
                         Log.i("Dummy Login Successful");
                         Accountant.saveDummy(context);
-                        eventListenerImpl.onLoggedIn();
+                        eventListenerImpl.notifyLoggedIn();
                     } else
                         Log.e("Dummy Login Failed Permanently");
                 }, err -> Log.e("Dummy Login failed %s", err.getMessage())));
     }
 
-    private void refreshToken() {
-        disposable.add(Flowable.fromCallable(() ->
-                new PlayStoreApiAuthenticator(context).refreshToken())
-                .subscribeOn(Schedulers.io())
-                .observeOn(Schedulers.computation())
-                .subscribe((success) -> {
-                    if (success) {
-                        Log.i("Token Refreshed");
-                        eventListenerImpl.onLoggedIn();
-                    } else {
-                        Log.e("Token Refresh Failed Permanently");
-                        eventListenerImpl.onLoginFailed();
-                    }
-                }, err -> {
-                    Log.e("Token Refresh Login failed %s", err.getMessage());
-                    eventListenerImpl.onLoginFailed();
-                }));
+    private synchronized void refreshToken() {
+        if (!isRefreshing)
+            disposable.add(Flowable.fromCallable(() ->
+                    new PlayStoreApiAuthenticator(context).refreshToken())
+                    .subscribeOn(Schedulers.io())
+                    .doOnSubscribe(subscription -> isRefreshing = true)
+                    .doOnTerminate(() -> isRefreshing = false)
+                    .observeOn(Schedulers.computation())
+                    .subscribe((success) -> {
+                        if (success) {
+                            Log.i("Token Refreshed");
+                            eventListenerImpl.notifyLoggedIn();
+                        } else {
+                            Log.e("Token Refresh Failed Permanently");
+                            eventListenerImpl.notifyPermanentFailure();
+                        }
+                    }, err -> {
+                        Log.e("Token Refresh Login failed %s", err.getMessage());
+                        eventListenerImpl.notifyPermanentFailure();
+                    }));
     }
 
     public interface EventListenerImpl {
-        void onLoggedIn();
+        void notifyLoggedIn();
 
-        void onLoginFailed();
+        void notifyPermanentFailure();
 
-        void onNetworkFailed();
+        void notifyNetworkFailure();
+
+        void notifyTokenExpired();
     }
 }

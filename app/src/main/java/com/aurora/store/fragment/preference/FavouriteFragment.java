@@ -314,17 +314,22 @@ public class FavouriteFragment extends BaseFragment implements SelectableViewHol
     }
 
     @Override
-    public void onLoggedIn() {
+    public void notifyLoggedIn() {
 
     }
 
     @Override
-    public void onLoginFailed() {
+    public void notifyPermanentFailure() {
 
     }
 
     @Override
-    public void onNetworkFailed() {
+    public void notifyNetworkFailure() {
+
+    }
+
+    @Override
+    public void notifyTokenExpired() {
 
     }
 }

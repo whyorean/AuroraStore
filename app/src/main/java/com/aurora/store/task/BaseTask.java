@@ -24,6 +24,7 @@ import android.content.Context;
 
 import com.aurora.store.api.PlayStoreApiAuthenticator;
 import com.aurora.store.model.App;
+import com.dragons.aurora.playstoreapiv2.AuthException;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 
 import java.io.IOException;

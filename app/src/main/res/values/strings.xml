@@ -97,6 +97,8 @@
     <string name="action_settings">Settings</string>
     <string name="action_spoofed">Spoof</string>
     <string name="action_submit">Submit</string>
+    <string name="action_token_expired">Token expired, requesting new token</string>
+    <string name="action_token_force_request">Force request</string>
     <string name="action_unignore">Remove from blacklist</string>
     <string name="action_uninstall">Uninstall</string>
     <string name="action_unwhitelist">Ignore updates</string>

@@ -161,17 +161,22 @@ public class TopFreeApps extends BaseFragment implements BaseFragment.EventListe
     }
 
     @Override
-    public void onLoggedIn() {
+    public void notifyLoggedIn() {
         fetchCategoryApps(false);
     }
 
     @Override
-    public void onLoginFailed() {
+    public void notifyPermanentFailure() {
 
     }
 
     @Override
-    public void onNetworkFailed() {
+    public void notifyNetworkFailure() {
+
+    }
+
+    @Override
+    public void notifyTokenExpired() {
 
     }
 }

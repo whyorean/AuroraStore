@@ -32,6 +32,7 @@ import android.widget.ViewSwitcher;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -43,6 +44,7 @@ import com.aurora.store.activity.AuroraActivity;
 import com.aurora.store.adapter.InstalledAppsAdapter;
 import com.aurora.store.model.App;
 import com.aurora.store.task.InstalledApps;
+import com.aurora.store.utility.ContextUtil;
 import com.aurora.store.utility.Log;
 import com.aurora.store.utility.PrefUtil;
 import com.aurora.store.utility.ViewUtil;
@@ -64,6 +66,8 @@ import io.reactivex.schedulers.Schedulers;
 
 public class InstalledFragment extends BaseFragment implements BaseFragment.EventListenerImpl {
 
+    @BindView(R.id.coordinator)
+    CoordinatorLayout coordinatorLayout;
     @BindView(R.id.view_switcher)
     ViewSwitcher mViewSwitcher;
     @BindView(R.id.content_view)
@@ -78,7 +82,7 @@ public class InstalledFragment extends BaseFragment implements BaseFragment.Even
     SwitchMaterial switchSystem;
 
     private Context context;
-    private BottomNavigationView mBottomNavigationView;
+    private BottomNavigationView bottomNavigationView;
     private View view;
     private List<App> installedAppList = new ArrayList<>();
     private InstalledAppsAdapter adapter;
@@ -114,7 +118,7 @@ public class InstalledFragment extends BaseFragment implements BaseFragment.Even
 
         mSwipeRefreshLayout.setOnRefreshListener(() -> fetchData());
         if (getActivity() instanceof AuroraActivity)
-            mBottomNavigationView = ((AuroraActivity) getActivity()).getBottomNavigation();
+            bottomNavigationView = ((AuroraActivity) getActivity()).getBottomNavigation();
 
         setupRecycler();
     }
@@ -136,7 +140,6 @@ public class InstalledFragment extends BaseFragment implements BaseFragment.Even
     public void onDestroy() {
         super.onDestroy();
         disposable.clear();
-        installedAppList = null;
         installedAppTask = null;
         adapter = null;
     }
@@ -151,7 +154,6 @@ public class InstalledFragment extends BaseFragment implements BaseFragment.Even
                 .doOnTerminate(() -> mSwipeRefreshLayout.setRefreshing(false))
                 .subscribe((appList) -> {
                     if (view != null) {
-                        installedAppList = appList;
                         if (appList.isEmpty()) {
                             setErrorView(ErrorType.NO_APPS);
                             switchViews(true);
@@ -176,11 +178,11 @@ public class InstalledFragment extends BaseFragment implements BaseFragment.Even
             @Override
             public boolean onFling(int velocityX, int velocityY) {
                 if (velocityY < 0) {
-                    if (mBottomNavigationView != null)
-                        ViewUtil.showBottomNav(mBottomNavigationView, true);
+                    if (bottomNavigationView != null)
+                        ViewUtil.showBottomNav(bottomNavigationView, true);
                 } else if (velocityY > 0) {
-                    if (mBottomNavigationView != null)
-                        ViewUtil.hideBottomNav(mBottomNavigationView, true);
+                    if (bottomNavigationView != null)
+                        ViewUtil.hideBottomNav(bottomNavigationView, true);
                 }
                 return false;
             }
@@ -208,19 +210,24 @@ public class InstalledFragment extends BaseFragment implements BaseFragment.Even
     }
 
     @Override
-    public void onLoggedIn() {
-        fetchData();
+    public void notifyLoggedIn() {
+        ContextUtil.runOnUiThread(() -> fetchData());
     }
 
     @Override
-    public void onLoginFailed() {
+    public void notifyPermanentFailure() {
         setErrorView(ErrorType.UNKNOWN);
         switchViews(true);
     }
 
     @Override
-    public void onNetworkFailed() {
+    public void notifyNetworkFailure() {
         setErrorView(ErrorType.NO_NETWORK);
         switchViews(true);
+    }
+
+    @Override
+    public void notifyTokenExpired() {
+        notifyExpiredToken(coordinatorLayout, bottomNavigationView, context.getString(R.string.action_token_expired));
     }
 }

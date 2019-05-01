@@ -96,7 +96,7 @@ public class DevAppsFragment extends BaseFragment implements BaseFragment.EventL
             if (NetworkUtil.isConnected(context))
                 setupRecycler();
             else
-                onNetworkFailed();
+                notifyNetworkFailure();
         } else
             Log.e("No category id provided");
         return view;
@@ -201,19 +201,24 @@ public class DevAppsFragment extends BaseFragment implements BaseFragment.EventL
     }
 
     @Override
-    public void onLoggedIn() {
+    public void notifyLoggedIn() {
         fetchDevAppsList(false);
     }
 
     @Override
-    public void onLoginFailed() {
+    public void notifyPermanentFailure() {
         setErrorView(ErrorType.UNKNOWN);
         switchViews(true);
     }
 
     @Override
-    public void onNetworkFailed() {
+    public void notifyNetworkFailure() {
         setErrorView(ErrorType.NO_NETWORK);
         switchViews(true);
+    }
+
+    @Override
+    public void notifyTokenExpired() {
+
     }
 }
