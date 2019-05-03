@@ -285,4 +285,15 @@
         <item>@string/pref_update_interval_daily</item>
         <item>@string/pref_update_interval_weekly</item>
     </string-array>
+
+    <string-array name="topCategories">
+        <item>COMMUNICATION</item>
+        <item>FAMILY</item>
+        <item>GAME</item>
+        <item>MUSIC_AND_AUDIO</item>
+        <item>PERSONALIZATION</item>
+        <item>PHOTOGRAPHY</item>
+        <item>SHOPPING</item>
+        <item>SOCIAL</item>
+    </string-array>
 </resources>

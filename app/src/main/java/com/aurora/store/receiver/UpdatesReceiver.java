@@ -10,7 +10,7 @@ import com.aurora.store.Constants;
 import com.aurora.store.R;
 import com.aurora.store.activity.AuroraActivity;
 import com.aurora.store.notification.QuickNotification;
-import com.aurora.store.task.UpdatableApps;
+import com.aurora.store.task.UpdatableAppsTask;
 import com.aurora.store.utility.Log;
 
 import org.apache.commons.lang3.StringUtils;
@@ -41,7 +41,7 @@ public class UpdatesReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         Log.e("Update check Started");
         CompositeDisposable disposable = new CompositeDisposable();
-        UpdatableApps updatableAppTask = new UpdatableApps(context);
+        UpdatableAppsTask updatableAppTask = new UpdatableAppsTask(context);
         disposable.add(Observable.fromCallable(updatableAppTask::getUpdatableApps)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -61,7 +61,7 @@ public class UpdatesReceiver extends BroadcastReceiver {
 
     private PendingIntent getContentIntent(Context context) {
         Intent intent = new Intent(context, AuroraActivity.class);
-        intent.putExtra(Constants.INTENT_FRAGMENT_POSITION, 2);
+        intent.putExtra(Constants.INTENT_FRAGMENT_POSITION, 1);
         return PendingIntent.getActivity(context, 0, intent,
                 PendingIntent.FLAG_UPDATE_CURRENT);
     }

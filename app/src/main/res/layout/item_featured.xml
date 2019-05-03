@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Aurora Store
   ~ Copyright (C) 2019, Rahul Kumar Patel <whyorean@gmail.com>
   ~
@@ -20,20 +19,20 @@
   -->
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_margin="@dimen/margin_medium">
+    android:layout_margin="@dimen/margin_small">
 
     <ImageView
-        android:id="@+id/app_background"
+        android:id="@+id/app_icon"
         android:layout_width="match_parent"
-        android:layout_height="192dp"
+        android:layout_height="128dp"
         android:scaleType="centerCrop" />
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/app_background"
+        android:layout_below="@id/app_icon"
         android:paddingStart="@dimen/margin_xxsmall"
         android:paddingTop="@dimen/margin_small"
         android:paddingEnd="@dimen/margin_xxsmall">
@@ -42,43 +41,12 @@
             android:id="@+id/app_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="4dp"
             android:ellipsize="none"
             android:fadingEdgeLength="16dp"
             android:requiresFadingEdge="horizontal"
             android:singleLine="true"
-            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.Aurora.Toolbar.Title"
             android:textColor="?android:attr/textColorPrimary"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/app_name"
-            android:layout_centerHorizontal="true"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/app_rating"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <RatingBar
-                android:id="@+id/app_ratingbar"
-                style="?android:attr/ratingBarStyleSmall"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center_vertical"
-                android:isIndicator="true"
-                android:max="5"
-                android:numStars="1"
-                android:scaleX=".75"
-                android:scaleY=".75"
-                android:theme="@style/RatingBarReviews" />
-        </LinearLayout>
+            android:textSize="18sp" />
     </RelativeLayout>
 </RelativeLayout>

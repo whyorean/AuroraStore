@@ -72,7 +72,6 @@ dependencies {
     //UI-Libs
     implementation 'androidx.appcompat:appcompat:1.0.2'
     implementation 'androidx.preference:preference:1.1.0-alpha04'
-    implementation 'androidx.viewpager2:viewpager2:1.0.0-alpha03'
     implementation 'com.google.android.material:material:1.1.0-alpha05'
 
     //Utils
@@ -90,6 +89,7 @@ dependencies {
     //RX-Java2
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
     implementation 'io.reactivex.rxjava2:rxjava:2.2.8'
+    implementation 'com.jakewharton.rxrelay2:rxrelay:2.1.0'
 
     //ButterKnife
     implementation 'com.jakewharton:butterknife:10.1.0'

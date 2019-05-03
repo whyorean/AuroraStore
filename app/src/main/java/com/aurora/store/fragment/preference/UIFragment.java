@@ -61,6 +61,7 @@ public class UIFragment extends PreferenceFragmentCompat implements SharedPrefer
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
         switch (key) {
             case Constants.PREFERENCE_FEATURED_SNAP:
+            case Constants.PREFERENCE_UI_CARD_STYLE:
             case Constants.PREFERENCE_TAB_MODE:
                 SettingsActivity.shouldRestart = true;
                 break;

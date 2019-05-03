@@ -26,5 +26,6 @@ public enum ErrorType {
     NO_UPDATES,
     NO_SEARCH,
     UNKNOWN,
-    MALFORMED
+    MALFORMED,
+    LOGOUT_ERR
 }

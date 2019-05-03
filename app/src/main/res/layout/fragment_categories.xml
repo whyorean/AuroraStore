@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Aurora Store
+  ~ Copyright (C) 2019, Rahul Kumar Patel <whyorean@gmail.com>
+  ~
+  ~ Aurora Store is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 2 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ Aurora Store is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with Aurora Store.  If not, see <http://www.gnu.org/licenses/>.
+  ~
+  ~
+  -->
+
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?android:colorBackground">
+
+    <FrameLayout
+        android:id="@+id/coordinator"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <View
+            android:id="@+id/gradient_view"
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:background="@drawable/gradient_bg"
+            android:translationZ="10dp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/category_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:nestedScrollingEnabled="false"
+            android:paddingTop="@dimen/margin_small"
+            android:paddingBottom="@dimen/bottom_nav_padding"
+            android:scrollbars="none"
+            tools:listitem="@layout/item_category_list" />
+    </FrameLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

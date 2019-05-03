@@ -20,6 +20,7 @@
 
 package com.aurora.store.fragment;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,15 +33,18 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.aurora.store.EndlessScrollListener;
+import com.aurora.store.ErrorType;
+import com.aurora.store.Filter;
 import com.aurora.store.R;
 import com.aurora.store.adapter.EndlessAppsAdapter;
 import com.aurora.store.api.PlayStoreApiAuthenticator;
 import com.aurora.store.iterator.CustomAppListIterator;
 import com.aurora.store.model.App;
 import com.aurora.store.task.CategoryAppsTask;
-import com.aurora.store.utility.Log;
+import com.aurora.store.utility.ContextUtil;
 import com.dragons.aurora.playstoreapiv2.CategoryAppsIterator;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
+import com.dragons.aurora.playstoreapiv2.IteratorGooglePlayException;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
@@ -49,18 +53,16 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
 
-public class TopFreeApps extends BaseFragment implements BaseFragment.EventListenerImpl {
+public class TopFreeApps extends BaseFragment {
 
+    public CustomAppListIterator iterator;
     @BindView(R.id.endless_apps_list)
     RecyclerView recyclerView;
-
+    private Context context;
     private FloatingActionButton filterFab;
-    private CustomAppListIterator iterator;
     private EndlessAppsAdapter endlessAppsAdapter;
-    private CompositeDisposable mDisposable = new CompositeDisposable();
 
     public CustomAppListIterator getIterator() {
         return iterator;
@@ -68,6 +70,12 @@ public class TopFreeApps extends BaseFragment implements BaseFragment.EventListe
 
     public void setIterator(CustomAppListIterator iterator) {
         this.iterator = iterator;
+    }
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        this.context = context;
     }
 
     @Override
@@ -95,17 +103,29 @@ public class TopFreeApps extends BaseFragment implements BaseFragment.EventListe
             fetchCategoryApps(false);
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        endlessAppsAdapter = null;
+        disposable.clear();
+    }
+
     public void init() {
-        setIterator(setupIterator(CategoryAppsFragment.categoryId, GooglePlayAPI.SUBCATEGORY.TOP_FREE));
+        iterator = setupIterator(CategoryAppsFragment.categoryId, GooglePlayAPI.SUBCATEGORY.TOP_FREE);
+        if (iterator != null) {
+            iterator.setFilter(new Filter(getContext()).getFilterPreferences());
+            iterator.setEnableFilter(true);
+            setIterator(iterator);
+        }
     }
 
     private void setupListView() {
-        LinearLayoutManager mLayoutManager = new LinearLayoutManager(getContext());
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         endlessAppsAdapter = new EndlessAppsAdapter(getContext());
-        recyclerView.setLayoutManager(mLayoutManager);
+        recyclerView.setLayoutManager(layoutManager);
         recyclerView.setLayoutAnimation(AnimationUtils.loadLayoutAnimation(getContext(), R.anim.anim_falldown));
         recyclerView.setAdapter(endlessAppsAdapter);
-        EndlessScrollListener mEndlessRecyclerViewScrollListener = new EndlessScrollListener(mLayoutManager) {
+        EndlessScrollListener mEndlessRecyclerViewScrollListener = new EndlessScrollListener(layoutManager) {
             @Override
             public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
                 fetchCategoryApps(true);
@@ -127,7 +147,7 @@ public class TopFreeApps extends BaseFragment implements BaseFragment.EventListe
 
     public CustomAppListIterator setupIterator(String categoryId, GooglePlayAPI.SUBCATEGORY subcategory) {
         try {
-            final GooglePlayAPI api = new PlayStoreApiAuthenticator(getContext()).getApi();
+            final GooglePlayAPI api = new PlayStoreApiAuthenticator(context).getApi();
             final CategoryAppsIterator iterator = new CategoryAppsIterator(api, categoryId, subcategory);
             return new CustomAppListIterator(iterator);
         } catch (Exception err) {
@@ -137,16 +157,27 @@ public class TopFreeApps extends BaseFragment implements BaseFragment.EventListe
     }
 
     public void fetchCategoryApps(boolean shouldIterate) {
-        mDisposable.add(Observable.fromCallable(() -> new CategoryAppsTask(getContext())
+        disposable.add(Observable.fromCallable(() -> new CategoryAppsTask(getContext())
                 .getApps(getIterator()))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(appList -> {
-                    if (shouldIterate) {
-                        addApps(appList);
-                    } else
-                        endlessAppsAdapter.addData(appList);
-                }, err -> Log.e(err.getMessage())));
+                    if (appList.isEmpty() && endlessAppsAdapter.isDataEmpty()) {
+                        setErrorView(ErrorType.NO_APPS);
+                        switchViews(true);
+                    } else {
+                        switchViews(false);
+                        if (shouldIterate) {
+                            addApps(appList);
+                        } else
+                            endlessAppsAdapter.addData(appList);
+                    }
+                }, err -> {
+                    if (err instanceof IteratorGooglePlayException)
+                        processException(err.getCause());
+                    else
+                        processException(err);
+                }));
     }
 
     private void addApps(List<App> appsToAdd) {
@@ -161,22 +192,12 @@ public class TopFreeApps extends BaseFragment implements BaseFragment.EventListe
     }
 
     @Override
-    public void notifyLoggedIn() {
+    protected View.OnClickListener errRetry() {
+        return v -> ContextUtil.runOnUiThread(() -> fetchCategoryApps(false));
+    }
+
+    @Override
+    protected void fetchData() {
         fetchCategoryApps(false);
-    }
-
-    @Override
-    public void notifyPermanentFailure() {
-
-    }
-
-    @Override
-    public void notifyNetworkFailure() {
-
-    }
-
-    @Override
-    public void notifyTokenExpired() {
-
     }
 }

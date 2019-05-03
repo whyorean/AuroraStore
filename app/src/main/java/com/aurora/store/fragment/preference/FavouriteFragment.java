@@ -38,6 +38,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.aurora.store.Constants;
+import com.aurora.store.ErrorType;
 import com.aurora.store.FavouriteItemTouchHelper;
 import com.aurora.store.R;
 import com.aurora.store.adapter.FavouriteAppsAdapter;
@@ -79,7 +80,7 @@ import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
 
 public class FavouriteFragment extends BaseFragment implements SelectableViewHolder.ItemClickListener,
-        FavouriteItemTouchHelper.RecyclerItemTouchHelperListener, BaseFragment.EventListenerImpl {
+        FavouriteItemTouchHelper.RecyclerItemTouchHelperListener {
 
     private static final int BULK_GROUP_ID = 1996;
 
@@ -109,9 +110,21 @@ public class FavouriteFragment extends BaseFragment implements SelectableViewHol
     private Fetch fetch;
 
     @Override
+    protected View.OnClickListener errRetry() {
+        return null;
+    }
+
+    @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         this.context = context;
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        manager = new FavouriteListManager(context);
+        fetch = new DownloadManager(context).getFetchInstance();
     }
 
     @Override
@@ -123,14 +136,12 @@ public class FavouriteFragment extends BaseFragment implements SelectableViewHol
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        manager = new FavouriteListManager(context);
-        fetch = new DownloadManager(context).getFetchInstance();
-
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        setErrorView(ErrorType.UNKNOWN);
         swipeRefreshLayout.setOnRefreshListener(() -> {
             if (Accountant.isLoggedIn(context) && NetworkUtil.isConnected(context))
-                getFavApps();
+                fetchData();
             else
                 swipeRefreshLayout.setRefreshing(false);
         });
@@ -143,7 +154,7 @@ public class FavouriteFragment extends BaseFragment implements SelectableViewHol
             favouriteList = importList();
             if (!favouriteList.isEmpty()) {
                 manager.addAll(favouriteList);
-                getFavApps();
+                fetchData();
             } else {
                 Toast.makeText(context, "Favourite AppList is empty", Toast.LENGTH_SHORT).show();
             }
@@ -153,12 +164,12 @@ public class FavouriteFragment extends BaseFragment implements SelectableViewHol
     @Override
     public void onResume() {
         super.onResume();
-        getFavApps();
+        fetchData();
     }
 
     @Override
-    public void onStop() {
-        super.onStop();
+    public void onPause() {
+        super.onPause();
         swipeRefreshLayout.setRefreshing(false);
     }
 
@@ -244,7 +255,6 @@ public class FavouriteFragment extends BaseFragment implements SelectableViewHol
         boolean success = verifyDirectory();
         File file = new File(PathUtil.getBaseDirectory(context) + Constants.FILES + File.separator + fileExt);
         try {
-            Log.e(file.getPath());
             success = file.exists() || file.createNewFile();
         } catch (IOException e) {
             e.printStackTrace();
@@ -255,23 +265,34 @@ public class FavouriteFragment extends BaseFragment implements SelectableViewHol
             return null;
     }
 
-    private void getFavApps() {
+    @Override
+    protected void fetchData() {
         favouriteList = manager.get();
         toggleEmptyLayout(favouriteList.isEmpty());
         if (!favouriteList.isEmpty())
-            disposable.add(Observable.fromCallable(() -> new BulkDetails(context).getRemoteAppList(favouriteList))
+            disposable.add(Observable.fromCallable(() -> new BulkDetails(context)
+                    .getRemoteAppList(favouriteList))
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .doOnSubscribe(start -> swipeRefreshLayout.setRefreshing(true))
                     .doOnTerminate(() -> swipeRefreshLayout.setRefreshing(false))
                     .doOnComplete(() -> buttonExport.setEnabled(true))
-                    .subscribe((appToAdd) -> {
-                        favouriteApps = appToAdd;
-                        setupFavourites(favouriteApps);
+                    .subscribe((appList) -> {
+                        if (appList.isEmpty()) {
+                            setErrorView(ErrorType.NO_APPS);
+                            switchViews(true);
+                        } else if (favouriteList.isEmpty()) {
+                            switchViews(false);
+                            toggleEmptyLayout(true);
+                        } else {
+                            favouriteApps = appList;
+                            setupFavourites(favouriteApps);
+                        }
                     }, err -> Log.e(Constants.TAG, err.getMessage())));
     }
 
     private void toggleEmptyLayout(boolean toggle) {
+        switchViews(false);
         emptyLayout.setVisibility(toggle ? View.VISIBLE : View.GONE);
         buttonExport.setEnabled(!toggle);
     }
@@ -311,25 +332,5 @@ public class FavouriteFragment extends BaseFragment implements SelectableViewHol
                     .append(selectedApps.size())
             );
         }
-    }
-
-    @Override
-    public void notifyLoggedIn() {
-
-    }
-
-    @Override
-    public void notifyPermanentFailure() {
-
-    }
-
-    @Override
-    public void notifyNetworkFailure() {
-
-    }
-
-    @Override
-    public void notifyTokenExpired() {
-
     }
 }

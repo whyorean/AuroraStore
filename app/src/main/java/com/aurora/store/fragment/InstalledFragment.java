@@ -27,12 +27,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.ViewSwitcher;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -42,21 +39,15 @@ import com.aurora.store.ListType;
 import com.aurora.store.R;
 import com.aurora.store.activity.AuroraActivity;
 import com.aurora.store.adapter.InstalledAppsAdapter;
-import com.aurora.store.model.App;
-import com.aurora.store.task.InstalledApps;
-import com.aurora.store.utility.ContextUtil;
+import com.aurora.store.task.InstalledAppsTask;
 import com.aurora.store.utility.Log;
 import com.aurora.store.utility.PrefUtil;
 import com.aurora.store.utility.ViewUtil;
 import com.aurora.store.view.CustomSwipeToRefresh;
-import com.aurora.store.view.ErrorView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.switchmaterial.SwitchMaterial;
 
 import org.jetbrains.annotations.NotNull;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -64,16 +55,8 @@ import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
-public class InstalledFragment extends BaseFragment implements BaseFragment.EventListenerImpl {
+public class InstalledFragment extends BaseFragment {
 
-    @BindView(R.id.coordinator)
-    CoordinatorLayout coordinatorLayout;
-    @BindView(R.id.view_switcher)
-    ViewSwitcher mViewSwitcher;
-    @BindView(R.id.content_view)
-    LinearLayout layoutContent;
-    @BindView(R.id.err_view)
-    LinearLayout layoutError;
     @BindView(R.id.swipe_layout)
     CustomSwipeToRefresh mSwipeRefreshLayout;
     @BindView(R.id.recycler)
@@ -84,9 +67,8 @@ public class InstalledFragment extends BaseFragment implements BaseFragment.Even
     private Context context;
     private BottomNavigationView bottomNavigationView;
     private View view;
-    private List<App> installedAppList = new ArrayList<>();
     private InstalledAppsAdapter adapter;
-    private InstalledApps installedAppTask;
+    private InstalledAppsTask installedAppTask;
 
     @Override
     public void onAttach(@NotNull Context context) {
@@ -117,8 +99,10 @@ public class InstalledFragment extends BaseFragment implements BaseFragment.Even
         });
 
         mSwipeRefreshLayout.setOnRefreshListener(() -> fetchData());
-        if (getActivity() instanceof AuroraActivity)
+        if (getActivity() instanceof AuroraActivity) {
             bottomNavigationView = ((AuroraActivity) getActivity()).getBottomNavigation();
+            setBaseBottomNavigationView(bottomNavigationView);
+        }
 
         setupRecycler();
     }
@@ -140,12 +124,14 @@ public class InstalledFragment extends BaseFragment implements BaseFragment.Even
     public void onDestroy() {
         super.onDestroy();
         disposable.clear();
+        disposableBus.clear();
         installedAppTask = null;
         adapter = null;
     }
 
-    private void fetchData() {
-        installedAppTask = new InstalledApps(context);
+    @Override
+    protected void fetchData() {
+        installedAppTask = new InstalledAppsTask(context);
         disposable.add(Observable.fromCallable(() -> installedAppTask
                 .getInstalledApps(switchSystem.isChecked()))
                 .subscribeOn(Schedulers.io())
@@ -164,7 +150,7 @@ public class InstalledFragment extends BaseFragment implements BaseFragment.Even
                         }
                     }
                 }, err -> {
-                    Log.e(err.getMessage());
+                    Log.d(err.getMessage());
                     processException(err);
                 }));
     }
@@ -189,45 +175,12 @@ public class InstalledFragment extends BaseFragment implements BaseFragment.Even
         });
     }
 
-    private void setErrorView(ErrorType errorType) {
-        layoutError.removeAllViews();
-        layoutError.addView(new ErrorView(context, errorType, retry()));
-    }
-
-    private View.OnClickListener retry() {
+    @Override
+    protected View.OnClickListener errRetry() {
         return v -> {
             fetchData();
             ((Button) v).setText(getString(R.string.action_retry_ing));
             ((Button) v).setEnabled(false);
         };
-    }
-
-    private void switchViews(boolean showError) {
-        if (mViewSwitcher.getCurrentView() == layoutContent && showError)
-            mViewSwitcher.showNext();
-        else if (mViewSwitcher.getCurrentView() == layoutError && !showError)
-            mViewSwitcher.showPrevious();
-    }
-
-    @Override
-    public void notifyLoggedIn() {
-        ContextUtil.runOnUiThread(() -> fetchData());
-    }
-
-    @Override
-    public void notifyPermanentFailure() {
-        setErrorView(ErrorType.UNKNOWN);
-        switchViews(true);
-    }
-
-    @Override
-    public void notifyNetworkFailure() {
-        setErrorView(ErrorType.NO_NETWORK);
-        switchViews(true);
-    }
-
-    @Override
-    public void notifyTokenExpired() {
-        notifyExpiredToken(coordinatorLayout, bottomNavigationView, context.getString(R.string.action_token_expired));
     }
 }

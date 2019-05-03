@@ -25,7 +25,7 @@
     android:layout_height="match_parent"
     tools:context=".activity.IntroActivity">
 
-    <androidx.viewpager2.widget.ViewPager2
+    <com.aurora.store.view.CustomViewPager
         android:id="@+id/viewpager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

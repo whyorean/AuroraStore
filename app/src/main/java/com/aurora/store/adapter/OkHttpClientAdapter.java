@@ -23,6 +23,7 @@ package com.aurora.store.adapter;
 import android.content.Context;
 
 import com.aurora.store.exception.MalformedRequestException;
+import com.aurora.store.utility.Log;
 import com.aurora.store.utility.Util;
 import com.dragons.aurora.playstoreapiv2.AuthException;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;

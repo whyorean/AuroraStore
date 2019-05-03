@@ -31,10 +31,10 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import com.aurora.store.utility.Accountant;
 import com.aurora.store.Constants;
 import com.aurora.store.R;
 import com.aurora.store.manager.SpoofManager;
+import com.aurora.store.utility.Accountant;
 import com.aurora.store.utility.ContextUtil;
 import com.aurora.store.utility.Log;
 import com.aurora.store.utility.PrefUtil;
@@ -61,24 +61,24 @@ public class DeviceInfoActivity extends AppCompatActivity {
     @BindView(R.id.device_info)
     LinearLayout root;
 
-    private ActionBar mActionBar;
-    private ThemeUtil mThemeUtil = new ThemeUtil();
+    private ActionBar actionBar;
+    private ThemeUtil themeUtil = new ThemeUtil();
     private String deviceName;
     private int deviceIndex;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mThemeUtil.onCreate(this);
+        themeUtil.onCreate(this);
         setContentView(R.layout.activity_device_info);
         ButterKnife.bind(this);
 
         setSupportActionBar(mToolbar);
-        mActionBar = getSupportActionBar();
+        actionBar = getSupportActionBar();
 
-        if (mActionBar != null) {
-            mActionBar.setDisplayHomeAsUpEnabled(true);
-            mActionBar.setDisplayShowTitleEnabled(false);
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setDisplayShowTitleEnabled(false);
         }
 
         onNewIntent(getIntent());
@@ -87,7 +87,7 @@ public class DeviceInfoActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        mThemeUtil.onResume(this);
+        themeUtil.onResume(this);
     }
 
     @Override

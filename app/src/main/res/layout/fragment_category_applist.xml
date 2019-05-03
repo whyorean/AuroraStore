@@ -18,29 +18,48 @@
   ~
   -->
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/content"
+    android:id="@+id/coordinator"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <View
-        android:id="@+id/gradient_view"
+    <ViewSwitcher
+        android:id="@+id/view_switcher"
         android:layout_width="match_parent"
-        android:layout_height="32dp"
-        android:background="@drawable/gradient_bg"
-        android:translationZ="10dp" />
+        android:layout_height="wrap_content">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/endless_apps_list"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="-32dp"
-        android:clipToPadding="false"
-        android:paddingTop="@dimen/margin_normal"
-        android:scrollbarStyle="outsideOverlay"
-        android:scrollbars="vertical"
-        tools:listitem="@layout/item_installed" />
+        <LinearLayout
+            android:id="@+id/content_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-</LinearLayout>
+            <View
+                android:id="@+id/gradient_view"
+                android:layout_width="match_parent"
+                android:layout_height="32dp"
+                android:background="@drawable/gradient_bg"
+                android:translationZ="10dp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/endless_apps_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-32dp"
+                android:clipToPadding="false"
+                android:paddingTop="@dimen/margin_small"
+                android:scrollbarStyle="outsideOverlay"
+                android:scrollbars="vertical"
+                tools:listitem="@layout/item_installed" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/err_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" />
+    </ViewSwitcher>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

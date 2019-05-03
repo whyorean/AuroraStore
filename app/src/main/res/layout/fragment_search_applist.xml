@@ -21,7 +21,7 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/container"
+    android:id="@+id/coordinator"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="?android:attr/colorBackground">
@@ -42,7 +42,6 @@
             android:hint="@string/title_search"
             android:imeOptions="actionSearch|flagNoFullscreen"
             android:inputType="text"
-            android:elevation="4dp"
             android:layoutDirection="locale"
             android:paddingStart="@dimen/margin_large"
             android:paddingEnd="@dimen/margin_normal"
@@ -51,8 +50,7 @@
         <ViewSwitcher
             android:id="@+id/view_switcher"
             android:layout_width="match_parent"
-
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
             <LinearLayout
                 android:id="@+id/content_view"
@@ -73,7 +71,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="-32dp"
                     android:clipToPadding="false"
-                    android:paddingTop="@dimen/margin_normal"
+                    android:paddingTop="@dimen/margin_small"
                     android:scrollbarStyle="outsideOverlay"
                     android:scrollbars="vertical"
                     tools:listitem="@layout/item_installed" />
@@ -98,5 +96,4 @@
         app:layout_anchorGravity="top|end"
         app:srcCompat="@drawable/ic_filter"
         app:useMaterialThemeColors="false" />
-
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

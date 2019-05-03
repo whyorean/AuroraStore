@@ -21,10 +21,10 @@
 package com.aurora.store.task;
 
 import android.content.Context;
+import android.content.ContextWrapper;
 
 import com.aurora.store.api.PlayStoreApiAuthenticator;
 import com.aurora.store.model.App;
-import com.dragons.aurora.playstoreapiv2.AuthException;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 
 import java.io.IOException;
@@ -33,12 +33,13 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class BaseTask {
+public abstract class BaseTask extends ContextWrapper {
 
     protected Context context;
     protected GooglePlayAPI api;
 
     public BaseTask(Context context) {
+        super(context);
         this.context = context;
     }
 

@@ -20,6 +20,7 @@
 
 package com.aurora.store.fragment;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,16 +29,28 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.aurora.store.Filter;
 import com.aurora.store.R;
+import com.aurora.store.iterator.CustomAppListIterator;
+import com.aurora.store.utility.ContextUtil;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class TopGrossingApps extends TopFreeApps implements BaseFragment.EventListenerImpl {
+public class TopGrossingApps extends TopFreeApps {
 
+    public CustomAppListIterator iterator;
     @BindView(R.id.endless_apps_list)
     RecyclerView recyclerView;
+    private Context context;
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        this.context = context;
+    }
+
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -48,27 +61,16 @@ public class TopGrossingApps extends TopFreeApps implements BaseFragment.EventLi
 
     @Override
     public void init() {
-        setIterator(setupIterator(CategoryAppsFragment.categoryId, GooglePlayAPI.SUBCATEGORY.TOP_GROSSING));
-    }
-
-
-    @Override
-    public void notifyLoggedIn() {
-        fetchCategoryApps(false);
-    }
-
-    @Override
-    public void notifyPermanentFailure() {
-
+        iterator = setupIterator(CategoryAppsFragment.categoryId, GooglePlayAPI.SUBCATEGORY.TOP_GROSSING);
+        if (iterator != null) {
+            iterator.setFilter(new Filter(context).getFilterPreferences());
+            iterator.setEnableFilter(true);
+            setIterator(iterator);
+        }
     }
 
     @Override
-    public void notifyNetworkFailure() {
-
-    }
-
-    @Override
-    public void notifyTokenExpired() {
-
+    protected View.OnClickListener errRetry() {
+        return v -> ContextUtil.runOnUiThread(() -> fetchCategoryApps(false));
     }
 }

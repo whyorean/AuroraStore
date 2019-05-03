@@ -36,6 +36,7 @@ import android.widget.ViewSwitcher;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
 import com.aurora.store.Constants;
 import com.aurora.store.GlideApp;
@@ -43,6 +44,9 @@ import com.aurora.store.R;
 import com.aurora.store.activity.AuroraActivity;
 import com.aurora.store.activity.IntroActivity;
 import com.aurora.store.api.PlayStoreApiAuthenticator;
+import com.aurora.store.events.Event;
+import com.aurora.store.events.Events;
+import com.aurora.store.events.RxBus;
 import com.aurora.store.task.UserProfiler;
 import com.aurora.store.utility.Accountant;
 import com.aurora.store.utility.Log;
@@ -58,11 +62,12 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
 
 import static com.aurora.store.utility.ContextUtil.runOnUiThread;
 
-public class AccountsFragment extends BaseFragment implements BaseFragment.EventListenerImpl {
+public class AccountsFragment extends Fragment {
 
     @BindView(R.id.view_switcher_top)
     ViewSwitcher mViewSwitcherTop;
@@ -104,6 +109,7 @@ public class AccountsFragment extends BaseFragment implements BaseFragment.Event
     Button btnNegative;
 
     private Context context;
+    private CompositeDisposable disposable = new CompositeDisposable();
     private boolean isDummy = false;
     private boolean isLoggedIn = false;
 
@@ -130,26 +136,6 @@ public class AccountsFragment extends BaseFragment implements BaseFragment.Event
     public void onDestroy() {
         super.onDestroy();
         disposable.clear();
-    }
-
-    @Override
-    public void notifyLoggedIn() {
-
-    }
-
-    @Override
-    public void notifyPermanentFailure() {
-
-    }
-
-    @Override
-    public void notifyNetworkFailure() {
-
-    }
-
-    @Override
-    public void notifyTokenExpired() {
-
     }
 
     private void init() {
@@ -281,6 +267,7 @@ public class AccountsFragment extends BaseFragment implements BaseFragment.Event
                 .subscribe((success) -> {
                     if (success) {
                         Log.i("Dummy Login Successful");
+                        RxBus.publish(new Event(Events.LOGGED_IN));
                         runOnUiThread(() -> {
                             Accountant.saveDummy(context);
                             init();
@@ -306,6 +293,7 @@ public class AccountsFragment extends BaseFragment implements BaseFragment.Event
                 .subscribe((success) -> {
                     if (success) {
                         Log.i("Google Login Successful");
+                        RxBus.publish(new Event(Events.LOGGED_IN));
                         runOnUiThread(() -> {
                             Accountant.saveGoogle(context);
                             getUserInfo();

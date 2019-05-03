@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Aurora Store
   ~ Copyright (C) 2019, Rahul Kumar Patel <whyorean@gmail.com>
   ~
@@ -21,107 +20,122 @@
 
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/container"
+    android:id="@+id/coordinator"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="?android:attr/colorBackground">
 
-    <LinearLayout
+    <ViewSwitcher
+        android:id="@+id/view_switcher"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:minHeight="?actionBarSize">
-
-            <TextView
-                android:id="@+id/count_selection"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="@dimen/margin_normal"
-                android:layout_marginEnd="@dimen/margin_small"
-                android:layout_toStartOf="@id/install_list"
-                android:ellipsize="end"
-                android:singleLine="true"
-                android:textAppearance="@style/TextAppearance.Aurora.SubTitle" />
-
-            <Button
-                android:id="@+id/install_list"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_toStartOf="@id/export_list"
-                android:enabled="false"
-                android:text="@string/details_install" />
-
-            <Button
-                android:id="@+id/export_list"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="@dimen/margin_small"
-                android:layout_marginEnd="@dimen/margin_small"
-                android:text="@string/action_export" />
-
-        </RelativeLayout>
-
-        <com.aurora.store.view.CustomSwipeToRefresh
-            android:id="@+id/swipe_refresh_layout"
+        <LinearLayout
+            android:id="@+id/err_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:clipToPadding="false"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+            android:orientation="vertical" />
+
+        <LinearLayout
+            android:id="@+id/content_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content"
+                android:minHeight="?actionBarSize">
+
+                <TextView
+                    android:id="@+id/count_selection"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/margin_normal"
+                    android:layout_marginEnd="@dimen/margin_small"
+                    android:layout_toStartOf="@id/install_list"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:textAppearance="@style/TextAppearance.Aurora.SubTitle" />
+
+                <Button
+                    android:id="@+id/install_list"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toStartOf="@id/export_list"
+                    android:enabled="false"
+                    android:text="@string/details_install" />
+
+                <Button
+                    android:id="@+id/export_list"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/margin_small"
+                    android:layout_marginEnd="@dimen/margin_small"
+                    android:text="@string/action_export" />
+
+            </RelativeLayout>
+
+            <com.aurora.store.view.CustomSwipeToRefresh
+                android:id="@+id/swipe_refresh_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clipToPadding="false"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
                 <RelativeLayout
-                    android:id="@+id/empty_favourites"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:visibility="gone">
+                    android:layout_height="match_parent">
 
-                    <TextView
-                        android:id="@+id/no_fav_apps"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginTop="10dp"
-                        android:text="@string/list_empty_fav"
-                        android:textSize="18sp" />
+                    <RelativeLayout
+                        android:id="@+id/empty_favourites"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:visibility="gone">
 
-                    <Button
-                        android:id="@+id/import_list"
-                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/no_fav_apps"
-                        android:layout_centerHorizontal="true"
-                        android:layout_margin="5dp"
-                        android:layout_marginStart="@dimen/margin_small"
-                        android:layout_marginTop="@dimen/margin_normal"
-                        android:layout_marginEnd="@dimen/margin_large"
-                        android:layout_marginBottom="@dimen/margin_normal"
-                        android:text="@string/action_retry" />
+                        <TextView
+                            android:id="@+id/no_fav_apps"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginTop="10dp"
+                            android:text="@string/list_empty_fav"
+                            android:textSize="18sp" />
+
+                        <Button
+                            android:id="@+id/import_list"
+                            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/no_fav_apps"
+                            android:layout_centerHorizontal="true"
+                            android:layout_margin="5dp"
+                            android:layout_marginStart="@dimen/margin_small"
+                            android:layout_marginTop="@dimen/margin_normal"
+                            android:layout_marginEnd="@dimen/margin_large"
+                            android:layout_marginBottom="@dimen/margin_normal"
+                            android:text="@string/action_retry" />
+                    </RelativeLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/fav_apps_list"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scrollbars="vertical" />
                 </RelativeLayout>
+            </com.aurora.store.view.CustomSwipeToRefresh>
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/fav_apps_list"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:scrollbars="vertical" />
-            </RelativeLayout>
-        </com.aurora.store.view.CustomSwipeToRefresh>
+        </LinearLayout>
 
-    </LinearLayout>
+    </ViewSwitcher>
+
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

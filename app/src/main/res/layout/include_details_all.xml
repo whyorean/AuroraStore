@@ -20,11 +20,12 @@
 
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/scroll_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="@dimen/margin_normal"
     android:clipToPadding="false"
+    android:paddingTop="@dimen/margin_normal"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
     <LinearLayout
@@ -56,6 +57,7 @@
             android:layout_marginTop="@dimen/margin_normal"
             android:layout_marginBottom="@dimen/margin_normal"
             android:background="@color/colorScrim"
+            android:gravity="center"
             android:minHeight="56dp"
             android:padding="@dimen/margin_small"
             android:textAlignment="center"
@@ -76,7 +78,11 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/screenshots_gallery"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:itemCount="5"
+            tools:listitem="@layout/item_screenshots_small" />
 
         <!-- App Info -->
         <LinearLayout

@@ -60,6 +60,7 @@ public class PlayStoreApiAuthenticator {
 
     public PlayStoreApiAuthenticator(Context context) {
         this.context = context;
+        prefs = Util.getPrefs(context);
     }
 
     public synchronized GooglePlayAPI getApi() throws IOException {
@@ -95,7 +96,6 @@ public class PlayStoreApiAuthenticator {
     }
 
     public boolean refreshToken() throws IOException {
-        prefs = Util.getPrefs(context.getApplicationContext());
         prefs
                 .edit()
                 .remove(Accountant.AUTH_TOKEN)
@@ -129,7 +129,6 @@ public class PlayStoreApiAuthenticator {
     }
 
     private GooglePlayAPI buildFromPreferences() throws IOException {
-        prefs = Util.getPrefs(context.getApplicationContext());
         String email = prefs.getString(Accountant.ACCOUNT_EMAIL, "");
         if (TextUtils.isEmpty(email)) {
             throw new CredentialsEmptyException();
@@ -171,7 +170,7 @@ public class PlayStoreApiAuthenticator {
                 if (tried >= retries) {
                     throw e;
                 }
-                Log.i("Login retry : " + tried);
+                Log.i("Login errRetry : " + tried);
             }
         }
         return null;
@@ -206,7 +205,6 @@ public class PlayStoreApiAuthenticator {
     }
 
     private void fill(LoginInfo loginInfo) {
-        prefs = Util.getPrefs(context.getApplicationContext());
         String locale = prefs.getString(Constants.PREFERENCE_REQUESTED_LANGUAGE, "");
         loginInfo.setLocale(TextUtils.isEmpty(locale)
                 ? Locale.getDefault()

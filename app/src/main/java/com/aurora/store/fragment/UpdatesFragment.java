@@ -29,9 +29,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.ViewSwitcher;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -55,14 +53,13 @@ import com.aurora.store.model.App;
 import com.aurora.store.notification.QuickNotification;
 import com.aurora.store.receiver.InstallReceiver;
 import com.aurora.store.task.BulkDeliveryData;
-import com.aurora.store.task.UpdatableApps;
+import com.aurora.store.task.UpdatableAppsTask;
 import com.aurora.store.utility.ContextUtil;
 import com.aurora.store.utility.Log;
 import com.aurora.store.utility.SplitUtil;
 import com.aurora.store.utility.Util;
 import com.aurora.store.utility.ViewUtil;
 import com.aurora.store.view.CustomSwipeToRefresh;
-import com.aurora.store.view.ErrorView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.snackbar.Snackbar;
 import com.tonyodev.fetch2.AbstractFetchGroupListener;
@@ -90,18 +87,10 @@ import static com.aurora.store.notification.NotificationBase.INTENT_APP_VERSION;
 import static com.aurora.store.notification.NotificationBase.INTENT_PACKAGE_NAME;
 
 
-public class UpdatesFragment extends BaseFragment implements BaseFragment.EventListenerImpl {
+public class UpdatesFragment extends BaseFragment {
 
     private static final int UPDATE_GROUP_ID = 1337;
 
-    @BindView(R.id.coordinator)
-    CoordinatorLayout coordinatorLayout;
-    @BindView(R.id.view_switcher)
-    ViewSwitcher mViewSwitcher;
-    @BindView(R.id.content_view)
-    LinearLayout layoutContent;
-    @BindView(R.id.err_view)
-    LinearLayout layoutError;
     @BindView(R.id.swipe_layout)
     CustomSwipeToRefresh customSwipeToRefresh;
     @BindView(R.id.recycler)
@@ -120,7 +109,7 @@ public class UpdatesFragment extends BaseFragment implements BaseFragment.EventL
     private UpdatableAppsAdapter adapter;
     private Fetch fetch;
     private boolean onGoingUpdate = false;
-    private UpdatableApps updatableAppTask;
+    private UpdatableAppsTask updatableAppTask;
 
     @Override
     public void onAttach(@NotNull Context context) {
@@ -142,8 +131,10 @@ public class UpdatesFragment extends BaseFragment implements BaseFragment.EventL
         fetch = new DownloadManager(context).getFetchInstance();
         setErrorView(ErrorType.UNKNOWN);
         customSwipeToRefresh.setOnRefreshListener(() -> fetchData());
-        if (getActivity() instanceof AuroraActivity)
+        if (getActivity() instanceof AuroraActivity) {
             bottomNavigationView = ((AuroraActivity) getActivity()).getBottomNavigation();
+            setBaseBottomNavigationView(bottomNavigationView);
+        }
         setupRecycler();
     }
 
@@ -172,8 +163,9 @@ public class UpdatesFragment extends BaseFragment implements BaseFragment.EventL
         requestList = null;
     }
 
-    private void fetchData() {
-        updatableAppTask = new UpdatableApps(context);
+    @Override
+    protected void fetchData() {
+        updatableAppTask = new UpdatableAppsTask(context);
         disposable.add(Observable.fromCallable(updatableAppTask::getUpdatableApps)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -194,7 +186,10 @@ public class UpdatesFragment extends BaseFragment implements BaseFragment.EventL
                             setupUpdateAll();
                         }
                     }
-                }, err -> processException(err)));
+                }, err -> {
+                    Log.d(err.getMessage());
+                    processException(err);
+                }));
     }
 
     private void checkOnGoingUpdates() {
@@ -224,26 +219,17 @@ public class UpdatesFragment extends BaseFragment implements BaseFragment.EventL
         });
     }
 
-    private void setErrorView(ErrorType errorType) {
-        layoutError.removeAllViews();
-        layoutError.addView(new ErrorView(context, errorType, retry()));
-    }
-
-    private View.OnClickListener retry() {
+    @Override
+    protected View.OnClickListener errRetry() {
         return v -> {
             fetchData();
-            ((Button) v).setText(updatableAppList.isEmpty()
-                    ? getString(R.string.action_recheck_ing)
-                    : getString(R.string.action_retry_ing));
-            ((Button) v).setEnabled(false);
+            if (updatableAppList != null) {
+                ((Button) v).setText(updatableAppList.isEmpty()
+                        ? getString(R.string.action_recheck_ing)
+                        : getString(R.string.action_retry_ing));
+                ((Button) v).setEnabled(false);
+            }
         };
-    }
-
-    private void switchViews(boolean showError) {
-        if (mViewSwitcher.getCurrentView() == layoutContent && showError)
-            mViewSwitcher.showNext();
-        else if (mViewSwitcher.getCurrentView() == layoutError && !showError)
-            mViewSwitcher.showPrevious();
     }
 
     private void setupUpdateAll() {
@@ -310,7 +296,7 @@ public class UpdatesFragment extends BaseFragment implements BaseFragment.EventL
                 }, err -> {
                     if (err instanceof MalformedRequestException) {
                         ContextUtil.runOnUiThread(() -> btnUpdateAll.setOnClickListener(updateAllListener()));
-                        notifyStatus(coordinatorLayout, bottomNavigationView, err.getMessage());
+                        notifyStatusBlacklist(coordinatorLayout, bottomNavigationView, err.getMessage());
                     } else
                         Log.e(err.getMessage());
                 }));
@@ -404,8 +390,7 @@ public class UpdatesFragment extends BaseFragment implements BaseFragment.EventL
         };
     }
 
-    @Override
-    public void notifyStatus(CoordinatorLayout coordinatorLayout, View anchorView, String packageName) {
+    public void notifyStatusBlacklist(CoordinatorLayout coordinatorLayout, View anchorView, String packageName) {
         final StringBuilder message = new StringBuilder()
                 .append(packageName)
                 .append(context.getString(R.string.error_app_download));
@@ -414,27 +399,5 @@ public class UpdatesFragment extends BaseFragment implements BaseFragment.EventL
         snackbar.setAction(R.string.action_blacklist, v -> new BlacklistManager(context).add(packageName));
         snackbar.setActionTextColor(context.getResources().getColor(R.color.colorGold));
         snackbar.show();
-    }
-
-    @Override
-    public void notifyLoggedIn() {
-        ContextUtil.runOnUiThread(() -> fetchData());
-    }
-
-    @Override
-    public void notifyPermanentFailure() {
-        setErrorView(ErrorType.UNKNOWN);
-        switchViews(true);
-    }
-
-    @Override
-    public void notifyNetworkFailure() {
-        setErrorView(ErrorType.NO_NETWORK);
-        switchViews(true);
-    }
-
-    @Override
-    public void notifyTokenExpired() {
-        notifyExpiredToken(coordinatorLayout, bottomNavigationView, context.getString(R.string.action_token_expired));
     }
 }

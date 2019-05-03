@@ -35,6 +35,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.SearchView;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.ItemTouchHelper;
@@ -57,7 +58,7 @@ import java.util.regex.Pattern;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class SearchFragment extends BaseFragment implements BaseFragment.EventListenerImpl, HistoryItemTouchHelper.RecyclerItemTouchHelperListener {
+public class SearchFragment extends Fragment implements HistoryItemTouchHelper.RecyclerItemTouchHelperListener {
 
     @BindView(R.id.search_apps)
     SearchView searchView;
@@ -97,7 +98,6 @@ public class SearchFragment extends BaseFragment implements BaseFragment.EventLi
     private void setupSearch() {
         SearchManager searchManager = (SearchManager) context.getSystemService(Context.SEARCH_SERVICE);
         ComponentName componentName = getActivity().getComponentName();
-        searchView.setFocusable(true);
         searchView.requestFocus();
 
         if (null != searchManager && componentName != null) {
@@ -216,7 +216,7 @@ public class SearchFragment extends BaseFragment implements BaseFragment.EventLi
         searchAppsFragment.setArguments(arguments);
         getChildFragmentManager()
                 .beginTransaction()
-                .replace(R.id.container, searchAppsFragment)
+                .replace(R.id.coordinator, searchAppsFragment)
                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                 .addToBackStack(null)
                 .commit();
@@ -236,25 +236,5 @@ public class SearchFragment extends BaseFragment implements BaseFragment.EventLi
         String pattern = "([\\p{L}_$][\\p{L}\\p{N}_$]*\\.)+[\\p{L}_$][\\p{L}\\p{N}_$]*";
         Pattern r = Pattern.compile(pattern);
         return r.matcher(query).matches();
-    }
-
-    @Override
-    public void notifyLoggedIn() {
-
-    }
-
-    @Override
-    public void notifyPermanentFailure() {
-
-    }
-
-    @Override
-    public void notifyNetworkFailure() {
-
-    }
-
-    @Override
-    public void notifyTokenExpired() {
-
     }
 }

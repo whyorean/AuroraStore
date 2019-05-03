@@ -22,7 +22,6 @@ package com.aurora.store.view;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.res.ColorStateList;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -86,6 +85,11 @@ public class ErrorView extends RelativeLayout {
                 imgError.setImageDrawable(context.getDrawable(R.drawable.ic_unknown));
                 txtError.setText(R.string.error_app_not_found);
                 btnError.setText(R.string.action_close);
+                break;
+            case LOGOUT_ERR:
+                imgError.setImageDrawable(context.getDrawable(R.drawable.ic_login));
+                txtError.setText(R.string.error_logged_out);
+                btnError.setText(R.string.action_login);
                 break;
         }
     }

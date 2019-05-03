@@ -53,7 +53,7 @@
 <!-- Più tardi -->
 <string name="action_later">"Più tardi"</string>
 
-<!-- Effettuando il login -->
+<!-- Effettuando il errLogin -->
 <string name="action_logging_in">"Effettuando il login"</string>
 <string name="action_login">"Accedi"</string>
 

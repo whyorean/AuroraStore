@@ -34,6 +34,8 @@ import android.util.TypedValue;
 import android.view.inputmethod.InputMethodManager;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.PagerSnapHelper;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.aurora.store.Constants;
 import com.aurora.store.R;
@@ -411,5 +413,12 @@ public class Util {
                 inputMethodManager.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
             else
                 inputMethodManager.hideSoftInputFromWindow(windowToken, 0);
+    }
+
+    public static void attachSnapPager(Context context, RecyclerView recyclerView) {
+        if (Util.snapPagerEnabled(context) && !Util.isLegacyCardEnabled(context)) {
+            PagerSnapHelper snapHelper = new PagerSnapHelper();
+            snapHelper.attachToRecyclerView(recyclerView);
+        }
     }
 }

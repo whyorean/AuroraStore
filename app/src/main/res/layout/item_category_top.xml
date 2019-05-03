@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="110dp"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/margin_xsmall"
+    android:orientation="horizontal">
+
+    <RelativeLayout
+        android:id="@+id/cat_bg"
+        android:layout_width="@dimen/icon_size_big"
+        android:layout_height="@dimen/icon_size_big"
+        android:background="@drawable/teardrop_bg"
+        android:layout_centerHorizontal="true"
+        android:padding="@dimen/margin_small">
+
+        <ImageView
+            android:id="@+id/cat_icon"
+            android:layout_width="@dimen/icon_size_cat"
+            android:layout_height="@dimen/icon_size_cat"
+            android:layout_centerInParent="true"
+            android:contentDescription="@string/content_description_icon"
+            tools:targetApi="p" />
+    </RelativeLayout>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/cat_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/cat_bg"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/margin_xsmall"
+        android:ellipsize="end"
+        android:shadowColor="@color/colorGreyDark"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:singleLine="true"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.Aurora.DialogSubTitle"
+        android:textSize="12sp" />
+
+</RelativeLayout>

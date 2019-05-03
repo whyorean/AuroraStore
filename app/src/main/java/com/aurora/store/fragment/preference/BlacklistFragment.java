@@ -26,9 +26,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.ViewSwitcher;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -40,11 +38,10 @@ import com.aurora.store.R;
 import com.aurora.store.adapter.BlacklistAdapter;
 import com.aurora.store.fragment.BaseFragment;
 import com.aurora.store.model.App;
-import com.aurora.store.task.InstalledApps;
+import com.aurora.store.task.InstalledAppsTask;
 import com.aurora.store.utility.Log;
 import com.aurora.store.utility.ViewUtil;
 import com.aurora.store.view.CustomSwipeToRefresh;
-import com.aurora.store.view.ErrorView;
 
 import java.util.List;
 
@@ -55,14 +52,8 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
 
-public class BlacklistFragment extends BaseFragment implements BlacklistAdapter.ItemClickListener, BaseFragment.EventListenerImpl {
+public class BlacklistFragment extends BaseFragment implements BlacklistAdapter.ItemClickListener {
 
-    @BindView(R.id.view_switcher)
-    ViewSwitcher mViewSwitcher;
-    @BindView(R.id.content_view)
-    LinearLayout layoutContent;
-    @BindView(R.id.err_view)
-    LinearLayout layoutError;
     @BindView(R.id.swipe_layout)
     CustomSwipeToRefresh customSwipeToRefresh;
     @BindView(R.id.recycler)
@@ -93,7 +84,7 @@ public class BlacklistFragment extends BaseFragment implements BlacklistAdapter.
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         setErrorView(ErrorType.UNKNOWN);
-        loadAllApps();
+        fetchData();
         setupClearAll();
     }
 
@@ -114,9 +105,11 @@ public class BlacklistFragment extends BaseFragment implements BlacklistAdapter.
         }
     }
 
-    private void loadAllApps() {
-        InstalledApps mTaskHelper = new InstalledApps(context);
-        disposable.add(Observable.fromCallable(() -> mTaskHelper.getInstalledApps(false))
+    @Override
+    protected void fetchData() {
+        InstalledAppsTask mTaskHelper = new InstalledAppsTask(context);
+        disposable.add(Observable.fromCallable(() -> mTaskHelper
+                .getInstalledApps(false))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnSubscribe(subscription -> customSwipeToRefresh.setRefreshing(true))
@@ -143,24 +136,13 @@ public class BlacklistFragment extends BaseFragment implements BlacklistAdapter.
         updateCount();
     }
 
-    private void setErrorView(ErrorType errorType) {
-        layoutError.removeAllViews();
-        layoutError.addView(new ErrorView(context, errorType, retry()));
-    }
-
-    private View.OnClickListener retry() {
+    @Override
+    protected View.OnClickListener errRetry() {
         return v -> {
-            loadAllApps();
+            fetchData();
             ((Button) v).setText(getString(R.string.action_retry_ing));
             ((Button) v).setEnabled(false);
         };
-    }
-
-    private void switchViews(boolean showError) {
-        if (mViewSwitcher.getCurrentView() == layoutContent && showError)
-            mViewSwitcher.showNext();
-        else if (mViewSwitcher.getCurrentView() == layoutError && !showError)
-            mViewSwitcher.showPrevious();
     }
 
     private void setupClearAll() {
@@ -188,7 +170,12 @@ public class BlacklistFragment extends BaseFragment implements BlacklistAdapter.
 
     @Override
     public void notifyLoggedIn() {
-        loadAllApps();
+        fetchData();
+    }
+
+    @Override
+    public void notifyLoggedOut() {
+
     }
 
     @Override

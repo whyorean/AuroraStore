@@ -23,14 +23,14 @@ package com.aurora.store.activity;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.viewpager2.widget.ViewPager2;
 
 import com.aurora.store.R;
-import com.aurora.store.adapter.ViewPager2Adapter;
+import com.aurora.store.adapter.ViewPagerAdapter;
 import com.aurora.store.fragment.AccountsFragment;
 import com.aurora.store.fragment.intro.PermissionFragment;
 import com.aurora.store.fragment.intro.WelcomeFragment;
 import com.aurora.store.utility.ThemeUtil;
+import com.aurora.store.view.CustomViewPager;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -38,15 +38,15 @@ import butterknife.ButterKnife;
 public class IntroActivity extends AppCompatActivity {
 
     @BindView(R.id.viewpager)
-    ViewPager2 viewPager2;
+    CustomViewPager viewPager;
 
 
-    private ThemeUtil mThemeUtil = new ThemeUtil();
+    private ThemeUtil themeUtil = new ThemeUtil();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mThemeUtil.onCreate(this);
+        themeUtil.onCreate(this);
         setContentView(R.layout.activity_intro);
         ButterKnife.bind(this);
         init();
@@ -55,19 +55,19 @@ public class IntroActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        mThemeUtil.onResume(this);
+        themeUtil.onResume(this);
     }
 
     private void init() {
-        ViewPager2Adapter mViewPagerAdapter = new ViewPager2Adapter(getSupportFragmentManager(), getLifecycle());
-        mViewPagerAdapter.addFragment(new WelcomeFragment());
-        mViewPagerAdapter.addFragment(new PermissionFragment());
-        mViewPagerAdapter.addFragment(new AccountsFragment());
-        viewPager2.setAdapter(mViewPagerAdapter);
-        viewPager2.setUserInputEnabled(false);
+        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
+        viewPagerAdapter.addFragment(0, new WelcomeFragment());
+        viewPagerAdapter.addFragment(1, new PermissionFragment());
+        viewPagerAdapter.addFragment(2, new AccountsFragment());
+        viewPager.setAdapter(viewPagerAdapter);
+        viewPager.setScroll(false);
     }
 
     public void moveForward() {
-        viewPager2.setCurrentItem(viewPager2.getCurrentItem() + 1);
+        viewPager.setCurrentItem(viewPager.getCurrentItem() + 1);
     }
 }

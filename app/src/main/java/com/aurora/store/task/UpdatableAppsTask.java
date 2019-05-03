@@ -21,56 +21,50 @@
 package com.aurora.store.task;
 
 import android.content.Context;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.text.TextUtils;
 
-import com.aurora.store.utility.Accountant;
 import com.aurora.store.manager.BlacklistManager;
 import com.aurora.store.model.App;
 import com.aurora.store.model.AppBuilder;
-import com.aurora.store.utility.PrefUtil;
+import com.aurora.store.utility.Accountant;
+import com.aurora.store.utility.PackageUtil;
 import com.dragons.aurora.playstoreapiv2.BulkDetailsEntry;
-import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
-public class UpdatableApps extends AllApps {
+public class UpdatableAppsTask extends AllAppsTask {
 
-    public UpdatableApps(Context context) {
+    public UpdatableAppsTask(Context context) {
         super(context);
     }
 
     public List<App> getUpdatableApps() throws IOException {
-        List<App> updatableApps = new ArrayList<>();
-        api = getApi();
-        api.toc();
-        updatableApps.clear();
-        Map<String, App> installedApps = getInstalledApps(context);
-        for (App appFromMarket : getAppsFromPlayStore(api, filterBlacklistedApps(installedApps).keySet())) {
-            String packageName = appFromMarket.getPackageName();
-            if (TextUtils.isEmpty(packageName) || !installedApps.containsKey(packageName)) {
+        List<App> appList = new ArrayList<>();
+        List<String> packageList = getInstalledApps();
+        packageList = filterBlacklistedApps(packageList);
+        for (App app : getAppsFromPlayStore(packageList)) {
+            final String packageName = app.getPackageName();
+            if (TextUtils.isEmpty(packageName) || !packageList.contains(packageName)) {
                 continue;
             }
-            App installedApp = installedApps.get(packageName);
-            appFromMarket = addInstalledAppInfo(appFromMarket, installedApp);
-            if (installedApp != null && installedApp.getVersionCode() < appFromMarket.getVersionCode()) {
-                updatableApps.add(appFromMarket);
+            App installedApp = getInstalledApp(packageName);
+            app = addInstalledAppInfo(app, installedApp);
+
+            if (installedApp != null && installedApp.getVersionCode() < app.getVersionCode()) {
+                appList.add(app);
             }
         }
-        return updatableApps;
+        return appList;
     }
 
-    public List<App> getAppsFromPlayStore(GooglePlayAPI api, Collection<String> packageNames) throws IOException {
+    public List<App> getAppsFromPlayStore(List<String> packageNames) throws IOException {
         List<App> appsFromPlayStore = new ArrayList<>();
-        boolean builtInAccount = PrefUtil.getBoolean(context, Accountant.DUMMY_ACCOUNT);
-        for (App app : getRemoteAppList(api, new ArrayList<>(packageNames))) {
+        boolean builtInAccount = Accountant.isDummy(context);
+        for (App app : getRemoteAppList(packageNames)) {
             if (!builtInAccount || app.isFree()) {
                 appsFromPlayStore.add(app);
             }
@@ -78,15 +72,14 @@ public class UpdatableApps extends AllApps {
         return appsFromPlayStore;
     }
 
-    private List<App> getRemoteAppList(GooglePlayAPI api, List<String> packageNames) throws IOException {
+    private List<App> getRemoteAppList(List<String> packageNames) throws IOException {
         List<App> apps = new ArrayList<>();
-        for (BulkDetailsEntry details : api.bulkDetails(packageNames).getEntryList()) {
+        for (BulkDetailsEntry details : getApi().bulkDetails(packageNames).getEntryList()) {
             if (!details.hasDoc()) {
                 continue;
             }
             apps.add(AppBuilder.build(details.getDoc()));
         }
-        Collections.sort(apps);
         return apps;
     }
 
@@ -101,15 +94,17 @@ public class UpdatableApps extends AllApps {
         return appFromMarket;
     }
 
-    private Map<String, App> filterBlacklistedApps(Map<String, App> apps) {
-        Set<String> packageNames = new HashSet<>(apps.keySet());
-        packageNames.removeAll(new BlacklistManager(context).get());
-        Map<String, App> result = new HashMap<>();
-        for (App app : apps.values()) {
-            if (packageNames.contains(app.getPackageName())) {
-                result.put(app.getPackageName(), app);
-            }
+    public App getInstalledApp(String packageName) {
+        try {
+            PackageInfo packageInfo = getPackageManager().getPackageInfo(packageName, 0);
+            return PackageUtil.getInstalledApp(getPackageManager(), packageInfo.packageName);
+        } catch (PackageManager.NameNotFoundException e) {
+            return null;
         }
-        return result;
+    }
+
+    public List<String> filterBlacklistedApps(List<String> packageList) {
+        packageList.removeAll(new BlacklistManager(context).get());
+        return packageList;
     }
 }

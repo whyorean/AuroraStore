@@ -109,7 +109,7 @@ public class SearchHistoryAdapter extends RecyclerView.Adapter<SearchHistoryAdap
             searchAppsFragment.setArguments(arguments);
             fragment.getChildFragmentManager()
                     .beginTransaction()
-                    .replace(R.id.container, searchAppsFragment)
+                    .replace(R.id.coordinator, searchAppsFragment)
                     .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                     .addToBackStack(null)
                     .commit();

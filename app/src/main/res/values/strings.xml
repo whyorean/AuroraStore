@@ -45,6 +45,7 @@
 
     <string name="action_about">About</string>
     <string name="action_accounts">Accounts</string>
+    <string name="action_apps">Apps</string>
     <string name="action_ask">Ask</string>
     <string name="action_blacklist">Blacklist</string>
     <string name="action_cancel">Cancel</string>
@@ -76,6 +77,7 @@
     <string name="action_installed">Installed</string>
     <string name="action_later">Later</string>
     <string name="action_logging_in">Logging in</string>
+    <string name="action_logging_in_success">Successfully logged in</string>
     <string name="action_login">Login</string>
     <string name="action_logout">Log out</string>
     <string name="action_make_normal">Convert to normal app</string>
@@ -114,12 +116,9 @@
     <string name="category_topGrossing">Top grossing</string>
     <string name="category_trending">Trending</string>
 
-    <string name="chip_all_apps">All categories</string>
-    <string name="chip_all_family">All family</string>
-    <string name="chip_all_games">All games</string>
-    <string name="chip_top_free">Top free</string>
-    <string name="chip_top_grossing">Top grossing</string>
-    <string name="chip_top_trending">Trending</string>
+    <string name="cat_top_apps">Top Apps</string>
+    <string name="cat_top_categories">Top Categories</string>
+    <string name="cat_top_games">Top Games</string>
 
     <string name="delete">Delete</string>
     <string name="desc_perm">Aurora Store uses following permissions</string>
@@ -167,6 +166,7 @@
     <string name="error_app_not_found">App not found</string>
     <string name="error_incorrect_password">Incorrect email or password</string>
     <string name="error_invalid_device_definition">Device definition rejected</string>
+    <string name="error_logged_out">You were logged out</string>
     <string name="error_network_other">"Network error"</string>
     <string name="error_no_network">No network connection</string>
     <string name="error_search_not_found">No matching app found</string>

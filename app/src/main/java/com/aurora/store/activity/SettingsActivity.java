@@ -44,14 +44,14 @@ public class SettingsActivity extends AppCompatActivity implements
     public static boolean shouldRestart = false;
 
     @BindView(R.id.toolbar)
-    Toolbar mToolbar;
+    Toolbar toolbar;
 
-    private ThemeUtil mThemeUtil = new ThemeUtil();
+    private ThemeUtil themeUtil = new ThemeUtil();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mThemeUtil.onCreate(this);
+        themeUtil.onCreate(this);
         setContentView(R.layout.activity_settings);
         ButterKnife.bind(this);
         setupActionBar();
@@ -82,7 +82,7 @@ public class SettingsActivity extends AppCompatActivity implements
     @Override
     protected void onResume() {
         super.onResume();
-        mThemeUtil.onResume(this);
+        themeUtil.onResume(this);
     }
 
     @Override
@@ -110,7 +110,7 @@ public class SettingsActivity extends AppCompatActivity implements
     }
 
     private void setupActionBar() {
-        setSupportActionBar(mToolbar);
+        setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setElevation(0f);

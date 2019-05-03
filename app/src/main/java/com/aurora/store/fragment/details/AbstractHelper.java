@@ -78,7 +78,7 @@ public abstract class AbstractHelper {
         devAppsFragment.setArguments(arguments);
         fragment.getChildFragmentManager()
                 .beginTransaction()
-                .replace(R.id.container, devAppsFragment)
+                .replace(R.id.coordinator, devAppsFragment)
                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                 .addToBackStack(null)
                 .commit();

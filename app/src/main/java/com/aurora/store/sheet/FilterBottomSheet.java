@@ -147,7 +147,7 @@ public class FilterBottomSheet extends CustomBottomSheetDialogFragment {
     }
 
     private void applyStyles(Chip chip, int color) {
-        chip.setChipIconSize(64);
+        chip.setChipIconSize(48);
         chip.setChipIcon(context.getDrawable(R.drawable.circle_bg));
         chip.setChipIconTint(ColorStateList.valueOf(color));
         chip.setChipIconVisible(true);

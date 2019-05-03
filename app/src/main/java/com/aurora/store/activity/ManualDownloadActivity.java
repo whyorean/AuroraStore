@@ -41,8 +41,10 @@ import com.aurora.store.manager.CategoryManager;
 import com.aurora.store.model.App;
 import com.aurora.store.model.ImageSource;
 import com.aurora.store.utility.Log;
+import com.aurora.store.utility.TextUtil;
 import com.aurora.store.utility.ThemeUtil;
 import com.aurora.store.utility.Util;
+import com.aurora.store.utility.ViewUtil;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.Priority;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -67,24 +69,24 @@ public class ManualDownloadActivity extends AppCompatActivity {
     @BindView(R.id.edit_text)
     TextInputEditText mEditText;
 
-    private ThemeUtil mThemeUtil = new ThemeUtil();
-    private ActionBar mActionBar;
-    private ActionButton mActionButton;
+    private ThemeUtil themeUtil = new ThemeUtil();
+    private ActionBar actionBar;
+    private ActionButton actionButton;
     private App app;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mThemeUtil.onCreate(this);
+        themeUtil.onCreate(this);
         setContentView(R.layout.activity_manual);
         ButterKnife.bind(this);
 
         setSupportActionBar(mToolbar);
 
-        mActionBar = getSupportActionBar();
-        if (mActionBar != null) {
-            mActionBar.setTitle(getString(R.string.action_manual));
-            mActionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setTitle(getString(R.string.action_manual));
+            actionBar.setDisplayHomeAsUpEnabled(true);
         }
 
         app = DetailsFragment.app;
@@ -104,9 +106,9 @@ public class ManualDownloadActivity extends AppCompatActivity {
     @Override
     public void onResume() {
         super.onResume();
-        mThemeUtil.onResume(this);
-        if (mActionButton != null)
-            mActionButton.draw();
+        themeUtil.onResume(this);
+        if (actionButton != null)
+            actionButton.draw();
     }
 
     private void drawAppBadge() {
@@ -144,6 +146,11 @@ public class ManualDownloadActivity extends AppCompatActivity {
 
     private void drawGeneralDetails() {
         setText(R.id.category, new CategoryManager(this).getCategoryName(app.getCategoryId()));
+        final String category = new CategoryManager(this).getCategoryName(app.getCategoryId());
+        if (TextUtil.isEmpty(category))
+            ViewUtil.hideWithAnimation(findViewById(R.id.category));
+        else
+            setText(R.id.category, new CategoryManager(this).getCategoryName(app.getCategoryId()));
         if (app.getPrice() != null && app.getPrice().isEmpty())
             setText(R.id.price, R.string.category_appFree);
         else
@@ -152,16 +159,16 @@ public class ManualDownloadActivity extends AppCompatActivity {
         setText(R.id.txt_rating, app.getLabeledRating());
         setText(R.id.txt_installs, Util.addDiPrefix(app.getInstalls()));
         setText(R.id.txt_size, Formatter.formatShortFileSize(this, app.getSize()));
-        setText(R.id.txt_updated,app.getUpdated());
-        setText(R.id.txt_google_dependencies,app.getDependencies().isEmpty()
+        setText(R.id.txt_updated, app.getUpdated());
+        setText(R.id.txt_google_dependencies, app.getDependencies().isEmpty()
                 ? R.string.list_app_independent_from_gsf
                 : R.string.list_app_depends_on_gsf);
     }
 
     private void drawEditText() {
         mInputLayout.setHint(String.valueOf(app.getVersionCode()));
-        mActionButton = new ActionButton(this, app);
-        mActionButton.draw();
+        actionButton = new ActionButton(this, app);
+        actionButton.draw();
         mEditText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -172,7 +179,7 @@ public class ManualDownloadActivity extends AppCompatActivity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 try {
                     app.setVersionCode(Integer.parseInt(s.toString()));
-                    mActionButton.setApp(app);
+                    actionButton.setApp(app);
                 } catch (NumberFormatException e) {
                     Log.w("%s is not a number", s.toString());
                 }

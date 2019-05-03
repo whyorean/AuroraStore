@@ -32,7 +32,7 @@
         <item name="android:fontFamily">sans-serif</item>
         <item name="android:textColor">?android:attr/textColorPrimary</item>
         <item name="android:textStyle">normal</item>
-        <item name="android:textSize">20sp</item>
+        <item name="android:textSize">18sp</item>
     </style>
 
     <style name="TextAppearance.Aurora.SubTitle" parent="TextAppearance.Aurora.Title">

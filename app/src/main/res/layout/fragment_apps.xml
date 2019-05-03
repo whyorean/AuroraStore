@@ -20,35 +20,31 @@
 
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".activity.DownloadsActivity">
+    android:layout_height="match_parent">
 
-    <include layout="@layout/toolbar_main" />
-
-    <FrameLayout
-        android:id="@+id/container"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        android:orientation="vertical">
 
-        <View
-            android:id="@+id/gradient_view"
-            android:layout_width="match_parent"
-            android:layout_height="32dp"
-            android:background="@drawable/gradient_bg"
-            android:translationZ="10dp" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/category_recycler"
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="-32dp"
-            android:clipToPadding="false"
-            android:nestedScrollingEnabled="false"
-            android:paddingTop="24dp"
-            android:scrollbars="none"
-            tools:listitem="@layout/item_category" />
-    </FrameLayout>
+            android:background="?android:attr/colorBackground"
+            android:minHeight="56dp"
+            app:tabGravity="fill"
+            app:tabIconTint="@color/color_selector"
+            app:tabIndicator="@drawable/tab_indicator"
+            app:tabIndicatorColor="?android:attr/colorAccent"
+            app:tabIndicatorHeight="2dp"
+            app:tabMode="fixed"
+            app:tabTextColor="@color/color_selector" />
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/tabPager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

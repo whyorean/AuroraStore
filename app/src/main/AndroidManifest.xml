@@ -103,11 +103,9 @@
         <activity
             android:name=".activity.SettingsActivity"
             android:theme="@style/AppTheme" />
-        <activity android:name=".activity.CategoriesActivity" />
         <activity android:name=".activity.IntroActivity" />
         <activity android:name=".activity.ManualDownloadActivity" />
         <activity android:name=".activity.DeviceInfoActivity" />
-        <activity android:name=".activity.LeaderBoardActivity" />
 
         <provider
             android:name=".provider.AuroraSuggestionProvider"

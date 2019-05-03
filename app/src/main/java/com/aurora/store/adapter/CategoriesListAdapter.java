@@ -29,17 +29,18 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.aurora.store.R;
 import com.aurora.store.SharedPreferencesTranslator;
-import com.aurora.store.activity.CategoriesActivity;
 import com.aurora.store.fragment.CategoryAppsFragment;
-import com.aurora.store.utility.Log;
 import com.aurora.store.utility.Util;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 import butterknife.BindView;
@@ -48,8 +49,8 @@ import butterknife.ButterKnife;
 public class CategoriesListAdapter extends RecyclerView.Adapter<CategoriesListAdapter.ViewHolder> {
 
     private Context context;
-    private CategoriesActivity activity;
-    private Map<String, String> categories;
+    private Fragment fragment;
+    private Map<String, String> categories = new HashMap<>();
 
     private Integer[] categoriesImg = {
             R.drawable.ic_android_wear,
@@ -91,18 +92,27 @@ public class CategoriesListAdapter extends RecyclerView.Adapter<CategoriesListAd
 
     private SharedPreferencesTranslator translator;
 
-    public CategoriesListAdapter(CategoriesActivity activity, Map<String, String> categories) {
-        this.activity = activity;
-        this.categories = categories;
-        this.context = activity.getApplicationContext();
+    public CategoriesListAdapter(Fragment fragment) {
+        this.fragment = fragment;
+        this.context = fragment.getContext();
         translator = new SharedPreferencesTranslator(Util.getPrefs(context));
+    }
+
+    public void addData(Map<String, String> categories) {
+        this.categories.clear();
+        this.categories = categories;
+        notifyDataSetChanged();
+    }
+
+    public boolean isDataEmpty() {
+        return categories.isEmpty();
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_category, parent, false);
+                .inflate(R.layout.item_category_list, parent, false);
         return new ViewHolder(view);
     }
 
@@ -116,12 +126,14 @@ public class CategoriesListAdapter extends RecyclerView.Adapter<CategoriesListAd
             arguments.putString("CategoryId", new ArrayList<>(categories.keySet()).get(position));
             arguments.putString("CategoryName", translator.getString(new ArrayList<>(categories.keySet()).get(position)));
             categoryAppsFragment.setArguments(arguments);
-            activity.getSupportFragmentManager()
-                    .beginTransaction()
-                    .replace(R.id.container, categoryAppsFragment)
-                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                    .addToBackStack(null)
-                    .commit();
+            FragmentManager fragmentManager = fragment.getFragmentManager();
+            if (fragmentManager != null)
+                fragmentManager
+                        .beginTransaction()
+                        .replace(R.id.coordinator, categoryAppsFragment)
+                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                        .addToBackStack(null)
+                        .commit();
         });
     }
 

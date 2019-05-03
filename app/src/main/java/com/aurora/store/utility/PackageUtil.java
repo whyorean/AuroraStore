@@ -22,10 +22,10 @@ package com.aurora.store.utility;
 
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 
 import com.aurora.store.model.App;
 
@@ -75,6 +75,15 @@ public class PackageUtil {
             return app;
         } catch (PackageManager.NameNotFoundException e) {
             return null;
+        }
+    }
+
+    public static boolean isSystemApp(PackageManager packageManager, String packageName) {
+        try {
+            PackageInfo packageInfo = packageManager.getPackageInfo(packageName, 0);
+            return (packageInfo.applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0;
+        } catch (PackageManager.NameNotFoundException e) {
+            return false;
         }
     }
 

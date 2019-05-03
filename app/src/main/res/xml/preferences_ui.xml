@@ -37,13 +37,13 @@
         app:useSimpleSummaryProvider="true" />
 
     <SwitchPreferenceCompat
-        app:defaultValue="true"
+        app:defaultValue="false"
         app:key="PREFERENCE_UI_CARD_STYLE"
         app:summary="@string/pref_ui_card_summary"
         app:title="@string/pref_ui_card_title" />
 
     <SwitchPreferenceCompat
-        app:defaultValue="true"
+        app:defaultValue="false"
         app:key="PREFERENCE_FEATURED_SNAP"
         app:summary="@string/pref_ui_snap_summary"
         app:title="@string/pref_ui_snap_title" />

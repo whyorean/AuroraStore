@@ -27,26 +27,28 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import androidx.annotation.ColorInt;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.core.graphics.ColorUtils;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.viewpager2.widget.ViewPager2;
 
 import com.aurora.store.Constants;
 import com.aurora.store.R;
-import com.aurora.store.adapter.ViewPager2Adapter;
+import com.aurora.store.adapter.ViewPagerAdapter;
+import com.aurora.store.fragment.AppsFragment;
 import com.aurora.store.fragment.HomeFragment;
-import com.aurora.store.fragment.InstalledFragment;
 import com.aurora.store.fragment.SearchFragment;
-import com.aurora.store.fragment.UpdatesFragment;
 import com.aurora.store.utility.Accountant;
 import com.aurora.store.utility.PrefUtil;
 import com.aurora.store.utility.ThemeUtil;
 import com.aurora.store.utility.Util;
+import com.aurora.store.utility.ViewUtil;
+import com.aurora.store.view.CustomViewPager;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import butterknife.BindView;
@@ -59,15 +61,14 @@ public class AuroraActivity extends AppCompatActivity {
     @BindView(R.id.toolbar)
     Toolbar toolbar;
     @BindView(R.id.viewpager)
-    ViewPager2 viewPager2;
+    CustomViewPager viewPager;
     @BindView(R.id.bottom_navigation)
     BottomNavigationView bottomNavigationView;
 
     private ActionBar actionBar;
-    private ViewPager2Adapter pager2Adapter;
+    private ViewPagerAdapter pagerAdapter;
     private ThemeUtil themeUtil = new ThemeUtil();
     private CompositeDisposable disposable = new CompositeDisposable();
-    private int fragmentPos = 0;
     private int fragmentCur = 0;
     private boolean isSearchIntent = false;
 
@@ -109,7 +110,7 @@ public class AuroraActivity extends AppCompatActivity {
         if (mBundle != null)
             fragmentCur = mBundle.getInt(Constants.INTENT_FRAGMENT_POSITION);
         if (intent.getScheme() != null && intent.getScheme().equals("market")) {
-            fragmentCur = 3;
+            fragmentCur = 2;
             isSearchIntent = true;
         } else
             fragmentCur = Util.getDefaultTab(this);
@@ -117,11 +118,11 @@ public class AuroraActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Fragment mFragment = pager2Adapter.getItem(viewPager2.getCurrentItem());
-        if (mFragment instanceof SearchFragment) {
-            FragmentManager fm = mFragment.getChildFragmentManager();
-            if (!fm.getFragments().isEmpty())
-                fm.popBackStack();
+        Fragment fragment = pagerAdapter.getItem(viewPager.getCurrentItem());
+        if (fragment instanceof SearchFragment || fragment instanceof HomeFragment) {
+            FragmentManager fragmentManager = fragment.getChildFragmentManager();
+            if (!fragmentManager.getFragments().isEmpty())
+                fragmentManager.popBackStack();
             else
                 super.onBackPressed();
         } else
@@ -129,9 +130,8 @@ public class AuroraActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        disposable.clear();
+    public boolean onSupportNavigateUp() {
+        return super.onSupportNavigateUp();
     }
 
     @Override
@@ -164,13 +164,8 @@ public class AuroraActivity extends AppCompatActivity {
         super.onResume();
         themeUtil.onResume(this);
         Util.toggleSoftInput(this, false);
-        if (pager2Adapter == null)
+        if (pagerAdapter == null)
             init();
-    }
-
-    @Override
-    public boolean onSupportNavigateUp() {
-        return super.onSupportNavigateUp();
     }
 
     @Override
@@ -178,6 +173,13 @@ public class AuroraActivity extends AppCompatActivity {
         super.onUserLeaveHint();
         Util.toggleSoftInput(this, false);
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        disposable.clear();
+    }
+
 
     private void setupActionbar() {
         setSupportActionBar(toolbar);
@@ -190,31 +192,29 @@ public class AuroraActivity extends AppCompatActivity {
     }
 
     private void setupViewPager() {
-        pager2Adapter = new ViewPager2Adapter(getSupportFragmentManager(), getLifecycle());
-        pager2Adapter.addFragment(new HomeFragment());
-        pager2Adapter.addFragment(new InstalledFragment());
-        pager2Adapter.addFragment(new UpdatesFragment());
-        pager2Adapter.addFragment(new SearchFragment());
-        viewPager2.setAdapter(pager2Adapter);
-        viewPager2.setUserInputEnabled(false);
-        viewPager2.setCurrentItem(fragmentCur, false);
+        pagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
+        pagerAdapter.addFragment(0, new HomeFragment());
+        pagerAdapter.addFragment(1, new AppsFragment());
+        pagerAdapter.addFragment(2, new SearchFragment());
+        viewPager.setAdapter(pagerAdapter);
+        viewPager.setScroll(false);
+        viewPager.setCurrentItem(fragmentCur, false);
     }
 
     private void setupBottomNavigation() {
+        @ColorInt
+        int backGroundColor = ViewUtil.getStyledAttribute(this, android.R.attr.colorBackground);
+        bottomNavigationView.setBackgroundColor(ColorUtils.setAlphaComponent(backGroundColor, 245));
         bottomNavigationView.setOnNavigationItemSelectedListener(menuItem -> {
-            viewPager2.setCurrentItem(menuItem.getOrder(), false);
+            viewPager.setCurrentItem(menuItem.getOrder(), false);
             switch (menuItem.getItemId()) {
                 case R.id.action_home:
                     Util.toggleSoftInput(this, false);
                     actionBar.setTitle(getString(R.string.title_home));
                     break;
-                case R.id.action_installed:
+                case R.id.action_apps:
                     Util.toggleSoftInput(this, false);
                     actionBar.setTitle(getString(R.string.title_installed));
-                    break;
-                case R.id.action_updates:
-                    Util.toggleSoftInput(this, false);
-                    actionBar.setTitle(getString(R.string.title_updates));
                     break;
                 case R.id.action_search:
                     Util.toggleSoftInput(this, true);

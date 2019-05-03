@@ -27,8 +27,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.ViewSwitcher;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -43,7 +41,6 @@ import com.aurora.store.model.App;
 import com.aurora.store.task.SearchTask;
 import com.aurora.store.utility.Log;
 import com.aurora.store.utility.NetworkUtil;
-import com.aurora.store.view.ErrorView;
 import com.bumptech.glide.Glide;
 import com.google.android.material.chip.Chip;
 
@@ -58,14 +55,8 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
 
-public class DevAppsFragment extends BaseFragment implements BaseFragment.EventListenerImpl {
+public class DevAppsFragment extends BaseFragment {
 
-    @BindView(R.id.view_switcher)
-    ViewSwitcher mViewSwitcher;
-    @BindView(R.id.content_view)
-    LinearLayout layoutContent;
-    @BindView(R.id.err_view)
-    LinearLayout layoutError;
     @BindView(R.id.search_apps_list)
     RecyclerView recyclerView;
     @BindView(R.id.dev_name)
@@ -73,7 +64,6 @@ public class DevAppsFragment extends BaseFragment implements BaseFragment.EventL
 
     private Context context;
     private View view;
-    private CompositeDisposable mDisposable = new CompositeDisposable();
     private EndlessAppsAdapter endlessAppsAdapter;
     private SearchTask mSearchTask;
 
@@ -118,12 +108,17 @@ public class DevAppsFragment extends BaseFragment implements BaseFragment.EventL
     @Override
     public void onDestroy() {
         Glide.with(this).pauseAllRequests();
-        mDisposable.dispose();
+        disposable.dispose();
         super.onDestroy();
     }
 
+    @Override
+    protected void fetchData() {
+        fetchDevAppsList(true);
+    }
+
     private void fetchDevAppsList(boolean shouldIterate) {
-        mDisposable.add(Observable.fromCallable(() -> mSearchTask.getSearchResults(iterator))
+        disposable.add(Observable.fromCallable(() -> mSearchTask.getSearchResults(iterator))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(appList -> {
@@ -176,19 +171,8 @@ public class DevAppsFragment extends BaseFragment implements BaseFragment.EventL
         recyclerView.addOnScrollListener(mScrollListener);
     }
 
-    private void switchViews(boolean showError) {
-        if (mViewSwitcher.getCurrentView() == layoutContent && showError)
-            mViewSwitcher.showNext();
-        else if (mViewSwitcher.getCurrentView() == layoutError && !showError)
-            mViewSwitcher.showPrevious();
-    }
-
-    private void setErrorView(ErrorType errorType) {
-        layoutError.removeAllViews();
-        layoutError.addView(new ErrorView(context, errorType, retry()));
-    }
-
-    private View.OnClickListener retry() {
+    @Override
+    protected View.OnClickListener errRetry() {
         return v -> {
             if (NetworkUtil.isConnected(context)) {
                 fetchDevAppsList(false);
@@ -198,27 +182,5 @@ public class DevAppsFragment extends BaseFragment implements BaseFragment.EventL
             ((Button) v).setText(getString(R.string.action_retry_ing));
             ((Button) v).setEnabled(false);
         };
-    }
-
-    @Override
-    public void notifyLoggedIn() {
-        fetchDevAppsList(false);
-    }
-
-    @Override
-    public void notifyPermanentFailure() {
-        setErrorView(ErrorType.UNKNOWN);
-        switchViews(true);
-    }
-
-    @Override
-    public void notifyNetworkFailure() {
-        setErrorView(ErrorType.NO_NETWORK);
-        switchViews(true);
-    }
-
-    @Override
-    public void notifyTokenExpired() {
-
     }
 }

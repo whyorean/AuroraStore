@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Aurora Store
   ~ Copyright (C) 2019, Rahul Kumar Patel <whyorean@gmail.com>
   ~
@@ -22,12 +21,8 @@
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="132dp"
-    android:layout_height="176dp"
+    android:layout_height="wrap_content"
     android:layout_margin="@dimen/margin_xsmall"
-    app:cardBackgroundColor="?android:attr/colorBackground"
-    app:cardCornerRadius="5dp"
-    app:cardElevation="2dp"
-    app:cardPreventCornerOverlap="false"
     app:rippleColor="@color/colorScrim">
 
     <RelativeLayout
@@ -36,43 +31,28 @@
 
         <ImageView
             android:id="@+id/app_icon"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="@dimen/icon_size_big"
+            android:layout_height="@dimen/icon_size_big"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/margin_small"
             android:layout_marginBottom="@dimen/margin_xsmall"
+            android:contentDescription="@string/content_description_icon"
             android:padding="@dimen/margin_small" />
 
-        <RelativeLayout
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/app_name"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@id/app_icon">
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/app_name"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_above="@id/app_ratingbar"
-                android:layout_margin="@dimen/margin_xxsmall"
-                android:ellipsize="end"
-                android:maxLines="2"
-                android:textAlignment="center"
-                android:textSize="14sp"
-                app:autoSizeMaxTextSize="16sp"
-                app:autoSizeMinTextSize="12sp"
-                app:autoSizeTextType="uniform" />
-
-            <RatingBar
-                android:id="@+id/app_ratingbar"
-                style="?ratingBarStyleSmall"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginBottom="@dimen/margin_small"
-                android:theme="@style/RatingBar" />
-        </RelativeLayout>
-
+            android:layout_height="wrap_content"
+            android:layout_below="@id/app_icon"
+            android:layout_margin="@dimen/margin_xxsmall"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:minHeight="48dp"
+            android:textAlignment="center"
+            android:textColor="?android:attr/textColorPrimary"
+            android:textSize="14sp"
+            app:autoSizeMaxTextSize="16sp"
+            app:autoSizeMinTextSize="12sp"
+            app:autoSizeTextType="uniform" />
     </RelativeLayout>
-
 </com.google.android.material.card.MaterialCardView>

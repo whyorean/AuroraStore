@@ -56,6 +56,24 @@
         <item name="android:orientation">vertical</item>
     </style>
 
+    <!--CardView-->
+    <style name="Aurora.MaterialComponents.CardView" parent="Widget.MaterialComponents.CardView">
+        <item name="cardElevation">2dp</item>
+        <item name="cardCornerRadius">8dp</item>
+        <item name="cardPreventCornerOverlap">true</item>
+        <item name="rippleColor">@color/colorScrimAccent</item>
+    </style>
+
+    <style name="Aurora.MaterialComponents.CardView.Dark" parent="Aurora.MaterialComponents.CardView">
+        <item name="rippleColor">@color/colorDarkRipple</item>
+        <item name="cardBackgroundColor">@color/colorDarkPrimary</item>
+    </style>
+
+    <style name="Aurora.MaterialComponents.CardView.Black" parent="Aurora.MaterialComponents.CardView">
+        <item name="rippleColor">@color/colorGreyDarker</item>
+        <item name="cardBackgroundColor">@color/colorBlack</item>
+    </style>
+
     <!-- Chips -->
     <style name="Widget.MaterialComponents.Chip.Info" parent="@style/Widget.MaterialComponents.Chip.Action">
         <item name="iconStartPadding">2dp</item>
@@ -70,8 +88,8 @@
     </style>
 
     <style name="Widget.Aurora.FilterChip" parent="Widget.MaterialComponents.Chip.Filter">
-        <item name="checkedIcon">@drawable/ic_chip_checked</item>
         <item name="android:textAppearance">@style/TextAppearance.Aurora.Filter</item>
+        <item name="chipStartPadding">4dp</item>
         <item name="chipEndPadding">8dp</item>
     </style>
 

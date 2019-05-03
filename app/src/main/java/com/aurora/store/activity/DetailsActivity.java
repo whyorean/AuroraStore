@@ -50,11 +50,11 @@ public class DetailsActivity extends AppCompatActivity {
     public static final String INTENT_PACKAGE_NAME = "INTENT_PACKAGE_NAME";
 
     @BindView(R.id.toolbar)
-    Toolbar mToolbar;
+    Toolbar toolbar;
 
     private String packageName;
     private DetailsFragment detailsFragment;
-    private ThemeUtil mThemeUtil = new ThemeUtil();
+    private ThemeUtil themeUtil = new ThemeUtil();
     private FavouriteListManager favouriteListManager;
 
     static public Intent getDetailsIntent(Context context, String packageName) {
@@ -66,7 +66,7 @@ public class DetailsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mThemeUtil.onCreate(this);
+        themeUtil.onCreate(this);
         setContentView(R.layout.activity_details);
         ButterKnife.bind(this);
         setupActionBar();
@@ -125,7 +125,7 @@ public class DetailsActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        mThemeUtil.onResume(this);
+        themeUtil.onResume(this);
     }
 
     @Override
@@ -142,7 +142,7 @@ public class DetailsActivity extends AppCompatActivity {
     }
 
     private void setupActionBar() {
-        setSupportActionBar(mToolbar);
+        setSupportActionBar(toolbar);
         ActionBar mActionBar = getSupportActionBar();
         if (mActionBar != null) {
             mActionBar.setDisplayHomeAsUpEnabled(true);

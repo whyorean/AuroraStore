@@ -40,6 +40,7 @@ import android.view.animation.DecelerateInterpolator;
 import android.view.animation.RotateAnimation;
 import android.widget.TextView;
 
+import androidx.annotation.ColorInt;
 import androidx.annotation.MenuRes;
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.PopupMenu;
@@ -54,6 +55,33 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ViewUtil {
+
+    private static final List<int[]> gradientColors = new ArrayList<>();
+    private static final List<Integer> solidColors = new ArrayList<>();
+    private static int ANIMATION_DURATION_SHORT = 250;
+
+    static {
+        gradientColors.add(new int[]{0xFFFEB692, 0xFFEA5455});
+        gradientColors.add(new int[]{0xFFC9CFFC, 0xFF7367F0});
+        gradientColors.add(new int[]{0xFFFCE38A, 0xFFF38181});
+        gradientColors.add(new int[]{0xFF90F7EC, 0xFF32CCBC});
+        gradientColors.add(new int[]{0xFF81FBB8, 0xFF28C76F});
+        gradientColors.add(new int[]{0xFFFDEB71, 0xFFFF6C00});
+    }
+
+    static {
+        solidColors.add(0xFFFFB900);
+        solidColors.add(0xFF28C76F);
+        solidColors.add(0xFFEE3440);
+        solidColors.add(0xFF7367F0);
+        solidColors.add(0xFF00AEFF);
+        solidColors.add(0xFF32CCBC);
+    }
+
+    @ColorInt
+    public static int getSolidColors(int colorIndex) {
+        return solidColors.get(colorIndex % solidColors.size());
+    }
 
     public static int dpToPx(Context context, int dp) {
         DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
@@ -113,7 +141,7 @@ public class ViewUtil {
         ViewCompat.animate(view)
                 .translationY(view.getHeight())
                 .setInterpolator(new LinearOutSlowInInterpolator())
-                .setDuration(withAnimation ? 300 : 0)
+                .setDuration(withAnimation ? ANIMATION_DURATION_SHORT : 0)
                 .start();
     }
 
@@ -121,7 +149,7 @@ public class ViewUtil {
         ViewCompat.animate(view)
                 .translationY(0)
                 .setInterpolator(new LinearOutSlowInInterpolator())
-                .setDuration(withAnimation ? 300 : 0)
+                .setDuration(withAnimation ? ANIMATION_DURATION_SHORT : 0)
                 .start();
     }
 
@@ -171,7 +199,7 @@ public class ViewUtil {
             v.requestLayout();
         });
         valueAnimator.setInterpolator(new DecelerateInterpolator());
-        valueAnimator.setDuration(300);
+        valueAnimator.setDuration(ANIMATION_DURATION_SHORT);
         valueAnimator.start();
     }
 
@@ -184,7 +212,7 @@ public class ViewUtil {
             v.requestLayout();
         });
         valueAnimator.setInterpolator(new DecelerateInterpolator());
-        valueAnimator.setDuration(300);
+        valueAnimator.setDuration(ANIMATION_DURATION_SHORT);
         valueAnimator.start();
     }
 
@@ -213,5 +241,4 @@ public class ViewUtil {
         }
         return menuEntryList;
     }
-
 }

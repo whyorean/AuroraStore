@@ -26,12 +26,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.ViewSwitcher;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.core.widget.NestedScrollView;
 
 import com.aurora.store.ErrorType;
@@ -49,10 +46,8 @@ import com.aurora.store.fragment.details.Video;
 import com.aurora.store.model.App;
 import com.aurora.store.receiver.DetailsInstallReceiver;
 import com.aurora.store.task.DetailsApp;
-import com.aurora.store.utility.ContextUtil;
 import com.aurora.store.utility.Log;
 import com.aurora.store.utility.PackageUtil;
-import com.aurora.store.view.ErrorView;
 
 import java.util.concurrent.TimeUnit;
 
@@ -62,18 +57,10 @@ import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
-public class DetailsFragment extends BaseFragment implements BaseFragment.EventListenerImpl {
+public class DetailsFragment extends BaseFragment {
 
     public static App app;
 
-    @BindView(R.id.view_switcher)
-    ViewSwitcher mViewSwitcher;
-    @BindView(R.id.content_view)
-    LinearLayout layoutContent;
-    @BindView(R.id.err_view)
-    LinearLayout layoutError;
-    @BindView(R.id.container)
-    CoordinatorLayout coordinatorLayout;
     @BindView(R.id.scroll_view)
     NestedScrollView mScrollView;
 
@@ -97,7 +84,7 @@ public class DetailsFragment extends BaseFragment implements BaseFragment.EventL
         Bundle arguments = getArguments();
         if (arguments != null) {
             packageName = arguments.getString("PackageName");
-            fetchDetails();
+            fetchData();
         }
         return view;
     }
@@ -129,7 +116,8 @@ public class DetailsFragment extends BaseFragment implements BaseFragment.EventL
         }
     }
 
-    private void fetchDetails() {
+    @Override
+    protected void fetchData() {
         mTaskHelper = new DetailsApp(getContext());
         disposable.add(Observable.fromCallable(() -> mTaskHelper.getInfo(packageName))
                 .subscribeOn(Schedulers.io())
@@ -168,31 +156,21 @@ public class DetailsFragment extends BaseFragment implements BaseFragment.EventL
         mActionButton.draw();
     }
 
-    private void setErrorView(ErrorType errorType) {
-        layoutError.removeAllViews();
-        layoutError.addView(new ErrorView(context, errorType, errorType == ErrorType.NO_NETWORK ? retry() : close()));
-    }
-
-    private View.OnClickListener retry() {
+    @Override
+    protected View.OnClickListener errRetry() {
         return v -> {
-            fetchDetails();
+            fetchData();
             ((Button) v).setText(getString(R.string.action_retry_ing));
             ((Button) v).setEnabled(false);
         };
     }
 
-    private View.OnClickListener close() {
+    @Override
+    protected View.OnClickListener errClose() {
         return v -> {
             if (getActivity() != null)
                 getActivity().onBackPressed();
         };
-    }
-
-    private void switchViews(boolean showError) {
-        if (mViewSwitcher.getCurrentView() == layoutContent && showError)
-            mViewSwitcher.showNext();
-        else if (mViewSwitcher.getCurrentView() == layoutError && !showError)
-            mViewSwitcher.showPrevious();
     }
 
     @Override
@@ -203,26 +181,5 @@ public class DetailsFragment extends BaseFragment implements BaseFragment.EventL
             switchViews(true);
         } else
             super.processException(e);
-    }
-
-    @Override
-    public void notifyLoggedIn() {
-        ContextUtil.runOnUiThread(() -> fetchDetails());
-    }
-
-    @Override
-    public void notifyPermanentFailure() {
-
-    }
-
-    @Override
-    public void notifyNetworkFailure() {
-        setErrorView(ErrorType.NO_NETWORK);
-        switchViews(true);
-    }
-
-    @Override
-    public void notifyTokenExpired() {
-        notifyExpiredToken(coordinatorLayout, null, context.getString(R.string.action_token_expired));
     }
 }

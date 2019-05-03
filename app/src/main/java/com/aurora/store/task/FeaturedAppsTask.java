@@ -32,9 +32,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FeaturedApps extends BaseTask {
+public class FeaturedAppsTask extends BaseTask {
 
-    public FeaturedApps(Context context) {
+    public FeaturedAppsTask(Context context) {
         super(context);
     }
 

@@ -46,9 +46,9 @@ public class AccountsActivity extends AppCompatActivity {
     private static final String URL_DISCLAIMER = "https://gitlab.com/AuroraOSS/AuroraStore/raw/master/DISCLAIMER";
 
     @BindView(R.id.toolbar)
-    Toolbar mToolbar;
+    Toolbar toolbar;
 
-    private ActionBar mActionBar;
+    private ActionBar actionBar;
     private ThemeUtil mThemeUtil = new ThemeUtil();
 
     @Override
@@ -96,13 +96,13 @@ public class AccountsActivity extends AppCompatActivity {
     }
 
     private void setupActionbar() {
-        setSupportActionBar(mToolbar);
-        mActionBar = getSupportActionBar();
-        if (mActionBar != null) {
-            mActionBar.setDisplayHomeAsUpEnabled(true);
-            mActionBar.setDisplayShowCustomEnabled(true);
-            mActionBar.setElevation(0f);
-            mActionBar.setTitle(getString(R.string.menu_account));
+        setSupportActionBar(toolbar);
+        actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setDisplayShowCustomEnabled(true);
+            actionBar.setElevation(0f);
+            actionBar.setTitle(getString(R.string.menu_account));
         }
     }
 

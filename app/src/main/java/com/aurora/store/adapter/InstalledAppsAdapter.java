@@ -37,9 +37,7 @@ import com.aurora.store.GlideApp;
 import com.aurora.store.ListType;
 import com.aurora.store.R;
 import com.aurora.store.activity.AuroraActivity;
-import com.aurora.store.activity.CategoriesActivity;
 import com.aurora.store.activity.DetailsActivity;
-import com.aurora.store.activity.LeaderBoardActivity;
 import com.aurora.store.model.App;
 import com.aurora.store.sheet.AppMenuSheet;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -80,8 +78,9 @@ public class InstalledAppsAdapter extends RecyclerView.Adapter<InstalledAppsAdap
     public void addData(List<App> appList) {
         this.appList.clear();
         this.appList = appList;
-        Collections.sort(appList, (App1, App2) ->
-                App1.getDisplayName().compareTo(App2.getDisplayName()));
+        if (listType == ListType.INSTALLED || listType == ListType.UPDATES)
+            Collections.sort(appList, (App1, App2) ->
+                    App1.getDisplayName().compareTo(App2.getDisplayName()));
         notifyDataSetChanged();
     }
 
@@ -105,8 +104,8 @@ public class InstalledAppsAdapter extends RecyclerView.Adapter<InstalledAppsAdap
 
         holder.AppTitle.setText(app.getDisplayName());
         getDetails(context, Version, Extra, app);
-        setText(holder.AppVersion, TextUtils.join(" • ", Version));
         setText(holder.AppExtra, TextUtils.join(" • ", Extra));
+        setText(holder.AppVersion, TextUtils.join(" • ", Version));
 
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(context, DetailsActivity.class);
@@ -133,10 +132,6 @@ public class InstalledAppsAdapter extends RecyclerView.Adapter<InstalledAppsAdap
     private FragmentManager getFragmentManager() {
         if (context instanceof DetailsActivity)
             return ((DetailsActivity) context).getSupportFragmentManager();
-        else if (context instanceof CategoriesActivity)
-            return ((CategoriesActivity) context).getSupportFragmentManager();
-        else if (context instanceof LeaderBoardActivity)
-            return ((LeaderBoardActivity) context).getSupportFragmentManager();
         else
             return ((AuroraActivity) context).getSupportFragmentManager();
     }

@@ -22,15 +22,33 @@ package com.aurora.store;
 
 import android.app.Application;
 
-import com.aurora.store.utility.Log;
-
 import io.reactivex.plugins.RxJavaPlugins;
 
 public class AuroraApplication extends Application {
 
+    public static boolean tokenRefreshing = false;
+    public static boolean anonymousLogging = false;
+
+    public static boolean isAnonymousLogging() {
+        return anonymousLogging;
+    }
+
+    public static void setAnonymousLogging(boolean anonymousLogging) {
+        AuroraApplication.anonymousLogging = anonymousLogging;
+    }
+
+    public static boolean isTokenRefreshing() {
+        return tokenRefreshing;
+    }
+
+    public static void setTokenRefreshing(boolean tokenRefreshing) {
+        AuroraApplication.tokenRefreshing = tokenRefreshing;
+    }
+
     @Override
     public void onCreate() {
         super.onCreate();
-        RxJavaPlugins.setErrorHandler(err -> Log.e(err.getMessage()));
+        RxJavaPlugins.setErrorHandler(err -> {
+        });
     }
 }

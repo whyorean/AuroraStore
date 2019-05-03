@@ -20,6 +20,7 @@
 
 package com.aurora.store.fragment;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,12 +32,16 @@ import androidx.appcompat.app.ActionBar;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
+import com.aurora.store.Filter;
 import com.aurora.store.R;
-import com.aurora.store.activity.CategoriesActivity;
+import com.aurora.store.activity.AuroraActivity;
 import com.aurora.store.adapter.SubCategoryAdapter;
 import com.aurora.store.sheet.FilterBottomSheet;
 import com.aurora.store.utility.Log;
+import com.aurora.store.utility.Util;
+import com.aurora.store.utility.ViewUtil;
 import com.bumptech.glide.Glide;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 
@@ -53,10 +58,19 @@ public class CategoryAppsFragment extends Fragment {
     TabLayout tabLayout;
     @BindView(R.id.filter_fab)
     FloatingActionButton filterFab;
-    private ActionBar mActionBar;
+
+    private Context context;
+    private BottomNavigationView bottomNavigationView;
+    private ActionBar actionBar;
 
     public FloatingActionButton getFilterFab() {
         return filterFab;
+    }
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        this.context = context;
     }
 
     @Override
@@ -67,9 +81,9 @@ public class CategoryAppsFragment extends Fragment {
         Bundle arguments = getArguments();
         if (arguments != null) {
             categoryId = arguments.getString("CategoryId");
-            if (getActivity() instanceof CategoriesActivity) {
-                mActionBar = ((CategoriesActivity) getActivity()).getSupportActionBar();
-                mActionBar.setTitle(arguments.getString("CategoryName"));
+            if (getActivity() instanceof AuroraActivity) {
+                actionBar = ((AuroraActivity) getActivity()).getSupportActionBar();
+                actionBar.setTitle(arguments.getString("CategoryName"));
             }
         } else
             Log.e("No category id provided");
@@ -79,20 +93,27 @@ public class CategoryAppsFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        SubCategoryAdapter categoryFilterAdapter = new SubCategoryAdapter(getContext(), getChildFragmentManager());
-        viewPager.setAdapter(categoryFilterAdapter);
-        viewPager.setOffscreenPageLimit(3);
+        SubCategoryAdapter subCategoryAdapter = new SubCategoryAdapter(getContext(), getChildFragmentManager());
+        viewPager.setAdapter(subCategoryAdapter);
         tabLayout.setupWithViewPager(viewPager);
         filterFab.setOnClickListener(v -> {
             getFilterDialog();
         });
+        if (getActivity() instanceof AuroraActivity) {
+            bottomNavigationView = ((AuroraActivity) getActivity()).getBottomNavigation();
+            ViewUtil.hideBottomNav(bottomNavigationView, true);
+        }
     }
 
     @Override
     public void onDestroy() {
         Glide.with(this).pauseAllRequests();
-        if (mActionBar != null)
-            mActionBar.setTitle(getString(R.string.app_name));
+        if (actionBar != null)
+            actionBar.setTitle(getString(R.string.app_name));
+        if (bottomNavigationView != null)
+            ViewUtil.showBottomNav(bottomNavigationView, true);
+        if (Util.filterSearchNonPersistent(context))
+            new Filter(context).resetFilterPreferences();
         super.onDestroy();
     }
 
@@ -100,6 +121,7 @@ public class CategoryAppsFragment extends Fragment {
         FilterBottomSheet filterSheet = new FilterBottomSheet();
         filterSheet.setOnApplyListener(v -> {
             filterSheet.dismiss();
+            viewPager.removeAllViews();
             viewPager.setAdapter(new SubCategoryAdapter(getContext(), getChildFragmentManager()));
         });
         filterSheet.show(getChildFragmentManager(), "FILTER");

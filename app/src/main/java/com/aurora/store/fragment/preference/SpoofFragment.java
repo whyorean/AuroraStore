@@ -221,7 +221,7 @@ public class SpoofFragment extends Fragment {
                     } catch (IOException e) {
                         Log.w(e.getMessage());
                         ContextUtil.runOnUiThread(() -> Toast.makeText(context,
-                                "You need to login first", Toast.LENGTH_LONG).show());
+                                "You need to errLogin first", Toast.LENGTH_LONG).show());
                     }
                 }
 
