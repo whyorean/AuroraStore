@@ -108,7 +108,7 @@ public class DownloadsActivity extends AppCompatActivity {
     }
 
     private void init() {
-        fetch = new DownloadManager(this).getFetchInstance();
+        fetch = DownloadManager.getFetchInstance(this);
         fetch.getDownloads(downloadList -> {
             if (downloadList.isEmpty()) {
                 ViewUtil.hideWithAnimation(mRecyclerView);

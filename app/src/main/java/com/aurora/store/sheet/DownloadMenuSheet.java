@@ -102,7 +102,7 @@ public class DownloadMenuSheet extends CustomBottomSheetDialogFragment implement
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        fetch = new DownloadManager(context).getFetchInstance();
+        fetch = DownloadManager.getFetchInstance(context);
         downloadTitle.setText(getTitle());
         menuRecyclerView.setNestedScrollingEnabled(false);
         menuRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false));

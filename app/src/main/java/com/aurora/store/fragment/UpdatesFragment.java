@@ -128,7 +128,7 @@ public class UpdatesFragment extends BaseFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        fetch = new DownloadManager(context).getFetchInstance();
+        fetch = DownloadManager.getFetchInstance(context);
         setErrorView(ErrorType.UNKNOWN);
         customSwipeToRefresh.setOnRefreshListener(() -> fetchData());
         if (getActivity() instanceof AuroraActivity) {
@@ -156,11 +156,8 @@ public class UpdatesFragment extends BaseFragment {
     public void onDestroy() {
         super.onDestroy();
         disposable.clear();
-        pseudoPackageAppMap = null;
-        updatableAppList = null;
         updatableAppTask = null;
         adapter = null;
-        requestList = null;
     }
 
     @Override

@@ -36,8 +36,7 @@ public class DownloadCancelReceiver extends BroadcastReceiver {
         Bundle extras = intent.getExtras();
         if ((extras != null)) {
             final int requestId = extras.getInt(REQUEST_ID, -1);
-            final DownloadManager mDownloadManager = new DownloadManager(context);
-            final Fetch fetch = mDownloadManager.getFetchInstance();
+            final Fetch fetch = DownloadManager.getFetchInstance(context);
             fetch.cancel(requestId);
         }
     }

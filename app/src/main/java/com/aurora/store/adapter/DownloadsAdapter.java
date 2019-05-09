@@ -65,7 +65,7 @@ public class DownloadsAdapter extends RecyclerView.Adapter<DownloadsAdapter.View
     public DownloadsAdapter(Context context, List<Download> downloadList) {
         this.context = context;
         this.downloadList = downloadList;
-        fetch = new DownloadManager(context).getFetchInstance();
+        fetch = DownloadManager.getFetchInstance(context);
     }
 
     public void refreshList() {

@@ -367,7 +367,7 @@ public class Util {
     public static Proxy getNetworkProxy(Context context) {
         String proxyHost = getPrefs(context).getString(Constants.PREFERENCE_PROXY_HOST, "127.0.0.1");
         String proxyPort = getPrefs(context).getString(Constants.PREFERENCE_PROXY_PORT, "8118");
-        int port = proxyPort != null ? Integer.valueOf(proxyPort) : 8118;
+        int port = Util.parseInt(proxyPort, 8118);
         return new Proxy(getProxyType(context), new InetSocketAddress(proxyHost, port));
     }
 

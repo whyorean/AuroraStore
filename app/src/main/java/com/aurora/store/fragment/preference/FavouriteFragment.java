@@ -124,7 +124,7 @@ public class FavouriteFragment extends BaseFragment implements SelectableViewHol
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         manager = new FavouriteListManager(context);
-        fetch = new DownloadManager(context).getFetchInstance();
+        fetch = DownloadManager.getFetchInstance(context);
     }
 
     @Override

@@ -23,10 +23,7 @@ package com.aurora.store.download;
 import android.content.Context;
 
 import com.aurora.store.Constants;
-import com.aurora.store.NotificationProvider;
-import com.aurora.store.utility.NotificationUtil;
 import com.aurora.store.utility.Util;
-import com.tonyodev.fetch2.DefaultFetchNotificationManager;
 import com.tonyodev.fetch2.Fetch;
 import com.tonyodev.fetch2.FetchConfiguration;
 import com.tonyodev.fetch2okhttp.OkHttpDownloader;
@@ -37,38 +34,41 @@ import okhttp3.OkHttpClient;
 
 public class DownloadManager {
 
-    private Context context;
-    private Fetch fetch;
+    private static volatile DownloadManager instance;
+    private static Fetch fetch;
 
-    public DownloadManager(Context context) {
-        this.context = context;
-        init();
+    public DownloadManager() {
+        if (instance != null) {
+            throw new RuntimeException("Use get() method to get the single instance of RxBus");
+        }
     }
 
-    private void init() {
+    public static Fetch getFetchInstance(Context context) {
+        if (instance == null) {
+            synchronized (DownloadManager.class) {
+                if (instance == null) {
+                    instance = new DownloadManager();
+                    fetch = getFetch(context);
+                }
+            }
+        }
+        return fetch;
+    }
+
+    private static Fetch getFetch(Context context) {
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
         builder.connectTimeout(20, TimeUnit.SECONDS);
         builder.readTimeout(20, TimeUnit.SECONDS);
         builder.writeTimeout(20, TimeUnit.SECONDS);
-
         if (Util.isNetworkProxyEnabled(context))
             builder.proxy(Util.getNetworkProxy(context));
-
         OkHttpClient okHttpClient = builder.build();
         FetchConfiguration.Builder fetchConfiguration = new FetchConfiguration.Builder(context);
+        fetchConfiguration.setDownloadConcurrentLimit(Util.getActiveDownloadCount(context));
         fetchConfiguration.setHttpDownloader(new OkHttpDownloader(okHttpClient, Util.getDownloadStrategy(context)));
         fetchConfiguration.setNamespace(Constants.TAG);
-        if (NotificationUtil.isNotificationEnabled(context) &&
-                NotificationUtil.getNotificationProvider(context) == NotificationProvider.NATIVE)
-            fetchConfiguration.setNotificationManager(new DefaultFetchNotificationManager(context));
-        fetchConfiguration.setDownloadConcurrentLimit(Util.getActiveDownloadCount(context));
-        fetch = Fetch.Impl.getInstance(fetchConfiguration.build());
-        if (Util.isFetchDebugEnabled(context))
-            fetch.enableLogging(true);
-    }
-
-    public Fetch getFetchInstance() {
-        return fetch;
+        fetchConfiguration.enableLogging(Util.isFetchDebugEnabled(context));
+        return Fetch.Impl.getInstance(fetchConfiguration.build());
     }
 }
 

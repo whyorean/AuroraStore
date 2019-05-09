@@ -28,7 +28,6 @@ import android.content.res.Configuration;
 import android.os.Build;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -136,7 +135,7 @@ public class ActionButton extends AbstractHelper {
         if (app.isInstalled())
             runOrUpdate();
 
-        fetch = new DownloadManager(context).getFetchInstance();
+        fetch = DownloadManager.getFetchInstance(context);
         notification = new GeneralNotification(context, app);
 
         fetch.getDownloads(downloadList -> {

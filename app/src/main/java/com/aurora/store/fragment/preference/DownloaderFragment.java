@@ -78,7 +78,8 @@ public class DownloaderFragment extends PreferenceFragmentCompat implements Shar
         seekBarPreference.setMin(1);
         seekBarPreference.setOnPreferenceChangeListener((preference, newValue) -> {
             int value = (Integer) newValue;
-            PrefUtil.putInteger(context, Constants.PREFERENCE_DOWNLOAD_ACTIVE, value - 1);
+            PrefUtil.putInteger(context, Constants.PREFERENCE_DOWNLOAD_ACTIVE, value);
+            SettingsActivity.shouldRestart = true;
             return true;
         });
     }

@@ -35,8 +35,7 @@ public class DownloadPauseReceiver extends BroadcastReceiver {
         Bundle extras = intent.getExtras();
         if ((extras != null)) {
             final int requestId = extras.getInt(REQUEST_ID, -1);
-            final DownloadManager mDownloadManager = new DownloadManager(context);
-            mDownloadManager.getFetchInstance().pause(requestId);
+            DownloadManager.getFetchInstance(context).pause(requestId);
         }
     }
 }
