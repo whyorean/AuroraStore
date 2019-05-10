@@ -350,6 +350,11 @@ public class Util {
         return getPrefs(context).getBoolean(Constants.PREFERENCE_TAB_MODE, false);
     }
 
+    public static boolean isRootInstallEnabled(Context context) {
+        String installMethod = getPrefs(context).getString(Constants.PREFERENCE_INSTALLATION_METHOD, "0");
+        return installMethod.equals("1");
+    }
+
     public static Proxy.Type getProxyType(Context context) {
         String proxyType = getPrefs(context).getString(Constants.PREFERENCE_PROXY_TYPE, "HTTP");
         switch (proxyType) {

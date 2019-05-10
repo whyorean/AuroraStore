@@ -91,7 +91,7 @@ public class PathUtil {
     }
 
     static public String getBaseDirectory(Context context) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P && Util.isRootInstallEnabled(context)) {
             return context.getFilesDir().getPath();
         } else
             return Environment.getExternalStorageDirectory().getPath() + "/Aurora";

@@ -78,6 +78,7 @@ dependencies {
     implementation 'com.android.volley:volley:1.1.0'
     implementation 'androidx.annotation:annotation:1.0.2'
     implementation 'org.apache.commons:commons-text:1.4'
+    implementation 'com.scottyab:rootbeer-lib:0.0.7'
 
     //PlayStoreApi
     implementation 'com.github.whyorean:playstore-api-v2:2.1'
