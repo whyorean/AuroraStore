@@ -72,7 +72,7 @@ public class QuickNotification extends NotificationBase {
                 channel = new NotificationChannel(
                         context.getPackageName(),
                         context.getString(R.string.app_name),
-                        NotificationManager.IMPORTANCE_HIGH);
+                        NotificationManager.IMPORTANCE_LOW);
                 channel.setDescription("Aurora Store Quick Notification Channel");
                 manager.createNotificationChannel(channel);
                 builder.setChannelId(channel.getId());
