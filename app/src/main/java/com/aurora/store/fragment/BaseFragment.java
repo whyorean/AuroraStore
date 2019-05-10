@@ -130,7 +130,8 @@ public abstract class BaseFragment extends Fragment {
     }
 
     protected void notifyTokenExpired() {
-        notifyStatus(coordinatorLayout, bottomNavigationView, context.getString(R.string.action_token_expired));
+        if (!AuroraApplication.isTokenRefreshing())
+            notifyStatus(coordinatorLayout, bottomNavigationView, context.getString(R.string.action_token_expired));
     }
 
     @Override
