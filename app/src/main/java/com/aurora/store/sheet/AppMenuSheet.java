@@ -20,22 +20,32 @@
 
 package com.aurora.store.sheet;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.aurora.store.ListType;
 import com.aurora.store.R;
-import com.aurora.store.adapter.AppMenuAdapter;
+import com.aurora.store.activity.ManualDownloadActivity;
+import com.aurora.store.adapter.InstalledAppsAdapter;
+import com.aurora.store.adapter.UpdatableAppsAdapter;
+import com.aurora.store.fragment.DetailsFragment;
+import com.aurora.store.installer.Installer;
+import com.aurora.store.manager.BlacklistManager;
+import com.aurora.store.manager.FavouriteListManager;
 import com.aurora.store.model.App;
+import com.aurora.store.utility.ApkCopier;
+import com.aurora.store.utility.PackageUtil;
 import com.aurora.store.view.CustomBottomSheetDialogFragment;
+import com.google.android.material.button.MaterialButton;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -44,21 +54,26 @@ public class AppMenuSheet extends CustomBottomSheetDialogFragment {
 
     @BindView(R.id.menu_title)
     TextView txtTitle;
-    @BindView(R.id.menu_recycler)
-    RecyclerView recyclerView;
+    @BindView(R.id.btn_fav)
+    MaterialButton btnFav;
+    @BindView(R.id.btn_blacklist)
+    MaterialButton btnBlacklist;
+    @BindView(R.id.btn_local_apk)
+    MaterialButton btnLocal;
+    @BindView(R.id.btn_manual)
+    MaterialButton btnManual;
+    @BindView(R.id.btn_uninstall)
+    MaterialButton btnUninstall;
 
     private App app;
-    private ListType listType;
+    private Context context;
+    private RecyclerView.Adapter adapter;
 
     public AppMenuSheet() {
     }
 
-    public ListType getListType() {
-        return listType;
-    }
-
-    public void setListType(ListType listType) {
-        this.listType = listType;
+    public void setAdapter(RecyclerView.Adapter adapter) {
+        this.adapter = adapter;
     }
 
     public App getApp() {
@@ -70,8 +85,14 @@ public class AppMenuSheet extends CustomBottomSheetDialogFragment {
     }
 
     @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        this.context = context;
+    }
+
+    @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.sheet_menu, container, false);
+        View view = inflater.inflate(R.layout.sheet_app_menu, container, false);
         ButterKnife.bind(this, view);
         return view;
     }
@@ -80,8 +101,61 @@ public class AppMenuSheet extends CustomBottomSheetDialogFragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         txtTitle.setText(app.getDisplayName());
-        recyclerView.setNestedScrollingEnabled(false);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false));
-        recyclerView.setAdapter(new AppMenuAdapter(this, getApp(), getListType()));
+
+        btnUninstall.setVisibility(PackageUtil.isInstalled(context, app) ? View.VISIBLE : View.GONE);
+        btnLocal.setVisibility(PackageUtil.isInstalled(context, app) ? View.VISIBLE : View.GONE);
+
+        final FavouriteListManager favouriteListManager = new FavouriteListManager(context);
+        boolean isFav = favouriteListManager.contains(app.getPackageName());
+        btnFav.setText(isFav ? R.string.details_favourite_remove : R.string.details_favourite_add);
+        btnFav.setOnClickListener(v -> {
+            if (isFav) {
+                favouriteListManager.remove(app.getPackageName());
+            } else {
+                favouriteListManager.add(app.getPackageName());
+            }
+            dismissAllowingStateLoss();
+        });
+
+        final BlacklistManager blacklistManager = new BlacklistManager(context);
+        boolean isBlacklisted = blacklistManager.contains(app.getPackageName());
+        btnBlacklist.setText(isBlacklisted ? R.string.action_whitelist : R.string.action_blacklist);
+        btnBlacklist.setOnClickListener(v -> {
+            if (isBlacklisted) {
+                blacklistManager.remove(app.getPackageName());
+                Toast.makeText(context, context.getString(R.string.toast_apk_whitelisted),
+                        Toast.LENGTH_SHORT).show();
+            } else {
+                blacklistManager.add(app.getPackageName());
+                Toast.makeText(context, context.getString(R.string.toast_apk_blacklisted),
+                        Toast.LENGTH_SHORT).show();
+                if (adapter instanceof InstalledAppsAdapter)
+                    ((InstalledAppsAdapter) adapter).remove(app);
+                if (adapter instanceof UpdatableAppsAdapter)
+                    ((UpdatableAppsAdapter) adapter).remove(app);
+            }
+            dismissAllowingStateLoss();
+        });
+
+        btnLocal.setOnClickListener(v -> {
+            final ApkCopier apkCopier = new ApkCopier();
+            boolean success = apkCopier.copy(app);
+            Toast.makeText(context, success
+                    ? context.getString(R.string.toast_apk_copy_success)
+                    : context.getString(R.string.toast_apk_copy_failure), Toast.LENGTH_SHORT)
+                    .show();
+            dismissAllowingStateLoss();
+        });
+
+        btnManual.setOnClickListener(v -> {
+            DetailsFragment.app = app;
+            context.startActivity(new Intent(context, ManualDownloadActivity.class));
+            dismissAllowingStateLoss();
+        });
+
+        btnUninstall.setOnClickListener(v -> {
+            new Installer(context).uninstall(app);
+            dismissAllowingStateLoss();
+        });
     }
 }

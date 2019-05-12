@@ -20,6 +20,18 @@
 
 <resources>
 
+    <!--Button Style-->
+    <style name="Widget.Button.Aurora.Menu" parent="@style/Widget.MaterialComponents.Button.TextButton">
+        <item name="android:textAppearance">?android:textAppearanceListItem</item>
+        <item name="android:textAlignment">viewStart</item>
+        <item name="android:textColor">?android:textColorPrimary</item>
+        <item name="android:paddingStart">@dimen/margin_normal</item>
+        <item name="android:paddingEnd">@dimen/margin_normal</item>
+        <item name="iconPadding">@dimen/margin_normal</item>
+        <item name="cornerRadius">0dp</item>
+        <item name="rippleColor">@color/colorScrim</item>
+    </style>
+
     <!-- RatingBar Style -->
     <style name="RatingBar" parent="Theme.MaterialComponents">
         <item name="colorControlNormal">@color/colorGrey</item>

@@ -90,7 +90,6 @@ import static com.aurora.store.notification.NotificationBase.INTENT_PACKAGE_NAME
 public class UpdatesFragment extends BaseFragment {
 
     private static final int UPDATE_GROUP_ID = 1337;
-
     @BindView(R.id.swipe_layout)
     CustomSwipeToRefresh customSwipeToRefresh;
     @BindView(R.id.recycler)
@@ -155,7 +154,6 @@ public class UpdatesFragment extends BaseFragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        disposable.clear();
         updatableAppTask = null;
         adapter = null;
     }

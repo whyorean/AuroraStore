@@ -7,5 +7,6 @@ public enum Events {
     TOKEN_EXPIRED,
     NET_CONNECTED,
     NET_DISCONNECTED,
-    PERMANENT_FAIL
+    PERMANENT_FAIL,
+    BLACKLIST
 }

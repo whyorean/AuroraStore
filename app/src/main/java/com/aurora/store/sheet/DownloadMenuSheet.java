@@ -30,15 +30,13 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.aurora.store.R;
-import com.aurora.store.adapter.DownloadMenuAdapter;
 import com.aurora.store.adapter.DownloadsAdapter;
 import com.aurora.store.download.DownloadManager;
 import com.aurora.store.utility.Util;
 import com.aurora.store.view.CustomBottomSheetDialogFragment;
+import com.google.android.material.button.MaterialButton;
 import com.tonyodev.fetch2.Download;
 import com.tonyodev.fetch2.Fetch;
 import com.tonyodev.fetch2.Status;
@@ -46,12 +44,20 @@ import com.tonyodev.fetch2.Status;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class DownloadMenuSheet extends CustomBottomSheetDialogFragment implements DownloadMenuAdapter.MenuClickListener {
+public class DownloadMenuSheet extends CustomBottomSheetDialogFragment {
 
     @BindView(R.id.menu_title)
     TextView downloadTitle;
-    @BindView(R.id.menu_recycler)
-    RecyclerView menuRecyclerView;
+    @BindView(R.id.btn_copy)
+    MaterialButton btnCopy;
+    @BindView(R.id.btn_pause)
+    MaterialButton btnPause;
+    @BindView(R.id.btn_resume)
+    MaterialButton btnResume;
+    @BindView(R.id.btn_cancel)
+    MaterialButton btnCancel;
+    @BindView(R.id.btn_clear)
+    MaterialButton btnClear;
 
     private String title;
     private Context context;
@@ -94,7 +100,7 @@ public class DownloadMenuSheet extends CustomBottomSheetDialogFragment implement
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.sheet_menu, container, false);
+        View view = inflater.inflate(R.layout.sheet_download_menu, container, false);
         ButterKnife.bind(this, view);
         return view;
     }
@@ -104,40 +110,53 @@ public class DownloadMenuSheet extends CustomBottomSheetDialogFragment implement
         super.onViewCreated(view, savedInstanceState);
         fetch = DownloadManager.getFetchInstance(context);
         downloadTitle.setText(getTitle());
-        menuRecyclerView.setNestedScrollingEnabled(false);
-        menuRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false));
-        menuRecyclerView.setAdapter(new DownloadMenuAdapter(context, download, this));
-    }
 
-    @Override
-    public void onMenuClicked(int position) {
-        switch (position) {
-            case 0:
-                Util.copyToClipBoard(context, download.getUrl());
-                Toast.makeText(context, context.getString(R.string.action_copied), Toast.LENGTH_LONG).show();
-                notifyAndDismiss();
-                break;
-            case 1:
-                fetch.pause(download.getId());
-                notifyAndDismiss();
-                break;
-            case 2:
-                if (download.getStatus() == Status.FAILED
-                        || download.getStatus() == Status.CANCELLED)
-                    fetch.retry(download.getId());
-                else
-                    fetch.resume(download.getId());
-                notifyAndDismiss();
-                break;
-            case 3:
-                fetch.cancel(download.getId());
-                notifyAndDismiss();
-                break;
-            case 4:
-                fetch.delete(download.getId());
-                notifyAndDismiss();
-                break;
+        if (download.getStatus() == Status.PAUSED
+                || download.getStatus() == Status.COMPLETED
+                || download.getStatus() == Status.CANCELLED) {
+            btnPause.setVisibility(View.GONE);
         }
+
+        if (download.getStatus() == Status.DOWNLOADING
+                || download.getStatus() == Status.COMPLETED
+                || download.getStatus() == Status.QUEUED) {
+            btnResume.setVisibility(View.GONE);
+        }
+
+        if (download.getStatus() == Status.COMPLETED
+                || download.getStatus() == Status.CANCELLED) {
+            btnCancel.setVisibility(View.GONE);
+        }
+
+        btnCopy.setOnClickListener(v -> {
+            Util.copyToClipBoard(context, download.getUrl());
+            Toast.makeText(context, context.getString(R.string.action_copied), Toast.LENGTH_LONG).show();
+            notifyAndDismiss();
+        });
+
+        btnPause.setOnClickListener(v -> {
+            fetch.pause(download.getId());
+            notifyAndDismiss();
+        });
+
+        btnResume.setOnClickListener(v -> {
+            if (download.getStatus() == Status.FAILED
+                    || download.getStatus() == Status.CANCELLED)
+                fetch.retry(download.getId());
+            else
+                fetch.resume(download.getId());
+            notifyAndDismiss();
+        });
+
+        btnCancel.setOnClickListener(v -> {
+            fetch.cancel(download.getId());
+            notifyAndDismiss();
+        });
+
+        btnClear.setOnClickListener(v -> {
+            fetch.delete(download.getId());
+            notifyAndDismiss();
+        });
     }
 
     private void notifyAndDismiss() {

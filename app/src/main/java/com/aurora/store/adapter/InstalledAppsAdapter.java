@@ -55,10 +55,12 @@ public class InstalledAppsAdapter extends RecyclerView.Adapter<InstalledAppsAdap
     public List<App> appList = new ArrayList<>();
     private Context context;
     private ListType listType;
+    private AppMenuSheet menuSheet;
 
     public InstalledAppsAdapter(Context context, ListType listType) {
         this.context = context;
         this.listType = listType;
+        this.menuSheet = new AppMenuSheet();
     }
 
     public void add(int position, App app) {
@@ -73,6 +75,21 @@ public class InstalledAppsAdapter extends RecyclerView.Adapter<InstalledAppsAdap
     public void remove(int position) {
         appList.remove(position);
         notifyItemRemoved(position);
+    }
+
+    public void remove(String packageName) {
+        for (App app : appList) {
+            if (app.getPackageName().equals(packageName)) {
+                appList.remove(app);
+                notifyDataSetChanged();
+                break;
+            }
+        }
+    }
+
+    public void remove(App app) {
+        appList.remove(app);
+        notifyDataSetChanged();
     }
 
     public void addData(List<App> appList) {
@@ -114,9 +131,8 @@ public class InstalledAppsAdapter extends RecyclerView.Adapter<InstalledAppsAdap
         });
 
         holder.itemView.setOnLongClickListener(v -> {
-            final AppMenuSheet menuSheet = new AppMenuSheet();
             menuSheet.setApp(app);
-            menuSheet.setListType(listType);
+            menuSheet.setAdapter(this);
             menuSheet.show(getFragmentManager(), "BOTTOM_MENU_SHEET");
             return false;
         });

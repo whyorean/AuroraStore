@@ -123,8 +123,6 @@ public class InstalledFragment extends BaseFragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        disposable.clear();
-        disposableBus.clear();
         installedAppTask = null;
         adapter = null;
     }

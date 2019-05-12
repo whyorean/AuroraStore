@@ -21,6 +21,7 @@
 package com.aurora.store.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,6 +34,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.aurora.store.GlideApp;
 import com.aurora.store.R;
+import com.aurora.store.activity.DetailsActivity;
 import com.aurora.store.activity.DownloadsActivity;
 import com.aurora.store.download.DownloadManager;
 import com.aurora.store.sheet.DownloadMenuSheet;
@@ -51,6 +53,7 @@ import com.tonyodev.fetch2.Status;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -58,19 +61,24 @@ import butterknife.ButterKnife;
 
 public class DownloadsAdapter extends RecyclerView.Adapter<DownloadsAdapter.ViewHolder> {
 
-    private List<Download> downloadList;
+    private List<Download> downloadList = new ArrayList<>();
     private Context context;
     private Fetch fetch;
+    private DownloadMenuSheet menuSheet;
 
-    public DownloadsAdapter(Context context, List<Download> downloadList) {
+    public DownloadsAdapter(Context context) {
         this.context = context;
-        this.downloadList = downloadList;
+        this.menuSheet = new DownloadMenuSheet();
         fetch = DownloadManager.getFetchInstance(context);
+        DownloadManager.getFetchInstance(context).getDownloads(fetchDownloadList -> {
+            this.downloadList = fetchDownloadList;
+            notifyDataSetChanged();
+        });
     }
 
     public void refreshList() {
-        fetch.getDownloads(result -> {
-            downloadList = result;
+        fetch.getDownloads(fetchDownloadList -> {
+            downloadList = fetchDownloadList;
             notifyDataSetChanged();
         });
     }
@@ -88,7 +96,7 @@ public class DownloadsAdapter extends RecyclerView.Adapter<DownloadsAdapter.View
         final Download download = downloadList.get(position);
         final String displayName = PackageUtil.getDisplayName(context, download.getTag());
         final String iconURL = PackageUtil.getIconURL(context, download.getTag());
-
+        final Fetch fetch = DownloadManager.getFetchInstance(context);
         fetch.addListener(getFetchListener(download.getId(), viewHolder));
 
         GlideApp
@@ -116,11 +124,17 @@ public class DownloadsAdapter extends RecyclerView.Adapter<DownloadsAdapter.View
         }
 
         viewHolder.itemView.setOnClickListener(v -> {
-            final DownloadMenuSheet menuSheet = new DownloadMenuSheet();
+            Intent intent = new Intent(context, DetailsActivity.class);
+            intent.putExtra("INTENT_PACKAGE_NAME", download.getTag());
+            context.startActivity(intent);
+        });
+
+        viewHolder.itemView.setOnLongClickListener(v -> {
             menuSheet.setTitle(displayName);
             menuSheet.setDownload(download);
             menuSheet.setDownloadsAdapter(this);
             menuSheet.show(((DownloadsActivity) context).getSupportFragmentManager(), "DOWNLOAD_SHEET");
+            return false;
         });
     }
 

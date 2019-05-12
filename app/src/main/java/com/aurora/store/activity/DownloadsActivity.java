@@ -116,7 +116,7 @@ public class DownloadsActivity extends AppCompatActivity {
             } else {
                 ViewUtil.showWithAnimation(mRecyclerView);
                 ViewUtil.hideWithAnimation(placeholder);
-                setupRecycler(downloadList);
+                setupRecycler();
             }
         });
     }
@@ -178,8 +178,8 @@ public class DownloadsActivity extends AppCompatActivity {
         }
     }
 
-    private void setupRecycler(List<Download> downloadList) {
-        downloadsAdapter = new DownloadsAdapter(this, downloadList);
+    private void setupRecycler() {
+        downloadsAdapter = new DownloadsAdapter(this);
         mRecyclerView.setAdapter(downloadsAdapter);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
         DividerItemDecoration itemDecorator = new DividerItemDecoration(mRecyclerView.getContext(), DividerItemDecoration.VERTICAL);

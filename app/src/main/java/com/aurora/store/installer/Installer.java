@@ -36,6 +36,8 @@ import androidx.core.content.FileProvider;
 import com.aurora.store.Constants;
 import com.aurora.store.R;
 import com.aurora.store.activity.DetailsActivity;
+import com.aurora.store.events.AppInstalledEvent;
+import com.aurora.store.events.RxBus;
 import com.aurora.store.model.App;
 import com.aurora.store.notification.QuickNotification;
 import com.aurora.store.utility.Log;
@@ -134,6 +136,7 @@ public class Installer {
                     if (Util.shouldDeleteApk(context))
                         clearInstallationFiles(apkFiles);
                     unregisterReceiver(installer);
+                    RxBus.publish(new AppInstalledEvent(packageName));
                     break;
             }
         });
