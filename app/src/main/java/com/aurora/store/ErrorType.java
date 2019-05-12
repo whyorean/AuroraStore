@@ -25,6 +25,7 @@ public enum ErrorType {
     NO_APPS,
     NO_UPDATES,
     NO_SEARCH,
+    NO_DOWNLOADS,
     UNKNOWN,
     MALFORMED,
     LOGOUT_ERR

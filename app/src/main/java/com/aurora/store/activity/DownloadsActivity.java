@@ -23,7 +23,8 @@ package com.aurora.store.activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.RelativeLayout;
+import android.view.ViewGroup;
+import android.widget.ViewSwitcher;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -32,16 +33,15 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.aurora.store.ErrorType;
 import com.aurora.store.R;
 import com.aurora.store.adapter.DownloadsAdapter;
 import com.aurora.store.download.DownloadManager;
 import com.aurora.store.utility.ThemeUtil;
-import com.aurora.store.utility.ViewUtil;
+import com.aurora.store.view.ErrorView;
 import com.tonyodev.fetch2.Download;
 import com.tonyodev.fetch2.Fetch;
 import com.tonyodev.fetch2.Status;
-
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -52,8 +52,12 @@ public class DownloadsActivity extends AppCompatActivity {
     Toolbar mToolbar;
     @BindView(R.id.recyclerDownloads)
     RecyclerView mRecyclerView;
-    @BindView(R.id.placeholder)
-    RelativeLayout placeholder;
+    @BindView(R.id.view_switcher)
+    ViewSwitcher viewSwitcher;
+    @BindView(R.id.content_view)
+    ViewGroup layoutContent;
+    @BindView(R.id.err_view)
+    ViewGroup layoutError;
 
     private Fetch fetch;
     private DownloadsAdapter downloadsAdapter;
@@ -65,9 +69,9 @@ public class DownloadsActivity extends AppCompatActivity {
         themeUtil.onCreate(this);
         setContentView(R.layout.activity_downloads);
         ButterKnife.bind(this);
-
-        init();
+        fetch = DownloadManager.getFetchInstance(this);
         setupActionbar();
+        init();
     }
 
     @Override
@@ -108,17 +112,26 @@ public class DownloadsActivity extends AppCompatActivity {
     }
 
     private void init() {
-        fetch = DownloadManager.getFetchInstance(this);
         fetch.getDownloads(downloadList -> {
             if (downloadList.isEmpty()) {
-                ViewUtil.hideWithAnimation(mRecyclerView);
-                ViewUtil.showWithAnimation(placeholder);
+                setErrorView(ErrorType.NO_DOWNLOADS);
+                switchViews(true);
             } else {
-                ViewUtil.showWithAnimation(mRecyclerView);
-                ViewUtil.hideWithAnimation(placeholder);
                 setupRecycler();
             }
         });
+    }
+
+    protected void setErrorView(ErrorType errorType) {
+        layoutError.removeAllViews();
+        layoutError.addView(new ErrorView(this, errorType, null));
+    }
+
+    protected void switchViews(boolean showError) {
+        if (viewSwitcher.getCurrentView() == layoutContent && showError)
+            viewSwitcher.showNext();
+        else if (viewSwitcher.getCurrentView() == layoutError && !showError)
+            viewSwitcher.showPrevious();
     }
 
     private void setupActionbar() {

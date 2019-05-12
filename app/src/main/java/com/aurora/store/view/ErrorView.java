@@ -91,6 +91,11 @@ public class ErrorView extends RelativeLayout {
                 txtError.setText(R.string.error_logged_out);
                 btnError.setText(R.string.action_login);
                 break;
+            case NO_DOWNLOADS:
+                imgError.setImageDrawable(context.getDrawable(R.drawable.ic_download_alt));
+                txtError.setText(R.string.download_none);
+                btnError.setVisibility(GONE);
+                break;
         }
     }
 }
