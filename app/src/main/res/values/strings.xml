@@ -302,6 +302,10 @@
     <string name="pref_ui_tab_mode_title">Scrollable tabs</string>
     <string name="pref_ui_tab_mode_summary">Enable to make tabs scrollable, recommended for low-dpi devices</string>
     <string name="pref_ui_tab_default_title">Select default tab</string>
+    <string name="pref_ui_ime">Search IME</string>
+    <string name="pref_ui_ime_summary">Show keyboard on search page by default</string>
+    <string name="pref_ui_transparent">Transparent style</string>
+    <string name="pref_ui_transparent_summary">Use transparent card style for category and link views</string>
     <string name="pref_update_interval_title">Updates interval</string>
     <string name="pref_update_interval_manually">Manually</string>
     <string name="pref_update_interval_hourly">Hourly</string>

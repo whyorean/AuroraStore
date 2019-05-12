@@ -28,10 +28,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
+import androidx.core.graphics.ColorUtils;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -53,6 +54,8 @@ public class TopCategoriesAdapter extends RecyclerView.Adapter<TopCategoriesAdap
     private Context context;
     private Fragment fragment;
     private String[] topCategoryIDs;
+    private SharedPreferencesTranslator translator;
+    private boolean isTransparent;
 
     private Integer[] categoriesImg = {
             R.drawable.ic_cat_communication,
@@ -65,13 +68,12 @@ public class TopCategoriesAdapter extends RecyclerView.Adapter<TopCategoriesAdap
             R.drawable.ic_cat_social_alt,
     };
 
-    private SharedPreferencesTranslator translator;
-
     public TopCategoriesAdapter(HomeFragment fragment) {
         this.fragment = fragment;
         this.context = fragment.getContext();
         this.topCategoryIDs = context.getResources().getStringArray(R.array.topCategories);
-        translator = new SharedPreferencesTranslator(Util.getPrefs(context));
+        this.isTransparent = Util.isTransparentStyle(context);
+        this.translator = new SharedPreferencesTranslator(Util.getPrefs(context));
     }
 
     @NonNull
@@ -84,10 +86,13 @@ public class TopCategoriesAdapter extends RecyclerView.Adapter<TopCategoriesAdap
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
-        holder.layoutCatBg.setBackgroundTintList(ColorStateList.valueOf(ViewUtil.getSolidColors(position)));
+        @ColorInt int color = ViewUtil.getSolidColors(position);
+        holder.itemView.setBackgroundTintList(ColorStateList.valueOf(
+                ColorUtils.setAlphaComponent(color, isTransparent ? 60 : 255)));
         holder.imgCat.setImageDrawable(context.getResources().getDrawable(categoriesImg[position]));
-        holder.imgCat.setColorFilter(Color.WHITE);
+        holder.imgCat.setColorFilter(isTransparent ? color : Color.WHITE);
         holder.txtCat.setText(translator.getString(topCategoryIDs[position]));
+        holder.txtCat.setTextColor(isTransparent ? color : Color.WHITE);
 
         if (topCategoryIDs[position].equals(CategoriesFragment.FAMILY)) {
             holder.itemView.setOnClickListener(v -> getSubCategoryFragment(CategoriesFragment.FAMILY));
@@ -131,8 +136,6 @@ public class TopCategoriesAdapter extends RecyclerView.Adapter<TopCategoriesAdap
 
     static class ViewHolder extends RecyclerView.ViewHolder {
 
-        @BindView(R.id.cat_bg)
-        RelativeLayout layoutCatBg;
         @BindView(R.id.cat_icon)
         ImageView imgCat;
         @BindView(R.id.cat_txt)

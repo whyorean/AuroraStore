@@ -48,6 +48,7 @@ import com.aurora.store.R;
 import com.aurora.store.activity.DetailsActivity;
 import com.aurora.store.adapter.SearchHistoryAdapter;
 import com.aurora.store.utility.PrefUtil;
+import com.aurora.store.utility.Util;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -95,10 +96,17 @@ public class SearchFragment extends Fragment implements HistoryItemTouchHelper.R
         clearAll.setOnClickListener(v -> clearAll());
     }
 
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (isVisibleToUser) {
+            if (searchView != null && Util.isIMEEnabled(context))
+                searchView.requestFocus();
+        }
+    }
+
     private void setupSearch() {
         SearchManager searchManager = (SearchManager) context.getSystemService(Context.SEARCH_SERVICE);
         ComponentName componentName = getActivity().getComponentName();
-        searchView.requestFocus();
 
         if (null != searchManager && componentName != null) {
             searchView.setSearchableInfo(searchManager.getSearchableInfo(componentName));

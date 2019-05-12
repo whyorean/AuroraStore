@@ -198,7 +198,8 @@ public class AuroraActivity extends AppCompatActivity {
         pagerAdapter.addFragment(2, new SearchFragment());
         viewPager.setAdapter(pagerAdapter);
         viewPager.setScroll(false);
-        viewPager.setCurrentItem(fragmentCur, false);
+        viewPager.setOffscreenPageLimit(2);
+        viewPager.setCurrentItem(fragmentCur, true);
     }
 
     private void setupBottomNavigation() {
@@ -206,7 +207,7 @@ public class AuroraActivity extends AppCompatActivity {
         int backGroundColor = ViewUtil.getStyledAttribute(this, android.R.attr.colorBackground);
         bottomNavigationView.setBackgroundColor(ColorUtils.setAlphaComponent(backGroundColor, 245));
         bottomNavigationView.setOnNavigationItemSelectedListener(menuItem -> {
-            viewPager.setCurrentItem(menuItem.getOrder(), false);
+            viewPager.setCurrentItem(menuItem.getOrder(), true);
             switch (menuItem.getItemId()) {
                 case R.id.action_home:
                     Util.toggleSoftInput(this, false);
@@ -217,7 +218,8 @@ public class AuroraActivity extends AppCompatActivity {
                     actionBar.setTitle(getString(R.string.title_installed));
                     break;
                 case R.id.action_search:
-                    Util.toggleSoftInput(this, true);
+                    if (Util.isIMEEnabled(this))
+                        Util.toggleSoftInput(this, true);
                     actionBar.setTitle(getString(R.string.title_search));
                     break;
             }

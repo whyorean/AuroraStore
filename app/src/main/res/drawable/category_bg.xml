@@ -23,10 +23,6 @@
     <size
         android:width="100dp"
         android:height="100dp" />
-    <corners
-        android:bottomLeftRadius="96dp"
-        android:bottomRightRadius="16dp"
-        android:topLeftRadius="96dp"
-        android:topRightRadius="96dp" />
+    <corners android:radius="8dp" />
     <solid android:color="?android:attr/colorBackground" />
 </shape>

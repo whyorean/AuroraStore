@@ -299,6 +299,14 @@ public class Util {
         return getPrefs(context).getBoolean(Constants.PREFERENCE_FEATURED_SNAP, true);
     }
 
+    public static boolean isIMEEnabled(Context context) {
+        return getPrefs(context).getBoolean(Constants.PREFERENCE_SEARCH_IME, true);
+    }
+
+    public static boolean isTransparentStyle(Context context) {
+        return getPrefs(context).getBoolean(Constants.PREFERENCE_UI_TRANSPARENT, true);
+    }
+
     public static boolean filterGoogleAppsEnabled(Context context) {
         return getPrefs(context).getBoolean(Constants.PREFERENCE_FILTER_GOOGLE, false);
     }
