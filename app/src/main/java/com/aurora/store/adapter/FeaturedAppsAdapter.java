@@ -38,6 +38,7 @@ import com.aurora.store.GlideApp;
 import com.aurora.store.R;
 import com.aurora.store.activity.DetailsActivity;
 import com.aurora.store.model.App;
+import com.aurora.store.utility.PackageUtil;
 import com.aurora.store.utility.Util;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.bitmap.BitmapTransitionOptions;
@@ -92,6 +93,10 @@ public class FeaturedAppsAdapter extends RecyclerView.Adapter<FeaturedAppsAdapte
             intent.putExtra("INTENT_PACKAGE_NAME", app.getPackageName());
             context.startActivity(intent);
         });
+
+        viewHolder.txtIndicator.setVisibility(PackageUtil.isInstalled(context, app)
+                ? View.VISIBLE
+                : View.GONE);
     }
 
     private void drawBackground(App app, ViewHolder holder) {
@@ -118,6 +123,8 @@ public class FeaturedAppsAdapter extends RecyclerView.Adapter<FeaturedAppsAdapte
         ImageView imgIcon;
         @BindView(R.id.app_name)
         TextView txtName;
+        @BindView(R.id.txt_indicator)
+        TextView txtIndicator;
 
         ViewHolder(@NonNull View itemView) {
             super(itemView);

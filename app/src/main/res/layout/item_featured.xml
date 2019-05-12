@@ -21,7 +21,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_margin="@dimen/margin_small">
+    android:layout_marginStart="@dimen/margin_small">
 
     <ImageView
         android:id="@+id/app_icon"
@@ -34,13 +34,13 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/app_icon"
         android:paddingStart="@dimen/margin_xxsmall"
-        android:paddingTop="@dimen/margin_small"
-        android:paddingEnd="@dimen/margin_xxsmall">
+        android:paddingTop="@dimen/margin_small">
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/app_name"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_toStartOf="@id/txt_indicator"
             android:ellipsize="none"
             android:fadingEdgeLength="16dp"
             android:requiresFadingEdge="horizontal"
@@ -48,5 +48,17 @@
             android:textAppearance="@style/TextAppearance.Aurora.Toolbar.Title"
             android:textColor="?android:attr/textColorPrimary"
             android:textSize="18sp" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txt_indicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:drawableEnd="@drawable/ic_installed"
+            android:drawablePadding="@dimen/margin_small"
+            android:text="@string/action_installed"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textStyle="normal"
+            android:visibility="gone" />
     </RelativeLayout>
 </RelativeLayout>

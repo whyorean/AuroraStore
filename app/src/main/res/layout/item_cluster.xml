@@ -54,5 +54,17 @@
             app:autoSizeMaxTextSize="16sp"
             app:autoSizeMinTextSize="12sp"
             app:autoSizeTextType="uniform" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txt_indicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:drawableEnd="@drawable/ic_installed"
+            android:drawablePadding="@dimen/margin_small"
+            android:padding="@dimen/margin_xxsmall"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textStyle="normal"
+            android:visibility="gone" />
     </RelativeLayout>
 </com.google.android.material.card.MaterialCardView>
