@@ -21,6 +21,7 @@
 package com.aurora.store.fragment;
 
 import android.content.Context;
+import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -33,6 +34,8 @@ import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
+import androidx.core.graphics.ColorUtils;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -51,8 +54,12 @@ import com.aurora.store.utility.Util;
 import com.aurora.store.utility.ViewUtil;
 import com.bumptech.glide.Glide;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.chip.Chip;
+import com.google.android.material.chip.ChipGroup;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -69,10 +76,13 @@ public class SearchAppsFragment extends BaseFragment {
     FloatingActionButton filterFab;
     @BindView(R.id.searchQuery)
     EditText searchQuery;
+    @BindView(R.id.related_chip_group)
+    ChipGroup relatedChipGroup;
 
     private Context context;
     private View view;
     private String query;
+    private List<String> relatedTags = new ArrayList<>();
     private BottomNavigationView bottomNavigationView;
     private EndlessAppsAdapter endlessAppsAdapter;
     private SearchTask searchTask;
@@ -100,28 +110,25 @@ public class SearchAppsFragment extends BaseFragment {
         if (arguments != null) {
             setQuery(arguments.getString("SearchQuery"));
             searchQuery.setText(getQuery());
-            if (NetworkUtil.isConnected(context)) {
-                setupRecycler();
-            } else
-                notifyNetworkFailure();
         } else
             Log.e("No category id provided");
         return view;
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        filterFab.show();
-        filterFab.setOnClickListener(v -> getFilterDialog());
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         setupQueryEdit();
         setErrorView(ErrorType.UNKNOWN);
+        setupRecycler();
         if (getActivity() instanceof AuroraActivity) {
             bottomNavigationView = ((AuroraActivity) getActivity()).getBottomNavigation();
             setBaseBottomNavigationView(bottomNavigationView);
         }
         if (bottomNavigationView != null)
             ViewUtil.hideBottomNav(bottomNavigationView, true);
+        filterFab.show();
+        filterFab.setOnClickListener(v -> getFilterDialog());
     }
 
     @Override
@@ -156,6 +163,7 @@ public class SearchAppsFragment extends BaseFragment {
                     iterator = getIterator(getQuery());
                     iterator.setEnableFilter(true);
                     iterator.setFilter(new Filter(getContext()).getFilterPreferences());
+                    relatedTags = getRelatedTags();
                     fetchSearchAppsList(false);
                     searchQuery.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_edit, 0);
                     InputMethodManager imm = (InputMethodManager) v.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -185,9 +193,11 @@ public class SearchAppsFragment extends BaseFragment {
     private void fetchSearchAppsList(boolean shouldIterate) {
         if (!shouldIterate) {
             try {
+                iterator = null;
                 iterator = getIterator(getQuery());
                 iterator.setEnableFilter(true);
                 iterator.setFilter(new Filter(getContext()).getFilterPreferences());
+                relatedTags = getRelatedTags();
             } catch (Exception e) {
                 processException(e);
             }
@@ -195,6 +205,9 @@ public class SearchAppsFragment extends BaseFragment {
         disposable.add(Observable.fromCallable(() -> searchTask.getSearchResults(iterator))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
+                .doOnSubscribe(subscription -> {
+                    notifyStatus(coordinatorLayout, null, getString(R.string.toast_loading_apps));
+                })
                 .subscribe(appList -> {
                     if (view != null) {
                         if (shouldIterate) {
@@ -206,6 +219,8 @@ public class SearchAppsFragment extends BaseFragment {
                             switchViews(false);
                             if (endlessAppsAdapter != null)
                                 endlessAppsAdapter.addData(appList);
+                            if (!relatedTags.isEmpty())
+                                setupTags();
                         }
                     }
                 }, err -> {
@@ -251,6 +266,43 @@ public class SearchAppsFragment extends BaseFragment {
         });
     }
 
+    private void setupTags() {
+        relatedChipGroup.removeAllViews();
+        int i = 0;
+        for (String tag : relatedTags) {
+            final int color = ViewUtil.getSolidColors(i++);
+            Chip chip = new Chip(context);
+            chip.setText(tag);
+            chip.setChipStrokeWidth(3);
+            chip.setChipStrokeColor(ColorStateList.valueOf(color));
+            chip.setChipBackgroundColor(ColorStateList.valueOf(ColorUtils.setAlphaComponent(color, 100)));
+            chip.setRippleColor(ColorStateList.valueOf(ColorUtils.setAlphaComponent(color, 200)));
+            chip.setCheckedIcon(context.getDrawable(R.drawable.ic_chip_checked));
+            chip.setOnClickListener(v -> {
+                if (chip.isChecked()) {
+                    query = query + " " + tag;
+                    fetchData();
+                    searchQuery.setText(query);
+                } else {
+                    query = query.replace(tag, "");
+                    fetchData();
+                    searchQuery.setText(query);
+                }
+            });
+            relatedChipGroup.addView(chip);
+        }
+    }
+
+    @Override
+    protected void notifyStatus(@NonNull CoordinatorLayout coordinatorLayout, @Nullable View anchorView,
+                                @NonNull String message) {
+        Snackbar snackbar = Snackbar.make(coordinatorLayout, message, Snackbar.LENGTH_SHORT);
+        if (anchorView != null)
+            snackbar.setAnchorView(anchorView);
+        snackbar.setAnchorView(anchorView);
+        snackbar.show();
+    }
+
     @Override
     protected void fetchData() {
         fetchSearchAppsList(false);
@@ -260,7 +312,7 @@ public class SearchAppsFragment extends BaseFragment {
     protected View.OnClickListener errRetry() {
         return v -> {
             if (NetworkUtil.isConnected(context)) {
-                fetchSearchAppsList(false);
+                fetchData();
             } else {
                 setErrorView(ErrorType.NO_NETWORK);
             }

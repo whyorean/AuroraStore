@@ -58,6 +58,20 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_xxsmall"
+                    android:clipToPadding="false"
+                    android:paddingStart="@dimen/margin_normal"
+                    android:scrollbars="none">
+
+                    <com.google.android.material.chip.ChipGroup
+                        android:id="@+id/related_chip_group"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </HorizontalScrollView>
+
                 <View
                     android:id="@+id/gradient_view"
                     android:layout_width="match_parent"
@@ -70,8 +84,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="-32dp"
+                    android:overScrollMode="never"
                     android:clipToPadding="false"
                     android:paddingTop="@dimen/margin_small"
+                    android:splitMotionEvents="false"
                     android:scrollbarStyle="outsideOverlay"
                     android:scrollbars="vertical"
                     tools:listitem="@layout/item_installed" />

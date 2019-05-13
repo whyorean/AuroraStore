@@ -340,4 +340,5 @@
     <string name="toast_apk_whitelisted">Whitelisted</string>
     <string name="toast_apk_copy_success">APK copied successfully</string>
     <string name="toast_apk_copy_failure">Failed to copy APK</string>
+    <string name="toast_loading_apps">Loading more apps..</string>
 </resources>

@@ -39,6 +39,7 @@ import com.aurora.store.ErrorType;
 import com.aurora.store.R;
 import com.aurora.store.activity.AccountsActivity;
 import com.aurora.store.api.PlayStoreApiAuthenticator;
+import com.aurora.store.api.SearchIterator2;
 import com.aurora.store.events.Event;
 import com.aurora.store.events.Events;
 import com.aurora.store.events.RxBus;
@@ -50,11 +51,12 @@ import com.aurora.store.utility.Log;
 import com.aurora.store.view.ErrorView;
 import com.dragons.aurora.playstoreapiv2.AuthException;
 import com.dragons.aurora.playstoreapiv2.IteratorGooglePlayException;
-import com.dragons.aurora.playstoreapiv2.SearchIterator;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import io.reactivex.Flowable;
@@ -68,7 +70,6 @@ import static com.aurora.store.utility.Util.noNetwork;
 public abstract class BaseFragment extends Fragment {
 
     protected CustomAppListIterator iterator;
-    protected CompositeDisposable disposableBus = new CompositeDisposable();
     protected CompositeDisposable disposable = new CompositeDisposable();
 
     @BindView(R.id.coordinator)
@@ -80,18 +81,26 @@ public abstract class BaseFragment extends Fragment {
     @BindView(R.id.err_view)
     ViewGroup layoutError;
 
+    private SearchIterator2 searchIterator;
+    private List<String> relatedTags = new ArrayList<>();
+    private CompositeDisposable disposableBus = new CompositeDisposable();
     private Context context;
     private BottomNavigationView bottomNavigationView;
     private PlayStoreApiAuthenticator playStoreApiAuthenticator;
+
+    public List<String> getRelatedTags() {
+        return relatedTags;
+    }
 
     void setBaseBottomNavigationView(BottomNavigationView bottomNavigationView) {
         this.bottomNavigationView = bottomNavigationView;
     }
 
     CustomAppListIterator getIterator(String query) {
-        CustomAppListIterator iterator;
         try {
-            iterator = new CustomAppListIterator(new SearchIterator(new PlayStoreApiAuthenticator(getContext()).getApi(), query));
+            searchIterator = new SearchIterator2(new PlayStoreApiAuthenticator(context).getApi(), query);
+            iterator = new CustomAppListIterator(searchIterator);
+            relatedTags = searchIterator.getRelatedTags();
             return iterator;
         } catch (Exception e) {
             processException(e);
@@ -181,6 +190,8 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
+        searchIterator = null;
+        iterator = null;
         disposable.clear();
     }
 
@@ -190,8 +201,8 @@ public abstract class BaseFragment extends Fragment {
         disposableBus.clear();
     }
 
-    void notifyStatus(@NonNull CoordinatorLayout coordinatorLayout, @Nullable View anchorView,
-                      @NonNull String message) {
+    protected void notifyStatus(@NonNull CoordinatorLayout coordinatorLayout, @Nullable View anchorView,
+                              @NonNull String message) {
         Snackbar snackbar = Snackbar.make(coordinatorLayout, message, Snackbar.LENGTH_LONG);
         if (anchorView != null)
             snackbar.setAnchorView(anchorView);

@@ -23,11 +23,11 @@
 
 package com.aurora.store.iterator;
 
+import com.aurora.store.api.AppListIterator2;
 import com.aurora.store.model.App;
 import com.aurora.store.model.AppBuilder;
 import com.aurora.store.model.Filter;
 import com.aurora.store.utility.Log;
-import com.dragons.aurora.playstoreapiv2.AppListIterator;
 import com.dragons.aurora.playstoreapiv2.DocV2;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 
@@ -39,9 +39,9 @@ public class CustomAppListIterator implements Iterator {
 
     protected boolean enableFilter = false;
     protected Filter filter = new Filter();
-    protected AppListIterator iterator;
+    protected AppListIterator2 iterator;
 
-    public CustomAppListIterator(com.dragons.aurora.playstoreapiv2.AppListIterator iterator) {
+    public CustomAppListIterator(AppListIterator2 iterator) {
         this.iterator = iterator;
     }
 
