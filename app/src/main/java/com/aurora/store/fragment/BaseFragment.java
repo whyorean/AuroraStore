@@ -130,8 +130,7 @@ public abstract class BaseFragment extends Fragment {
     }
 
     protected void notifyTokenExpired() {
-        if (!AuroraApplication.isTokenRefreshing())
-            notifyStatus(coordinatorLayout, bottomNavigationView, context.getString(R.string.action_token_expired));
+        notifyStatus(coordinatorLayout, bottomNavigationView, context.getString(R.string.action_token_expired));
     }
 
     @Override
@@ -219,7 +218,6 @@ public abstract class BaseFragment extends Fragment {
             ((Button) v).setText(getString(R.string.action_logging_in));
             ((Button) v).setEnabled(false);
             if (Accountant.isLoggedIn(context)) {
-                //eventListenerImpl.notifyLoggedIn();
                 RxBus.publish(new Event(Events.LOGGED_IN));
                 return;
             }
@@ -287,7 +285,6 @@ public abstract class BaseFragment extends Fragment {
             RxBus.publish(new Event(Events.LOGGED_OUT));
         } else if (e.getCode() == 401 && Accountant.isDummy(context)) {
             Log.i("Token is stale");
-            RxBus.publish(new Event(Events.TOKEN_EXPIRED));
             refreshToken();
         } else {
             ContextUtil.toast(context, R.string.error_incorrect_password);
@@ -328,7 +325,10 @@ public abstract class BaseFragment extends Fragment {
                     .refreshToken())
                     .subscribeOn(Schedulers.io())
                     .observeOn(Schedulers.computation())
-                    .doOnSubscribe(disposable1 -> AuroraApplication.setTokenRefreshing(true))
+                    .doOnSubscribe(subscription -> {
+                        RxBus.publish(new Event(Events.TOKEN_EXPIRED));
+                        AuroraApplication.setTokenRefreshing(true);
+                    })
                     .doOnTerminate(() -> AuroraApplication.setTokenRefreshing(false))
                     .subscribe((success) -> {
                         if (success) {
