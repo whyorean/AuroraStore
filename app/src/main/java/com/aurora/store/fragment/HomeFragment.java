@@ -64,6 +64,8 @@ public class HomeFragment extends BaseFragment {
     RecyclerView recyclerTopApps;
     @BindView(R.id.recycler_top_games)
     RecyclerView recyclerTopGames;
+    @BindView(R.id.recycler_top_family)
+    RecyclerView recyclerTopFamily;
 
     @BindView(R.id.btn_all_categories)
     MaterialButton btnAllCategories;
@@ -71,10 +73,13 @@ public class HomeFragment extends BaseFragment {
     MaterialButton btnTopApps;
     @BindView(R.id.btn_top_games)
     MaterialButton btnTopGames;
+    @BindView(R.id.btn_top_family)
+    MaterialButton btnTopFamily;
 
     private Context context;
     private FeaturedAppsAdapter topAppsAdapter;
     private FeaturedAppsAdapter topGamesAdapter;
+    private FeaturedAppsAdapter topFamilyAdapter;
     private BottomNavigationView bottomNavigationView;
     private CategoryManager categoryManager;
     private FeaturedAppsTask featuredAppsTask;
@@ -123,10 +128,12 @@ public class HomeFragment extends BaseFragment {
     @Override
     public void onResume() {
         super.onResume();
-        if (topAppsAdapter == null || topAppsAdapter.isDataEmpty())
+        if (topAppsAdapter.isDataEmpty())
             addApps();
-        if (topGamesAdapter == null || topGamesAdapter.isDataEmpty())
+        if (topGamesAdapter.isDataEmpty())
             addGames();
+        if (topFamilyAdapter.isDataEmpty())
+            addFamily();
     }
 
     @Override
@@ -147,11 +154,13 @@ public class HomeFragment extends BaseFragment {
         btnAllCategories.setOnClickListener(v -> getAllCategories());
         btnTopApps.setOnClickListener(v -> getCategoryApps("APPLICATION"));
         btnTopGames.setOnClickListener(v -> getCategoryApps("GAME"));
+        btnTopFamily.setOnClickListener(v -> getCategoryApps("FAMILY"));
     }
 
     private void setupRecyclers() {
         topAppsAdapter = new FeaturedAppsAdapter(context);
         topGamesAdapter = new FeaturedAppsAdapter(context);
+        topFamilyAdapter = new FeaturedAppsAdapter(context);
 
         recyclerTopCategories.setAdapter(new TopCategoriesAdapter(this));
         recyclerTopCategories.setLayoutManager(new LinearLayoutManager(context, RecyclerView.HORIZONTAL, false));
@@ -159,9 +168,12 @@ public class HomeFragment extends BaseFragment {
         recyclerTopApps.setLayoutManager(new LinearLayoutManager(context, RecyclerView.HORIZONTAL, false));
         recyclerTopGames.setAdapter(topGamesAdapter);
         recyclerTopGames.setLayoutManager(new LinearLayoutManager(context, RecyclerView.HORIZONTAL, false));
+        recyclerTopFamily.setAdapter(topFamilyAdapter);
+        recyclerTopFamily.setLayoutManager(new LinearLayoutManager(context, RecyclerView.HORIZONTAL, false));
 
         Util.attachSnapPager(context, recyclerTopApps);
         Util.attachSnapPager(context, recyclerTopGames);
+        Util.attachSnapPager(context, recyclerTopFamily);
     }
 
     private void addApps() {
@@ -186,6 +198,17 @@ public class HomeFragment extends BaseFragment {
                 .subscribe((appList) -> {
                     switchViews(false);
                     topGamesAdapter.addData(appList);
+                }, err -> Log.d(err.getMessage())));
+    }
+
+    private void addFamily() {
+        disposable.add(Observable.fromCallable(() -> featuredAppsTask
+                .getApps("FAMILY", GooglePlayAPI.SUBCATEGORY.TOP_GROSSING))
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe((appList) -> {
+                    switchViews(false);
+                    topFamilyAdapter.addData(appList);
                 }, err -> Log.d(err.getMessage())));
     }
 
@@ -240,6 +263,7 @@ public class HomeFragment extends BaseFragment {
         ContextUtil.runOnUiThread(() -> {
             addApps();
             addGames();
+            addFamily();
         });
     }
 }

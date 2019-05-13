@@ -116,9 +116,10 @@
     <string name="category_topGrossing">Top grossing</string>
     <string name="category_trending">Trending</string>
 
-    <string name="cat_top_apps">Top Apps</string>
-    <string name="cat_top_categories">Top Categories</string>
-    <string name="cat_top_games">Top Games</string>
+    <string name="cat_top_apps">Top apps</string>
+    <string name="cat_top_categories">Top categories</string>
+    <string name="cat_top_games">Top games</string>
+    <string name="cat_top_family">Top family apps</string>
 
     <string name="delete">Delete</string>
     <string name="desc_perm">Aurora Store uses following permissions</string>
