@@ -324,7 +324,7 @@ public class Util {
     }
 
     public static boolean shouldDeleteApk(Context context) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P && Util.isRootInstallEnabled(context)) {
             return true;
         } else
             return getPrefs(context).getBoolean(Constants.PREFERENCE_INSTALLATION_DELETE, false);

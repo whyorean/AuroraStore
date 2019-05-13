@@ -259,7 +259,7 @@
     <string name="pref_filter_search_title">Use non-persistent search filter</string>
     <string name="pref_install_auto_summary">Apps are installed instantly after download completes</string>
     <string name="pref_install_auto_title">Auto install APKs post-download</string>
-    <string name="pref_install_delete_summary">On devices running android pie APKs gets deleted by default</string>
+    <string name="pref_install_delete_summary">On devices running Android Pie + with root install method, APKs get deleted by default</string>
     <string name="pref_install_delete_title">Delete apk post-install</string>
     <string name="pref_install_type_summary">Use native installer to install packages, breaks bundled apk installations</string>
     <string name="pref_install_type_title">Enforce native installer</string>
