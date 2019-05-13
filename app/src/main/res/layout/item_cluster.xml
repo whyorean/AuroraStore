@@ -35,7 +35,7 @@
             android:layout_height="@dimen/icon_size_big"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/margin_small"
-            android:layout_marginBottom="@dimen/margin_xsmall"
+            android:layout_marginBottom="@dimen/margin_xxsmall"
             android:contentDescription="@string/content_description_icon"
             android:padding="@dimen/margin_small" />
 
@@ -44,14 +44,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/app_icon"
-            android:layout_margin="@dimen/margin_xxsmall"
+            android:layout_marginStart="@dimen/margin_xsmall"
+            android:layout_marginEnd="@dimen/margin_xsmall"
+            android:layout_marginBottom="@dimen/margin_xxsmall"
             android:ellipsize="end"
+            android:gravity="center"
             android:maxLines="2"
-            android:minHeight="48dp"
+            android:textStyle="bold"
+            android:minHeight="42dp"
             android:textAlignment="center"
             android:textColor="?android:attr/textColorPrimary"
             android:textSize="14sp"
-            app:autoSizeMaxTextSize="16sp"
+            app:autoSizeMaxTextSize="15sp"
             app:autoSizeMinTextSize="12sp"
             app:autoSizeTextType="uniform" />
 
