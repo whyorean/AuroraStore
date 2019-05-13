@@ -63,6 +63,7 @@ public class UIFragment extends PreferenceFragmentCompat implements SharedPrefer
             case Constants.PREFERENCE_FEATURED_SNAP:
             case Constants.PREFERENCE_UI_CARD_STYLE:
             case Constants.PREFERENCE_TAB_MODE:
+            case Constants.PREFERENCE_UI_TRANSPARENT:
                 SettingsActivity.shouldRestart = true;
                 break;
         }

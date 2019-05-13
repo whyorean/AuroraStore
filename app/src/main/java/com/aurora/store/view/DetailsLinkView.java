@@ -2,6 +2,7 @@ package com.aurora.store.view;
 
 import android.content.Context;
 import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ImageView;
@@ -12,6 +13,7 @@ import androidx.annotation.ColorRes;
 import androidx.core.graphics.ColorUtils;
 
 import com.aurora.store.R;
+import com.aurora.store.utility.Util;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -90,10 +92,13 @@ public class DetailsLinkView extends RelativeLayout {
     }
 
     public void build() {
+        boolean isTransparent = Util.isTransparentStyle(getContext());
+        int color = getColor();
         txtLinkTitle.setText(getLinkText());
         imgLink.setImageDrawable(getContext().getDrawable(getLinkImageId()));
         layoutLink.setOnClickListener(getOnClickListener());
-        imgLink.setColorFilter(getColor());
-        layoutLink.setBackgroundTintList(ColorStateList.valueOf(ColorUtils.setAlphaComponent(getColor(), 60)));
+        imgLink.setColorFilter(isTransparent ? color : Color.WHITE);
+        layoutLink.setBackgroundTintList(ColorStateList.valueOf(
+                ColorUtils.setAlphaComponent(getColor(), isTransparent ? 60 : 255)));
     }
 }
