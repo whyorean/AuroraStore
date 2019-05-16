@@ -68,12 +68,6 @@
 <string name="category_topFree">"Top Bezplatne"</string>
 <string name="category_topGrossing">"Top Grossing"</string>
 <string name="category_trending">"Trending"</string>
-<string name="chip_all_apps">"Všetky kategórie"</string>
-<string name="chip_all_family">"Všetky rodiny"</string>
-<string name="chip_all_games">"Všetky hry"</string>
-<string name="chip_top_free">"Top Bezplatne"</string>
-<string name="chip_top_grossing">"Top Grossing"</string>
-<string name="chip_top_trending">"Trending"</string>
 <string name="delete">"vymazať"</string>
 <string name="desc_perm">"Aurora Store používa nasledujúce povolenia"</string>
 <string name="details_appReviewsAll">"Prečítajte si všetky recenzie"</string>
@@ -176,7 +170,6 @@
 <string name="pref_filter_search_title">"Použite filter s nepretržitým vyhľadávaním"</string>
 <string name="pref_install_auto_summary">"Aplikácie sa inštalujú okamžite po dokončení sťahovania"</string>
 <string name="pref_install_auto_title">"Automaticky nainštalovať APKs Post-Download"</string>
-<string name="pref_install_delete_summary">"Na zariadeniach so systémom Android Pie sa APK predvolene vymažú"</string>
 <string name="pref_install_delete_title">"Odstráňte Apk Post-Install"</string>
 <string name="pref_install_mode_summary">"Vyberte režim inštalácie APK"</string>
 <string name="pref_install_mode_title">"Spôsob inštalácie"</string>
