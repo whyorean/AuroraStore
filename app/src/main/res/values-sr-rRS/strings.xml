@@ -68,12 +68,6 @@
 <string name="category_topFree">"Топ Фрее"</string>
 <string name="category_topGrossing">"Топ Гроссинг"</string>
 <string name="category_trending">"Трендинг"</string>
-<string name="chip_all_apps">"Све категорије"</string>
-<string name="chip_all_family">"Алл Фамили"</string>
-<string name="chip_all_games">"Све игре"</string>
-<string name="chip_top_free">"Топ Фрее"</string>
-<string name="chip_top_grossing">"Топ Гроссинг"</string>
-<string name="chip_top_trending">"Трендинг"</string>
 <string name="delete">"Обриши"</string>
 <string name="desc_perm">"Аурора Сторе користи следеће дозволе"</string>
 <string name="details_appReviewsAll">"Прочитајте све рецензије"</string>
@@ -176,7 +170,6 @@
 <string name="pref_filter_search_title">"Користите непостојан филтер претраживања"</string>
 <string name="pref_install_auto_summary">"Апликације се инсталирају одмах након довршетка преузимања"</string>
 <string name="pref_install_auto_title">"Ауто Инсталл АПКс Пост-Довнлоад"</string>
-<string name="pref_install_delete_summary">"На уређајима који користе Андроид Пие АПК-ове се аутоматски бришу"</string>
 <string name="pref_install_delete_title">"Обриши Апк Пост-Инсталл"</string>
 <string name="pref_install_mode_summary">"Изаберите начин инсталације АПК-а"</string>
 <string name="pref_install_mode_title">"Метод инсталације"</string>
