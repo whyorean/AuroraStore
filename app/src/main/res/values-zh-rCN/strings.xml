@@ -68,12 +68,6 @@
 <string name="category_topFree">"顶级免费"</string>
 <string name="category_topGrossing">"上升最快"</string>
 <string name="category_trending">"趋势"</string>
-<string name="chip_all_apps">"所有类别"</string>
-<string name="chip_all_family">"全家人"</string>
-<string name="chip_all_games">"所有游戏"</string>
-<string name="chip_top_free">"顶级免费"</string>
-<string name="chip_top_grossing">"上升最快"</string>
-<string name="chip_top_trending">"趋势"</string>
 <string name="delete">"删除"</string>
 <string name="desc_perm">"Aurora商店使用以下权限"</string>
 <string name="details_appReviewsAll">"阅读所有评论"</string>
@@ -177,7 +171,6 @@
 <string name="pref_filter_search_title">"使用非持久搜索过滤器"</string>
 <string name="pref_install_auto_summary">"下载完成后立即安装应用程序"</string>
 <string name="pref_install_auto_title">"下载后自动安装APK"</string>
-<string name="pref_install_delete_summary">"在运行Android Pie的设备上，默认情况下会删除APK"</string>
 <string name="pref_install_delete_title">"安装后删除Apk"</string>
 <string name="pref_install_mode_summary">"选择APK安装方式"</string>
 <string name="pref_install_mode_title">"安装方式"</string>
