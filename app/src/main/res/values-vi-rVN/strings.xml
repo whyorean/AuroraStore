@@ -68,12 +68,6 @@
 <string name="category_topFree">"Top miễn phí"</string>
 <string name="category_topGrossing">"Tổng doanh thu hàng đầu"</string>
 <string name="category_trending">"Xu hướng"</string>
-<string name="chip_all_apps">"Tất cả danh mục"</string>
-<string name="chip_all_family">"Cả gia đình"</string>
-<string name="chip_all_games">"Tất cả các trò chơi"</string>
-<string name="chip_top_free">"Top miễn phí"</string>
-<string name="chip_top_grossing">"Tổng doanh thu hàng đầu"</string>
-<string name="chip_top_trending">"Xu hướng"</string>
 <string name="delete">"Xóa bỏ"</string>
 <string name="desc_perm">"Aurora Store sử dụng các quyền sau"</string>
 <string name="details_appReviewsAll">"Đọc tất cả các đánh giá"</string>
@@ -176,7 +170,6 @@
 <string name="pref_filter_search_title">"Sử dụng Bộ lọc tìm kiếm không liên tục"</string>
 <string name="pref_install_auto_summary">"Ứng dụng được cài đặt ngay lập tức sau khi tải xuống hoàn tất"</string>
 <string name="pref_install_auto_title">"Tự động cài đặt APK sau khi tải xuống"</string>
-<string name="pref_install_delete_summary">"Trên các thiết bị chạy APK Android Pie bị xóa theo mặc định"</string>
 <string name="pref_install_delete_title">"Xóa Apk sau khi cài đặt"</string>
 <string name="pref_install_mode_summary">"Chọn Chế độ cài đặt APK"</string>
 <string name="pref_install_mode_title">"Phương pháp cài đặt"</string>
