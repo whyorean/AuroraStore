@@ -68,12 +68,6 @@
 <string name="category_topFree">"무료 Top"</string>
 <string name="category_topGrossing">"가장 많은 돈을 벌어 들인"</string>
 <string name="category_trending">"인기 급상승"</string>
-<string name="chip_all_apps">"모든 카테고리"</string>
-<string name="chip_all_family">"모든 가족"</string>
-<string name="chip_all_games">"모든 게임들"</string>
-<string name="chip_top_free">"무료 Top"</string>
-<string name="chip_top_grossing">"가장 많은 돈을 벌어 들인"</string>
-<string name="chip_top_trending">"인기 급상승"</string>
 <string name="delete">"지우다"</string>
 <string name="desc_perm">"Aurora Store는 다음 사용 권한을 사용합니다."</string>
 <string name="details_appReviewsAll">"전체 리뷰 읽기"</string>
@@ -176,7 +170,6 @@
 <string name="pref_filter_search_title">"비 지속 검색 필터 사용"</string>
 <string name="pref_install_auto_summary">"다운로드가 완료되면 즉시 앱이 설치됩니다."</string>
 <string name="pref_install_auto_title">"다운로드 후 자동 설치 APK"</string>
-<string name="pref_install_delete_summary">"Android Pie를 실행하는 기기에서 APK가 기본적으로 삭제됩니다."</string>
 <string name="pref_install_delete_title">"사후 설치 삭제"</string>
 <string name="pref_install_mode_summary">"APK 설치 모드 선택"</string>
 <string name="pref_install_mode_title">"설치 방법"</string>
