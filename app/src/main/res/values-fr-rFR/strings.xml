@@ -72,12 +72,6 @@
 <string name="category_topFree">"Top gratuit"</string>
 <string name="category_topGrossing">"Top rentable"</string>
 <string name="category_trending">"Tendances"</string>
-<string name="chip_all_apps">"Toutes catégories"</string>
-<string name="chip_all_family">"Toute la famille"</string>
-<string name="chip_all_games">"Tous les jeux"</string>
-<string name="chip_top_free">"Top gratuit"</string>
-<string name="chip_top_grossing">"Top rentable"</string>
-<string name="chip_top_trending">"Tendances"</string>
 <string name="delete">"Effacer"</string>
 <string name="desc_perm">"Aurora Store utilise les autorisations suivantes"</string>
 <string name="details_appReviewsAll">"Lire toutes les critiques"</string>
@@ -182,7 +176,6 @@ Gardez à l'esprit que le téléchargement de versions arbitraires d'application
 <string name="pref_filter_search_title">"Utiliser un filtre de recherche non persistant"</string>
 <string name="pref_install_auto_summary">"Les applications sont installées instantanément une fois le téléchargement terminé."</string>
 <string name="pref_install_auto_title">"Auto installation des APKs après téléchargement"</string>
-<string name="pref_install_delete_summary">"Sur les appareils exécutant Android Pie, les APK sont supprimés par défaut"</string>
 <string name="pref_install_delete_title">"Supprimer les APK après installation"</string>
 <string name="pref_install_mode_summary">"Sélectionnez le mode d'installation des APK"</string>
 <string name="pref_install_mode_title">"Méthode d'installation"</string>
