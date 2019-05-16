@@ -70,14 +70,6 @@
 <!-- Fuzzy -->
 <string name="category_topGrossing">"Mais rentaveis"</string>
 <string name="category_trending">"Tendências"</string>
-<string name="chip_all_apps">"Todas as categorias"</string>
-<string name="chip_all_family">"Toda a familia"</string>
-<string name="chip_all_games">"Todos os jogos"</string>
-<string name="chip_top_free">"Top grátis"</string>
-
-<!-- Fuzzy -->
-<string name="chip_top_grossing">"Mais rentaveis"</string>
-<string name="chip_top_trending">"Tendências"</string>
 <string name="delete">"Apagar"</string>
 <string name="desc_perm">"A Loja Aurora usa as seguintes permissões"</string>
 <string name="details_appReviewsAll">"Ler todos os comentários"</string>
@@ -184,7 +176,6 @@ Tenha em mente que a transferencia de versões arbitrárias de aplicações não
 <string name="pref_filter_search_title">"Use o filtro de pesquisa não persistente"</string>
 <string name="pref_install_auto_summary">"As aplicações são instalados instantaneamente após concluir a transferência"</string>
 <string name="pref_install_auto_title">"Instalação automática de APKs pós-transferência"</string>
-<string name="pref_install_delete_summary">"Em dispositivos que com Android Pie, os APKs são eleminados por predefinição"</string>
 <string name="pref_install_delete_title">"Eliminar Apk após instalação"</string>
 <string name="pref_install_mode_summary">"Selecione o modo de instalação do APK"</string>
 <string name="pref_install_mode_title">"Método de instalação"</string>
