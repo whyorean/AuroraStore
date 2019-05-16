@@ -70,12 +70,6 @@
 <string name="category_topFree">"Melhores gratuitos"</string>
 <string name="category_topGrossing">"Mais rentáveis"</string>
 <string name="category_trending">"Tendências"</string>
-<string name="chip_all_apps">"Todas as categorias"</string>
-<string name="chip_all_family">"Para a família"</string>
-<string name="chip_all_games">"Todos os jogos"</string>
-<string name="chip_top_free">"Melhores grátis"</string>
-<string name="chip_top_grossing">"Mais rentáveis"</string>
-<string name="chip_top_trending">"Tendências"</string>
 <string name="delete">"Apagar"</string>
 <string name="desc_perm">"A Aurora Store usa as seguintes permissões"</string>
 <string name="details_appReviewsAll">"Ler todas as resenhas"</string>
@@ -180,7 +174,6 @@ Lembre-se que fazer o download de versões arbitrárias de aplicativos não é s
 <string name="pref_filter_search_title">"Usar filtros de pesquisa não-persistentes"</string>
 <string name="pref_install_auto_summary">"Os aplicativos são instalados logo após o término do download"</string>
 <string name="pref_install_auto_title">"Instalar APKs automaticamente após download"</string>
-<string name="pref_install_delete_summary">"Em aparelhos rodando Android Pie, APKs são apagadas por padrão"</string>
 <string name="pref_install_delete_title">"Apagar APK após instalação"</string>
 <string name="pref_install_mode_summary">"Selecionar modo de instalação de APK"</string>
 <string name="pref_install_mode_title">"Método de instalação"</string>
@@ -285,6 +278,6 @@ Lembre-se que fazer o download de versões arbitrárias de aplicativos não é s
 
 <!-- Precisa de alteração no código de localização para incluir o valor a ser expandido (nome do aplicativo). Não é possível traduzir corretamente sem essa alteração. -->
 <!-- Fuzzy -->
-<string name="error_app_download">"Não foi possível fazer o download"</string>
+<string name="error_app_download">"não pode ser baixado"</string>
 <string name="details_new_changes">"O que há de novo"</string>
 </resources>
