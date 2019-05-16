@@ -68,12 +68,6 @@
 <string name="category_topFree">"Top Free"</string>
 <string name="category_topGrossing">"Pelningiausia"</string>
 <string name="category_trending">"Tendencijos"</string>
-<string name="chip_all_apps">"Visos kategorijos"</string>
-<string name="chip_all_family">"Visa šeima"</string>
-<string name="chip_all_games">"Visi žaidimai"</string>
-<string name="chip_top_free">"Top Free"</string>
-<string name="chip_top_grossing">"Pelningiausia"</string>
-<string name="chip_top_trending">"Tendencijos"</string>
 <string name="delete">"Ištrinti"</string>
 <string name="desc_perm">"Aurora Store“ naudoja šiuos leidimus"</string>
 <string name="details_appReviewsAll">"Skaityti visas apžvalgas"</string>
@@ -176,7 +170,6 @@
 <string name="pref_filter_search_title">"Naudokite nenutrūkstamą paieškos filtrą"</string>
 <string name="pref_install_auto_summary">"Programos yra įdiegtos iškart, kai baigsite atsisiųsti"</string>
 <string name="pref_install_auto_title">"Automatinis įdiegimas APK po atsisiuntimo"</string>
-<string name="pref_install_delete_summary">"Įrenginiuose, kuriuose veikia Android Pie“, APK APK“ ištrinami pagal nutylėjimą"</string>
 <string name="pref_install_delete_title">"Ištrinti Apk Post-Install“"</string>
 <string name="pref_install_mode_summary">"Pasirinkite APK“ diegimo režimą"</string>
 <string name="pref_install_mode_title">"Montavimo metodas"</string>
