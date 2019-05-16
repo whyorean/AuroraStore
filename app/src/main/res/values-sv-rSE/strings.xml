@@ -68,12 +68,6 @@
 <string name="category_topFree">"Top Free"</string>
 <string name="category_topGrossing">"Bästsäljare"</string>
 <string name="category_trending">"Trend"</string>
-<string name="chip_all_apps">"alla kategorier"</string>
-<string name="chip_all_family">"Hela familjen"</string>
-<string name="chip_all_games">"Alla spel"</string>
-<string name="chip_top_free">"Top Free"</string>
-<string name="chip_top_grossing">"Bästsäljare"</string>
-<string name="chip_top_trending">"Trend"</string>
 <string name="delete">"Radera"</string>
 <string name="desc_perm">"Aurora Store använder följande tillstånd"</string>
 <string name="details_appReviewsAll">"Läs alla recensioner"</string>
@@ -176,7 +170,6 @@
 <string name="pref_filter_search_title">"Använd icke-ihållande sökfilter"</string>
 <string name="pref_install_auto_summary">"Appar installeras direkt efter att nedladdningen är klar"</string>
 <string name="pref_install_auto_title">"Auto Installera APKs Post-Download"</string>
-<string name="pref_install_delete_summary">"På enheter som kör Android Pie-APK-filer tas bort som standard"</string>
 <string name="pref_install_delete_title">"Ta bort Apk Post-Install"</string>
 <string name="pref_install_mode_summary">"Välj läge för APK-installation"</string>
 <string name="pref_install_mode_title">"Installationsmetod"</string>
