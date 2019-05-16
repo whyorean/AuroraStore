@@ -51,7 +51,7 @@ Material Design and runs on all devices running Android 5.0+.<br/>
 
   * Aurora OSS : [Nightlies](http://auroraoss.com/Nightly/)
   * XDA Forum : [Thread](https://forum.xda-developers.com/android/apps-games/galaxy-playstore-alternative-t3739733)
-  * F-Droid : [Link](https://f-droid.org/en/packages/com.dragons.aurora/) (Links to v2 of Aurora Store, will update once v3 makes it to FDroid)
+  * F-Droid : [Link](https://f-droid.org/en/packages/com.aurora.store/)
   
   `Aurora Store v3 is still in development ! Bugs are to be expected any bug reports are appreciated.`
 
