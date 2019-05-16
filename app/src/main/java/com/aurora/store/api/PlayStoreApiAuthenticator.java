@@ -28,6 +28,7 @@ import android.content.SharedPreferences;
 import android.text.TextUtils;
 
 import com.aurora.store.Constants;
+import com.aurora.store.TokenDispenserMirrors;
 import com.aurora.store.adapter.OkHttpClientAdapter;
 import com.aurora.store.exception.CredentialsEmptyException;
 import com.aurora.store.manager.LocaleManager;
@@ -53,6 +54,7 @@ public class PlayStoreApiAuthenticator {
 
     private static final int RETRIES = 5;
     private static final String tokenDispenserURL = "http://www.auroraoss.com:8080";
+    private static TokenDispenserMirrors tokenDispenserMirrors = new TokenDispenserMirrors();
     private volatile static GooglePlayAPI api;
 
     private Context context;
@@ -212,7 +214,7 @@ public class PlayStoreApiAuthenticator {
         loginInfo.setGsfId(prefs.getString(Accountant.GSF_ID, ""));
         loginInfo.setToken(prefs.getString(Accountant.AUTH_TOKEN, ""));
         if (TextUtils.isEmpty(loginInfo.getTokenDispenserUrl())) {
-            loginInfo.setTokenDispenserUrl(tokenDispenserURL);
+            loginInfo.setTokenDispenserUrl(tokenDispenserMirrors.get());
         }
     }
 
