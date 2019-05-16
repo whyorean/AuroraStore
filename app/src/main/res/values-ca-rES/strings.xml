@@ -68,12 +68,6 @@
 <string name="category_topFree">"Millors gratuïts"</string>
 <string name="category_topGrossing">"Top recaptació"</string>
 <string name="category_trending">"Tendències"</string>
-<string name="chip_all_apps">"Totes les categories"</string>
-<string name="chip_all_family">"Per a tota la família"</string>
-<string name="chip_all_games">"Tot jocs"</string>
-<string name="chip_top_free">"Millors gratuïts"</string>
-<string name="chip_top_grossing">"Top recaptació"</string>
-<string name="chip_top_trending">"Tendències"</string>
 <string name="delete">"Elimina"</string>
 <string name="desc_perm">"Aurora Store utilitza els permisos següents"</string>
 <string name="details_appReviewsAll">"Llegeix totes les valoracions"</string>
@@ -178,7 +172,6 @@ Tingueu en compte que Google Play Store no admet la baixada de versions arbitrà
 <string name="pref_filter_search_title">"Utilitza un filtre de cerca no persistent"</string>
 <string name="pref_install_auto_summary">"Les aplicacions s'instal·len instantàniament després d'haver completat la baixada"</string>
 <string name="pref_install_auto_title">"Instal·lació automàtica d'APK després de la baixada"</string>
-<string name="pref_install_delete_summary">"En els dispositius que executen Android Pie, els APK es suprimeixen per defecte"</string>
 <string name="pref_install_delete_title">"Elimina l'APK després de la instal·lació"</string>
 <string name="pref_install_mode_summary">"Trieu el mode d'instal·lació de l'APK"</string>
 <string name="pref_install_mode_title">"Mètode d'instal·lació"</string>
@@ -230,8 +223,8 @@ Tingueu en compte que Google Play Store no admet la baixada de versions arbitrà
 <string name="pref_ui_tab_mode_title">"Pestanyes desplaçables"</string>
 <string name="pref_ui_tab_mode_summary">"Activeu-lo per fer que les pestanyes es puguin desplaçar, es recomana per a dispositius amb pocs DPI"</string>
 <string name="about_app">"Aurora és una alternativa de codi obert a la Play Store.
- Us permet baixar aplicacions, proporciona actualitzacions d'aplicacions instal·lades i permet cercar aplicacions i jocs.
- També proporciona una llista de rastrejadors integrats en una aplicació."</string>
+         Us permet baixar aplicacions, proporciona actualitzacions d'aplicacions instal·lades i permet cercar aplicacions i jocs.
+         També proporciona una llista de rastrejadors integrats en una aplicació."</string>
 <string name="about_paypal">"Paypal"</string>
 <string name="about_paypal_summary">"Donatiu amb Paypal"</string>
 <string name="about_fdroid">"F-Droid"</string>
