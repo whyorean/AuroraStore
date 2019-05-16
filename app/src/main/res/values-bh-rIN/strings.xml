@@ -68,12 +68,6 @@
 <string name="category_topFree">"Top Free Nudes"</string>
 <string name="category_topGrossing">"Top Grossing"</string>
 <string name="category_trending">"Trending Porn"</string>
-<string name="chip_all_apps">"All Fuckgories"</string>
-<string name="chip_all_family">"All fucktard Family"</string>
-<string name="chip_all_games">"All fucking Games"</string>
-<string name="chip_top_free">"Top little bitch Free"</string>
-<string name="chip_top_grossing">"Top Grossing"</string>
-<string name="chip_top_trending">"Trending"</string>
 <string name="delete">"Delete"</string>
 <string name="desc_perm">"Koffrora Store uses the motherfucking permissions"</string>
 <string name="details_appReviewsAll">"Read all motherfucking reviews"</string>
@@ -178,7 +172,6 @@ Keep in mind that downloading arbitrary versions of stupid apps is not supported
 <string name="pref_filter_search_title">"Use Non-Fucking-Persistent Search Filter"</string>
 <string name="pref_install_auto_summary">"Apps are Asstalled instantly after download completes"</string>
 <string name="pref_install_auto_title">"Auto Install APKs Post-Download"</string>
-<string name="pref_install_delete_summary">"On devices running Android Pie, the fucking APKs gets deleted by default"</string>
 <string name="pref_install_delete_title">"Delete Apk Post-Asstall"</string>
 <string name="pref_install_mode_summary">"Select Mode of APK Asstallation"</string>
 <string name="pref_install_mode_title">"Asstallation Method"</string>
