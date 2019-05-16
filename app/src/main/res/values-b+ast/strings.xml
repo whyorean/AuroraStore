@@ -55,9 +55,6 @@
 <string name="availability_restriction_hardware_app">"El preséu nun ye compatible con esta versión."</string>
 <string name="category_appFree">"De baldre"</string>
 <string name="category_trending">"Tendencies"</string>
-<string name="chip_all_apps">"Toles estayes"</string>
-<string name="chip_all_games">"Tolos xuegos"</string>
-<string name="chip_top_trending">"Tendencies"</string>
 <string name="desc_perm">"Aurora Store usa los permisos de darréu"</string>
 <string name="details_appReviewsAll">"Lleer toles reseñes"</string>
 <string name="details_contains_ads">"Contién anuncios"</string>
@@ -165,8 +162,8 @@ Decátate que baxar versiones al debalu nun lo sofita la tienda Google Play. L'�
 <string name="pref_ui_tab_mode_title">"Llingüetes desplazables"</string>
 <string name="pref_ui_tab_mode_summary">"Fai que les llingüetes se desplacen. Aconséyase pa preseos con DPI baxu"</string>
 <string name="about_app">"Aurora Store ye una alternativa de códigu abiertu a la Play Store.
-Déxate baxar, anovar y guetar aplicaciones y xuegos.
-Tamién forne una llista de los rastrexadores incrustaos nes aplicaciones."</string>
+        Déxate baxar, anovar y guetar aplicaciones y xuegos.
+        Tamién forne una llista de los rastrexadores incrustaos nes aplicaciones."</string>
 <string name="about_paypal">"Paypal"</string>
 <string name="about_paypal_summary">"Dóname en Paypal"</string>
 <string name="about_fdroid">"F-Droid"</string>
