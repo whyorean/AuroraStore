@@ -68,12 +68,6 @@
 <string name="category_topFree">"トップフリー"</string>
 <string name="category_topGrossing">"トップグロシング"</string>
 <string name="category_trending">"トレンド"</string>
-<string name="chip_all_apps">"すべてのカテゴリ"</string>
-<string name="chip_all_family">"すべての家族"</string>
-<string name="chip_all_games">"すべてのゲーム"</string>
-<string name="chip_top_free">"トップフリー"</string>
-<string name="chip_top_grossing">"トップグロシング"</string>
-<string name="chip_top_trending">"トレンド"</string>
 <string name="delete">"削除する"</string>
 <string name="desc_perm">"Aurora Storeは以下の権限を使用します。"</string>
 <string name="details_appReviewsAll">"すべてのレビューを読む"</string>
@@ -176,7 +170,6 @@
 <string name="pref_filter_search_title">"非持続検索フィルタを使用"</string>
 <string name="pref_install_auto_summary">"ダウンロード完了後すぐにアプリがインストールされる"</string>
 <string name="pref_install_auto_title">"自動インストールAPKダウンロード後"</string>
-<string name="pref_install_delete_summary">"Android Pie APKを実行しているデバイスではデフォルトで削除されます"</string>
 <string name="pref_install_delete_title">"インストール後のApkの削除"</string>
 <string name="pref_install_mode_summary">"APKインストールモードの選択"</string>
 <string name="pref_install_mode_title">"インストール方法"</string>
