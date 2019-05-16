@@ -68,12 +68,6 @@
 <string name="category_topFree">"Топ безплатно"</string>
 <string name="category_topGrossing">"С най-големи приходи"</string>
 <string name="category_trending">"Тенденции"</string>
-<string name="chip_all_apps">"Всички категории"</string>
-<string name="chip_all_family">"Всички семейства"</string>
-<string name="chip_all_games">"Всички игри"</string>
-<string name="chip_top_free">"Топ безплатно"</string>
-<string name="chip_top_grossing">"С най-големи приходи"</string>
-<string name="chip_top_trending">"Тенденции"</string>
 <string name="delete">"Изтрий"</string>
 <string name="desc_perm">"Aurora Store използва следните разрешения"</string>
 <string name="details_appReviewsAll">"Прочетете всички отзиви"</string>
@@ -176,7 +170,6 @@
 <string name="pref_filter_search_title">"Използвайте Непрекъснат филтър за търсене"</string>
 <string name="pref_install_auto_summary">"Приложенията се инсталират веднага след завършване на изтеглянето"</string>
 <string name="pref_install_auto_title">"Автоматично инсталиране на АПК Post-Download"</string>
-<string name="pref_install_delete_summary">"На устройства, работещи с Android Pie APK, се изтрива по подразбиране"</string>
 <string name="pref_install_delete_title">"Изтриване на последващата инсталация на Apk"</string>
 <string name="pref_install_mode_summary">"Изберете режим на инсталиране на APK"</string>
 <string name="pref_install_mode_title">"Метод на инсталиране"</string>
