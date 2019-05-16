@@ -68,15 +68,9 @@
 <string name="category_topFree">"Ücretsiz en popüler"</string>
 <string name="category_topGrossing">"En yüksek hasılat"</string>
 <string name="category_trending">"Trend"</string>
-<string name="chip_all_apps">"Tüm kategoriler"</string>
-<string name="chip_all_family">"Tüm aile"</string>
-<string name="chip_all_games">"Tüm oyunlar"</string>
-<string name="chip_top_free">"Ücretsiz en popüler"</string>
-<string name="chip_top_grossing">"En yüksek hasılat"</string>
-<string name="chip_top_trending">"Trend"</string>
 <string name="delete">"Sil"</string>
 <string name="desc_perm">"Aurora Mağazası aşağıdaki izinleri kullanır"</string>
-<string name="details_appReviewsAll">"Tüm incelemeleri oku"</string>
+<string name="details_appReviewsAll">"Tüm yorumları oku"</string>
 <string name="details_contains_ads">"Reklam içerir"</string>
 <string name="details_download">"İndir"</string>
 <string name="details_favourite_add">"Sık kullanılanlara ekle"</string>
@@ -117,7 +111,7 @@
 <string name="error_unknown">"Bilinmeyen hata oluştu"</string>
 <string name="exodus_noTracker">"İzleyici içermiyor"</string>
 <string name="exodus_powered">"Exodus tarafından desteklenmektedir"</string>
-<string name="exodus_title">"Aurora Projesi"</string>
+<string name="exodus_title">"Aurora Güvenlik"</string>
 <string name="exodus_title_alt">"Exodus raporu"</string>
 <string name="exodus_viewMore">"Görünüm"</string>
 <string name="exodus_viewReport">"Rapor görünümü"</string>
@@ -139,7 +133,7 @@
 <string name="list_installed_system">"Yalnız kullanıcı uygulamalarını göster"</string>
 <string name="list_not_installd">"Kurulu değil"</string>
 <string name="list_update_all">"Tümünü güncelle"</string>
-<string name="list_update_all_txt">"güncelleme(ler) mevcut"</string>
+<string name="list_update_all_txt">"güncelleme mevcut"</string>
 <string name="list_updating">"Güncelleniyor"</string>
 <string name="manual_download_disclaimer">"Feragat"</string>
 <string name="manual_download_incompatible">"Google Play Store, bu uygulamanın cihazınızla uyumlu olmadığını düşünüyor. Bu, sürüm kodunun Google Play Store sunucusu tarafından döndürülmediği anlamına gelir."</string>
@@ -176,7 +170,6 @@
 <string name="pref_filter_search_title">"Kalıcı olmayan arama süzgeci kullan"</string>
 <string name="pref_install_auto_summary">"İndirme işlemi tamamlandıktan sonra uygulamalar anında yüklenir"</string>
 <string name="pref_install_auto_title">"APK'ları indirmeden sonra otomatik kur"</string>
-<string name="pref_install_delete_summary">"Android pie çalıştıran cihazlarda APK'ler varsayılan olarak silinir"</string>
 <string name="pref_install_delete_title">"Kurulumdan sonra apk'yı sil"</string>
 <string name="pref_install_mode_summary">"APK kurulum yöntemini seç"</string>
 <string name="pref_install_mode_title">"Kurulum yöntemi"</string>
@@ -211,7 +204,7 @@
 <string name="title_home">"Aurora Mağazası"</string>
 <string name="title_installed">"Uygulamaların ve oyunlarım"</string>
 <string name="title_perm">"İzinler"</string>
-<string name="title_search">"Uygulamaları ve oyunları ara"</string>
+<string name="title_search">"Uygulama &amp; Oyun Ara"</string>
 <string name="title_updates">"Mevcut güncellemeler"</string>
 <string name="title_welcome">"Hoşgeldiniz"</string>
 <string name="toast_apk_blacklisted">"Kara listeye alındı"</string>
@@ -222,7 +215,7 @@
 <string name="pref_locale_custom_title">"Özel dil"</string>
 <string name="pref_locale_custom_summary">"Özel uygulama dilini zorla"</string>
 <string name="pref_locale_list_title">"Yerel seç"</string>
-<string name="tab_explore">"Uygulamaları keşfet"</string>
+<string name="tab_explore">"Keşfet"</string>
 <string name="tab_games">"Oyunları bul"</string>
 <string name="tab_family">"Çocuklar ve aile"</string>
 <string name="pref_ui_tab_mode_title">"Kaydırılabilir sekmeler"</string>
@@ -281,4 +274,26 @@
 <string name="download_none">"İndirme yok"</string>
 <string name="error_app_download">"indirilemez"</string>
 <string name="details_new_changes">"Yenilikler"</string>
+<string name="action_apps">"Uygulamalar"</string>
+<string name="action_logging_in_success">"Başarıyla giriş yapıldı"</string>
+<string name="action_token_expired">"Belirteç zaman aşımına uğradı ve yeni belirteç istendi"</string>
+<string name="action_token_force_request">"İsteği zorla"</string>
+<string name="cat_top_apps">"Popüler uygulamalar"</string>
+<string name="cat_top_categories">"Popüler kategoriler"</string>
+<string name="cat_top_games">"Popüler oyunlar"</string>
+<string name="cat_top_family">"En iyi aile uygulamaları"</string>
+<string name="details_no_changes">"Geliştiricisi tarafından sağlanmayan değişiklik"</string>
+<string name="error_logged_out">"Çıkış yaptınız"</string>
+<string name="link_dev">"Geliştirici"</string>
+<string name="link_prmission">"İzinler"</string>
+<string name="link_playstore">"Play Store 
+"</string>
+<string name="link_setting">"Ayar"</string>
+<string name="link_share">"paylaş"</string>
+<string name="pref_install_mode_no_root">"Root erişimi mevcut değil, cihazınızın rootlanmış olduğundan emin olun."</string>
+<string name="pref_ui_ime">"IME ARAMA"</string>
+<string name="pref_ui_ime_summary">"Arama sayfasında klavyeyi varsayılan olarak göster"</string>
+<string name="pref_ui_transparent">"Şeffaf tarzı"</string>
+<string name="pref_ui_transparent_summary">"Kategori ve bağlantı görünümleri için şeffaf kart stilini kullanın"</string>
+<string name="pref_install_delete_summary">"Kök yükleme yöntemiyle Android Pie + çalıştıran cihazlarda, APK'ler varsayılan olarak silinir"</string>
 </resources>
