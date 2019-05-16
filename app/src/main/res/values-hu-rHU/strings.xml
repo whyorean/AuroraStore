@@ -68,12 +68,6 @@
 <string name="category_topFree">"Top Free"</string>
 <string name="category_topGrossing">"Top Grossing"</string>
 <string name="category_trending">"Felkapott"</string>
-<string name="chip_all_apps">"Minden kategória"</string>
-<string name="chip_all_family">"Minden család"</string>
-<string name="chip_all_games">"Minden játék"</string>
-<string name="chip_top_free">"Top Free"</string>
-<string name="chip_top_grossing">"Top Grossing"</string>
-<string name="chip_top_trending">"Felkapott"</string>
 <string name="delete">"Töröl"</string>
 <string name="desc_perm">"Az Aurora Store a következő engedélyeket használja"</string>
 <string name="details_appReviewsAll">"Olvassa el az összes véleményt"</string>
@@ -176,7 +170,6 @@
 <string name="pref_filter_search_title">"Használja a nem tartós keresési szűrőt"</string>
 <string name="pref_install_auto_summary">"Az alkalmazások a letöltés befejezése után azonnal telepítve vannak"</string>
 <string name="pref_install_auto_title">"Automatikus telepítés APK-k letöltése"</string>
-<string name="pref_install_delete_summary">"Olyan eszközökön, amelyeken az Android Pie működik, az APK-k alapértelmezés szerint törlődnek"</string>
 <string name="pref_install_delete_title">"Az Apk Post-Install törlése"</string>
 <string name="pref_install_mode_summary">"Válassza ki az APK telepítési módját"</string>
 <string name="pref_install_mode_title">"Telepítési módszer"</string>
