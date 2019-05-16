@@ -53,7 +53,7 @@
 <!-- Più tardi -->
 <string name="action_later">"Più tardi"</string>
 
-<!-- Effettuando il errLogin -->
+<!-- Effettuando il login -->
 <string name="action_logging_in">"Effettuando il login"</string>
 <string name="action_login">"Accedi"</string>
 
@@ -110,16 +110,6 @@
 
 <!-- Di tendenza -->
 <string name="category_trending">"Di tendenza"</string>
-<string name="chip_all_apps">"Tutte le categorie"</string>
-<string name="chip_all_family">"Tutta la famiglia"</string>
-<string name="chip_all_games">"Tutti i giochi"</string>
-
-<!-- Top gratuite -->
-<string name="chip_top_free">"Più popolari"</string>
-<string name="chip_top_grossing">"Più redditizie"</string>
-
-<!-- Di tendenza -->
-<string name="chip_top_trending">"Di tendenza"</string>
 <string name="delete">"Elimina"</string>
 
 <!-- Aurora Store ha bisogno dei seguenti permessi -->
@@ -238,7 +228,6 @@
 <string name="pref_filter_search_title">"Usa filtro di ricerca non persistente"</string>
 <string name="pref_install_auto_summary">"Le app vengono installate immediatamente al termine del download"</string>
 <string name="pref_install_auto_title">"Installazione Automatica APK"</string>
-<string name="pref_install_delete_summary">"Sui dispositivi con Android Pie gli APK vengono eliminati di default"</string>
 <string name="pref_install_delete_title">"Elimina Apk dopo l'installazione"</string>
 <string name="pref_install_mode_summary">"Seleziona la modalità di installazione dell'APK"</string>
 <string name="pref_install_mode_title">"Metodo di installazione"</string>
@@ -344,4 +333,25 @@ Inoltre fornisce una lista di tracker incorporati in una applicazione"</string>
 <string name="download_none">"Nessun download"</string>
 <string name="error_app_download">"non può essere scaricato"</string>
 <string name="details_new_changes">"Novità"</string>
+<string name="action_apps">"Applicazioni"</string>
+<string name="action_logging_in_success">"Login effettuato con successo"</string>
+<string name="action_token_expired">"Token scaduta, richiesta di un nuovo token"</string>
+<string name="action_token_force_request">"Forza richiesta"</string>
+<string name="cat_top_apps">"Applicazioni Top"</string>
+<string name="cat_top_categories">"Categorie Top"</string>
+<string name="cat_top_games">"Giochi Top"</string>
+<string name="cat_top_family">"Applicazioni famiglia Top"</string>
+<string name="details_no_changes">"Changelog non fornito dallo sviluppatore"</string>
+<string name="error_logged_out">"Sei stato disconnesso"</string>
+<string name="link_dev">"Sviluppatore"</string>
+<string name="link_prmission">"Permesso"</string>
+<string name="link_playstore">"Play Store"</string>
+<string name="link_setting">"Impostazioni"</string>
+<string name="link_share">"Condividi"</string>
+<string name="pref_install_mode_no_root">"Accesso al root non disponibile, assicurati di avere il dispositivo con root"</string>
+<string name="pref_install_mode_root_warn">"Il metodo di installazione con root richiede che l'apk venga scaricato in app data, per poterlo installarlo via shell adb, Android Pie+"</string>
+<string name="pref_ui_ime">"Cerca IME"</string>
+<string name="pref_ui_ime_summary">"Mostra tastiera nella pagina di ricerca in modo predefinito"</string>
+<string name="pref_ui_transparent">"Stile trasparente"</string>
+<string name="pref_install_delete_summary">"Sui dispositivi con Android Pie+ col metodo di installazione root, gli APK vengono eliminati in modo predefinito"</string>
 </resources>
