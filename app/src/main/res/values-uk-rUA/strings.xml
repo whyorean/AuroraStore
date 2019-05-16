@@ -68,12 +68,6 @@
 <string name="category_topFree">"Найкращі безкоштовні"</string>
 <string name="category_topGrossing">"Бестселлери"</string>
 <string name="category_trending">"Популярні"</string>
-<string name="chip_all_apps">"Усі категорії"</string>
-<string name="chip_all_family">"Для усієї сім'ї"</string>
-<string name="chip_all_games">"Всі ігри"</string>
-<string name="chip_top_free">"Найкращі безкоштовні"</string>
-<string name="chip_top_grossing">"Бестселлер"</string>
-<string name="chip_top_trending">"Популярні"</string>
 <string name="delete">"Видалити"</string>
 <string name="desc_perm">"Aurora Store використовує наступні дозволи"</string>
 <string name="details_appReviewsAll">"Читати всі відгуки"</string>
@@ -176,7 +170,6 @@
 <string name="pref_filter_search_title">"Використовувати непостійний фільтр пошуку"</string>
 <string name="pref_install_auto_summary">"Програми встановлюються відразу після завершення завантаження"</string>
 <string name="pref_install_auto_title">"Автоматичне встановлення APK після завантаження"</string>
-<string name="pref_install_delete_summary">"На пристроях під керуванням Android Pie APK видаляється за замовчуванням"</string>
 <string name="pref_install_delete_title">"Видалити після встановлення APK"</string>
 <string name="pref_install_mode_summary">"Виберіть режим установки APK"</string>
 <string name="pref_install_mode_title">"Спосіб встановлення"</string>
@@ -282,4 +275,26 @@ Aurora дозволяє шукати, завантажувати, встанов
 <string name="download_none">"Немає завантажень"</string>
 <string name="error_app_download">"не може бути завантаженим"</string>
 <string name="details_new_changes">"Що нового"</string>
+<string name="action_apps">"Програми"</string>
+<string name="action_logging_in_success">"Успішно ввійшли"</string>
+<string name="action_token_expired">"Термін дії токену закінчився, надсилаю запит на новий токен"</string>
+<string name="action_token_force_request">"Надіслати запит"</string>
+<string name="cat_top_apps">"Найкращі програми"</string>
+<string name="cat_top_categories">"Найкращі категорії"</string>
+<string name="cat_top_games">"Найкращі ігри"</string>
+<string name="cat_top_family">"Найкращі для сім'ї"</string>
+<string name="details_no_changes">"Журнал змін не надав розробник"</string>
+<string name="error_logged_out">"Ви вийшли"</string>
+<string name="link_dev">"Розробник"</string>
+<string name="link_prmission">"Дозволи"</string>
+<string name="link_playstore">"Play Store"</string>
+<string name="link_setting">"Налаштування"</string>
+<string name="link_share">"Поділитись"</string>
+<string name="pref_install_mode_no_root">"Рут права недоступні, переконайтеся, що на вашому пристрої є рут права"</string>
+<string name="pref_install_mode_root_warn">"На Android Pie + для рут методу, перед встановленням зверніть увагу, щоб apk файл був завантажений в папку програми, так як використовується adb shell"</string>
+<string name="pref_ui_ime">"Пошук IME"</string>
+<string name="pref_ui_ime_summary">"Показувати клавіатуру на сторінці пошуку за умовчанням"</string>
+<string name="pref_ui_transparent">"Прозорий стиль"</string>
+<string name="pref_ui_transparent_summary">"Для перегляду категорій і посилань використовується прозорий стиль карток"</string>
+<string name="pref_install_delete_summary">"На пристроях під керуванням Android Pie + з рут методом встановлення, APK видаляється за замовчуванням"</string>
 </resources>
