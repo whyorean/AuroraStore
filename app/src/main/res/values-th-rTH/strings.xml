@@ -68,12 +68,6 @@
 <string name="category_topFree">"ฟรี"</string>
 <string name="category_topGrossing">"ยอดเบ็ดเสร็จ"</string>
 <string name="category_trending">"ได้รับความนิยม"</string>
-<string name="chip_all_apps">"ทุกหมวด"</string>
-<string name="chip_all_family">"ทุกคนในครอบครัว"</string>
-<string name="chip_all_games">"เกมส์ทั้งหมด"</string>
-<string name="chip_top_free">"ฟรี"</string>
-<string name="chip_top_grossing">"ยอดเบ็ดเสร็จ"</string>
-<string name="chip_top_trending">"ได้รับความนิยม"</string>
 <string name="delete">"ลบ"</string>
 <string name="desc_perm">"Aurora Store ใช้การอนุญาตดังต่อไปนี้"</string>
 <string name="details_appReviewsAll">"อ่านรีวิวทั้งหมด"</string>
@@ -176,7 +170,6 @@
 <string name="pref_filter_search_title">"ใช้ตัวกรองการค้นหาแบบไม่ถาวร"</string>
 <string name="pref_install_auto_summary">"แอพจะถูกติดตั้งทันทีหลังจากดาวน์โหลดเสร็จ"</string>
 <string name="pref_install_auto_title">"ติดตั้ง APK ที่ดาวน์โหลดโดยอัตโนมัติ"</string>
-<string name="pref_install_delete_summary">"บนอุปกรณ์ที่ใช้ Android Pie APKs จะถูกลบโดยค่าเริ่มต้น"</string>
 <string name="pref_install_delete_title">"ลบ Apk Post-Install"</string>
 <string name="pref_install_mode_summary">"เลือกโหมดของการติดตั้ง APK"</string>
 <string name="pref_install_mode_title">"วิธีการติดตั้ง"</string>
