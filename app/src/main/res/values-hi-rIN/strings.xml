@@ -68,12 +68,6 @@
 <string name="category_topFree">"टॉप फ़्री"</string>
 <string name="category_topGrossing">"सबसे ज़्यादा अर्जित करना"</string>
 <string name="category_trending">"रुझान"</string>
-<string name="chip_all_apps">"सब वर्ग"</string>
-<string name="chip_all_family">"सभी परिवार"</string>
-<string name="chip_all_games">"सभी खेल"</string>
-<string name="chip_top_free">"टॉप फ़्री"</string>
-<string name="chip_top_grossing">"सबसे ज़्यादा अर्जित करना"</string>
-<string name="chip_top_trending">"रुझान"</string>
 <string name="delete">"हटाना"</string>
 <string name="desc_perm">"ऑरोरा स्टोर निम्नलिखित अनुमतियों का उपयोग करता है"</string>
 <string name="details_appReviewsAll">"सभी समीक्षाएं पढ़ें"</string>
@@ -176,7 +170,6 @@
 <string name="pref_filter_search_title">"गैर-निरंतर खोज फ़िल्टर का उपयोग करें"</string>
 <string name="pref_install_auto_summary">"डाउनलोड पूर्ण होने के तुरंत बाद ऐप्स इंस्टॉल हो जाते हैं"</string>
 <string name="pref_install_auto_title">"ऑटो स्थापित APK पोस्ट-डाउनलोड"</string>
-<string name="pref_install_delete_summary">"Android पाई APK चलाने वाले उपकरणों पर डिफ़ॉल्ट रूप से हटा दिया जाता है"</string>
 <string name="pref_install_delete_title">"Apk Post-Install को डिलीट करें"</string>
 <string name="pref_install_mode_summary">"एपीके इंस्टॉलेशन का मोड चुनें"</string>
 <string name="pref_install_mode_title">"इंस्टॉलेशन तरीका"</string>
