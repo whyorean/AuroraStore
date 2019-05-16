@@ -68,12 +68,6 @@
 <string name="category_topFree">"Top Besplatno"</string>
 <string name="category_topGrossing">"Top Grossing"</string>
 <string name="category_trending">"trendu"</string>
-<string name="chip_all_apps">"sve kategorije"</string>
-<string name="chip_all_family">"Cijela obitelj"</string>
-<string name="chip_all_games">"Sve igre"</string>
-<string name="chip_top_free">"Top Besplatno"</string>
-<string name="chip_top_grossing">"Top Grossing"</string>
-<string name="chip_top_trending">"trendu"</string>
 <string name="delete">"Izbrisati"</string>
 <string name="desc_perm">"Aurora Store koristi sljedeće dozvole"</string>
 <string name="details_appReviewsAll">"Pročitajte sve recenzije"</string>
@@ -176,7 +170,6 @@
 <string name="pref_filter_search_title">"Upotrijebite nepostojan filtar pretraživanja"</string>
 <string name="pref_install_auto_summary">"Aplikacije se instaliraju odmah nakon dovršetka preuzimanja"</string>
 <string name="pref_install_auto_title">"Automatsko instaliranje APK-ova nakon preuzimanja"</string>
-<string name="pref_install_delete_summary">"Na uređajima koji koriste Android Pie APK-ove se automatski briše"</string>
 <string name="pref_install_delete_title">"Izbriši Apk Post-Install"</string>
 <string name="pref_install_mode_summary">"Odaberite način instalacije APK-a"</string>
 <string name="pref_install_mode_title">"Metoda instalacije"</string>
