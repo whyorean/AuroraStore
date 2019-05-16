@@ -68,12 +68,6 @@
 <string name="category_topFree">"Κορυφαία δωρεάν"</string>
 <string name="category_topGrossing">"Με Κορυφαίες Πωλήσεις"</string>
 <string name="category_trending">"Τάσεις"</string>
-<string name="chip_all_apps">"Όλες οι κατηγορίες"</string>
-<string name="chip_all_family">"Όλες οι Οικογενειακές"</string>
-<string name="chip_all_games">"Όλα τα παιχνίδια"</string>
-<string name="chip_top_free">"Κορυφαία δωρεάν"</string>
-<string name="chip_top_grossing">"Με Κορυφαίες Πωλήσεις"</string>
-<string name="chip_top_trending">"Τάσεις"</string>
 <string name="delete">"Διαγραφή"</string>
 <string name="desc_perm">"Το Aurora Store χρησιμοποιεί τις εξής άδειες"</string>
 <string name="details_appReviewsAll">"Διαβάστε όλες τις κριτικές"</string>
@@ -178,7 +172,6 @@
 <string name="pref_filter_search_title">"Χρήση Μη-Μόνιμων Φίλτρων Αναζήτησης"</string>
 <string name="pref_install_auto_summary">"Εγκατάσταση εφαρμογών άμεσα μετά τη λήψη"</string>
 <string name="pref_install_auto_title">"Αυτόματη Εγκατάσταση των APK μετά την Λήψη"</string>
-<string name="pref_install_delete_summary">"Σε συσκευές με Android Pie τα APK διαγράφονται από προεπιλογή"</string>
 <string name="pref_install_delete_title">"Διαγραφή APK μετά την εγκατάσταση"</string>
 <string name="pref_install_mode_summary">"Επιλέξτε τρόπο εγκατάστασης APK"</string>
 <string name="pref_install_mode_title">"Μέθοδος Εγκατάστασης"</string>
