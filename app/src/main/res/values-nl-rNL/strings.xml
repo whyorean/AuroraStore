@@ -32,7 +32,7 @@
 <string name="action_filter_rating">"Feedback"</string>
 <string name="action_flag">"Rapport-app"</string>
 <string name="action_get_local_apk">"Download de lokale APK"</string>
-<string name="action_home">"Ontvangst"</string>
+<string name="action_home">"Thuis"</string>
 <string name="action_installations">"Installaties"</string>
 <string name="action_installed">"Geïnstalleerd"</string>
 <string name="action_later">"Later"</string>
@@ -59,7 +59,7 @@
 <string name="action_unignore">"Verwijderen van de zwarte lijst"</string>
 <string name="action_uninstall">"Uninstall"</string>
 <string name="action_unwhitelist">"Negeer updates"</string>
-<string name="action_updates">"Updates"</string>
+<string name="action_updates">"Bijwerken"</string>
 <string name="action_whitelist">"Witte lijst"</string>
 <string name="availability_restriction_country">"Dit artikel is niet beschikbaar in uw land."</string>
 <string name="availability_restriction_generic">"Dit artikel is niet beschikbaar."</string>
@@ -111,7 +111,7 @@
 <string name="error_unknown">"Er is een onbekende fout opgetreden"</string>
 <string name="exodus_noTracker">"Bevat geen trackers"</string>
 <string name="exodus_powered">"Powered by Exodus"</string>
-<string name="exodus_title">"Aurora Protect"</string>
+<string name="exodus_title">"Aurora Protectie"</string>
 <string name="exodus_title_alt">"Exodus rapport"</string>
 <string name="exodus_viewMore">"Zien"</string>
 <string name="exodus_viewReport">"Bekijk het rapport"</string>
@@ -149,7 +149,7 @@
 <string name="pref_app_network">"Netwerk"</string>
 <string name="pref_app_notification">"Meldingen"</string>
 <string name="pref_app_ui">"Gebruikersinterface"</string>
-<string name="pref_category_spoof_device">"Usurpation van het apparaat"</string>
+<string name="pref_category_spoof_device">"Zich voordoen als apparaat"</string>
 <string name="pref_category_spoof_lang">"Zich voordoen in een andere taal"</string>
 <string name="pref_category_spoof_location">"Zich voordoen op een andere locatie"</string>
 <string name="pref_device_to_pretend_to_be">"Zich voordoen als een ander apparaat"</string>
@@ -201,7 +201,7 @@
 <string name="testing_program_section_opted_out_propagating_message">"Het kan een paar minuten duren om uit het bètaprogramma te komen."</string>
 <string name="testing_program_section_opted_out_title">"Word een bètatester"</string>
 <string name="title_all_apps">"Alle toepassingen"</string>
-<string name="title_home">"Aurora Store"</string>
+<string name="title_home">"Aurora Winkel"</string>
 <string name="title_installed">"Mijn apps"</string>
 <string name="title_perm">"Rechten"</string>
 <string name="title_search">"Zoektoepassingen"</string>
@@ -244,12 +244,12 @@
 <string name="pref_notification_provider_summary">"Selecteer de standaard meldingsprovider"</string>
 <string name="pref_notification_provider_title">"Meldingsprovider"</string>
 <string name="pref_notification_provider_native">"Native notificatieprovider"</string>
-<string name="pref_notification_provider_aurora">"Aurora Notification Provider"</string>
-<string name="pref_ui_theme_light">"Helder"</string>
-<string name="pref_ui_theme_dark">"Dark"</string>
-<string name="pref_ui_theme_black">"Black"</string>
+<string name="pref_notification_provider_aurora">"Aurora notificaties provider"</string>
+<string name="pref_ui_theme_light">"Licht"</string>
+<string name="pref_ui_theme_dark">"Donker"</string>
+<string name="pref_ui_theme_black">"Zwart"</string>
 <string name="action_close">"Sluiten"</string>
-<string name="list_update_all_queue_txt">"Update (s) in behandeling"</string>
+<string name="list_update_all_queue_txt">"Bijwerken in behandeling"</string>
 <string name="notification_installation_complete">"Succesvolle installatie"</string>
 <string name="notification_installation_failed">"Installatie mislukt"</string>
 <string name="notification_installation_progress">"Installatie"</string>
@@ -265,7 +265,7 @@
 <string name="pref_install_type_summary">"Gebruik het eigen installatieprogramma om de pakketten te installeren, de gegroepeerde apk-installaties te verbreken."</string>
 <string name="pref_install_type_title">"Forceer het native installatieprogramma"</string>
 <string name="pref_ui_tab_default_title">"Selecteer het standaardtabblad"</string>
-<string name="pref_update_interval_title">"Update interval"</string>
+<string name="pref_update_interval_title">"Bijwerken interval"</string>
 <string name="pref_update_interval_manually">"Handmatig"</string>
 <string name="pref_update_interval_hourly">"Elk uur"</string>
 <string name="pref_update_interval_daily">"Elke week"</string>
