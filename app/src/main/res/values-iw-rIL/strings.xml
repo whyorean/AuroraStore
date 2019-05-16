@@ -68,12 +68,6 @@
 <string name="category_topFree">"למעלה חינם"</string>
 <string name="category_topGrossing">"למעלה גרוס"</string>
 <string name="category_trending">"מגמות"</string>
-<string name="chip_all_apps">"כל הקטגוריות"</string>
-<string name="chip_all_family">"כל המשפחה"</string>
-<string name="chip_all_games">"כל המשחקים"</string>
-<string name="chip_top_free">"למעלה חינם"</string>
-<string name="chip_top_grossing">"למעלה גרוס"</string>
-<string name="chip_top_trending">"מגמות"</string>
 <string name="delete">"מחק"</string>
 <string name="desc_perm">"Aurora חנות משתמשת הרשאות הבאות"</string>
 <string name="details_appReviewsAll">"קרא את כל הביקורות"</string>
@@ -176,7 +170,6 @@
 <string name="pref_filter_search_title">"השתמש במסנן חיפוש שאינו מתמשך"</string>
 <string name="pref_install_auto_summary">"האפליקציות מותקנות באופן מיידי לאחר השלמת ההורדה"</string>
 <string name="pref_install_auto_title">"אוטומטי התקנת APKs שלאחר ההורדה"</string>
-<string name="pref_install_delete_summary">"במכשירים שבהם פועל Android Apps Pie APK נמחק כברירת מחדל"</string>
 <string name="pref_install_delete_title">"מחק Apk Post-Install"</string>
 <string name="pref_install_mode_summary">"בחר מצב של התקנת APK"</string>
 <string name="pref_install_mode_title">"שיטת התקנה"</string>
