@@ -68,12 +68,6 @@
 <string name="category_topFree">"Top Gratis"</string>
 <string name="category_topGrossing">"Top Ingresos"</string>
 <string name="category_trending">"Tendencias"</string>
-<string name="chip_all_apps">"Todas as Categorías"</string>
-<string name="chip_all_family">"Toda a Familia"</string>
-<string name="chip_all_games">"Todos os Xogos"</string>
-<string name="chip_top_free">"Top Gratis"</string>
-<string name="chip_top_grossing">"Top Ingresos"</string>
-<string name="chip_top_trending">"Tendencias"</string>
 <string name="delete">"Eliminar"</string>
 <string name="desc_perm">"Aurora Store utiliza os seguintes permisos"</string>
 <string name="details_appReviewsAll">"Ler todas as opinións"</string>
@@ -178,7 +172,6 @@ Lembra que Google Play Store non admite a descarga de versións arbitrarias de a
 <string name="pref_filter_search_title">"Use un filtro de busca non persistente"</string>
 <string name="pref_install_auto_summary">"As aplicacións instalaranse automáticamente tras completar a descarga"</string>
 <string name="pref_install_auto_title">"Instalar automáticamente APKs despois da descarga"</string>
-<string name="pref_install_delete_summary">"Nos dispositivos que executan Android Pie os APK elimínanse de xeito predeterminado"</string>
 <string name="pref_install_delete_title">"Eliminar APK tras a Instalación"</string>
 <string name="pref_install_mode_summary">"Seleccione o Modo de Instalación de APK"</string>
 <string name="pref_install_mode_title">"Método de Instalación"</string>
