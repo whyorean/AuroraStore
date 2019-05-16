@@ -68,12 +68,6 @@
 <string name="category_topFree">"Gratis Teratas"</string>
 <string name="category_topGrossing">"Terlaris"</string>
 <string name="category_trending">"Trending"</string>
-<string name="chip_all_apps">"semua Kategori"</string>
-<string name="chip_all_family">"Semua keluarga"</string>
-<string name="chip_all_games">"Semua permainan"</string>
-<string name="chip_top_free">"Gratis Teratas"</string>
-<string name="chip_top_grossing">"Terlaris"</string>
-<string name="chip_top_trending">"Trending"</string>
 <string name="delete">"Menghapus"</string>
 <string name="desc_perm">"Toko Aurora menggunakan izin berikut"</string>
 <string name="details_appReviewsAll">"Baca Semua Ulasan"</string>
@@ -176,7 +170,6 @@
 <string name="pref_filter_search_title">"Gunakan Filter Pencarian Non-Persisten"</string>
 <string name="pref_install_auto_summary">"Aplikasi diinstal langsung setelah pengunduhan selesai"</string>
 <string name="pref_install_auto_title">"Auto Install APKs Post-Download"</string>
-<string name="pref_install_delete_summary">"Pada perangkat yang menjalankan Android Pie APK akan dihapus secara default"</string>
 <string name="pref_install_delete_title">"Hapus Apk Pasca-Instalasi"</string>
 <string name="pref_install_mode_summary">"Pilih Mode Instalasi APK"</string>
 <string name="pref_install_mode_title">"Metode Instalasi"</string>
