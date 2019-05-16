@@ -68,12 +68,6 @@
 <string name="category_topFree">"Najlepsze darmowe"</string>
 <string name="category_topGrossing">"Najwyżej oceniane"</string>
 <string name="category_trending">"Popularne"</string>
-<string name="chip_all_apps">"Wszystkie kategorie"</string>
-<string name="chip_all_family">"Dla rodziny"</string>
-<string name="chip_all_games">"Wszystkie gry"</string>
-<string name="chip_top_free">"Najlepsze darmowe"</string>
-<string name="chip_top_grossing">"Najwyżej oceniane"</string>
-<string name="chip_top_trending">"Popularne"</string>
 <string name="delete">"Usuń"</string>
 <string name="desc_perm">"Sklep Aurora używa następujących uprawnień"</string>
 <string name="details_appReviewsAll">"Przeczytaj wszystkie recenzje"</string>
@@ -178,7 +172,6 @@ Pamiętaj, że pobieranie dowolnych wersji aplikacji nie jest obsługiwane przez
 <string name="pref_filter_search_title">"Użyj nietrwałych filtrów wyszukiwania"</string>
 <string name="pref_install_auto_summary">"Aplikacje są instalowane natychmiast po zakończeniu pobierania"</string>
 <string name="pref_install_auto_title">"Automatyczna instalacja plików APK po pobraniu"</string>
-<string name="pref_install_delete_summary">"Na urządzeniach z systemem Android Pie, pliki APK są domyślnie usuwane"</string>
 <string name="pref_install_delete_title">"Usuń plik APK po instalacji"</string>
 <string name="pref_install_mode_summary">"Wybierz tryb instalacji APK"</string>
 <string name="pref_install_mode_title">"Metoda instalacji"</string>
