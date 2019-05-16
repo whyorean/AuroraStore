@@ -68,12 +68,6 @@
 <string name="category_topFree">"熱門免費"</string>
 <string name="category_topGrossing">"最高營收"</string>
 <string name="category_trending">"趨勢應用程式"</string>
-<string name="chip_all_apps">"所有類別"</string>
-<string name="chip_all_family">"家庭"</string>
-<string name="chip_all_games">"遊戲"</string>
-<string name="chip_top_free">"熱門免費"</string>
-<string name="chip_top_grossing">"最高營收"</string>
-<string name="chip_top_trending">"趨勢應用程式"</string>
 <string name="delete">"移除"</string>
 <string name="desc_perm">"Aurora Store 需要以下權限"</string>
 <string name="details_appReviewsAll">"閱讀所有評論"</string>
@@ -178,7 +172,6 @@
 <string name="pref_filter_search_title">"使用非持續性的搜尋過濾器"</string>
 <string name="pref_install_auto_summary">"應用程式下載完後會立即安裝"</string>
 <string name="pref_install_auto_title">"下載 APK 後自動安裝"</string>
-<string name="pref_install_delete_summary">"在執行 Android Pie 的裝置上，預設會刪除 APK"</string>
 <string name="pref_install_delete_title">"安裝 APK 後刪除檔案"</string>
 <string name="pref_install_mode_summary">"選擇 APK 的安裝方式"</string>
 <string name="pref_install_mode_title">"安裝方式"</string>
