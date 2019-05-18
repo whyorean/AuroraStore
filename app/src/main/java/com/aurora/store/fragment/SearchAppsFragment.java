@@ -34,7 +34,6 @@ import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.core.graphics.ColorUtils;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -57,7 +56,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -205,9 +203,6 @@ public class SearchAppsFragment extends BaseFragment {
         disposable.add(Observable.fromCallable(() -> searchTask.getSearchResults(iterator))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .doOnSubscribe(subscription -> {
-                    notifyStatus(coordinatorLayout, null, getString(R.string.toast_loading_apps));
-                })
                 .subscribe(appList -> {
                     if (view != null) {
                         if (shouldIterate) {
@@ -291,16 +286,6 @@ public class SearchAppsFragment extends BaseFragment {
             });
             relatedChipGroup.addView(chip);
         }
-    }
-
-    @Override
-    protected void notifyStatus(@NonNull CoordinatorLayout coordinatorLayout, @Nullable View anchorView,
-                                @NonNull String message) {
-        Snackbar snackbar = Snackbar.make(coordinatorLayout, message, Snackbar.LENGTH_SHORT);
-        if (anchorView != null)
-            snackbar.setAnchorView(anchorView);
-        snackbar.setAnchorView(anchorView);
-        snackbar.show();
     }
 
     @Override
