@@ -70,11 +70,18 @@ public class CustomAppListIterator implements Iterator {
     @Override
     public List<App> next() {
         List<App> apps = new ArrayList<>();
-        for (DocV2 details : iterator.next()) {
-            if (details.getDocType() == 53)
-                relatedTags.add(details.getTitle());
-            else
-                addApp(apps, AppBuilder.build(details));
+        for (DocV2 docV2 : iterator.next()) {
+            if (docV2.getDocType() == 53)
+                relatedTags.add(docV2.getTitle());
+            else if (docV2.getDocType() == 1) {
+                addApp(apps, AppBuilder.build(docV2));
+            } else {
+                /*
+                 * This one is either a movie, music or book, will exploit it at some point of time
+                 * Movies = 6, Music = 2, Audio Books = 64
+                 */
+                continue;
+            }
         }
         return apps;
     }

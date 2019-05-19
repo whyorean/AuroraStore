@@ -37,6 +37,7 @@
             android:layout_height="48dp"
             android:layout_gravity="center"
             android:layout_margin="@dimen/margin_small"
+            android:autofillHints="@string/app_name"
             android:background="@drawable/search_bg"
             android:drawableEnd="@drawable/ic_edit"
             android:hint="@string/title_search"
@@ -52,13 +53,14 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <LinearLayout
+            <RelativeLayout
                 android:id="@+id/content_view"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
                 <HorizontalScrollView
+                    android:id="@+id/chip_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_xxsmall"
@@ -76,6 +78,7 @@
                     android:id="@+id/gradient_view"
                     android:layout_width="match_parent"
                     android:layout_height="32dp"
+                    android:layout_below="@id/chip_view"
                     android:background="@drawable/gradient_bg"
                     android:translationZ="1dp" />
 
@@ -83,15 +86,21 @@
                     android:id="@+id/search_apps_list"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_below="@+id/gradient_view"
                     android:layout_marginTop="-32dp"
-                    android:overScrollMode="never"
                     android:clipToPadding="false"
+                    android:overScrollMode="never"
                     android:paddingTop="@dimen/margin_small"
+                    android:scrollbars="none"
                     android:splitMotionEvents="false"
-                    android:scrollbarStyle="outsideOverlay"
-                    android:scrollbars="vertical"
                     tools:listitem="@layout/item_installed" />
-            </LinearLayout>
+
+                <include
+                    layout="@layout/item_loading"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true" />
+            </RelativeLayout>
 
             <LinearLayout
                 android:id="@+id/err_view"
@@ -100,6 +109,12 @@
                 android:orientation="vertical" />
         </ViewSwitcher>
     </LinearLayout>
+
+
+    <androidx.core.widget.ContentLoadingProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/filter_fab"

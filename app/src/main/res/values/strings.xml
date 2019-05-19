@@ -76,6 +76,7 @@
     <string name="action_installations">Installations</string>
     <string name="action_installed">Installed</string>
     <string name="action_later">Later</string>
+    <string name="action_loading">Loading</string>
     <string name="action_logging_in">Logging in</string>
     <string name="action_logging_in_success">Successfully logged in</string>
     <string name="action_login">Login</string>
@@ -234,6 +235,7 @@
     <string name="pref_app_network">Network</string>
     <string name="pref_app_notification">Notifications</string>
     <string name="pref_app_ui">User Interface</string>
+    <string name="pref_default">Default</string>
     <string name="pref_category_spoof_device">Spoof device</string>
     <string name="pref_category_spoof_lang">Spoof language</string>
     <string name="pref_category_spoof_location">Spoof location</string>

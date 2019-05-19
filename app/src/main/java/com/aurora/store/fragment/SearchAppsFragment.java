@@ -31,6 +31,7 @@ import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -59,6 +60,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -76,6 +78,8 @@ public class SearchAppsFragment extends BaseFragment {
     EditText searchQuery;
     @BindView(R.id.related_chip_group)
     ChipGroup relatedChipGroup;
+    @BindView(R.id.view_progress)
+    RelativeLayout layoutProgress;
 
     private Context context;
     private View view;
@@ -157,21 +161,12 @@ public class SearchAppsFragment extends BaseFragment {
         searchQuery.setOnEditorActionListener((v, actionId, event) -> {
             if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                 query = searchQuery.getText().toString();
-                try {
-                    iterator = getIterator(getQuery());
-                    iterator.setEnableFilter(true);
-                    iterator.setFilter(new Filter(getContext()).getFilterPreferences());
-                    relatedTags = iterator.getRelatedTags();
-                    fetchSearchAppsList(false);
-                    searchQuery.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_edit, 0);
-                    InputMethodManager imm = (InputMethodManager) v.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
-                    imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
-                    searchQuery.clearFocus();
-                    return true;
-                } catch (Exception e) {
-                    processException(e);
-                    return false;
-                }
+                fetchSearchAppsList(false);
+                searchQuery.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_edit, 0);
+                InputMethodManager imm = (InputMethodManager) v.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+                searchQuery.clearFocus();
+                return true;
             } else
                 return false;
         });
@@ -188,21 +183,26 @@ public class SearchAppsFragment extends BaseFragment {
         filterSheet.show(getChildFragmentManager(), "FILTER");
     }
 
-    private void fetchSearchAppsList(boolean shouldIterate) {
-        if (!shouldIterate) {
-            try {
-                iterator = null;
-                iterator = getIterator(getQuery());
-                iterator.setEnableFilter(true);
-                iterator.setFilter(new Filter(getContext()).getFilterPreferences());
-                relatedTags = iterator.getRelatedTags();
-            } catch (Exception e) {
-                processException(e);
-            }
+    private void getIterator() {
+        try {
+            iterator = null;
+            iterator = getIterator(getQuery());
+            iterator.setEnableFilter(true);
+            iterator.setFilter(new Filter(getContext()).getFilterPreferences());
+            relatedTags = iterator.getRelatedTags();
+        } catch (Exception e) {
+            processException(e);
         }
+    }
+
+    private void fetchSearchAppsList(boolean shouldIterate) {
+        if (!shouldIterate)
+            getIterator();
         disposable.add(Observable.fromCallable(() -> searchTask.getSearchResults(iterator))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
+                .doOnSubscribe(d -> ViewUtil.showWithAnimation(layoutProgress))
+                .doOnTerminate(() -> ViewUtil.hideWithAnimation(layoutProgress))
                 .subscribe(appList -> {
                     if (view != null) {
                         if (shouldIterate) {
@@ -230,9 +230,19 @@ public class SearchAppsFragment extends BaseFragment {
                 endlessAppsAdapter.add(app);
             endlessAppsAdapter.notifyItemInserted(endlessAppsAdapter.getItemCount() - 1);
         }
-        if (iterator.hasNext() && endlessAppsAdapter.getItemCount() < 10) {
-            iterator.next();
-        }
+
+        /*
+         * Search results are scarce if filter are too strict, in this case endless scroll events
+         * fail to fetch next batch of apps, so manually fetch at least 10 apps until available.
+         */
+        disposable.add(Observable.interval(1000, 2000, TimeUnit.MILLISECONDS)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(aLong -> {
+                    if (iterator.hasNext() && endlessAppsAdapter.getItemCount() < 10) {
+                        iterator.next();
+                    }
+                }, e -> Log.e(e.getMessage())));
     }
 
     private void setupRecycler() {
@@ -241,13 +251,13 @@ public class SearchAppsFragment extends BaseFragment {
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setLayoutAnimation(AnimationUtils.loadLayoutAnimation(this.getActivity(), R.anim.anim_falldown));
         recyclerView.setAdapter(endlessAppsAdapter);
-        EndlessScrollListener mScrollListener = new EndlessScrollListener(mLayoutManager) {
+        EndlessScrollListener endlessScrollListener = new EndlessScrollListener(mLayoutManager) {
             @Override
             public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
                 fetchSearchAppsList(true);
             }
         };
-        recyclerView.addOnScrollListener(mScrollListener);
+        recyclerView.addOnScrollListener(endlessScrollListener);
         recyclerView.setOnFlingListener(new RecyclerView.OnFlingListener() {
             @Override
             public boolean onFling(int velocityX, int velocityY) {
