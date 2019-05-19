@@ -1,18 +1,12 @@
-<img src="https://img.xda-cdn.com/1alP20gvsfJQN9MXLIcblm7aWSo=/https%3A%2F%2Fi.ibb.co%2FScPXnxz%2FFG-2.png" alt="Aurora Logo"><br/><img src="https://www.gnu.org/graphics/gplv3-88x31.png" alt="GPL v3 Logo"> 
+<img src="https://img.xda-cdn.com/1alP20gvsfJQN9MXLIcblm7aWSo=/https%3A%2F%2Fi.ibb.co%2FScPXnxz%2FFG-2.png" alt="Aurora Logo"><br/><img src="https://www.gnu.org/graphics/gplv3-88x31.png" alt="GPL v3 Logo">
 
-# Aurora Store :  A Google Playstore Client
+# Aurora Store: A Google Playstore Client
 
-Aurora Store is an `UnOfficial` FOSS client to Google's Play Store, with an elegant design, using Aurora you can download apps, <br/> 
-update existing apps, search for apps, get details about in-app trackers and much more.
+*Aurora Store* is an **unofficial**, FOSS client to Google's Play Store with an elegant design. Not only does Aurora Store download, update, and search for apps like the Play Store, it also empowers the user with new features.
 
-You can also Spoof your Device Information, Language and Region to get access to the apps that are not yet available<br/> 
-or restricted in your Country|Device.<br/>
+For those concerned with privacy, *Aurora Store* does not require Google's proprietary framework (spyware?) to operate; It works perfectly fine with or without GooglePlayService or [MicroG](https://microg.org/). However, those still reliant on those services are welcome to use *Aurora Store* as well!
 
-Aurora Store does not require Google's Proprietary Framework (Spyware ?) to operate, it works perfectly fine with<br/>
-or without GooglePlayService or MicroG. Thereby avoding the various concerned *userdata & privacy issues.<br/>
-
-Earlier based on Sergei Yeriomin's [Yalp store](https://github.com/yeriomin/YalpStore), v3.0 is a clean & complete rewrite from scratch that follows<br/>
-Material Design and runs on all devices running Android 5.0+.<br/>
+While *Aurora Store* was originally based on Sergei Yeriomin's [Yalp store](https://github.com/yeriomin/YalpStore), v3.0 is a clean & complete rewrite from scratch that follows Material Design and runs on all devices running Android 5.0+.
 
 # Screenshots
 
@@ -23,161 +17,160 @@ Material Design and runs on all devices running Android 5.0+.<br/>
 
 # Features
 
-* Free | Libre software
+* Free/Libre software
   -- Has GPLv3 licence
 
-* Beautiful Design
-  -- Built upon latest Material Design Guidelines
+* Beautiful design
+  -- Built upon latest Material Design guidelines
 
-* Anonymous Accounts
+* Anonymous accounts
   -- You can log in and download with anonymous accounts so you don't have to use your own account
 
 * Personal Accounts
   -- You can download purchased apps or access your wishlist by using your own Google account
 
-* Exodus Integration
-  -- To tell you about trackers and other harmful components in the app instantly
+* [Exodus](https://exodus-privacy.eu.org/) integration
+  -- Instantly see trackers an app is hiding in its code
 
-# What's new in v3 ?
-  
-  * Inbuilt Download Manager
-  * Improved Notification Manager
-  * Improved Blacklist Manager & Filters
+# What's new in v3?
+
+  * Built-in download manager
+  * Improved notification manager
+  * Improved blacklist manager & filters
   * New UI based on latest Material Design guidelines
-  * Support for Split | Bundled APK Installations 
-  
+  * Support for split/bundled APK installations
+
 
 # Downloads
 
-  * Aurora OSS : [Nightlies](http://auroraoss.com/Nightly/)
-  * XDA Forum : [Thread](https://forum.xda-developers.com/android/apps-games/galaxy-playstore-alternative-t3739733)
-  * F-Droid : [Link](https://f-droid.org/en/packages/com.aurora.store/)
-  
-  `Aurora Store v3 is still in development ! Bugs are to be expected any bug reports are appreciated.`
+  * Aurora OSS: [Nightlies](http://auroraoss.com/Nightly/)
+  * XDA Forum: [Thread](https://forum.xda-developers.com/android/apps-games/galaxy-playstore-alternative-t3739733)
+  * F-Droid: [Link](https://f-droid.org/en/packages/com.aurora.store/)
 
-# Frequently Asked Questions 
+  `Aurora Store v3 is still in development! Bugs are to be expected! Any bug reports are appreciated.`
 
-* <b>What is the difference between Aurora Store and Google PlayStore ?</b>
+# Frequently Asked Questions
 
-  Unlike Google Play Store, Aurora doesn't track your downloads or the apps you use. We respect your privacy. Aurora is also uneffected<br/>
-  by Google marking your device as uncertified or a lack of Google Apps.''
+* <b>What is the difference between Aurora Store and Google's Play store?</b>
 
-* <b>Is Aurora Store a fork of YalpStore ?</b>
+  Unlike Google's Play Store, *Aurora Store* doesn't track your downloads or the apps you use. We respect your privacy. Aurora is also unaffected by Google marking your device as *uncertified* or lacking of necessary Google apps.
 
-  Technically No, the Aurora Store v3 is written from scratch, but it does share some code from YalpStore
+* <b>Is *Aurora Store* a fork of YalpStore?</b>
+
+  Technically, no. the *Aurora Store* v3 is written from scratch, but it does share some code from YalpStore.
 
 * <b>How can I report a bug or suggest something?</b>
 
-  You can open issues here, or you can join our Telegram Developement Group [Join Now](https://t.me/AuroraSupport)
+  You can open issues [here](https://gitlab.com/AuroraOSS/AuroraStore/issues), or you can join our [Telegram Developement Group](https://t.me/AuroraSupport).
 
-* <b>How to Join|Contribute to Aurora Store ?</b>
+* <b>How do I join/contribute to *Aurora Store*?</b>
 
-  I am open to any kind of suggestions/feature request, you can either mail me at <b>whyorean@gmail.com</b> or ping me on [Telegram](https://t.me/whyorean). 
-  
-* <b> Why Aurora store ?</b>
+  I am open to any kind of suggestions/feature request! you can either mail me at [whyorean@gmail.com](mailto:whyorean@gmail.com) or ping me on [Telegram](https://t.me/whyorean).
 
-  Because PlayServices have always disappointed and are proven to be Spyware & Malicious to the end user [link](https://www.gnu.org/proprietary/malware-google.html).<br/> 
-  Unfortunately, we cannot always get-by with just FOSS Apps. Aurora store helps us retrieve apps from the PlayStore repository,<br/>
-  without having to trouble you and your device with Google Apps.
+* <b> Why create *Aurora Store*?</b>
 
-* <b> If I don't need GApps, Do I need MicroG ?</b>
+  Because Google's Play store disappoints with a lack of features; Play is also proven to be [spyware/malicious](https://www.gnu.org/proprietary/malware-google.html).<br/>
+  Unfortunately, we cannot always get by with just FOSS apps, so *Aurora Store* helps us retrieve apps from the Google Play repository without having to trouble you and your device with Google Apps.
 
-  No. Aurora Store was built to access PlayStore without any kind of google services. It doesn't care if you use it with or without GApps or MicroG.
+* <b>Do I need Google Play Services to use *Aurora Store*?</b>
 
-* <b> What is the FakeStore ?</b>
+  No. *Aurora Store* was built to access the Google Play store without any kind of Google services. It doesn't care if you use it with or without Google Play Services/MicroG.
 
-  Badly designed apps detect if PlayStore is missing and start misbehaving. The FakeStore is a stub that pretends to be as PlayStore and<br/>
-  preventing the apps from crashing, as the package name for FakeStore is same as PlayStore (com.android.vending).
+* <b>What is the FakeStore?</b>
 
-* <b> Is it safe to use Aurora store ?</b>
+  Some poorly-designed apps detect if Google Play is missing and punish the user by misbehaving. The FakeStore is a stub that disguises itself as the Play store: FakeStore shares the same package name as the Play store (`com.android.vending`). This prevents some apps from crashing.
+
+* <b>Is it safe to use Aurora store?</b>
 
   Aurora is fully open source and verified by FDroid. If you're talking about the safety of the apps in the store, it just gets them from the same place<br/>
   that the PlayStore would, and are verified by Google. A lot of dangerous stuff seems to sneak past them though, so as a rule of thumb, don't download anything<br/>
   which you're not sure about.
 
-* <b> What data does Aurora store send to Google ?</b>
+* <b>What data does *Aurora Store* send to Google?</b>
 
-  Aurora Store does its best to send the least identifiable information possible. It does send list of package names of your installed apps (for fetching updates), <br/>
-  your search querries and your downloads for obvious reasons.
+  *Aurora Store* does its best to send the least identifiable information possible. It does send list of package names of your installed apps (for fetching updates).<br/>
+  It also sends your search queries and your downloads for obvious reasons.
 
-* <b> Do I need to use my own Google account to log in ?</b>
+* <b>Do I need to use my own Google account to log in?</b>
 
-  Nope, Aurora Store can log you in with a dummy account so that nothing gets linked to your own account.
+  Nope. *Aurora Store* can log you in with a dummy account so that nothing gets linked to your own account.
 
-* <b> Why would I use my own account? Is it safe ?</b>
+* <b>Why would I use my own account? Is it safe?</b>
 
-  You can use your own account to download apps purchased by you or to access your wishlist. Although you may want to be careful, as Google retains <br/>
-  the right to block any account, so probably use a dummy account.
+  You can use your own account to download apps purchased by you or to access your wishlist. However, you may want to be careful as Google retains <br/>
+  the right to block any account. It might be worth using a dummy account for that reason.
 
-* <b> How do I login if I have 2-factor-authentication enabled ?</b>
+* <b>How do I log in if I have two-factor authentication enabled?</b>
 
-  You just need to get an app password from the Google dashboard and use that to login into Aurora Store.
+  You just need to get an app password from the Google dashboard and use that to login into *Aurora Store*.
 
-* <b> How do I purchase paid apps ?</b>
+* <b>How do I purchase paid apps?</b>
 
-  Purchase the apps from the PlayStore [website](https://play.google.com/store), and login using your own account in Aurora Store to download them.
+  Purchase the apps from the [Google Play website](https://play.google.com/store), then log in using your own account in *Aurora Store* to download them.
 
-* <b> Can Aurora store verify licences ?</b>
+* <b>Can Aurora store verify licences?</b>
 
   Not yet. All you can do at this point is pester the dev of the licenced app to give you an alternative method for verification.
 
-* <b> Can I use Aurora store to get paid apps for free ?</b>
+* <b>Can I use Aurora store to get paid apps for free?</b>
 
   No. Get out.
 
-* <b> What is the FDroid filter ?</b>
+* <b>What is the FDroid filter?</b>
 
-  Since F-Droid signs APKs with its own keys, the PlayStore variants of apps cannot be installed over them. The FDroid filter excludes all the apps <br/>
+  Since F-Droid signs APKs with its own keys, the Play store variants of apps cannot be installed over them. The F-Droid filter excludes all the apps <br/>
   it finds with FDroid signatures on your device to prevent such conflicts.
 
-* <b> What is the spoofing feature ?</b>
+* <b>What is the spoofing feature?</b>
 
-  Spoofing allows you to pretend to be any other device at any other location in the world, to download geo-restricted apps. You can use your own custom device<br/>
+  Spoofing allows you to pretend to be any other device at any other location in the world in order to download geo-restricted apps. You can use your own custom device<br/>
   configs by dropping the .properties file in the Downloads directory (Settings -> Downloads -> Download Path).
 
-* <b> How does Aurora install apps ?</b>
+* <b>How does *Aurora* install apps?</b>
 
-  Aurora Store can install apps in 3 ways
+  *Aurora Store* can install apps in 3 ways:
     * Manual - Whenever an app is downloaded, it will open the manual installation screen. This doesn't require root or system perms.
-    * Root | System - By giving Aurora Store root or system permissions, it will automatically install apps in the background as soon as they are downloaded.
-    * Aurora Services - By installing Aurora Services as system app, Aurora Store can automatically install app upon download completion in background.
+    * Root/System - By giving Aurora Store root or system permissions, it will automatically install apps in the background as soon as they are downloaded.
+    * *Aurora Services* - By installing *Aurora Services* as system app, *Aurora Store* can automatically install app upon download completion in background.
 
-* <b> How do I use Aurora services ?</b>
+* <b>How do I use *Aurora Services*?</b>
 
-  Install Aurora Services (to system preferred), open it, do everything it says, open Aurora settings and choose Aurora Services it as install method.<br/>
-  You don't need to give Aurora Store system or root grants. Aurora Services handle all install & uninstall requests in background.
-  
+  1. Install *Aurora Services* (preferably to the system).
+  2. Open *Aurora Services* and follow the initial set-up instructions
+  3. Open *Aurora Services*' settings and choose Aurora Services it as an install method.
+
+  You don't need to give *Aurora Store* system or root grants; *Aurora Services* handles all install and uninstall requests in the background.
+
   `NOTE: Aurora Services support has yet to be implemented in v3.`
 
-* <b> How to give Aurora Store|Services system permissions ?</b>
+* <b>How to give *Aurora Store*/*Services* system permissions?</b>
 
-  You need to either manually push the APKs to /system/priv-app, or install the magisk module from the group.
+  You need to either manually push the APKs to `/system/priv-app`, or install the [Magisk](https://magiskmanager.com/) module from the group.
 
-* <b> Can Aurora Download and install Split or Bundled APKs ?</b>
+* <b>Can Aurora Download and install Split or Bundled APKs?</b>
 
   Yes, with or without root.
 
-* <b> How can I submit/improve translations ?</b>
+* <b>How can I submit/improve translations ?</b>
 
   Go to [POEditor](https://poeditor.com/join/project/54swaCpFXJ), and inform me when done.<br/>
-  (Although I keep track of translations progress, but in case I miss, let me know)
+  (I typically keep track of translations progress, but it's possible that I missed a contribution. If you don't receive a reply, please remind me!)
 
-* <b> Why do I have two Aurora Stores after installing the new builds ?</b>
+* <b>Why do I have two *Aurora Store* installations after installing the new builds?</b>
 
   Because the v3 is a completely new rewrite, it comes with a new package name. You can uninstall the older one or keep it if you want.
 
-* <b> Why are the versions on FDroid and XDA labs outdated? When will they be updated ?</b>
+* <b>Why are the versions on F-Droid and XDA labs outdate? When will they be updated ?</b>
 
-  Aurora Store is still in a development phase right now, and only infrequent stable builds will be uploaded there (Also, FDroid's review & build process is quite lengthy). <br/>
+  Aurora Store is still in a development phase right now; Only infrequent, stable builds will be uploaded there. F-Droid's review & build process is also quite lengthy. <br/>
   You can always grab the latest tests builds either from the [Telegram Group](https://t.me/AuroraSupport) or from [AuroraOSS](http://auroraoss.com/Nightly/)
 
-* <b>"Please add FDroid | Amazon App Store| Yada support"</b>
+* <b>"Please add support for F-Droid/Amazon/Yada repositories!"</b>
 
-  No, this is a PlayStore client. Which means it's for the Play store only. Different clients for different services (^_~) 
- 
- 
- `If you are an Android App Developer and find something that can be improved|fixed|added, feel free to make a pull request.`
- 
+  No, this is a Play store client only. Different clients for different services (^_~)
+
+ `If you are an Android App Developer and find something that can be improved/fixed/added, feel free to make a pull request.`
+
 # Aurora Store uses the following Open Source libraries:
 
 * [RX-Java](https://github.com/ReactiveX/RxJava)
@@ -194,4 +187,4 @@ Material Design and runs on all devices running Android 5.0+.<br/>
 * [Raccoon](https://github.com/onyxbits/raccoon4)
 * [SAI](https://github.com/Aefyr/SAI)
 
-[<img src="https://f-droid.org/badge/get-it-on.png" alt="Get it on F-Droid" height="60">](https://f-droid.org/packages/com.dragons.aurora/) [<img src="https://poeditor.com/public/images/logo_small.png" alt="Join POEditor">](https://poeditor.com/join/project/54swaCpFXJ) 
+[<img src="https://f-droid.org/badge/get-it-on.png" alt="Get it on F-Droid" height="60">](https://f-droid.org/packages/com.dragons.aurora/) [<img src="https://poeditor.com/public/images/logo_small.png" alt="Join POEditor">](https://poeditor.com/join/project/54swaCpFXJ)
