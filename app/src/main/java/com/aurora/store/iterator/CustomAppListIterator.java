@@ -32,17 +32,27 @@ import com.dragons.aurora.playstoreapiv2.DocV2;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 public class CustomAppListIterator implements Iterator {
 
     protected boolean enableFilter = false;
     protected Filter filter = new Filter();
     protected AppListIterator2 iterator;
+    private List<String> relatedTags = new ArrayList<>();
 
     public CustomAppListIterator(AppListIterator2 iterator) {
         this.iterator = iterator;
+    }
+
+    public List<String> getRelatedTags() {
+        Set<String> set = new HashSet<>(relatedTags);
+        relatedTags.clear();
+        relatedTags.addAll(set);
+        return relatedTags;
     }
 
     public void setEnableFilter(boolean enableFilter) {
@@ -61,7 +71,10 @@ public class CustomAppListIterator implements Iterator {
     public List<App> next() {
         List<App> apps = new ArrayList<>();
         for (DocV2 details : iterator.next()) {
-            addApp(apps, AppBuilder.build(details));
+            if (details.getDocType() == 53)
+                relatedTags.add(details.getTitle());
+            else
+                addApp(apps, AppBuilder.build(details));
         }
         return apps;
     }

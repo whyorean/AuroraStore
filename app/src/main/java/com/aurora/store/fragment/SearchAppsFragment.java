@@ -161,7 +161,7 @@ public class SearchAppsFragment extends BaseFragment {
                     iterator = getIterator(getQuery());
                     iterator.setEnableFilter(true);
                     iterator.setFilter(new Filter(getContext()).getFilterPreferences());
-                    relatedTags = getRelatedTags();
+                    relatedTags = iterator.getRelatedTags();
                     fetchSearchAppsList(false);
                     searchQuery.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_edit, 0);
                     InputMethodManager imm = (InputMethodManager) v.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -195,7 +195,7 @@ public class SearchAppsFragment extends BaseFragment {
                 iterator = getIterator(getQuery());
                 iterator.setEnableFilter(true);
                 iterator.setFilter(new Filter(getContext()).getFilterPreferences());
-                relatedTags = getRelatedTags();
+                relatedTags = iterator.getRelatedTags();
             } catch (Exception e) {
                 processException(e);
             }

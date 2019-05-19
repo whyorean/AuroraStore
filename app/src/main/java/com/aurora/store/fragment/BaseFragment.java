@@ -55,8 +55,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.BindView;
 import io.reactivex.Flowable;
@@ -82,15 +80,10 @@ public abstract class BaseFragment extends Fragment {
     ViewGroup layoutError;
 
     private SearchIterator2 searchIterator;
-    private List<String> relatedTags = new ArrayList<>();
     private CompositeDisposable disposableBus = new CompositeDisposable();
     private Context context;
     private BottomNavigationView bottomNavigationView;
     private PlayStoreApiAuthenticator playStoreApiAuthenticator;
-
-    public List<String> getRelatedTags() {
-        return relatedTags;
-    }
 
     void setBaseBottomNavigationView(BottomNavigationView bottomNavigationView) {
         this.bottomNavigationView = bottomNavigationView;
@@ -100,7 +93,6 @@ public abstract class BaseFragment extends Fragment {
         try {
             searchIterator = new SearchIterator2(new PlayStoreApiAuthenticator(context).getApi(), query);
             iterator = new CustomAppListIterator(searchIterator);
-            relatedTags = searchIterator.getRelatedTags();
             return iterator;
         } catch (Exception e) {
             processException(e);
@@ -202,7 +194,7 @@ public abstract class BaseFragment extends Fragment {
     }
 
     protected void notifyStatus(@NonNull CoordinatorLayout coordinatorLayout, @Nullable View anchorView,
-                              @NonNull String message) {
+                                @NonNull String message) {
         Snackbar snackbar = Snackbar.make(coordinatorLayout, message, Snackbar.LENGTH_LONG);
         if (anchorView != null)
             snackbar.setAnchorView(anchorView);
