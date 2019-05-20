@@ -20,32 +20,33 @@
 
 package com.aurora.store.fragment.details;
 
-import android.content.Context;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 
 import com.android.volley.RequestQueue;
-import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.aurora.store.R;
 import com.aurora.store.fragment.DetailsFragment;
 import com.aurora.store.model.App;
 import com.aurora.store.model.ExodusReport;
+import com.aurora.store.model.Report;
 import com.aurora.store.sheet.ExodusBottomSheet;
 import com.aurora.store.utility.Log;
+import com.google.gson.Gson;
 
 import org.apache.commons.lang3.StringUtils;
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.Collections;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 import static com.android.volley.Request.Method.GET;
-import static com.aurora.store.Constants.TAG;
 
 public class ExodusPrivacy extends AbstractHelper {
 
@@ -56,7 +57,7 @@ public class ExodusPrivacy extends AbstractHelper {
     @BindView(R.id.moreButton)
     Button moreButton;
 
-    private ExodusReport mReport;
+    private Report report;
 
     public ExodusPrivacy(DetailsFragment fragment, App app) {
         super(fragment, app);
@@ -65,49 +66,43 @@ public class ExodusPrivacy extends AbstractHelper {
     @Override
     public void draw() {
         ButterKnife.bind(this, view);
-        try {
-            getExodusReport(fragment.getActivity(), EXODUS_PATH + app.getPackageName());
-        } catch (NullPointerException e) {
-            Log.i("Probably App Switched");
-        }
+        getExodusReport(EXODUS_PATH + app.getPackageName());
     }
 
-    private void getExodusReport(Context context, String EXODUS_PATH) {
+    private void getExodusReport(String EXODUS_PATH) {
         RequestQueue mRequestQueue = Volley.newRequestQueue(context);
         JsonObjectRequest jsonObjReq = new JsonObjectRequest(GET,
                 EXODUS_PATH, null, response -> {
             try {
-                JSONObject exodusReport = response.getJSONObject(app.getPackageName());
-                JSONArray reportsArray = exodusReport.getJSONArray("reports");
-                JSONObject trackersReport = reportsArray.getJSONObject(reportsArray.length() - 1);
-                mReport = new ExodusReport();
-                mReport.setTrackerIds(trackersReport.getJSONArray("trackers"));
-                mReport.setAppId(trackersReport.getString("id"));
-                mReport.setVersion(trackersReport.getString("version"));
-                mReport.setVersionCode(trackersReport.getString("version_code"));
-                mReport.setApp(app);
-                drawExodus(mReport);
+                JSONObject jsonObject = response.getJSONObject(app.getPackageName());
+                Gson gson = new Gson();
+                ExodusReport exodusReport = gson.fromJson(jsonObject.toString(), ExodusReport.class);
+                List<Report> reportList = exodusReport.getReports();
+                Collections.sort(reportList, (Report1, Report2) ->
+                        Report2.getCreationDate().compareTo(Report1.getCreationDate()));
+                report = reportList.get(0);
+                drawExodus(report);
             } catch (JSONException e) {
-                Log.i("Error occurred at Exodus Privacy");
+                Log.i("Error occurred at ExodusReport Privacy");
             }
-        }, error -> VolleyLog.d(TAG, "Error: " + error.getMessage()));
+        }, error -> Log.d(error.getMessage()));
         mRequestQueue.add(jsonObjReq);
     }
 
-    private void drawExodus(ExodusReport mReport) {
-        if (fragment.getActivity() != null) {
+    private void drawExodus(Report mReport) {
+        if (context != null) {
             exodus_card.setVisibility(View.VISIBLE);
-            if (mReport.getTrackerIds().length() > 0) {
+            if (mReport.getTrackers().size() > 0) {
                 setText(view, R.id.exodus_description,
                         new StringBuilder()
                                 .append(context.getString(R.string.exodus_hasTracker))
                                 .append(StringUtils.SPACE)
-                                .append(mReport.getTrackerIds().length()).toString());
+                                .append(mReport.getTrackers().size()).toString());
             } else {
                 setText(view, R.id.exodus_description, R.string.exodus_noTracker);
             }
 
-            if (mReport.getTrackerIds().isNull(0))
+            if (mReport.getTrackers().isEmpty())
                 moreButton.setVisibility(View.GONE);
             else
                 moreButton.setOnClickListener(v -> showBottomDialog());
@@ -115,7 +110,7 @@ public class ExodusPrivacy extends AbstractHelper {
     }
 
     private void showBottomDialog() {
-        ExodusBottomSheet mBottomSheet = new ExodusBottomSheet(mReport);
+        ExodusBottomSheet mBottomSheet = new ExodusBottomSheet(report);
         mBottomSheet.show(fragment.getChildFragmentManager(), "EXODUS");
     }
 }

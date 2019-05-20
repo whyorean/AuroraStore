@@ -94,7 +94,7 @@
             <!-- Reviews -->
             <include layout="@layout/include_details_reviews" />
 
-            <!-- Exodus -->
+            <!-- Report -->
             <include layout="@layout/include_details_exodus" />
 
             <!-- App Video -->

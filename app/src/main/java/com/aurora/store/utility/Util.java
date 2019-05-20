@@ -44,8 +44,6 @@ import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 import com.tonyodev.fetch2.Status;
 import com.tonyodev.fetch2core.Downloader;
 
-import org.json.JSONArray;
-
 import java.net.InetSocketAddress;
 import java.net.Proxy;
 import java.net.SocketException;
@@ -161,16 +159,6 @@ public class Util {
                 || e instanceof SocketException
                 || e instanceof SocketTimeoutException
                 || (null != e && null != e.getCause() && noNetwork(e.getCause()));
-    }
-
-    public static String[] getStringArray(JSONArray array) {
-        if (array == null)
-            return null;
-        String[] arr = new String[array.length()];
-        for (int i = 0; i < arr.length; i++) {
-            arr[i] = array.optString(i);
-        }
-        return arr;
     }
 
     public static int getColorAttribute(Context context, int styleID) {

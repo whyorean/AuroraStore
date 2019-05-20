@@ -37,10 +37,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.aurora.store.R;
 import com.aurora.store.adapter.ExodusAdapter;
-import com.aurora.store.model.ExodusReport;
 import com.aurora.store.model.ExodusTracker;
+import com.aurora.store.model.Report;
 import com.aurora.store.utility.Log;
-import com.aurora.store.utility.Util;
 import com.aurora.store.view.CustomBottomSheetDialogFragment;
 
 import org.json.JSONArray;
@@ -59,7 +58,7 @@ import butterknife.ButterKnife;
 public class ExodusBottomSheet extends CustomBottomSheetDialogFragment {
 
     @BindView(R.id.exodus_recycler)
-    RecyclerView mRecyclerView;
+    RecyclerView recyclerView;
     @BindView(R.id.btn_report)
     Button btn_report;
     @BindView(R.id.exodus_app_detail)
@@ -68,10 +67,10 @@ public class ExodusBottomSheet extends CustomBottomSheetDialogFragment {
     TextView exodus_app_version;
 
     private Context context;
-    private ExodusReport mReport;
+    private Report report;
 
-    public ExodusBottomSheet(ExodusReport mReport) {
-        this.mReport = mReport;
+    public ExodusBottomSheet(Report report) {
+        this.report = report;
     }
 
     @Override
@@ -91,24 +90,24 @@ public class ExodusBottomSheet extends CustomBottomSheetDialogFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false));
-        mRecyclerView.setAdapter(new ExodusAdapter(getContext(), getTrackerData(mReport.getTrackerIds())));
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false));
+        recyclerView.setAdapter(new ExodusAdapter(getContext(), getTrackerData(report)));
 
-        exodus_app_detail.setText(mReport.getApp().getPackageName());
+        exodus_app_detail.setText(report.getVersion());
         StringBuilder sb = new StringBuilder();
         sb.append("v");
-        sb.append(mReport.getVersion());
+        sb.append(report.getVersion());
         sb.append(".");
-        sb.append(mReport.getVersionCode());
+        sb.append(report.getVersionCode());
         exodus_app_version.setText(sb);
 
         btn_report.setOnClickListener(v -> context.startActivity(new Intent(Intent.ACTION_VIEW,
-                Uri.parse("https://reports.exodus-privacy.eu.org/reports/" + mReport.getAppId() + "/"))));
+                Uri.parse("https://reports.exodus-privacy.eu.org/reports/" + report.getId() + "/"))));
     }
 
-    private List<ExodusTracker> getTrackerData(JSONArray trackersIDs) {
+    private List<ExodusTracker> getTrackerData(Report report) {
         List<ExodusTracker> mExodusTrackers = new ArrayList<>();
-        ArrayList<JSONObject> trackerObjects = getTrackerObjects(Util.getStringArray(trackersIDs));
+        ArrayList<JSONObject> trackerObjects = getTrackerObjects(report.getTrackers());
         for (JSONObject obj : trackerObjects) {
             ExodusTracker mExodusTracker = null;
             try {
@@ -125,27 +124,24 @@ public class ExodusBottomSheet extends CustomBottomSheetDialogFragment {
         return mExodusTrackers;
     }
 
-    private ArrayList<JSONObject> getTrackerObjects(String[] IDs) {
-        ArrayList<JSONObject> trackerObjects = new ArrayList<>();
-        for (String ID : IDs) {
-            trackerObjects.add(getOfflineTrackerObj(ID));
-        }
-        return trackerObjects;
-    }
-
-    private JSONObject getOfflineTrackerObj(String trackerID) {
+    private ArrayList<JSONObject> getTrackerObjects(List<Integer> trackerIdList) {
         try {
             InputStream mInputStream = context.getAssets().open("exodus_trackers.json");
             byte[] mByte = new byte[mInputStream.available()];
             mInputStream.read(mByte);
             mInputStream.close();
-            String ExodusJSON = new String(mByte, StandardCharsets.UTF_8);
-            JSONArray mJsonArray = new JSONArray(ExodusJSON);
-            JSONObject mJsonObject = mJsonArray.getJSONObject(0);
-            return mJsonObject.getJSONObject(trackerID);
+            String json = new String(mByte, StandardCharsets.UTF_8);
+            JSONArray jsonArray = new JSONArray(json);
+            JSONObject jsonObject = jsonArray.getJSONObject(0);
+            ArrayList<JSONObject> trackerObjects = new ArrayList<>();
+            for (Integer trackerId : trackerIdList) {
+                trackerObjects.add(jsonObject.getJSONObject(String.valueOf(trackerId)));
+            }
+            return trackerObjects;
         } catch (IOException | JSONException e) {
             Log.i(e.getMessage());
-            return null;
+            e.printStackTrace();
+            return new ArrayList<>();
         }
     }
 }

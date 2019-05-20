@@ -79,6 +79,7 @@ dependencies {
     implementation 'androidx.annotation:annotation:1.0.2'
     implementation 'org.apache.commons:commons-text:1.4'
     implementation 'com.scottyab:rootbeer-lib:0.0.7'
+    implementation 'com.google.code.gson:gson:2.8.5'
 
     //PlayStoreApi
     implementation 'com.github.whyorean:playstore-api-v2:2.1'
