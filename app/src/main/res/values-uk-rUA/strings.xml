@@ -83,7 +83,7 @@
 <string name="details_purchase">"Придбати"</string>
 <string name="details_rate_this_app">"Оцініть цей додаток"</string>
 <string name="details_rating_reviews">"Рейтинги"</string>
-<string name="details_reviews">"Огляди програм"</string>
+<string name="details_reviews">"Відгуки про програму"</string>
 <string name="details_run">"Відкрити"</string>
 <string name="details_share">"Поділитись"</string>
 <string name="details_update">"Оновлення"</string>
@@ -297,4 +297,7 @@ Aurora дозволяє шукати, завантажувати, встанов
 <string name="pref_ui_transparent">"Прозорий стиль"</string>
 <string name="pref_ui_transparent_summary">"Для перегляду категорій і посилань використовується прозорий стиль карток"</string>
 <string name="pref_install_delete_summary">"На пристроях під керуванням Android Pie + з рут методом встановлення, APK видаляється за замовчуванням"</string>
+<string name="action_loading">"Завантаження"</string>
+<string name="pref_default">"Замовчуванням"</string>
+<string name="toast_loading_apps">"Зазвантажуєм ще..."</string>
 </resources>
