@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 <string name="account_dummy">"Anonymous"</string>
-<string name="account_dummy_desc">"Login met een anoniem account?"</string>
+<string name="account_dummy_desc">"Login in met een anoniem account?"</string>
 <string name="account_google">"Google-account"</string>
 <string name="account_logout">"Aurora uitloggen ?"</string>
 <string name="account_prompt_login">"Log alstublieft in om door te gaan"</string>
@@ -54,7 +54,7 @@
 <string name="action_search_clearHistory">"Wis alles"</string>
 <string name="action_search_history">"Zoekgeschiedenis"</string>
 <string name="action_settings">"Instellingen"</string>
-<string name="action_spoofed">"Spoofing"</string>
+<string name="action_spoofed">"Voordoen"</string>
 <string name="action_submit">"Verzenden"</string>
 <string name="action_unignore">"Verwijderen van de zwarte lijst"</string>
 <string name="action_uninstall">"Uninstall"</string>
@@ -69,7 +69,7 @@
 <string name="category_topGrossing">"Top winstgevend"</string>
 <string name="category_trending">"Trends"</string>
 <string name="delete">"Verwijder"</string>
-<string name="desc_perm">"Aurora Store gebruikt de volgende machtigingen"</string>
+<string name="desc_perm">"Aurora Winkel gebruikt de volgende machtigingen"</string>
 <string name="details_appReviewsAll">"Lees alle beoordelingen"</string>
 <string name="details_contains_ads">"Bevat advertenties"</string>
 <string name="details_download">"Download"</string>
@@ -116,25 +116,25 @@
 <string name="exodus_viewMore">"Zien"</string>
 <string name="exodus_viewReport">"Bekijk het rapport"</string>
 <string name="flagging_title">"Rapporteer als ongepast"</string>
-<string name="list_app_blacklisted_empty">"Geen applicatie op de zwarte lijst"</string>
+<string name="list_app_blacklisted_empty">"Geen applicatie in de zwarte lijst"</string>
 <string name="list_app_depends_on_gsf">"hangt af van de GSF"</string>
 <string name="list_app_has_ads">"heeft advertenties"</string>
 <string name="list_app_independent_from_gsf">"is niet afhankelijk van de GSF"</string>
 <string name="list_app_no_ads">"geen advertenties"</string>
 <string name="list_app_system">"Systeemapplicatie"</string>
 <string name="list_app_user">"Gebruikersapplicatie"</string>
-<string name="list_blacklist">"Blacklisted applicaties"</string>
-<string name="list_blacklist_none">"Geen applicatie op de zwarte lijst"</string>
-<string name="list_bulk_install">"app (s) in de wachtrij voor massa-installatie"</string>
+<string name="list_blacklist">"Applicaties in de zwarte lijst"</string>
+<string name="list_blacklist_none">"Geen applicatie in de zwarte lijst"</string>
+<string name="list_bulk_install">"applicatie (s) in de wachtrij voor massa-installatie"</string>
 <string name="list_empty_fav">"Geen favorieten"</string>
-<string name="list_empty_query">"Geen recent onderzoek"</string>
-<string name="list_empty_updates">"Geen update beschikbaar"</string>
+<string name="list_empty_query">"Geen zoekgeschiedenis"</string>
+<string name="list_empty_updates">"Geen bijgewerkte versie beschikbaar"</string>
 <string name="list_installed">"Geïnstalleerd"</string>
 <string name="list_installed_system">"Toon alleen gebruikersapplicaties"</string>
 <string name="list_not_installd">"Niet geïnstalleerd"</string>
-<string name="list_update_all">"Update alles"</string>
-<string name="list_update_all_txt">"update (s) beschikbaar"</string>
-<string name="list_updating">"Werk"</string>
+<string name="list_update_all">"Alles bijwerken"</string>
+<string name="list_update_all_txt">"bijgewerkte versie beschikbaar"</string>
+<string name="list_updating">"Bijwerken"</string>
 <string name="manual_download_disclaimer">"Waarschuwing"</string>
 <string name="manual_download_incompatible">"Google Play Store beschouwt deze app als incompatibel met uw apparaat, wat betekent dat de versiecode niet is teruggestuurd vanuit de Google Play Store."</string>
 <string name="manual_download_warning">"Op deze pagina kunt u handmatig de versie van de te downloaden applicatie kiezen.  Houd er rekening mee dat het downloaden van willekeurige versies van apps niet wordt ondersteund door Google Play Store. Uw succes is willekeurig en hangt af van de versie van de code. Zelfs als alles er goed uitziet en de download start, krijg je mogelijk een incompatibele apk. "</string>
@@ -183,14 +183,14 @@
 <string name="pref_proxy_type">"Type proxy"</string>
 <string name="pref_requested_language">"Wijzig de standaard API-aanvraagtaal"</string>
 <string name="pref_requested_language_default">"Uw standaardtaal"</string>
-<string name="pref_requested_location_disable">"U moet MockLocation handmatig uitschakelen van de ontwikkelaaropties om het volledig uit te schakelen."</string>
-<string name="pref_requested_location_enable">"U moet MockLocation handmatig inschakelen via de ontwikkelaaropties."</string>
-<string name="pref_requested_location_summary">"Aurora Store moet worden ingesteld als standaard dummy locatietoepassing"</string>
+<string name="pref_requested_location_disable">"U moet MockLocatie handmatig uitschakelen van de ontwikkelaaropties om het volledig uit te schakelen."</string>
+<string name="pref_requested_location_enable">"U moet MockLocatie handmatig inschakelen via de ontwikkelaaropties."</string>
+<string name="pref_requested_location_summary">"Aurora Winkel moet worden ingesteld als standaard dummy locatietoepassing"</string>
 <string name="pref_ui_card_summary">"Gebruik kaarten in traditionele stijl voor aanbevolen apps"</string>
 <string name="pref_ui_card_title">"Traditionele stijl van applicatiekaarten"</string>
 <string name="pref_ui_snap_summary">"Toon één applicatie door te scrollen"</string>
 <string name="pref_ui_snap_title">"Schakel SnapView in voor toepassingen"</string>
-<string name="pref_ui_theme_title">"Theme"</string>
+<string name="pref_ui_theme_title">"Thema"</string>
 <string name="testing_program_opt_in">"Bevestig"</string>
 <string name="testing_program_opt_out">"Quit"</string>
 <string name="testing_program_review_dialog_content_hint">"Voer uw opmerkingen over de toepassing in"</string>
@@ -204,7 +204,7 @@
 <string name="title_home">"Aurora Winkel"</string>
 <string name="title_installed">"Mijn apps"</string>
 <string name="title_perm">"Rechten"</string>
-<string name="title_search">"Zoektoepassingen"</string>
+<string name="title_search">"Zoek toepassingen &amp; spelletjes"</string>
 <string name="title_updates">"Updates beschikbaar"</string>
 <string name="title_welcome">"Welkom"</string>
 <string name="toast_apk_blacklisted">"Op zwarte lijst"</string>
@@ -220,17 +220,17 @@
 <string name="tab_family">"Kinderen en familie"</string>
 <string name="pref_ui_tab_mode_title">"Vervolgkeuzelijsten"</string>
 <string name="pref_ui_tab_mode_summary">"Inschakelen om de tabbladen te laten verschijnen, aanbevolen voor apparaten met lage resolutie"</string>
-<string name="about_app">"Aurora is een open source alternatief voor de Play Store. Hiermee kunt u applicaties downloaden, updates leveren voor geïnstalleerde applicaties en kunt u zoeken naar apps en games. Het biedt ook een lijst met ingebouwde trackers in een applicatie. "</string>
+<string name="about_app">"Aurora is een open source alternatief voor Play Store. Hiermee kunt u applicaties downloaden, updates downloaden voor geïnstalleerde applicaties en kunt u zoeken naar apps en games. Het biedt ook een lijst met ingebouwde trackers in een applicatie. "</string>
 <string name="about_paypal">"Paypal"</string>
 <string name="about_paypal_summary">"Doneer op Paypal"</string>
 <string name="about_fdroid">"F-Droid"</string>
 <string name="about_gitlab">"GitLab"</string>
-<string name="about_gitlab_summary">"Haal de AuroraStore-broncode van Aurora OSS op GitLab."</string>
+<string name="about_gitlab_summary">"Zie de broncode van Aurora Winkel op GitLab."</string>
 <string name="about_telegram">"Telegram"</string>
 <string name="about_telegram_summary">"Word lid van de Aurora Support Group voor discussies of suggesties."</string>
 <string name="about_fdroid_summary">"Koop Aurora op de F-Droid Repo"</string>
 <string name="about_xda">"Dev Forum"</string>
-<string name="about_xda_summary">"Zie de AuroraStore XDA-thread voor discussie of suggesties."</string>
+<string name="about_xda_summary">"Zie de Aurora Winkel XDA-thread voor discussie of suggesties."</string>
 <string name="action_about">"Over"</string>
 <string name="pref_downloader_strategy_summary">"Selecteer de standaard downloadstrategie, parallelle strategie aanbevolen voor snellere download"</string>
 <string name="pref_downloader_strategy_title">"Downloadstrategie"</string>
@@ -238,7 +238,7 @@
 <string name="pref_downloader_strategy_parallel">"Parallelle download (splits)"</string>
 <string name="pref_install_mode_native">"Native"</string>
 <string name="pref_install_mode_root">"Root"</string>
-<string name="pref_notification_priority_default">"Default"</string>
+<string name="pref_notification_priority_default">"Standaard"</string>
 <string name="pref_notification_priority_high">"Hoog"</string>
 <string name="pref_notification_priority_max">"Max"</string>
 <string name="pref_notification_provider_summary">"Selecteer de standaard meldingsprovider"</string>
@@ -295,4 +295,7 @@
 <string name="pref_ui_transparent">"Transparante stijl"</string>
 <string name="pref_ui_transparent_summary">"Gebruik transparante kaartstijl voor categorie- en koppelingsweergaven"</string>
 <string name="pref_install_delete_summary">"Op apparaten met Android Pie + met root-installatiemethode worden APK's standaard verwijderd"</string>
+<string name="action_loading">"Laden"</string>
+<string name="pref_default">"Standaard"</string>
+<string name="toast_loading_apps">"Laden van meer apps.."</string>
 </resources>
