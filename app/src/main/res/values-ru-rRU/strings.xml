@@ -346,4 +346,7 @@ https://exodus-privacy.eu.org/en/. Это как "отчёт от аваста" 
 <string name="pref_ui_transparent">"Прозрачный стиль"</string>
 <string name="pref_ui_transparent_summary">"Использовать прозрачный стиль для карточек категорий"</string>
 <string name="pref_install_delete_summary">"На Pie устройствах при использовании root-метода установки APK файлы удаляются по умолчанию"</string>
+<string name="action_loading">"Загрузка"</string>
+<string name="pref_default">"По умолчанию"</string>
+<string name="toast_loading_apps">"Загружаем ещё."</string>
 </resources>
