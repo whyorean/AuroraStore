@@ -145,7 +145,7 @@ While *Aurora Store* was originally based on Sergei Yeriomin's [Yalp store](http
 
 * <b>How to give *Aurora Store*/*Services* system permissions?</b>
 
-  You need to either manually push the APKs to `/system/priv-app`, or install the [Magisk](https://magiskmanager.com/) module from the group.
+  You need to either manually push the APKs to `/system/priv-app`, or install the [Magisk](https://forum.xda-developers.com/apps/magisk/official-magisk-v7-universal-systemless-t3473445) module from the group.
 
 * <b>Can Aurora Download and install Split or Bundled APKs?</b>
 
