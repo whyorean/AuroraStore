@@ -57,7 +57,7 @@ public class InstalledAppsTask extends UpdatableAppsTask {
     private List<String> filterSystemApps(List<String> packageList) {
         List<String> newPackageList = new ArrayList<>();
         for (String packageName : packageList) {
-            if (PackageUtil.isSystemApp(getPackageManager(), packageName)) {
+            if (!PackageUtil.isSystemApp(getPackageManager(), packageName)) {
                 newPackageList.add(packageName);
             }
         }
