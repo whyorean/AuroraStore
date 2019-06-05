@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Aurora Store
   ~ Copyright (C) 2019, Rahul Kumar Patel <whyorean@gmail.com>
   ~
@@ -23,9 +22,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/action_account"
-        android:icon="@drawable/ic_account"
-        android:title="@string/menu_account"
+        android:id="@+id/action_download"
+        android:icon="@drawable/ic_download_manager"
+        android:title="@string/menu_downloads"
         app:showAsAction="ifRoom" />
 
     <item
@@ -33,10 +32,4 @@
         android:icon="@drawable/ic_settings"
         android:title="@string/menu_setting"
         app:showAsAction="ifRoom" />
-
-    <item
-        android:id="@+id/action_download"
-        android:icon="@drawable/ic_downloads"
-        android:title="@string/menu_downloads"
-        app:showAsAction="collapseActionView" />
 </menu>

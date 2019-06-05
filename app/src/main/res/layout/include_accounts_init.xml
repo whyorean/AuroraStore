@@ -28,7 +28,7 @@
         android:layout_width="96dp"
         android:layout_height="96dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/margin_xlarge"
+        android:layout_marginTop="@dimen/margin_normal"
         android:src="@drawable/ic_account_alt" />
 
     <androidx.appcompat.widget.AppCompatTextView

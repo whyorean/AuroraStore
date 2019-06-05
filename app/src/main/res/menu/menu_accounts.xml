@@ -20,15 +20,7 @@
   ~
   -->
 
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-
-    <item
-        android:id="@+id/action_setting"
-        android:icon="@drawable/ic_settings"
-        android:title="@string/menu_setting"
-        android:visible="true"
-        app:showAsAction="ifRoom" />
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/action_terms"
         android:title="@string/menu_terms"

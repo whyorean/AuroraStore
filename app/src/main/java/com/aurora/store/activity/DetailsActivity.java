@@ -36,6 +36,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.aurora.store.R;
 import com.aurora.store.fragment.DetailsFragment;
+import com.aurora.store.manager.BlacklistManager;
 import com.aurora.store.manager.FavouriteListManager;
 import com.aurora.store.utility.Log;
 import com.aurora.store.utility.ThemeUtil;
@@ -117,6 +118,9 @@ public class DetailsActivity extends AppCompatActivity {
                 return true;
             case R.id.action_downloads:
                 startActivity(new Intent(this, DownloadsActivity.class));
+                return true;
+            case R.id.action_blacklist:
+                new BlacklistManager(this).add(packageName);
                 return true;
         }
         return super.onOptionsItemSelected(menuItem);

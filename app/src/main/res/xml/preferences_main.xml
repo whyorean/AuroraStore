@@ -26,6 +26,11 @@
         app:title="@string/action_about" />
 
     <Preference
+        app:fragment="com.aurora.store.fragment.AccountsFragment"
+        app:icon="@drawable/ic_account"
+        app:title="@string/action_accounts" />
+
+    <Preference
         app:fragment="com.aurora.store.fragment.preference.BlacklistFragment"
         app:icon="@drawable/ic_spoof_alt"
         app:title="@string/action_blacklist" />

@@ -149,9 +149,6 @@ public class AuroraActivity extends AppCompatActivity {
             case R.id.action_download:
                 startActivity(new Intent(this, DownloadsActivity.class));
                 return true;
-            case R.id.action_account:
-                startActivity(new Intent(this, AccountsActivity.class));
-                return true;
             case R.id.action_setting:
                 startActivity(new Intent(this, SettingsActivity.class));
                 return true;

@@ -22,6 +22,8 @@ package com.aurora.store.fragment;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -51,6 +53,7 @@ import com.aurora.store.task.UserProfiler;
 import com.aurora.store.utility.Accountant;
 import com.aurora.store.utility.Log;
 import com.aurora.store.utility.PrefUtil;
+import com.aurora.store.utility.ViewUtil;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 import com.dragons.aurora.playstoreapiv2.Image;
 import com.google.android.material.chip.Chip;
@@ -68,6 +71,10 @@ import io.reactivex.schedulers.Schedulers;
 import static com.aurora.store.utility.ContextUtil.runOnUiThread;
 
 public class AccountsFragment extends Fragment {
+
+    private static final String URL_TOS = "https://www.google.com/mobile/android/market-tos.html";
+    private static final String URL_LICENSE = "https://gitlab.com/AuroraOSS/AuroraStore/raw/master/LICENSE";
+    private static final String URL_DISCLAIMER = "https://gitlab.com/AuroraOSS/AuroraStore/raw/master/DISCLAIMER";
 
     @BindView(R.id.view_switcher_top)
     ViewSwitcher mViewSwitcherTop;
@@ -97,8 +104,10 @@ public class AccountsFragment extends Fragment {
     TextInputEditText txtInputEmail;
     @BindView(R.id.txt_input_password)
     TextInputEditText txtInputPassword;
-    @BindView(R.id.user_account_chip)
-    Chip accountSwitch;
+    @BindView(R.id.chip_google)
+    Chip chipGoogle;
+    @BindView(R.id.chip_dummy)
+    Chip chipDummy;
     @BindView(R.id.progress_bar)
     ProgressBar mProgressBar;
     @BindView(R.id.btn_positive)
@@ -107,10 +116,17 @@ public class AccountsFragment extends Fragment {
     Button btnPositiveAlt;
     @BindView(R.id.btn_negative)
     Button btnNegative;
-
+    @BindView(R.id.chip_tos)
+    Chip chipTos;
+    @BindView(R.id.chip_disclaimer)
+    Chip chipDisclaimer;
+    @BindView(R.id.chip_license)
+    Chip chipLicense;
+    int colorAccent;
+    int colorPrimary;
     private Context context;
     private CompositeDisposable disposable = new CompositeDisposable();
-    private boolean isDummy = false;
+    private boolean isDummy = true;
     private boolean isLoggedIn = false;
 
     @Override
@@ -130,6 +146,8 @@ public class AccountsFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         init();
+        colorAccent = ViewUtil.getStyledAttribute(context, R.attr.colorAccent);
+        colorPrimary = ViewUtil.getStyledAttribute(context, android.R.attr.colorForeground);
     }
 
     @Override
@@ -143,6 +161,7 @@ public class AccountsFragment extends Fragment {
         isDummy = Accountant.isDummy(context);
         mProgressBar.setVisibility(View.INVISIBLE);
         setupView();
+        setupChips();
         setupAccountType();
         setupActions();
     }
@@ -160,17 +179,42 @@ public class AccountsFragment extends Fragment {
         switchButtonState(isLoggedIn);
     }
 
+    private void setupChips() {
+        chipTos.setOnClickListener(v -> {
+            openWebView(URL_TOS);
+        });
+        chipDisclaimer.setOnClickListener(v -> {
+            openWebView(URL_DISCLAIMER);
+        });
+        chipLicense.setOnClickListener(v -> {
+            openWebView(URL_LICENSE);
+        });
+    }
+
     private void setupAccountType() {
-        accountSwitch.setEnabled(!isLoggedIn);
-        accountSwitch.setClickable(!isLoggedIn);
-        accountSwitch.setText(isDummy ? R.string.account_dummy : R.string.account_google);
+        chipGoogle.setEnabled(!isLoggedIn);
+        chipDummy.setEnabled(!isLoggedIn);
     }
 
     private void setupActions() {
         btnPositive.setOnClickListener(loginListener());
         btnPositiveAlt.setOnClickListener(loginListener());
         btnNegative.setOnClickListener(logoutListener());
-        accountSwitch.setOnClickListener(switchAccountListener());
+
+        chipGoogle.setOnClickListener(v -> {
+            isDummy = false;
+            chipGoogle.setChipStrokeColor(ColorStateList.valueOf(colorAccent));
+            chipDummy.setChipStrokeColor(ColorStateList.valueOf(colorPrimary));
+            if (!Accountant.isLoggedIn(context))
+                switchLoginViews(true);
+        });
+        chipDummy.setOnClickListener(v -> {
+            isDummy = true;
+            chipDummy.setChipStrokeColor(ColorStateList.valueOf(colorAccent));
+            chipGoogle.setChipStrokeColor(ColorStateList.valueOf(colorPrimary));
+            if (!Accountant.isLoggedIn(context))
+                switchLoginViews(false);
+        });
     }
 
     private void loadDummyData() {
@@ -237,22 +281,6 @@ public class AccountsFragment extends Fragment {
                     txtInputPassword.setError("?");
                 if (!email.isEmpty() && !password.isEmpty())
                     logInWithGoogle(email, password);
-            }
-        };
-    }
-
-    private View.OnClickListener switchAccountListener() {
-        return v -> {
-            if (isDummy) {
-                isDummy = false;
-                accountSwitch.setText(R.string.account_google);
-                if (!Accountant.isLoggedIn(context))
-                    switchLoginViews(true);
-            } else {
-                isDummy = true;
-                accountSwitch.setText(R.string.account_dummy);
-                if (!Accountant.isLoggedIn(context))
-                    switchLoginViews(false);
             }
         };
     }
@@ -334,6 +362,14 @@ public class AccountsFragment extends Fragment {
             PrefUtil.putBoolean(context, Constants.PREFERENCE_DO_NOT_SHOW_INTRO, true);
             getActivity().startActivity(new Intent(context, AuroraActivity.class));
             getActivity().finish();
+        }
+    }
+
+    private void openWebView(String URL) {
+        try {
+            context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(URL)));
+        } catch (Exception e) {
+            Log.e("No WebView found !");
         }
     }
 }

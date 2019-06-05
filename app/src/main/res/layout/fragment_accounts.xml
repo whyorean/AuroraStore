@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Aurora Store
   ~ Copyright (C) 2019, Rahul Kumar Patel <whyorean@gmail.com>
   ~
@@ -26,19 +25,71 @@
     android:layout_height="match_parent"
     tools:context=".activity.AccountsActivity">
 
+    <View
+        android:id="@+id/gradient_view"
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:background="@drawable/gradient_bg"
+        android:translationZ="10dp" />
+
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="-16dp"
+        android:clipToPadding="false"
+        android:fillViewport="true"
+        android:paddingTop="@dimen/margin_normal"
         android:scrollbars="none">
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
+
+            <HorizontalScrollView
+                android:id="@+id/chip_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clipToPadding="false"
+                android:paddingStart="@dimen/margin_small"
+                android:paddingTop="@dimen/margin_normal"
+                android:paddingEnd="@dimen/margin_small"
+                android:paddingBottom="@dimen/margin_small">
+
+                <com.google.android.material.chip.ChipGroup
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal">
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip_tos"
+                        style="@style/Widget.MaterialComponents.Chip.Info"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/menu_terms" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip_disclaimer"
+                        style="@style/Widget.MaterialComponents.Chip.Info"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/menu_disclaimer" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip_license"
+                        style="@style/Widget.MaterialComponents.Chip.Info"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/menu_license" />
+
+                </com.google.android.material.chip.ChipGroup>
+
+            </HorizontalScrollView>
 
             <ViewSwitcher
                 android:id="@+id/view_switcher_top"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_below="@id/chip_layout">
 
                 <LinearLayout
                     android:id="@+id/init"
@@ -64,28 +115,43 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/view_switcher_top"
                 android:layout_centerHorizontal="true"
-                android:layout_margin="@dimen/margin_normal">
+                android:layout_marginTop="@dimen/margin_small">
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/user_account_type"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/margin_small"
                     android:gravity="center_vertical"
                     android:text="@string/account_switch"
-                    android:textAppearance="@style/TextAppearance.Aurora.Body"
-                    android:textColor="?android:attr/textColorPrimary"
-                    android:textSize="14sp" />
+                    android:textAppearance="@style/TextAppearance.Aurora.SubTitle" />
 
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/user_account_chip"
-                    style="@style/Widget.MaterialComponents.Chip.Info"
+                <com.google.android.material.chip.ChipGroup
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/user_account_type"
-                    android:layout_centerHorizontal="true"
-                    android:text="@string/account_google"
-                    app:rippleColor="@color/colorScrim" />
+                    android:layout_marginTop="@dimen/margin_xsmall"
+                    android:paddingStart="@dimen/margin_normal"
+                    android:paddingEnd="@dimen/margin_normal"
+                    app:singleSelection="true">
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip_google"
+                        style="@style/Widget.MaterialComponents.Chip.Info"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/account_google" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip_dummy"
+                        style="@style/Widget.MaterialComponents.Chip.Info"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/account_dummy"
+                        app:chipBackgroundColor="?android:colorBackground" />
+
+                </com.google.android.material.chip.ChipGroup>
             </RelativeLayout>
 
             <ViewSwitcher
