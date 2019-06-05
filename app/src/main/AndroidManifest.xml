@@ -101,6 +101,7 @@
         <activity android:name=".activity.DownloadsActivity" />
         <activity android:name=".activity.AccountsActivity" />
         <activity
+            android:configChanges="orientation"
             android:name=".activity.SettingsActivity"
             android:theme="@style/AppTheme" />
         <activity android:name=".activity.IntroActivity" />
