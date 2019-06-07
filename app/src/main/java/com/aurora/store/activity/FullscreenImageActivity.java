@@ -35,6 +35,7 @@ import com.aurora.store.R;
 import com.aurora.store.adapter.BigScreenshotsAdapter;
 import com.aurora.store.fragment.DetailsFragment;
 import com.aurora.store.utility.Log;
+import com.aurora.store.utility.ThemeUtil;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -46,9 +47,13 @@ public class FullscreenImageActivity extends AppCompatActivity {
     @BindView(R.id.gallery)
     RecyclerView recyclerView;
 
+
+    private ThemeUtil themeUtil = new ThemeUtil();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        themeUtil.onCreate(this);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(
                 WindowManager.LayoutParams.FLAG_FULLSCREEN,
@@ -57,6 +62,12 @@ public class FullscreenImageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_fullscreen_screenshots);
         ButterKnife.bind(this);
         onNewIntent(getIntent());
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        themeUtil.onResume(this);
     }
 
     @Override
