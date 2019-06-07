@@ -32,13 +32,13 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.ViewSwitcher;
 
 import com.aurora.store.R;
 import com.aurora.store.activity.ManualDownloadActivity;
 import com.aurora.store.download.DownloadManager;
 import com.aurora.store.download.RequestBuilder;
+import com.aurora.store.exception.NotPurchasedException;
 import com.aurora.store.fragment.DetailsFragment;
 import com.aurora.store.installer.Installer;
 import com.aurora.store.model.App;
@@ -226,7 +226,16 @@ public class ActionButton extends AbstractHelper {
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(this::initiateDownload, err -> runOnUiThread(() -> {
-                        Toast.makeText(context, "App Not purchased", Toast.LENGTH_LONG).show();
+                        if (err instanceof NotPurchasedException) {
+                            Log.d("%s not purchased", app.getDisplayName());
+                            showPurchaseDialog();
+                        }
+                        if (err instanceof NullPointerException) {
+                            if (App.Restriction.RESTRICTED_GEO == app.getRestriction())
+                                showGeoRestrictionDialog();
+                            if (App.Restriction.INCOMPATIBLE_DEVICE == app.getRestriction())
+                                showIncompatibleDialog();
+                        }
                         draw();
                         switchViews(false);
                     })));

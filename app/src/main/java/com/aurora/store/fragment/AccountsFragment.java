@@ -386,7 +386,7 @@ public class AccountsFragment extends Fragment {
                 .setPositiveButton(getString(R.string.dialog_2FA_positive), (dialog, which) -> {
                     openWebView(URL_APP_PASS);
                 })
-                .setNegativeButton(getString(R.string.dialog_2FA_negative), (dialog, which) -> {
+                .setNegativeButton(getString(R.string.action_later), (dialog, which) -> {
                     dialog.dismiss();
                 });
         mBuilder.create();

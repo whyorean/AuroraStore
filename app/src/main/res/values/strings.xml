@@ -347,5 +347,14 @@
     <string name="dialog_2FA_title">2-Factor Authentication</string>
     <string name="dialog_2FA_desc">You seem to have enabled 2FA, kindly generate an app password and use the new generated password to login</string>
     <string name="dialog_2FA_positive">Create password</string>
-    <string name="dialog_2FA_negative">Later</string>
+
+    <string name="dialog_purchase_title">App Purchase</string>
+    <string name="dialog_purchase_desc">You need to purchase this app first, Aurora Store currently does not support in app-purchases, you will be redirected to web page for the purchase.</string>
+    <string name="dialog_purchase_positive">Buy now</string>
+
+    <string name="dialog_geores_title">Geo restricted app</string>
+    <string name="dialog_geores_desc">The app you are trying to download is unavailable in your country, try spoofing your region from settings to download.</string>
+
+    <string name="dialog_incompat_title">Incompatible app</string>
+    <string name="dialog_incompat_desc">The app you are trying to download is incompatible with your device, try spoofing your device from settings to download.</string>
 </resources>

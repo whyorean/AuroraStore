@@ -21,7 +21,9 @@
 package com.aurora.store.fragment.details;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -34,6 +36,8 @@ import com.aurora.store.activity.ManualDownloadActivity;
 import com.aurora.store.fragment.DetailsFragment;
 import com.aurora.store.fragment.DevAppsFragment;
 import com.aurora.store.model.App;
+import com.aurora.store.utility.Log;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import butterknife.ButterKnife;
 
@@ -120,4 +124,47 @@ public abstract class AbstractHelper {
         }
     }
 
+    protected void showPurchaseDialog() {
+        MaterialAlertDialogBuilder mBuilder = new MaterialAlertDialogBuilder(context)
+                .setTitle(context.getString(R.string.dialog_purchase_title))
+                .setMessage(context.getString(R.string.dialog_purchase_desc))
+                .setPositiveButton(context.getString(R.string.dialog_purchase_positive), (dialog, which) -> {
+                    openWebView(Constants.APP_DETAIL_URL + app.getPackageName());
+                })
+                .setNegativeButton(context.getString(R.string.action_later), (dialog, which) -> {
+                    dialog.dismiss();
+                });
+        mBuilder.create();
+        mBuilder.show();
+    }
+
+    protected void showGeoRestrictionDialog() {
+        MaterialAlertDialogBuilder mBuilder = new MaterialAlertDialogBuilder(context)
+                .setTitle(context.getString(R.string.dialog_geores_title))
+                .setMessage(context.getString(R.string.dialog_geores_desc))
+                .setPositiveButton(context.getString(R.string.action_close), (dialog, which) -> {
+                    dialog.dismiss();
+                });
+        mBuilder.create();
+        mBuilder.show();
+    }
+
+    protected void showIncompatibleDialog() {
+        MaterialAlertDialogBuilder mBuilder = new MaterialAlertDialogBuilder(context)
+                .setTitle(context.getString(R.string.dialog_incompat_title))
+                .setMessage(context.getString(R.string.dialog_incompat_desc))
+                .setPositiveButton(context.getString(R.string.action_close), (dialog, which) -> {
+                    dialog.dismiss();
+                });
+        mBuilder.create();
+        mBuilder.show();
+    }
+
+    private void openWebView(String URL) {
+        try {
+            context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(URL)));
+        } catch (Exception e) {
+            Log.e("No WebView found !");
+        }
+    }
 }

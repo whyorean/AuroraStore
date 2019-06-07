@@ -23,7 +23,6 @@ package com.aurora.store.task;
 import android.content.Context;
 
 import com.aurora.store.Constants;
-import com.aurora.store.exception.MalformedRequestException;
 import com.aurora.store.exception.NotPurchasedException;
 import com.aurora.store.model.App;
 import com.aurora.store.utility.Accountant;
@@ -47,15 +46,12 @@ public class DeliveryData extends BaseTask {
 
     public AndroidAppDeliveryData getDeliveryData(App app) throws IOException {
         GooglePlayAPI api = getApi();
-        if (app.isFree()) {
-            purchase(api, app);
-            delivery(api, app);
-        } else
-            delivery(api, app);
+        purchase(api, app);
+        delivery(api, app);
         return deliveryData;
     }
 
-    public void purchase(GooglePlayAPI api, App app) throws IOException {
+    public void purchase(GooglePlayAPI api, App app) {
         try {
             BuyResponse buyResponse = api.purchase(app.getPackageName(), app.getVersionCode(), app.getOfferType());
             if (buyResponse.hasPurchaseStatusResponse()
@@ -68,7 +64,6 @@ public class DeliveryData extends BaseTask {
             }
         } catch (IOException e) {
             Log.d("Failed to purchase %s", app.getDisplayName());
-            throw new MalformedRequestException(app.getPackageName());
         }
     }
 
@@ -85,6 +80,9 @@ public class DeliveryData extends BaseTask {
             deliveryData = deliveryResponse.getAppDeliveryData();
         } else if (!app.isFree() && Accountant.isDummy(context)) {
             throw new NotPurchasedException();
+        } else if(deliveryData == null)
+        {
+            Log.d("No download link returned");
         }
     }
 
