@@ -54,9 +54,11 @@ import com.aurora.store.utility.Accountant;
 import com.aurora.store.utility.Log;
 import com.aurora.store.utility.PrefUtil;
 import com.aurora.store.utility.ViewUtil;
+import com.dragons.aurora.playstoreapiv2.AuthException;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 import com.dragons.aurora.playstoreapiv2.Image;
 import com.google.android.material.chip.Chip;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.textfield.TextInputEditText;
 
 import org.jetbrains.annotations.NotNull;
@@ -75,6 +77,7 @@ public class AccountsFragment extends Fragment {
     private static final String URL_TOS = "https://www.google.com/mobile/android/market-tos.html";
     private static final String URL_LICENSE = "https://gitlab.com/AuroraOSS/AuroraStore/raw/master/LICENSE";
     private static final String URL_DISCLAIMER = "https://gitlab.com/AuroraOSS/AuroraStore/raw/master/DISCLAIMER";
+    private static final String URL_APP_PASS = "https://myaccount.google.com/apppasswords";
 
     @BindView(R.id.view_switcher_top)
     ViewSwitcher mViewSwitcherTop;
@@ -333,6 +336,9 @@ public class AccountsFragment extends Fragment {
                     }
                 }, err -> {
                     Log.e("Google Login failed : %s", err.getMessage());
+                    if (err instanceof AuthException && ((AuthException) err).getTwoFactorUrl() != null) {
+                        show2FADialog();
+                    }
                     mProgressBar.setVisibility(View.INVISIBLE);
                     txtInputPassword.setError("Check your password");
                     switchButtonState(false);
@@ -371,5 +377,19 @@ public class AccountsFragment extends Fragment {
         } catch (Exception e) {
             Log.e("No WebView found !");
         }
+    }
+
+    private void show2FADialog() {
+        MaterialAlertDialogBuilder mBuilder = new MaterialAlertDialogBuilder(context)
+                .setTitle(getString(R.string.dialog_2FA_title))
+                .setMessage(getString(R.string.dialog_2FA_desc))
+                .setPositiveButton(getString(R.string.dialog_2FA_positive), (dialog, which) -> {
+                    openWebView(URL_APP_PASS);
+                })
+                .setNegativeButton(getString(R.string.dialog_2FA_negative), (dialog, which) -> {
+                    dialog.dismiss();
+                });
+        mBuilder.create();
+        mBuilder.show();
     }
 }
