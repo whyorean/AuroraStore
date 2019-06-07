@@ -33,7 +33,7 @@
     <dimen name="bottom_nav_padding">64dp</dimen>
 
     <dimen name="icon_size">64dp</dimen>
-    <dimen name="icon_size_big">96dp</dimen>
+    <dimen name="icon_size_big">100dp</dimen>
     <dimen name="icon_size_small">56dp</dimen>
     <dimen name="icon_size_med">48dp</dimen>
     <dimen name="icon_size_cat">36dp</dimen>

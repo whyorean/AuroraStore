@@ -284,7 +284,7 @@ public class Util {
     }
 
     public static boolean snapPagerEnabled(Context context) {
-        return getPrefs(context).getBoolean(Constants.PREFERENCE_FEATURED_SNAP, true);
+        return getPrefs(context).getBoolean(Constants.PREFERENCE_FEATURED_SNAP, false);
     }
 
     public static boolean isIMEEnabled(Context context) {

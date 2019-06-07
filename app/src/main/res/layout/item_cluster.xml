@@ -18,57 +18,59 @@
   ~
   -->
 
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="132dp"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_marginEnd="@dimen/margin_xsmall"
+    android:layout_width="120dp"
     android:layout_height="wrap_content"
-    android:layout_margin="@dimen/margin_xsmall"
     app:rippleColor="@color/colorScrim">
 
-    <RelativeLayout
+    <ImageView
+        android:id="@+id/app_icon"
+        android:layout_width="@dimen/icon_size_big"
+        android:layout_height="@dimen/icon_size_big"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/margin_small"
+        android:layout_marginBottom="@dimen/margin_xxsmall"
+        android:contentDescription="@string/content_description_icon" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/app_name"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_below="@id/app_icon"
+        android:layout_alignStart="@id/app_icon"
+        android:layout_alignEnd="@id/app_icon"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textAlignment="viewStart"
+        android:textColor="?android:attr/textColorPrimary"
+        android:textSize="16sp"
+        tools:text="Aurora Store" />
 
-        <ImageView
-            android:id="@+id/app_icon"
-            android:layout_width="@dimen/icon_size_big"
-            android:layout_height="@dimen/icon_size_big"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/margin_small"
-            android:layout_marginBottom="@dimen/margin_xxsmall"
-            android:contentDescription="@string/content_description_icon"
-            android:padding="@dimen/margin_small" />
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/app_size"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/app_name"
+        android:layout_alignStart="@id/app_icon"
+        android:layout_alignEnd="@id/app_icon"
+        android:layout_marginBottom="@dimen/margin_xxsmall"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textAlignment="viewStart"
+        android:textColor="?android:attr/textColorPrimary"
+        android:textSize="12sp"
+        tools:text="6 MB" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/app_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/app_icon"
-            android:layout_marginStart="@dimen/margin_xsmall"
-            android:layout_marginEnd="@dimen/margin_xsmall"
-            android:layout_marginBottom="@dimen/margin_xxsmall"
-            android:ellipsize="end"
-            android:gravity="center"
-            android:maxLines="2"
-            android:textStyle="bold"
-            android:minHeight="42dp"
-            android:textAlignment="center"
-            android:textColor="?android:attr/textColorPrimary"
-            android:textSize="14sp"
-            app:autoSizeMaxTextSize="15sp"
-            app:autoSizeMinTextSize="12sp"
-            app:autoSizeTextType="uniform" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/txt_indicator"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:drawableEnd="@drawable/ic_installed"
-            android:drawablePadding="@dimen/margin_small"
-            android:padding="@dimen/margin_xxsmall"
-            android:textAppearance="@style/TextAppearance.AppCompat.Small"
-            android:textStyle="normal"
-            android:visibility="gone" />
-    </RelativeLayout>
-</com.google.android.material.card.MaterialCardView>
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txt_indicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:drawableEnd="@drawable/ic_installed"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        android:textStyle="normal"
+        android:visibility="visible" />
+</RelativeLayout>

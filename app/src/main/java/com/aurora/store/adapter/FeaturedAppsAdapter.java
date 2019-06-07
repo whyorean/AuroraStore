@@ -31,6 +31,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.aurora.store.CardType;
@@ -97,6 +98,9 @@ public class FeaturedAppsAdapter extends RecyclerView.Adapter<FeaturedAppsAdapte
         viewHolder.txtIndicator.setVisibility(PackageUtil.isInstalled(context, app)
                 ? View.VISIBLE
                 : View.GONE);
+
+        if (viewHolder.txtSize != null)
+            viewHolder.txtSize.setText(Util.humanReadableByteValue(app.getSize(), true));
     }
 
     private void drawBackground(App app, ViewHolder holder) {
@@ -123,6 +127,9 @@ public class FeaturedAppsAdapter extends RecyclerView.Adapter<FeaturedAppsAdapte
         ImageView imgIcon;
         @BindView(R.id.app_name)
         TextView txtName;
+        @Nullable
+        @BindView(R.id.app_size)
+        TextView txtSize;
         @BindView(R.id.txt_indicator)
         TextView txtIndicator;
 
