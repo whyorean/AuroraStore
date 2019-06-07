@@ -344,7 +344,7 @@
     <string name="toast_apk_copy_failure">Failed to copy APK</string>
     <string name="toast_loading_apps">Loading more apps..</string>
 
-    <string name="dialog_2FA_title">2-Factor Verification</string>
+    <string name="dialog_2FA_title">2-Factor Authentication</string>
     <string name="dialog_2FA_desc">You seem to have enabled 2FA, kindly generate an app password and use the new generated password to login</string>
     <string name="dialog_2FA_positive">Create password</string>
     <string name="dialog_2FA_negative">Later</string>
