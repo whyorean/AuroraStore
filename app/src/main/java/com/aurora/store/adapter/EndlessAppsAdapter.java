@@ -29,6 +29,8 @@ import com.aurora.store.R;
 import com.aurora.store.model.App;
 import com.aurora.store.utility.Util;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.util.List;
 
 public class EndlessAppsAdapter extends InstalledAppsAdapter {
@@ -46,9 +48,11 @@ public class EndlessAppsAdapter extends InstalledAppsAdapter {
     public void getDetails(Context mContext, List<String> Version, List<String> Extra, App app) {
         Version.add(Util.addSiPrefix(app.getSize()));
         if (!app.isEarlyAccess())
-            Version.add(mContext.getString(R.string.details_rating, (app.getRating().getAverage())) + " ★");
+            Version.add(mContext.getString(R.string.details_rating, (app.getRating().getAverage())));
         Extra.add(app.getPrice());
         Extra.add(mContext.getString(app.containsAds() ? R.string.list_app_has_ads : R.string.list_app_no_ads));
         Extra.add(mContext.getString(app.getDependencies().isEmpty() ? R.string.list_app_independent_from_gsf : R.string.list_app_depends_on_gsf));
+        if (!StringUtils.isEmpty(app.getUpdated()))
+            Extra.add(app.getUpdated());
     }
 }
