@@ -56,7 +56,7 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning"
-        android:banner="TODO">
+        android:banner="@mipmap/ic_launcher">
 
         <activity android:name=".activity.AuroraActivity">
             <intent-filter>
