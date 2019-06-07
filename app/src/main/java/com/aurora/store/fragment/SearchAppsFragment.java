@@ -265,6 +265,8 @@ public class SearchAppsFragment extends BaseFragment {
                     filterFab.show();
                 } else if (velocityY > 0) {
                     filterFab.hide();
+                    if (bottomNavigationView != null)
+                        ViewUtil.hideBottomNav(bottomNavigationView, true);
                 }
                 return false;
             }

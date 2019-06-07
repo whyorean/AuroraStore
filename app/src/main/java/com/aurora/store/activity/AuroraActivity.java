@@ -58,13 +58,14 @@ import io.reactivex.disposables.CompositeDisposable;
 public class AuroraActivity extends AppCompatActivity {
 
 
+    public static String externalQuery;
+
     @BindView(R.id.toolbar)
     Toolbar toolbar;
     @BindView(R.id.viewpager)
     CustomViewPager viewPager;
     @BindView(R.id.bottom_navigation)
     BottomNavigationView bottomNavigationView;
-
     private ActionBar actionBar;
     private ViewPagerAdapter pagerAdapter;
     private ThemeUtil themeUtil = new ThemeUtil();
@@ -112,6 +113,8 @@ public class AuroraActivity extends AppCompatActivity {
         if (intent.getScheme() != null && intent.getScheme().equals("market")) {
             fragmentCur = 2;
             isSearchIntent = true;
+            if (intent.getData() != null)
+                externalQuery = intent.getData().getQueryParameter("q");
         } else
             fragmentCur = Util.getDefaultTab(this);
     }

@@ -45,11 +45,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.aurora.store.Constants;
 import com.aurora.store.HistoryItemTouchHelper;
 import com.aurora.store.R;
+import com.aurora.store.activity.AuroraActivity;
 import com.aurora.store.activity.DetailsActivity;
 import com.aurora.store.adapter.SearchHistoryAdapter;
 import com.aurora.store.utility.PrefUtil;
 import com.aurora.store.utility.Util;
 
+import org.apache.commons.lang3.StringUtils;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -111,6 +113,9 @@ public class SearchFragment extends Fragment implements HistoryItemTouchHelper.R
         if (null != searchManager && componentName != null) {
             searchView.setSearchableInfo(searchManager.getSearchableInfo(componentName));
         }
+
+        if (!StringUtils.isEmpty(AuroraActivity.externalQuery))
+            setQuery(AuroraActivity.externalQuery);
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
