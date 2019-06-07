@@ -38,6 +38,12 @@
         android:name="android.hardware.location.gps"
         android:required="false" />
 
+    <uses-feature android:name="android.software.leanback"
+        android:required="false" />
+
+    <uses-feature android:name="android.hardware.touchscreen"
+        android:required="false" />
+
     <application
         android:name=".AuroraApplication"
         android:allowBackup="true"
@@ -49,7 +55,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
-        tools:ignore="GoogleAppIndexingWarning">
+        tools:ignore="GoogleAppIndexingWarning"
+        android:banner="TODO">
 
         <activity android:name=".activity.AuroraActivity">
             <intent-filter>
@@ -64,6 +71,7 @@
             </intent-filter>
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
             <intent-filter>
