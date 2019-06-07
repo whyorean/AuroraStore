@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Aurora Store
   ~ Copyright (C) 2019, Rahul Kumar Patel <whyorean@gmail.com>
   ~
@@ -49,17 +48,24 @@
             android:textAppearance="@style/TextAppearance.Aurora.Toolbar.Title"
             android:textSize="20sp" />
 
-        <androidx.appcompat.widget.AppCompatTextView
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_above="@+id/action"
             android:layout_below="@+id/app_name"
             android:layout_margin="@dimen/margin_normal"
             android:background="@drawable/generic_padded_bg"
-            android:text="@string/app_log"
-            android:typeface="monospace"
-            android:textAlignment="viewStart"
-            android:textColor="?android:attr/textColorPrimary" />
+            android:overScrollMode="never">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/app_log"
+                android:textAlignment="viewStart"
+                android:textColor="?android:attr/textColorPrimary"
+                android:typeface="monospace" />
+        </ScrollView>
+
 
         <RelativeLayout
             android:id="@+id/action"
