@@ -21,6 +21,15 @@
 <resources>
     <string name="app_log" translatable="false">
 
+        \n Changelog : v3.0.6
+        \n • Improved legacy card style
+        \n • Added support for TV
+        \n • Improved Accounts and added support for 2FA
+        \n • Fixed exodus showing old reports
+        \n • Fixed and improved search results
+        \n • Added new locale - Dutch
+        \n • Updated translation
+        \n
         \n Changelog : v3.0.5
         \n • Bug fixes and improvements
         \n
