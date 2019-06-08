@@ -33,3 +33,11 @@ Changelog : v3.0.4
 Changelog : v3.0.5
 • Bug fixes & improvements
 
+Changelog : v3.0.6
+• Improved legacy card style
+• Added support for TV
+• Improved Accounts and added support for 2FA
+• Fixed exodus showing old reports
+• Fixed and improved search results
+• Added new locale - Dutch
+• Updated translation
