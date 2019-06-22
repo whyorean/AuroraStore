@@ -3,7 +3,7 @@
 <string name="account_dummy">"匿名"</string>
 <string name="account_dummy_desc">"匿名アカウントを使用してログインしますか？"</string>
 <string name="account_google">"Googleアカウント"</string>
-<string name="account_logout">"オーロラからログアウトしますか？"</string>
+<string name="account_logout">"Aurora からログアウトしますか？"</string>
 <string name="account_prompt_login">"続行するにはログインしてください"</string>
 <string name="account_switch">"アカウントを切り替える"</string>
 <string name="action_accounts">"アカウント"</string>
@@ -104,7 +104,7 @@
 <string name="download_resume_all">"すべて再開"</string>
 <string name="early_access">"早期アクセス"</string>
 <string name="error_app_not_found">"アプリが見つかりません"</string>
-<string name="error_incorrect_password">"間違ったメールアドレスまたはパスワード"</string>
+<string name="error_incorrect_password">"メールアドレスまたはパスワードが間違っています"</string>
 <string name="error_invalid_device_definition">"デバイス定義が拒否されました"</string>
 <string name="error_no_network">"ネットワーク接続なし"</string>
 <string name="error_search_not_found">"一致するアプリが見つかりません"</string>
@@ -133,7 +133,7 @@
 <string name="list_installed_system">"ユーザーアプリのみを表示"</string>
 <string name="list_not_installd">"インストールされていない"</string>
 <string name="list_update_all">"すべて更新"</string>
-<string name="list_update_all_txt">"利用可能なアップデート」"</string>
+<string name="list_update_all_txt">"利用可能なアップデート"</string>
 <string name="list_updating">"更新中"</string>
 <string name="manual_download_disclaimer">"免責事項"</string>
 <string name="manual_download_incompatible">"Google Playストアでは、このアプリはお使いのデバイスと互換性がないと見なされます。これはバージョンコードがGoogle Playストアサーバーから返されていないことを意味します。"</string>
@@ -203,7 +203,7 @@
 <string name="title_all_apps">"すべてのアプリ"</string>
 <string name="title_home">"Aurora Store"</string>
 <string name="title_installed">"マイアプリ"</string>
-<string name="title_perm">"許可"</string>
+<string name="title_perm">"権限"</string>
 <string name="title_search">"アプリを検索"</string>
 <string name="title_updates">"利用可能なアップデート"</string>
 <string name="title_welcome">"ようこそ"</string>
@@ -298,4 +298,14 @@
 <string name="action_loading">"読み込み中"</string>
 <string name="pref_default">"デフォルト"</string>
 <string name="toast_loading_apps">"アプリを更に読み込んでいます..."</string>
+<string name="dialog_2FA_title">"2段階認証"</string>
+<string name="dialog_2FA_desc">"2段階認証を有効にしているようです。 ログインするためにアプリパスワードを作成してください。"</string>
+<string name="dialog_2FA_positive">"パスワードの作成"</string>
+<string name="dialog_purchase_title">"アプリ購入"</string>
+<string name="dialog_purchase_desc">"アプリを先に購入する必要があります。 Aurora Store は現在、アプリの購入に対応していません。 課金するために Web ページにリダイレクトされます。"</string>
+<string name="dialog_purchase_positive">"今すぐ購入"</string>
+<string name="dialog_geores_title">"地域制限アプリ"</string>
+<string name="dialog_geores_desc">"ダウンロードしようとしているアプリはこの国では利用できません。 ダウンロードするためには設定から場所の偽装をお試しください。"</string>
+<string name="dialog_incompat_title">"互換性のないアプリ"</string>
+<string name="dialog_incompat_desc">"ダウンロードしようとしているアプリはお使いの端末と互換性がありません。 ダウンロードするためには設定から端末の偽装をお試しください。"</string>
 </resources>
