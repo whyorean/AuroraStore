@@ -304,4 +304,14 @@ Ammenta·ti chi iscarrigare versiones arbitràrias de sas aplicatziones no est s
 <string name="action_loading">"Carrighende"</string>
 <string name="pref_default">"Predefinidu"</string>
 <string name="toast_loading_apps">"Carrighende àteras aplicatziones..."</string>
+<string name="dialog_2FA_title">"Autenticatzione in 2 fases"</string>
+<string name="dialog_2FA_desc">"Paret chi tue apat abilitadu s'A2F, pro praghere crea una crae de intrada pro s'aplicatzione e imprea sa crae creada pro intrare"</string>
+<string name="dialog_2FA_positive">"Crea una crae"</string>
+<string name="dialog_purchase_title">"Còmpora de apl."</string>
+<string name="dialog_purchase_desc">"In antis depes comporare custa aplicatzione. Aurora Store in custu momentu non suportat còmporas in intro de s'aplicatzione sua, pro la fàghere as a èssere torradu a indiritzare a sa pàgina web."</string>
+<string name="dialog_purchase_positive">"Còmpora como"</string>
+<string name="dialog_geores_title">"Apl. limitada geograficamente"</string>
+<string name="dialog_geores_desc">"S'aplicatzione chi ses chirchende de iscarrigare no est disponìbile in s'istadu tuo, proa a dispintare sa regione tua dae sas impostatziones pro l'iscarrigare."</string>
+<string name="dialog_incompat_title">"Apl. non cumpatìbile"</string>
+<string name="dialog_incompat_desc">"S'aplicatzione chi ses chirchende de iscarrigare no est cumpatìbile cun su dispositivu tuo, proa a dispintare su dispositivu tuo dae sas impostatziones pro l'iscarrigare."</string>
 </resources>
