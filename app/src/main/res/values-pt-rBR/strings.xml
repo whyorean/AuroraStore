@@ -280,4 +280,29 @@ Lembre-se que fazer o download de versões arbitrárias de aplicativos não é s
 <!-- Fuzzy -->
 <string name="error_app_download">"não pode ser baixado"</string>
 <string name="details_new_changes">"O que há de novo"</string>
+<string name="action_apps">"Apps"</string>
+<string name="action_logging_in_success">"Logado com sucesso"</string>
+<string name="action_token_expired">"Token expirado, solicitando novo token"</string>
+<string name="action_token_force_request">"Solicitação de força"</string>
+<string name="cat_top_apps">"Top das Aplicações"</string>
+<string name="cat_top_categories">"Categorias principais"</string>
+<string name="cat_top_games">"Principais jogos"</string>
+<string name="cat_top_family">"Principais aplicativos familiares"</string>
+<string name="details_no_changes">"Changelog não fornecido pelo desenvolvedor"</string>
+<string name="error_logged_out">"Você foi desconectado"</string>
+<string name="link_dev">"Desenvolvedor"</string>
+<string name="link_prmission">"Permissão"</string>
+<string name="link_playstore">"Play Store"</string>
+<string name="link_setting">"Configuração"</string>
+<string name="link_share">"Compartilhar"</string>
+<string name="pref_install_mode_no_root">"Acesso raiz não disponível, verifique se seu dispositivo está enraizado"</string>
+<string name="pref_install_mode_root_warn">"o método de instalação raiz requer que o apk seja baixado nos dados do aplicativo, a fim de instalar via shell adb, Android Pie +"</string>
+<string name="pref_ui_ime">"Pesquisar IME"</string>
+<string name="pref_ui_ime_summary">"Mostrar teclado na página de pesquisa por padrão"</string>
+<string name="pref_ui_transparent">"Estilo transparente"</string>
+<string name="pref_ui_transparent_summary">"Use o estilo de cartão transparente para exibições de categoria e link"</string>
+<string name="pref_install_delete_summary">"Em dispositivos que executam o Android Pie + com o método de instalação de raiz, os APKs são excluídos por padrão"</string>
+<string name="action_loading">"Carregando"</string>
+<string name="pref_default">"Padrão"</string>
+<string name="toast_loading_apps">"Carregando mais aplicativos.."</string>
 </resources>
