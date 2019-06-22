@@ -277,4 +277,14 @@
 <string name="download_none">"Δεν υπάρχουν λήψεις"</string>
 <string name="error_app_download">"δεν μπορεί να ληφθεί"</string>
 <string name="details_new_changes">"Τι νέο υπάρχει"</string>
+<string name="action_apps">"Εφαρμογές"</string>
+<string name="action_logging_in_success">"Σύνδεση επιτυχής"</string>
+<string name="cat_top_apps">"Κορυφαίες εφαρμογές"</string>
+<string name="cat_top_categories">"Κορυφαίες κατηγορίες"</string>
+<string name="cat_top_games">"Κορυφαία παιχνίδια"</string>
+<string name="error_logged_out">"Έγινε αποσύνδεση"</string>
+<string name="link_prmission">"Άδεια"</string>
+<string name="link_playstore">"Play Store"</string>
+<string name="link_setting">"Ρύθμιση"</string>
+<string name="link_share">"Κοινοποίηση"</string>
 </resources>
