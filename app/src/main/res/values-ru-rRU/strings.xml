@@ -349,4 +349,14 @@ https://exodus-privacy.eu.org/en/. Это как "отчёт от аваста" 
 <string name="action_loading">"Загрузка"</string>
 <string name="pref_default">"По умолчанию"</string>
 <string name="toast_loading_apps">"Загружаем ещё."</string>
+<string name="dialog_2FA_title">"Двухэтапная аутентификация"</string>
+<string name="dialog_2FA_desc">"Похоже вы используете двухэтапную аутентификацию, пожалуйста, сгенерируйте пароль для приложения и используйте сгенерированный пароль для входа"</string>
+<string name="dialog_2FA_positive">"Создать пароль"</string>
+<string name="dialog_purchase_title">"Покупка приложения"</string>
+<string name="dialog_purchase_desc">"Сперва вам нужно купить это приложение, в настоящее время Aurora Store не поддерживает покупку приложений,  сейчас вы будете перенаправлены на веб-страницу для покупок."</string>
+<string name="dialog_purchase_positive">"Купить"</string>
+<string name="dialog_geores_title">"Недоступно в вашем регионе"</string>
+<string name="dialog_geores_desc">"Приложение, которое вы пытаетесь загрузить, недоступно в вашем регионе. Попробуйте подменить ваше местоположение в настройках."</string>
+<string name="dialog_incompat_title">"Несовместимое приложение"</string>
+<string name="dialog_incompat_desc">"Приложение, которое вы пытаетесь загрузить, несовместимо с вашим устройством. Попробуйте подменить информацию о вашем устройстве в настройках."</string>
 </resources>
