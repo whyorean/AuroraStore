@@ -41,7 +41,7 @@
 <string name="action_logout">"تسجيل الخروج"</string>
 <string name="action_make_normal">"تحويل إلى تطبيق المستخدم"</string>
 <string name="action_make_system">"تحويل إلى تطبيق النظام"</string>
-<string name="action_manual">"تحميل يدوي"</string>
+<string name="action_manual">"تنزيل يدوي"</string>
 <string name="action_more">"المزيد"</string>
 <string name="action_next">"التالي"</string>
 <string name="action_pause">"إيقاف مؤقت"</string>
@@ -72,7 +72,7 @@
 <string name="desc_perm">"يستخدم Aurora Store الأذونات التالية"</string>
 <string name="details_appReviewsAll">"قراءة جميع المراجعات"</string>
 <string name="details_contains_ads">"يحتوي إعلانات"</string>
-<string name="details_download">"تحميل"</string>
+<string name="details_download">"تنزيل"</string>
 <string name="details_favourite_add">"إضافة إلى المفضلة"</string>
 <string name="details_favourite_remove">"إزالة من المفضلة"</string>
 <string name="details_install">"تثبيت"</string>
@@ -84,7 +84,7 @@
 <string name="details_rate_this_app">"قيم هذا التطبيق"</string>
 <string name="details_rating_reviews">"تقيمات و مراجعات"</string>
 <string name="details_reviews">"مراجعات التطبيق"</string>
-<string name="details_run">"فتح"</string>
+<string name="details_run">"تشغيل"</string>
 <string name="details_share">"مشاركة"</string>
 <string name="details_update">"تحديث"</string>
 <string name="details_why_rate_this_app">"أخبر الآخرين برأيك"</string>
@@ -98,7 +98,7 @@
 <string name="download_force_clear_all">"مسح الكل"</string>
 <string name="download_pause_all">"إيقاف مؤقت للكل"</string>
 <string name="download_paused">"تم ايقاف الكل مؤقتا"</string>
-<string name="download_progress">"جارى التحميل"</string>
+<string name="download_progress">"جارى التنزيل"</string>
 <string name="download_queued">"في قائمة الانتظار"</string>
 <string name="download_resume">"استئناف"</string>
 <string name="download_resume_all">"استئناف الكل"</string>
@@ -137,7 +137,7 @@
 <string name="list_updating">"جاري التحديث"</string>
 <string name="manual_download_disclaimer">"إخلاء المسؤلية"</string>
 <string name="manual_download_incompatible">"يعتبر متجر Google Play هذا التطبيق غير متوافق مع جهازك. هذا يعني أنه لم يتم إرجاع رمز الإصدار بواسطة خادم متجر Google Play."</string>
-<string name="manual_download_warning">"تتيح لك هذه الصفحة اختيار إصدار التطبيق الذي تريد تحميله.
+<string name="manual_download_warning">"تتيح لك هذه الصفحة اختيار إصدار التطبيق الذي تريد تنزيله.
  
 ضع في اعتبارك أن تنزيل إصدارات عشوائية من التطبيقات غير مدعوم من متجر Google Play. نجاحك يعتمد على تخمين رمز الإصدار. حتى لو نجحت بالتخمين وبدء التنزيل ، فقد تحصل على تطبيق غير متوافق."</string>
 <string name="menu_account">"الحسابات"</string>
@@ -159,10 +159,10 @@
 <string name="pref_device_to_pretend_to_be_toast">"سيتم تطبيق هذا التغيير بعد إعادة تسجيل الدخول"</string>
 <string name="pref_dialog_to_apply_restart">"سيتم تطبيق هذا الإعداد بعد إعادة تشغيل التطبيق"</string>
 <string name="pref_downloader_active_summary">"تم الوصول الى الحد الأقصى لعدد التنزيلات النشطة"</string>
-<string name="pref_downloader_active_title">"تحميل نشط"</string>
+<string name="pref_downloader_active_title">"قيد التنزيل"</string>
 <string name="pref_downloader_debug_summary">"تمكين أخطاء التنزيلات للحصول على سجلات مفصلة"</string>
 <string name="pref_downloader_debug_title">"تصحيح أخطاء التنزيلات"</string>
-<string name="pref_downloader_path_title">"مكان التحميل"</string>
+<string name="pref_downloader_path_title">"مكان التنزيل"</string>
 <string name="pref_downloader_wifi_title">"تنزيل باستخدام wifi فقط"</string>
 <string name="pref_filter_fdroid_summary">"ازالة تطبيقات F-droid من قوائم التطبيقات"</string>
 <string name="pref_filter_fdroid_title">"تصفية تطبيقات F-droid"</string>
@@ -259,7 +259,7 @@
 <string name="error_network_other">"خطا في الشبكة"</string>
 <string name="exodus_hasTracker">"يحتوي على برمجيات تتبع وعددها"</string>
 <string name="list_selected">"تطبيقات محددة"</string>
-<string name="notification_installation_auto">"تم تحميله اضغط لتثبيت"</string>
+<string name="notification_installation_auto">"تم تنزيله اضغط لتثبيت"</string>
 <string name="notification_installation_manual">"تطبيق مجزئ, بحاجة الى تدخل من المستخدم"</string>
 <string name="title_search_result">"النتائج ل"</string>
 <string name="action_recheck">"إعادة الفحص"</string>
@@ -273,7 +273,7 @@
 <string name="pref_update_interval_daily">"اسبوعيا"</string>
 <string name="pref_update_interval_weekly">"يوميا"</string>
 <string name="download_none">"لاتوجد تنزيلات"</string>
-<string name="error_app_download">"لا يمكن تحميله"</string>
+<string name="error_app_download">"لا يمكن تنزيل التطبيق"</string>
 <string name="details_new_changes">"مالجديد"</string>
 <string name="action_apps">"التطبيقات"</string>
 <string name="action_logging_in_success">"تم بنجاح تسجيل الدخول"</string>
@@ -285,10 +285,10 @@
 <string name="cat_top_family">"تطبيقات العائلة الشائعة"</string>
 <string name="details_no_changes">"لم يتم توفير سجل التغييرات من قبل المطور"</string>
 <string name="error_logged_out">"تم تسجيل خروجك"</string>
-<string name="link_dev">"المطور"</string>
+<string name="link_dev">"المزيد من هذا المطور"</string>
 <string name="link_prmission">"الصلاحيات"</string>
 <string name="link_playstore">"سوق بلاي"</string>
-<string name="link_setting">"الإعداد"</string>
+<string name="link_setting">"إعدادات التطبيق"</string>
 <string name="link_share">"مشاركة"</string>
 <string name="pref_install_mode_no_root">"لاتتوفر صلاحية الروت تأكد بأن جهازك يحتوي على روت"</string>
 <string name="pref_install_mode_root_warn">"طريقة التثبيت بالروت تتطلب ان يتم تنزيل التطبيقات في قسم app data لكي يتم التثبيت عبر شيل adb لإصدارات اندرويد باي فما فوق"</string>
@@ -297,4 +297,17 @@
 <string name="pref_ui_transparent">"الشكل الشفاف"</string>
 <string name="pref_ui_transparent_summary">"استخدام الشكل الشفاف لبطاقات الفئات وعرض العناوين"</string>
 <string name="pref_install_delete_summary">"على الجهزة التي تعمل بأصدار اندرويد باي فما فوق يتم حذف التطبيقات بعد التثبيت  حتى بواسطة الروت"</string>
+<string name="action_loading">"جارٍ التنزيل"</string>
+<string name="pref_default">"الافتراضي"</string>
+<string name="toast_loading_apps">"تنزيل المزيد مِن التطبيقات"</string>
+<string name="dialog_2FA_title">"التوثيق التنائي"</string>
+<string name="dialog_2FA_desc">"يبدو أنك قد مكّنت التحقق الثنائي ، يرجى إنشاء كلمة مرور للتطبيق واستخدام كلمة المرور الجديدة التي تم إنشاؤها لتسجيل الدخول"</string>
+<string name="dialog_2FA_positive">"انشاء كلمة السر"</string>
+<string name="dialog_purchase_title">"شراء التطبيقات"</string>
+<string name="dialog_purchase_desc">"تحتاج إلى شراء هذا التطبيق أولاً ، لا يدعم Aurora Store حاليًا عمليات الشراء ، حيث ستتم إعادة توجيهك إلى صفحة الويب لعملية الشراء."</string>
+<string name="dialog_purchase_positive">"شراء الان"</string>
+<string name="dialog_geores_title">"تطبيق مقيد جغرافيا"</string>
+<string name="dialog_geores_desc">"التطبيق الذي تحاول تنزيله غير متاح في بلدك ، حاول تغيير منطقتك من الإعدادات لكي يمكنك التنزيل."</string>
+<string name="dialog_incompat_title">"تطبيق غير متوافق"</string>
+<string name="dialog_incompat_desc">"التطبيق الذي تحاول تنزيله لا يتوافق مع جهازك ، حاول تغيير نوع جهازك من الإعدادات لكي يمكنك التنزيل."</string>
 </resources>
