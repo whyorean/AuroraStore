@@ -2,6 +2,7 @@ package com.aurora.store.fragment.preference;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
 
@@ -12,6 +13,7 @@ import androidx.preference.PreferenceFragmentCompat;
 
 import com.aurora.store.Constants;
 import com.aurora.store.R;
+import com.aurora.store.utility.PackageUtil;
 import com.aurora.store.utility.PrefUtil;
 import com.aurora.store.utility.Util;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
@@ -20,6 +22,7 @@ import com.scottyab.rootbeer.RootBeer;
 public class InstallationFragment extends PreferenceFragmentCompat implements SharedPreferences.OnSharedPreferenceChangeListener {
 
     private static final String ROOT = "1";
+    private static final String SERVICES = "2";
 
     private Context context;
 
@@ -55,6 +58,14 @@ public class InstallationFragment extends PreferenceFragmentCompat implements Sh
                     showNoRootDialog();
                     return false;
                 }
+            } else if (installMethod.equals(SERVICES)) {
+                if (PackageUtil.isInstalled(context, Constants.SERVICE_PACKAGE)) {
+                    PrefUtil.putString(context, Constants.PREFERENCE_INSTALLATION_METHOD, installMethod);
+                    return true;
+                } else {
+                    showNoServicesDialog();
+                    return false;
+                }
             } else {
                 PrefUtil.putString(context, Constants.PREFERENCE_INSTALLATION_METHOD, installMethod);
                 return true;
@@ -83,5 +94,22 @@ public class InstallationFragment extends PreferenceFragmentCompat implements Sh
         builder.setPositiveButton(android.R.string.ok, (dialog, which) -> dialog.dismiss());
         builder.create();
         builder.show();
+    }
+
+    private void showNoServicesDialog() {
+        MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
+        builder.setTitle(R.string.action_installations);
+        builder.setMessage(R.string.pref_install_mode_no_services);
+        builder.setPositiveButton(android.R.string.ok, (dialog, which) -> dialog.dismiss());
+        builder.create();
+        builder.show();
+    }
+
+    protected boolean isServicesInstalled() {
+        try {
+            return null != context.getPackageManager().getPackageInfo("com.aurora.services", 0);
+        } catch (PackageManager.NameNotFoundException e) {
+            return false;
+        }
     }
 }

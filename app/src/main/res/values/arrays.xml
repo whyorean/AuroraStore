@@ -235,11 +235,13 @@
     <string-array name="pref_installation_method">
         <item>@string/pref_install_mode_native</item>
         <item>@string/pref_install_mode_root</item>
+        <item>@string/pref_install_mode_services</item>
     </string-array>
 
     <string-array name="pref_installation_method_values">
         <item>0</item>
         <item>1</item>
+        <item>2</item>
     </string-array>
 
     <string-array name="proxyTypeValues" translatable="false">

@@ -1,4 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?><!--
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
   ~ Aurora Store
   ~ Copyright (C) 2019, Rahul Kumar Patel <whyorean@gmail.com>
   ~
@@ -38,16 +40,19 @@
         android:name="android.hardware.location.gps"
         android:required="false" />
 
-    <uses-feature android:name="android.software.leanback"
+    <uses-feature
+        android:name="android.software.leanback"
         android:required="false" />
 
-    <uses-feature android:name="android.hardware.touchscreen"
+    <uses-feature
+        android:name="android.hardware.touchscreen"
         android:required="false" />
 
     <application
         android:name=".AuroraApplication"
         android:allowBackup="true"
         android:allowClearUserData="true"
+        android:banner="@mipmap/ic_launcher"
         android:fullBackupContent="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -55,8 +60,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
-        tools:ignore="GoogleAppIndexingWarning"
-        android:banner="@mipmap/ic_launcher">
+        tools:ignore="GoogleAppIndexingWarning">
 
         <activity android:name=".activity.AuroraActivity">
             <intent-filter>
@@ -72,6 +76,7 @@
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />
                 <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
+
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
             <intent-filter>
@@ -102,7 +107,7 @@
                 <data android:scheme="http" />
                 <data android:scheme="https" />
                 <data android:host="play.google.com" />
-                <data android:host="market.android.com"/>
+                <data android:host="market.android.com" />
                 <data android:path="/store/apps/details" />
             </intent-filter>
         </activity>
@@ -110,8 +115,8 @@
         <activity android:name=".activity.DownloadsActivity" />
         <activity android:name=".activity.AccountsActivity" />
         <activity
-            android:configChanges="orientation"
             android:name=".activity.SettingsActivity"
+            android:configChanges="orientation"
             android:theme="@style/AppTheme" />
         <activity android:name=".activity.IntroActivity" />
         <activity android:name=".activity.ManualDownloadActivity" />

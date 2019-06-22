@@ -22,6 +22,7 @@ package com.aurora.store;
 
 public class Constants {
     public static final String SHARED_PREFERENCES_KEY = "com.aurora.store";
+    public static final String SERVICE_PACKAGE = "com.aurora.services";
     public static final String APP_DETAIL_URL = "https://play.google.com/store/apps/details?id=";
 
     public static final String INTENT_DEVICE_NAME = "INTENT_DEVICE_NAME";
@@ -45,6 +46,10 @@ public class Constants {
     public static final String FILTER_CATEGORY = "FILTER_CATEGORY";
     public static final String FILTER_RATING = "FILTER_RATING";
     public static final String FILTER_DOWNLOADS = "FILTER_DOWNLOADS";
+
+
+    public static final String PRIVILEGED_EXTENSION_PACKAGE_NAME = "com.aurora.services";
+    public static final String PRIVILEGED_EXTENSION_SERVICE_INTENT = "com.aurora.services.IPrivilegedService";
 
     public static final String PREFERENCE_THEME = "PREFERENCE_THEME";
     public static final String PREFERENCE_DEFAULT_TAB = "PREFERENCE_DEFAULT_TAB";

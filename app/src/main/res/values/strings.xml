@@ -269,7 +269,10 @@
     <string name="pref_install_mode_title">Installation method</string>
     <string name="pref_install_mode_native">Native</string>
     <string name="pref_install_mode_root">Root</string>
+    <string name="pref_install_mode_services">Aurora Services</string>
     <string name="pref_install_mode_no_root">Root access not available, make sure your device is rooted</string>
+    <string name="pref_install_mode_no_services">Aurora Services not installed, kindly install services first</string>
+    <string name="pref_install_mode_offline_services">Aurora Services not connected, kindly make sure its enabled and you have correct version of app</string>
     <string name="pref_install_mode_root_warn">Root install method requires the apk to be downloaded in app data, in order to install via adb shell, Android Pie +</string>
     <string name="pref_locale_custom_title">Custom langage</string>
     <string name="pref_locale_custom_summary">Enforce custom app language</string>

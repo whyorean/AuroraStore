@@ -106,4 +106,13 @@ public class PackageUtil {
             return false;
         }
     }
+
+    public static boolean isInstalled(Context context, String packageName) {
+        try {
+            context.getPackageManager().getPackageInfo(packageName, 0);
+            return true;
+        } catch (PackageManager.NameNotFoundException e) {
+            return false;
+        }
+    }
 }

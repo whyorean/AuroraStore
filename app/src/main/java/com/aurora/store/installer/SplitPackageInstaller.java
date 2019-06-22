@@ -62,7 +62,7 @@ public class SplitPackageInstaller extends SplitPackageInstallerAbstract {
                 outputStream.close();
             }
             Intent callbackIntent = new Intent(getContext(), SplitService.class);
-            PendingIntent pendingIntent = PendingIntent.getService(getContext(), 0, callbackIntent, 0);
+            PendingIntent pendingIntent = PendingIntent.getService(getContext(), sessionID, callbackIntent, PendingIntent.FLAG_UPDATE_CURRENT);
             session.commit(pendingIntent.getIntentSender());
             session.close();
         } catch (Exception e) {

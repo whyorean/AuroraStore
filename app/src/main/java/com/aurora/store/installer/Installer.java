@@ -25,14 +25,20 @@ package com.aurora.store.installer;
 
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.ServiceConnection;
 import android.net.Uri;
 import android.os.Build;
+import android.os.IBinder;
+import android.os.RemoteException;
 
 import androidx.core.content.FileProvider;
 
+import com.aurora.services.IPrivilegedCallback;
+import com.aurora.services.IPrivilegedService;
 import com.aurora.store.Constants;
 import com.aurora.store.R;
 import com.aurora.store.activity.DetailsActivity;
@@ -65,15 +71,6 @@ public class Installer {
             installSplit(app.getPackageName(), app.getVersionCode());
     }
 
-    /*
-     * Native install method is now deprecated in favour of split installer,
-     * Why does ot still exist in source ? I might reuse it xD
-     * @param packageName
-     * @param versionCode
-     *
-     */
-
-    @Deprecated
     public void install(String packageName, int versionCode) {
         Log.i("Native Installer Called");
         Intent intent;
@@ -143,6 +140,54 @@ public class Installer {
     }
 
     public void uninstall(App app) {
+        String prefValue = PrefUtil.getString(context, Constants.PREFERENCE_INSTALLATION_METHOD);
+        switch (prefValue) {
+            case "0":
+                uninstallByPackageManager(app);
+                break;
+            case "1":
+                uninstallByRoot(app);
+                break;
+            case "2":
+                uninstallByServices(app);
+                break;
+            default:
+                uninstallByPackageManager(app);
+        }
+    }
+
+    private void uninstallByServices(App app) {
+        ServiceConnection mServiceConnection = new ServiceConnection() {
+            public void onServiceConnected(ComponentName name, IBinder binder) {
+                IPrivilegedService service = IPrivilegedService.Stub.asInterface(binder);
+                IPrivilegedCallback callback = new IPrivilegedCallback.Stub() {
+                    @Override
+                    public void handleResult(String packageName, int returnCode) {
+                        Log.i("Uninstallation of " + packageName + " complete with code " + returnCode);
+                    }
+                };
+                try {
+                    if (!service.hasPrivilegedPermissions()) {
+                        Log.e("service.hasPrivilegedPermissions() is false");
+                        return;
+                    }
+
+                    service.deletePackage(app.getPackageName(), 1, callback);
+
+                } catch (RemoteException e) {
+                    Log.e("Connecting to privileged service failed");
+                }
+            }
+
+            public void onServiceDisconnected(ComponentName name) {
+            }
+        };
+        Intent serviceIntent = new Intent(Constants.PRIVILEGED_EXTENSION_SERVICE_INTENT);
+        serviceIntent.setPackage(Constants.PRIVILEGED_EXTENSION_PACKAGE_NAME);
+        context.getApplicationContext().bindService(serviceIntent, mServiceConnection, Context.BIND_AUTO_CREATE);
+    }
+
+    private void uninstallByPackageManager(App app) {
         Uri uri = Uri.fromParts("package", app.getPackageName(), null);
         Intent intent = new Intent();
         intent.setData(uri);
@@ -155,6 +200,10 @@ public class Installer {
         context.startActivity(intent);
     }
 
+    private void uninstallByRoot(App app) {
+        new PackageUninstallerRooted().uninstall(app);
+    }
+
     private SplitPackageInstallerAbstract getInstallationMethod(Context context) {
         String prefValue = PrefUtil.getString(context, Constants.PREFERENCE_INSTALLATION_METHOD);
         switch (prefValue) {
@@ -162,6 +211,8 @@ public class Installer {
                 return new SplitPackageInstaller(context);
             case "1":
                 return new SplitPackageInstallerRooted(context);
+            case "2":
+                return new SplitInstallerPrivileged(context);
             default:
                 return new SplitPackageInstaller(context);
         }
