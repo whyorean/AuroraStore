@@ -3,7 +3,7 @@
 <string name="account_dummy">"Anonymous"</string>
 <string name="account_dummy_desc">"Login in met een anoniem account?"</string>
 <string name="account_google">"Google-account"</string>
-<string name="account_logout">"Aurora uitloggen ?"</string>
+<string name="account_logout">"Uitloggen ?"</string>
 <string name="account_prompt_login">"Log alstublieft in om door te gaan"</string>
 <string name="account_switch">"Account wijzigen"</string>
 <string name="action_accounts">"Accounts"</string>
@@ -298,4 +298,14 @@
 <string name="action_loading">"Laden"</string>
 <string name="pref_default">"Standaard"</string>
 <string name="toast_loading_apps">"Laden van meer apps.."</string>
+<string name="dialog_2FA_title">"2-factorenauthenticatie"</string>
+<string name="dialog_2FA_desc">"U lijkt 2FA ingeschakeld te hebben, genereer een app-wachtwoord en gebruik het nieuwe gegenereerde wachtwoord om in te loggen"</string>
+<string name="dialog_2FA_positive">"Maak een wachtwoord"</string>
+<string name="dialog_purchase_title">"App-aankoop"</string>
+<string name="dialog_purchase_desc">"Je moet eerst deze app kopen, Aurora Store ondersteunt momenteel niet in app-aankopen, je wordt doorgestuurd naar de webpagina voor de aankoop."</string>
+<string name="dialog_purchase_positive">"Koop nu"</string>
+<string name="dialog_geores_title">"Geo-beperkte app"</string>
+<string name="dialog_geores_desc">"De app die u probeert te downloaden, is niet beschikbaar in uw land, probeer uw regio te vervalsen via de instellingen die u wilt downloaden."</string>
+<string name="dialog_incompat_title">"Incompatibele app"</string>
+<string name="dialog_incompat_desc">"De app die u probeert te downloaden, is niet compatibel met uw apparaat, probeer uw apparaat te vervalsen via de instellingen die u wilt downloaden."</string>
 </resources>
