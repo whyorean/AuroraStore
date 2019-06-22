@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-<string name="account_dummy">"गुमनाम"</string>
+<string name="account_dummy">"अज्ञात"</string>
 <string name="account_dummy_desc">"बेनामी खाते का उपयोग कर लॉगिन करें?"</string>
 <string name="account_google">"गूगल अकॉउंट"</string>
-<string name="account_logout">"अरोरा से लॉगआउट?"</string>
+<string name="account_logout">"अरोरा से लॉगआउट करें?"</string>
 <string name="account_prompt_login">"जारी रखने के लिए कृपया लॉगिन करें"</string>
 <string name="account_switch">"खाता बदलिये"</string>
 <string name="action_accounts">"हिसाब किताब"</string>
 <string name="action_ask">"पूछना"</string>
 <string name="action_blacklist">"काला सूची में डालना"</string>
 <string name="action_cancel">"रद्द करना"</string>
-<string name="action_clear">"स्पष्ट"</string>
+<string name="action_clear">"मिटाना"</string>
 <string name="action_clear_all">"सभी साफ करें"</string>
 <string name="action_convert_local">"स्थानीय रूपांतरित करें"</string>
 <string name="action_convert_system">"कन्वर्ट सिस्टम"</string>
@@ -211,4 +211,32 @@
 <string name="toast_apk_whitelisted">"श्वेत सूची में"</string>
 <string name="toast_apk_copy_success">"एपीके को सफलतापूर्वक कॉपी किया गया"</string>
 <string name="toast_apk_copy_failure">"APK कॉपी करने में विफल"</string>
+<string name="pref_app_language">"भाषा"</string>
+<string name="tab_family">"शिशु एवं परिवार"</string>
+<string name="about_paypal">"पेपैल"</string>
+<string name="about_paypal_summary">"मुझे पेपैल पर दान करें"</string>
+<string name="about_fdroid">"एफ-ड्रॉयड"</string>
+<string name="about_gitlab">"गिटलैब"</string>
+<string name="about_telegram">"टेलीग्राम"</string>
+<string name="about_telegram_summary">"चर्चा या सुझाव के लिए औरोरा सहायता समूह में शामिल हों"</string>
+<string name="pref_notification_priority_max">"अघिकतम"</string>
+<string name="pref_notification_provider_title">"अधिसुचना प्रदानकर्ता"</string>
+<string name="pref_notification_provider_aurora">"औरोरा अधिसुचना प्रदानकर्ता"</string>
+<string name="pref_ui_theme_black">"काला"</string>
+<string name="action_close">"बंद करें"</string>
+<string name="list_update_all_queue_txt">"अद्यतन पंत्किबद्ध"</string>
+<string name="notification_installation_complete">"सफलतापूर्वक अद्यतित"</string>
+<string name="notification_installation_failed">"अद्यतन असफल"</string>
+<string name="notification_installation_progress">"अद्यतन हो रहा है"</string>
+<string name="error_network_other">"नेटवर्क त्रुटि"</string>
+<string name="pref_update_interval_weekly">"रोजाना"</string>
+<string name="download_none">"कोई डाउनलोड नही"</string>
+<string name="details_new_changes">"नए बदलाव"</string>
+<string name="link_dev">"विकासक"</string>
+<string name="link_prmission">"अनुमति"</string>
+<string name="link_playstore">"प्ले स्टोर"</string>
+<string name="link_setting">"सेटिंग"</string>
+<string name="link_share">"साझा करें"</string>
+<string name="dialog_2FA_positive">"पारण शब्द बनाएं"</string>
+<string name="dialog_purchase_positive">"अभी खरीदें"</string>
 </resources>
