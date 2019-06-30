@@ -39,7 +39,6 @@ import com.aurora.store.adapter.DownloadsAdapter;
 import com.aurora.store.download.DownloadManager;
 import com.aurora.store.utility.ThemeUtil;
 import com.aurora.store.view.ErrorView;
-import com.tonyodev.fetch2.Download;
 import com.tonyodev.fetch2.Fetch;
 import com.tonyodev.fetch2.Status;
 
@@ -87,10 +86,10 @@ public class DownloadsActivity extends AppCompatActivity {
                 onBackPressed();
                 return true;
             case R.id.action_pause_all:
-                pauseAll();
+                fetch.pauseAll();
                 return true;
             case R.id.action_resume_all:
-                resumeAll();
+                fetch.resumeAll();
                 return true;
             case R.id.action_cancel_all:
                 cancelAll();
@@ -164,31 +163,6 @@ public class DownloadsActivity extends AppCompatActivity {
         fetch.deleteAllWithStatus(Status.PAUSED);
         fetch.deleteAllWithStatus(Status.QUEUED);
         init();
-    }
-
-    private void pauseAll() {
-        if (fetch != null) {
-            fetch.getDownloads(downloadList -> {
-                for (Download download : downloadList)
-                    if (download.getStatus() == Status.DOWNLOADING
-                            || download.getStatus() == Status.QUEUED
-                            || download.getStatus() == Status.ADDED)
-                        fetch.pause(download.getId());
-            });
-            downloadsAdapter.refreshList();
-        }
-    }
-
-    private void resumeAll() {
-        if (fetch != null) {
-            fetch.getDownloads(downloadList -> {
-                for (Download download : downloadList)
-                    if (download.getStatus() == Status.PAUSED
-                            || download.getStatus() == Status.FAILED)
-                        fetch.resume(download.getId());
-            });
-            downloadsAdapter.refreshList();
-        }
     }
 
     private void setupRecycler() {
