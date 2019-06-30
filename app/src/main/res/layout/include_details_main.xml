@@ -70,6 +70,10 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/packageName"
             android:layout_centerHorizontal="true"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:scrollHorizontally="true"
             android:singleLine="true"
             android:textAlignment="viewStart"
             android:textColor="?android:attr/colorAccent"
@@ -81,6 +85,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/devName"
             android:layout_centerHorizontal="true"
+            android:ellipsize="marquee"
             android:singleLine="true"
             android:textAlignment="viewStart"
             android:textSize="12sp" />

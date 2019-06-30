@@ -47,7 +47,24 @@ public class InstalledAppsTask extends UpdatableAppsTask {
             if (TextUtils.isEmpty(packageName) || !packageList.contains(packageName)) {
                 continue;
             }
-            App installedApp = getInstalledApp(packageName);
+
+            final App installedApp = getInstalledApp(packageName);
+            app = addInstalledAppInfo(app, installedApp);
+            appList.add(app);
+        }
+        return appList;
+    }
+
+    public List<App> getAllApps() throws IOException {
+        List<App> appList = new ArrayList<>();
+        List<String> packageList = getInstalledApps();
+        for (App app : getAppsFromPlayStore(packageList)) {
+            final String packageName = app.getPackageName();
+            if (TextUtils.isEmpty(packageName) || !packageList.contains(packageName)) {
+                continue;
+            }
+
+            final App installedApp = getInstalledApp(packageName);
             app = addInstalledAppInfo(app, installedApp);
             appList.add(app);
         }

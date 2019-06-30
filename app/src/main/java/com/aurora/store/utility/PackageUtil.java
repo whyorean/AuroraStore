@@ -68,10 +68,12 @@ public class PackageUtil {
 
     public static App getInstalledApp(PackageManager packageManager, String packageName) {
         try {
-            App app = new App(packageManager.getPackageInfo(packageName,
+            final App app = new App(packageManager.getPackageInfo(packageName,
                     PackageManager.GET_META_DATA | PackageManager.GET_PERMISSIONS));
-            app.setDisplayName(packageManager.getApplicationLabel(
-                    app.getPackageInfo().applicationInfo).toString());
+            final PackageInfo packageInfo = app.getPackageInfo();
+            app.setDisplayName(packageManager.getApplicationLabel(packageInfo.applicationInfo).toString());
+            app.setVersionName(packageInfo.versionName);
+            app.setVersionCode(packageInfo.versionCode);
             return app;
         } catch (PackageManager.NameNotFoundException e) {
             return null;

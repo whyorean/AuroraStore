@@ -65,7 +65,6 @@ public class DetailsFragment extends BaseFragment {
     NestedScrollView mScrollView;
 
     private Context context;
-    private DetailsApp mTaskHelper;
     private ActionButton mActionButton;
     private String packageName;
     private DetailsInstallReceiver mInstallReceiver;
@@ -110,7 +109,6 @@ public class DetailsFragment extends BaseFragment {
         try {
             context.unregisterReceiver(mInstallReceiver);
             mActionButton = null;
-            mTaskHelper = null;
             disposable.clear();
         } catch (Exception ignored) {
         }
@@ -118,8 +116,8 @@ public class DetailsFragment extends BaseFragment {
 
     @Override
     protected void fetchData() {
-        mTaskHelper = new DetailsApp(getContext());
-        disposable.add(Observable.fromCallable(() -> mTaskHelper.getInfo(packageName))
+        disposable.add(Observable.fromCallable(() -> new DetailsApp(getContext())
+                .getInfo(packageName))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(app -> {

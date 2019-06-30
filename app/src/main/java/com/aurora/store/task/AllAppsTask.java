@@ -38,10 +38,10 @@ public class AllAppsTask extends BaseTask {
 
     List<String> getInstalledApps() {
         List<String> packageList = new ArrayList<>();
-        PackageManager pm = context.getPackageManager();
-        for (PackageInfo packageInfo : pm.getInstalledPackages(0)) {
+        PackageManager packageManager = context.getPackageManager();
+        for (PackageInfo packageInfo : packageManager.getInstalledPackages(0)) {
             final String packageName = packageInfo.packageName;
-            if (null != packageInfo.applicationInfo && !packageInfo.applicationInfo.enabled)
+            if (packageInfo.applicationInfo!=null && !packageInfo.applicationInfo.enabled)
                 continue;
             if (Util.filterFDroidAppsEnabled(context) && CertUtil.isFDroidApp(context, packageName))
                 continue;

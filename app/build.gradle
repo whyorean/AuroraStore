@@ -70,6 +70,7 @@ configurations.all {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation group: 'commons-io', name: 'commons-io', version: '2.6'
+    implementation group: 'org.apache.maven', name: 'maven-artifact', version: '3.0.3'
 
     //UI-Libs
     implementation 'androidx.appcompat:appcompat:1.0.2'

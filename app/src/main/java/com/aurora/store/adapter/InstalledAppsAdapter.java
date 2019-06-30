@@ -53,7 +53,7 @@ import butterknife.ButterKnife;
 public class InstalledAppsAdapter extends RecyclerView.Adapter<InstalledAppsAdapter.ViewHolder> {
 
     public List<App> appList = new ArrayList<>();
-    private Context context;
+    public Context context;
     private ListType listType;
     private AppMenuSheet menuSheet;
 
@@ -120,7 +120,7 @@ public class InstalledAppsAdapter extends RecyclerView.Adapter<InstalledAppsAdap
         List<String> Extra = new ArrayList<>();
 
         holder.AppTitle.setText(app.getDisplayName());
-        getDetails(context, Version, Extra, app);
+        getDetails(Version, Extra, app);
         setText(holder.AppExtra, TextUtils.join(" • ", Extra));
         setText(holder.AppVersion, TextUtils.join(" • ", Version));
 
@@ -152,12 +152,13 @@ public class InstalledAppsAdapter extends RecyclerView.Adapter<InstalledAppsAdap
             return ((AuroraActivity) context).getSupportFragmentManager();
     }
 
-    public void getDetails(Context mContext, List<String> Version, List<String> Extra, App app) {
-        Version.add("v" + app.getVersionName() + "." + app.getVersionCode());
+    public void getDetails(List<String> Version, List<String> Extra, App app) {
+        if (app.getPackageInfo() != null)
+            Version.add("v" + app.getPackageInfo().versionName + "." + app.getPackageInfo().versionCode);
         if (app.isSystem())
-            Extra.add(mContext.getString(R.string.list_app_system));
+            Extra.add(context.getString(R.string.list_app_system));
         else
-            Extra.add(mContext.getString(R.string.list_app_user));
+            Extra.add(context.getString(R.string.list_app_user));
     }
 
     protected void setText(TextView textView, String text) {

@@ -44,6 +44,8 @@ import com.aurora.store.utility.ViewUtil;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.google.android.material.chip.Chip;
 
+import org.apache.maven.artifact.versioning.DefaultArtifactVersion;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -179,28 +181,46 @@ public class GeneralDetails extends AbstractHelper {
 
     private void drawVersion() {
         String versionName = app.getVersionName();
+        DefaultArtifactVersion defaultArtifactVersion = new DefaultArtifactVersion(versionName);
+        int versionCode = app.getVersionCode();
+
         if (TextUtils.isEmpty(versionName)) {
             return;
         }
-        app_version.setText(versionName);
+
+        app_version.setText(new StringBuilder()
+                .append(versionName)
+                .append(".")
+                .append(versionCode));
         app_version.setVisibility(View.VISIBLE);
+        app_version.setSelected(true);
+
         if (!app.isInstalled()) {
             return;
         }
+
         try {
             PackageInfo info = context.getPackageManager().getPackageInfo(app.getPackageName(), 0);
             String currentVersion = info.versionName;
-            if (info.versionCode == app.getVersionCode() || null == currentVersion) {
-                return;
+            DefaultArtifactVersion currentVersionName = new DefaultArtifactVersion(info.versionName);
+
+            int currentVersionCode = info.versionCode;
+            boolean updatable = false;
+
+            if (currentVersionName.compareTo(defaultArtifactVersion) < 0) {
+                updatable = true;
+            } else if (currentVersionName.compareTo(defaultArtifactVersion) == 0
+                    && currentVersionCode < versionCode) {
+                updatable = true;
             }
-            String newVersion = versionName;
-            if (currentVersion.equals(newVersion)) {
-                newVersion = String.valueOf(app.getVersionCode());
-            }
-            app_version.setText(new StringBuilder()
-                    .append(currentVersion)
-                    .append(" >> ")
-                    .append(newVersion));
+
+            if (updatable)
+                app_version.setText(new StringBuilder()
+                        .append(currentVersion)
+                        .append(".")
+                        .append(currentVersionCode)
+                        .append(" >> ")
+                        .append(versionName).append(".").append(versionCode));
         } catch (PackageManager.NameNotFoundException e) {
             // We've checked for that already
         }

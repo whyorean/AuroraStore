@@ -51,7 +51,8 @@ public class UpdatableAppsTask extends AllAppsTask {
             if (TextUtils.isEmpty(packageName) || !packageList.contains(packageName)) {
                 continue;
             }
-            App installedApp = getInstalledApp(packageName);
+
+            final App installedApp = getInstalledApp(packageName);
             app = addInstalledAppInfo(app, installedApp);
 
             if (installedApp != null && installedApp.getVersionCode() < app.getVersionCode()) {
@@ -62,7 +63,7 @@ public class UpdatableAppsTask extends AllAppsTask {
     }
 
     public List<App> getAppsFromPlayStore(List<String> packageNames) throws IOException {
-        List<App> appsFromPlayStore = new ArrayList<>();
+        final List<App> appsFromPlayStore = new ArrayList<>();
         boolean builtInAccount = Accountant.isDummy(context);
         for (App app : getRemoteAppList(packageNames)) {
             if (!builtInAccount || app.isFree()) {
@@ -73,23 +74,23 @@ public class UpdatableAppsTask extends AllAppsTask {
     }
 
     private List<App> getRemoteAppList(List<String> packageNames) throws IOException {
-        List<App> apps = new ArrayList<>();
-        for (BulkDetailsEntry details : getApi().bulkDetails(packageNames).getEntryList()) {
-            if (!details.hasDoc()) {
+        final List<App> appList = new ArrayList<>();
+        final List<BulkDetailsEntry> bulkDetailsEntries = getApi().bulkDetails(packageNames).getEntryList();
+        for (BulkDetailsEntry bulkDetailsEntry : bulkDetailsEntries) {
+            if (!bulkDetailsEntry.hasDoc()) {
                 continue;
             }
-            apps.add(AppBuilder.build(details.getDoc()));
+            appList.add(AppBuilder.build(bulkDetailsEntry.getDoc()));
         }
-        return apps;
+        return appList;
     }
 
     public App addInstalledAppInfo(App appFromMarket, App installedApp) {
-        if (null != installedApp) {
+        if (installedApp != null && installedApp.getPackageInfo() != null) {
             appFromMarket.setPackageInfo(installedApp.getPackageInfo());
             appFromMarket.setVersionName(installedApp.getVersionName());
             appFromMarket.setDisplayName(installedApp.getDisplayName());
             appFromMarket.setSystem(installedApp.isSystem());
-            appFromMarket.setInstalled(true);
         }
         return appFromMarket;
     }

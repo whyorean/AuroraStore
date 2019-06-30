@@ -163,8 +163,7 @@ public class UpdatableAppsAdapter extends RecyclerView.Adapter<UpdatableAppsAdap
     }
 
     private void getDetails(List<String> Version, List<String> Extra, App app) {
-        Version.add("v" + app.getVersionName() + "." + app.getVersionCode());
-        Extra.add(app.getUpdated());
+        Version.add(app.getUpdated());
         Extra.add(app.getSize() == 0 ? "N/A" : Formatter.formatShortFileSize(context, app.getSize()));
     }
 
