@@ -161,6 +161,7 @@
     <string name="download_progress">Downloading</string>
     <string name="download_queued">Queued</string>
     <string name="download_resume">Resume</string>
+    <string name="download_waiting">Waiting</string>
     <string name="download_resume_all">Resume all</string>
 
     <string name="early_access">Early access</string>

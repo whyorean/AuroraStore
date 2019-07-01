@@ -56,6 +56,7 @@ public class RequestBuilder {
         request = new Request(Url, PathUtil.getLocalApkPath(context, app));
         request.setPriority(Priority.HIGH);
         request.setEnqueueAction(EnqueueAction.UPDATE_ACCORDINGLY);
+        request.setGroupId(app.getPackageName().hashCode());
         if (Util.isDownloadWifiOnly(context))
             request.setNetworkType(NetworkType.WIFI_ONLY);
         else
@@ -92,11 +93,11 @@ public class RequestBuilder {
      */
 
     public static Request buildSplitRequest(Context context, App app, Split split) {
-        Request request;
-        request = new Request(split.getDownloadUrl(),
+        Request request = new Request(split.getDownloadUrl(),
                 PathUtil.getLocalSplitPath(context, app, split.getName()));
         request.setPriority(Priority.HIGH);
         request.setEnqueueAction(EnqueueAction.UPDATE_ACCORDINGLY);
+        request.setGroupId(app.getPackageName().hashCode());
         if (Util.isDownloadWifiOnly(context))
             request.setNetworkType(NetworkType.WIFI_ONLY);
         else
@@ -110,17 +111,18 @@ public class RequestBuilder {
      * Build Bundled App Download RequestList from SplitList
      * @param Context - Application Context
      * @param App -  App object
-     * @param List<Split> -  List of Split Objects
+     * @param AndroidAppDeliveryData -  DeliveryData Objects
      * @return RequestList
      *
      */
 
     public static List<Request> buildSplitRequestList(Context context, App app,
-                                                      List<Split> splitList) {
+                                                      AndroidAppDeliveryData deliveryData) {
+        List<Split> splitList = deliveryData.getSplitList();
         List<Request> requestList = new ArrayList<>();
         for (Split split : splitList) {
-            final Request splitRequest = buildSplitRequest(context, app, split);
-            requestList.add(splitRequest);
+            final Request request = buildSplitRequest(context, app, split);
+            requestList.add(request);
         }
         return requestList;
     }
@@ -142,8 +144,8 @@ public class RequestBuilder {
         List<Request> requestList = new ArrayList<>();
         for (Split split : splitList) {
             final Request splitRequest = buildSplitRequest(context, app, split);
-            requestList.add(splitRequest);
             splitRequest.setGroupId(id);
+            requestList.add(splitRequest);
         }
         return requestList;
     }
@@ -164,6 +166,7 @@ public class RequestBuilder {
         request = new Request(Url, PathUtil.getObbPath(app, isMain));
         request.setEnqueueAction(EnqueueAction.UPDATE_ACCORDINGLY);
         request.setPriority(Priority.HIGH);
+        request.setGroupId(app.getPackageName().hashCode());
         if (Util.isDownloadWifiOnly(context))
             request.setNetworkType(NetworkType.WIFI_ONLY);
         else
@@ -185,14 +188,15 @@ public class RequestBuilder {
 
     public static List<Request> buildObbRequestList(Context context, App app, AndroidAppDeliveryData appDeliveryData) {
         List<Request> requestList = new ArrayList<>();
-        if (appDeliveryData.getAdditionalFileList().size() == 1) {
+        List<AppFileMetadata> appFileMetadataList = appDeliveryData.getAdditionalFileList();
+        if (appFileMetadataList.size() == 1) {
             AppFileMetadata obbFileMetadata = appDeliveryData.getAdditionalFile(0);
             if (TextUtil.isEmpty(obbFileMetadata.getDownloadUrlGzipped()))
                 requestList.add(buildObbRequest(context, app, obbFileMetadata.getDownloadUrl(), true));
             else
                 requestList.add(buildObbRequest(context, app, obbFileMetadata.getDownloadUrlGzipped(), true));
         }
-        if (appDeliveryData.getAdditionalFileList().size() == 2) {
+        if (appFileMetadataList.size() == 2) {
             AppFileMetadata obbFileMetadata = appDeliveryData.getAdditionalFile(1);
             if (TextUtil.isEmpty(obbFileMetadata.getDownloadUrlGzipped()))
                 requestList.add(buildObbRequest(context, app, obbFileMetadata.getDownloadUrl(), false));

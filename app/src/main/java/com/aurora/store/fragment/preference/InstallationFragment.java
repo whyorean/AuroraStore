@@ -2,7 +2,6 @@ package com.aurora.store.fragment.preference;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
 
@@ -103,13 +102,5 @@ public class InstallationFragment extends PreferenceFragmentCompat implements Sh
         builder.setPositiveButton(android.R.string.ok, (dialog, which) -> dialog.dismiss());
         builder.create();
         builder.show();
-    }
-
-    protected boolean isServicesInstalled() {
-        try {
-            return null != context.getPackageManager().getPackageInfo("com.aurora.services", 0);
-        } catch (PackageManager.NameNotFoundException e) {
-            return false;
-        }
     }
 }

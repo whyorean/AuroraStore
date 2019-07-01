@@ -22,7 +22,6 @@ package com.aurora.store.fragment.details;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -37,6 +36,7 @@ import com.aurora.store.fragment.DetailsFragment;
 import com.aurora.store.fragment.DevAppsFragment;
 import com.aurora.store.model.App;
 import com.aurora.store.utility.Log;
+import com.aurora.store.utility.PackageUtil;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import butterknife.ButterKnife;
@@ -107,21 +107,8 @@ public abstract class AbstractHelper {
         v.findViewById(viewID).setVisibility(View.VISIBLE);
     }
 
-    protected boolean isInstalled() {
-        try {
-            context.getPackageManager().getPackageInfo(app.getPackageName(), 0);
-            return true;
-        } catch (PackageManager.NameNotFoundException e) {
-            return false;
-        }
-    }
-
     protected boolean isPlayStoreInstalled() {
-        try {
-            return null != context.getPackageManager().getPackageInfo(PLAY_STORE_PACKAGE_NAME, 0);
-        } catch (PackageManager.NameNotFoundException e) {
-            return false;
-        }
+        return PackageUtil.isInstalled(context, PLAY_STORE_PACKAGE_NAME);
     }
 
     protected void showPurchaseDialog() {

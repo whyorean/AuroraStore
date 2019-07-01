@@ -23,6 +23,7 @@
 
 package com.aurora.store.installer;
 
+import android.app.DownloadManager;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.ComponentName;

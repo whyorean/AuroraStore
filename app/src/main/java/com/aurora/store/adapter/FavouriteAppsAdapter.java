@@ -21,7 +21,6 @@
 package com.aurora.store.adapter;
 
 import android.content.Context;
-import android.content.pm.PackageManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,6 +31,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.aurora.store.R;
 import com.aurora.store.manager.FavouriteListManager;
 import com.aurora.store.model.App;
+import com.aurora.store.utility.PackageUtil;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
@@ -88,7 +88,7 @@ public class FavouriteAppsAdapter extends RecyclerView.Adapter {
 
         holder.AppTitle.setText(app.getDisplayName());
 
-        if (isInstalled(app)) {
+        if (PackageUtil.isInstalled(context, app)) {
             holder.AppExtra.setText(context.getText(R.string.list_installed));
             holder.AppCheckbox.setEnabled(false);
         } else {
@@ -103,15 +103,6 @@ public class FavouriteAppsAdapter extends RecyclerView.Adapter {
                 .into(holder.AppIcon);
 
         holder.setChecked(isSelected(appList.get(position)));
-    }
-
-    private boolean isInstalled(App app) {
-        try {
-            context.getPackageManager().getPackageInfo(app.getPackageName(), 0);
-            return true;
-        } catch (PackageManager.NameNotFoundException e) {
-            return false;
-        }
     }
 
     public void toggleSelection(int position) {

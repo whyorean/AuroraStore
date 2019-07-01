@@ -65,7 +65,7 @@ public class DetailsFragment extends BaseFragment {
     NestedScrollView mScrollView;
 
     private Context context;
-    private ActionButton mActionButton;
+    private ActionButton actionButton;
     private String packageName;
     private DetailsInstallReceiver mInstallReceiver;
 
@@ -99,8 +99,6 @@ public class DetailsFragment extends BaseFragment {
     public void onResume() {
         super.onResume();
         context.registerReceiver(mInstallReceiver, mInstallReceiver.getFilter());
-        if (mActionButton != null)
-            mActionButton.draw();
     }
 
     @Override
@@ -108,7 +106,7 @@ public class DetailsFragment extends BaseFragment {
         super.onDestroy();
         try {
             context.unregisterReceiver(mInstallReceiver);
-            mActionButton = null;
+            actionButton = null;
             disposable.clear();
         } catch (Exception ignored) {
         }
@@ -131,7 +129,7 @@ public class DetailsFragment extends BaseFragment {
 
     private void draw(App mApp) {
         app = mApp;
-        drawButtons();
+        actionButton = new ActionButton(this, app);
         disposable.add(Observable.just(
                 new GeneralDetails(this, app),
                 new Screenshot(this, app),
@@ -145,13 +143,13 @@ public class DetailsFragment extends BaseFragment {
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnNext(AbstractHelper::draw)
                 .subscribe());
+        drawButtons();
     }
 
     public void drawButtons() {
         if (PackageUtil.isInstalled(context, app))
             app.setInstalled(true);
-        mActionButton = new ActionButton(this, app);
-        mActionButton.draw();
+        actionButton.draw();
     }
 
     @Override
