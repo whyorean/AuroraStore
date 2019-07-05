@@ -312,6 +312,17 @@ public class ActionButton extends AbstractHelper {
         return new AbstractFetchGroupListener() {
 
             @Override
+            public void onQueued(int groupId, @NotNull Download download, boolean waitingNetwork, @NotNull FetchGroup fetchGroup) {
+                if (groupId == hashCode) {
+                    ContextUtil.runOnUiThread(() -> {
+                        progressBar.setIndeterminate(true);
+                        progressStatus.setText(R.string.download_queued);
+                    });
+                    notification.notifyQueued();
+                }
+            }
+
+            @Override
             public void onStarted(int groupId, @NotNull Download download, @NotNull List<? extends DownloadBlock> downloadBlocks, int totalBlocks, @NotNull FetchGroup fetchGroup) {
                 if (groupId == hashCode) {
                     ContextUtil.runOnUiThread(() -> {
@@ -377,6 +388,7 @@ public class ActionButton extends AbstractHelper {
             @Override
             public void onCompleted(int groupId, @NotNull Download download, @NotNull FetchGroup fetchGroup) {
                 if (groupId == hashCode && fetchGroup.getGroupDownloadProgress() == 100) {
+                    notification.notifyCompleted();
                     ContextUtil.runOnUiThread(() -> {
                         switchViews(false);
                         progressStatus.setText(R.string.download_completed);

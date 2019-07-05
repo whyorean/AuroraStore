@@ -36,7 +36,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.aurora.store.GlideApp;
-import com.aurora.store.ListType;
 import com.aurora.store.R;
 import com.aurora.store.activity.AuroraActivity;
 import com.aurora.store.activity.DetailsActivity;
@@ -59,7 +58,7 @@ public class UpdatableAppsAdapter extends RecyclerView.Adapter<UpdatableAppsAdap
     private Context context;
     private AppMenuSheet menuSheet;
 
-    public UpdatableAppsAdapter(Context context, ListType listType) {
+    public UpdatableAppsAdapter(Context context) {
         this.context = context;
         this.menuSheet = new AppMenuSheet();
     }

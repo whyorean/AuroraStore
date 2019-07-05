@@ -23,7 +23,6 @@
 
 package com.aurora.store.installer;
 
-import android.app.DownloadManager;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.ComponentName;
@@ -43,12 +42,9 @@ import com.aurora.services.IPrivilegedService;
 import com.aurora.store.Constants;
 import com.aurora.store.R;
 import com.aurora.store.activity.DetailsActivity;
-import com.aurora.store.events.AppInstalledEvent;
-import com.aurora.store.events.RxBus;
 import com.aurora.store.model.App;
 import com.aurora.store.notification.QuickNotification;
 import com.aurora.store.utility.Log;
-import com.aurora.store.utility.PackageUtil;
 import com.aurora.store.utility.PathUtil;
 import com.aurora.store.utility.PrefUtil;
 import com.aurora.store.utility.Util;
@@ -60,19 +56,27 @@ import java.util.List;
 public class Installer {
 
     private Context context;
+    private SplitPackageInstallerAbstract installer;
+    private App app;
+    private String packageName;
+    private int versionCode;
 
     public Installer(Context context) {
         this.context = context;
     }
 
-    public void install(App app) {
+    public synchronized void install(App app) {
+        this.app = app;
+        this.packageName = app.getPackageName();
+        this.versionCode = app.getVersionCode();
+
         if (Util.isNativeInstallerEnforced(context))
-            install(app.getPackageName(), app.getVersionCode());
+            install(packageName, versionCode);
         else
-            installSplit(app.getPackageName(), app.getVersionCode());
+            installSplit(packageName, versionCode);
     }
 
-    public void install(String packageName, int versionCode) {
+    public synchronized void install(String packageName, int versionCode) {
         Log.i("Native Installer Called");
         Intent intent;
         File file = new File(PathUtil.getLocalApkPath(context, packageName, versionCode));
@@ -101,63 +105,59 @@ public class Installer {
             }
         }
 
-        SplitPackageInstallerAbstract installer = getInstallationMethod(context.getApplicationContext());
+        installer = getInstallationMethod(context.getApplicationContext());
         context.getApplicationContext().registerReceiver(installer.getBroadcastReceiver(),
                 new IntentFilter(SplitService.ACTION_INSTALLATION_STATUS_NOTIFICATION));
         long sessionID = installer.createInstallationSession(apkFiles);
         installer.startInstallationSession(sessionID);
-        installer.addStatusListener((installationID, installationStatus, packageNameOrErrorDescription) -> {
-            switch (installationStatus) {
+        installer.addStatusListener((installationID, status, packageNameOrErrorDescription) -> {
+            switch (status) {
                 case INSTALLATION_FAILED:
-                    clearNotification(packageName);
+                    clearNotification();
                     QuickNotification.show(
                             context,
-                            PackageUtil.getDisplayName(context, packageName),
+                            app.getDisplayName(),
                             context.getString(R.string.notification_installation_failed),
                             getContentIntent(packageName));
-                    unregisterReceiver(installer);
+                    unregisterReceiver();
                     break;
                 case INSTALLING:
-                    clearNotification(packageName);
-                    QuickNotification.show(
-                            context,
-                            PackageUtil.getDisplayName(context, packageName),
-                            context.getString(R.string.notification_installation_progress),
-                            getContentIntent(packageName));
+
                     break;
                 case INSTALLATION_SUCCEED:
+                    clearNotification();
                     QuickNotification.show(
                             context,
-                            PackageUtil.getDisplayName(context, packageName),
+                            app.getDisplayName(),
                             context.getString(R.string.notification_installation_complete),
                             getContentIntent(packageName));
                     if (Util.shouldDeleteApk(context))
-                        clearInstallationFiles(apkFiles);
-                    unregisterReceiver(installer);
-                    RxBus.publish(new AppInstalledEvent(packageName));
+                        clearInstallationFiles();
+                    unregisterReceiver();
                     break;
             }
         });
     }
 
-    public void uninstall(App app) {
+    public synchronized void uninstall(App app) {
+        this.app = app;
         String prefValue = PrefUtil.getString(context, Constants.PREFERENCE_INSTALLATION_METHOD);
         switch (prefValue) {
             case "0":
-                uninstallByPackageManager(app);
+                uninstallByPackageManager();
                 break;
             case "1":
-                uninstallByRoot(app);
+                uninstallByRoot();
                 break;
             case "2":
-                uninstallByServices(app);
+                uninstallByServices();
                 break;
             default:
-                uninstallByPackageManager(app);
+                uninstallByPackageManager();
         }
     }
 
-    private void uninstallByServices(App app) {
+    private void uninstallByServices() {
         ServiceConnection mServiceConnection = new ServiceConnection() {
             public void onServiceConnected(ComponentName name, IBinder binder) {
                 IPrivilegedService service = IPrivilegedService.Stub.asInterface(binder);
@@ -188,7 +188,7 @@ public class Installer {
         context.getApplicationContext().bindService(serviceIntent, mServiceConnection, Context.BIND_AUTO_CREATE);
     }
 
-    private void uninstallByPackageManager(App app) {
+    private void uninstallByPackageManager() {
         Uri uri = Uri.fromParts("package", app.getPackageName(), null);
         Intent intent = new Intent();
         intent.setData(uri);
@@ -201,7 +201,7 @@ public class Installer {
         context.startActivity(intent);
     }
 
-    private void uninstallByRoot(App app) {
+    private void uninstallByRoot() {
         new PackageUninstallerRooted().uninstall(app);
     }
 
@@ -219,25 +219,29 @@ public class Installer {
         }
     }
 
-    private void clearNotification(String packageName) {
-        NotificationManager notificationManager = (NotificationManager)
-                context.getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
-        notificationManager.cancel(packageName.hashCode());
-    }
-
-    private void clearInstallationFiles(List<File> apkFiles) {
+    private void clearInstallationFiles() {
         boolean success = false;
-        for (File file : apkFiles)
-            success = file.delete();
+        File apkDirectory = new File(PathUtil.getRootApkPath(context));
+        for (File file : apkDirectory.listFiles()) {
+            if (file.getName().contains(packageName + "." + versionCode)) {
+                success = file.delete();
+            }
+        }
         if (success)
             Log.i("Installation files deleted");
         else
             Log.i("Could not delete installation files");
     }
 
-    private void unregisterReceiver(SplitPackageInstallerAbstract mInstaller) {
+    private void clearNotification() {
+        NotificationManager notificationManager = (NotificationManager)
+                context.getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
+        notificationManager.cancel(packageName.hashCode());
+    }
+
+    private void unregisterReceiver() {
         try {
-            context.getApplicationContext().unregisterReceiver(mInstaller.getBroadcastReceiver());
+            context.getApplicationContext().unregisterReceiver(installer.getBroadcastReceiver());
         } catch (Exception ignored) {
         }
     }

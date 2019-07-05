@@ -43,9 +43,8 @@ public class PackageUninstallerRooted {
                     return;
                 }
             }
-            String from = app.getPackageInfo().applicationInfo.sourceDir;
-            Log.d(ensureCommandSucceeded(root.exec("am force-stop " + app.getPackageName())));
-            Log.d(ensureCommandSucceeded(root.exec("rm -rf " + from)));
+            Log.d(ensureCommandSucceeded(root.exec("pm clear " + app.getPackageName())));
+            Log.d(ensureCommandSucceeded(root.exec("pm uninstall " + app.getPackageName())));
         } catch (Exception e) {
             Log.w(e.getMessage());
         }

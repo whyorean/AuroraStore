@@ -23,7 +23,6 @@ package com.aurora.store.adapter;
 import android.content.Context;
 
 import com.aurora.store.exception.MalformedRequestException;
-import com.aurora.store.utility.Log;
 import com.aurora.store.utility.Util;
 import com.dragons.aurora.playstoreapiv2.AuthException;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
@@ -31,11 +30,14 @@ import com.dragons.aurora.playstoreapiv2.GooglePlayException;
 import com.dragons.aurora.playstoreapiv2.HttpClientAdapter;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
+import okhttp3.Cookie;
+import okhttp3.CookieJar;
 import okhttp3.FormBody;
 import okhttp3.Headers;
 import okhttp3.HttpUrl;
@@ -50,14 +52,26 @@ public class OkHttpClientAdapter extends HttpClientAdapter {
     private OkHttpClient client;
 
     public OkHttpClientAdapter(Context context) {
-        OkHttpClient.Builder builder = new OkHttpClient.Builder();
-        builder.connectTimeout(20, TimeUnit.SECONDS);
-        builder.readTimeout(20, TimeUnit.SECONDS);
-        builder.writeTimeout(20, TimeUnit.SECONDS);
+        OkHttpClient.Builder builder = new OkHttpClient.Builder()
+                .connectTimeout(20, TimeUnit.SECONDS)
+                .readTimeout(20, TimeUnit.SECONDS)
+                .writeTimeout(20, TimeUnit.SECONDS)
+                .cookieJar(new CookieJar() {
+                    private final HashMap<HttpUrl, List<Cookie>> cookieStore = new HashMap<>();
 
+                    @Override
+                    public void saveFromResponse(HttpUrl url, List<Cookie> cookies) {
+                        cookieStore.put(url, cookies);
+                    }
+
+                    @Override
+                    public List<Cookie> loadForRequest(HttpUrl url) {
+                        List<Cookie> cookies = cookieStore.get(url);
+                        return cookies != null ? cookies : new ArrayList<>();
+                    }
+                });
         if (Util.isNetworkProxyEnabled(context))
             builder.proxy(Util.getNetworkProxy(context));
-
         client = builder.build();
     }
 

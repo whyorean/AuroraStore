@@ -20,9 +20,7 @@
 
 package com.aurora.store.fragment;
 
-import android.app.PendingIntent;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -38,53 +36,35 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.aurora.store.ErrorType;
-import com.aurora.store.ListType;
 import com.aurora.store.R;
 import com.aurora.store.activity.AuroraActivity;
-import com.aurora.store.activity.DetailsActivity;
-import com.aurora.store.activity.DownloadsActivity;
 import com.aurora.store.adapter.UpdatableAppsAdapter;
 import com.aurora.store.download.DownloadManager;
-import com.aurora.store.download.RequestBuilder;
 import com.aurora.store.exception.MalformedRequestException;
-import com.aurora.store.installer.Installer;
 import com.aurora.store.manager.BlacklistManager;
 import com.aurora.store.model.App;
-import com.aurora.store.notification.QuickNotification;
-import com.aurora.store.receiver.InstallReceiver;
-import com.aurora.store.task.BulkDeliveryData;
+import com.aurora.store.task.LiveUpdate;
+import com.aurora.store.task.ObservableDeliveryData;
 import com.aurora.store.task.UpdatableAppsTask;
 import com.aurora.store.utility.ContextUtil;
 import com.aurora.store.utility.Log;
-import com.aurora.store.utility.SplitUtil;
-import com.aurora.store.utility.Util;
 import com.aurora.store.utility.ViewUtil;
 import com.aurora.store.view.CustomSwipeToRefresh;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.snackbar.Snackbar;
-import com.tonyodev.fetch2.AbstractFetchGroupListener;
-import com.tonyodev.fetch2.Download;
 import com.tonyodev.fetch2.Fetch;
-import com.tonyodev.fetch2.FetchGroup;
-import com.tonyodev.fetch2.FetchGroupListener;
-import com.tonyodev.fetch2.Request;
 
 import org.apache.commons.lang3.StringUtils;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
-
-import static com.aurora.store.notification.NotificationBase.INTENT_APP_VERSION;
-import static com.aurora.store.notification.NotificationBase.INTENT_PACKAGE_NAME;
 
 
 public class UpdatesFragment extends BaseFragment {
@@ -103,8 +83,6 @@ public class UpdatesFragment extends BaseFragment {
     private BottomNavigationView bottomNavigationView;
     private View view;
     private List<App> updatableAppList = new ArrayList<>();
-    private List<Request> requestList;
-    private Map<String, App> pseudoPackageAppMap;
     private UpdatableAppsAdapter adapter;
     private Fetch fetch;
     private boolean onGoingUpdate = false;
@@ -128,6 +106,8 @@ public class UpdatesFragment extends BaseFragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         fetch = DownloadManager.getFetchInstance(context);
+        adapter = new UpdatableAppsAdapter(context);
+        updatableAppTask = new UpdatableAppsTask(context);
         setErrorView(ErrorType.UNKNOWN);
         customSwipeToRefresh.setOnRefreshListener(() -> fetchData());
         if (getActivity() instanceof AuroraActivity) {
@@ -140,9 +120,8 @@ public class UpdatesFragment extends BaseFragment {
     @Override
     public void onResume() {
         super.onResume();
-        if (adapter == null || adapter.isDataEmpty())
+        if (adapter != null && adapter.isDataEmpty())
             fetchData();
-        checkOnGoingUpdates();
     }
 
     @Override
@@ -160,7 +139,6 @@ public class UpdatesFragment extends BaseFragment {
 
     @Override
     protected void fetchData() {
-        updatableAppTask = new UpdatableAppsTask(context);
         disposable.add(Observable.fromCallable(updatableAppTask::getUpdatableApps)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -169,7 +147,6 @@ public class UpdatesFragment extends BaseFragment {
                 .subscribe((appList) -> {
                     if (view != null) {
                         updatableAppList = appList;
-                        pseudoPackageAppMap = getPackageAppMap(appList);
                         if (appList.isEmpty()) {
                             setErrorView(ErrorType.NO_UPDATES);
                             switchViews(true);
@@ -187,15 +164,7 @@ public class UpdatesFragment extends BaseFragment {
                 }));
     }
 
-    private void checkOnGoingUpdates() {
-        fetch.getFetchGroup(UPDATE_GROUP_ID, downloadList -> {
-            if (!downloadList.getDownloads().isEmpty())
-                onGoingUpdate = downloadList.getGroupDownloadProgress() < 100;
-        });
-    }
-
     private void setupRecycler() {
-        adapter = new UpdatableAppsAdapter(context, ListType.UPDATES);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(context, RecyclerView.VERTICAL, false));
         recyclerView.setLayoutAnimation(AnimationUtils.loadLayoutAnimation(context, R.anim.anim_falldown));
@@ -228,7 +197,6 @@ public class UpdatesFragment extends BaseFragment {
     }
 
     private void setupUpdateAll() {
-        checkOnGoingUpdates();
         if (updatableAppList.isEmpty()) {
             ViewUtil.hideWithAnimation(btnUpdateAll);
             txtUpdateAll.setText(context.getString(R.string.list_empty_updates));
@@ -251,6 +219,7 @@ public class UpdatesFragment extends BaseFragment {
         btnUpdateAll.setEnabled(true);
         return v -> {
             updateAllApps();
+            onGoingUpdate = true;
             btnUpdateAll.setText(getString(R.string.list_updating));
             btnUpdateAll.setEnabled(false);
         };
@@ -266,123 +235,21 @@ public class UpdatesFragment extends BaseFragment {
     }
 
     private void updateAllApps() {
-        disposable.add(Observable.fromCallable(() -> new BulkDeliveryData(context)
-                .getDeliveryData(updatableAppList))
+        disposable.add(Observable.fromIterable(updatableAppList)
+                .flatMap(app -> new ObservableDeliveryData(context).getDeliveryData(app))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(deliveryDataList -> {
-                    requestList = RequestBuilder.getBulkRequestList(context, deliveryDataList,
-                            updatableAppList, UPDATE_GROUP_ID);
-                    if (!requestList.isEmpty()) {
-                        fetch.enqueue(requestList, updatedRequestList -> {
-                            String updateTxt = new StringBuilder()
-                                    .append(updatableAppList.size())
-                                    .append(StringUtils.SPACE)
-                                    .append(context.getString(R.string.list_update_all_queue_txt)).toString();
-                            QuickNotification.show(
-                                    context,
-                                    context.getString(R.string.action_updates),
-                                    updateTxt,
-                                    getContentIntent());
-                            btnUpdateAll.setOnClickListener(cancelAllListener());
-                        });
-                        fetch.addListener(getListener());
-                    }
-                }, err -> {
-                    if (err instanceof MalformedRequestException) {
+                .doOnNext(deliveryDataBundle -> new LiveUpdate(context)
+                        .enqueueUpdate(deliveryDataBundle.getApp(),
+                                deliveryDataBundle.getAndroidAppDeliveryData()))
+                .doOnError(throwable -> {
+                    if (throwable instanceof MalformedRequestException) {
                         ContextUtil.runOnUiThread(() -> btnUpdateAll.setOnClickListener(updateAllListener()));
-                        notifyStatusBlacklist(coordinatorLayout, bottomNavigationView, err.getMessage());
+                        notifyStatusBlacklist(coordinatorLayout, bottomNavigationView, throwable.getMessage());
                     } else
-                        Log.e(err.getMessage());
-                }));
-    }
-
-    private Map<String, App> getPackageAppMap(List<App> appList) {
-        Map<String, App> pseudoPackageAppMap = new HashMap<>();
-        for (App app : appList)
-            pseudoPackageAppMap.put(app.getPackageName(), app);
-        return pseudoPackageAppMap;
-    }
-
-    private PendingIntent getContentIntent() {
-        Intent intent = new Intent(context, DownloadsActivity.class);
-        return PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-    }
-
-    private PendingIntent getInstallIntent(App app) {
-        Intent intent = new Intent(context, InstallReceiver.class);
-        intent.putExtra(INTENT_PACKAGE_NAME, app.getPackageName());
-        intent.putExtra(INTENT_APP_VERSION, app.getVersionCode());
-        return PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-    }
-
-    private PendingIntent getDetailsIntent(App app) {
-        Intent intent = new Intent(context, DetailsActivity.class);
-        intent.putExtra(DetailsActivity.INTENT_PACKAGE_NAME, app.getPackageName());
-        return PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-    }
-
-    private FetchGroupListener getListener() {
-        return new AbstractFetchGroupListener() {
-            @Override
-            public void onCompleted(int groupId, @NotNull Download download, @NotNull FetchGroup fetchGroup) {
-                super.onCompleted(groupId, download, fetchGroup);
-                if (groupId == UPDATE_GROUP_ID) {
-                    if (fetchGroup.getDownloadingDownloads().isEmpty()) {
-                        QuickNotification.show(
-                                context,
-                                context.getString(R.string.action_updates),
-                                "All updates downloaded",
-                                getContentIntent());
-                        ContextUtil.runOnUiThread(() -> btnUpdateAll.setOnClickListener(updateAllListener()));
-                    }
-                }
-            }
-
-            @Override
-            public void onCompleted(@NotNull Download download) {
-                super.onCompleted(download);
-                final String packageName = download.getTag();
-                if (pseudoPackageAppMap.containsKey(packageName)) {
-                    final App app = pseudoPackageAppMap.get(packageName);
-                    assert app != null;
-                    final boolean isSplit = SplitUtil.isSplit(context, app.getPackageName());
-                    if (Util.shouldAutoInstallApk(context) && !isSplit)
-                        new Installer(context).install(app);
-                    else
-                        QuickNotification.show(
-                                context,
-                                app.getDisplayName(),
-                                isSplit ? context.getString(R.string.notification_installation_auto)
-                                        : context.getString(R.string.download_completed),
-                                isSplit ? getDetailsIntent(app)
-                                        : getInstallIntent(app)
-                        );
-                }
-            }
-
-            @Override
-            public void onProgress(int groupId, @NotNull Download download, long etaInMilliSeconds, long downloadedBytesPerSecond, @NotNull FetchGroup fetchGroup) {
-                super.onProgress(groupId, download, etaInMilliSeconds, downloadedBytesPerSecond, fetchGroup);
-            }
-
-            @Override
-            public void onQueued(int groupId, @NotNull Download download, boolean waitingNetwork, @NotNull FetchGroup fetchGroup) {
-                super.onQueued(groupId, download, waitingNetwork, fetchGroup);
-                if (groupId == UPDATE_GROUP_ID) {
-                    final String packageName = download.getTag();
-                    if (pseudoPackageAppMap.containsKey(packageName)) {
-                        final App app = pseudoPackageAppMap.get(packageName);
-                        assert app != null;
-                        QuickNotification.show(
-                                context,
-                                app.getDisplayName(),
-                                context.getString(R.string.download_queued),
-                                getContentIntent());
-                    }
-                }
-            }
-        };
+                        Log.e(throwable.getMessage());
+                })
+                .subscribe());
     }
 
     public void notifyStatusBlacklist(CoordinatorLayout coordinatorLayout, View anchorView, String packageName) {

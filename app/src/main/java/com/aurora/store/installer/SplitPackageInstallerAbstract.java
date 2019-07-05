@@ -26,7 +26,6 @@ package com.aurora.store.installer;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.LongSparseArray;
@@ -64,8 +63,10 @@ public abstract class SplitPackageInstallerAbstract {
             public void onReceive(Context context, Intent intent) {
                 switch (intent.getIntExtra(SplitService.EXTRA_INSTALLATION_STATUS, -1)) {
                     case SplitService.STATUS_SUCCESS:
-                        dispatchCurrentSessionUpdate(InstallationStatus.INSTALLATION_SUCCEED,
-                                intent.getStringExtra(SplitService.EXTRA_PACKAGE_NAME));
+                        String packageName = intent.getStringExtra(SplitService.EXTRA_PACKAGE_NAME);
+                        if (packageName != null)
+                            dispatchCurrentSessionUpdate(InstallationStatus.INSTALLATION_SUCCEED,
+                                    packageName);
                         installationCompleted();
                         break;
                     case SplitService.STATUS_FAILURE:
