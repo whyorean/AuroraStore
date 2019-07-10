@@ -39,18 +39,30 @@ import com.aurora.store.adapter.DownloadsAdapter;
 import com.aurora.store.download.DownloadManager;
 import com.aurora.store.utility.ThemeUtil;
 import com.aurora.store.view.ErrorView;
+import com.tonyodev.fetch2.AbstractFetchListener;
+import com.tonyodev.fetch2.Download;
+import com.tonyodev.fetch2.Error;
 import com.tonyodev.fetch2.Fetch;
+import com.tonyodev.fetch2.FetchListener;
 import com.tonyodev.fetch2.Status;
+
+import org.jetbrains.annotations.NotNull;
+
+import java.util.ArrayList;
+import java.util.Collections;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class DownloadsActivity extends AppCompatActivity {
 
+    private static final long UNKNOWN_REMAINING_TIME = -1;
+    private static final long UNKNOWN_DOWNLOADED_BYTES_PER_SECOND = 0;
+
     @BindView(R.id.toolbar)
-    Toolbar mToolbar;
+    Toolbar toolbar;
     @BindView(R.id.recyclerDownloads)
-    RecyclerView mRecyclerView;
+    RecyclerView recyclerView;
     @BindView(R.id.view_switcher)
     ViewSwitcher viewSwitcher;
     @BindView(R.id.content_view)
@@ -60,6 +72,58 @@ public class DownloadsActivity extends AppCompatActivity {
 
     private Fetch fetch;
     private DownloadsAdapter downloadsAdapter;
+    private final FetchListener fetchListener = new AbstractFetchListener() {
+        @Override
+        public void onAdded(@NotNull Download download) {
+            downloadsAdapter.addDownload(download);
+        }
+
+        @Override
+        public void onQueued(@NotNull Download download, boolean waitingOnNetwork) {
+            downloadsAdapter.update(download, UNKNOWN_REMAINING_TIME, UNKNOWN_DOWNLOADED_BYTES_PER_SECOND);
+        }
+
+        @Override
+        public void onCompleted(@NotNull Download download) {
+            downloadsAdapter.update(download, UNKNOWN_REMAINING_TIME, UNKNOWN_DOWNLOADED_BYTES_PER_SECOND);
+        }
+
+        @Override
+        public void onError(@NotNull Download download, @NotNull Error error, @org.jetbrains.annotations.Nullable Throwable throwable) {
+            super.onError(download, error, throwable);
+            downloadsAdapter.update(download, UNKNOWN_REMAINING_TIME, UNKNOWN_DOWNLOADED_BYTES_PER_SECOND);
+        }
+
+        @Override
+        public void onProgress(@NotNull Download download, long etaInMilliseconds, long downloadedBytesPerSecond) {
+            downloadsAdapter.update(download, etaInMilliseconds, downloadedBytesPerSecond);
+        }
+
+        @Override
+        public void onPaused(@NotNull Download download) {
+            downloadsAdapter.update(download, UNKNOWN_REMAINING_TIME, UNKNOWN_DOWNLOADED_BYTES_PER_SECOND);
+        }
+
+        @Override
+        public void onResumed(@NotNull Download download) {
+            downloadsAdapter.update(download, UNKNOWN_REMAINING_TIME, UNKNOWN_DOWNLOADED_BYTES_PER_SECOND);
+        }
+
+        @Override
+        public void onCancelled(@NotNull Download download) {
+            downloadsAdapter.update(download, UNKNOWN_REMAINING_TIME, UNKNOWN_DOWNLOADED_BYTES_PER_SECOND);
+        }
+
+        @Override
+        public void onRemoved(@NotNull Download download) {
+            downloadsAdapter.update(download, UNKNOWN_REMAINING_TIME, UNKNOWN_DOWNLOADED_BYTES_PER_SECOND);
+        }
+
+        @Override
+        public void onDeleted(@NotNull Download download) {
+            downloadsAdapter.update(download, UNKNOWN_REMAINING_TIME, UNKNOWN_DOWNLOADED_BYTES_PER_SECOND);
+        }
+    };
     private ThemeUtil themeUtil = new ThemeUtil();
 
     @Override
@@ -69,8 +133,8 @@ public class DownloadsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_downloads);
         ButterKnife.bind(this);
         fetch = DownloadManager.getFetchInstance(this);
+        downloadsAdapter = new DownloadsAdapter(this);
         setupActionbar();
-        init();
     }
 
     @Override
@@ -108,17 +172,30 @@ public class DownloadsActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         themeUtil.onResume(this);
-    }
-
-    private void init() {
-        fetch.getDownloads(downloadList -> {
-            if (downloadList.isEmpty()) {
+        fetch.getDownloads(downloads -> {
+            final ArrayList<Download> list = new ArrayList<>(downloads);
+            Collections.sort(list, (first, second) -> Long.compare(first.getCreated(), second.getCreated()));
+            if (list.isEmpty()) {
                 setErrorView(ErrorType.NO_DOWNLOADS);
                 switchViews(true);
-            } else {
-                setupRecycler();
+                return;
             }
-        });
+            for (Download download : list) {
+                downloadsAdapter.addDownload(download);
+            }
+        }).addListener(fetchListener);
+        setupRecycler();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        fetch.removeListener(fetchListener);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
     }
 
     protected void setErrorView(ErrorType errorType) {
@@ -134,7 +211,7 @@ public class DownloadsActivity extends AppCompatActivity {
     }
 
     private void setupActionbar() {
-        setSupportActionBar(mToolbar);
+        setSupportActionBar(toolbar);
         ActionBar mActionBar = getSupportActionBar();
         if (mActionBar != null) {
             mActionBar.setDisplayShowCustomEnabled(true);
@@ -146,30 +223,27 @@ public class DownloadsActivity extends AppCompatActivity {
 
     private void cancelAll() {
         fetch.cancelAll();
-        downloadsAdapter.refreshList();
     }
 
     private void clearCompleted() {
         fetch.removeAllWithStatus(Status.COMPLETED);
-        downloadsAdapter.refreshList();
     }
 
     private void forceClearAll() {
         fetch.deleteAllWithStatus(Status.ADDED);
+        fetch.deleteAllWithStatus(Status.QUEUED);
         fetch.deleteAllWithStatus(Status.CANCELLED);
         fetch.deleteAllWithStatus(Status.COMPLETED);
         fetch.deleteAllWithStatus(Status.DOWNLOADING);
         fetch.deleteAllWithStatus(Status.FAILED);
         fetch.deleteAllWithStatus(Status.PAUSED);
-        fetch.deleteAllWithStatus(Status.QUEUED);
-        init();
     }
 
     private void setupRecycler() {
-        downloadsAdapter = new DownloadsAdapter(this);
-        mRecyclerView.setAdapter(downloadsAdapter);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
-        DividerItemDecoration itemDecorator = new DividerItemDecoration(mRecyclerView.getContext(), DividerItemDecoration.VERTICAL);
-        mRecyclerView.addItemDecoration(itemDecorator);
+        recyclerView.setAdapter(downloadsAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
+        DividerItemDecoration itemDecorator = new DividerItemDecoration(recyclerView.getContext(), DividerItemDecoration.VERTICAL);
+        recyclerView.addItemDecoration(itemDecorator);
+        recyclerView.setItemViewCacheSize(25);
     }
 }

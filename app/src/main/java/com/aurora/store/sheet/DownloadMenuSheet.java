@@ -32,7 +32,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.aurora.store.R;
-import com.aurora.store.adapter.DownloadsAdapter;
 import com.aurora.store.download.DownloadManager;
 import com.aurora.store.utility.Util;
 import com.aurora.store.view.CustomBottomSheetDialogFragment;
@@ -63,17 +62,8 @@ public class DownloadMenuSheet extends CustomBottomSheetDialogFragment {
     private Context context;
     private Fetch fetch;
     private Download download;
-    private DownloadsAdapter downloadsAdapter;
 
     public DownloadMenuSheet() {
-    }
-
-    public DownloadsAdapter getDownloadsAdapter() {
-        return downloadsAdapter;
-    }
-
-    public void setDownloadsAdapter(DownloadsAdapter downloadsAdapter) {
-        this.downloadsAdapter = downloadsAdapter;
     }
 
     public Download getDownload() {
@@ -131,12 +121,12 @@ public class DownloadMenuSheet extends CustomBottomSheetDialogFragment {
         btnCopy.setOnClickListener(v -> {
             Util.copyToClipBoard(context, download.getUrl());
             Toast.makeText(context, context.getString(R.string.action_copied), Toast.LENGTH_LONG).show();
-            notifyAndDismiss();
+            dismissAllowingStateLoss();
         });
 
         btnPause.setOnClickListener(v -> {
             fetch.pause(download.getId());
-            notifyAndDismiss();
+            dismissAllowingStateLoss();
         });
 
         btnResume.setOnClickListener(v -> {
@@ -145,22 +135,17 @@ public class DownloadMenuSheet extends CustomBottomSheetDialogFragment {
                 fetch.retry(download.getId());
             else
                 fetch.resume(download.getId());
-            notifyAndDismiss();
+            dismissAllowingStateLoss();
         });
 
         btnCancel.setOnClickListener(v -> {
             fetch.cancel(download.getId());
-            notifyAndDismiss();
+            dismissAllowingStateLoss();
         });
 
         btnClear.setOnClickListener(v -> {
             fetch.delete(download.getId());
-            notifyAndDismiss();
+            dismissAllowingStateLoss();
         });
-    }
-
-    private void notifyAndDismiss() {
-        getDownloadsAdapter().refreshList();
-        dismissAllowingStateLoss();
     }
 }
