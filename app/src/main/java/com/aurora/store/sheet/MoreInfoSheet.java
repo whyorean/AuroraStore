@@ -20,6 +20,7 @@
 
 package com.aurora.store.sheet;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.LayoutInflater;
@@ -61,6 +62,9 @@ public class MoreInfoSheet extends CustomBottomSheetDialogFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        contentReadMore.setText(Html.fromHtml(app.getDescription()).toString());
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N)
+            contentReadMore.setText(Html.fromHtml(app.getDescription(), Html.FROM_HTML_MODE_LEGACY).toString());
+        else
+            contentReadMore.setText(Html.fromHtml(app.getDescription()).toString());
     }
 }

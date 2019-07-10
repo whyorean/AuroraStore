@@ -145,9 +145,8 @@ public class GeneralDetails extends AbstractHelper {
 
     private void drawChanges() {
         String changes = app.getChanges();
-        String description = app.getDescription();
         if (TextUtil.isEmpty(changes))
-            setText(view, R.id.changes_upper, Html.fromHtml(TextUtil.emptyIfNull(description)).toString());
+            setText(view, R.id.changes_upper, context.getString(R.string.details_no_changes));
         else
             setText(view, R.id.changes_upper, Html.fromHtml(changes).toString());
         show(view, R.id.changes_container);
