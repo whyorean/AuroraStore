@@ -318,6 +318,9 @@
     <string name="pref_update_interval_hourly">Hourly</string>
     <string name="pref_update_interval_daily">Weekly</string>
     <string name="pref_update_interval_weekly">Daily</string>
+    <string name="pref_services_title">Aurora Services</string>
+    <string name="pref_services_desc">Launch Aurora services</string>
+    <string name="pref_services_desc_alt">Aurora services unavailable</string>
 
     <string name="testing_program_opt_in">Join</string>
     <string name="testing_program_opt_out">Leave</string>

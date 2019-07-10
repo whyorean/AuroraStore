@@ -1,6 +1,7 @@
 package com.aurora.store.fragment.preference;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.preference.ListPreference;
+import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 
 import com.aurora.store.Constants;
@@ -70,6 +72,21 @@ public class InstallationFragment extends PreferenceFragmentCompat implements Sh
                 return true;
             }
         });
+
+        Preference servicePreference = findPreference(Constants.PREFERENCE_LAUNCH_SERVICES);
+        assert servicePreference != null;
+        if (PackageUtil.isInstalled(context, Constants.SERVICE_PACKAGE)) {
+            servicePreference.setEnabled(true);
+            servicePreference.setOnPreferenceClickListener(preference -> {
+                Intent intent = context.getPackageManager().getLaunchIntentForPackage(Constants.SERVICE_PACKAGE);
+                intent.addCategory(Intent.CATEGORY_LAUNCHER);
+                context.startActivity(intent);
+                return false;
+            });
+        } else {
+            servicePreference.setEnabled(false);
+            servicePreference.setSummary(getString(R.string.pref_services_desc_alt));
+        }
     }
 
     @Override
