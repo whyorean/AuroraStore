@@ -49,6 +49,10 @@ import com.google.android.material.button.MaterialButton;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import io.reactivex.Observable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.schedulers.Schedulers;
 
 public class AppMenuSheet extends CustomBottomSheetDialogFragment {
 
@@ -68,6 +72,7 @@ public class AppMenuSheet extends CustomBottomSheetDialogFragment {
     private App app;
     private Context context;
     private RecyclerView.Adapter adapter;
+    private CompositeDisposable disposable = new CompositeDisposable();
 
     public AppMenuSheet() {
     }
@@ -138,12 +143,16 @@ public class AppMenuSheet extends CustomBottomSheetDialogFragment {
         });
 
         btnLocal.setOnClickListener(v -> {
-            final ApkCopier apkCopier = new ApkCopier();
-            boolean success = apkCopier.copy(app);
-            Toast.makeText(context, success
-                    ? context.getString(R.string.toast_apk_copy_success)
-                    : context.getString(R.string.toast_apk_copy_failure), Toast.LENGTH_SHORT)
-                    .show();
+            disposable.add(Observable.fromCallable(() -> new ApkCopier(app)
+                    .copy())
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(success -> {
+                        Toast.makeText(context, success
+                                ? context.getString(R.string.toast_apk_copy_success)
+                                : context.getString(R.string.toast_apk_copy_failure), Toast.LENGTH_SHORT)
+                                .show();
+                    }));
             dismissAllowingStateLoss();
         });
 

@@ -31,52 +31,91 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipOutputStream;
 
 
 public class ApkCopier {
 
-    public ApkCopier() {
+    private App app;
+
+    public ApkCopier(App app) {
+        this.app = app;
     }
 
-    public boolean copy(App app) {
-        File destination = PathUtil.getApkPath(app.getPackageName(), app.getInstalledVersionCode());
+    public boolean copy() {
+        File destination = new File(PathUtil.getRootApkCopyPath() + "/" +
+                app.getPackageName() + "." + app.getVersionCode() + ".apk");
+        File destinationDirectory = destination.getParentFile();
+
+        if (!destinationDirectory.exists()) {
+            destinationDirectory.mkdirs();
+        }
 
         if (destination.exists()) {
-            Log.i("%s exists", destination.toString());
+            Log.i("%s already backed up", destination.toString());
             return true;
         }
 
-        File currentApk = getCurrentApk(app);
-        if (null == currentApk) {
-            Log.e("applicationInfo.sourceDir is empty");
+        File baseApk = getBaseApk();
+        if (baseApk == null)
             return false;
-        }
 
-        if (!currentApk.exists()) {
-            Log.e("%s does not exist", currentApk);
-            return false;
+        String[] splitSourceDirs = app.getPackageInfo().applicationInfo.splitSourceDirs;
+
+        if (splitSourceDirs != null && splitSourceDirs.length > 0) {
+            List<File> allApkList = getInstalledSplitApks();
+            allApkList.add(baseApk);
+            bundleAllApks(allApkList);
+        } else {
+            copy(baseApk, destination);
         }
-        return copy(currentApk, destination);
+        return true;
     }
 
-    private boolean copy(File input, File output) {
-        File dir = output.getParentFile();
-        if (!dir.exists()) {
-            dir.mkdirs();
-        }
+    private void copy(File input, File output) {
         try {
             IOUtils.copy(new FileInputStream(input), new FileOutputStream(output));
-            return true;
         } catch (IOException e) {
             Log.e("Error copying APK : %s", e.getMessage());
-            return false;
         }
     }
 
-    private File getCurrentApk(App app) {
+    private File getBaseApk() {
         if (null != app.getPackageInfo() && null != app.getPackageInfo().applicationInfo) {
             return new File(app.getPackageInfo().applicationInfo.sourceDir);
         }
         return null;
+    }
+
+    private List<File> getInstalledSplitApks() {
+        List<File> fileList = new ArrayList<>();
+        String[] splitSourceDirs = app.getPackageInfo().applicationInfo.splitSourceDirs;
+        if (app.getPackageInfo() != null
+                && app.getPackageInfo().applicationInfo != null
+                && splitSourceDirs != null) {
+            for (String fileName : splitSourceDirs)
+                fileList.add(new File(fileName));
+        }
+        return fileList;
+    }
+
+    private void bundleAllApks(List<File> fileList) {
+        try {
+            FileOutputStream fileOutputStream = new FileOutputStream(
+                    PathUtil.getRootApkCopyPath() + "/" + app.getPackageName() + ".zip");
+            ZipOutputStream zipOutputStream = new ZipOutputStream(fileOutputStream);
+            for (File split : fileList) {
+                ZipEntry zipEntry = new ZipEntry(split.getName());
+                zipOutputStream.putNextEntry(zipEntry);
+                IOUtils.copy(new FileInputStream(split), zipOutputStream);
+                zipOutputStream.closeEntry();
+            }
+            zipOutputStream.close();
+        } catch (Exception e) {
+            Log.e("ApkCopier : %s", e.getMessage());
+        }
     }
 }
