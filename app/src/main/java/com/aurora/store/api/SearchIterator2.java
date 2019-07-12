@@ -49,7 +49,7 @@ public class SearchIterator2 extends AppListIterator2 {
         try {
             Payload payload = getPayload();
             DocV2 rootDoc = getRootDoc(payload);
-            SearchResultParser searchEngineResultPage = new SearchResultParser(SearchResultParser.ALL);
+            SearchResultParser searchEngineResultPage = new SearchResultParser(SearchResultParser.SEARCH);
             searchEngineResultPage.append(rootDoc);
             nextPageUrl = searchEngineResultPage.getNextPageUrl();
             firstQuery = false;
