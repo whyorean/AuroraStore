@@ -73,6 +73,7 @@
     <string name="action_flag">Report App</string>
     <string name="action_get_local_apk">Get local APK</string>
     <string name="action_home">Home</string>
+    <string name="action_info">App Info</string>
     <string name="action_installations">Installations</string>
     <string name="action_installed">Installed</string>
     <string name="action_later">Later</string>

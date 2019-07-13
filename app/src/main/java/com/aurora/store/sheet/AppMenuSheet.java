@@ -20,8 +20,10 @@
 
 package com.aurora.store.sheet;
 
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -43,6 +45,7 @@ import com.aurora.store.manager.BlacklistManager;
 import com.aurora.store.manager.FavouriteListManager;
 import com.aurora.store.model.App;
 import com.aurora.store.utility.ApkCopier;
+import com.aurora.store.utility.Log;
 import com.aurora.store.utility.PackageUtil;
 import com.aurora.store.view.CustomBottomSheetDialogFragment;
 import com.google.android.material.button.MaterialButton;
@@ -68,6 +71,8 @@ public class AppMenuSheet extends CustomBottomSheetDialogFragment {
     MaterialButton btnManual;
     @BindView(R.id.btn_uninstall)
     MaterialButton btnUninstall;
+    @BindView(R.id.btn_app_info)
+    MaterialButton btnAppInfo;
 
     private App app;
     private Context context;
@@ -164,6 +169,17 @@ public class AppMenuSheet extends CustomBottomSheetDialogFragment {
 
         btnUninstall.setOnClickListener(v -> {
             new Installer(context).uninstall(app);
+            dismissAllowingStateLoss();
+        });
+
+        btnAppInfo.setVisibility(PackageUtil.isInstalled(context, app) ? View.VISIBLE : View.GONE);
+        btnAppInfo.setOnClickListener(v -> {
+            try {
+                context.startActivity(new Intent("android.settings.APPLICATION_DETAILS_SETTINGS",
+                        Uri.parse("package:" + app.getPackageName())));
+            } catch (ActivityNotFoundException e) {
+                Log.e("Could not find system app activity");
+            }
             dismissAllowingStateLoss();
         });
     }

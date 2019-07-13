@@ -76,5 +76,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/action_uninstall" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_app_info"
+            style="@style/Widget.Button.Aurora.Menu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/action_info" />
     </LinearLayout>
 </LinearLayout>
