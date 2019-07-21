@@ -61,7 +61,8 @@
             android:layout_marginEnd="@dimen/margin_xlarge"
             android:hint="Password"
             app:boxStrokeColor="?android:colorAccent"
-            app:hintTextColor="?android:colorAccent">
+            app:hintTextColor="?android:colorAccent"
+            app:passwordToggleEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/txt_input_password"
