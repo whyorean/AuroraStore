@@ -135,6 +135,7 @@ public class DownloadsActivity extends AppCompatActivity {
         fetch = DownloadManager.getFetchInstance(this);
         downloadsAdapter = new DownloadsAdapter(this);
         setupActionbar();
+        setupRecycler();
     }
 
     @Override
@@ -184,7 +185,7 @@ public class DownloadsActivity extends AppCompatActivity {
                 downloadsAdapter.addDownload(download);
             }
         }).addListener(fetchListener);
-        setupRecycler();
+        downloadsAdapter.notifyDataSetChanged();
     }
 
     @Override
