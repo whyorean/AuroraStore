@@ -27,9 +27,8 @@ public class TokenDispenserMirrors {
 
     static private String[] mirrors = new String[]{
             "http://www.auroraoss.com:8080",
-            "https://token-dispenser.herokuapp.com",
-            "https://token-dispenser-mirror.herokuapp.com",
-            "http://token-dispenser.duckdns.org:8080"
+            "http://www.auroraoss.com:8880",
+            "http://www.auroraoss.com:2095"
     };
 
     private int n = 0;
