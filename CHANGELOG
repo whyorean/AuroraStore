@@ -41,3 +41,12 @@ Changelog : v3.0.6
 • Fixed and improved search results
 • Added new locale - Dutch
 • Updated translation
+
+Changelog : v3.0.7
+• Added option to use custom token dispensers (Settings->Network) 
+• Added new dummy accounts & dispenser
+• Added support for Aurora Services
+• Added option to view AppInfo from list menu
+• Zip the splits to backup bundled apps
+• Bug fixes & improvements
+• Updated translation
