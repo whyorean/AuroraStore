@@ -52,8 +52,6 @@ public class BlacklistAdapter extends SelectableAdapter<BlacklistAdapter.ViewHol
         super(context);
         this.itemClickListener = itemClickListener;
         this.appList = appList;
-        Collections.sort(appList, (App1, App2) ->
-                App1.getDisplayName().compareTo(App2.getDisplayName()));
     }
 
     @NotNull
