@@ -44,7 +44,7 @@ import com.aurora.store.events.Event;
 import com.aurora.store.events.Events;
 import com.aurora.store.events.RxBus;
 import com.aurora.store.exception.CredentialsEmptyException;
-import com.aurora.store.exception.TokenizerException;
+import com.aurora.store.exception.MalformedRequestException;
 import com.aurora.store.iterator.CustomAppListIterator;
 import com.aurora.store.utility.Accountant;
 import com.aurora.store.utility.ContextUtil;
@@ -241,7 +241,7 @@ public abstract class BaseFragment extends Fragment {
         switch (errorType) {
             case LOGOUT_ERR:
                 return errLogin();
-            case MALFORMED:
+            case APP_NOT_FOUND:
                 return errClose();
             default:
                 return errRetry();
@@ -256,6 +256,8 @@ public abstract class BaseFragment extends Fragment {
             processAuthException((AuthException) e);
         } else if (e instanceof IteratorGooglePlayException) {
             processException(e.getCause());
+        } else if (e instanceof MalformedRequestException) {
+            processAuthException(new AuthException("Malformed Request", 401));
         } else if (e instanceof IOException) {
             processIOException((IOException) e);
         } else if (e instanceof NullPointerException)

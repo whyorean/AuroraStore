@@ -33,7 +33,7 @@ import androidx.core.widget.NestedScrollView;
 
 import com.aurora.store.ErrorType;
 import com.aurora.store.R;
-import com.aurora.store.exception.MalformedRequestException;
+import com.aurora.store.exception.AppNotFoundException;
 import com.aurora.store.fragment.details.AbstractHelper;
 import com.aurora.store.fragment.details.ActionButton;
 import com.aurora.store.fragment.details.AppLinks;
@@ -172,8 +172,8 @@ public class DetailsFragment extends BaseFragment {
     @Override
     public void processException(Throwable e) {
         disposable.clear();
-        if (e instanceof MalformedRequestException) {
-            setErrorView(ErrorType.MALFORMED);
+        if (e instanceof AppNotFoundException) {
+            setErrorView(ErrorType.APP_NOT_FOUND);
             switchViews(true);
         } else
             super.processException(e);

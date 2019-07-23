@@ -21,14 +21,12 @@
 package com.aurora.store.task;
 
 import android.content.Context;
-import android.content.pm.PackageManager;
 
 import com.aurora.store.model.App;
 import com.aurora.store.model.AppBuilder;
 import com.aurora.store.model.Review;
 import com.aurora.store.model.ReviewBuilder;
 import com.aurora.store.utility.Accountant;
-import com.aurora.store.utility.Log;
 import com.dragons.aurora.playstoreapiv2.DetailsResponse;
 import com.dragons.aurora.playstoreapiv2.ReviewResponse;
 
@@ -52,12 +50,6 @@ public class DetailsApp extends BaseTask {
                 Review review = ReviewBuilder.build(reviewResponse.getGetResponse().getReview(0));
                 app.setUserReview(review);
             }
-        }
-        try {
-            PackageManager pm = context.getPackageManager();
-            app.getPackageInfo().applicationInfo = pm.getApplicationInfo(packageName, 0);
-            app.setInstalled(true);
-        } catch (PackageManager.NameNotFoundException ignored) {
         }
         return app;
     }

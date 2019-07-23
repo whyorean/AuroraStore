@@ -22,6 +22,7 @@ package com.aurora.store.adapter;
 
 import android.content.Context;
 
+import com.aurora.store.exception.AppNotFoundException;
 import com.aurora.store.exception.MalformedRequestException;
 import com.aurora.store.utility.Util;
 import com.dragons.aurora.playstoreapiv2.AuthException;
@@ -149,6 +150,8 @@ public class OkHttpClientAdapter extends HttpClientAdapter {
             throw e;
         } else if (code >= 500) {
             throw new GooglePlayException("Server error", code);
+        } else if (code == 404) {
+            throw new AppNotFoundException("App not found", code);
         } else if (code >= 400) {
             throw new MalformedRequestException("Malformed Request", code);
         }

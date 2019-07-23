@@ -2,6 +2,9 @@
  * Aurora Store
  * Copyright (C) 2019, Rahul Kumar Patel <whyorean@gmail.com>
  *
+ * Yalp Store
+ * Copyright (C) 2018 Sergey Yeriomin <yeriomin@gmail.com>
+ *
  * Aurora Store is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2 of the License, or
@@ -18,15 +21,36 @@
  *
  */
 
-package com.aurora.store;
+package com.aurora.store.exception;
 
-public enum ErrorType {
-    NO_NETWORK,
-    NO_APPS,
-    NO_UPDATES,
-    NO_SEARCH,
-    NO_DOWNLOADS,
-    UNKNOWN,
-    APP_NOT_FOUND,
-    LOGOUT_ERR
+import java.io.IOException;
+
+public class AppNotFoundException extends IOException {
+
+    protected int code;
+
+    public AppNotFoundException() {
+        super("AppNotFoundException");
+    }
+
+    public AppNotFoundException(String message, int code) {
+        super(message);
+        this.code = code;
+    }
+
+    public AppNotFoundException(String message) {
+        super(message);
+    }
+
+    public AppNotFoundException(String message, Throwable cause) {
+        super(message, cause);
+    }
+
+    public int getCode() {
+        return code;
+    }
+
+    public void setCode(int code) {
+        this.code = code;
+    }
 }

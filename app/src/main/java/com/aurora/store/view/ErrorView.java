@@ -81,7 +81,7 @@ public class ErrorView extends RelativeLayout {
                 imgError.setImageDrawable(context.getDrawable(R.drawable.ic_unknown));
                 txtError.setText(R.string.error_unknown);
                 break;
-            case MALFORMED:
+            case APP_NOT_FOUND:
                 imgError.setImageDrawable(context.getDrawable(R.drawable.ic_unknown));
                 txtError.setText(R.string.error_app_not_found);
                 btnError.setText(R.string.action_close);
