@@ -139,7 +139,7 @@ public class BlacklistFragment extends BaseFragment implements BlacklistAdapter.
         final List<App> sortListedApps = new ArrayList<>();
 
         //Sort Apps by Names
-        Collections.sort(appList, (App1, App2) -> App1.getDisplayName().compareTo(App2.getDisplayName()));
+        Collections.sort(appList, (App1, App2) -> App1.getDisplayName().compareToIgnoreCase(App2.getDisplayName()));
 
         //Sort Apps by blacklist status
         for (App app : appList) {

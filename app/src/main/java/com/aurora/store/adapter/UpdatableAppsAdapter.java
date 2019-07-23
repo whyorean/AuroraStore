@@ -96,7 +96,7 @@ public class UpdatableAppsAdapter extends RecyclerView.Adapter<UpdatableAppsAdap
         this.appList.clear();
         this.appList = appList;
         Collections.sort(appList, (App1, App2) ->
-                App1.getDisplayName().compareTo(App2.getDisplayName()));
+                App1.getDisplayName().compareToIgnoreCase(App2.getDisplayName()));
         notifyDataSetChanged();
     }
 

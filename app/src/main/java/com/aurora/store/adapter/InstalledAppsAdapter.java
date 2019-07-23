@@ -97,7 +97,7 @@ public class InstalledAppsAdapter extends RecyclerView.Adapter<InstalledAppsAdap
         this.appList = appList;
         if (listType == ListType.INSTALLED || listType == ListType.UPDATES)
             Collections.sort(appList, (App1, App2) ->
-                    App1.getDisplayName().compareTo(App2.getDisplayName()));
+                    App1.getDisplayName().compareToIgnoreCase(App2.getDisplayName()));
         notifyDataSetChanged();
     }
 

@@ -55,7 +55,7 @@ public class FavouriteAppsAdapter extends RecyclerView.Adapter {
         manager = new FavouriteListManager(context);
         appList.addAll(appsToAdd);
         Collections.sort(appsToAdd, (App1, App2) ->
-                App1.getDisplayName().compareTo(App2.getDisplayName()));
+                App1.getDisplayName().compareToIgnoreCase(App2.getDisplayName()));
     }
 
     public void add(int position, App app) {
