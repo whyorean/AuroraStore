@@ -21,6 +21,14 @@
 <resources>
     <string name="app_log" translatable="false">
 
+        \n Changelog : v3.0.7
+        \n • Added option to use custom token dispensers (Settings->Network)
+        \n • Added new dummy accounts and dispenser
+        \n • Added support for Aurora Services
+        \n • Added option to view AppInfo from list menu
+        \n • Zip the splits to backup bundled apps
+        \n • Bug fixes and improvements
+        \n
         \n Changelog : v3.0.6
         \n • Improved legacy card style
         \n • Added support for TV
