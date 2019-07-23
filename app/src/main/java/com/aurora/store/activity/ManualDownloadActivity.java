@@ -27,8 +27,10 @@ import android.text.TextWatcher;
 import android.text.format.Formatter;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -36,10 +38,12 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.aurora.store.R;
 import com.aurora.store.fragment.DetailsFragment;
-import com.aurora.store.fragment.details.ActionButton;
 import com.aurora.store.manager.CategoryManager;
 import com.aurora.store.model.App;
 import com.aurora.store.model.ImageSource;
+import com.aurora.store.task.DeliveryData;
+import com.aurora.store.task.LiveUpdate;
+import com.aurora.store.utility.ContextUtil;
 import com.aurora.store.utility.Log;
 import com.aurora.store.utility.TextUtil;
 import com.aurora.store.utility.ThemeUtil;
@@ -55,6 +59,10 @@ import com.google.android.material.textfield.TextInputLayout;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import io.reactivex.Observable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.schedulers.Schedulers;
 
 public class ManualDownloadActivity extends AppCompatActivity {
 
@@ -65,14 +73,15 @@ public class ManualDownloadActivity extends AppCompatActivity {
     @BindView(R.id.versionString)
     TextView app_version;
     @BindView(R.id.edit_text_layout)
-    TextInputLayout mInputLayout;
+    TextInputLayout inputLayout;
     @BindView(R.id.edit_text)
-    TextInputEditText mEditText;
+    TextInputEditText editText;
+    @BindView(R.id.btn_positive)
+    Button btnPositive;
 
     private ThemeUtil themeUtil = new ThemeUtil();
-    private ActionBar actionBar;
-    private ActionButton actionButton;
     private App app;
+    private CompositeDisposable disposable = new CompositeDisposable();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,7 +92,7 @@ public class ManualDownloadActivity extends AppCompatActivity {
 
         setSupportActionBar(mToolbar);
 
-        actionBar = getSupportActionBar();
+        ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setTitle(getString(R.string.action_manual));
             actionBar.setDisplayHomeAsUpEnabled(true);
@@ -107,8 +116,6 @@ public class ManualDownloadActivity extends AppCompatActivity {
     public void onResume() {
         super.onResume();
         themeUtil.onResume(this);
-        if (actionButton != null)
-            actionButton.draw();
     }
 
     private void drawAppBadge() {
@@ -133,6 +140,7 @@ public class ManualDownloadActivity extends AppCompatActivity {
         drawVersion();
         drawGeneralDetails();
         drawEditText();
+        btnPositive.setOnClickListener(view -> downloadListener());
     }
 
     private void drawVersion() {
@@ -166,10 +174,8 @@ public class ManualDownloadActivity extends AppCompatActivity {
     }
 
     private void drawEditText() {
-        mInputLayout.setHint(String.valueOf(app.getVersionCode()));
-        actionButton = new ActionButton(this, app);
-        actionButton.draw();
-        mEditText.addTextChangedListener(new TextWatcher() {
+        inputLayout.setHint(String.valueOf(app.getVersionCode()));
+        editText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -179,7 +185,6 @@ public class ManualDownloadActivity extends AppCompatActivity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 try {
                     app.setVersionCode(Integer.parseInt(s.toString()));
-                    actionButton.setApp(app);
                 } catch (NumberFormatException e) {
                     Log.w("%s is not a number", s.toString());
                 }
@@ -190,6 +195,26 @@ public class ManualDownloadActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void downloadListener() {
+        disposable.add(Observable.fromCallable(() -> new DeliveryData(this)
+                .getDeliveryData(app))
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnSubscribe(di -> ContextUtil.runOnUiThread(() -> {
+                    btnPositive.setEnabled(false);
+                    btnPositive.setText(getString(R.string.download_progress));
+                }))
+                .doOnTerminate(() -> ContextUtil.runOnUiThread(() -> {
+                    btnPositive.setEnabled(true);
+                    btnPositive.setText(getString(R.string.details_download));
+                }))
+                .subscribe(androidAppDeliveryData -> {
+                    new LiveUpdate(this).enqueueUpdate(app, androidAppDeliveryData);
+                }, err -> runOnUiThread(() -> {
+                    Toast.makeText(this, "Failed to download specified build", Toast.LENGTH_SHORT).show();
+                })));
     }
 
     protected void setText(int viewId, String text) {
