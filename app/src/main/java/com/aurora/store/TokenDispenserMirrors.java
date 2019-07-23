@@ -23,6 +23,10 @@
 
 package com.aurora.store;
 
+import android.content.Context;
+
+import com.aurora.store.utility.Util;
+
 import java.util.Random;
 
 public class TokenDispenserMirrors {
@@ -33,7 +37,10 @@ public class TokenDispenserMirrors {
             "http://www.auroraoss.com:2095"
     };
 
-    public String get() {
-        return mirrors[new Random().nextInt(mirrors.length)];
+    public String get(Context context) {
+        if (Util.isCustomTokenizerEnabled(context))
+            return Util.getCustomTokenizerURL(context);
+        else
+            return mirrors[new Random().nextInt(mirrors.length)];
     }
 }

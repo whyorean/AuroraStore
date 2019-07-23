@@ -45,4 +45,14 @@
         android:key="PREFERENCE_PROXY_PORT"
         android:title="@string/pref_proxy_port"
         app:useSimpleSummaryProvider="true" />
+    <SwitchPreferenceCompat
+        android:key="PREFERENCE_ENABLE_CUSTOM_TOKENIZER"
+        android:title="@string/pref_custom_tokenizer"
+        app:defaultValue="false" />
+    <EditTextPreference
+        android:defaultValue="http://www.auroraoss.com:8080"
+        android:dependency="PREFERENCE_ENABLE_CUSTOM_TOKENIZER"
+        android:key="PREFERENCE_CUSTOM_TOKENIZER"
+        android:title="@string/pref_custom_tokenizer_url"
+        app:useSimpleSummaryProvider="true" />
 </androidx.preference.PreferenceScreen>

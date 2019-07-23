@@ -34,7 +34,6 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.ViewSwitcher;
 
 import androidx.annotation.NonNull;
@@ -50,12 +49,14 @@ import com.aurora.store.api.PlayStoreApiAuthenticator;
 import com.aurora.store.events.Event;
 import com.aurora.store.events.Events;
 import com.aurora.store.events.RxBus;
+import com.aurora.store.exception.TokenizerException;
 import com.aurora.store.task.UserProfiler;
 import com.aurora.store.utility.Accountant;
 import com.aurora.store.utility.ContextUtil;
 import com.aurora.store.utility.Log;
 import com.aurora.store.utility.PrefUtil;
 import com.aurora.store.utility.ViewUtil;
+import com.dragons.aurora.playstoreapiv2.ApiBuilderException;
 import com.dragons.aurora.playstoreapiv2.AuthException;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 import com.dragons.aurora.playstoreapiv2.Image;
@@ -312,11 +313,14 @@ public class AccountsFragment extends Fragment {
                     }
                 }, err -> {
                     String error = err.getMessage();
-                    ContextUtil.runOnUiThread(() -> {
-                        Toast.makeText(context, error, Toast.LENGTH_SHORT).show();
-                        init();
-                    });
-                    Log.e(error);
+                    if (err instanceof ApiBuilderException || err instanceof NullPointerException) {
+                        error = "Invalid token dispenser url is provided";
+                    } else if (err instanceof TokenizerException) {
+                        error = "Anonymous login failed,try again later!";
+                    }
+                    ContextUtil.toastLong(context, error);
+                    ContextUtil.runOnUiThread(this::init);
+                    Log.e(err.getMessage());
                 }));
     }
 

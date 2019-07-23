@@ -351,6 +351,14 @@ public class Util {
         return installMethod.equals("1");
     }
 
+    public static boolean isCustomTokenizerEnabled(Context context) {
+        return getPrefs(context).getBoolean(Constants.PREFERENCE_ENABLE_CUSTOM_TOKENIZER, false);
+    }
+
+    public static String getCustomTokenizerURL(Context context) {
+        return getPrefs(context).getString(Constants.PREFERENCE_CUSTOM_TOKENIZER, "");
+    }
+
     public static Proxy.Type getProxyType(Context context) {
         String proxyType = getPrefs(context).getString(Constants.PREFERENCE_PROXY_TYPE, "HTTP");
         switch (proxyType) {

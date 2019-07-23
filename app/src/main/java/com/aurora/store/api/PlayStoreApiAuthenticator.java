@@ -174,7 +174,7 @@ public class PlayStoreApiAuthenticator {
                     throw (IOException) e.getCause();
                 }
                 if (loginInfo.appProvidedEmail()) {
-                    loginInfo.setTokenDispenserUrl(tokenDispenserMirrors.get());
+                    loginInfo.setTokenDispenserUrl(tokenDispenserMirrors.get(context));
                     loginInfo.setEmail(null);
                     loginInfo.setGsfId(null);
                 }
@@ -194,7 +194,7 @@ public class PlayStoreApiAuthenticator {
         loginInfo.setLocale(TextUtils.isEmpty(locale) ? Locale.getDefault().toString() : locale);
         loginInfo.setGsfId(prefs.getString(Accountant.GSF_ID, ""));
         loginInfo.setToken(prefs.getString(Accountant.AUTH_TOKEN, ""));
-        loginInfo.setTokenDispenserUrl(tokenDispenserMirrors.get());
+        loginInfo.setTokenDispenserUrl(tokenDispenserMirrors.get(context));
 
         return new PlayStoreApiBuilder()
                 .setHttpClient(new OkHttpClientAdapter(context))
