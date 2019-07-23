@@ -34,6 +34,7 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ViewSwitcher;
 
 import androidx.annotation.NonNull;
@@ -51,6 +52,7 @@ import com.aurora.store.events.Events;
 import com.aurora.store.events.RxBus;
 import com.aurora.store.task.UserProfiler;
 import com.aurora.store.utility.Accountant;
+import com.aurora.store.utility.ContextUtil;
 import com.aurora.store.utility.Log;
 import com.aurora.store.utility.PrefUtil;
 import com.aurora.store.utility.ViewUtil;
@@ -309,8 +311,12 @@ public class AccountsFragment extends Fragment {
                         switchButtonState(false);
                     }
                 }, err -> {
-                    Log.e("Dummy Login failed %s", err.getMessage());
-                    switchButtonState(false);
+                    String error = err.getMessage();
+                    ContextUtil.runOnUiThread(() -> {
+                        Toast.makeText(context, error, Toast.LENGTH_SHORT).show();
+                        init();
+                    });
+                    Log.e(error);
                 }));
     }
 

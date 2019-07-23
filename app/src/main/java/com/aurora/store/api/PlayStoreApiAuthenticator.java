@@ -26,16 +26,20 @@ package com.aurora.store.api;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.text.TextUtils;
+import android.widget.Toast;
 
 import com.aurora.store.Constants;
+import com.aurora.store.R;
 import com.aurora.store.TokenDispenserMirrors;
 import com.aurora.store.adapter.OkHttpClientAdapter;
 import com.aurora.store.exception.CredentialsEmptyException;
+import com.aurora.store.exception.TokenizerException;
 import com.aurora.store.manager.LocaleManager;
 import com.aurora.store.manager.SpoofManager;
 import com.aurora.store.model.LoginInfo;
 import com.aurora.store.provider.NativeDeviceInfoProvider;
 import com.aurora.store.utility.Accountant;
+import com.aurora.store.utility.ContextUtil;
 import com.aurora.store.utility.Log;
 import com.aurora.store.utility.PrefUtil;
 import com.aurora.store.utility.Util;
@@ -53,7 +57,6 @@ import java.util.Locale;
 public class PlayStoreApiAuthenticator {
 
     private static final int RETRIES = 5;
-    private static final String tokenDispenserURL = "http://www.auroraoss.com:8080";
     private static TokenDispenserMirrors tokenDispenserMirrors = new TokenDispenserMirrors();
     private volatile static GooglePlayAPI api;
 
@@ -76,9 +79,9 @@ public class PlayStoreApiAuthenticator {
         LoginInfo loginInfo = new LoginInfo();
         api = build(loginInfo);
         Util
-                .getPrefs(context.getApplicationContext())
-                .edit()
+                .getPrefs(context.getApplicationContext()).edit()
                 .putBoolean(Accountant.DUMMY_ACCOUNT, true)
+                .putString(Accountant.ACCOUNT_EMAIL, loginInfo.getEmail())
                 .putString(Accountant.LAST_USED_TOKEN_DISPENSER, loginInfo.getTokenDispenserUrl())
                 .apply();
         return api != null;
@@ -141,10 +144,15 @@ public class PlayStoreApiAuthenticator {
     }
 
     private GooglePlayAPI build(LoginInfo loginInfo) throws IOException {
-        api = build(loginInfo, RETRIES);
-        loginInfo.setGsfId(api.getGsfId());
-        loginInfo.setToken(api.getToken());
-        save(loginInfo);
+        GooglePlayAPI api = build(loginInfo, RETRIES);
+        if (api != null) {
+            loginInfo.setGsfId(api.getGsfId());
+            loginInfo.setToken(api.getToken());
+            loginInfo.setDfeCookie(api.getDfeCookie());
+            loginInfo.setDeviceConfigToken(api.getDeviceConfigToken());
+            loginInfo.setDeviceCheckinConsistencyToken(api.getDeviceCheckinConsistencyToken());
+            saveLoginInfo(loginInfo);
+        }
         return api;
     }
 
@@ -160,26 +168,34 @@ public class PlayStoreApiAuthenticator {
                 throw new RuntimeException(e);
             } catch (AuthException | TokenDispenserException e) {
                 if (Util.noNetwork(e.getCause())) {
+                    ContextUtil.runOnUiThread(() -> Toast.makeText(context,
+                            context.getString(R.string.error_no_network),
+                            Toast.LENGTH_LONG).show());
                     throw (IOException) e.getCause();
                 }
-                loginInfo.setTokenDispenserUrl(null);
-                prefs = Util.getPrefs(context.getApplicationContext());
-                if (prefs.getBoolean(Accountant.DUMMY_ACCOUNT, false)) {
+                if (loginInfo.appProvidedEmail()) {
+                    loginInfo.setTokenDispenserUrl(tokenDispenserMirrors.get());
                     loginInfo.setEmail(null);
-                    prefs.edit().remove(Accountant.GSF_ID).apply();
+                    loginInfo.setGsfId(null);
                 }
                 tried++;
                 if (tried >= retries) {
-                    throw e;
+                    throw new TokenizerException("Anonymous login failed, try again later.", e.getCause());
                 }
-                Log.i("Login errRetry : " + tried);
+                Log.i("Anonymous Login Failed @ %s, attempt %d",
+                        loginInfo.getTokenDispenserUrl(), tried);
             }
         }
         return null;
     }
 
     private PlayStoreApiBuilder getBuilder(LoginInfo loginInfo) {
-        fill(loginInfo);
+        String locale = prefs.getString(Constants.PREFERENCE_REQUESTED_LANGUAGE, "");
+        loginInfo.setLocale(TextUtils.isEmpty(locale) ? Locale.getDefault().toString() : locale);
+        loginInfo.setGsfId(prefs.getString(Accountant.GSF_ID, ""));
+        loginInfo.setToken(prefs.getString(Accountant.AUTH_TOKEN, ""));
+        loginInfo.setTokenDispenserUrl(tokenDispenserMirrors.get());
+
         return new PlayStoreApiBuilder()
                 .setHttpClient(new OkHttpClientAdapter(context))
                 .setDeviceInfoProvider(getDeviceInfoProvider())
@@ -188,7 +204,10 @@ public class PlayStoreApiAuthenticator {
                 .setPassword(loginInfo.getPassword())
                 .setGsfId(loginInfo.getGsfId())
                 .setToken(loginInfo.getToken())
-                .setTokenDispenserUrl(loginInfo.getTokenDispenserUrl());
+                .setTokenDispenserUrl(loginInfo.getTokenDispenserUrl())
+                .setDeviceCheckinConsistencyToken(loginInfo.getDeviceCheckinConsistencyToken())
+                .setDeviceConfigToken(loginInfo.getDeviceConfigToken())
+                .setDfeCookie(loginInfo.getDfeCookie());
     }
 
     private DeviceInfoProvider getDeviceInfoProvider() {
@@ -206,24 +225,13 @@ public class PlayStoreApiAuthenticator {
         return deviceInfoProvider;
     }
 
-    private void fill(LoginInfo loginInfo) {
-        String locale = prefs.getString(Constants.PREFERENCE_REQUESTED_LANGUAGE, "");
-        loginInfo.setLocale(TextUtils.isEmpty(locale)
-                ? Locale.getDefault()
-                : new Locale(locale));
-        loginInfo.setGsfId(prefs.getString(Accountant.GSF_ID, ""));
-        loginInfo.setToken(prefs.getString(Accountant.AUTH_TOKEN, ""));
-        if (TextUtils.isEmpty(loginInfo.getTokenDispenserUrl())) {
-            loginInfo.setTokenDispenserUrl(tokenDispenserMirrors.get());
-        }
-    }
-
-    private void save(LoginInfo loginInfo) {
+    private void saveLoginInfo(LoginInfo loginInfo) {
         Util.getPrefs(context)
                 .edit()
                 .putString(Accountant.ACCOUNT_EMAIL, loginInfo.getEmail())
                 .putString(Accountant.GSF_ID, loginInfo.getGsfId())
                 .putString(Accountant.AUTH_TOKEN, loginInfo.getToken())
+                .putString(Accountant.LAST_USED_TOKEN_DISPENSER, loginInfo.getTokenDispenserUrl())
                 .apply();
     }
 }

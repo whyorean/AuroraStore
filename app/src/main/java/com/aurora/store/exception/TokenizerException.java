@@ -21,19 +21,21 @@
  *
  */
 
-package com.aurora.store;
+package com.aurora.store.exception;
 
-import java.util.Random;
+import java.io.IOException;
 
-public class TokenDispenserMirrors {
+public class TokenizerException extends IOException {
 
-    static private String[] mirrors = new String[]{
-            "http://www.auroraoss.com:8080",
-            "http://www.auroraoss.com:8880",
-            "http://www.auroraoss.com:2095"
-    };
+    public TokenizerException() {
+        super("TokenizerException");
+    }
 
-    public String get() {
-        return mirrors[new Random().nextInt(mirrors.length)];
+    public TokenizerException(String message) {
+        super(message);
+    }
+
+    public TokenizerException(String message, Throwable cause) {
+        super(message, cause);
     }
 }

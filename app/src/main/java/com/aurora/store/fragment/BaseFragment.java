@@ -44,6 +44,7 @@ import com.aurora.store.events.Event;
 import com.aurora.store.events.Events;
 import com.aurora.store.events.RxBus;
 import com.aurora.store.exception.CredentialsEmptyException;
+import com.aurora.store.exception.TokenizerException;
 import com.aurora.store.iterator.CustomAppListIterator;
 import com.aurora.store.utility.Accountant;
 import com.aurora.store.utility.ContextUtil;
@@ -198,7 +199,6 @@ public abstract class BaseFragment extends Fragment {
         Snackbar snackbar = Snackbar.make(coordinatorLayout, message, Snackbar.LENGTH_LONG);
         if (anchorView != null)
             snackbar.setAnchorView(anchorView);
-        snackbar.setAnchorView(anchorView);
         snackbar.show();
     }
 
@@ -317,7 +317,8 @@ public abstract class BaseFragment extends Fragment {
                         } else
                             Log.e("Anonymous Login Failed Permanently");
                     }, err -> {
-                        Log.e("Dummy Login failed %s", err.getMessage());
+                        ContextUtil.runOnUiThread(() -> notifyStatus(coordinatorLayout, bottomNavigationView, err.getMessage()));
+                        Log.e(err.getMessage());
                         AuroraApplication.setAnonymousLogging(false);
                     }));
     }
