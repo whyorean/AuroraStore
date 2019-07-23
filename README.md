@@ -143,9 +143,9 @@ While *Aurora Store* was originally based on Sergei Yeriomin's [Yalp store](http
   
   Get Aurora Services from [here](https://gitlab.com/AuroraOSS/AuroraServices)
 
-* <b>How to give *Aurora Store*/*Services* system permissions?</b>
+* <b>How to give *Aurora Services* system permissions?</b>
 
-  You need to either manually push the APKs to `/system/priv-app`, or install the [Magisk](https://forum.xda-developers.com/apps/magisk/official-magisk-v7-universal-systemless-t3473445) module from the group.
+  You need to either manually push the APKs to `/system/priv-app`, or install the Magisk module from the [Telegram Group](https://t.me/AuroraSupport), will also attach the same in future release tags (>3.0.7)
 
 * <b>Can Aurora Download and install Split or Bundled APKs?</b>
 
