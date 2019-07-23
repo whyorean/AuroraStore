@@ -140,8 +140,8 @@ While *Aurora Store* was originally based on Sergei Yeriomin's [Yalp store](http
   3. Open *Aurora Services*' settings and choose Aurora Services it as an install method.
 
   You don't need to give *Aurora Store* system or root grants; *Aurora Services* handles all install and uninstall requests in the background.
-
-  `NOTE: Aurora Services support has yet to be implemented in v3.`
+  
+  Get Aurora Services from [here](https://gitlab.com/AuroraOSS/AuroraServices)
 
 * <b>How to give *Aurora Store*/*Services* system permissions?</b>
 
