@@ -20,7 +20,13 @@
 
 package com.aurora.store;
 
+import android.annotation.SuppressLint;
 import android.app.Application;
+import android.content.IntentFilter;
+
+import com.aurora.store.installer.Installer;
+import com.aurora.store.installer.InstallerService;
+import com.aurora.store.installer.Uninstaller;
 
 import io.reactivex.plugins.RxJavaPlugins;
 
@@ -28,6 +34,19 @@ public class AuroraApplication extends Application {
 
     public static boolean tokenRefreshing = false;
     public static boolean anonymousLogging = false;
+
+    @SuppressLint("StaticFieldLeak")
+    public static Installer installer;
+    @SuppressLint("StaticFieldLeak")
+    public static Uninstaller uninstaller;
+
+    public static Installer getInstaller() {
+        return installer;
+    }
+
+    public static Uninstaller getUninstaller() {
+        return uninstaller;
+    }
 
     public static boolean isAnonymousLogging() {
         return anonymousLogging;
@@ -48,7 +67,20 @@ public class AuroraApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        installer = new Installer(this);
+        uninstaller = new Uninstaller(this);
+        registerReceiver(installer.getPackageInstaller().getBroadcastReceiver(),
+                new IntentFilter(InstallerService.ACTION_INSTALLATION_STATUS_NOTIFICATION));
         RxJavaPlugins.setErrorHandler(err -> {
         });
+    }
+
+    @Override
+    public void onTerminate() {
+        super.onTerminate();
+        try {
+            unregisterReceiver(installer.getPackageInstaller().getBroadcastReceiver());
+        } catch (Exception ignored) {
+        }
     }
 }

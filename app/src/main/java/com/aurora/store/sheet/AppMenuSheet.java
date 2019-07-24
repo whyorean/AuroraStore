@@ -35,12 +35,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.aurora.store.AuroraApplication;
 import com.aurora.store.R;
 import com.aurora.store.activity.ManualDownloadActivity;
 import com.aurora.store.adapter.InstalledAppsAdapter;
 import com.aurora.store.adapter.UpdatableAppsAdapter;
 import com.aurora.store.fragment.DetailsFragment;
-import com.aurora.store.installer.Installer;
 import com.aurora.store.manager.BlacklistManager;
 import com.aurora.store.manager.FavouriteListManager;
 import com.aurora.store.model.App;
@@ -168,7 +168,7 @@ public class AppMenuSheet extends CustomBottomSheetDialogFragment {
         });
 
         btnUninstall.setOnClickListener(v -> {
-            new Installer(context).uninstall(app);
+            AuroraApplication.getUninstaller().uninstall(app);
             dismissAllowingStateLoss();
         });
 

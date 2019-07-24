@@ -43,12 +43,24 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SplitInstallerPrivileged extends SplitPackageInstallerAbstract {
+public class AppInstallerPrivileged extends AppInstallerAbstract {
 
     private static final int ACTION_INSTALL_REPLACE_EXISTING = 2;
 
-    public SplitInstallerPrivileged(Context context) {
+    private static AppInstallerPrivileged instance;
+
+    AppInstallerPrivileged(Context context) {
         super(context);
+        instance = this;
+    }
+
+    public static AppInstallerPrivileged getInstance(Context context) {
+        if (instance == null) {
+            synchronized (AppInstaller.class) {
+                if (instance == null) instance = new AppInstallerPrivileged(context);
+            }
+        }
+        return instance;
     }
 
     public static boolean isServiceOnline(Context context) {
@@ -83,13 +95,14 @@ public class SplitInstallerPrivileged extends SplitPackageInstallerAbstract {
         for (File file : apkFiles) {
             uriList.add(Uri.parse(file.getPath()));
         }
-        ServiceConnection mServiceConnection = new ServiceConnection() {
+
+        ServiceConnection serviceConnection = new ServiceConnection() {
             public void onServiceConnected(ComponentName name, IBinder binder) {
                 IPrivilegedService service = IPrivilegedService.Stub.asInterface(binder);
                 IPrivilegedCallback callback = new IPrivilegedCallback.Stub() {
                     @Override
                     public void handleResult(String packageName, int returnCode) {
-                        Log.i(getClass().getSimpleName(), "Installation of " + packageName + " complete with code " + returnCode);
+                        dispatchSessionUpdate(returnCode, packageName);
                     }
                 };
                 try {
@@ -111,7 +124,7 @@ public class SplitInstallerPrivileged extends SplitPackageInstallerAbstract {
 
         Intent serviceIntent = new Intent(Constants.PRIVILEGED_EXTENSION_SERVICE_INTENT);
         serviceIntent.setPackage(Constants.PRIVILEGED_EXTENSION_PACKAGE_NAME);
-        getContext().getApplicationContext().bindService(serviceIntent, mServiceConnection, Context.BIND_AUTO_CREATE);
+        getContext().getApplicationContext().bindService(serviceIntent, serviceConnection, Context.BIND_AUTO_CREATE);
     }
 
     private void showDisconnectedServicesDialog() {

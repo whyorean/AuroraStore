@@ -27,11 +27,11 @@ import com.aurora.store.model.App;
 import com.aurora.store.utility.Log;
 import com.aurora.store.utility.Root;
 
-public class PackageUninstallerRooted {
+public class AppUninstallerRooted {
 
     private Root root;
 
-    public PackageUninstallerRooted() {
+    public AppUninstallerRooted() {
         root = new Root();
     }
 

@@ -2,9 +2,9 @@ package com.aurora.store.task;
 
 import android.content.Context;
 
+import com.aurora.store.AuroraApplication;
 import com.aurora.store.download.DownloadManager;
 import com.aurora.store.download.RequestBuilder;
-import com.aurora.store.installer.Installer;
 import com.aurora.store.model.App;
 import com.aurora.store.notification.GeneralNotification;
 import com.aurora.store.utility.Log;
@@ -109,7 +109,7 @@ public class LiveUpdate extends BaseTask {
             public void onCompleted(int groupId, @NotNull Download download, @NotNull FetchGroup fetchGroup) {
                 if (groupId == hashCode && fetchGroup.getGroupDownloadProgress() == 100) {
                     notification.notifyCompleted();
-                    new Installer(context).install(app);
+                    AuroraApplication.getInstaller().install(app);
                     if (fetchListener != null) {
                         fetch.removeListener(fetchListener);
                         fetchListener = null;

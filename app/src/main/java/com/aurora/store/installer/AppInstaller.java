@@ -26,8 +26,8 @@ package com.aurora.store.installer;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageInstaller;
-import android.util.Log;
+
+import com.aurora.store.utility.Log;
 
 import org.apache.commons.io.IOUtils;
 
@@ -37,22 +37,32 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.List;
 
-import static com.aurora.store.Constants.TAG;
+public class AppInstaller extends AppInstallerAbstract {
 
-public class SplitPackageInstaller extends SplitPackageInstallerAbstract {
+    private static AppInstaller instance;
 
-    public SplitPackageInstaller(Context context) {
+    AppInstaller(Context context) {
         super(context);
+        instance = this;
+    }
+
+    public static AppInstaller getInstance(Context context) {
+        if (instance == null) {
+            synchronized (AppInstaller.class) {
+                if (instance == null) instance = new AppInstaller(context);
+            }
+        }
+        return instance;
     }
 
     @Override
     protected void installApkFiles(List<File> apkFiles) {
-        PackageInstaller packageInstaller = getContext().getPackageManager().getPackageInstaller();
+        android.content.pm.PackageInstaller packageInstaller = getContext().getPackageManager().getPackageInstaller();
         try {
-            PackageInstaller.SessionParams sessionParams =
-                    new PackageInstaller.SessionParams(PackageInstaller.SessionParams.MODE_FULL_INSTALL);
+            android.content.pm.PackageInstaller.SessionParams sessionParams =
+                    new android.content.pm.PackageInstaller.SessionParams(android.content.pm.PackageInstaller.SessionParams.MODE_FULL_INSTALL);
             int sessionID = packageInstaller.createSession(sessionParams);
-            PackageInstaller.Session session = packageInstaller.openSession(sessionID);
+            android.content.pm.PackageInstaller.Session session = packageInstaller.openSession(sessionID);
             for (File apkFile : apkFiles) {
                 InputStream inputStream = new FileInputStream(apkFile);
                 OutputStream outputStream = session.openWrite(apkFile.getName(), 0, apkFile.length());
@@ -61,12 +71,17 @@ public class SplitPackageInstaller extends SplitPackageInstallerAbstract {
                 inputStream.close();
                 outputStream.close();
             }
-            Intent callbackIntent = new Intent(getContext(), SplitService.class);
-            PendingIntent pendingIntent = PendingIntent.getService(getContext(), sessionID, callbackIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+            Intent callbackIntent = new Intent(getContext(), InstallerService.class);
+            PendingIntent pendingIntent = PendingIntent.getService(
+                    getContext(),
+                    sessionID,
+                    callbackIntent,
+                    PendingIntent.FLAG_UPDATE_CURRENT);
             session.commit(pendingIntent.getIntentSender());
             session.close();
+
         } catch (Exception e) {
-            Log.w(TAG, e);
+            Log.w(e.getMessage());
         }
     }
 }
