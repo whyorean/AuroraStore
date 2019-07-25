@@ -52,7 +52,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
 
 public class DevAppsFragment extends BaseFragment {
@@ -126,7 +125,7 @@ public class DevAppsFragment extends BaseFragment {
                         if (shouldIterate) {
                             addApps(appList);
                         } else if (appList.isEmpty()) {
-                            setErrorView(ErrorType.NO_SEARCH);
+                            setErrorView(ErrorType.NO_SEARCH_RESULT);
                             switchViews(true);
                         } else {
                             switchViews(false);

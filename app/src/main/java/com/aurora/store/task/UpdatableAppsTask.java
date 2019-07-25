@@ -25,10 +25,12 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.text.TextUtils;
 
+import com.aurora.store.exception.MalformedRequestException;
 import com.aurora.store.manager.BlacklistManager;
 import com.aurora.store.model.App;
 import com.aurora.store.model.AppBuilder;
 import com.aurora.store.utility.Accountant;
+import com.aurora.store.utility.Log;
 import com.aurora.store.utility.PackageUtil;
 import com.dragons.aurora.playstoreapiv2.BulkDetailsEntry;
 
@@ -75,13 +77,21 @@ public class UpdatableAppsTask extends AllAppsTask {
 
     private List<App> getRemoteAppList(List<String> packageNames) throws IOException {
         final List<App> appList = new ArrayList<>();
-        final List<BulkDetailsEntry> bulkDetailsEntries = getApi().bulkDetails(packageNames).getEntryList();
-        for (BulkDetailsEntry bulkDetailsEntry : bulkDetailsEntries) {
-            if (!bulkDetailsEntry.hasDoc()) {
-                continue;
+        try {
+            final List<BulkDetailsEntry> bulkDetailsEntries = getApi().bulkDetails(packageNames).getEntryList();
+            for (BulkDetailsEntry bulkDetailsEntry : bulkDetailsEntries) {
+                if (!bulkDetailsEntry.hasDoc()) {
+                    continue;
+                }
+                appList.add(AppBuilder.build(bulkDetailsEntry.getDoc()));
             }
-            appList.add(AppBuilder.build(bulkDetailsEntry.getDoc()));
+        } catch (Exception e) {
+            if (e instanceof MalformedRequestException) {
+                Log.e("Malformed Request : %s", e.getMessage());
+            } else
+                throw e;
         }
+
         return appList;
     }
 

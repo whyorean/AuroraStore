@@ -101,6 +101,11 @@ public class InstalledAppsAdapter extends RecyclerView.Adapter<InstalledAppsAdap
         notifyDataSetChanged();
     }
 
+    public void clearData(){
+        appList.clear();
+        notifyDataSetChanged();
+    }
+
     public boolean isDataEmpty() {
         return appList.isEmpty();
     }

@@ -20,21 +20,21 @@
 
 package com.aurora.store.fragment;
 
+import android.app.SearchManager;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.res.ColorStateList;
+import android.database.Cursor;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.AnimationUtils;
-import android.view.inputmethod.EditorInfo;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.SearchView;
 import androidx.core.graphics.ColorUtils;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -44,6 +44,7 @@ import com.aurora.store.ErrorType;
 import com.aurora.store.Filter;
 import com.aurora.store.R;
 import com.aurora.store.activity.AuroraActivity;
+import com.aurora.store.activity.DetailsActivity;
 import com.aurora.store.adapter.EndlessAppsAdapter;
 import com.aurora.store.model.App;
 import com.aurora.store.sheet.FilterBottomSheet;
@@ -53,14 +54,16 @@ import com.aurora.store.utility.NetworkUtil;
 import com.aurora.store.utility.Util;
 import com.aurora.store.utility.ViewUtil;
 import com.bumptech.glide.Glide;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
+
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+import java.util.regex.Pattern;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -72,20 +75,17 @@ public class SearchAppsFragment extends BaseFragment {
 
     @BindView(R.id.search_apps_list)
     RecyclerView recyclerView;
+    @BindView(R.id.search_apps)
+    SearchView searchView;
     @BindView(R.id.filter_fab)
-    FloatingActionButton filterFab;
-    @BindView(R.id.searchQuery)
-    EditText searchQuery;
+    ExtendedFloatingActionButton filterFab;
     @BindView(R.id.related_chip_group)
     ChipGroup relatedChipGroup;
-    @BindView(R.id.view_progress)
-    RelativeLayout layoutProgress;
 
     private Context context;
     private View view;
     private String query;
     private List<String> relatedTags = new ArrayList<>();
-    private BottomNavigationView bottomNavigationView;
     private EndlessAppsAdapter endlessAppsAdapter;
     private SearchTask searchTask;
 
@@ -94,7 +94,21 @@ public class SearchAppsFragment extends BaseFragment {
     }
 
     private void setQuery(String query) {
-        this.query = query;
+        if (looksLikeAPackageId(query)) {
+            context.startActivity(DetailsActivity.getDetailsIntent(getContext(), query));
+        } else {
+            this.query = query;
+            fetchSearchAppsList(false);
+        }
+    }
+
+    private boolean looksLikeAPackageId(String query) {
+        if (TextUtils.isEmpty(query)) {
+            return false;
+        }
+        String pattern = "([\\p{L}_$][\\p{L}\\p{N}_$]*\\.)+[\\p{L}_$][\\p{L}\\p{N}_$]*";
+        Pattern r = Pattern.compile(pattern);
+        return r.matcher(query).matches();
     }
 
     @Override
@@ -108,67 +122,89 @@ public class SearchAppsFragment extends BaseFragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_search_applist, container, false);
         ButterKnife.bind(this, view);
-        Bundle arguments = getArguments();
-        if (arguments != null) {
-            setQuery(arguments.getString("SearchQuery"));
-            searchQuery.setText(getQuery());
-        } else
-            Log.e("No category id provided");
         return view;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        setupQueryEdit();
-        setErrorView(ErrorType.UNKNOWN);
+        setErrorView(ErrorType.NO_SEARCH);
+        switchViews(true);
+        setupSearch();
         setupRecycler();
-        if (getActivity() instanceof AuroraActivity) {
-            bottomNavigationView = ((AuroraActivity) getActivity()).getBottomNavigation();
-            setBaseBottomNavigationView(bottomNavigationView);
-        }
-        if (bottomNavigationView != null)
-            ViewUtil.hideBottomNav(bottomNavigationView, true);
-        filterFab.show();
         filterFab.setOnClickListener(v -> getFilterDialog());
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        if (endlessAppsAdapter == null || endlessAppsAdapter.isDataEmpty())
-            fetchSearchAppsList(false);
+    }
+
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (isVisibleToUser) {
+            if (searchView != null && Util.isIMEEnabled(context))
+                searchView.requestFocus();
+        }
     }
 
     @Override
     public void onDestroy() {
         Glide.with(this).pauseAllRequests();
         disposable.dispose();
-        if (bottomNavigationView != null)
-            ViewUtil.showBottomNav(bottomNavigationView, true);
         if (Util.filterSearchNonPersistent(context))
             new Filter(context).resetFilterPreferences();
         super.onDestroy();
     }
 
-    private void setupQueryEdit() {
-        searchQuery.setOnFocusChangeListener((v, hasFocus) -> {
-            if (hasFocus)
-                searchQuery.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_search, 0);
-            else
-                searchQuery.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_edit, 0);
-        });
-        searchQuery.setOnEditorActionListener((v, actionId, event) -> {
-            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
-                query = searchQuery.getText().toString();
-                fetchSearchAppsList(false);
-                searchQuery.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_edit, 0);
-                InputMethodManager imm = (InputMethodManager) v.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
-                imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
-                searchQuery.clearFocus();
+    private void setupSearch() {
+        SearchManager searchManager = (SearchManager) context.getSystemService(Context.SEARCH_SERVICE);
+        ComponentName componentName = getActivity().getComponentName();
+
+        if (null != searchManager && componentName != null) {
+            searchView.setSearchableInfo(searchManager.getSearchableInfo(componentName));
+        }
+
+        if (!StringUtils.isEmpty(AuroraActivity.externalQuery))
+            setQuery(AuroraActivity.externalQuery);
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextChange(String query) {
+                if (StringUtils.isEmpty(query)) {
+                    endlessAppsAdapter.clearData();
+                    switchViews(true);
+                    filterFab.hide();
+                }
                 return true;
-            } else
-                return false;
+            }
+
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                searchView.clearFocus();
+                setQuery(query);
+                return true;
+            }
+        });
+
+        searchView.setOnSuggestionListener(new SearchView.OnSuggestionListener() {
+            @Override
+            public boolean onSuggestionSelect(int position) {
+                return true;
+            }
+
+            @Override
+            public boolean onSuggestionClick(int position) {
+                Cursor cursor = searchView.getSuggestionsAdapter().getCursor();
+                cursor.moveToPosition(position);
+                if (position == 0) {
+                    searchView.setQuery(cursor.getString(2), true);
+                    searchView.setQuery(cursor.getString(1), false);
+                } else
+                    searchView.setQuery(cursor.getString(1), true);
+                setQuery(cursor.getString(0));
+                return true;
+            }
         });
     }
 
@@ -201,17 +237,17 @@ public class SearchAppsFragment extends BaseFragment {
         disposable.add(Observable.fromCallable(() -> searchTask.getSearchResults(iterator))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .doOnSubscribe(d -> ViewUtil.showWithAnimation(layoutProgress))
-                .doOnTerminate(() -> ViewUtil.hideWithAnimation(layoutProgress))
                 .subscribe(appList -> {
                     if (view != null) {
                         if (shouldIterate) {
                             addApps(appList);
                         } else if (appList.isEmpty() && endlessAppsAdapter.isDataEmpty()) {
-                            setErrorView(ErrorType.NO_SEARCH);
+                            filterFab.hide(true);
+                            setErrorView(ErrorType.NO_SEARCH_RESULT);
                             switchViews(true);
                         } else {
                             switchViews(false);
+                            filterFab.show(true);
                             if (endlessAppsAdapter != null)
                                 endlessAppsAdapter.addData(appList);
                             if (!relatedTags.isEmpty())
@@ -246,18 +282,16 @@ public class SearchAppsFragment extends BaseFragment {
     }
 
     private void setupRecycler() {
-        LinearLayoutManager mLayoutManager = new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false);
         endlessAppsAdapter = new EndlessAppsAdapter(context);
-        recyclerView.setLayoutManager(mLayoutManager);
-        recyclerView.setLayoutAnimation(AnimationUtils.loadLayoutAnimation(this.getActivity(), R.anim.anim_falldown));
+        recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(endlessAppsAdapter);
-        EndlessScrollListener endlessScrollListener = new EndlessScrollListener(mLayoutManager) {
+        recyclerView.addOnScrollListener(new EndlessScrollListener(layoutManager) {
             @Override
             public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
                 fetchSearchAppsList(true);
             }
-        };
-        recyclerView.addOnScrollListener(endlessScrollListener);
+        });
         recyclerView.setOnFlingListener(new RecyclerView.OnFlingListener() {
             @Override
             public boolean onFling(int velocityX, int velocityY) {
@@ -265,8 +299,6 @@ public class SearchAppsFragment extends BaseFragment {
                     filterFab.show();
                 } else if (velocityY > 0) {
                     filterFab.hide();
-                    if (bottomNavigationView != null)
-                        ViewUtil.hideBottomNav(bottomNavigationView, true);
                 }
                 return false;
             }
@@ -289,11 +321,9 @@ public class SearchAppsFragment extends BaseFragment {
                 if (chip.isChecked()) {
                     query = query + " " + tag;
                     fetchData();
-                    searchQuery.setText(query);
                 } else {
                     query = query.replace(tag, "");
                     fetchData();
-                    searchQuery.setText(query);
                 }
             });
             relatedChipGroup.addView(chip);
