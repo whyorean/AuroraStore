@@ -39,9 +39,9 @@ import com.aurora.store.adapter.SubCategoryAdapter;
 import com.aurora.store.sheet.FilterBottomSheet;
 import com.aurora.store.utility.Log;
 import com.aurora.store.utility.Util;
-import com.aurora.store.utility.ViewUtil;
 import com.bumptech.glide.Glide;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 
@@ -57,13 +57,12 @@ public class CategoryAppsFragment extends Fragment {
     @BindView(R.id.category_tabs)
     TabLayout tabLayout;
     @BindView(R.id.filter_fab)
-    FloatingActionButton filterFab;
+    ExtendedFloatingActionButton filterFab;
 
     private Context context;
-    private BottomNavigationView bottomNavigationView;
     private ActionBar actionBar;
 
-    public FloatingActionButton getFilterFab() {
+    public ExtendedFloatingActionButton getFilterFab() {
         return filterFab;
     }
 
@@ -99,10 +98,6 @@ public class CategoryAppsFragment extends Fragment {
         filterFab.setOnClickListener(v -> {
             getFilterDialog();
         });
-        if (getActivity() instanceof AuroraActivity) {
-            bottomNavigationView = ((AuroraActivity) getActivity()).getBottomNavigation();
-            ViewUtil.hideBottomNav(bottomNavigationView, true);
-        }
     }
 
     @Override
@@ -110,8 +105,6 @@ public class CategoryAppsFragment extends Fragment {
         Glide.with(this).pauseAllRequests();
         if (actionBar != null)
             actionBar.setTitle(getString(R.string.app_name));
-        if (bottomNavigationView != null)
-            ViewUtil.showBottomNav(bottomNavigationView, true);
         if (Util.filterSearchNonPersistent(context))
             new Filter(context).resetFilterPreferences();
         super.onDestroy();

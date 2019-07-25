@@ -54,18 +54,10 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <View
-                    android:id="@+id/gradient_view"
-                    android:layout_width="match_parent"
-                    android:layout_height="32dp"
-                    android:background="@drawable/gradient_bg"
-                    android:translationZ="10dp" />
-
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/search_apps_list"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="-32dp"
                     android:clipToPadding="false"
                     android:paddingTop="@dimen/margin_small"
                     android:scrollbarStyle="outsideOverlay"

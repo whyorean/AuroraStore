@@ -36,7 +36,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.aurora.store.ErrorType;
 import com.aurora.store.R;
 import com.aurora.store.SharedPreferencesTranslator;
-import com.aurora.store.activity.AuroraActivity;
 import com.aurora.store.adapter.FeaturedAppsAdapter;
 import com.aurora.store.adapter.TopCategoriesAdapter;
 import com.aurora.store.manager.CategoryManager;
@@ -46,7 +45,6 @@ import com.aurora.store.utility.ContextUtil;
 import com.aurora.store.utility.Log;
 import com.aurora.store.utility.Util;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.button.MaterialButton;
 
 import butterknife.BindView;
@@ -80,7 +78,6 @@ public class HomeFragment extends BaseFragment {
     private FeaturedAppsAdapter topAppsAdapter;
     private FeaturedAppsAdapter topGamesAdapter;
     private FeaturedAppsAdapter topFamilyAdapter;
-    private BottomNavigationView bottomNavigationView;
     private CategoryManager categoryManager;
     private FeaturedAppsTask featuredAppsTask;
     private SharedPreferencesTranslator translator;
@@ -119,10 +116,6 @@ public class HomeFragment extends BaseFragment {
         super.onViewCreated(view, savedInstanceState);
         setErrorView(ErrorType.UNKNOWN);
         init();
-        if (getActivity() instanceof AuroraActivity) {
-            bottomNavigationView = ((AuroraActivity) getActivity()).getBottomNavigation();
-            setBaseBottomNavigationView(bottomNavigationView);
-        }
     }
 
     @Override

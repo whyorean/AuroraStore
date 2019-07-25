@@ -37,7 +37,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.aurora.store.ErrorType;
 import com.aurora.store.R;
-import com.aurora.store.activity.AuroraActivity;
 import com.aurora.store.adapter.UpdatableAppsAdapter;
 import com.aurora.store.download.DownloadManager;
 import com.aurora.store.exception.MalformedRequestException;
@@ -50,7 +49,6 @@ import com.aurora.store.utility.ContextUtil;
 import com.aurora.store.utility.Log;
 import com.aurora.store.utility.ViewUtil;
 import com.aurora.store.view.CustomSwipeToRefresh;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.snackbar.Snackbar;
 import com.tonyodev.fetch2.Fetch;
 
@@ -80,7 +78,6 @@ public class UpdatesFragment extends BaseFragment {
     TextView txtUpdateAll;
 
     private Context context;
-    private BottomNavigationView bottomNavigationView;
     private View view;
     private List<App> updatableAppList = new ArrayList<>();
     private UpdatableAppsAdapter adapter;
@@ -110,10 +107,6 @@ public class UpdatesFragment extends BaseFragment {
         updatableAppTask = new UpdatableAppsTask(context);
         setErrorView(ErrorType.UNKNOWN);
         customSwipeToRefresh.setOnRefreshListener(() -> fetchData());
-        if (getActivity() instanceof AuroraActivity) {
-            bottomNavigationView = ((AuroraActivity) getActivity()).getBottomNavigation();
-            setBaseBottomNavigationView(bottomNavigationView);
-        }
         setupRecycler();
     }
 
@@ -168,19 +161,6 @@ public class UpdatesFragment extends BaseFragment {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(context, RecyclerView.VERTICAL, false));
         recyclerView.setLayoutAnimation(AnimationUtils.loadLayoutAnimation(context, R.anim.anim_falldown));
-        recyclerView.setOnFlingListener(new RecyclerView.OnFlingListener() {
-            @Override
-            public boolean onFling(int velocityX, int velocityY) {
-                if (velocityY < 0) {
-                    if (bottomNavigationView != null)
-                        ViewUtil.showBottomNav(bottomNavigationView, true);
-                } else if (velocityY > 0) {
-                    if (bottomNavigationView != null)
-                        ViewUtil.hideBottomNav(bottomNavigationView, true);
-                }
-                return false;
-            }
-        });
     }
 
     @Override
@@ -245,7 +225,7 @@ public class UpdatesFragment extends BaseFragment {
                 .doOnError(throwable -> {
                     if (throwable instanceof MalformedRequestException) {
                         ContextUtil.runOnUiThread(() -> btnUpdateAll.setOnClickListener(updateAllListener()));
-                        notifyStatusBlacklist(coordinatorLayout, bottomNavigationView, throwable.getMessage());
+                        notifyStatusBlacklist(coordinatorLayout, null, throwable.getMessage());
                     } else
                         Log.e(throwable.getMessage());
                 })

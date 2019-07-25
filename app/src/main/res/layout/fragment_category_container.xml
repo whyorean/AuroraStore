@@ -51,15 +51,18 @@
             android:layout_height="match_parent" />
     </LinearLayout>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/filter_fab"
-        style="@style/Widget.MaterialComponents.FloatingActionButton"
+        style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton.Icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="end|bottom"
+        android:layout_gravity="center_horizontal|bottom"
         android:layout_margin="@dimen/margin_normal"
-        app:fabSize="auto"
-        app:layout_anchorGravity="top|end"
-        app:srcCompat="@drawable/ic_filter" />
+        android:text="@string/action_filter"
+        android:textAppearance="@style/TextAppearance.Aurora.Button"
+        android:textColor="@color/colorWhite"
+        app:backgroundTint="@color/colorAccent"
+        app:icon="@drawable/ic_filter"
+        app:iconTint="@color/colorWhite" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -45,6 +45,7 @@ import com.aurora.store.task.CategoryAppsTask;
 import com.aurora.store.utility.ContextUtil;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 import com.dragons.aurora.playstoreapiv2.IteratorGooglePlayException;
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
@@ -61,7 +62,7 @@ public class TopFreeApps extends BaseFragment {
     @BindView(R.id.endless_apps_list)
     RecyclerView recyclerView;
     private Context context;
-    private FloatingActionButton filterFab;
+    private ExtendedFloatingActionButton filterFab;
     private EndlessAppsAdapter endlessAppsAdapter;
 
     public CustomAppListIterator getIterator() {

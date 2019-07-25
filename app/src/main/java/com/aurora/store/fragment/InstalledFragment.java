@@ -37,14 +37,11 @@ import com.aurora.store.Constants;
 import com.aurora.store.ErrorType;
 import com.aurora.store.ListType;
 import com.aurora.store.R;
-import com.aurora.store.activity.AuroraActivity;
 import com.aurora.store.adapter.InstalledAppsAdapter;
 import com.aurora.store.task.InstalledAppsTask;
 import com.aurora.store.utility.Log;
 import com.aurora.store.utility.PrefUtil;
-import com.aurora.store.utility.ViewUtil;
 import com.aurora.store.view.CustomSwipeToRefresh;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.switchmaterial.SwitchMaterial;
 
 import org.jetbrains.annotations.NotNull;
@@ -58,14 +55,13 @@ import io.reactivex.schedulers.Schedulers;
 public class InstalledFragment extends BaseFragment {
 
     @BindView(R.id.swipe_layout)
-    CustomSwipeToRefresh mSwipeRefreshLayout;
+    CustomSwipeToRefresh customSwipeToRefresh;
     @BindView(R.id.recycler)
     RecyclerView recyclerView;
     @BindView(R.id.switch_system)
     SwitchMaterial switchSystem;
 
     private Context context;
-    private BottomNavigationView bottomNavigationView;
     private View view;
     private InstalledAppsAdapter adapter;
     private InstalledAppsTask installedAppTask;
@@ -98,19 +94,14 @@ public class InstalledFragment extends BaseFragment {
             fetchData();
         });
 
-        mSwipeRefreshLayout.setOnRefreshListener(() -> fetchData());
-        if (getActivity() instanceof AuroraActivity) {
-            bottomNavigationView = ((AuroraActivity) getActivity()).getBottomNavigation();
-            setBaseBottomNavigationView(bottomNavigationView);
-        }
-
+        customSwipeToRefresh.setOnRefreshListener(() -> fetchData());
         setupRecycler();
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        mSwipeRefreshLayout.setRefreshing(false);
+        customSwipeToRefresh.setRefreshing(false);
     }
 
     @Override
@@ -134,8 +125,8 @@ public class InstalledFragment extends BaseFragment {
                 .getInstalledApps(switchSystem.isChecked()))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .doOnSubscribe(subscription -> mSwipeRefreshLayout.setRefreshing(true))
-                .doOnTerminate(() -> mSwipeRefreshLayout.setRefreshing(false))
+                .doOnSubscribe(subscription -> customSwipeToRefresh.setRefreshing(true))
+                .doOnTerminate(() -> customSwipeToRefresh.setRefreshing(false))
                 .subscribe((appList) -> {
                     if (view != null) {
                         if (appList.isEmpty()) {
@@ -158,19 +149,6 @@ public class InstalledFragment extends BaseFragment {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(context, RecyclerView.VERTICAL, false));
         recyclerView.setLayoutAnimation(AnimationUtils.loadLayoutAnimation(context, R.anim.anim_falldown));
-        recyclerView.setOnFlingListener(new RecyclerView.OnFlingListener() {
-            @Override
-            public boolean onFling(int velocityX, int velocityY) {
-                if (velocityY < 0) {
-                    if (bottomNavigationView != null)
-                        ViewUtil.showBottomNav(bottomNavigationView, true);
-                } else if (velocityY > 0) {
-                    if (bottomNavigationView != null)
-                        ViewUtil.hideBottomNav(bottomNavigationView, true);
-                }
-                return false;
-            }
-        });
     }
 
     @Override

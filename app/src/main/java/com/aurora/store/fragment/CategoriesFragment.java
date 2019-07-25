@@ -35,7 +35,6 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.aurora.store.R;
-import com.aurora.store.activity.AuroraActivity;
 import com.aurora.store.adapter.CategoriesListAdapter;
 import com.aurora.store.manager.CategoryManager;
 import com.aurora.store.task.CategoryList;
@@ -66,8 +65,6 @@ public class CategoriesFragment extends Fragment {
     private CategoryManager categoryManager;
     private CompositeDisposable disposable = new CompositeDisposable();
     private CategoriesListAdapter categoriesListAdapter;
-    private BottomNavigationView bottomNavigationView;
-    private ActionBar actionBar;
     private String categoryType = APPS;
 
     @Override
@@ -101,10 +98,6 @@ public class CategoriesFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        if (getActivity() instanceof AuroraActivity) {
-            bottomNavigationView = ((AuroraActivity) getActivity()).getBottomNavigation();
-            actionBar = ((AuroraActivity) getActivity()).getSupportActionBar();
-        }
     }
 
     @Override
@@ -117,10 +110,6 @@ public class CategoriesFragment extends Fragment {
     @Override
     public void onDestroy() {
         Glide.with(this).pauseAllRequests();
-        if (actionBar != null)
-            actionBar.setTitle(getString(R.string.app_name));
-        if (bottomNavigationView != null)
-            ViewUtil.showBottomNav(bottomNavigationView, true);
         super.onDestroy();
     }
 

@@ -68,30 +68,23 @@
                     android:layout_marginEnd="@dimen/margin_small"
                     android:maxLines="1"
                     android:text="@string/list_update_all" />
-
             </RelativeLayout>
-
-            <View
-                android:id="@+id/gradient_view"
-                android:layout_width="match_parent"
-                android:layout_height="32dp"
-                android:background="@drawable/gradient_bg"
-                android:translationZ="10dp" />
 
             <com.aurora.store.view.CustomSwipeToRefresh
                 android:id="@+id/swipe_layout"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="-32dp"
-                android:clipToPadding="false">
+                android:layout_height="match_parent">
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recycler"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:clipToPadding="false"
+                    android:overScrollMode="never"
                     android:paddingTop="@dimen/margin_small"
+                    android:paddingBottom="@dimen/margin_bottom"
                     android:scrollbars="vertical"
+                    android:splitMotionEvents="false"
                     tools:listitem="@layout/item_updatable" />
 
                 <androidx.appcompat.widget.AppCompatTextView
@@ -99,7 +92,6 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:textAppearance="?android:attr/textAppearanceLarge" />
-
             </com.aurora.store.view.CustomSwipeToRefresh>
         </LinearLayout>
 
@@ -109,5 +101,4 @@
             android:layout_height="match_parent"
             android:orientation="vertical" />
     </ViewSwitcher>
-
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
