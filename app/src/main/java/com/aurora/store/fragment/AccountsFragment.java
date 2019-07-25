@@ -375,7 +375,6 @@ public class AccountsFragment extends Fragment {
 
     private void finishIntro() {
         if (getActivity() instanceof IntroActivity) {
-            PrefUtil.putBoolean(context, Constants.PREFERENCE_DO_NOT_SHOW_INTRO, true);
             getActivity().startActivity(new Intent(context, AuroraActivity.class));
             getActivity().finish();
         }

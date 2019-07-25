@@ -18,71 +18,62 @@
   ~
   -->
 
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".activity.IntroActivity">
+    android:layout_height="match_parent">
 
-    <RelativeLayout
+    <ImageView
+        android:id="@+id/welcome_icon"
+        android:layout_width="@dimen/icon_size_big"
+        android:layout_height="@dimen/icon_size_big"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/margin_xlarge"
+        android:src="@drawable/ic_namaste_alt" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/app_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/welcome_icon"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/margin_normal"
+        android:text="@string/title_welcome"
+        android:textAppearance="@style/TextAppearance.Aurora.Toolbar.Title"
+        android:textSize="20sp" />
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="?actionBarSize">
-
-        <ImageView
-            android:id="@+id/welcome_icon"
-            android:layout_width="@dimen/icon_size_big"
-            android:layout_height="@dimen/icon_size_big"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/margin_xlarge"
-            android:src="@drawable/ic_namaste_alt" />
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/action"
+        android:layout_below="@+id/app_name"
+        android:layout_margin="@dimen/margin_normal"
+        android:background="@drawable/generic_padded_bg"
+        android:overScrollMode="never">
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/app_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/app_log"
+            android:textAlignment="viewStart"
+            android:textColor="?android:attr/textColorPrimary"
+            android:typeface="monospace" />
+    </ScrollView>
+
+
+    <RelativeLayout
+        android:id="@+id/action"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_next"
+            style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/welcome_icon"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/margin_normal"
-            android:text="@string/title_welcome"
-            android:textAppearance="@style/TextAppearance.Aurora.Toolbar.Title"
-            android:textSize="20sp" />
-
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/action"
-            android:layout_below="@+id/app_name"
+            android:layout_alignParentEnd="true"
             android:layout_margin="@dimen/margin_normal"
-            android:background="@drawable/generic_padded_bg"
-            android:overScrollMode="never">
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/app_log"
-                android:textAlignment="viewStart"
-                android:textColor="?android:attr/textColorPrimary"
-                android:typeface="monospace" />
-        </ScrollView>
-
-
-        <RelativeLayout
-            android:id="@+id/action"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true">
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_next"
-                style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_margin="@dimen/margin_normal"
-                android:maxLines="1"
-                android:text="@string/action_next" />
-
-        </RelativeLayout>
+            android:maxLines="1"
+            android:text="@string/action_next" />
     </RelativeLayout>
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</RelativeLayout>

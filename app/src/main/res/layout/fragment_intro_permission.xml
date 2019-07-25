@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Aurora Store
   ~ Copyright (C) 2019, Rahul Kumar Patel <whyorean@gmail.com>
   ~
@@ -19,76 +18,68 @@
   ~
   -->
 
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".activity.IntroActivity">
+    android:layout_height="match_parent">
 
-    <RelativeLayout
+    <ImageView
+        android:id="@+id/perm_icon"
+        android:layout_width="@dimen/icon_size_big"
+        android:layout_height="@dimen/icon_size_big"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/margin_xlarge"
+        android:src="@drawable/ic_permission" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/acc_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/perm_icon"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/margin_normal"
+        android:text="@string/title_perm"
+        android:textAppearance="@style/TextAppearance.Aurora.Toolbar.Title"
+        android:textSize="20sp" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/perm_desc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/acc_txt"
+        android:layout_margin="@dimen/margin_normal"
+        android:text="@string/desc_perm"
+        android:textAlignment="center"
+        android:textColor="?android:attr/textColorPrimary" />
+
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="?actionBarSize">
+        android:layout_above="@id/action"
+        android:layout_below="@+id/perm_desc"
+        android:layout_margin="@dimen/margin_normal"
+        android:background="@drawable/generic_padded_bg">
 
-        <ImageView
-            android:id="@+id/perm_icon"
-            android:layout_width="@dimen/icon_size_big"
-            android:layout_height="@dimen/icon_size_big"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/margin_xlarge"
-            android:src="@drawable/ic_permission" />
+        <LinearLayout
+            android:id="@+id/permissions_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </androidx.core.widget.NestedScrollView>
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/acc_txt"
+    <RelativeLayout
+        android:id="@+id/action"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_next"
+            style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/perm_icon"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/margin_normal"
-            android:text="@string/title_perm"
-            android:textAppearance="@style/TextAppearance.Aurora.Toolbar.Title"
-            android:textSize="20sp" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/perm_desc"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/acc_txt"
+            android:layout_alignParentEnd="true"
             android:layout_margin="@dimen/margin_normal"
-            android:text="@string/desc_perm"
-            android:textAlignment="center"
-            android:textColor="?android:attr/textColorPrimary" />
-
-        <androidx.core.widget.NestedScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_above="@id/action"
-            android:layout_margin="@dimen/margin_normal"
-            android:background="@drawable/generic_padded_bg"
-            android:layout_below="@+id/perm_desc">
-
-            <LinearLayout
-                android:id="@+id/permissions_container"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical" />
-        </androidx.core.widget.NestedScrollView>
-
-        <RelativeLayout
-            android:id="@+id/action"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true">
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_next"
-                style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_margin="@dimen/margin_normal"
-                android:maxLines="1"
-                android:text="@string/action_next" />
-        </RelativeLayout>
+            android:maxLines="1"
+            android:text="@string/action_next" />
     </RelativeLayout>
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</RelativeLayout>

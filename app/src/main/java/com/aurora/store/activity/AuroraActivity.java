@@ -87,6 +87,7 @@ public class AuroraActivity extends AppCompatActivity {
         onNewIntent(getIntent());
 
         if (!PrefUtil.getBoolean(this, Constants.PREFERENCE_DO_NOT_SHOW_INTRO)) {
+            PrefUtil.putBoolean(this, Constants.PREFERENCE_DO_NOT_SHOW_INTRO, true);
             startActivity(new Intent(this, IntroActivity.class));
             finish();
         } else {
