@@ -104,7 +104,7 @@
         android:textAppearance="@style/TextAppearance.Aurora.Button"
         android:textColor="@color/colorWhite"
         android:visibility="gone"
-        app:backgroundTint="@color/colorAccent"
+        app:backgroundTint="?android:colorAccent"
         app:icon="@drawable/ic_filter"
         app:iconTint="@color/colorWhite" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

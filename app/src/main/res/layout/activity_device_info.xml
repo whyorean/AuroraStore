@@ -37,16 +37,18 @@
             android:orientation="vertical" />
     </androidx.core.widget.NestedScrollView>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/incognito_fab"
-        style="@style/Widget.MaterialComponents.FloatingActionButton"
+        style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="end|bottom"
+        android:layout_gravity="center_horizontal|bottom"
         android:layout_margin="@dimen/margin_normal"
-        app:fabSize="auto"
-        app:layout_anchorGravity="top|end"
-        app:srcCompat="@drawable/ic_incognito"
-        app:useMaterialThemeColors="false" />
+        android:text="@string/action_filter_apply"
+        android:textAppearance="@style/TextAppearance.Aurora.Button"
+        android:textColor="@color/colorWhite"
+        app:backgroundTint="?android:colorAccent"
+        app:iconTint="@color/colorWhite"
+        app:layout_anchorGravity="top|end" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

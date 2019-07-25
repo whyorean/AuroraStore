@@ -216,4 +216,17 @@
 
     </androidx.core.widget.NestedScrollView>
 
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/export_fab"
+        style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|bottom"
+        android:layout_margin="@dimen/margin_normal"
+        android:text="@string/action_export_device"
+        android:textAppearance="@style/TextAppearance.Aurora.Button"
+        android:textColor="@color/colorWhite"
+        app:backgroundTint="?android:colorAccent"
+        app:iconTint="@color/colorWhite" />
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

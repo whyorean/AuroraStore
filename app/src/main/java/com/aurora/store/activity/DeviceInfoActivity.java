@@ -41,7 +41,7 @@ import com.aurora.store.utility.PrefUtil;
 import com.aurora.store.utility.ThemeUtil;
 import com.aurora.store.view.PropertyView;
 import com.dragons.aurora.playstoreapiv2.PropertiesDeviceInfoProvider;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -57,7 +57,7 @@ public class DeviceInfoActivity extends AppCompatActivity {
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
     @BindView(R.id.incognito_fab)
-    FloatingActionButton incognito_fab;
+    ExtendedFloatingActionButton incognito_fab;
     @BindView(R.id.device_info)
     LinearLayout root;
 

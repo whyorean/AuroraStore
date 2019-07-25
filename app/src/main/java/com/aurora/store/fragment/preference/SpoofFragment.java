@@ -46,6 +46,7 @@ import com.aurora.store.api.PlayStoreApiAuthenticator;
 import com.aurora.store.manager.CategoryManager;
 import com.aurora.store.manager.SpoofManager;
 import com.aurora.store.notification.QuickNotification;
+import com.aurora.store.task.DeviceInfoBuilder;
 import com.aurora.store.task.GeoSpoofTask;
 import com.aurora.store.utility.Accountant;
 import com.aurora.store.utility.ContextUtil;
@@ -53,6 +54,7 @@ import com.aurora.store.utility.Log;
 import com.aurora.store.utility.PrefUtil;
 import com.aurora.store.utility.Util;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -84,9 +86,11 @@ public class SpoofFragment extends Fragment {
     Spinner mSpinnerLanguage;
     @BindView(R.id.spoof_location)
     Spinner mSpinnerLocation;
+    @BindView(R.id.export_fab)
+    ExtendedFloatingActionButton exportFab;
 
     private Context context;
-    private CompositeDisposable mDisposable = new CompositeDisposable();
+    private CompositeDisposable disposable = new CompositeDisposable();
     private String deviceName;
 
     @Override
@@ -114,6 +118,7 @@ public class SpoofFragment extends Fragment {
         setupDevice();
         setupLanguage();
         setupLocations();
+        setupDeviceConfigExport();
     }
 
     @Override
@@ -255,7 +260,7 @@ public class SpoofFragment extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 final String mLocation = geoLocations[position];
                 GeoSpoofTask mGeoSpoofTask = new GeoSpoofTask(context, mLocation, position);
-                mDisposable.add(Observable.fromCallable(mGeoSpoofTask::spoof)
+                disposable.add(Observable.fromCallable(mGeoSpoofTask::spoof)
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe((success) -> {
@@ -311,5 +316,19 @@ public class SpoofFragment extends Fragment {
                 });
         mBuilder.create();
         mBuilder.show();
+    }
+
+    private void setupDeviceConfigExport() {
+        exportFab.setOnClickListener(v -> {
+            disposable.add(Observable.fromCallable(() -> new DeviceInfoBuilder(context)
+                    .build())
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(success -> {
+                        ContextUtil.toast(context, success
+                                ? R.string.action_export_info
+                                : R.string.action_export_info_failed);
+                    }));
+        });
     }
 }

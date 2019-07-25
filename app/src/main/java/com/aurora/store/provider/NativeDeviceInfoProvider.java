@@ -54,11 +54,11 @@ public class NativeDeviceInfoProvider implements DeviceInfoProvider {
     private String simOperator = "";
     private NativeGsfVersionProvider gsfVersionProvider;
 
-    private static List<String> getPlatforms() {
+    public static List<String> getPlatforms() {
         return Arrays.asList(Build.SUPPORTED_ABIS);
     }
 
-    static private List<String> getFeatures(Context context) {
+    public static List<String> getFeatures(Context context) {
         List<String> featureStringList = new ArrayList<>();
         for (FeatureInfo feature : context.getPackageManager().getSystemAvailableFeatures()) {
             if (!TextUtils.isEmpty(feature.name)) {
@@ -69,7 +69,7 @@ public class NativeDeviceInfoProvider implements DeviceInfoProvider {
         return featureStringList;
     }
 
-    private static List<String> getLocales(Context context) {
+    public static List<String> getLocales(Context context) {
         List<String> rawLocales = new ArrayList<>();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             rawLocales.addAll(Arrays.asList(context.getAssets().getLocales()));
@@ -89,7 +89,7 @@ public class NativeDeviceInfoProvider implements DeviceInfoProvider {
         return locales;
     }
 
-    private static List<String> getSharedLibraries(Context context) {
+    public static List<String> getSharedLibraries(Context context) {
         List<String> libraries = new ArrayList<>(Arrays.asList(context.getPackageManager().getSystemSharedLibraryNames()));
         Collections.sort(libraries);
         return libraries;

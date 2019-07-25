@@ -60,6 +60,9 @@
     <string name="action_done">Done</string>
     <string name="action_enable">Enable</string>
     <string name="action_export">Export</string>
+    <string name="action_export_device">Export Device Info</string>
+    <string name="action_export_info">Device information exported</string>
+    <string name="action_export_info_failed">Device information export failed</string>
     <string name="action_favourites">Favourite apps</string>
     <string name="action_filter">Filters</string>
     <string name="action_filter_all">All</string>
