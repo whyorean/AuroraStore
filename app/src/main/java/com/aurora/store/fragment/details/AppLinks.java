@@ -27,10 +27,10 @@ public class AppLinks extends AbstractHelper {
     @Override
     public void draw() {
         linkLayout.removeAllViews();
+        setupShare();
         setupDevApps();
         setupPermissions();
         setupAppPreferences();
-        setupShare();
         setupPlayLink();
     }
 
