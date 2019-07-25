@@ -367,16 +367,17 @@ public class ActionButton extends AbstractHelper {
             @Override
             public void onProgress(int groupId, @NotNull Download download, long etaInMilliSeconds, long downloadedBytesPerSecond, @NotNull FetchGroup fetchGroup) {
                 if (groupId == hashCode) {
-                    final int progress = fetchGroup.getGroupDownloadProgress();
+                    int progress = fetchGroup.getGroupDownloadProgress();
                     ContextUtil.runOnUiThread(() -> {
                         btnCancel.setVisibility(View.VISIBLE);
                         //Set intermediate to false, just in case xD
                         if (progressBar.isIndeterminate())
                             progressBar.setIndeterminate(false);
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                            progressBar.setProgress(progress, true);
-                        } else
-                            progressBar.setProgress(progress);
+                        if (progress > 0)
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                                progressBar.setProgress(progress, true);
+                            } else
+                                progressBar.setProgress(progress);
                         progressStatus.setText(R.string.download_progress);
                         progressTxt.setText(new StringBuilder().append(progress).append("%"));
                     });
