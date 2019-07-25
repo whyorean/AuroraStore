@@ -14,6 +14,7 @@ import androidx.preference.PreferenceFragmentCompat;
 
 import com.aurora.store.Constants;
 import com.aurora.store.R;
+import com.aurora.store.activity.SettingsActivity;
 import com.aurora.store.utility.PackageUtil;
 import com.aurora.store.utility.PrefUtil;
 import com.aurora.store.utility.Util;
@@ -91,6 +92,11 @@ public class InstallationFragment extends PreferenceFragmentCompat implements Sh
 
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+        switch (key) {
+            case Constants.PREFERENCE_INSTALLATION_METHOD:
+                SettingsActivity.shouldRestart = true;
+                break;
+        }
 
     }
 
