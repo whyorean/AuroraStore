@@ -21,6 +21,11 @@
 <resources>
     <string name="app_log" translatable="false">
 
+        \n Changelog : v3.0.8
+        \n • Added option to export current device info
+        \n • Improved Search UI
+        \n • Bug fixes and improvements
+        \n
         \n Changelog : v3.0.7
         \n • Added option to use custom token dispensers (Settings->Network)
         \n • Added new dummy accounts and dispenser
