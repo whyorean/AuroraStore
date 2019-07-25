@@ -194,7 +194,7 @@
     <string name="installer_status_failure_blocked">Installation was blocked</string>
     <string name="installer_status_failure_conflict">Conflicting package exists</string>
     <string name="installer_status_failure_incompatible">Incompatible app</string>
-    <string name="installer_status_failure_invalid">Invalid oe corrupted APK</string>
+    <string name="installer_status_failure_invalid">Invalid or corrupted APK</string>
     <string name="installer_status_failure_storage">Insufficient memory space</string>
     <string name="installer_status_success">Successfully installed</string>
     <string name="installer_status_unknown">Unknown</string>
