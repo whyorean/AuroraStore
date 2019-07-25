@@ -94,7 +94,7 @@ public class DownloaderFragment extends PreferenceFragmentCompat implements Shar
                     == PackageManager.PERMISSION_GRANTED) {
                 return newDir.mkdirs();
             }
-            return true;
+            return false;
         } catch (IOException e) {
             return false;
         }

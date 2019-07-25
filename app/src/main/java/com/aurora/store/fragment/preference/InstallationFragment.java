@@ -16,6 +16,7 @@ import com.aurora.store.Constants;
 import com.aurora.store.R;
 import com.aurora.store.activity.SettingsActivity;
 import com.aurora.store.utility.PackageUtil;
+import com.aurora.store.utility.PathUtil;
 import com.aurora.store.utility.PrefUtil;
 import com.aurora.store.utility.Util;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
@@ -63,6 +64,7 @@ public class InstallationFragment extends PreferenceFragmentCompat implements Sh
             } else if (installMethod.equals(SERVICES)) {
                 if (PackageUtil.isInstalled(context, Constants.SERVICE_PACKAGE)) {
                     PrefUtil.putString(context, Constants.PREFERENCE_INSTALLATION_METHOD, installMethod);
+                    PrefUtil.putString(context, Constants.PREFERENCE_DOWNLOAD_DIRECTORY, PathUtil.getExtBaseDirectory(context));
                     return true;
                 } else {
                     showNoServicesDialog();

@@ -97,6 +97,10 @@ public class PathUtil {
             return Environment.getExternalStorageDirectory().getPath() + "/Aurora";
     }
 
+    static public String getExtBaseDirectory(Context context) {
+        return Environment.getExternalStorageDirectory().getPath() + "/Aurora";
+    }
+
     static public String getBaseCopyDirectory() {
         return Environment.getExternalStorageDirectory().getPath() + "/Aurora/Copy/APK";
     }
