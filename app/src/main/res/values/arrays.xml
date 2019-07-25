@@ -101,6 +101,7 @@
         <item>Arabic</item>
         <item>Asturian</item>
         <item>Bulgarian</item>
+        <item>Belarusian</item>
         <item>Catalan</item>
         <item>Chinese Simplified</item>
         <item>Chinese Traditional</item>
@@ -119,9 +120,11 @@
         <item>Japanese</item>
         <item>Korean</item>
         <item>Lithuanian</item>
+        <item>Norwegian Bokmål</item>
         <item>Polish</item>
         <item>Portuguese</item>
         <item>Portuguese(BR)</item>
+        <item>Punjabi</item>
         <item>Romanian</item>
         <item>Russian</item>
         <item>Sardinian</item>
@@ -141,6 +144,7 @@
         <item>ar-SA</item>
         <item>b-ast</item>
         <item>bg-BG</item>
+        <item>be-BY</item>
         <item>ca-ES</item>
         <item>zh-CN</item>
         <item>zh-TW</item>
@@ -159,9 +163,11 @@
         <item>ja-JP</item>
         <item>ko-KR</item>
         <item>lt-LT</item>
+        <item>nb-NO</item>
         <item>pl-PL</item>
         <item>pt-PT</item>
         <item>pt-BR</item>
+        <item>pa-IN</item>
         <item>ro-RO</item>
         <item>ru-RU</item>
         <item>sc-IT</item>

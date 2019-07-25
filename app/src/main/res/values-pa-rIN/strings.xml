@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="account_dummy">"ਅਗਿਆਤ"</string>
+    <string name="account_dummy_desc">"ਅਗਿਆਤ ਬਣਕੇ ਲੌਗ-ਇਨ ਕਰੋ ?"</string>
+    <string name="account_google">"ਗੂਗਲ ਖਾਤਾ"</string>
+    <string name="account_logout">"ਔਰੋਰਾ ਚੋਂ ਲੋਗ-ਆਉਟ ਕਰੋ ?"</string>
+    <string name="account_prompt_login">"ਕਿਰਪਾ ਕਰਕੇ ਲੋਗ-ਇਨ ਕਰੋ"</string>
+    <string name="account_switch">"ਖਾਤਾ ਬਦਲੋ"</string>
+    <string name="action_accounts">"ਖਾਤੇ"</string>
+    <string name="action_ask">"ਪੁੱਛੋ"</string>
+    <string name="action_blacklist">"ਬਲੈਕ ਲਿਸਟ"</string>
+    <string name="action_cancel">"ਰੱਦ ਕਰੋ"</string>
+    <string name="action_clear">"ਮਿਟਾਓ"</string>
+    <string name="action_clear_all">"ਸਾਰਾ ਮਿਟਾਓ"</string>
+    <string name="action_convert_local">"ਲੋਕਲ ਵਿਚ ਬਦਲੋ"</string>
+    <string name="action_convert_system">"ਸਿਸਟਮ ਵਿਚ ਬਦਲੋ"</string>
+    <string name="action_copied">"ਲਿੰਕ ਕਾਪੀ ਹੋ ਗਿਆ ਹੈ"</string>
+    <string name="action_copy">"ਲਿੰਕ ਕਾਪੀ ਕਰੋ"</string>
+    <string name="action_disable">"ਬੰਦ ਕਰੋ"</string>
+    <string name="action_done">"ਹੋ ਗਿਆ"</string>
+    <string name="action_enable">"ਚਲਾਓ"</string>
+    <string name="action_export">"ਨਿਰਯਾਤ"</string>
+    <string name="action_favourites">"ਮਨਪਸੰਦ ਐਪਸ"</string>
+    <string name="action_filter">"ਫਿਲਟਰ"</string>
+    <string name="action_filter_all">"ਸਾਰੇ"</string>
+    <string name="action_filter_apply">"ਲਾਗੂ ਕਰੋ"</string>
+    <string name="action_filter_apps_with_ads">"ਇਸ਼ਤਿਹਾਰ ਸਮੇਤ"</string>
+    <string name="action_filter_downloads">"ਡਾਊਨਲੋਡ"</string>
+    <string name="action_filter_gsf_dependent_apps">"GSF ਤੇ ਨਿਰਭਰ"</string>
+    <string name="action_filter_misc">"ਫੁੱਟਕਲ"</string>
+    <string name="action_filter_paid_apps">"ਭੁਗਤਾਨ ਸਹਿਤ"</string>
+    <string name="action_filter_rating">"ਰੇਟਿੰਗ"</string>
+    <string name="action_flag">"ਐਪ ਰਿਪੋਰਟ ਕਰੋ"</string>
+    <string name="action_get_local_apk">"ਲੋਕਲ APK ਵਰਤੋਂ"</string>
+    <string name="action_home">"ਮੁੱਖ ਪੰਨਾ"</string>
+    <string name="action_installations">"ਇੰਸਟਾਲ ਬਾਰੇ"</string>
+    <string name="action_installed">"ਇੰਸਟਾਲ ਹੈ"</string>
+    <string name="action_later">"ਬਾਅਦ ਵਿਚ"</string>
+    <string name="action_logging_in">"ਲੋਗ-ਇਨ ਹੋ ਰਿਹਾ ਹੈ"</string>
+    <string name="action_login">"ਲੋਗ-ਇਨ ਕਰੋ"</string>
+    <string name="action_logout">"ਲੋਗ-ਆਊਟ"</string>
+    <string name="action_make_normal">"ਆਮ ਐਪ ਵਿਚ ਬਦਲੋ"</string>
+    <string name="action_make_system">"ਸਿਸਟਮ ਐਪ ਵਿਚ ਬਦਲੋ"</string>
+    <string name="action_manual">"ਖੁੱਦ ਡਾਊਨਲੋਡ ਕਰੋ"</string>
+    <string name="action_more">"ਹੋਰ ਵਿਖਾਓ"</string>
+    <string name="action_next">"ਅੱਗੇ"</string>
+    <string name="action_pause">"ਰੋਕੋ"</string>
+    <string name="action_remove">"ਹਟਾਓ"</string>
+    <string name="action_restart">"ਦੋਬਾਰਾ ਚਲਾਓ"</string>
+    <string name="action_resume">"ਚਾਲੂ ਕਰੋ"</string>
+    <string name="action_retry">"ਦੋਬਾਰਾ ਯਤਨ ਕਰੋ"</string>
+    <string name="action_retry_ing">"ਦੋਬਾਰਾ ਯਤਨ ਕਰ ਰਹੇ ਹਾਂ...."</string>
+    <string name="action_search">"ਖੋਜੋ"</string>
+    <string name="action_search_clearHistory">"ਸਭ ਕੁੱਝ ਮਿਟਾਓ"</string>
+    <string name="action_search_history">"ਪੁਰਾਣੀ ਖੋਜ ਸੂਚੀ"</string>
+    <string name="action_settings">"ਸੈਟਿੰਗਾਂ"</string>
+    <string name="action_spoofed">"ਧੋਖਾ 🎭"</string>
+    <string name="action_submit">"ਜਮਾਂ ਕਰੋ"</string>
+    <string name="action_unignore">"ਬਲੈਕ ਲਿਸਟ ਵਿਚੋਂ ਹਟਾਓ"</string>
+    <string name="action_uninstall">"ਅਨਿੰਸਟਾਲ ਕਰੋ"</string>
+    <string name="action_unwhitelist">"ਅਪਡੇਟਾਂ ਅਣਦੇਖਿਆਂ ਕਰੋ"</string>
+    <string name="action_updates">"ਅਪਡੇਟਾਂ"</string>
+    <string name="action_whitelist">"ਵਾਈਟ ਲਿਸਟ"</string>
+    <string name="availability_restriction_country">"ਇਹ ਆਇਟਮ ਤੁਹਾਡੇ ਦੇਸ਼ ਵਿਚ ਉਪਲੱਬਧ ਨਹੀਂ ਹੈ"</string>
+    <string name="availability_restriction_generic">"ਇਹ ਆਇਟਮ ਉਪਲੱਬਧ ਨਹੀਂ ਹੈ"</string>
+    <string name="availability_restriction_hardware_app">"ਤੁਹਾਡਾ ਮੋਬਾਇਲ ਇਸ ਵਰਜ਼ਨ ਲਈ ਅਨੁਕੂਲ ਨਹੀਂ ਹੈ"</string>
+    <string name="category_appFree">"ਮੁਫ਼ਤ"</string>
+    <string name="category_topFree">"ਟੋਪ ਮੁਫ਼ਤ"</string>
+    <string name="category_topGrossing">"ਟੋਪ ਪ੍ਰਚਲਿੱਤ"</string>
+    <string name="category_trending">"ਰੁਝਾਨ ਵਿਚ"</string>
+    <string name="delete">"ਮਿਟਾਓ"</string>
+    <string name="desc_perm">"ਔਰੋਰਾ ਸਟੋਰ ਹੇਂਠ ਲਿਖੀਆਂ ਮੰਜੂਰੀਆਂ ਦੀ ਵਰਤੋਂ ਕਰਦਾ ਹੈ"</string>
+    <string name="details_appReviewsAll">"ਸਾਰੀਆਂ ਸਮੀਖਿਆਵਾਂ ਪੜ੍ਹੋ"</string>
+    <string name="details_contains_ads">"ਇਸ਼ਤਿਹਾਰ ਸਮੇਤ"</string>
+    <string name="details_download">"ਡਾਊਨਲੋਡ ਕਰੋ"</string>
+    <string name="details_favourite_add">"ਮਨਪਸੰਦ ਵਿਚ ਜਮਾਂ ਕਰੋ"</string>
+    <string name="details_favourite_remove">"ਮਨਪਸੰਦ ਵਿਚੋਂ ਹਟਾਓ"</string>
+    <string name="details_install">"ਇੰਸਟਾਲ ਕਰੋ"</string>
+    <string name="details_installing">"ਇੰਸਟਾਲ ਹੋ ਰਿਹਾ ਹੈ"</string>
+    <string name="details_more">"ਹੋਰ ਪੜ੍ਹੋ"</string>
+    <string name="details_no_ads">"ਬਿਨਾਂ ਇਸ਼ਤਿਹਾਰ"</string>
+    <string name="details_permissions">"ਐਪ ਮੰਜੂਰੀਆਂ"</string>
+    <string name="details_purchase">"ਖਰੀਦੋ"</string>
+    <string name="details_rate_this_app">"ਐਪ ਨੂੰ ਰੇਟ ਕਰੋ"</string>
+    <string name="details_rating_reviews">"ਰੇਟਿੰਗਸ ਤੇ ਸਮੀਖਿਆਵਾਂ"</string>
+    <string name="details_reviews">"ਐਪ ਸਮੀਖਿਆਵਾਂ"</string>
+    <string name="details_run">"ਖੋਲੋ"</string>
+    <string name="details_share">"ਸਾਂਝਾ ਕਰੋ"</string>
+    <string name="details_update">"ਅਪਡੇਟ"</string>
+    <string name="details_why_rate_this_app">"ਤੁਹਾਡੇ ਐਪ ਬਾਰੇ ਕੀ ਵਿਚਾਰ ਹਨ"</string>
+    <string name="details_you_rated_this_app">"ਤੁਹਾਡੀ ਰੇਟਿੰਗ"</string>
+    <string name="dialog_title_logout">"ਲੋਗ-ਆਊਟ ਕਰੋ ?"</string>
+    <string name="download_cancel_all">"ਰੱਦ ਕਰੋ"</string>
+    <string name="download_canceled">"ਰੱਦ ਕੀਤੀ ਗਈ"</string>
+    <string name="download_clear_completed">"ਮੁਕੰਮਲ ਹੋਈਆਂ ਫਾਇਲਾਂ ਨੂੰ ਮਿਟਾਓ"</string>
+    <string name="download_completed">"ਮੁਕੰਮਲ ਹੋ ਗਿਆ ਹੈ"</string>
+    <string name="download_failed">"ਅਸਫਲ"</string>
+    <string name="download_force_clear_all">"ਜਬਰੀ ਮਿਟਾਓ"</string>
+    <string name="download_pause_all">"ਸਾਰੇ ਰੋਕੋ"</string>
+    <string name="download_paused">"ਰੋਕਿਆ ਹੋਇਆ"</string>
+    <string name="download_progress">"ਡਾਊਨਲੋਡ ਚਾਲੂ ਹੈ"</string>
+    <string name="download_queued">"ਕਤਾਰਬੱਧ"</string>
+    <string name="download_resume">"ਚਾਲੂ ਕਰੋ"</string>
+    <string name="download_resume_all">"ਸਾਰੇ ਚਾਲੂ ਕਰੋ"</string>
+    <string name="early_access">"ਛੇਤੀ ਪਹੁੰਚ"</string>
+    <string name="error_app_not_found">"ਐਪ ਨਹੀਂ ਲੱਭਿਆ"</string>
+    <string name="error_incorrect_password">"ਗਲਤ ਈ-ਮੇਲ ਜਾਂ ਪਾਸਵਰਡ"</string>
+    <string name="error_invalid_device_definition">"ਮੋਬਾਇਲ ਪਰਿਭਾਸ਼ਾ ਰੱਦ ਕੀਤੀ ਗਈ"</string>
+    <string name="error_no_network">"ਨੈਟਵਰਕ ਨਹੀਂ ਹੈ"</string>
+    <string name="error_search_not_found">"ਕੋਈ ਮੇਲ ਖਾਂਦੀ ਐਪ ਨਹੀਂ ਹੈ"</string>
+    <string name="error_unknown">"ਅਣਜਾਣ ਗਲਤੀ ਹੋਈ"</string>
+    <string name="exodus_noTracker">"ਕੋਈ ਟਰੈਕਰ ਨਹੀਂ ਹੈ"</string>
+    <string name="exodus_powered">"Exodus ਵਲੋਂ ਜਾਰੀ"</string>
+    <string name="exodus_title">"ਔਰੋਰਾ ਰੱਖਿਆ ਪ੍ਰਣਾਲੀ"</string>
+    <string name="exodus_title_alt">"Exodus ਰਿਪੋਰਟ"</string>
+    <string name="exodus_viewMore">"ਵਿਖਾਓ"</string>
+    <string name="exodus_viewReport">"ਰਿਪੋਰਟ ਵੇਖੋ"</string>
+    <string name="flagging_title">"ਅਣਉਚਿਤ ਘੋਸ਼ਿਤ ਕਰੋ"</string>
+    <string name="list_app_blacklisted_empty">"ਬਲੈਕ ਲਿਸਟ ਖਾਲੀ ਹੈ"</string>
+    <string name="list_app_depends_on_gsf">"GSF ਤੇ ਨਿਰਭਰ"</string>
+    <string name="list_app_has_ads">"ਇਸ਼ਤਿਹਾਰ ਸਮੇਤ"</string>
+    <string name="list_app_independent_from_gsf">"GSF ਤੋਂ ਸੁਤੰਤਰ"</string>
+    <string name="list_app_no_ads">"ਇਸ਼ਤਿਹਾਰ ਤੋਂ ਬਿਨਾਂ"</string>
+    <string name="list_app_system">"ਸਿਸਟਮ ਐਪ"</string>
+    <string name="list_app_user">"ਯੂਸਰ ਐਪ"</string>
+    <string name="list_blacklist">"ਬਲੈਕ ਲਿਸਟ ਐਪ"</string>
+    <string name="list_blacklist_none">"ਬਲੈਕ ਲਿਸਟ ਖਾਲੀ ਹੈ"</string>
+    <string name="list_bulk_install">"ਐਪ ਕਤਾਰਬੱਧ ਇੰਸਟਾਲ ਹੋਣਗੇ"</string>
+    <string name="list_empty_fav">"ਕੋਈ ਮਨਪਸੰਦ ਨਹੀਂ"</string>
+    <string name="list_empty_query">"ਕੋਈ ਖੋਜ ਨਹੀਂ ਕੀਤੀ"</string>
+    <string name="list_empty_updates">"ਕੋਈ ਅਪਡੇਟ ਨਹੀਂ ਉਪਲੱਬਧ"</string>
+    <string name="list_installed">"ਇੰਸਟਾਲ ਸਫਲ"</string>
+    <string name="list_installed_system">"ਸਿਰਫ ਯੂਸਰ ਐਪਸ ਵਿਖਾਓ"</string>
+    <string name="list_not_installd">"ਇੰਸਟਾਲ ਨਹੀਂ ਹੈ"</string>
+    <string name="list_update_all">"ਸਾਰੇ ਅਪਡੇਟ ਕਰੋ"</string>
+    <string name="list_update_all_txt">"ਅਪਡੇਟ ਉਪਲੱਬਧ ਹੈ"</string>
+    <string name="list_updating">"ਅਪਡੇਟ ਹੋ ਰਿਹਾ ਹੈ"</string>
+    <string name="manual_download_disclaimer">"ਬੇਦਾਆਵਾ"</string>
+    <string name="manual_download_incompatible">"ਗੂਗਲ ਇਸ ਐਪ ਨੂੰ ਤੁਹਾਡੇ ਮੋਬਾਇਲ ਲਈ ਅਨੁਰੂਪ ਨਹੀਂ ਮੰਨਦਾ। ਇਸਦਾ ਮਤਲਬ ਇਹ ਹੈ ਕਿ ਵਰਜਨ ਕੋਡ ਗੂਗਲ ਸਟੋਰ ਸਰਵਰ ਵੱਲੋਂ ਵਾਪਸ ਨਹੀਂ ਕੀਤਾ ਗਿਆ ਹੈ।"</string>
+    <string name="manual_download_warning">"ਇਹ ਸਫ਼ਾ ਤੁਹਾਨੂੰ ਡਾਉਨਲੋਡ ਦੇ ਲਈ ਐਪ ਦੇ ਵਰਜ਼ਨ ਨੂੰ ਖੁਦ ਚੁਣਨ ਦੀ ਅਜਾਦੀ ਦਿੰਦਾ ਹੈ।
+
+ਇਹ ਗੱਲ ਧਿਆਨ ਵਿੱਚ ਰੱਖੋ ਕਿ ਐਪਸ ਦੇ ਵੱਖ-ਵੱਖ ਵਰਜਨ ਡਾਊਨਲੋਡ ਕਰਨਾ ਗੂਗਲ ਸਟੋਰ ਦੁਆਰਾ ਵਰਜਿਤ ਹੈ। ਤੁਹਾਡੀ ਸਫ਼ਲਤਾ ਸੰਸਕਰਣ ਕੋਡ ਦੇ ਅਨੁਮਾਨ 'ਤੇ ਨਿਰਭਰ ਕਰਦੀ ਹੈ। ਭਾਵੇਂ ਤੁਸੀਂ ਸਹੀ ਅਨੁਮਾਨ ਲਗਾਉਂਦੇ ਹੋ ਅਤੇ ਤੁਸੀਂ ਡਾਉਨਲੋਡ ਨੂੰ ਸ਼ੁਰੂ ਕਰਦੇ ਹੋ, ਪਰ ਤੁਹਾਨੂੰ ਇੱਕ ਗਲਤ APK ਵੀ ਪ੍ਰਾਪਤ ਹੋ ਸਕਦਾ ਹੈ।"</string>
+    <string name="menu_account">"ਸਾਰੇ ਖਾਤੇ"</string>
+    <string name="menu_disclaimer">"ਬੇਦਾਅਵਾ"</string>
+    <string name="menu_downloads">"ਡਾਊਨਲੋਡ ਸੂਚੀ"</string>
+    <string name="menu_license">"ਲਾਇਸੈਂਸ"</string>
+    <string name="menu_setting">"ਸੈਟਿੰਗਾਂ"</string>
+    <string name="menu_terms">"ਸੇਵਾ ਦੀਆਂ ਸ਼ਰਤਾਂ"</string>
+    <string name="no_permissions">"ਕੋਈ ਵੀ ਆਗਿਆ ਦੀ ਵਰਤੋਂ ਨਹੀਂ ਕੀਤੀ ਜਾਂਦੀ"</string>
+    <string name="pref_app_download">"ਡਾਊਨਲੋਡ ਸੂਚੀ"</string>
+    <string name="pref_app_network">"ਨੈੱਟਵਰਕ"</string>
+    <string name="pref_app_notification">"ਸੂਚਨਾਵਾਂ"</string>
+    <string name="pref_app_ui">"ਯੂਸਰ ਇੰਟਰਫੇਸ"</string>
+    <string name="pref_category_spoof_device">"ਨਕਲੀ ਡਿਵਾਈਸ"</string>
+    <string name="pref_category_spoof_lang">"ਨਕਲੀ ਭਾਸ਼ਾ"</string>
+    <string name="pref_category_spoof_location">"ਨਕਲੀ ਥਾਂ"</string>
+    <string name="pref_device_to_pretend_to_be">"ਇੱਕ ਵੱਖਰੀ ਡਿਵਾਈਸ ਹੋਣ ਦਾ ਦਿਖਾਵਾ ਕਰੋ"</string>
+    <string name="pref_device_to_pretend_to_be_default">"ਤੁਹਾਡੀ ਅਸਲ ਮੋਬਾਇਲ ਜਾਣਕਾਰੀ"</string>
+    <string name="pref_device_to_pretend_to_be_toast">"ਇਹ ਤਬਦੀਲੀ ਤੁਹਾਡੇ ਮੁੜ ਲੋਗ-ਇਨ ਤੋਂ ਬਾਅਦ ਲਾਗੂ ਕੀਤੀ ਜਾਏਗੀ"</string>
+    <string name="pref_dialog_to_apply_restart">"ਐਪ ਨੂੰ ਮੁੜ ਚਾਲੂ ਕਰਨ ਤੋਂ ਬਾਅਦ ਇਹ ਸੈਟਿੰਗ ਲਾਗੂ ਕੀਤੀ ਜਾਏਗੀ"</string>
+    <string name="pref_downloader_active_summary">"ਚਾਲੂ ਡਾਉਨਲੋਡਸ ਦੀ ਅਧਿਕਤਮ ਗਿਣਤੀ"</string>
+    <string name="pref_downloader_active_title">"ਚੱਲ ਰਹੀਆਂ ਡਾਉਨਲੋਡਸ"</string>
+    <string name="pref_downloader_debug_summary">"ਵਿਸਤ੍ਰਿਤ ਲੌਗ ਪ੍ਰਾਪਤ ਕਰਨ ਲਈ ਡਾਊਨਲੋਡ ਡੀਬਗਿੰਗ ਨੂੰ ਚਾਲੂ ਕਰੋ"</string>
+    <string name="pref_downloader_debug_title">"ਡਾਊਨਲੋਡ ਡੀਬਗਿੰਗ"</string>
+    <string name="pref_downloader_path_title">"ਡਾਊਨਲੋਡ ਦਾ ਰਸਤਾ"</string>
+    <string name="pref_downloader_wifi_title">"ਕੇਵਲ WiFi ਵਰਤਦੇ ਹੋਏ ਡਾਊਨਲੋਡ ਕਰੋ"</string>
+    <string name="pref_filter_fdroid_summary">"ਐਪ ਲਿਸਟ ਚੋਂ F-droid ਐਪਸ ਹਟਾਉ"</string>
+    <string name="pref_filter_fdroid_title">"ਫਿਲਟਰ F-droid ਐਪਸ"</string>
+    <string name="pref_filter_google_summary">"ਖੋਜ ਨਤੀਜਿਆਂ ਅਤੇ ਸ਼੍ਰੇਣੀ ਐਪਸ ਚੋਂ ਸਾਰੇ ਗੂਗਲ ਐਪਸ ਹਟਾਉ"</string>
+    <string name="pref_filter_google_title">"ਫਿਲਟਰ ਗੂਗਲ ਐਪਸ"</string>
+    <string name="pref_filter_search_summary">"ਖੋਜ ਫਿਲਟਰ ਹਰ ਖੋਜ ਤੇ ਰੀਸੈਟ ਕੀਤੇ ਜਾਂਦੇ ਹਨ। ਖੋਜ ਫਿਲਟਰਸ ਨੂੰ ਯਾਦ ਰੱਖਣ ਲਈ ਬੰਦ ਕਰੋ"</string>
+    <string name="pref_filter_search_title">"ਗੈਰ-ਸਥਿਰ ਖੋਜ ਫਿਲਟਰ ਦੀ ਵਰਤੋ ਕਰੋ"</string>
+    <string name="pref_install_auto_summary">"ਡਾਊਨਲੋਡ ਪੂਰਾ ਹੋਣ ਤੋਂ ਬਾਅਦ ਐਪਸ ਤੁਰੰਤ ਇੰਸਟਾਲ ਕੀਤੇ ਜਾਂਦੇ ਹਨ"</string>
+    <string name="pref_install_auto_title">"ਡਾਊਨਲੋਡ ਤੋਂ ਬਾਅਦ APK ਨੂੰ ਆਟੋ ਇੰਸਟਾਲ ਕਰੋ"</string>
+    <string name="pref_install_delete_title">"ਇੰਸਟਾਲ ਤੋਂ ਬਾਅਦ APK ਨੂੰ ਮਿਟਾਓ"</string>
+    <string name="pref_install_mode_summary">"APK ਇੰਸਟਾਲ ਕਰਨ ਦੀ ਵਿਧੀ ਚੁਣੋ"</string>
+    <string name="pref_install_mode_title">"ਇੰਸਟਾਲ ਕਰਨ ਦੀ ਵਿਧੀ"</string>
+    <string name="pref_notification_priority_summary">"ਐਪ ਸੂਚਨਾਵਾਂ ਦੀ ਤਰਜੀਹ ਦਾ ਪੱਧਰ ਨਿਰਧਾਰਤ ਕਰੋ"</string>
+    <string name="pref_notification_priority_title">"ਸੂਚਨਾਵਾਂ ਦੀ ਤਰਜੀਹ"</string>
+    <string name="pref_notification_summary">"ਔਰੋਰਾ ਸੂਚਨਾਵਾਂ ਨੂੰ ਚਾਲੂ ਕਰੋ"</string>
+    <string name="pref_notification_title">"ਸੂਚਨਾਵਾਂ ਵਿਖਾਓ"</string>
+    <string name="pref_proxy_enable">"ਪ੍ਰੌਕਸੀ ਨੂੰ ਚਾਲੂ ਕਰੋ"</string>
+    <string name="pref_proxy_host">"ਪ੍ਰੌਕਸੀ HOST"</string>
+    <string name="pref_proxy_port">"ਪ੍ਰੌਕਸੀ PORT"</string>
+    <string name="pref_proxy_type">"ਪ੍ਰੌਕਸੀ ਦੀ ਕਿਸਮ"</string>
+    <string name="pref_requested_language">"ਮੂਲ API ਭਾਸ਼ਾ ਬਦਲੋ"</string>
+    <string name="pref_requested_language_default">"ਮੂਲ ਭਾਸ਼ਾ ਚੁਣੋ"</string>
+    <string name="pref_requested_location_disable">"ਇਸਨੂੰ ਪੂਰੀ ਤਰ੍ਹਾਂ ਹਟਾਉਣ ਲਈ ਤੁਹਾਨੂੰ ਡਿਵੈਲਪਰ ਵਿਕਲਪਾਂ ਚੋਂ MOCK LOCATION ਨੂੰ ਬੰਦ ਕਰਨ ਦੀ ਲੋੜ ਹੈ"</string>
+    <string name="pref_requested_location_enable">"ਤੁਹਾਨੂੰ ਡਿਵੈਲਪਰ ਵਿਕਲਪਾਂ ਚੋਂ MOCK LOCATION ਨੂੰ ਚਾਲੂ ਕਰਨ ਦੀ ਲੋੜ ਹੈ"</string>
+    <string name="pref_requested_location_summary">"ਔਰੋਰਾ ਸਟੋਰ MOCK LOCATION ਵਿਚ ਡਿਫਾਲਟ ਐਪਲੀਕੇਸ਼ਨ ਦੇ ਤੌਰ ਤੇ ਸੈਟ ਹੋਣਾ ਚਾਹੀਦਾ ਹੈ"</string>
+    <string name="pref_ui_card_summary">"ਫੀਚਰਡ ਐਪਸ ਲਈ ਪੁਰਾਣੇ ਸਟਾਈਲ ਦੇ ਕਾਰਡਾਂ ਦੀ ਵਰਤੋਂ ਕਰੋ"</string>
+    <string name="pref_ui_card_title">"ਪੁਰਾਣੇ ਸਟਾਈਲ ਦੇ ਐਪ ਕਾਰਡ"</string>
+    <string name="pref_ui_snap_summary">"ਸਕਰੋਲ ਕਰਨ ਤੇ ਕੇਵਲ ਇੱਕ ਐਪ ਵਿਖਾਓ"</string>
+    <string name="pref_ui_snap_title">"ਐਪਸ ਲਈ ਸਨੈਪ ਵਿਊ ਨੂੰ ਚਾਲੂ ਕਰੋ"</string>
+    <string name="pref_ui_theme_title">"ਥੀਮ"</string>
+    <string name="testing_program_opt_in">"ਜੁੜੋ"</string>
+    <string name="testing_program_opt_out">"ਛੱਡੋ"</string>
+    <string name="testing_program_review_dialog_content_hint">"ਐਪ ਬਾਰੇ ਆਪਣੇ ਸੁਝਾਅ ਦਰਜ ਕਰੋ"</string>
+    <string name="testing_program_section_opted_in_message">"ਐਪ ਅਪਡੇਟਾਂ ਵਿੱਚ Beta ਵਰਜਨ ਸ਼ਾਮਲ ਹੋਣਗੇ। ਜੇਕਰ ਤੁਸੀਂ ਇਸ ਐਪ ਦੇ Beta ਪ੍ਰੋਗਰਾਮ ਨੂੰ ਛੱਡ ਦਿੰਦੇ ਹੋ, ਤਾਂ ਤੁਹਾਨੂੰ Beta ਅਪਡੇਟਸ ਨਹੀਂ ਮਿਲੇਗਾ।"</string>
+    <string name="testing_program_section_opted_in_propagating_message">"ਕੁਝ ਮਿੰਟਾਂ ਵਿੱਚ ਤੁਹਾਨੂੰ Beta ਪ੍ਰੋਗਰਾਮ ਵਿੱਚ ਜੋੜਿਆ ਜਾਵੇਗਾ। ਜੇਕਰ Beta ਉਪਲਬਧ ਹੈ ਤਾਂ ਤੁਸੀਂ ਇਸ ਐਪ ਦੇ Beta ਸੰਸਕਰਣ ਤੇ ਅਪਡੇਟ ਕਰ ਸਕਦੇ ਹੋ"</string>
+    <string name="testing_program_section_opted_in_title">"ਤੁਸੀਂ ਇੱਕ Beta ਟੈਸਟਰ ਹੋ"</string>
+    <string name="testing_program_section_opted_out_message">"ਨਵੀਆਂ ਖੂਬੀਆਂ ਨੂੰ ਜਨਤਕ ਹੋਣ ਤੋਂ ਪਹਿਲਾਂ ਅਜ਼ਮਾਓ ਅਤੇ ਡਿਵੈਲਪਰ ਨੂੰ ਸਿੱਧੇ ਆਪਣੇ ਸੁਝਾਅ ਦਿਓ।"</string>
+    <string name="testing_program_section_opted_out_propagating_message">"ਤੁਹਾਨੂੰ Beta ਪ੍ਰੋਗਰਾਮ ਤੋਂ ਹਟਾਉਣ ਲਈ ਕੁਝ ਮਿੰਟ ਲੱਗ ਸਕਦੇ ਹਨ"</string>
+    <string name="testing_program_section_opted_out_title">"Beta ਟੈਸਟਰ ਬਣੋ"</string>
+    <string name="title_all_apps">"ਸਾਰੀਆਂ ਐਪਸ"</string>
+    <string name="title_home">"ਔਰੋਰਾ ਸਟੋਰ"</string>
+    <string name="title_installed">"ਮੇਰੇ ਐਪਸ ਤੇ ਗੇਮਸ"</string>
+    <string name="title_perm">"ਅਗਿਆਵਾਂ"</string>
+    <string name="title_search">"ਐਪਸ ਤੇ ਗੇਮਸ ਲੱਭੋ"</string>
+    <string name="title_updates">"ਉਪਲੱਬਧ ਅੱਪਡੇਟਾਂ"</string>
+    <string name="title_welcome">"ਸੁਆਗਤ ਹੈ"</string>
+    <string name="toast_apk_blacklisted">"ਬਲੈਕ ਲਿਸਟ ਕੀਤੀ ਗਈ"</string>
+    <string name="toast_apk_whitelisted">"ਵਾਈਟ ਲਿਸਟ ਕੀਤੀ ਗਈ"</string>
+    <string name="toast_apk_copy_success">"APK ਕਾਪੀ ਹੋ ਗਈ ਹੈ"</string>
+    <string name="toast_apk_copy_failure">"APK ਕਾਪੀ ਕਰਨ ਵਿੱਚ ਅਸਫਲ"</string>
+    <string name="pref_app_language">"ਭਾਸ਼ਾ"</string>
+    <string name="pref_locale_custom_title">"ਆਪਣੀ ਭਾਸ਼ਾ ਚੁਣੋ"</string>
+    <string name="pref_locale_custom_summary">"ਚੁਣੀ ਹੋਈ ਭਾਸ਼ਾ ਲਾਗੂ ਕਰੋ"</string>
+    <string name="pref_locale_list_title">"ਆਪਣਾ ਖੇਤਰ ਚੁਣੋ"</string>
+    <string name="tab_explore">"ਐਪਸ ਵੇਖੋ"</string>
+    <string name="tab_games">"ਗੇਮਸ ਖੋਜੋ"</string>
+    <string name="tab_family">"ਬੱਚੇ ਤੇ ਪਰਿਵਾਰਿਕ"</string>
+    <string name="pref_ui_tab_mode_title">"ਸਕਰੋਲ ਕਰਨ ਯੋਗ Tabs"</string>
+    <string name="pref_ui_tab_mode_summary">"Tabs ਨੂੰ ਸਕਰੋਲ ਕਰਨ ਯੋਗ ਬਣਾਉਣ ਲਈ ਚਾਲੂ ਕਰੋ।
+ਘੱਟ-DPI ਵਾਲੇ ਫੋਨਾਂ ਲਈ।"</string>
+    <string name="about_app">"ਔਰੋਰਾ ਇਕ ਗੂਗਲ ਪਲੇ ਸਟੋਰ ਦਾ ਓਪਨ ਸੋਰਸ ਵਿਕਲਪਕ ਹੈ।
+         ਇਹ ਤੁਹਾਨੂੰ ਐਪਸ ਡਾਊਨਲੋਡ ਕਰਨ ਦਿੰਦਾ ਹੈ, ਇੰਸਟਾਲ ਕੀਤੇ ਐਪਸ ਦੇ ਅਪਡੇਟ ਪ੍ਰਦਾਨ ਕਰਦਾ ਹੈ ਅਤੇ ਤੁਹਾਨੂੰ ਐਪਸ ਤੇ ਗੇਮਸ ਲੱਭਣ ਵਿੱਚ ਸਹਾਇਤਾ ਕਰਦਾ ਹੈ।
+         ਇਹ ਕਿਸੇ ਐਪ ਵਿੱਚ ਵਰਤੇ ਗਏ ਟਰੈਕਰਾਂ ਦੀ ਸੂਚੀ ਵੀ ਪ੍ਰਦਾਨ ਕਰਦਾ ਹੈ।"</string>
+    <string name="about_paypal">"PayPal"</string>
+    <string name="about_paypal_summary">"PayPal ਉੱਤੇ ਮੈਨੂੰ ਦਾਨ ਕਰੋ।"</string>
+    <string name="about_fdroid">"F-Droid"</string>
+    <string name="about_gitlab">"GitLab"</string>
+    <string name="about_gitlab_summary">"ਔਰੋਰਾ ਸਟੋਰ ਦਾ Source Code ਔਰੋਰਾ OSS GitLab ਤੋਂ ਪ੍ਰਾਪਤ ਕਰੋ"</string>
+    <string name="about_telegram">"ਟੈਲੀਗ੍ਰਾਮ"</string>
+    <string name="about_telegram_summary">"ਕੋਈ ਚਰਚਾ ਜਾਂ ਸੁਝਾਅ ਵਾਸਤੇ ਔਰੋਰਾ ਸਹਾਇਤਾ ਗਰੁੱਪ ਨਾਲ ਜੁੜੋ"</string>
+    <string name="about_fdroid_summary">"ਔਰੋਰਾ ਸਟੋਰ F-Droid ਤੋਂ ਪ੍ਰਾਪਤ ਕਰੋ"</string>
+    <string name="about_xda">"ਡਿਵੈਲਪਰ ਵੈਬਸਾਈਟ"</string>
+    <string name="about_xda_summary">"ਕੋਈ ਚਰਚਾ ਜਾਂ ਸੁਝਾਅ ਦੇਣ ਵਾਸਤੇ ਔਰੋਰਾ ਸਟੋਰ ਦੀ XDA ਵੈਬਸਾਈਟ ਵੇਖੋ"</string>
+    <string name="action_about">"ਐਪ ਬਾਰੇ"</string>
+    <string name="pref_downloader_strategy_summary">"ਡਾਉਨਲੋਡ ਕਰਨ ਦੀ ਰਣਨੀਤੀ ਚੁਣੋ। ਸਭ ਤੋਂ ਤੇਜ਼ ਡਾਉਨਲੋਡ ਵਾਸਤੇ ਸਮਾਨਾਂਤਰ ਰਣਨੀਤੀ ਚੁਣੋ।"</string>
+    <string name="pref_downloader_strategy_title">"ਡਾਉਨਲੋਡ ਰਣਨੀਤੀ"</string>
+    <string name="pref_downloader_strategy_sequential">"ਕਤਾਰਬੱਧ ਡਾਉਨਲੋਡ"</string>
+    <string name="pref_downloader_strategy_parallel">"ਸਮਾਨਾਂਤਰ ਡਾਉਨਲੋਡ(ਹਿਸਿਆਂ ਚ)"</string>
+    <string name="pref_install_mode_native">"Native"</string>
+    <string name="pref_install_mode_root">"Root"</string>
+    <string name="pref_notification_priority_default">"ਮੂਲ"</string>
+    <string name="pref_notification_priority_high">"ਜਿਆਦਾ"</string>
+    <string name="pref_notification_priority_max">"ਬਹੁਤ ਜਿਆਦਾ"</string>
+    <string name="pref_notification_provider_summary">"ਮੂਲ ਸੂਚਨਾ ਪ੍ਰਦਾਤਾ ਚੁਣੋ"</string>
+    <string name="pref_notification_provider_title">"ਸੂਚਨਾ ਪ੍ਰਦਾਤਾ"</string>
+    <string name="pref_notification_provider_native">"Native ਸੂਚਨਾ ਪ੍ਰਦਾਤਾ"</string>
+    <string name="pref_notification_provider_aurora">"ਔਰੋਰਾ ਸੂਚਨਾ ਪ੍ਰਦਾਤਾ"</string>
+    <string name="pref_ui_theme_light">"ਸਫੈਦ"</string>
+    <string name="pref_ui_theme_dark">"ਗੂੜਾ"</string>
+    <string name="pref_ui_theme_black">"ਕਾਲਾ"</string>
+    <string name="action_close">"ਬੰਦ ਕਰੋ"</string>
+    <string name="list_update_all_queue_txt">"ਅਪਡੇਟਾਂ ਕਤਾਰਬੱਧ ਹਨ"</string>
+    <string name="notification_installation_complete">"ਇੰਸਟਾਲ ਹੋ ਗਿਆ ਹੈ"</string>
+    <string name="notification_installation_failed">"ਇੰਸਟਾਲ ਫੇਲ"</string>
+    <string name="notification_installation_progress">"ਇੰਸਟਾਲ ਹੋ ਰਿਹਾ ਹੈ"</string>
+    <string name="apps_by">"ਐਪਸ by"</string>
+    <string name="error_network_other">"ਨੈਟਵਰਕ ਖਾਮੀ"</string>
+    <string name="exodus_hasTracker">"ਟਰੈਕਰ ਸ਼ਾਮਿਲ ਹਨ"</string>
+    <string name="list_selected">"ਐਪਸ ਚੁਣ ਲਈਆਂ"</string>
+    <string name="notification_installation_auto">"ਡਾਊਨਲੋਡ ਖਤਮ, ਇੰਸਟਾਲ ਲਈ ਦੱਬੋ"</string>
+    <string name="notification_installation_manual">"ਬੰਡਲ APK, ਖੁੱਦ ਇਸਨੂੰ ਚੁਣੋ"</string>
+    <string name="title_search_result">"ਨਤੀਜੇ"</string>
+    <string name="action_recheck">"ਮੁੜ ਜਾਂਚ"</string>
+    <string name="action_recheck_ing">"ਮੁੜ ਜਾਂਚ ਚਾਲੂ"</string>
+    <string name="pref_install_type_summary">"ਪੈਕੇਜ ਇੰਸਟਾਲ ਕਰਨ ਲਈ ਮੂਲ ਇੰਸਟਾਲਰ ਦੀ ਵਰਤੋਂ ਕਰੋ, ਬੰਡਲਡ APK ਇੰਸਟਾਲ ਨਹੀਂ ਹੋਵੇਗੀ"</string>
+    <string name="pref_install_type_title">"ਮੂਲ ਇੰਸਟਾਲਰ ਲਾਗੂ ਕਰੋ"</string>
+    <string name="pref_ui_tab_default_title">"ਮੂਲ Tab ਚੁਣੋ"</string>
+    <string name="pref_update_interval_title">"ਅੱਪਡੇਟ ਦਾ ਅੰਤਰਾਲ"</string>
+    <string name="pref_update_interval_manually">"ਖੁੱਦ ਕਰੋ"</string>
+    <string name="pref_update_interval_hourly">"ਹਰੇਕ ਘੰਟੇ"</string>
+    <string name="pref_update_interval_daily">"ਹਰੇਕ ਹਫਤੇ"</string>
+    <string name="pref_update_interval_weekly">"ਹਰ ਰੋਜ"</string>
+    <string name="download_none">"ਕੋਈ ਡਾਊਨਲੋਡ ਨਹੀਂ"</string>
+    <string name="error_app_download">"ਡਾਊਨਲੋਡ ਫੇਲ"</string>
+    <string name="details_new_changes">"ਨਵਾਂ ਕੀ ਹੈ"</string>
+    <string name="action_apps">"ਐਪਸ"</string>
+    <string name="action_logging_in_success">"ਲੌਗ-ਇਨ ਸਫਲ"</string>
+    <string name="action_token_expired">"ਟੋਕਨ ਮਿਆਦ ਖੱਤਮ, ਨਵੇਂ ਟੋਕਨ ਲਈ ਬੇਨਤੀ"</string>
+    <string name="action_token_force_request">"ਦੋਬਾਰਾ ਬੇਨਤੀ"</string>
+    <string name="cat_top_apps">"ਟੋਪ ਐਪਸ"</string>
+    <string name="cat_top_categories">"ਟੋਪ ਸ਼੍ਰੇਣੀਆਂ"</string>
+    <string name="cat_top_games">"ਟੋਪ ਗੇਮਸ"</string>
+    <string name="cat_top_family">"ਟੋਪ ਪਰਿਵਾਰਿਕ ਐਪ"</string>
+    <string name="details_no_changes">"ਡਿਵੈਲਪਰ ਵਲੋਂ ਬਦਲਾਅ ਸੂਚੀ ਨਹੀਂ ਮੁਹੱਈਆ"</string>
+    <string name="error_logged_out">"ਤੁਸੀਂ ਲੌਗ-ਆਊਟ ਹੋ"</string>
+    <string name="link_dev">"ਡਿਵੈਲਪਰ"</string>
+    <string name="link_prmission">"ਅਗਿਆਵਾਂ"</string>
+    <string name="link_playstore">"ਪਲੇ ਸਟੋਰ"</string>
+    <string name="link_setting">"ਸੈਟਿੰਗ"</string>
+    <string name="link_share">"ਸਾਂਝਾ ਕਰੋ"</string>
+    <string name="pref_install_mode_no_root">"Root ਉਪਲੱਬਧ ਨਹੀਂ ਹੈ, ਪੁਸ਼ਟੀ ਕਰ ਲਵੋ ਕਿ ਫੋਨ Rooted ਹੈ"</string>
+    <string name="pref_install_mode_root_warn">"Root ਤਰੀਕੇ ਨਾਲ ਇੰਸਟਾਲ ਕਰਨ ਲਈ APK ਨੂੰ ਐਪ ਡੇਟਾ ਵਿੱਚ ਡਾਊਨਲੋਡ ਕਰਨ ਦੀ ਜ਼ਰੂਰਤ ਹੈ, ਐਂਡਰਾਇਡ Pie ++ ਲਈ ADB shell ਦੁਆਰਾ"</string>
+    <string name="pref_ui_ime">"IME ਚ ਖੋਜੋ"</string>
+    <string name="pref_ui_ime_summary">"ਖੋਜ ਪੰਨੇ ਤੇ ਆਪਣੇ ਆਪ ਕੀਬੋਰਡ ਦਿਖਾਓ"</string>
+    <string name="pref_ui_transparent">"ਪਾਰਦਰਸ਼ੀ ਸ਼ੈਲੀ"</string>
+    <string name="pref_ui_transparent_summary">"ਸ਼੍ਰੇਣੀ ਅਤੇ ਲਿੰਕ ਦ੍ਰਿਸ਼ਾਂ ਲਈ ਪਾਰਦਰਸ਼ੀ ਕਾਰਡ ਸ਼ੈਲੀ ਦੀ ਵਰਤੋਂ ਕਰੋ"</string>
+    <string name="pref_install_delete_summary">"Rooted ਐਂਡਰਾਇਡ Pie + ਚਲਾ ਰਹੇ ਡਿਵਾਈਸਾਂ 'ਤੇ APK ਆਪਣੇ ਆਪ ਇੰਸਟਾਲ ਹੋਣ ਤੋਂ ਬਾਅਦ ਮਿਟ ਜਾਂਦੇ ਹਨ"</string>
+    <string name="action_loading">"ਲੋਡ ਹੋ ਰਿਹਾ ਹੈ"</string>
+    <string name="pref_default">"ਮੂਲ"</string>
+    <string name="toast_loading_apps">"ਐਪਸ ਲੋਡ ਹੋ ਰਹੇ ਹਨ"</string>
+    <string name="dialog_2FA_title">"੨ ਫੈਕਟਰ ਖਾਤਾ ਪ੍ਰਮਾਣਿਕਤਾ"</string>
+    <string name="dialog_2FA_desc">"ਜਾਪਦਾ ਹੈ ਤੁਸੀਂ 2FA ਲਾਗੂ ਕੀਤਾ ਹੈ, ਕਿਰਪਾ ਕਰਕੇ ਇੱਕ ਐਪ ਪਾਸਵਰਡ ਤਿਆਰ ਕਰੋ ਅਤੇ ਇਸ ਪਾਸਵਰਡ ਨੂੰ ਲੌਗ-ਇਨ ਲਈ ਵਰਤੋ।"</string>
+    <string name="dialog_2FA_positive">"ਪਾਸਵਰਡ ਬਣਾਓ"</string>
+    <string name="dialog_purchase_title">"ਐਪ ਖਰੀਦੋ"</string>
+    <string name="dialog_purchase_desc">"ਤੁਹਾਨੂੰ ਪਹਿਲਾਂ ਇਸ ਐਪ ਨੂੰ ਖਰੀਦਣ ਦੀ ਜ਼ਰੂਰਤ ਹੈ, ਔਰੋਰਾ ਸਟੋਰ ਇਸ ਸਮੇਂ ਐਪ-ਖ਼ਰੀਦਾਂ ਵਿੱਚ ਸਹਿਯੋਗ ਨਹੀਂ ਕਰਦਾ, ਤੁਹਾਨੂੰ ਖਰੀਦ ਵਾਸਤੇ ਵੈਬ ਪੇਜ ਤੇ ਭੇਜਿਆ ਜਾਵੇਗਾ।"</string>
+    <string name="dialog_purchase_positive">"ਖਰੀਦੋ"</string>
+    <string name="dialog_geores_title">"Location ਸੀਮਿਤ ਐਪ"</string>
+    <string name="dialog_geores_desc">"ਜਿਸ ਐਪ ਨੂੰ ਡਾਊਨਲੋਡ ਕਰਨ ਦੀ ਕੋਸ਼ਿਸ਼ ਕਰ ਰਹੇ ਹੋ, ਉਹ ਤੁਹਾਡੇ ਦੇਸ਼ ਵਿੱਚ ਉਪਲਬਧ ਨਹੀਂ ਹੈ, ਡਾਊਨਲੋਡ ਕਰਨ ਲਈ \"ਧੋਖਾ\" ਸੈਟਿੰਗਾਂ ਵਿਚੋਂ \" ਨਕਲੀ ਥਾਂ\" ਵਰਤੋਂ।"</string>
+    <string name="dialog_incompat_title">"ਐਪ ਅਨੁਕੂਲ ਨਹੀਂ"</string>
+    <string name="dialog_incompat_desc">"ਜੋ ਐਪ ਤੁਸੀਂ ਡਾਊਨਲੋਡ ਕਰਨ ਦੀ ਕੋਸ਼ਿਸ਼ ਕਰ ਰਹੇ ਹੋ ਉਹ ਤੁਹਾਡੀ ਡਿਵਾਈਸ ਨਾਲ ਅਨੁਕੂਲ ਨਹੀਂ ਹੈ, ਡਾਊਨਲੋਡ ਕਰਨ ਲਈ \"ਧੋਖਾ\" ਸੈਟਿੰਗਾਂ ਵਿਚੋਂ \"ਨਕਲੀ ਡਿਵਾਈਸ\" ਵਰਤੋਂ।"</string>
+    <string name="pref_install_mode_services">"ਔਰੋਰਾ ਸੇਵਾਵਾਂ"</string>
+    <string name="pref_install_mode_no_services">"ਔਰੋਰਾ ਸੇਵਾਵਾਂ ਇੰਸਟਾਲ ਨਹੀਂ ਹਨ। ਕਿਰਪਾ ਕਰਕੇ ਸੇਵਾਵਾਂ ਇੰਸਟਾਲ ਕਰੋ।"</string>
+    <string name="pref_install_mode_offline_services">"ਔਰੋਰਾ ਸੇਵਾਵਾਂ ਜੁੜੀਆਂ ਨਹੀਂ ਹਨ, ਕਿਰਪਾ ਕਰਕੇ ਯਕੀਨੀ ਬਣਾਓ ਕਿ ਇਹ ਚਾਲੂ ਹਨ ਤੇ ਐਪ ਦਾ ਸਹੀ ਸੰਸਕਰਣ ਹੈ।"</string>
+    <string name="action_info">"ਐਪ ਬਾਰੇ"</string>
+    <string name="download_waiting">"ਉਡੀਕ ਕਰੋ"</string>
+    <string name="pref_services_title">"ਔਰੋਰਾ ਸਰਵਿਸਿਜ਼"</string>
+    <string name="pref_services_desc">"ਔਰੋਰਾ ਸਰਵਿਸਿਜ਼ ਚਲਾਓ"</string>
+    <string name="pref_services_desc_alt">"ਔਰੋਰਾ ਸਰਵਿਸਿਜ਼ ਅਣਉਪਲਬਧ"</string>
+    <string name="pref_custom_tokenizer">"ਕਸਟਮ ਟੋਕਨਾਇਜ਼ਰ ਚਲਾਓ"</string>
+    <string name="pref_custom_tokenizer_url">"ਟੋਕਨਾਇਜ਼ਰ URL"</string>
+</resources>
