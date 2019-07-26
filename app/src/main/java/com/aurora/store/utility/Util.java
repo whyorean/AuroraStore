@@ -295,6 +295,10 @@ public class Util {
         return getPrefs(context).getBoolean(Constants.PREFERENCE_UI_TRANSPARENT, true);
     }
 
+    public static boolean isExtendedUpdatesEnabled(Context context) {
+        return getPrefs(context).getBoolean(Constants.PREFERENCE_UPDATES_EXTENDED, false);
+    }
+
     public static boolean filterGoogleAppsEnabled(Context context) {
         return getPrefs(context).getBoolean(Constants.PREFERENCE_FILTER_GOOGLE, false);
     }

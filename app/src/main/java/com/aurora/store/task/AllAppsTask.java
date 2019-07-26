@@ -41,7 +41,9 @@ public class AllAppsTask extends BaseTask {
         PackageManager packageManager = context.getPackageManager();
         for (PackageInfo packageInfo : packageManager.getInstalledPackages(0)) {
             final String packageName = packageInfo.packageName;
-            if (packageInfo.applicationInfo!=null && !packageInfo.applicationInfo.enabled)
+            if (packageInfo.applicationInfo != null
+                    && !packageInfo.applicationInfo.enabled
+                    && !Util.isExtendedUpdatesEnabled(context))
                 continue;
             if (Util.filterFDroidAppsEnabled(context) && CertUtil.isFDroidApp(context, packageName))
                 continue;

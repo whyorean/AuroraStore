@@ -333,6 +333,8 @@
     <string name="pref_update_interval_hourly">Hourly</string>
     <string name="pref_update_interval_daily">Weekly</string>
     <string name="pref_update_interval_weekly">Daily</string>
+    <string name="pref_updates_extended">Extended updates</string>
+    <string name="pref_updates_extended_desc">Enable to check updates for disabled apps</string>
     <string name="pref_services_title">Aurora Services</string>
     <string name="pref_services_desc">Launch Aurora services</string>
     <string name="pref_services_desc_alt">Aurora services unavailable</string>
