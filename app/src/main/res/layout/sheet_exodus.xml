@@ -75,21 +75,13 @@
             android:text="@string/exodus_viewReport"
             app:cornerRadius="20dp" />
 
-        <View
-            android:id="@+id/gradient_view"
-            android:layout_width="match_parent"
-            android:layout_height="32dp"
-            android:background="@drawable/gradient_bg"
-            android:translationZ="10dp" />
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/exodus_recycler"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="-32dp"
-            android:clipToPadding="false"
             android:overScrollMode="never"
             android:paddingTop="@dimen/margin_normal"
+            android:splitMotionEvents="false"
             tools:listitem="@layout/item_exodus" />
 
     </LinearLayout>

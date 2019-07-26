@@ -24,8 +24,8 @@
     android:id="@+id/scroll_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:clipToPadding="false"
-    android:paddingTop="@dimen/margin_normal"
+    android:fillViewport="true"
+    android:overScrollMode="never"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
     <LinearLayout
