@@ -60,7 +60,8 @@ public abstract class AppInstallerAbstract {
 
     void dispatchSessionUpdate(int status, String packageName) {
         handler.post(() -> {
-            installationStatusListener.onStatusChanged(status, packageName);
+            if (installationStatusListener != null)
+                installationStatusListener.onStatusChanged(status, packageName);
         });
     }
 

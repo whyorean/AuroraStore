@@ -36,7 +36,7 @@ public class InstallerService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        int status = intent.getIntExtra(PackageInstaller.EXTRA_STATUS, -999);
+        int status = intent.getIntExtra(PackageInstaller.EXTRA_STATUS, -1);
         String packageName = intent.getStringExtra(PackageInstaller.EXTRA_PACKAGE_NAME);
 
         //Send broadcast for the installation status of the package
@@ -49,7 +49,7 @@ public class InstallerService extends Service {
             try {
                 startActivity(confirmationIntent);
             } catch (Exception e) {
-                sendStatusBroadcast(PackageInstaller.STATUS_FAILURE, "Unable to launch activity");
+                sendStatusBroadcast(PackageInstaller.STATUS_FAILURE, packageName);
             }
         }
         stopSelf();

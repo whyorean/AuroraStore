@@ -47,7 +47,7 @@ public class AppInstallerPrivileged extends AppInstallerAbstract {
 
     private static final int ACTION_INSTALL_REPLACE_EXISTING = 2;
 
-    private static AppInstallerPrivileged instance;
+    private static volatile AppInstallerPrivileged instance;
 
     private AppInstallerPrivileged(Context context) {
         super(context);
@@ -57,7 +57,8 @@ public class AppInstallerPrivileged extends AppInstallerAbstract {
     public static AppInstallerPrivileged getInstance(Context context) {
         if (instance == null) {
             synchronized (AppInstallerPrivileged.class) {
-                if (instance == null) instance = new AppInstallerPrivileged(context);
+                if (instance == null)
+                    instance = new AppInstallerPrivileged(context);
             }
         }
         return instance;

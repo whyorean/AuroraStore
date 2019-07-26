@@ -315,6 +315,19 @@ public class Util {
         return getPrefs(context).getBoolean(Constants.PREFERENCE_DOWNLOAD_WIFI, false);
     }
 
+    public static boolean isPrivilegedInstall(Context context) {
+        String prefValue = PrefUtil.getString(context, Constants.PREFERENCE_INSTALLATION_METHOD);
+        switch (prefValue) {
+            case "0":
+                return false;
+            case "1":
+            case "2":
+                return true;
+            default:
+                return false;
+        }
+    }
+
     public static boolean shouldDeleteApk(Context context) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P && Util.isRootInstallEnabled(context)) {
             return true;

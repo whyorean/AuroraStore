@@ -28,13 +28,11 @@ public class Uninstaller {
         String prefValue = PrefUtil.getString(context, Constants.PREFERENCE_INSTALLATION_METHOD);
         switch (prefValue) {
             case "0":
+            case "2":
                 uninstallByPackageManager(app);
                 break;
             case "1":
                 uninstallByRoot(app);
-                break;
-            case "2":
-                uninstallByServices(app);
                 break;
             default:
                 uninstallByPackageManager(app);

@@ -32,6 +32,7 @@ import android.net.Uri;
 import android.os.Build;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.core.content.FileProvider;
 
 import com.aurora.store.Constants;
@@ -51,7 +52,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Installer {
+public class Installer implements AppInstallerAbstract.InstallationStatusListener {
 
     private Context context;
     private Map<String, App> appHashMap = new HashMap<>();
@@ -106,20 +107,19 @@ public class Installer {
             }
         }
 
-        packageInstaller.installApkFiles(apkFiles);
-        packageInstaller.addInstallationStatusListener((statusCode, intentPackageName) -> {
-            final String status = getStatusString(statusCode);
+        packageInstaller.addInstallationStatusListener((status, intentPackageName) -> {
+            final String statusMessage = getStatusString(status);
             final App app = appHashMap.get(intentPackageName);
             final String displayName = (app != null)
                     ? TextUtil.emptyIfNull(app.getDisplayName())
                     : TextUtil.emptyIfNull(intentPackageName);
 
-            Log.i("Package Installer -> %s : %s", displayName, TextUtil.emptyIfNull(status));
+            Log.i("Package Installer -> %s : %s", displayName, TextUtil.emptyIfNull(statusMessage));
 
             if (app != null)
                 clearNotification(app);
 
-            switch (statusCode) {
+            switch (status) {
                 case PackageInstaller.STATUS_FAILURE:
                 case PackageInstaller.STATUS_FAILURE_ABORTED:
                 case PackageInstaller.STATUS_FAILURE_BLOCKED:
@@ -130,14 +130,14 @@ public class Installer {
                     QuickNotification.show(
                             context,
                             displayName,
-                            status,
+                            statusMessage,
                             getContentIntent(intentPackageName));
                     break;
                 case PackageInstaller.STATUS_SUCCESS:
                     QuickNotification.show(
                             context,
                             displayName,
-                            status,
+                            statusMessage,
                             getContentIntent(intentPackageName));
                     if (app != null) {
                         clearInstallationFiles(app);
@@ -146,6 +146,7 @@ public class Installer {
                     break;
             }
         });
+        packageInstaller.installApkFiles(apkFiles);
     }
 
     private void clearInstallationFiles(@NonNull App app) {
@@ -211,5 +212,10 @@ public class Installer {
             default:
                 return context.getString(R.string.installer_status_unknown);
         }
+    }
+
+    @Override
+    public void onStatusChanged(int status, @Nullable String packageName) {
+
     }
 }

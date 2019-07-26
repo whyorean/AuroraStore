@@ -24,9 +24,13 @@
 package com.aurora.store.installer;
 
 import android.content.Context;
+import android.content.pm.PackageInstaller;
 
+import com.aurora.store.utility.ContextUtil;
 import com.aurora.store.utility.Log;
 import com.aurora.store.utility.Root;
+
+import org.apache.commons.io.FilenameUtils;
 
 import java.io.File;
 import java.util.List;
@@ -36,7 +40,7 @@ import java.util.regex.Pattern;
 
 public class AppInstallerRooted extends AppInstallerAbstract {
 
-    private static AppInstallerRooted instance;
+    private static volatile AppInstallerRooted instance;
     private static Root root;
 
     private AppInstallerRooted(Context context) {
@@ -59,11 +63,13 @@ public class AppInstallerRooted extends AppInstallerAbstract {
     @Override
     protected void installApkFiles(List<File> apkFiles) {
         try {
-            final String packageName = apkFiles.get(0).getName();
+
+            final String packageName = getPackageName(apkFiles.get(0));
             if (root.isTerminated() || !root.isAcquired()) {
-                root = new Root();
+                Root.requestRoot();
                 if (!root.isAcquired()) {
-                    Log.e("Root not available");
+                    ContextUtil.toastLong(getContext(), "Root access not available");
+                    dispatchSessionUpdate(PackageInstaller.STATUS_FAILURE, packageName);
                     return;
                 }
             }
@@ -94,9 +100,9 @@ public class AppInstallerRooted extends AppInstallerAbstract {
                     sessionId)));
 
             if (result.toLowerCase().contains("success"))
-                dispatchSessionUpdate(android.content.pm.PackageInstaller.STATUS_SUCCESS, packageName);
+                dispatchSessionUpdate(PackageInstaller.STATUS_SUCCESS, packageName);
             else
-                dispatchSessionUpdate(android.content.pm.PackageInstaller.STATUS_FAILURE, packageName);
+                dispatchSessionUpdate(PackageInstaller.STATUS_FAILURE, packageName);
         } catch (Exception e) {
             Log.w(e.getMessage());
         }
@@ -106,5 +112,15 @@ public class AppInstallerRooted extends AppInstallerAbstract {
         if (result == null || result.length() == 0)
             throw new RuntimeException(root.readError());
         return result;
+    }
+
+    private String getPackageName(File fileName) {
+        final String baseName = FilenameUtils.getBaseName(fileName.getName());
+        Pattern pattern = Pattern.compile("[.a-z]*[^.0-9]");
+        Matcher matcher = pattern.matcher(baseName);
+        if (matcher.find())
+            return matcher.group(0);
+        else
+            return "unknown";
     }
 }

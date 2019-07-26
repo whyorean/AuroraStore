@@ -26,6 +26,7 @@ package com.aurora.store.installer;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageInstaller;
 
 import com.aurora.store.utility.Log;
 
@@ -57,12 +58,11 @@ public class AppInstaller extends AppInstallerAbstract {
 
     @Override
     protected void installApkFiles(List<File> apkFiles) {
-        android.content.pm.PackageInstaller packageInstaller = getContext().getPackageManager().getPackageInstaller();
+        PackageInstaller packageInstaller = getContext().getPackageManager().getPackageInstaller();
         try {
-            android.content.pm.PackageInstaller.SessionParams sessionParams =
-                    new android.content.pm.PackageInstaller.SessionParams(android.content.pm.PackageInstaller.SessionParams.MODE_FULL_INSTALL);
+            PackageInstaller.SessionParams sessionParams = new PackageInstaller.SessionParams(PackageInstaller.SessionParams.MODE_FULL_INSTALL);
             int sessionID = packageInstaller.createSession(sessionParams);
-            android.content.pm.PackageInstaller.Session session = packageInstaller.openSession(sessionID);
+            PackageInstaller.Session session = packageInstaller.openSession(sessionID);
             for (File apkFile : apkFiles) {
                 InputStream inputStream = new FileInputStream(apkFile);
                 OutputStream outputStream = session.openWrite(apkFile.getName(), 0, apkFile.length());
@@ -79,7 +79,6 @@ public class AppInstaller extends AppInstallerAbstract {
                     PendingIntent.FLAG_UPDATE_CURRENT);
             session.commit(pendingIntent.getIntentSender());
             session.close();
-
         } catch (Exception e) {
             Log.w(e.getMessage());
         }

@@ -18,6 +18,7 @@ import com.aurora.store.activity.SettingsActivity;
 import com.aurora.store.utility.PackageUtil;
 import com.aurora.store.utility.PathUtil;
 import com.aurora.store.utility.PrefUtil;
+import com.aurora.store.utility.Root;
 import com.aurora.store.utility.Util;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.scottyab.rootbeer.RootBeer;
@@ -55,6 +56,7 @@ public class InstallationFragment extends PreferenceFragmentCompat implements Sh
                 RootBeer rootBeer = new RootBeer(context);
                 if (rootBeer.isRooted()) {
                     PrefUtil.putString(context, Constants.PREFERENCE_INSTALLATION_METHOD, installMethod);
+                    Root.requestRoot();
                     showDownloadDialog();
                     return true;
                 } else {

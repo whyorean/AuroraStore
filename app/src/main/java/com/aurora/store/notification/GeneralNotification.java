@@ -90,8 +90,8 @@ public class GeneralNotification extends NotificationBase {
         builder = getBuilder();
         builder.setContentText(context.getString(R.string.download_completed));
         builder.setProgress(0, 0, false);
-        builder.addAction(R.drawable.ic_installation, context.getString(R.string.details_install),
-                getInstallIntent());
+        if (!Util.isPrivilegedInstall(context))
+            builder.addAction(R.drawable.ic_installation, context.getString(R.string.details_install), getInstallIntent());
         builder.setAutoCancel(true);
         show();
         NotificationUtil.updateDNDNotificationMap(context, app.getPackageName(), "");
