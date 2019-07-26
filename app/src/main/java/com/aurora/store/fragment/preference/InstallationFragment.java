@@ -62,6 +62,11 @@ public class InstallationFragment extends PreferenceFragmentCompat implements Sh
                     return false;
                 }
             } else if (installMethod.equals(SERVICES)) {
+                if (PrefUtil.getBoolean(context, Constants.PREFERENCE_DOWNLOAD_INTERNAL)) {
+                    showInternalDialog();
+                    return false;
+                }
+
                 if (PackageUtil.isInstalled(context, Constants.SERVICE_PACKAGE)) {
                     PrefUtil.putString(context, Constants.PREFERENCE_INSTALLATION_METHOD, installMethod);
                     PrefUtil.putString(context, Constants.PREFERENCE_DOWNLOAD_DIRECTORY, PathUtil.getExtBaseDirectory(context));
@@ -100,6 +105,15 @@ public class InstallationFragment extends PreferenceFragmentCompat implements Sh
                 break;
         }
 
+    }
+
+    private void showInternalDialog() {
+        MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
+        builder.setTitle(R.string.pref_app_download);
+        builder.setMessage(R.string.pref_install_mode_internal_warn);
+        builder.setPositiveButton(android.R.string.ok, (dialog, which) -> dialog.dismiss());
+        builder.create();
+        builder.show();
     }
 
     private void showDownloadDialog() {

@@ -269,6 +269,8 @@
     <string name="pref_downloader_strategy_parallel">Parallel download (Splits)</string>
     <string name="pref_downloader_path_title">Download path</string>
     <string name="pref_downloader_wifi_title">Download using wifi only</string>
+    <string name="pref_downloader_internal">Download apps in internal storage</string>
+    <string name="pref_downloader_internal_desc">If enabled, you will not able to install apps via Aurora Services</string>
     <string name="pref_filter_fdroid_summary">Removes F-droid apps from app lists</string>
     <string name="pref_filter_fdroid_title">Filter F-droid apps</string>
     <string name="pref_filter_google_summary">Removes all Google Apps from search results and category apps</string>
@@ -290,6 +292,7 @@
     <string name="pref_install_mode_no_services">Aurora Services not installed, kindly install services first</string>
     <string name="pref_install_mode_offline_services">Aurora Services not connected, kindly make sure its enabled and you have correct version of app</string>
     <string name="pref_install_mode_root_warn">Root install method requires the apk to be downloaded in app data, in order to install via adb shell, Android Pie +</string>
+    <string name="pref_install_mode_internal_warn">You have selected internal storage for downloads, kindly disable it to use Aurora Services</string>
     <string name="pref_locale_custom_title">Custom langage</string>
     <string name="pref_locale_custom_summary">Enforce custom app language</string>
     <string name="pref_locale_list_title">Select locale</string>

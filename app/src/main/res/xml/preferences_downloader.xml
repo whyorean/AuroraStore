@@ -21,8 +21,16 @@
 <androidx.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <EditTextPreference
+        app:dependency="PREFERENCE_DOWNLOAD_INTERNAL"
         app:key="PREFERENCE_DOWNLOAD_DIRECTORY"
         app:title="@string/pref_downloader_path_title" />
+
+    <SwitchPreferenceCompat
+        app:defaultValue="false"
+        app:disableDependentsState="true"
+        app:key="PREFERENCE_DOWNLOAD_INTERNAL"
+        app:summary="@string/pref_downloader_internal_desc"
+        app:title="@string/pref_downloader_internal" />
 
     <SwitchPreferenceCompat
         app:defaultValue="false"
