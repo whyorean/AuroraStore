@@ -91,7 +91,6 @@ public class UpdatableAppsTask extends AllAppsTask {
             } else
                 throw e;
         }
-
         return appList;
     }
 

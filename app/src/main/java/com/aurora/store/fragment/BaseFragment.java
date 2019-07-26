@@ -251,7 +251,6 @@ public abstract class BaseFragment extends Fragment {
     /*Exception handling methods*/
 
     protected void processException(Throwable e) {
-        e.printStackTrace();
         disposable.clear();
         if (e instanceof AuthException) {
             processAuthException((AuthException) e);

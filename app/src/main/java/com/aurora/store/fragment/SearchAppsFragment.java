@@ -26,10 +26,10 @@ import android.content.Context;
 import android.content.res.ColorStateList;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 
 import androidx.annotation.NonNull;
@@ -44,7 +44,6 @@ import com.aurora.store.ErrorType;
 import com.aurora.store.Filter;
 import com.aurora.store.R;
 import com.aurora.store.activity.AuroraActivity;
-import com.aurora.store.activity.DetailsActivity;
 import com.aurora.store.adapter.EndlessAppsAdapter;
 import com.aurora.store.model.App;
 import com.aurora.store.sheet.FilterBottomSheet;
@@ -63,7 +62,6 @@ import org.apache.commons.lang3.StringUtils;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
-import java.util.regex.Pattern;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -73,10 +71,10 @@ import io.reactivex.schedulers.Schedulers;
 
 public class SearchAppsFragment extends BaseFragment {
 
-    @BindView(R.id.search_apps_list)
-    RecyclerView recyclerView;
     @BindView(R.id.search_apps)
     SearchView searchView;
+    @BindView(R.id.search_apps_list)
+    RecyclerView recyclerView;
     @BindView(R.id.filter_fab)
     ExtendedFloatingActionButton filterFab;
     @BindView(R.id.related_chip_group)
@@ -94,21 +92,7 @@ public class SearchAppsFragment extends BaseFragment {
     }
 
     private void setQuery(String query) {
-        if (looksLikeAPackageId(query)) {
-            context.startActivity(DetailsActivity.getDetailsIntent(getContext(), query));
-        } else {
-            this.query = query;
-            fetchSearchAppsList(false);
-        }
-    }
-
-    private boolean looksLikeAPackageId(String query) {
-        if (TextUtils.isEmpty(query)) {
-            return false;
-        }
-        String pattern = "([\\p{L}_$][\\p{L}\\p{N}_$]*\\.)+[\\p{L}_$][\\p{L}\\p{N}_$]*";
-        Pattern r = Pattern.compile(pattern);
-        return r.matcher(query).matches();
+        this.query = query;
     }
 
     @Override
@@ -122,30 +106,30 @@ public class SearchAppsFragment extends BaseFragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_search_applist, container, false);
         ButterKnife.bind(this, view);
+        Bundle arguments = getArguments();
+        if (arguments != null) {
+            setQuery(arguments.getString("SearchQuery"));
+            searchView.setQuery(getQuery(), false);
+        } else
+            Log.e("No category id provided");
         return view;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        setErrorView(ErrorType.NO_SEARCH);
-        switchViews(true);
-        setupSearch();
+        setErrorView(ErrorType.UNKNOWN);
         setupRecycler();
+        setupSearch();
+        filterFab.show();
         filterFab.setOnClickListener(v -> getFilterDialog());
     }
 
     @Override
     public void onResume() {
         super.onResume();
-    }
-
-    public void setUserVisibleHint(boolean isVisibleToUser) {
-        super.setUserVisibleHint(isVisibleToUser);
-        if (isVisibleToUser) {
-            if (searchView != null && Util.isIMEEnabled(context))
-                searchView.requestFocus();
-        }
+        if (endlessAppsAdapter == null || endlessAppsAdapter.isDataEmpty())
+            fetchSearchAppsList(false);
     }
 
     @Override
@@ -171,18 +155,14 @@ public class SearchAppsFragment extends BaseFragment {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextChange(String query) {
-                if (StringUtils.isEmpty(query)) {
-                    endlessAppsAdapter.clearData();
-                    switchViews(true);
-                    filterFab.hide();
-                }
                 return true;
             }
 
             @Override
-            public boolean onQueryTextSubmit(String query) {
+            public boolean onQueryTextSubmit(String newQuery) {
                 searchView.clearFocus();
-                setQuery(query);
+                query = newQuery;
+                fetchSearchAppsList(false);
                 return true;
             }
         });
@@ -202,7 +182,6 @@ public class SearchAppsFragment extends BaseFragment {
                     searchView.setQuery(cursor.getString(1), false);
                 } else
                     searchView.setQuery(cursor.getString(1), true);
-                setQuery(cursor.getString(0));
                 return true;
             }
         });
@@ -242,12 +221,10 @@ public class SearchAppsFragment extends BaseFragment {
                         if (shouldIterate) {
                             addApps(appList);
                         } else if (appList.isEmpty() && endlessAppsAdapter.isDataEmpty()) {
-                            filterFab.hide(true);
-                            setErrorView(ErrorType.NO_SEARCH_RESULT);
+                            setErrorView(ErrorType.NO_SEARCH);
                             switchViews(true);
                         } else {
                             switchViews(false);
-                            filterFab.show(true);
                             if (endlessAppsAdapter != null)
                                 endlessAppsAdapter.addData(appList);
                             if (!relatedTags.isEmpty())
@@ -282,16 +259,18 @@ public class SearchAppsFragment extends BaseFragment {
     }
 
     private void setupRecycler() {
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false);
+        LinearLayoutManager mLayoutManager = new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false);
         endlessAppsAdapter = new EndlessAppsAdapter(context);
-        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setLayoutManager(mLayoutManager);
+        recyclerView.setLayoutAnimation(AnimationUtils.loadLayoutAnimation(this.getActivity(), R.anim.anim_falldown));
         recyclerView.setAdapter(endlessAppsAdapter);
-        recyclerView.addOnScrollListener(new EndlessScrollListener(layoutManager) {
+        EndlessScrollListener endlessScrollListener = new EndlessScrollListener(mLayoutManager) {
             @Override
             public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
                 fetchSearchAppsList(true);
             }
-        });
+        };
+        recyclerView.addOnScrollListener(endlessScrollListener);
         recyclerView.setOnFlingListener(new RecyclerView.OnFlingListener() {
             @Override
             public boolean onFling(int velocityX, int velocityY) {
@@ -321,9 +300,11 @@ public class SearchAppsFragment extends BaseFragment {
                 if (chip.isChecked()) {
                     query = query + " " + tag;
                     fetchData();
+                    searchView.setQuery(query, false);
                 } else {
                     query = query.replace(tag, "");
                     fetchData();
+                    searchView.setQuery(query, false);
                 }
             });
             relatedChipGroup.addView(chip);

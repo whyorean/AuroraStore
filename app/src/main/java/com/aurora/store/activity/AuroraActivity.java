@@ -42,7 +42,6 @@ import com.aurora.store.R;
 import com.aurora.store.adapter.ViewPagerAdapter;
 import com.aurora.store.fragment.AppsFragment;
 import com.aurora.store.fragment.HomeFragment;
-import com.aurora.store.fragment.SearchAppsFragment;
 import com.aurora.store.fragment.SearchFragment;
 import com.aurora.store.utility.Accountant;
 import com.aurora.store.utility.PrefUtil;
@@ -199,7 +198,7 @@ public class AuroraActivity extends AppCompatActivity {
         pagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
         pagerAdapter.addFragment(0, new HomeFragment());
         pagerAdapter.addFragment(1, new AppsFragment());
-        pagerAdapter.addFragment(2, new SearchAppsFragment());
+        pagerAdapter.addFragment(2, new SearchFragment());
         viewPager.setAdapter(pagerAdapter);
         viewPager.setScroll(false);
         viewPager.setOffscreenPageLimit(2);

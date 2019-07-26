@@ -222,6 +222,8 @@ public class SearchFragment extends Fragment implements HistoryItemTouchHelper.R
     }
 
     private void getQueriedApps(String query) {
+        if (searchView != null)
+            searchView.setQuery("", false);
         SearchAppsFragment searchAppsFragment = new SearchAppsFragment();
         Bundle arguments = new Bundle();
         arguments.putString("SearchQuery", query);
