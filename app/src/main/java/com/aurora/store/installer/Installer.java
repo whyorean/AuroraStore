@@ -131,17 +131,17 @@ public class Installer {
                             context,
                             displayName,
                             status,
-                            getContentIntent(packageName));
+                            getContentIntent(intentPackageName));
                     break;
                 case PackageInstaller.STATUS_SUCCESS:
                     QuickNotification.show(
                             context,
                             displayName,
                             status,
-                            getContentIntent(packageName));
+                            getContentIntent(intentPackageName));
                     if (app != null) {
                         clearInstallationFiles(app);
-                        appHashMap.remove(packageName);
+                        appHashMap.remove(intentPackageName);
                     }
                     break;
             }

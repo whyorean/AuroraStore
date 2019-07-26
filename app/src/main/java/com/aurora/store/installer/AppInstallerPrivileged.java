@@ -49,14 +49,14 @@ public class AppInstallerPrivileged extends AppInstallerAbstract {
 
     private static AppInstallerPrivileged instance;
 
-    AppInstallerPrivileged(Context context) {
+    private AppInstallerPrivileged(Context context) {
         super(context);
         instance = this;
     }
 
     public static AppInstallerPrivileged getInstance(Context context) {
         if (instance == null) {
-            synchronized (AppInstaller.class) {
+            synchronized (AppInstallerPrivileged.class) {
                 if (instance == null) instance = new AppInstallerPrivileged(context);
             }
         }

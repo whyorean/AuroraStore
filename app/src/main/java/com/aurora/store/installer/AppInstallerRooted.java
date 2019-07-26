@@ -34,19 +34,19 @@ import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class AppInstallerRooted extends AppInstaller {
+public class AppInstallerRooted extends AppInstallerAbstract {
 
     private static AppInstallerRooted instance;
     private static Root root;
 
-    AppInstallerRooted(Context context) {
+    private AppInstallerRooted(Context context) {
         super(context);
         instance = this;
     }
 
-    public static AppInstaller getInstance(Context context) {
+    public static AppInstallerRooted getInstance(Context context) {
         if (instance == null) {
-            synchronized (AppInstaller.class) {
+            synchronized (AppInstallerRooted.class) {
                 if (instance == null) {
                     instance = new AppInstallerRooted(context);
                     root = new Root();
