@@ -112,6 +112,7 @@ public class DownloadsAdapter extends RecyclerView.Adapter<DownloadsAdapter.View
 
         viewHolder.txtTitle.setText(displayName);
         viewHolder.txtStatus.setText(Util.getStatus(status));
+        viewHolder.txtPath.setText(downloadData.download.getFile());
         viewHolder.txtSize.setText(new StringBuilder()
                 .append(Util.humanReadableByteValue(downloadData.download.getDownloaded(), true))
                 .append("/")
@@ -246,6 +247,8 @@ public class DownloadsAdapter extends RecyclerView.Adapter<DownloadsAdapter.View
         TextView txtTitle;
         @BindView(R.id.txt_status)
         TextView txtStatus;
+        @BindView(R.id.txt_path)
+        TextView txtPath;
         @BindView(R.id.txt_size)
         TextView txtSize;
         @BindView(R.id.txt_progress)
@@ -260,14 +263,6 @@ public class DownloadsAdapter extends RecyclerView.Adapter<DownloadsAdapter.View
         ViewHolder(@NonNull View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
-        }
-
-        void clearStatus() {
-            txtProgress.setText("");
-            progressBar.setProgress(0);
-            txtSpeed.setText("--/s");
-            txtETA.setText("N/A");
-            txtSize.setText("--");
         }
     }
 }

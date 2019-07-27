@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Aurora Store
   ~ Copyright (C) 2019, Rahul Kumar Patel <whyorean@gmail.com>
   ~
@@ -54,6 +53,16 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:ellipsize="end"
+            android:singleLine="true"
+            android:textAlignment="viewStart"
+            android:textAppearance="?android:textAppearanceListItem"
+            android:textSize="12sp" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txt_path"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="start"
             android:singleLine="true"
             android:textAlignment="viewStart"
             android:textAppearance="?android:textAppearanceListItem"
