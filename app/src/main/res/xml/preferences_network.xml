@@ -55,4 +55,11 @@
         android:key="PREFERENCE_CUSTOM_TOKENIZER"
         android:title="@string/pref_custom_tokenizer_url"
         app:useSimpleSummaryProvider="true" />
+    <ListPreference
+        android:defaultValue="0"
+        android:entries="@array/pref_cache_strategy"
+        android:entryValues="@array/pref_cache_strategy_values"
+        android:key="PREFERENCE_CACHE_STRATEGY"
+        android:title="@string/pref_caching_strategy"
+        app:useSimpleSummaryProvider="true" />
 </androidx.preference.PreferenceScreen>

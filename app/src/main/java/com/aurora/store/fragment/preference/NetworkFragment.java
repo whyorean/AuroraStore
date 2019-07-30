@@ -41,6 +41,7 @@ public class NetworkFragment extends PreferenceFragmentCompat implements SharedP
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
         switch (key) {
             case Constants.PREFERENCE_ENABLE_PROXY:
+            case Constants.PREFERENCE_CACHE_STRATEGY:
                 SettingsActivity.shouldRestart = true;
                 break;
         }

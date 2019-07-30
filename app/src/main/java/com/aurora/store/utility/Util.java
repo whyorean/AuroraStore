@@ -40,6 +40,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.aurora.store.Constants;
 import com.aurora.store.R;
 import com.aurora.store.activity.AuroraActivity;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 import com.tonyodev.fetch2.Status;
 import com.tonyodev.fetch2core.Downloader;
@@ -387,6 +388,20 @@ public class Util {
                 return Proxy.Type.DIRECT;
             default:
                 return Proxy.Type.HTTP;
+        }
+    }
+
+    public static DiskCacheStrategy getCacheStrategy(Context context) {
+        String proxyType = getPrefs(context).getString(Constants.PREFERENCE_CACHE_STRATEGY, "0");
+        switch (proxyType) {
+            case "0":
+                return DiskCacheStrategy.AUTOMATIC;
+            case "1":
+                return DiskCacheStrategy.ALL;
+            case "2":
+                return DiskCacheStrategy.NONE;
+            default:
+                return DiskCacheStrategy.AUTOMATIC;
         }
     }
 

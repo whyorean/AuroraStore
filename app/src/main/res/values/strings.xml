@@ -343,6 +343,10 @@
     <string name="pref_services_desc_alt">Aurora services unavailable</string>
     <string name="pref_custom_tokenizer">Enable custom tokenizer</string>
     <string name="pref_custom_tokenizer_url">Tokenizer URL</string>
+    <string name="pref_caching_strategy">Image caching strategy</string>
+    <string name="pref_caching_strategy_all">All</string>
+    <string name="pref_caching_strategy_automatic">Automatic</string>
+    <string name="pref_caching_strategy_none">None</string>
 
     <string name="testing_program_opt_in">Join</string>
     <string name="testing_program_opt_out">Leave</string>

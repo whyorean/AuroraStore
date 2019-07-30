@@ -42,7 +42,6 @@ import com.aurora.store.activity.DetailsActivity;
 import com.aurora.store.model.App;
 import com.aurora.store.sheet.AppMenuSheet;
 import com.aurora.store.utility.ViewUtil;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 
 import java.util.ArrayList;
@@ -143,7 +142,6 @@ public class UpdatableAppsAdapter extends RecyclerView.Adapter<UpdatableAppsAdap
         GlideApp
                 .with(context)
                 .load(app.getIconInfo().getUrl())
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .transition(new DrawableTransitionOptions().crossFade())
                 .into(viewHolder.imgIcon);
 

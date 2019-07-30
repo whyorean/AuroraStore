@@ -304,4 +304,16 @@
         <item>SHOPPING</item>
         <item>SOCIAL</item>
     </string-array>
+
+    <string-array name="pref_cache_strategy">
+        <item>@string/pref_caching_strategy_automatic</item>
+        <item>@string/pref_caching_strategy_all</item>
+        <item>@string/pref_caching_strategy_none</item>
+    </string-array>
+
+    <string-array name="pref_cache_strategy_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
 </resources>

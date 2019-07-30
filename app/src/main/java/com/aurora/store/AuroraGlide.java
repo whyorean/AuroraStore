@@ -25,9 +25,9 @@ import android.graphics.Bitmap;
 
 import androidx.annotation.NonNull;
 
+import com.aurora.store.utility.Util;
 import com.bumptech.glide.GlideBuilder;
 import com.bumptech.glide.annotation.GlideModule;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.engine.cache.InternalCacheDiskCacheFactory;
 import com.bumptech.glide.load.engine.cache.LruResourceCache;
 import com.bumptech.glide.module.AppGlideModule;
@@ -39,14 +39,13 @@ import static com.bumptech.glide.load.DecodeFormat.PREFER_ARGB_8888;
 @GlideModule
 public class AuroraGlide extends AppGlideModule {
 
-    private static RequestOptions requestOptions() {
+    private static RequestOptions requestOptions(Context context) {
         return new RequestOptions()
-                .signature(new ObjectKey(
-                        System.currentTimeMillis() / (24 * 60 * 60 * 1000)))
+                .signature(new ObjectKey(System.currentTimeMillis() / (24 * 60 * 60 * 1000)))
                 .centerCrop()
                 .encodeFormat(Bitmap.CompressFormat.PNG)
                 .encodeQuality(100)
-                .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
+                .diskCacheStrategy(Util.getCacheStrategy(context))
                 .format(PREFER_ARGB_8888)
                 .skipMemoryCache(false);
     }
@@ -56,6 +55,6 @@ public class AuroraGlide extends AppGlideModule {
         int memoryCacheSizeBytes = 1024 * 1024 * 50;
         builder.setMemoryCache(new LruResourceCache(memoryCacheSizeBytes));
         builder.setDiskCache(new InternalCacheDiskCacheFactory(context, memoryCacheSizeBytes));
-        builder.setDefaultRequestOptions(requestOptions());
+        builder.setDefaultRequestOptions(requestOptions(context));
     }
 }

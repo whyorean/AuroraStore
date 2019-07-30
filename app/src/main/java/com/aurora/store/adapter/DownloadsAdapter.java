@@ -40,7 +40,6 @@ import com.aurora.store.sheet.DownloadMenuSheet;
 import com.aurora.store.utility.PackageUtil;
 import com.aurora.store.utility.Util;
 import com.aurora.store.utility.ViewUtil;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.tonyodev.fetch2.Download;
 import com.tonyodev.fetch2.Status;
 
@@ -107,7 +106,6 @@ public class DownloadsAdapter extends RecyclerView.Adapter<DownloadsAdapter.View
         GlideApp
                 .with(context)
                 .load(iconURL)
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(viewHolder.imgDownload);
 
         viewHolder.txtTitle.setText(displayName);

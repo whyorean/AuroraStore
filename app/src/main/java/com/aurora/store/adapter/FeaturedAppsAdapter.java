@@ -41,7 +41,6 @@ import com.aurora.store.activity.DetailsActivity;
 import com.aurora.store.model.App;
 import com.aurora.store.utility.PackageUtil;
 import com.aurora.store.utility.Util;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.bitmap.BitmapTransitionOptions;
 import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
@@ -110,7 +109,6 @@ public class FeaturedAppsAdapter extends RecyclerView.Adapter<FeaturedAppsAdapte
                 .load(cardType == CardType.MODERN
                         ? app.getPageBackgroundImage().getUrl()
                         : app.getIconInfo().getUrl())
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .placeholder(R.color.colorTransparent)
                 .transforms(new CenterCrop(), new RoundedCorners(15))
                 .transition(new BitmapTransitionOptions().crossFade())
