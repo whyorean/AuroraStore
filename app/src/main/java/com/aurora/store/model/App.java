@@ -410,6 +410,19 @@ public class App implements Comparable<App> {
         return getDisplayName().compareToIgnoreCase(o.getDisplayName());
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof App))
+            return false;
+
+        return getPackageName().equals(((App) obj).getPackageName());
+    }
+
+    @Override
+    public int hashCode() {
+        return (getPackageName().isEmpty()) ? 0 : getPackageName().hashCode();
+    }
+
     public enum Restriction {
 
         GENERIC(-1),

@@ -45,7 +45,9 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -95,6 +97,9 @@ public class InstalledAppsAdapter extends RecyclerView.Adapter<InstalledAppsAdap
     public void addData(List<App> appList) {
         this.appList.clear();
         this.appList = appList;
+        final Set<App> appSet = new LinkedHashSet<>(appList);
+        appList.clear();
+        appList.addAll(appSet);
         if (listType == ListType.INSTALLED || listType == ListType.UPDATES)
             Collections.sort(appList, (App1, App2) ->
                     App1.getDisplayName().compareToIgnoreCase(App2.getDisplayName()));
