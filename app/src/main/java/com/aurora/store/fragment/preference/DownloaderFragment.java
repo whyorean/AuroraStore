@@ -12,14 +12,15 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.preference.EditTextPreference;
 import androidx.preference.ListPreference;
+import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.SeekBarPreference;
-import androidx.preference.SwitchPreference;
 import androidx.preference.SwitchPreferenceCompat;
 
 import com.aurora.store.Constants;
 import com.aurora.store.R;
 import com.aurora.store.activity.SettingsActivity;
+import com.aurora.store.utility.ContextUtil;
 import com.aurora.store.utility.PathUtil;
 import com.aurora.store.utility.PrefUtil;
 
@@ -63,6 +64,17 @@ public class DownloaderFragment extends PreferenceFragmentCompat implements Shar
             else
                 PrefUtil.putString(context, Constants.PREFERENCE_DOWNLOAD_DIRECTORY, PathUtil.getExtBaseDirectory(context));
             return true;
+        });
+
+        Preference junkPreference = findPreference(Constants.PREFERENCE_CLEAN_JUNK);
+        assert junkPreference != null;
+        junkPreference.setEnabled(true);
+        junkPreference.setOnPreferenceClickListener(preference -> {
+            File junkDir = new File(PathUtil.getRootApkPath(context));
+            for (File file : junkDir.listFiles())
+                file.delete();
+            ContextUtil.toastLong(context, getString(R.string.toast_junk_removed));
+            return false;
         });
     }
 

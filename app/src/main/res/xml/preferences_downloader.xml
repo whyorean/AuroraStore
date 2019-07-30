@@ -57,4 +57,9 @@
         app:defaultValue="false"
         app:key="PREFERENCE_DOWNLOAD_DEBUG"
         app:title="@string/pref_downloader_debug_title" />
+
+    <Preference
+        app:key="PREFERENCE_CLEAN_JUNK"
+        app:summary="@string/pref_clean_junk_desc"
+        app:title="@string/pref_clean_junk" />
 </androidx.preference.PreferenceScreen>

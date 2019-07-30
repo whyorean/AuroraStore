@@ -98,4 +98,5 @@ public class Constants {
     public static final String PREFERENCE_ENABLE_CUSTOM_TOKENIZER = "PREFERENCE_ENABLE_CUSTOM_TOKENIZER";
     public static final String PREFERENCE_CUSTOM_TOKENIZER = "PREFERENCE_CUSTOM_TOKENIZER";
     public static final String PREFERENCE_CACHE_STRATEGY = "PREFERENCE_CACHE_STRATEGY";
+    public static final String PREFERENCE_CLEAN_JUNK = "PREFERENCE_CLEAN_JUNK";
 }
