@@ -349,6 +349,8 @@
     <string name="pref_caching_strategy_none">None</string>
     <string name="pref_clean_junk">Force clear junk files</string>
     <string name="pref_clean_junk_desc">Removes all downloaded files from default directory</string>
+    <string name="pref_abandon_session">Force clear installation sessions</string>
+    <string name="pref_abandon_session_desc">Abandon all old pending installation sessions</string>
 
     <string name="testing_program_opt_in">Join</string>
     <string name="testing_program_opt_out">Leave</string>
@@ -380,6 +382,7 @@
     <string name="toast_loading_apps">Loading more apps..</string>
     <string name="toast_unknown_reason">Something went wrong, try again</string>
     <string name="toast_junk_removed">Junk files removed</string>
+    <string name="toast_abandon_sessions">Old installation sessions abandoned</string>
 
     <string name="dialog_2FA_title">2-Factor Authentication</string>
     <string name="dialog_2FA_desc">You seem to have enabled 2FA, kindly generate an app password and use the new generated password to login</string>
