@@ -52,6 +52,12 @@
         app:summary="@string/pref_install_mode_summary"
         app:title="@string/pref_install_mode_title" />
 
+    <ListPreference
+        app:defaultValue="0"
+        app:key="PREFERENCE_INSTALLATION_PROFILE"
+        app:summary="@string/pref_install_profile_summary"
+        app:title="@string/pref_install_profile_title" />
+
     <Preference
         app:key="PREFERENCE_LAUNCH_SERVICES"
         app:summary="@string/pref_services_desc"

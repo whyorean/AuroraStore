@@ -29,6 +29,7 @@ import android.content.pm.PackageInstaller;
 import com.aurora.store.utility.ContextUtil;
 import com.aurora.store.utility.Log;
 import com.aurora.store.utility.Root;
+import com.aurora.store.utility.Util;
 
 import org.apache.commons.io.FilenameUtils;
 
@@ -79,7 +80,8 @@ public class AppInstallerRooted extends AppInstallerAbstract {
                 totalSize += apkFile.length();
 
             String result = ensureCommandSucceeded(root.exec(String.format(Locale.getDefault(),
-                    "pm install-create -i com.android.vending -r -S %d",
+                    "pm install-create -i com.android.vending --user %s -r -S %d",
+                    Util.getInstallationProfile(getContext()),
                     totalSize)));
 
             Pattern sessionIdPattern = Pattern.compile("(\\d+)");

@@ -285,6 +285,8 @@
     <string name="pref_install_type_title">Enforce native installer</string>
     <string name="pref_install_mode_summary">Select mode of APK installation</string>
     <string name="pref_install_mode_title">Installation method</string>
+    <string name="pref_install_profile_summary">Select the target profile to install apps, works only with root install method</string>
+    <string name="pref_install_profile_title">Installation profiles (Experimental)</string>
     <string name="pref_install_mode_native">Native</string>
     <string name="pref_install_mode_root">Root</string>
     <string name="pref_install_mode_services">Aurora Services</string>

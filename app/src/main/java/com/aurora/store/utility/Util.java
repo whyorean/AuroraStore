@@ -405,6 +405,13 @@ public class Util {
         }
     }
 
+    public static String getInstallationProfile(Context context) {
+        if (!Util.isRootInstallEnabled(context))
+            return "0";
+        else
+            return getPrefs(context).getString(Constants.PREFERENCE_INSTALLATION_PROFILE, "0");
+    }
+
     public static Proxy getNetworkProxy(Context context) {
         String proxyHost = getPrefs(context).getString(Constants.PREFERENCE_PROXY_HOST, "127.0.0.1");
         String proxyPort = getPrefs(context).getString(Constants.PREFERENCE_PROXY_PORT, "8118");

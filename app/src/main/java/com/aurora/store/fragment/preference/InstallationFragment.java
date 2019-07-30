@@ -26,6 +26,12 @@ import com.aurora.store.utility.Util;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.scottyab.rootbeer.RootBeer;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class InstallationFragment extends PreferenceFragmentCompat implements SharedPreferences.OnSharedPreferenceChangeListener {
 
     private static final String ROOT = "1";
@@ -117,6 +123,19 @@ public class InstallationFragment extends PreferenceFragmentCompat implements Sh
             ContextUtil.toastLong(context, getString(R.string.toast_abandon_sessions));
             return false;
         });
+
+        ListPreference userProfilePreference = findPreference(Constants.PREFERENCE_INSTALLATION_PROFILE);
+        assert userProfilePreference != null;
+        try {
+            addUserInfoData(userProfilePreference);
+        } catch (Exception e) {
+            userProfilePreference.setEnabled(false);
+        }
+        userProfilePreference.setOnPreferenceChangeListener((preference, newValue) -> {
+            String installMethod = (String) newValue;
+            PrefUtil.putString(context, Constants.PREFERENCE_INSTALLATION_PROFILE, installMethod);
+            return true;
+        });
     }
 
     @Override
@@ -127,6 +146,41 @@ public class InstallationFragment extends PreferenceFragmentCompat implements Sh
                 break;
         }
 
+    }
+
+    private void addUserInfoData(ListPreference listPreference) {
+        Root root = new Root();
+        if (!root.isAcquired()) {
+            listPreference.setEnabled(false);
+            return;
+        }
+
+        List<String> entryList = new ArrayList<>();
+        List<String> entryValueList = new ArrayList<>();
+
+        String result = root.exec("pm list users");
+        Scanner scanner = new Scanner(result);
+        while (scanner.hasNextLine()) {
+            String line = scanner.nextLine();
+            Pattern p = Pattern.compile("\\{(.*):");
+            Matcher m = p.matcher(line);
+            while (m.find()) {
+                String rawUser = m.group(1);
+                String[] rawUserArray = rawUser.split(":");
+                entryValueList.add(rawUserArray[0]);
+                entryList.add(rawUserArray[1]);
+            }
+        }
+
+        CharSequence[] entries = new CharSequence[entryList.size()];
+        CharSequence[] entryValues = new CharSequence[entryValueList.size()];
+        for (int i = 0; i < entryList.size(); i++) {
+            entries[i] = entryList.get(i);
+            entryValues[i] = entryValueList.get(i);
+        }
+
+        listPreference.setEntries(entries);
+        listPreference.setEntryValues(entryValues);
     }
 
     private void showInternalDialog() {
