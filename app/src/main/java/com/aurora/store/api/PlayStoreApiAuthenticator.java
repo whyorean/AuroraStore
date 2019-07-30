@@ -180,7 +180,7 @@ public class PlayStoreApiAuthenticator {
                 }
                 tried++;
                 if (tried >= retries) {
-                    throw new TokenizerException("Anonymous login failed, try again later.", e.getCause());
+                    throw new TokenizerException("Exceeded max retries", e.getCause());
                 }
                 Log.i("Anonymous Login Failed @ %s, attempt %d",
                         loginInfo.getTokenDispenserUrl(), tried);

@@ -24,6 +24,7 @@ import android.content.Context;
 
 import com.aurora.store.exception.AppNotFoundException;
 import com.aurora.store.exception.MalformedRequestException;
+import com.aurora.store.exception.UnknownException;
 import com.aurora.store.utility.Util;
 import com.dragons.aurora.playstoreapiv2.AuthException;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
@@ -142,16 +143,20 @@ public class OkHttpClientAdapter extends HttpClientAdapter {
         byte[] content = response.body().bytes();
 
         if (code == 401 || code == 403) {
-            AuthException e = new AuthException("Auth error", code);
+            AuthException authException = new AuthException("Auth error", code);
             Map<String, String> authResponse = GooglePlayAPI.parseResponse(new String(content));
             if (authResponse.containsKey("Error") && authResponse.get("Error").equals("NeedsBrowser")) {
-                e.setTwoFactorUrl(authResponse.get("Url"));
+                authException.setTwoFactorUrl(authResponse.get("Url"));
             }
-            throw e;
+            throw authException;
+        } else if (code == 404) {
+            Map<String, String> authResponse = GooglePlayAPI.parseResponse(new String(content));
+            if (authResponse.containsKey("Error") && authResponse.get("Error").equals("UNKNOWN_ERR")) {
+                throw new UnknownException("Unknown error occurred", code);
+            } else
+                throw new AppNotFoundException("App not found", code);
         } else if (code >= 500) {
             throw new GooglePlayException("Server error", code);
-        } else if (code == 404) {
-            throw new AppNotFoundException("App not found", code);
         } else if (code >= 400) {
             throw new MalformedRequestException("Malformed Request", code);
         }

@@ -40,7 +40,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.aurora.store.Constants;
 import com.aurora.store.GlideApp;
 import com.aurora.store.R;
 import com.aurora.store.activity.AuroraActivity;
@@ -50,6 +49,7 @@ import com.aurora.store.events.Event;
 import com.aurora.store.events.Events;
 import com.aurora.store.events.RxBus;
 import com.aurora.store.exception.TokenizerException;
+import com.aurora.store.exception.UnknownException;
 import com.aurora.store.task.UserProfiler;
 import com.aurora.store.utility.Accountant;
 import com.aurora.store.utility.ContextUtil;
@@ -115,7 +115,7 @@ public class AccountsFragment extends Fragment {
     @BindView(R.id.chip_dummy)
     Chip chipDummy;
     @BindView(R.id.progress_bar)
-    ProgressBar mProgressBar;
+    ProgressBar progressBar;
     @BindView(R.id.btn_positive)
     Button btnPositive;
     @BindView(R.id.btn_positive_alt)
@@ -165,7 +165,7 @@ public class AccountsFragment extends Fragment {
     private void init() {
         isLoggedIn = Accountant.isLoggedIn(context);
         isDummy = Accountant.isDummy(context);
-        mProgressBar.setVisibility(View.INVISIBLE);
+        progressBar.setVisibility(View.INVISIBLE);
         setupView();
         setupChips();
         setupAccountType();
@@ -296,7 +296,7 @@ public class AccountsFragment extends Fragment {
         disposable.add(Observable.fromCallable(() ->
                 new PlayStoreApiAuthenticator(context).login())
                 .subscribeOn(Schedulers.io())
-                .doOnSubscribe(sub -> mProgressBar.setVisibility(View.VISIBLE))
+                .doOnSubscribe(sub -> progressBar.setVisibility(View.VISIBLE))
                 .observeOn(Schedulers.computation())
                 .subscribe((success) -> {
                     if (success) {
@@ -329,8 +329,9 @@ public class AccountsFragment extends Fragment {
         disposable.add(Observable.fromCallable(() ->
                 new PlayStoreApiAuthenticator(context).login(email, password))
                 .subscribeOn(Schedulers.io())
-                .doOnSubscribe(sub -> mProgressBar.setVisibility(View.VISIBLE))
+                .doOnSubscribe(sub -> progressBar.setVisibility(View.VISIBLE))
                 .observeOn(AndroidSchedulers.mainThread())
+                .doOnTerminate(() -> progressBar.setVisibility(View.INVISIBLE))
                 .subscribe((success) -> {
                     if (success) {
                         Log.i("Google Login Successful");
@@ -346,12 +347,13 @@ public class AccountsFragment extends Fragment {
                     }
                 }, err -> {
                     Log.e("Google Login failed : %s", err.getMessage());
+                    ContextUtil.runOnUiThread(() -> switchButtonState(false));
                     if (err instanceof AuthException && ((AuthException) err).getTwoFactorUrl() != null) {
                         show2FADialog();
-                    }
-                    mProgressBar.setVisibility(View.INVISIBLE);
-                    txtInputPassword.setError("Check your password");
-                    switchButtonState(false);
+                    } else if (err instanceof UnknownException) {
+                        ContextUtil.toastLong(context, getString(R.string.toast_unknown_reason));
+                    } else
+                        txtInputPassword.setError("Check your password");
                 }));
     }
 
