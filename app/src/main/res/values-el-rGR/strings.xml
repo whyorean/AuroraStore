@@ -314,4 +314,21 @@
     <string name="pref_install_mode_services">"Υπηρεσίες Aurora"</string>
     <string name="pref_install_mode_no_services">"Οι Υπηρεσίες Aurora δεν είναι εγκατεστημένες, παρακαλούμε εγκαταστήστε τις υπηρεσίες πρώτα"</string>
     <string name="pref_install_mode_offline_services">"Οι Υπηρεσίες Aurora δεν είναι συνδεδεμένες, παρακαλούμε σιγουρευτείτε ότι είναι ενεργοποιημένες και ότι έχετε την σωστή έκδοση της εφαρμογής."</string>
+    <string name="action_info">"Πληροφορίες Εφαρμογής"</string>
+    <string name="download_waiting">"Αναμονή"</string>
+    <string name="pref_custom_tokenizer">"Ενεργοποίηση προσαρμοσμένου tokenizer"</string>
+    <string name="pref_custom_tokenizer_url">"Tokenizer URL"</string>
+    <string name="action_export_device">"Εξαγωγή πληροφοριών συσκευής"</string>
+    <string name="action_export_info">"Έγινε εξαγωγή πληροφοριών συσκευής"</string>
+    <string name="action_export_info_failed">"Απέτυχε η εξαγωγή πληροφοριών συσκευής"</string>
+    <string name="installer_status_failure">"Η εγκατάσταση απέτυχε"</string>
+    <string name="installer_status_failure_aborted">"Η εγκατάσταση ακυρώθηκε"</string>
+    <string name="installer_status_failure_blocked">"Η εγκατάσταση μπλοκαρίστηκε"</string>
+    <string name="installer_status_failure_conflict">"Υπάρχει conflicting package"</string>
+    <string name="installer_status_failure_incompatible">"Μη συμβατή εφαρμογή"</string>
+    <string name="installer_status_failure_invalid">"Μη έγκυρο ή κατεστραμμένο APK"</string>
+    <string name="installer_status_failure_storage">"Ανεπαρκής χώρος μνήμης"</string>
+    <string name="installer_status_success">"Εγκαταστάθηκε επιτυχώς"</string>
+    <string name="installer_status_unknown">"Άγνωστο"</string>
+    <string name="installer_status_user_action">"Αναμονή για επιβεβαίωση χρήστη"</string>
 </resources>
