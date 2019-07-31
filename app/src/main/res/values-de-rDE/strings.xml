@@ -136,7 +136,7 @@
     <string name="list_update_all_txt">"Update(s) verfügbar"</string>
     <string name="list_updating">"Alle Aktualisieren"</string>
     <string name="manual_download_disclaimer">"Haftungsausschluss"</string>
-    <string name="manual_download_incompatible">"Der Google Play Store hält diese App für mit Ihrem Gerät nicht kompatibel. Das bedeutet, dass vom Google Play Store-Server kein Versionscode zurückgegeben wurde."</string>
+    <string name="manual_download_incompatible">"Der Google Play Store hält diese App für mit diesem Gerät nicht kompatibel. Das bedeutet, dass vom Google Play Store-Server kein Versionscode zurückgegeben wurde."</string>
     <string name="manual_download_warning">"Auf dieser Seite kannst du die Version der App zum Herunterladen manuell auswählen.
 
 Der Download beliebiger Versionen von Apps wird vom Google Play Store nicht unterstützt. Der Erfolg hängt von einer glücklichen Annahme des Versionscodes ab. Selbst wenn Sie richtig raten und den Download starten, erhalten Sie möglicherweise eine inkompatible Version."</string>
@@ -200,7 +200,7 @@ Der Download beliebiger Versionen von Apps wird vom Google Play Store nicht unte
     <string name="testing_program_section_opted_in_propagating_message">"In wenigen Minuten werden Sie zum Beta-Programm hinzugefügt. Sie können dann die Beta-Version dieser App herunterladen, sofern verfügbar."</string>
     <string name="testing_program_section_opted_in_title">"Du bist Beta-Tester"</string>
     <string name="testing_program_section_opted_out_message">"Testen Sie neue Funktionen, bevor sie veröffentlicht werden. Geben Sie Ihr Feedback direkt an den Entwickler."</string>
-    <string name="testing_program_section_opted_out_propagating_message">"Es kann einige Minuten dauern, bis Sie aus dem Betaprogramm entfernt werden."</string>
+    <string name="testing_program_section_opted_out_propagating_message">"Es kann einige Minuten dauern, bis du aus dem Betaprogramm entfernt wirst."</string>
     <string name="testing_program_section_opted_out_title">"Beta-Tester werden"</string>
     <string name="title_all_apps">"Alle Apps"</string>
     <string name="title_home">"Aurora Store"</string>
@@ -312,4 +312,26 @@ Zudem zeigt Aurora die Anzahl der Tracker in der jeweiligen App an."</string>
     <string name="dialog_geores_desc">"Die App, die du versuchst herunterzuladen, ist nicht in deinem Land verfügbar. Versuche es, eine andere Region in den Einstellungen vorzutäuschen."</string>
     <string name="dialog_incompat_title">"Inkompatible App"</string>
     <string name="dialog_incompat_desc">"Die App, die du versuchst herunterzuladen, ist mit deinem Gerät nicht kompatibel. Versuche es, ein anderes Gerät über die Einstellungen vorzutäuschen."</string>
+    <string name="pref_install_mode_services">"Aurora Dienste"</string>
+    <string name="pref_install_mode_no_services">"Aurora Dienste nicht installiert"</string>
+    <string name="pref_install_mode_offline_services">"Aurora Dienste nicht verbunden. Prüfe den Status und die Version."</string>
+    <string name="action_info">"App Info"</string>
+    <string name="download_waiting">"Auf Verbindung warten"</string>
+    <string name="pref_services_title">"Aurora Dienste"</string>
+    <string name="pref_services_desc">"Starte Aurora Dienste"</string>
+    <string name="pref_services_desc_alt">"Aurora Dienste nicht verfügbar"</string>
+    <string name="pref_custom_tokenizer">"Eigener Account-Spender"</string>
+    <string name="pref_custom_tokenizer_url">"URL"</string>
+    <string name="action_export_device">"Geräteinformationen exportieren"</string>
+    <string name="action_export_info">"Geräteinformationen exportiert"</string>
+    <string name="action_export_info_failed">"Exportieren fehlgeschlagen"</string>
+    <string name="installer_status_failure">"Installation fehlgeschlagen"</string>
+    <string name="installer_status_failure_aborted">"Installation abgebrochen"</string>
+    <string name="installer_status_failure_blocked">"Installation blockiert"</string>
+    <string name="installer_status_failure_incompatible">"App inkompatibel"</string>
+    <string name="installer_status_failure_invalid">"Ungültiger/beschädigter APK"</string>
+    <string name="installer_status_failure_storage">"Zu wenig Speicherplatz"</string>
+    <string name="installer_status_success">"Erfolgreich installiert"</string>
+    <string name="installer_status_unknown">"Unbekannt"</string>
+    <string name="installer_status_user_action">"Warte auf Betätigung"</string>
 </resources>
