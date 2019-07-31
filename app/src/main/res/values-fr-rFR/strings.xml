@@ -321,4 +321,24 @@ Elle fournit également une liste de traqueurs intégrés dans une application."
     <string name="pref_install_mode_services">"Aurora Services"</string>
     <string name="pref_install_mode_no_services">"Aurora Services n'est pas installé, veuillez d'abord installer les services."</string>
     <string name="pref_install_mode_offline_services">"Aurora Services n'est pas connecté, veuillez vous assurer qu'il est activé et que vous avez la bonne version de l'application."</string>
+    <string name="action_info">"App Info"</string>
+    <string name="download_waiting">"Patientez"</string>
+    <string name="pref_services_title">"Services Aurora"</string>
+    <string name="pref_services_desc">"Lancer les services Aurora"</string>
+    <string name="pref_services_desc_alt">"Services Aurora indisponibles"</string>
+    <string name="pref_custom_tokenizer">"Activer le jeton personnalisé"</string>
+    <string name="pref_custom_tokenizer_url">"Jeton URL"</string>
+    <string name="action_export_device">"Exporter les Infos de l'appareil"</string>
+    <string name="action_export_info">"Infos de l'appareil exportées"</string>
+    <string name="action_export_info_failed">"Échec de l'export des informations de l'appareil"</string>
+    <string name="installer_status_failure">"Installation échouée"</string>
+    <string name="installer_status_failure_aborted">"Installation annulée"</string>
+    <string name="installer_status_failure_blocked">"L'installation était bloquée"</string>
+    <string name="installer_status_failure_conflict">"Conflit avec les paquets existants"</string>
+    <string name="installer_status_failure_incompatible">"App incompatible"</string>
+    <string name="installer_status_failure_invalid">"APK invalide ou corrompu"</string>
+    <string name="installer_status_failure_storage">"Espace mémoire insuffisant"</string>
+    <string name="installer_status_success">"Installation réussie"</string>
+    <string name="installer_status_unknown">"Inconnu"</string>
+    <string name="installer_status_user_action">"Attente de confirmation de l'utilisateur"</string>
 </resources>
