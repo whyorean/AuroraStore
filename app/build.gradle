@@ -21,13 +21,13 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 29
     defaultConfig {
         multiDexEnabled true
 
         applicationId "com.aurora.store"
         minSdkVersion 21
-        targetSdkVersion 28
+        targetSdkVersion 29
         versionCode 8
         versionName "3.0.8"
 
@@ -74,12 +74,12 @@ dependencies {
 
     //UI-Libs
     implementation 'androidx.appcompat:appcompat:1.0.2'
-    implementation 'androidx.preference:preference:1.1.0-alpha04'
-    implementation 'com.google.android.material:material:1.1.0-alpha05'
+    implementation 'androidx.preference:preference:1.1.0-rc01'
+    implementation 'com.google.android.material:material:1.1.0-alpha08'
 
     //Utils
     implementation 'com.android.volley:volley:1.1.0'
-    implementation 'androidx.annotation:annotation:1.0.2'
+    implementation 'androidx.annotation:annotation:1.1.0'
     implementation 'org.apache.commons:commons-text:1.4'
     implementation 'com.scottyab:rootbeer-lib:0.0.7'
     implementation 'com.google.code.gson:gson:2.8.5'
@@ -88,8 +88,8 @@ dependencies {
     implementation 'com.github.whyorean:playstore-api-v2:2.1'
 
     //OkHTTP3
-    implementation 'com.squareup.okhttp3:okhttp:3.14.0'
-    implementation 'com.squareup.okhttp3:okhttp-urlconnection:3.14.0'
+    implementation 'com.squareup.okhttp3:okhttp:4.0.1'
+    implementation 'com.squareup.okhttp3:okhttp-urlconnection:4.0.1'
 
     //RX-Java2
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
