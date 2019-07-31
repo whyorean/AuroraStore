@@ -317,4 +317,24 @@ Ammenta·ti chi iscarrigare versiones arbitràrias de sas aplicatziones no est s
     <string name="pref_install_mode_services">"Aurora Services"</string>
     <string name="pref_install_mode_no_services">"Aurora Services no est installadu, installa·lu pro sighire"</string>
     <string name="pref_install_mode_offline_services">"Aurora Services no est connessu, verìfica chi siat abilitadu e de tènnere sa versione curreta de s'aplicatzione"</string>
+    <string name="action_info">"Informatziones apl."</string>
+    <string name="download_waiting">"Isetende"</string>
+    <string name="pref_services_title">"Aurora Services"</string>
+    <string name="pref_services_desc">"Allughe Aurora Services"</string>
+    <string name="pref_services_desc_alt">"Aurora Services no est disponìbile"</string>
+    <string name="pref_custom_tokenizer">"Abìlita unu getonizadore (tokenizer) personalizadu"</string>
+    <string name="pref_custom_tokenizer_url">"URL tokenizadore (tokenizer)"</string>
+    <string name="action_export_device">"Esporta sas informatziones de su dispositivu"</string>
+    <string name="action_export_info">"Informatziones de su dispositivu esportadas"</string>
+    <string name="action_export_info_failed">"Esportatzione de sas informatziones de su dispositivu fallida"</string>
+    <string name="installer_status_failure">"Installatzione fallida"</string>
+    <string name="installer_status_failure_aborted">"Installatzione annullada"</string>
+    <string name="installer_status_failure_blocked">"S'installatzione est istada blocada"</string>
+    <string name="installer_status_failure_conflict">"Bi sunt pachetes in cunflitu"</string>
+    <string name="installer_status_failure_incompatible">"Apl. non cumpatìbile"</string>
+    <string name="installer_status_failure_invalid">"APK non vàlidu o corrùmpidu"</string>
+    <string name="installer_status_failure_storage">"Ispàtziu in memòria non bastante"</string>
+    <string name="installer_status_success">"Installatzione resèssida"</string>
+    <string name="installer_status_unknown">"Disconnotu"</string>
+    <string name="installer_status_user_action">"Isetende pro sa cunfirma de s'impreadore"</string>
 </resources>
