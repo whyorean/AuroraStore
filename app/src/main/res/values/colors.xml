@@ -22,7 +22,7 @@
     <!--LightTheme-->
     <color name="colorAccent">@color/colorBlue</color>
     <color name="colorPrimary">@color/colorWhite</color>
-    <color name="colorPrimaryDark">@color/colorWhite</color>
+    <color name="colorPrimaryDark">@color/colorOffWhite</color>
 
     <!--Dark Theme-->
     <color name="colorDarkAccent">#2B90D9</color>
@@ -36,6 +36,7 @@
     <color name="colorBlackAccent">#EE3B34</color>
 
     <color name="colorWhite">#FFF</color>
+    <color name="colorOffWhite">#EEE</color>
     <color name="colorBlack">#000</color>
     <color name="colorGrey">#848484</color>
     <color name="colorGreyDark">#545454</color>
