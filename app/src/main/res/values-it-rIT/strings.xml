@@ -375,4 +375,24 @@ Inoltre fornisce una lista di tracker incorporati in una applicazione."</string>
     <string name="pref_install_mode_services">"Aurora Services"</string>
     <string name="pref_install_mode_no_services">"Aurora Services non installati"</string>
     <string name="pref_install_mode_offline_services">"Aurora Services non connessi, assicurati che siano abilitati e che tu abbia installato la versione corretta dell'app"</string>
+    <string name="action_info">"Informazioni app"</string>
+    <string name="download_waiting">"In attesa"</string>
+    <string name="pref_services_title">"Aurora Services"</string>
+    <string name="pref_services_desc">"Avvia Aurora Services"</string>
+    <string name="pref_services_desc_alt">"Aurora Services non disponibili"</string>
+    <string name="pref_custom_tokenizer">"Token dispenser personalizzato"</string>
+    <string name="pref_custom_tokenizer_url">"URL del token dispenser"</string>
+    <string name="action_export_device">"Esporta informazioni dispositivo"</string>
+    <string name="action_export_info">"Informazioni sul dispositivo esportate"</string>
+    <string name="action_export_info_failed">"Esportazione delle informazioni fallita"</string>
+    <string name="installer_status_failure">"Installazione fallita"</string>
+    <string name="installer_status_failure_aborted">"Installazione annullata"</string>
+    <string name="installer_status_failure_blocked">"Installazione bloccata"</string>
+    <string name="installer_status_failure_conflict">"Conflitto con un pacchetto installato"</string>
+    <string name="installer_status_failure_incompatible">"App non compatibile"</string>
+    <string name="installer_status_failure_invalid">"APK non valido o corrotto"</string>
+    <string name="installer_status_failure_storage">"Spazio sul dispositivo insufficiente"</string>
+    <string name="installer_status_success">"Installato con successo"</string>
+    <string name="installer_status_unknown">"Sconosciuto"</string>
+    <string name="installer_status_user_action">"In attesa della conferma dell'utente"</string>
 </resources>
