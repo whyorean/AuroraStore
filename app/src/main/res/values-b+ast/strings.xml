@@ -119,6 +119,7 @@ Decátate que baxar versiones al debalu nun lo sofita la tienda Google Play. L'�
     <string name="menu_license">"Llicencia"</string>
     <string name="menu_setting">"Axustes"</string>
     <string name="menu_terms">"Términos del serviciu"</string>
+    <string name="no_permissions">"Nun s'usen permisos."</string>
     <string name="pref_app_download">"Descargues"</string>
     <string name="pref_app_network">"Rede"</string>
     <string name="pref_app_notification">"Avisos"</string>
@@ -225,18 +226,29 @@ Decátate que baxar versiones al debalu nun lo sofita la tienda Google Play. L'�
     <string name="error_app_download">"nun pue baxase"</string>
     <string name="details_new_changes">"Qué hai nuevo"</string>
     <string name="action_apps">"Aplicaciones"</string>
+    <string name="action_token_expired">"El pase caducó, solicitando unu nuevu"</string>
     <string name="cat_top_apps">"Aplicaciones destacaes"</string>
     <string name="cat_top_categories">"Estayes destacaes"</string>
     <string name="cat_top_games">"Xuegos destacaos"</string>
     <string name="cat_top_family">"Aplicaciones familiares destacaes"</string>
+    <string name="details_no_changes">"El desendolcador nun apurrió'l rexistru de cambeos"</string>
     <string name="error_logged_out">"Zarresti la sesión"</string>
+    <string name="link_dev">"Desendolcador"</string>
     <string name="link_prmission">"Permisu"</string>
     <string name="link_playstore">"Play Store
 "</string>
+    <string name="link_setting">"Axuste"</string>
     <string name="pref_install_mode_no_root">"L'accesu root nun ta disponible, asegúrate que'l preséu ta rootexáu"</string>
     <string name="pref_ui_transparent">"Estilu tresparente"</string>
     <string name="pref_install_delete_summary">"En preseos qu'executen Android Pie y tengan activáu'l métodu d'instalación root, les APKs desaníciense por defeutu."</string>
+    <string name="action_loading">"Cargando"</string>
+    <string name="pref_default">"Por defeutu"</string>
     <string name="toast_loading_apps">"Cargando más aplicaciones..."</string>
+    <string name="dialog_2FA_title">"Autenticación en dos pasos"</string>
+    <string name="dialog_2FA_desc">"Paez qu'activesti l'autenticación en dos pasos pero has xenerar una contraseña específica pa usala nesta aplicación"</string>
+    <string name="dialog_incompat_title">"Aplicación incompatible"</string>
+    <string name="dialog_incompat_desc">"L'aplicación que tas tentando de baxar nun ye compatible col preséu. Nos axustes, prueba a suplantar la identidá del preséu."</string>
     <string name="pref_install_mode_services">"Servicios d'Aurora"</string>
     <string name="pref_install_mode_no_services">"Los servicios d'Aurora nun tán instalaos, instálalos primero"</string>
+    <string name="action_export_device">"Esportar la información del preséu"</string>
 </resources>
