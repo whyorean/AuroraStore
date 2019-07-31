@@ -20,13 +20,13 @@
     <string name="action_done">"किया हुआ"</string>
     <string name="action_enable">"सक्षम करें"</string>
     <string name="action_export">"निर्यात"</string>
-    <string name="action_favourites">"पसंदीदा एप्स"</string>
+    <string name="action_favourites">"पसंदीदा ऐप्स"</string>
     <string name="action_filter">"फिल्टर"</string>
     <string name="action_filter_all">"सब"</string>
     <string name="action_filter_apply">"लागू करें"</string>
     <string name="action_filter_apps_with_ads">"विज्ञापनों वाले ऐप्स"</string>
     <string name="action_filter_downloads">"डाउनलोड"</string>
-    <string name="action_filter_gsf_dependent_apps">"जीएसएफ आश्रित"</string>
+    <string name="action_filter_gsf_dependent_apps">"GSF पर निर्भर"</string>
     <string name="action_filter_misc">"विविध"</string>
     <string name="action_filter_paid_apps">"भुगतान किया है"</string>
     <string name="action_filter_rating">"रेटिंग"</string>
@@ -40,7 +40,7 @@
     <string name="action_login">"लॉग इन करें"</string>
     <string name="action_logout">"लोग आउट"</string>
     <string name="action_make_normal">"सामान्य ऐप में बदलें"</string>
-    <string name="action_make_system">"सिस्टम ऐप में कन्वर्ट करें"</string>
+    <string name="action_make_system">"सिस्टम ऐप में बदलें"</string>
     <string name="action_manual">"मैनुअल डाउनलोड"</string>
     <string name="action_more">"अधिक"</string>
     <string name="action_next">"आगामी"</string>
@@ -54,7 +54,7 @@
     <string name="action_search_clearHistory">"सभी साफ करें"</string>
     <string name="action_search_history">"इतिहास खोजें"</string>
     <string name="action_settings">"सेटिंग्स"</string>
-    <string name="action_spoofed">"चकमा देना"</string>
+    <string name="action_spoofed">"चकमा🎭"</string>
     <string name="action_submit">"जमा करें"</string>
     <string name="action_unignore">"काली सूची से निकालें"</string>
     <string name="action_uninstall">"स्थापना रद्द करें"</string>
@@ -64,7 +64,7 @@
     <string name="availability_restriction_country">"यह आइटम आपके देश में उपलब्ध नहीं है।"</string>
     <string name="availability_restriction_generic">"यह आइटम उपलब्ध नहीं है।"</string>
     <string name="availability_restriction_hardware_app">"आपका उपकरण इस संस्करण के साथ संगत नहीं है।"</string>
-    <string name="category_appFree">"मुक्त"</string>
+    <string name="category_appFree">"मुफ्त"</string>
     <string name="category_topFree">"टॉप फ़्री"</string>
     <string name="category_topGrossing">"सबसे ज़्यादा अर्जित करना"</string>
     <string name="category_trending">"रुझान"</string>
@@ -117,9 +117,9 @@
     <string name="exodus_viewReport">"रिपोर्ट देखें"</string>
     <string name="flagging_title">"अनुपयुक्त के रूप में चिह्नित करें"</string>
     <string name="list_app_blacklisted_empty">"कोई एप्लिकेशन ब्लैकलिस्ट नहीं किया गया"</string>
-    <string name="list_app_depends_on_gsf">"जीएसएफ आश्रित"</string>
+    <string name="list_app_depends_on_gsf">"GSF पर निर्भर"</string>
     <string name="list_app_has_ads">"विज्ञापन हैं"</string>
-    <string name="list_app_independent_from_gsf">"जीएसएफ स्वतंत्र"</string>
+    <string name="list_app_independent_from_gsf">"GSF स्वतंत्र"</string>
     <string name="list_app_no_ads">"कोई विज्ञापन नहीं"</string>
     <string name="list_app_system">"सिस्टम ऐप"</string>
     <string name="list_app_user">"उपयोगकर्ता ऐप"</string>
@@ -149,9 +149,9 @@
     <string name="pref_app_network">"नेटवर्क"</string>
     <string name="pref_app_notification">"सूचनाएं"</string>
     <string name="pref_app_ui">"प्रयोक्ता इंटरफ़ेस"</string>
-    <string name="pref_category_spoof_device">"स्पूफ डिवाइस"</string>
-    <string name="pref_category_spoof_lang">"स्पूफ भाषा"</string>
-    <string name="pref_category_spoof_location">"स्पूफ स्थान"</string>
+    <string name="pref_category_spoof_device">"नकली डिवाइस"</string>
+    <string name="pref_category_spoof_lang">"नकली भाषा"</string>
+    <string name="pref_category_spoof_location">"नकली स्थान"</string>
     <string name="pref_device_to_pretend_to_be">"एक अलग डिवाइस होने का नाटक करें"</string>
     <string name="pref_device_to_pretend_to_be_default">"आपकी मूल डिवाइस जानकारी"</string>
     <string name="pref_device_to_pretend_to_be_toast">"आपके द्वारा पुनः लॉगिन करने के बाद यह परिवर्तन लागू किया जाएगा"</string>
@@ -307,10 +307,17 @@
     <string name="dialog_purchase_desc">"आपको इस ऐप को पहले खरीदना होगा, अरोरा स्टोर अभी तक ऐप-खरीद में सक्षम नही है, ऐप खरीदने के लिए आपको वेब पेज पर भेज दिया जाएगा।"</string>
     <string name="dialog_purchase_positive">"अभी खरीदें"</string>
     <string name="dialog_geores_title">"क्षेत्र वर्जित ऐप्स"</string>
-    <string name="dialog_geores_desc">"यह ऐप आपके देश में अनुपलब्ध है, अपने क्षेत्र की सेटिंग को स्पूफ विकल्प से बदलकर दोबारा प्रयास कीजिए"</string>
+    <string name="dialog_geores_desc">"यह ऐप आपके देश में अनुपलब्ध है, अपने क्षेत्र की सेटिंग को चकमा सेटिंग से बदलकर दोबारा प्रयास कीजिए"</string>
     <string name="dialog_incompat_title">"अनुचित/बेमेल ऐप"</string>
-    <string name="dialog_incompat_desc">"यह ऐप आपके डिवाइस के साथ बेमेल है, अपने डिवाइस में डाउनलोड करने के लिए सेटिंग्स से स्पूफ डिवाइस करके दोबारा कोशिश करें"</string>
+    <string name="dialog_incompat_desc">"यह ऐप आपके डिवाइस के साथ बेमेल है, डिवाइस में डाउनलोड करने के लिए सेटिंग्स से नकली डिवाइस चुनकर दोबारा कोशिश करें"</string>
     <string name="pref_install_mode_services">"ऑरोरा सेवाएँ"</string>
     <string name="pref_install_mode_no_services">"ऑरोरा सेवाएँ इंस्टाल नही है, कृपया पहले सेवाएँ इंस्टाल करें"</string>
     <string name="pref_install_mode_offline_services">"ऑरोरा सेवाएँ जुड़ी नहीं है, कृपया सुनिश्चित करें कि सेवाएँ चल रही हैं और आपके ऐप का संस्करण सही है"</string>
+    <string name="action_info">"ऐप के बारे में"</string>
+    <string name="download_waiting">"इंतज़ार कर रहें"</string>
+    <string name="pref_services_title">"अरोरा सेवाएं"</string>
+    <string name="pref_services_desc">"अरोरा सेवाएं चलाएं"</string>
+    <string name="pref_services_desc_alt">"अरोरा सेवाएं अनुपलब्ध"</string>
+    <string name="pref_custom_tokenizer">"कस्टम टोकनाइज़र चलाएं"</string>
+    <string name="pref_custom_tokenizer_url">"टोकनाइज़र URL"</string>
 </resources>
