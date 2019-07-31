@@ -315,4 +315,22 @@
     <string name="pref_install_mode_services">"Aurora服务"</string>
     <string name="pref_install_mode_no_services">"Aurora服务 未安装，请先安装服务"</string>
     <string name="pref_install_mode_offline_services">"Aurora服务 未连接，请确认已启用并且您拥有正确版本的应用"</string>
+    <string name="action_info">"应用信息"</string>
+    <string name="download_waiting">"等待中"</string>
+    <string name="pref_services_title">"Aurora服务"</string>
+    <string name="pref_services_desc">"运行Aurora服务"</string>
+    <string name="pref_services_desc_alt">"无法使用Aurora服务"</string>
+    <string name="action_export_device">"导出设备信息"</string>
+    <string name="action_export_info">"设备信息已导出"</string>
+    <string name="action_export_info_failed">"设备信息导出失败"</string>
+    <string name="installer_status_failure">"安装失败"</string>
+    <string name="installer_status_failure_aborted">"安装已取消"</string>
+    <string name="installer_status_failure_blocked">"安装被阻止"</string>
+    <string name="installer_status_failure_conflict">"存在冲突的应用"</string>
+    <string name="installer_status_failure_incompatible">"不兼容的应用"</string>
+    <string name="installer_status_failure_invalid">"APK无效或损坏"</string>
+    <string name="installer_status_failure_storage">"内存空间不足"</string>
+    <string name="installer_status_success">"已成功安装"</string>
+    <string name="installer_status_unknown">"未知"</string>
+    <string name="installer_status_user_action">"等待用户确认"</string>
 </resources>
