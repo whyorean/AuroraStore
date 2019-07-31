@@ -311,4 +311,24 @@
     <string name="pref_install_mode_services">"Aurora Service"</string>
     <string name="pref_install_mode_no_services">"Aurora Service がインストールされていません。先に Service をインストールしてください。"</string>
     <string name="pref_install_mode_offline_services">"Aurora Service に接続されていません。有効化され、正しいバージョンがインストールされていることを確認してください"</string>
+    <string name="action_info">"アプリ情報"</string>
+    <string name="download_waiting">"待機中"</string>
+    <string name="pref_services_title">"Aurora サービス"</string>
+    <string name="pref_services_desc">"Aurora サービスを起動"</string>
+    <string name="pref_services_desc_alt">"Aurora サービスは利用できません"</string>
+    <string name="pref_custom_tokenizer">"カスタムトークナイザーを有効にする"</string>
+    <string name="pref_custom_tokenizer_url">"トークナイザー URL"</string>
+    <string name="action_export_device">"デバイス情報をエクスポート"</string>
+    <string name="action_export_info">"デバイス情報がエクスポートされました"</string>
+    <string name="action_export_info_failed">"デバイス情報のエクスポートに失敗"</string>
+    <string name="installer_status_failure">"インストールが失敗しました"</string>
+    <string name="installer_status_failure_aborted">"インストールがキャンセルされました"</string>
+    <string name="installer_status_failure_blocked">"インストールはブロックされました"</string>
+    <string name="installer_status_failure_conflict">"衝突するパッケージが存在します"</string>
+    <string name="installer_status_failure_incompatible">"互換性のないアプリ"</string>
+    <string name="installer_status_failure_invalid">"不正か破損した APK"</string>
+    <string name="installer_status_failure_storage">"メモリ容量不足"</string>
+    <string name="installer_status_success">"インストールに成功しました"</string>
+    <string name="installer_status_unknown">"不明"</string>
+    <string name="installer_status_user_action">"ユーザーの承認を待機しています"</string>
 </resources>
