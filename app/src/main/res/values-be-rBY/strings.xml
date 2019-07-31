@@ -222,7 +222,7 @@
     <string name="tab_family">"Дзеці і сям'я"</string>
     <string name="pref_ui_tab_mode_title">"Укладкі з пракручваннем"</string>
     <string name="pref_ui_tab_mode_summary">"Уключыце, каб зрабіць пракручванне для ўкладак. Рэкамендуецца для прылад з малым DPI экрана"</string>
-    <string name="about_app">"Aurora — гэта альтэрнатыва Краме Play з адкрытым зыходным кодам.
+    <string name="about_app">"Aurora — гэта альтэрнатыва Краме Play з адкрытым зыходным кодам. 
         Яна можа спампоўваць праграмы, абнаўляць усталяваныя і дазваляе шукаць праграмы і гульні.
         Яна таксама падае спіс трэкераў убудаваных у праграму.
     "</string>
@@ -302,7 +302,7 @@
     <string name="pref_install_delete_summary">"На прыладах з Android Pie + і спосабам усталявання з дапамогай root, APK передвызначана выдаляюцца"</string>
     <string name="action_loading">"Загрузка"</string>
     <string name="pref_default">"Перадвызначана"</string>
-    <string name="toast_loading_apps">"Загружаецца больш праграм…"</string>
+    <string name="toast_loading_apps">"Загружаецца больш праграм..."</string>
     <string name="dialog_2FA_title">"2-фактарная праверка"</string>
     <string name="dialog_2FA_desc">"Здаецца вы ўключылі 2-фактарную праверку. Стварыце пароль для праграмы і скарыстайце яго для уваходу"</string>
     <string name="dialog_2FA_positive">"Стварыць пароль"</string>
@@ -323,4 +323,35 @@
     <string name="pref_services_desc_alt">"Сэрвісы Aurora недаступныя"</string>
     <string name="pref_custom_tokenizer">"Уключыць карыстальніцкі tokenizer"</string>
     <string name="pref_custom_tokenizer_url">"Адрас tokenizer"</string>
+    <string name="action_export_device">"Экспартаваць звесткі аб прыладзе"</string>
+    <string name="action_export_info">"Звесткі аб прыладзе экспартаваны"</string>
+    <string name="action_export_info_failed">"Не ўдалося экспартаваць звесткі аб прыладзе"</string>
+    <string name="installer_status_failure">"Збой усталявання"</string>
+    <string name="installer_status_failure_aborted">"Усталяванне скасавана"</string>
+    <string name="installer_status_failure_blocked">"Усталяванне было заблакіравана"</string>
+    <string name="installer_status_failure_conflict">"Прысутнічае канфлікты пакет"</string>
+    <string name="installer_status_failure_incompatible">"Несумяшчальная праграма"</string>
+    <string name="installer_status_failure_invalid">"Памылковы або пашкоджаны APK"</string>
+    <string name="installer_status_failure_storage">"Недастаткова свабоднай памяці"</string>
+    <string name="installer_status_success">"Паспяхова ўсталявана"</string>
+    <string name="installer_status_unknown">"Невядома"</string>
+    <string name="installer_status_user_action">"Чаканне пацвярджэння карыстальніка"</string>
+    <string name="pref_downloader_internal"></string>
+    <string name="pref_downloader_internal_desc"></string>
+    <string name="pref_install_profile_summary"></string>
+    <string name="pref_install_profile_title"></string>
+    <string name="pref_install_mode_internal_warn"></string>
+    <string name="pref_updates_extended"></string>
+    <string name="pref_updates_extended_desc"></string>
+    <string name="pref_caching_strategy"></string>
+    <string name="pref_caching_strategy_all"></string>
+    <string name="pref_caching_strategy_automatic"></string>
+    <string name="pref_caching_strategy_none"></string>
+    <string name="pref_clean_junk"></string>
+    <string name="pref_clean_junk_desc"></string>
+    <string name="pref_abandon_session"></string>
+    <string name="pref_abandon_session_desc"></string>
+    <string name="toast_unknown_reason"></string>
+    <string name="toast_junk_removed"></string>
+    <string name="toast_abandon_sessions"></string>
 </resources>
