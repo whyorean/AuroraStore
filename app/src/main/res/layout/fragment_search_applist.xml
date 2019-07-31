@@ -61,6 +61,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:clipToPadding="false"
+                    android:layout_marginBottom="@dimen/margin_xxsmall"
                     android:paddingStart="@dimen/margin_normal"
                     android:scrollbars="none">
 
@@ -74,7 +75,7 @@
                     android:id="@+id/search_apps_list"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/gradient_view"
+                    android:layout_below="@+id/chip_view"
                     android:clipToPadding="false"
                     android:overScrollMode="never"
                     android:paddingTop="@dimen/margin_small"
