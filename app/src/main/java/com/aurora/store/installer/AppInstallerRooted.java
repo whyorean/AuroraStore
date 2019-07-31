@@ -118,7 +118,7 @@ public class AppInstallerRooted extends AppInstallerAbstract {
 
     private String getPackageName(File fileName) {
         final String baseName = FilenameUtils.getBaseName(fileName.getName());
-        Pattern pattern = Pattern.compile("[.a-z]*[^.0-9]");
+        Pattern pattern = Pattern.compile("(.*)[^.0-9]");
         Matcher matcher = pattern.matcher(baseName);
         if (matcher.find())
             return matcher.group(0);
