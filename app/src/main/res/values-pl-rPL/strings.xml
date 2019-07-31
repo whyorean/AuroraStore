@@ -316,4 +316,24 @@ Udostępnia również listę usług śledzących zaimplementowanych w aplikacjac
     <string name="pref_install_mode_services">"Usługi Aurora"</string>
     <string name="pref_install_mode_no_services">"Usługi Aurora nie są zainstalowane, proszę je najpierw zainstalować"</string>
     <string name="pref_install_mode_offline_services">"Usługi Aurora niedostępne, sprawdź czy są włączone oraz czy posiadasz odpowiednią wersje"</string>
+    <string name="action_info">"O aplikacji"</string>
+    <string name="download_waiting">"Oczekiwanie"</string>
+    <string name="pref_services_title">"Usługi Aurora"</string>
+    <string name="pref_services_desc">"Uruchom Usługi Aurora"</string>
+    <string name="pref_services_desc_alt">"Usługi Aurora  niedostępne"</string>
+    <string name="pref_custom_tokenizer">"Ustaw własny tokenizer"</string>
+    <string name="pref_custom_tokenizer_url">"Tokenizer URL"</string>
+    <string name="action_export_device">"Zapisz informacje o urządzeniu"</string>
+    <string name="action_export_info">"Zapisano informacje o urządzeniu"</string>
+    <string name="action_export_info_failed">"Błąd zapisu informacji o urządzeniu"</string>
+    <string name="installer_status_failure">"Instalacja nieudana"</string>
+    <string name="installer_status_failure_aborted">"Instalacja anulowana"</string>
+    <string name="installer_status_failure_blocked">"Instalacja zablokowana"</string>
+    <string name="installer_status_failure_conflict">"Istnieje konfliktujący pakiet"</string>
+    <string name="installer_status_failure_incompatible">"Niekompatybilna aplikacja"</string>
+    <string name="installer_status_failure_invalid">"Nieprawidłowy plik APK"</string>
+    <string name="installer_status_failure_storage">"Brak miejsca na dysku"</string>
+    <string name="installer_status_success">"Zainstalowano poprawnie"</string>
+    <string name="installer_status_unknown">"Nieznany"</string>
+    <string name="installer_status_user_action">"Oczekiwanie na potwierdzenie przez użytkownika"</string>
 </resources>
