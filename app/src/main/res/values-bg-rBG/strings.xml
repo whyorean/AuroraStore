@@ -313,4 +313,12 @@
     <string name="pref_install_mode_services">"Aurora Services"</string>
     <string name="pref_install_mode_no_services">"Приложението Aurora Services не е инсталирано. Моля, инсталирайте първо него"</string>
     <string name="pref_install_mode_offline_services">"Приложението Aurora Services не е свързано. Моля, проверете дали е включено и се уверете, че разполагате с правилната версия"</string>
+    <string name="action_info">"Данни за прилож."</string>
+    <string name="download_waiting">"Изчакване"</string>
+    <string name="installer_status_failure">"Инсталирането се провали"</string>
+    <string name="installer_status_failure_aborted">"Инсталацията е прекъсната"</string>
+    <string name="installer_status_failure_incompatible">"Несъвместимо приложение"</string>
+    <string name="installer_status_failure_storage">"Недостатъчно място в паметта"</string>
+    <string name="installer_status_success">"Инсталирано успешно"</string>
+    <string name="installer_status_user_action">"Изчаква потвърждение от потребител"</string>
 </resources>
