@@ -65,7 +65,7 @@
     <string name="availability_restriction_generic">"هذا العنصر غير متاح."</string>
     <string name="availability_restriction_hardware_app">"جهازك غير متوافق مع هذا الإصدار."</string>
     <string name="category_appFree">"مجانية"</string>
-    <string name="category_topFree">"أعلى التطبيقات المجانية"</string>
+    <string name="category_topFree">"أشهر التطبيقات المجانية"</string>
     <string name="category_topGrossing">"أعلى التطبيقات صعودا"</string>
     <string name="category_trending">"التطبيقات المتصدرة"</string>
     <string name="delete">"حذف"</string>
@@ -278,6 +278,8 @@
     <string name="action_apps">"التطبيقات"</string>
     <string name="action_logging_in_success">"تم بنجاح تسجيل الدخول"</string>
     <string name="action_token_expired">"انتهت الجلسة, يتم المطالبة بجلسة جديدة"</string>
+
+    <!-- طلب اجباري -->
     <string name="action_token_force_request">"أجبار الطلب"</string>
     <string name="cat_top_apps">"التطبيقات الشائعة"</string>
     <string name="cat_top_categories">"الفئات الشائعة"</string>
@@ -313,4 +315,24 @@
     <string name="pref_install_mode_services">"خدمات Aurora"</string>
     <string name="pref_install_mode_no_services">"تطبيق خدمات Aurora غير مثبت, الرجاء تثبيته"</string>
     <string name="pref_install_mode_offline_services">"خدمات Aurora غير متصلة ، يرجى التأكد من تفعيلها وتاكد من الإصدار الصحيح من التطبيق"</string>
+    <string name="action_info">"حول البرنامج"</string>
+    <string name="download_waiting">"الانتظار"</string>
+    <string name="pref_services_title">"خدمات اورورا"</string>
+    <string name="pref_services_desc">"تشغيل خدمات اورورا"</string>
+    <string name="pref_services_desc_alt">"خدمات أورورا غير متوفره"</string>
+    <string name="pref_custom_tokenizer">"تفعيل token مخصص"</string>
+    <string name="pref_custom_tokenizer_url">"عنوان token"</string>
+    <string name="action_export_device">"تصدير معلومات الجهاز"</string>
+    <string name="action_export_info">"تم تصدير معلومات الجهاز"</string>
+    <string name="action_export_info_failed">"فشل تصدير معلومات الجهاز"</string>
+    <string name="installer_status_failure">"فشل التثبيت"</string>
+    <string name="installer_status_failure_aborted">"تم إلغاء التثبيت"</string>
+    <string name="installer_status_failure_blocked">"تم حجب التحديث"</string>
+    <string name="installer_status_failure_conflict">"يوجد تطبيق غير متوافق"</string>
+    <string name="installer_status_failure_incompatible">"تطبيق غير متوافق"</string>
+    <string name="installer_status_failure_invalid">"تطبيق تالف او غير معروف"</string>
+    <string name="installer_status_failure_storage">"لاتوجد مساحة كافية"</string>
+    <string name="installer_status_success">"تم التثبيت بنجاح"</string>
+    <string name="installer_status_unknown">"غير معروف"</string>
+    <string name="installer_status_user_action">"بأنتظار موافقة المستخدم"</string>
 </resources>
