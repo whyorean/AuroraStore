@@ -98,7 +98,7 @@ public class SettingsActivity extends AppCompatActivity implements
         final Bundle args = pref.getExtras();
         final Fragment fragment = getSupportFragmentManager()
                 .getFragmentFactory()
-                .instantiate(this.getClassLoader(), pref.getFragment(), args);
+                .instantiate(this.getClassLoader(), pref.getFragment());
         fragment.setArguments(args);
         fragment.setTargetFragment(caller, 0);
         getSupportFragmentManager().beginTransaction()
