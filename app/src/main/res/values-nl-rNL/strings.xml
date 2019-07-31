@@ -311,4 +311,25 @@
     <string name="pref_install_mode_services">"Aurora Services"</string>
     <string name="pref_install_mode_no_services">"Aurora Services niet geïnstalleerd, installeer eerst Aurora services"</string>
     <string name="pref_install_mode_offline_services">"Aurora Services is niet verbonden, zorg er alstublieft voor dat het is ingeschakeld en je de juiste versie van de app hebt"</string>
+    <string name="action_info">"App Info"</string>
+    <string name="download_waiting">"Aan het wachten"</string>
+    <string name="pref_services_title">"Aurora Services
+"</string>
+    <string name="pref_services_desc">"Start Aurora-services"</string>
+    <string name="pref_services_desc_alt">"Aurora-services niet beschikbaar"</string>
+    <string name="pref_custom_tokenizer">"Aangepaste tokenizer inschakelen"</string>
+    <string name="pref_custom_tokenizer_url">"Tokenizer URL"</string>
+    <string name="action_export_device">"Export Device Info"</string>
+    <string name="action_export_info">"Apparaatinformatie geëxporteerd"</string>
+    <string name="action_export_info_failed">"Export van apparaatinformatie is mislukt"</string>
+    <string name="installer_status_failure">"Installatie mislukt"</string>
+    <string name="installer_status_failure_aborted">"Installatie geannuleerd"</string>
+    <string name="installer_status_failure_blocked">"Installatie is geblokkeerd"</string>
+    <string name="installer_status_failure_conflict">"Er is een conflicterend pakket"</string>
+    <string name="installer_status_failure_incompatible">"Incompatibele app"</string>
+    <string name="installer_status_failure_invalid">"Ongeldige of beschadigde APK"</string>
+    <string name="installer_status_failure_storage">"Onvoldoende geheugenruimte"</string>
+    <string name="installer_status_success">"Succesvol geïnstalleerd"</string>
+    <string name="installer_status_unknown">"Onbekend"</string>
+    <string name="installer_status_user_action">"Wachten op bevestiging van gebruiker"</string>
 </resources>
