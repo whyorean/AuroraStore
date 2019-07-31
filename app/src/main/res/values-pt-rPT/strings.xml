@@ -328,4 +328,28 @@ Tenha em mente que a transferencia de versões arbitrárias de aplicações não
     <string name="pref_install_mode_services">"Serviços Aurora"</string>
     <string name="pref_install_mode_no_services">"Serviços Aurora não está instalado, gentilmente instale os serviços primeiro"</string>
     <string name="pref_install_mode_offline_services">"Serviços Aurora não está conectado, gentilmente certifique-se que está ativado e que tem a versão correta da aplicação"</string>
+    <string name="action_info">"Informações da aplicação"</string>
+    <string name="download_waiting">"Em espera"</string>
+    <string name="pref_services_title">"Serviços Aurora"</string>
+    <string name="pref_services_desc">"Executar serviços Aurora"</string>
+    <string name="pref_services_desc_alt">"Serviços Aurora indisponíveis"</string>
+
+    <!-- Fuzzy -->
+    <string name="pref_custom_tokenizer">"Ativar tokenizer personalizado"</string>
+
+    <!-- Fuzzy -->
+    <string name="pref_custom_tokenizer_url">"URL de Tokenizer"</string>
+    <string name="action_export_device">"Exportar Informação do Dispositivo"</string>
+    <string name="action_export_info">"Informação do dispositivo exportada"</string>
+    <string name="action_export_info_failed">"Falha ao exportar informação do dispositivo"</string>
+    <string name="installer_status_failure">"Falha ao instalar"</string>
+    <string name="installer_status_failure_aborted">"Instalação cancelada"</string>
+    <string name="installer_status_failure_blocked">"A instalação foi bloqueada"</string>
+    <string name="installer_status_failure_conflict">"Existe um conflito entre pacotes"</string>
+    <string name="installer_status_failure_incompatible">"Aplicação incompatível"</string>
+    <string name="installer_status_failure_invalid">"APK invalido ou corrupto"</string>
+    <string name="installer_status_failure_storage">"Sem memoria suficiente"</string>
+    <string name="installer_status_success">"Instalado bem sucedida"</string>
+    <string name="installer_status_unknown">"Desconhecido"</string>
+    <string name="installer_status_user_action">"A espera de confirmação do utilizador"</string>
 </resources>
