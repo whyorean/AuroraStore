@@ -395,4 +395,22 @@ Inoltre fornisce una lista di tracker incorporati in una applicazione."</string>
     <string name="installer_status_success">"Installato con successo"</string>
     <string name="installer_status_unknown">"Sconosciuto"</string>
     <string name="installer_status_user_action">"In attesa della conferma dell'utente"</string>
+    <string name="pref_downloader_internal">"Scarica app nella memoria interna"</string>
+    <string name="pref_downloader_internal_desc">"Se l'opzione è abilitata, non sarà possibile installare app tramite Aurora Services"</string>
+    <string name="pref_install_profile_summary">"Seleziona l'utente per il quale installare le applicazioni (metodo di installazione root richiesto)"</string>
+    <string name="pref_install_profile_title">"Utente di destinazione (sperimentale)"</string>
+    <string name="pref_install_mode_internal_warn">"Disabilita il download delle app nella memoria interna per poter utilizzare Aurora Services"</string>
+    <string name="pref_updates_extended">"Aggiornamenti estesi"</string>
+    <string name="pref_updates_extended_desc">"Abilita per controllare gli aggiornamenti per le app disabilitate"</string>
+    <string name="pref_caching_strategy">"Modalità di caching delle immagini"</string>
+    <string name="pref_caching_strategy_all">"Tutte"</string>
+    <string name="pref_caching_strategy_automatic">"Automatica"</string>
+    <string name="pref_caching_strategy_none">"Nessuna"</string>
+    <string name="pref_clean_junk">"Rimuovi file residui"</string>
+    <string name="pref_clean_junk_desc">"Rimuove tutti i file scaricati nella cartella predefinita"</string>
+    <string name="pref_abandon_session">"Rimuovi sessioni di installazione"</string>
+    <string name="pref_abandon_session_desc">"Abbandona tutte le sessioni di installazione rimaste in sospeso"</string>
+    <string name="toast_unknown_reason">"Qualcosa è andato storto, riprova"</string>
+    <string name="toast_junk_removed">"File residui rimossi"</string>
+    <string name="toast_abandon_sessions">"Sessioni di installazione abbandonate"</string>
 </resources>
