@@ -55,3 +55,10 @@ Changelog : v3.0.8
 • Added option to export current device info
 • Improved Search UI
 • Bug fixes and improvements
+
+Changelog : v3.0.9
+• Added option to install apps directly to work profile (only rooted users)
+• Added cleanup routines and image caching control routine
+• Added new locales - Punjabi, Belarusian and Norwegian Bokmål
+• Bug fixes and improvements
+
