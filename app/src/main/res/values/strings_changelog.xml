@@ -20,7 +20,12 @@
 
 <resources>
     <string name="app_log" translatable="false">
-
+        \n Changelog : v3.0.9
+        \n • Added option to install apps directly to work profile (only rooted users)
+        \n • Added cleanup routines and image caching control routine
+        \n • Added new locales - Punjabi, Belarusian and Norwegian Bokmål
+        \n • Bug fixes and improvements
+        \n
         \n Changelog : v3.0.8
         \n • Added option to export current device info
         \n • Improved Search UI
