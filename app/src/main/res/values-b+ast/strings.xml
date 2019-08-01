@@ -3,6 +3,7 @@
     <string name="account_dummy">"Cuenta anónima"</string>
     <string name="account_dummy_desc">"¿Aniciar sesión usando la cuenta anónima?"</string>
     <string name="account_google">"Cuenta de Google"</string>
+    <string name="account_logout">"¿Zarrar la sesión n'Aurora?"</string>
     <string name="account_prompt_login">"Anicia sesión pa siguir"</string>
     <string name="account_switch">"Cambéu de cuenta"</string>
     <string name="action_accounts">"Cuentes"</string>
@@ -58,6 +59,7 @@
     <string name="availability_restriction_hardware_app">"El preséu nun ye compatible con esta versión."</string>
     <string name="category_appFree">"De baldre"</string>
     <string name="category_trending">"Tendencies"</string>
+    <string name="delete">"Desaniciar"</string>
     <string name="desc_perm">"Aurora Store usa los permisos de darréu"</string>
     <string name="details_appReviewsAll">"Lleer toles reseñes"</string>
     <string name="details_contains_ads">"Contién anuncios"</string>
@@ -70,10 +72,13 @@
     <string name="details_no_ads">"Ensin anuncios"</string>
     <string name="details_permissions">"Permisos de l'aplicación"</string>
     <string name="details_purchase">"Mercar"</string>
+    <string name="details_rate_this_app">"Valora esta aplicación"</string>
     <string name="details_rating_reviews">"Valoraciones y reseñes"</string>
+    <string name="details_reviews">"Reseñes de l'aplicación"</string>
     <string name="details_run">"Abrir"</string>
     <string name="details_update">"Anovar"</string>
     <string name="details_why_rate_this_app">"Di-yos a los demás lo que pienses"</string>
+    <string name="details_you_rated_this_app">"La to valoración"</string>
     <string name="dialog_title_logout">"¿Zarrar la sesión?"</string>
     <string name="download_cancel_all">"Encaboxar too"</string>
     <string name="download_canceled">"Encaboxóse"</string>
@@ -82,6 +87,7 @@
     <string name="download_failed">"Falló"</string>
     <string name="download_force_clear_all">"Forciar la llimpieza de too"</string>
     <string name="download_pause_all">"Posar too"</string>
+    <string name="download_paused">"Posóse"</string>
     <string name="download_progress">"Baxando"</string>
     <string name="download_queued">"Amestóse a la cola"</string>
     <string name="download_resume_all">"Siguir con too"</string>
@@ -96,8 +102,11 @@
     <string name="exodus_viewMore">"Ver"</string>
     <string name="exodus_viewReport">"Ver l'informe"</string>
     <string name="list_app_blacklisted_empty">"Nun hai aplicaciones na llista prieta"</string>
+    <string name="list_app_depends_on_gsf">"Depende de GSF"</string>
     <string name="list_app_has_ads">"contién anuncios"</string>
+    <string name="list_app_independent_from_gsf">"Nun depende de GSF"</string>
     <string name="list_app_no_ads">"nun contién anuncios"</string>
+    <string name="list_app_system">"Aplicación del sistema"</string>
     <string name="list_app_user">"Aplicación d'usuariu"</string>
     <string name="list_blacklist">"Na llista prieta"</string>
     <string name="list_blacklist_none">"Nun hai aplicaciones na llista prieta"</string>
@@ -159,6 +168,7 @@ Decátate que baxar versiones al debalu nun lo sofita la tienda Google Play. L'�
     <string name="testing_program_section_opted_in_propagating_message">"Nunos minutos vas tar nel programa beta y vas poder anovar a la versión beta d'esta aplicación si ta disponible"</string>
     <string name="title_all_apps">"Toles aplicaciones"</string>
     <string name="title_home">"Aurora Store"</string>
+    <string name="title_installed">"Aplicaciones y xuegos de mio"</string>
     <string name="title_perm">"Permisos"</string>
     <string name="title_search">"Guetar aplicaciones y xuegos"</string>
     <string name="title_updates">"Anovamientos disponibles"</string>
@@ -246,9 +256,27 @@ Decátate que baxar versiones al debalu nun lo sofita la tienda Google Play. L'�
     <string name="toast_loading_apps">"Cargando más aplicaciones..."</string>
     <string name="dialog_2FA_title">"Autenticación en dos pasos"</string>
     <string name="dialog_2FA_desc">"Paez qu'activesti l'autenticación en dos pasos pero has xenerar una contraseña específica pa usala nesta aplicación"</string>
+    <string name="dialog_purchase_desc">"Primero precises mercar esta aplicación darréu qu'Aurora Store nun sofita merques. Vamos redirixite a la páxina web pa la merca."</string>
     <string name="dialog_incompat_title">"Aplicación incompatible"</string>
     <string name="dialog_incompat_desc">"L'aplicación que tas tentando de baxar nun ye compatible col preséu. Nos axustes, prueba a suplantar la identidá del preséu."</string>
     <string name="pref_install_mode_services">"Servicios d'Aurora"</string>
     <string name="pref_install_mode_no_services">"Los servicios d'Aurora nun tán instalaos, instálalos primero"</string>
+    <string name="pref_services_title">"Servicios d'Aurora"</string>
+    <string name="pref_services_desc_alt">"Nun tán disponibles"</string>
     <string name="action_export_device">"Esportar la información del preséu"</string>
+    <string name="action_export_info">"Esportóse la información del preséu"</string>
+    <string name="action_export_info_failed">"Falló la esportación de la información del preséu"</string>
+    <string name="installer_status_failure">"Falló la instalación"</string>
+    <string name="installer_status_failure_aborted">"Encaboxóse la instalación"</string>
+    <string name="installer_status_failure_blocked">"Bloquióse la instalación"</string>
+    <string name="installer_status_failure_incompatible">"Aplicación incompatible"</string>
+    <string name="installer_status_failure_invalid">"L'APK nun ye válida o ta toyida"</string>
+    <string name="installer_status_success">"Instalóse con ésitu"</string>
+    <string name="installer_status_unknown">"Desconozse"</string>
+    <string name="installer_status_user_action">"Esperando pola confirmación del usuariu"</string>
+    <string name="pref_downloader_internal">"Baxar les aplicaciones al almacenamientu internu"</string>
+    <string name="pref_downloader_internal_desc">"Si s'activa, nun vas ser a instalar aplicaciones per Servicios d'Aurora"</string>
+    <string name="pref_updates_extended">"Anovamientos estendíos"</string>
+    <string name="pref_updates_extended_desc">"Activa la comprobación d'anovamientos d'aplicaciones desactivaes"</string>
+    <string name="toast_unknown_reason">"Asocedió daqué malo, volvi tentalo"</string>
 </resources>
