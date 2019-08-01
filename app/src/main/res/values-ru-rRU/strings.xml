@@ -382,4 +382,22 @@ https://exodus-privacy.eu.org/en/. Это как "отчёт от аваста" 
     <string name="installer_status_success">"Успешно установлено"</string>
     <string name="installer_status_unknown">"Неизвестно"</string>
     <string name="installer_status_user_action">"Ожидается подтверждение"</string>
+    <string name="pref_downloader_internal">"Скачивать приложения на внешнее хранилище"</string>
+    <string name="pref_downloader_internal_desc">"Если включено, то вы не сможете устанавливать приложения с помощью Aurora Services"</string>
+    <string name="pref_install_profile_summary">"Выбор профиля для установки приложений, работает только с root методом установки"</string>
+    <string name="pref_install_profile_title">"Профили для установки (Эксперимент)"</string>
+    <string name="pref_install_mode_internal_warn">"Вы выбрали скачивание приложений во внешнее хранилище, отключите эту опцию, чтобы использовать Aurora Services"</string>
+    <string name="pref_updates_extended">"Расширенные опции обновлений"</string>
+    <string name="pref_updates_extended_desc">"Включите, чтобы проверялись обновления для выключенных приложений"</string>
+    <string name="pref_caching_strategy">"Способ кэширования изображений"</string>
+    <string name="pref_caching_strategy_all">"Все"</string>
+    <string name="pref_caching_strategy_automatic">"Автоматически"</string>
+    <string name="pref_caching_strategy_none">"Не кэшировать"</string>
+    <string name="pref_clean_junk">"Принудительная очистка мусорных файлов"</string>
+    <string name="pref_clean_junk_desc">"Удаление всех загруженных файлов из директории по умолчанию"</string>
+    <string name="pref_abandon_session">"Принудительная очистка сессий установки"</string>
+    <string name="pref_abandon_session_desc">"Отмена устаревших находящихся в ожидании сессий"</string>
+    <string name="toast_unknown_reason">"Что-то пошло не так, попробуйте снова"</string>
+    <string name="toast_junk_removed">"Мусорные файлы удалены"</string>
+    <string name="toast_abandon_sessions">"Старые сессии установки отменены"</string>
 </resources>
