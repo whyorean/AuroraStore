@@ -331,4 +331,22 @@
     <string name="installer_status_success">"インストールに成功しました"</string>
     <string name="installer_status_unknown">"不明"</string>
     <string name="installer_status_user_action">"ユーザーの承認を待機しています"</string>
+    <string name="pref_downloader_internal">"アプリを内部ストレージへダウンロード"</string>
+    <string name="pref_downloader_internal_desc">"有効化された場合、Aurora Services からアプリをインストールできません"</string>
+    <string name="pref_install_profile_summary">"アプリをインストールするプロファイルを選択 (Rootインストールでのみ機能します)"</string>
+    <string name="pref_install_profile_title">"インストールするプロファイル (試験的)"</string>
+    <string name="pref_install_mode_internal_warn">"ダウンロード先を内部ストレージに設定しました。Aurora Services を利用する場合は無効化してください"</string>
+    <string name="pref_updates_extended">"拡張アップデート"</string>
+    <string name="pref_updates_extended_desc">"無効化されたアプリの更新の確認を有効化"</string>
+    <string name="pref_caching_strategy">"画像キャッシュの方法"</string>
+    <string name="pref_caching_strategy_all">"全て"</string>
+    <string name="pref_caching_strategy_automatic">"自動"</string>
+    <string name="pref_caching_strategy_none">"なし"</string>
+    <string name="pref_clean_junk">"ジャンクファイルを強制的に削除"</string>
+    <string name="pref_clean_junk_desc">"既定のディレクトリから全てのダウンロード済ファイルを削除"</string>
+    <string name="pref_abandon_session">"インストールセッションを強制的にクリア"</string>
+    <string name="pref_abandon_session_desc">"保留されたインストールセッションを全て破棄"</string>
+    <string name="toast_unknown_reason">"問題が発生しました。再度お試しください"</string>
+    <string name="toast_junk_removed">"ジャンクファイルが削除されました"</string>
+    <string name="toast_abandon_sessions">"古いインストールセッションが放棄されました"</string>
 </resources>
