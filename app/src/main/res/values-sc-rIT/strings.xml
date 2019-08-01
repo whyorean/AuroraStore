@@ -67,7 +67,7 @@
     <string name="availability_restriction_generic">"Custu elementu no est disponìbile."</string>
     <string name="availability_restriction_hardware_app">"Su dispositivu tuo no est cumpatìbile cun custa versione."</string>
     <string name="category_appFree">"De badas"</string>
-    <string name="category_topFree">"De badas prus popolares"</string>
+    <string name="category_topFree">"De badas prus populares"</string>
     <string name="category_topGrossing">"Prus redditìtzias"</string>
     <string name="category_trending">"De tendèntzia"</string>
     <string name="delete">"Iscantzella"</string>
@@ -283,10 +283,10 @@ Ammenta·ti chi iscarrigare versiones arbitràrias de sas aplicatziones no est s
     <string name="action_logging_in_success">"Intrada resissida"</string>
     <string name="action_token_expired">"Getone (token) iscadidu, pedende unu getone nou"</string>
     <string name="action_token_force_request">"Fortza pedida"</string>
-    <string name="cat_top_apps">"Prus popolares"</string>
-    <string name="cat_top_categories">"Categorias prus popolares"</string>
-    <string name="cat_top_games">"Giogos prus popolares"</string>
-    <string name="cat_top_family">"Apl. pro sa famìlia prus popolares"</string>
+    <string name="cat_top_apps">"Prus populares"</string>
+    <string name="cat_top_categories">"Categorias prus populares"</string>
+    <string name="cat_top_games">"Giogos prus populares"</string>
+    <string name="cat_top_family">"Apl. pro sa famìlia prus populares"</string>
     <string name="details_no_changes">"Elencu de sas modìficas non frunidu dae s'isvilupadore"</string>
     <string name="error_logged_out">"Ses istadu bogadu a foras"</string>
     <string name="link_dev">"Isvilupadore"</string>
@@ -337,4 +337,22 @@ Ammenta·ti chi iscarrigare versiones arbitràrias de sas aplicatziones no est s
     <string name="installer_status_success">"Installatzione resèssida"</string>
     <string name="installer_status_unknown">"Disconnotu"</string>
     <string name="installer_status_user_action">"Isetende pro sa cunfirma de s'impreadore"</string>
+    <string name="pref_downloader_internal">"Iscàrriga sas apl. in sa memòria interna"</string>
+    <string name="pref_downloader_internal_desc">"Si est abilitadu, no as a pòdere installare aplicatziones impreende Aurora Services"</string>
+    <string name="pref_install_profile_summary">"Ischerta su profilu chi cheres pro installare aplicatziones. Funtzionat petzi cun sa modalidade de installatzione de raighina (\"root\")"</string>
+    <string name="pref_install_profile_title">"Profilos de installatzione (Isperimentale)"</string>
+    <string name="pref_install_mode_internal_warn">"As ischertadu sa memòria interna pro totu sas installatziones. Pro praghere disabilita·la pro impreare Aurora Services"</string>
+    <string name="pref_updates_extended">"Agiornamentos estèndidos"</string>
+    <string name="pref_updates_extended_desc">"Abilita·lu pro chircare agiornamentos pro sas apl. disabilitadas"</string>
+    <string name="pref_caching_strategy">"Istrategia de sarvatàgiu de sas immàgines"</string>
+    <string name="pref_caching_strategy_all">"Totus"</string>
+    <string name="pref_caching_strategy_automatic">"Automàticu"</string>
+    <string name="pref_caching_strategy_none">"Peruna"</string>
+    <string name="pref_clean_junk">"Fortza s'innetadura de sos documentos de arga"</string>
+    <string name="pref_clean_junk_desc">"Bogat totu sos documentos iscarrigados dae sa cartella predefinida"</string>
+    <string name="pref_abandon_session">"Fortza s'innetadura de sas sessiones de installatzione"</string>
+    <string name="pref_abandon_session_desc">"Abbandona sas sessiones de installatzione betzas in suspesu"</string>
+    <string name="toast_unknown_reason">"B'at àpidu una faddina, torra a proare"</string>
+    <string name="toast_junk_removed">"Documentos de arga bogados"</string>
+    <string name="toast_abandon_sessions">"Sessiones de installatzione betzas abbandonadas"</string>
 </resources>
