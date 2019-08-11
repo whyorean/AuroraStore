@@ -60,8 +60,8 @@
                     android:id="@+id/chip_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:clipToPadding="false"
                     android:layout_marginBottom="@dimen/margin_xxsmall"
+                    android:clipToPadding="false"
                     android:paddingStart="@dimen/margin_normal"
                     android:scrollbars="none">
 
@@ -79,6 +79,7 @@
                     android:clipToPadding="false"
                     android:overScrollMode="never"
                     android:paddingTop="@dimen/margin_small"
+                    android:paddingBottom="@dimen/margin_bottom"
                     android:scrollbars="none"
                     android:splitMotionEvents="false"
                     tools:listitem="@layout/item_installed" />
