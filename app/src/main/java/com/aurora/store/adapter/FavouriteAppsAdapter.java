@@ -73,6 +73,10 @@ public class FavouriteAppsAdapter extends RecyclerView.Adapter {
         notifyItemRemoved(position);
     }
 
+    public boolean isEmpty() {
+        return appList.isEmpty();
+    }
+
     @NonNull
     @Override
     public SelectableViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

@@ -31,12 +31,6 @@
         android:layout_height="wrap_content">
 
         <LinearLayout
-            android:id="@+id/err_view"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical" />
-
-        <LinearLayout
             android:id="@+id/content_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -134,6 +128,12 @@
             </com.aurora.store.view.CustomSwipeToRefresh>
 
         </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/err_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" />
 
     </ViewSwitcher>
 

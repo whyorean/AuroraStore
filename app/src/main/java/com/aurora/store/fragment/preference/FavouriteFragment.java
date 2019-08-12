@@ -43,21 +43,18 @@ import com.aurora.store.FavouriteItemTouchHelper;
 import com.aurora.store.R;
 import com.aurora.store.adapter.FavouriteAppsAdapter;
 import com.aurora.store.adapter.SelectableViewHolder;
-import com.aurora.store.download.DownloadManager;
-import com.aurora.store.download.RequestBuilder;
+import com.aurora.store.exception.MalformedRequestException;
 import com.aurora.store.fragment.BaseFragment;
 import com.aurora.store.manager.FavouriteListManager;
 import com.aurora.store.model.App;
-import com.aurora.store.notification.QuickNotification;
-import com.aurora.store.task.BulkDeliveryData;
 import com.aurora.store.task.BulkDetails;
+import com.aurora.store.task.LiveUpdate;
+import com.aurora.store.task.ObservableDeliveryData;
 import com.aurora.store.utility.Accountant;
 import com.aurora.store.utility.Log;
 import com.aurora.store.utility.NetworkUtil;
 import com.aurora.store.utility.PathUtil;
 import com.aurora.store.view.CustomSwipeToRefresh;
-import com.tonyodev.fetch2.Fetch;
-import com.tonyodev.fetch2.Request;
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -103,15 +100,21 @@ public class FavouriteFragment extends BaseFragment implements SelectableViewHol
     private FavouriteListManager manager;
     private List<App> favouriteApps;
     private List<App> selectedApps;
-    private List<Request> requestList;
     private ArrayList<String> favouriteList;
     private FavouriteAppsAdapter favouriteAppsAdapter;
     private CompositeDisposable disposable = new CompositeDisposable();
-    private Fetch fetch;
 
     @Override
     protected View.OnClickListener errRetry() {
-        return null;
+        return v -> {
+            favouriteList = importList();
+            if (!favouriteList.isEmpty()) {
+                manager.addAll(favouriteList);
+                fetchData();
+            } else {
+                Toast.makeText(context, "No favourite list to import", Toast.LENGTH_SHORT).show();
+            }
+        };
     }
 
     @Override
@@ -124,7 +127,6 @@ public class FavouriteFragment extends BaseFragment implements SelectableViewHol
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         manager = new FavouriteListManager(context);
-        fetch = DownloadManager.getFetchInstance(context);
     }
 
     @Override
@@ -138,7 +140,7 @@ public class FavouriteFragment extends BaseFragment implements SelectableViewHol
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        setErrorView(ErrorType.UNKNOWN);
+        setErrorView(ErrorType.IMPORT);
         swipeRefreshLayout.setOnRefreshListener(() -> {
             if (Accountant.isLoggedIn(context) && NetworkUtil.isConnected(context))
                 fetchData();
@@ -150,21 +152,14 @@ public class FavouriteFragment extends BaseFragment implements SelectableViewHol
         buttonExport.setOnClickListener(v -> {
             exportList();
         });
-        buttonImport.setOnClickListener(v -> {
-            favouriteList = importList();
-            if (!favouriteList.isEmpty()) {
-                manager.addAll(favouriteList);
-                fetchData();
-            } else {
-                Toast.makeText(context, "Favourite AppList is empty", Toast.LENGTH_SHORT).show();
-            }
-        });
+        fetchData();
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        fetchData();
+        if (favouriteAppsAdapter != null && favouriteAppsAdapter.isEmpty())
+            fetchData();
     }
 
     @Override
@@ -173,34 +168,24 @@ public class FavouriteFragment extends BaseFragment implements SelectableViewHol
         swipeRefreshLayout.setRefreshing(false);
     }
 
-    @Override
-    public void onDestroy() {
-        disposable.dispose();
-        super.onDestroy();
-    }
-
     private View.OnClickListener bulkInstallListener() {
         return v -> {
-            disposable.add(Observable.fromCallable(() -> new BulkDeliveryData(context)
-                    .getDeliveryData(selectedApps))
+            buttonInstall.setText(getString(R.string.details_installing));
+            buttonInstall.setEnabled(false);
+            disposable.add(Observable.fromIterable(selectedApps)
+                    .flatMap(app -> new ObservableDeliveryData(context).getDeliveryData(app))
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe((deliveryDataList) -> {
-                        requestList = RequestBuilder.getBulkRequestList(context, deliveryDataList,
-                                selectedApps, BULK_GROUP_ID);
-                        if (!requestList.isEmpty())
-                            fetch.enqueue(requestList, updatedRequestList -> {
-                                String bulkInstallText = new StringBuilder()
-                                        .append(selectedApps.size())
-                                        .append(StringUtils.SPACE)
-                                        .append(context.getString(R.string.list_bulk_install)).toString();
-                                QuickNotification.show(
-                                        context,
-                                        context.getString(R.string.app_name),
-                                        bulkInstallText,
-                                        null);
-                            });
-                    }, err -> Log.e(err.getMessage())));
+                    .doOnNext(deliveryDataBundle -> new LiveUpdate(context)
+                            .enqueueUpdate(deliveryDataBundle.getApp(),
+                                    deliveryDataBundle.getAndroidAppDeliveryData()))
+                    .doOnError(throwable -> {
+                        if (throwable instanceof MalformedRequestException) {
+                            Toast.makeText(context, throwable.getMessage(), Toast.LENGTH_SHORT).show();
+                        } else
+                            Log.e(throwable.getMessage());
+                    })
+                    .subscribe());
         };
     }
 
@@ -253,7 +238,7 @@ public class FavouriteFragment extends BaseFragment implements SelectableViewHol
     private File verifyAndGetFile() {
         String fileExt = "fav_list.txt";
         boolean success = verifyDirectory();
-        File file = new File(PathUtil.getBaseDirectory(context) + Constants.FILES + File.separator + fileExt);
+        File file = new File(PathUtil.getBaseDirectory(context) + "/" + Constants.FILES + "/" + fileExt);
         try {
             success = file.exists() || file.createNewFile();
         } catch (IOException e) {
@@ -268,8 +253,10 @@ public class FavouriteFragment extends BaseFragment implements SelectableViewHol
     @Override
     protected void fetchData() {
         favouriteList = manager.get();
-        toggleEmptyLayout(favouriteList.isEmpty());
-        if (!favouriteList.isEmpty())
+        if (favouriteList.isEmpty()) {
+            setErrorView(ErrorType.IMPORT);
+            switchViews(true);
+        } else
             disposable.add(Observable.fromCallable(() -> new BulkDetails(context)
                     .getRemoteAppList(favouriteList))
                     .subscribeOn(Schedulers.io())
@@ -281,20 +268,12 @@ public class FavouriteFragment extends BaseFragment implements SelectableViewHol
                         if (appList.isEmpty()) {
                             setErrorView(ErrorType.NO_APPS);
                             switchViews(true);
-                        } else if (favouriteList.isEmpty()) {
-                            switchViews(false);
-                            toggleEmptyLayout(true);
                         } else {
+                            switchViews(false);
                             favouriteApps = appList;
                             setupFavourites(favouriteApps);
                         }
                     }, err -> Log.e(Constants.TAG, err.getMessage())));
-    }
-
-    private void toggleEmptyLayout(boolean toggle) {
-        switchViews(false);
-        emptyLayout.setVisibility(toggle ? View.VISIBLE : View.GONE);
-        buttonExport.setEnabled(!toggle);
     }
 
     private void setupFavourites(List<App> appsToAdd) {
@@ -312,7 +291,8 @@ public class FavouriteFragment extends BaseFragment implements SelectableViewHol
         if (viewHolder instanceof SelectableViewHolder) {
             favouriteAppsAdapter.remove(position);
             if (favouriteAppsAdapter.getItemCount() < 1) {
-                toggleEmptyLayout(true);
+                setErrorView(ErrorType.IMPORT);
+                switchViews(true);
             }
         }
     }

@@ -28,5 +28,6 @@ public enum ErrorType {
     NO_DOWNLOADS,
     UNKNOWN,
     APP_NOT_FOUND,
-    LOGOUT_ERR
+    LOGOUT_ERR,
+    IMPORT
 }
