@@ -19,7 +19,6 @@
   -->
 
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -106,7 +105,8 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/view_switcher_top"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="@dimen/margin_small">
+                android:layout_marginTop="@dimen/margin_small"
+                android:gravity="center_horizontal">
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/user_account_type"
@@ -118,20 +118,21 @@
                     android:text="@string/account_switch"
                     android:textAppearance="@style/TextAppearance.Aurora.SubTitle" />
 
-                <com.google.android.material.chip.ChipGroup
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/user_account_type"
                     android:layout_marginTop="@dimen/margin_xsmall"
+                    android:gravity="center_horizontal"
                     android:paddingStart="@dimen/margin_normal"
-                    android:paddingEnd="@dimen/margin_normal"
-                    app:singleSelection="true">
+                    android:paddingEnd="@dimen/margin_normal">
 
                     <com.google.android.material.chip.Chip
                         android:id="@+id/chip_google"
                         style="@style/Widget.MaterialComponents.Chip.Info"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/margin_xsmall"
                         android:text="@string/account_google" />
 
                     <com.google.android.material.chip.Chip
@@ -139,10 +140,10 @@
                         style="@style/Widget.MaterialComponents.Chip.Info"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/account_dummy"
-                        app:chipBackgroundColor="?android:colorBackground" />
+                        android:layout_marginStart="@dimen/margin_xsmall"
+                        android:text="@string/account_dummy" />
 
-                </com.google.android.material.chip.ChipGroup>
+                </LinearLayout>
             </RelativeLayout>
 
             <ViewSwitcher
