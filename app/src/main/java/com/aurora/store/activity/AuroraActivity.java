@@ -127,8 +127,8 @@ public class AuroraActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         Fragment fragment = pagerAdapter.getItem(viewPager.getCurrentItem());
-        if (fragment.isDetached())
-            super.onBackPressed();
+        if (!fragment.isAdded())
+            return;
         if (fragment instanceof SearchFragment || fragment instanceof HomeFragment) {
             FragmentManager fragmentManager = fragment.getChildFragmentManager();
             if (!fragmentManager.getFragments().isEmpty())
