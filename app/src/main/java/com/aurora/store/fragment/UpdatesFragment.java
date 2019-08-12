@@ -146,6 +146,7 @@ public class UpdatesFragment extends BaseFragment {
                     if (view != null) {
                         updatableAppList = appList;
                         if (appList.isEmpty()) {
+                            PrefUtil.putString(context, Constants.PREFERENCE_UPDATABLE_APPS, "");
                             setErrorView(ErrorType.NO_UPDATES);
                             switchViews(true);
                         } else {
@@ -174,11 +175,14 @@ public class UpdatesFragment extends BaseFragment {
         Type type = new TypeToken<List<App>>() {
         }.getType();
         String jsonString = PrefUtil.getString(context, Constants.PREFERENCE_UPDATABLE_APPS);
-        List<App> appList = gson.fromJson(jsonString, type);
-        if (appList == null || appList.isEmpty())
+        updatableAppList = gson.fromJson(jsonString, type);
+        if (updatableAppList == null || updatableAppList.isEmpty())
             fetchData();
-        else
-            adapter.addData(appList);
+        else {
+            adapter.addData(updatableAppList);
+            updateCounter();
+            setupUpdateAll();
+        }
     }
 
     private void setupRecycler() {
@@ -222,8 +226,9 @@ public class UpdatesFragment extends BaseFragment {
         btnUpdateAll.setText(getString(R.string.list_update_all));
         btnUpdateAll.setEnabled(true);
         return v -> {
-            updateAllApps();
             onGoingUpdate = true;
+            updateAllApps();
+            setupUpdateAll();
             btnUpdateAll.setText(getString(R.string.list_updating));
             btnUpdateAll.setEnabled(false);
         };
