@@ -78,7 +78,6 @@ dependencies {
     implementation 'com.google.android.material:material:1.1.0-alpha08'
 
     //Utils
-    implementation 'com.android.volley:volley:1.1.0'
     implementation 'androidx.annotation:annotation:1.1.0'
     implementation 'org.apache.commons:commons-text:1.4'
     implementation 'com.scottyab:rootbeer-lib:0.0.7'

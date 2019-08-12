@@ -106,41 +106,42 @@ public class ExodusBottomSheet extends CustomBottomSheetDialogFragment {
     }
 
     private List<ExodusTracker> getTrackerData(Report report) {
-        List<ExodusTracker> mExodusTrackers = new ArrayList<>();
+        List<ExodusTracker> exodusTrackers = new ArrayList<>();
         ArrayList<JSONObject> trackerObjects = getTrackerObjects(report.getTrackers());
         for (JSONObject obj : trackerObjects) {
-            ExodusTracker mExodusTracker = null;
+            ExodusTracker exodusTracker = null;
             try {
-                mExodusTracker = new ExodusTracker(
+                exodusTracker = new ExodusTracker(
                         obj.getString("name"),
                         obj.getString("website"),
                         obj.getString("code_signature"),
                         obj.getString("creation_date"));
             } catch (JSONException | NullPointerException ignored) {
             }
-            if (mExodusTracker != null)
-                mExodusTrackers.add(mExodusTracker);
+            if (exodusTracker != null)
+                exodusTrackers.add(exodusTracker);
         }
-        return mExodusTrackers;
+        return exodusTrackers;
     }
 
     private ArrayList<JSONObject> getTrackerObjects(List<Integer> trackerIdList) {
         try {
-            InputStream mInputStream = context.getAssets().open("exodus_trackers.json");
-            byte[] mByte = new byte[mInputStream.available()];
-            mInputStream.read(mByte);
-            mInputStream.close();
+            InputStream inputStream = context.getAssets().open("exodus_trackers.json");
+            byte[] mByte = new byte[inputStream.available()];
+            inputStream.read(mByte);
+            inputStream.close();
             String json = new String(mByte, StandardCharsets.UTF_8);
             JSONArray jsonArray = new JSONArray(json);
             JSONObject jsonObject = jsonArray.getJSONObject(0);
             ArrayList<JSONObject> trackerObjects = new ArrayList<>();
-            for (Integer trackerId : trackerIdList) {
-                trackerObjects.add(jsonObject.getJSONObject(String.valueOf(trackerId)));
+            try {
+                for (Integer trackerId : trackerIdList)
+                    trackerObjects.add(jsonObject.getJSONObject(String.valueOf(trackerId)));
+            } catch (Exception ignored) {
             }
             return trackerObjects;
         } catch (IOException | JSONException e) {
             Log.i(e.getMessage());
-            e.printStackTrace();
             return new ArrayList<>();
         }
     }

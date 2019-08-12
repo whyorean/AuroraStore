@@ -28,24 +28,24 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.VolleyLog;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.Volley;
 import com.aurora.store.GlideApp;
 import com.aurora.store.R;
 import com.aurora.store.fragment.DetailsFragment;
 import com.aurora.store.model.App;
+import com.aurora.store.task.NetworkTask;
 import com.aurora.store.utility.Log;
 import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 
+import org.json.JSONObject;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
-
-import static com.android.volley.VolleyLog.TAG;
+import io.reactivex.Observable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.schedulers.Schedulers;
 
 public class Video extends AbstractHelper {
 
@@ -55,6 +55,8 @@ public class Video extends AbstractHelper {
     ImageView video_thumbnail;
     @BindView(R.id.video_play)
     ImageView video_play;
+
+    private CompositeDisposable disposable = new CompositeDisposable();
 
     public Video(DetailsFragment fragment, App app) {
         super(fragment, app);
@@ -67,7 +69,7 @@ public class Video extends AbstractHelper {
             return;
         }
 
-        getVideoThumbURL(app.getVideoUrl());
+        getThumb(app.getVideoUrl());
         video_layout.setVisibility(View.VISIBLE);
 
         video_play.setOnClickListener(v -> {
@@ -79,24 +81,21 @@ public class Video extends AbstractHelper {
         });
     }
 
-    private void getVideoThumbURL(String videoURL) {
-        RequestQueue mRequestQueue = Volley.newRequestQueue(context);
-        JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.GET,
-                "http://www.youtube.com/oembed?url=" + videoURL + "&format=json",
-                null,
-                obj -> {
-                    try {
-                        if (context != null)
-                            GlideApp
-                                    .with(context)
-                                    .load(obj.getString("thumbnail_url"))
-                                    .transforms(new CenterCrop(), new RoundedCorners(15))
-                                    .transition(new DrawableTransitionOptions().crossFade())
-                                    .into(video_thumbnail);
-                    } catch (Exception e) {
-                        Log.e(e.getMessage());
-                    }
-                }, error -> VolleyLog.d(TAG, "Error: " + error.getMessage()));
-        mRequestQueue.add(jsonObjReq);
+    private void getThumb(String videoURL) {
+        disposable.add(Observable.fromCallable(() -> new NetworkTask(context)
+                .get("http://www.youtube.com/oembed?url=" + videoURL + "&format=json"))
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(response -> {
+                    JSONObject jsonObject = new JSONObject(response);
+                    GlideApp
+                            .with(context)
+                            .load(jsonObject.getString("thumbnail_url"))
+                            .transforms(new CenterCrop(), new RoundedCorners(15))
+                            .transition(new DrawableTransitionOptions().crossFade())
+                            .into(video_thumbnail);
+                }, throwable -> {
+                    Log.i("Error occurred at generating report");
+                }));
     }
 }
