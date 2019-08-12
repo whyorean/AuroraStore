@@ -83,8 +83,6 @@ public class LiveUpdate extends BaseTask {
             public void onResumed(int groupId, @NotNull Download download, @NotNull FetchGroup fetchGroup) {
                 if (groupId == hashCode) {
                     int progress = fetchGroup.getGroupDownloadProgress();
-                    if (progress < 0)
-                        progress = 0;
                     notification.notifyProgress(progress, 0, hashCode);
                 }
             }

@@ -62,6 +62,8 @@ public class GeneralNotification extends NotificationBase {
     public void notifyProgress(int progress, long downloadedBytesPerSecond, int requestId) {
         if (NotificationUtil.shouldNotify(context, app.getPackageName())) {
             builder = getBuilder();
+            if (progress < 0)
+                progress = 0;
             builder.setProgress(100, progress, false);
             builder.setSubText(new StringBuilder().append(Util.humanReadableByteSpeed(downloadedBytesPerSecond, true)));
             builder.setContentText(new StringBuilder().append(progress).append("%"));
