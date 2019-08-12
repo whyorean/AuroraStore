@@ -35,6 +35,7 @@ import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.aurora.store.Constants;
 import com.aurora.store.ErrorType;
 import com.aurora.store.R;
 import com.aurora.store.adapter.UpdatableAppsAdapter;
@@ -47,14 +48,18 @@ import com.aurora.store.task.ObservableDeliveryData;
 import com.aurora.store.task.UpdatableAppsTask;
 import com.aurora.store.utility.ContextUtil;
 import com.aurora.store.utility.Log;
+import com.aurora.store.utility.PrefUtil;
 import com.aurora.store.utility.ViewUtil;
 import com.aurora.store.view.CustomSwipeToRefresh;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.tonyodev.fetch2.Fetch;
 
 import org.apache.commons.lang3.StringUtils;
 import org.jetbrains.annotations.NotNull;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -113,8 +118,8 @@ public class UpdatesFragment extends BaseFragment {
     @Override
     public void onResume() {
         super.onResume();
-        if (adapter != null && adapter.isDataEmpty())
-            fetchData();
+        if (adapter.isDataEmpty())
+            fetchAppsFromCache();
     }
 
     @Override
@@ -147,6 +152,7 @@ public class UpdatesFragment extends BaseFragment {
                             switchViews(false);
                             if (adapter != null)
                                 adapter.addData(appList);
+                            saveToCache(appList);
                             updateCounter();
                             setupUpdateAll();
                         }
@@ -155,6 +161,24 @@ public class UpdatesFragment extends BaseFragment {
                     Log.d(err.getMessage());
                     processException(err);
                 }));
+    }
+
+    private void saveToCache(List<App> appList) {
+        Gson gson = new Gson();
+        String jsonString = gson.toJson(appList);
+        PrefUtil.putString(context, Constants.PREFERENCE_UPDATABLE_APPS, jsonString);
+    }
+
+    private void fetchAppsFromCache() {
+        Gson gson = new Gson();
+        Type type = new TypeToken<List<App>>() {
+        }.getType();
+        String jsonString = PrefUtil.getString(context, Constants.PREFERENCE_UPDATABLE_APPS);
+        List<App> appList = gson.fromJson(jsonString, type);
+        if (appList == null || appList.isEmpty())
+            fetchData();
+        else
+            adapter.addData(appList);
     }
 
     private void setupRecycler() {

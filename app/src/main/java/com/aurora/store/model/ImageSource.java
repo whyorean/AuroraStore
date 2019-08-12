@@ -28,7 +28,7 @@ import android.content.pm.ApplicationInfo;
 public class ImageSource {
 
     private String url;
-    private ApplicationInfo applicationInfo;
+    private transient ApplicationInfo applicationInfo;
     private boolean fullSize;
 
     public ImageSource() {

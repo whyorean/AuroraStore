@@ -156,8 +156,7 @@ public class InstalledAppsAdapter extends RecyclerView.Adapter<InstalledAppsAdap
     }
 
     public void getDetails(List<String> Version, List<String> Extra, App app) {
-        if (app.getPackageInfo() != null)
-            Version.add("v" + app.getPackageInfo().versionName + "." + app.getPackageInfo().versionCode);
+        Version.add("v" + app.getVersionName() + "." + app.getVersionCode());
         if (app.isSystem())
             Extra.add(context.getString(R.string.list_app_system));
         else

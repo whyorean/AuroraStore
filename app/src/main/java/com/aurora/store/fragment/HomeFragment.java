@@ -33,19 +33,27 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.aurora.store.Constants;
 import com.aurora.store.ErrorType;
 import com.aurora.store.R;
 import com.aurora.store.SharedPreferencesTranslator;
 import com.aurora.store.adapter.FeaturedAppsAdapter;
 import com.aurora.store.adapter.TopCategoriesAdapter;
 import com.aurora.store.manager.CategoryManager;
+import com.aurora.store.model.App;
 import com.aurora.store.task.CategoryList;
 import com.aurora.store.task.FeaturedAppsTask;
 import com.aurora.store.utility.ContextUtil;
 import com.aurora.store.utility.Log;
+import com.aurora.store.utility.PrefUtil;
 import com.aurora.store.utility.Util;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 import com.google.android.material.button.MaterialButton;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -122,11 +130,11 @@ public class HomeFragment extends BaseFragment {
     public void onResume() {
         super.onResume();
         if (topAppsAdapter.isDataEmpty())
-            addApps();
+            fetchTopAppsFromCache();
         if (topGamesAdapter.isDataEmpty())
-            addGames();
+            fetchTopGamesFromCache();
         if (topFamilyAdapter.isDataEmpty())
-            addFamily();
+            fetchTopFamilyFromCache();
     }
 
     @Override
@@ -169,7 +177,7 @@ public class HomeFragment extends BaseFragment {
         Util.attachSnapPager(context, recyclerTopFamily);
     }
 
-    private void addApps() {
+    private void fetchTopApps() {
         disposable.add(Observable.fromCallable(() -> featuredAppsTask
                 .getApps("APPLICATION", GooglePlayAPI.SUBCATEGORY.TOP_FREE))
                 .subscribeOn(Schedulers.io())
@@ -177,13 +185,14 @@ public class HomeFragment extends BaseFragment {
                 .subscribe((appList) -> {
                     switchViews(false);
                     topAppsAdapter.addData(appList);
+                    saveToCache(appList, Constants.PREFERENCE_TOP_APPS);
                 }, err -> {
                     processException(err);
                     Log.d(err.getMessage());
                 }));
     }
 
-    private void addGames() {
+    private void fetchTopGames() {
         disposable.add(Observable.fromCallable(() -> featuredAppsTask
                 .getApps("GAME", GooglePlayAPI.SUBCATEGORY.TOP_GROSSING))
                 .subscribeOn(Schedulers.io())
@@ -191,10 +200,11 @@ public class HomeFragment extends BaseFragment {
                 .subscribe((appList) -> {
                     switchViews(false);
                     topGamesAdapter.addData(appList);
+                    saveToCache(appList, Constants.PREFERENCE_TOP_GAMES);
                 }, err -> Log.d(err.getMessage())));
     }
 
-    private void addFamily() {
+    private void fetchTopFamily() {
         disposable.add(Observable.fromCallable(() -> featuredAppsTask
                 .getApps("FAMILY", GooglePlayAPI.SUBCATEGORY.TOP_GROSSING))
                 .subscribeOn(Schedulers.io())
@@ -202,7 +212,50 @@ public class HomeFragment extends BaseFragment {
                 .subscribe((appList) -> {
                     switchViews(false);
                     topFamilyAdapter.addData(appList);
+                    saveToCache(appList, Constants.PREFERENCE_TOP_FAMILY);
                 }, err -> Log.d(err.getMessage())));
+    }
+
+    private void saveToCache(List<App> appList, String key) {
+        Gson gson = new Gson();
+        String jsonString = gson.toJson(appList);
+        PrefUtil.putString(context, key, jsonString);
+    }
+
+    private void fetchTopAppsFromCache() {
+        Gson gson = new Gson();
+        Type type = new TypeToken<List<App>>() {
+        }.getType();
+        String jsonString = PrefUtil.getString(context, Constants.PREFERENCE_TOP_APPS);
+        List<App> appList = gson.fromJson(jsonString, type);
+        if (appList == null || appList.isEmpty())
+            fetchTopApps();
+        else
+            topAppsAdapter.addData(appList);
+    }
+
+    private void fetchTopGamesFromCache() {
+        Gson gson = new Gson();
+        Type type = new TypeToken<List<App>>() {
+        }.getType();
+        String jsonString = PrefUtil.getString(context, Constants.PREFERENCE_TOP_GAMES);
+        List<App> appList = gson.fromJson(jsonString, type);
+        if (appList == null || appList.isEmpty())
+            fetchTopGames();
+        else
+            topGamesAdapter.addData(appList);
+    }
+
+    private void fetchTopFamilyFromCache() {
+        Gson gson = new Gson();
+        Type type = new TypeToken<List<App>>() {
+        }.getType();
+        String jsonString = PrefUtil.getString(context, Constants.PREFERENCE_TOP_FAMILY);
+        List<App> appList = gson.fromJson(jsonString, type);
+        if (appList == null || appList.isEmpty())
+            fetchTopFamily();
+        else
+            topFamilyAdapter.addData(appList);
     }
 
     private void getAllCategories() {
@@ -244,8 +297,9 @@ public class HomeFragment extends BaseFragment {
     @Override
     protected View.OnClickListener errRetry() {
         return v -> {
-            addApps();
-            addGames();
+            fetchTopApps();
+            fetchTopGames();
+            fetchTopFamily();
             ((Button) v).setText(getString(R.string.action_retry_ing));
             ((Button) v).setEnabled(false);
         };
@@ -254,9 +308,9 @@ public class HomeFragment extends BaseFragment {
     @Override
     protected void fetchData() {
         ContextUtil.runOnUiThread(() -> {
-            addApps();
-            addGames();
-            addFamily();
+            fetchTopApps();
+            fetchTopGames();
+            fetchTopFamily();
         });
     }
 }

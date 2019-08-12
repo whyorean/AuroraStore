@@ -23,6 +23,10 @@
 
 package com.aurora.store.utility;
 
+import android.content.Context;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+
 import com.aurora.store.model.App;
 
 import org.apache.commons.io.IOUtils;
@@ -39,13 +43,15 @@ import java.util.zip.ZipOutputStream;
 
 public class ApkCopier {
 
+    private Context context;
     private App app;
 
-    public ApkCopier(App app) {
+    public ApkCopier(Context context, App app) {
+        this.context = context;
         this.app = app;
     }
 
-    public boolean copy() {
+    public boolean copy() throws PackageManager.NameNotFoundException {
         File destination = new File(PathUtil.getRootApkCopyPath() + "/" +
                 app.getPackageName() + "." + app.getVersionCode() + ".apk");
         File destinationDirectory = destination.getParentFile();
@@ -59,14 +65,15 @@ public class ApkCopier {
             return true;
         }
 
-        File baseApk = getBaseApk();
+        PackageInfo packageInfo = context.getPackageManager().getPackageInfo(app.getPackageName(), 0);
+        String[] splitSourceDirs = packageInfo.applicationInfo.splitSourceDirs;
+
+        File baseApk = getBaseApk(packageInfo);
         if (baseApk == null)
             return false;
 
-        String[] splitSourceDirs = app.getPackageInfo().applicationInfo.splitSourceDirs;
-
         if (splitSourceDirs != null && splitSourceDirs.length > 0) {
-            List<File> allApkList = getInstalledSplitApks();
+            List<File> allApkList = getInstalledSplitApks(packageInfo);
             allApkList.add(baseApk);
             bundleAllApks(allApkList);
         } else {
@@ -83,19 +90,17 @@ public class ApkCopier {
         }
     }
 
-    private File getBaseApk() {
-        if (null != app.getPackageInfo() && null != app.getPackageInfo().applicationInfo) {
-            return new File(app.getPackageInfo().applicationInfo.sourceDir);
+    private File getBaseApk(PackageInfo packageInfo) {
+        if (null != packageInfo && null != packageInfo.applicationInfo) {
+            return new File(packageInfo.applicationInfo.sourceDir);
         }
         return null;
     }
 
-    private List<File> getInstalledSplitApks() {
+    private List<File> getInstalledSplitApks(PackageInfo packageInfo) {
         List<File> fileList = new ArrayList<>();
-        String[] splitSourceDirs = app.getPackageInfo().applicationInfo.splitSourceDirs;
-        if (app.getPackageInfo() != null
-                && app.getPackageInfo().applicationInfo != null
-                && splitSourceDirs != null) {
+        String[] splitSourceDirs = packageInfo.applicationInfo.splitSourceDirs;
+        if (splitSourceDirs != null) {
             for (String fileName : splitSourceDirs)
                 fileList.add(new File(fileName));
         }

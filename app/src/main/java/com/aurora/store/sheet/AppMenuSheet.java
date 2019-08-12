@@ -148,7 +148,7 @@ public class AppMenuSheet extends CustomBottomSheetDialogFragment {
         });
 
         btnLocal.setOnClickListener(v -> {
-            disposable.add(Observable.fromCallable(() -> new ApkCopier(app)
+            disposable.add(Observable.fromCallable(() -> new ApkCopier(context,app)
                     .copy())
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())

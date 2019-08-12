@@ -70,7 +70,7 @@ public class AppBuilder {
         fillAggregateRating(app, details.getAggregateRating());
         fillRelatedLinks(app, details);
         AppDetails appDetails = details.getDetails().getAppDetails();
-        app.getPackageInfo().packageName = appDetails.getPackageName();
+        app.setPackageName(appDetails.getPackageName());
         app.setVersionName(appDetails.getVersionString());
         app.setVersionCode(appDetails.getVersionCode());
         app.setDeveloperName(appDetails.getDeveloperName());

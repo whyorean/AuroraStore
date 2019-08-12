@@ -22,15 +22,12 @@
  */
 package com.aurora.store.model;
 
-import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageInfo;
 import android.text.TextUtils;
 
 import com.aurora.store.R;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -41,11 +38,10 @@ import java.util.Set;
 
 public class App implements Comparable<App> {
 
-    private PackageInfo packageInfo;
-
+    private String packageName = "unknown";
     private String displayName;
-    private String versionName;
-    private int versionCode;
+    private String versionName = "unknown";
+    private int versionCode = 0;
     private int offerType;
     private String updated;
     private long size;
@@ -81,19 +77,6 @@ public class App implements Comparable<App> {
     private String labeledRating;
     private String instantAppLink;
 
-    public App() {
-        this.packageInfo = new PackageInfo();
-    }
-
-    public App(PackageInfo packageInfo) {
-        this.setPackageInfo(packageInfo);
-        this.setVersionName(packageInfo.versionName);
-        this.setVersionCode(packageInfo.versionCode);
-        if (null != packageInfo.requestedPermissions) {
-            this.setPermissions(Arrays.asList(packageInfo.requestedPermissions));
-        }
-    }
-
     public String getLabeledRating() {
         return labeledRating;
     }
@@ -102,18 +85,12 @@ public class App implements Comparable<App> {
         this.labeledRating = labeledRating;
     }
 
-    public PackageInfo getPackageInfo() {
-        return packageInfo;
-    }
-
-    public void setPackageInfo(PackageInfo packageInfo) {
-        this.packageInfo = packageInfo;
-        this.setInstalled(true);
-        this.setSystem(null != packageInfo.applicationInfo && (packageInfo.applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0);
-    }
-
     public String getPackageName() {
-        return packageInfo.packageName;
+        return packageName;
+    }
+
+    public void setPackageName(String packageName) {
+        this.packageName = packageName;
     }
 
     public String getDisplayName() {
@@ -198,9 +175,6 @@ public class App implements Comparable<App> {
 
     public ImageSource getIconInfo() {
         ImageSource imageSource = new ImageSource();
-        if (null != packageInfo && null != packageInfo.applicationInfo) {
-            imageSource.setApplicationInfo(packageInfo.applicationInfo);
-        }
         if (!TextUtils.isEmpty(iconUrl)) {
             imageSource.setUrl(iconUrl);
         }
@@ -264,17 +238,11 @@ public class App implements Comparable<App> {
     }
 
     public int getInstalledVersionCode() {
-        if (null != packageInfo) {
-            return packageInfo.versionCode;
-        }
-        return 0;
+        return versionCode;
     }
 
     public String getInstalledVersionName() {
-        if (null != packageInfo) {
-            return packageInfo.versionName;
-        }
-        return null;
+        return versionName;
     }
 
     public boolean isFree() {

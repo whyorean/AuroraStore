@@ -68,9 +68,9 @@ public class PackageUtil {
 
     public static App getInstalledApp(PackageManager packageManager, String packageName) {
         try {
-            final App app = new App(packageManager.getPackageInfo(packageName,
-                    PackageManager.GET_META_DATA | PackageManager.GET_PERMISSIONS));
-            final PackageInfo packageInfo = app.getPackageInfo();
+            final App app = new App();
+            final PackageInfo packageInfo = packageManager.getPackageInfo(packageName, PackageManager.GET_META_DATA | PackageManager.GET_PERMISSIONS);
+            app.setPackageName(packageName);
             app.setDisplayName(packageManager.getApplicationLabel(packageInfo.applicationInfo).toString());
             app.setVersionName(packageInfo.versionName);
             app.setVersionCode(packageInfo.versionCode);
