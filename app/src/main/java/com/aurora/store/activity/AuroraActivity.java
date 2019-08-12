@@ -96,6 +96,10 @@ public class AuroraActivity extends AppCompatActivity {
             else
                 startActivity(new Intent(this, AccountsActivity.class));
         }
+
+        if (Util.isCacheObsolete(this))
+            Util.clearCache(this);
+
         checkPermissions();
     }
 

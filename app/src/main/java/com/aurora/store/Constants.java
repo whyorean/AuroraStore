@@ -107,4 +107,5 @@ public class Constants {
     public static final String PREFERENCE_TOP_FAMILY = "PREFERENCE_TOP_FAMILY";
     public static final String PREFERENCE_INSTALLED_APPS = "PREFERENCE_INSTALLED_APPS";
     public static final String PREFERENCE_UPDATABLE_APPS = "PREFERENCE_UPDATABLE_APPS";
+    public static final String PREFERENCE_CACHE_DATE = "PREFERENCE_CACHE_DATE";
 }

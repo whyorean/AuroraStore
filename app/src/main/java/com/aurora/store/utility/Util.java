@@ -51,12 +51,14 @@ import java.net.SocketException;
 import java.net.SocketTimeoutException;
 import java.net.UnknownHostException;
 import java.text.DecimalFormat;
+import java.util.Calendar;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Locale;
 import java.util.Map;
 import java.util.TreeMap;
+import java.util.concurrent.TimeUnit;
 
 import javax.net.ssl.SSLHandshakeException;
 
@@ -434,6 +436,28 @@ public class Util {
     public static int getDefaultTab(Context context) {
         String value = getPrefs(context).getString(Constants.PREFERENCE_DEFAULT_TAB, "0");
         return parseInt(value, 0);
+    }
+
+    public static boolean isCacheObsolete(Context context) {
+        try {
+            long lastSyncDate = Long.parseLong(PrefUtil.getString(context, Constants.PREFERENCE_CACHE_DATE));
+            long currentSyncDate = Calendar.getInstance().getTimeInMillis();
+            long diffDatesInMillis = currentSyncDate - lastSyncDate;
+            long diffInDays = TimeUnit.MILLISECONDS.toDays(diffDatesInMillis);
+            return diffInDays > 3;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public static void setCacheCreateTime(Context context, Long dateInMillis) {
+        PrefUtil.putString(context, Constants.PREFERENCE_CACHE_DATE, String.valueOf(dateInMillis));
+    }
+
+    public static void clearCache(Context context) {
+        PrefUtil.putString(context, Constants.PREFERENCE_TOP_APPS, "");
+        PrefUtil.putString(context, Constants.PREFERENCE_TOP_GAMES, "");
+        PrefUtil.putString(context, Constants.PREFERENCE_TOP_FAMILY, "");
     }
 
     public static void restartApp(Context context) {

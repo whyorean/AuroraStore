@@ -53,6 +53,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
+import java.util.Calendar;
 import java.util.List;
 
 import butterknife.BindView;
@@ -186,6 +187,7 @@ public class HomeFragment extends BaseFragment {
                     switchViews(false);
                     topAppsAdapter.addData(appList);
                     saveToCache(appList, Constants.PREFERENCE_TOP_APPS);
+                    Util.setCacheCreateTime(context, Calendar.getInstance().getTimeInMillis());
                 }, err -> {
                     processException(err);
                     Log.d(err.getMessage());
