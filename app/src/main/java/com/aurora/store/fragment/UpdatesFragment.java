@@ -20,7 +20,10 @@
 
 package com.aurora.store.fragment;
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,6 +35,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -61,6 +65,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import butterknife.BindView;
@@ -89,6 +94,16 @@ public class UpdatesFragment extends BaseFragment {
     private Fetch fetch;
     private boolean onGoingUpdate = false;
     private UpdatableAppsTask updatableAppTask;
+    private LocalBroadcastManager localBroadcastManager;
+
+    private BroadcastReceiver installReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String packageName = intent.getStringExtra("PACKAGE_NAME");
+            if (packageName != null)
+                removeInstalledApp(packageName);
+        }
+    };
 
     @Override
     public void onAttach(@NotNull Context context) {
@@ -116,6 +131,13 @@ public class UpdatesFragment extends BaseFragment {
     }
 
     @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        localBroadcastManager = LocalBroadcastManager.getInstance(context);
+        localBroadcastManager.registerReceiver(installReceiver, new IntentFilter("ACTION_INSTALL"));
+    }
+
+    @Override
     public void onResume() {
         super.onResume();
         if (adapter.isDataEmpty())
@@ -130,9 +152,11 @@ public class UpdatesFragment extends BaseFragment {
 
     @Override
     public void onDestroy() {
+        try {
+            localBroadcastManager.unregisterReceiver(installReceiver);
+        } catch (Exception ignored) {
+        }
         super.onDestroy();
-        updatableAppTask = null;
-        adapter = null;
     }
 
     @Override
@@ -185,6 +209,17 @@ public class UpdatesFragment extends BaseFragment {
         }
     }
 
+    private void removeInstalledApp(String packageName) {
+        Iterator<App> iterator = updatableAppList.iterator();
+        while (iterator.hasNext()) {
+            if (packageName.equals(iterator.next().getPackageName()))
+                iterator.remove();
+        }
+        adapter.addData(updatableAppList);
+        saveToCache(updatableAppList);
+        setupUpdateAll();
+    }
+
     private void setupRecycler() {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(context, RecyclerView.VERTICAL, false));
@@ -208,6 +243,8 @@ public class UpdatesFragment extends BaseFragment {
         if (updatableAppList.isEmpty()) {
             ViewUtil.hideWithAnimation(btnUpdateAll);
             txtUpdateAll.setText(context.getString(R.string.list_empty_updates));
+            setErrorView(ErrorType.NO_UPDATES);
+            switchViews(true);
         } else if (onGoingUpdate) {
             btnUpdateAll.setOnClickListener(cancelAllListener());
         } else {
