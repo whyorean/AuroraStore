@@ -50,7 +50,7 @@ public class GeneralNotification extends NotificationBase {
     }
 
     public void notifyResume(int requestId) {
-        builder = getBuilder();
+        builder.mActions.clear();
         builder.setContentText(context.getString(R.string.download_paused));
         builder.addAction(R.drawable.ic_resume, context.getString(R.string.action_resume),
                 getResumeIntent(requestId));
@@ -61,7 +61,7 @@ public class GeneralNotification extends NotificationBase {
 
     public void notifyProgress(int progress, long downloadedBytesPerSecond, int requestId) {
         if (NotificationUtil.shouldNotify(context, app.getPackageName())) {
-            builder = getBuilder();
+            builder.mActions.clear();
             if (progress < 0)
                 progress = 0;
             builder.setProgress(100, progress, false);
@@ -76,20 +76,20 @@ public class GeneralNotification extends NotificationBase {
     }
 
     public void notifyQueued() {
-        builder = getBuilder();
+        builder.mActions.clear();
         builder.setContentText(context.getString(R.string.download_queued));
         show();
     }
 
     public void notifyFailed() {
-        builder = getBuilder();
+        builder.mActions.clear();
         builder.setContentText(context.getString(R.string.download_failed));
         show();
         NotificationUtil.updateDNDNotificationMap(context, app.getPackageName(), "");
     }
 
     public void notifyCompleted() {
-        builder = getBuilder();
+        builder.mActions.clear();
         builder.setContentText(context.getString(R.string.download_completed));
         builder.setProgress(0, 0, false);
         if (!Util.isPrivilegedInstall(context))
@@ -100,7 +100,7 @@ public class GeneralNotification extends NotificationBase {
     }
 
     public void notifyCancelled() {
-        builder = getBuilder();
+        builder.mActions.clear();
         builder.setContentText(context.getString(R.string.download_canceled));
         builder.setProgress(0, 0, false);
         show();
