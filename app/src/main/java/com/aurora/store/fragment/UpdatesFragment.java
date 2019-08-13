@@ -39,6 +39,7 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.aurora.store.AuroraApplication;
 import com.aurora.store.Constants;
 import com.aurora.store.ErrorType;
 import com.aurora.store.R;
@@ -65,7 +66,6 @@ import org.jetbrains.annotations.NotNull;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import butterknife.BindView;
@@ -77,22 +77,19 @@ import io.reactivex.schedulers.Schedulers;
 
 public class UpdatesFragment extends BaseFragment {
 
-    private static final int UPDATE_GROUP_ID = 1337;
     @BindView(R.id.swipe_layout)
     CustomSwipeToRefresh customSwipeToRefresh;
     @BindView(R.id.recycler)
     RecyclerView recyclerView;
-    @BindView(R.id.btn_update_all)
-    Button btnUpdateAll;
+    @BindView(R.id.btn_action)
+    Button btnAction;
     @BindView(R.id.txt_update_all)
     TextView txtUpdateAll;
 
     private Context context;
-    private View view;
     private List<App> updatableAppList = new ArrayList<>();
     private UpdatableAppsAdapter adapter;
     private Fetch fetch;
-    private boolean onGoingUpdate = false;
     private UpdatableAppsTask updatableAppTask;
     private LocalBroadcastManager localBroadcastManager;
 
@@ -100,8 +97,10 @@ public class UpdatesFragment extends BaseFragment {
         @Override
         public void onReceive(Context context, Intent intent) {
             String packageName = intent.getStringExtra("PACKAGE_NAME");
-            if (packageName != null)
+            try {
                 removeInstalledApp(packageName);
+            } catch (Exception ignored) {
+            }
         }
     };
 
@@ -114,7 +113,7 @@ public class UpdatesFragment extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_updates, container, false);
+        View view = inflater.inflate(R.layout.fragment_updates, container, false);
         ButterKnife.bind(this, view);
         return view;
     }
@@ -140,8 +139,10 @@ public class UpdatesFragment extends BaseFragment {
     @Override
     public void onResume() {
         super.onResume();
-        if (adapter.isDataEmpty())
+        if (adapter.isDataEmpty()) {
             fetchAppsFromCache();
+            drawButtons();
+        }
     }
 
     @Override
@@ -167,20 +168,18 @@ public class UpdatesFragment extends BaseFragment {
                 .doOnSubscribe(subscription -> customSwipeToRefresh.setRefreshing(true))
                 .doOnTerminate(() -> customSwipeToRefresh.setRefreshing(false))
                 .subscribe((appList) -> {
-                    if (view != null) {
-                        updatableAppList = appList;
-                        if (appList.isEmpty()) {
-                            PrefUtil.putString(context, Constants.PREFERENCE_UPDATABLE_APPS, "");
-                            setErrorView(ErrorType.NO_UPDATES);
-                            switchViews(true);
-                        } else {
-                            switchViews(false);
-                            if (adapter != null)
-                                adapter.addData(appList);
-                            saveToCache(appList);
-                            updateCounter();
-                            setupUpdateAll();
-                        }
+                    updatableAppList = appList;
+                    if (appList.isEmpty()) {
+                        PrefUtil.putString(context, Constants.PREFERENCE_UPDATABLE_APPS, "");
+                        setErrorView(ErrorType.NO_UPDATES);
+                        switchViews(true);
+                    } else {
+                        switchViews(false);
+                        if (adapter != null)
+                            adapter.addData(appList);
+                        saveToCache(appList);
+                        drawButtons();
+                        updateCounter();
                     }
                 }, err -> {
                     Log.d(err.getMessage());
@@ -204,20 +203,18 @@ public class UpdatesFragment extends BaseFragment {
             fetchData();
         else {
             adapter.addData(updatableAppList);
+            switchViews(false);
+            drawButtons();
             updateCounter();
-            setupUpdateAll();
         }
     }
 
     private void removeInstalledApp(String packageName) {
-        Iterator<App> iterator = updatableAppList.iterator();
-        while (iterator.hasNext()) {
-            if (packageName.equals(iterator.next().getPackageName()))
-                iterator.remove();
-        }
-        adapter.addData(updatableAppList);
-        saveToCache(updatableAppList);
-        setupUpdateAll();
+        adapter.remove(packageName);
+        AuroraApplication.removeFromOngoingUpdateList(packageName);
+        saveToCache(adapter.getAppList());
+        drawButtons();
+        updateCounter();
     }
 
     private void setupRecycler() {
@@ -239,71 +236,82 @@ public class UpdatesFragment extends BaseFragment {
         };
     }
 
-    private void setupUpdateAll() {
-        if (updatableAppList.isEmpty()) {
-            ViewUtil.hideWithAnimation(btnUpdateAll);
+    private void drawButtons() {
+        btnAction.setEnabled(true);
+        if (updatableAppList != null && updatableAppList.isEmpty()) {
+            ViewUtil.hideWithAnimation(btnAction);
             txtUpdateAll.setText(context.getString(R.string.list_empty_updates));
             setErrorView(ErrorType.NO_UPDATES);
             switchViews(true);
-        } else if (onGoingUpdate) {
-            btnUpdateAll.setOnClickListener(cancelAllListener());
+        } else if (AuroraApplication.getOnGoingUpdate()) {
+            btnAction.setOnClickListener(cancelAllListener());
         } else {
-            btnUpdateAll.setOnClickListener(updateAllListener());
+            btnAction.setOnClickListener(updateAllListener());
         }
     }
 
     private void updateCounter() {
         txtUpdateAll.setText(new StringBuilder()
-                .append(updatableAppList.size())
+                .append(adapter.getItemCount())
                 .append(StringUtils.SPACE)
                 .append(context.getString(R.string.list_update_all_txt)));
     }
 
     private View.OnClickListener updateAllListener() {
-        btnUpdateAll.setText(getString(R.string.list_update_all));
-        btnUpdateAll.setEnabled(true);
+        ViewUtil.showWithAnimation(btnAction);
+        btnAction.setText(getString(R.string.list_update_all));
         return v -> {
-            onGoingUpdate = true;
             updateAllApps();
-            setupUpdateAll();
-            btnUpdateAll.setText(getString(R.string.list_updating));
-            btnUpdateAll.setEnabled(false);
+            btnAction.setText(getString(R.string.list_updating));
+            btnAction.setEnabled(false);
         };
     }
 
     private View.OnClickListener cancelAllListener() {
-        btnUpdateAll.setText(getString(R.string.action_cancel));
-        btnUpdateAll.setEnabled(true);
+        ViewUtil.showWithAnimation(btnAction);
+        btnAction.setText(getString(R.string.action_cancel));
         return v -> {
-            fetch.deleteGroup(UPDATE_GROUP_ID);
-            setupUpdateAll();
+            cancelAllRequests();
+            AuroraApplication.setOngoingUpdateList(new ArrayList<>());
+            AuroraApplication.setOnGoingUpdate(false);
+            ContextUtil.runOnUiThread(() -> drawButtons());
         };
     }
 
     private void updateAllApps() {
+        AuroraApplication.setOngoingUpdateList(updatableAppList);
+        AuroraApplication.setOnGoingUpdate(true);
         disposable.add(Observable.fromIterable(updatableAppList)
                 .flatMap(app -> new ObservableDeliveryData(context).getDeliveryData(app))
                 .subscribeOn(Schedulers.io())
+                .doOnSubscribe(disposable -> drawButtons())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnNext(deliveryDataBundle -> new LiveUpdate(context)
                         .enqueueUpdate(deliveryDataBundle.getApp(),
                                 deliveryDataBundle.getAndroidAppDeliveryData()))
                 .doOnError(throwable -> {
                     if (throwable instanceof MalformedRequestException) {
-                        ContextUtil.runOnUiThread(() -> btnUpdateAll.setOnClickListener(updateAllListener()));
-                        notifyStatusBlacklist(coordinatorLayout, null, throwable.getMessage());
+                        ContextUtil.runOnUiThread(() -> btnAction.setOnClickListener(updateAllListener()));
+                        notifyStatusBlacklist(coordinatorLayout, throwable.getMessage());
                     } else
                         Log.e(throwable.getMessage());
                 })
                 .subscribe());
     }
 
-    public void notifyStatusBlacklist(CoordinatorLayout coordinatorLayout, View anchorView, String packageName) {
+    private void cancelAllRequests() {
+        List<App> ongoingUpdateList = AuroraApplication.getOngoingUpdateList();
+        for (App app : ongoingUpdateList) {
+            Log.i("Cancelled -> %s", app.getDisplayName());
+            fetch.cancelGroup(app.getPackageName().hashCode());
+        }
+    }
+
+    private void notifyStatusBlacklist(CoordinatorLayout coordinatorLayout, String packageName) {
         final StringBuilder message = new StringBuilder()
                 .append(packageName)
                 .append(context.getString(R.string.error_app_download));
         Snackbar snackbar = Snackbar.make(coordinatorLayout, message, Snackbar.LENGTH_LONG);
-        snackbar.setAnchorView(anchorView);
         snackbar.setAction(R.string.action_blacklist, v -> new BlacklistManager(context).add(packageName));
         snackbar.setActionTextColor(context.getResources().getColor(R.color.colorGold));
         snackbar.show();

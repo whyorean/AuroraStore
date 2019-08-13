@@ -164,8 +164,10 @@ public class InstalledFragment extends BaseFragment {
         List<App> appList = gson.fromJson(jsonString, type);
         if (appList == null || appList.isEmpty())
             fetchData();
-        else
+        else {
             adapter.addData(appList);
+            switchViews(false);
+        }
     }
 
     private void setupRecycler() {

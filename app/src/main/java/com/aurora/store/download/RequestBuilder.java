@@ -206,7 +206,6 @@ public class RequestBuilder {
         return requestList;
     }
 
-
     /*
      *
      * Build Bulk RequestList from DeliveryDataList, AppList and GroupId

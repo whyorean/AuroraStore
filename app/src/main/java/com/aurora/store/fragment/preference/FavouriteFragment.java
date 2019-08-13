@@ -79,7 +79,7 @@ import io.reactivex.schedulers.Schedulers;
 public class FavouriteFragment extends BaseFragment implements SelectableViewHolder.ItemClickListener,
         FavouriteItemTouchHelper.RecyclerItemTouchHelperListener {
 
-    private static final int BULK_GROUP_ID = 1996;
+    private static final int FAV_GROUP_ID = 1338;
 
     @BindView(R.id.swipe_refresh_layout)
     CustomSwipeToRefresh swipeRefreshLayout;

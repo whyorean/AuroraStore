@@ -46,6 +46,7 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 
 import butterknife.BindView;
@@ -60,6 +61,10 @@ public class UpdatableAppsAdapter extends RecyclerView.Adapter<UpdatableAppsAdap
     public UpdatableAppsAdapter(Context context) {
         this.context = context;
         this.menuSheet = new AppMenuSheet();
+    }
+
+    public List<App> getAppList() {
+        return appList;
     }
 
     public void add(int position, App app) {
@@ -77,13 +82,13 @@ public class UpdatableAppsAdapter extends RecyclerView.Adapter<UpdatableAppsAdap
     }
 
     public void remove(String packageName) {
-        for (App app : appList) {
-            if (app.getPackageName().equals(packageName)) {
-                appList.remove(app);
-                notifyDataSetChanged();
-                break;
-            }
+        Iterator<App> iterator = appList.iterator();
+        while (iterator.hasNext()) {
+            final App app = iterator.next();
+            if (packageName.equals(app.getPackageName()) || packageName.startsWith(app.getPackageName()))
+                iterator.remove();
         }
+        notifyDataSetChanged();
     }
 
     public void remove(App app) {

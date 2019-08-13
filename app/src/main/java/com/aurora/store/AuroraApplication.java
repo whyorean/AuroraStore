@@ -27,6 +27,11 @@ import android.content.IntentFilter;
 import com.aurora.store.installer.Installer;
 import com.aurora.store.installer.InstallerService;
 import com.aurora.store.installer.Uninstaller;
+import com.aurora.store.model.App;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 import io.reactivex.plugins.RxJavaPlugins;
 
@@ -34,11 +39,39 @@ public class AuroraApplication extends Application {
 
     public static boolean tokenRefreshing = false;
     public static boolean anonymousLogging = false;
+    public static boolean updating = false;
+    public static List<App> ongoingUpdateList = new ArrayList<>();
 
     @SuppressLint("StaticFieldLeak")
     public static Installer installer;
     @SuppressLint("StaticFieldLeak")
     public static Uninstaller uninstaller;
+
+    public static boolean getOnGoingUpdate() {
+        return updating;
+    }
+
+    public static void setOnGoingUpdate(boolean updating) {
+        AuroraApplication.updating = updating;
+    }
+
+    public static List<App> getOngoingUpdateList() {
+        return ongoingUpdateList;
+    }
+
+    public static void setOngoingUpdateList(List<App> ongoingUpdateList) {
+        AuroraApplication.ongoingUpdateList = ongoingUpdateList;
+    }
+
+    public static void removeFromOngoingUpdateList(String packageName) {
+        Iterator<App> iterator = ongoingUpdateList.iterator();
+        while (iterator.hasNext()) {
+            if (packageName.equals(iterator.next().getPackageName()))
+                iterator.remove();
+        }
+        if (ongoingUpdateList.isEmpty())
+            setOnGoingUpdate(false);
+    }
 
     public static Installer getInstaller() {
         return installer;

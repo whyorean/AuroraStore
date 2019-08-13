@@ -49,16 +49,16 @@
                     android:layout_centerVertical="true"
                     android:layout_marginStart="@dimen/margin_normal"
                     android:layout_marginEnd="@dimen/margin_small"
-                    android:layout_toStartOf="@id/btn_update_all"
+                    android:layout_toStartOf="@id/btn_action"
                     android:maxLines="1"
-                    android:text="Update All Apps"
                     android:textAppearance="@style/TextAppearance.Aurora.SubTitle"
                     app:autoSizeMaxTextSize="16sp"
                     app:autoSizeMinTextSize="12sp"
-                    app:autoSizeTextType="uniform" />
+                    app:autoSizeTextType="uniform"
+                    tools:text="Update All Apps" />
 
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btn_update_all"
+                    android:id="@+id/btn_action"
                     style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

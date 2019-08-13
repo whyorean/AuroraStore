@@ -62,7 +62,7 @@ public class LiveUpdate extends BaseTask {
         fetchListener = getFetchListener();
         fetch.addListener(fetchListener);
         fetch.enqueue(requestList, updatedRequestList ->
-                Log.i("Updating : %s", app.getDisplayName()));
+                Log.i("Updating -> %s", app.getDisplayName()));
 
         //Add <PackageName,DisplayName> and <PackageName,IconURL> to PseudoMaps
         PackageUtil.addToPseudoPackageMap(context, app.getPackageName(), app.getDisplayName());
@@ -118,6 +118,7 @@ public class LiveUpdate extends BaseTask {
             @Override
             public void onCancelled(int groupId, @NotNull Download download, @NotNull FetchGroup fetchGroup) {
                 if (groupId == hashCode) {
+                    notification.notifyCancelled();
                     Log.e("Cancelled %s", app.getDisplayName());
                 }
             }
