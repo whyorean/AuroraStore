@@ -133,6 +133,7 @@ public class Installer implements AppInstallerAbstract.InstallationStatusListene
                             displayName,
                             statusMessage,
                             getContentIntent(intentPackageName));
+                    sendLocalBroadcast(intentPackageName, 0);
                     break;
                 case PackageInstaller.STATUS_SUCCESS:
                     QuickNotification.show(
@@ -140,9 +141,7 @@ public class Installer implements AppInstallerAbstract.InstallationStatusListene
                             displayName,
                             statusMessage,
                             getContentIntent(intentPackageName));
-                    Intent intent = new Intent("ACTION_INSTALL");
-                    intent.putExtra("PACKAGE_NAME", intentPackageName);
-                    LocalBroadcastManager.getInstance(context).sendBroadcast(intent);
+                    sendLocalBroadcast(intentPackageName, 1);
                     if (app != null) {
                         clearInstallationFiles(app);
                         appHashMap.remove(intentPackageName);
@@ -171,6 +170,13 @@ public class Installer implements AppInstallerAbstract.InstallationStatusListene
         NotificationManager notificationManager = (NotificationManager)
                 context.getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManager.cancel(app.getPackageName().hashCode());
+    }
+
+    private void sendLocalBroadcast(String packageName, int status) {
+        Intent intent = new Intent("ACTION_INSTALL");
+        intent.putExtra("PACKAGE_NAME", packageName);
+        intent.putExtra("STATUS_CODE", status);
+        LocalBroadcastManager.getInstance(context).sendBroadcast(intent);
     }
 
     private PendingIntent getContentIntent(String packageName) {
