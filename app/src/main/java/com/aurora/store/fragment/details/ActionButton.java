@@ -44,6 +44,7 @@ import com.aurora.store.fragment.DetailsFragment;
 import com.aurora.store.model.App;
 import com.aurora.store.notification.GeneralNotification;
 import com.aurora.store.task.DeliveryData;
+import com.aurora.store.task.GZipTask;
 import com.aurora.store.utility.ContextUtil;
 import com.aurora.store.utility.Log;
 import com.aurora.store.utility.PackageUtil;
@@ -62,6 +63,7 @@ import com.tonyodev.fetch2.FetchListener;
 import com.tonyodev.fetch2.Request;
 import com.tonyodev.fetch2core.DownloadBlock;
 
+import org.apache.commons.io.FilenameUtils;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -419,15 +421,37 @@ public class ActionButton extends AbstractHelper {
                         //Call the installer
                         AuroraApplication.getInstaller().install(app);
                     }
+
                     if (fetchListener != null) {
                         fetch.removeListener(fetchListener);
                         fetchListener = null;
                     }
                 }
+
+                if (groupId == hashCode && download.getProgress() == 100) {
+                    if (FilenameUtils.getExtension(download.getFile()).equals("gzip")) {
+                        compositeDisposable.add(Observable.fromCallable(() -> new GZipTask(context)
+                                .extract(new File(download.getFile())))
+                                .subscribeOn(Schedulers.io())
+                                .observeOn(AndroidSchedulers.mainThread())
+                                .doOnSubscribe(disposable -> {
+                                    notification.notifyExtractionProgress();
+                                    ContextUtil.runOnUiThread(() -> btnPositive.setEnabled(false));
+                                })
+                                .doOnTerminate(() -> ContextUtil.runOnUiThread(() -> btnPositive.setEnabled(true)))
+                                .subscribe(success -> {
+                                    if (success)
+                                        notification.notifyExtractionFinished();
+                                    else
+                                        notification.notifyExtractionFailed();
+                                }));
+                    }
+                }
             }
 
             @Override
-            public void onCancelled(int groupId, @NotNull Download download, @NotNull FetchGroup fetchGroup) {
+            public void onCancelled(int groupId, @NotNull Download download,
+                                    @NotNull FetchGroup fetchGroup) {
                 if (groupId == hashCode) {
                     notification.notifyCancelled();
                     ContextUtil.runOnUiThread(() -> {
@@ -437,6 +461,8 @@ public class ActionButton extends AbstractHelper {
                     });
                 }
             }
-        };
+        }
+
+                ;
     }
 }

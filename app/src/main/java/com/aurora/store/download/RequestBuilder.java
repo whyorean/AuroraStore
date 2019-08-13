@@ -161,9 +161,9 @@ public class RequestBuilder {
      *
      */
 
-    public static Request buildObbRequest(Context context, App app, String Url, boolean isMain) {
+    public static Request buildObbRequest(Context context, App app, String Url, boolean isMain, boolean isGZipped) {
         Request request;
-        request = new Request(Url, PathUtil.getObbPath(app, isMain));
+        request = new Request(Url, PathUtil.getObbPath(app, isMain, isGZipped));
         request.setEnqueueAction(EnqueueAction.UPDATE_ACCORDINGLY);
         request.setPriority(Priority.HIGH);
         request.setGroupId(app.getPackageName().hashCode());
@@ -192,16 +192,16 @@ public class RequestBuilder {
         if (appFileMetadataList.size() == 1) {
             AppFileMetadata obbFileMetadata = appDeliveryData.getAdditionalFile(0);
             if (TextUtil.isEmpty(obbFileMetadata.getDownloadUrlGzipped()))
-                requestList.add(buildObbRequest(context, app, obbFileMetadata.getDownloadUrl(), true));
+                requestList.add(buildObbRequest(context, app, obbFileMetadata.getDownloadUrl(), true, false));
             else
-                requestList.add(buildObbRequest(context, app, obbFileMetadata.getDownloadUrlGzipped(), true));
+                requestList.add(buildObbRequest(context, app, obbFileMetadata.getDownloadUrlGzipped(), true, true));
         }
         if (appFileMetadataList.size() == 2) {
             AppFileMetadata obbFileMetadata = appDeliveryData.getAdditionalFile(1);
             if (TextUtil.isEmpty(obbFileMetadata.getDownloadUrlGzipped()))
-                requestList.add(buildObbRequest(context, app, obbFileMetadata.getDownloadUrl(), false));
+                requestList.add(buildObbRequest(context, app, obbFileMetadata.getDownloadUrl(), false, false));
             else
-                requestList.add(buildObbRequest(context, app, obbFileMetadata.getDownloadUrlGzipped(), false));
+                requestList.add(buildObbRequest(context, app, obbFileMetadata.getDownloadUrlGzipped(), false, true));
         }
         return requestList;
     }

@@ -158,6 +158,9 @@
     <string name="download_canceled">Canceled</string>
     <string name="download_clear_completed">Clear completed</string>
     <string name="download_completed">Downloaded</string>
+    <string name="download_extraction">Extracting game resource, wait for completion</string>
+    <string name="download_extraction_completed">Games resource extraction completed</string>
+    <string name="download_extraction_failed">Games resource extraction failed</string>
     <string name="download_failed">Failed</string>
     <string name="download_force_clear_all">Force clear all</string>
     <string name="download_none">No downloads</string>

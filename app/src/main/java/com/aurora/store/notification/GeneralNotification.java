@@ -107,6 +107,24 @@ public class GeneralNotification extends NotificationBase {
         NotificationUtil.updateDNDNotificationMap(context, app.getPackageName(), "");
     }
 
+    public void notifyExtractionProgress() {
+        builder.mActions.clear();
+        builder.setContentText(context.getString(R.string.download_extraction));
+        show();
+    }
+
+    public void notifyExtractionFinished() {
+        builder.mActions.clear();
+        builder.setContentText(context.getString(R.string.download_extraction_completed));
+        show();
+    }
+
+    public void notifyExtractionFailed() {
+        builder.mActions.clear();
+        builder.setContentText(context.getString(R.string.download_extraction_failed));
+        show();
+    }
+
     public void show() {
         if (NotificationUtil.isNotificationEnabled(context)
                 && NotificationUtil.getNotificationProvider(context) == NotificationProvider.AURORA) {

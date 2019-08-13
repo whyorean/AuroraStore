@@ -55,8 +55,8 @@ public class PathUtil {
         return getLocalSplitPath(context, app.getPackageName(), app.getVersionCode(), tag);
     }
 
-    static public String getObbPath(App app, boolean main) {
-        return getObbPath(app.getPackageName(), app.getVersionCode(), main);
+    static public String getObbPath(App app, boolean main, boolean isGZipped) {
+        return getObbPath(app.getPackageName(), app.getVersionCode(), main, isGZipped);
     }
 
     static public String getLocalApkPath(Context context, String packageName, int versionCode) {
@@ -67,9 +67,10 @@ public class PathUtil {
         return getRootApkPath(context) + "/" + packageName + "." + versionCode + "." + tag + ".apk";
     }
 
-    static public String getObbPath(String packageName, int version, boolean main) {
+    static public String getObbPath(String packageName, int version, boolean main, boolean isGZipped) {
         String obbDir = Environment.getExternalStorageDirectory() + "/Android/obb/" + packageName;
-        String filename = (main ? "/main" : "/patch") + "." + String.valueOf(version) + "." + packageName + ".obb";
+        String ext = isGZipped ? ".gzip" : ".obb";
+        String filename = (main ? "/main" : "/patch") + "." + version + "." + packageName + ext;
         return obbDir + filename;
     }
 

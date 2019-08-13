@@ -36,6 +36,7 @@ public class Constants {
     public static final String PUB_PREFIX = "pub:";
     public static final String TAG = "Aurora Store";
     public static final String FILES = "Files";
+    public static final String GZIPPED = "GZipped";
 
     public static final String RECENT_HISTORY = "RECENT_HISTORY";
 
