@@ -37,11 +37,10 @@ import com.aurora.store.provider.NativeGsfVersionProvider;
 import com.aurora.store.utility.Log;
 import com.aurora.store.utility.PathUtil;
 
-import org.apache.commons.io.IOUtils;
-
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Writer;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -82,7 +81,9 @@ public class DeviceInfoBuilder extends ContextWrapper {
         final File file = new File(PathUtil.getExtBaseDirectory(context), "device-" + Build.DEVICE + ".properties");
         final String content = buildProperties(getDeviceInfo());
         try {
-            IOUtils.write(content, new FileWriter(file));
+            Writer writer = new FileWriter(file);
+            writer.write(content);
+            writer.flush();
             return true;
         } catch (IOException e) {
             Log.e("Filed to write device info");

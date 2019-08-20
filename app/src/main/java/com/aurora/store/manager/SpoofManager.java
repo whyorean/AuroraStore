@@ -177,7 +177,10 @@ public class SpoofManager {
             if (!file.isFile() || !filenameValid(file.getName())) {
                 continue;
             }
-            deviceNames.put(file.getName(), getProperties(file).getProperty("UserReadableName"));
+            String name = getProperties(file).getProperty("UserReadableName");
+            if (name != null) {
+                deviceNames.put(file.getName(), name);
+            }
         }
         return deviceNames;
     }
