@@ -68,44 +68,36 @@ configurations.all {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation group: 'commons-io', name: 'commons-io', version: '2.6'
-    implementation group: 'org.apache.maven', name: 'maven-artifact', version: '3.0.3'
-
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'commons-io:commons-io:2.6'
+    implementation 'org.apache.maven:maven-artifact:3.2.1'
     //UI-Libs
     implementation 'androidx.appcompat:appcompat:1.0.2'
     implementation 'androidx.preference:preference:1.1.0-rc01'
     implementation 'com.google.android.material:material:1.1.0-alpha08'
-
     //Utils
     implementation 'androidx.annotation:annotation:1.1.0'
     implementation 'org.apache.commons:commons-text:1.4'
     implementation 'com.scottyab:rootbeer-lib:0.0.7'
     implementation 'com.google.code.gson:gson:2.8.5'
-
     //PlayStoreApi
-    implementation 'com.github.whyorean:playstore-api-v2:2.1'
-
+    implementation 'com.github.whyorean:playstore-api-v2:2.3'
     //OkHTTP3
-    implementation 'com.squareup.okhttp3:okhttp:4.0.1'
-    implementation 'com.squareup.okhttp3:okhttp-urlconnection:4.0.1'
-
+    implementation 'com.squareup.okhttp3:okhttp:4.1.0'
+    implementation 'com.squareup.okhttp3:okhttp-urlconnection:4.1.0'
     //RX-Java2
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
     implementation 'io.reactivex.rxjava2:rxjava:2.2.8'
     implementation 'com.jakewharton.rxrelay2:rxrelay:2.1.0'
-
     //ButterKnife
     implementation 'com.jakewharton:butterknife:10.1.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.1.0'
-
     //Glide
     implementation 'com.github.bumptech.glide:glide:4.9.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
-
     //Fetch - Downloader
-    implementation "androidx.tonyodev.fetch2:xfetch2:3.1.4"
-    implementation "androidx.tonyodev.fetch2okhttp:xfetch2okhttp:3.1.4"
+    implementation 'androidx.tonyodev.fetch2:xfetch2:3.1.4'
+    implementation 'androidx.tonyodev.fetch2okhttp:xfetch2okhttp:3.1.4'
 }
 
 repositories {
