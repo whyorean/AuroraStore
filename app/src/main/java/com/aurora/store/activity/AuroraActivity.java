@@ -44,6 +44,7 @@ import com.aurora.store.GlideApp;
 import com.aurora.store.MenuType;
 import com.aurora.store.R;
 import com.aurora.store.download.DownloadManager;
+import com.aurora.store.fragment.DetailsFragment;
 import com.aurora.store.manager.BlacklistManager;
 import com.aurora.store.manager.FavouriteListManager;
 import com.aurora.store.utility.Accountant;
@@ -236,6 +237,9 @@ public class AuroraActivity extends AppCompatActivity {
             case DOWNLOADS:
                 getMenuInflater().inflate(R.menu.menu_download_main, menu);
                 break;
+            case DEV_APPS:
+                /*No Menu*/
+                break;
             default:
                 getMenuInflater().inflate(R.menu.menu_main, menu);
         }
@@ -305,6 +309,11 @@ public class AuroraActivity extends AppCompatActivity {
                     break;
                 case R.id.downloadsFragment:
                     redrawMenu(MenuType.DOWNLOADS);
+                    break;
+                case R.id.devFragment:
+                    if (DetailsFragment.app != null)
+                        actionBar.setTitle(DetailsFragment.app.getDeveloperName());
+                    redrawMenu(MenuType.DEV_APPS);
                     break;
                 default:
                     ViewUtil.showBottomNav(bottomNavigationView, true);

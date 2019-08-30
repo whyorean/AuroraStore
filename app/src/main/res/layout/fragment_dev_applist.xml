@@ -19,57 +19,39 @@
   -->
 
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/coordinator"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="?android:attr/colorBackground">
 
-    <RelativeLayout
+    <ViewSwitcher
+        android:id="@+id/view_switcher"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/dev_name">
 
-        <com.google.android.material.chip.Chip
-            android:id="@+id/dev_name"
-            style="@style/Widget.MaterialComponents.Chip.Action"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/margin_small"
-            android:clickable="false"
-            app:chipBackgroundColor="?android:attr/colorBackground"
-            app:chipStrokeColor="@color/colorGreyLight"
-            app:chipStrokeWidth="1dp" />
-
-        <ViewSwitcher
-            android:id="@+id/view_switcher"
+        <LinearLayout
+            android:id="@+id/content_view"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/dev_name">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-            <LinearLayout
-                android:id="@+id/content_view"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/search_apps_list"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:layout_height="wrap_content"
+                android:clipToPadding="false"
+                android:paddingTop="@dimen/margin_small"
+                android:scrollbarStyle="outsideOverlay"
+                android:scrollbars="vertical"
+                tools:listitem="@layout/item_installed" />
+        </LinearLayout>
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/search_apps_list"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:clipToPadding="false"
-                    android:paddingTop="@dimen/margin_small"
-                    android:scrollbarStyle="outsideOverlay"
-                    android:scrollbars="vertical"
-                    tools:listitem="@layout/item_installed" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/err_view"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical" />
-        </ViewSwitcher>
-    </RelativeLayout>
+        <LinearLayout
+            android:id="@+id/err_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" />
+    </ViewSwitcher>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

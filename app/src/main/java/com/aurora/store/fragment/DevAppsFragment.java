@@ -44,7 +44,6 @@ import com.aurora.store.task.SearchTask;
 import com.aurora.store.utility.Log;
 import com.aurora.store.utility.NetworkUtil;
 import com.bumptech.glide.Glide;
-import com.google.android.material.chip.Chip;
 
 import java.util.List;
 import java.util.Timer;
@@ -60,8 +59,6 @@ public class DevAppsFragment extends BaseFragment implements EndlessAppsAdapter.
 
     @BindView(R.id.search_apps_list)
     RecyclerView recyclerView;
-    @BindView(R.id.dev_name)
-    Chip chipDevName;
 
     private Context context;
     private View view;
@@ -82,7 +79,6 @@ public class DevAppsFragment extends BaseFragment implements EndlessAppsAdapter.
         Bundle arguments = getArguments();
         if (arguments != null) {
             String query = arguments.getString("SearchQuery");
-            chipDevName.setText(arguments.getString("SearchTitle"));
             iterator = getIterator(query);
             if (NetworkUtil.isConnected(context))
                 setupRecycler();
