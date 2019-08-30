@@ -21,7 +21,6 @@
 package com.aurora.store.adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.text.Html;
 import android.text.TextUtils;
 import android.text.format.Formatter;
@@ -37,8 +36,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.aurora.store.GlideApp;
 import com.aurora.store.R;
-import com.aurora.store.activity.AuroraActivity;
-import com.aurora.store.activity.DetailsActivity;
 import com.aurora.store.model.App;
 import com.aurora.store.sheet.AppMenuSheet;
 import com.aurora.store.utility.ViewUtil;
@@ -54,6 +51,7 @@ import butterknife.ButterKnife;
 
 public class UpdatableAppsAdapter extends RecyclerView.Adapter<UpdatableAppsAdapter.ViewHolder> {
 
+    private static onClickListener listener;
     private List<App> appList = new ArrayList<>();
     private Context context;
     private AppMenuSheet menuSheet;
@@ -130,20 +128,6 @@ public class UpdatableAppsAdapter extends RecyclerView.Adapter<UpdatableAppsAdap
                 ? context.getString(R.string.details_no_changes)
                 : Html.fromHtml(app.getChanges()).toString());
 
-        viewHolder.itemView.setOnClickListener(v -> {
-            Intent intent = new Intent(context, DetailsActivity.class);
-            intent.putExtra("INTENT_PACKAGE_NAME", app.getPackageName());
-            context.startActivity(intent);
-        });
-
-        viewHolder.itemView.setOnLongClickListener(v -> {
-            menuSheet.setApp(app);
-            menuSheet.setAdapter(this);
-            menuSheet.show(((AuroraActivity) context).getSupportFragmentManager(),
-                    "BOTTOM_MENU_SHEET");
-            return false;
-        });
-
         GlideApp
                 .with(context)
                 .load(app.getIconInfo().getUrl())
@@ -183,7 +167,17 @@ public class UpdatableAppsAdapter extends RecyclerView.Adapter<UpdatableAppsAdap
         return appList.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public void setOnItemClickListener(onClickListener clickListener) {
+        UpdatableAppsAdapter.listener = clickListener;
+    }
+
+    public interface onClickListener {
+        void onItemClick(int position, View v);
+
+        void onItemLongClick(int position, View v);
+    }
+
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
         @BindView(R.id.layout_info)
         RelativeLayout layoutInfo;
         @BindView(R.id.layout_changes)
@@ -206,6 +200,19 @@ public class UpdatableAppsAdapter extends RecyclerView.Adapter<UpdatableAppsAdap
         ViewHolder(@NonNull View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
+            itemView.setOnClickListener(this);
+            itemView.setOnLongClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view) {
+            listener.onItemClick(getAdapterPosition(), view);
+        }
+
+        @Override
+        public boolean onLongClick(View view) {
+            listener.onItemLongClick(getAdapterPosition(), view);
+            return false;
         }
     }
 

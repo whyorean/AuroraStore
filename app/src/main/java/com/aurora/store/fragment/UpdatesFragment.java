@@ -36,18 +36,21 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.aurora.store.AuroraApplication;
 import com.aurora.store.Constants;
 import com.aurora.store.ErrorType;
+import com.aurora.store.GlideApp;
 import com.aurora.store.R;
 import com.aurora.store.adapter.UpdatableAppsAdapter;
 import com.aurora.store.download.DownloadManager;
 import com.aurora.store.exception.MalformedRequestException;
 import com.aurora.store.manager.BlacklistManager;
 import com.aurora.store.model.App;
+import com.aurora.store.sheet.AppMenuSheet;
 import com.aurora.store.task.LiveUpdate;
 import com.aurora.store.task.ObservableDeliveryData;
 import com.aurora.store.task.UpdatableAppsTask;
@@ -75,7 +78,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
 
-public class UpdatesFragment extends BaseFragment {
+public class UpdatesFragment extends BaseFragment implements UpdatableAppsAdapter.onClickListener {
 
     @BindView(R.id.swipe_layout)
     CustomSwipeToRefresh customSwipeToRefresh;
@@ -123,6 +126,7 @@ public class UpdatesFragment extends BaseFragment {
         super.onViewCreated(view, savedInstanceState);
         fetch = DownloadManager.getFetchInstance(context);
         adapter = new UpdatableAppsAdapter(context);
+        adapter.setOnItemClickListener(this);
         updatableAppTask = new UpdatableAppsTask(context);
         setErrorView(ErrorType.UNKNOWN);
         customSwipeToRefresh.setOnRefreshListener(() -> fetchData());
@@ -157,6 +161,7 @@ public class UpdatesFragment extends BaseFragment {
             localBroadcastManager.unregisterReceiver(installReceiver);
         } catch (Exception ignored) {
         }
+        GlideApp.with(this).pauseAllRequests();
         super.onDestroy();
     }
 
@@ -315,5 +320,20 @@ public class UpdatesFragment extends BaseFragment {
         snackbar.setAction(R.string.action_blacklist, v -> new BlacklistManager(context).add(packageName));
         snackbar.setActionTextColor(context.getResources().getColor(R.color.colorGold));
         snackbar.show();
+    }
+
+    @Override
+    public void onItemClick(int position, View v) {
+        Bundle bundle = new Bundle();
+        bundle.putString("PACKAGE_NAME", adapter.getAppList().get(position).getPackageName());
+        NavHostFragment.findNavController(this).navigate(R.id.applist_to_details, bundle);
+    }
+
+    @Override
+    public void onItemLongClick(int position, View v) {
+        AppMenuSheet appMenuSheet = new AppMenuSheet();
+        appMenuSheet.setApp(adapter.getAppList().get(position));
+        appMenuSheet.setAdapter(adapter);
+        appMenuSheet.show(getChildFragmentManager(), "APP_MENU_SHEET");
     }
 }

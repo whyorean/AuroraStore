@@ -29,20 +29,25 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.ActionBar;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.aurora.store.GlideApp;
 import com.aurora.store.R;
+import com.aurora.store.SharedPreferencesTranslator;
 import com.aurora.store.adapter.CategoriesListAdapter;
 import com.aurora.store.manager.CategoryManager;
 import com.aurora.store.task.CategoryList;
 import com.aurora.store.utility.ContextUtil;
 import com.aurora.store.utility.Log;
-import com.aurora.store.utility.ViewUtil;
+import com.aurora.store.utility.Util;
 import com.bumptech.glide.Glide;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -51,7 +56,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
 
-public class CategoriesFragment extends Fragment {
+public class CategoriesFragment extends Fragment implements CategoriesListAdapter.onClickListener {
 
     public static final String APPS = "APPLICATION";
     public static final String GAME = "GAME";
@@ -63,6 +68,8 @@ public class CategoriesFragment extends Fragment {
 
     private Context context;
     private CategoryManager categoryManager;
+    private SharedPreferencesTranslator translator;
+    private Map<String, String> categories = new HashMap<>();
     private CompositeDisposable disposable = new CompositeDisposable();
     private CategoriesListAdapter categoriesListAdapter;
     private String categoryType = APPS;
@@ -78,7 +85,9 @@ public class CategoriesFragment extends Fragment {
         super.onCreate(savedInstanceState);
         setRetainInstance(true);
         categoryManager = new CategoryManager(context);
-        categoriesListAdapter = new CategoriesListAdapter(this);
+        translator = new SharedPreferencesTranslator(Util.getPrefs(context));
+        categoriesListAdapter = new CategoriesListAdapter(context);
+        categoriesListAdapter.setOnItemClickListener(this);
     }
 
     @Override
@@ -89,9 +98,9 @@ public class CategoriesFragment extends Fragment {
         Bundle arguments = getArguments();
         if (arguments != null) {
             categoryType = arguments.getString("CATEGORY_TYPE");
-            setupAllCategories();
         } else
             Log.e("No category id provided");
+        setupAllCategories();
         return view;
     }
 
@@ -109,7 +118,7 @@ public class CategoriesFragment extends Fragment {
 
     @Override
     public void onDestroy() {
-        Glide.with(this).pauseAllRequests();
+        GlideApp.with(this).pauseAllRequests();
         super.onDestroy();
     }
 
@@ -128,6 +137,7 @@ public class CategoriesFragment extends Fragment {
             getCategoriesFromAPI();
             return;
         }
+        categories = categoryManager.getAllCategories();
         switch (categoryType) {
             case APPS:
                 categoriesListAdapter.addData(categoryManager.getAllCategories());
@@ -157,5 +167,18 @@ public class CategoriesFragment extends Fragment {
                         });
                     }
                 }, err -> Log.e(err.getMessage())));
+    }
+
+    @Override
+    public void onItemClick(int position, View v) {
+        Bundle bundle = new Bundle();
+        bundle.putString("CategoryId", new ArrayList<>(categories.keySet()).get(position));
+        bundle.putString("CategoryName", translator.getString(new ArrayList<>(categories.keySet()).get(position)));
+        NavHostFragment.findNavController(this).navigate(R.id.category_to_applist, bundle);
+    }
+
+    @Override
+    public void onItemLongClick(int position, View v) {
+
     }
 }

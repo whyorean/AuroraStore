@@ -30,11 +30,13 @@ import android.widget.Button;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.aurora.store.Constants;
 import com.aurora.store.ErrorType;
+import com.aurora.store.FeatureType;
 import com.aurora.store.R;
 import com.aurora.store.SharedPreferencesTranslator;
 import com.aurora.store.adapter.FeaturedAppsAdapter;
@@ -63,7 +65,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
 
-public class HomeFragment extends BaseFragment {
+public class HomeFragment extends BaseFragment implements TopCategoriesAdapter.onClickListener, FeaturedAppsAdapter.onClickListener {
 
     @BindView(R.id.recycler_top_categories)
     RecyclerView recyclerTopCategories;
@@ -87,8 +89,10 @@ public class HomeFragment extends BaseFragment {
     private FeaturedAppsAdapter topAppsAdapter;
     private FeaturedAppsAdapter topGamesAdapter;
     private FeaturedAppsAdapter topFamilyAdapter;
+    private TopCategoriesAdapter topCategoriesAdapter;
     private CategoryManager categoryManager;
     private FeaturedAppsTask featuredAppsTask;
+    private String[] topCategoryIDs;
     private SharedPreferencesTranslator translator;
     private CompositeDisposable disposable = new CompositeDisposable();
 
@@ -108,6 +112,7 @@ public class HomeFragment extends BaseFragment {
         super.onCreate(savedInstanceState);
         featuredAppsTask = new FeaturedAppsTask(context);
         categoryManager = new CategoryManager(context);
+        topCategoryIDs = context.getResources().getStringArray(R.array.topCategories);
         translator = new SharedPreferencesTranslator(Util.getPrefs(context));
     }
 
@@ -153,18 +158,22 @@ public class HomeFragment extends BaseFragment {
     }
 
     private void setupButtons() {
-        btnAllCategories.setOnClickListener(v -> getAllCategories());
+        btnAllCategories.setOnClickListener(v -> getSubCategoryFragment("APPLICATION"));
         btnTopApps.setOnClickListener(v -> getCategoryApps("APPLICATION"));
         btnTopGames.setOnClickListener(v -> getCategoryApps("GAME"));
         btnTopFamily.setOnClickListener(v -> getCategoryApps("FAMILY"));
     }
 
     private void setupRecyclers() {
-        topAppsAdapter = new FeaturedAppsAdapter(context);
-        topGamesAdapter = new FeaturedAppsAdapter(context);
-        topFamilyAdapter = new FeaturedAppsAdapter(context);
-
-        recyclerTopCategories.setAdapter(new TopCategoriesAdapter(this));
+        topAppsAdapter = new FeaturedAppsAdapter(context, FeatureType.TOP_APP);
+        topGamesAdapter = new FeaturedAppsAdapter(context, FeatureType.TOP_GAME);
+        topFamilyAdapter = new FeaturedAppsAdapter(context, FeatureType.TOP_FAMILY);
+        topCategoriesAdapter = new TopCategoriesAdapter(context);
+        topAppsAdapter.setOnItemClickListener(this);
+        topGamesAdapter.setOnItemClickListener(this);
+        topFamilyAdapter.setOnItemClickListener(this);
+        topCategoriesAdapter.setOnItemClickListener(this);
+        recyclerTopCategories.setAdapter(topCategoriesAdapter);
         recyclerTopCategories.setLayoutManager(new LinearLayoutManager(context, RecyclerView.HORIZONTAL, false));
         recyclerTopApps.setAdapter(topAppsAdapter);
         recyclerTopApps.setLayoutManager(new LinearLayoutManager(context, RecyclerView.HORIZONTAL, false));
@@ -274,18 +283,35 @@ public class HomeFragment extends BaseFragment {
     }
 
     private void getCategoryApps(String categoryID) {
-        CategoryAppsFragment categoryAppsFragment = new CategoryAppsFragment();
-        Bundle arguments = new Bundle();
-        arguments.putString("CategoryId", categoryID);
-        arguments.putString("CategoryName", translator.getString(categoryID));
-        categoryAppsFragment.setArguments(arguments);
-        getChildFragmentManager()
-                .beginTransaction()
-                .replace(R.id.coordinator, categoryAppsFragment)
-                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                .addToBackStack(null)
-                .commit();
+        Bundle bundle = new Bundle();
+        bundle.putString("CategoryId", categoryID);
+        bundle.putString("CategoryName", translator.getString(categoryID));
+        NavHostFragment.findNavController(this).navigate(R.id.home_to_applist, bundle);
     }
+
+    @Override
+    public void onItemClick(int position, View v) {
+        if (topCategoryIDs[position].equals(CategoriesFragment.FAMILY)) {
+            getSubCategoryFragment(CategoriesFragment.FAMILY);
+        } else if (topCategoryIDs[position].equals(CategoriesFragment.GAME)) {
+            getSubCategoryFragment(CategoriesFragment.GAME);
+        } else
+            getCategoryAppsFragment(position);
+    }
+
+    private void getSubCategoryFragment(String subCategory) {
+        Bundle bundle = new Bundle();
+        bundle.putString("CATEGORY_TYPE", subCategory);
+        NavHostFragment.findNavController(this).navigate(R.id.home_to_category, bundle);
+    }
+
+    private void getCategoryAppsFragment(int position) {
+        Bundle bundle = new Bundle();
+        bundle.putString("CategoryId", topCategoryIDs[position]);
+        bundle.putString("CategoryName", translator.getString(topCategoryIDs[position]));
+        NavHostFragment.findNavController(this).navigate(R.id.home_to_applist, bundle);
+    }
+
 
     private void getCategoriesFromAPI() {
         disposable.add(Observable.fromCallable(() -> new CategoryList(getContext())
@@ -314,5 +340,27 @@ public class HomeFragment extends BaseFragment {
             fetchTopGames();
             fetchTopFamily();
         });
+    }
+
+    @Override
+    public void onItemClick(int position, View v, FeatureType featureType) {
+        Bundle bundle = new Bundle();
+        switch (featureType) {
+            case TOP_APP:
+                bundle.putString("PACKAGE_NAME", topAppsAdapter.getAppList().get(position).getPackageName());
+                break;
+            case TOP_GAME:
+                bundle.putString("PACKAGE_NAME", topGamesAdapter.getAppList().get(position).getPackageName());
+                break;
+            case TOP_FAMILY:
+                bundle.putString("PACKAGE_NAME", topFamilyAdapter.getAppList().get(position).getPackageName());
+                break;
+        }
+        NavHostFragment.findNavController(this).navigate(R.id.home_to_details, bundle);
+    }
+
+    @Override
+    public void onItemLongClick(int position, View v, FeatureType featureType) {
+
     }
 }

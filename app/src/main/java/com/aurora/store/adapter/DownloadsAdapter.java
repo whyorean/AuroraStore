@@ -21,7 +21,6 @@
 package com.aurora.store.adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,12 +33,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.aurora.store.GlideApp;
 import com.aurora.store.R;
-import com.aurora.store.activity.DetailsActivity;
-import com.aurora.store.activity.DownloadsActivity;
 import com.aurora.store.sheet.DownloadMenuSheet;
 import com.aurora.store.utility.PackageUtil;
 import com.aurora.store.utility.Util;
-import com.aurora.store.utility.ViewUtil;
 import com.tonyodev.fetch2.Download;
 import com.tonyodev.fetch2.Status;
 
@@ -56,10 +52,15 @@ public class DownloadsAdapter extends RecyclerView.Adapter<DownloadsAdapter.View
 
     private final List<DownloadData> downloads = new ArrayList<>();
     private final DownloadMenuSheet menuSheet = new DownloadMenuSheet();
+    private onClickListener listener;
     private Context context;
 
     public DownloadsAdapter(Context context) {
         this.context = context;
+    }
+
+    public List<DownloadData> getDownloads() {
+        return downloads;
     }
 
     public void addDownload(@NonNull final Download download) {
@@ -137,26 +138,13 @@ public class DownloadsAdapter extends RecyclerView.Adapter<DownloadsAdapter.View
             viewHolder.txtSpeed.setText(Util.getDownloadSpeedString(context, downloadData.downloadedBytesPerSecond));
         }
 
-        viewHolder.itemView.setOnClickListener(v -> {
-            Intent intent = new Intent(context, DetailsActivity.class);
-            intent.putExtra("INTENT_PACKAGE_NAME", packageName);
-            context.startActivity(intent);
-        });
-
-        viewHolder.itemView.setOnLongClickListener(v -> {
-            menuSheet.setTitle(displayName);
-            menuSheet.setDownload(downloadData.download);
-            menuSheet.show(((DownloadsActivity) context).getSupportFragmentManager(), "DOWNLOAD_SHEET");
-            return false;
-        });
-
         switch (status) {
             case FAILED:
             case CANCELLED:
             case COMPLETED: {
                 viewHolder.txtStatus.setText(Util.getStatus(status));
-                ViewUtil.hideWithAnimation(viewHolder.txtSpeed);
-                ViewUtil.hideWithAnimation(viewHolder.txtETA);
+                viewHolder.txtSpeed.setVisibility(View.INVISIBLE);
+                viewHolder.txtETA.setVisibility(View.INVISIBLE);
                 break;
             }
             case PAUSED: {
@@ -209,6 +197,16 @@ public class DownloadsAdapter extends RecyclerView.Adapter<DownloadsAdapter.View
         }
     }
 
+    public void setOnItemClickListener(onClickListener clickListener) {
+        this.listener = clickListener;
+    }
+
+    public interface onClickListener {
+        void onItemClick(int position, View v);
+
+        void onItemLongClick(int position, View v);
+    }
+
     public static class DownloadData {
         public int id;
         @Nullable
@@ -238,7 +236,7 @@ public class DownloadsAdapter extends RecyclerView.Adapter<DownloadsAdapter.View
         }
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
         @BindView(R.id.img_download)
         ImageView imgDownload;
         @BindView(R.id.txt_title)
@@ -261,6 +259,19 @@ public class DownloadsAdapter extends RecyclerView.Adapter<DownloadsAdapter.View
         ViewHolder(@NonNull View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
+            itemView.setOnClickListener(this);
+            itemView.setOnLongClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view) {
+            listener.onItemClick(getAdapterPosition(), view);
+        }
+
+        @Override
+        public boolean onLongClick(View view) {
+            listener.onItemLongClick(getAdapterPosition(), view);
+            return false;
         }
     }
 }

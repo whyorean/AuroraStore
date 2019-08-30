@@ -54,8 +54,6 @@ import com.aurora.store.utility.ContextUtil;
 import com.aurora.store.utility.Log;
 import com.aurora.store.utility.PackageUtil;
 
-import java.util.concurrent.TimeUnit;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.reactivex.Observable;
@@ -71,7 +69,7 @@ public class DetailsFragment extends BaseFragment {
     public static App app;
 
     @BindView(R.id.scroll_view)
-    NestedScrollView mScrollView;
+    NestedScrollView nestedScrollView;
 
     private Context context;
     private ActionButton actionButton;
@@ -113,7 +111,7 @@ public class DetailsFragment extends BaseFragment {
         setErrorView(ErrorType.NO_APPS);
         Bundle arguments = getArguments();
         if (arguments != null) {
-            packageName = arguments.getString("PackageName");
+            packageName = arguments.getString("PACKAGE_NAME");
             fetchData();
         }
         return view;
@@ -165,7 +163,6 @@ public class DetailsFragment extends BaseFragment {
                 new Video(this, app),
                 new Beta(this, app),
                 new AppLinks(this, app))
-                .zipWith(Observable.interval(16, TimeUnit.MILLISECONDS), (abstractHelper, interval) -> abstractHelper)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnNext(AbstractHelper::draw)
@@ -176,7 +173,8 @@ public class DetailsFragment extends BaseFragment {
     public void drawButtons() {
         if (PackageUtil.isInstalled(context, app))
             app.setInstalled(true);
-        actionButton.draw();
+        if (actionButton != null)
+            actionButton.draw();
     }
 
     @Override

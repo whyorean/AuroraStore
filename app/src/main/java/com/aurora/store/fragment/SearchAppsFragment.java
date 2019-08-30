@@ -36,6 +36,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.SearchView;
 import androidx.core.graphics.ColorUtils;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -46,6 +47,7 @@ import com.aurora.store.R;
 import com.aurora.store.activity.AuroraActivity;
 import com.aurora.store.adapter.EndlessAppsAdapter;
 import com.aurora.store.model.App;
+import com.aurora.store.sheet.AppMenuSheet;
 import com.aurora.store.sheet.FilterBottomSheet;
 import com.aurora.store.task.SearchTask;
 import com.aurora.store.utility.Log;
@@ -69,7 +71,7 @@ import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
-public class SearchAppsFragment extends BaseFragment {
+public class SearchAppsFragment extends BaseFragment implements EndlessAppsAdapter.onClickListener {
 
     @BindView(R.id.search_apps)
     SearchView searchView;
@@ -84,7 +86,7 @@ public class SearchAppsFragment extends BaseFragment {
     private View view;
     private String query;
     private List<String> relatedTags = new ArrayList<>();
-    private EndlessAppsAdapter endlessAppsAdapter;
+    private EndlessAppsAdapter adapter;
     private SearchTask searchTask;
 
     private String getQuery() {
@@ -128,7 +130,7 @@ public class SearchAppsFragment extends BaseFragment {
     @Override
     public void onResume() {
         super.onResume();
-        if (endlessAppsAdapter == null || endlessAppsAdapter.isDataEmpty())
+        if (adapter == null || adapter.isDataEmpty())
             fetchSearchAppsList(false);
     }
 
@@ -220,13 +222,13 @@ public class SearchAppsFragment extends BaseFragment {
                     if (view != null) {
                         if (shouldIterate) {
                             addApps(appList);
-                        } else if (appList.isEmpty() && endlessAppsAdapter.isDataEmpty()) {
+                        } else if (appList.isEmpty() && adapter.isDataEmpty()) {
                             setErrorView(ErrorType.NO_SEARCH);
                             switchViews(true);
                         } else {
                             switchViews(false);
-                            if (endlessAppsAdapter != null)
-                                endlessAppsAdapter.addData(appList);
+                            if (adapter != null)
+                                adapter.addData(appList);
                             if (!relatedTags.isEmpty())
                                 setupTags();
                         }
@@ -240,8 +242,8 @@ public class SearchAppsFragment extends BaseFragment {
     private void addApps(List<App> appsToAdd) {
         if (!appsToAdd.isEmpty()) {
             for (App app : appsToAdd)
-                endlessAppsAdapter.add(app);
-            endlessAppsAdapter.notifyItemInserted(endlessAppsAdapter.getItemCount() - 1);
+                adapter.add(app);
+            adapter.notifyItemInserted(adapter.getItemCount() - 1);
         }
 
         /*
@@ -252,7 +254,7 @@ public class SearchAppsFragment extends BaseFragment {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(aLong -> {
-                    if (iterator.hasNext() && endlessAppsAdapter.getItemCount() < 10) {
+                    if (iterator.hasNext() && adapter.getItemCount() < 10) {
                         iterator.next();
                     }
                 }, e -> Log.e(e.getMessage())));
@@ -260,10 +262,11 @@ public class SearchAppsFragment extends BaseFragment {
 
     private void setupRecycler() {
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false);
-        endlessAppsAdapter = new EndlessAppsAdapter(context);
+        adapter = new EndlessAppsAdapter(context);
+        adapter.setOnItemClickListener(this);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setLayoutAnimation(AnimationUtils.loadLayoutAnimation(this.getActivity(), R.anim.anim_falldown));
-        recyclerView.setAdapter(endlessAppsAdapter);
+        recyclerView.setAdapter(adapter);
         EndlessScrollListener endlessScrollListener = new EndlessScrollListener(mLayoutManager) {
             @Override
             public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
@@ -327,5 +330,20 @@ public class SearchAppsFragment extends BaseFragment {
             ((Button) v).setText(getString(R.string.action_retry_ing));
             ((Button) v).setEnabled(false);
         };
+    }
+
+    @Override
+    public void onItemClick(int position, View v) {
+        Bundle bundle = new Bundle();
+        bundle.putString("PACKAGE_NAME", adapter.getAppList().get(position).getPackageName());
+        NavHostFragment.findNavController(this).navigate(R.id.search_applist_to_details, bundle);
+    }
+
+    @Override
+    public void onItemLongClick(int position, View v) {
+        AppMenuSheet appMenuSheet = new AppMenuSheet();
+        appMenuSheet.setApp(adapter.getAppList().get(position));
+        appMenuSheet.setAdapter(adapter);
+        appMenuSheet.show(getChildFragmentManager(), "APP_MENU_SHEET");
     }
 }

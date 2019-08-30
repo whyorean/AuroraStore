@@ -38,7 +38,7 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import com.aurora.store.Constants;
 import com.aurora.store.R;
-import com.aurora.store.activity.DetailsActivity;
+import com.aurora.store.activity.AuroraActivity;
 import com.aurora.store.model.App;
 import com.aurora.store.notification.QuickNotification;
 import com.aurora.store.utility.Log;
@@ -180,7 +180,7 @@ public class Installer implements AppInstallerAbstract.InstallationStatusListene
     }
 
     private PendingIntent getContentIntent(String packageName) {
-        Intent intent = new Intent(context, DetailsActivity.class);
+        Intent intent = new Intent(context, AuroraActivity.class);
         intent.putExtra("INTENT_PACKAGE_NAME", packageName);
         return PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
     }

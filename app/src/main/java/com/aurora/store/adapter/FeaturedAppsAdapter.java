@@ -21,7 +21,6 @@
 package com.aurora.store.adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.view.LayoutInflater;
@@ -35,9 +34,9 @@ import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.aurora.store.CardType;
+import com.aurora.store.FeatureType;
 import com.aurora.store.GlideApp;
 import com.aurora.store.R;
-import com.aurora.store.activity.DetailsActivity;
 import com.aurora.store.model.App;
 import com.aurora.store.utility.PackageUtil;
 import com.aurora.store.utility.Util;
@@ -53,13 +52,21 @@ import butterknife.ButterKnife;
 
 public class FeaturedAppsAdapter extends RecyclerView.Adapter<FeaturedAppsAdapter.ViewHolder> {
 
-    private Context context;
+    private onClickListener listener;
     private CardType cardType;
+    private FeatureType featureType;
+
+    private Context context;
     private List<App> appList = new ArrayList<>();
 
-    public FeaturedAppsAdapter(Context context) {
+    public FeaturedAppsAdapter(Context context, FeatureType featureType) {
         this.context = context;
+        this.featureType = featureType;
         this.cardType = Util.isLegacyCardEnabled(context) ? CardType.LEGACY : CardType.MODERN;
+    }
+
+    public List<App> getAppList() {
+        return appList;
     }
 
     public void addData(List<App> appList) {
@@ -88,12 +95,6 @@ public class FeaturedAppsAdapter extends RecyclerView.Adapter<FeaturedAppsAdapte
         if (app.getPageBackgroundImage() != null)
             drawBackground(app, viewHolder);
 
-        viewHolder.itemView.setOnClickListener(v -> {
-            Intent intent = new Intent(context, DetailsActivity.class);
-            intent.putExtra("INTENT_PACKAGE_NAME", app.getPackageName());
-            context.startActivity(intent);
-        });
-
         viewHolder.txtIndicator.setVisibility(PackageUtil.isInstalled(context, app)
                 ? View.VISIBLE
                 : View.GONE);
@@ -120,7 +121,17 @@ public class FeaturedAppsAdapter extends RecyclerView.Adapter<FeaturedAppsAdapte
         return appList.size();
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder {
+    public void setOnItemClickListener(onClickListener clickListener) {
+        this.listener = clickListener;
+    }
+
+    public interface onClickListener {
+        void onItemClick(int position, View v, FeatureType featureType);
+
+        void onItemLongClick(int position, View v, FeatureType featureType);
+    }
+
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
         @BindView(R.id.app_icon)
         ImageView imgIcon;
         @BindView(R.id.app_name)
@@ -148,6 +159,19 @@ public class FeaturedAppsAdapter extends RecyclerView.Adapter<FeaturedAppsAdapte
                             .getDisplayMetrics().heightPixels) / 2;
                 }
             }
+            itemView.setOnClickListener(this);
+            itemView.setOnLongClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view) {
+            listener.onItemClick(getAdapterPosition(), view, featureType);
+        }
+
+        @Override
+        public boolean onLongClick(View view) {
+            listener.onItemLongClick(getAdapterPosition(), view, featureType);
+            return false;
         }
     }
 }

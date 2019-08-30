@@ -30,6 +30,7 @@ import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -38,6 +39,7 @@ import com.aurora.store.ErrorType;
 import com.aurora.store.R;
 import com.aurora.store.adapter.EndlessAppsAdapter;
 import com.aurora.store.model.App;
+import com.aurora.store.sheet.AppMenuSheet;
 import com.aurora.store.task.SearchTask;
 import com.aurora.store.utility.Log;
 import com.aurora.store.utility.NetworkUtil;
@@ -52,10 +54,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
 
-public class DevAppsFragment extends BaseFragment {
+public class DevAppsFragment extends BaseFragment implements EndlessAppsAdapter.onClickListener {
 
     @BindView(R.id.search_apps_list)
     RecyclerView recyclerView;
@@ -64,14 +65,14 @@ public class DevAppsFragment extends BaseFragment {
 
     private Context context;
     private View view;
-    private EndlessAppsAdapter endlessAppsAdapter;
-    private SearchTask mSearchTask;
+    private EndlessAppsAdapter adapter;
+    private SearchTask searchTask;
 
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         this.context = context;
-        mSearchTask = new SearchTask(context);
+        searchTask = new SearchTask(context);
     }
 
     @Override
@@ -101,7 +102,7 @@ public class DevAppsFragment extends BaseFragment {
     @Override
     public void onResume() {
         super.onResume();
-        if (endlessAppsAdapter == null || endlessAppsAdapter.isDataEmpty())
+        if (adapter == null || adapter.isDataEmpty())
             fetchDevAppsList(false);
     }
 
@@ -118,7 +119,7 @@ public class DevAppsFragment extends BaseFragment {
     }
 
     private void fetchDevAppsList(boolean shouldIterate) {
-        disposable.add(Observable.fromCallable(() -> mSearchTask.getSearchResults(iterator))
+        disposable.add(Observable.fromCallable(() -> searchTask.getSearchResults(iterator))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(appList -> {
@@ -130,7 +131,7 @@ public class DevAppsFragment extends BaseFragment {
                             switchViews(true);
                         } else {
                             switchViews(false);
-                            endlessAppsAdapter.addData(appList);
+                            adapter.addData(appList);
                         }
                     }
                 }, err -> {
@@ -142,10 +143,10 @@ public class DevAppsFragment extends BaseFragment {
     private void addApps(List<App> appsToAdd) {
         if (!appsToAdd.isEmpty()) {
             for (App app : appsToAdd)
-                endlessAppsAdapter.add(app);
-            endlessAppsAdapter.notifyItemInserted(endlessAppsAdapter.getItemCount() - 1);
+                adapter.add(app);
+            adapter.notifyItemInserted(adapter.getItemCount() - 1);
         }
-        if (iterator.hasNext() && endlessAppsAdapter.getItemCount() < 10) {
+        if (iterator.hasNext() && adapter.getItemCount() < 10) {
             new Timer().scheduleAtFixedRate(new TimerTask() {
                 @Override
                 public void run() {
@@ -157,18 +158,19 @@ public class DevAppsFragment extends BaseFragment {
     }
 
     private void setupRecycler() {
-        LinearLayoutManager mLayoutManager = new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false);
-        endlessAppsAdapter = new EndlessAppsAdapter(context);
-        recyclerView.setLayoutManager(mLayoutManager);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false);
+        adapter = new EndlessAppsAdapter(context);
+        adapter.setOnItemClickListener(this);
+        recyclerView.setLayoutManager(layoutManager);
         recyclerView.setLayoutAnimation(AnimationUtils.loadLayoutAnimation(this.getActivity(), R.anim.anim_falldown));
-        recyclerView.setAdapter(endlessAppsAdapter);
-        EndlessScrollListener mScrollListener = new EndlessScrollListener(mLayoutManager) {
+        recyclerView.setAdapter(adapter);
+        EndlessScrollListener endlessScrollListener = new EndlessScrollListener(layoutManager) {
             @Override
             public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
                 fetchDevAppsList(true);
             }
         };
-        recyclerView.addOnScrollListener(mScrollListener);
+        recyclerView.addOnScrollListener(endlessScrollListener);
     }
 
     @Override
@@ -182,5 +184,20 @@ public class DevAppsFragment extends BaseFragment {
             ((Button) v).setText(getString(R.string.action_retry_ing));
             ((Button) v).setEnabled(false);
         };
+    }
+
+    @Override
+    public void onItemClick(int position, View v) {
+        Bundle bundle = new Bundle();
+        bundle.putString("PACKAGE_NAME", adapter.getAppList().get(position).getPackageName());
+        NavHostFragment.findNavController(this).navigate(R.id.devlist_to_details, bundle);
+    }
+
+    @Override
+    public void onItemLongClick(int position, View v) {
+        AppMenuSheet appMenuSheet = new AppMenuSheet();
+        appMenuSheet.setApp(adapter.getAppList().get(position));
+        appMenuSheet.setAdapter(adapter);
+        appMenuSheet.show(getChildFragmentManager(), "APP_MENU_SHEET");
     }
 }

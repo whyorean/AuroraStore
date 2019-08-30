@@ -30,15 +30,18 @@ import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.aurora.store.Constants;
 import com.aurora.store.ErrorType;
+import com.aurora.store.GlideApp;
 import com.aurora.store.ListType;
 import com.aurora.store.R;
 import com.aurora.store.adapter.InstalledAppsAdapter;
 import com.aurora.store.model.App;
+import com.aurora.store.sheet.AppMenuSheet;
 import com.aurora.store.task.InstalledAppsTask;
 import com.aurora.store.utility.Log;
 import com.aurora.store.utility.PrefUtil;
@@ -58,7 +61,7 @@ import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
-public class InstalledFragment extends BaseFragment {
+public class InstalledFragment extends BaseFragment implements InstalledAppsAdapter.onClickListener {
 
     @BindView(R.id.swipe_layout)
     CustomSwipeToRefresh customSwipeToRefresh;
@@ -118,9 +121,8 @@ public class InstalledFragment extends BaseFragment {
 
     @Override
     public void onDestroy() {
+        GlideApp.with(this).pauseAllRequests();
         super.onDestroy();
-        installedAppTask = null;
-        adapter = null;
     }
 
     @Override
@@ -172,6 +174,7 @@ public class InstalledFragment extends BaseFragment {
 
     private void setupRecycler() {
         adapter = new InstalledAppsAdapter(context, ListType.INSTALLED);
+        adapter.setOnItemClickListener(this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(context, RecyclerView.VERTICAL, false));
         recyclerView.setLayoutAnimation(AnimationUtils.loadLayoutAnimation(context, R.anim.anim_falldown));
@@ -184,5 +187,20 @@ public class InstalledFragment extends BaseFragment {
             ((Button) v).setText(getString(R.string.action_retry_ing));
             ((Button) v).setEnabled(false);
         };
+    }
+
+    @Override
+    public void onItemClick(int position, View v) {
+        Bundle bundle = new Bundle();
+        bundle.putString("PACKAGE_NAME", adapter.getAppList().get(position).getPackageName());
+        NavHostFragment.findNavController(this).navigate(R.id.applist_to_details, bundle);
+    }
+
+    @Override
+    public void onItemLongClick(int position, View v) {
+        AppMenuSheet appMenuSheet = new AppMenuSheet();
+        appMenuSheet.setApp(adapter.getAppList().get(position));
+        appMenuSheet.setAdapter(adapter);
+        appMenuSheet.show(getChildFragmentManager(), "APP_MENU_SHEET");
     }
 }

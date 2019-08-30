@@ -84,14 +84,6 @@
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
-
-            <meta-data
-                android:name="android.app.searchable"
-                android:resource="@xml/searchable" />
-        </activity>
-        <activity
-            android:name=".activity.DetailsActivity"
-            android:configChanges="keyboardHidden|locale|orientation|fontScale">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
@@ -114,13 +106,14 @@
                 <data android:host="market.android.com" />
                 <data android:path="/store/apps/details" />
             </intent-filter>
+
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
         </activity>
 
         <activity
             android:name=".activity.FullscreenImageActivity"
-            android:configChanges="keyboardHidden|locale|orientation|fontScale" />
-        <activity
-            android:name=".activity.DownloadsActivity"
             android:configChanges="keyboardHidden|locale|orientation|fontScale" />
         <activity
             android:name=".activity.AccountsActivity"

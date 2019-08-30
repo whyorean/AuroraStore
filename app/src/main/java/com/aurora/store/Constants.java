@@ -48,6 +48,7 @@ public class Constants {
     public static final String FILTER_RATING = "FILTER_RATING";
     public static final String FILTER_DOWNLOADS = "FILTER_DOWNLOADS";
 
+    public static final String INTENT_PACKAGE_NAME = "INTENT_PACKAGE_NAME";
 
     public static final String PRIVILEGED_EXTENSION_PACKAGE_NAME = "com.aurora.services";
     public static final String PRIVILEGED_EXTENSION_SERVICE_INTENT = "com.aurora.services.IPrivilegedService";

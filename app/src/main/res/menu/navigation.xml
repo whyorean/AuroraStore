@@ -19,23 +19,18 @@
   -->
 
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-
     <item
-        android:id="@+id/action_home"
+        android:id="@+id/homeFragment"
         android:icon="@drawable/ic_home"
-        android:orderInCategory="0"
         android:title="@string/action_home" />
 
     <item
-        android:id="@+id/action_apps"
+        android:id="@+id/appsFragment"
         android:icon="@drawable/ic_apps"
-        android:orderInCategory="1"
         android:title="@string/action_apps" />
 
     <item
-        android:id="@+id/action_search"
+        android:id="@+id/searchFragment"
         android:icon="@drawable/ic_search"
-        android:orderInCategory="2"
         android:title="@string/action_search" />
-
 </menu>

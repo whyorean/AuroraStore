@@ -40,9 +40,7 @@ import com.aurora.store.sheet.FilterBottomSheet;
 import com.aurora.store.utility.Log;
 import com.aurora.store.utility.Util;
 import com.bumptech.glide.Glide;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 
 import butterknife.BindView;
@@ -60,7 +58,6 @@ public class CategoryAppsFragment extends Fragment {
     ExtendedFloatingActionButton filterFab;
 
     private Context context;
-    private ActionBar actionBar;
 
     public ExtendedFloatingActionButton getFilterFab() {
         return filterFab;
@@ -81,8 +78,9 @@ public class CategoryAppsFragment extends Fragment {
         if (arguments != null) {
             categoryId = arguments.getString("CategoryId");
             if (getActivity() instanceof AuroraActivity) {
-                actionBar = ((AuroraActivity) getActivity()).getSupportActionBar();
-                actionBar.setTitle(arguments.getString("CategoryName"));
+                ActionBar actionBar = ((AuroraActivity) getActivity()).getSupportActionBar();
+                if (actionBar != null)
+                    actionBar.setTitle(arguments.getString("CategoryName"));
             }
         } else
             Log.e("No category id provided");
@@ -103,8 +101,6 @@ public class CategoryAppsFragment extends Fragment {
     @Override
     public void onDestroy() {
         Glide.with(this).pauseAllRequests();
-        if (actionBar != null)
-            actionBar.setTitle(getString(R.string.app_name));
         if (Util.filterSearchNonPersistent(context))
             new Filter(context).resetFilterPreferences();
         super.onDestroy();

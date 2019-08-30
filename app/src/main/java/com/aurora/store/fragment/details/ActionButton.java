@@ -188,7 +188,6 @@ public class ActionButton extends AbstractHelper {
             btnPositive.setText(R.string.details_update);
             if (info.versionCode == app.getVersionCode() || null == currentVersion) {
                 btnPositive.setText(R.string.details_run);
-                btnPositive.setIcon(context.getDrawable(R.drawable.ic_open));
                 btnPositive.setOnClickListener(openAppListener());
             } else if (new File(PathUtil.getLocalApkPath(context, app.getPackageName(),
                     app.getVersionCode())).exists()) {
@@ -204,7 +203,6 @@ public class ActionButton extends AbstractHelper {
 
     private View.OnClickListener installAppListener() {
         btnPositive.setText(R.string.details_install);
-        btnPositive.setIcon(context.getDrawable(R.drawable.ic_installation_alt));
         return v -> {
             btnPositive.setText(R.string.details_installing);
             btnPositive.setEnabled(false);
@@ -214,7 +212,6 @@ public class ActionButton extends AbstractHelper {
 
     private View.OnClickListener downloadAppListener() {
         btnPositive.setText(R.string.details_download);
-        btnPositive.setIcon(context.getDrawable(R.drawable.ic_download));
         btnPositive.setEnabled(true);
         return v -> {
             switchViews(true);
@@ -248,7 +245,6 @@ public class ActionButton extends AbstractHelper {
         fetchListener = getFetchListener();
         fetch.addListener(fetchListener);
         btnPositive.setText(R.string.download_resume);
-        btnPositive.setIcon(context.getDrawable(R.drawable.ic_resume));
         return v -> {
             switchViews(true);
             fetch.resumeGroup(hashCode);

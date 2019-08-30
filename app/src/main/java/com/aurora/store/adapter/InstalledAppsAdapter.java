@@ -21,7 +21,6 @@
 package com.aurora.store.adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,16 +29,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.aurora.store.GlideApp;
 import com.aurora.store.ListType;
 import com.aurora.store.R;
-import com.aurora.store.activity.AuroraActivity;
-import com.aurora.store.activity.DetailsActivity;
 import com.aurora.store.model.App;
-import com.aurora.store.sheet.AppMenuSheet;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 
 import java.util.ArrayList;
@@ -53,15 +48,18 @@ import butterknife.ButterKnife;
 
 public class InstalledAppsAdapter extends RecyclerView.Adapter<InstalledAppsAdapter.ViewHolder> {
 
-    public List<App> appList = new ArrayList<>();
     public Context context;
+    private onClickListener listener;
+    private List<App> appList = new ArrayList<>();
     private ListType listType;
-    private AppMenuSheet menuSheet;
 
     public InstalledAppsAdapter(Context context, ListType listType) {
         this.context = context;
         this.listType = listType;
-        this.menuSheet = new AppMenuSheet();
+    }
+
+    public List<App> getAppList() {
+        return appList;
     }
 
     public void add(int position, App app) {
@@ -119,7 +117,7 @@ public class InstalledAppsAdapter extends RecyclerView.Adapter<InstalledAppsAdap
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        App app = appList.get(position);
+        final App app = appList.get(position);
         List<String> Version = new ArrayList<>();
         List<String> Extra = new ArrayList<>();
 
@@ -128,31 +126,11 @@ public class InstalledAppsAdapter extends RecyclerView.Adapter<InstalledAppsAdap
         setText(holder.AppExtra, TextUtils.join(" • ", Extra));
         setText(holder.AppVersion, TextUtils.join(" • ", Version));
 
-        holder.itemView.setOnClickListener(v -> {
-            Intent intent = new Intent(context, DetailsActivity.class);
-            intent.putExtra("INTENT_PACKAGE_NAME", app.getPackageName());
-            context.startActivity(intent);
-        });
-
-        holder.itemView.setOnLongClickListener(v -> {
-            menuSheet.setApp(app);
-            menuSheet.setAdapter(this);
-            menuSheet.show(getFragmentManager(), "BOTTOM_MENU_SHEET");
-            return false;
-        });
-
         GlideApp
                 .with(context)
                 .load(app.getIconInfo().getUrl())
                 .transition(new DrawableTransitionOptions().crossFade())
                 .into(holder.AppIcon);
-    }
-
-    private FragmentManager getFragmentManager() {
-        if (context instanceof DetailsActivity)
-            return ((DetailsActivity) context).getSupportFragmentManager();
-        else
-            return ((AuroraActivity) context).getSupportFragmentManager();
     }
 
     public void getDetails(List<String> Version, List<String> Extra, App app) {
@@ -177,7 +155,17 @@ public class InstalledAppsAdapter extends RecyclerView.Adapter<InstalledAppsAdap
         return appList.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public void setOnItemClickListener(onClickListener clickListener) {
+        this.listener = clickListener;
+    }
+
+    public interface onClickListener {
+        void onItemClick(int position, View v);
+
+        void onItemLongClick(int position, View v);
+    }
+
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
         @BindView(R.id.app_icon)
         ImageView AppIcon;
         @BindView(R.id.app_title)
@@ -190,7 +178,19 @@ public class InstalledAppsAdapter extends RecyclerView.Adapter<InstalledAppsAdap
         ViewHolder(@NonNull View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
+            itemView.setOnClickListener(this);
+            itemView.setOnLongClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view) {
+            listener.onItemClick(getAdapterPosition(), view);
+        }
+
+        @Override
+        public boolean onLongClick(View view) {
+            listener.onItemLongClick(getAdapterPosition(), view);
+            return false;
         }
     }
-
 }

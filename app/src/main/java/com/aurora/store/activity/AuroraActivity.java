@@ -24,36 +24,44 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import androidx.annotation.ColorInt;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.graphics.ColorUtils;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.AppBarConfiguration;
+import androidx.navigation.ui.NavigationUI;
 
 import com.aurora.store.Constants;
+import com.aurora.store.GlideApp;
+import com.aurora.store.MenuType;
 import com.aurora.store.R;
-import com.aurora.store.adapter.ViewPagerAdapter;
-import com.aurora.store.fragment.AppsFragment;
-import com.aurora.store.fragment.HomeFragment;
-import com.aurora.store.fragment.SearchFragment;
+import com.aurora.store.download.DownloadManager;
+import com.aurora.store.manager.BlacklistManager;
+import com.aurora.store.manager.FavouriteListManager;
 import com.aurora.store.utility.Accountant;
 import com.aurora.store.utility.PrefUtil;
 import com.aurora.store.utility.ThemeUtil;
 import com.aurora.store.utility.Util;
 import com.aurora.store.utility.ViewUtil;
-import com.aurora.store.view.CustomViewPager;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.tonyodev.fetch2.Fetch;
+import com.tonyodev.fetch2.Status;
+
+import org.jetbrains.annotations.NotNull;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.reactivex.disposables.CompositeDisposable;
+
+import static com.aurora.store.Constants.INTENT_PACKAGE_NAME;
 
 public class AuroraActivity extends AppCompatActivity {
 
@@ -62,20 +70,17 @@ public class AuroraActivity extends AppCompatActivity {
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
-    @BindView(R.id.viewpager)
-    CustomViewPager viewPager;
     @BindView(R.id.bottom_navigation)
     BottomNavigationView bottomNavigationView;
+
     private ActionBar actionBar;
-    private ViewPagerAdapter pagerAdapter;
     private ThemeUtil themeUtil = new ThemeUtil();
     private CompositeDisposable disposable = new CompositeDisposable();
+    private String packageName = null;
+    private FavouriteListManager favouriteListManager;
+    private Fetch fetch;
     private int fragmentCur = 0;
     private boolean isSearchIntent = false;
-
-    public BottomNavigationView getBottomNavigation() {
-        return bottomNavigationView;
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,6 +89,9 @@ public class AuroraActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         fragmentCur = Util.getDefaultTab(this);
+        favouriteListManager = new FavouriteListManager(this);
+        fetch = DownloadManager.getFetchInstance(this);
+
         onNewIntent(getIntent());
 
         if (!PrefUtil.getBoolean(this, Constants.PREFERENCE_DO_NOT_SHOW_INTRO)) {
@@ -105,16 +113,24 @@ public class AuroraActivity extends AppCompatActivity {
 
     private void init() {
         setupActionbar();
-        setupViewPager();
-        setupBottomNavigation();
+        setupNavigation();
     }
 
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
-        Bundle mBundle = intent.getExtras();
-        if (mBundle != null)
-            fragmentCur = mBundle.getInt(Constants.INTENT_FRAGMENT_POSITION);
+
+        packageName = getIntentPackageName(intent);
+        if (!TextUtils.isEmpty(packageName)) {
+            Bundle bundle = new Bundle();
+            bundle.putString("PACKAGE_NAME", packageName);
+            Navigation.findNavController(this, R.id.nav_host_fragment).navigate(R.id.detailsFragment, bundle);
+            return;
+        }
+
+        Bundle bundle = intent.getExtras();
+        if (bundle != null)
+            fragmentCur = bundle.getInt(Constants.INTENT_FRAGMENT_POSITION);
         if (intent.getScheme() != null && intent.getScheme().equals("market")) {
             fragmentCur = 2;
             isSearchIntent = true;
@@ -125,42 +141,53 @@ public class AuroraActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onBackPressed() {
-        Fragment fragment = pagerAdapter.getItem(viewPager.getCurrentItem());
-        if (!fragment.isAdded())
-            return;
-        if (fragment instanceof SearchFragment || fragment instanceof HomeFragment) {
-            FragmentManager fragmentManager = fragment.getChildFragmentManager();
-            if (!fragmentManager.getFragments().isEmpty())
-                fragmentManager.popBackStack();
-            else
-                super.onBackPressed();
-        } else
-            super.onBackPressed();
-    }
-
-    @Override
-    public boolean onSupportNavigateUp() {
-        return super.onSupportNavigateUp();
-    }
-
-    @Override
     public boolean onCreateOptionsMenu(final Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
     @Override
-    public boolean onOptionsItemSelected(final MenuItem menuItem) {
+    public boolean onOptionsItemSelected(@NotNull final MenuItem menuItem) {
         switch (menuItem.getItemId()) {
             case android.R.id.home:
                 onBackPressed();
                 return true;
             case R.id.action_download:
-                startActivity(new Intent(this, DownloadsActivity.class));
+            case R.id.action_downloads:
+                Navigation.findNavController(this, R.id.nav_host_fragment).navigate(R.id.downloadsFragment);
                 return true;
             case R.id.action_setting:
                 startActivity(new Intent(this, SettingsActivity.class));
+                return true;
+            case R.id.action_favourite:
+                if (favouriteListManager.contains(packageName)) {
+                    favouriteListManager.remove(packageName);
+                    menuItem.setIcon(R.drawable.ic_favourite_remove);
+                } else {
+                    favouriteListManager.add(packageName);
+                    menuItem.setIcon(R.drawable.ic_favourite_red);
+                }
+                return true;
+            case R.id.action_manual:
+                startActivity(new Intent(this, ManualDownloadActivity.class));
+                return true;
+            case R.id.action_blacklist:
+                new BlacklistManager(this).add(packageName);
+                return true;
+            case R.id.action_pause_all:
+                fetch.pauseAll();
+                return true;
+            case R.id.action_resume_all:
+                fetch.resumeAll();
+                return true;
+            case R.id.action_cancel_all:
+                fetch.cancelAll();
+                return true;
+            case R.id.action_clear_completed:
+                fetch.removeAllWithStatus(Status.COMPLETED);
+                return true;
+            case R.id.action_force_clear_all:
+                forceClearAll();
                 return true;
         }
         return super.onOptionsItemSelected(menuItem);
@@ -171,22 +198,70 @@ public class AuroraActivity extends AppCompatActivity {
         super.onResume();
         themeUtil.onResume(this);
         Util.toggleSoftInput(this, false);
-        if (pagerAdapter == null)
-            init();
     }
 
     @Override
     protected void onUserLeaveHint() {
-        super.onUserLeaveHint();
         Util.toggleSoftInput(this, false);
+        super.onUserLeaveHint();
     }
 
     @Override
     protected void onDestroy() {
-        super.onDestroy();
+        GlideApp.with(this).pauseAllRequests();
         disposable.clear();
+        super.onDestroy();
     }
 
+    private void forceClearAll() {
+        fetch.deleteAllWithStatus(Status.ADDED);
+        fetch.deleteAllWithStatus(Status.QUEUED);
+        fetch.deleteAllWithStatus(Status.CANCELLED);
+        fetch.deleteAllWithStatus(Status.COMPLETED);
+        fetch.deleteAllWithStatus(Status.DOWNLOADING);
+        fetch.deleteAllWithStatus(Status.FAILED);
+        fetch.deleteAllWithStatus(Status.PAUSED);
+    }
+
+    private void redrawMenu(MenuType type) {
+        Menu menu = toolbar.getMenu();
+        menu.clear();
+        switch (type) {
+            case GLOBAL:
+                getMenuInflater().inflate(R.menu.menu_main, menu);
+                break;
+            case DETAILS:
+                getMenuInflater().inflate(R.menu.menu_app_details, menu);
+                break;
+            case DOWNLOADS:
+                getMenuInflater().inflate(R.menu.menu_download_main, menu);
+                break;
+            default:
+                getMenuInflater().inflate(R.menu.menu_main, menu);
+        }
+
+        MenuItem menuItem = menu.findItem(R.id.action_favourite);
+        if (menuItem != null)
+            menuItem.setIcon(favouriteListManager.contains(packageName)
+                    ? R.drawable.ic_favourite_red
+                    : R.drawable.ic_favourite_remove);
+        onPrepareOptionsMenu(menu);
+    }
+
+    private String getIntentPackageName(Intent intent) {
+        if (intent.hasExtra(INTENT_PACKAGE_NAME)) {
+            return intent.getStringExtra(INTENT_PACKAGE_NAME);
+        } else if (intent.getScheme() != null
+                && (intent.getScheme().equals("market")
+                || intent.getScheme().equals("http")
+                || intent.getScheme().equals("https"))) {
+            return intent.getData().getQueryParameter("id");
+        } else if (intent.getExtras() != null) {
+            Bundle bundle = intent.getExtras();
+            return bundle.getString(INTENT_PACKAGE_NAME);
+        }
+        return null;
+    }
 
     private void setupActionbar() {
         setSupportActionBar(toolbar);
@@ -198,46 +273,46 @@ public class AuroraActivity extends AppCompatActivity {
         }
     }
 
-    private void setupViewPager() {
-        pagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
-        pagerAdapter.addFragment(0, new HomeFragment());
-        pagerAdapter.addFragment(1, new AppsFragment());
-        pagerAdapter.addFragment(2, new SearchFragment());
-        viewPager.setAdapter(pagerAdapter);
-        viewPager.setScroll(false);
-        viewPager.setOffscreenPageLimit(2);
-        viewPager.setCurrentItem(fragmentCur, true);
-    }
-
-    private void setupBottomNavigation() {
-        @ColorInt
+    private void setupNavigation() {
         int backGroundColor = ViewUtil.getStyledAttribute(this, android.R.attr.colorBackground);
         bottomNavigationView.setBackgroundColor(ColorUtils.setAlphaComponent(backGroundColor, 245));
-        bottomNavigationView.setOnNavigationItemSelectedListener(menuItem -> {
-            viewPager.setCurrentItem(menuItem.getOrder(), true);
-            switch (menuItem.getItemId()) {
-                case R.id.action_home:
-                    Util.toggleSoftInput(this, false);
-                    actionBar.setTitle(getString(R.string.title_home));
-                    break;
-                case R.id.action_apps:
-                    Util.toggleSoftInput(this, false);
-                    actionBar.setTitle(getString(R.string.title_installed));
-                    break;
-                case R.id.action_search:
-                    if (Util.isIMEEnabled(this))
-                        Util.toggleSoftInput(this, true);
-                    actionBar.setTitle(getString(R.string.title_search));
-                    break;
-            }
-            return true;
-        });
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
+        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
+        NavigationUI.setupWithNavController(bottomNavigationView, navController);
 
         if (isSearchIntent)
-            bottomNavigationView.setSelectedItemId(R.id.action_search);
-        if (fragmentCur != 0 && !isSearchIntent)
-            bottomNavigationView.setSelectedItemId(bottomNavigationView.getMenu()
-                    .getItem(fragmentCur).getItemId());
+            Navigation.findNavController(this, R.id.nav_host_fragment).navigate(R.id.searchFragment);
+
+        switch (fragmentCur) {
+            case 0:
+                Navigation.findNavController(this, R.id.nav_host_fragment).navigate(R.id.homeFragment);
+                break;
+            case 1:
+                Navigation.findNavController(this, R.id.nav_host_fragment).navigate(R.id.appsFragment);
+                break;
+            case 2:
+                Navigation.findNavController(this, R.id.nav_host_fragment).navigate(R.id.searchFragment);
+                break;
+        }
+
+        navController.addOnDestinationChangedListener((controller, destination, arguments) -> {
+            switch (destination.getId()) {
+                case R.id.detailsFragment:
+                    ViewUtil.hideBottomNav(bottomNavigationView, true);
+                    actionBar.setTitle("");
+                    redrawMenu(MenuType.DETAILS);
+                    break;
+                case R.id.downloadsFragment:
+                    redrawMenu(MenuType.DOWNLOADS);
+                    break;
+                default:
+                    ViewUtil.showBottomNav(bottomNavigationView, true);
+                    redrawMenu(MenuType.GLOBAL);
+                    break;
+
+            }
+        });
     }
 
     private void checkPermissions() {

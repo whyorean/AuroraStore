@@ -21,38 +21,35 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="64dp"
+    android:layout_height="wrap_content"
     android:gravity="center"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    android:paddingStart="@dimen/margin_small"
+    android:paddingEnd="@dimen/margin_small"
+    android:weightSum="2">
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_negative"
         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-        android:layout_width="wrap_content"
-        android:layout_height="52dp"
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
         android:layout_margin="@dimen/margin_xxsmall"
+        android:layout_weight="1"
         android:maxLines="1"
-        android:paddingStart="@dimen/margin_large"
-        android:paddingEnd="@dimen/margin_large"
         android:text="@string/action_uninstall"
         android:textAppearance="@style/TextAppearance.Aurora.Button"
         android:textColor="@color/colorRed"
         android:visibility="gone"
-        app:icon="@drawable/ic_delete"
-        app:iconTint="@color/colorRed"
         app:strokeColor="@color/colorRed" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_positive"
-        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-        android:layout_width="wrap_content"
-        android:layout_height="52dp"
+        style="@style/Widget.MaterialComponents.Button"
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
         android:layout_margin="@dimen/margin_xxsmall"
+        android:layout_weight="1"
         android:maxLines="1"
-        android:paddingStart="@dimen/margin_large"
-        android:paddingEnd="@dimen/margin_large"
         android:text="@string/details_download"
-        android:textAppearance="@style/TextAppearance.Aurora.Button"
-        app:strokeColor="?android:colorAccent"
-        app:icon="@drawable/ic_download" />
+        android:textAppearance="@style/TextAppearance.Aurora.Button" />
 </LinearLayout>

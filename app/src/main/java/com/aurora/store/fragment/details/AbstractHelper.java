@@ -27,13 +27,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.fragment.NavHostFragment;
 
 import com.aurora.store.Constants;
 import com.aurora.store.R;
 import com.aurora.store.activity.ManualDownloadActivity;
 import com.aurora.store.fragment.DetailsFragment;
-import com.aurora.store.fragment.DevAppsFragment;
 import com.aurora.store.model.App;
 import com.aurora.store.utility.Log;
 import com.aurora.store.utility.PackageUtil;
@@ -75,17 +74,10 @@ public abstract class AbstractHelper {
     abstract public void draw();
 
     protected void showDevApps() {
-        DevAppsFragment devAppsFragment = new DevAppsFragment();
-        Bundle arguments = new Bundle();
-        arguments.putString("SearchQuery", Constants.PUB_PREFIX + app.getDeveloperName());
-        arguments.putString("SearchTitle", app.getDeveloperName());
-        devAppsFragment.setArguments(arguments);
-        fragment.getChildFragmentManager()
-                .beginTransaction()
-                .replace(R.id.coordinator, devAppsFragment)
-                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                .addToBackStack(null)
-                .commit();
+        Bundle bundle = new Bundle();
+        bundle.putString("SearchQuery", Constants.PUB_PREFIX + app.getDeveloperName());
+        bundle.putString("SearchTitle", app.getDeveloperName());
+        NavHostFragment.findNavController(fragment).navigate(R.id.details_to_devapps, bundle);
     }
 
     protected void setText(View v, int viewId, String text) {

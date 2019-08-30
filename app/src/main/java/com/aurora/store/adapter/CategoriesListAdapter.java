@@ -21,7 +21,6 @@
 package com.aurora.store.adapter;
 
 import android.content.Context;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,14 +28,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.aurora.store.R;
 import com.aurora.store.SharedPreferencesTranslator;
-import com.aurora.store.fragment.CategoryAppsFragment;
 import com.aurora.store.utility.Util;
 
 import java.util.ArrayList;
@@ -48,8 +43,8 @@ import butterknife.ButterKnife;
 
 public class CategoriesListAdapter extends RecyclerView.Adapter<CategoriesListAdapter.ViewHolder> {
 
+    private static onClickListener listener;
     private Context context;
-    private Fragment fragment;
     private Map<String, String> categories = new HashMap<>();
 
     private Integer[] categoriesImg = {
@@ -92,9 +87,8 @@ public class CategoriesListAdapter extends RecyclerView.Adapter<CategoriesListAd
 
     private SharedPreferencesTranslator translator;
 
-    public CategoriesListAdapter(Fragment fragment) {
-        this.fragment = fragment;
-        this.context = fragment.getContext();
+    public CategoriesListAdapter(Context context) {
+        this.context = context;
         translator = new SharedPreferencesTranslator(Util.getPrefs(context));
     }
 
@@ -120,21 +114,6 @@ public class CategoriesListAdapter extends RecyclerView.Adapter<CategoriesListAd
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
         holder.topLabel.setText(translator.getString(new ArrayList<>(categories.keySet()).get(position)));
         holder.topImage.setImageDrawable(context.getResources().getDrawable(categoriesImg[position]));
-        holder.itemView.setOnClickListener(v -> {
-            CategoryAppsFragment categoryAppsFragment = new CategoryAppsFragment();
-            Bundle arguments = new Bundle();
-            arguments.putString("CategoryId", new ArrayList<>(categories.keySet()).get(position));
-            arguments.putString("CategoryName", translator.getString(new ArrayList<>(categories.keySet()).get(position)));
-            categoryAppsFragment.setArguments(arguments);
-            FragmentManager fragmentManager = fragment.getFragmentManager();
-            if (fragmentManager != null)
-                fragmentManager
-                        .beginTransaction()
-                        .replace(R.id.coordinator, categoryAppsFragment)
-                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                        .addToBackStack(null)
-                        .commit();
-        });
     }
 
     @Override
@@ -142,8 +121,17 @@ public class CategoriesListAdapter extends RecyclerView.Adapter<CategoriesListAd
         return categories.size();
     }
 
-    static class ViewHolder extends RecyclerView.ViewHolder {
+    public void setOnItemClickListener(onClickListener clickListener) {
+        CategoriesListAdapter.listener = clickListener;
+    }
 
+    public interface onClickListener {
+        void onItemClick(int position, View v);
+
+        void onItemLongClick(int position, View v);
+    }
+
+    static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
         @BindView(R.id.all_cat_img)
         ImageView topImage;
         @BindView(R.id.all_cat_name)
@@ -152,6 +140,19 @@ public class CategoriesListAdapter extends RecyclerView.Adapter<CategoriesListAd
         ViewHolder(@NonNull View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
+            itemView.setOnClickListener(this);
+            itemView.setOnLongClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view) {
+            listener.onItemClick(getAdapterPosition(), view);
+        }
+
+        @Override
+        public boolean onLongClick(View view) {
+            listener.onItemLongClick(getAdapterPosition(), view);
+            return false;
         }
     }
 }

@@ -25,22 +25,29 @@
     android:layout_height="match_parent"
     tools:context=".activity.AuroraActivity">
 
-    <include layout="@layout/toolbar_main" />
-
-    <com.aurora.store.view.CustomViewPager
-        android:id="@+id/viewpager"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+        android:layout_height="match_parent">
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_navigation"
-        style="@style/Widget.Aurora.BottomNav"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        app:backgroundTint="?android:colorBackground"
-        app:elevation="6dp"
-        app:menu="@menu/navigation" />
+        <include layout="@layout/toolbar_main" />
 
+        <fragment
+            android:id="@+id/nav_host_fragment"
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/app_bar"
+            app:defaultNavHost="true"
+            app:navGraph="@navigation/nav_graph_main" />
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottom_navigation"
+            style="@style/Widget.Aurora.BottomNav"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            app:backgroundTint="?android:colorBackground"
+            app:elevation="6dp"
+            app:menu="@menu/navigation" />
+    </RelativeLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

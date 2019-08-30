@@ -29,7 +29,7 @@ import android.content.Intent;
 import androidx.core.app.NotificationCompat;
 
 import com.aurora.store.R;
-import com.aurora.store.activity.DetailsActivity;
+import com.aurora.store.activity.AuroraActivity;
 import com.aurora.store.model.App;
 import com.aurora.store.receiver.DownloadCancelReceiver;
 import com.aurora.store.receiver.DownloadPauseReceiver;
@@ -86,7 +86,7 @@ public class NotificationBase {
      */
 
     protected PendingIntent getContentIntent() {
-        Intent intent = new Intent(context, DetailsActivity.class);
+        Intent intent = new Intent(context, AuroraActivity.class);
         intent.putExtra(INTENT_PACKAGE_NAME, app.getPackageName());
         return PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
     }

@@ -23,7 +23,6 @@ package com.aurora.store.adapter;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,16 +32,10 @@ import android.widget.TextView;
 import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 import androidx.core.graphics.ColorUtils;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.aurora.store.R;
 import com.aurora.store.SharedPreferencesTranslator;
-import com.aurora.store.fragment.CategoriesFragment;
-import com.aurora.store.fragment.CategoryAppsFragment;
-import com.aurora.store.fragment.HomeFragment;
 import com.aurora.store.utility.Util;
 import com.aurora.store.utility.ViewUtil;
 
@@ -51,8 +44,8 @@ import butterknife.ButterKnife;
 
 public class TopCategoriesAdapter extends RecyclerView.Adapter<TopCategoriesAdapter.ViewHolder> {
 
+    private static TopCategoriesAdapter.onClickListener listener;
     private Context context;
-    private Fragment fragment;
     private String[] topCategoryIDs;
     private SharedPreferencesTranslator translator;
     private boolean isTransparent;
@@ -68,9 +61,8 @@ public class TopCategoriesAdapter extends RecyclerView.Adapter<TopCategoriesAdap
             R.drawable.ic_cat_social_alt,
     };
 
-    public TopCategoriesAdapter(HomeFragment fragment) {
-        this.fragment = fragment;
-        this.context = fragment.getContext();
+    public TopCategoriesAdapter(Context context) {
+        this.context = context;
         this.topCategoryIDs = context.getResources().getStringArray(R.array.topCategories);
         this.isTransparent = Util.isTransparentStyle(context);
         this.translator = new SharedPreferencesTranslator(Util.getPrefs(context));
@@ -93,40 +85,6 @@ public class TopCategoriesAdapter extends RecyclerView.Adapter<TopCategoriesAdap
         holder.imgCat.setColorFilter(isTransparent ? color : Color.WHITE);
         holder.txtCat.setText(translator.getString(topCategoryIDs[position]));
         holder.txtCat.setTextColor(isTransparent ? color : Color.WHITE);
-
-        if (topCategoryIDs[position].equals(CategoriesFragment.FAMILY)) {
-            holder.itemView.setOnClickListener(v -> getSubCategoryFragment(CategoriesFragment.FAMILY));
-        } else if (topCategoryIDs[position].equals(CategoriesFragment.GAME)) {
-            holder.itemView.setOnClickListener(v -> getSubCategoryFragment(CategoriesFragment.GAME));
-        } else
-            holder.itemView.setOnClickListener(v -> getCategoryAppsFragment(position));
-    }
-
-    private void getSubCategoryFragment(String subCategory) {
-        CategoriesFragment categoryAppsFragment = new CategoriesFragment();
-        Bundle arguments = new Bundle();
-        arguments.putString("CATEGORY_TYPE", subCategory);
-        categoryAppsFragment.setArguments(arguments);
-        fragment.getChildFragmentManager().beginTransaction()
-                .replace(R.id.coordinator, categoryAppsFragment)
-                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                .addToBackStack(null)
-                .commit();
-    }
-
-    private void getCategoryAppsFragment(int position) {
-        CategoryAppsFragment categoryAppsFragment = new CategoryAppsFragment();
-        Bundle arguments = new Bundle();
-        arguments.putString("CategoryId", topCategoryIDs[position]);
-        arguments.putString("CategoryName", translator.getString(topCategoryIDs[position]));
-        categoryAppsFragment.setArguments(arguments);
-        FragmentManager manager = fragment.getFragmentManager();
-        fragment.getChildFragmentManager()
-                .beginTransaction()
-                .replace(R.id.coordinator, categoryAppsFragment)
-                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                .addToBackStack(null)
-                .commit();
     }
 
     @Override
@@ -134,7 +92,15 @@ public class TopCategoriesAdapter extends RecyclerView.Adapter<TopCategoriesAdap
         return topCategoryIDs.length;
     }
 
-    static class ViewHolder extends RecyclerView.ViewHolder {
+    public void setOnItemClickListener(onClickListener clickListener) {
+        TopCategoriesAdapter.listener = clickListener;
+    }
+
+    public interface onClickListener {
+        void onItemClick(int position, View v);
+    }
+
+    static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         @BindView(R.id.cat_icon)
         ImageView imgCat;
@@ -144,6 +110,12 @@ public class TopCategoriesAdapter extends RecyclerView.Adapter<TopCategoriesAdap
         ViewHolder(@NonNull View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view) {
+            listener.onItemClick(getAdapterPosition(), view);
         }
     }
 }
