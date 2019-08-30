@@ -94,6 +94,7 @@
         <item>London, UK</item>
         <item>Washington DC, USA</item>
         <item>Hanoi, Viet Nam</item>
+        <item>Amsterdam, Netherlands</item>
     </string-array>
 
     <string-array name="pref_locale_names">
