@@ -150,6 +150,7 @@
 
     <fragment
         android:id="@+id/downloadsFragment"
+        android:label="@string/menu_downloads"
         android:name="com.aurora.store.fragment.DownloadsFragment"
         tools:layout="@layout/fragment_dev_applist">
 
