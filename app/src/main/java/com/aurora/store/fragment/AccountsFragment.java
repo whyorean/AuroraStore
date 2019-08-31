@@ -38,6 +38,7 @@ import android.widget.ViewSwitcher;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import com.aurora.store.GlideApp;
@@ -376,7 +377,7 @@ public class AccountsFragment extends Fragment {
     }
 
     private void finishIntro() {
-        if (getActivity() instanceof IntroActivity) {
+        if (getActivity() instanceof AppCompatActivity) {
             getActivity().startActivity(new Intent(context, AuroraActivity.class));
             getActivity().finish();
         }

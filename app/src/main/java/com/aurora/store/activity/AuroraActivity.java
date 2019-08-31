@@ -40,7 +40,6 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.aurora.store.Constants;
-import com.aurora.store.GlideApp;
 import com.aurora.store.MenuType;
 import com.aurora.store.R;
 import com.aurora.store.download.DownloadManager;
@@ -99,20 +98,22 @@ public class AuroraActivity extends AppCompatActivity {
             PrefUtil.putBoolean(this, Constants.PREFERENCE_DO_NOT_SHOW_INTRO, true);
             startActivity(new Intent(this, IntroActivity.class));
             finish();
-        } else {
-            if (Accountant.isLoggedIn(this))
-                init();
-            else
-                startActivity(new Intent(this, AccountsActivity.class));
+            return;
+        }
+
+        if (!Accountant.isLoggedIn(this)) {
+            startActivity(new Intent(this, AccountsActivity.class));
+            finish();
         }
 
         if (Util.isCacheObsolete(this))
             Util.clearCache(this);
 
         checkPermissions();
+        buildContent();
     }
 
-    private void init() {
+    private void buildContent() {
         setupActionbar();
         setupNavigation();
     }
@@ -209,7 +210,6 @@ public class AuroraActivity extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
-        GlideApp.with(this).pauseAllRequests();
         disposable.clear();
         super.onDestroy();
     }
@@ -224,7 +224,22 @@ public class AuroraActivity extends AppCompatActivity {
         fetch.deleteAllWithStatus(Status.PAUSED);
     }
 
-    private void redrawMenu(MenuType type) {
+    private String getIntentPackageName(Intent intent) {
+        if (intent.hasExtra(INTENT_PACKAGE_NAME)) {
+            return intent.getStringExtra(INTENT_PACKAGE_NAME);
+        } else if (intent.getScheme() != null
+                && (intent.getScheme().equals("market")
+                || intent.getScheme().equals("http")
+                || intent.getScheme().equals("https"))) {
+            return intent.getData().getQueryParameter("id");
+        } else if (intent.getExtras() != null) {
+            Bundle bundle = intent.getExtras();
+            return bundle.getString(INTENT_PACKAGE_NAME);
+        }
+        return null;
+    }
+
+    private void setupMenu(MenuType type) {
         Menu menu = toolbar.getMenu();
         menu.clear();
         switch (type) {
@@ -250,21 +265,6 @@ public class AuroraActivity extends AppCompatActivity {
                     ? R.drawable.ic_favourite_red
                     : R.drawable.ic_favourite_remove);
         onPrepareOptionsMenu(menu);
-    }
-
-    private String getIntentPackageName(Intent intent) {
-        if (intent.hasExtra(INTENT_PACKAGE_NAME)) {
-            return intent.getStringExtra(INTENT_PACKAGE_NAME);
-        } else if (intent.getScheme() != null
-                && (intent.getScheme().equals("market")
-                || intent.getScheme().equals("http")
-                || intent.getScheme().equals("https"))) {
-            return intent.getData().getQueryParameter("id");
-        } else if (intent.getExtras() != null) {
-            Bundle bundle = intent.getExtras();
-            return bundle.getString(INTENT_PACKAGE_NAME);
-        }
-        return null;
     }
 
     private void setupActionbar() {
@@ -305,19 +305,19 @@ public class AuroraActivity extends AppCompatActivity {
                 case R.id.detailsFragment:
                     ViewUtil.hideBottomNav(bottomNavigationView, true);
                     actionBar.setTitle("");
-                    redrawMenu(MenuType.DETAILS);
+                    setupMenu(MenuType.DETAILS);
                     break;
                 case R.id.downloadsFragment:
-                    redrawMenu(MenuType.DOWNLOADS);
+                    setupMenu(MenuType.DOWNLOADS);
                     break;
                 case R.id.devFragment:
                     if (DetailsFragment.app != null)
                         actionBar.setTitle(DetailsFragment.app.getDeveloperName());
-                    redrawMenu(MenuType.DEV_APPS);
+                    setupMenu(MenuType.DEV_APPS);
                     break;
                 default:
                     ViewUtil.showBottomNav(bottomNavigationView, true);
-                    redrawMenu(MenuType.GLOBAL);
+                    setupMenu(MenuType.GLOBAL);
                     break;
 
             }

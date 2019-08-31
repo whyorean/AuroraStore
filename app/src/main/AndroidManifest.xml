@@ -64,6 +64,8 @@
 
         <activity
             android:name=".activity.AuroraActivity"
+            android:launchMode="singleInstance"
+            android:hardwareAccelerated="true"
             android:configChanges="keyboardHidden|locale|orientation|fontScale">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />

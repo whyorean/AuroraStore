@@ -21,6 +21,7 @@
 package com.aurora.store.activity;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -30,6 +31,8 @@ import androidx.fragment.app.FragmentTransaction;
 import com.aurora.store.R;
 import com.aurora.store.fragment.AccountsFragment;
 import com.aurora.store.utility.ThemeUtil;
+
+import org.jetbrains.annotations.NotNull;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -49,6 +52,16 @@ public class AccountsActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         setupActionbar();
         init();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NotNull final MenuItem menuItem) {
+        switch (menuItem.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+        return super.onOptionsItemSelected(menuItem);
     }
 
     @Override
