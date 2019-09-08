@@ -269,6 +269,7 @@ public class SpoofFragment extends Fragment {
                                     "Aurora Location Spoof",
                                     "Current Location : " + mLocation,
                                     null);
+                            Util.clearCache(context);
                         }, err -> Log.e(err.getMessage())));
             }
 
@@ -309,6 +310,7 @@ public class SpoofFragment extends Fragment {
                     PrefUtil.putInteger(context,
                             Constants.PREFERENCE_DEVICE_TO_PRETEND_TO_BE_INDEX, 0);
                     Accountant.completeCheckout(context);
+                    Util.clearCache(context);
                     startActivity(new Intent(context, AccountsActivity.class));
                 })
                 .setNegativeButton(getString(android.R.string.cancel), (dialog, which) -> {
