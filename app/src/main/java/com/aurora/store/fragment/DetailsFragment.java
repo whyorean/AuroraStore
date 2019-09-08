@@ -34,7 +34,6 @@ import android.widget.Button;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.widget.NestedScrollView;
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import com.aurora.store.ErrorType;
 import com.aurora.store.R;
@@ -76,7 +75,6 @@ public class DetailsFragment extends BaseFragment {
     private Context context;
     private ActionButton actionButton;
     private String packageName;
-    private LocalBroadcastManager localBroadcastManager;
 
     private BroadcastReceiver localInstallReceiver = new BroadcastReceiver() {
         @Override
@@ -122,8 +120,7 @@ public class DetailsFragment extends BaseFragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        localBroadcastManager = LocalBroadcastManager.getInstance(context);
-        localBroadcastManager.registerReceiver(localInstallReceiver, new IntentFilter("ACTION_INSTALL"));
+        context.registerReceiver(localInstallReceiver, new IntentFilter("ACTION_INSTALL"));
         context.registerReceiver(globalInstallReceiver, getFilter());
     }
 
@@ -131,7 +128,7 @@ public class DetailsFragment extends BaseFragment {
     public void onDestroy() {
         super.onDestroy();
         try {
-            localBroadcastManager.unregisterReceiver(localInstallReceiver);
+            context.unregisterReceiver(localInstallReceiver);
             context.unregisterReceiver(globalInstallReceiver);
             actionButton = null;
             disposable.clear();

@@ -72,9 +72,10 @@ dependencies {
     implementation 'commons-io:commons-io:2.6'
     implementation 'org.apache.maven:maven-artifact:3.2.1'
     //UI-Libs
-    implementation 'androidx.appcompat:appcompat:1.0.2'
-    implementation 'androidx.preference:preference:1.1.0-rc01'
-    implementation 'com.google.android.material:material:1.1.0-alpha08'
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.preference:preference:1.1.0'
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.0.0'
+    implementation 'com.google.android.material:material:1.1.0-alpha10'
     //Utils
     implementation 'androidx.annotation:annotation:1.1.0'
     implementation 'org.apache.commons:commons-text:1.4'

@@ -34,7 +34,6 @@ import android.os.Build;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.FileProvider;
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import com.aurora.store.Constants;
 import com.aurora.store.R;
@@ -176,7 +175,7 @@ public class Installer implements AppInstallerAbstract.InstallationStatusListene
         Intent intent = new Intent("ACTION_INSTALL");
         intent.putExtra("PACKAGE_NAME", packageName);
         intent.putExtra("STATUS_CODE", status);
-        LocalBroadcastManager.getInstance(context).sendBroadcast(intent);
+        context.sendBroadcast(intent);
     }
 
     private PendingIntent getContentIntent(String packageName) {
