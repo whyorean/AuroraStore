@@ -39,7 +39,6 @@ import com.aurora.store.activity.DownloadsActivity;
 import com.aurora.store.sheet.DownloadMenuSheet;
 import com.aurora.store.utility.PackageUtil;
 import com.aurora.store.utility.Util;
-import com.aurora.store.utility.ViewUtil;
 import com.tonyodev.fetch2.Download;
 import com.tonyodev.fetch2.Status;
 
@@ -155,22 +154,13 @@ public class DownloadsAdapter extends RecyclerView.Adapter<DownloadsAdapter.View
             case CANCELLED:
             case COMPLETED: {
                 viewHolder.txtStatus.setText(Util.getStatus(status));
-                ViewUtil.hideWithAnimation(viewHolder.txtSpeed);
-                ViewUtil.hideWithAnimation(viewHolder.txtETA);
+                viewHolder.txtSpeed.setVisibility(View.INVISIBLE);
+                viewHolder.txtETA.setVisibility(View.INVISIBLE);
                 break;
             }
-            case PAUSED: {
-                viewHolder.txtStatus.setText(Util.getStatus(status));
-                break;
-            }
-            case DOWNLOADING: {
-                viewHolder.txtStatus.setText(Util.getStatus(status));
-                break;
-            }
-            case QUEUED: {
-                viewHolder.txtStatus.setText(Util.getStatus(status));
-                break;
-            }
+            case PAUSED:
+            case DOWNLOADING:
+            case QUEUED:
             case ADDED: {
                 viewHolder.txtStatus.setText(Util.getStatus(status));
                 break;
