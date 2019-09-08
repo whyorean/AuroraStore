@@ -35,7 +35,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -94,7 +93,6 @@ public class UpdatesFragment extends BaseFragment implements UpdatableAppsAdapte
     private UpdatableAppsAdapter adapter;
     private Fetch fetch;
     private UpdatableAppsTask updatableAppTask;
-    private LocalBroadcastManager localBroadcastManager;
 
     private BroadcastReceiver installReceiver = new BroadcastReceiver() {
         @Override
@@ -136,8 +134,7 @@ public class UpdatesFragment extends BaseFragment implements UpdatableAppsAdapte
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        localBroadcastManager = LocalBroadcastManager.getInstance(context);
-        localBroadcastManager.registerReceiver(installReceiver, new IntentFilter("ACTION_INSTALL"));
+        context.registerReceiver(installReceiver, new IntentFilter("ACTION_INSTALL"));
     }
 
     @Override
@@ -158,7 +155,7 @@ public class UpdatesFragment extends BaseFragment implements UpdatableAppsAdapte
     @Override
     public void onDestroy() {
         try {
-            localBroadcastManager.unregisterReceiver(installReceiver);
+            context.unregisterReceiver(installReceiver);
         } catch (Exception ignored) {
         }
         GlideApp.with(this).pauseAllRequests();
