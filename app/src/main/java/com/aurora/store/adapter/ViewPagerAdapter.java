@@ -16,7 +16,6 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
         super(fragmentManager, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
     }
 
-
     public void addFragment(int position, Fragment fragment) {
         fragmentList.add(position, fragment);
     }

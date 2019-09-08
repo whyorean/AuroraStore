@@ -98,12 +98,11 @@ public class SearchFragment extends Fragment implements HistoryItemTouchHelper.R
         clearAll.setOnClickListener(v -> clearAll());
     }
 
-    public void setUserVisibleHint(boolean isVisibleToUser) {
-        super.setUserVisibleHint(isVisibleToUser);
-        if (isVisibleToUser) {
-            if (searchView != null && Util.isIMEEnabled(context))
-                searchView.requestFocus();
-        }
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (searchView != null && Util.isIMEEnabled(context))
+            searchView.requestFocus();
     }
 
     private void setupSearch() {
