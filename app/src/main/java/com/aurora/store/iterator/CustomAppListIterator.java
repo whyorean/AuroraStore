@@ -92,7 +92,6 @@ public class CustomAppListIterator implements Iterator {
     }
 
     private boolean shouldSkip(App app) {
-        Log.e(app.getUpdated());
         return (!filter.isPaidApps() && !app.isFree())
                 || (!filter.isAppsWithAds() && app.containsAds())
                 || (!filter.isGsfDependentApps() && !app.getDependencies().isEmpty())
