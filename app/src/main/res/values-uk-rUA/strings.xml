@@ -251,7 +251,6 @@ Aurora дозволяє шукати, завантажувати, встанов
     <string name="pref_ui_theme_dark">"Темна"</string>
     <string name="pref_ui_theme_black">"Чорна"</string>
     <string name="action_close">"Відміна"</string>
-    <string name="list_update_all_queue_txt">"оновлень у черзі"</string>
     <string name="notification_installation_complete">"Успішно установлено"</string>
     <string name="notification_installation_failed">"Помилка при установці"</string>
     <string name="notification_installation_progress">"Установка"</string>

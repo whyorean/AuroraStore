@@ -253,7 +253,6 @@
     <string name="pref_ui_theme_dark">"Σκοτεινό"</string>
     <string name="pref_ui_theme_black">"Μαύρο"</string>
     <string name="action_close">"Κλείσιμο"</string>
-    <string name="list_update_all_queue_txt">"ενημερώσεις στην ουρά"</string>
     <string name="notification_installation_complete">"Εγκαταστάθηκε Επιτυχώς"</string>
     <string name="notification_installation_failed">"Η εγκατάσταση απέτυχε"</string>
     <string name="notification_installation_progress">"Εγκαθιστάται"</string>

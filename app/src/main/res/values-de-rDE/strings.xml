@@ -253,7 +253,6 @@ Zudem zeigt Aurora die Anzahl der Tracker in der jeweiligen App an."</string>
     <string name="pref_ui_theme_dark">"Dunkel"</string>
     <string name="pref_ui_theme_black">"Schwarz"</string>
     <string name="action_close">"Schließen"</string>
-    <string name="list_update_all_queue_txt">"Update(s) eingereiht"</string>
     <string name="notification_installation_complete">"Erfolgreich installiert"</string>
     <string name="notification_installation_failed">"Installation fehlgeschlagen"</string>
     <string name="notification_installation_progress">"Installieren"</string>

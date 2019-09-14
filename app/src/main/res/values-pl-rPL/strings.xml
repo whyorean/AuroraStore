@@ -254,7 +254,6 @@ Udostępnia również listę usług śledzących zaimplementowanych w aplikacjac
     <string name="pref_ui_theme_dark">"Ciemny"</string>
     <string name="pref_ui_theme_black">"Czarny"</string>
     <string name="action_close">"Zamknij"</string>
-    <string name="list_update_all_queue_txt">"aktualizacja(-i) w kolejce"</string>
     <string name="notification_installation_complete">"Zainstalowano poprawnie"</string>
     <string name="notification_installation_failed">"Instalacja nieudana"</string>
     <string name="notification_installation_progress">"Instalowanie"</string>

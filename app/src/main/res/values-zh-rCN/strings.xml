@@ -253,7 +253,6 @@
     <string name="pref_ui_theme_dark">"暗淡"</string>
     <string name="pref_ui_theme_black">"暗黑"</string>
     <string name="action_close">"关闭"</string>
-    <string name="list_update_all_queue_txt">"更新队列"</string>
     <string name="notification_installation_complete">"安装成功"</string>
     <string name="notification_installation_failed">"安装失败"</string>
     <string name="notification_installation_progress">"正在安装"</string>

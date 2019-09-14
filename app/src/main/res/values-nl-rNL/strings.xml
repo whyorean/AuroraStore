@@ -249,7 +249,6 @@
     <string name="pref_ui_theme_dark">"Donker"</string>
     <string name="pref_ui_theme_black">"Zwart"</string>
     <string name="action_close">"Sluiten"</string>
-    <string name="list_update_all_queue_txt">"Bijwerken in behandeling"</string>
     <string name="notification_installation_complete">"Succesvolle installatie"</string>
     <string name="notification_installation_failed">"Installatie mislukt"</string>
     <string name="notification_installation_progress">"Installatie"</string>

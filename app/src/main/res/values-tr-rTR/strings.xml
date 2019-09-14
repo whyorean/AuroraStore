@@ -250,7 +250,6 @@
     <string name="pref_ui_theme_dark">"Koyu"</string>
     <string name="pref_ui_theme_black">"Karanlık"</string>
     <string name="action_close">"Kapat"</string>
-    <string name="list_update_all_queue_txt">"güncelleme(ler) kuyruğa alındı"</string>
     <string name="notification_installation_complete">"Başarıyla kuruldu"</string>
     <string name="notification_installation_failed">"Kurulum başarısız oldu"</string>
     <string name="notification_installation_progress">"Kuruluyor"</string>

@@ -254,7 +254,6 @@ Keep in mind that downloading arbitrary versions of stupid apps is not supported
     <string name="pref_ui_theme_dark">"Dark as fuck"</string>
     <string name="pref_ui_theme_black">"Black as fuck"</string>
     <string name="action_close">"Close"</string>
-    <string name="list_update_all_queue_txt">"update(s) motherfucking queued"</string>
     <string name="notification_installation_complete">"Successfully Asstalled"</string>
     <string name="notification_installation_failed">"Asstallation Failed"</string>
     <string name="notification_installation_progress">"Asstalling"</string>

@@ -255,7 +255,6 @@ Ammenta·ti chi iscarrigare versiones arbitràrias de sas aplicatziones no est s
     <string name="pref_ui_theme_dark">"Iscuru"</string>
     <string name="pref_ui_theme_black">"Nieddu"</string>
     <string name="action_close">"Serra"</string>
-    <string name="list_update_all_queue_txt">"agiornamentu(os) postu(os) in sa lista de isetu"</string>
     <string name="notification_installation_complete">"Installatzione resèssida"</string>
     <string name="notification_installation_failed">"Installatzione fallida"</string>
     <string name="notification_installation_progress">"Installende"</string>

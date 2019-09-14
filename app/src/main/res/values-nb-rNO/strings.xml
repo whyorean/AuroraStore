@@ -253,7 +253,6 @@ Husk at nedlasting av vilkårlig versjoner av apper ikke støttes av Google Play
     <string name="pref_ui_theme_dark">"pref_ui_theme_dark"</string>
     <string name="pref_ui_theme_black">"Svart"</string>
     <string name="action_close">"Lukk"</string>
-    <string name="list_update_all_queue_txt">"list_update_all_queue_txt"</string>
     <string name="notification_installation_complete">"notification_installation_complete"</string>
     <string name="notification_installation_failed">"notification_installation_failed"</string>
     <string name="notification_installation_progress">"notification_installation_progress"</string>

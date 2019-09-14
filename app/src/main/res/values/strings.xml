@@ -228,8 +228,8 @@
     <string name="list_not_installd">Not installed</string>
     <string name="list_selected">Apps selected</string>
     <string name="list_update_all">Update all</string>
+    <string name="list_update_all_txt_one">update available"</string>
     <string name="list_update_all_txt">update(s) available"</string>
-    <string name="list_update_all_queue_txt">update(s) queued</string>
     <string name="list_updating">Updating</string>
 
     <string name="manual_download_disclaimer">Disclaimer</string>

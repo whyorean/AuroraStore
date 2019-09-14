@@ -248,10 +248,12 @@ public class UpdatesFragment extends BaseFragment {
     }
 
     private void updateCounter() {
+        int count = adapter.getItemCount();
         txtUpdateAll.setText(new StringBuilder()
                 .append(adapter.getItemCount())
                 .append(StringUtils.SPACE)
-                .append(context.getString(R.string.list_update_all_txt)));
+                .append(count == 1 ? context.getString(R.string.list_update_all_txt_one) :
+                        context.getString(R.string.list_update_all_txt)));
     }
 
     private View.OnClickListener updateAllListener() {

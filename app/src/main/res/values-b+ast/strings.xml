@@ -215,7 +215,6 @@ Decátate que baxar versiones al debalu nun lo sofita la tienda Google Play. L'�
     <string name="pref_ui_theme_dark">"Escuridá"</string>
     <string name="pref_ui_theme_black">"Prietu"</string>
     <string name="action_close">"Zarrar"</string>
-    <string name="list_update_all_queue_txt">"anovamientu(os) na cola"</string>
     <string name="notification_installation_complete">"Instalóse con ésitu"</string>
     <string name="notification_installation_failed">"Falló la instalación"</string>
     <string name="notification_installation_progress">"Instalando"</string>

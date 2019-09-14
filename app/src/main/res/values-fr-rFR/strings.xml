@@ -259,7 +259,6 @@ Elle fournit également une liste de traqueurs intégrés dans une application."
     <string name="pref_ui_theme_dark">"Sombre"</string>
     <string name="pref_ui_theme_black">"Noir"</string>
     <string name="action_close">"Fermer"</string>
-    <string name="list_update_all_queue_txt">"Mise(s) à jour en attente"</string>
     <string name="notification_installation_complete">"Installation réussie"</string>
     <string name="notification_installation_failed">"Echec de l'installation"</string>
     <string name="notification_installation_progress">"Installation"</string>
