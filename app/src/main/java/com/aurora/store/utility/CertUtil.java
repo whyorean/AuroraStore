@@ -56,7 +56,7 @@ public final class CertUtil {
                 InputStream inStream = new ByteArrayInputStream(cert);
                 certs[i] = (X509Certificate) certificateFactory.generateCertificate(inStream);
             }
-        } catch (NameNotFoundException | CertificateException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return certs;
