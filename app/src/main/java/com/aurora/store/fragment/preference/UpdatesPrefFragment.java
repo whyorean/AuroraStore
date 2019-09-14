@@ -34,13 +34,13 @@ public class UpdatesPrefFragment extends PreferenceFragmentCompat {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
         ListPreference updatesIntervalList = findPreference(Constants.PREFERENCE_UPDATES_INTERVAL);
         assert updatesIntervalList != null;
         updatesIntervalList.setOnPreferenceChangeListener((preference, newValue) -> {
             String value = newValue.toString();
+            int interval = Util.parseInt(value, 0);
             PrefUtil.putString(context, Constants.PREFERENCE_UPDATES_INTERVAL, value);
-            UpdatesReceiver.enable(context, Util.parseInt(value, 0));
+            Util.setUpdatesInterval(context, interval);
             return true;
         });
     }

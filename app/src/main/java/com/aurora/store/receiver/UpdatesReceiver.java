@@ -1,6 +1,5 @@
 package com.aurora.store.receiver;
 
-import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -21,41 +20,30 @@ import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
 
 public class UpdatesReceiver extends BroadcastReceiver {
-    static public void enable(Context context, int interval) {
-        Intent intent = new Intent(context, UpdatesReceiver.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
-        AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-        alarmManager.cancel(pendingIntent);
-        if (interval > 0) {
-            Log.e("Enabling periodic update checks");
-            alarmManager.setRepeating(
-                    AlarmManager.RTC_WAKEUP,
-                    System.currentTimeMillis(),
-                    interval,
-                    pendingIntent
-            );
-        }
-    }
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        Log.e("Update check Started");
+        Log.i("Update check Started");
         CompositeDisposable disposable = new CompositeDisposable();
         UpdatableAppsTask updatableAppTask = new UpdatableAppsTask(context);
         disposable.add(Observable.fromCallable(updatableAppTask::getUpdatableApps)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe((appList) -> {
-                    if (!appList.isEmpty()) {
-                        QuickNotification.show(context,
-                                context.getString(R.string.action_updates),
-                                new StringBuilder()
-                                        .append(appList.size())
-                                        .append(StringUtils.SPACE)
-                                        .append(context.getString(R.string.list_update_all_txt))
-                                        .toString(),
-                                getContentIntent(context));
-                    }
+                    StringBuilder msg;
+
+                    if (appList.isEmpty())
+                        msg = new StringBuilder().append(context.getString(R.string.list_empty_updates));
+                    else
+                        msg = new StringBuilder()
+                                .append(appList.size())
+                                .append(StringUtils.SPACE)
+                                .append(context.getString(R.string.list_update_all_txt));
+
+                    QuickNotification.show(context,
+                            context.getString(R.string.action_updates),
+                            msg.toString(),
+                            getContentIntent(context));
                 }, err -> Log.e("Update check failed")));
     }
 

@@ -42,6 +42,6 @@ public class BootReceiver extends BroadcastReceiver {
         if (!Intent.ACTION_BOOT_COMPLETED.equals(intent.getAction())) {
             return;
         }
-        UpdatesReceiver.enable(context.getApplicationContext(), getUpdateInterval(context));
+        Util.setUpdatesInterval(context.getApplicationContext(), getUpdateInterval(context));
     }
 }

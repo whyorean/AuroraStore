@@ -40,6 +40,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.aurora.store.Constants;
 import com.aurora.store.R;
 import com.aurora.store.activity.AuroraActivity;
+import com.aurora.store.receiver.UpdatesReceiver;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 import com.tonyodev.fetch2.Status;
@@ -492,5 +493,25 @@ public class Util {
             PagerSnapHelper snapHelper = new PagerSnapHelper();
             snapHelper.attachToRecyclerView(recyclerView);
         }
+    }
+
+    public static void setUpdatesInterval(Context context, int interval) {
+        Intent intent = new Intent(context, UpdatesReceiver.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+
+        if (alarmManager != null) {
+            alarmManager.cancel(pendingIntent);
+
+            if (interval > 0) {
+                alarmManager.setInexactRepeating(
+                        AlarmManager.RTC_WAKEUP,
+                        Calendar.getInstance().getTimeInMillis(),
+                        interval,
+                        pendingIntent
+                );
+            }
+        }
+        Log.i("Periodic update preferences updated");
     }
 }
