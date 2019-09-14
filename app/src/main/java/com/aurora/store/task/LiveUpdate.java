@@ -10,6 +10,7 @@ import com.aurora.store.notification.GeneralNotification;
 import com.aurora.store.utility.Log;
 import com.aurora.store.utility.PackageUtil;
 import com.aurora.store.utility.SplitUtil;
+import com.aurora.store.utility.Util;
 import com.dragons.aurora.playstoreapiv2.AndroidAppDeliveryData;
 import com.tonyodev.fetch2.AbstractFetchGroupListener;
 import com.tonyodev.fetch2.Download;
@@ -107,7 +108,8 @@ public class LiveUpdate extends BaseTask {
             public void onCompleted(int groupId, @NotNull Download download, @NotNull FetchGroup fetchGroup) {
                 if (groupId == hashCode && fetchGroup.getGroupDownloadProgress() == 100) {
                     notification.notifyCompleted();
-                    AuroraApplication.getInstaller().install(app);
+                    if (Util.shouldAutoInstallApk(context))
+                        AuroraApplication.getInstaller().install(app);
                     if (fetchListener != null) {
                         fetch.removeListener(fetchListener);
                         fetchListener = null;
