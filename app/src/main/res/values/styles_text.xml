@@ -42,7 +42,7 @@
 
     <style name="TextAppearance.Aurora.Button" parent="TextAppearance.Aurora.Title">
         <item name="android:letterSpacing">0.075</item>
-        <item name="android:textAllCaps">false</item>
+        <item name="android:textAllCaps">true</item>
         <item name="android:textSize">16sp</item>
     </style>
 

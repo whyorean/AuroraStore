@@ -22,15 +22,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="64dp"
+    android:layout_marginStart="@dimen/margin_normal"
+    android:layout_marginEnd="@dimen/margin_normal"
+    android:layout_weight="2"
     android:gravity="center"
     android:orientation="horizontal">
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_negative"
         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="52dp"
         android:layout_margin="@dimen/margin_xxsmall"
+        android:layout_weight="1"
         android:maxLines="1"
         android:paddingStart="@dimen/margin_large"
         android:paddingEnd="@dimen/margin_large"
@@ -38,21 +42,19 @@
         android:textAppearance="@style/TextAppearance.Aurora.Button"
         android:textColor="@color/colorRed"
         android:visibility="gone"
-        app:icon="@drawable/ic_delete"
-        app:iconTint="@color/colorRed"
         app:strokeColor="@color/colorRed" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_positive"
         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="52dp"
         android:layout_margin="@dimen/margin_xxsmall"
+        android:layout_weight="1"
         android:maxLines="1"
         android:paddingStart="@dimen/margin_large"
         android:paddingEnd="@dimen/margin_large"
         android:text="@string/details_download"
         android:textAppearance="@style/TextAppearance.Aurora.Button"
-        app:strokeColor="?android:colorAccent"
-        app:icon="@drawable/ic_download" />
+        app:strokeColor="?android:colorAccent" />
 </LinearLayout>
