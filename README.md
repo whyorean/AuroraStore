@@ -169,10 +169,15 @@ While *Aurora Store* was originally based on Sergei Yeriomin's [Yalp store](http
 
   No, this is a Play store client only. Different clients for different services (^_~)
 
-* <b>Installation failes without warning after download on MIUI/OneUI/H2OS!</b>
+* <b>Installation fails without warning post downloads</b>
 
-  Apps can't be installed on MIUI/OneUI/H2OS unless you turn off vendor optimizations (like MIUI Optimizations)
-and select "Enforce Native Installer" from Aurora->Settings->Installations.
+  Bundled Apps can't be installed on OEM ROMs due to shameless mods like (VirusCheck, Tracker Stats) 
+  
+  Workarounds: (Any 1 of the following)
+  
+  1. Turn off vendor optimizations (like MIUI Optimizations) [OR]
+  2. Enable "Enforce Native Installer" from Aurora->Settings->Installations. [OR]
+  3. Use rooted install method
 
  `If you are an Android App Developer and find something that can be improved/fixed/added, feel free to make a pull request.`
 
