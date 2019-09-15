@@ -92,7 +92,7 @@
     <string name="download_queued">"Amestóse a la cola"</string>
     <string name="download_resume_all">"Siguir con too"</string>
     <string name="early_access">"Accesu tempranu"</string>
-    <string name="error_app_not_found">"Nun s'alcontró l'aplicación"</string>
+    <string name="error_app_not_found">"Nun s'alcontraron aplicaciones"</string>
     <string name="error_no_network">"Nun hai conexón a la rede"</string>
     <string name="error_unknown">"Asocedió un fallu desconocíu"</string>
     <string name="exodus_noTracker">"Nun contién rastrexadores"</string>
@@ -164,6 +164,8 @@ Decátate que baxar versiones al debalu nun lo sofita la tienda Google Play. L'�
     <string name="pref_requested_location_enable">"Precises activar a mano l'Allugamientu simuláu nos axustes de desendolcu del sistema."</string>
     <string name="pref_ui_snap_summary">"Amuesa namái una aplicación al desplazase"</string>
     <string name="pref_ui_theme_title">"Estilu"</string>
+    <string name="testing_program_opt_in">"Xunise"</string>
+    <string name="testing_program_opt_out">"Colar"</string>
     <string name="testing_program_section_opted_in_message">"Los anovamientos van incluyir versiones beta. Si dexes el programa beta de l'aplicación nun vas recibir más anovamientos d'esta triba."</string>
     <string name="testing_program_section_opted_in_propagating_message">"Nunos minutos vas tar nel programa beta y vas poder anovar a la versión beta d'esta aplicación si ta disponible"</string>
     <string name="title_all_apps">"Toles aplicaciones"</string>
@@ -215,6 +217,7 @@ Decátate que baxar versiones al debalu nun lo sofita la tienda Google Play. L'�
     <string name="pref_ui_theme_dark">"Escuridá"</string>
     <string name="pref_ui_theme_black">"Prietu"</string>
     <string name="action_close">"Zarrar"</string>
+    <string name="list_update_all_queue_txt">"anovamientu(os) na cola"</string>
     <string name="notification_installation_complete">"Instalóse con ésitu"</string>
     <string name="notification_installation_failed">"Falló la instalación"</string>
     <string name="notification_installation_progress">"Instalando"</string>
