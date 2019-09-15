@@ -253,6 +253,7 @@ Harap diperhatikan bahwa mengubah-ubah versi aplikasi yang akan diunduh tidak di
     <string name="pref_ui_theme_dark">"Gelap"</string>
     <string name="pref_ui_theme_black">"Hitam"</string>
     <string name="action_close">"Tutup"</string>
+    <string name="list_update_all_queue_txt">"antrian pembaruan"</string>
     <string name="notification_installation_complete">"Berhasil terpasang"</string>
     <string name="notification_installation_failed">"Gagal terpasang"</string>
     <string name="notification_installation_progress">"Memasang"</string>
@@ -334,4 +335,22 @@ Harap diperhatikan bahwa mengubah-ubah versi aplikasi yang akan diunduh tidak di
     <string name="installer_status_success">"Pemasangan berhasil"</string>
     <string name="installer_status_unknown">"Tidak diketahui"</string>
     <string name="installer_status_user_action">"Menunggu konfirmasi dari pengguna"</string>
+    <string name="pref_downloader_internal">"Unduh aplikasi di penyimpanan internal"</string>
+    <string name="pref_downloader_internal_desc">"Jika diaktifkan, anda tidak akan dapat memasang aplikasi melalui Layanan Aurora"</string>
+    <string name="pref_install_profile_summary">"Pilih profil target untuk memasang aplikasi, hanya bekerja dengan metode instalasi root"</string>
+    <string name="pref_install_profile_title">"Profil pemasangan (Eksperimental)"</string>
+    <string name="pref_install_mode_internal_warn">"Anda perlu memilih penyimpanan internal untuk melakukan unduhan, silahkan nonantifkan untuk menggunakan Layanan Aurora"</string>
+    <string name="pref_updates_extended">"Perpanjang pembaruan"</string>
+    <string name="pref_updates_extended_desc">"Aktifkan untuk memeriksa pembaruan untuk aplikasi yang dinonaktifkan"</string>
+    <string name="pref_caching_strategy">"Skema caching gambar"</string>
+    <string name="pref_caching_strategy_all">"Semua"</string>
+    <string name="pref_caching_strategy_automatic">"Otomatis"</string>
+    <string name="pref_caching_strategy_none">"Tidak ada"</string>
+    <string name="pref_clean_junk">"Paksa bersihkan file sampah"</string>
+    <string name="pref_clean_junk_desc">"Hapus semua file unduhan dari direktori default"</string>
+    <string name="pref_abandon_session">"Paksa bersihkan sesi pemasangan"</string>
+    <string name="pref_abandon_session_desc">"Abaikan semua sesi instalasi lama yang tertunda"</string>
+    <string name="toast_unknown_reason">"Terjadi kesalahan, harap coba lagi"</string>
+    <string name="toast_junk_removed">"File sampah dihapus"</string>
+    <string name="toast_abandon_sessions">"Sesi instalasi lama diabaikan"</string>
 </resources>
