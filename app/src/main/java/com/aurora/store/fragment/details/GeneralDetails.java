@@ -131,8 +131,8 @@ public class GeneralDetails extends AbstractHelper {
                     ? R.string.list_app_independent_from_gsf
                     : R.string.list_app_depends_on_gsf);
             txtRating.setText(app.getLabeledRating());
-            txtInstalls.setText(app.getInstalls() == 0 ? "N/A" : Util.addDiPrefix(app.getInstalls()));
-            txtSize.setText(app.getSize() == 0 ? "N/A" : Formatter.formatShortFileSize(context, app.getSize()));
+            txtInstalls.setText(app.getInstalls() <= 100 ? "Unknown" : Util.addDiPrefix(app.getInstalls()));
+            txtSize.setText(app.getSize() == 0 ? "Unknown" : Formatter.formatShortFileSize(context, app.getSize()));
             setText(view, R.id.app_desc_short, TextUtil.emptyIfNull(app.getShortDescription()));
 
             drawOfferDetails();
