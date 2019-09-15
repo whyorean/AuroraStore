@@ -20,6 +20,12 @@
 
 <resources>
     <string name="app_log" translatable="false">
+        \n Changelog : v3.1.0
+        \n • Cache apps to reduce network calls, auto clear after 3 days
+        \n • Fix Google account login
+        \n • Fix OBB issue for big games
+        \n • Bug fixes and improvements
+        \n
         \n Changelog : v3.0.9
         \n • Added option to install apps directly to work profile (only rooted users)
         \n • Added cleanup routines and image caching control routine
