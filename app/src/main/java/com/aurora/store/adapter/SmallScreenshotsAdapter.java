@@ -22,22 +22,26 @@ package com.aurora.store.adapter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.aurora.store.GlideApp;
 import com.aurora.store.R;
 import com.aurora.store.activity.FullscreenImageActivity;
+import com.aurora.store.utility.ViewUtil;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
+import com.bumptech.glide.request.target.SimpleTarget;
+import com.bumptech.glide.request.transition.Transition;
 
 import java.util.List;
 
@@ -64,13 +68,19 @@ public class SmallScreenshotsAdapter extends RecyclerView.Adapter<SmallScreensho
 
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
-        GlideApp
-                .with(context)
-                .load(URLs.get(position))
-                .transforms(new CenterCrop(), new RoundedCorners(15))
-                .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
+
+        GlideApp.with(context)
+                .load(URLs.get(position)).diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
                 .transition(new DrawableTransitionOptions().crossFade())
-                .into(holder.imageView);
+                .transforms(new CenterCrop(), new RoundedCorners(15))
+                .into(new SimpleTarget<Drawable>() {
+                    @Override
+                    public void onResourceReady(@NonNull Drawable drawable, @Nullable Transition<? super Drawable> transition) {
+                        holder.imageView.getLayoutParams().width = drawable.getIntrinsicWidth();
+                        holder.imageView.getLayoutParams().height = ViewUtil.dpToPx(context, 180);
+                        holder.imageView.setImageDrawable(drawable);
+                    }
+                });
 
         holder.imageView.setOnClickListener(v -> {
             Intent intent = new Intent(context, FullscreenImageActivity.class);
@@ -91,8 +101,6 @@ public class SmallScreenshotsAdapter extends RecyclerView.Adapter<SmallScreensho
         ViewHolder(View view) {
             super(view);
             ButterKnife.bind(this, view);
-            imageView.getLayoutParams().height = (Resources.getSystem().getDisplayMetrics().heightPixels) / 3;
-            imageView.getLayoutParams().width = (Resources.getSystem().getDisplayMetrics().widthPixels) / 3;
         }
     }
 }
