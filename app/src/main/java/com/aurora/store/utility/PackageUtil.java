@@ -104,7 +104,7 @@ public class PackageUtil {
         try {
             context.getPackageManager().getPackageInfo(app.getPackageName(), 0);
             return true;
-        } catch (PackageManager.NameNotFoundException e) {
+        } catch (Exception e) {
             return false;
         }
     }
@@ -113,7 +113,7 @@ public class PackageUtil {
         try {
             context.getPackageManager().getPackageInfo(packageName, 0);
             return true;
-        } catch (PackageManager.NameNotFoundException e) {
+        } catch (Exception e) {
             return false;
         }
     }
