@@ -298,6 +298,7 @@ https://exodus-privacy.eu.org/en/. Это как "отчёт от аваста" 
     <string name="pref_ui_theme_dark">"Тёмная тема"</string>
     <string name="pref_ui_theme_black">"Чёрная тема"</string>
     <string name="action_close">"Закрыть"</string>
+    <string name="list_update_all_queue_txt">"обновлений в очереди"</string>
     <string name="notification_installation_complete">"Успешно установлено"</string>
     <string name="notification_installation_failed">"Не удалось установить"</string>
     <string name="notification_installation_progress">"Устанавливается"</string>
@@ -368,7 +369,7 @@ https://exodus-privacy.eu.org/en/. Это как "отчёт от аваста" 
     <string name="pref_services_desc_alt">"Aurora Services недоступно"</string>
     <string name="pref_custom_tokenizer">"Включить пользовательский адрес токен-диспенсера"</string>
     <string name="pref_custom_tokenizer_url">"URL токен-диспенсера"</string>
-    <string name="action_export_device">"Экспортировать конфигурацию устройста"</string>
+    <string name="action_export_device">"Экспортировать конфигурацию устройства"</string>
     <string name="action_export_info">"Конфигурация устройства экспортирована"</string>
     <string name="action_export_info_failed">"Ошибка экспорта конфигурации устройства"</string>
     <string name="installer_status_failure">"Ошибка установки"</string>
