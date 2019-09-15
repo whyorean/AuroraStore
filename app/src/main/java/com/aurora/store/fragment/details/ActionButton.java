@@ -138,19 +138,6 @@ public class ActionButton extends AbstractHelper {
         setupFetch();
     }
 
-    public void drawManual() {
-        hashCode = app.getPackageName().hashCode();
-        btnPositive.setOnClickListener(downloadAppListener());
-        btnNegative.setVisibility(View.GONE);
-        btnCancel.setOnClickListener(cancelDownloadListener());
-
-        if (!app.isFree()) {
-            btnPositive.setText(R.string.details_purchase);
-        }
-
-        setupFetch();
-    }
-
     private void setupFetch() {
         fetch = DownloadManager.getFetchInstance(context);
         notification = new GeneralNotification(context, app);
