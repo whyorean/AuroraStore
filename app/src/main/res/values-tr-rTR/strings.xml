@@ -24,6 +24,8 @@
     <string name="action_filter">"Süzgeçler"</string>
     <string name="action_filter_all">"Tümü"</string>
     <string name="action_filter_apply">"Uygula"</string>
+
+    <!-- Reklam içeren uygulamalar -->
     <string name="action_filter_apps_with_ads">"Reklamlı uygulamalar"</string>
     <string name="action_filter_downloads">"İndirilenler"</string>
     <string name="action_filter_gsf_dependent_apps">"GSF'ye bağımlı"</string>
@@ -61,7 +63,9 @@
     <string name="action_unwhitelist">"Güncellemeleri yoksay"</string>
     <string name="action_updates">"Güncellemeler"</string>
     <string name="action_whitelist">"Beyaz liste"</string>
-    <string name="availability_restriction_country">"Bu öğe ülkenizde mevcut değil."</string>
+
+    <!-- Bu öğe ülkenizde kullanılabilir değil -->
+    <string name="availability_restriction_country">"Bu öğe ülkenizde kullanılabilir değil."</string>
     <string name="availability_restriction_generic">"Bu öğe mevcut değil."</string>
     <string name="availability_restriction_hardware_app">"Cihazınız bu sürümle uyumlu değil."</string>
     <string name="category_appFree">"Ücretsiz"</string>
@@ -250,6 +254,7 @@
     <string name="pref_ui_theme_dark">"Koyu"</string>
     <string name="pref_ui_theme_black">"Karanlık"</string>
     <string name="action_close">"Kapat"</string>
+    <string name="list_update_all_queue_txt">"güncelleme(ler) kuyruğa alındı"</string>
     <string name="notification_installation_complete">"Başarıyla kuruldu"</string>
     <string name="notification_installation_failed">"Kurulum başarısız oldu"</string>
     <string name="notification_installation_progress">"Kuruluyor"</string>
@@ -284,9 +289,11 @@
     <string name="details_no_changes">"Geliştiricisi tarafından sağlanmayan değişiklik"</string>
     <string name="error_logged_out">"Çıkış yaptınız"</string>
     <string name="link_dev">"Geliştirici"</string>
-    <string name="link_prmission">"İzin"</string>
+    <string name="link_prmission">"İzinler"</string>
     <string name="link_playstore">"Play Store"</string>
-    <string name="link_setting">"Ayar"</string>
+
+    <!-- Ayarlar -->
+    <string name="link_setting">"Ayarlar"</string>
     <string name="link_share">"Paylaş"</string>
     <string name="pref_install_mode_no_root">"Kök erişimi mevcut değil, cihazınızın kök erişimi olduğundan emin olun."</string>
     <string name="pref_install_mode_root_warn">"Kök yükleme yöntemi apk adb kabuk, Android Pie + ile yüklemek için uygulama verilerinin de indirilmesini gerektirir"</string>
@@ -310,7 +317,7 @@
     <string name="dialog_incompat_desc">"İndirmek için çalıştığınız uygulama ülkenizde kullanılamaz,indirmek için ayarlardan bölgenizi değiştirin. 
 "</string>
     <string name="pref_install_mode_services">"Aurora Hizmetleri"</string>
-    <string name="pref_install_mode_no_services">"Aurora Hizmetleri yüklü değil, lütfen önce hizmetleri yükleyin"</string>
+    <string name="pref_install_mode_no_services">"Aurora Hizmetleri yüklü değil, lütfen önce hizmetleri yükleyin."</string>
     <string name="pref_install_mode_offline_services">"Aurora Hizmetleri bağlı değil, lütfen etkin olduğundan ve uygulamanın doğru sürümüne sahip olduğunuzdan emin olun."</string>
     <string name="action_info">"Uygulama Bilgisi"</string>
     <string name="download_waiting">"Bekleniyor"</string>
