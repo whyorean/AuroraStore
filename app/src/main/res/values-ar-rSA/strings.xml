@@ -251,6 +251,7 @@
     <string name="pref_ui_theme_dark">"داكن"</string>
     <string name="pref_ui_theme_black">"أسود"</string>
     <string name="action_close">"اغلاق"</string>
+    <string name="list_update_all_queue_txt">"تحديثات قد الإنتظار"</string>
     <string name="notification_installation_complete">"نجح التثبيت"</string>
     <string name="notification_installation_failed">"فشل التثبيت"</string>
     <string name="notification_installation_progress">"جار التثبيت"</string>
@@ -334,4 +335,22 @@
     <string name="installer_status_success">"تم التثبيت بنجاح"</string>
     <string name="installer_status_unknown">"غير معروف"</string>
     <string name="installer_status_user_action">"بأنتظار موافقة المستخدم"</string>
+    <string name="pref_downloader_internal">"تحميل التطبيقات في الذاكرة الداخلية"</string>
+    <string name="pref_downloader_internal_desc">"في حال تمكينه ,لن يمكنك تثبيت التطبيقات عبر خدمات اورورا"</string>
+    <string name="pref_install_profile_summary">"قم بأختيار الميتخدم الذي تريد تثبيت التطبيقات له,يعمل فقط عبر الروت"</string>
+    <string name="pref_install_profile_title">"تثبيت المستخدمين(إختباري)"</string>
+    <string name="pref_install_mode_internal_warn">"لقد قمت بأختيار الذاكرة الداخلية لتنزيلات,الرجاء تعطيلها لأستخدام خدمات اورورا"</string>
+    <string name="pref_updates_extended">"التحديثات المتواصلة"</string>
+    <string name="pref_updates_extended_desc">"تفعيل البحث عن التحديثات لتطبيقات المعطلة"</string>
+    <string name="pref_caching_strategy">"أستراتيجية تخزين الصور المؤقتة"</string>
+    <string name="pref_caching_strategy_all">"الكل"</string>
+    <string name="pref_caching_strategy_automatic">"تلقائي"</string>
+    <string name="pref_caching_strategy_none">"لاشيء"</string>
+    <string name="pref_clean_junk">"اجبار تنظيف الملفات المخلفة"</string>
+    <string name="pref_clean_junk_desc">"مسح جميع الملفات المحملة من المسار الإفتراضي"</string>
+    <string name="pref_abandon_session">"إجبار مسح جلسة التثبيت"</string>
+    <string name="pref_abandon_session_desc">"تجاهل جميع جلسات التنزيل القديمة"</string>
+    <string name="toast_unknown_reason">"حصل خطأ ما,الرجاء المحاولة لاحقا"</string>
+    <string name="toast_junk_removed">"تم حذف المفات المخلفة"</string>
+    <string name="toast_abandon_sessions">"جلسة التثبيت القديمة تم تجاهلها"</string>
 </resources>
