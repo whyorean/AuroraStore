@@ -253,6 +253,7 @@ Tamén prové unha lista de trackers incluídos nunha aplicación."</string>
     <string name="pref_ui_theme_dark">"Escuro"</string>
     <string name="pref_ui_theme_black">"Negro"</string>
     <string name="action_close">"Pechar"</string>
+    <string name="list_update_all_queue_txt">"Actualización(s) en cola"</string>
     <string name="notification_installation_complete">"Instalado Correctamente"</string>
     <string name="notification_installation_failed">"Erro ao Instalar"</string>
     <string name="notification_installation_progress">"Instalando"</string>
