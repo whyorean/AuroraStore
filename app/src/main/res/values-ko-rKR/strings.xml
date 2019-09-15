@@ -32,7 +32,7 @@
     <string name="action_filter_rating">"평점"</string>
     <string name="action_flag">"앱 신고"</string>
     <string name="action_get_local_apk">"로컬 APK 가져오기"</string>
-    <string name="action_home">"집"</string>
+    <string name="action_home">"홈"</string>
     <string name="action_installations">"설치"</string>
     <string name="action_installed">"설치됨"</string>
     <string name="action_later">"나중에"</string>
