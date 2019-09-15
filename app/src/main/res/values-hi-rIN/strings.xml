@@ -251,6 +251,7 @@
     <string name="pref_ui_theme_dark">"साँवला"</string>
     <string name="pref_ui_theme_black">"काला"</string>
     <string name="action_close">"बंद करें"</string>
+    <string name="list_update_all_queue_txt">"अद्यतन पंत्किबद्ध"</string>
     <string name="notification_installation_complete">"सफलतापूर्वक अद्यतित"</string>
     <string name="notification_installation_failed">"अद्यतन असफल"</string>
     <string name="notification_installation_progress">"अद्यतन हो रहा है"</string>
@@ -319,4 +320,38 @@
     <string name="pref_services_desc_alt">"अरोरा सेवाएं अनुपलब्ध"</string>
     <string name="pref_custom_tokenizer">"कस्टम टोकनाइज़र चलाएं"</string>
     <string name="pref_custom_tokenizer_url">"टोकनाइज़र URL"</string>
+    <string name="action_export_device">"डिवाइस जानकारी Export करें"</string>
+    <string name="action_export_info">"डिवाइस जानकारी Export हो गई है"</string>
+    <string name="action_export_info_failed">"डिवाइस जानकारी Export असफल"</string>
+    <string name="installer_status_failure">"इंसटाल असफल"</string>
+
+    <!-- Fuzzy -->
+    <string name="installer_status_failure_aborted">"स्थापना रद्द"</string>
+
+    <!-- Fuzzy -->
+    <string name="installer_status_failure_blocked">"स्थापना अवरुद्ध हो गई थी"</string>
+
+    <!-- Fuzzy -->
+    <string name="installer_status_failure_conflict">"संघर्षपूर्ण पैकेज मौजूद है"</string>
+
+    <!-- Fuzzy -->
+    <string name="installer_status_failure_storage">"अपर्याप्त स्मृति स्थान"</string>
+
+    <!-- Fuzzy -->
+    <string name="installer_status_success">"सफलतापूर्वक स्थापित"</string>
+
+    <!-- Fuzzy -->
+    <string name="installer_status_unknown">"अनजान"</string>
+
+    <!-- Fuzzy -->
+    <string name="installer_status_user_action">"उपयोगकर्ता की पुष्टि की प्रतीक्षा है"</string>
+
+    <!-- Fuzzy -->
+    <string name="pref_caching_strategy_all">"सब"</string>
+
+    <!-- Fuzzy -->
+    <string name="pref_caching_strategy_automatic">" स्वचालित"</string>
+
+    <!-- Fuzzy -->
+    <string name="pref_caching_strategy_none">"कोई नहीं"</string>
 </resources>
