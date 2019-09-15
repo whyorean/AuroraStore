@@ -313,6 +313,7 @@ Inoltre fornisce una lista di tracker incorporati in una applicazione."</string>
     <string name="pref_ui_theme_dark">"Scuro"</string>
     <string name="pref_ui_theme_black">"Nero"</string>
     <string name="action_close">"Chiudi"</string>
+    <string name="list_update_all_queue_txt">"Aggiornamento/i in coda"</string>
     <string name="notification_installation_complete">"Installato con successo"</string>
     <string name="notification_installation_failed">"Installazione fallita"</string>
     <string name="notification_installation_progress">"Installazione"</string>
