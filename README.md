@@ -169,6 +169,11 @@ While *Aurora Store* was originally based on Sergei Yeriomin's [Yalp store](http
 
   No, this is a Play store client only. Different clients for different services (^_~)
 
+* <b>Installation failes without warning after download on MIUI/OneUI/H2OS!</b>
+
+  Apps can't be installed on MIUI/OneUI/H2OS unless you turn off vendor optimizations (like MIUI Optimizations)
+and select "Enforce Native Installer" from Aurora->Settings->Installations.
+
  `If you are an Android App Developer and find something that can be improved/fixed/added, feel free to make a pull request.`
 
 # Aurora Store uses the following Open Source libraries:
