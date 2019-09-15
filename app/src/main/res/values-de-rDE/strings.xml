@@ -253,6 +253,7 @@ Zudem zeigt Aurora die Anzahl der Tracker in der jeweiligen App an."</string>
     <string name="pref_ui_theme_dark">"Dunkel"</string>
     <string name="pref_ui_theme_black">"Schwarz"</string>
     <string name="action_close">"Schließen"</string>
+    <string name="list_update_all_queue_txt">"Update(s) eingereiht"</string>
     <string name="notification_installation_complete">"Erfolgreich installiert"</string>
     <string name="notification_installation_failed">"Installation fehlgeschlagen"</string>
     <string name="notification_installation_progress">"Installieren"</string>
@@ -327,15 +328,29 @@ Zudem zeigt Aurora die Anzahl der Tracker in der jeweiligen App an."</string>
     <string name="installer_status_failure">"Installation fehlgeschlagen"</string>
     <string name="installer_status_failure_aborted">"Installation abgebrochen"</string>
     <string name="installer_status_failure_blocked">"Installation blockiert"</string>
+    <string name="installer_status_failure_conflict">"Konfliktendes Paket vorhanden"</string>
     <string name="installer_status_failure_incompatible">"App inkompatibel"</string>
     <string name="installer_status_failure_invalid">"Ungültiger/beschädigter APK"</string>
     <string name="installer_status_failure_storage">"Zu wenig Speicherplatz"</string>
     <string name="installer_status_success">"Erfolgreich installiert"</string>
     <string name="installer_status_unknown">"Unbekannt"</string>
     <string name="installer_status_user_action">"Warte auf Nutzer-Bestätigung"</string>
+    <string name="pref_downloader_internal">"Apps in den internen Speicher herunterladen"</string>
+    <string name="pref_downloader_internal_desc">"Wenn aktiviert, können Apps nicht per Aurora Services installiert werden"</string>
+    <string name="pref_install_profile_summary">"Wähle das Ziel-Profil aus, um Apps zu installieren, funktioniert nur mit der Root-Installationsmethode"</string>
+    <string name="pref_install_profile_title">"Installationsprofile (Experimentell)"</string>
+    <string name="pref_install_mode_internal_warn">"Der interne Speicher wurde für Downloads ausgewählt, bitte ändere das, um Aurora Services zu nutzen."</string>
+    <string name="pref_updates_extended">"Erweiterte Updates"</string>
+    <string name="pref_updates_extended_desc">"Aktivieren, um nach Updates für deaktivierte Apps zu prüfen"</string>
+    <string name="pref_caching_strategy">"Bildzwischenspeicherungsstrategie"</string>
     <string name="pref_caching_strategy_all">"Alles"</string>
     <string name="pref_caching_strategy_automatic">"Automatisch"</string>
     <string name="pref_caching_strategy_none">"Nichts"</string>
+    <string name="pref_clean_junk">"Junk-Dateien entfernen erzwingen"</string>
     <string name="pref_clean_junk_desc">"Entfernt alle heruntergeladenen Dateien aus dem Standardverzeichnis"</string>
+    <string name="pref_abandon_session">"Installationssitzungen entfernen erzwingen"</string>
+    <string name="pref_abandon_session_desc">"Alle alten ausstehenden Installationssitzungen abbrechen"</string>
     <string name="toast_unknown_reason">"Etwas ist schiefgelaufen, versuchen Sie es noch einmal"</string>
+    <string name="toast_junk_removed">"Junk-Dateien entfernt"</string>
+    <string name="toast_abandon_sessions">"Alte Installationssitzungen abgebrochen"</string>
 </resources>
