@@ -259,6 +259,7 @@ Elle fournit également une liste de traqueurs intégrés dans une application."
     <string name="pref_ui_theme_dark">"Sombre"</string>
     <string name="pref_ui_theme_black">"Noir"</string>
     <string name="action_close">"Fermer"</string>
+    <string name="list_update_all_queue_txt">"Mise(s) à jour en attente"</string>
     <string name="notification_installation_complete">"Installation réussie"</string>
     <string name="notification_installation_failed">"Echec de l'installation"</string>
     <string name="notification_installation_progress">"Installation"</string>
@@ -340,4 +341,22 @@ Elle fournit également une liste de traqueurs intégrés dans une application."
     <string name="installer_status_success">"Installation réussie"</string>
     <string name="installer_status_unknown">"Inconnu"</string>
     <string name="installer_status_user_action">"Attente de confirmation de l'utilisateur"</string>
+    <string name="pref_downloader_internal">"Télécharger des applications dans le stockage interne"</string>
+    <string name="pref_downloader_internal_desc">"Si activé, vous ne pourrez pas installer d'applications via les services Aurora."</string>
+    <string name="pref_install_profile_summary">"Sélectionnez le profil cible pour installer les applications, fonctionne uniquement avec la méthode d'installation root"</string>
+    <string name="pref_install_profile_title">"Profils d'installation (Expérimental) "</string>
+    <string name="pref_install_mode_internal_warn">"Vous avez sélectionné le stockage interne pour les téléchargements, veuillez le désactiver pour utiliser les services Aurora."</string>
+    <string name="pref_updates_extended">"Mises à jour étendues"</string>
+    <string name="pref_updates_extended_desc">"Activer pour vérifier les mises à jour des applications désactivées"</string>
+    <string name="pref_caching_strategy">"Stratégie de mise en cache d'images"</string>
+    <string name="pref_caching_strategy_all">"Tout"</string>
+    <string name="pref_caching_strategy_automatic">"Automatique"</string>
+    <string name="pref_caching_strategy_none">"Aucun"</string>
+    <string name="pref_clean_junk">"Forcer l'effacement des fichiers inutiles"</string>
+    <string name="pref_clean_junk_desc">"Supprime tous les fichiers téléchargés du répertoire par défaut"</string>
+    <string name="pref_abandon_session">"Forcer l'effacement des sessions d'installation"</string>
+    <string name="pref_abandon_session_desc">"Abandonner toutes les anciennes sessions d'installation en attente"</string>
+    <string name="toast_unknown_reason">"Quelque chose a mal tourné, réessayez"</string>
+    <string name="toast_junk_removed">"Suppression des fichiers inutiles"</string>
+    <string name="toast_abandon_sessions">"Anciennes sessions d'installation abandonnées"</string>
 </resources>
