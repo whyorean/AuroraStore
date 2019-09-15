@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="account_dummy">"Anonimowe"</string>
-    <string name="account_dummy_desc">"Zalogować się używając konta anonimowego?"</string>
+    <string name="account_dummy_desc">"Zalogować używając konta anonimowego?"</string>
     <string name="account_google">"Konto Google"</string>
     <string name="account_logout">"Wylogować z Aurory?"</string>
     <string name="account_prompt_login">"Zaloguj się, żeby kontynuować"</string>
@@ -33,11 +33,11 @@
     <string name="action_flag">"Zgłoś aplikację"</string>
     <string name="action_get_local_apk">"Uzyskaj lokalny plik APK"</string>
     <string name="action_home">"Główna"</string>
-    <string name="action_installations">"Instalacja"</string>
+    <string name="action_installations">"Instalacje"</string>
     <string name="action_installed">"Zainstalowane"</string>
     <string name="action_later">"Później"</string>
     <string name="action_logging_in">"Logowanie"</string>
-    <string name="action_login">"Zaloguj się"</string>
+    <string name="action_login">"Zaloguj"</string>
     <string name="action_logout">"Wyloguj"</string>
     <string name="action_make_normal">"Konwertuj normalną aplikację"</string>
     <string name="action_make_system">"Konwertuj na aplikację systemową"</string>
@@ -61,8 +61,8 @@
     <string name="action_unwhitelist">"Ignoruj aktualizacje"</string>
     <string name="action_updates">"Aktualizacje"</string>
     <string name="action_whitelist">"Biała lista"</string>
-    <string name="availability_restriction_country">"Aplikacja nie jest dostępna w twoim kraju."</string>
-    <string name="availability_restriction_generic">"Aplikacja nie jest dostępna."</string>
+    <string name="availability_restriction_country">"Ten produkt nie jest dostępny w twoim kraju."</string>
+    <string name="availability_restriction_generic">"Produkt nie jest dostępny."</string>
     <string name="availability_restriction_hardware_app">"Twoje urządzenie nie jest zgodne z tą wersją."</string>
     <string name="category_appFree">"Darmowe"</string>
     <string name="category_topFree">"Najlepsze darmowe"</string>
@@ -81,7 +81,7 @@
     <string name="details_no_ads">"Bez reklam"</string>
     <string name="details_permissions">"Uprawnienia aplikacji"</string>
     <string name="details_purchase">"Kup"</string>
-    <string name="details_rate_this_app">"Oceń tą aplikację"</string>
+    <string name="details_rate_this_app">"Oceń tę aplikację"</string>
     <string name="details_rating_reviews">"Oceny i opinie"</string>
     <string name="details_reviews">"Recenzje aplikacji"</string>
     <string name="details_run">"Otwórz"</string>
@@ -91,13 +91,13 @@
     <string name="details_you_rated_this_app">"Twoja ocena"</string>
     <string name="dialog_title_logout">"Wylogować?"</string>
     <string name="download_cancel_all">"Anuluj wszystko"</string>
-    <string name="download_canceled">"Anulowany"</string>
+    <string name="download_canceled">"Anulowano"</string>
     <string name="download_clear_completed">"Czyszczenie zakończone"</string>
-    <string name="download_completed">"Zakończony"</string>
+    <string name="download_completed">"Pobrane"</string>
     <string name="download_failed">"Niepowodzenie"</string>
-    <string name="download_force_clear_all">"Wymuś wyczyszczenie"</string>
+    <string name="download_force_clear_all">"Wymuś wyczyszczenie wszystkiego"</string>
     <string name="download_pause_all">"Wstrzymaj wszystko"</string>
-    <string name="download_paused">"Wstrzymany"</string>
+    <string name="download_paused">"Wstrzymane"</string>
     <string name="download_progress">"Pobieranie"</string>
     <string name="download_queued">"W kolejce"</string>
     <string name="download_resume">"Wznów"</string>
@@ -113,7 +113,7 @@
     <string name="exodus_powered">"Wspierane przez Exodus"</string>
     <string name="exodus_title">"Aurora Protect"</string>
     <string name="exodus_title_alt">"Raport Exodus"</string>
-    <string name="exodus_viewMore">"Szczegóły"</string>
+    <string name="exodus_viewMore">"Zobacz"</string>
     <string name="exodus_viewReport">"Zobacz raport"</string>
     <string name="flagging_title">"Oznacz jako nieodpowiednie"</string>
     <string name="list_app_blacklisted_empty">"Brak aplikacji na czarnej liście"</string>
@@ -129,25 +129,25 @@
     <string name="list_empty_fav">"Brak ulubionych"</string>
     <string name="list_empty_query">"Brak ostatnich wyszukiwań"</string>
     <string name="list_empty_updates">"Brak dostępnych aktualizacji"</string>
-    <string name="list_installed">"Zainstalowany"</string>
+    <string name="list_installed">"Zainstalowane"</string>
     <string name="list_installed_system">"Pokaż tylko aplikacje użytkownika"</string>
-    <string name="list_not_installd">"Nie zainstalowany"</string>
+    <string name="list_not_installd">"Niezainstalowane"</string>
     <string name="list_update_all">"Aktualizuj wszystko"</string>
-    <string name="list_update_all_txt">"dostępna(-e) aktualizacje"</string>
+    <string name="list_update_all_txt">"aktualizacja(-e) dostępna(-e)"</string>
     <string name="list_updating">"Aktualizowanie"</string>
     <string name="manual_download_disclaimer">"Odrzuć"</string>
-    <string name="manual_download_incompatible">"Google Play Store uważa tę aplikację za niezgodną z Twoim urządzeniem. Oznacza to, że kod wersji nie został zwrócony przez serwer Google Play Store."</string>
-    <string name="manual_download_warning">"Ta strona pozwala ręcznie wybrać wersję aplikacji do pobrania. 
+    <string name="manual_download_incompatible">"Sklep Google Play uważa tę aplikację za niekompatybilną z twoim urządzeniem. Oznacza to, że kod wersji nie został zwrócony przez serwer sklepu Google Play."</string>
+    <string name="manual_download_warning">"Ta strona pozwala ci ręcznie wybrać wersję aplikacji do pobrania. 
 
-Pamiętaj, że pobieranie dowolnych wersji aplikacji nie jest obsługiwane przez Google Play Store. Twój sukces zależy od poprawnego wpisania numeru wersji. Nawet jeśli wpiszesz poprawny numer i uruchomisz pobieranie - możesz uzyskać niekompatybilny plik apk."</string>
+Pamiętaj, że pobieranie dowolnych wersji aplikacji nie jest obsługiwane przez sklep Google Play. Twój sukces zależy od wpisania poprawnego numeru wersji. Nawet jeśli wpiszesz poprawny numer i uruchomisz pobieranie - możesz uzyskać niekompatybilny apk."</string>
     <string name="menu_account">"Konta"</string>
     <string name="menu_disclaimer">"Odrzuć"</string>
     <string name="menu_downloads">"Pobrane"</string>
     <string name="menu_license">"Licencja"</string>
     <string name="menu_setting">"Ustawienia"</string>
     <string name="menu_terms">"Warunki usługi"</string>
-    <string name="no_permissions">"Nie przyznano uprawnień."</string>
-    <string name="pref_app_download">"Pobieranie"</string>
+    <string name="no_permissions">"Żadne uprawnienia nie są używane."</string>
+    <string name="pref_app_download">"Pobrane"</string>
     <string name="pref_app_network">"Sieć"</string>
     <string name="pref_app_notification">"Powiadomienia"</string>
     <string name="pref_app_ui">"Interfejs użytkownika"</string>
@@ -156,7 +156,7 @@ Pamiętaj, że pobieranie dowolnych wersji aplikacji nie jest obsługiwane przez
     <string name="pref_category_spoof_location">"Podmień lokalizację"</string>
     <string name="pref_device_to_pretend_to_be">"Udawaj, że jesteś innym urządzeniem"</string>
     <string name="pref_device_to_pretend_to_be_default">"Twoje oryginalne informacje o urządzeniu"</string>
-    <string name="pref_device_to_pretend_to_be_toast">"Ta zmiana zostanie zastosowana po ponownym zalogowaniu"</string>
+    <string name="pref_device_to_pretend_to_be_toast">"Ta zmiana zostanie zastosowana po przelogowaniu"</string>
     <string name="pref_dialog_to_apply_restart">"To ustawienie zostanie zastosowane po ponownym uruchomieniu aplikacji"</string>
     <string name="pref_downloader_active_summary">"Maksymalna liczba aktywnych pobrań"</string>
     <string name="pref_downloader_active_title">"Aktywne pobierania"</string>
@@ -254,6 +254,7 @@ Udostępnia również listę usług śledzących zaimplementowanych w aplikacjac
     <string name="pref_ui_theme_dark">"Ciemny"</string>
     <string name="pref_ui_theme_black">"Czarny"</string>
     <string name="action_close">"Zamknij"</string>
+    <string name="list_update_all_queue_txt">"aktualizacja(-i) w kolejce"</string>
     <string name="notification_installation_complete">"Zainstalowano poprawnie"</string>
     <string name="notification_installation_failed">"Instalacja nieudana"</string>
     <string name="notification_installation_progress">"Instalowanie"</string>
