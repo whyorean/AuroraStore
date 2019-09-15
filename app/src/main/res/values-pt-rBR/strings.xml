@@ -253,6 +253,7 @@ Lembre-se que fazer o download de versões arbitrárias de aplicativos não é s
     <string name="pref_ui_theme_dark">"Escuro"</string>
     <string name="pref_ui_theme_black">"Preto"</string>
     <string name="action_close">"Fechar"</string>
+    <string name="list_update_all_queue_txt">"atualização(ções) na fila"</string>
     <string name="notification_installation_complete">"Instalação concluída"</string>
     <string name="notification_installation_failed">"Falha ao instalar"</string>
     <string name="notification_installation_progress">"Instalando"</string>
