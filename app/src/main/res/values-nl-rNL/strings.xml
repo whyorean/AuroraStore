@@ -249,6 +249,7 @@
     <string name="pref_ui_theme_dark">"Donker"</string>
     <string name="pref_ui_theme_black">"Zwart"</string>
     <string name="action_close">"Sluiten"</string>
+    <string name="list_update_all_queue_txt">"Bijwerken in behandeling"</string>
     <string name="notification_installation_complete">"Succesvolle installatie"</string>
     <string name="notification_installation_failed">"Installatie mislukt"</string>
     <string name="notification_installation_progress">"Installatie"</string>
@@ -331,4 +332,22 @@
     <string name="installer_status_success">"Succesvol geïnstalleerd"</string>
     <string name="installer_status_unknown">"Onbekend"</string>
     <string name="installer_status_user_action">"Wachten op bevestiging van gebruiker"</string>
+    <string name="pref_downloader_internal">"Download apps in interne opslag"</string>
+    <string name="pref_downloader_internal_desc">"Indien ingeschakeld, kunt u geen apps installeren via Aurora Services"</string>
+    <string name="pref_install_profile_summary">"Selecteer het doelprofiel om apps te installeren, werkt alleen met root-installatiemethode"</string>
+    <string name="pref_install_profile_title">"Installatieprofielen (experimenteel)"</string>
+    <string name="pref_install_mode_internal_warn">"U hebt interne opslag geselecteerd voor downloads. Schakel deze vriendelijk uit om Aurora Services te gebruiken"</string>
+    <string name="pref_updates_extended">"Uitgebreide updates"</string>
+    <string name="pref_updates_extended_desc">"Inschakelen om updates voor uitgeschakelde apps te controleren"</string>
+    <string name="pref_caching_strategy">"Image caching strategie"</string>
+    <string name="pref_caching_strategy_all">"Allemaal"</string>
+    <string name="pref_caching_strategy_automatic">"Automatisch"</string>
+    <string name="pref_caching_strategy_none">"Geen"</string>
+    <string name="pref_clean_junk">"Forceer opschonen ongewenste bestanden"</string>
+    <string name="pref_clean_junk_desc">"Hiermee verwijdert u alle gedownloade bestanden uit de standaardmap"</string>
+    <string name="pref_abandon_session">"Forceer opschonen installatiesessies"</string>
+    <string name="pref_abandon_session_desc">"Alle oude openstaande installatiesessies verlaten"</string>
+    <string name="toast_unknown_reason">"Er ging iets fout, probeer opnieuw"</string>
+    <string name="toast_junk_removed">"Ongewenste bestanden verwijderd"</string>
+    <string name="toast_abandon_sessions">"Oude installatiesessies verlaten"</string>
 </resources>
