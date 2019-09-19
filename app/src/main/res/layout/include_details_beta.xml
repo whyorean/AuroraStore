@@ -23,7 +23,7 @@
     android:id="@+id/beta_layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="@dimen/margin_small"
+    android:layout_margin="@dimen/margin_medium"
     android:background="@drawable/generic_padded_bg"
     android:orientation="vertical"
     android:visibility="gone">

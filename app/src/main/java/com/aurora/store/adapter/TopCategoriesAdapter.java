@@ -34,7 +34,6 @@ import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 import androidx.core.graphics.ColorUtils;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -43,6 +42,7 @@ import com.aurora.store.SharedPreferencesTranslator;
 import com.aurora.store.fragment.CategoriesFragment;
 import com.aurora.store.fragment.CategoryAppsFragment;
 import com.aurora.store.fragment.HomeFragment;
+import com.aurora.store.utility.ColorUtil;
 import com.aurora.store.utility.Util;
 import com.aurora.store.utility.ViewUtil;
 
@@ -90,9 +90,9 @@ public class TopCategoriesAdapter extends RecyclerView.Adapter<TopCategoriesAdap
         holder.itemView.setBackgroundTintList(ColorStateList.valueOf(
                 ColorUtils.setAlphaComponent(color, isTransparent ? 60 : 255)));
         holder.imgCat.setImageDrawable(context.getResources().getDrawable(categoriesImg[position]));
-        holder.imgCat.setColorFilter(isTransparent ? color : Color.WHITE);
+        holder.imgCat.setColorFilter(isTransparent ? ColorUtil.manipulateColor(color, 0.85f) : Color.WHITE);
         holder.txtCat.setText(translator.getString(topCategoryIDs[position]));
-        holder.txtCat.setTextColor(isTransparent ? color : Color.WHITE);
+        holder.txtCat.setTextColor(isTransparent ? ColorUtil.manipulateColor(color, 0.75f) : Color.WHITE);
 
         if (topCategoryIDs[position].equals(CategoriesFragment.FAMILY)) {
             holder.itemView.setOnClickListener(v -> getSubCategoryFragment(CategoriesFragment.FAMILY));
@@ -120,7 +120,6 @@ public class TopCategoriesAdapter extends RecyclerView.Adapter<TopCategoriesAdap
         arguments.putString("CategoryId", topCategoryIDs[position]);
         arguments.putString("CategoryName", translator.getString(topCategoryIDs[position]));
         categoryAppsFragment.setArguments(arguments);
-        FragmentManager manager = fragment.getFragmentManager();
         fragment.getChildFragmentManager()
                 .beginTransaction()
                 .replace(R.id.coordinator, categoryAppsFragment)

@@ -21,70 +21,62 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:paddingTop="@dimen/margin_small">
+    android:orientation="horizontal">
 
     <ImageView
         android:id="@+id/icon"
-        android:layout_width="@dimen/icon_size_big"
-        android:layout_height="@dimen/icon_size_big"
-        android:layout_centerHorizontal="true" />
+        android:layout_width="@dimen/icon_size_normal"
+        android:layout_height="@dimen/icon_size_normal"
+        android:layout_margin="@dimen/margin_normal" />
 
     <RelativeLayout
         android:id="@+id/app_txt"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/icon"
+        android:layout_alignTop="@id/icon"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/margin_medium"
-        android:paddingStart="@dimen/margin_small"
-        android:paddingEnd="@dimen/margin_small">
+        android:layout_marginStart="@dimen/margin_small"
+        android:layout_marginEnd="@dimen/margin_small"
+        android:layout_toEndOf="@id/icon">
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/displayName"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
             android:ellipsize="none"
+            android:fontFamily="@font/open_sans_semibold"
             android:maxWidth="320dp"
-            android:maxLines="2"
             android:requiresFadingEdge="horizontal"
-            android:textAlignment="center"
-            android:textAppearance="@style/TextAppearance.Aurora.Title"
-            android:textSize="20sp" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/packageName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/displayName"
-            android:layout_centerHorizontal="true"
             android:singleLine="true"
-            android:textAlignment="viewStart"
-            android:textIsSelectable="true"
-            android:textSize="12sp" />
+            android:textAppearance="@style/TextAppearance.Aurora.Title"
+            android:textSize="22sp" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/devName"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/packageName"
-            android:layout_centerHorizontal="true"
+            android:layout_below="@id/displayName"
             android:focusable="true"
             android:focusableInTouchMode="true"
             android:marqueeRepeatLimit="marquee_forever"
             android:scrollHorizontally="true"
             android:singleLine="true"
-            android:textAlignment="viewStart"
-            android:textColor="?android:attr/colorAccent"
-            android:textSize="16sp" />
+            android:textSize="14sp" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/packageName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/devName"
+            android:singleLine="true"
+            android:textIsSelectable="true"
+            android:textSize="12sp" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/versionString"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/devName"
-            android:layout_centerHorizontal="true"
+            android:layout_below="@id/packageName"
             android:ellipsize="marquee"
             android:singleLine="true"
             android:textAlignment="viewStart"
@@ -95,7 +87,7 @@
     <HorizontalScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/app_txt"
+        android:layout_below="@+id/icon"
         android:clipToPadding="false"
         android:paddingStart="@dimen/margin_normal"
         android:paddingEnd="@dimen/margin_normal"
@@ -106,13 +98,13 @@
             android:layout_height="match_parent">
 
             <com.google.android.material.chip.Chip
-                android:id="@+id/txt_updated"
+                android:id="@+id/price"
                 style="@style/Widget.MaterialComponents.Chip.Info"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
             <com.google.android.material.chip.Chip
-                android:id="@+id/price"
+                android:id="@+id/txt_updated"
                 style="@style/Widget.MaterialComponents.Chip.Info"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />

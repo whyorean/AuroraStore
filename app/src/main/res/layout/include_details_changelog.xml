@@ -24,7 +24,7 @@
     android:id="@+id/changes_container"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp"
+    android:layout_margin="@dimen/margin_medium"
     android:animateLayoutChanges="true"
     android:background="@drawable/generic_padded_bg"
     android:minHeight="32dp"
@@ -32,16 +32,15 @@
     android:visibility="invisible">
 
     <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txt_new"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
+        android:layout_marginBottom="@dimen/margin_xsmall"
         android:text="@string/details_new_changes"
-        android:textColor="?android:attr/textColorPrimary"
-        android:textSize="16sp"
-        android:textStyle="bold" />
+        android:textAppearance="@style/TextAppearance.Aurora.SubTitle" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/changes_upper"
+        android:id="@+id/txt_changelog"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:autoLink="web|email"

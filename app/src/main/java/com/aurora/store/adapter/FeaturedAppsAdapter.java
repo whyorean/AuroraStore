@@ -110,8 +110,8 @@ public class FeaturedAppsAdapter extends RecyclerView.Adapter<FeaturedAppsAdapte
                         ? app.getPageBackgroundImage().getUrl()
                         : app.getIconInfo().getUrl())
                 .placeholder(R.color.colorTransparent)
-                .transforms(new CenterCrop(), new RoundedCorners(15))
                 .transition(new BitmapTransitionOptions().crossFade())
+                .transforms(new CenterCrop(), new RoundedCorners(50))
                 .into(holder.imgIcon);
     }
 

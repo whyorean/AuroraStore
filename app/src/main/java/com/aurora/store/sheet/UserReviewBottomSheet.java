@@ -36,9 +36,9 @@ import com.aurora.store.model.Review;
 import com.aurora.store.model.ReviewBuilder;
 import com.aurora.store.task.BaseTask;
 import com.aurora.store.utility.Log;
-import com.aurora.store.view.CustomBottomSheetDialogFragment;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 import com.dragons.aurora.playstoreapiv2.ReviewResponse;
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.io.IOException;
@@ -50,7 +50,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
 
-public class UserReviewBottomSheet extends CustomBottomSheetDialogFragment {
+public class UserReviewBottomSheet extends BottomSheetDialogFragment {
 
     @BindView(R.id.review_title)
     TextInputEditText txtTitle;

@@ -22,14 +22,22 @@ package com.aurora.store.fragment.details;
 
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.content.res.ColorStateList;
+import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.text.Html;
 import android.text.TextUtils;
 import android.text.format.Formatter;
 import android.text.util.Linkify;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import androidx.annotation.Nullable;
+import androidx.core.graphics.ColorUtils;
+import androidx.palette.graphics.Palette;
 
 import com.aurora.store.GlideApp;
 import com.aurora.store.R;
@@ -37,11 +45,20 @@ import com.aurora.store.fragment.DetailsFragment;
 import com.aurora.store.manager.CategoryManager;
 import com.aurora.store.model.App;
 import com.aurora.store.sheet.MoreInfoSheet;
+import com.aurora.store.utility.ColorUtil;
 import com.aurora.store.utility.Log;
 import com.aurora.store.utility.TextUtil;
+import com.aurora.store.utility.ThemeUtil;
 import com.aurora.store.utility.Util;
 import com.aurora.store.utility.ViewUtil;
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
+import com.bumptech.glide.load.DataSource;
+import com.bumptech.glide.load.engine.GlideException;
+import com.bumptech.glide.load.resource.bitmap.BitmapTransitionOptions;
+import com.bumptech.glide.load.resource.bitmap.CenterCrop;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.target.Target;
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.chip.Chip;
 
 import org.apache.maven.artifact.versioning.DefaultArtifactVersion;
@@ -58,10 +75,14 @@ public class GeneralDetails extends AbstractHelper {
     ImageView appIcon;
     @BindView(R.id.devName)
     TextView txtDevName;
-    @BindView(R.id.showLessMoreTxt)
-    TextView showLessMoreTxt;
+    @BindView(R.id.app_desc_short)
+    TextView txtDescShort;
+    @BindView(R.id.img_more)
+    ImageButton imgMore;
     @BindView(R.id.versionString)
     TextView app_version;
+    @BindView(R.id.txt_new)
+    TextView txtNew;
     @BindView(R.id.txt_updated)
     Chip txtUpdated;
     @BindView(R.id.txt_google_dependencies)
@@ -76,6 +97,10 @@ public class GeneralDetails extends AbstractHelper {
     Chip category;
     @BindView(R.id.developer_layout)
     LinearLayout developerLayout;
+    @BindView(R.id.btn_positive)
+    MaterialButton btnPositive;
+    @BindView(R.id.btn_negative)
+    MaterialButton btnNegative;
 
     public GeneralDetails(DetailsFragment fragment, App app) {
         super(fragment, app);
@@ -95,14 +120,69 @@ public class GeneralDetails extends AbstractHelper {
     private void drawAppBadge() {
         if (view != null) {
             GlideApp.with(context)
+                    .asBitmap()
                     .load(app.getIconInfo().getUrl())
-                    .transition(new DrawableTransitionOptions().crossFade())
+                    .transition(new BitmapTransitionOptions().crossFade())
+                    .transforms(new CenterCrop(), new RoundedCorners(50))
+                    .listener(new RequestListener<Bitmap>() {
+                        @Override
+                        public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Bitmap> target, boolean isFirstResource) {
+                            return false;
+                        }
+
+                        @Override
+                        public boolean onResourceReady(Bitmap resource, Object model, Target<Bitmap> target, DataSource dataSource, boolean isFirstResource) {
+                            getPalette(resource);
+                            return false;
+                        }
+                    })
                     .into(appIcon);
             setText(view, R.id.displayName, app.getDisplayName());
             setText(view, R.id.packageName, app.getPackageName());
             setText(view, R.id.devName, app.getDeveloperName());
             txtDevName.setOnClickListener(v -> showDevApps());
             drawVersion();
+        }
+    }
+
+    private void getPalette(Bitmap bitmap) {
+        Palette.from(bitmap).generate(palette -> {
+            if (palette != null)
+                paintEmAll(palette);
+        });
+    }
+
+    private void paintEmAll(Palette palette) {
+        Palette.Swatch swatch = palette.getDarkVibrantSwatch();
+        int colorPrimary = Color.GRAY;
+        int colorPrimaryText = Color.BLACK;
+
+        //Make sure we get a fallback swatch if DarkVibrantSwatch is not available
+        if (swatch == null)
+            swatch = palette.getVibrantSwatch();
+
+        //Make sure we get another fallback swatch if VibrantSwatch is not available
+        if (swatch == null)
+            swatch = palette.getDominantSwatch();
+
+        if (swatch != null) {
+            colorPrimary = swatch.getRgb();
+            colorPrimaryText = ColorUtil.manipulateColor(colorPrimary, 0.3f);
+        }
+
+        if (ColorUtil.isColorLight(colorPrimary))
+            btnPositive.setTextColor(Color.BLACK);
+        else
+            btnPositive.setTextColor(Color.WHITE);
+
+        btnPositive.setBackgroundColor(colorPrimary);
+        btnPositive.setStrokeColor(ColorStateList.valueOf(colorPrimary));
+
+        if (ThemeUtil.isLightTheme(context)) {
+            txtDevName.setTextColor(colorPrimaryText);
+            txtNew.setTextColor(colorPrimaryText);
+            txtDescShort.setTextColor(colorPrimaryText);
+            txtDescShort.setBackgroundTintList(ColorStateList.valueOf(ColorUtils.setAlphaComponent(colorPrimary, 60)));
         }
     }
 
@@ -146,9 +226,9 @@ public class GeneralDetails extends AbstractHelper {
     private void drawChanges() {
         String changes = app.getChanges();
         if (TextUtil.isEmpty(changes))
-            setText(view, R.id.changes_upper, context.getString(R.string.details_no_changes));
+            setText(view, R.id.txt_changelog, context.getString(R.string.details_no_changes));
         else
-            setText(view, R.id.changes_upper, Html.fromHtml(changes).toString());
+            setText(view, R.id.txt_changelog, Html.fromHtml(changes).toString());
         show(view, R.id.changes_container);
     }
 
@@ -228,15 +308,15 @@ public class GeneralDetails extends AbstractHelper {
     private void drawDescription() {
         if (context != null) {
             if (TextUtils.isEmpty(app.getDescription())) {
-                hide(view, R.id.more_card);
+                hide(view, R.id.more_layout);
             } else {
-                show(view, R.id.more_card);
+                show(view, R.id.more_layout);
             }
         }
     }
 
     private void setupReadMore() {
-        showLessMoreTxt.setOnClickListener(v -> {
+        imgMore.setOnClickListener(v -> {
             MoreInfoSheet mDetailsFragmentMore = new MoreInfoSheet();
             mDetailsFragmentMore.setApp(app);
             mDetailsFragmentMore.show(fragment.getChildFragmentManager(), "MORE");

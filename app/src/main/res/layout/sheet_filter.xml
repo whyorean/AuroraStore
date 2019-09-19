@@ -140,11 +140,12 @@
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/filter_apply"
                 style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
                 android:layout_gravity="end"
                 android:layout_margin="@dimen/margin_small"
                 android:text="@string/action_filter_apply"
+                android:textAppearance="@style/TextAppearance.Aurora.Button"
                 app:backgroundTint="@color/colorAccent" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

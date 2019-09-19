@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="colorPrimary">@color/colorAccent</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorPrimaryDark">@color/colorWhite</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="toolbarStyle">@style/Widget.Toolbar</item>
         <item name="android:strokeColor">@color/colorGreyLight</item>
@@ -11,6 +12,7 @@
         <item name="android:navigationBarColor">@color/colorPrimaryDark</item>
         <item name="android:windowLightNavigationBar">true</item>
         <item name="android:colorBackground">@color/colorPrimary</item>
+        <item name="colorControlNormal">@color/colorGreyDark</item>
         <item name="chipStyle">@style/Widget.Aurora.FilterChip</item>
         <item name="materialCardViewStyle">@style/Aurora.MaterialComponents.CardView</item>
     </style>
@@ -26,6 +28,7 @@
         <item name="android:navigationBarColor">@color/colorDarkPrimary</item>
         <item name="android:windowLightNavigationBar">false</item>
         <item name="android:colorBackground">@color/colorDarkBackground</item>
+        <item name="colorSurface">@color/colorDarkBackground</item>
         <item name="chipStyle">@style/Widget.Aurora.FilterChip</item>
         <item name="materialCardViewStyle">@style/Aurora.MaterialComponents.CardView.Dark</item>
     </style>
@@ -41,6 +44,7 @@
         <item name="android:navigationBarColor">@color/colorBlack</item>
         <item name="android:windowLightNavigationBar">false</item>
         <item name="android:colorBackground">@color/colorBlack</item>
+        <item name="colorSurface">@color/colorBlack</item>
         <item name="chipStyle">@style/Widget.Aurora.FilterChip</item>
         <item name="materialCardViewStyle">@style/Aurora.MaterialComponents.CardView.Black</item>
     </style>

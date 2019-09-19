@@ -21,17 +21,16 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_marginEnd="@dimen/margin_xsmall"
-    android:layout_width="120dp"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/margin_small"
+    android:layout_marginEnd="@dimen/margin_small"
     app:rippleColor="@color/colorScrim">
 
     <ImageView
         android:id="@+id/app_icon"
         android:layout_width="@dimen/icon_size_big"
         android:layout_height="@dimen/icon_size_big"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/margin_small"
         android:layout_marginBottom="@dimen/margin_xxsmall"
         android:contentDescription="@string/content_description_icon" />
 
@@ -42,25 +41,23 @@
         android:layout_below="@id/app_icon"
         android:layout_alignStart="@id/app_icon"
         android:layout_alignEnd="@id/app_icon"
+        android:layout_marginTop="@dimen/margin_xsmall"
         android:ellipsize="end"
         android:maxLines="1"
         android:textAlignment="viewStart"
         android:textColor="?android:attr/textColorPrimary"
-        android:textSize="16sp"
+        android:textSize="13sp"
         tools:text="Aurora Store" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/app_size"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/app_name"
-        android:layout_alignStart="@id/app_icon"
-        android:layout_alignEnd="@id/app_icon"
         android:layout_marginBottom="@dimen/margin_xxsmall"
         android:ellipsize="end"
         android:maxLines="1"
         android:textAlignment="viewStart"
-        android:textColor="?android:attr/textColorPrimary"
         android:textSize="12sp"
         tools:text="6 MB" />
 
@@ -68,8 +65,11 @@
         android:id="@+id/txt_indicator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
+        android:layout_alignBaseline="@id/app_size"
+        android:layout_toEndOf="@id/app_size"
         android:drawableEnd="@drawable/ic_installed"
+        android:scaleX=".75"
+        android:scaleY=".75"
         android:textAppearance="@style/TextAppearance.AppCompat.Small"
         android:textStyle="normal"
         android:visibility="visible" />

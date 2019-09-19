@@ -91,7 +91,7 @@ public class Video extends AbstractHelper {
                     GlideApp
                             .with(context)
                             .load(jsonObject.getString("thumbnail_url"))
-                            .transforms(new CenterCrop(), new RoundedCorners(15))
+                            .transforms(new CenterCrop(), new RoundedCorners(25))
                             .transition(new DrawableTransitionOptions().crossFade())
                             .into(video_thumbnail);
                 }, throwable -> {

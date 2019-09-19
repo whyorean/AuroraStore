@@ -41,6 +41,7 @@
         android:layout_gravity="bottom"
         app:backgroundTint="?android:colorBackground"
         app:elevation="6dp"
+        app:itemTextAppearanceActive="@style/TextAppearance.Aurora.BottomNav.Active"
+        app:itemTextAppearanceInactive="@style/TextAppearance.Aurora.BottomNav.Inactive"
         app:menu="@menu/navigation" />
-
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

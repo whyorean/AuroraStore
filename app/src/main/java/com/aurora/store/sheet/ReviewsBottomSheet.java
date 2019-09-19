@@ -38,7 +38,8 @@ import com.aurora.store.model.App;
 import com.aurora.store.model.Review;
 import com.aurora.store.task.ReviewsHelper;
 import com.aurora.store.utility.Log;
-import com.aurora.store.view.CustomBottomSheetDialogFragment;
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 import java.util.List;
 
@@ -49,7 +50,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
 
-public class ReviewsBottomSheet extends CustomBottomSheetDialogFragment {
+public class ReviewsBottomSheet extends BottomSheetDialogFragment {
 
     @BindView(R.id.reviews_recycler)
     RecyclerView mRecyclerView;
@@ -61,6 +62,12 @@ public class ReviewsBottomSheet extends CustomBottomSheetDialogFragment {
 
     public ReviewsBottomSheet(App app) {
         this.app = app;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        getDialog().getBehavior().setState(BottomSheetBehavior.STATE_EXPANDED);
     }
 
     @Override

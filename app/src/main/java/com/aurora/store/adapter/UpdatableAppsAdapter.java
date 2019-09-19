@@ -42,6 +42,8 @@ import com.aurora.store.activity.DetailsActivity;
 import com.aurora.store.model.App;
 import com.aurora.store.sheet.AppMenuSheet;
 import com.aurora.store.utility.ViewUtil;
+import com.bumptech.glide.load.resource.bitmap.CenterCrop;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 
 import java.util.ArrayList;
@@ -148,6 +150,7 @@ public class UpdatableAppsAdapter extends RecyclerView.Adapter<UpdatableAppsAdap
                 .with(context)
                 .load(app.getIconInfo().getUrl())
                 .transition(new DrawableTransitionOptions().crossFade())
+                .transforms(new CenterCrop(), new RoundedCorners(25))
                 .into(viewHolder.imgIcon);
 
         viewHolder.imgExpand.setOnClickListener(v -> {

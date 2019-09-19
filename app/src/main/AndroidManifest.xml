@@ -170,6 +170,9 @@
             </intent-filter>
         </receiver>
         <service android:name=".installer.InstallerService" />
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

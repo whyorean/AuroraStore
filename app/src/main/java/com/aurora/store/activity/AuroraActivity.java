@@ -21,6 +21,7 @@
 package com.aurora.store.activity;
 
 import android.Manifest;
+import android.app.StatusBarManager;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -85,7 +86,6 @@ public class AuroraActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         fragmentCur = Util.getDefaultTab(this);
         onNewIntent(getIntent());
-
         if (!PrefUtil.getBoolean(this, Constants.PREFERENCE_DO_NOT_SHOW_INTRO)) {
             PrefUtil.putBoolean(this, Constants.PREFERENCE_DO_NOT_SHOW_INTRO, true);
             startActivity(new Intent(this, IntroActivity.class));

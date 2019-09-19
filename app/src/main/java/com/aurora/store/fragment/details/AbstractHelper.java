@@ -22,11 +22,17 @@ package com.aurora.store.fragment.details;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.annotation.ColorInt;
+import androidx.annotation.IdRes;
+import androidx.core.graphics.ColorUtils;
+import androidx.core.view.ViewCompat;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.aurora.store.Constants;
@@ -154,4 +160,35 @@ public abstract class AbstractHelper {
             Log.e("No WebView found !");
         }
     }
+
+    protected void paintButton(@IdRes int buttonId, @ColorInt int color) {
+        android.widget.Button button = view.findViewById(buttonId);
+        if (button != null)
+            ViewCompat.setBackgroundTintList(button, ColorStateList.valueOf(color));
+    }
+
+    protected void paintTextView(@IdRes int textViewId, @ColorInt int color) {
+        TextView textView = view.findViewById(textViewId);
+        if (textView != null)
+            textView.setTextColor(color);
+    }
+
+    protected void paintTextViewBg(@IdRes int textViewId, @ColorInt int color, int alpha) {
+        TextView textView = view.findViewById(textViewId);
+        if (textView != null)
+            textView.setBackgroundColor(ColorUtils.setAlphaComponent(color, alpha));
+    }
+
+    protected void paintLayout(@IdRes int viewId, @ColorInt int color) {
+        ViewGroup viewGroup = view.findViewById(viewId);
+        if (viewGroup != null)
+            viewGroup.setBackgroundColor(color);
+    }
+
+    protected void paintLayout(@IdRes int viewId, @ColorInt int color, int alpha) {
+        ViewGroup viewGroup = view.findViewById(viewId);
+        if (viewGroup != null)
+            viewGroup.setBackgroundColor(ColorUtils.setAlphaComponent(color, alpha));
+    }
+
 }

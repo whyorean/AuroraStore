@@ -22,7 +22,7 @@
     android:shape="rectangle">
     <size
         android:width="100dp"
-        android:height="100dp" />
-    <corners android:radius="8dp" />
+        android:height="20dp" />
+    <corners android:radius="18dp" />
     <solid android:color="?android:attr/colorBackground" />
 </shape>

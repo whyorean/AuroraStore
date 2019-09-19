@@ -24,6 +24,7 @@ import android.content.Context;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
@@ -61,8 +62,8 @@ import io.reactivex.schedulers.Schedulers;
 
 public class Reviews extends AbstractHelper {
 
-    @BindView(R.id.txt_readAll)
-    TextView txtReadAll;
+    @BindView(R.id.img_review)
+    ImageButton imgReview;
     @BindView(R.id.average_rating)
     TextView txtAverageRating;
     @BindView(R.id.count_stars)
@@ -250,7 +251,7 @@ public class Reviews extends AbstractHelper {
     }
 
     private void setupLoadMore() {
-        txtReadAll.setOnClickListener(v -> {
+        imgReview.setOnClickListener(v -> {
             ReviewsBottomSheet mDetailsFragmentMore = new ReviewsBottomSheet(app);
             mDetailsFragmentMore.show(fragment.getChildFragmentManager(), "REVIEWS");
         });

@@ -40,6 +40,7 @@
         <item name="android:strokeColor">@color/colorGreyLight</item>
         <item name="android:windowBackground">@color/colorDarkWindowBackground</item>
         <item name="android:colorBackground">@color/colorDarkBackground</item>
+        <item name="colorSurface">@color/colorDarkBackground</item>
         <item name="chipStyle">@style/Widget.Aurora.FilterChip</item>
         <item name="materialCardViewStyle">@style/Aurora.MaterialComponents.CardView.Dark</item>
     </style>
@@ -52,6 +53,7 @@
         <item name="android:strokeColor">@color/colorGreyLight</item>
         <item name="android:windowBackground">@color/colorBlack</item>
         <item name="android:colorBackground">@color/colorBlack</item>
+        <item name="colorSurface">@color/colorBlack</item>
         <item name="chipStyle">@style/Widget.Aurora.FilterChip</item>
         <item name="materialCardViewStyle">@style/Aurora.MaterialComponents.CardView.Black</item>
     </style>

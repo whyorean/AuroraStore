@@ -121,7 +121,7 @@ public class ActionButton extends AbstractHelper {
 
     @Override
     public void draw() {
-        boolean isInstalled = PackageUtil.isInstalled(context, app);
+        boolean isInstalled = app.isInstalled();
         hashCode = app.getPackageName().hashCode();
         ViewUtil.setVisibility(btnNegative, isInstalled);
         btnNegative.setOnClickListener(uninstallAppListener());

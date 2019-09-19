@@ -47,7 +47,7 @@ import com.aurora.store.model.App;
 import com.aurora.store.utility.ApkCopier;
 import com.aurora.store.utility.Log;
 import com.aurora.store.utility.PackageUtil;
-import com.aurora.store.view.CustomBottomSheetDialogFragment;
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.android.material.button.MaterialButton;
 
 import butterknife.BindView;
@@ -57,7 +57,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
 
-public class AppMenuSheet extends CustomBottomSheetDialogFragment {
+public class AppMenuSheet extends BottomSheetDialogFragment {
 
     @BindView(R.id.menu_title)
     TextView txtTitle;
@@ -148,7 +148,7 @@ public class AppMenuSheet extends CustomBottomSheetDialogFragment {
         });
 
         btnLocal.setOnClickListener(v -> {
-            disposable.add(Observable.fromCallable(() -> new ApkCopier(context,app)
+            disposable.add(Observable.fromCallable(() -> new ApkCopier(context, app)
                     .copy())
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())

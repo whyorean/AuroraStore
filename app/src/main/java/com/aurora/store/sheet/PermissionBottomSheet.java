@@ -37,7 +37,8 @@ import androidx.annotation.Nullable;
 import com.aurora.store.PermissionGroup;
 import com.aurora.store.R;
 import com.aurora.store.model.App;
-import com.aurora.store.view.CustomBottomSheetDialogFragment;
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -48,7 +49,7 @@ import java.util.Map;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class PermissionBottomSheet extends CustomBottomSheetDialogFragment {
+public class PermissionBottomSheet extends BottomSheetDialogFragment {
 
     @BindView(R.id.permissions_header)
     TextView viewHeader;
@@ -71,6 +72,12 @@ public class PermissionBottomSheet extends CustomBottomSheetDialogFragment {
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         this.context = context;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        getDialog().getBehavior().setState(BottomSheetBehavior.STATE_EXPANDED);
     }
 
     @Override

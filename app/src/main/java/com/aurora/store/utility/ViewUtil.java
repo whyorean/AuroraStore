@@ -32,24 +32,16 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.RotateAnimation;
 import android.widget.TextView;
 
 import androidx.annotation.ColorInt;
-import androidx.annotation.MenuRes;
 import androidx.annotation.NonNull;
-import androidx.appcompat.widget.PopupMenu;
-import androidx.core.view.ViewCompat;
-import androidx.interpolator.view.animation.LinearOutSlowInInterpolator;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.aurora.store.R;
-import com.aurora.store.model.MenuEntry;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -137,22 +129,6 @@ public class ViewUtil {
         setText(v, viewId, v.getResources().getString(stringId, text));
     }
 
-    public static void hideBottomNav(View view, boolean withAnimation) {
-        ViewCompat.animate(view)
-                .translationY(view.getHeight())
-                .setInterpolator(new LinearOutSlowInInterpolator())
-                .setDuration(withAnimation ? ANIMATION_DURATION_SHORT : 0)
-                .start();
-    }
-
-    public static void showBottomNav(View view, boolean withAnimation) {
-        ViewCompat.animate(view)
-                .translationY(0)
-                .setInterpolator(new LinearOutSlowInInterpolator())
-                .setDuration(withAnimation ? ANIMATION_DURATION_SHORT : 0)
-                .start();
-    }
-
     public static void showWithAnimation(View view) {
         final int mShortAnimationDuration = view.getResources().getInteger(
                 android.R.integer.config_shortAnimTime);
@@ -228,17 +204,5 @@ public class ViewUtil {
             view.setVisibility(visibility ? View.VISIBLE : View.INVISIBLE);
         else
             setVisibility(view, visibility);
-    }
-
-    public static List<MenuEntry> parseMenu(Context context, @MenuRes int menuRes) {
-        List<MenuEntry> menuEntryList = new ArrayList<>();
-        PopupMenu p = new PopupMenu(context, null);
-        Menu menu = p.getMenu();
-        new MenuInflater(context).inflate(menuRes, menu);
-        for (int i = 0; i < menu.size(); i++) {
-            MenuItem item = menu.getItem(i);
-            menuEntryList.add(new MenuEntry(item.getTitle().toString(), item.getIcon(), item.getItemId()));
-        }
-        return menuEntryList;
     }
 }

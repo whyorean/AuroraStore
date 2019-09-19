@@ -36,7 +36,6 @@
             android:layout_height="wrap_content"
             android:clipToPadding="false"
             android:overScrollMode="never"
-            android:paddingTop="@dimen/margin_small"
             android:paddingBottom="@dimen/bottom_nav_padding"
             android:scrollbars="none">
 
@@ -47,7 +46,8 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin_small">
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/txt_top_categories"
@@ -91,7 +91,8 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin_small">
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/top_apps_name"
@@ -135,7 +136,8 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin_small">
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/top_apps_games"
@@ -179,7 +181,8 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin_small">
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/top_apps_family"

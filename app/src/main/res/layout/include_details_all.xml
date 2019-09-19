@@ -54,14 +54,14 @@
             android:id="@+id/app_desc_short"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_normal"
-            android:layout_marginBottom="@dimen/margin_normal"
-            android:background="@color/colorScrim"
+            android:layout_margin="@dimen/margin_medium"
+            android:background="@drawable/generic_bg"
             android:gravity="center"
             android:minHeight="56dp"
             android:padding="@dimen/margin_small"
             android:textAlignment="center"
             android:textColor="?android:attr/textColorPrimary"
+            android:textIsSelectable="true"
             android:textSize="16sp"
             android:visibility="gone"
             app:autoSizeMaxTextSize="16sp"
@@ -101,17 +101,17 @@
                 android:id="@+id/app_video"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
+                android:layout_margin="@dimen/margin_medium"
                 android:visibility="gone">
 
-                <ImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/thumbnail"
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
                     android:scaleType="centerCrop"
                     android:src="?android:attr/colorPrimaryDark" />
 
-                <ImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/video_play"
                     android:layout_width="@dimen/icon_size"
                     android:layout_height="@dimen/icon_size"
@@ -139,7 +139,7 @@
                 android:id="@+id/developer_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
+                android:layout_margin="@dimen/margin_medium"
                 android:background="@drawable/generic_padded_bg"
                 android:gravity="start"
                 android:orientation="vertical"
@@ -149,7 +149,5 @@
             <include layout="@layout/include_details_bottom" />
 
         </LinearLayout>
-
     </LinearLayout>
-
 </androidx.core.widget.NestedScrollView>

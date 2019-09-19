@@ -45,9 +45,7 @@
             android:fadingEdgeLength="16dp"
             android:requiresFadingEdge="horizontal"
             android:singleLine="true"
-            android:textAppearance="@style/TextAppearance.Aurora.Toolbar.Title"
-            android:textColor="?android:attr/textColorPrimary"
-            android:textSize="18sp" />
+            android:textAppearance="@style/TextAppearance.Aurora.SubTitle" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/txt_indicator"
@@ -58,6 +56,7 @@
             android:drawablePadding="@dimen/margin_small"
             android:text="@string/action_installed"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textSize="12sp"
             android:textStyle="normal"
             android:visibility="gone" />
     </RelativeLayout>

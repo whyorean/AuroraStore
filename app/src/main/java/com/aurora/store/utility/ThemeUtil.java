@@ -20,6 +20,7 @@
 
 package com.aurora.store.utility;
 
+import android.content.Context;
 import android.content.Intent;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -58,6 +59,17 @@ public class ThemeUtil {
                 return R.style.AppTheme_Black;
             default:
                 return R.style.AppTheme;
+        }
+    }
+
+    public static boolean isLightTheme(Context context) {
+        String theme = Util.getTheme(context);
+        switch (theme) {
+            case "dark":
+            case "black":
+                return false;
+            default:
+                return true;
         }
     }
 

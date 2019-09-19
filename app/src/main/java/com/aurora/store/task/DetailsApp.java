@@ -27,6 +27,7 @@ import com.aurora.store.model.AppBuilder;
 import com.aurora.store.model.Review;
 import com.aurora.store.model.ReviewBuilder;
 import com.aurora.store.utility.Accountant;
+import com.aurora.store.utility.PackageUtil;
 import com.dragons.aurora.playstoreapiv2.DetailsResponse;
 import com.dragons.aurora.playstoreapiv2.ReviewResponse;
 
@@ -51,6 +52,8 @@ public class DetailsApp extends BaseTask {
                 app.setUserReview(review);
             }
         }
+        if (PackageUtil.isInstalled(context, app))
+            app.setInstalled(true);
         return app;
     }
 }

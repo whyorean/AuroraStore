@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Aurora Store
   ~ Copyright (C) 2019, Rahul Kumar Patel <whyorean@gmail.com>
   ~
@@ -19,27 +18,34 @@
   ~
   -->
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/more_card"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/more_layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:animateLayoutChanges="true"
-    android:orientation="vertical"
-    android:transitionGroup="true"
+    android:layout_marginStart="@dimen/margin_medium"
+    android:layout_marginEnd="@dimen/margin_medium"
+    android:layout_marginBottom="@dimen/margin_normal"
     android:visibility="gone">
 
-    <com.google.android.material.chip.Chip
+    <TextView
         android:id="@+id/showLessMoreTxt"
-        style="@style/Widget.MaterialComponents.Chip.Action"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_toStartOf="@id/img_more"
+        android:background="?selectableItemBackground"
+        android:text="@string/details_more"
+        android:textAppearance="@style/TextAppearance.Aurora.SubTitle"
+        android:textSize="18sp" />
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/img_more"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="@string/details_more"
-        android:textSize="14sp"
-        app:chipBackgroundColor="?android:attr/colorBackground"
-        app:chipIcon="@drawable/ic_read_more"
-        app:chipStrokeColor="?android:attr/colorControlNormal"
-        app:chipStrokeWidth=".75dp"
-        app:iconStartPadding="4dp" />
-</LinearLayout>
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:background="?selectableItemBackgroundBorderless"
+        android:padding="@dimen/margin_small"
+        android:src="@drawable/ic_arrow" />
+</RelativeLayout>

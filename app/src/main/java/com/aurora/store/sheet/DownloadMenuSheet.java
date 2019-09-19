@@ -34,7 +34,7 @@ import androidx.annotation.Nullable;
 import com.aurora.store.R;
 import com.aurora.store.download.DownloadManager;
 import com.aurora.store.utility.Util;
-import com.aurora.store.view.CustomBottomSheetDialogFragment;
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.android.material.button.MaterialButton;
 import com.tonyodev.fetch2.Download;
 import com.tonyodev.fetch2.Fetch;
@@ -43,7 +43,7 @@ import com.tonyodev.fetch2.Status;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class DownloadMenuSheet extends CustomBottomSheetDialogFragment {
+public class DownloadMenuSheet extends BottomSheetDialogFragment {
 
     @BindView(R.id.menu_title)
     TextView downloadTitle;

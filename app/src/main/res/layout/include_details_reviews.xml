@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Aurora Store
   ~ Copyright (C) 2019, Rahul Kumar Patel <whyorean@gmail.com>
   ~
@@ -26,7 +25,7 @@
     android:layout_height="wrap_content"
     android:layout_marginTop="10dp"
     android:orientation="vertical"
-    android:visibility="invisible">
+    android:visibility="gone">
 
     <com.google.android.material.chip.Chip
         style="@style/Widget.MaterialComponents.Chip.Action"
@@ -174,21 +173,38 @@
         android:id="@+id/reviews_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="@dimen/margin_xsmall"
+        android:layout_marginStart="@dimen/margin_xsmall"
+        android:layout_marginEnd="@dimen/margin_small"
         android:orientation="vertical" />
 
-    <com.google.android.material.chip.Chip
-        android:id="@+id/txt_readAll"
-        style="@style/Widget.MaterialComponents.Chip.Action"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:id="@+id/more_layout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="@string/details_appReviewsAll"
-        android:textSize="14sp"
-        app:chipBackgroundColor="?android:attr/colorBackground"
-        app:chipIcon="@drawable/ic_read_more"
-        app:chipStrokeColor="?android:attr/colorControlNormal"
-        app:chipStrokeWidth=".75dp"
-        app:iconStartPadding="4dp" />
+        android:layout_marginStart="@dimen/margin_medium"
+        android:layout_marginEnd="@dimen/margin_medium">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center_horizontal"
+            android:layout_toStartOf="@id/img_review"
+            android:background="?selectableItemBackground"
+            android:text="@string/details_appReviewsAll"
+            android:textAppearance="@style/TextAppearance.Aurora.SubTitle"
+            android:textSize="18sp" />
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/img_review"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:background="?selectableItemBackgroundBorderless"
+            android:padding="@dimen/margin_small"
+            android:src="@drawable/ic_arrow" />
+    </RelativeLayout>
 
 </LinearLayout>

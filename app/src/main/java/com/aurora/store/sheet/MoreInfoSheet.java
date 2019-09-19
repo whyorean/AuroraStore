@@ -33,12 +33,13 @@ import androidx.annotation.Nullable;
 
 import com.aurora.store.R;
 import com.aurora.store.model.App;
-import com.aurora.store.view.CustomBottomSheetDialogFragment;
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MoreInfoSheet extends CustomBottomSheetDialogFragment {
+public class MoreInfoSheet extends BottomSheetDialogFragment {
 
     @BindView(R.id.content_readMore)
     TextView contentReadMore;
@@ -53,9 +54,16 @@ public class MoreInfoSheet extends CustomBottomSheetDialogFragment {
     }
 
     @Override
+    public void onStart() {
+        super.onStart();
+        getDialog().getBehavior().setState(BottomSheetBehavior.STATE_EXPANDED);
+    }
+
+    @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.sheet_read_more, container, false);
         ButterKnife.bind(this, view);
+        view.setFitsSystemWindows(true);
         return view;
     }
 

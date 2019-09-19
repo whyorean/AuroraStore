@@ -72,12 +72,12 @@ public class SmallScreenshotsAdapter extends RecyclerView.Adapter<SmallScreensho
         GlideApp.with(context)
                 .load(URLs.get(position)).diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
                 .transition(new DrawableTransitionOptions().crossFade())
-                .transforms(new CenterCrop(), new RoundedCorners(15))
+                .transforms(new CenterCrop(), new RoundedCorners(25))
                 .into(new SimpleTarget<Drawable>() {
                     @Override
                     public void onResourceReady(@NonNull Drawable drawable, @Nullable Transition<? super Drawable> transition) {
                         holder.imageView.getLayoutParams().width = drawable.getIntrinsicWidth();
-                        holder.imageView.getLayoutParams().height = ViewUtil.dpToPx(context, 180);
+                        holder.imageView.getLayoutParams().height = drawable.getIntrinsicHeight();
                         holder.imageView.setImageDrawable(drawable);
                     }
                 });

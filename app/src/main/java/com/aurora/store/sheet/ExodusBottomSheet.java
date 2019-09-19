@@ -40,7 +40,8 @@ import com.aurora.store.adapter.ExodusAdapter;
 import com.aurora.store.model.ExodusTracker;
 import com.aurora.store.model.Report;
 import com.aurora.store.utility.Log;
-import com.aurora.store.view.CustomBottomSheetDialogFragment;
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -55,7 +56,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class ExodusBottomSheet extends CustomBottomSheetDialogFragment {
+public class ExodusBottomSheet extends BottomSheetDialogFragment {
 
     @BindView(R.id.exodus_recycler)
     RecyclerView recyclerView;
@@ -77,6 +78,12 @@ public class ExodusBottomSheet extends CustomBottomSheetDialogFragment {
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         this.context = context;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        getDialog().getBehavior().setState(BottomSheetBehavior.STATE_EXPANDED);
     }
 
     @Nullable

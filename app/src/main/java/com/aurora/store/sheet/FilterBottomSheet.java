@@ -35,14 +35,15 @@ import androidx.core.graphics.ColorUtils;
 import com.aurora.store.Constants;
 import com.aurora.store.R;
 import com.aurora.store.utility.PrefUtil;
-import com.aurora.store.view.CustomBottomSheetDialogFragment;
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class FilterBottomSheet extends CustomBottomSheetDialogFragment {
+public class FilterBottomSheet extends BottomSheetDialogFragment {
 
     @BindView(R.id.rating_chips)
     ChipGroup rating_chips;
@@ -64,6 +65,12 @@ public class FilterBottomSheet extends CustomBottomSheetDialogFragment {
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         this.context = context;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        getDialog().getBehavior().setState(BottomSheetBehavior.STATE_EXPANDED);
     }
 
     @NonNull
