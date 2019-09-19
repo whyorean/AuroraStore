@@ -28,14 +28,6 @@ import com.tonyodev.fetch2.Fetch;
 import com.tonyodev.fetch2.FetchConfiguration;
 import com.tonyodev.fetch2okhttp.OkHttpDownloader;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
-
-import okhttp3.Cookie;
-import okhttp3.CookieJar;
-import okhttp3.HttpUrl;
 import okhttp3.OkHttpClient;
 
 public class DownloadManager {
@@ -72,30 +64,12 @@ public class DownloadManager {
                 .enableRetryOnNetworkGain(true)
                 .enableAutoStart(true)
                 .setAutoRetryMaxAttempts(3)
-                .setProgressReportingInterval(3000)
-                .setInternetAccessUrlCheck("https://ddg.co");
+                .setProgressReportingInterval(5000);
         return Fetch.Impl.getInstance(fetchConfiguration.build());
     }
 
     private static OkHttpClient getOkHttpClient(Context context) {
-        OkHttpClient.Builder builder = new OkHttpClient.Builder()
-                .connectTimeout(20, TimeUnit.SECONDS)
-                .readTimeout(20, TimeUnit.SECONDS)
-                .writeTimeout(20, TimeUnit.SECONDS)
-                .cookieJar(new CookieJar() {
-                    private final HashMap<HttpUrl, List<Cookie>> cookieStore = new HashMap<>();
-
-                    @Override
-                    public void saveFromResponse(HttpUrl url, List<Cookie> cookies) {
-                        cookieStore.put(url, cookies);
-                    }
-
-                    @Override
-                    public List<Cookie> loadForRequest(HttpUrl url) {
-                        List<Cookie> cookies = cookieStore.get(url);
-                        return cookies != null ? cookies : new ArrayList<>();
-                    }
-                });
+        OkHttpClient.Builder builder = new OkHttpClient.Builder();
         if (Util.isNetworkProxyEnabled(context))
             builder.proxy(Util.getNetworkProxy(context));
         return builder.build();
