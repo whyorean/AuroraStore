@@ -42,8 +42,7 @@
         android:text="@string/action_uninstall"
         android:textAppearance="@style/TextAppearance.Aurora.Button"
         android:textColor="@color/colorRed"
-        android:visibility="gone"
-        app:strokeColor="@color/colorRed" />
+        android:visibility="gone"/>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_positive"

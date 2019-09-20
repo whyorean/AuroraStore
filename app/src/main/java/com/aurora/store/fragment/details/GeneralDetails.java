@@ -179,6 +179,7 @@ public class GeneralDetails extends AbstractHelper {
         btnPositive.setStrokeColor(ColorStateList.valueOf(colorPrimary));
 
         if (ThemeUtil.isLightTheme(context)) {
+            btnNegative.setTextColor(colorPrimaryText);
             txtDevName.setTextColor(colorPrimaryText);
             txtNew.setTextColor(colorPrimaryText);
             txtDescShort.setTextColor(colorPrimaryText);

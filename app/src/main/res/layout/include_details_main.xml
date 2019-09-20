@@ -61,6 +61,7 @@
             android:marqueeRepeatLimit="marquee_forever"
             android:scrollHorizontally="true"
             android:singleLine="true"
+            android:textStyle="bold"
             android:textSize="14sp" />
 
         <androidx.appcompat.widget.AppCompatTextView
