@@ -42,7 +42,6 @@ import com.aurora.store.R;
 import com.aurora.store.activity.AuroraActivity;
 import com.aurora.store.receiver.UpdatesReceiver;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 import com.tonyodev.fetch2.Status;
 import com.tonyodev.fetch2core.Downloader;
 
@@ -170,32 +169,6 @@ public class Util {
         int styledColor = arr.getColor(0, -1);
         arr.recycle();
         return styledColor;
-    }
-
-    public static GooglePlayAPI.SUBCATEGORY getSubCategory(Context context) {
-        switch (PrefUtil.getString(context, "PREFERENCE_SUBCATEGORY")) {
-            case "1":
-                return GooglePlayAPI.SUBCATEGORY.TOP_FREE;
-            case "2":
-                return GooglePlayAPI.SUBCATEGORY.TOP_GROSSING;
-            case "3":
-                return GooglePlayAPI.SUBCATEGORY.MOVERS_SHAKERS;
-            default:
-                return GooglePlayAPI.SUBCATEGORY.TOP_FREE;
-        }
-    }
-
-    public static GooglePlayAPI.SUBCATEGORY getSubCategory(String subcategory) {
-        switch (subcategory) {
-            case "TOP_FREE":
-                return GooglePlayAPI.SUBCATEGORY.TOP_FREE;
-            case "TOP_GROSSING":
-                return GooglePlayAPI.SUBCATEGORY.TOP_GROSSING;
-            case "MOVERS_SHAKERS":
-                return GooglePlayAPI.SUBCATEGORY.MOVERS_SHAKERS;
-            default:
-                return GooglePlayAPI.SUBCATEGORY.TOP_FREE;
-        }
     }
 
     @NonNull
