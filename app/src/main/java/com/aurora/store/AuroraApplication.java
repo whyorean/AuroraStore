@@ -28,6 +28,7 @@ import com.aurora.store.installer.Installer;
 import com.aurora.store.installer.InstallerService;
 import com.aurora.store.installer.Uninstaller;
 import com.aurora.store.model.App;
+import com.aurora.store.utility.Util;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -102,6 +103,7 @@ public class AuroraApplication extends Application {
         super.onCreate();
         installer = new Installer(this);
         uninstaller = new Uninstaller(this);
+        Util.clearOldInstallationSessions(this);
         registerReceiver(installer.getPackageInstaller().getBroadcastReceiver(),
                 new IntentFilter(InstallerService.ACTION_INSTALLATION_STATUS_NOTIFICATION));
         RxJavaPlugins.setErrorHandler(err -> {

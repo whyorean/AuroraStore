@@ -130,6 +130,7 @@ public class InstallationFragment extends PreferenceFragmentCompat implements Sh
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
         switch (key) {
+            case Constants.PREFERENCE_INSTALLATION_TYPE:
             case Constants.PREFERENCE_INSTALLATION_METHOD:
                 SettingsActivity.shouldRestart = true;
                 break;

@@ -42,7 +42,7 @@ public class AppInstaller extends AppInstallerAbstract {
 
     private static AppInstaller instance;
 
-    AppInstaller(Context context) {
+    public AppInstaller(Context context) {
         super(context);
         instance = this;
     }
@@ -57,22 +57,22 @@ public class AppInstaller extends AppInstallerAbstract {
     }
 
     @Override
-    protected void installApkFiles(List<File> apkFiles) {
-        PackageInstaller packageInstaller = getContext().getPackageManager().getPackageInstaller();
+    protected void installApkFiles(String packageName, List<File> apkFiles) {
+        final PackageInstaller packageInstaller = getContext().getPackageManager().getPackageInstaller();
         try {
-            PackageInstaller.SessionParams sessionParams = new PackageInstaller.SessionParams(PackageInstaller.SessionParams.MODE_FULL_INSTALL);
-            int sessionID = packageInstaller.createSession(sessionParams);
-            PackageInstaller.Session session = packageInstaller.openSession(sessionID);
+            final PackageInstaller.SessionParams sessionParams = new PackageInstaller.SessionParams(PackageInstaller.SessionParams.MODE_FULL_INSTALL);
+            final int sessionID = packageInstaller.createSession(sessionParams);
+            final PackageInstaller.Session session = packageInstaller.openSession(sessionID);
             for (File apkFile : apkFiles) {
-                InputStream inputStream = new FileInputStream(apkFile);
-                OutputStream outputStream = session.openWrite(apkFile.getName(), 0, apkFile.length());
+                final InputStream inputStream = new FileInputStream(apkFile);
+                final OutputStream outputStream = session.openWrite(apkFile.getName(), 0, apkFile.length());
                 IOUtils.copy(inputStream, outputStream);
                 session.fsync(outputStream);
                 inputStream.close();
                 outputStream.close();
             }
-            Intent callbackIntent = new Intent(getContext(), InstallerService.class);
-            PendingIntent pendingIntent = PendingIntent.getService(
+            final Intent callbackIntent = new Intent(getContext(), InstallerService.class);
+            final PendingIntent pendingIntent = PendingIntent.getService(
                     getContext(),
                     sessionID,
                     callbackIntent,

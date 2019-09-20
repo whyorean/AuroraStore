@@ -73,7 +73,7 @@ public abstract class AppInstallerAbstract {
         return context;
     }
 
-    protected abstract void installApkFiles(List<File> apkFiles);
+    protected abstract void installApkFiles(String packageName,List<File> apkFiles);
 
     public interface InstallationStatusListener {
         void onStatusChanged(int status, @Nullable String packageName);

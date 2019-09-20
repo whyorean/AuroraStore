@@ -57,6 +57,10 @@ public class Installer implements AppInstallerAbstract.InstallationStatusListene
     private Context context;
     private Map<String, App> appHashMap = new HashMap<>();
     private AppInstallerAbstract packageInstaller;
+    private List<App> installationQueue = new ArrayList<>();
+
+    private boolean isInstalling = false;
+    private boolean isWaiting = false;
 
     public Installer(Context context) {
         this.context = context;
@@ -69,9 +73,19 @@ public class Installer implements AppInstallerAbstract.InstallationStatusListene
 
     public void install(App app) {
         appHashMap.put(app.getPackageName(), app);
-        String packageName = app.getPackageName();
-        int versionCode = app.getVersionCode();
+        installationQueue.add(app);
 
+        if (isInstalling)
+            isWaiting = true;
+        else
+            processApp(app);
+    }
+
+    private void processApp(App app) {
+        final String packageName = app.getPackageName();
+        final int versionCode = app.getVersionCode();
+        isInstalling = true;
+        installationQueue.remove(app);
         if (Util.isNativeInstallerEnforced(context))
             install(packageName, versionCode);
         else
@@ -133,6 +147,7 @@ public class Installer implements AppInstallerAbstract.InstallationStatusListene
                             statusMessage,
                             getContentIntent(intentPackageName));
                     sendLocalBroadcast(intentPackageName, 0);
+                    checkAndProcessQueuedApps();
                     break;
                 case PackageInstaller.STATUS_SUCCESS:
                     QuickNotification.show(
@@ -146,10 +161,21 @@ public class Installer implements AppInstallerAbstract.InstallationStatusListene
                             clearInstallationFiles(app);
                         appHashMap.remove(intentPackageName);
                     }
+                    checkAndProcessQueuedApps();
                     break;
             }
         });
-        packageInstaller.installApkFiles(apkFiles);
+        packageInstaller.installApkFiles(packageName, apkFiles);
+    }
+
+    private void checkAndProcessQueuedApps() {
+        if (installationQueue.isEmpty()) {
+            isWaiting = false;
+            isInstalling = false;
+        }
+
+        if (isWaiting)
+            processApp(installationQueue.get(0));
     }
 
     private void clearInstallationFiles(@NonNull App app) {

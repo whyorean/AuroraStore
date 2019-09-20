@@ -31,8 +31,6 @@ import com.aurora.store.utility.Log;
 import com.aurora.store.utility.Root;
 import com.aurora.store.utility.Util;
 
-import org.apache.commons.io.FilenameUtils;
-
 import java.io.File;
 import java.util.List;
 import java.util.Locale;
@@ -62,10 +60,8 @@ public class AppInstallerRooted extends AppInstallerAbstract {
     }
 
     @Override
-    protected void installApkFiles(List<File> apkFiles) {
+    protected void installApkFiles(String packageName, List<File> apkFiles) {
         try {
-
-            final String packageName = getPackageName(apkFiles.get(0));
             if (root.isTerminated() || !root.isAcquired()) {
                 Root.requestRoot();
                 if (!root.isAcquired()) {
@@ -114,15 +110,5 @@ public class AppInstallerRooted extends AppInstallerAbstract {
         if (result == null || result.length() == 0)
             throw new RuntimeException(root.readError());
         return result;
-    }
-
-    private String getPackageName(File fileName) {
-        final String baseName = FilenameUtils.getBaseName(fileName.getName());
-        Pattern pattern = Pattern.compile("(.*)[^.0-9]");
-        Matcher matcher = pattern.matcher(baseName);
-        if (matcher.find())
-            return matcher.group(0);
-        else
-            return "unknown";
     }
 }

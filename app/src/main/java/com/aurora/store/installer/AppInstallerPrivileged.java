@@ -86,7 +86,7 @@ public class AppInstallerPrivileged extends AppInstallerAbstract {
     }
 
     @Override
-    protected void installApkFiles(List<File> apkFiles) {
+    protected void installApkFiles(String packageName, List<File> apkFiles) {
         if (!isServiceOnline(getContext())) {
             ContextUtil.runOnUiThread(this::showDisconnectedServicesDialog);
             return;

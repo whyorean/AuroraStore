@@ -36,7 +36,6 @@ import android.widget.ViewSwitcher;
 
 import com.aurora.store.AuroraApplication;
 import com.aurora.store.R;
-import com.aurora.store.activity.ManualDownloadActivity;
 import com.aurora.store.download.DownloadManager;
 import com.aurora.store.download.RequestBuilder;
 import com.aurora.store.exception.NotPurchasedException;
@@ -113,14 +112,9 @@ public class ActionButton extends AbstractHelper {
         ButterKnife.bind(this, view);
     }
 
-    public ActionButton(ManualDownloadActivity activity, App app) {
-        super(activity, app);
-        ButterKnife.bind(this, activity);
-    }
-
     @Override
     public void draw() {
-        boolean isInstalled = app.isInstalled();
+        boolean isInstalled = PackageUtil.isInstalled(context, app);
         hashCode = app.getPackageName().hashCode();
         ViewUtil.setVisibility(btnNegative, isInstalled);
         btnNegative.setOnClickListener(uninstallAppListener());
