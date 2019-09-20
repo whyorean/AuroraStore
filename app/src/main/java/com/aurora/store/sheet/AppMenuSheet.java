@@ -26,9 +26,9 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -48,7 +48,7 @@ import com.aurora.store.utility.ApkCopier;
 import com.aurora.store.utility.Log;
 import com.aurora.store.utility.PackageUtil;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
-import com.google.android.material.button.MaterialButton;
+import com.google.android.material.navigation.NavigationView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -59,20 +59,8 @@ import io.reactivex.schedulers.Schedulers;
 
 public class AppMenuSheet extends BottomSheetDialogFragment {
 
-    @BindView(R.id.menu_title)
-    TextView txtTitle;
-    @BindView(R.id.btn_fav)
-    MaterialButton btnFav;
-    @BindView(R.id.btn_blacklist)
-    MaterialButton btnBlacklist;
-    @BindView(R.id.btn_local_apk)
-    MaterialButton btnLocal;
-    @BindView(R.id.btn_manual)
-    MaterialButton btnManual;
-    @BindView(R.id.btn_uninstall)
-    MaterialButton btnUninstall;
-    @BindView(R.id.btn_app_info)
-    MaterialButton btnAppInfo;
+    @BindView(R.id.navigation_view)
+    NavigationView navigationView;
 
     private App app;
     private Context context;
@@ -110,77 +98,76 @@ public class AppMenuSheet extends BottomSheetDialogFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        txtTitle.setText(app.getDisplayName());
-
-        btnUninstall.setVisibility(PackageUtil.isInstalled(context, app) ? View.VISIBLE : View.GONE);
-        btnLocal.setVisibility(PackageUtil.isInstalled(context, app) ? View.VISIBLE : View.GONE);
 
         final FavouriteListManager favouriteListManager = new FavouriteListManager(context);
         boolean isFav = favouriteListManager.contains(app.getPackageName());
-        btnFav.setText(isFav ? R.string.details_favourite_remove : R.string.details_favourite_add);
-        btnFav.setOnClickListener(v -> {
-            if (isFav) {
-                favouriteListManager.remove(app.getPackageName());
-            } else {
-                favouriteListManager.add(app.getPackageName());
-            }
-            dismissAllowingStateLoss();
-        });
+        MenuItem favMenu = navigationView.getMenu().findItem(R.id.action_fav);
+        favMenu.setTitle(isFav ? R.string.details_favourite_remove : R.string.details_favourite_add);
 
         final BlacklistManager blacklistManager = new BlacklistManager(context);
         boolean isBlacklisted = blacklistManager.contains(app.getPackageName());
-        btnBlacklist.setText(isBlacklisted ? R.string.action_whitelist : R.string.action_blacklist);
-        btnBlacklist.setOnClickListener(v -> {
-            if (isBlacklisted) {
-                blacklistManager.remove(app.getPackageName());
-                Toast.makeText(context, context.getString(R.string.toast_apk_whitelisted),
-                        Toast.LENGTH_SHORT).show();
-            } else {
-                blacklistManager.add(app.getPackageName());
-                Toast.makeText(context, context.getString(R.string.toast_apk_blacklisted),
-                        Toast.LENGTH_SHORT).show();
-                if (adapter instanceof InstalledAppsAdapter)
-                    ((InstalledAppsAdapter) adapter).remove(app);
-                if (adapter instanceof UpdatableAppsAdapter)
-                    ((UpdatableAppsAdapter) adapter).remove(app);
+        MenuItem blackListMenu = navigationView.getMenu().findItem(R.id.action_blacklist);
+        blackListMenu.setTitle(isBlacklisted ? R.string.action_whitelist : R.string.action_blacklist);
+
+        boolean installed = PackageUtil.isInstalled(context, app);
+        navigationView.getMenu().findItem(R.id.action_uninstall).setVisible(installed);
+        navigationView.getMenu().findItem(R.id.action_local).setVisible(installed);
+        navigationView.getMenu().findItem(R.id.action_info).setVisible(installed);
+
+        navigationView.setNavigationItemSelectedListener(item -> {
+            switch (item.getItemId()) {
+                case R.id.action_fav:
+                    if (isFav) {
+                        favouriteListManager.remove(app.getPackageName());
+                    } else {
+                        favouriteListManager.add(app.getPackageName());
+                    }
+                    break;
+                case R.id.action_blacklist:
+                    if (isBlacklisted) {
+                        blacklistManager.remove(app.getPackageName());
+                        Toast.makeText(context, context.getString(R.string.toast_apk_whitelisted),
+                                Toast.LENGTH_SHORT).show();
+                    } else {
+                        blacklistManager.add(app.getPackageName());
+                        Toast.makeText(context, context.getString(R.string.toast_apk_blacklisted),
+                                Toast.LENGTH_SHORT).show();
+                        if (adapter instanceof InstalledAppsAdapter)
+                            ((InstalledAppsAdapter) adapter).remove(app);
+                        if (adapter instanceof UpdatableAppsAdapter)
+                            ((UpdatableAppsAdapter) adapter).remove(app);
+                    }
+                    break;
+                case R.id.action_local:
+                    disposable.add(Observable.fromCallable(() -> new ApkCopier(context, app)
+                            .copy())
+                            .subscribeOn(Schedulers.io())
+                            .observeOn(AndroidSchedulers.mainThread())
+                            .subscribe(success -> {
+                                Toast.makeText(context, success
+                                        ? context.getString(R.string.toast_apk_copy_success)
+                                        : context.getString(R.string.toast_apk_copy_failure), Toast.LENGTH_SHORT)
+                                        .show();
+                            }));
+                    break;
+                case R.id.action_manual:
+                    DetailsFragment.app = app;
+                    context.startActivity(new Intent(context, ManualDownloadActivity.class));
+                    break;
+                case R.id.action_uninstall:
+                    AuroraApplication.getUninstaller().uninstall(app);
+                    break;
+                case R.id.action_info:
+                    try {
+                        context.startActivity(new Intent("android.settings.APPLICATION_DETAILS_SETTINGS",
+                                Uri.parse("package:" + app.getPackageName())));
+                    } catch (ActivityNotFoundException e) {
+                        Log.e("Could not find system app activity");
+                    }
+                    break;
             }
             dismissAllowingStateLoss();
-        });
-
-        btnLocal.setOnClickListener(v -> {
-            disposable.add(Observable.fromCallable(() -> new ApkCopier(context, app)
-                    .copy())
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(success -> {
-                        Toast.makeText(context, success
-                                ? context.getString(R.string.toast_apk_copy_success)
-                                : context.getString(R.string.toast_apk_copy_failure), Toast.LENGTH_SHORT)
-                                .show();
-                    }));
-            dismissAllowingStateLoss();
-        });
-
-        btnManual.setOnClickListener(v -> {
-            DetailsFragment.app = app;
-            context.startActivity(new Intent(context, ManualDownloadActivity.class));
-            dismissAllowingStateLoss();
-        });
-
-        btnUninstall.setOnClickListener(v -> {
-            AuroraApplication.getUninstaller().uninstall(app);
-            dismissAllowingStateLoss();
-        });
-
-        btnAppInfo.setVisibility(PackageUtil.isInstalled(context, app) ? View.VISIBLE : View.GONE);
-        btnAppInfo.setOnClickListener(v -> {
-            try {
-                context.startActivity(new Intent("android.settings.APPLICATION_DETAILS_SETTINGS",
-                        Uri.parse("package:" + app.getPackageName())));
-            } catch (ActivityNotFoundException e) {
-                Log.e("Could not find system app activity");
-            }
-            dismissAllowingStateLoss();
+            return false;
         });
     }
 }

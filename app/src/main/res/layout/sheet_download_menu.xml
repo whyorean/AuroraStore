@@ -18,64 +18,15 @@
   ~
   -->
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/coordinator"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:targetApi="o">
+    android:layout_height="match_parent">
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/menu_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="@dimen/margin_normal"
-        android:layout_marginBottom="@dimen/margin_small"
-        android:ellipsize="end"
-        android:maxLines="1"
-        android:paddingHorizontal="@dimen/margin_normal"
-        android:textAppearance="@style/TextAppearance.Aurora.DialogTitle" />
-
-    <LinearLayout
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navigation_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_copy"
-            style="@style/Widget.Button.Aurora.Menu"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/action_copy" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_pause"
-            style="@style/Widget.Button.Aurora.Menu"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/action_pause" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_resume"
-            style="@style/Widget.Button.Aurora.Menu"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/action_resume" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_cancel"
-            style="@style/Widget.Button.Aurora.Menu"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/action_cancel" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_clear"
-            style="@style/Widget.Button.Aurora.Menu"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/action_clear" />
-    </LinearLayout>
-</LinearLayout>
+        app:itemTextAppearance="@style/TextAppearance.Aurora.Button"
+        app:menu="@menu/menu_action_downloads" />
+</FrameLayout>

@@ -143,7 +143,6 @@ public class DownloadsAdapter extends RecyclerView.Adapter<DownloadsAdapter.View
         });
 
         viewHolder.itemView.setOnLongClickListener(v -> {
-            menuSheet.setTitle(displayName);
             menuSheet.setDownload(downloadData.download);
             menuSheet.show(((DownloadsActivity) context).getSupportFragmentManager(), "DOWNLOAD_SHEET");
             return false;

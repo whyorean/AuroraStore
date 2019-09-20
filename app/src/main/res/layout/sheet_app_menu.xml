@@ -18,70 +18,15 @@
   ~
   -->
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:targetApi="o">
+    android:layout_height="match_parent">
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/menu_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="@dimen/margin_normal"
-        android:layout_marginBottom="@dimen/margin_small"
-        android:ellipsize="end"
-        android:maxLines="1"
-        android:paddingHorizontal="@dimen/margin_normal"
-        android:textAppearance="@style/TextAppearance.Aurora.DialogTitle" />
-
-    <LinearLayout
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navigation_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_fav"
-            style="@style/Widget.Button.Aurora.Menu"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/details_favourite_add" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_blacklist"
-            style="@style/Widget.Button.Aurora.Menu"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/action_blacklist" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_local_apk"
-            style="@style/Widget.Button.Aurora.Menu"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/action_get_local_apk" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_manual"
-            style="@style/Widget.Button.Aurora.Menu"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/action_manual" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_uninstall"
-            style="@style/Widget.Button.Aurora.Menu"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/action_uninstall" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_app_info"
-            style="@style/Widget.Button.Aurora.Menu"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/action_info" />
-    </LinearLayout>
-</LinearLayout>
+        app:itemTextAppearance="@style/TextAppearance.Aurora.Button"
+        app:menu="@menu/menu_action_apps" />
+</FrameLayout>

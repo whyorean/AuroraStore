@@ -25,7 +25,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -35,7 +34,7 @@ import com.aurora.store.R;
 import com.aurora.store.download.DownloadManager;
 import com.aurora.store.utility.Util;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
-import com.google.android.material.button.MaterialButton;
+import com.google.android.material.navigation.NavigationView;
 import com.tonyodev.fetch2.Download;
 import com.tonyodev.fetch2.Fetch;
 import com.tonyodev.fetch2.Status;
@@ -45,20 +44,9 @@ import butterknife.ButterKnife;
 
 public class DownloadMenuSheet extends BottomSheetDialogFragment {
 
-    @BindView(R.id.menu_title)
-    TextView downloadTitle;
-    @BindView(R.id.btn_copy)
-    MaterialButton btnCopy;
-    @BindView(R.id.btn_pause)
-    MaterialButton btnPause;
-    @BindView(R.id.btn_resume)
-    MaterialButton btnResume;
-    @BindView(R.id.btn_cancel)
-    MaterialButton btnCancel;
-    @BindView(R.id.btn_clear)
-    MaterialButton btnClear;
+    @BindView(R.id.navigation_view)
+    NavigationView navigationView;
 
-    private String title;
     private Context context;
     private Fetch fetch;
     private Download download;
@@ -74,13 +62,6 @@ public class DownloadMenuSheet extends BottomSheetDialogFragment {
         this.download = download;
     }
 
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -99,53 +80,49 @@ public class DownloadMenuSheet extends BottomSheetDialogFragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         fetch = DownloadManager.getFetchInstance(context);
-        downloadTitle.setText(getTitle());
 
         if (download.getStatus() == Status.PAUSED
                 || download.getStatus() == Status.COMPLETED
                 || download.getStatus() == Status.CANCELLED) {
-            btnPause.setVisibility(View.GONE);
+            navigationView.getMenu().findItem(R.id.action_pause).setVisible(false);
         }
 
         if (download.getStatus() == Status.DOWNLOADING
                 || download.getStatus() == Status.COMPLETED
                 || download.getStatus() == Status.QUEUED) {
-            btnResume.setVisibility(View.GONE);
+            navigationView.getMenu().findItem(R.id.action_resume).setVisible(false);
         }
 
         if (download.getStatus() == Status.COMPLETED
                 || download.getStatus() == Status.CANCELLED) {
-            btnCancel.setVisibility(View.GONE);
+            navigationView.getMenu().findItem(R.id.action_cancel).setVisible(false);
         }
 
-        btnCopy.setOnClickListener(v -> {
-            Util.copyToClipBoard(context, download.getUrl());
-            Toast.makeText(context, context.getString(R.string.action_copied), Toast.LENGTH_LONG).show();
+        navigationView.setNavigationItemSelectedListener(item -> {
+            switch (item.getItemId()) {
+                case R.id.action_copy:
+                    Util.copyToClipBoard(context, download.getUrl());
+                    Toast.makeText(context, context.getString(R.string.action_copied), Toast.LENGTH_LONG).show();
+                    break;
+                case R.id.action_pause:
+                    fetch.pause(download.getId());
+                    break;
+                case R.id.action_resume:
+                    if (download.getStatus() == Status.FAILED
+                            || download.getStatus() == Status.CANCELLED)
+                        fetch.retry(download.getId());
+                    else
+                        fetch.resume(download.getId());
+                    break;
+                case R.id.action_cancel:
+                    fetch.cancel(download.getId());
+                    break;
+                case R.id.action_clear:
+                    fetch.delete(download.getId());
+                    break;
+            }
             dismissAllowingStateLoss();
-        });
-
-        btnPause.setOnClickListener(v -> {
-            fetch.pause(download.getId());
-            dismissAllowingStateLoss();
-        });
-
-        btnResume.setOnClickListener(v -> {
-            if (download.getStatus() == Status.FAILED
-                    || download.getStatus() == Status.CANCELLED)
-                fetch.retry(download.getId());
-            else
-                fetch.resume(download.getId());
-            dismissAllowingStateLoss();
-        });
-
-        btnCancel.setOnClickListener(v -> {
-            fetch.cancel(download.getId());
-            dismissAllowingStateLoss();
-        });
-
-        btnClear.setOnClickListener(v -> {
-            fetch.delete(download.getId());
-            dismissAllowingStateLoss();
+            return false;
         });
     }
 }

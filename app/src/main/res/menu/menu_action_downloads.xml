@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/action_copy"
+        android:title="@string/action_copy" />
+    <item
+        android:id="@+id/action_pause"
+        android:title="@string/action_pause" />
+    <item
+        android:id="@+id/action_resume"
+        android:title="@string/action_resume" />
+    <item
+        android:id="@+id/action_cancel"
+        android:title="@string/action_cancel" />
+    <item
+        android:id="@+id/action_clear"
+        android:title="@string/action_clear" />
+</menu>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/action_fav"
+        android:title="@string/details_favourite_add" />
+    <item
+        android:id="@+id/action_blacklist"
+        android:title="@string/action_blacklist" />
+    <item
+        android:id="@+id/action_local"
+        android:title="@string/action_get_local_apk" />
+    <item
+        android:id="@+id/action_manual"
+        android:title="@string/action_manual" />
+    <item
+        android:id="@+id/action_uninstall"
+        android:title="@string/action_uninstall" />
+    <item
+        android:id="@+id/action_info"
+        android:title="@string/action_info" />
+</menu>
