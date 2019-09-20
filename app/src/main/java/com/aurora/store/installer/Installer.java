@@ -142,7 +142,8 @@ public class Installer implements AppInstallerAbstract.InstallationStatusListene
                             getContentIntent(intentPackageName));
                     sendLocalBroadcast(intentPackageName, 1);
                     if (app != null) {
-                        clearInstallationFiles(app);
+                        if (Util.shouldDeleteApk(context))
+                            clearInstallationFiles(app);
                         appHashMap.remove(intentPackageName);
                     }
                     break;
