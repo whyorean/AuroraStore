@@ -23,9 +23,7 @@ package com.aurora.store.download;
 import android.content.Context;
 
 import com.aurora.store.model.App;
-import com.aurora.store.utility.PackageUtil;
 import com.aurora.store.utility.PathUtil;
-import com.aurora.store.utility.SplitUtil;
 import com.aurora.store.utility.TextUtil;
 import com.aurora.store.utility.Util;
 import com.dragons.aurora.playstoreapiv2.AndroidAppDeliveryData;
@@ -62,23 +60,6 @@ public class RequestBuilder {
         else
             request.setNetworkType(NetworkType.ALL);
         request.setTag(app.getPackageName());
-        return request;
-    }
-
-    /*
-     *
-     * Build Simple App Download Request from URL and GroupId
-     * @param Context - Application Context
-     * @param App -  App object
-     * @param Url -  APK Url
-     * @param groupId - Request GroupId
-     * @return Request
-     *
-     */
-
-    public static Request buildRequest(Context context, App app, String apkURL, int groupId) {
-        Request request = buildRequest(context, app, apkURL);
-        request.setGroupId(groupId);
         return request;
     }
 
@@ -123,29 +104,6 @@ public class RequestBuilder {
         for (Split split : splitList) {
             final Request request = buildSplitRequest(context, app, split);
             requestList.add(request);
-        }
-        return requestList;
-    }
-
-    /*
-     *
-     * Build Bundled App Download RequestList from SplitList and GroupId
-     * Build Bundled App Download RequestList from SplitList
-     * @param Context - Application Context
-     * @param App -  App object
-     * @param List<Split> -  List of Split Objects
-     * @param groupId - Request GroupId
-     * @return RequestList
-     *
-     */
-
-    public static List<Request> buildSplitRequestList(Context context, App app,
-                                                      List<Split> splitList, int id) {
-        List<Request> requestList = new ArrayList<>();
-        for (Split split : splitList) {
-            final Request splitRequest = buildSplitRequest(context, app, split);
-            splitRequest.setGroupId(id);
-            requestList.add(splitRequest);
         }
         return requestList;
     }
@@ -204,36 +162,6 @@ public class RequestBuilder {
                 requestList.add(buildObbRequest(context, app, obbFileMetadata.getDownloadUrlGzipped(), false, true));
         }
         return requestList;
-    }
-
-    /*
-     *
-     * Build Bulk RequestList from DeliveryDataList, AppList and GroupId
-     * @param Context - Application Context
-     * @param List<AndroidAppDeliveryData> -  List of AndroidAppDeliveryData objects
-     * @param List<App> -  List of App Objects
-     * @param groupId - Request GroupId
-     *
-     */
-    public static List<Request> getBulkRequestList(Context context,
-                                                   List<AndroidAppDeliveryData> deliveryDataList,
-                                                   List<App> appList, int groupId) {
-        List<Request> mRequestList = new ArrayList<>();
-        for (int i = 0; i < deliveryDataList.size(); i++) {
-            final List<Split> splitList = deliveryDataList.get(i).getSplitList();
-            final App app = appList.get(i);
-            if (!splitList.isEmpty()) {
-                mRequestList.addAll(buildSplitRequestList(context, app, splitList, groupId));
-                SplitUtil.addToList(context, app.getPackageName());
-            }
-            mRequestList.add(buildRequest(context, app,
-                    deliveryDataList.get(i).getDownloadUrl(), groupId));
-
-            //Add <PackageName,DisplayName> and <PackageName,IconURL> to PseudoMaps
-            PackageUtil.addToPseudoPackageMap(context, app.getPackageName(), app.getDisplayName());
-            PackageUtil.addToPseudoURLMap(context, app.getPackageName(), app.getIconInfo().getUrl());
-        }
-        return mRequestList;
     }
 }
 

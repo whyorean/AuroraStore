@@ -39,7 +39,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.aurora.store.AuroraApplication;
-import com.aurora.store.Constants;
 import com.aurora.store.ErrorType;
 import com.aurora.store.R;
 import com.aurora.store.adapter.UpdatableAppsAdapter;
@@ -52,7 +51,7 @@ import com.aurora.store.task.ObservableDeliveryData;
 import com.aurora.store.task.UpdatableAppsTask;
 import com.aurora.store.utility.ContextUtil;
 import com.aurora.store.utility.Log;
-import com.aurora.store.utility.PrefUtil;
+import com.aurora.store.utility.Util;
 import com.aurora.store.utility.ViewUtil;
 import com.aurora.store.view.CustomSwipeToRefresh;
 import com.google.android.material.snackbar.Snackbar;
@@ -244,6 +243,7 @@ public class UpdatesFragment extends BaseFragment {
             cancelAllRequests();
             AuroraApplication.setOngoingUpdateList(new ArrayList<>());
             AuroraApplication.setOnGoingUpdate(false);
+            Util.clearOldInstallationSessions(context);
             ContextUtil.runOnUiThread(() -> drawButtons());
         };
     }

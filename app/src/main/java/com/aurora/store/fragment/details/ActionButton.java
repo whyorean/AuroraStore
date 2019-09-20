@@ -49,7 +49,6 @@ import com.aurora.store.utility.ContextUtil;
 import com.aurora.store.utility.Log;
 import com.aurora.store.utility.PackageUtil;
 import com.aurora.store.utility.PathUtil;
-import com.aurora.store.utility.SplitUtil;
 import com.aurora.store.utility.Util;
 import com.aurora.store.utility.ViewUtil;
 import com.dragons.aurora.playstoreapiv2.AndroidAppDeliveryData;
@@ -298,10 +297,6 @@ public class ActionButton extends AbstractHelper {
         requestList.add(request);
         requestList.addAll(splitList);
         requestList.addAll(obbList);
-
-        if (!splitList.isEmpty()) {
-            SplitUtil.addToList(context, app.getPackageName());
-        }
 
         fetchListener = getFetchListener();
         fetch.addListener(fetchListener);

@@ -3,7 +3,6 @@ package com.aurora.store.fragment.preference;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.PackageInstaller;
 import android.os.Bundle;
 import android.view.View;
 
@@ -17,7 +16,6 @@ import com.aurora.store.Constants;
 import com.aurora.store.R;
 import com.aurora.store.activity.SettingsActivity;
 import com.aurora.store.utility.ContextUtil;
-import com.aurora.store.utility.Log;
 import com.aurora.store.utility.PackageUtil;
 import com.aurora.store.utility.PathUtil;
 import com.aurora.store.utility.PrefUtil;
@@ -110,16 +108,7 @@ public class InstallationFragment extends PreferenceFragmentCompat implements Sh
         Preference abandonPreference = findPreference(Constants.PREFERENCE_INSTALLATION_ABANDON_SESSION);
         assert abandonPreference != null;
         abandonPreference.setOnPreferenceClickListener(preference -> {
-            final PackageInstaller packageInstaller = context.getPackageManager().getPackageInstaller();
-            for (PackageInstaller.SessionInfo sessionInfo : packageInstaller.getMySessions()) {
-                final int sessionId = sessionInfo.getSessionId();
-                try {
-                    packageInstaller.abandonSession(sessionInfo.getSessionId());
-                    Log.e("Abandoned session id -> %d", sessionId);
-                } catch (Exception e) {
-                    Log.e("Unable to abandon session id ->", sessionId);
-                }
-            }
+            Util.clearOldInstallationSessions(context);
             ContextUtil.toastLong(context, getString(R.string.toast_abandon_sessions));
             return false;
         });
@@ -145,7 +134,6 @@ public class InstallationFragment extends PreferenceFragmentCompat implements Sh
                 SettingsActivity.shouldRestart = true;
                 break;
         }
-
     }
 
     private void addUserInfoData(ListPreference listPreference) {

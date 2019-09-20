@@ -9,7 +9,6 @@ import com.aurora.store.model.App;
 import com.aurora.store.notification.GeneralNotification;
 import com.aurora.store.utility.Log;
 import com.aurora.store.utility.PackageUtil;
-import com.aurora.store.utility.SplitUtil;
 import com.aurora.store.utility.Util;
 import com.dragons.aurora.playstoreapiv2.AndroidAppDeliveryData;
 import com.tonyodev.fetch2.AbstractFetchGroupListener;
@@ -55,10 +54,6 @@ public class LiveUpdate extends BaseTask {
         requestList.add(request);
         requestList.addAll(splitList);
         requestList.addAll(obbList);
-
-        if (!splitList.isEmpty()) {
-            SplitUtil.addToList(context, app.getPackageName());
-        }
 
         fetchListener = getFetchListener();
         fetch.addListener(fetchListener);

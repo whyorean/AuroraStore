@@ -27,6 +27,7 @@ import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageInstaller;
 import android.content.res.TypedArray;
 import android.os.Build;
 import android.os.IBinder;
@@ -486,5 +487,18 @@ public class Util {
             }
         }
         Log.i("Periodic update preferences updated");
+    }
+
+    public static void clearOldInstallationSessions(Context context){
+        final PackageInstaller packageInstaller = context.getPackageManager().getPackageInstaller();
+        for (PackageInstaller.SessionInfo sessionInfo : packageInstaller.getMySessions()) {
+            final int sessionId = sessionInfo.getSessionId();
+            try {
+                packageInstaller.abandonSession(sessionInfo.getSessionId());
+                Log.e("Abandoned session id -> %d", sessionId);
+            } catch (Exception e) {
+                Log.e("Unable to abandon session id ->", sessionId);
+            }
+        }
     }
 }
