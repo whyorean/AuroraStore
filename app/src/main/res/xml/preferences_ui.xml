@@ -37,7 +37,7 @@
         app:useSimpleSummaryProvider="true" />
 
     <SwitchPreferenceCompat
-        app:defaultValue="false"
+        app:defaultValue="true"
         app:key="PREFERENCE_UI_CARD_STYLE"
         app:summary="@string/pref_ui_card_summary"
         app:title="@string/pref_ui_card_title" />

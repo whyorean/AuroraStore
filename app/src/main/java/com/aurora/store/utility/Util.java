@@ -257,7 +257,7 @@ public class Util {
     }
 
     public static boolean isLegacyCardEnabled(Context context) {
-        return getPrefs(context).getBoolean(Constants.PREFERENCE_UI_CARD_STYLE, false);
+        return getPrefs(context).getBoolean(Constants.PREFERENCE_UI_CARD_STYLE, true);
     }
 
     public static boolean snapPagerEnabled(Context context) {
