@@ -35,7 +35,6 @@ import com.aurora.store.receiver.DownloadCancelReceiver;
 import com.aurora.store.receiver.DownloadPauseReceiver;
 import com.aurora.store.receiver.DownloadResumeReceiver;
 import com.aurora.store.receiver.InstallReceiver;
-import com.aurora.store.receiver.NotificationDeleteReceiver;
 import com.aurora.store.utility.NotificationUtil;
 
 public class NotificationBase {
@@ -68,8 +67,8 @@ public class NotificationBase {
                 .setColor(context.getResources().getColor(R.color.colorAccent))
                 .setContentIntent(getContentIntent())
                 .setContentTitle(app.getDisplayName())
-                .setDeleteIntent(getDeleteIntent())
                 .setOnlyAlertOnce(true)
+                .setOngoing(true)
                 .setPriority(NotificationUtil.getNotificationPriority(context))
                 .setSmallIcon(R.drawable.ic_notification)
                 .setVisibility(NotificationCompat.VISIBILITY_PUBLIC);
@@ -95,12 +94,6 @@ public class NotificationBase {
         Intent intent = new Intent(context, InstallReceiver.class);
         intent.putExtra(INTENT_PACKAGE_NAME, app.getPackageName());
         intent.putExtra(INTENT_APP_VERSION, app.getVersionCode());
-        return PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-    }
-
-    protected PendingIntent getDeleteIntent() {
-        Intent intent = new Intent(context, NotificationDeleteReceiver.class);
-        intent.putExtra(INTENT_PACKAGE_NAME, app.getPackageName());
         return PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
     }
 

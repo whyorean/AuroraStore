@@ -159,7 +159,6 @@
         <receiver android:name=".receiver.DownloadCancelReceiver" />
         <receiver android:name=".receiver.DownloadPauseReceiver" />
         <receiver android:name=".receiver.DownloadResumeReceiver" />
-        <receiver android:name=".receiver.NotificationDeleteReceiver" />
         <receiver android:name=".receiver.UpdatesReceiver" />
         <receiver
             android:name=".receiver.BootReceiver"
