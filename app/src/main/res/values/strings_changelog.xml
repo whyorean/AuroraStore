@@ -20,6 +20,13 @@
 
 <resources>
     <string name="app_log" translatable="false">
+        \n Changelog : v3.1.1
+        \n • Do not cache updatable apps
+        \n • Make installation sequential
+        \n • Improve notifications
+        \n • Improve app aesthetics
+        \n • Bug fixes and improvements
+        \n
         \n Changelog : v3.1.0
         \n • Cache apps to reduce network calls, auto clear after 3 days
         \n • Fix Google account login
