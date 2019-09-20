@@ -211,7 +211,6 @@ public class UpdatesFragment extends BaseFragment {
             ViewUtil.hideWithAnimation(btnAction);
             txtUpdateAll.setText(context.getString(R.string.list_empty_updates));
             setErrorView(ErrorType.NO_UPDATES);
-            switchViews(true);
         } else if (AuroraApplication.getOnGoingUpdate()) {
             btnAction.setOnClickListener(cancelAllListener());
         } else {
