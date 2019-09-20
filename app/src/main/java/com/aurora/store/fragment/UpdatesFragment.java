@@ -56,14 +56,11 @@ import com.aurora.store.utility.PrefUtil;
 import com.aurora.store.utility.ViewUtil;
 import com.aurora.store.view.CustomSwipeToRefresh;
 import com.google.android.material.snackbar.Snackbar;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import com.tonyodev.fetch2.Fetch;
 
 import org.apache.commons.lang3.StringUtils;
 import org.jetbrains.annotations.NotNull;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -137,7 +134,7 @@ public class UpdatesFragment extends BaseFragment {
     public void onResume() {
         super.onResume();
         if (adapter.isDataEmpty()) {
-            fetchAppsFromCache();
+            fetchData();
             drawButtons();
         }
     }
@@ -167,14 +164,12 @@ public class UpdatesFragment extends BaseFragment {
                 .subscribe((appList) -> {
                     updatableAppList = appList;
                     if (appList.isEmpty()) {
-                        PrefUtil.putString(context, Constants.PREFERENCE_UPDATABLE_APPS, "");
                         setErrorView(ErrorType.NO_UPDATES);
                         switchViews(true);
                     } else {
                         switchViews(false);
                         if (adapter != null)
                             adapter.addData(appList);
-                        saveToCache(appList);
                         drawButtons();
                         updateCounter();
                     }
@@ -184,32 +179,9 @@ public class UpdatesFragment extends BaseFragment {
                 }));
     }
 
-    private void saveToCache(List<App> appList) {
-        Gson gson = new Gson();
-        String jsonString = gson.toJson(appList);
-        PrefUtil.putString(context, Constants.PREFERENCE_UPDATABLE_APPS, jsonString);
-    }
-
-    private void fetchAppsFromCache() {
-        Gson gson = new Gson();
-        Type type = new TypeToken<List<App>>() {
-        }.getType();
-        String jsonString = PrefUtil.getString(context, Constants.PREFERENCE_UPDATABLE_APPS);
-        updatableAppList = gson.fromJson(jsonString, type);
-        if (updatableAppList == null || updatableAppList.isEmpty())
-            fetchData();
-        else {
-            adapter.addData(updatableAppList);
-            switchViews(false);
-            drawButtons();
-            updateCounter();
-        }
-    }
-
     private void removeInstalledApp(String packageName) {
         adapter.remove(packageName);
         AuroraApplication.removeFromOngoingUpdateList(packageName);
-        saveToCache(adapter.getAppList());
         drawButtons();
         updateCounter();
     }
