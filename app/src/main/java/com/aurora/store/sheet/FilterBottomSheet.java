@@ -35,6 +35,7 @@ import androidx.core.graphics.ColorUtils;
 import com.aurora.store.Constants;
 import com.aurora.store.R;
 import com.aurora.store.utility.PrefUtil;
+import com.aurora.store.utility.ViewUtil;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.android.material.chip.Chip;
@@ -83,7 +84,7 @@ public class FilterBottomSheet extends BottomSheetDialogFragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(this, view);
-        setupMultipleChips(getContext());
+        setupMultipleChips();
         setupSingleChips();
         setupActions();
     }
@@ -105,7 +106,7 @@ public class FilterBottomSheet extends BottomSheetDialogFragment {
         chip_ads.setChecked(PrefUtil.getBoolean(context, Constants.FILTER_APPS_WITH_ADS));
     }
 
-    private void setupMultipleChips(Context mContext) {
+    private void setupMultipleChips() {
         String[] downloadLabels = getResources().getStringArray(R.array.filterDownloadsLabels);
         String[] downloadValues = getResources().getStringArray(R.array.filterDownloadsValues);
         String[] ratingLabels = getResources().getStringArray(R.array.filterRatingLabels);
@@ -115,7 +116,7 @@ public class FilterBottomSheet extends BottomSheetDialogFragment {
         int i = 0;
         for (String downloadLabel : downloadLabels) {
             final int pos = i;
-            Chip chip = new Chip(mContext);
+            Chip chip = new Chip(context);
             chip.setText(downloadLabel);
             applyStyles(chip, colorShades[i]);
             chip.setOnCheckedChangeListener((v, isChecked) -> {
@@ -126,7 +127,7 @@ public class FilterBottomSheet extends BottomSheetDialogFragment {
                             Integer.parseInt(downloadValues[pos]));
                 }
             });
-            chip.setChecked(PrefUtil.getInteger(mContext, Constants.FILTER_DOWNLOADS)
+            chip.setChecked(PrefUtil.getInteger(context, Constants.FILTER_DOWNLOADS)
                     == Integer.parseInt(downloadValues[i]));
             download_chips.addView(chip);
             i++;
@@ -135,18 +136,18 @@ public class FilterBottomSheet extends BottomSheetDialogFragment {
         i = 0;
         for (String ratingLabel : ratingLabels) {
             final int pos = i;
-            Chip chip = new Chip(mContext);
+            Chip chip = new Chip(context);
             applyStyles(chip, colorShades[i]);
             chip.setText(ratingLabel);
             chip.setOnCheckedChangeListener((v, isChecked) -> {
                 rating_chips.clearCheck();
                 chip.setChecked(isChecked);
                 if (isChecked) {
-                    PrefUtil.putFloat(v.getContext(), Constants.FILTER_RATING,
+                    PrefUtil.putFloat(context, Constants.FILTER_RATING,
                             Float.parseFloat(ratingValues[pos]));
                 }
             });
-            chip.setChecked(PrefUtil.getFloat(mContext, Constants.FILTER_RATING) ==
+            chip.setChecked(PrefUtil.getFloat(context, Constants.FILTER_RATING) ==
                     Float.parseFloat(ratingValues[i]));
             rating_chips.addView(chip);
             i++;
@@ -154,14 +155,14 @@ public class FilterBottomSheet extends BottomSheetDialogFragment {
     }
 
     private void applyStyles(Chip chip, int color) {
-        chip.setChipIconSize(48);
+        chip.setChipIconSize(ViewUtil.dpToPx(context, 24));
         chip.setChipIcon(context.getDrawable(R.drawable.circle_bg));
         chip.setChipIconTint(ColorStateList.valueOf(color));
         chip.setChipIconVisible(true);
         chip.setChipBackgroundColor(ColorStateList.valueOf(ColorUtils.setAlphaComponent(color, 100)));
         chip.setChipStrokeColor(ColorStateList.valueOf(color));
-        chip.setChipStrokeWidth(2);
-        chip.setCheckedIcon(context.getDrawable(R.drawable.ic_chip_checked));
+        chip.setChipStrokeWidth(ViewUtil.dpToPx(context, 1));
+        chip.setCheckedIcon(context.getDrawable(R.drawable.ic_checked));
     }
 
     private void setupActions() {

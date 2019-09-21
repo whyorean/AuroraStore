@@ -291,11 +291,12 @@ public class SearchAppsFragment extends BaseFragment {
             final int color = ViewUtil.getSolidColors(i++);
             Chip chip = new Chip(context);
             chip.setText(tag);
-            chip.setChipStrokeWidth(3);
+            chip.setChipIconSize(ViewUtil.dpToPx(context, 24));
+            chip.setChipStrokeWidth(ViewUtil.dpToPx(context, 1));
             chip.setChipStrokeColor(ColorStateList.valueOf(color));
             chip.setChipBackgroundColor(ColorStateList.valueOf(ColorUtils.setAlphaComponent(color, 100)));
             chip.setRippleColor(ColorStateList.valueOf(ColorUtils.setAlphaComponent(color, 200)));
-            chip.setCheckedIcon(context.getDrawable(R.drawable.ic_chip_checked));
+            chip.setCheckedIcon(context.getDrawable(R.drawable.ic_checked));
             chip.setOnClickListener(v -> {
                 if (chip.isChecked()) {
                     query = query + " " + tag;
