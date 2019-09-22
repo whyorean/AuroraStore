@@ -130,7 +130,6 @@ public class DetailsFragment extends BaseFragment {
         try {
             context.unregisterReceiver(localInstallReceiver);
             context.unregisterReceiver(globalInstallReceiver);
-            actionButton = null;
             disposable.clear();
         } catch (Exception ignored) {
         }

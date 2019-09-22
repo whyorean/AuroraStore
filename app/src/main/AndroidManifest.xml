@@ -172,6 +172,8 @@
 
         <service android:name=".installer.InstallerService" />
         <service android:name=".SelfUpdateService" />
+        <service android:name=".AnonymousLoginService" />
+        <service android:name=".AnonymousRefreshService" />
 
         <meta-data
             android:name="preloaded_fonts"

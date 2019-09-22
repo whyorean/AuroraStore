@@ -34,7 +34,8 @@ import androidx.annotation.Nullable;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.fragment.app.Fragment;
 
-import com.aurora.store.AuroraApplication;
+import com.aurora.store.AnonymousLoginService;
+import com.aurora.store.AnonymousRefreshService;
 import com.aurora.store.ErrorType;
 import com.aurora.store.R;
 import com.aurora.store.activity.AccountsActivity;
@@ -45,6 +46,7 @@ import com.aurora.store.events.Events;
 import com.aurora.store.events.RxBus;
 import com.aurora.store.exception.CredentialsEmptyException;
 import com.aurora.store.exception.MalformedRequestException;
+import com.aurora.store.exception.TooManyRequestsException;
 import com.aurora.store.iterator.CustomAppListIterator;
 import com.aurora.store.utility.Accountant;
 import com.aurora.store.utility.ContextUtil;
@@ -58,8 +60,6 @@ import com.google.android.material.snackbar.Snackbar;
 import java.io.IOException;
 
 import butterknife.BindView;
-import io.reactivex.Flowable;
-import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
@@ -256,6 +256,8 @@ public abstract class BaseFragment extends Fragment {
             processAuthException((AuthException) e);
         } else if (e instanceof IteratorGooglePlayException) {
             processException(e.getCause());
+        } else if (e instanceof TooManyRequestsException) {
+            processAuthException(new AuthException("Too many request", 429));
         } else if (e instanceof MalformedRequestException) {
             processAuthException(new AuthException("Malformed Request", 401));
         } else if (e instanceof IOException) {
@@ -287,10 +289,15 @@ public abstract class BaseFragment extends Fragment {
     private void processAuthException(AuthException e) {
         if (e instanceof CredentialsEmptyException) {
             Log.i("Logged out");
+            Accountant.completeCheckout(context);
             RxBus.publish(new Event(Events.LOGGED_OUT));
         } else if (e.getCode() == 401 && Accountant.isDummy(context)) {
             Log.i("Token is stale");
             refreshToken();
+        } else if (e.getCode() == 429 && Accountant.isDummy(context)) {
+            Log.i("Too many requests from current session, requesting new login session");
+            Accountant.completeCheckout(context);
+            logInWithDummy();
         } else {
             ContextUtil.toast(context, R.string.error_incorrect_password);
             playStoreApiAuthenticator.logout();
@@ -298,56 +305,20 @@ public abstract class BaseFragment extends Fragment {
         }
     }
 
-    /*Anonymous accounts handling methods*/
+    /*
+     * Anonymous accounts handling methods
+     *
+     */
 
     private synchronized void logInWithDummy() {
-        if (!AuroraApplication.isAnonymousLogging())
-            disposable.add(Observable.fromCallable(() -> playStoreApiAuthenticator
-                    .login())
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(Schedulers.computation())
-                    .doOnSubscribe(disposable1 -> {
-                        Log.i("Credentials Empty : Requesting Anonymous Login");
-                        AuroraApplication.setAnonymousLogging(true);
-                    })
-                    .doOnTerminate(() -> AuroraApplication.setAnonymousLogging(false))
-                    .subscribe((success) -> {
-                        if (success) {
-                            Log.i("Anonymous Login Successful");
-                            Accountant.saveDummy(context);
-                            RxBus.publish(new Event(Events.LOGGED_IN));
-                        } else
-                            Log.e("Anonymous Login Failed Permanently");
-                    }, err -> {
-                        ContextUtil.runOnUiThread(() -> notifyStatus(coordinatorLayout, bottomNavigationView, err.getMessage()));
-                        Log.e(err.getMessage());
-                        AuroraApplication.setAnonymousLogging(false);
-                    }));
+        Intent intent = new Intent(context, AnonymousLoginService.class);
+        if (!AnonymousLoginService.isServiceRunning())
+            context.startService(intent);
     }
 
     private synchronized void refreshToken() {
-        if (!AuroraApplication.isTokenRefreshing())
-            disposable.add(Flowable.fromCallable(() -> playStoreApiAuthenticator
-                    .refreshToken())
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(Schedulers.computation())
-                    .doOnSubscribe(subscription -> {
-                        RxBus.publish(new Event(Events.TOKEN_EXPIRED));
-                        AuroraApplication.setTokenRefreshing(true);
-                    })
-                    .doOnTerminate(() -> AuroraApplication.setTokenRefreshing(false))
-                    .subscribe((success) -> {
-                        if (success) {
-                            Log.i("Token Refreshed");
-                            RxBus.publish(new Event(Events.TOKEN_REFRESHED));
-                        } else {
-                            Log.e("Token Refresh Failed Permanently");
-                            RxBus.publish(new Event(Events.NET_DISCONNECTED));
-                        }
-                    }, err -> {
-                        Log.e("Token Refresh Login failed %s", err.getMessage());
-                        RxBus.publish(new Event(Events.PERMANENT_FAIL));
-                    }));
+        Intent intent = new Intent(context, AnonymousRefreshService.class);
+        if (!AnonymousRefreshService.isServiceRunning())
+            context.startService(intent);
     }
-
 }

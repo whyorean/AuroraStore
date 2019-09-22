@@ -38,8 +38,6 @@ import io.reactivex.plugins.RxJavaPlugins;
 
 public class AuroraApplication extends Application {
 
-    public static boolean tokenRefreshing = false;
-    public static boolean anonymousLogging = false;
     public static boolean updating = false;
     public static List<App> ongoingUpdateList = new ArrayList<>();
 
@@ -80,22 +78,6 @@ public class AuroraApplication extends Application {
 
     public static Uninstaller getUninstaller() {
         return uninstaller;
-    }
-
-    public static boolean isAnonymousLogging() {
-        return anonymousLogging;
-    }
-
-    public static void setAnonymousLogging(boolean anonymousLogging) {
-        AuroraApplication.anonymousLogging = anonymousLogging;
-    }
-
-    public static boolean isTokenRefreshing() {
-        return tokenRefreshing;
-    }
-
-    public static void setTokenRefreshing(boolean tokenRefreshing) {
-        AuroraApplication.tokenRefreshing = tokenRefreshing;
     }
 
     @Override
