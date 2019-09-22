@@ -495,9 +495,9 @@ public class Util {
             final int sessionId = sessionInfo.getSessionId();
             try {
                 packageInstaller.abandonSession(sessionInfo.getSessionId());
-                Log.e("Abandoned session id -> %d", sessionId);
+                Log.i("Abandoned session id -> %d", sessionId);
             } catch (Exception e) {
-                Log.e("Unable to abandon session id ->", sessionId);
+                Log.e(e.getMessage());
             }
         }
     }
