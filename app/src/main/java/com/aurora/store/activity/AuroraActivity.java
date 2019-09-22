@@ -117,7 +117,7 @@ public class AuroraActivity extends AppCompatActivity {
             if (Util.isCacheObsolete(this))
                 Util.clearCache(this);
 
-            if (Util.shouldCheckUpdate(this))
+            if (Util.shouldCheckUpdate(this) && !SelfUpdateService.isServiceRunning())
                 checkSelfUpdate();
         }
         checkPermissions();

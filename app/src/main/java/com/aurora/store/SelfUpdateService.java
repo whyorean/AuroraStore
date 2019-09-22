@@ -95,6 +95,10 @@ public class SelfUpdateService extends Service {
 
     private void destroyService() {
         Log.e("Self-update service destroyed");
+        if (fetchListener != null) {
+            fetch.removeListener(fetchListener);
+            fetchListener = null;
+        }
         stopForeground(true);
         stopSelf();
     }
