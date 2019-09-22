@@ -296,14 +296,15 @@ public class AuroraActivity extends AppCompatActivity {
     }
 
     protected void showAddRepoDialog(Update update) {
+        final String changelog = TextUtil.emptyIfNull(update.getChangelog());
         MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(this)
-                .setTitle("New update available")
+                .setTitle(getString(R.string.dialog_title_self_update))
                 .setMessage(new StringBuilder()
                         .append(update.getVersionName())
-                        .append("\nChangelog:\n")
-                        .append(TextUtil.emptyIfNull(update.getChangelog()))
-                        .append("\n")
-                        .append("Do you wish to update now ?")
+                        .append("\n\n")
+                        .append(changelog.isEmpty() ? getString(R.string.details_no_changes) : changelog)
+                        .append("\n\n")
+                        .append(getString(R.string.dialog_desc_self_update))
                         .toString())
                 .setPositiveButton(getString(android.R.string.yes), (dialog, which) -> {
                     Intent intent = new Intent(this, SelfUpdateService.class);

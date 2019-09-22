@@ -153,6 +153,8 @@
     <string name="details_you_rated_this_app">Your rating</string>
 
     <string name="dialog_title_logout">Log out ?</string>
+    <string name="dialog_title_self_update">New update available</string>
+    <string name="dialog_desc_self_update">Do you wish to update now ?</string>
 
     <string name="download_cancel_all">Cancel all</string>
     <string name="download_canceled">Canceled</string>
