@@ -489,7 +489,7 @@ public class Util {
         Log.i("Periodic update preferences updated");
     }
 
-    public static void clearOldInstallationSessions(Context context){
+    public static void clearOldInstallationSessions(Context context) {
         final PackageInstaller packageInstaller = context.getPackageManager().getPackageInstaller();
         for (PackageInstaller.SessionInfo sessionInfo : packageInstaller.getMySessions()) {
             final int sessionId = sessionInfo.getSessionId();
@@ -500,5 +500,21 @@ public class Util {
                 Log.e("Unable to abandon session id ->", sessionId);
             }
         }
+    }
+
+    public static boolean shouldCheckUpdate(Context context) {
+        try {
+            long lastSyncDate = Long.parseLong(PrefUtil.getString(context, Constants.PREFERENCE_SELF_UPDATE_DATE));
+            long currentSyncDate = Calendar.getInstance().getTimeInMillis();
+            long diffDatesInMillis = currentSyncDate - lastSyncDate;
+            long diffInDays = TimeUnit.MILLISECONDS.toDays(diffDatesInMillis);
+            return diffInDays >= 1;
+        } catch (Exception e) {
+            return true;
+        }
+    }
+
+    public static void setSelfUpdateTime(Context context, Long dateInMillis) {
+        PrefUtil.putString(context, Constants.PREFERENCE_SELF_UPDATE_DATE, String.valueOf(dateInMillis));
     }
 }

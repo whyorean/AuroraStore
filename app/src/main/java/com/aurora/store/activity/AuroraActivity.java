@@ -21,7 +21,6 @@
 package com.aurora.store.activity;
 
 import android.Manifest;
-import android.app.StatusBarManager;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -38,23 +37,37 @@ import androidx.core.graphics.ColorUtils;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import com.aurora.store.BuildConfig;
 import com.aurora.store.Constants;
 import com.aurora.store.R;
+import com.aurora.store.SelfUpdateService;
 import com.aurora.store.adapter.ViewPagerAdapter;
 import com.aurora.store.fragment.AppsFragment;
 import com.aurora.store.fragment.HomeFragment;
 import com.aurora.store.fragment.SearchFragment;
+import com.aurora.store.model.Update;
+import com.aurora.store.task.NetworkTask;
 import com.aurora.store.utility.Accountant;
+import com.aurora.store.utility.CertUtil;
+import com.aurora.store.utility.Log;
 import com.aurora.store.utility.PrefUtil;
+import com.aurora.store.utility.TextUtil;
 import com.aurora.store.utility.ThemeUtil;
 import com.aurora.store.utility.Util;
 import com.aurora.store.utility.ViewUtil;
 import com.aurora.store.view.CustomViewPager;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import com.google.gson.Gson;
+
+import java.util.Calendar;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import io.reactivex.Observable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.schedulers.Schedulers;
 
 public class AuroraActivity extends AppCompatActivity {
 
@@ -67,6 +80,7 @@ public class AuroraActivity extends AppCompatActivity {
     CustomViewPager viewPager;
     @BindView(R.id.bottom_navigation)
     BottomNavigationView bottomNavigationView;
+
     private ActionBar actionBar;
     private ViewPagerAdapter pagerAdapter;
     private ThemeUtil themeUtil = new ThemeUtil();
@@ -86,6 +100,7 @@ public class AuroraActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         fragmentCur = Util.getDefaultTab(this);
         onNewIntent(getIntent());
+
         if (!PrefUtil.getBoolean(this, Constants.PREFERENCE_DO_NOT_SHOW_INTRO)) {
             PrefUtil.putBoolean(this, Constants.PREFERENCE_DO_NOT_SHOW_INTRO, true);
             startActivity(new Intent(this, IntroActivity.class));
@@ -99,6 +114,9 @@ public class AuroraActivity extends AppCompatActivity {
 
         if (Util.isCacheObsolete(this))
             Util.clearCache(this);
+
+        if (Util.shouldCheckUpdate(this))
+            checkSelfUpdate();
 
         checkPermissions();
     }
@@ -187,7 +205,6 @@ public class AuroraActivity extends AppCompatActivity {
         disposable.clear();
     }
 
-
     private void setupActionbar() {
         setSupportActionBar(toolbar);
         actionBar = getSupportActionBar();
@@ -240,6 +257,35 @@ public class AuroraActivity extends AppCompatActivity {
                     .getItem(fragmentCur).getItemId());
     }
 
+    private void checkSelfUpdate() {
+        disposable.add(Observable.fromCallable(() -> new NetworkTask(this)
+                .get(Constants.UPDATE_URL))
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(response -> {
+                    try {
+                        Util.setSelfUpdateTime(this, Calendar.getInstance().getTimeInMillis());
+                        Gson gson = new Gson();
+                        Update update = gson.fromJson(response, Update.class);
+                        if (update.getVersionCode() > BuildConfig.VERSION_CODE) {
+                            if (CertUtil.isFDroidApp(this, BuildConfig.APPLICATION_ID)
+                                    && TextUtil.emptyIfNull(update.getFdroidBuild()).isEmpty()) {
+                                Log.d("FDroid build of latest version is not published yet");
+                                return;
+                            }
+
+                            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                                showAddRepoDialog(update);
+                            } else {
+                                Log.i("No new update available");
+                            }
+                        }
+                    } catch (Exception e) {
+                        Log.e("Error checking updates");
+                    }
+                }));
+    }
+
     private void checkPermissions() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
                 != PackageManager.PERMISSION_GRANTED) {
@@ -247,5 +293,26 @@ public class AuroraActivity extends AppCompatActivity {
                     new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
                     1337);
         }
+    }
+
+    protected void showAddRepoDialog(Update update) {
+        MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(this)
+                .setTitle("New update available")
+                .setMessage(new StringBuilder()
+                        .append(update.getVersionName())
+                        .append("\nChangelog:\n")
+                        .append(TextUtil.emptyIfNull(update.getChangelog()))
+                        .append("\n")
+                        .append("Do you wish to update now ?")
+                        .toString())
+                .setPositiveButton(getString(android.R.string.yes), (dialog, which) -> {
+                    Intent intent = new Intent(this, SelfUpdateService.class);
+                    startService(intent);
+                })
+                .setNegativeButton(getString(android.R.string.no), (dialog, which) -> {
+                    dialog.dismiss();
+                });
+        builder.create();
+        builder.show();
     }
 }

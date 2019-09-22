@@ -24,6 +24,8 @@ public class Constants {
     public static final String SHARED_PREFERENCES_KEY = "com.aurora.store";
     public static final String SERVICE_PACKAGE = "com.aurora.services";
     public static final String APP_DETAIL_URL = "https://play.google.com/store/apps/details?id=";
+    public static final String APP_ICON_URL = "https://gitlab.com/AuroraOSS/AuroraStore/raw/master/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png";
+    public static final String UPDATE_URL = "https://gitlab.com/AuroraOSS/AuroraStore/raw/master/updates.json";
 
     public static final String INTENT_DEVICE_NAME = "INTENT_DEVICE_NAME";
     public static final String INTENT_DEVICE_INDEX = "INTENT_DEVICE_INDEX";
@@ -36,7 +38,6 @@ public class Constants {
     public static final String PUB_PREFIX = "pub:";
     public static final String TAG = "Aurora Store";
     public static final String FILES = "Files";
-    public static final String GZIPPED = "GZipped";
 
     public static final String RECENT_HISTORY = "RECENT_HISTORY";
 
@@ -108,4 +109,5 @@ public class Constants {
     public static final String PREFERENCE_TOP_FAMILY = "PREFERENCE_TOP_FAMILY";
     public static final String PREFERENCE_INSTALLED_APPS = "PREFERENCE_INSTALLED_APPS";
     public static final String PREFERENCE_CACHE_DATE = "PREFERENCE_CACHE_DATE";
+    public static final String PREFERENCE_SELF_UPDATE_DATE = "PREFERENCE_SELF_UPDATE_DATE";
 }
