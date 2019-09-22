@@ -50,6 +50,7 @@ import com.aurora.store.task.NetworkTask;
 import com.aurora.store.utility.Accountant;
 import com.aurora.store.utility.CertUtil;
 import com.aurora.store.utility.Log;
+import com.aurora.store.utility.NetworkUtil;
 import com.aurora.store.utility.PrefUtil;
 import com.aurora.store.utility.TextUtil;
 import com.aurora.store.utility.ThemeUtil;
@@ -112,12 +113,13 @@ public class AuroraActivity extends AppCompatActivity {
                 startActivity(new Intent(this, AccountsActivity.class));
         }
 
-        if (Util.isCacheObsolete(this))
-            Util.clearCache(this);
+        if (NetworkUtil.isConnected(this)) {
+            if (Util.isCacheObsolete(this))
+                Util.clearCache(this);
 
-        if (Util.shouldCheckUpdate(this))
-            checkSelfUpdate();
-
+            if (Util.shouldCheckUpdate(this))
+                checkSelfUpdate();
+        }
         checkPermissions();
     }
 
