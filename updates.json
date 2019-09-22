@@ -1,7 +1,7 @@
 {
-	"version_name":"3.1.0",
-	"version_code":10,
-	"aurora_build":"https://gitlab.com/AuroraOSS/AuroraStore/uploads/4ce5587837dbb9f49f35722c3290dec9/AuroraStore_3.1.0.apk",
-	"fdroid_build":"https://f-droid.org/repo/com.aurora.store_10.apk",
-	"changelog":""
+  "version_name": "3.1.1",
+  "version_code": 11,
+  "aurora_build": "https://gitlab.com/AuroraOSS/AuroraStore/uploads/d2944c87a00fd9a8cbab349b093e5a70/AuroraStore_3.1.1.apk",
+  "fdroid_build": "https://f-droid.org/repo/com.aurora.store_11.apk",
+  "changelog": "Changelog : v3.1.1\n• Do not cache updatable apps\n• Make installation sequential\n• Improve notifications\n• Improve app aesthetics\n• Bug fixes and improvements"
 }
