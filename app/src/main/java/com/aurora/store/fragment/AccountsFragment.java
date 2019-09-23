@@ -49,6 +49,7 @@ import com.aurora.store.events.Event;
 import com.aurora.store.events.Events;
 import com.aurora.store.events.RxBus;
 import com.aurora.store.exception.TokenizerException;
+import com.aurora.store.exception.TwoFactorAuthException;
 import com.aurora.store.exception.UnknownException;
 import com.aurora.store.task.UserProfiler;
 import com.aurora.store.utility.Accountant;
@@ -57,7 +58,6 @@ import com.aurora.store.utility.Log;
 import com.aurora.store.utility.PrefUtil;
 import com.aurora.store.utility.ViewUtil;
 import com.dragons.aurora.playstoreapiv2.ApiBuilderException;
-import com.dragons.aurora.playstoreapiv2.AuthException;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 import com.dragons.aurora.playstoreapiv2.Image;
 import com.google.android.material.chip.Chip;
@@ -326,8 +326,8 @@ public class AccountsFragment extends Fragment {
 
     private void logInWithGoogle(String email, String password) {
         switchButtonState(true);
-        disposable.add(Observable.fromCallable(() ->
-                PlayStoreApiAuthenticator.login(context, email, password))
+        disposable.add(Observable.fromCallable(() -> PlayStoreApiAuthenticator
+                .login(context, email, password))
                 .subscribeOn(Schedulers.io())
                 .doOnSubscribe(sub -> progressBar.setVisibility(View.VISIBLE))
                 .observeOn(AndroidSchedulers.mainThread())
@@ -348,7 +348,7 @@ public class AccountsFragment extends Fragment {
                 }, err -> {
                     Log.e("Google Login failed : %s", err.getMessage());
                     ContextUtil.runOnUiThread(() -> switchButtonState(false));
-                    if (err instanceof AuthException && ((AuthException) err).getTwoFactorUrl() != null) {
+                    if (err instanceof TwoFactorAuthException) {
                         show2FADialog();
                     } else if (err instanceof UnknownException) {
                         ContextUtil.toastLong(context, getString(R.string.toast_unknown_reason));

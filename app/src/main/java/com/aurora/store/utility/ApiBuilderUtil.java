@@ -11,6 +11,7 @@ import com.aurora.store.TokenDispenserMirrors;
 import com.aurora.store.adapter.OkHttpClientAdapter;
 import com.aurora.store.exception.CredentialsEmptyException;
 import com.aurora.store.exception.TokenizerException;
+import com.aurora.store.exception.TwoFactorAuthException;
 import com.aurora.store.manager.LocaleManager;
 import com.aurora.store.manager.SpoofManager;
 import com.aurora.store.model.LoginInfo;
@@ -81,6 +82,8 @@ public class ApiBuilderUtil {
                 if (tried >= retries) {
                     throw new TokenizerException("Exceeded max retries", e.getCause());
                 }
+                if (e instanceof AuthException && ((AuthException) e).getTwoFactorUrl() != null)
+                    throw new TwoFactorAuthException("2FA Enabled");
                 Log.i("Anonymous Login Failed @ %s, attempt %d",
                         loginInfo.getTokenDispenserUrl(), tried);
             }
