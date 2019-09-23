@@ -21,35 +21,46 @@
 package com.aurora.store.adapter;
 
 import android.content.Context;
+import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
 import com.aurora.store.R;
-import com.aurora.store.fragment.TopFreeApps;
-import com.aurora.store.fragment.TopGrossingApps;
-import com.aurora.store.fragment.TopTrendingApps;
+import com.aurora.store.fragment.SubCategoryFragment;
 
 import org.jetbrains.annotations.NotNull;
 
 public class SubCategoryAdapter extends FragmentStatePagerAdapter {
-    private Context mContext;
+
+    private Context context;
 
     public SubCategoryAdapter(Context context, FragmentManager fragmentManager) {
-        super(fragmentManager);
-        mContext = context;
+        super(fragmentManager, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
+        this.context = context;
     }
 
     @NotNull
     @Override
     public Fragment getItem(int position) {
-        if (position == 0) {
-            return new TopFreeApps();
-        } else if (position == 1) {
-            return new TopGrossingApps();
-        } else {
-            return new TopTrendingApps();
+        Bundle bundle = new Bundle();
+        Fragment subCategoryFragment = new SubCategoryFragment();
+        switch (position) {
+            case 0:
+                bundle.putString("SUBCATEGORY", "TOP_FREE");
+                subCategoryFragment.setArguments(bundle);
+                return subCategoryFragment;
+            case 1:
+                bundle = new Bundle();
+                bundle.putString("SUBCATEGORY", "MOVERS_SHAKERS");
+                subCategoryFragment.setArguments(bundle);
+                return subCategoryFragment;
+            default:
+                bundle = new Bundle();
+                bundle.putString("SUBCATEGORY", "TOP_GROSSING");
+                subCategoryFragment.setArguments(bundle);
+                return subCategoryFragment;
         }
     }
 
@@ -62,11 +73,11 @@ public class SubCategoryAdapter extends FragmentStatePagerAdapter {
     public CharSequence getPageTitle(int position) {
         switch (position) {
             case 0:
-                return mContext.getString(R.string.category_topFree);
+                return context.getString(R.string.category_topFree);
             case 1:
-                return mContext.getString(R.string.category_trending);
+                return context.getString(R.string.category_trending);
             case 2:
-                return mContext.getString(R.string.category_topGrossing);
+                return context.getString(R.string.category_topGrossing);
             default:
                 return null;
         }

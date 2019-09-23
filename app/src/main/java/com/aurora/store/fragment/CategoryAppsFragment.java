@@ -40,9 +40,7 @@ import com.aurora.store.sheet.FilterBottomSheet;
 import com.aurora.store.utility.Log;
 import com.aurora.store.utility.Util;
 import com.bumptech.glide.Glide;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 
 import butterknife.BindView;
@@ -94,6 +92,7 @@ public class CategoryAppsFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         SubCategoryAdapter subCategoryAdapter = new SubCategoryAdapter(getContext(), getChildFragmentManager());
         viewPager.setAdapter(subCategoryAdapter);
+        viewPager.setOffscreenPageLimit(2);
         tabLayout.setupWithViewPager(viewPager);
         filterFab.setOnClickListener(v -> {
             getFilterDialog();

@@ -25,7 +25,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.AnimationUtils;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -43,12 +42,13 @@ import com.aurora.store.iterator.CustomAppListIterator;
 import com.aurora.store.model.App;
 import com.aurora.store.task.CategoryAppsTask;
 import com.aurora.store.utility.ContextUtil;
+import com.aurora.store.utility.Log;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 import com.dragons.aurora.playstoreapiv2.IteratorGooglePlayException;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -56,20 +56,41 @@ import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
-public class TopFreeApps extends BaseFragment {
+public class SubCategoryFragment extends BaseFragment {
 
-    public CustomAppListIterator iterator;
     @BindView(R.id.endless_apps_list)
     RecyclerView recyclerView;
+
     private Context context;
+    private CustomAppListIterator iterator;
+    private GooglePlayAPI.SUBCATEGORY subcategory = GooglePlayAPI.SUBCATEGORY.TOP_FREE;
     private ExtendedFloatingActionButton filterFab;
     private EndlessAppsAdapter endlessAppsAdapter;
 
-    public CustomAppListIterator getIterator() {
+    private GooglePlayAPI.SUBCATEGORY getSubcategory() {
+        return subcategory;
+    }
+
+    private void setSubcategory(Bundle bundle) {
+        String category = bundle.getString("SUBCATEGORY");
+        if (category != null)
+            switch (category) {
+                case "TOP_FREE":
+                    subcategory = GooglePlayAPI.SUBCATEGORY.TOP_FREE;
+                    break;
+                case "TOP_GROSSING":
+                    subcategory = GooglePlayAPI.SUBCATEGORY.TOP_GROSSING;
+                    break;
+                default:
+                    subcategory = GooglePlayAPI.SUBCATEGORY.MOVERS_SHAKERS;
+            }
+    }
+
+    private CustomAppListIterator getIterator() {
         return iterator;
     }
 
-    public void setIterator(CustomAppListIterator iterator) {
+    private void setIterator(CustomAppListIterator iterator) {
         this.iterator = iterator;
     }
 
@@ -77,6 +98,12 @@ public class TopFreeApps extends BaseFragment {
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         this.context = context;
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        endlessAppsAdapter = new EndlessAppsAdapter(getContext());
     }
 
     @Override
@@ -89,8 +116,11 @@ public class TopFreeApps extends BaseFragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        init();
-        setupListView();
+        Bundle bundle = getArguments();
+        if (bundle != null)
+            setSubcategory(bundle);
+        initIterator();
+        setupRecycler();
 
         if (getParentFragment() != null && getParentFragment() instanceof CategoryAppsFragment) {
             filterFab = ((CategoryAppsFragment) getParentFragment()).getFilterFab();
@@ -100,19 +130,18 @@ public class TopFreeApps extends BaseFragment {
     @Override
     public void onResume() {
         super.onResume();
-        if (endlessAppsAdapter == null || endlessAppsAdapter.isDataEmpty())
+        if (endlessAppsAdapter.isDataEmpty())
             fetchCategoryApps(false);
     }
 
     @Override
     public void onDestroy() {
-        super.onDestroy();
-        endlessAppsAdapter = null;
         disposable.clear();
+        super.onDestroy();
     }
 
-    public void init() {
-        iterator = setupIterator(CategoryAppsFragment.categoryId, GooglePlayAPI.SUBCATEGORY.TOP_FREE);
+    private void initIterator() {
+        iterator = setupIterator(CategoryAppsFragment.categoryId, getSubcategory());
         if (iterator != null) {
             iterator.setFilter(new Filter(getContext()).getFilterPreferences());
             iterator.setEnableFilter(true);
@@ -120,11 +149,9 @@ public class TopFreeApps extends BaseFragment {
         }
     }
 
-    private void setupListView() {
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
-        endlessAppsAdapter = new EndlessAppsAdapter(getContext());
+    private void setupRecycler() {
+        LinearLayoutManager layoutManager = new LinearLayoutManager(context, RecyclerView.VERTICAL, false);
         recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setLayoutAnimation(AnimationUtils.loadLayoutAnimation(getContext(), R.anim.anim_falldown));
         recyclerView.setAdapter(endlessAppsAdapter);
         EndlessScrollListener mEndlessRecyclerViewScrollListener = new EndlessScrollListener(layoutManager) {
             @Override
@@ -146,7 +173,7 @@ public class TopFreeApps extends BaseFragment {
         });
     }
 
-    public CustomAppListIterator setupIterator(String categoryId, GooglePlayAPI.SUBCATEGORY subcategory) {
+    private CustomAppListIterator setupIterator(String categoryId, GooglePlayAPI.SUBCATEGORY subcategory) {
         try {
             final GooglePlayAPI api = PlayStoreApiAuthenticator.getApi(context);
             final CategoryAppsIterator2 iterator = new CategoryAppsIterator2(api, categoryId, subcategory);
@@ -157,7 +184,7 @@ public class TopFreeApps extends BaseFragment {
         }
     }
 
-    public void fetchCategoryApps(boolean shouldIterate) {
+    private void fetchCategoryApps(boolean shouldIterate) {
         disposable.add(Observable.fromCallable(() -> new CategoryAppsTask(getContext())
                 .getApps(getIterator()))
                 .subscribeOn(Schedulers.io())
@@ -187,9 +214,14 @@ public class TopFreeApps extends BaseFragment {
                 endlessAppsAdapter.add(app);
             endlessAppsAdapter.notifyItemInserted(endlessAppsAdapter.getItemCount() - 1);
         }
-        if (iterator.hasNext() && endlessAppsAdapter.getItemCount() < 10) {
-            iterator.next();
-        }
+        disposable.add(Observable.interval(1000, 2000, TimeUnit.MILLISECONDS)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(aLong -> {
+                    if (iterator.hasNext() && endlessAppsAdapter.getItemCount() < 10) {
+                        iterator.next();
+                    }
+                }, e -> Log.e(e.getMessage())));
     }
 
     @Override

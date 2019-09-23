@@ -180,7 +180,7 @@ public class InstalledAppsAdapter extends RecyclerView.Adapter<InstalledAppsAdap
         return appList.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.app_icon)
         ImageView AppIcon;
         @BindView(R.id.app_title)
@@ -195,5 +195,4 @@ public class InstalledAppsAdapter extends RecyclerView.Adapter<InstalledAppsAdap
             ButterKnife.bind(this, itemView);
         }
     }
-
 }
