@@ -19,6 +19,7 @@ import com.aurora.store.model.App;
 import com.aurora.store.model.Update;
 import com.aurora.store.task.NetworkTask;
 import com.aurora.store.utility.CertUtil;
+import com.aurora.store.utility.ContextUtil;
 import com.aurora.store.utility.Log;
 import com.aurora.store.utility.PackageUtil;
 import com.google.gson.Gson;
@@ -112,7 +113,11 @@ public class SelfUpdateService extends Service {
                     try {
                         gson = new Gson();
                         Update update = gson.fromJson(response, Update.class);
-                        downloadAndUpdate(update);
+                        if (update.getVersionCode() <= BuildConfig.VERSION_CODE) {
+                            ContextUtil.toastLong(this, getString(R.string.list_empty_updates));
+                            destroyService();
+                        } else
+                            downloadAndUpdate(update);
                     } catch (Exception e) {
                         Log.e("Error checking self-update");
                         destroyService();

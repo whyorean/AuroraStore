@@ -1,16 +1,19 @@
 package com.aurora.store.fragment.preference;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.preference.ListPreference;
+import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 
 import com.aurora.store.Constants;
 import com.aurora.store.R;
+import com.aurora.store.SelfUpdateService;
 import com.aurora.store.receiver.UpdatesReceiver;
 import com.aurora.store.utility.PrefUtil;
 import com.aurora.store.utility.Util;
@@ -43,6 +46,13 @@ public class UpdatesPrefFragment extends PreferenceFragmentCompat {
             Util.setUpdatesInterval(context, interval);
             return true;
         });
-    }
 
+        Preference preferenceUpdate = findPreference(Constants.PREFERENCE_SELF_UPDATE);
+        assert preferenceUpdate != null;
+        preferenceUpdate.setOnPreferenceClickListener(preference -> {
+            Intent intent = new Intent(context, SelfUpdateService.class);
+            context.startService(intent);
+            return true;
+        });
+    }
 }

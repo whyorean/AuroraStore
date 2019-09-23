@@ -110,4 +110,5 @@ public class Constants {
     public static final String PREFERENCE_INSTALLED_APPS = "PREFERENCE_INSTALLED_APPS";
     public static final String PREFERENCE_CACHE_DATE = "PREFERENCE_CACHE_DATE";
     public static final String PREFERENCE_SELF_UPDATE_DATE = "PREFERENCE_SELF_UPDATE_DATE";
+    public static final String PREFERENCE_SELF_UPDATE = "PREFERENCE_SELF_UPDATE";
 }

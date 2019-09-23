@@ -20,6 +20,11 @@
 
 <androidx.preference.PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <Preference
+        app:key="PREFERENCE_SELF_UPDATE"
+        app:summary="@string/pref_update_self_desc"
+        app:title="@string/pref_update_self_title" />
+
     <ListPreference
         app:defaultValue="-1"
         app:entries="@array/pref_update_interval"
