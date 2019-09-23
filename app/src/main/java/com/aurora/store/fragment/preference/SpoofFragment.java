@@ -32,7 +32,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -58,7 +57,6 @@ import com.google.android.material.floatingactionbutton.ExtendedFloatingActionBu
 
 import org.jetbrains.annotations.NotNull;
 
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Locale;
@@ -216,18 +214,12 @@ public class SpoofFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (position > 0) {
-                    try {
-                        new PlayStoreApiAuthenticator(context).getApi()
-                                .setLocale(new Locale(localeKeys[position]));
-                        PrefUtil.putString(context, Constants.PREFERENCE_REQUESTED_LANGUAGE,
-                                localeKeys[position]);
-                        PrefUtil.putInteger(context, Constants.PREFERENCE_REQUESTED_LANGUAGE_INDEX,
-                                position);
-                    } catch (IOException e) {
-                        Log.w(e.getMessage());
-                        ContextUtil.runOnUiThread(() -> Toast.makeText(context,
-                                "You need to errLogin first", Toast.LENGTH_LONG).show());
-                    }
+                    PlayStoreApiAuthenticator.getApi(context)
+                            .setLocale(new Locale(localeKeys[position]));
+                    PrefUtil.putString(context, Constants.PREFERENCE_REQUESTED_LANGUAGE,
+                            localeKeys[position]);
+                    PrefUtil.putInteger(context, Constants.PREFERENCE_REQUESTED_LANGUAGE_INDEX,
+                            position);
                 }
 
                 if (position == 0) {

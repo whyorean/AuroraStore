@@ -44,7 +44,7 @@ public class UpdatableAppsTask extends AllAppsTask {
         super(context);
     }
 
-    public List<App> getUpdatableApps() throws IOException {
+    public List<App> getUpdatableApps() throws Exception {
         List<App> appList = new ArrayList<>();
         List<String> packageList = getInstalledApps();
         packageList = filterBlacklistedApps(packageList);
@@ -64,7 +64,7 @@ public class UpdatableAppsTask extends AllAppsTask {
         return appList;
     }
 
-    public List<App> getAppsFromPlayStore(List<String> packageNames) throws IOException {
+    public List<App> getAppsFromPlayStore(List<String> packageNames) throws Exception {
         final List<App> appsFromPlayStore = new ArrayList<>();
         boolean builtInAccount = Accountant.isDummy(context);
         for (App app : getRemoteAppList(packageNames)) {
@@ -75,7 +75,7 @@ public class UpdatableAppsTask extends AllAppsTask {
         return appsFromPlayStore;
     }
 
-    private List<App> getRemoteAppList(List<String> packageNames) throws IOException {
+    private List<App> getRemoteAppList(List<String> packageNames) throws Exception {
         final List<App> appList = new ArrayList<>();
         try {
             final List<BulkDetailsEntry> bulkDetailsEntries = getApi().bulkDetails(packageNames).getEntryList();

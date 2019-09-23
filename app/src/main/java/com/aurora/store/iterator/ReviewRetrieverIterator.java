@@ -60,7 +60,7 @@ public class ReviewRetrieverIterator extends ReviewIterator {
 
     private List<Review> getReviews(String packageId, int offset, int numberOfResults) throws IOException {
         List<Review> reviews = new ArrayList<>();
-        for (com.dragons.aurora.playstoreapiv2.Review review : new PlayStoreApiAuthenticator(context).getApi().reviews(
+        for (com.dragons.aurora.playstoreapiv2.Review review : PlayStoreApiAuthenticator.getApi(context).reviews(
                 packageId,
                 GooglePlayAPI.REVIEW_SORT.HELPFUL,
                 offset,

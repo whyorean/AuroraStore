@@ -36,7 +36,7 @@ public class BulkDetails extends BaseTask {
         super(context);
     }
 
-    public List<App> getRemoteAppList(List<String> packageNames) throws IOException {
+    public List<App> getRemoteAppList(List<String> packageNames) throws Exception {
         List<App> apps = new ArrayList<>();
         for (BulkDetailsEntry details : getApi().bulkDetails(packageNames).getEntryList()) {
             if (!details.hasDoc()) {

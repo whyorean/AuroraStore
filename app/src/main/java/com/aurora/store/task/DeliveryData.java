@@ -44,7 +44,7 @@ public class DeliveryData extends BaseTask {
         super(context);
     }
 
-    public AndroidAppDeliveryData getDeliveryData(App app) throws IOException {
+    public AndroidAppDeliveryData getDeliveryData(App app) throws Exception {
         GooglePlayAPI api = getApi();
         purchase(api, app);
         delivery(api, app);

@@ -54,8 +54,8 @@ public class AnonymousLoginService extends Service {
     }
 
     private void login() {
-        disposable.add(Observable.fromCallable(() -> new PlayStoreApiAuthenticator(this)
-                .login())
+        disposable.add(Observable.fromCallable(() -> PlayStoreApiAuthenticator
+                .login(this))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe((success) -> {

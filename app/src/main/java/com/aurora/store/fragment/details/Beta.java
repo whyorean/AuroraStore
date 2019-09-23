@@ -156,7 +156,7 @@ public class Beta extends AbstractHelper {
             super(context);
         }
 
-        private boolean toggle(App app) {
+        private boolean toggle(App app) throws Exception {
             try {
                 GooglePlayAPI api = getApi();
                 api.testingProgram(app.getPackageName(), !app.isTestingProgramOptedIn());
@@ -179,7 +179,7 @@ public class Beta extends AbstractHelper {
                 GooglePlayAPI api = getApi();
                 api.betaFeedback(packageName, feedback);
                 return true;
-            } catch (IOException e) {
+            } catch (Exception e) {
                 Log.e(e.getMessage());
                 return false;
             }
@@ -197,7 +197,7 @@ public class Beta extends AbstractHelper {
                 GooglePlayAPI api = getApi();
                 api.deleteBetaFeedback(packageName);
                 return true;
-            } catch (IOException e) {
+            } catch (Exception e) {
                 Log.e(e.getMessage());
                 return false;
             }

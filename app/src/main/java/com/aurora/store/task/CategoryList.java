@@ -40,7 +40,7 @@ public class CategoryList extends BaseTask {
         super(context);
     }
 
-    public boolean getResult() throws IOException {
+    public boolean getResult() throws Exception {
         CategoryManager categoryManager = new CategoryManager(context);
         api = getApi();
         api.setLocale(getLocale(context));

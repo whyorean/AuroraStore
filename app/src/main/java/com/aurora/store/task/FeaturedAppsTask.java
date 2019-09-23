@@ -38,7 +38,7 @@ public class FeaturedAppsTask extends BaseTask {
         super(context);
     }
 
-    public List<App> getApps(String categoryId, GooglePlayAPI.SUBCATEGORY subCategory) throws IOException {
+    public List<App> getApps(String categoryId, GooglePlayAPI.SUBCATEGORY subCategory) throws Exception {
         final GooglePlayAPI api = getApi();
         final CustomAppListIterator iterator = new CustomAppListIterator(new CategoryAppsIterator2(api, categoryId, subCategory));
         List<App> apps = new ArrayList<>();

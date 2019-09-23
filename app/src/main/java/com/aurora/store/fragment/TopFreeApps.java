@@ -148,7 +148,7 @@ public class TopFreeApps extends BaseFragment {
 
     public CustomAppListIterator setupIterator(String categoryId, GooglePlayAPI.SUBCATEGORY subcategory) {
         try {
-            final GooglePlayAPI api = new PlayStoreApiAuthenticator(context).getApi();
+            final GooglePlayAPI api = PlayStoreApiAuthenticator.getApi(context);
             final CategoryAppsIterator2 iterator = new CategoryAppsIterator2(api, categoryId, subcategory);
             return new CustomAppListIterator(iterator);
         } catch (Exception err) {

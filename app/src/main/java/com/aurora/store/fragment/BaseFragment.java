@@ -45,6 +45,7 @@ import com.aurora.store.events.Event;
 import com.aurora.store.events.Events;
 import com.aurora.store.events.RxBus;
 import com.aurora.store.exception.CredentialsEmptyException;
+import com.aurora.store.exception.InvalidApiException;
 import com.aurora.store.exception.MalformedRequestException;
 import com.aurora.store.exception.TooManyRequestsException;
 import com.aurora.store.iterator.CustomAppListIterator;
@@ -54,7 +55,6 @@ import com.aurora.store.utility.Log;
 import com.aurora.store.view.ErrorView;
 import com.dragons.aurora.playstoreapiv2.AuthException;
 import com.dragons.aurora.playstoreapiv2.IteratorGooglePlayException;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.io.IOException;
@@ -83,16 +83,10 @@ public abstract class BaseFragment extends Fragment {
     private SearchIterator2 searchIterator;
     private CompositeDisposable disposableBus = new CompositeDisposable();
     private Context context;
-    private BottomNavigationView bottomNavigationView;
-    private PlayStoreApiAuthenticator playStoreApiAuthenticator;
-
-    void setBaseBottomNavigationView(BottomNavigationView bottomNavigationView) {
-        this.bottomNavigationView = bottomNavigationView;
-    }
 
     CustomAppListIterator getIterator(String query) {
         try {
-            searchIterator = new SearchIterator2(new PlayStoreApiAuthenticator(context).getApi(), query);
+            searchIterator = new SearchIterator2(PlayStoreApiAuthenticator.getApi(context), query);
             iterator = new CustomAppListIterator(searchIterator);
             return iterator;
         } catch (Exception e) {
@@ -110,13 +104,13 @@ public abstract class BaseFragment extends Fragment {
     protected void notifyLoggedIn() {
         ContextUtil.runOnUiThread(() -> {
             fetchData();
-            notifyStatus(coordinatorLayout, null, context.getResources().getString(R.string.action_logging_in_success));
+            notifyStatus(coordinatorLayout, context.getResources().getString(R.string.action_logging_in_success));
         });
     }
 
     protected void notifyNetworkFailure() {
         setErrorView(ErrorType.NO_NETWORK);
-        notifyStatus(coordinatorLayout, bottomNavigationView, context.getString(R.string.error_no_network));
+        notifyStatus(coordinatorLayout, context.getString(R.string.error_no_network));
         switchViews(true);
     }
 
@@ -128,11 +122,11 @@ public abstract class BaseFragment extends Fragment {
     protected void notifyLoggedOut() {
         setErrorView(ErrorType.LOGOUT_ERR);
         switchViews(true);
-        notifyStatus(coordinatorLayout, bottomNavigationView, context.getString(R.string.error_logged_out));
+        notifyStatus(coordinatorLayout, context.getString(R.string.error_logged_out));
     }
 
     protected void notifyTokenExpired() {
-        notifyStatus(coordinatorLayout, bottomNavigationView, context.getString(R.string.action_token_expired));
+        notifyStatus(coordinatorLayout, context.getString(R.string.action_token_expired));
     }
 
     @Override
@@ -177,7 +171,6 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        playStoreApiAuthenticator = new PlayStoreApiAuthenticator(context);
     }
 
     @Override
@@ -194,11 +187,8 @@ public abstract class BaseFragment extends Fragment {
         disposableBus.clear();
     }
 
-    protected void notifyStatus(@NonNull CoordinatorLayout coordinatorLayout, @Nullable View anchorView,
-                                @NonNull String message) {
+    private void notifyStatus(@NonNull CoordinatorLayout coordinatorLayout, String message) {
         Snackbar snackbar = Snackbar.make(coordinatorLayout, message, Snackbar.LENGTH_LONG);
-        if (anchorView != null)
-            snackbar.setAnchorView(anchorView);
         snackbar.show();
     }
 
@@ -262,9 +252,7 @@ public abstract class BaseFragment extends Fragment {
             processAuthException(new AuthException("Malformed Request", 401));
         } else if (e instanceof IOException) {
             processIOException((IOException) e);
-        } else if (e instanceof NullPointerException)
-            Log.e("NPE ? Oh yeah !");
-        else {
+        } else {
             Log.e("Unknown exception " + e.getClass().getName() + " " + e.getMessage());
             e.printStackTrace();
         }
@@ -287,7 +275,7 @@ public abstract class BaseFragment extends Fragment {
     }
 
     private void processAuthException(AuthException e) {
-        if (e instanceof CredentialsEmptyException) {
+        if (e instanceof CredentialsEmptyException || e instanceof InvalidApiException) {
             Log.i("Logged out");
             Accountant.completeCheckout(context);
             RxBus.publish(new Event(Events.LOGGED_OUT));
@@ -300,7 +288,7 @@ public abstract class BaseFragment extends Fragment {
             logInWithDummy();
         } else {
             ContextUtil.toast(context, R.string.error_incorrect_password);
-            playStoreApiAuthenticator.logout();
+            PlayStoreApiAuthenticator.logout(context);
             Accountant.completeCheckout(context);
         }
     }
@@ -310,13 +298,13 @@ public abstract class BaseFragment extends Fragment {
      *
      */
 
-    private synchronized void logInWithDummy() {
+    private void logInWithDummy() {
         Intent intent = new Intent(context, AnonymousLoginService.class);
         if (!AnonymousLoginService.isServiceRunning())
             context.startService(intent);
     }
 
-    private synchronized void refreshToken() {
+    private void refreshToken() {
         Intent intent = new Intent(context, AnonymousRefreshService.class);
         if (!AnonymousRefreshService.isServiceRunning())
             context.startService(intent);

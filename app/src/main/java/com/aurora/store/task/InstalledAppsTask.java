@@ -36,7 +36,7 @@ public class InstalledAppsTask extends UpdatableAppsTask {
         super(context);
     }
 
-    public List<App> getInstalledApps(boolean removeSystemApps) throws IOException {
+    public List<App> getInstalledApps(boolean removeSystemApps) throws Exception {
         List<App> appList = new ArrayList<>();
         List<String> packageList = getInstalledApps();
         if (removeSystemApps)
@@ -55,7 +55,7 @@ public class InstalledAppsTask extends UpdatableAppsTask {
         return appList;
     }
 
-    public List<App> getAllApps() throws IOException {
+    public List<App> getAllApps() throws Exception {
         List<App> appList = new ArrayList<>();
         List<String> packageList = getInstalledApps();
         for (App app : getAppsFromPlayStore(packageList)) {

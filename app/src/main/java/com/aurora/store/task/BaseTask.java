@@ -24,10 +24,10 @@ import android.content.Context;
 import android.content.ContextWrapper;
 
 import com.aurora.store.api.PlayStoreApiAuthenticator;
+import com.aurora.store.exception.InvalidApiException;
 import com.aurora.store.model.App;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -44,12 +44,12 @@ public abstract class BaseTask extends ContextWrapper {
     }
 
 
-    public GooglePlayAPI getApi() throws IOException {
-        return new PlayStoreApiAuthenticator(context).getApi();
-    }
-
-    public void setApi(GooglePlayAPI api) {
-        this.api = api;
+    public GooglePlayAPI getApi() throws Exception {
+        api = PlayStoreApiAuthenticator.getApi(context);
+        if (api == null)
+            throw new InvalidApiException("Failed to build api, probably logged out");
+        else
+            return api;
     }
 
     public Context getContext() {

@@ -101,7 +101,7 @@ public class AuroraSuggestionProvider extends ContentProvider {
 
     private void refreshAndRetry(MatrixCursor cursor, Uri uri) {
         try {
-            new PlayStoreApiAuthenticator(getContext()).refreshToken();
+            PlayStoreApiAuthenticator.refreshToken(getContext());
             fill(cursor, uri);
         } catch (Throwable e) {
             Log.e(e.getMessage());
@@ -114,7 +114,7 @@ public class AuroraSuggestionProvider extends ContentProvider {
             return;
         }
         int i = 0;
-        for (SearchSuggestEntry entry : new PlayStoreApiAuthenticator(getContext()).getApi().searchSuggest(query).getEntryList()) {
+        for (SearchSuggestEntry entry : PlayStoreApiAuthenticator.getApi(getContext()).searchSuggest(query).getEntryList()) {
             cursor.addRow(constructRow(entry, i++));
         }
     }

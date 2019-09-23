@@ -65,11 +65,11 @@ public class Accountant {
     }
 
     public static void completeCheckout(Context context) {
-        PrefUtil.putBoolean(context, LOGGED_IN, false);
-        PrefUtil.putString(context, GOOGLE_NAME, "");
-        PrefUtil.putString(context, GOOGLE_URL, "");
-        PrefUtil.putBoolean(context, LOGIN_PROMPTED, false);
-        new PlayStoreApiAuthenticator(context).logout();
+        PrefUtil.remove(context, LOGGED_IN);
+        PrefUtil.remove(context, GOOGLE_NAME);
+        PrefUtil.remove(context, GOOGLE_URL);
+        PrefUtil.remove(context, LOGIN_PROMPTED);
+        PlayStoreApiAuthenticator.logout(context);
     }
 
     public static void saveDummy(Context context) {

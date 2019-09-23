@@ -2,6 +2,9 @@
  * Aurora Store
  * Copyright (C) 2019, Rahul Kumar Patel <whyorean@gmail.com>
  *
+ * Yalp Store
+ * Copyright (C) 2018 Sergey Yeriomin <yeriomin@gmail.com>
+ *
  * Aurora Store is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2 of the License, or
@@ -18,20 +21,36 @@
  *
  */
 
-package com.aurora.store.task;
+package com.aurora.store.exception;
 
-import android.content.Context;
+import com.dragons.aurora.playstoreapiv2.AuthException;
 
-import com.dragons.aurora.playstoreapiv2.UserProfile;
+public class InvalidApiException extends AuthException {
 
-import java.io.IOException;
+    protected int code;
 
-public class UserProfiler extends BaseTask {
-    public UserProfiler(Context context) {
-        super(context);
+    public InvalidApiException() {
+        super("InvalidApiException");
     }
 
-    public UserProfile getUserProfile() throws Exception {
-        return getApi().userProfile().getUserProfile();
+    public InvalidApiException(String message, int code) {
+        super(message);
+        this.code = code;
+    }
+
+    public InvalidApiException(String message) {
+        super(message);
+    }
+
+    public InvalidApiException(String message, Throwable cause) {
+        super(message, cause);
+    }
+
+    public int getCode() {
+        return code;
+    }
+
+    public void setCode(int code) {
+        this.code = code;
     }
 }

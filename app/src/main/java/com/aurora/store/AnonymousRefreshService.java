@@ -53,8 +53,8 @@ public class AnonymousRefreshService extends Service {
     }
 
     private void refreshToken() {
-        disposable.add(Flowable.fromCallable(() -> new PlayStoreApiAuthenticator(this)
-                .refreshToken())
+        disposable.add(Flowable.fromCallable(() -> PlayStoreApiAuthenticator
+                .refreshToken(this))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnSubscribe(subscription -> {

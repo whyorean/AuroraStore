@@ -268,7 +268,7 @@ public class Reviews extends AbstractHelper {
                 GooglePlayAPI api = getApi();
                 api.deleteReview(packageName);
                 return true;
-            } catch (IOException e) {
+            } catch (Exception e) {
                 Log.e(e.getMessage());
                 return false;
             }

@@ -36,6 +36,10 @@ import java.util.Set;
 
 public class PrefUtil {
 
+    public static void remove(Context context, String key){
+        Util.getPrefs(context).edit().remove(key).apply();
+    }
+
     public static void putString(Context context, String key, String value) {
         Util.getPrefs(context.getApplicationContext()).edit().putString(key, value).apply();
     }

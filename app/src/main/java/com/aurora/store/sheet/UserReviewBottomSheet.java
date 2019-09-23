@@ -133,7 +133,7 @@ public class UserReviewBottomSheet extends BottomSheetDialogFragment {
                         review.getRating());
                 ReviewBuilder.build(response.getUserReview());
                 return true;
-            } catch (IOException e) {
+            } catch (Exception e) {
                 return false;
             }
         }

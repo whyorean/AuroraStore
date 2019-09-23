@@ -294,7 +294,7 @@ public class AccountsFragment extends Fragment {
     private void logInWithDummy() {
         switchButtonState(true);
         disposable.add(Observable.fromCallable(() ->
-                new PlayStoreApiAuthenticator(context).login())
+                PlayStoreApiAuthenticator.login(context))
                 .subscribeOn(Schedulers.io())
                 .doOnSubscribe(sub -> progressBar.setVisibility(View.VISIBLE))
                 .observeOn(Schedulers.computation())
@@ -327,7 +327,7 @@ public class AccountsFragment extends Fragment {
     private void logInWithGoogle(String email, String password) {
         switchButtonState(true);
         disposable.add(Observable.fromCallable(() ->
-                new PlayStoreApiAuthenticator(context).login(email, password))
+                PlayStoreApiAuthenticator.login(context, email, password))
                 .subscribeOn(Schedulers.io())
                 .doOnSubscribe(sub -> progressBar.setVisibility(View.VISIBLE))
                 .observeOn(AndroidSchedulers.mainThread())
