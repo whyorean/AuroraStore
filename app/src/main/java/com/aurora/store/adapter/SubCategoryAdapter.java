@@ -44,24 +44,21 @@ public class SubCategoryAdapter extends FragmentStatePagerAdapter {
     @NotNull
     @Override
     public Fragment getItem(int position) {
-        Bundle bundle = new Bundle();
-        Fragment subCategoryFragment = new SubCategoryFragment();
+        final Bundle bundle = new Bundle();
+        final Fragment subCategoryFragment = new SubCategoryFragment();
         switch (position) {
             case 0:
                 bundle.putString("SUBCATEGORY", "TOP_FREE");
-                subCategoryFragment.setArguments(bundle);
-                return subCategoryFragment;
+                break;
             case 1:
-                bundle = new Bundle();
                 bundle.putString("SUBCATEGORY", "MOVERS_SHAKERS");
-                subCategoryFragment.setArguments(bundle);
-                return subCategoryFragment;
+                break;
             default:
-                bundle = new Bundle();
                 bundle.putString("SUBCATEGORY", "TOP_GROSSING");
-                subCategoryFragment.setArguments(bundle);
-                return subCategoryFragment;
+                break;
         }
+        subCategoryFragment.setArguments(bundle);
+        return subCategoryFragment;
     }
 
     @Override
@@ -76,11 +73,8 @@ public class SubCategoryAdapter extends FragmentStatePagerAdapter {
                 return context.getString(R.string.category_topFree);
             case 1:
                 return context.getString(R.string.category_trending);
-            case 2:
-                return context.getString(R.string.category_topGrossing);
             default:
-                return null;
+                return context.getString(R.string.category_topGrossing);
         }
     }
-
 }
