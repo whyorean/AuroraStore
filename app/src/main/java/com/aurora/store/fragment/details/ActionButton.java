@@ -106,6 +106,7 @@ public class ActionButton extends AbstractHelper {
     private Fetch fetch;
     private FetchListener fetchListener;
     private GeneralNotification notification;
+    private int progress = 0;
 
     public ActionButton(DetailsFragment fragment, App app) {
         super(fragment, app);
@@ -330,7 +331,8 @@ public class ActionButton extends AbstractHelper {
             @Override
             public void onResumed(int groupId, @NotNull Download download, @NotNull FetchGroup fetchGroup) {
                 if (groupId == hashCode) {
-                    int progress = fetchGroup.getGroupDownloadProgress();
+                    progress = fetchGroup.getGroupDownloadProgress();
+                    if (progress < 0) progress = 0;
                     notification.notifyProgress(progress, 0, hashCode);
                     ContextUtil.runOnUiThread(() -> {
                         progressStatus.setText(R.string.download_progress);
@@ -342,17 +344,17 @@ public class ActionButton extends AbstractHelper {
             @Override
             public void onProgress(int groupId, @NotNull Download download, long etaInMilliSeconds, long downloadedBytesPerSecond, @NotNull FetchGroup fetchGroup) {
                 if (groupId == hashCode) {
-                    int progress = fetchGroup.getGroupDownloadProgress();
+                    progress = fetchGroup.getGroupDownloadProgress();
+                    if (progress < 0) progress = 0;
                     ContextUtil.runOnUiThread(() -> {
                         btnCancel.setVisibility(View.VISIBLE);
                         //Set intermediate to false, just in case xD
                         if (progressBar.isIndeterminate())
                             progressBar.setIndeterminate(false);
-                        if (progress > 0)
-                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                                progressBar.setProgress(progress, true);
-                            } else
-                                progressBar.setProgress(progress);
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                            progressBar.setProgress(progress, true);
+                        } else
+                            progressBar.setProgress(progress);
                         progressStatus.setText(R.string.download_progress);
                         progressTxt.setText(new StringBuilder().append(progress).append("%"));
                     });

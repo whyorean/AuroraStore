@@ -64,7 +64,7 @@ public class DownloadManager {
                 .enableRetryOnNetworkGain(true)
                 .enableAutoStart(true)
                 .setAutoRetryMaxAttempts(3)
-                .setProgressReportingInterval(5000);
+                .setProgressReportingInterval(3000);
         return Fetch.Impl.getInstance(fetchConfiguration.build());
     }
 

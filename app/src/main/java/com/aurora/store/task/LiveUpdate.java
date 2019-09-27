@@ -32,6 +32,7 @@ public class LiveUpdate extends BaseTask {
     private GeneralNotification notification;
     private App app;
     private int hashCode;
+    private int progress;
 
     public LiveUpdate(Context context) {
         super(context);
@@ -78,7 +79,8 @@ public class LiveUpdate extends BaseTask {
             @Override
             public void onResumed(int groupId, @NotNull Download download, @NotNull FetchGroup fetchGroup) {
                 if (groupId == hashCode) {
-                    int progress = fetchGroup.getGroupDownloadProgress();
+                    progress = fetchGroup.getGroupDownloadProgress();
+                    if (progress < 0) progress = 0;
                     notification.notifyProgress(progress, 0, hashCode);
                 }
             }
@@ -86,7 +88,8 @@ public class LiveUpdate extends BaseTask {
             @Override
             public void onProgress(int groupId, @NotNull Download download, long etaInMilliSeconds, long downloadedBytesPerSecond, @NotNull FetchGroup fetchGroup) {
                 if (groupId == hashCode) {
-                    final int progress = fetchGroup.getGroupDownloadProgress();
+                    progress = fetchGroup.getGroupDownloadProgress();
+                    if (progress < 0) progress = 0;
                     notification.notifyProgress(progress, downloadedBytesPerSecond, hashCode);
                 }
             }
