@@ -20,6 +20,13 @@
 
 <resources>
     <string name="app_log" translatable="false">
+        \n Changelog : v3.1.2
+        \n • Fix downloads on Android 10
+        \n • Notify user if 2FA is enabled
+        \n • Improve dummy logins and handle rate-limit
+        \n • Add self-update module
+        \n • Bug fixes and improvements
+        \n
         \n Changelog : v3.1.1
         \n • Do not cache updatable apps
         \n • Make installation sequential
