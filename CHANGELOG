@@ -62,3 +62,23 @@ Changelog : v3.0.9
 • Added new locales - Punjabi, Belarusian and Norwegian Bokmål
 • Bug fixes and improvements
 
+Changelog : 3.1.0
+• Cache apps to reduce network calls, auto clear after 3 days
+• Fix Google account login
+• Fix OBB issue for big games
+• Bug fixes and improvements
+
+Changelog : v3.1.1
+• Do not cache updatable apps, its fetched on each launch
+• Make installation sequential
+• Improve notifications
+• Improve app aesthetics
+• Bug fixes and improvements
+
+Changelog : v3.1.2
+• Fix downloads on Android 10
+• Notify user if 2FA is enabled
+• Improve dummy logins and handle rate-limit
+• Add self-update module
+• Bug fixes and improvements
+
