@@ -269,6 +269,10 @@ public class Util {
         return getPrefs(context).getBoolean(Constants.PREFERENCE_SEARCH_IME, true);
     }
 
+    public static boolean isSearchByPackageEnabled(Context context) {
+        return getPrefs(context).getBoolean(Constants.PREFERENCE_SEARCH_PACKAGE, true);
+    }
+
     public static boolean isTransparentStyle(Context context) {
         return getPrefs(context).getBoolean(Constants.PREFERENCE_UI_TRANSPARENT, true);
     }

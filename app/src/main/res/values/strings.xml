@@ -337,6 +337,8 @@
     <string name="pref_ui_tab_default_title">Select default tab</string>
     <string name="pref_ui_ime">Search IME</string>
     <string name="pref_ui_ime_summary">Show keyboard on search page by default</string>
+    <string name="pref_ui_package">Search by package name</string>
+    <string name="pref_ui_package_summary">Allow searching apps by package name</string>
     <string name="pref_ui_transparent">Transparent style</string>
     <string name="pref_ui_transparent_summary">Use transparent card style for category and link views</string>
     <string name="pref_update_self_title">Check updates</string>

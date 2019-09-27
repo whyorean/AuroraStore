@@ -66,4 +66,10 @@
         app:summary="@string/pref_ui_ime_summary"
         app:title="@string/pref_ui_ime" />
 
+    <SwitchPreferenceCompat
+        app:defaultValue="true"
+        app:key="PREFERENCE_SEARCH_PACKAGE"
+        app:summary="@string/pref_ui_package_summary"
+        app:title="@string/pref_ui_package" />
+
 </androidx.preference.PreferenceScreen>

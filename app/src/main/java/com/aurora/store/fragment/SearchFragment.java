@@ -152,7 +152,7 @@ public class SearchFragment extends Fragment implements HistoryItemTouchHelper.R
     }
 
     private void setQuery(String query) {
-        if (looksLikeAPackageId(query)) {
+        if (Util.isSearchByPackageEnabled(context) && looksLikeAPackageId(query)) {
             context.startActivity(DetailsActivity.getDetailsIntent(getContext(), query));
         } else {
             getQueriedApps(query);

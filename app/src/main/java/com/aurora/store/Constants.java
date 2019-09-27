@@ -60,6 +60,7 @@ public class Constants {
     public static final String PREFERENCE_FEATURED_SNAP = "PREFERENCE_FEATURED_SNAP";
     public static final String PREFERENCE_TAB_MODE = "PREFERENCE_TAB_MODE";
     public static final String PREFERENCE_SEARCH_IME = "PREFERENCE_SEARCH_IME";
+    public static final String PREFERENCE_SEARCH_PACKAGE = "PREFERENCE_SEARCH_PACKAGE";
     public static final String PREFERENCE_DO_NOT_SHOW_INTRO = "PREFERENCE_DO_NOT_SHOW_INTRO";
     public static final String PREFERENCE_INCLUDE_SYSTEM = "PREFERENCE_INCLUDE_SYSTEM";
     public static final String PREFERENCE_REQUESTED_LANGUAGE = "PREFERENCE_REQUESTED_LANGUAGE";
