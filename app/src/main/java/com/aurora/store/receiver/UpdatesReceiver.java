@@ -31,19 +31,17 @@ public class UpdatesReceiver extends BroadcastReceiver {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe((appList) -> {
                     StringBuilder msg;
-
-                    if (appList.isEmpty())
-                        msg = new StringBuilder().append(context.getString(R.string.list_empty_updates));
-                    else
+                    if (!appList.isEmpty()) {
                         msg = new StringBuilder()
                                 .append(appList.size())
                                 .append(StringUtils.SPACE)
                                 .append(context.getString(R.string.list_update_all_txt));
 
-                    QuickNotification.show(context,
-                            context.getString(R.string.action_updates),
-                            msg.toString(),
-                            getContentIntent(context));
+                        QuickNotification.show(context,
+                                context.getString(R.string.action_updates),
+                                msg.toString(),
+                                getContentIntent(context));
+                    }
                 }, err -> Log.e("Update check failed")));
     }
 
