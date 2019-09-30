@@ -1584,6 +1584,102 @@
       "id": 204,
       "name": "Instreamatic",
       "website": "http://instreamatic.com/"
+    },
+    "205": {
+      "code_signature": "com.gameanalytics.sdk ",
+      "creation_date": "2019-09-30",
+      "network_signature": "NC",
+      "id": 205,
+      "name": "GameAnalytics",
+      "website": "https://gameanalytics.com/features/"
+    },
+    "206": {
+      "code_signature": "com.instabug.library.tracking|com.instabug.bug ",
+      "creation_date": "2019-09-30",
+      "network_signature": "NC",
+      "id": 206,
+      "name": "Instabug",
+      "website": "https://instabug.com/crash-reporting"
+    },
+    "207": {
+      "code_signature": "com.bugsnag",
+      "creation_date": "2019-09-30",
+      "network_signature": "NC",
+      "id": 207,
+      "name": "Bugsnag",
+      "website": "https://www.bugsnag.com/"
+    },
+    "208": {
+      "code_signature": "com.moodmedia",
+      "creation_date": "2019-09-30",
+      "network_signature": "moodpresence.com",
+      "id": 208,
+      "name": "Moodmedia",
+      "website": "https://us.moodmedia.com/"
+    },
+    "209": {
+      "code_signature": "com.hound ",
+      "creation_date": "2019-09-30",
+      "network_signature": "houndify.com",
+      "id": 209,
+      "name": "Houndify",
+      "website": "https://www.houndify.com/"
+    },
+    "210": {
+      "code_signature": "com.openx.view.plugplay|com.openx.android_sdk_openx ",
+      "creation_date": "2019-09-30",
+      "network_signature": "NC",
+      "id": 210,
+      "name": "OpenX",
+      "website": "https://www.openx.com/"
+    },
+    "211": {
+      "code_signature": "com.taplytics.sdk",
+      "creation_date": "2019-09-30",
+      "network_signature": "api.taplytics.com|ping.tapylitics.com",
+      "id": 211,
+      "name": "Taplytics",
+      "website": "https://taplytics.com/"
+    },
+    "212": {
+      "code_signature": "com.yinzcam.sobek ",
+      "creation_date": "2019-09-30",
+      "network_signature": "analytics.yinzcam.com",
+      "id": 212,
+      "name": "Yinzcam Sobek",
+      "website": "http://www.yinzcam.com/"
+    },
+    "213": {
+      "code_signature": "com.ooyala",
+      "creation_date": "2019-09-30",
+      "network_signature": "ooyala.com",
+      "id": 213,
+      "name": "Ooyala",
+      "website": "https://www.ooyala.com/"
+    },
+    "214": {
+      "code_signature": "me.kiip.sdk",
+      "creation_date": "2019-09-30",
+      "network_signature": "kiip.me",
+      "id": 214,
+      "name": "Kiip",
+      "website": "https://www.kiip.me/"
+    },
+    "215": {
+      "code_signature": "com.mobpower.",
+      "creation_date": "2019-09-30",
+      "network_signature": "api.mobpowertech.com|log.mobpowertech.com|scheme.mobpowertech.com|mobpowertech.com",
+      "id": 215,
+      "name": "MobPower",
+      "website": "https://home.mobpowertech.com/"
+    },
+    "216": {
+      "code_signature": "com.purplebrain.adbuddiz.sdk.",
+      "creation_date": "2019-09-30",
+      "network_signature": "sdk.adbuddiz.com",
+      "id": 216,
+      "name": "AdBuddiz",
+      "website": "http://www.adbuddiz.com/abuse?hl=fr"
     }
   }
 ]
