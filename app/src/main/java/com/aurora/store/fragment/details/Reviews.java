@@ -49,7 +49,6 @@ import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
-import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
 
@@ -86,7 +85,7 @@ public class Reviews extends AbstractHelper {
     Chip chipDelete;
 
     private ReviewStorageIterator iterator;
-    private CompositeDisposable mDisposable = new CompositeDisposable();
+    private CompositeDisposable disposable = new CompositeDisposable();
 
     public Reviews(DetailsFragment fragment, App app) {
         super(fragment, app);
@@ -102,7 +101,7 @@ public class Reviews extends AbstractHelper {
             if (!app.isInPlayStore() || app.isEarlyAccess())
                 return;
             else
-                mDisposable.add(Observable.fromCallable(() -> new ReviewLoader(context, iterator)
+                disposable.add(Observable.fromCallable(() -> new ReviewLoader(context, iterator)
                         .getReviews())
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
@@ -130,8 +129,8 @@ public class Reviews extends AbstractHelper {
             if (null != review) {
                 fillUserReview(review);
             }
-            initUserReviewControls(app);
 
+            initUserReviewControls(app);
             setupLoadMore();
         }
     }
@@ -144,7 +143,7 @@ public class Reviews extends AbstractHelper {
         return app.isInstalled() && Accountant.isGoogle(context) && !app.isTestingProgramOptedIn();
     }
 
-    public void fillUserReview(Review review) {
+    private void fillUserReview(Review review) {
         clearUserReview();
         app.setUserReview(review);
         userRatingBar.setRating(review.getRating());
@@ -155,7 +154,7 @@ public class Reviews extends AbstractHelper {
         userCommentLayout.setVisibility(View.VISIBLE);
     }
 
-    public void clearUserReview() {
+    private void clearUserReview() {
         userRatingBar.setRating(0);
         setText(fragment.getView(), R.id.user_title, "");
         setText(fragment.getView(), R.id.user_comment, "");
@@ -174,7 +173,7 @@ public class Reviews extends AbstractHelper {
         return review;
     }
 
-    public void showReviews(List<Review> reviews) {
+    private void showReviews(List<Review> reviews) {
         reviewListLayout.removeAllViews();
         addReviewToList(reviews.get(0), reviewListLayout);
         addReviewToList(reviews.get(1), reviewListLayout);
@@ -200,16 +199,14 @@ public class Reviews extends AbstractHelper {
                 .into(imageView);
 
         reviewLayout.setOnClickListener(v -> {
-            MaterialAlertDialogBuilder mBuilder = new MaterialAlertDialogBuilder(context)
+            MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context)
                     .setIcon(imageView.getDrawable())
                     .setTitle(review.getUserName())
                     .setMessage(review.getComment())
                     .setCancelable(false)
-                    .setPositiveButton(android.R.string.ok, (dialog, which) -> {
-                        dialog.dismiss();
-                    });
-            mBuilder.create();
-            mBuilder.show();
+                    .setPositiveButton(android.R.string.ok, (dialog, which) -> dialog.dismiss());
+            builder.create();
+            builder.show();
         });
         parent.addView(reviewLayout);
     }
@@ -225,19 +222,17 @@ public class Reviews extends AbstractHelper {
             reviewsBottomSheet.show(fragment.getChildFragmentManager(), "USER_REVIEWS");
         });
 
-        chipDelete.setOnClickListener(v -> {
-            mDisposable.add(Observable.fromCallable(() ->
-                    new ReviewRemover(context).delete(app.getPackageName()))
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe((success) -> {
-                        if (success) {
-                            clearUserReview();
-                        } else {
-                            Log.e("Error deleting the review");
-                        }
-                    }, err -> Log.e(err.getMessage())));
-        });
+        chipDelete.setOnClickListener(v -> disposable.add(Observable.fromCallable(() -> new ReviewRemover(context)
+                .delete(app.getPackageName()))
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe((success) -> {
+                    if (success) {
+                        clearUserReview();
+                    } else {
+                        Log.e("Error deleting the review");
+                    }
+                }, err -> Log.e(err.getMessage()))));
     }
 
     private void setTextOrHide(int viewId, String text) {
@@ -252,13 +247,12 @@ public class Reviews extends AbstractHelper {
 
     private void setupLoadMore() {
         imgReview.setOnClickListener(v -> {
-            ReviewsBottomSheet mDetailsFragmentMore = new ReviewsBottomSheet(app);
-            mDetailsFragmentMore.show(fragment.getChildFragmentManager(), "REVIEWS");
+            ReviewsBottomSheet reviewsBottomSheet = new ReviewsBottomSheet(app);
+            reviewsBottomSheet.show(fragment.getChildFragmentManager(), "REVIEWS");
         });
     }
 
     static class ReviewRemover extends BaseTask {
-
         ReviewRemover(Context context) {
             super(context);
         }
@@ -276,7 +270,6 @@ public class Reviews extends AbstractHelper {
     }
 
     static class ReviewLoader extends BaseTask {
-
         private ReviewStorageIterator iterator;
 
         ReviewLoader(Context context, ReviewStorageIterator iterator) {

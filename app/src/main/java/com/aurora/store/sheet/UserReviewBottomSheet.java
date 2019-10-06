@@ -35,13 +35,12 @@ import com.aurora.store.model.App;
 import com.aurora.store.model.Review;
 import com.aurora.store.model.ReviewBuilder;
 import com.aurora.store.task.BaseTask;
+import com.aurora.store.utility.ContextUtil;
 import com.aurora.store.utility.Log;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 import com.dragons.aurora.playstoreapiv2.ReviewResponse;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.android.material.textfield.TextInputEditText;
-
-import java.io.IOException;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -65,8 +64,9 @@ public class UserReviewBottomSheet extends BottomSheetDialogFragment {
     private String comment;
     private int rating;
 
+    private Context context;
     private App app;
-    private CompositeDisposable mDisposable = new CompositeDisposable();
+    private CompositeDisposable disposable = new CompositeDisposable();
 
     public void setApp(App app) {
         this.app = app;
@@ -74,6 +74,12 @@ public class UserReviewBottomSheet extends BottomSheetDialogFragment {
 
     public void setRating(int rating) {
         this.rating = rating;
+    }
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        this.context = context;
     }
 
     @Override
@@ -86,20 +92,23 @@ public class UserReviewBottomSheet extends BottomSheetDialogFragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        btnSubmit.setOnClickListener(v -> submitUserReview(getReview()));
-        btnCancel.setOnClickListener(v -> dismiss());
+        btnSubmit.setOnClickListener(v -> {
+            submitUserReview(getReview());
+            dismissAllowingStateLoss();
+        });
+        btnCancel.setOnClickListener(v -> dismissAllowingStateLoss());
     }
 
     private void submitUserReview(Review review) {
-        mDisposable.add(Observable.fromCallable(() ->
-                new ReviewAdder(getContext()).submit(app.getPackageName(), review))
+        disposable.add(Observable.fromCallable(() -> new ReviewAdder(context)
+                .submit(app.getPackageName(), review))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe((success) -> {
                     if (success) {
-                        Log.i("Review Updated");
+                        ContextUtil.toastShort(context, "Review updated");
                     } else {
-                        Log.e("Error updating the review");
+                        ContextUtil.toastShort(context, "Review failed");
                     }
                 }, err -> Log.e(err.getMessage())));
 

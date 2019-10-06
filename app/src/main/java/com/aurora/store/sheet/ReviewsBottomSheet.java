@@ -20,6 +20,7 @@
 
 package com.aurora.store.sheet;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -53,15 +54,22 @@ import io.reactivex.schedulers.Schedulers;
 public class ReviewsBottomSheet extends BottomSheetDialogFragment {
 
     @BindView(R.id.reviews_recycler)
-    RecyclerView mRecyclerView;
+    RecyclerView recyclerView;
 
+    private Context context;
     private App app;
-    private ReviewsAdapter mReviewsAdapter;
+    private ReviewsAdapter adapter;
     private ReviewStorageIterator iterator;
-    private CompositeDisposable mDisposable = new CompositeDisposable();
+    private CompositeDisposable disposable = new CompositeDisposable();
 
     public ReviewsBottomSheet(App app) {
         this.app = app;
+    }
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        this.context = context;
     }
 
     @Override
@@ -82,44 +90,44 @@ public class ReviewsBottomSheet extends BottomSheetDialogFragment {
         super.onActivityCreated(savedInstanceState);
         iterator = new ReviewStorageIterator();
         iterator.setPackageName(app.getPackageName());
-        iterator.setContext(getActivity());
+        iterator.setContext(context);
         getReviews(false);
     }
 
     private void getReviews(boolean shouldIterate) {
-        ReviewsHelper mTask = new ReviewsHelper(getContext());
-        mTask.setIterator(iterator);
-        mDisposable.add(Observable.fromCallable(mTask::getReviews)
+        ReviewsHelper reviewsHelper = new ReviewsHelper(getContext());
+        reviewsHelper.setIterator(iterator);
+        disposable.add(Observable.fromCallable(reviewsHelper::getReviews)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnError(err -> Log.e(err.getMessage()))
-                .subscribe(mReviewList -> {
+                .subscribe(reviewList -> {
                     if (shouldIterate)
-                        addReviews(mReviewList);
+                        addReviews(reviewList);
                     else
-                        setupRecycler(mReviewList);
+                        setupRecycler(reviewList);
                 }));
     }
 
-    private void setupRecycler(List<Review> mReviewList) {
-        LinearLayoutManager mLayoutManager = new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false);
-        mReviewsAdapter = new ReviewsAdapter(getContext(), mReviewList);
-        mRecyclerView.setLayoutManager(mLayoutManager);
-        mRecyclerView.setAdapter(mReviewsAdapter);
-        EndlessScrollListener mEndlessRecyclerViewScrollListener = new EndlessScrollListener(mLayoutManager) {
+    private void setupRecycler(List<Review> reviewList) {
+        LinearLayoutManager mLayoutManager = new LinearLayoutManager(context, RecyclerView.VERTICAL, false);
+        adapter = new ReviewsAdapter(getContext(), reviewList);
+        recyclerView.setLayoutManager(mLayoutManager);
+        recyclerView.setAdapter(adapter);
+        EndlessScrollListener endlessScrollListener = new EndlessScrollListener(mLayoutManager) {
             @Override
             public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
                 getReviews(true);
             }
         };
-        mRecyclerView.addOnScrollListener(mEndlessRecyclerViewScrollListener);
+        recyclerView.addOnScrollListener(endlessScrollListener);
     }
 
-    private void addReviews(List<Review> mReviews) {
-        if (!mReviews.isEmpty() && mReviewsAdapter != null) {
-            for (Review mReview : mReviews)
-                mReviewsAdapter.add(mReview);
-            mReviewsAdapter.notifyItemInserted(mReviewsAdapter.getItemCount() - 1);
+    private void addReviews(List<Review> reviewList) {
+        if (!reviewList.isEmpty() && adapter != null) {
+            for (Review mReview : reviewList)
+                adapter.add(mReview);
+            adapter.notifyItemInserted(adapter.getItemCount() - 1);
         }
     }
 }
