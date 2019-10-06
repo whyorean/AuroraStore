@@ -38,6 +38,7 @@ import java.io.IOException;
 public class DeliveryData extends BaseTask {
 
     public AndroidAppDeliveryData deliveryData;
+    private GooglePlayAPI api;
     private String downloadToken;
 
     public DeliveryData(Context context) {
@@ -45,13 +46,13 @@ public class DeliveryData extends BaseTask {
     }
 
     public AndroidAppDeliveryData getDeliveryData(App app) throws Exception {
-        GooglePlayAPI api = getApi();
-        purchase(api, app);
-        delivery(api, app);
+        api = getApi();
+        purchase(app);
+        delivery(app);
         return deliveryData;
     }
 
-    public void purchase(GooglePlayAPI api, App app) {
+    public void purchase(App app) {
         try {
             BuyResponse buyResponse = api.purchase(app.getPackageName(), app.getVersionCode(), app.getOfferType());
             if (buyResponse.hasPurchaseStatusResponse()
@@ -67,21 +68,19 @@ public class DeliveryData extends BaseTask {
         }
     }
 
-    void delivery(GooglePlayAPI api, App app) throws IOException {
+    void delivery(App app) throws IOException {
         DeliveryResponse deliveryResponse = api.delivery(
                 app.getPackageName(),
                 shouldDownloadDelta(app) ? app.getInstalledVersionCode() : 0,
                 app.getVersionCode(),
                 app.getOfferType(),
-                downloadToken
-        );
+                downloadToken);
         if (deliveryResponse.hasAppDeliveryData()
                 && deliveryResponse.getAppDeliveryData().hasDownloadUrl()) {
             deliveryData = deliveryResponse.getAppDeliveryData();
         } else if (!app.isFree() && Accountant.isDummy(context)) {
             throw new NotPurchasedException();
-        } else if(deliveryData == null)
-        {
+        } else if (deliveryData == null) {
             Log.d("No download link returned");
         }
     }

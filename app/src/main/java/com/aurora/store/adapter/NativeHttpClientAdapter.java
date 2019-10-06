@@ -20,10 +20,15 @@
 
 package com.aurora.store.adapter;
 
+import android.content.Context;
 import android.net.Uri;
 import android.text.TextUtils;
 
-import com.aurora.store.utility.Log;
+import com.aurora.store.exception.AppNotFoundException;
+import com.aurora.store.exception.MalformedRequestException;
+import com.aurora.store.exception.TooManyRequestsException;
+import com.aurora.store.exception.UnknownException;
+import com.aurora.store.utility.Util;
 import com.dragons.aurora.playstoreapiv2.AuthException;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 import com.dragons.aurora.playstoreapiv2.GooglePlayException;
@@ -46,6 +51,11 @@ import java.util.zip.GZIPInputStream;
 public class NativeHttpClientAdapter extends HttpClientAdapter {
 
     static private final int TIMEOUT = 15000;
+    private Context context;
+
+    public NativeHttpClientAdapter(Context context) {
+        this.context = context;
+    }
 
     static private String urlEncode(String input) {
         try {
@@ -68,21 +78,6 @@ public class NativeHttpClientAdapter extends HttpClientAdapter {
             outputStream.close();
         } else {
             connection.setDoOutput(false);
-        }
-    }
-
-    static private void processHttpErrorCode(int code, byte[] content) throws GooglePlayException {
-        if (code == 401 || code == 403) {
-            AuthException e = new AuthException("Auth error", code);
-            Map<String, String> authResponse = GooglePlayAPI.parseResponse(new String(content));
-            if (authResponse.containsKey("Error") && authResponse.get("Error").equals("NeedsBrowser")) {
-                e.setTwoFactorUrl(authResponse.get("Url"));
-            }
-            throw e;
-        } else if (code >= 500) {
-            throw new GooglePlayException("Server error", code);
-        } else if (code >= 400) {
-            throw new GooglePlayException("Malformed request", code);
         }
     }
 
@@ -116,13 +111,21 @@ public class NativeHttpClientAdapter extends HttpClientAdapter {
 
     @Override
     public byte[] get(String url, Map<String, String> params, Map<String, String> headers) throws IOException {
-        HttpURLConnection connection = (HttpURLConnection) new URL(buildUrl(url, params)).openConnection();
+        HttpURLConnection connection;
+        if (Util.isNetworkProxyEnabled(context))
+            connection = (HttpURLConnection) new URL(buildUrl(url, params)).openConnection(Util.getNetworkProxy(context));
+        else
+            connection = (HttpURLConnection) new URL(buildUrl(url, params)).openConnection();
         return request(connection, null, headers);
     }
 
     @Override
     public byte[] getEx(String url, Map<String, List<String>> params, Map<String, String> headers) throws IOException {
-        HttpURLConnection connection = (HttpURLConnection) new URL(buildUrlEx(url, params)).openConnection();
+        HttpURLConnection connection;
+        if (Util.isNetworkProxyEnabled(context))
+            connection = (HttpURLConnection) new URL(buildUrlEx(url, params)).openConnection(Util.getNetworkProxy(context));
+        else
+            connection = (HttpURLConnection) new URL(buildUrlEx(url, params)).openConnection();
         return request(connection, null, headers);
     }
 
@@ -142,7 +145,11 @@ public class NativeHttpClientAdapter extends HttpClientAdapter {
         if (!headers.containsKey("Content-Type")) {
             headers.put("Content-Type", "application/x-protobuf");
         }
-        HttpURLConnection connection = (HttpURLConnection) new URL(url).openConnection();
+        HttpURLConnection connection;
+        if (Util.isNetworkProxyEnabled(context))
+            connection = (HttpURLConnection) new URL(url).openConnection(Util.getNetworkProxy(context));
+        else
+            connection = (HttpURLConnection) new URL(url).openConnection();
         connection.setRequestMethod("POST");
         return request(connection, body, headers);
     }
@@ -177,34 +184,47 @@ public class NativeHttpClientAdapter extends HttpClientAdapter {
         }
         addBody(connection, body);
 
-        byte[] content = new byte[0];
-        Log.i("Requesting %s", connection.getURL().toString());
+        byte[] content;
         connection.connect();
 
         int code = 0;
+
         boolean isGzip;
         try {
             isGzip = null != connection.getContentEncoding() && connection.getContentEncoding().contains("gzip");
         } catch (NullPointerException e) {
-            Log.e("Buggy HttpURLConnection implementation detected");
-            throw new AuthException("Actually this is a NullPointerException thrown by a buggy implementation of HttpURLConnection", 401);
+            throw new AuthException(e.getMessage(), 401);
         }
+
         try {
             code = connection.getResponseCode();
-            Log.i("HTTP result code %s", code);
             content = readFully(connection.getInputStream(), isGzip);
         } catch (IOException e) {
             content = readFully(connection.getErrorStream(), isGzip);
-            Log.e("IOException " + e.getClass().getName() + " " + e.getMessage());
-            if (code < 400) {
-                throw e;
-            }
-        } catch (Throwable e) {
-            Log.e("Unknown exception " + e.getClass().getName() + " " + e.getMessage());
         } finally {
             connection.disconnect();
         }
-        processHttpErrorCode(code, content);
+
+        if (code == 401 || code == 403) {
+            AuthException authException = new AuthException("Auth error", code);
+            Map<String, String> authResponse = GooglePlayAPI.parseResponse(new String(content));
+            if (authResponse.containsKey("Error") && authResponse.get("Error").equals("NeedsBrowser")) {
+                authException.setTwoFactorUrl(authResponse.get("Url"));
+            }
+            throw authException;
+        } else if (code == 404) {
+            Map<String, String> authResponse = GooglePlayAPI.parseResponse(new String(content));
+            if (authResponse.containsKey("Error") && authResponse.get("Error").equals("UNKNOWN_ERR")) {
+                throw new UnknownException("Unknown error occurred", code);
+            } else
+                throw new AppNotFoundException("App not found", code);
+        } else if (code == 429) {
+            throw new TooManyRequestsException("Rate-limiting enabled, you are making too many requests", code);
+        } else if (code >= 500) {
+            throw new GooglePlayException("Server error", code);
+        } else if (code >= 400) {
+            throw new MalformedRequestException("Malformed Request", code);
+        }
         return content;
     }
 }

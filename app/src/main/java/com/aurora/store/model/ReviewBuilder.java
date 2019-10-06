@@ -29,7 +29,7 @@ import com.dragons.aurora.playstoreapiv2.Image;
 public class ReviewBuilder {
 
     public static Review build(com.dragons.aurora.playstoreapiv2.Review reviewProto) {
-        Review review = new Review();
+        final Review review = new Review();
         review.setComment(reviewProto.getComment());
         review.setTitle(reviewProto.getTitle());
         review.setRating(reviewProto.getStarRating());

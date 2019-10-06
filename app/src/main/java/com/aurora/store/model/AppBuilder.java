@@ -161,7 +161,7 @@ public class AppBuilder {
                     app.setVideoUrl(image.getImageUrl());
                     break;
                 case GooglePlayAPI.IMAGE_TYPE_PLAY_STORE_PAGE_BACKGROUND:
-                    app.setPageBackgroundImage(new ImageSource(image.getImageUrl()).setFullSize(true));
+                    app.setPageBackgroundImage(new ImageSource(image.getImageUrl()));
                     break;
                 case GooglePlayAPI.IMAGE_TYPE_APP_SCREENSHOT:
                     app.getScreenshotUrls().add(image.getImageUrl());

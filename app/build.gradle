@@ -82,11 +82,13 @@ dependencies {
     implementation 'org.apache.commons:commons-text:1.4'
     implementation 'com.scottyab:rootbeer-lib:0.0.7'
     implementation 'com.google.code.gson:gson:2.8.5'
+    compileOnly 'org.projectlombok:lombok:1.18.10'
+    annotationProcessor 'org.projectlombok:lombok:1.18.10'
     //PlayStoreApi
     implementation 'com.github.whyorean:playstore-api-v2:2.3'
     //OkHTTP3
-    implementation 'com.squareup.okhttp3:okhttp:4.1.0'
-    implementation 'com.squareup.okhttp3:okhttp-urlconnection:4.1.0'
+    implementation 'com.squareup.okhttp3:okhttp:4.2.1'
+    implementation 'com.squareup.okhttp3:okhttp-urlconnection:4.2.1'
     //RX-Java2
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
     implementation 'io.reactivex.rxjava2:rxjava:2.2.8'

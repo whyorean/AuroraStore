@@ -10,6 +10,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+import lombok.Data;
+
+@Data
 public class Report {
     @SerializedName("downloads")
     @Expose
@@ -33,22 +36,6 @@ public class Report {
     @Expose
     private List<Integer> trackers = null;
 
-    public String getDownloads() {
-        return downloads;
-    }
-
-    public void setDownloads(String downloads) {
-        this.downloads = downloads;
-    }
-
-    public String getVersion() {
-        return version;
-    }
-
-    public void setVersion(String version) {
-        this.version = version;
-    }
-
     public Date getCreationDate() {
         try {
             DateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'",
@@ -59,42 +46,4 @@ public class Report {
             return new Date();
         }
     }
-
-    public void setCreationDate(String creationDate) {
-        this.creationDate = creationDate;
-    }
-
-    public String getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(String updatedAt) {
-        this.updatedAt = updatedAt;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getVersionCode() {
-        return versionCode;
-    }
-
-    public void setVersionCode(String versionCode) {
-        this.versionCode = versionCode;
-    }
-
-    public List<Integer> getTrackers() {
-        return trackers;
-    }
-
-    public void setTrackers(List<Integer> trackers) {
-        this.trackers = trackers;
-    }
-
-
 }

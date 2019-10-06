@@ -25,11 +25,13 @@ package com.aurora.store.model;
 
 import android.text.TextUtils;
 
-import java.lang.reflect.Field;
-import java.util.ArrayList;
-import java.util.List;
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Locale;
 
+import lombok.Data;
+
+@Data
 public class LoginInfo implements Comparable<LoginInfo> {
 
     private String email;
@@ -46,119 +48,15 @@ public class LoginInfo implements Comparable<LoginInfo> {
     private String deviceConfigToken;
     private String dfeCookie;
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public String getUserPicUrl() {
-        return userPicUrl;
-    }
-
-    public void setUserPicUrl(String userPicUrl) {
-        this.userPicUrl = userPicUrl;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getGsfId() {
-        return gsfId;
-    }
-
-    public void setGsfId(String gsfId) {
-        this.gsfId = gsfId;
-    }
-
-    public String getToken() {
-        return token;
-    }
-
-    public void setToken(String token) {
-        this.token = token;
-    }
-
     public Locale getLocale() {
         return TextUtils.isEmpty(locale) ? Locale.getDefault() : new Locale(locale);
-    }
-
-    public void setLocale(String locale) {
-        this.locale = locale;
-    }
-
-    public String getLocaleString() {
-        return locale;
-    }
-
-    public String getTokenDispenserUrl() {
-        return tokenDispenserUrl;
-    }
-
-    public void setTokenDispenserUrl(String tokenDispenserUrl) {
-        this.tokenDispenserUrl = tokenDispenserUrl;
-    }
-
-    public String getDeviceDefinitionName() {
-        return deviceDefinitionName;
-    }
-
-    public void setDeviceDefinitionName(String deviceDefinitionName) {
-        this.deviceDefinitionName = deviceDefinitionName;
-    }
-
-    public String getDeviceDefinitionDisplayName() {
-        return deviceDefinitionDisplayName;
-    }
-
-    public void setDeviceDefinitionDisplayName(String deviceDefinitionDisplayName) {
-        this.deviceDefinitionDisplayName = deviceDefinitionDisplayName;
-    }
-
-    public String getDeviceCheckinConsistencyToken() {
-        return deviceCheckinConsistencyToken;
-    }
-
-    public void setDeviceCheckinConsistencyToken(String deviceCheckinConsistencyToken) {
-        this.deviceCheckinConsistencyToken = deviceCheckinConsistencyToken;
-    }
-
-    public String getDeviceConfigToken() {
-        return deviceConfigToken;
-    }
-
-    public void setDeviceConfigToken(String deviceConfigToken) {
-        this.deviceConfigToken = deviceConfigToken;
-    }
-
-    public String getDfeCookie() {
-        return dfeCookie;
-    }
-
-    public void setDfeCookie(String dfeCookie) {
-        this.dfeCookie = dfeCookie;
     }
 
     public boolean appProvidedEmail() {
         return !TextUtils.isEmpty(tokenDispenserUrl);
     }
 
-    public boolean isLoggedIn() {
+    private boolean isLoggedIn() {
         return !TextUtils.isEmpty(email) && !TextUtils.isEmpty(gsfId);
     }
 
@@ -193,36 +91,20 @@ public class LoginInfo implements Comparable<LoginInfo> {
     public int hashCode() {
         return TextUtils.isEmpty(email)
                 ? 0
-                : ((appProvidedEmail() ? "" : email) + "|" + deviceDefinitionName).hashCode()
-                ;
+                : ((appProvidedEmail() ? "" : email) + "|" + deviceDefinitionName).hashCode();
     }
 
     @Override
-    public int compareTo(LoginInfo o) {
+    public int compareTo(@NotNull LoginInfo loginInfo) {
         if (TextUtils.isEmpty(getUserName())
-                || TextUtils.isEmpty(o.getUserName())
+                || TextUtils.isEmpty(loginInfo.getUserName())
                 || TextUtils.isEmpty(getDeviceDefinitionName())
-                || TextUtils.isEmpty(o.getDeviceDefinitionName())
-        ) {
+                || TextUtils.isEmpty(loginInfo.getDeviceDefinitionName())) {
             return 0;
         }
-        int result = getUserName().compareTo(o.getUserName());
+        int result = getUserName().compareTo(loginInfo.getUserName());
         return result == 0
-                ? getDeviceDefinitionName().compareTo(o.getDeviceDefinitionName())
-                : result
-                ;
-    }
-
-    @Override
-    public String toString() {
-        List<String> fieldStrings = new ArrayList<>();
-        for (Field field : getClass().getDeclaredFields()) {
-            try {
-                fieldStrings.add(field.getName() + "=" + field.get(this));
-            } catch (IllegalAccessException e) {
-                fieldStrings.add(field.getName() + "=[inaccessible]");
-            }
-        }
-        return getClass().getSimpleName() + " hashCode=" + hashCode() + ", " + TextUtils.join(", ", fieldStrings);
+                ? getDeviceDefinitionName().compareTo(loginInfo.getDeviceDefinitionName())
+                : result;
     }
 }

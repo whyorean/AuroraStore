@@ -24,19 +24,22 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
+import static android.content.Context.CONNECTIVITY_SERVICE;
+import static android.net.ConnectivityManager.TYPE_WIFI;
+
 public class NetworkUtil {
 
     public static boolean isConnected(Context context) {
         ConnectivityManager connectivityManager =
-                (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+                (ConnectivityManager) context.getSystemService(CONNECTIVITY_SERVICE);
         NetworkInfo activeNetwork = connectivityManager.getActiveNetworkInfo();
         return activeNetwork != null && activeNetwork.isConnected();
     }
 
     public static boolean isWifi(Context context) {
         ConnectivityManager connectivityManager =
-                (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+                (ConnectivityManager) context.getSystemService(CONNECTIVITY_SERVICE);
         NetworkInfo activeNetwork = connectivityManager.getActiveNetworkInfo();
-        return activeNetwork != null && activeNetwork.getType() == ConnectivityManager.TYPE_WIFI;
+        return activeNetwork != null && activeNetwork.getType() == TYPE_WIFI;
     }
 }

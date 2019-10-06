@@ -62,7 +62,7 @@ public class PlayStoreApiAuthenticator {
 
     public static boolean login(Context context) throws IOException {
         LoginInfo loginInfo = new LoginInfo();
-        api = ApiBuilderUtil.build(context, loginInfo);
+        GooglePlayAPI api = ApiBuilderUtil.build(context, loginInfo);
         Util
                 .getPrefs(context.getApplicationContext()).edit()
                 .putBoolean(Accountant.DUMMY_ACCOUNT, true)
@@ -102,6 +102,7 @@ public class PlayStoreApiAuthenticator {
         PrefUtil.remove(context, Accountant.AUTH_TOKEN);
         PrefUtil.remove(context, (Accountant.LAST_USED_TOKEN_DISPENSER));
         PrefUtil.remove(context, Accountant.DUMMY_ACCOUNT);
+        api = null;
         instance = null;
     }
 

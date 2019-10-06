@@ -8,7 +8,7 @@ import android.widget.Toast;
 import com.aurora.store.Constants;
 import com.aurora.store.R;
 import com.aurora.store.TokenDispenserMirrors;
-import com.aurora.store.adapter.OkHttpClientAdapter;
+import com.aurora.store.adapter.NativeHttpClientAdapter;
 import com.aurora.store.exception.CredentialsEmptyException;
 import com.aurora.store.exception.TokenizerException;
 import com.aurora.store.exception.TwoFactorAuthException;
@@ -100,7 +100,7 @@ public class ApiBuilderUtil {
         loginInfo.setTokenDispenserUrl(tokenDispenserMirrors.get(context));
 
         return new PlayStoreApiBuilder()
-                .setHttpClient(new OkHttpClientAdapter(context))
+                .setHttpClient(new NativeHttpClientAdapter(context))
                 .setDeviceInfoProvider(getDeviceInfoProvider(context))
                 .setLocale(loginInfo.getLocale())
                 .setEmail(loginInfo.getEmail())
