@@ -29,6 +29,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInstaller;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Build;
 
 import androidx.annotation.NonNull;
@@ -165,7 +166,8 @@ public class Installer implements AppInstallerAbstract.InstallationStatusListene
                     break;
             }
         });
-        packageInstaller.installApkFiles(packageName, apkFiles);
+
+        AsyncTask.execute(() -> packageInstaller.installApkFiles(packageName, apkFiles));
     }
 
     private void checkAndProcessQueuedApps() {
