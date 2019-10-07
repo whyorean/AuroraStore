@@ -21,6 +21,7 @@
 package com.aurora.store.activity;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -49,6 +50,16 @@ public class AccountsActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         setupActionbar();
         init();
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(final MenuItem menuItem) {
+        if (menuItem.getItemId() == android.R.id.home) {
+            onBackPressed();
+            return true;
+        }
+        return false;
     }
 
     @Override
