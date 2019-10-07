@@ -19,9 +19,11 @@
   -->
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="56dp"
-    android:padding="@dimen/margin_xxsmall">
+    android:layout_height="?actionBarSize"
+    android:layout_marginStart="@dimen/margin_small"
+    android:layout_marginEnd="@dimen/margin_small">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/progress_status"
@@ -29,7 +31,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_centerVertical="true"
-        android:layout_marginStart="5dp"
+        android:layout_marginStart="@dimen/margin_xxsmall"
         android:text="@string/download_waiting"
         android:textSize="14sp" />
 
@@ -38,19 +40,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:layout_marginEnd="5dp"
+        android:layout_marginEnd="@dimen/margin_xxsmall"
         android:layout_toStartOf="@id/btn_cancel"
-        android:textSize="14sp" />
+        android:textSize="14sp"
+        tools:text="50%" />
 
     <ProgressBar
         android:id="@+id/progress_download"
-        style="?android:attr/progressBarStyleHorizontal"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/progress_status"
-        android:layout_marginStart="5dp"
-        android:layout_marginEnd="5dp"
-        android:layout_toStartOf="@id/btn_cancel"
+        android:layout_marginStart="@dimen/margin_xxsmall"
+        android:layout_marginEnd="@dimen/margin_xxsmall"
         android:indeterminate="true"
         android:max="100" />
 
@@ -58,14 +60,12 @@
         android:id="@+id/btn_cancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/progress_download"
+        android:layout_alignTop="@id/progress_txt"
+        android:layout_alignBottom="@id/progress_txt"
         android:layout_alignParentEnd="true"
-        android:layout_centerVertical="true"
         android:background="?android:attr/selectableItemBackground"
         android:clickable="true"
-        android:elevation="1dp"
         android:focusable="true"
         android:src="@drawable/ic_cancel"
-        android:tint="@color/colorAccent"
-        android:visibility="visible" />
+        android:tint="?colorControlNormal" />
 </RelativeLayout>
