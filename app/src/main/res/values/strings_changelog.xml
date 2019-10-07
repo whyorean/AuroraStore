@@ -20,6 +20,12 @@
 
 <resources>
     <string name="app_log" translatable="false">
+        \n Changelog : v3.1.3
+        \n • Fix Google login issue
+        \n • Fix user reviews
+        \n • Update exodus trackers list
+        \n • Bug fixes and improvements
+        \n
         \n Changelog : v3.1.2
         \n • Fix downloads on Android 10
         \n • Notify user if 2FA is enabled
