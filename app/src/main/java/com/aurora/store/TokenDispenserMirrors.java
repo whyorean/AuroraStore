@@ -25,22 +25,31 @@ package com.aurora.store;
 
 import android.content.Context;
 
+import com.aurora.store.utility.PrefUtil;
 import com.aurora.store.utility.Util;
 
-import java.util.Random;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TokenDispenserMirrors {
 
-    static private String[] mirrors = new String[]{
-            "http://www.auroraoss.com:8080",
-            "http://www.auroraoss.com:8880",
-            "http://www.auroraoss.com:2095"
-    };
+    private static List<String> dispenserList = new ArrayList<>();
 
-    public String get(Context context) {
+    static {
+        dispenserList.add("http://auroraoss.com:8080");
+        dispenserList.add("http://92.42.46.11:8080");
+        dispenserList.add("http://auroraoss.in:8080");
+        dispenserList.add("https://token-dispenser.calyxinstitute.org");
+    }
+
+    public static String get(Context context) {
         if (Util.isCustomTokenizerEnabled(context))
             return Util.getCustomTokenizerURL(context);
         else
-            return mirrors[new Random().nextInt(mirrors.length)];
+            return Util.getTokenizerURL(context);
+    }
+
+    public static void setNextDispenser(Context context, int dispenserNum) {
+        PrefUtil.putString(context, Constants.PREFERENCE_TOKENIZER_URL, dispenserList.get(dispenserNum % dispenserList.size()));
     }
 }

@@ -22,7 +22,6 @@ package com.aurora.store.fragment;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,7 +29,6 @@ import android.widget.Button;
 import android.widget.ViewSwitcher;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.fragment.app.Fragment;
 
@@ -140,13 +138,11 @@ public abstract class BaseFragment extends Fragment {
                         Events eventEnum = ((Event) event).getEvent();
                         switch (eventEnum) {
                             case LOGGED_IN:
+                            case TOKEN_REFRESHED:
                                 notifyLoggedIn();
                                 break;
                             case LOGGED_OUT:
                                 notifyLoggedOut();
-                                break;
-                            case TOKEN_REFRESHED:
-                                notifyLoggedIn();
                                 break;
                             case TOKEN_EXPIRED:
                                 notifyTokenExpired();
@@ -166,11 +162,6 @@ public abstract class BaseFragment extends Fragment {
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         this.context = context;
-    }
-
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
     }
 
     @Override
@@ -288,7 +279,6 @@ public abstract class BaseFragment extends Fragment {
             logInWithDummy();
         } else {
             ContextUtil.toast(context, R.string.error_incorrect_password);
-            PlayStoreApiAuthenticator.logout(context);
             Accountant.completeCheckout(context);
         }
     }

@@ -30,7 +30,6 @@ import java.util.Locale;
 public class ApiBuilderUtil {
 
     private static int RETRIES = 5;
-    private static TokenDispenserMirrors tokenDispenserMirrors = new TokenDispenserMirrors();
 
     public static GooglePlayAPI buildFromPreferences(Context context) throws IOException {
         SharedPreferences prefs = Util.getPrefs(context);
@@ -58,7 +57,8 @@ public class ApiBuilderUtil {
 
     public static GooglePlayAPI build(Context context, LoginInfo loginInfo, int retries) throws IOException {
         int tried = 0;
-        while (tried < retries) {
+        int dispenserNum = 0;
+        while (dispenserNum < retries) {
             try {
                 PlayStoreApiBuilder builder = getBuilder(context, loginInfo);
                 GooglePlayAPI api = builder.build();
@@ -74,14 +74,24 @@ public class ApiBuilderUtil {
                     throw (IOException) e.getCause();
                 }
                 if (loginInfo.appProvidedEmail()) {
-                    loginInfo.setTokenDispenserUrl(tokenDispenserMirrors.get(context));
+                    loginInfo.setTokenDispenserUrl(TokenDispenserMirrors.get(context));
                     loginInfo.setEmail(null);
                     loginInfo.setGsfId(null);
                 }
                 tried++;
                 if (tried >= retries) {
+                    dispenserNum++;
+                    tried = 0;
+                    if (Util.isCustomTokenizerEnabled(context))
+                        throw new TokenizerException("Exceeded max retries", e.getCause());
+                    else
+                        TokenDispenserMirrors.setNextDispenser(context, dispenserNum);
+                }
+
+                if (dispenserNum >= 4) {
                     throw new TokenizerException("Exceeded max retries", e.getCause());
                 }
+
                 if (e instanceof AuthException && ((AuthException) e).getTwoFactorUrl() != null)
                     throw new TwoFactorAuthException("2FA Enabled");
                 Log.i("Anonymous Login Failed @ %s, attempt %d",
@@ -97,7 +107,7 @@ public class ApiBuilderUtil {
         loginInfo.setLocale(TextUtils.isEmpty(locale) ? Locale.getDefault().toString() : locale);
         loginInfo.setGsfId(prefs.getString(Accountant.GSF_ID, ""));
         loginInfo.setToken(prefs.getString(Accountant.AUTH_TOKEN, ""));
-        loginInfo.setTokenDispenserUrl(tokenDispenserMirrors.get(context));
+        loginInfo.setTokenDispenserUrl(TokenDispenserMirrors.get(context));
 
         return new PlayStoreApiBuilder()
                 .setHttpClient(new NativeHttpClientAdapter(context))

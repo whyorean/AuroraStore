@@ -26,6 +26,7 @@ public class Constants {
     public static final String APP_DETAIL_URL = "https://play.google.com/store/apps/details?id=";
     public static final String APP_ICON_URL = "https://gitlab.com/AuroraOSS/AuroraStore/raw/master/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png";
     public static final String UPDATE_URL = "https://gitlab.com/AuroraOSS/AuroraStore/raw/master/updates.json";
+    public static final String DISPENSER_PRIMARY = "http://auroraoss.com:8080";
 
     public static final String INTENT_DEVICE_NAME = "INTENT_DEVICE_NAME";
     public static final String INTENT_DEVICE_INDEX = "INTENT_DEVICE_INDEX";
@@ -99,7 +100,8 @@ public class Constants {
     public static final String PREFERENCE_UPDATES_INTERVAL = "PREFERENCE_UPDATES_INTERVAL";
     public static final String PREFERENCE_UPDATES_EXTENDED = "PREFERENCE_UPDATES_EXTENDED";
     public static final String PREFERENCE_ENABLE_CUSTOM_TOKENIZER = "PREFERENCE_ENABLE_CUSTOM_TOKENIZER";
-    public static final String PREFERENCE_CUSTOM_TOKENIZER = "PREFERENCE_CUSTOM_TOKENIZER";
+    public static final String PREFERENCE_CUSTOM_TOKENIZER_URL = "PREFERENCE_CUSTOM_TOKENIZER_URL";
+    public static final String PREFERENCE_TOKENIZER_URL = "PREFERENCE_TOKENIZER_URL";
     public static final String PREFERENCE_CACHE_STRATEGY = "PREFERENCE_CACHE_STRATEGY";
     public static final String PREFERENCE_CLEAN_JUNK = "PREFERENCE_CLEAN_JUNK";
     public static final String PREFERENCE_INSTALLATION_ABANDON_SESSION = "PREFERENCE_INSTALLATION_ABANDON_SESSION";

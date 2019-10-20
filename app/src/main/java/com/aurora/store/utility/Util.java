@@ -355,7 +355,11 @@ public class Util {
     }
 
     public static String getCustomTokenizerURL(Context context) {
-        return getPrefs(context).getString(Constants.PREFERENCE_CUSTOM_TOKENIZER, "");
+        return getPrefs(context).getString(Constants.PREFERENCE_CUSTOM_TOKENIZER_URL, Constants.DISPENSER_PRIMARY);
+    }
+
+    public static String getTokenizerURL(Context context) {
+        return getPrefs(context).getString(Constants.PREFERENCE_TOKENIZER_URL, Constants.DISPENSER_PRIMARY);
     }
 
     public static Proxy.Type getProxyType(Context context) {

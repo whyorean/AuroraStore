@@ -50,9 +50,9 @@
         android:title="@string/pref_custom_tokenizer"
         app:defaultValue="false" />
     <EditTextPreference
-        android:defaultValue="http://www.auroraoss.com:8080"
+        android:defaultValue="http://www.auroraoss.in:8080"
         android:dependency="PREFERENCE_ENABLE_CUSTOM_TOKENIZER"
-        android:key="PREFERENCE_CUSTOM_TOKENIZER"
+        android:key="PREFERENCE_CUSTOM_TOKENIZER_URL"
         android:title="@string/pref_custom_tokenizer_url"
         app:useSimpleSummaryProvider="true" />
     <ListPreference
