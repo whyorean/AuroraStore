@@ -187,6 +187,7 @@ public class ActionButton extends AbstractHelper {
         return v -> {
             btnPositive.setText(R.string.details_installing);
             btnPositive.setEnabled(false);
+            notification.notifyInstalling();
             AuroraApplication.getInstaller().install(app);
         };
     }
@@ -395,6 +396,7 @@ public class ActionButton extends AbstractHelper {
                             btnPositive.setText(R.string.details_installing);
                             btnPositive.setEnabled(false);
                         });
+                        notification.notifyInstalling();
                         //Call the installer
                         AuroraApplication.getInstaller().install(app);
                     }

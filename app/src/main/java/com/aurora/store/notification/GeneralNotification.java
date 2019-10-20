@@ -107,6 +107,12 @@ public class GeneralNotification extends NotificationBase {
         show();
     }
 
+    public void notifyInstalling() {
+        builder.mActions.clear();
+        builder.setContentText(context.getString(R.string.installer_status_ongoing));
+        show();
+    }
+
     public void notifyExtractionProgress() {
         builder.mActions.clear();
         builder.setContentText(context.getString(R.string.download_extraction));

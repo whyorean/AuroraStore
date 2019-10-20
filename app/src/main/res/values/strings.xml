@@ -195,6 +195,7 @@
 
     <string name="flagging_title">Flag as inappropriate</string>
 
+    <string name="installer_status_ongoing">Installing</string>
     <string name="installer_status_failure">Installation failed</string>
     <string name="installer_status_failure_aborted">Installation cancelled</string>
     <string name="installer_status_failure_blocked">Installation was blocked</string>

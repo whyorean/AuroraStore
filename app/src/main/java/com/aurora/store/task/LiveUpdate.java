@@ -106,8 +106,10 @@ public class LiveUpdate extends BaseTask {
             public void onCompleted(int groupId, @NotNull Download download, @NotNull FetchGroup fetchGroup) {
                 if (groupId == hashCode && fetchGroup.getGroupDownloadProgress() == 100) {
                     notification.notifyCompleted();
-                    if (Util.shouldAutoInstallApk(context))
+                    if (Util.shouldAutoInstallApk(context)) {
+                        notification.notifyInstalling();
                         AuroraApplication.getInstaller().install(app);
+                    }
                     if (fetchListener != null) {
                         fetch.removeListener(fetchListener);
                         fetchListener = null;
