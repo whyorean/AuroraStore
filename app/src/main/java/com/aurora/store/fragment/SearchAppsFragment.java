@@ -45,6 +45,9 @@ import com.aurora.store.Filter;
 import com.aurora.store.R;
 import com.aurora.store.activity.AuroraActivity;
 import com.aurora.store.adapter.EndlessAppsAdapter;
+import com.aurora.store.api.PlayStoreApiAuthenticator;
+import com.aurora.store.api.SearchIterator2;
+import com.aurora.store.iterator.CustomAppListIterator;
 import com.aurora.store.model.App;
 import com.aurora.store.sheet.FilterBottomSheet;
 import com.aurora.store.task.SearchTask;
@@ -84,8 +87,8 @@ public class SearchAppsFragment extends BaseFragment {
     private View view;
     private String query;
     private List<String> relatedTags = new ArrayList<>();
+    private CustomAppListIterator iterator;
     private EndlessAppsAdapter endlessAppsAdapter;
-    private SearchTask searchTask;
 
     private String getQuery() {
         return query;
@@ -99,7 +102,12 @@ public class SearchAppsFragment extends BaseFragment {
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         this.context = context;
-        searchTask = new SearchTask(context);
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        endlessAppsAdapter = new EndlessAppsAdapter(context);
     }
 
     @Override
@@ -126,11 +134,11 @@ public class SearchAppsFragment extends BaseFragment {
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
-        if (endlessAppsAdapter == null || endlessAppsAdapter.isDataEmpty())
-            fetchSearchAppsList(false);
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        fetchSearchAppsList(false);
     }
+
 
     @Override
     public void onDestroy() {
@@ -200,9 +208,8 @@ public class SearchAppsFragment extends BaseFragment {
 
     private void getIterator() {
         try {
-            iterator = null;
-            iterator = getIterator(getQuery());
-            iterator.setEnableFilter(true);
+            iterator = new CustomAppListIterator(new SearchIterator2(PlayStoreApiAuthenticator.getApi(context), query));
+            iterator.setFilterEnabled(true);
             iterator.setFilter(new Filter(getContext()).getFilterPreferences());
             relatedTags = iterator.getRelatedTags();
         } catch (Exception e) {
@@ -213,23 +220,22 @@ public class SearchAppsFragment extends BaseFragment {
     private void fetchSearchAppsList(boolean shouldIterate) {
         if (!shouldIterate)
             getIterator();
-        disposable.add(Observable.fromCallable(() -> searchTask.getSearchResults(iterator))
+        disposable.add(Observable.fromCallable(() -> new SearchTask(context)
+                .getSearchResults(iterator))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(appList -> {
-                    if (view != null) {
-                        if (shouldIterate) {
-                            addApps(appList);
-                        } else if (appList.isEmpty() && endlessAppsAdapter.isDataEmpty()) {
-                            setErrorView(ErrorType.NO_SEARCH);
-                            switchViews(true);
-                        } else {
-                            switchViews(false);
-                            if (endlessAppsAdapter != null)
-                                endlessAppsAdapter.addData(appList);
-                            if (!relatedTags.isEmpty())
-                                setupTags();
-                        }
+                    if (shouldIterate) {
+                        addApps(appList);
+                    } else if (appList.isEmpty() && endlessAppsAdapter.isDataEmpty()) {
+                        setErrorView(ErrorType.NO_SEARCH);
+                        switchViews(true);
+                    } else {
+                        switchViews(false);
+                        if (endlessAppsAdapter != null)
+                            endlessAppsAdapter.addData(appList);
+                        if (!relatedTags.isEmpty())
+                            setupTags();
                     }
                 }, err -> {
                     Log.e(err.getMessage());
@@ -259,12 +265,11 @@ public class SearchAppsFragment extends BaseFragment {
     }
 
     private void setupRecycler() {
-        LinearLayoutManager mLayoutManager = new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false);
-        endlessAppsAdapter = new EndlessAppsAdapter(context);
-        recyclerView.setLayoutManager(mLayoutManager);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(context, RecyclerView.VERTICAL, false);
+        recyclerView.setLayoutManager(layoutManager);
         recyclerView.setLayoutAnimation(AnimationUtils.loadLayoutAnimation(this.getActivity(), R.anim.anim_falldown));
         recyclerView.setAdapter(endlessAppsAdapter);
-        EndlessScrollListener endlessScrollListener = new EndlessScrollListener(mLayoutManager) {
+        EndlessScrollListener endlessScrollListener = new EndlessScrollListener(layoutManager) {
             @Override
             public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
                 fetchSearchAppsList(true);

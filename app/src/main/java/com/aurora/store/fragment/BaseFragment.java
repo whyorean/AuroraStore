@@ -37,8 +37,6 @@ import com.aurora.store.AnonymousRefreshService;
 import com.aurora.store.ErrorType;
 import com.aurora.store.R;
 import com.aurora.store.activity.AccountsActivity;
-import com.aurora.store.api.PlayStoreApiAuthenticator;
-import com.aurora.store.api.SearchIterator2;
 import com.aurora.store.events.Event;
 import com.aurora.store.events.Events;
 import com.aurora.store.events.RxBus;
@@ -46,7 +44,6 @@ import com.aurora.store.exception.CredentialsEmptyException;
 import com.aurora.store.exception.InvalidApiException;
 import com.aurora.store.exception.MalformedRequestException;
 import com.aurora.store.exception.TooManyRequestsException;
-import com.aurora.store.iterator.CustomAppListIterator;
 import com.aurora.store.utility.Accountant;
 import com.aurora.store.utility.ContextUtil;
 import com.aurora.store.utility.Log;
@@ -66,7 +63,6 @@ import static com.aurora.store.utility.Util.noNetwork;
 
 public abstract class BaseFragment extends Fragment {
 
-    protected CustomAppListIterator iterator;
     protected CompositeDisposable disposable = new CompositeDisposable();
 
     @BindView(R.id.coordinator)
@@ -78,20 +74,8 @@ public abstract class BaseFragment extends Fragment {
     @BindView(R.id.err_view)
     ViewGroup layoutError;
 
-    private SearchIterator2 searchIterator;
     private CompositeDisposable disposableBus = new CompositeDisposable();
     private Context context;
-
-    CustomAppListIterator getIterator(String query) {
-        try {
-            searchIterator = new SearchIterator2(PlayStoreApiAuthenticator.getApi(context), query);
-            iterator = new CustomAppListIterator(searchIterator);
-            return iterator;
-        } catch (Exception e) {
-            processException(e);
-            return null;
-        }
-    }
 
     protected abstract View.OnClickListener errRetry();
 
@@ -165,14 +149,6 @@ public abstract class BaseFragment extends Fragment {
     }
 
     @Override
-    public void onDestroy() {
-        super.onDestroy();
-        searchIterator = null;
-        iterator = null;
-        disposable.clear();
-    }
-
-    @Override
     public void onStop() {
         super.onStop();
         disposableBus.clear();
@@ -232,7 +208,6 @@ public abstract class BaseFragment extends Fragment {
     /*Exception handling methods*/
 
     protected void processException(Throwable e) {
-        disposable.clear();
         if (e instanceof AuthException) {
             processAuthException((AuthException) e);
         } else if (e instanceof IteratorGooglePlayException) {
@@ -251,30 +226,29 @@ public abstract class BaseFragment extends Fragment {
 
     private void processIOException(IOException e) {
         String message;
-        if (context != null) {
-            if (noNetwork(e)) {
-                message = context.getString(R.string.error_no_network);
-                Log.i(message);
-                RxBus.publish(new Event(Events.NET_DISCONNECTED));
-            } else {
-                message = TextUtils.isEmpty(e.getMessage())
-                        ? context.getString(R.string.error_network_other)
-                        : e.getMessage();
-                Log.i(message);
-            }
-        } else Log.i("No Network Connection");
+        if (noNetwork(e)) {
+            message = context.getString(R.string.error_no_network);
+            Log.i(message);
+            RxBus.publish(new Event(Events.NET_DISCONNECTED));
+        } else {
+            message = TextUtils.isEmpty(e.getMessage())
+                    ? context.getString(R.string.error_network_other)
+                    : e.getMessage();
+            Log.i(message);
+        }
     }
 
     private void processAuthException(AuthException e) {
         if (e instanceof CredentialsEmptyException || e instanceof InvalidApiException) {
             Log.i("Logged out");
+            ContextUtil.toastLong(context, context.getString(R.string.error_logged_out));
             Accountant.completeCheckout(context);
             RxBus.publish(new Event(Events.LOGGED_OUT));
         } else if (e.getCode() == 401 && Accountant.isDummy(context)) {
-            Log.i("Token is stale");
+            ContextUtil.toastLong(context, context.getString(R.string.toast_token_stale));
             refreshToken();
         } else if (e.getCode() == 429 && Accountant.isDummy(context)) {
-            Log.i("Too many requests from current session, requesting new login session");
+            ContextUtil.toastLong(context, context.getString(R.string.toast_rate_limit));
             Accountant.completeCheckout(context);
             logInWithDummy();
         } else {

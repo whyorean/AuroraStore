@@ -29,7 +29,6 @@ import com.aurora.store.model.AppBuilder;
 import com.aurora.store.model.Filter;
 import com.aurora.store.utility.Log;
 import com.dragons.aurora.playstoreapiv2.DocV2;
-import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -39,7 +38,7 @@ import java.util.Set;
 
 public class CustomAppListIterator implements Iterator {
 
-    protected boolean enableFilter = false;
+    protected boolean filterEnabled = false;
     protected Filter filter = new Filter();
     protected AppListIterator2 iterator;
     private List<String> relatedTags = new ArrayList<>();
@@ -55,12 +54,8 @@ public class CustomAppListIterator implements Iterator {
         return relatedTags;
     }
 
-    public void setEnableFilter(boolean enableFilter) {
-        this.enableFilter = enableFilter;
-    }
-
-    public void setGooglePlayApi(GooglePlayAPI googlePlayApi) {
-        iterator.setGooglePlayApi(googlePlayApi);
+    public void setFilterEnabled(boolean filterEnabled) {
+        this.filterEnabled = filterEnabled;
     }
 
     public void setFilter(Filter filter) {
@@ -100,7 +95,7 @@ public class CustomAppListIterator implements Iterator {
     }
 
     private void addApp(List<App> apps, App app) {
-        if (enableFilter && shouldSkip(app)) {
+        if (filterEnabled && shouldSkip(app)) {
             Log.i("Filtering out " + app.getPackageName());
         } else {
             apps.add(app);

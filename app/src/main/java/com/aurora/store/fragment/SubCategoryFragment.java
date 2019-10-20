@@ -144,7 +144,7 @@ public class SubCategoryFragment extends BaseFragment {
         iterator = setupIterator(CategoryAppsFragment.categoryId, getSubcategory());
         if (iterator != null) {
             iterator.setFilter(new Filter(getContext()).getFilterPreferences());
-            iterator.setEnableFilter(true);
+            iterator.setFilterEnabled(true);
             setIterator(iterator);
         }
     }

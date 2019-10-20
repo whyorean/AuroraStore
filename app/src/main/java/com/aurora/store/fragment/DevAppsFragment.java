@@ -37,11 +37,13 @@ import com.aurora.store.EndlessScrollListener;
 import com.aurora.store.ErrorType;
 import com.aurora.store.R;
 import com.aurora.store.adapter.EndlessAppsAdapter;
+import com.aurora.store.api.PlayStoreApiAuthenticator;
+import com.aurora.store.api.SearchIterator2;
+import com.aurora.store.iterator.CustomAppListIterator;
 import com.aurora.store.model.App;
 import com.aurora.store.task.SearchTask;
 import com.aurora.store.utility.Log;
 import com.aurora.store.utility.NetworkUtil;
-import com.bumptech.glide.Glide;
 import com.google.android.material.chip.Chip;
 
 import java.util.List;
@@ -52,7 +54,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
 
 public class DevAppsFragment extends BaseFragment {
@@ -63,26 +64,30 @@ public class DevAppsFragment extends BaseFragment {
     Chip chipDevName;
 
     private Context context;
-    private View view;
     private EndlessAppsAdapter endlessAppsAdapter;
-    private SearchTask mSearchTask;
+    private CustomAppListIterator iterator;
 
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         this.context = context;
-        mSearchTask = new SearchTask(context);
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        endlessAppsAdapter = new EndlessAppsAdapter(context);
     }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_dev_applist, container, false);
+        View view = inflater.inflate(R.layout.fragment_dev_applist, container, false);
         ButterKnife.bind(this, view);
         Bundle arguments = getArguments();
         if (arguments != null) {
             String query = arguments.getString("SearchQuery");
             chipDevName.setText(arguments.getString("SearchTitle"));
-            iterator = getIterator(query);
+            iterator = new CustomAppListIterator(new SearchIterator2(PlayStoreApiAuthenticator.getApi(context), query));
             if (NetworkUtil.isConnected(context))
                 setupRecycler();
             else
@@ -96,20 +101,7 @@ public class DevAppsFragment extends BaseFragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         setErrorView(ErrorType.UNKNOWN);
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        if (endlessAppsAdapter == null || endlessAppsAdapter.isDataEmpty())
-            fetchDevAppsList(false);
-    }
-
-    @Override
-    public void onDestroy() {
-        Glide.with(this).pauseAllRequests();
-        disposable.dispose();
-        super.onDestroy();
+        fetchDevAppsList(false);
     }
 
     @Override
@@ -118,20 +110,19 @@ public class DevAppsFragment extends BaseFragment {
     }
 
     private void fetchDevAppsList(boolean shouldIterate) {
-        disposable.add(Observable.fromCallable(() -> mSearchTask.getSearchResults(iterator))
+        disposable.add(Observable.fromCallable(() -> new SearchTask(context)
+                .getSearchResults(iterator))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(appList -> {
-                    if (view != null) {
-                        if (shouldIterate) {
-                            addApps(appList);
-                        } else if (appList.isEmpty()) {
-                            setErrorView(ErrorType.NO_SEARCH);
-                            switchViews(true);
-                        } else {
-                            switchViews(false);
-                            endlessAppsAdapter.addData(appList);
-                        }
+                    if (shouldIterate) {
+                        addApps(appList);
+                    } else if (appList.isEmpty()) {
+                        setErrorView(ErrorType.NO_SEARCH);
+                        switchViews(true);
+                    } else {
+                        switchViews(false);
+                        endlessAppsAdapter.addData(appList);
                     }
                 }, err -> {
                     Log.e(err.getMessage());
@@ -158,7 +149,6 @@ public class DevAppsFragment extends BaseFragment {
 
     private void setupRecycler() {
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false);
-        endlessAppsAdapter = new EndlessAppsAdapter(context);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setLayoutAnimation(AnimationUtils.loadLayoutAnimation(this.getActivity(), R.anim.anim_falldown));
         recyclerView.setAdapter(endlessAppsAdapter);

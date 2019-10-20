@@ -395,6 +395,8 @@
     <string name="toast_unknown_reason">Something went wrong, try again</string>
     <string name="toast_junk_removed">Junk files removed</string>
     <string name="toast_abandon_sessions">Old installation sessions abandoned</string>
+    <string name="toast_rate_limit">Too many requests from current session, requesting new login session</string>
+    <string name="toast_token_stale">Token is stale, requesting new token</string>
 
     <string name="dialog_2FA_title">2-Factor Authentication</string>
     <string name="dialog_2FA_desc">You seem to have enabled 2FA, kindly generate an app password and use the new generated password to login</string>
