@@ -10,8 +10,6 @@
     <string name="action_ask">"Demander"</string>
     <string name="action_blacklist">"Liste noire"</string>
     <string name="action_cancel">"Annuler"</string>
-
-    <!-- Fuzzy -->
     <string name="action_clear">"Effacer"</string>
     <string name="action_clear_all">"Tout effacer"</string>
     <string name="action_convert_local">"Convertir en local"</string>
@@ -21,24 +19,22 @@
     <string name="action_disable">"Désactiver"</string>
     <string name="action_done">"Terminé"</string>
     <string name="action_enable">"Activer"</string>
-
-    <!-- Fuzzy -->
     <string name="action_export">"Exporter"</string>
     <string name="action_favourites">"Applications favorites"</string>
     <string name="action_filter">"Filtres"</string>
     <string name="action_filter_all">"Tout"</string>
     <string name="action_filter_apply">"Appliquer"</string>
-    <string name="action_filter_apps_with_ads">"Applications avec pubs"</string>
+    <string name="action_filter_apps_with_ads">"Avec publicités"</string>
     <string name="action_filter_downloads">"Téléchargements"</string>
     <string name="action_filter_gsf_dependent_apps">"Dépendant du GSF"</string>
     <string name="action_filter_misc">"Divers"</string>
-    <string name="action_filter_paid_apps">"Payé"</string>
+    <string name="action_filter_paid_apps">"Payant"</string>
     <string name="action_filter_rating">"Évaluations"</string>
     <string name="action_flag">"Signaler App"</string>
     <string name="action_get_local_apk">"Obtenir l'APK Local"</string>
     <string name="action_home">"Accueil"</string>
     <string name="action_installations">"Installations"</string>
-    <string name="action_installed">"Installées"</string>
+    <string name="action_installed">"Installée"</string>
     <string name="action_later">"Plus tard"</string>
     <string name="action_logging_in">"Se connecter"</string>
     <string name="action_login">"S'identifier"</string>
@@ -130,7 +126,7 @@
     <string name="list_blacklist">"Applications sur liste noire"</string>
     <string name="list_blacklist_none">"Aucune application sur liste noire"</string>
     <string name="list_bulk_install">"app(s) en file d'attente pour une installation en masse"</string>
-    <string name="list_empty_fav">"Pas de favoris"</string>
+    <string name="list_empty_fav">"Aucun favori"</string>
     <string name="list_empty_query">"Aucune recherche récente"</string>
     <string name="list_empty_updates">"Aucune mise à jour disponible"</string>
     <string name="list_installed">"Installée"</string>
@@ -170,7 +166,7 @@ Gardez à l'esprit que le téléchargement de versions arbitraires d'application
     <string name="pref_downloader_wifi_title">"Télécharger en wifi uniquement"</string>
     <string name="pref_filter_fdroid_summary">"Supprime les applications F-droid des listes d'applications"</string>
     <string name="pref_filter_fdroid_title">"Filtrer les applications F-droid"</string>
-    <string name="pref_filter_google_summary">"Supprime toutes les Google Apps des résultats de recherche et des catégories d'applications."</string>
+    <string name="pref_filter_google_summary">"Supprime toutes les Google Apps des résultats de recherche et des catégories d'applications"</string>
     <string name="pref_filter_google_title">"Filtrer les applications Google"</string>
     <string name="pref_filter_search_summary">"Les filtres de recherche sont réinitialisés à chaque recherche. Désactiver pour enregistrer les filtres de recherche"</string>
     <string name="pref_filter_search_title">"Utiliser un filtre de recherche non persistant"</string>
@@ -192,7 +188,7 @@ Gardez à l'esprit que le téléchargement de versions arbitraires d'application
     <string name="pref_requested_location_disable">"Vous devez désactiver manuellement MockLocation à partir des options développeur pour le désactiver complètement."</string>
     <string name="pref_requested_location_enable">"Vous devez activer manuellement MockLocation à partir des options développeur. "</string>
     <string name="pref_requested_location_summary">"Aurora Store doit être défini comme application de localisation fictive par défaut"</string>
-    <string name="pref_ui_card_summary">"Utilisez des cartes de style traditionnel pour les applications en vedette"</string>
+    <string name="pref_ui_card_summary">"Utiliser des cartes de style traditionnel pour les applications en vedette"</string>
     <string name="pref_ui_card_title">"Style traditionnel des cartes d'application"</string>
     <string name="pref_ui_snap_summary">"Afficher une seule application par défilement"</string>
     <string name="pref_ui_snap_title">"Activer SnapView pour les applications"</string>
@@ -255,11 +251,10 @@ Elle fournit également une liste de traqueurs intégrés dans une application."
     <string name="pref_notification_provider_title">"Fournisseur de notification"</string>
     <string name="pref_notification_provider_native">"Fournisseur de notification natif"</string>
     <string name="pref_notification_provider_aurora">"Fournisseur de notification Aurora"</string>
-    <string name="pref_ui_theme_light">"Lumineux"</string>
+    <string name="pref_ui_theme_light">"Clair"</string>
     <string name="pref_ui_theme_dark">"Sombre"</string>
     <string name="pref_ui_theme_black">"Noir"</string>
     <string name="action_close">"Fermer"</string>
-    <string name="list_update_all_queue_txt">"Mise(s) à jour en attente"</string>
     <string name="notification_installation_complete">"Installation réussie"</string>
     <string name="notification_installation_failed">"Echec de l'installation"</string>
     <string name="notification_installation_progress">"Installation"</string>
@@ -272,7 +267,7 @@ Elle fournit également une liste de traqueurs intégrés dans une application."
     <string name="title_search_result">"Résultats pour"</string>
     <string name="action_recheck">"Revérifier"</string>
     <string name="action_recheck_ing">"Revérification"</string>
-    <string name="pref_install_type_summary">"Utilisez le programme d'installation natif pour installer les paquets, casse les installations d'apk groupés."</string>
+    <string name="pref_install_type_summary">"Utiliser le programme d'installation natif pour installer les paquets, casse les installations d'apk groupés."</string>
     <string name="pref_install_type_title">"Forcer le programme d'installation natif"</string>
     <string name="pref_ui_tab_default_title">"Sélectionner l'onglet par défaut"</string>
     <string name="pref_update_interval_title">"Intervalle de mise à jour"</string>
@@ -280,12 +275,12 @@ Elle fournit également une liste de traqueurs intégrés dans une application."
     <string name="pref_update_interval_hourly">"Toutes les heures"</string>
     <string name="pref_update_interval_daily">"Chaque semaine"</string>
     <string name="pref_update_interval_weekly">"Chaque jour"</string>
-    <string name="download_none">"Pas de téléchargements"</string>
+    <string name="download_none">"Aucun téléchargement"</string>
     <string name="error_app_download">"ne peut pas être téléchargé"</string>
     <string name="details_new_changes">"Quoi de neuf"</string>
     <string name="action_apps">"Applications"</string>
     <string name="action_logging_in_success">"Connexion réussie"</string>
-    <string name="action_token_expired">"Le jeton a expiré, demande d'un nouveau jeton"</string>
+    <string name="action_token_expired">"Jeton expiré, demande d'un nouveau jeton"</string>
     <string name="action_token_force_request">"Forcer la demande"</string>
     <string name="cat_top_apps">"Meilleures applications"</string>
     <string name="cat_top_categories">"Meilleures catégories"</string>
@@ -326,8 +321,8 @@ Elle fournit également une liste de traqueurs intégrés dans une application."
     <string name="pref_services_title">"Services Aurora"</string>
     <string name="pref_services_desc">"Lancer les services Aurora"</string>
     <string name="pref_services_desc_alt">"Services Aurora indisponibles"</string>
-    <string name="pref_custom_tokenizer">"Activer le jeton personnalisé"</string>
-    <string name="pref_custom_tokenizer_url">"Jeton URL"</string>
+    <string name="pref_custom_tokenizer">"Activer fournis. personnalisé de jetons"</string>
+    <string name="pref_custom_tokenizer_url">"URL du fournisseur de jetons"</string>
     <string name="action_export_device">"Exporter les Infos de l'appareil"</string>
     <string name="action_export_info">"Infos de l'appareil exportées"</string>
     <string name="action_export_info_failed">"Échec de l'export des informations de l'appareil"</string>
@@ -344,10 +339,10 @@ Elle fournit également une liste de traqueurs intégrés dans une application."
     <string name="pref_downloader_internal">"Télécharger des applications dans le stockage interne"</string>
     <string name="pref_downloader_internal_desc">"Si activé, vous ne pourrez pas installer d'applications via les services Aurora."</string>
     <string name="pref_install_profile_summary">"Sélectionnez le profil cible pour installer les applications, fonctionne uniquement avec la méthode d'installation root"</string>
-    <string name="pref_install_profile_title">"Profils d'installation (Expérimental) "</string>
+    <string name="pref_install_profile_title">"Profils d'installation (expérimental)"</string>
     <string name="pref_install_mode_internal_warn">"Vous avez sélectionné le stockage interne pour les téléchargements, veuillez le désactiver pour utiliser les services Aurora."</string>
     <string name="pref_updates_extended">"Mises à jour étendues"</string>
-    <string name="pref_updates_extended_desc">"Activer pour vérifier les mises à jour des applications désactivées"</string>
+    <string name="pref_updates_extended_desc">"Vérifier les mises à jour des applications désactivées"</string>
     <string name="pref_caching_strategy">"Stratégie de mise en cache d'images"</string>
     <string name="pref_caching_strategy_all">"Tout"</string>
     <string name="pref_caching_strategy_automatic">"Automatique"</string>
@@ -359,4 +354,18 @@ Elle fournit également une liste de traqueurs intégrés dans une application."
     <string name="toast_unknown_reason">"Quelque chose a mal tourné, réessayez"</string>
     <string name="toast_junk_removed">"Suppression des fichiers inutiles"</string>
     <string name="toast_abandon_sessions">"Anciennes sessions d'installation abandonnées"</string>
+    <string name="action_import">"Importer"</string>
+    <string name="dialog_title_self_update">"Nouvelle mise à jour disponible"</string>
+    <string name="dialog_desc_self_update">"Souhaitez-vous mettre à jour ?"</string>
+    <string name="download_extraction">"Extraction des ressources du jeu, veuillez patienter"</string>
+    <string name="download_extraction_completed">"Extraction des ressources du jeu terminée"</string>
+    <string name="download_extraction_failed">"Échec de l'extraction des ressources du jeu"</string>
+    <string name="installer_status_ongoing">"Installation"</string>
+    <string name="list_update_all_txt_one">"mise à jour disponible"</string>
+    <string name="pref_ui_package">"Rechercher par nom de paquet"</string>
+    <string name="pref_ui_package_summary">"Autoriser la recherche par nom de paquet"</string>
+    <string name="pref_update_self_title">"Vérifier les mises à jour"</string>
+    <string name="pref_update_self_desc">"Vérifie les dernières mises à jour disponibles de Aurora Store"</string>
+    <string name="toast_rate_limit">"Trop de requêtes pour la session en cours, demande d'une nouvelle session de connexion"</string>
+    <string name="toast_token_stale">"Jeton périmé, demande d'un nouveau jeton"</string>
 </resources>
