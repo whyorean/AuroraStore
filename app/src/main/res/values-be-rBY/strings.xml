@@ -254,7 +254,6 @@
     <string name="pref_ui_theme_dark">"Цёмная"</string>
     <string name="pref_ui_theme_black">"Чорная"</string>
     <string name="action_close">"Закрыць"</string>
-    <string name="list_update_all_queue_txt">"абнаўленне(-і) ў чарзе"</string>
     <string name="notification_installation_complete">"Паспяхова ўсталявана"</string>
     <string name="notification_installation_failed">"Збой усталявання"</string>
     <string name="notification_installation_progress">"Усталяванне"</string>
@@ -354,4 +353,18 @@
     <string name="toast_unknown_reason">"Нешта пайшло няправільна, паспрабуйце яшчэ раз"</string>
     <string name="toast_junk_removed"></string>
     <string name="toast_abandon_sessions"></string>
+    <string name="action_import"></string>
+    <string name="dialog_title_self_update"></string>
+    <string name="dialog_desc_self_update"></string>
+    <string name="download_extraction"></string>
+    <string name="download_extraction_completed"></string>
+    <string name="download_extraction_failed"></string>
+    <string name="installer_status_ongoing"></string>
+    <string name="list_update_all_txt_one"></string>
+    <string name="pref_ui_package"></string>
+    <string name="pref_ui_package_summary"></string>
+    <string name="pref_update_self_title"></string>
+    <string name="pref_update_self_desc"></string>
+    <string name="toast_rate_limit"></string>
+    <string name="toast_token_stale"></string>
 </resources>
