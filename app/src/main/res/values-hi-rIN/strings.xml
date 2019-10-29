@@ -251,7 +251,6 @@
     <string name="pref_ui_theme_dark">"साँवला"</string>
     <string name="pref_ui_theme_black">"काला"</string>
     <string name="action_close">"बंद करें"</string>
-    <string name="list_update_all_queue_txt">"अद्यतन पंत्किबद्ध"</string>
     <string name="notification_installation_complete">"सफलतापूर्वक अद्यतित"</string>
     <string name="notification_installation_failed">"अद्यतन असफल"</string>
     <string name="notification_installation_progress">"अद्यतन हो रहा है"</string>
@@ -333,6 +332,8 @@
 
     <!-- Fuzzy -->
     <string name="installer_status_failure_conflict">"संघर्षपूर्ण पैकेज मौजूद है"</string>
+    <string name="installer_status_failure_incompatible">"बेमेल ऐप"</string>
+    <string name="installer_status_failure_invalid">"अमान्य/खराब APK"</string>
 
     <!-- Fuzzy -->
     <string name="installer_status_failure_storage">"अपर्याप्त स्मृति स्थान"</string>
@@ -345,6 +346,14 @@
 
     <!-- Fuzzy -->
     <string name="installer_status_user_action">"उपयोगकर्ता की पुष्टि की प्रतीक्षा है"</string>
+    <string name="pref_downloader_internal">"ऐप्स को इंटरनल स्टोरेज में डाउनलोड करें"</string>
+    <string name="pref_downloader_internal_desc">"यदि यह ON है, तो आप अरोरा सेवाओं से ऐप्स नहीं इन्स्टाल कर सकते"</string>
+    <string name="pref_install_profile_summary">"एप्लिकेशन इंस्टॉल करने के लिए लक्ष्य प्रोफ़ाइल का चयन करें।  केवल रूट इंस्टॉलेशन विधि के साथ काम करता है"</string>
+    <string name="pref_install_profile_title">"स्थापना प्रोफ़ाइल (प्रायोगिक विकल्प)"</string>
+    <string name="pref_install_mode_internal_warn">"आपने डाउनलोड के लिए आंतरिक स्टोरेज का चयन किया है, कृपया अरोरा सर्विसेज का उपयोग करने के लिए इसे बंद करें"</string>
+    <string name="pref_updates_extended">"विस्तारित अपडेट्स"</string>
+    <string name="pref_updates_extended_desc">"बंद ऐप्स के अपडेट को चेक करने में सक्षम करें"</string>
+    <string name="pref_caching_strategy">"चित्र कैशिंग रणनीति"</string>
 
     <!-- Fuzzy -->
     <string name="pref_caching_strategy_all">"सब"</string>
@@ -354,4 +363,25 @@
 
     <!-- Fuzzy -->
     <string name="pref_caching_strategy_none">"कोई नहीं"</string>
+    <string name="pref_clean_junk">"जबरी जंक फ़ाइलें हटाएँ"</string>
+    <string name="pref_clean_junk_desc">"डिफ़ॉल्ट फोल्डर से सभी डाउनलोड की गई फ़ाइलों को हटाता है"</string>
+    <string name="pref_abandon_session">"जबरी स्थापना सत्र हटाएँ"</string>
+    <string name="pref_abandon_session_desc">"सभी पुराने लंबित इंस्टॉलेशन सत्रों को छोड़ दें"</string>
+    <string name="toast_unknown_reason">"कुछ गड़बड़ है, दोबारा कोशिश करें"</string>
+    <string name="toast_junk_removed">"जंक फाइलें मिटाई गईं"</string>
+    <string name="toast_abandon_sessions">"पुराने लंबित इंस्टॉलेशन सत्रों को छोड़ दिया"</string>
+    <string name="action_import">"आयात"</string>
+    <string name="dialog_title_self_update">"नई अपडेट उपलब्ध"</string>
+    <string name="dialog_desc_self_update">"क्या आप अभी अपडेट करना चाहेंगे ?"</string>
+    <string name="download_extraction">"गेम रिसोर्स निकाल रहें हैं, पूरा होने तक प्रतीक्षा करें"</string>
+    <string name="download_extraction_completed">"गेम्स रिसोर्स निष्कर्षण पूरा"</string>
+    <string name="download_extraction_failed">"खेल रिसोर्स निष्कर्षण विफल"</string>
+    <string name="installer_status_ongoing">"इन्स्टाल हो रहा है"</string>
+    <string name="list_update_all_txt_one">"अपडेट उपलब्ध"</string>
+    <string name="pref_ui_package">"पैकेज के नाम से खोज करें"</string>
+    <string name="pref_ui_package_summary">"पैकेज नाम से एप्लिकेशन खोजने की अनुमति दें"</string>
+    <string name="pref_update_self_title">"अपडेट्स की जांच करें"</string>
+    <string name="pref_update_self_desc">"अरोरा स्टोर की नई उपलब्ध अपडेट की जांच करें"</string>
+    <string name="toast_rate_limit">"नए सत्र के लिए टोकन की बेनती....."</string>
+    <string name="toast_token_stale">"टोकन पुराना है, नए टोकन के लिए बेनती..."</string>
 </resources>
