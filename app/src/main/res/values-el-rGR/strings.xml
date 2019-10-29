@@ -253,7 +253,6 @@
     <string name="pref_ui_theme_dark">"Σκοτεινό"</string>
     <string name="pref_ui_theme_black">"Μαύρο"</string>
     <string name="action_close">"Κλείσιμο"</string>
-    <string name="list_update_all_queue_txt">"ενημερώσεις στην ουρά"</string>
     <string name="notification_installation_complete">"Εγκαταστάθηκε Επιτυχώς"</string>
     <string name="notification_installation_failed">"Η εγκατάσταση απέτυχε"</string>
     <string name="notification_installation_progress">"Εγκαθιστάται"</string>
@@ -331,4 +330,12 @@
     <string name="installer_status_success">"Εγκαταστάθηκε επιτυχώς"</string>
     <string name="installer_status_unknown">"Άγνωστο"</string>
     <string name="installer_status_user_action">"Αναμονή για επιβεβαίωση χρήστη"</string>
+    <string name="pref_caching_strategy_all">"Όλα"</string>
+    <string name="pref_caching_strategy_automatic">"Αυτόματα"</string>
+    <string name="toast_unknown_reason">"Κάτι πήγε στραβά, προσπαθήστε ξανά"</string>
+    <string name="dialog_title_self_update">"Καινούρια ενημέρωση είναι διαθέσιμη"</string>
+    <string name="dialog_desc_self_update">"Θέλετε να ενημερώσετε τώρα;"</string>
+    <string name="installer_status_ongoing">"Γίνεται εγκατάσταση"</string>
+    <string name="list_update_all_txt_one">"ενημέρωση διαθέσιμη"</string>
+    <string name="pref_update_self_title">"Έλεγχος ενημερώσεων"</string>
 </resources>
