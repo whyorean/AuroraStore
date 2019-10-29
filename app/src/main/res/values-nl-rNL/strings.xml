@@ -36,8 +36,8 @@
     <string name="action_installations">"Installaties"</string>
     <string name="action_installed">"Geïnstalleerd"</string>
     <string name="action_later">"Later"</string>
-    <string name="action_logging_in">"Connect"</string>
-    <string name="action_login">"Herkennen"</string>
+    <string name="action_logging_in">"Inloggen"</string>
+    <string name="action_login">"Inloggen"</string>
     <string name="action_logout">"Afmelden"</string>
     <string name="action_make_normal">"Converteren naar normale applicatie"</string>
     <string name="action_make_system">"Converteren naar systeemapplicatie"</string>
@@ -249,7 +249,6 @@
     <string name="pref_ui_theme_dark">"Donker"</string>
     <string name="pref_ui_theme_black">"Zwart"</string>
     <string name="action_close">"Sluiten"</string>
-    <string name="list_update_all_queue_txt">"Bijwerken in behandeling"</string>
     <string name="notification_installation_complete">"Succesvolle installatie"</string>
     <string name="notification_installation_failed">"Installatie mislukt"</string>
     <string name="notification_installation_progress">"Installatie"</string>
@@ -350,4 +349,18 @@
     <string name="toast_unknown_reason">"Er ging iets fout, probeer opnieuw"</string>
     <string name="toast_junk_removed">"Ongewenste bestanden verwijderd"</string>
     <string name="toast_abandon_sessions">"Oude installatiesessies verlaten"</string>
+    <string name="action_import">"Inport"</string>
+    <string name="dialog_title_self_update">"Nieuwe update beschikbaar"</string>
+    <string name="dialog_desc_self_update">"Wilt u nu updaten?"</string>
+    <string name="download_extraction">"Extractie van games resources, wachten tot deze is voltooid"</string>
+    <string name="download_extraction_completed">"Extractie van games-bron voltooid"</string>
+    <string name="download_extraction_failed">"Extractie van games is mislukt"</string>
+    <string name="installer_status_ongoing">"installeren"</string>
+    <string name="list_update_all_txt_one">"update beschikbaar"</string>
+    <string name="pref_ui_package">"Zoeken op pakketnaam"</string>
+    <string name="pref_ui_package_summary">"Zoeken naar apps op pakketnaam toestaan"</string>
+    <string name="pref_update_self_title">"Check updates"</string>
+    <string name="pref_update_self_desc">"Controleer voor de nieuwste beschikbare updates van Aurora Store"</string>
+    <string name="toast_rate_limit">"Te veel aanvragen van huidige sessie, aanvragen van nieuwe inlogsessie"</string>
+    <string name="toast_token_stale">"Token is oud en vraagt om een nieuw token"</string>
 </resources>
