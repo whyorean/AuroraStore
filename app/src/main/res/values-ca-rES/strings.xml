@@ -253,7 +253,6 @@ Tingueu en compte que Google Play Store no admet la baixada de versions arbitrà
     <string name="pref_ui_theme_dark">"Fosc"</string>
     <string name="pref_ui_theme_black">"Negre"</string>
     <string name="action_close">"Tancar"</string>
-    <string name="list_update_all_queue_txt">"actualitzacions en cua"</string>
     <string name="notification_installation_complete">"S'ha instal·lat amb èxit"</string>
     <string name="notification_installation_failed">"La instal·lació ha fallit"</string>
     <string name="notification_installation_progress">"S'està instal·lant"</string>
@@ -353,4 +352,18 @@ Tingueu en compte que Google Play Store no admet la baixada de versions arbitrà
     <string name="toast_unknown_reason">"Quelcom va sortir malament, torneu-ho a provar"</string>
     <string name="toast_junk_removed">"S'han eliminat els fitxers brossa"</string>
     <string name="toast_abandon_sessions">"S'ha abandonat les antigues sessions d'instal·lació"</string>
+    <string name="action_import">"Importa"</string>
+    <string name="dialog_title_self_update">"Nova actualització disponible"</string>
+    <string name="dialog_desc_self_update">"Voleu actualitzar ara?"</string>
+    <string name="download_extraction">"S'està extraient els recursos del joc, espereu a que es completi"</string>
+    <string name="download_extraction_completed">"S'ha finalitzat l'extracció de recursos dels jocs"</string>
+    <string name="download_extraction_failed">"L'extracció de recursos dels jocs ha fallat"</string>
+    <string name="installer_status_ongoing">"S'està instal·lant"</string>
+    <string name="list_update_all_txt_one">"actualització disponible"</string>
+    <string name="pref_ui_package">"Cerca pel nom del paquet"</string>
+    <string name="pref_ui_package_summary">"Permet cercar aplicacions pel nom del paquet"</string>
+    <string name="pref_update_self_title">"Cerca actualitzacions"</string>
+    <string name="pref_update_self_desc">"Cerca les darreres actualitzacions disponibles de l'Aurora Store"</string>
+    <string name="toast_rate_limit">"Massa sol·licituds de la sessió actual, s'està sol·licitant una nova sessió d'inici de sessió"</string>
+    <string name="toast_token_stale">"El testimoni és obsolet, s'està sol·licitant un de nou"</string>
 </resources>
