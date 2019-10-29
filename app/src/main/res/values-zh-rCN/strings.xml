@@ -273,7 +273,6 @@
     <string name="pref_ui_theme_dark">"暗"</string>
     <string name="pref_ui_theme_black">"黑"</string>
     <string name="action_close">"关闭"</string>
-    <string name="list_update_all_queue_txt">"个更新在队列中"</string>
     <string name="notification_installation_complete">"安装成功"</string>
     <string name="notification_installation_failed">"安装失败"</string>
     <string name="notification_installation_progress">"正在安装"</string>
@@ -377,4 +376,18 @@
     <string name="toast_unknown_reason">"出错了，请重试"</string>
     <string name="toast_junk_removed">"垃圾文件已删除"</string>
     <string name="toast_abandon_sessions">"旧安装会话已放弃"</string>
+    <string name="action_import">"导入"</string>
+    <string name="dialog_title_self_update">"新的更新可用"</string>
+    <string name="dialog_desc_self_update">"您想要现在更新吗？"</string>
+    <string name="download_extraction">"正在提取游戏资源，等待完成"</string>
+    <string name="download_extraction_completed">"游戏资源提取完成"</string>
+    <string name="download_extraction_failed">"游戏资源提取失败"</string>
+    <string name="installer_status_ongoing">"正在安装"</string>
+    <string name="list_update_all_txt_one">"更新可用"</string>
+    <string name="pref_ui_package">"按软件包名称搜索"</string>
+    <string name="pref_ui_package_summary">"允许按软件包名称搜索应用"</string>
+    <string name="pref_update_self_title">"检查更新"</string>
+    <string name="pref_update_self_desc">"检查Aurora Store的最新可用更新"</string>
+    <string name="toast_rate_limit">"当前会话请求过多，正在请求新的登录会话"</string>
+    <string name="toast_token_stale">"令牌已过时，正在请求新的令牌"</string>
 </resources>
