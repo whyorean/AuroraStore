@@ -146,6 +146,7 @@ Decátate que baxar versiones al debalu nun lo sofita la tienda Google Play. L'�
     <string name="pref_downloader_wifi_title">"Baxar usando namái la Wi-Fi"</string>
     <string name="pref_filter_fdroid_summary">"Desanicia les aplicaciones de F-Droid de les llistes d'aplicaciones"</string>
     <string name="pref_filter_fdroid_title">"Peñerar les aplicaciones de F-Droid"</string>
+    <string name="pref_filter_google_summary">"Desanicia toles aplicaciones de Google nes guetes y estayes"</string>
     <string name="pref_filter_google_title">"Peñerar les aplicaciones de Google"</string>
     <string name="pref_install_auto_summary">"Les aplicaciones instálense nel intre dempués de completar la descarga"</string>
     <string name="pref_install_auto_title">"Autoinstalar les APKs dempués de baxales"</string>
@@ -217,7 +218,6 @@ Decátate que baxar versiones al debalu nun lo sofita la tienda Google Play. L'�
     <string name="pref_ui_theme_dark">"Escuridá"</string>
     <string name="pref_ui_theme_black">"Prietu"</string>
     <string name="action_close">"Zarrar"</string>
-    <string name="list_update_all_queue_txt">"anovamientu(os) na cola"</string>
     <string name="notification_installation_complete">"Instalóse con ésitu"</string>
     <string name="notification_installation_failed">"Falló la instalación"</string>
     <string name="notification_installation_progress">"Instalando"</string>
@@ -264,13 +264,13 @@ Decátate que baxar versiones al debalu nun lo sofita la tienda Google Play. L'�
     <string name="pref_install_mode_services">"Servicios d'Aurora"</string>
     <string name="pref_install_mode_no_services">"Los servicios d'Aurora nun tán instalaos, instálalos primero"</string>
     <string name="pref_services_title">"Servicios d'Aurora"</string>
-    <string name="pref_services_desc_alt">"Nun tán disponibles"</string>
     <string name="action_export_device">"Esportar la información del preséu"</string>
     <string name="action_export_info">"Esportóse la información del preséu"</string>
     <string name="action_export_info_failed">"Falló la esportación de la información del preséu"</string>
     <string name="installer_status_failure">"Falló la instalación"</string>
     <string name="installer_status_failure_aborted">"Encaboxóse la instalación"</string>
     <string name="installer_status_failure_blocked">"Bloquióse la instalación"</string>
+    <string name="installer_status_failure_conflict">"Esiste un paquete en conflictu"</string>
     <string name="installer_status_failure_incompatible">"Aplicación incompatible"</string>
     <string name="installer_status_failure_invalid">"L'APK nun ye válida o ta toyida"</string>
     <string name="installer_status_success">"Instalóse con ésitu"</string>
@@ -280,5 +280,7 @@ Decátate que baxar versiones al debalu nun lo sofita la tienda Google Play. L'�
     <string name="pref_downloader_internal_desc">"Si s'activa, nun vas ser a instalar aplicaciones per Servicios d'Aurora"</string>
     <string name="pref_updates_extended">"Anovamientos estendíos"</string>
     <string name="pref_updates_extended_desc">"Activa la comprobación d'anovamientos d'aplicaciones desactivaes"</string>
+    <string name="pref_clean_junk_desc">"Desanicia tolos ficheros baxaos del direutoriu predetermináu"</string>
     <string name="toast_unknown_reason">"Asocedió daqué malo, volvi tentalo"</string>
+    <string name="dialog_desc_self_update">"¿Deseyes anovar agora?"</string>
 </resources>
