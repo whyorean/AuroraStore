@@ -24,9 +24,9 @@ import android.content.Context;
 
 import androidx.annotation.NonNull;
 
-import com.aurora.store.manager.CategoryManager;
 import com.aurora.store.Filter;
 import com.aurora.store.iterator.CustomAppListIterator;
+import com.aurora.store.manager.CategoryManager;
 import com.aurora.store.model.App;
 import com.aurora.store.utility.Util;
 
@@ -39,8 +39,8 @@ public class SearchTask extends BaseTask {
         super(context);
     }
 
-    public List<App> getSearchResults(@NonNull CustomAppListIterator iterator) {
-        if (!iterator.hasNext()) {
+    public List<App> getSearchResults(CustomAppListIterator iterator) {
+        if (iterator == null || !iterator.hasNext()) {
             return new ArrayList<>();
         }
         List<App> apps = new ArrayList<>();

@@ -79,7 +79,7 @@ public class AnonymousLoginService extends Service {
     }
 
     private void destroyService() {
-        Log.e("Self-update service destroyed");
+        Log.e("Anonymous login service destroyed");
         stopSelf();
     }
 }

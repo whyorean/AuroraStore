@@ -27,6 +27,7 @@ public enum ErrorType {
     NO_SEARCH,
     NO_DOWNLOADS,
     UNKNOWN,
+    SESSION_EXPIRED,
     APP_NOT_FOUND,
     LOGOUT_ERR,
     IMPORT

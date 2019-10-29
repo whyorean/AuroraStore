@@ -184,6 +184,7 @@
     <string name="error_no_network">No network connection</string>
     <string name="error_search_not_found">No matching app found</string>
     <string name="error_unknown">Unknown error occurred</string>
+    <string name="error_session_expired">Session expired</string>
 
     <string name="exodus_hasTracker">Contains trackers</string>
     <string name="exodus_noTracker">Contains no trackers</string>

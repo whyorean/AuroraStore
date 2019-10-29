@@ -96,6 +96,11 @@ public class ErrorView extends RelativeLayout {
                 txtError.setText(R.string.download_none);
                 btnError.setVisibility(GONE);
                 break;
+            case SESSION_EXPIRED:
+                imgError.setImageDrawable(context.getDrawable(R.drawable.ic_unknown));
+                txtError.setText(R.string.error_session_expired);
+                btnError.setVisibility(GONE);
+                break;
             case IMPORT:
                 btnError.setText(context.getString(R.string.action_import));
                 imgError.setImageDrawable(context.getDrawable(R.drawable.ic_empty_box));

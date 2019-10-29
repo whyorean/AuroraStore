@@ -57,20 +57,17 @@ public class AnonymousRefreshService extends Service {
                 .refreshToken(this))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .doOnSubscribe(subscription -> {
-                    RxBus.publish(new Event(Events.TOKEN_EXPIRED));
-                })
                 .subscribe((success) -> {
                     if (success) {
-                        Log.i("Token Refreshed");
+                        Log.i("New token generated");
                         RxBus.publish(new Event(Events.TOKEN_REFRESHED));
                     } else {
-                        Log.e("Token Refresh Failed Permanently");
+                        Log.e("Failed to generate new token");
                         RxBus.publish(new Event(Events.NET_DISCONNECTED));
                     }
                     destroyService();
                 }, err -> {
-                    Log.e("Token Refresh Login failed %s", err.getMessage());
+                    Log.e("Token refresh service failed -> %s", err.getMessage());
                     RxBus.publish(new Event(Events.PERMANENT_FAIL));
                     destroyService();
                 }));
@@ -83,7 +80,7 @@ public class AnonymousRefreshService extends Service {
     }
 
     private void destroyService() {
-        Log.e("Self-update service destroyed");
+        Log.i("Token refresh service destroyed");
         stopSelf();
     }
 }

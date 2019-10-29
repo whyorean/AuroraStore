@@ -37,6 +37,7 @@ import com.aurora.store.AnonymousRefreshService;
 import com.aurora.store.ErrorType;
 import com.aurora.store.R;
 import com.aurora.store.activity.AccountsActivity;
+import com.aurora.store.api.PlayStoreApiAuthenticator;
 import com.aurora.store.events.Event;
 import com.aurora.store.events.Events;
 import com.aurora.store.events.RxBus;
@@ -108,6 +109,8 @@ public abstract class BaseFragment extends Fragment {
     }
 
     protected void notifyTokenExpired() {
+        setErrorView(ErrorType.SESSION_EXPIRED);
+        switchViews(true);
         notifyStatus(coordinatorLayout, context.getString(R.string.action_token_expired));
     }
 
@@ -239,13 +242,12 @@ public abstract class BaseFragment extends Fragment {
     }
 
     private void processAuthException(AuthException e) {
+        PlayStoreApiAuthenticator.destroyInstance();
         if (e instanceof CredentialsEmptyException || e instanceof InvalidApiException) {
-            Log.i("Logged out");
-            ContextUtil.toastLong(context, context.getString(R.string.error_logged_out));
             Accountant.completeCheckout(context);
             RxBus.publish(new Event(Events.LOGGED_OUT));
         } else if (e.getCode() == 401 && Accountant.isDummy(context)) {
-            ContextUtil.toastLong(context, context.getString(R.string.toast_token_stale));
+            RxBus.publish(new Event(Events.TOKEN_EXPIRED));
             refreshToken();
         } else if (e.getCode() == 429 && Accountant.isDummy(context)) {
             ContextUtil.toastLong(context, context.getString(R.string.toast_rate_limit));

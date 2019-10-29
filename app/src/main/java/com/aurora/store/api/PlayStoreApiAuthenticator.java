@@ -106,6 +106,11 @@ public class PlayStoreApiAuthenticator {
         instance = null;
     }
 
+    public static void destroyInstance() {
+        api = null;
+        instance = null;
+    }
+
     private synchronized GooglePlayAPI buildApi(Context context) {
         if (api == null) {
             try {
