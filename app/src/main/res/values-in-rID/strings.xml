@@ -253,7 +253,6 @@ Harap diperhatikan bahwa mengubah-ubah versi aplikasi yang akan diunduh tidak di
     <string name="pref_ui_theme_dark">"Gelap"</string>
     <string name="pref_ui_theme_black">"Hitam"</string>
     <string name="action_close">"Tutup"</string>
-    <string name="list_update_all_queue_txt">"antrian pembaruan"</string>
     <string name="notification_installation_complete">"Berhasil terpasang"</string>
     <string name="notification_installation_failed">"Gagal terpasang"</string>
     <string name="notification_installation_progress">"Memasang"</string>
