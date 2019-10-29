@@ -253,7 +253,6 @@ Husk at nedlasting av vilkårlig versjoner av apper ikke støttes av Google Play
     <string name="pref_ui_theme_dark">"pref_ui_theme_dark"</string>
     <string name="pref_ui_theme_black">"Svart"</string>
     <string name="action_close">"Lukk"</string>
-    <string name="list_update_all_queue_txt">"oppdatering(er) i kø"</string>
     <string name="notification_installation_complete">"Vellykket installert"</string>
     <string name="notification_installation_failed">"Installasjon feilet"</string>
     <string name="notification_installation_progress">"Installerer"</string>
@@ -353,4 +352,18 @@ Husk at nedlasting av vilkårlig versjoner av apper ikke støttes av Google Play
     <string name="toast_unknown_reason">"Noe gikk galt, prøv igjen"</string>
     <string name="toast_junk_removed">"Søppelfiler fjernet"</string>
     <string name="toast_abandon_sessions">"Gamle installasjonsøkter forlatt"</string>
+    <string name="action_import"></string>
+    <string name="dialog_title_self_update"></string>
+    <string name="dialog_desc_self_update"></string>
+    <string name="download_extraction"></string>
+    <string name="download_extraction_completed"></string>
+    <string name="download_extraction_failed"></string>
+    <string name="installer_status_ongoing"></string>
+    <string name="list_update_all_txt_one"></string>
+    <string name="pref_ui_package"></string>
+    <string name="pref_ui_package_summary"></string>
+    <string name="pref_update_self_title"></string>
+    <string name="pref_update_self_desc"></string>
+    <string name="toast_rate_limit"></string>
+    <string name="toast_token_stale"></string>
 </resources>
