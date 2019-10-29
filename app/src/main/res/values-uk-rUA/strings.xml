@@ -251,7 +251,6 @@ Aurora дозволяє шукати, завантажувати, встанов
     <string name="pref_ui_theme_dark">"Темна"</string>
     <string name="pref_ui_theme_black">"Чорна"</string>
     <string name="action_close">"Відміна"</string>
-    <string name="list_update_all_queue_txt">"оновлень у черзі"</string>
     <string name="notification_installation_complete">"Успішно установлено"</string>
     <string name="notification_installation_failed">"Помилка при установці"</string>
     <string name="notification_installation_progress">"Установка"</string>
@@ -277,7 +276,7 @@ Aurora дозволяє шукати, завантажувати, встанов
     <string name="details_new_changes">"Що нового"</string>
     <string name="action_apps">"Програми"</string>
     <string name="action_logging_in_success">"Успішно ввійшли"</string>
-    <string name="action_token_expired">"Термін дії токену закінчився, надсилаю запит на новий токен"</string>
+    <string name="action_token_expired">"Термін дії токену закінчився, надсилаємо запит на новий токен"</string>
     <string name="action_token_force_request">"Надіслати запит"</string>
     <string name="cat_top_apps">"Найкращі програми"</string>
     <string name="cat_top_categories">"Найкращі категорії"</string>
@@ -351,4 +350,18 @@ Aurora дозволяє шукати, завантажувати, встанов
     <string name="toast_unknown_reason">"Шось пішло не так,  спробуйте ще раз"</string>
     <string name="toast_junk_removed">"Сміттєві файли видаленні"</string>
     <string name="toast_abandon_sessions">"Старі сесії установок очищено"</string>
+    <string name="action_import">"Імпортувати"</string>
+    <string name="dialog_title_self_update">"Доступно оновлення"</string>
+    <string name="dialog_desc_self_update">"Бажаєте оновитись зараз?"</string>
+    <string name="download_extraction">"Розпаковуємо ресурси гри, зачекайте"</string>
+    <string name="download_extraction_completed">"Ресурси гри розпаковано"</string>
+    <string name="download_extraction_failed">"Не вдалося розпакувати ресурси гри"</string>
+    <string name="installer_status_ongoing">"Встановлення"</string>
+    <string name="list_update_all_txt_one">"оновлення доступно"</string>
+    <string name="pref_ui_package">"Шукати за ім'ям пакету"</string>
+    <string name="pref_ui_package_summary">"Дозволити пошук додатків за ім'ям пакету"</string>
+    <string name="pref_update_self_title">"Перевірити наявність оновлення"</string>
+    <string name="pref_update_self_desc">"Перевірити наявність оновлень для Aurora Store"</string>
+    <string name="toast_rate_limit">"Надто багато запитів з цієї сесії, відкриваємо нову сесію"</string>
+    <string name="toast_token_stale">"Токен застарілий, надсилаємо запит на новий токен"</string>
 </resources>
