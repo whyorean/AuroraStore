@@ -17,7 +17,7 @@
     <string name="action_copied">"Link in die Zwischenablage kopiert"</string>
     <string name="action_copy">"Link kopieren"</string>
     <string name="action_disable">"Deaktivieren"</string>
-    <string name="action_done">"Erledigt"</string>
+    <string name="action_done">"Fertig"</string>
     <string name="action_enable">"Aktivieren"</string>
     <string name="action_export">"Exportieren"</string>
     <string name="action_favourites">"Favoriten"</string>
@@ -28,7 +28,7 @@
     <string name="action_filter_downloads">"Downloads"</string>
     <string name="action_filter_gsf_dependent_apps">"GSF-abhängig"</string>
     <string name="action_filter_misc">"Sonstiges"</string>
-    <string name="action_filter_paid_apps">"Bezahlt"</string>
+    <string name="action_filter_paid_apps">"Kostenpflichtig"</string>
     <string name="action_filter_rating">"Bewertungen"</string>
     <string name="action_flag">"App melden"</string>
     <string name="action_get_local_apk">"Lokalen APK extrahieren"</string>
@@ -76,7 +76,9 @@
     <string name="details_favourite_add">"Zu Favoriten hinzufügen"</string>
     <string name="details_favourite_remove">"Aus Favoriten entfernen"</string>
     <string name="details_install">"Installieren"</string>
-    <string name="details_installing">"Installieren"</string>
+
+    <!-- This should be "Installiere" as "Installieren" is already the translation for "Install". So at the moment when you click on "Install" the Button changes to "Installing" but in the German version nothing changes! -->
+    <string name="details_installing">"Installiere..."</string>
     <string name="details_more">"Weiterlesen"</string>
     <string name="details_no_ads">"Keine Werbung"</string>
     <string name="details_permissions">"Berechtigungen"</string>
@@ -92,8 +94,8 @@
     <string name="dialog_title_logout">"Ausloggen?"</string>
     <string name="download_cancel_all">"Alle abbrechen"</string>
     <string name="download_canceled">"Abgebrochen"</string>
-    <string name="download_clear_completed">"Abgeschlossene löschen"</string>
-    <string name="download_completed">"Abgeschlossen"</string>
+    <string name="download_clear_completed">"Fertiggestellte löschen"</string>
+    <string name="download_completed">"Heruntergeladen"</string>
     <string name="download_failed">"Fehlgeschlagen"</string>
     <string name="download_force_clear_all">"Alle löschen"</string>
     <string name="download_pause_all">"Alle pausieren"</string>
@@ -123,7 +125,7 @@
     <string name="list_app_no_ads">"Keine Werbung"</string>
     <string name="list_app_system">"System App"</string>
     <string name="list_app_user">"Benutzer-App"</string>
-    <string name="list_blacklist">"Apps werden ignoriert"</string>
+    <string name="list_blacklist">"Ignorierte Apps"</string>
     <string name="list_blacklist_none">"Keine ignorierten Apps"</string>
     <string name="list_bulk_install">"App(s) in der Warteschlange für Masseninstallation"</string>
     <string name="list_empty_fav">"Keine Favoriten"</string>
@@ -155,7 +157,7 @@ Der Download beliebiger Versionen von Apps wird vom Google Play Store nicht unte
     <string name="pref_category_spoof_lang">"Sprache vortäuschen"</string>
     <string name="pref_category_spoof_location">"Standort vortäuschen"</string>
     <string name="pref_device_to_pretend_to_be">"Ein anderes Gerät vortäuschen"</string>
-    <string name="pref_device_to_pretend_to_be_default">"Originale Geräteinformationen"</string>
+    <string name="pref_device_to_pretend_to_be_default">"Nicht vortäuschen"</string>
     <string name="pref_device_to_pretend_to_be_toast">"Änderungen werden nach erneuter Anmeldung angewendet"</string>
     <string name="pref_dialog_to_apply_restart">"Die Einstellungen werden nach einem Neustart der App angewendet"</string>
     <string name="pref_downloader_active_summary">"Maximale Anzahl aktiver Downloads"</string>
@@ -168,7 +170,7 @@ Der Download beliebiger Versionen von Apps wird vom Google Play Store nicht unte
     <string name="pref_filter_fdroid_title">"Apps von F-Droid filtern"</string>
     <string name="pref_filter_google_summary">"Entfernt alle Apps von Google aus den Suchergebnissen und Kategorien"</string>
     <string name="pref_filter_google_title">"Google-Apps filtern"</string>
-    <string name="pref_filter_search_summary">"Suchfilter werden bei jeder Suche zurückgesetzt. Deaktivieren, um Suchfilter zu speichern"</string>
+    <string name="pref_filter_search_summary">"Suchfilter werden nach jeder Suche zurückgesetzt. Deaktivieren, um Suchfilter zu speichern"</string>
     <string name="pref_filter_search_title">"Nicht-persistente Suchfilter"</string>
     <string name="pref_install_auto_summary">"Apps werden nach Abschluss des Downloads automatisch installiert"</string>
     <string name="pref_install_auto_title">"Automatische Installation"</string>
@@ -184,7 +186,7 @@ Der Download beliebiger Versionen von Apps wird vom Google Play Store nicht unte
     <string name="pref_proxy_port">"Port"</string>
     <string name="pref_proxy_type">"Proxy-Typ"</string>
     <string name="pref_requested_language">"API-Anforderungssprache vortäuschen"</string>
-    <string name="pref_requested_language_default">"Standardsprache"</string>
+    <string name="pref_requested_language_default">"Nicht vortäuschen"</string>
     <string name="pref_requested_location_disable">"Du musst die Falsche-Standort-App manuell in den Entwickleroptionen deaktivieren, um es vollständig zu deaktivieren."</string>
     <string name="pref_requested_location_enable">"Du musst Aurora Store als Falsche-Standort-App manuell in den Entwickleroptionen aktivieren."</string>
     <string name="pref_requested_location_summary">"Aurora Store muss als Falsche-Standort-App festgelegt sein"</string>
@@ -237,7 +239,7 @@ Zudem zeigt Aurora die Anzahl der Tracker in der jeweiligen App an."</string>
     <string name="about_xda_summary">"Für Diskussion oder Verbesserungsvorschläge: xda Aurora Store Thread"</string>
     <string name="action_about">"Informationen"</string>
     <string name="pref_downloader_strategy_summary">"Empfohlen: Paralleler Download für höhere Geschwindigkeit"</string>
-    <string name="pref_downloader_strategy_title">"Download Strategie"</string>
+    <string name="pref_downloader_strategy_title">"Download-Strategie"</string>
     <string name="pref_downloader_strategy_sequential">"Sequenzieller Download"</string>
     <string name="pref_downloader_strategy_parallel">"Paralleler Download (Splits)"</string>
     <string name="pref_install_mode_native">"Standard"</string>
@@ -253,7 +255,6 @@ Zudem zeigt Aurora die Anzahl der Tracker in der jeweiligen App an."</string>
     <string name="pref_ui_theme_dark">"Dunkel"</string>
     <string name="pref_ui_theme_black">"Schwarz"</string>
     <string name="action_close">"Schließen"</string>
-    <string name="list_update_all_queue_txt">"Update(s) eingereiht"</string>
     <string name="notification_installation_complete">"Erfolgreich installiert"</string>
     <string name="notification_installation_failed">"Installation fehlgeschlagen"</string>
     <string name="notification_installation_progress">"Installieren"</string>
@@ -266,8 +267,8 @@ Zudem zeigt Aurora die Anzahl der Tracker in der jeweiligen App an."</string>
     <string name="title_search_result">"Ergebnisse für"</string>
     <string name="action_recheck">"Erneut prüfen"</string>
     <string name="action_recheck_ing">"Erneut prüfen"</string>
-    <string name="pref_install_type_summary">"Standard-Installationsmethode benutzen, um Pakete zu installieren. Gebündelte Installationen schlagen hiermit fehl."</string>
-    <string name="pref_install_type_title">"Nutze Standard-Installer"</string>
+    <string name="pref_install_type_summary">"Die Installation gebündelter APKs schlägt hiermit fehl"</string>
+    <string name="pref_install_type_title">"Standard Installationsmethode"</string>
     <string name="pref_ui_tab_default_title">"Standard-Tab auswählen"</string>
     <string name="pref_update_interval_title">"Update-Intervall"</string>
     <string name="pref_update_interval_manually">"Manuell"</string>
@@ -300,7 +301,7 @@ Zudem zeigt Aurora die Anzahl der Tracker in der jeweiligen App an."</string>
     <string name="pref_ui_transparent_summary">"Transparente Kategorie-Karten verwenden"</string>
     <string name="pref_install_delete_summary">"Auf Geräten mit Android Pie und aktivierter Root-Installationsmethode werden APKs standardmäßig gelöscht"</string>
     <string name="action_loading">"Lädt"</string>
-    <string name="pref_default">"Standard"</string>
+    <string name="pref_default">"Nicht vortäuschen"</string>
     <string name="toast_loading_apps">"Lade weitere Apps..."</string>
     <string name="dialog_2FA_title">"Zwei Faktor Identifizierung "</string>
     <string name="dialog_2FA_desc">"Du scheinst 2FA aktiviert zu haben, bitte generiere ein App Passwort und benutze dieses, um dich einzuloggen"</string>
@@ -309,9 +310,9 @@ Zudem zeigt Aurora die Anzahl der Tracker in der jeweiligen App an."</string>
     <string name="dialog_purchase_desc">"Du musst die App zuerst kaufen, Aurora Store unterstützt dies (aktuell) nicht, du wirst daher zum Kauf auf die Homepage weitergeleitet"</string>
     <string name="dialog_purchase_positive">"Jetzt kaufen"</string>
     <string name="dialog_geores_title">"Geo beschränkte App"</string>
-    <string name="dialog_geores_desc">"Die App, die du versuchst herunterzuladen, ist nicht in deinem Land verfügbar. Versuche es, eine andere Region in den Einstellungen vorzutäuschen."</string>
+    <string name="dialog_geores_desc">"Die App, die du versuchst herunterzuladen, ist nicht in deinem Land verfügbar. Versuche, einen anderen Standort in den Einstellungen vorzutäuschen."</string>
     <string name="dialog_incompat_title">"Inkompatible App"</string>
-    <string name="dialog_incompat_desc">"Die App, die du versuchst herunterzuladen, ist mit deinem Gerät nicht kompatibel. Versuche es, ein anderes Gerät über die Einstellungen vorzutäuschen."</string>
+    <string name="dialog_incompat_desc">"Die App, die du versuchst herunterzuladen, ist mit deinem Gerät nicht kompatibel. Versuche, ein anderes Gerät über die Einstellungen vorzutäuschen."</string>
     <string name="pref_install_mode_services">"Aurora Dienste"</string>
     <string name="pref_install_mode_no_services">"Aurora Dienste nicht installiert"</string>
     <string name="pref_install_mode_offline_services">"Aurora Dienste nicht verbunden. Prüfe den Status und die Version."</string>
@@ -347,10 +348,24 @@ Zudem zeigt Aurora die Anzahl der Tracker in der jeweiligen App an."</string>
     <string name="pref_caching_strategy_automatic">"Automatisch"</string>
     <string name="pref_caching_strategy_none">"Nichts"</string>
     <string name="pref_clean_junk">"Junk-Dateien entfernen erzwingen"</string>
-    <string name="pref_clean_junk_desc">"Entfernt alle heruntergeladenen Dateien aus dem Standardverzeichnis"</string>
+    <string name="pref_clean_junk_desc">"Löscht alle heruntergeladenen Dateien aus dem Standardverzeichnis"</string>
     <string name="pref_abandon_session">"Installationssitzungen entfernen erzwingen"</string>
     <string name="pref_abandon_session_desc">"Alle alten ausstehenden Installationssitzungen abbrechen"</string>
     <string name="toast_unknown_reason">"Etwas ist schiefgelaufen, versuchen Sie es noch einmal"</string>
     <string name="toast_junk_removed">"Junk-Dateien entfernt"</string>
     <string name="toast_abandon_sessions">"Alte Installationssitzungen abgebrochen"</string>
+    <string name="action_import">"Importieren"</string>
+    <string name="dialog_title_self_update">"Neues Update verfügbar"</string>
+    <string name="dialog_desc_self_update">"Möchtes du das Update installieren?"</string>
+    <string name="download_extraction">"Game-Ressource wird extrahiert, bitte warten"</string>
+    <string name="download_extraction_completed">"Game-Ressource extrahiert"</string>
+    <string name="download_extraction_failed">"Extrahierung der Game-Ressource fehlgeschlagen"</string>
+    <string name="installer_status_ongoing">"Installiere"</string>
+    <string name="list_update_all_txt_one">"Update verfügbar"</string>
+    <string name="pref_ui_package">"Nach Paketnamen suchen"</string>
+    <string name="pref_ui_package_summary">"Suche nach Paketnamen erlauben"</string>
+    <string name="pref_update_self_title">"Auf Updates überprüfen"</string>
+    <string name="pref_update_self_desc">"Auf neuste Updates für Aurora Store überprüfen"</string>
+    <string name="toast_rate_limit">"Zu viele Anfragen, Anforderung einer neuen Login-Session"</string>
+    <string name="toast_token_stale">"Token ist veraltet, Anforderung eines neuen Tokens"</string>
 </resources>
