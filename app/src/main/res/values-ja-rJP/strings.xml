@@ -249,7 +249,6 @@
     <string name="pref_ui_theme_dark">"ダーク"</string>
     <string name="pref_ui_theme_black">"ブラック"</string>
     <string name="action_close">"閉じる"</string>
-    <string name="list_update_all_queue_txt">"アップデートがキューに追加されました"</string>
     <string name="notification_installation_complete">"インストールに成功しました"</string>
     <string name="notification_installation_failed">"インストール失敗"</string>
     <string name="notification_installation_progress">"インストール中"</string>
@@ -349,4 +348,16 @@
     <string name="toast_unknown_reason">"問題が発生しました。再度お試しください"</string>
     <string name="toast_junk_removed">"ジャンクファイルが削除されました"</string>
     <string name="toast_abandon_sessions">"古いインストールセッションが放棄されました"</string>
+    <string name="action_import">"インポート"</string>
+    <string name="dialog_title_self_update">"新しいアップデートが利用可能です"</string>
+    <string name="dialog_desc_self_update">"すぐにアップデートしますか"</string>
+    <string name="download_extraction">"ゲームリソースを展開しています、完了までお待ちください"</string>
+    <string name="download_extraction_completed">"ゲームリソースの展開が完了しました"</string>
+    <string name="download_extraction_failed">"ゲームリソースの展開に失敗しました"</string>
+    <string name="installer_status_ongoing">"インストール中"</string>
+    <string name="list_update_all_txt_one">"更新が利用可能"</string>
+    <string name="pref_ui_package">"パッケージ名で検索"</string>
+    <string name="pref_update_self_title">"アップデートを確認"</string>
+    <string name="pref_update_self_desc">"Aurora Store の最新の利用可能なアップデートを確認"</string>
+    <string name="toast_rate_limit">"現在のセッションから多量のリクエストがありました。新しいログインセッションを要求しています"</string>
 </resources>
