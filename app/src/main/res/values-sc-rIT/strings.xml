@@ -255,7 +255,6 @@ Ammenta·ti chi iscarrigare versiones arbitràrias de sas aplicatziones no est s
     <string name="pref_ui_theme_dark">"Iscuru"</string>
     <string name="pref_ui_theme_black">"Nieddu"</string>
     <string name="action_close">"Serra"</string>
-    <string name="list_update_all_queue_txt">"agiornamentu(os) postu(os) in sa lista de isetu"</string>
     <string name="notification_installation_complete">"Installatzione resèssida"</string>
     <string name="notification_installation_failed">"Installatzione fallida"</string>
     <string name="notification_installation_progress">"Installende"</string>
@@ -355,4 +354,18 @@ Ammenta·ti chi iscarrigare versiones arbitràrias de sas aplicatziones no est s
     <string name="toast_unknown_reason">"B'at àpidu una faddina, torra a proare"</string>
     <string name="toast_junk_removed">"Documentos de arga bogados"</string>
     <string name="toast_abandon_sessions">"Sessiones de installatzione betzas abbandonadas"</string>
+    <string name="action_import">"Importa"</string>
+    <string name="dialog_title_self_update">"B'at un'agiornamentu nou disponìbile"</string>
+    <string name="dialog_desc_self_update">"Cheres agiornare como?"</string>
+    <string name="download_extraction">"Estraende sas risursas de su giogu, iseta chi acabet"</string>
+    <string name="download_extraction_completed">"Estratzione de sas risursas de su giogu acabada"</string>
+    <string name="download_extraction_failed">"Estratzione de sas risursas de su giogu fallida"</string>
+    <string name="installer_status_ongoing">"Installende"</string>
+    <string name="list_update_all_txt_one">"agiornamentu disponìbile"</string>
+    <string name="pref_ui_package">"Chirca pro nùmene de su pachete"</string>
+    <string name="pref_ui_package_summary">"Pemiti sa chirca de aplicatziones pro nùmene de su pachete"</string>
+    <string name="pref_update_self_title">"Chirca agiornamentos"</string>
+    <string name="pref_update_self_desc">"Chirca agiornamentos disponìbiles pro Aurora Store"</string>
+    <string name="toast_rate_limit">"Tropu rechestas pro sa sessione atuale, so pedende una sessione de intrada noa"</string>
+    <string name="toast_token_stale">"Su getone (token) est tropu betzu, nde so pedende unu nou"</string>
 </resources>
