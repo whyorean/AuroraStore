@@ -137,6 +137,7 @@
         <item>Turkish</item>
         <item>Ukrainian</item>
         <item>Vietnamese</item>
+        <item>Welsh</item>
         <item>Koffrora (Meme)</item>
     </string-array>
 
@@ -180,6 +181,7 @@
         <item>tr-TR</item>
         <item>uk-UA</item>
         <item>vi-VN</item>
+        <item>cy-GB</item>
         <item>bh-IN</item>
     </string-array>
 
