@@ -251,7 +251,6 @@ Upozorňujeme, že služba Google Play Store nepodporuje preberanie ľubovoľný
     <string name="pref_ui_theme_dark">"Tmavá"</string>
     <string name="pref_ui_theme_black">"Čierna"</string>
     <string name="action_close">"Zavrieť"</string>
-    <string name="list_update_all_queue_txt">"čakajúcich aktualizácií"</string>
     <string name="notification_installation_complete">"Úspešne nainštalované"</string>
     <string name="notification_installation_failed">"Inštalácia zlyhala"</string>
     <string name="notification_installation_progress">"Inštalovanie"</string>
@@ -351,4 +350,18 @@ Upozorňujeme, že služba Google Play Store nepodporuje preberanie ľubovoľný
     <string name="toast_unknown_reason">"Niečo sa pokazilo, skúste znova"</string>
     <string name="toast_junk_removed">"Nadbytočné súbory sú vymazané"</string>
     <string name="toast_abandon_sessions">"Staré inštalačné sedenia sú zrušené"</string>
+    <string name="action_import">"Importovať"</string>
+    <string name="dialog_title_self_update">"Nová aktualizácia k dispozícii"</string>
+    <string name="dialog_desc_self_update">"Prajete si teraz aktualizovať?"</string>
+    <string name="download_extraction">"Rozbaľovanie herných dát, čakajte na dokončenie"</string>
+    <string name="download_extraction_completed">"Rozbaľovanie herných dát ukončené"</string>
+    <string name="download_extraction_failed">"Rozbaľovanie herných dát zlyhalo"</string>
+    <string name="installer_status_ongoing">"Inštalácia"</string>
+    <string name="list_update_all_txt_one">"dostupná aktualizácia"</string>
+    <string name="pref_ui_package">"Hľadať podľa názvu balíčku"</string>
+    <string name="pref_ui_package_summary">"Povoliť hľadanie podľa názvu balíčku"</string>
+    <string name="pref_update_self_title">"Skontrolovať aktualizácie"</string>
+    <string name="pref_update_self_desc">"Skontrolovať posledné dostupné aktualizácie Aurora Store"</string>
+    <string name="toast_rate_limit">"Príliš veľa požiadaviek z aktuálneho sedenia, vyžaduje sa nové sedenie"</string>
+    <string name="toast_token_stale">"Token prestal fungovať, vyžaduje sa nový token"</string>
 </resources>
