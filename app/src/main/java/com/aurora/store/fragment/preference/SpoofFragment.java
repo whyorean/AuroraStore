@@ -52,6 +52,7 @@ import com.aurora.store.utility.ContextUtil;
 import com.aurora.store.utility.Log;
 import com.aurora.store.utility.PrefUtil;
 import com.aurora.store.utility.Util;
+import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 
@@ -214,12 +215,16 @@ public class SpoofFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (position > 0) {
-                    PlayStoreApiAuthenticator.getApi(context)
-                            .setLocale(new Locale(localeKeys[position]));
-                    PrefUtil.putString(context, Constants.PREFERENCE_REQUESTED_LANGUAGE,
-                            localeKeys[position]);
-                    PrefUtil.putInteger(context, Constants.PREFERENCE_REQUESTED_LANGUAGE_INDEX,
-                            position);
+                    try {
+                        GooglePlayAPI api = PlayStoreApiAuthenticator.getApi(context);
+                        api.setLocale(new Locale(localeKeys[position]));
+                        PrefUtil.putString(context, Constants.PREFERENCE_REQUESTED_LANGUAGE,
+                                localeKeys[position]);
+                        PrefUtil.putInteger(context, Constants.PREFERENCE_REQUESTED_LANGUAGE_INDEX,
+                                position);
+                    } catch (Exception e) {
+                        Log.e(e.getMessage());
+                    }
                 }
 
                 if (position == 0) {

@@ -22,9 +22,8 @@ package com.aurora.store.task;
 
 import android.content.Context;
 
-import androidx.annotation.NonNull;
-
 import com.aurora.store.Filter;
+import com.aurora.store.exception.InvalidApiException;
 import com.aurora.store.iterator.CustomAppListIterator;
 import com.aurora.store.manager.CategoryManager;
 import com.aurora.store.model.App;
@@ -39,8 +38,10 @@ public class SearchTask extends BaseTask {
         super(context);
     }
 
-    public List<App> getSearchResults(CustomAppListIterator iterator) {
-        if (iterator == null || !iterator.hasNext()) {
+    public List<App> getSearchResults(CustomAppListIterator iterator) throws Exception {
+        if (iterator == null)
+            throw new InvalidApiException();
+        if (!iterator.hasNext()) {
             return new ArrayList<>();
         }
         List<App> apps = new ArrayList<>();

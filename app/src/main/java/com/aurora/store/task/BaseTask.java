@@ -24,7 +24,6 @@ import android.content.Context;
 import android.content.ContextWrapper;
 
 import com.aurora.store.api.PlayStoreApiAuthenticator;
-import com.aurora.store.exception.InvalidApiException;
 import com.aurora.store.model.App;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 
@@ -45,11 +44,7 @@ public abstract class BaseTask extends ContextWrapper {
 
 
     public GooglePlayAPI getApi() throws Exception {
-        api = PlayStoreApiAuthenticator.getApi(context);
-        if (api == null)
-            throw new InvalidApiException("Failed to build api, probably logged out");
-        else
-            return api;
+        return PlayStoreApiAuthenticator.getApi(context);
     }
 
     public Context getContext() {

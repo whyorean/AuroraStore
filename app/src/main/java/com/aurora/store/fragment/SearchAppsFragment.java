@@ -56,6 +56,7 @@ import com.aurora.store.utility.NetworkUtil;
 import com.aurora.store.utility.Util;
 import com.aurora.store.utility.ViewUtil;
 import com.bumptech.glide.Glide;
+import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
@@ -84,7 +85,6 @@ public class SearchAppsFragment extends BaseFragment {
     ChipGroup relatedChipGroup;
 
     private Context context;
-    private View view;
     private String query;
     private List<String> relatedTags = new ArrayList<>();
     private CustomAppListIterator iterator;
@@ -112,7 +112,7 @@ public class SearchAppsFragment extends BaseFragment {
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_search_applist, container, false);
+        View view = inflater.inflate(R.layout.fragment_search_applist, container, false);
         ButterKnife.bind(this, view);
         Bundle arguments = getArguments();
         if (arguments != null) {
@@ -208,7 +208,8 @@ public class SearchAppsFragment extends BaseFragment {
 
     private void getIterator() {
         try {
-            iterator = new CustomAppListIterator(new SearchIterator2(PlayStoreApiAuthenticator.getApi(context), query));
+            GooglePlayAPI api = PlayStoreApiAuthenticator.getApi(context);
+            iterator = new CustomAppListIterator(new SearchIterator2(api, query));
             iterator.setFilterEnabled(true);
             iterator.setFilter(new Filter(getContext()).getFilterPreferences());
             relatedTags = iterator.getRelatedTags();
@@ -230,15 +231,17 @@ public class SearchAppsFragment extends BaseFragment {
                     } else if (appList.isEmpty() && endlessAppsAdapter.isDataEmpty()) {
                         setErrorView(ErrorType.NO_SEARCH);
                         switchViews(true);
+                        filterFab.hide();
                     } else {
                         switchViews(false);
+                        filterFab.show();
                         if (endlessAppsAdapter != null)
                             endlessAppsAdapter.addData(appList);
                         if (!relatedTags.isEmpty())
                             setupTags();
                     }
                 }, err -> {
-                    Log.e(err.getMessage());
+                    filterFab.hide();
                     processException(err);
                 }));
     }

@@ -23,6 +23,7 @@
 
 package com.aurora.store.api;
 
+import com.aurora.store.exception.CredentialsEmptyException;
 import com.dragons.aurora.playstoreapiv2.DocV2;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 import com.dragons.aurora.playstoreapiv2.Payload;

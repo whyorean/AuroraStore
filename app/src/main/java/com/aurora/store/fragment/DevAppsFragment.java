@@ -44,6 +44,7 @@ import com.aurora.store.model.App;
 import com.aurora.store.task.SearchTask;
 import com.aurora.store.utility.Log;
 import com.aurora.store.utility.NetworkUtil;
+import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 import com.google.android.material.chip.Chip;
 
 import java.util.List;
@@ -64,6 +65,7 @@ public class DevAppsFragment extends BaseFragment {
     Chip chipDevName;
 
     private Context context;
+    private String query;
     private EndlessAppsAdapter endlessAppsAdapter;
     private CustomAppListIterator iterator;
 
@@ -85,9 +87,8 @@ public class DevAppsFragment extends BaseFragment {
         ButterKnife.bind(this, view);
         Bundle arguments = getArguments();
         if (arguments != null) {
-            String query = arguments.getString("SearchQuery");
+            query = arguments.getString("SearchQuery");
             chipDevName.setText(arguments.getString("SearchTitle"));
-            iterator = new CustomAppListIterator(new SearchIterator2(PlayStoreApiAuthenticator.getApi(context), query));
             if (NetworkUtil.isConnected(context))
                 setupRecycler();
             else
@@ -110,6 +111,8 @@ public class DevAppsFragment extends BaseFragment {
     }
 
     private void fetchDevAppsList(boolean shouldIterate) {
+        if (!shouldIterate)
+            getIterator();
         disposable.add(Observable.fromCallable(() -> new SearchTask(context)
                 .getSearchResults(iterator))
                 .subscribeOn(Schedulers.io())
@@ -128,6 +131,15 @@ public class DevAppsFragment extends BaseFragment {
                     Log.e(err.getMessage());
                     processException(err);
                 }));
+    }
+
+    private void getIterator() {
+        try {
+            GooglePlayAPI api = PlayStoreApiAuthenticator.getApi(context);
+            iterator = new CustomAppListIterator(new SearchIterator2(api, query));
+        } catch (Exception e) {
+            processException(e);
+        }
     }
 
     private void addApps(List<App> appsToAdd) {

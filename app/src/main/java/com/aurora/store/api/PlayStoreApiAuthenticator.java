@@ -27,10 +27,10 @@ import android.content.Context;
 import android.text.TextUtils;
 
 import com.aurora.store.exception.CredentialsEmptyException;
+import com.aurora.store.exception.InvalidApiException;
 import com.aurora.store.model.LoginInfo;
 import com.aurora.store.utility.Accountant;
 import com.aurora.store.utility.ApiBuilderUtil;
-import com.aurora.store.utility.Log;
 import com.aurora.store.utility.PrefUtil;
 import com.aurora.store.utility.Util;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
@@ -48,7 +48,7 @@ public class PlayStoreApiAuthenticator {
         }
     }
 
-    public static GooglePlayAPI getApi(Context context) {
+    public static GooglePlayAPI getApi(Context context) throws Exception {
         if (instance == null) {
             synchronized (PlayStoreApiAuthenticator.class) {
                 if (instance == null) {
@@ -111,13 +111,9 @@ public class PlayStoreApiAuthenticator {
         instance = null;
     }
 
-    private synchronized GooglePlayAPI buildApi(Context context) {
+    private synchronized GooglePlayAPI buildApi(Context context) throws Exception {
         if (api == null) {
-            try {
-                api = ApiBuilderUtil.buildFromPreferences(context);
-            } catch (Exception e) {
-                Log.e("Error building API -> %s", e.getMessage());
-            }
+            api = ApiBuilderUtil.buildFromPreferences(context);
         }
         return api;
     }

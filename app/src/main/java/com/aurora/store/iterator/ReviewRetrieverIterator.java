@@ -24,6 +24,7 @@
 package com.aurora.store.iterator;
 
 import com.aurora.store.api.PlayStoreApiAuthenticator;
+import com.aurora.store.exception.InvalidApiException;
 import com.aurora.store.model.Review;
 import com.aurora.store.model.ReviewBuilder;
 import com.aurora.store.utility.Log;
@@ -52,15 +53,18 @@ public class ReviewRetrieverIterator extends ReviewIterator {
             if (list.size() < PAGE_SIZE) {
                 hasNext = false;
             }
-        } catch (IOException e) {
+        } catch (Exception e) {
             Log.i(e.getClass().getName() + ": " + e.getMessage());
         }
         return list;
     }
 
-    private List<Review> getReviews(String packageId, int offset, int numberOfResults) throws IOException {
+    private List<Review> getReviews(String packageId, int offset, int numberOfResults) throws Exception {
         List<Review> reviews = new ArrayList<>();
-        for (com.dragons.aurora.playstoreapiv2.Review review : PlayStoreApiAuthenticator.getApi(context).reviews(
+        GooglePlayAPI api = PlayStoreApiAuthenticator.getApi(context);
+        if (api == null)
+            throw new InvalidApiException();
+        for (com.dragons.aurora.playstoreapiv2.Review review : api.reviews(
                 packageId,
                 GooglePlayAPI.REVIEW_SORT.HELPFUL,
                 offset,

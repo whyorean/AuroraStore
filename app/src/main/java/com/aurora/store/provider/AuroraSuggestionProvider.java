@@ -46,7 +46,6 @@ import com.dragons.aurora.playstoreapiv2.GooglePlayException;
 import com.dragons.aurora.playstoreapiv2.SearchSuggestEntry;
 
 import java.io.File;
-import java.io.IOException;
 
 public class AuroraSuggestionProvider extends ContentProvider {
 
@@ -108,13 +107,14 @@ public class AuroraSuggestionProvider extends ContentProvider {
         }
     }
 
-    private void fill(MatrixCursor cursor, Uri uri) throws IOException {
+    private void fill(MatrixCursor cursor, Uri uri) throws Exception {
         String query = uri.getLastPathSegment();
         if (TextUtils.isEmpty(query) || query.equals("search_suggest_query")) {
             return;
         }
         int i = 0;
-        for (SearchSuggestEntry entry : PlayStoreApiAuthenticator.getApi(getContext()).searchSuggest(query).getEntryList()) {
+        GooglePlayAPI api = PlayStoreApiAuthenticator.getApi(getContext());
+        for (SearchSuggestEntry entry : api.searchSuggest(query).getEntryList()) {
             cursor.addRow(constructRow(entry, i++));
         }
     }
