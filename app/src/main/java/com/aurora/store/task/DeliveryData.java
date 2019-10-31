@@ -81,7 +81,7 @@ public class DeliveryData extends BaseTask {
         } else if (!app.isFree() && Accountant.isDummy(context)) {
             throw new NotPurchasedException();
         } else if (deliveryData == null) {
-            Log.d("No download link returned");
+            throw new NotPurchasedException();
         }
     }
 
