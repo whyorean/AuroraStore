@@ -35,6 +35,12 @@
 
     <SwitchPreference
         app:defaultValue="false"
+        app:key="PREFERENCE_UPDATES_AUTO"
+        app:summary="@string/pref_updates_auto_desc"
+        app:title="@string/pref_updates_auto" />
+
+    <SwitchPreference
+        app:defaultValue="false"
         app:key="PREFERENCE_UPDATES_EXTENDED"
         app:summary="@string/pref_updates_extended_desc"
         app:title="@string/pref_updates_extended" />

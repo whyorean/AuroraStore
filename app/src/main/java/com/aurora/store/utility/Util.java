@@ -341,6 +341,10 @@ public class Util {
         return getPrefs(context).getBoolean(Constants.PREFERENCE_LOCALE_CUSTOM, false);
     }
 
+    public static boolean isAutoUpdatesEnabled(Context context) {
+        return getPrefs(context).getBoolean(Constants.PREFERENCE_UPDATES_AUTO, false);
+    }
+
     public static boolean isTabScrollable(Context context) {
         return getPrefs(context).getBoolean(Constants.PREFERENCE_TAB_MODE, false);
     }

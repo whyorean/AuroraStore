@@ -235,6 +235,8 @@
     <string name="list_update_all_txt_one">update available"</string>
     <string name="list_update_all_txt">update(s) available"</string>
     <string name="list_updating">Updating</string>
+    <string name="list_updating_background">Downloading apps in background</string>
+    <string name="list_updating_failed">Failed to update</string>
 
     <string name="manual_download_disclaimer">Disclaimer</string>
     <string name="manual_download_incompatible">Google Play Store considers this app incompatible with your device. This means version code has not been returned by the Google Play Store server.</string>
@@ -350,6 +352,8 @@
     <string name="pref_update_interval_hourly">Hourly</string>
     <string name="pref_update_interval_daily">Weekly</string>
     <string name="pref_update_interval_weekly">Daily</string>
+    <string name="pref_updates_auto">Enable auto updates</string>
+    <string name="pref_updates_auto_desc">Update apps whenever new version are available</string>
     <string name="pref_updates_extended">Extended updates</string>
     <string name="pref_updates_extended_desc">Enable to check updates for disabled apps</string>
     <string name="pref_services_title">Aurora Services</string>
