@@ -132,10 +132,10 @@ public class AuroraActivity extends AppCompatActivity {
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
-        Bundle mBundle = intent.getExtras();
-        if (mBundle != null)
-            fragmentCur = mBundle.getInt(Constants.INTENT_FRAGMENT_POSITION);
-        if (intent.getScheme() != null && intent.getScheme().equals("market")) {
+        Bundle bundle = intent.getExtras();
+        if (bundle != null)
+            fragmentCur = bundle.getInt(Constants.INTENT_FRAGMENT_POSITION);
+        else if (intent.getScheme() != null && intent.getScheme().equals("market")) {
             fragmentCur = 2;
             isSearchIntent = true;
             if (intent.getData() != null)
