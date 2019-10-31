@@ -41,10 +41,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.aurora.store.AuroraApplication;
 import com.aurora.store.ErrorType;
 import com.aurora.store.R;
+import com.aurora.store.activity.AuroraActivity;
 import com.aurora.store.adapter.UpdatableAppsAdapter;
 import com.aurora.store.download.DownloadManager;
 import com.aurora.store.exception.MalformedRequestException;
-import com.aurora.store.manager.BlacklistManager;
+import com.aurora.store.exception.NotPurchasedException;
 import com.aurora.store.model.App;
 import com.aurora.store.task.LiveUpdate;
 import com.aurora.store.task.ObservableDeliveryData;
@@ -54,6 +55,7 @@ import com.aurora.store.utility.Log;
 import com.aurora.store.utility.Util;
 import com.aurora.store.utility.ViewUtil;
 import com.aurora.store.view.CustomSwipeToRefresh;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.snackbar.Snackbar;
 import com.tonyodev.fetch2.Fetch;
 
@@ -86,6 +88,7 @@ public class UpdatesFragment extends BaseFragment {
     private UpdatableAppsAdapter adapter;
     private Fetch fetch;
     private UpdatableAppsTask updatableAppTask;
+    private BottomNavigationView bottomNavigationView;
 
     private BroadcastReceiver installReceiver = new BroadcastReceiver() {
         @Override
@@ -121,6 +124,10 @@ public class UpdatesFragment extends BaseFragment {
         setErrorView(ErrorType.UNKNOWN);
         customSwipeToRefresh.setOnRefreshListener(() -> fetchData());
         setupRecycler();
+
+        if (getActivity() instanceof AuroraActivity) {
+            bottomNavigationView = ((AuroraActivity) getActivity()).getBottomNavigation();
+        }
     }
 
     @Override
@@ -260,7 +267,7 @@ public class UpdatesFragment extends BaseFragment {
                         .enqueueUpdate(deliveryDataBundle.getApp(),
                                 deliveryDataBundle.getAndroidAppDeliveryData()))
                 .doOnError(throwable -> {
-                    if (throwable instanceof MalformedRequestException) {
+                    if (throwable instanceof MalformedRequestException || throwable instanceof NotPurchasedException) {
                         ContextUtil.runOnUiThread(() -> btnAction.setOnClickListener(updateAllListener()));
                         notifyStatusBlacklist(coordinatorLayout, throwable.getMessage());
                     } else
@@ -280,10 +287,11 @@ public class UpdatesFragment extends BaseFragment {
     private void notifyStatusBlacklist(CoordinatorLayout coordinatorLayout, String packageName) {
         final StringBuilder message = new StringBuilder()
                 .append(packageName)
+                .append(StringUtils.SPACE)
                 .append(context.getString(R.string.error_app_download));
         Snackbar snackbar = Snackbar.make(coordinatorLayout, message, Snackbar.LENGTH_LONG);
-        snackbar.setAction(R.string.action_blacklist, v -> new BlacklistManager(context).add(packageName));
-        snackbar.setActionTextColor(context.getResources().getColor(R.color.colorGold));
+        if (bottomNavigationView != null)
+            snackbar.setAnchorView(bottomNavigationView);
         snackbar.show();
     }
 }

@@ -85,9 +85,9 @@ public class ObservableDeliveryData extends BaseTask {
                 && deliveryResponse.getAppDeliveryData().hasDownloadUrl()) {
             deliveryData = deliveryResponse.getAppDeliveryData();
         } else if (!app.isFree() && Accountant.isDummy(context)) {
-            throw new NotPurchasedException();
+            throw new NotPurchasedException(app.getDisplayName());
         } else if (deliveryData == null) {
-            throw new NotPurchasedException();
+            throw new NotPurchasedException(app.getDisplayName());
         }
     }
 
