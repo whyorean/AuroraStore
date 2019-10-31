@@ -254,7 +254,7 @@ public abstract class BaseFragment extends Fragment {
             Accountant.completeCheckout(context);
             logInWithDummy();
         } else {
-            ContextUtil.toast(context, R.string.error_incorrect_password);
+            ContextUtil.toast(context, R.string.error_session_expired);
             Accountant.completeCheckout(context);
         }
     }
