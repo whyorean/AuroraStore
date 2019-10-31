@@ -23,6 +23,7 @@ import com.aurora.store.activity.SettingsActivity;
 import com.aurora.store.utility.ContextUtil;
 import com.aurora.store.utility.PathUtil;
 import com.aurora.store.utility.PrefUtil;
+import com.aurora.store.utility.Util;
 
 import java.io.File;
 import java.io.IOException;
@@ -70,6 +71,7 @@ public class DownloaderFragment extends PreferenceFragmentCompat implements Shar
         assert junkPreference != null;
         junkPreference.setEnabled(true);
         junkPreference.setOnPreferenceClickListener(preference -> {
+            Util.clearCache(context);
             File junkDir = new File(PathUtil.getRootApkPath(context));
             for (File file : junkDir.listFiles())
                 file.delete();
