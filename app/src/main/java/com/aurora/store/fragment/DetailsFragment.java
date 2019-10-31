@@ -172,7 +172,8 @@ public class DetailsFragment extends BaseFragment {
     public void drawButtons() {
         if (PackageUtil.isInstalled(context, app))
             app.setInstalled(true);
-        actionButton.draw();
+        if (actionButton != null)
+            actionButton.draw();
     }
 
     @Override
