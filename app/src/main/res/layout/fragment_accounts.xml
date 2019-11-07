@@ -98,59 +98,12 @@
                 </LinearLayout>
             </ViewSwitcher>
 
-            <!--Account Type-->
-            <RelativeLayout
-                android:id="@+id/acc_type"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/view_switcher_top"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="@dimen/margin_small"
-                android:gravity="center_horizontal">
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/user_account_type"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="@dimen/margin_small"
-                    android:gravity="center_vertical"
-                    android:text="@string/account_switch"
-                    android:textAppearance="@style/TextAppearance.Aurora.SubTitle" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/user_account_type"
-                    android:layout_marginTop="@dimen/margin_xsmall"
-                    android:gravity="center_horizontal"
-                    android:paddingStart="@dimen/margin_normal"
-                    android:paddingEnd="@dimen/margin_normal">
-
-                    <com.google.android.material.chip.Chip
-                        android:id="@+id/chip_google"
-                        style="@style/Widget.MaterialComponents.Chip.Info"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="@dimen/margin_xsmall"
-                        android:text="@string/account_google" />
-
-                    <com.google.android.material.chip.Chip
-                        android:id="@+id/chip_dummy"
-                        style="@style/Widget.MaterialComponents.Chip.Info"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/margin_xsmall"
-                        android:text="@string/account_dummy" />
-
-                </LinearLayout>
-            </RelativeLayout>
 
             <ViewSwitcher
                 android:id="@+id/view_switcher_bottom"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/acc_type">
+                android:layout_below="@id/view_switcher_top">
 
                 <LinearLayout
                     android:id="@+id/login"

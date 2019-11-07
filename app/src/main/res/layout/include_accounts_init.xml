@@ -23,12 +23,12 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <ImageView
+    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/logo"
-        android:layout_width="96dp"
-        android:layout_height="96dp"
+        android:layout_width="@dimen/icon_size_big"
+        android:layout_height="@dimen/icon_size_big"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/margin_normal"
+        android:layout_marginTop="@dimen/margin_xlarge"
         android:src="@drawable/ic_account_alt" />
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -49,7 +49,6 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/margin_small"
         android:layout_marginBottom="@dimen/margin_normal"
-        android:gravity="center_vertical"
         android:text="@string/account_prompt_login"
         android:textAppearance="@style/TextAppearance.Aurora.Body"
         android:textSize="14sp" />

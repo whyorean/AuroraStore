@@ -5,6 +5,9 @@
     <string name="account_google">"Google Account"</string>
     <string name="account_logout">"Log out from Aurora?"</string>
     <string name="account_prompt_login">"Please login to continue"</string>
+    <string name="account_email">Email</string>
+    <string name="account_password">Password</string>
+    <string name="account_save_password">Save password</string>
     <string name="account_switch">"Switch account"</string>
     <string name="action_accounts">"Accounts"</string>
     <string name="action_ask">"Ask"</string>

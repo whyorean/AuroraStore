@@ -64,7 +64,7 @@ public class Beta extends AbstractHelper {
     @BindView(R.id.beta_delete_button)
     Button beta_delete_button;
 
-    private CompositeDisposable mDisposable = new CompositeDisposable();
+    private CompositeDisposable disposable = new CompositeDisposable();
 
     public Beta(DetailsFragment fragment, App app) {
         super(fragment, app);
@@ -73,14 +73,15 @@ public class Beta extends AbstractHelper {
     @Override
     public void draw() {
         ButterKnife.bind(this, view);
-        if (Accountant.isDummy(context) && app.isTestingProgramAvailable() && app.isTestingProgramOptedIn()) {
-            mDisposable.add(Observable.fromCallable(() -> new BetaFeedbackToggleTask(context).toggle(app))
+        if (app.isTestingProgramAvailable() && app.isTestingProgramOptedIn()) {
+            disposable.add(Observable.fromCallable(() -> new BetaFeedbackToggleTask(context).toggle(app))
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe());
             return;
         }
-        if (!app.isInstalled() || !app.isTestingProgramAvailable() || Accountant.isDummy(context)) {
+
+        if (!app.isInstalled() || !app.isTestingProgramAvailable()) {
             return;
         }
 
@@ -101,7 +102,7 @@ public class Beta extends AbstractHelper {
         beta_card.setVisibility(View.VISIBLE);
         beta_feedback.setVisibility(app.isTestingProgramOptedIn() ? View.VISIBLE : View.GONE);
         beta_subscribe_button.setOnClickListener(new BetaOnClickListener(txt_beta_message, app));
-        beta_submit_button.setOnClickListener(v -> mDisposable.add(Observable.fromCallable(() ->
+        beta_submit_button.setOnClickListener(v -> disposable.add(Observable.fromCallable(() ->
                 new BetaFeedbackSubmitTask(context).deleteFeedback(app.getPackageName(), editText.getText().toString()))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -109,7 +110,7 @@ public class Beta extends AbstractHelper {
                     beta_delete_button.setVisibility(View.VISIBLE);
                     beta_delete_button.setEnabled(true);
                 })));
-        beta_delete_button.setOnClickListener(v -> mDisposable.add(Observable.fromCallable(() ->
+        beta_delete_button.setOnClickListener(v -> disposable.add(Observable.fromCallable(() ->
                 new BetaFeedbackDeleteTask(context).deleteFeedback(app.getPackageName()))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

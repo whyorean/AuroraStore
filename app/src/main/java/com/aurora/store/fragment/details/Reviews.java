@@ -140,7 +140,7 @@ public class Reviews extends AbstractHelper {
     }
 
     private boolean isReviewable(App app) {
-        return app.isInstalled() && Accountant.isGoogle(context) && !app.isTestingProgramOptedIn();
+        return app.isInstalled() && !app.isTestingProgramOptedIn();
     }
 
     private void fillUserReview(Review review) {

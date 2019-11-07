@@ -65,14 +65,7 @@ public class UpdatableAppsTask extends AllAppsTask {
     }
 
     public List<App> getAppsFromPlayStore(List<String> packageNames) throws Exception {
-        final List<App> appsFromPlayStore = new ArrayList<>();
-        boolean builtInAccount = Accountant.isDummy(context);
-        for (App app : getRemoteAppList(packageNames)) {
-            if (!builtInAccount || app.isFree()) {
-                appsFromPlayStore.add(app);
-            }
-        }
-        return appsFromPlayStore;
+        return new ArrayList<>(getRemoteAppList(packageNames));
     }
 
     private List<App> getRemoteAppList(List<String> packageNames) throws Exception {

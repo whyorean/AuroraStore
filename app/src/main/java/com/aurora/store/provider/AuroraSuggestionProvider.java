@@ -86,25 +86,10 @@ public class AuroraSuggestionProvider extends ContentProvider {
         });
         try {
             fill(cursor, uri);
-        } catch (GooglePlayException e) {
-            if (e.getCode() == 401 && PrefUtil.getBoolean(getContext(), Accountant.DUMMY_ACCOUNT)) {
-                refreshAndRetry(cursor, uri);
-            } else {
-                Log.e(e.getMessage());
-            }
-        } catch (Throwable e) {
+        } catch (Exception e) {
             Log.e(e.getMessage());
         }
         return cursor;
-    }
-
-    private void refreshAndRetry(MatrixCursor cursor, Uri uri) {
-        try {
-            PlayStoreApiAuthenticator.refreshToken(getContext());
-            fill(cursor, uri);
-        } catch (Throwable e) {
-            Log.e(e.getMessage());
-        }
     }
 
     private void fill(MatrixCursor cursor, Uri uri) throws Exception {
