@@ -84,7 +84,11 @@ public class SearchResultParser {
                 break;
             }
             case 45: {
-                items.addAll(doc.getChildList());
+                for (DocV2 docV2 : doc.getChildList()) {
+                    if (docV2.getDocType() == 1) {
+                        items.add(docV2);
+                    }
+                }
                 nextPageUrl = null;
                 if (doc.hasContainerMetadata()) {
                     nextPageUrl = doc.getContainerMetadata().getNextPageUrl();
