@@ -60,50 +60,12 @@ public class PlayStoreApiAuthenticator {
         return api;
     }
 
-    public static boolean login(Context context) throws IOException {
-        LoginInfo loginInfo = new LoginInfo();
-        GooglePlayAPI api = ApiBuilderUtil.build(context, loginInfo);
-        Util
-                .getPrefs(context.getApplicationContext()).edit()
-                .putBoolean(Accountant.DUMMY_ACCOUNT, true)
-                .putString(Accountant.ACCOUNT_EMAIL, loginInfo.getEmail())
-                .putString(Accountant.LAST_USED_TOKEN_DISPENSER, loginInfo.getTokenDispenserUrl())
-                .apply();
-        return api != null;
-    }
-
     public static boolean login(Context context, String email, String password) throws IOException {
         LoginInfo loginInfo = new LoginInfo();
         loginInfo.setEmail(email);
         loginInfo.setPassword(password);
-        GooglePlayAPI api = ApiBuilderUtil.build(context, loginInfo);
-        PrefUtil.remove(context, Accountant.DUMMY_ACCOUNT);
+        GooglePlayAPI api = ApiBuilderUtil.build2(context, loginInfo);
         return api != null;
-    }
-
-    public static boolean refreshToken(Context context) throws IOException {
-        PrefUtil.remove(context, Accountant.AUTH_TOKEN);
-        String email = PrefUtil.getString(context, Accountant.ACCOUNT_EMAIL);
-        if (TextUtils.isEmpty(email)) {
-            throw new CredentialsEmptyException();
-        }
-        LoginInfo loginInfo = new LoginInfo();
-        loginInfo.setEmail(email);
-        loginInfo.setTokenDispenserUrl(PrefUtil.getString(context, Accountant.LAST_USED_TOKEN_DISPENSER));
-        GooglePlayAPI api = ApiBuilderUtil.build(context, loginInfo);
-        PrefUtil.putBoolean(context, Accountant.DUMMY_ACCOUNT, true);
-        PrefUtil.putString(context, Accountant.LAST_USED_TOKEN_DISPENSER, loginInfo.getTokenDispenserUrl());
-        return api != null;
-    }
-
-    public static void logout(Context context) {
-        PrefUtil.remove(context, Accountant.ACCOUNT_EMAIL);
-        PrefUtil.remove(context, Accountant.GSF_ID);
-        PrefUtil.remove(context, Accountant.AUTH_TOKEN);
-        PrefUtil.remove(context, (Accountant.LAST_USED_TOKEN_DISPENSER));
-        PrefUtil.remove(context, Accountant.DUMMY_ACCOUNT);
-        api = null;
-        instance = null;
     }
 
     public static void destroyInstance() {

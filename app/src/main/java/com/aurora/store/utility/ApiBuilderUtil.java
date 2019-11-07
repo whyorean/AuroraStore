@@ -29,8 +29,6 @@ import java.util.Locale;
 
 public class ApiBuilderUtil {
 
-    private static int RETRIES = 5;
-
     public static GooglePlayAPI buildFromPreferences(Context context) throws IOException {
         SharedPreferences prefs = Util.getPrefs(context);
         String email = prefs.getString(Accountant.ACCOUNT_EMAIL, "");
@@ -39,66 +37,26 @@ public class ApiBuilderUtil {
         }
         LoginInfo loginInfo = new LoginInfo();
         loginInfo.setEmail(email);
-        return build(context, loginInfo);
+        return build2(context, loginInfo);
     }
 
-    public static GooglePlayAPI build(Context context, LoginInfo loginInfo) throws IOException {
-        GooglePlayAPI api = build(context, loginInfo, RETRIES);
-        if (api != null) {
-            loginInfo.setGsfId(api.getGsfId());
-            loginInfo.setToken(api.getToken());
-            loginInfo.setDfeCookie(api.getDfeCookie());
-            loginInfo.setDeviceConfigToken(api.getDeviceConfigToken());
-            loginInfo.setDeviceCheckinConsistencyToken(api.getDeviceCheckinConsistencyToken());
-            saveLoginInfo(context, loginInfo);
-        }
-        return api;
-    }
-
-    public static GooglePlayAPI build(Context context, LoginInfo loginInfo, int retries) throws IOException {
-        int tried = 0;
-        int dispenserNum = 0;
-        while (dispenserNum < retries) {
-            try {
-                PlayStoreApiBuilder builder = getBuilder(context, loginInfo);
-                GooglePlayAPI api = builder.build();
-                loginInfo.setEmail(builder.getEmail());
-                return api;
-            } catch (ApiBuilderException e) {
-                throw new RuntimeException(e);
-            } catch (AuthException | TokenDispenserException e) {
-                if (Util.noNetwork(e.getCause())) {
-                    ContextUtil.runOnUiThread(() -> Toast.makeText(context,
-                            context.getString(R.string.error_no_network),
-                            Toast.LENGTH_LONG).show());
-                    throw (IOException) e.getCause();
-                }
-                if (loginInfo.appProvidedEmail()) {
-                    loginInfo.setTokenDispenserUrl(TokenDispenserMirrors.get(context));
-                    loginInfo.setEmail(null);
-                    loginInfo.setGsfId(null);
-                }
-                tried++;
-                if (tried >= retries) {
-                    dispenserNum++;
-                    tried = 0;
-                    if (Util.isCustomTokenizerEnabled(context))
-                        throw new TokenizerException("Exceeded max retries", e.getCause());
-                    else
-                        TokenDispenserMirrors.setNextDispenser(context, dispenserNum);
-                }
-
-                if (dispenserNum >= 4) {
-                    throw new TokenizerException("Exceeded max retries", e.getCause());
-                }
-
-                if (e instanceof AuthException && ((AuthException) e).getTwoFactorUrl() != null)
-                    throw new TwoFactorAuthException("2FA Enabled");
-                Log.i("Anonymous Login Failed @ %s, attempt %d",
-                        loginInfo.getTokenDispenserUrl(), tried);
+    public static GooglePlayAPI build2(Context context, LoginInfo loginInfo) throws IOException {
+        try {
+            PlayStoreApiBuilder builder = getBuilder(context, loginInfo);
+            GooglePlayAPI api = builder.build();
+            loginInfo.setEmail(builder.getEmail());
+            if (api != null) {
+                loginInfo.setGsfId(api.getGsfId());
+                loginInfo.setToken(api.getToken());
+                loginInfo.setDfeCookie(api.getDfeCookie());
+                loginInfo.setDeviceConfigToken(api.getDeviceConfigToken());
+                loginInfo.setDeviceCheckinConsistencyToken(api.getDeviceCheckinConsistencyToken());
+                saveLoginInfo(context, loginInfo);
             }
+            return api;
+        } catch (ApiBuilderException e) {
+            throw new RuntimeException(e);
         }
-        return null;
     }
 
     private static PlayStoreApiBuilder getBuilder(Context context, LoginInfo loginInfo) {
@@ -107,7 +65,6 @@ public class ApiBuilderUtil {
         loginInfo.setLocale(TextUtils.isEmpty(locale) ? Locale.getDefault().toString() : locale);
         loginInfo.setGsfId(prefs.getString(Accountant.GSF_ID, ""));
         loginInfo.setToken(prefs.getString(Accountant.AUTH_TOKEN, ""));
-        loginInfo.setTokenDispenserUrl(TokenDispenserMirrors.get(context));
 
         return new PlayStoreApiBuilder()
                 .setHttpClient(new NativeHttpClientAdapter(context))
@@ -117,7 +74,6 @@ public class ApiBuilderUtil {
                 .setPassword(loginInfo.getPassword())
                 .setGsfId(loginInfo.getGsfId())
                 .setToken(loginInfo.getToken())
-                .setTokenDispenserUrl(loginInfo.getTokenDispenserUrl())
                 .setDeviceCheckinConsistencyToken(loginInfo.getDeviceCheckinConsistencyToken())
                 .setDeviceConfigToken(loginInfo.getDeviceConfigToken())
                 .setDfeCookie(loginInfo.getDfeCookie());
@@ -144,7 +100,6 @@ public class ApiBuilderUtil {
                 .putString(Accountant.ACCOUNT_EMAIL, loginInfo.getEmail())
                 .putString(Accountant.GSF_ID, loginInfo.getGsfId())
                 .putString(Accountant.AUTH_TOKEN, loginInfo.getToken())
-                .putString(Accountant.LAST_USED_TOKEN_DISPENSER, loginInfo.getTokenDispenserUrl())
                 .apply();
     }
 }

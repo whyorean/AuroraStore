@@ -349,6 +349,14 @@ public class Util {
         return getPrefs(context).getBoolean(Constants.PREFERENCE_TAB_MODE, false);
     }
 
+    public static boolean isPasswordSaved(Context context) {
+        return getPrefs(context).getBoolean(Constants.PREFERENCE_ACCOUNTS_PASSWORD_SWITCH, false);
+    }
+
+    public static void setPasswordSaved(Context context, boolean value) {
+        PrefUtil.putBoolean(context, Constants.PREFERENCE_ACCOUNTS_PASSWORD_SWITCH, value);
+    }
+
     public static boolean isRootInstallEnabled(Context context) {
         String installMethod = getPrefs(context).getString(Constants.PREFERENCE_INSTALLATION_METHOD, "0");
         return installMethod.equals("1");

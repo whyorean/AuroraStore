@@ -179,7 +179,7 @@ public class BlacklistFragment extends BaseFragment implements BlacklistAdapter.
     private void updateCount() {
         int count = blacklistAdapter.getSelectedCount();
         String txtCount = new StringBuilder()
-                .append(getResources().getString(R.string.list_blacklist))
+                .append(context.getResources().getString(R.string.list_blacklist))
                 .append(" : ")
                 .append(count).toString();
         txtBlacklist.setText(count > 0 ? txtCount : getString(R.string.list_blacklist_none));

@@ -22,7 +22,6 @@ package com.aurora.store.fragment;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.ColorStateList;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -48,7 +47,6 @@ import com.aurora.store.api.PlayStoreApiAuthenticator;
 import com.aurora.store.events.Event;
 import com.aurora.store.events.Events;
 import com.aurora.store.events.RxBus;
-import com.aurora.store.exception.TokenizerException;
 import com.aurora.store.exception.TwoFactorAuthException;
 import com.aurora.store.exception.UnknownException;
 import com.aurora.store.task.UserProfiler;
@@ -56,15 +54,19 @@ import com.aurora.store.utility.Accountant;
 import com.aurora.store.utility.ContextUtil;
 import com.aurora.store.utility.Log;
 import com.aurora.store.utility.PrefUtil;
-import com.aurora.store.utility.ViewUtil;
-import com.dragons.aurora.playstoreapiv2.ApiBuilderException;
+import com.aurora.store.utility.Util;
+import com.dragons.aurora.playstoreapiv2.AuthException;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 import com.dragons.aurora.playstoreapiv2.Image;
+import com.google.android.material.checkbox.MaterialCheckBox;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.textfield.TextInputEditText;
 
+import org.apache.commons.lang3.StringUtils;
 import org.jetbrains.annotations.NotNull;
+
+import java.net.UnknownHostException;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -86,8 +88,6 @@ public class AccountsFragment extends Fragment {
     ViewSwitcher mViewSwitcherTop;
     @BindView(R.id.view_switcher_bottom)
     ViewSwitcher mViewSwitcherBottom;
-    @BindView(R.id.view_switcher_login)
-    ViewSwitcher mViewSwitcherLogin;
     @BindView(R.id.init)
     LinearLayout initLayout;
     @BindView(R.id.info)
@@ -98,8 +98,6 @@ public class AccountsFragment extends Fragment {
     LinearLayout logoutLayout;
     @BindView(R.id.login_google)
     RelativeLayout loginGoogle;
-    @BindView(R.id.login_dummy)
-    RelativeLayout loginDummy;
     @BindView(R.id.avatar)
     ImageView imgAvatar;
     @BindView(R.id.user_name)
@@ -110,16 +108,10 @@ public class AccountsFragment extends Fragment {
     TextInputEditText txtInputEmail;
     @BindView(R.id.txt_input_password)
     TextInputEditText txtInputPassword;
-    @BindView(R.id.chip_google)
-    Chip chipGoogle;
-    @BindView(R.id.chip_dummy)
-    Chip chipDummy;
     @BindView(R.id.progress_bar)
     ProgressBar progressBar;
     @BindView(R.id.btn_positive)
     Button btnPositive;
-    @BindView(R.id.btn_positive_alt)
-    Button btnPositiveAlt;
     @BindView(R.id.btn_negative)
     Button btnNegative;
     @BindView(R.id.chip_tos)
@@ -128,11 +120,11 @@ public class AccountsFragment extends Fragment {
     Chip chipDisclaimer;
     @BindView(R.id.chip_license)
     Chip chipLicense;
-    int colorAccent;
-    int colorPrimary;
+    @BindView(R.id.check_save_password)
+    MaterialCheckBox materialCheckBox;
+
     private Context context;
     private CompositeDisposable disposable = new CompositeDisposable();
-    private boolean isDummy = true;
     private boolean isLoggedIn = false;
 
     @Override
@@ -152,8 +144,6 @@ public class AccountsFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         init();
-        colorAccent = ViewUtil.getStyledAttribute(context, R.attr.colorAccent);
-        colorPrimary = ViewUtil.getStyledAttribute(context, android.R.attr.colorForeground);
     }
 
     @Override
@@ -164,25 +154,34 @@ public class AccountsFragment extends Fragment {
 
     private void init() {
         isLoggedIn = Accountant.isLoggedIn(context);
-        isDummy = Accountant.isDummy(context);
         progressBar.setVisibility(View.INVISIBLE);
         setupView();
+        setupCheckbox();
         setupChips();
-        setupAccountType();
         setupActions();
     }
 
     private void setupView() {
         if (isLoggedIn) {
-            if (isDummy)
-                loadDummyData();
-            else
-                loadGoogleData();
+            loadGoogleData();
         }
         switchTopViews(isLoggedIn);
-        switchLoginViews(!isDummy);
         switchBottomViews(isLoggedIn);
         switchButtonState(isLoggedIn);
+    }
+
+    private void setupCheckbox() {
+        boolean isChecked = Util.isPasswordSaved(context);
+
+        if (isChecked) {
+            txtInputEmail.setText(Accountant.getEmail(context));
+            txtInputPassword.setText(Accountant.getPassword(context));
+        }
+
+        materialCheckBox.setChecked(isChecked);
+        materialCheckBox.setOnCheckedChangeListener((buttonView, checked) -> {
+            Util.setPasswordSaved(context, checked);
+        });
     }
 
     private void setupChips() {
@@ -197,36 +196,9 @@ public class AccountsFragment extends Fragment {
         });
     }
 
-    private void setupAccountType() {
-        chipGoogle.setEnabled(!isLoggedIn);
-        chipDummy.setEnabled(!isLoggedIn);
-    }
-
     private void setupActions() {
         btnPositive.setOnClickListener(loginListener());
-        btnPositiveAlt.setOnClickListener(loginListener());
         btnNegative.setOnClickListener(logoutListener());
-
-        chipGoogle.setOnClickListener(v -> {
-            isDummy = false;
-            chipGoogle.setChipStrokeColor(ColorStateList.valueOf(colorAccent));
-            chipDummy.setChipStrokeColor(ColorStateList.valueOf(colorPrimary));
-            if (!Accountant.isLoggedIn(context))
-                switchLoginViews(true);
-        });
-        chipDummy.setOnClickListener(v -> {
-            isDummy = true;
-            chipDummy.setChipStrokeColor(ColorStateList.valueOf(colorAccent));
-            chipGoogle.setChipStrokeColor(ColorStateList.valueOf(colorPrimary));
-            if (!Accountant.isLoggedIn(context))
-                switchLoginViews(false);
-        });
-    }
-
-    private void loadDummyData() {
-        imgAvatar.setImageDrawable(context.getDrawable(R.drawable.ic_avatar_boy));
-        txtName.setText(Accountant.getUserName(context));
-        txtMail.setText(Accountant.getEmail(context));
     }
 
     private void loadGoogleData() {
@@ -253,18 +225,9 @@ public class AccountsFragment extends Fragment {
             mViewSwitcherBottom.showPrevious();
     }
 
-    private void switchLoginViews(boolean showGoogle) {
-        if (mViewSwitcherLogin.getCurrentView() == loginGoogle && !showGoogle)
-            mViewSwitcherLogin.showNext();
-        else if (mViewSwitcherLogin.getCurrentView() == loginDummy && showGoogle)
-            mViewSwitcherLogin.showPrevious();
-    }
-
     private void switchButtonState(boolean logging) {
         btnPositive.setText(logging ? R.string.action_logging_in : R.string.action_login);
-        btnPositiveAlt.setText(logging ? R.string.action_logging_in : R.string.action_login);
         btnPositive.setEnabled(!logging);
-        btnPositiveAlt.setEnabled(!logging);
     }
 
     private View.OnClickListener logoutListener() {
@@ -276,52 +239,17 @@ public class AccountsFragment extends Fragment {
 
     private View.OnClickListener loginListener() {
         return v -> {
-            if (isDummy) {
-                logInWithDummy();
-            } else {
-                final String email = txtInputEmail.getText().toString();
-                final String password = txtInputPassword.getText().toString();
-                if (email.isEmpty())
-                    txtInputEmail.setError("?");
-                if (password.isEmpty())
-                    txtInputPassword.setError("?");
-                if (!email.isEmpty() && !password.isEmpty())
-                    logInWithGoogle(email, password);
-            }
+            final String email = txtInputEmail.getText() != null
+                    ? txtInputEmail.getText().toString() : StringUtils.EMPTY;
+            final String password = txtInputPassword.getText() != null
+                    ? txtInputPassword.getText().toString() : StringUtils.EMPTY;
+            if (email.isEmpty())
+                txtInputEmail.setError("?");
+            if (password.isEmpty())
+                txtInputPassword.setError("?");
+            if (!email.isEmpty() && !password.isEmpty())
+                logInWithGoogle(email, password);
         };
-    }
-
-    private void logInWithDummy() {
-        switchButtonState(true);
-        disposable.add(Observable.fromCallable(() ->
-                PlayStoreApiAuthenticator.login(context))
-                .subscribeOn(Schedulers.io())
-                .doOnSubscribe(sub -> progressBar.setVisibility(View.VISIBLE))
-                .observeOn(Schedulers.computation())
-                .subscribe((success) -> {
-                    if (success) {
-                        Log.i("Dummy Login Successful");
-                        RxBus.publish(new Event(Events.LOGGED_IN));
-                        runOnUiThread(() -> {
-                            Accountant.saveDummy(context);
-                            init();
-                            finishIntro();
-                        });
-                    } else {
-                        Log.e("Dummy Login Failed Permanently");
-                        switchButtonState(false);
-                    }
-                }, err -> {
-                    String error = err.getMessage();
-                    if (err instanceof ApiBuilderException || err instanceof NullPointerException) {
-                        error = "Invalid token dispenser url is provided";
-                    } else if (err instanceof TokenizerException) {
-                        error = "Anonymous login failed,try again later!";
-                    }
-                    ContextUtil.toastLong(context, error);
-                    ContextUtil.runOnUiThread(this::init);
-                    Log.e(err.getMessage());
-                }));
     }
 
     private void logInWithGoogle(String email, String password) {
@@ -337,7 +265,9 @@ public class AccountsFragment extends Fragment {
                         Log.i("Google Login Successful");
                         RxBus.publish(new Event(Events.LOGGED_IN));
                         runOnUiThread(() -> {
-                            Accountant.saveGoogle(context);
+                            Accountant.setLoggedIn(context);
+                            PrefUtil.putString(context, Accountant.ACCOUNT_EMAIL, email);
+                            PrefUtil.putString(context, Accountant.ACCOUNT_PASSWORD, password);
                             getUserInfo();
                             finishIntro();
                         });
@@ -346,14 +276,20 @@ public class AccountsFragment extends Fragment {
                         switchButtonState(false);
                     }
                 }, err -> {
-                    Log.e("Google Login failed : %s", err.getMessage());
                     ContextUtil.runOnUiThread(() -> switchButtonState(false));
-                    if (err instanceof TwoFactorAuthException) {
+                    if (err instanceof UnknownHostException) {
+                        ContextUtil.toastLong(context, context.getString(R.string.error_no_network));
+                    } else if (err instanceof TwoFactorAuthException) {
                         show2FADialog();
                     } else if (err instanceof UnknownException) {
                         ContextUtil.toastLong(context, getString(R.string.toast_unknown_reason));
+                    } else if (err instanceof AuthException) {
+                        int code = ((AuthException) err).getCode();
+                        if (code == 403) {
+                            txtInputPassword.setError("Check your password");
+                        }
                     } else
-                        txtInputPassword.setError("Check your password");
+                        Log.e("Something went wrong -> err code : %s", err.getMessage());
                 }));
     }
 
@@ -391,7 +327,7 @@ public class AccountsFragment extends Fragment {
     }
 
     private void show2FADialog() {
-        MaterialAlertDialogBuilder mBuilder = new MaterialAlertDialogBuilder(context)
+        MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context)
                 .setTitle(getString(R.string.dialog_2FA_title))
                 .setMessage(getString(R.string.dialog_2FA_desc))
                 .setPositiveButton(getString(R.string.dialog_2FA_positive), (dialog, which) -> {
@@ -400,7 +336,7 @@ public class AccountsFragment extends Fragment {
                 .setNegativeButton(getString(R.string.action_later), (dialog, which) -> {
                     dialog.dismiss();
                 });
-        mBuilder.create();
-        mBuilder.show();
+        builder.create();
+        builder.show();
     }
 }

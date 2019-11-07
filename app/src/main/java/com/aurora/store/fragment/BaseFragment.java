@@ -32,8 +32,6 @@ import androidx.annotation.NonNull;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.fragment.app.Fragment;
 
-import com.aurora.store.AnonymousLoginService;
-import com.aurora.store.AnonymousRefreshService;
 import com.aurora.store.ErrorType;
 import com.aurora.store.R;
 import com.aurora.store.activity.AccountsActivity;
@@ -184,10 +182,7 @@ public abstract class BaseFragment extends Fragment {
                 RxBus.publish(new Event(Events.LOGGED_IN));
                 return;
             }
-            if (Accountant.isGoogle(context))
-                context.startActivity(new Intent(context, AccountsActivity.class));
-            else
-                logInWithDummy();
+            context.startActivity(new Intent(context, AccountsActivity.class));
         };
     }
 
@@ -246,33 +241,16 @@ public abstract class BaseFragment extends Fragment {
         if (e instanceof CredentialsEmptyException || e instanceof InvalidApiException) {
             Accountant.completeCheckout(context);
             RxBus.publish(new Event(Events.LOGGED_OUT));
-        } else if (e.getCode() == 401 && Accountant.isDummy(context)) {
+        } else if (e.getCode() == 401) {
             RxBus.publish(new Event(Events.TOKEN_EXPIRED));
-            refreshToken();
-        } else if (e.getCode() == 429 && Accountant.isDummy(context)) {
+            //TODO:Implement Google account refresh
+        } else if (e.getCode() == 429) {
             ContextUtil.toastLong(context, context.getString(R.string.toast_rate_limit));
             Accountant.completeCheckout(context);
-            logInWithDummy();
+            //TODO:Implement auto re-login
         } else {
             ContextUtil.toast(context, R.string.error_session_expired);
             Accountant.completeCheckout(context);
         }
-    }
-
-    /*
-     * Anonymous accounts handling methods
-     *
-     */
-
-    private void logInWithDummy() {
-        Intent intent = new Intent(context, AnonymousLoginService.class);
-        if (!AnonymousLoginService.isServiceRunning())
-            context.startService(intent);
-    }
-
-    private void refreshToken() {
-        Intent intent = new Intent(context, AnonymousRefreshService.class);
-        if (!AnonymousRefreshService.isServiceRunning())
-            context.startService(intent);
     }
 }
