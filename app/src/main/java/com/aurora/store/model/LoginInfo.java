@@ -23,23 +23,26 @@
 
 package com.aurora.store.model;
 
+import android.content.Context;
 import android.text.TextUtils;
 
-import org.jetbrains.annotations.NotNull;
+import com.aurora.store.utility.Accountant;
+import com.aurora.store.utility.PrefUtil;
+import com.google.gson.Gson;
 
 import java.util.Locale;
 
 import lombok.Data;
 
 @Data
-public class LoginInfo implements Comparable<LoginInfo> {
+public class LoginInfo {
 
     private String email;
     private String userName;
     private String userPicUrl;
-    private String password;
+    private String aasToken;
     private String gsfId;
-    private String token;
+    private String authToken;
     private String locale;
     private String tokenDispenserUrl;
     private String deviceDefinitionName;
@@ -48,63 +51,25 @@ public class LoginInfo implements Comparable<LoginInfo> {
     private String deviceConfigToken;
     private String dfeCookie;
 
+    public static void save(Context context, LoginInfo loginInfo) {
+        Gson gson = new Gson();
+        String loginString = gson.toJson(loginInfo, LoginInfo.class);
+        PrefUtil.putBoolean(context, Accountant.LOGGED_IN, true);
+        PrefUtil.putString(context, Accountant.DATA, loginString);
+    }
+
+    public static LoginInfo getSavedInstance(Context context) {
+        Gson gson = new Gson();
+        String loginString = PrefUtil.getString(context, Accountant.DATA);
+        LoginInfo loginInfo = gson.fromJson(loginString, LoginInfo.class);
+        return loginInfo == null ? new LoginInfo() : loginInfo;
+    }
+
+    public static void removeSavedInstance(Context context) {
+        PrefUtil.putString(context, Accountant.DATA, "");
+    }
+
     public Locale getLocale() {
         return TextUtils.isEmpty(locale) ? Locale.getDefault() : new Locale(locale);
-    }
-
-    public boolean appProvidedEmail() {
-        return !TextUtils.isEmpty(tokenDispenserUrl);
-    }
-
-    private boolean isLoggedIn() {
-        return !TextUtils.isEmpty(email) && !TextUtils.isEmpty(gsfId);
-    }
-
-    public void clear() {
-        email = null;
-        userName = null;
-        userPicUrl = null;
-        password = null;
-        gsfId = null;
-        token = null;
-        locale = null;
-        tokenDispenserUrl = null;
-        deviceDefinitionName = null;
-        deviceDefinitionDisplayName = null;
-        deviceCheckinConsistencyToken = null;
-        deviceConfigToken = null;
-        dfeCookie = null;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        return obj instanceof LoginInfo
-                && isLoggedIn()
-                && ((LoginInfo) obj).isLoggedIn()
-                && !TextUtils.isEmpty(deviceDefinitionName)
-                && !TextUtils.isEmpty(((LoginInfo) obj).getDeviceDefinitionName())
-                && deviceDefinitionName.equals(((LoginInfo) obj).getDeviceDefinitionName())
-                ;
-    }
-
-    @Override
-    public int hashCode() {
-        return TextUtils.isEmpty(email)
-                ? 0
-                : ((appProvidedEmail() ? "" : email) + "|" + deviceDefinitionName).hashCode();
-    }
-
-    @Override
-    public int compareTo(@NotNull LoginInfo loginInfo) {
-        if (TextUtils.isEmpty(getUserName())
-                || TextUtils.isEmpty(loginInfo.getUserName())
-                || TextUtils.isEmpty(getDeviceDefinitionName())
-                || TextUtils.isEmpty(loginInfo.getDeviceDefinitionName())) {
-            return 0;
-        }
-        int result = getUserName().compareTo(loginInfo.getUserName());
-        return result == 0
-                ? getDeviceDefinitionName().compareTo(loginInfo.getDeviceDefinitionName())
-                : result;
     }
 }

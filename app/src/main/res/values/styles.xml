@@ -20,6 +20,11 @@
 
 <resources>
 
+    <style name="LoginTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+
     <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="colorPrimary">@color/colorAccent</item>
         <item name="colorPrimaryDark">@color/colorBlack</item>

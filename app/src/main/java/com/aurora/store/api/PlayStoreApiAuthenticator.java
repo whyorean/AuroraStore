@@ -24,15 +24,9 @@
 package com.aurora.store.api;
 
 import android.content.Context;
-import android.text.TextUtils;
 
-import com.aurora.store.exception.CredentialsEmptyException;
-import com.aurora.store.exception.InvalidApiException;
 import com.aurora.store.model.LoginInfo;
-import com.aurora.store.utility.Accountant;
 import com.aurora.store.utility.ApiBuilderUtil;
-import com.aurora.store.utility.PrefUtil;
-import com.aurora.store.utility.Util;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 
 import java.io.IOException;
@@ -63,8 +57,8 @@ public class PlayStoreApiAuthenticator {
     public static boolean login(Context context, String email, String password) throws IOException {
         LoginInfo loginInfo = new LoginInfo();
         loginInfo.setEmail(email);
-        loginInfo.setPassword(password);
-        GooglePlayAPI api = ApiBuilderUtil.build2(context, loginInfo);
+        loginInfo.setAasToken(password);
+        GooglePlayAPI api = ApiBuilderUtil.buildApi(context, loginInfo);
         return api != null;
     }
 

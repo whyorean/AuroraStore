@@ -142,6 +142,9 @@
         <activity
             android:name=".activity.DeviceInfoActivity"
             android:configChanges="keyboardHidden|locale|orientation|fontScale" />
+        <activity
+            android:name=".activity.LoginActivity"
+            android:theme="@style/LoginTheme" />
 
         <provider
             android:name=".provider.AuroraSuggestionProvider"

@@ -102,13 +102,16 @@
             <ViewSwitcher
                 android:id="@+id/view_switcher_bottom"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_below="@id/view_switcher_top">
 
                 <LinearLayout
                     android:id="@+id/login"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:gravity="center">
+
 
                     <include layout="@layout/include_accounts_login" />
                 </LinearLayout>

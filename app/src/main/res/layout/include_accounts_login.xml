@@ -33,6 +33,7 @@
         android:layout_marginTop="@dimen/margin_normal"
         android:layout_marginEnd="@dimen/margin_xlarge"
         android:hint="@string/account_email"
+        android:visibility="gone"
         app:boxStrokeColor="?android:colorAccent"
         app:hintTextColor="?android:colorAccent">
 
@@ -55,6 +56,7 @@
         android:layout_marginTop="@dimen/margin_normal"
         android:layout_marginEnd="@dimen/margin_xlarge"
         android:hint="@string/account_password"
+        android:visibility="gone"
         app:boxStrokeColor="?android:colorAccent"
         app:hintTextColor="?android:colorAccent"
         app:passwordToggleEnabled="true">
@@ -76,7 +78,8 @@
         android:layout_marginStart="@dimen/margin_xlarge"
         android:layout_marginTop="@dimen/margin_normal"
         android:layout_marginEnd="@dimen/margin_xlarge"
-        android:text="@string/account_save_password" />
+        android:text="@string/account_save_password"
+        android:visibility="gone" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_positive"
