@@ -71,7 +71,7 @@ configurations.all {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'commons-io:commons-io:2.6'
-    implementation 'org.apache.maven:maven-artifact:3.2.1'
+    implementation 'org.apache.maven:maven-artifact:3.6.2'
     //UI-Libs
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.preference:preference:1.1.0'
@@ -80,31 +80,32 @@ dependencies {
     implementation 'androidx.palette:palette:1.0.0'
     //Utils
     implementation 'androidx.annotation:annotation:1.1.0'
-    implementation 'org.apache.commons:commons-text:1.4'
+    implementation 'org.apache.commons:commons-text:1.8'
     implementation 'com.scottyab:rootbeer-lib:0.0.7'
-    implementation 'com.google.code.gson:gson:2.8.5'
+    implementation 'com.google.code.gson:gson:2.8.6'
     compileOnly 'org.projectlombok:lombok:1.18.10'
     annotationProcessor 'org.projectlombok:lombok:1.18.10'
     //PlayStoreApi
-    implementation 'com.github.whyorean:playstore-api-v2:2.3'
+    //implementation 'com.github.whyorean:playstore-api-v2:2.3'
     //OkHTTP3
-    implementation 'com.squareup.okhttp3:okhttp:4.2.1'
-    implementation 'com.squareup.okhttp3:okhttp-urlconnection:4.2.1'
+    implementation 'com.squareup.okhttp3:okhttp:4.2.2'
+    implementation 'com.squareup.okhttp3:okhttp-urlconnection:4.2.2'
     //RX-Java2
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
-    implementation 'io.reactivex.rxjava2:rxjava:2.2.8'
-    implementation 'com.jakewharton.rxrelay2:rxrelay:2.1.0'
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.14'
+    implementation 'com.jakewharton.rxrelay2:rxrelay:2.1.1'
     //ButterKnife
     implementation 'com.jakewharton:butterknife:10.2.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.0'
     //Glide
-    implementation 'com.github.bumptech.glide:glide:4.9.0'
-    implementation "com.github.bumptech.glide:okhttp3-integration:4.9.0"
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
+    implementation 'com.github.bumptech.glide:glide:4.10.0'
+    implementation 'com.github.bumptech.glide:okhttp3-integration:4.10.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.10.0'
 
     //Fetch - Downloader
     implementation 'androidx.tonyodev.fetch2:xfetch2:3.1.4'
     implementation 'androidx.tonyodev.fetch2okhttp:xfetch2okhttp:3.1.4'
+    implementation files('libs/playstore-api-v2-2.3.jar')
 }
 
 repositories {

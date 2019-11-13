@@ -307,6 +307,8 @@ Keep in mind that downloading arbitrary versions of apps is not supported by the
     <string name="toast_loading_apps">"Loading more apps.."</string>
     <string name="dialog_2FA_title">"2-Factor Authentication"</string>
     <string name="dialog_2FA_desc">"You seem to have enabled 2FA, please generate an app password and use the new generated password to login"</string>
+    <string name="dialog_captcha_title">"Captcha required"</string>
+    <string name="dialog_captcha_desc">"You need to enter captcha to login."</string>
     <string name="dialog_2FA_positive">"Create password"</string>
     <string name="dialog_purchase_title">"App Purchase"</string>
     <string name="dialog_purchase_desc">"You need to purchase this app first. Aurora Store does not currently support in-app purchases, you will be redirected to web page for the purchase."</string>

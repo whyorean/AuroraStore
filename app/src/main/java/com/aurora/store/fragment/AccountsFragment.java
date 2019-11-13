@@ -47,8 +47,11 @@ import com.aurora.store.api.PlayStoreApiAuthenticator;
 import com.aurora.store.events.Event;
 import com.aurora.store.events.Events;
 import com.aurora.store.events.RxBus;
+import com.aurora.store.exception.CaptchaException;
 import com.aurora.store.exception.TwoFactorAuthException;
 import com.aurora.store.exception.UnknownException;
+import com.aurora.store.model.LoginInfo;
+import com.aurora.store.sheet.CaptchaSheet;
 import com.aurora.store.task.UserProfiler;
 import com.aurora.store.utility.Accountant;
 import com.aurora.store.utility.ContextUtil;
@@ -70,6 +73,7 @@ import java.net.UnknownHostException;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
@@ -150,6 +154,15 @@ public class AccountsFragment extends Fragment {
     public void onDestroy() {
         super.onDestroy();
         disposable.clear();
+    }
+
+    @OnClick(R.id.btn_unlock_captcha)
+    void showUnlockCaptcha(){
+        try {
+            context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.google.com/accounts/DisplayUnlockCaptcha")));
+        } catch (Exception e) {
+            Log.e("No WebView found !");
+        }
     }
 
     private void init() {
@@ -247,15 +260,19 @@ public class AccountsFragment extends Fragment {
                 txtInputEmail.setError("?");
             if (password.isEmpty())
                 txtInputPassword.setError("?");
-            if (!email.isEmpty() && !password.isEmpty())
-                logInWithGoogle(email, password);
+            if (!email.isEmpty() && !password.isEmpty()) {
+                LoginInfo loginInfo = new LoginInfo();
+                loginInfo.setEmail(email);
+                loginInfo.setPassword(password);
+                logInWithGoogle(loginInfo);
+            }
         };
     }
 
-    private void logInWithGoogle(String email, String password) {
+    private void logInWithGoogle(LoginInfo loginInfo) {
         switchButtonState(true);
         disposable.add(Observable.fromCallable(() -> PlayStoreApiAuthenticator
-                .login(context, email, password))
+                .login(context, loginInfo.getEmail(), loginInfo.getPassword()))
                 .subscribeOn(Schedulers.io())
                 .doOnSubscribe(sub -> progressBar.setVisibility(View.VISIBLE))
                 .observeOn(AndroidSchedulers.mainThread())
@@ -266,8 +283,8 @@ public class AccountsFragment extends Fragment {
                         RxBus.publish(new Event(Events.LOGGED_IN));
                         runOnUiThread(() -> {
                             Accountant.setLoggedIn(context);
-                            PrefUtil.putString(context, Accountant.ACCOUNT_EMAIL, email);
-                            PrefUtil.putString(context, Accountant.ACCOUNT_PASSWORD, password);
+                            PrefUtil.putString(context, Accountant.ACCOUNT_EMAIL, loginInfo.getEmail());
+                            PrefUtil.putString(context, Accountant.ACCOUNT_PASSWORD, loginInfo.getPassword());
                             getUserInfo();
                             finishIntro();
                         });
@@ -276,13 +293,17 @@ public class AccountsFragment extends Fragment {
                         switchButtonState(false);
                     }
                 }, err -> {
-                    ContextUtil.runOnUiThread(() -> switchButtonState(false));
                     if (err instanceof UnknownHostException) {
                         ContextUtil.toastLong(context, context.getString(R.string.error_no_network));
                     } else if (err instanceof TwoFactorAuthException) {
                         show2FADialog();
                     } else if (err instanceof UnknownException) {
                         ContextUtil.toastLong(context, getString(R.string.toast_unknown_reason));
+                    } else if (err instanceof CaptchaException) {
+                        Log.e("Captcha Error 2");
+                        loginInfo.setLoginToken(((CaptchaException) err).getLoginToken());
+                        loginInfo.setCaptchaUrl(((CaptchaException) err).getCaptchaURL());
+                        showCaptchaDialog(loginInfo);
                     } else if (err instanceof AuthException) {
                         int code = ((AuthException) err).getCode();
                         if (code == 403) {
@@ -290,8 +311,10 @@ public class AccountsFragment extends Fragment {
                         }
                     } else
                         Log.e("Something went wrong -> err code : %s", err.getMessage());
+                    ContextUtil.runOnUiThread(() -> switchButtonState(false));
                 }));
     }
+
 
     private void getUserInfo() {
         disposable.add(Observable.fromCallable(() ->
@@ -338,5 +361,11 @@ public class AccountsFragment extends Fragment {
                 });
         builder.create();
         builder.show();
+    }
+
+    private void showCaptchaDialog(LoginInfo loginInfo) {
+        CaptchaSheet captchaSheet = new CaptchaSheet();
+        captchaSheet.setLoginInfo(loginInfo);
+        captchaSheet.show(getChildFragmentManager(), "");
     }
 }

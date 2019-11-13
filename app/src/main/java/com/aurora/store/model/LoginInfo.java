@@ -47,6 +47,9 @@ public class LoginInfo implements Comparable<LoginInfo> {
     private String deviceCheckinConsistencyToken;
     private String deviceConfigToken;
     private String dfeCookie;
+    private String loginToken;
+    private String loginCaptcha;
+    private String captchaUrl;
 
     public Locale getLocale() {
         return TextUtils.isEmpty(locale) ? Locale.getDefault() : new Locale(locale);

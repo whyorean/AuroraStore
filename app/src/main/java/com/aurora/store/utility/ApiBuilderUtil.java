@@ -3,26 +3,20 @@ package com.aurora.store.utility;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.text.TextUtils;
-import android.widget.Toast;
 
 import com.aurora.store.Constants;
-import com.aurora.store.R;
-import com.aurora.store.TokenDispenserMirrors;
 import com.aurora.store.adapter.NativeHttpClientAdapter;
+import com.aurora.store.adapter.OkHttpClientAdapter;
+import com.aurora.store.api.PlayStoreApiBuilder;
 import com.aurora.store.exception.CredentialsEmptyException;
-import com.aurora.store.exception.TokenizerException;
-import com.aurora.store.exception.TwoFactorAuthException;
 import com.aurora.store.manager.LocaleManager;
 import com.aurora.store.manager.SpoofManager;
 import com.aurora.store.model.LoginInfo;
 import com.aurora.store.provider.NativeDeviceInfoProvider;
 import com.dragons.aurora.playstoreapiv2.ApiBuilderException;
-import com.dragons.aurora.playstoreapiv2.AuthException;
 import com.dragons.aurora.playstoreapiv2.DeviceInfoProvider;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
-import com.dragons.aurora.playstoreapiv2.PlayStoreApiBuilder;
 import com.dragons.aurora.playstoreapiv2.PropertiesDeviceInfoProvider;
-import com.dragons.aurora.playstoreapiv2.TokenDispenserException;
 
 import java.io.IOException;
 import java.util.Locale;
@@ -66,17 +60,20 @@ public class ApiBuilderUtil {
         loginInfo.setGsfId(prefs.getString(Accountant.GSF_ID, ""));
         loginInfo.setToken(prefs.getString(Accountant.AUTH_TOKEN, ""));
 
-        return new PlayStoreApiBuilder()
-                .setHttpClient(new NativeHttpClientAdapter(context))
-                .setDeviceInfoProvider(getDeviceInfoProvider(context))
-                .setLocale(loginInfo.getLocale())
-                .setEmail(loginInfo.getEmail())
-                .setPassword(loginInfo.getPassword())
-                .setGsfId(loginInfo.getGsfId())
-                .setToken(loginInfo.getToken())
-                .setDeviceCheckinConsistencyToken(loginInfo.getDeviceCheckinConsistencyToken())
-                .setDeviceConfigToken(loginInfo.getDeviceConfigToken())
-                .setDfeCookie(loginInfo.getDfeCookie());
+        PlayStoreApiBuilder builder = new PlayStoreApiBuilder();
+        builder.setHttpClient(new OkHttpClientAdapter(context));
+        builder.setDeviceInfoProvider(getDeviceInfoProvider(context));
+        builder.setLocale(loginInfo.getLocale());
+        builder.setEmail(loginInfo.getEmail());
+        builder.setPassword(loginInfo.getPassword());
+        builder.setGsfId(loginInfo.getGsfId());
+        builder.setToken(loginInfo.getToken());
+        builder.setDeviceCheckinConsistencyToken(loginInfo.getDeviceCheckinConsistencyToken());
+        builder.setDeviceConfigToken(loginInfo.getDeviceConfigToken());
+        builder.setDfeCookie(loginInfo.getDfeCookie());
+        builder.setLoginToken(loginInfo.getLoginToken());
+        builder.setLoginCaptcha(loginInfo.getLoginCaptcha());
+        return builder;
     }
 
     private static DeviceInfoProvider getDeviceInfoProvider(Context context) {

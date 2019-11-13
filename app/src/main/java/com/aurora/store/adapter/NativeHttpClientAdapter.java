@@ -28,6 +28,7 @@ import com.aurora.store.exception.AppNotFoundException;
 import com.aurora.store.exception.MalformedRequestException;
 import com.aurora.store.exception.TooManyRequestsException;
 import com.aurora.store.exception.UnknownException;
+import com.aurora.store.utility.Log;
 import com.aurora.store.utility.Util;
 import com.dragons.aurora.playstoreapiv2.AuthException;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
@@ -137,6 +138,14 @@ public class NativeHttpClientAdapter extends HttpClientAdapter {
     @Override
     public byte[] post(String url, Map<String, String> params, Map<String, String> headers) throws IOException {
         headers.put("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
+
+        for (String name : params.keySet()) {
+            Log.i("PARAM %s->%s",name,params.get(name));
+        }
+
+        for (String name : headers.keySet()) {
+            Log.i("HEADER %s->%s",name,headers.get(name));
+        }
         return post(url, buildFormBody(params).getBytes(), headers);
     }
 

@@ -122,6 +122,16 @@
                 </LinearLayout>
             </ViewSwitcher>
 
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_unlock_captcha"
+                style="@style/Widget.MaterialComponents.Button.TextButton.Dialog"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@id/progress_bar"
+                android:layout_centerHorizontal="true"
+                android:text="Display unlock captcha ?"
+                android:textAllCaps="false" />
+
             <ProgressBar
                 android:id="@+id/progress_bar"
                 android:layout_width="36dp"

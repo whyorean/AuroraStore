@@ -23,9 +23,11 @@ package com.aurora.store.adapter;
 import android.content.Context;
 
 import com.aurora.store.exception.AppNotFoundException;
+import com.aurora.store.exception.CaptchaException;
 import com.aurora.store.exception.MalformedRequestException;
 import com.aurora.store.exception.TooManyRequestsException;
 import com.aurora.store.exception.UnknownException;
+import com.aurora.store.utility.Log;
 import com.aurora.store.utility.Util;
 import com.dragons.aurora.playstoreapiv2.AuthException;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
@@ -129,7 +131,6 @@ public class OkHttpClientAdapter extends HttpClientAdapter {
 
     private byte[] post(String url, Request.Builder requestBuilder, Map<String, String> headers) throws IOException {
         requestBuilder.url(url);
-
         return request(requestBuilder, headers);
     }
 
@@ -139,17 +140,24 @@ public class OkHttpClientAdapter extends HttpClientAdapter {
                 .headers(Headers.of(headers))
                 .build();
         Response response = client.newCall(request).execute();
-
         int code = response.code();
         byte[] content = response.body().bytes();
 
+        System.out.println(new String(content));
         if (code == 401 || code == 403) {
             AuthException authException = new AuthException("Auth error", code);
             Map<String, String> authResponse = GooglePlayAPI.parseResponse(new String(content));
             if (authResponse.containsKey("Error") && authResponse.get("Error").equals("NeedsBrowser")) {
                 authException.setTwoFactorUrl(authResponse.get("Url"));
+                throw authException;
             }
-            throw authException;
+            if (authResponse.containsKey("Error") && authResponse.get("Error").equals("CaptchaRequired")) {
+                Log.e("Captcha Error");
+                CaptchaException captchaException = new CaptchaException("Captcha Required");
+                captchaException.setLoginToken(authResponse.get("CaptchaToken"));
+                captchaException.setCaptchaURL(authResponse.get("CaptchaUrl"));
+                throw captchaException;
+            }
         } else if (code == 404) {
             Map<String, String> authResponse = GooglePlayAPI.parseResponse(new String(content));
             if (authResponse.containsKey("Error") && authResponse.get("Error").equals("UNKNOWN_ERR")) {
