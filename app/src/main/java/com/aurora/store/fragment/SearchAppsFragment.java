@@ -46,7 +46,6 @@ import com.aurora.store.R;
 import com.aurora.store.activity.AuroraActivity;
 import com.aurora.store.adapter.EndlessAppsAdapter;
 import com.aurora.store.api.PlayStoreApiAuthenticator;
-import com.aurora.store.api.SearchIterator2;
 import com.aurora.store.iterator.CustomAppListIterator;
 import com.aurora.store.model.App;
 import com.aurora.store.sheet.FilterBottomSheet;
@@ -57,6 +56,7 @@ import com.aurora.store.utility.Util;
 import com.aurora.store.utility.ViewUtil;
 import com.bumptech.glide.Glide;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
+import com.dragons.aurora.playstoreapiv2.SearchIterator;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
@@ -209,7 +209,7 @@ public class SearchAppsFragment extends BaseFragment {
     private void getIterator() {
         try {
             GooglePlayAPI api = PlayStoreApiAuthenticator.getApi(context);
-            iterator = new CustomAppListIterator(new SearchIterator2(api, query));
+            iterator = new CustomAppListIterator(new SearchIterator(api, query));
             iterator.setFilterEnabled(true);
             iterator.setFilter(new Filter(getContext()).getFilterPreferences());
             relatedTags = iterator.getRelatedTags();

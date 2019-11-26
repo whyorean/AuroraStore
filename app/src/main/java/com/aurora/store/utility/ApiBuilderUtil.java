@@ -6,7 +6,6 @@ import android.text.TextUtils;
 
 import com.aurora.store.Constants;
 import com.aurora.store.adapter.NativeHttpClientAdapter;
-import com.aurora.store.api.PlayStoreApiBuilder;
 import com.aurora.store.exception.CredentialsEmptyException;
 import com.aurora.store.manager.LocaleManager;
 import com.aurora.store.manager.SpoofManager;
@@ -15,6 +14,7 @@ import com.aurora.store.provider.NativeDeviceInfoProvider;
 import com.dragons.aurora.playstoreapiv2.ApiBuilderException;
 import com.dragons.aurora.playstoreapiv2.DeviceInfoProvider;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
+import com.dragons.aurora.playstoreapiv2.PlayStoreApiBuilder;
 import com.dragons.aurora.playstoreapiv2.PropertiesDeviceInfoProvider;
 
 import java.io.IOException;

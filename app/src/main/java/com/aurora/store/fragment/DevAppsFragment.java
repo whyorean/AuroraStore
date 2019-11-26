@@ -38,13 +38,13 @@ import com.aurora.store.ErrorType;
 import com.aurora.store.R;
 import com.aurora.store.adapter.EndlessAppsAdapter;
 import com.aurora.store.api.PlayStoreApiAuthenticator;
-import com.aurora.store.api.SearchIterator2;
 import com.aurora.store.iterator.CustomAppListIterator;
 import com.aurora.store.model.App;
 import com.aurora.store.task.SearchTask;
 import com.aurora.store.utility.Log;
 import com.aurora.store.utility.NetworkUtil;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
+import com.dragons.aurora.playstoreapiv2.SearchIterator;
 import com.google.android.material.chip.Chip;
 
 import java.util.List;
@@ -136,7 +136,7 @@ public class DevAppsFragment extends BaseFragment {
     private void getIterator() {
         try {
             GooglePlayAPI api = PlayStoreApiAuthenticator.getApi(context);
-            iterator = new CustomAppListIterator(new SearchIterator2(api, query));
+            iterator = new CustomAppListIterator(new SearchIterator(api, query));
         } catch (Exception e) {
             processException(e);
         }

@@ -36,13 +36,13 @@ import com.aurora.store.ErrorType;
 import com.aurora.store.Filter;
 import com.aurora.store.R;
 import com.aurora.store.adapter.EndlessAppsAdapter;
-import com.aurora.store.api.CategoryAppsIterator2;
 import com.aurora.store.api.PlayStoreApiAuthenticator;
 import com.aurora.store.iterator.CustomAppListIterator;
 import com.aurora.store.model.App;
 import com.aurora.store.task.CategoryAppsTask;
 import com.aurora.store.utility.ContextUtil;
 import com.aurora.store.utility.Log;
+import com.dragons.aurora.playstoreapiv2.CategoryAppsIterator;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 import com.dragons.aurora.playstoreapiv2.IteratorGooglePlayException;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
@@ -176,7 +176,7 @@ public class SubCategoryFragment extends BaseFragment {
     private CustomAppListIterator setupIterator(String categoryId, GooglePlayAPI.SUBCATEGORY subcategory) {
         try {
             final GooglePlayAPI api = PlayStoreApiAuthenticator.getApi(context);
-            final CategoryAppsIterator2 iterator = new CategoryAppsIterator2(api, categoryId, subcategory);
+            final CategoryAppsIterator iterator = new CategoryAppsIterator(api, categoryId, subcategory);
             return new CustomAppListIterator(iterator);
         } catch (Exception err) {
             processException(err);
