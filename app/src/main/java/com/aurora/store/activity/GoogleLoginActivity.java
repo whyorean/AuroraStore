@@ -22,7 +22,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
 
-public class LoginActivity extends Activity {
+public class GoogleLoginActivity extends Activity {
 
     public static final String EMBEDDED_SETUP_URL = "https://accounts.google.com/EmbeddedSetup";
     public static final String OAUTH_TOKEN = "oauth_token";

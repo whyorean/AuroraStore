@@ -90,5 +90,17 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/margin_normal"
         android:maxLines="1"
+        android:minWidth="148dp"
         android:text="@string/action_login" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_anonymous"
+        style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn_positive"
+        android:layout_centerHorizontal="true"
+        android:maxLines="1"
+        android:minWidth="148dp"
+        android:text="@string/account_dummy" />
 </RelativeLayout>

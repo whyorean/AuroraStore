@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.aurora.store.adapter.NativeHttpClientAdapter;
 import com.aurora.store.model.LoginInfo;
+import com.aurora.store.utility.Accountant;
 import com.aurora.store.utility.ApiBuilderUtil;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 
@@ -40,6 +41,7 @@ public class AuthTask extends BaseTask {
         loginInfo.setGsfId(gsfId);
         loginInfo.setLocale(Locale.getDefault().toString());
         LoginInfo.save(context, loginInfo);
+
         return token;
     }
 }

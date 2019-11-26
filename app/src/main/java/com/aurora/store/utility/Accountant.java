@@ -31,9 +31,15 @@ public class Accountant {
     public static final String GOOGLE_NAME = "GOOGLE_NAME";
     public static final String GOOGLE_URL = "GOOGLE_URL";
     public static final String LOGGED_IN = "LOGGED_IN";
+    public static final String ANONYMOUS = "ANONYMOUS";
 
     public static Boolean isLoggedIn(Context context) {
         return PrefUtil.getBoolean(context, LOGGED_IN);
+    }
+
+
+    public static Boolean isAnonymous(Context context) {
+        return PrefUtil.getBoolean(context, ANONYMOUS);
     }
 
     public static String getUserName(Context context) {
@@ -58,5 +64,9 @@ public class Accountant {
 
     public static void setLoggedIn(Context context) {
         PrefUtil.putBoolean(context, LOGGED_IN, true);
+    }
+
+    public static void setAnonymous(Context context,boolean value) {
+        PrefUtil.putBoolean(context, ANONYMOUS, value);
     }
 }

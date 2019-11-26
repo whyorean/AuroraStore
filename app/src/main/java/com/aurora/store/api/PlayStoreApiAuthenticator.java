@@ -62,6 +62,13 @@ public class PlayStoreApiAuthenticator {
         return api != null;
     }
 
+    public static boolean login(Context context) throws IOException {
+        LoginInfo loginInfo = new LoginInfo();
+        loginInfo.setTokenDispenserUrl("http://auroraoss.com:8080");
+        GooglePlayAPI api = ApiBuilderUtil.buildAnonymousApi(context, loginInfo);
+        return api != null;
+    }
+
     public static void destroyInstance() {
         api = null;
         instance = null;

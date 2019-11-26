@@ -24,10 +24,34 @@ public class ApiBuilderUtil {
 
     public static GooglePlayAPI buildFromPreferences(Context context) throws IOException {
         LoginInfo loginInfo = LoginInfo.getSavedInstance(context);
-        if (TextUtils.isEmpty(loginInfo.getEmail()) || TextUtils.isEmpty(loginInfo.getAasToken())) {
+        if (TextUtils.isEmpty(loginInfo.getEmail()) || TextUtils.isEmpty(loginInfo.getAuthToken())) {
             throw new CredentialsEmptyException();
         }
-        return buildApi(context, loginInfo);
+        if (Accountant.isAnonymous(context))
+            return buildAnonymousApi(context, loginInfo);
+        else
+            return buildApi(context, loginInfo);
+    }
+
+    public static GooglePlayAPI buildAnonymousApi(Context context, LoginInfo loginInfo) throws IOException {
+        try {
+            PlayStoreApiBuilder builder = getBuilder(context, loginInfo);
+            builder.setTokenDispenserUrl(loginInfo.getTokenDispenserUrl());
+            GooglePlayAPI api = builder.build();
+            loginInfo.setEmail(builder.getEmail());
+            if (api != null) {
+                loginInfo.setGsfId(api.getGsfId());
+                loginInfo.setAuthToken(api.getToken());
+                loginInfo.setDfeCookie(api.getDfeCookie());
+                loginInfo.setDeviceConfigToken(api.getDeviceConfigToken());
+                loginInfo.setDeviceCheckinConsistencyToken(api.getDeviceCheckinConsistencyToken());
+                LoginInfo.save(context, loginInfo);
+                Accountant.setAnonymous(context, true);
+            }
+            return api;
+        } catch (ApiBuilderException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public static GooglePlayAPI buildApi(Context context, LoginInfo loginInfo) throws IOException {
@@ -42,6 +66,7 @@ public class ApiBuilderUtil {
                 loginInfo.setDeviceConfigToken(api.getDeviceConfigToken());
                 loginInfo.setDeviceCheckinConsistencyToken(api.getDeviceCheckinConsistencyToken());
                 LoginInfo.save(context, loginInfo);
+                Accountant.setAnonymous(context, false);
             }
             return api;
         } catch (ApiBuilderException e) {

@@ -27,22 +27,35 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.aurora.store.R;
 import com.aurora.store.activity.IntroActivity;
-import com.aurora.store.activity.LoginActivity;
+import com.aurora.store.activity.GoogleLoginActivity;
+import com.aurora.store.api.PlayStoreApiAuthenticator;
+import com.aurora.store.utility.ContextUtil;
+import com.google.android.material.button.MaterialButton;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import io.reactivex.Observable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.schedulers.Schedulers;
 
 public class LoginFragment extends IntroBaseFragment {
 
     @BindView(R.id.btn_next)
     Button btnNext;
+    @BindView(R.id.btn_anonymous)
+    MaterialButton btnAnonymous;
+    @BindView(R.id.progress_bar)
+    ProgressBar progressBar;
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -59,9 +72,41 @@ public class LoginFragment extends IntroBaseFragment {
 
     @OnClick(R.id.btn_next)
     public void openLoginActivity() {
-        context.startActivity(new Intent(context, LoginActivity.class));
+        context.startActivity(new Intent(context, GoogleLoginActivity.class));
         if (getActivity() instanceof IntroActivity)
             ((IntroActivity) getActivity()).finish();
 
+    }
+
+    @OnClick(R.id.btn_anonymous)
+    public void loginAnonymous() {
+        CompositeDisposable disposable = new CompositeDisposable();
+        disposable.add(
+                Observable.fromCallable(() -> PlayStoreApiAuthenticator.login(context))
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .doOnSubscribe(d -> {
+                            btnAnonymous.setText(getText(R.string.action_logging_in));
+                            btnAnonymous.setEnabled(false);
+                            progressBar.setVisibility(View.VISIBLE);
+                        })
+                        .subscribe(success -> {
+                            if (success) {
+                                Toast.makeText(context, "Successfully logged in", Toast.LENGTH_LONG).show();
+                                if (getActivity() instanceof IntroActivity)
+                                    ((IntroActivity) getActivity()).finish();
+
+                            } else
+                                Toast.makeText(context, "Failed to login", Toast.LENGTH_LONG).show();
+
+                        }, err -> {
+                            Toast.makeText(context, err.getMessage(), Toast.LENGTH_LONG).show();
+                            ContextUtil.runOnUiThread(() -> {
+                                btnAnonymous.setEnabled(true);
+                                btnAnonymous.setText(getText(R.string.account_dummy));
+                                progressBar.setVisibility(View.INVISIBLE);
+                            });
+                        })
+        );
     }
 }

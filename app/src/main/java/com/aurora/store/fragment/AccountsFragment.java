@@ -33,6 +33,7 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ViewSwitcher;
 
 import androidx.annotation.NonNull;
@@ -40,10 +41,13 @@ import androidx.fragment.app.Fragment;
 
 import com.aurora.store.GlideApp;
 import com.aurora.store.R;
-import com.aurora.store.activity.LoginActivity;
+import com.aurora.store.activity.GoogleLoginActivity;
+import com.aurora.store.activity.IntroActivity;
 import com.aurora.store.activity.SettingsActivity;
+import com.aurora.store.api.PlayStoreApiAuthenticator;
 import com.aurora.store.task.UserProfiler;
 import com.aurora.store.utility.Accountant;
+import com.aurora.store.utility.ContextUtil;
 import com.aurora.store.utility.Log;
 import com.aurora.store.utility.PrefUtil;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
@@ -100,6 +104,8 @@ public class AccountsFragment extends Fragment {
     Button btnPositive;
     @BindView(R.id.btn_negative)
     Button btnNegative;
+    @BindView(R.id.btn_anonymous)
+    Button btnAnonymous;
     @BindView(R.id.chip_tos)
     Chip chipTos;
     @BindView(R.id.chip_disclaimer)
@@ -134,7 +140,7 @@ public class AccountsFragment extends Fragment {
 
     @OnClick(R.id.btn_positive)
     public void openLoginActivity() {
-        context.startActivity(new Intent(context, LoginActivity.class));
+        context.startActivity(new Intent(context, GoogleLoginActivity.class));
         if (getActivity() instanceof SettingsActivity)
             ((SettingsActivity) getActivity()).finish();
     }
@@ -143,6 +149,37 @@ public class AccountsFragment extends Fragment {
     public void clearAccountantData() {
         Accountant.completeCheckout(context);
         init();
+    }
+
+    @OnClick(R.id.btn_anonymous)
+    public void loginAnonymous() {
+        CompositeDisposable disposable = new CompositeDisposable();
+        disposable.add(
+                Observable.fromCallable(() -> PlayStoreApiAuthenticator.login(context))
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .doOnSubscribe(d -> {
+                            btnAnonymous.setText(getText(R.string.action_logging_in));
+                            btnAnonymous.setEnabled(false);
+                            progressBar.setVisibility(View.VISIBLE);
+                        })
+                        .subscribe(success -> {
+                            if (success) {
+                                Toast.makeText(context, "Successfully logged in", Toast.LENGTH_LONG).show();
+                                if (getActivity() instanceof SettingsActivity)
+                                    ((SettingsActivity) getActivity()).finish();
+
+                            } else
+                                Toast.makeText(context, "Failed to login", Toast.LENGTH_LONG).show();
+                        }, err -> {
+                            Toast.makeText(context, err.getMessage(), Toast.LENGTH_LONG).show();
+                            ContextUtil.runOnUiThread(() -> {
+                                btnAnonymous.setEnabled(true);
+                                btnAnonymous.setText(getText(R.string.account_dummy));
+                                progressBar.setVisibility(View.INVISIBLE);
+                            });
+                        })
+        );
     }
 
     private void init() {
@@ -174,8 +211,8 @@ public class AccountsFragment extends Fragment {
                 .load(Accountant.getImageURL(context))
                 .circleCrop()
                 .into(imgAvatar);
-        txtName.setText(Accountant.getUserName(context));
-        txtMail.setText(Accountant.getEmail(context));
+        txtName.setText(Accountant.isAnonymous(context) ? "Bimbo User" : Accountant.getUserName(context));
+        txtMail.setText(Accountant.isAnonymous(context) ? "auroraoss@gmail.com" : Accountant.getEmail(context));
     }
 
     private void switchTopViews(boolean showInfo) {
@@ -193,21 +230,24 @@ public class AccountsFragment extends Fragment {
     }
 
     private void getUserInfo() {
-        disposable.add(Observable.fromCallable(() ->
-                new UserProfiler(context).getUserProfile())
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe((profile) -> {
-                    if (profile != null) {
-                        PrefUtil.putString(context, Accountant.GOOGLE_NAME, profile.getName());
-                        for (Image image : profile.getImageList()) {
-                            if (image.getImageType() == GooglePlayAPI.IMAGE_TYPE_APP_ICON) {
-                                PrefUtil.putString(context, Accountant.GOOGLE_URL, image.getImageUrl());
+        if (!Accountant.getUserName(context).isEmpty())
+            loadGoogleData();
+        else
+            disposable.add(Observable.fromCallable(() ->
+                    new UserProfiler(context).getUserProfile())
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe((profile) -> {
+                        if (profile != null) {
+                            PrefUtil.putString(context, Accountant.GOOGLE_NAME, profile.getName());
+                            for (Image image : profile.getImageList()) {
+                                if (image.getImageType() == GooglePlayAPI.IMAGE_TYPE_APP_ICON) {
+                                    PrefUtil.putString(context, Accountant.GOOGLE_URL, image.getImageUrl());
+                                }
                             }
+                            runOnUiThread(this::loadGoogleData);
                         }
-                        runOnUiThread(this::loadGoogleData);
-                    }
-                }, err -> Log.e("Google Login failed : %s", err.getMessage())));
+                    }, err -> Log.e("Google Login failed : %s", err.getMessage())));
     }
 
     private void openWebView(String URL) {
