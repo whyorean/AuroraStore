@@ -426,4 +426,9 @@ Inoltre fornisce una lista di tracker incorporati in una applicazione."</string>
     <string name="pref_update_self_desc">"Controlla gli ultimi aggiornamenti disponibili di Aurora Store"</string>
     <string name="toast_rate_limit">"Limite richieste superato per la sessione corrente, richiesta di una nuova sessione in corso"</string>
     <string name="toast_token_stale">"Il token è scaduto, richiesta di un nuovo token in corso"</string>
+    <string name="error_session_expired">"Sessione scaduta"</string>
+    <string name="list_updating_background">"Aggiornamento delle app in corso"</string>
+    <string name="list_updating_failed">"Aggiornamento fallito"</string>
+    <string name="pref_updates_auto">"Abilita aggiornamenti automatici"</string>
+    <string name="pref_updates_auto_desc">"Aggiorna le app ogni volta che è disponibile una nuova versione"</string>
 </resources>
