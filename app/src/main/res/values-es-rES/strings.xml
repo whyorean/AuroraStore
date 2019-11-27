@@ -296,6 +296,7 @@ También ofrece una lista de los trackers incluidos en una aplicación."</string
     <string name="pref_ui_ime">"Buscar IME"</string>
     <string name="pref_ui_ime_summary">"Enseñar por defecto el teclado en la página de búsqueda"</string>
     <string name="pref_ui_transparent">"Estilo transparente"</string>
+    <string name="pref_ui_transparent_summary">"Usar estilo de cartas transparentes para vista de categorías y enlaces"</string>
     <string name="pref_install_delete_summary">"En dispositivos bajo Android Pie + con método de instalación Root, los APK son borrados por defecto"</string>
     <string name="action_loading">"Cargando"</string>
     <string name="pref_default">"Por defecto"</string>
@@ -335,6 +336,7 @@ También ofrece una lista de los trackers incluidos en una aplicación."</string
     <string name="installer_status_user_action">"Esperando a confirmación de la persona usuaria"</string>
     <string name="pref_downloader_internal">"Descargar aplicaciones en la memoria interna"</string>
     <string name="pref_downloader_internal_desc">"Si se activa, usted no será capaz de instalar aplicaciones a través de los Aurora services"</string>
+    <string name="pref_install_profile_summary">"Selecciones el perfil en el que instalar aplicaciones. Sólo funciona con el método de instalación Root."</string>
     <string name="pref_install_profile_title">"Perfiles de instalación (Experimental)"</string>
     <string name="pref_install_mode_internal_warn">"Ha seleccionado la ubicación interna para las descargas, por favor desactivelo paga usar Aurora services"</string>
     <string name="pref_updates_extended">"Actualizaciones extendidas"</string>
@@ -353,6 +355,9 @@ También ofrece una lista de los trackers incluidos en una aplicación."</string
     <string name="action_import">"Importar"</string>
     <string name="dialog_title_self_update">"Nueva actualización disponible"</string>
     <string name="dialog_desc_self_update">"¿Quieres actualizar ahora?"</string>
+    <string name="download_extraction">"Extrayendo recursos del juego, espere a que finalice."</string>
+    <string name="download_extraction_completed">"Extracción de recursos de juegos completada."</string>
+    <string name="download_extraction_failed">"Fallo en la extracción de recursos de juegos."</string>
     <string name="installer_status_ongoing">"Instalando"</string>
     <string name="list_update_all_txt_one">"actualización disponible"</string>
     <string name="pref_ui_package">"Buscar por nombre de paquete"</string>
@@ -360,4 +365,10 @@ También ofrece una lista de los trackers incluidos en una aplicación."</string
     <string name="pref_update_self_title">"Buscar Actualizaciones"</string>
     <string name="pref_update_self_desc">"Buscar la última actualización disponible de Aurora Store"</string>
     <string name="toast_rate_limit">"Demasiadas peticiones "</string>
+    <string name="toast_token_stale">"El token está estancado, pidiendo nuevo token."</string>
+    <string name="error_session_expired">"Sesión expirada."</string>
+    <string name="list_updating_background">"Descargando aplicaciones en segundo plano"</string>
+    <string name="list_updating_failed">"Fallo al actualizar"</string>
+    <string name="pref_updates_auto">"Activar autoactualizaciones"</string>
+    <string name="pref_updates_auto_desc">"Actualizar aplicaciones cuando haya disponible una nueva versión"</string>
 </resources>
