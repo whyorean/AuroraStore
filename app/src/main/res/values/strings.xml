@@ -140,9 +140,7 @@
     <string name="list_updating">"Updating"</string>
     <string name="manual_download_disclaimer">"Disclaimer"</string>
     <string name="manual_download_incompatible">"The Google Play Store considers this app incompatible with your device. This means the version code has not been returned by the Google Play Store server."</string>
-    <string name="manual_download_warning">"This page lets you manually choose the version of the app to download.
-
-Keep in mind that downloading arbitrary versions of apps is not supported by the Google Play Store. Your success depends on a lucky guess of the version code. Even if you guess right and you get the download to start, you might get an incompatible APK."</string>
+    <string name="manual_download_warning">"This page lets you manually choose the version of the app to download. Keep in mind that downloading arbitrary versions of apps is not supported by the Google Play Store. Your success depends on a lucky guess of the version code. Even if you guess right and you get the download to start, you might get an incompatible APK."</string>
     <string name="menu_account">"Accounts"</string>
     <string name="menu_disclaimer">"Disclaimer"</string>
     <string name="menu_downloads">"Downloads"</string>
@@ -225,10 +223,7 @@ Keep in mind that downloading arbitrary versions of apps is not supported by the
     <string name="tab_family">"Kids &amp; family"</string>
     <string name="pref_ui_tab_mode_title">"Scrollable tabs"</string>
     <string name="pref_ui_tab_mode_summary">"Enable to make tabs scrollable, recommended for low-dpi devices"</string>
-    <string name="about_app">"Aurora Store is an open source alternative to the Google Play Store.
-        It lets you download apps, provides updates of installed apps, and lets you search for apps &amp; games.
-        It also provides a list of trackers embedded in an app.
-    "</string>
+    <string name="about_app">"Aurora Store is an open source alternative to the Google Play Store. It lets you download apps, provides updates of installed apps, and lets you search for apps &amp; games. It also provides a list of trackers embedded in an app."</string>
     <string name="about_paypal">"Paypal"</string>
     <string name="about_paypal_summary">"Donate to me on PayPal."</string>
     <string name="about_fdroid">"F-Droid"</string>

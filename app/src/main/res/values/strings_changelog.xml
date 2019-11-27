@@ -20,6 +20,10 @@
 
 <resources>
     <string name="app_log" translatable="false">
+        \n Changelog : v3.1.4
+        \n • Fix Google login issues
+        \n • Bug fixes and improvements
+        \n
         \n Changelog : v3.1.3
         \n • Fix Google login issue
         \n • Fix user reviews
