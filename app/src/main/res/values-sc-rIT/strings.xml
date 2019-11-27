@@ -368,4 +368,9 @@ Ammenta·ti chi iscarrigare versiones arbitràrias de sas aplicatziones no est s
     <string name="pref_update_self_desc">"Chirca agiornamentos disponìbiles pro Aurora Store"</string>
     <string name="toast_rate_limit">"Tropu rechestas pro sa sessione atuale, so pedende una sessione de intrada noa"</string>
     <string name="toast_token_stale">"Su getone (token) est tropu betzu, nde so pedende unu nou"</string>
+    <string name="error_session_expired">"Sessione iscadida"</string>
+    <string name="list_updating_background">"Iscarrighende apl. in s'isfundu"</string>
+    <string name="list_updating_failed">"Agiornamentu fallidu"</string>
+    <string name="pref_updates_auto">"Abìlita sos agiornamentos automàticos"</string>
+    <string name="pref_updates_auto_desc">"Agiorna sas apl. cando b'at una versione noa disponìbile"</string>
 </resources>
