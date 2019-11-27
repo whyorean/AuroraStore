@@ -32,10 +32,10 @@ import androidx.annotation.NonNull;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.fragment.app.Fragment;
 
+import com.aurora.store.AnonymousLoginService;
 import com.aurora.store.ErrorType;
 import com.aurora.store.R;
 import com.aurora.store.activity.AccountsActivity;
-import com.aurora.store.api.PlayStoreApiAuthenticator;
 import com.aurora.store.events.Event;
 import com.aurora.store.events.Events;
 import com.aurora.store.events.RxBus;
@@ -237,20 +237,22 @@ public abstract class BaseFragment extends Fragment {
     }
 
     private void processAuthException(AuthException e) {
-        PlayStoreApiAuthenticator.destroyInstance();
         if (e instanceof CredentialsEmptyException || e instanceof InvalidApiException) {
             Accountant.completeCheckout(context);
             RxBus.publish(new Event(Events.LOGGED_OUT));
-        } else if (e.getCode() == 401) {
+        } else if (e.getCode() >= 400 && Accountant.isAnonymous(context)) {
             RxBus.publish(new Event(Events.TOKEN_EXPIRED));
-            //TODO:Implement Google account refresh
-        } else if (e.getCode() == 429) {
-            ContextUtil.toastLong(context, context.getString(R.string.toast_rate_limit));
             Accountant.completeCheckout(context);
-            //TODO:Implement auto re-login
+            logInWithDummy();
         } else {
             ContextUtil.toast(context, R.string.error_session_expired);
             Accountant.completeCheckout(context);
         }
+    }
+
+    private void logInWithDummy() {
+        Intent intent = new Intent(context, AnonymousLoginService.class);
+        if (!AnonymousLoginService.isServiceRunning())
+            context.startService(intent);
     }
 }

@@ -98,7 +98,7 @@ public class AuroraSuggestionProvider extends ContentProvider {
             return;
         }
         int i = 0;
-        GooglePlayAPI api = PlayStoreApiAuthenticator.getApi(getContext());
+        GooglePlayAPI api = PlayStoreApiAuthenticator.getInstance(getContext());
         for (SearchSuggestEntry entry : api.searchSuggest(query).getEntryList()) {
             cursor.addRow(constructRow(entry, i++));
         }

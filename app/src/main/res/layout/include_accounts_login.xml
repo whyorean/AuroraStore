@@ -91,7 +91,7 @@
         android:layout_marginTop="@dimen/margin_normal"
         android:maxLines="1"
         android:minWidth="148dp"
-        android:text="@string/action_login" />
+        android:text="@string/account_google" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_anonymous"

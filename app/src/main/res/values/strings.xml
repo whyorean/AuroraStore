@@ -2,7 +2,7 @@
 <resources>
     <string name="account_dummy">"Anonymous"</string>
     <string name="account_dummy_desc">"Log in using an anonymous account?"</string>
-    <string name="account_google">"Google Account"</string>
+    <string name="account_google">"Google"</string>
     <string name="account_logout">"Log out from Aurora?"</string>
     <string name="account_prompt_login">"Please login to continue"</string>
     <string name="account_email">Email</string>
@@ -375,4 +375,6 @@ Keep in mind that downloading arbitrary versions of apps is not supported by the
     <string name="list_updating_failed">"Failed to update"</string>
     <string name="pref_updates_auto">"Enable auto updates"</string>
     <string name="pref_updates_auto_desc">"Update apps whenever new version are available"</string>
+    <string name="toast_login_success">"Successfully logged in"</string>
+    <string name="toast_login_failed">"Failed to login"</string>
 </resources>

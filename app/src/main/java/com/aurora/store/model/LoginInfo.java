@@ -72,4 +72,8 @@ public class LoginInfo {
     public Locale getLocale() {
         return TextUtils.isEmpty(locale) ? Locale.getDefault() : new Locale(locale);
     }
+
+    public boolean isEmpty() {
+        return email.isEmpty() && authToken.isEmpty();
+    }
 }

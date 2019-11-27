@@ -216,7 +216,7 @@ public class SpoofFragment extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (position > 0) {
                     try {
-                        GooglePlayAPI api = PlayStoreApiAuthenticator.getApi(context);
+                        GooglePlayAPI api = PlayStoreApiAuthenticator.getInstance(context);
                         api.setLocale(new Locale(localeKeys[position]));
                         PrefUtil.putString(context, Constants.PREFERENCE_REQUESTED_LANGUAGE,
                                 localeKeys[position]);

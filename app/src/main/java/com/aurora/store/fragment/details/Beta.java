@@ -73,12 +73,15 @@ public class Beta extends AbstractHelper {
     @Override
     public void draw() {
         ButterKnife.bind(this, view);
+        if (Accountant.isAnonymous(context))
+            return;
+
         if (app.isTestingProgramAvailable() && app.isTestingProgramOptedIn()) {
-            disposable.add(Observable.fromCallable(() -> new BetaFeedbackToggleTask(context).toggle(app))
+            disposable.add(Observable.fromCallable(() -> new BetaFeedbackToggleTask(context)
+                    .toggle(app))
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe());
-            return;
         }
 
         if (!app.isInstalled() || !app.isTestingProgramAvailable()) {

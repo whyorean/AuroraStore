@@ -135,7 +135,7 @@ public class DevAppsFragment extends BaseFragment {
 
     private void getIterator() {
         try {
-            GooglePlayAPI api = PlayStoreApiAuthenticator.getApi(context);
+            GooglePlayAPI api = PlayStoreApiAuthenticator.getInstance(context);
             iterator = new CustomAppListIterator(new SearchIterator(api, query));
         } catch (Exception e) {
             processException(e);

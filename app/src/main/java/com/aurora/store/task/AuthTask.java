@@ -6,7 +6,10 @@ import com.aurora.store.adapter.NativeHttpClientAdapter;
 import com.aurora.store.model.LoginInfo;
 import com.aurora.store.utility.Accountant;
 import com.aurora.store.utility.ApiBuilderUtil;
+import com.aurora.store.utility.PrefUtil;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
+import com.dragons.aurora.playstoreapiv2.Image;
+import com.dragons.aurora.playstoreapiv2.UserProfile;
 
 import java.util.Locale;
 
@@ -24,7 +27,7 @@ public class AuthTask extends BaseTask {
         return api.generateAASToken(email, oauth_token);
     }
 
-    public String getAuthToken(String email, String aas_token) throws Exception {
+    public boolean getAuthToken(String email, String aas_token) throws Exception {
         GooglePlayAPI api = new GooglePlayAPI();
         api.setDeviceInfoProvider(ApiBuilderUtil.getDeviceInfoProvider(context));
         api.setLocale(Locale.getDefault());
@@ -33,6 +36,7 @@ public class AuthTask extends BaseTask {
         api.setGsfId(gsfId);
         api.uploadDeviceConfig();
         String token = api.generateToken(email, aas_token);
+        api.setToken(token);
 
         LoginInfo loginInfo = new LoginInfo();
         loginInfo.setAasToken(aas_token);
@@ -42,6 +46,13 @@ public class AuthTask extends BaseTask {
         loginInfo.setLocale(Locale.getDefault().toString());
         LoginInfo.save(context, loginInfo);
 
-        return token;
+        UserProfile userProfile = api.userProfile().getUserProfile();
+        PrefUtil.putString(context, Accountant.GOOGLE_NAME, userProfile.getName());
+        for (Image image : userProfile.getImageList()) {
+            if (image.getImageType() == GooglePlayAPI.IMAGE_TYPE_APP_ICON) {
+                PrefUtil.putString(context, Accountant.GOOGLE_URL, image.getImageUrl());
+            }
+        }
+        return !loginInfo.isEmpty();
     }
 }

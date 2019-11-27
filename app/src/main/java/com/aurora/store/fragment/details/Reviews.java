@@ -96,43 +96,45 @@ public class Reviews extends AbstractHelper {
 
     @Override
     public void draw() {
-        if (fragment != null && fragment.isVisible()) {
-            ButterKnife.bind(this, view);
-            if (!app.isInPlayStore() || app.isEarlyAccess())
-                return;
-            else
-                disposable.add(Observable.fromCallable(() -> new ReviewLoader(context, iterator)
-                        .getReviews())
-                        .subscribeOn(Schedulers.io())
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe(this::showReviews, err -> Log.e(err.getMessage())));
+        ButterKnife.bind(this, view);
 
-            averageRatingBar.setRating(app.getRating().getAverage());
-            txtAverageRating.setText(String.format(Locale.getDefault(), "%.1f", app.getRating().getAverage()));
+        if (Accountant.isAnonymous(context))
+            return;
 
-            int totalStars = 0;
-            for (int starNum = 1; starNum <= 5; starNum++) {
-                totalStars += app.getRating().getStars(starNum);
-            }
+        if (!app.isInPlayStore() || app.isEarlyAccess())
+            return;
+        else
+            disposable.add(Observable.fromCallable(() -> new ReviewLoader(context, iterator)
+                    .getReviews())
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(this::showReviews, err -> Log.e(err.getMessage())));
 
-            txtCountStars.setText(String.valueOf(totalStars));
-            avgRatingLayout.addView(addAvgReviews(5, totalStars, app.getRating().getStars(5)));
-            avgRatingLayout.addView(addAvgReviews(4, totalStars, app.getRating().getStars(4)));
-            avgRatingLayout.addView(addAvgReviews(3, totalStars, app.getRating().getStars(3)));
-            avgRatingLayout.addView(addAvgReviews(2, totalStars, app.getRating().getStars(2)));
-            avgRatingLayout.addView(addAvgReviews(1, totalStars, app.getRating().getStars(1)));
+        averageRatingBar.setRating(app.getRating().getAverage());
+        txtAverageRating.setText(String.format(Locale.getDefault(), "%.1f", app.getRating().getAverage()));
 
-            ViewUtil.setVisibility(reviewLayout, true);
-            ViewUtil.setVisibility(userReviewLayout, isReviewable(app));
-
-            Review review = app.getUserReview();
-            if (null != review) {
-                fillUserReview(review);
-            }
-
-            initUserReviewControls(app);
-            setupLoadMore();
+        int totalStars = 0;
+        for (int starNum = 1; starNum <= 5; starNum++) {
+            totalStars += app.getRating().getStars(starNum);
         }
+
+        txtCountStars.setText(String.valueOf(totalStars));
+        avgRatingLayout.addView(addAvgReviews(5, totalStars, app.getRating().getStars(5)));
+        avgRatingLayout.addView(addAvgReviews(4, totalStars, app.getRating().getStars(4)));
+        avgRatingLayout.addView(addAvgReviews(3, totalStars, app.getRating().getStars(3)));
+        avgRatingLayout.addView(addAvgReviews(2, totalStars, app.getRating().getStars(2)));
+        avgRatingLayout.addView(addAvgReviews(1, totalStars, app.getRating().getStars(1)));
+
+        ViewUtil.setVisibility(reviewLayout, true);
+        ViewUtil.setVisibility(userReviewLayout, isReviewable(app));
+
+        Review review = app.getUserReview();
+        if (null != review) {
+            fillUserReview(review);
+        }
+
+        initUserReviewControls(app);
+        setupLoadMore();
     }
 
     private RelativeLayout addAvgReviews(int number, int max, int rating) {
@@ -140,7 +142,7 @@ public class Reviews extends AbstractHelper {
     }
 
     private boolean isReviewable(App app) {
-        return app.isInstalled() && !app.isTestingProgramOptedIn();
+        return !Accountant.isAnonymous(context) && app.isInstalled() && !app.isTestingProgramOptedIn();
     }
 
     private void fillUserReview(Review review) {

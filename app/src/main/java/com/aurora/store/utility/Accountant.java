@@ -59,7 +59,6 @@ public class Accountant {
         PrefUtil.remove(context, GOOGLE_NAME);
         PrefUtil.remove(context, GOOGLE_URL);
         LoginInfo.removeSavedInstance(context);
-        PlayStoreApiAuthenticator.destroyInstance();
     }
 
     public static void setLoggedIn(Context context) {

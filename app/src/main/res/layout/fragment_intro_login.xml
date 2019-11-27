@@ -107,6 +107,6 @@
             android:layout_centerVertical="true"
             android:layout_margin="@dimen/margin_normal"
             android:maxLines="1"
-            android:text="@string/action_login" />
+            android:text="@string/account_google" />
     </RelativeLayout>
 </RelativeLayout>

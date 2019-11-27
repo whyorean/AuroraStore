@@ -32,6 +32,7 @@ import androidx.appcompat.widget.Toolbar;
 import com.aurora.store.R;
 import com.aurora.store.adapter.ViewPagerAdapter;
 import com.aurora.store.fragment.AccountsFragment;
+import com.aurora.store.fragment.intro.LoginFragment;
 import com.aurora.store.fragment.intro.PermissionFragment;
 import com.aurora.store.fragment.intro.WelcomeFragment;
 import com.aurora.store.utility.Accountant;
@@ -101,7 +102,7 @@ public class IntroActivity extends AppCompatActivity {
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
         viewPagerAdapter.addFragment(0, new WelcomeFragment());
         viewPagerAdapter.addFragment(1, new PermissionFragment());
-        viewPagerAdapter.addFragment(2, new AccountsFragment());
+        viewPagerAdapter.addFragment(2, new LoginFragment());
         viewPager.setAdapter(viewPagerAdapter);
         viewPager.setScroll(false);
     }

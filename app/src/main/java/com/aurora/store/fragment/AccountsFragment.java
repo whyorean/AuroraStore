@@ -42,16 +42,12 @@ import androidx.fragment.app.Fragment;
 import com.aurora.store.GlideApp;
 import com.aurora.store.R;
 import com.aurora.store.activity.GoogleLoginActivity;
-import com.aurora.store.activity.IntroActivity;
 import com.aurora.store.activity.SettingsActivity;
 import com.aurora.store.api.PlayStoreApiAuthenticator;
 import com.aurora.store.task.UserProfiler;
 import com.aurora.store.utility.Accountant;
 import com.aurora.store.utility.ContextUtil;
 import com.aurora.store.utility.Log;
-import com.aurora.store.utility.PrefUtil;
-import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
-import com.dragons.aurora.playstoreapiv2.Image;
 import com.google.android.material.checkbox.MaterialCheckBox;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.textfield.TextInputEditText;
@@ -65,8 +61,6 @@ import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
-
-import static com.aurora.store.utility.ContextUtil.runOnUiThread;
 
 public class AccountsFragment extends Fragment {
 
@@ -154,43 +148,38 @@ public class AccountsFragment extends Fragment {
     @OnClick(R.id.btn_anonymous)
     public void loginAnonymous() {
         CompositeDisposable disposable = new CompositeDisposable();
-        disposable.add(
-                Observable.fromCallable(() -> PlayStoreApiAuthenticator.login(context))
-                        .subscribeOn(Schedulers.io())
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .doOnSubscribe(d -> {
-                            btnAnonymous.setText(getText(R.string.action_logging_in));
-                            btnAnonymous.setEnabled(false);
-                            progressBar.setVisibility(View.VISIBLE);
-                        })
-                        .subscribe(success -> {
-                            if (success) {
-                                Toast.makeText(context, "Successfully logged in", Toast.LENGTH_LONG).show();
-                                if (getActivity() instanceof SettingsActivity)
-                                    ((SettingsActivity) getActivity()).finish();
-
-                            } else
-                                Toast.makeText(context, "Failed to login", Toast.LENGTH_LONG).show();
-                        }, err -> {
-                            Toast.makeText(context, err.getMessage(), Toast.LENGTH_LONG).show();
-                            ContextUtil.runOnUiThread(() -> {
-                                btnAnonymous.setEnabled(true);
-                                btnAnonymous.setText(getText(R.string.account_dummy));
-                                progressBar.setVisibility(View.INVISIBLE);
-                            });
-                        })
-        );
+        disposable.add(Observable.fromCallable(() -> PlayStoreApiAuthenticator
+                .login(context))
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnSubscribe(d -> {
+                    btnAnonymous.setText(getText(R.string.action_logging_in));
+                    btnAnonymous.setEnabled(false);
+                    progressBar.setVisibility(View.VISIBLE);
+                })
+                .doOnComplete(() -> ContextUtil.runOnUiThread(() -> resetAnonymousLogin()))
+                .subscribe(success -> {
+                    if (success) {
+                        Toast.makeText(context, "Successfully logged in", Toast.LENGTH_LONG).show();
+                        Accountant.setAnonymous(context, true);
+                        ContextUtil.runOnUiThread(() -> getUserInfo());
+                    } else
+                        Toast.makeText(context, "Failed to login", Toast.LENGTH_LONG).show();
+                }, err -> {
+                    Toast.makeText(context, err.getMessage(), Toast.LENGTH_LONG).show();
+                    ContextUtil.runOnUiThread(() -> resetAnonymousLogin());
+                }));
     }
 
     private void init() {
         boolean isLoggedIn = Accountant.isLoggedIn(context);
         progressBar.setVisibility(View.INVISIBLE);
-        if (isLoggedIn)
+        if (Accountant.getUserName(context).isEmpty())
             getUserInfo();
         switchTopViews(isLoggedIn);
         switchBottomViews(isLoggedIn);
         setupChips();
-        getUserInfo();
+        loadUserData();
     }
 
     private void setupChips() {
@@ -205,13 +194,13 @@ public class AccountsFragment extends Fragment {
         });
     }
 
-    private void loadGoogleData() {
+    private void loadUserData() {
         GlideApp
                 .with(this)
                 .load(Accountant.getImageURL(context))
                 .circleCrop()
                 .into(imgAvatar);
-        txtName.setText(Accountant.isAnonymous(context) ? "Bimbo User" : Accountant.getUserName(context));
+        txtName.setText(Accountant.isAnonymous(context) ? getText(R.string.account_dummy) : Accountant.getUserName(context));
         txtMail.setText(Accountant.isAnonymous(context) ? "auroraoss@gmail.com" : Accountant.getEmail(context));
     }
 
@@ -230,24 +219,24 @@ public class AccountsFragment extends Fragment {
     }
 
     private void getUserInfo() {
-        if (!Accountant.getUserName(context).isEmpty())
-            loadGoogleData();
-        else
-            disposable.add(Observable.fromCallable(() ->
-                    new UserProfiler(context).getUserProfile())
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe((profile) -> {
-                        if (profile != null) {
-                            PrefUtil.putString(context, Accountant.GOOGLE_NAME, profile.getName());
-                            for (Image image : profile.getImageList()) {
-                                if (image.getImageType() == GooglePlayAPI.IMAGE_TYPE_APP_ICON) {
-                                    PrefUtil.putString(context, Accountant.GOOGLE_URL, image.getImageUrl());
-                                }
-                            }
-                            runOnUiThread(this::loadGoogleData);
-                        }
-                    }, err -> Log.e("Google Login failed : %s", err.getMessage())));
+        disposable.add(Observable.fromCallable(() -> new UserProfiler(context)
+                .getUserProfile())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(success -> {
+                    if (success) {
+                        ContextUtil.runOnUiThread(() -> {
+                            loadUserData();
+                            init();
+                        });
+                    }
+                }, err -> Log.e("Google Login failed : %s", err.getMessage())));
+    }
+
+    private void resetAnonymousLogin() {
+        btnAnonymous.setEnabled(true);
+        btnAnonymous.setText(getText(R.string.account_dummy));
+        progressBar.setVisibility(View.INVISIBLE);
     }
 
     private void openWebView(String URL) {

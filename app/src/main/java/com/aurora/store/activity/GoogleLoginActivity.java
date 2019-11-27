@@ -2,6 +2,8 @@ package com.aurora.store.activity;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.ActivityOptions;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.webkit.CookieManager;
@@ -11,6 +13,7 @@ import android.widget.Toast;
 
 import com.aurora.store.R;
 import com.aurora.store.task.AuthTask;
+import com.aurora.store.utility.Accountant;
 import com.aurora.store.utility.Util;
 
 import java.util.Map;
@@ -76,12 +79,21 @@ public class GoogleLoginActivity extends Activity {
                 .map(aas_token -> new AuthTask(this).getAuthToken(email, aas_token))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(authToken -> {
-                    Toast.makeText(this, "Successfully logged in", Toast.LENGTH_SHORT).show();
-                    finish();
+                .subscribe(success -> {
+                    if (success) {
+                        Toast.makeText(this, getText(R.string.toast_login_success), Toast.LENGTH_SHORT).show();
+                        Accountant.setAnonymous(this, false);
+                        Intent intent = new Intent(this, AuroraActivity.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                        ActivityOptions activityOptions = ActivityOptions.makeSceneTransitionAnimation(this);
+                        startActivity(intent, activityOptions.toBundle());
+                        finish();
+                    } else {
+                        Toast.makeText(this, getText(R.string.toast_login_failed), Toast.LENGTH_LONG).show();
+                    }
                 }, err -> {
                     err.printStackTrace();
-                    Toast.makeText(this, "Failed to generate AC2DM Auth Token", Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, getText(R.string.toast_login_failed), Toast.LENGTH_LONG).show();
                 }));
     }
 }

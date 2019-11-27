@@ -42,9 +42,8 @@ public abstract class BaseTask extends ContextWrapper {
         this.context = context;
     }
 
-
     public GooglePlayAPI getApi() throws Exception {
-        return PlayStoreApiAuthenticator.getApi(context);
+        return PlayStoreApiAuthenticator.getInstance(context);
     }
 
     public Context getContext() {
@@ -64,13 +63,12 @@ public abstract class BaseTask extends ContextWrapper {
         shitSet.add("com.niksoftware.snapseed");
         shitSet.add("com.google.toontastic");
 
-        List<App> mApps = new ArrayList<>();
+        List<App> appList = new ArrayList<>();
         for (App app : apps) {
             if (!app.getPackageName().startsWith("com.google") && !shitSet.contains(app.getPackageName())) {
-                mApps.add(app);
+                appList.add(app);
             }
         }
-        return mApps;
+        return appList;
     }
-
 }

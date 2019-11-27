@@ -34,7 +34,7 @@ import java.io.IOException;
 public class PlayStoreApiAuthenticator {
 
     private static volatile PlayStoreApiAuthenticator instance;
-    private static volatile GooglePlayAPI api;
+    private static GooglePlayAPI api;
 
     public PlayStoreApiAuthenticator() {
         if (instance != null) {
@@ -42,12 +42,16 @@ public class PlayStoreApiAuthenticator {
         }
     }
 
-    public static GooglePlayAPI getApi(Context context) throws Exception {
+    public static GooglePlayAPI getApi() {
+        return api;
+    }
+
+    public static GooglePlayAPI getInstance(Context context) throws Exception {
         if (instance == null) {
             synchronized (PlayStoreApiAuthenticator.class) {
                 if (instance == null) {
                     instance = new PlayStoreApiAuthenticator();
-                    api = instance.buildApi(context);
+                    api = instance.getApi(context);
                 }
             }
         }
@@ -74,7 +78,7 @@ public class PlayStoreApiAuthenticator {
         instance = null;
     }
 
-    private synchronized GooglePlayAPI buildApi(Context context) throws Exception {
+    private synchronized GooglePlayAPI getApi(Context context) throws Exception {
         if (api == null) {
             api = ApiBuilderUtil.buildFromPreferences(context);
         }

@@ -175,7 +175,7 @@ public class SubCategoryFragment extends BaseFragment {
 
     private CustomAppListIterator setupIterator(String categoryId, GooglePlayAPI.SUBCATEGORY subcategory) {
         try {
-            final GooglePlayAPI api = PlayStoreApiAuthenticator.getApi(context);
+            final GooglePlayAPI api = PlayStoreApiAuthenticator.getInstance(context);
             final CategoryAppsIterator iterator = new CategoryAppsIterator(api, categoryId, subcategory);
             return new CustomAppListIterator(iterator);
         } catch (Exception err) {

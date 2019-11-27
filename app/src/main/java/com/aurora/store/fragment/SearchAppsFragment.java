@@ -208,7 +208,7 @@ public class SearchAppsFragment extends BaseFragment {
 
     private void getIterator() {
         try {
-            GooglePlayAPI api = PlayStoreApiAuthenticator.getApi(context);
+            GooglePlayAPI api = PlayStoreApiAuthenticator.getInstance(context);
             iterator = new CustomAppListIterator(new SearchIterator(api, query));
             iterator.setFilterEnabled(true);
             iterator.setFilter(new Filter(getContext()).getFilterPreferences());

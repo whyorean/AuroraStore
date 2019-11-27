@@ -22,16 +22,30 @@ package com.aurora.store.task;
 
 import android.content.Context;
 
+import com.aurora.store.utility.Accountant;
+import com.aurora.store.utility.PrefUtil;
+import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
+import com.dragons.aurora.playstoreapiv2.Image;
 import com.dragons.aurora.playstoreapiv2.UserProfile;
-
-import java.io.IOException;
 
 public class UserProfiler extends BaseTask {
     public UserProfiler(Context context) {
         super(context);
     }
 
-    public UserProfile getUserProfile() throws Exception {
-        return getApi().userProfile().getUserProfile();
+    public boolean getUserProfile() throws Exception {
+        GooglePlayAPI api = getApi();
+        UserProfile userProfile = api.userProfile().getUserProfile();
+        if (userProfile == null)
+            return false;
+        else {
+            PrefUtil.putString(context, Accountant.GOOGLE_NAME, userProfile.getName());
+            for (Image image : userProfile.getImageList()) {
+                if (image.getImageType() == GooglePlayAPI.IMAGE_TYPE_APP_ICON) {
+                    PrefUtil.putString(context, Accountant.GOOGLE_URL, image.getImageUrl());
+                }
+            }
+            return true;
+        }
     }
 }

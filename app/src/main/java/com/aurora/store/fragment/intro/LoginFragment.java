@@ -20,6 +20,7 @@
 
 package com.aurora.store.fragment.intro;
 
+import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -34,8 +35,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.aurora.store.R;
-import com.aurora.store.activity.IntroActivity;
+import com.aurora.store.activity.AuroraActivity;
 import com.aurora.store.activity.GoogleLoginActivity;
+import com.aurora.store.activity.IntroActivity;
 import com.aurora.store.api.PlayStoreApiAuthenticator;
 import com.aurora.store.utility.ContextUtil;
 import com.google.android.material.button.MaterialButton;
@@ -92,21 +94,26 @@ public class LoginFragment extends IntroBaseFragment {
                         })
                         .subscribe(success -> {
                             if (success) {
-                                Toast.makeText(context, "Successfully logged in", Toast.LENGTH_LONG).show();
-                                if (getActivity() instanceof IntroActivity)
-                                    ((IntroActivity) getActivity()).finish();
-
-                            } else
-                                Toast.makeText(context, "Failed to login", Toast.LENGTH_LONG).show();
-
+                                Toast.makeText(context, getText(R.string.toast_login_success), Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(context, AuroraActivity.class);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                                ActivityOptions activityOptions = ActivityOptions.makeSceneTransitionAnimation((IntroActivity) context);
+                                startActivity(intent, activityOptions.toBundle());
+                                ((IntroActivity) getActivity()).finish();
+                            } else {
+                                Toast.makeText(context, getText(R.string.toast_login_failed), Toast.LENGTH_LONG).show();
+                                ContextUtil.runOnUiThread(this::resetAnonymousLogin);
+                            }
                         }, err -> {
-                            Toast.makeText(context, err.getMessage(), Toast.LENGTH_LONG).show();
-                            ContextUtil.runOnUiThread(() -> {
-                                btnAnonymous.setEnabled(true);
-                                btnAnonymous.setText(getText(R.string.account_dummy));
-                                progressBar.setVisibility(View.INVISIBLE);
-                            });
+                            Toast.makeText(context, getText(R.string.toast_login_failed), Toast.LENGTH_LONG).show();
+                            ContextUtil.runOnUiThread(this::resetAnonymousLogin);
                         })
         );
+    }
+
+    private void resetAnonymousLogin() {
+        btnAnonymous.setEnabled(true);
+        btnAnonymous.setText(getText(R.string.account_dummy));
+        progressBar.setVisibility(View.INVISIBLE);
     }
 }
