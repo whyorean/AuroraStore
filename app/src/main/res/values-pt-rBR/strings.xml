@@ -355,4 +355,23 @@ Lembre-se que fazer o download de versões arbitrárias de aplicativos não é s
     <string name="toast_unknown_reason">"Ocorreu um erro. Tente novamente"</string>
     <string name="toast_junk_removed">"Arquivos indesejados removidos"</string>
     <string name="toast_abandon_sessions">"Sessões de instalação antigas abandonadas"</string>
+    <string name="action_import">"Importar"</string>
+    <string name="dialog_title_self_update">"Nova atualização disponível "</string>
+    <string name="dialog_desc_self_update">"Deseja atualizar agora? "</string>
+    <string name="download_extraction">"Extraindo recursos do jogo, por favor aguarde"</string>
+    <string name="download_extraction_completed">"Extração de recursos do jogo concluída"</string>
+    <string name="download_extraction_failed">"Falha na extração de recursos do jogo "</string>
+    <string name="installer_status_ongoing">"Instalando "</string>
+    <string name="list_update_all_txt_one">"atualização disponível "</string>
+    <string name="pref_ui_package">"Procurar por nome do pacote "</string>
+    <string name="pref_ui_package_summary">"Permitir busca de aplicativos pelo nome do pacote "</string>
+    <string name="pref_update_self_title">"Verificar atualizações "</string>
+    <string name="pref_update_self_desc">"Verificar pelas últimas atualizações disponíveis da Aurora Store"</string>
+    <string name="toast_rate_limit">"Excesso de requisições da sessão atual, requisitando nova sessão "</string>
+    <string name="toast_token_stale">"Token vencido, requisitando novo token"</string>
+    <string name="error_session_expired">"Sessão expirada "</string>
+    <string name="list_updating_background">"Baixando aplicativos em segundo plano "</string>
+    <string name="list_updating_failed">"Falha ao atualizar "</string>
+    <string name="pref_updates_auto">"Ativar atualizações automáticas "</string>
+    <string name="pref_updates_auto_desc">"Atualizar aplicativos assim que uma versão estiver disponível "</string>
 </resources>
