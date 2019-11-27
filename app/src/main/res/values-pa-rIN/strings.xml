@@ -4,7 +4,7 @@
     <string name="account_dummy_desc">"ਅਗਿਆਤ ਬਣਕੇ ਲੌਗ-ਇਨ ਕਰੋ ?"</string>
     <string name="account_google">"ਗੂਗਲ ਖਾਤਾ"</string>
     <string name="account_logout">"ਔਰੋਰਾ ਚੋਂ ਲੋਗ-ਆਉਟ ਕਰੋ ?"</string>
-    <string name="account_prompt_login">"ਕਿਰਪਾ ਕਰਕੇ ਲੋਗ-ਇਨ ਕਰੋ"</string>
+    <string name="account_prompt_login">"ਕਿਰਪਾ ਕਰਕੇ ਲੌਗ-ਇਨ ਕਰੋ"</string>
     <string name="account_switch">"ਖਾਤਾ ਬਦਲੋ"</string>
     <string name="action_accounts">"ਖਾਤੇ"</string>
     <string name="action_ask">"ਪੁੱਛੋ"</string>
@@ -36,9 +36,9 @@
     <string name="action_installations">"ਇੰਸਟਾਲ ਬਾਰੇ"</string>
     <string name="action_installed">"ਇੰਸਟਾਲਡ"</string>
     <string name="action_later">"ਬਾਅਦ ਵਿਚ"</string>
-    <string name="action_logging_in">"ਲੋਗ-ਇਨ ਹੋ ਰਿਹਾ ਹੈ"</string>
-    <string name="action_login">"ਲੋਗ-ਇਨ ਕਰੋ"</string>
-    <string name="action_logout">"ਲੋਗ-ਆਊਟ"</string>
+    <string name="action_logging_in">"ਲੌਗ-ਇਨ ਹੋ ਰਿਹਾ ਹੈ"</string>
+    <string name="action_login">"ਲੌਗ-ਇਨ ਕਰੋ"</string>
+    <string name="action_logout">"ਲੌਗ-ਆਊਟ"</string>
     <string name="action_make_normal">"ਆਮ ਐਪ ਵਿਚ ਬਦਲੋ"</string>
     <string name="action_make_system">"ਸਿਸਟਮ ਐਪ ਵਿਚ ਬਦਲੋ"</string>
     <string name="action_manual">"ਖੁੱਦ ਡਾਊਨਲੋਡ ਕਰੋ"</string>
@@ -89,7 +89,7 @@
     <string name="details_update">"ਅੱਪਡੇਟ"</string>
     <string name="details_why_rate_this_app">"ਤੁਹਾਡੇ ਐਪ ਬਾਰੇ ਕੀ ਵਿਚਾਰ ਹਨ"</string>
     <string name="details_you_rated_this_app">"ਤੁਹਾਡੀ ਰੇਟਿੰਗ"</string>
-    <string name="dialog_title_logout">"ਲੋਗ-ਆਊਟ ਕਰੋ ?"</string>
+    <string name="dialog_title_logout">"ਲੌਗ-ਆਊਟ ਕਰੋ ?"</string>
     <string name="download_cancel_all">"ਰੱਦ ਕਰੋ"</string>
     <string name="download_canceled">"ਰੱਦ ਕੀਤੀ ਗਈ"</string>
     <string name="download_clear_completed">"ਪੂਰੀਆਂ ਹੋਈਆਂ ਫਾਇਲਾਂ ਨੂੰ ਮਿਟਾਓ"</string>
@@ -136,10 +136,10 @@
     <string name="list_update_all_txt">"ਅੱਪਡੇਟ ਉਪਲੱਬਧ"</string>
     <string name="list_updating">"ਅਪਡੇਟ ਹੋ ਰਿਹਾ ਹੈ"</string>
     <string name="manual_download_disclaimer">"ਬੇਦਾਆਵਾ"</string>
-    <string name="manual_download_incompatible">"ਗੂਗਲ ਇਸ ਐਪ ਨੂੰ ਤੁਹਾਡੇ ਮੋਬਾਇਲ ਲਈ ਅਨੁਰੂਪ ਨਹੀਂ ਮੰਨਦਾ। ਇਸਦਾ ਮਤਲਬ ਇਹ ਹੈ ਕਿ ਵਰਜਨ ਕੋਡ ਗੂਗਲ ਸਟੋਰ ਸਰਵਰ ਵੱਲੋਂ ਵਾਪਸ ਨਹੀਂ ਕੀਤਾ ਗਿਆ ਹੈ।"</string>
+    <string name="manual_download_incompatible">"ਗੂਗਲ ਇਸ ਐਪ ਨੂੰ ਤੁਹਾਡੇ ਮੋਬਾਇਲ ਲਈ ਅਨੁਰੂਪ ਨਹੀਂ ਮੰਨਦਾ। ਇਸਦਾ ਮਤਲਬ ਇਹ ਹੈ ਕਿ ਵਰਜ਼ਨ ਕੋਡ ਗੂਗਲ ਸਟੋਰ ਸਰਵਰ ਵੱਲੋਂ ਵਾਪਸ ਨਹੀਂ ਕੀਤਾ ਗਿਆ ਹੈ।"</string>
     <string name="manual_download_warning">"ਇਹ ਸਫ਼ਾ ਤੁਹਾਨੂੰ ਡਾਉਨਲੋਡ ਦੇ ਲਈ ਐਪ ਦੇ ਵਰਜ਼ਨ ਨੂੰ ਖੁਦ ਚੁਣਨ ਦੀ ਅਜਾਦੀ ਦਿੰਦਾ ਹੈ।
 
-ਇਹ ਗੱਲ ਧਿਆਨ ਵਿੱਚ ਰੱਖੋ ਕਿ ਐਪਸ ਦੇ ਵੱਖ-ਵੱਖ ਵਰਜਨ ਡਾਊਨਲੋਡ ਕਰਨਾ ਗੂਗਲ ਸਟੋਰ ਦੁਆਰਾ ਵਰਜਿਤ ਹੈ। ਤੁਹਾਡੀ ਸਫ਼ਲਤਾ ਸੰਸਕਰਣ ਕੋਡ ਦੇ ਅਨੁਮਾਨ 'ਤੇ ਨਿਰਭਰ ਕਰਦੀ ਹੈ। ਭਾਵੇਂ ਤੁਸੀਂ ਸਹੀ ਅਨੁਮਾਨ ਲਗਾਉਂਦੇ ਹੋ ਅਤੇ ਤੁਸੀਂ ਡਾਉਨਲੋਡ ਨੂੰ ਸ਼ੁਰੂ ਕਰਦੇ ਹੋ, ਪਰ ਤੁਹਾਨੂੰ ਇੱਕ ਗਲਤ APK ਵੀ ਪ੍ਰਾਪਤ ਹੋ ਸਕਦਾ ਹੈ।"</string>
+ਇਹ ਗੱਲ ਧਿਆਨ ਵਿੱਚ ਰੱਖੋ ਕਿ ਐਪਸ ਦੇ ਵੱਖ-ਵੱਖ ਵਰਜ਼ਨ ਡਾਊਨਲੋਡ ਕਰਨਾ ਗੂਗਲ ਸਟੋਰ ਦੁਆਰਾ ਵਰਜਿਤ ਹੈ। ਤੁਹਾਡੀ ਸਫ਼ਲਤਾ ਸੰਸਕਰਣ ਕੋਡ ਦੇ ਅਨੁਮਾਨ 'ਤੇ ਨਿਰਭਰ ਕਰਦੀ ਹੈ। ਭਾਵੇਂ ਤੁਸੀਂ ਸਹੀ ਅਨੁਮਾਨ ਲਗਾਉਂਦੇ ਹੋ ਅਤੇ ਤੁਸੀਂ ਡਾਉਨਲੋਡ ਨੂੰ ਸ਼ੁਰੂ ਕਰਦੇ ਹੋ, ਪਰ ਤੁਹਾਨੂੰ ਇੱਕ ਗਲਤ APK ਵੀ ਪ੍ਰਾਪਤ ਹੋ ਸਕਦਾ ਹੈ।"</string>
     <string name="menu_account">"ਸਾਰੇ ਖਾਤੇ"</string>
     <string name="menu_disclaimer">"ਬੇਦਾਅਵਾ"</string>
     <string name="menu_downloads">"ਡਾਊਨਲੋਡ ਸੂਚੀ"</string>
@@ -156,7 +156,7 @@
     <string name="pref_category_spoof_location">"ਨਕਲੀ ਥਾਂ"</string>
     <string name="pref_device_to_pretend_to_be">"ਇੱਕ ਵੱਖਰੀ ਡਿਵਾਈਸ ਹੋਣ ਦਾ ਦਿਖਾਵਾ ਕਰੋ"</string>
     <string name="pref_device_to_pretend_to_be_default">"ਤੁਹਾਡੀ ਅਸਲ ਮੋਬਾਇਲ ਜਾਣਕਾਰੀ"</string>
-    <string name="pref_device_to_pretend_to_be_toast">"ਇਹ ਤਬਦੀਲੀ ਤੁਹਾਡੇ ਮੁੜ ਲੋਗ-ਇਨ ਤੋਂ ਬਾਅਦ ਲਾਗੂ ਕੀਤੀ ਜਾਏਗੀ"</string>
+    <string name="pref_device_to_pretend_to_be_toast">"ਇਹ ਤਬਦੀਲੀ ਤੁਹਾਡੇ ਮੁੜ ਲੌਗ-ਇਨ ਤੋਂ ਬਾਅਦ ਲਾਗੂ ਕੀਤੀ ਜਾਏਗੀ"</string>
     <string name="pref_dialog_to_apply_restart">"ਐਪ ਨੂੰ ਮੁੜ ਚਾਲੂ ਕਰਨ ਤੋਂ ਬਾਅਦ ਇਹ ਸੈਟਿੰਗ ਲਾਗੂ ਕੀਤੀ ਜਾਏਗੀ"</string>
     <string name="pref_downloader_active_summary">"ਚਾਲੂ ਡਾਊਨਲੋਡਸ ਦੀ ਅਧਿਕਤਮ ਗਿਣਤੀ"</string>
     <string name="pref_downloader_active_title">"ਚੱਲ ਰਹੀਆਂ ਡਾਊਨਲੋਡਸ"</string>
@@ -196,8 +196,8 @@
     <string name="testing_program_opt_in">"ਜੁੜੋ"</string>
     <string name="testing_program_opt_out">"ਛੱਡੋ"</string>
     <string name="testing_program_review_dialog_content_hint">"ਐਪ ਬਾਰੇ ਆਪਣੇ ਸੁਝਾਅ ਦਰਜ ਕਰੋ"</string>
-    <string name="testing_program_section_opted_in_message">"ਐਪ ਅੱਪਡੇਟਾਂ ਵਿੱਚ Beta ਵਰਜਨ ਸ਼ਾਮਲ ਹੋਣਗੇ। ਜੇਕਰ ਤੁਸੀਂ ਇਸ ਐਪ ਦੇ Beta ਪ੍ਰੋਗਰਾਮ ਨੂੰ ਛੱਡ ਦਿੰਦੇ ਹੋ, ਤਾਂ ਤੁਹਾਨੂੰ Beta ਅੱਪਡੇਟਸ ਨਹੀਂ ਮਿਲਣਗੇ।"</string>
-    <string name="testing_program_section_opted_in_propagating_message">"ਕੁਝ ਮਿੰਟਾਂ ਵਿੱਚ ਤੁਹਾਨੂੰ Beta ਪ੍ਰੋਗਰਾਮ ਵਿੱਚ ਜੋੜਿਆ ਜਾਵੇਗਾ। ਜੇਕਰ Beta ਉਪਲਬਧ ਹੈ ਤਾਂ ਤੁਸੀਂ ਇਸ ਐਪ ਦੇ Beta ਸੰਸਕਰਣ ਤੇ ਅੱਪਡੇਟ ਕਰ ਸਕਦੇ ਹੋ"</string>
+    <string name="testing_program_section_opted_in_message">"ਐਪ ਅੱਪਡੇਟਾਂ ਵਿੱਚ Beta ਵਰਜ਼ਨ ਸ਼ਾਮਲ ਹੋਣਗੇ। ਜੇਕਰ ਤੁਸੀਂ ਇਸ ਐਪ ਦੇ Beta ਪ੍ਰੋਗਰਾਮ ਨੂੰ ਛੱਡ ਦਿੰਦੇ ਹੋ, ਤਾਂ ਤੁਹਾਨੂੰ Beta ਅੱਪਡੇਟਸ ਨਹੀਂ ਮਿਲਣਗੇ।"</string>
+    <string name="testing_program_section_opted_in_propagating_message">"ਕੁਝ ਮਿੰਟਾਂ ਵਿੱਚ ਤੁਹਾਨੂੰ Beta ਪ੍ਰੋਗਰਾਮ ਵਿੱਚ ਜੋੜਿਆ ਜਾਵੇਗਾ। ਜੇਕਰ Beta ਉਪਲਬਧ ਹੈ ਤਾਂ ਤੁਸੀਂ ਇਸ ਐਪ ਦੇ Beta ਵਰਜ਼ਨ ਤੇ ਅੱਪਡੇਟ ਕਰ ਸਕਦੇ ਹੋ"</string>
     <string name="testing_program_section_opted_in_title">"ਤੁਸੀਂ ਇੱਕ Beta ਟੈਸਟਰ ਹੋ"</string>
     <string name="testing_program_section_opted_out_message">"ਨਵੀਆਂ ਖੂਬੀਆਂ ਨੂੰ ਜਨਤਕ ਹੋਣ ਤੋਂ ਪਹਿਲਾਂ ਅਜ਼ਮਾਓ ਅਤੇ ਡਿਵੈਲਪਰ ਨੂੰ ਸਿੱਧੇ ਆਪਣੇ ਸੁਝਾਅ ਦਿਓ।"</string>
     <string name="testing_program_section_opted_out_propagating_message">"ਤੁਹਾਨੂੰ Beta ਪ੍ਰੋਗਰਾਮ ਤੋਂ ਹਟਾਉਣ ਲਈ ਕੁਝ ਮਿੰਟ ਲੱਗ ਸਕਦੇ ਹਨ"</string>
@@ -314,7 +314,7 @@
     <string name="dialog_incompat_desc">"ਜੋ ਐਪ ਤੁਸੀਂ ਡਾਊਨਲੋਡ ਕਰਨ ਦੀ ਕੋਸ਼ਿਸ਼ ਕਰ ਰਹੇ ਹੋ ਉਹ ਤੁਹਾਡੀ ਡਿਵਾਈਸ ਨਾਲ ਅਨੁਕੂਲ ਨਹੀਂ ਹੈ, ਡਾਊਨਲੋਡ ਕਰਨ ਲਈ \"ਧੋਖਾ\" ਸੈਟਿੰਗਾਂ ਵਿਚੋਂ \"ਨਕਲੀ ਡਿਵਾਈਸ\" ਵਰਤੋਂ।"</string>
     <string name="pref_install_mode_services">"ਔਰੋਰਾ ਸੇਵਾਵਾਂ"</string>
     <string name="pref_install_mode_no_services">"ਔਰੋਰਾ ਸੇਵਾਵਾਂ ਇੰਸਟਾਲ ਨਹੀਂ ਹਨ। ਕਿਰਪਾ ਕਰਕੇ ਸੇਵਾਵਾਂ ਇੰਸਟਾਲ ਕਰੋ"</string>
-    <string name="pref_install_mode_offline_services">"ਔਰੋਰਾ ਸੇਵਾਵਾਂ ਜੁੜੀਆਂ ਨਹੀਂ ਹਨ, ਕਿਰਪਾ ਕਰਕੇ ਯਕੀਨੀ ਬਣਾਓ ਕਿ ਇਹ ਚਾਲੂ ਹਨ ਤੇ ਐਪ ਦਾ ਸਹੀ ਸੰਸਕਰਣ ਹੈ"</string>
+    <string name="pref_install_mode_offline_services">"ਔਰੋਰਾ ਸੇਵਾਵਾਂ ਜੁੜੀਆਂ ਨਹੀਂ ਹਨ, ਕਿਰਪਾ ਕਰਕੇ ਯਕੀਨੀ ਬਣਾਓ ਕਿ ਇਹ ਚਾਲੂ ਹਨ ਤੇ ਐਪ ਦਾ ਸਹੀ ਵਰਜ਼ਨ ਹੈ"</string>
     <string name="action_info">"ਐਪ ਬਾਰੇ"</string>
     <string name="download_waiting">"ਉਡੀਕ ਕਰੋ"</string>
     <string name="pref_services_title">"ਔਰੋਰਾ ਸਰਵਿਸਿਜ਼"</string>
@@ -367,4 +367,15 @@
     <string name="pref_update_self_desc">"ਔਰੋਰਾ ਸਟੋਰ ਦੀ ਨਵੀਂ ਅੱਪਡੇਟ ਬਾਰੇ ਜਾਂਚ ਕਰੋ"</string>
     <string name="toast_rate_limit">"ਮੌਜੂਦਾ ਸ਼ੈਸ਼ਨ ਚ ਹੱਦ ਤੋਂ ਵੱਧ ਟੋਕਨ ਬੇਨਤੀਆਂ, ਨਵੇਂ ਲੌਗ-ਇਨ ਸ਼ੈਸ਼ਨ ਲਈ ਬੇਨਤੀ ਕਰ ਰਹੇ ਹਾਂ....."</string>
     <string name="toast_token_stale">"ਮੌਜੂਦਾ ਟੋਕਨ ਪੁਰਾਣਾ ਹੈ, ਨਵੇਂ ਟੋਕਨ ਲਈ ਬੇਨਤੀ ਕਰ ਰਹੇ ਹਾਂ......"</string>
+    <string name="error_session_expired">"ਸੈਸ਼ਨ ਦੀ ਮਿਆਦ ਖਤਮ"</string>
+    <string name="list_updating_background">"ਬੈਕਗ੍ਰਾਉਂਡ ਵਿੱਚ ਐਪਸ ਡਾਊਨਲੋਡ ਹੋ ਰਹੀਆਂ ਹਨ"</string>
+    <string name="list_updating_failed">"ਅੱਪਡੇਟ ਕਰਨ ਵਿੱਚ ਅਸਫਲ"</string>
+    <string name="pref_updates_auto">"ਆਟੋ ਅੱਪਡੇਟਾਂ ਨੂੰ ਚਾਲੂ ਕਰੋ"</string>
+    <string name="pref_updates_auto_desc">"ਜਦੋਂ ਵੀ ਨਵਾਂ ਵਰਜ਼ਨ ਉਪਲੱਬਧ ਹੋਵੇ ਤਾਂ ਐਪਸ ਨੂੰ ਅੱਪਡੇਟ ਕਰੋ"</string>
+    <string name="account_email"></string>
+    <string name="account_password"></string>
+    <string name="account_save_password"></string>
+    <string name="toast_login_success"></string>
+    <string name="toast_login_failed"></string>
+    <string name="disclaimer"></string>
 </resources>
