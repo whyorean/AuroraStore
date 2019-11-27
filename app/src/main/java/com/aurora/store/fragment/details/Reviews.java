@@ -98,9 +98,6 @@ public class Reviews extends AbstractHelper {
     public void draw() {
         ButterKnife.bind(this, view);
 
-        if (Accountant.isAnonymous(context))
-            return;
-
         if (!app.isInPlayStore() || app.isEarlyAccess())
             return;
         else
