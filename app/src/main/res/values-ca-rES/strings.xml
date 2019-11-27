@@ -366,4 +366,9 @@ Tingueu en compte que Google Play Store no admet la baixada de versions arbitrà
     <string name="pref_update_self_desc">"Cerca les darreres actualitzacions disponibles de l'Aurora Store"</string>
     <string name="toast_rate_limit">"Massa sol·licituds de la sessió actual, s'està sol·licitant una nova sessió d'inici de sessió"</string>
     <string name="toast_token_stale">"El testimoni és obsolet, s'està sol·licitant un de nou"</string>
+    <string name="error_session_expired">"Sessió expirada"</string>
+    <string name="list_updating_background">"Baixant aplicacions en segon pla"</string>
+    <string name="list_updating_failed">"No s'ha pogut actualitzar"</string>
+    <string name="pref_updates_auto">"Activa les actualitzacions automàtiques"</string>
+    <string name="pref_updates_auto_desc">"Actualitza les aplicacions sempre que hi hagi una versió nova disponible"</string>
 </resources>
