@@ -401,7 +401,7 @@ https://exodus-privacy.eu.org/en/. Это как "отчёт от аваста" 
     <string name="toast_abandon_sessions">"Старые сессии установки отменены"</string>
     <string name="action_import">"Импортировать"</string>
     <string name="dialog_title_self_update">"Доступно обновление"</string>
-    <string name="dialog_desc_self_update">"Хотите обновиться сейчас ?"</string>
+    <string name="dialog_desc_self_update">"Хотите обновиться сейчас?"</string>
     <string name="download_extraction">"Распаковка ресурсов игры, ожидайте завершения"</string>
     <string name="download_extraction_completed">"Распаковка ресурсов игры завершена"</string>
     <string name="download_extraction_failed">"Не удалось распаковать ресурсы"</string>
@@ -411,6 +411,11 @@ https://exodus-privacy.eu.org/en/. Это как "отчёт от аваста" 
     <string name="pref_ui_package_summary">"Разрешить поиск приложений по имени пакета"</string>
     <string name="pref_update_self_title">"Проверять наличие обновлений"</string>
     <string name="pref_update_self_desc">"Проверять наличие обновлений Aurora Store"</string>
-    <string name="toast_rate_limit">"Слишком много запросов в текущей сессии, открываем новую сесиию"</string>
+    <string name="toast_rate_limit">"Слишком много запросов в текущей сессии, необходимо войти заново"</string>
     <string name="toast_token_stale">"Токен устарел, запрашиваем новый токен"</string>
+    <string name="error_session_expired">"Время сессии истекло"</string>
+    <string name="list_updating_background">"Загружаемые в фоне приложения"</string>
+    <string name="list_updating_failed">"Обновление невозможно"</string>
+    <string name="pref_updates_auto">"Автоматическое обновление"</string>
+    <string name="pref_updates_auto_desc">"Обновлять приложения всякий раз, когда появляется новая версия"</string>
 </resources>
