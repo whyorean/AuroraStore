@@ -368,4 +368,9 @@ Zudem zeigt Aurora die Anzahl der Tracker in der jeweiligen App an."</string>
     <string name="pref_update_self_desc">"Auf neuste Updates für Aurora Store überprüfen"</string>
     <string name="toast_rate_limit">"Zu viele Anfragen, Anforderung einer neuen Login-Session"</string>
     <string name="toast_token_stale">"Token ist veraltet, Anforderung eines neuen Tokens"</string>
+    <string name="error_session_expired">"Sitzung abgelaufen"</string>
+    <string name="list_updating_background">"Downloade Apps im Hintergrund"</string>
+    <string name="list_updating_failed">"Update fehlgeschlagen"</string>
+    <string name="pref_updates_auto">"Automatische Updates"</string>
+    <string name="pref_updates_auto_desc">"Apps immer aktuell halten"</string>
 </resources>
