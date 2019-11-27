@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="account_dummy">"अज्ञात"</string>
-    <string name="account_dummy_desc">"बेनामी खाते का उपयोग कर लॉगिन करें?"</string>
+    <string name="account_dummy_desc">"अज्ञात खाते का उपयोग कर लॉगिन करें?"</string>
     <string name="account_google">"गूगल अकॉउंट"</string>
     <string name="account_logout">"अरोरा से लॉगआउट करें?"</string>
     <string name="account_prompt_login">"जारी रखने के लिए कृपया लॉगिन करें"</string>
     <string name="account_switch">"खाता बदलिये"</string>
-    <string name="action_accounts">"हिसाब किताब"</string>
+    <string name="action_accounts">"खाते के बारे में"</string>
     <string name="action_ask">"पूछना"</string>
     <string name="action_blacklist">"काला सूची में डालना"</string>
     <string name="action_cancel">"रद्द करना"</string>
@@ -384,4 +384,9 @@
     <string name="pref_update_self_desc">"अरोरा स्टोर की नई उपलब्ध अपडेट की जांच करें"</string>
     <string name="toast_rate_limit">"नए सत्र के लिए टोकन की बेनती....."</string>
     <string name="toast_token_stale">"टोकन पुराना है, नए टोकन के लिए बेनती..."</string>
+    <string name="error_session_expired">"सत्र समाप्त हुआ"</string>
+    <string name="list_updating_background">"पृष्ठभूमि में एप्लिकेशन डाउनलोड करना"</string>
+    <string name="list_updating_failed">"अपडेट करने में विफल"</string>
+    <string name="pref_updates_auto">"ऑटो अपडेट सक्षम करें"</string>
+    <string name="pref_updates_auto_desc">"जब भी नया संस्करण उपलब्ध हो, ऐप्स को अपडेट करें"</string>
 </resources>
