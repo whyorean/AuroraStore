@@ -22,14 +22,13 @@ package com.aurora.store.utility;
 
 import android.content.Context;
 
-import com.aurora.store.api.PlayStoreApiAuthenticator;
 import com.aurora.store.model.LoginInfo;
 
 public class Accountant {
     public static final String DATA = "DATA";
     public static final String EMAIL = "EMAIL";
-    public static final String GOOGLE_NAME = "GOOGLE_NAME";
-    public static final String GOOGLE_URL = "GOOGLE_URL";
+    public static final String PROFILE_NAME = "PROFILE_NAME";
+    public static final String PROFILE_AVATAR = "PROFILE_AVATAR";
     public static final String LOGGED_IN = "LOGGED_IN";
     public static final String ANONYMOUS = "ANONYMOUS";
 
@@ -43,7 +42,7 @@ public class Accountant {
     }
 
     public static String getUserName(Context context) {
-        return PrefUtil.getString(context, GOOGLE_NAME);
+        return PrefUtil.getString(context, PROFILE_NAME);
     }
 
     public static String getEmail(Context context) {
@@ -51,13 +50,14 @@ public class Accountant {
     }
 
     public static String getImageURL(Context context) {
-        return PrefUtil.getString(context, GOOGLE_URL);
+        return PrefUtil.getString(context, PROFILE_AVATAR);
     }
 
     public static void completeCheckout(Context context) {
         PrefUtil.remove(context, LOGGED_IN);
-        PrefUtil.remove(context, GOOGLE_NAME);
-        PrefUtil.remove(context, GOOGLE_URL);
+        PrefUtil.remove(context, EMAIL);
+        PrefUtil.remove(context, PROFILE_NAME);
+        PrefUtil.remove(context, PROFILE_AVATAR);
         LoginInfo.removeSavedInstance(context);
     }
 
@@ -65,7 +65,7 @@ public class Accountant {
         PrefUtil.putBoolean(context, LOGGED_IN, true);
     }
 
-    public static void setAnonymous(Context context,boolean value) {
+    public static void setAnonymous(Context context, boolean value) {
         PrefUtil.putBoolean(context, ANONYMOUS, value);
     }
 }

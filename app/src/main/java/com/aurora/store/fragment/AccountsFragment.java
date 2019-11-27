@@ -44,10 +44,13 @@ import com.aurora.store.R;
 import com.aurora.store.activity.GoogleLoginActivity;
 import com.aurora.store.activity.SettingsActivity;
 import com.aurora.store.api.PlayStoreApiAuthenticator;
-import com.aurora.store.task.UserProfiler;
 import com.aurora.store.utility.Accountant;
 import com.aurora.store.utility.ContextUtil;
 import com.aurora.store.utility.Log;
+import com.aurora.store.utility.PrefUtil;
+import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
+import com.dragons.aurora.playstoreapiv2.Image;
+import com.dragons.aurora.playstoreapiv2.UserProfile;
 import com.google.android.material.checkbox.MaterialCheckBox;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.textfield.TextInputEditText;
@@ -147,9 +150,9 @@ public class AccountsFragment extends Fragment {
 
     @OnClick(R.id.btn_anonymous)
     public void loginAnonymous() {
-        CompositeDisposable disposable = new CompositeDisposable();
         disposable.add(Observable.fromCallable(() -> PlayStoreApiAuthenticator
                 .login(context))
+                .map(api -> api.userProfile().getUserProfile())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnSubscribe(d -> {
@@ -158,13 +161,10 @@ public class AccountsFragment extends Fragment {
                     progressBar.setVisibility(View.VISIBLE);
                 })
                 .doOnComplete(() -> ContextUtil.runOnUiThread(() -> resetAnonymousLogin()))
-                .subscribe(success -> {
-                    if (success) {
-                        Toast.makeText(context, "Successfully logged in", Toast.LENGTH_LONG).show();
-                        Accountant.setAnonymous(context, true);
-                        ContextUtil.runOnUiThread(() -> getUserInfo());
-                    } else
-                        Toast.makeText(context, "Failed to login", Toast.LENGTH_LONG).show();
+                .subscribe(userProfile -> {
+                    Toast.makeText(context, "Successfully logged in", Toast.LENGTH_LONG).show();
+                    Accountant.setAnonymous(context, true);
+                    updateUI(userProfile);
                 }, err -> {
                     Toast.makeText(context, err.getMessage(), Toast.LENGTH_LONG).show();
                     ContextUtil.runOnUiThread(() -> resetAnonymousLogin());
@@ -174,12 +174,10 @@ public class AccountsFragment extends Fragment {
     private void init() {
         boolean isLoggedIn = Accountant.isLoggedIn(context);
         progressBar.setVisibility(View.INVISIBLE);
-        if (Accountant.getUserName(context).isEmpty())
-            getUserInfo();
         switchTopViews(isLoggedIn);
         switchBottomViews(isLoggedIn);
         setupChips();
-        loadUserData();
+        setupProfile();
     }
 
     private void setupChips() {
@@ -192,16 +190,6 @@ public class AccountsFragment extends Fragment {
         chipLicense.setOnClickListener(v -> {
             openWebView(URL_LICENSE);
         });
-    }
-
-    private void loadUserData() {
-        GlideApp
-                .with(this)
-                .load(Accountant.getImageURL(context))
-                .circleCrop()
-                .into(imgAvatar);
-        txtName.setText(Accountant.isAnonymous(context) ? getText(R.string.account_dummy) : Accountant.getUserName(context));
-        txtMail.setText(Accountant.isAnonymous(context) ? "auroraoss@gmail.com" : Accountant.getEmail(context));
     }
 
     private void switchTopViews(boolean showInfo) {
@@ -218,19 +206,26 @@ public class AccountsFragment extends Fragment {
             mViewSwitcherBottom.showPrevious();
     }
 
-    private void getUserInfo() {
-        disposable.add(Observable.fromCallable(() -> new UserProfiler(context)
-                .getUserProfile())
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(success -> {
-                    if (success) {
-                        ContextUtil.runOnUiThread(() -> {
-                            loadUserData();
-                            init();
-                        });
-                    }
-                }, err -> Log.e("Google Login failed : %s", err.getMessage())));
+    private void updateUI(UserProfile userProfile) {
+        PrefUtil.putString(context, Accountant.PROFILE_NAME, userProfile.getName());
+        for (Image image : userProfile.getImageList()) {
+            if (image.getImageType() == GooglePlayAPI.IMAGE_TYPE_APP_ICON) {
+                PrefUtil.putString(context, Accountant.PROFILE_AVATAR, image.getImageUrl());
+            }
+        }
+        setupProfile();
+        init();
+    }
+
+    private void setupProfile() {
+        GlideApp
+                .with(this)
+                .load(Accountant.getImageURL(context))
+                .placeholder(R.drawable.ic_avatar_boy)
+                .circleCrop()
+                .into(imgAvatar);
+        txtName.setText(Accountant.isAnonymous(context) ? getText(R.string.account_dummy) : Accountant.getUserName(context));
+        txtMail.setText(Accountant.isAnonymous(context) ? "auroraoss@gmail.com" : Accountant.getEmail(context));
     }
 
     private void resetAnonymousLogin() {

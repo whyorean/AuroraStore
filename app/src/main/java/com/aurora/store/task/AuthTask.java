@@ -47,10 +47,10 @@ public class AuthTask extends BaseTask {
         LoginInfo.save(context, loginInfo);
 
         UserProfile userProfile = api.userProfile().getUserProfile();
-        PrefUtil.putString(context, Accountant.GOOGLE_NAME, userProfile.getName());
+        PrefUtil.putString(context, Accountant.PROFILE_NAME, userProfile.getName());
         for (Image image : userProfile.getImageList()) {
             if (image.getImageType() == GooglePlayAPI.IMAGE_TYPE_APP_ICON) {
-                PrefUtil.putString(context, Accountant.GOOGLE_URL, image.getImageUrl());
+                PrefUtil.putString(context, Accountant.PROFILE_AVATAR, image.getImageUrl());
             }
         }
         return !loginInfo.isEmpty();

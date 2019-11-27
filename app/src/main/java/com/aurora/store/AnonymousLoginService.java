@@ -58,8 +58,8 @@ public class AnonymousLoginService extends Service {
                 .login(this))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe((success) -> {
-                    if (success) {
+                .subscribe((api) -> {
+                    if (api != null) {
                         Log.i("Anonymous Login Successful");
                         Accountant.setAnonymous(this, true);
                         RxBus.publish(new Event(Events.LOGGED_IN));

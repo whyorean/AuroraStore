@@ -67,11 +67,11 @@ public class PlayStoreApiAuthenticator {
         return api != null;
     }
 
-    public static boolean login(Context context) throws IOException {
+    public static GooglePlayAPI login(Context context) throws IOException {
         LoginInfo loginInfo = new LoginInfo();
         loginInfo.setTokenDispenserUrl(TokenDispenserMirrors.get(context));
         GooglePlayAPI api = ApiBuilderUtil.buildAnonymousApi(context, loginInfo);
-        return api != null;
+        return api;
     }
 
     public static void destroyInstance() {

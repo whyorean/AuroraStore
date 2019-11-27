@@ -83,32 +83,31 @@ public class LoginFragment extends IntroBaseFragment {
     @OnClick(R.id.btn_anonymous)
     public void loginAnonymous() {
         CompositeDisposable disposable = new CompositeDisposable();
-        disposable.add(
-                Observable.fromCallable(() -> PlayStoreApiAuthenticator.login(context))
-                        .subscribeOn(Schedulers.io())
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .doOnSubscribe(d -> {
-                            btnAnonymous.setText(getText(R.string.action_logging_in));
-                            btnAnonymous.setEnabled(false);
-                            progressBar.setVisibility(View.VISIBLE);
-                        })
-                        .subscribe(success -> {
-                            if (success) {
-                                Toast.makeText(context, getText(R.string.toast_login_success), Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(context, AuroraActivity.class);
-                                intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-                                ActivityOptions activityOptions = ActivityOptions.makeSceneTransitionAnimation((IntroActivity) context);
-                                startActivity(intent, activityOptions.toBundle());
-                                ((IntroActivity) getActivity()).finish();
-                            } else {
-                                Toast.makeText(context, getText(R.string.toast_login_failed), Toast.LENGTH_LONG).show();
-                                ContextUtil.runOnUiThread(this::resetAnonymousLogin);
-                            }
-                        }, err -> {
-                            Toast.makeText(context, getText(R.string.toast_login_failed), Toast.LENGTH_LONG).show();
-                            ContextUtil.runOnUiThread(this::resetAnonymousLogin);
-                        })
-        );
+        disposable.add(Observable.fromCallable(() -> PlayStoreApiAuthenticator
+                .login(context))
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnSubscribe(d -> {
+                    btnAnonymous.setText(getText(R.string.action_logging_in));
+                    btnAnonymous.setEnabled(false);
+                    progressBar.setVisibility(View.VISIBLE);
+                })
+                .subscribe(api -> {
+                    if (api != null) {
+                        Toast.makeText(context, getText(R.string.toast_login_success), Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(context, AuroraActivity.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                        ActivityOptions activityOptions = ActivityOptions.makeSceneTransitionAnimation((IntroActivity) context);
+                        startActivity(intent, activityOptions.toBundle());
+                        ((IntroActivity) getActivity()).finish();
+                    } else {
+                        Toast.makeText(context, getText(R.string.toast_login_failed), Toast.LENGTH_LONG).show();
+                        ContextUtil.runOnUiThread(this::resetAnonymousLogin);
+                    }
+                }, err -> {
+                    Toast.makeText(context, getText(R.string.toast_login_failed), Toast.LENGTH_LONG).show();
+                    ContextUtil.runOnUiThread(this::resetAnonymousLogin);
+                }));
     }
 
     private void resetAnonymousLogin() {
