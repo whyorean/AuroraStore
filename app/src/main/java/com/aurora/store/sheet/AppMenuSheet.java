@@ -107,7 +107,7 @@ public class AppMenuSheet extends BottomSheetDialogFragment {
         final BlacklistManager blacklistManager = new BlacklistManager(context);
         boolean isBlacklisted = blacklistManager.contains(app.getPackageName());
         MenuItem blackListMenu = navigationView.getMenu().findItem(R.id.action_blacklist);
-        blackListMenu.setTitle(isBlacklisted ? R.string.action_whitelist : R.string.action_blacklist);
+        blackListMenu.setTitle(isBlacklisted ? R.string.action_whitelist : R.string.menu_blacklist);
 
         boolean installed = PackageUtil.isInstalled(context, app);
         navigationView.getMenu().findItem(R.id.action_uninstall).setVisible(installed);

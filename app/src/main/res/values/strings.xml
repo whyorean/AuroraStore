@@ -12,6 +12,7 @@
     <string name="action_accounts">"Accounts"</string>
     <string name="action_ask">"Ask"</string>
     <string name="action_blacklist">"Blacklist"</string>
+    <string name="menu_blacklist">"Add to blacklist"</string>
     <string name="action_cancel">"Cancel"</string>
     <string name="action_clear">"Clear"</string>
     <string name="action_clear_all">"Clear all"</string>
