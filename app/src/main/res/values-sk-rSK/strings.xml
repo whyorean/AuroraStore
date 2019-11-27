@@ -364,4 +364,9 @@ Upozorňujeme, že služba Google Play Store nepodporuje preberanie ľubovoľný
     <string name="pref_update_self_desc">"Skontrolovať posledné dostupné aktualizácie Aurora Store"</string>
     <string name="toast_rate_limit">"Príliš veľa požiadaviek z aktuálneho sedenia, vyžaduje sa nové sedenie"</string>
     <string name="toast_token_stale">"Token prestal fungovať, vyžaduje sa nový token"</string>
+    <string name="error_session_expired">"Operácia ukončená"</string>
+    <string name="list_updating_background">"Sťahovanie aktualizácii na pozadí"</string>
+    <string name="list_updating_failed">"Aktualizácia neúspešná"</string>
+    <string name="pref_updates_auto">"Povoliť automatické aktualizácie"</string>
+    <string name="pref_updates_auto_desc">"Aktualizovať vždy keď je nová verzia k dispozícii"</string>
 </resources>
