@@ -370,4 +370,9 @@
     <string name="pref_update_self_desc">"Aurora Store'un mevcut en son güncellemelerini denetleyin"</string>
     <string name="toast_rate_limit">"Geçerli oturumdan çok fazla istek var, yeni oturum açma isteniyor"</string>
     <string name="toast_token_stale">"Belirteç eski, yeni belirteç isteniyor"</string>
+    <string name="error_session_expired">"Oturum süresi doldu"</string>
+    <string name="list_updating_background">"Arka planda uygulamaları indirme"</string>
+    <string name="list_updating_failed">"Güncelleme başarısız oldu"</string>
+    <string name="pref_updates_auto">"Otomatik güncellemeleri etkinleştir"</string>
+    <string name="pref_updates_auto_desc">"Yeni sürüm mevcut olduğunda uygulamaları güncelle"</string>
 </resources>
