@@ -25,6 +25,7 @@ package com.aurora.store.api;
 
 import android.content.Context;
 
+import com.aurora.store.TokenDispenserMirrors;
 import com.aurora.store.model.LoginInfo;
 import com.aurora.store.utility.ApiBuilderUtil;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
@@ -68,7 +69,7 @@ public class PlayStoreApiAuthenticator {
 
     public static boolean login(Context context) throws IOException {
         LoginInfo loginInfo = new LoginInfo();
-        loginInfo.setTokenDispenserUrl("http://auroraoss.com:8080");
+        loginInfo.setTokenDispenserUrl(TokenDispenserMirrors.get(context));
         GooglePlayAPI api = ApiBuilderUtil.buildAnonymousApi(context, loginInfo);
         return api != null;
     }

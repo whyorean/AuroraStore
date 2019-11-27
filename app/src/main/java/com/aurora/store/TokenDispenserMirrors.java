@@ -37,9 +37,9 @@ public class TokenDispenserMirrors {
 
     static {
         dispenserList.add("http://auroraoss.com:8080");
-        dispenserList.add("http://92.42.46.11:8080");
         dispenserList.add("http://auroraoss.in:8080");
-        dispenserList.add("https://token-dispenser.calyxinstitute.org");
+        //dispenserList.add("http://92.42.46.11:8080");
+        //dispenserList.add("https://token-dispenser.calyxinstitute.org");
     }
 
     public static String get(Context context) {
