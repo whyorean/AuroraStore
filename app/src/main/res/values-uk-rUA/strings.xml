@@ -364,4 +364,9 @@ Aurora дозволяє шукати, завантажувати, встанов
     <string name="pref_update_self_desc">"Перевірити наявність оновлень для Aurora Store"</string>
     <string name="toast_rate_limit">"Надто багато запитів з цієї сесії, відкриваємо нову сесію"</string>
     <string name="toast_token_stale">"Токен застарілий, надсилаємо запит на новий токен"</string>
+    <string name="error_session_expired">"Сесія закінчилася"</string>
+    <string name="list_updating_background">"Завантаження програм у фоновому режимі"</string>
+    <string name="list_updating_failed">"Не вдалося оновити"</string>
+    <string name="pref_updates_auto">"Увімкнути автоматичні оновлення"</string>
+    <string name="pref_updates_auto_desc">"Оновлювати програми, як тільки доступна нова версія"</string>
 </resources>
