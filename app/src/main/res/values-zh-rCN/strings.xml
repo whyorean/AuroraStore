@@ -390,4 +390,9 @@
     <string name="pref_update_self_desc">"检查Aurora Store的最新可用更新"</string>
     <string name="toast_rate_limit">"当前会话请求过多，正在请求新的登录会话"</string>
     <string name="toast_token_stale">"令牌已过时，正在请求新的令牌"</string>
+    <string name="error_session_expired">"会话已过期"</string>
+    <string name="list_updating_background">"正在后台下载应用"</string>
+    <string name="list_updating_failed">"更新失败"</string>
+    <string name="pref_updates_auto">"启用自动更新"</string>
+    <string name="pref_updates_auto_desc">"每当新版本可用时更新应用"</string>
 </resources>
