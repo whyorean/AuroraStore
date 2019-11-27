@@ -62,11 +62,13 @@
         android:layout_margin="@dimen/margin_normal"
         android:background="@drawable/generic_padded_bg">
 
-        <LinearLayout
-            android:id="@+id/permissions_container"
+        <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" />
+            android:text="@string/disclaimer"
+            android:textAlignment="viewStart"
+            android:textColor="?android:attr/textColorPrimary"
+            android:typeface="monospace" />
     </androidx.core.widget.NestedScrollView>
 
     <RelativeLayout

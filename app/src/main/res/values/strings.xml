@@ -377,4 +377,5 @@ Keep in mind that downloading arbitrary versions of apps is not supported by the
     <string name="pref_updates_auto_desc">"Update apps whenever new version are available"</string>
     <string name="toast_login_success">"Successfully logged in"</string>
     <string name="toast_login_failed">"Failed to login"</string>
+    <string name="disclaimer">"Using Aurora Store with your own Google account may cause your account to be blacklisted or deactivated, as Aurora Store violates Google's Terms of Service 3.3, use at your own risk. You can opt to go anonymous and use a throwaway account to login to Aurora Store"</string>
 </resources>
