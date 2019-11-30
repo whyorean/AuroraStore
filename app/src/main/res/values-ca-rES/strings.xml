@@ -371,4 +371,11 @@ Tingueu en compte que Google Play Store no admet la baixada de versions arbitrà
     <string name="list_updating_failed">"No s'ha pogut actualitzar"</string>
     <string name="pref_updates_auto">"Activa les actualitzacions automàtiques"</string>
     <string name="pref_updates_auto_desc">"Actualitza les aplicacions sempre que hi hagi una versió nova disponible"</string>
+    <string name="account_email">"Correu"</string>
+    <string name="account_password">"Contrasenya"</string>
+    <string name="account_save_password">"Desa la contrasenya"</string>
+    <string name="toast_login_success">"S'ha iniciat la sessió amb èxit"</string>
+    <string name="toast_login_failed">"No s'ha pogut iniciar sessió"</string>
+    <string name="disclaimer">"L'ús de l'Aurora Store amb el mateix compte de Google pot fer que el vostre compte aparegui a la llista negra o es desactivi, ja que l'Aurora Store viola els Termes de servei 3.3 de Google, feu-ho sota la vostra responsabilitat. Podeu optar per ser anònim i utilitzar un compte d'un sol ús per iniciar sessió a l'Aurora Store"</string>
+    <string name="menu_blacklist">"Afegeix a la llista negra"</string>
 </resources>
