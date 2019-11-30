@@ -372,10 +372,11 @@
     <string name="list_updating_failed">"Не ўдалося абнавіць"</string>
     <string name="pref_updates_auto">"Уключыць аўтаабнаўленне"</string>
     <string name="pref_updates_auto_desc">"Абнаўляць праграмы пры даступнасці новых версій"</string>
-    <string name="account_email"></string>
-    <string name="account_password"></string>
-    <string name="account_save_password"></string>
-    <string name="toast_login_success"></string>
-    <string name="toast_login_failed"></string>
-    <string name="disclaimer"></string>
+    <string name="account_email">"Электронная пошта"</string>
+    <string name="account_password">"Пароль"</string>
+    <string name="account_save_password">"Захаваць пароль"</string>
+    <string name="toast_login_success">"Вы паспяхова ўвайшлі"</string>
+    <string name="toast_login_failed">"Не ўдалося ўвайсці"</string>
+    <string name="disclaimer">"Выкарыстанне Aurora Store з вашым уласным уліковым запісам Google можа прывесці да таго, што ён трапіць у чорны спіс або будзе дэактываваны, бо Aurora Store парушае ўмовы выкарыстання паслуг Google 3.3. Карыстайцеся гэтым на свой страх і рызыку. Як варыянт, вы можаце скарыстацца ананімным уліковым запісам для ўваходу ў Aurora Store"</string>
+    <string name="menu_blacklist">"Дадаць у чорны спіс"</string>
 </resources>
