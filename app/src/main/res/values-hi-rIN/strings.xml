@@ -389,4 +389,11 @@
     <string name="list_updating_failed">"अपडेट करने में विफल"</string>
     <string name="pref_updates_auto">"ऑटो अपडेट सक्षम करें"</string>
     <string name="pref_updates_auto_desc">"जब भी नया संस्करण उपलब्ध हो, ऐप्स को अपडेट करें"</string>
+    <string name="account_email">"ई-मेल"</string>
+    <string name="account_password">"पासवर्ड"</string>
+    <string name="account_save_password">"पासवर्ड याद रखो"</string>
+    <string name="toast_login_success">"सफलतापूर्वक लॉग इन किया गया"</string>
+    <string name="toast_login_failed">"लॉगिन करने में विफल"</string>
+    <string name="disclaimer">"अपने स्वयं के Google खाते के साथ अरोरा स्टोर का उपयोग करने से आपका खाता ब्लैकलिस्ट या निष्क्रिय हो सकता है, क्योंकि अरोरा स्टोर Google की सेवा की शर्तों का उल्लंघन करता है, अपने जोखिम पर उपयोग करें।  आप गुमनाम जाने का विकल्प चुन सकते हैं और अरोरा स्टोर में प्रवेश करने के लिए एक नकली खाते का उपयोग कर सकते हैं"</string>
+    <string name="menu_blacklist">"ब्लैकलिस्ट में जोड़ें"</string>
 </resources>
