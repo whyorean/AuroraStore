@@ -369,4 +369,10 @@ Aurora дозволяє шукати, завантажувати, встанов
     <string name="list_updating_failed">"Не вдалося оновити"</string>
     <string name="pref_updates_auto">"Увімкнути автоматичні оновлення"</string>
     <string name="pref_updates_auto_desc">"Оновлювати програми, як тільки доступна нова версія"</string>
+    <string name="account_email">"Email"</string>
+    <string name="account_password">"Пароль"</string>
+    <string name="account_save_password">"Зберегти пароль"</string>
+    <string name="toast_login_success">"Вхід успішний"</string>
+    <string name="toast_login_failed">"Не вдалося увійти"</string>
+    <string name="disclaimer">"Використання Aurora Store з вашим власним акаунтом Google може призвести до його деактивації або занесення до чорного списку, так як Aurora Store порушує Умови використання Google Play. Користуйтесь на свій страх і ризик. У вас є можливість увійти анонімно, в такому разі ви увійдете у тимчасовий акаунт."</string>
 </resources>
