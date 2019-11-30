@@ -372,10 +372,11 @@
     <string name="list_updating_failed">"ਅੱਪਡੇਟ ਕਰਨ ਵਿੱਚ ਅਸਫਲ"</string>
     <string name="pref_updates_auto">"ਆਟੋ ਅੱਪਡੇਟਾਂ ਨੂੰ ਚਾਲੂ ਕਰੋ"</string>
     <string name="pref_updates_auto_desc">"ਜਦੋਂ ਵੀ ਨਵਾਂ ਵਰਜ਼ਨ ਉਪਲੱਬਧ ਹੋਵੇ ਤਾਂ ਐਪਸ ਨੂੰ ਅੱਪਡੇਟ ਕਰੋ"</string>
-    <string name="account_email"></string>
-    <string name="account_password"></string>
-    <string name="account_save_password"></string>
-    <string name="toast_login_success"></string>
-    <string name="toast_login_failed"></string>
-    <string name="disclaimer"></string>
+    <string name="account_email">"ਈ-ਮੇਲ"</string>
+    <string name="account_password">"ਪਾਸਵਰਡ"</string>
+    <string name="account_save_password">"ਪਾਸਵਰਡ ਯਾਦ ਰੱਖੋ"</string>
+    <string name="toast_login_success">"ਲੌਗ-ਇਨ ਸਫਲ"</string>
+    <string name="toast_login_failed">"ਲੌਗ-ਇਨ ਅਸਫਲ"</string>
+    <string name="disclaimer">"ਆਪਣੇ ਖੁੱਦ ਦੇ ਗੂਗਲ ਖਾਤੇ ਨਾਲ ਔਰੋਰਾ ਸਟੋਰ ਦੀ ਵਰਤੋਂ ਕਰਨ ਨਾਲ ਤੁਹਾਡੇ ਖਾਤੇ ਨੂੰ ਗੂਗਲ ਦੁਆਰਾ ਬਲੈਕ-ਲਿਸਟ ਜਾਂ ਅਯੋਗ ਕੀਤਾ ਜਾ ਸਕਦਾ ਹੈ, ਕਿਉਂਕਿ ਔਰੋਰਾ ਸਟੋਰ ਗੂਗਲ ਸੇਵਾਵਾਂ ਦੀਆਂ ਸ਼ਰਤਾਂ 3.3 ਅਨੁਸਾਰ ਉਲੰਘਣਾ ਕਰਦਾ ਹੈ, ਆਪਣੇ ਜੋਖਮ 'ਤੇ ਖੁੱਦ ਦਾ ਗੂਗਲ ਖਾਤਾ ਵਰਤੋਂ.  ਤੁਸੀਂ ਲੌਗ-ਇਨ ਵਾਸਤੇ ਅਗਿਆਤ ਖਾਤੇ ਦੀ ਵੀ ਚੋਣ ਕਰ ਸਕਦੇ ਹੋ ਅਤੇ ਜਾਂ ਆਪਣਾ ਕੋਈ ਜਾਅਲੀ ਗੂਗਲ ਖਾਤਾ ਵੀ ਵਰਤ ਸਕਦੇ ਹੋ।"</string>
+    <string name="menu_blacklist">"ਬਲੈਕ ਲਿਸਟ ਕਰੋ"</string>
 </resources>
