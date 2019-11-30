@@ -12,7 +12,7 @@
     <!-- Account -->
     <string name="action_accounts">"Profili"</string>
     <string name="action_ask">"Chiedi"</string>
-    <string name="action_blacklist">"Aggiungi alla blacklist"</string>
+    <string name="action_blacklist">"Blacklist"</string>
     <string name="action_cancel">"Annulla"</string>
 
     <!-- Cancella -->
@@ -431,4 +431,11 @@ Inoltre fornisce una lista di tracker incorporati in una applicazione."</string>
     <string name="list_updating_failed">"Aggiornamento fallito"</string>
     <string name="pref_updates_auto">"Abilita aggiornamenti automatici"</string>
     <string name="pref_updates_auto_desc">"Aggiorna le app ogni volta che è disponibile una nuova versione"</string>
+    <string name="account_email">"Email"</string>
+    <string name="account_password">"Password"</string>
+    <string name="account_save_password">"Salva password"</string>
+    <string name="toast_login_success">"Login effettuato con successo"</string>
+    <string name="toast_login_failed">"Login fallito"</string>
+    <string name="disclaimer">"L'accesso ad Aurora Store con il tuo account Google potrebbe causare l'aggiunta in blacklist o la disattivazione di quest'ultimo, dal momento che l'app viola il punto 3.3 dei termini di servizio di Google Play. Procedi a tuo rischio e pericolo. Puoi comunque scegliere di utilizzare l'accesso anonimo con un account usa e getta per accedere all'app."</string>
+    <string name="menu_blacklist">"Aggiungi alla blacklist"</string>
 </resources>
