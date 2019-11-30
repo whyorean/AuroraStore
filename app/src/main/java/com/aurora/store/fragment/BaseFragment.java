@@ -36,6 +36,7 @@ import com.aurora.store.AnonymousLoginService;
 import com.aurora.store.ErrorType;
 import com.aurora.store.R;
 import com.aurora.store.activity.AccountsActivity;
+import com.aurora.store.api.PlayStoreApiAuthenticator;
 import com.aurora.store.events.Event;
 import com.aurora.store.events.Events;
 import com.aurora.store.events.RxBus;
@@ -237,6 +238,7 @@ public abstract class BaseFragment extends Fragment {
     }
 
     private void processAuthException(AuthException e) {
+        PlayStoreApiAuthenticator.destroyInstance();
         if (e instanceof CredentialsEmptyException || e instanceof InvalidApiException) {
             Accountant.completeCheckout(context);
             RxBus.publish(new Event(Events.LOGGED_OUT));
