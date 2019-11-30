@@ -371,4 +371,8 @@ También ofrece una lista de los trackers incluidos en una aplicación."</string
     <string name="list_updating_failed">"Fallo al actualizar"</string>
     <string name="pref_updates_auto">"Activar autoactualizaciones"</string>
     <string name="pref_updates_auto_desc">"Actualizar aplicaciones cuando haya disponible una nueva versión"</string>
+    <string name="account_email">"Correo"</string>
+    <string name="account_password">"Contraseña"</string>
+    <string name="account_save_password">"Guardar contraseña"</string>
+    <string name="menu_blacklist">"Añadir a lista negra"</string>
 </resources>
