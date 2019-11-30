@@ -373,4 +373,10 @@ Tenha em mente que a transferência de versões arbitrárias de aplicações nã
     <string name="list_updating_failed">"Falha ao atualizar"</string>
     <string name="pref_updates_auto">"Ativar atualizações automáticas"</string>
     <string name="pref_updates_auto_desc">"Atualizar aplicações sempre que uma nova versão estiver disponível"</string>
+    <string name="account_email">"Email"</string>
+    <string name="account_password">"Palavra-chave"</string>
+    <string name="account_save_password">"Guardar palavra-chave"</string>
+    <string name="toast_login_success">"Sessão iniciada com sucesso"</string>
+    <string name="toast_login_failed">"Falha ao iniciar sessão"</string>
+    <string name="disclaimer">"O uso da Aurora Store com sua própria conta do Google pode fazer com que sua conta seja colocada na lista negra ou desativada, pois o Aurora Store viola os Termos de Serviço 3.3 do Google, use por sua conta e risco. Pode optar por se tornar anónimo e usar uma conta descartável para aceder ao Aurora Store"</string>
 </resources>
