@@ -12,7 +12,7 @@
     <string name="action_ask">"Запросить"</string>
 
     <!-- Ожидается добавление отдельного стринга для названия категории в настройках, а это останется только для действия добавляющего приложение в чёрный список, а не как сейчас. -->
-    <string name="action_blacklist">"Добавить в чёрный список"</string>
+    <string name="action_blacklist">"Чёрный список"</string>
     <string name="action_cancel">"Отмена"</string>
     <string name="action_clear">"Очистить"</string>
     <string name="action_clear_all">"Очистить всё"</string>
@@ -266,8 +266,8 @@ https://exodus-privacy.eu.org/en/. Это как "отчёт от аваста" 
     <string name="pref_ui_tab_mode_title">"Прокручиваемые вкладки"</string>
     <string name="pref_ui_tab_mode_summary">"Делает вкладки прокручиваемыми, рекомендуется для устройств с маленьким разрешением"</string>
     <string name="about_app">"Aurora - это альтернатива Play Store с открытым исходным кодом.
-    Aurora позволяет искать, загружать, устанавливать и обновлять приложения и игры.
-    Дополнительно Aurora отображает список трекеров, встроенных в приложение."</string>
+Aurora позволяет искать, загружать, устанавливать и обновлять приложения и игры.
+Дополнительно Aurora отображает список трекеров, встроенных в приложение."</string>
     <string name="about_paypal">"Paypal"</string>
     <string name="about_paypal_summary">"Пожертвовать через Paypal"</string>
     <string name="about_fdroid">"F-Droid"</string>
@@ -418,4 +418,11 @@ https://exodus-privacy.eu.org/en/. Это как "отчёт от аваста" 
     <string name="list_updating_failed">"Обновление невозможно"</string>
     <string name="pref_updates_auto">"Автоматическое обновление"</string>
     <string name="pref_updates_auto_desc">"Обновлять приложения всякий раз, когда появляется новая версия"</string>
+    <string name="account_email">"Эл. почта"</string>
+    <string name="account_password">"Пароль"</string>
+    <string name="account_save_password">"Сохранить пароль"</string>
+    <string name="toast_login_success">"Успешный вход"</string>
+    <string name="toast_login_failed">"Вход не удался"</string>
+    <string name="disclaimer">"Использование Aurora Store с вашим собственным аккаунтом Google может привести к его деактивации или добавлению в чёрный список, так как Aurora Store нарушает «Условия использования Google». Используйте на свой страх и риск. У вас есть возможность войти анонимно."</string>
+    <string name="menu_blacklist">"Добавить в чёрный список"</string>
 </resources>
