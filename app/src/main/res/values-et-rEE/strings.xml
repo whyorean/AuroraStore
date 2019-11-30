@@ -373,4 +373,9 @@ Jäta meelde, et rakenduse suvaliste versioonide allalaadimine pole Google Play 
     <string name="list_updating_failed">"Uuendamine ebaõnnestus"</string>
     <string name="pref_updates_auto">"Luba autom. uuendused"</string>
     <string name="pref_updates_auto_desc">"Uuenda rakendusi kohe, kui uus versioon on saadaval"</string>
+    <string name="account_email">"E-post"</string>
+    <string name="account_password">"Parool"</string>
+    <string name="account_save_password">"Salvesta parool"</string>
+    <string name="toast_login_success">"Edukalt sisselogitud"</string>
+    <string name="toast_login_failed">"Sisselogimine ebaõnnestus"</string>
 </resources>
