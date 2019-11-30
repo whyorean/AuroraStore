@@ -369,4 +369,10 @@ Upozorňujeme, že služba Google Play Store nepodporuje preberanie ľubovoľný
     <string name="list_updating_failed">"Aktualizácia neúspešná"</string>
     <string name="pref_updates_auto">"Povoliť automatické aktualizácie"</string>
     <string name="pref_updates_auto_desc">"Aktualizovať vždy keď je nová verzia k dispozícii"</string>
+    <string name="account_email">"Email"</string>
+    <string name="account_password">"Heslo"</string>
+    <string name="account_save_password">"Uložiť heslo"</string>
+    <string name="toast_login_success">"Úspešné prihlásenie"</string>
+    <string name="toast_login_failed">"Neúspešné prihlásenie"</string>
+    <string name="menu_blacklist">"Pridať na čierny zoznam"</string>
 </resources>
