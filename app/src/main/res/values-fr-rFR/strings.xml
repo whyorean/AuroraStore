@@ -373,4 +373,11 @@ Elle fournit également une liste de traqueurs intégrés dans une application."
     <string name="list_updating_failed">"Echec de la mise a jour."</string>
     <string name="pref_updates_auto">"Activer les mises a jour automatiques"</string>
     <string name="pref_updates_auto_desc">"Mettre les applis a jour dès qu'une nouvelle version est disponible"</string>
+    <string name="account_email">"Email"</string>
+    <string name="account_password">"Mot de passe"</string>
+    <string name="account_save_password">"Enregistrer le mot de passe"</string>
+    <string name="toast_login_success">"Connexion réussie"</string>
+    <string name="toast_login_failed">"Échec de la connexion"</string>
+    <string name="disclaimer">"L'utilisation d'Aurora Store avec votre propre compte Google peut entraîner la mise sur liste noire ou la désactivation de votre compte, étant donné qu' Aurora enfreint les Conditions d'utilisation 3.3 de Google, son utilisation se fait à vos propres risques. Vous pouvez opter pour l'anonymat et utiliser un compte jetable pour vous connecter à Aurora Store. "</string>
+    <string name="menu_blacklist">"Ajouter à la liste noire"</string>
 </resources>
