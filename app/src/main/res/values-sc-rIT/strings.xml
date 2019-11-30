@@ -373,4 +373,11 @@ Ammenta·ti chi iscarrigare versiones arbitràrias de sas aplicatziones no est s
     <string name="list_updating_failed">"Agiornamentu fallidu"</string>
     <string name="pref_updates_auto">"Abìlita sos agiornamentos automàticos"</string>
     <string name="pref_updates_auto_desc">"Agiorna sas apl. cando b'at una versione noa disponìbile"</string>
+    <string name="account_email">"Ind. de posta eletrònica"</string>
+    <string name="account_password">"Crae de intrada"</string>
+    <string name="account_save_password">"Sarva sa crae"</string>
+    <string name="toast_login_success">"Intradu chene problemas"</string>
+    <string name="toast_login_failed">"Intrada fallida"</string>
+    <string name="disclaimer">"Impreende Aurora Store cun su contu de Google tuo lu diat pòdere fàghere pònnere in una lista niedda o disativare, ca Aurora Store vìolat sos Tèrmines de Impreu de Google 3.3. Imprea·lu a arriscu tuo. Podes isseberare de èssere anònimu e impreare unu contu temporàneu pro intrare in Aurora Store"</string>
+    <string name="menu_blacklist">"Annanghe a sa lista niedda"</string>
 </resources>
