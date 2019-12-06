@@ -72,9 +72,11 @@ public class DownloaderFragment extends PreferenceFragmentCompat implements Shar
         junkPreference.setEnabled(true);
         junkPreference.setOnPreferenceClickListener(preference -> {
             Util.clearCache(context);
-            File junkDir = new File(PathUtil.getRootApkPath(context));
-            for (File file : junkDir.listFiles())
-                file.delete();
+            if (!PathUtil.isCustomPath(context)) {
+                File junkDir = new File(PathUtil.getRootApkPath(context));
+                for (File file : junkDir.listFiles())
+                    file.delete();
+            }
             ContextUtil.toastLong(context, getString(R.string.toast_junk_removed));
             return false;
         });

@@ -74,7 +74,7 @@ public class PathUtil {
         return obbDir + filename;
     }
 
-    static private boolean isCustomPath(Context context) {
+    static public boolean isCustomPath(Context context) {
         return (!getCustomPath(context).isEmpty());
     }
 
