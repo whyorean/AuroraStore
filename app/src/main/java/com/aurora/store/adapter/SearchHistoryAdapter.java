@@ -21,7 +21,6 @@
 package com.aurora.store.adapter;
 
 import android.content.Context;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,13 +28,10 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.aurora.store.Constants;
 import com.aurora.store.R;
-import com.aurora.store.fragment.SearchAppsFragment;
-import com.aurora.store.fragment.SearchFragment;
 import com.aurora.store.utility.PrefUtil;
 
 import org.apache.commons.lang3.StringUtils;
@@ -47,40 +43,40 @@ import java.util.Locale;
 
 public class SearchHistoryAdapter extends RecyclerView.Adapter<SearchHistoryAdapter.ViewHolder> {
 
-    private ArrayList<String> mQueryList;
-    private SearchFragment fragment;
     private Context context;
+    private ArrayList<String> queryList;
+    private ClickListener clickListener;
 
-    public SearchHistoryAdapter(SearchFragment fragment, ArrayList<String> mQueryList) {
-        this.fragment = fragment;
-        this.mQueryList = mQueryList;
-        this.context = fragment.getContext();
+    public SearchHistoryAdapter(Context context, ArrayList<String> queryList, ClickListener clickListener) {
+        this.queryList = queryList;
+        this.clickListener = clickListener;
+        this.context = context;
     }
 
     public void add(int position, String mHistory) {
-        mQueryList.add(mHistory);
+        queryList.add(mHistory);
         notifyItemInserted(position);
     }
 
     public void remove(int position) {
-        mQueryList.remove(position);
+        queryList.remove(position);
         updatePrefList();
         notifyItemRemoved(position);
     }
 
     public void clear() {
-        mQueryList.clear();
+        queryList.clear();
         clearPrefList();
         notifyDataSetChanged();
     }
 
     public void reload() {
-        mQueryList = PrefUtil.getListString(context, Constants.RECENT_HISTORY);
+        queryList = PrefUtil.getListString(context, Constants.RECENT_HISTORY);
         notifyDataSetChanged();
     }
 
     private void updatePrefList() {
-        PrefUtil.putListString(context, Constants.RECENT_HISTORY, mQueryList);
+        PrefUtil.putListString(context, Constants.RECENT_HISTORY, queryList);
     }
 
     private void clearPrefList() {
@@ -97,28 +93,15 @@ public class SearchHistoryAdapter extends RecyclerView.Adapter<SearchHistoryAdap
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
-        String[] mDatedQuery = mQueryList.get(position).split(":");
-        holder.query.setText(mDatedQuery[0]);
-        holder.date.setText(getQueryDate(mDatedQuery[1]));
-        holder.viewForeground.setOnClickListener(v -> {
-            final String query = holder.query.getText().toString();
-            SearchAppsFragment searchAppsFragment = new SearchAppsFragment();
-            Bundle arguments = new Bundle();
-            arguments.putString("SearchQuery", query);
-            arguments.putString("SearchTitle", getTitleString(query));
-            searchAppsFragment.setArguments(arguments);
-            fragment.getChildFragmentManager()
-                    .beginTransaction()
-                    .replace(R.id.coordinator, searchAppsFragment)
-                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                    .addToBackStack(null)
-                    .commit();
-        });
+        String[] datedQuery = queryList.get(position).split(":");
+        holder.query.setText(datedQuery[0]);
+        holder.date.setText(getQueryDate(datedQuery[1]));
+        holder.viewForeground.setOnClickListener(v -> clickListener.onClicked(datedQuery[0]));
     }
 
     @Override
     public int getItemCount() {
-        return mQueryList.size();
+        return queryList.size();
     }
 
     private String getQueryDate(String queryDate) {
@@ -131,15 +114,8 @@ public class SearchHistoryAdapter extends RecyclerView.Adapter<SearchHistoryAdap
         }
     }
 
-    private String getTitleString(String query) {
-        return query.startsWith(Constants.PUB_PREFIX)
-                ? new StringBuilder().append(context.getString(R.string.apps_by))
-                .append(StringUtils.SPACE)
-                .append(query.substring(Constants.PUB_PREFIX.length())).toString()
-                : new StringBuilder()
-                .append(context.getString(R.string.title_search_result))
-                .append(StringUtils.SPACE)
-                .append(query).toString();
+    public interface ClickListener {
+        void onClicked(String query);
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

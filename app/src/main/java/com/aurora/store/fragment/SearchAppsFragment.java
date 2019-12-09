@@ -127,6 +127,10 @@ public class SearchAppsFragment extends BaseFragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         setErrorView(ErrorType.UNKNOWN);
+        if (!NetworkUtil.isConnected(context)) {
+            setErrorView(ErrorType.NO_NETWORK);
+            switchViews(true);
+        }
         setupRecycler();
         setupSearch();
         filterFab.show();
@@ -214,6 +218,7 @@ public class SearchAppsFragment extends BaseFragment {
             iterator.setFilter(new Filter(getContext()).getFilterPreferences());
             relatedTags = iterator.getRelatedTags();
         } catch (Exception e) {
+            Log.e("BAZINGA");
             processException(e);
         }
     }

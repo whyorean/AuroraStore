@@ -61,12 +61,12 @@ import java.util.regex.Pattern;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class SearchFragment extends Fragment implements HistoryItemTouchHelper.RecyclerItemTouchHelperListener {
+public class SearchFragment extends Fragment implements HistoryItemTouchHelper.RecyclerItemTouchHelperListener, SearchHistoryAdapter.ClickListener {
 
     @BindView(R.id.search_apps)
     SearchView searchView;
     @BindView(R.id.searchHistory)
-    RecyclerView mRecyclerView;
+    RecyclerView recyclerView;
     @BindView(R.id.emptyView)
     TextView emptyView;
     @BindView(R.id.clearAll)
@@ -185,14 +185,14 @@ public class SearchFragment extends Fragment implements HistoryItemTouchHelper.R
         }
     }
 
-    private void setupSearchHistory(ArrayList<String> mHistoryList) {
-        searchHistoryAdapter = new SearchHistoryAdapter(this, mHistoryList);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
-        mRecyclerView.setAdapter(searchHistoryAdapter);
+    private void setupSearchHistory(ArrayList<String> historyList) {
+        searchHistoryAdapter = new SearchHistoryAdapter(context, historyList, this);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setAdapter(searchHistoryAdapter);
         new ItemTouchHelper(
                 new HistoryItemTouchHelper(0, ItemTouchHelper.LEFT, this))
-                .attachToRecyclerView(mRecyclerView);
+                .attachToRecyclerView(recyclerView);
     }
 
     private void clearAll() {
@@ -203,10 +203,10 @@ public class SearchFragment extends Fragment implements HistoryItemTouchHelper.R
 
     private void toggleViews(Boolean shouldHide) {
         if (shouldHide) {
-            mRecyclerView.setVisibility(View.GONE);
+            recyclerView.setVisibility(View.GONE);
             emptyView.setVisibility(View.VISIBLE);
         } else {
-            mRecyclerView.setVisibility(View.VISIBLE);
+            recyclerView.setVisibility(View.VISIBLE);
             emptyView.setVisibility(View.GONE);
         }
     }
@@ -250,5 +250,10 @@ public class SearchFragment extends Fragment implements HistoryItemTouchHelper.R
         String pattern = "([\\p{L}_$][\\p{L}\\p{N}_$]*\\.)+[\\p{L}_$][\\p{L}\\p{N}_$]*";
         Pattern r = Pattern.compile(pattern);
         return r.matcher(query).matches();
+    }
+
+    @Override
+    public void onClicked(String query) {
+        getQueriedApps(query);
     }
 }
