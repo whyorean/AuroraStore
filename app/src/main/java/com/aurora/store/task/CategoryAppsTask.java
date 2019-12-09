@@ -24,11 +24,12 @@ import android.content.Context;
 
 import androidx.annotation.NonNull;
 
-import com.aurora.store.manager.CategoryManager;
-import com.aurora.store.Filter;
 import com.aurora.store.iterator.CustomAppListIterator;
+import com.aurora.store.manager.CategoryManager;
+import com.aurora.store.manager.FilterManager;
 import com.aurora.store.model.App;
-import com.aurora.store.utility.Util;
+import com.aurora.store.model.FilterModel;
+import com.aurora.store.util.Util;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,10 +53,10 @@ public class CategoryAppsTask extends BaseTask {
 
     public List<App> getNextBatch(CustomAppListIterator iterator) {
         CategoryManager categoryManager = new CategoryManager(getContext());
-        com.aurora.store.model.Filter filter = new Filter(getContext()).getFilterPreferences();
+        FilterModel filterModel = FilterManager.getFilterPreferences(getContext());
         List<App> apps = new ArrayList<>();
         for (App app : iterator.next()) {
-            if (categoryManager.fits(app.getCategoryId(), filter.getCategory())) {
+            if (categoryManager.fits(app.getCategoryId(), filterModel.getCategory())) {
                 apps.add(app);
             }
         }

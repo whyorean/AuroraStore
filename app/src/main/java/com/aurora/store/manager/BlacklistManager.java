@@ -23,7 +23,7 @@ package com.aurora.store.manager;
 import android.content.Context;
 
 import com.aurora.store.Constants;
-import com.aurora.store.utility.PrefUtil;
+import com.aurora.store.util.PrefUtil;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -36,24 +36,22 @@ public class BlacklistManager {
 
     public BlacklistManager(Context context) {
         this.context = context;
-        blackList = PrefUtil.getListString(context, Constants.PREFERENCE_BLACKLIST_APPS_LIST);
+        this.blackList = PrefUtil.getListString(context, Constants.PREFERENCE_BLACKLIST_APPS_LIST);
     }
 
-    public boolean add(String s) {
+    public void add(String packageName) {
         ArrayList<String> arrayList = new ArrayList<>();
-        arrayList.add(s);
-        boolean result = addAll(arrayList);
+        arrayList.add(packageName);
+        addAll(arrayList);
         save();
-        return result;
     }
 
-    public boolean addAll(ArrayList<String> arrayList) {
-        boolean result = blackList.addAll(arrayList);
+    public void addAll(ArrayList<String> arrayList) {
+        blackList.addAll(arrayList);
         Set<String> mAppSet = new HashSet<>(blackList);
         blackList.clear();
         blackList.addAll(mAppSet);
         save();
-        return result;
     }
 
     public ArrayList<String> get() {
@@ -64,16 +62,19 @@ public class BlacklistManager {
         return blackList.contains(packageName);
     }
 
-    public boolean remove(String packageName) {
-        boolean result = blackList.remove(packageName);
+    public void remove(String packageName) {
+        blackList.remove(packageName);
         save();
-        return result;
     }
 
-    public boolean removeAll(ArrayList<String> packageList) {
-        boolean result = blackList.removeAll(packageList);
+    public void removeAll(ArrayList<String> packageList) {
+        blackList.removeAll(packageList);
         save();
-        return result;
+    }
+
+    public void removeAll() {
+        blackList = new ArrayList<>();
+        save();
     }
 
     private void save() {

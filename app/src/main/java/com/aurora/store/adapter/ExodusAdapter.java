@@ -41,36 +41,36 @@ import butterknife.ButterKnife;
 
 public class ExodusAdapter extends RecyclerView.Adapter<ExodusAdapter.ViewHolder> {
 
-    private Context mContext;
-    private List<ExodusTracker> mExodusTrackers;
+    private Context context;
+    private List<ExodusTracker> exodusTrackers;
 
-    public ExodusAdapter(Context mContext, List<ExodusTracker> mExodusTrackers) {
-        this.mContext = mContext;
-        this.mExodusTrackers = mExodusTrackers;
+    public ExodusAdapter(Context context, List<ExodusTracker> exodusTrackers) {
+        this.context = context;
+        this.exodusTrackers = exodusTrackers;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_exodus, parent, false);
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.item_exodus, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        ExodusTracker mExodusTracker = mExodusTrackers.get(position);
+        ExodusTracker mExodusTracker = exodusTrackers.get(position);
         holder.TrackerName.setText(mExodusTracker.Name);
         holder.TrackerSignature.setText(mExodusTracker.Signature);
         holder.TrackerDate.setText(mExodusTracker.Date);
-        holder.itemView.setOnClickListener(v ->
-                mContext.startActivity(new Intent(Intent.ACTION_VIEW,
-                        Uri.parse(mExodusTracker.URL)))
+        holder.itemView.setOnClickListener(v -> context.startActivity(new Intent(Intent.ACTION_VIEW,
+                Uri.parse(mExodusTracker.URL)))
         );
     }
 
     @Override
     public int getItemCount() {
-        return mExodusTrackers.size();
+        return exodusTrackers.size();
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {

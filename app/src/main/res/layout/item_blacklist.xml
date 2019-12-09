@@ -25,42 +25,38 @@
     android:paddingStart="@dimen/margin_medium"
     android:paddingTop="@dimen/margin_small"
     android:paddingEnd="@dimen/margin_xxsmall"
-    android:paddingBottom="@dimen/margin_small">
+    android:paddingBottom="@dimen/margin_xxsmall">
 
-    <ImageView
-        android:id="@+id/icon"
-        android:layout_width="56dp"
-        android:layout_height="56dp"
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/img"
+        android:layout_width="@dimen/icon_size"
+        android:layout_height="@dimen/icon_size"
         android:layout_marginStart="@dimen/margin_small"
         android:layout_marginEnd="@dimen/margin_normal" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/label"
+        android:id="@+id/line1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_toStartOf="@id/check"
-        android:layout_toEndOf="@+id/icon"
+        android:layout_toEndOf="@+id/img"
         android:ellipsize="end"
         android:singleLine="true"
-        android:textAlignment="viewStart"
-        android:textColor="?android:attr/textColorPrimary"
-        android:textSize="18sp" />
+        android:textAppearance="@style/TextAppearance.Aurora.Line1"/>
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/packageName"
-        android:layout_width="fill_parent"
+        android:id="@+id/line2"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/label"
-        android:layout_alignStart="@id/label"
-        android:layout_alignEnd="@id/label"
+        android:layout_below="@+id/line1"
+        android:layout_alignStart="@id/line1"
+        android:layout_alignEnd="@id/line1"
         android:layout_marginTop="2dp"
         android:ellipsize="end"
         android:singleLine="true"
-        android:textAlignment="viewStart"
-        android:textColor="?android:attr/textColorPrimary"
-        android:textSize="14sp" />
+        android:textAppearance="@style/TextAppearance.Aurora.Line3" />
 
-    <CheckBox
+    <com.google.android.material.checkbox.MaterialCheckBox
         android:id="@+id/check"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -68,9 +64,7 @@
         android:layout_centerInParent="true"
         android:layout_gravity="center_vertical"
         android:layout_marginStart="@dimen/margin_small"
-        android:buttonTint="?android:attr/colorAccent"
         android:clickable="false"
-        android:drawableTint="?android:attr/colorAccent"
         android:duplicateParentState="true"
         android:focusable="false" />
 </RelativeLayout>

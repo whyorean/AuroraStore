@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/line1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/margin_small"
+        android:paddingStart="@dimen/margin_normal"
+        android:letterSpacing="0.025"
+        android:textAppearance="@style/TextAppearance.Aurora.Title"
+        android:textColor="?android:attr/colorAccent"
+        tools:text="Header" />
+</RelativeLayout>

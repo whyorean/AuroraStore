@@ -46,7 +46,7 @@
             android:ellipsize="end"
             android:singleLine="true"
             android:textAlignment="viewStart"
-            android:textAppearance="?android:textAppearanceListItem" />
+            android:textAppearance="@style/TextAppearance.Aurora.Line1" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/txt_status"
@@ -55,8 +55,7 @@
             android:ellipsize="end"
             android:singleLine="true"
             android:textAlignment="viewStart"
-            android:textAppearance="?android:textAppearanceListItem"
-            android:textSize="12sp" />
+            android:textAppearance="@style/TextAppearance.Aurora.Line2" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/txt_path"
@@ -65,8 +64,7 @@
             android:ellipsize="start"
             android:singleLine="true"
             android:textAlignment="viewStart"
-            android:textAppearance="?android:textAppearanceListItem"
-            android:textSize="12sp" />
+            android:textAppearance="@style/TextAppearance.Aurora.Line3" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/txt_size"
@@ -75,8 +73,7 @@
             android:ellipsize="end"
             android:singleLine="true"
             android:textAlignment="viewStart"
-            android:textAppearance="?android:textAppearanceListItem"
-            android:textSize="12sp" />
+            android:textAppearance="@style/TextAppearance.Aurora.Line3" />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -104,8 +101,7 @@
                 android:minWidth="32dp"
                 android:singleLine="true"
                 android:textAlignment="viewEnd"
-                android:textAppearance="?android:textAppearanceListItemSmall"
-                android:textSize="12sp" />
+                android:textAppearance="@style/TextAppearance.Aurora.Line3" />
 
         </RelativeLayout>
 
@@ -121,8 +117,7 @@
                 android:ellipsize="end"
                 android:singleLine="true"
                 android:textAlignment="viewStart"
-                android:textAppearance="?android:textAppearanceListItemSmall"
-                android:textSize="12sp" />
+                android:textAppearance="@style/TextAppearance.Aurora.Line3" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/txt_speed"
@@ -132,8 +127,7 @@
                 android:ellipsize="end"
                 android:singleLine="true"
                 android:textAlignment="viewStart"
-                android:textAppearance="?android:textAppearanceListItemSmall"
-                android:textSize="12sp" />
+                android:textAppearance="@style/TextAppearance.Aurora.Line3" />
 
         </RelativeLayout>
 

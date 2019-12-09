@@ -30,13 +30,14 @@ import android.widget.Button;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.aurora.store.AuroraApplication;
 import com.aurora.store.R;
 import com.aurora.store.model.App;
 import com.aurora.store.model.Review;
 import com.aurora.store.model.ReviewBuilder;
 import com.aurora.store.task.BaseTask;
-import com.aurora.store.utility.ContextUtil;
-import com.aurora.store.utility.Log;
+import com.aurora.store.util.ContextUtil;
+import com.aurora.store.util.Log;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 import com.dragons.aurora.playstoreapiv2.ReviewResponse;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
@@ -134,7 +135,7 @@ public class UserReviewBottomSheet extends BottomSheetDialogFragment {
 
         boolean submit(String packageName, Review review) {
             try {
-                GooglePlayAPI api = getApi();
+                GooglePlayAPI api = AuroraApplication.api;
                 ReviewResponse response = api.addOrEditReview(
                         packageName,
                         review.getComment(),

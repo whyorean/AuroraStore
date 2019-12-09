@@ -22,12 +22,12 @@ package com.aurora.store.task;
 
 import android.content.Context;
 
+import com.aurora.store.AuroraApplication;
 import com.aurora.store.Constants;
 import com.aurora.store.exception.NotPurchasedException;
 import com.aurora.store.model.App;
-import com.aurora.store.utility.Accountant;
-import com.aurora.store.utility.Log;
-import com.aurora.store.utility.PrefUtil;
+import com.aurora.store.util.Log;
+import com.aurora.store.util.PrefUtil;
 import com.dragons.aurora.playstoreapiv2.AndroidAppDeliveryData;
 import com.dragons.aurora.playstoreapiv2.BuyResponse;
 import com.dragons.aurora.playstoreapiv2.DeliveryResponse;
@@ -48,7 +48,7 @@ public class ObservableDeliveryData extends BaseTask {
 
     public Observable<DeliveryDataBundle> getDeliveryData(App app) {
         return Observable.create(emitter -> {
-            GooglePlayAPI api = getApi();
+            GooglePlayAPI api = AuroraApplication.api;
             purchase(api, app);
             delivery(api, app);
             DeliveryDataBundle deliveryDataBundle = new DeliveryDataBundle(app, deliveryData);

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.aurora.store.ui.main.fragment.home.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/updatesFragment"
+        android:name="com.aurora.store.ui.main.fragment.updates.UpdatesFragment"
+        android:label="@string/title_updates"
+        tools:layout="@layout/fragment_updates" />
+
+    <fragment
+        android:id="@+id/categoriesFragment"
+        android:name="com.aurora.store.ui.main.fragment.category.CategoriesFragment"
+        android:label="@string/title_categories"
+        tools:layout="@layout/fragment_categories" />
+</navigation>

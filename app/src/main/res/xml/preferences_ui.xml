@@ -43,22 +43,10 @@
         app:title="@string/pref_ui_card_title" />
 
     <SwitchPreferenceCompat
-        app:defaultValue="true"
-        app:key="PREFERENCE_UI_TRANSPARENT"
-        app:summary="@string/pref_ui_transparent_summary"
-        app:title="@string/pref_ui_transparent" />
-
-    <SwitchPreferenceCompat
         app:defaultValue="false"
         app:key="PREFERENCE_FEATURED_SNAP"
         app:summary="@string/pref_ui_snap_summary"
         app:title="@string/pref_ui_snap_title" />
-
-    <SwitchPreferenceCompat
-        app:defaultValue="false"
-        app:key="PREFERENCE_TAB_MODE"
-        app:summary="@string/pref_ui_tab_mode_summary"
-        app:title="@string/pref_ui_tab_mode_title" />
 
     <SwitchPreferenceCompat
         app:defaultValue="true"
@@ -71,5 +59,4 @@
         app:key="PREFERENCE_SEARCH_PACKAGE"
         app:summary="@string/pref_ui_package_summary"
         app:title="@string/pref_ui_package" />
-
 </androidx.preference.PreferenceScreen>

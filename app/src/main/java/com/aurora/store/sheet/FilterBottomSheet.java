@@ -22,6 +22,7 @@ package com.aurora.store.sheet;
 
 import android.content.Context;
 import android.content.res.ColorStateList;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,10 +33,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.graphics.ColorUtils;
 
-import com.aurora.store.Constants;
 import com.aurora.store.R;
-import com.aurora.store.utility.PrefUtil;
-import com.aurora.store.utility.ViewUtil;
+import com.aurora.store.manager.FilterManager;
+import com.aurora.store.model.FilterModel;
+import com.aurora.store.util.ImageUtil;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.android.material.chip.Chip;
@@ -43,6 +44,7 @@ import com.google.android.material.chip.ChipGroup;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class FilterBottomSheet extends BottomSheetDialogFragment {
 
@@ -60,7 +62,7 @@ public class FilterBottomSheet extends BottomSheetDialogFragment {
     Button filter_apply;
 
     private Context context;
-    private View.OnClickListener onClickListener;
+    private FilterModel filterModel;
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -77,33 +79,37 @@ public class FilterBottomSheet extends BottomSheetDialogFragment {
     @NonNull
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.sheet_filter, container, false);
+        View view = inflater.inflate(R.layout.sheet_filter, container, false);
+        ButterKnife.bind(this, view);
+        return view;
     }
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        ButterKnife.bind(this, view);
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        filterModel = FilterManager.getFilterPreferences(context);
         setupMultipleChips();
         setupSingleChips();
-        setupActions();
+    }
+
+    @OnClick(R.id.filter_apply)
+    public void applyFilter() {
+        FilterManager.saveFilterPreferences(context, filterModel);
+        dismiss();
     }
 
     private void setupSingleChips() {
-        applyStyles(chip_gsf, getResources().getColor(R.color.colorRed));
-        chip_gsf.setOnCheckedChangeListener((v, isChecked) ->
-                PrefUtil.putBoolean(context, Constants.FILTER_GSF_DEPENDENT_APPS, isChecked));
-        chip_gsf.setChecked(PrefUtil.getBoolean(context, Constants.FILTER_GSF_DEPENDENT_APPS));
+        chip_gsf.setChecked(filterModel.isGsfDependentApps());
+        chip_paid.setChecked(filterModel.isPaidApps());
+        chip_ads.setChecked(filterModel.isAppsWithAds());
 
-        applyStyles(chip_paid, getResources().getColor(R.color.colorPurple));
-        chip_paid.setOnCheckedChangeListener((v, isChecked) ->
-                PrefUtil.putBoolean(context, Constants.FILTER_PAID_APPS, isChecked));
-        chip_paid.setChecked(PrefUtil.getBoolean(context, Constants.FILTER_PAID_APPS));
+        chip_gsf.setOnCheckedChangeListener((v, isChecked) -> filterModel.setGsfDependentApps(isChecked));
+        chip_paid.setOnCheckedChangeListener((v, isChecked) -> filterModel.setPaidApps(isChecked));
+        chip_ads.setOnCheckedChangeListener((v, isChecked) -> filterModel.setAppsWithAds(isChecked));
 
-        applyStyles(chip_ads, getResources().getColor(R.color.colorOrange));
-        chip_ads.setOnCheckedChangeListener((v, isChecked) ->
-                PrefUtil.putBoolean(context, Constants.FILTER_APPS_WITH_ADS, isChecked));
-        chip_ads.setChecked(PrefUtil.getBoolean(context, Constants.FILTER_APPS_WITH_ADS));
+        applyStyles(chip_gsf, 0);
+        applyStyles(chip_ads, 1);
+        applyStyles(chip_paid, 2);
     }
 
     private void setupMultipleChips() {
@@ -111,24 +117,21 @@ public class FilterBottomSheet extends BottomSheetDialogFragment {
         String[] downloadValues = getResources().getStringArray(R.array.filterDownloadsValues);
         String[] ratingLabels = getResources().getStringArray(R.array.filterRatingLabels);
         String[] ratingValues = getResources().getStringArray(R.array.filterRatingValues);
-        int[] colorShades = getResources().getIntArray(R.array.colorShades);
 
         int i = 0;
         for (String downloadLabel : downloadLabels) {
             final int pos = i;
             Chip chip = new Chip(context);
+            applyStyles(chip, i);
             chip.setText(downloadLabel);
-            applyStyles(chip, colorShades[i]);
             chip.setOnCheckedChangeListener((v, isChecked) -> {
                 download_chips.clearCheck();
                 chip.setChecked(isChecked);
                 if (isChecked) {
-                    PrefUtil.putInteger(v.getContext(), Constants.FILTER_DOWNLOADS,
-                            Integer.parseInt(downloadValues[pos]));
+                    filterModel.setDownloads(Integer.parseInt(downloadValues[pos]));
                 }
             });
-            chip.setChecked(PrefUtil.getInteger(context, Constants.FILTER_DOWNLOADS)
-                    == Integer.parseInt(downloadValues[i]));
+            chip.setChecked(filterModel.getDownloads() == Integer.parseInt(downloadValues[i]));
             download_chips.addView(chip);
             i++;
         }
@@ -137,41 +140,27 @@ public class FilterBottomSheet extends BottomSheetDialogFragment {
         for (String ratingLabel : ratingLabels) {
             final int pos = i;
             Chip chip = new Chip(context);
-            applyStyles(chip, colorShades[i]);
+            applyStyles(chip, i);
             chip.setText(ratingLabel);
             chip.setOnCheckedChangeListener((v, isChecked) -> {
                 rating_chips.clearCheck();
                 chip.setChecked(isChecked);
                 if (isChecked) {
-                    PrefUtil.putFloat(context, Constants.FILTER_RATING,
-                            Float.parseFloat(ratingValues[pos]));
+                    filterModel.setRating(Float.parseFloat(ratingValues[pos]));
                 }
             });
-            chip.setChecked(PrefUtil.getFloat(context, Constants.FILTER_RATING) ==
-                    Float.parseFloat(ratingValues[i]));
+            chip.setChecked(filterModel.getRating() == Float.parseFloat(ratingValues[i]));
             rating_chips.addView(chip);
             i++;
         }
     }
 
-    private void applyStyles(Chip chip, int color) {
-        chip.setChipIconSize(ViewUtil.dpToPx(context, 24));
-        chip.setChipIcon(context.getDrawable(R.drawable.circle_bg));
-        chip.setChipIconTint(ColorStateList.valueOf(color));
+    private void applyStyles(Chip chip, int index) {
+        int color = ImageUtil.getSolidColor(index);
+        chip.setChipIcon(ImageUtil.getDrawable(index, GradientDrawable.OVAL));
+        chip.setCheckedIcon(context.getDrawable(R.drawable.ic_filter_check));
         chip.setChipIconVisible(true);
         chip.setChipBackgroundColor(ColorStateList.valueOf(ColorUtils.setAlphaComponent(color, 100)));
         chip.setChipStrokeColor(ColorStateList.valueOf(color));
-        chip.setChipStrokeWidth(ViewUtil.dpToPx(context, 1));
-        chip.setCheckedIcon(context.getDrawable(R.drawable.ic_checked));
-    }
-
-    private void setupActions() {
-        if (filter_apply != null) {
-            filter_apply.setOnClickListener(onClickListener);
-        }
-    }
-
-    public void setOnApplyListener(View.OnClickListener onClickListener) {
-        this.onClickListener = onClickListener;
     }
 }

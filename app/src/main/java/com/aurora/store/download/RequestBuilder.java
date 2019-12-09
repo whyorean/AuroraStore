@@ -23,9 +23,9 @@ package com.aurora.store.download;
 import android.content.Context;
 
 import com.aurora.store.model.App;
-import com.aurora.store.utility.PathUtil;
-import com.aurora.store.utility.TextUtil;
-import com.aurora.store.utility.Util;
+import com.aurora.store.util.PathUtil;
+import com.aurora.store.util.TextUtil;
+import com.aurora.store.util.Util;
 import com.dragons.aurora.playstoreapiv2.AndroidAppDeliveryData;
 import com.dragons.aurora.playstoreapiv2.AppFileMetadata;
 import com.dragons.aurora.playstoreapiv2.Split;

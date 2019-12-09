@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Aurora Store
   ~ Copyright (C) 2019, Rahul Kumar Patel <whyorean@gmail.com>
   ~
@@ -20,21 +19,18 @@
   -->
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:paddingTop="5dp"
-    android:paddingBottom="5dp">
+    android:paddingTop="@dimen/margin_xxsmall"
+    android:paddingBottom="@dimen/margin_xxsmall">
 
-    <ImageView
+    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/permission_group_icon"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="8dp"
-        android:minWidth="24dp"
-        android:minHeight="24dp"
-        android:scaleType="fitCenter"
+        android:layout_width="@dimen/icon_size_default"
+        android:layout_height="@dimen/icon_size_default"
+        android:layout_marginStart="@dimen/margin_normal"
+        android:layout_marginEnd="@dimen/margin_small"
         android:tint="?android:attr/colorAccent" />
 
     <LinearLayout
@@ -44,7 +40,5 @@
         android:layout_gravity="top|start"
         android:layout_marginStart="8dp"
         android:orientation="vertical"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textSize="16sp" />
-
+        android:textAppearance="@style/TextAppearance.Aurora.Line1" />
 </LinearLayout>

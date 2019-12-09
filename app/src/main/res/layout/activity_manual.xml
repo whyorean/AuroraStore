@@ -63,7 +63,7 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_positive"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                style="@style/Widget.MaterialComponents.Button"
                 android:layout_width="wrap_content"
                 android:layout_height="52dp"
                 android:layout_gravity="center_horizontal"
@@ -72,9 +72,7 @@
                 android:paddingStart="@dimen/margin_large"
                 android:paddingEnd="@dimen/margin_large"
                 android:text="@string/details_download"
-                android:textAppearance="@style/TextAppearance.Aurora.Button"
-                app:icon="@drawable/ic_download"
-                app:strokeColor="?android:colorAccent" />
+                android:textAppearance="@style/TextAppearance.Aurora.Button" />
 
             <RelativeLayout
                 android:layout_width="match_parent"

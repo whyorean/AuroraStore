@@ -169,7 +169,7 @@ Upozorňujeme, že služba Google Play Store nepodporuje preberanie ľubovoľný
     <string name="pref_filter_google_summary">"Odstráni všetky Google aplikácie z výsledkov vyhľadávania a kategórií aplikácií"</string>
     <string name="pref_filter_google_title">"Filtrovať Google aplikácie"</string>
     <string name="pref_filter_search_summary">"Filtre vyhľadávania sa pri každom vyhľadávaní vynulujú. Vypnite pre ukladanie filtrov vyhľadávania"</string>
-    <string name="pref_filter_search_title">"Použiť filter vyhľadávania bez ukladania"</string>
+    <string name="pref_filter_search_title">"Použiť filterModel vyhľadávania bez ukladania"</string>
     <string name="pref_install_auto_summary">"Aplikácie sa inštalujú okamžite po dokončení sťahovania"</string>
     <string name="pref_install_auto_title">"Automatická inštalácia APK po stiahnutí"</string>
     <string name="pref_install_delete_title">"Vymazanie apk po inštalácii"</string>

@@ -21,6 +21,7 @@
   -->
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/changes_container"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -29,7 +30,8 @@
     android:background="@drawable/generic_padded_bg"
     android:minHeight="32dp"
     android:orientation="vertical"
-    android:visibility="invisible">
+    android:visibility="invisible"
+    tools:visibility="visible">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/txt_new"
@@ -45,5 +47,6 @@
         android:layout_height="match_parent"
         android:autoLink="web|email"
         android:textColor="?android:attr/textColorPrimary"
-        android:textIsSelectable="true" />
+        android:textIsSelectable="true"
+        tools:text="@string/action_unknown" />
 </LinearLayout>

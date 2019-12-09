@@ -27,62 +27,33 @@ import android.content.Context;
 
 import com.aurora.store.TokenDispenserMirrors;
 import com.aurora.store.model.LoginInfo;
-import com.aurora.store.utility.ApiBuilderUtil;
+import com.aurora.store.util.ApiBuilderUtil;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 
 import java.io.IOException;
 
 public class PlayStoreApiAuthenticator {
 
-    private static volatile PlayStoreApiAuthenticator instance;
-    private static GooglePlayAPI api;
-
-    public PlayStoreApiAuthenticator() {
-        if (instance != null) {
-            throw new RuntimeException("Use getApi() method to get the single instance of RxBus");
-        }
-    }
-
-    public static GooglePlayAPI getApi() {
-        return api;
-    }
-
-    public static GooglePlayAPI getInstance(Context context) throws Exception {
-        if (instance == null) {
-            synchronized (PlayStoreApiAuthenticator.class) {
-                if (instance == null) {
-                    instance = new PlayStoreApiAuthenticator();
-                    api = instance.getApi(context);
-                }
-            }
-        }
-        return api;
-    }
-
     public static boolean login(Context context, String email, String password) throws IOException {
         LoginInfo loginInfo = new LoginInfo();
         loginInfo.setEmail(email);
         loginInfo.setAasToken(password);
-        GooglePlayAPI api = ApiBuilderUtil.buildApi(context, loginInfo);
+        GooglePlayAPI api = ApiBuilderUtil.buildApi(context, loginInfo, false);
         return api != null;
     }
 
     public static GooglePlayAPI login(Context context) throws IOException {
         LoginInfo loginInfo = new LoginInfo();
         loginInfo.setTokenDispenserUrl(TokenDispenserMirrors.get(context));
-        GooglePlayAPI api = ApiBuilderUtil.buildAnonymousApi(context, loginInfo);
-        return api;
+        return ApiBuilderUtil.buildApi(context, loginInfo, true);
     }
 
-    public static void destroyInstance() {
-        api = null;
-        instance = null;
+    public static GooglePlayAPI getApi(Context context) throws Exception {
+        return ApiBuilderUtil.buildFromPreferences(context);
     }
 
-    private synchronized GooglePlayAPI getApi(Context context) throws Exception {
-        if (api == null) {
-            api = ApiBuilderUtil.buildFromPreferences(context);
-        }
-        return api;
+    public GooglePlayAPI getPlayApi(Context context) throws Exception {
+        return ApiBuilderUtil.buildFromPreferences(context);
     }
+
 }

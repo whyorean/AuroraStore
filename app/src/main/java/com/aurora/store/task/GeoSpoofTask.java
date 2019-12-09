@@ -31,9 +31,9 @@ import android.os.SystemClock;
 
 import com.aurora.store.Constants;
 import com.aurora.store.R;
-import com.aurora.store.utility.ContextUtil;
-import com.aurora.store.utility.Log;
-import com.aurora.store.utility.PrefUtil;
+import com.aurora.store.util.ContextUtil;
+import com.aurora.store.util.Log;
+import com.aurora.store.util.PrefUtil;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import java.io.IOException;

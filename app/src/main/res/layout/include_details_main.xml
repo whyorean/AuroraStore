@@ -19,15 +19,17 @@
   -->
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal">
 
-    <ImageView
+    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/icon"
         android:layout_width="@dimen/icon_size_normal"
         android:layout_height="@dimen/icon_size_normal"
-        android:layout_margin="@dimen/margin_normal" />
+        android:layout_margin="@dimen/margin_normal"
+        tools:srcCompat="@drawable/ic_placeholder" />
 
     <RelativeLayout
         android:id="@+id/app_txt"
@@ -44,45 +46,49 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ellipsize="none"
-            android:fontFamily="@font/open_sans_semibold"
             android:maxWidth="320dp"
             android:requiresFadingEdge="horizontal"
             android:singleLine="true"
             android:textAppearance="@style/TextAppearance.Aurora.Title"
-            android:textSize="22sp" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/devName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/displayName"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-            android:marqueeRepeatLimit="marquee_forever"
-            android:scrollHorizontally="true"
-            android:singleLine="true"
-            android:textStyle="bold"
-            android:textSize="14sp" />
+            android:textSize="22sp"
+            tools:text="@string/action_unknown" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/packageName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/devName"
+            android:layout_below="@id/displayName"
             android:singleLine="true"
             android:textIsSelectable="true"
-            android:textSize="12sp" />
+            android:textSize="12sp"
+            android:transitionName="packageName"
+            tools:text="@string/action_unknown" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/devName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/packageName"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:scrollHorizontally="true"
+            android:singleLine="true"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:transitionName="devName"
+            tools:text="@string/action_unknown" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/versionString"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/packageName"
+            android:layout_below="@id/devName"
             android:ellipsize="marquee"
             android:singleLine="true"
             android:textAlignment="viewStart"
-            android:textSize="12sp" />
-
+            android:textSize="12sp"
+            tools:text="@string/action_unknown" />
     </RelativeLayout>
 
     <HorizontalScrollView
@@ -95,57 +101,67 @@
         android:scrollbars="none">
 
         <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chip_group_info"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:visibility="invisible"
+            tools:visibility="visible">
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/price"
-                style="@style/Widget.MaterialComponents.Chip.Info"
+                style="@style/Widget.Aurora.Chip.Info"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                tools:text="@string/action_unknown" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/txt_updated"
-                style="@style/Widget.MaterialComponents.Chip.Info"
+                style="@style/Widget.Aurora.Chip.Info"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                tools:text="@string/action_unknown" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/contains_ads"
-                style="@style/Widget.MaterialComponents.Chip.Info"
+                style="@style/Widget.Aurora.Chip.Info"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                tools:text="@string/action_unknown" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/category"
-                style="@style/Widget.MaterialComponents.Chip.Info"
+                style="@style/Widget.Aurora.Chip.Info"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                tools:text="@string/action_unknown" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/txt_rating"
-                style="@style/Widget.MaterialComponents.Chip.Info"
+                style="@style/Widget.Aurora.Chip.Info"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                tools:text="@string/action_unknown" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/txt_installs"
-                style="@style/Widget.MaterialComponents.Chip.Info"
+                style="@style/Widget.Aurora.Chip.Info"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                tools:text="@string/action_unknown" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/txt_size"
-                style="@style/Widget.MaterialComponents.Chip.Info"
+                style="@style/Widget.Aurora.Chip.Info"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                tools:text="@string/action_unknown" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/txt_google_dependencies"
-                style="@style/Widget.MaterialComponents.Chip.Info"
+                style="@style/Widget.Aurora.Chip.Info"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
+                android:layout_height="wrap_content"
+                tools:text="@string/action_unknown" />
         </com.google.android.material.chip.ChipGroup>
     </HorizontalScrollView>
 </RelativeLayout>

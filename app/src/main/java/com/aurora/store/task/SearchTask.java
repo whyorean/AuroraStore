@@ -22,20 +22,25 @@ package com.aurora.store.task;
 
 import android.content.Context;
 
-import com.aurora.store.Filter;
 import com.aurora.store.exception.InvalidApiException;
 import com.aurora.store.iterator.CustomAppListIterator;
 import com.aurora.store.manager.CategoryManager;
+import com.aurora.store.manager.FilterManager;
 import com.aurora.store.model.App;
-import com.aurora.store.utility.Util;
+import com.aurora.store.model.FilterModel;
+import com.aurora.store.util.Util;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
-public class SearchTask extends BaseTask {
+public class SearchTask {
+
+    private Context context;
 
     public SearchTask(Context context) {
-        super(context);
+        this.context = context;
     }
 
     public List<App> getSearchResults(CustomAppListIterator iterator) throws Exception {
@@ -51,12 +56,14 @@ public class SearchTask extends BaseTask {
         return apps;
     }
 
-    public List<App> getNextBatch(CustomAppListIterator iterator) {
-        CategoryManager categoryManager = new CategoryManager(getContext());
-        com.aurora.store.model.Filter filter = new Filter(getContext()).getFilterPreferences();
+    private List<App> getNextBatch(CustomAppListIterator iterator) {
+        CategoryManager categoryManager = new CategoryManager(context);
+        FilterModel filterModel = FilterManager.getFilterPreferences(context);
         List<App> apps = new ArrayList<>();
+        if (!iterator.hasNext())
+            return apps;
         for (App app : iterator.next()) {
-            if (categoryManager.fits(app.getCategoryId(), filter.getCategory())) {
+            if (categoryManager.fits(app.getCategoryId(), filterModel.getCategory())) {
                 apps.add(app);
             }
         }
@@ -64,5 +71,23 @@ public class SearchTask extends BaseTask {
             return filterGoogleApps(apps);
         else
             return apps;
+    }
+
+    private List<App> filterGoogleApps(List<App> apps) {
+        Set<String> gAppsSet = new HashSet<>();
+        gAppsSet.add("com.chrome.beta");
+        gAppsSet.add("com.chrome.canary");
+        gAppsSet.add("com.chrome.dev");
+        gAppsSet.add("com.android.chrome");
+        gAppsSet.add("com.niksoftware.snapseed");
+        gAppsSet.add("com.google.toontastic");
+
+        List<App> appList = new ArrayList<>();
+        for (App app : apps) {
+            if (!app.getPackageName().startsWith("com.google") && !gAppsSet.contains(app.getPackageName())) {
+                appList.add(app);
+            }
+        }
+        return appList;
     }
 }

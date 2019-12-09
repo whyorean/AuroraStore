@@ -26,10 +26,10 @@ package com.aurora.store.installer;
 import android.content.Context;
 import android.content.pm.PackageInstaller;
 
-import com.aurora.store.utility.ContextUtil;
-import com.aurora.store.utility.Log;
-import com.aurora.store.utility.Root;
-import com.aurora.store.utility.Util;
+import com.aurora.store.util.ContextUtil;
+import com.aurora.store.util.Log;
+import com.aurora.store.util.Root;
+import com.aurora.store.util.Util;
 
 import java.io.File;
 import java.util.List;

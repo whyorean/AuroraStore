@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Aurora Store
   ~ Copyright (C) 2019, Rahul Kumar Patel <whyorean@gmail.com>
   ~
@@ -19,105 +18,53 @@
   ~
   -->
 
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:background="?android:attr/selectableItemBackground"
+    android:paddingStart="@dimen/margin_medium"
+    android:paddingTop="@dimen/margin_small"
+    android:paddingEnd="@dimen/margin_xxsmall"
+    android:paddingBottom="@dimen/margin_xxsmall">
 
-    <RelativeLayout
-        android:id="@+id/view_background"
-        android:layout_width="match_parent"
-        android:layout_height="72dp"
-        android:background="@color/colorRed"
-        android:layoutDirection="ltr"
-        android:paddingStart="@dimen/margin_medium"
-        android:paddingTop="@dimen/margin_small"
-        android:paddingEnd="@dimen/margin_xxsmall"
-        android:paddingBottom="@dimen/margin_small">
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/img"
+        android:layout_width="@dimen/icon_size"
+        android:layout_height="@dimen/icon_size"
+        android:layout_marginStart="@dimen/margin_small"
+        android:layout_marginEnd="@dimen/margin_normal" />
 
-        <ImageView
-            android:id="@+id/delete_icon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:layout_marginEnd="@dimen/margin_large"
-            android:src="@drawable/ic_delete"
-            android:tint="@color/colorWhite" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginEnd="10dp"
-            android:layout_toStartOf="@id/delete_icon"
-            android:text="@string/action_remove"
-            android:textAppearance="@style/TextAppearance.Aurora.Body"
-            android:textColor="@color/colorWhite"
-            android:textSize="14sp" />
-
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/view_foreground"
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/line1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?android:attr/colorBackground"
-        android:paddingStart="@dimen/margin_medium"
-        android:paddingTop="@dimen/margin_small"
-        android:paddingEnd="@dimen/margin_xxsmall"
-        android:paddingBottom="@dimen/margin_small">
+        android:layout_toStartOf="@id/check"
+        android:layout_toEndOf="@+id/img"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:textAppearance="@style/TextAppearance.Aurora.Line1" />
 
-        <ImageView
-            android:id="@+id/app_icon"
-            android:layout_width="56dp"
-            android:layout_height="56dp"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="@dimen/margin_small"
-            android:layout_marginEnd="@dimen/margin_normal"
-            android:contentDescription="@string/content_description_icon" />
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/line2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/line1"
+        android:layout_alignStart="@id/line1"
+        android:layout_alignEnd="@id/line1"
+        android:layout_marginTop="2dp"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:textAppearance="@style/TextAppearance.Aurora.Line3" />
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@id/app_icon"
-            android:layout_toStartOf="@id/app_checkbox"
-            android:layout_toEndOf="@id/app_icon">
-
-            <TextView
-                android:id="@+id/app_title"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:ellipsize="end"
-                android:singleLine="true"
-                android:textAlignment="viewStart"
-                android:textAppearance="@style/TextAppearance.Aurora.Title"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/app_extra"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/app_title"
-                android:layout_marginTop="@dimen/margin_xxsmall"
-                android:ellipsize="end"
-                android:singleLine="true"
-                android:textAlignment="viewStart"
-                android:textAppearance="@style/TextAppearance.Aurora.Body"
-                android:textSize="12sp" />
-        </RelativeLayout>
-
-        <CheckBox
-            android:id="@+id/app_checkbox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_centerInParent="true"
-            android:layout_gravity="center_vertical"
-            android:buttonTint="?android:attr/colorAccent"
-            android:clickable="false"
-            android:drawableTint="?android:attr/colorAccent"
-            android:duplicateParentState="true"
-            android:focusable="false" />
-    </RelativeLayout>
-</FrameLayout>
+    <com.google.android.material.checkbox.MaterialCheckBox
+        android:id="@+id/check"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center_vertical"
+        android:layout_marginStart="@dimen/margin_small"
+        android:clickable="false"
+        android:duplicateParentState="true"
+        android:focusable="false" />
+</RelativeLayout>

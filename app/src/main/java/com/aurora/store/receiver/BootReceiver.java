@@ -28,7 +28,7 @@ import android.content.Context;
 import android.content.Intent;
 
 import com.aurora.store.Constants;
-import com.aurora.store.utility.Util;
+import com.aurora.store.util.Util;
 
 public class BootReceiver extends BroadcastReceiver {
 

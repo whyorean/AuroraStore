@@ -13,8 +13,8 @@ import com.aurora.services.IPrivilegedCallback;
 import com.aurora.services.IPrivilegedService;
 import com.aurora.store.Constants;
 import com.aurora.store.model.App;
-import com.aurora.store.utility.Log;
-import com.aurora.store.utility.PrefUtil;
+import com.aurora.store.util.Log;
+import com.aurora.store.util.PrefUtil;
 
 public class Uninstaller {
 
@@ -51,12 +51,10 @@ public class Uninstaller {
                 };
                 try {
                     if (!service.hasPrivilegedPermissions()) {
-                        Log.e("service.hasPrivilegedPermissions() is false");
+                        Log.d("service.hasPrivilegedPermissions() is false");
                         return;
                     }
-
                     service.deletePackage(app.getPackageName(), 1, callback);
-
                 } catch (RemoteException e) {
                     Log.e("Connecting to privileged service failed");
                 }

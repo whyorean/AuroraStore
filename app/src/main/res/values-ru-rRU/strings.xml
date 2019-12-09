@@ -201,7 +201,7 @@ https://exodus-privacy.eu.org/en/. Это как "отчёт от аваста" 
     <string name="pref_filter_google_title">"Скрывать приложения Google"</string>
     <string name="pref_filter_search_summary">"Сбрасывать фильтры поиска при каждом новом поиске. Отключите, чтобы фильтры сохранялись"</string>
 
-    <!-- Invert toggle. "Use persistent search filter (○   )" -->
+    <!-- Invert toggle. "Use persistent search filterModel (○   )" -->
     <string name="pref_filter_search_title">"Временный фильтр поиска"</string>
     <string name="pref_install_auto_summary">"Устанавливать приложения сразу после завершения загрузки"</string>
     <string name="pref_install_auto_title">"Автоматическая установка"</string>

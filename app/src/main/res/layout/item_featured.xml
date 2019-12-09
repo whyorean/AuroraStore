@@ -23,7 +23,7 @@
     android:layout_height="wrap_content"
     android:layout_marginStart="@dimen/margin_small">
 
-    <ImageView
+    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/app_icon"
         android:layout_width="match_parent"
         android:layout_height="128dp"
@@ -51,12 +51,12 @@
             android:id="@+id/txt_indicator"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/app_name"
             android:layout_alignParentEnd="true"
             android:drawableEnd="@drawable/ic_installed"
             android:drawablePadding="@dimen/margin_small"
-            android:text="@string/action_installed"
             android:gravity="center"
-            android:layout_alignBaseline="@id/app_name"
+            android:text="@string/action_installed"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
             android:textSize="12sp"
             android:textStyle="normal"

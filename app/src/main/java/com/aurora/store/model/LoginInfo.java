@@ -26,8 +26,8 @@ package com.aurora.store.model;
 import android.content.Context;
 import android.text.TextUtils;
 
-import com.aurora.store.utility.Accountant;
-import com.aurora.store.utility.PrefUtil;
+import com.aurora.store.util.Accountant;
+import com.aurora.store.util.PrefUtil;
 import com.google.gson.Gson;
 
 import java.util.Locale;

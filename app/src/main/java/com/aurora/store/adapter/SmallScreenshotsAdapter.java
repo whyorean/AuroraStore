@@ -34,8 +34,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.aurora.store.GlideApp;
 import com.aurora.store.R;
-import com.aurora.store.activity.FullscreenImageActivity;
-import com.aurora.store.utility.ViewUtil;
+import com.aurora.store.ui.single.activity.FullscreenImageActivity;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;

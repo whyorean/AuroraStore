@@ -24,11 +24,15 @@ import android.annotation.SuppressLint;
 import android.app.Application;
 import android.content.IntentFilter;
 
+import com.aurora.store.events.Event;
+import com.aurora.store.events.RxBus;
 import com.aurora.store.installer.Installer;
 import com.aurora.store.installer.InstallerService;
 import com.aurora.store.installer.Uninstaller;
 import com.aurora.store.model.App;
-import com.aurora.store.utility.Util;
+import com.aurora.store.util.Log;
+import com.aurora.store.util.Util;
+import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -38,20 +42,27 @@ import io.reactivex.plugins.RxJavaPlugins;
 
 public class AuroraApplication extends Application {
 
-    public static boolean updating = false;
-    public static List<App> ongoingUpdateList = new ArrayList<>();
+    public static GooglePlayAPI api = null;
+
+    private static RxBus rxBus = null;
+    private static boolean bulkUpdateAlive = false;
+    private static List<App> ongoingUpdateList = new ArrayList<>();
 
     @SuppressLint("StaticFieldLeak")
-    public static Installer installer;
+    private static Installer installer;
     @SuppressLint("StaticFieldLeak")
-    public static Uninstaller uninstaller;
+    private static Uninstaller uninstaller;
 
-    public static boolean getOnGoingUpdate() {
-        return updating;
+    public static RxBus getRxBus() {
+        return rxBus;
     }
 
-    public static void setOnGoingUpdate(boolean updating) {
-        AuroraApplication.updating = updating;
+    public static boolean isBulkUpdateAlive() {
+        return bulkUpdateAlive;
+    }
+
+    public static void setBulkUpdateAlive(boolean updating) {
+        AuroraApplication.bulkUpdateAlive = updating;
     }
 
     public static List<App> getOngoingUpdateList() {
@@ -69,7 +80,7 @@ public class AuroraApplication extends Application {
                 iterator.remove();
         }
         if (ongoingUpdateList.isEmpty())
-            setOnGoingUpdate(false);
+            setBulkUpdateAlive(false);
     }
 
     public static Installer getInstaller() {
@@ -80,24 +91,35 @@ public class AuroraApplication extends Application {
         return uninstaller;
     }
 
+    public static void rxNotify(Event event) {
+        rxBus.getBus().accept(event);
+    }
+
     @Override
     public void onCreate() {
         super.onCreate();
+
+        rxBus = new RxBus();
         installer = new Installer(this);
         uninstaller = new Uninstaller(this);
+
+        //Clear all old installation sessions.
         Util.clearOldInstallationSessions(this);
+
+        //Register global install broadcast receiver.
         registerReceiver(installer.getPackageInstaller().getBroadcastReceiver(),
                 new IntentFilter(InstallerService.ACTION_INSTALLATION_STATUS_NOTIFICATION));
-        RxJavaPlugins.setErrorHandler(err -> {
-        });
+
+        //Global RX-Error handler, just simply logs, I make sure all errors are handled at origin.
+        RxJavaPlugins.setErrorHandler(err -> Log.i(err.getMessage()));
     }
 
     @Override
     public void onTerminate() {
-        super.onTerminate();
         try {
             unregisterReceiver(installer.getPackageInstaller().getBroadcastReceiver());
         } catch (Exception ignored) {
         }
+        super.onTerminate();
     }
 }

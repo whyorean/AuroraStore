@@ -4,9 +4,9 @@ import android.content.Context;
 
 import com.aurora.store.adapter.NativeHttpClientAdapter;
 import com.aurora.store.model.LoginInfo;
-import com.aurora.store.utility.Accountant;
-import com.aurora.store.utility.ApiBuilderUtil;
-import com.aurora.store.utility.PrefUtil;
+import com.aurora.store.util.Accountant;
+import com.aurora.store.util.ApiBuilderUtil;
+import com.aurora.store.util.PrefUtil;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 import com.dragons.aurora.playstoreapiv2.Image;
 import com.dragons.aurora.playstoreapiv2.UserProfile;

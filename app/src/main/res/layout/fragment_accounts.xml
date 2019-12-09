@@ -22,7 +22,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.AccountsActivity">
+    tools:context=".ui.accounts.AccountsActivity">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -52,21 +52,21 @@
 
                     <com.google.android.material.chip.Chip
                         android:id="@+id/chip_tos"
-                        style="@style/Widget.MaterialComponents.Chip.Info"
+                        style="@style/Widget.Aurora.Chip.Info"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/menu_terms" />
 
                     <com.google.android.material.chip.Chip
                         android:id="@+id/chip_disclaimer"
-                        style="@style/Widget.MaterialComponents.Chip.Info"
+                        style="@style/Widget.Aurora.Chip.Info"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/menu_disclaimer" />
 
                     <com.google.android.material.chip.Chip
                         android:id="@+id/chip_license"
-                        style="@style/Widget.MaterialComponents.Chip.Info"
+                        style="@style/Widget.Aurora.Chip.Info"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/menu_license" />

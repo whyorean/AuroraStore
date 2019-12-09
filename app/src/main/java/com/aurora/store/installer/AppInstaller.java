@@ -28,7 +28,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInstaller;
 
-import com.aurora.store.utility.Log;
+import com.aurora.store.util.Log;
 
 import org.apache.commons.io.IOUtils;
 
@@ -50,7 +50,8 @@ public class AppInstaller extends AppInstallerAbstract {
     public static AppInstaller getInstance(Context context) {
         if (instance == null) {
             synchronized (AppInstaller.class) {
-                if (instance == null) instance = new AppInstaller(context);
+                if (instance == null)
+                    instance = new AppInstaller(context);
             }
         }
         return instance;

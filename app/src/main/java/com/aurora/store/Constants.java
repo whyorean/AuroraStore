@@ -31,6 +31,7 @@ public class Constants {
     public static final String INTENT_DEVICE_NAME = "INTENT_DEVICE_NAME";
     public static final String INTENT_DEVICE_INDEX = "INTENT_DEVICE_INDEX";
     public static final String INTENT_FRAGMENT_POSITION = "INTENT_FRAGMENT_POSITION";
+    public static final String INTENT_PACKAGE_NAME = "INTENT_PACKAGE_NAME";
 
     public static final String BUILD_DEVICE = "Build.DEVICE";
     public static final String BUILD_MANUFACTURER = "Build.MANUFACTURER";
@@ -40,16 +41,18 @@ public class Constants {
     public static final String TAG = "Aurora Store";
     public static final String FILES = "Files";
 
+    public static final String CATEGORY_APPS = "APPLICATION";
+    public static final String CATEGORY_GAME = "GAME";
+    public static final String CATEGORY_FAMILY = "FAMILY";
+
+    public static final String TOP_APPS = "TOP_APPS";
+    public static final String TOP_GAME = "TOP_GAME";
+    public static final String TOP_FAMILY = "TOP_FAMILY";
+
     public static final String RECENT_HISTORY = "RECENT_HISTORY";
 
-    public static final String FILTER_SYSTEM_APPS = "FILTER_SYSTEM_APPS";
-    public static final String FILTER_APPS_WITH_ADS = "FILTER_APPS_WITH_ADS";
-    public static final String FILTER_PAID_APPS = "FILTER_PAID_APPS";
-    public static final String FILTER_GSF_DEPENDENT_APPS = "FILTER_GSF_DEPENDENT_APPS";
-    public static final String FILTER_CATEGORY = "FILTER_CATEGORY";
-    public static final String FILTER_RATING = "FILTER_RATING";
-    public static final String FILTER_DOWNLOADS = "FILTER_DOWNLOADS";
-
+    public static final String NOTIFICATION_CHANNEL_ALERT = "NOTIFICATION_CHANNEL_ALERT";
+    public static final String NOTIFICATION_CHANNEL_GENERAL = "NOTIFICATION_CHANNEL_GENERAL";
 
     public static final String PRIVILEGED_EXTENSION_PACKAGE_NAME = "com.aurora.services";
     public static final String PRIVILEGED_EXTENSION_SERVICE_INTENT = "com.aurora.services.IPrivilegedService";
@@ -57,9 +60,7 @@ public class Constants {
     public static final String PREFERENCE_THEME = "PREFERENCE_THEME";
     public static final String PREFERENCE_DEFAULT_TAB = "PREFERENCE_DEFAULT_TAB";
     public static final String PREFERENCE_UI_CARD_STYLE = "PREFERENCE_UI_CARD_STYLE";
-    public static final String PREFERENCE_UI_TRANSPARENT = "PREFERENCE_UI_TRANSPARENT";
     public static final String PREFERENCE_FEATURED_SNAP = "PREFERENCE_FEATURED_SNAP";
-    public static final String PREFERENCE_TAB_MODE = "PREFERENCE_TAB_MODE";
     public static final String PREFERENCE_SEARCH_IME = "PREFERENCE_SEARCH_IME";
     public static final String PREFERENCE_SEARCH_PACKAGE = "PREFERENCE_SEARCH_PACKAGE";
     public static final String PREFERENCE_DO_NOT_SHOW_INTRO = "PREFERENCE_DO_NOT_SHOW_INTRO";
@@ -70,6 +71,7 @@ public class Constants {
     public static final String PREFERENCE_DEVICE_TO_PRETEND_TO_BE_INDEX = "PREFERENCE_DEVICE_TO_PRETEND_TO_BE_INDEX";
     public static final String PREFERENCE_REQUESTED_LOCATION_INDEX = "PREFERENCE_REQUESTED_LOCATION_INDEX";
     public static final String PREFERENCE_BLACKLIST_APPS_LIST = "PREFERENCE_BLACKLIST_APPS_LIST";
+    public static final String PREFERENCE_FILTER_APPS = "PREFERENCE_FILTER_APPS";
     public static final String PREFERENCE_FILTER_GOOGLE = "PREFERENCE_FILTER_GOOGLE";
     public static final String PREFERENCE_FILTER_F_DROID = "PREFERENCE_FILTER_F_DROID";
     public static final String PREFERENCE_FILTER_SEARCH = "PREFERENCE_FILTER_SEARCH";
@@ -109,11 +111,16 @@ public class Constants {
     public static final String PREFERENCE_INSTALLATION_PROFILE = "PREFERENCE_INSTALLATION_PROFILE";
     public static final String PREFERENCE_ACCOUNTS_PASSWORD_SWITCH = "PREFERENCE_ACCOUNTS_PASSWORD_SWITCH";
 
-    public static final String PREFERENCE_TOP_APPS = "PREFERENCE_TOP_APPS";
-    public static final String PREFERENCE_TOP_GAMES = "PREFERENCE_TOP_GAMES";
-    public static final String PREFERENCE_TOP_FAMILY = "PREFERENCE_TOP_FAMILY";
     public static final String PREFERENCE_INSTALLED_APPS = "PREFERENCE_INSTALLED_APPS";
     public static final String PREFERENCE_CACHE_DATE = "PREFERENCE_CACHE_DATE";
     public static final String PREFERENCE_SELF_UPDATE_DATE = "PREFERENCE_SELF_UPDATE_DATE";
     public static final String PREFERENCE_SELF_UPDATE = "PREFERENCE_SELF_UPDATE";
+
+
+    public static final String FRAGMENT_NAME = "FRAGMENT_NAME";
+    public static final String FRAGMENT_ABOUT = "FRAGMENT_ABOUT";
+    public static final String FRAGMENT_ACCOUNTS = "FRAGMENT_ACCOUNTS";
+    public static final String FRAGMENT_BLACKLIST = "FRAGMENT_BLACKLIST";
+    public static final String FRAGMENT_FAV_LIST = "FRAGMENT_FAV_LIST";
+    public static final String FRAGMENT_SPOOF = "FRAGMENT_SPOOF";
 }

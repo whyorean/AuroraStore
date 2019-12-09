@@ -3,7 +3,7 @@ package com.aurora.store.task;
 import android.content.Context;
 import android.content.ContextWrapper;
 
-import com.aurora.store.utility.Util;
+import com.aurora.store.util.Util;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;

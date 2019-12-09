@@ -18,70 +18,53 @@
   ~
   -->
 
-<androidx.preference.PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
-
+<androidx.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <Preference
-        app:fragment="com.aurora.store.fragment.preference.AboutFragment"
-        app:icon="@drawable/ic_about"
-        app:title="@string/action_about" />
-
-    <Preference
-        app:fragment="com.aurora.store.fragment.AccountsFragment"
-        app:icon="@drawable/ic_account"
-        app:title="@string/action_accounts" />
-
-    <Preference
-        app:fragment="com.aurora.store.fragment.preference.BlacklistFragment"
-        app:icon="@drawable/ic_spoof_alt"
-        app:title="@string/action_blacklist" />
-
-    <Preference
-        app:fragment="com.aurora.store.fragment.preference.DownloaderFragment"
-        app:icon="@drawable/ic_downloads"
+        android:fragment="com.aurora.store.ui.preference.fragment.DownloaderFragment"
+        app:icon="@drawable/ic_menu_download"
+        app:layout="@layout/item_preference"
         app:title="@string/pref_app_download" />
 
     <Preference
-        app:fragment="com.aurora.store.fragment.preference.FavouriteFragment"
-        app:icon="@drawable/ic_fav"
-        app:title="@string/action_favourites" />
-
-    <Preference
-        app:fragment="com.aurora.store.fragment.preference.FilterFragment"
-        app:icon="@drawable/ic_filter_apps"
+        android:fragment="com.aurora.store.ui.preference.fragment.FilterFragment"
+        app:icon="@drawable/ic_filter"
+        app:layout="@layout/item_preference"
         app:title="@string/action_filter" />
 
     <Preference
-        app:fragment="com.aurora.store.fragment.preference.InstallationFragment"
+        android:fragment="com.aurora.store.ui.preference.fragment.InstallationFragment"
         app:icon="@drawable/ic_installation"
+        app:layout="@layout/item_preference"
         app:title="@string/action_installations" />
 
     <Preference
-        app:fragment="com.aurora.store.fragment.preference.LanguageFragment"
+        android:fragment="com.aurora.store.ui.preference.fragment.LanguageFragment"
         app:icon="@drawable/ic_language"
+        app:layout="@layout/item_preference"
         app:title="@string/pref_app_language" />
 
     <Preference
-        app:fragment="com.aurora.store.fragment.preference.NotificationFragment"
+        android:fragment="com.aurora.store.ui.preference.fragment.NotificationFragment"
         app:icon="@drawable/ic_notifications"
+        app:layout="@layout/item_preference"
         app:title="@string/pref_app_notification" />
 
     <Preference
-        app:fragment="com.aurora.store.fragment.preference.NetworkFragment"
+        android:fragment="com.aurora.store.ui.preference.fragment.NetworkFragment"
         app:icon="@drawable/ic_network"
+        app:layout="@layout/item_preference"
         app:title="@string/pref_app_network" />
 
     <Preference
-        app:fragment="com.aurora.store.fragment.preference.SpoofFragment"
-        app:icon="@drawable/ic_spoof_alt"
-        app:title="@string/action_spoofed" />
-
-    <Preference
-        app:fragment="com.aurora.store.fragment.preference.UIFragment"
+        android:fragment="com.aurora.store.ui.preference.fragment.UIFragment"
         app:icon="@drawable/ic_ui"
+        app:layout="@layout/item_preference"
         app:title="@string/pref_app_ui" />
 
     <Preference
-        app:fragment="com.aurora.store.fragment.preference.UpdatesPrefFragment"
+        android:fragment="com.aurora.store.ui.preference.fragment.UpdatesPrefFragment"
         app:icon="@drawable/ic_update"
+        app:layout="@layout/item_preference"
         app:title="@string/action_updates" />
 </androidx.preference.PreferenceScreen>

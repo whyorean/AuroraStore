@@ -21,42 +21,42 @@
 package com.aurora.store.task;
 
 import android.content.Context;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
 import android.text.TextUtils;
 
+import com.aurora.store.exception.CredentialsEmptyException;
 import com.aurora.store.exception.MalformedRequestException;
 import com.aurora.store.manager.BlacklistManager;
 import com.aurora.store.model.App;
 import com.aurora.store.model.AppBuilder;
-import com.aurora.store.utility.Accountant;
-import com.aurora.store.utility.Log;
-import com.aurora.store.utility.PackageUtil;
+import com.aurora.store.util.Log;
+import com.aurora.store.util.PackageUtil;
 import com.dragons.aurora.playstoreapiv2.BulkDetailsEntry;
+import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class UpdatableAppsTask extends AllAppsTask {
 
-    public UpdatableAppsTask(Context context) {
+    private GooglePlayAPI api;
+
+    public UpdatableAppsTask(GooglePlayAPI api, Context context) {
         super(context);
+        this.api = api;
     }
 
     public List<App> getUpdatableApps() throws Exception {
         List<App> appList = new ArrayList<>();
-        List<String> packageList = getInstalledApps();
+        List<String> packageList = getLocalInstalledApps();
         packageList = filterBlacklistedApps(packageList);
         for (App app : getAppsFromPlayStore(packageList)) {
             final String packageName = app.getPackageName();
-            if (TextUtils.isEmpty(packageName) || !packageList.contains(packageName)) {
+            if (TextUtils.isEmpty(packageName)) {
                 continue;
             }
 
-            final App installedApp = getInstalledApp(packageName);
+            final App installedApp = PackageUtil.getAppFromPackageName(getPackageManager(), packageName);
             app = addInstalledAppInfo(app, installedApp);
-
             if (installedApp != null && installedApp.getVersionCode() < app.getVersionCode()) {
                 appList.add(app);
             }
@@ -71,7 +71,7 @@ public class UpdatableAppsTask extends AllAppsTask {
     private List<App> getRemoteAppList(List<String> packageNames) throws Exception {
         final List<App> appList = new ArrayList<>();
         try {
-            final List<BulkDetailsEntry> bulkDetailsEntries = getApi().bulkDetails(packageNames).getEntryList();
+            final List<BulkDetailsEntry> bulkDetailsEntries = api.bulkDetails(packageNames).getEntryList();
             for (BulkDetailsEntry bulkDetailsEntry : bulkDetailsEntries) {
                 if (!bulkDetailsEntry.hasDoc()) {
                     continue;
@@ -81,7 +81,9 @@ public class UpdatableAppsTask extends AllAppsTask {
         } catch (Exception e) {
             if (e instanceof MalformedRequestException) {
                 Log.e("Malformed Request : %s", e.getMessage());
-            } else
+            } else if (e instanceof NullPointerException)
+                throw new CredentialsEmptyException();
+            else
                 throw e;
         }
         return appList;
@@ -97,17 +99,8 @@ public class UpdatableAppsTask extends AllAppsTask {
         return appFromMarket;
     }
 
-    public App getInstalledApp(String packageName) {
-        try {
-            PackageInfo packageInfo = getPackageManager().getPackageInfo(packageName, 0);
-            return PackageUtil.getInstalledApp(getPackageManager(), packageInfo.packageName);
-        } catch (PackageManager.NameNotFoundException e) {
-            return null;
-        }
-    }
-
     public List<String> filterBlacklistedApps(List<String> packageList) {
-        packageList.removeAll(new BlacklistManager(context).get());
+        packageList.removeAll(new BlacklistManager(getContext()).get());
         return packageList;
     }
 }

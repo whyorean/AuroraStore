@@ -27,9 +27,9 @@ import android.preference.PreferenceManager;
 import android.text.TextUtils;
 
 import com.aurora.store.BuildConfig;
-import com.aurora.store.utility.Log;
-import com.aurora.store.utility.PathUtil;
-import com.aurora.store.utility.PrefUtil;
+import com.aurora.store.util.Log;
+import com.aurora.store.util.PathUtil;
+import com.aurora.store.util.PrefUtil;
 
 import java.io.BufferedInputStream;
 import java.io.File;

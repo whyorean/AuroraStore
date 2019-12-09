@@ -52,3 +52,5 @@
 -keep class butterknife.*
 -keepclasseswithmembernames class * { @butterknife.* <methods>; }
 -keepclasseswithmembernames class * { @butterknife.* <fields>; }
+
+-keep public class com.aurora.store.ui.preference.fragment.*

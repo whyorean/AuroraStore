@@ -26,7 +26,7 @@ import com.aurora.store.exception.AppNotFoundException;
 import com.aurora.store.exception.MalformedRequestException;
 import com.aurora.store.exception.TooManyRequestsException;
 import com.aurora.store.exception.UnknownException;
-import com.aurora.store.utility.Util;
+import com.aurora.store.util.Util;
 import com.dragons.aurora.playstoreapiv2.AuthException;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 import com.dragons.aurora.playstoreapiv2.GooglePlayException;

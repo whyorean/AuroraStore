@@ -168,8 +168,8 @@ Harap diperhatikan bahwa mengubah-ubah versi aplikasi yang akan diunduh tidak di
     <string name="pref_filter_fdroid_title">"Filter aplikasi F-droid"</string>
     <string name="pref_filter_google_summary">"Hapus semua Aplikasi Google dari hasil pencarian dan kategori aplikasi"</string>
     <string name="pref_filter_google_title">"Filter aplikasi Google"</string>
-    <string name="pref_filter_search_summary">"Filter pencarian direset pada setiap pencarian. Matikan untuk menyimpan filter pencarian"</string>
-    <string name="pref_filter_search_title">"Gunakan filter pencarian non-persisten"</string>
+    <string name="pref_filter_search_summary">"Filter pencarian direset pada setiap pencarian. Matikan untuk menyimpan filterModel pencarian"</string>
+    <string name="pref_filter_search_title">"Gunakan filterModel pencarian non-persisten"</string>
     <string name="pref_install_auto_summary">"Aplikasi dipasang langsung setelah pengunduhan selesai"</string>
     <string name="pref_install_auto_title">"Pasang APK secara otomatis setelah pengunduhan"</string>
     <string name="pref_install_delete_title">"Hapus apk setelah pemasangan"</string>

@@ -25,7 +25,7 @@ package com.aurora.store.model;
 
 import android.text.TextUtils;
 
-import com.aurora.store.utility.Util;
+import com.aurora.store.util.Util;
 import com.dragons.aurora.playstoreapiv2.AggregateRating;
 import com.dragons.aurora.playstoreapiv2.AppDetails;
 import com.dragons.aurora.playstoreapiv2.Badge;

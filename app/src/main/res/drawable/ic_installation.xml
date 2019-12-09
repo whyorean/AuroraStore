@@ -1,34 +1,9 @@
-<!--
-  ~ Aurora Store
-  ~ Copyright (C) 2019, Rahul Kumar Patel <whyorean@gmail.com>
-  ~
-  ~ Aurora Store is free software: you can redistribute it and/or modify
-  ~ it under the terms of the GNU General Public License as published by
-  ~ the Free Software Foundation, either version 2 of the License, or
-  ~ (at your option) any later version.
-  ~
-  ~ Aurora Store is distributed in the hope that it will be useful,
-  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
-  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-  ~ GNU General Public License for more details.
-  ~
-  ~ You should have received a copy of the GNU General Public License
-  ~ along with Aurora Store.  If not, see <http://www.gnu.org/licenses/>.
-  ~
-  ~
-  -->
-
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     android:width="24dp"
     android:height="24dp"
     android:viewportWidth="24"
     android:viewportHeight="24">
-    <path
-        android:fillColor="@color/colorOrange"
-        android:pathData="M18.12,14.44l-3.24,-1.62c1.29,-1 2.12,-2.56 2.12,-4.32C17,5.47 14.53,3 11.5,3S6,5.47 6,8.5c0,2.13 1.22,3.98 3,4.89v3.26l-1.84,-0.39 -0.1,-0.02c-0.1,-0.02 -0.2,-0.03 -0.32,-0.03 -0.53,0 -1.03,0.21 -1.41,0.59l-1.4,1.42 5.09,5.09c0.43,0.44 1.03,0.69 1.65,0.69h6.3c0.98,0 1.81,-0.7 1.97,-1.67l0.8,-4.71c0.22,-1.3 -0.43,-2.58 -1.62,-3.18zM8,8.5C8,6.57 9.57,5 11.5,5S15,6.57 15,8.5c0,0.95 -0.38,1.81 -1,2.44L14,8.5C14,7.12 12.88,6 11.5,6S9,7.12 9,8.5v2.44c-0.62,-0.63 -1,-1.49 -1,-2.44zM17.77,17.29l-0.8,4.71h-6.3c-0.09,0 -0.17,-0.04 -0.24,-0.1l-3.68,-3.68 4.25,0.89L11,8.5c0,-0.28 0.22,-0.5 0.5,-0.5s0.5,0.22 0.5,0.5v6h1.76l3.46,1.73c0.4,0.2 0.62,0.63 0.55,1.06z" />
-    <path
-        android:fillAlpha="0.3"
-        android:fillColor="@color/colorOrange"
-        android:pathData="M17.23,16.23l-3.46,-1.73H12v-6c0,-0.28 -0.22,-0.5 -0.5,-0.5s-0.5,0.22 -0.5,0.5v10.61l-4.25,-0.89 3.68,3.68c0.06,0.06 0.15,0.1 0.24,0.1h6.3l0.8,-4.71c0.07,-0.43 -0.15,-0.86 -0.54,-1.06z"
-        android:strokeAlpha="0.3" />
+  <path
+      android:fillColor="?android:attr/colorControlNormal"
+      android:pathData="M5.33,3.271a3.5,3.5 0,0 1,4.254 4.963l10.709,10.71 -1.414,1.414 -10.71,-10.71a3.502,3.502 0,0 1,-4.962 -4.255L5.444,7.63a1.5,1.5 0,1 0,2.121 -2.121L5.329,3.27zM15.697,5.155l3.182,-1.768 1.414,1.414 -1.768,3.182 -1.768,0.354 -2.12,2.121 -1.415,-1.414 2.121,-2.121 0.354,-1.768zM8.979,13.287l1.414,1.414 -5.303,5.303a1,1 0,0 1,-1.492 -1.327l0.078,-0.087 5.303,-5.303z"/>
 </vector>

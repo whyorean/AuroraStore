@@ -30,15 +30,20 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.aurora.store.Constants;
 import com.aurora.store.GlideApp;
 import com.aurora.store.R;
-import com.aurora.store.activity.DetailsActivity;
-import com.aurora.store.activity.DownloadsActivity;
 import com.aurora.store.sheet.DownloadMenuSheet;
-import com.aurora.store.utility.PackageUtil;
-import com.aurora.store.utility.Util;
+import com.aurora.store.ui.details.DetailsActivity;
+import com.aurora.store.ui.single.activity.DownloadsActivity;
+import com.aurora.store.util.PackageUtil;
+import com.aurora.store.util.Util;
+import com.aurora.store.util.ViewUtil;
+import com.bumptech.glide.load.resource.bitmap.CenterCrop;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.tonyodev.fetch2.Download;
 import com.tonyodev.fetch2.Status;
 
@@ -105,6 +110,7 @@ public class DownloadsAdapter extends RecyclerView.Adapter<DownloadsAdapter.View
         GlideApp
                 .with(context)
                 .load(iconURL)
+                .transforms(new CenterCrop(), new RoundedCorners(30))
                 .into(viewHolder.imgDownload);
 
         viewHolder.txtTitle.setText(displayName);
@@ -138,8 +144,8 @@ public class DownloadsAdapter extends RecyclerView.Adapter<DownloadsAdapter.View
 
         viewHolder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(context, DetailsActivity.class);
-            intent.putExtra("INTENT_PACKAGE_NAME", packageName);
-            context.startActivity(intent);
+            intent.putExtra(Constants.INTENT_PACKAGE_NAME, packageName);
+            context.startActivity(intent, ViewUtil.getEmptyActivityBundle((AppCompatActivity) context));
         });
 
         viewHolder.itemView.setOnLongClickListener(v -> {

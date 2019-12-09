@@ -19,15 +19,14 @@
   -->
 
 <ViewSwitcher xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/viewSwitcher"
+    android:id="@+id/view_switcher_action"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
     <LinearLayout
         android:id="@+id/view1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="end">
+        android:layout_height="wrap_content">
 
         <include layout="@layout/include_details_actions_button" />
     </LinearLayout>

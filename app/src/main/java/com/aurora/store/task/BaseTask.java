@@ -43,7 +43,7 @@ public abstract class BaseTask extends ContextWrapper {
     }
 
     public GooglePlayAPI getApi() throws Exception {
-        return PlayStoreApiAuthenticator.getInstance(context);
+        return PlayStoreApiAuthenticator.getApi(context);
     }
 
     public Context getContext() {
@@ -55,17 +55,17 @@ public abstract class BaseTask extends ContextWrapper {
     }
 
     public List<App> filterGoogleApps(List<App> apps) {
-        Set<String> shitSet = new HashSet<>();
-        shitSet.add("com.chrome.beta");
-        shitSet.add("com.chrome.canary");
-        shitSet.add("com.chrome.dev");
-        shitSet.add("com.android.chrome");
-        shitSet.add("com.niksoftware.snapseed");
-        shitSet.add("com.google.toontastic");
+        Set<String> gAppsSet = new HashSet<>();
+        gAppsSet.add("com.chrome.beta");
+        gAppsSet.add("com.chrome.canary");
+        gAppsSet.add("com.chrome.dev");
+        gAppsSet.add("com.android.chrome");
+        gAppsSet.add("com.niksoftware.snapseed");
+        gAppsSet.add("com.google.toontastic");
 
         List<App> appList = new ArrayList<>();
         for (App app : apps) {
-            if (!app.getPackageName().startsWith("com.google") && !shitSet.contains(app.getPackageName())) {
+            if (!app.getPackageName().startsWith("com.google") && !gAppsSet.contains(app.getPackageName())) {
                 appList.add(app);
             }
         }

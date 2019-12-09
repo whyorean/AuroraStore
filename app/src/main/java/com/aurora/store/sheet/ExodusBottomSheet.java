@@ -39,7 +39,7 @@ import com.aurora.store.R;
 import com.aurora.store.adapter.ExodusAdapter;
 import com.aurora.store.model.ExodusTracker;
 import com.aurora.store.model.Report;
-import com.aurora.store.utility.Log;
+import com.aurora.store.util.Log;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 

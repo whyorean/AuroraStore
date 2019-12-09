@@ -23,7 +23,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="false"
-    tools:context=".activity.GoogleLoginActivity">
+    tools:context=".ui.single.activity.GoogleLoginActivity">
 
     <WebView
         android:id="@+id/webview"

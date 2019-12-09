@@ -67,34 +67,12 @@
         tools:targetApi="q">
 
         <activity
-            android:name=".activity.AuroraActivity"
+            android:name=".ui.main.AuroraActivity"
             android:configChanges="keyboardHidden|locale|orientation|fontScale">
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
 
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-
-                <data
-                    android:host="search"
-                    android:scheme="market" />
-            </intent-filter>
-            <intent-filter>
-                <category android:name="android.intent.category.LAUNCHER" />
-                <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
-
-                <action android:name="android.intent.action.MAIN" />
-            </intent-filter>
-            <intent-filter>
-                <action android:name="android.intent.action.SEARCH" />
-            </intent-filter>
-
-            <meta-data
-                android:name="android.app.searchable"
-                android:resource="@xml/searchable" />
         </activity>
         <activity
-            android:name=".activity.DetailsActivity"
+            android:name=".ui.details.DetailsActivity"
             android:configChanges="keyboardHidden|locale|orientation|fontScale">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
@@ -121,36 +99,61 @@
         </activity>
 
         <activity
-            android:name=".activity.FullscreenImageActivity"
+            android:name=".ui.single.activity.FullscreenImageActivity"
             android:configChanges="keyboardHidden|locale|orientation|fontScale" />
         <activity
-            android:name=".activity.DownloadsActivity"
+            android:name=".ui.single.activity.DownloadsActivity"
             android:configChanges="keyboardHidden|locale|orientation|fontScale" />
         <activity
-            android:name=".activity.AccountsActivity"
+            android:name=".ui.accounts.AccountsActivity"
             android:configChanges="keyboardHidden|locale|orientation|fontScale" />
         <activity
-            android:name=".activity.SettingsActivity"
+            android:name=".ui.preference.SettingsActivity"
             android:configChanges="locale|orientation|fontScale"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".activity.IntroActivity"
+            android:name=".ui.intro.IntroActivity"
             android:configChanges="keyboardHidden|locale|orientation|fontScale" />
         <activity
-            android:name=".activity.ManualDownloadActivity"
+            android:name=".ui.single.activity.ManualDownloadActivity"
             android:configChanges="keyboardHidden|locale|orientation|fontScale" />
         <activity
-            android:name=".activity.DeviceInfoActivity"
+            android:name=".ui.single.activity.DeviceInfoActivity"
             android:configChanges="keyboardHidden|locale|orientation|fontScale" />
-        <activity
-            android:name=".activity.GoogleLoginActivity"
-            android:theme="@style/LoginTheme" />
+        <activity android:name=".ui.single.activity.GoogleLoginActivity" />
+        <activity android:name=".ui.single.activity.SplashActivity">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
 
-        <provider
-            android:name=".provider.AuroraSuggestionProvider"
-            android:authorities="com.aurora.store.provider.AuroraSuggestionProvider"
-            android:enabled="true"
-            android:exported="false" />
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.search.activity.SearchActivity"
+            android:launchMode="singleTop">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="search"
+                    android:scheme="market" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".ui.search.activity.SearchResultActivity" />
+        <activity android:name=".ui.category.CategoryAppsActivity" />
+        <activity android:name=".ui.installed.InstalledAppActivity" />
+        <activity android:name=".ui.single.activity.GenericActivity" />
+        <activity android:name=".ui.devapps.DevAppsActivity" />
+        <activity android:name=".ui.details.ReviewsActivity" />
+
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.aurora.store.fileProvider"
@@ -177,11 +180,7 @@
 
         <service android:name=".installer.InstallerService" />
         <service android:name=".SelfUpdateService" />
-        <service android:name=".AnonymousLoginService" />
-
-        <meta-data
-            android:name="preloaded_fonts"
-            android:resource="@array/preloaded_fonts" />
+        <service android:name=".ValidateApiService" />
+        <service android:name=".BulkUpdateService" />
     </application>
-
 </manifest>

@@ -37,7 +37,7 @@
         android:layout_below="@id/welcome_icon"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/margin_normal"
-        android:text="@string/app_name"
+        android:text="@string/action_accounts"
         android:textAppearance="@style/TextAppearance.Aurora.Toolbar.Title"
         android:textSize="20sp" />
 
@@ -57,7 +57,6 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/action"
         android:layout_below="@+id/acc_desc"
         android:layout_margin="@dimen/margin_normal"
         android:background="@drawable/generic_padded_bg">
@@ -70,45 +69,4 @@
             android:textColor="?android:attr/textColorPrimary"
             android:typeface="monospace" />
     </androidx.core.widget.NestedScrollView>
-
-    <RelativeLayout
-        android:id="@+id/action"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true">
-
-        <ProgressBar
-            android:id="@+id/progress_bar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginEnd="@dimen/margin_normal"
-            android:layout_toStartOf="@id/btn_anonymous"
-            android:scaleX=".75"
-            android:scaleY=".75"
-            android:visibility="invisible" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_anonymous"
-            style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginTop="@dimen/margin_normal"
-            android:layout_marginBottom="@dimen/margin_normal"
-            android:layout_toStartOf="@id/btn_next"
-            android:maxLines="1"
-            android:text="@string/account_dummy" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_next"
-            style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:layout_margin="@dimen/margin_normal"
-            android:maxLines="1"
-            android:text="@string/account_google" />
-    </RelativeLayout>
 </RelativeLayout>

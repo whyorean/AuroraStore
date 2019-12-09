@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Aurora Store
+  ~ Copyright (C) 2019, Rahul Kumar Patel <whyorean@gmail.com>
+  ~
+  ~ Aurora Store is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 2 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ Aurora Store is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with Aurora Store.  If not, see <http://www.gnu.org/licenses/>.
+  ~
+  ~
+  -->
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:id="@+id/group1">
+        <item
+            android:id="@+id/action_all_apps"
+            android:icon="@drawable/ic_apps"
+            android:title="@string/title_all_apps" />
+
+        <item
+            android:id="@+id/action_favourite"
+            android:icon="@drawable/ic_menu_fav"
+            android:title="@string/action_favourites" />
+
+        <item
+            android:id="@+id/action_blacklist"
+            android:icon="@drawable/ic_menu_blacklist"
+            android:title="@string/action_blacklist" />
+
+        <item
+            android:id="@+id/action_download"
+            android:icon="@drawable/ic_menu_download"
+            android:title="@string/menu_downloads" />
+    </group>
+
+    <group android:id="@+id/group2">
+        <item
+            android:id="@+id/action_accounts"
+            android:icon="@drawable/ic_menu_account"
+            android:title="@string/menu_account" />
+
+        <item
+            android:id="@+id/action_spoof"
+            android:icon="@drawable/ic_menu_spoof"
+            android:title="@string/action_spoofed" />
+
+        <item
+            android:id="@+id/action_setting"
+            android:icon="@drawable/ic_menu_settings"
+            android:title="@string/menu_setting" />
+    </group>
+    <group android:id="@+id/group3">
+        <item
+            android:id="@+id/action_about"
+            android:icon="@drawable/ic_menu_about"
+            android:title="@string/action_about" />
+    </group>
+</menu>

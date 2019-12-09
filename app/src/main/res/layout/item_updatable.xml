@@ -26,20 +26,19 @@
     android:paddingStart="@dimen/margin_medium"
     android:paddingTop="@dimen/margin_small"
     android:paddingEnd="@dimen/margin_xxsmall"
-    android:paddingBottom="@dimen/margin_small">
+    android:paddingBottom="@dimen/margin_xxsmall">
 
     <RelativeLayout
         android:id="@+id/layout_info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <ImageView
+        <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/app_icon"
-            android:layout_width="56dp"
-            android:layout_height="56dp"
+            android:layout_width="@dimen/icon_size"
+            android:layout_height="@dimen/icon_size"
             android:layout_marginStart="@dimen/margin_small"
-            android:layout_marginEnd="@dimen/margin_normal"
-            android:contentDescription="@string/content_description_icon" />
+            android:layout_marginEnd="@dimen/margin_normal" />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -54,7 +53,7 @@
                 android:ellipsize="end"
                 android:singleLine="true"
                 android:textAlignment="viewStart"
-                android:textAppearance="@style/TextAppearance.Aurora.SubTitle" />
+                android:textAppearance="@style/TextAppearance.Aurora.Line1" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/app_version"
@@ -64,9 +63,7 @@
                 android:layout_marginTop="2dp"
                 android:ellipsize="end"
                 android:singleLine="true"
-                android:textAlignment="viewStart"
-                android:textColor="?android:attr/textColorPrimary"
-                android:textSize="14sp" />
+                android:textAppearance="@style/TextAppearance.Aurora.Line3" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/app_extra"
@@ -76,11 +73,10 @@
                 android:layout_marginTop="2dp"
                 android:ellipsize="end"
                 android:singleLine="true"
-                android:textAlignment="viewStart"
-                android:textSize="12sp" />
+                android:textAppearance="@style/TextAppearance.Aurora.Line3" />
         </RelativeLayout>
 
-        <ImageView
+        <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/img_expand"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -97,7 +93,9 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_below="@+id/layout_info"
-        android:layout_margin="@dimen/margin_small"
+        android:layout_marginStart="@dimen/margin_xsmall"
+        android:layout_marginTop="@dimen/margin_xsmall"
+        android:layout_marginEnd="@dimen/margin_xsmall"
         android:background="@drawable/generic_padded_bg">
 
         <TextView

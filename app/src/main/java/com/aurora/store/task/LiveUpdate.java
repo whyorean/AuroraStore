@@ -7,9 +7,9 @@ import com.aurora.store.download.DownloadManager;
 import com.aurora.store.download.RequestBuilder;
 import com.aurora.store.model.App;
 import com.aurora.store.notification.GeneralNotification;
-import com.aurora.store.utility.Log;
-import com.aurora.store.utility.PackageUtil;
-import com.aurora.store.utility.Util;
+import com.aurora.store.util.Log;
+import com.aurora.store.util.PackageUtil;
+import com.aurora.store.util.Util;
 import com.dragons.aurora.playstoreapiv2.AndroidAppDeliveryData;
 import com.tonyodev.fetch2.AbstractFetchGroupListener;
 import com.tonyodev.fetch2.Download;
@@ -25,8 +25,9 @@ import org.jetbrains.annotations.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LiveUpdate extends BaseTask {
+public class LiveUpdate {
 
+    private Context context;
     private Fetch fetch;
     private FetchListener fetchListener;
     private GeneralNotification notification;
@@ -35,11 +36,11 @@ public class LiveUpdate extends BaseTask {
     private int progress;
 
     public LiveUpdate(Context context) {
-        super(context);
+        this.context = context;
     }
 
-    public void enqueueUpdate(App mApp, AndroidAppDeliveryData deliveryData) {
-        app = mApp;
+    public void enqueueUpdate(App app, AndroidAppDeliveryData deliveryData) {
+        this.app = app;
         fetch = DownloadManager.getFetchInstance(context);
         notification = new GeneralNotification(context, app);
         hashCode = app.getPackageName().hashCode();
@@ -118,10 +119,11 @@ public class LiveUpdate extends BaseTask {
             }
 
             @Override
-            public void onCancelled(int groupId, @NotNull Download download, @NotNull FetchGroup fetchGroup) {
+            public void onDeleted(int groupId, @NotNull Download download, @NotNull FetchGroup fetchGroup) {
+                super.onDeleted(groupId, download, fetchGroup);
                 if (groupId == hashCode) {
                     notification.notifyCancelled();
-                    Log.e("Cancelled %s", app.getDisplayName());
+                    Log.i("Cancelled %s", app.getDisplayName());
                 }
             }
         };

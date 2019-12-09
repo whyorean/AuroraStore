@@ -19,28 +19,29 @@
   -->
 
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/coordinator"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="?android:colorBackground">
+    android:layout_height="match_parent">
 
     <FrameLayout
-        android:id="@+id/coordinator"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        android:layout_height="match_parent">
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/category_recycler"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:clipToPadding="false"
-            android:nestedScrollingEnabled="false"
             android:overScrollMode="never"
-            android:paddingTop="@dimen/margin_small"
-            android:paddingBottom="@dimen/bottom_nav_padding"
-            android:scrollbars="none"
+            android:paddingTop="@dimen/margin_bottom"
+            android:paddingBottom="@dimen/margin_bottom"
             android:splitMotionEvents="false"
             tools:listitem="@layout/item_category_list" />
     </FrameLayout>

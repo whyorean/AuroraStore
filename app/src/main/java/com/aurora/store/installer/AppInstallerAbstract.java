@@ -35,12 +35,15 @@ import androidx.annotation.Nullable;
 import java.io.File;
 import java.util.List;
 
+import lombok.Getter;
+
+@Getter
 public abstract class AppInstallerAbstract {
 
     private Context context;
     private BroadcastReceiver broadcastReceiver;
     private Handler handler = new Handler(Looper.getMainLooper());
-    private InstallationStatusListener installationStatusListener;
+    private InstallationStatusListener listener;
 
     AppInstallerAbstract(Context context) {
         this.context = context.getApplicationContext();
@@ -54,26 +57,18 @@ public abstract class AppInstallerAbstract {
         };
     }
 
-    void addInstallationStatusListener(InstallationStatusListener installationStatusListener) {
-        this.installationStatusListener = installationStatusListener;
+    void addInstallationStatusListener(InstallationStatusListener listener) {
+        this.listener = listener;
     }
 
     void dispatchSessionUpdate(int status, String packageName) {
         handler.post(() -> {
-            if (installationStatusListener != null)
-                installationStatusListener.onStatusChanged(status, packageName);
+            if (listener != null)
+                listener.onStatusChanged(status, packageName);
         });
     }
 
-    public BroadcastReceiver getBroadcastReceiver() {
-        return broadcastReceiver;
-    }
-
-    protected Context getContext() {
-        return context;
-    }
-
-    protected abstract void installApkFiles(String packageName,List<File> apkFiles);
+    protected abstract void installApkFiles(String packageName, List<File> apkFiles);
 
     public interface InstallationStatusListener {
         void onStatusChanged(int status, @Nullable String packageName);

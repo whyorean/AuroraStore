@@ -25,8 +25,8 @@ package com.aurora.store.iterator;
 
 import com.aurora.store.model.App;
 import com.aurora.store.model.AppBuilder;
-import com.aurora.store.model.Filter;
-import com.aurora.store.utility.Log;
+import com.aurora.store.model.FilterModel;
+import com.aurora.store.util.Log;
 import com.dragons.aurora.playstoreapiv2.AppListIterator;
 import com.dragons.aurora.playstoreapiv2.DocV2;
 
@@ -38,9 +38,9 @@ import java.util.Set;
 
 public class CustomAppListIterator implements Iterator {
 
-    protected boolean filterEnabled = false;
-    protected Filter filter = new Filter();
-    protected AppListIterator iterator;
+    private boolean filterEnabled = false;
+    private FilterModel filterModel = new FilterModel();
+    private AppListIterator iterator;
     private List<String> relatedTags = new ArrayList<>();
 
     public CustomAppListIterator(AppListIterator iterator) {
@@ -58,8 +58,8 @@ public class CustomAppListIterator implements Iterator {
         this.filterEnabled = filterEnabled;
     }
 
-    public void setFilter(Filter filter) {
-        this.filter = filter;
+    public void setFilterModel(FilterModel filterModel) {
+        this.filterModel = filterModel;
     }
 
     @Override
@@ -87,11 +87,11 @@ public class CustomAppListIterator implements Iterator {
     }
 
     private boolean shouldSkip(App app) {
-        return (!filter.isPaidApps() && !app.isFree())
-                || (!filter.isAppsWithAds() && app.containsAds())
-                || (!filter.isGsfDependentApps() && !app.getDependencies().isEmpty())
-                || (filter.getRating() > 0 && app.getRating().getAverage() < filter.getRating())
-                || (filter.getDownloads() > 0 && app.getInstalls() < filter.getDownloads());
+        return (!filterModel.isPaidApps() && !app.isFree())
+                || (!filterModel.isAppsWithAds() && app.containsAds())
+                || (!filterModel.isGsfDependentApps() && !app.getDependencies().isEmpty())
+                || (filterModel.getRating() > 0 && app.getRating().getAverage() < filterModel.getRating())
+                || (filterModel.getDownloads() > 0 && app.getInstalls() < filterModel.getDownloads());
     }
 
     private void addApp(List<App> apps, App app) {

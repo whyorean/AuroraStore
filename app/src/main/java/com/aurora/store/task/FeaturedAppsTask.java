@@ -24,7 +24,7 @@ import android.content.Context;
 
 import com.aurora.store.iterator.CustomAppListIterator;
 import com.aurora.store.model.App;
-import com.aurora.store.utility.Util;
+import com.aurora.store.util.Util;
 import com.dragons.aurora.playstoreapiv2.CategoryAppsIterator;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 
@@ -37,8 +37,7 @@ public class FeaturedAppsTask extends BaseTask {
         super(context);
     }
 
-    public List<App> getApps(String categoryId, GooglePlayAPI.SUBCATEGORY subCategory) throws Exception {
-        final GooglePlayAPI api = getApi();
+    public List<App> getApps(GooglePlayAPI api, String categoryId, GooglePlayAPI.SUBCATEGORY subCategory) throws Exception {
         final CustomAppListIterator iterator = new CustomAppListIterator(new CategoryAppsIterator(api, categoryId, subCategory));
         List<App> apps = new ArrayList<>();
         while (iterator.hasNext() && apps.isEmpty()) {

@@ -54,7 +54,6 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/action"
         android:layout_below="@+id/perm_desc"
         android:layout_margin="@dimen/margin_normal"
         android:background="@drawable/generic_padded_bg">
@@ -65,21 +64,4 @@
             android:layout_height="wrap_content"
             android:orientation="vertical" />
     </androidx.core.widget.NestedScrollView>
-
-    <RelativeLayout
-        android:id="@+id/action"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true">
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_next"
-            style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_margin="@dimen/margin_normal"
-            android:maxLines="1"
-            android:text="@string/action_next" />
-    </RelativeLayout>
 </RelativeLayout>

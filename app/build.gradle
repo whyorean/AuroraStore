@@ -42,7 +42,9 @@ android {
     }
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
+            zipAlignEnabled true
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release
         }
@@ -52,19 +54,7 @@ android {
         sourceCompatibility 1.8
     }
     lintOptions {
-        checkReleaseBuilds false
-        abortOnError false
-    }
-}
-
-configurations.all {
-    resolutionStrategy.eachDependency { DependencyResolveDetails details ->
-        def requested = details.requested
-        if (requested.group == "androidx") {
-            if (!requested.name.startsWith("multidex")) {
-                details.useVersion "${targetSdk}.+"
-            }
-        }
+        warning 'MissingTranslation', 'GetLocales', 'VectorDrawableCompat'
     }
 }
 
@@ -72,12 +62,19 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'commons-io:commons-io:2.6'
     implementation 'org.apache.maven:maven-artifact:3.6.2'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0'
+
     //UI-Libs
     implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta4'
     implementation 'androidx.preference:preference:1.1.0'
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.0.0'
-    implementation 'com.google.android.material:material:1.1.0-alpha10'
     implementation 'androidx.palette:palette:1.0.0'
+    implementation 'androidx.navigation:navigation-fragment:2.1.0'
+    implementation 'androidx.navigation:navigation-ui:2.1.0'
+    implementation 'com.google.android.material:material:1.1.0-alpha10'
+    implementation 'io.github.luizgrp.sectionedrecyclerviewadapter:sectionedrecyclerviewadapter:3.0.0'
+
     //Utils
     implementation 'androidx.annotation:annotation:1.1.0'
     implementation 'org.apache.commons:commons-text:1.8'
@@ -85,18 +82,23 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.6'
     compileOnly 'org.projectlombok:lombok:1.18.10'
     annotationProcessor 'org.projectlombok:lombok:1.18.10'
+
     //PlayStoreApi
     implementation 'com.github.whyorean:playstore-api-v2:2.4'
+
     //OkHTTP3
     implementation 'com.squareup.okhttp3:okhttp:4.2.2'
     implementation 'com.squareup.okhttp3:okhttp-urlconnection:4.2.2'
+
     //RX-Java2
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
     implementation 'io.reactivex.rxjava2:rxjava:2.2.14'
     implementation 'com.jakewharton.rxrelay2:rxrelay:2.1.1'
+
     //ButterKnife
     implementation 'com.jakewharton:butterknife:10.2.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.0'
+
     //Glide
     implementation 'com.github.bumptech.glide:glide:4.10.0'
     implementation "com.github.bumptech.glide:okhttp3-integration:4.10.0"

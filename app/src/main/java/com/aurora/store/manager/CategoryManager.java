@@ -27,26 +27,31 @@ import android.content.Context;
 
 import com.aurora.store.Constants;
 import com.aurora.store.R;
-import com.aurora.store.SharedPreferencesTranslator;
-import com.aurora.store.utility.PrefUtil;
-import com.aurora.store.utility.Util;
+import com.aurora.store.model.CategoryModel;
+import com.aurora.store.util.PrefUtil;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeMap;
-import java.util.TreeSet;
+import org.apache.commons.lang3.StringUtils;
+
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CategoryManager {
 
-    private static final String SUBCATEGORY_ID_GAMES = "GAME";
-    private static final String SUBCATEGORY_ID_FAMILY = "FAMILY";
-
     private Context context;
-    private SharedPreferencesTranslator translator;
+    private Gson gson;
 
     public CategoryManager(Context context) {
         this.context = context;
-        translator = new SharedPreferencesTranslator(Util.getPrefs(context));
+        this.gson = new Gson();
+    }
+
+    public static void clear(Context context) {
+        PrefUtil.remove(context, Constants.CATEGORY_APPS);
+        PrefUtil.remove(context, Constants.CATEGORY_GAME);
+        PrefUtil.remove(context, Constants.CATEGORY_FAMILY);
     }
 
     public String getCategoryName(String categoryId) {
@@ -56,71 +61,31 @@ public class CategoryManager {
         if (categoryId.equals(Constants.TOP)) {
             return context.getString(R.string.title_all_apps);
         }
-        return translator.getString(categoryId);
-    }
-
-    public void save(String parent, Map<String, String> categories) {
-        PrefUtil.putStringSet(context, parent, categories.keySet());
-        for (String categoryId : categories.keySet()) {
-            translator.putString(categoryId, categories.get(categoryId));
-        }
+        return StringUtils.EMPTY;
     }
 
     public boolean fits(String appCategoryId, String chosenCategoryId) {
         return null == chosenCategoryId
                 || chosenCategoryId.equals(Constants.TOP)
-                || appCategoryId.equals(chosenCategoryId)
-                || PrefUtil.getStringSet(context, chosenCategoryId).contains(appCategoryId);
+                || appCategoryId.equals(chosenCategoryId);
     }
 
     public boolean categoryListEmpty() {
-        Set<String> topSet = PrefUtil.getStringSet(context, Constants.TOP);
-        if (topSet.isEmpty()) {
-            return true;
-        }
-        int size = topSet.size();
-        String categoryId = topSet.toArray(new String[size])[size - 1];
-        return translator.getString(categoryId).equals(categoryId);
+        return PrefUtil.getString(context, Constants.CATEGORY_APPS).isEmpty();
     }
 
-    public Map<String, String> getAllCategories() {
-        Map<String, String> categories = new TreeMap<>();
-        Set<String> topSet = PrefUtil.getStringSet(context, Constants.TOP);
-        for (String topCategoryId : topSet) {
-            categories.put(topCategoryId, translator.getString(topCategoryId));
-        }
-        return categories;
+    public List<CategoryModel> getCategories(String categoryId) {
+        return getCategoryById(categoryId);
     }
 
-    public Map<String, String> getAllGames() {
-        Map<String, String> games = new TreeMap<>();
-        Set<String> topSet = PrefUtil.getStringSet(context, Constants.TOP);
-        for (String topCategoryId : topSet) {
-            Set<String> subSet = PrefUtil.getStringSet(context, topCategoryId);
-            for (String subCategoryId : subSet) {
-                if (subCategoryId.startsWith(SUBCATEGORY_ID_GAMES))
-                    games.put(subCategoryId, games.get(topCategoryId) + " - " + translator.getString(subCategoryId));
-            }
-
-        }
-        return games;
-    }
-
-    public Map<String, String> getAllFamily() {
-        Map<String, String> family = new TreeMap<>();
-        Set<String> topSet = PrefUtil.getStringSet(context, Constants.TOP);
-        for (String topCategoryId : topSet) {
-            Set<String> subSet = PrefUtil.getStringSet(context, topCategoryId);
-            for (String subCategoryId : subSet) {
-                if (subCategoryId.startsWith(SUBCATEGORY_ID_FAMILY))
-                    family.put(subCategoryId, family.get(topCategoryId) + " - " + translator.getString(subCategoryId));
-            }
-        }
-        return family;
-    }
-
-    public void clearAll() {
-        Set<String> emptySet = new TreeSet<>();
-        PrefUtil.putStringSet(context, Constants.TOP, emptySet);
+    public List<CategoryModel> getCategoryById(String categoryId) {
+        Type type = new TypeToken<List<CategoryModel>>() {
+        }.getType();
+        String jsonString = PrefUtil.getString(context, categoryId);
+        List<CategoryModel> categoryList = gson.fromJson(jsonString, type);
+        if (categoryList == null || categoryList.isEmpty())
+            return new ArrayList<>();
+        else
+            return categoryList;
     }
 }

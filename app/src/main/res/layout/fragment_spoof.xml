@@ -27,8 +27,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:clipToPadding="false"
-        android:overScrollMode="never"
         android:fadeScrollbars="true"
+        android:overScrollMode="never"
         android:paddingBottom="@dimen/margin_bottom"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
@@ -50,7 +50,8 @@
                     android:layout_centerHorizontal="true"
                     android:layout_margin="@dimen/margin_small"
                     android:contentDescription="@string/content_description_icon"
-                    android:src="@drawable/ic_device_avatar" />
+                    android:src="@drawable/ic_menu_spoof"
+                    android:tint="?android:attr/colorAccent" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/device_model"

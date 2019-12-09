@@ -19,20 +19,18 @@
   -->
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginStart="@dimen/margin_small"
-    android:layout_marginEnd="@dimen/margin_small"
-    app:rippleColor="@color/colorScrim">
+    android:layout_marginStart="@dimen/margin_xsmall"
+    android:layout_marginEnd="@dimen/margin_xsmall">
 
     <ImageView
         android:id="@+id/app_icon"
         android:layout_width="@dimen/icon_size_big"
         android:layout_height="@dimen/icon_size_big"
-        android:layout_marginBottom="@dimen/margin_xxsmall"
-        android:contentDescription="@string/content_description_icon" />
+        android:contentDescription="@string/content_description_icon"
+        android:padding="@dimen/margin_xsmall" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/app_name"
@@ -45,8 +43,7 @@
         android:ellipsize="end"
         android:maxLines="1"
         android:textAlignment="viewStart"
-        android:textColor="?android:attr/textColorPrimary"
-        android:textSize="13sp"
+        android:textAppearance="@style/TextAppearance.Aurora.Line2"
         tools:text="Aurora Store" />
 
     <androidx.appcompat.widget.AppCompatTextView

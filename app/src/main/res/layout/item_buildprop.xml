@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Aurora Store
   ~ Copyright (C) 2019, Rahul Kumar Patel <whyorean@gmail.com>
   ~
@@ -25,22 +24,16 @@
     android:layout_marginStart="@dimen/margin_medium"
     android:layout_marginTop="@dimen/margin_small"
     android:layout_marginEnd="@dimen/margin_medium"
-    android:layout_marginBottom="@dimen/margin_small"
+    android:layout_marginBottom="@dimen/margin_xxsmall"
     android:background="@drawable/generic_padded_bg">
-
-    <ImageView
-        android:id="@+id/img"
-        android:layout_width="@dimen/icon_size_med"
-        android:layout_height="@dimen/icon_size_med"
-        android:layout_marginEnd="@dimen/margin_small"
-        android:src="@drawable/ic_bulletin" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/prop_key"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_toEndOf="@+id/img"
-        android:textAppearance="@style/TextAppearance.Aurora.Title" />
+        android:textAppearance="@style/TextAppearance.Aurora.Line1"
+        android:textStyle="bold"
+        android:textColor="?android:attr/colorAccent" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/prop_value"
@@ -48,7 +41,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/prop_key"
         android:layout_marginTop="@dimen/margin_xxsmall"
-        android:layout_toEndOf="@+id/img"
         android:ellipsize="end"
-        android:maxLines="3" />
+        android:maxLines="3"
+        android:textAppearance="@style/TextAppearance.Aurora.Line2" />
 </RelativeLayout>

@@ -37,8 +37,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.aurora.store.utility.Util;
-import com.aurora.store.utility.ViewUtil;
+import com.aurora.store.util.Util;
+import com.aurora.store.util.ViewUtil;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import org.apache.commons.lang3.StringUtils;
@@ -101,7 +101,7 @@ public class PermissionGroup extends LinearLayout {
 
     public void setPermissionGroupInfo(final PermissionGroupInfo permissionGroupInfo) {
         this.permissionGroupInfo = permissionGroupInfo;
-        ImageView imageView = (ImageView) findViewById(R.id.permission_group_icon);
+        ImageView imageView = findViewById(R.id.permission_group_icon);
         imageView.setImageDrawable(getPermissionGroupIcon(permissionGroupInfo));
         imageView.setColorFilter(ViewUtil.getStyledAttribute(imageView.getContext(), android.R.attr.colorAccent));
     }

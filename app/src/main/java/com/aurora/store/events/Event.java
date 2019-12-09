@@ -1,18 +1,40 @@
 package com.aurora.store.events;
 
+import lombok.Data;
+
+
+@Data
 public class Event {
 
-    private Events event;
+    private SubType subType;
+    private String packageName;
+    private int status;
 
-    public Event(Events event) {
-        this.event = event;
+    public Event(SubType subType, String packageName, int status) {
+        this.subType = subType;
+        this.packageName = packageName;
+        this.status = status;
     }
 
-    public Events getEvent() {
-        return event;
+    public Event(SubType subType, String packageName) {
+        this.subType = subType;
+        this.packageName = packageName;
     }
 
-    public void setEvent(Events event) {
-        this.event = event;
+    public Event(SubType subType) {
+        this.subType = subType;
+    }
+
+    public enum SubType {
+        API_SUCCESS,
+        API_FAILED,
+        API_ERROR,
+        BLACKLIST,
+        WHITELIST,
+        INSTALLED,
+        UNINSTALLED,
+        NETWORK_UNAVAILABLE,
+        NETWORK_AVAILABLE,
+        BULK_UPDATE_NOTIFY
     }
 }

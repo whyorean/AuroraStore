@@ -3,7 +3,7 @@ package com.aurora.store.task;
 import android.content.Context;
 import android.content.ContextWrapper;
 
-import com.aurora.store.utility.Log;
+import com.aurora.store.util.Log;
 
 import org.apache.commons.io.IOUtils;
 

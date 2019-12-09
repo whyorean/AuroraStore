@@ -20,22 +20,19 @@
 
 package com.aurora.store.task;
 
-import android.content.Context;
-
 import com.aurora.store.iterator.ReviewStorageIterator;
 import com.aurora.store.model.Review;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ReviewsHelper extends BaseTask {
+public class ReviewsHelper {
 
-    private List<Review> mReviewList = new ArrayList<>();
-
+    private List<Review> reviewList = new ArrayList<>();
     private ReviewStorageIterator iterator;
 
-    public ReviewsHelper(Context context) {
-        super(context);
+    public ReviewsHelper(ReviewStorageIterator iterator) {
+        this.iterator = iterator;
     }
 
     public void setIterator(ReviewStorageIterator iterator) {
@@ -43,8 +40,8 @@ public class ReviewsHelper extends BaseTask {
     }
 
     public List<Review> getReviews() {
-        mReviewList.clear();
-        mReviewList.addAll(iterator.next());
-        return mReviewList;
+        reviewList.clear();
+        reviewList.addAll(iterator.next());
+        return reviewList;
     }
 }

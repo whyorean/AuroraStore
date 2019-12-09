@@ -24,28 +24,44 @@ import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 
-import com.aurora.store.utility.CertUtil;
-import com.aurora.store.utility.Util;
+import com.aurora.store.util.CertUtil;
+import com.aurora.store.util.Util;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class AllAppsTask extends BaseTask {
+public class AllAppsTask {
+
+    private Context context;
+    private PackageManager packageManager;
+    private boolean fDroidFilterEnabled;
+    private boolean isExtendedUpdatesEnabled;
 
     public AllAppsTask(Context context) {
-        super(context);
+        this.context = context;
+        this.packageManager = context.getPackageManager();
+        this.fDroidFilterEnabled = Util.filterFDroidAppsEnabled(context);
+        this.isExtendedUpdatesEnabled = Util.isExtendedUpdatesEnabled(context);
     }
 
-    List<String> getInstalledApps() {
+    public PackageManager getPackageManager() {
+        return packageManager;
+    }
+
+    public Context getContext() {
+        return context;
+    }
+
+    List<String> getLocalInstalledApps() {
         List<String> packageList = new ArrayList<>();
         PackageManager packageManager = context.getPackageManager();
-        for (PackageInfo packageInfo : packageManager.getInstalledPackages(0)) {
+        for (PackageInfo packageInfo : packageManager.getInstalledPackages(PackageManager.GET_META_DATA)) {
             final String packageName = packageInfo.packageName;
             if (packageInfo.applicationInfo != null
                     && !packageInfo.applicationInfo.enabled
-                    && !Util.isExtendedUpdatesEnabled(context))
+                    && !isExtendedUpdatesEnabled)
                 continue;
-            if (Util.filterFDroidAppsEnabled(context) && CertUtil.isFDroidApp(context, packageName))
+            if (fDroidFilterEnabled && CertUtil.isFDroidApp(context, packageName))
                 continue;
             packageList.add(packageName);
         }

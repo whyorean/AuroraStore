@@ -23,7 +23,7 @@ package com.aurora.store.download;
 import android.content.Context;
 
 import com.aurora.store.Constants;
-import com.aurora.store.utility.Util;
+import com.aurora.store.util.Util;
 import com.tonyodev.fetch2.Fetch;
 import com.tonyodev.fetch2.FetchConfiguration;
 import com.tonyodev.fetch2okhttp.OkHttpDownloader;

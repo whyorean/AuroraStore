@@ -20,16 +20,14 @@
 
 package com.aurora.store.notification;
 
-import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.os.Build;
 
 import com.aurora.store.R;
 import com.aurora.store.model.App;
-import com.aurora.store.utility.NotificationUtil;
-import com.aurora.store.utility.Util;
+import com.aurora.store.util.NotificationUtil;
+import com.aurora.store.util.Util;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.Transition;
@@ -135,14 +133,6 @@ public class GeneralNotification extends NotificationBase {
 
     public void show() {
         if (NotificationUtil.isNotificationEnabled(context)) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                channel = new NotificationChannel(context.getPackageName(),
-                        context.getString(R.string.app_name),
-                        NotificationManager.IMPORTANCE_DEFAULT);
-                channel.setDescription("Aurora Store Notification Channel");
-                manager.createNotificationChannel(channel);
-                builder.setChannelId(channel.getId());
-            }
             Glide.with(context.getApplicationContext())
                     .asBitmap()
                     .load(app.getIconInfo().getUrl())

@@ -28,7 +28,7 @@ import com.aurora.store.exception.AppNotFoundException;
 import com.aurora.store.exception.MalformedRequestException;
 import com.aurora.store.exception.TooManyRequestsException;
 import com.aurora.store.exception.UnknownException;
-import com.aurora.store.utility.Util;
+import com.aurora.store.util.Util;
 import com.dragons.aurora.playstoreapiv2.AuthException;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 import com.dragons.aurora.playstoreapiv2.GooglePlayException;
@@ -46,7 +46,6 @@ import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.zip.GZIPInputStream;
 
 public class NativeHttpClientAdapter extends HttpClientAdapter {
 
@@ -81,12 +80,9 @@ public class NativeHttpClientAdapter extends HttpClientAdapter {
         }
     }
 
-    static private byte[] readFully(InputStream inputStream, boolean gzipped) throws IOException {
+    static private byte[] readFully(InputStream inputStream) throws IOException {
         if (null == inputStream) {
             return new byte[0];
-        }
-        if (gzipped) {
-            inputStream = new GZIPInputStream(inputStream);
         }
         InputStream bufferedInputStream = new BufferedInputStream(inputStream);
         byte[] buffer = new byte[8192];
@@ -177,8 +173,6 @@ public class NativeHttpClientAdapter extends HttpClientAdapter {
     protected byte[] request(HttpURLConnection connection, byte[] body, Map<String, String> headers) throws IOException {
         connection.setConnectTimeout(TIMEOUT);
         connection.setReadTimeout(TIMEOUT);
-        connection.setRequestProperty("Accept-Encoding", "gzip");
-        connection.addRequestProperty("Cache-Control", "max-age=300");
         for (String headerName : headers.keySet()) {
             connection.addRequestProperty(headerName, headers.get(headerName));
         }
@@ -189,18 +183,11 @@ public class NativeHttpClientAdapter extends HttpClientAdapter {
 
         int code = 0;
 
-        boolean isGzip;
-        try {
-            isGzip = null != connection.getContentEncoding() && connection.getContentEncoding().contains("gzip");
-        } catch (NullPointerException e) {
-            throw new AuthException(e.getMessage(), 401);
-        }
-
         try {
             code = connection.getResponseCode();
-            content = readFully(connection.getInputStream(), isGzip);
+            content = readFully(connection.getInputStream());
         } catch (IOException e) {
-            content = readFully(connection.getErrorStream(), isGzip);
+            content = readFully(connection.getErrorStream());
         } finally {
             connection.disconnect();
         }

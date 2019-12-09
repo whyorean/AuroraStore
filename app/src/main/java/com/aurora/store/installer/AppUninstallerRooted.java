@@ -24,8 +24,8 @@
 package com.aurora.store.installer;
 
 import com.aurora.store.model.App;
-import com.aurora.store.utility.Log;
-import com.aurora.store.utility.Root;
+import com.aurora.store.util.Log;
+import com.aurora.store.util.Root;
 
 public class AppUninstallerRooted {
 

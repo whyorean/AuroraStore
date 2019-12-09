@@ -26,12 +26,12 @@
     android:paddingStart="@dimen/margin_medium"
     android:paddingTop="@dimen/margin_small"
     android:paddingEnd="@dimen/margin_xxsmall"
-    android:paddingBottom="@dimen/margin_small">
+    android:paddingBottom="@dimen/margin_xxsmall">
 
-    <ImageView
+    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/app_icon"
-        android:layout_width="56dp"
-        android:layout_height="56dp"
+        android:layout_width="@dimen/icon_size"
+        android:layout_height="@dimen/icon_size"
         android:layout_marginStart="@dimen/margin_small"
         android:layout_marginEnd="@dimen/margin_normal" />
 
@@ -47,7 +47,7 @@
             android:ellipsize="end"
             android:singleLine="true"
             android:textAlignment="viewStart"
-            android:textAppearance="@style/TextAppearance.Aurora.SubTitle" />
+            android:textAppearance="@style/TextAppearance.Aurora.Line1" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/app_version"
@@ -57,9 +57,7 @@
             android:layout_marginTop="2dp"
             android:ellipsize="end"
             android:singleLine="true"
-            android:textAlignment="viewStart"
-            android:textColor="?android:attr/textColorPrimary"
-            android:textSize="14sp" />
+            android:textAppearance="@style/TextAppearance.Aurora.Line3" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/app_extra"
@@ -69,8 +67,7 @@
             android:layout_marginTop="2dp"
             android:ellipsize="end"
             android:singleLine="true"
-            android:textAlignment="viewStart"
-            android:textSize="12sp" />
+            android:textAppearance="@style/TextAppearance.Aurora.Line3" />
     </RelativeLayout>
 
 </RelativeLayout>

@@ -33,11 +33,16 @@
     <dimen name="bottom_sheet_top_padding">8dp</dimen>
     <dimen name="bottom_nav_padding">64dp</dimen>
 
-    <dimen name="icon_size">64dp</dimen>
-    <dimen name="icon_size_normal">80dp</dimen>
-    <dimen name="icon_size_big">100dp</dimen>
+    <dimen name="icon_size">56dp</dimen>
+    <dimen name="icon_size_normal">72dp</dimen>
+    <dimen name="icon_size_big">96dp</dimen>
     <dimen name="icon_size_small">56dp</dimen>
     <dimen name="icon_size_med">48dp</dimen>
     <dimen name="icon_size_cat">36dp</dimen>
+    <dimen name="icon_size_default">24dp</dimen>
+
+
+    <dimen name="height_searchview">52dp</dimen>
+    <dimen name="height_button">52dp</dimen>
 
 </resources>

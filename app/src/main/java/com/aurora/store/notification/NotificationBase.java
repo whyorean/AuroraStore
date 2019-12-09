@@ -20,7 +20,6 @@
 
 package com.aurora.store.notification;
 
-import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -28,14 +27,15 @@ import android.content.Intent;
 
 import androidx.core.app.NotificationCompat;
 
+import com.aurora.store.Constants;
 import com.aurora.store.R;
-import com.aurora.store.activity.DetailsActivity;
 import com.aurora.store.model.App;
 import com.aurora.store.receiver.DownloadCancelReceiver;
 import com.aurora.store.receiver.DownloadPauseReceiver;
 import com.aurora.store.receiver.DownloadResumeReceiver;
 import com.aurora.store.receiver.InstallReceiver;
-import com.aurora.store.utility.NotificationUtil;
+import com.aurora.store.ui.details.DetailsActivity;
+import com.aurora.store.util.NotificationUtil;
 
 public class NotificationBase {
 
@@ -44,7 +44,6 @@ public class NotificationBase {
     public static final String REQUEST_ID = "REQUEST_ID";
 
     protected NotificationCompat.Builder builder;
-    protected NotificationChannel channel;
     protected NotificationManager manager;
 
     protected Context context;
@@ -60,7 +59,7 @@ public class NotificationBase {
     }
 
     protected NotificationCompat.Builder getBuilder() {
-        return new NotificationCompat.Builder(context, app.getPackageName())
+        return new NotificationCompat.Builder(context, Constants.NOTIFICATION_CHANNEL_GENERAL)
                 .setAutoCancel(true)
                 .setCategory(NotificationCompat.CATEGORY_PROGRESS)
                 .setColorized(true)

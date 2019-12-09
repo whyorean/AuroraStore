@@ -33,20 +33,21 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.RecyclerView;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.aurora.store.AuroraApplication;
 import com.aurora.store.R;
-import com.aurora.store.activity.ManualDownloadActivity;
-import com.aurora.store.adapter.InstalledAppsAdapter;
-import com.aurora.store.adapter.UpdatableAppsAdapter;
-import com.aurora.store.fragment.DetailsFragment;
+import com.aurora.store.events.Event;
+import com.aurora.store.events.RxBus;
 import com.aurora.store.manager.BlacklistManager;
 import com.aurora.store.manager.FavouriteListManager;
 import com.aurora.store.model.App;
-import com.aurora.store.utility.ApkCopier;
-import com.aurora.store.utility.Log;
-import com.aurora.store.utility.PackageUtil;
+import com.aurora.store.ui.details.DetailsActivity;
+import com.aurora.store.ui.single.activity.ManualDownloadActivity;
+import com.aurora.store.util.ApkCopier;
+import com.aurora.store.util.Log;
+import com.aurora.store.util.PackageUtil;
+import com.aurora.store.util.ViewUtil;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.android.material.navigation.NavigationView;
 
@@ -64,14 +65,10 @@ public class AppMenuSheet extends BottomSheetDialogFragment {
 
     private App app;
     private Context context;
-    private RecyclerView.Adapter adapter;
     private CompositeDisposable disposable = new CompositeDisposable();
+    private RxBus rxBus;
 
     public AppMenuSheet() {
-    }
-
-    public void setAdapter(RecyclerView.Adapter adapter) {
-        this.adapter = adapter;
     }
 
     public App getApp() {
@@ -86,6 +83,7 @@ public class AppMenuSheet extends BottomSheetDialogFragment {
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         this.context = context;
+        this.rxBus = AuroraApplication.getRxBus();
     }
 
     @Override
@@ -128,14 +126,16 @@ public class AppMenuSheet extends BottomSheetDialogFragment {
                         blacklistManager.remove(app.getPackageName());
                         Toast.makeText(context, context.getString(R.string.toast_apk_whitelisted),
                                 Toast.LENGTH_SHORT).show();
+                        rxBus
+                                .getBus()
+                                .accept(new Event(Event.SubType.WHITELIST, app.getPackageName()));
                     } else {
                         blacklistManager.add(app.getPackageName());
                         Toast.makeText(context, context.getString(R.string.toast_apk_blacklisted),
                                 Toast.LENGTH_SHORT).show();
-                        if (adapter instanceof InstalledAppsAdapter)
-                            ((InstalledAppsAdapter) adapter).remove(app);
-                        if (adapter instanceof UpdatableAppsAdapter)
-                            ((UpdatableAppsAdapter) adapter).remove(app);
+                        rxBus
+                                .getBus()
+                                .accept(new Event(Event.SubType.BLACKLIST, app.getPackageName()));
                     }
                     break;
                 case R.id.action_local:
@@ -151,8 +151,8 @@ public class AppMenuSheet extends BottomSheetDialogFragment {
                             }));
                     break;
                 case R.id.action_manual:
-                    DetailsFragment.app = app;
-                    context.startActivity(new Intent(context, ManualDownloadActivity.class));
+                    DetailsActivity.app = app;
+                    context.startActivity(new Intent(context, ManualDownloadActivity.class), ViewUtil.getEmptyActivityBundle((AppCompatActivity) context));
                     break;
                 case R.id.action_uninstall:
                     AuroraApplication.getUninstaller().uninstall(app);

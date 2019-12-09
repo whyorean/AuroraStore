@@ -22,6 +22,7 @@
 
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle">
+    <solid android:color="?android:attr/colorBackground"/>
     <padding
         android:bottom="@dimen/margin_medium"
         android:left="@dimen/margin_medium"
@@ -30,7 +31,7 @@
     <size
         android:width="32dp"
         android:height="32dp" />
-    <corners android:radius="5dp" />
+    <corners android:radius="8dp" />
     <stroke
         android:width="1dp"
         android:color="?android:attr/strokeColor" />

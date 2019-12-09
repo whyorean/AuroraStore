@@ -27,8 +27,6 @@ import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 
-import com.aurora.store.utility.Log;
-
 public class NativeGsfVersionProvider {
 
     static private final String GOOGLE_SERVICES_PACKAGE_ID = "com.google.android.gms";

@@ -23,14 +23,13 @@
 
 package com.aurora.store.iterator;
 
-import com.aurora.store.api.PlayStoreApiAuthenticator;
+import com.aurora.store.AuroraApplication;
 import com.aurora.store.exception.InvalidApiException;
 import com.aurora.store.model.Review;
 import com.aurora.store.model.ReviewBuilder;
-import com.aurora.store.utility.Log;
+import com.aurora.store.util.Log;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,6 +37,12 @@ public class ReviewRetrieverIterator extends ReviewIterator {
 
     static private final int PAGE_SIZE = 15;
     protected boolean hasNext = true;
+
+    private GooglePlayAPI.REVIEW_SORT reviewSort = GooglePlayAPI.REVIEW_SORT.HIGHRATING;
+
+    public void setReviewSort(GooglePlayAPI.REVIEW_SORT reviewSort) {
+        this.reviewSort = reviewSort;
+    }
 
     @Override
     public boolean hasNext() {
@@ -49,7 +54,7 @@ public class ReviewRetrieverIterator extends ReviewIterator {
         page++;
         List<Review> list = new ArrayList<>();
         try {
-            list.addAll(getReviews(packageName, PAGE_SIZE * page, PAGE_SIZE));
+            list.addAll(getReviews(packageName, PAGE_SIZE * page, reviewSort));
             if (list.size() < PAGE_SIZE) {
                 hasNext = false;
             }
@@ -59,16 +64,16 @@ public class ReviewRetrieverIterator extends ReviewIterator {
         return list;
     }
 
-    private List<Review> getReviews(String packageId, int offset, int numberOfResults) throws Exception {
+    private List<Review> getReviews(String packageId, int offset, GooglePlayAPI.REVIEW_SORT reviewSort) throws Exception {
         List<Review> reviews = new ArrayList<>();
-        GooglePlayAPI api = PlayStoreApiAuthenticator.getInstance(context);
+        GooglePlayAPI api = AuroraApplication.api;
         if (api == null)
             throw new InvalidApiException();
         for (com.dragons.aurora.playstoreapiv2.Review review : api.reviews(
                 packageId,
-                GooglePlayAPI.REVIEW_SORT.HELPFUL,
+                reviewSort,
                 offset,
-                numberOfResults
+                PAGE_SIZE
         ).getGetResponse().getReviewList()) {
             reviews.add(ReviewBuilder.build(review));
         }

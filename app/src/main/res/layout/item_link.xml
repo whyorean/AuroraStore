@@ -25,7 +25,7 @@
     android:layout_marginEnd="@dimen/margin_normal"
     android:layout_marginBottom="@dimen/margin_small"
     android:background="@drawable/generic_padded_bg"
-    android:padding="@dimen/margin_small">
+    android:padding="@dimen/margin_normal">
 
     <ImageView
         android:contentDescription="@string/content_description_icon"
@@ -42,9 +42,7 @@
         android:layout_marginStart="@dimen/margin_small"
         android:layout_toEndOf="@+id/link_icon"
         android:singleLine="true"
-        android:textAppearance="@style/TextAppearance.Aurora.SubTitle"
-        android:textColor="?android:attr/textColorPrimary"
-        android:textSize="16sp" />
+        android:textAppearance="@style/TextAppearance.Aurora.Line1"/>
 
     <TextView
         android:id="@+id/link_summary"
@@ -54,6 +52,6 @@
         android:layout_alignStart="@id/link_title"
         android:layout_toEndOf="@+id/link_icon"
         android:maxLines="2"
-        android:textAppearance="@style/TextAppearance.Aurora.Body" />
+        android:textAppearance="@style/TextAppearance.Aurora.Line2" />
 
 </RelativeLayout>

@@ -25,7 +25,7 @@ import android.graphics.Bitmap;
 
 import androidx.annotation.NonNull;
 
-import com.aurora.store.utility.Util;
+import com.aurora.store.util.Util;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.GlideBuilder;
 import com.bumptech.glide.Registry;

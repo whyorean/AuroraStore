@@ -34,9 +34,9 @@ import com.aurora.services.IPrivilegedService;
 import com.aurora.store.BuildConfig;
 import com.aurora.store.Constants;
 import com.aurora.store.R;
-import com.aurora.store.utility.ContextUtil;
-import com.aurora.store.utility.Log;
-import com.aurora.store.utility.PackageUtil;
+import com.aurora.store.util.ContextUtil;
+import com.aurora.store.util.Log;
+import com.aurora.store.util.PackageUtil;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import java.io.File;

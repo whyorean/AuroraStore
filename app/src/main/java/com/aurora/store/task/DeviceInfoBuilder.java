@@ -34,8 +34,8 @@ import android.util.DisplayMetrics;
 import com.aurora.store.provider.EglExtensionProvider;
 import com.aurora.store.provider.NativeDeviceInfoProvider;
 import com.aurora.store.provider.NativeGsfVersionProvider;
-import com.aurora.store.utility.Log;
-import com.aurora.store.utility.PathUtil;
+import com.aurora.store.util.Log;
+import com.aurora.store.util.PathUtil;
 
 import java.io.File;
 import java.io.FileWriter;

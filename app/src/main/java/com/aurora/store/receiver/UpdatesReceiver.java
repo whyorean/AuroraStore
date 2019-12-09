@@ -8,14 +8,15 @@ import android.content.Intent;
 import com.aurora.store.AuroraApplication;
 import com.aurora.store.Constants;
 import com.aurora.store.R;
-import com.aurora.store.activity.AuroraActivity;
 import com.aurora.store.model.App;
 import com.aurora.store.notification.QuickNotification;
 import com.aurora.store.task.LiveUpdate;
 import com.aurora.store.task.ObservableDeliveryData;
 import com.aurora.store.task.UpdatableAppsTask;
-import com.aurora.store.utility.Log;
-import com.aurora.store.utility.Util;
+import com.aurora.store.ui.main.AuroraActivity;
+import com.aurora.store.util.Log;
+import com.aurora.store.util.Util;
+import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -36,7 +37,7 @@ public class UpdatesReceiver extends BroadcastReceiver {
         this.context = context;
         Log.i("Update check Started");
         CompositeDisposable disposable = new CompositeDisposable();
-        UpdatableAppsTask updatableAppTask = new UpdatableAppsTask(context);
+        UpdatableAppsTask updatableAppTask = new UpdatableAppsTask(new GooglePlayAPI(), context);
         disposable.add(Observable.fromCallable(updatableAppTask::getUpdatableApps)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -60,7 +61,7 @@ public class UpdatesReceiver extends BroadcastReceiver {
 
     private void updateAllApps(List<App> updatableAppList) {
         AuroraApplication.setOngoingUpdateList(updatableAppList);
-        AuroraApplication.setOnGoingUpdate(true);
+        AuroraApplication.setBulkUpdateAlive(true);
         disposable.add(Observable.fromIterable(updatableAppList)
                 .flatMap(app -> new ObservableDeliveryData(context).getDeliveryData(app))
                 .subscribeOn(Schedulers.io())

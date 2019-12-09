@@ -18,219 +18,162 @@
   ~
   -->
 
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tool="http://schemas.android.com/tools"
     android:id="@+id/coordinator"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ViewSwitcher
-        android:id="@+id/view_switcher"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <androidx.core.widget.NestedScrollView
-            android:id="@+id/content_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:clipToPadding="false"
-            android:overScrollMode="never"
-            android:paddingBottom="@dimen/bottom_nav_padding"
-            android:scrollbars="none">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/margin_small">
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/txt_top_categories"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignBaseline="@id/btn_all_categories"
-                        android:layout_alignParentStart="true"
-                        android:layout_toStartOf="@id/btn_all_categories"
-                        android:ellipsize="end"
-                        android:maxLines="1"
-                        android:paddingStart="@dimen/margin_medium"
-                        android:paddingEnd="@dimen/margin_xxsmall"
-                        android:text="@string/cat_top_categories"
-                        android:textAppearance="@style/TextAppearance.Aurora.Header" />
-
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btn_all_categories"
-                        style="@style/Widget.MaterialComponents.Button.TextButton.Dialog"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginEnd="5dp"
-                        android:maxLines="1"
-                        android:text="@string/action_filter_all"
-                        android:textAllCaps="false"
-                        app:rippleColor="@color/colorScrimAccent" />
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/recycler_top_categories"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/btn_all_categories"
-                        android:clipToPadding="false"
-                        android:orientation="horizontal"
-                        android:paddingStart="@dimen/margin_small"
-                        android:splitMotionEvents="false"
-                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                        tool:listitem="@layout/item_category_top" />
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/margin_small">
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/top_apps_name"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignBaseline="@id/btn_top_apps"
-                        android:layout_alignParentStart="true"
-                        android:layout_toStartOf="@id/btn_top_apps"
-                        android:ellipsize="end"
-                        android:maxLines="1"
-                        android:paddingStart="@dimen/margin_medium"
-                        android:paddingEnd="@dimen/margin_xxsmall"
-                        android:text="@string/cat_top_apps"
-                        android:textAppearance="@style/TextAppearance.Aurora.Header" />
-
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btn_top_apps"
-                        style="@style/Widget.MaterialComponents.Button.TextButton.Dialog"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginEnd="5dp"
-                        android:maxLines="1"
-                        android:text="@string/action_more"
-                        android:textAllCaps="false"
-                        app:rippleColor="@color/colorScrimAccent" />
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/recycler_top_apps"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/btn_top_apps"
-                        android:clipToPadding="false"
-                        android:orientation="horizontal"
-                        android:paddingStart="@dimen/margin_small"
-                        android:splitMotionEvents="false"
-                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                        tool:listitem="@layout/item_featured" />
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/margin_small">
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/top_apps_games"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignBaseline="@id/btn_top_games"
-                        android:layout_alignParentStart="true"
-                        android:layout_toStartOf="@id/btn_top_games"
-                        android:ellipsize="end"
-                        android:maxLines="1"
-                        android:paddingStart="@dimen/margin_medium"
-                        android:paddingEnd="@dimen/margin_xxsmall"
-                        android:text="@string/cat_top_games"
-                        android:textAppearance="@style/TextAppearance.Aurora.Header" />
-
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btn_top_games"
-                        style="@style/Widget.MaterialComponents.Button.TextButton.Dialog"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginEnd="5dp"
-                        android:maxLines="1"
-                        android:text="@string/action_more"
-                        android:textAllCaps="false"
-                        app:rippleColor="@color/colorScrimAccent" />
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/recycler_top_games"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/btn_top_games"
-                        android:clipToPadding="false"
-                        android:orientation="horizontal"
-                        android:paddingStart="@dimen/margin_small"
-                        android:splitMotionEvents="false"
-                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                        tool:listitem="@layout/item_featured" />
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/margin_small">
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/top_apps_family"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignBaseline="@id/btn_top_family"
-                        android:layout_alignParentStart="true"
-                        android:layout_toStartOf="@id/btn_top_family"
-                        android:ellipsize="end"
-                        android:maxLines="1"
-                        android:paddingStart="@dimen/margin_medium"
-                        android:paddingEnd="@dimen/margin_xxsmall"
-                        android:text="@string/cat_top_family"
-                        android:textAppearance="@style/TextAppearance.Aurora.Header" />
-
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btn_top_family"
-                        style="@style/Widget.MaterialComponents.Button.TextButton.Dialog"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginEnd="5dp"
-                        android:maxLines="1"
-                        android:text="@string/action_more"
-                        android:textAllCaps="false"
-                        app:rippleColor="@color/colorScrimAccent" />
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/recycler_top_family"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/btn_top_family"
-                        android:clipToPadding="false"
-                        android:orientation="horizontal"
-                        android:paddingStart="@dimen/margin_small"
-                        android:splitMotionEvents="false"
-                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                        tool:listitem="@layout/item_featured" />
-                </RelativeLayout>
-
-            </LinearLayout>
-        </androidx.core.widget.NestedScrollView>
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:overScrollMode="never"
+        android:paddingTop="@dimen/margin_bottom"
+        android:paddingBottom="@dimen/margin_bottom"
+        android:scrollbars="none">
 
         <LinearLayout
-            android:id="@+id/err_view"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical" />
-    </ViewSwitcher>
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_small">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/top_apps_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/btn_top_apps"
+                    android:layout_alignParentStart="true"
+                    android:layout_toStartOf="@id/btn_top_apps"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:paddingStart="@dimen/margin_medium"
+                    android:paddingEnd="@dimen/margin_xxsmall"
+                    android:text="@string/cat_top_apps"
+                    android:textAppearance="@style/TextAppearance.Aurora.Header" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_top_apps"
+                    style="@style/Widget.MaterialComponents.Button.TextButton.Dialog"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:maxLines="1"
+                    android:text="@string/action_more"
+                    android:textAllCaps="false"
+                    app:rippleColor="@color/colorScrimAccent" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_top_apps"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/btn_top_apps"
+                    android:clipToPadding="false"
+                    android:orientation="horizontal"
+                    android:paddingStart="@dimen/margin_small"
+                    android:splitMotionEvents="false"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tool:listitem="@layout/item_featured" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_small">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/top_apps_games"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/btn_top_games"
+                    android:layout_alignParentStart="true"
+                    android:layout_toStartOf="@id/btn_top_games"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:paddingStart="@dimen/margin_medium"
+                    android:paddingEnd="@dimen/margin_xxsmall"
+                    android:text="@string/cat_top_games"
+                    android:textAppearance="@style/TextAppearance.Aurora.Header" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_top_games"
+                    style="@style/Widget.MaterialComponents.Button.TextButton.Dialog"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:maxLines="1"
+                    android:text="@string/action_more"
+                    android:textAllCaps="false"
+                    app:rippleColor="@color/colorScrimAccent" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_top_games"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/btn_top_games"
+                    android:clipToPadding="false"
+                    android:orientation="horizontal"
+                    android:paddingStart="@dimen/margin_small"
+                    android:splitMotionEvents="false"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tool:listitem="@layout/item_featured" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_small">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/top_apps_family"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/btn_top_family"
+                    android:layout_alignParentStart="true"
+                    android:layout_toStartOf="@id/btn_top_family"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:paddingStart="@dimen/margin_medium"
+                    android:paddingEnd="@dimen/margin_xxsmall"
+                    android:text="@string/cat_top_family"
+                    android:textAppearance="@style/TextAppearance.Aurora.Header" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_top_family"
+                    style="@style/Widget.MaterialComponents.Button.TextButton.Dialog"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:maxLines="1"
+                    android:text="@string/action_more"
+                    android:textAllCaps="false"
+                    app:rippleColor="@color/colorScrimAccent" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_top_family"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/btn_top_family"
+                    android:clipToPadding="false"
+                    android:orientation="horizontal"
+                    android:paddingStart="@dimen/margin_small"
+                    android:splitMotionEvents="false"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tool:listitem="@layout/item_featured" />
+            </RelativeLayout>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</FrameLayout>

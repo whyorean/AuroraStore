@@ -20,12 +20,14 @@
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/exodus_card"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/margin_medium"
     android:background="@drawable/generic_padded_bg"
-    android:visibility="gone">
+    android:visibility="invisible"
+    tools:visibility="visible">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/privacy_ico"

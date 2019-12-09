@@ -23,7 +23,7 @@ package com.aurora.store.manager;
 import android.content.Context;
 
 import com.aurora.store.Constants;
-import com.aurora.store.utility.PrefUtil;
+import com.aurora.store.util.PrefUtil;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -32,7 +32,7 @@ import java.util.Set;
 public class FavouriteListManager {
 
     private Context context;
-    private ArrayList<String> favouriteList;
+    private ArrayList<String> favouriteList = new ArrayList<>();
 
     public FavouriteListManager(Context context) {
         this.context = context;

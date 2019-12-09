@@ -27,6 +27,12 @@
     <string name="action_favourites">"Favourite apps"</string>
     <string name="action_filter">"Filters"</string>
     <string name="action_filter_all">"All"</string>
+    <string name="action_filter_1">"1.0 +"</string>
+    <string name="action_filter_2">"2.0 +"</string>
+    <string name="action_filter_3">"3.0 +"</string>
+    <string name="action_filter_4">"4.0 +"</string>
+    <string name="action_filter_45">"4.5 +"</string>
+    <string name="action_filter_47">"4.7 +"</string>
     <string name="action_filter_apply">"Apply"</string>
     <string name="action_filter_apps_with_ads">"Apps with ads"</string>
     <string name="action_filter_downloads">"Downloads"</string>
@@ -62,6 +68,7 @@
     <string name="action_submit">"Submit"</string>
     <string name="action_unignore">"Remove from blacklist"</string>
     <string name="action_uninstall">"Uninstall"</string>
+    <string name="action_unknown">"Unknown"</string>
     <string name="action_unwhitelist">"Ignore updates"</string>
     <string name="action_updates">"Updates"</string>
     <string name="action_whitelist">"Whitelist"</string>
@@ -72,6 +79,9 @@
     <string name="category_topFree">"Top free"</string>
     <string name="category_topGrossing">"Top grossing"</string>
     <string name="category_trending">"Trending"</string>
+    <string name="category_all">"All categories"</string>
+    <string name="category_family">"Family"</string>
+    <string name="category_games">"Games"</string>
     <string name="delete">"Delete"</string>
     <string name="desc_perm">"Aurora Store uses following permissions"</string>
     <string name="details_appReviewsAll">"Read all reviews"</string>
@@ -114,6 +124,7 @@
     <string name="error_search_not_found">"No matching app found"</string>
     <string name="error_unknown">"Unknown error occurred"</string>
     <string name="exodus_noTracker">"Contains no trackers"</string>
+    <string name="exodus_noReport">"Report not available"</string>
     <string name="exodus_powered">"Powered by Exodus"</string>
     <string name="exodus_title">"Aurora Protect"</string>
     <string name="exodus_title_alt">"Exodus report"</string>
@@ -133,6 +144,7 @@
     <string name="list_empty_fav">"No favourites"</string>
     <string name="list_empty_query">"No recent searches"</string>
     <string name="list_empty_updates">"No updates available"</string>
+    <string name="list_empty_reviews">"No reviews available"</string>
     <string name="list_installed">"Installed"</string>
     <string name="list_installed_system">"Show user apps only"</string>
     <string name="list_not_installd">"Not installed"</string>
@@ -171,7 +183,7 @@
     <string name="pref_filter_google_summary">"Removes all Google Apps from search results and category apps"</string>
     <string name="pref_filter_google_title">"Filter Google apps"</string>
     <string name="pref_filter_search_summary">"Search filters are reset on each search. Turn off to save search filters"</string>
-    <string name="pref_filter_search_title">"Use non-persistent search filter"</string>
+    <string name="pref_filter_search_title">"Use non-persistent search filterModel"</string>
     <string name="pref_install_auto_summary">"Apps are installed instantly after download completes"</string>
     <string name="pref_install_auto_title">"Auto install APKs post-download"</string>
     <string name="pref_install_delete_title">"Delete APK post-install"</string>
@@ -196,7 +208,11 @@
     <string name="pref_ui_snap_title">"Enable snapView for apps"</string>
     <string name="pref_ui_theme_title">"Theme"</string>
     <string name="testing_program_opt_in">"Join"</string>
+    <string name="testing_program_opt_in_success">"Congrats, you successfully joined beta."</string>
+    <string name="testing_program_opt_in_failed">"Alas ! your beta subscription request failed"</string>
     <string name="testing_program_opt_out">"Leave"</string>
+    <string name="testing_program_opt_out_success">"Successfully enrolled out of beta program"</string>
+    <string name="testing_program_opt_out_failed">"Failed to opt out of beta program"</string>
     <string name="testing_program_review_dialog_content_hint">"Enter feedback about the app"</string>
     <string name="testing_program_section_opted_in_message">"App updates will include beta versions. If you leave this app's beta program, you will no longer get beta updates."</string>
     <string name="testing_program_section_opted_in_propagating_message">"In a few minutes, you'll be added to the beta program. You can then update to the beta version of this app, if available."</string>
@@ -208,6 +224,7 @@
     <string name="title_home">"Aurora Store"</string>
     <string name="title_installed">"My apps &amp; games"</string>
     <string name="title_perm">"Permissions"</string>
+    <string name="title_categories">"Categories"</string>
     <string name="title_search">"Search apps &amp; games"</string>
     <string name="title_updates">"Available updates"</string>
     <string name="title_welcome">"Welcome"</string>
@@ -215,6 +232,11 @@
     <string name="toast_apk_whitelisted">"Whitelisted"</string>
     <string name="toast_apk_copy_success">"APK copied successfully"</string>
     <string name="toast_apk_copy_failure">"Failed to copy APK"</string>
+    <string name="toast_api_all_ok">"All set to go"</string>
+    <string name="toast_api_build_retrying">"Failed to build API, retrying."</string>
+    <string name="toast_api_build_failed">"Failed to build API."</string>
+    <string name="toast_api_build_api">"Building GooglePlay API"</string>
+    <string name="toast_api_token_validity">"Checking token validity"</string>
     <string name="pref_app_language">"Language"</string>
     <string name="pref_locale_custom_title">"Custom language"</string>
     <string name="pref_locale_custom_summary">"Enforce custom app language"</string>
@@ -374,4 +396,10 @@
     <string name="toast_login_success">"Successfully logged in"</string>
     <string name="toast_login_failed">"Failed to login"</string>
     <string name="disclaimer">"Using Aurora Store with your own Google account may cause your account to be blacklisted or deactivated, as Aurora Store violates Google's Terms of Service 3.3, use at your own risk. You can opt to go anonymous and use a throwaway account to login to Aurora Store"</string>
+    <string name="review_positive">Positive</string>
+    <string name="review_recent">Recent</string>
+    <string name="review_helpful">Helpful</string>
+    <string name="request_failed">"Request failed"</string>
+    <string name="notification_channel_alert">"Quick notification"</string>
+    <string name="notification_channel_general">"General notification"</string>
 </resources>

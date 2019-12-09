@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Aurora Store
+  ~ Copyright (C) 2019, Rahul Kumar Patel <whyorean@gmail.com>
+  ~
+  ~ Aurora Store is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 2 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ Aurora Store is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with Aurora Store.  If not, see <http://www.gnu.org/licenses/>.
+  ~
+  ~
+  -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/margin_medium"
+    android:layout_marginTop="@dimen/margin_small"
+    android:layout_marginEnd="@dimen/margin_medium"
+    android:layout_marginBottom="@dimen/margin_small"
+    android:background="@drawable/generic_padded_bg">
+
+    <ImageView
+        android:id="@+id/img"
+        android:layout_width="@dimen/icon_size_cat"
+        android:layout_height="@dimen/icon_size_cat"
+        android:contentDescription="@string/content_description_icon" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/line1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_small"
+        android:layout_marginTop="@dimen/margin_small"
+        android:layout_toEndOf="@id/img"
+        android:textAlignment="viewStart"
+        android:textAppearance="@style/TextAppearance.Aurora.Line1" />
+
+    <RelativeLayout
+        android:id="@+id/rating_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/line1"
+        android:layout_alignStart="@id/img"
+        android:layout_marginTop="@dimen/margin_normal">
+
+        <RatingBar
+            android:id="@+id/rating"
+            style="?ratingBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:max="5"
+            android:numStars="5"
+            android:stepSize="1"
+            android:textAlignment="viewStart"
+            android:textAppearance="@style/TextAppearance.Aurora.Body" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/line2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/margin_small"
+            android:layout_marginTop="@dimen/margin_xxsmall"
+            android:layout_toEndOf="@id/rating"
+            android:textAlignment="viewStart"
+            android:textAppearance="@style/TextAppearance.Aurora.Line3" />
+    </RelativeLayout>
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/line3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rating_layout"
+        android:layout_alignStart="@id/img"
+        android:layout_alignEnd="@id/line1"
+        android:layout_marginTop="@dimen/margin_xxsmall"
+        android:layout_toEndOf="@id/img"
+        android:fadingEdgeLength="32sp"
+        android:requiresFadingEdge="horizontal"
+        android:textAppearance="@style/TextAppearance.Aurora.Line2" />
+</RelativeLayout>

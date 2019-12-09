@@ -18,10 +18,10 @@ import com.aurora.store.download.RequestBuilder;
 import com.aurora.store.model.App;
 import com.aurora.store.model.Update;
 import com.aurora.store.task.NetworkTask;
-import com.aurora.store.utility.CertUtil;
-import com.aurora.store.utility.ContextUtil;
-import com.aurora.store.utility.Log;
-import com.aurora.store.utility.PackageUtil;
+import com.aurora.store.util.CertUtil;
+import com.aurora.store.util.ContextUtil;
+import com.aurora.store.util.Log;
+import com.aurora.store.util.PackageUtil;
 import com.google.gson.Gson;
 import com.tonyodev.fetch2.AbstractFetchGroupListener;
 import com.tonyodev.fetch2.Download;
@@ -79,6 +79,7 @@ public class SelfUpdateService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
+        instance = this;
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
             startForeground(1, getNotification());
         } else {
@@ -119,7 +120,7 @@ public class SelfUpdateService extends Service {
                         } else
                             downloadAndUpdate(update);
                     } catch (Exception e) {
-                        Log.e("Error checking self-update");
+                        Log.d("Error checking self-update");
                         destroyService();
                     }
                 }));
@@ -189,7 +190,7 @@ public class SelfUpdateService extends Service {
             public void onError(int groupId, @NotNull Download download, @NotNull Error error,
                                 @org.jetbrains.annotations.Nullable Throwable throwable, @NotNull FetchGroup fetchGroup) {
                 if (groupId == hashCode) {
-                    Log.e("Error self-updating %s", app.getDisplayName());
+                    Log.d("Error self-updating %s", app.getDisplayName());
                     destroyService();
                 }
             }
@@ -205,7 +206,7 @@ public class SelfUpdateService extends Service {
             @Override
             public void onCancelled(int groupId, @NotNull Download download, @NotNull FetchGroup fetchGroup) {
                 if (groupId == hashCode) {
-                    Log.e("Self-update cancelled %s", app.getDisplayName());
+                    Log.d("Self-update cancelled %s", app.getDisplayName());
                     destroyService();
                 }
             }

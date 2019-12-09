@@ -20,12 +20,14 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/reviews_container"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="10dp"
+    android:layout_marginTop="@dimen/margin_medium"
     android:orientation="vertical"
-    android:visibility="gone">
+    android:visibility="gone"
+    tools:visibility="visible">
 
     <com.google.android.material.chip.Chip
         style="@style/Widget.MaterialComponents.Chip.Action"
@@ -38,7 +40,7 @@
         app:chipBackgroundColor="?android:attr/colorBackground"
         app:chipStrokeColor="?android:attr/colorControlNormal"
         app:chipStrokeWidth=".75dp"
-        app:iconStartPadding="4dp" />
+        app:iconStartPadding="@dimen/margin_xxsmall" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -64,7 +66,8 @@
                 android:layout_margin="@dimen/margin_xxsmall"
                 android:textAppearance="@style/TextAppearance.Aurora.Title"
                 android:textSize="36sp"
-                android:textStyle="normal" />
+                android:textStyle="normal"
+                tools:text="4.5" />
 
             <RatingBar
                 android:id="@+id/average_rating_star"
@@ -100,7 +103,8 @@
         android:layout_gravity="center"
         android:gravity="center"
         android:orientation="vertical"
-        android:visibility="gone">
+        android:visibility="gone"
+        tools:visibility="visible">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -169,42 +173,34 @@
             app:chipStrokeWidth="1dp" />
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/reviews_list"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_xsmall"
-        android:layout_marginStart="@dimen/margin_xsmall"
-        android:layout_marginEnd="@dimen/margin_small"
-        android:orientation="vertical" />
-
     <RelativeLayout
-        android:id="@+id/more_layout"
+        android:id="@+id/more_reviews_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_medium"
-        android:layout_marginEnd="@dimen/margin_medium">
+        android:layout_height="?actionBarSize"
+        android:background="?selectableItemBackground"
+        android:paddingStart="@dimen/margin_medium"
+        android:paddingEnd="@dimen/margin_medium">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_gravity="center_horizontal"
-            android:layout_toStartOf="@id/img_review"
-            android:background="?selectableItemBackground"
+            android:layout_toStartOf="@id/img_more"
             android:text="@string/details_appReviewsAll"
             android:textAppearance="@style/TextAppearance.Aurora.SubTitle"
             android:textSize="18sp" />
 
         <androidx.appcompat.widget.AppCompatImageButton
-            android:id="@+id/img_review"
+            android:id="@+id/img_more"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            android:background="?selectableItemBackgroundBorderless"
-            android:padding="@dimen/margin_small"
+            android:background="@null"
+            android:clickable="false"
+            android:focusable="false"
+            android:paddingTop="@dimen/margin_small"
+            android:paddingBottom="@dimen/margin_small"
             android:src="@drawable/ic_arrow" />
     </RelativeLayout>
-
 </LinearLayout>

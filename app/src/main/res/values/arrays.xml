@@ -301,8 +301,6 @@
 
     <string-array name="topCategories">
         <item>COMMUNICATION</item>
-        <item>FAMILY</item>
-        <item>GAME</item>
         <item>MUSIC_AND_AUDIO</item>
         <item>PERSONALIZATION</item>
         <item>PHOTOGRAPHY</item>

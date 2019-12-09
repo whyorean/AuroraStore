@@ -25,8 +25,8 @@ package com.aurora.store;
 
 import android.content.Context;
 
-import com.aurora.store.utility.PrefUtil;
-import com.aurora.store.utility.Util;
+import com.aurora.store.util.PrefUtil;
+import com.aurora.store.util.Util;
 
 import java.util.ArrayList;
 import java.util.List;

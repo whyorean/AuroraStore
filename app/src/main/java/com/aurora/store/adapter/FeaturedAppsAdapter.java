@@ -32,15 +32,18 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.aurora.store.CardType;
+import com.aurora.store.Constants;
 import com.aurora.store.GlideApp;
 import com.aurora.store.R;
-import com.aurora.store.activity.DetailsActivity;
+import com.aurora.store.enums.CardType;
 import com.aurora.store.model.App;
-import com.aurora.store.utility.PackageUtil;
-import com.aurora.store.utility.Util;
+import com.aurora.store.ui.details.DetailsActivity;
+import com.aurora.store.util.PackageUtil;
+import com.aurora.store.util.Util;
+import com.aurora.store.util.ViewUtil;
 import com.bumptech.glide.load.resource.bitmap.BitmapTransitionOptions;
 import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
@@ -88,18 +91,19 @@ public class FeaturedAppsAdapter extends RecyclerView.Adapter<FeaturedAppsAdapte
         if (app.getPageBackgroundImage() != null)
             drawBackground(app, viewHolder);
 
-        viewHolder.itemView.setOnClickListener(v -> {
-            Intent intent = new Intent(context, DetailsActivity.class);
-            intent.putExtra("INTENT_PACKAGE_NAME", app.getPackageName());
-            context.startActivity(intent);
-        });
-
         viewHolder.txtIndicator.setVisibility(PackageUtil.isInstalled(context, app)
                 ? View.VISIBLE
                 : View.GONE);
 
         if (viewHolder.txtSize != null)
             viewHolder.txtSize.setText(Util.humanReadableByteValue(app.getSize(), true));
+
+        viewHolder.itemView.setOnClickListener(v -> {
+            DetailsActivity.app = app;
+            Intent intent = new Intent(context, DetailsActivity.class);
+            intent.putExtra(Constants.INTENT_PACKAGE_NAME, app.getPackageName());
+            context.startActivity(intent, ViewUtil.getEmptyActivityBundle((AppCompatActivity) context));
+        });
     }
 
     private void drawBackground(App app, ViewHolder holder) {

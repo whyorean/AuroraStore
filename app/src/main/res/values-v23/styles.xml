@@ -6,14 +6,13 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="toolbarStyle">@style/Widget.Toolbar</item>
-        <item name="android:strokeColor">@color/colorGreyLight</item>
+        <item name="android:strokeColor">@color/colorScrim</item>
         <item name="android:windowLightStatusBar">true</item>
         <item name="android:windowBackground">@color/colorPrimary</item>
         <item name="android:navigationBarColor">@color/colorBlack</item>
         <item name="android:colorBackground">@color/colorPrimary</item>
         <item name="chipStyle">@style/Widget.Aurora.FilterChip</item>
         <item name="colorControlNormal">@color/colorGreyDark</item>
-        <item name="materialCardViewStyle">@style/Aurora.MaterialComponents.CardView</item>
     </style>
 
     <style name="AppTheme.Dark" parent="Theme.MaterialComponents.NoActionBar">
@@ -21,14 +20,13 @@
         <item name="colorPrimaryDark">@color/colorDarkPrimaryDark</item>
         <item name="colorAccent">@color/colorDarkAccent</item>
         <item name="toolbarStyle">@style/Widget.Toolbar.Dark</item>
-        <item name="android:strokeColor">@color/colorGreyLight</item>
+        <item name="android:strokeColor">@color/colorScrimWhite</item>
         <item name="android:windowLightStatusBar">false</item>
         <item name="android:windowBackground">@color/colorDarkWindowBackground</item>
         <item name="android:navigationBarColor">@color/colorDarkPrimary</item>
         <item name="android:colorBackground">@color/colorDarkBackground</item>
         <item name="colorSurface">@color/colorDarkBackground</item>
         <item name="chipStyle">@style/Widget.Aurora.FilterChip</item>
-        <item name="materialCardViewStyle">@style/Aurora.MaterialComponents.CardView.Dark</item>
     </style>
 
     <style name="AppTheme.Black" parent="AppTheme.Dark">
@@ -36,13 +34,12 @@
         <item name="colorPrimaryDark">@color/colorBlack</item>
         <item name="colorAccent">@color/colorBlackAccent</item>
         <item name="toolbarStyle">@style/Widget.Toolbar.Dark</item>
-        <item name="android:strokeColor">@color/colorGreyLight</item>
+        <item name="android:strokeColor">@color/colorScrimWhite</item>
         <item name="android:windowLightStatusBar">false</item>
         <item name="android:windowBackground">@color/colorBlack</item>
         <item name="android:navigationBarColor">@color/colorBlack</item>
         <item name="android:colorBackground">@color/colorBlack</item>
         <item name="colorSurface">@color/colorBlack</item>
         <item name="chipStyle">@style/Widget.Aurora.FilterChip</item>
-        <item name="materialCardViewStyle">@style/Aurora.MaterialComponents.CardView.Black</item>
     </style>
 </resources>

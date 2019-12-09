@@ -18,44 +18,48 @@
   ~
   -->
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="64dp"
-    android:layout_marginStart="@dimen/margin_small"
-    android:layout_marginEnd="@dimen/margin_small"
-    android:layout_weight="2"
-    android:gravity="center"
-    android:orientation="horizontal">
+    android:layout_height="wrap_content"
+    android:paddingStart="@dimen/margin_xsmall"
+    android:paddingEnd="@dimen/margin_xsmall">
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_negative"
         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:layout_width="0dp"
-        android:layout_height="52dp"
-        android:layout_marginStart="@dimen/margin_xxsmall"
-        android:layout_marginEnd="@dimen/margin_xxsmall"
-        android:layout_weight="1"
-        android:maxLines="1"
+        android:layout_height="@dimen/height_button"
+        android:layout_margin="@dimen/margin_small"
         android:paddingStart="@dimen/margin_large"
         android:paddingEnd="@dimen/margin_large"
         android:text="@string/action_uninstall"
         android:textAppearance="@style/TextAppearance.Aurora.Button"
         android:textColor="@color/colorRed"
-        android:visibility="gone"/>
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btn_positive"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_positive"
         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:layout_width="0dp"
-        android:layout_height="52dp"
-        android:layout_marginStart="@dimen/margin_xxsmall"
-        android:layout_marginEnd="@dimen/margin_xxsmall"
-        android:layout_weight="1"
-        android:maxLines="1"
+        android:layout_height="@dimen/height_button"
+        android:layout_margin="@dimen/margin_small"
         android:paddingStart="@dimen/margin_large"
         android:paddingEnd="@dimen/margin_large"
         android:text="@string/details_download"
         android:textAppearance="@style/TextAppearance.Aurora.Button"
-        app:strokeColor="?android:colorAccent" />
-</LinearLayout>
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btn_negative"
+        app:layout_constraintTop_toTopOf="parent"
+        app:strokeColor="?android:colorAccent"
+        tools:visibility="visible" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

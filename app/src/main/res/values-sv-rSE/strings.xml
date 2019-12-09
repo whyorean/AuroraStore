@@ -21,7 +21,7 @@
     <string name="action_enable">"Gör det möjligt"</string>
     <string name="action_export">"Exportera"</string>
     <string name="action_favourites">"Favorit Apps"</string>
-    <string name="action_filter">"filter"</string>
+    <string name="action_filter">"filterModel"</string>
     <string name="action_filter_all">"Allt"</string>
     <string name="action_filter_apply">"Tillämpa"</string>
     <string name="action_filter_apps_with_ads">"Appar med annonser"</string>

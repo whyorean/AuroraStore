@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Aurora Store
   ~ Copyright (C) 2019, Rahul Kumar Patel <whyorean@gmail.com>
   ~
@@ -20,13 +19,16 @@
   -->
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/beta_layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/margin_medium"
     android:background="@drawable/generic_padded_bg"
     android:orientation="vertical"
-    android:visibility="gone">
+    android:visibility="gone"
+    tools:visibility="visible">
 
     <LinearLayout
         android:id="@+id/beta_container"
@@ -59,25 +61,28 @@
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="end" />
+            android:layout_gravity="end"
+            android:textColor="?android:attr/colorAccent"
+            tools:text="@string/testing_program_opt_in" />
 
     </LinearLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/beta_feedback"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/beta_container"
         android:animateLayoutChanges="true"
         android:orientation="vertical"
-        android:visibility="gone">
+        android:visibility="gone"
+        tools:visibility="visible">
 
-        <EditText
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/beta_comment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_normal"
-            android:layout_marginBottom="6dp"
+            android:layout_marginTop="@dimen/margin_small"
+            android:layout_marginBottom="@dimen/margin_xsmall"
             android:hint="@string/testing_program_review_dialog_content_hint"
             android:textColor="?android:attr/textColorPrimary"
             android:textColorHint="?android:attr/textColorSecondary" />
@@ -87,6 +92,9 @@
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@id/beta_comment"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="@dimen/margin_xxsmall"
             android:text="@string/action_submit" />
 
         <com.google.android.material.button.MaterialButton
@@ -94,10 +102,15 @@
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@id/beta_comment"
+            android:layout_marginEnd="@dimen/margin_xxsmall"
+            android:layout_toStartOf="@id/beta_submit_button"
             android:text="@string/delete"
             android:textColor="@color/colorRed"
-            android:visibility="gone" />
-    </LinearLayout>
+            android:visibility="gone"
+            app:rippleColor="@color/colorTransparent"
+            tools:visibility="visible" />
+    </RelativeLayout>
 </RelativeLayout>
 
 

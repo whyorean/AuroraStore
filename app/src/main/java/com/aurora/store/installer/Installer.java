@@ -36,16 +36,18 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.FileProvider;
 
+import com.aurora.store.AuroraApplication;
 import com.aurora.store.Constants;
 import com.aurora.store.R;
-import com.aurora.store.activity.DetailsActivity;
+import com.aurora.store.events.Event;
 import com.aurora.store.model.App;
 import com.aurora.store.notification.QuickNotification;
-import com.aurora.store.utility.Log;
-import com.aurora.store.utility.PathUtil;
-import com.aurora.store.utility.PrefUtil;
-import com.aurora.store.utility.TextUtil;
-import com.aurora.store.utility.Util;
+import com.aurora.store.ui.details.DetailsActivity;
+import com.aurora.store.util.Log;
+import com.aurora.store.util.PathUtil;
+import com.aurora.store.util.PrefUtil;
+import com.aurora.store.util.TextUtil;
+import com.aurora.store.util.Util;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -147,7 +149,7 @@ public class Installer implements AppInstallerAbstract.InstallationStatusListene
                             displayName,
                             statusMessage,
                             getContentIntent(intentPackageName));
-                    sendLocalBroadcast(intentPackageName, 0);
+                    sendStatusBroadcast(intentPackageName, 0);
                     checkAndProcessQueuedApps();
                     break;
                 case PackageInstaller.STATUS_SUCCESS:
@@ -156,7 +158,7 @@ public class Installer implements AppInstallerAbstract.InstallationStatusListene
                             displayName,
                             statusMessage,
                             getContentIntent(intentPackageName));
-                    sendLocalBroadcast(intentPackageName, 1);
+                    sendStatusBroadcast(intentPackageName, 1);
                     if (app != null) {
                         if (Util.shouldDeleteApk(context))
                             clearInstallationFiles(app);
@@ -200,24 +202,19 @@ public class Installer implements AppInstallerAbstract.InstallationStatusListene
         notificationManager.cancel(app.getPackageName().hashCode());
     }
 
-    private void sendLocalBroadcast(String packageName, int status) {
-        Intent intent = new Intent("ACTION_INSTALL");
-        intent.putExtra("PACKAGE_NAME", packageName);
-        intent.putExtra("STATUS_CODE", status);
-        context.sendBroadcast(intent);
+    private void sendStatusBroadcast(String packageName, int status) {
+        AuroraApplication.rxNotify(new Event(Event.SubType.INSTALLED, packageName, status));
     }
 
     private PendingIntent getContentIntent(String packageName) {
         Intent intent = new Intent(context, DetailsActivity.class);
-        intent.putExtra("INTENT_PACKAGE_NAME", packageName);
+        intent.putExtra(Constants.INTENT_PACKAGE_NAME, packageName);
         return PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
     }
 
     private AppInstallerAbstract getInstallationMethod(Context context) {
         String prefValue = PrefUtil.getString(context, Constants.PREFERENCE_INSTALLATION_METHOD);
         switch (prefValue) {
-            case "0":
-                return AppInstaller.getInstance(context);
             case "1":
                 return AppInstallerRooted.getInstance(context);
             case "2":
