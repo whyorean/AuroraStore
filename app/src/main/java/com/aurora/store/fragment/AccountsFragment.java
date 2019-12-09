@@ -47,6 +47,7 @@ import com.aurora.store.api.PlayStoreApiAuthenticator;
 import com.aurora.store.utility.Accountant;
 import com.aurora.store.utility.ContextUtil;
 import com.aurora.store.utility.Log;
+import com.aurora.store.utility.NetworkUtil;
 import com.aurora.store.utility.PrefUtil;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 import com.dragons.aurora.playstoreapiv2.Image;
@@ -131,8 +132,8 @@ public class AccountsFragment extends Fragment {
 
     @Override
     public void onDestroy() {
-        super.onDestroy();
         disposable.clear();
+        super.onDestroy();
     }
 
     @OnClick(R.id.btn_positive)
@@ -150,6 +151,11 @@ public class AccountsFragment extends Fragment {
 
     @OnClick(R.id.btn_anonymous)
     public void loginAnonymous() {
+        if (!NetworkUtil.isConnected(context)) {
+            Toast.makeText(context, getString(R.string.error_no_network), Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         disposable.add(Observable.fromCallable(() -> PlayStoreApiAuthenticator
                 .login(context))
                 .map(api -> api.userProfile().getUserProfile())

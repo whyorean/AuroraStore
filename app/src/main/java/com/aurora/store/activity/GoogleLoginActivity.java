@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.aurora.store.R;
 import com.aurora.store.task.AuthTask;
 import com.aurora.store.utility.Accountant;
+import com.aurora.store.utility.NetworkUtil;
 import com.aurora.store.utility.Util;
 
 import java.util.Map;
@@ -41,7 +42,12 @@ public class GoogleLoginActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
-        setupWebView();
+        if (NetworkUtil.isConnected(this))
+            setupWebView();
+        else {
+            Toast.makeText(this, getString(R.string.error_no_network), Toast.LENGTH_LONG).show();
+            finish();
+        }
     }
 
     @SuppressLint("SetJavaScriptEnabled")

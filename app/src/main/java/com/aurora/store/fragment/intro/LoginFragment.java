@@ -40,6 +40,7 @@ import com.aurora.store.activity.GoogleLoginActivity;
 import com.aurora.store.activity.IntroActivity;
 import com.aurora.store.api.PlayStoreApiAuthenticator;
 import com.aurora.store.utility.ContextUtil;
+import com.aurora.store.utility.NetworkUtil;
 import com.google.android.material.button.MaterialButton;
 
 import butterknife.BindView;
@@ -82,6 +83,11 @@ public class LoginFragment extends IntroBaseFragment {
 
     @OnClick(R.id.btn_anonymous)
     public void loginAnonymous() {
+        if (!NetworkUtil.isConnected(context)) {
+            Toast.makeText(context, getString(R.string.error_no_network), Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         CompositeDisposable disposable = new CompositeDisposable();
         disposable.add(Observable.fromCallable(() -> PlayStoreApiAuthenticator
                 .login(context))
