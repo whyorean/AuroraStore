@@ -24,6 +24,7 @@ import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 
+import com.aurora.store.Constants;
 import com.aurora.store.util.CertUtil;
 import com.aurora.store.util.Util;
 
@@ -60,6 +61,10 @@ public class AllAppsTask {
             if (packageInfo.applicationInfo != null
                     && !packageInfo.applicationInfo.enabled
                     && !isExtendedUpdatesEnabled)
+                continue;
+            String packageInstaller = packageManager.getInstallerPackageName(packageName);
+            if (fDroidFilterEnabled && packageInstaller != null
+                    && packageInstaller.equals(Constants.PRIVILEGED_EXTENSION_PACKAGE_NAME_FDROID))
                 continue;
             if (fDroidFilterEnabled && CertUtil.isFDroidApp(context, packageName))
                 continue;

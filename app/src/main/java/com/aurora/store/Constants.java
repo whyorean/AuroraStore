@@ -55,6 +55,7 @@ public class Constants {
     public static final String NOTIFICATION_CHANNEL_GENERAL = "NOTIFICATION_CHANNEL_GENERAL";
 
     public static final String PRIVILEGED_EXTENSION_PACKAGE_NAME = "com.aurora.services";
+    public static final String PRIVILEGED_EXTENSION_PACKAGE_NAME_FDROID = "org.fdroid.fdroid.privileged";
     public static final String PRIVILEGED_EXTENSION_SERVICE_INTENT = "com.aurora.services.IPrivilegedService";
 
     public static final String PREFERENCE_THEME = "PREFERENCE_THEME";
