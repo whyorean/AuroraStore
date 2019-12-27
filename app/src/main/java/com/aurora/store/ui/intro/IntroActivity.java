@@ -40,6 +40,7 @@ import androidx.navigation.Navigation;
 
 import com.aurora.store.R;
 import com.aurora.store.api.PlayStoreApiAuthenticator;
+import com.aurora.store.ui.main.AuroraActivity;
 import com.aurora.store.ui.preference.SettingsActivity;
 import com.aurora.store.ui.single.activity.BaseActivity;
 import com.aurora.store.ui.single.activity.GoogleLoginActivity;
@@ -99,7 +100,7 @@ public class IntroActivity extends BaseActivity {
     protected void onResume() {
         super.onResume();
         if (Accountant.isLoggedIn(this)) {
-            startActivity(new Intent(this, SplashActivity.class));
+            startActivity(new Intent(this, AuroraActivity.class));
             supportFinishAfterTransition();
         }
     }
@@ -200,7 +201,6 @@ public class IntroActivity extends BaseActivity {
             return;
         }
         startActivity(new Intent(this, GoogleLoginActivity.class), ViewUtil.getEmptyActivityBundle(this));
-        supportFinishAfterTransition();
     }
 
     private void resetAnonymousLogin() {

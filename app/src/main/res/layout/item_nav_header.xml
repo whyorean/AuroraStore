@@ -19,34 +19,40 @@
   -->
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/view_background"
+    android:id="@+id/layout"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@color/colorScrim"
-    android:layoutDirection="ltr">
+    android:layout_height="@dimen/height_nav_header"
+    android:background="@color/colorScrim">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/background"
+        android:scaleType="centerCrop"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/img"
         android:layout_width="@dimen/icon_size"
         android:layout_height="@dimen/icon_size"
-        android:layout_margin="@dimen/margin_normal" />
+        android:layout_above="@id/line1"
+        android:layout_marginBottom="@dimen/margin_small"
+        android:layout_marginStart="@dimen/margin_normal" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/line1"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/img"
+        android:layout_above="@id/line2"
         android:layout_alignStart="@id/img"
         android:layout_marginTop="@dimen/margin_xxsmall"
         android:textAppearance="@style/TextAppearance.Aurora.Line1" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/line2"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/line1"
         android:layout_alignStart="@id/img"
-        android:layout_marginTop="@dimen/margin_xxsmall"
-        android:layout_marginBottom="@dimen/margin_normal"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/margin_xxsmall"
         android:textAppearance="@style/TextAppearance.Aurora.Line2" />
 </RelativeLayout>

@@ -53,6 +53,10 @@ public class AuthTask extends BaseTask {
             if (image.getImageType() == GooglePlayAPI.IMAGE_TYPE_APP_ICON) {
                 PrefUtil.putString(context, Accountant.PROFILE_AVATAR, image.getImageUrl());
             }
+
+            if (image.getImageType() == GooglePlayAPI.IMAGE_TYPE_GOOGLE_PLUS_BACKGROUND) {
+                PrefUtil.putString(context, Accountant.PROFILE_BACKGROUND, image.getImageUrl());
+            }
         }
         return !loginInfo.isEmpty();
     }

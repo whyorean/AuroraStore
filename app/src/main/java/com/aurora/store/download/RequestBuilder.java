@@ -28,7 +28,7 @@ import com.aurora.store.util.TextUtil;
 import com.aurora.store.util.Util;
 import com.dragons.aurora.playstoreapiv2.AndroidAppDeliveryData;
 import com.dragons.aurora.playstoreapiv2.AppFileMetadata;
-import com.dragons.aurora.playstoreapiv2.Split;
+import com.dragons.aurora.playstoreapiv2.SplitDeliveryData;
 import com.tonyodev.fetch2.EnqueueAction;
 import com.tonyodev.fetch2.NetworkType;
 import com.tonyodev.fetch2.Priority;
@@ -73,7 +73,7 @@ public class RequestBuilder {
      *
      */
 
-    public static Request buildSplitRequest(Context context, App app, Split split) {
+    public static Request buildSplitRequest(Context context, App app, SplitDeliveryData split) {
         Request request = new Request(split.getDownloadUrl(),
                 PathUtil.getLocalSplitPath(context, app, split.getName()));
         request.setPriority(Priority.HIGH);
@@ -99,9 +99,9 @@ public class RequestBuilder {
 
     public static List<Request> buildSplitRequestList(Context context, App app,
                                                       AndroidAppDeliveryData deliveryData) {
-        List<Split> splitList = deliveryData.getSplitList();
+        List<SplitDeliveryData> splitList = deliveryData.getSplitDeliveryDataList();
         List<Request> requestList = new ArrayList<>();
-        for (Split split : splitList) {
+        for (SplitDeliveryData split : splitList) {
             final Request request = buildSplitRequest(context, app, split);
             requestList.add(request);
         }

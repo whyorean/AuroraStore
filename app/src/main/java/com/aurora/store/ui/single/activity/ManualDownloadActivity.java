@@ -38,7 +38,6 @@ import androidx.appcompat.widget.Toolbar;
 import com.aurora.store.R;
 import com.aurora.store.manager.CategoryManager;
 import com.aurora.store.model.App;
-import com.aurora.store.model.ImageSource;
 import com.aurora.store.task.DeliveryData;
 import com.aurora.store.task.LiveUpdate;
 import com.aurora.store.ui.details.DetailsActivity;
@@ -114,20 +113,15 @@ public class ManualDownloadActivity extends BaseActivity {
     }
 
     private void drawAppBadge() {
-        ImageSource imageSource = app.getIconInfo();
-        if (null != imageSource.getApplicationInfo()) {
-            appIcon.setImageDrawable(getPackageManager().getApplicationIcon(imageSource.getApplicationInfo()));
-        } else {
-            Glide.with(this)
-                    .asBitmap()
-                    .load(imageSource.getUrl())
-                    .apply(new RequestOptions()
-                            .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
-                            .placeholder(R.color.colorTransparent)
-                            .priority(Priority.HIGH))
-                    .transition(new BitmapTransitionOptions().crossFade())
-                    .into(appIcon);
-        }
+        Glide.with(this)
+                .asBitmap()
+                .load(app.getIconUrl())
+                .apply(new RequestOptions()
+                        .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
+                        .placeholder(R.color.colorTransparent)
+                        .priority(Priority.HIGH))
+                .transition(new BitmapTransitionOptions().crossFade())
+                .into(appIcon);
 
         setText(R.id.displayName, app.getDisplayName());
         setText(R.id.packageName, app.getPackageName());
@@ -158,7 +152,7 @@ public class ManualDownloadActivity extends BaseActivity {
             setText(R.id.price, R.string.category_appFree);
         else
             setText(R.id.price, app.getPrice());
-        setText(R.id.contains_ads, app.containsAds() ? R.string.details_contains_ads : R.string.details_no_ads);
+        setText(R.id.contains_ads, app.isContainsAds() ? R.string.details_contains_ads : R.string.details_no_ads);
         setText(R.id.txt_rating, app.getLabeledRating());
         setText(R.id.txt_installs, Util.addDiPrefix(app.getInstalls()));
         setText(R.id.txt_size, Formatter.formatShortFileSize(this, app.getSize()));

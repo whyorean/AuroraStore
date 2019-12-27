@@ -35,7 +35,6 @@ import com.aurora.store.R;
 
 public class LinkView extends RelativeLayout {
 
-    Context context;
     CardView link_card;
     ImageView card_icon;
     TextView card_title;
@@ -48,21 +47,20 @@ public class LinkView extends RelativeLayout {
 
     public LinkView(Context context, String linkURL, String title, String summary, int cardIconID) {
         super(context);
-        this.context = context;
         this.linkURL = linkURL;
         this.title = title;
         this.summary = summary;
         this.cardIconID = cardIconID;
-        init(context);
+        init();
     }
 
     public LinkView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        init(context);
+        init();
     }
 
-    private void init(Context context) {
-        View view = inflate(context, R.layout.item_link, this);
+    private void init() {
+        View view = inflate(getContext(), R.layout.item_link, this);
         card_icon = view.findViewById(R.id.link_icon);
         card_title = view.findViewById(R.id.link_title);
         card_summary = view.findViewById(R.id.link_summary);
@@ -73,7 +71,7 @@ public class LinkView extends RelativeLayout {
         view.setOnClickListener(click -> {
             final Intent browserIntent = new Intent(Intent.ACTION_VIEW);
             browserIntent.setData(Uri.parse(linkURL));
-            context.startActivity(browserIntent);
+            getContext().startActivity(browserIntent);
         });
     }
 }

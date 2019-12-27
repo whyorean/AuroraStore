@@ -82,6 +82,7 @@ public class GoogleLoginActivity extends BaseActivity {
                     String oauth_token = cookieMap.get(OAUTH_TOKEN);
                     webview.evaluateJavascript("(function() { return document.getElementById('profileIdentifier').innerHTML; })();",
                             email -> {
+                                email = email.replaceAll("\"", "");
                                 generateTokens(email, oauth_token);
                             });
                 }

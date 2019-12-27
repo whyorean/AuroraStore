@@ -68,7 +68,7 @@
     </style>
 
     <style name="TextAppearance.Aurora.Button" parent="TextAppearance.Aurora.Line1">
-        <item name="android:textAlignment">center</item>
+        <item name="android:letterSpacing">0.050</item>
         <item name="android:maxLines">1</item>
     </style>
 

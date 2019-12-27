@@ -244,7 +244,7 @@ public class DetailsActivity extends BaseActivity {
     private void drawBasic() {
         GlideApp.with(this)
                 .asBitmap()
-                .load(app.getIconInfo().getUrl())
+                .load(app.getIconUrl())
                 .transition(new BitmapTransitionOptions().crossFade())
                 .transforms(new CenterCrop(), new RoundedCorners(50))
                 .into(icon);

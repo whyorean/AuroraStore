@@ -58,6 +58,7 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
+        android:background="?android:attr/windowBackground"
         app:headerLayout="@layout/item_nav_header"
         app:itemIconTint="?android:attr/colorAccent"
         app:itemTextAppearance="@style/TextAppearance.Aurora.Line2"

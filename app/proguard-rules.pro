@@ -34,6 +34,7 @@
 -dontwarn okio.**
 -keep class com.google.**
 -dontwarn com.google.**
+-keep class com.google.gson.Gson {*;}
 
 # Glide
 -keep public class * implements com.bumptech.glide.module.GlideModule

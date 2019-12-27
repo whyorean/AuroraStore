@@ -84,7 +84,7 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok:1.18.10'
 
     //PlayStoreApi
-    implementation 'com.github.whyorean:playstore-api-v2:2.4'
+    implementation 'com.github.whyorean:playstore-api-v2:2.5'
 
     //OkHTTP3
     implementation 'com.squareup.okhttp3:okhttp:4.2.2'

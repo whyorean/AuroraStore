@@ -44,5 +44,6 @@
 
     <dimen name="height_searchview">52dp</dimen>
     <dimen name="height_button">52dp</dimen>
+    <dimen name="height_nav_header">148dp</dimen>
 
 </resources>

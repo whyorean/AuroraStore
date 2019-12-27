@@ -64,7 +64,7 @@ public class LiveUpdate {
 
         //Add <PackageName,DisplayName> and <PackageName,IconURL> to PseudoMaps
         PackageUtil.addToPseudoPackageMap(context, app.getPackageName(), app.getDisplayName());
-        PackageUtil.addToPseudoURLMap(context, app.getPackageName(), app.getIconInfo().getUrl());
+        PackageUtil.addToPseudoURLMap(context, app.getPackageName(), app.getIconUrl());
     }
 
     private FetchListener getFetchListener() {

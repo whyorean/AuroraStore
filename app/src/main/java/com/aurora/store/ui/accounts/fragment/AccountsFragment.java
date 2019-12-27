@@ -42,13 +42,13 @@ import androidx.fragment.app.Fragment;
 import com.aurora.store.GlideApp;
 import com.aurora.store.R;
 import com.aurora.store.api.PlayStoreApiAuthenticator;
-import com.aurora.store.ui.preference.SettingsActivity;
 import com.aurora.store.ui.single.activity.GoogleLoginActivity;
 import com.aurora.store.util.Accountant;
 import com.aurora.store.util.ContextUtil;
 import com.aurora.store.util.Log;
 import com.aurora.store.util.NetworkUtil;
 import com.aurora.store.util.PrefUtil;
+import com.aurora.store.util.Util;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 import com.dragons.aurora.playstoreapiv2.Image;
 import com.dragons.aurora.playstoreapiv2.UserProfile;
@@ -131,6 +131,14 @@ public class AccountsFragment extends Fragment {
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        if (Accountant.isLoggedIn(context)) {
+            Util.validateApi(context);
+        }
+    }
+
+    @Override
     public void onDestroy() {
         disposable.clear();
         super.onDestroy();
@@ -139,8 +147,6 @@ public class AccountsFragment extends Fragment {
     @OnClick(R.id.btn_positive)
     public void openLoginActivity() {
         context.startActivity(new Intent(context, GoogleLoginActivity.class));
-        if (getActivity() instanceof SettingsActivity)
-            getActivity().finish();
     }
 
     @OnClick(R.id.btn_negative)

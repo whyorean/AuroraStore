@@ -87,11 +87,17 @@
     <string name="details_appReviewsAll">"Read all reviews"</string>
     <string name="details_contains_ads">"Contains ads"</string>
     <string name="details_download">"Download"</string>
+    <string name="details_dev_details">"Developer contact"</string>
+    <string name="details_dev_email">"Email"</string>
+    <string name="details_dev_address">"Address"</string>
+    <string name="details_dev_website">"Website"</string>
     <string name="details_favourite_add">"Add to favourites"</string>
     <string name="details_favourite_remove">"Remove from favourites"</string>
     <string name="details_install">"Install"</string>
     <string name="details_installing">"Installing"</string>
     <string name="details_more">"Read more"</string>
+    <string name="details_more_updated">"Updated on"</string>
+    <string name="details_more_version">"Version"</string>
     <string name="details_no_ads">"No ads"</string>
     <string name="details_permissions">"App permissions"</string>
     <string name="details_purchase">"Purchase"</string>

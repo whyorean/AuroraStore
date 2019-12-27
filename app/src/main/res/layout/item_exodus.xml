@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Aurora Store
   ~ Copyright (C) 2019, Rahul Kumar Patel <whyorean@gmail.com>
   ~
@@ -25,13 +24,13 @@
     android:layout_height="wrap_content"
     android:background="?android:selectableItemBackground">
 
-    <ImageView
+    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/tracker_icon"
-        android:layout_width="@dimen/icon_size_med"
-        android:layout_height="@dimen/icon_size_med"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_margin="@dimen/margin_small"
-        app:srcCompat="@drawable/ic_exodus_alt" />
+        app:srcCompat="@drawable/ic_shield" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -47,8 +46,7 @@
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:maxLines="1"
-            android:textSize="14sp"
-            android:textAppearance="@style/TextAppearance.Aurora.Title" />
+            android:textAppearance="@style/TextAppearance.Aurora.Line1" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tracker_signature"
@@ -56,7 +54,7 @@
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:maxLines="1"
-            android:textAppearance="?android:textAppearanceListItemSecondary" />
+            android:textAppearance="@style/TextAppearance.Aurora.Line2" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tracker_date"
@@ -64,8 +62,7 @@
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:maxLines="1"
-            android:textAppearance="?android:textAppearanceListItemSecondary"
-            android:textSize="12sp" />
+            android:textAppearance="@style/TextAppearance.Aurora.Line3" />
     </LinearLayout>
 
 </RelativeLayout>

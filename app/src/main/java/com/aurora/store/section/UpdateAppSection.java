@@ -116,7 +116,7 @@ public class UpdateAppSection extends Section {
                 : Html.fromHtml(app.getChanges()).toString());
         GlideApp
                 .with(context)
-                .load(app.getIconInfo().getUrl())
+                .load(app.getIconUrl())
                 .transition(new DrawableTransitionOptions().crossFade())
                 .transforms(new CenterCrop(), new RoundedCorners(30))
                 .into(contentHolder.imgIcon);

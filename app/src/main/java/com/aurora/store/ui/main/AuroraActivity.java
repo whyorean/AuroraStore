@@ -255,6 +255,7 @@ public class AuroraActivity extends BaseActivity {
 
             @Override
             public void onDrawerOpened(@NonNull View drawerView) {
+                ImageView backgroundView = drawerView.findViewById(R.id.background);
                 ImageView imageView = drawerView.findViewById(R.id.img);
                 TextView textView1 = drawerView.findViewById(R.id.line1);
                 TextView textView2 = drawerView.findViewById(R.id.line2);
@@ -265,6 +266,11 @@ public class AuroraActivity extends BaseActivity {
                         .placeholder(R.drawable.circle_bg)
                         .circleCrop()
                         .into(imageView);
+
+                GlideApp
+                        .with(AuroraActivity.this)
+                        .load(Accountant.getBackgroundImageURL(AuroraActivity.this))
+                        .into(backgroundView);
 
                 textView1.setText(Accountant.isAnonymous(AuroraActivity.this)
                         ? getText(R.string.account_dummy)
@@ -289,8 +295,8 @@ public class AuroraActivity extends BaseActivity {
             Intent intent = new Intent(this, GenericActivity.class);
             switch (item.getItemId()) {
                 case R.id.action_accounts:
-                    intent.putExtra(Constants.FRAGMENT_NAME, Constants.FRAGMENT_ACCOUNTS);
-                    startActivity(intent, ViewUtil.getEmptyActivityBundle(this));
+                    startActivity(new Intent(this, AccountsActivity.class),
+                            ViewUtil.getEmptyActivityBundle(this));
                     break;
                 case R.id.action_all_apps:
                     startActivity(new Intent(this, InstalledAppActivity.class),

@@ -23,7 +23,6 @@ package com.aurora.store.ui.details.views;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.transition.TransitionManager;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -80,8 +79,11 @@ public abstract class AbstractDetails {
 
     protected void setText(int viewId, String text) {
         TextView textView = activity.findViewById(viewId);
-        if (null != textView) {
-            textView.setText(text);
+        if (textView != null) {
+            if (text.isEmpty())
+                textView.setVisibility(View.GONE);
+            else
+                textView.setText(text);
         }
     }
 
@@ -94,7 +96,6 @@ public abstract class AbstractDetails {
     }
 
     protected void show(ViewGroup viewGroup, int... viewIds) {
-        TransitionManager.beginDelayedTransition(viewGroup);
         for (int viewId : viewIds) {
             activity.findViewById(viewId).setVisibility(View.VISIBLE);
         }

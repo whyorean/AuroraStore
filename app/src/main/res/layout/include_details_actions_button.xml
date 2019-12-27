@@ -46,7 +46,7 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_positive"
-        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
         android:layout_width="0dp"
         android:layout_height="@dimen/height_button"
         android:layout_margin="@dimen/margin_small"
@@ -59,7 +59,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/btn_negative"
         app:layout_constraintTop_toTopOf="parent"
-        app:strokeColor="?android:colorAccent"
         tools:visibility="visible" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

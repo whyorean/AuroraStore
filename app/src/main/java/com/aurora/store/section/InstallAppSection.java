@@ -114,7 +114,7 @@ public class InstallAppSection extends Section {
 
         GlideApp
                 .with(context)
-                .load(app.getIconInfo().getUrl())
+                .load(app.getIconUrl())
                 .transition(new DrawableTransitionOptions().crossFade())
                 .transforms(new CenterCrop(), new RoundedCorners(30))
                 .into(contentHolder.AppIcon);

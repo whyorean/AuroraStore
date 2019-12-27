@@ -31,10 +31,11 @@
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/privacy_ico"
-        android:layout_width="@dimen/icon_size_med"
-        android:layout_height="@dimen/icon_size_med"
+        android:layout_width="@dimen/icon_size_cat"
+        android:layout_height="@dimen/icon_size_cat"
         android:layout_alignParentStart="true"
-        android:src="@drawable/ic_exodus_alt" />
+        android:src="@drawable/ic_shield"
+        android:tint="?android:attr/colorAccent" />
 
     <LinearLayout
         android:id="@+id/exodus_details"

@@ -88,7 +88,7 @@ public class CustomAppListIterator implements Iterator {
 
     private boolean shouldSkip(App app) {
         return (!filterModel.isPaidApps() && !app.isFree())
-                || (!filterModel.isAppsWithAds() && app.containsAds())
+                || (!filterModel.isAppsWithAds() && app.isContainsAds())
                 || (!filterModel.isGsfDependentApps() && !app.getDependencies().isEmpty())
                 || (filterModel.getRating() > 0 && app.getRating().getAverage() < filterModel.getRating())
                 || (filterModel.getDownloads() > 0 && app.getInstalls() < filterModel.getDownloads());

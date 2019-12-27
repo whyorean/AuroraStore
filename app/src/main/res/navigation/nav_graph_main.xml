@@ -22,4 +22,10 @@
         android:name="com.aurora.store.ui.main.fragment.category.CategoriesFragment"
         android:label="@string/title_categories"
         tools:layout="@layout/fragment_categories" />
+
+    <fragment
+        android:id="@+id/installedFragment"
+        android:name="com.aurora.store.ui.installed.InstalledAppsFragment"
+        android:label="@string/title_all_apps"
+        tools:layout="@layout/activity_all_apps" />
 </navigation>

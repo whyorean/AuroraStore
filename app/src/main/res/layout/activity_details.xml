@@ -74,8 +74,21 @@
                 app:autoSizeTextType="uniform"
                 tools:visibility="visible" />
 
-            <!-- Changelog -->
-            <include layout="@layout/include_details_changelog" />
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clipToPadding="false"
+                android:paddingStart="@dimen/margin_normal"
+                android:paddingEnd="@dimen/margin_normal"
+                android:scrollbars="none">
+
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/chip_group_features"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:visibility="invisible"
+                    tools:visibility="visible"/>
+            </HorizontalScrollView>
 
             <!-- Read More -->
             <include layout="@layout/include_details_readmore" />
@@ -85,6 +98,7 @@
                 android:id="@+id/recycler"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_small"
                 android:orientation="horizontal"
                 android:visibility="invisible"
                 tools:itemCount="5"
@@ -128,26 +142,25 @@
             <!-- Beta -->
             <include layout="@layout/include_details_beta" />
 
-            <LinearLayout
-                android:id="@+id/cluster_links"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="start"
-                android:orientation="vertical"
-                android:visibility="gone" />
-
-            <LinearLayout
-                android:id="@+id/developer_layout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/margin_medium"
-                android:background="@drawable/generic_padded_bg"
-                android:gravity="start"
-                android:orientation="vertical"
-                android:visibility="gone" />
+            <!-- Dev Info -->
+            <include layout="@layout/include_details_dev_info" />
 
             <!-- Bottom Actions -->
             <include layout="@layout/include_details_bottom" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_searchview"
+                android:layout_marginTop="@dimen/margin_small"
+                android:background="@color/colorScrim">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txt_footer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:textAppearance="@style/TextAppearance.Aurora.Line1" />
+            </RelativeLayout>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 

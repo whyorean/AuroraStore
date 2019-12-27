@@ -49,8 +49,6 @@ public class Constants {
     public static final String TOP_GAME = "TOP_GAME";
     public static final String TOP_FAMILY = "TOP_FAMILY";
 
-    public static final String RECENT_HISTORY = "RECENT_HISTORY";
-
     public static final String NOTIFICATION_CHANNEL_ALERT = "NOTIFICATION_CHANNEL_ALERT";
     public static final String NOTIFICATION_CHANNEL_GENERAL = "NOTIFICATION_CHANNEL_GENERAL";
 
@@ -110,13 +108,11 @@ public class Constants {
     public static final String PREFERENCE_CLEAN_JUNK = "PREFERENCE_CLEAN_JUNK";
     public static final String PREFERENCE_INSTALLATION_ABANDON_SESSION = "PREFERENCE_INSTALLATION_ABANDON_SESSION";
     public static final String PREFERENCE_INSTALLATION_PROFILE = "PREFERENCE_INSTALLATION_PROFILE";
-    public static final String PREFERENCE_ACCOUNTS_PASSWORD_SWITCH = "PREFERENCE_ACCOUNTS_PASSWORD_SWITCH";
 
     public static final String PREFERENCE_INSTALLED_APPS = "PREFERENCE_INSTALLED_APPS";
     public static final String PREFERENCE_CACHE_DATE = "PREFERENCE_CACHE_DATE";
     public static final String PREFERENCE_SELF_UPDATE_DATE = "PREFERENCE_SELF_UPDATE_DATE";
     public static final String PREFERENCE_SELF_UPDATE = "PREFERENCE_SELF_UPDATE";
-
 
     public static final String FRAGMENT_NAME = "FRAGMENT_NAME";
     public static final String FRAGMENT_ABOUT = "FRAGMENT_ABOUT";

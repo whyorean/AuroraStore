@@ -135,7 +135,7 @@ public class GeneralNotification extends NotificationBase {
         if (NotificationUtil.isNotificationEnabled(context)) {
             Glide.with(context.getApplicationContext())
                     .asBitmap()
-                    .load(app.getIconInfo().getUrl())
+                    .load(app.getIconUrl())
                     .into(new SimpleTarget<Bitmap>() {
                         @Override
                         public void onResourceReady(@NotNull Bitmap bitmap, Transition<? super Bitmap> transition) {

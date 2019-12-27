@@ -29,6 +29,7 @@ public class Accountant {
     public static final String EMAIL = "EMAIL";
     public static final String PROFILE_NAME = "PROFILE_NAME";
     public static final String PROFILE_AVATAR = "PROFILE_AVATAR";
+    public static final String PROFILE_BACKGROUND = "PROFILE_BACKGROUND";
     public static final String LOGGED_IN = "LOGGED_IN";
     public static final String ANONYMOUS = "ANONYMOUS";
 
@@ -54,11 +55,16 @@ public class Accountant {
         return PrefUtil.getString(context, PROFILE_AVATAR);
     }
 
+    public static String getBackgroundImageURL(Context context) {
+        return PrefUtil.getString(context, PROFILE_BACKGROUND);
+    }
+
     public static void completeCheckout(Context context) {
         PrefUtil.remove(context, LOGGED_IN);
         PrefUtil.remove(context, EMAIL);
         PrefUtil.remove(context, PROFILE_NAME);
         PrefUtil.remove(context, PROFILE_AVATAR);
+        PrefUtil.remove(context, PROFILE_BACKGROUND);
         LoginInfo.removeSavedInstance(context);
     }
 

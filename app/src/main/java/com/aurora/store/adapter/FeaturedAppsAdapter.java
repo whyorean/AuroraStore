@@ -112,7 +112,7 @@ public class FeaturedAppsAdapter extends RecyclerView.Adapter<FeaturedAppsAdapte
                 .asBitmap()
                 .load(cardType == CardType.MODERN
                         ? app.getPageBackgroundImage().getUrl()
-                        : app.getIconInfo().getUrl())
+                        : app.getIconUrl())
                 .placeholder(R.color.colorTransparent)
                 .transition(new BitmapTransitionOptions().crossFade())
                 .transforms(new CenterCrop(), new RoundedCorners(50))

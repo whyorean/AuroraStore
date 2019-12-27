@@ -538,12 +538,16 @@ public class Util {
 
     public static Map<String, String> parseCookieString(String cookies) {
         Map<String, String> cookieList = new HashMap<>();
-        Pattern cookiePattern = Pattern.compile("([^=]+)=([^;]*);?\\s?");
-        Matcher matcher = cookiePattern.matcher(cookies);
-        while (matcher.find()) {
-            String cookieKey = matcher.group(1);
-            String cookieValue = matcher.group(2);
-            cookieList.put(cookieKey, cookieValue);
+        try {
+            Pattern cookiePattern = Pattern.compile("([^=]+)=([^;]*);?\\s?");
+            Matcher matcher = cookiePattern.matcher(cookies);
+            while (matcher.find()) {
+                String cookieKey = matcher.group(1);
+                String cookieValue = matcher.group(2);
+                cookieList.put(cookieKey, cookieValue);
+            }
+        } catch (Exception e) {
+            Log.d(e.getMessage());
         }
         return cookieList;
     }

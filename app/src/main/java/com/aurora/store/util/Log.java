@@ -20,7 +20,13 @@
 
 package com.aurora.store.util;
 
+import android.content.Context;
+
 import com.aurora.store.Constants;
+
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class Log {
 
@@ -54,5 +60,15 @@ public class Log {
 
     public static void w(String message) {
         android.util.Log.w(Constants.TAG, message);
+    }
+
+    public static void writeToFile(Context context, Object object) {
+        try {
+            FileWriter out = new FileWriter(new File(context.getFilesDir(), "AuroraLogs.txt"));
+            out.write(object.toString());
+            out.close();
+        } catch (IOException e) {
+            Log.e(e.getMessage());
+        }
     }
 }

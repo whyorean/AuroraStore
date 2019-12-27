@@ -23,7 +23,6 @@
     android:id="@+id/more_layout"
     android:layout_width="match_parent"
     android:layout_height="?actionBarSize"
-    android:layout_marginBottom="@dimen/margin_normal"
     android:background="?selectableItemBackground"
     android:paddingStart="@dimen/margin_medium"
     android:paddingEnd="@dimen/margin_medium"

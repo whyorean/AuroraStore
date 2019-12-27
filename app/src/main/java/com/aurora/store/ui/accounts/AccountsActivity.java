@@ -20,7 +20,9 @@
 
 package com.aurora.store.ui.accounts;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 
 import androidx.appcompat.app.ActionBar;
@@ -29,7 +31,9 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.aurora.store.R;
 import com.aurora.store.ui.accounts.fragment.AccountsFragment;
+import com.aurora.store.ui.preference.SettingsActivity;
 import com.aurora.store.ui.single.activity.BaseActivity;
+import com.aurora.store.util.ViewUtil;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -45,17 +49,34 @@ public class AccountsActivity extends BaseActivity {
         setContentView(R.layout.activity_accounts);
         ButterKnife.bind(this);
         setupActionbar();
-        init();
+
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.content, new AccountsFragment())
+                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                .commitAllowingStateLoss();
     }
 
 
     @Override
     public boolean onOptionsItemSelected(final MenuItem menuItem) {
-        if (menuItem.getItemId() == android.R.id.home) {
-            onBackPressed();
-            return true;
+        switch (menuItem.getItemId()) {
+            case android.R.id.home: {
+                onBackPressed();
+                return true;
+            }
+            case R.id.action_setting: {
+                startActivity(new Intent(this, SettingsActivity.class), ViewUtil.getEmptyActivityBundle(this));
+                return true;
+            }
         }
         return false;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(final Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_intro, menu);
+        return true;
     }
 
     @Override
@@ -72,14 +93,5 @@ public class AccountsActivity extends BaseActivity {
             actionBar.setElevation(0f);
             actionBar.setTitle(getString(R.string.menu_account));
         }
-    }
-
-    private void init() {
-        AccountsFragment fragment = new AccountsFragment();
-        getSupportFragmentManager()
-                .beginTransaction()
-                .replace(R.id.content, fragment)
-                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                .commitAllowingStateLoss();
     }
 }

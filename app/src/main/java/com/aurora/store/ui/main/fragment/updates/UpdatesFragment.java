@@ -29,6 +29,7 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
@@ -46,6 +47,7 @@ import com.aurora.store.section.UpdateAppSection;
 import com.aurora.store.sheet.AppMenuSheet;
 import com.aurora.store.ui.details.DetailsActivity;
 import com.aurora.store.ui.main.AuroraActivity;
+import com.aurora.store.ui.single.fragment.BaseFragment;
 import com.aurora.store.ui.view.CustomSwipeToRefresh;
 import com.aurora.store.util.Util;
 import com.aurora.store.util.ViewUtil;
@@ -64,7 +66,7 @@ import io.github.luizgrp.sectionedrecyclerviewadapter.SectionedRecyclerViewAdapt
 import io.reactivex.disposables.CompositeDisposable;
 
 
-public class UpdatesFragment extends Fragment implements UpdateAppSection.ClickListener {
+public class UpdatesFragment extends BaseFragment implements UpdateAppSection.ClickListener {
 
     @BindView(R.id.swipe_layout)
     CustomSwipeToRefresh customSwipeToRefresh;
@@ -75,6 +77,7 @@ public class UpdatesFragment extends Fragment implements UpdateAppSection.ClickL
     @BindView(R.id.btn_action)
     MaterialButton btnAction;
 
+    private AppCompatActivity activity;
     private Context context;
     private Fetch fetch;
     private CompositeDisposable disposable = new CompositeDisposable();
@@ -100,16 +103,17 @@ public class UpdatesFragment extends Fragment implements UpdateAppSection.ClickL
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        activity = (AuroraActivity) getActivity();
         fetch = DownloadManager.getFetchInstance(context);
         setupRecycler();
 
-        model = ViewModelProviders.of(this).get(UpdatableAppsModel.class);
-        model.getListMutableLiveData().observe(this, appList -> {
+        model = ViewModelProviders.of(activity).get(UpdatableAppsModel.class);
+        model.getListMutableLiveData().observe(activity, appList -> {
             dispatchAppsToAdapter(appList);
             customSwipeToRefresh.setRefreshing(false);
         });
 
-        model.getErrorTypeMutableLiveData().observe(this, errorType -> {
+        model.getError().observe(activity, errorType -> {
             switch (errorType) {
                 case NO_API:
                 case SESSION_EXPIRED:

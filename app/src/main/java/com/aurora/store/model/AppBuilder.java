@@ -34,8 +34,8 @@ import com.dragons.aurora.playstoreapiv2.DetailsResponse;
 import com.dragons.aurora.playstoreapiv2.DocV2;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 import com.dragons.aurora.playstoreapiv2.Image;
+import com.dragons.aurora.playstoreapiv2.ProductDetailsSection;
 import com.dragons.aurora.playstoreapiv2.RelatedLink;
-import com.dragons.aurora.playstoreapiv2.Unknown25Item;
 
 import java.util.List;
 import java.util.regex.Matcher;
@@ -45,6 +45,8 @@ public class AppBuilder {
 
     static public App build(DetailsResponse detailsResponse) {
         App app = build(detailsResponse.getDocV2());
+        app.setFooterHtml(detailsResponse.hasFooterHtml() ? detailsResponse.getFooterHtml() : "");
+        app.setFeatures(detailsResponse.getFeatures());
         if (TextUtils.isEmpty(app.getCategoryIconUrl()) || app.getRelatedLinks().isEmpty()) {
             walkBadges(app, detailsResponse.getBadgeList());
         }
@@ -73,9 +75,11 @@ public class AppBuilder {
         app.setPackageName(appDetails.getPackageName());
         app.setVersionName(appDetails.getVersionString());
         app.setVersionCode(appDetails.getVersionCode());
+        app.setCategoryName(appDetails.getCategoryName());
         app.setDeveloperName(appDetails.getDeveloperName());
         app.setSize(appDetails.getInstallationSize());
         app.setInstalls(getInstallsNum(appDetails.getNumDownloads()));
+        app.setDownloadString(appDetails.getNumDownloads());
         app.setUpdated(appDetails.getUploadDate());
         app.setChanges(appDetails.getRecentChangesHtml());
         app.setPermissions(appDetails.getPermissionList());
@@ -85,6 +89,10 @@ public class AppBuilder {
         app.setTestingProgramAvailable(appDetails.hasTestingProgramInfo());
         app.setLabeledRating(details.getRelatedLinks().getRated().getLabel());
         app.setAd(details.getDetailsUrl().contains("nocache_isad=1"));
+        app.setDeveloperName(appDetails.getDeveloperName());
+        app.setDeveloperEmail(appDetails.getDeveloperEmail());
+        app.setDeveloperAddress(appDetails.getDeveloperAddress());
+        app.setDeveloperWebsite(appDetails.getDeveloperWebsite());
         if (appDetails.getHasInstantLink() && !TextUtils.isEmpty(appDetails.getInstantLink())) {
             app.setInstantAppLink(appDetails.getInstantLink());
         }
@@ -94,11 +102,12 @@ public class AppBuilder {
         }
         fillImages(app, details.getImageList());
         fillDependencies(app, appDetails);
+        fillOfferDetails(app, details);
         return app;
     }
 
     static private long getInstallsNum(String installsRaw) {
-        Matcher matcher = Pattern.compile("[\\d]+").matcher(installsRaw.replaceAll("[,\\.\\s]+", ""));
+        Matcher matcher = Pattern.compile("[\\d]+").matcher(installsRaw.replaceAll("[,.\\s]+", ""));
         if (matcher.find()) {
             return Util.parseLong(matcher.group(0), 0);
         }
@@ -125,14 +134,14 @@ public class AppBuilder {
     }
 
     static private void fillOfferDetails(App app, DocV2 details) {
-        if (!details.hasUnknown25() || details.getUnknown25().getItemCount() == 0) {
+        if (!details.hasUnknown25() || details.getUnknown25().getSectionCount() == 0) {
             return;
         }
-        for (Unknown25Item item : details.getUnknown25().getItemList()) {
+        for (ProductDetailsSection item : details.getUnknown25().getSectionList()) {
             if (!item.hasContainer()) {
                 continue;
             }
-            app.getOfferDetails().put(item.getLabel(), item.getContainer().getValue());
+            app.getOfferDetails().put(item.getLabel(), item.getContainer().getDescription());
         }
     }
 

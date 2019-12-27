@@ -111,7 +111,7 @@ public class FavouriteAppSection extends Section {
 
         GlideApp
                 .with(context)
-                .load(app.getIconInfo().getUrl())
+                .load(app.getIconUrl())
                 .transforms(new CenterCrop(), new RoundedCorners(30))
                 .into(contentHolder.img);
 
