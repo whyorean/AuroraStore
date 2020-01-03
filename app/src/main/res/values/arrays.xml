@@ -201,8 +201,8 @@
 
     <string-array name="pref_default_tab">
         <item>@string/action_home</item>
-        <item>@string/action_apps</item>
-        <item>@string/action_search</item>
+        <item>@string/action_updates</item>
+        <item>@string/title_categories</item>
     </string-array>
 
     <string-array name="pref_default_tab_values">
