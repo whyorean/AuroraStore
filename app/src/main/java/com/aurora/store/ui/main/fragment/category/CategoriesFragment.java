@@ -30,7 +30,6 @@ import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -59,7 +58,6 @@ public class CategoriesFragment extends Fragment implements CategoriesSection.Cl
     @BindView(R.id.progress_bar)
     ProgressBar progressBar;
 
-    private AppCompatActivity activity;
     private Context context;
     private CategoryManager categoryManager;
 
@@ -80,10 +78,9 @@ public class CategoriesFragment extends Fragment implements CategoriesSection.Cl
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        activity = (AuroraActivity) getActivity();
         categoryManager = new CategoryManager(context);
-        CategoriesModel categoriesModel = ViewModelProviders.of(activity).get(CategoriesModel.class);
-        categoriesModel.getFetchCompleted().observe(activity, success -> {
+        CategoriesModel categoriesModel = ViewModelProviders.of(this).get(CategoriesModel.class);
+        categoriesModel.getFetchCompleted().observe(this, success -> {
             if (success) {
                 setupRecycler();
                 progressBar.setVisibility(View.GONE);
