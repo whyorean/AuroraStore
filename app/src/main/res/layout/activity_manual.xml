@@ -29,6 +29,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:overScrollMode="never"
         android:scrollbars="none"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
@@ -47,7 +48,7 @@
                 android:layout_marginStart="@dimen/margin_small"
                 android:layout_marginTop="@dimen/margin_normal"
                 android:layout_marginEnd="@dimen/margin_small"
-                android:hint="Version Code"
+                android:hint="@string/details_more_version"
                 app:boxStrokeColor="?android:colorAccent"
                 app:hintTextColor="?android:colorAccent">
 
@@ -60,14 +61,15 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
-
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_positive"
-                style="@style/Widget.MaterialComponents.Button"
-                android:layout_width="wrap_content"
+                style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+                android:layout_width="match_parent"
                 android:layout_height="52dp"
                 android:layout_gravity="center_horizontal"
-                android:layout_margin="@dimen/margin_xxsmall"
+                android:layout_marginStart="@dimen/margin_small"
+                android:layout_marginTop="@dimen/margin_small"
+                android:layout_marginEnd="@dimen/margin_small"
                 android:maxLines="1"
                 android:paddingStart="@dimen/margin_large"
                 android:paddingEnd="@dimen/margin_large"
@@ -87,7 +89,8 @@
                     android:layout_marginTop="@dimen/margin_small"
                     android:ellipsize="end"
                     android:text="@string/manual_download_disclaimer"
-                    android:textAppearance="@style/TextAppearance.Aurora.Title" />
+                    android:textAppearance="@style/TextAppearance.Aurora.SubTitle"
+                    android:textColor="?android:attr/colorAccent" />
 
 
                 <LinearLayout
@@ -100,14 +103,15 @@
                     <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/manual_download_warning" />
+                        android:text="@string/manual_download_warning"
+                        android:textAppearance="@style/TextAppearance.Aurora.Line2" />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:paddingTop="15dp"
-                        android:text="@string/manual_download_incompatible" />
-
+                        android:text="@string/manual_download_incompatible"
+                        android:textAppearance="@style/TextAppearance.Aurora.Line2" />
                 </LinearLayout>
             </RelativeLayout>
         </LinearLayout>

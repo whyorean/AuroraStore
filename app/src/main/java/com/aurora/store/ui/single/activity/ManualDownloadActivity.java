@@ -50,7 +50,10 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.Priority;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.bitmap.BitmapTransitionOptions;
+import com.bumptech.glide.load.resource.bitmap.CenterCrop;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
+import com.google.android.material.chip.ChipGroup;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -75,6 +78,8 @@ public class ManualDownloadActivity extends BaseActivity {
     TextInputEditText editText;
     @BindView(R.id.btn_positive)
     Button btnPositive;
+    @BindView(R.id.chip_group_info)
+    ChipGroup chipGroup;
 
     private App app;
     private CompositeDisposable disposable = new CompositeDisposable();
@@ -116,11 +121,8 @@ public class ManualDownloadActivity extends BaseActivity {
         Glide.with(this)
                 .asBitmap()
                 .load(app.getIconUrl())
-                .apply(new RequestOptions()
-                        .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
-                        .placeholder(R.color.colorTransparent)
-                        .priority(Priority.HIGH))
                 .transition(new BitmapTransitionOptions().crossFade())
+                .transforms(new CenterCrop(), new RoundedCorners(50))
                 .into(appIcon);
 
         setText(R.id.displayName, app.getDisplayName());
@@ -160,6 +162,7 @@ public class ManualDownloadActivity extends BaseActivity {
         setText(R.id.txt_google_dependencies, app.getDependencies().isEmpty()
                 ? R.string.list_app_independent_from_gsf
                 : R.string.list_app_depends_on_gsf);
+        chipGroup.setVisibility(View.VISIBLE);
     }
 
     private void drawEditText() {
