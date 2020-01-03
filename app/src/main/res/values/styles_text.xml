@@ -82,6 +82,7 @@
     </style>
 
     <style name="TextAppearance.Aurora.Toolbar.Title" parent="TextAppearance.Aurora.Title">
+        <item name="android:textStyle">normal</item>
         <item name="android:letterSpacing">0.050</item>
     </style>
 

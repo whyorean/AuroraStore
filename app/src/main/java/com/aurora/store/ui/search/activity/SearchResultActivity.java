@@ -13,14 +13,15 @@ import com.aurora.store.AuroraApplication;
 import com.aurora.store.Constants;
 import com.aurora.store.EndlessScrollListener;
 import com.aurora.store.R;
+import com.aurora.store.manager.FilterManager;
 import com.aurora.store.model.App;
+import com.aurora.store.model.FilterModel;
 import com.aurora.store.section.SearchResultSection;
 import com.aurora.store.sheet.AppMenuSheet;
 import com.aurora.store.sheet.FilterBottomSheet;
 import com.aurora.store.ui.details.DetailsActivity;
 import com.aurora.store.ui.search.SearchAppsModel;
 import com.aurora.store.ui.single.activity.BaseActivity;
-import com.aurora.store.util.Log;
 import com.aurora.store.util.Util;
 import com.aurora.store.util.ViewUtil;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
@@ -117,6 +118,8 @@ public class SearchResultActivity extends BaseActivity implements SearchResultSe
     protected void onDestroy() {
         model = null;
         sharedPreferences.unregisterOnSharedPreferenceChangeListener(this);
+        if (Util.filterSearchNonPersistent(this))
+            FilterManager.saveFilterPreferences(this, new FilterModel());
         super.onDestroy();
     }
 
