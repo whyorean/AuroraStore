@@ -25,7 +25,6 @@ package com.aurora.store.model;
 import com.aurora.store.R;
 import com.dragons.aurora.playstoreapiv2.Features;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
-import com.dragons.aurora.playstoreapiv2.ProductDetailsSection;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -101,6 +100,14 @@ public class App {
 
     public String getInstalledVersionName() {
         return versionName;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof App) {
+            return (((App) obj).getPackageName().equals(this.getPackageName()));
+        }
+        return false;
     }
 
     public enum Restriction {

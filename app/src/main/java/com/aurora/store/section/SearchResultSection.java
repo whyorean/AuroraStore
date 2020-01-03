@@ -30,6 +30,22 @@ public class SearchResultSection extends InstallAppSection {
     }
 
     @Override
+    public void updateList(List<App> appList) {
+        this.appList.clear();
+        for (App app : appList) {
+            if (this.appList.contains(app)) {
+                continue;
+            }
+            this.appList.add(app);
+        }
+
+        if (appList.isEmpty())
+            setState(State.EMPTY);
+        else
+            setState(State.LOADED);
+    }
+
+    @Override
     public void getDetails(List<String> Version, List<String> Extra, App app) {
         Version.add(Util.addSiPrefix(app.getSize()));
         if (!app.isEarlyAccess())
