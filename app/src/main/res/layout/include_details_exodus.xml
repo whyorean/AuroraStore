@@ -85,14 +85,13 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/moreButton"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:layout_marginStart="4dp"
-            android:text="@string/exodus_viewMore"
-            app:strokeWidth="1dp" />
+            android:text="@string/exodus_viewMore" />
     </RelativeLayout>
 
 </RelativeLayout>
