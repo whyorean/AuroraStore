@@ -153,11 +153,13 @@ public class InstallationFragment extends PreferenceFragmentCompat implements Sh
     }
 
     private void addUserInfoData(ListPreference listPreference) {
-
         disposable.add(Observable.fromCallable(() -> new Root())
                 .map(root -> {
-                    if (!root.isAcquired())
+                    if (!root.isAcquired()) {
+                        listPreference.setEntries(new CharSequence[0]);
+                        listPreference.setEntryValues(new CharSequence[0]);
                         return root;
+                    }
 
                     List<String> rawUserList = getUserInfo(root);
                     List<String> entryList = new ArrayList<>();
