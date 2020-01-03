@@ -49,6 +49,8 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.tonyodev.fetch2.Status;
 import com.tonyodev.fetch2core.Downloader;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.net.InetSocketAddress;
 import java.net.Proxy;
 import java.net.SocketException;
@@ -533,6 +535,9 @@ public class Util {
     }
 
     public static Map<String, String> parseCookieString(String cookies) {
+        if (StringUtils.isEmpty(cookies))
+            return new HashMap<>();
+
         Map<String, String> cookieList = new HashMap<>();
         try {
             Pattern cookiePattern = Pattern.compile("([^=]+)=([^;]*);?\\s?");

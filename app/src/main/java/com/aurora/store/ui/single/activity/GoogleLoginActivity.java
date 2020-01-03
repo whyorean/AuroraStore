@@ -17,6 +17,7 @@ import com.aurora.store.R;
 import com.aurora.store.task.AuthTask;
 import com.aurora.store.util.Accountant;
 import com.aurora.store.util.Util;
+import com.aurora.store.util.ViewUtil;
 
 import java.util.Map;
 
@@ -105,11 +106,8 @@ public class GoogleLoginActivity extends BaseActivity {
                 .subscribe(success -> {
                     if (success) {
                         Toast.makeText(this, getText(R.string.toast_login_success), Toast.LENGTH_SHORT).show();
+                        Accountant.setLoggedIn(this);
                         Accountant.setAnonymous(this, false);
-                        Intent intent = new Intent(this, SplashActivity.class);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-                        ActivityOptions activityOptions = ActivityOptions.makeSceneTransitionAnimation(this);
-                        startActivity(intent, activityOptions.toBundle());
                         supportFinishAfterTransition();
                     } else {
                         Toast.makeText(this, getText(R.string.toast_login_failed), Toast.LENGTH_LONG).show();

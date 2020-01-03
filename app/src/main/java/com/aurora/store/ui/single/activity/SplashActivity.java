@@ -14,6 +14,7 @@ import com.aurora.store.R;
 import com.aurora.store.ui.intro.IntroActivity;
 import com.aurora.store.ui.main.AuroraActivity;
 import com.aurora.store.util.Accountant;
+import com.aurora.store.util.Log;
 import com.aurora.store.util.PrefUtil;
 import com.aurora.store.util.Util;
 

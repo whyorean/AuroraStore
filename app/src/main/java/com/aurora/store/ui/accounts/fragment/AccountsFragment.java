@@ -37,6 +37,7 @@ import android.widget.Toast;
 import android.widget.ViewSwitcher;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.aurora.store.GlideApp;
@@ -126,14 +127,20 @@ public class AccountsFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_accounts, container, false);
         ButterKnife.bind(this, view);
-        init();
         return view;
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        init();
     }
 
     @Override
     public void onResume() {
         super.onResume();
         if (Accountant.isLoggedIn(context)) {
+            init();
             Util.validateApi(context);
         }
     }

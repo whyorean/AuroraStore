@@ -2,7 +2,7 @@ package com.aurora.store.task;
 
 import android.content.Context;
 
-import com.aurora.store.adapter.NativeHttpClientAdapter;
+import com.aurora.store.AuroraApplication;
 import com.aurora.store.adapter.OkHttpClientAdapter;
 import com.aurora.store.model.LoginInfo;
 import com.aurora.store.util.Accountant;
@@ -59,6 +59,7 @@ public class AuthTask extends BaseTask {
                 PrefUtil.putString(context, Accountant.PROFILE_BACKGROUND, image.getImageUrl());
             }
         }
+        AuroraApplication.api = api;
         return !loginInfo.isEmpty();
     }
 }

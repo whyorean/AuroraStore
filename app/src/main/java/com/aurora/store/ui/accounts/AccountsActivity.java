@@ -33,6 +33,7 @@ import com.aurora.store.R;
 import com.aurora.store.ui.accounts.fragment.AccountsFragment;
 import com.aurora.store.ui.preference.SettingsActivity;
 import com.aurora.store.ui.single.activity.BaseActivity;
+import com.aurora.store.util.Accountant;
 import com.aurora.store.util.ViewUtil;
 
 import butterknife.BindView;
