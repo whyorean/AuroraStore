@@ -58,11 +58,10 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/beta_subscribe_button"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
-            android:textColor="?android:attr/colorAccent"
             tools:text="@string/testing_program_opt_in" />
 
     </LinearLayout>
@@ -89,7 +88,7 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/beta_submit_button"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/beta_comment"

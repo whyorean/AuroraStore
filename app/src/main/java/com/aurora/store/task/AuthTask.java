@@ -3,6 +3,7 @@ package com.aurora.store.task;
 import android.content.Context;
 
 import com.aurora.store.adapter.NativeHttpClientAdapter;
+import com.aurora.store.adapter.OkHttpClientAdapter;
 import com.aurora.store.model.LoginInfo;
 import com.aurora.store.util.Accountant;
 import com.aurora.store.util.ApiBuilderUtil;
@@ -23,7 +24,7 @@ public class AuthTask extends BaseTask {
         GooglePlayAPI api = new GooglePlayAPI();
         api.setLocale(Locale.getDefault());
         api.setDeviceInfoProvider(ApiBuilderUtil.getDeviceInfoProvider(context));
-        api.setClient(new NativeHttpClientAdapter(context));
+        api.setClient(new OkHttpClientAdapter(context));
         return api.generateAASToken(email, oauth_token);
     }
 
@@ -31,7 +32,7 @@ public class AuthTask extends BaseTask {
         GooglePlayAPI api = new GooglePlayAPI();
         api.setDeviceInfoProvider(ApiBuilderUtil.getDeviceInfoProvider(context));
         api.setLocale(Locale.getDefault());
-        api.setClient(new NativeHttpClientAdapter(context));
+        api.setClient(new OkHttpClientAdapter(context));
         String gsfId = api.generateGsfId();
         api.setGsfId(gsfId);
         api.uploadDeviceConfig();

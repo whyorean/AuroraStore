@@ -86,20 +86,8 @@ public class Beta extends AbstractDetails {
     @Override
     public void draw() {
         ButterKnife.bind(this, activity);
-        if (Accountant.isAnonymous(context))
+        if (Accountant.isAnonymous(context) || !app.isTestingProgramAvailable())
             return;
-
-        if (app.isTestingProgramAvailable() && app.isTestingProgramOptedIn()) {
-            disposable.add(Observable.fromCallable(() -> new BetaFeedbackToggleTask(context)
-                    .toggle(app))
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe());
-        }
-
-        if (!app.isInstalled() || !app.isTestingProgramAvailable()) {
-            return;
-        }
 
         setText(R.id.beta_header, app.isTestingProgramOptedIn()
                 ? R.string.testing_program_section_opted_in_title
@@ -143,8 +131,7 @@ public class Beta extends AbstractDetails {
                 .subscribeOn(Schedulers.computation())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(response -> {
-                    Log.e(response.toString());
-                    if (response != null && response.hasResult()) {
+                    if (response.hasResult()) {
                         if (response.getResult().getDetails().hasFlag1()) {
                             ContextUtil.toastLong(context, context.getString(response.getResult().getDetails().getFlag1()
                                     ? R.string.testing_program_opt_in_success
