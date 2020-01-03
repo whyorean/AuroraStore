@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
-import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -57,8 +56,8 @@ public class InstallationFragment extends PreferenceFragmentCompat implements Sh
     }
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
         SharedPreferences preferences = Util.getPrefs(context);
         preferences.registerOnSharedPreferenceChangeListener(this);
 
@@ -135,6 +134,7 @@ public class InstallationFragment extends PreferenceFragmentCompat implements Sh
         } catch (Exception e) {
             userProfilePreference.setEnabled(false);
         }
+
         userProfilePreference.setOnPreferenceChangeListener((preference, newValue) -> {
             String installMethod = (String) newValue;
             PrefUtil.putString(context, Constants.PREFERENCE_INSTALLATION_PROFILE, installMethod);
@@ -153,17 +153,13 @@ public class InstallationFragment extends PreferenceFragmentCompat implements Sh
     }
 
     private void addUserInfoData(ListPreference listPreference) {
-        Root root = new Root();
-        if (!root.isAcquired()) {
-            listPreference.setEnabled(false);
-            return;
-        }
 
-        disposable.add(Observable.fromCallable(() -> getUserInfo(root))
-                .subscribeOn(Schedulers.computation())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(rawUserList -> {
+        disposable.add(Observable.fromCallable(() -> new Root())
+                .map(root -> {
+                    if (!root.isAcquired())
+                        return root;
 
+                    List<String> rawUserList = getUserInfo(root);
                     List<String> entryList = new ArrayList<>();
                     List<String> entryValueList = new ArrayList<>();
 
@@ -182,7 +178,11 @@ public class InstallationFragment extends PreferenceFragmentCompat implements Sh
 
                     listPreference.setEntries(entries);
                     listPreference.setEntryValues(entryValues);
-                }));
+                    return root;
+                })
+                .subscribeOn(Schedulers.computation())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe());
     }
 
     private List<String> getUserInfo(Root root) {
