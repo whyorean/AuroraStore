@@ -278,10 +278,6 @@ public class Util {
         return getPrefs(context).getBoolean(Constants.PREFERENCE_FEATURED_SNAP, false);
     }
 
-    public static boolean isIMEEnabled(Context context) {
-        return getPrefs(context).getBoolean(Constants.PREFERENCE_SEARCH_IME, true);
-    }
-
     public static boolean isSearchByPackageEnabled(Context context) {
         return getPrefs(context).getBoolean(Constants.PREFERENCE_SEARCH_PACKAGE, true);
     }

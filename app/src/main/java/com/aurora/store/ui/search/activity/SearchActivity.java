@@ -1,11 +1,14 @@
 package com.aurora.store.ui.search.activity;
 
+import android.app.Service;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
@@ -40,6 +43,8 @@ public class SearchActivity extends BaseActivity implements SearchSuggestionSect
     TextInputEditText searchView;
     @BindView(R.id.recycler)
     RecyclerView recyclerView;
+    @BindView(R.id.action2)
+    ImageView action2;
     @BindView(R.id.coordinator)
     CoordinatorLayout coordinator;
 
@@ -47,6 +52,7 @@ public class SearchActivity extends BaseActivity implements SearchSuggestionSect
     private SearchSuggestionModel model;
     private SearchSuggestionSection section;
     private SectionedRecyclerViewAdapter adapter;
+    private InputMethodManager inputMethodManager;
 
     private static boolean isPackageName(String query) {
         if (TextUtils.isEmpty(query)) {
@@ -64,6 +70,10 @@ public class SearchActivity extends BaseActivity implements SearchSuggestionSect
         ButterKnife.bind(this);
         setupSearch();
         setupSuggestionRecycler();
+
+        Object object = getSystemService(Service.INPUT_METHOD_SERVICE);
+        inputMethodManager = (InputMethodManager) object;
+
         model = ViewModelProviders.of(this).get(SearchSuggestionModel.class);
         model.getSuggestions().observe(this, searchSuggestEntries -> {
             dispatchAppsToAdapter(searchSuggestEntries);
@@ -92,6 +102,12 @@ public class SearchActivity extends BaseActivity implements SearchSuggestionSect
         onBackPressed();
     }
 
+    @OnClick(R.id.fab_ime)
+    public void toggleKeyBoard() {
+        if (inputMethodManager != null)
+            inputMethodManager.showSoftInput(searchView, InputMethodManager.SHOW_IMPLICIT);
+    }
+
     @Override
     protected void onResume() {
         super.onResume();
@@ -113,6 +129,10 @@ public class SearchActivity extends BaseActivity implements SearchSuggestionSect
     }
 
     private void setupSearch() {
+        action2.setImageDrawable(getDrawable(R.drawable.ic_cancel));
+        action2.setOnClickListener(v -> {
+            searchView.setText("");
+        });
         searchView.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
