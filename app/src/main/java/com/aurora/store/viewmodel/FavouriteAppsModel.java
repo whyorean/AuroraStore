@@ -21,13 +21,12 @@ import io.reactivex.schedulers.Schedulers;
 public class FavouriteAppsModel extends BaseViewModel {
 
     private ArrayList<String> packageList;
+    private FavouriteListManager favouriteListManager;
 
     private MutableLiveData<List<App>> listMutableLiveData = new MutableLiveData<>();
 
     public FavouriteAppsModel(@NonNull Application application) {
         super(application);
-        FavouriteListManager favouriteListManager = new FavouriteListManager(application);
-        this.packageList = favouriteListManager.get();
     }
 
     public LiveData<List<App>> getFavouriteApps() {
@@ -35,6 +34,13 @@ public class FavouriteAppsModel extends BaseViewModel {
     }
 
     public void fetchFavouriteApps() {
+        favouriteListManager = new FavouriteListManager(getApplication());
+        packageList = favouriteListManager.get();
+
+        if (packageList.isEmpty()) {
+            listMutableLiveData.setValue(new ArrayList<>());
+            return;
+        }
         api = AuroraApplication.api;
         disposable.add(Observable.fromCallable(() -> new BulkDetailsTask(api)
                 .getRemoteAppList(packageList))

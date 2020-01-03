@@ -18,7 +18,7 @@
  *
  */
 
-package com.aurora.store.ui.preference.fragment;
+package com.aurora.store.ui.single.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -126,6 +126,7 @@ public class FavouriteFragment extends Fragment implements FavouriteAppSection.C
         model = ViewModelProviders.of(this).get(FavouriteAppsModel.class);
         model.getFavouriteApps().observe(this, appList -> {
             dispatchAppsToAdapter(appList);
+            customSwipeToRefresh.setRefreshing(false);
         });
         model.fetchFavouriteApps();
         customSwipeToRefresh.setOnRefreshListener(() -> {
@@ -179,7 +180,7 @@ public class FavouriteFragment extends Fragment implements FavouriteAppSection.C
         }
     }
 
-    private ArrayList<String> importList() {
+    private void importList() {
         ArrayList<String> packageList = new ArrayList<>();
         File file = verifyAndGetFile();
         if (file != null) {
@@ -195,7 +196,8 @@ public class FavouriteFragment extends Fragment implements FavouriteAppSection.C
         } else {
             Toast.makeText(context, "Favourite AppList not found", Toast.LENGTH_SHORT).show();
         }
-        return packageList;
+        new FavouriteListManager(context).addAll(packageList);
+        model.fetchFavouriteApps();
     }
 
     private boolean verifyDirectory() {
@@ -263,5 +265,10 @@ public class FavouriteFragment extends Fragment implements FavouriteAppSection.C
             adapter.notifyItemChanged(position);
             updateCount(section.getSelections().size());
         });
+    }
+
+    @Override
+    public void onClickError() {
+        importList();
     }
 }

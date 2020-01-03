@@ -18,7 +18,7 @@
  *
  */
 
-package com.aurora.store.ui.preference.fragment;
+package com.aurora.store.ui.single.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -42,6 +42,7 @@ import com.aurora.store.manager.BlacklistManager;
 import com.aurora.store.model.App;
 import com.aurora.store.section.BlackListedAppSection;
 import com.aurora.store.ui.view.CustomSwipeToRefresh;
+import com.aurora.store.util.Log;
 import com.aurora.store.util.ViewUtil;
 import com.aurora.store.viewmodel.BlackListedAppsModel;
 
@@ -97,8 +98,9 @@ public class BlacklistFragment extends Fragment implements BlackListedAppSection
         model.getAllApps().observe(this, appList -> {
             appList = sortBlackListedApps(appList);
             dispatchAppsToAdapter(appList);
+            customSwipeToRefresh.setRefreshing(false);
         });
-        model.getAllBlackListedApps();
+        model.fetchBlackListedApps();
         customSwipeToRefresh.setOnRefreshListener(() -> model.fetchBlackListedApps());
     }
 
@@ -173,6 +175,9 @@ public class BlacklistFragment extends Fragment implements BlackListedAppSection
             } else {
                 blacklistManager.add(packageName);
                 section.add(packageName);
+                for (String s : section.getBlacklist()) {
+                    Log.e(s);
+                }
             }
             adapter.notifyItemChanged(position);
             updateCount();

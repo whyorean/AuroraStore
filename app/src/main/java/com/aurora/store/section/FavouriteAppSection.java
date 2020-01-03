@@ -15,6 +15,7 @@ import com.aurora.store.model.App;
 import com.aurora.store.util.PackageUtil;
 import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.checkbox.MaterialCheckBox;
 
 import java.util.ArrayList;
@@ -128,8 +129,18 @@ public class FavouriteAppSection extends Section {
         }
     }
 
+    @Override
+    public void onBindEmptyViewHolder(RecyclerView.ViewHolder holder) {
+        super.onBindEmptyViewHolder(holder);
+        final EmptyHolder emptyViewHolder = (EmptyHolder) holder;
+        emptyViewHolder.button.setText(context.getString(R.string.action_import));
+        emptyViewHolder.button.setOnClickListener(v -> clickListener.onClickError());
+    }
+
     public interface ClickListener {
         void onClick(int position, String packageName);
+
+        void onClickError();
     }
 
     static class ContentHolder extends RecyclerView.ViewHolder {
@@ -153,12 +164,15 @@ public class FavouriteAppSection extends Section {
         ImageView img;
         @BindView(R.id.line1)
         TextView line1;
+        @BindView(R.id.action)
+        MaterialButton button;
 
         EmptyHolder(@NonNull View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
             img.setImageDrawable(itemView.getResources().getDrawable(R.drawable.ic_menu_fav));
             line1.setText(itemView.getContext().getString(R.string.list_empty_fav));
+            button.setVisibility(View.VISIBLE);
         }
     }
 

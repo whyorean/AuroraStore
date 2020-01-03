@@ -15,9 +15,7 @@ import com.aurora.store.util.Accountant;
 import com.aurora.store.util.PrefUtil;
 import com.aurora.store.viewmodel.BaseViewModel;
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,19 +39,6 @@ public class InstalledAppsModel extends BaseViewModel implements SharedPreferenc
         return listMutableLiveData;
     }
 
-    public void getInstalledApps(boolean userOnly) {
-        Type type = new TypeToken<List<App>>() {
-        }.getType();
-        String jsonString = PrefUtil.getString(getApplication(), Constants.PREFERENCE_INSTALLED_APPS);
-        List<App> appList = gson.fromJson(jsonString, type);
-        if (appList == null || appList.isEmpty())
-            fetchInstalledApps(userOnly);
-        else {
-            List<App> filteredList = getFilteredList(appList, userOnly);
-            listMutableLiveData.setValue(filteredList);
-        }
-    }
-
     public void fetchInstalledApps(boolean userOnly) {
         api = AuroraApplication.api;
         disposable.add(Observable.fromCallable(() -> new InstalledAppsTask(api, getApplication())
@@ -63,13 +48,7 @@ public class InstalledAppsModel extends BaseViewModel implements SharedPreferenc
                 .subscribe((appList) -> {
                     List<App> filteredList = getFilteredList(appList, userOnly);
                     listMutableLiveData.setValue(filteredList);
-                    saveToCache(appList);
                 }, err -> handleError(err)));
-    }
-
-    private void saveToCache(List<App> appList) {
-        String jsonString = gson.toJson(appList);
-        PrefUtil.putString(getApplication(), Constants.PREFERENCE_INSTALLED_APPS, jsonString);
     }
 
     private List<App> getFilteredList(List<App> appList, boolean userOnly) {
@@ -91,6 +70,6 @@ public class InstalledAppsModel extends BaseViewModel implements SharedPreferenc
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
         if (key.equals(Accountant.DATA) && Accountant.isLoggedIn(getApplication()))
-            getInstalledApps(userOnly);
+            fetchInstalledApps(userOnly);
     }
 }

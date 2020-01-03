@@ -32,7 +32,7 @@ import java.util.Set;
 public class FavouriteListManager {
 
     private Context context;
-    private ArrayList<String> favouriteList = new ArrayList<>();
+    private ArrayList<String> favouriteList;
 
     public FavouriteListManager(Context context) {
         this.context = context;

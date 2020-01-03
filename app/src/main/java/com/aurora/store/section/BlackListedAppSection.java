@@ -17,7 +17,9 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.google.android.material.checkbox.MaterialCheckBox;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -57,7 +59,10 @@ public class BlackListedAppSection extends Section {
     }
 
     public void add(String packageName) {
-        blackList.add(packageName);
+        Set<String> set = new HashSet<>(blackList);
+        set.add(packageName);
+        blackList.clear();
+        blackList.addAll(set);
     }
 
     public List<App> getList() {

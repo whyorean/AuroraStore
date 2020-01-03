@@ -29,6 +29,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import io.github.luizgrp.sectionedrecyclerviewadapter.SectionedRecyclerViewAdapter;
 import io.reactivex.disposables.CompositeDisposable;
 
@@ -60,7 +61,7 @@ public class InstalledAppActivity extends BaseActivity implements InstallAppSect
         switchSystem.setChecked(PrefUtil.getBoolean(this, Constants.PREFERENCE_INCLUDE_SYSTEM));
         switchSystem.setOnCheckedChangeListener((buttonView, isChecked) -> {
             PrefUtil.putBoolean(this, Constants.PREFERENCE_INCLUDE_SYSTEM, isChecked);
-            model.getInstalledApps(isChecked);
+            model.fetchInstalledApps(isChecked);
         });
 
         model = ViewModelProviders.of(this).get(InstalledAppsModel.class);
@@ -83,7 +84,7 @@ public class InstalledAppActivity extends BaseActivity implements InstallAppSect
             }
         });
 
-        model.getInstalledApps(switchSystem.isChecked());
+        model.fetchInstalledApps(switchSystem.isChecked());
         swipeLayout.setOnRefreshListener(() -> fetchApps());
 
         disposable.add(AuroraApplication
@@ -137,6 +138,10 @@ public class InstalledAppActivity extends BaseActivity implements InstallAppSect
         recycler.setAdapter(adapter);
     }
 
+    @OnClick(R.id.action1)
+    public void goBack() {
+        onBackPressed();
+    }
 
     @Override
     public void onClick(App app) {

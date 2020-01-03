@@ -23,4 +23,14 @@
         android:layout_margin="@dimen/margin_small"
         android:textAppearance="@style/TextAppearance.Aurora.Title"
         tools:text="No Items" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/action"
+        style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/line1"
+        android:layout_centerInParent="true"
+        android:visibility="invisible"
+        tools:text="Retry" />
 </RelativeLayout>
