@@ -24,7 +24,7 @@
         <item
             android:id="@+id/action_all_apps"
             android:icon="@drawable/ic_apps"
-            android:title="@string/title_all_apps" />
+            android:title="@string/title_installed" />
 
         <item
             android:id="@+id/action_favourite"
