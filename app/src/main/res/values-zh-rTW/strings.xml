@@ -262,6 +262,9 @@
     <string name="list_selected">"已選擇的應用程式"</string>
     <string name="notification_installation_auto">"已下載，請觸碰安裝"</string>
     <string name="notification_installation_manual">"APK 遭捆綁，需手動操作"</string>
+
+    <!-- In Chinese,this string shuold be translated to "「搜尋內容」的結果“,it is similar to "somebody's item" in English.so can you place the "search keyword" variable to this string? -->
+    <string name="title_search_result">"搜尋結果："</string>
     <string name="action_recheck">"重新載入"</string>
     <string name="action_recheck_ing">"重新載入中"</string>
     <string name="pref_install_type_summary">"使用內建安裝器安裝應用程式會破壞捆綁的 APK"</string>
@@ -351,4 +354,30 @@
     <string name="toast_unknown_reason">"某些地方出現了問題，請重試"</string>
     <string name="toast_junk_removed">"垃圾檔案已移除"</string>
     <string name="toast_abandon_sessions">"舊安裝會話已放棄"</string>
+    <string name="action_import">"匯入"</string>
+    <string name="dialog_title_self_update">"已有更新可用"</string>
+    <string name="dialog_desc_self_update">"您希望現在就更新嗎？"</string>
+    <string name="download_extraction">"解壓縮遊戲資源中，請耐心等待"</string>
+    <string name="download_extraction_completed">"遊戲資源解壓縮完成"</string>
+    <string name="download_extraction_failed">"遊戲資源解壓縮失敗"</string>
+    <string name="installer_status_ongoing">"安裝中"</string>
+    <string name="list_update_all_txt_one">"已有更新可用"</string>
+    <string name="pref_ui_package">"使用包名搜尋"</string>
+    <string name="pref_ui_package_summary">"允許使用包名搜尋應用程式"</string>
+    <string name="pref_update_self_title">"檢查更新"</string>
+    <string name="pref_update_self_desc">"爲 Aurora Store 檢查是否有可用的更新"</string>
+    <string name="toast_rate_limit">"當前工作階段的請求過多，正在嘗試請求新的登入工作階段"</string>
+    <string name="toast_token_stale">"Token 已過期，正在請求新的 Token。"</string>
+    <string name="error_session_expired">"工作階段已過期"</string>
+    <string name="list_updating_background">"在背景下載應用程式中"</string>
+    <string name="list_updating_failed">"獲取更新失敗"</string>
+    <string name="pref_updates_auto">"啓用自動更新"</string>
+    <string name="pref_updates_auto_desc">"在有更新可用時自動更新應用程式"</string>
+    <string name="account_email">"電子信箱"</string>
+    <string name="account_password">"密碼"</string>
+    <string name="account_save_password">"儲存密碼"</string>
+    <string name="toast_login_success">"登入成功"</string>
+    <string name="toast_login_failed">"登入失敗"</string>
+    <string name="disclaimer">"在 Aurora Store 使用您自己的 Google 帳戶可能導致您的帳戶被封禁，因爲 Aurora Store 違反了 Google 的 ToS 的第 3.3 條，請自行承擔使用您自己的帳戶的風險。您可用選擇使用匿名帳戶以使用一個可丟棄帳戶登入 Aurora Store。"</string>
+    <string name="menu_blacklist">"新增至黑名單"</string>
 </resources>
