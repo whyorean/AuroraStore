@@ -3,10 +3,12 @@
     <string name="account_dummy">"Anônimo"</string>
     <string name="account_dummy_desc">"Entrar usando uma conta anônima?"</string>
     <string name="account_google">"Conta do Google"</string>
-    <string name="account_logout">"Sair da Aurora?"</string>
+    <string name="account_logout">"Sair do Aurora?"</string>
     <string name="account_prompt_login">"Por favor, entre numa conta para continuar."</string>
     <string name="account_switch">"Mudar de conta"</string>
     <string name="action_accounts">"Contas"</string>
+
+    <!-- não consegui entender onde ele se encaixa -->
     <string name="action_ask">"Autorizar"</string>
     <string name="action_blacklist">"Lista negra"</string>
     <string name="action_cancel">"Cancelar"</string>
@@ -369,9 +371,25 @@ Lembre-se que fazer o download de versões arbitrárias de aplicativos não é s
     <string name="pref_update_self_desc">"Verificar pelas últimas atualizações disponíveis da Aurora Store"</string>
     <string name="toast_rate_limit">"Excesso de requisições da sessão atual, requisitando nova sessão "</string>
     <string name="toast_token_stale">"Token vencido, requisitando novo token"</string>
-    <string name="error_session_expired">"Sessão expirada "</string>
-    <string name="list_updating_background">"Baixando aplicativos em segundo plano "</string>
-    <string name="list_updating_failed">"Falha ao atualizar "</string>
-    <string name="pref_updates_auto">"Ativar atualizações automáticas "</string>
-    <string name="pref_updates_auto_desc">"Atualizar aplicativos assim que uma versão estiver disponível "</string>
+    <string name="error_session_expired">"Sessão expirada"</string>
+    <string name="list_updating_background">"Baixando aplicativos em segundo plano"</string>
+    <string name="list_updating_failed">"Falha ao atualizar"</string>
+    <string name="pref_updates_auto">"Ativar atualizações automáticas"</string>
+    <string name="pref_updates_auto_desc">"Atualizar aplicativos assim que uma versão estiver disponível"</string>
+    <string name="account_email">"Email"</string>
+    <string name="account_password">"Senha"</string>
+    <string name="account_save_password">"Salvar senha"</string>
+    <string name="toast_login_success">"Entrada efetuada com sucesso"</string>
+    <string name="toast_login_failed">"Falha ao entrar"</string>
+    <string name="disclaimer">"O uso da Aurora Store com sua própria conta do Google pode fazer com que sua conta seja colocada na lista negra ou desativada, pois a Aurora Store viola os Termos de Serviço 3.3 do Google, use por sua conta e risco. Você pode optar em ficar anônimo e usar uma conta descartável para acessar a Aurora Store"</string>
+    <string name="menu_blacklist">"Adicionar à lista negra"</string>
+    <string name="category_all">"todas as categorias"</string>
+    <string name="category_family">"Família"</string>
+    <string name="category_games">"Jogos"</string>
+    <string name="details_dev_details">"contato do desenvolvedor"</string>
+    <string name="details_more_version">"detalhes da versão"</string>
+    <string name="testing_program_opt_in_success">"parabéns, você se juntou ao programa beta"</string>
+    <string name="title_categories">"Categorias"</string>
+    <string name="review_positive">"positivo"</string>
+    <string name="review_recent">"recente"</string>
 </resources>
