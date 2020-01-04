@@ -30,7 +30,7 @@
     <string name="action_filter_misc">"Diversas"</string>
     <string name="action_filter_paid_apps">"Paga"</string>
     <string name="action_filter_rating">"Avaliações"</string>
-    <string name="action_flag">"Denunciar Aplicação"</string>
+    <string name="action_flag">"Denunciar aplicação"</string>
     <string name="action_get_local_apk">"Obter APK local"</string>
     <string name="action_home">"Início"</string>
     <string name="action_installations">"Instalações"</string>
@@ -73,8 +73,8 @@
     <string name="details_appReviewsAll">"Ler todos os comentários"</string>
     <string name="details_contains_ads">"Contém anúncios"</string>
     <string name="details_download">"Transferência"</string>
-    <string name="details_favourite_add">"Adicionar aos favoritos"</string>
-    <string name="details_favourite_remove">"Remover dos favoritos"</string>
+    <string name="details_favourite_add">"Adicionar a favoritos"</string>
+    <string name="details_favourite_remove">"Remover de favoritos"</string>
     <string name="details_install">"Instalar"</string>
     <string name="details_installing">"A instalar"</string>
     <string name="details_more">"Ver mais"</string>
@@ -92,7 +92,7 @@
     <string name="dialog_title_logout">"Sair?"</string>
     <string name="download_cancel_all">"Cancelar tudo"</string>
     <string name="download_canceled">"Cancelada"</string>
-    <string name="download_clear_completed">"Limpeza terminada"</string>
+    <string name="download_clear_completed">"Limpar terminadas"</string>
     <string name="download_completed">"Transferida"</string>
     <string name="download_failed">"Falha"</string>
     <string name="download_force_clear_all">"Forçar limpeza"</string>
@@ -126,7 +126,7 @@
     <string name="list_app_system">"Aplicação do sistema"</string>
     <string name="list_app_user">"Aplicação do utilizador"</string>
     <string name="list_blacklist">"Aplicações na lista negra"</string>
-    <string name="list_blacklist_none">"Sem aplicações na lista negra"</string>
+    <string name="list_blacklist_none">"Não há aplicações na lista negra"</string>
     <string name="list_bulk_install">"Aplicações na fila para instalação em lote"</string>
     <string name="list_empty_fav">"Sem favoritos"</string>
     <string name="list_empty_query">"Nenhuma pesquisa recente"</string>
@@ -197,13 +197,13 @@ Tenha em mente que a transferência de versões arbitrárias de aplicações nã
     <string name="pref_ui_theme_title">"Tema"</string>
     <string name="testing_program_opt_in">"Entrar"</string>
     <string name="testing_program_opt_out">"Sair"</string>
-    <string name="testing_program_review_dialog_content_hint">"Insira um comentario sobre a aplicação"</string>
+    <string name="testing_program_review_dialog_content_hint">"Introduza um comentário sobre a aplicação"</string>
     <string name="testing_program_section_opted_in_message">"As atualizações de aplicações incluirão versões beta. Se sair do programa beta desta aplicação, não receberá mais atualizações beta."</string>
     <string name="testing_program_section_opted_in_propagating_message">"Brevemente entrará no programa beta. Pode atualizar para a versão beta desta aplicação, se disponível."</string>
-    <string name="testing_program_section_opted_in_title">"Está no programa de testes"</string>
+    <string name="testing_program_section_opted_in_title">"Está no programa beta"</string>
     <string name="testing_program_section_opted_out_message">"Experimente novas funcionalidades antes que estas sejam públicas. Envie os seus comentários diretamente para o programador."</string>
     <string name="testing_program_section_opted_out_propagating_message">"Pode demorar alguns minutos até que saia do programa beta."</string>
-    <string name="testing_program_section_opted_out_title">"Aderir ao programa de testes"</string>
+    <string name="testing_program_section_opted_out_title">"Aderir ao programa beta"</string>
     <string name="title_all_apps">"Todas as aplicações"</string>
     <string name="title_home">"Aurora Store"</string>
     <string name="title_installed">"Minhas aplicações e jogos"</string>
@@ -220,7 +220,7 @@ Tenha em mente que a transferência de versões arbitrárias de aplicações nã
     <string name="pref_locale_custom_summary">"Forçar idioma personalizado da aplicação"</string>
     <string name="pref_locale_list_title">"Selecionar idioma"</string>
     <string name="tab_explore">"Explorar aplicações"</string>
-    <string name="tab_games">"Pesquisar jogos"</string>
+    <string name="tab_games">"Encontrar jogos"</string>
     <string name="tab_family">"Crianças e família"</string>
     <string name="pref_ui_tab_mode_title">"Separadores deslocáveis"</string>
     <string name="pref_ui_tab_mode_summary">"Marque para usar separadores deslocáveis, recomendado para dispositivos com baixo DPI"</string>
@@ -280,7 +280,7 @@ Tenha em mente que a transferência de versões arbitrárias de aplicações nã
     <string name="details_new_changes">"Novidades"</string>
     <string name="action_apps">"Aplicações"</string>
     <string name="action_logging_in_success">"Sessão iniciada com sucesso"</string>
-    <string name="action_token_expired">"Token expirado, a solicitar novo token"</string>
+    <string name="action_token_expired">"Token expirado, a solicitar novo..."</string>
     <string name="action_token_force_request">"Forçar pedido"</string>
     <string name="cat_top_apps">"Top de aplicações"</string>
     <string name="cat_top_categories">"Top de categorias"</string>
@@ -366,17 +366,18 @@ Tenha em mente que a transferência de versões arbitrárias de aplicações nã
     <string name="pref_ui_package_summary">"Permitir pesquisa de aplicações pelo nome do pacote"</string>
     <string name="pref_update_self_title">"Procurar por atualizações"</string>
     <string name="pref_update_self_desc">"Procurar a última atualização do Aurora Store disponível"</string>
-    <string name="toast_rate_limit">"Muitas solicitações da sessão atual, a solicitar nova inicio de sessão"</string>
-    <string name="toast_token_stale">"O 'token' está obsoleto, a solicitar novo token"</string>
+    <string name="toast_rate_limit">"Muitas solicitações na sessão atual, a solicitar nova inicio de sessão"</string>
+    <string name="toast_token_stale">"O 'token' está obsoleto, a solicitar novo..."</string>
     <string name="error_session_expired">"Sessão expirada"</string>
     <string name="list_updating_background">"Transferir aplicações em segundo plano"</string>
     <string name="list_updating_failed">"Falha ao atualizar"</string>
     <string name="pref_updates_auto">"Ativar atualizações automáticas"</string>
     <string name="pref_updates_auto_desc">"Atualizar aplicações sempre que uma nova versão estiver disponível"</string>
-    <string name="account_email">"Email"</string>
-    <string name="account_password">"Palavra-chave"</string>
-    <string name="account_save_password">"Guardar palavra-chave"</string>
+    <string name="account_email">"E-mail"</string>
+    <string name="account_password">"Palavra-passe"</string>
+    <string name="account_save_password">"Guardar palavra-passe"</string>
     <string name="toast_login_success">"Sessão iniciada com sucesso"</string>
     <string name="toast_login_failed">"Falha ao iniciar sessão"</string>
-    <string name="disclaimer">"O uso da Aurora Store com sua própria conta do Google pode fazer com que sua conta seja colocada na lista negra ou desativada, pois o Aurora Store viola os Termos de Serviço 3.3 do Google, use por sua conta e risco. Pode optar por se tornar anónimo e usar uma conta descartável para aceder ao Aurora Store"</string>
+    <string name="disclaimer">"Se utilizar Aurora Store com sua conta Google pode fazer com que sua conta seja colocada na lista negra ou mesmo desativada porque esta aplicação viola os Termos de Serviço 3.3 do Google, use por sua conta e risco. Pode optar por uma conta anónima e usar uma conta descartável para aceder à loja."</string>
+    <string name="menu_blacklist">"Adicionar à lista negra"</string>
 </resources>
