@@ -63,7 +63,7 @@ public class ReviewsActivity extends BaseActivity {
     private ReviewsSection reviewsSection;
     private SectionedRecyclerViewAdapter viewAdapter;
 
-    private GooglePlayAPI.REVIEW_SORT reviewSort = GooglePlayAPI.REVIEW_SORT.HELPFUL;
+    private GooglePlayAPI.REVIEW_SORT reviewSort = GooglePlayAPI.REVIEW_SORT.HIGHRATING;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
