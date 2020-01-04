@@ -137,9 +137,9 @@
     <string name="list_updating">"ਅਪਡੇਟ ਹੋ ਰਿਹਾ ਹੈ"</string>
     <string name="manual_download_disclaimer">"ਬੇਦਾਆਵਾ"</string>
     <string name="manual_download_incompatible">"ਗੂਗਲ ਇਸ ਐਪ ਨੂੰ ਤੁਹਾਡੇ ਮੋਬਾਇਲ ਲਈ ਅਨੁਰੂਪ ਨਹੀਂ ਮੰਨਦਾ। ਇਸਦਾ ਮਤਲਬ ਇਹ ਹੈ ਕਿ ਵਰਜ਼ਨ ਕੋਡ ਗੂਗਲ ਸਟੋਰ ਸਰਵਰ ਵੱਲੋਂ ਵਾਪਸ ਨਹੀਂ ਕੀਤਾ ਗਿਆ ਹੈ।"</string>
-    <string name="manual_download_warning">"ਇਹ ਸਫ਼ਾ ਤੁਹਾਨੂੰ ਡਾਉਨਲੋਡ ਦੇ ਲਈ ਐਪ ਦੇ ਵਰਜ਼ਨ ਨੂੰ ਖੁਦ ਚੁਣਨ ਦੀ ਅਜਾਦੀ ਦਿੰਦਾ ਹੈ।
+    <string name="manual_download_warning">"ਇਹ ਸਫ਼ਾ ਤੁਹਾਨੂੰ ਡਾਉਨਲੋਡ ਦੇ ਲਈ ਐਪ ਦੇ ਵਰਜ਼ਨ ਨੂੰ ਖੁਦ ਚੁਣਨ ਦੀ ਆਜ਼ਾਦੀ ਦਿੰਦਾ ਹੈ।
 
-ਇਹ ਗੱਲ ਧਿਆਨ ਵਿੱਚ ਰੱਖੋ ਕਿ ਐਪਸ ਦੇ ਵੱਖ-ਵੱਖ ਵਰਜ਼ਨ ਡਾਊਨਲੋਡ ਕਰਨਾ ਗੂਗਲ ਸਟੋਰ ਦੁਆਰਾ ਵਰਜਿਤ ਹੈ। ਤੁਹਾਡੀ ਸਫ਼ਲਤਾ ਸੰਸਕਰਣ ਕੋਡ ਦੇ ਅਨੁਮਾਨ 'ਤੇ ਨਿਰਭਰ ਕਰਦੀ ਹੈ। ਭਾਵੇਂ ਤੁਸੀਂ ਸਹੀ ਅਨੁਮਾਨ ਲਗਾਉਂਦੇ ਹੋ ਅਤੇ ਤੁਸੀਂ ਡਾਉਨਲੋਡ ਨੂੰ ਸ਼ੁਰੂ ਕਰਦੇ ਹੋ, ਪਰ ਤੁਹਾਨੂੰ ਇੱਕ ਗਲਤ APK ਵੀ ਪ੍ਰਾਪਤ ਹੋ ਸਕਦਾ ਹੈ।"</string>
+ਇਹ ਗੱਲ ਧਿਆਨ ਵਿੱਚ ਰੱਖੋ ਕਿ ਐਪਸ ਦੇ ਵੱਖ-ਵੱਖ ਵਰਜ਼ਨ ਡਾਊਨਲੋਡ ਕਰਨਾ ਗੂਗਲ ਸਟੋਰ ਦੁਆਰਾ ਵਰਜਿਤ ਹੈ। ਤੁਹਾਡੀ ਸਫ਼ਲਤਾ ਸੰਸਕਰਣ ਕੋਡ ਦੇ ਅਨੁਮਾਨ ਤੇ ਨਿਰਭਰ ਕਰਦੀ ਹੈ। ਭਾਵੇਂ ਤੁਸੀਂ ਸਹੀ ਅਨੁਮਾਨ ਲਗਾਉਂਦੇ ਹੋ ਅਤੇ ਤੁਸੀਂ ਡਾਉਨਲੋਡ ਨੂੰ ਸ਼ੁਰੂ ਕਰਦੇ ਹੋ, ਪਰ ਤੁਹਾਨੂੰ ਇੱਕ ਗਲਤ APK ਵੀ ਪ੍ਰਾਪਤ ਹੋ ਸਕਦਾ ਹੈ।"</string>
     <string name="menu_account">"ਸਾਰੇ ਖਾਤੇ"</string>
     <string name="menu_disclaimer">"ਬੇਦਾਅਵਾ"</string>
     <string name="menu_downloads">"ਡਾਊਨਲੋਡ ਸੂਚੀ"</string>
@@ -224,8 +224,8 @@
     <string name="pref_ui_tab_mode_summary">"Tabs ਨੂੰ ਸਕਰੋਲ ਕਰਨ ਯੋਗ ਬਣਾਉਣ ਲਈ ਚਾਲੂ ਕਰੋ।
 ਘੱਟ-DPI ਵਾਲੇ ਫੋਨਾਂ ਲਈ।"</string>
     <string name="about_app">"ਔਰੋਰਾ, ਗੂਗਲ ਪਲੇ ਸਟੋਰ ਦਾ ਇੱਕ ਓਪਨ ਸੋਰਸ ਵਿਕਲਪਕ ਹੈ।
-         ਇਹ ਤੁਹਾਨੂੰ ਐਪਸ ਡਾਊਨਲੋਡ ਕਰਨ ਦਿੰਦਾ ਹੈ, ਇੰਸਟਾਲ ਕੀਤੇ ਐਪਸ ਦੇ ਅੱਪਡੇਟਸ ਪ੍ਰਦਾਨ ਕਰਦਾ ਹੈ ਅਤੇ ਤੁਹਾਨੂੰ ਐਪਸ ਤੇ ਗੇਮਸ ਲੱਭਣ ਵਿੱਚ ਸਹਾਇਤਾ ਕਰਦਾ ਹੈ।
-         ਇਹ ਕਿਸੇ ਐਪ ਵਿੱਚ ਵਰਤੇ ਗਏ ਟਰੈਕਰਾਂ ਦੀ ਸੂਚੀ ਵੀ ਪ੍ਰਦਾਨ ਕਰਦਾ ਹੈ।"</string>
+ਇਹ ਤੁਹਾਨੂੰ ਐਪਸ ਡਾਊਨਲੋਡ ਕਰਨ ਦਿੰਦਾ ਹੈ, ਇੰਸਟਾਲ ਕੀਤੇ ਐਪਸ ਦੇ ਅੱਪਡੇਟਸ ਪ੍ਰਦਾਨ ਕਰਦਾ ਹੈ ਅਤੇ ਤੁਹਾਨੂੰ ਐਪਸ ਤੇ ਗੇਮਸ ਲੱਭਣ ਵਿੱਚ ਸਹਾਇਤਾ ਕਰਦਾ ਹੈ।
+ਇਹ ਕਿਸੇ ਐਪ ਵਿੱਚ ਵਰਤੇ ਗਏ ਟਰੈਕਰਾਂ ਦੀ ਸੂਚੀ ਵੀ ਪ੍ਰਦਾਨ ਕਰਦਾ ਹੈ।"</string>
     <string name="about_paypal">"PayPal"</string>
     <string name="about_paypal_summary">"PayPal ਉੱਤੇ ਮੈਨੂੰ ਦਾਨ ਕਰੋ।"</string>
     <string name="about_fdroid">"F-Droid"</string>
@@ -264,8 +264,8 @@
     <string name="notification_installation_auto">"ਡਾਊਨਲੋਡ ਮੁਕੰਮਲ, ਇੰਸਟਾਲ ਲਈ ਦਬਾਓ"</string>
     <string name="notification_installation_manual">"ਬੰਡਲ APK, ਖੁੱਦ ਇਸਨੂੰ ਚੁਣੋ"</string>
     <string name="title_search_result">"ਨਤੀਜੇ"</string>
-    <string name="action_recheck">"ਮੁੜ ਜਾਂਚ"</string>
-    <string name="action_recheck_ing">"ਮੁੜ ਜਾਂਚ ਚਾਲੂ"</string>
+    <string name="action_recheck">"ਮੁੜ ਜਾਂਚ ਕਰੋ"</string>
+    <string name="action_recheck_ing">"ਮੁੜ ਜਾਂਚ ਜਾਰੀ......"</string>
     <string name="pref_install_type_summary">"ਪੈਕੇਜ ਇੰਸਟਾਲ ਕਰਨ ਲਈ ਮੂਲ ਇੰਸਟਾਲਰ ਦੀ ਵਰਤੋਂ ਕਰੋ, ਬੰਡਲਡ APK ਇੰਸਟਾਲ ਨਹੀਂ ਹੋਵੇਗੀ"</string>
     <string name="pref_install_type_title">"ਮੂਲ ਇੰਸਟਾਲਰ ਲਾਗੂ ਕਰੋ"</string>
     <string name="pref_ui_tab_default_title">"ਮੂਲ Tab ਚੁਣੋ"</string>
@@ -299,9 +299,9 @@
     <string name="pref_ui_transparent">"ਪਾਰਦਰਸ਼ੀ ਸ਼ੈਲੀ"</string>
     <string name="pref_ui_transparent_summary">"ਸ਼੍ਰੇਣੀ ਅਤੇ ਲਿੰਕ ਦ੍ਰਿਸ਼ਾਂ ਲਈ ਪਾਰਦਰਸ਼ੀ ਕਾਰਡ ਸ਼ੈਲੀ ਦੀ ਵਰਤੋਂ ਕਰੋ"</string>
     <string name="pref_install_delete_summary">"Rooted,ਐਂਡਰਾਇਡ Pie + ਚਲਾ ਰਹੇ ਡਿਵਾਈਸਾਂ 'ਤੇ APK ਆਪਣੇ ਆਪ ਇੰਸਟਾਲ ਹੋਣ ਤੋਂ ਬਾਅਦ ਮਿਟ ਜਾਂਦੇ ਹਨ"</string>
-    <string name="action_loading">"ਲੋਡ ਹੋ ਰਿਹਾ ਹੈ"</string>
+    <string name="action_loading">"ਲੋਡ ਹੋ ਰਿਹਾ ਹੈ...."</string>
     <string name="pref_default">"ਮੂਲ"</string>
-    <string name="toast_loading_apps">"ਐਪਸ ਲੋਡ ਹੋ ਰਹੇ ਹਨ"</string>
+    <string name="toast_loading_apps">"ਐਪਸ ਲੋਡ ਹੋ ਰਹੇ ਹਨ...."</string>
     <string name="dialog_2FA_title">"੨ ਫੈਕਟਰ ਖਾਤਾ ਪ੍ਰਮਾਣਿਕਤਾ"</string>
     <string name="dialog_2FA_desc">"ਜਾਪਦਾ ਹੈ ਤੁਸੀਂ 2FA ਲਾਗੂ ਕੀਤਾ ਹੈ, ਕਿਰਪਾ ਕਰਕੇ ਇੱਕ ਐਪ ਪਾਸਵਰਡ ਤਿਆਰ ਕਰੋ ਅਤੇ ਇਸ ਪਾਸਵਰਡ ਨੂੰ ਲੌਗ-ਇਨ ਲਈ ਵਰਤੋ।"</string>
     <string name="dialog_2FA_positive">"ਪਾਸਵਰਡ ਬਣਾਓ"</string>
@@ -312,14 +312,14 @@
     <string name="dialog_geores_desc">"ਜਿਸ ਐਪ ਨੂੰ ਡਾਊਨਲੋਡ ਕਰਨ ਦੀ ਕੋਸ਼ਿਸ਼ ਕਰ ਰਹੇ ਹੋ, ਉਹ ਤੁਹਾਡੇ ਦੇਸ਼ ਵਿੱਚ ਉਪਲਬਧ ਨਹੀਂ ਹੈ, ਡਾਊਨਲੋਡ ਕਰਨ ਲਈ \"ਧੋਖਾ\" ਸੈਟਿੰਗਾਂ ਵਿਚੋਂ \" ਨਕਲੀ ਥਾਂ\" ਵਰਤੋਂ।"</string>
     <string name="dialog_incompat_title">"ਐਪ ਅਨੁਕੂਲ ਨਹੀਂ"</string>
     <string name="dialog_incompat_desc">"ਜੋ ਐਪ ਤੁਸੀਂ ਡਾਊਨਲੋਡ ਕਰਨ ਦੀ ਕੋਸ਼ਿਸ਼ ਕਰ ਰਹੇ ਹੋ ਉਹ ਤੁਹਾਡੀ ਡਿਵਾਈਸ ਨਾਲ ਅਨੁਕੂਲ ਨਹੀਂ ਹੈ, ਡਾਊਨਲੋਡ ਕਰਨ ਲਈ \"ਧੋਖਾ\" ਸੈਟਿੰਗਾਂ ਵਿਚੋਂ \"ਨਕਲੀ ਡਿਵਾਈਸ\" ਵਰਤੋਂ।"</string>
-    <string name="pref_install_mode_services">"ਔਰੋਰਾ ਸੇਵਾਵਾਂ"</string>
-    <string name="pref_install_mode_no_services">"ਔਰੋਰਾ ਸੇਵਾਵਾਂ ਇੰਸਟਾਲ ਨਹੀਂ ਹਨ। ਕਿਰਪਾ ਕਰਕੇ ਸੇਵਾਵਾਂ ਇੰਸਟਾਲ ਕਰੋ"</string>
-    <string name="pref_install_mode_offline_services">"ਔਰੋਰਾ ਸੇਵਾਵਾਂ ਜੁੜੀਆਂ ਨਹੀਂ ਹਨ, ਕਿਰਪਾ ਕਰਕੇ ਯਕੀਨੀ ਬਣਾਓ ਕਿ ਇਹ ਚਾਲੂ ਹਨ ਤੇ ਐਪ ਦਾ ਸਹੀ ਵਰਜ਼ਨ ਹੈ"</string>
+    <string name="pref_install_mode_services">"ਔਰੋਰਾ ਸਰਵਿਸਿਜ਼"</string>
+    <string name="pref_install_mode_no_services">"ਔਰੋਰਾ ਸਰਵਿਸਿਜ਼ ਇੰਸਟਾਲ ਨਹੀਂ ਹਨ। ਕਿਰਪਾ ਕਰਕੇ ਸੇਵਾਵਾਂ ਇੰਸਟਾਲ ਕਰੋ"</string>
+    <string name="pref_install_mode_offline_services">"ਔਰੋਰਾ ਸਰਵਿਸਿਜ਼ ਜੁੜੀਆਂ ਨਹੀਂ ਹਨ, ਕਿਰਪਾ ਕਰਕੇ ਯਕੀਨੀ ਬਣਾਓ ਕਿ ਇਹ ਚਾਲੂ ਹਨ ਤੇ ਐਪ ਦਾ ਸਹੀ ਵਰਜ਼ਨ ਹੈ"</string>
     <string name="action_info">"ਐਪ ਬਾਰੇ"</string>
     <string name="download_waiting">"ਉਡੀਕ ਕਰੋ"</string>
     <string name="pref_services_title">"ਔਰੋਰਾ ਸਰਵਿਸਿਜ਼"</string>
     <string name="pref_services_desc">"ਔਰੋਰਾ ਸਰਵਿਸਿਜ਼ ਚਲਾਓ"</string>
-    <string name="pref_services_desc_alt">"ਔਰੋਰਾ ਸਰਵਿਸਿਜ਼ ਅਣਉਪਲਬਧ। ਸਰਵਿਸ ਰਿਪੌਜ਼ੀਟਰੀ ਤੋ ਵਧੇਰੇ ਜਾਣਕਾਰੀ ਲਈ ਦਬਾਓ"</string>
+    <string name="pref_services_desc_alt">"ਔਰੋਰਾ ਸਰਵਿਸਿਜ਼ ਅਣਉਪਲਬਧ। ਸਰਵਿਸ ਰਿਪੌਜ਼ੀਟਰੀ ਤੋਂ ਵਧੇਰੇ ਜਾਣਕਾਰੀ ਲਈ ਦਬਾਓ"</string>
     <string name="pref_custom_tokenizer">"ਕਸਟਮ ਟੋਕਨਾਇਜ਼ਰ ਚਲਾਓ"</string>
     <string name="pref_custom_tokenizer_url">"ਟੋਕਨਾਇਜ਼ਰ URL"</string>
     <string name="action_export_device">"ਡਿਵਾਈਸ ਜਾਣਕਾਰੀ Export ਕਰੋ"</string>
@@ -336,10 +336,10 @@
     <string name="installer_status_unknown">"ਅਣਜਾਣ"</string>
     <string name="installer_status_user_action">"ਯੂਸਰ ਵਲੋਂ ਪੁਸ਼ਟੀ ਦੀ ਉਡੀਕ..."</string>
     <string name="pref_downloader_internal">"ਐਪਸ ਇੰਟਰਨਲ ਸਟੋਰੇਜ ਵਿੱਚ ਡਾਊਨਲੋਡ ਕਰੋ"</string>
-    <string name="pref_downloader_internal_desc">"ਜੇਕਰ ਇਹ ਚਾਲੂ ਹੈ, ਤਾਂ ਔਰੋਰਾ ਸਰਵਿਸਜ਼ ਰਾਹੀਂ ਐਪਸ ਇੰਸਟਾਲ ਨਹੀਂ ਹੋ ਸਕਦੇ"</string>
+    <string name="pref_downloader_internal_desc">"ਜੇਕਰ ਇਹ ਚਾਲੂ ਹੈ, ਤਾਂ ਔਰੋਰਾ ਸਰਵਿਸਿਜ਼ ਰਾਹੀਂ ਐਪਸ ਇੰਸਟਾਲ ਨਹੀਂ ਹੋ ਸਕਦੇ"</string>
     <string name="pref_install_profile_summary">"ਐਪਸ ਇੰਸਟਾਲ ਕਰਨ ਲਈ ਪ੍ਰੋਫਾਈਲ ਚੁਣੋ, ਇਹ ਸਿਰਫ Root ਇੰਸਟਾਲ ਵਿਧੀ ਨਾਲ ਕੰਮ ਕਰਦਾ ਹੈ"</string>
     <string name="pref_install_profile_title">"ਇੰਸਟਾਲੇਸ਼ਨ ਪ੍ਰੋਫਾਇਲਸ (ਪ੍ਰਯੋਗ ਅਧੀਨ)"</string>
-    <string name="pref_install_mode_internal_warn">"ਤੁਸੀਂ ਡਾਊਨਲੋਡ ਵਾਸਤੇ ਇੰਟਰਨਲ ਸਟੋਰੇਜ ਚੁਣੀ ਹੈ, ਔਰੋਰਾ ਸਰਵਿਸਜ਼ ਨੂੰ ਵਰਤਣ ਲਈ ਇਸਨੂੰ ਬੰਦ ਕਰੋ"</string>
+    <string name="pref_install_mode_internal_warn">"ਤੁਸੀਂ ਡਾਊਨਲੋਡ ਵਾਸਤੇ ਇੰਟਰਨਲ ਸਟੋਰੇਜ ਚੁਣੀ ਹੈ, ਔਰੋਰਾ ਸਰਵਿਸਿਜ਼ ਨੂੰ ਵਰਤਣ ਲਈ ਇਸਨੂੰ ਬੰਦ ਕਰੋ"</string>
     <string name="pref_updates_extended">"Extended ਅਪਡੇਟਾਂ"</string>
     <string name="pref_updates_extended_desc">"ਬੰਦ ਕੀਤੀਆਂ ਗਈਆਂ ਐਪਸ ਲਈ ਵੀ ਅੱਪਡੇਟ ਲੱਭੋ"</string>
     <string name="pref_caching_strategy">"ਪਿਕਚਰ ਕੈਚਿੰਗ ਰਣਨੀਤੀ"</string>
@@ -379,4 +379,32 @@
     <string name="toast_login_failed">"ਲੌਗ-ਇਨ ਅਸਫਲ"</string>
     <string name="disclaimer">"ਆਪਣੇ ਖੁੱਦ ਦੇ ਗੂਗਲ ਖਾਤੇ ਨਾਲ ਔਰੋਰਾ ਸਟੋਰ ਦੀ ਵਰਤੋਂ ਕਰਨ ਨਾਲ ਤੁਹਾਡੇ ਖਾਤੇ ਨੂੰ ਗੂਗਲ ਦੁਆਰਾ ਬਲੈਕ-ਲਿਸਟ ਜਾਂ ਅਯੋਗ ਕੀਤਾ ਜਾ ਸਕਦਾ ਹੈ, ਕਿਉਂਕਿ ਔਰੋਰਾ ਸਟੋਰ ਗੂਗਲ ਸੇਵਾਵਾਂ ਦੀਆਂ ਸ਼ਰਤਾਂ 3.3 ਅਨੁਸਾਰ ਉਲੰਘਣਾ ਕਰਦਾ ਹੈ, ਆਪਣੇ ਜੋਖਮ 'ਤੇ ਖੁੱਦ ਦਾ ਗੂਗਲ ਖਾਤਾ ਵਰਤੋਂ.  ਤੁਸੀਂ ਲੌਗ-ਇਨ ਵਾਸਤੇ ਅਗਿਆਤ ਖਾਤੇ ਦੀ ਵੀ ਚੋਣ ਕਰ ਸਕਦੇ ਹੋ ਅਤੇ ਜਾਂ ਆਪਣਾ ਕੋਈ ਜਾਅਲੀ ਗੂਗਲ ਖਾਤਾ ਵੀ ਵਰਤ ਸਕਦੇ ਹੋ।"</string>
     <string name="menu_blacklist">"ਬਲੈਕ ਲਿਸਟ ਕਰੋ"</string>
+    <string name="action_unknown"></string>
+    <string name="category_all"></string>
+    <string name="category_family"></string>
+    <string name="category_games"></string>
+    <string name="details_dev_details"></string>
+    <string name="details_dev_email"></string>
+    <string name="details_dev_address"></string>
+    <string name="details_dev_website"></string>
+    <string name="details_more_updated"></string>
+    <string name="details_more_version"></string>
+    <string name="exodus_noReport"></string>
+    <string name="list_empty_reviews"></string>
+    <string name="testing_program_opt_in_success"></string>
+    <string name="testing_program_opt_in_failed"></string>
+    <string name="testing_program_opt_out_success"></string>
+    <string name="testing_program_opt_out_failed"></string>
+    <string name="title_categories"></string>
+    <string name="toast_api_all_ok"></string>
+    <string name="toast_api_build_retrying"></string>
+    <string name="toast_api_build_failed"></string>
+    <string name="toast_api_build_api"></string>
+    <string name="toast_api_token_validity"></string>
+    <string name="review_positive"></string>
+    <string name="review_recent"></string>
+    <string name="review_helpful"></string>
+    <string name="request_failed"></string>
+    <string name="notification_channel_alert"></string>
+    <string name="notification_channel_general"></string>
 </resources>
