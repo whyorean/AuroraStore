@@ -362,8 +362,16 @@
     <string name="pref_update_self_desc">"Aurora Store の最新の利用可能なアップデートを確認"</string>
     <string name="toast_rate_limit">"現在のセッションから多量のリクエストがありました。新しいログインセッションを要求しています"</string>
     <string name="toast_token_stale">"トークンが失効しました。新しいトークンを要求しています"</string>
+    <string name="error_session_expired">"セッションの期限が切れました"</string>
     <string name="list_updating_background">"バックグラウンドでダウンロード中のアプリ"</string>
     <string name="list_updating_failed">"アップデートに失敗"</string>
     <string name="pref_updates_auto">"自動アップデートを有効化"</string>
     <string name="pref_updates_auto_desc">"新しいバージョンが利用可能になった場合にアプリを更新"</string>
+    <string name="account_email">"Email"</string>
+    <string name="account_password">"パスワード"</string>
+    <string name="account_save_password">"パスワードを保存"</string>
+    <string name="toast_login_success">"ログインに成功しました"</string>
+    <string name="toast_login_failed">"ログインに失敗しました"</string>
+    <string name="disclaimer">"Aurora Store をあなた自身の Google アカウントで利用した場合、Aurora Store が Google の利用規約 3.3 に違反しているためにアカウントがブラックリストに追加されたり無効化される可能性があります。自己責任で利用してください。また、匿名で利用することで一時的なアカウントで Aurora Store にログインすることも可能です"</string>
+    <string name="menu_blacklist">"ブラックリストに追加"</string>
 </resources>
