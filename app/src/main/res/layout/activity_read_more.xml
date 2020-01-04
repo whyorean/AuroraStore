@@ -99,6 +99,34 @@
                 android:layout_marginTop="@dimen/margin_medium"
                 android:background="@drawable/generic_padded_bg"
                 android:orientation="vertical" />
+
+            <RelativeLayout
+                android:id="@+id/content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:background="@drawable/generic_padded_bg">
+
+                <TextView
+                    android:id="@+id/files_header"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin_xsmall"
+                    android:text="@string/details_files"
+                    android:textAppearance="@style/TextAppearance.Aurora.SubTitle"
+                    android:textColor="?android:attr/colorAccent" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@id/files_header"
+                    android:clipToPadding="false"
+                    android:scrollbarStyle="outsideOverlay"
+                    android:scrollbars="vertical"
+                    tools:itemCount="2"
+                    tools:listitem="@layout/item_three_rows" />
+            </RelativeLayout>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

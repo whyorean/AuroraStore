@@ -42,6 +42,7 @@ public class AppDetailTask {
     public App getInfo(String packageName) throws Exception {
         DetailsResponse response = api.details(packageName);
         App app = AppBuilder.build(response);
+        Log.writeToFile(context,response);
         if (PackageUtil.isInstalled(context, app))
             app.setInstalled(true);
         return app;

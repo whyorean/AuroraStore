@@ -4,9 +4,7 @@ import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 
-import com.aurora.store.Constants;
 import com.aurora.store.R;
 import com.aurora.store.model.App;
 import com.aurora.store.sheet.PermissionBottomSheet;
@@ -28,11 +26,9 @@ public class AppLinks extends AbstractDetails {
     @Override
     public void draw() {
         linkLayout.removeAllViews();
-        setupShare();
         setupDevApps();
         setupPermissions();
         setupAppPreferences();
-        setupPlayLink();
     }
 
     private void setupDevApps() {
@@ -61,22 +57,6 @@ public class AppLinks extends AbstractDetails {
         linkLayout.addView(permLinkView);
     }
 
-    private void setupShare() {
-        DetailsLinkView shareLinkView = new DetailsLinkView(context);
-        shareLinkView.setLinkText(context.getString(R.string.link_share));
-        shareLinkView.setLinkImageId(R.drawable.app_share);
-        shareLinkView.setColor(R.color.colorPurple);
-        shareLinkView.setOnClickListener(v -> {
-            Intent i = new Intent(Intent.ACTION_SEND);
-            i.setType("text/plain");
-            i.putExtra(Intent.EXTRA_SUBJECT, app.getDisplayName());
-            i.putExtra(Intent.EXTRA_TEXT, Constants.APP_DETAIL_URL + app.getPackageName());
-            context.startActivity(Intent.createChooser(i, activity.getString(R.string.details_share)));
-        });
-        shareLinkView.build();
-        linkLayout.addView(shareLinkView);
-    }
-
     private void setupAppPreferences() {
         if (!app.isInstalled()) {
             return;
@@ -95,22 +75,5 @@ public class AppLinks extends AbstractDetails {
         });
         prefLinkView.build();
         linkLayout.addView(prefLinkView);
-    }
-
-    private void setupPlayLink() {
-        if (!isPlayStoreInstalled() || !app.isInPlayStore()) {
-            return;
-        }
-        DetailsLinkView playLinkView = new DetailsLinkView(context);
-        playLinkView.setLinkText(context.getString(R.string.link_playstore));
-        playLinkView.setLinkImageId(R.drawable.app_playstore);
-        playLinkView.setColor(R.color.colorGreen);
-        playLinkView.setOnClickListener(v -> {
-            Intent i = new Intent(Intent.ACTION_VIEW);
-            i.setData(Uri.parse(Constants.APP_DETAIL_URL + app.getPackageName()));
-            context.startActivity(i);
-        });
-        playLinkView.build();
-        linkLayout.addView(playLinkView);
     }
 }

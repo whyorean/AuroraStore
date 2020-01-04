@@ -23,6 +23,7 @@ package com.aurora.store.ui.details;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.Menu;
@@ -71,6 +72,7 @@ import io.reactivex.schedulers.Schedulers;
 
 public class DetailsActivity extends BaseActivity {
 
+    private static final String PLAY_STORE_PACKAGE_NAME = "com.android.vending";
     public static App app;
 
     @BindView(R.id.toolbar)
@@ -202,6 +204,21 @@ public class DetailsActivity extends BaseActivity {
             case R.id.action_blacklist:
                 new BlacklistManager(this).add(packageName);
                 return true;
+            case R.id.action_share:
+                Intent i = new Intent(Intent.ACTION_SEND);
+                i.setType("text/plain");
+                i.putExtra(Intent.EXTRA_SUBJECT, app.getDisplayName());
+                i.putExtra(Intent.EXTRA_TEXT, Constants.APP_DETAIL_URL + app.getPackageName());
+                startActivity(Intent.createChooser(i, getString(R.string.details_share)));
+                return true;
+            case R.id.action_playstore:
+                if (!isPlayStoreInstalled() || !app.isInPlayStore()) {
+                    return false;
+                }
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse(Constants.APP_DETAIL_URL + app.getPackageName()));
+                startActivity(intent);
+                return true;
         }
         return super.onOptionsItemSelected(menuItem);
     }
@@ -275,5 +292,9 @@ public class DetailsActivity extends BaseActivity {
             app.setInstalled(true);
         if (actionButton != null)
             actionButton.draw();
+    }
+
+    protected boolean isPlayStoreInstalled() {
+        return PackageUtil.isInstalled(this, PLAY_STORE_PACKAGE_NAME);
     }
 }

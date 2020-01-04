@@ -37,4 +37,10 @@
     <item
         android:id="@+id/action_blacklist"
         android:title="@string/action_blacklist" />
+    <item
+        android:id="@+id/action_share"
+        android:title="@string/link_share" />
+    <item
+        android:id="@+id/action_playstore"
+        android:title="@string/link_playstore" />
 </menu>

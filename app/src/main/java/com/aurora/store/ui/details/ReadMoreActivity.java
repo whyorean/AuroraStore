@@ -24,21 +24,26 @@ import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.LinearLayout;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.aurora.store.R;
 import com.aurora.store.model.App;
+import com.aurora.store.section.FilesSection;
 import com.aurora.store.ui.single.activity.BaseActivity;
 import com.aurora.store.ui.view.MoreLayout;
 import com.aurora.store.util.TextUtil;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import io.github.luizgrp.sectionedrecyclerviewadapter.SectionedRecyclerViewAdapter;
 
 public class ReadMoreActivity extends BaseActivity {
 
@@ -51,6 +56,8 @@ public class ReadMoreActivity extends BaseActivity {
     AppCompatTextView contentReadMore;
     @BindView(R.id.layout_more)
     LinearLayout layoutMore;
+    @BindView(R.id.recycler)
+    RecyclerView recyclerView;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -63,6 +70,7 @@ public class ReadMoreActivity extends BaseActivity {
         }
         setupActionBar();
         setupMore();
+        setupRecycler();
     }
 
     @Override
@@ -127,5 +135,19 @@ public class ReadMoreActivity extends BaseActivity {
             moreLayout.setValue(app.getOfferDetails().get(key));
             layoutMore.addView(moreLayout);
         }
+    }
+
+    public void setupRecycler() {
+        if (app.getFileMetadataList() == null)
+            return;
+
+        FilesSection section = new FilesSection(this, position -> {
+        });
+        section.addData(app.getFileMetadataList());
+        SectionedRecyclerViewAdapter adapter = new SectionedRecyclerViewAdapter();
+        adapter.addSection(section);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
+        recyclerView.setVisibility(View.VISIBLE);
     }
 }

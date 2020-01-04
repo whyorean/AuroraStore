@@ -24,6 +24,7 @@ package com.aurora.store.model;
 
 import com.aurora.store.R;
 import com.dragons.aurora.playstoreapiv2.Features;
+import com.dragons.aurora.playstoreapiv2.FileMetadata;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 
 import java.util.ArrayList;
@@ -43,6 +44,7 @@ public class App {
     private Features features;
     private ImageSource pageBackgroundImage;
     private List<String> screenshotUrls = new ArrayList<>();
+    private List<FileMetadata> fileMetadataList = new ArrayList<>();
     private Map<String, String> offerDetails = new HashMap<>();
     private Map<String, String> relatedLinks = new HashMap<>();
     private Rating rating = new Rating();

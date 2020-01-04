@@ -87,6 +87,7 @@
     <string name="details_dev_website">"Website"</string>
     <string name="details_favourite_add">"Add to favourites"</string>
     <string name="details_favourite_remove">"Remove from favourites"</string>
+    <string name="details_files">"File details"</string>
     <string name="details_install">"Install"</string>
     <string name="details_installing">"Installing"</string>
     <string name="details_more">"Read more"</string>

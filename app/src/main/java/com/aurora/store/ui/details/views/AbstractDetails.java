@@ -34,15 +34,12 @@ import com.aurora.store.ui.details.DetailsActivity;
 import com.aurora.store.ui.devapps.DevAppsActivity;
 import com.aurora.store.ui.single.activity.ManualDownloadActivity;
 import com.aurora.store.util.Log;
-import com.aurora.store.util.PackageUtil;
 import com.aurora.store.util.ViewUtil;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import butterknife.ButterKnife;
 
 public abstract class AbstractDetails {
-
-    static private final String PLAY_STORE_PACKAGE_NAME = "com.android.vending";
 
     protected DetailsActivity activity;
     protected Context context;
@@ -105,10 +102,6 @@ public abstract class AbstractDetails {
         for (int viewId : viewIds) {
             activity.findViewById(viewId).setVisibility(View.VISIBLE);
         }
-    }
-
-    protected boolean isPlayStoreInstalled() {
-        return PackageUtil.isInstalled(activity, PLAY_STORE_PACKAGE_NAME);
     }
 
     protected void showPurchaseDialog() {

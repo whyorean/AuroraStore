@@ -20,13 +20,14 @@
 
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/coordinator"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <include layout="@layout/toolbar_main" />
 
-    <androidx.core.widget.NestedScrollView xmlns:tools="http://schemas.android.com/tools"
+    <androidx.core.widget.NestedScrollView
         android:id="@+id/scroll_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -58,7 +59,9 @@
                 android:id="@+id/app_desc_short"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/margin_medium"
+                android:layout_marginStart="@dimen/margin_medium"
+                android:layout_marginEnd="@dimen/margin_medium"
+                android:layout_marginBottom="@dimen/margin_medium"
                 android:background="@drawable/generic_bg"
                 android:gravity="center"
                 android:minHeight="?actionBarSize"
@@ -68,7 +71,7 @@
                 android:textAppearance="@style/TextAppearance.Aurora.Line1"
                 android:textIsSelectable="true"
                 android:visibility="invisible"
-                app:autoSizeMaxTextSize="14sp"
+                app:autoSizeMaxTextSize="16sp"
                 app:autoSizeMinTextSize="12sp"
                 app:autoSizeTextType="uniform"
                 tools:visibility="visible" />
@@ -97,12 +100,13 @@
                 android:id="@+id/recycler"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_small"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:layout_marginBottom="@dimen/margin_medium"
+                android:clipToPadding="false"
                 android:orientation="horizontal"
-                android:visibility="invisible"
-                tools:itemCount="5"
-                tools:listitem="@layout/item_screenshots_small"
-                tools:visibility="visible" />
+                android:paddingStart="@dimen/margin_small"
+                android:paddingEnd="@dimen/margin_small"
+                android:visibility="invisible" />
 
             <!-- Reviews -->
             <include layout="@layout/include_details_reviews" />
@@ -115,7 +119,9 @@
                 android:id="@+id/app_video"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/margin_medium"
+                android:layout_marginStart="@dimen/margin_medium"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:layout_marginEnd="@dimen/margin_medium"
                 android:visibility="gone">
 
                 <androidx.appcompat.widget.AppCompatImageView
