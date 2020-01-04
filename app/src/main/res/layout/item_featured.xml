@@ -57,8 +57,7 @@
             android:drawablePadding="@dimen/margin_small"
             android:gravity="center"
             android:text="@string/action_installed"
-            android:textAppearance="@style/TextAppearance.AppCompat.Small"
-            android:textSize="12sp"
+            android:textAppearance="@style/TextAppearance.Aurora.Line3"
             android:textStyle="normal"
             android:visibility="gone" />
     </RelativeLayout>

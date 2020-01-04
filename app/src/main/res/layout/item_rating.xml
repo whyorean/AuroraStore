@@ -31,9 +31,8 @@
         android:layout_centerVertical="true"
         android:layout_marginStart="@dimen/margin_small"
         android:layout_marginEnd="@dimen/margin_small"
-        android:textAppearance="@style/TextAppearance.Aurora.Body"
+        android:textAppearance="@style/TextAppearance.Aurora.Line2"
         android:textColor="?android:attr/textColorPrimary"
-        android:textSize="14sp"
         android:textStyle="bold" />
 
     <ProgressBar

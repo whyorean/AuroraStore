@@ -60,8 +60,7 @@
                     android:layout_below="@+id/device_avatar"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="@dimen/margin_normal"
-                    android:textAppearance="@style/TextAppearance.Aurora.Title"
-                    android:textSize="20sp" />
+                    android:textAppearance="@style/TextAppearance.Aurora.Title" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/device_info"

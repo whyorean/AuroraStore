@@ -4,6 +4,7 @@ import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import com.aurora.store.Constants;
 import com.aurora.store.R;

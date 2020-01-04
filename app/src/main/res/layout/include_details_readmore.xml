@@ -36,8 +36,7 @@
         android:layout_centerVertical="true"
         android:layout_toStartOf="@id/img_more"
         android:text="@string/details_more"
-        android:textAppearance="@style/TextAppearance.Aurora.SubTitle"
-        android:textSize="18sp" />
+        android:textAppearance="@style/TextAppearance.Aurora.SubTitle" />
 
     <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/img_more"

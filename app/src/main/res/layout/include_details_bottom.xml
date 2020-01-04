@@ -23,7 +23,7 @@
     android:layout_height="wrap_content"
     android:layout_marginTop="@dimen/margin_normal"
     android:clipToPadding="false"
-    android:gravity="center_horizontal"
+    android:layout_gravity="center_horizontal"
     android:paddingStart="@dimen/margin_small"
     android:paddingEnd="@dimen/margin_small"
     android:scrollbars="none">
@@ -32,6 +32,5 @@
         android:id="@+id/layout_link"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
         android:orientation="horizontal" />
 </HorizontalScrollView>

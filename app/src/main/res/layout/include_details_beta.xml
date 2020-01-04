@@ -54,7 +54,7 @@
             android:layout_gravity="center_vertical|start"
             android:autoLink="web|email"
             android:gravity="start"
-            android:textSize="14sp" />
+            android:textAppearance="@style/TextAppearance.Aurora.Line2" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/beta_subscribe_button"

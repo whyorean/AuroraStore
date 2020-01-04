@@ -57,7 +57,7 @@
             android:layout_height="wrap_content"
             android:text="@string/exodus_powered"
             android:textAlignment="viewStart"
-            android:textSize="12sp" />
+            android:textAppearance="@style/TextAppearance.Aurora.Line3" />
     </LinearLayout>
 
     <RelativeLayout
@@ -78,9 +78,9 @@
             android:ellipsize="end"
             android:maxLines="1"
             android:textAlignment="viewStart"
-            android:textSize="14sp"
+            android:textAppearance="@style/TextAppearance.Aurora.Line2"
             app:autoSizeMaxTextSize="14sp"
-            app:autoSizeMinTextSize="10sp"
+            app:autoSizeMinTextSize="12sp"
             app:autoSizeTextType="uniform" />
 
         <com.google.android.material.button.MaterialButton

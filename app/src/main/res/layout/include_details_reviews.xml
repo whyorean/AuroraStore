@@ -65,7 +65,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_margin="@dimen/margin_xxsmall"
                 android:textAppearance="@style/TextAppearance.Aurora.Title"
-                android:textSize="36sp"
+                android:textSize="28sp"
                 android:textStyle="normal"
                 tools:text="4.5" />
 
@@ -118,15 +118,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/details_rate_this_app"
-                android:textAppearance="@style/TextAppearance.Aurora.SubTitle"
-                android:textSize="18sp" />
+                android:textAppearance="@style/TextAppearance.Aurora.SubTitle" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_xxsmall"
                 android:text="@string/details_why_rate_this_app"
-                android:textSize="12sp" />
+                android:textAppearance="@style/TextAppearance.Aurora.Line3" />
 
             <RatingBar
                 android:id="@+id/user_stars"
@@ -151,14 +150,13 @@
                 android:id="@+id/user_title"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:textAppearance="@style/TextAppearance.Aurora.Body" />
+                android:textAppearance="@style/TextAppearance.Aurora.Line2" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/user_comment"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:textAppearance="@style/TextAppearance.Aurora.Body"
-                android:textSize="14sp" />
+                android:textAppearance="@style/TextAppearance.Aurora.Line2" />
         </LinearLayout>
 
         <com.google.android.material.chip.Chip
@@ -187,8 +185,7 @@
             android:layout_centerVertical="true"
             android:layout_toStartOf="@id/img_more"
             android:text="@string/details_appReviewsAll"
-            android:textAppearance="@style/TextAppearance.Aurora.SubTitle"
-            android:textSize="18sp" />
+            android:textAppearance="@style/TextAppearance.Aurora.SubTitle" />
 
         <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/img_more"

@@ -50,6 +50,5 @@
         android:layout_marginTop="@dimen/margin_small"
         android:layout_marginBottom="@dimen/margin_normal"
         android:text="@string/account_prompt_login"
-        android:textAppearance="@style/TextAppearance.Aurora.Line1"
-        android:textSize="14sp" />
+        android:textAppearance="@style/TextAppearance.Aurora.Line2" />
 </RelativeLayout>

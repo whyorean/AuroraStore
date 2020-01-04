@@ -38,8 +38,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/margin_normal"
         android:text="@string/action_accounts"
-        android:textAppearance="@style/TextAppearance.Aurora.Toolbar.Title"
-        android:textSize="20sp" />
+        android:textAppearance="@style/TextAppearance.Aurora.Toolbar.Title" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/acc_desc"
@@ -50,8 +49,7 @@
         android:layout_marginTop="@dimen/margin_small"
         android:layout_marginBottom="@dimen/margin_normal"
         android:text="@string/account_prompt_login"
-        android:textAppearance="@style/TextAppearance.Aurora.Body"
-        android:textSize="14sp" />
+        android:textAppearance="@style/TextAppearance.Aurora.Line2" />
 
 
     <androidx.core.widget.NestedScrollView

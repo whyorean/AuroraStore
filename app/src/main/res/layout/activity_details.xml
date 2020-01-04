@@ -65,11 +65,10 @@
                 android:padding="@dimen/margin_small"
                 android:text="@string/details_no_changes"
                 android:textAlignment="center"
-                android:textColor="?android:attr/textColorPrimary"
+                android:textAppearance="@style/TextAppearance.Aurora.Line1"
                 android:textIsSelectable="true"
-                android:textSize="16sp"
                 android:visibility="invisible"
-                app:autoSizeMaxTextSize="16sp"
+                app:autoSizeMaxTextSize="14sp"
                 app:autoSizeMinTextSize="12sp"
                 app:autoSizeTextType="uniform"
                 tools:visibility="visible" />
@@ -87,7 +86,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:visibility="invisible"
-                    tools:visibility="visible"/>
+                    tools:visibility="visible" />
             </HorizontalScrollView>
 
             <!-- Read More -->
@@ -159,7 +158,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
-                    android:textAppearance="@style/TextAppearance.Aurora.Line1" />
+                    android:textAppearance="@style/TextAppearance.Aurora.Line2"
+                    android:textColor="?android:attr/colorAccent" />
             </RelativeLayout>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

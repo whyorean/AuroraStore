@@ -55,7 +55,7 @@
         android:ellipsize="end"
         android:maxLines="1"
         android:textAlignment="viewStart"
-        android:textSize="12sp"
+        android:textAppearance="@style/TextAppearance.Aurora.Line3"
         tools:text="6 MB" />
 
     <androidx.appcompat.widget.AppCompatTextView

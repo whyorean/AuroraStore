@@ -50,7 +50,6 @@
             android:requiresFadingEdge="horizontal"
             android:singleLine="true"
             android:textAppearance="@style/TextAppearance.Aurora.Title"
-            android:textSize="22sp"
             tools:text="@string/action_unknown" />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -59,9 +58,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/displayName"
             android:singleLine="true"
+            android:textAppearance="@style/TextAppearance.Aurora.Line3"
             android:textIsSelectable="true"
-            android:textSize="12sp"
-            android:transitionName="packageName"
             tools:text="@string/action_unknown" />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -74,9 +72,8 @@
             android:marqueeRepeatLimit="marquee_forever"
             android:scrollHorizontally="true"
             android:singleLine="true"
-            android:textSize="14sp"
-            android:textStyle="bold"
-            android:transitionName="devName"
+            android:textAppearance="@style/TextAppearance.Aurora.Line3"
+            android:textColor="?android:attr/colorAccent"
             tools:text="@string/action_unknown" />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -87,6 +84,7 @@
             android:ellipsize="marquee"
             android:singleLine="true"
             android:textAlignment="viewStart"
+            android:textAppearance="@style/TextAppearance.Aurora.Line3"
             android:textSize="12sp"
             tools:text="@string/action_unknown" />
     </RelativeLayout>

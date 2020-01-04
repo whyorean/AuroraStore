@@ -38,8 +38,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/margin_normal"
         android:text="@string/title_welcome"
-        android:textAppearance="@style/TextAppearance.Aurora.Toolbar.Title"
-        android:textSize="20sp" />
+        android:textAppearance="@style/TextAppearance.Aurora.Toolbar.Title" />
 
     <ScrollView
         android:layout_width="match_parent"
