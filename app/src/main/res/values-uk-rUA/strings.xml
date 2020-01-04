@@ -375,4 +375,5 @@ Aurora дозволяє шукати, завантажувати, встанов
     <string name="toast_login_success">"Вхід успішний"</string>
     <string name="toast_login_failed">"Не вдалося увійти"</string>
     <string name="disclaimer">"Використання Aurora Store з вашим власним акаунтом Google може призвести до його деактивації або занесення до чорного списку, так як Aurora Store порушує Умови використання Google Play. Користуйтесь на свій страх і ризик. У вас є можливість увійти анонімно, в такому разі ви увійдете у тимчасовий акаунт."</string>
+    <string name="menu_blacklist">"Додати до чорного списку"</string>
 </resources>
