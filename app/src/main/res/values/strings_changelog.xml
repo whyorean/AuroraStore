@@ -20,6 +20,12 @@
 
 <resources>
     <string name="app_log" translatable="false">
+        \n Changelog : v3.1.6
+        \n • Update UI
+        \n • Fixed issues related to beta subscriptions
+        \n • Fixed login issues
+        \n • Bug fixes and improvements
+        \n
         \n Changelog : v3.1.5
         \n • Update translations
         \n • Bug fixes and improvements
