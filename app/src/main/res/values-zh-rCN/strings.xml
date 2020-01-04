@@ -395,4 +395,11 @@
     <string name="list_updating_failed">"更新失败"</string>
     <string name="pref_updates_auto">"启用自动更新"</string>
     <string name="pref_updates_auto_desc">"每当新版本可用时更新应用"</string>
+    <string name="account_email">"电子邮箱"</string>
+    <string name="account_password">"密码"</string>
+    <string name="account_save_password">"保存密码"</string>
+    <string name="toast_login_success">"登录成功"</string>
+    <string name="toast_login_failed">"登录失败"</string>
+    <string name="disclaimer">"使用您自己的Google账户登录Aurora Store可能会导致您的账户被列入黑名单或停用，因为Aurora Store违反了Google服务条款3.3，风险自负。您可以使用匿名或一次性账户来登录Aurora Store"</string>
+    <string name="menu_blacklist">"添加到黑名单"</string>
 </resources>
