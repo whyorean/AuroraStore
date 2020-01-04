@@ -30,4 +30,10 @@
     <string name="download_speed_kb" translatable="false">%1$s KB/s</string>
     <string name="download_speed_mb" translatable="false">%1$s MB/s</string>
     <string name="two_items" translatable="false">"%1$s %2$s"</string>
+    <string name="action_filter_1" translatable="false">"1.0 +"</string>
+    <string name="action_filter_2" translatable="false">"2.0 +"</string>
+    <string name="action_filter_3" translatable="false">"3.0 +"</string>
+    <string name="action_filter_4" translatable="false">"4.0 +"</string>
+    <string name="action_filter_45" translatable="false">"4.5 +"</string>
+    <string name="action_filter_47" translatable="false">"4.7 +"</string>
 </resources>

@@ -27,12 +27,6 @@
     <string name="action_favourites">"Favourite apps"</string>
     <string name="action_filter">"Filters"</string>
     <string name="action_filter_all">"All"</string>
-    <string name="action_filter_1">"1.0 +"</string>
-    <string name="action_filter_2">"2.0 +"</string>
-    <string name="action_filter_3">"3.0 +"</string>
-    <string name="action_filter_4">"4.0 +"</string>
-    <string name="action_filter_45">"4.5 +"</string>
-    <string name="action_filter_47">"4.7 +"</string>
     <string name="action_filter_apply">"Apply"</string>
     <string name="action_filter_apps_with_ads">"Apps with ads"</string>
     <string name="action_filter_downloads">"Downloads"</string>
