@@ -263,6 +263,7 @@ Decátate que baxar versiones al debalu nun lo sofita la tienda Google Play. L'�
     <string name="dialog_incompat_desc">"L'aplicación que tas tentando de baxar nun ye compatible col preséu. Nos axustes, prueba a suplantar la identidá del preséu."</string>
     <string name="pref_install_mode_services">"Servicios d'Aurora"</string>
     <string name="pref_install_mode_no_services">"Los servicios d'Aurora nun tán instalaos, instálalos primero"</string>
+    <string name="download_waiting">"Esperando"</string>
     <string name="pref_services_title">"Servicios d'Aurora"</string>
     <string name="action_export_device">"Esportar la información del preséu"</string>
     <string name="action_export_info">"Esportóse la información del preséu"</string>
@@ -283,4 +284,5 @@ Decátate que baxar versiones al debalu nun lo sofita la tienda Google Play. L'�
     <string name="pref_clean_junk_desc">"Desanicia tolos ficheros baxaos del direutoriu predetermináu"</string>
     <string name="toast_unknown_reason">"Asocedió daqué malo, volvi tentalo"</string>
     <string name="dialog_desc_self_update">"¿Deseyes anovar agora?"</string>
+    <string name="installer_status_ongoing">"Instalando"</string>
 </resources>
