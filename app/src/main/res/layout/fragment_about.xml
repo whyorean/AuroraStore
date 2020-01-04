@@ -21,88 +21,88 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:clipToPadding="false"
+        android:fillViewport="true"
+        android:overScrollMode="never"
+        android:paddingBottom="@dimen/margin_bottom"
+        android:scrollbars="vertical">
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <ImageView
-                android:id="@+id/launcher_icon"
-                android:layout_width="@dimen/icon_size"
-                android:layout_height="@dimen/icon_size"
-                android:layout_centerHorizontal="true"
-                android:layout_gravity="center"
-                android:layout_marginTop="@dimen/margin_xlarge"
-                android:contentDescription="@string/content_description_icon"
-                android:src="@mipmap/ic_launcher_round" />
-
-            <TextView
-                android:id="@+id/app_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/launcher_icon"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="@dimen/margin_small"
-                android:text="@string/app_name"
-                android:textAppearance="@style/TextAppearance.Aurora.Line1" />
-
-            <TextView
-                android:id="@+id/app_version"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/app_name"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="@dimen/margin_small"
-                android:gravity="center_vertical"
-                android:textAppearance="@style/TextAppearance.Aurora.Line2" />
-
-            <TextView
-                android:id="@+id/app_india"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/app_version"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="@dimen/margin_xsmall"
-                android:gravity="center_vertical"
-                android:text="Made with ❤ in India"
-                android:textAppearance="@style/TextAppearance.Aurora.Line3" />
-
-            <TextView
-                android:id="@+id/about_app"
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/app_india"
-                android:layout_marginStart="@dimen/margin_normal"
-                android:layout_marginTop="@dimen/margin_small"
-                android:layout_marginEnd="@dimen/margin_normal"
-                android:layout_marginBottom="@dimen/margin_small"
-                android:background="@drawable/generic_padded_bg"
-                android:padding="@dimen/margin_normal"
-                android:text="@string/about_app"
-                android:textAppearance="@style/TextAppearance.Aurora.Line2" />
+                android:orientation="vertical">
 
-        </RelativeLayout>
+                <ImageView
+                    android:id="@+id/launcher_icon"
+                    android:layout_width="@dimen/icon_size"
+                    android:layout_height="@dimen/icon_size"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/margin_xlarge"
+                    android:contentDescription="@string/content_description_icon"
+                    android:src="@mipmap/ic_launcher_round" />
 
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:clipToPadding="false"
-            android:overScrollMode="never"
-            android:paddingBottom="@dimen/margin_bottom"
-            android:scrollbars="vertical">
+                <TextView
+                    android:id="@+id/app_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/launcher_icon"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:text="@string/app_name"
+                    android:textAppearance="@style/TextAppearance.Aurora.Line1" />
+
+                <TextView
+                    android:id="@+id/app_version"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/app_name"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:gravity="center_vertical"
+                    android:textAppearance="@style/TextAppearance.Aurora.Line2" />
+
+                <TextView
+                    android:id="@+id/app_india"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/app_version"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/margin_xsmall"
+                    android:gravity="center_vertical"
+                    android:text="Made with ❤ in India"
+                    android:textAppearance="@style/TextAppearance.Aurora.Line3" />
+
+                <TextView
+                    android:id="@+id/about_app"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/app_india"
+                    android:layout_marginStart="@dimen/margin_normal"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:layout_marginEnd="@dimen/margin_normal"
+                    android:layout_marginBottom="@dimen/margin_small"
+                    android:background="@drawable/generic_padded_bg"
+                    android:padding="@dimen/margin_normal"
+                    android:text="@string/about_app"
+                    android:textAppearance="@style/TextAppearance.Aurora.Line2" />
+
+            </RelativeLayout>
 
             <LinearLayout
                 android:id="@+id/linkContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical" />
-        </ScrollView>
-    </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

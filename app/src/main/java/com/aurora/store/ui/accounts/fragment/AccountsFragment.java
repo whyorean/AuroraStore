@@ -53,9 +53,7 @@ import com.aurora.store.util.Util;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 import com.dragons.aurora.playstoreapiv2.Image;
 import com.dragons.aurora.playstoreapiv2.UserProfile;
-import com.google.android.material.checkbox.MaterialCheckBox;
 import com.google.android.material.chip.Chip;
-import com.google.android.material.textfield.TextInputEditText;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -93,10 +91,6 @@ public class AccountsFragment extends Fragment {
     TextView txtName;
     @BindView(R.id.user_mail)
     TextView txtMail;
-    @BindView(R.id.txt_input_email)
-    TextInputEditText txtInputEmail;
-    @BindView(R.id.txt_input_password)
-    TextInputEditText txtInputPassword;
     @BindView(R.id.progress_bar)
     ProgressBar progressBar;
     @BindView(R.id.btn_positive)
@@ -111,8 +105,6 @@ public class AccountsFragment extends Fragment {
     Chip chipDisclaimer;
     @BindView(R.id.chip_license)
     Chip chipLicense;
-    @BindView(R.id.check_save_password)
-    MaterialCheckBox materialCheckBox;
 
     private Context context;
     private CompositeDisposable disposable = new CompositeDisposable();
