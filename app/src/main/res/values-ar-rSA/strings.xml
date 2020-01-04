@@ -371,4 +371,11 @@
     <string name="list_updating_failed">"فشل في التحديث"</string>
     <string name="pref_updates_auto">"تفعيل التحديث التلقائي"</string>
     <string name="pref_updates_auto_desc">"تحديث التطبيقات عندما يتوفر إصدار جديد"</string>
+    <string name="account_email">"الإيميل"</string>
+    <string name="account_password">"كلمة السر"</string>
+    <string name="account_save_password">"حفظ كلمة السر"</string>
+    <string name="toast_login_success">"تم تسجيل الدخول بنجاح"</string>
+    <string name="toast_login_failed">"فشل تسجيل الدخول"</string>
+    <string name="disclaimer">"قد يؤدي استخدام Aurora Store مع حساب Google الخاص بك إلى إدراج حسابك في القائمة السوداء أو إلغاء تنشيطه ، حيث إن Aurora Store ينتهك شروط خدمة Google 3.3 ، أستخدمه على مسؤوليتك الخاصة. يمكنك اختيار عدم الكشف عن هويتك واستخدام حساب ثانوي لتسجيل الدخول إلى متجر Aurora"</string>
+    <string name="menu_blacklist">"إضافة الى القائمة السوداء"</string>
 </resources>
