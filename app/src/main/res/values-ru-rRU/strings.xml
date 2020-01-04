@@ -201,7 +201,7 @@ https://exodus-privacy.eu.org/en/. Это как "отчёт от аваста" 
     <string name="pref_filter_google_title">"Скрывать приложения Google"</string>
     <string name="pref_filter_search_summary">"Сбрасывать фильтры поиска при каждом новом поиске. Отключите, чтобы фильтры сохранялись"</string>
 
-    <!-- Invert toggle. "Use persistent search filterModel (○   )" -->
+    <!-- Invert toggle. "Use persistent search filter (○   )" -->
     <string name="pref_filter_search_title">"Временный фильтр поиска"</string>
     <string name="pref_install_auto_summary">"Устанавливать приложения сразу после завершения загрузки"</string>
     <string name="pref_install_auto_title">"Автоматическая установка"</string>
@@ -412,7 +412,7 @@ Aurora позволяет искать, загружать, устанавлив
     <string name="pref_update_self_title">"Проверять наличие обновлений"</string>
     <string name="pref_update_self_desc">"Проверять наличие обновлений Aurora Store"</string>
     <string name="toast_rate_limit">"Слишком много запросов в текущей сессии, необходимо войти заново"</string>
-    <string name="toast_token_stale">"Токен устарел, запрашиваем новый токен"</string>
+    <string name="toast_token_stale">"Токен устарел, идёт запрос нового"</string>
     <string name="error_session_expired">"Время сессии истекло"</string>
     <string name="list_updating_background">"Загружаемые в фоне приложения"</string>
     <string name="list_updating_failed">"Обновление невозможно"</string>
@@ -425,4 +425,32 @@ Aurora позволяет искать, загружать, устанавлив
     <string name="toast_login_failed">"Вход не удался"</string>
     <string name="disclaimer">"Использование Aurora Store с вашим собственным аккаунтом Google может привести к его деактивации или добавлению в чёрный список, так как Aurora Store нарушает «Условия использования Google». Используйте на свой страх и риск. У вас есть возможность войти анонимно."</string>
     <string name="menu_blacklist">"Добавить в чёрный список"</string>
+    <string name="action_unknown">"Неизвестно"</string>
+    <string name="category_all">"Все категории"</string>
+    <string name="category_family">"Семья"</string>
+    <string name="category_games">"Игры"</string>
+    <string name="details_dev_details">"Связь с разработчиком"</string>
+    <string name="details_dev_email">"Эл. почта"</string>
+    <string name="details_dev_address">"Адрес"</string>
+    <string name="details_dev_website">"Сайт"</string>
+    <string name="details_more_updated">"Обновлено"</string>
+    <string name="details_more_version">"Версия"</string>
+    <string name="exodus_noReport">"Отчёт недоступен"</string>
+    <string name="list_empty_reviews">"Отзывы отсутствуют"</string>
+    <string name="testing_program_opt_in_success">"Поздравляем, вы успешно присоединились к бета-тестированию."</string>
+    <string name="testing_program_opt_in_failed">"Увы! Ваш запрос на бета-тестирование не принят."</string>
+    <string name="testing_program_opt_out_success">"Успешный выход из бета-тестирования приложения."</string>
+    <string name="testing_program_opt_out_failed">"Выход из бета-тестирования приложения не выполнен."</string>
+    <string name="title_categories">"Категории"</string>
+    <string name="toast_api_all_ok">"Всё готово к работе"</string>
+    <string name="toast_api_build_retrying">"Не удалось создать API, повторная попытка"</string>
+    <string name="toast_api_build_failed">"Не удалось создать API"</string>
+    <string name="toast_api_build_api">"Создание Google Play API"</string>
+    <string name="toast_api_token_validity">"Проверка действительности токена"</string>
+    <string name="review_positive">"Положительный"</string>
+    <string name="review_recent">"Недавний"</string>
+    <string name="review_helpful">"Полезный"</string>
+    <string name="request_failed">"Запрос не выполнен"</string>
+    <string name="notification_channel_alert">"Быстрое уведомление"</string>
+    <string name="notification_channel_general">"Основное уведомление"</string>
 </resources>
