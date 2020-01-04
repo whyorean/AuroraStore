@@ -41,10 +41,10 @@ import lombok.Data;
 @Data
 public class App {
 
-    private Features features;
+    private transient Features features;
     private ImageSource pageBackgroundImage;
     private List<String> screenshotUrls = new ArrayList<>();
-    private List<FileMetadata> fileMetadataList = new ArrayList<>();
+    private transient List<FileMetadata> fileMetadataList = new ArrayList<>();
     private Map<String, String> offerDetails = new HashMap<>();
     private Map<String, String> relatedLinks = new HashMap<>();
     private Rating rating = new Rating();

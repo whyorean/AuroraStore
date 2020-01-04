@@ -16,8 +16,10 @@ import com.aurora.store.util.PrefUtil;
 import com.aurora.store.util.Util;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
+import java.lang.reflect.Modifier;
 import java.lang.reflect.Type;
 import java.util.Calendar;
 import java.util.List;
@@ -33,7 +35,7 @@ public class HomeAppsModel extends AndroidViewModel {
     private CompositeDisposable disposable = new CompositeDisposable();
 
     private GooglePlayAPI api;
-    private Gson gson = new Gson();
+    private Gson gson = new GsonBuilder().excludeFieldsWithModifiers(Modifier.TRANSIENT).create();
 
     private MutableLiveData<List<App>> mutableTopGames = new MutableLiveData<>();
     private MutableLiveData<List<App>> mutableTopApps = new MutableLiveData<>();
