@@ -125,7 +125,7 @@
     <!-- Installa -->
     <string name="details_install">"Installa"</string>
     <string name="details_installing">"Installazione"</string>
-    <string name="details_more">"Leggi di più"</string>
+    <string name="details_more">"Ulteriori informazioni"</string>
     <string name="details_no_ads">"Senza annunci"</string>
 
     <!-- Permessi app -->
@@ -438,4 +438,32 @@ Inoltre fornisce una lista di tracker incorporati in una applicazione."</string>
     <string name="toast_login_failed">"Login fallito"</string>
     <string name="disclaimer">"L'accesso ad Aurora Store con il tuo account Google potrebbe causare l'aggiunta in blacklist o la disattivazione di quest'ultimo, dal momento che l'app viola il punto 3.3 dei termini di servizio di Google Play. Procedi a tuo rischio e pericolo. Puoi comunque scegliere di utilizzare l'accesso anonimo con un account usa e getta per accedere all'app."</string>
     <string name="menu_blacklist">"Aggiungi alla blacklist"</string>
+    <string name="action_unknown">"Sconosciuto"</string>
+    <string name="category_all">"Tutte le categorie"</string>
+    <string name="category_family">"Famiglia"</string>
+    <string name="category_games">"Giochi"</string>
+    <string name="details_dev_details">"Contatto sviluppatore"</string>
+    <string name="details_dev_email">"Email"</string>
+    <string name="details_dev_address">"Indirizzo"</string>
+    <string name="details_dev_website">"Sito web"</string>
+    <string name="details_more_updated">"Aggiornato il"</string>
+    <string name="details_more_version">"Versione"</string>
+    <string name="exodus_noReport">"Rapporto non disponibile"</string>
+    <string name="list_empty_reviews">"Nessuna recensione disponibile"</string>
+    <string name="testing_program_opt_in_success">"Congratulazioni, ti sei unito con successo al programma beta."</string>
+    <string name="testing_program_opt_in_failed">"La tua richiesta di partecipazione al programma beta è fallita"</string>
+    <string name="testing_program_opt_out_success">"Sei uscito dal programma beta"</string>
+    <string name="testing_program_opt_out_failed">"Tentativo di uscita dal programma beta fallito"</string>
+    <string name="title_categories">"Categorie"</string>
+    <string name="toast_api_all_ok">"Tutto pronto"</string>
+    <string name="toast_api_build_retrying">"Generazione delle API fallita, nuovo tentativo in corso"</string>
+    <string name="toast_api_build_failed">"Generazione delle API fallita"</string>
+    <string name="toast_api_build_api">"Generazione delle API Google Play in corso"</string>
+    <string name="toast_api_token_validity">"Controllo della validità del token in corso"</string>
+    <string name="review_positive">"Positive"</string>
+    <string name="review_recent">"Recenti"</string>
+    <string name="review_helpful">"Utili"</string>
+    <string name="request_failed">"Richiesta fallita"</string>
+    <string name="notification_channel_alert">"Notifiche rapide"</string>
+    <string name="notification_channel_general">"Notifiche generali"</string>
 </resources>
