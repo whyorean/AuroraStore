@@ -20,6 +20,9 @@
 
 <resources>
     <string name="app_log" translatable="false">
+        \n Changelog : v3.1.7
+        \n • Fix a critical serialization/deserialization issue
+        \n
         \n Changelog : v3.1.6
         \n • Update UI
         \n • Fixed issues related to beta subscriptions
