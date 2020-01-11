@@ -39,6 +39,7 @@ import com.aurora.store.model.App;
 import com.aurora.store.ui.details.DetailsActivity;
 import com.aurora.store.ui.details.ReadMoreActivity;
 import com.aurora.store.ui.view.FeatureChip;
+import com.aurora.store.util.ContextUtil;
 import com.aurora.store.util.TextUtil;
 import com.aurora.store.util.Util;
 import com.aurora.store.util.ViewUtil;
@@ -56,6 +57,8 @@ import org.apache.maven.artifact.versioning.DefaultArtifactVersion;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -186,7 +189,14 @@ public class GeneralDetails extends AbstractDetails {
                 .append(".")
                 .append(versionCode));
         app_version.setVisibility(View.VISIBLE);
-        app_version.setSelected(true);
+        new Timer().schedule(new TimerTask() {
+            @Override
+            public void run() {
+                ContextUtil.runOnUiThread(() -> {
+                    app_version.setSelected(true);
+                });
+            }
+        }, 3000);
 
         if (!app.isInstalled()) {
             return;
