@@ -27,7 +27,7 @@
         <item name="android:navigationBarColor">@color/colorDarkPrimary</item>
         <item name="android:windowLightNavigationBar">false</item>
         <item name="android:colorBackground">@color/colorDarkBackground</item>
-        <item name="colorSurface">@color/colorDarkBackground</item>
+        <item name="colorBackgroundFloating">@color/colorDarkBackground</item>
         <item name="chipStyle">@style/Widget.Aurora.FilterChip</item>
     </style>
 
@@ -42,7 +42,7 @@
         <item name="android:navigationBarColor">@color/colorBlack</item>
         <item name="android:windowLightNavigationBar">false</item>
         <item name="android:colorBackground">@color/colorBlack</item>
-        <item name="colorSurface">@color/colorBlack</item>
+        <item name="colorBackgroundFloating">@color/colorBlack</item>
         <item name="chipStyle">@style/Widget.Aurora.FilterChip</item>
     </style>
 </resources>
