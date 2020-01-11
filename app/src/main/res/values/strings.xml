@@ -202,7 +202,7 @@
     <string name="pref_requested_language">"Change default API request language"</string>
     <string name="pref_requested_language_default">"Your default language"</string>
     <string name="pref_requested_location_disable">"You need to manually disable Mock Location from the Developer Options to disable it completely."</string>
-    <string name="pref_requested_location_enable">"You need to manually enable Mock Location from the Developer Options."</string>
+    <string name="pref_requested_location_enable">"You need to manually enable Mock Location from the Developer Options. A VPN connection to nearby location is mandatory."</string>
     <string name="pref_requested_location_summary">"Aurora Store must be set as the default Mock Location Application"</string>
     <string name="pref_ui_card_summary">"Use legacy style cards for featured apps"</string>
     <string name="pref_ui_card_title">"Legacy style app cards"</string>
