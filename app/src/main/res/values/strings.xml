@@ -106,6 +106,7 @@
     <string name="details_why_rate_this_app">"Tell others what you think"</string>
     <string name="details_you_rated_this_app">"Your rating"</string>
     <string name="dialog_title_logout">"Log out?"</string>
+    <string name="dialog_uninstall_confirmation">"Do you want to uninstall this app ?"</string>
     <string name="download_cancel_all">"Cancel all"</string>
     <string name="download_canceled">"Canceled"</string>
     <string name="download_clear_completed">"Clear completed"</string>

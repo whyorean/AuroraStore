@@ -12,9 +12,11 @@ import android.os.RemoteException;
 import com.aurora.services.IPrivilegedCallback;
 import com.aurora.services.IPrivilegedService;
 import com.aurora.store.Constants;
+import com.aurora.store.R;
 import com.aurora.store.model.App;
 import com.aurora.store.util.Log;
 import com.aurora.store.util.PrefUtil;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 public class Uninstaller {
 
@@ -32,7 +34,7 @@ public class Uninstaller {
                 uninstallByPackageManager(app);
                 break;
             case "1":
-                uninstallByRoot(app);
+                askUninstall(app);
                 break;
             default:
                 uninstallByPackageManager(app);
@@ -84,6 +86,20 @@ public class Uninstaller {
 
     private void uninstallByRoot(App app) {
         new AppUninstallerRooted().uninstall(app);
+    }
+
+    private void askUninstall(App app) {
+        MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context)
+                .setTitle(app.getDisplayName())
+                .setMessage(context.getString(R.string.dialog_uninstall_confirmation))
+                .setPositiveButton(context.getString(android.R.string.ok), (dialog, which) -> {
+                    uninstallByRoot(app);
+                })
+                .setNegativeButton(context.getString(android.R.string.cancel), (dialog, which) -> {
+                    dialog.dismiss();
+                });
+        builder.create();
+        builder.show();
     }
 
 }
