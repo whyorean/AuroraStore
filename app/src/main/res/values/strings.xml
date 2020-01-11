@@ -185,7 +185,7 @@
     <string name="pref_filter_google_summary">"Removes all Google Apps from search results and category apps"</string>
     <string name="pref_filter_google_title">"Filter Google apps"</string>
     <string name="pref_filter_search_summary">"Search filters are reset on each search. Turn off to save search filters"</string>
-    <string name="pref_filter_search_title">"Use non-persistent search filterModel"</string>
+    <string name="pref_filter_search_title">"Use non-persistent search filter"</string>
     <string name="pref_install_auto_summary">"Apps are installed instantly after download completes"</string>
     <string name="pref_install_auto_title">"Auto install APKs post-download"</string>
     <string name="pref_install_delete_title">"Delete APK post-install"</string>
