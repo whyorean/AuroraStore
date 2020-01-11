@@ -26,6 +26,7 @@ import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.PorterDuff;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
@@ -259,6 +260,12 @@ public class AuroraActivity extends BaseActivity {
                 ImageView imageView = drawerView.findViewById(R.id.img);
                 TextView textView1 = drawerView.findViewById(R.id.line1);
                 TextView textView2 = drawerView.findViewById(R.id.line2);
+
+                backgroundView.setColorFilter(ContextCompat.getColor(
+                        AuroraActivity.this,
+                        R.color.colorScrimBlack),
+                        PorterDuff.Mode.SRC_OVER
+                );
 
                 GlideApp
                         .with(AuroraActivity.this)

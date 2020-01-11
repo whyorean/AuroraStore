@@ -46,7 +46,7 @@
     <color name="colorScrim">#11000000</color>
     <color name="colorScrimAccent">#224768FD</color>
     <color name="colorScrimWhite">#22FFFFFF</color>
-    <color name="colorScrimBlack">#22000000</color>
+    <color name="colorScrimBlack">#30000000</color>
     <color name="colorTransparent">#00000000</color>
 
     <color name="colorTeal">#31e7b6</color>
