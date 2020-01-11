@@ -2,6 +2,7 @@ package com.aurora.store.ui.single.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ProgressBar;
 
 import androidx.annotation.Nullable;
@@ -11,15 +12,22 @@ import androidx.appcompat.widget.AppCompatTextView;
 import com.aurora.store.AuroraApplication;
 import com.aurora.store.Constants;
 import com.aurora.store.R;
+import com.aurora.store.ValidateApiService;
 import com.aurora.store.ui.intro.IntroActivity;
 import com.aurora.store.ui.main.AuroraActivity;
 import com.aurora.store.util.Accountant;
+import com.aurora.store.util.ContextUtil;
 import com.aurora.store.util.Log;
 import com.aurora.store.util.PrefUtil;
 import com.aurora.store.util.Util;
+import com.google.android.material.button.MaterialButton;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import io.reactivex.disposables.CompositeDisposable;
 
 public class SplashActivity extends BaseActivity {
@@ -32,6 +40,8 @@ public class SplashActivity extends BaseActivity {
     ProgressBar progressBar;
     @BindView(R.id.status)
     AppCompatTextView status;
+    @BindView(R.id.action)
+    MaterialButton action;
 
     private CompositeDisposable disposable = new CompositeDisposable();
 
@@ -80,11 +90,24 @@ public class SplashActivity extends BaseActivity {
     }
 
     private void buildAndTestApi() {
+        //Setup a timer for 20 sec, to allow user to skip Splash screen
+        setupTimer();
+
+        //Stop service if already running, anyway it will never complete.
+        if (ValidateApiService.isServiceRunning())
+            stopService();
+
+        //Start new Validation service, if logged in.
         if (Accountant.isLoggedIn(this)) {
             status.setText(R.string.toast_api_build_api);
             Util.validateApi(this);
         } else
             launchAccountsActivity();
+    }
+
+    private void stopService() {
+        Log.i("Validation Service Stopped");
+        stopService(new Intent(this, ValidateApiService.class));
     }
 
     private void launchAuroraActivity() {
@@ -102,9 +125,26 @@ public class SplashActivity extends BaseActivity {
         supportFinishAfterTransition();
     }
 
+    private void setupTimer() {
+        new Timer().schedule(new TimerTask() {
+            @Override
+            public void run() {
+                ContextUtil.runOnUiThread(() -> {
+                    action.setVisibility(View.VISIBLE);
+                    status.setText(getString(R.string.toast_api_build_delayed));
+                });
+            }
+        }, 20000 /*20 seconds timeout*/);
+    }
+
     @Override
     protected void onResume() {
         super.onResume();
+    }
+
+    @OnClick(R.id.action)
+    public void getThroughSplash() {
+        launchAuroraActivity();
     }
 
     @Override

@@ -20,6 +20,7 @@
     <string name="action_convert_system">"Convert system"</string>
     <string name="action_copied">"Link copied to clipboard"</string>
     <string name="action_copy">"Copy Link"</string>
+    <string name="action_continue_anyway">"Continue anyway ?"</string>
     <string name="action_disable">"Disable"</string>
     <string name="action_done">"Done"</string>
     <string name="action_enable">"Enable"</string>
@@ -235,6 +236,7 @@
     <string name="toast_apk_copy_failure">"Failed to copy APK"</string>
     <string name="toast_api_all_ok">"All set to go"</string>
     <string name="toast_api_build_retrying">"Failed to build API, retrying."</string>
+    <string name="toast_api_build_delayed">"It is taking longer than expected"</string>
     <string name="toast_api_build_failed">"Failed to build API."</string>
     <string name="toast_api_build_api">"Building GooglePlay API"</string>
     <string name="toast_api_token_validity">"Checking token validity"</string>
