@@ -30,7 +30,7 @@ import com.aurora.store.model.App;
 import com.aurora.store.model.ExodusReport;
 import com.aurora.store.model.Report;
 import com.aurora.store.sheet.ExodusBottomSheet;
-import com.aurora.store.task.NetworkTask;
+import com.aurora.store.task.ExodusTask;
 import com.aurora.store.ui.details.DetailsActivity;
 import com.aurora.store.util.Log;
 import com.google.gson.Gson;
@@ -73,11 +73,11 @@ public class ExodusPrivacy extends AbstractDetails {
     }
 
     private void get(String url) {
-        disposable.add(Observable.fromCallable(() -> new NetworkTask(context)
+        disposable.add(Observable.fromCallable(() -> new ExodusTask(context)
                 .get(url))
                 .subscribeOn(Schedulers.computation())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(response -> parseResponse(response)));
+                .subscribe(this::parseResponse));
     }
 
     private void parseResponse(String response) {
@@ -106,16 +106,15 @@ public class ExodusPrivacy extends AbstractDetails {
         }
 
         if (report.getTrackers().size() > 0) {
-            setText(R.id.exodus_description, new StringBuilder()
-                    .append(context.getString(R.string.exodus_hasTracker))
-                    .append(StringUtils.SPACE)
-                    .append(report.getTrackers().size()).toString());
+            setText(R.id.exodus_description, context.getString(R.string.exodus_hasTracker)
+                    + StringUtils.SPACE
+                    + report.getTrackers().size());
         } else {
             setText(R.id.exodus_description, R.string.exodus_noTracker);
         }
 
         if (report.getTrackers().isEmpty())
-            moreButton.setVisibility(View.GONE);
+            moreButton.setVisibility(View.INVISIBLE);
         else
             moreButton.setOnClickListener(v -> showBottomDialog());
     }

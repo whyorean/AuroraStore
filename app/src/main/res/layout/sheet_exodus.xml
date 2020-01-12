@@ -19,19 +19,16 @@
   -->
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    tools:targetApi="o">
+    android:orientation="vertical">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="@dimen/margin_normal"
-        android:paddingHorizontal="@dimen/margin_normal"
         android:text="@string/exodus_title_alt"
         android:textAppearance="@style/TextAppearance.Aurora.DialogTitle" />
 
@@ -69,10 +66,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="@dimen/margin_small"
             android:maxLines="1"
-            android:text="@string/exodus_viewReport"
-            app:cornerRadius="20dp" />
+            android:text="@string/exodus_viewReport" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/exodus_recycler"

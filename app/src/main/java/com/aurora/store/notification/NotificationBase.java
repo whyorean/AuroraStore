@@ -62,7 +62,6 @@ public class NotificationBase {
         return new NotificationCompat.Builder(context, Constants.NOTIFICATION_CHANNEL_GENERAL)
                 .setAutoCancel(true)
                 .setCategory(NotificationCompat.CATEGORY_PROGRESS)
-                .setColorized(true)
                 .setColor(context.getResources().getColor(R.color.colorAccent))
                 .setContentIntent(getContentIntent())
                 .setContentTitle(app.getDisplayName())

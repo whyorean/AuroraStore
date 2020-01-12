@@ -29,6 +29,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
+        android:tint="?android:attr/colorAccent"
         android:layout_margin="@dimen/margin_small"
         app:srcCompat="@drawable/ic_shield" />
 

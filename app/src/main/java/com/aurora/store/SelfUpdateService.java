@@ -1,11 +1,8 @@
 package com.aurora.store;
 
 import android.app.Notification;
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
 import android.app.Service;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Build;
 import android.os.IBinder;
 
@@ -51,7 +48,7 @@ public class SelfUpdateService extends Service {
     private App app;
     private Fetch fetch;
     private FetchListener fetchListener;
-    private Gson gson = new Gson();
+    private Gson gson;
 
     public static boolean isServiceRunning() {
         try {
@@ -83,7 +80,8 @@ public class SelfUpdateService extends Service {
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
             startForeground(1, getNotification());
         } else {
-            Notification notification = getNotification(new NotificationCompat.Builder(this));
+            Notification notification = getNotification(new NotificationCompat.Builder(this,
+                    Constants.NOTIFICATION_CHANNEL_GENERAL));
             startForeground(1, notification);
         }
         startUpdate();
@@ -96,7 +94,7 @@ public class SelfUpdateService extends Service {
     }
 
     private void destroyService() {
-        Log.e("Self-update service destroyed");
+        Log.d("Self-update service destroyed");
         if (fetchListener != null) {
             fetch.removeListener(fetchListener);
             fetchListener = null;
@@ -120,7 +118,7 @@ public class SelfUpdateService extends Service {
                         } else
                             downloadAndUpdate(update);
                     } catch (Exception e) {
-                        Log.d("Error checking self-update");
+                        Log.e("Error checking update");
                         destroyService();
                     }
                 }));
@@ -140,7 +138,7 @@ public class SelfUpdateService extends Service {
 
         fetch = DownloadManager.getFetchInstance(this);
         fetch.enqueue(requestList, result -> {
-            Log.d("Downloading latest self-update");
+            Log.d("Downloading latest update");
         });
 
         fetchListener = getFetchListener();
@@ -157,30 +155,19 @@ public class SelfUpdateService extends Service {
 
     @RequiresApi(Build.VERSION_CODES.O)
     private Notification getNotification() {
-        String NOTIFICATION_CHANNEL_ID = BuildConfig.APPLICATION_ID;
-        String channelName = "Self Update Service";
-
-        NotificationChannel notificationChannel = new NotificationChannel(NOTIFICATION_CHANNEL_ID, channelName, NotificationManager.IMPORTANCE_HIGH);
-        notificationChannel.setLightColor(Color.BLUE);
-        notificationChannel.setLockscreenVisibility(Notification.VISIBILITY_PUBLIC);
-
-        NotificationManager manager = (NotificationManager) getSystemService(SelfUpdateService.NOTIFICATION_SERVICE);
-        manager.createNotificationChannel(notificationChannel);
-
-        NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this, NOTIFICATION_CHANNEL_ID);
+        NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this, Constants.NOTIFICATION_CHANNEL_GENERAL);
         return getNotification(notificationBuilder);
     }
 
     private Notification getNotification(NotificationCompat.Builder builder) {
-        int versionCode = Build.VERSION.SDK_INT;
         return builder
                 .setAutoCancel(true)
-                .setCategory(Notification.CATEGORY_PROGRESS)
+                .setCategory(Notification.CATEGORY_SERVICE)
+                .setColor(getResources().getColor(R.color.colorAccent))
                 .setContentTitle("Self update")
                 .setContentText("Updating Aurora Store in background")
                 .setOngoing(false)
-                .setPriority(versionCode >= Build.VERSION_CODES.O ? NotificationCompat.PRIORITY_DEFAULT : Notification.PRIORITY_DEFAULT)
-                .setSmallIcon(R.drawable.ic_update)
+                .setSmallIcon(R.drawable.ic_notification)
                 .build();
     }
 
@@ -190,7 +177,7 @@ public class SelfUpdateService extends Service {
             public void onError(int groupId, @NotNull Download download, @NotNull Error error,
                                 @org.jetbrains.annotations.Nullable Throwable throwable, @NotNull FetchGroup fetchGroup) {
                 if (groupId == hashCode) {
-                    Log.d("Error self-updating %s", app.getDisplayName());
+                    Log.e("Error self-updating %s", app.getDisplayName());
                     destroyService();
                 }
             }

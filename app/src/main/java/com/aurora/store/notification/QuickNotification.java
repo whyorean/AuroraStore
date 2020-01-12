@@ -54,7 +54,6 @@ public class QuickNotification extends NotificationBase {
             manager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
             builder = new NotificationCompat.Builder(context, Constants.NOTIFICATION_CHANNEL_ALERT)
                     .setAutoCancel(true)
-                    .setColorized(true)
                     .setColor(context.getResources().getColor(R.color.colorAccent))
                     .setContentTitle(contentTitle)
                     .setContentText(contentText)
