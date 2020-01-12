@@ -120,7 +120,7 @@
         <activity
             android:name=".ui.single.activity.DeviceInfoActivity"
             android:configChanges="keyboardHidden|locale|orientation|fontScale" />
-        <activity android:name=".ui.single.activity.GoogleLoginActivity" />
+        <activity android:name=".ui.single.activity.GoogleLoginActivity" android:configChanges="keyboard|keyboardHidden|orientation|screenSize"/>
         <activity android:name=".ui.single.activity.SplashActivity">
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />

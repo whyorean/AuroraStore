@@ -1,13 +1,12 @@
 package com.aurora.store.ui.single.activity;
 
 import android.annotation.SuppressLint;
-import android.app.ActivityOptions;
-import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
 import android.webkit.CookieManager;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
@@ -17,7 +16,8 @@ import com.aurora.store.R;
 import com.aurora.store.task.AuthTask;
 import com.aurora.store.util.Accountant;
 import com.aurora.store.util.Util;
-import com.aurora.store.util.ViewUtil;
+
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.Map;
 
@@ -51,6 +51,7 @@ public class GoogleLoginActivity extends BaseActivity {
 
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
+        setupWebView();
 
         disposable.add(AuroraApplication
                 .getRxBus()
@@ -69,12 +70,19 @@ public class GoogleLoginActivity extends BaseActivity {
 
     @SuppressLint("SetJavaScriptEnabled")
     private void setupWebView() {
+
+        if (!StringUtils.isEmpty(webview.getUrl()))
+            return;
+
         cookieManager.removeAllCookies(null);
+        cookieManager.acceptThirdPartyCookies(webview);
+        cookieManager.setAcceptThirdPartyCookies(webview, true);
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             webview.getSettings().setSafeBrowsingEnabled(false);
         }
-        webview.setWebViewClient(new WebViewClient() {
 
+        webview.setWebViewClient(new WebViewClient() {
             @Override
             public void onPageFinished(WebView view, String url) {
                 String cookies = CookieManager.getInstance().getCookie(url);
@@ -89,12 +97,13 @@ public class GoogleLoginActivity extends BaseActivity {
                 }
             }
         });
+
         webview.getSettings().setAllowContentAccess(true);
         webview.getSettings().setDatabaseEnabled(true);
         webview.getSettings().setDomStorageEnabled(true);
         webview.getSettings().setJavaScriptEnabled(true);
-        cookieManager.acceptThirdPartyCookies(webview);
-        cookieManager.setAcceptThirdPartyCookies(webview, true);
+        webview.getSettings().setAppCacheEnabled(true);
+        webview.getSettings().setCacheMode(WebSettings.LOAD_DEFAULT);
         webview.loadUrl(EMBEDDED_SETUP_URL);
     }
 
