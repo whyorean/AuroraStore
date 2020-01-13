@@ -186,7 +186,6 @@
     <string name="pref_requested_language">"變更預設 API 請求的語言"</string>
     <string name="pref_requested_language_default">"您的預設語言"</string>
     <string name="pref_requested_location_disable">"您需要在開發者選項中手動停用模擬位置資訊才能完全停用它。"</string>
-    <string name="pref_requested_location_enable">"您需要在開發者選項手動啟用模擬位置資訊。"</string>
     <string name="pref_requested_location_summary">"Aurora Store 必須被設定成預設模擬位置資訊應用程式"</string>
     <string name="pref_ui_card_summary">"對特0色應用程式使用傳統的應用程式卡片"</string>
     <string name="pref_ui_card_title">"傳統風格的應用程式卡片"</string>
@@ -380,4 +379,15 @@
     <string name="toast_login_failed">"登入失敗"</string>
     <string name="disclaimer">"在 Aurora Store 使用您自己的 Google 帳戶可能導致您的帳戶被封禁，因爲 Aurora Store 違反了 Google 的 ToS 的第 3.3 條，請自行承擔使用您自己的帳戶的風險。您可用選擇使用匿名帳戶以使用一個可丟棄帳戶登入 Aurora Store。"</string>
     <string name="menu_blacklist">"新增至黑名單"</string>
+    <string name="action_unknown">"未知"</string>
+    <string name="category_all">"所有分類"</string>
+    <string name="category_family">"家庭"</string>
+    <string name="category_games">"遊戲"</string>
+    <string name="details_dev_details">"開發者聯絡方式"</string>
+    <string name="details_dev_email">"電子信箱"</string>
+    <string name="details_dev_address">"地址"</string>
+    <string name="details_dev_website">"網站"</string>
+    <string name="details_more_updated">"更新於 "</string>
+    <string name="details_more_version">"版本"</string>
+    <string name="exodus_noReport">"無法使用「報告」"</string>
 </resources>
