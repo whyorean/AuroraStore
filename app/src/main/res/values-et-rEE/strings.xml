@@ -186,7 +186,6 @@ Jäta meelde, et rakenduse suvaliste versioonide allalaadimine pole Google Play 
     <string name="pref_requested_language">"Muuda vaikimisi API taotluse keelt"</string>
     <string name="pref_requested_language_default">"Sinu vaikimisi keel"</string>
     <string name="pref_requested_location_disable">"Täielikuks keeldumiseks pead sa arendaja seadetest käsitsi keelama asukohateavet imiteerivaks rakenduse."</string>
-    <string name="pref_requested_location_enable">"Sa pead arendaja seadetest käsitsi lubama asukohateavet imiteerivaks rakenduse."</string>
     <string name="pref_requested_location_summary">"Aurora Store peab olema määratud vaikimisi asukohateavet imiteerivaks rakenduseks"</string>
     <string name="pref_ui_card_summary">"Kasuta pärandstiilis kaarte esiletoodud rakenduste puhul"</string>
     <string name="pref_ui_card_title">"Pärandstiilis rakendusekaardid"</string>
