@@ -186,7 +186,6 @@ Pamiętaj, że pobieranie dowolnych wersji aplikacji nie jest obsługiwane przez
     <string name="pref_requested_language">"Zmień domyślne API żądania języka"</string>
     <string name="pref_requested_language_default">"Twój domyślny język"</string>
     <string name="pref_requested_location_disable">"Musisz ręcznie wyłączyć pozorowanie lokalizacji w opcjach programisty, aby ją całkowicie wyłączyć."</string>
-    <string name="pref_requested_location_enable">"Musisz ręcznie włączyć pozorowanie lokalizacji w opcjach programisty."</string>
     <string name="pref_requested_location_summary">"Sklep Aurora musi być ustawiona jako domyślna aplikacja do pozorowania lokalizacji"</string>
     <string name="pref_ui_card_summary">"Używaj starego stylu dla kart polecanych aplikacji"</string>
     <string name="pref_ui_card_title">"Karty aplikacji w starym stylu"</string>
