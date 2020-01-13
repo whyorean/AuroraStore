@@ -184,7 +184,6 @@
     <string name="pref_requested_language">"Промяна желания от вас език"</string>
     <string name="pref_requested_language_default">"Вашия език по подразбиране"</string>
     <string name="pref_requested_location_disable">"Нужно е ръчно да изключите фиктивното местоположение от опциите за програмисти, за да го деактивирате напълно."</string>
-    <string name="pref_requested_location_enable">"Трябва ръчно да активирате фиктивното местоположение от опциите за програмисти."</string>
     <string name="pref_requested_location_summary">"Aurora Магазин трябва да бъде зададено като приложение по подразбиране за фиктивното местоположение"</string>
     <string name="pref_ui_card_summary">"Използвайте стария изглед за секцията избрани приложения"</string>
     <string name="pref_ui_card_title">"Стария изглед за подбрани"</string>
