@@ -188,7 +188,6 @@
     <string name="pref_requested_language">"Varsayılan API istek dilini değiştir"</string>
     <string name="pref_requested_language_default">"Varsayılan diliniz"</string>
     <string name="pref_requested_location_disable">"Tamamen devre dışı bırakmak için Sahte Konum'u Geliştirici Seçeneklerinden el ile devre dışı bırakmanız gerekir."</string>
-    <string name="pref_requested_location_enable">"Geliştirici Seçeneklerinden Sahte Konum'u el ile etkinleştirmeniz gerekir."</string>
     <string name="pref_requested_location_summary">"Aurora Mağazası varsayılan Sahte Konum Uygulaması olarak ayarlanmalıdır"</string>
     <string name="pref_ui_card_summary">"Öne çıkan uygulamalar için eski tarz kartlarını kullanın"</string>
     <string name="pref_ui_card_title">"Eski tarz uygulama kartları"</string>
