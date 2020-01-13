@@ -184,7 +184,6 @@
     <string name="pref_requested_language">"기본 API 요청 언어 변경"</string>
     <string name="pref_requested_language_default">"기본 언어"</string>
     <string name="pref_requested_location_disable">"개발자 옵션에서 MockLocation을 수동으로 비활성화해야 완전히 비활성화할 수 있습니다."</string>
-    <string name="pref_requested_location_enable">"개발자 옵션에서 MockLocation을 수동으로 활성화해야합니다."</string>
     <string name="pref_requested_location_summary">"Aurora Store는 기본 모의 위치 애플리케이션으로 설정되어야합니다."</string>
     <string name="pref_ui_card_summary">"추천 앱에 레거시 스타일 카드 사용"</string>
     <string name="pref_ui_card_title">"레거시 스타일 앱 카드"</string>
