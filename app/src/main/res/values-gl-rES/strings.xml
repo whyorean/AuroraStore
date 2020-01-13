@@ -186,7 +186,6 @@ Lembra que Google Play Store non admite a descarga de versións arbitrarias de a
     <string name="pref_requested_language">"Cambiar o idioma de solicitude de API predeterminado"</string>
     <string name="pref_requested_language_default">"A súa lingua por defecto"</string>
     <string name="pref_requested_location_disable">"Debe desactivar manualmente a Simulación de Localización desde as Opcións de Programador para desactivala completamente."</string>
-    <string name="pref_requested_location_enable">"Debe activar manualmente Simulación de Localización desde as Opcións de Programador."</string>
     <string name="pref_requested_location_summary">"Aurora Store debe configurarse como aplicación predeterminada para simular locaclización."</string>
     <string name="pref_ui_card_summary">"Usar estilo de tarxetas antigo"</string>
     <string name="pref_ui_card_title">"Stilo de tarxetas antigo"</string>
