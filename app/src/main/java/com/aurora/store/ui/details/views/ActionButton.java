@@ -121,7 +121,7 @@ public class ActionButton extends AbstractDetails {
         btnCancel.setOnClickListener(cancelDownloadListener());
 
         if (!app.isFree()) {
-            btnPositive.setText(R.string.details_purchase);
+            checkPurchased();
         }
 
         if (isInstalled)
@@ -225,6 +225,18 @@ public class ActionButton extends AbstractDetails {
                         switchViews(false);
                     })));
         };
+    }
+
+    private void checkPurchased(){
+        compositeDisposable.add(Observable.fromCallable(() -> new DeliveryData(context)
+                .getDeliveryData(app))
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(androidAppDeliveryData -> {
+                    btnPositive.setText(R.string.details_install);
+                },err->{
+                    btnPositive.setText(R.string.details_purchase);
+                }));
     }
 
     private View.OnClickListener resumeAppListener() {
