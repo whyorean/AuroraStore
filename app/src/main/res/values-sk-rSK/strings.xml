@@ -186,7 +186,6 @@ Upozorňujeme, že služba Google Play Store nepodporuje preberanie ľubovoľný
     <string name="pref_requested_language">"Zmeniť predvolený jazyk API requestov"</string>
     <string name="pref_requested_language_default">"Váš predvolený jazyk"</string>
     <string name="pref_requested_location_disable">"Pre úplné zakázanie musíte ručne vo Vývojárskych nastaveniach zakázať MockLocation."</string>
-    <string name="pref_requested_location_enable">"Musíte ručne povoliť MockLocation vo Vývojárskych nastaveniach."</string>
     <string name="pref_requested_location_summary">"Aurora Store musí byť nastavená ako predvolená Mock Location aplikácia"</string>
     <string name="pref_ui_card_summary">"Použiť starší štýl kariet pre odporúčané aplikácie"</string>
     <string name="pref_ui_card_title">"Starší štýl kariet aplikácie"</string>
