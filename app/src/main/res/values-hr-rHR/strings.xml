@@ -184,7 +184,6 @@
     <string name="pref_requested_language">"Promijenite zadani jezik zahtjeva za API"</string>
     <string name="pref_requested_language_default">"Vaš zadani jezik"</string>
     <string name="pref_requested_location_disable">"Morate ručno onemogućiti MockLocation iz razvojnih mogućnosti da biste ga u potpunosti onemogućili."</string>
-    <string name="pref_requested_location_enable">"Morate ručno omogućiti MockLocation iz razvojnih mogućnosti."</string>
     <string name="pref_requested_location_summary">"Aurora Store mora biti postavljena kao zadana Mock Location Application"</string>
     <string name="pref_ui_card_summary">"Koristite zastarjele stilske kartice za istaknute aplikacije"</string>
     <string name="pref_ui_card_title">"Kartice aplikacija za naslijeđeni stil"</string>
