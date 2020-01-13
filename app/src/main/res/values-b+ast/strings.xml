@@ -162,7 +162,6 @@ Decátate que baxar versiones al debalu nun lo sofita la tienda Google Play. L'�
     <string name="pref_proxy_port">"Puertu del proxy"</string>
     <string name="pref_proxy_type">"Triba del proxy"</string>
     <string name="pref_requested_language_default">"La llingua predeterminada"</string>
-    <string name="pref_requested_location_enable">"Precises activar a mano l'Allugamientu simuláu nos axustes de desendolcu del sistema."</string>
     <string name="pref_ui_snap_summary">"Amuesa namái una aplicación al desplazase"</string>
     <string name="pref_ui_theme_title">"Estilu"</string>
     <string name="testing_program_opt_in">"Xunise"</string>
