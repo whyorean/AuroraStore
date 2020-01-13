@@ -184,7 +184,6 @@
     <string name="pref_requested_language">"डिफ़ॉल्ट एपीआई अनुरोध भाषा बदलें"</string>
     <string name="pref_requested_language_default">"आपकी डिफ़ॉल्ट भाषा"</string>
     <string name="pref_requested_location_disable">"आपको इसे पूरी तरह से अक्षम करने के लिए डेवलपर विकल्पों से मैन्युअल रूप से MockLocation को अक्षम करने की आवश्यकता है।"</string>
-    <string name="pref_requested_location_enable">"आपको डेवलपर विकल्पों से मैन्युअल रूप से MockLocation को सक्षम करने की आवश्यकता है।"</string>
     <string name="pref_requested_location_summary">"अरोरा स्टोर को डिफॉल्ट मॉक लोकेशन एप्लीकेशन के रूप में सेट किया जाना चाहिए"</string>
     <string name="pref_ui_card_summary">"चुनिंदा ऐप्स के लिए विरासत शैली कार्ड का उपयोग करें"</string>
     <string name="pref_ui_card_title">"विरासत शैली ऐप कार्ड"</string>
