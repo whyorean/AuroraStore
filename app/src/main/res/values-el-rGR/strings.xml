@@ -186,7 +186,6 @@
     <string name="pref_requested_language">"Αλλαγή της προεπιλεγμένης γλώσσας αιτημάτων API"</string>
     <string name="pref_requested_language_default">"Προεπιλεγμένη γλώσσα"</string>
     <string name="pref_requested_location_disable">"Χρειάζεται να απενεργοποιήσετε χειροκίνητα το MockLocation από τις Ρυθμίσεις για Προγραμματιστές για να το απενεργοποιήσετε εντελώς."</string>
-    <string name="pref_requested_location_enable">"Χρειάζεται να απενεργοποιήσετε χειροκίνητα το MockLocation από τις Ρυθμίσεις για Προγραμματιστές."</string>
     <string name="pref_requested_location_summary">"Το Aurora Store πρέπει να επιλεχθεί ως προεπιλεγμένη Mock Location Εφαρμογή"</string>
     <string name="pref_ui_card_summary">"Χρήση καρτών παλαιού τύπου για τις προτεινόμενες εφαρμογές"</string>
     <string name="pref_ui_card_title">"Κάρτες Εφαρμογών Παλαιού Τύπου"</string>
