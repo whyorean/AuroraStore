@@ -246,7 +246,6 @@ Tieni presente che il download di versioni arbitrarie di app non è supportato d
     <string name="pref_requested_language">"Modifica la lingua predefinita per le richieste API"</string>
     <string name="pref_requested_language_default">"Lingua predefinita"</string>
     <string name="pref_requested_location_disable">"È necessario disabilitare manualmente le posizioni fittizie dalle Opzioni sviluppatore per disabilitarlo completamente."</string>
-    <string name="pref_requested_location_enable">"È necessario abilitare manualmente le posizioni fittizie dalle Opzioni sviluppatore."</string>
     <string name="pref_requested_location_summary">"Aurora Store deve essere impostato come applicazione predefinita per le posizioni fittizie"</string>
     <string name="pref_ui_card_summary">"Utilizza le schede in stile legacy per le app in evidenza"</string>
     <string name="pref_ui_card_title">"Schede app in stile legacy"</string>
