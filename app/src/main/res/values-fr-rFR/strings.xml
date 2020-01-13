@@ -186,7 +186,6 @@ Gardez à l'esprit que le téléchargement de versions arbitraires d'application
     <string name="pref_requested_language">"Changer la langue de demande d'API par défaut"</string>
     <string name="pref_requested_language_default">"Votre langue par défaut"</string>
     <string name="pref_requested_location_disable">"Vous devez désactiver manuellement MockLocation à partir des options développeur pour le désactiver complètement."</string>
-    <string name="pref_requested_location_enable">"Vous devez activer manuellement MockLocation à partir des options développeur. "</string>
     <string name="pref_requested_location_summary">"Aurora Store doit être défini comme application de localisation fictive par défaut"</string>
     <string name="pref_ui_card_summary">"Utiliser des cartes de style traditionnel pour les applications en vedette"</string>
     <string name="pref_ui_card_title">"Style traditionnel des cartes d'application"</string>
