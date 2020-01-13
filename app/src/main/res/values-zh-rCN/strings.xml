@@ -191,7 +191,6 @@
     <string name="pref_requested_language">"更改 API 请求的默认语言"</string>
     <string name="pref_requested_language_default">"您的默认语言"</string>
     <string name="pref_requested_location_disable">"您需要在开发者选项中禁用模拟位置以完全禁用它。"</string>
-    <string name="pref_requested_location_enable">"您需要在开发者选项中启用模拟位置。"</string>
 
     <!-- be set -> 被设置 -->
     <string name="pref_requested_location_summary">"Aurora 商店必须被设置为默认模拟位置应用"</string>
@@ -402,4 +401,32 @@
     <string name="toast_login_failed">"登录失败"</string>
     <string name="disclaimer">"使用您自己的Google账户登录Aurora Store可能会导致您的账户被列入黑名单或停用，因为Aurora Store违反了Google服务条款3.3，风险自负。您可以使用匿名或一次性账户来登录Aurora Store"</string>
     <string name="menu_blacklist">"添加到黑名单"</string>
+    <string name="action_unknown">"未知"</string>
+    <string name="category_all">"所有分类"</string>
+    <string name="category_family">"家庭"</string>
+    <string name="category_games">"游戏"</string>
+    <string name="details_dev_details">"开发者联系方式"</string>
+    <string name="details_dev_email">"电子邮箱"</string>
+    <string name="details_dev_address">"地址"</string>
+    <string name="details_dev_website">"网站"</string>
+    <string name="details_more_updated">"更新于"</string>
+    <string name="details_more_version">"版本"</string>
+    <string name="exodus_noReport">"报告不可用"</string>
+    <string name="list_empty_reviews">"没有评论可用"</string>
+    <string name="testing_program_opt_in_success">"恭喜，您已成功加入测试版。"</string>
+    <string name="testing_program_opt_in_failed">"哎呀！您的测试版订阅请求失败"</string>
+    <string name="testing_program_opt_out_success">"登记测试版计划成功"</string>
+    <string name="testing_program_opt_out_failed">"退出测试版计划失败"</string>
+    <string name="title_categories">"分类"</string>
+    <string name="toast_api_all_ok">"一切准备就绪"</string>
+    <string name="toast_api_build_retrying">"生成API失败，正在重试。"</string>
+    <string name="toast_api_build_failed">"生成API失败。"</string>
+    <string name="toast_api_build_api">"正在生成GooglePlay API"</string>
+    <string name="toast_api_token_validity">"正在检查令牌有效性"</string>
+    <string name="review_positive">"正面"</string>
+    <string name="review_recent">"最近"</string>
+    <string name="review_helpful">"有帮助"</string>
+    <string name="request_failed">"请求失败"</string>
+    <string name="notification_channel_alert">"快速通知"</string>
+    <string name="notification_channel_general">"普通通知"</string>
 </resources>
