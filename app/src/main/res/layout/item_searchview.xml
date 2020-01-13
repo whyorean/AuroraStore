@@ -53,6 +53,5 @@
         android:focusable="true"
         android:paddingStart="@dimen/margin_medium"
         android:paddingEnd="@dimen/margin_medium"
-        android:visibility="invisible"
-        app:srcCompat="@drawable/ic_menu_line" />
+        app:srcCompat="@drawable/ic_round_search" />
 </RelativeLayout>
