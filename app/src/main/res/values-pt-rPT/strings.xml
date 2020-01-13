@@ -188,7 +188,6 @@ Tenha em mente que a transferência de versões arbitrárias de aplicações nã
     <string name="pref_requested_language">"Alterar idioma para solicitação da API"</string>
     <string name="pref_requested_language_default">"Idioma padrão"</string>
     <string name="pref_requested_location_disable">"Tem que desativar manualmente a Localização fictícia nas Opções de programador para a desativar completamente."</string>
-    <string name="pref_requested_location_enable">"Tem que ativar manualmente a Localização fictícia nas Opções de programador."</string>
     <string name="pref_requested_location_summary">"A Aurora Store deve ser utilizada como aplicação padrão para localização fictícia."</string>
     <string name="pref_ui_card_summary">"Usar cartões de estilo 'legacy' para aplicações em destaque"</string>
     <string name="pref_ui_card_title">"Cartões de aplicações estilo 'legacy'"</string>
@@ -380,4 +379,20 @@ Tenha em mente que a transferência de versões arbitrárias de aplicações nã
     <string name="toast_login_failed">"Falha ao iniciar sessão"</string>
     <string name="disclaimer">"Se utilizar Aurora Store com sua conta Google pode fazer com que sua conta seja colocada na lista negra ou mesmo desativada porque esta aplicação viola os Termos de Serviço 3.3 do Google, use por sua conta e risco. Pode optar por uma conta anónima e usar uma conta descartável para aceder à loja."</string>
     <string name="menu_blacklist">"Adicionar à lista negra"</string>
+    <string name="action_unknown">"Desconhecido"</string>
+    <string name="category_all">"Todas as categorias"</string>
+    <string name="category_family">"Família"</string>
+    <string name="category_games">"Jogos"</string>
+    <string name="details_dev_details">"Contacto do programador"</string>
+    <string name="details_dev_email">"Email"</string>
+    <string name="details_dev_address">"Endereço"</string>
+    <string name="details_dev_website">"Website"</string>
+    <string name="details_more_updated">"Atualizado em"</string>
+    <string name="details_more_version">"Versão"</string>
+    <string name="exodus_noReport">"Relatório não disponível"</string>
+    <string name="list_empty_reviews">"Sem comentários"</string>
+    <string name="title_categories">"Categorias"</string>
+    <string name="review_positive">"Positivos"</string>
+    <string name="review_recent">"Recentes"</string>
+    <string name="review_helpful">"Úteis"</string>
 </resources>
