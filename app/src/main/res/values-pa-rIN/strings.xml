@@ -410,5 +410,4 @@
     <string name="details_files">"ਫਾਈਲ ਦਾ ਵੇਰਵਾ"</string>
     <string name="pref_requested_location_enable">"ਤੁਹਾਨੂੰ ਫੋਨ ਦੇ ਡਿਵੈਲਪਰ ਵਿਕਲਪਾਂ ਵਿਚ ਖੁੱਦ ਜਾ ਕੇ Mock Location ਚਾਲੂ ਕਰਨੀ ਪਵੇਗੀ। ਇਸ ਤੋਂ ਬਾਅਦ VPN ਕੁਨੈਕਸ਼ਨ ਵਿੱਚ ਆਪਣੇ ਸਭ ਤੋਂ ਨੇੜਲੇ VPN ਸਰਵਰ ਦੀ ਚੋਣ ਕਰੋ।"</string>
     <string name="toast_api_build_delayed">"ਇਸ ਵਿੱਚ ਹੱਦ ਤੋਂ ਜ਼ਿਆਦਾ ਸਮਾਂ ਲੱਗ ਰਿਹਾ ਹੈ....."</string>
-    <string name="dialog_uninstall_confirmation"></string>
 </resources>
