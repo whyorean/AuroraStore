@@ -188,7 +188,6 @@ Der Download beliebiger Versionen von Apps wird vom Google Play Store nicht unte
     <string name="pref_requested_language">"API-Anforderungssprache vortäuschen"</string>
     <string name="pref_requested_language_default">"Nicht vortäuschen"</string>
     <string name="pref_requested_location_disable">"Du musst die Falsche-Standort-App manuell in den Entwickleroptionen deaktivieren, um es vollständig zu deaktivieren."</string>
-    <string name="pref_requested_location_enable">"Du musst Aurora Store als Falsche-Standort-App manuell in den Entwickleroptionen aktivieren."</string>
     <string name="pref_requested_location_summary">"Aurora Store muss als Falsche-Standort-App festgelegt sein"</string>
     <string name="pref_ui_card_summary">"Kleine Karten für vorgestellte Apps auf dem Start-Tab verwenden"</string>
     <string name="pref_ui_card_title">"Kleine App-Karten"</string>
