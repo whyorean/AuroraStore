@@ -184,7 +184,6 @@
     <string name="pref_requested_language">"Modificați limba implicită a solicitării API"</string>
     <string name="pref_requested_language_default">"Limba dvs. implicită"</string>
     <string name="pref_requested_location_disable">"Trebuie să dezactivați manual opțiunea MockLocation din Opțiuni pentru dezvoltatori pentru a o dezactiva complet."</string>
-    <string name="pref_requested_location_enable">"Trebuie să activați manual MockLocation din Opțiuni pentru dezvoltatori."</string>
     <string name="pref_requested_location_summary">"Magazinul Aurora trebuie să fie setat ca implicit pentru aplicația Mock Location"</string>
     <string name="pref_ui_card_summary">"Utilizați carduri cu stil vechi pentru aplicațiile recomandate"</string>
     <string name="pref_ui_card_title">"Carduri App Style Style"</string>
