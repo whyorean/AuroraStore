@@ -186,7 +186,6 @@ Keep in mind that downloading arbitrary versions of stupid apps is not supported
     <string name="pref_requested_language">"Change default API request language"</string>
     <string name="pref_requested_language_default">"Your motherfucking default language"</string>
     <string name="pref_requested_location_disable">"You need to manually disable MockLocation from the stupid Developer Options to disable it completely."</string>
-    <string name="pref_requested_location_enable">"You need to manually enable MockLocation from the Stupid Developer Options."</string>
     <string name="pref_requested_location_summary">"Koffrora Store must be set as default Mock Location Application"</string>
     <string name="pref_ui_card_summary">"Use legacy style cards for featured apps"</string>
     <string name="pref_ui_card_title">"Legacy Style App Cards"</string>
