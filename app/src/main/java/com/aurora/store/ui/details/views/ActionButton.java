@@ -79,8 +79,6 @@ import static com.aurora.store.util.ContextUtil.runOnUiThread;
 
 public class ActionButton extends AbstractDetails {
 
-    @BindView(R.id.root_layout)
-    LinearLayout rootLayout;
     @BindView(R.id.btn_positive)
     MaterialButton btnPositive;
     @BindView(R.id.btn_negative)
@@ -130,7 +128,6 @@ public class ActionButton extends AbstractDetails {
             runOrUpdate();
 
         setupFetch();
-        show(rootLayout, R.id.btn_positive);
     }
 
     private void setupFetch() {
@@ -171,9 +168,11 @@ public class ActionButton extends AbstractDetails {
             if (info.versionCode == app.getVersionCode() || null == currentVersion) {
                 btnPositive.setText(R.string.details_run);
                 btnPositive.setOnClickListener(openAppListener());
+                btnPositive.setVisibility(PackageUtil.isPackageLaunchable(context, app.getPackageName()) ? View.VISIBLE : View.GONE);
             } else if (new File(PathUtil.getLocalApkPath(context, app.getPackageName(),
                     app.getVersionCode())).exists()) {
                 btnPositive.setOnClickListener(installAppListener());
+                btnPositive.setVisibility(View.VISIBLE);
             }
         } catch (PackageManager.NameNotFoundException ignored) {
         }
@@ -198,6 +197,7 @@ public class ActionButton extends AbstractDetails {
             btnPositive.setText(R.string.details_install);
         else
             btnPositive.setText(R.string.details_download);
+        btnPositive.setVisibility(View.VISIBLE);
         btnPositive.setEnabled(true);
         return v -> {
             switchViews(true);

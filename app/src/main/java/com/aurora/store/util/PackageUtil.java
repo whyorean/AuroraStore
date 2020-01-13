@@ -94,6 +94,11 @@ public class PackageUtil {
         }
     }
 
+    public static boolean isPackageLaunchable(Context context, String packageName) {
+        PackageManager packageManager = context.getPackageManager();
+        return (packageManager.getLaunchIntentForPackage(packageName)) != null;
+    }
+
     public static boolean isInstalled(Context context, App app) {
         try {
             context.getPackageManager().getPackageInfo(app.getPackageName(), 0);
