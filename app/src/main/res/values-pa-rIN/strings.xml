@@ -3,7 +3,7 @@
     <string name="account_dummy">"ਅਗਿਆਤ"</string>
     <string name="account_dummy_desc">"ਅਗਿਆਤ ਬਣਕੇ ਲੌਗ-ਇਨ ਕਰੋ ?"</string>
     <string name="account_google">"ਗੂਗਲ ਖਾਤਾ"</string>
-    <string name="account_logout">"ਔਰੋਰਾ ਚੋਂ ਲੋਗ-ਆਉਟ ਕਰੋ ?"</string>
+    <string name="account_logout">"ਔਰੋਰਾ ਚੋਂ ਲੌਗ-ਆਉਟ ਕਰੋ ?"</string>
     <string name="account_prompt_login">"ਕਿਰਪਾ ਕਰਕੇ ਲੌਗ-ਇਨ ਕਰੋ"</string>
     <string name="account_switch">"ਖਾਤਾ ਬਦਲੋ"</string>
     <string name="action_accounts">"ਖਾਤੇ"</string>
@@ -14,7 +14,7 @@
     <string name="action_clear_all">"ਸਾਰਾ ਮਿਟਾਓ"</string>
     <string name="action_convert_local">"ਲੋਕਲ ਵਿਚ ਬਦਲੋ"</string>
     <string name="action_convert_system">"ਸਿਸਟਮ ਵਿਚ ਬਦਲੋ"</string>
-    <string name="action_copied">"ਲਿੰਕ ਕਾਪੀ ਹੋ ਗਿਆ ਹੈ"</string>
+    <string name="action_copied">"ਲਿੰਕ ਕਾਪੀ ਸਫਲ"</string>
     <string name="action_copy">"ਲਿੰਕ ਕਾਪੀ ਕਰੋ"</string>
     <string name="action_disable">"ਬੰਦ ਕਰੋ"</string>
     <string name="action_done">"ਹੋ ਗਿਆ"</string>
@@ -30,8 +30,8 @@
     <string name="action_filter_misc">"ਫੁੱਟਕਲ"</string>
     <string name="action_filter_paid_apps">"ਭੁਗਤਾਨ ਸਹਿਤ"</string>
     <string name="action_filter_rating">"ਰੇਟਿੰਗ"</string>
-    <string name="action_flag">"ਐਪ ਰਿਪੋਰਟ ਕਰੋ"</string>
-    <string name="action_get_local_apk">"ਲੋਕਲ APK ਵਰਤੋਂ"</string>
+    <string name="action_flag">"ਐਪ ਬਾਰੇ ਸ਼ਿਕਾਇਤ ਦਰਜ਼ ਕਰੋ"</string>
+    <string name="action_get_local_apk">"APK ਨੂੰ ਲੋਕਲ ਸਟੋਰ ਕਰੋ"</string>
     <string name="action_home">"ਮੁੱਖ ਪੰਨਾ"</string>
     <string name="action_installations">"ਇੰਸਟਾਲ ਬਾਰੇ"</string>
     <string name="action_installed">"ਇੰਸਟਾਲਡ"</string>
@@ -54,7 +54,7 @@
     <string name="action_search_clearHistory">"ਸਾਰੀ ਸੂਚੀ ਮਿਟਾਓ"</string>
     <string name="action_search_history">"ਖੋਜ ਸੂਚੀ"</string>
     <string name="action_settings">"ਸੈਟਿੰਗਾਂ"</string>
-    <string name="action_spoofed">"ਧੋਖਾ 🎭"</string>
+    <string name="action_spoofed">"ਧੋਖਾ ਸੈਟਿੰਗਾਂ 🎭"</string>
     <string name="action_submit">"ਜਮਾਂ ਕਰੋ"</string>
     <string name="action_unignore">"ਬਲੈਕ ਲਿਸਟ ਵਿਚੋਂ ਹਟਾਓ"</string>
     <string name="action_uninstall">"ਅਨਿੰਸਟਾਲ"</string>
@@ -81,13 +81,13 @@
     <string name="details_no_ads">"ਬਿਨਾਂ ਇਸ਼ਤਿਹਾਰ"</string>
     <string name="details_permissions">"ਐਪਸ ਦੀ ਆਗਿਆਵਾਂ"</string>
     <string name="details_purchase">"ਖਰੀਦੋ"</string>
-    <string name="details_rate_this_app">"ਐਪ ਨੂੰ ਰੇਟ ਕਰੋ"</string>
+    <string name="details_rate_this_app">"ਐਪ ਦੀ ਰੇਟਿੰਗ ਕਰੋ"</string>
     <string name="details_rating_reviews">"ਰੇਟਿੰਗਸ ਤੇ ਸਮੀਖਿਆਵਾਂ"</string>
     <string name="details_reviews">"ਐਪ ਸਮੀਖਿਆਵਾਂ"</string>
     <string name="details_run">"ਖੋਲੋ"</string>
     <string name="details_share">"ਸਾਂਝਾ ਕਰੋ"</string>
     <string name="details_update">"ਅੱਪਡੇਟ"</string>
-    <string name="details_why_rate_this_app">"ਤੁਹਾਡੇ ਐਪ ਬਾਰੇ ਕੀ ਵਿਚਾਰ ਹਨ"</string>
+    <string name="details_why_rate_this_app">"ਇਸ ਐਪ ਬਾਰੇ ਆਪਣੇ ਵਿਚਾਰ ਦਸੋ"</string>
     <string name="details_you_rated_this_app">"ਤੁਹਾਡੀ ਰੇਟਿੰਗ"</string>
     <string name="dialog_title_logout">"ਲੌਗ-ਆਊਟ ਕਰੋ ?"</string>
     <string name="download_cancel_all">"ਰੱਦ ਕਰੋ"</string>
@@ -185,8 +185,7 @@
     <string name="pref_proxy_type">"ਪ੍ਰੌਕਸੀ ਦੀ ਕਿਸਮ"</string>
     <string name="pref_requested_language">"ਮੂਲ API ਭਾਸ਼ਾ ਬਦਲੋ"</string>
     <string name="pref_requested_language_default">"ਮੂਲ ਭਾਸ਼ਾ ਚੁਣੋ"</string>
-    <string name="pref_requested_location_disable">"ਇਸਨੂੰ ਪੂਰੀ ਤਰ੍ਹਾਂ ਹਟਾਉਣ ਲਈ ਤੁਹਾਨੂੰ ਡਿਵੈਲਪਰ ਵਿਕਲਪਾਂ ਚੋਂ MOCK LOCATION ਨੂੰ ਬੰਦ ਕਰਨ ਦੀ ਲੋੜ ਹੈ"</string>
-    <string name="pref_requested_location_enable">"ਤੁਹਾਨੂੰ ਡਿਵੈਲਪਰ ਵਿਕਲਪਾਂ ਚੋਂ MOCK LOCATION ਨੂੰ ਚਾਲੂ ਕਰਨ ਦੀ ਲੋੜ ਹੈ"</string>
+    <string name="pref_requested_location_disable">"ਇਸਨੂੰ ਪੂਰੀ ਤਰ੍ਹਾਂ ਹਟਾਉਣ ਲਈ ਤੁਹਾਨੂੰ ਫੋਨ ਦੇ ਡਿਵੈਲਪਰ ਵਿਕਲਪਾਂ ਚੋਂ Mock Location ਨੂੰ ਬੰਦ ਕਰਨਾ ਪਵੇਗਾ"</string>
     <string name="pref_requested_location_summary">"ਔਰੋਰਾ ਸਟੋਰ MOCK LOCATION ਵਿਚ ਡਿਫਾਲਟ ਐਪਲੀਕੇਸ਼ਨ ਦੇ ਤੌਰ ਤੇ ਸੈਟ ਹੋਣਾ ਚਾਹੀਦਾ ਹੈ"</string>
     <string name="pref_ui_card_summary">"ਫੀਚਰਡ ਐਪਸ ਲਈ ਪੁਰਾਣੇ ਸਟਾਈਲ ਦੇ ਕਾਰਡਾਂ ਦੀ ਵਰਤੋਂ ਕਰੋ"</string>
     <string name="pref_ui_card_title">"ਪੁਰਾਣੇ ਸਟਾਈਲ ਦੇ ਐਪ ਕਾਰਡ"</string>
@@ -199,7 +198,7 @@
     <string name="testing_program_section_opted_in_message">"ਐਪ ਅੱਪਡੇਟਾਂ ਵਿੱਚ Beta ਵਰਜ਼ਨ ਸ਼ਾਮਲ ਹੋਣਗੇ। ਜੇਕਰ ਤੁਸੀਂ ਇਸ ਐਪ ਦੇ Beta ਪ੍ਰੋਗਰਾਮ ਨੂੰ ਛੱਡ ਦਿੰਦੇ ਹੋ, ਤਾਂ ਤੁਹਾਨੂੰ Beta ਅੱਪਡੇਟਸ ਨਹੀਂ ਮਿਲਣਗੇ।"</string>
     <string name="testing_program_section_opted_in_propagating_message">"ਕੁਝ ਮਿੰਟਾਂ ਵਿੱਚ ਤੁਹਾਨੂੰ Beta ਪ੍ਰੋਗਰਾਮ ਵਿੱਚ ਜੋੜਿਆ ਜਾਵੇਗਾ। ਜੇਕਰ Beta ਉਪਲਬਧ ਹੈ ਤਾਂ ਤੁਸੀਂ ਇਸ ਐਪ ਦੇ Beta ਵਰਜ਼ਨ ਤੇ ਅੱਪਡੇਟ ਕਰ ਸਕਦੇ ਹੋ"</string>
     <string name="testing_program_section_opted_in_title">"ਤੁਸੀਂ ਇੱਕ Beta ਟੈਸਟਰ ਹੋ"</string>
-    <string name="testing_program_section_opted_out_message">"ਨਵੀਆਂ ਖੂਬੀਆਂ ਨੂੰ ਜਨਤਕ ਹੋਣ ਤੋਂ ਪਹਿਲਾਂ ਅਜ਼ਮਾਓ ਅਤੇ ਡਿਵੈਲਪਰ ਨੂੰ ਸਿੱਧੇ ਆਪਣੇ ਸੁਝਾਅ ਦਿਓ।"</string>
+    <string name="testing_program_section_opted_out_message">"ਨਵੀਆਂ ਖੂਬੀਆਂ ਨੂੰ ਜਨਤਕ ਹੋਣ ਤੋਂ ਪਹਿਲਾਂ ਅਜ਼ਮਾਓ ਅਤੇ ਡਿਵੈਲਪਰ ਨੂੰ ਸਿਧੇ ਇਸ ਬਾਰੇ ਆਪਣੇ ਸੁਝਾਅ ਭੇਜੋ।"</string>
     <string name="testing_program_section_opted_out_propagating_message">"ਤੁਹਾਨੂੰ Beta ਪ੍ਰੋਗਰਾਮ ਤੋਂ ਹਟਾਉਣ ਲਈ ਕੁਝ ਮਿੰਟ ਲੱਗ ਸਕਦੇ ਹਨ"</string>
     <string name="testing_program_section_opted_out_title">"Beta ਟੈਸਟਰ ਬਣੋ"</string>
     <string name="title_all_apps">"ਸਾਰੀਆਂ ਐਪਸ"</string>
@@ -334,7 +333,7 @@
     <string name="installer_status_failure_storage">"ਨਾਕਾਫੀ ਮੈਮੋਰੀ ਸਪੇਸ"</string>
     <string name="installer_status_success">"ਇੰਸਟਾਲੇਸ਼ਨ ਸਫਲ"</string>
     <string name="installer_status_unknown">"ਅਣਜਾਣ"</string>
-    <string name="installer_status_user_action">"ਯੂਸਰ ਵਲੋਂ ਪੁਸ਼ਟੀ ਦੀ ਉਡੀਕ…"</string>
+    <string name="installer_status_user_action">"ਯੂਸਰ ਵਲੋਂ ਪੁਸ਼ਟੀ ਦੀ ਉਡੀਕ..."</string>
     <string name="pref_downloader_internal">"ਐਪਸ ਇੰਟਰਨਲ ਸਟੋਰੇਜ ਵਿੱਚ ਡਾਊਨਲੋਡ ਕਰੋ"</string>
     <string name="pref_downloader_internal_desc">"ਜੇਕਰ ਇਹ ਚਾਲੂ ਹੈ, ਤਾਂ ਔਰੋਰਾ ਸਰਵਿਸਿਜ਼ ਰਾਹੀਂ ਐਪਸ ਇੰਸਟਾਲ ਨਹੀਂ ਹੋ ਸਕਦੇ"</string>
     <string name="pref_install_profile_summary">"ਐਪਸ ਇੰਸਟਾਲ ਕਰਨ ਲਈ ਪ੍ਰੋਫਾਈਲ ਚੁਣੋ, ਇਹ ਸਿਰਫ Root ਇੰਸਟਾਲ ਵਿਧੀ ਨਾਲ ਕੰਮ ਕਰਦਾ ਹੈ"</string>
@@ -379,4 +378,37 @@
     <string name="toast_login_failed">"ਲੌਗ-ਇਨ ਅਸਫਲ"</string>
     <string name="disclaimer">"ਆਪਣੇ ਖੁੱਦ ਦੇ ਗੂਗਲ ਖਾਤੇ ਨਾਲ ਔਰੋਰਾ ਸਟੋਰ ਦੀ ਵਰਤੋਂ ਕਰਨ ਨਾਲ ਤੁਹਾਡੇ ਖਾਤੇ ਨੂੰ ਗੂਗਲ ਦੁਆਰਾ ਬਲੈਕ-ਲਿਸਟ ਜਾਂ ਅਯੋਗ ਕੀਤਾ ਜਾ ਸਕਦਾ ਹੈ, ਕਿਉਂਕਿ ਔਰੋਰਾ ਸਟੋਰ ਗੂਗਲ ਸੇਵਾਵਾਂ ਦੀਆਂ ਸ਼ਰਤਾਂ 3.3 ਅਨੁਸਾਰ ਉਲੰਘਣਾ ਕਰਦਾ ਹੈ, ਆਪਣੇ ਜੋਖਮ 'ਤੇ ਖੁੱਦ ਦਾ ਗੂਗਲ ਖਾਤਾ ਵਰਤੋਂ.  ਤੁਸੀਂ ਲੌਗ-ਇਨ ਵਾਸਤੇ ਅਗਿਆਤ ਖਾਤੇ ਦੀ ਵੀ ਚੋਣ ਕਰ ਸਕਦੇ ਹੋ ਅਤੇ ਜਾਂ ਆਪਣਾ ਕੋਈ ਜਾਅਲੀ ਗੂਗਲ ਖਾਤਾ ਵੀ ਵਰਤ ਸਕਦੇ ਹੋ।"</string>
     <string name="menu_blacklist">"ਬਲੈਕ ਲਿਸਟ ਕਰੋ"</string>
+    <string name="action_unknown">"ਅਣਜਾਣ"</string>
+    <string name="category_all">"ਸਭ ਸ਼੍ਰੇਣੀਆਂ"</string>
+    <string name="category_family">"ਪਰਿਵਾਰਿਕ"</string>
+    <string name="category_games">"ਗੇਮਾਂ"</string>
+    <string name="details_dev_details">"ਡਿਵੈਲਪਰ ਨਾਲ ਸੰਪਰਕ ਕਰੋ"</string>
+    <string name="details_dev_email">"ਈ-ਮੇਲ"</string>
+    <string name="details_dev_address">"ਪਤਾ"</string>
+    <string name="details_dev_website">"ਵੈਬਸਾਈਟ"</string>
+    <string name="details_more_updated">"ਅੱਪਡੇਟ ਤਾਰੀਖ"</string>
+    <string name="details_more_version">"ਸੰਸਕਰਣ"</string>
+    <string name="exodus_noReport">"ਰਿਪੋਰਟ ਉਪਲੱਬਧ ਨਹੀਂ ਹੈ"</string>
+    <string name="list_empty_reviews">"ਕੋਈ ਸਮੀਖਿਆ ਉਪਲੱਬਧ ਨਹੀਂ"</string>
+    <string name="testing_program_opt_in_success">"ਤੁਹਾਨੂੰ ਬੀਟਾ ਪ੍ਰੋਗ੍ਰਾਮ ਵਿੱਚ ਸ਼ਾਮਿਲ ਕਰ ਲਿਆ ਗਿਆ ਹੈ"</string>
+    <string name="testing_program_opt_in_failed">"ਤੁਹਾਡੀ ਬੀਟਾ ਪ੍ਰੋਗ੍ਰਾਮ ਵਿੱਚ ਸ਼ਾਮਿਲ ਹੋਣ ਦੀ ਬੇਨਤੀ ਅਸਫਲ"</string>
+    <string name="testing_program_opt_out_success">"ਤੁਸੀਂ ਸਫਲਤਾਪੂਰਕ ਬੀਟਾ ਪ੍ਰੋਗ੍ਰਾਮ ਤੋਂ ਬਾਹਰ ਹੋ"</string>
+    <string name="testing_program_opt_out_failed">"ਬੀਟਾ ਪ੍ਰੋਗ੍ਰਾਮ ਚੋਂ ਬਾਹਰ ਆਉਣ ਵਿੱਚ ਅਸਫਲ"</string>
+    <string name="title_categories">"ਸ਼੍ਰੇਣੀਆਂ"</string>
+    <string name="toast_api_all_ok">"ਸਭ ਠੀਕ ਹੈ"</string>
+    <string name="toast_api_build_retrying">"API ਤਿਆਰ ਕਰਨ ਵਿੱਚ ਅਸਫਲ, ਦੋਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਜਾਰੀ......."</string>
+    <string name="toast_api_build_failed">"API ਤਿਆਰ ਕਰਨ ਵਿੱਚ ਅਸਫਲ"</string>
+    <string name="toast_api_build_api">"ਗੂਗਲ-ਪਲੇ API ਤਿਆਰ ਹੋ ਰਹੀ ਹੈ........"</string>
+    <string name="toast_api_token_validity">"ਟੋਕਨ ਦੀ ਵੈਧਤਾ ਜਾਂਚ......."</string>
+    <string name="review_positive">"ਸਕਾਰਾਤਮਕ"</string>
+    <string name="review_recent">"ਹਾਲ ਹੀ ਵਿੱਚ ਵੇਖੇ ਗਏ"</string>
+    <string name="review_helpful">"ਮਦਦਗਾਰ"</string>
+    <string name="request_failed">"ਬੇਨਤੀ ਅਸਫਲ"</string>
+    <string name="notification_channel_alert">"ਜਲਦ ਸੂਚਨਾ"</string>
+    <string name="notification_channel_general">"ਜਨਰਲ ਸੂਚਨਾ"</string>
+    <string name="action_continue_anyway">"ਜਾਰੀ ਰੱਖਣਾ ਹੈ ?"</string>
+    <string name="details_files">"ਫਾਈਲ ਦਾ ਵੇਰਵਾ"</string>
+    <string name="pref_requested_location_enable">"ਤੁਹਾਨੂੰ ਫੋਨ ਦੇ ਡਿਵੈਲਪਰ ਵਿਕਲਪਾਂ ਵਿਚ ਖੁੱਦ ਜਾ ਕੇ Mock Location ਚਾਲੂ ਕਰਨੀ ਪਵੇਗੀ। ਇਸ ਤੋਂ ਬਾਅਦ VPN ਕੁਨੈਕਸ਼ਨ ਵਿੱਚ ਆਪਣੇ ਸਭ ਤੋਂ ਨੇੜਲੇ VPN ਸਰਵਰ ਦੀ ਚੋਣ ਕਰੋ।"</string>
+    <string name="toast_api_build_delayed">"ਇਸ ਵਿੱਚ ਹੱਦ ਤੋਂ ਜ਼ਿਆਦਾ ਸਮਾਂ ਲੱਗ ਰਿਹਾ ਹੈ....."</string>
+    <string name="dialog_uninstall_confirmation"></string>
 </resources>
