@@ -29,9 +29,7 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatTextView;
-import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -77,7 +75,6 @@ public class UpdatesFragment extends BaseFragment implements UpdateAppSection.Cl
     @BindView(R.id.btn_action)
     MaterialButton btnAction;
 
-    private AppCompatActivity activity;
     private Context context;
     private Fetch fetch;
     private CompositeDisposable disposable = new CompositeDisposable();
@@ -103,17 +100,16 @@ public class UpdatesFragment extends BaseFragment implements UpdateAppSection.Cl
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        activity = (AuroraActivity) getActivity();
         fetch = DownloadManager.getFetchInstance(context);
         setupRecycler();
 
-        model = ViewModelProviders.of(activity).get(UpdatableAppsModel.class);
-        model.getListMutableLiveData().observe(activity, appList -> {
+        model = ViewModelProviders.of(this).get(UpdatableAppsModel.class);
+        model.getListMutableLiveData().observe(this, appList -> {
             dispatchAppsToAdapter(appList);
             customSwipeToRefresh.setRefreshing(false);
         });
 
-        model.getError().observe(activity, errorType -> {
+        model.getError().observe(this, errorType -> {
             switch (errorType) {
                 case NO_API:
                 case SESSION_EXPIRED:

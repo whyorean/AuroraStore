@@ -29,7 +29,6 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -65,7 +64,6 @@ public class HomeFragment extends Fragment {
     @BindView(R.id.btn_top_family)
     MaterialButton btnTopFamily;
 
-    private AppCompatActivity activity;
     private Context context;
     private FeaturedAppsAdapter topAppsAdapter;
     private FeaturedAppsAdapter topGamesAdapter;
@@ -108,19 +106,18 @@ public class HomeFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        activity = (AuroraActivity) getActivity();
         setupRecyclers();
-        HomeAppsModel homeAppsModel = ViewModelProviders.of(activity).get(HomeAppsModel.class);
-        homeAppsModel.getTopApps().observe(activity, appList -> {
+        HomeAppsModel homeAppsModel = ViewModelProviders.of(this).get(HomeAppsModel.class);
+        homeAppsModel.getTopApps().observe(this, appList -> {
             topAppsAdapter.addData(appList);
         });
-        homeAppsModel.getTopGames().observe(activity, appList -> {
+        homeAppsModel.getTopGames().observe(this, appList -> {
             topGamesAdapter.addData(appList);
         });
-        homeAppsModel.getTopFamily().observe(activity, appList -> {
+        homeAppsModel.getTopFamily().observe(this, appList -> {
             topFamilyAdapter.addData(appList);
         });
-        homeAppsModel.getError().observe(activity, errorType -> {
+        homeAppsModel.getError().observe(this, errorType -> {
 
         });
     }
