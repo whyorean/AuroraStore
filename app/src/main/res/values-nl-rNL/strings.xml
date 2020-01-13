@@ -186,7 +186,6 @@ Houd er rekening mee dat het downloaden van willekeurige versies van apps niet w
     <string name="pref_requested_language">"Wijzig de standaard API-aanvraagtaal"</string>
     <string name="pref_requested_language_default">"Uw standaardtaal"</string>
     <string name="pref_requested_location_disable">"U moet MockLocatie handmatig uitschakelen van de ontwikkelaaropties om het volledig uit te schakelen."</string>
-    <string name="pref_requested_location_enable">"U moet MockLocatie handmatig inschakelen via de ontwikkelaaropties."</string>
     <string name="pref_requested_location_summary">"Aurora Winkel moet worden ingesteld als standaard dummy locatietoepassing"</string>
     <string name="pref_ui_card_summary">"Gebruik kaarten in traditionele stijl voor aanbevolen apps"</string>
     <string name="pref_ui_card_title">"Traditionele stijl van applicatiekaarten"</string>
