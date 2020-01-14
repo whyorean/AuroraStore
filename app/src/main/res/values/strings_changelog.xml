@@ -20,6 +20,14 @@
 
 <resources>
     <string name="app_log" translatable="false">
+        \n Changelog : v3.1.8
+        \n • Fixed Exodus report
+        \n • Fixed Login/No network issue
+        \n • Fixed Splash screen issue
+        \n • Fixed 2FA login issues
+        \n • Fixed multiple other issues
+        \n • Updated translations
+        \n
         \n Changelog : v3.1.7
         \n • Fix a critical serialization/deserialization issue
         \n
