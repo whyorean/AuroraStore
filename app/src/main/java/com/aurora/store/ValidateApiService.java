@@ -74,6 +74,7 @@ public class ValidateApiService extends Service {
                 .subscribe(response -> {
                     Log.d(getString(R.string.toast_api_all_ok));
                     AuroraApplication.rxNotify(new Event(Event.SubType.API_SUCCESS));
+                    stopSelf();
                 }, err -> {
                     Log.d(getString(R.string.toast_api_build_failed));
                     processException(err);
@@ -106,6 +107,7 @@ public class ValidateApiService extends Service {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(response -> {
                     AuroraApplication.rxNotify(new Event(Event.SubType.API_SUCCESS));
+                    stopSelf();
                 }, err -> {
                     Log.e(err.getMessage());
                     AuroraApplication.rxNotify(new Event(Event.SubType.API_ERROR));
