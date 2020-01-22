@@ -95,3 +95,20 @@ Changelog : v3.1.4
 Changelog : v3.1.5
 • Updated translations
 • Bug fixes and improvements
+
+Changelog : v3.1.6
+• Update UI
+• Fixed issues related to beta subscriptions
+• Fixed login issues
+• Bug fixes and improvements
+
+Changelog : v3.1.7
+• Fix a critical serialization/deserialization issue
+
+Changelog : v3.1.8
+• Fixed Exodus report
+• Fixed Login/No network issue
+• Fixed Splash screen issue
+• Fixed 2FA login issues
+• Fixed multiple other issues
+• Updated translations
