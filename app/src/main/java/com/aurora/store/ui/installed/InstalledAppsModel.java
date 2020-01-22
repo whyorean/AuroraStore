@@ -14,7 +14,6 @@ import com.aurora.store.task.InstalledAppsTask;
 import com.aurora.store.util.Accountant;
 import com.aurora.store.util.PrefUtil;
 import com.aurora.store.viewmodel.BaseViewModel;
-import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +25,6 @@ import io.reactivex.schedulers.Schedulers;
 public class InstalledAppsModel extends BaseViewModel implements SharedPreferences.OnSharedPreferenceChangeListener {
 
     private boolean userOnly;
-    private Gson gson = new Gson();
 
     private MutableLiveData<List<App>> listMutableLiveData = new MutableLiveData<>();
 

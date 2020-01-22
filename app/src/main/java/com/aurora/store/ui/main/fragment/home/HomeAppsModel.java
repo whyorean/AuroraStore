@@ -126,7 +126,6 @@ public class HomeAppsModel extends AndroidViewModel {
     }
 
     private void saveToCache(List<App> appList, String key) {
-        Gson gson = new Gson();
         String jsonString = gson.toJson(appList);
         PrefUtil.putString(application, key, jsonString);
     }
