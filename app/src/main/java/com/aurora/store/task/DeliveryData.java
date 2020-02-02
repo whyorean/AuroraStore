@@ -23,6 +23,7 @@ package com.aurora.store.task;
 import android.content.Context;
 
 import com.aurora.store.Constants;
+import com.aurora.store.exception.AppNotFoundException;
 import com.aurora.store.exception.NotPurchasedException;
 import com.aurora.store.model.App;
 import com.aurora.store.util.Log;
@@ -62,7 +63,7 @@ public class DeliveryData extends BaseTask {
             if (buyResponse.hasDownloadToken()) {
                 downloadToken = buyResponse.getDownloadToken();
             }
-        } catch (IOException e) {
+        } catch (Exception e) {
             Log.d("Failed to purchase %s", app.getDisplayName());
         }
     }
@@ -77,8 +78,17 @@ public class DeliveryData extends BaseTask {
         if (deliveryResponse.hasAppDeliveryData()
                 && deliveryResponse.getAppDeliveryData().hasDownloadUrl()) {
             deliveryData = deliveryResponse.getAppDeliveryData();
-        } else if (deliveryData == null) {
-            throw new NotPurchasedException(app.getDisplayName());
+        } else if (deliveryData == null && deliveryResponse.hasStatus()) {
+            handleError(app, deliveryResponse.getStatus());
+        }
+    }
+
+    private void handleError(App app, int statusCode) throws IOException {
+        switch (statusCode) {
+            case 2:
+                throw new AppNotFoundException(app.getDisplayName(), statusCode);
+            case 3:
+                throw new NotPurchasedException(app.getDisplayName(), statusCode);
         }
     }
 

@@ -27,6 +27,13 @@ import java.io.IOException;
 
 public class NotPurchasedException extends IOException {
 
+    protected int code;
+
+    public NotPurchasedException(String message, int code) {
+        super(message);
+        this.code = code;
+    }
+
     public NotPurchasedException() {
         super("NotPurchasedException");
     }

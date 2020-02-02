@@ -38,6 +38,7 @@ import com.aurora.store.AuroraApplication;
 import com.aurora.store.R;
 import com.aurora.store.download.DownloadManager;
 import com.aurora.store.download.RequestBuilder;
+import com.aurora.store.exception.AppNotFoundException;
 import com.aurora.store.exception.NotPurchasedException;
 import com.aurora.store.model.App;
 import com.aurora.store.notification.GeneralNotification;
@@ -214,6 +215,10 @@ public class ActionButton extends AbstractDetails {
                         if (err instanceof NotPurchasedException) {
                             Log.d("%s not purchased", app.getDisplayName());
                             showPurchaseDialog();
+                        }
+                        if (err instanceof AppNotFoundException){
+                            Log.d("%s not not found", app.getDisplayName());
+                            showAppNotAvailableDialog();
                         }
                         if (err instanceof NullPointerException) {
                             if (App.Restriction.RESTRICTED_GEO == app.getRestriction())

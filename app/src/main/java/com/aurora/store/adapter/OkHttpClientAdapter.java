@@ -129,7 +129,6 @@ public class OkHttpClientAdapter extends HttpClientAdapter {
 
     private byte[] post(String url, Request.Builder requestBuilder, Map<String, String> headers) throws IOException {
         requestBuilder.url(url);
-
         return request(requestBuilder, headers);
     }
 

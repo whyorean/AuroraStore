@@ -140,6 +140,17 @@ public abstract class AbstractDetails {
         builder.show();
     }
 
+    protected void showAppNotAvailableDialog() {
+        MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context)
+                .setTitle(context.getString(R.string.dialog_unavailable_title))
+                .setMessage(context.getString(R.string.dialog_unavailable_desc))
+                .setPositiveButton(context.getString(R.string.action_close), (dialog, which) -> {
+                    dialog.dismiss();
+                });
+        builder.create();
+        builder.show();
+    }
+
     private void openWebView(String URL) {
         try {
             context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(URL)));

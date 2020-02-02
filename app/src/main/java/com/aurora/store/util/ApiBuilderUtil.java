@@ -5,7 +5,7 @@ import android.content.SharedPreferences;
 import android.text.TextUtils;
 
 import com.aurora.store.Constants;
-import com.aurora.store.adapter.NativeHttpClientAdapter;
+import com.aurora.store.adapter.OkHttpClientAdapter;
 import com.aurora.store.api.PlayStoreApiAuthenticator;
 import com.aurora.store.exception.CredentialsEmptyException;
 import com.aurora.store.manager.LocaleManager;
@@ -87,7 +87,7 @@ public class ApiBuilderUtil {
         loginInfo.setLocale(TextUtils.isEmpty(locale) ? Locale.getDefault().getLanguage() : locale);
 
         PlayStoreApiBuilder builder = new PlayStoreApiBuilder();
-        builder.setHttpClient(new NativeHttpClientAdapter(context));
+        builder.setHttpClient(new OkHttpClientAdapter(context));
         builder.setDeviceInfoProvider(getDeviceInfoProvider(context));
         builder.setLocale(loginInfo.getLocale());
         builder.setEmail(loginInfo.getEmail());
