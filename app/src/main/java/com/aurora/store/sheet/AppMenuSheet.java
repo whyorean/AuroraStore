@@ -39,6 +39,7 @@ import com.aurora.store.AuroraApplication;
 import com.aurora.store.R;
 import com.aurora.store.events.Event;
 import com.aurora.store.events.RxBus;
+import com.aurora.store.installer.Uninstaller;
 import com.aurora.store.manager.BlacklistManager;
 import com.aurora.store.manager.FavouriteListManager;
 import com.aurora.store.model.App;
@@ -155,7 +156,7 @@ public class AppMenuSheet extends BottomSheetDialogFragment {
                     context.startActivity(new Intent(context, ManualDownloadActivity.class), ViewUtil.getEmptyActivityBundle((AppCompatActivity) context));
                     break;
                 case R.id.action_uninstall:
-                    AuroraApplication.getUninstaller().uninstall(app);
+                    new Uninstaller(context).uninstall(app);
                     break;
                 case R.id.action_info:
                     try {

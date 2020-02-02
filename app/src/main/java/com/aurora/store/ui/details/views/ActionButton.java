@@ -40,6 +40,7 @@ import com.aurora.store.download.DownloadManager;
 import com.aurora.store.download.RequestBuilder;
 import com.aurora.store.exception.AppNotFoundException;
 import com.aurora.store.exception.NotPurchasedException;
+import com.aurora.store.installer.Uninstaller;
 import com.aurora.store.model.App;
 import com.aurora.store.notification.GeneralNotification;
 import com.aurora.store.task.DeliveryData;
@@ -180,7 +181,7 @@ public class ActionButton extends AbstractDetails {
     }
 
     private View.OnClickListener uninstallAppListener() {
-        return v -> AuroraApplication.getUninstaller().uninstall(app);
+        return v -> new Uninstaller(context).uninstall(app);
     }
 
     private View.OnClickListener installAppListener() {
@@ -216,7 +217,7 @@ public class ActionButton extends AbstractDetails {
                             Log.d("%s not purchased", app.getDisplayName());
                             showPurchaseDialog();
                         }
-                        if (err instanceof AppNotFoundException){
+                        if (err instanceof AppNotFoundException) {
                             Log.d("%s not not found", app.getDisplayName());
                             showAppNotAvailableDialog();
                         }
@@ -232,14 +233,14 @@ public class ActionButton extends AbstractDetails {
         };
     }
 
-    private void checkPurchased(){
+    private void checkPurchased() {
         compositeDisposable.add(Observable.fromCallable(() -> new DeliveryData(context)
                 .getDeliveryData(app))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(androidAppDeliveryData -> {
                     btnPositive.setText(R.string.details_install);
-                },err->{
+                }, err -> {
                     btnPositive.setText(R.string.details_purchase);
                 }));
     }

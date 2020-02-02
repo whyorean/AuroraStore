@@ -28,7 +28,6 @@ import com.aurora.store.events.Event;
 import com.aurora.store.events.RxBus;
 import com.aurora.store.installer.Installer;
 import com.aurora.store.installer.InstallerService;
-import com.aurora.store.installer.Uninstaller;
 import com.aurora.store.model.App;
 import com.aurora.store.util.Log;
 import com.aurora.store.util.Util;
@@ -50,8 +49,6 @@ public class AuroraApplication extends Application {
 
     @SuppressLint("StaticFieldLeak")
     private static Installer installer;
-    @SuppressLint("StaticFieldLeak")
-    private static Uninstaller uninstaller;
 
     public static RxBus getRxBus() {
         return rxBus;
@@ -87,10 +84,6 @@ public class AuroraApplication extends Application {
         return installer;
     }
 
-    public static Uninstaller getUninstaller() {
-        return uninstaller;
-    }
-
     public static void rxNotify(Event event) {
         rxBus.getBus().accept(event);
     }
@@ -101,7 +94,6 @@ public class AuroraApplication extends Application {
 
         rxBus = new RxBus();
         installer = new Installer(this);
-        uninstaller = new Uninstaller(this);
 
         //Clear all old installation sessions.
         Util.clearOldInstallationSessions(this);
