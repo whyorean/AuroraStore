@@ -34,9 +34,10 @@ import androidx.appcompat.widget.AppCompatImageView;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.aurora.store.AuroraApplication;
+import com.aurora.store.AutoDisposable;
 import com.aurora.store.Constants;
 import com.aurora.store.GlideApp;
 import com.aurora.store.R;
@@ -67,7 +68,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
 public class DetailsActivity extends BaseActivity {
@@ -93,7 +94,7 @@ public class DetailsActivity extends BaseActivity {
     private FavouriteListManager favouriteListManager;
     private DetailsAppModel model;
 
-    private CompositeDisposable disposable = new CompositeDisposable();
+    private AutoDisposable autoDisposable = new AutoDisposable();
 
     private BroadcastReceiver globalInstallReceiver = new BroadcastReceiver() {
         @Override
@@ -111,10 +112,10 @@ public class DetailsActivity extends BaseActivity {
         setContentView(R.layout.activity_details);
         ButterKnife.bind(this);
         setupActionBar();
-
+        autoDisposable.bindTo(getLifecycle());
         favouriteListManager = new FavouriteListManager(this);
 
-        model = ViewModelProviders.of(this).get(DetailsAppModel.class);
+        model = new ViewModelProvider(this).get(DetailsAppModel.class);
         model.getAppDetails().observe(this, detailApp -> {
             draw(detailApp);
         });
@@ -135,7 +136,7 @@ public class DetailsActivity extends BaseActivity {
         });
 
         registerReceiver(globalInstallReceiver, PackageUtil.getFilter());
-        disposable.add(AuroraApplication
+        Disposable disposable = AuroraApplication
                 .getRxBus()
                 .getBus()
                 .subscribe(event -> {
@@ -148,8 +149,8 @@ public class DetailsActivity extends BaseActivity {
                             model.fetchAppDetails(packageName);
                             break;
                     }
-                }));
-
+                });
+        autoDisposable.add(disposable);
         onNewIntent(getIntent());
     }
 
@@ -228,7 +229,6 @@ public class DetailsActivity extends BaseActivity {
         try {
             app = null;
             unregisterReceiver(globalInstallReceiver);
-            disposable.clear();
         } catch (Exception ignored) {
         }
         super.onDestroy();
@@ -271,19 +271,20 @@ public class DetailsActivity extends BaseActivity {
 
     private void draw(App appFromMarket) {
         app = appFromMarket;
-        actionButton = new ActionButton(this, app);
-        disposable.add(Observable.just(
+        Disposable disposable = Observable.just(
                 new GeneralDetails(this, app),
                 new Screenshot(this, app),
                 new Reviews(this, app),
                 new ExodusPrivacy(this, app),
                 new Video(this, app),
                 new Beta(this, app),
-                new AppLinks(this, app))
+                new AppLinks(this, app),
+                actionButton = new ActionButton(this, app))
                 .subscribeOn(Schedulers.computation())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnNext(AbstractDetails::draw)
-                .subscribe());
+                .subscribe();
+        autoDisposable.add(disposable);
         drawButtons();
     }
 

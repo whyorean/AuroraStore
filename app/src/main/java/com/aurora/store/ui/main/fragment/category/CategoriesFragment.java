@@ -20,7 +20,6 @@
 
 package com.aurora.store.ui.main.fragment.category;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -31,7 +30,7 @@ import android.widget.ProgressBar;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -58,14 +57,7 @@ public class CategoriesFragment extends Fragment implements CategoriesSection.Cl
     @BindView(R.id.progress_bar)
     ProgressBar progressBar;
 
-    private Context context;
     private CategoryManager categoryManager;
-
-    @Override
-    public void onAttach(@NonNull Context context) {
-        super.onAttach(context);
-        this.context = context;
-    }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -78,8 +70,8 @@ public class CategoriesFragment extends Fragment implements CategoriesSection.Cl
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        categoryManager = new CategoryManager(context);
-        CategoriesModel categoriesModel = ViewModelProviders.of(this).get(CategoriesModel.class);
+        categoryManager = new CategoryManager(requireContext());
+        CategoriesModel categoriesModel = new ViewModelProvider(this).get(CategoriesModel.class);
         categoriesModel.getFetchCompleted().observe(this, success -> {
             if (success) {
                 setupRecycler();
@@ -91,21 +83,21 @@ public class CategoriesFragment extends Fragment implements CategoriesSection.Cl
 
     private void setupRecycler() {
         SectionedRecyclerViewAdapter viewAdapter = new SectionedRecyclerViewAdapter();
-        viewAdapter.addSection(TAG_CATEGORIES_ALL, new CategoriesSection(context,
+        viewAdapter.addSection(TAG_CATEGORIES_ALL, new CategoriesSection(requireContext(),
                 categoryManager.getCategories(Constants.CATEGORY_APPS), getString(R.string.category_all), this));
-        viewAdapter.addSection(TAG_CATEGORIES_GAME, new CategoriesSection(context,
+        viewAdapter.addSection(TAG_CATEGORIES_GAME, new CategoriesSection(requireContext(),
                 categoryManager.getCategories(Constants.CATEGORY_GAME), getString(R.string.category_games), this));
-        viewAdapter.addSection(TAG_CATEGORIES_FAMILY, new CategoriesSection(context,
+        viewAdapter.addSection(TAG_CATEGORIES_FAMILY, new CategoriesSection(requireContext(),
                 categoryManager.getCategories(Constants.CATEGORY_FAMILY), getString(R.string.category_family), this));
-        recyclerView.setLayoutManager(new LinearLayoutManager(context, RecyclerView.VERTICAL, false));
+        recyclerView.setLayoutManager(new LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false));
         recyclerView.setAdapter(viewAdapter);
     }
 
     @Override
     public void onClick(String categoryId, String categoryName) {
-        Intent intent = new Intent(context, CategoryAppsActivity.class);
+        Intent intent = new Intent(requireContext(), CategoryAppsActivity.class);
         intent.putExtra("CategoryId", categoryId);
         intent.putExtra("CategoryName", categoryName);
-        context.startActivity(intent, ViewUtil.getEmptyActivityBundle((AuroraActivity) context));
+        requireContext().startActivity(intent, ViewUtil.getEmptyActivityBundle((AuroraActivity) requireContext()));
     }
 }

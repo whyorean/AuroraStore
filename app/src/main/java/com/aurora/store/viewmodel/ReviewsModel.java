@@ -37,7 +37,7 @@ public class ReviewsModel extends BaseViewModel {
         if (iterator == null || rebuild)
             getIterator(packageName, reviewSort);
 
-        disposable.add(Observable.fromCallable(() -> new ReviewsHelper(iterator)
+        compositeDisposable.add(Observable.fromCallable(() -> new ReviewsHelper(iterator)
                 .getReviews())
                 .subscribeOn(Schedulers.computation())
                 .subscribeOn(Schedulers.io())
@@ -64,7 +64,7 @@ public class ReviewsModel extends BaseViewModel {
 
     @Override
     protected void onCleared() {
-        disposable.dispose();
+        compositeDisposable.dispose();
         super.onCleared();
     }
 }

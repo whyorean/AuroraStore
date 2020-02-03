@@ -20,7 +20,7 @@
 
 package com.aurora.store.sheet;
 
-import android.content.Context;
+import android.app.Dialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -28,6 +28,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -41,6 +42,7 @@ import com.aurora.store.model.ExodusTracker;
 import com.aurora.store.model.Report;
 import com.aurora.store.util.Log;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 import org.json.JSONArray;
@@ -67,23 +69,23 @@ public class ExodusBottomSheet extends BottomSheetDialogFragment {
     @BindView(R.id.exodus_app_version)
     TextView exodus_app_version;
 
-    private Context context;
     private Report report;
 
     public ExodusBottomSheet(Report report) {
         this.report = report;
     }
 
+    @NonNull
     @Override
-    public void onAttach(@NonNull Context context) {
-        super.onAttach(context);
-        this.context = context;
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        getDialog().getBehavior().setState(BottomSheetBehavior.STATE_EXPANDED);
+    public Dialog onCreateDialog(Bundle savedInstanceState) {
+        BottomSheetDialog dialog = (BottomSheetDialog) super.onCreateDialog(savedInstanceState);
+        dialog.setOnShowListener(d -> {
+            BottomSheetDialog bottomSheetDialog = (BottomSheetDialog) d;
+            FrameLayout bottomSheet = bottomSheetDialog.findViewById(com.google.android.material.R.id.design_bottom_sheet);
+            if (bottomSheet != null)
+                BottomSheetBehavior.from(bottomSheet).setState(BottomSheetBehavior.STATE_EXPANDED);
+        });
+        return dialog;
     }
 
     @Nullable
@@ -108,7 +110,7 @@ public class ExodusBottomSheet extends BottomSheetDialogFragment {
         sb.append(report.getVersionCode());
         exodus_app_version.setText(sb);
 
-        btn_report.setOnClickListener(v -> context.startActivity(new Intent(Intent.ACTION_VIEW,
+        btn_report.setOnClickListener(v -> requireContext().startActivity(new Intent(Intent.ACTION_VIEW,
                 Uri.parse("https://reports.exodus-privacy.eu.org/reports/" + report.getId() + "/"))));
     }
 
@@ -133,7 +135,7 @@ public class ExodusBottomSheet extends BottomSheetDialogFragment {
 
     private ArrayList<JSONObject> getTrackerObjects(List<Integer> trackerIdList) {
         try {
-            InputStream inputStream = context.getAssets().open("exodus_trackers.json");
+            InputStream inputStream = requireContext().getAssets().open("exodus_trackers.json");
             byte[] mByte = new byte[inputStream.available()];
             inputStream.read(mByte);
             inputStream.close();

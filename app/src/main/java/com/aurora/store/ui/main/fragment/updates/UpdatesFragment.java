@@ -20,7 +20,6 @@
 
 package com.aurora.store.ui.main.fragment.updates;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -30,7 +29,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatTextView;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -53,7 +52,6 @@ import com.google.android.material.button.MaterialButton;
 import com.tonyodev.fetch2.Fetch;
 
 import org.apache.commons.lang3.StringUtils;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -75,19 +73,12 @@ public class UpdatesFragment extends BaseFragment implements UpdateAppSection.Cl
     @BindView(R.id.btn_action)
     MaterialButton btnAction;
 
-    private Context context;
     private Fetch fetch;
     private CompositeDisposable disposable = new CompositeDisposable();
 
     private UpdatableAppsModel model;
     private UpdateAppSection section;
     private SectionedRecyclerViewAdapter adapter;
-
-    @Override
-    public void onAttach(@NotNull Context context) {
-        super.onAttach(context);
-        this.context = context;
-    }
 
     @Nullable
     @Override
@@ -100,10 +91,10 @@ public class UpdatesFragment extends BaseFragment implements UpdateAppSection.Cl
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        fetch = DownloadManager.getFetchInstance(context);
+        fetch = DownloadManager.getFetchInstance(requireContext());
         setupRecycler();
 
-        model = ViewModelProviders.of(this).get(UpdatableAppsModel.class);
+        model = new ViewModelProvider(this).get(UpdatableAppsModel.class);
         model.getListMutableLiveData().observe(this, appList -> {
             dispatchAppsToAdapter(appList);
             customSwipeToRefresh.setRefreshing(false);
@@ -113,7 +104,7 @@ public class UpdatesFragment extends BaseFragment implements UpdateAppSection.Cl
             switch (errorType) {
                 case NO_API:
                 case SESSION_EXPIRED:
-                    Util.validateApi(context);
+                    Util.validateApi(requireContext());
                     break;
             }
         });
@@ -180,9 +171,9 @@ public class UpdatesFragment extends BaseFragment implements UpdateAppSection.Cl
     private void setupRecycler() {
         customSwipeToRefresh.setRefreshing(false);
         adapter = new SectionedRecyclerViewAdapter();
-        section = new UpdateAppSection(context, this);
+        section = new UpdateAppSection(requireContext(), this);
         adapter.addSection(section);
-        recyclerView.setLayoutManager(new LinearLayoutManager(context, RecyclerView.VERTICAL, false));
+        recyclerView.setLayoutManager(new LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false));
         recyclerView.setAdapter(adapter);
     }
 
@@ -192,13 +183,13 @@ public class UpdatesFragment extends BaseFragment implements UpdateAppSection.Cl
             btnAction.setOnClickListener(v -> {
                 cancelAllRequests();
                 AuroraApplication.setOngoingUpdateList(new ArrayList<>());
-                Util.stopBulkUpdate(context);
+                Util.stopBulkUpdate(requireContext());
             });
         } else {
             btnAction.setText(getString(R.string.list_update_all));
             btnAction.setOnClickListener(v -> {
                 AuroraApplication.setOngoingUpdateList(section.getList());
-                Util.bulkUpdate(context);
+                Util.bulkUpdate(requireContext());
             });
         }
     }
@@ -212,8 +203,8 @@ public class UpdatesFragment extends BaseFragment implements UpdateAppSection.Cl
             txtUpdateAll.setText(new StringBuilder()
                     .append(size)
                     .append(StringUtils.SPACE)
-                    .append(size == 1 ? context.getString(R.string.list_update_all_txt_one) :
-                            context.getString(R.string.list_update_all_txt)));
+                    .append(size == 1 ? requireContext().getString(R.string.list_update_all_txt_one) :
+                            requireContext().getString(R.string.list_update_all_txt)));
             btnAction.setVisibility(View.VISIBLE);
             txtUpdateAll.setVisibility(View.VISIBLE);
         }
@@ -229,9 +220,9 @@ public class UpdatesFragment extends BaseFragment implements UpdateAppSection.Cl
     @Override
     public void onClick(App app) {
         DetailsActivity.app = app;
-        Intent intent = new Intent(context, DetailsActivity.class);
+        Intent intent = new Intent(requireContext(), DetailsActivity.class);
         intent.putExtra(Constants.INTENT_PACKAGE_NAME, app.getPackageName());
-        context.startActivity(intent, ViewUtil.getEmptyActivityBundle((AuroraActivity) context));
+        requireContext().startActivity(intent, ViewUtil.getEmptyActivityBundle((AuroraActivity) requireContext()));
     }
 
     @Override

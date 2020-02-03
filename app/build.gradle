@@ -62,7 +62,7 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'commons-io:commons-io:2.6'
     implementation 'org.apache.maven:maven-artifact:3.6.2'
-    implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
 
     //UI-Libs
     implementation 'androidx.appcompat:appcompat:1.1.0'
@@ -70,9 +70,9 @@ dependencies {
     implementation 'androidx.preference:preference:1.1.0'
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.0.0'
     implementation 'androidx.palette:palette:1.0.0'
-    implementation 'androidx.navigation:navigation-fragment:2.1.0'
-    implementation 'androidx.navigation:navigation-ui:2.1.0'
-    implementation 'com.google.android.material:material:1.1.0-alpha10'
+    implementation 'androidx.navigation:navigation-fragment:2.2.0'
+    implementation 'androidx.navigation:navigation-ui:2.2.0'
+    implementation 'com.google.android.material:material:1.2.0-alpha04'
     implementation 'io.github.luizgrp.sectionedrecyclerviewadapter:sectionedrecyclerviewadapter:3.0.0'
 
     //Utils
@@ -100,13 +100,16 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.0'
 
     //Glide
-    implementation 'com.github.bumptech.glide:glide:4.10.0'
-    implementation "com.github.bumptech.glide:okhttp3-integration:4.10.0"
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.10.0'
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+    implementation "com.github.bumptech.glide:okhttp3-integration:4.11.0"
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
 
     //Fetch - Downloader
     implementation 'androidx.tonyodev.fetch2:xfetch2:3.1.4'
     implementation 'androidx.tonyodev.fetch2okhttp:xfetch2okhttp:3.1.4'
+
+    //Debug
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.1'
 }
 
 repositories {

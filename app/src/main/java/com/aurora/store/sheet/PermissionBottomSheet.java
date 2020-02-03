@@ -20,7 +20,7 @@
 
 package com.aurora.store.sheet;
 
-import android.content.Context;
+import android.app.Dialog;
 import android.content.pm.PackageManager;
 import android.content.pm.PermissionGroupInfo;
 import android.content.pm.PermissionInfo;
@@ -28,6 +28,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -38,6 +39,7 @@ import com.aurora.store.PermissionGroup;
 import com.aurora.store.R;
 import com.aurora.store.model.App;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 import java.util.ArrayList;
@@ -60,7 +62,6 @@ public class PermissionBottomSheet extends BottomSheetDialogFragment {
     @BindView(R.id.permissions_none)
     TextView permissions_none;
 
-    private Context context;
     private App app;
     private PackageManager pm;
 
@@ -68,28 +69,24 @@ public class PermissionBottomSheet extends BottomSheetDialogFragment {
         this.app = app;
     }
 
+    @NonNull
     @Override
-    public void onAttach(@NonNull Context context) {
-        super.onAttach(context);
-        this.context = context;
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        getDialog().getBehavior().setState(BottomSheetBehavior.STATE_EXPANDED);
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public Dialog onCreateDialog(Bundle savedInstanceState) {
+        BottomSheetDialog dialog = (BottomSheetDialog) super.onCreateDialog(savedInstanceState);
+        dialog.setOnShowListener(d -> {
+            BottomSheetDialog bottomSheetDialog = (BottomSheetDialog) d;
+            FrameLayout bottomSheet = bottomSheetDialog.findViewById(com.google.android.material.R.id.design_bottom_sheet);
+            if (bottomSheet != null)
+                BottomSheetBehavior.from(bottomSheet).setState(BottomSheetBehavior.STATE_EXPANDED);
+        });
+        return dialog;
     }
 
     @NonNull
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.sheet_permissions, container, false);
-        pm = context.getPackageManager();
+        pm = requireContext().getPackageManager();
         return view;
     }
 

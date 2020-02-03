@@ -20,7 +20,6 @@
 
 package com.aurora.store.ui.intro.fragment;
 
-import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PermissionGroupInfo;
@@ -52,14 +51,7 @@ public class PermissionFragment extends Fragment {
     @BindView(R.id.permissions_container)
     LinearLayout container;
 
-    private Context context;
     private PackageManager packageManager;
-
-    @Override
-    public void onAttach(@NonNull Context context) {
-        super.onAttach(context);
-        this.context = context;
-    }
 
     @Nullable
     @Override
@@ -72,7 +64,7 @@ public class PermissionFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        packageManager = context.getPackageManager();
+        packageManager = requireContext().getPackageManager();
         addPermissionWidgets();
     }
 
@@ -84,7 +76,7 @@ public class PermissionFragment extends Fragment {
     private void addPermissionWidgets() {
         Map<String, PermissionGroup> permissionGroupWidgets = new HashMap<>();
         try {
-            PackageInfo packageInfo = packageManager.getPackageInfo(context.getPackageName(), PackageManager.GET_PERMISSIONS);
+            PackageInfo packageInfo = packageManager.getPackageInfo(requireContext().getPackageName(), PackageManager.GET_PERMISSIONS);
             String[] allPermissionInfo = packageInfo.requestedPermissions;
             for (String permissionName : allPermissionInfo) {
                 PermissionInfo permissionInfo = getPermissionInfo(permissionName);

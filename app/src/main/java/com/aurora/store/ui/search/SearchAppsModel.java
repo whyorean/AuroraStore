@@ -20,6 +20,7 @@ import java.util.List;
 
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
 public class SearchAppsModel extends BaseViewModel {
@@ -52,14 +53,14 @@ public class SearchAppsModel extends BaseViewModel {
         if (!shouldIterate)
             getIterator(query);
 
-        disposable.clear();
-        disposable.add(Observable.fromCallable(() -> new SearchTask(getApplication())
+        Disposable disposable = Observable.fromCallable(() -> new SearchTask(getApplication())
                 .getSearchResults(iterator))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe((appList) -> {
                     listMutableLiveData.setValue(appList);
-                }, err -> handleError(err)));
+                }, err -> handleError(err));
+        compositeDisposable.add(disposable);
     }
 
     public void getIterator(String query) {
@@ -72,5 +73,11 @@ public class SearchAppsModel extends BaseViewModel {
         } catch (Exception err) {
             handleError(err);
         }
+    }
+
+    @Override
+    protected void onCleared() {
+        compositeDisposable.dispose();
+        super.onCleared();
     }
 }

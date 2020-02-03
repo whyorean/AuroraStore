@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -64,7 +64,7 @@ public class InstalledAppActivity extends BaseActivity implements InstallAppSect
             model.fetchInstalledApps(isChecked);
         });
 
-        model = ViewModelProviders.of(this).get(InstalledAppsModel.class);
+        model = new ViewModelProvider(this).get(InstalledAppsModel.class);
         model.getListMutableLiveData().observe(this, appList -> {
             dispatchAppsToAdapter(appList);
             swipeLayout.setRefreshing(false);

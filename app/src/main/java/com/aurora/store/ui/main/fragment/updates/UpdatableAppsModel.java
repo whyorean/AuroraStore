@@ -33,7 +33,7 @@ public class UpdatableAppsModel extends BaseViewModel {
     }
 
     public void fetchUpdatableApps() {
-        disposable.add(Observable.fromCallable(() -> new UpdatableAppsTask(api, getApplication())
+        compositeDisposable.add(Observable.fromCallable(() -> new UpdatableAppsTask(api, getApplication())
                 .getUpdatableApps())
                 .subscribeOn(Schedulers.computation())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -44,7 +44,7 @@ public class UpdatableAppsModel extends BaseViewModel {
 
     @Override
     protected void onCleared() {
-        disposable.dispose();
+        compositeDisposable.dispose();
         super.onCleared();
     }
 }

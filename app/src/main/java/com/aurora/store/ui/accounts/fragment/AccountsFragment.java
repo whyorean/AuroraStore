@@ -20,7 +20,6 @@
 
 package com.aurora.store.ui.accounts.fragment;
 
-import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -54,8 +53,6 @@ import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 import com.dragons.aurora.playstoreapiv2.Image;
 import com.dragons.aurora.playstoreapiv2.UserProfile;
 import com.google.android.material.chip.Chip;
-
-import org.jetbrains.annotations.NotNull;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -106,14 +103,7 @@ public class AccountsFragment extends Fragment {
     @BindView(R.id.chip_license)
     Chip chipLicense;
 
-    private Context context;
     private CompositeDisposable disposable = new CompositeDisposable();
-
-    @Override
-    public void onAttach(@NotNull Context context) {
-        super.onAttach(context);
-        this.context = context;
-    }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -131,9 +121,9 @@ public class AccountsFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        if (Accountant.isLoggedIn(context)) {
+        if (Accountant.isLoggedIn(requireContext())) {
             init();
-            Util.validateApi(context);
+            Util.validateApi(requireContext());
         }
     }
 
@@ -145,24 +135,24 @@ public class AccountsFragment extends Fragment {
 
     @OnClick(R.id.btn_positive)
     public void openLoginActivity() {
-        context.startActivity(new Intent(context, GoogleLoginActivity.class));
+        requireContext().startActivity(new Intent(requireContext(), GoogleLoginActivity.class));
     }
 
     @OnClick(R.id.btn_negative)
     public void clearAccountantData() {
-        Accountant.completeCheckout(context);
+        Accountant.completeCheckout(requireContext());
         init();
     }
 
     @OnClick(R.id.btn_anonymous)
     public void loginAnonymous() {
-        if (!NetworkUtil.isConnected(context)) {
-            Toast.makeText(context, getString(R.string.error_no_network), Toast.LENGTH_SHORT).show();
+        if (!NetworkUtil.isConnected(requireContext())) {
+            Toast.makeText(requireContext(), getString(R.string.error_no_network), Toast.LENGTH_SHORT).show();
             return;
         }
 
         disposable.add(Observable.fromCallable(() -> PlayStoreApiAuthenticator
-                .login(context))
+                .login(requireContext()))
                 .map(api -> api.userProfile().getUserProfile())
                 .subscribeOn(Schedulers.computation())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -173,17 +163,17 @@ public class AccountsFragment extends Fragment {
                 })
                 .doOnComplete(() -> ContextUtil.runOnUiThread(() -> resetAnonymousLogin()))
                 .subscribe(userProfile -> {
-                    Toast.makeText(context, "Successfully logged in", Toast.LENGTH_LONG).show();
-                    Accountant.setAnonymous(context, true);
+                    Toast.makeText(requireContext(), "Successfully logged in", Toast.LENGTH_LONG).show();
+                    Accountant.setAnonymous(requireContext(), true);
                     updateUI(userProfile);
                 }, err -> {
-                    Toast.makeText(context, err.getMessage(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(requireContext(), err.getMessage(), Toast.LENGTH_LONG).show();
                     ContextUtil.runOnUiThread(() -> resetAnonymousLogin());
                 }));
     }
 
     private void init() {
-        boolean isLoggedIn = Accountant.isLoggedIn(context);
+        boolean isLoggedIn = Accountant.isLoggedIn(requireContext());
         progressBar.setVisibility(View.INVISIBLE);
         switchTopViews(isLoggedIn);
         switchBottomViews(isLoggedIn);
@@ -218,10 +208,10 @@ public class AccountsFragment extends Fragment {
     }
 
     private void updateUI(UserProfile userProfile) {
-        PrefUtil.putString(context, Accountant.PROFILE_NAME, userProfile.getName());
+        PrefUtil.putString(requireContext(), Accountant.PROFILE_NAME, userProfile.getName());
         for (Image image : userProfile.getImageList()) {
             if (image.getImageType() == GooglePlayAPI.IMAGE_TYPE_APP_ICON) {
-                PrefUtil.putString(context, Accountant.PROFILE_AVATAR, image.getImageUrl());
+                PrefUtil.putString(requireContext(), Accountant.PROFILE_AVATAR, image.getImageUrl());
             }
         }
         setupProfile();
@@ -231,12 +221,16 @@ public class AccountsFragment extends Fragment {
     private void setupProfile() {
         GlideApp
                 .with(this)
-                .load(Accountant.getImageURL(context))
+                .load(Accountant.getImageURL(requireContext()))
                 .placeholder(R.drawable.circle_bg)
                 .circleCrop()
                 .into(imgAvatar);
-        txtName.setText(Accountant.isAnonymous(context) ? getText(R.string.account_dummy) : Accountant.getUserName(context));
-        txtMail.setText(Accountant.isAnonymous(context) ? "auroraoss@gmail.com" : Accountant.getEmail(context));
+        txtName.setText(Accountant.isAnonymous(requireContext())
+                ? getText(R.string.account_dummy)
+                : Accountant.getUserName(requireContext()));
+        txtMail.setText(Accountant.isAnonymous(requireContext())
+                ? "auroraoss@gmail.com"
+                : Accountant.getEmail(requireContext()));
     }
 
     private void resetAnonymousLogin() {
@@ -247,7 +241,7 @@ public class AccountsFragment extends Fragment {
 
     private void openWebView(String URL) {
         try {
-            context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(URL)));
+            requireContext().startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(URL)));
         } catch (Exception e) {
             Log.e("No WebView found !");
         }

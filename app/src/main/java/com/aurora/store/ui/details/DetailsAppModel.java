@@ -13,6 +13,7 @@ import com.aurora.store.viewmodel.BaseViewModel;
 
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
 public class DetailsAppModel extends BaseViewModel {
@@ -29,18 +30,19 @@ public class DetailsAppModel extends BaseViewModel {
 
     public void fetchAppDetails(String packageName) {
         api = AuroraApplication.api;
-        disposable.add(Observable.fromCallable(() -> new AppDetailTask(getApplication(), api)
+        Disposable disposable = Observable.fromCallable(() -> new AppDetailTask(getApplication(), api)
                 .getInfo(packageName))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(app -> {
                     listMutableLiveData.setValue(app);
-                }, err -> handleError(err)));
+                }, err -> handleError(err));
+        compositeDisposable.add(disposable);
     }
 
     @Override
     protected void onCleared() {
-        disposable.dispose();
+        compositeDisposable.dispose();
         super.onCleared();
     }
 }

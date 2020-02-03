@@ -56,6 +56,7 @@ import butterknife.ButterKnife;
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
 public class IntroActivity extends BaseActivity {
@@ -70,6 +71,8 @@ public class IntroActivity extends BaseActivity {
     MaterialButton btnAnonymous;
     @BindView(R.id.progress_bar)
     ProgressBar progressBar;
+
+    private CompositeDisposable compositeDisposable = new CompositeDisposable();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,6 +106,12 @@ public class IntroActivity extends BaseActivity {
             startActivity(new Intent(this, AuroraActivity.class));
             supportFinishAfterTransition();
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        compositeDisposable.dispose();
+        super.onDestroy();
     }
 
     private void setupActionbar() {
@@ -168,8 +177,7 @@ public class IntroActivity extends BaseActivity {
             return;
         }
 
-        CompositeDisposable disposable = new CompositeDisposable();
-        disposable.add(Observable.fromCallable(() -> PlayStoreApiAuthenticator
+        Disposable disposable = Observable.fromCallable(() -> PlayStoreApiAuthenticator
                 .login(this))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -192,7 +200,8 @@ public class IntroActivity extends BaseActivity {
                 }, err -> {
                     Toast.makeText(this, getText(R.string.toast_login_failed), Toast.LENGTH_LONG).show();
                     ContextUtil.runOnUiThread(this::resetAnonymousLogin);
-                }));
+                });
+        compositeDisposable.add(disposable);
     }
 
     public void loginGoogle() {

@@ -30,7 +30,7 @@ public class BlackListedAppsModel extends BaseViewModel {
 
     public void fetchBlackListedApps() {
         api = AuroraApplication.api;
-        disposable.add(Observable.fromCallable(() -> new InstalledAppsTask(api, getApplication())
+        compositeDisposable.add(Observable.fromCallable(() -> new InstalledAppsTask(api, getApplication())
                 .getAllApps())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -41,7 +41,7 @@ public class BlackListedAppsModel extends BaseViewModel {
 
     @Override
     protected void onCleared() {
-        disposable.dispose();
+        compositeDisposable.dispose();
         super.onCleared();
     }
 }

@@ -5,11 +5,12 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.aurora.store.AuroraApplication;
+import com.aurora.store.AutoDisposable;
 import com.aurora.store.Constants;
 import com.aurora.store.EndlessScrollListener;
 import com.aurora.store.R;
@@ -33,7 +34,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import io.github.luizgrp.sectionedrecyclerviewadapter.SectionedRecyclerViewAdapter;
-import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.disposables.Disposable;
 
 public class SearchResultActivity extends BaseActivity implements SearchResultSection.ClickListener,
         SharedPreferences.OnSharedPreferenceChangeListener {
@@ -51,7 +52,7 @@ public class SearchResultActivity extends BaseActivity implements SearchResultSe
     private SearchAppsModel model;
     private SearchResultSection section;
     private SectionedRecyclerViewAdapter adapter;
-    private CompositeDisposable disposable = new CompositeDisposable();
+    private AutoDisposable autoDisposable = new AutoDisposable();
     private SharedPreferences sharedPreferences;
 
     @Override
@@ -63,8 +64,9 @@ public class SearchResultActivity extends BaseActivity implements SearchResultSe
         setupResultRecycler();
         sharedPreferences = Util.getPrefs(this);
         sharedPreferences.registerOnSharedPreferenceChangeListener(this);
+        autoDisposable.bindTo(getLifecycle());
 
-        model = ViewModelProviders.of(this).get(SearchAppsModel.class);
+        model = new ViewModelProvider(this).get(SearchAppsModel.class);
         model.getQueriedApps().observe(this, appList -> {
             dispatchAppsToAdapter(appList);
         });
@@ -88,7 +90,7 @@ public class SearchResultActivity extends BaseActivity implements SearchResultSe
             }
         });
 
-        disposable.add(AuroraApplication
+        Disposable disposable = AuroraApplication
                 .getRxBus()
                 .getBus()
                 .subscribe(event -> {
@@ -97,8 +99,8 @@ public class SearchResultActivity extends BaseActivity implements SearchResultSe
                             model.fetchQueriedApps(query, false);
                             break;
                     }
-                }));
-
+                });
+        autoDisposable.add(disposable);
         onNewIntent(getIntent());
     }
 
@@ -116,7 +118,6 @@ public class SearchResultActivity extends BaseActivity implements SearchResultSe
 
     @Override
     protected void onDestroy() {
-        model = null;
         sharedPreferences.unregisterOnSharedPreferenceChangeListener(this);
         if (Util.filterSearchNonPersistent(this))
             FilterManager.saveFilterPreferences(this, new FilterModel());

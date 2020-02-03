@@ -20,7 +20,6 @@
 
 package com.aurora.store.ui.main.fragment.home;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -30,7 +29,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -64,7 +63,6 @@ public class HomeFragment extends Fragment {
     @BindView(R.id.btn_top_family)
     MaterialButton btnTopFamily;
 
-    private Context context;
     private FeaturedAppsAdapter topAppsAdapter;
     private FeaturedAppsAdapter topGamesAdapter;
     private FeaturedAppsAdapter topFamilyAdapter;
@@ -72,20 +70,9 @@ public class HomeFragment extends Fragment {
     private CompositeDisposable disposable = new CompositeDisposable();
 
     @Override
-    public void onStart() {
-        super.onStart();
-    }
-
-    @Override
-    public void onAttach(@NonNull Context context) {
-        super.onAttach(context);
-        this.context = context;
-    }
-
-    @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        translator = new SharedPreferencesTranslator(Util.getPrefs(context));
+        translator = new SharedPreferencesTranslator(Util.getPrefs(requireContext()));
     }
 
     @Nullable
@@ -107,7 +94,7 @@ public class HomeFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         setupRecyclers();
-        HomeAppsModel homeAppsModel = ViewModelProviders.of(this).get(HomeAppsModel.class);
+        HomeAppsModel homeAppsModel = new ViewModelProvider(this).get(HomeAppsModel.class);
         homeAppsModel.getTopApps().observe(this, appList -> {
             topAppsAdapter.addData(appList);
         });
@@ -144,28 +131,28 @@ public class HomeFragment extends Fragment {
     }
 
     private void setupRecyclers() {
-        topAppsAdapter = new FeaturedAppsAdapter(context);
-        topGamesAdapter = new FeaturedAppsAdapter(context);
-        topFamilyAdapter = new FeaturedAppsAdapter(context);
+        topAppsAdapter = new FeaturedAppsAdapter(requireContext());
+        topGamesAdapter = new FeaturedAppsAdapter(requireContext());
+        topFamilyAdapter = new FeaturedAppsAdapter(requireContext());
 
         recyclerTopApps.setAdapter(topAppsAdapter);
-        recyclerTopApps.setLayoutManager(new LinearLayoutManager(context, RecyclerView.HORIZONTAL, false));
+        recyclerTopApps.setLayoutManager(new LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false));
 
         recyclerTopGames.setAdapter(topGamesAdapter);
-        recyclerTopGames.setLayoutManager(new LinearLayoutManager(context, RecyclerView.HORIZONTAL, false));
+        recyclerTopGames.setLayoutManager(new LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false));
 
         recyclerTopFamily.setAdapter(topFamilyAdapter);
-        recyclerTopFamily.setLayoutManager(new LinearLayoutManager(context, RecyclerView.HORIZONTAL, false));
+        recyclerTopFamily.setLayoutManager(new LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false));
 
-        Util.attachSnapPager(context, recyclerTopApps);
-        Util.attachSnapPager(context, recyclerTopGames);
-        Util.attachSnapPager(context, recyclerTopFamily);
+        Util.attachSnapPager(requireContext(), recyclerTopApps);
+        Util.attachSnapPager(requireContext(), recyclerTopGames);
+        Util.attachSnapPager(requireContext(), recyclerTopFamily);
     }
 
     private void openCategoryAppsActivity(String categoryId) {
-        Intent intent = new Intent(context, CategoryAppsActivity.class);
+        Intent intent = new Intent(requireContext(), CategoryAppsActivity.class);
         intent.putExtra("CategoryId", categoryId);
         intent.putExtra("CategoryName", translator.getString(categoryId));
-        context.startActivity(intent, ViewUtil.getEmptyActivityBundle((AuroraActivity) context));
+        requireContext().startActivity(intent, ViewUtil.getEmptyActivityBundle((AuroraActivity) requireContext()));
     }
 }

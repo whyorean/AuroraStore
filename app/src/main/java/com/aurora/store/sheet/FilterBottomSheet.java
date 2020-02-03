@@ -20,7 +20,7 @@
 
 package com.aurora.store.sheet;
 
-import android.content.Context;
+import android.app.Dialog;
 import android.content.res.ColorStateList;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
@@ -28,6 +28,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.FrameLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -38,6 +39,7 @@ import com.aurora.store.manager.FilterManager;
 import com.aurora.store.model.FilterModel;
 import com.aurora.store.util.ImageUtil;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
@@ -61,19 +63,19 @@ public class FilterBottomSheet extends BottomSheetDialogFragment {
     @BindView(R.id.filter_apply)
     Button filter_apply;
 
-    private Context context;
     private FilterModel filterModel;
 
+    @NonNull
     @Override
-    public void onAttach(@NonNull Context context) {
-        super.onAttach(context);
-        this.context = context;
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        getDialog().getBehavior().setState(BottomSheetBehavior.STATE_EXPANDED);
+    public Dialog onCreateDialog(Bundle savedInstanceState) {
+        BottomSheetDialog dialog = (BottomSheetDialog) super.onCreateDialog(savedInstanceState);
+        dialog.setOnShowListener(d -> {
+            BottomSheetDialog bottomSheetDialog = (BottomSheetDialog) d;
+            FrameLayout bottomSheet = bottomSheetDialog.findViewById(com.google.android.material.R.id.design_bottom_sheet);
+            if (bottomSheet != null)
+                BottomSheetBehavior.from(bottomSheet).setState(BottomSheetBehavior.STATE_EXPANDED);
+        });
+        return dialog;
     }
 
     @NonNull
@@ -87,14 +89,14 @@ public class FilterBottomSheet extends BottomSheetDialogFragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        filterModel = FilterManager.getFilterPreferences(context);
+        filterModel = FilterManager.getFilterPreferences(requireContext());
         setupMultipleChips();
         setupSingleChips();
     }
 
     @OnClick(R.id.filter_apply)
     public void applyFilter() {
-        FilterManager.saveFilterPreferences(context, filterModel);
+        FilterManager.saveFilterPreferences(requireContext(), filterModel);
         dismiss();
     }
 
@@ -121,7 +123,7 @@ public class FilterBottomSheet extends BottomSheetDialogFragment {
         int i = 0;
         for (String downloadLabel : downloadLabels) {
             final int pos = i;
-            Chip chip = new Chip(context);
+            Chip chip = new Chip(requireContext());
             applyStyles(chip, i);
             chip.setText(downloadLabel);
             chip.setOnCheckedChangeListener((v, isChecked) -> {
@@ -139,7 +141,7 @@ public class FilterBottomSheet extends BottomSheetDialogFragment {
         i = 0;
         for (String ratingLabel : ratingLabels) {
             final int pos = i;
-            Chip chip = new Chip(context);
+            Chip chip = new Chip(requireContext());
             applyStyles(chip, i);
             chip.setText(ratingLabel);
             chip.setOnCheckedChangeListener((v, isChecked) -> {
@@ -158,7 +160,7 @@ public class FilterBottomSheet extends BottomSheetDialogFragment {
     private void applyStyles(Chip chip, int index) {
         int color = ImageUtil.getSolidColor(index);
         chip.setChipIcon(ImageUtil.getDrawable(index, GradientDrawable.OVAL));
-        chip.setCheckedIcon(context.getDrawable(R.drawable.ic_filter_check));
+        chip.setCheckedIcon(requireContext().getDrawable(R.drawable.ic_filter_check));
         chip.setChipIconVisible(true);
         chip.setChipBackgroundColor(ColorStateList.valueOf(ColorUtils.setAlphaComponent(color, 100)));
         chip.setChipStrokeColor(ColorStateList.valueOf(color));

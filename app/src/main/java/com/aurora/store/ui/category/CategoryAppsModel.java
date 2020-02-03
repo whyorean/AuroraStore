@@ -3,7 +3,6 @@ package com.aurora.store.ui.category;
 import android.app.Application;
 
 import androidx.annotation.NonNull;
-import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
@@ -15,6 +14,7 @@ import com.aurora.store.iterator.CustomAppListIterator;
 import com.aurora.store.manager.FilterManager;
 import com.aurora.store.model.App;
 import com.aurora.store.task.CategoryAppsTask;
+import com.aurora.store.viewmodel.BaseViewModel;
 import com.dragons.aurora.playstoreapiv2.AuthException;
 import com.dragons.aurora.playstoreapiv2.CategoryAppsIterator;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
@@ -24,13 +24,12 @@ import java.util.List;
 
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
-public class CategoryAppsModel extends AndroidViewModel {
+public class CategoryAppsModel extends BaseViewModel {
 
     private Application application;
-    private CompositeDisposable disposable = new CompositeDisposable();
 
     private GooglePlayAPI api;
     private CategoryAppsTask categoryAppsTask;
@@ -56,10 +55,9 @@ public class CategoryAppsModel extends AndroidViewModel {
     }
 
     public void fetchCategoryApps(String categoryId, GooglePlayAPI.SUBCATEGORY subcategory, boolean shouldIterate) {
-        disposable.clear();
         if (!shouldIterate)
             getIterator(categoryId, subcategory);
-        disposable.add(Observable.fromCallable(() -> categoryAppsTask
+        Disposable disposable = Observable.fromCallable(() -> categoryAppsTask
                 .getApps(iterator))
                 .subscribeOn(Schedulers.computation())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -75,7 +73,8 @@ public class CategoryAppsModel extends AndroidViewModel {
                         errorTypeMutableLiveData.setValue(ErrorType.NO_NETWORK);
                     else
                         errorTypeMutableLiveData.setValue(ErrorType.UNKNOWN);
-                }));
+                });
+        compositeDisposable.add(disposable);
     }
 
     private void getIterator(String categoryId, GooglePlayAPI.SUBCATEGORY subcategory) {
@@ -91,7 +90,7 @@ public class CategoryAppsModel extends AndroidViewModel {
 
     @Override
     protected void onCleared() {
-        disposable.dispose();
+        compositeDisposable.dispose();
         super.onCleared();
     }
 }

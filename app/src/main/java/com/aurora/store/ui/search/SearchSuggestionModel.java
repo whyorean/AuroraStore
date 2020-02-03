@@ -31,8 +31,8 @@ public class SearchSuggestionModel extends BaseViewModel {
 
     public void fetchSuggestions(String query) {
         api = AuroraApplication.api;
-        disposable.clear();
-        disposable.add(Observable.fromCallable(() -> new SuggestionTask(api)
+        compositeDisposable.clear();
+        compositeDisposable.add(Observable.fromCallable(() -> new SuggestionTask(api)
                 .getSearchSuggestions(query))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -42,12 +42,12 @@ public class SearchSuggestionModel extends BaseViewModel {
     }
 
     public void discardRequests() {
-        disposable.clear();
+        compositeDisposable.clear();
     }
 
     @Override
     protected void onCleared() {
-        disposable.dispose();
+        compositeDisposable.dispose();
         super.onCleared();
     }
 }

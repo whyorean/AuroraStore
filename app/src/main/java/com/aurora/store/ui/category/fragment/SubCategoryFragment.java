@@ -20,7 +20,6 @@
 
 package com.aurora.store.ui.category.fragment;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -60,7 +59,6 @@ public class SubCategoryFragment extends Fragment implements EndlessResultSectio
     @BindView(R.id.recycler)
     RecyclerView recyclerView;
 
-    private Context context;
     private GooglePlayAPI.SUBCATEGORY subcategory = GooglePlayAPI.SUBCATEGORY.TOP_FREE;
     private SharedPreferences sharedPreferences;
 
@@ -88,15 +86,9 @@ public class SubCategoryFragment extends Fragment implements EndlessResultSectio
     }
 
     @Override
-    public void onAttach(@NonNull Context context) {
-        super.onAttach(context);
-        this.context = context;
-    }
-
-    @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        sharedPreferences = Util.getPrefs(context);
+        sharedPreferences = Util.getPrefs(requireContext());
     }
 
     @Override
@@ -148,9 +140,9 @@ public class SubCategoryFragment extends Fragment implements EndlessResultSectio
     }
 
     private void setupRecycler() {
-        LinearLayoutManager layoutManager = new LinearLayoutManager(context, RecyclerView.VERTICAL, false);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false);
         adapter = new SectionedRecyclerViewAdapter();
-        section = new EndlessResultSection(context, this);
+        section = new EndlessResultSection(requireContext(), this);
         adapter.addSection(section);
 
         recyclerView.setAdapter(adapter);
@@ -173,9 +165,9 @@ public class SubCategoryFragment extends Fragment implements EndlessResultSectio
     @Override
     public void onClick(App app) {
         DetailsActivity.app = app;
-        Intent intent = new Intent(context, DetailsActivity.class);
+        Intent intent = new Intent(requireContext(), DetailsActivity.class);
         intent.putExtra(Constants.INTENT_PACKAGE_NAME, app.getPackageName());
-        context.startActivity(intent, ViewUtil.getEmptyActivityBundle((AppCompatActivity) context));
+        requireContext().startActivity(intent, ViewUtil.getEmptyActivityBundle((AppCompatActivity) requireContext()));
     }
 
     @Override

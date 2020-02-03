@@ -20,7 +20,6 @@
 
 package com.aurora.store.ui.intro.fragment;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -35,11 +34,6 @@ import com.aurora.store.R;
 import butterknife.ButterKnife;
 
 public class WelcomeFragment extends Fragment {
-
-    @Override
-    public void onAttach(@NonNull Context context) {
-        super.onAttach(context);
-    }
 
     @Nullable
     @Override

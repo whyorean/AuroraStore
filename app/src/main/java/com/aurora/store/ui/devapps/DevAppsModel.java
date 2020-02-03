@@ -26,7 +26,7 @@ public class DevAppsModel extends SearchAppsModel {
 
     @Override
     protected void onCleared() {
-        disposable.dispose();
+        compositeDisposable.dispose();
         super.onCleared();
     }
 }

@@ -28,7 +28,7 @@
     android:layout_marginTop="@dimen/margin_medium"
     android:layout_marginEnd="@dimen/margin_medium"
     android:background="@drawable/generic_padded_bg"
-    android:visibility="invisible"
+    android:visibility="gone"
     tools:visibility="visible">
 
     <androidx.appcompat.widget.AppCompatImageView

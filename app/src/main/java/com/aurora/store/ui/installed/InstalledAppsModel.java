@@ -39,7 +39,7 @@ public class InstalledAppsModel extends BaseViewModel implements SharedPreferenc
 
     public void fetchInstalledApps(boolean userOnly) {
         api = AuroraApplication.api;
-        disposable.add(Observable.fromCallable(() -> new InstalledAppsTask(api, getApplication())
+        compositeDisposable.add(Observable.fromCallable(() -> new InstalledAppsTask(api, getApplication())
                 .getInstalledApps())
                 .subscribeOn(Schedulers.computation())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -61,7 +61,7 @@ public class InstalledAppsModel extends BaseViewModel implements SharedPreferenc
 
     @Override
     protected void onCleared() {
-        disposable.dispose();
+        compositeDisposable.dispose();
         super.onCleared();
     }
 

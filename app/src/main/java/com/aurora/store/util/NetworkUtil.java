@@ -22,24 +22,41 @@ package com.aurora.store.util;
 
 import android.content.Context;
 import android.net.ConnectivityManager;
+import android.net.NetworkCapabilities;
 import android.net.NetworkInfo;
-
-import static android.content.Context.CONNECTIVITY_SERVICE;
-import static android.net.ConnectivityManager.TYPE_WIFI;
+import android.os.Build;
 
 public class NetworkUtil {
-
     public static boolean isConnected(Context context) {
-        ConnectivityManager connectivityManager =
-                (ConnectivityManager) context.getSystemService(CONNECTIVITY_SERVICE);
-        NetworkInfo activeNetwork = connectivityManager.getActiveNetworkInfo();
-        return activeNetwork != null && activeNetwork.isConnected();
-    }
+        if (context == null)
+            return false;
 
-    public static boolean isWifi(Context context) {
-        ConnectivityManager connectivityManager =
-                (ConnectivityManager) context.getSystemService(CONNECTIVITY_SERVICE);
-        NetworkInfo activeNetwork = connectivityManager.getActiveNetworkInfo();
-        return activeNetwork != null && activeNetwork.getType() == TYPE_WIFI;
+        Object object = context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        ConnectivityManager manager = (ConnectivityManager) object;
+
+        if (manager != null) {
+            if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                NetworkCapabilities capabilities = manager.getNetworkCapabilities(manager.getActiveNetwork());
+                if (capabilities != null) {
+                    return capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR)
+                            || capabilities.hasTransport(NetworkCapabilities.TRANSPORT_BLUETOOTH)
+                            || capabilities.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET)
+                            || capabilities.hasTransport(NetworkCapabilities.TRANSPORT_LOWPAN)
+                            || capabilities.hasTransport(NetworkCapabilities.TRANSPORT_VPN)
+                            || capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI)
+                            || capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI_AWARE);
+                }
+            } else {
+                try {
+                    NetworkInfo activeNetworkInfo = manager.getActiveNetworkInfo();
+                    if (activeNetworkInfo != null && activeNetworkInfo.isConnected()) {
+                        return true;
+                    }
+                } catch (Exception e) {
+                    return false;
+                }
+            }
+        }
+        return false;
     }
 }

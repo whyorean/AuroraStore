@@ -8,7 +8,7 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.widget.Toolbar;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -58,7 +58,7 @@ public class DevAppsActivity extends BaseActivity implements SearchResultSection
             if (query != null) {
                 setupActionBar();
                 setupRecycler();
-                model = ViewModelProviders.of(this).get(DevAppsModel.class);
+                model = new ViewModelProvider(this).get(DevAppsModel.class);
                 model.getQueriedApps().observe(this, appList -> {
                     dispatchAppsToAdapter(appList);
                 });

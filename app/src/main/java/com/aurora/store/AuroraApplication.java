@@ -103,7 +103,9 @@ public class AuroraApplication extends Application {
                 new IntentFilter(InstallerService.ACTION_INSTALLATION_STATUS_NOTIFICATION));
 
         //Global RX-Error handler, just simply logs, I make sure all errors are handled at origin.
-        RxJavaPlugins.setErrorHandler(err -> Log.i(err.getMessage()));
+        RxJavaPlugins.setErrorHandler(err ->{
+            err.printStackTrace();
+        });
     }
 
     @Override

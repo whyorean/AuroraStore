@@ -27,7 +27,7 @@ import android.view.MenuItem;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.widget.Toolbar;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -77,7 +77,7 @@ public class ReviewsActivity extends BaseActivity {
         if (intent != null) {
             packageName = intent.getStringExtra(Constants.INTENT_PACKAGE_NAME);
             if (packageName != null && !packageName.isEmpty()) {
-                reviewsModel = ViewModelProviders.of(this).get(ReviewsModel.class);
+                reviewsModel = new ViewModelProvider(this).get(ReviewsModel.class);
                 reviewsModel.getReviews().observe(this, reviewList -> {
                     dispatchToAdapter(reviewList);
                 });

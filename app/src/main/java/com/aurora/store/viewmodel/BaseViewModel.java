@@ -22,7 +22,7 @@ import io.reactivex.disposables.CompositeDisposable;
 public class BaseViewModel extends AndroidViewModel {
 
     protected GooglePlayAPI api;
-    protected CompositeDisposable disposable = new CompositeDisposable();
+    protected CompositeDisposable compositeDisposable = new CompositeDisposable();
     protected MutableLiveData<ErrorType> errorTypeMutableLiveData = new MutableLiveData<>();
 
     public BaseViewModel(@NonNull Application application) {

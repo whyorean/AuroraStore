@@ -12,7 +12,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -74,7 +74,7 @@ public class SearchActivity extends BaseActivity implements SearchSuggestionSect
         Object object = getSystemService(Service.INPUT_METHOD_SERVICE);
         inputMethodManager = (InputMethodManager) object;
 
-        model = ViewModelProviders.of(this).get(SearchSuggestionModel.class);
+        model = new ViewModelProvider(this).get(SearchSuggestionModel.class);
         model.getSuggestions().observe(this, searchSuggestEntries -> {
             dispatchAppsToAdapter(searchSuggestEntries);
         });

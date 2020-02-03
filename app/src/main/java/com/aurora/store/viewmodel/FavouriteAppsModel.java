@@ -42,7 +42,7 @@ public class FavouriteAppsModel extends BaseViewModel {
             return;
         }
         api = AuroraApplication.api;
-        disposable.add(Observable.fromCallable(() -> new BulkDetailsTask(api)
+        compositeDisposable.add(Observable.fromCallable(() -> new BulkDetailsTask(api)
                 .getRemoteAppList(packageList))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -53,7 +53,7 @@ public class FavouriteAppsModel extends BaseViewModel {
 
     @Override
     protected void onCleared() {
-        disposable.dispose();
+        compositeDisposable.dispose();
         super.onCleared();
     }
 }
