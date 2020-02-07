@@ -27,6 +27,7 @@ import android.app.NotificationManager;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.PorterDuff;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
@@ -428,6 +429,8 @@ public class AuroraActivity extends BaseActivity {
                 .setNegativeButton(getString(android.R.string.no), (dialog, which) -> {
                     dialog.dismiss();
                 });
+        int backGroundColor = ViewUtil.getStyledAttribute(this, android.R.attr.colorBackground);
+        builder.setBackground(new ColorDrawable(backGroundColor));
         builder.create();
         builder.show();
     }

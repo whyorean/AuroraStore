@@ -22,10 +22,13 @@ package com.aurora.store.ui.details.views;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import androidx.annotation.StringRes;
 
 import com.aurora.store.Constants;
 import com.aurora.store.R;
@@ -114,39 +117,19 @@ public abstract class AbstractDetails {
                 .setNegativeButton(context.getString(R.string.action_later), (dialog, which) -> {
                     dialog.dismiss();
                 });
+        int backGroundColor = ViewUtil.getStyledAttribute(context, android.R.attr.colorBackground);
+        builder.setBackground(new ColorDrawable(backGroundColor));
         builder.create();
         builder.show();
     }
 
-    protected void showGeoRestrictionDialog() {
-        MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context)
-                .setTitle(context.getString(R.string.dialog_geores_title))
-                .setMessage(context.getString(R.string.dialog_geores_desc))
-                .setPositiveButton(context.getString(R.string.action_close), (dialog, which) -> {
-                    dialog.dismiss();
-                });
-        builder.create();
-        builder.show();
-    }
-
-    protected void showIncompatibleDialog() {
-        MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context)
-                .setTitle(context.getString(R.string.dialog_incompat_title))
-                .setMessage(context.getString(R.string.dialog_incompat_desc))
-                .setPositiveButton(context.getString(R.string.action_close), (dialog, which) -> {
-                    dialog.dismiss();
-                });
-        builder.create();
-        builder.show();
-    }
-
-    protected void showAppNotAvailableDialog() {
-        MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context)
-                .setTitle(context.getString(R.string.dialog_unavailable_title))
-                .setMessage(context.getString(R.string.dialog_unavailable_desc))
-                .setPositiveButton(context.getString(R.string.action_close), (dialog, which) -> {
-                    dialog.dismiss();
-                });
+    protected void showDialog(@StringRes int titleId, @StringRes int messageId) {
+        MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
+        builder.setTitle(titleId);
+        builder.setMessage(messageId);
+        builder.setPositiveButton(android.R.string.ok, (dialog, which) -> dialog.dismiss());
+        int backGroundColor = ViewUtil.getStyledAttribute(context, android.R.attr.colorBackground);
+        builder.setBackground(new ColorDrawable(backGroundColor));
         builder.create();
         builder.show();
     }

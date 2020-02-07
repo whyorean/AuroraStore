@@ -3,11 +3,13 @@ package com.aurora.store.ui.preference.fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.StringRes;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
@@ -21,6 +23,7 @@ import com.aurora.store.util.PathUtil;
 import com.aurora.store.util.PrefUtil;
 import com.aurora.store.util.Root;
 import com.aurora.store.util.Util;
+import com.aurora.store.util.ViewUtil;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.scottyab.rootbeer.RootBeer;
 
@@ -70,15 +73,15 @@ public class InstallationFragment extends PreferenceFragmentCompat implements Sh
                 if (rootBeer.isRooted()) {
                     Root.requestRoot();
                     PrefUtil.putString(context, Constants.PREFERENCE_INSTALLATION_METHOD, installMethod);
-                    showDownloadDialog();
+                    showDialog(R.string.pref_app_download, R.string.pref_install_mode_root_warn);
                     return true;
                 } else {
-                    showNoRootDialog();
+                    showDialog(R.string.action_installations, R.string.pref_install_mode_no_root);
                     return false;
                 }
             } else if (installMethod.equals(SERVICES)) {
                 if (PrefUtil.getBoolean(context, Constants.PREFERENCE_DOWNLOAD_INTERNAL)) {
-                    showInternalDialog();
+                    showDialog(R.string.pref_app_download, R.string.pref_install_mode_internal_warn);
                     return false;
                 }
 
@@ -87,7 +90,7 @@ public class InstallationFragment extends PreferenceFragmentCompat implements Sh
                     PrefUtil.putString(context, Constants.PREFERENCE_DOWNLOAD_DIRECTORY, PathUtil.getExtBaseDirectory(context));
                     return true;
                 } else {
-                    showNoServicesDialog();
+                    showDialog(R.string.action_installations, R.string.pref_install_mode_no_services);
                     return false;
                 }
             } else {
@@ -203,38 +206,13 @@ public class InstallationFragment extends PreferenceFragmentCompat implements Sh
         return rawUserList;
     }
 
-    private void showInternalDialog() {
-        MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
-        builder.setTitle(R.string.pref_app_download);
-        builder.setMessage(R.string.pref_install_mode_internal_warn);
+    private void showDialog(@StringRes int titleId, @StringRes int messageId) {
+        MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(requireContext());
+        builder.setTitle(titleId);
+        builder.setMessage(messageId);
         builder.setPositiveButton(android.R.string.ok, (dialog, which) -> dialog.dismiss());
-        builder.create();
-        builder.show();
-    }
-
-    private void showDownloadDialog() {
-        MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
-        builder.setTitle(R.string.pref_app_download);
-        builder.setMessage(R.string.pref_install_mode_root_warn);
-        builder.setPositiveButton(android.R.string.ok, (dialog, which) -> dialog.dismiss());
-        builder.create();
-        builder.show();
-    }
-
-    private void showNoRootDialog() {
-        MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
-        builder.setTitle(R.string.action_installations);
-        builder.setMessage(R.string.pref_install_mode_no_root);
-        builder.setPositiveButton(android.R.string.ok, (dialog, which) -> dialog.dismiss());
-        builder.create();
-        builder.show();
-    }
-
-    private void showNoServicesDialog() {
-        MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
-        builder.setTitle(R.string.action_installations);
-        builder.setMessage(R.string.pref_install_mode_no_services);
-        builder.setPositiveButton(android.R.string.ok, (dialog, which) -> dialog.dismiss());
+        int backGroundColor = ViewUtil.getStyledAttribute(requireContext(), android.R.attr.colorBackground);
+        builder.setBackground(new ColorDrawable(backGroundColor));
         builder.create();
         builder.show();
     }

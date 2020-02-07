@@ -25,6 +25,7 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.IBinder;
 import android.os.RemoteException;
@@ -37,6 +38,7 @@ import com.aurora.store.R;
 import com.aurora.store.util.ContextUtil;
 import com.aurora.store.util.Log;
 import com.aurora.store.util.PackageUtil;
+import com.aurora.store.util.ViewUtil;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import java.io.File;
@@ -133,6 +135,8 @@ public class AppInstallerPrivileged extends AppInstallerAbstract {
         builder.setTitle(R.string.action_installations);
         builder.setMessage(R.string.pref_install_mode_offline_services);
         builder.setPositiveButton(android.R.string.ok, (dialog, which) -> dialog.dismiss());
+        int backGroundColor = ViewUtil.getStyledAttribute(getContext(), android.R.attr.colorBackground);
+        builder.setBackground(new ColorDrawable(backGroundColor));
         builder.create();
         builder.show();
     }

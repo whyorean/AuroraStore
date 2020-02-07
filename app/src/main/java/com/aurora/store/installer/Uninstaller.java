@@ -4,6 +4,7 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.IBinder;
@@ -16,6 +17,7 @@ import com.aurora.store.R;
 import com.aurora.store.model.App;
 import com.aurora.store.util.Log;
 import com.aurora.store.util.PrefUtil;
+import com.aurora.store.util.ViewUtil;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 public class Uninstaller {
@@ -98,6 +100,8 @@ public class Uninstaller {
                 .setNegativeButton(context.getString(android.R.string.cancel), (dialog, which) -> {
                     dialog.dismiss();
                 });
+        int backGroundColor = ViewUtil.getStyledAttribute(context, android.R.attr.colorBackground);
+        builder.setBackground(new ColorDrawable(backGroundColor));
         builder.create();
         builder.show();
     }

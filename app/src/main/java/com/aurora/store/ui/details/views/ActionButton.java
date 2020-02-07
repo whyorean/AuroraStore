@@ -219,13 +219,14 @@ public class ActionButton extends AbstractDetails {
                         }
                         if (err instanceof AppNotFoundException) {
                             Log.d("%s not not found", app.getDisplayName());
-                            showAppNotAvailableDialog();
+                            showDialog(R.string.dialog_unavailable_title, R.string.dialog_unavailable_desc);
                         }
                         if (err instanceof NullPointerException) {
                             if (App.Restriction.RESTRICTED_GEO == app.getRestriction())
-                                showGeoRestrictionDialog();
+                                showDialog(R.string.dialog_geores_title, R.string.dialog_geores_desc);
                             if (App.Restriction.INCOMPATIBLE_DEVICE == app.getRestriction())
-                                showIncompatibleDialog();
+
+                                showDialog(R.string.dialog_incompat_title, R.string.dialog_incompat_desc);
                         }
                         draw();
                         switchViews(false);

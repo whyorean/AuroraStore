@@ -20,6 +20,7 @@
 
 package com.aurora.store.ui.preference;
 
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -32,6 +33,7 @@ import androidx.preference.PreferenceFragmentCompat;
 import com.aurora.store.R;
 import com.aurora.store.ui.single.activity.BaseActivity;
 import com.aurora.store.util.Util;
+import com.aurora.store.util.ViewUtil;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import butterknife.BindView;
@@ -124,6 +126,8 @@ public class SettingsActivity extends BaseActivity implements
                 .setNegativeButton(getString(R.string.action_later), (dialog, which) -> {
                     dialog.dismiss();
                 });
+        int backGroundColor = ViewUtil.getStyledAttribute(this, android.R.attr.colorBackground);
+        builder.setBackground(new ColorDrawable(backGroundColor));
         builder.create();
         builder.show();
     }
