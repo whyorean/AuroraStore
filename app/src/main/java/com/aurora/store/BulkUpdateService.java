@@ -75,8 +75,7 @@ public class BulkUpdateService extends Service {
                 .doOnNext(deliveryDataBundle -> new LiveUpdate(getApplicationContext())
                         .enqueueUpdate(deliveryDataBundle.getApp(),
                                 deliveryDataBundle.getAndroidAppDeliveryData()))
-                .subscribe(deliveryDataBundle -> {
-                }, err -> {
+                .doOnError(err -> {
                     if (err instanceof MalformedRequestException || err instanceof NotPurchasedException) {
                         QuickNotification.show(getApplication(),
                                 getString(R.string.action_updates),
@@ -85,7 +84,8 @@ public class BulkUpdateService extends Service {
                     }
                     processException(err);
                     Log.e(err.getMessage());
-                }));
+                })
+                .subscribe());
     }
 
     private void processException(Throwable e) {

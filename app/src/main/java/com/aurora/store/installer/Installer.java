@@ -49,6 +49,8 @@ import com.aurora.store.util.PrefUtil;
 import com.aurora.store.util.TextUtil;
 import com.aurora.store.util.Util;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -127,46 +129,34 @@ public class Installer implements AppInstallerAbstract.InstallationStatusListene
         packageInstaller.addInstallationStatusListener((status, intentPackageName) -> {
             final String statusMessage = getStatusString(status);
             final App app = appHashMap.get(intentPackageName);
-            final String displayName = (app != null)
+
+            String displayName = (app != null)
                     ? TextUtil.emptyIfNull(app.getDisplayName())
                     : TextUtil.emptyIfNull(intentPackageName);
 
+            if (StringUtils.isEmpty(displayName))
+                displayName = context.getString(R.string.app_name);
+
             Log.i("Package Installer -> %s : %s", displayName, TextUtil.emptyIfNull(statusMessage));
 
-            if (app != null)
-                clearNotification(app);
+            clearNotification(app);
 
-            switch (status) {
-                case PackageInstaller.STATUS_FAILURE:
-                case PackageInstaller.STATUS_FAILURE_ABORTED:
-                case PackageInstaller.STATUS_FAILURE_BLOCKED:
-                case PackageInstaller.STATUS_FAILURE_CONFLICT:
-                case PackageInstaller.STATUS_FAILURE_INCOMPATIBLE:
-                case PackageInstaller.STATUS_FAILURE_INVALID:
-                case PackageInstaller.STATUS_FAILURE_STORAGE:
-                    QuickNotification.show(
-                            context,
-                            displayName,
-                            statusMessage,
-                            getContentIntent(intentPackageName));
-                    sendStatusBroadcast(intentPackageName, 0);
-                    checkAndProcessQueuedApps();
-                    break;
-                case PackageInstaller.STATUS_SUCCESS:
-                    QuickNotification.show(
-                            context,
-                            displayName,
-                            statusMessage,
-                            getContentIntent(intentPackageName));
-                    sendStatusBroadcast(intentPackageName, 1);
-                    if (app != null) {
-                        if (Util.shouldDeleteApk(context))
-                            clearInstallationFiles(app);
-                        appHashMap.remove(intentPackageName);
-                    }
-                    checkAndProcessQueuedApps();
-                    break;
+            if (status == PackageInstaller.STATUS_SUCCESS) {
+                sendStatusBroadcast(intentPackageName, 1);
+                if (app != null && Util.shouldDeleteApk(context)) {
+                    clearInstallationFiles(app);
+                }
+            } else {
+                sendStatusBroadcast(intentPackageName, 0);
             }
+
+            QuickNotification.show(
+                    context,
+                    displayName,
+                    statusMessage,
+                    getContentIntent(intentPackageName));
+            appHashMap.remove(intentPackageName);
+            checkAndProcessQueuedApps();
         });
 
         AsyncTask.execute(() -> packageInstaller.installApkFiles(packageName, apkFiles));
@@ -197,9 +187,13 @@ public class Installer implements AppInstallerAbstract.InstallationStatusListene
     }
 
     private void clearNotification(App app) {
-        NotificationManager notificationManager = (NotificationManager)
-                context.getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
-        notificationManager.cancel(app.getPackageName().hashCode());
+        if (app == null)
+            return;
+
+        Object object = context.getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
+        NotificationManager notificationManager = (NotificationManager) object;
+        if (notificationManager != null)
+            notificationManager.cancel(app.getPackageName().hashCode());
     }
 
     private void sendStatusBroadcast(String packageName, int status) {
