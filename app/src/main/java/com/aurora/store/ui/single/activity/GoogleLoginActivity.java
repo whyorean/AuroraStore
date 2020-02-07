@@ -1,6 +1,7 @@
 package com.aurora.store.ui.single.activity;
 
 import android.annotation.SuppressLint;
+import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Window;
@@ -38,6 +39,14 @@ public class GoogleLoginActivity extends BaseActivity {
 
     private CookieManager cookieManager = CookieManager.getInstance();
     private CompositeDisposable disposable = new CompositeDisposable();
+
+    @Override
+    public void applyOverrideConfiguration(final Configuration overrideConfiguration) {
+        if (Build.VERSION.SDK_INT >= 21 && Build.VERSION.SDK_INT < 25) {
+            overrideConfiguration.uiMode &= ~Configuration.UI_MODE_NIGHT_MASK;
+        }
+        super.applyOverrideConfiguration(overrideConfiguration);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
