@@ -77,7 +77,7 @@ public class FilesSection extends Section {
             }
         }
         contentHolder.line2.setText(String.valueOf(fileMetadata.getVersionCode()));
-        contentHolder.line3.setText(Util.humanReadableByteValue(fileMetadata.getSize(), true));
+        contentHolder.line3.setText(Util.humanReadableByteValue(fileMetadata.getCompressedSize(), true));
         contentHolder.itemView.setOnClickListener(v -> clickListener.onClick(position));
     }
 
