@@ -24,5 +24,7 @@
         android:layout_gravity="bottom|end"
         android:layout_marginEnd="@dimen/margin_normal"
         android:layout_marginBottom="@dimen/margin_normal"
-        app:icon="@drawable/ic_keyboard" />
+        app:backgroundTint="@color/colorAccent"
+        app:icon="@drawable/ic_keyboard"
+        app:iconTint="@color/colorWhite" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
