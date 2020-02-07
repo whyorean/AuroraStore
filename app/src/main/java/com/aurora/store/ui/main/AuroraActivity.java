@@ -196,7 +196,7 @@ public class AuroraActivity extends BaseActivity {
         super.onDestroy();
     }
 
-    @OnClick(R.id.search_bar)
+    @OnClick({R.id.search_bar, R.id.action2})
     public void openSearchActivity() {
         Intent intent = new Intent(this, SearchActivity.class);
         ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(this);
