@@ -54,7 +54,7 @@
     <string name="action_search_clearHistory">"ਸਾਰੀ ਸੂਚੀ ਮਿਟਾਓ"</string>
     <string name="action_search_history">"ਖੋਜ ਸੂਚੀ"</string>
     <string name="action_settings">"ਸੈਟਿੰਗਾਂ"</string>
-    <string name="action_spoofed">"ਧੋਖਾ ਸੈਟਿੰਗਾਂ 🎭"</string>
+    <string name="action_spoofed">"ਧੋਖਾ 🎭"</string>
     <string name="action_submit">"ਜਮਾਂ ਕਰੋ"</string>
     <string name="action_unignore">"ਬਲੈਕ ਲਿਸਟ ਵਿਚੋਂ ਹਟਾਓ"</string>
     <string name="action_uninstall">"ਅਨਿੰਸਟਾਲ"</string>
@@ -395,10 +395,10 @@
     <string name="testing_program_opt_out_success">"ਤੁਸੀਂ ਸਫਲਤਾਪੂਰਕ ਬੀਟਾ ਪ੍ਰੋਗ੍ਰਾਮ ਤੋਂ ਬਾਹਰ ਹੋ"</string>
     <string name="testing_program_opt_out_failed">"ਬੀਟਾ ਪ੍ਰੋਗ੍ਰਾਮ ਚੋਂ ਬਾਹਰ ਆਉਣ ਵਿੱਚ ਅਸਫਲ"</string>
     <string name="title_categories">"ਸ਼੍ਰੇਣੀਆਂ"</string>
-    <string name="toast_api_all_ok">"ਸਭ ਠੀਕ ਹੈ"</string>
-    <string name="toast_api_build_retrying">"API ਤਿਆਰ ਕਰਨ ਵਿੱਚ ਅਸਫਲ, ਦੋਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਜਾਰੀ......."</string>
+    <string name="toast_api_all_ok">"ਚਲੋ"</string>
+    <string name="toast_api_build_retrying">"API ਤਿਆਰ ਕਰਨ ਵਿੱਚ ਅਸਫਲ, ਦੋਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਜਾਰੀ...."</string>
     <string name="toast_api_build_failed">"API ਤਿਆਰ ਕਰਨ ਵਿੱਚ ਅਸਫਲ"</string>
-    <string name="toast_api_build_api">"ਗੂਗਲ-ਪਲੇ API ਤਿਆਰ ਹੋ ਰਹੀ ਹੈ........"</string>
+    <string name="toast_api_build_api">"API ਤਿਆਰ ਹੋ ਰਹੀ ਹੈ...."</string>
     <string name="toast_api_token_validity">"ਟੋਕਨ ਦੀ ਵੈਧਤਾ ਜਾਂਚ......."</string>
     <string name="review_positive">"ਸਕਾਰਾਤਮਕ"</string>
     <string name="review_recent">"ਹਾਲ ਹੀ ਵਿੱਚ ਵੇਖੇ ਗਏ"</string>
@@ -406,8 +406,9 @@
     <string name="request_failed">"ਬੇਨਤੀ ਅਸਫਲ"</string>
     <string name="notification_channel_alert">"ਜਲਦ ਸੂਚਨਾ"</string>
     <string name="notification_channel_general">"ਜਨਰਲ ਸੂਚਨਾ"</string>
-    <string name="action_continue_anyway">"ਜਾਰੀ ਰੱਖਣਾ ਹੈ ?"</string>
+    <string name="action_continue_anyway">"ਜਾਰੀ ਰੱਖਿਆ ਜਾਵੇ ?"</string>
     <string name="details_files">"ਫਾਈਲ ਦਾ ਵੇਰਵਾ"</string>
     <string name="pref_requested_location_enable">"ਤੁਹਾਨੂੰ ਫੋਨ ਦੇ ਡਿਵੈਲਪਰ ਵਿਕਲਪਾਂ ਵਿਚ ਖੁੱਦ ਜਾ ਕੇ Mock Location ਚਾਲੂ ਕਰਨੀ ਪਵੇਗੀ। ਇਸ ਤੋਂ ਬਾਅਦ VPN ਕੁਨੈਕਸ਼ਨ ਵਿੱਚ ਆਪਣੇ ਸਭ ਤੋਂ ਨੇੜਲੇ VPN ਸਰਵਰ ਦੀ ਚੋਣ ਕਰੋ।"</string>
-    <string name="toast_api_build_delayed">"ਇਸ ਵਿੱਚ ਹੱਦ ਤੋਂ ਜ਼ਿਆਦਾ ਸਮਾਂ ਲੱਗ ਰਿਹਾ ਹੈ....."</string>
+    <string name="toast_api_build_delayed">"ਇਸ ਵਿੱਚ ਹੱਦ ਤੋਂ ਵੱਧ ਸਮਾਂ ਲੱਗ ਰਿਹਾ ਹੈ....."</string>
+    <string name="dialog_uninstall_confirmation">"ਕੀ ਤੁਸੀਂ ਇਸ ਨੂੰ ਅਨਿੰਸਟਾਲ ਕਰਨਾ ਚਾਹੁੰਦੇ ਹੋ ?"</string>
 </resources>
