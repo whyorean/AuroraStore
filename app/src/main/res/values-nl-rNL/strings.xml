@@ -408,4 +408,9 @@ Het biedt ook een lijst met ingebouwde trackers in een applicatie."</string>
     <string name="request_failed">"Verzoek mislukt"</string>
     <string name="notification_channel_alert">"Snelle melding"</string>
     <string name="notification_channel_general">"Algemene melding"</string>
+    <string name="action_continue_anyway">"Ga toch verder ?"</string>
+    <string name="details_files">"Bestandsdetails"</string>
+    <string name="pref_requested_location_enable">"U moet Mock Locatie handmatig inschakelen via de Developer-opties. Een VPN-verbinding met nabijgelegen locatie is verplicht."</string>
+    <string name="toast_api_build_delayed">"Het duurt langer dan verwacht"</string>
+    <string name="dialog_uninstall_confirmation">"Wilt u deze app verwijderen?"</string>
 </resources>
