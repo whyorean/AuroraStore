@@ -19,7 +19,7 @@
   -->
 
 <resources>
-    <string name="app_name" translatable="false">Aurora Store</string>
+    <!--<string name="app_name" translatable="false">Aurora Store</string>-->
     <string name="content_description_icon" translatable="false">"App icon"</string>
     <string name="details_rating" translatable="false">"%1$.1f"</string>
     <string name="device_model" translatable="false">"%1$s ( %2$s )"</string>

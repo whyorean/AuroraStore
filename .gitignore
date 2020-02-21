@@ -37,6 +37,7 @@ gradle-app.setting
 
 #*.jar
 app/release/output.json
+app/beta/*
 
 #Exclude signing configurations & keystore
 signing.properties
