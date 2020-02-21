@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="account_dummy">"Anonym"</string>
-    <string name="account_dummy_desc">"Logg inn med Anonym konto?"</string>
-    <string name="account_google">"Google Konto"</string>
+    <string name="account_dummy_desc">"Logg inn med en anonym konto?"</string>
+    <string name="account_google">"Google"</string>
     <string name="account_logout">"Logg ut fra Aurora?"</string>
     <string name="account_prompt_login">"Vennligst logg inn for å fortsette"</string>
     <string name="account_switch">"Bytt konto"</string>
     <string name="action_accounts">"Kontoer"</string>
-    <string name="action_ask">"Spørr"</string>
+    <string name="action_ask">"Spør"</string>
     <string name="action_blacklist">"Svarteliste"</string>
     <string name="action_cancel">"Avbryt"</string>
     <string name="action_clear">"Slett"</string>
@@ -33,8 +33,8 @@
     <string name="action_flag">"Rapporter App"</string>
     <string name="action_get_local_apk">"Få lokal APK"</string>
     <string name="action_home">"Hjem"</string>
-    <string name="action_installations">"installasjoner"</string>
-    <string name="action_installed">"installert"</string>
+    <string name="action_installations">"Installasjoner"</string>
+    <string name="action_installed">"Installert"</string>
     <string name="action_later">"Senere"</string>
     <string name="action_logging_in">"Logger inn"</string>
     <string name="action_login">"Logg Inn"</string>
@@ -89,7 +89,7 @@
     <string name="details_update">"Oppdater"</string>
     <string name="details_why_rate_this_app">"Fortell andre hva du synes"</string>
     <string name="details_you_rated_this_app">"Din vurdering"</string>
-    <string name="dialog_title_logout">"Logg ut ?"</string>
+    <string name="dialog_title_logout">"Logg ut?"</string>
     <string name="download_cancel_all">"Avbryt alle"</string>
     <string name="download_canceled">"Avbrutt"</string>
     <string name="download_clear_completed">"Tøm fullført"</string>
@@ -109,7 +109,7 @@
     <string name="error_no_network">"Ingen nettverkstilkobling"</string>
     <string name="error_search_not_found">"Ingen matchende app funnet"</string>
     <string name="error_unknown">"Ukjent feil oppstod"</string>
-    <string name="exodus_noTracker">"Inneholder ikke sporingsspor"</string>
+    <string name="exodus_noTracker">"Inneholder ikke sporere"</string>
     <string name="exodus_powered">"Drevet av Exodus"</string>
     <string name="exodus_title">"Aurora Beskytt"</string>
     <string name="exodus_title_alt">"Exodus rapport"</string>
@@ -129,7 +129,7 @@
     <string name="list_empty_fav">"Ingen favoritter"</string>
     <string name="list_empty_query">"Ingen nylige søk"</string>
     <string name="list_empty_updates">"Ingen oppdateringer tilgjengelig"</string>
-    <string name="list_installed">"installert"</string>
+    <string name="list_installed">"Installert"</string>
     <string name="list_installed_system">"Vis kun bruker apper"</string>
     <string name="list_not_installd">"Ikke installert"</string>
     <string name="list_update_all">"Oppdater alle"</string>
@@ -138,14 +138,13 @@
     <string name="manual_download_disclaimer">"Ansvarsfraskrivelse"</string>
     <string name="manual_download_incompatible">"Google Play Butikk vurderer denne appen er uforenlig med enheten din. Dette betyr at versjonskoden ikke er returnert av Google Play Butikk-serveren."</string>
     <string name="manual_download_warning">"Denne siden lar deg manuelt velge hvilken versjon av appen du vil laste ned.
-
 Husk at nedlasting av vilkårlig versjoner av apper ikke støttes av Google Play Butikk. Din suksess avhenger av en heldig gjetning av versjonskoden. Selv om du antar riktig og du får nedlastingen til å starte, kan du få en inkompatibel apk."</string>
     <string name="menu_account">"Kontoer"</string>
     <string name="menu_disclaimer">"Ansvarsfraskrivelse"</string>
     <string name="menu_downloads">"Nedlastinger"</string>
     <string name="menu_license">"Tillatelse"</string>
     <string name="menu_setting">"Innstillinger"</string>
-    <string name="menu_terms">"Vilkår for bruk"</string>
+    <string name="menu_terms">"Tjenestevilkår"</string>
     <string name="no_permissions">"Ingen tillatelser er brukt."</string>
     <string name="pref_app_download">"Nedlastinger"</string>
     <string name="pref_app_network">"Nettverk"</string>
@@ -162,8 +161,8 @@ Husk at nedlasting av vilkårlig versjoner av apper ikke støttes av Google Play
     <string name="pref_downloader_active_title">"Aktiv nedlasting"</string>
     <string name="pref_downloader_debug_summary">"Aktiver nedlasting av feilsøking for å få detaljerte logger"</string>
     <string name="pref_downloader_debug_title">"Last ned feilsøking"</string>
-    <string name="pref_downloader_path_title">"Nedlastning sti"</string>
-    <string name="pref_downloader_wifi_title">"Last ned ved hjelp av wifi bare"</string>
+    <string name="pref_downloader_path_title">"Nedlastning bane"</string>
+    <string name="pref_downloader_wifi_title">"Last ned bare med WiFi"</string>
     <string name="pref_filter_fdroid_summary">"Fjerner F-droid-apper fra applister"</string>
     <string name="pref_filter_fdroid_title">"Filtrer F-droid apper"</string>
     <string name="pref_filter_google_summary">"Fjerner alle Google Apper fra søkeresultater og kategoriapper"</string>
@@ -187,20 +186,20 @@ Husk at nedlasting av vilkårlig versjoner av apper ikke støttes av Google Play
     <string name="pref_requested_language_default">"Standardspråket ditt"</string>
     <string name="pref_requested_location_disable">"Du må deaktivere Mock Location manuelt fra Utvikler Valg for å deaktivere det fullstendig."</string>
     <string name="pref_requested_location_summary">"Aurora Store må angis som standard Mock Location-applikasjon"</string>
-    <string name="pref_ui_card_summary">"pref_ui_card_summary"</string>
+    <string name="pref_ui_card_summary">"Bruk gamle stilkort for utvalgte apper"</string>
     <string name="pref_ui_card_title">"pref_ui_card_title"</string>
     <string name="pref_ui_snap_summary">"Vis bare én app på skroll"</string>
     <string name="pref_ui_snap_title">"Aktivere snapView for apper"</string>
     <string name="pref_ui_theme_title">"Tema"</string>
     <string name="testing_program_opt_in">"Bli med"</string>
     <string name="testing_program_opt_out">"Forlat"</string>
-    <string name="testing_program_review_dialog_content_hint">"Skriv inn tilbakemelding om appen"</string>
+    <string name="testing_program_review_dialog_content_hint">"Legg inn tilbakemeldinger om appen"</string>
     <string name="testing_program_section_opted_in_message">"Appoppdateringer inkluderer beta-versjoner. Hvis du forlater dette programmets beta-program, vil du ikke lenger få betaoppdateringer."</string>
     <string name="testing_program_section_opted_in_propagating_message">"Om et par minutter blir du lagt til i beta-programmet. Du kan da oppdatere til beta-versjonen av denne appen, hvis tilgjengelig."</string>
-    <string name="testing_program_section_opted_in_title">"Du er en beta tester"</string>
-    <string name="testing_program_section_opted_out_message">"Prøv nye funksjoner før de blir offentliggjort. Gi tilbakemelding direkte til utvikleren."</string>
+    <string name="testing_program_section_opted_in_title">"Du er en beta-tester"</string>
+    <string name="testing_program_section_opted_out_message">"Prøv nye funksjoner før de blir offentliggjort. Gi tilbakemeldingene dine direkte til utvikleren."</string>
     <string name="testing_program_section_opted_out_propagating_message">"Det kan ta noen minutter å fjerne deg fra beta-programmet."</string>
-    <string name="testing_program_section_opted_out_title">"Bli en beta tester"</string>
+    <string name="testing_program_section_opted_out_title">"Bli en beta-tester"</string>
     <string name="title_all_apps">"Alle apper"</string>
     <string name="title_home">"Aurora Store"</string>
     <string name="title_installed">"Mine apper &amp; spill"</string>
@@ -210,7 +209,7 @@ Husk at nedlasting av vilkårlig versjoner av apper ikke støttes av Google Play
     <string name="title_welcome">"Velkommen"</string>
     <string name="toast_apk_blacklisted">"Svartelistet"</string>
     <string name="toast_apk_whitelisted">"Hvitelistet"</string>
-    <string name="toast_apk_copy_success">"APK ble kopiert vellykket"</string>
+    <string name="toast_apk_copy_success">"APK ble kopiert"</string>
     <string name="toast_apk_copy_failure">"Kunne ikke kopiere APK"</string>
     <string name="pref_app_language">"Språk"</string>
     <string name="pref_locale_custom_title">"Egendefinert språk"</string>
@@ -221,19 +220,17 @@ Husk at nedlasting av vilkårlig versjoner av apper ikke støttes av Google Play
     <string name="tab_family">"Barn &amp; familie"</string>
     <string name="pref_ui_tab_mode_title">"Rullbare faner"</string>
     <string name="pref_ui_tab_mode_summary">"pref_ui_tab_mode_summary"</string>
-    <string name="about_app">"Aurora er et åpen kilde alternativ til Play Store.
-         Den lar deg laste ned apper, gir oppdateringer av installerte apper og lar deg søke etter apper og spill.
-         Det gir også en liste over sporere innebygd i en app."</string>
+    <string name="about_app">"Aurora Store er et åpen kildekode-alternativ til Google Play Store. Den lar deg laste ned apper, gir oppdateringer av installerte apper, og lar deg søke etter apper og spill. Den gir også en liste over sporere innebygd i en app."</string>
     <string name="about_paypal">"Paypal"</string>
     <string name="about_paypal_summary">"Doner til meg på Paypal"</string>
     <string name="about_fdroid">"F-Droid"</string>
     <string name="about_gitlab">"GitLab"</string>
-    <string name="about_gitlab_summary">"Få AuroraStore kildekode fra Aurora OSS på GitLab."</string>
+    <string name="about_gitlab_summary">"Få kildekoden til Aurora Store fra Aurora OSS på GitLab."</string>
     <string name="about_telegram">"Telegram"</string>
     <string name="about_telegram_summary">"Bli med i Aurora Support-gruppen for diskusjoner eller forslag."</string>
-    <string name="about_fdroid_summary">"Få Aurora på F-Droid Repo"</string>
+    <string name="about_fdroid_summary">"Få Aurora Store via F-Droid."</string>
     <string name="about_xda">"Dev Thread"</string>
-    <string name="about_xda_summary">"Se tråd på AuroraStore XDA for diskusjoner eller forslag."</string>
+    <string name="about_xda_summary">"Se Aurora Store XDA-tråden for diskusjoner eller forslag."</string>
     <string name="action_about">"Om"</string>
     <string name="pref_downloader_strategy_summary">"Velg standard nedlastingsstrategi, anbefalt parallellstrategi for raskest nedlasting"</string>
     <string name="pref_downloader_strategy_title">"Nedlastnings strategi"</string>
@@ -357,8 +354,11 @@ Husk at nedlasting av vilkårlig versjoner av apper ikke støttes av Google Play
     <string name="installer_status_ongoing">"installerer"</string>
     <string name="list_update_all_txt_one">"oppdatering tilgjengelig"</string>
     <string name="pref_ui_package">"Søk etter pakkenavn"</string>
+    <string name="pref_ui_package_summary">"Tillat å søke etter apper etter pakkenavn"</string>
     <string name="pref_update_self_title">"Sjekk oppdateringer"</string>
     <string name="pref_update_self_desc">"Se etter siste tilgjengelige oppdateringer av Aurora Store"</string>
+    <string name="toast_rate_limit">"For mange forespørsler fra gjeldende økt, ber om ny påloggingsøkt"</string>
+    <string name="error_session_expired">"Sesjon utløpt"</string>
     <string name="list_updating_background">"Laster ned apper i bakgrunnen"</string>
     <string name="list_updating_failed">"Kunne ikke oppdatere"</string>
     <string name="pref_updates_auto">"Aktiver auto-oppdateringer"</string>
@@ -370,4 +370,33 @@ Husk at nedlasting av vilkårlig versjoner av apper ikke støttes av Google Play
     <string name="toast_login_failed">"Kunne ikke logge inn"</string>
     <string name="disclaimer">"Å bruke Aurora Store med din egen Google-konto kan føre til at kontoen din blir svartelistet eller deaktivert, ettersom Aurora Store bryter Googles vilkår for bruk 3.3, bruk på egen risiko. Du kan velge å gå anonym og bruke en kastekonto for å logge inn på Aurora Store"</string>
     <string name="menu_blacklist">"Legg til svarteliste"</string>
+    <string name="action_unknown">"Ukjent"</string>
+    <string name="category_all">"Alle Kategorier"</string>
+    <string name="category_family">"Familie"</string>
+    <string name="category_games">"Spill"</string>
+    <string name="details_dev_details">"Utviklerkontakt"</string>
+    <string name="details_dev_email">"E-post"</string>
+    <string name="details_dev_address">"Adresse"</string>
+    <string name="details_dev_website">"Nettside"</string>
+    <string name="details_more_updated">"Oppdatert den"</string>
+    <string name="details_more_version">"Versjon"</string>
+    <string name="exodus_noReport">"Rapporten er ikke tilgjengelig"</string>
+    <string name="list_empty_reviews">"Ingen anmeldelser tilgjengelig"</string>
+    <string name="testing_program_opt_in_success">"Gratulerer, du ble med på beta."</string>
+    <string name="testing_program_opt_in_failed">"Akk ! forespørselen om beta-abonnement mislyktes"</string>
+    <string name="title_categories">"Kategorier"</string>
+    <string name="toast_api_all_ok">"Alt klart"</string>
+    <string name="toast_api_build_retrying">"Kunne ikke bygge API, prøver på nytt."</string>
+    <string name="toast_api_build_failed">"Kunne ikke bygge API."</string>
+    <string name="toast_api_build_api">"Bygger GooglePlay API"</string>
+    <string name="review_positive">"Positiv"</string>
+    <string name="review_recent">"Nylig"</string>
+    <string name="review_helpful">"Nyttig"</string>
+    <string name="request_failed">"Forespørsel feilet"</string>
+    <string name="notification_channel_alert">"Rask varsling"</string>
+    <string name="notification_channel_general">"Generell varsling"</string>
+    <string name="action_continue_anyway">"Fortsett uansett?"</string>
+    <string name="details_files">"Fildetaljer"</string>
+    <string name="toast_api_build_delayed">"Det tar lenger tid enn forventet"</string>
+    <string name="dialog_uninstall_confirmation">"Vil du avinstallere denne appen?"</string>
 </resources>
