@@ -290,7 +290,7 @@ Zudem zeigt Aurora die Anzahl der Tracker in der jeweiligen App an."</string>
     <string name="link_dev">"Entwickler"</string>
     <string name="link_prmission">"Berechtigung"</string>
     <string name="link_playstore">"Play Store"</string>
-    <string name="link_setting">"Einstellung"</string>
+    <string name="link_setting">"Einstellungen"</string>
     <string name="link_share">"Teilen"</string>
     <string name="pref_install_mode_no_root">"Root-Zugriff nicht verfügbar, stellen Sie sicher, dass Ihr Gerät gerootet ist"</string>
     <string name="pref_install_mode_root_warn">"Die Root-Installationsmethode erfordert, dass die APK in die App-Daten heruntergeladen wird, um diese über die adb-Konsole zu installieren"</string>
@@ -386,6 +386,8 @@ Zudem zeigt Aurora die Anzahl der Tracker in der jeweiligen App an."</string>
     <string name="details_dev_details">"Kontaktdaten des Entwicklers"</string>
     <string name="details_dev_email">"Email"</string>
     <string name="details_dev_address">"Adresse"</string>
+
+    <!-- Netzseite is wrong. Better use Webseite Internetseite or just Website -->
     <string name="details_dev_website">"Netzseite"</string>
     <string name="details_more_updated">"Aktualisiert am"</string>
     <string name="details_more_version">"Version"</string>
@@ -407,4 +409,11 @@ Zudem zeigt Aurora die Anzahl der Tracker in der jeweiligen App an."</string>
     <string name="request_failed">"Anfrage fehlgeschlagen"</string>
     <string name="notification_channel_alert">"Schnelle Benachrichtigung"</string>
     <string name="notification_channel_general">"Allgemeine Benachrichtigung"</string>
+    <string name="action_continue_anyway">"Trotzdem fortfahren? "</string>
+    <string name="details_files">"Datei details"</string>
+
+    <!-- Looked up settings name in developer options. Unsure about the last sentence concerning vpn... -->
+    <string name="pref_requested_location_enable">"\"Falsche Standorte\" müssen in den Entwickleroptionen aktiviert werden. Eine VPN-Verbindung ist notwendig."</string>
+    <string name="toast_api_build_delayed">"Es dauert länger als erwartet"</string>
+    <string name="dialog_uninstall_confirmation">"Möchtest du die App deinstallieren?"</string>
 </resources>
