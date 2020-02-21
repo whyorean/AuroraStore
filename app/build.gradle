@@ -70,10 +70,10 @@ dependencies {
     implementation 'androidx.preference:preference:1.1.0'
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.0.0'
     implementation 'androidx.palette:palette:1.0.0'
-    implementation 'androidx.navigation:navigation-fragment:2.2.0'
-    implementation 'androidx.navigation:navigation-ui:2.2.0'
+    implementation 'androidx.navigation:navigation-fragment:2.2.1'
+    implementation 'androidx.navigation:navigation-ui:2.2.1'
     implementation 'com.google.android.material:material:1.2.0-alpha04'
-    implementation 'io.github.luizgrp.sectionedrecyclerviewadapter:sectionedrecyclerviewadapter:3.0.0'
+    implementation 'io.github.luizgrp.sectionedrecyclerviewadapter:sectionedrecyclerviewadapter:3.1.0'
 
     //Utils
     implementation 'androidx.annotation:annotation:1.1.0'
@@ -87,8 +87,8 @@ dependencies {
     implementation 'com.github.whyorean:playstore-api-v2:2.5'
 
     //OkHTTP3
-    implementation 'com.squareup.okhttp3:okhttp:4.2.2'
-    implementation 'com.squareup.okhttp3:okhttp-urlconnection:4.2.2'
+    implementation 'com.squareup.okhttp3:okhttp:4.3.1'
+    implementation 'com.squareup.okhttp3:okhttp-urlconnection:4.3.1'
 
     //RX-Java2
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
@@ -96,8 +96,8 @@ dependencies {
     implementation 'com.jakewharton.rxrelay2:rxrelay:2.1.1'
 
     //ButterKnife
-    implementation 'com.jakewharton:butterknife:10.2.0'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.0'
+    implementation 'com.jakewharton:butterknife:10.2.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.1'
 
     //Glide
     implementation 'com.github.bumptech.glide:glide:4.11.0'
@@ -109,7 +109,7 @@ dependencies {
     implementation 'androidx.tonyodev.fetch2okhttp:xfetch2okhttp:3.1.4'
 
     //Debug
-    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.1'
+    //debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.1'
 }
 
 repositories {

@@ -137,7 +137,7 @@ public class SearchResultActivity extends BaseActivity implements SearchResultSe
 
     private void purgeAdapterData() {
         section.purgeData();
-        adapter.notifyDataSetChanged();
+        adapter.getAdapterForSection(section).notifyAllItemsChanged();
     }
 
     private void setupSearch() {
@@ -154,7 +154,7 @@ public class SearchResultActivity extends BaseActivity implements SearchResultSe
         List<App> oldList = section.getList();
         if (oldList.isEmpty()) {
             section.updateList(newList);
-            adapter.notifyDataSetChanged();
+            adapter.getAdapterForSection(section).notifyAllItemsChanged();
         } else {
             if (!newList.isEmpty()) {
                 for (App app : newList) {
@@ -163,7 +163,7 @@ public class SearchResultActivity extends BaseActivity implements SearchResultSe
                     }
                     section.add(app);
                 }
-                adapter.notifyItemInserted(section.getCount() - 1);
+                adapter.getAdapterForSection(section).notifyItemInserted(section.getCount() - 1);
             }
         }
     }
