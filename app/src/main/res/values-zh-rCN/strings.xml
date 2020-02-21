@@ -429,4 +429,9 @@
     <string name="request_failed">"请求失败"</string>
     <string name="notification_channel_alert">"快速通知"</string>
     <string name="notification_channel_general">"普通通知"</string>
+    <string name="action_continue_anyway">"是否仍要继续？"</string>
+    <string name="details_files">"文件详情"</string>
+    <string name="pref_requested_location_enable">"您需要在开发者选项中手动启用模拟位置。必须连接到该位置附近的VPN。"</string>
+    <string name="toast_api_build_delayed">"耗时比预计要长"</string>
+    <string name="dialog_uninstall_confirmation">"您是否要卸载此应用？"</string>
 </resources>
