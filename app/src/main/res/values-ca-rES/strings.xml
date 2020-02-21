@@ -405,4 +405,9 @@ Tingueu en compte que Google Play Store no admet la baixada de versions arbitrà
     <string name="request_failed">"La sol·licitud ha fallat"</string>
     <string name="notification_channel_alert">"Notificació ràpida"</string>
     <string name="notification_channel_general">"Notificació general"</string>
+    <string name="action_continue_anyway">"Voleu continuar de totes maneres?"</string>
+    <string name="details_files">"Detalls del fitxer"</string>
+    <string name="pref_requested_location_enable">"Cal que activeu manualment la ubicació simulada des de les Opcions de desenvolupador. Una connexió VPN a una ubicació propera és obligatòria."</string>
+    <string name="toast_api_build_delayed">"Està trigant més del que s'esperava"</string>
+    <string name="dialog_uninstall_confirmation">"Voleu desinstal·lar aquesta aplicació?"</string>
 </resources>
