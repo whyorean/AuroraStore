@@ -153,7 +153,7 @@
     <string name="pref_category_spoof_lang">"Мова"</string>
     <string name="pref_category_spoof_location">"Фіктивне місцезнаходження"</string>
     <string name="pref_device_to_pretend_to_be">"Прикинутись іншим пристроєм"</string>
-    <string name="pref_device_to_pretend_to_be_default">"Інформація про оригінальний пристрій"</string>
+    <string name="pref_device_to_pretend_to_be_default">"Не прикидуватись"</string>
     <string name="pref_device_to_pretend_to_be_toast">"Ця зміна буде застосована після повторного входу"</string>
     <string name="pref_dialog_to_apply_restart">"Це налаштування буде застосовано після перезапуску програми"</string>
     <string name="pref_downloader_active_summary">"Максимальна кількість активних завантажень"</string>
@@ -296,7 +296,7 @@ Aurora дозволяє шукати, завантажувати, встанов
     <string name="pref_ui_transparent_summary">"Для перегляду категорій і посилань використовується прозорий стиль карток"</string>
     <string name="pref_install_delete_summary">"На пристроях під керуванням Android Pie + з рут методом встановлення, APK видаляється за замовчуванням"</string>
     <string name="action_loading">"Завантаження"</string>
-    <string name="pref_default">"Замовчуванням"</string>
+    <string name="pref_default">"За замовчуванням"</string>
     <string name="toast_loading_apps">"Зазвантажуєм ще..."</string>
     <string name="dialog_2FA_title">"Двоетапна авторизація"</string>
     <string name="dialog_2FA_desc">"Схоже ви використовуєте двоетапну авторизацію, будь ласка, згенеруйте пароль для програми та використовуйте новий згенерованийй пароль для входу"</string>
@@ -393,7 +393,7 @@ Aurora дозволяє шукати, завантажувати, встанов
     <string name="testing_program_opt_out_failed">"Не вдалося вийти з програми бета-тестування"</string>
     <string name="title_categories">"Категорії"</string>
     <string name="toast_api_all_ok">"Все готово"</string>
-    <string name="toast_api_build_retrying">"Не вдалося створити API, спробємо ще раз."</string>
+    <string name="toast_api_build_retrying">"Не вдалося створити API, спробуємо ще раз."</string>
     <string name="toast_api_build_failed">"Не вдалося створити API."</string>
     <string name="toast_api_build_api">"Створюємо GooglePlay API"</string>
     <string name="toast_api_token_validity">"Перевіряємо правильність токена"</string>
@@ -403,4 +403,9 @@ Aurora дозволяє шукати, завантажувати, встанов
     <string name="request_failed">"Запит не виконано"</string>
     <string name="notification_channel_alert">"Швидке сповіщення"</string>
     <string name="notification_channel_general">"Загальне сповіщення"</string>
+    <string name="action_continue_anyway">"Продовжити все-таки?"</string>
+    <string name="details_files">"Деталі файлу"</string>
+    <string name="pref_requested_location_enable">"Вам потрібно вручну ввімкнути Mock Location з параметрів розробника. Підключення VPN до місця поблизу є обов'язковим"</string>
+    <string name="toast_api_build_delayed">"Це займає більше часу, ніж очікувалося"</string>
+    <string name="dialog_uninstall_confirmation">"Ви хочете видалити цей додаток?"</string>
 </resources>
