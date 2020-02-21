@@ -446,10 +446,15 @@ Aurora позволяет искать, загружать, устанавлив
     <string name="toast_api_build_failed">"Не удалось создать API"</string>
     <string name="toast_api_build_api">"Создание Google Play API"</string>
     <string name="toast_api_token_validity">"Проверка действительности токена"</string>
-    <string name="review_positive">"Положительный"</string>
-    <string name="review_recent">"Недавний"</string>
-    <string name="review_helpful">"Полезный"</string>
+    <string name="review_positive">"Положительные"</string>
+    <string name="review_recent">"Недавние"</string>
+    <string name="review_helpful">"Полезные"</string>
     <string name="request_failed">"Запрос не выполнен"</string>
     <string name="notification_channel_alert">"Быстрое уведомление"</string>
     <string name="notification_channel_general">"Основное уведомление"</string>
+    <string name="action_continue_anyway">"Всё равно продолжить?"</string>
+    <string name="details_files">"Подробности о файле"</string>
+    <string name="pref_requested_location_enable">"Вам нужно вручную включить использование фиктивных местоположений в параметрах для разработчиков. Также необходимо VPN-соединение к этой местности."</string>
+    <string name="toast_api_build_delayed">"Это занимает больше времени, чем ожидалось"</string>
+    <string name="dialog_uninstall_confirmation">"Вы хотите удалить это приложение?"</string>
 </resources>
