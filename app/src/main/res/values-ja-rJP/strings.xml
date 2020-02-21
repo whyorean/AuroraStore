@@ -373,4 +373,12 @@
     <string name="toast_login_failed">"ログインに失敗しました"</string>
     <string name="disclaimer">"Aurora Store をあなた自身の Google アカウントで利用した場合、Aurora Store が Google の利用規約 3.3 に違反しているためにアカウントがブラックリストに追加されたり無効化される可能性があります。自己責任で利用してください。また、匿名で利用することで一時的なアカウントで Aurora Store にログインすることも可能です"</string>
     <string name="menu_blacklist">"ブラックリストに追加"</string>
+    <string name="action_unknown">"不明"</string>
+    <string name="category_all">"すべてのカテゴリ"</string>
+    <string name="details_dev_details">"開発者の連絡先"</string>
+    <string name="details_dev_address">"住所"</string>
+    <string name="details_dev_website">"Web サイト"</string>
+    <string name="list_empty_reviews">"レビューはありません"</string>
+    <string name="testing_program_opt_in_success">"おめでとうございます、ベータに参加しました。"</string>
+    <string name="title_categories">"カテゴリ"</string>
 </resources>
