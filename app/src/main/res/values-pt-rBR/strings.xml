@@ -124,12 +124,12 @@
     <string name="list_app_depends_on_gsf">"Dependente do GSF"</string>
     <string name="list_app_has_ads">"Contém anúncios"</string>
     <string name="list_app_independent_from_gsf">"Não dependente do GSF"</string>
-    <string name="list_app_no_ads">"sem anúncios"</string>
+    <string name="list_app_no_ads">"Sem anúncios"</string>
     <string name="list_app_system">"Aplicativo do sistema"</string>
     <string name="list_app_user">"Aplicativo do usuário"</string>
     <string name="list_blacklist">"Aplicativos na lista negra"</string>
     <string name="list_blacklist_none">"Nenhum aplicativo na lista negra"</string>
-    <string name="list_bulk_install">"aplicativo(s) na fila para instalação em massa"</string>
+    <string name="list_bulk_install">"Aplicativo(s) na fila para instalação em massa"</string>
     <string name="list_empty_fav">"Nenhum favorito"</string>
     <string name="list_empty_query">"Nenhuma pesquisa recente"</string>
     <string name="list_empty_updates">"Nenhuma atualização disponível"</string>
@@ -137,7 +137,7 @@
     <string name="list_installed_system">"Mostrar somente aplicativos do usuário"</string>
     <string name="list_not_installd">"Não instalado"</string>
     <string name="list_update_all">"Atualizar todos"</string>
-    <string name="list_update_all_txt">"atualização(ões) disponível(is)"</string>
+    <string name="list_update_all_txt">"Atualização(ões) disponível(is)"</string>
     <string name="list_updating">"Atualizando"</string>
     <string name="manual_download_disclaimer">"Aviso legal"</string>
     <string name="manual_download_incompatible">"A Google Play Store considera esse aplicativo incompatível com o seu aparelho. Isto significa que o código de versão não foi informado pelo servidor da Google Play Store."</string>
@@ -187,31 +187,31 @@ Lembre-se que fazer o download de versões arbitrárias de aplicativos não é s
     <string name="pref_proxy_host">"Endereço do proxy"</string>
     <string name="pref_proxy_port">"Porta do proxy"</string>
     <string name="pref_proxy_type">"Tipo do proxy"</string>
-    <string name="pref_requested_language">"Alterar idioma padrão para chamadas da API"</string>
+    <string name="pref_requested_language">"Alterar o idioma padrão de solicitação da API"</string>
     <string name="pref_requested_language_default">"Seu idioma padrão"</string>
     <string name="pref_requested_location_disable">"Você precisa desativar a opção de local fictício manualmente nas configurações de desenvolvedor do Android para desativá-la completamente."</string>
     <string name="pref_requested_location_summary">"A Aurora Store precisa ser definida como o aplicativo de local fictício padrão"</string>
     <string name="pref_ui_card_summary">"Usar cartões no estilo antigo para aplicativos em destaque"</string>
     <string name="pref_ui_card_title">"Cartões de destaque antigos"</string>
     <string name="pref_ui_snap_summary">"Mostrar somente um aplicativo por vez ao rolar"</string>
-    <string name="pref_ui_snap_title">"Ativar SnapView para aplicativos"</string>
+    <string name="pref_ui_snap_title">"Ativar snapView para aplicativos"</string>
     <string name="pref_ui_theme_title">"Tema"</string>
     <string name="testing_program_opt_in">"Participar"</string>
     <string name="testing_program_opt_out">"Abandonar"</string>
     <string name="testing_program_review_dialog_content_hint">"Escreva sua opinião sobre o aplicativo"</string>
     <string name="testing_program_section_opted_in_message">"As atualizações desse aplicativo incluirão versões de teste. Se você sair do programa de testes desse aplicativo, você não vai mais receber atualizações de teste."</string>
-    <string name="testing_program_section_opted_in_propagating_message">"Dentro de alguns minutos, você será adicionado(a) ao programa de testes. Você então poderá atualizar para a versão de teste do programa, se estiver disponível."</string>
+    <string name="testing_program_section_opted_in_propagating_message">"Em alguns minutos, você será adicionado ao programa de testes. Você então poderá atualizar para a versão de teste do programa, se estiver disponível."</string>
     <string name="testing_program_section_opted_in_title">"Você está no programa de testes"</string>
     <string name="testing_program_section_opted_out_message">"Experimente novos recursos antes deles serem lançados. Dê sua opinião diretamente ao desenvolvedor."</string>
     <string name="testing_program_section_opted_out_propagating_message">"Pode levar alguns minutos para remover você do programa de testes."</string>
-    <string name="testing_program_section_opted_out_title">"Tornar-se um(a) testador(a)"</string>
+    <string name="testing_program_section_opted_out_title">"Torne-se um testador beta"</string>
     <string name="title_all_apps">"Todos os aplicativos"</string>
     <string name="title_home">"Aurora Store"</string>
     <string name="title_installed">"Meus aplicativos e jogos"</string>
     <string name="title_perm">"Permissões"</string>
     <string name="title_search">"Procurar aplicativos e jogos"</string>
     <string name="title_updates">"Atualizações disponíveis"</string>
-    <string name="title_welcome">"Bem-vindo(a)"</string>
+    <string name="title_welcome">"Bem-vindo"</string>
     <string name="toast_apk_blacklisted">"Adicionado à lista negra"</string>
     <string name="toast_apk_whitelisted">"Aficionado à lista branca"</string>
     <string name="toast_apk_copy_success">"APK copiado com sucesso"</string>
@@ -280,7 +280,7 @@ Lembre-se que fazer o download de versões arbitrárias de aplicativos não é s
 
     <!-- Precisa de alteração no código de localização para incluir o valor a ser expandido (nome do aplicativo). Não é possível traduzir corretamente sem essa alteração. -->
     <!-- Fuzzy -->
-    <string name="error_app_download">"não pode ser baixado"</string>
+    <string name="error_app_download">"Não pode ser baixado"</string>
     <string name="details_new_changes">"O que há de novo"</string>
     <string name="action_apps">"Apps"</string>
     <string name="action_logging_in_success">"Logado com sucesso"</string>
@@ -298,7 +298,7 @@ Lembre-se que fazer o download de versões arbitrárias de aplicativos não é s
     <string name="link_setting">"Configuração"</string>
     <string name="link_share">"Compartilhar"</string>
     <string name="pref_install_mode_no_root">"Acesso raiz não disponível, verifique se seu dispositivo está enraizado"</string>
-    <string name="pref_install_mode_root_warn">"o método de instalação raiz requer que o apk seja baixado nos dados do aplicativo, a fim de instalar via shell adb, Android Pie +"</string>
+    <string name="pref_install_mode_root_warn">"O método de instalação raiz exige que o APK seja baixado nos dados do aplicativo, a fim de instalar via shell adb, Android Pie +"</string>
     <string name="pref_ui_ime">"Pesquisar IME"</string>
     <string name="pref_ui_ime_summary">"Mostrar teclado na página de pesquisa por padrão"</string>
     <string name="pref_ui_transparent">"Estilo transparente"</string>
@@ -307,7 +307,7 @@ Lembre-se que fazer o download de versões arbitrárias de aplicativos não é s
     <string name="action_loading">"Carregando"</string>
     <string name="pref_default">"Padrão"</string>
     <string name="toast_loading_apps">"Carregando mais aplicativos.."</string>
-    <string name="dialog_2FA_title">"autenticação de 2 etapa"</string>
+    <string name="dialog_2FA_title">"Autenticação de 2 etapas"</string>
     <string name="dialog_2FA_desc">"Parece que você ativou o 2FA, gere uma senha de aplicativo e use a nova senha gerada para fazer login"</string>
     <string name="dialog_2FA_positive">"Criar senha"</string>
     <string name="dialog_purchase_title">"Comprar Aplivativo"</string>
@@ -365,13 +365,13 @@ Lembre-se que fazer o download de versões arbitrárias de aplicativos não é s
     <string name="download_extraction_completed">"Extração de recursos do jogo concluída"</string>
     <string name="download_extraction_failed">"Falha na extração de recursos do jogo "</string>
     <string name="installer_status_ongoing">"Instalando "</string>
-    <string name="list_update_all_txt_one">"atualização disponível "</string>
+    <string name="list_update_all_txt_one">"Atualização disponível "</string>
     <string name="pref_ui_package">"Procurar por nome do pacote "</string>
     <string name="pref_ui_package_summary">"Permitir busca de aplicativos pelo nome do pacote "</string>
     <string name="pref_update_self_title">"Verificar atualizações "</string>
     <string name="pref_update_self_desc">"Verificar pelas últimas atualizações disponíveis da Aurora Store"</string>
     <string name="toast_rate_limit">"Excesso de requisições da sessão atual, requisitando nova sessão "</string>
-    <string name="toast_token_stale">"Token vencido, requisitando novo token"</string>
+    <string name="toast_token_stale">"Token expirado, requisitando novo token"</string>
     <string name="error_session_expired">"Sessão expirada"</string>
     <string name="list_updating_background">"Baixando aplicativos em segundo plano"</string>
     <string name="list_updating_failed">"Falha ao atualizar"</string>
@@ -416,4 +416,5 @@ Lembre-se que fazer o download de versões arbitrárias de aplicativos não é s
     <string name="details_files">"Detalhes do arquivo"</string>
     <string name="pref_requested_location_enable">"Você precisa habilitar manualmente o Local Fictício nas Opções do Desenvolvedor. Uma conexão VPN para um local próximo é obrigatória"</string>
     <string name="toast_api_build_delayed">"Está demorando mais que o esperado"</string>
+    <string name="dialog_uninstall_confirmation">"Deseja desinstalar este aplicativo?"</string>
 </resources>
