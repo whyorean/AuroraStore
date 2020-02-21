@@ -20,6 +20,11 @@
 
 <resources>
     <string name="app_log" translatable="false">
+        \n
+        \n Changelog : v3.1.9
+        \n • Update translations
+        \n • Bug fixes and improvements
+        \n
         \n Changelog : v3.1.8
         \n • Fixed Exodus report
         \n • Fixed Login/No network issue
