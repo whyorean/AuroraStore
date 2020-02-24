@@ -49,6 +49,14 @@ public class ContextUtil {
         }
     }
 
+    public static void runOnUiThread(final Runnable action, int delay) {
+        if (isUiThread()) {
+            action.run();
+        } else {
+            new Handler(Looper.getMainLooper()).postDelayed(action::run, delay);
+        }
+    }
+
     public static boolean isUiThread() {
         return Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
                 ? Looper.getMainLooper().isCurrentThread()

@@ -13,21 +13,22 @@ import android.widget.Toast;
 
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.aurora.store.Constants;
 import com.aurora.store.R;
-import com.aurora.store.SuggestionDiffCallback;
 import com.aurora.store.section.SearchSuggestionSection;
 import com.aurora.store.ui.details.DetailsActivity;
 import com.aurora.store.ui.search.SearchSuggestionModel;
 import com.aurora.store.ui.single.activity.BaseActivity;
+import com.aurora.store.util.ContextUtil;
 import com.aurora.store.util.Util;
 import com.aurora.store.util.ViewUtil;
 import com.dragons.aurora.playstoreapiv2.SearchSuggestEntry;
 import com.google.android.material.textfield.TextInputEditText;
+
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.List;
 import java.util.regex.Pattern;
@@ -141,9 +142,10 @@ public class SearchActivity extends BaseActivity implements SearchSuggestionSect
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                query = searchView.getText().toString();
-                if (!query.isEmpty())
-                    model.fetchSuggestions(s.toString());
+                if (!StringUtils.isEmpty(s)) {
+                    query = s.toString();
+                    ContextUtil.runOnUiThread(() -> model.fetchSuggestions(query), 500);
+                }
             }
 
             @Override
@@ -154,7 +156,6 @@ public class SearchActivity extends BaseActivity implements SearchSuggestionSect
 
         searchView.setOnEditorActionListener((v, actionId, event) -> {
             if (actionId == EditorInfo.IME_ACTION_SEARCH) {
-                model.discardRequests();
                 query = searchView.getText().toString();
                 if (!query.isEmpty()) {
                     openSearchResultActivity(query);
@@ -167,13 +168,15 @@ public class SearchActivity extends BaseActivity implements SearchSuggestionSect
 
     private void dispatchAppsToAdapter(List<SearchSuggestEntry> suggestEntryList) {
         List<SearchSuggestEntry> oldList = section.getList();
-        if (oldList.isEmpty()) {
+
+        if (!oldList.isEmpty()) {
+            section.getList().clear();
+            adapter.notifyDataSetChanged();
+        }
+
+        if (!suggestEntryList.isEmpty()) {
             section.addData(suggestEntryList);
             adapter.notifyDataSetChanged();
-        } else {
-            DiffUtil.DiffResult diffResult = DiffUtil.calculateDiff(new SuggestionDiffCallback(suggestEntryList, oldList));
-            diffResult.dispatchUpdatesTo(adapter);
-            section.addData(suggestEntryList);
         }
     }
 

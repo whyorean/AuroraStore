@@ -37,7 +37,6 @@ public class SearchSuggestionSection extends Section {
     }
 
     public void addData(List<SearchSuggestEntry> suggestEntryList) {
-        this.suggestEntryList.clear();
         this.suggestEntryList.addAll(suggestEntryList);
     }
 
