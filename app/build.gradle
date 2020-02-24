@@ -41,6 +41,9 @@ android {
         release
     }
     buildTypes {
+        debug{
+            resValue "string", "app_name", "Aurora Store - Debug"
+        }
         release {
             minifyEnabled true
             zipAlignEnabled true
