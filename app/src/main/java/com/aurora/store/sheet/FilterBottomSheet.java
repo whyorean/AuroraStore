@@ -21,8 +21,6 @@
 package com.aurora.store.sheet;
 
 import android.app.Dialog;
-import android.content.res.ColorStateList;
-import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,12 +30,10 @@ import android.widget.FrameLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.graphics.ColorUtils;
 
 import com.aurora.store.R;
 import com.aurora.store.manager.FilterManager;
 import com.aurora.store.model.FilterModel;
-import com.aurora.store.util.ImageUtil;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
@@ -108,10 +104,6 @@ public class FilterBottomSheet extends BottomSheetDialogFragment {
         chip_gsf.setOnCheckedChangeListener((v, isChecked) -> filterModel.setGsfDependentApps(isChecked));
         chip_paid.setOnCheckedChangeListener((v, isChecked) -> filterModel.setPaidApps(isChecked));
         chip_ads.setOnCheckedChangeListener((v, isChecked) -> filterModel.setAppsWithAds(isChecked));
-
-        applyStyles(chip_gsf, 0);
-        applyStyles(chip_ads, 1);
-        applyStyles(chip_paid, 2);
     }
 
     private void setupMultipleChips() {
@@ -122,47 +114,29 @@ public class FilterBottomSheet extends BottomSheetDialogFragment {
 
         int i = 0;
         for (String downloadLabel : downloadLabels) {
-            final int pos = i;
             Chip chip = new Chip(requireContext());
-            applyStyles(chip, i);
+            chip.setId(i);
             chip.setText(downloadLabel);
-            chip.setOnCheckedChangeListener((v, isChecked) -> {
-                download_chips.clearCheck();
-                chip.setChecked(isChecked);
-                if (isChecked) {
-                    filterModel.setDownloads(Integer.parseInt(downloadValues[pos]));
-                }
-            });
             chip.setChecked(filterModel.getDownloads() == Integer.parseInt(downloadValues[i]));
             download_chips.addView(chip);
             i++;
         }
 
+        download_chips.setOnCheckedChangeListener((group, checkedId) ->
+                filterModel.setDownloads(Integer.parseInt(downloadValues[checkedId])));
+
         i = 0;
         for (String ratingLabel : ratingLabels) {
-            final int pos = i;
             Chip chip = new Chip(requireContext());
-            applyStyles(chip, i);
+            chip.setId(i);
             chip.setText(ratingLabel);
-            chip.setOnCheckedChangeListener((v, isChecked) -> {
-                rating_chips.clearCheck();
-                chip.setChecked(isChecked);
-                if (isChecked) {
-                    filterModel.setRating(Float.parseFloat(ratingValues[pos]));
-                }
-            });
             chip.setChecked(filterModel.getRating() == Float.parseFloat(ratingValues[i]));
             rating_chips.addView(chip);
             i++;
         }
-    }
 
-    private void applyStyles(Chip chip, int index) {
-        int color = ImageUtil.getSolidColor(index);
-        chip.setChipIcon(ImageUtil.getDrawable(index, GradientDrawable.OVAL));
-        chip.setCheckedIcon(requireContext().getDrawable(R.drawable.ic_filter_check));
-        chip.setChipIconVisible(true);
-        chip.setChipBackgroundColor(ColorStateList.valueOf(ColorUtils.setAlphaComponent(color, 100)));
-        chip.setChipStrokeColor(ColorStateList.valueOf(color));
+        rating_chips.setOnCheckedChangeListener((group, checkedId) ->
+                filterModel.setRating(Float.parseFloat(ratingValues[checkedId])));
+
     }
 }

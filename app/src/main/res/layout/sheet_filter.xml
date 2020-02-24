@@ -25,7 +25,6 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-
     <androidx.appcompat.widget.AppCompatTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -67,33 +66,24 @@
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/filter_gfs"
+                    style="@style/Widget.Aurora.Chip"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/action_filter_gsf_dependent_apps"
-                    app:checkedIcon="@drawable/ic_checked"
-                    app:chipEndPadding="5dp"
-                    app:chipStartPadding="5dp"
-                    app:closeIconEnabled="false" />
+                    android:text="@string/action_filter_gsf_dependent_apps" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/filter_paid"
+                    style="@style/Widget.Aurora.Chip"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/action_filter_paid_apps"
-                    app:checkedIcon="@drawable/ic_checked"
-                    app:chipEndPadding="5dp"
-                    app:chipStartPadding="5dp"
-                    app:closeIconEnabled="false" />
+                    android:text="@string/action_filter_paid_apps" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/filter_ads"
+                    style="@style/Widget.Aurora.Chip"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/action_filter_apps_with_ads"
-                    app:checkedIcon="@drawable/ic_checked"
-                    app:chipEndPadding="5dp"
-                    app:chipStartPadding="5dp"
-                    app:closeIconEnabled="false" />
+                    android:text="@string/action_filter_apps_with_ads" />
 
             </com.google.android.material.chip.ChipGroup>
 
@@ -114,7 +104,8 @@
                 android:paddingStart="8dp"
                 android:paddingEnd="8dp"
                 app:chipSpacingHorizontal="@dimen/margin_small"
-                app:chipSpacingVertical="@dimen/margin_normal"
+                app:chipSpacingVertical="@dimen/margin_xsmall"
+                app:selectionRequired="true"
                 app:singleSelection="true" />
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -134,7 +125,8 @@
                 android:paddingStart="8dp"
                 android:paddingEnd="8dp"
                 app:chipSpacingHorizontal="@dimen/margin_small"
-                app:chipSpacingVertical="@dimen/margin_normal"
+                app:chipSpacingVertical="@dimen/margin_xsmall"
+                app:selectionRequired="true"
                 app:singleSelection="true" />
 
             <com.google.android.material.button.MaterialButton
