@@ -113,6 +113,10 @@ public class SearchActivity extends BaseActivity implements SearchSuggestionSect
     protected void onResume() {
         super.onResume();
         searchView.requestFocus();
+
+        if (!StringUtils.isEmpty(searchView.getText())) {
+            toggleKeyBoard();
+        }
     }
 
     @Override

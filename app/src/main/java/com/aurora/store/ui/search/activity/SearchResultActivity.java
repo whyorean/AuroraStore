@@ -142,12 +142,7 @@ public class SearchResultActivity extends BaseActivity implements SearchResultSe
 
     private void setupSearch() {
         searchView.setFocusable(false);
-        searchView.setOnClickListener(v -> {
-            Intent intent = new Intent(this, SearchActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(intent, ViewUtil.getEmptyActivityBundle(this));
-            finishAfterTransition();
-        });
+        searchView.setOnClickListener(v -> onBackPressed());
     }
 
     private void dispatchAppsToAdapter(List<App> newList) {
