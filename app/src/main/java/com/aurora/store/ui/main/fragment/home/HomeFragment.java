@@ -30,7 +30,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.aurora.store.Constants;
@@ -95,15 +95,9 @@ public class HomeFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         setupRecyclers();
         HomeAppsModel homeAppsModel = new ViewModelProvider(this).get(HomeAppsModel.class);
-        homeAppsModel.getTopApps().observe(this, appList -> {
-            topAppsAdapter.addData(appList);
-        });
-        homeAppsModel.getTopGames().observe(this, appList -> {
-            topGamesAdapter.addData(appList);
-        });
-        homeAppsModel.getTopFamily().observe(this, appList -> {
-            topFamilyAdapter.addData(appList);
-        });
+        homeAppsModel.getTopApps().observe(this, appList -> topAppsAdapter.addData(appList));
+        homeAppsModel.getTopGames().observe(this, appList -> topGamesAdapter.addData(appList));
+        homeAppsModel.getTopFamily().observe(this, appList -> topFamilyAdapter.addData(appList));
         homeAppsModel.getError().observe(this, errorType -> {
 
         });
@@ -136,13 +130,16 @@ public class HomeFragment extends Fragment {
         topFamilyAdapter = new FeaturedAppsAdapter(requireContext());
 
         recyclerTopApps.setAdapter(topAppsAdapter);
-        recyclerTopApps.setLayoutManager(new LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false));
+        recyclerTopApps.setLayoutManager(new GridLayoutManager(requireContext(),
+                Util.isLegacyCardEnabled(requireContext()) ? 2: 1, RecyclerView.HORIZONTAL, false));
 
         recyclerTopGames.setAdapter(topGamesAdapter);
-        recyclerTopGames.setLayoutManager(new LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false));
+        recyclerTopGames.setLayoutManager(new GridLayoutManager(requireContext(),
+                Util.isLegacyCardEnabled(requireContext()) ? 2 : 1, RecyclerView.HORIZONTAL, false));
 
         recyclerTopFamily.setAdapter(topFamilyAdapter);
-        recyclerTopFamily.setLayoutManager(new LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false));
+        recyclerTopFamily.setLayoutManager(new GridLayoutManager(requireContext(),
+                Util.isLegacyCardEnabled(requireContext()) ? 2 : 1, RecyclerView.HORIZONTAL, false));
 
         Util.attachSnapPager(requireContext(), recyclerTopApps);
         Util.attachSnapPager(requireContext(), recyclerTopGames);
