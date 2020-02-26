@@ -21,6 +21,10 @@
 <resources>
     <string name="app_log" translatable="false">
         \n
+        \n Changelog : v3.2.0
+        \n • Update translations
+        \n • Bug fixes and improvements
+        \n
         \n Changelog : v3.1.9
         \n • Update translations
         \n • Bug fixes and improvements
