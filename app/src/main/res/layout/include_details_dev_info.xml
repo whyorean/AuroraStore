@@ -24,8 +24,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginStart="@dimen/margin_medium"
-    android:layout_marginEnd="@dimen/margin_medium"
     android:layout_marginTop="@dimen/margin_medium"
+    android:layout_marginEnd="@dimen/margin_medium"
     android:background="@drawable/generic_padded_bg"
     android:orientation="vertical"
     android:visibility="invisible"
@@ -74,8 +74,10 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/txt_dev_web_title"
             android:layout_alignStart="@id/txt_dev_web_title"
+            android:autoLink="web"
+            android:linksClickable="true"
             android:textAppearance="@style/TextAppearance.Aurora.Line3"
-            android:textIsSelectable="true" />
+            android:textColorLink="?android:attr/textColorSecondary" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -113,8 +115,10 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/txt_dev_email_title"
             android:layout_alignStart="@id/txt_dev_email_title"
+            android:autoLink="email"
+            android:linksClickable="true"
             android:textAppearance="@style/TextAppearance.Aurora.Line3"
-            android:textIsSelectable="true" />
+            android:textColorLink="?android:attr/textColorSecondary" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -152,7 +156,10 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/txt_dev_addr_title"
             android:layout_alignStart="@id/txt_dev_addr_title"
+            android:autoLink="map"
+            android:linksClickable="true"
             android:textAppearance="@style/TextAppearance.Aurora.Line3"
+            android:textColorLink="?android:attr/textColorSecondary"
             android:textIsSelectable="true" />
     </RelativeLayout>
 </LinearLayout>
