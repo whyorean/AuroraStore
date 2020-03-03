@@ -25,10 +25,7 @@ import android.content.Context;
 import androidx.annotation.NonNull;
 
 import com.aurora.store.iterator.CustomAppListIterator;
-import com.aurora.store.manager.CategoryManager;
-import com.aurora.store.manager.FilterManager;
 import com.aurora.store.model.App;
-import com.aurora.store.model.FilterModel;
 import com.aurora.store.util.Util;
 
 import java.util.ArrayList;
@@ -44,22 +41,11 @@ public class CategoryAppsTask extends BaseTask {
         if (!iterator.hasNext()) {
             return new ArrayList<>();
         }
-        List<App> apps = new ArrayList<>();
-        while (iterator.hasNext() && apps.isEmpty()) {
-            apps.addAll(getNextBatch(iterator));
-        }
-        return apps;
+        return new ArrayList<>(getNextBatch(iterator));
     }
 
     public List<App> getNextBatch(CustomAppListIterator iterator) {
-        CategoryManager categoryManager = new CategoryManager(getContext());
-        FilterModel filterModel = FilterManager.getFilterPreferences(getContext());
-        List<App> apps = new ArrayList<>();
-        for (App app : iterator.next()) {
-            if (categoryManager.fits(app.getCategoryId(), filterModel.getCategory())) {
-                apps.add(app);
-            }
-        }
+        List<App> apps = new ArrayList<>(iterator.next());
         if (Util.filterGoogleAppsEnabled(context))
             return filterGoogleApps(apps);
         else

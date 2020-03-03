@@ -37,12 +37,10 @@ public class FeaturedAppsTask extends BaseTask {
         super(context);
     }
 
-    public List<App> getApps(GooglePlayAPI api, String categoryId, GooglePlayAPI.SUBCATEGORY subCategory) throws Exception {
+    public List<App> getApps(GooglePlayAPI api, String categoryId, GooglePlayAPI.SUBCATEGORY subCategory) {
         final CustomAppListIterator iterator = new CustomAppListIterator(new CategoryAppsIterator(api, categoryId, subCategory));
-        List<App> apps = new ArrayList<>();
-        while (iterator.hasNext() && apps.isEmpty()) {
-            apps.addAll(iterator.next());
-        }
+        List<App> apps = new ArrayList<>(iterator.next());
+
         if (Util.filterGoogleAppsEnabled(context))
             return filterGoogleApps(apps);
         else
