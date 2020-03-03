@@ -29,7 +29,6 @@ import lombok.Data;
 
 @Data
 public class FilterModel {
-
     private boolean systemApps = false;
     private boolean appsWithAds = true;
     private boolean paidApps = true;

@@ -24,10 +24,7 @@ import android.content.Context;
 
 import com.aurora.store.exception.InvalidApiException;
 import com.aurora.store.iterator.CustomAppListIterator;
-import com.aurora.store.manager.CategoryManager;
-import com.aurora.store.manager.FilterManager;
 import com.aurora.store.model.App;
-import com.aurora.store.model.FilterModel;
 import com.aurora.store.util.Util;
 
 import java.util.ArrayList;
@@ -49,24 +46,17 @@ public class SearchTask {
         if (!iterator.hasNext()) {
             return new ArrayList<>();
         }
-        List<App> apps = new ArrayList<>();
-        while (iterator.hasNext() && apps.isEmpty()) {
-            apps.addAll(getNextBatch(iterator));
-        }
-        return apps;
+        return new ArrayList<>(getNextBatch(iterator));
     }
 
     private List<App> getNextBatch(CustomAppListIterator iterator) {
-        CategoryManager categoryManager = new CategoryManager(context);
-        FilterModel filterModel = FilterManager.getFilterPreferences(context);
         List<App> apps = new ArrayList<>();
+
         if (!iterator.hasNext())
             return apps;
-        for (App app : iterator.next()) {
-            if (categoryManager.fits(app.getCategoryId(), filterModel.getCategory())) {
-                apps.add(app);
-            }
-        }
+
+        apps.addAll(iterator.next());
+
         if (Util.filterGoogleAppsEnabled(context))
             return filterGoogleApps(apps);
         else
