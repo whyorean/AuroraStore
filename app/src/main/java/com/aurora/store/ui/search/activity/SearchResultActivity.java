@@ -147,6 +147,7 @@ public class SearchResultActivity extends BaseActivity implements SearchResultSe
 
     private void dispatchAppsToAdapter(List<App> newList) {
         List<App> oldList = section.getList();
+        boolean isUpdated = false;
         if (oldList.isEmpty()) {
             section.updateList(newList);
             adapter.getAdapterForSection(section).notifyAllItemsChanged();
@@ -157,8 +158,10 @@ public class SearchResultActivity extends BaseActivity implements SearchResultSe
                         continue;
                     }
                     section.add(app);
+                    isUpdated = true;
                 }
-                adapter.getAdapterForSection(section).notifyItemInserted(section.getCount() - 1);
+                if (isUpdated)
+                    adapter.getAdapterForSection(section).notifyItemInserted(section.getCount() - 1);
             }
         }
     }
