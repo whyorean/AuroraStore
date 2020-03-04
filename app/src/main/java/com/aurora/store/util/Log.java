@@ -21,6 +21,7 @@
 package com.aurora.store.util;
 
 import android.content.Context;
+import android.os.Environment;
 
 import com.aurora.store.Constants;
 
@@ -65,6 +66,16 @@ public class Log {
     public static void writeToFile(Context context, Object object) {
         try {
             FileWriter out = new FileWriter(new File(context.getFilesDir(), "AuroraLogs.txt"));
+            out.write(object.toString());
+            out.close();
+        } catch (IOException e) {
+            Log.e(e.getMessage());
+        }
+    }
+
+    public static void writeLogFile(Object object) {
+        try {
+            FileWriter out = new FileWriter(new File(Environment.getExternalStorageDirectory().getPath(), "Aurora/Logcat.txt"));
             out.write(object.toString());
             out.close();
         } catch (IOException e) {

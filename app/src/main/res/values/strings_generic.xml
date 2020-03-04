@@ -36,4 +36,6 @@
     <string name="action_filter_4" translatable="false">"4.0 +"</string>
     <string name="action_filter_45" translatable="false">"4.5 +"</string>
     <string name="action_filter_47" translatable="false">"4.7 +"</string>
+    <string name="privacy_url" translatable="false">TBA</string>
+    <string name="privacy_policy_desc" translatable="false">Please read our Privacy Policy carefully.\nYou must accept it to send us the bug report.\n\nAurora OSS\'s privacy policy explains in detail what data is sent and stored when you send a crash report</string>
 </resources>

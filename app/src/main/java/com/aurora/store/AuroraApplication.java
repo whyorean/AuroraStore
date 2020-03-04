@@ -22,6 +22,7 @@ package com.aurora.store;
 
 import android.annotation.SuppressLint;
 import android.app.Application;
+import android.content.Context;
 import android.content.IntentFilter;
 
 import com.aurora.store.events.Event;
@@ -29,24 +30,32 @@ import com.aurora.store.events.RxBus;
 import com.aurora.store.installer.Installer;
 import com.aurora.store.installer.InstallerService;
 import com.aurora.store.model.App;
+import com.aurora.store.report.AcraLogSenderFactory;
+import com.aurora.store.report.AcraReportSenderFactory;
 import com.aurora.store.util.Log;
 import com.aurora.store.util.Util;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
+
+import org.acra.ACRA;
+import org.acra.annotation.AcraCore;
+import org.acra.config.CoreConfigurationBuilder;
+import org.acra.data.StringFormat;
+import org.acra.file.Directory;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import io.github.kbiakov.codeview.classifier.CodeProcessor;
 import io.reactivex.plugins.RxJavaPlugins;
 
+@AcraCore(logcatArguments = {"-t", "200", "-v", "time"})
 public class AuroraApplication extends Application {
 
     public static GooglePlayAPI api = null;
-
     private static RxBus rxBus = null;
     private static boolean bulkUpdateAlive = false;
     private static List<App> ongoingUpdateList = new ArrayList<>();
-
     @SuppressLint("StaticFieldLeak")
     private static Installer installer;
 
@@ -88,6 +97,26 @@ public class AuroraApplication extends Application {
         rxBus.getBus().accept(event);
     }
 
+    @SuppressWarnings("unchecked")
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+
+        CoreConfigurationBuilder builder = new CoreConfigurationBuilder(this)
+                .setReportSenderFactoryClasses(AcraReportSenderFactory.class, AcraLogSenderFactory.class)
+                .setBuildConfigClass(BuildConfig.class)
+                .setAlsoReportToAndroidFramework(false)
+                .setApplicationLogFileDir(Directory.EXTERNAL_CACHE)
+                .setApplicationLogFile("Aurora.log")
+                .setReportFormat(StringFormat.KEY_VALUE_LIST);
+
+        builder.setDeleteOldUnsentReportsOnApplicationStart(true);
+        builder.setDeleteUnapprovedReportsOnApplicationStart(true);
+
+        ACRA.init(this, builder);
+        CodeProcessor.init(this);
+    }
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -103,8 +132,8 @@ public class AuroraApplication extends Application {
                 new IntentFilter(InstallerService.ACTION_INSTALLATION_STATUS_NOTIFICATION));
 
         //Global RX-Error handler, just simply logs, I make sure all errors are handled at origin.
-        RxJavaPlugins.setErrorHandler(err ->{
-            err.printStackTrace();
+        RxJavaPlugins.setErrorHandler(throwable -> {
+            Log.e(throwable.getMessage());
         });
     }
 

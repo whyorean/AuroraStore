@@ -31,12 +31,19 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
     <uses-permission android:name="android.permission.REQUEST_DELETE_PACKAGES" />
-    <uses-permission android:name="android.permission.INSTALL_PACKAGES" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
     <uses-permission
+        android:name="android.permission.INSTALL_PACKAGES"
+        tools:ignore="ProtectedPermissions" />
+
+    <uses-permission
+        android:name="android.permission.READ_LOGS"
+        tools:ignore="ProtectedPermissions" />
+
+    <uses-permission
         android:name="android.permission.ACCESS_MOCK_LOCATION"
-        tools:ignore="MockLocation" />
+        tools:ignore="MockLocation,ProtectedPermissions" />
 
     <uses-feature
         android:name="android.hardware.location.gps"
@@ -156,6 +163,12 @@
         <activity android:name=".ui.devapps.DevAppsActivity" />
         <activity android:name=".ui.details.ReviewsActivity" />
         <activity android:name=".ui.details.ReadMoreActivity" />
+
+        <activity
+            android:name=".report.AcraErrorActivity"
+            android:excludeFromRecents="true"
+            android:finishOnTaskLaunch="true"
+            android:launchMode="singleInstance" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
