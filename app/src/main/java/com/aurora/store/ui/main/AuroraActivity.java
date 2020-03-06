@@ -22,13 +22,10 @@ package com.aurora.store.ui.main;
 
 import android.Manifest;
 import android.app.ActivityOptions;
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.ColorDrawable;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -41,7 +38,6 @@ import androidx.annotation.IdRes;
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatImageView;
 import androidx.core.app.ActivityCompat;
-import androidx.core.app.NotificationCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.graphics.ColorUtils;
 import androidx.core.view.GravityCompat;
@@ -142,7 +138,6 @@ public class AuroraActivity extends BaseActivity {
                 checkSelfUpdate();
         }
         checkPermissions();
-        createNotificationChannel();
     }
 
     private void init() {
@@ -378,38 +373,6 @@ public class AuroraActivity extends BaseActivity {
                     1337);
         }
     }
-
-    private void createNotificationChannel() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            NotificationChannel alertChannel = new NotificationChannel(
-                    Constants.NOTIFICATION_CHANNEL_ALERT,
-                    getString(R.string.notification_channel_alert),
-                    NotificationManager.IMPORTANCE_HIGH);
-
-            NotificationChannel generalChannel = new NotificationChannel(
-                    Constants.NOTIFICATION_CHANNEL_GENERAL,
-                    getString(R.string.notification_channel_general),
-                    NotificationManager.IMPORTANCE_MIN);
-
-            alertChannel.enableLights(true);
-            alertChannel.enableVibration(true);
-            alertChannel.setShowBadge(true);
-            alertChannel.setLockscreenVisibility(NotificationCompat.VISIBILITY_PUBLIC);
-
-            generalChannel.enableLights(false);
-            generalChannel.enableVibration(false);
-            generalChannel.setShowBadge(false);
-            generalChannel.setLockscreenVisibility(NotificationCompat.VISIBILITY_PRIVATE);
-
-            NotificationManager notificationManager = getSystemService(NotificationManager.class);
-            if (notificationManager != null) {
-                notificationManager.createNotificationChannel(alertChannel);
-                notificationManager.createNotificationChannel(generalChannel);
-            }
-        }
-        checkPermissions();
-    }
-
 
     protected void showUpdatesDialog(Update update) {
         final String changelog = TextUtil.emptyIfNull(update.getChangelog());
