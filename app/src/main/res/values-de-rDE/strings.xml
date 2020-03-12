@@ -416,4 +416,15 @@ Zudem zeigt Aurora die Anzahl der Tracker in der jeweiligen App an."</string>
     <string name="pref_requested_location_enable">"\"Falsche Standorte\" müssen in den Entwickleroptionen aktiviert werden. Eine VPN-Verbindung ist notwendig."</string>
     <string name="toast_api_build_delayed">"Es dauert länger als erwartet"</string>
     <string name="dialog_uninstall_confirmation">"Möchtest du die App deinstallieren?"</string>
+    <string name="action_send">"Senden"</string>
+    <string name="dialog_unavailable_title">"App nicht verfügbar"</string>
+    <string name="dialog_unavailable_desc">"Die App, die du kaufen möchtest, konnte nicht gefunden werden. Versuche dein Gerät zu spoofen oder das Konto zu wechseln."</string>
+    <string name="privacy_title">"Aurora OSS\'s Datenschutzerklärung
+"</string>
+    <string name="privacy_policy">"Datenschutzerklärung"</string>
+    <string name="action_accept">"Annehmen"</string>
+    <string name="action_decline">"Ablehen"</string>
+    <string name="crash_title">"Aurora Absturzbericht"</string>
+    <string name="crash_line1">"Nun, das ist peinlich!"</string>
+    <string name="crash_line2">"Du kannst diesen Report an die Aurora Entwickler schicken, um bei der Lösung des Problems zu helfen."</string>
 </resources>
