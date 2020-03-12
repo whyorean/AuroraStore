@@ -410,4 +410,11 @@
     <string name="pref_requested_location_enable">"تحتاج إلى تمكين Mock Location يدويًا من خيارات المطور. تحتاج الى اتصال VPN إلى موقع قريب من الموقع المحدد. (إلزامي)."</string>
     <string name="toast_api_build_delayed">"العملية تستغرق وقتا أطول مما كان متوقعا"</string>
     <string name="dialog_uninstall_confirmation">"هل تريد الغاء تثبيت هذا التطبيق⸮"</string>
+    <string name="action_send">"إرسال"</string>
+    <string name="dialog_unavailable_title">"التطبيق غير متوفر"</string>
+    <string name="privacy_title">"سياسة الخصوصية لـ Aurora OSS"</string>
+    <string name="privacy_policy">"سياسة الخصوصية"</string>
+    <string name="action_accept">"أقبل"</string>
+    <string name="crash_title">"تقرير تعطل Aurora"</string>
+    <string name="crash_line2">"يمكنك إرسال هذا التقرير إلى مطورين Aurora, للمساعدة في حل المشكلة"</string>
 </resources>
