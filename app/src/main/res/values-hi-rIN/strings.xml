@@ -8,7 +8,7 @@
     <string name="account_switch">"खाता बदलिये"</string>
     <string name="action_accounts">"खाते के बारे में"</string>
     <string name="action_ask">"पूछना"</string>
-    <string name="action_blacklist">"काला सूची में डालना"</string>
+    <string name="action_blacklist">"काली सूची में डालना"</string>
     <string name="action_cancel">"रद्द करना"</string>
     <string name="action_clear">"मिटाना"</string>
     <string name="action_clear_all">"सभी साफ करें"</string>
@@ -395,4 +395,16 @@
     <string name="toast_login_failed">"लॉगिन करने में विफल"</string>
     <string name="disclaimer">"अपने स्वयं के Google खाते के साथ अरोरा स्टोर का उपयोग करने से आपका खाता ब्लैकलिस्ट या निष्क्रिय हो सकता है, क्योंकि अरोरा स्टोर Google की सेवा की शर्तों का उल्लंघन करता है, अपने जोखिम पर उपयोग करें।  आप गुमनाम जाने का विकल्प चुन सकते हैं और अरोरा स्टोर में प्रवेश करने के लिए एक नकली खाते का उपयोग कर सकते हैं"</string>
     <string name="menu_blacklist">"ब्लैकलिस्ट में जोड़ें"</string>
+    <string name="action_unknown">"अज्ञात"</string>
+    <string name="category_all">"सभी श्रेणिंया"</string>
+    <string name="category_family">"परिवार"</string>
+    <string name="category_games">"खेल"</string>
+    <string name="details_dev_details">"विकासक का संपर्क"</string>
+    <string name="details_dev_email">"विकासक का ईमेल"</string>
+    <string name="details_dev_address">"विकासक का पता"</string>
+    <string name="details_dev_website">"विकासक की वेबसाइट"</string>
+    <string name="toast_api_build_retrying">"API बनाने में विफल, पुनः प्रयास कर रहें हैं"</string>
+    <string name="toast_api_build_failed">"API बनाने में विफल"</string>
+    <string name="toast_api_build_api">"GooglePlay API बना रहे हैं"</string>
+    <string name="toast_api_build_delayed">"अपेक्षा से अधिक समय लग रहा है"</string>
 </resources>
