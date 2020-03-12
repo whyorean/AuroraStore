@@ -412,4 +412,14 @@
     <string name="pref_requested_location_enable">"Sahte Konumu Geliştirici Seçeneklerinden el ile etkinleştirmeniz gerekir. Yakındaki bir yere bir VPN bağlantısı zorunludur."</string>
     <string name="toast_api_build_delayed">"Beklenenden daha uzun sürüyor"</string>
     <string name="dialog_uninstall_confirmation">"Bu uygulamayı kaldırmak istiyor musunuz?"</string>
+    <string name="action_send">"Gönder"</string>
+    <string name="dialog_unavailable_title">"Uygulama kullanılamıyor"</string>
+    <string name="dialog_unavailable_desc">"Satın almaya çalıştığınız öğe bulunamadı, cihazınızı taklit etmeyi deneyin veya hesabı değiştirin."</string>
+    <string name="privacy_title">"Aurora OSS Gizlilik Politikası"</string>
+    <string name="privacy_policy">"Gizlilik Politikası"</string>
+    <string name="action_accept">"Kabul Et"</string>
+    <string name="action_decline">"Reddet"</string>
+    <string name="crash_title">"Aurora Çökme Raporu"</string>
+    <string name="crash_line1">"Bu utanç verici!"</string>
+    <string name="crash_line2">"Sorunun çözümüne yardımcı olması için bu raporu Aurora Geliştiricisine gönderebilirsiniz."</string>
 </resources>
