@@ -153,7 +153,7 @@ Ten en cuenta que Google Play Store no admite la descarga de versiones arbitrari
     <string name="pref_app_ui">"Interfaz de Usuario"</string>
     <string name="pref_category_spoof_device">"Simular Dispositivo"</string>
     <string name="pref_category_spoof_lang">"Simular Idioma"</string>
-    <string name="pref_category_spoof_location">"Simular Localización"</string>
+    <string name="pref_category_spoof_location">"Simular Ubicación"</string>
     <string name="pref_device_to_pretend_to_be">"Simular que es un dispositivo diferente"</string>
     <string name="pref_device_to_pretend_to_be_default">"Información original de tu dispositivo"</string>
     <string name="pref_device_to_pretend_to_be_toast">"Los cambios se aplicarán tras volver a iniciar sesión"</string>
@@ -185,7 +185,7 @@ Ten en cuenta que Google Play Store no admite la descarga de versiones arbitrari
     <string name="pref_proxy_type">"Tipo de proxy"</string>
     <string name="pref_requested_language">"Cambiar el idioma de solicitud de API predeterminado"</string>
     <string name="pref_requested_language_default">"Idioma por defecto"</string>
-    <string name="pref_requested_location_disable">"Necesitas desactivar la simulación de ubicación en opciones de desarrollo para desactivarla completamente."</string>
+    <string name="pref_requested_location_disable">"Necesitas desactivar la simulación de ubicación en opciones para desarrolladores para desactivarla completamente."</string>
     <string name="pref_requested_location_summary">"Aurora Store debe ser aplicación predeterminada para simular ubicación"</string>
     <string name="pref_ui_card_summary">"Usa el antiguo estilo de las tarjetas para las aplicaciones destacadas"</string>
     <string name="pref_ui_card_title">"Estilo antiguo de tarjetas"</string>
@@ -405,4 +405,9 @@ También ofrece una lista de los trackers incluidos en una aplicación."</string
     <string name="request_failed">"Solicitud fallida"</string>
     <string name="notification_channel_alert">"Notificación rápida"</string>
     <string name="notification_channel_general">"Notificación general"</string>
+    <string name="action_continue_anyway">"Continuar de todas formas?"</string>
+    <string name="details_files">"Detalles del archivo"</string>
+    <string name="pref_requested_location_enable">"Tienes que habilitar manualmente Simular Ubicación en las Opciones para desarrolladores. Una conexión VPN a una ubicación cercana es obligatoria."</string>
+    <string name="toast_api_build_delayed">"Está tardando más de lo esperado"</string>
+    <string name="dialog_uninstall_confirmation">"Quieres desinstalar esta aplicación?"</string>
 </resources>
