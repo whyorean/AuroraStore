@@ -457,4 +457,14 @@ Aurora позволяет искать, загружать, устанавлив
     <string name="pref_requested_location_enable">"Вам нужно вручную включить использование фиктивных местоположений в параметрах для разработчиков. Также необходимо VPN-соединение к этой местности."</string>
     <string name="toast_api_build_delayed">"Это занимает больше времени, чем ожидалось"</string>
     <string name="dialog_uninstall_confirmation">"Вы хотите удалить это приложение?"</string>
+    <string name="action_send">"Отправить"</string>
+    <string name="dialog_unavailable_title">"Приложение недоступно"</string>
+    <string name="dialog_unavailable_desc">"Не удалось найти товар, который вы пытались приобрести. Попробуйте подменить устройство или сменить аккаунт."</string>
+    <string name="privacy_title">"Политика конфиденциальности Aurora OSS"</string>
+    <string name="privacy_policy">"Конфиденциальность"</string>
+    <string name="action_accept">"Принять"</string>
+    <string name="action_decline">"Отклонить"</string>
+    <string name="crash_title">"Отчёт о сбое в Aurora"</string>
+    <string name="crash_line1">"Неловко получилось!"</string>
+    <string name="crash_line2">"Вы можете отправить этот отчёт разработчику Aurora, чтобы помочь решить проблему."</string>
 </resources>
