@@ -137,7 +137,7 @@ public class SearchResultActivity extends BaseActivity implements SearchResultSe
 
     private void purgeAdapterData() {
         section.purgeData();
-        adapter.getAdapterForSection(section).notifyAllItemsChanged();
+        adapter.notifyDataSetChanged();
     }
 
     private void setupSearch() {
