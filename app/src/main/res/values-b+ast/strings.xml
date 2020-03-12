@@ -327,4 +327,9 @@ Decátate que baxar versiones al debalu nun lo sofita la tienda Google Play. L'�
     <string name="action_continue_anyway">"¿Siguir de toes toes?"</string>
     <string name="toast_api_build_delayed">"Ta tardando más de lo esperao"</string>
     <string name="dialog_uninstall_confirmation">"¿Quies desinstalar esta aplicación?"</string>
+    <string name="privacy_title">"Política de privacidá d\'Aurora OSS"</string>
+    <string name="privacy_policy">"Política de privacidá"</string>
+    <string name="action_accept">"Aceutar"</string>
+    <string name="action_decline">"Refugar"</string>
+    <string name="crash_line2">"Pues unviar esti informe al desendolcador d'Aurora p'ayudar a iguar el problema."</string>
 </resources>
