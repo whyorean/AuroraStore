@@ -290,9 +290,31 @@ Tamén prové unha lista de trackers incluídos nunha aplicación."</string>
     <string name="link_playstore">"Play Store"</string>
     <string name="link_setting">"Axustes"</string>
     <string name="link_share">"Compartir"</string>
+    <string name="pref_install_mode_no_root">"Acceso root non dispoñible, asegúrate de que o teu dispositivo estea rooteado"</string>
+    <string name="pref_install_mode_root_warn">"O método de instalación root necesita que se descargue o APK nos datos da aplicación para poder instalalo mediante adb shell, Android Pie +
+"</string>
+    <string name="pref_ui_ime">"Buscar IME"</string>
+    <string name="pref_ui_ime_summary">"Mostra por defecto o teclado na páxina de busca"</string>
     <string name="pref_ui_transparent">"Estilo transparente"</string>
+    <string name="pref_ui_transparent_summary">"Use o estilo da tarxeta transparente para as vistas de categorías e enlaces"</string>
+    <string name="pref_install_delete_summary">"En dispositivos con Android Pie + con método de instalación root, os APK elimínanse de xeito predeterminado"</string>
     <string name="action_loading">"Cargando"</string>
     <string name="pref_default">"Predeterminada"</string>
     <string name="toast_loading_apps">"Cargando máis aplicacións"</string>
     <string name="dialog_2FA_title">"Autenticación de 2 factores"</string>
+    <string name="dialog_2FA_desc">"Parece que habilitou 2FA, por favor xera un contrasinal da aplicación e usa o novo contrasinal xerado para iniciar sesión"</string>
+    <string name="dialog_2FA_positive">"Crea contraseña"</string>
+    <string name="dialog_purchase_title">"Compra de aplicación"</string>
+    <string name="dialog_purchase_positive">"Compra agora"</string>
+    <string name="dialog_geores_title">"Aplicación xeo-restrinxida"</string>
+    <string name="dialog_incompat_title">"Aplicación incompatible"</string>
+    <string name="pref_install_mode_services">"Servizos de Aurora"</string>
+    <string name="pref_install_mode_no_services">"Os Servizos de Aurora non están instalados, por favor instale os servizos primeiro"</string>
+    <string name="pref_install_mode_offline_services">"Os Servizos de Aurora non están conectados, por favor asegúrese de que estean habilitados e teña a versión correcta da aplicación"</string>
+    <string name="action_info">"Información da aplicación"</string>
+    <string name="download_waiting">"Á espera"</string>
+    <string name="pref_services_title">"Servizos de Aurora"</string>
+    <string name="pref_services_desc">"Lanzar Servizos de Aurora"</string>
+    <string name="pref_custom_tokenizer">"Active tokenizer personalizado"</string>
+    <string name="pref_custom_tokenizer_url">"URL del creador de tokens"</string>
 </resources>
