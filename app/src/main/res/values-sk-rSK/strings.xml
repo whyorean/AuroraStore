@@ -408,4 +408,14 @@ Upozorňujeme, že služba Google Play Store nepodporuje preberanie ľubovoľný
     <string name="pref_requested_location_enable">"Musíte ručne povoliť Mock Polohu vo Vývojárskych Nastaveniach. VPN prístup k blízkej polohe je povinný."</string>
     <string name="toast_api_build_delayed">"Trvá to dlhšie ako sa predpokladalo"</string>
     <string name="dialog_uninstall_confirmation">"Prajete si odinštalovať túto aplikáciu?"</string>
+    <string name="action_send">"Poslať"</string>
+    <string name="dialog_unavailable_title">"Aplikácia nedostupná"</string>
+    <string name="dialog_unavailable_desc">"Položka, ktorú sa pokúšate získať, sa nedá nájsť, skúste predstierať iné zariadenie alebo prepnúť na iný účet."</string>
+    <string name="privacy_title">"Aurora - zásady ochrany osobných údajov"</string>
+    <string name="privacy_policy">"Zásady ochrany osobných údajov"</string>
+    <string name="action_accept">"Prijať"</string>
+    <string name="action_decline">"Zamietnúť"</string>
+    <string name="crash_title">"Hlásenie o chybe v Aurore"</string>
+    <string name="crash_line1">"To bolo trápne!"</string>
+    <string name="crash_line2">"Aby autor Aurory mohol vyriešiť problém, môžte mu poslať toto hlásenie."</string>
 </resources>
