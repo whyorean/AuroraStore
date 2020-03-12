@@ -413,4 +413,17 @@ Het biedt ook een lijst met ingebouwde trackers in een applicatie."</string>
     <string name="pref_requested_location_enable">"U moet Mock Locatie handmatig inschakelen via de Developer-opties. Een VPN-verbinding met nabijgelegen locatie is verplicht."</string>
     <string name="toast_api_build_delayed">"Het duurt langer dan verwacht"</string>
     <string name="dialog_uninstall_confirmation">"Wilt u deze app verwijderen?"</string>
+    <string name="action_send">"Verzenden"</string>
+    <string name="dialog_unavailable_title">"App niet beschikbaar"</string>
+    <string name="dialog_unavailable_desc">"Het item dat u probeerde te kopen kon niet worden gevonden, probeer uw apparaat te vervalsen of van account te wisselen.
+"</string>
+    <string name="privacy_title">"Aurora OSS \ 's Privacybeleid"</string>
+    <string name="privacy_policy">"Privacybeleid"</string>
+    <string name="action_accept">"Aanvaarden"</string>
+    <string name="action_decline">"Afwijzen"</string>
+    <string name="crash_title">"Aurora-crashrapport
+"</string>
+    <string name="crash_line1">"Dat is beschamend!
+"</string>
+    <string name="crash_line2">"U kunt dit rapport naar Aurora Dev sturen om het probleem op te lossen."</string>
 </resources>
