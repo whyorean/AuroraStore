@@ -417,4 +417,14 @@ Lembre-se que fazer o download de versões arbitrárias de aplicativos não é s
     <string name="pref_requested_location_enable">"Você precisa habilitar manualmente o Local Fictício nas Opções do Desenvolvedor. Uma conexão VPN para um local próximo é obrigatória"</string>
     <string name="toast_api_build_delayed">"Está demorando mais que o esperado"</string>
     <string name="dialog_uninstall_confirmation">"Deseja desinstalar este aplicativo?"</string>
+    <string name="action_send">"Enviar"</string>
+    <string name="dialog_unavailable_title">"Aplicativo indisponível"</string>
+    <string name="dialog_unavailable_desc">"Não foi possível encontrar o item que você estava tentando comprar, tente falsificar seu dispositivo ou mudar de conta."</string>
+    <string name="privacy_title">"Política de Privacidade do Aurora OSS"</string>
+    <string name="privacy_policy">"Política de Privacidade"</string>
+    <string name="action_accept">"Aceitar"</string>
+    <string name="action_decline">"Rejeitar"</string>
+    <string name="crash_title">"Aurora Relatório de Falha"</string>
+    <string name="crash_line1">"Bem, isso é embaraçoso !"</string>
+    <string name="crash_line2">"Você pode enviar este relatório para o Desenvolvedor do Aurora, para ajudar a resolver o problema."</string>
 </resources>
