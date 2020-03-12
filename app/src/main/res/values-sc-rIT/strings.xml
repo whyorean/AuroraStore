@@ -187,7 +187,7 @@ Ammenta·ti chi iscarrigare versiones arbitràrias de sas aplicatziones no est s
     <string name="pref_proxy_type">"Casta de server"</string>
     <string name="pref_requested_language">"Muda sa limba de pregunta predefinida de s'API"</string>
     <string name="pref_requested_language_default">"Sa limba predefinida tua"</string>
-    <string name="pref_requested_location_disable">"Depes disabilitare manualmente MockLocation dae sas Impostatziones pro sos Isvilupadores pro lu disabilitare de su totu"</string>
+    <string name="pref_requested_location_disable">"Depes disabilitare manualmente sa dispinta de sa positzione (Mock Location) dae sas Impostatziones pro sos Isvilupadores pro la disabilitare de su totu."</string>
     <string name="pref_requested_location_summary">"Aurora Store de pet èssere impostada comente aplicatzione predefinida pro sas positziones dispintadas"</string>
     <string name="pref_ui_card_summary">"Imprea sas ischedas cun s'istile betzu pro sas aplicatziones in evidèntzia"</string>
     <string name="pref_ui_card_title">"Ischedas cun s'istile betzu"</string>
@@ -407,4 +407,19 @@ Ammenta·ti chi iscarrigare versiones arbitràrias de sas aplicatziones no est s
     <string name="request_failed">"Pregunta fallida"</string>
     <string name="notification_channel_alert">"Notìficas lestras"</string>
     <string name="notification_channel_general">"Notìficas generales"</string>
+    <string name="action_continue_anyway">"Sighire su matessi?"</string>
+    <string name="details_files">"Detàllios documentu"</string>
+    <string name="pref_requested_location_enable">"Depes abilitare manualmente sa dispinta de sa positzione (Mock Location) dae sas Impostatziones pro sos Isvilupadores. Una connessione VPN a una positzione a curztu est obbligatòria."</string>
+    <string name="toast_api_build_delayed">"Nche cheret prus tempus de su previstu"</string>
+    <string name="dialog_uninstall_confirmation">"Cheres disinstallare cust'aplicatzione?"</string>
+    <string name="action_send">"Imbia"</string>
+    <string name="dialog_unavailable_title">"Apl. non disponìbile"</string>
+    <string name="dialog_unavailable_desc">"No est istadu possìbile agatare s'elementu chi ses chirchende de comporare. Proa a dispintare su dispositivu tuo o a mudare de contu."</string>
+    <string name="privacy_title">"Polìtica de riservadesa de Aurora OSS"</string>
+    <string name="privacy_policy">"Polìtica de riservadesa"</string>
+    <string name="action_accept">"Atzeta"</string>
+    <string name="action_decline">"Dennega"</string>
+    <string name="crash_title">"Raportu de serradura (crash) de Aurora"</string>
+    <string name="crash_line1">"Oja, custu est imbarratzante!"</string>
+    <string name="crash_line2">"Podes imbiare custu raportu a Aurora Dev, pro agiudare a isòrvere su problema."</string>
 </resources>
