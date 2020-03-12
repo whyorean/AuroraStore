@@ -434,4 +434,14 @@
     <string name="pref_requested_location_enable">"您需要在开发者选项中手动启用模拟位置。必须连接到该位置附近的VPN。"</string>
     <string name="toast_api_build_delayed">"耗时超过预期"</string>
     <string name="dialog_uninstall_confirmation">"您是否要卸载此应用？"</string>
+    <string name="action_send">"发送"</string>
+    <string name="dialog_unavailable_title">"找不到App"</string>
+    <string name="dialog_unavailable_desc">"找不到您尝试购买的商品，请尝试对设备进行伪装或切换帐户。"</string>
+    <string name="privacy_title">"Aurora OSS\'s 的隐私政策"</string>
+    <string name="privacy_policy">"隐私政策"</string>
+    <string name="action_accept">"接受"</string>
+    <string name="action_decline">"拒绝"</string>
+    <string name="crash_title">"Aurora崩溃报告"</string>
+    <string name="crash_line1">"额，尴尬了"</string>
+    <string name="crash_line2">"您可以把这份报告发给Aurora开发者以帮助解决这个问题"</string>
 </resources>
