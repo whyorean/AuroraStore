@@ -465,4 +465,19 @@ Inoltre fornisce una lista di tracker incorporati in una applicazione."</string>
     <string name="request_failed">"Richiesta fallita"</string>
     <string name="notification_channel_alert">"Notifiche rapide"</string>
     <string name="notification_channel_general">"Notifiche generali"</string>
+    <string name="action_continue_anyway">"Continuare comunque?"</string>
+    <string name="details_files">"Dettagli del file"</string>
+    <string name="pref_requested_location_enable">"Devi attivare manualmente la Posizione Fittizia dalle Opzioni Sviluppatore. Una connessione VPN a una posizione vicina è necessaria."</string>
+    <string name="toast_api_build_delayed">"Ci sta mettendo più tempo del previsto"</string>
+    <string name="dialog_uninstall_confirmation">"Vuoi disinstallare quest'applicazione?"</string>
+    <string name="action_send">"Invia"</string>
+    <string name="dialog_unavailable_title">"App non disponibile"</string>
+    <string name="dialog_unavailable_desc">"L'oggetto che stavi cercando di acquistare non è stato trovato, prova a simulare un dispositivo differente o a cambiare account."</string>
+    <string name="privacy_title">"Privacy policy di Aurora OSS"</string>
+    <string name="privacy_policy">"Privacy policy"</string>
+    <string name="action_accept">"Accetta"</string>
+    <string name="action_decline">"Rifiuta"</string>
+    <string name="crash_title">"Crash report di Aurora Store"</string>
+    <string name="crash_line1">"Ops, questo è imbarazzante!"</string>
+    <string name="crash_line2">"Puoi inviare questo report allo sviluppatore di Aurora Store per aiutarlo a risolvere il problema."</string>
 </resources>
