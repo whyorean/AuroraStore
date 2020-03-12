@@ -51,7 +51,6 @@
     <string name="action_retry">"Retry"</string>
     <string name="action_retry_ing">"Retrying"</string>
     <string name="action_search">"Search"</string>
-    <string name="action_send">"Send"</string>
     <string name="action_search_clearHistory">"Clear all"</string>
     <string name="action_search_history">"Search history"</string>
     <string name="action_settings">"Settings"</string>
@@ -307,8 +306,6 @@
     <string name="dialog_geores_desc">"The app you are trying to download is unavailable in your country, try spoofing your region from within the settings and try again."</string>
     <string name="dialog_incompat_title">"Incompatible app"</string>
     <string name="dialog_incompat_desc">"The app you are trying to download is incompatible with your device, try spoofing your device within the settings and try again."</string>
-    <string name="dialog_unavailable_title">"App unavailable"</string>
-    <string name="dialog_unavailable_desc">"The item you were attempting to purchase could not be found, try spoofing your device or switch account."</string>
     <string name="pref_install_mode_services">"Aurora Services"</string>
     <string name="pref_install_mode_no_services">"Aurora Services not installed, please install the services first"</string>
     <string name="pref_install_mode_offline_services">"Aurora Services not connected, please make sure its enabled and you have the correct version of the app"</string>
@@ -409,12 +406,13 @@
     <string name="pref_requested_location_enable">"You need to manually enable Mock Location from the Developer Options. A VPN connection to nearby location is mandatory."</string>
     <string name="toast_api_build_delayed">"It is taking longer than expected"</string>
     <string name="dialog_uninstall_confirmation">"Do you want to uninstall this app ?"</string>
-
+    <string name="action_send">"Send"</string>
+    <string name="dialog_unavailable_title">"App unavailable"</string>
+    <string name="dialog_unavailable_desc">"The item you were attempting to purchase could not be found, try spoofing your device or switch account."</string>
     <string name="privacy_title">"Aurora OSS\'s Privacy Policy"</string>
     <string name="privacy_policy">"Privacy Policy"</string>
     <string name="action_accept">"Accept"</string>
     <string name="action_decline">"Decline"</string>
-
     <string name="crash_title">"Aurora Crash Report"</string>
     <string name="crash_line1">"Well that's embarrassing !"</string>
     <string name="crash_line2">"You can send this report to Aurora Dev, to help resolve the issue."</string>
