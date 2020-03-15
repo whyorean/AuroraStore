@@ -51,7 +51,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import io.github.kbiakov.codeview.classifier.CodeProcessor;
 import io.reactivex.plugins.RxJavaPlugins;
 
 @AcraCore(logcatArguments = {"-t", "200", "-v", "time"})
@@ -119,7 +118,6 @@ public class AuroraApplication extends Application {
         builder.setDeleteUnapprovedReportsOnApplicationStart(true);
 
         ACRA.init(this, builder);
-        CodeProcessor.init(this);
     }
 
     @Override

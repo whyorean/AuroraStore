@@ -135,7 +135,6 @@ dependencies {
 
     //Bug Report
     implementation 'ch.acra:acra-core:5.1.3'
-    implementation 'com.github.kbiakov:CodeView-Android:1.3.2'
 }
 
 repositories {

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
@@ -12,7 +13,6 @@ import androidx.appcompat.widget.Toolbar;
 import com.aurora.store.BuildConfig;
 import com.aurora.store.R;
 import com.aurora.store.ui.single.activity.BaseActivity;
-import com.aurora.store.util.ThemeUtil;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.gson.Gson;
 
@@ -23,15 +23,12 @@ import org.apache.commons.lang3.StringUtils;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import io.github.kbiakov.codeview.CodeView;
-import io.github.kbiakov.codeview.adapters.Options;
-import io.github.kbiakov.codeview.highlight.ColorTheme;
 import lombok.SneakyThrows;
 
 public class AcraErrorActivity extends BaseActivity {
 
     @BindView(R.id.code_view)
-    CodeView codeView;
+    TextView codeView;
     @BindView(R.id.toolbar)
     Toolbar toolbar;
 
@@ -87,19 +84,8 @@ public class AcraErrorActivity extends BaseActivity {
 
             String stack_trace = crashReportData.getString(ReportField.STACK_TRACE);
 
-            codeView.setOptions(Options.Default.get(this)
-                    .withLanguage("java")
-                    .withCode(stack_trace)
-                    .withTheme(getColorTheme())
-            );
+            codeView.setText(stack_trace);
         }
-    }
-
-    private ColorTheme getColorTheme() {
-        if (ThemeUtil.isLightTheme(this))
-            return ColorTheme.DEFAULT;
-        else
-            return ColorTheme.MONOKAI;
     }
 
     @OnClick(R.id.btn_positive)
