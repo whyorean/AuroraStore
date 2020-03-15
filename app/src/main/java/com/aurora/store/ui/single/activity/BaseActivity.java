@@ -22,17 +22,17 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         themeUtil.onCreate(this);
-        new ConnectionLiveData(this).observe(this, connectionModel -> {
-            AuroraApplication.rxNotify(new Event(connectionModel.isConnected()
-                    ? Event.SubType.NETWORK_AVAILABLE
-                    : Event.SubType.NETWORK_UNAVAILABLE));
-        });
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         themeUtil.onResume(this);
+        new ConnectionLiveData(this).observe(this, connectionModel -> {
+            AuroraApplication.rxNotify(new Event(connectionModel.isConnected()
+                    ? Event.SubType.NETWORK_AVAILABLE
+                    : Event.SubType.NETWORK_UNAVAILABLE));
+        });
     }
 
     protected void showSnackBar(View view, @StringRes int message, int duration, View.OnClickListener onClickListener) {
