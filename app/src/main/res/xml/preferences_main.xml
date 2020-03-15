@@ -20,6 +20,13 @@
 
 <androidx.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <Preference
+        android:fragment="com.aurora.store.ui.single.fragment.BlacklistFragment"
+        app:icon="@drawable/ic_menu_blacklist"
+        app:layout="@layout/item_preference"
+        app:title="@string/action_blacklist" />
+
     <Preference
         android:fragment="com.aurora.store.ui.preference.fragment.DownloaderFragment"
         app:icon="@drawable/ic_menu_download"

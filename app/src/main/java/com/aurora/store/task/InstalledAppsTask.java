@@ -70,4 +70,19 @@ public class InstalledAppsTask extends UpdatableAppsTask {
         }
         return appList;
     }
+
+    public List<App> getAllLocalApps() throws Exception {
+        List<App> appList = new ArrayList<>();
+        List<String> packageList = getLocalInstalledApps();
+        for (String packageName : packageList) {
+
+            if (TextUtils.isEmpty(packageName)) {
+                continue;
+            }
+
+            final App app = PackageUtil.getAppFromPackageName(getPackageManager(), packageName);
+            appList.add(app);
+        }
+        return appList;
+    }
 }

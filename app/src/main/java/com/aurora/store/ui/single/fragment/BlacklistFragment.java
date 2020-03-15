@@ -31,7 +31,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -94,8 +94,8 @@ public class BlacklistFragment extends Fragment implements BlackListedAppSection
         super.onActivityCreated(savedInstanceState);
         setupClearAll();
         setupRecycler();
-        model = ViewModelProviders.of(this).get(BlackListedAppsModel.class);
-        model.getAllApps().observe(this, appList -> {
+        model = new ViewModelProvider(this).get(BlackListedAppsModel.class);
+        model.getAllApps().observe(getViewLifecycleOwner(), appList -> {
             appList = sortBlackListedApps(appList);
             dispatchAppsToAdapter(appList);
             customSwipeToRefresh.setRefreshing(false);
@@ -110,7 +110,8 @@ public class BlacklistFragment extends Fragment implements BlackListedAppSection
         final List<App> sortListedApps = new ArrayList<>();
 
         //Sort Apps by Names
-        Collections.sort(appList, (App1, App2) -> App1.getDisplayName().compareToIgnoreCase(App2.getDisplayName()));
+        Collections.sort(appList, (App1, App2) -> App1.getDisplayName()
+                .compareToIgnoreCase(App2.getDisplayName()));
 
         //Sort Apps by blacklist status
         for (App app : appList) {

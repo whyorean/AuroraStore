@@ -1,6 +1,7 @@
 package com.aurora.store.section;
 
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -9,11 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.aurora.store.GlideApp;
 import com.aurora.store.R;
 import com.aurora.store.model.App;
-import com.bumptech.glide.load.resource.bitmap.CenterCrop;
-import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.google.android.material.checkbox.MaterialCheckBox;
 
 import java.util.ArrayList;
@@ -32,6 +30,7 @@ public class BlackListedAppSection extends Section {
     private List<App> appList = new ArrayList<>();
     private List<String> blackList;
     private ClickListener clickListener;
+    private PackageManager packageManager;
 
     public BlackListedAppSection(Context context, List<String> blackList, ClickListener clickListener) {
         super(SectionParameters.builder()
@@ -42,6 +41,7 @@ public class BlackListedAppSection extends Section {
         this.context = context;
         this.blackList = blackList;
         this.clickListener = clickListener;
+        this.packageManager = context.getPackageManager();
         setState(State.LOADING);
     }
 
@@ -105,13 +105,11 @@ public class BlackListedAppSection extends Section {
         contentHolder.line1.setText(app.getDisplayName());
         contentHolder.line2.setText(app.getPackageName());
         contentHolder.checkBox.setChecked(blackList.contains(app.getPackageName()));
-
-        GlideApp
-                .with(context)
-                .load(app.getIconUrl())
-                .transforms(new CenterCrop(), new RoundedCorners(30))
-                .into(contentHolder.img);
-
+        try {
+            contentHolder.img.setImageDrawable(packageManager.getApplicationIcon(app.getPackageName()));
+        } catch (PackageManager.NameNotFoundException e) {
+            contentHolder.img.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_placeholder));
+        }
         contentHolder.itemView.setOnClickListener(v -> {
             clickListener.onClick(position, app.getPackageName());
         });
