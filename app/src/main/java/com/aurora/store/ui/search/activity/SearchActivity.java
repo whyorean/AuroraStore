@@ -13,20 +13,24 @@ import android.widget.Toast;
 
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.aurora.store.Constants;
 import com.aurora.store.R;
-import com.aurora.store.section.SearchSuggestionSection;
+import com.aurora.store.SuggestionDiffCallback;
+import com.aurora.store.model.items.SearchSuggestionItem;
 import com.aurora.store.ui.details.DetailsActivity;
 import com.aurora.store.ui.search.SearchSuggestionModel;
 import com.aurora.store.ui.single.activity.BaseActivity;
 import com.aurora.store.util.ContextUtil;
 import com.aurora.store.util.Util;
 import com.aurora.store.util.ViewUtil;
-import com.dragons.aurora.playstoreapiv2.SearchSuggestEntry;
 import com.google.android.material.textfield.TextInputEditText;
+import com.mikepenz.fastadapter.FastAdapter;
+import com.mikepenz.fastadapter.adapters.ItemAdapter;
+import com.mikepenz.fastadapter.diff.FastAdapterDiffUtil;
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -36,9 +40,8 @@ import java.util.regex.Pattern;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import io.github.luizgrp.sectionedrecyclerviewadapter.SectionedRecyclerViewAdapter;
 
-public class SearchActivity extends BaseActivity implements SearchSuggestionSection.ClickListener {
+public class SearchActivity extends BaseActivity {
 
     @BindView(R.id.search_view)
     TextInputEditText searchView;
@@ -51,9 +54,10 @@ public class SearchActivity extends BaseActivity implements SearchSuggestionSect
 
     private String query;
     private SearchSuggestionModel model;
-    private SearchSuggestionSection section;
-    private SectionedRecyclerViewAdapter adapter;
     private InputMethodManager inputMethodManager;
+
+    private FastAdapter<SearchSuggestionItem> fastAdapter;
+    private ItemAdapter<SearchSuggestionItem> itemAdapter;
 
     private static boolean isPackageName(String query) {
         if (TextUtils.isEmpty(query)) {
@@ -170,25 +174,33 @@ public class SearchActivity extends BaseActivity implements SearchSuggestionSect
         });
     }
 
-    private void dispatchAppsToAdapter(List<SearchSuggestEntry> suggestEntryList) {
-        List<SearchSuggestEntry> oldList = section.getList();
-
-        if (!oldList.isEmpty()) {
-            section.getList().clear();
-            adapter.notifyDataSetChanged();
-        }
-
-        if (!suggestEntryList.isEmpty()) {
-            section.addData(suggestEntryList);
-            adapter.notifyDataSetChanged();
-        }
+    private void dispatchAppsToAdapter(List<SearchSuggestionItem> searchSuggestionItems) {
+        final FastAdapterDiffUtil fastAdapterDiffUtil = FastAdapterDiffUtil.INSTANCE;
+        final SuggestionDiffCallback suggestionDiffCallback = new SuggestionDiffCallback();
+        final DiffUtil.DiffResult diffResult = fastAdapterDiffUtil.calculateDiff(itemAdapter, searchSuggestionItems, suggestionDiffCallback);
+        fastAdapterDiffUtil.set(itemAdapter, diffResult);
     }
 
     private void setupSuggestionRecycler() {
-        section = new SearchSuggestionSection(this, this);
-        adapter = new SectionedRecyclerViewAdapter();
-        adapter.addSection(section);
-        recyclerView.setAdapter(adapter);
+        fastAdapter = new FastAdapter<>();
+        itemAdapter = new ItemAdapter<>();
+
+        fastAdapter.setOnClickListener((view, searchSuggestionItemIAdapter, searchSuggestionItem, position) -> {
+            final String title = searchSuggestionItem.getSuggestEntry().getTitle();
+            final String packageName = searchSuggestionItem.getSuggestEntry().getPackageNameContainer().getPackageName();
+            final String query = packageName.isEmpty() ? title : packageName;
+
+            if (Util.isSearchByPackageEnabled(this) && isPackageName(query)) {
+                openDetailsActivity(query);
+            } else {
+                openSearchResultActivity(query);
+            }
+            return false;
+        });
+
+        fastAdapter.addAdapter(0, itemAdapter);
+
+        recyclerView.setAdapter(fastAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
     }
 
@@ -202,14 +214,5 @@ public class SearchActivity extends BaseActivity implements SearchSuggestionSect
         Intent intent = new Intent(this, SearchResultActivity.class);
         intent.putExtra("QUERY", query);
         startActivity(intent, ViewUtil.getEmptyActivityBundle(this));
-    }
-
-    @Override
-    public void onClick(String query) {
-        if (Util.isSearchByPackageEnabled(this) && isPackageName(query)) {
-            openDetailsActivity(query);
-        } else {
-            openSearchResultActivity(query);
-        }
     }
 }

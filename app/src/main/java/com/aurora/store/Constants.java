@@ -33,6 +33,10 @@ public class Constants {
     public static final String INTENT_FRAGMENT_POSITION = "INTENT_FRAGMENT_POSITION";
     public static final String INTENT_PACKAGE_NAME = "INTENT_PACKAGE_NAME";
 
+    public static final String INT_EXTRA = "INT_EXTRA";
+    public static final String FLOAT_EXTRA = "FLOAT_EXTRA";
+    public static final String STRING_EXTRA = "STRING_EXTRA";
+
     public static final String BUILD_DEVICE = "Build.DEVICE";
     public static final String BUILD_MANUFACTURER = "Build.MANUFACTURER";
     public static final String BUILD_HARDWARE = "Build.HARDWARE";
@@ -69,6 +73,7 @@ public class Constants {
     public static final String PREFERENCE_DEVICE_TO_PRETEND_TO_BE_INDEX = "PREFERENCE_DEVICE_TO_PRETEND_TO_BE_INDEX";
     public static final String PREFERENCE_REQUESTED_LOCATION_INDEX = "PREFERENCE_REQUESTED_LOCATION_INDEX";
     public static final String PREFERENCE_BLACKLIST_APPS_LIST = "PREFERENCE_BLACKLIST_APPS_LIST";
+    public static final String PREFERENCE_BLACKLIST_PACKAGE_LIST = "PREFERENCE_BLACKLIST_PACKAGE_LIST";
     public static final String PREFERENCE_FILTER_APPS = "PREFERENCE_FILTER_APPS";
     public static final String PREFERENCE_FILTER_GOOGLE = "PREFERENCE_FILTER_GOOGLE";
     public static final String PREFERENCE_FILTER_F_DROID = "PREFERENCE_FILTER_F_DROID";
@@ -89,6 +94,7 @@ public class Constants {
     public static final String PREFERENCE_NOTIFICATION_PRIORITY = "PREFERENCE_NOTIFICATION_PRIORITY";
     public static final String PREFERENCE_NOTIFICATION_PROVIDER = "PREFERENCE_NOTIFICATION_PROVIDER";
     public static final String PREFERENCE_FAVOURITE_LIST = "PREFERENCE_FAVOURITE_LIST";
+    public static final String PREFERENCE_FAVOURITE_PACKAGE_LIST = "PREFERENCE_FAVOURITE_PACKAGE_LIST";
     public static final String PREFERENCE_ENABLE_PROXY = "PREFERENCE_ENABLE_PROXY";
     public static final String PREFERENCE_PROXY_HOST = "PREFERENCE_PROXY_HOST";
     public static final String PREFERENCE_PROXY_PORT = "PREFERENCE_PROXY_PORT";

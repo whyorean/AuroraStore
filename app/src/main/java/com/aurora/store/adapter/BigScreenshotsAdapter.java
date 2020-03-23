@@ -80,6 +80,5 @@ public class BigScreenshotsAdapter extends RecyclerView.Adapter<BigScreenshotsAd
             ButterKnife.bind(this, view);
         }
     }
-
 }
 

@@ -13,10 +13,14 @@ import com.aurora.store.events.Event;
 import com.aurora.store.util.ThemeUtil;
 import com.aurora.store.viewmodel.ConnectionLiveData;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.gson.Gson;
 
 public abstract class BaseActivity extends AppCompatActivity {
 
-    ThemeUtil themeUtil = new ThemeUtil();
+    protected int intExtra;
+    protected String stringExtra;
+    protected Gson gson = new Gson();
+    private ThemeUtil themeUtil = new ThemeUtil();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -29,7 +33,8 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onResume();
         themeUtil.onResume(this);
         new ConnectionLiveData(this).observe(this, connectionModel -> {
-            AuroraApplication.rxNotify(new Event(connectionModel.isConnected()
+            AuroraApplication
+                    .rxNotify(new Event(connectionModel.isConnected()
                     ? Event.SubType.NETWORK_AVAILABLE
                     : Event.SubType.NETWORK_UNAVAILABLE));
         });

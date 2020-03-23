@@ -85,8 +85,8 @@
 
                 <ImageView
                     android:id="@+id/spoof_device_img"
-                    android:layout_width="@dimen/icon_size_med"
-                    android:layout_height="@dimen/icon_size_med"
+                    android:layout_width="@dimen/icon_size_medium"
+                    android:layout_height="@dimen/icon_size_medium"
                     android:contentDescription="@string/content_description_icon"
                     android:padding="10dp"
                     android:src="@drawable/ic_incognito" />
@@ -133,8 +133,8 @@
 
                 <ImageView
                     android:id="@+id/spoof_img"
-                    android:layout_width="@dimen/icon_size_med"
-                    android:layout_height="@dimen/icon_size_med"
+                    android:layout_width="@dimen/icon_size_medium"
+                    android:layout_height="@dimen/icon_size_medium"
                     android:contentDescription="@string/content_description_icon"
                     android:padding="10dp"
                     android:src="@drawable/ic_translate" />
@@ -180,8 +180,8 @@
 
                 <ImageView
                     android:id="@+id/location_img"
-                    android:layout_width="@dimen/icon_size_med"
-                    android:layout_height="@dimen/icon_size_med"
+                    android:layout_width="@dimen/icon_size_medium"
+                    android:layout_height="@dimen/icon_size_medium"
                     android:contentDescription="@string/content_description_icon"
                     android:padding="10dp"
                     android:src="@drawable/ic_map_marker" />

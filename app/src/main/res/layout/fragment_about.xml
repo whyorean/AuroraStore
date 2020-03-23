@@ -61,7 +61,7 @@
                     android:textAppearance="@style/TextAppearance.Aurora.Line1" />
 
                 <TextView
-                    android:id="@+id/app_version"
+                    android:id="@+id/line2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/app_name"
@@ -74,7 +74,7 @@
                     android:id="@+id/app_india"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/app_version"
+                    android:layout_below="@+id/line2"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="@dimen/margin_xsmall"
                     android:gravity="center_vertical"

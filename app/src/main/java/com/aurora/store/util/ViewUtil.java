@@ -22,7 +22,6 @@ package com.aurora.store.util;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
-import android.animation.ValueAnimator;
 import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -31,14 +30,16 @@ import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.View;
-import android.view.animation.DecelerateInterpolator;
+import android.view.WindowManager;
+import android.view.animation.Animation;
 import android.view.animation.RotateAnimation;
+import android.view.animation.Transformation;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class ViewUtil {
 
-    private static int ANIMATION_DURATION_SHORT = 250;
+    private static int ANIMATION_DURATION_SHORT = 400;
 
     public static int dpToPx(Context context, int dp) {
         DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
@@ -70,11 +71,11 @@ public class ViewUtil {
     }
 
     public static void hideWithAnimation(View view) {
-        final int mShortAnimationDuration = view.getResources().getInteger(
+        final int duration = view.getResources().getInteger(
                 android.R.integer.config_shortAnimTime);
         view.animate()
                 .alpha(0f)
-                .setDuration(mShortAnimationDuration)
+                .setDuration(duration)
                 .setListener(new AnimatorListenerAdapter() {
                     @Override
                     public void onAnimationEnd(Animator animation) {
@@ -89,35 +90,56 @@ public class ViewUtil {
                 reverse ? 0 : 180,
                 (float) view.getWidth() / 2,
                 (float) view.getHeight() / 2);
-        animation.setDuration(300);
+        animation.setDuration(ANIMATION_DURATION_SHORT);
         animation.setFillAfter(true);
         view.startAnimation(animation);
     }
 
-    public static void expandView(final View v, int targetHeight) {
-        int prevHeight = v.getHeight();
-        v.setVisibility(View.VISIBLE);
-        ValueAnimator valueAnimator = ValueAnimator.ofInt(prevHeight, targetHeight);
-        valueAnimator.setInterpolator(new DecelerateInterpolator());
-        valueAnimator.addUpdateListener(animation -> {
-            v.getLayoutParams().height = (int) animation.getAnimatedValue();
-            v.requestLayout();
-        });
-        valueAnimator.setDuration(ANIMATION_DURATION_SHORT);
-        valueAnimator.start();
+    public static void expand(final View view) {
+        view.measure(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+        final int targetHeight = view.getMeasuredHeight();
+        view.getLayoutParams().height = 1;
+        view.setVisibility(View.VISIBLE);
+        Animation animation = new Animation() {
+            @Override
+            protected void applyTransformation(float interpolatedTime, Transformation t) {
+                view.getLayoutParams().height = interpolatedTime == 1
+                        ? WindowManager.LayoutParams.WRAP_CONTENT
+                        : (int) (targetHeight * interpolatedTime);
+                view.requestLayout();
+            }
+
+            @Override
+            public boolean willChangeBounds() {
+                return true;
+            }
+        };
+        animation.setDuration((int) (targetHeight / view.getContext().getResources().getDisplayMetrics().density));
+        //animation.setDuration(ANIMATION_DURATION_SHORT);
+        view.startAnimation(animation);
     }
 
-    public static void collapseView(final View v, int targetHeight) {
-        int prevHeight = v.getHeight();
-        ValueAnimator valueAnimator = ValueAnimator.ofInt(prevHeight, targetHeight);
-        valueAnimator.setInterpolator(new DecelerateInterpolator());
-        valueAnimator.addUpdateListener(animation -> {
-            v.getLayoutParams().height = (int) animation.getAnimatedValue();
-            v.requestLayout();
-        });
-        valueAnimator.setInterpolator(new DecelerateInterpolator());
-        valueAnimator.setDuration(ANIMATION_DURATION_SHORT);
-        valueAnimator.start();
+    public static void collapse(final View view) {
+        final int initialHeight = view.getMeasuredHeight();
+        Animation animation = new Animation() {
+            @Override
+            protected void applyTransformation(float interpolatedTime, Transformation t) {
+                if (interpolatedTime == 1) {
+                    view.setVisibility(View.GONE);
+                } else {
+                    view.getLayoutParams().height = initialHeight - (int) (initialHeight * interpolatedTime);
+                    view.requestLayout();
+                }
+            }
+
+            @Override
+            public boolean willChangeBounds() {
+                return true;
+            }
+        };
+        animation.setDuration((int) (initialHeight / view.getContext().getResources().getDisplayMetrics().density));
+        //animation.setDuration(ANIMATION_DURATION_SHORT);
+        view.startAnimation(animation);
     }
 
     public static void setVisibility(View view, boolean visibility) {

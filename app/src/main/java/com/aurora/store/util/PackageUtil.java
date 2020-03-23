@@ -70,7 +70,7 @@ public class PackageUtil {
         PrefUtil.saveMap(context, pseudoMap, PSEUDO_URL_MAP);
     }
 
-    public static App getAppFromPackageName(PackageManager packageManager, String packageName) {
+    public static App getAppFromPackageName(PackageManager packageManager, String packageName, boolean extended) {
         try {
             final App app = new App();
             final PackageInfo packageInfo = packageManager.getPackageInfo(packageName, PackageManager.GET_META_DATA);
@@ -78,7 +78,10 @@ public class PackageUtil {
             app.setDisplayName(packageManager.getApplicationLabel(packageInfo.applicationInfo).toString());
             app.setVersionName(packageInfo.versionName);
             app.setVersionCode(packageInfo.versionCode);
-            app.setSystem((packageInfo.applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0);
+            if (extended) {
+                app.setSystem((packageInfo.applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0);
+                app.setIconDrawable(packageManager.getApplicationIcon(packageName));
+            }
             return app;
         } catch (PackageManager.NameNotFoundException e) {
             return null;

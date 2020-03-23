@@ -40,6 +40,8 @@ import com.aurora.store.report.AcraReportSenderFactory;
 import com.aurora.store.util.Log;
 import com.aurora.store.util.Util;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
+import com.facebook.stetho.Stetho;
+import com.jakewharton.rxrelay2.Relay;
 
 import org.acra.ACRA;
 import org.acra.annotation.AcraCore;
@@ -65,6 +67,10 @@ public class AuroraApplication extends Application {
 
     public static RxBus getRxBus() {
         return rxBus;
+    }
+
+    public static Relay<Event> getRelayBus() {
+        return rxBus.getBus();
     }
 
     public static boolean isBulkUpdateAlive() {
@@ -140,7 +146,14 @@ public class AuroraApplication extends Application {
         //Global RX-Error handler, just simply logs, I make sure all errors are handled at origin.
         RxJavaPlugins.setErrorHandler(throwable -> {
             Log.e(throwable.getMessage());
+            if (BuildConfig.DEBUG) {
+                throwable.printStackTrace();
+            }
         });
+
+        if (BuildConfig.DEBUG) {
+            Stetho.initializeWithDefaults(this);
+        }
     }
 
     @Override

@@ -20,7 +20,6 @@
 
 package com.aurora.store.sheet;
 
-import android.app.Dialog;
 import android.content.pm.PackageManager;
 import android.content.pm.PermissionGroupInfo;
 import android.content.pm.PermissionInfo;
@@ -28,19 +27,16 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.aurora.store.Constants;
 import com.aurora.store.PermissionGroup;
 import com.aurora.store.R;
 import com.aurora.store.model.App;
-import com.google.android.material.bottomsheet.BottomSheetBehavior;
-import com.google.android.material.bottomsheet.BottomSheetDialog;
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -51,7 +47,7 @@ import java.util.Map;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class PermissionBottomSheet extends BottomSheetDialogFragment {
+public class PermissionBottomSheet extends BaseBottomSheet {
 
     @BindView(R.id.permissions_header)
     TextView viewHeader;
@@ -63,7 +59,10 @@ public class PermissionBottomSheet extends BottomSheetDialogFragment {
     TextView permissions_none;
 
     private App app;
-    private PackageManager pm;
+    private PackageManager packageManager;
+
+    public PermissionBottomSheet() {
+    }
 
     public void setApp(App app) {
         this.app = app;
@@ -71,56 +70,53 @@ public class PermissionBottomSheet extends BottomSheetDialogFragment {
 
     @NonNull
     @Override
-    public Dialog onCreateDialog(Bundle savedInstanceState) {
-        BottomSheetDialog dialog = (BottomSheetDialog) super.onCreateDialog(savedInstanceState);
-        dialog.setOnShowListener(d -> {
-            BottomSheetDialog bottomSheetDialog = (BottomSheetDialog) d;
-            FrameLayout bottomSheet = bottomSheetDialog.findViewById(com.google.android.material.R.id.design_bottom_sheet);
-            if (bottomSheet != null)
-                BottomSheetBehavior.from(bottomSheet).setState(BottomSheetBehavior.STATE_EXPANDED);
-        });
-        return dialog;
-    }
-
-    @NonNull
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateContentView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.sheet_permissions, container, false);
-        pm = requireContext().getPackageManager();
+        ButterKnife.bind(this, view);
         return view;
     }
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+    public void onContentViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ButterKnife.bind(this, view);
-        addPermissionWidgets();
+        if (getArguments() != null) {
+            Bundle bundle = getArguments();
+            stringExtra = bundle.getString(Constants.STRING_EXTRA);
+            app = gson.fromJson(stringExtra, App.class);
+            packageManager = requireContext().getPackageManager();
+            populateData();
+        } else {
+            dismissAllowingStateLoss();
+        }
     }
 
-    private void addPermissionWidgets() {
-        Map<String, PermissionGroup> permissionGroupWidgets = new HashMap<>();
+    private void populateData() {
+        final Map<String, PermissionGroup> permissionGroupWidgets = new HashMap<>();
         for (String permissionName : app.getPermissions()) {
-            PermissionInfo permissionInfo = getPermissionInfo(permissionName);
-            if (null == permissionInfo) {
+            final PermissionInfo permissionInfo = getPermissionInfo(permissionName);
+            if (permissionInfo == null) {
                 continue;
             }
+            final PermissionGroupInfo permissionGroupInfo = getPermissionGroupInfo(permissionInfo);
             PermissionGroup widget;
-            PermissionGroupInfo permissionGroupInfo = getPermissionGroupInfo(permissionInfo);
-            if (!permissionGroupWidgets.containsKey(permissionGroupInfo.name)) {
+
+            if (permissionGroupWidgets.containsKey(permissionGroupInfo.name)) {
+                widget = permissionGroupWidgets.get(permissionGroupInfo.name);
+            } else {
                 widget = new PermissionGroup(getContext());
                 widget.setPermissionGroupInfo(permissionGroupInfo);
                 widget.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
                 permissionGroupWidgets.put(permissionGroupInfo.name, widget);
-            } else {
-                widget = permissionGroupWidgets.get(permissionGroupInfo.name);
             }
+
             if (widget != null) {
                 widget.addPermission(permissionInfo);
             }
         }
 
         container.removeAllViews();
-        List<String> permissionGroupLabels = new ArrayList<>(permissionGroupWidgets.keySet());
+
+        final List<String> permissionGroupLabels = new ArrayList<>(permissionGroupWidgets.keySet());
         Collections.sort(permissionGroupLabels);
         for (String permissionGroupLabel : permissionGroupLabels) {
             container.addView(permissionGroupWidgets.get(permissionGroupLabel));
@@ -130,7 +126,7 @@ public class PermissionBottomSheet extends BottomSheetDialogFragment {
 
     private PermissionInfo getPermissionInfo(String permissionName) {
         try {
-            return pm.getPermissionInfo(permissionName, 0);
+            return packageManager.getPermissionInfo(permissionName, 0);
         } catch (PackageManager.NameNotFoundException e) {
             return null;
         }
@@ -142,7 +138,7 @@ public class PermissionBottomSheet extends BottomSheetDialogFragment {
             permissionGroupInfo = getFakePermissionGroupInfo(permissionInfo.packageName);
         } else {
             try {
-                permissionGroupInfo = pm.getPermissionGroupInfo(permissionInfo.group, 0);
+                permissionGroupInfo = packageManager.getPermissionGroupInfo(permissionInfo.group, 0);
             } catch (PackageManager.NameNotFoundException e) {
                 permissionGroupInfo = getFakePermissionGroupInfo(permissionInfo.packageName);
             }
@@ -154,7 +150,7 @@ public class PermissionBottomSheet extends BottomSheetDialogFragment {
     }
 
     private PermissionGroupInfo getFakePermissionGroupInfo(String packageName) {
-        PermissionGroupInfo permissionGroupInfo = new PermissionGroupInfo();
+        final PermissionGroupInfo permissionGroupInfo = new PermissionGroupInfo();
         switch (packageName) {
             case "android":
                 permissionGroupInfo.icon = R.drawable.ic_permission_android;
@@ -171,7 +167,5 @@ public class PermissionBottomSheet extends BottomSheetDialogFragment {
                 break;
         }
         return permissionGroupInfo;
-
     }
-
 }

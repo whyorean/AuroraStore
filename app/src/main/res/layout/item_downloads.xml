@@ -27,8 +27,8 @@
 
     <ImageView
         android:id="@+id/img_download"
-        android:layout_width="@dimen/icon_size_med"
-        android:layout_height="@dimen/icon_size_med"
+        android:layout_width="@dimen/icon_size_medium"
+        android:layout_height="@dimen/icon_size_medium"
         android:layout_margin="@dimen/margin_xxsmall"
         android:src="@drawable/ic_placeholder" />
 

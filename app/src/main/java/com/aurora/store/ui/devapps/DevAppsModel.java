@@ -20,13 +20,7 @@ public class DevAppsModel extends SearchAppsModel {
             searchIterator = new SearchIterator(api, query);
             iterator = new CustomAppListIterator(searchIterator);
         } catch (Exception e) {
-            e.printStackTrace();
+            handleError(e);
         }
-    }
-
-    @Override
-    protected void onCleared() {
-        compositeDisposable.dispose();
-        super.onCleared();
     }
 }

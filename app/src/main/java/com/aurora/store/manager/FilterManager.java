@@ -33,8 +33,8 @@ import com.google.gson.Gson;
 public class FilterManager {
 
     public static FilterModel getFilterPreferences(Context context) {
-        Gson gson = new Gson();
-        FilterModel filterModel = gson.fromJson(PrefUtil
+        final Gson gson = new Gson();
+        final FilterModel filterModel = gson.fromJson(PrefUtil
                 .getString(context, Constants.PREFERENCE_FILTER_APPS), FilterModel.class);
         if (filterModel == null) {
             FilterModel defaultModel = new FilterModel();
@@ -45,8 +45,8 @@ public class FilterManager {
     }
 
     public static void saveFilterPreferences(Context context, FilterModel filterModel) {
-        Gson gson = new Gson();
-        String filterJSON = gson.toJson(filterModel);
-        PrefUtil.putString(context, Constants.PREFERENCE_FILTER_APPS, filterJSON);
+        final Gson gson = new Gson();
+        final String filterJSONString = gson.toJson(filterModel);
+        PrefUtil.putString(context, Constants.PREFERENCE_FILTER_APPS, filterJSONString);
     }
 }

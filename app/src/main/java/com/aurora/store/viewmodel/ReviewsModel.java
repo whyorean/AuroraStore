@@ -8,7 +8,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.aurora.store.iterator.ReviewRetrieverIterator;
 import com.aurora.store.iterator.ReviewStorageIterator;
-import com.aurora.store.model.Review;
+import com.aurora.store.model.items.ReviewItem;
 import com.aurora.store.task.ReviewsHelper;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 
@@ -22,14 +22,14 @@ public class ReviewsModel extends BaseViewModel {
 
     private ReviewStorageIterator iterator;
 
-    private MutableLiveData<List<Review>> listMutableLiveData = new MutableLiveData<>();
+    private MutableLiveData<List<ReviewItem>> data = new MutableLiveData<>();
 
     public ReviewsModel(@NonNull Application application) {
         super(application);
     }
 
-    public LiveData<List<Review>> getReviews() {
-        return listMutableLiveData;
+    public LiveData<List<ReviewItem>> getReviews() {
+        return data;
     }
 
     public void fetchReviews(String packageName, GooglePlayAPI.REVIEW_SORT reviewSort, boolean rebuild) {
@@ -37,14 +37,17 @@ public class ReviewsModel extends BaseViewModel {
         if (iterator == null || rebuild)
             getIterator(packageName, reviewSort);
 
-        compositeDisposable.add(Observable.fromCallable(() -> new ReviewsHelper(iterator)
+        Observable.fromCallable(() -> new ReviewsHelper(iterator)
                 .getReviews())
-                .subscribeOn(Schedulers.computation())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe((reviewList) -> {
-                    listMutableLiveData.setValue(reviewList);
-                }, err -> handleError(err)));
+                .flatMap(reviews -> Observable
+                        .fromIterable(reviews)
+                        .map(ReviewItem::new))
+                .toList()
+                .doOnSuccess(reviewItems -> data.setValue(reviewItems))
+                .doOnError(this::handleError)
+                .subscribe();
     }
 
     private void getIterator(String packageName, GooglePlayAPI.REVIEW_SORT reviewSort) {
@@ -60,11 +63,5 @@ public class ReviewsModel extends BaseViewModel {
         } catch (Exception err) {
             handleError(err);
         }
-    }
-
-    @Override
-    protected void onCleared() {
-        compositeDisposable.dispose();
-        super.onCleared();
     }
 }

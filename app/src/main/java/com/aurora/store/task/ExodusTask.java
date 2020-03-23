@@ -3,10 +3,9 @@ package com.aurora.store.task;
 import android.content.Context;
 import android.content.ContextWrapper;
 
+import com.aurora.store.BuildConfig;
+import com.aurora.store.util.NetworkInterceptor;
 import com.aurora.store.util.Util;
-
-import java.util.HashMap;
-import java.util.Map;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -26,6 +25,9 @@ public class ExodusTask extends ContextWrapper {
         final OkHttpClient.Builder builder = new OkHttpClient.Builder();
         if (Util.isNetworkProxyEnabled(context))
             builder.proxy(Util.getNetworkProxy(context));
+        if (BuildConfig.DEBUG) {
+            builder.addNetworkInterceptor(new NetworkInterceptor());
+        }
         return builder.build();
     }
 

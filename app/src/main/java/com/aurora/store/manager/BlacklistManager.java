@@ -24,60 +24,60 @@ import android.content.Context;
 
 import com.aurora.store.Constants;
 import com.aurora.store.util.PrefUtil;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
 public class BlacklistManager {
 
     private Context context;
-    private ArrayList<String> blackList;
+    private Gson gson;
 
     public BlacklistManager(Context context) {
         this.context = context;
-        this.blackList = PrefUtil.getListString(context, Constants.PREFERENCE_BLACKLIST_APPS_LIST);
+        this.gson = new Gson();
     }
 
-    public void add(String packageName) {
-        ArrayList<String> arrayList = new ArrayList<>();
-        arrayList.add(packageName);
-        addAll(arrayList);
-        save();
+    public void addToBlacklist(String packageName) {
+        List<String> stringList = getBlacklistedPackages();
+        if (!stringList.contains(packageName)) {
+            stringList.add(packageName);
+            saveBlacklist(stringList);
+        }
     }
 
-    public void addAll(ArrayList<String> arrayList) {
-        blackList.addAll(arrayList);
-        Set<String> mAppSet = new HashSet<>(blackList);
-        blackList.clear();
-        blackList.addAll(mAppSet);
-        save();
+    public void removeFromBlacklist(String packageName) {
+        List<String> stringList = getBlacklistedPackages();
+        if (stringList.contains(packageName)) {
+            stringList.remove(packageName);
+            saveBlacklist(stringList);
+        }
     }
 
-    public ArrayList<String> get() {
-        return blackList;
+    public boolean isBlacklisted(String packageName) {
+        return getBlacklistedPackages().contains(packageName);
     }
 
-    public boolean contains(String packageName) {
-        return blackList.contains(packageName);
+    public void clear() {
+        saveBlacklist(new ArrayList<>());
     }
 
-    public void remove(String packageName) {
-        blackList.remove(packageName);
-        save();
+    private void saveBlacklist(List<String> stringList) {
+        PrefUtil.putString(context, Constants.PREFERENCE_BLACKLIST_PACKAGE_LIST, gson.toJson(stringList));
     }
 
-    public void removeAll(ArrayList<String> packageList) {
-        blackList.removeAll(packageList);
-        save();
-    }
+    public List<String> getBlacklistedPackages() {
+        String rawList = PrefUtil.getString(context, Constants.PREFERENCE_BLACKLIST_PACKAGE_LIST);
+        Type type = new TypeToken<List<String>>() {
+        }.getType();
+        List<String> stringList = gson.fromJson(rawList, type);
 
-    public void removeAll() {
-        blackList = new ArrayList<>();
-        save();
-    }
-
-    private void save() {
-        PrefUtil.putListString(context, Constants.PREFERENCE_BLACKLIST_APPS_LIST, blackList);
+        if (stringList == null)
+            return new ArrayList<>();
+        else
+            return stringList;
     }
 }

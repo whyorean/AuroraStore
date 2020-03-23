@@ -22,7 +22,9 @@ package com.aurora.store.download;
 
 import android.content.Context;
 
+import com.aurora.store.BuildConfig;
 import com.aurora.store.Constants;
+import com.aurora.store.util.NetworkInterceptor;
 import com.aurora.store.util.Util;
 import com.tonyodev.fetch2.Fetch;
 import com.tonyodev.fetch2.FetchConfiguration;
@@ -72,6 +74,9 @@ public class DownloadManager {
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
         if (Util.isNetworkProxyEnabled(context))
             builder.proxy(Util.getNetworkProxy(context));
+        if (BuildConfig.DEBUG) {
+            builder.addNetworkInterceptor(new NetworkInterceptor());
+        }
         return builder.build();
     }
 }

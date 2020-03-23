@@ -19,6 +19,7 @@
   -->
 
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/coordinator"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -39,10 +40,10 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_centerVertical="true"
-                android:layout_marginStart="@dimen/margin_normal"
+                android:layout_marginStart="@dimen/margin_large"
                 android:layout_marginEnd="@dimen/margin_small"
                 android:layout_toStartOf="@id/btn_clear_all"
-                android:textAppearance="@style/TextAppearance.Aurora.Line1" />
+                android:textAppearance="@style/TextAppearance.Aurora.SubTitle" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_clear_all"
@@ -67,7 +68,9 @@
                 android:id="@+id/recycler"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:scrollbars="vertical" />
+                android:overScrollMode="never"
+                android:scrollbars="vertical"
+                tools:listitem="@layout/item_checkbox" />
         </com.aurora.store.ui.view.CustomSwipeToRefresh>
     </LinearLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

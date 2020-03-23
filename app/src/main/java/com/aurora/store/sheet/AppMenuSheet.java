@@ -21,7 +21,6 @@
 package com.aurora.store.sheet;
 
 import android.content.ActivityNotFoundException;
-import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -31,84 +30,82 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.aurora.store.AuroraApplication;
+import com.aurora.store.Constants;
 import com.aurora.store.R;
 import com.aurora.store.events.Event;
-import com.aurora.store.events.RxBus;
 import com.aurora.store.installer.Uninstaller;
 import com.aurora.store.manager.BlacklistManager;
-import com.aurora.store.manager.FavouriteListManager;
+import com.aurora.store.manager.FavouritesManager;
 import com.aurora.store.model.App;
-import com.aurora.store.ui.details.DetailsActivity;
 import com.aurora.store.ui.single.activity.ManualDownloadActivity;
 import com.aurora.store.util.ApkCopier;
 import com.aurora.store.util.Log;
 import com.aurora.store.util.PackageUtil;
 import com.aurora.store.util.ViewUtil;
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.android.material.navigation.NavigationView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
 
-public class AppMenuSheet extends BottomSheetDialogFragment {
+public class AppMenuSheet extends BaseBottomSheet {
+
+    public static final String TAG = "APP_MENU_SHEET";
 
     @BindView(R.id.navigation_view)
     NavigationView navigationView;
 
     private App app;
-    private Context context;
-    private CompositeDisposable disposable = new CompositeDisposable();
-    private RxBus rxBus;
 
     public AppMenuSheet() {
     }
 
-    public App getApp() {
-        return app;
-    }
-
-    public void setApp(App app) {
-        this.app = app;
-    }
-
+    @Nullable
     @Override
-    public void onAttach(@NonNull Context context) {
-        super.onAttach(context);
-        this.context = context;
-        this.rxBus = AuroraApplication.getRxBus();
-    }
-
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    protected View onCreateContentView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.sheet_app_menu, container, false);
         ButterKnife.bind(this, view);
         return view;
     }
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+    protected void onContentViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onContentViewCreated(view, savedInstanceState);
+        if (getArguments() != null) {
+            Bundle bundle = getArguments();
+            stringExtra = bundle.getString(Constants.STRING_EXTRA);
+            intExtra = bundle.getInt(Constants.INT_EXTRA);
+            //Get App from bundle
+            app = gson.fromJson(stringExtra, App.class);
+            setupNavigationView();
+        } else {
+            dismissAllowingStateLoss();
+        }
+    }
 
-        final FavouriteListManager favouriteListManager = new FavouriteListManager(context);
-        boolean isFav = favouriteListManager.contains(app.getPackageName());
-        MenuItem favMenu = navigationView.getMenu().findItem(R.id.action_fav);
-        favMenu.setTitle(isFav ? R.string.details_favourite_remove : R.string.details_favourite_add);
+    private void setupNavigationView() {
+        final FavouritesManager favouritesManager = new FavouritesManager(requireContext());
+        final BlacklistManager blacklistManager = new BlacklistManager(requireContext());
 
-        final BlacklistManager blacklistManager = new BlacklistManager(context);
-        boolean isBlacklisted = blacklistManager.contains(app.getPackageName());
-        MenuItem blackListMenu = navigationView.getMenu().findItem(R.id.action_blacklist);
+        final boolean isFavourite = favouritesManager.isFavourite(app.getPackageName());
+        final boolean isBlacklisted = blacklistManager.isBlacklisted(app.getPackageName());
+
+        //Switch strings for Add/Remove Favourite
+        final MenuItem favMenu = navigationView.getMenu().findItem(R.id.action_fav);
+        favMenu.setTitle(isFavourite ? R.string.details_favourite_remove : R.string.details_favourite_add);
+
+        //Switch strings for Add/Remove Blacklist
+        final MenuItem blackListMenu = navigationView.getMenu().findItem(R.id.action_blacklist);
         blackListMenu.setTitle(isBlacklisted ? R.string.action_whitelist : R.string.menu_blacklist);
 
-        boolean installed = PackageUtil.isInstalled(context, app);
+        //Show/Hide actions based on installed status
+        final boolean installed = PackageUtil.isInstalled(requireContext(), app);
         navigationView.getMenu().findItem(R.id.action_uninstall).setVisible(installed);
         navigationView.getMenu().findItem(R.id.action_local).setVisible(installed);
         navigationView.getMenu().findItem(R.id.action_info).setVisible(installed);
@@ -116,51 +113,58 @@ public class AppMenuSheet extends BottomSheetDialogFragment {
         navigationView.setNavigationItemSelectedListener(item -> {
             switch (item.getItemId()) {
                 case R.id.action_fav:
-                    if (isFav) {
-                        favouriteListManager.remove(app.getPackageName());
+                    if (isFavourite) {
+                        favouritesManager.removeFromFavourites(app.getPackageName());
                     } else {
-                        favouriteListManager.add(app.getPackageName());
+                        favouritesManager.addToFavourites(app.getPackageName());
                     }
                     break;
                 case R.id.action_blacklist:
                     if (isBlacklisted) {
-                        blacklistManager.remove(app.getPackageName());
-                        Toast.makeText(context, context.getString(R.string.toast_apk_whitelisted),
-                                Toast.LENGTH_SHORT).show();
-                        rxBus
-                                .getBus()
+                        blacklistManager.removeFromBlacklist(app.getPackageName());
+
+                        AuroraApplication
+                                .getRelayBus()
                                 .accept(new Event(Event.SubType.WHITELIST, app.getPackageName()));
                     } else {
-                        blacklistManager.add(app.getPackageName());
-                        Toast.makeText(context, context.getString(R.string.toast_apk_blacklisted),
-                                Toast.LENGTH_SHORT).show();
-                        rxBus
-                                .getBus()
-                                .accept(new Event(Event.SubType.BLACKLIST, app.getPackageName()));
+                        blacklistManager.addToBlacklist(app.getPackageName());
+
+                        AuroraApplication
+                                .getRelayBus()
+                                .accept(new Event(Event.SubType.BLACKLIST, intExtra));
                     }
+                    Toast.makeText(requireContext(), isBlacklisted ?
+                                    requireContext().getString(R.string.toast_apk_whitelisted) :
+                                    requireContext().getString(R.string.toast_apk_blacklisted),
+                            Toast.LENGTH_SHORT).show();
                     break;
                 case R.id.action_local:
-                    disposable.add(Observable.fromCallable(() -> new ApkCopier(context, app)
+                    Observable.fromCallable(() -> new ApkCopier(requireContext(), app)
                             .copy())
                             .subscribeOn(Schedulers.io())
                             .observeOn(AndroidSchedulers.mainThread())
-                            .subscribe(success -> {
-                                Toast.makeText(context, success
-                                        ? context.getString(R.string.toast_apk_copy_success)
-                                        : context.getString(R.string.toast_apk_copy_failure), Toast.LENGTH_SHORT)
+                            .doOnNext(result -> {
+                                Toast.makeText(requireContext(), result
+                                        ? requireContext().getString(R.string.toast_apk_copy_success)
+                                        : requireContext().getString(R.string.toast_apk_copy_failure), Toast.LENGTH_SHORT)
                                         .show();
-                            }));
+                            })
+                            .doOnError(throwable -> {
+                                Log.e("Failed to copy app to local directory");
+                            })
+                            .subscribe();
                     break;
                 case R.id.action_manual:
-                    DetailsActivity.app = app;
-                    context.startActivity(new Intent(context, ManualDownloadActivity.class), ViewUtil.getEmptyActivityBundle((AppCompatActivity) context));
+                    Intent intent = new Intent(requireContext(), ManualDownloadActivity.class);
+                    intent.putExtra(Constants.STRING_EXTRA, gson.toJson(app));
+                    requireContext().startActivity(intent, ViewUtil.getEmptyActivityBundle((AppCompatActivity) requireContext()));
                     break;
                 case R.id.action_uninstall:
-                    new Uninstaller(context).uninstall(app);
+                    new Uninstaller(requireContext()).uninstall(app);
                     break;
                 case R.id.action_info:
                     try {
-                        context.startActivity(new Intent("android.settings.APPLICATION_DETAILS_SETTINGS",
+                        requireContext().startActivity(new Intent("android.settings.APPLICATION_DETAILS_SETTINGS",
                                 Uri.parse("package:" + app.getPackageName())));
                     } catch (ActivityNotFoundException e) {
                         Log.e("Could not find system app activity");

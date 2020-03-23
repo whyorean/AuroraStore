@@ -30,8 +30,8 @@
     <ImageView
         android:contentDescription="@string/content_description_icon"
         android:id="@+id/link_icon"
-        android:layout_width="@dimen/icon_size_med"
-        android:layout_height="@dimen/icon_size_med"
+        android:layout_width="@dimen/icon_size_medium"
+        android:layout_height="@dimen/icon_size_medium"
         android:padding="@dimen/margin_small" />
 
     <TextView

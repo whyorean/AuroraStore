@@ -28,44 +28,52 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatTextView;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.aurora.store.AppDiffCallback;
 import com.aurora.store.AuroraApplication;
 import com.aurora.store.Constants;
 import com.aurora.store.R;
+import com.aurora.store.UpdatesDiffCallback;
 import com.aurora.store.download.DownloadManager;
 import com.aurora.store.model.App;
-import com.aurora.store.section.UpdateAppSection;
+import com.aurora.store.model.items.UpdatesItem;
 import com.aurora.store.sheet.AppMenuSheet;
 import com.aurora.store.ui.details.DetailsActivity;
-import com.aurora.store.ui.main.AuroraActivity;
 import com.aurora.store.ui.single.fragment.BaseFragment;
 import com.aurora.store.ui.view.CustomSwipeToRefresh;
 import com.aurora.store.util.Util;
 import com.aurora.store.util.ViewUtil;
 import com.google.android.material.button.MaterialButton;
+import com.mikepenz.fastadapter.FastAdapter;
+import com.mikepenz.fastadapter.adapters.ItemAdapter;
+import com.mikepenz.fastadapter.diff.FastAdapterDiffUtil;
+import com.mikepenz.fastadapter.select.SelectExtension;
 import com.tonyodev.fetch2.Fetch;
 
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import io.github.luizgrp.sectionedrecyclerviewadapter.SectionedRecyclerViewAdapter;
-import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.Observable;
 
 
-public class UpdatesFragment extends BaseFragment implements UpdateAppSection.ClickListener {
-
+public class UpdatesFragment extends BaseFragment {
+    @BindView(R.id.coordinator)
+    CoordinatorLayout coordinator;
     @BindView(R.id.swipe_layout)
-    CustomSwipeToRefresh customSwipeToRefresh;
+    CustomSwipeToRefresh swipeToRefresh;
     @BindView(R.id.recycler)
     RecyclerView recyclerView;
     @BindView(R.id.txt_update_all)
@@ -74,11 +82,13 @@ public class UpdatesFragment extends BaseFragment implements UpdateAppSection.Cl
     MaterialButton btnAction;
 
     private Fetch fetch;
-    private CompositeDisposable disposable = new CompositeDisposable();
+    private Set<UpdatesItem> selectedItems = new HashSet<>();
 
     private UpdatableAppsModel model;
-    private UpdateAppSection section;
-    private SectionedRecyclerViewAdapter adapter;
+
+    private FastAdapter<UpdatesItem> fastAdapter;
+    private ItemAdapter<UpdatesItem> itemAdapter;
+    private SelectExtension<UpdatesItem> selectExtension;
 
     @Nullable
     @Override
@@ -95,140 +105,214 @@ public class UpdatesFragment extends BaseFragment implements UpdateAppSection.Cl
         setupRecycler();
 
         model = new ViewModelProvider(this).get(UpdatableAppsModel.class);
-        model.getListMutableLiveData().observe(this, appList -> {
-            dispatchAppsToAdapter(appList);
-            customSwipeToRefresh.setRefreshing(false);
+        model.getData().observe(getViewLifecycleOwner(), updatesItems -> {
+            dispatchAppsToAdapter(updatesItems);
+            swipeToRefresh.setRefreshing(false);
         });
-
-        model.getError().observe(this, errorType -> {
+        model.getError().observe(getViewLifecycleOwner(), errorType -> {
             switch (errorType) {
                 case NO_API:
                 case SESSION_EXPIRED:
+                    awaiting = true;
                     Util.validateApi(requireContext());
+                    break;
+                case NO_NETWORK:
+                    awaiting = true;
                     break;
             }
         });
 
-        customSwipeToRefresh.setOnRefreshListener(() -> model.fetchUpdatableApps());
+        swipeToRefresh.setRefreshing(true);
+        swipeToRefresh.setOnRefreshListener(() -> model.fetchUpdatableApps());
 
-        disposable.add(AuroraApplication
-                .getRxBus()
-                .getBus()
-                .subscribe(event -> {
+        AuroraApplication
+                .getRelayBus()
+                .doOnNext(event -> {
+                    //Handle list update events
                     switch (event.getSubType()) {
                         case BLACKLIST:
+                            int adapterPosition = event.getIntExtra();
+                            removeItemByAdapterPosition(adapterPosition);
+                            break;
                         case INSTALLED:
-                            removeAppFromAdapter(event.getPackageName());
-                            break;
-                        case API_SUCCESS:
-                        case NETWORK_AVAILABLE:
-                            model.fetchUpdatableApps();
-                            break;
-                        case BULK_UPDATE_NOTIFY:
-                            drawButtons();
+                        case UNINSTALLED:
+                            removeItemByPackageName(event.getStringExtra());
                             break;
                     }
-                }));
+
+                    //Handle Network & API events
+                    switch (event.getSubType()) {
+                        case API_SUCCESS:
+                        case NETWORK_AVAILABLE:
+                            if (awaiting) {
+                                model.fetchUpdatableApps();
+                                awaiting = false;
+                            }
+                            break;
+                    }
+
+                    //Handle misc events
+                    switch (event.getSubType()) {
+                        case BULK_UPDATE_NOTIFY:
+                            updatePageData();
+                            break;
+                        case WHITELIST:
+                            //TODO:Check for update and add app to list if update is available
+                            break;
+                    }
+                })
+                .subscribe();
     }
 
     @Override
     public void onPause() {
+        swipeToRefresh.setRefreshing(false);
         super.onPause();
-        customSwipeToRefresh.setRefreshing(false);
     }
 
     @Override
     public void onDestroy() {
-        try {
-            disposable.clear();
-        } catch (Exception ignored) {
-        }
         super.onDestroy();
     }
 
-    private void removeAppFromAdapter(String packageName) {
-        int position = section.removeApp(packageName);
-        adapter.notifyItemRemoved(position);
-        AuroraApplication.removeFromOngoingUpdateList(packageName);
-        drawButtons();
-        updateCounter();
+    private void removeItemByPackageName(String packageName) {
+        int adapterPosition = -1;
+        for (UpdatesItem updatesItem : itemAdapter.getAdapterItems()) {
+            if (updatesItem.getPackageName().equals(packageName)) {
+                adapterPosition = itemAdapter.getAdapterPosition(updatesItem);
+                break;
+            }
+        }
+
+        if (adapterPosition >= 0 && itemAdapter != null) {
+            itemAdapter.remove(adapterPosition);
+            updateItemList(packageName);
+        }
     }
 
-    private void dispatchAppsToAdapter(List<App> newList) {
-        List<App> oldList = section.getList();
-        if (oldList.isEmpty()) {
-            section.updateList(newList);
-            adapter.notifyDataSetChanged();
-        } else {
-            DiffUtil.DiffResult diffResult = DiffUtil.calculateDiff(new AppDiffCallback(newList, oldList));
-            diffResult.dispatchUpdatesTo(adapter);
-            section.updateList(newList);
+    private void removeItemByAdapterPosition(int adapterPosition) {
+        if (adapterPosition >= 0 && itemAdapter != null) {
+            UpdatesItem updatesItem = itemAdapter.getAdapterItem(adapterPosition);
+            updateItemList(updatesItem.getPackageName());
+            itemAdapter.remove(adapterPosition);
         }
-        updateCounter();
-        drawButtons();
+    }
+
+    private void updateItemList(String packageName) {
+        AuroraApplication.removeFromOngoingUpdateList(packageName);
+        updatePageData();
+    }
+
+    private void updatePageData() {
+        updateText();
+        updateButtons();
+        updateButtonActions();
+    }
+
+    private void dispatchAppsToAdapter(List<UpdatesItem> updatesItems) {
+        final FastAdapterDiffUtil fastAdapterDiffUtil = FastAdapterDiffUtil.INSTANCE;
+        final UpdatesDiffCallback diffCallback = new UpdatesDiffCallback();
+        final DiffUtil.DiffResult diffResult = fastAdapterDiffUtil.calculateDiff(itemAdapter, updatesItems, diffCallback);
+        fastAdapterDiffUtil.set(itemAdapter, diffResult);
+        updatePageData();
     }
 
     private void setupRecycler() {
-        customSwipeToRefresh.setRefreshing(false);
-        adapter = new SectionedRecyclerViewAdapter();
-        section = new UpdateAppSection(requireContext(), this);
-        adapter.addSection(section);
+        fastAdapter = new FastAdapter<>();
+        itemAdapter = new ItemAdapter<>();
+        selectExtension = new SelectExtension<>(fastAdapter);
+
+        fastAdapter.addAdapter(0, itemAdapter);
+
+        fastAdapter.setOnClickListener((view, updatesItemIAdapter, updatesItem, integer) -> {
+            final App app = updatesItem.getApp();
+            final Intent intent = new Intent(requireContext(), DetailsActivity.class);
+            intent.putExtra(Constants.INTENT_PACKAGE_NAME, app.getPackageName());
+            intent.putExtra(Constants.STRING_EXTRA, gson.toJson(app));
+            startActivity(intent, ViewUtil.getEmptyActivityBundle((AppCompatActivity) requireActivity()));
+            return false;
+        });
+
+        fastAdapter.setOnLongClickListener((view, updatesItemIAdapter, updatesItem, position) -> {
+            final AppMenuSheet menuSheet = new AppMenuSheet();
+            final Bundle bundle = new Bundle();
+            bundle.putInt(Constants.INT_EXTRA, position);
+            bundle.putString(Constants.STRING_EXTRA, gson.toJson(updatesItem.getApp()));
+            menuSheet.setArguments(bundle);
+            menuSheet.show(getChildFragmentManager(), AppMenuSheet.TAG);
+            return true;
+        });
+
+        fastAdapter.addExtension(selectExtension);
+        fastAdapter.addEventHook(new UpdatesItem.CheckBoxClickEvent());
+
+        selectExtension.setMultiSelect(true);
+        selectExtension.setSelectionListener((item, selected) -> {
+            if (selected) {
+                selectedItems.add(item);
+            } else {
+                selectedItems.remove(item);
+            }
+            updatePageData();
+        });
+
         recyclerView.setLayoutManager(new LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false));
-        recyclerView.setAdapter(adapter);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setAdapter(fastAdapter);
     }
 
-    private void drawButtons() {
-        if (AuroraApplication.isBulkUpdateAlive()) {
-            btnAction.setText(getString(R.string.action_cancel));
-            btnAction.setOnClickListener(v -> {
-                cancelAllRequests();
-                AuroraApplication.setOngoingUpdateList(new ArrayList<>());
-                Util.stopBulkUpdate(requireContext());
-            });
+    private void updateText() {
+        if (selectExtension.getSelectedItems().size() > 0) {
+            btnAction.setText(getString(R.string.list_update_selected));
         } else {
             btnAction.setText(getString(R.string.list_update_all));
-            btnAction.setOnClickListener(v -> {
-                AuroraApplication.setOngoingUpdateList(section.getList());
-                Util.bulkUpdate(requireContext());
-            });
         }
     }
 
-    private void updateCounter() {
-        int size = section.getList().size();
-        if (size == 0) {
-            btnAction.setVisibility(View.INVISIBLE);
-            txtUpdateAll.setVisibility(View.INVISIBLE);
-        } else {
+    private void updateButtons() {
+        final int size = itemAdapter.getAdapterItemCount();
+        btnAction.setVisibility(size == 0 ? View.INVISIBLE : View.VISIBLE);
+        txtUpdateAll.setVisibility(size == 0 ? View.INVISIBLE : View.VISIBLE);
+
+        if (size > 0) {
             txtUpdateAll.setText(new StringBuilder()
                     .append(size)
                     .append(StringUtils.SPACE)
-                    .append(size == 1 ? requireContext().getString(R.string.list_update_all_txt_one) :
-                            requireContext().getString(R.string.list_update_all_txt)));
-            btnAction.setVisibility(View.VISIBLE);
-            txtUpdateAll.setVisibility(View.VISIBLE);
+                    .append(size == 1
+                            ? requireContext().getString(R.string.list_update_all_txt_one)
+                            : requireContext().getString(R.string.list_update_all_txt)));
         }
     }
 
-    private void cancelAllRequests() {
-        List<App> ongoingUpdateList = AuroraApplication.getOngoingUpdateList();
-        for (App app : ongoingUpdateList) {
-            fetch.deleteGroup(app.getPackageName().hashCode());
+    private void updateButtonActions() {
+        btnAction.setOnClickListener(null);
+        if (AuroraApplication.isBulkUpdateAlive()) {
+            btnAction.setText(getString(R.string.action_cancel));
+            btnAction.setOnClickListener(v ->
+                    Observable
+                            .fromIterable(AuroraApplication.getOngoingUpdateList())
+                            .doOnNext(app -> {
+                                fetch.deleteGroup(app.getPackageName().hashCode());
+                            })
+                            .doOnComplete(() -> {
+                                AuroraApplication.setOngoingUpdateList(new ArrayList<>());
+                                Util.stopBulkUpdate(requireContext());
+                            })
+                            .subscribe());
+        } else {
+            boolean selectiveUpdate = selectExtension.getSelectedItems().size() > 0;
+            btnAction.setOnClickListener(v ->
+                    Observable
+                            .fromIterable(selectiveUpdate
+                                    ? selectedItems
+                                    : itemAdapter.getAdapterItems())
+                            .map(UpdatesItem::getApp)
+                            .toList()
+                            .doOnSuccess(apps -> {
+                                AuroraApplication.setOngoingUpdateList(apps);
+                                Util.bulkUpdate(requireContext());
+                            })
+                            .subscribe());
         }
-    }
-
-    @Override
-    public void onClick(App app) {
-        DetailsActivity.app = app;
-        Intent intent = new Intent(requireContext(), DetailsActivity.class);
-        intent.putExtra(Constants.INTENT_PACKAGE_NAME, app.getPackageName());
-        requireContext().startActivity(intent, ViewUtil.getEmptyActivityBundle((AuroraActivity) requireContext()));
-    }
-
-    @Override
-    public void onLongClick(App app) {
-        AppMenuSheet menuSheet = new AppMenuSheet();
-        menuSheet.setApp(app);
-        menuSheet.show(getChildFragmentManager(), "BOTTOM_MENU_SHEET");
     }
 }

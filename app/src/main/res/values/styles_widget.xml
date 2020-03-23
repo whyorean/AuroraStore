@@ -93,4 +93,17 @@
         <item name="itemTextColor">@color/color_selector</item>
         <item name="labelVisibilityMode">labeled</item>
     </style>
+
+    <style name="Aurora.BottomSheetDialogStyle" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:padding">8dp</item>
+    </style>
+
+    <style name="Aurora.BottomSheetDialog" parent="Theme.Design.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/Aurora.BottomSheetDialogStyle</item>
+    </style>
+
+    <style name="Aurora.BottomSheetDialog.Light" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/Aurora.BottomSheetDialogStyle</item>
+    </style>
 </resources>

@@ -38,6 +38,7 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:padding="@dimen/padding_medium"
         android:scrollbars="none">
 
         <LinearLayout
@@ -128,17 +129,37 @@
                 app:chipSpacingVertical="@dimen/margin_xsmall"
                 app:selectionRequired="true"
                 app:singleSelection="true" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/filter_apply"
-                style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
-                android:layout_width="match_parent"
-                android:layout_height="52dp"
-                android:layout_gravity="end"
-                android:layout_margin="@dimen/margin_small"
-                android:text="@string/action_filter_apply"
-                android:textAppearance="@style/TextAppearance.Aurora.Button"
-                app:backgroundTint="@color/colorAccent" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_positive"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/height_button"
+            android:text="@string/action_filter_apply"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/btn_negative"
+            app:layout_constraintTop_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:rippleColor="@color/colorTransparent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_negative"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/height_button"
+            android:text="@string/action_close"
+            android:textColor="@color/colorRed"
+            app:layout_constraintEnd_toStartOf="@id/btn_positive"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:rippleColor="@color/colorTransparent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>

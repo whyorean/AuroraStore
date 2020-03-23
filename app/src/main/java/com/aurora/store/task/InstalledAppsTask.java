@@ -25,53 +25,27 @@ import android.text.TextUtils;
 
 import com.aurora.store.model.App;
 import com.aurora.store.util.PackageUtil;
-import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class InstalledAppsTask extends UpdatableAppsTask {
+public class InstalledAppsTask extends AllAppsTask {
 
-    public InstalledAppsTask(GooglePlayAPI api, Context context) {
-        super(api, context);
+
+    public InstalledAppsTask(Context context) {
+        super(context);
     }
 
-    public List<App> getInstalledApps() throws Exception {
+    public List<App> getInstalledApps() {
         List<App> appList = new ArrayList<>();
-        List<String> packageList = getLocalInstalledApps();
-        packageList = filterBlacklistedApps(packageList);
-        for (App app : getAppsFromPlayStore(packageList)) {
-            final String packageName = app.getPackageName();
-
-            if (TextUtils.isEmpty(packageName)) {
-                continue;
-            }
-
-            final App installedApp = PackageUtil.getAppFromPackageName(getPackageManager(), packageName);
-            app = addInstalledAppInfo(app, installedApp);
-            appList.add(app);
+        for (App app : getAllLocalApps()) {
+            if ((getPackageManager().getLaunchIntentForPackage(app.getPackageName())) != null)
+                appList.add(app);
         }
         return appList;
     }
 
-    public List<App> getAllApps() throws Exception {
-        List<App> appList = new ArrayList<>();
-        List<String> packageList = getLocalInstalledApps();
-        for (App app : getAppsFromPlayStore(packageList)) {
-            final String packageName = app.getPackageName();
-
-            if (TextUtils.isEmpty(packageName)) {
-                continue;
-            }
-
-            final App installedApp = PackageUtil.getAppFromPackageName(getPackageManager(), packageName);
-            app = addInstalledAppInfo(app, installedApp);
-            appList.add(app);
-        }
-        return appList;
-    }
-
-    public List<App> getAllLocalApps() throws Exception {
+    public List<App> getAllLocalApps() {
         List<App> appList = new ArrayList<>();
         List<String> packageList = getLocalInstalledApps();
         for (String packageName : packageList) {
@@ -80,7 +54,7 @@ public class InstalledAppsTask extends UpdatableAppsTask {
                 continue;
             }
 
-            final App app = PackageUtil.getAppFromPackageName(getPackageManager(), packageName);
+            final App app = PackageUtil.getAppFromPackageName(getPackageManager(), packageName, true);
             appList.add(app);
         }
         return appList;

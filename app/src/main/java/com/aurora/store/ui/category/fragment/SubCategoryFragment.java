@@ -30,30 +30,34 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.aurora.store.Constants;
-import com.aurora.store.EndlessScrollListener;
 import com.aurora.store.R;
 import com.aurora.store.model.App;
-import com.aurora.store.section.EndlessResultSection;
+import com.aurora.store.model.items.EndlessItem;
+import com.aurora.store.sheet.AppMenuSheet;
 import com.aurora.store.ui.category.CategoryAppsActivity;
 import com.aurora.store.ui.category.CategoryAppsModel;
 import com.aurora.store.ui.details.DetailsActivity;
+import com.aurora.store.ui.single.fragment.BaseFragment;
 import com.aurora.store.util.Util;
 import com.aurora.store.util.ViewUtil;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
+import com.mikepenz.fastadapter.FastAdapter;
+import com.mikepenz.fastadapter.adapters.ItemAdapter;
+import com.mikepenz.fastadapter.scroll.EndlessRecyclerOnScrollListener;
+import com.mikepenz.fastadapter.ui.items.ProgressItem;
 
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import io.github.luizgrp.sectionedrecyclerviewadapter.SectionedRecyclerViewAdapter;
 
-public class SubCategoryFragment extends Fragment implements EndlessResultSection.ClickListener,
+public class SubCategoryFragment extends BaseFragment implements
         SharedPreferences.OnSharedPreferenceChangeListener {
 
     @BindView(R.id.recycler)
@@ -63,8 +67,10 @@ public class SubCategoryFragment extends Fragment implements EndlessResultSectio
     private SharedPreferences sharedPreferences;
 
     private CategoryAppsModel model;
-    private EndlessResultSection section;
-    private SectionedRecyclerViewAdapter adapter;
+
+    private FastAdapter fastAdapter;
+    private ItemAdapter<EndlessItem> itemAdapter;
+    private ItemAdapter<ProgressItem> progressItemAdapter;
 
     private GooglePlayAPI.SUBCATEGORY getSubcategory() {
         return subcategory;
@@ -106,8 +112,8 @@ public class SubCategoryFragment extends Fragment implements EndlessResultSectio
             setSubcategory(bundle);
         setupRecycler();
 
-        model = ViewModelProviders.of(this).get(CategoryAppsModel.class);
-        model.getCategoryApps().observe(this, appList -> {
+        model = new ViewModelProvider(this).get(CategoryAppsModel.class);
+        model.getCategoryApps().observe(getViewLifecycleOwner(), appList -> {
             dispatchAppsToAdapter(appList);
         });
         model.fetchCategoryApps(CategoryAppsActivity.categoryId, getSubcategory(), false);
@@ -125,54 +131,67 @@ public class SubCategoryFragment extends Fragment implements EndlessResultSectio
         super.onDestroy();
     }
 
-    private void dispatchAppsToAdapter(List<App> newList) {
-        List<App> oldList = section.getList();
-        if (oldList.isEmpty()) {
-            section.updateList(newList);
-            adapter.notifyDataSetChanged();
-        } else {
-            if (!newList.isEmpty()) {
-                for (App app : newList)
-                    section.add(app);
-                adapter.notifyItemInserted(section.getCount() - 1);
-            }
-        }
-    }
-
-    private void setupRecycler() {
-        LinearLayoutManager layoutManager = new LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false);
-        adapter = new SectionedRecyclerViewAdapter();
-        section = new EndlessResultSection(requireContext(), this);
-        adapter.addSection(section);
-
-        recyclerView.setAdapter(adapter);
-
-        EndlessScrollListener endlessScrollListener = new EndlessScrollListener(layoutManager) {
-            @Override
-            public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
-                model.fetchCategoryApps(CategoryAppsActivity.categoryId, getSubcategory(), true);
-            }
-        };
-        recyclerView.addOnScrollListener(endlessScrollListener);
-        recyclerView.setLayoutManager(layoutManager);
+    private void dispatchAppsToAdapter(List<EndlessItem> endlessItemList) {
+        itemAdapter.add(endlessItemList);
+        recyclerView.post(() -> {
+            progressItemAdapter.clear();
+        });
     }
 
     private void purgeAdapterData() {
-        section.purgeData();
-        adapter.notifyDataSetChanged();
+        recyclerView.post(() -> {
+            progressItemAdapter.clear();
+            itemAdapter.clear();
+        });
     }
 
-    @Override
-    public void onClick(App app) {
-        DetailsActivity.app = app;
-        Intent intent = new Intent(requireContext(), DetailsActivity.class);
-        intent.putExtra(Constants.INTENT_PACKAGE_NAME, app.getPackageName());
-        requireContext().startActivity(intent, ViewUtil.getEmptyActivityBundle((AppCompatActivity) requireContext()));
-    }
+    private void setupRecycler() {
+        fastAdapter = new FastAdapter<>();
+        itemAdapter = new ItemAdapter<>();
+        progressItemAdapter = new ItemAdapter<>();
 
-    @Override
-    public void onLongClick(App app) {
+        fastAdapter.addAdapter(0, itemAdapter);
+        fastAdapter.addAdapter(1, progressItemAdapter);
 
+        fastAdapter.setOnClickListener((view, iAdapter, item, position) -> {
+            if (item instanceof EndlessItem) {
+                final App app = ((EndlessItem) item).getApp();
+                final Intent intent = new Intent(requireContext(), DetailsActivity.class);
+                intent.putExtra(Constants.INTENT_PACKAGE_NAME, app.getPackageName());
+                intent.putExtra(Constants.STRING_EXTRA, gson.toJson(app));
+                startActivity(intent, ViewUtil.getEmptyActivityBundle((AppCompatActivity) requireActivity()));
+            }
+            return false;
+        });
+
+        fastAdapter.setOnLongClickListener((view, iAdapter, item, position) -> {
+            if (item instanceof EndlessItem) {
+                final App app = ((EndlessItem) item).getApp();
+                final AppMenuSheet menuSheet = new AppMenuSheet();
+                final Bundle bundle = new Bundle();
+                bundle.putInt(Constants.INT_EXTRA, Integer.parseInt(position.toString()));
+                bundle.putString(Constants.STRING_EXTRA, gson.toJson(app));
+                menuSheet.setArguments(bundle);
+                menuSheet.show(getChildFragmentManager(), AppMenuSheet.TAG);
+            }
+            return true;
+        });
+
+        EndlessRecyclerOnScrollListener endlessScrollListener = new EndlessRecyclerOnScrollListener(progressItemAdapter) {
+            @Override
+            public void onLoadMore(int currentPage) {
+                recyclerView.post(() -> {
+                    progressItemAdapter.clear();
+                    progressItemAdapter.add(new ProgressItem());
+                });
+                model.fetchCategoryApps(CategoryAppsActivity.categoryId, getSubcategory(), true);
+            }
+        };
+
+        recyclerView.addOnScrollListener(endlessScrollListener);
+        recyclerView.setLayoutManager(new LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false));
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setAdapter(fastAdapter);
     }
 
     @Override

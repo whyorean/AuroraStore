@@ -26,7 +26,7 @@
     android:layout_marginEnd="@dimen/margin_xsmall">
 
     <ImageView
-        android:id="@+id/app_icon"
+        android:id="@+id/img_icon"
         android:layout_width="@dimen/icon_size_big"
         android:layout_height="@dimen/icon_size_big"
         android:contentDescription="@string/content_description_icon"
@@ -36,9 +36,9 @@
         android:id="@+id/app_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/app_icon"
-        android:layout_alignStart="@id/app_icon"
-        android:layout_alignEnd="@id/app_icon"
+        android:layout_below="@id/img_icon"
+        android:layout_alignStart="@id/img_icon"
+        android:layout_alignEnd="@id/img_icon"
         android:layout_marginTop="@dimen/margin_xsmall"
         android:ellipsize="end"
         android:maxLines="1"

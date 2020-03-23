@@ -42,7 +42,7 @@ import com.aurora.store.Constants;
 import com.aurora.store.GlideApp;
 import com.aurora.store.R;
 import com.aurora.store.manager.BlacklistManager;
-import com.aurora.store.manager.FavouriteListManager;
+import com.aurora.store.manager.FavouritesManager;
 import com.aurora.store.model.App;
 import com.aurora.store.ui.details.views.AbstractDetails;
 import com.aurora.store.ui.details.views.ActionButton;
@@ -91,7 +91,7 @@ public class DetailsActivity extends BaseActivity {
 
     private ActionButton actionButton;
     private String packageName;
-    private FavouriteListManager favouriteListManager;
+    private FavouritesManager favouritesManager;
     private DetailsAppModel model;
 
     private AutoDisposable autoDisposable = new AutoDisposable();
@@ -113,7 +113,7 @@ public class DetailsActivity extends BaseActivity {
         ButterKnife.bind(this);
         setupActionBar();
         autoDisposable.bindTo(getLifecycle());
-        favouriteListManager = new FavouriteListManager(this);
+        favouritesManager = new FavouritesManager(this);
 
         model = new ViewModelProvider(this).get(DetailsAppModel.class);
         model.getAppDetails().observe(this, detailApp -> {
@@ -157,22 +157,27 @@ public class DetailsActivity extends BaseActivity {
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
+
         packageName = getIntentPackageName(intent);
         if (TextUtils.isEmpty(packageName)) {
             Log.d("No package name provided");
-            finish();
-            return;
+            finishAfterTransition();
+        } else {
+            stringExtra = intent.getStringExtra(Constants.STRING_EXTRA);
+            if (stringExtra != null) {
+                app = gson.fromJson(stringExtra, App.class);
+                drawBasic();
+            }
+
+            Log.i("Getting info about %s", packageName);
+            model.fetchAppDetails(packageName);
         }
-        Log.i("Getting info about %s", packageName);
-        model.fetchAppDetails(packageName);
-        if (app != null)
-            drawBasic();
     }
 
     @Override
     public boolean onCreateOptionsMenu(final Menu menu) {
         getMenuInflater().inflate(R.menu.menu_app_details, menu);
-        menu.findItem(R.id.action_favourite).setIcon(favouriteListManager.contains(packageName)
+        menu.findItem(R.id.action_favourite).setIcon(favouritesManager.isFavourite(packageName)
                 ? R.drawable.ic_favourite_red
                 : R.drawable.ic_favourite_remove);
         MenuItem blackList = menu.findItem(R.id.action_blacklist);
@@ -188,11 +193,11 @@ public class DetailsActivity extends BaseActivity {
                 onBackPressed();
                 return true;
             case R.id.action_favourite:
-                if (favouriteListManager.contains(packageName)) {
-                    favouriteListManager.remove(packageName);
+                if (favouritesManager.isFavourite(packageName)) {
+                    favouritesManager.removeFromFavourites(packageName);
                     menuItem.setIcon(R.drawable.ic_favourite_remove);
                 } else {
-                    favouriteListManager.add(packageName);
+                    favouritesManager.addToFavourites(packageName);
                     menuItem.setIcon(R.drawable.ic_favourite_red);
                 }
                 return true;
@@ -203,7 +208,7 @@ public class DetailsActivity extends BaseActivity {
                 startActivity(new Intent(this, DownloadsActivity.class));
                 return true;
             case R.id.action_blacklist:
-                new BlacklistManager(this).add(packageName);
+                new BlacklistManager(this).addToBlacklist(packageName);
                 return true;
             case R.id.action_share:
                 Intent i = new Intent(Intent.ACTION_SEND);

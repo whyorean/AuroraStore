@@ -7,18 +7,24 @@ import lombok.Data;
 public class Event {
 
     private SubType subType;
-    private String packageName;
+    private String stringExtra;
+    private int intExtra;
     private int status;
 
-    public Event(SubType subType, String packageName, int status) {
+    public Event(SubType subType, String stringExtra, int status) {
         this.subType = subType;
-        this.packageName = packageName;
+        this.stringExtra = stringExtra;
         this.status = status;
     }
 
-    public Event(SubType subType, String packageName) {
+    public Event(SubType subType, String stringExtra) {
         this.subType = subType;
-        this.packageName = packageName;
+        this.stringExtra = stringExtra;
+    }
+
+    public Event(SubType subType, int intExtra) {
+        this.subType = subType;
+        this.intExtra = intExtra;
     }
 
     public Event(SubType subType) {

@@ -55,7 +55,7 @@ public class UpdatableAppsTask extends AllAppsTask {
                 continue;
             }
 
-            final App installedApp = PackageUtil.getAppFromPackageName(getPackageManager(), packageName);
+            final App installedApp = PackageUtil.getAppFromPackageName(getPackageManager(), packageName, false);
             app = addInstalledAppInfo(app, installedApp);
             if (installedApp != null && installedApp.getVersionCode() < app.getVersionCode()) {
                 appList.add(app);
@@ -100,7 +100,7 @@ public class UpdatableAppsTask extends AllAppsTask {
     }
 
     public List<String> filterBlacklistedApps(List<String> packageList) {
-        packageList.removeAll(new BlacklistManager(getContext()).get());
+        packageList.removeAll(new BlacklistManager(getContext()).getBlacklistedPackages());
         return packageList;
     }
 }

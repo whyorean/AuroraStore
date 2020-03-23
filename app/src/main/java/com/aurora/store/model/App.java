@@ -22,6 +22,8 @@
  */
 package com.aurora.store.model;
 
+import android.graphics.drawable.Drawable;
+
 import com.aurora.store.R;
 import com.dragons.aurora.playstoreapiv2.Features;
 import com.dragons.aurora.playstoreapiv2.FileMetadata;
@@ -40,7 +42,6 @@ import lombok.Data;
 
 @Data
 public class App {
-
     private transient Features features;
     private ImageSource pageBackgroundImage;
     private List<String> screenshotUrls = new ArrayList<>();
@@ -88,6 +89,8 @@ public class App {
     private long installs;
     private long size;
 
+    private transient Drawable iconDrawable;
+
     public Set<String> getPermissions() {
         return permissions;
     }
@@ -112,8 +115,12 @@ public class App {
         return false;
     }
 
-    public enum Restriction {
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
 
+    public enum Restriction {
         GENERIC(-1),
         NOT_RESTRICTED(GooglePlayAPI.AVAILABILITY_NOT_RESTRICTED),
         RESTRICTED_GEO(GooglePlayAPI.AVAILABILITY_RESTRICTED_GEO),

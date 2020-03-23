@@ -20,7 +20,7 @@
 
 package com.aurora.store.ui.single.fragment;
 
-import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,81 +30,73 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProviders;
-import androidx.recyclerview.widget.DiffUtil;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.aurora.store.AppDiffCallback;
 import com.aurora.store.Constants;
 import com.aurora.store.R;
 import com.aurora.store.exception.MalformedRequestException;
-import com.aurora.store.manager.FavouriteListManager;
+import com.aurora.store.manager.FavouritesManager;
 import com.aurora.store.model.App;
-import com.aurora.store.section.FavouriteAppSection;
+import com.aurora.store.model.items.FavouriteItem;
 import com.aurora.store.task.LiveUpdate;
 import com.aurora.store.task.ObservableDeliveryData;
+import com.aurora.store.ui.details.DetailsActivity;
 import com.aurora.store.ui.view.CustomSwipeToRefresh;
 import com.aurora.store.util.Log;
+import com.aurora.store.util.PackageUtil;
 import com.aurora.store.util.PathUtil;
 import com.aurora.store.util.ViewUtil;
 import com.aurora.store.viewmodel.FavouriteAppsModel;
 import com.google.android.material.button.MaterialButton;
+import com.mikepenz.fastadapter.adapters.FastItemAdapter;
+import com.mikepenz.fastadapter.select.SelectExtension;
+
+import org.apache.commons.lang3.StringUtils;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Scanner;
+import java.util.Set;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import io.github.luizgrp.sectionedrecyclerviewadapter.SectionedRecyclerViewAdapter;
 import io.reactivex.Observable;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
 
-public class FavouriteFragment extends Fragment implements FavouriteAppSection.ClickListener {
-
-
-    private static final String TAG_FAV = "TAG_FAV";
+public class FavouriteFragment extends BaseFragment {
 
     @BindView(R.id.swipe_refresh_layout)
-    CustomSwipeToRefresh customSwipeToRefresh;
+    CustomSwipeToRefresh swipeToRefresh;
     @BindView(R.id.recycler)
     RecyclerView recyclerView;
     @BindView(R.id.export_list)
-    MaterialButton buttonExport;
+    MaterialButton btnAction;
     @BindView(R.id.install_list)
-    MaterialButton buttonInstall;
+    MaterialButton btnInstall;
     @BindView(R.id.count_selection)
     TextView txtCount;
 
-    private Context context;
-    private CompositeDisposable disposable = new CompositeDisposable();
-
-    private FavouriteListManager favouriteListManager;
+    private Set<App> selectedAppSet = new HashSet<>();
     private FavouriteAppsModel model;
-    private FavouriteAppSection section;
-    private SectionedRecyclerViewAdapter adapter;
+    private FavouritesManager favouritesManager;
 
-    @Override
-    public void onAttach(@NonNull Context context) {
-        super.onAttach(context);
-        this.context = context;
-    }
+    private FastItemAdapter<FavouriteItem> fastItemAdapter;
+    private SelectExtension<FavouriteItem> selectExtension;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        favouriteListManager = new FavouriteListManager(context);
+        favouritesManager = new FavouritesManager(requireContext());
     }
 
     @Override
@@ -118,157 +110,142 @@ public class FavouriteFragment extends Fragment implements FavouriteAppSection.C
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        buttonInstall.setOnClickListener(bulkInstallListener());
-        buttonExport.setOnClickListener(v -> {
-            exportList();
-        });
+
         setupRecycler();
-        model = ViewModelProviders.of(this).get(FavouriteAppsModel.class);
-        model.getFavouriteApps().observe(this, appList -> {
-            dispatchAppsToAdapter(appList);
-            customSwipeToRefresh.setRefreshing(false);
+
+        model = new ViewModelProvider(this).get(FavouriteAppsModel.class);
+        model.getFavouriteApps().observe(getViewLifecycleOwner(), favouriteItems -> {
+            fastItemAdapter.add(favouriteItems);
+            swipeToRefresh.setRefreshing(false);
+            updatePageData();
         });
-        model.fetchFavouriteApps();
-        customSwipeToRefresh.setOnRefreshListener(() -> {
+
+        swipeToRefresh.setRefreshing(true);
+        swipeToRefresh.setOnRefreshListener(() -> {
             model.fetchFavouriteApps();
         });
     }
 
     @Override
     public void onPause() {
+        swipeToRefresh.setRefreshing(false);
         super.onPause();
-        customSwipeToRefresh.setRefreshing(false);
     }
 
     private View.OnClickListener bulkInstallListener() {
         return v -> {
-            buttonInstall.setText(getString(R.string.details_installing));
-            buttonInstall.setEnabled(false);
-            disposable.add(Observable.fromIterable(section.getSelectedList())
-                    .flatMap(app -> new ObservableDeliveryData(context).getDeliveryData(app))
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .doOnNext(deliveryDataBundle -> new LiveUpdate(context)
-                            .enqueueUpdate(deliveryDataBundle.getApp(),
-                                    deliveryDataBundle.getAndroidAppDeliveryData()))
+            btnInstall.setText(getString(R.string.details_installing));
+            btnInstall.setEnabled(false);
+            Observable
+                    .fromIterable(selectedAppSet)
+                    .flatMap(app -> new ObservableDeliveryData(requireContext()).getDeliveryData(app))
+                    .doOnNext(bundle -> new LiveUpdate(requireContext()).enqueueUpdate(bundle.getApp(), bundle.getAndroidAppDeliveryData()))
                     .doOnError(throwable -> {
                         if (throwable instanceof MalformedRequestException) {
-                            Toast.makeText(context, throwable.getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(requireContext(), throwable.getMessage(), Toast.LENGTH_SHORT).show();
                         } else
                             Log.e(throwable.getMessage());
                     })
-                    .subscribe());
+                    .subscribeOn(Schedulers.io())
+                    .subscribe();
         };
     }
 
     private void exportList() {
         try {
-            ArrayList<String> packageList = favouriteListManager.get();
-            File file = verifyAndGetFile();
-            if (file != null) {
-                OutputStream fileOutputStream = new FileOutputStream(file, false);
-                for (String packageName : packageList)
-                    fileOutputStream.write((packageName + System.lineSeparator()).getBytes());
-                fileOutputStream.close();
-                Toast.makeText(context, "List exported to" + PathUtil.getRootApkPath(context),
-                        Toast.LENGTH_SHORT).show();
-            }
-        } catch (NullPointerException e) {
-            Toast.makeText(context, "Could not create directory", Toast.LENGTH_SHORT).show();
+            final List<String> packageList = favouritesManager.getFavouritePackages();
+            final File file = new File(PathUtil.getBaseDirectory(requireContext()) + "/Favourite.txt");
+            final FileWriter fileWriter = new FileWriter(file);
+            for (String packageName : packageList)
+                fileWriter.write((packageName + System.lineSeparator()));
+            fileWriter.close();
+            Toast.makeText(requireContext(), "List exported to" + file.getPath(), Toast.LENGTH_LONG).show();
         } catch (IOException e) {
-            e.printStackTrace();
+            Toast.makeText(requireContext(), "Failed to export list", Toast.LENGTH_LONG).show();
+            Log.e(e.getMessage());
         }
     }
 
     private void importList() {
-        ArrayList<String> packageList = new ArrayList<>();
-        File file = verifyAndGetFile();
-        if (file != null) {
-            try {
-                InputStream in = new FileInputStream(file);
-                Scanner sc = new Scanner(in);
-                while (sc.hasNext()) {
-                    packageList.add(sc.nextLine());
-                }
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
-        } else {
-            Toast.makeText(context, "Favourite AppList not found", Toast.LENGTH_SHORT).show();
-        }
-        new FavouriteListManager(context).addAll(packageList);
-        model.fetchFavouriteApps();
-    }
-
-    private boolean verifyDirectory() {
-        PathUtil.checkBaseDirectory(context);
-        File directory = new File(PathUtil.getBaseDirectory(context) + Constants.FILES);
-        if (!directory.exists())
-            directory.mkdir();
-        return (directory.exists());
-    }
-
-    private File verifyAndGetFile() {
-        String fileExt = "fav_list.txt";
-        boolean success = verifyDirectory();
-        File file = new File(PathUtil.getBaseDirectory(context) + "/" + Constants.FILES + "/" + fileExt);
+        final ArrayList<String> packageList = new ArrayList<>();
+        final File file = new File(PathUtil.getBaseDirectory(requireContext()) + "/Favourite.txt");
         try {
-            success = file.exists() || file.createNewFile();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        if (success)
-            return file;
-        else
-            return null;
-    }
-
-    private void dispatchAppsToAdapter(List<App> newList) {
-        List<App> oldList = section.getAppList();
-        if (oldList.isEmpty()) {
-            section.updateList(newList);
-            adapter.notifyDataSetChanged();
-        } else {
-            DiffUtil.DiffResult diffResult = DiffUtil.calculateDiff(new AppDiffCallback(newList, oldList));
-            diffResult.dispatchUpdatesTo(adapter);
-            section.updateList(newList);
-        }
-        updateCount(section.getSelections().size());
-    }
-
-    private void updateCount(int count) {
-        String ss = new StringBuilder()
-                .append(context.getResources().getString(R.string.list_selected))
-                .append(" : ")
-                .append(count).toString();
-        txtCount.setText(count > 0 ? ss : getString(R.string.list_empty_fav));
-        ViewUtil.setVisibility(buttonInstall, count > 0, true);
-    }
-
-    private void setupRecycler() {
-        customSwipeToRefresh.setRefreshing(false);
-        section = new FavouriteAppSection(context, this);
-        adapter = new SectionedRecyclerViewAdapter();
-        adapter.addSection(TAG_FAV, section);
-        recyclerView.setLayoutManager(new LinearLayoutManager(context, RecyclerView.VERTICAL, false));
-        recyclerView.setAdapter(adapter);
-    }
-
-    @Override
-    public void onClick(int position, String packageName) {
-        recyclerView.post(() -> {
-            if (section.getSelections().contains(packageName)) {
-                section.remove(packageName);
-            } else {
-                section.add(packageName);
+            final InputStream inputStream = new FileInputStream(file);
+            final Scanner scanner = new Scanner(inputStream);
+            while (scanner.hasNext()) {
+                packageList.add(scanner.nextLine());
             }
-            adapter.notifyItemChanged(position);
-            updateCount(section.getSelections().size());
+            if (packageList.isEmpty()) {
+                Toast.makeText(requireContext(), "Failed to import list", Toast.LENGTH_LONG).show();
+            } else {
+                favouritesManager.addToFavourites(packageList);
+                model.fetchFavouriteApps();
+            }
+        } catch (FileNotFoundException e) {
+            Toast.makeText(requireContext(), "Failed to import list", Toast.LENGTH_LONG).show();
+            Log.e(e.getMessage());
+        }
+    }
+
+    private void updatePageData() {
+        updateText();
+        updateButtons();
+        updateActions();
+    }
+
+    private void updateText() {
+        final int size = selectExtension.getSelectedItems().size();
+        final StringBuilder countString = new StringBuilder()
+                .append(requireContext().getResources().getString(R.string.list_selected))
+                .append(" : ")
+                .append(size);
+        txtCount.setText(size > 0 ? countString : StringUtils.EMPTY);
+    }
+
+    private void updateButtons() {
+        int size = selectExtension.getSelectedItems().size();
+        btnInstall.setEnabled(size > 0);
+    }
+
+    private void updateActions() {
+        btnInstall.setOnClickListener(bulkInstallListener());
+        btnAction.setOnClickListener(v -> {
+            if (fastItemAdapter.getAdapterItems().size() == 0) {
+                importList();
+            } else {
+                exportList();
+            }
         });
     }
 
-    @Override
-    public void onClickError() {
-        importList();
+    private void setupRecycler() {
+        fastItemAdapter = new FastItemAdapter<>();
+        selectExtension = new SelectExtension<>(fastItemAdapter);
+
+        fastItemAdapter.setOnPreClickListener((view, favouriteItemIAdapter, favouriteItem, position) -> true);
+        fastItemAdapter.setOnClickListener((view, favouriteItemIAdapter, favouriteItem, position) -> {
+            final App app = favouriteItem.getApp();
+            final Intent intent = new Intent(requireContext(), DetailsActivity.class);
+            intent.putExtra(Constants.INTENT_PACKAGE_NAME, app.getPackageName());
+            intent.putExtra(Constants.STRING_EXTRA, gson.toJson(app));
+            startActivity(intent, ViewUtil.getEmptyActivityBundle((AppCompatActivity) requireActivity()));
+            return false;
+        });
+
+        fastItemAdapter.addExtension(selectExtension);
+        fastItemAdapter.addEventHook(new FavouriteItem.CheckBoxClickEvent());
+
+        selectExtension.setMultiSelect(true);
+        selectExtension.setSelectionListener((item, selected) -> {
+            if (selected) {
+                if (!PackageUtil.isInstalled(requireContext(), item.getApp()))
+                    selectedAppSet.add(item.getApp());
+            } else
+                selectedAppSet.remove(item.getApp());
+            updatePageData();
+        });
+
+        recyclerView.setAdapter(fastItemAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
     }
 }

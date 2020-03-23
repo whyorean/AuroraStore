@@ -25,7 +25,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -40,34 +39,32 @@ import com.aurora.store.util.ContextUtil;
 import com.aurora.store.util.Log;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 import com.dragons.aurora.playstoreapiv2.ReviewResponse;
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.android.material.textfield.TextInputEditText;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
 
-public class UserReviewBottomSheet extends BottomSheetDialogFragment {
+public class UserReviewBottomSheet extends BaseBottomSheet {
 
     @BindView(R.id.review_title)
     TextInputEditText txtTitle;
     @BindView(R.id.review_comment)
     TextInputEditText txtComment;
-    @BindView(R.id.btn_cancel)
-    Button btnCancel;
-    @BindView(R.id.btn_submit)
-    Button btnSubmit;
 
     private String title;
     private String comment;
     private int rating;
 
-    private Context context;
     private App app;
     private CompositeDisposable disposable = new CompositeDisposable();
+
+    public UserReviewBottomSheet() {
+    }
 
     public void setApp(App app) {
         this.app = app;
@@ -78,38 +75,38 @@ public class UserReviewBottomSheet extends BottomSheetDialogFragment {
     }
 
     @Override
-    public void onAttach(@NonNull Context context) {
-        super.onAttach(context);
-        this.context = context;
-    }
-
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateContentView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.sheet_user_review, container, false);
         ButterKnife.bind(this, view);
         return view;
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        btnSubmit.setOnClickListener(v -> {
-            submitUserReview(getReview());
-            dismissAllowingStateLoss();
-        });
-        btnCancel.setOnClickListener(v -> dismissAllowingStateLoss());
+    protected void onContentViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onContentViewCreated(view, savedInstanceState);
+    }
+
+    @OnClick(R.id.btn_positive)
+    public void submitReview() {
+        submitUserReview(getReview());
+        dismissAllowingStateLoss();
+    }
+
+    @OnClick(R.id.btn_negative)
+    public void closeReview() {
+        dismissAllowingStateLoss();
     }
 
     private void submitUserReview(Review review) {
-        disposable.add(Observable.fromCallable(() -> new ReviewAdder(context)
+        disposable.add(Observable.fromCallable(() -> new ReviewAdder(requireContext())
                 .submit(app.getPackageName(), review))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe((success) -> {
                     if (success) {
-                        ContextUtil.toastShort(context, "Review updated");
+                        ContextUtil.toastShort(requireContext(), "Review updated");
                     } else {
-                        ContextUtil.toastShort(context, "Review failed");
+                        ContextUtil.toastShort(requireContext(), "Review failed");
                     }
                 }, err -> Log.e(err.getMessage())));
 

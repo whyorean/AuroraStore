@@ -7,7 +7,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.aurora.store.AuroraApplication;
-import com.aurora.store.model.App;
+import com.aurora.store.model.items.UpdatesItem;
 import com.aurora.store.task.UpdatableAppsTask;
 import com.aurora.store.viewmodel.BaseViewModel;
 
@@ -19,7 +19,7 @@ import io.reactivex.schedulers.Schedulers;
 
 public class UpdatableAppsModel extends BaseViewModel {
 
-    private MutableLiveData<List<App>> listMutableLiveData = new MutableLiveData<>();
+    private MutableLiveData<List<UpdatesItem>> data = new MutableLiveData<>();
 
     public UpdatableAppsModel(@NonNull Application application) {
         super(application);
@@ -27,24 +27,27 @@ public class UpdatableAppsModel extends BaseViewModel {
         fetchUpdatableApps();
     }
 
-
-    public LiveData<List<App>> getListMutableLiveData() {
-        return listMutableLiveData;
+    public LiveData<List<UpdatesItem>> getData() {
+        return data;
     }
 
     public void fetchUpdatableApps() {
-        compositeDisposable.add(Observable.fromCallable(() -> new UpdatableAppsTask(api, getApplication())
+        Observable.fromCallable(() -> new UpdatableAppsTask(api, getApplication())
                 .getUpdatableApps())
                 .subscribeOn(Schedulers.computation())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe((appList) -> {
-                    listMutableLiveData.setValue(appList);
-                }, err -> handleError(err)));
+                .map(apps -> sortList(apps))
+                .flatMap(apps -> Observable
+                        .fromIterable(apps)
+                        .map(UpdatesItem::new))
+                .toList()
+                .doOnSuccess(updatesItems -> data.setValue(updatesItems))
+                .doOnError(this::handleError)
+                .subscribe();
     }
 
     @Override
     protected void onCleared() {
-        compositeDisposable.dispose();
         super.onCleared();
     }
 }

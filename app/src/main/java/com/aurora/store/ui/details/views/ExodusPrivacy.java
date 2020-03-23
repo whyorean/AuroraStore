@@ -20,11 +20,13 @@
 
 package com.aurora.store.ui.details.views;
 
+import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
+import com.aurora.store.Constants;
 import com.aurora.store.R;
 import com.aurora.store.model.App;
 import com.aurora.store.model.ExodusReport;
@@ -45,7 +47,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
 
 public class ExodusPrivacy extends AbstractDetails {
@@ -60,7 +61,7 @@ public class ExodusPrivacy extends AbstractDetails {
     Button moreButton;
 
     private Report report;
-    private CompositeDisposable disposable = new CompositeDisposable();
+    private Gson gson = new Gson();
 
     public ExodusPrivacy(DetailsActivity activity, App app) {
         super(activity, app);
@@ -73,11 +74,13 @@ public class ExodusPrivacy extends AbstractDetails {
     }
 
     private void get(String url) {
-        disposable.add(Observable.fromCallable(() -> new ExodusTask(context)
+        Observable.fromCallable(() -> new ExodusTask(context)
                 .get(url))
                 .subscribeOn(Schedulers.computation())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(this::parseResponse));
+                .doOnNext(this::parseResponse)
+                .doOnError(throwable -> Log.e(throwable.getMessage()))
+                .subscribe();
     }
 
     private void parseResponse(String response) {
@@ -120,7 +123,10 @@ public class ExodusPrivacy extends AbstractDetails {
     }
 
     private void showBottomDialog() {
-        ExodusBottomSheet bottomSheet = new ExodusBottomSheet(report);
-        bottomSheet.show(activity.getSupportFragmentManager(), "EXODUS");
+        Bundle bundle = new Bundle();
+        bundle.putString(Constants.STRING_EXTRA, gson.toJson(report));
+        ExodusBottomSheet bottomSheet = new ExodusBottomSheet();
+        bottomSheet.setArguments(bundle);
+        bottomSheet.show(activity.getSupportFragmentManager(), ExodusBottomSheet.TAG);
     }
 }

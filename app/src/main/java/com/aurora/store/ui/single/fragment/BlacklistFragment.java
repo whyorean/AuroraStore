@@ -20,7 +20,6 @@
 
 package com.aurora.store.ui.single.fragment;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,19 +31,18 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.aurora.store.AppDiffCallback;
 import com.aurora.store.R;
 import com.aurora.store.manager.BlacklistManager;
-import com.aurora.store.model.App;
-import com.aurora.store.section.BlackListedAppSection;
+import com.aurora.store.model.items.BlacklistItem;
 import com.aurora.store.ui.view.CustomSwipeToRefresh;
 import com.aurora.store.util.Log;
 import com.aurora.store.util.ViewUtil;
 import com.aurora.store.viewmodel.BlackListedAppsModel;
+import com.mikepenz.fastadapter.adapters.FastItemAdapter;
+import com.mikepenz.fastadapter.select.SelectExtension;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -52,15 +50,12 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import io.github.luizgrp.sectionedrecyclerviewadapter.SectionedRecyclerViewAdapter;
+import butterknife.OnClick;
 
 
-public class BlacklistFragment extends Fragment implements BlackListedAppSection.ClickListener {
-
-    private static final String TAG_BLACKED = "TAG_BLACKED";
-
+public class BlacklistFragment extends Fragment {
     @BindView(R.id.swipe_layout)
-    CustomSwipeToRefresh customSwipeToRefresh;
+    CustomSwipeToRefresh swipeToRefresh;
     @BindView(R.id.recycler)
     RecyclerView recyclerView;
     @BindView(R.id.btn_clear_all)
@@ -68,18 +63,10 @@ public class BlacklistFragment extends Fragment implements BlackListedAppSection
     @BindView(R.id.txt_blacklist)
     TextView txtBlacklist;
 
-    private Context context;
     private BlacklistManager blacklistManager;
     private BlackListedAppsModel model;
-    private BlackListedAppSection section;
-    private SectionedRecyclerViewAdapter adapter;
-
-    @Override
-    public void onAttach(@NonNull Context context) {
-        super.onAttach(context);
-        this.context = context;
-        this.blacklistManager = new BlacklistManager(context);
-    }
+    private FastItemAdapter<BlacklistItem> fastItemAdapter;
+    private SelectExtension<BlacklistItem> selectExtension;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -92,96 +79,89 @@ public class BlacklistFragment extends Fragment implements BlackListedAppSection
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        setupClearAll();
+
         setupRecycler();
+
+        //Fetch Blacklisted Items
         model = new ViewModelProvider(this).get(BlackListedAppsModel.class);
-        model.getAllApps().observe(getViewLifecycleOwner(), appList -> {
-            appList = sortBlackListedApps(appList);
-            dispatchAppsToAdapter(appList);
-            customSwipeToRefresh.setRefreshing(false);
+        model.getBlacklistedItems().observe(getViewLifecycleOwner(), blacklistItems -> {
+            final List<BlacklistItem> sortedList = sortBlackListedApps(blacklistItems);
+            fastItemAdapter.add(sortedList);
+            swipeToRefresh.setRefreshing(false);
+            updateCount();
         });
-        model.fetchBlackListedApps();
-        customSwipeToRefresh.setOnRefreshListener(() -> model.fetchBlackListedApps());
+
+        swipeToRefresh.setRefreshing(true);
+        swipeToRefresh.setOnRefreshListener(() -> model.fetchBlackListedApps());
     }
 
-    private List<App> sortBlackListedApps(List<App> appList) {
-        final List<App> blackListedApps = new ArrayList<>();
-        final List<App> whiteListedApps = new ArrayList<>();
-        final List<App> sortListedApps = new ArrayList<>();
-
-        //Sort Apps by Names
-        Collections.sort(appList, (App1, App2) -> App1.getDisplayName()
-                .compareToIgnoreCase(App2.getDisplayName()));
-
-        //Sort Apps by blacklist status
-        for (App app : appList) {
-            if (blacklistManager.contains(app.getPackageName()))
-                blackListedApps.add(app);
-            else
-                whiteListedApps.add(app);
-        }
-
-        sortListedApps.addAll(blackListedApps);
-        sortListedApps.addAll(whiteListedApps);
-        return sortListedApps;
-    }
-
-    private void dispatchAppsToAdapter(List<App> newList) {
-        List<App> oldList = section.getList();
-        if (oldList.isEmpty()) {
-            section.updateList(newList);
-            adapter.notifyDataSetChanged();
-        } else {
-            DiffUtil.DiffResult diffResult = DiffUtil.calculateDiff(new AppDiffCallback(newList, oldList));
-            diffResult.dispatchUpdatesTo(adapter);
-            section.updateList(newList);
-        }
+    @OnClick(R.id.btn_clear_all)
+    public void clearAll() {
+        blacklistManager.clear();
+        fastItemAdapter.notifyAdapterDataSetChanged();
         updateCount();
     }
 
-    private void setupRecycler() {
-        customSwipeToRefresh.setRefreshing(false);
-        section = new BlackListedAppSection(context, blacklistManager.get(), this);
-        adapter = new SectionedRecyclerViewAdapter();
-        adapter.addSection(TAG_BLACKED, section);
-        recyclerView.setLayoutManager(new LinearLayoutManager(context, RecyclerView.VERTICAL, false));
-        recyclerView.setAdapter(adapter);
+    /*
+     * Sorts the Blacklisted Items in order Blacklisted -> Whitelisted (Alphabetically)
+     */
+    private List<BlacklistItem> sortBlackListedApps(List<BlacklistItem> blacklistItems) {
+        final List<BlacklistItem> blackListedItems = new ArrayList<>();
+        final List<BlacklistItem> whiteListedItems = new ArrayList<>();
+        final List<BlacklistItem> sortedList = new ArrayList<>();
+
+        //Sort Apps by Names
+        Collections.sort(blacklistItems, (blacklistItem1, blacklistItem2) ->
+                blacklistItem1.getApp().getDisplayName()
+                        .compareToIgnoreCase(blacklistItem2.getApp().getDisplayName()));
+
+        //Sort Apps by blacklist status
+        for (BlacklistItem blacklistItem : blacklistItems) {
+            if (blacklistManager.isBlacklisted(blacklistItem.getApp().getPackageName()))
+                blackListedItems.add(blacklistItem);
+            else
+                whiteListedItems.add(blacklistItem);
+        }
+
+        sortedList.addAll(blackListedItems);
+        sortedList.addAll(whiteListedItems);
+        return sortedList;
     }
 
-    private void setupClearAll() {
-        btnClearAll.setOnClickListener(v -> {
-            blacklistManager.removeAll();
-            section.getBlacklist().clear();
-            adapter.notifyDataSetChanged();
+    private void setupRecycler() {
+        blacklistManager = new BlacklistManager(requireContext());
+        fastItemAdapter = new FastItemAdapter<>();
+        selectExtension = new SelectExtension<>(fastItemAdapter);
+
+        fastItemAdapter.setOnClickListener((view, blacklistItemIAdapter, blacklistItem, position) -> false);
+        fastItemAdapter.setOnPreClickListener((view, blacklistItemIAdapter, blacklistItem, position) -> true);
+
+        fastItemAdapter.addExtension(selectExtension);
+        fastItemAdapter.addEventHook(new BlacklistItem.CheckBoxClickEvent());
+
+        selectExtension.setMultiSelect(true);
+        selectExtension.setSelectionListener((item, selected) -> {
+            if (blacklistManager.isBlacklisted(item.getApp().getPackageName())) {
+                blacklistManager.removeFromBlacklist(item.getApp().getPackageName());
+                Log.d("Whitelisted : %s", item.getApp().getDisplayName());
+            } else {
+                blacklistManager.addToBlacklist(item.getApp().getPackageName());
+                Log.d("Blacklisted : %s", item.getApp().getDisplayName());
+            }
             updateCount();
         });
+
+        recyclerView.setAdapter(fastItemAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
     }
 
     private void updateCount() {
-        int count = section.getBlacklist().size();
+        int count = blacklistManager.getBlacklistedPackages().size();
         String txtCount = new StringBuilder()
-                .append(context.getResources().getString(R.string.list_blacklist))
+                .append(requireContext().getResources().getString(R.string.list_blacklist))
                 .append(" : ")
                 .append(count).toString();
         txtBlacklist.setText(count > 0 ? txtCount : getString(R.string.list_blacklist_none));
         ViewUtil.setVisibility(btnClearAll, count > 0, true);
-    }
-
-    @Override
-    public void onClick(int position, String packageName) {
-        recyclerView.post(() -> {
-            if (blacklistManager.contains(packageName) || section.getBlacklist().contains(packageName)) {
-                blacklistManager.remove(packageName);
-                section.remove(packageName);
-            } else {
-                blacklistManager.add(packageName);
-                section.add(packageName);
-                for (String s : section.getBlacklist()) {
-                    Log.e(s);
-                }
-            }
-            adapter.notifyItemChanged(position);
-            updateCount();
-        });
     }
 }

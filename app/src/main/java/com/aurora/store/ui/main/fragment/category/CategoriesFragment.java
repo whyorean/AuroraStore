@@ -37,20 +37,18 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.aurora.store.Constants;
 import com.aurora.store.R;
 import com.aurora.store.manager.CategoryManager;
-import com.aurora.store.section.CategoriesSection;
+import com.aurora.store.model.items.CategoryItem;
 import com.aurora.store.ui.category.CategoryAppsActivity;
 import com.aurora.store.ui.main.AuroraActivity;
 import com.aurora.store.util.ViewUtil;
+import com.mikepenz.fastadapter.FastAdapter;
+import com.mikepenz.fastadapter.adapters.ItemAdapter;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import io.github.luizgrp.sectionedrecyclerviewadapter.SectionedRecyclerViewAdapter;
+import io.reactivex.Observable;
 
-public class CategoriesFragment extends Fragment implements CategoriesSection.ClickListener {
-
-    private static final String TAG_CATEGORIES_ALL = "TAG_CATEGORIES_ALL";
-    private static final String TAG_CATEGORIES_GAME = "TAG_CATEGORIES_GAME";
-    private static final String TAG_CATEGORIES_FAMILY = "TAG_CATEGORIES_FAMILY";
+public class CategoriesFragment extends Fragment {
 
     @BindView(R.id.category_recycler)
     RecyclerView recyclerView;
@@ -59,7 +57,9 @@ public class CategoriesFragment extends Fragment implements CategoriesSection.Cl
 
     private CategoryManager categoryManager;
 
-    @Override
+    private FastAdapter<CategoryItem> fastAdapter;
+    private ItemAdapter<CategoryItem> categoryItemAdapter;
+
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         View view = inflater.inflate(R.layout.fragment_categories, container, false);
@@ -72,7 +72,7 @@ public class CategoriesFragment extends Fragment implements CategoriesSection.Cl
         super.onActivityCreated(savedInstanceState);
         categoryManager = new CategoryManager(requireContext());
         CategoriesModel categoriesModel = new ViewModelProvider(this).get(CategoriesModel.class);
-        categoriesModel.getFetchCompleted().observe(this, success -> {
+        categoriesModel.getFetchCompleted().observe(getViewLifecycleOwner(), success -> {
             if (success) {
                 setupRecycler();
                 progressBar.setVisibility(View.GONE);
@@ -82,22 +82,30 @@ public class CategoriesFragment extends Fragment implements CategoriesSection.Cl
     }
 
     private void setupRecycler() {
-        SectionedRecyclerViewAdapter viewAdapter = new SectionedRecyclerViewAdapter();
-        viewAdapter.addSection(TAG_CATEGORIES_ALL, new CategoriesSection(requireContext(),
-                categoryManager.getCategories(Constants.CATEGORY_APPS), getString(R.string.category_all), this));
-        viewAdapter.addSection(TAG_CATEGORIES_GAME, new CategoriesSection(requireContext(),
-                categoryManager.getCategories(Constants.CATEGORY_GAME), getString(R.string.category_games), this));
-        viewAdapter.addSection(TAG_CATEGORIES_FAMILY, new CategoriesSection(requireContext(),
-                categoryManager.getCategories(Constants.CATEGORY_FAMILY), getString(R.string.category_family), this));
-        recyclerView.setLayoutManager(new LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false));
-        recyclerView.setAdapter(viewAdapter);
-    }
+        fastAdapter = new FastAdapter<>();
+        categoryItemAdapter = new ItemAdapter<>();
 
-    @Override
-    public void onClick(String categoryId, String categoryName) {
-        Intent intent = new Intent(requireContext(), CategoryAppsActivity.class);
-        intent.putExtra("CategoryId", categoryId);
-        intent.putExtra("CategoryName", categoryName);
-        requireContext().startActivity(intent, ViewUtil.getEmptyActivityBundle((AuroraActivity) requireContext()));
+        Observable.fromIterable(categoryManager.getCategories(Constants.CATEGORY_APPS))
+                .mergeWith(Observable.fromIterable(categoryManager.getCategories(Constants.CATEGORY_GAME)))
+                .mergeWith(Observable.fromIterable(categoryManager.getCategories(Constants.CATEGORY_FAMILY)))
+                .map(CategoryItem::new)
+                .toList()
+                .doOnSuccess(categoryItems -> {
+                    categoryItemAdapter.add(categoryItems);
+                })
+                .subscribe();
+
+        //TODO:Add section headers
+        fastAdapter.addAdapter(0, categoryItemAdapter);
+        fastAdapter.setOnClickListener((view, categoryItemIAdapter, categoryItem, integer) -> {
+            Intent intent = new Intent(requireContext(), CategoryAppsActivity.class);
+            intent.putExtra("CategoryId", categoryItem.getCategoryModel().getCategoryId());
+            intent.putExtra("CategoryName", categoryItem.getCategoryModel().getCategoryTitle());
+            requireContext().startActivity(intent, ViewUtil.getEmptyActivityBundle((AuroraActivity) requireContext()));
+            return false;
+        });
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false));
+        recyclerView.setAdapter(fastAdapter);
     }
 }

@@ -20,13 +20,10 @@
 
 package com.aurora.store.sheet;
 
-import android.app.Dialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.FrameLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -34,9 +31,6 @@ import androidx.annotation.Nullable;
 import com.aurora.store.R;
 import com.aurora.store.manager.FilterManager;
 import com.aurora.store.model.FilterModel;
-import com.google.android.material.bottomsheet.BottomSheetBehavior;
-import com.google.android.material.bottomsheet.BottomSheetDialog;
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 
@@ -44,7 +38,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class FilterBottomSheet extends BottomSheetDialogFragment {
+public class FilterBottomSheet extends BaseBottomSheet {
 
     @BindView(R.id.rating_chips)
     ChipGroup rating_chips;
@@ -56,44 +50,37 @@ public class FilterBottomSheet extends BottomSheetDialogFragment {
     Chip chip_ads;
     @BindView(R.id.filter_paid)
     Chip chip_paid;
-    @BindView(R.id.filter_apply)
-    Button filter_apply;
 
     private FilterModel filterModel;
 
-    @NonNull
-    @Override
-    public Dialog onCreateDialog(Bundle savedInstanceState) {
-        BottomSheetDialog dialog = (BottomSheetDialog) super.onCreateDialog(savedInstanceState);
-        dialog.setOnShowListener(d -> {
-            BottomSheetDialog bottomSheetDialog = (BottomSheetDialog) d;
-            FrameLayout bottomSheet = bottomSheetDialog.findViewById(com.google.android.material.R.id.design_bottom_sheet);
-            if (bottomSheet != null)
-                BottomSheetBehavior.from(bottomSheet).setState(BottomSheetBehavior.STATE_EXPANDED);
-        });
-        return dialog;
+    public FilterBottomSheet() {
     }
 
     @NonNull
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateContentView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.sheet_filter, container, false);
         ButterKnife.bind(this, view);
         return view;
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
+    protected void onContentViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onContentViewCreated(view, savedInstanceState);
         filterModel = FilterManager.getFilterPreferences(requireContext());
         setupMultipleChips();
         setupSingleChips();
     }
 
-    @OnClick(R.id.filter_apply)
+    @OnClick(R.id.btn_positive)
     public void applyFilter() {
         FilterManager.saveFilterPreferences(requireContext(), filterModel);
-        dismiss();
+        dismissAllowingStateLoss();
+    }
+
+    @OnClick(R.id.btn_negative)
+    public void closeFilter() {
+        dismissAllowingStateLoss();
     }
 
     private void setupSingleChips() {

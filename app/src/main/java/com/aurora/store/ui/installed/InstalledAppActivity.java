@@ -6,16 +6,17 @@ import android.view.MenuItem;
 
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.aurora.store.AppDiffCallback;
 import com.aurora.store.AuroraApplication;
 import com.aurora.store.Constants;
+import com.aurora.store.InstalledDiffCallback;
 import com.aurora.store.R;
 import com.aurora.store.model.App;
-import com.aurora.store.section.InstallAppSection;
+import com.aurora.store.model.items.InstalledItem;
 import com.aurora.store.sheet.AppMenuSheet;
 import com.aurora.store.ui.details.DetailsActivity;
 import com.aurora.store.ui.single.activity.BaseActivity;
@@ -24,32 +25,30 @@ import com.aurora.store.util.PrefUtil;
 import com.aurora.store.util.Util;
 import com.aurora.store.util.ViewUtil;
 import com.google.android.material.switchmaterial.SwitchMaterial;
+import com.mikepenz.fastadapter.FastAdapter;
+import com.mikepenz.fastadapter.adapters.ItemAdapter;
+import com.mikepenz.fastadapter.diff.FastAdapterDiffUtil;
 
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import io.github.luizgrp.sectionedrecyclerviewadapter.SectionedRecyclerViewAdapter;
-import io.reactivex.disposables.CompositeDisposable;
 
-public class InstalledAppActivity extends BaseActivity implements InstallAppSection.ClickListener {
+public class InstalledAppActivity extends BaseActivity {
 
-    private static final String TAG_APPS = "TAG_APPS";
-
-    @BindView(R.id.switch_system)
-    SwitchMaterial switchSystem;
-    @BindView(R.id.recycler)
-    RecyclerView recycler;
-    @BindView(R.id.swipe_layout)
-    CustomSwipeToRefresh swipeLayout;
     @BindView(R.id.coordinator)
     CoordinatorLayout coordinator;
+    @BindView(R.id.switch_system)
+    SwitchMaterial switchSystem;
+    @BindView(R.id.swipe_layout)
+    CustomSwipeToRefresh swipeToRefresh;
+    @BindView(R.id.recycler)
+    RecyclerView recyclerView;
 
     private InstalledAppsModel model;
-    private InstallAppSection section;
-    private SectionedRecyclerViewAdapter adapter;
-    private CompositeDisposable disposable = new CompositeDisposable();
+    private FastAdapter<InstalledItem> fastAdapter;
+    private ItemAdapter<InstalledItem> itemAdapter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -58,17 +57,16 @@ public class InstalledAppActivity extends BaseActivity implements InstallAppSect
         ButterKnife.bind(this);
 
         setupRecycler();
+
         switchSystem.setChecked(PrefUtil.getBoolean(this, Constants.PREFERENCE_INCLUDE_SYSTEM));
         switchSystem.setOnCheckedChangeListener((buttonView, isChecked) -> {
             PrefUtil.putBoolean(this, Constants.PREFERENCE_INCLUDE_SYSTEM, isChecked);
-            model.fetchInstalledApps(isChecked);
         });
 
         model = new ViewModelProvider(this).get(InstalledAppsModel.class);
-        model.getListMutableLiveData().observe(this, appList -> {
+        model.getData().observe(this, appList -> {
             dispatchAppsToAdapter(appList);
-            swipeLayout.setRefreshing(false);
-
+            swipeToRefresh.setRefreshing(false);
         });
 
         model.getError().observe(this, errorType -> {
@@ -84,32 +82,32 @@ public class InstalledAppActivity extends BaseActivity implements InstallAppSect
             }
         });
 
-        model.fetchInstalledApps(switchSystem.isChecked());
-        swipeLayout.setOnRefreshListener(() -> fetchApps());
+        swipeToRefresh.setRefreshing(true);
+        swipeToRefresh.setOnRefreshListener(this::fetchApps);
 
-        disposable.add(AuroraApplication
-                .getRxBus()
-                .getBus()
-                .subscribe(event -> {
+        AuroraApplication
+                .getRelayBus()
+                .doOnNext(event -> {
                     switch (event.getSubType()) {
                         case BLACKLIST:
-                            int pos = section.removeApp(event.getPackageName());
-                            if (pos != -1)
-                                adapter.notifyItemRemoved(pos);
+                            int adapterPosition = event.getIntExtra();
+                            if (adapterPosition >= 0 && itemAdapter != null) {
+                                itemAdapter.remove(adapterPosition);
+                            }
                             break;
                         case API_SUCCESS:
                             fetchApps();
                             break;
                     }
-                }));
+                })
+                .subscribe();
     }
 
     @Override
     public boolean onOptionsItemSelected(final MenuItem menuItem) {
-        switch (menuItem.getItemId()) {
-            case android.R.id.home:
-                onBackPressed();
-                return true;
+        if (menuItem.getItemId() == android.R.id.home) {
+            onBackPressed();
+            return true;
         }
         return super.onOptionsItemSelected(menuItem);
     }
@@ -118,43 +116,44 @@ public class InstalledAppActivity extends BaseActivity implements InstallAppSect
         model.fetchInstalledApps(switchSystem.isChecked());
     }
 
-    private void dispatchAppsToAdapter(List<App> newList) {
-        List<App> oldList = section.getList();
-        if (oldList.isEmpty()) {
-            section.updateList(newList);
-            adapter.notifyDataSetChanged();
-        } else {
-            DiffUtil.DiffResult diffResult = DiffUtil.calculateDiff(new AppDiffCallback(newList, oldList));
-            diffResult.dispatchUpdatesTo(adapter);
-            section.updateList(newList);
-        }
+    private void dispatchAppsToAdapter(List<InstalledItem> installedItemList) {
+        final FastAdapterDiffUtil fastAdapterDiffUtil = FastAdapterDiffUtil.INSTANCE;
+        final InstalledDiffCallback diffCallback = new InstalledDiffCallback();
+        final DiffUtil.DiffResult diffResult = fastAdapterDiffUtil.calculateDiff(itemAdapter, installedItemList, diffCallback);
+        fastAdapterDiffUtil.set(itemAdapter, diffResult);
     }
 
     private void setupRecycler() {
-        section = new InstallAppSection(this, this);
-        adapter = new SectionedRecyclerViewAdapter();
-        adapter.addSection(TAG_APPS, section);
-        recycler.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
-        recycler.setAdapter(adapter);
+        itemAdapter = new ItemAdapter<>();
+        fastAdapter = new FastAdapter<>();
+        fastAdapter.addAdapter(0, itemAdapter);
+
+        fastAdapter.setOnClickListener((view, itemIAdapter, installedItem, position) -> {
+            final App app = installedItem.getApp();
+            final Intent intent = new Intent(this, DetailsActivity.class);
+            intent.putExtra(Constants.INTENT_PACKAGE_NAME, app.getPackageName());
+            intent.putExtra(Constants.STRING_EXTRA, gson.toJson(app));
+            startActivity(intent, ViewUtil.getEmptyActivityBundle(this));
+            return false;
+        });
+
+        fastAdapter.setOnLongClickListener((view, itemIAdapter, installedItem, position) -> {
+            final AppMenuSheet menuSheet = new AppMenuSheet();
+            final Bundle bundle = new Bundle();
+            bundle.putInt(Constants.INT_EXTRA, position);
+            bundle.putString(Constants.STRING_EXTRA, gson.toJson(installedItem.getApp()));
+            menuSheet.setArguments(bundle);
+            menuSheet.show(getSupportFragmentManager(), AppMenuSheet.TAG);
+            return true;
+        });
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setAdapter(fastAdapter);
     }
 
     @OnClick(R.id.action1)
     public void goBack() {
         onBackPressed();
-    }
-
-    @Override
-    public void onClick(App app) {
-        DetailsActivity.app = app;
-        Intent intent = new Intent(this, DetailsActivity.class);
-        intent.putExtra(Constants.INTENT_PACKAGE_NAME, app.getPackageName());
-        startActivity(intent, ViewUtil.getEmptyActivityBundle(this));
-    }
-
-    @Override
-    public void onLongClick(App app) {
-        AppMenuSheet menuSheet = new AppMenuSheet();
-        menuSheet.setApp(app);
-        menuSheet.show(getSupportFragmentManager(), "BOTTOM_MENU_SHEET");
     }
 }

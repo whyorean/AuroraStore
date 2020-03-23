@@ -20,6 +20,7 @@
 
 package com.aurora.store.ui.single.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -35,24 +36,21 @@ import android.widget.Toast;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.widget.Toolbar;
 
+import com.aurora.store.Constants;
 import com.aurora.store.R;
 import com.aurora.store.manager.CategoryManager;
 import com.aurora.store.model.App;
 import com.aurora.store.task.DeliveryData;
 import com.aurora.store.task.LiveUpdate;
-import com.aurora.store.ui.details.DetailsActivity;
 import com.aurora.store.util.ContextUtil;
 import com.aurora.store.util.Log;
 import com.aurora.store.util.TextUtil;
 import com.aurora.store.util.Util;
 import com.aurora.store.util.ViewUtil;
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.Priority;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.bitmap.BitmapTransitionOptions;
 import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
-import com.bumptech.glide.request.RequestOptions;
 import com.google.android.material.chip.ChipGroup;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
@@ -61,13 +59,12 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
 
 public class ManualDownloadActivity extends BaseActivity {
 
     @BindView(R.id.toolbar)
-    Toolbar mToolbar;
+    Toolbar toolbar;
     @BindView(R.id.icon)
     ImageView appIcon;
     @BindView(R.id.versionString)
@@ -82,7 +79,6 @@ public class ManualDownloadActivity extends BaseActivity {
     ChipGroup chipGroup;
 
     private App app;
-    private CompositeDisposable disposable = new CompositeDisposable();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,7 +86,7 @@ public class ManualDownloadActivity extends BaseActivity {
         setContentView(R.layout.activity_manual);
         ButterKnife.bind(this);
 
-        setSupportActionBar(mToolbar);
+        setSupportActionBar(toolbar);
 
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
@@ -98,26 +94,33 @@ public class ManualDownloadActivity extends BaseActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
 
-        app = DetailsActivity.app;
-        drawAppBadge();
+        onNewIntent(getIntent());
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        if (intent != null) {
+            stringExtra = intent.getStringExtra(Constants.STRING_EXTRA);
+            app = gson.fromJson(stringExtra, App.class);
+            if (app != null) {
+                populateData();
+            }
+        } else {
+            finishAfterTransition();
+        }
     }
 
     @Override
     public boolean onOptionsItemSelected(final MenuItem menuItem) {
-        switch (menuItem.getItemId()) {
-            case android.R.id.home:
-                onBackPressed();
-                return true;
+        if (menuItem.getItemId() == android.R.id.home) {
+            onBackPressed();
+            return true;
         }
         return super.onOptionsItemSelected(menuItem);
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-    }
-
-    private void drawAppBadge() {
+    private void populateData() {
         Glide.with(this)
                 .asBitmap()
                 .load(app.getIconUrl())
@@ -190,7 +193,7 @@ public class ManualDownloadActivity extends BaseActivity {
     }
 
     private void downloadListener() {
-        disposable.add(Observable.fromCallable(() -> new DeliveryData(this)
+        Observable.fromCallable(() -> new DeliveryData(this)
                 .getDeliveryData(app))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -202,11 +205,13 @@ public class ManualDownloadActivity extends BaseActivity {
                     btnPositive.setEnabled(true);
                     btnPositive.setText(getString(R.string.details_download));
                 }))
-                .subscribe(androidAppDeliveryData -> {
+                .doOnNext(androidAppDeliveryData -> {
                     new LiveUpdate(this).enqueueUpdate(app, androidAppDeliveryData);
-                }, err -> runOnUiThread(() -> {
+                })
+                .doOnError(throwable -> {
                     Toast.makeText(this, "Failed to download specified build", Toast.LENGTH_SHORT).show();
-                })));
+                })
+                .subscribe();
     }
 
     protected void setText(int viewId, String text) {
@@ -218,7 +223,6 @@ public class ManualDownloadActivity extends BaseActivity {
     protected void setText(int viewId, int stringId, Object... text) {
         setText(viewId, getResources().getString(stringId, text));
     }
-
 }
 
 

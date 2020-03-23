@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Aurora Store
   ~ Copyright (C) 2019, Rahul Kumar Patel <whyorean@gmail.com>
   ~
@@ -20,30 +19,37 @@
   -->
 
 <resources>
-    <dimen name="margin_xlarge">32dp</dimen>
-    <dimen name="margin_large">24dp</dimen>
-    <dimen name="margin_normal">16dp</dimen>
-    <dimen name="margin_medium">12dp</dimen>
-    <dimen name="margin_small">8dp</dimen>
-    <dimen name="margin_xsmall">6dp</dimen>
-    <dimen name="margin_xxsmall">4dp</dimen>
     <dimen name="margin_bottom">64dp</dimen>
+
+    <dimen name="padding_xsmall">4dp</dimen>
+    <dimen name="padding_small">6dp</dimen>
+    <dimen name="padding_medium">12dp</dimen>
+    <dimen name="padding_large">16dp</dimen>
+    <dimen name="padding_xlarge">32dp</dimen>
+
+    <dimen name="margin_xxsmall">2dp</dimen>
+    <dimen name="margin_xsmall">4dp</dimen>
+    <dimen name="margin_small">8dp</dimen>
+    <dimen name="margin_normal">10dp</dimen>
+    <dimen name="margin_medium">12dp</dimen>
+    <dimen name="margin_large">16dp</dimen>
+    <dimen name="margin_xlarge">32dp</dimen>
 
     <dimen name="bottom_sheet_corner_radius">16dp</dimen>
     <dimen name="bottom_sheet_top_padding">8dp</dimen>
     <dimen name="bottom_nav_padding">64dp</dimen>
 
-    <dimen name="icon_size">56dp</dimen>
+    <dimen name="icon_size_default">24dp</dimen>
+    <dimen name="icon_size_category">36dp</dimen>
+    <dimen name="icon_size_small">48dp</dimen>
+    <dimen name="icon_size_medium">56dp</dimen>
+    <dimen name="icon_size">64dp</dimen>
     <dimen name="icon_size_normal">72dp</dimen>
     <dimen name="icon_size_big">96dp</dimen>
-    <dimen name="icon_size_small">56dp</dimen>
-    <dimen name="icon_size_med">48dp</dimen>
-    <dimen name="icon_size_cat">36dp</dimen>
-    <dimen name="icon_size_default">24dp</dimen>
 
+    <dimen name="chip_height">52dp</dimen>
 
     <dimen name="height_searchview">52dp</dimen>
     <dimen name="height_button">52dp</dimen>
     <dimen name="height_nav_header">148dp</dimen>
-
 </resources>

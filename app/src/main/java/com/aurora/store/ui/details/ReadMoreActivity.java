@@ -36,14 +36,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.aurora.store.R;
 import com.aurora.store.model.App;
-import com.aurora.store.section.FilesSection;
+import com.aurora.store.model.items.FileItem;
 import com.aurora.store.ui.single.activity.BaseActivity;
 import com.aurora.store.ui.view.MoreLayout;
+import com.aurora.store.util.Log;
 import com.aurora.store.util.TextUtil;
+import com.mikepenz.fastadapter.adapters.FastItemAdapter;
+
+import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import io.github.luizgrp.sectionedrecyclerviewadapter.SectionedRecyclerViewAdapter;
+import io.reactivex.Observable;
 
 public class ReadMoreActivity extends BaseActivity {
 
@@ -64,21 +68,21 @@ public class ReadMoreActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_read_more);
         ButterKnife.bind(this);
-        if (app == null) {
-            finish();
-            return;
+        if (app != null) {
+            setupActionBar();
+            setupMore();
+            setupRecycler();
+        } else {
+            Log.d("App not found");
+            finishAfterTransition();
         }
-        setupActionBar();
-        setupMore();
-        setupRecycler();
     }
 
     @Override
     public boolean onOptionsItemSelected(final MenuItem menuItem) {
-        switch (menuItem.getItemId()) {
-            case android.R.id.home:
-                onBackPressed();
-                return true;
+        if (menuItem.getItemId() == android.R.id.home) {
+            onBackPressed();
+            return true;
         }
         return super.onOptionsItemSelected(menuItem);
     }
@@ -138,16 +142,22 @@ public class ReadMoreActivity extends BaseActivity {
     }
 
     public void setupRecycler() {
-        if (app.getFileMetadataList() == null)
-            return;
+        if (app.getFileMetadataList() != null) {
+            FastItemAdapter<FileItem> fastItemAdapter = new FastItemAdapter<>();
 
-        FilesSection section = new FilesSection(this, position -> {
-        });
-        section.addData(app.getFileMetadataList());
-        SectionedRecyclerViewAdapter adapter = new SectionedRecyclerViewAdapter();
-        adapter.addSection(section);
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
-        recyclerView.setVisibility(View.VISIBLE);
+            Observable.fromIterable(app.getFileMetadataList())
+                    .map(FileItem::new)
+                    .toList()
+                    .doOnSuccess(fastItemAdapter::add)
+                    .onErrorReturn(throwable -> {
+                        Log.e(throwable.getMessage());
+                        return new ArrayList<>();
+                    })
+                    .subscribe();
+
+            recyclerView.setAdapter(fastItemAdapter);
+            recyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
+            recyclerView.setVisibility(View.VISIBLE);
+        }
     }
 }

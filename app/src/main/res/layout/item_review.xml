@@ -29,8 +29,8 @@
 
     <ImageView
         android:id="@+id/img"
-        android:layout_width="@dimen/icon_size_cat"
-        android:layout_height="@dimen/icon_size_cat"
+        android:layout_width="@dimen/icon_size_category"
+        android:layout_height="@dimen/icon_size_category"
         android:contentDescription="@string/content_description_icon" />
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -59,9 +59,7 @@
             android:layout_centerVertical="true"
             android:max="5"
             android:numStars="5"
-            android:stepSize="1"
-            android:textAlignment="viewStart"
-            android:textAppearance="@style/TextAppearance.Aurora.Body" />
+            android:stepSize="1" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/line2"
@@ -69,12 +67,10 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginStart="@dimen/margin_small"
-            android:layout_marginTop="@dimen/margin_xxsmall"
             android:layout_toEndOf="@id/rating"
             android:textAlignment="viewStart"
             android:textAppearance="@style/TextAppearance.Aurora.Line3" />
     </RelativeLayout>
-
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/line3"

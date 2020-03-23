@@ -23,51 +23,46 @@
     android:layout_height="wrap_content"
     android:background="?android:attr/selectableItemBackground"
     android:orientation="horizontal"
-    android:paddingStart="@dimen/margin_medium"
-    android:paddingTop="@dimen/margin_small"
-    android:paddingEnd="@dimen/margin_xxsmall"
-    android:paddingBottom="@dimen/margin_xxsmall">
+    android:paddingStart="@dimen/padding_medium"
+    android:paddingTop="@dimen/padding_small"
+    android:paddingEnd="@dimen/padding_medium"
+    android:paddingBottom="@dimen/padding_small">
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/app_icon"
-        android:layout_width="@dimen/icon_size"
-        android:layout_height="@dimen/icon_size"
-        android:layout_marginStart="@dimen/margin_small"
-        android:layout_marginEnd="@dimen/margin_normal" />
+        android:id="@+id/img_icon"
+        android:layout_width="@dimen/icon_size_medium"
+        android:layout_height="@dimen/icon_size_medium" />
 
-    <RelativeLayout
-        android:layout_width="match_parent"
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/line1"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_toEndOf="@id/app_icon">
+        android:layout_marginStart="@dimen/margin_normal"
+        android:layout_marginEnd="@dimen/margin_normal"
+        android:layout_toEndOf="@id/img_icon"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:textAppearance="@style/TextAppearance.Aurora.Line1" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/app_title"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:ellipsize="end"
-            android:singleLine="true"
-            android:textAlignment="viewStart"
-            android:textAppearance="@style/TextAppearance.Aurora.Line1" />
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/line2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/line1"
+        android:layout_alignStart="@id/line1"
+        android:layout_alignEnd="@id/line1"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:textAppearance="@style/TextAppearance.Aurora.Line3" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/app_version"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/app_title"
-            android:layout_marginTop="2dp"
-            android:ellipsize="end"
-            android:singleLine="true"
-            android:textAppearance="@style/TextAppearance.Aurora.Line3" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/app_extra"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/app_version"
-            android:layout_marginTop="2dp"
-            android:ellipsize="end"
-            android:singleLine="true"
-            android:textAppearance="@style/TextAppearance.Aurora.Line3" />
-    </RelativeLayout>
-
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/line3"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/line2"
+        android:layout_alignStart="@id/line1"
+        android:layout_alignEnd="@id/line1"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:textAppearance="@style/TextAppearance.Aurora.Line3" />
 </RelativeLayout>

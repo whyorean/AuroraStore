@@ -133,6 +133,7 @@
     <string name="list_installed_system">"Show user apps only"</string>
     <string name="list_not_installd">"Not installed"</string>
     <string name="list_update_all">"Update all"</string>
+    <string name="list_update_selected">"Update selected"</string>
     <string name="list_update_all_txt">"update(s) available"</string>
     <string name="list_updating">"Updating"</string>
     <string name="manual_download_disclaimer">"Disclaimer"</string>

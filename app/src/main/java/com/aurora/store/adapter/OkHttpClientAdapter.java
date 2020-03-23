@@ -22,15 +22,19 @@ package com.aurora.store.adapter;
 
 import android.content.Context;
 
+import com.aurora.store.BuildConfig;
 import com.aurora.store.exception.AppNotFoundException;
 import com.aurora.store.exception.MalformedRequestException;
 import com.aurora.store.exception.TooManyRequestsException;
 import com.aurora.store.exception.UnknownException;
+import com.aurora.store.util.NetworkInterceptor;
 import com.aurora.store.util.Util;
 import com.dragons.aurora.playstoreapiv2.AuthException;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 import com.dragons.aurora.playstoreapiv2.GooglePlayException;
 import com.dragons.aurora.playstoreapiv2.HttpClientAdapter;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -63,18 +67,23 @@ public class OkHttpClientAdapter extends HttpClientAdapter {
                     private final HashMap<HttpUrl, List<Cookie>> cookieStore = new HashMap<>();
 
                     @Override
-                    public void saveFromResponse(HttpUrl url, List<Cookie> cookies) {
+                    public void saveFromResponse(@NotNull HttpUrl url, @NotNull List<Cookie> cookies) {
                         cookieStore.put(url, cookies);
                     }
 
+                    @NotNull
                     @Override
-                    public List<Cookie> loadForRequest(HttpUrl url) {
+                    public List<Cookie> loadForRequest(@NotNull HttpUrl url) {
                         List<Cookie> cookies = cookieStore.get(url);
                         return cookies != null ? cookies : new ArrayList<>();
                     }
                 });
         if (Util.isNetworkProxyEnabled(context))
             builder.proxy(Util.getNetworkProxy(context));
+
+        if (BuildConfig.DEBUG) {
+            builder.addNetworkInterceptor(new NetworkInterceptor());
+        }
         client = builder.build();
     }
 

@@ -6,8 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
-import com.aurora.store.AuroraApplication;
-import com.aurora.store.model.App;
+import com.aurora.store.model.items.BlacklistItem;
 import com.aurora.store.task.InstalledAppsTask;
 
 import java.util.List;
@@ -18,30 +17,28 @@ import io.reactivex.schedulers.Schedulers;
 
 public class BlackListedAppsModel extends BaseViewModel {
 
-    private MutableLiveData<List<App>> listMutableLiveData = new MutableLiveData<>();
+    private MutableLiveData<List<BlacklistItem>> data = new MutableLiveData<>();
 
     public BlackListedAppsModel(@NonNull Application application) {
         super(application);
+        fetchBlackListedApps();
     }
 
-    public LiveData<List<App>> getAllApps() {
-        return listMutableLiveData;
+    public LiveData<List<BlacklistItem>> getBlacklistedItems() {
+        return data;
     }
 
     public void fetchBlackListedApps() {
-        api = AuroraApplication.api;
-        compositeDisposable.add(Observable.fromCallable(() -> new InstalledAppsTask(api, getApplication())
+        Observable.fromCallable(() -> new InstalledAppsTask(getApplication())
                 .getAllLocalApps())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe((appList) -> {
-                    listMutableLiveData.setValue(appList);
-                }, err -> handleError(err)));
-    }
-
-    @Override
-    protected void onCleared() {
-        compositeDisposable.dispose();
-        super.onCleared();
+                .flatMap(apps -> Observable
+                        .fromIterable(apps)
+                        .map(BlacklistItem::new))
+                .toList()
+                .doOnSuccess(blacklistItems -> data.setValue(blacklistItems))
+                .doOnError(this::handleError)
+                .subscribe();
     }
 }

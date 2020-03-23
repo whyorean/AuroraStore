@@ -55,6 +55,9 @@ public class DeliveryData extends BaseTask {
     public void purchase(App app) {
         try {
             BuyResponse buyResponse = api.purchase(app.getPackageName(), app.getVersionCode(), app.getOfferType());
+            Log.e("Offer code - > %d",app.getOfferType());
+            Log.e("Version code - > %d",app.getVersionCode());
+            Log.e(buyResponse.toString());
             if (buyResponse.hasPurchaseStatusResponse()
                     && buyResponse.getPurchaseStatusResponse().hasAppDeliveryData()
                     && buyResponse.getPurchaseStatusResponse().getAppDeliveryData().hasDownloadUrl()) {

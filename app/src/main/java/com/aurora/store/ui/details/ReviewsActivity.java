@@ -32,25 +32,23 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.aurora.store.Constants;
-import com.aurora.store.EndlessScrollListener;
 import com.aurora.store.R;
-import com.aurora.store.model.Review;
-import com.aurora.store.section.ReviewsSection;
+import com.aurora.store.model.items.ReviewItem;
 import com.aurora.store.ui.single.activity.BaseActivity;
 import com.aurora.store.viewmodel.ReviewsModel;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 import com.google.android.material.chip.ChipGroup;
+import com.mikepenz.fastadapter.FastAdapter;
+import com.mikepenz.fastadapter.adapters.ItemAdapter;
+import com.mikepenz.fastadapter.scroll.EndlessRecyclerOnScrollListener;
+import com.mikepenz.fastadapter.ui.items.ProgressItem;
 
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import io.github.luizgrp.sectionedrecyclerviewadapter.SectionedRecyclerViewAdapter;
 
 public class ReviewsActivity extends BaseActivity {
-
-    private static final String TAG_REVIEWS = "TAG_REVIEWS";
-
     @BindView(R.id.reviews_recycler)
     RecyclerView recyclerView;
     @BindView(R.id.toolbar)
@@ -60,8 +58,10 @@ public class ReviewsActivity extends BaseActivity {
 
     private String packageName;
     private ReviewsModel reviewsModel;
-    private ReviewsSection reviewsSection;
-    private SectionedRecyclerViewAdapter viewAdapter;
+
+    private FastAdapter fastAdapter;
+    private ItemAdapter<ReviewItem> itemAdapter;
+    private ItemAdapter<ProgressItem> progressItemAdapter;
 
     private GooglePlayAPI.REVIEW_SORT reviewSort = GooglePlayAPI.REVIEW_SORT.HIGHRATING;
 
@@ -78,9 +78,7 @@ public class ReviewsActivity extends BaseActivity {
             packageName = intent.getStringExtra(Constants.INTENT_PACKAGE_NAME);
             if (packageName != null && !packageName.isEmpty()) {
                 reviewsModel = new ViewModelProvider(this).get(ReviewsModel.class);
-                reviewsModel.getReviews().observe(this, reviewList -> {
-                    dispatchToAdapter(reviewList);
-                });
+                reviewsModel.getReviews().observe(this, this::dispatchToAdapter);
                 reviewsModel.fetchReviews(packageName, reviewSort, true);
             }
         }
@@ -97,7 +95,7 @@ public class ReviewsActivity extends BaseActivity {
                     reviewSort = GooglePlayAPI.REVIEW_SORT.NEWEST;
                     break;
             }
-            removeAllReviews();
+            purgeAdapterData();
             reviewsModel.fetchReviews(packageName, reviewSort, true);
         });
     }
@@ -122,38 +120,42 @@ public class ReviewsActivity extends BaseActivity {
         }
     }
 
-    private void dispatchToAdapter(List<Review> newList) {
-        List<Review> oldList = reviewsSection.getList();
-        if (oldList.isEmpty()) {
-            reviewsSection.updateList(newList);
-            viewAdapter.notifyDataSetChanged();
-        } else {
-            if (!newList.isEmpty()) {
-                for (Review review : newList)
-                    reviewsSection.add(review);
-                viewAdapter.notifyItemInserted(reviewsSection.getCount() - 1);
-            }
-        }
+    private void dispatchToAdapter(List<ReviewItem> reviewItems) {
+        itemAdapter.add(reviewItems);
+        recyclerView.post(() -> {
+            progressItemAdapter.clear();
+        });
     }
 
-    private void removeAllReviews() {
-        reviewsSection.clearReviews();
-        viewAdapter.notifyDataSetChanged();
+    private void purgeAdapterData() {
+        recyclerView.post(() -> {
+            progressItemAdapter.clear();
+            itemAdapter.clear();
+        });
     }
 
     private void setupRecycler() {
-        reviewsSection = new ReviewsSection(this);
-        viewAdapter = new SectionedRecyclerViewAdapter();
-        viewAdapter.addSection(TAG_REVIEWS, reviewsSection);
+        fastAdapter = new FastAdapter();
+        itemAdapter = new ItemAdapter<>();
+        progressItemAdapter = new ItemAdapter<>();
+
+        fastAdapter.addAdapter(0, itemAdapter);
+        fastAdapter.addAdapter(1, progressItemAdapter);
+
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
-        EndlessScrollListener endlessScrollListener = new EndlessScrollListener(layoutManager) {
+        EndlessRecyclerOnScrollListener endlessScrollListener = new EndlessRecyclerOnScrollListener(progressItemAdapter) {
             @Override
-            public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
+            public void onLoadMore(int currentPage) {
+                recyclerView.post(() -> {
+                    progressItemAdapter.clear();
+                    progressItemAdapter.add(new ProgressItem());
+                });
                 reviewsModel.fetchReviews(packageName, reviewSort, false);
             }
         };
+
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.addOnScrollListener(endlessScrollListener);
-        recyclerView.setAdapter(viewAdapter);
+        recyclerView.setAdapter(fastAdapter);
     }
 }

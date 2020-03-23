@@ -20,7 +20,6 @@
 
 package com.aurora.store.sheet;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -33,7 +32,6 @@ import androidx.annotation.Nullable;
 import com.aurora.store.R;
 import com.aurora.store.download.DownloadManager;
 import com.aurora.store.util.Util;
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.android.material.navigation.NavigationView;
 import com.tonyodev.fetch2.Download;
 import com.tonyodev.fetch2.Fetch;
@@ -42,12 +40,11 @@ import com.tonyodev.fetch2.Status;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class DownloadMenuSheet extends BottomSheetDialogFragment {
+public class DownloadMenuSheet extends BaseBottomSheet {
 
     @BindView(R.id.navigation_view)
     NavigationView navigationView;
 
-    private Context context;
     private Fetch fetch;
     private Download download;
 
@@ -62,25 +59,21 @@ public class DownloadMenuSheet extends BottomSheetDialogFragment {
         this.download = download;
     }
 
-
     @Override
-    public void onAttach(@NonNull Context context) {
-        super.onAttach(context);
-        this.context = context;
-    }
-
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateContentView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.sheet_download_menu, container, false);
         ButterKnife.bind(this, view);
         return view;
     }
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+    public void onContentViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        fetch = DownloadManager.getFetchInstance(context);
+        fetch = DownloadManager.getFetchInstance(requireContext());
+        setupNavigation();
+    }
 
+    private void setupNavigation() {
         if (download.getStatus() == Status.PAUSED
                 || download.getStatus() == Status.COMPLETED
                 || download.getStatus() == Status.CANCELLED) {
@@ -101,8 +94,8 @@ public class DownloadMenuSheet extends BottomSheetDialogFragment {
         navigationView.setNavigationItemSelectedListener(item -> {
             switch (item.getItemId()) {
                 case R.id.action_copy:
-                    Util.copyToClipBoard(context, download.getUrl());
-                    Toast.makeText(context, context.getString(R.string.action_copied), Toast.LENGTH_LONG).show();
+                    Util.copyToClipBoard(requireContext(), download.getUrl());
+                    Toast.makeText(requireContext(), requireContext().getString(R.string.action_copied), Toast.LENGTH_LONG).show();
                     break;
                 case R.id.action_pause:
                     fetch.pause(download.getId());

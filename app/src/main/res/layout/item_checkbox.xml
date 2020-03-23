@@ -21,28 +21,27 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="?android:attr/selectableItemBackground"
-    android:paddingStart="@dimen/margin_medium"
-    android:paddingTop="@dimen/margin_small"
-    android:paddingEnd="@dimen/margin_xxsmall"
-    android:paddingBottom="@dimen/margin_xxsmall">
+    android:paddingStart="@dimen/padding_medium"
+    android:paddingTop="@dimen/padding_small"
+    android:paddingEnd="@dimen/padding_medium"
+    android:paddingBottom="@dimen/padding_small">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/img"
-        android:layout_width="@dimen/icon_size"
-        android:layout_height="@dimen/icon_size"
-        android:layout_marginStart="@dimen/margin_small"
-        android:layout_marginEnd="@dimen/margin_normal" />
+        android:layout_width="@dimen/icon_size_medium"
+        android:layout_height="@dimen/icon_size_medium" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/line1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_toStartOf="@id/check"
+        android:layout_marginStart="@dimen/margin_normal"
+        android:layout_marginEnd="@dimen/margin_normal"
+        android:layout_toStartOf="@id/checkbox"
         android:layout_toEndOf="@+id/img"
         android:ellipsize="end"
         android:singleLine="true"
-        android:textAppearance="@style/TextAppearance.Aurora.Line1"/>
+        android:textAppearance="@style/TextAppearance.Aurora.Line1" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/line2"
@@ -57,14 +56,11 @@
         android:textAppearance="@style/TextAppearance.Aurora.Line3" />
 
     <com.google.android.material.checkbox.MaterialCheckBox
-        android:id="@+id/check"
+        android:id="@+id/checkbox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_centerInParent="true"
         android:layout_gravity="center_vertical"
-        android:layout_marginStart="@dimen/margin_small"
-        android:clickable="false"
-        android:duplicateParentState="true"
-        android:focusable="false" />
+        android:minWidth="0dp" />
 </RelativeLayout>

@@ -1,37 +1,25 @@
 package com.aurora.store;
 
-import androidx.recyclerview.widget.DiffUtil;
+import com.aurora.store.model.items.SearchSuggestionItem;
+import com.mikepenz.fastadapter.diff.DiffCallback;
 
-import com.dragons.aurora.playstoreapiv2.SearchSuggestEntry;
+import org.jetbrains.annotations.Nullable;
 
-import java.util.List;
+public class SuggestionDiffCallback implements DiffCallback<SearchSuggestionItem> {
 
-public class SuggestionDiffCallback extends DiffUtil.Callback {
-    private List<SearchSuggestEntry> newList;
-    private List<SearchSuggestEntry> oldList;
-
-    public SuggestionDiffCallback(List<SearchSuggestEntry> newList, List<SearchSuggestEntry> oldList) {
-        this.newList = newList;
-        this.oldList = oldList;
+    @Override
+    public boolean areContentsTheSame(SearchSuggestionItem oldItem, SearchSuggestionItem newItem) {
+        return oldItem.getSuggestEntry().getTitle().equals(newItem.getSuggestEntry().getTitle());
     }
 
     @Override
-    public int getOldListSize() {
-        return oldList != null ? oldList.size() : 0;
+    public boolean areItemsTheSame(SearchSuggestionItem oldItem, SearchSuggestionItem newItem) {
+        return oldItem.getSuggestEntry().getTitle().equals(newItem.getSuggestEntry().getTitle());
     }
 
+    @Nullable
     @Override
-    public int getNewListSize() {
-        return newList != null ? newList.size() : 0;
-    }
-
-    @Override
-    public boolean areItemsTheSame(int oldIndex, int newIndex) {
-        return true;
-    }
-
-    @Override
-    public boolean areContentsTheSame(int oldIndex, int newIndex) {
-        return oldList.get(oldIndex).equals(newList.get(newIndex));
+    public Object getChangePayload(SearchSuggestionItem oldItem, int oldPosition, SearchSuggestionItem newItem, int newPosition) {
+        return null;
     }
 }

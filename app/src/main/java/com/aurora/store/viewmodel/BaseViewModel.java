@@ -11,39 +11,44 @@ import com.aurora.store.enums.ErrorType;
 import com.aurora.store.exception.CredentialsEmptyException;
 import com.aurora.store.exception.InvalidApiException;
 import com.aurora.store.exception.TooManyRequestsException;
+import com.aurora.store.model.App;
 import com.aurora.store.util.Log;
 import com.dragons.aurora.playstoreapiv2.AuthException;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 
 import java.net.UnknownHostException;
-
-import io.reactivex.disposables.CompositeDisposable;
+import java.util.Collections;
+import java.util.List;
 
 public class BaseViewModel extends AndroidViewModel {
 
     protected GooglePlayAPI api;
-    protected CompositeDisposable compositeDisposable = new CompositeDisposable();
-    protected MutableLiveData<ErrorType> errorTypeMutableLiveData = new MutableLiveData<>();
+    protected MutableLiveData<ErrorType> errorData = new MutableLiveData<>();
 
     public BaseViewModel(@NonNull Application application) {
         super(application);
     }
 
     public LiveData<ErrorType> getError() {
-        return errorTypeMutableLiveData;
+        return errorData;
+    }
+
+    public List<App> sortList(List<App> appList) {
+        Collections.sort(appList, (App1, App2) -> App1.getDisplayName().compareToIgnoreCase(App2.getDisplayName()));
+        return appList;
     }
 
     public void handleError(Throwable err) {
         if (err instanceof NullPointerException)
-            errorTypeMutableLiveData.setValue(ErrorType.NO_API);
+            errorData.setValue(ErrorType.NO_API);
         else if (err instanceof CredentialsEmptyException || err instanceof InvalidApiException)
-            errorTypeMutableLiveData.setValue(ErrorType.LOGOUT_ERR);
+            errorData.setValue(ErrorType.LOGOUT_ERR);
         else if (err instanceof AuthException | err instanceof TooManyRequestsException)
-            errorTypeMutableLiveData.setValue(ErrorType.SESSION_EXPIRED);
+            errorData.setValue(ErrorType.SESSION_EXPIRED);
         else if (err instanceof UnknownHostException)
-            errorTypeMutableLiveData.setValue(ErrorType.NO_NETWORK);
+            errorData.setValue(ErrorType.NO_NETWORK);
         else
-            errorTypeMutableLiveData.setValue(ErrorType.UNKNOWN);
+            errorData.setValue(ErrorType.UNKNOWN);
         Log.d(err.getMessage());
     }
 }

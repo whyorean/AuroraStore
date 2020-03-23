@@ -42,7 +42,7 @@ import butterknife.ButterKnife;
 
 public class AboutFragment extends Fragment {
 
-    @BindView(R.id.app_version)
+    @BindView(R.id.line2)
     TextView txtVersion;
     @BindView(R.id.linkContainer)
     LinearLayout linkContainer;

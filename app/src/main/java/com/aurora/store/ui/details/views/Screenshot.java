@@ -20,17 +20,22 @@
 
 package com.aurora.store.ui.details.views;
 
+import android.content.Intent;
+import android.view.View;
 import android.widget.LinearLayout;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.aurora.store.R;
-import com.aurora.store.adapter.SmallScreenshotsAdapter;
 import com.aurora.store.model.App;
+import com.aurora.store.model.items.ScreenshotItem;
 import com.aurora.store.ui.details.DetailsActivity;
+import com.aurora.store.ui.single.activity.FullscreenImageActivity;
+import com.mikepenz.fastadapter.adapters.FastItemAdapter;
 
 import butterknife.BindView;
+import io.reactivex.Observable;
 
 public class Screenshot extends AbstractDetails {
 
@@ -51,8 +56,23 @@ public class Screenshot extends AbstractDetails {
     }
 
     private void drawGallery() {
-        show(rootLayout, R.id.recycler);
-        recyclerView.setAdapter(new SmallScreenshotsAdapter(app.getScreenshotUrls(), context));
+        recyclerView.setVisibility(View.VISIBLE);
+        FastItemAdapter<ScreenshotItem> fastItemAdapter = new FastItemAdapter<>();
+
+        Observable.fromIterable(app.getScreenshotUrls())
+                .map(ScreenshotItem::new)
+                .toList()
+                .doOnSuccess(fastItemAdapter::add)
+                .subscribe();
+
+        fastItemAdapter.setOnClickListener((view, screenshotItemIAdapter, screenshotItem, position) -> {
+            Intent intent = new Intent(context, FullscreenImageActivity.class);
+            intent.putExtra(FullscreenImageActivity.INTENT_SCREENSHOT_NUMBER, position);
+            context.startActivity(intent);
+            return false;
+        });
+
+        recyclerView.setAdapter(fastItemAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
     }
 }

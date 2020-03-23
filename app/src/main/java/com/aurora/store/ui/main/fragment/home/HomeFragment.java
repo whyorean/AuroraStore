@@ -28,7 +28,7 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -36,18 +36,21 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.aurora.store.Constants;
 import com.aurora.store.R;
 import com.aurora.store.SharedPreferencesTranslator;
-import com.aurora.store.adapter.FeaturedAppsAdapter;
+import com.aurora.store.model.App;
+import com.aurora.store.model.items.ClusterItem;
 import com.aurora.store.ui.category.CategoryAppsActivity;
+import com.aurora.store.ui.details.DetailsActivity;
 import com.aurora.store.ui.main.AuroraActivity;
+import com.aurora.store.ui.single.fragment.BaseFragment;
 import com.aurora.store.util.Util;
 import com.aurora.store.util.ViewUtil;
 import com.google.android.material.button.MaterialButton;
+import com.mikepenz.fastadapter.adapters.FastItemAdapter;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import io.reactivex.disposables.CompositeDisposable;
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends BaseFragment {
 
     @BindView(R.id.recycler_top_apps)
     RecyclerView recyclerTopApps;
@@ -63,11 +66,12 @@ public class HomeFragment extends Fragment {
     @BindView(R.id.btn_top_family)
     MaterialButton btnTopFamily;
 
-    private FeaturedAppsAdapter topAppsAdapter;
-    private FeaturedAppsAdapter topGamesAdapter;
-    private FeaturedAppsAdapter topFamilyAdapter;
     private SharedPreferencesTranslator translator;
-    private CompositeDisposable disposable = new CompositeDisposable();
+
+    private HomeAppsModel model;
+    private FastItemAdapter<ClusterItem> topAppItemAdapter;
+    private FastItemAdapter<ClusterItem> topGameItemAdapter;
+    private FastItemAdapter<ClusterItem> topFamilyItemAdapter;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -94,11 +98,12 @@ public class HomeFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         setupRecyclers();
-        HomeAppsModel homeAppsModel = new ViewModelProvider(this).get(HomeAppsModel.class);
-        homeAppsModel.getTopApps().observe(this, appList -> topAppsAdapter.addData(appList));
-        homeAppsModel.getTopGames().observe(this, appList -> topGamesAdapter.addData(appList));
-        homeAppsModel.getTopFamily().observe(this, appList -> topFamilyAdapter.addData(appList));
-        homeAppsModel.getError().observe(this, errorType -> {
+
+        model = new ViewModelProvider(this).get(HomeAppsModel.class);
+        model.getTopApps().observe(getViewLifecycleOwner(), clusterItems -> topAppItemAdapter.add(clusterItems));
+        model.getTopGames().observe(getViewLifecycleOwner(), clusterItems -> topGameItemAdapter.add(clusterItems));
+        model.getTopFamily().observe(getViewLifecycleOwner(), clusterItems -> topFamilyItemAdapter.add(clusterItems));
+        model.getError().observe(getViewLifecycleOwner(), errorType -> {
 
         });
     }
@@ -110,7 +115,6 @@ public class HomeFragment extends Fragment {
 
     @Override
     public void onDestroy() {
-        disposable.clear();
         super.onDestroy();
     }
 
@@ -125,25 +129,38 @@ public class HomeFragment extends Fragment {
     }
 
     private void setupRecyclers() {
-        topAppsAdapter = new FeaturedAppsAdapter(requireContext());
-        topGamesAdapter = new FeaturedAppsAdapter(requireContext());
-        topFamilyAdapter = new FeaturedAppsAdapter(requireContext());
+        topAppItemAdapter = new FastItemAdapter<>();
+        topGameItemAdapter = new FastItemAdapter<>();
+        topFamilyItemAdapter = new FastItemAdapter<>();
 
-        recyclerTopApps.setAdapter(topAppsAdapter);
-        recyclerTopApps.setLayoutManager(new GridLayoutManager(requireContext(),
-                Util.isLegacyCardEnabled(requireContext()) ? 2: 1, RecyclerView.HORIZONTAL, false));
+        recyclerTopApps.setAdapter(topAppItemAdapter);
+        recyclerTopApps.setLayoutManager(new GridLayoutManager(requireContext(), 2, RecyclerView.HORIZONTAL, false));
 
-        recyclerTopGames.setAdapter(topGamesAdapter);
-        recyclerTopGames.setLayoutManager(new GridLayoutManager(requireContext(),
-                Util.isLegacyCardEnabled(requireContext()) ? 2 : 1, RecyclerView.HORIZONTAL, false));
+        recyclerTopGames.setAdapter(topGameItemAdapter);
+        recyclerTopGames.setLayoutManager(new GridLayoutManager(requireContext(), 2, RecyclerView.HORIZONTAL, false));
 
-        recyclerTopFamily.setAdapter(topFamilyAdapter);
-        recyclerTopFamily.setLayoutManager(new GridLayoutManager(requireContext(),
-                Util.isLegacyCardEnabled(requireContext()) ? 2 : 1, RecyclerView.HORIZONTAL, false));
+        recyclerTopFamily.setAdapter(topFamilyItemAdapter);
+        recyclerTopFamily.setLayoutManager(new GridLayoutManager(requireContext(), 2, RecyclerView.HORIZONTAL, false));
 
-        Util.attachSnapPager(requireContext(), recyclerTopApps);
-        Util.attachSnapPager(requireContext(), recyclerTopGames);
-        Util.attachSnapPager(requireContext(), recyclerTopFamily);
+        topAppItemAdapter.setOnClickListener((view, clusterItemIAdapter, clusterItem, integer) -> {
+            openDetailsActivity(clusterItem.getApp());
+            return false;
+        });
+        topGameItemAdapter.setOnClickListener((view, clusterItemIAdapter, clusterItem, integer) -> {
+            openDetailsActivity(clusterItem.getApp());
+            return false;
+        });
+        topFamilyItemAdapter.setOnClickListener((view, clusterItemIAdapter, clusterItem, integer) -> {
+            openDetailsActivity(clusterItem.getApp());
+            return false;
+        });
+    }
+
+    private void openDetailsActivity(App app) {
+        final Intent intent = new Intent(requireContext(), DetailsActivity.class);
+        intent.putExtra(Constants.INTENT_PACKAGE_NAME, app.getPackageName());
+        intent.putExtra(Constants.STRING_EXTRA, gson.toJson(app));
+        startActivity(intent, ViewUtil.getEmptyActivityBundle((AppCompatActivity) requireActivity()));
     }
 
     private void openCategoryAppsActivity(String categoryId) {

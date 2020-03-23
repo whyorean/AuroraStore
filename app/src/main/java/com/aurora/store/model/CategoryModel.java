@@ -8,6 +8,9 @@ public class CategoryModel {
     String categoryTitle;
     String categoryImageUrl;
 
+    public CategoryModel() {
+    }
+
     public CategoryModel(String categoryId, String categoryTitle, String categoryImageUrl) {
         this.categoryId = categoryId;
         this.categoryTitle = categoryTitle;

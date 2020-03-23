@@ -3,7 +3,6 @@ package com.aurora.store.ui.main.fragment.home;
 import android.app.Application;
 
 import androidx.annotation.NonNull;
-import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
@@ -11,9 +10,11 @@ import com.aurora.store.AuroraApplication;
 import com.aurora.store.Constants;
 import com.aurora.store.enums.ErrorType;
 import com.aurora.store.model.App;
+import com.aurora.store.model.items.ClusterItem;
 import com.aurora.store.task.FeaturedAppsTask;
 import com.aurora.store.util.PrefUtil;
 import com.aurora.store.util.Util;
+import com.aurora.store.viewmodel.BaseViewModel;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -29,17 +30,16 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
 
-public class HomeAppsModel extends AndroidViewModel {
+public class HomeAppsModel extends BaseViewModel {
 
     private Application application;
     private CompositeDisposable disposable = new CompositeDisposable();
 
-    private GooglePlayAPI api;
     private Gson gson = new GsonBuilder().excludeFieldsWithModifiers(Modifier.TRANSIENT).create();
 
-    private MutableLiveData<List<App>> mutableTopGames = new MutableLiveData<>();
-    private MutableLiveData<List<App>> mutableTopApps = new MutableLiveData<>();
-    private MutableLiveData<List<App>> mutableTopFamily = new MutableLiveData<>();
+    private MutableLiveData<List<ClusterItem>> mutableTopGames = new MutableLiveData<>();
+    private MutableLiveData<List<ClusterItem>> mutableTopApps = new MutableLiveData<>();
+    private MutableLiveData<List<ClusterItem>> mutableTopFamily = new MutableLiveData<>();
     private MutableLiveData<ErrorType> mutableError = new MutableLiveData<>();
 
     public HomeAppsModel(@NonNull Application application) {
@@ -57,15 +57,15 @@ public class HomeAppsModel extends AndroidViewModel {
         return mutableError;
     }
 
-    public LiveData<List<App>> getTopGames() {
+    public LiveData<List<ClusterItem>> getTopGames() {
         return mutableTopGames;
     }
 
-    public LiveData<List<App>> getTopApps() {
+    public LiveData<List<ClusterItem>> getTopApps() {
         return mutableTopApps;
     }
 
-    public LiveData<List<App>> getTopFamily() {
+    public LiveData<List<ClusterItem>> getTopFamily() {
         return mutableTopFamily;
     }
 
@@ -75,43 +75,56 @@ public class HomeAppsModel extends AndroidViewModel {
         String jsonString = PrefUtil.getString(application, categoryId);
         List<App> appList = gson.fromJson(jsonString, type);
         if (appList != null && !appList.isEmpty()) {
-            switch (categoryId) {
-                case Constants.TOP_APPS:
-                    mutableTopApps.setValue(appList);
-                    break;
-                case Constants.TOP_GAME:
-                    mutableTopGames.setValue(appList);
-                    break;
-                case Constants.TOP_FAMILY:
-                    mutableTopFamily.setValue(appList);
-                    break;
-            }
+            Observable
+                    .fromIterable(appList)
+                    .map(ClusterItem::new)
+                    .toList()
+                    .doOnSuccess(clusterItems -> {
+                        switch (categoryId) {
+                            case Constants.TOP_APPS:
+                                mutableTopApps.setValue(clusterItems);
+                                break;
+                            case Constants.TOP_GAME:
+                                mutableTopGames.setValue(clusterItems);
+                                break;
+                            case Constants.TOP_FAMILY:
+                                mutableTopFamily.setValue(clusterItems);
+                                break;
+                        }
+                    })
+                    .doOnError(this::handleError)
+                    .subscribe();
+
         } else
             fetchApps(categoryId);
     }
 
     private void fetchApps(String categoryId) {
-        disposable.add(Observable.fromCallable(() -> new FeaturedAppsTask(application)
+        Observable.fromCallable(() -> new FeaturedAppsTask(application)
                 .getApps(api, getPlayCategoryId(categoryId), GooglePlayAPI.SUBCATEGORY.TOP_FREE))
                 .subscribeOn(Schedulers.computation())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe((appList) -> {
+                .flatMap(apps -> {
+                    saveToCache(apps, categoryId);
+                    Util.setCacheCreateTime(application, Calendar.getInstance().getTimeInMillis());
+                    return Observable.fromIterable(apps).map(ClusterItem::new);
+                })
+                .toList()
+                .doOnSuccess(clusterItems -> {
                     switch (categoryId) {
                         case Constants.TOP_APPS:
-                            mutableTopApps.setValue(appList);
+                            mutableTopApps.setValue(clusterItems);
                             break;
                         case Constants.TOP_GAME:
-                            mutableTopGames.setValue(appList);
+                            mutableTopGames.setValue(clusterItems);
                             break;
                         case Constants.TOP_FAMILY:
-                            mutableTopFamily.setValue(appList);
+                            mutableTopFamily.setValue(clusterItems);
                             break;
                     }
-                    saveToCache(appList, categoryId);
-                    Util.setCacheCreateTime(application, Calendar.getInstance().getTimeInMillis());
-                }, err -> {
-                    mutableError.setValue(ErrorType.UNKNOWN);
-                }));
+                })
+                .doOnError(this::handleError)
+                .subscribe();
     }
 
     private String getPlayCategoryId(String categoryId) {

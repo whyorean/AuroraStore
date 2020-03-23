@@ -6,18 +6,17 @@ import android.os.Bundle;
 
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.aurora.store.AuroraApplication;
-import com.aurora.store.AutoDisposable;
 import com.aurora.store.Constants;
-import com.aurora.store.EndlessScrollListener;
 import com.aurora.store.R;
 import com.aurora.store.manager.FilterManager;
 import com.aurora.store.model.App;
 import com.aurora.store.model.FilterModel;
-import com.aurora.store.section.SearchResultSection;
+import com.aurora.store.model.items.EndlessItem;
 import com.aurora.store.sheet.AppMenuSheet;
 import com.aurora.store.sheet.FilterBottomSheet;
 import com.aurora.store.ui.details.DetailsActivity;
@@ -27,16 +26,18 @@ import com.aurora.store.util.Util;
 import com.aurora.store.util.ViewUtil;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.android.material.textfield.TextInputEditText;
+import com.mikepenz.fastadapter.FastAdapter;
+import com.mikepenz.fastadapter.adapters.ItemAdapter;
+import com.mikepenz.fastadapter.scroll.EndlessRecyclerOnScrollListener;
+import com.mikepenz.fastadapter.ui.items.ProgressItem;
 
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import io.github.luizgrp.sectionedrecyclerviewadapter.SectionedRecyclerViewAdapter;
-import io.reactivex.disposables.Disposable;
 
-public class SearchResultActivity extends BaseActivity implements SearchResultSection.ClickListener,
+public class SearchResultActivity extends BaseActivity implements
         SharedPreferences.OnSharedPreferenceChangeListener {
 
     @BindView(R.id.search_view)
@@ -50,10 +51,11 @@ public class SearchResultActivity extends BaseActivity implements SearchResultSe
 
     private String query;
     private SearchAppsModel model;
-    private SearchResultSection section;
-    private SectionedRecyclerViewAdapter adapter;
-    private AutoDisposable autoDisposable = new AutoDisposable();
     private SharedPreferences sharedPreferences;
+
+    private FastAdapter fastAdapter;
+    private ItemAdapter<EndlessItem> itemAdapter;
+    private ItemAdapter<ProgressItem> progressItemAdapter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -62,18 +64,14 @@ public class SearchResultActivity extends BaseActivity implements SearchResultSe
         ButterKnife.bind(this);
         setupSearch();
         setupResultRecycler();
+
         sharedPreferences = Util.getPrefs(this);
         sharedPreferences.registerOnSharedPreferenceChangeListener(this);
-        autoDisposable.bindTo(getLifecycle());
 
         model = new ViewModelProvider(this).get(SearchAppsModel.class);
-        model.getQueriedApps().observe(this, appList -> {
-            dispatchAppsToAdapter(appList);
-        });
-
+        model.getQueriedApps().observe(this, this::dispatchAppsToAdapter);
         model.getRelatedTags().observe(this, strings -> {
         });
-
         model.getError().observe(this, errorType -> {
             switch (errorType) {
                 case NO_API:
@@ -90,17 +88,23 @@ public class SearchResultActivity extends BaseActivity implements SearchResultSe
             }
         });
 
-        Disposable disposable = AuroraApplication
-                .getRxBus()
-                .getBus()
-                .subscribe(event -> {
+        AuroraApplication
+                .getRelayBus()
+                .doOnNext(event -> {
                     switch (event.getSubType()) {
+                        case BLACKLIST:
+                            int adapterPosition = event.getIntExtra();
+                            if (adapterPosition >= 0 && itemAdapter != null) {
+                                itemAdapter.remove(adapterPosition);
+                            }
+                            break;
                         case API_SUCCESS:
                             model.fetchQueriedApps(query, false);
                             break;
                     }
-                });
-        autoDisposable.add(disposable);
+                })
+                .subscribe();
+
         onNewIntent(getIntent());
     }
 
@@ -136,8 +140,10 @@ public class SearchResultActivity extends BaseActivity implements SearchResultSe
     }
 
     private void purgeAdapterData() {
-        section.purgeData();
-        adapter.notifyDataSetChanged();
+        recyclerView.post(() -> {
+            progressItemAdapter.clear();
+            itemAdapter.clear();
+        });
     }
 
     private void setupSearch() {
@@ -145,37 +151,52 @@ public class SearchResultActivity extends BaseActivity implements SearchResultSe
         searchView.setOnClickListener(v -> onBackPressed());
     }
 
-    private void dispatchAppsToAdapter(List<App> newList) {
-        List<App> oldList = section.getList();
-        boolean isUpdated = false;
-        if (oldList.isEmpty()) {
-            section.updateList(newList);
-            adapter.getAdapterForSection(section).notifyAllItemsChanged();
-        } else {
-            if (!newList.isEmpty()) {
-                for (App app : newList) {
-                    if (oldList.contains(app)) {
-                        continue;
-                    }
-                    section.add(app);
-                    isUpdated = true;
-                }
-                if (isUpdated)
-                    adapter.getAdapterForSection(section).notifyItemInserted(section.getCount() - 1);
-            }
-        }
+    private void dispatchAppsToAdapter(List<EndlessItem> endlessItemList) {
+        itemAdapter.add(endlessItemList);
+        recyclerView.post(() -> {
+            progressItemAdapter.clear();
+        });
     }
 
     private void setupResultRecycler() {
-        adapter = new SectionedRecyclerViewAdapter();
-        section = new SearchResultSection(this, this);
-        adapter.addSection(section);
-        recyclerView.setAdapter(adapter);
+        fastAdapter = new FastAdapter<>();
+        itemAdapter = new ItemAdapter<>();
+        progressItemAdapter = new ItemAdapter<>();
 
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
-        EndlessScrollListener endlessScrollListener = new EndlessScrollListener(layoutManager) {
+        fastAdapter.addAdapter(0, itemAdapter);
+        fastAdapter.addAdapter(1, progressItemAdapter);
+
+        fastAdapter.setOnClickListener((view, iAdapter, item, integer) -> {
+            if (item instanceof EndlessItem) {
+                final App app = ((EndlessItem) item).getApp();
+                final Intent intent = new Intent(this, DetailsActivity.class);
+                intent.putExtra(Constants.INTENT_PACKAGE_NAME, app.getPackageName());
+                intent.putExtra(Constants.STRING_EXTRA, gson.toJson(app));
+                startActivity(intent, ViewUtil.getEmptyActivityBundle(this));
+            }
+            return false;
+        });
+
+        fastAdapter.setOnLongClickListener((view, iAdapter, item, position) -> {
+            if (item instanceof EndlessItem) {
+                final App app = ((EndlessItem) item).getApp();
+                final AppMenuSheet menuSheet = new AppMenuSheet();
+                final Bundle bundle = new Bundle();
+                bundle.putInt(Constants.INT_EXTRA, Integer.parseInt(position.toString()));
+                bundle.putString(Constants.STRING_EXTRA, gson.toJson(app));
+                menuSheet.setArguments(bundle);
+                menuSheet.show(getSupportFragmentManager(), AppMenuSheet.TAG);
+            }
+            return true;
+        });
+
+        EndlessRecyclerOnScrollListener endlessScrollListener = new EndlessRecyclerOnScrollListener(progressItemAdapter) {
             @Override
-            public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
+            public void onLoadMore(int currentPage) {
+                recyclerView.post(() -> {
+                    progressItemAdapter.clear();
+                    progressItemAdapter.add(new ProgressItem());
+                });
                 model.fetchQueriedApps(query, true);
             }
         };
@@ -192,31 +213,16 @@ public class SearchResultActivity extends BaseActivity implements SearchResultSe
                 return false;
             }
         });
-        recyclerView.setLayoutManager(layoutManager);
-    }
-
-    @Override
-    public void onClick(App app) {
-        Intent intent = new Intent(this, DetailsActivity.class);
-        intent.putExtra(Constants.INTENT_PACKAGE_NAME, app.getPackageName());
-        startActivity(intent, ViewUtil.getEmptyActivityBundle(this));
-    }
-
-    @Override
-    public void onLongClick(App app) {
-        AppMenuSheet menuSheet = new AppMenuSheet();
-        menuSheet.setApp(app);
-        menuSheet.show(getSupportFragmentManager(), "BOTTOM_MENU_SHEET");
+        recyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setAdapter(fastAdapter);
     }
 
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-        switch (key) {
-            case Constants.PREFERENCE_FILTER_APPS: {
-                purgeAdapterData();
-                model.fetchQueriedApps(query, false);
-                break;
-            }
+        if (key.equals(Constants.PREFERENCE_FILTER_APPS)) {
+            purgeAdapterData();
+            model.fetchQueriedApps(query, false);
         }
     }
 }

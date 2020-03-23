@@ -20,7 +20,6 @@
 
 package com.aurora.store.sheet;
 
-import android.app.Dialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -28,7 +27,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -36,15 +34,14 @@ import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.aurora.store.Constants;
 import com.aurora.store.R;
 import com.aurora.store.adapter.ExodusAdapter;
 import com.aurora.store.model.ExodusTracker;
 import com.aurora.store.model.Report;
 import com.aurora.store.util.Log;
-import com.google.android.material.bottomsheet.BottomSheetBehavior;
-import com.google.android.material.bottomsheet.BottomSheetDialog;
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
+import org.apache.commons.lang3.StringUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -57,8 +54,12 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
-public class ExodusBottomSheet extends BottomSheetDialogFragment {
+public class ExodusBottomSheet extends BaseBottomSheet {
+
+    public static final String TAG = "EXODUS_SHEET";
+    private static final String BASE_URL = "https://reports.exodus-privacy.eu.org/reports/";
 
     @BindView(R.id.exodus_recycler)
     RecyclerView recyclerView;
@@ -71,47 +72,45 @@ public class ExodusBottomSheet extends BottomSheetDialogFragment {
 
     private Report report;
 
-    public ExodusBottomSheet(Report report) {
-        this.report = report;
-    }
-
-    @NonNull
-    @Override
-    public Dialog onCreateDialog(Bundle savedInstanceState) {
-        BottomSheetDialog dialog = (BottomSheetDialog) super.onCreateDialog(savedInstanceState);
-        dialog.setOnShowListener(d -> {
-            BottomSheetDialog bottomSheetDialog = (BottomSheetDialog) d;
-            FrameLayout bottomSheet = bottomSheetDialog.findViewById(com.google.android.material.R.id.design_bottom_sheet);
-            if (bottomSheet != null)
-                BottomSheetBehavior.from(bottomSheet).setState(BottomSheetBehavior.STATE_EXPANDED);
-        });
-        return dialog;
+    public ExodusBottomSheet() {
     }
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateContentView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.sheet_exodus, container, false);
         ButterKnife.bind(this, view);
         return view;
     }
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+    public void onContentViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false));
-        recyclerView.setAdapter(new ExodusAdapter(getContext(), getTrackerData(report)));
 
-        exodus_app_detail.setText(report.getVersion());
-        StringBuilder sb = new StringBuilder();
-        sb.append("v");
-        sb.append(report.getVersion());
-        sb.append(".");
-        sb.append(report.getVersionCode());
-        exodus_app_version.setText(sb);
+        if (getArguments() != null) {
+            Bundle bundle = getArguments();
+            stringExtra = bundle.getString(Constants.STRING_EXTRA);
+            report = gson.fromJson(stringExtra, Report.class);
+            populateData();
+        } else {
+            dismissAllowingStateLoss();
+        }
+    }
 
-        btn_report.setOnClickListener(v -> requireContext().startActivity(new Intent(Intent.ACTION_VIEW,
-                Uri.parse("https://reports.exodus-privacy.eu.org/reports/" + report.getId() + "/"))));
+    @OnClick(R.id.btn_report)
+    public void viewReport() {
+        requireContext().startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(BASE_URL + report.getId())));
+    }
+
+    private void populateData() {
+        if (report != null) {
+            exodus_app_detail.setText(report.getVersion());
+            exodus_app_version.setText(StringUtils.joinWith(".", report.getVersion(), report.getVersionCode()));
+            recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false));
+            recyclerView.setAdapter(new ExodusAdapter(getContext(), getTrackerData(report)));
+        } else {
+            dismissAllowingStateLoss();
+        }
     }
 
     private List<ExodusTracker> getTrackerData(Report report) {

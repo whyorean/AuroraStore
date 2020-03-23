@@ -9,28 +9,29 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.aurora.store.Constants;
-import com.aurora.store.EndlessScrollListener;
 import com.aurora.store.R;
 import com.aurora.store.model.App;
-import com.aurora.store.section.SearchResultSection;
+import com.aurora.store.model.items.EndlessItem;
 import com.aurora.store.sheet.AppMenuSheet;
 import com.aurora.store.ui.details.DetailsActivity;
 import com.aurora.store.ui.single.activity.BaseActivity;
 import com.aurora.store.util.ViewUtil;
+import com.mikepenz.fastadapter.FastAdapter;
+import com.mikepenz.fastadapter.adapters.ItemAdapter;
+import com.mikepenz.fastadapter.scroll.EndlessRecyclerOnScrollListener;
+import com.mikepenz.fastadapter.ui.items.ProgressItem;
 
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import io.github.luizgrp.sectionedrecyclerviewadapter.SectionedRecyclerViewAdapter;
 
-public class DevAppsActivity extends BaseActivity implements SearchResultSection.ClickListener {
-
-    private static final String TAG_DEV_APPS = "TAG_DEV_APPS";
+public class DevAppsActivity extends BaseActivity {
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
@@ -38,8 +39,10 @@ public class DevAppsActivity extends BaseActivity implements SearchResultSection
     RecyclerView recyclerView;
 
     private DevAppsModel model;
-    private SearchResultSection section;
-    private SectionedRecyclerViewAdapter adapter;
+
+    private FastAdapter fastAdapter;
+    private ItemAdapter<EndlessItem> itemAdapter;
+    private ItemAdapter<ProgressItem> progressItemAdapter;
 
     private String query;
     private String title;
@@ -59,9 +62,7 @@ public class DevAppsActivity extends BaseActivity implements SearchResultSection
                 setupActionBar();
                 setupRecycler();
                 model = new ViewModelProvider(this).get(DevAppsModel.class);
-                model.getQueriedApps().observe(this, appList -> {
-                    dispatchAppsToAdapter(appList);
-                });
+                model.getQueriedApps().observe(this, this::dispatchAppsToAdapter);
                 model.fetchQueriedApps(query, false);
             } else {
                 Toast.makeText(this, "No dev name received", Toast.LENGTH_SHORT).show();
@@ -72,12 +73,18 @@ public class DevAppsActivity extends BaseActivity implements SearchResultSection
 
     @Override
     public boolean onOptionsItemSelected(final MenuItem menuItem) {
-        switch (menuItem.getItemId()) {
-            case android.R.id.home:
-                onBackPressed();
-                return true;
+        if (menuItem.getItemId() == android.R.id.home) {
+            onBackPressed();
+            return true;
         }
         return super.onOptionsItemSelected(menuItem);
+    }
+
+    private void dispatchAppsToAdapter(List<EndlessItem> endlessItemList) {
+        itemAdapter.add(endlessItemList);
+        recyclerView.post(() -> {
+            progressItemAdapter.clear();
+        });
     }
 
     private void setupActionBar() {
@@ -90,49 +97,52 @@ public class DevAppsActivity extends BaseActivity implements SearchResultSection
         }
     }
 
-    private void dispatchAppsToAdapter(List<App> newList) {
-        List<App> oldList = section.getList();
-        if (oldList.isEmpty()) {
-            section.updateList(newList);
-            adapter.notifyDataSetChanged();
-        } else {
-            if (!newList.isEmpty()) {
-                for (App app : newList)
-                    section.add(app);
-                adapter.notifyItemInserted(section.getCount() - 1);
-            }
-        }
-    }
-
     private void setupRecycler() {
-        section = new SearchResultSection(this, this);
-        adapter = new SectionedRecyclerViewAdapter();
-        adapter.addSection(TAG_DEV_APPS, section);
-        recyclerView.setAdapter(adapter);
+        fastAdapter = new FastAdapter<>();
+        itemAdapter = new ItemAdapter<>();
+        progressItemAdapter = new ItemAdapter<>();
 
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
-        EndlessScrollListener endlessScrollListener = new EndlessScrollListener(layoutManager) {
+        fastAdapter.addAdapter(0, itemAdapter);
+        fastAdapter.addAdapter(1, progressItemAdapter);
+
+        fastAdapter.setOnClickListener((view, iAdapter, item, integer) -> {
+            if (item instanceof EndlessItem) {
+                final App app = ((EndlessItem) item).getApp();
+                final Intent intent = new Intent(this, DetailsActivity.class);
+                intent.putExtra(Constants.INTENT_PACKAGE_NAME, app.getPackageName());
+                intent.putExtra(Constants.STRING_EXTRA, gson.toJson(app));
+                startActivity(intent, ViewUtil.getEmptyActivityBundle(this));
+            }
+            return false;
+        });
+
+        fastAdapter.setOnLongClickListener((view, iAdapter, item, position) -> {
+            if (item instanceof EndlessItem) {
+                final App app = ((EndlessItem) item).getApp();
+                final AppMenuSheet menuSheet = new AppMenuSheet();
+                final Bundle bundle = new Bundle();
+                bundle.putInt(Constants.INT_EXTRA, Integer.parseInt(position.toString()));
+                bundle.putString(Constants.STRING_EXTRA, gson.toJson(app));
+                menuSheet.setArguments(bundle);
+                menuSheet.show(getSupportFragmentManager(), AppMenuSheet.TAG);
+            }
+            return true;
+        });
+
+        EndlessRecyclerOnScrollListener endlessScrollListener = new EndlessRecyclerOnScrollListener(progressItemAdapter) {
             @Override
-            public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
+            public void onLoadMore(int currentPage) {
+                recyclerView.post(() -> {
+                    progressItemAdapter.clear();
+                    progressItemAdapter.add(new ProgressItem());
+                });
                 model.fetchQueriedApps(query, true);
             }
         };
+
         recyclerView.addOnScrollListener(endlessScrollListener);
-        recyclerView.setLayoutManager(layoutManager);
-    }
-
-    @Override
-    public void onClick(App app) {
-        DetailsActivity.app = app;
-        Intent intent = new Intent(this, DetailsActivity.class);
-        intent.putExtra(Constants.INTENT_PACKAGE_NAME, app.getPackageName());
-        startActivity(intent, ViewUtil.getEmptyActivityBundle(this));
-    }
-
-    @Override
-    public void onLongClick(App app) {
-        AppMenuSheet menuSheet = new AppMenuSheet();
-        menuSheet.setApp(app);
-        menuSheet.show(getSupportFragmentManager(), "BOTTOM_MENU_SHEET");
+        recyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setAdapter(fastAdapter);
     }
 }
