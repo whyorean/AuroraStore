@@ -12,8 +12,7 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class ExodusTask extends ContextWrapper {
-    /*This is Yalp Store's EXODUS API key, will replace with mine once I get it.*/
-    private static final String EXODUS_API_KEY = "Token bf1108aec9c28c5c286c63e89230a71f77b35a5d";
+    private static final String EXODUS_API_KEY = "Token bbe6ebae4ad45a9cbacb17d69739799b8df2c7ae";
     private Context context;
 
     public ExodusTask(Context context) {
