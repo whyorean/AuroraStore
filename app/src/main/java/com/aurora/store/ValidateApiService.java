@@ -14,20 +14,16 @@ import com.aurora.store.util.ApiBuilderUtil;
 import com.aurora.store.util.Log;
 import com.dragons.aurora.playstoreapiv2.AuthException;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
-import com.dragons.aurora.playstoreapiv2.TocResponse;
 
 import java.net.UnknownHostException;
 
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
 
 public class ValidateApiService extends Service {
+
     public static ValidateApiService instance = null;
-
-    private CompositeDisposable disposable = new CompositeDisposable();
-
 
     public static boolean isServiceRunning() {
         try {
@@ -62,24 +58,22 @@ public class ValidateApiService extends Service {
 
     private void buildAndTestApi() {
         Log.d(getString(R.string.toast_api_build_api));
-        disposable.clear();
-        disposable.add(Observable.fromCallable(() -> new PlayStoreApiAuthenticator()
+        Observable.fromCallable(() -> new PlayStoreApiAuthenticator()
                 .getPlayApi(this))
-                .flatMap(api -> {
-                    AuroraApplication.api = api;
-                    return getTocResponse(api);
-                })
-                .subscribeOn(Schedulers.computation())
+                .subscribeOn(Schedulers.io())
+                .map(googlePlayAPI -> AuroraApplication.api = googlePlayAPI)
+                .map(GooglePlayAPI::toc)
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(response -> {
+                .doOnNext(tocResponse -> {
                     Log.d(getString(R.string.toast_api_all_ok));
                     AuroraApplication.rxNotify(new Event(Event.SubType.API_SUCCESS));
                     stopSelf();
-                }, err -> {
-                    Log.d(getString(R.string.toast_api_build_failed));
-                    processException(err);
                 })
-        );
+                .doOnError(throwable -> {
+                    processException(throwable);
+                    stopSelf();
+                })
+                .subscribe();
     }
 
     private void processException(Throwable e) {
@@ -96,33 +90,20 @@ public class ValidateApiService extends Service {
     }
 
     public void getNewAuthToken() {
-        disposable.clear();
-        disposable.add(Observable.fromCallable(() -> ApiBuilderUtil
-                .generateApiWithNewAuthToken(this))
-                .flatMap(api -> {
-                    AuroraApplication.api = api;
-                    return getTocResponse(api);
-                })
-                .subscribeOn(Schedulers.computation())
+        Observable.fromCallable(() -> ApiBuilderUtil.generateApiWithNewAuthToken(this))
+                .subscribeOn(Schedulers.io())
+                .map(googlePlayAPI -> AuroraApplication.api = googlePlayAPI)
+                .map(GooglePlayAPI::toc)
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(response -> {
+                .doOnNext(tocResponse -> {
                     AuroraApplication.rxNotify(new Event(Event.SubType.API_SUCCESS));
                     stopSelf();
-                }, err -> {
-                    Log.e(err.getMessage());
+                })
+                .doOnError(throwable -> {
                     AuroraApplication.rxNotify(new Event(Event.SubType.API_ERROR));
                 })
-        );
+                .subscribe();
     }
-
-    public Observable<TocResponse> getTocResponse(GooglePlayAPI api) {
-        return Observable.create(emitter -> {
-            TocResponse tocResponse = api.toc();
-            emitter.onNext(tocResponse);
-            emitter.onComplete();
-        });
-    }
-
 
     @Override
     public void onDestroy() {

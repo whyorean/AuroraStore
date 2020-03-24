@@ -56,7 +56,6 @@ import com.aurora.store.model.Update;
 import com.aurora.store.task.NetworkTask;
 import com.aurora.store.ui.accounts.AccountsActivity;
 import com.aurora.store.ui.installed.InstalledAppActivity;
-import com.aurora.store.ui.intro.IntroActivity;
 import com.aurora.store.ui.preference.SettingsActivity;
 import com.aurora.store.ui.search.activity.SearchActivity;
 import com.aurora.store.ui.single.activity.BaseActivity;
@@ -66,14 +65,12 @@ import com.aurora.store.util.Accountant;
 import com.aurora.store.util.CertUtil;
 import com.aurora.store.util.Log;
 import com.aurora.store.util.NetworkUtil;
-import com.aurora.store.util.PrefUtil;
 import com.aurora.store.util.TextUtil;
 import com.aurora.store.util.Util;
 import com.aurora.store.util.ViewUtil;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.navigation.NavigationView;
-import com.google.gson.Gson;
 
 import java.util.Calendar;
 
@@ -119,16 +116,10 @@ public class AuroraActivity extends BaseActivity {
         fragmentCur = Util.getDefaultTab(this);
         onNewIntent(getIntent());
 
-        if (!PrefUtil.getBoolean(this, Constants.PREFERENCE_DO_NOT_SHOW_INTRO)) {
-            PrefUtil.putBoolean(this, Constants.PREFERENCE_DO_NOT_SHOW_INTRO, true);
-            startActivity(new Intent(this, IntroActivity.class));
-            finish();
-        } else {
-            if (Accountant.isLoggedIn(this))
-                init();
-            else
-                startActivity(new Intent(this, AccountsActivity.class));
-        }
+        if (Accountant.isLoggedIn(this))
+            populateData();
+        else
+            startActivity(new Intent(this, AccountsActivity.class));
 
         if (NetworkUtil.isConnected(this)) {
             if (Util.isCacheObsolete(this))
@@ -140,7 +131,7 @@ public class AuroraActivity extends BaseActivity {
         checkPermissions();
     }
 
-    private void init() {
+    private void populateData() {
         setupNavigation();
         setupDrawer();
     }
@@ -343,7 +334,6 @@ public class AuroraActivity extends BaseActivity {
                 .subscribe(response -> {
                     try {
                         Util.setSelfUpdateTime(this, Calendar.getInstance().getTimeInMillis());
-                        Gson gson = new Gson();
                         Update update = gson.fromJson(response, Update.class);
 
                         if (update.getVersionCode() > BuildConfig.VERSION_CODE) {

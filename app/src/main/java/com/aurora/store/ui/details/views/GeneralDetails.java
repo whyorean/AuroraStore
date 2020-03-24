@@ -166,8 +166,7 @@ public class GeneralDetails extends AbstractDetails {
 
         drawOfferDetails();
         drawFeatures();
-        show(rootLayout, R.id.developer_container);
-        show(rootLayout, R.id.chip_group_info, R.id.app_desc_short);
+        show(R.id.developer_container, R.id.chip_group_info, R.id.app_desc_short);
     }
 
     private void drawOfferDetails() {
@@ -244,7 +243,7 @@ public class GeneralDetails extends AbstractDetails {
         if (TextUtils.isEmpty(app.getDescription())) {
             hide(R.id.more_layout);
         } else {
-            show(rootLayout, R.id.more_layout);
+            show(R.id.more_layout);
             moreLayout.setOnClickListener(v -> {
                 ReadMoreActivity.app = app;
                 activity.startActivity(new Intent(activity, ReadMoreActivity.class),

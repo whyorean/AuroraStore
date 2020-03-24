@@ -38,6 +38,7 @@ import androidx.core.content.ContextCompat;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
+import com.aurora.store.Constants;
 import com.aurora.store.R;
 import com.aurora.store.api.PlayStoreApiAuthenticator;
 import com.aurora.store.ui.main.AuroraActivity;
@@ -48,6 +49,7 @@ import com.aurora.store.ui.single.activity.SplashActivity;
 import com.aurora.store.util.Accountant;
 import com.aurora.store.util.ContextUtil;
 import com.aurora.store.util.NetworkUtil;
+import com.aurora.store.util.PrefUtil;
 import com.aurora.store.util.ViewUtil;
 import com.google.android.material.button.MaterialButton;
 
@@ -81,6 +83,10 @@ public class IntroActivity extends BaseActivity {
         ButterKnife.bind(this);
         setupActionbar();
         setupNavigation();
+
+        //Do not show this again. Unless asked.
+        PrefUtil.putBoolean(this, Constants.PREFERENCE_DO_NOT_SHOW_INTRO, true);
+        Accountant.completeCheckout(this);
     }
 
     @Override
@@ -91,10 +97,9 @@ public class IntroActivity extends BaseActivity {
 
     @Override
     public boolean onOptionsItemSelected(final MenuItem menuItem) {
-        switch (menuItem.getItemId()) {
-            case R.id.action_setting:
-                startActivity(new Intent(this, SettingsActivity.class), ViewUtil.getEmptyActivityBundle(this));
-                return true;
+        if (menuItem.getItemId() == R.id.action_setting) {
+            startActivity(new Intent(this, SettingsActivity.class), ViewUtil.getEmptyActivityBundle(this));
+            return true;
         }
         return super.onOptionsItemSelected(menuItem);
     }
@@ -104,7 +109,7 @@ public class IntroActivity extends BaseActivity {
         super.onResume();
         if (Accountant.isLoggedIn(this)) {
             startActivity(new Intent(this, AuroraActivity.class));
-            supportFinishAfterTransition();
+            finish();
         }
     }
 

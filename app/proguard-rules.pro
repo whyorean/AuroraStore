@@ -55,3 +55,8 @@
 -keepclasseswithmembernames class * { @butterknife.* <fields>; }
 
 -keep public class com.aurora.store.ui.preference.fragment.*
+
+-keepclassmembers enum * { *; }
+-keepclassmembers class com.aurora.store.** {
+    <fields>;
+}

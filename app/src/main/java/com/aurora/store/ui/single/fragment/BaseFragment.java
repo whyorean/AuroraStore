@@ -12,11 +12,14 @@ import androidx.fragment.app.Fragment;
 import com.aurora.store.R;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
+import java.lang.reflect.Modifier;
 
 public class BaseFragment extends Fragment {
 
     protected boolean awaiting = false;
-    protected Gson gson = new Gson();
+    protected Gson gson = new GsonBuilder().excludeFieldsWithModifiers(Modifier.TRANSIENT).create();
 
     @Override
     public void onAttach(@NonNull Context context) {

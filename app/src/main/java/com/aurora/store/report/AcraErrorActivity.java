@@ -15,10 +15,13 @@ import com.aurora.store.R;
 import com.aurora.store.ui.single.activity.BaseActivity;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import org.acra.ReportField;
 import org.acra.data.CrashReportData;
 import org.apache.commons.lang3.StringUtils;
+
+import java.lang.reflect.Modifier;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -69,7 +72,7 @@ public class AcraErrorActivity extends BaseActivity {
         final String errorJson = intent.getStringExtra("ERROR_CONTENT");
 
         if (errorJson != null) {
-            Gson gson = new Gson();
+            Gson gson = new GsonBuilder().excludeFieldsWithModifiers(Modifier.TRANSIENT).create();
             reportBuilder = new StringBuilder();
             CrashReportData crashReportData = gson.fromJson(errorJson, CrashReportData.class);
 

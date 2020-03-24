@@ -37,7 +37,6 @@ public class Accountant {
         return PrefUtil.getBoolean(context, LOGGED_IN);
     }
 
-
     public static Boolean isAnonymous(Context context) {
         return PrefUtil.getBoolean(context, ANONYMOUS);
     }

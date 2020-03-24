@@ -119,7 +119,7 @@ public class Beta extends AbstractDetails {
 
         if (null != app.getUserReview() && !TextUtils.isEmpty(app.getUserReview().getComment())) {
             editText.setText(app.getUserReview().getComment());
-            show(rootLayout, R.id.beta_delete_button);
+            show(R.id.beta_delete_button);
         }
     }
 

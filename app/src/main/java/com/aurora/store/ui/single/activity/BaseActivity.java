@@ -14,30 +14,43 @@ import com.aurora.store.util.ThemeUtil;
 import com.aurora.store.viewmodel.ConnectionLiveData;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
+import java.lang.reflect.Modifier;
 
 public abstract class BaseActivity extends AppCompatActivity {
 
     protected int intExtra;
     protected String stringExtra;
-    protected Gson gson = new Gson();
+    protected boolean awaiting = false;
+    protected Gson gson = new GsonBuilder().excludeFieldsWithModifiers(Modifier.TRANSIENT).create();
+
     private ThemeUtil themeUtil = new ThemeUtil();
+    private ConnectionLiveData connectionLiveData;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         themeUtil.onCreate(this);
+        connectionLiveData = new ConnectionLiveData(this);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         themeUtil.onResume(this);
-        new ConnectionLiveData(this).observe(this, connectionModel -> {
+        connectionLiveData.observe(this, connectionModel -> {
             AuroraApplication
                     .rxNotify(new Event(connectionModel.isConnected()
-                    ? Event.SubType.NETWORK_AVAILABLE
-                    : Event.SubType.NETWORK_UNAVAILABLE));
+                            ? Event.SubType.NETWORK_AVAILABLE
+                            : Event.SubType.NETWORK_UNAVAILABLE));
         });
+    }
+
+    @Override
+    protected void onDestroy() {
+        connectionLiveData.removeObservers(this);
+        super.onDestroy();
     }
 
     protected void showSnackBar(View view, @StringRes int message, int duration, View.OnClickListener onClickListener) {

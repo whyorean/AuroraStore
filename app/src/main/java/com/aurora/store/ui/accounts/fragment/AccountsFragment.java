@@ -48,7 +48,6 @@ import com.aurora.store.util.ContextUtil;
 import com.aurora.store.util.Log;
 import com.aurora.store.util.NetworkUtil;
 import com.aurora.store.util.PrefUtil;
-import com.aurora.store.util.Util;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 import com.dragons.aurora.playstoreapiv2.Image;
 import com.dragons.aurora.playstoreapiv2.UserProfile;
@@ -69,9 +68,9 @@ public class AccountsFragment extends Fragment {
     private static final String URL_DISCLAIMER = "https://gitlab.com/AuroraOSS/AuroraStore/raw/master/DISCLAIMER";
 
     @BindView(R.id.view_switcher_top)
-    ViewSwitcher mViewSwitcherTop;
+    ViewSwitcher viewSwitcherTop;
     @BindView(R.id.view_switcher_bottom)
-    ViewSwitcher mViewSwitcherBottom;
+    ViewSwitcher viewSwitcherBottom;
     @BindView(R.id.init)
     LinearLayout initLayout;
     @BindView(R.id.info)
@@ -115,7 +114,6 @@ public class AccountsFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        init();
     }
 
     @Override
@@ -123,7 +121,6 @@ public class AccountsFragment extends Fragment {
         super.onResume();
         if (Accountant.isLoggedIn(requireContext())) {
             init();
-            Util.validateApi(requireContext());
         }
     }
 
@@ -174,11 +171,25 @@ public class AccountsFragment extends Fragment {
 
     private void init() {
         boolean isLoggedIn = Accountant.isLoggedIn(requireContext());
-        progressBar.setVisibility(View.INVISIBLE);
         switchTopViews(isLoggedIn);
         switchBottomViews(isLoggedIn);
         setupChips();
         setupProfile();
+        progressBar.setVisibility(View.INVISIBLE);
+    }
+
+    private void switchTopViews(boolean showInfo) {
+        if (viewSwitcherTop.getCurrentView() == initLayout && showInfo)
+            viewSwitcherTop.showNext();
+        else if (viewSwitcherTop.getCurrentView() == infoLayout && !showInfo)
+            viewSwitcherTop.showPrevious();
+    }
+
+    private void switchBottomViews(boolean showLogout) {
+        if (viewSwitcherBottom.getCurrentView() == loginLayout && showLogout)
+            viewSwitcherBottom.showNext();
+        else if (viewSwitcherBottom.getCurrentView() == logoutLayout && !showLogout)
+            viewSwitcherBottom.showPrevious();
     }
 
     private void setupChips() {
@@ -191,31 +202,6 @@ public class AccountsFragment extends Fragment {
         chipLicense.setOnClickListener(v -> {
             openWebView(URL_LICENSE);
         });
-    }
-
-    private void switchTopViews(boolean showInfo) {
-        if (mViewSwitcherTop.getCurrentView() == initLayout && showInfo)
-            mViewSwitcherTop.showNext();
-        else if (mViewSwitcherTop.getCurrentView() == infoLayout && !showInfo)
-            mViewSwitcherTop.showPrevious();
-    }
-
-    private void switchBottomViews(boolean showLogout) {
-        if (mViewSwitcherBottom.getCurrentView() == loginLayout && showLogout)
-            mViewSwitcherBottom.showNext();
-        else if (mViewSwitcherBottom.getCurrentView() == logoutLayout && !showLogout)
-            mViewSwitcherBottom.showPrevious();
-    }
-
-    private void updateUI(UserProfile userProfile) {
-        PrefUtil.putString(requireContext(), Accountant.PROFILE_NAME, userProfile.getName());
-        for (Image image : userProfile.getImageList()) {
-            if (image.getImageType() == GooglePlayAPI.IMAGE_TYPE_APP_ICON) {
-                PrefUtil.putString(requireContext(), Accountant.PROFILE_AVATAR, image.getImageUrl());
-            }
-        }
-        setupProfile();
-        init();
     }
 
     private void setupProfile() {
@@ -232,6 +218,18 @@ public class AccountsFragment extends Fragment {
                 ? "auroraoss@gmail.com"
                 : Accountant.getEmail(requireContext()));
     }
+
+    private void updateUI(UserProfile userProfile) {
+        PrefUtil.putString(requireContext(), Accountant.PROFILE_NAME, userProfile.getName());
+        for (Image image : userProfile.getImageList()) {
+            if (image.getImageType() == GooglePlayAPI.IMAGE_TYPE_APP_ICON) {
+                PrefUtil.putString(requireContext(), Accountant.PROFILE_AVATAR, image.getImageUrl());
+            }
+        }
+        setupProfile();
+        init();
+    }
+
 
     private void resetAnonymousLogin() {
         btnAnonymous.setEnabled(true);

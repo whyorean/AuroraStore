@@ -26,4 +26,11 @@
         android:icon="@drawable/ic_menu_settings"
         android:title="@string/menu_setting"
         app:showAsAction="ifRoom" />
+
+
+    <item
+        android:id="@+id/action_home"
+        android:icon="@drawable/ic_home"
+        android:title="@string/action_home"
+        app:showAsAction="never" />
 </menu>

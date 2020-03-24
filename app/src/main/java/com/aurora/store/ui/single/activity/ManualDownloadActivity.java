@@ -103,6 +103,7 @@ public class ManualDownloadActivity extends BaseActivity {
         if (intent != null) {
             stringExtra = intent.getStringExtra(Constants.STRING_EXTRA);
             app = gson.fromJson(stringExtra, App.class);
+            Log.e(app.toString());
             if (app != null) {
                 populateData();
             }

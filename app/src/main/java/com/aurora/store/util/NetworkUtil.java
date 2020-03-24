@@ -27,16 +27,14 @@ import android.net.NetworkInfo;
 import android.os.Build;
 
 public class NetworkUtil {
-    public static boolean isConnected(Context context) {
-        if (context == null)
-            return false;
 
-        Object object = context.getSystemService(Context.CONNECTIVITY_SERVICE);
-        ConnectivityManager manager = (ConnectivityManager) object;
+    public static boolean isConnected(Context context) {
+        final Object object = context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        final ConnectivityManager manager = (ConnectivityManager) object;
 
         if (manager != null) {
             if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-                NetworkCapabilities capabilities = manager.getNetworkCapabilities(manager.getActiveNetwork());
+                final NetworkCapabilities capabilities = manager.getNetworkCapabilities(manager.getActiveNetwork());
                 if (capabilities != null) {
                     return capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR)
                             || capabilities.hasTransport(NetworkCapabilities.TRANSPORT_BLUETOOTH)
@@ -48,11 +46,10 @@ public class NetworkUtil {
                 }
             } else {
                 try {
-                    NetworkInfo activeNetworkInfo = manager.getActiveNetworkInfo();
-                    if (activeNetworkInfo != null && activeNetworkInfo.isConnected()) {
-                        return true;
-                    }
+                    final NetworkInfo networkInfo = manager.getActiveNetworkInfo();
+                    return networkInfo != null && networkInfo.isConnected();
                 } catch (Exception e) {
+                    Log.d(e.getMessage());
                     return false;
                 }
             }

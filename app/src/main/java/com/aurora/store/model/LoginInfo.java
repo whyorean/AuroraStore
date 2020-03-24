@@ -29,7 +29,9 @@ import android.text.TextUtils;
 import com.aurora.store.util.Accountant;
 import com.aurora.store.util.PrefUtil;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
+import java.lang.reflect.Modifier;
 import java.util.Locale;
 
 import lombok.Data;
@@ -52,14 +54,14 @@ public class LoginInfo {
     private String dfeCookie;
 
     public static void save(Context context, LoginInfo loginInfo) {
-        Gson gson = new Gson();
+        Gson gson = new GsonBuilder().excludeFieldsWithModifiers(Modifier.TRANSIENT).create();
         String loginString = gson.toJson(loginInfo, LoginInfo.class);
         PrefUtil.putBoolean(context, Accountant.LOGGED_IN, true);
         PrefUtil.putString(context, Accountant.DATA, loginString);
     }
 
     public static LoginInfo getSavedInstance(Context context) {
-        Gson gson = new Gson();
+        Gson gson = new GsonBuilder().excludeFieldsWithModifiers(Modifier.TRANSIENT).create();
         String loginString = PrefUtil.getString(context, Accountant.DATA);
         LoginInfo loginInfo = gson.fromJson(loginString, LoginInfo.class);
         return loginInfo == null ? new LoginInfo() : loginInfo;

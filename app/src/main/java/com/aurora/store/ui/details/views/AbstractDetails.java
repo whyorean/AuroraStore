@@ -39,6 +39,10 @@ import com.aurora.store.ui.single.activity.ManualDownloadActivity;
 import com.aurora.store.util.Log;
 import com.aurora.store.util.ViewUtil;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
+import java.lang.reflect.Modifier;
 
 import butterknife.ButterKnife;
 
@@ -47,6 +51,7 @@ public abstract class AbstractDetails {
     protected DetailsActivity activity;
     protected Context context;
     protected App app;
+    protected Gson gson = new GsonBuilder().excludeFieldsWithModifiers(Modifier.TRANSIENT).create();
 
     public AbstractDetails(DetailsActivity activity, App app) {
         this.activity = activity;
@@ -93,12 +98,6 @@ public abstract class AbstractDetails {
 
     protected void hide(int viewID) {
         activity.findViewById(viewID).setVisibility(View.GONE);
-    }
-
-    protected void show(ViewGroup viewGroup, int... viewIds) {
-        for (int viewId : viewIds) {
-            activity.findViewById(viewId).setVisibility(View.VISIBLE);
-        }
     }
 
     protected void show(int... viewIds) {

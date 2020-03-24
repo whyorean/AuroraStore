@@ -31,9 +31,9 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.aurora.store.R;
 import com.aurora.store.ui.accounts.fragment.AccountsFragment;
+import com.aurora.store.ui.main.AuroraActivity;
 import com.aurora.store.ui.preference.SettingsActivity;
 import com.aurora.store.ui.single.activity.BaseActivity;
-import com.aurora.store.util.Accountant;
 import com.aurora.store.util.ViewUtil;
 
 import butterknife.BindView;
@@ -58,7 +58,6 @@ public class AccountsActivity extends BaseActivity {
                 .commitAllowingStateLoss();
     }
 
-
     @Override
     public boolean onOptionsItemSelected(final MenuItem menuItem) {
         switch (menuItem.getItemId()) {
@@ -67,7 +66,15 @@ public class AccountsActivity extends BaseActivity {
                 return true;
             }
             case R.id.action_setting: {
-                startActivity(new Intent(this, SettingsActivity.class), ViewUtil.getEmptyActivityBundle(this));
+                startActivity(new Intent(this, SettingsActivity.class),
+                        ViewUtil.getEmptyActivityBundle(this));
+                finishAfterTransition();
+                return true;
+            }
+            case R.id.action_home: {
+                startActivity(new Intent(this, AuroraActivity.class),
+                        ViewUtil.getEmptyActivityBundle(this));
+                finishAfterTransition();
                 return true;
             }
         }
@@ -80,14 +87,9 @@ public class AccountsActivity extends BaseActivity {
         return true;
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-    }
-
     private void setupActionbar() {
         setSupportActionBar(toolbar);
-        ActionBar actionBar = getSupportActionBar();
+        final ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.setDisplayShowCustomEnabled(true);

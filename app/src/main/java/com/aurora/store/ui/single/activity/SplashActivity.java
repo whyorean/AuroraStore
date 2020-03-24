@@ -13,11 +13,14 @@ import com.aurora.store.AuroraApplication;
 import com.aurora.store.Constants;
 import com.aurora.store.R;
 import com.aurora.store.ValidateApiService;
+import com.aurora.store.events.Event;
+import com.aurora.store.ui.accounts.AccountsActivity;
 import com.aurora.store.ui.intro.IntroActivity;
 import com.aurora.store.ui.main.AuroraActivity;
 import com.aurora.store.util.Accountant;
 import com.aurora.store.util.ContextUtil;
 import com.aurora.store.util.Log;
+import com.aurora.store.util.NetworkUtil;
 import com.aurora.store.util.PrefUtil;
 import com.aurora.store.util.Util;
 import com.google.android.material.button.MaterialButton;
@@ -51,46 +54,63 @@ public class SplashActivity extends BaseActivity {
         setContentView(R.layout.activity_splash);
         ButterKnife.bind(this);
 
+        //Check if intro was shown to user & launch intro activity first
         if (!PrefUtil.getBoolean(this, Constants.PREFERENCE_DO_NOT_SHOW_INTRO)) {
-            PrefUtil.putBoolean(this, Constants.PREFERENCE_DO_NOT_SHOW_INTRO, true);
             startActivity(new Intent(this, IntroActivity.class));
             supportFinishAfterTransition();
-            return;
-        }
+        } else {
+            awaiting = true;
+            disposable.add(AuroraApplication
+                    .getRelayBus()
+                    .doOnNext(event -> {
+                        switch (event.getSubType()) {
+                            case NETWORK_AVAILABLE: {
+                                if (awaiting)
+                                    buildAndTestApi();
+                                break;
+                            }
+                            case NETWORK_UNAVAILABLE: {
+                                status.setText(getString(R.string.error_no_network));
+                                break;
+                            }
+                            case API_SUCCESS: {
+                                status.setText(getString(R.string.toast_api_all_ok));
+                                awaiting = false;
+                                launchAuroraActivity();
+                                break;
+                            }
+                            case API_FAILED: {
+                                status.setText(getString(R.string.toast_api_build_retrying));
+                                awaiting = true;
+                                break;
+                            }
+                            case API_ERROR: {
+                                status.setText(getString(R.string.toast_api_build_failed));
+                                awaiting = false;
+                                launchAccountsActivity();
+                                break;
+                            }
+                        }
+                    })
+                    .subscribe());
 
-        disposable.add(AuroraApplication
-                .getRxBus()
-                .getBus()
-                .subscribe(event -> {
-                    switch (event.getSubType()) {
-                        case NETWORK_AVAILABLE: {
-                            buildAndTestApi();
-                            break;
-                        }
-                        case NETWORK_UNAVAILABLE: {
-                            status.setText(getString(R.string.error_no_network));
-                            break;
-                        }
-                        case API_SUCCESS: {
-                            status.setText(getString(R.string.toast_api_all_ok));
-                            launchAuroraActivity();
-                            break;
-                        }
-                        case API_FAILED: {
-                            status.setText(getString(R.string.toast_api_build_retrying));
-                            break;
-                        }
-                        case API_ERROR: {
-                            status.setText(getString(R.string.toast_api_build_failed));
-                            launchAccountsActivity();
-                            break;
-                        }
-                    }
-                }));
+            if (NetworkUtil.isConnected(this)) {
+                buildAndTestApi();
+            } else {
+                awaiting = true;
+                AuroraApplication.rxNotify(new Event(Event.SubType.NETWORK_UNAVAILABLE));
+            }
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        disposable.dispose();
+        super.onDestroy();
     }
 
     private void buildAndTestApi() {
-        //Setup a timer for 20 sec, to allow user to skip Splash screen
+        //Setup a timer for 10 sec, to allow user to skip Splash screen
         setupTimer();
 
         //Stop service if already running, anyway it will never complete.
@@ -101,8 +121,9 @@ public class SplashActivity extends BaseActivity {
         if (Accountant.isLoggedIn(this)) {
             status.setText(R.string.toast_api_build_api);
             Util.validateApi(this);
-        } else
+        } else {
             launchAccountsActivity();
+        }
     }
 
     private void stopService() {
@@ -112,15 +133,14 @@ public class SplashActivity extends BaseActivity {
 
     private void launchAuroraActivity() {
         disposable.clear();
-        Intent intent = new Intent(this, AuroraActivity.class);
+        final Intent intent = new Intent(this, AuroraActivity.class);
         startActivity(intent);
         supportFinishAfterTransition();
     }
 
     private void launchAccountsActivity() {
         disposable.clear();
-        Intent intent = new Intent(this, GenericActivity.class);
-        intent.putExtra(Constants.FRAGMENT_NAME, Constants.FRAGMENT_ACCOUNTS);
+        final Intent intent = new Intent(this, AccountsActivity.class);
         startActivity(intent);
         supportFinishAfterTransition();
     }
@@ -134,23 +154,11 @@ public class SplashActivity extends BaseActivity {
                     status.setText(getString(R.string.toast_api_build_delayed));
                 });
             }
-        }, 20000 /*20 seconds timeout*/);
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
+        }, 10000 /*10 seconds timeout*/);
     }
 
     @OnClick(R.id.action)
     public void getThroughSplash() {
         launchAuroraActivity();
-    }
-
-    @Override
-    protected void onDestroy() {
-        disposable.clear();
-        disposable.dispose();
-        super.onDestroy();
     }
 }

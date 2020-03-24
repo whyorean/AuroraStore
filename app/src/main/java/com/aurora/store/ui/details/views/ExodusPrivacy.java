@@ -21,7 +21,6 @@
 package com.aurora.store.ui.details.views;
 
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -35,7 +34,6 @@ import com.aurora.store.sheet.ExodusBottomSheet;
 import com.aurora.store.task.ExodusTask;
 import com.aurora.store.ui.details.DetailsActivity;
 import com.aurora.store.util.Log;
-import com.google.gson.Gson;
 
 import org.apache.commons.lang3.StringUtils;
 import org.json.JSONObject;
@@ -61,7 +59,6 @@ public class ExodusPrivacy extends AbstractDetails {
     Button moreButton;
 
     private Report report;
-    private Gson gson = new Gson();
 
     public ExodusPrivacy(DetailsActivity activity, App app) {
         super(activity, app);
@@ -70,6 +67,7 @@ public class ExodusPrivacy extends AbstractDetails {
     @Override
     public void draw() {
         ButterKnife.bind(this, activity);
+        show(R.id.exodus_card);
         get(EXODUS_PATH + app.getPackageName());
     }
 
@@ -85,11 +83,10 @@ public class ExodusPrivacy extends AbstractDetails {
 
     private void parseResponse(String response) {
         try {
-            JSONObject jsonObject = new JSONObject(response);
-            JSONObject exodusObject = jsonObject.getJSONObject(app.getPackageName());
-            Gson gson = new Gson();
-            ExodusReport exodusReport = gson.fromJson(exodusObject.toString(), ExodusReport.class);
-            List<Report> reportList = exodusReport.getReports();
+            final JSONObject jsonObject = new JSONObject(response);
+            final JSONObject exodusObject = jsonObject.getJSONObject(app.getPackageName());
+            final ExodusReport exodusReport = gson.fromJson(exodusObject.toString(), ExodusReport.class);
+            final List<Report> reportList = exodusReport.getReports();
             Collections.sort(reportList, (Report1, Report2) -> Report2.getCreationDate().compareTo(Report1.getCreationDate()));
             report = reportList.get(0);
         } catch (Exception e) {
@@ -100,30 +97,25 @@ public class ExodusPrivacy extends AbstractDetails {
     }
 
     private void drawExodus() {
-        show(rootLayout, R.id.exodus_card);
-
-        if (report == null) {
-            setText(R.id.exodus_description, R.string.exodus_noReport);
-            moreButton.setVisibility(View.GONE);
-            return;
-        }
-
-        if (report.getTrackers().size() > 0) {
-            setText(R.id.exodus_description, context.getString(R.string.exodus_hasTracker)
-                    + StringUtils.SPACE
-                    + report.getTrackers().size());
+        if (report != null) {
+            if (report.getTrackers().size() > 0) {
+                setText(R.id.exodus_description, context.getString(R.string.exodus_hasTracker)
+                        + StringUtils.SPACE
+                        + ":"
+                        + StringUtils.SPACE
+                        + report.getTrackers().size());
+                moreButton.setEnabled(true);
+                moreButton.setOnClickListener(v -> showBottomDialog());
+            } else {
+                setText(R.id.exodus_description, R.string.exodus_noTracker);
+            }
         } else {
-            setText(R.id.exodus_description, R.string.exodus_noTracker);
+            setText(R.id.exodus_description, R.string.exodus_noReport);
         }
-
-        if (report.getTrackers().isEmpty())
-            moreButton.setVisibility(View.INVISIBLE);
-        else
-            moreButton.setOnClickListener(v -> showBottomDialog());
     }
 
     private void showBottomDialog() {
-        Bundle bundle = new Bundle();
+        final Bundle bundle = new Bundle();
         bundle.putString(Constants.STRING_EXTRA, gson.toJson(report));
         ExodusBottomSheet bottomSheet = new ExodusBottomSheet();
         bottomSheet.setArguments(bundle);

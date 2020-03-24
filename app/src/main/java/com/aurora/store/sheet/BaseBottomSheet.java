@@ -16,12 +16,15 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
+import java.lang.reflect.Modifier;
 
 public class BaseBottomSheet extends BottomSheetDialogFragment {
 
     protected int intExtra;
     protected String stringExtra;
-    protected Gson gson = new Gson();
+    protected Gson gson = new GsonBuilder().excludeFieldsWithModifiers(Modifier.TRANSIENT).create();
 
     @NonNull
     @Override

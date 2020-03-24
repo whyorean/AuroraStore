@@ -5,53 +5,48 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
+import android.net.Network;
 import android.net.NetworkCapabilities;
-import android.net.NetworkInfo;
+import android.net.NetworkRequest;
 import android.os.Build;
 
 import androidx.lifecycle.LiveData;
 
 import com.aurora.store.model.ConnectionModel;
 
+import org.jetbrains.annotations.NotNull;
+
 public class ConnectionLiveData extends LiveData<ConnectionModel> {
 
     private Context context;
 
     private BroadcastReceiver networkReceiver = new BroadcastReceiver() {
+
         @Override
         public void onReceive(Context context, Intent intent) {
             if (intent.getExtras() != null) {
-
-                Object object = context.getSystemService(Context.CONNECTIVITY_SERVICE);
-                ConnectivityManager manager = (ConnectivityManager) object;
+                final Object object = context.getSystemService(Context.CONNECTIVITY_SERVICE);
+                final ConnectivityManager manager = (ConnectivityManager) object;
 
                 if (manager != null) {
-                    if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                        NetworkCapabilities capabilities = manager.getNetworkCapabilities(manager.getActiveNetwork());
-                        if (capabilities != null) {
-                            if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR)
-                                    || capabilities.hasTransport(NetworkCapabilities.TRANSPORT_BLUETOOTH)
-                                    || capabilities.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET)
-                                    || capabilities.hasTransport(NetworkCapabilities.TRANSPORT_LOWPAN)
-                                    || capabilities.hasTransport(NetworkCapabilities.TRANSPORT_VPN)
-                                    || capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI)
-                                    || capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI_AWARE)) {
-                                postValue(new ConnectionModel("ONLINE", true));
-                            } else {
+                    final ConnectivityManager.NetworkCallback networkCallback = new ConnectivityManager.NetworkCallback() {
+                        @Override
+                        public void onAvailable(@NotNull Network network) {
+                            postValue(new ConnectionModel("ONLINE", true));
+                        }
 
-                                postValue(new ConnectionModel("OFFLINE", false));
-                            }
+                        @Override
+                        public void onLost(@NotNull Network network) {
+                            postValue(new ConnectionModel("OFFLINE", false));
                         }
+                    };
+
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                        manager.registerDefaultNetworkCallback(networkCallback);
                     } else {
-                        NetworkInfo activeNetwork = manager.getActiveNetworkInfo();
-                        try {
-                            if (activeNetwork != null) {
-                                boolean isConnected = activeNetwork.isConnectedOrConnecting();
-                                postValue(new ConnectionModel(activeNetwork.getTypeName(), isConnected));
-                            }
-                        } catch (Exception e) {
-                            postValue(new ConnectionModel(activeNetwork.getTypeName(), false));
-                        }
+                        final NetworkRequest networkRequest = new NetworkRequest.Builder()
+                                .addCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET).build();
+                        manager.registerNetworkCallback(networkRequest, networkCallback);
                     }
                 }
             }

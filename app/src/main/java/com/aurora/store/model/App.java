@@ -39,7 +39,6 @@ import java.util.Set;
 
 import lombok.Data;
 
-
 @Data
 public class App {
     private transient Features features;

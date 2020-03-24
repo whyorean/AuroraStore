@@ -29,11 +29,14 @@ import com.aurora.store.Constants;
 import com.aurora.store.model.FilterModel;
 import com.aurora.store.util.PrefUtil;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
+import java.lang.reflect.Modifier;
 
 public class FilterManager {
 
     public static FilterModel getFilterPreferences(Context context) {
-        final Gson gson = new Gson();
+        final Gson gson = new GsonBuilder().excludeFieldsWithModifiers(Modifier.TRANSIENT).create();
         final FilterModel filterModel = gson.fromJson(PrefUtil
                 .getString(context, Constants.PREFERENCE_FILTER_APPS), FilterModel.class);
         if (filterModel == null) {
@@ -45,7 +48,7 @@ public class FilterManager {
     }
 
     public static void saveFilterPreferences(Context context, FilterModel filterModel) {
-        final Gson gson = new Gson();
+        final Gson gson = new GsonBuilder().excludeFieldsWithModifiers(Modifier.TRANSIENT).create();
         final String filterJSONString = gson.toJson(filterModel);
         PrefUtil.putString(context, Constants.PREFERENCE_FILTER_APPS, filterJSONString);
     }

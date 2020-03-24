@@ -102,9 +102,9 @@ public class Reviews extends AbstractDetails {
         avgRatingLayout.addView(addAvgReviews(2, totalStars, app.getRating().getStars(2)));
         avgRatingLayout.addView(addAvgReviews(1, totalStars, app.getRating().getStars(1)));
 
-        show(rootLayout, R.id.reviews_container);
+        show(R.id.reviews_container);
         if (isReviewable(app))
-            show(rootLayout, R.id.user_review_layout);
+            show(R.id.user_review_layout);
 
         Review review = app.getUserReview();
         if (null != review) {

@@ -128,7 +128,6 @@ public class AppMenuSheet extends BaseBottomSheet {
                                 .accept(new Event(Event.SubType.WHITELIST, app.getPackageName()));
                     } else {
                         blacklistManager.addToBlacklist(app.getPackageName());
-
                         AuroraApplication
                                 .getRelayBus()
                                 .accept(new Event(Event.SubType.BLACKLIST, intExtra));
@@ -155,7 +154,7 @@ public class AppMenuSheet extends BaseBottomSheet {
                             .subscribe();
                     break;
                 case R.id.action_manual:
-                    Intent intent = new Intent(requireContext(), ManualDownloadActivity.class);
+                    final Intent intent = new Intent(requireContext(), ManualDownloadActivity.class);
                     intent.putExtra(Constants.STRING_EXTRA, gson.toJson(app));
                     requireContext().startActivity(intent, ViewUtil.getEmptyActivityBundle((AppCompatActivity) requireContext()));
                     break;

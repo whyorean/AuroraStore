@@ -146,7 +146,7 @@ dependencies {
 
     //Debug
     //debugImplementation "com.squareup.leakcanary:leakcanary-android:2.1"
-    debugImplementation "com.facebook.stetho:stetho:1.5.1"
+    implementation "com.facebook.stetho:stetho:1.5.1"
 
     //Bug Report
     implementation "ch.acra:acra-core:5.1.3"

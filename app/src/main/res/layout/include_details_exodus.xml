@@ -67,18 +67,18 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/exodus_details"
         android:layout_alignStart="@+id/exodus_details"
-        android:layout_toEndOf="@id/privacy_ico"
-        android:orientation="horizontal">
+        android:layout_toEndOf="@id/privacy_ico">
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/exodus_description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/moreButton"
+            android:layout_centerVertical="true"
             android:layout_marginBottom="6dp"
             android:layout_toStartOf="@+id/moreButton"
             android:ellipsize="end"
             android:maxLines="1"
+            android:text="@string/exodus_progress"
             android:textAlignment="viewStart"
             android:textAppearance="@style/TextAppearance.Aurora.Line2"
             app:autoSizeMaxTextSize="14sp"
@@ -87,13 +87,14 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/moreButton"
-            style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            android:layout_marginStart="4dp"
+            android:enabled="false"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
             android:text="@string/exodus_viewMore" />
     </RelativeLayout>
-
 </RelativeLayout>
