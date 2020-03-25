@@ -24,7 +24,6 @@ package com.aurora.store.task;
 
 import android.app.ActivityManager;
 import android.content.Context;
-import android.content.ContextWrapper;
 import android.content.res.Configuration;
 import android.os.Build;
 import android.telephony.TelephonyManager;
@@ -46,7 +45,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.TimeZone;
 
-public class DeviceInfoBuilder extends ContextWrapper {
+public class DeviceInfoBuilder {
 
     static private Map<String, String> staticProperties = new HashMap<>();
 
@@ -60,19 +59,13 @@ public class DeviceInfoBuilder extends ContextWrapper {
     private Context context;
 
     public DeviceInfoBuilder(Context context) {
-        super(context);
         this.context = context;
     }
 
-    static String buildProperties(Map<String, String> properties) {
-        StringBuilder stringBuilder = new StringBuilder();
+    private static String buildProperties(Map<String, String> properties) {
+        final StringBuilder stringBuilder = new StringBuilder();
         for (String key : properties.keySet()) {
-            stringBuilder
-                    .append(key)
-                    .append(" = ")
-                    .append(properties.get(key))
-                    .append("\n")
-            ;
+            stringBuilder.append(key).append(" = ").append(properties.get(key)).append("\n");
         }
         return stringBuilder.toString();
     }
@@ -92,7 +85,7 @@ public class DeviceInfoBuilder extends ContextWrapper {
     }
 
     private Map<String, String> getDeviceInfo() {
-        Map<String, String> values = new LinkedHashMap<>();
+        final Map<String, String> values = new LinkedHashMap<>();
         values.put("UserReadableName", getUserReadableName());
         values.putAll(getBuildValues());
         values.putAll(getConfigurationValues());
@@ -104,41 +97,29 @@ public class DeviceInfoBuilder extends ContextWrapper {
     }
 
     private String getUserReadableName() {
-        String fingerprint = TextUtils.isEmpty(Build.FINGERPRINT) ? "" : Build.FINGERPRINT;
-        String manufacturer = TextUtils.isEmpty(Build.MANUFACTURER) ? "" : Build.MANUFACTURER;
-        String product = TextUtils.isEmpty(Build.PRODUCT) ? "" : Build.PRODUCT
-                .replace("aokp_", "")
-                .replace("aosp_", "")
-                .replace("cm_", "")
-                .replace("lineage_", "");
-        String model = TextUtils.isEmpty(Build.MODEL) ? "" : Build.MODEL;
-        String device = TextUtils.isEmpty(Build.DEVICE) ? "" : Build.DEVICE;
-        String result = (fingerprint.toLowerCase().contains(product.toLowerCase())
-                || product.toLowerCase().contains(device.toLowerCase())
-                || device.toLowerCase().contains(product.toLowerCase())) ? model : product;
-        if (!result.toLowerCase().contains(manufacturer.toLowerCase())) {
-            result = manufacturer + " " + result;
-        }
-        if (TextUtils.isEmpty(result)) {
-            return "";
-        }
-        return (result.substring(0, 1).toUpperCase() + result.substring(1))
-                .replace("\n", " ")
-                .replace("\r", " ")
-                .replace(",", " ")
-                .trim()
-                ;
+        String product = Build.PRODUCT;
+        String model = Build.MODEL;
+        String device = Build.DEVICE;
+
+        if (!product.isEmpty())
+            return product;
+        else if (!model.isEmpty())
+            return model;
+        else if (!device.isEmpty())
+            return device;
+        else
+            return "Unknown";
     }
 
     private Map<String, String> getBuildValues() {
-        Map<String, String> values = new LinkedHashMap<>();
+        final Map<String, String> values = new LinkedHashMap<>();
         values.put("Build.HARDWARE", Build.HARDWARE);
-        values.put("Build.RADIO", Build.RADIO);
+        values.put("Build.RADIO", Build.getRadioVersion());
         values.put("Build.BOOTLOADER", Build.BOOTLOADER);
         values.put("Build.FINGERPRINT", Build.FINGERPRINT);
         values.put("Build.BRAND", Build.BRAND);
         values.put("Build.DEVICE", Build.DEVICE);
-        values.put("Build.VERSION.SDK_INT", Integer.toString(Build.VERSION.SDK_INT));
+        values.put("Build.VERSION.SDK_INT", String.valueOf(Build.VERSION.SDK_INT));
         values.put("Build.MODEL", Build.MODEL);
         values.put("Build.MANUFACTURER", Build.MANUFACTURER);
         values.put("Build.PRODUCT", Build.PRODUCT);
@@ -148,45 +129,54 @@ public class DeviceInfoBuilder extends ContextWrapper {
     }
 
     private Map<String, String> getConfigurationValues() {
-        Map<String, String> values = new LinkedHashMap<>();
-        Configuration config = context.getResources().getConfiguration();
-        values.put("TouchScreen", Integer.toString(config.touchscreen));
-        values.put("Keyboard", Integer.toString(config.keyboard));
-        values.put("Navigation", Integer.toString(config.navigation));
-        values.put("ScreenLayout", Integer.toString(config.screenLayout & 15));
-        values.put("HasHardKeyboard", Boolean.toString(config.keyboard == Configuration.KEYBOARD_QWERTY));
-        values.put("HasFiveWayNavigation", Boolean.toString(config.navigation == Configuration.NAVIGATIONHIDDEN_YES));
-        values.put("GL.Version", Integer.toString(((ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE)).getDeviceConfigurationInfo().reqGlEsVersion));
+        final Map<String, String> values = new LinkedHashMap<>();
+        final Configuration configuration = context.getResources().getConfiguration();
+        values.put("TouchScreen", String.valueOf(configuration.touchscreen));
+        values.put("Keyboard", String.valueOf(configuration.keyboard));
+        values.put("Navigation", String.valueOf(configuration.navigation));
+        values.put("ScreenLayout", String.valueOf(configuration.screenLayout & 15));
+        values.put("HasHardKeyboard", String.valueOf(configuration.keyboard == Configuration.KEYBOARD_QWERTY));
+        values.put("HasFiveWayNavigation", String.valueOf(configuration.navigation == Configuration.NAVIGATIONHIDDEN_YES));
+
+        final Object object = context.getSystemService(Context.ACTIVITY_SERVICE);
+        final ActivityManager activityManager = (ActivityManager) object;
+
+        if (activityManager != null) {
+            values.put("GL.Version", String.valueOf(activityManager.getDeviceConfigurationInfo().reqGlEsVersion));
+        }
         return values;
     }
 
     private Map<String, String> getDisplayMetricsValues() {
-        Map<String, String> values = new LinkedHashMap<>();
-        DisplayMetrics metrics = context.getResources().getDisplayMetrics();
-        values.put("Screen.Density", Integer.toString(metrics.densityDpi));
-        values.put("Screen.Width", Integer.toString(metrics.widthPixels));
-        values.put("Screen.Height", Integer.toString(metrics.heightPixels));
+        final Map<String, String> values = new LinkedHashMap<>();
+        final DisplayMetrics metrics = context.getResources().getDisplayMetrics();
+        values.put("Screen.Density", String.valueOf(metrics.densityDpi));
+        values.put("Screen.Width", String.valueOf(metrics.widthPixels));
+        values.put("Screen.Height", String.valueOf(metrics.heightPixels));
         return values;
     }
 
     private Map<String, String> getPackageManagerValues() {
-        Map<String, String> values = new LinkedHashMap<>();
-        values.put("Platforms", TextUtils.join(",", NativeDeviceInfoProvider.getPlatforms()));
+        final Map<String, String> values = new LinkedHashMap<>();
         values.put("SharedLibraries", TextUtils.join(",", NativeDeviceInfoProvider.getSharedLibraries(context)));
         values.put("Features", TextUtils.join(",", NativeDeviceInfoProvider.getFeatures(context)));
         values.put("Locales", TextUtils.join(",", NativeDeviceInfoProvider.getLocales(context)));
-        NativeGsfVersionProvider gsfVersionProvider = new NativeGsfVersionProvider(context);
-        values.put("GSF.version", Integer.toString(gsfVersionProvider.getGsfVersionCode(false)));
-        values.put("Vending.version", Integer.toString(gsfVersionProvider.getVendingVersionCode(false)));
+
+        final NativeGsfVersionProvider gsfVersionProvider = new NativeGsfVersionProvider(context);
+        values.put("GSF.version", String.valueOf(gsfVersionProvider.getGsfVersionCode(false)));
+        values.put("Vending.version", String.valueOf(gsfVersionProvider.getVendingVersionCode(false)));
         values.put("Vending.versionString", gsfVersionProvider.getVendingVersionString(false));
         return values;
     }
 
     private Map<String, String> getOperatorValues() {
-        TelephonyManager tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
-        Map<String, String> values = new LinkedHashMap<>();
-        values.put("CellOperator", tm.getNetworkOperator());
-        values.put("SimOperator", tm.getSimOperator());
+        final Object object = context.getSystemService(Context.TELEPHONY_SERVICE);
+        final TelephonyManager telephonyManager = (TelephonyManager) object;
+        final Map<String, String> values = new LinkedHashMap<>();
+        if (telephonyManager != null) {
+            values.put("CellOperator", telephonyManager.getNetworkOperator());
+            values.put("SimOperator", telephonyManager.getSimOperator());
+        }
         return values;
     }
 }

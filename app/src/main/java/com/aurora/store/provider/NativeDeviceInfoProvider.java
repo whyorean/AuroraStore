@@ -59,8 +59,9 @@ public class NativeDeviceInfoProvider implements DeviceInfoProvider {
     }
 
     public static List<String> getFeatures(Context context) {
-        List<String> featureStringList = new ArrayList<>();
-        for (FeatureInfo feature : context.getPackageManager().getSystemAvailableFeatures()) {
+        final List<String> featureStringList = new ArrayList<>();
+        final FeatureInfo[] availableFeatures = context.getPackageManager().getSystemAvailableFeatures();
+        for (FeatureInfo feature : availableFeatures) {
             if (!TextUtils.isEmpty(feature.name)) {
                 featureStringList.add(feature.name);
             }
@@ -70,7 +71,7 @@ public class NativeDeviceInfoProvider implements DeviceInfoProvider {
     }
 
     public static List<String> getLocales(Context context) {
-        List<String> rawLocales = new ArrayList<>();
+        final List<String> rawLocales = new ArrayList<>();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             rawLocales.addAll(Arrays.asList(context.getAssets().getLocales()));
         } else {
@@ -78,7 +79,8 @@ public class NativeDeviceInfoProvider implements DeviceInfoProvider {
                 rawLocales.add(locale.toString());
             }
         }
-        List<String> locales = new ArrayList<>();
+
+        final List<String> locales = new ArrayList<>();
         for (String locale : rawLocales) {
             if (TextUtils.isEmpty(locale)) {
                 continue;
@@ -90,18 +92,25 @@ public class NativeDeviceInfoProvider implements DeviceInfoProvider {
     }
 
     public static List<String> getSharedLibraries(Context context) {
-        List<String> libraries = new ArrayList<>(Arrays.asList(context.getPackageManager().getSystemSharedLibraryNames()));
-        Collections.sort(libraries);
+        final String[] systemSharedLibraryNames = context.getPackageManager().getSystemSharedLibraryNames();
+        final List<String> libraries = new ArrayList<>();
+        if (systemSharedLibraryNames != null) {
+            libraries.addAll(Arrays.asList(systemSharedLibraryNames));
+            Collections.sort(libraries);
+        }
         return libraries;
     }
 
     public void setContext(Context context) {
         this.context = context;
         gsfVersionProvider = new NativeGsfVersionProvider(context);
-        TelephonyManager tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
-        if (null != tm) {
-            networkOperator = null != tm.getNetworkOperator() ? tm.getNetworkOperator() : "";
-            simOperator = null != tm.getSimOperator() ? tm.getSimOperator() : "";
+
+        final Object object = context.getSystemService(Context.TELEPHONY_SERVICE);
+        final TelephonyManager telephonyManager = (TelephonyManager) object;
+
+        if (telephonyManager != null) {
+            networkOperator = null != telephonyManager.getNetworkOperator() ? telephonyManager.getNetworkOperator() : "";
+            simOperator = null != telephonyManager.getSimOperator() ? telephonyManager.getSimOperator() : "";
         }
     }
 
@@ -171,7 +180,7 @@ public class NativeDeviceInfoProvider implements DeviceInfoProvider {
                 .setId(Build.FINGERPRINT)
                 .setProduct(Build.HARDWARE)
                 .setCarrier(Build.BRAND)
-                .setRadio(Build.RADIO)
+                .setRadio(Build.getRadioVersion())
                 .setBootloader(Build.BOOTLOADER)
                 .setDevice(Build.DEVICE)
                 .setSdkVersion(Build.VERSION.SDK_INT)
