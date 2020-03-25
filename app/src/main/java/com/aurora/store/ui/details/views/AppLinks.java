@@ -3,8 +3,10 @@ package com.aurora.store.ui.details.views;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Bundle;
 import android.widget.LinearLayout;
 
+import com.aurora.store.Constants;
 import com.aurora.store.R;
 import com.aurora.store.model.App;
 import com.aurora.store.sheet.PermissionBottomSheet;
@@ -49,9 +51,11 @@ public class AppLinks extends AbstractDetails {
         permLinkView.setLinkImageId(R.drawable.app_permission);
         permLinkView.setColor(R.color.colorCyan);
         permLinkView.setOnClickListener(v -> {
-            PermissionBottomSheet profileFragment = new PermissionBottomSheet();
-            profileFragment.setApp(app);
-            profileFragment.show(activity.getSupportFragmentManager(), "PERMISSION");
+            final PermissionBottomSheet permissionBottomSheet = new PermissionBottomSheet();
+            final Bundle bundle = new Bundle();
+            bundle.putString(Constants.STRING_EXTRA, gson.toJson(app));
+            permissionBottomSheet.setArguments(bundle);
+            permissionBottomSheet.show(activity.getSupportFragmentManager(), "PERMISSION");
         });
         permLinkView.build();
         linkLayout.addView(permLinkView);

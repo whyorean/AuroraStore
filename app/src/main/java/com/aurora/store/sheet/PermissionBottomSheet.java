@@ -64,10 +64,6 @@ public class PermissionBottomSheet extends BaseBottomSheet {
     public PermissionBottomSheet() {
     }
 
-    public void setApp(App app) {
-        this.app = app;
-    }
-
     @NonNull
     @Override
     public View onCreateContentView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
