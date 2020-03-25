@@ -17,6 +17,7 @@
     <string name="action_copied">"Link copied to clipboard"</string>
     <string name="action_copy">"Copy Link"</string>
     <string name="action_disable">"Disable"</string>
+    <string name="action_disabled">"Disabled"</string>
     <string name="action_done">"Done"</string>
     <string name="action_enable">"Enable"</string>
     <string name="action_export">"Export"</string>

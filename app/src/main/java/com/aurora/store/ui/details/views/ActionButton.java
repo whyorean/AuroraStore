@@ -46,6 +46,7 @@ import com.aurora.store.notification.GeneralNotification;
 import com.aurora.store.task.DeliveryData;
 import com.aurora.store.task.GZipTask;
 import com.aurora.store.ui.details.DetailsActivity;
+import com.aurora.store.util.Accountant;
 import com.aurora.store.util.ContextUtil;
 import com.aurora.store.util.Log;
 import com.aurora.store.util.PackageUtil;
@@ -235,15 +236,25 @@ public class ActionButton extends AbstractDetails {
     }
 
     private void checkPurchased() {
-        compositeDisposable.add(Observable.fromCallable(() -> new DeliveryData(context)
-                .getDeliveryData(app))
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(androidAppDeliveryData -> {
-                    btnPositive.setText(R.string.details_install);
-                }, err -> {
-                    btnPositive.setText(R.string.details_purchase);
-                }));
+        if (Accountant.isAnonymous(context)){
+            btnPositive.setText(R.string.action_disabled);
+            btnPositive.setEnabled(false);
+        }
+        else
+            Observable.fromCallable(() -> new DeliveryData(context)
+                    .getDeliveryData(app))
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .doOnNext(androidAppDeliveryData -> {
+                        if (androidAppDeliveryData.hasDownloadUrl())
+                            btnPositive.setText(R.string.details_install);
+                        else
+                            btnPositive.setText(R.string.details_purchase);
+                    })
+                    .doOnError(throwable -> {
+                        btnPositive.setText(R.string.details_purchase);
+                    })
+                    .subscribe();
     }
 
     private View.OnClickListener resumeAppListener() {
