@@ -25,6 +25,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,6 +38,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.aurora.store.Constants;
 import com.aurora.store.R;
+import com.aurora.store.RecyclerDataObserver;
 import com.aurora.store.exception.MalformedRequestException;
 import com.aurora.store.manager.FavouritesManager;
 import com.aurora.store.model.App;
@@ -86,8 +88,14 @@ public class FavouriteFragment extends BaseFragment {
     @BindView(R.id.count_selection)
     TextView txtCount;
 
+    @BindView(R.id.empty_layout)
+    RelativeLayout emptyLayout;
+    @BindView(R.id.progress_layout)
+    RelativeLayout progressLayout;
+
     private Set<App> selectedAppSet = new HashSet<>();
     private FavouriteAppsModel model;
+    private RecyclerDataObserver dataObserver;
     private FavouritesManager favouritesManager;
 
     private FastItemAdapter<FavouriteItem> fastItemAdapter;
@@ -191,6 +199,9 @@ public class FavouriteFragment extends BaseFragment {
         updateText();
         updateButtons();
         updateActions();
+
+        if (dataObserver != null)
+            dataObserver.checkIfEmpty();
     }
 
     private void updateText() {
@@ -234,6 +245,10 @@ public class FavouriteFragment extends BaseFragment {
 
         fastItemAdapter.addExtension(selectExtension);
         fastItemAdapter.addEventHook(new FavouriteItem.CheckBoxClickEvent());
+
+
+        dataObserver = new RecyclerDataObserver(recyclerView, emptyLayout, progressLayout);
+        fastItemAdapter.registerAdapterDataObserver(dataObserver);
 
         selectExtension.setMultiSelect(true);
         selectExtension.setSelectionListener((item, selected) -> {

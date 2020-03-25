@@ -25,6 +25,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -40,6 +41,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.aurora.store.AuroraApplication;
 import com.aurora.store.Constants;
 import com.aurora.store.R;
+import com.aurora.store.RecyclerDataObserver;
 import com.aurora.store.UpdatesDiffCallback;
 import com.aurora.store.download.DownloadManager;
 import com.aurora.store.manager.IgnoreListManager;
@@ -86,10 +88,16 @@ public class UpdatesFragment extends BaseFragment {
     @BindView(R.id.btn_action)
     MaterialButton btnAction;
 
+    @BindView(R.id.empty_layout)
+    RelativeLayout emptyLayout;
+    @BindView(R.id.progress_layout)
+    RelativeLayout progressLayout;
+
     private Fetch fetch;
     private Set<UpdatesItem> selectedItems = new HashSet<>();
 
     private UpdatableAppsModel model;
+    private RecyclerDataObserver dataObserver;
 
     private FastAdapter<UpdatesItem> fastAdapter;
     private ItemAdapter<UpdatesItem> itemAdapter;
@@ -212,6 +220,8 @@ public class UpdatesFragment extends BaseFragment {
         updateText();
         updateButtons();
         updateButtonActions();
+        if (dataObserver != null)
+            dataObserver.checkIfEmpty();
     }
 
     private void dispatchAppsToAdapter(List<UpdatesItem> updatesItems) {
@@ -250,6 +260,9 @@ public class UpdatesFragment extends BaseFragment {
 
         fastAdapter.addExtension(selectExtension);
         fastAdapter.addEventHook(new UpdatesItem.CheckBoxClickEvent());
+
+        dataObserver = new RecyclerDataObserver(recyclerView, emptyLayout,progressLayout);
+        fastAdapter.registerAdapterDataObserver(dataObserver);
 
         selectExtension.setMultiSelect(true);
         selectExtension.setSelectionListener((item, selected) -> {

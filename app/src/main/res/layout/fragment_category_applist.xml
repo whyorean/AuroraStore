@@ -20,7 +20,8 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler"
@@ -32,4 +33,38 @@
         android:paddingBottom="@dimen/margin_bottom"
         tools:itemCount="4"
         tools:listitem="@layout/item_installed" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/empty_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="?android:attr/colorBackground"
+            android:visibility="gone">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/img_empty"
+                app:tint="?colorAccent"
+                android:layout_width="@dimen/icon_size"
+                android:layout_height="@dimen/icon_size"
+                android:layout_above="@id/txt_empty"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="@dimen/margin_small"
+                android:src="@drawable/ic_apps" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txt_empty"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="@string/error_search_not_found"
+                android:textAppearance="@style/TextAppearance.Aurora.Line1" />
+        </RelativeLayout>
+
+        <include layout="@layout/include_placeholder_layouts" />
+
+    </RelativeLayout>
 </FrameLayout>

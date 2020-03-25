@@ -3,6 +3,7 @@ package com.aurora.store.ui.search.activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.widget.RelativeLayout;
 
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.lifecycle.ViewModelProvider;
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.aurora.store.AuroraApplication;
 import com.aurora.store.Constants;
 import com.aurora.store.R;
+import com.aurora.store.RecyclerDataObserver;
 import com.aurora.store.manager.FilterManager;
 import com.aurora.store.model.App;
 import com.aurora.store.model.FilterModel;
@@ -48,10 +50,16 @@ public class SearchResultActivity extends BaseActivity implements
     ExtendedFloatingActionButton filterFab;
     @BindView(R.id.coordinator)
     CoordinatorLayout coordinator;
+    @BindView(R.id.empty_layout)
+    RelativeLayout emptyLayout;
+    @BindView(R.id.progress_layout)
+    RelativeLayout progressLayout;
 
     private String query;
-    private SearchAppsModel model;
     private SharedPreferences sharedPreferences;
+
+    private SearchAppsModel model;
+    private RecyclerDataObserver dataObserver;
 
     private FastAdapter fastAdapter;
     private ItemAdapter<EndlessItem> itemAdapter;
@@ -156,6 +164,9 @@ public class SearchResultActivity extends BaseActivity implements
         recyclerView.post(() -> {
             progressItemAdapter.clear();
         });
+
+        if (dataObserver != null)
+            dataObserver.checkIfEmpty();
     }
 
     private void setupResultRecycler() {
@@ -201,6 +212,9 @@ public class SearchResultActivity extends BaseActivity implements
             }
         };
 
+        dataObserver = new RecyclerDataObserver(recyclerView, emptyLayout, progressLayout);
+        fastAdapter.registerAdapterDataObserver(dataObserver);
+
         recyclerView.addOnScrollListener(endlessScrollListener);
         recyclerView.setOnFlingListener(new RecyclerView.OnFlingListener() {
             @Override
@@ -213,6 +227,7 @@ public class SearchResultActivity extends BaseActivity implements
                 return false;
             }
         });
+
         recyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(fastAdapter);
