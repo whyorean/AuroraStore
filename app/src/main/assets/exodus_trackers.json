@@ -1,1685 +1,2284 @@
 [
   {
     "1": {
+      "id": 1,
       "name": "Teemo",
-      "website": "https://www.teemo.co",
-      "network_signature": "databerries\\.com",
-      "code_signature": "com.databerries.",
       "creation_date": "2017-09-24",
-      "id": 1
+      "code_signature": "com.databerries.|com.geolocstation.",
+      "network_signature": "databerries\\.com",
+      "website": "https://www.teemo.co"
     },
     "2": {
+      "id": 2,
       "name": "FidZup",
-      "website": "https://www.fidzup.com",
-      "network_signature": "fidzup",
-      "code_signature": "com.fidzup.",
       "creation_date": "2017-09-24",
-      "id": 2
+      "code_signature": "com.fidzup.",
+      "network_signature": "fidzup",
+      "website": "https://www.fidzup.com"
     },
     "3": {
+      "id": 3,
       "name": "Krux",
-      "website": "https://www.salesforce.com/products/marketing-cloud/data-management",
-      "network_signature": "krxd\\.net",
-      "code_signature": "com.krux.androidsdk",
       "creation_date": "2017-09-24",
-      "id": 3
+      "code_signature": "com.krux.androidsdk",
+      "network_signature": "krxd\\.net",
+      "website": "https://www.salesforce.com/products/marketing-cloud/data-management"
     },
     "4": {
+      "id": 4,
       "name": "Ad4Screen",
-      "website": "http://www.ad4screen.com",
-      "network_signature": "ad4screen|a4\\.tl|app4free|accengage\\.com",
-      "code_signature": "com.ad4screen.sdk",
       "creation_date": "2017-09-24",
-      "id": 4
+      "code_signature": "com.ad4screen.sdk",
+      "network_signature": "a4\\.tl|accengage\\.com|ad4screen\\.com|ad4push\\.com",
+      "website": "http://www.ad4screen.com"
     },
     "5": {
+      "id": 5,
       "name": "Google DoubleClick",
-      "website": "https://www.doubleclickbygoogle.com/",
-      "network_signature": "mng-ads\\.com|doubleclick\\.net|doubleclick\\.com",
-      "code_signature": "com.google.android.gms.ads.doubleclick",
       "creation_date": "2017-09-24",
-      "id": 5
+      "code_signature": "com.google.android.gms.ads.doubleclick",
+      "network_signature": "mng-ads\\.com|doubleclick\\.net|doubleclick\\.com|2mdn\\.net|dmtry\\.com",
+      "website": "https://www.doubleclickbygoogle.com/"
     },
     "6": {
+      "id": 6,
       "name": "Weborama",
-      "website": "https://www.weborama.com",
-      "network_signature": "weborama\\.net|weborama\\.fr",
-      "code_signature": "com.weborama.",
       "creation_date": "2017-09-24",
-      "id": 6
+      "code_signature": "com.weborama.",
+      "network_signature": "weborama\\.net|weborama\\.fr",
+      "website": "https://www.weborama.com"
     },
     "7": {
+      "id": 7,
       "name": "Smart",
-      "website": "http://smartadserver.com/",
-      "network_signature": "smartadserver\\.com|saspreview\\.com",
-      "code_signature": "com.smartadserver.",
       "creation_date": "2017-09-24",
-      "id": 7
+      "code_signature": "com.smartadserver.",
+      "network_signature": "adsrvr\\.org|akamai\\.smartadserver\\.com|cdn1\\.smartadserver\\.com|diff\\.smartadserver\\.com|diff2\\.smartadserver\\.com|diff3\\.smartadserver\\.com|eqx\\.smartadserver\\.com|gallery\\.smartadserver\\.com|im2\\.smartadserver\\.com|itx5-publicidad\\.smartadserver\\.com|itx5\\.smartadserver\\.com|preview\\.smartadserver\\.com|rtb-csync\\.smartadserver\\.com|saspreview\\.com|smartadserver\\.ru|smartadserver\\.com|tmk\\.smartadserver\\.com|insight\\.adsrvr\\.org|js\\.adsrvr\\.org|match\\.adsrvr\\.org|usw\\-lax\\.adsrvr\\.org",
+      "website": "http://smartadserver.com/"
     },
     "8": {
-      "name": "JWPLTx",
-      "website": "http://JWPLTx.com",
-      "network_signature": "jwpltx\\.com]",
-      "code_signature": ".",
+      "id": 8,
+      "name": "JW Player",
       "creation_date": "2017-09-24",
-      "id": 8
+      "code_signature": "com.longtailvideo.jwplayer.",
+      "network_signature": "jwpltx\\.com|p\\.jwpcdn\\.com|g\\.jwpsrv\\.com",
+      "website": "https://jwplayer.com"
     },
     "9": {
+      "id": 9,
       "name": "Loggly",
-      "website": "http://loggly.com/",
-      "network_signature": "loggly\\.com",
-      "code_signature": "com.visiware.sync2ad.logger.loggly.",
       "creation_date": "2017-09-24",
-      "id": 9
+      "code_signature": "com.github.tony19.timber.loggly|com.github.tony19.loggly|com.visiware.sync2ad.logger.loggly.",
+      "network_signature": "loggly\\.com",
+      "website": "http://loggly.com/"
     },
     "10": {
+      "id": 10,
       "name": "Xiti",
-      "website": "http://Xiti.com",
-      "network_signature": "",
-      "code_signature": "",
       "creation_date": "2017-09-24",
-      "id": 10
+      "code_signature": "NC",
+      "network_signature": "NC",
+      "website": "http://Xiti.com"
     },
     "11": {
+      "id": 11,
       "name": "OutBrain",
-      "website": "http://www.outbrain.com/",
-      "network_signature": "outbrain\\.com",
-      "code_signature": "com.outbrain.",
       "creation_date": "2017-09-24",
-      "id": 11
+      "code_signature": "com.outbrain.",
+      "network_signature": "outbrain\\.com",
+      "website": "http://www.outbrain.com/"
     },
     "12": {
+      "id": 12,
       "name": "AppsFlyer",
-      "website": "http://AppsFlyer.com",
-      "network_signature": "appsflyer\\.com",
-      "code_signature": "com.appsflyer.",
       "creation_date": "2017-09-24",
-      "id": 12
+      "code_signature": "com.appsflyer.",
+      "network_signature": "appsflyer\\.com",
+      "website": "http://AppsFlyer.com"
     },
     "13": {
+      "id": 13,
       "name": "Ligatus",
-      "website": "http://ligatus.com",
-      "network_signature": "ligatus\\.com",
-      "code_signature": ".LigatusManager|.LigatusViewClient",
       "creation_date": "2017-09-24",
-      "id": 13
+      "code_signature": ".LigatusManager|.LigatusViewClient|com.ligatus.android.adframework",
+      "network_signature": "ligatus\\.com",
+      "website": "http://ligatus.com"
     },
     "14": {
+      "id": 14,
       "name": "Widespace",
-      "website": "http://widespace.com",
-      "network_signature": "widespace\\.com",
-      "code_signature": ".",
       "creation_date": "2017-09-24",
-      "id": 14
+      "code_signature": "com.widespace.",
+      "network_signature": "widespace\\.com",
+      "website": "http://widespace.com"
     },
     "15": {
+      "id": 15,
       "name": "AppNexus",
-      "website": "https://www.appnexus.com/",
-      "network_signature": "adnxs\\.com",
-      "code_signature": "com.appnexus.opensdk.",
       "creation_date": "2017-09-24",
-      "id": 15
+      "code_signature": "com.appnexus.opensdk.",
+      "network_signature": "adnxs\\.com|247realmedia\\.com|appnexus\\.com|appnexus\\.net",
+      "website": "https://www.appnexus.com/"
     },
     "16": {
+      "id": 16,
       "name": "Localytics",
-      "website": "http://localytics.com",
-      "network_signature": "localytics",
-      "code_signature": "com.localytics.android.",
       "creation_date": "2017-09-24",
-      "id": 16
+      "code_signature": "com.localytics.android.",
+      "network_signature": "analytics\\.localytics\\.com|manifest\\.localytics\\.com|profile\\.localytics\\.com|sdk-assets\\.localytics\\.com",
+      "website": "http://localytics.com"
     },
     "17": {
-      "name": "Braze",
-      "website": "https://www.braze.com",
-      "network_signature": "appboy\\.com",
-      "code_signature": "com.appboy",
+      "id": 17,
+      "name": "Braze (formerly Appboy)",
       "creation_date": "2017-09-24",
-      "id": 17
+      "code_signature": "com.appboy",
+      "network_signature": "appboy\\.com",
+      "website": "https://www.braze.com"
     },
     "18": {
+      "id": 18,
       "name": "MParticle",
-      "website": "http://MParticle.com",
-      "network_signature": "mparticle\\.com",
+      "creation_date": "2017-09-24",
       "code_signature": "com.mparticle",
-      "creation_date": "2017-09-24",
-      "id": 18
-    },
-    "19": {
-      "name": "Ultimedia",
-      "website": "http://ultimedia.com",
-      "network_signature": "ultimedia\\.com",
-      "code_signature": ".",
-      "creation_date": "2017-09-24",
-      "id": 19
+      "network_signature": "mparticle\\.com",
+      "website": "http://MParticle.com"
     },
     "20": {
+      "id": 20,
       "name": "S4M",
-      "website": "http://www.s4m.io/",
+      "creation_date": "2017-09-24",
+      "code_signature": "com.sam4mobile.",
       "network_signature": "sam4m\\.com|s4m.io",
-      "code_signature": "/s4m/",
-      "creation_date": "2017-09-24",
-      "id": 20
-    },
-    "21": {
-      "name": "Score Card Research",
-      "website": "http://scorecardresearch.com",
-      "network_signature": "scorecardresearch\\.com|optimizelyapis\\.com",
-      "code_signature": "com.optimizely",
-      "creation_date": "2017-09-24",
-      "id": 21
+      "website": "http://www.s4m.io/"
     },
     "22": {
+      "id": 22,
       "name": "Sizmek",
-      "website": "https://www.sizmek.com",
-      "network_signature": "serving-sys\\.com",
-      "code_signature": ".sizmek.",
       "creation_date": "2017-09-24",
-      "id": 22
+      "code_signature": ".sizmek.",
+      "network_signature": "serving-sys\\.com",
+      "website": "https://www.sizmek.com"
     },
     "23": {
+      "id": 23,
       "name": "Batch",
-      "website": "https://batch.com",
-      "network_signature": "batch\\.com",
-      "code_signature": "com.batch.android.",
       "creation_date": "2017-09-24",
-      "id": 23
+      "code_signature": "com.batch.android.",
+      "network_signature": "batch\\.com",
+      "website": "https://batch.com"
     },
     "24": {
+      "id": 24,
       "name": "Sync2Ad",
-      "website": "https://www.sync2ad.com/",
-      "network_signature": "sync2ad\\.com",
-      "code_signature": "com.visiware.sync2ad.dmp.",
       "creation_date": "2017-09-24",
-      "id": 24
+      "code_signature": "com.visiware.sync2ad.dmp.",
+      "network_signature": "sync2ad\\.com",
+      "website": "https://www.sync2ad.com/"
     },
     "25": {
+      "id": 25,
       "name": "Flurry",
-      "website": "https://developer.yahoo.com/flurry/",
-      "network_signature": "flurry\\.com",
-      "code_signature": "com.flurry.",
       "creation_date": "2017-09-24",
-      "id": 25
+      "code_signature": "com.flurry.",
+      "network_signature": "flurry\\.com",
+      "website": "https://developer.yahoo.com/flurry/"
     },
     "26": {
+      "id": 26,
       "name": "HockeyApp",
-      "website": "http://hockeyapp.net",
-      "network_signature": "hockeyapp\\.net",
-      "code_signature": "net.hockeyapp.",
       "creation_date": "2017-09-24",
-      "id": 26
+      "code_signature": "net.hockeyapp.",
+      "network_signature": "hockeyapp\\.net",
+      "website": "http://hockeyapp.net"
     },
     "27": {
+      "id": 27,
       "name": "Google CrashLytics",
-      "website": "http://crashlytics.com",
-      "network_signature": "crashlytics\\.com",
-      "code_signature": "io.fabric.|com.crashlytics.",
       "creation_date": "2017-09-24",
-      "id": 27
+      "code_signature": "io.fabric.|com.crashlytics.",
+      "network_signature": "crashlytics\\.com",
+      "website": "http://crashlytics.com"
     },
     "28": {
+      "id": 28,
       "name": "LeanPlum",
-      "website": "https://www.leanplum.com/",
-      "network_signature": "leanplum\\.com",
-      "code_signature": "com.leanplum.",
       "creation_date": "2017-09-24",
-      "id": 28
+      "code_signature": "com.leanplum.",
+      "network_signature": "leanplum\\.com",
+      "website": "https://www.leanplum.com/"
     },
     "29": {
+      "id": 29,
       "name": "Tinder Analytics",
-      "website": "http://tinder.com",
-      "network_signature": "etl\\.tindersparks\\.com",
-      "code_signature": "com.tinder.analytics|com.tinder.ads",
       "creation_date": "2017-09-24",
-      "id": 29
+      "code_signature": "com.tinder.analytics|com.tinder.ads",
+      "network_signature": "etl\\.tindersparks\\.com",
+      "website": "http://tinder.com"
     },
     "30": {
+      "id": 30,
       "name": "Schibsted",
-      "website": "http://www.schibsted.com/en/ir/",
-      "network_signature": "schibsted\\.com|schibsted\\.io",
-      "code_signature": ".schibsted.",
       "creation_date": "2017-09-25",
-      "id": 30
+      "code_signature": ".schibsted.",
+      "network_signature": "schibsted\\.com|schibsted\\.io",
+      "website": "http://www.schibsted.com/en/ir/"
     },
     "31": {
+      "id": 31,
       "name": "ATInternet",
-      "website": "https://www.atinternet.com/en/",
-      "network_signature": "ati-host\\.net",
-      "code_signature": "com.atinternet.",
       "creation_date": "2017-09-25",
-      "id": 31
+      "code_signature": "com.atinternet.",
+      "network_signature": "ati-host\\.net",
+      "website": "https://www.atinternet.com/en/"
     },
     "32": {
+      "id": 32,
       "name": "Tealium",
-      "website": "https://tealium.com/",
-      "network_signature": "tiqcdn\\.com",
-      "code_signature": ".tealium.",
       "creation_date": "2017-09-25",
-      "id": 32
+      "code_signature": ".tealium.",
+      "network_signature": "tiqcdn.com|tealiumiq.com",
+      "website": "https://tealium.com/"
     },
     "33": {
+      "id": 33,
       "name": "Nexage",
-      "website": "http://nexage.com/",
-      "network_signature": "nexage\\.com",
-      "code_signature": "com.nexage.android.|org.nexage.",
       "creation_date": "2017-09-27",
-      "id": 33
+      "code_signature": "com.nexage.android.|org.nexage.",
+      "network_signature": "nexage\\.com",
+      "website": "http://nexage.com/"
     },
     "34": {
+      "id": 34,
       "name": "Ogury Presage",
-      "website": "http://www.presage.io/",
-      "network_signature": "presage\\.io",
-      "code_signature": "io.presage.",
       "creation_date": "2017-09-27",
-      "id": 34
+      "code_signature": "io.presage.",
+      "network_signature": "presage\\.io",
+      "website": "http://www.presage.io/"
     },
     "35": {
+      "id": 35,
       "name": "Twitter MoPub",
-      "website": "https://www.mopub.com/",
-      "network_signature": "mopub\\.com",
-      "code_signature": "com.mopub.mobileads.",
       "creation_date": "2017-09-27",
-      "id": 35
+      "code_signature": "com.mopub.mobileads.",
+      "network_signature": "mopub\\.com",
+      "website": "https://www.mopub.com/"
     },
     "36": {
+      "id": 36,
       "name": "Add Apt Tr",
-      "website": "https://www.addapptr.com",
-      "network_signature": "aatkit\\.com",
-      "code_signature": "com.intentsoftware.addapptr.",
       "creation_date": "2017-09-27",
-      "id": 36
+      "code_signature": "com.intentsoftware.addapptr.",
+      "network_signature": "aatkit\\.com",
+      "website": "https://www.addapptr.com"
     },
     "37": {
+      "id": 37,
       "name": "Vectaury",
-      "website": "http://vectaury.io/",
-      "network_signature": "vectaury\\.io",
-      "code_signature": "io.vectaury.",
       "creation_date": "2017-09-28",
-      "id": 37
+      "code_signature": "io.vectaury.",
+      "network_signature": "vectaury\\.io",
+      "website": "http://vectaury.io/"
     },
     "38": {
+      "id": 38,
       "name": "Tune",
-      "website": "https://www.tune.com",
-      "network_signature": "mobileapptracking\\.com",
-      "code_signature": "com.tune|com.mobileapptracker",
       "creation_date": "2017-11-02",
-      "id": 38
+      "code_signature": "com.tune|com.mobileapptracker",
+      "network_signature": "mobileapptracking\\.com",
+      "website": "https://www.tune.com"
     },
     "39": {
-      "name": "PushWoosh",
-      "website": "https://www.pushwoosh.com/",
-      "network_signature": "pushwoosh\\.com",
-      "code_signature": "com.pushwoosh",
+      "id": 39,
+      "name": "Pushwoosh",
       "creation_date": "2017-11-12",
-      "id": 39
+      "code_signature": "com.pushwoosh",
+      "network_signature": "pushwoosh\\.com",
+      "website": "https://www.pushwoosh.com/"
     },
     "40": {
+      "id": 40,
       "name": "Demdex",
-      "website": "https://www.adobe.com/data-analytics-cloud/audience-manager.html",
-      "network_signature": "demdex\\.net",
-      "code_signature": "com.adobe.mobile.Analytics",
       "creation_date": "2017-11-15",
-      "id": 40
+      "code_signature": "com.adobe.mobile.Analytics",
+      "network_signature": "demdex\\.net",
+      "website": "https://www.adobe.com/data-analytics-cloud/audience-manager.html"
     },
     "41": {
+      "id": 41,
       "name": "AdsWizz",
-      "website": "http://www.adswizz.com/",
-      "network_signature": "adswizz\\.com",
-      "code_signature": ".adswizz.",
       "creation_date": "2017-11-15",
-      "id": 41
+      "code_signature": ".adswizz.",
+      "network_signature": "adswizz\\.com|cdn\\.adswizz.com\\.edgesuite\\.net",
+      "website": "http://www.adswizz.com/"
     },
     "42": {
+      "id": 42,
       "name": "ExactTarget",
-      "website": "http://help.exacttarget.com/en/technical_library/API_Overview/",
-      "network_signature": "\\.exacttarget\\.",
-      "code_signature": "com.exacttarget.",
       "creation_date": "2017-11-16",
-      "id": 42
+      "code_signature": "com.exacttarget.",
+      "network_signature": "\\.exacttarget\\.",
+      "website": "http://help.exacttarget.com/en/technical_library/API_Overview/"
     },
     "43": {
+      "id": 43,
       "name": "Omniture",
-      "website": "http://www.omniture.com",
-      "network_signature": "omtrdc\\.net|omniture\\.com",
-      "code_signature": "com.omniture.|com.adobe.adms.measurement.",
       "creation_date": "2017-11-16",
-      "id": 43
+      "code_signature": "com.omniture.|com.adobe.adms.measurement.",
+      "network_signature": "omtrdc\\.net|omniture\\.com",
+      "website": "http://www.omniture.com"
     },
     "44": {
+      "id": 44,
       "name": "Safe Graph",
-      "website": "https://www.safegraph.com/",
-      "network_signature": "api\\.safegraph\\.com",
-      "code_signature": "com.safegraph.|com.openlocate",
       "creation_date": "2017-11-16",
-      "id": 44
+      "code_signature": "com.safegraph.|com.openlocate",
+      "network_signature": "api\\.safegraph\\.com",
+      "website": "https://www.safegraph.com/"
     },
     "45": {
+      "id": 45,
       "name": "Tag Commander",
-      "website": "https://www.commandersact.com/en/",
-      "network_signature": "\\.commander1\\.com",
-      "code_signature": "com.tagcommander.",
       "creation_date": "2017-11-28",
-      "id": 45
+      "code_signature": "com.tagcommander.",
+      "network_signature": "\\.commander1\\.com",
+      "website": "https://www.commandersact.com/en/"
     },
     "46": {
+      "id": 46,
       "name": "CrowdTangle",
-      "website": "https://www.crowdtangle.com/",
-      "network_signature": "api\\.crowdtangle\\.com",
-      "code_signature": ".",
       "creation_date": "2017-12-03",
-      "id": 46
+      "code_signature": ".",
+      "network_signature": "api\\.crowdtangle\\.com",
+      "website": "https://www.crowdtangle.com/"
     },
     "47": {
+      "id": 47,
       "name": "Facebook Audience",
-      "website": "https://developers.facebook.com/docs/android/",
-      "network_signature": "\\.facebook\\.com",
-      "code_signature": "com.facebook.audiencenetwork",
       "creation_date": "2017-12-03",
-      "id": 47
+      "code_signature": "com.facebook.audiencenetwork",
+      "network_signature": "\\.facebook\\.com",
+      "website": "https://developers.facebook.com/docs/android/"
     },
     "48": {
+      "id": 48,
       "name": "Google Analytics",
-      "website": "http://www.google.com/analytics/",
-      "network_signature": "google-analytics\\.com",
-      "code_signature": "com.google.android.apps.analytics.|com.google.android.gms.analytics.",
       "creation_date": "2017-12-03",
-      "id": 48
+      "code_signature": "com.google.android.apps.analytics.|com.google.android.gms.analytics.",
+      "network_signature": "google-analytics\\.com",
+      "website": "http://www.google.com/analytics/"
     },
     "49": {
+      "id": 49,
       "name": "Google Firebase Analytics",
-      "website": "https://firebase.google.com/",
-      "network_signature": "firebase\\.com",
-      "code_signature": "com.google.firebase.analytics.|com.google.android.gms.measurement.",
       "creation_date": "2017-12-03",
-      "id": 49
+      "code_signature": "com.google.firebase.analytics.|com.google.android.gms.measurement.",
+      "network_signature": "firebase\\.com",
+      "website": "https://firebase.google.com/"
     },
     "51": {
+      "id": 51,
       "name": "Eulerian",
-      "website": "https://www.eulerian.com/en/",
-      "network_signature": "eulerian\\.com",
-      "code_signature": "com.eulerian.android.sdk",
       "creation_date": "2017-12-03",
-      "id": 51
+      "code_signature": "com.eulerian.android.sdk",
+      "network_signature": "eulerian\\.com",
+      "website": "https://www.eulerian.com/en/"
     },
     "52": {
+      "id": 52,
       "name": "Adjust",
-      "website": "https://www.adjust.com/",
-      "network_signature": "adjust\\.com",
-      "code_signature": "com.adjust.sdk.",
       "creation_date": "2017-12-03",
-      "id": 52
+      "code_signature": "com.adjust.sdk.",
+      "network_signature": "adjust\\.com|adj\\.st",
+      "website": "https://www.adjust.com/"
     },
     "53": {
+      "id": 53,
       "name": "ChartBoost",
-      "website": "https://answers.chartboost.com/en-us/",
-      "network_signature": "\\.chartboost\\.com",
-      "code_signature": "com.chartboost.sdk.",
       "creation_date": "2017-12-03",
-      "id": 53
+      "code_signature": "com.chartboost.sdk.",
+      "network_signature": "\\.chartboost\\.com",
+      "website": "https://answers.chartboost.com/en-us/"
     },
     "54": {
+      "id": 54,
       "name": "Backelite",
-      "website": "https://www.backelite.com/",
-      "network_signature": "backelite\\.com",
-      "code_signature": "com.backelite.android.|com.backelite.bkdroid.",
       "creation_date": "2017-12-03",
-      "id": 54
+      "code_signature": "com.backelite.android.|com.backelite.bkdroid.",
+      "network_signature": "backelite\\.com",
+      "website": "https://www.backelite.com/"
     },
     "55": {
+      "id": 55,
       "name": "Areametrics",
-      "website": "https://areametrics.com/",
-      "network_signature": "areametrics\\.com",
-      "code_signature": "com.areametrics.areametricssdk",
       "creation_date": "2017-12-03",
-      "id": 55
+      "code_signature": "com.areametrics.areametricssdk|com.areametrics.nosdkandroid",
+      "network_signature": "areametrics\\.com",
+      "website": "https://areametrics.com/"
     },
     "56": {
+      "id": 56,
       "name": "ComScore",
-      "website": "https://comscore.com/",
-      "network_signature": "comscore\\.com",
-      "code_signature": "com.comscore.",
       "creation_date": "2017-12-03",
-      "id": 56
+      "code_signature": "com.comscore.",
+      "network_signature": "comscore\\.com",
+      "website": "https://comscore.com/"
     },
     "57": {
+      "id": 57,
       "name": "Cuebiq",
-      "website": "http://www.cuebiq.com/",
-      "network_signature": "cuebiq\\.com",
-      "code_signature": "com.cuebiq.cuebiqsdk.model.Collector|com.cuebiq.cuebiqsdk.receiver.CoverageReceiver",
       "creation_date": "2017-12-03",
-      "id": 57
+      "code_signature": "com.cuebiq.cuebiqsdk.model.Collector|com.cuebiq.cuebiqsdk.receiver.CoverageReceiver",
+      "network_signature": "cuebiq\\.com",
+      "website": "http://www.cuebiq.com/"
     },
     "58": {
+      "id": 58,
       "name": "HelpShift",
-      "website": "https://www.helpshift.com",
-      "network_signature": "helpshift.com",
-      "code_signature": "com.helpshift",
       "creation_date": "2017-12-03",
-      "id": 58
+      "code_signature": "com.helpshift",
+      "network_signature": "helpshift.com",
+      "website": "https://www.helpshift.com"
     },
     "59": {
+      "id": 59,
       "name": "Kontakt",
-      "website": "https://kontakt.io/",
-      "network_signature": "kontakt.io",
-      "code_signature": "com.kontakt.sdk.android.",
       "creation_date": "2017-12-03",
-      "id": 59
+      "code_signature": "com.kontakt.sdk.android.",
+      "network_signature": "kontakt.io",
+      "website": "https://kontakt.io/"
     },
     "60": {
+      "id": 60,
       "name": "Locuslabs",
-      "website": "http://locuslabs.com",
-      "network_signature": "locuslabs\\.com",
-      "code_signature": "com.locuslabs.sdk",
       "creation_date": "2017-12-03",
-      "id": 60
+      "code_signature": "com.locuslabs.sdk",
+      "network_signature": "locuslabs\\.com",
+      "website": "http://locuslabs.com"
     },
     "61": {
+      "id": 61,
       "name": "Moat",
-      "website": "https://moat.com/analytics",
-      "network_signature": "moat\\.com",
-      "code_signature": "com.moat.analytics.mobile.",
       "creation_date": "2017-12-03",
-      "id": 61
+      "code_signature": "com.moat.analytics.mobile.",
+      "network_signature": "moat\\.com|apx\\.moatads\\.com|geo\\.moatads\\.com|js\\.moatads\\.com|mb\\.moatads\\.com|pixel\\.moatads\\.com|px\\.moatads\\.com|sejs\\.moatads\\.com|yt\\.moatads\\.com|yts\\.moatads\\.com|z\\.moatads\\.com",
+      "website": "https://moat.com/analytics"
     },
     "62": {
+      "id": 62,
       "name": "Segment",
-      "website": "https://segment.com/",
-      "network_signature": "segment\\.com",
-      "code_signature": "com.segment.analytics.",
       "creation_date": "2017-12-03",
-      "id": 62
+      "code_signature": "com.segment.analytics.",
+      "network_signature": "segment.com|api.segment.io",
+      "website": "https://segment.com/"
     },
     "63": {
+      "id": 63,
       "name": "Mobile Engagement",
-      "website": "https://docs.microsoft.com/en-us/azure/mobile-engagement/mobile-engagement-android-sdk-overview",
-      "network_signature": "login\\.microsoftonline\\.com|management\\.azure\\.com",
-      "code_signature": "com.ubikod.capptain.|com.microsoft.azure.engagement.",
       "creation_date": "2017-12-04",
-      "id": 63
+      "code_signature": "com.ubikod.capptain.|com.microsoft.azure.engagement.",
+      "network_signature": "login\\.microsoftonline\\.com|management\\.azure\\.com",
+      "website": "https://docs.microsoft.com/en-us/azure/mobile-engagement/mobile-engagement-android-sdk-overview"
     },
     "64": {
+      "id": 64,
       "name": "Colocator",
-      "website": "https://developers.colocator.net",
-      "network_signature": "colocator\\.net",
-      "code_signature": "net.crowdconnected.androidcolocator",
       "creation_date": "2017-12-04",
-      "id": 64
+      "code_signature": "net.crowdconnected.androidcolocator",
+      "network_signature": "colocator\\.net",
+      "website": "https://developers.colocator.net"
     },
     "65": {
+      "id": 65,
       "name": "Facebook Ads",
-      "website": "https://developers.facebook.com/docs/android",
-      "network_signature": "\\.facebook\\.com",
-      "code_signature": "com.facebook.ads",
       "creation_date": "2017-12-05",
-      "id": 65
+      "code_signature": "com.facebook.ads",
+      "network_signature": "\\.facebook\\.com",
+      "website": "https://developers.facebook.com/docs/android"
     },
     "66": {
+      "id": 66,
       "name": "Facebook Analytics",
-      "website": "https://developers.facebook.com/docs/android",
-      "network_signature": "\\.facebook\\.com",
-      "code_signature": "com.facebook.appevents",
       "creation_date": "2017-12-05",
-      "id": 66
+      "code_signature": "com.facebook.appevents",
+      "network_signature": "\\.facebook\\.com",
+      "website": "https://developers.facebook.com/docs/android"
     },
     "67": {
+      "id": 67,
       "name": "Facebook Login",
-      "website": "https://developers.facebook.com/docs/android",
-      "network_signature": "\\.facebook\\.com",
-      "code_signature": "com.facebook.login",
       "creation_date": "2017-12-05",
-      "id": 67
+      "code_signature": "com.facebook.login",
+      "network_signature": "\\.facebook\\.com",
+      "website": "https://developers.facebook.com/docs/android"
     },
     "68": {
+      "id": 68,
       "name": "Facebook Notifications",
-      "website": "https://developers.facebook.com/docs/android",
-      "network_signature": "\\.facebook\\.com",
-      "code_signature": "com.facebook.notifications",
       "creation_date": "2017-12-05",
-      "id": 68
+      "code_signature": "com.facebook.notifications",
+      "network_signature": "\\.facebook\\.com",
+      "website": "https://developers.facebook.com/docs/android"
     },
     "69": {
+      "id": 69,
       "name": "Facebook Places",
-      "website": "https://developers.facebook.com/docs/android",
-      "network_signature": "\\.facebook\\.com",
-      "code_signature": "com.facebook.places",
       "creation_date": "2017-12-05",
-      "id": 69
+      "code_signature": "com.facebook.places",
+      "network_signature": "\\.facebook\\.com",
+      "website": "https://developers.facebook.com/docs/android"
     },
     "70": {
+      "id": 70,
       "name": "Facebook Share",
-      "website": "https://developers.facebook.com/docs/android",
-      "network_signature": "\\.facebook\\.com",
-      "code_signature": "com.facebook.share",
       "creation_date": "2017-12-05",
-      "id": 70
+      "code_signature": "com.facebook.share",
+      "network_signature": "\\.facebook\\.com",
+      "website": "https://developers.facebook.com/docs/android"
     },
     "71": {
+      "id": 71,
       "name": "Google Ads",
-      "website": "https://developers.google.com/admob/android",
-      "network_signature": "\\.google\\.com",
-      "code_signature": "com.google.android.gms.ads.mediation.",
       "creation_date": "2017-12-05",
-      "id": 71
+      "code_signature": "com.google.android.gms.ads.mediation.",
+      "network_signature": "\\.google\\.com",
+      "website": "https://developers.google.com/admob/android"
     },
     "72": {
+      "id": 72,
       "name": "AppLovin",
-      "website": "https://www.applovin.com/",
-      "network_signature": "applovin\\.com",
-      "code_signature": "com.applovin",
       "creation_date": "2018-01-05",
-      "id": 72
+      "code_signature": "com.applovin",
+      "network_signature": "applovin\\.com|applvn\\.com",
+      "website": "https://www.applovin.com/"
     },
     "73": {
-      "name": "Avocarrot",
-      "website": "https://www.avocarrot.com/",
-      "network_signature": "\\.avocarrot\\.com",
-      "code_signature": "com.avocarrot.sdk",
+      "id": 73,
+      "name": "Glispa Connect (Formerly Avocarrot)",
       "creation_date": "2018-01-05",
-      "id": 73
+      "code_signature": "com.avocarrot.sdk",
+      "network_signature": "\\.avocarrot\\.com|ads\\.glispa\\.com|exp\\.glispa\\.com|rtb\\.platform\\.glispa\\.com|trk\\.glispa\\.com|templates\\.glispaconnect\\.com",
+      "website": "https://www.glispa.com"
     },
     "74": {
+      "id": 74,
       "name": "NativeX",
-      "website": "http://www.nativex.com/",
-      "network_signature": "mobvista\\.com|nativex\\.com",
-      "code_signature": "com.nativex",
       "creation_date": "2018-01-05",
-      "id": 74
+      "code_signature": "com.nativex",
+      "network_signature": "nativex\\.com",
+      "website": "http://www.nativex.com/"
     },
     "75": {
+      "id": 75,
       "name": "Baidu Maps",
-      "website": "https://map.baidu.com",
-      "network_signature": "map\\.baidu\\.com",
-      "code_signature": "com.baidu.BaiduMap",
       "creation_date": "2018-01-05",
-      "id": 75
+      "code_signature": "com.baidu.BaiduMap",
+      "network_signature": "map\\.baidu\\.com",
+      "website": "https://map.baidu.com"
     },
     "76": {
+      "id": 76,
       "name": "WeChat Location",
-      "website": "https://wechat.com",
-      "network_signature": "map\\.qq\\.com",
-      "code_signature": "com.tencent.map.geolocation|com.tencent.mm.plugin.location.|com.tencent.mm.plugin.location_soso.|com.tencent.mm.plugin.location_google",
       "creation_date": "2018-01-05",
-      "id": 76
+      "code_signature": "com.tencent.map.geolocation|com.tencent.mm.plugin.location.|com.tencent.mm.plugin.location_soso.|com.tencent.mm.plugin.location_google",
+      "network_signature": "map\\.qq\\.com",
+      "website": "https://wechat.com"
     },
     "77": {
+      "id": 77,
       "name": "HyperTrack",
-      "website": "http://hypertrack.com",
-      "network_signature": "trck\\.at|hypertrack\\.amazonaws\\.com|api\\.hypertrack\\.com",
-      "code_signature": "com.hypertrack|com.hypertracklive.|io.hypertrack",
       "creation_date": "2018-01-05",
-      "id": 77
+      "code_signature": "com.hypertrack|com.hypertracklive.|io.hypertrack",
+      "network_signature": "trck\\.at|hypertrack\\.amazonaws\\.com|api\\.hypertrack\\.com",
+      "website": "http://hypertrack.com"
     },
     "78": {
+      "id": 78,
       "name": "Uber Analytics",
-      "website": "https://uber.com",
-      "network_signature": "events\\.uber\\.com",
-      "code_signature": "com.ubercab.analytics.|com.ubercab.library.metrics.analytics.|com.ubercab.client.core.analytics.",
       "creation_date": "2018-01-05",
-      "id": 78
+      "code_signature": "com.ubercab.analytics.|com.ubercab.library.metrics.analytics.|com.ubercab.client.core.analytics.",
+      "network_signature": "events\\.uber\\.com",
+      "website": "https://uber.com"
     },
     "79": {
+      "id": 79,
       "name": "Lisnr",
-      "website": "http://lisnr.com",
-      "network_signature": "lisnr\\.com",
-      "code_signature": "com.lisnr.",
       "creation_date": "2018-01-05",
-      "id": 79
+      "code_signature": "com.lisnr.",
+      "network_signature": "lisnr\\.com",
+      "website": "http://lisnr.com"
     },
     "80": {
+      "id": 80,
       "name": "SilverPush",
-      "website": "http://silverpush.co",
-      "network_signature": "silverpush\\.co|silverpush\\.com|54\\.243\\.73\\.253:8080/SilverPush/",
-      "code_signature": "com.silverpush.|com.silverpush.location|com.silverpush.sdk.android.SPService",
       "creation_date": "2018-01-05",
-      "id": 80
+      "code_signature": "com.silverpush.|com.silverpush.location|com.silverpush.sdk.android.SPService",
+      "network_signature": "silverpush\\.co|silverpush\\.com|54\\.243\\.73\\.253:8080/SilverPush/",
+      "website": "http://silverpush.co"
     },
     "81": {
+      "id": 81,
       "name": "Shopkick",
-      "website": "https://shopkick.com",
-      "network_signature": "shopkick\\.com|shopkick\\.de|sdk.shopkick.com",
-      "code_signature": "com.shopkick.sdk.api.|com.shopkick.fetchers.",
       "creation_date": "2018-01-05",
-      "id": 81
+      "code_signature": "com.shopkick.sdk.api.|com.shopkick.fetchers.",
+      "network_signature": "shopkick\\.com|shopkick\\.de|sdk.shopkick.com",
+      "website": "https://shopkick.com"
     },
     "82": {
+      "id": 82,
       "name": "Alphonso",
-      "website": "http://alphonso.tv",
-      "network_signature": "prov.alphonso.tv|api.alphonso.tv",
-      "code_signature": "tv.alphonso.service",
       "creation_date": "2018-01-05",
-      "id": 82
+      "code_signature": "tv.alphonso.service",
+      "network_signature": "prov.alphonso.tv|api.alphonso.tv",
+      "website": "http://alphonso.tv"
     },
     "83": {
+      "id": 83,
       "name": "Smaato",
-      "website": "https://smaato.com",
-      "network_signature": "soma.smaato.net|smaato.net",
-      "code_signature": "com.smaato.soma.",
       "creation_date": "2018-01-05",
-      "id": 83
+      "code_signature": "com.smaato.soma.",
+      "network_signature": "soma.smaato.net|smaato.net",
+      "website": "https://smaato.com"
     },
     "84": {
+      "id": 84,
       "name": "Scandit",
-      "website": "https://scandit.com",
-      "network_signature": "scandit\\.com",
-      "code_signature": "com.scandit.",
       "creation_date": "2018-01-05",
-      "id": 84
+      "code_signature": "com.scandit.",
+      "network_signature": "scandit\\.com",
+      "website": "https://scandit.com"
     },
     "85": {
+      "id": 85,
       "name": "Inrix",
-      "website": "http://inrix.com/",
-      "network_signature": "inrix\\.com|inrix\\.io",
-      "code_signature": "com.inrix.sdk",
       "creation_date": "2018-01-06",
-      "id": 85
+      "code_signature": "com.inrix.sdk",
+      "network_signature": "inrix\\.com|inrix\\.io",
+      "website": "http://inrix.com/"
     },
     "86": {
+      "id": 86,
       "name": "Signal360",
-      "website": "http://www.signal360.com",
-      "network_signature": "signal360\\.com|sonicnotify\\.com",
-      "code_signature": "com.signal360.sdk.core.|com.sonicnotify.sdk.core.|com.rnsignal360",
       "creation_date": "2018-01-13",
-      "id": 86
+      "code_signature": "com.signal360.sdk.core.|com.sonicnotify.sdk.core.|com.rnsignal360",
+      "network_signature": "signal360\\.com|sonicnotify\\.com",
+      "website": "http://www.signal360.com"
     },
     "87": {
+      "id": 87,
       "name": "TeleQuid",
-      "website": "http://www.telequid.com/",
-      "network_signature": "mars\\.telequid\\.com",
-      "code_signature": "com.telequid.",
       "creation_date": "2018-03-04",
-      "id": 87
+      "code_signature": "com.telequid.",
+      "network_signature": "mars\\.telequid\\.com",
+      "website": "http://www.telequid.com/"
     },
     "88": {
+      "id": 88,
       "name": "Retency",
-      "website": "http://retency.com",
-      "network_signature": "NC",
-      "code_signature": "com.retency.sdk.android",
       "creation_date": "2018-03-04",
-      "id": 88
+      "code_signature": "com.retency.sdk.android",
+      "network_signature": "NC",
+      "website": "http://retency.com"
     },
     "89": {
+      "id": 89,
       "name": "MAdvertise",
-      "website": "http://madvertise.com",
-      "network_signature": "NC",
-      "code_signature": "com.mngads.sdk|com.mngads.views|com.mngads.",
       "creation_date": "2018-03-04",
-      "id": 89
+      "code_signature": "com.mngads.sdk|com.mngads.views|com.mngads.",
+      "network_signature": "dispatcher\\.mng\\-ads\\.com|mobile\\.mng\\-ads\\.com",
+      "website": "http://madvertise.com"
     },
     "90": {
+      "id": 90,
       "name": "AdColony",
-      "website": "http://adcolony.com/",
-      "network_signature": "adc3-launch.adcolony.com|ads30.adcolony.com|androidads20.adcolony.com|androidads21.adcolony.com|androidads23.adcolony.com|events3alt.adcolony.com|wd.adcolony.com|adcolony.com",
-      "code_signature": "com.adcolony",
       "creation_date": "2018-03-04",
-      "id": 90
+      "code_signature": "com.adcolony",
+      "network_signature": "adc3-launch.adcolony.com|ads30.adcolony.com|androidads20.adcolony.com|androidads21.adcolony.com|androidads23.adcolony.com|events3alt.adcolony.com|wd.adcolony.com|adcolony.com",
+      "website": "http://adcolony.com/"
     },
     "91": {
+      "id": 91,
       "name": "AccountKit",
-      "website": "https://www.accountkit.com/",
-      "network_signature": "NC",
-      "code_signature": "com.facebook.accountkit",
       "creation_date": "2018-03-04",
-      "id": 91
+      "code_signature": "com.facebook.accountkit",
+      "network_signature": "graph.accountkit.com",
+      "website": "https://www.accountkit.com/"
     },
     "92": {
+      "id": 92,
       "name": "Amazon Advertisement",
-      "website": "https://developer.amazon.com/public/apis/earn/mobile-ads/docs/quick-start",
-      "network_signature": "NC",
-      "code_signature": "com.amazon.device.ads",
       "creation_date": "2018-03-04",
-      "id": 92
+      "code_signature": "com.amazon.device.ads",
+      "network_signature": "NC",
+      "website": "https://developer.amazon.com/public/apis/earn/mobile-ads/docs/quick-start"
     },
     "93": {
+      "id": 93,
       "name": "Amazon Mobile Associates",
-      "website": "https://developer.amazon.com/mobile-associates",
-      "network_signature": "NC",
-      "code_signature": "com.amazon.device.associates",
       "creation_date": "2018-03-04",
-      "id": 93
+      "code_signature": "com.amazon.device.associates",
+      "network_signature": "NC",
+      "website": "https://developer.amazon.com/mobile-associates"
     },
     "94": {
+      "id": 94,
       "name": "Radius Networks",
-      "website": "https://www.radiusnetworks.com/",
-      "network_signature": "proximitykit.radiusnetworks.com",
-      "code_signature": "com.radiusnetworks",
       "creation_date": "2018-03-04",
-      "id": 94
+      "code_signature": "com.radiusnetworks",
+      "network_signature": "proximitykit.radiusnetworks.com",
+      "website": "https://www.radiusnetworks.com/"
     },
     "95": {
+      "id": 95,
       "name": "Amazon Analytics",
-      "website": "https://developer.amazon.com/public/apis/manage/analytics/docs/analytics-for-android-fire-os",
-      "network_signature": "NC",
-      "code_signature": "com.amazon.insights",
       "creation_date": "2018-03-04",
-      "id": 95
+      "code_signature": "com.amazon.insights|com.amazonaws.mobileconnectors.pinpoint.analytics.|com.amazonaws.mobileconnectors.amazonmobileanalytics",
+      "network_signature": "mobileanalytics.us-east-1.amazonaws.com",
+      "website": "https://developer.amazon.com/public/apis/manage/analytics/docs/analytics-for-android-fire-os"
     },
     "96": {
+      "id": 96,
       "name": "Baidu APPX",
-      "website": "https://app.baidu.com/",
-      "network_signature": "NC",
-      "code_signature": "com.baidu.appx",
       "creation_date": "2018-03-04",
-      "id": 96
+      "code_signature": "com.baidu.appx",
+      "network_signature": "NC",
+      "website": "https://app.baidu.com/"
     },
     "97": {
+      "id": 97,
       "name": "Baidu Location",
-      "website": "https://developer.baidu.com/",
-      "network_signature": "NC",
-      "code_signature": "com.baidu.location",
       "creation_date": "2018-03-04",
-      "id": 97
+      "code_signature": "com.baidu.location",
+      "network_signature": "NC",
+      "website": "https://developer.baidu.com/"
     },
     "99": {
+      "id": 99,
       "name": "Baidu Map",
-      "website": "http://lbsyun.baidu.com/",
-      "network_signature": "NC",
-      "code_signature": "com.baidu.mapapi",
       "creation_date": "2018-03-04",
-      "id": 99
+      "code_signature": "com.baidu.mapapi",
+      "network_signature": "NC",
+      "website": "http://lbsyun.baidu.com/"
     },
     "100": {
+      "id": 100,
       "name": "Baidu Mobile Ads",
-      "website": "https://developer.baidu.com/",
-      "network_signature": "NC",
-      "code_signature": "com.baidu.mobads",
       "creation_date": "2018-03-04",
-      "id": 100
+      "code_signature": "com.baidu.mobads",
+      "network_signature": "NC",
+      "website": "https://developer.baidu.com/"
     },
     "101": {
+      "id": 101,
       "name": "Baidu Mobile Stat",
-      "website": "https://developer.baidu.com/",
-      "network_signature": "NC",
-      "code_signature": "com.baidu.mobstat",
       "creation_date": "2018-03-04",
-      "id": 101
+      "code_signature": "com.baidu.mobstat",
+      "network_signature": "NC",
+      "website": "https://developer.baidu.com/"
     },
     "102": {
+      "id": 102,
       "name": "Estimote",
-      "website": "https://estimote.com/",
-      "network_signature": "NC",
-      "code_signature": "com.estimote.",
       "creation_date": "2018-03-04",
-      "id": 102
+      "code_signature": "com.estimote.",
+      "network_signature": "NC",
+      "website": "https://estimote.com/"
     },
     "103": {
+      "id": 103,
       "name": "Baidu Navigation",
-      "website": "http://lbsyun.baidu.com/index.php?title=android-navsdk",
-      "network_signature": "NC",
-      "code_signature": "com.baidu.navi",
       "creation_date": "2018-03-04",
-      "id": 103
+      "code_signature": "com.baidu.navi",
+      "network_signature": "NC",
+      "website": "http://lbsyun.baidu.com/index.php?title=android-navsdk"
     },
     "104": {
+      "id": 104,
       "name": "Fyber",
-      "website": "https://www.fyber.com/",
-      "network_signature": "adproxy.fyber.com|appengage-video.fyber.com|banner.fyber.com|engine.fyber.com|interstitial.fyber.com|mbe-cdn.fyber.com|offer.fyber.com|service.fyber.com|tracker.fyber.com|video.fyber.com|video-interstitial-assets-cdn.fyber.com",
-      "code_signature": "com.fyber.",
       "creation_date": "2018-03-04",
-      "id": 104
+      "code_signature": "com.fyber.",
+      "network_signature": "adproxy.fyber.com|appengage-video.fyber.com|banner.fyber.com|engine.fyber.com|interstitial.fyber.com|mbe-cdn.fyber.com|offer.fyber.com|service.fyber.com|tracker.fyber.com|video.fyber.com|video-interstitial-assets-cdn.fyber.com",
+      "website": "https://www.fyber.com/"
     },
     "105": {
+      "id": 105,
       "name": "Google Tag Manager",
-      "website": "https://www.google.com/analytics/tag-manager/",
-      "network_signature": "NC",
-      "code_signature": "com.google.tagmanager",
       "creation_date": "2018-03-04",
-      "id": 105
+      "code_signature": "com.google.tagmanager|com.google.android.gms.tagmanager",
+      "network_signature": "www.googletagmanager.com|www.googletagservices.com",
+      "website": "https://www.google.com/analytics/tag-manager/"
     },
     "106": {
+      "id": 106,
       "name": "Inmobi",
-      "website": "http://inmobi.com",
-      "network_signature": "config-ltvp.inmobi.com|sdkm.w.inmobi.com|inmobi.com|inmobi.info|inmobi.us",
-      "code_signature": "com.inmobi",
       "creation_date": "2018-03-04",
-      "id": 106
+      "code_signature": "com.inmobi",
+      "network_signature": "c\\.w\\.inmobi\\.com|china\\.inmobi\\.com|config-ltvp\\.inmobi\\.com|config\\.inmobi\\.com|et\\.w\\.inmobi\\.com|i\\.l\\.inmobicdn\\.net|i\\.w\\.inmobi\\.com|inmobi\\.cn|inmobi\\.com|inmobi\\.info|inmobi\\.net|inmobi\\.us|inmobicdn\\.com|inmobicdn\\.net|inmobisdk\\-a\\.akamaihd\\.net|japan\\.inmobi\\.com|r\\.w\\.inmobi\\.com|sdkm\\.w\\.inmobi\\.com|sdktm\\.w\\.inmobi\\.com|w\\.inmobi\\.com",
+      "website": "http://inmobi.com"
     },
     "107": {
+      "id": 107,
       "name": "Millennial Media",
-      "website": "http://www.millennialmedia.com/",
-      "network_signature": "contextual.media.net|media.net|millennialmedia.com",
-      "code_signature": "com.millennialmedia.",
       "creation_date": "2018-03-04",
-      "id": 107
+      "code_signature": "com.millennialmedia.",
+      "network_signature": "contextual.media.net|media.net|millennialmedia.com|adtech\\.de",
+      "website": "https://www.millennialmedia.com/"
     },
     "108": {
+      "id": 108,
       "name": "Snowplow",
-      "website": "https://snowplowanalytics.com/",
-      "network_signature": "NC",
-      "code_signature": "com.snowplowanalytics.",
       "creation_date": "2018-03-04",
-      "id": 108
+      "code_signature": "com.snowplowanalytics.",
+      "network_signature": "NC",
+      "website": "https://snowplowanalytics.com/"
     },
     "109": {
+      "id": 109,
       "name": "Fyber SponsorPay",
-      "website": "http://www.sponsorpay.com",
-      "network_signature": "appengage-video.sponsorpay.com|cdn1.sponsorpay.com|cdn2.sponsorpay.com|cdn3.sponsorpay.com|cdn4.sponsorpay.com|engine.sponsorpay.com",
-      "code_signature": "com.sponsorpay",
       "creation_date": "2018-03-04",
-      "id": 109
+      "code_signature": "com.sponsorpay",
+      "network_signature": "appengage-video.sponsorpay.com|cdn1.sponsorpay.com|cdn2.sponsorpay.com|cdn3.sponsorpay.com|cdn4.sponsorpay.com|engine.sponsorpay.com",
+      "website": "http://www.sponsorpay.com"
     },
     "110": {
+      "id": 110,
       "name": "Supersonic Ads",
-      "website": "https://www.supersonic.com/",
-      "network_signature": "tag-mediation.supersonic.com|click-haproxy.supersonicads.com|init.supersonicads.com|outcome.supersonicads.com|ow-gateway.supersonicads.com|rv-gateway.supersonicads.com|pixel-tracking.sonic-us.supersonicads.com|ua.supersonicads.com|www.supersonicads.com|supersonic.com",
-      "code_signature": "com.supersonic.adapters.supersonicads|com.supersonicads.sdk",
       "creation_date": "2018-03-04",
-      "id": 110
+      "code_signature": "com.supersonic.adapters.supersonicads|com.supersonicads.sdk",
+      "network_signature": "tag\\-mediation.supersonic.com|logs.supersonic.com|click-haproxy.supersonicads.com|init.supersonicads.com|outcome.supersonicads.com|ow-gateway.supersonicads.com|rv-gateway.supersonicads.com|pixel-tracking.sonic-us.supersonicads.com|ua.supersonicads.com|www.supersonicads.com|supersonic.com|cx.ssacdn.com|static.ssacdn.com|v.ssacdn.com|supersonicads-a.akamaihd.net",
+      "website": "https://www.supersonic.com/"
     },
     "111": {
+      "id": 111,
       "name": "Carnival",
-      "website": "http://carnival.io/",
-      "network_signature": "NC",
-      "code_signature": "com.carnival.sdk, com.carnivalmobile",
       "creation_date": "2018-03-04",
-      "id": 111
+      "code_signature": "com.carnival.sdk|com.carnivalmobile",
+      "network_signature": "devices.carnivalmobile.com",
+      "website": "http://carnival.io/"
     },
     "112": {
+      "id": 112,
       "name": "Tencent Map LBS",
-      "website": "https://lbs.qq.com/",
-      "network_signature": "NC",
-      "code_signature": "com.tencent.lbs",
       "creation_date": "2018-03-04",
-      "id": 112
+      "code_signature": "com.tencent.lbs",
+      "network_signature": "NC",
+      "website": "https://lbs.qq.com/"
     },
     "113": {
+      "id": 113,
       "name": "Tencent MobWin",
-      "website": "https://www.tencent.com/en-us/",
-      "network_signature": "NC",
-      "code_signature": "com.tencent.mobwin",
       "creation_date": "2018-03-04",
-      "id": 113
+      "code_signature": "com.tencent.mobwin",
+      "network_signature": "NC",
+      "website": "https://www.tencent.com/en-us/"
     },
     "114": {
+      "id": 114,
       "name": "Tencent MTA",
-      "website": "https://mta.qq.com/",
-      "network_signature": "NC",
-      "code_signature": "com.tencent.mta",
       "creation_date": "2018-03-04",
-      "id": 114
+      "code_signature": "com.tencent.mta",
+      "network_signature": "NC",
+      "website": "https://mta.qq.com/"
     },
     "115": {
+      "id": 115,
       "name": "Apptentive",
-      "website": "https://www.apptentive.com/",
-      "network_signature": "NC",
-      "code_signature": "com.apptentive.",
       "creation_date": "2018-03-04",
-      "id": 115
+      "code_signature": "com.apptentive.",
+      "network_signature": "api.apptentive.com",
+      "website": "https://www.apptentive.com/"
     },
     "116": {
-      "name": "Tecent Stats",
-      "website": "http://stat.qq.com/",
-      "network_signature": "NC",
-      "code_signature": "com.tencent.stat",
+      "id": 116,
+      "name": "Tencent Stats",
       "creation_date": "2018-03-04",
-      "id": 116
+      "code_signature": "com.tencent.stat",
+      "network_signature": "NC",
+      "website": "http://stat.qq.com/"
     },
     "117": {
+      "id": 117,
       "name": "Tencent Weiyun",
-      "website": "https://www.weiyun.com",
-      "network_signature": "NC",
-      "code_signature": "com.tencent.weiyun",
       "creation_date": "2018-03-04",
-      "id": 117
+      "code_signature": "com.tencent.weiyun",
+      "network_signature": "NC",
+      "website": "https://www.weiyun.com"
     },
     "118": {
+      "id": 118,
       "name": "MixPanel",
-      "website": "https://mixpanel.com/",
-      "network_signature": "api\\.mixpanel\\.com|decide\\.mixpanel\\.com|switchboard\\.mixpanel\\.com|mixpanel\\.com",
-      "code_signature": "com.mixpanel.",
       "creation_date": "2018-03-04",
-      "id": 118
+      "code_signature": "com.mixpanel.",
+      "network_signature": "api\\.mixpanel\\.com|decide\\.mixpanel\\.com|switchboard\\.mixpanel\\.com|mixpanel\\.com",
+      "website": "https://mixpanel.com/"
     },
     "119": {
+      "id": 119,
       "name": "Umeng Analytics",
-      "website": "https://www.umeng.com/analytics",
-      "network_signature": "alog.umeng.com|alogs.umeng.com|ar.umeng.com|oc.umeng.com|uop.umeng.com|umeng.com",
-      "code_signature": "com.umeng.analytics",
       "creation_date": "2018-03-04",
-      "id": 119
+      "code_signature": "com.umeng.analytics",
+      "network_signature": "alog.umeng.com|alogs.umeng.com|ar.umeng.com|oc.umeng.com|uop.umeng.com|umeng.com",
+      "website": "https://www.umeng.com/analytics"
     },
     "120": {
+      "id": 120,
       "name": "Umeng Feedback",
-      "website": "http://dev.umeng.com/feedback",
-      "network_signature": "alog.umeng.com|alogs.umeng.com|ar.umeng.com|oc.umeng.com|uop.umeng.com|umeng.com",
-      "code_signature": "com.umeng.fb",
       "creation_date": "2018-03-04",
-      "id": 120
+      "code_signature": "com.umeng.fb",
+      "network_signature": "alog.umeng.com|alogs.umeng.com|ar.umeng.com|oc.umeng.com|uop.umeng.com|umeng.com",
+      "website": "http://dev.umeng.com/feedback"
     },
     "121": {
+      "id": 121,
       "name": "Unity3d Ads",
-      "website": "https://unity3d.com/",
-      "network_signature": "analytics.social.unity.com|api.uca.cloud.unity3d.com|config.uca.cloud.unity3d.com|stats.unity3d.com|adserver.unityads.unity3d.com|auction.unityads.unity3d.com|cdn.unityads.unity3d.com|cdn-highwinds.unityads.unity3d.com|config.unityads.unity3d.com|webview.unityads.unity3d.com",
-      "code_signature": "com.unity3d.ads",
       "creation_date": "2018-03-04",
-      "id": 121
+      "code_signature": "com.unity3d.services|com.unity3d.ads",
+      "network_signature": "analytics.social.unity.com|api.uca.cloud.unity3d.com|config.uca.cloud.unity3d.com|stats.unity3d.com|adserver.unityads.unity3d.com|auction.unityads.unity3d.com|cdn.unityads.unity3d.com|cdn-highwinds.unityads.unity3d.com|config.unityads.unity3d.com|webview.unityads.unity3d.com",
+      "website": "https://unity3d.com/"
     },
     "122": {
+      "id": 122,
       "name": "Countly",
-      "website": "https://count.ly/",
-      "network_signature": "NC",
-      "code_signature": "ly.count.android.",
       "creation_date": "2018-03-04",
-      "id": 122
+      "code_signature": "ly.count.android.",
+      "network_signature": "NC",
+      "website": "https://count.ly/"
     },
     "123": {
+      "id": 123,
       "name": "Urbanairship",
-      "website": "https://www.urbanairship.com/",
-      "network_signature": "device-api.urbanairship.com|urbanairship.com",
-      "code_signature": "com.urbanairship",
       "creation_date": "2018-03-04",
-      "id": 123
+      "code_signature": "com.urbanairship",
+      "network_signature": "device-api.urbanairship.com|urbanairship.com",
+      "website": "https://www.urbanairship.com/"
     },
     "124": {
+      "id": 124,
       "name": "Yandex Ad",
-      "website": "https://www.yandex.com/",
-      "network_signature": "appmetrica.yandex.com|report.appmetrica.yandex.net|analytics.mobile.yandex.net|banners.mobile.yandex.net|banners-slb.mobile.yandex.net|startup.mobile.yandex.net|mc.yandex.ru",
-      "code_signature": "com.yandex.mobile.ads",
       "creation_date": "2018-03-04",
-      "id": 124
+      "code_signature": "com.yandex.mobile.ads",
+      "network_signature": "appmetrica.yandex.com|report.appmetrica.yandex.net|analytics.mobile.yandex.net|banners.mobile.yandex.net|banners-slb.mobile.yandex.net|startup.mobile.yandex.net|mc.yandex.ru",
+      "website": "https://www.yandex.com/"
     },
     "125": {
+      "id": 125,
       "name": "Amplitude",
-      "website": "http://www.amplitude.com",
-      "network_signature": "api.amplitude.com|amplitude.com",
-      "code_signature": "com.amplitude.",
       "creation_date": "2018-03-04",
-      "id": 125
+      "code_signature": "com.amplitude.",
+      "network_signature": "api.amplitude.com|amplitude.com",
+      "website": "http://www.amplitude.com"
     },
     "126": {
+      "id": 126,
       "name": "AppSee",
-      "website": "https://www.appsee.com/",
-      "network_signature": "NC",
-      "code_signature": "com.appsee.",
       "creation_date": "2018-03-04",
-      "id": 126
+      "code_signature": "com.appsee.",
+      "network_signature": "api.appsee.com",
+      "website": "https://www.appsee.com/"
     },
     "127": {
+      "id": 127,
       "name": "Kochava",
-      "website": "https://www.kochava.com/",
-      "network_signature": "control.kochava.com",
-      "code_signature": "com.kochava.android.tracker.",
       "creation_date": "2018-03-04",
-      "id": 127
+      "code_signature": "com.kochava.base.Tracker|com.kochava.android.tracker.",
+      "network_signature": "control\\.kochava\\.com|kvinit\\-prod\\.api\\.kochava\\.com",
+      "website": "https://www.kochava.com/"
     },
     "129": {
+      "id": 129,
       "name": "Webtrends",
-      "website": "https://www.webtrends.com/",
-      "network_signature": "dc.webtrends.com|webtrends.com",
-      "code_signature": "com.webtrends.mobile.analytics.|com.webtrends.mobile.android",
       "creation_date": "2018-03-04",
-      "id": 129
+      "code_signature": "com.webtrends.mobile.analytics.|com.webtrends.mobile.android",
+      "network_signature": "dc.webtrends.com|webtrends.com",
+      "website": "https://www.webtrends.com/"
     },
     "130": {
+      "id": 130,
       "name": "New Relic",
-      "website": "http://www.newrelic.com",
-      "network_signature": "js-agent.newrelic.com|mobile-collector.newrelic.com|newrelic.com|nr-data.net",
-      "code_signature": "com.newrelic.agent.",
       "creation_date": "2018-03-04",
-      "id": 130
+      "code_signature": "com.newrelic.agent.",
+      "network_signature": "js-agent.newrelic.com|mobile-collector.newrelic.com|newrelic.com|nr-data.net",
+      "website": "http://www.newrelic.com"
     },
     "131": {
+      "id": 131,
       "name": "AppAnalytics",
-      "website": "http://appanalytics.io/",
-      "network_signature": "NC",
-      "code_signature": "io.appanalytics.sdk",
       "creation_date": "2018-03-04",
-      "id": 131
+      "code_signature": "io.appanalytics.sdk",
+      "network_signature": "NC",
+      "website": "http://appanalytics.io/"
     },
     "132": {
+      "id": 132,
       "name": "Applause",
-      "website": "http://www.applause.com",
-      "network_signature": "NC",
-      "code_signature": "com.applause.android.",
       "creation_date": "2018-03-04",
-      "id": 132
+      "code_signature": "com.applause.android.",
+      "network_signature": "NC",
+      "website": "http://www.applause.com"
     },
     "133": {
+      "id": 133,
       "name": "Quantcast",
-      "website": "http://www.quantcast.com",
-      "network_signature": "quantcast.com|quantcast.net",
-      "code_signature": "com.quantcast.measurement.service.",
       "creation_date": "2018-03-04",
-      "id": 133
+      "code_signature": "com.quantcast.measurement.service.",
+      "network_signature": "quantcast.com|quantcast.net",
+      "website": "http://www.quantcast.com"
     },
     "135": {
+      "id": 135,
       "name": "Apptimize",
-      "website": "http://www.apptimize.com",
-      "network_signature": "brahe.apptimize.com|md-a-c.apptimize.com|md-a-s.apptimize.com",
-      "code_signature": "com.apptimize.",
       "creation_date": "2018-03-04",
-      "id": 135
+      "code_signature": "com.apptimize.",
+      "network_signature": "brahe.apptimize.com|md-a-c.apptimize.com|md-a-s.apptimize.com",
+      "website": "http://www.apptimize.com"
     },
     "136": {
+      "id": 136,
       "name": "AppBrain",
-      "website": "https://www.appbrain.com/info/help/sdk/index.html",
-      "network_signature": "NC",
-      "code_signature": "com.appbrain.",
       "creation_date": "2018-03-04",
-      "id": 136
+      "code_signature": "com.appbrain.",
+      "network_signature": "sdk.appbrain.com",
+      "website": "https://www.appbrain.com/info/help/sdk/index.html"
     },
     "137": {
+      "id": 137,
       "name": "Dynatrace",
-      "website": "http://www.dynatrace.com",
-      "network_signature": "NC",
-      "code_signature": "com.dynatrace.android.app.",
       "creation_date": "2018-03-04",
-      "id": 137
+      "code_signature": "com.dynatrace.android.app.",
+      "network_signature": ".dynatrace.com",
+      "website": "https://www.dynatrace.com"
     },
     "138": {
+      "id": 138,
       "name": "Matomo (Piwik)",
-      "website": "https://matomo.org/mobile",
-      "network_signature": "matomo\\.org",
-      "code_signature": "org.piwik|org.piwik.mobile|org.matomo",
       "creation_date": "2018-03-04",
-      "id": 138
+      "code_signature": "org.piwik|org.piwik.mobile|org.matomo",
+      "network_signature": "matomo\\.org",
+      "website": "https://matomo.org/mobile"
     },
     "140": {
+      "id": 140,
       "name": "AppMetrica",
-      "website": "https://tech.yandex.com/metrica-mobile-sdk/",
-      "network_signature": "appmetrica.yandex.com|report.appmetrica.yandex.net|analytics.mobile.yandex.net|banners.mobile.yandex.net|banners-slb.mobile.yandex.net|startup.mobile.yandex.net|mc.yandex.ru",
-      "code_signature": "com.yandex.metrica.",
       "creation_date": "2018-03-04",
-      "id": 140
+      "code_signature": "com.yandex.metrica.",
+      "network_signature": "appmetrica.yandex.com|report.appmetrica.yandex.net|analytics.mobile.yandex.net|banners.mobile.yandex.net|banners-slb.mobile.yandex.net|startup.mobile.yandex.net|mc.yandex.ru",
+      "website": "https://tech.yandex.com/metrica-mobile-sdk/"
     },
     "142": {
+      "id": 142,
       "name": "Singlespot",
-      "website": "https://www.singlespot.com/",
-      "network_signature": "singlespot\\.com",
-      "code_signature": "com.sptproximitykit.",
       "creation_date": "2018-08-16",
-      "id": 142
+      "code_signature": "com.sptproximitykit.",
+      "network_signature": "singlespot\\.com",
+      "website": "https://www.singlespot.com/"
     },
     "143": {
+      "id": 143,
       "name": "Sensoro",
-      "website": "https://www.sensoro.com/",
-      "network_signature": "NC",
-      "code_signature": "com.sensoro.beacon.kit.|com.sensoro.cloud",
       "creation_date": "2018-08-16",
-      "id": 143
+      "code_signature": "com.sensoro.beacon.kit.|com.sensoro.cloud",
+      "network_signature": "NC",
+      "website": "https://www.sensoro.com/"
     },
     "144": {
+      "id": 144,
       "name": "Sense360",
-      "website": "https://sense360.com/",
-      "network_signature": "quinoa-personal-identify-prod.sense360eng.com|android-quinoa-config-prod.sense360eng.com|incoming-data-sense360.s3.amazonaws.com",
-      "code_signature": "com.sense360.android.quinoa.lib.Sense360",
       "creation_date": "2018-08-16",
-      "id": 144
+      "code_signature": "com.sense360.android.quinoa.lib.Sense360",
+      "network_signature": "quinoa-personal-identify-prod.sense360eng.com|android-quinoa-config-prod.sense360eng.com|incoming-data-sense360.s3.amazonaws.com",
+      "website": "https://sense360.com/"
     },
     "145": {
+      "id": 145,
       "name": "Rubicon Project",
-      "website": "https://rubiconproject.com/",
-      "network_signature": "ads.rubiconproject.com|stats.aws.rubiconproject.com|fastlane.rubiconproject.com|optimized-by.rubiconproject.com|pixel.rubiconproject.com|tap2-cdn.rubiconproject.com|video-ads.rubiconproject.com",
-      "code_signature": "com.rfm.sdk",
       "creation_date": "2018-08-16",
-      "id": 145
+      "code_signature": "com.rfm.sdk",
+      "network_signature": "ads.rubiconproject.com|stats.aws.rubiconproject.com|fastlane.rubiconproject.com|optimized-by.rubiconproject.com|pixel.rubiconproject.com|tap2-cdn.rubiconproject.com|video-ads.rubiconproject.com",
+      "website": "https://rubiconproject.com"
     },
     "146": {
+      "id": 146,
       "name": "ironSource",
-      "website": "https://www.ironsrc.com",
-      "network_signature": "NC",
-      "code_signature": "com.ironsource.",
       "creation_date": "2018-08-16",
-      "id": 146
+      "code_signature": "com.ironsource.",
+      "network_signature": "NC",
+      "website": "https://www.ironsrc.com"
     },
     "147": {
+      "id": 147,
       "name": "Heyzap (bought by Fyber)",
-      "website": "https://www.heyzap.com",
-      "network_signature": "ads.heyzap.com|fyc.heyzap.com|med.heyzap.com|x.heyzap.com|img-cloudflare.haizap.com|img-cloudflare-2.haizap.com",
-      "code_signature": "com.heyzap.sdk.ads.",
       "creation_date": "2018-08-16",
-      "id": 147
+      "code_signature": "com.heyzap.sdk.ads.",
+      "network_signature": "ads.heyzap.com|fyc.heyzap.com|med.heyzap.com|x.heyzap.com|img-cloudflare.haizap.com|img-cloudflare-2.haizap.com",
+      "website": "https://www.heyzap.com"
     },
     "148": {
+      "id": 148,
       "name": "Gigya",
-      "website": "https://www.gigya.com",
-      "network_signature": "cdn.gigya.com|cdn1.gigya.com|cdn2.gigya.com|cdn3.gigya.com|cdns.us1.gigya.com",
-      "code_signature": "com.gigya.",
       "creation_date": "2018-08-16",
-      "id": 148
+      "code_signature": "com.gigya.",
+      "network_signature": "cdn.gigya.com|cdn1.gigya.com|cdn2.gigya.com|cdn3.gigya.com|cdns.us1.gigya.com",
+      "website": "https://www.gigya.com"
     },
     "149": {
+      "id": 149,
       "name": "Foresee",
-      "website": "https://www.foresee.com",
-      "network_signature": "4seeresults.com|analytics.foresee.com|i.4see.mobi|rec.replay.answerscloud.com|foreseeresults.com|foresee.com",
-      "code_signature": "com.foresee.sdk.ForeSee",
       "creation_date": "2018-08-16",
-      "id": 149
+      "code_signature": "com.foresee.sdk.ForeSee",
+      "network_signature": "4seeresults.com|analytics.foresee.com|i.4see.mobi|rec.replay.answerscloud.com|foreseeresults.com|foresee.com",
+      "website": "https://www.foresee.com"
     },
     "150": {
+      "id": 150,
       "name": "Fiksu",
-      "website": "https://fiksu.com",
-      "network_signature": "a.fiksu.com|sdk.fiksu.com",
-      "code_signature": "com.fiksu.asotracking",
       "creation_date": "2018-08-16",
-      "id": 150
+      "code_signature": "com.fiksu.asotracking",
+      "network_signature": "a.fiksu.com|sdk.fiksu.com",
+      "website": "https://fiksu.com"
     },
     "151": {
+      "id": 151,
       "name": "Ensighten",
-      "website": "https://www.ensighten.com",
-      "network_signature": "nexus.ensighten.com",
-      "code_signature": "com.ensighten.",
       "creation_date": "2018-08-16",
-      "id": 151
+      "code_signature": "com.ensighten.",
+      "network_signature": "nexus.ensighten.com",
+      "website": "https://www.ensighten.com"
     },
     "152": {
+      "id": 152,
       "name": "Dynamic Yield",
-      "website": "https://www.dynamicyield.com",
-      "network_signature": "cdn.dynamicyield.com|adm.dynamicyield.com|api.dynamicyield.com|px.dynamicyield.com|st.dynamicyield.com",
-      "code_signature": "com.dynamicyield.",
       "creation_date": "2018-08-16",
-      "id": 152
+      "code_signature": "com.dynamicyield.",
+      "network_signature": "cdn.dynamicyield.com|adm.dynamicyield.com|api.dynamicyield.com|px.dynamicyield.com|st.dynamicyield.com",
+      "website": "https://www.dynamicyield.com"
     },
     "153": {
+      "id": 153,
       "name": "BlueKai (acquired by Oracle)",
-      "website": "http://bluekai.com/registry/",
-      "network_signature": "stags.bluekai.com|tags.bluekai.com",
-      "code_signature": "com.bluekai.sdk.",
       "creation_date": "2018-08-16",
-      "id": 153
+      "code_signature": "com.bluekai.sdk.",
+      "network_signature": "stags.bluekai.com|tags.bluekai.com",
+      "website": "http://bluekai.com/registry/"
     },
     "154": {
+      "id": 154,
       "name": "BlueConic",
-      "website": "https://www.blueconic.com",
-      "network_signature": "NC",
-      "code_signature": "com.blueconic",
       "creation_date": "2018-08-16",
-      "id": 154
+      "code_signature": "com.blueconic",
+      "network_signature": "NC",
+      "website": "https://www.blueconic.com"
     },
     "155": {
-      "name": "Apteligent by VMWare",
-      "website": "http://www.apteligent.com",
-      "network_signature": "api.crittercism.com|appload.ingest.crittercism.com|txn.ingest.crittercism.com",
-      "code_signature": "com.crittercism.app.Crittercism",
+      "id": 155,
+      "name": "Apteligent by VMWare (formerly Crittercism)",
       "creation_date": "2018-08-16",
-      "id": 155
+      "code_signature": "com.crittercism.app.Crittercism",
+      "network_signature": "api.crittercism.com|appload.ingest.crittercism.com|txn.ingest.crittercism.com",
+      "website": "http://www.apteligent.com"
     },
     "156": {
+      "id": 156,
       "name": "AdFit (Daum)",
-      "website": "https://www.daum.net",
-      "network_signature": "analytics.ad.daum.net|statistics.videofarm.daum.net",
-      "code_signature": "com.kakao.adfit.ads.",
       "creation_date": "2018-08-16",
-      "id": 156
+      "code_signature": "com.kakao.adfit.ads.",
+      "network_signature": "analytics.ad.daum.net|statistics.videofarm.daum.net",
+      "website": "https://www.daum.net"
     },
     "157": {
-      "name": "AdForm",
-      "website": "https://site.adform.com",
-      "network_signature": "track.adform.net",
-      "code_signature": "com.adform.sdk.",
+      "id": 157,
+      "name": "Adform",
       "creation_date": "2018-08-16",
-      "id": 157
+      "code_signature": "com.adform.sdk.",
+      "network_signature": "track.adform.net|adformdsp.net|adform.com|adx.adform.net|files.adform.net",
+      "website": "https://site.adform.com"
     },
     "158": {
+      "id": 158,
       "name": "Adfurikun",
-      "website": "https://adfurikun.jp/adfurikun/",
-      "network_signature": "ginf.adfurikun.jp|adfurikun.jp",
-      "code_signature": "jp.tjkapp.adfurikunsdk.",
       "creation_date": "2018-08-16",
-      "id": 158
+      "code_signature": "jp.tjkapp.adfurikunsdk.",
+      "network_signature": "ginf.adfurikun.jp|adfurikun.jp",
+      "website": "https://adfurikun.jp/adfurikun/"
     },
     "159": {
+      "id": 159,
       "name": "Mobvista",
-      "website": "https://www.mobvista.com/",
-      "network_signature": "mobvista\\.com",
-      "code_signature": "com.mobvista.",
       "creation_date": "2019-03-10",
-      "id": 159
+      "code_signature": "com.mobvista.",
+      "network_signature": "mobvista\\.com",
+      "website": "https://www.mobvista.com/"
     },
     "160": {
+      "id": 160,
       "name": "Placed",
-      "website": "http://placed.com/",
-      "network_signature": "NC",
-      "code_signature": "com.placed.client",
       "creation_date": "2019-03-10",
-      "id": 160
+      "code_signature": "com.placed.client",
+      "network_signature": "NC",
+      "website": "http://placed.com/"
     },
     "161": {
+      "id": 161,
       "name": "Adot",
-      "website": "https://we-are-adot.com/",
-      "network_signature": "sdk\\.adotmob\\.com|sync\\.adotmob\\.com|tracker\\.adotmob\\.com",
-      "code_signature": "com.adotmob",
       "creation_date": "2019-03-10",
-      "id": 161
+      "code_signature": "com.adotmob",
+      "network_signature": "sdk\\.adotmob\\.com|sync\\.adotmob\\.com|tracker\\.adotmob\\.com",
+      "website": "https://we-are-adot.com/"
     },
     "162": {
+      "id": 162,
       "name": "Appodeal",
-      "website": "https://www.appodeal.com",
-      "network_signature": "appodeal.com|appodealx.com",
-      "code_signature": "com.appodeal.ads.",
       "creation_date": "2019-03-10",
-      "id": 162
+      "code_signature": "com.appodeal.ads.",
+      "network_signature": "appodeal.com|appodealx.com",
+      "website": "https://www.appodeal.com"
     },
     "163": {
+      "id": 163,
       "name": "AppMonet",
-      "website": "http://appmonet.com",
-      "network_signature": "NC",
-      "code_signature": "com.monet.",
       "creation_date": "2019-03-10",
-      "id": 163
+      "code_signature": "com.monet.",
+      "network_signature": "NC",
+      "website": "http://appmonet.com"
     },
     "164": {
+      "id": 164,
       "name": "Soomla",
-      "website": "https://soomla.com/",
-      "network_signature": "\\soom.la",
-      "code_signature": "com.soomla.",
       "creation_date": "2019-03-10",
-      "id": 164
+      "code_signature": "com.soomla.",
+      "network_signature": "soom.la",
+      "website": "https://soomla.com/"
     },
     "165": {
-      "code_signature": "com.adincube.sdk.",
-      "creation_date": "2019-03-10",
-      "network_signature": "sdk.adincube.com",
       "id": 165,
       "name": "Adincube",
+      "creation_date": "2019-03-10",
+      "code_signature": "com.adincube.sdk.",
+      "network_signature": "sdk.adincube.com",
       "website": "https://www.adincube.com/"
     },
     "166": {
-      "code_signature": "ly.persona.sdk",
-      "creation_date": "2019-03-10",
-      "network_signature": "dev\\.persona\\.ly|dev-api\\.persona\\.ly|dev\\.dsp\\.persona\\.ly|dsp\\.persona\\.ly|rtb\\.persona\\.ly|sdk\\.persona\\.ly|persona\\.ly",
       "id": 166,
       "name": "Persona.ly",
+      "creation_date": "2019-03-10",
+      "code_signature": "ly.persona.sdk",
+      "network_signature": "dev\\.persona\\.ly|dev-api\\.persona\\.ly|dev\\.dsp\\.persona\\.ly|dsp\\.persona\\.ly|rtb\\.persona\\.ly|sdk\\.persona\\.ly|persona\\.ly",
       "website": "http://persona.ly/"
     },
     "167": {
-      "code_signature": "io.branch.",
-      "creation_date": "2019-03-10",
-      "network_signature": "api.branch.io",
       "id": 167,
       "name": "Branch",
+      "creation_date": "2019-03-10",
+      "code_signature": "io.branch.",
+      "network_signature": "api.branch.io",
       "website": "https://branch.io/"
     },
     "168": {
-      "code_signature": "com.cmcm.",
-      "creation_date": "2019-03-10",
-      "network_signature": "\\cmcm.com",
       "id": 168,
       "name": "Cheetah Ads",
+      "creation_date": "2019-03-10",
+      "code_signature": "com.cmcm.",
+      "network_signature": "cmcm.com",
       "website": "https://www.cmcm.com/"
     },
     "169": {
-      "code_signature": "com.vungle.publisher.",
-      "creation_date": "2019-03-10",
-      "network_signature": "ads\\.api\\.vungle\\.com|akamai\\.vungle\\-cdn\\.vungle\\.com|api\\.vungle\\.akadns\\.net|api\\.vungle\\.com|bd\\.vungle\\.com|billboard\\.vungle\\.com|cdn\\-lb\\.vungle\\.com|ci\\.vungle\\.com|data\\.vungle\\.com|ingest\\.vungle\\.com|jaeger\\.vungle\\.com|ltv\\-data\\-api\\.kube\\-prod\\.vungle\\.com|monitoring\\.vungle\\.com|ssl\\.vungle\\.com|v\\.vungle\\.com",
       "id": 169,
       "name": "Vungle",
+      "creation_date": "2019-03-10",
+      "code_signature": "com.vungle.publisher.",
+      "network_signature": "ads\\.api\\.vungle\\.com|akamai\\.vungle\\-cdn\\.vungle\\.com|api\\.vungle\\.akadns\\.net|api\\.vungle\\.com|bd\\.vungle\\.com|billboard\\.vungle\\.com|cdn\\-lb\\.vungle\\.com|ci\\.vungle\\.com|data\\.vungle\\.com|ingest\\.vungle\\.com|jaeger\\.vungle\\.com|ltv\\-data\\-api\\.kube\\-prod\\.vungle\\.com|monitoring\\.vungle\\.com|ssl\\.vungle\\.com|v\\.vungle\\.com",
       "website": "https://vungle.com"
     },
     "170": {
-      "code_signature": "com.criteo.",
-      "creation_date": "2019-03-10",
-      "network_signature": "\\criteo.com",
       "id": 170,
       "name": "Criteo",
+      "creation_date": "2019-03-10",
+      "code_signature": "com.criteo.",
+      "network_signature": "criteo.com",
       "website": "https://www.criteo.com/"
     },
     "171": {
-      "code_signature": "com.mapbox.mapboxsdk.",
-      "creation_date": "2019-03-10",
-      "network_signature": "a.tiles.mapbox.com|api.tiles.mapbox.com",
       "id": 171,
       "name": "Mapbox",
+      "creation_date": "2019-03-10",
+      "code_signature": "com.mapbox.mapboxsdk.",
+      "network_signature": "a.tiles.mapbox.com|api.tiles.mapbox.com",
       "website": "https://www.mapbox.com/"
     },
     "172": {
-      "code_signature": "com.optimizely.",
-      "creation_date": "2019-03-10",
-      "network_signature": "\\optimizely.com",
       "id": 172,
       "name": "Optimizely",
+      "creation_date": "2019-03-10",
+      "code_signature": "com.optimizely.",
+      "network_signature": "optimizely.com",
       "website": "https://www.optimizely.com/"
     },
     "173": {
-      "code_signature": "com.taboola.",
-      "creation_date": "2019-03-10",
-      "network_signature": "\\taboola.com",
       "id": 173,
       "name": "Taboola",
+      "creation_date": "2019-03-10",
+      "code_signature": "com.taboola.",
+      "network_signature": "taboola.com",
       "website": "https://www.taboola.com/"
     },
     "174": {
-      "code_signature": "com.clevertap.",
-      "creation_date": "2019-03-10",
-      "network_signature": "wzrkt.com",
       "id": 174,
       "name": "CleverTap",
+      "creation_date": "2019-03-10",
+      "code_signature": "com.clevertap.",
+      "network_signature": "wzrkt.com",
       "website": "https://clevertap.com/"
     },
     "175": {
-      "code_signature": "com.my.tracker.",
-      "creation_date": "2019-03-10",
-      "network_signature": "tracker-api.my.com",
       "id": 175,
       "name": "myTracker",
+      "creation_date": "2019-03-10",
+      "code_signature": "com.my.tracker.",
+      "network_signature": "tracker-api.my.com",
       "website": "https://tracker.my.com/"
     },
     "176": {
-      "code_signature": "com.cloudtech.",
-      "creation_date": "2019-03-10",
-      "network_signature": "api\\.cloudmobi\\.net|logger\\.cloudmobi\\.net|vast\\.cloudmobi\\.net|cloudmobi\\.net",
       "id": 176,
       "name": "Cloudmobi",
+      "creation_date": "2019-03-10",
+      "code_signature": "com.cloudtech.",
+      "network_signature": "api\\.cloudmobi\\.net|logger\\.cloudmobi\\.net|vast\\.cloudmobi\\.net|cloudmobi\\.net",
       "website": "http://www.cloudmobi.net/"
     },
     "177": {
-      "code_signature": "com.mocoplex.adlib.",
-      "creation_date": "2019-03-10",
-      "network_signature": "adlibr\\.com",
-      "description": "https://developer.adlibr.com/guide/Android",
       "id": 177,
       "name": "ADLIB",
+      "creation_date": "2019-03-10",
+      "code_signature": "com.mocoplex.adlib.",
+      "network_signature": "adlibr\\.com",
       "website": "https://adlibr.com"
     },
     "178": {
-      "code_signature": "com.brightcove",
-      "creation_date": "2019-03-19",
-      "network_signature": "metrics.brightcove.com/v2/tracker",
       "id": 178,
       "name": "Brightcove",
+      "creation_date": "2019-03-19",
+      "code_signature": "com.brightcove",
+      "network_signature": "metrics.brightcove.com/v2/tracker",
       "website": "https://www.brightcove.com"
     },
     "179": {
-      "code_signature": "com.dv.",
-      "creation_date": "2019-03-19",
-      "network_signature": ".dov-e.com",
       "id": 179,
       "name": "DOV-E",
+      "creation_date": "2019-03-19",
+      "code_signature": "com.dv.",
+      "network_signature": ".dov-e.com",
       "website": "https://www.dov-e.com/"
     },
     "180": {
-      "code_signature": "com.inmarket",
-      "creation_date": "2019-03-19",
-      "network_signature": "m2m-api.inmarket.com",
       "id": 180,
       "name": "Inmarket",
+      "creation_date": "2019-03-19",
+      "code_signature": "com.inmarket",
+      "network_signature": "m2m-api.inmarket.com",
       "website": "https://inmarket.com/"
     },
     "181": {
-      "code_signature": "com.foursquare.pilgrim|com.foursquare.pilgrimsdk.android",
-      "creation_date": "2019-03-19",
-      "network_signature": "sdk.foursquare.com",
       "id": 181,
       "name": "Pilgrim",
+      "creation_date": "2019-03-19",
+      "code_signature": "com.foursquare.pilgrim|com.foursquare.pilgrimsdk.android",
+      "network_signature": "sdk.foursquare.com",
       "website": "https://enterprise.foursquare.com/products/pilgrim"
     },
     "182": {
-      "code_signature": "com.otherlevels.",
-      "creation_date": "2019-03-19",
-      "network_signature": "api.otherlevels.com|rich.otherlevels.com|geodata.otherlevels.com|tags.otherlevels.com|ws.otherlevels.com|mdn.otherlevels.com",
       "id": 182,
       "name": "OtherLevels",
+      "creation_date": "2019-03-19",
+      "code_signature": "com.otherlevels.",
+      "network_signature": "api.otherlevels.com|rich.otherlevels.com|geodata.otherlevels.com|tags.otherlevels.com|ws.otherlevels.com|mdn.otherlevels.com",
       "website": "https://www.otherlevels.com/"
     },
     "183": {
-      "code_signature": "net.pubnative",
-      "creation_date": "2019-03-19",
-      "network_signature": "pubnative.net",
       "id": 183,
       "name": "PubNative",
+      "creation_date": "2019-03-19",
+      "code_signature": "net.pubnative",
+      "network_signature": "pubnative.net",
       "website": "https://pubnative.net/"
     },
     "184": {
-      "code_signature": "com.appnext.",
-      "creation_date": "2019-03-19",
-      "network_signature": "\\appnext.com",
       "id": 184,
       "name": "Appnext",
+      "creation_date": "2019-03-19",
+      "code_signature": "com.appnext.",
+      "network_signature": "\\appnext.com",
       "website": "https://www.appnext.com/"
     },
     "185": {
-      "code_signature": "com.mobfox.",
-      "creation_date": "2019-03-19",
-      "network_signature": "NC",
       "id": 185,
       "name": "MobFox",
+      "creation_date": "2019-03-19",
+      "code_signature": "com.mobfox.",
+      "network_signature": "NC",
       "website": "https://www.mobfox.com/"
     },
     "186": {
-      "code_signature": "com.jm.co.shallwead.sdk.|com.co.shallwead.sdk.",
-      "creation_date": "2019-03-19",
-      "network_signature": "NC",
       "id": 186,
       "name": "ShallWeAD",
+      "creation_date": "2019-03-19",
+      "code_signature": "com.jm.co.shallwead.sdk.|com.co.shallwead.sdk.",
+      "network_signature": "NC",
       "website": "http://www.shallwead.com"
     },
     "187": {
-      "code_signature": "com.deltadna",
-      "creation_date": "2019-03-19",
-      "network_signature": "deltadna.net",
       "id": 187,
       "name": "deltaDNA",
+      "creation_date": "2019-03-19",
+      "code_signature": "com.deltadna",
+      "network_signature": "deltadna.net",
       "website": "https://deltadna.com/"
     },
     "188": {
-      "code_signature": "io.display.",
-      "creation_date": "2019-03-19",
-      "network_signature": "\\display.io",
       "id": 188,
       "name": "Display",
+      "creation_date": "2019-03-19",
+      "code_signature": "io.display.",
+      "network_signature": "\\display.io",
       "website": "https://www.display.io/en/"
     },
     "189": {
-      "code_signature": "com.hyprmx.android.sdk.",
-      "creation_date": "2019-04-15",
-      "network_signature": "hyprmx.com",
       "id": 189,
       "name": "HyprMX",
+      "creation_date": "2019-04-15",
+      "code_signature": "com.hyprmx.android.sdk.",
+      "network_signature": "hyprmx.com",
       "website": "https://www.hyprmx.com"
     },
     "190": {
-      "code_signature": "com.tencent.bugly.",
-      "creation_date": "2019-04-15",
-      "network_signature": "bugly.qq.com",
       "id": 190,
       "name": "Bugly",
+      "creation_date": "2019-04-15",
+      "code_signature": "com.tencent.bugly.",
+      "network_signature": "bugly.qq.com",
       "website": "https://bugly.qq.com/v2/"
     },
     "191": {
-      "code_signature": "com.duapps.",
-      "creation_date": "2019-04-15",
-      "network_signature": "duapps.com",
       "id": 191,
       "name": "Duapps",
+      "creation_date": "2019-04-15",
+      "code_signature": "com.duapps.",
+      "network_signature": "duapps.com",
       "website": "http://ad.duapps.com/"
     },
     "192": {
-      "code_signature": "com.swrve.sdk",
-      "creation_date": "2019-04-15",
-      "network_signature": "content.swrve.com|api.swrve.com",
       "id": 192,
       "name": "Swrve",
+      "creation_date": "2019-04-15",
+      "code_signature": "com.swrve.sdk",
+      "network_signature": "content.swrve.com|api.swrve.com",
       "website": "https://www.swrve.com/"
     },
     "193": {
-      "code_signature": "com.onesignal.",
-      "creation_date": "2019-04-15",
-      "network_signature": "onesignal.com",
       "id": 193,
       "name": "OneSignal",
+      "creation_date": "2019-04-15",
+      "code_signature": "com.onesignal.",
+      "network_signature": "onesignal.com",
       "website": "https://onesignal.com/"
     },
     "194": {
-      "code_signature": "com.appdynamics.",
-      "creation_date": "2019-04-15",
-      "network_signature": "NC",
       "id": 194,
       "name": "Appdynamics",
+      "creation_date": "2019-04-15",
+      "code_signature": "com.appdynamics.",
+      "network_signature": "NC",
       "website": "https://www.appdynamics.com/"
     },
     "195": {
-      "code_signature": "com.startapp.android.publish",
-      "creation_date": "2019-04-15",
-      "network_signature": "c2i.startappnetwork.com|c2s.startappnetwork.com|click.startappservice.com|dts.startappservice.com|events.startappservice.com|images.startappservice.com|imp.startappservice.com|init.startappservice.com|va.origin.startappservice.com|req.startappservice.com|soda.startappservice.com|info.static.startappservice.com|startappservice.com",
       "id": 195,
       "name": "Startapp",
+      "creation_date": "2019-04-15",
+      "code_signature": "com.startapp.android.publish",
+      "network_signature": "c2i.startappnetwork.com|c2s.startappnetwork.com|click.startappservice.com|dts.startappservice.com|events.startappservice.com|images.startappservice.com|imp.startappservice.com|init.startappservice.com|va.origin.startappservice.com|req.startappservice.com|soda.startappservice.com|info.static.startappservice.com|startappservice.com",
       "website": "https://www.startapp.com"
     },
     "196": {
-      "code_signature": "com.aerserv.sdk.",
-      "creation_date": "2019-04-15",
-      "network_signature": "ads.aerserv.com|debug.aerserv.com",
       "id": 196,
       "name": "AerServ",
+      "creation_date": "2019-04-15",
+      "code_signature": "com.aerserv.sdk.",
+      "network_signature": "ads.aerserv.com|debug.aerserv.com",
       "website": "https://www.aerserv.com/"
     },
     "197": {
-      "code_signature": "de.infonline.",
-      "creation_date": "2019-04-15",
-      "network_signature": "de.ioam.de",
       "id": 197,
       "name": "INFOnline",
+      "creation_date": "2019-04-15",
+      "code_signature": "de.infonline.",
+      "network_signature": "de.ioam.de",
       "website": "https://www.infonline.de"
     },
     "198": {
-      "code_signature": "com.my.target.",
-      "creation_date": "2019-04-15",
-      "network_signature": "NC",
       "id": 198,
       "name": "myTarget",
+      "creation_date": "2019-04-15",
+      "code_signature": "com.my.target.",
+      "network_signature": "NC",
       "website": "https://target.my.com/"
     },
     "199": {
-      "code_signature": "com.tapjoy.",
-      "creation_date": "2019-04-15",
-      "network_signature": "tapjoy.com|tapjoyads.com|www.5rocks.io",
       "id": 199,
       "name": "Tapjoy",
+      "creation_date": "2019-04-15",
+      "code_signature": "com.tapjoy.",
+      "network_signature": "tapjoy.com|tapjoyads.com|www.5rocks.io",
       "website": "https://www.tapjoy.com/"
     },
     "200": {
-      "code_signature": "com.mintegral.",
-      "creation_date": "2019-04-15",
-      "network_signature": "analytics.rayjump.com|cdn-adn.rayjump.com|de.rayjump.com|de01.rayjump.com|detect.rayjump.com|fk-mtrack.rayjump.com|hybird.rayjump.com|jssdk.rayjump.com|net.rayjump.com|online.rayjump.com|setting.rayjump.com|sg.rayjump.com|sg-mtrack.rayjump.com|sg01.rayjump.com|tknet.rayjump.com|us01.rayjump.com|rayjump.com",
       "id": 200,
       "name": "Mintegral",
+      "creation_date": "2019-04-15",
+      "code_signature": "com.mintegral.",
+      "network_signature": "analytics.rayjump.com|cdn-adn.rayjump.com|de.rayjump.com|de01.rayjump.com|detect.rayjump.com|fk-mtrack.rayjump.com|hybird.rayjump.com|jssdk.rayjump.com|net.rayjump.com|online.rayjump.com|setting.rayjump.com|sg.rayjump.com|sg-mtrack.rayjump.com|sg01.rayjump.com|tknet.rayjump.com|us01.rayjump.com|rayjump.com",
       "website": "https://www.mintegral.com/en/"
     },
     "201": {
-      "code_signature": "com.gimbal.android",
-      "creation_date": "2019-04-15",
-      "network_signature": "analytics-server.gimbal.com|api.gimbal.com|registration.gimbal.com|sdk-info.gimbal.com",
       "id": 201,
       "name": "Gimbal",
+      "creation_date": "2019-04-15",
+      "code_signature": "com.gimbal.android",
+      "network_signature": "analytics-server.gimbal.com|api.gimbal.com|registration.gimbal.com|sdk-info.gimbal.com",
       "website": "https://gimbal.com/"
     },
     "202": {
-      "code_signature": "com.conviva.",
-      "creation_date": "2019-04-15",
-      "network_signature": "cws.conviva.com",
       "id": 202,
       "name": "Conviva",
+      "creation_date": "2019-04-15",
+      "code_signature": "com.conviva.",
+      "network_signature": "cws.conviva.com",
       "website": "https://www.conviva.com/"
     },
     "203": {
-      "code_signature": "com.auditude.ads",
-      "creation_date": "2019-05-02",
-      "network_signature": "auditude.com",
       "id": 203,
       "name": "Auditude",
+      "creation_date": "2019-05-02",
+      "code_signature": "com.auditude.ads",
+      "network_signature": "auditude.com",
       "website": "https://www.adobe.com/privacy/policies/auditude.html"
     },
     "204": {
-      "code_signature": "com.instreamatic",
-      "creation_date": "2019-05-02",
-      "network_signature": "instreamatic.com",
       "id": 204,
       "name": "Instreamatic",
+      "creation_date": "2019-05-02",
+      "code_signature": "com.instreamatic",
+      "network_signature": "instreamatic.com",
       "website": "http://instreamatic.com/"
     },
     "205": {
-      "code_signature": "com.gameanalytics.sdk ",
-      "creation_date": "2019-09-30",
-      "network_signature": "NC",
       "id": 205,
       "name": "GameAnalytics",
-      "website": "https://gameanalytics.com/features/"
+      "creation_date": "2019-06-12",
+      "code_signature": "com.gameanalytics.sdk",
+      "network_signature": "NC",
+      "website": "https://gameanalytics.com/features"
     },
     "206": {
-      "code_signature": "com.instabug.library.tracking|com.instabug.bug ",
-      "creation_date": "2019-09-30",
-      "network_signature": "NC",
       "id": 206,
       "name": "Instabug",
+      "creation_date": "2019-06-12",
+      "code_signature": "com.instabug.library.tracking|com.instabug.bug",
+      "network_signature": "NC",
       "website": "https://instabug.com/crash-reporting"
     },
     "207": {
-      "code_signature": "com.bugsnag",
-      "creation_date": "2019-09-30",
-      "network_signature": "NC",
       "id": 207,
       "name": "Bugsnag",
+      "creation_date": "2019-06-12",
+      "code_signature": "com.bugsnag.",
+      "network_signature": "NC",
       "website": "https://www.bugsnag.com/"
     },
     "208": {
-      "code_signature": "com.moodmedia",
-      "creation_date": "2019-09-30",
-      "network_signature": "moodpresence.com",
       "id": 208,
       "name": "Moodmedia",
+      "creation_date": "2019-06-20",
+      "code_signature": "com.moodmedia",
+      "network_signature": "moodpresence.com",
       "website": "https://us.moodmedia.com/"
     },
     "209": {
-      "code_signature": "com.hound ",
-      "creation_date": "2019-09-30",
-      "network_signature": "houndify.com",
       "id": 209,
       "name": "Houndify",
+      "creation_date": "2019-06-20",
+      "code_signature": "com.hound",
+      "network_signature": "houndify.com",
       "website": "https://www.houndify.com/"
     },
     "210": {
-      "code_signature": "com.openx.view.plugplay|com.openx.android_sdk_openx ",
-      "creation_date": "2019-09-30",
-      "network_signature": "NC",
       "id": 210,
       "name": "OpenX",
+      "creation_date": "2019-06-20",
+      "code_signature": "com.openx.view.plugplay|com.openx.android_sdk_openx",
+      "network_signature": "NC",
       "website": "https://www.openx.com/"
     },
     "211": {
-      "code_signature": "com.taplytics.sdk",
-      "creation_date": "2019-09-30",
-      "network_signature": "api.taplytics.com|ping.tapylitics.com",
       "id": 211,
       "name": "Taplytics",
-      "website": "https://taplytics.com/"
+      "creation_date": "2019-06-20",
+      "code_signature": "com.taplytics.sdk",
+      "network_signature": "api.taplytics.com|ping.tapylitics.com",
+      "website": "https://taplytics.com"
     },
     "212": {
-      "code_signature": "com.yinzcam.sobek ",
-      "creation_date": "2019-09-30",
-      "network_signature": "analytics.yinzcam.com",
       "id": 212,
       "name": "Yinzcam Sobek",
+      "creation_date": "2019-06-20",
+      "code_signature": "com.yinzcam.sobek",
+      "network_signature": "analytics.yinzcam.com",
       "website": "http://www.yinzcam.com/"
     },
     "213": {
-      "code_signature": "com.ooyala",
-      "creation_date": "2019-09-30",
-      "network_signature": "ooyala.com",
       "id": 213,
       "name": "Ooyala",
+      "creation_date": "2019-07-01",
+      "code_signature": "com.ooyala",
+      "network_signature": "ooyala.com",
       "website": "https://www.ooyala.com/"
     },
     "214": {
-      "code_signature": "me.kiip.sdk",
-      "creation_date": "2019-09-30",
-      "network_signature": "kiip.me",
       "id": 214,
       "name": "Kiip",
-      "website": "https://www.kiip.me/"
+      "creation_date": "2019-08-20",
+      "code_signature": "me.kiip.sdk",
+      "network_signature": "kiip.me",
+      "website": "https://www.kiip.me"
     },
     "215": {
-      "code_signature": "com.mobpower.",
-      "creation_date": "2019-09-30",
-      "network_signature": "api.mobpowertech.com|log.mobpowertech.com|scheme.mobpowertech.com|mobpowertech.com",
       "id": 215,
       "name": "MobPower",
+      "creation_date": "2019-08-20",
+      "code_signature": "com.mobpower.",
+      "network_signature": "api.mobpowertech.com|log.mobpowertech.com|scheme.mobpowertech.com|mobpowertech.com",
       "website": "https://home.mobpowertech.com/"
     },
     "216": {
-      "code_signature": "com.purplebrain.adbuddiz.sdk.",
-      "creation_date": "2019-09-30",
-      "network_signature": "sdk.adbuddiz.com",
       "id": 216,
       "name": "AdBuddiz",
+      "creation_date": "2019-08-20",
+      "code_signature": "com.purplebrain.adbuddiz.sdk.",
+      "network_signature": "sdk.adbuddiz.com",
       "website": "http://www.adbuddiz.com/abuse?hl=fr"
+    },
+    "218": {
+      "id": 218,
+      "name": "Integral Ad Science",
+      "creation_date": "2019-10-26",
+      "code_signature": "com.integralads.avid.library",
+      "network_signature": "adsafeprotected.com|integralads.com|iasds01.com",
+      "website": "https://integralads.com"
+    },
+    "219": {
+      "id": 219,
+      "name": "AltBeacon",
+      "creation_date": "2019-10-26",
+      "code_signature": "org.altbeacon.beacon.|com.altbeacon.beacon.",
+      "network_signature": "NC",
+      "website": "https://altbeacon.org"
+    },
+    "220": {
+      "id": 220,
+      "name": "Salesforce Marketing Cloud",
+      "creation_date": "2019-10-26",
+      "code_signature": "com.salesforce.marketingcloud",
+      "network_signature": "NC",
+      "website": "https://www.salesforce.com/products/marketing-cloud/"
+    },
+    "221": {
+      "id": 221,
+      "name": "Mozilla Telemetry",
+      "creation_date": "2019-10-26",
+      "code_signature": "org.mozilla.telemetry|org.mozilla.gecko.telemetry",
+      "network_signature": "NC",
+      "website": "https://wiki.mozilla.org/Telemetry"
+    },
+    "222": {
+      "id": 222,
+      "name": "nend",
+      "creation_date": "2019-10-26",
+      "code_signature": "net.nend.android",
+      "network_signature": "NC",
+      "website": "https://nend.net/en/"
+    },
+    "223": {
+      "id": 223,
+      "name": "Pusher",
+      "creation_date": "2019-10-26",
+      "code_signature": "com.pusher.client.",
+      "network_signature": "NC",
+      "website": "https://pusher.com/"
+    },
+    "224": {
+      "id": 224,
+      "name": "FreeWheel",
+      "creation_date": "2019-10-26",
+      "code_signature": "tv.freewheel.ad.",
+      "network_signature": "fwmrm.net",
+      "website": "http://freewheel.tv/"
+    },
+    "225": {
+      "id": 225,
+      "name": "TNK Factory",
+      "creation_date": "2019-10-26",
+      "code_signature": "com.tnkfactory.ad",
+      "network_signature": "NC",
+      "website": "http://www.tnkfactory.com"
+    },
+    "226": {
+      "id": 226,
+      "name": "Axonix",
+      "creation_date": "2019-10-26",
+      "code_signature": "com.axonix.android.sdk|com.mobclix.android.sdk",
+      "network_signature": "axonix.com|ads.mobclix.com|data.mobclix.com|s.mobclix.com|mobclix.com",
+      "website": "http://axonix.com/"
+    },
+    "227": {
+      "id": 227,
+      "name": "Gemius HeatMap",
+      "creation_date": "2019-10-26",
+      "code_signature": "com.gemius.sdk",
+      "network_signature": "gemius.pl",
+      "website": "https://heatmap.gemius.com"
+    },
+    "228": {
+      "id": 228,
+      "name": "YouAppi",
+      "creation_date": "2019-10-26",
+      "code_signature": "com.youappi.sdk.",
+      "network_signature": "NC",
+      "website": "https://www.youappi.com"
+    },
+    "229": {
+      "id": 229,
+      "name": "Adobe Experience Cloud",
+      "creation_date": "2019-10-26",
+      "code_signature": "com.adobe.marketing.mobile",
+      "network_signature": "NC",
+      "website": "https://www.adobe.com/experience-cloud.html"
+    },
+    "230": {
+      "id": 230,
+      "name": "Teads",
+      "creation_date": "2019-10-26",
+      "code_signature": "tv.teads.",
+      "network_signature": "teads.tv",
+      "website": "https://www.teads.tv"
+    },
+    "231": {
+      "id": 231,
+      "name": "In Loco",
+      "creation_date": "2019-10-26",
+      "code_signature": "com.inlocomedia.android",
+      "network_signature": "inlocomedia.com",
+      "website": "https://inloco.com.br"
+    },
+    "232": {
+      "id": 232,
+      "name": "IQzone",
+      "creation_date": "2019-10-26",
+      "code_signature": "com.iqzone",
+      "network_signature": "NC",
+      "website": "https://iqzone.com"
+    },
+    "233": {
+      "id": 233,
+      "name": "Bugfender",
+      "creation_date": "2019-10-26",
+      "code_signature": "com.bugfender.sdk.",
+      "network_signature": "NC",
+      "website": "https://bugfender.com/"
+    },
+    "234": {
+      "id": 234,
+      "name": "Wootric",
+      "creation_date": "2019-10-26",
+      "code_signature": "com.wootric.androidsdk.",
+      "network_signature": "wootric.com|.wootric.com.herokudns.com",
+      "website": "http://wootric.com"
+    },
+    "235": {
+      "id": 235,
+      "name": "KIDOZ",
+      "creation_date": "2019-10-26",
+      "code_signature": "com.kidoz.sdk",
+      "network_signature": "NC",
+      "website": "https://kidoz.net/kidoz-sdk/"
+    },
+    "236": {
+      "id": 236,
+      "name": "PubMatic",
+      "creation_date": "2019-10-26",
+      "code_signature": "com.pubmatic.sdk",
+      "network_signature": "ads.pubmatic.com|aktrack.pubmatic.com|gads.pubmatic.com|image2.pubmatic.com|simage2.pubmatic.com",
+      "website": "https://pubmatic.com/"
+    },
+    "237": {
+      "id": 237,
+      "name": "Kissmetrics",
+      "creation_date": "2019-11-09",
+      "code_signature": "com.kissmetrics",
+      "network_signature": "NC",
+      "website": "https://www.kissmetricshq.com/"
+    },
+    "238": {
+      "id": 238,
+      "name": "Microsoft Appcenter Crashes",
+      "creation_date": "2019-11-09",
+      "code_signature": "com.microsoft.appcenter.crashes",
+      "network_signature": "NC",
+      "website": "https://docs.microsoft.com/en-us/appcenter/sdk/crashes/android"
+    },
+    "239": {
+      "id": 239,
+      "name": "Webtrekk",
+      "creation_date": "2019-11-09",
+      "code_signature": "com.webtrekk.webtrekksdk",
+      "network_signature": "NC",
+      "website": "https://www.webtrekk.com/"
+    },
+    "240": {
+      "id": 240,
+      "name": "google-analytics-plugin",
+      "creation_date": "2019-11-09",
+      "code_signature": "com.danielcwilson.plugins.analytics",
+      "network_signature": "NC",
+      "website": "https://github.com/danwilson/google-analytics-plugin"
+    },
+    "241": {
+      "id": 241,
+      "name": "Bugsee",
+      "creation_date": "2019-11-09",
+      "code_signature": "com.bugsee.library.Bugsee",
+      "network_signature": "NC",
+      "website": "https://www.bugsee.com/"
+    },
+    "242": {
+      "id": 242,
+      "name": "Splunk MINT",
+      "creation_date": "2019-11-09",
+      "code_signature": "com.splunk.mint",
+      "network_signature": "NC",
+      "website": "https://mint.splunk.com/"
+    },
+    "243": {
+      "id": 243,
+      "name": "Microsoft Appcenter Analytics",
+      "creation_date": "2019-11-09",
+      "code_signature": "com.microsoft.appcenter.analytics",
+      "network_signature": "NC",
+      "website": "https://docs.microsoft.com/en-us/appcenter/sdk/#app-center-analytics"
+    },
+    "244": {
+      "id": 244,
+      "name": "Nielsen",
+      "creation_date": "2019-11-09",
+      "code_signature": "com.nielsen.app",
+      "network_signature": "NC",
+      "website": "https://www.nielsen.com"
+    },
+    "245": {
+      "id": 245,
+      "name": "Reveal Mobile",
+      "creation_date": "2019-11-09",
+      "code_signature": "com.stepleaderdigital.reveal",
+      "network_signature": "NC",
+      "website": "https://revealmobile.com/"
+    },
+    "246": {
+      "id": 246,
+      "name": "Metrics",
+      "creation_date": "2019-11-09",
+      "code_signature": "com.codahale.metrics",
+      "network_signature": "NC",
+      "website": "https://metrics.dropwizard.io"
+    },
+    "247": {
+      "id": 247,
+      "name": "Repro",
+      "creation_date": "2019-11-09",
+      "code_signature": "io.repro.android.Repro",
+      "network_signature": "NC",
+      "website": "https://repro.io/"
+    },
+    "248": {
+      "id": 248,
+      "name": "Sensors Analytics",
+      "creation_date": "2019-11-09",
+      "code_signature": "com.sensorsdata.analytics.android.sdk",
+      "network_signature": "NC",
+      "website": "https://www.sensorsdata.cn"
+    },
+    "249": {
+      "id": 249,
+      "name": "Tenjin",
+      "creation_date": "2019-11-09",
+      "code_signature": "com.tenjin.android.TenjinSDK",
+      "network_signature": "NC",
+      "website": "https://www.tenjin.com/"
+    },
+    "250": {
+      "id": 250,
+      "name": "Tapstream",
+      "creation_date": "2019-11-09",
+      "code_signature": "com.tapstream.sdk",
+      "network_signature": "NC",
+      "website": "https://www.tapstream.com/"
+    },
+    "251": {
+      "id": 251,
+      "name": "Singular",
+      "creation_date": "2019-11-09",
+      "code_signature": "com.singular.sdk",
+      "network_signature": "NC",
+      "website": "https://singular.net/"
+    },
+    "252": {
+      "id": 252,
+      "name": "CallDorado",
+      "creation_date": "2019-11-09",
+      "code_signature": "com.calldorado.android",
+      "network_signature": "NC",
+      "website": "http://calldorado.com"
+    },
+    "253": {
+      "id": 253,
+      "name": "UXCam",
+      "creation_date": "2019-11-09",
+      "code_signature": "com.uxcam.UXCam",
+      "network_signature": "NC",
+      "website": "https://uxcam.com/"
+    },
+    "254": {
+      "id": 254,
+      "name": "Upsight",
+      "creation_date": "2019-11-09",
+      "code_signature": "com.upsight.android",
+      "network_signature": "NC",
+      "website": "https://www.upsight.com/"
+    },
+    "255": {
+      "id": 255,
+      "name": "Appcelerator Analytics",
+      "creation_date": "2019-11-09",
+      "code_signature": "com.appcelerator.aps.|org.appcelerator.titanium.analytics",
+      "network_signature": "appcelerator.com|appcelerator.net",
+      "website": "https://www.appcelerator.com"
+    },
+    "256": {
+      "id": 256,
+      "name": "Adbrix",
+      "creation_date": "2019-11-09",
+      "code_signature": "com.igaworks.adbrix",
+      "network_signature": "ad-brix.com",
+      "website": "http://ad-brix.com/"
+    },
+    "257": {
+      "id": 257,
+      "name": "Cauly",
+      "creation_date": "2019-11-09",
+      "code_signature": "com.fsn.cauly|com.trid.tridad",
+      "network_signature": "ad.cauly.co.kr",
+      "website": "https://www.cauly.net"
+    },
+    "258": {
+      "id": 258,
+      "name": "Tapdaq",
+      "creation_date": "2019-11-09",
+      "code_signature": "com.tapdaq.sdk.",
+      "network_signature": "ads.tapdaq.com",
+      "website": "https://www.tapdaq.com/"
+    },
+    "259": {
+      "id": 259,
+      "name": "Verve",
+      "creation_date": "2019-11-09",
+      "code_signature": "com.vervewireless.advert.",
+      "network_signature": "NC",
+      "website": "https://www.verve.com"
+    },
+    "260": {
+      "id": 260,
+      "name": "Apsalar",
+      "creation_date": "2019-11-09",
+      "code_signature": "com.apsalar.sdk.",
+      "network_signature": "e.apsalar.com|e-ssl.apsalar.com",
+      "website": "https://apsalar.com"
+    },
+    "261": {
+      "id": 261,
+      "name": "PingStart",
+      "creation_date": "2019-11-09",
+      "code_signature": "com.pingstart.adsdk.",
+      "network_signature": "api.pingstart.com",
+      "website": "http://pingstart.com"
+    },
+    "262": {
+      "id": 262,
+      "name": "Keen",
+      "creation_date": "2019-11-09",
+      "code_signature": "io.keen.client.",
+      "network_signature": "api.keen.io",
+      "website": "https://keen.io"
+    },
+    "263": {
+      "id": 263,
+      "name": "Revmob",
+      "creation_date": "2020-01-02",
+      "code_signature": "com.revmob.ads.",
+      "network_signature": "NC",
+      "website": "https://www.crunchbase.com/organization/revmob"
+    },
+    "264": {
+      "id": 264,
+      "name": "Emarsys Predict",
+      "creation_date": "2020-01-02",
+      "code_signature": "com.emarsys.predict",
+      "network_signature": "recommender.scarabresearch.com",
+      "website": "https://help.emarsys.com/hc/categories/115000670425-Predict"
+    },
+    "265": {
+      "id": 265,
+      "name": "Lotame",
+      "creation_date": "2020-01-02",
+      "code_signature": "com.lotame.android",
+      "network_signature": "ad.crwdcntrl.net",
+      "website": "https://www.lotame.com/"
+    },
+    "266": {
+      "id": 266,
+      "name": "FollowAnalytics",
+      "creation_date": "2020-01-02",
+      "code_signature": "com.followanalytics.",
+      "network_signature": "sdk.follow-apps.com",
+      "website": "https://www.followanalytics.com"
+    },
+    "267": {
+      "id": 267,
+      "name": "Chartbeat",
+      "creation_date": "2020-01-02",
+      "code_signature": "com.chartbeat.androidsdk",
+      "network_signature": ".chartbeat.com|.chartbeat.net",
+      "website": "https://chartbeat.com/"
+    },
+    "268": {
+      "id": 268,
+      "name": "MoEngage",
+      "creation_date": "2020-01-02",
+      "code_signature": "com.moengage.",
+      "network_signature": "apiv2.moengage.com",
+      "website": "https://www.moengage.com/"
+    },
+    "269": {
+      "id": 269,
+      "name": "Altamob",
+      "creation_date": "2020-01-02",
+      "code_signature": "com.altamob.sdk",
+      "network_signature": "api.altamob.com",
+      "website": "https://www.altamob.com/en/index.html"
+    },
+    "270": {
+      "id": 270,
+      "name": "Tealeaf",
+      "creation_date": "2020-02-25",
+      "code_signature": "com.tl.uic.Tealeaf",
+      "network_signature": "NC",
+      "website": "https://acoustic.co/products/experience-analytics/"
+    },
+    "271": {
+      "id": 271,
+      "name": "AMoAd",
+      "creation_date": "2020-02-25",
+      "code_signature": "com.amoad.",
+      "network_signature": "NC",
+      "website": "https://www.amoad.com"
+    },
+    "272": {
+      "id": 272,
+      "name": "AdAdapted",
+      "creation_date": "2020-02-25",
+      "code_signature": "com.adadapted.android.sdk.",
+      "network_signature": "ads\\.adadapted\\.com",
+      "website": "https://www.adadapted.com"
+    },
+    "273": {
+      "id": 273,
+      "name": "AdMuing",
+      "creation_date": "2020-02-25",
+      "code_signature": "com.admuing.danmaku.",
+      "network_signature": "NC",
+      "website": "https://github.com/admuing"
+    },
+    "274": {
+      "id": 274,
+      "name": "Adcash",
+      "creation_date": "2020-02-25",
+      "code_signature": "com.adcash.mobileads.",
+      "network_signature": "NC",
+      "website": "https://adcash.com"
+    },
+    "275": {
+      "id": 275,
+      "name": "Admixer",
+      "creation_date": "2020-02-25",
+      "code_signature": "com.admixer|net.admixer.sdk",
+      "network_signature": "admixer.co.kr",
+      "website": "http://admixer.co.kr/"
+    },
+    "276": {
+      "id": 276,
+      "name": "Admost",
+      "creation_date": "2020-02-25",
+      "code_signature": "com.admost.sdk.",
+      "network_signature": "cdn\\-api\\.admost\\.com|go\\.admost\\.com|med\\-api\\.admost\\.com",
+      "website": "https://admost.com/"
+    },
+    "277": {
+      "id": 277,
+      "name": "Alohalytics",
+      "creation_date": "2020-02-25",
+      "code_signature": "org.alohalytics.",
+      "network_signature": "NC",
+      "website": "https://github.com/biodranik/Alohalytics"
+    },
+    "278": {
+      "id": 278,
+      "name": "Amobee",
+      "creation_date": "2020-02-25",
+      "code_signature": "com.amobee.",
+      "network_signature": "amobee.com",
+      "website": "https://amobee.com"
+    },
+    "279": {
+      "id": 279,
+      "name": "Anagog",
+      "creation_date": "2020-02-25",
+      "code_signature": "com.anagog.jedai",
+      "network_signature": "NC",
+      "website": "https://anagog.com"
+    },
+    "280": {
+      "id": 280,
+      "name": "Bazaarvoice",
+      "creation_date": "2020-02-25",
+      "code_signature": "com.bazaarvoice.bvandroidsdk",
+      "network_signature": "NC",
+      "website": "https://www.bazaarvoice.com/"
+    },
+    "281": {
+      "id": 281,
+      "name": "BeaconsInSpace (Fysical)",
+      "creation_date": "2020-02-25",
+      "code_signature": "com.beaconsinspace.android.beacon.detector.",
+      "network_signature": "NC",
+      "website": "https://beaconsinspace.com"
+    },
+    "282": {
+      "id": 282,
+      "name": "Conversant",
+      "creation_date": "2020-02-25",
+      "code_signature": "com.conversantmedia",
+      "network_signature": "conversantmedia.com",
+      "website": "https://www.conversantmedia.com"
+    },
+    "283": {
+      "id": 283,
+      "name": "Glympse",
+      "creation_date": "2020-02-25",
+      "code_signature": "com.glympse.android.",
+      "network_signature": ".glympse.com",
+      "website": "https://glympse.com"
+    },
+    "284": {
+      "id": 284,
+      "name": "Herow",
+      "creation_date": "2020-02-25",
+      "code_signature": "com.connecthings.herow",
+      "network_signature": "NC",
+      "website": "https://herow.io/"
+    },
+    "285": {
+      "id": 285,
+      "name": "Placer",
+      "creation_date": "2020-02-25",
+      "code_signature": "com.placer.client.Placer",
+      "network_signature": "NC",
+      "website": "https://placer.io/"
+    },
+    "286": {
+      "id": 286,
+      "name": "PushSpring",
+      "creation_date": "2020-02-25",
+      "code_signature": "com.pushspring.sdk.PushSpring",
+      "network_signature": "api.pushspring.com",
+      "website": "http://www.pushspring.com/"
+    },
+    "287": {
+      "id": 287,
+      "name": "Pyze",
+      "creation_date": "2020-02-25",
+      "code_signature": "com.pyze.",
+      "network_signature": "pyze.com",
+      "website": "https://pyze.com/"
+    },
+    "288": {
+      "id": 288,
+      "name": "Radar",
+      "creation_date": "2020-02-25",
+      "code_signature": "io.radar.sdk.Radar",
+      "network_signature": "NC",
+      "website": "https://radar.io/"
+    },
+    "289": {
+      "id": 289,
+      "name": "Roximity",
+      "creation_date": "2020-02-25",
+      "code_signature": "com.roximity.sdk.",
+      "network_signature": "app\\.roximity\\.com",
+      "website": "http://roximity.com/"
+    },
+    "290": {
+      "id": 290,
+      "name": "Sentiance",
+      "creation_date": "2020-02-25",
+      "code_signature": "com.sentiance.sdk.",
+      "network_signature": "api.sentiance.com",
+      "website": "https://www.sentiance.com/"
+    },
+    "291": {
+      "id": 291,
+      "name": "SmartLook",
+      "creation_date": "2020-02-25",
+      "code_signature": "com.smartlook.sdk.smartlook.",
+      "network_signature": "smartlook.com",
+      "website": "https://www.smartlook.com/"
+    },
+    "292": {
+      "id": 292,
+      "name": "Square Metrics",
+      "creation_date": "2020-02-25",
+      "code_signature": "com.beaconinside.proximitysdk.ProximityService",
+      "network_signature": "api.beaconinside.com",
+      "website": "https://www.squaremetrics.com"
+    },
+    "293": {
+      "id": 293,
+      "name": "TalkingData",
+      "creation_date": "2020-02-25",
+      "code_signature": "com.talkingdata.sdk.|com.tendcloud.tenddata.|com.talkingdata.appanalytics.|com.talkingdata.adtracking.|com.tendcloud.appcpa.|com.apptalkingdata.push.|com.gametalkingdata.push.",
+      "network_signature": "m\\.talkingdata\\.com|account\\.talkingdata\\.com|cloud\\.xdrig\\.com|av1\\.xdrig\\.com|push\\.xdrig\\.com",
+      "website": "https://www.talkingdata.com/"
+    },
+    "294": {
+      "id": 294,
+      "name": "flymob",
+      "creation_date": "2020-02-25",
+      "code_signature": "com.flymob.sdk.",
+      "network_signature": "NC",
+      "website": "https://flymob.com/"
     }
   }
 ]

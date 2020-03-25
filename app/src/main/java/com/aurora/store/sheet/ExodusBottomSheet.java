@@ -114,8 +114,8 @@ public class ExodusBottomSheet extends BaseBottomSheet {
     }
 
     private List<ExodusTracker> getTrackerData(Report report) {
-        List<ExodusTracker> exodusTrackers = new ArrayList<>();
-        ArrayList<JSONObject> trackerObjects = getTrackerObjects(report.getTrackers());
+        final List<ExodusTracker> exodusTrackers = new ArrayList<>();
+        final ArrayList<JSONObject> trackerObjects = getTrackerObjects(report.getTrackers());
         for (JSONObject obj : trackerObjects) {
             ExodusTracker exodusTracker = null;
             try {
@@ -124,7 +124,7 @@ public class ExodusBottomSheet extends BaseBottomSheet {
                         obj.getString("website"),
                         obj.getString("code_signature"),
                         obj.getString("creation_date"));
-            } catch (JSONException | NullPointerException ignored) {
+            } catch (Exception ignored) {
             }
             if (exodusTracker != null)
                 exodusTrackers.add(exodusTracker);
