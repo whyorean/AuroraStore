@@ -5,6 +5,7 @@
     android:background="?android:attr/selectableItemBackground"
     android:gravity="center_vertical"
     android:minHeight="?android:attr/listPreferredItemHeight"
+    android:paddingStart="@dimen/padding_normal"
     android:paddingEnd="?android:attr/scrollbarSize">
 
     <androidx.appcompat.widget.AppCompatImageView
