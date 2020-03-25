@@ -60,6 +60,7 @@ import com.aurora.store.util.ContextUtil;
 import com.aurora.store.util.Log;
 import com.aurora.store.util.PackageUtil;
 import com.aurora.store.util.Util;
+import com.aurora.store.util.ViewUtil;
 import com.bumptech.glide.load.resource.bitmap.BitmapTransitionOptions;
 import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
@@ -202,7 +203,9 @@ public class DetailsActivity extends BaseActivity {
                 }
                 return true;
             case R.id.action_manual:
-                startActivity(new Intent(this, ManualDownloadActivity.class));
+                Intent manualIntent = new Intent(this, ManualDownloadActivity.class);
+                manualIntent.putExtra(Constants.STRING_EXTRA, gson.toJson(app));
+                startActivity(manualIntent, ViewUtil.getEmptyActivityBundle(this));
                 return true;
             case R.id.action_downloads:
                 startActivity(new Intent(this, DownloadsActivity.class));
