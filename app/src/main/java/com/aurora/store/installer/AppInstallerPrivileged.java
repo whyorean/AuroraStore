@@ -66,19 +66,24 @@ public class AppInstallerPrivileged extends AppInstallerAbstract {
         return instance;
     }
 
-    public static boolean isServiceOnline(Context context) {
+    private static boolean isServiceOnline(Context context) {
         if (!PackageUtil.isInstalled(context, Constants.SERVICE_PACKAGE)) {
             return false;
         }
-        ServiceConnection serviceConnection = new ServiceConnection() {
+
+        final ServiceConnection serviceConnection = new ServiceConnection() {
             public void onServiceConnected(ComponentName name, IBinder service) {
+                Log.i("Aurora Service is installed & available");
             }
 
             public void onServiceDisconnected(ComponentName name) {
+                Log.e("Aurora Service is installed but unavailable");
             }
         };
-        Intent serviceIntent = new Intent(Constants.PRIVILEGED_EXTENSION_SERVICE_INTENT);
+
+        final Intent serviceIntent = new Intent(Constants.PRIVILEGED_EXTENSION_SERVICE_INTENT);
         serviceIntent.setPackage(Constants.PRIVILEGED_EXTENSION_PACKAGE_NAME);
+
         try {
             context.getApplicationContext().bindService(serviceIntent, serviceConnection, Context.BIND_AUTO_CREATE);
             return true;
@@ -99,15 +104,16 @@ public class AppInstallerPrivileged extends AppInstallerAbstract {
             uriList.add(Uri.parse(file.getPath()));
         }
 
-        ServiceConnection serviceConnection = new ServiceConnection() {
+        final ServiceConnection serviceConnection = new ServiceConnection() {
             public void onServiceConnected(ComponentName name, IBinder binder) {
-                IPrivilegedService service = IPrivilegedService.Stub.asInterface(binder);
-                IPrivilegedCallback callback = new IPrivilegedCallback.Stub() {
+                final IPrivilegedService service = IPrivilegedService.Stub.asInterface(binder);
+                final IPrivilegedCallback callback = new IPrivilegedCallback.Stub() {
                     @Override
                     public void handleResult(String packageName, int returnCode) {
                         dispatchSessionUpdate(returnCode, packageName);
                     }
                 };
+
                 try {
                     service.installSplitPackage(
                             uriList,
@@ -116,26 +122,27 @@ public class AppInstallerPrivileged extends AppInstallerAbstract {
                             callback
                     );
                 } catch (RemoteException e) {
-                    Log.e(getClass().getSimpleName(), "Connecting to privileged service failed");
+                    Log.e("Failed to establish connection to Aurora Services");
                 }
             }
 
             public void onServiceDisconnected(ComponentName name) {
-                Log.e(getClass().getSimpleName(), "Disconnected from privileged service");
+                Log.e("Disconnected from Aurora Services");
             }
         };
 
-        Intent serviceIntent = new Intent(Constants.PRIVILEGED_EXTENSION_SERVICE_INTENT);
+        final Intent serviceIntent = new Intent(Constants.PRIVILEGED_EXTENSION_SERVICE_INTENT);
         serviceIntent.setPackage(Constants.PRIVILEGED_EXTENSION_PACKAGE_NAME);
         getContext().getApplicationContext().bindService(serviceIntent, serviceConnection, Context.BIND_AUTO_CREATE);
     }
 
     private void showDisconnectedServicesDialog() {
-        MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(getContext());
+        final MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(getContext());
         builder.setTitle(R.string.action_installations);
         builder.setMessage(R.string.pref_install_mode_offline_services);
         builder.setPositiveButton(android.R.string.ok, (dialog, which) -> dialog.dismiss());
-        int backGroundColor = ViewUtil.getStyledAttribute(getContext(), android.R.attr.colorBackground);
+
+        final int backGroundColor = ViewUtil.getStyledAttribute(getContext(), android.R.attr.colorBackground);
         builder.setBackground(new ColorDrawable(backGroundColor));
         builder.create();
         builder.show();

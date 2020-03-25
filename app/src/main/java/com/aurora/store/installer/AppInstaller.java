@@ -72,6 +72,7 @@ public class AppInstaller extends AppInstallerAbstract {
                 inputStream.close();
                 outputStream.close();
             }
+
             final Intent callbackIntent = new Intent(getContext(), InstallerService.class);
             final PendingIntent pendingIntent = PendingIntent.getService(
                     getContext(),
@@ -81,7 +82,8 @@ public class AppInstaller extends AppInstallerAbstract {
             session.commit(pendingIntent.getIntentSender());
             session.close();
         } catch (Exception e) {
-            Log.w(e.getMessage());
+            Log.e(e.getMessage());
+            dispatchSessionUpdate(PackageInstaller.STATUS_FAILURE, packageName);
         }
     }
 }

@@ -126,39 +126,7 @@ public class Installer implements AppInstallerAbstract.InstallationStatusListene
             }
         }
 
-        packageInstaller.addInstallationStatusListener((status, intentPackageName) -> {
-            final String statusMessage = getStatusString(status);
-            final App app = appHashMap.get(intentPackageName);
-
-            String displayName = (app != null)
-                    ? TextUtil.emptyIfNull(app.getDisplayName())
-                    : TextUtil.emptyIfNull(intentPackageName);
-
-            if (StringUtils.isEmpty(displayName))
-                displayName = context.getString(R.string.app_name);
-
-            Log.i("Package Installer -> %s : %s", displayName, TextUtil.emptyIfNull(statusMessage));
-
-            clearNotification(app);
-
-            if (status == PackageInstaller.STATUS_SUCCESS) {
-                sendStatusBroadcast(intentPackageName, 1);
-                if (app != null && Util.shouldDeleteApk(context)) {
-                    clearInstallationFiles(app);
-                }
-            } else {
-                sendStatusBroadcast(intentPackageName, 0);
-            }
-
-            QuickNotification.show(
-                    context,
-                    displayName,
-                    statusMessage,
-                    getContentIntent(intentPackageName));
-            appHashMap.remove(intentPackageName);
-            checkAndProcessQueuedApps();
-        });
-
+        packageInstaller.addInstallationStatusListener(this);
         AsyncTask.execute(() -> packageInstaller.installApkFiles(packageName, apkFiles));
     }
 
@@ -244,7 +212,37 @@ public class Installer implements AppInstallerAbstract.InstallationStatusListene
     }
 
     @Override
-    public void onStatusChanged(int status, @Nullable String packageName) {
+    public void onStatusChanged(int status, @Nullable String intentPackageName) {
+        final String statusMessage = getStatusString(status);
+        final App app = appHashMap.get(intentPackageName);
 
+        String displayName = (app != null)
+                ? TextUtil.emptyIfNull(app.getDisplayName())
+                : TextUtil.emptyIfNull(intentPackageName);
+
+        if (StringUtils.isEmpty(displayName))
+            displayName = context.getString(R.string.app_name);
+
+        Log.i("Package Installer -> %s : %s", displayName, TextUtil.emptyIfNull(statusMessage));
+
+        clearNotification(app);
+
+        if (status == PackageInstaller.STATUS_SUCCESS) {
+            sendStatusBroadcast(intentPackageName, 1);
+            if (app != null && Util.shouldDeleteApk(context)) {
+                clearInstallationFiles(app);
+            }
+        } else {
+            sendStatusBroadcast(intentPackageName, 0);
+        }
+
+        QuickNotification.show(
+                context,
+                displayName,
+                statusMessage,
+                getContentIntent(intentPackageName));
+
+        appHashMap.remove(intentPackageName);
+        checkAndProcessQueuedApps();
     }
 }

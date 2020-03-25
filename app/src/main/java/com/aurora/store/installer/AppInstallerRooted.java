@@ -75,40 +75,57 @@ public class AppInstallerRooted extends AppInstallerAbstract {
             for (File apkFile : apkFiles)
                 totalSize += apkFile.length();
 
-            String result = ensureCommandSucceeded(root.exec(String.format(Locale.getDefault(),
-                    "pm install-create -i com.android.vending --user %s -r -S %d",
-                    Util.getInstallationProfile(getContext()),
-                    totalSize)));
+            if (totalSize < 0) {
 
-            Pattern sessionIdPattern = Pattern.compile("(\\d+)");
-            Matcher sessionIdMatcher = sessionIdPattern.matcher(result);
-            boolean found = sessionIdMatcher.find();
-            int sessionId = Integer.parseInt(sessionIdMatcher.group(1));
+                final String createSessionResult = ensureCommandSucceeded(root.exec(String.format(Locale.getDefault(),
+                        "pm install-create -i com.android.vending --user %s -r -S %d",
+                        Util.getInstallationProfile(getContext()),
+                        totalSize)));
 
-            for (File apkFile : apkFiles)
-                ensureCommandSucceeded(root.exec(String.format(Locale.getDefault(),
-                        "cat \"%s\" | pm install-write -S %d %d \"%s\"",
-                        apkFile.getAbsolutePath(),
-                        apkFile.length(),
-                        sessionId,
-                        apkFile.getName())));
+                final Pattern sessionIdPattern = Pattern.compile("(\\d+)");
+                final Matcher sessionIdMatcher = sessionIdPattern.matcher(createSessionResult);
+                final boolean found = sessionIdMatcher.find();
+                final int sessionId = Integer.parseInt(sessionIdMatcher.group(1));
 
-            result = ensureCommandSucceeded(root.exec(String.format(Locale.getDefault(),
-                    "pm install-commit %d ",
-                    sessionId)));
+                boolean corruptedApkDetected = false;
 
-            if (result.toLowerCase().contains("success"))
-                dispatchSessionUpdate(PackageInstaller.STATUS_SUCCESS, packageName);
-            else
-                dispatchSessionUpdate(PackageInstaller.STATUS_FAILURE, packageName);
+                for (File apkFile : apkFiles) {
+                    if (apkFile.length() < 0)
+                        corruptedApkDetected = true;
+                }
+
+                if (!corruptedApkDetected) {
+                    for (File apkFile : apkFiles) {
+                        ensureCommandSucceeded(root.exec(String.format(Locale.getDefault(),
+                                "cat \"%s\" | pm install-write -S %d %d \"%s\"",
+                                apkFile.getAbsolutePath(),
+                                apkFile.length(),
+                                sessionId,
+                                apkFile.getName())));
+                    }
+
+                    final String commitSessionResult = ensureCommandSucceeded(root.exec(String.format(Locale.getDefault(),
+                            "pm install-commit %d ",
+                            sessionId)));
+
+                    if (commitSessionResult.toLowerCase().contains("success"))
+                        dispatchSessionUpdate(PackageInstaller.STATUS_SUCCESS, packageName);
+                    else
+                        throw new Exception("Failed to install APK(s)");
+                } else
+                    throw new Exception("Corrupted APK(s) detected, aborting install.");
+            } else
+                throw new Exception("Corrupted APK(s) detected, aborting install.");
+
         } catch (Exception e) {
-            Log.w(e.getMessage());
+            Log.e(e.getMessage());
+            dispatchSessionUpdate(PackageInstaller.STATUS_FAILURE, packageName);
         }
     }
 
-    private String ensureCommandSucceeded(String result) {
+    private String ensureCommandSucceeded(String result) throws Exception {
         if (result == null || result.length() == 0)
-            throw new RuntimeException(root.readError());
+            throw new Exception(root.readError());
         return result;
     }
 }
