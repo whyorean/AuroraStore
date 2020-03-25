@@ -65,6 +65,10 @@ public class CustomAppListIterator implements Iterator {
     @Override
     public List<App> next() {
         List<App> apps = new ArrayList<>();
+
+        if (!iterator.hasNext())
+            return apps;
+
         for (DocV2 docV2 : iterator.next()) {
             if (docV2.getDocType() == 53)
                 relatedTags.add(docV2.getTitle());

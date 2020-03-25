@@ -52,10 +52,14 @@ public class SearchTask {
     private List<App> getNextBatch(CustomAppListIterator iterator) {
         List<App> apps = new ArrayList<>();
 
-        if (!iterator.hasNext())
-            return apps;
+        if (iterator.hasNext())
+            apps.addAll(iterator.next());
 
-        apps.addAll(iterator.next());
+        if (iterator.hasNext())
+            apps.addAll(iterator.next());
+
+        if (apps.isEmpty())
+            return apps;
 
         if (Util.filterGoogleAppsEnabled(context))
             return filterGoogleApps(apps);
