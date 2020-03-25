@@ -9,6 +9,8 @@
     <string name="action_accounts">"Accounts"</string>
     <string name="action_ask">"Ask"</string>
     <string name="action_blacklist">"Blacklist"</string>
+    <string name="action_ignore">"Ignore this version"</string>
+    <string name="action_ignore_remove">"Remove from ignore list"</string>
     <string name="action_cancel">"Cancel"</string>
     <string name="action_clear">"Clear"</string>
     <string name="action_clear_all">"Clear all"</string>

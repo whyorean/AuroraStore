@@ -40,6 +40,7 @@ import com.aurora.store.events.Event;
 import com.aurora.store.installer.Uninstaller;
 import com.aurora.store.manager.BlacklistManager;
 import com.aurora.store.manager.FavouritesManager;
+import com.aurora.store.manager.IgnoreListManager;
 import com.aurora.store.model.App;
 import com.aurora.store.ui.single.activity.ManualDownloadActivity;
 import com.aurora.store.util.ApkCopier;
@@ -92,9 +93,11 @@ public class AppMenuSheet extends BaseBottomSheet {
     private void setupNavigationView() {
         final FavouritesManager favouritesManager = new FavouritesManager(requireContext());
         final BlacklistManager blacklistManager = new BlacklistManager(requireContext());
+        final IgnoreListManager ignoreListManager = new IgnoreListManager(requireContext());
 
         final boolean isFavourite = favouritesManager.isFavourite(app.getPackageName());
         final boolean isBlacklisted = blacklistManager.isBlacklisted(app.getPackageName());
+        final boolean isIgnored = ignoreListManager.isIgnored(app.getPackageName(), app.getVersionCode());
 
         //Switch strings for Add/Remove Favourite
         final MenuItem favMenu = navigationView.getMenu().findItem(R.id.action_fav);
@@ -103,6 +106,10 @@ public class AppMenuSheet extends BaseBottomSheet {
         //Switch strings for Add/Remove Blacklist
         final MenuItem blackListMenu = navigationView.getMenu().findItem(R.id.action_blacklist);
         blackListMenu.setTitle(isBlacklisted ? R.string.action_whitelist : R.string.menu_blacklist);
+
+        //Switch strings for Add/Remove IgnoreList
+        final MenuItem ignoreVersionMenu = navigationView.getMenu().findItem(R.id.action_ignore);
+        ignoreVersionMenu.setTitle(isIgnored ? R.string.action_ignore_remove : R.string.action_ignore);
 
         //Show/Hide actions based on installed status
         final boolean installed = PackageUtil.isInstalled(requireContext(), app);
@@ -136,6 +143,12 @@ public class AppMenuSheet extends BaseBottomSheet {
                                     requireContext().getString(R.string.toast_apk_whitelisted) :
                                     requireContext().getString(R.string.toast_apk_blacklisted),
                             Toast.LENGTH_SHORT).show();
+                    break;
+                case R.id.action_ignore:
+                    if (isIgnored)
+                        ignoreListManager.removeFromIgnoreList(app.getPackageName());
+                    else
+                        ignoreListManager.addToIgnoreList(app.getPackageName(), app.getVersionCode());
                     break;
                 case R.id.action_local:
                     Observable.fromCallable(() -> new ApkCopier(requireContext(), app)

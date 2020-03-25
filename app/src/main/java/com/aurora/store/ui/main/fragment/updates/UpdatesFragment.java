@@ -42,6 +42,7 @@ import com.aurora.store.Constants;
 import com.aurora.store.R;
 import com.aurora.store.UpdatesDiffCallback;
 import com.aurora.store.download.DownloadManager;
+import com.aurora.store.manager.IgnoreListManager;
 import com.aurora.store.model.App;
 import com.aurora.store.model.items.UpdatesItem;
 import com.aurora.store.sheet.AppMenuSheet;
@@ -301,18 +302,23 @@ public class UpdatesFragment extends BaseFragment {
                             .subscribe());
         } else {
             boolean selectiveUpdate = selectExtension.getSelectedItems().size() > 0;
-            btnAction.setOnClickListener(v ->
-                    Observable
-                            .fromIterable(selectiveUpdate
-                                    ? selectedItems
-                                    : itemAdapter.getAdapterItems())
-                            .map(UpdatesItem::getApp)
-                            .toList()
-                            .doOnSuccess(apps -> {
-                                AuroraApplication.setOngoingUpdateList(apps);
-                                Util.bulkUpdate(requireContext());
-                            })
-                            .subscribe());
+            btnAction.setOnClickListener(v -> {
+                IgnoreListManager ignoreListManager = new IgnoreListManager(requireContext());
+                Observable.fromIterable(selectiveUpdate
+                        ? selectedItems
+                        : itemAdapter.getAdapterItems())
+                        .filter(updatesItem -> {
+                            final App app = updatesItem.getApp();
+                            return !ignoreListManager.isIgnored(app.getPackageName(), app.getVersionCode());
+                        })
+                        .map(UpdatesItem::getApp)
+                        .toList()
+                        .doOnSuccess(apps -> {
+                            AuroraApplication.setOngoingUpdateList(apps);
+                            Util.bulkUpdate(requireContext());
+                        })
+                        .subscribe();
+            });
         }
     }
 }
