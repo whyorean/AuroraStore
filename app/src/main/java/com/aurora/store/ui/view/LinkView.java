@@ -28,29 +28,36 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
-import androidx.cardview.widget.CardView;
+import android.widget.Toast;
 
 import com.aurora.store.R;
+import com.aurora.store.util.Util;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class LinkView extends RelativeLayout {
 
-    CardView link_card;
-    ImageView card_icon;
-    TextView card_title;
-    TextView card_summary;
+    @BindView(R.id.img_icon)
+    ImageView linkIcon;
+    @BindView(R.id.line1)
+    TextView line1;
+    @BindView(R.id.line2)
+    TextView line2;
+    @BindView(R.id.line3)
+    TextView line3;
 
     private String title;
     private String summary;
     private String linkURL;
-    private int cardIconID;
+    private int iconId;
 
-    public LinkView(Context context, String linkURL, String title, String summary, int cardIconID) {
+    public LinkView(Context context, String url, String title, String summary, int iconId) {
         super(context);
-        this.linkURL = linkURL;
+        this.linkURL = url;
         this.title = title;
         this.summary = summary;
-        this.cardIconID = cardIconID;
+        this.iconId = iconId;
         init();
     }
 
@@ -61,17 +68,27 @@ public class LinkView extends RelativeLayout {
 
     private void init() {
         View view = inflate(getContext(), R.layout.item_link, this);
-        card_icon = view.findViewById(R.id.link_icon);
-        card_title = view.findViewById(R.id.link_title);
-        card_summary = view.findViewById(R.id.link_summary);
-        card_title.setText(title);
-        card_summary.setText(summary);
-        card_icon.setImageResource(cardIconID);
+        ButterKnife.bind(this, view);
 
-        view.setOnClickListener(click -> {
-            final Intent browserIntent = new Intent(Intent.ACTION_VIEW);
-            browserIntent.setData(Uri.parse(linkURL));
-            getContext().startActivity(browserIntent);
-        });
+        linkIcon.setImageResource(iconId);
+        line1.setText(title);
+        line2.setText(summary);
+
+        final Uri uri = Uri.parse(linkURL);
+
+        if (uri == null || uri.getScheme() == null) {
+            line3.setVisibility(VISIBLE);
+            line3.setText(linkURL);
+            view.setOnClickListener(v -> {
+                Util.copyToClipBoard(getContext(), linkURL);
+                Toast.makeText(getContext(), getContext().getString(R.string.action_copied), Toast.LENGTH_LONG).show();
+            });
+        } else {
+            view.setOnClickListener(click -> {
+                final Intent browserIntent = new Intent(Intent.ACTION_VIEW);
+                browserIntent.setData(Uri.parse(linkURL));
+                getContext().startActivity(browserIntent);
+            });
+        }
     }
 }

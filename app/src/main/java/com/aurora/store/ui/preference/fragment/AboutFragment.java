@@ -20,8 +20,6 @@
 
 package com.aurora.store.ui.preference.fragment;
 
-import android.content.Context;
-import android.content.pm.PackageInfo;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -33,8 +31,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.aurora.store.BuildConfig;
 import com.aurora.store.R;
 import com.aurora.store.ui.view.LinkView;
+
+import org.apache.commons.lang3.StringUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -46,14 +47,6 @@ public class AboutFragment extends Fragment {
     TextView txtVersion;
     @BindView(R.id.linkContainer)
     LinearLayout linkContainer;
-
-    private Context context;
-
-    @Override
-    public void onAttach(@NonNull Context context) {
-        super.onAttach(context);
-        this.context = context;
-    }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -72,10 +65,7 @@ public class AboutFragment extends Fragment {
 
     private void drawVersion() {
         try {
-            PackageInfo packageInfo = context.getPackageManager().getPackageInfo(getActivity().getPackageName(), 0);
-            txtVersion.setText(new StringBuilder()
-                    .append("v")
-                    .append(packageInfo.versionName));
+            txtVersion.setText(StringUtils.joinWith(".", BuildConfig.VERSION_NAME, BuildConfig.BUILD_TYPE));
         } catch (Exception ignored) {
         }
     }
@@ -85,7 +75,12 @@ public class AboutFragment extends Fragment {
         String[] linkTitles = getResources().getStringArray(R.array.linkTitles);
         String[] linkSummary = getResources().getStringArray(R.array.linkSummary);
         int[] linkIcons = {
+                R.drawable.ic_bitcoin_btc,
+                R.drawable.ic_bitcoin_bch,
+                R.drawable.ic_ethereum_eth,
+                R.drawable.ic_bhim,
                 R.drawable.ic_paypal,
+                R.drawable.ic_libera_pay,
                 R.drawable.ic_gitlab,
                 R.drawable.ic_xda,
                 R.drawable.ic_telegram,

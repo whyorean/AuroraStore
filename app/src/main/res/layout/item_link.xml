@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Aurora Store
   ~ Copyright (C) 2019, Rahul Kumar Patel <whyorean@gmail.com>
   ~
@@ -28,30 +27,42 @@
     android:padding="@dimen/margin_normal">
 
     <ImageView
-        android:contentDescription="@string/content_description_icon"
-        android:id="@+id/link_icon"
+        android:id="@+id/img_icon"
         android:layout_width="@dimen/icon_size_medium"
         android:layout_height="@dimen/icon_size_medium"
+        android:contentDescription="@string/content_description_icon"
         android:padding="@dimen/margin_small" />
 
     <TextView
-        android:id="@+id/link_title"
+        android:id="@+id/line1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@id/link_icon"
+        android:layout_alignBaseline="@id/img_icon"
         android:layout_marginStart="@dimen/margin_small"
-        android:layout_toEndOf="@+id/link_icon"
+        android:layout_toEndOf="@+id/img_icon"
         android:singleLine="true"
-        android:textAppearance="@style/TextAppearance.Aurora.Line1"/>
+        android:textAppearance="@style/TextAppearance.Aurora.Line1" />
 
     <TextView
-        android:id="@+id/link_summary"
+        android:id="@+id/line2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/link_title"
-        android:layout_alignStart="@id/link_title"
-        android:layout_toEndOf="@+id/link_icon"
+        android:layout_below="@+id/line1"
+        android:layout_alignStart="@id/line1"
+        android:layout_toEndOf="@+id/img_icon"
         android:maxLines="2"
         android:textAppearance="@style/TextAppearance.Aurora.Line2" />
 
+    <TextView
+        android:id="@+id/line3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/line2"
+        android:layout_alignStart="@id/line1"
+        android:layout_toEndOf="@+id/img_icon"
+        android:maxLines="2"
+        android:textAppearance="@style/TextAppearance.Aurora.Line3"
+        android:textColor="?colorAccent"
+        android:textIsSelectable="true"
+        android:visibility="gone" />
 </RelativeLayout>

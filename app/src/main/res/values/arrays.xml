@@ -264,7 +264,12 @@
     </string-array>
 
     <string-array name="linkURLS">
-        <item>"https://paypal.me/whyorean"</item>
+        <item>"bc1qu7cy9fepjj309y4r2x3rymve7mw4ff39c8cpe0"</item>
+        <item>"qpqus3qdlz8guf476vwz0fjl8s34fseukcmrl6eknl"</item>
+        <item>"0x6977446933EC8b5964D921f7377950992337B1C6"</item>
+        <item>"whyorean@dbs"</item>
+        <item>"https://paypal.me/AuroraDev"</item>
+        <item>"https://liberapay.com/on/gitlab/whyorean/ "</item>
         <item>"https://gitlab.com/AuroraOSS/AuroraStore"</item>
         <item>"https://forum.xda-developers.com/android/apps-games/galaxy-playstore-alternative-t3739733"</item>
         <item>"https://t.me/AuroraSupport"</item>
@@ -272,7 +277,12 @@
     </string-array>
 
     <string-array name="linkTitles">
+        <item>@string/about_bitcoin_btc</item>
+        <item>@string/about_bitcoin_bch</item>
+        <item>@string/about_bitcoin_eth</item>
+        <item>@string/about_bhim</item>
         <item>@string/about_paypal</item>
+        <item>@string/about_libera</item>
         <item>@string/about_gitlab</item>
         <item>@string/about_xda</item>
         <item>@string/about_telegram</item>
@@ -280,7 +290,12 @@
     </string-array>
 
     <string-array name="linkSummary">
+        <item>@string/about_bitcoin_btc_summary</item>
+        <item>@string/about_bitcoin_bch_summary</item>
+        <item>@string/about_bitcoin_eth_summary</item>
+        <item>@string/about_bhim_summary</item>
         <item>@string/about_paypal_summary</item>
+        <item>@string/about_libera_summary</item>
         <item>@string/about_gitlab_summary</item>
         <item>@string/about_xda_summary</item>
         <item>@string/about_telegram_summary</item>
