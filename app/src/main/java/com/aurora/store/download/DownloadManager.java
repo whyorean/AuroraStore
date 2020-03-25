@@ -26,9 +26,13 @@ import com.aurora.store.BuildConfig;
 import com.aurora.store.Constants;
 import com.aurora.store.util.NetworkInterceptor;
 import com.aurora.store.util.Util;
+import com.tonyodev.fetch2.Download;
 import com.tonyodev.fetch2.Fetch;
 import com.tonyodev.fetch2.FetchConfiguration;
+import com.tonyodev.fetch2.FetchListener;
 import com.tonyodev.fetch2okhttp.OkHttpDownloader;
+
+import java.util.List;
 
 import okhttp3.OkHttpClient;
 
@@ -78,6 +82,20 @@ public class DownloadManager {
             builder.addNetworkInterceptor(new NetworkInterceptor());
         }
         return builder.build();
+    }
+
+    public static void updateOngoingDownloads(Fetch fetch, List<String> packageList, Download download,
+                                              FetchListener fetchListener) {
+        if (packageList.contains(download.getTag())) {
+            final String packageName = download.getTag();
+            if (packageName != null) {
+                fetch.deleteGroup(packageName.hashCode());
+                packageList.remove(packageName);
+            }
+        }
+        if (packageList.size() == 0) {
+            fetch.removeListener(fetchListener);
+        }
     }
 }
 

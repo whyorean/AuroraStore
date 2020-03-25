@@ -56,9 +56,13 @@ import com.mikepenz.fastadapter.FastAdapter;
 import com.mikepenz.fastadapter.adapters.ItemAdapter;
 import com.mikepenz.fastadapter.diff.FastAdapterDiffUtil;
 import com.mikepenz.fastadapter.select.SelectExtension;
+import com.tonyodev.fetch2.AbstractFetchListener;
+import com.tonyodev.fetch2.Download;
 import com.tonyodev.fetch2.Fetch;
+import com.tonyodev.fetch2.FetchListener;
 
 import org.apache.commons.lang3.StringUtils;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -285,24 +289,56 @@ public class UpdatesFragment extends BaseFragment {
         }
     }
 
+    private void attachFetchCancelListener() {
+        boolean selectiveUpdate = selectExtension.getSelectedItems().size() > 0;
+        Observable.fromIterable(selectiveUpdate
+                ? selectedItems
+                : itemAdapter.getAdapterItems())
+                .map(UpdatesItem::getPackageName)
+                .toList()
+                .doOnSuccess(packages -> {
+                    final List<String> packageList = new ArrayList<>(packages);
+                    final FetchListener fetchListener = new AbstractFetchListener() {
+                        @Override
+                        public void onAdded(@NotNull Download download) {
+                            DownloadManager.updateOngoingDownloads(fetch, packageList, download, this);
+                        }
+
+                        @Override
+                        public void onQueued(@NotNull Download download, boolean b) {
+                            DownloadManager.updateOngoingDownloads(fetch, packageList, download, this);
+                        }
+
+                        @Override
+                        public void onProgress(@NotNull Download download, long etaInMilliSeconds, long downloadedBytesPerSecond) {
+                            super.onProgress(download, etaInMilliSeconds, downloadedBytesPerSecond);
+                            DownloadManager.updateOngoingDownloads(fetch, packageList, download, this);
+                        }
+                    };
+
+                    fetch.addListener(fetchListener);
+
+                    //Clear ongoing update list
+                    AuroraApplication.setOngoingUpdateList(new ArrayList<>());
+                    //Start BulkUpdate cancellation request
+                    Util.stopBulkUpdate(requireContext());
+                })
+                .subscribe();
+    }
+
     private void updateButtonActions() {
         btnAction.setOnClickListener(null);
+        btnAction.setEnabled(true);
         if (AuroraApplication.isBulkUpdateAlive()) {
             btnAction.setText(getString(R.string.action_cancel));
-            btnAction.setOnClickListener(v ->
-                    Observable
-                            .fromIterable(AuroraApplication.getOngoingUpdateList())
-                            .doOnNext(app -> {
-                                fetch.deleteGroup(app.getPackageName().hashCode());
-                            })
-                            .doOnComplete(() -> {
-                                AuroraApplication.setOngoingUpdateList(new ArrayList<>());
-                                Util.stopBulkUpdate(requireContext());
-                            })
-                            .subscribe());
+            btnAction.setOnClickListener(v -> {
+                attachFetchCancelListener();
+                btnAction.setEnabled(false);
+            });
         } else {
             boolean selectiveUpdate = selectExtension.getSelectedItems().size() > 0;
             btnAction.setOnClickListener(v -> {
+                btnAction.setEnabled(false);
                 IgnoreListManager ignoreListManager = new IgnoreListManager(requireContext());
                 Observable.fromIterable(selectiveUpdate
                         ? selectedItems
