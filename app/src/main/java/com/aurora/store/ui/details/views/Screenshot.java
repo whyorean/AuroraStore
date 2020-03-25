@@ -21,8 +21,6 @@
 package com.aurora.store.ui.details.views;
 
 import android.content.Intent;
-import android.view.View;
-import android.widget.LinearLayout;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -36,11 +34,11 @@ import com.mikepenz.fastadapter.adapters.FastItemAdapter;
 
 import butterknife.BindView;
 import io.reactivex.Observable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
 
 public class Screenshot extends AbstractDetails {
 
-    @BindView(R.id.root_layout)
-    LinearLayout rootLayout;
     @BindView(R.id.recycler)
     RecyclerView recyclerView;
 
@@ -56,12 +54,13 @@ public class Screenshot extends AbstractDetails {
     }
 
     private void drawGallery() {
-        recyclerView.setVisibility(View.VISIBLE);
         FastItemAdapter<ScreenshotItem> fastItemAdapter = new FastItemAdapter<>();
 
         Observable.fromIterable(app.getScreenshotUrls())
+                .subscribeOn(Schedulers.io())
                 .map(ScreenshotItem::new)
                 .toList()
+                .observeOn(AndroidSchedulers.mainThread())
                 .doOnSuccess(fastItemAdapter::add)
                 .subscribe();
 

@@ -105,8 +105,7 @@
                 android:clipToPadding="false"
                 android:orientation="horizontal"
                 android:paddingStart="@dimen/margin_small"
-                android:paddingEnd="@dimen/margin_small"
-                android:visibility="invisible" />
+                android:paddingEnd="@dimen/margin_small" />
 
             <!-- Reviews -->
             <include layout="@layout/include_details_reviews" />

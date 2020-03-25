@@ -356,9 +356,6 @@
     <string name="action_import">"İçe aktar"</string>
     <string name="dialog_title_self_update">"Yeni güncelleme var"</string>
     <string name="dialog_desc_self_update">"Şimdi güncellemek istiyor musunuz?"</string>
-    <string name="download_extraction">"Oyun kaynağı çıkarılıyor, tamamlanması için bekleyin"</string>
-    <string name="download_extraction_completed">"Oyun kaynağı çıkarma tamamlandı"</string>
-    <string name="download_extraction_failed">"Oyun kaynağı çıkarma başarısız oldu"</string>
     <string name="installer_status_ongoing">"Kurulum"</string>
     <string name="list_update_all_txt_one">"güncelleme var"</string>
     <string name="pref_ui_package">"Paket adına göre ara"</string>

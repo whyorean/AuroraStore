@@ -355,9 +355,6 @@
     <string name="action_import">"Import ਕਰੋ"</string>
     <string name="dialog_title_self_update">"ਨਵੀਂ ਅੱਪਡੇਟ ਉਪਲੱਬਧ ਹੈ"</string>
     <string name="dialog_desc_self_update">"ਕੀ ਤੁਸੀਂ ਹੁਣੇ ਅੱਪਡੇਟ ਕਰਨਾ ਚਾਹੁੰਦੇ ਹੋ ?"</string>
-    <string name="download_extraction">"ਗੇਮ ਦਾ ਸਰੋਤ Extract ਹੋ ਰਿਹਾ ਹੈ, ਪੂਰਾ ਹੋਣ ਤੱਕ ਇੰਤਜ਼ਾਰ ਕਰੋ"</string>
-    <string name="download_extraction_completed">"ਗੇਮ ਦਾ ਸਰੋਤ Extraction ਪੂਰਾ ਹੋਇਆ"</string>
-    <string name="download_extraction_failed">"ਗੇਮ ਦਾ ਸਰੋਤ Extraction ਅਸਫਲ"</string>
     <string name="installer_status_ongoing">"ਇੰਸਟਾਲ ਹੋ ਰਿਹਾ ਹੈ"</string>
     <string name="list_update_all_txt_one">"ਅੱਪਡੇਟ ਉਪਲੱਬਧ"</string>
     <string name="pref_ui_package">"ਪੈਕੇਜ ਦੇ ਨਾਮ ਨਾਲ ਖੋਜੋ"</string>

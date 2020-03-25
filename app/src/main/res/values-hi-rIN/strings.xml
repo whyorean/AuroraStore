@@ -372,9 +372,6 @@
     <string name="action_import">"आयात"</string>
     <string name="dialog_title_self_update">"नई अपडेट उपलब्ध"</string>
     <string name="dialog_desc_self_update">"क्या आप अभी अपडेट करना चाहेंगे ?"</string>
-    <string name="download_extraction">"गेम रिसोर्स निकाल रहें हैं, पूरा होने तक प्रतीक्षा करें"</string>
-    <string name="download_extraction_completed">"गेम्स रिसोर्स निष्कर्षण पूरा"</string>
-    <string name="download_extraction_failed">"खेल रिसोर्स निष्कर्षण विफल"</string>
     <string name="installer_status_ongoing">"इन्स्टाल हो रहा है"</string>
     <string name="list_update_all_txt_one">"अपडेट उपलब्ध"</string>
     <string name="pref_ui_package">"पैकेज के नाम से खोज करें"</string>

@@ -354,9 +354,6 @@ También ofrece una lista de los trackers incluidos en una aplicación."</string
     <string name="action_import">"Importar"</string>
     <string name="dialog_title_self_update">"Nueva actualización disponible"</string>
     <string name="dialog_desc_self_update">"¿Quiere actualizar ahora?"</string>
-    <string name="download_extraction">"Extrayendo recursos del juego, espere a que finalice."</string>
-    <string name="download_extraction_completed">"Extracción de recursos de juegos completada."</string>
-    <string name="download_extraction_failed">"Fallo en la extracción de recursos de juegos."</string>
     <string name="installer_status_ongoing">"Instalando"</string>
     <string name="list_update_all_txt_one">"actualización disponible"</string>
     <string name="pref_ui_package">"Buscar por nombre de paquete"</string>

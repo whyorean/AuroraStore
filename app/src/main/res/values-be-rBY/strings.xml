@@ -355,9 +355,6 @@
     <string name="action_import">"Імпартаваць"</string>
     <string name="dialog_title_self_update">"Даступнае новае абнаўленне"</string>
     <string name="dialog_desc_self_update">"Хочаце абнавіцца зараз?"</string>
-    <string name="download_extraction">"Ідзе разархіваванне даных гульні, пачакайце да завяршэння"</string>
-    <string name="download_extraction_completed">"Разархіваванне даных гульні завершана"</string>
-    <string name="download_extraction_failed">"Разархіваванне даных гульні не ўдалося"</string>
     <string name="installer_status_ongoing">"Усталяванне"</string>
     <string name="list_update_all_txt_one">"даступнае абнаўленне"</string>
     <string name="pref_ui_package">"Шукаць па назве пакета"</string>

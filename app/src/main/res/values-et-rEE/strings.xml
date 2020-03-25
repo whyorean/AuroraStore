@@ -356,9 +356,6 @@ Jäta meelde, et rakenduse suvaliste versioonide allalaadimine pole Google Play 
     <string name="action_import">"Impordi"</string>
     <string name="dialog_title_self_update">"Uus uuendus saadaval"</string>
     <string name="dialog_desc_self_update">"Kas soovid kohe uuendada?"</string>
-    <string name="download_extraction">"Mänguressursi ekstraktimine, palun oota"</string>
-    <string name="download_extraction_completed">"Mänguressursi ekstraktimine õnnestus"</string>
-    <string name="download_extraction_failed">"Mänguressursi ekstraktimine ebaõnnestus"</string>
     <string name="installer_status_ongoing">"Installimine"</string>
     <string name="list_update_all_txt_one">"uuendus saadaval"</string>
     <string name="pref_ui_package">"Otsi paketi nime järgi"</string>

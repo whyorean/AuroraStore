@@ -357,9 +357,6 @@ Het biedt ook een lijst met ingebouwde trackers in een applicatie."</string>
     <string name="action_import">"Importeren"</string>
     <string name="dialog_title_self_update">"Nieuwe update beschikbaar"</string>
     <string name="dialog_desc_self_update">"Wilt u nu updaten?"</string>
-    <string name="download_extraction">"Extractie van game-resource, wachten tot deze is voltooid"</string>
-    <string name="download_extraction_completed">"Extractie van games-bron voltooid"</string>
-    <string name="download_extraction_failed">"Extractie van games is mislukt"</string>
     <string name="installer_status_ongoing">"installeren"</string>
     <string name="list_update_all_txt_one">"update beschikbaar"</string>
     <string name="pref_ui_package">"Zoeken op pakketnaam"</string>

@@ -354,9 +354,6 @@
     <string name="action_import">"إستيراد"</string>
     <string name="dialog_title_self_update">"يوجد تحديث جديد"</string>
     <string name="dialog_desc_self_update">"هل تريد التحديث الان?"</string>
-    <string name="download_extraction">"يتم حاليا إستخراج ملحقات الألعاب, أنتظر إنتهاء العملية"</string>
-    <string name="download_extraction_completed">"تم الإنتهاء من إستخراج ملحقات الألعاب"</string>
-    <string name="download_extraction_failed">"فشل في إستخراج ملحقات الألعاب"</string>
     <string name="installer_status_ongoing">"يتم التثبيت"</string>
     <string name="list_update_all_txt_one">"يتوفر تحديث"</string>
     <string name="pref_ui_package">"البحث بأسم الحزمة"</string>

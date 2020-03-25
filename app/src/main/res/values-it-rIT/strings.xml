@@ -414,9 +414,6 @@ Inoltre fornisce una lista di tracker incorporati in una applicazione."</string>
     <string name="action_import">"Importa"</string>
     <string name="dialog_title_self_update">"Nuovo aggiornamento disponibile"</string>
     <string name="dialog_desc_self_update">"Vuoi aggiornare ora?"</string>
-    <string name="download_extraction">"Estrazione delle risorse di gioco in corso, attendi"</string>
-    <string name="download_extraction_completed">"Estrazione delle risorse di gioco completata"</string>
-    <string name="download_extraction_failed">"Estrazione delle risorse di gioco fallita"</string>
     <string name="installer_status_ongoing">"Installazione in corso"</string>
     <string name="list_update_all_txt_one">"Aggiornamento disponibile"</string>
     <string name="pref_ui_package">"Cerca per nome pacchetto"</string>

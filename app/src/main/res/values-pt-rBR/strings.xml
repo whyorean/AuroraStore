@@ -361,9 +361,6 @@ Lembre-se que fazer o download de versões arbitrárias de aplicativos não é s
     <string name="action_import">"Importar"</string>
     <string name="dialog_title_self_update">"Nova atualização disponível "</string>
     <string name="dialog_desc_self_update">"Deseja atualizar agora? "</string>
-    <string name="download_extraction">"Extraindo recursos do jogo, por favor aguarde"</string>
-    <string name="download_extraction_completed">"Extração de recursos do jogo concluída"</string>
-    <string name="download_extraction_failed">"Falha na extração de recursos do jogo "</string>
     <string name="installer_status_ongoing">"Instalando "</string>
     <string name="list_update_all_txt_one">"Atualização disponível "</string>
     <string name="pref_ui_package">"Procurar por nome do pacote "</string>

@@ -401,9 +401,6 @@ Aurora позволяет искать, загружать, устанавлив
     <string name="action_import">"Импортировать"</string>
     <string name="dialog_title_self_update">"Доступно обновление"</string>
     <string name="dialog_desc_self_update">"Хотите обновиться сейчас?"</string>
-    <string name="download_extraction">"Распаковка ресурсов игры, ожидайте завершения"</string>
-    <string name="download_extraction_completed">"Распаковка ресурсов игры завершена"</string>
-    <string name="download_extraction_failed">"Не удалось распаковать ресурсы"</string>
     <string name="installer_status_ongoing">"Установка"</string>
     <string name="list_update_all_txt_one">"доступно обновление"</string>
     <string name="pref_ui_package">"Поиск по имени пакета"</string>

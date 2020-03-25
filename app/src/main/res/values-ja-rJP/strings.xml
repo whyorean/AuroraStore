@@ -350,9 +350,6 @@
     <string name="action_import">"インポート"</string>
     <string name="dialog_title_self_update">"新しいアップデートが利用可能です"</string>
     <string name="dialog_desc_self_update">"すぐにアップデートしますか"</string>
-    <string name="download_extraction">"ゲームリソースを展開しています、完了までお待ちください"</string>
-    <string name="download_extraction_completed">"ゲームリソースの展開が完了しました"</string>
-    <string name="download_extraction_failed">"ゲームリソースの展開に失敗しました"</string>
     <string name="installer_status_ongoing">"インストール中"</string>
     <string name="list_update_all_txt_one">"アップデートが利用可能"</string>
     <string name="pref_ui_package">"パッケージ名で検索"</string>

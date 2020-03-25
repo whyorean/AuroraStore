@@ -361,9 +361,6 @@ Udostępnia również listę usług śledzących zaimplementowanych w aplikacji.
     <string name="action_import">"Importuj"</string>
     <string name="dialog_title_self_update">"Dostępna nowa aktualizacja"</string>
     <string name="dialog_desc_self_update">"Chcesz zaktualizować teraz?"</string>
-    <string name="download_extraction">"Wypakowywanie zasobów gry, prosze poczekać"</string>
-    <string name="download_extraction_completed">"Wypakowanie zasobów gry zakończone"</string>
-    <string name="download_extraction_failed">"Wypakowanie zasobów gry nieudane"</string>
     <string name="installer_status_ongoing">"Instalowanie"</string>
     <string name="list_update_all_txt_one">"aktualizje dostępne"</string>
     <string name="pref_ui_package">"Szukaj po nazwie pakietu"</string>

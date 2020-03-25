@@ -378,9 +378,6 @@
     <string name="action_import">"导入"</string>
     <string name="dialog_title_self_update">"新的更新可用"</string>
     <string name="dialog_desc_self_update">"您想要现在更新吗？"</string>
-    <string name="download_extraction">"正在提取游戏资源，等待完成"</string>
-    <string name="download_extraction_completed">"游戏资源提取完成"</string>
-    <string name="download_extraction_failed">"游戏资源提取失败"</string>
     <string name="installer_status_ongoing">"正在安装"</string>
     <string name="list_update_all_txt_one">"更新可用"</string>
     <string name="pref_ui_package">"按软件包名称搜索"</string>

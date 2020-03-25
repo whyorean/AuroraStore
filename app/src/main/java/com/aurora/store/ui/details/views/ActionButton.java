@@ -44,7 +44,6 @@ import com.aurora.store.installer.Uninstaller;
 import com.aurora.store.model.App;
 import com.aurora.store.notification.GeneralNotification;
 import com.aurora.store.task.DeliveryData;
-import com.aurora.store.task.GZipTask;
 import com.aurora.store.ui.details.DetailsActivity;
 import com.aurora.store.util.Accountant;
 import com.aurora.store.util.ContextUtil;
@@ -64,7 +63,6 @@ import com.tonyodev.fetch2.FetchListener;
 import com.tonyodev.fetch2.Request;
 import com.tonyodev.fetch2core.DownloadBlock;
 
-import org.apache.commons.io.FilenameUtils;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -77,8 +75,6 @@ import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
-
-import static com.aurora.store.util.ContextUtil.runOnUiThread;
 
 public class ActionButton extends AbstractDetails {
 
@@ -209,38 +205,43 @@ public class ActionButton extends AbstractDetails {
                 fetch.deleteGroup(hashCode);
             }
 
-            compositeDisposable.add(Observable.fromCallable(() -> new DeliveryData(context)
+            Observable.fromCallable(() -> new DeliveryData(context)
                     .getDeliveryData(app))
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(this::initiateDownload, err -> runOnUiThread(() -> {
-                        if (err instanceof NotPurchasedException) {
-                            Log.d("%s not purchased", app.getDisplayName());
-                            showPurchaseDialog();
-                        }
-                        if (err instanceof AppNotFoundException) {
-                            Log.d("%s not not found", app.getDisplayName());
-                            showDialog(R.string.dialog_unavailable_title, R.string.dialog_unavailable_desc);
-                        }
-                        if (err instanceof NullPointerException) {
-                            if (App.Restriction.RESTRICTED_GEO == app.getRestriction())
-                                showDialog(R.string.dialog_geores_title, R.string.dialog_geores_desc);
-                            if (App.Restriction.INCOMPATIBLE_DEVICE == app.getRestriction())
+                    .doOnNext(androidAppDeliveryData -> {
+                        initiateDownload(androidAppDeliveryData);
+                    })
+                    .doOnError(throwable -> {
+                        ContextUtil.runOnUiThread(() -> {
+                            if (throwable instanceof NotPurchasedException) {
+                                Log.d("%s not purchased", app.getDisplayName());
+                                showPurchaseDialog();
+                            }
+                            if (throwable instanceof AppNotFoundException) {
+                                Log.d("%s not not found", app.getDisplayName());
+                                showDialog(R.string.dialog_unavailable_title, R.string.dialog_unavailable_desc);
+                            }
+                            if (throwable instanceof NullPointerException) {
+                                if (App.Restriction.RESTRICTED_GEO == app.getRestriction())
+                                    showDialog(R.string.dialog_geores_title, R.string.dialog_geores_desc);
+                                if (App.Restriction.INCOMPATIBLE_DEVICE == app.getRestriction())
 
-                                showDialog(R.string.dialog_incompat_title, R.string.dialog_incompat_desc);
-                        }
-                        draw();
-                        switchViews(false);
-                    })));
+                                    showDialog(R.string.dialog_incompat_title, R.string.dialog_incompat_desc);
+                            }
+                            draw();
+                            switchViews(false);
+                        });
+                    })
+                    .subscribe();
         };
     }
 
     private void checkPurchased() {
-        if (Accountant.isAnonymous(context)){
+        if (Accountant.isAnonymous(context)) {
             btnPositive.setText(R.string.action_disabled);
             btnPositive.setEnabled(false);
-        }
-        else
+        } else
             Observable.fromCallable(() -> new DeliveryData(context)
                     .getDeliveryData(app))
                     .subscribeOn(Schedulers.io())
@@ -313,14 +314,11 @@ public class ActionButton extends AbstractDetails {
     }
 
     private void initiateDownload(AndroidAppDeliveryData deliveryData) {
-        final Request request = RequestBuilder
-                .buildRequest(context, app, deliveryData.getDownloadUrl());
-        final List<Request> splitList = RequestBuilder
-                .buildSplitRequestList(context, app, deliveryData);
-        final List<Request> obbList = RequestBuilder
-                .buildObbRequestList(context, app, deliveryData);
+        final Request request = RequestBuilder.buildRequest(context, app, deliveryData.getDownloadUrl());
+        final List<Request> splitList = RequestBuilder.buildSplitRequestList(context, app, deliveryData);
+        final List<Request> obbList = RequestBuilder.buildObbRequestList(context, app, deliveryData);
 
-        List<Request> requestList = new ArrayList<>();
+        final List<Request> requestList = new ArrayList<>();
         requestList.add(request);
         requestList.addAll(splitList);
         requestList.addAll(obbList);
@@ -431,31 +429,7 @@ public class ActionButton extends AbstractDetails {
                         //Call the installer
                         AuroraApplication.getInstaller().install(app);
                     }
-
-                    if (fetchListener != null) {
-                        fetch.removeListener(fetchListener);
-                        fetchListener = null;
-                    }
-                }
-
-                if (groupId == hashCode && download.getProgress() == 100) {
-                    if (FilenameUtils.getExtension(download.getFile()).equals("gzip")) {
-                        compositeDisposable.add(Observable.fromCallable(() -> new GZipTask(context)
-                                .extract(new File(download.getFile())))
-                                .subscribeOn(Schedulers.io())
-                                .observeOn(AndroidSchedulers.mainThread())
-                                .doOnSubscribe(disposable -> {
-                                    notification.notifyExtractionProgress();
-                                    ContextUtil.runOnUiThread(() -> btnPositive.setEnabled(false));
-                                })
-                                .doOnTerminate(() -> ContextUtil.runOnUiThread(() -> btnPositive.setEnabled(true)))
-                                .subscribe(success -> {
-                                    if (success)
-                                        notification.notifyExtractionFinished();
-                                    else
-                                        notification.notifyExtractionFailed();
-                                }));
-                    }
+                    fetch.removeListener(this);
                 }
             }
 

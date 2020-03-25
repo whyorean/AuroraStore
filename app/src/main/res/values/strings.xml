@@ -365,9 +365,6 @@
     <string name="action_import">"Import"</string>
     <string name="dialog_title_self_update">"New update available"</string>
     <string name="dialog_desc_self_update">"Do you wish to update now ?"</string>
-    <string name="download_extraction">"Extracting game resource, wait for completion"</string>
-    <string name="download_extraction_completed">"Games resource extraction completed"</string>
-    <string name="download_extraction_failed">"Games resource extraction failed"</string>
     <string name="installer_status_ongoing">"Installing"</string>
     <string name="list_update_all_txt_one">"update available"</string>
     <string name="pref_ui_package">"Search by package name"</string>

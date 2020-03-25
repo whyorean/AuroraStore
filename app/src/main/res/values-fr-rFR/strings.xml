@@ -356,9 +356,6 @@ Elle fournit également une liste de traqueurs intégrés dans une application."
     <string name="action_import">"Importer"</string>
     <string name="dialog_title_self_update">"Nouvelle mise à jour disponible"</string>
     <string name="dialog_desc_self_update">"Souhaitez-vous mettre à jour ?"</string>
-    <string name="download_extraction">"Extraction des ressources du jeu, veuillez patienter"</string>
-    <string name="download_extraction_completed">"Extraction des ressources du jeu terminée"</string>
-    <string name="download_extraction_failed">"Échec de l'extraction des ressources du jeu"</string>
     <string name="installer_status_ongoing">"Installation"</string>
     <string name="list_update_all_txt_one">"mise à jour disponible"</string>
     <string name="pref_ui_package">"Rechercher par nom de paquet"</string>

@@ -356,9 +356,6 @@
     <string name="action_import">"匯入"</string>
     <string name="dialog_title_self_update">"已有更新可用"</string>
     <string name="dialog_desc_self_update">"您希望現在就更新嗎？"</string>
-    <string name="download_extraction">"解壓縮遊戲資源中，請耐心等待"</string>
-    <string name="download_extraction_completed">"遊戲資源解壓縮完成"</string>
-    <string name="download_extraction_failed">"遊戲資源解壓縮失敗"</string>
     <string name="installer_status_ongoing">"安裝中"</string>
     <string name="list_update_all_txt_one">"已有更新可用"</string>
     <string name="pref_ui_package">"使用包名搜尋"</string>

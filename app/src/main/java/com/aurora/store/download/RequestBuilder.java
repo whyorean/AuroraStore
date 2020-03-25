@@ -24,7 +24,6 @@ import android.content.Context;
 
 import com.aurora.store.model.App;
 import com.aurora.store.util.PathUtil;
-import com.aurora.store.util.TextUtil;
 import com.aurora.store.util.Util;
 import com.dragons.aurora.playstoreapiv2.AndroidAppDeliveryData;
 import com.dragons.aurora.playstoreapiv2.AppFileMetadata;
@@ -147,19 +146,11 @@ public class RequestBuilder {
     public static List<Request> buildObbRequestList(Context context, App app, AndroidAppDeliveryData appDeliveryData) {
         List<Request> requestList = new ArrayList<>();
         List<AppFileMetadata> appFileMetadataList = appDeliveryData.getAdditionalFileList();
-        if (appFileMetadataList.size() == 1) {
-            AppFileMetadata obbFileMetadata = appDeliveryData.getAdditionalFile(0);
-            if (TextUtil.isEmpty(obbFileMetadata.getDownloadUrlGzipped()))
-                requestList.add(buildObbRequest(context, app, obbFileMetadata.getDownloadUrl(), true, false));
-            else
-                requestList.add(buildObbRequest(context, app, obbFileMetadata.getDownloadUrlGzipped(), true, true));
-        }
-        if (appFileMetadataList.size() == 2) {
-            AppFileMetadata obbFileMetadata = appDeliveryData.getAdditionalFile(1);
-            if (TextUtil.isEmpty(obbFileMetadata.getDownloadUrlGzipped()))
-                requestList.add(buildObbRequest(context, app, obbFileMetadata.getDownloadUrl(), false, false));
-            else
-                requestList.add(buildObbRequest(context, app, obbFileMetadata.getDownloadUrlGzipped(), false, true));
+
+        for (AppFileMetadata appFileMetadata : appFileMetadataList) {
+            requestList.add(buildObbRequest(context, app, appFileMetadata.getDownloadUrl(),
+                    appFileMetadata.getFileType() == 0,
+                    false));
         }
         return requestList;
     }

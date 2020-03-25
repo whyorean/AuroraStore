@@ -356,9 +356,6 @@ Tenha em mente que a transferência de versões arbitrárias de aplicações nã
     <string name="action_import">"Importar"</string>
     <string name="dialog_title_self_update">"Nova atualização disponível"</string>
     <string name="dialog_desc_self_update">"Deseja atualizar agora?"</string>
-    <string name="download_extraction">"A extrair recursos do jogos, espere pela conclusão"</string>
-    <string name="download_extraction_completed">"Extração de recursos do jogos terminada"</string>
-    <string name="download_extraction_failed">"Falha ao extrair os recursos do jogo"</string>
     <string name="installer_status_ongoing">"A instalar"</string>
     <string name="list_update_all_txt_one">"atualização disponível"</string>
     <string name="pref_ui_package">"Procurar pelo nome do pacote"</string>

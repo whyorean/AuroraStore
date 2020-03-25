@@ -356,9 +356,6 @@ Ammenta·ti chi iscarrigare versiones arbitràrias de sas aplicatziones no est s
     <string name="action_import">"Importa"</string>
     <string name="dialog_title_self_update">"B'at un'agiornamentu nou disponìbile"</string>
     <string name="dialog_desc_self_update">"Cheres agiornare como?"</string>
-    <string name="download_extraction">"Estraende sas risursas de su giogu, iseta chi acabet"</string>
-    <string name="download_extraction_completed">"Estratzione de sas risursas de su giogu acabada"</string>
-    <string name="download_extraction_failed">"Estratzione de sas risursas de su giogu fallida"</string>
     <string name="installer_status_ongoing">"Installende"</string>
     <string name="list_update_all_txt_one">"agiornamentu disponìbile"</string>
     <string name="pref_ui_package">"Chirca pro nùmene de su pachete"</string>

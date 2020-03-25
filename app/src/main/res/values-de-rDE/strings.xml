@@ -356,9 +356,6 @@ Zudem zeigt Aurora die Anzahl der Tracker in der jeweiligen App an."</string>
     <string name="action_import">"Importieren"</string>
     <string name="dialog_title_self_update">"Neues Update verfügbar"</string>
     <string name="dialog_desc_self_update">"Möchtes du das Update installieren?"</string>
-    <string name="download_extraction">"Game-Ressource wird extrahiert, bitte warten"</string>
-    <string name="download_extraction_completed">"Game-Ressource extrahiert"</string>
-    <string name="download_extraction_failed">"Extrahierung der Game-Ressource fehlgeschlagen"</string>
     <string name="installer_status_ongoing">"Installiere"</string>
     <string name="list_update_all_txt_one">"Update verfügbar"</string>
     <string name="pref_ui_package">"Nach Paketnamen suchen"</string>
