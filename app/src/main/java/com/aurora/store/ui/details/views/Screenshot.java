@@ -25,6 +25,7 @@ import android.content.Intent;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.aurora.store.Constants;
 import com.aurora.store.R;
 import com.aurora.store.model.App;
 import com.aurora.store.model.items.ScreenshotItem;
@@ -66,6 +67,8 @@ public class Screenshot extends AbstractDetails {
 
         fastItemAdapter.setOnClickListener((view, screenshotItemIAdapter, screenshotItem, position) -> {
             Intent intent = new Intent(context, FullscreenImageActivity.class);
+            intent.putExtra(Constants.INTENT_PACKAGE_NAME, app.getPackageName());
+            intent.putExtra(Constants.STRING_EXTRA, gson.toJson(app));
             intent.putExtra(FullscreenImageActivity.INTENT_SCREENSHOT_NUMBER, position);
             context.startActivity(intent);
             return false;

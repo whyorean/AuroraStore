@@ -75,7 +75,6 @@ import io.reactivex.schedulers.Schedulers;
 public class DetailsActivity extends BaseActivity {
 
     private static final String PLAY_STORE_PACKAGE_NAME = "com.android.vending";
-    public static App app;
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
@@ -91,7 +90,10 @@ public class DetailsActivity extends BaseActivity {
     AppCompatTextView txtPackageName;
 
     private ActionButton actionButton;
+
     private String packageName;
+    private App app;
+
     private FavouritesManager favouritesManager;
     private DetailsAppModel model;
 
@@ -169,7 +171,6 @@ public class DetailsActivity extends BaseActivity {
                 app = gson.fromJson(stringExtra, App.class);
                 drawBasic();
             }
-
             Log.i("Getting info about %s", packageName);
             model.fetchAppDetails(packageName);
         }

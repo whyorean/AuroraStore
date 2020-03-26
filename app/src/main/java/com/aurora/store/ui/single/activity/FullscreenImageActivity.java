@@ -30,10 +30,10 @@ import androidx.recyclerview.widget.PagerSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.SnapHelper;
 
+import com.aurora.store.Constants;
 import com.aurora.store.R;
 import com.aurora.store.adapter.BigScreenshotsAdapter;
-import com.aurora.store.ui.details.DetailsActivity;
-import com.aurora.store.util.Log;
+import com.aurora.store.model.App;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -44,6 +44,8 @@ public class FullscreenImageActivity extends BaseActivity {
 
     @BindView(R.id.gallery)
     RecyclerView recyclerView;
+
+    private App app;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,23 +61,29 @@ public class FullscreenImageActivity extends BaseActivity {
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
-    }
-
-    @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
-        if (null == DetailsActivity.app) {
-            Log.w("No app stored");
-            finish();
-            return;
+        if (intent != null) {
+
+            stringExtra = intent.getStringExtra(Constants.STRING_EXTRA);
+            intExtra = intent.getIntExtra(INTENT_SCREENSHOT_NUMBER, 0);
+
+            if (stringExtra != null) {
+                app = gson.fromJson(stringExtra, App.class);
+                setupRecycler();
+            }
+        } else {
+            finishAfterTransition();
         }
-        SnapHelper snapHelper = new PagerSnapHelper();
+    }
+
+    private void setupRecycler() {
+        final SnapHelper snapHelper = new PagerSnapHelper();
+        final LinearLayoutManager layoutManager = new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false);
         snapHelper.attachToRecyclerView(recyclerView);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false);
-        recyclerView.setAdapter(new BigScreenshotsAdapter(DetailsActivity.app.getScreenshotUrls(), this));
+
+        recyclerView.setAdapter(new BigScreenshotsAdapter(app.getScreenshotUrls(), this));
         recyclerView.setLayoutManager(layoutManager);
-        recyclerView.scrollToPosition(intent.getIntExtra(INTENT_SCREENSHOT_NUMBER, 0));
+        recyclerView.scrollToPosition(intExtra);
     }
 }

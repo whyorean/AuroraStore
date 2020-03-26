@@ -33,11 +33,11 @@ import android.widget.TextView;
 
 import androidx.core.text.HtmlCompat;
 
+import com.aurora.store.Constants;
 import com.aurora.store.GlideApp;
 import com.aurora.store.R;
 import com.aurora.store.model.App;
 import com.aurora.store.ui.details.DetailsActivity;
-import com.aurora.store.ui.details.ReadMoreActivity;
 import com.aurora.store.ui.view.FeatureChip;
 import com.aurora.store.util.ContextUtil;
 import com.aurora.store.util.TextUtil;
@@ -183,10 +183,7 @@ public class GeneralDetails extends AbstractDetails {
             return;
         }
 
-        app_version.setText(new StringBuilder()
-                .append(versionName)
-                .append(".")
-                .append(versionCode));
+        app_version.setText(StringUtils.joinWith(".", versionName, versionCode));
         app_version.setVisibility(View.VISIBLE);
         new Timer().schedule(new TimerTask() {
             @Override
@@ -245,9 +242,10 @@ public class GeneralDetails extends AbstractDetails {
         } else {
             show(R.id.more_layout);
             moreLayout.setOnClickListener(v -> {
-                ReadMoreActivity.app = app;
-                activity.startActivity(new Intent(activity, ReadMoreActivity.class),
-                        ViewUtil.getEmptyActivityBundle(activity));
+                final Intent intent = new Intent(activity, DetailsActivity.class);
+                intent.putExtra(Constants.INTENT_PACKAGE_NAME, app.getPackageName());
+                intent.putExtra(Constants.STRING_EXTRA, gson.toJson(app));
+                activity.startActivity(intent, ViewUtil.getEmptyActivityBundle(activity));
             });
         }
     }

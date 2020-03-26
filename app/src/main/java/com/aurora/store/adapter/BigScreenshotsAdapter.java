@@ -71,7 +71,7 @@ public class BigScreenshotsAdapter extends RecyclerView.Adapter<BigScreenshotsAd
         return URLs.size();
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder {
+    static class ViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.img_screenshot)
         ImageView imageView;
 
