@@ -129,6 +129,14 @@ public class SearchResultActivity extends BaseActivity implements
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        if (dataObserver != null && !itemAdapter.getAdapterItems().isEmpty()) {
+            dataObserver.hideProgress();
+        }
+    }
+
+    @Override
     protected void onDestroy() {
         sharedPreferences.unregisterOnSharedPreferenceChangeListener(this);
         if (Util.filterSearchNonPersistent(this))

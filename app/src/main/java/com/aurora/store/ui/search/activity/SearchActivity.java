@@ -19,7 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.aurora.store.Constants;
 import com.aurora.store.R;
-import com.aurora.store.SuggestionDiffCallback;
+import com.aurora.store.util.diff.SuggestionDiffCallback;
 import com.aurora.store.model.items.SearchSuggestionItem;
 import com.aurora.store.ui.details.DetailsActivity;
 import com.aurora.store.ui.search.SearchSuggestionModel;

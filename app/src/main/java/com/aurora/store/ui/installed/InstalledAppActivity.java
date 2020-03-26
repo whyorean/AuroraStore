@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.aurora.store.AuroraApplication;
 import com.aurora.store.Constants;
-import com.aurora.store.InstalledDiffCallback;
+import com.aurora.store.util.diff.InstalledDiffCallback;
 import com.aurora.store.R;
 import com.aurora.store.model.App;
 import com.aurora.store.model.items.InstalledItem;

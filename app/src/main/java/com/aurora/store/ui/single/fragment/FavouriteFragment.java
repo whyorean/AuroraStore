@@ -135,6 +135,14 @@ public class FavouriteFragment extends BaseFragment {
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        if (dataObserver != null && !fastItemAdapter.getAdapterItems().isEmpty()) {
+            dataObserver.hideProgress();
+        }
+    }
+
+    @Override
     public void onPause() {
         swipeToRefresh.setRefreshing(false);
         super.onPause();

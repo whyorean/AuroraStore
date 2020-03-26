@@ -42,7 +42,6 @@ import com.aurora.store.AuroraApplication;
 import com.aurora.store.Constants;
 import com.aurora.store.R;
 import com.aurora.store.RecyclerDataObserver;
-import com.aurora.store.UpdatesDiffCallback;
 import com.aurora.store.download.DownloadManager;
 import com.aurora.store.manager.IgnoreListManager;
 import com.aurora.store.model.App;
@@ -53,6 +52,7 @@ import com.aurora.store.ui.single.fragment.BaseFragment;
 import com.aurora.store.ui.view.CustomSwipeToRefresh;
 import com.aurora.store.util.Util;
 import com.aurora.store.util.ViewUtil;
+import com.aurora.store.util.diff.UpdatesDiffCallback;
 import com.google.android.material.button.MaterialButton;
 import com.mikepenz.fastadapter.FastAdapter;
 import com.mikepenz.fastadapter.adapters.ItemAdapter;
@@ -178,6 +178,14 @@ public class UpdatesFragment extends BaseFragment {
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        if (dataObserver != null && !itemAdapter.getAdapterItems().isEmpty()) {
+            dataObserver.hideProgress();
+        }
+    }
+
+    @Override
     public void onPause() {
         swipeToRefresh.setRefreshing(false);
         super.onPause();
@@ -261,7 +269,7 @@ public class UpdatesFragment extends BaseFragment {
         fastAdapter.addExtension(selectExtension);
         fastAdapter.addEventHook(new UpdatesItem.CheckBoxClickEvent());
 
-        dataObserver = new RecyclerDataObserver(recyclerView, emptyLayout,progressLayout);
+        dataObserver = new RecyclerDataObserver(recyclerView, emptyLayout, progressLayout);
         fastAdapter.registerAdapterDataObserver(dataObserver);
 
         selectExtension.setMultiSelect(true);

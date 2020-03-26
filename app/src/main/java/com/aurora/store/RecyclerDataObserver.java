@@ -16,13 +16,16 @@ public class RecyclerDataObserver extends RecyclerView.AdapterDataObserver {
         this.recyclerView = recyclerView;
         this.emptyView = emptyView;
         this.progressView = progressView;
-        checkIfLoading();
+        showProgress();
     }
 
-    public void checkIfLoading() {
-        if (recyclerView.getAdapter() == null) {
-            progressView.setVisibility(View.VISIBLE);
-        }
+
+    public void showProgress() {
+        progressView.setVisibility(View.VISIBLE);
+    }
+
+    public void hideProgress() {
+        progressView.setVisibility(View.GONE);
     }
 
     public void checkIfEmpty() {

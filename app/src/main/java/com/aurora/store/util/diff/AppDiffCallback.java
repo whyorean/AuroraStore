@@ -1,4 +1,4 @@
-package com.aurora.store;
+package com.aurora.store.util.diff;
 
 import androidx.recyclerview.widget.DiffUtil;
 

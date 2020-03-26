@@ -129,6 +129,9 @@ public class SubCategoryFragment extends BaseFragment implements
     @Override
     public void onResume() {
         super.onResume();
+        if (dataObserver != null && !itemAdapter.getAdapterItems().isEmpty()) {
+            dataObserver.hideProgress();
+        }
         sharedPreferences.registerOnSharedPreferenceChangeListener(this);
     }
 

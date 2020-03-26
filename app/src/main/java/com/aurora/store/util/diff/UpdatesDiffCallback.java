@@ -1,4 +1,4 @@
-package com.aurora.store;
+package com.aurora.store.util.diff;
 
 import com.aurora.store.model.items.UpdatesItem;
 import com.mikepenz.fastadapter.diff.DiffCallback;
