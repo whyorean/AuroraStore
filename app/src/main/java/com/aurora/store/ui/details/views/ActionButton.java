@@ -327,10 +327,6 @@ public class ActionButton extends AbstractDetails {
         fetch.addListener(fetchListener);
         fetch.enqueue(requestList, updatedRequestList ->
                 Log.i("Downloading Splits : %s", app.getPackageName()));
-
-        //Add <PackageName,DisplayName> and <PackageName,IconURL> to PseudoMaps
-        PackageUtil.addToPseudoPackageMap(context, app.getPackageName(), app.getDisplayName());
-        PackageUtil.addToPseudoURLMap(context, app.getPackageName(), app.getIconUrl());
     }
 
     private FetchListener getFetchListener() {

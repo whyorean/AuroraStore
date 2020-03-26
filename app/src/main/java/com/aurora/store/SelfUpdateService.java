@@ -143,10 +143,6 @@ public class SelfUpdateService extends Service {
 
         fetchListener = getFetchListener();
         fetch.addListener(fetchListener);
-
-        //Add <PackageName,DisplayName> and <PackageName,IconURL> to PseudoMaps
-        PackageUtil.addToPseudoPackageMap(this, app.getPackageName(), app.getDisplayName());
-        PackageUtil.addToPseudoURLMap(this, app.getPackageName(), Constants.APP_ICON_URL);
     }
 
     private boolean isFDroidVariant() {

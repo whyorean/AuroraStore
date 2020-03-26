@@ -29,11 +29,11 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.aurora.store.Constants;
 import com.aurora.store.R;
 import com.aurora.store.download.DownloadManager;
 import com.aurora.store.util.Util;
 import com.google.android.material.navigation.NavigationView;
-import com.tonyodev.fetch2.Download;
 import com.tonyodev.fetch2.Fetch;
 import com.tonyodev.fetch2.Status;
 
@@ -42,21 +42,22 @@ import butterknife.ButterKnife;
 
 public class DownloadMenuSheet extends BaseBottomSheet {
 
+    public static final String TAG = "DOWNLOAD_MENU_SHEET";
+
+    public static final String DOWNLOAD_ID = "DOWNLOAD_ID";
+    public static final String DOWNLOAD_STATUS = "DOWNLOAD_STATUS";
+    public static final String DOWNLOAD_URL = "DOWNLOAD_URL";
+
     @BindView(R.id.navigation_view)
     NavigationView navigationView;
 
     private Fetch fetch;
-    private Download download;
+
+    private int id;
+    private int status;
+    private String url;
 
     public DownloadMenuSheet() {
-    }
-
-    public Download getDownload() {
-        return download;
-    }
-
-    public void setDownload(Download download) {
-        this.download = download;
     }
 
     @Override
@@ -69,49 +70,57 @@ public class DownloadMenuSheet extends BaseBottomSheet {
     @Override
     public void onContentViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        fetch = DownloadManager.getFetchInstance(requireContext());
-        setupNavigation();
+        if (getArguments() != null) {
+            Bundle bundle = getArguments();
+            id = bundle.getInt(Constants.INT_EXTRA);
+            status = bundle.getInt(Constants.INT_EXTRA);
+            url = bundle.getString(Constants.STRING_EXTRA);
+            fetch = DownloadManager.getFetchInstance(requireContext());
+            setupNavigation();
+        } else {
+            dismissAllowingStateLoss();
+        }
     }
 
     private void setupNavigation() {
-        if (download.getStatus() == Status.PAUSED
-                || download.getStatus() == Status.COMPLETED
-                || download.getStatus() == Status.CANCELLED) {
+        if (status == Status.PAUSED.getValue()
+                || status == Status.COMPLETED.getValue()
+                || status == Status.CANCELLED.getValue()) {
             navigationView.getMenu().findItem(R.id.action_pause).setVisible(false);
         }
 
-        if (download.getStatus() == Status.DOWNLOADING
-                || download.getStatus() == Status.COMPLETED
-                || download.getStatus() == Status.QUEUED) {
+        if (status == Status.DOWNLOADING.getValue()
+                || status == Status.COMPLETED.getValue()
+                || status == Status.QUEUED.getValue()) {
             navigationView.getMenu().findItem(R.id.action_resume).setVisible(false);
         }
 
-        if (download.getStatus() == Status.COMPLETED
-                || download.getStatus() == Status.CANCELLED) {
+        if (status == Status.COMPLETED.getValue()
+                || status == Status.CANCELLED.getValue()) {
             navigationView.getMenu().findItem(R.id.action_cancel).setVisible(false);
         }
 
         navigationView.setNavigationItemSelectedListener(item -> {
             switch (item.getItemId()) {
                 case R.id.action_copy:
-                    Util.copyToClipBoard(requireContext(), download.getUrl());
+                    Util.copyToClipBoard(requireContext(), url);
                     Toast.makeText(requireContext(), requireContext().getString(R.string.action_copied), Toast.LENGTH_LONG).show();
                     break;
                 case R.id.action_pause:
-                    fetch.pause(download.getId());
+                    fetch.pause(id);
                     break;
                 case R.id.action_resume:
-                    if (download.getStatus() == Status.FAILED
-                            || download.getStatus() == Status.CANCELLED)
-                        fetch.retry(download.getId());
+                    if (status == Status.FAILED.getValue()
+                            || status == Status.CANCELLED.getValue())
+                        fetch.retry(id);
                     else
-                        fetch.resume(download.getId());
+                        fetch.resume(id);
                     break;
                 case R.id.action_cancel:
-                    fetch.cancel(download.getId());
+                    fetch.cancel(id);
                     break;
                 case R.id.action_clear:
-                    fetch.delete(download.getId());
+                    fetch.delete(id);
                     break;
             }
             dismissAllowingStateLoss();

@@ -8,7 +8,6 @@ import com.aurora.store.download.RequestBuilder;
 import com.aurora.store.model.App;
 import com.aurora.store.notification.GeneralNotification;
 import com.aurora.store.util.Log;
-import com.aurora.store.util.PackageUtil;
 import com.aurora.store.util.Util;
 import com.dragons.aurora.playstoreapiv2.AndroidAppDeliveryData;
 import com.tonyodev.fetch2.AbstractFetchGroupListener;
@@ -61,10 +60,6 @@ public class LiveUpdate {
         fetch.addListener(fetchListener);
         fetch.enqueue(requestList, updatedRequestList ->
                 Log.i("Updating -> %s", app.getDisplayName()));
-
-        //Add <PackageName,DisplayName> and <PackageName,IconURL> to PseudoMaps
-        PackageUtil.addToPseudoPackageMap(context, app.getPackageName(), app.getDisplayName());
-        PackageUtil.addToPseudoURLMap(context, app.getPackageName(), app.getIconUrl());
     }
 
     private FetchListener getFetchListener() {

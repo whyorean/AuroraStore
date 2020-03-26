@@ -22,6 +22,7 @@ package com.aurora.store.download;
 
 import android.content.Context;
 
+import com.aurora.store.Constants;
 import com.aurora.store.model.App;
 import com.aurora.store.util.PathUtil;
 import com.aurora.store.util.Util;
@@ -54,6 +55,8 @@ public class RequestBuilder {
         request.setPriority(Priority.HIGH);
         request.setEnqueueAction(EnqueueAction.UPDATE_ACCORDINGLY);
         request.setGroupId(app.getPackageName().hashCode());
+        addBasicHeaders(request, app);
+
         if (Util.isDownloadWifiOnly(context))
             request.setNetworkType(NetworkType.WIFI_ONLY);
         else
@@ -78,6 +81,8 @@ public class RequestBuilder {
         request.setPriority(Priority.HIGH);
         request.setEnqueueAction(EnqueueAction.UPDATE_ACCORDINGLY);
         request.setGroupId(app.getPackageName().hashCode());
+        addBasicHeaders(request, app);
+
         if (Util.isDownloadWifiOnly(context))
             request.setNetworkType(NetworkType.WIFI_ONLY);
         else
@@ -124,6 +129,7 @@ public class RequestBuilder {
         request.setEnqueueAction(EnqueueAction.UPDATE_ACCORDINGLY);
         request.setPriority(Priority.HIGH);
         request.setGroupId(app.getPackageName().hashCode());
+        addBasicHeaders(request, app);
         if (Util.isDownloadWifiOnly(context))
             request.setNetworkType(NetworkType.WIFI_ONLY);
         else
@@ -153,6 +159,14 @@ public class RequestBuilder {
                     false));
         }
         return requestList;
+    }
+
+    public static void addBasicHeaders(Request request, App app) {
+        request.addHeader(Constants.DOWNLOAD_PACKAGE_NAME, app.getPackageName());
+        request.addHeader(Constants.DOWNLOAD_DISPLAY_NAME, app.getDisplayName());
+        request.addHeader(Constants.DOWNLOAD_VERSION_NAME, app.getVersionName());
+        request.addHeader(Constants.DOWNLOAD_VERSION_CODE, String.valueOf(app.getVersionCode()));
+        request.addHeader(Constants.DOWNLOAD_ICON_URL, app.getIconUrl());
     }
 }
 

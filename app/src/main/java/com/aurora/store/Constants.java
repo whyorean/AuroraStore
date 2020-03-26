@@ -125,4 +125,10 @@ public class Constants {
     public static final String FRAGMENT_BLACKLIST = "FRAGMENT_BLACKLIST";
     public static final String FRAGMENT_FAV_LIST = "FRAGMENT_FAV_LIST";
     public static final String FRAGMENT_SPOOF = "FRAGMENT_SPOOF";
+
+    public static final String DOWNLOAD_PACKAGE_NAME = "DOWNLOAD_PACKAGE_NAME";
+    public static final String DOWNLOAD_DISPLAY_NAME = "DOWNLOAD_DISPLAY_NAME";
+    public static final String DOWNLOAD_VERSION_NAME = "DOWNLOAD_VERSION_NAME";
+    public static final String DOWNLOAD_VERSION_CODE = "DOWNLOAD_VERSION_CODE";
+    public static final String DOWNLOAD_ICON_URL = "DOWNLOAD_ICON_URL";
 }
