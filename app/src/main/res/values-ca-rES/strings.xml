@@ -407,4 +407,14 @@ Tingueu en compte que Google Play Store no admet la baixada de versions arbitrà
     <string name="pref_requested_location_enable">"Cal que activeu manualment la ubicació simulada des de les Opcions de desenvolupador. Una connexió VPN a una ubicació propera és obligatòria."</string>
     <string name="toast_api_build_delayed">"Està trigant més del que s'esperava"</string>
     <string name="dialog_uninstall_confirmation">"Voleu desinstal·lar aquesta aplicació?"</string>
+    <string name="action_send">"Envia"</string>
+    <string name="dialog_unavailable_title">"Aplicació no disponible"</string>
+    <string name="dialog_unavailable_desc">"No s'ha pogut trobar l'ítem que intentaveu comprar, intentàveu falsificar el dispositiu o canvieu de compte."</string>
+    <string name="privacy_title">"Política de privadesa de l'Aurora OSS"</string>
+    <string name="privacy_policy">"Política de privadesa"</string>
+    <string name="action_accept">"Accepta"</string>
+    <string name="action_decline">"Rebutja"</string>
+    <string name="crash_title">"Informe d'errors de l'Aurora"</string>
+    <string name="crash_line1">"Bé, això és vergonyós!"</string>
+    <string name="crash_line2">"Podeu enviar aquest informe a l'Aurora Dev per ajudar-nos a resoldre el problema."</string>
 </resources>
