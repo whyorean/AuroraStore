@@ -307,7 +307,7 @@ Aurora дозволяє шукати, завантажувати, встанов
     <string name="dialog_geores_title">"Недоступно в вашому регіоні"</string>
     <string name="dialog_geores_desc">"Додаток, який ви намагаєтеся завантажити, недоступний в вашому регіоні. Спробуйте підмінити ваше місце розташування в налаштуваннях."</string>
     <string name="dialog_incompat_title">"Несумісністий додаток"</string>
-    <string name="dialog_incompat_desc">"Додаток, який ви намагаєтеся завантажити, несумісний з вашим пристроєм. Спробуйте підмінити інформацію про ваш пристрій в налаштуваннях."</string>
+    <string name="dialog_incompat_desc">"Додаток, який ви намагаєтеся завантажити, несумісний з вашим пристроєм. Спробуйте підмінити інформацію про ваш пристрій у налаштуваннях."</string>
     <string name="pref_install_mode_services">"Aurora Services"</string>
     <string name="pref_install_mode_no_services">"Aurora Services не встановлено"</string>
     <string name="pref_install_mode_offline_services">"Aurora Services не підключено, переконайтеся, що додаток включено, і у вас підтримувана версія Aurora Store."</string>
@@ -405,4 +405,14 @@ Aurora дозволяє шукати, завантажувати, встанов
     <string name="pref_requested_location_enable">"Вам потрібно вручну ввімкнути Mock Location з параметрів розробника. Підключення VPN до місця поблизу є обов'язковим"</string>
     <string name="toast_api_build_delayed">"Це займає більше часу, ніж очікувалося"</string>
     <string name="dialog_uninstall_confirmation">"Ви хочете видалити цей додаток?"</string>
+    <string name="action_send">"Відправити"</string>
+    <string name="dialog_unavailable_title">"Додаток недоступний"</string>
+    <string name="dialog_unavailable_desc">"Не вдалося знайти товар, який ви намагалися купити. Спробуйте підминити інформацію про ваш пристрій у налаштуваннях. Також можна зайти з іншого облікового запису."</string>
+    <string name="privacy_title">"Політика конфіденційності Aurora OSS"</string>
+    <string name="privacy_policy">"Політика конфіденційності"</string>
+    <string name="action_accept">"Прийняти"</string>
+    <string name="action_decline">"Відхилити"</string>
+    <string name="crash_title">"Звіт про збій"</string>
+    <string name="crash_line1">"Яка прикра несподіванка!"</string>
+    <string name="crash_line2">"Ви можете надіслати цей звіт розробнику Aurora, щоб ця проблема була вирішена."</string>
 </resources>
