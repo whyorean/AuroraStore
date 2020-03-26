@@ -139,11 +139,11 @@
     <string name="list_update_all">"Tümünü güncelle"</string>
     <string name="list_update_all_txt">"güncelleme(ler) mevcut"</string>
     <string name="list_updating">"Güncelleniyor"</string>
-    <string name="manual_download_disclaimer">"Feragat"</string>
+    <string name="manual_download_disclaimer">"Yasal Uyarı"</string>
     <string name="manual_download_incompatible">"Google Play Store, bu uygulamanın cihazınızla uyumlu olmadığını düşünüyor. Bu, sürüm kodunun Google Play Store sunucusu tarafından döndürülmediği anlamına gelir."</string>
     <string name="manual_download_warning">"Bu sayfa, indirilecek uygulamanın sürümünü elle seçmenizi sağlar. Uygulamaların keyfi sürümlerini indirmenin Google Play Store tarafından desteklenmediğini unutmayın. Başarınız, sürüm kodunun şanslı bir tahminine bağlıdır. Doğru tahmin etseniz ve indirme işlemine başlasanız bile, uyumsuz bir APK alabilirsiniz."</string>
     <string name="menu_account">"Hesaplar"</string>
-    <string name="menu_disclaimer">"Feragat"</string>
+    <string name="menu_disclaimer">"Yasal Uyarı"</string>
     <string name="menu_downloads">"İndirilenler"</string>
     <string name="menu_license">"Lisans"</string>
     <string name="menu_setting">"Ayarlar"</string>
@@ -167,7 +167,7 @@
     <string name="pref_downloader_path_title">"İndirme yolu"</string>
     <string name="pref_downloader_wifi_title">"Yalnız kablosuz ağ kullanarak indir"</string>
     <string name="pref_filter_fdroid_summary">"Uygulama listelerinden F-Droid uygulamalarını kaldır"</string>
-    <string name="pref_filter_fdroid_title">"F-droid uygulamalarını süz"</string>
+    <string name="pref_filter_fdroid_title">"F-Droid uygulamalarını süz"</string>
     <string name="pref_filter_google_summary">"Tüm Google Uygulamalarını arama sonuçlarından ve kategori uygulamalarından kaldırır"</string>
     <string name="pref_filter_google_title">"Google uygulamalarını süz"</string>
     <string name="pref_filter_search_summary">"Arama süzgeçleri her aramada sıfırlanır. Arama süzgeçlerini kaydetmek için kapatın"</string>
@@ -319,7 +319,7 @@
     <string name="download_waiting">"Bekleniyor"</string>
     <string name="pref_services_title">"Aurora Hizmetleri"</string>
     <string name="pref_services_desc">"Aurora Hizmetleri'ni başlat"</string>
-    <string name="pref_services_desc_alt">"Aurora Hizmetleri kullanılamıyor"</string>
+    <string name="pref_services_desc_alt">"Aurora Hizmetleri kullanılamıyor. Daha fazla bilgi edinmek için tıklayın."</string>
     <string name="pref_custom_tokenizer">"Özel belirteç etkinleştir"</string>
     <string name="pref_custom_tokenizer_url">"Belirteç URL'si"</string>
     <string name="action_export_device">"Aygıt Bilgilerini Dışarı Aktar"</string>
@@ -397,7 +397,7 @@
     <string name="toast_api_build_retrying">"API oluşturulamadı, yeniden deneniyor."</string>
     <string name="toast_api_build_failed">"API oluşturulamadı."</string>
     <string name="toast_api_build_api">"GooglePlay API oluşturuluyor"</string>
-    <string name="toast_api_token_validity">"Belirteç geçerliliğini kontrol etme"</string>
+    <string name="toast_api_token_validity">"Belirteç geçerliliği kontrol ediliyor"</string>
     <string name="review_positive">"Olumlu"</string>
     <string name="review_recent">"Son"</string>
     <string name="review_helpful">"Yararlı"</string>
