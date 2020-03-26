@@ -9,8 +9,6 @@
     <string name="action_accounts">"Accounts"</string>
     <string name="action_ask">"Ask"</string>
     <string name="action_blacklist">"Blacklist"</string>
-    <string name="action_ignore">"Ignore this version"</string>
-    <string name="action_ignore_remove">"Remove from ignore list"</string>
     <string name="action_cancel">"Cancel"</string>
     <string name="action_clear">"Clear"</string>
     <string name="action_clear_all">"Clear all"</string>
@@ -19,7 +17,6 @@
     <string name="action_copied">"Link copied to clipboard"</string>
     <string name="action_copy">"Copy Link"</string>
     <string name="action_disable">"Disable"</string>
-    <string name="action_disabled">"Disabled"</string>
     <string name="action_done">"Done"</string>
     <string name="action_enable">"Enable"</string>
     <string name="action_export">"Export"</string>
@@ -114,7 +111,6 @@
     <string name="error_unknown">"Unknown error occurred"</string>
     <string name="exodus_noTracker">"Contains no trackers"</string>
     <string name="exodus_powered">"Powered by Exodus"</string>
-    <string name="exodus_progress">"Checking for trackers"</string>
     <string name="exodus_title">"Aurora Protect"</string>
     <string name="exodus_title_alt">"Exodus report"</string>
     <string name="exodus_viewMore">"View"</string>
@@ -137,7 +133,6 @@
     <string name="list_installed_system">"Show user apps only"</string>
     <string name="list_not_installd">"Not installed"</string>
     <string name="list_update_all">"Update all"</string>
-    <string name="list_update_selected">"Update selected"</string>
     <string name="list_update_all_txt">"update(s) available"</string>
     <string name="list_updating">"Updating"</string>
     <string name="manual_download_disclaimer">"Disclaimer"</string>
@@ -227,16 +222,6 @@
     <string name="about_app">"Aurora Store is an open source alternative to the Google Play Store. It lets you download apps, provides updates of installed apps, and lets you search for apps &amp; games. It also provides a list of trackers embedded in an app."</string>
     <string name="about_paypal">"Paypal"</string>
     <string name="about_paypal_summary">"Donate via PayPal"</string>
-    <string name="about_libera">"Libera Pay"</string>
-    <string name="about_libera_summary">"Become patron on Libera Pay"</string>
-    <string name="about_bitcoin_btc">"Bitcoin"</string>
-    <string name="about_bitcoin_btc_summary">"Donate via Bitcoin (BTC)"</string>
-    <string name="about_bitcoin_bch">"Bitcoin Cash"</string>
-    <string name="about_bitcoin_bch_summary">"Donate via Bitcoin Cash (BCH)"</string>
-    <string name="about_bitcoin_eth">"Ethereum"</string>
-    <string name="about_bitcoin_eth_summary">"Donate via Ethereum (ETH)"</string>
-    <string name="about_bhim">"BHIM - UPI"</string>
-    <string name="about_bhim_summary">"Donate via UPI"</string>
     <string name="about_fdroid">"F-Droid"</string>
     <string name="about_gitlab">"GitLab"</string>
     <string name="about_gitlab_summary">"Get the Aurora Store source code from Aurora OSS on GitLab."</string>
@@ -428,4 +413,19 @@
     <string name="crash_title">"Aurora Crash Report"</string>
     <string name="crash_line1">"Well that's embarrassing !"</string>
     <string name="crash_line2">"You can send this report to Aurora Dev, to help resolve the issue."</string>
+    <string name="action_ignore">"Ignore this version"</string>
+    <string name="action_ignore_remove">"Remove from ignore list"</string>
+    <string name="action_disabled">"Disabled"</string>
+    <string name="exodus_progress">"Checking for trackers"</string>
+    <string name="list_update_selected">"Update selected"</string>
+    <string name="about_libera">"Libera Pay"</string>
+    <string name="about_libera_summary">"Become patron on Libera Pay"</string>
+    <string name="about_bitcoin_btc">"Bitcoin"</string>
+    <string name="about_bitcoin_btc_summary">"Donate via Bitcoin (BTC)"</string>
+    <string name="about_bitcoin_bch">"Bitcoin Cash"</string>
+    <string name="about_bitcoin_bch_summary">"Donate via Bitcoin Cash (BCH)"</string>
+    <string name="about_bitcoin_eth">"Ethereum"</string>
+    <string name="about_bitcoin_eth_summary">"Donate via Ethereum (ETH)"</string>
+    <string name="about_bhim">"BHIM - UPI"</string>
+    <string name="about_bhim_summary">"Donate via UPI"</string>
 </resources>
