@@ -12,6 +12,8 @@
     <string name="action_cancel">"Encaboxar"</string>
     <string name="action_clear">"Llimpiar"</string>
     <string name="action_clear_all">"Llimpiar too"</string>
+    <string name="action_convert_local">"Convertir n'apl llocal"</string>
+    <string name="action_convert_system">"Convertir n'apl del sistema"</string>
     <string name="action_copied">"L'enllaz copióse al cartafueyu"</string>
     <string name="action_copy">"Copiar l'enllaz"</string>
     <string name="action_disable">"Desactivar"</string>
@@ -270,6 +272,7 @@ Decátate que baxar versiones al debalu nun lo sofita la tienda Google Play. L'�
     <string name="download_waiting">"Esperando"</string>
     <string name="pref_services_title">"Servicios d'Aurora"</string>
     <string name="pref_services_desc_alt">"Los servicios d'Aurora nun tán disponibles. Calca pa dir al so depósitu y deprender más"</string>
+    <string name="pref_custom_tokenizer_url">"URL del convertidor de pases"</string>
     <string name="action_export_device">"Esportar la información del preséu"</string>
     <string name="action_export_info">"Esportóse la información del preséu"</string>
     <string name="action_export_info_failed">"Falló la esportación de la información del preséu"</string>
@@ -307,6 +310,7 @@ Decátate que baxar versiones al debalu nun lo sofita la tienda Google Play. L'�
     <string name="account_email">"Corréu"</string>
     <string name="account_password">"Contraseña"</string>
     <string name="toast_login_failed">"Fallu al aniciar sesión"</string>
+    <string name="disclaimer">"Al usar Aurora Store cola to cuenta de Google pue facer que te la desactiven darréu qu'esti programa viola los términos del serviciu de Google na cláusula 3.3. Por embargu, pues usar l'aniciu de sesión anónimu qu'usa una cuenta universal pa saltar esti riesgu"</string>
     <string name="category_all">"Toles estayes"</string>
     <string name="category_family">"Familia"</string>
     <string name="category_games">"Xuegos"</string>
@@ -314,6 +318,7 @@ Decátate que baxar versiones al debalu nun lo sofita la tienda Google Play. L'�
     <string name="details_dev_email">"Corréu"</string>
     <string name="details_dev_address">"Direición"</string>
     <string name="details_dev_website">"Sitiu web"</string>
+    <string name="details_more_updated">"Data d'anovamientu"</string>
     <string name="details_more_version">"Versión"</string>
     <string name="title_categories">"Estayes"</string>
     <string name="toast_api_build_retrying">"Fallu al construyir l'API, retentando."</string>
