@@ -409,9 +409,12 @@
     <string name="dialog_uninstall_confirmation">"هل تريد الغاء تثبيت هذا التطبيق⸮"</string>
     <string name="action_send">"إرسال"</string>
     <string name="dialog_unavailable_title">"التطبيق غير متوفر"</string>
+    <string name="dialog_unavailable_desc">"تعذر العثور على العنصر الذي كنت تحاول شراءه ، قم بالتحايل وتعديل نوع جهازك أو تبديل الحساب."</string>
     <string name="privacy_title">"سياسة الخصوصية لـ Aurora OSS"</string>
     <string name="privacy_policy">"سياسة الخصوصية"</string>
     <string name="action_accept">"أقبل"</string>
+    <string name="action_decline">"انخفاض"</string>
     <string name="crash_title">"تقرير تعطل Aurora"</string>
+    <string name="crash_line1">"حسنا هذا محرج !"</string>
     <string name="crash_line2">"يمكنك إرسال هذا التقرير إلى مطورين Aurora, للمساعدة في حل المشكلة"</string>
 </resources>
