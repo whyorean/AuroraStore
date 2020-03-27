@@ -24,8 +24,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ViewSwitcher;
+import android.widget.RelativeLayout;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.widget.Toolbar;
@@ -71,12 +72,11 @@ public class DownloadsActivity extends BaseActivity {
     Toolbar toolbar;
     @BindView(R.id.recyclerDownloads)
     RecyclerView recyclerView;
-    @BindView(R.id.view_switcher)
-    ViewSwitcher viewSwitcher;
     @BindView(R.id.content_view)
     ViewGroup layoutContent;
-    @BindView(R.id.err_view)
-    ViewGroup layoutError;
+
+    @BindView(R.id.empty_layout)
+    RelativeLayout emptyLayout;
 
     private FastAdapter<DownloadItem> fastAdapter;
     private ItemAdapter<DownloadItem> itemAdapter;
@@ -145,6 +145,7 @@ public class DownloadsActivity extends BaseActivity {
         setupRecycler();
 
         fetch = DownloadManager.getFetchInstance(this);
+        updateDownloadsList();
     }
 
     @Override
@@ -166,13 +167,13 @@ public class DownloadsActivity extends BaseActivity {
                 fetch.resumeAll();
                 return true;
             case R.id.action_cancel_all:
-                cancelAll();
+                fetch.cancelAll();
                 return true;
             case R.id.action_clear_completed:
-                clearCompleted();
+                fetch.removeAllWithStatus(Status.COMPLETED);
                 return true;
             case R.id.action_force_clear_all:
-                forceClearAll();
+                fetch.deleteAll();
                 return true;
         }
         return super.onOptionsItemSelected(item);
@@ -182,7 +183,6 @@ public class DownloadsActivity extends BaseActivity {
     protected void onResume() {
         super.onResume();
         fetch.addListener(fetchListener);
-        updateDownloadsList();
     }
 
     @Override
@@ -210,7 +210,6 @@ public class DownloadsActivity extends BaseActivity {
 
     private void updateDownloadsList() {
         fetch.getDownloads(downloads -> {
-
             final List<Download> downloadList = new ArrayList<>(downloads);
             Collections.sort(downloadList, (first, second) -> Long.compare(first.getCreated(), second.getCreated()));
 
@@ -220,6 +219,13 @@ public class DownloadsActivity extends BaseActivity {
                     .toList()
                     .observeOn(AndroidSchedulers.mainThread())
                     .doOnSuccess(this::dispatchAppsToAdapter)
+                    .doFinally(() -> {
+                        if (itemAdapter != null) {
+                            emptyLayout.setVisibility(itemAdapter.getAdapterItems().isEmpty()
+                                    ? View.VISIBLE
+                                    : View.GONE);
+                        }
+                    })
                     .subscribe();
         });
     }
@@ -229,18 +235,6 @@ public class DownloadsActivity extends BaseActivity {
         final DownloadDiffCallback diffCallback = new DownloadDiffCallback();
         final DiffUtil.DiffResult diffResult = fastAdapterDiffUtil.calculateDiff(itemAdapter, installedItemList, diffCallback);
         fastAdapterDiffUtil.set(itemAdapter, diffResult);
-    }
-
-    private void cancelAll() {
-        fetch.cancelAll();
-    }
-
-    private void clearCompleted() {
-        fetch.removeAllWithStatus(Status.COMPLETED);
-    }
-
-    private void forceClearAll() {
-        fetch.deleteAll();
     }
 
     private void setupRecycler() {

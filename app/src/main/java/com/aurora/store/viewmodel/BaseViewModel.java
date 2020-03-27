@@ -8,6 +8,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.aurora.store.enums.ErrorType;
+import com.aurora.store.exception.AppNotFoundException;
 import com.aurora.store.exception.CredentialsEmptyException;
 import com.aurora.store.exception.InvalidApiException;
 import com.aurora.store.exception.TooManyRequestsException;
@@ -47,6 +48,8 @@ public class BaseViewModel extends AndroidViewModel {
             errorData.setValue(ErrorType.SESSION_EXPIRED);
         else if (err instanceof UnknownHostException)
             errorData.setValue(ErrorType.NO_NETWORK);
+        else if (err instanceof AppNotFoundException)
+            errorData.setValue(ErrorType.APP_NOT_FOUND);
         else
             errorData.setValue(ErrorType.UNKNOWN);
         Log.d(err.getMessage());

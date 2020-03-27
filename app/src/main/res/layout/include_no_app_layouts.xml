@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/no_app_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?android:attr/colorBackground"
+    android:visibility="gone">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/no_app_img"
+        android:layout_width="@dimen/icon_size"
+        android:layout_height="@dimen/icon_size"
+        android:layout_above="@id/no_app_line1"
+        android:layout_centerHorizontal="true"
+        tools:src="@drawable/ic_placeholder" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/no_app_line1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:textAppearance="@style/TextAppearance.Aurora.Line1"
+        android:textColor="?colorAccent"
+        tools:text="@string/app_name" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/no_app_line2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/no_app_line1"
+        android:layout_centerInParent="true"
+        android:textAppearance="@style/TextAppearance.Aurora.Line3"
+        tools:text="com.aurora.store" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/no_app_line3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/no_app_line2"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="@dimen/margin_large"
+        android:text="@string/error_app_not_found"
+        android:textAppearance="@style/TextAppearance.Aurora.Line1" />
+</RelativeLayout>

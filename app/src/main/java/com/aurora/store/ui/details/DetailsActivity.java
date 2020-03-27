@@ -23,11 +23,15 @@ package com.aurora.store.ui.details;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.RelativeLayout;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.widget.AppCompatImageView;
@@ -39,7 +43,6 @@ import androidx.lifecycle.ViewModelProvider;
 import com.aurora.store.AuroraApplication;
 import com.aurora.store.AutoDisposable;
 import com.aurora.store.Constants;
-import com.aurora.store.GlideApp;
 import com.aurora.store.R;
 import com.aurora.store.manager.BlacklistManager;
 import com.aurora.store.manager.FavouritesManager;
@@ -61,9 +64,6 @@ import com.aurora.store.util.Log;
 import com.aurora.store.util.PackageUtil;
 import com.aurora.store.util.Util;
 import com.aurora.store.util.ViewUtil;
-import com.bumptech.glide.load.resource.bitmap.BitmapTransitionOptions;
-import com.bumptech.glide.load.resource.bitmap.CenterCrop;
-import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -88,6 +88,15 @@ public class DetailsActivity extends BaseActivity {
     AppCompatTextView txtDevName;
     @BindView(R.id.packageName)
     AppCompatTextView txtPackageName;
+    @BindView(R.id.no_app_img)
+
+    AppCompatImageView noAppImg;
+    @BindView(R.id.no_app_line1)
+    AppCompatTextView noAppLine1;
+    @BindView(R.id.no_app_line2)
+    AppCompatTextView noAppLine2;
+    @BindView(R.id.no_app_layout)
+    RelativeLayout noAppLayout;
 
     private ActionButton actionButton;
 
@@ -129,12 +138,16 @@ public class DetailsActivity extends BaseActivity {
                 case SESSION_EXPIRED:
                     Util.validateApi(this);
                     break;
-                case NO_NETWORK: {
+                case NO_NETWORK:
                     showSnackBar(coordinator, R.string.error_no_network, -2, v -> {
                         model.fetchAppDetails(packageName);
                     });
                     break;
-                }
+                case APP_NOT_FOUND:
+                    ContextUtil.toastLong(this, getString(R.string.error_app_not_found));
+                    if (app != null)
+                        drawMinimalDetails(app);
+                    break;
             }
         });
 
@@ -169,7 +182,6 @@ public class DetailsActivity extends BaseActivity {
             stringExtra = intent.getStringExtra(Constants.STRING_EXTRA);
             if (stringExtra != null) {
                 app = gson.fromJson(stringExtra, App.class);
-                drawBasic();
             }
             Log.i("Getting info about %s", packageName);
             model.fetchAppDetails(packageName);
@@ -267,15 +279,20 @@ public class DetailsActivity extends BaseActivity {
         return null;
     }
 
-    private void drawBasic() {
-        GlideApp.with(this)
-                .asBitmap()
-                .load(app.getIconUrl())
-                .transition(new BitmapTransitionOptions().crossFade())
-                .transforms(new CenterCrop(), new RoundedCorners(50))
-                .into(icon);
-        txtDisplayName.setText(app.getDisplayName());
-        txtPackageName.setText(app.getPackageName());
+    private void drawMinimalDetails(App app) {
+        ContextUtil.runOnUiThread(() -> {
+            try {
+                final PackageManager packageManager = getPackageManager();
+                final Drawable drawable = packageManager.getApplicationIcon(app.getPackageName());
+                noAppImg.setImageDrawable(drawable);
+            } catch (PackageManager.NameNotFoundException e) {
+                noAppImg.setImageDrawable(getDrawable(R.drawable.ic_placeholder));
+            }
+
+            noAppLine1.setText(app.getDisplayName());
+            noAppLine2.setText(app.getPackageName());
+            noAppLayout.setVisibility(View.VISIBLE);
+        });
     }
 
     private void draw(App appFromMarket) {
