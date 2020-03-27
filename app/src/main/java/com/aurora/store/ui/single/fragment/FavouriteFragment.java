@@ -254,7 +254,6 @@ public class FavouriteFragment extends BaseFragment {
         fastItemAdapter.addExtension(selectExtension);
         fastItemAdapter.addEventHook(new FavouriteItem.CheckBoxClickEvent());
 
-
         dataObserver = new RecyclerDataObserver(recyclerView, emptyLayout, progressLayout);
         fastItemAdapter.registerAdapterDataObserver(dataObserver);
 

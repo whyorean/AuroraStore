@@ -25,6 +25,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -35,6 +36,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.aurora.store.R;
+import com.aurora.store.RecyclerDataObserver;
 import com.aurora.store.manager.BlacklistManager;
 import com.aurora.store.model.items.BlacklistItem;
 import com.aurora.store.ui.view.CustomSwipeToRefresh;
@@ -63,8 +65,14 @@ public class BlacklistFragment extends Fragment {
     @BindView(R.id.txt_blacklist)
     TextView txtBlacklist;
 
+    @BindView(R.id.empty_layout)
+    RelativeLayout emptyLayout;
+    @BindView(R.id.progress_layout)
+    RelativeLayout progressLayout;
+
     private BlacklistManager blacklistManager;
     private BlackListedAppsModel model;
+    private RecyclerDataObserver dataObserver;
     private FastItemAdapter<BlacklistItem> fastItemAdapter;
     private SelectExtension<BlacklistItem> selectExtension;
 
@@ -88,11 +96,23 @@ public class BlacklistFragment extends Fragment {
             final List<BlacklistItem> sortedList = sortBlackListedApps(blacklistItems);
             fastItemAdapter.add(sortedList);
             swipeToRefresh.setRefreshing(false);
+
+            if (dataObserver != null)
+                dataObserver.checkIfEmpty();
+
             updateCount();
         });
 
         swipeToRefresh.setRefreshing(true);
         swipeToRefresh.setOnRefreshListener(() -> model.fetchBlackListedApps());
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (dataObserver != null && !fastItemAdapter.getAdapterItems().isEmpty()) {
+            dataObserver.hideProgress();
+        }
     }
 
     @OnClick(R.id.btn_clear_all)
@@ -138,6 +158,9 @@ public class BlacklistFragment extends Fragment {
 
         fastItemAdapter.addExtension(selectExtension);
         fastItemAdapter.addEventHook(new BlacklistItem.CheckBoxClickEvent());
+
+        dataObserver = new RecyclerDataObserver(recyclerView, emptyLayout, progressLayout);
+        fastItemAdapter.registerAdapterDataObserver(dataObserver);
 
         selectExtension.setMultiSelect(true);
         selectExtension.setSelectionListener((item, selected) -> {

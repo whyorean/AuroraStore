@@ -127,6 +127,7 @@
     <string name="list_blacklist_none">"No apps blacklisted"</string>
     <string name="list_bulk_install">"App(s) queued for bulk installation"</string>
     <string name="list_empty_fav">"No favourites"</string>
+    <string name="list_empty_blacklist">"No blacklisted apps"</string>
     <string name="list_empty_query">"No recent searches"</string>
     <string name="list_empty_updates">"No updates available"</string>
     <string name="list_installed">"Installed"</string>

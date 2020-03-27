@@ -3,6 +3,7 @@ package com.aurora.store.ui.installed;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.RelativeLayout;
 
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.lifecycle.ViewModelProvider;
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.aurora.store.AuroraApplication;
 import com.aurora.store.Constants;
+import com.aurora.store.RecyclerDataObserver;
 import com.aurora.store.util.diff.InstalledDiffCallback;
 import com.aurora.store.R;
 import com.aurora.store.model.App;
@@ -46,7 +48,13 @@ public class InstalledAppActivity extends BaseActivity {
     @BindView(R.id.recycler)
     RecyclerView recyclerView;
 
+    @BindView(R.id.empty_layout)
+    RelativeLayout emptyLayout;
+    @BindView(R.id.progress_layout)
+    RelativeLayout progressLayout;
+
     private InstalledAppsModel model;
+    private RecyclerDataObserver dataObserver;
     private FastAdapter<InstalledItem> fastAdapter;
     private ItemAdapter<InstalledItem> itemAdapter;
 
@@ -104,6 +112,14 @@ public class InstalledAppActivity extends BaseActivity {
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        if (dataObserver != null && !itemAdapter.getAdapterItems().isEmpty()) {
+            dataObserver.hideProgress();
+        }
+    }
+
+    @Override
     public boolean onOptionsItemSelected(final MenuItem menuItem) {
         if (menuItem.getItemId() == android.R.id.home) {
             onBackPressed();
@@ -121,6 +137,9 @@ public class InstalledAppActivity extends BaseActivity {
         final InstalledDiffCallback diffCallback = new InstalledDiffCallback();
         final DiffUtil.DiffResult diffResult = fastAdapterDiffUtil.calculateDiff(itemAdapter, installedItemList, diffCallback);
         fastAdapterDiffUtil.set(itemAdapter, diffResult);
+
+        if (dataObserver != null)
+            dataObserver.checkIfEmpty();
     }
 
     private void setupRecycler() {
@@ -146,6 +165,9 @@ public class InstalledAppActivity extends BaseActivity {
             menuSheet.show(getSupportFragmentManager(), AppMenuSheet.TAG);
             return true;
         });
+
+        dataObserver = new RecyclerDataObserver(recyclerView, emptyLayout, progressLayout);
+        fastAdapter.registerAdapterDataObserver(dataObserver);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setItemAnimator(new DefaultItemAnimator());

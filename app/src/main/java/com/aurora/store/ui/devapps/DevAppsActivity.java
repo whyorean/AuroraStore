@@ -3,6 +3,7 @@ package com.aurora.store.ui.devapps;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -15,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.aurora.store.Constants;
 import com.aurora.store.R;
+import com.aurora.store.RecyclerDataObserver;
 import com.aurora.store.model.App;
 import com.aurora.store.model.items.EndlessItem;
 import com.aurora.store.sheet.AppMenuSheet;
@@ -38,8 +40,13 @@ public class DevAppsActivity extends BaseActivity {
     @BindView(R.id.recycler)
     RecyclerView recyclerView;
 
-    private DevAppsModel model;
+    @BindView(R.id.empty_layout)
+    RelativeLayout emptyLayout;
+    @BindView(R.id.progress_layout)
+    RelativeLayout progressLayout;
 
+    private DevAppsModel model;
+    private RecyclerDataObserver dataObserver;
     private FastAdapter fastAdapter;
     private ItemAdapter<EndlessItem> itemAdapter;
     private ItemAdapter<ProgressItem> progressItemAdapter;
@@ -72,6 +79,14 @@ public class DevAppsActivity extends BaseActivity {
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        if (dataObserver != null && !itemAdapter.getAdapterItems().isEmpty()) {
+            dataObserver.hideProgress();
+        }
+    }
+
+    @Override
     public boolean onOptionsItemSelected(final MenuItem menuItem) {
         if (menuItem.getItemId() == android.R.id.home) {
             onBackPressed();
@@ -85,6 +100,9 @@ public class DevAppsActivity extends BaseActivity {
         recyclerView.post(() -> {
             progressItemAdapter.clear();
         });
+
+        if (dataObserver != null)
+            dataObserver.checkIfEmpty();
     }
 
     private void setupActionBar() {
@@ -139,6 +157,9 @@ public class DevAppsActivity extends BaseActivity {
                 model.fetchQueriedApps(query, true);
             }
         };
+
+        dataObserver = new RecyclerDataObserver(recyclerView, emptyLayout, progressLayout);
+        fastAdapter.registerAdapterDataObserver(dataObserver);
 
         recyclerView.addOnScrollListener(endlessScrollListener);
         recyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
