@@ -12,7 +12,7 @@ import androidx.appcompat.widget.AppCompatTextView;
 import com.aurora.store.AuroraApplication;
 import com.aurora.store.Constants;
 import com.aurora.store.R;
-import com.aurora.store.ValidateApiService;
+import com.aurora.store.service.ValidateApiService;
 import com.aurora.store.events.Event;
 import com.aurora.store.ui.accounts.AccountsActivity;
 import com.aurora.store.ui.intro.IntroActivity;
@@ -120,7 +120,7 @@ public class SplashActivity extends BaseActivity {
         //Start new Validation service, if logged in.
         if (Accountant.isLoggedIn(this)) {
             status.setText(R.string.toast_api_build_api);
-            Util.validateApi(this);
+            Util.startValidationService(this);
         } else {
             launchAccountsActivity();
         }

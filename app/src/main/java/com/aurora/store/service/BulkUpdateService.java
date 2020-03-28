@@ -1,4 +1,4 @@
-package com.aurora.store;
+package com.aurora.store.service;
 
 import android.app.Service;
 import android.content.Intent;
@@ -6,6 +6,8 @@ import android.os.IBinder;
 
 import androidx.annotation.Nullable;
 
+import com.aurora.store.AuroraApplication;
+import com.aurora.store.R;
 import com.aurora.store.events.Event;
 import com.aurora.store.exception.CredentialsEmptyException;
 import com.aurora.store.exception.MalformedRequestException;

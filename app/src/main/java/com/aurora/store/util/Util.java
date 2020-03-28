@@ -38,11 +38,12 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.PagerSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.aurora.store.BulkUpdateService;
 import com.aurora.store.Constants;
 import com.aurora.store.R;
-import com.aurora.store.ValidateApiService;
 import com.aurora.store.receiver.UpdatesReceiver;
+import com.aurora.store.service.BulkUpdateService;
+import com.aurora.store.service.NotificationService;
+import com.aurora.store.service.ValidateApiService;
 import com.aurora.store.ui.main.AuroraActivity;
 import com.aurora.store.ui.single.activity.SplashActivity;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -553,19 +554,24 @@ public class Util {
         return cookieList;
     }
 
-    public static void validateApi(Context context) {
+    public static void startValidationService(Context context) {
         if (!ValidateApiService.isServiceRunning())
             context.startService(new Intent(context, ValidateApiService.class));
     }
 
-    public static void bulkUpdate(Context context) {
+    public static void startBulkUpdateService(Context context) {
         if (!BulkUpdateService.isServiceRunning())
             context.startService(new Intent(context, BulkUpdateService.class));
     }
 
-    public static void stopBulkUpdate(Context context) {
+    public static void stopBulkUpdateService(Context context) {
         if (BulkUpdateService.isServiceRunning()) {
             context.stopService(new Intent(context, BulkUpdateService.class));
         }
+    }
+
+    public static void startNotificationService(Context context) {
+        if (NotificationService.isNotAvailable())
+            context.startService(new Intent(context, NotificationService.class));
     }
 }

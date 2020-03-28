@@ -22,13 +22,8 @@ package com.aurora.store;
 
 import android.annotation.SuppressLint;
 import android.app.Application;
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
 import android.content.Context;
 import android.content.IntentFilter;
-import android.os.Build;
-
-import androidx.core.app.NotificationCompat;
 
 import com.aurora.store.events.Event;
 import com.aurora.store.events.RxBus;
@@ -133,11 +128,11 @@ public class AuroraApplication extends Application {
         rxBus = new RxBus();
         installer = new Installer(this);
 
-        //Create notification channels
-        createNotificationChannel();
-
         //Clear all old installation sessions.
         Util.clearOldInstallationSessions(this);
+
+        //Check & start notification service
+        Util.startNotificationService(this);
 
         //Register global install broadcast receiver.
         registerReceiver(installer.getPackageInstaller().getBroadcastReceiver(),
@@ -163,35 +158,5 @@ public class AuroraApplication extends Application {
         } catch (Exception ignored) {
         }
         super.onTerminate();
-    }
-
-    private void createNotificationChannel() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            NotificationChannel alertChannel = new NotificationChannel(
-                    Constants.NOTIFICATION_CHANNEL_ALERT,
-                    getString(R.string.notification_channel_alert),
-                    NotificationManager.IMPORTANCE_HIGH);
-
-            NotificationChannel generalChannel = new NotificationChannel(
-                    Constants.NOTIFICATION_CHANNEL_GENERAL,
-                    getString(R.string.notification_channel_general),
-                    NotificationManager.IMPORTANCE_MIN);
-
-            alertChannel.enableLights(true);
-            alertChannel.enableVibration(true);
-            alertChannel.setShowBadge(true);
-            alertChannel.setLockscreenVisibility(NotificationCompat.VISIBILITY_PUBLIC);
-
-            generalChannel.enableLights(false);
-            generalChannel.enableVibration(false);
-            generalChannel.setShowBadge(false);
-            generalChannel.setLockscreenVisibility(NotificationCompat.VISIBILITY_PRIVATE);
-
-            NotificationManager notificationManager = getSystemService(NotificationManager.class);
-            if (notificationManager != null) {
-                notificationManager.createNotificationChannel(alertChannel);
-                notificationManager.createNotificationChannel(generalChannel);
-            }
-        }
     }
 }

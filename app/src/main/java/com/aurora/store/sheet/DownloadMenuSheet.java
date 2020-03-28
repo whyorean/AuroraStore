@@ -29,7 +29,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.aurora.store.Constants;
 import com.aurora.store.R;
 import com.aurora.store.download.DownloadManager;
 import com.aurora.store.util.Util;
@@ -72,9 +71,9 @@ public class DownloadMenuSheet extends BaseBottomSheet {
         super.onViewCreated(view, savedInstanceState);
         if (getArguments() != null) {
             Bundle bundle = getArguments();
-            id = bundle.getInt(Constants.INT_EXTRA);
-            status = bundle.getInt(Constants.INT_EXTRA);
-            url = bundle.getString(Constants.STRING_EXTRA);
+            id = bundle.getInt(DOWNLOAD_ID);
+            status = bundle.getInt(DOWNLOAD_STATUS);
+            url = bundle.getString(DOWNLOAD_URL);
             fetch = DownloadManager.getFetchInstance(requireContext());
             setupNavigation();
         } else {

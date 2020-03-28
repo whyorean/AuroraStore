@@ -136,7 +136,7 @@ public class DetailsActivity extends BaseActivity {
             switch (errorType) {
                 case NO_API:
                 case SESSION_EXPIRED:
-                    Util.validateApi(this);
+                    Util.startValidationService(this);
                     break;
                 case NO_NETWORK:
                     showSnackBar(coordinator, R.string.error_no_network, -2, v -> {

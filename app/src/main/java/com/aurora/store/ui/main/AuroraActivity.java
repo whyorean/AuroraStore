@@ -51,8 +51,8 @@ import com.aurora.store.BuildConfig;
 import com.aurora.store.Constants;
 import com.aurora.store.GlideApp;
 import com.aurora.store.R;
-import com.aurora.store.SelfUpdateService;
 import com.aurora.store.model.Update;
+import com.aurora.store.service.SelfUpdateService;
 import com.aurora.store.task.NetworkTask;
 import com.aurora.store.ui.accounts.AccountsActivity;
 import com.aurora.store.ui.installed.InstalledAppActivity;
@@ -159,6 +159,9 @@ public class AuroraActivity extends BaseActivity {
     protected void onResume() {
         super.onResume();
         Util.toggleSoftInput(this, false);
+
+        //Check & start notification service
+        Util.startNotificationService(this);
     }
 
     @Override

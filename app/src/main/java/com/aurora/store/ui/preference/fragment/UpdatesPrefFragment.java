@@ -13,7 +13,7 @@ import androidx.preference.PreferenceFragmentCompat;
 
 import com.aurora.store.Constants;
 import com.aurora.store.R;
-import com.aurora.store.SelfUpdateService;
+import com.aurora.store.service.SelfUpdateService;
 import com.aurora.store.util.PrefUtil;
 import com.aurora.store.util.Util;
 

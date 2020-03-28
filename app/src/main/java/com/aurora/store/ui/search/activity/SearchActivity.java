@@ -88,7 +88,7 @@ public class SearchActivity extends BaseActivity {
             switch (errorType) {
                 case NO_API:
                 case SESSION_EXPIRED: {
-                    Util.validateApi(this);
+                    Util.startValidationService(this);
                     break;
                 }
                 case NO_NETWORK: {

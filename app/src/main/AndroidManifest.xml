@@ -80,6 +80,7 @@
         </activity>
         <activity
             android:name=".ui.details.DetailsActivity"
+            android:launchMode="singleTask"
             android:configChanges="keyboardHidden|locale|orientation|fontScale">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
@@ -195,8 +196,9 @@
         </receiver>
 
         <service android:name=".installer.InstallerService" />
-        <service android:name=".SelfUpdateService" />
-        <service android:name=".ValidateApiService" />
-        <service android:name=".BulkUpdateService" />
+        <service android:name=".service.SelfUpdateService" />
+        <service android:name=".service.ValidateApiService" />
+        <service android:name=".service.BulkUpdateService" />
+        <service android:name=".service.NotificationService" />
     </application>
 </manifest>

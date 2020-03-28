@@ -1,4 +1,4 @@
-package com.aurora.store;
+package com.aurora.store.service;
 
 import android.app.Notification;
 import android.app.Service;
@@ -10,6 +10,10 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.core.app.NotificationCompat;
 
+import com.aurora.store.AuroraApplication;
+import com.aurora.store.BuildConfig;
+import com.aurora.store.Constants;
+import com.aurora.store.R;
 import com.aurora.store.download.DownloadManager;
 import com.aurora.store.download.RequestBuilder;
 import com.aurora.store.model.App;
@@ -18,7 +22,6 @@ import com.aurora.store.task.NetworkTask;
 import com.aurora.store.util.CertUtil;
 import com.aurora.store.util.ContextUtil;
 import com.aurora.store.util.Log;
-import com.aurora.store.util.PackageUtil;
 import com.google.gson.Gson;
 import com.tonyodev.fetch2.AbstractFetchGroupListener;
 import com.tonyodev.fetch2.Download;

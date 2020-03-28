@@ -127,7 +127,7 @@ public class UpdatesFragment extends BaseFragment {
                 case NO_API:
                 case SESSION_EXPIRED:
                     awaiting = true;
-                    Util.validateApi(requireContext());
+                    Util.startValidationService(requireContext());
                     break;
                 case NO_NETWORK:
                     awaiting = true;
@@ -342,7 +342,7 @@ public class UpdatesFragment extends BaseFragment {
                     //Clear ongoing update list
                     AuroraApplication.setOngoingUpdateList(new ArrayList<>());
                     //Start BulkUpdate cancellation request
-                    Util.stopBulkUpdate(requireContext());
+                    Util.stopBulkUpdateService(requireContext());
                 })
                 .subscribe();
     }
@@ -372,7 +372,7 @@ public class UpdatesFragment extends BaseFragment {
                         .toList()
                         .doOnSuccess(apps -> {
                             AuroraApplication.setOngoingUpdateList(apps);
-                            Util.bulkUpdate(requireContext());
+                            Util.startBulkUpdateService(requireContext());
                         })
                         .subscribe();
             });

@@ -27,15 +27,15 @@ import android.os.Bundle;
 
 import com.aurora.store.download.DownloadManager;
 
-import static com.aurora.store.notification.GeneralNotification.REQUEST_ID;
+import static com.aurora.store.service.NotificationService.FETCH_GROUP_ID;
 
 public class DownloadCancelReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         Bundle extras = intent.getExtras();
         if ((extras != null)) {
-            final int requestId = extras.getInt(REQUEST_ID, -1);
-            DownloadManager.getFetchInstance(context).cancelGroup(requestId);
+            final int groupId = extras.getInt(FETCH_GROUP_ID, -1);
+            DownloadManager.getFetchInstance(context).cancelGroup(groupId);
         }
     }
 }

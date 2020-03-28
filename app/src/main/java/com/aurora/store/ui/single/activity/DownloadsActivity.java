@@ -41,6 +41,7 @@ import com.aurora.store.download.DownloadManager;
 import com.aurora.store.model.items.DownloadItem;
 import com.aurora.store.sheet.DownloadMenuSheet;
 import com.aurora.store.ui.details.DetailsActivity;
+import com.aurora.store.util.Util;
 import com.aurora.store.util.ViewUtil;
 import com.aurora.store.util.diff.DownloadDiffCallback;
 import com.mikepenz.fastadapter.FastAdapter;
@@ -183,6 +184,9 @@ public class DownloadsActivity extends BaseActivity {
     protected void onResume() {
         super.onResume();
         fetch.addListener(fetchListener);
+
+        //Check & start notification service
+        Util.startNotificationService(this);
     }
 
     @Override

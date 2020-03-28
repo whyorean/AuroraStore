@@ -42,7 +42,6 @@ import com.aurora.store.exception.AppNotFoundException;
 import com.aurora.store.exception.NotPurchasedException;
 import com.aurora.store.installer.Uninstaller;
 import com.aurora.store.model.App;
-import com.aurora.store.notification.GeneralNotification;
 import com.aurora.store.task.DeliveryData;
 import com.aurora.store.ui.details.DetailsActivity;
 import com.aurora.store.util.Accountant;
@@ -56,7 +55,6 @@ import com.dragons.aurora.playstoreapiv2.AndroidAppDeliveryData;
 import com.google.android.material.button.MaterialButton;
 import com.tonyodev.fetch2.AbstractFetchGroupListener;
 import com.tonyodev.fetch2.Download;
-import com.tonyodev.fetch2.Error;
 import com.tonyodev.fetch2.Fetch;
 import com.tonyodev.fetch2.FetchGroup;
 import com.tonyodev.fetch2.FetchListener;
@@ -64,7 +62,6 @@ import com.tonyodev.fetch2.Request;
 import com.tonyodev.fetch2core.DownloadBlock;
 
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -103,7 +100,6 @@ public class ActionButton extends AbstractDetails {
     private CompositeDisposable compositeDisposable = new CompositeDisposable();
     private Fetch fetch;
     private FetchListener fetchListener;
-    private GeneralNotification notification;
     private int progress = 0;
 
     public ActionButton(DetailsActivity activity, App app) {
@@ -131,8 +127,6 @@ public class ActionButton extends AbstractDetails {
 
     private void setupFetch() {
         fetch = DownloadManager.getFetchInstance(context);
-        notification = new GeneralNotification(context, app);
-
         fetch.getFetchGroup(hashCode, fetchGroup -> {
             if (fetchGroup.getGroupDownloadProgress() == 100) {
                 if (!app.isInstalled() && PathUtil.fileExists(context, app))
@@ -186,7 +180,7 @@ public class ActionButton extends AbstractDetails {
         return v -> {
             btnPositive.setText(R.string.details_installing);
             btnPositive.setEnabled(false);
-            notification.notifyInstalling();
+            //notification.notifyInstalling();
             AuroraApplication.getInstaller().install(app);
         };
     }
@@ -285,8 +279,6 @@ public class ActionButton extends AbstractDetails {
     private View.OnClickListener cancelDownloadListener() {
         return v -> {
             fetch.cancelGroup(hashCode);
-            if (notification != null)
-                notification.notifyCancelled();
             switchViews(false);
         };
     }
@@ -339,7 +331,6 @@ public class ActionButton extends AbstractDetails {
                         progressBar.setIndeterminate(true);
                         progressStatus.setText(R.string.download_queued);
                     });
-                    notification.notifyQueued();
                 }
             }
 
@@ -357,9 +348,6 @@ public class ActionButton extends AbstractDetails {
             @Override
             public void onResumed(int groupId, @NotNull Download download, @NotNull FetchGroup fetchGroup) {
                 if (groupId == hashCode) {
-                    progress = fetchGroup.getGroupDownloadProgress();
-                    if (progress < 0) progress = 0;
-                    notification.notifyProgress(progress, 0, hashCode);
                     ContextUtil.runOnUiThread(() -> {
                         progressStatus.setText(R.string.download_progress);
                         progressBar.setIndeterminate(false);
@@ -384,14 +372,12 @@ public class ActionButton extends AbstractDetails {
                         progressStatus.setText(R.string.download_progress);
                         progressTxt.setText(new StringBuilder().append(progress).append("%"));
                     });
-                    notification.notifyProgress(progress, downloadedBytesPerSecond, hashCode);
                 }
             }
 
             @Override
             public void onPaused(int groupId, @NotNull Download download, @NotNull FetchGroup fetchGroup) {
                 if (groupId == hashCode) {
-                    notification.notifyResume(hashCode);
                     ContextUtil.runOnUiThread(() -> {
                         switchViews(false);
                         progressStatus.setText(R.string.download_paused);
@@ -400,16 +386,8 @@ public class ActionButton extends AbstractDetails {
             }
 
             @Override
-            public void onError(int groupId, @NotNull Download download, @NotNull Error error, @Nullable Throwable throwable, @NotNull FetchGroup fetchGroup) {
-                if (groupId == hashCode) {
-                    notification.notifyFailed();
-                }
-            }
-
-            @Override
             public void onCompleted(int groupId, @NotNull Download download, @NotNull FetchGroup fetchGroup) {
                 if (groupId == hashCode && fetchGroup.getGroupDownloadProgress() == 100) {
-                    notification.notifyCompleted();
                     ContextUtil.runOnUiThread(() -> {
                         switchViews(false);
                         progressStatus.setText(R.string.download_completed);
@@ -421,7 +399,6 @@ public class ActionButton extends AbstractDetails {
                             btnPositive.setText(R.string.details_installing);
                             btnPositive.setEnabled(false);
                         });
-                        notification.notifyInstalling();
                         //Call the installer
                         AuroraApplication.getInstaller().install(app);
                     }
@@ -433,7 +410,6 @@ public class ActionButton extends AbstractDetails {
             public void onCancelled(int groupId, @NotNull Download download,
                                     @NotNull FetchGroup fetchGroup) {
                 if (groupId == hashCode) {
-                    notification.notifyCancelled();
                     ContextUtil.runOnUiThread(() -> {
                         switchViews(false);
                         progressBar.setIndeterminate(true);
