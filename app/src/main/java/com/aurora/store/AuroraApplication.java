@@ -22,7 +22,9 @@ package com.aurora.store;
 
 import android.annotation.SuppressLint;
 import android.app.Application;
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
 import android.content.IntentFilter;
 
 import com.aurora.store.events.Event;
@@ -57,8 +59,20 @@ public class AuroraApplication extends Application {
     private static RxBus rxBus = null;
     private static boolean bulkUpdateAlive = false;
     private static List<App> ongoingUpdateList = new ArrayList<>();
+
     @SuppressLint("StaticFieldLeak")
     private static Installer installer;
+
+    private BroadcastReceiver packageUninstallReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (intent.getData() != null) {
+                final String packageName = intent.getData().getSchemeSpecificPart();
+                if (packageName != null)
+                    rxNotify(new Event(Event.SubType.UNINSTALLED, packageName));
+            }
+        }
+    };
 
     public static RxBus getRxBus() {
         return rxBus;
@@ -134,7 +148,14 @@ public class AuroraApplication extends Application {
         //Check & start notification service
         Util.startNotificationService(this);
 
-        //Register global install broadcast receiver.
+        //Register global install/uninstall broadcast receiver.
+        final IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addDataScheme("package");
+        intentFilter.addAction(Intent.ACTION_PACKAGE_REMOVED);
+        intentFilter.addAction(Intent.ACTION_PACKAGE_FULLY_REMOVED);
+        intentFilter.addAction(Intent.ACTION_UNINSTALL_PACKAGE);
+        registerReceiver(packageUninstallReceiver, intentFilter);
+
         registerReceiver(installer.getPackageInstaller().getBroadcastReceiver(),
                 new IntentFilter(InstallerService.ACTION_INSTALLATION_STATUS_NOTIFICATION));
 
@@ -154,6 +175,7 @@ public class AuroraApplication extends Application {
     @Override
     public void onTerminate() {
         try {
+            unregisterReceiver(packageUninstallReceiver);
             unregisterReceiver(installer.getPackageInstaller().getBroadcastReceiver());
         } catch (Exception ignored) {
         }

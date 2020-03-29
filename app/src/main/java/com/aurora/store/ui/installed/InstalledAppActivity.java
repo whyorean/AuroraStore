@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.aurora.store.AuroraApplication;
 import com.aurora.store.Constants;
 import com.aurora.store.RecyclerDataObserver;
+import com.aurora.store.model.items.UpdatesItem;
 import com.aurora.store.util.diff.InstalledDiffCallback;
 import com.aurora.store.R;
 import com.aurora.store.model.App;
@@ -103,8 +104,8 @@ public class InstalledAppActivity extends BaseActivity {
                                 itemAdapter.remove(adapterPosition);
                             }
                             break;
-                        case API_SUCCESS:
-                            fetchApps();
+                        case UNINSTALLED:
+                            removeItemByPackageName(event.getStringExtra());
                             break;
                     }
                 })
@@ -140,6 +141,20 @@ public class InstalledAppActivity extends BaseActivity {
 
         if (dataObserver != null)
             dataObserver.checkIfEmpty();
+    }
+
+    private void removeItemByPackageName(String packageName) {
+        int adapterPosition = -1;
+        for (InstalledItem installedItem : itemAdapter.getAdapterItems()) {
+            if (installedItem.getPackageName().equals(packageName)) {
+                adapterPosition = itemAdapter.getAdapterPosition(installedItem);
+                break;
+            }
+        }
+
+        if (adapterPosition >= 0 && itemAdapter != null) {
+            itemAdapter.remove(adapterPosition);
+        }
     }
 
     private void setupRecycler() {
