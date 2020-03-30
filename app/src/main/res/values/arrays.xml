@@ -225,16 +225,6 @@
         <item>2</item>
     </string-array>
 
-    <string-array name="pref_notification_provider">
-        <item>@string/pref_notification_provider_native</item>
-        <item>@string/pref_notification_provider_aurora</item>
-    </string-array>
-
-    <string-array name="pref_notification_provider_values">
-        <item>0</item>
-        <item>1</item>
-    </string-array>
-
     <string-array name="pref_download_strategy">
         <item>@string/pref_downloader_strategy_sequential</item>
         <item>@string/pref_downloader_strategy_parallel</item>
@@ -314,15 +304,6 @@
         <item>@string/pref_update_interval_hourly</item>
         <item>@string/pref_update_interval_daily</item>
         <item>@string/pref_update_interval_weekly</item>
-    </string-array>
-
-    <string-array name="topCategories">
-        <item>COMMUNICATION</item>
-        <item>MUSIC_AND_AUDIO</item>
-        <item>PERSONALIZATION</item>
-        <item>PHOTOGRAPHY</item>
-        <item>SHOPPING</item>
-        <item>SOCIAL</item>
     </string-array>
 
     <string-array name="pref_cache_strategy">

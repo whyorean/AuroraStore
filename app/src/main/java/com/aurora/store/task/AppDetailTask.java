@@ -24,6 +24,7 @@ import android.content.Context;
 
 import com.aurora.store.model.App;
 import com.aurora.store.model.AppBuilder;
+import com.aurora.store.util.Log;
 import com.aurora.store.util.PackageUtil;
 import com.dragons.aurora.playstoreapiv2.DetailsResponse;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
@@ -40,6 +41,7 @@ public class AppDetailTask {
 
     public App getInfo(String packageName) throws Exception {
         final DetailsResponse response = api.details(packageName);
+        Log.writeLogFile(response);
         final App app = AppBuilder.build(response);
         if (PackageUtil.isInstalled(context, app))
             app.setInstalled(true);

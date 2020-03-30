@@ -21,12 +21,10 @@
 <resources>
     <dimen name="margin_bottom">64dp</dimen>
 
-    <dimen name="padding_xsmall">4dp</dimen>
     <dimen name="padding_small">6dp</dimen>
     <dimen name="padding_normal">8dp</dimen>
     <dimen name="padding_medium">12dp</dimen>
     <dimen name="padding_large">16dp</dimen>
-    <dimen name="padding_xlarge">32dp</dimen>
 
     <dimen name="margin_xxsmall">2dp</dimen>
     <dimen name="margin_xsmall">4dp</dimen>
@@ -36,10 +34,6 @@
     <dimen name="margin_large">16dp</dimen>
     <dimen name="margin_xlarge">32dp</dimen>
 
-    <dimen name="bottom_sheet_corner_radius">16dp</dimen>
-    <dimen name="bottom_sheet_top_padding">8dp</dimen>
-    <dimen name="bottom_nav_padding">64dp</dimen>
-
     <dimen name="icon_size_default">24dp</dimen>
     <dimen name="icon_size_category">36dp</dimen>
     <dimen name="icon_size_small">48dp</dimen>
@@ -47,8 +41,6 @@
     <dimen name="icon_size">64dp</dimen>
     <dimen name="icon_size_normal">72dp</dimen>
     <dimen name="icon_size_big">96dp</dimen>
-
-    <dimen name="chip_height">52dp</dimen>
 
     <dimen name="height_searchview">52dp</dimen>
     <dimen name="height_button">52dp</dimen>

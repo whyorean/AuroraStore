@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="account_dummy">"Anonimo"</string>
-    <string name="account_dummy_desc">"Accedere usando un account anonimo?"</string>
     <string name="account_google">"Account Google"</string>
 
     <!-- Logout -->
     <string name="account_logout">"Disconnettersi da Aurora?"</string>
     <string name="account_prompt_login">"Effettua il login per continuare"</string>
-    <string name="account_switch">"Cambia account"</string>
 
     <!-- Account -->
     <string name="action_accounts">"Profili"</string>
@@ -18,8 +16,6 @@
     <!-- Cancella -->
     <string name="action_clear">"Rimuovi"</string>
     <string name="action_clear_all">"Rimuovi tutto"</string>
-    <string name="action_convert_local">"Converti in app locale"</string>
-    <string name="action_convert_system">"Converti in app di sistema"</string>
     <string name="action_copied">"Link copiato negli appunti"</string>
     <string name="action_copy">"Copia link"</string>
     <string name="action_disable">"Disabilita"</string>
@@ -42,7 +38,6 @@
 
     <!-- Voto -->
     <string name="action_filter_rating">"Valutazioni"</string>
-    <string name="action_flag">"Segnala app"</string>
     <string name="action_get_local_apk">"Ottieni l'APK locale"</string>
 
     <!-- Home -->
@@ -55,21 +50,17 @@
 
     <!-- Effettuando il login -->
     <string name="action_logging_in">"Accesso in corso"</string>
-    <string name="action_login">"Accedi"</string>
 
     <!-- Logout -->
     <string name="action_logout">"Disconnetti"</string>
 
     <!-- Converti in un app normale -->
-    <string name="action_make_normal">"Converti in app normale"</string>
-    <string name="action_make_system">"Converti in app di sistema"</string>
     <string name="action_manual">"Download manuale"</string>
 
     <!-- Altro -->
     <string name="action_more">"Altro"</string>
     <string name="action_next">"Avanti"</string>
     <string name="action_pause">"Metti in pausa"</string>
-    <string name="action_remove">"Rimuovi"</string>
 
     <!-- Riavvia -->
     <string name="action_restart">"Riavvia"</string>
@@ -79,10 +70,6 @@
     <string name="action_retry">"Riprova"</string>
 
     <!-- Riprovando -->
-    <string name="action_retry_ing">"Nuovo tentativo in corso"</string>
-    <string name="action_search">"Ricerca"</string>
-    <string name="action_search_clearHistory">"Rimuovi tutto"</string>
-    <string name="action_search_history">"Cronologia delle ricerche"</string>
     <string name="action_settings">"Impostazioni"</string>
 
     <!-- Spoof -->
@@ -90,11 +77,9 @@
     <string name="action_submit">"Invia"</string>
 
     <!-- Rimuovi dalla blacklist -->
-    <string name="action_unignore">"Rimuovi dalla blacklist"</string>
 
     <!-- Disinstalla -->
     <string name="action_uninstall">"Disinstalla"</string>
-    <string name="action_unwhitelist">"Ignora gli aggiornamenti"</string>
     <string name="action_updates">"Aggiornamenti"</string>
     <string name="action_whitelist">"Whitelist"</string>
     <string name="availability_restriction_country">"Questo articolo non è disponibile nel tuo Paese."</string>
@@ -164,19 +149,15 @@
     <string name="download_resume_all">"Riprendi tutti"</string>
     <string name="early_access">"Accesso anticipato"</string>
     <string name="error_app_not_found">"App non trovata"</string>
-    <string name="error_incorrect_password">"Email o password errati"</string>
     <string name="error_invalid_device_definition">"Definizione del dispositivo respinta"</string>
     <string name="error_no_network">"Nessuna connessione di rete"</string>
     <string name="error_search_not_found">"Nessuna app trovata"</string>
-    <string name="error_unknown">"Errore sconosciuto"</string>
     <string name="exodus_noTracker">"Non contiene tracker"</string>
     <string name="exodus_powered">"Dati forniti da Exodus"</string>
     <string name="exodus_title">"Aurora Protect"</string>
     <string name="exodus_title_alt">"Rapporto Exodus"</string>
     <string name="exodus_viewMore">"Visualizza"</string>
     <string name="exodus_viewReport">"Visualizza rapporto"</string>
-    <string name="flagging_title">"Segnala come inappropriato"</string>
-    <string name="list_app_blacklisted_empty">"Nessuna app nella blacklist"</string>
     <string name="list_app_depends_on_gsf">"Dipendente da GSF"</string>
     <string name="list_app_has_ads">"contiene annunci"</string>
     <string name="list_app_independent_from_gsf">"Indipendente da GSF"</string>
@@ -185,16 +166,13 @@
     <string name="list_app_user">"App utente"</string>
     <string name="list_blacklist">"App nella blacklist"</string>
     <string name="list_blacklist_none">"Nessuna app nella blacklist"</string>
-    <string name="list_bulk_install">"Applicazione/i in coda per l'installazione in gruppo"</string>
     <string name="list_empty_fav">"Nessun preferito"</string>
-    <string name="list_empty_query">"Nessuna ricerca recente"</string>
     <string name="list_empty_updates">"Nessun aggiornamento disponibile"</string>
     <string name="list_installed">"Installato"</string>
     <string name="list_installed_system">"Mostra solo app utente"</string>
     <string name="list_not_installd">"Non installato"</string>
     <string name="list_update_all">"Aggiorna tutto"</string>
     <string name="list_update_all_txt">"Aggiornamenti disponibili"</string>
-    <string name="list_updating">"Aggiornamento in corso"</string>
     <string name="manual_download_disclaimer">"Disclaimer"</string>
     <string name="manual_download_incompatible">"Google Play Store considera questa app incompatibile con il tuo dispositivo. Ciò significa che il codice di versione non è stato restituito dal server di Google Play Store."</string>
     <string name="manual_download_warning">"Questa pagina ti consente di scegliere manualmente la versione dell'app da scaricare.
@@ -244,7 +222,6 @@ Tieni presente che il download di versioni arbitrarie di app non è supportato d
     <string name="pref_proxy_port">"Porta proxy"</string>
     <string name="pref_proxy_type">"Tipo di proxy"</string>
     <string name="pref_requested_language">"Modifica la lingua predefinita per le richieste API"</string>
-    <string name="pref_requested_language_default">"Lingua predefinita"</string>
     <string name="pref_requested_location_disable">"È necessario disabilitare manualmente le posizioni fittizie dalle Opzioni sviluppatore per disabilitarlo completamente."</string>
     <string name="pref_requested_location_summary">"Aurora Store deve essere impostato come applicazione predefinita per le posizioni fittizie"</string>
     <string name="pref_ui_card_summary">"Utilizza le schede in stile legacy per le app in evidenza"</string>
@@ -256,10 +233,8 @@ Tieni presente che il download di versioni arbitrarie di app non è supportato d
     <string name="testing_program_opt_out">"Abbandona"</string>
     <string name="testing_program_review_dialog_content_hint">"Inserisci feedback sull'app"</string>
     <string name="testing_program_section_opted_in_message">"Gli aggiornamenti delle app includeranno versioni beta. Se lasci il programma beta di questa app, non riceverai più aggiornamenti beta."</string>
-    <string name="testing_program_section_opted_in_propagating_message">"Tra pochi minuti sarai aggiunto al programma beta e potrai quindi effettuare l'aggiornamento alla versione beta di questa app, se disponibile."</string>
     <string name="testing_program_section_opted_in_title">"Sei un beta tester"</string>
     <string name="testing_program_section_opted_out_message">"Prova nuove funzionalità prima che siano rese pubbliche. Invia il tuo feedback direttamente allo sviluppatore."</string>
-    <string name="testing_program_section_opted_out_propagating_message">"Potrebbero essere necessari alcuni minuti per rimuoverti dal programma beta."</string>
     <string name="testing_program_section_opted_out_title">"Diventa un beta tester"</string>
     <string name="title_all_apps">"Tutte le applicazioni"</string>
     <string name="title_home">"Aurora Store"</string>
@@ -276,11 +251,6 @@ Tieni presente che il download di versioni arbitrarie di app non è supportato d
     <string name="pref_locale_custom_title">"Lingua personalizzata"</string>
     <string name="pref_locale_custom_summary">"Forza lingua personalizzata"</string>
     <string name="pref_locale_list_title">"Seleziona lingua"</string>
-    <string name="tab_explore">"Esplora applicazioni"</string>
-    <string name="tab_games">"Trova giochi"</string>
-    <string name="tab_family">"Bambini e famiglia"</string>
-    <string name="pref_ui_tab_mode_title">"Schede scorrevoli"</string>
-    <string name="pref_ui_tab_mode_summary">"Abilita per rendere le schede scorrevoli, raccomandato per dispositivi con DPI bassi"</string>
     <string name="about_app">"Aurora è una alternativa open source al Play Store.
 Permette di scaricare applicazioni, fornire aggiornamenti delle applicazioni installate e permette di cercare applicazioni e giochi.
 Inoltre fornisce una lista di tracker incorporati in una applicazione."</string>
@@ -304,26 +274,14 @@ Inoltre fornisce una lista di tracker incorporati in una applicazione."</string>
     <string name="pref_notification_priority_default">"Predefinita"</string>
     <string name="pref_notification_priority_high">"Alta"</string>
     <string name="pref_notification_priority_max">"Massima"</string>
-    <string name="pref_notification_provider_summary">"Seleziona il provider di notifiche predefinito"</string>
-    <string name="pref_notification_provider_title">"Provider notifiche"</string>
-    <string name="pref_notification_provider_native">"Provider notifiche nativo"</string>
-    <string name="pref_notification_provider_aurora">"Provider notifiche di Aurora"</string>
     <string name="pref_ui_theme_light">"Chiaro"</string>
     <string name="pref_ui_theme_dark">"Scuro"</string>
     <string name="pref_ui_theme_black">"Nero"</string>
     <string name="action_close">"Chiudi"</string>
-    <string name="notification_installation_complete">"Installato con successo"</string>
-    <string name="notification_installation_failed">"Installazione fallita"</string>
-    <string name="notification_installation_progress">"Installazione"</string>
-    <string name="apps_by">"Applicazioni di"</string>
-    <string name="error_network_other">"Errore di connessione"</string>
     <string name="exodus_hasTracker">"Contiene tracker"</string>
     <string name="list_selected">"Applicazioni selezionate"</string>
     <string name="notification_installation_auto">"Scaricato, tocca per installare"</string>
     <string name="notification_installation_manual">"APK raggruppato, azione manuale richiesta"</string>
-    <string name="title_search_result">"Risultati per"</string>
-    <string name="action_recheck">"Controlla di nuovo"</string>
-    <string name="action_recheck_ing">"Controllo in corso"</string>
     <string name="pref_install_type_summary">"Utilizza l'installer nativo per installare i pacchetti, non consente l'installazione degli APK raggruppati"</string>
     <string name="pref_install_type_title">"Forza l'installer nativo"</string>
     <string name="pref_ui_tab_default_title">"Seleziona la scheda predefinita"</string>
@@ -333,18 +291,11 @@ Inoltre fornisce una lista di tracker incorporati in una applicazione."</string>
     <string name="pref_update_interval_daily">"Settimanale"</string>
     <string name="pref_update_interval_weekly">"Giornaliero"</string>
     <string name="download_none">"Nessun download"</string>
-    <string name="error_app_download">"non può essere scaricato"</string>
     <string name="details_new_changes">"Novità"</string>
-    <string name="action_apps">"Applicazioni"</string>
-    <string name="action_logging_in_success">"Login effettuato con successo"</string>
-    <string name="action_token_expired">"Token scaduto, richiesta di un nuovo token"</string>
-    <string name="action_token_force_request">"Forza richiesta"</string>
     <string name="cat_top_apps">"App in evidenza"</string>
-    <string name="cat_top_categories">"Categorie in evidenza"</string>
     <string name="cat_top_games">"Giochi in evidenza"</string>
     <string name="cat_top_family">"App per la famiglia in evidenza"</string>
     <string name="details_no_changes">"Changelog non fornito dallo sviluppatore"</string>
-    <string name="error_logged_out">"Sei stato disconnesso"</string>
     <string name="link_dev">"Sviluppatore"</string>
     <string name="link_prmission">"Permessi"</string>
     <string name="link_playstore">"Play Store"</string>
@@ -352,17 +303,9 @@ Inoltre fornisce una lista di tracker incorporati in una applicazione."</string>
     <string name="link_share">"Condividi"</string>
     <string name="pref_install_mode_no_root">"Root non disponibile, assicurati di avere il root abilitato sul tuo dispositivo"</string>
     <string name="pref_install_mode_root_warn">"Il metodo di installazione con root richiede che l'APK venga scaricato nella cartella di sistema di Aurora (su Android Pie o superiore) affinché possa essere installato via adb shell."</string>
-    <string name="pref_ui_ime">"Tastiera nella ricerca"</string>
-    <string name="pref_ui_ime_summary">"Mostra tastiera nella pagina di ricerca in modo predefinito"</string>
-    <string name="pref_ui_transparent">"Stile trasparente"</string>
-    <string name="pref_ui_transparent_summary">"Usa lo stile trasparente per i link e le card delle categorie"</string>
     <string name="pref_install_delete_summary">"Sui dispositivi con Android Pie o superiore con metodo di installazione root, gli APK vengono eliminati in modo predefinito"</string>
     <string name="action_loading">"Caricamento"</string>
     <string name="pref_default">"Default"</string>
-    <string name="toast_loading_apps">"Caricamento di altre app..."</string>
-    <string name="dialog_2FA_title">"Autenticazione a 2 fattori"</string>
-    <string name="dialog_2FA_desc">"Sembra che tu abbia abilitato l'autenticazione a due fattori, genera una password per l'app e usa la nuova password per accedere"</string>
-    <string name="dialog_2FA_positive">"Crea password"</string>
     <string name="dialog_purchase_title">"Acquisto dell'app"</string>
     <string name="dialog_purchase_desc">"È necessario che tu acquisti questa app prima di scaricarla. Aurora Store al momento non supporta gli acquisti in-app. Sarai reindirizzato alla pagina web per l'acquisto."</string>
     <string name="dialog_purchase_positive">"Compra ora"</string>
@@ -408,36 +351,24 @@ Inoltre fornisce una lista di tracker incorporati in una applicazione."</string>
     <string name="pref_clean_junk_desc">"Rimuove tutti i file scaricati nella cartella predefinita"</string>
     <string name="pref_abandon_session">"Rimuovi sessioni di installazione"</string>
     <string name="pref_abandon_session_desc">"Abbandona tutte le sessioni di installazione rimaste in sospeso"</string>
-    <string name="toast_unknown_reason">"Qualcosa è andato storto, riprova"</string>
     <string name="toast_junk_removed">"File residui rimossi"</string>
     <string name="toast_abandon_sessions">"Sessioni di installazione abbandonate"</string>
-    <string name="action_import">"Importa"</string>
     <string name="dialog_title_self_update">"Nuovo aggiornamento disponibile"</string>
     <string name="dialog_desc_self_update">"Vuoi aggiornare ora?"</string>
-    <string name="installer_status_ongoing">"Installazione in corso"</string>
     <string name="list_update_all_txt_one">"Aggiornamento disponibile"</string>
     <string name="pref_ui_package">"Cerca per nome pacchetto"</string>
     <string name="pref_ui_package_summary">"Consenti la ricerca delle app per nome pacchetto"</string>
     <string name="pref_update_self_title">"Controllo degli aggiornamenti"</string>
     <string name="pref_update_self_desc">"Controlla gli ultimi aggiornamenti disponibili di Aurora Store"</string>
-    <string name="toast_rate_limit">"Limite richieste superato per la sessione corrente, richiesta di una nuova sessione in corso"</string>
-    <string name="toast_token_stale">"Il token è scaduto, richiesta di un nuovo token in corso"</string>
-    <string name="error_session_expired">"Sessione scaduta"</string>
     <string name="list_updating_background">"Aggiornamento delle app in corso"</string>
     <string name="list_updating_failed">"Aggiornamento fallito"</string>
     <string name="pref_updates_auto">"Abilita aggiornamenti automatici"</string>
     <string name="pref_updates_auto_desc">"Aggiorna le app ogni volta che è disponibile una nuova versione"</string>
-    <string name="account_email">"Email"</string>
-    <string name="account_password">"Password"</string>
-    <string name="account_save_password">"Salva password"</string>
     <string name="toast_login_success">"Login effettuato con successo"</string>
     <string name="toast_login_failed">"Login fallito"</string>
     <string name="disclaimer">"L'accesso ad Aurora Store con il tuo account Google potrebbe causare l'aggiunta in blacklist o la disattivazione di quest'ultimo, dal momento che l'app viola il punto 3.3 dei termini di servizio di Google Play. Procedi a tuo rischio e pericolo. Puoi comunque scegliere di utilizzare l'accesso anonimo con un account usa e getta per accedere all'app."</string>
     <string name="menu_blacklist">"Aggiungi alla blacklist"</string>
     <string name="action_unknown">"Sconosciuto"</string>
-    <string name="category_all">"Tutte le categorie"</string>
-    <string name="category_family">"Famiglia"</string>
-    <string name="category_games">"Giochi"</string>
     <string name="details_dev_details">"Contatto sviluppatore"</string>
     <string name="details_dev_email">"Email"</string>
     <string name="details_dev_address">"Indirizzo"</string>
@@ -445,7 +376,6 @@ Inoltre fornisce una lista di tracker incorporati in una applicazione."</string>
     <string name="details_more_updated">"Aggiornato il"</string>
     <string name="details_more_version">"Versione"</string>
     <string name="exodus_noReport">"Rapporto non disponibile"</string>
-    <string name="list_empty_reviews">"Nessuna recensione disponibile"</string>
     <string name="testing_program_opt_in_success">"Congratulazioni, ti sei unito con successo al programma beta."</string>
     <string name="testing_program_opt_in_failed">"La tua richiesta di partecipazione al programma beta è fallita"</string>
     <string name="testing_program_opt_out_success">"Sei uscito dal programma beta"</string>
@@ -455,11 +385,9 @@ Inoltre fornisce una lista di tracker incorporati in una applicazione."</string>
     <string name="toast_api_build_retrying">"Generazione delle API fallita, nuovo tentativo in corso"</string>
     <string name="toast_api_build_failed">"Generazione delle API fallita"</string>
     <string name="toast_api_build_api">"Generazione delle API Google Play in corso"</string>
-    <string name="toast_api_token_validity">"Controllo della validità del token in corso"</string>
     <string name="review_positive">"Positive"</string>
     <string name="review_recent">"Recenti"</string>
     <string name="review_helpful">"Utili"</string>
-    <string name="request_failed">"Richiesta fallita"</string>
     <string name="notification_channel_alert">"Notifiche rapide"</string>
     <string name="notification_channel_general">"Notifiche generali"</string>
     <string name="action_continue_anyway">"Continuare comunque?"</string>

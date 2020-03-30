@@ -3,11 +3,9 @@
     <string name="account_dummy">"Анонимный"</string>
 
     <!-- Orifginal should be fixed. Space before question mark -->
-    <string name="account_dummy_desc">"Войти, используя анонимный аккаунт?"</string>
     <string name="account_google">"Аккаунт Google"</string>
     <string name="account_logout">"Выйти из Aurora Store?"</string>
     <string name="account_prompt_login">"Пожалуйста, войдите, чтобы продолжить"</string>
-    <string name="account_switch">"Сменить аккаунт"</string>
     <string name="action_accounts">"Аккаунты"</string>
     <string name="action_ask">"Запросить"</string>
 
@@ -16,8 +14,6 @@
     <string name="action_cancel">"Отмена"</string>
     <string name="action_clear">"Очистить"</string>
     <string name="action_clear_all">"Очистить всё"</string>
-    <string name="action_convert_local">"Сделать пользовательским"</string>
-    <string name="action_convert_system">"Сделать системным"</string>
     <string name="action_copied">"Ссылка скопирована в буфер обмена"</string>
     <string name="action_copy">"Скопировать ссылку"</string>
     <string name="action_disable">"Отключить"</string>
@@ -34,7 +30,6 @@
     <string name="action_filter_misc">"Разное"</string>
     <string name="action_filter_paid_apps">"Платное"</string>
     <string name="action_filter_rating">"Рейтинги"</string>
-    <string name="action_flag">"Пожаловаться"</string>
     <string name="action_get_local_apk">"Сохранить установленный APK-файл"</string>
     <string name="action_home">"Главная"</string>
     <string name="action_installations">"Установка"</string>
@@ -43,30 +38,20 @@
     <string name="action_installed">"Установленные"</string>
     <string name="action_later">"Позже"</string>
     <string name="action_logging_in">"Войти"</string>
-    <string name="action_login">"Войти"</string>
     <string name="action_logout">"Выход"</string>
-    <string name="action_make_normal">"Сделать пользовательским приложением"</string>
-    <string name="action_make_system">"Сделать системным приложением"</string>
     <string name="action_manual">"Загрузить вручную"</string>
     <string name="action_more">"Ещё"</string>
     <string name="action_next">"Дальше"</string>
 
     <!-- С учётом "перезапустить" и "возобновить" по смыслу и по виду оптимальнее будет не пауза, а именно "приостановить". Больше по виду. -->
     <string name="action_pause">"Приостановить"</string>
-    <string name="action_remove">"Удалить"</string>
     <string name="action_restart">"Перезапустить"</string>
     <string name="action_resume">"Возобновить"</string>
     <string name="action_retry">"Повторить"</string>
-    <string name="action_retry_ing">"Повтор"</string>
-    <string name="action_search">"Поиск"</string>
-    <string name="action_search_clearHistory">"Очистить историю"</string>
-    <string name="action_search_history">"История поиска"</string>
     <string name="action_settings">"Настройки"</string>
     <string name="action_spoofed">"Имитация"</string>
     <string name="action_submit">"Отправить"</string>
-    <string name="action_unignore">"Удалить из чёрного списка"</string>
     <string name="action_uninstall">"Удалить"</string>
-    <string name="action_unwhitelist">"Игнорировать обновления"</string>
     <string name="action_updates">"Обновления"</string>
     <string name="action_whitelist">"Белый список"</string>
     <string name="availability_restriction_country">"Недоступно в вашей стране."</string>
@@ -112,11 +97,9 @@
     <string name="download_resume_all">"Продолжить все"</string>
     <string name="early_access">"Ранний доступ"</string>
     <string name="error_app_not_found">"Приложение не найдено"</string>
-    <string name="error_incorrect_password">"Неправильная почта или пароль"</string>
     <string name="error_invalid_device_definition">"Некорректная информация об устройстве"</string>
     <string name="error_no_network">"Нет соединения"</string>
     <string name="error_search_not_found">"Не найдено"</string>
-    <string name="error_unknown">"Неизвестная ошибка"</string>
     <string name="exodus_noTracker">"Не содержит трекеров"</string>
     <string name="exodus_powered">"При поддержке Exodus"</string>
 
@@ -128,8 +111,6 @@ https://exodus-privacy.eu.org/en/. Это как "отчёт от аваста" 
     <string name="exodus_title_alt">"Отчёт Exodus"</string>
     <string name="exodus_viewMore">"Просмотр"</string>
     <string name="exodus_viewReport">"Посмотреть отчёт"</string>
-    <string name="flagging_title">"Отметить как неприемлемое"</string>
-    <string name="list_app_blacklisted_empty">"В чёрном списке нет приложений"</string>
     <string name="list_app_depends_on_gsf">"Зависит от GSF"</string>
     <string name="list_app_has_ads">"Содержит рекламу"</string>
     <string name="list_app_independent_from_gsf">"Не зависит от GSF"</string>
@@ -142,9 +123,7 @@ https://exodus-privacy.eu.org/en/. Это как "отчёт от аваста" 
 
     <!-- см. "Blacklisted Apps" -->
     <string name="list_blacklist_none">"Чёрный список пуст"</string>
-    <string name="list_bulk_install">"приложений в очереди на установку"</string>
     <string name="list_empty_fav">"Список избранного пуст"</string>
-    <string name="list_empty_query">"История поиска отсутствует"</string>
     <string name="list_empty_updates">"Нет доступных обновлений"</string>
 
     <!-- нн -->
@@ -157,7 +136,6 @@ https://exodus-privacy.eu.org/en/. Это как "отчёт от аваста" 
 
     <!-- Required declension -->
     <string name="list_update_all_txt">"обновлений доступно"</string>
-    <string name="list_updating">"Обновление…"</string>
     <string name="manual_download_disclaimer">"Отказ от ответственности"</string>
     <string name="manual_download_incompatible">"Сервер Google Play Store не вернул код версии приложения. Это означает, что Google Play Store считает это приложение несовместимым с вашим устройством."</string>
 
@@ -221,7 +199,6 @@ https://exodus-privacy.eu.org/en/. Это как "отчёт от аваста" 
 
     <!-- Теряется смысл назначения опции с текущим переводом. -->
     <string name="pref_requested_language">"Изменить требуемый язык по умолчанию"</string>
-    <string name="pref_requested_language_default">"Язык по умолчанию"</string>
     <string name="pref_requested_location_disable">"Вам необходимо вручную отключить использование фиктивных местоположений из параметров для разработчиков, для полного отключения функции."</string>
     <string name="pref_requested_location_summary">"Aurora Store должен быть установлен как приложение для фиктивных местоположений"</string>
     <string name="pref_ui_card_summary">"Использовать старый вид карточек для приложений"</string>
@@ -233,10 +210,8 @@ https://exodus-privacy.eu.org/en/. Это как "отчёт от аваста" 
     <string name="testing_program_opt_out">"Выйти"</string>
     <string name="testing_program_review_dialog_content_hint">"Оставьте отзыв о приложении"</string>
     <string name="testing_program_section_opted_in_message">"Обновления приложения будут включать бета-версии. Если вы покинете программу бета-тестирования данного приложения, вы больше не будете получать тестируемые версии в обновлениях."</string>
-    <string name="testing_program_section_opted_in_propagating_message">"В течение нескольких минут вы будете зарегистрированы в программе бета-тестирования. После этого вы сможете обновлять приложение до тестируемых версий, если они доступны."</string>
     <string name="testing_program_section_opted_in_title">"Вы — бета-тестер"</string>
     <string name="testing_program_section_opted_out_message">"Попробуйте новые функции до того, как они станут общедоступными. Отправляйте ваш отзыв напрямую разработчику"</string>
-    <string name="testing_program_section_opted_out_propagating_message">"Выход из программы бета-тестирования может занять несколько минут."</string>
     <string name="testing_program_section_opted_out_title">"Стать бета-тестером"</string>
     <string name="title_all_apps">"Все приложения"</string>
     <string name="title_home">"Aurora Store"</string>
@@ -257,13 +232,8 @@ https://exodus-privacy.eu.org/en/. Это как "отчёт от аваста" 
     <string name="pref_locale_custom_title">"Другой язык"</string>
     <string name="pref_locale_custom_summary">"Использовать выбранный язык"</string>
     <string name="pref_locale_list_title">"Выбор языка"</string>
-    <string name="tab_explore">"Приложения"</string>
-    <string name="tab_games">"Игры"</string>
 
     <!-- Or "Семейные" -->
-    <string name="tab_family">"Семейные"</string>
-    <string name="pref_ui_tab_mode_title">"Прокручиваемые вкладки"</string>
-    <string name="pref_ui_tab_mode_summary">"Делает вкладки прокручиваемыми, рекомендуется для устройств с маленьким разрешением"</string>
     <string name="about_app">"Aurora - это альтернатива Play Store с открытым исходным кодом.
 Aurora позволяет искать, загружать, устанавливать и обновлять приложения и игры.
 Дополнительно Aurora отображает список трекеров, встроенных в приложение."</string>
@@ -289,26 +259,14 @@ Aurora позволяет искать, загружать, устанавлив
     <string name="pref_notification_priority_default">"По умолчанию"</string>
     <string name="pref_notification_priority_high">"Высокий"</string>
     <string name="pref_notification_priority_max">"Максимальный"</string>
-    <string name="pref_notification_provider_summary">"Выбор провайдера уведомлений по умолчанию"</string>
-    <string name="pref_notification_provider_title">"Провайдер уведомлений"</string>
-    <string name="pref_notification_provider_native">"Встроенный провайдер уведомлений"</string>
-    <string name="pref_notification_provider_aurora">"Провайдер уведомлений Aurora"</string>
     <string name="pref_ui_theme_light">"Светлая тема"</string>
     <string name="pref_ui_theme_dark">"Тёмная тема"</string>
     <string name="pref_ui_theme_black">"Чёрная тема"</string>
     <string name="action_close">"Закрыть"</string>
-    <string name="notification_installation_complete">"Успешно установлено"</string>
-    <string name="notification_installation_failed">"Не удалось установить"</string>
-    <string name="notification_installation_progress">"Устанавливается"</string>
-    <string name="apps_by">"Приложения от"</string>
-    <string name="error_network_other">"Ошибка соединения"</string>
     <string name="exodus_hasTracker">"Содержит трекеры"</string>
     <string name="list_selected">"Выбранные приложения"</string>
     <string name="notification_installation_auto">"Загружено, коснитесь для установки"</string>
     <string name="notification_installation_manual">"Bundled APK, требуется участие пользователя"</string>
-    <string name="title_search_result">"Результаты для"</string>
-    <string name="action_recheck">"Перепроверить"</string>
-    <string name="action_recheck_ing">"Перепроверка"</string>
 
     <!-- https://developer.android.com/guide/app-bundle -->
     <string name="pref_install_type_summary">"Использовать системный установщик для установки APK-файлов; ломает установку APK, состоящих из нескольких частей."</string>
@@ -320,18 +278,11 @@ Aurora позволяет искать, загружать, устанавлив
     <string name="pref_update_interval_daily">"Раз в день"</string>
     <string name="pref_update_interval_weekly">"Раз в неделю"</string>
     <string name="download_none">"Загрузки отсутствуют"</string>
-    <string name="error_app_download">"Невозможно загрузить"</string>
     <string name="details_new_changes">"Что нового"</string>
-    <string name="action_apps">"Приложения"</string>
-    <string name="action_logging_in_success">"Вход выполнен"</string>
-    <string name="action_token_expired">"Действие токена истекло, запрашиваем новый токен"</string>
-    <string name="action_token_force_request">"Запросить принудительно"</string>
     <string name="cat_top_apps">"Лучшие приложения"</string>
-    <string name="cat_top_categories">"Лучшие категории"</string>
     <string name="cat_top_games">"Лучшие игры"</string>
     <string name="cat_top_family">"Лучшие семейные приложения"</string>
     <string name="details_no_changes">"Информация об изменениях отсутствует"</string>
-    <string name="error_logged_out">"Вы вышли из системы"</string>
     <string name="link_dev">"Разработчик"</string>
     <string name="link_prmission">"Разрешения"</string>
     <string name="link_playstore">"Play Store"</string>
@@ -339,17 +290,9 @@ Aurora позволяет искать, загружать, устанавлив
     <string name="link_share">"Поделиться"</string>
     <string name="pref_install_mode_no_root">"Root недоступен, убедитесь, что ваше устройство рутировано"</string>
     <string name="pref_install_mode_root_warn">"На Android Pie и новее для root-способа установки требуется, чтобы APK-файл был загружен в папку приложения, так как при установке используется adb shell"</string>
-    <string name="pref_ui_ime">"Клавиатура при поиске"</string>
-    <string name="pref_ui_ime_summary">"Показывать клавиатуру на странице поиска по умолчанию"</string>
-    <string name="pref_ui_transparent">"Прозрачный стиль"</string>
-    <string name="pref_ui_transparent_summary">"Использовать прозрачный стиль для карточек категорий"</string>
     <string name="pref_install_delete_summary">"На устройствах Pie при использовании root-способа установки APK-файлы удаляются по умолчанию"</string>
     <string name="action_loading">"Загрузка"</string>
     <string name="pref_default">"По умолчанию"</string>
-    <string name="toast_loading_apps">"Загружаем ещё."</string>
-    <string name="dialog_2FA_title">"Двухэтапная аутентификация"</string>
-    <string name="dialog_2FA_desc">"Похоже вы используете двухэтапную аутентификацию, пожалуйста, сгенерируйте пароль для приложения и используйте сгенерированный пароль для входа"</string>
-    <string name="dialog_2FA_positive">"Создать пароль"</string>
     <string name="dialog_purchase_title">"Покупка приложения"</string>
     <string name="dialog_purchase_desc">"Сперва вам нужно купить это приложение, в настоящее время Aurora Store не поддерживает покупку приложений,  сейчас вы будете перенаправлены на веб-страницу для покупки."</string>
     <string name="dialog_purchase_positive">"Купить"</string>
@@ -395,36 +338,24 @@ Aurora позволяет искать, загружать, устанавлив
     <string name="pref_clean_junk_desc">"Удаление всех загруженных файлов из папки по умолчанию"</string>
     <string name="pref_abandon_session">"Принудительная очистка сессий установки"</string>
     <string name="pref_abandon_session_desc">"Отмена устаревших находящихся в ожидании сессий"</string>
-    <string name="toast_unknown_reason">"Что-то пошло не так, попробуйте снова"</string>
     <string name="toast_junk_removed">"Мусорные файлы удалены"</string>
     <string name="toast_abandon_sessions">"Старые сессии установки отменены"</string>
-    <string name="action_import">"Импортировать"</string>
     <string name="dialog_title_self_update">"Доступно обновление"</string>
     <string name="dialog_desc_self_update">"Хотите обновиться сейчас?"</string>
-    <string name="installer_status_ongoing">"Установка"</string>
     <string name="list_update_all_txt_one">"доступно обновление"</string>
     <string name="pref_ui_package">"Поиск по имени пакета"</string>
     <string name="pref_ui_package_summary">"Разрешить поиск приложений по имени пакета"</string>
     <string name="pref_update_self_title">"Проверять наличие обновлений"</string>
     <string name="pref_update_self_desc">"Проверять наличие обновлений Aurora Store"</string>
-    <string name="toast_rate_limit">"Слишком много запросов в текущей сессии, необходимо войти заново"</string>
-    <string name="toast_token_stale">"Токен устарел, идёт запрос нового"</string>
-    <string name="error_session_expired">"Время сессии истекло"</string>
     <string name="list_updating_background">"Загружаемые в фоне приложения"</string>
     <string name="list_updating_failed">"Обновление невозможно"</string>
     <string name="pref_updates_auto">"Автоматическое обновление"</string>
     <string name="pref_updates_auto_desc">"Обновлять приложения всякий раз, когда появляется новая версия"</string>
-    <string name="account_email">"Эл. почта"</string>
-    <string name="account_password">"Пароль"</string>
-    <string name="account_save_password">"Сохранить пароль"</string>
     <string name="toast_login_success">"Успешный вход"</string>
     <string name="toast_login_failed">"Вход не удался"</string>
     <string name="disclaimer">"Использование Aurora Store с вашим собственным аккаунтом Google может привести к его деактивации или добавлению в чёрный список, так как Aurora Store нарушает «Условия использования Google». Используйте на свой страх и риск. У вас есть возможность войти анонимно."</string>
     <string name="menu_blacklist">"Добавить в чёрный список"</string>
     <string name="action_unknown">"Неизвестно"</string>
-    <string name="category_all">"Все категории"</string>
-    <string name="category_family">"Семья"</string>
-    <string name="category_games">"Игры"</string>
     <string name="details_dev_details">"Связь с разработчиком"</string>
     <string name="details_dev_email">"Эл. почта"</string>
     <string name="details_dev_address">"Адрес"</string>
@@ -432,7 +363,6 @@ Aurora позволяет искать, загружать, устанавлив
     <string name="details_more_updated">"Обновлено"</string>
     <string name="details_more_version">"Версия"</string>
     <string name="exodus_noReport">"Отчёт недоступен"</string>
-    <string name="list_empty_reviews">"Отзывы отсутствуют"</string>
     <string name="testing_program_opt_in_success">"Поздравляем, вы успешно присоединились к бета-тестированию."</string>
     <string name="testing_program_opt_in_failed">"Увы! Ваш запрос на бета-тестирование не принят."</string>
     <string name="testing_program_opt_out_success">"Успешный выход из бета-тестирования приложения."</string>
@@ -442,11 +372,9 @@ Aurora позволяет искать, загружать, устанавлив
     <string name="toast_api_build_retrying">"Не удалось создать API, повторная попытка"</string>
     <string name="toast_api_build_failed">"Не удалось создать API"</string>
     <string name="toast_api_build_api">"Создание Google Play API"</string>
-    <string name="toast_api_token_validity">"Проверка действительности токена"</string>
     <string name="review_positive">"Положительные"</string>
     <string name="review_recent">"Недавние"</string>
     <string name="review_helpful">"Полезные"</string>
-    <string name="request_failed">"Запрос не выполнен"</string>
     <string name="notification_channel_alert">"Быстрое уведомление"</string>
     <string name="notification_channel_general">"Основное уведомление"</string>
     <string name="action_continue_anyway">"Всё равно продолжить?"</string>

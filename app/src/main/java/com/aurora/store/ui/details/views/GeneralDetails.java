@@ -38,6 +38,7 @@ import com.aurora.store.GlideApp;
 import com.aurora.store.R;
 import com.aurora.store.model.App;
 import com.aurora.store.ui.details.DetailsActivity;
+import com.aurora.store.ui.details.ReadMoreActivity;
 import com.aurora.store.ui.view.FeatureChip;
 import com.aurora.store.util.ContextUtil;
 import com.aurora.store.util.TextUtil;
@@ -242,7 +243,7 @@ public class GeneralDetails extends AbstractDetails {
         } else {
             show(R.id.more_layout);
             moreLayout.setOnClickListener(v -> {
-                final Intent intent = new Intent(activity, DetailsActivity.class);
+                final Intent intent = new Intent(activity, ReadMoreActivity.class);
                 intent.putExtra(Constants.INTENT_PACKAGE_NAME, app.getPackageName());
                 intent.putExtra(Constants.STRING_EXTRA, gson.toJson(app));
                 activity.startActivity(intent, ViewUtil.getEmptyActivityBundle(activity));

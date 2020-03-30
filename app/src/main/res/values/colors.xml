@@ -26,7 +26,6 @@
 
     <!--Dark Theme-->
     <color name="colorDarkAccent">#4285f4</color>
-    <color name="colorDarkRipple">#4C5368</color>
     <color name="colorDarkPrimary">#202124</color>
     <color name="colorDarkPrimaryDark">#202124</color>
     <color name="colorDarkBackground">#2d2e31</color>
@@ -38,9 +37,7 @@
     <color name="colorWhite">#FFF</color>
     <color name="colorOffWhite">#EEE</color>
     <color name="colorBlack">#000</color>
-    <color name="colorGrey">#848484</color>
     <color name="colorGreyDark">#545454</color>
-    <color name="colorGreyDarker">#242424</color>
     <color name="colorGreyLight">#E5E5E5</color>
 
     <color name="colorScrim">#11000000</color>
@@ -49,14 +46,10 @@
     <color name="colorScrimBlack">#30000000</color>
     <color name="colorTransparent">#00000000</color>
 
-    <color name="colorTeal">#31e7b6</color>
     <color name="colorBlue">#4768FD</color>
     <color name="colorOrange">#ff6c00</color>
-    <color name="colorPurple">#4527A0</color>
     <color name="colorCyan">#00BCD4</color>
     <color name="colorRed">#F44336</color>
     <color name="colorGreen">#4CAF50</color>
-    <color name="colorGreenAlt">#8BC34A</color>
     <color name="colorGold">#FFBF00</color>
-    <color name="colorPink">#d81b60</color>
 </resources>

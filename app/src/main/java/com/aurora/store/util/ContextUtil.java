@@ -30,7 +30,7 @@ import android.widget.Toast;
 public class ContextUtil {
 
     public static void toast(Context context, int stringId, String... params) {
-        toastLong(context, context.getString(stringId, (Object[]) params));
+        toastLong(context, context.getString(stringId, params));
     }
 
     public static void toastShort(final Context context, final String message) {

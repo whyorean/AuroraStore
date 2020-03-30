@@ -19,6 +19,4 @@
   ~
   -->
 
-<resources>
-    <integer name="anim_duration_medium">350</integer>
-</resources>
+<resources></resources>

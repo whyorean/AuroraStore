@@ -71,6 +71,7 @@ public class ReadMoreActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_read_more);
         ButterKnife.bind(this);
+        onNewIntent(getIntent());
     }
 
     @Override
@@ -80,9 +81,12 @@ public class ReadMoreActivity extends BaseActivity {
             stringExtra = intent.getStringExtra(Constants.STRING_EXTRA);
             if (stringExtra != null) {
                 app = gson.fromJson(stringExtra, App.class);
-                setupActionBar();
-                setupMore();
-                setupRecycler();
+                if (app != null) {
+                    setupActionBar();
+                    setupMore();
+                    setupRecycler();
+                } else
+                    finishAfterTransition();
             }
         } else {
             finishAfterTransition();
@@ -147,22 +151,18 @@ public class ReadMoreActivity extends BaseActivity {
     }
 
     public void setupRecycler() {
-        if (app.getFileMetadataList() != null) {
-            FastItemAdapter<FileItem> fastItemAdapter = new FastItemAdapter<>();
-
-            Observable.fromIterable(app.getFileMetadataList())
-                    .map(FileItem::new)
-                    .toList()
-                    .doOnSuccess(fastItemAdapter::add)
-                    .onErrorReturn(throwable -> {
-                        Log.e(throwable.getMessage());
-                        return new ArrayList<>();
-                    })
-                    .subscribe();
-
-            recyclerView.setAdapter(fastItemAdapter);
-            recyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
-            recyclerView.setVisibility(View.VISIBLE);
-        }
+        FastItemAdapter<FileItem> fastItemAdapter = new FastItemAdapter<>();
+        Observable.fromIterable(app.getFileMetadataList())
+                .map(FileItem::new)
+                .toList()
+                .doOnSuccess(fastItemAdapter::add)
+                .onErrorReturn(throwable -> {
+                    Log.e(throwable.getMessage());
+                    return new ArrayList<>();
+                })
+                .subscribe();
+        recyclerView.setAdapter(fastItemAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
+        recyclerView.setVisibility(View.VISIBLE);
     }
 }

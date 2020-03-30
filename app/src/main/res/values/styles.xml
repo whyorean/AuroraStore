@@ -55,5 +55,4 @@
         <item name="chipStyle">@style/Widget.Aurora.FilterChip</item>
     </style>
 
-    <style name="AppTheme.Dialog" parent="@android:style/Theme.DeviceDefault.Dialog"/>
 </resources>

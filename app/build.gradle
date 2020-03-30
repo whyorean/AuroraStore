@@ -156,7 +156,7 @@ repositories {
     mavenCentral()
 }
 
-def Properties props = new Properties()
+Properties props = new Properties()
 def propFile = new File("signing.properties")
 if (propFile.canRead()) {
     props.load(new FileInputStream(propFile))

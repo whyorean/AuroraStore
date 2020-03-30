@@ -1,19 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="account_dummy">"匿名"</string>
-    <string name="account_dummy_desc">"使用匿名帐号登录？"</string>
     <string name="account_google">"Google 帐号"</string>
     <string name="account_logout">"从 Aurora 登出？"</string>
     <string name="account_prompt_login">"请登录以继续"</string>
-    <string name="account_switch">"切换帐号"</string>
     <string name="action_accounts">"帐号"</string>
     <string name="action_ask">"授予权限"</string>
     <string name="action_blacklist">"黑名单"</string>
     <string name="action_cancel">"取消"</string>
     <string name="action_clear">"清除"</string>
     <string name="action_clear_all">"全部清除"</string>
-    <string name="action_convert_local">"转换为普通应用"</string>
-    <string name="action_convert_system">"转换为系统应用"</string>
     <string name="action_copied">"链接已复制到剪贴板"</string>
     <string name="action_copy">"复制链接"</string>
     <string name="action_disable">"禁用"</string>
@@ -32,35 +28,24 @@
     <string name="action_filter_misc">"杂项"</string>
     <string name="action_filter_paid_apps">"付费应用"</string>
     <string name="action_filter_rating">"评分"</string>
-    <string name="action_flag">"举报应用"</string>
     <string name="action_get_local_apk">"提取本地 APK"</string>
     <string name="action_home">"首页"</string>
     <string name="action_installations">"安装"</string>
     <string name="action_installed">"已安装"</string>
     <string name="action_later">"稍后"</string>
     <string name="action_logging_in">"登录中"</string>
-    <string name="action_login">"登录"</string>
     <string name="action_logout">"登出"</string>
-    <string name="action_make_normal">"转换为普通应用"</string>
-    <string name="action_make_system">"转换为系统应用"</string>
     <string name="action_manual">"手动下载"</string>
     <string name="action_more">"更多"</string>
     <string name="action_next">"下一步"</string>
     <string name="action_pause">"暂停"</string>
-    <string name="action_remove">"移除"</string>
     <string name="action_restart">"重启"</string>
     <string name="action_resume">"继续"</string>
     <string name="action_retry">"重试"</string>
-    <string name="action_retry_ing">"重试中"</string>
-    <string name="action_search">"搜索"</string>
-    <string name="action_search_clearHistory">"清除所有"</string>
-    <string name="action_search_history">"搜索历史记录"</string>
     <string name="action_settings">"设置"</string>
     <string name="action_spoofed">"伪装"</string>
     <string name="action_submit">"提交"</string>
-    <string name="action_unignore">"移出黑名单"</string>
     <string name="action_uninstall">"卸载"</string>
-    <string name="action_unwhitelist">"忽略更新"</string>
     <string name="action_updates">"更新"</string>
     <string name="action_whitelist">"加入白名单"</string>
     <string name="availability_restriction_country">"您所在的国家或地区不提供此项目。"</string>
@@ -108,19 +93,15 @@
     <string name="download_resume_all">"全部继续"</string>
     <string name="early_access">"抢先体验"</string>
     <string name="error_app_not_found">"应用未找到"</string>
-    <string name="error_incorrect_password">"错误的邮箱帐号或密码"</string>
     <string name="error_invalid_device_definition">"设备定义被拒绝"</string>
     <string name="error_no_network">"无网络连接"</string>
     <string name="error_search_not_found">"找不到匹配的应用"</string>
-    <string name="error_unknown">"发生了未知错误"</string>
     <string name="exodus_noTracker">"不包含任何跟踪器"</string>
     <string name="exodus_powered">"由 Exodus 提供支持"</string>
     <string name="exodus_title">"Aurora 保护机制"</string>
     <string name="exodus_title_alt">"Exodus 报告"</string>
     <string name="exodus_viewMore">"查看"</string>
     <string name="exodus_viewReport">"查看报告"</string>
-    <string name="flagging_title">"举报不当内容"</string>
-    <string name="list_app_blacklisted_empty">"黑名单中无应用"</string>
     <string name="list_app_depends_on_gsf">"依赖谷歌框架"</string>
     <string name="list_app_has_ads">"有广告"</string>
     <string name="list_app_independent_from_gsf">"无需谷歌框架"</string>
@@ -129,16 +110,13 @@
     <string name="list_app_user">"用户应用"</string>
     <string name="list_blacklist">"黑名单中的应用"</string>
     <string name="list_blacklist_none">"黑名单中无应用"</string>
-    <string name="list_bulk_install">"个应用等待批量安装"</string>
     <string name="list_empty_fav">"收藏夹为空"</string>
-    <string name="list_empty_query">"最近搜索记录为空"</string>
     <string name="list_empty_updates">"没有可用的更新"</string>
     <string name="list_installed">"已安装"</string>
     <string name="list_installed_system">"仅显示用户应用"</string>
     <string name="list_not_installd">"未安装"</string>
     <string name="list_update_all">"全部更新"</string>
     <string name="list_update_all_txt">"个可用更新"</string>
-    <string name="list_updating">"更新中"</string>
     <string name="manual_download_disclaimer">"声明"</string>
     <string name="manual_download_incompatible">"Google Play 商店认为此应用与您的设备不兼容。这意味着 Google Play 商店服务器尚未返回版本代码。"</string>
     <string name="manual_download_warning">"此页面允许您手动选择要下载的应用版本。
@@ -189,7 +167,6 @@
     <string name="pref_proxy_port">"代理端口"</string>
     <string name="pref_proxy_type">"代理类型"</string>
     <string name="pref_requested_language">"更改 API 请求的默认语言"</string>
-    <string name="pref_requested_language_default">"您的默认语言"</string>
     <string name="pref_requested_location_disable">"您需要在开发者选项中禁用模拟位置以完全禁用它。"</string>
 
     <!-- be set -> 被设置 -->
@@ -203,7 +180,6 @@
     <string name="testing_program_opt_out">"退出"</string>
     <string name="testing_program_review_dialog_content_hint">"输入对该应用的反馈"</string>
     <string name="testing_program_section_opted_in_message">"应用更新将包含 Beta 版。如果您退出此应用的 Beta 版计划，您将不再获得 Beta 版更新。"</string>
-    <string name="testing_program_section_opted_in_propagating_message">"几分钟后，您将被添加到 Beta 版计划中。如果可用的话，您可以更新到此应用的 Beta 版。"</string>
 
     <!-- 此处复制了 Play 商店的原文 -->
     <string name="testing_program_section_opted_in_title">"您已成为 Beta 版测试人员"</string>
@@ -212,7 +188,6 @@
     <string name="testing_program_section_opted_out_message">"在新功能正式发布之前进行试用，并向开发者提供反馈。"</string>
 
     <!-- 此处复制了 Play 商店的原文 -->
-    <string name="testing_program_section_opted_out_propagating_message">"您可能需要等待几分钟才能退出 Beta 版计划。"</string>
     <string name="testing_program_section_opted_out_title">"成为 Beta 版测试人员"</string>
     <string name="title_all_apps">"所有应用"</string>
     <string name="title_home">"Aurora 商店"</string>
@@ -233,11 +208,6 @@
     <string name="pref_locale_custom_title">"自定义语言"</string>
     <string name="pref_locale_custom_summary">"强制自定义应用语言"</string>
     <string name="pref_locale_list_title">"选择语言"</string>
-    <string name="tab_explore">"探索应用"</string>
-    <string name="tab_games">"寻找游戏"</string>
-    <string name="tab_family">"家庭"</string>
-    <string name="pref_ui_tab_mode_title">"可滚动标签"</string>
-    <string name="pref_ui_tab_mode_summary">"启用以使标签可滚动，建议用于低 DPI 设备"</string>
 
     <!-- 原文并没有“显示”的含义，此处应为“提供” -->
     <string name="about_app">"Aurora 是 Play 商店的开源替代品。
@@ -264,26 +234,14 @@
     <string name="pref_notification_priority_default">"默认"</string>
     <string name="pref_notification_priority_high">"高"</string>
     <string name="pref_notification_priority_max">"最高"</string>
-    <string name="pref_notification_provider_summary">"选择默认通知样式"</string>
-    <string name="pref_notification_provider_title">"通知样式"</string>
-    <string name="pref_notification_provider_native">"系统"</string>
-    <string name="pref_notification_provider_aurora">"Aurora"</string>
     <string name="pref_ui_theme_light">"亮"</string>
     <string name="pref_ui_theme_dark">"暗"</string>
     <string name="pref_ui_theme_black">"黑"</string>
     <string name="action_close">"关闭"</string>
-    <string name="notification_installation_complete">"安装成功"</string>
-    <string name="notification_installation_failed">"安装失败"</string>
-    <string name="notification_installation_progress">"正在安装"</string>
-    <string name="apps_by">"应用程序作者："</string>
-    <string name="error_network_other">"网络错误"</string>
     <string name="exodus_hasTracker">"包含跟踪器"</string>
     <string name="list_selected">"已选择的应用"</string>
     <string name="notification_installation_auto">"已下载，点击安装"</string>
     <string name="notification_installation_manual">"APK 经捆绑，需要手动操作"</string>
-    <string name="title_search_result">"结果"</string>
-    <string name="action_recheck">"重新载入"</string>
-    <string name="action_recheck_ing">"重新载入中"</string>
     <string name="pref_install_type_summary">"使用系统安装程序来安装应用，将无法安装捆绑的 APK"</string>
     <string name="pref_install_type_title">"强制使用系统安装程序"</string>
     <string name="pref_ui_tab_default_title">"选择默认标签页"</string>
@@ -293,20 +251,13 @@
     <string name="pref_update_interval_daily">"每周"</string>
     <string name="pref_update_interval_weekly">"每天"</string>
     <string name="download_none">"无下载项目"</string>
-    <string name="error_app_download">"无法下载"</string>
 
     <!-- 不应口语化，此处”新版变化“见Google Play中的翻译 -->
     <string name="details_new_changes">"新版变化"</string>
-    <string name="action_apps">"应用"</string>
-    <string name="action_logging_in_success">"登录成功"</string>
-    <string name="action_token_expired">"Token 已过期，正在请求新 Token"</string>
-    <string name="action_token_force_request">"强制请求"</string>
     <string name="cat_top_apps">"热门软件"</string>
-    <string name="cat_top_categories">"热门分类"</string>
     <string name="cat_top_games">"热门游戏"</string>
     <string name="cat_top_family">"热门家庭应用"</string>
     <string name="details_no_changes">"开发者没有提供更新日志"</string>
-    <string name="error_logged_out">"您已登出"</string>
     <string name="link_dev">"开发者"</string>
     <string name="link_prmission">"权限"</string>
     <string name="link_playstore">"Play 商店"</string>
@@ -314,17 +265,9 @@
     <string name="link_share">"分享"</string>
     <string name="pref_install_mode_no_root">"Root 权限不可用，请确保您的设备已取得 Root 权限"</string>
     <string name="pref_install_mode_root_warn">"在 Android 9.0 以及更高版本的系统上，使用 Root 安装方式需要将 APK 下载至应用数据目录下，以便通过 adb shell 安装"</string>
-    <string name="pref_ui_ime">"搜索页面输入法"</string>
-    <string name="pref_ui_ime_summary">"默认在搜索页面上显示键盘"</string>
-    <string name="pref_ui_transparent">"透明风格"</string>
-    <string name="pref_ui_transparent_summary">"为类别和链接视图使用透明卡片样式"</string>
     <string name="pref_install_delete_summary">"在 Android 9.0 以及更高版本的系统上使用 Root 权限安装，默认情况下会删除 APK"</string>
     <string name="action_loading">"加载中"</string>
     <string name="pref_default">"默认"</string>
-    <string name="toast_loading_apps">"加载更多应用…"</string>
-    <string name="dialog_2FA_title">"两步验证"</string>
-    <string name="dialog_2FA_desc">"您似乎已启用两步验证，请生成应用密码并使用新生成的密码登录"</string>
-    <string name="dialog_2FA_positive">"创建密码"</string>
     <string name="dialog_purchase_title">"应用购买"</string>
     <string name="dialog_purchase_desc">"您需要先购买此应用，Aurora 商店目前不支持应用购买，您将被重定向到购买的网页。"</string>
     <string name="dialog_purchase_positive">"立即购买"</string>
@@ -372,36 +315,24 @@
     <string name="pref_clean_junk_desc">"从默认目录删除所有下载的文件"</string>
     <string name="pref_abandon_session">"强制清除安装会话"</string>
     <string name="pref_abandon_session_desc">"放弃所有挂起的旧安装会话"</string>
-    <string name="toast_unknown_reason">"出错了，请重试"</string>
     <string name="toast_junk_removed">"垃圾文件已删除"</string>
     <string name="toast_abandon_sessions">"旧安装会话已放弃"</string>
-    <string name="action_import">"导入"</string>
     <string name="dialog_title_self_update">"新的更新可用"</string>
     <string name="dialog_desc_self_update">"您想要现在更新吗？"</string>
-    <string name="installer_status_ongoing">"正在安装"</string>
     <string name="list_update_all_txt_one">"更新可用"</string>
     <string name="pref_ui_package">"按软件包名称搜索"</string>
     <string name="pref_ui_package_summary">"允许按软件包名称搜索应用"</string>
     <string name="pref_update_self_title">"检查更新"</string>
     <string name="pref_update_self_desc">"检查Aurora Store的最新可用更新"</string>
-    <string name="toast_rate_limit">"当前会话请求过多，正在请求新的登录会话"</string>
-    <string name="toast_token_stale">"令牌已过时，正在请求新的令牌"</string>
-    <string name="error_session_expired">"会话已过期"</string>
     <string name="list_updating_background">"正在后台下载应用"</string>
     <string name="list_updating_failed">"更新失败"</string>
     <string name="pref_updates_auto">"启用自动更新"</string>
     <string name="pref_updates_auto_desc">"每当新版本可用时更新应用"</string>
-    <string name="account_email">"电子邮箱"</string>
-    <string name="account_password">"密码"</string>
-    <string name="account_save_password">"保存密码"</string>
     <string name="toast_login_success">"登录成功"</string>
     <string name="toast_login_failed">"登录失败"</string>
     <string name="disclaimer">"使用您自己的Google账户登录Aurora Store可能会导致您的账户被列入黑名单或停用，因为Aurora Store违反了Google服务条款3.3，风险自负。您可以使用匿名或一次性账户来登录Aurora Store"</string>
     <string name="menu_blacklist">"添加到黑名单"</string>
     <string name="action_unknown">"未知"</string>
-    <string name="category_all">"所有分类"</string>
-    <string name="category_family">"家庭"</string>
-    <string name="category_games">"游戏"</string>
     <string name="details_dev_details">"开发者联系方式"</string>
     <string name="details_dev_email">"电子邮箱"</string>
     <string name="details_dev_address">"地址"</string>
@@ -409,7 +340,6 @@
     <string name="details_more_updated">"更新于"</string>
     <string name="details_more_version">"版本"</string>
     <string name="exodus_noReport">"报告不可用"</string>
-    <string name="list_empty_reviews">"没有评论可用"</string>
     <string name="testing_program_opt_in_success">"恭喜，您已成功加入测试版。"</string>
     <string name="testing_program_opt_in_failed">"哎呀！您的测试版订阅请求失败"</string>
     <string name="testing_program_opt_out_success">"登记测试版计划成功"</string>
@@ -419,11 +349,9 @@
     <string name="toast_api_build_retrying">"生成API失败，正在重试。"</string>
     <string name="toast_api_build_failed">"生成API失败。"</string>
     <string name="toast_api_build_api">"正在生成GooglePlay API"</string>
-    <string name="toast_api_token_validity">"正在检查令牌（token）有效性"</string>
     <string name="review_positive">"积极"</string>
     <string name="review_recent">"最近"</string>
     <string name="review_helpful">"有帮助"</string>
-    <string name="request_failed">"请求失败"</string>
     <string name="notification_channel_alert">"快速通知"</string>
     <string name="notification_channel_general">"普通通知"</string>
     <string name="action_continue_anyway">"是否仍要继续？"</string>
