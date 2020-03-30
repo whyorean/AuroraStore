@@ -18,6 +18,7 @@ import com.aurora.store.R;
 import com.aurora.store.manager.CategoryManager;
 import com.aurora.store.model.items.LocaleItem;
 import com.aurora.store.ui.single.fragment.BaseFragment;
+import com.aurora.store.util.Log;
 import com.aurora.store.util.PrefUtil;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 import com.mikepenz.fastadapter.adapters.FastItemAdapter;
@@ -84,7 +85,12 @@ public class LocaleSpoofFragment extends BaseFragment {
                 } else {
                     final GooglePlayAPI api = AuroraApplication.api;
                     api.setLocale(item.getLocale());
-                    PrefUtil.putString(requireContext(), Constants.PREFERENCE_SPOOF_LOCALE, item.getLocale().toString());
+                    String localeString = item.getLocale().toString();
+                    Log.e(localeString);
+                    if (localeString.contains("#"))
+                        localeString = localeString.substring(0, localeString.indexOf('#') - 1);
+                    Log.e(localeString);
+                    PrefUtil.putString(requireContext(), Constants.PREFERENCE_SPOOF_LOCALE, localeString);
                 }
 
                 CategoryManager.clear(requireContext());
