@@ -40,8 +40,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/margin_medium"
-                android:minHeight="76dp">
+                android:layout_margin="@dimen/margin_medium">
 
                 <ImageView
                     android:id="@+id/device_avatar"
@@ -74,149 +73,119 @@
             </RelativeLayout>
 
             <RelativeLayout
-                android:id="@+id/device_card"
+                android:id="@+id/card_device"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin_normal"
                 android:layout_marginEnd="@dimen/margin_normal"
                 android:layout_marginBottom="@dimen/margin_normal"
                 android:background="@drawable/generic_padded_bg"
-                android:minHeight="76dp">
+                android:padding="@dimen/padding_large">
 
-                <ImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/spoof_device_img"
-                    android:layout_width="@dimen/icon_size_medium"
-                    android:layout_height="@dimen/icon_size_medium"
-                    android:contentDescription="@string/content_description_icon"
-                    android:padding="10dp"
-                    android:src="@drawable/ic_incognito" />
+                    android:layout_width="@dimen/icon_size_category"
+                    android:layout_height="@dimen/icon_size_category"
+                    android:src="@drawable/ic_incognito"
+                    android:tint="?colorAccent" />
 
-                <LinearLayout
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txt_spoof_device"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_normal"
+                    android:layout_marginEnd="@dimen/margin_normal"
                     android:layout_toEndOf="@id/spoof_device_img"
-                    android:orientation="vertical"
-                    android:padding="5dp">
+                    android:text="@string/pref_category_spoof_device"
+                    android:textAppearance="@style/TextAppearance.Aurora.Title" />
 
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/pref_category_spoof_device"
-                        android:textAppearance="@style/TextAppearance.Aurora.Title" />
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/margin_xxsmall"
-                        android:text="@string/pref_device_to_pretend_to_be"
-                        android:textAppearance="@style/TextAppearance.Aurora.Body" />
-
-                    <Spinner
-                        android:id="@+id/spoof_device"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="-8dp"
-                        android:spinnerMode="dialog" />
-                </LinearLayout>
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txt_spoof_device_desc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txt_spoof_device"
+                    android:layout_alignStart="@+id/txt_spoof_device"
+                    android:layout_alignEnd="@id/txt_spoof_device"
+                    android:text="@string/pref_device_to_pretend_to_be"
+                    android:textAppearance="@style/TextAppearance.Aurora.Line2" />
             </RelativeLayout>
 
             <RelativeLayout
-                android:id="@+id/device_language"
+                android:id="@+id/card_locale"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin_normal"
                 android:layout_marginEnd="@dimen/margin_normal"
                 android:layout_marginBottom="@dimen/margin_normal"
                 android:background="@drawable/generic_padded_bg"
-                android:minHeight="76dp">
+                android:padding="@dimen/padding_large">
 
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/spoof_locale_img"
+                    android:layout_width="@dimen/icon_size_category"
+                    android:layout_height="@dimen/icon_size_category"
+                    android:src="@drawable/ic_translate"
+                    android:tint="?colorAccent" />
 
-                <ImageView
-                    android:id="@+id/spoof_img"
-                    android:layout_width="@dimen/icon_size_medium"
-                    android:layout_height="@dimen/icon_size_medium"
-                    android:contentDescription="@string/content_description_icon"
-                    android:padding="10dp"
-                    android:src="@drawable/ic_translate" />
-
-                <LinearLayout
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txt_spoof_locale"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_toEndOf="@id/spoof_img"
-                    android:orientation="vertical"
-                    android:padding="5dp">
+                    android:layout_marginStart="@dimen/margin_normal"
+                    android:layout_marginEnd="@dimen/margin_normal"
+                    android:layout_toEndOf="@id/spoof_locale_img"
+                    android:text="@string/pref_category_spoof_lang"
+                    android:textAppearance="@style/TextAppearance.Aurora.Title" />
 
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/pref_category_spoof_lang"
-                        android:textAppearance="@style/TextAppearance.Aurora.Title" />
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/margin_xxsmall"
-                        android:ellipsize="end"
-                        android:maxLines="2"
-                        android:text="@string/pref_requested_language"
-                        android:textAppearance="@style/TextAppearance.Aurora.Body" />
-
-                    <Spinner
-                        android:id="@+id/spoof_language"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="-8dp"
-                        android:spinnerMode="dialog" />
-                </LinearLayout>
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txt_spoof_locale_desc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txt_spoof_locale"
+                    android:layout_alignStart="@+id/txt_spoof_locale"
+                    android:layout_alignEnd="@id/txt_spoof_locale"
+                    android:text="@string/pref_requested_language"
+                    android:textAppearance="@style/TextAppearance.Aurora.Line2" />
             </RelativeLayout>
 
             <RelativeLayout
+                android:id="@+id/card_geolocation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin_normal"
                 android:layout_marginEnd="@dimen/margin_normal"
                 android:layout_marginBottom="@dimen/margin_normal"
-                android:background="@drawable/generic_padded_bg">
+                android:background="@drawable/generic_padded_bg"
+                android:padding="@dimen/padding_large">
 
-                <ImageView
-                    android:id="@+id/location_img"
-                    android:layout_width="@dimen/icon_size_medium"
-                    android:layout_height="@dimen/icon_size_medium"
-                    android:contentDescription="@string/content_description_icon"
-                    android:padding="10dp"
-                    android:src="@drawable/ic_map_marker" />
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/spoof_geolocation_img"
+                    android:layout_width="@dimen/icon_size_category"
+                    android:layout_height="@dimen/icon_size_category"
+                    android:src="@drawable/ic_map_marker"
+                    android:tint="?colorAccent" />
 
-                <LinearLayout
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txt_spoof_geolocation"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_toEndOf="@id/location_img"
-                    android:orientation="vertical"
-                    android:padding="5dp">
+                    android:layout_marginStart="@dimen/margin_normal"
+                    android:layout_marginEnd="@dimen/margin_normal"
+                    android:layout_toEndOf="@id/spoof_geolocation_img"
+                    android:text="@string/pref_category_spoof_location"
+                    android:textAppearance="@style/TextAppearance.Aurora.Title" />
 
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/pref_category_spoof_location"
-                        android:textAppearance="@style/TextAppearance.Aurora.Title" />
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/margin_xxsmall"
-                        android:text="@string/pref_requested_location_summary"
-                        android:textAppearance="@style/TextAppearance.Aurora.Body" />
-
-                    <Spinner
-                        android:id="@+id/spoof_location"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="-8dp"
-                        android:spinnerMode="dialog" />
-                </LinearLayout>
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txt_spoof_geolocation_desc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txt_spoof_geolocation"
+                    android:layout_alignStart="@+id/txt_spoof_geolocation"
+                    android:layout_alignEnd="@id/txt_spoof_geolocation"
+                    android:text="@string/pref_requested_location_summary"
+                    android:textAppearance="@style/TextAppearance.Aurora.Line2" />
             </RelativeLayout>
-
         </LinearLayout>
-
     </androidx.core.widget.NestedScrollView>
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
@@ -231,5 +200,4 @@
         android:textColor="@color/colorWhite"
         app:backgroundTint="?android:colorAccent"
         app:iconTint="@color/colorWhite" />
-
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

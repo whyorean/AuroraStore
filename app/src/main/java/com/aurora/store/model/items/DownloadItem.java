@@ -26,8 +26,10 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Data
+@EqualsAndHashCode(callSuper=false)
 public class DownloadItem extends AbstractItem<DownloadItem.ViewHolder> {
 
     private Download download;

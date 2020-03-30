@@ -125,7 +125,7 @@
                     android:scrollbarStyle="outsideOverlay"
                     android:scrollbars="vertical"
                     tools:itemCount="2"
-                    tools:listitem="@layout/item_three_rows" />
+                    tools:listitem="@layout/item_three_line" />
             </RelativeLayout>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

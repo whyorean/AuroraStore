@@ -34,7 +34,7 @@ public class FileItem extends AbstractItem<FileItem.ViewHolder> {
 
     @Override
     public int getLayoutRes() {
-        return R.layout.item_three_rows;
+        return R.layout.item_three_line;
     }
 
     @NotNull

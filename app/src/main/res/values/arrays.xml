@@ -1,10 +1,10 @@
 <!--
   ~ Aurora Store
-  ~ Copyright (C) 2019, Rahul Kumar Patel <whyorean@gmail.com>
+  ~ Copyright (C) 2019,Rahul Kumar Patel <whyorean@gmail.com>
   ~
   ~ Aurora Store is free software: you can redistribute it and/or modify
   ~ it under the terms of the GNU General Public License as published by
-  ~ the Free Software Foundation, either version 2 of the License, or
+  ~ the Free Software Foundation,either version 2 of the License,or
   ~ (at your option) any later version.
   ~
   ~ Aurora Store is distributed in the hope that it will be useful,
@@ -13,7 +13,7 @@
   ~ GNU General Public License for more details.
   ~
   ~ You should have received a copy of the GNU General Public License
-  ~ along with Aurora Store.  If not, see <http://www.gnu.org/licenses/>.
+  ~ along with Aurora Store.  If not,see <http://www.gnu.org/licenses/>.
   ~
   ~
   -->
@@ -66,35 +66,35 @@
     </string-array>
 
     <string-array name="geoLocation">
-        <item>@string/pref_default</item>
-        <item>Canberra, Australia</item>
-        <item>Brussels, Belgium</item>
-        <item>Brasilia, Brazil</item>
-        <item>Ottawa, Canada</item>
-        <item>Beijing, China</item>
-        <item>Copenhagen, Denmark</item>
-        <item>Helsinki, Finland</item>
-        <item>Paris, France</item>
-        <item>Germany, Berlin</item>
-        <item>Athens, Greece</item>
-        <item>New Delhi, India</item>
-        <item>Tokyo, Japan</item>
-        <item>Rome, Italy</item>
-        <item>Kuala Lumpur, Malaysia</item>
-        <item>Mexico, Mexico</item>
-        <item>Lisbon, Portugal</item>
-        <item>Seoul, Republic of Korea</item>
-        <item>Riyadh, Saudi Arabia</item>
-        <item>Madrid, Spain</item>
-        <item>Stockholm, Sweden</item>
-        <item>Bern, Switzerland</item>
-        <item>Ankara, Turkey</item>
-        <item>Kiev, Ukraine</item>
-        <item>Abu Dhabi, UAE</item>
-        <item>London, UK</item>
-        <item>Washington DC, USA</item>
-        <item>Hanoi, Viet Nam</item>
-        <item>Amsterdam, Netherlands</item>
+        <item>Default,Default</item>
+        <item>Canberra,Australia</item>
+        <item>Brussels,Belgium</item>
+        <item>Brasilia,Brazil</item>
+        <item>Ottawa,Canada</item>
+        <item>Beijing,China</item>
+        <item>Copenhagen,Denmark</item>
+        <item>Helsinki,Finland</item>
+        <item>Paris,France</item>
+        <item>Germany,Berlin</item>
+        <item>Athens,Greece</item>
+        <item>New Delhi,India</item>
+        <item>Tokyo,Japan</item>
+        <item>Rome,Italy</item>
+        <item>Kuala Lumpur,Malaysia</item>
+        <item>Mexico,Mexico</item>
+        <item>Lisbon,Portugal</item>
+        <item>Seoul,Republic of Korea</item>
+        <item>Riyadh,Saudi Arabia</item>
+        <item>Madrid,Spain</item>
+        <item>Stockholm,Sweden</item>
+        <item>Bern,Switzerland</item>
+        <item>Ankara,Turkey</item>
+        <item>Kiev,Ukraine</item>
+        <item>Abu Dhabi,UAE</item>
+        <item>London,UK</item>
+        <item>Washington DC,USA</item>
+        <item>Hanoi,Viet Nam</item>
+        <item>Amsterdam,Netherlands</item>
     </string-array>
 
     <string-array name="pref_locale_names">

@@ -23,6 +23,7 @@ package com.aurora.store.manager;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.os.Build;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
 
@@ -35,8 +36,10 @@ import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
@@ -70,16 +73,62 @@ public class SpoofManager {
         return devices;
     }
 
+    public List<Properties> getAvailableDevice() {
+        final List<Properties> propertiesList = new ArrayList<>();
+        final Properties defaultProperties = new Properties();
+        defaultProperties.setProperty("Build.MODEL", "Default");
+        defaultProperties.setProperty("Build.MANUFACTURER", Build.MANUFACTURER);
+        defaultProperties.setProperty("Build.VERSION.SDK_INT", String.valueOf(Build.VERSION.SDK_INT));
+        propertiesList.add(0, defaultProperties);
+        propertiesList.addAll(getSpoofDevicesFromApk());
+        propertiesList.addAll(getSpoofDevicesFromUser());
+        return propertiesList;
+    }
+
+    private List<Properties> getSpoofDevicesFromApk() {
+        final JarFile jarFile = getApkAsJar();
+        final List<Properties> propertiesList = new ArrayList<>();
+
+        if (null == jarFile) {
+            return propertiesList;
+        }
+
+        final Enumeration<JarEntry> entries = jarFile.entries();
+        while (entries.hasMoreElements()) {
+            final JarEntry entry = entries.nextElement();
+            if (!filenameValid(entry.getName())) {
+                continue;
+            }
+            propertiesList.add(getProperties(jarFile, entry));
+        }
+        return propertiesList;
+    }
+
+    private List<Properties> getSpoofDevicesFromUser() {
+        final List<Properties> deviceNames = new ArrayList<>();
+        final File defaultDir = new File(PathUtil.getRootApkPath(context));
+        final File[] files = defaultDir.listFiles();
+        if (defaultDir.exists() && files != null) {
+            for (File file : files) {
+                if (!file.isFile() || !filenameValid(file.getName())) {
+                    continue;
+                }
+                deviceNames.add(getProperties(file));
+            }
+        }
+        return deviceNames;
+    }
+
     public Properties getProperties(String entryName) {
-        File defaultDirectoryFile = new File(PathUtil.getRootApkPath(context), entryName);
+        final File defaultDirectoryFile = new File(PathUtil.getRootApkPath(context), entryName);
         if (defaultDirectoryFile.exists()) {
             Log.i("Loading device info from %s", defaultDirectoryFile.getAbsolutePath());
             return getProperties(defaultDirectoryFile);
         } else {
             Log.i("Loading device info from " + getApkFile() + "/" + entryName);
-            JarFile jarFile = getApkAsJar();
+            final JarFile jarFile = getApkAsJar();
             if (null == jarFile || null == jarFile.getEntry(entryName)) {
-                Properties empty = new Properties();
+                final Properties empty = new Properties();
                 empty.setProperty("Could not read ", entryName);
                 return empty;
             }
@@ -88,9 +137,10 @@ public class SpoofManager {
     }
 
     private Properties getProperties(JarFile jarFile, JarEntry entry) {
-        Properties properties = new Properties();
+        final Properties properties = new Properties();
         try {
             properties.load(jarFile.getInputStream(entry));
+            properties.setProperty("CONFIG_NAME", entry.getName());
         } catch (IOException e) {
             Log.e("Could not read %s", entry.getName());
         }
@@ -98,9 +148,10 @@ public class SpoofManager {
     }
 
     private Properties getProperties(File file) {
-        Properties properties = new Properties();
+        final Properties properties = new Properties();
         try {
             properties.load(new BufferedInputStream(new FileInputStream(file)));
+            properties.setProperty("CONFIG_NAME", file.getName());
         } catch (IOException e) {
             Log.e("Could not read %s", file.getName());
         }
@@ -127,14 +178,14 @@ public class SpoofManager {
     }
 
     private Map<String, String> getDevicesFromApk() {
-        JarFile jarFile = getApkAsJar();
-        Map<String, String> deviceNames = new HashMap<>();
+        final JarFile jarFile = getApkAsJar();
+        final Map<String, String> deviceNames = new HashMap<>();
         if (null == jarFile) {
             return deviceNames;
         }
-        Enumeration<JarEntry> entries = jarFile.entries();
+        final Enumeration<JarEntry> entries = jarFile.entries();
         while (entries.hasMoreElements()) {
-            JarEntry entry = entries.nextElement();
+            final JarEntry entry = entries.nextElement();
             if (!filenameValid(entry.getName())) {
                 continue;
             }
@@ -144,10 +195,10 @@ public class SpoofManager {
     }
 
     private JarFile getApkAsJar() {
-        File apk = getApkFile();
+        final File file = getApkFile();
         try {
-            if (null != apk && apk.exists()) {
-                return new JarFile(apk);
+            if (null != file && file.exists()) {
+                return new JarFile(file);
             }
         } catch (IOException e) {
             Log.e("Could not open Aurora Store apk as a jar file: %s", e.getMessage());
@@ -157,7 +208,8 @@ public class SpoofManager {
 
     private File getApkFile() {
         try {
-            String sourceDir = context.getPackageManager().getApplicationInfo(BuildConfig.APPLICATION_ID, 0).sourceDir;
+            final String sourceDir = context.getPackageManager()
+                    .getApplicationInfo(BuildConfig.APPLICATION_ID, 0).sourceDir;
             if (!TextUtils.isEmpty(sourceDir)) {
                 return new File(sourceDir);
             }
@@ -168,8 +220,8 @@ public class SpoofManager {
     }
 
     private Map<String, String> getDevicesFromDownloadDirectory() {
-        Map<String, String> deviceNames = new HashMap<>();
-        File defaultDir = new File(PathUtil.getRootApkPath(context));
+        final Map<String, String> deviceNames = new HashMap<>();
+        final File defaultDir = new File(PathUtil.getRootApkPath(context));
         if (!defaultDir.exists() || null == defaultDir.listFiles()) {
             return deviceNames;
         }

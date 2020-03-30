@@ -83,7 +83,7 @@ public class ApiBuilderUtil {
 
     private static PlayStoreApiBuilder getBuilder(Context context, LoginInfo loginInfo) {
         SharedPreferences sharedPreferences = Util.getPrefs(context);
-        String locale = sharedPreferences.getString(Constants.PREFERENCE_REQUESTED_LANGUAGE, StringUtils.EMPTY);
+        String locale = sharedPreferences.getString(Constants.PREFERENCE_SPOOF_LOCALE, StringUtils.EMPTY);
         loginInfo.setLocale(TextUtils.isEmpty(locale) ? Locale.getDefault().getLanguage() : locale);
 
         PlayStoreApiBuilder builder = new PlayStoreApiBuilder();
@@ -102,7 +102,7 @@ public class ApiBuilderUtil {
 
     public static DeviceInfoProvider getDeviceInfoProvider(Context context) {
         DeviceInfoProvider deviceInfoProvider;
-        String spoofDevice = PrefUtil.getString(context, Constants.PREFERENCE_DEVICE_TO_PRETEND_TO_BE);
+        String spoofDevice = PrefUtil.getString(context, Constants.PREFERENCE_SPOOF_DEVICE);
         if (TextUtils.isEmpty(spoofDevice)) {
             deviceInfoProvider = new NativeDeviceInfoProvider();
             ((NativeDeviceInfoProvider) deviceInfoProvider).setContext(context);

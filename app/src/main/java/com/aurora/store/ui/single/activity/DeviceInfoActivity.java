@@ -131,9 +131,9 @@ public class DeviceInfoActivity extends BaseActivity {
         incognito_fab.setOnClickListener(click -> showConfirmationDialog());
     }
 
-    private boolean isDeviceDefinitionValid(String spoofDevice) {
-        PropertiesDeviceInfoProvider deviceInfoProvider = new PropertiesDeviceInfoProvider();
-        deviceInfoProvider.setProperties(new SpoofManager(this).getProperties(spoofDevice));
+    private boolean isDeviceDefinitionValid(String deviceName) {
+        final PropertiesDeviceInfoProvider deviceInfoProvider = new PropertiesDeviceInfoProvider();
+        deviceInfoProvider.setProperties(new SpoofManager(this).getProperties(deviceName));
         deviceInfoProvider.setLocaleString(Locale.getDefault().toString());
         return deviceInfoProvider.isValid();
     }
@@ -146,8 +146,8 @@ public class DeviceInfoActivity extends BaseActivity {
                     if (!TextUtils.isEmpty(deviceName) && !isDeviceDefinitionValid(deviceName)) {
                         ContextUtil.toast(this, R.string.error_invalid_device_definition);
                     } else {
-                        PrefUtil.putString(this, Constants.PREFERENCE_DEVICE_TO_PRETEND_TO_BE, deviceName);
-                        PrefUtil.putInteger(this, Constants.PREFERENCE_DEVICE_TO_PRETEND_TO_BE_INDEX, deviceIndex);
+                        PrefUtil.putString(this, Constants.PREFERENCE_SPOOF_DEVICE, deviceName);
+                        //PrefUtil.putInteger(this, Constants.PREFERENCE_DEVICE_TO_PRETEND_TO_BE_INDEX, deviceIndex);
                     }
                     Accountant.completeCheckout(this);
                     dialogInterface.dismiss();

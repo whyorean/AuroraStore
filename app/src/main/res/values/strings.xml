@@ -246,6 +246,7 @@
     <string name="pref_notification_provider_title">"Notification provider"</string>
     <string name="pref_notification_provider_native">"Native notification provider"</string>
     <string name="pref_notification_provider_aurora">"Aurora notification provider"</string>
+    <string name="pref_notification_title_geo_spoof">"Aurora Geo Spoof"</string>
     <string name="pref_ui_theme_light">"Light"</string>
     <string name="pref_ui_theme_dark">"Dark"</string>
     <string name="pref_ui_theme_black">"Black"</string>
@@ -277,6 +278,7 @@
     <string name="action_logging_in_success">"Successfully logged in"</string>
     <string name="action_token_expired">"Token expired, requesting new token"</string>
     <string name="action_token_force_request">"Force request"</string>
+    <string name="action_reset">"Reset"</string>
     <string name="cat_top_apps">"Top apps"</string>
     <string name="cat_top_categories">"Top categories"</string>
     <string name="cat_top_games">"Top games"</string>

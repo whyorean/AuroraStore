@@ -170,6 +170,7 @@
             android:excludeFromRecents="true"
             android:finishOnTaskLaunch="true"
             android:launchMode="singleInstance" />
+        <activity android:name=".ui.spoof.GenericSpoofActivity" />
 
         <provider
             android:name="androidx.core.content.FileProvider"

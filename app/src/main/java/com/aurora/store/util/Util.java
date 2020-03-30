@@ -555,23 +555,38 @@ public class Util {
     }
 
     public static void startValidationService(Context context) {
-        if (!ValidateApiService.isServiceRunning())
-            context.startService(new Intent(context, ValidateApiService.class));
+        try {
+            if (!ValidateApiService.isServiceRunning())
+                context.startService(new Intent(context, ValidateApiService.class));
+        } catch (IllegalStateException e) {
+            Log.e(e.getMessage());
+        }
     }
 
     public static void startBulkUpdateService(Context context) {
-        if (!BulkUpdateService.isServiceRunning())
-            context.startService(new Intent(context, BulkUpdateService.class));
+        try {
+            if (!BulkUpdateService.isServiceRunning())
+                context.startService(new Intent(context, BulkUpdateService.class));
+        } catch (IllegalStateException e) {
+            Log.e(e.getMessage());
+        }
     }
 
     public static void stopBulkUpdateService(Context context) {
-        if (BulkUpdateService.isServiceRunning()) {
-            context.stopService(new Intent(context, BulkUpdateService.class));
+        try {
+            if (BulkUpdateService.isServiceRunning())
+                context.stopService(new Intent(context, BulkUpdateService.class));
+        } catch (IllegalStateException e) {
+            Log.e(e.getMessage());
         }
     }
 
     public static void startNotificationService(Context context) {
-        if (NotificationService.isNotAvailable())
-            context.startService(new Intent(context, NotificationService.class));
+        try {
+            if (NotificationService.isNotAvailable())
+                context.startService(new Intent(context, NotificationService.class));
+        } catch (IllegalStateException e) {
+            Log.e(e.getMessage());
+        }
     }
 }

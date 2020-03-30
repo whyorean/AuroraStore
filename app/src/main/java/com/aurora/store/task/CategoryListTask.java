@@ -86,7 +86,7 @@ public class CategoryListTask {
     }
 
     private Locale getLocale(Context context) {
-        String locale = PrefUtil.getString(context, Constants.PREFERENCE_REQUESTED_LANGUAGE);
+        String locale = PrefUtil.getString(context, Constants.PREFERENCE_SPOOF_LOCALE);
         if (TextUtils.isEmpty(locale))
             return Locale.getDefault();
         else
