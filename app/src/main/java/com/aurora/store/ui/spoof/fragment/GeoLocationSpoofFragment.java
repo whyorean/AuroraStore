@@ -22,7 +22,10 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.mikepenz.fastadapter.adapters.FastItemAdapter;
 import com.mikepenz.fastadapter.select.SelectExtension;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -98,8 +101,10 @@ public class GeoLocationSpoofFragment extends BaseFragment {
     }
 
     private void fetchAvailableGeoLocations() {
-        String[] geoLocations = requireContext().getResources().getStringArray(R.array.geoLocation);
-        Observable.fromIterable(Arrays.asList(geoLocations))
+        final String[] geoLocations = requireContext().getResources().getStringArray(R.array.geoLocation);
+        final List<String> stringList = new ArrayList<>(Arrays.asList(geoLocations));
+        Collections.sort(stringList);
+        Observable.fromIterable(stringList)
                 .subscribeOn(Schedulers.io())
                 .map(GeoItem::new)
                 .toList()
