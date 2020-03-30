@@ -73,13 +73,17 @@ public class DeviceInfoBuilder {
     public boolean build() {
         final File file = new File(PathUtil.getExtBaseDirectory(context), "device-" + Build.DEVICE + ".properties");
         final String content = buildProperties(getDeviceInfo());
+
         try {
-            Writer writer = new FileWriter(file);
+            if (!file.exists())
+                PathUtil.createBaseDirectory(context);
+
+            final Writer writer = new FileWriter(file);
             writer.write(content);
             writer.flush();
             return true;
         } catch (IOException e) {
-            Log.e("Filed to write device info");
+            Log.e("Failed to write device info");
             return false;
         }
     }
