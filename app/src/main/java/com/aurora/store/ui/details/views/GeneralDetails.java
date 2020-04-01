@@ -243,9 +243,8 @@ public class GeneralDetails extends AbstractDetails {
         } else {
             show(R.id.more_layout);
             moreLayout.setOnClickListener(v -> {
+                ReadMoreActivity.app = app;
                 final Intent intent = new Intent(activity, ReadMoreActivity.class);
-                intent.putExtra(Constants.INTENT_PACKAGE_NAME, app.getPackageName());
-                intent.putExtra(Constants.STRING_EXTRA, gson.toJson(app));
                 activity.startActivity(intent, ViewUtil.getEmptyActivityBundle(activity));
             });
         }

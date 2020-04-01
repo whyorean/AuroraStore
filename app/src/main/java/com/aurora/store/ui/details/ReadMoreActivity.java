@@ -64,33 +64,20 @@ public class ReadMoreActivity extends BaseActivity {
     @BindView(R.id.recycler)
     RecyclerView recyclerView;
 
-    private App app;
+    public static App app;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_read_more);
         ButterKnife.bind(this);
-        onNewIntent(getIntent());
-    }
 
-    @Override
-    protected void onNewIntent(Intent intent) {
-        super.onNewIntent(intent);
-        if (intent != null) {
-            stringExtra = intent.getStringExtra(Constants.STRING_EXTRA);
-            if (stringExtra != null) {
-                app = gson.fromJson(stringExtra, App.class);
-                if (app != null) {
-                    setupActionBar();
-                    setupMore();
-                    setupRecycler();
-                } else
-                    finishAfterTransition();
-            }
-        } else {
+        if (app != null) {
+            setupActionBar();
+            setupMore();
+            setupRecycler();
+        } else
             finishAfterTransition();
-        }
     }
 
     @Override
