@@ -84,15 +84,11 @@ public class GeoLocationSpoofFragment extends BaseFragment {
                     selectedItems.setChecked(false);
                 }
 
-                fastItemAdapter.notifyAdapterDataSetChanged();
-
                 if (item.getLocation().toLowerCase().contains("default")) {
                     setMockDialog(false);
                 } else {
                     applyGeoSpoof(item.getLocation(), item);
                 }
-
-                item.setSelected(true);
             }
         });
 
@@ -129,6 +125,7 @@ public class GeoLocationSpoofFragment extends BaseFragment {
                         Util.clearCache(requireContext());
                     }
                     item.setSelected(result);
+                    fastItemAdapter.notifyAdapterDataSetChanged();
                 }, throwable -> {
                     if (throwable instanceof SecurityException) {
                         setMockDialog(true);

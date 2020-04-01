@@ -72,6 +72,7 @@ public class DeviceSpoofFragment extends BaseFragment {
             if (selected) {
                 for (DeviceItem deviceItem : selectExtension.getSelectedItems()) {
                     deviceItem.setSelected(false);
+                    deviceItem.setChecked(false);
                 }
 
                 fastItemAdapter.notifyAdapterDataSetChanged();
