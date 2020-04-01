@@ -91,8 +91,6 @@ public class UpdatableAppsTask extends AllAppsTask {
 
     public App addInstalledAppInfo(App appFromMarket, App installedApp) {
         if (installedApp != null) {
-            appFromMarket.setPackageName(installedApp.getPackageName());
-            appFromMarket.setVersionName(installedApp.getVersionName());
             appFromMarket.setDisplayName(installedApp.getDisplayName());
             appFromMarket.setSystem(installedApp.isSystem());
         }
