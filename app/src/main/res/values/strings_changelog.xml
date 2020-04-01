@@ -21,6 +21,11 @@
 <resources>
     <string name="app_log" translatable="false">
         \n
+        \n Changelog : v3.2.3
+        \n • Fix root installs
+        \n • Fix files details not being displayed
+        \n
+        \n
         \n Changelog : v3.2.2
         \n • Update translations
         \n • Bug Fixes and Improvements
