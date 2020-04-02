@@ -297,7 +297,9 @@ public class NotificationService extends Service {
                         }
                     });
 
-            notificationManager.notify(downloadBundle.getPackageName(), groupId, builder.build());
+            notificationManager.notify(downloadBundle.getPackageName(),
+                    downloadBundle.getPackageName().hashCode(),
+                    builder.build());
         }
     }
 

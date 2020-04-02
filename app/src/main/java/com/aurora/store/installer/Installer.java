@@ -158,10 +158,10 @@ public class Installer implements AppInstallerAbstract.InstallationStatusListene
         if (app == null)
             return;
 
-        Object object = context.getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
-        NotificationManager notificationManager = (NotificationManager) object;
+        final Object object = context.getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
+        final NotificationManager notificationManager = (NotificationManager) object;
         if (notificationManager != null)
-            notificationManager.cancel(app.getPackageName().hashCode());
+            notificationManager.cancel(app.getPackageName(), app.getPackageName().hashCode());
     }
 
     private void sendStatusBroadcast(String packageName, int status) {
