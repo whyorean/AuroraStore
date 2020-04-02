@@ -33,9 +33,12 @@ import com.tonyodev.fetch2.EnqueueAction;
 import com.tonyodev.fetch2.NetworkType;
 import com.tonyodev.fetch2.Priority;
 import com.tonyodev.fetch2.Request;
+import com.tonyodev.fetch2core.Extras;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class RequestBuilder {
 
@@ -162,11 +165,15 @@ public class RequestBuilder {
     }
 
     public static void addBasicHeaders(Request request, App app) {
-        request.addHeader(Constants.DOWNLOAD_PACKAGE_NAME, app.getPackageName());
-        request.addHeader(Constants.DOWNLOAD_DISPLAY_NAME, app.getDisplayName());
-        request.addHeader(Constants.DOWNLOAD_VERSION_NAME, app.getVersionName());
-        request.addHeader(Constants.DOWNLOAD_VERSION_CODE, String.valueOf(app.getVersionCode()));
-        request.addHeader(Constants.DOWNLOAD_ICON_URL, app.getIconUrl());
+        final Map<String, String> stringMap = new HashMap<>();
+        stringMap.put(Constants.DOWNLOAD_PACKAGE_NAME, app.getPackageName());
+        stringMap.put(Constants.DOWNLOAD_DISPLAY_NAME, app.getDisplayName());
+        stringMap.put(Constants.DOWNLOAD_VERSION_NAME, app.getVersionName());
+        stringMap.put(Constants.DOWNLOAD_VERSION_CODE, String.valueOf(app.getVersionCode()));
+        stringMap.put(Constants.DOWNLOAD_ICON_URL, app.getIconUrl());
+
+        final Extras extras = new Extras(stringMap);
+        request.setExtras(extras);
     }
 }
 

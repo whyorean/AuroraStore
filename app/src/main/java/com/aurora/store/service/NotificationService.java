@@ -36,6 +36,7 @@ import com.tonyodev.fetch2.Error;
 import com.tonyodev.fetch2.Fetch;
 import com.tonyodev.fetch2.FetchGroup;
 import com.tonyodev.fetch2.Status;
+import com.tonyodev.fetch2core.Extras;
 
 import org.apache.commons.lang3.StringUtils;
 import org.jetbrains.annotations.NotNull;
@@ -346,7 +347,7 @@ public class NotificationService extends Service {
     }
 
     @Getter
-    private class DownloadBundle {
+    private static class DownloadBundle {
         private String packageName;
         private String displayName;
         private String versionName;
@@ -354,11 +355,12 @@ public class NotificationService extends Service {
         private String iconUrl;
 
         public DownloadBundle(Download download) {
-            this.packageName = download.getRequest().getHeaders().get(Constants.DOWNLOAD_PACKAGE_NAME);
-            this.displayName = download.getRequest().getHeaders().get(Constants.DOWNLOAD_DISPLAY_NAME);
-            this.versionName = download.getRequest().getHeaders().get(Constants.DOWNLOAD_VERSION_NAME);
-            this.versionCode = download.getRequest().getHeaders().get(Constants.DOWNLOAD_VERSION_CODE);
-            this.iconUrl = download.getRequest().getHeaders().get(Constants.DOWNLOAD_ICON_URL);
+            Extras extras = download.getExtras();
+            this.packageName = extras.getString(Constants.DOWNLOAD_PACKAGE_NAME, StringUtils.EMPTY);
+            this.displayName = extras.getString(Constants.DOWNLOAD_DISPLAY_NAME, StringUtils.EMPTY);
+            this.versionName = extras.getString(Constants.DOWNLOAD_VERSION_NAME, StringUtils.EMPTY);
+            this.versionCode = extras.getString(Constants.DOWNLOAD_VERSION_CODE, StringUtils.EMPTY);
+            this.iconUrl = extras.getString(Constants.DOWNLOAD_ICON_URL, StringUtils.EMPTY);
         }
     }
 }

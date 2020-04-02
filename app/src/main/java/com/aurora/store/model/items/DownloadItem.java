@@ -18,6 +18,7 @@ import com.mikepenz.fastadapter.FastAdapter;
 import com.mikepenz.fastadapter.items.AbstractItem;
 import com.tonyodev.fetch2.Download;
 import com.tonyodev.fetch2.Status;
+import com.tonyodev.fetch2core.Extras;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -93,8 +94,9 @@ public class DownloadItem extends AbstractItem<DownloadItem.ViewHolder> {
         public void bindView(@NotNull DownloadItem item, @NotNull List<?> list) {
 
             final Download download = item.getDownload();
-            final String displayName = download.getHeaders().get(Constants.DOWNLOAD_DISPLAY_NAME);
-            final String iconURL = download.getHeaders().get(Constants.DOWNLOAD_ICON_URL);
+            final Extras extras = download.getExtras();
+            final String displayName = extras.getString(Constants.DOWNLOAD_DISPLAY_NAME,"Unknown");
+            final String iconURL = extras.getString(Constants.DOWNLOAD_ICON_URL,"");
             final Status status = download.getStatus();
 
             GlideApp
