@@ -2,14 +2,20 @@ package com.aurora.store.task;
 
 import android.content.Context;
 
+import com.aurora.store.AuroraApplication;
 import com.aurora.store.download.DownloadManager;
 import com.aurora.store.download.RequestBuilder;
 import com.aurora.store.model.App;
 import com.aurora.store.util.Log;
+import com.aurora.store.util.Util;
 import com.dragons.aurora.playstoreapiv2.AndroidAppDeliveryData;
+import com.tonyodev.fetch2.AbstractFetchGroupListener;
+import com.tonyodev.fetch2.Download;
 import com.tonyodev.fetch2.Fetch;
-import com.tonyodev.fetch2.FetchListener;
+import com.tonyodev.fetch2.FetchGroup;
 import com.tonyodev.fetch2.Request;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,5 +46,19 @@ public class LiveUpdate {
 
         fetch.enqueue(requestList, updatedRequestList ->
                 Log.i("Updating -> %s", app.getDisplayName()));
+
+        fetch.addListener(new AbstractFetchGroupListener() {
+            @Override
+            public void onCompleted(int groupId, @NotNull Download download, @NotNull FetchGroup fetchGroup) {
+                super.onCompleted(groupId, download, fetchGroup);
+                if (groupId == app.getPackageName().hashCode() && fetchGroup.getGroupDownloadProgress() == 100) {
+                    if (Util.shouldAutoInstallApk(context)) {
+                        //Call the installer
+                        AuroraApplication.getInstaller().install(app);
+                    }
+                    fetch.removeListener(this);
+                }
+            }
+        });
     }
 }
