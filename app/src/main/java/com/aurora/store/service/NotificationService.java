@@ -253,8 +253,10 @@ public class NotificationService extends Service {
                     if (fetchGroup.getGroupDownloadProgress() == 100) {
                         builder.setAutoCancel(true);
                         builder.setContentIntent(getContentIntentForDetails(downloadBundle.getPackageName()));
-                        //Check for Aurora Services, if available do not show install notification.
-                        if (!Util.isPrivilegedInstall(this)) {
+                        //Check for Aurora Services or Root, if available do not show install notification.
+                        if (Util.isPrivilegedInstall(this)) {
+                            progressBigText.bigText(getString(R.string.details_installing));
+                        }else{
                             //Check for Enforced Native & Add Install action via notification, only if app is not bundled.
                             if (Util.isNativeInstallerEnforced(this) && fetchGroup.getDownloads().size() > 1) {
                                 progressBigText.bigText(getString(R.string.notification_installation_manual));
@@ -263,10 +265,9 @@ public class NotificationService extends Service {
                                 builder.addAction(R.drawable.ic_installation,
                                         getString(R.string.details_install),
                                         getInstallIntent(downloadBundle.getPackageName(), downloadBundle.getVersionCode()));
-                                builder.setAutoCancel(true);
                             }
-                            builder.setStyle(progressBigText);
                         }
+                        builder.setStyle(progressBigText);
                     }
                     break;
             }

@@ -308,8 +308,6 @@ public class Util {
     public static boolean isPrivilegedInstall(Context context) {
         String prefValue = PrefUtil.getString(context, Constants.PREFERENCE_INSTALLATION_METHOD);
         switch (prefValue) {
-            case "0":
-                return false;
             case "1":
             case "2":
                 return true;
