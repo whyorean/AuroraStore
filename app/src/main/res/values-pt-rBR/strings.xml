@@ -195,8 +195,6 @@ Lembre-se que fazer o download de versões arbitrárias de aplicativos não é s
     <string name="pref_locale_custom_title">"Idioma personalizado"</string>
     <string name="pref_locale_custom_summary">"Forçar um idioma personalizado no aplicativo"</string>
     <string name="pref_locale_list_title">"Escolher idioma"</string>
-
-    <!-- Fuzzy -->
     <string name="about_app">"Aurora é uma alternativa de código aberto à Play Store. Ela permite que você faça o download de aplicativos, forneçe atualizações de aplicativos instalados e permite que você pesquise por aplicativos e jogos. Ela também fornece uma lista de rastreadores num aplicativo."</string>
     <string name="about_paypal">"PayPal"</string>
     <string name="about_paypal_summary">"Faça uma doação através do PayPal"</string>
@@ -224,6 +222,8 @@ Lembre-se que fazer o download de versões arbitrárias de aplicativos não é s
     <string name="action_close">"Fechar"</string>
     <string name="exodus_hasTracker">"Contém rastreadores"</string>
     <string name="list_selected">"Aplicativos selecionados"</string>
+
+    <!-- Fuzzy -->
     <string name="notification_installation_auto">"Download concluído; toque para instalar"</string>
     <string name="notification_installation_manual">"APK empacotado; ação manual necessária"</string>
     <string name="pref_install_type_summary">"Use o instalador nativo para instalar pacotes; quebra a função de instalação de APKs empacotados"</string>
@@ -235,9 +235,6 @@ Lembre-se que fazer o download de versões arbitrárias de aplicativos não é s
     <string name="pref_update_interval_daily">"Semanalmente"</string>
     <string name="pref_update_interval_weekly">"Diariamente"</string>
     <string name="download_none">"Nenhum download"</string>
-
-    <!-- Precisa de alteração no código de localização para incluir o valor a ser expandido (nome do aplicativo). Não é possível traduzir corretamente sem essa alteração. -->
-    <!-- Fuzzy -->
     <string name="details_new_changes">"O que há de novo"</string>
     <string name="cat_top_apps">"Top das Aplicações"</string>
     <string name="cat_top_games">"Principais jogos"</string>
@@ -352,4 +349,19 @@ Lembre-se que fazer o download de versões arbitrárias de aplicativos não é s
     <string name="crash_title">"Aurora Relatório de Falha"</string>
     <string name="crash_line1">"Bem, isso é embaraçoso !"</string>
     <string name="crash_line2">"Você pode enviar este relatório para o Desenvolvedor do Aurora, para ajudar a resolver o problema."</string>
+    <string name="action_ignore">"Ignorar essa versão"</string>
+    <string name="action_ignore_remove">"Remover da lista de ignorados"</string>
+    <string name="action_disabled">"Desativado"</string>
+    <string name="exodus_progress">"Checando por trackers"</string>
+    <string name="list_update_selected">"Atualizar selecionado"</string>
+    <string name="about_libera">"Libera Pay"</string>
+    <string name="about_libera_summary">"Se torne um apoiador em Libera Pay"</string>
+    <string name="about_bitcoin_btc">"Bitcoin"</string>
+    <string name="about_bitcoin_btc_summary">"Doar por Bitcoin (BTC)"</string>
+    <string name="about_bitcoin_bch">"Bitcoin Cash"</string>
+    <string name="about_bitcoin_bch_summary">"Doar por Bircoin Cash (BCH)"</string>
+    <string name="about_bitcoin_eth">"Ethereum"</string>
+    <string name="about_bitcoin_eth_summary">"Doar por Etheruem (ETH)"</string>
+    <string name="about_bhim">"BHIM - UPI"</string>
+    <string name="about_bhim_summary">"Doar por UPI"</string>
 </resources>
