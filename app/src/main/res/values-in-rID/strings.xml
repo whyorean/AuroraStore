@@ -220,6 +220,8 @@ Harap diperhatikan bahwa mengubah-ubah versi aplikasi yang akan diunduh tidak di
     <string name="action_close">"Tutup"</string>
     <string name="exodus_hasTracker">"Berisi pelacak"</string>
     <string name="list_selected">"Aplikasi yang dipilih"</string>
+
+    <!-- Fuzzy -->
     <string name="notification_installation_auto">"Terunduh, klik untuk memasang"</string>
     <string name="notification_installation_manual">"Apk Bundel, diperlukan tindakan manual"</string>
     <string name="pref_install_type_summary">"Gunakan penginstall bawaan untuk menginstal paket, hentikan instalasi apk yang dibundel"</string>
