@@ -218,6 +218,8 @@
     <string name="action_close">"Затвори"</string>
     <string name="exodus_hasTracker">"Съдържа тракери"</string>
     <string name="list_selected">"Избрани приложения"</string>
+
+    <!-- Fuzzy -->
     <string name="notification_installation_auto">"Свалено, докоснете за инсталация"</string>
     <string name="notification_installation_manual">"Bundled APK, изисква действие от потребителя"</string>
     <string name="pref_install_type_summary">"Използавне на системния метод за инсталация на APK файлове, проваля се ако APK файла се състои от няколко части"</string>
