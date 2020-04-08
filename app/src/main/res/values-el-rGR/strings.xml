@@ -220,6 +220,8 @@
     <string name="action_close">"Κλείσιμο"</string>
     <string name="exodus_hasTracker">"Περιέχει ιχνηλάτες"</string>
     <string name="list_selected">"Επιλεγμένες Εφαρμογές"</string>
+
+    <!-- Fuzzy -->
     <string name="notification_installation_auto">"Έγινε λήψη, πατήστε για εγκατάσταση"</string>
     <string name="notification_installation_manual">"Bundled αρχείο APK, απαιτείται χειροκίνητη ενέργεια"</string>
     <string name="pref_install_type_summary">"Χρήση ενσωματωμένου installer για εγκατάσταση πακέτων, σπάει την συμβατότητα εγκατάστασης bundled apk"</string>
