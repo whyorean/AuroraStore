@@ -191,7 +191,7 @@
     <string name="pref_locale_custom_title">"Карыстальніцкая мова"</string>
     <string name="pref_locale_custom_summary">"Прымусова выкарыстоўваць карыстальніцкую мову"</string>
     <string name="pref_locale_list_title">"Выбраць лакальны стандарт"</string>
-    <string name="about_app">"Aurora — гэта альтэрнатыва Краме Play з адкрытым зыходным кодам.
+    <string name="about_app">"Aurora — гэта альтэрнатыва Краме Play з адкрытым зыходным кодам. 
         Яна можа спампоўваць праграмы, абнаўляць усталяваныя і дазваляе шукаць праграмы і гульні.
         Яна таксама падае спіс трэкераў убудаваных у праграму.
     "</string>
@@ -221,6 +221,8 @@
     <string name="action_close">"Закрыць"</string>
     <string name="exodus_hasTracker">"Утрымлівае трэкеры"</string>
     <string name="list_selected">"Праграмы выбраны"</string>
+
+    <!-- Fuzzy -->
     <string name="notification_installation_auto">"Спампаваць, націсніце для ўсталявання"</string>
     <string name="notification_installation_manual">"Пакетны APK. Патрабуюцца дзеянні ўручную"</string>
     <string name="pref_install_type_summary">"Выкарыстоўваць сістэмны ўсталёўшчык для ўсталявання праграм. Перастае працаваць усталяванне APK у пакеце"</string>
