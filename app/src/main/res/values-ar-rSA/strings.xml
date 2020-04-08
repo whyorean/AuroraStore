@@ -218,6 +218,8 @@
     <string name="action_close">"اغلاق"</string>
     <string name="exodus_hasTracker">"يحتوي على برمجيات تتبع وعددها"</string>
     <string name="list_selected">"تطبيقات محددة"</string>
+
+    <!-- Fuzzy -->
     <string name="notification_installation_auto">"تم تنزيله اضغط للتثبيت"</string>
     <string name="notification_installation_manual">"تطبيق مجزئ، بحاجة إلى تدخل من المستخدم"</string>
     <string name="pref_install_type_summary">"استخدم أداة التثبيت الافتراضية لتثبيت الحزم ، غير صالح مع التطبيقات المجزئة"</string>
@@ -230,8 +232,6 @@
     <string name="pref_update_interval_weekly">"يوميا"</string>
     <string name="download_none">"لاتوجد تنزيلات"</string>
     <string name="details_new_changes">"مالجديد"</string>
-
-    <!-- طلب اجباري -->
     <string name="cat_top_apps">"التطبيقات الشائعة"</string>
     <string name="cat_top_games">"الألعاب الشائعة"</string>
     <string name="cat_top_family">"تطبيقات العائلة الشائعة"</string>
@@ -345,4 +345,19 @@
     <string name="crash_title">"تقرير تعطل Aurora"</string>
     <string name="crash_line1">"حسنا هذا محرج !"</string>
     <string name="crash_line2">"يمكنك إرسال هذا التقرير إلى مطورين Aurora, للمساعدة في حل المشكلة"</string>
+    <string name="action_ignore">"تجاهل هذا الاصدار"</string>
+    <string name="action_ignore_remove">"ازالة من قائمة التجاهل"</string>
+    <string name="action_disabled">"معطلة"</string>
+    <string name="exodus_progress">"افحص عن برمجيات التتبع"</string>
+    <string name="list_update_selected">"تم تحديد التحديث"</string>
+    <string name="about_libera">"ليبرا باي"</string>
+    <string name="about_libera_summary">"قم بالدعم عبر ليبراباي"</string>
+    <string name="about_bitcoin_btc">"بتكوين"</string>
+    <string name="about_bitcoin_btc_summary">"دعم عبر بيتكوين"</string>
+    <string name="about_bitcoin_bch">"بيتكوين باتش"</string>
+    <string name="about_bitcoin_bch_summary">"دعم عبر بيتكوين كاش"</string>
+    <string name="about_bitcoin_eth">"اثيريوم"</string>
+    <string name="about_bitcoin_eth_summary">"دعم عبر اثوريوم"</string>
+    <string name="about_bhim">"BHIM - UPI"</string>
+    <string name="about_bhim_summary">"دعم عبر  UPI"</string>
 </resources>
