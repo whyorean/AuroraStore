@@ -196,6 +196,8 @@ Decátate que baxar versiones al debalu nun lo sofita la tienda Google Play. L'�
     <string name="pref_ui_theme_black">"Prietu"</string>
     <string name="action_close">"Zarrar"</string>
     <string name="exodus_hasTracker">"Númberu de rastrexadores:"</string>
+
+    <!-- Fuzzy -->
     <string name="notification_installation_auto">"Baxó, calca pa instalar"</string>
     <string name="pref_install_type_title">"Forciar l'instalador nativu"</string>
     <string name="pref_ui_tab_default_title">"Llingüeta predeterminada"</string>
