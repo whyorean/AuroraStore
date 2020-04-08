@@ -222,6 +222,8 @@ Het biedt ook een lijst met ingebouwde trackers in een applicatie."</string>
     <string name="action_close">"Sluiten"</string>
     <string name="exodus_hasTracker">"Bevat trackers"</string>
     <string name="list_selected">"Geselecteerde apps"</string>
+
+    <!-- Fuzzy -->
     <string name="notification_installation_auto">"Gedownload, klik om te installeren"</string>
     <string name="notification_installation_manual">"Gebundelde APK, handmatige actie vereist"</string>
     <string name="pref_install_type_summary">"Gebruik het eigen installatieprogramma om de pakketten te installeren, gebundelde APK installaties kunnen niet meer werken"</string>
