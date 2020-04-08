@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="account_dummy">"Анонимный"</string>
-
-    <!-- Orifginal should be fixed. Space before question mark -->
     <string name="account_google">"Аккаунт Google"</string>
     <string name="account_logout">"Выйти из Aurora Store?"</string>
     <string name="account_prompt_login">"Пожалуйста, войдите, чтобы продолжить"</string>
@@ -232,8 +230,6 @@ https://exodus-privacy.eu.org/en/. Это как "отчёт от аваста" 
     <string name="pref_locale_custom_title">"Другой язык"</string>
     <string name="pref_locale_custom_summary">"Использовать выбранный язык"</string>
     <string name="pref_locale_list_title">"Выбор языка"</string>
-
-    <!-- Or "Семейные" -->
     <string name="about_app">"Aurora - это альтернатива Play Store с открытым исходным кодом.
 Aurora позволяет искать, загружать, устанавливать и обновлять приложения и игры.
 Дополнительно Aurora отображает список трекеров, встроенных в приложение."</string>
@@ -265,6 +261,8 @@ Aurora позволяет искать, загружать, устанавлив
     <string name="action_close">"Закрыть"</string>
     <string name="exodus_hasTracker">"Содержит трекеры"</string>
     <string name="list_selected">"Выбранные приложения"</string>
+
+    <!-- Fuzzy -->
     <string name="notification_installation_auto">"Загружено, коснитесь для установки"</string>
     <string name="notification_installation_manual">"Bundled APK, требуется участие пользователя"</string>
 
