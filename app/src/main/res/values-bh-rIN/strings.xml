@@ -220,6 +220,8 @@ Keep in mind that downloading arbitrary versions of stupid apps is not supported
     <string name="action_close">"Close"</string>
     <string name="exodus_hasTracker">"Contains trackers"</string>
     <string name="list_selected">"Apps Selected"</string>
+
+    <!-- Fuzzy -->
     <string name="notification_installation_auto">"Dawnluded. click to asstall"</string>
     <string name="notification_installation_manual">"Bundled Apk, manual asstion required"</string>
     <string name="pref_install_type_summary">"Use native installer to install packages, breaks bundled apk asstallations"</string>
