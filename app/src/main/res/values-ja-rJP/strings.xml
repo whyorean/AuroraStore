@@ -216,6 +216,8 @@
     <string name="action_close">"閉じる"</string>
     <string name="exodus_hasTracker">"トラッカーが含まれています"</string>
     <string name="list_selected">"選択したアプリ"</string>
+
+    <!-- Fuzzy -->
     <string name="notification_installation_auto">"ダウンロードしました。 クリックしてインストール"</string>
     <string name="notification_installation_manual">"バンドルされた Apk は手動での操作が必要です"</string>
     <string name="pref_install_type_summary">"パッケージのインストールにネイティブインストーラーを使用すると、バンドルされた APKのインストールに失敗します"</string>
