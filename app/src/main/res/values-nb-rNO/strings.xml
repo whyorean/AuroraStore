@@ -217,6 +217,8 @@ Husk at nedlasting av vilkårlig versjoner av apper ikke støttes av Google Play
     <string name="action_close">"Lukk"</string>
     <string name="exodus_hasTracker">"Inneholder sporere"</string>
     <string name="list_selected">"Apper valgt"</string>
+
+    <!-- Fuzzy -->
     <string name="notification_installation_auto">"Lastet ned, klikk for å installere"</string>
     <string name="notification_installation_manual">"Pakket Apk, manuell handling kreves"</string>
     <string name="pref_install_type_summary">"Bruk eget installasjonsprogram for å installere pakker, bryter medfølgende APK-installasjoner"</string>
