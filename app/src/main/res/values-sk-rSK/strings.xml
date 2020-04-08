@@ -218,6 +218,8 @@ Upozorňujeme, že služba Google Play Store nepodporuje preberanie ľubovoľný
     <string name="action_close">"Zavrieť"</string>
     <string name="exodus_hasTracker">"Obsahuje sledovače"</string>
     <string name="list_selected">"Vybrané aplikácie"</string>
+
+    <!-- Fuzzy -->
     <string name="notification_installation_auto">"Stiahnuté, kliknite pre inštaláciu"</string>
     <string name="notification_installation_manual">"Zbalený Apk, vyžaduje sa manuálna akcia"</string>
     <string name="pref_install_type_summary">"Použiť natívny inštalátor na inštaláciu balíčkov, nedokáže inštalovať zbalené apk"</string>
