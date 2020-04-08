@@ -186,8 +186,6 @@
 
     <!-- 此处复制了 Play 商店的原文 -->
     <string name="testing_program_section_opted_out_message">"在新功能正式发布之前进行试用，并向开发者提供反馈。"</string>
-
-    <!-- 此处复制了 Play 商店的原文 -->
     <string name="testing_program_section_opted_out_title">"成为 Beta 版测试人员"</string>
     <string name="title_all_apps">"所有应用"</string>
     <string name="title_home">"Aurora 商店"</string>
@@ -240,6 +238,8 @@
     <string name="action_close">"关闭"</string>
     <string name="exodus_hasTracker">"包含跟踪器"</string>
     <string name="list_selected">"已选择的应用"</string>
+
+    <!-- Fuzzy -->
     <string name="notification_installation_auto">"已下载，点击安装"</string>
     <string name="notification_installation_manual">"APK 经捆绑，需要手动操作"</string>
     <string name="pref_install_type_summary">"使用系统安装程序来安装应用，将无法安装捆绑的 APK"</string>
@@ -369,4 +369,19 @@
     <string name="crash_title">"Aurora崩溃报告"</string>
     <string name="crash_line1">"额，尴尬了"</string>
     <string name="crash_line2">"您可以把这份报告发给Aurora开发者以帮助解决这个问题"</string>
+    <string name="action_ignore">"忽略此版本"</string>
+    <string name="action_ignore_remove">"从忽略列表移除"</string>
+    <string name="action_disabled">"已禁用"</string>
+    <string name="exodus_progress">"正在检查跟踪器"</string>
+    <string name="list_update_selected">"更新已选择"</string>
+    <string name="about_libera">"Libera Pay"</string>
+    <string name="about_libera_summary">"注册Libera Pay成为赞助者"</string>
+    <string name="about_bitcoin_btc">"比特币"</string>
+    <string name="about_bitcoin_btc_summary">"通过比特币(BTC)捐款"</string>
+    <string name="about_bitcoin_bch">"比特币现金"</string>
+    <string name="about_bitcoin_bch_summary">"通过比特币现金(BCH)捐款"</string>
+    <string name="about_bitcoin_eth">"以太坊"</string>
+    <string name="about_bitcoin_eth_summary">"通过以太坊(ETH)捐款"</string>
+    <string name="about_bhim">"BHIM - UPI"</string>
+    <string name="about_bhim_summary">"通过UPI捐款"</string>
 </resources>
