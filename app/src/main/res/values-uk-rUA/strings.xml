@@ -189,7 +189,7 @@
     <string name="pref_locale_custom_title">"Інша мова"</string>
     <string name="pref_locale_custom_summary">"Використовувати вибрану мову"</string>
     <string name="pref_locale_list_title">"Виберіть мову"</string>
-    <string name="about_app">"Aurora - це альтернатива Play Store з відкритим вихідним кодом.
+    <string name="about_app">"Aurora - це альтернатива Play Store з відкритим вихідним кодом. 
 Aurora дозволяє шукати, завантажувати, встановлювати та оновлювати додатки та ігри. 
 Додатково Aurora відображає список трекерів, вбудованих в додаток."</string>
     <string name="about_paypal">"Playpal"</string>
@@ -218,6 +218,8 @@ Aurora дозволяє шукати, завантажувати, встанов
     <string name="action_close">"Відміна"</string>
     <string name="exodus_hasTracker">"Містить трекери"</string>
     <string name="list_selected">"Вибрані додатки"</string>
+
+    <!-- Fuzzy -->
     <string name="notification_installation_auto">"Заванжено, натисніть щоб встановити"</string>
     <string name="notification_installation_manual">"Bundled Apk, потрібні дії користувача"</string>
     <string name="pref_install_type_summary">"Використовувати системний установник для установки apk-файлів, ламає установку apk що складаються з декількох частин."</string>
