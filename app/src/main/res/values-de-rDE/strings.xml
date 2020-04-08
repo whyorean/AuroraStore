@@ -222,6 +222,8 @@ Zudem zeigt Aurora die Anzahl der Tracker in der jeweiligen App an."</string>
     <string name="action_close">"Schließen"</string>
     <string name="exodus_hasTracker">"Anzahl Tracker:"</string>
     <string name="list_selected">"Apps ausgewählt"</string>
+
+    <!-- Fuzzy -->
     <string name="notification_installation_auto">"Heruntergeladen, klicke zum Installieren"</string>
     <string name="notification_installation_manual">"Gebündelte APK, manuelles Eingreifen erforderlich"</string>
     <string name="pref_install_type_summary">"Die Installation gebündelter APKs schlägt hiermit fehl"</string>
