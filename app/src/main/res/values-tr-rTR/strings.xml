@@ -220,6 +220,8 @@
     <string name="action_close">"Kapat"</string>
     <string name="exodus_hasTracker">"İzleyici içerir"</string>
     <string name="list_selected">"Ssçilen uygulamalar"</string>
+
+    <!-- Fuzzy -->
     <string name="notification_installation_auto">"İndirildi, kurmak için tıklayın"</string>
     <string name="notification_installation_manual">"Bölünmüş APK, elle işlem gerektiriyor"</string>
     <string name="pref_install_type_summary">"Paketleri kurmak için yerel yükleyiciyi kullan, bölünmüş APK kurulumunu bozar"</string>
@@ -347,4 +349,19 @@
     <string name="crash_title">"Aurora Çökme Raporu"</string>
     <string name="crash_line1">"Bu utanç verici!"</string>
     <string name="crash_line2">"Sorunun çözümüne yardımcı olması için bu raporu Aurora Geliştiricisine gönderebilirsiniz."</string>
+    <string name="action_ignore">"Bu sürümü yoksay"</string>
+    <string name="action_ignore_remove">"Yoksayılanlar listesinden kaldır"</string>
+    <string name="action_disabled">"Devre dışı"</string>
+    <string name="exodus_progress">"İzleyiciler kontrol ediliyor"</string>
+    <string name="list_update_selected">"Seçileni güncelle"</string>
+    <string name="about_libera">"Libera Pay"</string>
+    <string name="about_libera_summary">"Libera Pay'da patron olun"</string>
+    <string name="about_bitcoin_btc">"Bitcoin"</string>
+    <string name="about_bitcoin_btc_summary">"Bitcoin (BTC) ile bağış yapın"</string>
+    <string name="about_bitcoin_bch">"Bitcoin Nakit"</string>
+    <string name="about_bitcoin_bch_summary">"Bitcoin Nakit (BCH) ile bağış yapın"</string>
+    <string name="about_bitcoin_eth">"Ethereum"</string>
+    <string name="about_bitcoin_eth_summary">"Ethereum (ETH) ile bağış yapın"</string>
+    <string name="about_bhim">"BHIM - UPI"</string>
+    <string name="about_bhim_summary">"UPI ile bağış yapın"</string>
 </resources>
