@@ -53,8 +53,6 @@
 
     <!-- Logout -->
     <string name="action_logout">"Disconnetti"</string>
-
-    <!-- Converti in un app normale -->
     <string name="action_manual">"Download manuale"</string>
 
     <!-- Altro -->
@@ -68,15 +66,11 @@
     <!-- Riprendi -->
     <string name="action_resume">"Riprendi"</string>
     <string name="action_retry">"Riprova"</string>
-
-    <!-- Riprovando -->
     <string name="action_settings">"Impostazioni"</string>
 
     <!-- Spoof -->
     <string name="action_spoofed">"Spoofing"</string>
     <string name="action_submit">"Invia"</string>
-
-    <!-- Rimuovi dalla blacklist -->
 
     <!-- Disinstalla -->
     <string name="action_uninstall">"Disinstalla"</string>
@@ -280,6 +274,8 @@ Inoltre fornisce una lista di tracker incorporati in una applicazione."</string>
     <string name="action_close">"Chiudi"</string>
     <string name="exodus_hasTracker">"Contiene tracker"</string>
     <string name="list_selected">"Applicazioni selezionate"</string>
+
+    <!-- Fuzzy -->
     <string name="notification_installation_auto">"Scaricato, tocca per installare"</string>
     <string name="notification_installation_manual">"APK raggruppato, azione manuale richiesta"</string>
     <string name="pref_install_type_summary">"Utilizza l'installer nativo per installare i pacchetti, non consente l'installazione degli APK raggruppati"</string>
@@ -405,4 +401,9 @@ Inoltre fornisce una lista di tracker incorporati in una applicazione."</string>
     <string name="crash_title">"Crash report di Aurora Store"</string>
     <string name="crash_line1">"Ops, questo è imbarazzante!"</string>
     <string name="crash_line2">"Puoi inviare questo report allo sviluppatore di Aurora Store per aiutarlo a risolvere il problema."</string>
+    <string name="action_ignore">"Ignora questa versione"</string>
+    <string name="action_disabled">"Disabilitato"</string>
+    <string name="list_update_selected">"Aggiornamento selezionato"</string>
+    <string name="about_bitcoin_btc">"Bitcoin"</string>
+    <string name="about_bitcoin_eth">"Ethereum"</string>
 </resources>
