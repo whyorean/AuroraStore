@@ -220,6 +220,8 @@ Tamén prové unha lista de trackers incluídos nunha aplicación."</string>
     <string name="action_close">"Pechar"</string>
     <string name="exodus_hasTracker">"Contén trackers"</string>
     <string name="list_selected">"Aplicacións Seleccionadas"</string>
+
+    <!-- Fuzzy -->
     <string name="notification_installation_auto">"Descargada, pulsa para instalar"</string>
     <string name="notification_installation_manual">"APK partido, instalación manuais requirida"</string>
     <string name="pref_install_type_summary">"Forzando a instalación nativa non poderás instalar APKs partidos"</string>
