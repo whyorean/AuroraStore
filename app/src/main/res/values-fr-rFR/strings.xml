@@ -191,8 +191,6 @@ Gardez à l'esprit que le téléchargement de versions arbitraires d'application
     <string name="pref_locale_custom_title">"Langue personnalisée"</string>
     <string name="pref_locale_custom_summary">"Forcer la personnalisation de la langue"</string>
     <string name="pref_locale_list_title">"Selectionner la localisation"</string>
-
-    <!-- Peut-être vaudrait il mieux mettre : explorer apps vu le manque de place sur l'accueil d'Aurora...? -->
     <string name="about_app">"Aurora est une alternative open source du Play Store.
 Elle vous permet de télécharger des applications, fournit des mises à jour des applications installées et vous permet de rechercher des applications et des jeux.
 Elle fournit également une liste de traqueurs intégrés dans une application."</string>
@@ -222,6 +220,8 @@ Elle fournit également une liste de traqueurs intégrés dans une application."
     <string name="action_close">"Fermer"</string>
     <string name="exodus_hasTracker">"Contient des traqueurs"</string>
     <string name="list_selected">"Apps sélectionnées"</string>
+
+    <!-- Fuzzy -->
     <string name="notification_installation_auto">"Téléchargé, cliquez pour installer"</string>
     <string name="notification_installation_manual">"Apk groupée, action manuelle requise"</string>
     <string name="pref_install_type_summary">"Utiliser le programme d'installation natif pour installer les paquets, casse les installations d'apk groupés."</string>
@@ -337,4 +337,8 @@ Elle fournit également une liste de traqueurs intégrés dans une application."
     <string name="pref_requested_location_enable">"Vous devez activer manuellement la position fictive à partir des options développeur. Une connexion VPN à un emplacement à proximité est obligatoire."</string>
     <string name="toast_api_build_delayed">"Cela prend plus de temps que prévu"</string>
     <string name="dialog_uninstall_confirmation">"Voulez-vous désinstaller cette application ?"</string>
+    <string name="action_send">"Envoyer"</string>
+    <string name="dialog_unavailable_title">"Application indisponible"</string>
+    <string name="action_accept">"Accepter"</string>
+    <string name="action_decline">"Décliner"</string>
 </resources>
