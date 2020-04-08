@@ -185,6 +185,8 @@ Cofia nad yw Google Play Store yn cefnogi lawrlwytho fersiynau mympwyol o apiau.
     <string name="action_close">"Cau"</string>
     <string name="exodus_hasTracker">"Yn cynnwys tracwyr"</string>
     <string name="list_selected">"Apiau wedi'u dewis"</string>
+
+    <!-- Fuzzy -->
     <string name="notification_installation_auto">"Wedi lawrlwytho; clicia i'w osod"</string>
     <string name="pref_update_interval_hourly">"Pob awr"</string>
     <string name="pref_update_interval_daily">"Yn wythnosol"</string>
