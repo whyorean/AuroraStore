@@ -55,7 +55,7 @@
     <string name="details_download">"Sider"</string>
     <string name="details_favourite_add">"Rnu ɣer inurifen"</string>
     <string name="details_favourite_remove">"Kkes seg inurifen"</string>
-    <string name="details_install">"Sebded"</string>
+    <string name="details_install">"Sbedd"</string>
     <string name="details_installing">"Asebded"</string>
     <string name="details_more">"Ɣer ugar"</string>
     <string name="details_no_ads">"Ulac adellel"</string>
@@ -156,6 +156,8 @@
     <string name="pref_ui_theme_black">"Aberkan"</string>
     <string name="action_close">"Mdel"</string>
     <string name="list_selected">"Isnasen yettwafernen"</string>
+
+    <!-- Fuzzy -->
     <string name="notification_installation_auto">"Yettwasider-d, tekki akken ad ttsebdeḍ-ṭ"</string>
     <string name="pref_ui_tab_default_title">"Fren iccer amezwer"</string>
     <string name="pref_update_interval_manually">"S ufus"</string>
@@ -197,6 +199,7 @@
     <string name="dialog_desc_self_update">"Tebɣiḍ ad tleqmeḍ tura?"</string>
     <string name="list_update_all_txt_one">"n lqem igellan"</string>
     <string name="pref_ui_package">"Nadi s yisem n uwemmus"</string>
+    <string name="pref_update_self_title">"Nadi ileqman"</string>
     <string name="list_updating_failed">"Tella-d tuccḍa deg lqem"</string>
     <string name="pref_updates_auto">"Rmed lqem awurman"</string>
     <string name="toast_login_success">"Anekcum immed akken iwata"</string>
@@ -209,9 +212,10 @@
     <string name="details_dev_website">"Asmel Web"</string>
     <string name="details_more_updated">"Yettwalqem deg"</string>
     <string name="details_more_version">"Lqem"</string>
-    <string name="exodus_noReport">"Ulac aneqqis "</string>
+    <string name="exodus_noReport">"Ulac aneqqis"</string>
     <string name="title_categories">"Tagayin"</string>
     <string name="review_recent">"Melmi kan"</string>
+    <string name="review_helpful">"Ilha"</string>
     <string name="notification_channel_general">"Tilɣa timatutin"</string>
     <string name="action_continue_anyway">"Kemmel akken yebɣu yilli?"</string>
     <string name="details_files">"Talqayt ɣef ufaylu"</string>
@@ -224,4 +228,16 @@
     <string name="action_accept">"Qbel"</string>
     <string name="action_decline">"Ggami"</string>
     <string name="crash_title">"Aceggir n truẓi Aurora"</string>
+    <string name="action_ignore">"Eǧǧ alqem-a"</string>
+    <string name="action_ignore_remove">"Kkes seg tebdert  usuref"</string>
+    <string name="action_disabled">"Sens"</string>
+    <string name="exodus_progress">"Senqed ineḍfaren"</string>
+    <string name="about_bitcoin_btc">"Bitcoin"</string>
+    <string name="about_bitcoin_btc_summary">"Efk tawsa s Bitcoin (BTC)"</string>
+    <string name="about_bitcoin_bch">"Adrim Bitcoin"</string>
+    <string name="about_bitcoin_bch_summary">"Efk tawsa s tedrimt Bitcoin (BCH)"</string>
+    <string name="about_bitcoin_eth">"Ethereum"</string>
+    <string name="about_bitcoin_eth_summary">"Efk tawsaa s Ethereum (ETH)"</string>
+    <string name="about_bhim">"BHIM - UPI"</string>
+    <string name="about_bhim_summary">"Efk tawsa s UPI"</string>
 </resources>
