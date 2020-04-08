@@ -222,6 +222,8 @@ Ammenta·ti chi iscarrigare versiones arbitràrias de sas aplicatziones no est s
     <string name="action_close">"Serra"</string>
     <string name="exodus_hasTracker">"Cuntenet arrastadores"</string>
     <string name="list_selected">"Aplicatziones ischertadas"</string>
+
+    <!-- Fuzzy -->
     <string name="notification_installation_auto">"Iscarrigada, incarca pro installare"</string>
     <string name="notification_installation_manual">"APK agrupadu, serbit un'atzione manuale"</string>
     <string name="pref_install_type_summary">"IMprea s'installadore nativu pro installare sos pachetes, truncat sas installatziones de apks agrupados"</string>
@@ -347,4 +349,19 @@ Ammenta·ti chi iscarrigare versiones arbitràrias de sas aplicatziones no est s
     <string name="crash_title">"Raportu de serradura (crash) de Aurora"</string>
     <string name="crash_line1">"Oja, custu est imbarratzante!"</string>
     <string name="crash_line2">"Podes imbiare custu raportu a Aurora Dev, pro agiudare a isòrvere su problema."</string>
+    <string name="action_ignore">"Ignora custa versione"</string>
+    <string name="action_ignore_remove">"Boga dae sa lista de sas de ignorare"</string>
+    <string name="action_disabled">"Disabilitadu"</string>
+    <string name="exodus_progress">"Chirchende arrastadores"</string>
+    <string name="list_update_selected">"Agiornamentu ischertadu"</string>
+    <string name="about_libera">"Libera Pay"</string>
+    <string name="about_libera_summary">"Diventa sustenidore cun Libera Pay"</string>
+    <string name="about_bitcoin_btc">"Bitcoin"</string>
+    <string name="about_bitcoin_btc_summary">"Dona pro mèdiu de Bitcoin (BTC)"</string>
+    <string name="about_bitcoin_bch">"Bitcoin Cash"</string>
+    <string name="about_bitcoin_bch_summary">"Dona pro mèdiu de Bitcoin Cash (BCH)"</string>
+    <string name="about_bitcoin_eth">"Ethereum"</string>
+    <string name="about_bitcoin_eth_summary">"Dona pro mèdiu de Ethereum (ETH)"</string>
+    <string name="about_bhim">"BHIM - UPI"</string>
+    <string name="about_bhim_summary">"Dona pro mèdiu de UPI"</string>
 </resources>
