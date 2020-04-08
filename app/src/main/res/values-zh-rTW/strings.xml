@@ -220,10 +220,10 @@
     <string name="action_close">"關閉"</string>
     <string name="exodus_hasTracker">"內建追蹤器"</string>
     <string name="list_selected">"已選擇的應用程式"</string>
+
+    <!-- Fuzzy -->
     <string name="notification_installation_auto">"已下載，請觸碰安裝"</string>
     <string name="notification_installation_manual">"APK 遭捆綁，需手動操作"</string>
-
-    <!-- In Chinese,this string shuold be translated to "「搜尋內容」的結果“,it is similar to "somebody's item" in English.so can you place the "search keyword" variable to this string? -->
     <string name="pref_install_type_summary">"使用內建安裝器安裝應用程式會破壞捆綁的 APK"</string>
     <string name="pref_install_type_title">"強制使用內建安裝器"</string>
     <string name="pref_ui_tab_default_title">"選擇預設分頁"</string>
