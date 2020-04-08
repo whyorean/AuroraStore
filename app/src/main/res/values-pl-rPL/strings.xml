@@ -227,6 +227,8 @@ Udostępnia również listę usług śledzących zaimplementowanych w aplikacji.
     <string name="action_close">"Zamknij"</string>
     <string name="exodus_hasTracker">"Zawiera usługi śledzące"</string>
     <string name="list_selected">"Aplikacje wybrane"</string>
+
+    <!-- Fuzzy -->
     <string name="notification_installation_auto">"Pobrane, kliknij aby zainstalować"</string>
     <string name="notification_installation_manual">"Podzielony plik APK, wymagana akcja użytkownika"</string>
     <string name="pref_install_type_summary">"Użyj natywnego instalatora, psuje instalacje dzielonych pakietów"</string>
