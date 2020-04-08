@@ -85,7 +85,6 @@
     <string name="download_paused">"Paused"</string>
     <string name="download_progress">"Downloading"</string>
     <string name="download_queued">"Queued"</string>
-    <string name="download_metadata">"Getting metadata"</string>
     <string name="download_resume">"Resume"</string>
     <string name="download_resume_all">"Resume all"</string>
     <string name="early_access">"Early access"</string>
@@ -108,7 +107,6 @@
     <string name="list_blacklist">"Blacklisted apps"</string>
     <string name="list_blacklist_none">"No apps blacklisted"</string>
     <string name="list_empty_fav">"No favourites"</string>
-    <string name="list_empty_blacklist">"No blacklisted apps"</string>
     <string name="list_empty_updates">"No updates available"</string>
     <string name="list_installed">"Installed"</string>
     <string name="list_installed_system">"Show user apps only"</string>
@@ -212,7 +210,6 @@
     <string name="pref_notification_priority_default">"Default"</string>
     <string name="pref_notification_priority_high">"High"</string>
     <string name="pref_notification_priority_max">"Max"</string>
-    <string name="pref_notification_title_geo_spoof">"Aurora Geo Spoof"</string>
     <string name="pref_ui_theme_light">"Light"</string>
     <string name="pref_ui_theme_dark">"Dark"</string>
     <string name="pref_ui_theme_black">"Black"</string>
@@ -359,4 +356,7 @@
     <string name="about_bitcoin_eth_summary">"Donate via Ethereum (ETH)"</string>
     <string name="about_bhim">"BHIM - UPI"</string>
     <string name="about_bhim_summary">"Donate via UPI"</string>
+    <string name="download_metadata">"Getting metadata"</string>
+    <string name="list_empty_blacklist">"No blacklisted apps"</string>
+    <string name="pref_notification_title_geo_spoof">"Aurora Geo Spoof"</string>
 </resources>
