@@ -218,6 +218,8 @@
     <string name="action_close">"बंद करें"</string>
     <string name="exodus_hasTracker">"ट्रैकर सहित"</string>
     <string name="list_selected">"ऐप्स चुन लिए हैं"</string>
+
+    <!-- Fuzzy -->
     <string name="notification_installation_auto">"डाउनलोड खत्म, इंसटाल दबाइए"</string>
     <string name="notification_installation_manual">"बंडल एपीके, खुद चुनिए"</string>
     <string name="pref_install_type_summary">"पैकेज इंस्टाल के लिए इनबिल्ट इंस्टॉलर का उपयोग करें, बंडल एपीके की इंस्टॉलेशन नही होगी"</string>
@@ -346,6 +348,8 @@
     <string name="review_positive">"सकारात्मक"</string>
     <string name="review_recent">"हाल ही में"</string>
     <string name="review_helpful">"मददगार"</string>
+    <string name="notification_channel_alert">"जल्द सूचनाएँ"</string>
+    <string name="notification_channel_general">"आम सूचनाएँ"</string>
     <string name="action_continue_anyway">"आगे बढ़ा जाए ?"</string>
     <string name="details_files">"फाइल की जानकारी"</string>
     <string name="pref_requested_location_enable">"आपको खुद डिवेलपर विकल्पों में जाकर MOCK Location चालू करना होगा, और VPN कनेक्शन भी जरूरी है।"</string>
@@ -361,4 +365,19 @@
     <string name="crash_title">"औरोरा क्रैश रिपोर्ट"</string>
     <string name="crash_line1">"यह शर्मनाक है 🙈"</string>
     <string name="crash_line2">"इस समस्या को हल करने के लिए आप यह रिपोर्ट औरोरा डिवेलपर को भेज सकते हैं"</string>
+    <string name="action_ignore">"इस संस्करण को छोड़े"</string>
+    <string name="action_ignore_remove">"इसको छोड़े हुए लिस्ट से हटाएँ"</string>
+    <string name="action_disabled">"बन्द"</string>
+    <string name="exodus_progress">"ऐप ट्रैकर्स की जांच जारी"</string>
+    <string name="list_update_selected">"चुने हुए को अपडेट करें"</string>
+    <string name="about_libera">"लिबरा-पे"</string>
+    <string name="about_libera_summary">"लिबरा-पे पर सरंक्षक बने"</string>
+    <string name="about_bitcoin_btc">"बिट-कोआईन"</string>
+    <string name="about_bitcoin_btc_summary">"बिट-कोआईन (BTC) द्वारा दान करें"</string>
+    <string name="about_bitcoin_bch">"बिट-कोआईन कैश"</string>
+    <string name="about_bitcoin_bch_summary">"बिट-कोआईन कैश (BTC) द्वारा दान करें"</string>
+    <string name="about_bitcoin_eth">"एथेरीअम"</string>
+    <string name="about_bitcoin_eth_summary">"एथेरीअम (ETH) द्वारा दान करें"</string>
+    <string name="about_bhim">"भीम - यूपीआई"</string>
+    <string name="about_bhim_summary">"यूपीआई (UPI) द्वारा दान करें"</string>
 </resources>
