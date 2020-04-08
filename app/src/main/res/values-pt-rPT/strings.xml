@@ -222,6 +222,8 @@ Tenha em mente que a transferência de versões arbitrárias de aplicações nã
     <string name="action_close">"Fechar"</string>
     <string name="exodus_hasTracker">"Contém 'trackers'"</string>
     <string name="list_selected">"Aplicações selecionadas"</string>
+
+    <!-- Fuzzy -->
     <string name="notification_installation_auto">"Transferida, clique para instalar"</string>
     <string name="notification_installation_manual">"APK agrupado, requer ação manual"</string>
     <string name="pref_install_type_summary">"Usar instalador nativo para instalar pacotes, quebra instalações apk agrupadas"</string>
