@@ -220,6 +220,8 @@ Tingueu en compte que Google Play Store no admet la baixada de versions arbitrà
     <string name="action_close">"Tancar"</string>
     <string name="exodus_hasTracker">"Conté rastrejadors"</string>
     <string name="list_selected">"Aplicacions triades"</string>
+
+    <!-- Fuzzy -->
     <string name="notification_installation_auto">"S'ha baixat, feu clic per instal·lar"</string>
     <string name="notification_installation_manual">"APK massiu, cal una acció manual"</string>
     <string name="pref_install_type_summary">"Utilitza l'instal·lador nadiu per instal·lar paquets, trenca les instal·lacions d'APK massives"</string>
@@ -345,4 +347,19 @@ Tingueu en compte que Google Play Store no admet la baixada de versions arbitrà
     <string name="crash_title">"Informe d'errors de l'Aurora"</string>
     <string name="crash_line1">"Bé, això és vergonyós!"</string>
     <string name="crash_line2">"Podeu enviar aquest informe a l'Aurora Dev per ajudar-nos a resoldre el problema."</string>
+    <string name="action_ignore">"Ignora aquesta versió"</string>
+    <string name="action_ignore_remove">"Elimina de la llista d’ignorats"</string>
+    <string name="action_disabled">"Desactivat"</string>
+    <string name="exodus_progress">"Comprovació de rastrejadors"</string>
+    <string name="list_update_selected">"S'ha seleccionat l'actualització"</string>
+    <string name="about_libera">"Libera Pay"</string>
+    <string name="about_libera_summary">"Feu-vos patrocinador de Libera Pay"</string>
+    <string name="about_bitcoin_btc">"Bitcoin"</string>
+    <string name="about_bitcoin_btc_summary">"Doneu via Bitcoin (BTC)"</string>
+    <string name="about_bitcoin_bch">"Bitcoin Cash"</string>
+    <string name="about_bitcoin_bch_summary">"Doneu via Bitcoin Cash (BCH)"</string>
+    <string name="about_bitcoin_eth">"Ethereum"</string>
+    <string name="about_bitcoin_eth_summary">"Doneu via Ethereum (ETH)"</string>
+    <string name="about_bhim">"BHIM - UPI"</string>
+    <string name="about_bhim_summary">"Doneu via UPI"</string>
 </resources>
