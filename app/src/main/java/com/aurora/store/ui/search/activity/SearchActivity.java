@@ -19,7 +19,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.aurora.store.Constants;
 import com.aurora.store.R;
-import com.aurora.store.util.diff.SuggestionDiffCallback;
 import com.aurora.store.model.items.SearchSuggestionItem;
 import com.aurora.store.ui.details.DetailsActivity;
 import com.aurora.store.ui.search.SearchSuggestionModel;
@@ -27,6 +26,7 @@ import com.aurora.store.ui.single.activity.BaseActivity;
 import com.aurora.store.util.ContextUtil;
 import com.aurora.store.util.Util;
 import com.aurora.store.util.ViewUtil;
+import com.aurora.store.util.diff.SuggestionDiffCallback;
 import com.google.android.material.textfield.TextInputEditText;
 import com.mikepenz.fastadapter.FastAdapter;
 import com.mikepenz.fastadapter.adapters.ItemAdapter;

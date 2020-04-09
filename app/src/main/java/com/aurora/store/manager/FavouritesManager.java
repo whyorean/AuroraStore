@@ -51,7 +51,7 @@ public class FavouritesManager {
 
     public void addToFavourites(List<String> packageNameList) {
         List<String> stringList = getFavouritePackages();
-        for (String packageName : packageNameList){
+        for (String packageName : packageNameList) {
             if (!stringList.contains(packageName)) {
                 stringList.add(packageName);
             }

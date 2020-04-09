@@ -256,7 +256,7 @@ public class NotificationService extends Service {
                         //Check for Aurora Services or Root, if available do not show install notification.
                         if (Util.isPrivilegedInstall(this)) {
                             progressBigText.bigText(getString(R.string.details_installing));
-                        }else{
+                        } else {
                             //Check for Enforced Native & Add Install action via notification, only if app is not bundled.
                             if (Util.isNativeInstallerEnforced(this) && fetchGroup.getDownloads().size() > 1) {
                                 progressBigText.bigText(getString(R.string.notification_installation_manual));

@@ -13,9 +13,9 @@ import com.aurora.store.Constants;
 import com.aurora.store.R;
 import com.aurora.store.ui.accounts.fragment.AccountsFragment;
 import com.aurora.store.ui.preference.fragment.AboutFragment;
+import com.aurora.store.ui.preference.fragment.SpoofFragment;
 import com.aurora.store.ui.single.fragment.BlacklistFragment;
 import com.aurora.store.ui.single.fragment.FavouriteFragment;
-import com.aurora.store.ui.preference.fragment.SpoofFragment;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

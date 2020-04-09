@@ -33,7 +33,6 @@ import android.widget.TextView;
 
 import androidx.core.text.HtmlCompat;
 
-import com.aurora.store.Constants;
 import com.aurora.store.GlideApp;
 import com.aurora.store.R;
 import com.aurora.store.model.App;

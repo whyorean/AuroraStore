@@ -20,7 +20,6 @@
 
 package com.aurora.store.ui.details;
 
-import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
@@ -35,7 +34,6 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.aurora.store.Constants;
 import com.aurora.store.R;
 import com.aurora.store.model.App;
 import com.aurora.store.model.items.FileItem;
@@ -53,6 +51,7 @@ import io.reactivex.Observable;
 
 public class ReadMoreActivity extends BaseActivity {
 
+    public static App app;
     @BindView(R.id.toolbar)
     Toolbar toolbar;
     @BindView(R.id.txt_changelog)
@@ -63,8 +62,6 @@ public class ReadMoreActivity extends BaseActivity {
     LinearLayout layoutMore;
     @BindView(R.id.recycler)
     RecyclerView recyclerView;
-
-    public static App app;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

@@ -76,7 +76,7 @@ public class BaseViewHolder extends FastAdapter.ViewHolder<BaseItem> {
 
     public void fillAppDetails(Context context, List<String> versionStringList, List<String> extraStringList, App app) {
         versionStringList.add(Util.addSiPrefix(app.getSize()));
-        Log.e("Rating : %f",app.getRating().getAverage());
+        Log.e("Rating : %f", app.getRating().getAverage());
         if (!app.isEarlyAccess())
             versionStringList.add(context.getString(R.string.details_rating, (app.getRating().getAverage())));
 

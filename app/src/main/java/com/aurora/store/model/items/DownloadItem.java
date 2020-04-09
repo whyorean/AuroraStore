@@ -30,7 +30,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 @Data
-@EqualsAndHashCode(callSuper=false)
+@EqualsAndHashCode(callSuper = false)
 public class DownloadItem extends AbstractItem<DownloadItem.ViewHolder> {
 
     private Download download;
@@ -95,8 +95,8 @@ public class DownloadItem extends AbstractItem<DownloadItem.ViewHolder> {
 
             final Download download = item.getDownload();
             final Extras extras = download.getExtras();
-            final String displayName = extras.getString(Constants.DOWNLOAD_DISPLAY_NAME,"Unknown");
-            final String iconURL = extras.getString(Constants.DOWNLOAD_ICON_URL,"");
+            final String displayName = extras.getString(Constants.DOWNLOAD_DISPLAY_NAME, "Unknown");
+            final String iconURL = extras.getString(Constants.DOWNLOAD_ICON_URL, "");
             final Status status = download.getStatus();
 
             GlideApp

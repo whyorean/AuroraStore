@@ -24,7 +24,6 @@ import android.content.Context;
 
 import com.aurora.store.model.App;
 import com.aurora.store.model.AppBuilder;
-import com.aurora.store.util.Log;
 import com.aurora.store.util.PackageUtil;
 import com.dragons.aurora.playstoreapiv2.DetailsResponse;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
