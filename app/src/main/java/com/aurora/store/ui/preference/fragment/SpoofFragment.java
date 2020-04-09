@@ -45,6 +45,8 @@ import com.aurora.store.util.PrefUtil;
 import com.aurora.store.util.ViewUtil;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.util.Properties;
 
 import butterknife.BindView;
@@ -144,15 +146,13 @@ public class SpoofFragment extends BaseFragment {
 
     private void drawSpoofedDevice() {
         final Properties properties = new SpoofManager(this.requireContext()).getProperties(deviceName);
-        final String Model = properties.getProperty("UserReadableName");
-        txtDeviceModel.setText(new StringBuilder()
-                .append(Model.substring(0, Model.indexOf('(')))
-                .append(" | ")
-                .append(properties.getProperty(Constants.BUILD_DEVICE)));
 
-        txtDeviceInfo.setText(new StringBuilder()
-                .append(properties.getProperty(Constants.BUILD_MANUFACTURER))
-                .append(" | ")
-                .append(properties.getProperty(Constants.BUILD_HARDWARE)));
+        txtDeviceModel.setText(StringUtils.joinWith(" | ",
+                properties.getProperty("UserReadableName"),
+                properties.getProperty(Constants.BUILD_DEVICE)));
+
+        txtDeviceInfo.setText(StringUtils.joinWith(" | ",
+                properties.getProperty(Constants.BUILD_MANUFACTURER),
+                properties.getProperty(Constants.BUILD_HARDWARE)));
     }
 }
