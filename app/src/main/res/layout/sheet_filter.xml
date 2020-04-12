@@ -18,7 +18,7 @@
   ~
   -->
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -26,9 +26,10 @@
     android:orientation="vertical">
 
     <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txt_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/margin_normal"
         android:layout_marginBottom="@dimen/margin_small"
         android:paddingHorizontal="@dimen/margin_normal"
@@ -38,6 +39,8 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_above="@id/layout_bottom"
+        android:layout_below="@id/txt_title"
         android:padding="@dimen/padding_medium"
         android:scrollbars="none">
 
@@ -135,7 +138,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layout_bottom"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_positive"
@@ -162,4 +166,4 @@
             app:layout_constraintTop_toTopOf="parent"
             app:rippleColor="@color/colorTransparent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-</LinearLayout>
+</RelativeLayout>
