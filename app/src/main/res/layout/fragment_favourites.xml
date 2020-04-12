@@ -19,19 +19,19 @@
   -->
 
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/coordinator"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/content_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
         <RelativeLayout
+            android:id="@+id/layout_top"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:minHeight="?actionBarSize">
@@ -72,52 +72,35 @@
 
         </RelativeLayout>
 
-        <com.aurora.store.ui.view.CustomSwipeToRefresh
-            android:id="@+id/swipe_refresh_layout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recycler"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:overScrollMode="never"
-                android:scrollbars="vertical"
-                tools:listitem="@layout/item_favorite" />
-        </com.aurora.store.ui.view.CustomSwipeToRefresh>
-    </LinearLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <RelativeLayout
-            android:id="@+id/empty_layout"
+        <com.aurora.store.ui.view.ViewFlipper2
+            android:id="@+id/viewFlipper"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="?android:attr/colorBackground"
-            android:visibility="gone">
+            android:layout_below="@id/layout_top">
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/img_empty"
-                app:tint="?colorAccent"
-                android:layout_width="@dimen/icon_size"
-                android:layout_height="@dimen/icon_size"
-                android:layout_above="@id/txt_empty"
-                android:layout_centerHorizontal="true"
-                android:layout_marginBottom="@dimen/margin_small"
-                android:src="@drawable/ic_favourite_red" />
+            <com.aurora.store.ui.view.placeholder.ProgressView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:progressText="@string/action_loading" />
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/txt_empty"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:text="@string/list_empty_fav"
-                android:textAppearance="@style/TextAppearance.Aurora.Line1" />
-        </RelativeLayout>
+            <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+                android:id="@+id/swipe_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-        <include layout="@layout/include_placeholder_layouts" />
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scrollbars="vertical"
+                    tools:listitem="@layout/item_checkbox" />
+            </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
+            <com.aurora.store.ui.view.placeholder.EmptyView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:emptyImage="@drawable/ic_favourite"
+                app:emptyText="@string/list_empty_fav" />
+        </com.aurora.store.ui.view.ViewFlipper2>
     </RelativeLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

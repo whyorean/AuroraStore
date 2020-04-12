@@ -158,10 +158,13 @@ public class ActionButton extends AbstractDetails {
             PackageInfo info = context.getPackageManager().getPackageInfo(app.getPackageName(), 0);
             String currentVersion = info.versionName;
             btnPositive.setText(R.string.details_update);
-            if (info.versionCode == app.getVersionCode() || null == currentVersion) {
+
+            if (info.versionCode >= app.getVersionCode() || null == currentVersion) {
                 btnPositive.setText(R.string.details_run);
                 btnPositive.setOnClickListener(openAppListener());
-                btnPositive.setVisibility(PackageUtil.isPackageLaunchable(context, app.getPackageName()) ? View.VISIBLE : View.GONE);
+                btnPositive.setVisibility(PackageUtil.isPackageLaunchable(context, app.getPackageName())
+                        ? View.VISIBLE
+                        : View.GONE);
             } else if (new File(PathUtil.getLocalApkPath(context, app.getPackageName(),
                     app.getVersionCode())).exists()) {
                 btnPositive.setOnClickListener(installAppListener());

@@ -21,36 +21,40 @@
 
 <androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".ui.main.AuroraActivity">
+        android:layout_height="match_parent">
 
-        <include layout="@layout/item_searchview" />
-
-        <fragment
-            android:id="@+id/nav_host_main"
-            android:name="androidx.navigation.fragment.NavHostFragment"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:navGraph="@navigation/nav_graph_main" />
+            android:layout_height="match_parent">
 
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bottom_navigation"
-            style="@style/Widget.Aurora.BottomNavigation"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            app:backgroundTint="?android:colorBackground"
-            app:elevation="6dp"
-            app:itemTextAppearanceActive="@style/TextAppearance.Aurora.BottomNav.Active"
-            app:itemTextAppearanceInactive="@style/TextAppearance.Aurora.BottomNav.Inactive"
-            app:menu="@menu/navigation_main" />
+            <include layout="@layout/item_searchview" />
+
+            <fragment
+                android:id="@+id/nav_host_main"
+                android:name="androidx.navigation.fragment.NavHostFragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/search_bar"
+                app:navGraph="@navigation/nav_graph_main" />
+
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/bottom_navigation"
+                style="@style/Widget.Aurora.BottomNavigation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                app:backgroundTint="?android:colorBackground"
+                app:elevation="6dp"
+                app:itemTextAppearanceActive="@style/TextAppearance.Aurora.BottomNav.Active"
+                app:itemTextAppearanceInactive="@style/TextAppearance.Aurora.BottomNav.Inactive"
+                app:menu="@menu/navigation_main" />
+        </RelativeLayout>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
     <com.google.android.material.navigation.NavigationView

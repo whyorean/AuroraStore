@@ -3,7 +3,6 @@ package com.aurora.store.ui.search.activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.widget.RelativeLayout;
 
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.lifecycle.ViewModelProvider;
@@ -14,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.aurora.store.AuroraApplication;
 import com.aurora.store.Constants;
 import com.aurora.store.R;
-import com.aurora.store.RecyclerDataObserver;
 import com.aurora.store.manager.FilterManager;
 import com.aurora.store.model.App;
 import com.aurora.store.model.FilterModel;
@@ -24,6 +22,7 @@ import com.aurora.store.sheet.FilterBottomSheet;
 import com.aurora.store.ui.details.DetailsActivity;
 import com.aurora.store.ui.search.SearchAppsModel;
 import com.aurora.store.ui.single.activity.BaseActivity;
+import com.aurora.store.ui.view.ViewFlipper2;
 import com.aurora.store.util.Util;
 import com.aurora.store.util.ViewUtil;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
@@ -42,24 +41,21 @@ import butterknife.OnClick;
 public class SearchResultActivity extends BaseActivity implements
         SharedPreferences.OnSharedPreferenceChangeListener {
 
+    @BindView(R.id.coordinator)
+    CoordinatorLayout coordinator;
     @BindView(R.id.search_view)
     TextInputEditText searchView;
+    @BindView(R.id.viewFlipper)
+    ViewFlipper2 viewFlipper;
     @BindView(R.id.recycler)
     RecyclerView recyclerView;
     @BindView(R.id.filter_fab)
     ExtendedFloatingActionButton filterFab;
-    @BindView(R.id.coordinator)
-    CoordinatorLayout coordinator;
-    @BindView(R.id.empty_layout)
-    RelativeLayout emptyLayout;
-    @BindView(R.id.progress_layout)
-    RelativeLayout progressLayout;
 
     private String query;
     private SharedPreferences sharedPreferences;
 
     private SearchAppsModel model;
-    private RecyclerDataObserver dataObserver;
 
     private FastAdapter fastAdapter;
     private ItemAdapter<EndlessItem> itemAdapter;
@@ -80,6 +76,7 @@ public class SearchResultActivity extends BaseActivity implements
         model.getQueriedApps().observe(this, this::dispatchAppsToAdapter);
         model.getRelatedTags().observe(this, strings -> {
         });
+
         model.getError().observe(this, errorType -> {
             switch (errorType) {
                 case NO_API:
@@ -131,9 +128,6 @@ public class SearchResultActivity extends BaseActivity implements
     @Override
     public void onResume() {
         super.onResume();
-        if (dataObserver != null && !itemAdapter.getAdapterItems().isEmpty()) {
-            dataObserver.hideProgress();
-        }
     }
 
     @Override
@@ -173,8 +167,11 @@ public class SearchResultActivity extends BaseActivity implements
             progressItemAdapter.clear();
         });
 
-        if (dataObserver != null)
-            dataObserver.checkIfEmpty();
+        if (itemAdapter != null && itemAdapter.getAdapterItems().size() > 0) {
+            viewFlipper.switchState(ViewFlipper2.DATA);
+        } else {
+            viewFlipper.switchState(ViewFlipper2.EMPTY);
+        }
     }
 
     private void setupResultRecycler() {
@@ -219,9 +216,6 @@ public class SearchResultActivity extends BaseActivity implements
                 model.fetchQueriedApps(query, true);
             }
         };
-
-        dataObserver = new RecyclerDataObserver(recyclerView, emptyLayout, progressLayout);
-        fastAdapter.registerAdapterDataObserver(dataObserver);
 
         recyclerView.addOnScrollListener(endlessScrollListener);
         recyclerView.setOnFlingListener(new RecyclerView.OnFlingListener() {

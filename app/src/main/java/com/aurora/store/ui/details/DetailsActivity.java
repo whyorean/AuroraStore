@@ -193,7 +193,7 @@ public class DetailsActivity extends BaseActivity {
         getMenuInflater().inflate(R.menu.menu_app_details, menu);
         menu.findItem(R.id.action_favourite).setIcon(favouritesManager.isFavourite(packageName)
                 ? R.drawable.ic_favourite_red
-                : R.drawable.ic_favourite_remove);
+                : R.drawable.ic_favourite);
         MenuItem blackList = menu.findItem(R.id.action_blacklist);
         if (!PackageUtil.isInstalled(this, packageName))
             blackList.setVisible(false);
@@ -209,7 +209,7 @@ public class DetailsActivity extends BaseActivity {
             case R.id.action_favourite:
                 if (favouritesManager.isFavourite(packageName)) {
                     favouritesManager.removeFromFavourites(packageName);
-                    menuItem.setIcon(R.drawable.ic_favourite_remove);
+                    menuItem.setIcon(R.drawable.ic_favourite);
                 } else {
                     favouritesManager.addToFavourites(packageName);
                     menuItem.setIcon(R.drawable.ic_favourite_red);

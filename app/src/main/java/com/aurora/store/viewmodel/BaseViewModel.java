@@ -21,10 +21,13 @@ import java.net.UnknownHostException;
 import java.util.Collections;
 import java.util.List;
 
+import io.reactivex.disposables.CompositeDisposable;
+
 public class BaseViewModel extends AndroidViewModel {
 
     protected GooglePlayAPI api;
     protected MutableLiveData<ErrorType> errorData = new MutableLiveData<>();
+    protected CompositeDisposable disposable = new CompositeDisposable();
 
     public BaseViewModel(@NonNull Application application) {
         super(application);

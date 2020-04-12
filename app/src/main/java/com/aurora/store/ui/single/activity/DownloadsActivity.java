@@ -24,9 +24,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.RelativeLayout;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.widget.Toolbar;
@@ -34,6 +31,7 @@ import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.aurora.store.Constants;
 import com.aurora.store.R;
@@ -41,6 +39,8 @@ import com.aurora.store.download.DownloadManager;
 import com.aurora.store.model.items.DownloadItem;
 import com.aurora.store.sheet.DownloadMenuSheet;
 import com.aurora.store.ui.details.DetailsActivity;
+import com.aurora.store.ui.view.ViewFlipper2;
+import com.aurora.store.util.Log;
 import com.aurora.store.util.Util;
 import com.aurora.store.util.ViewUtil;
 import com.aurora.store.util.diff.DownloadDiffCallback;
@@ -65,24 +65,25 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
 
 public class DownloadsActivity extends BaseActivity {
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
-    @BindView(R.id.recyclerDownloads)
+    @BindView(R.id.viewFlipper)
+    ViewFlipper2 viewFlipper;
+    @BindView(R.id.swipe_layout)
+    SwipeRefreshLayout swipeLayout;
+    @BindView(R.id.recycler)
     RecyclerView recyclerView;
-    @BindView(R.id.content_view)
-    ViewGroup layoutContent;
 
-    @BindView(R.id.empty_layout)
-    RelativeLayout emptyLayout;
 
     private FastAdapter<DownloadItem> fastAdapter;
     private ItemAdapter<DownloadItem> itemAdapter;
     private Fetch fetch;
-
+    private CompositeDisposable disposable = new CompositeDisposable();
     private final FetchListener fetchListener = new AbstractFetchListener() {
         @Override
         public void onAdded(@NotNull Download download) {
@@ -147,6 +148,8 @@ public class DownloadsActivity extends BaseActivity {
 
         fetch = DownloadManager.getFetchInstance(this);
         updateDownloadsList();
+
+        swipeLayout.setOnRefreshListener(this::updateDownloadsList);
     }
 
     @Override
@@ -191,6 +194,7 @@ public class DownloadsActivity extends BaseActivity {
 
     @Override
     protected void onPause() {
+        swipeLayout.setRefreshing(false);
         fetch.removeListener(fetchListener);
         super.onPause();
     }
@@ -217,20 +221,13 @@ public class DownloadsActivity extends BaseActivity {
             final List<Download> downloadList = new ArrayList<>(downloads);
             Collections.sort(downloadList, (first, second) -> Long.compare(first.getCreated(), second.getCreated()));
 
-            Observable.fromIterable(downloadList)
+            disposable.add(Observable.fromIterable(downloadList)
                     .subscribeOn(Schedulers.io())
                     .map(DownloadItem::new)
                     .toList()
                     .observeOn(AndroidSchedulers.mainThread())
-                    .doOnSuccess(this::dispatchAppsToAdapter)
-                    .doFinally(() -> {
-                        if (itemAdapter != null) {
-                            emptyLayout.setVisibility(itemAdapter.getAdapterItems().isEmpty()
-                                    ? View.VISIBLE
-                                    : View.GONE);
-                        }
-                    })
-                    .subscribe();
+                    .subscribe(this::dispatchAppsToAdapter,
+                            throwable -> Log.e(throwable.getMessage())));
         });
     }
 
@@ -239,6 +236,13 @@ public class DownloadsActivity extends BaseActivity {
         final DownloadDiffCallback diffCallback = new DownloadDiffCallback();
         final DiffUtil.DiffResult diffResult = fastAdapterDiffUtil.calculateDiff(itemAdapter, installedItemList, diffCallback);
         fastAdapterDiffUtil.set(itemAdapter, diffResult);
+
+        if (itemAdapter != null && itemAdapter.getAdapterItems().size() > 0) {
+            viewFlipper.switchState(ViewFlipper2.DATA);
+        } else {
+            viewFlipper.switchState(ViewFlipper2.EMPTY);
+        }
+        swipeLayout.setRefreshing(false);
     }
 
     private void setupRecycler() {

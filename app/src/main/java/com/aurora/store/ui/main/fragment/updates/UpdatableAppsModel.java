@@ -32,22 +32,21 @@ public class UpdatableAppsModel extends BaseViewModel {
     }
 
     public void fetchUpdatableApps() {
-        Observable.fromCallable(() -> new UpdatableAppsTask(api, getApplication())
+        disposable.add(Observable.fromCallable(() -> new UpdatableAppsTask(api, getApplication())
                 .getUpdatableApps())
                 .subscribeOn(Schedulers.computation())
                 .observeOn(AndroidSchedulers.mainThread())
-                .map(apps -> sortList(apps))
+                .map(this::sortList)
                 .flatMap(apps -> Observable
                         .fromIterable(apps)
                         .map(UpdatesItem::new))
                 .toList()
-                .doOnSuccess(updatesItems -> data.setValue(updatesItems))
-                .doOnError(this::handleError)
-                .subscribe();
+                .subscribe(updatesItems -> data.setValue(updatesItems), this::handleError));
     }
 
     @Override
     protected void onCleared() {
+        disposable.dispose();
         super.onCleared();
     }
 }

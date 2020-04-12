@@ -26,7 +26,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -38,7 +37,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.aurora.store.Constants;
 import com.aurora.store.R;
-import com.aurora.store.RecyclerDataObserver;
 import com.aurora.store.model.App;
 import com.aurora.store.model.items.EndlessItem;
 import com.aurora.store.sheet.AppMenuSheet;
@@ -46,6 +44,7 @@ import com.aurora.store.ui.category.CategoryAppsActivity;
 import com.aurora.store.ui.category.CategoryAppsModel;
 import com.aurora.store.ui.details.DetailsActivity;
 import com.aurora.store.ui.single.fragment.BaseFragment;
+import com.aurora.store.ui.view.ViewFlipper2;
 import com.aurora.store.util.Util;
 import com.aurora.store.util.ViewUtil;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
@@ -64,16 +63,13 @@ public class SubCategoryFragment extends BaseFragment implements
 
     @BindView(R.id.recycler)
     RecyclerView recyclerView;
-    @BindView(R.id.empty_layout)
-    RelativeLayout emptyLayout;
-    @BindView(R.id.progress_layout)
-    RelativeLayout progressLayout;
+    @BindView(R.id.viewFlipper)
+    ViewFlipper2 viewFlipper;
 
     private GooglePlayAPI.SUBCATEGORY subcategory = GooglePlayAPI.SUBCATEGORY.TOP_FREE;
     private SharedPreferences sharedPreferences;
 
     private CategoryAppsModel model;
-    private RecyclerDataObserver dataObserver;
 
     private FastAdapter fastAdapter;
     private ItemAdapter<EndlessItem> itemAdapter;
@@ -129,9 +125,6 @@ public class SubCategoryFragment extends BaseFragment implements
     @Override
     public void onResume() {
         super.onResume();
-        if (dataObserver != null && !itemAdapter.getAdapterItems().isEmpty()) {
-            dataObserver.hideProgress();
-        }
         sharedPreferences.registerOnSharedPreferenceChangeListener(this);
     }
 
@@ -146,6 +139,12 @@ public class SubCategoryFragment extends BaseFragment implements
         recyclerView.post(() -> {
             progressItemAdapter.clear();
         });
+
+        if (itemAdapter != null && itemAdapter.getAdapterItems().size() > 0) {
+            viewFlipper.switchState(ViewFlipper2.DATA);
+        } else {
+            viewFlipper.switchState(ViewFlipper2.EMPTY);
+        }
     }
 
     private void purgeAdapterData() {
@@ -153,9 +152,6 @@ public class SubCategoryFragment extends BaseFragment implements
             progressItemAdapter.clear();
             itemAdapter.clear();
         });
-
-        if (dataObserver != null)
-            dataObserver.checkIfEmpty();
     }
 
     private void setupRecycler() {
@@ -200,9 +196,6 @@ public class SubCategoryFragment extends BaseFragment implements
                 model.fetchCategoryApps(CategoryAppsActivity.categoryId, getSubcategory(), true);
             }
         };
-
-        dataObserver = new RecyclerDataObserver(recyclerView, emptyLayout, progressLayout);
-        fastAdapter.registerAdapterDataObserver(dataObserver);
 
         recyclerView.addOnScrollListener(endlessScrollListener);
         recyclerView.setLayoutManager(new LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false));

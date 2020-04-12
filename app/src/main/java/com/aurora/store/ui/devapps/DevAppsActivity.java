@@ -3,7 +3,6 @@ package com.aurora.store.ui.devapps;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -16,12 +15,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.aurora.store.Constants;
 import com.aurora.store.R;
-import com.aurora.store.RecyclerDataObserver;
 import com.aurora.store.model.App;
 import com.aurora.store.model.items.EndlessItem;
 import com.aurora.store.sheet.AppMenuSheet;
 import com.aurora.store.ui.details.DetailsActivity;
 import com.aurora.store.ui.single.activity.BaseActivity;
+import com.aurora.store.ui.view.ViewFlipper2;
 import com.aurora.store.util.ViewUtil;
 import com.mikepenz.fastadapter.FastAdapter;
 import com.mikepenz.fastadapter.adapters.ItemAdapter;
@@ -37,16 +36,12 @@ public class DevAppsActivity extends BaseActivity {
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
+    @BindView(R.id.viewFlipper)
+    ViewFlipper2 viewFlipper;
     @BindView(R.id.recycler)
     RecyclerView recyclerView;
 
-    @BindView(R.id.empty_layout)
-    RelativeLayout emptyLayout;
-    @BindView(R.id.progress_layout)
-    RelativeLayout progressLayout;
-
     private DevAppsModel model;
-    private RecyclerDataObserver dataObserver;
     private FastAdapter fastAdapter;
     private ItemAdapter<EndlessItem> itemAdapter;
     private ItemAdapter<ProgressItem> progressItemAdapter;
@@ -81,9 +76,6 @@ public class DevAppsActivity extends BaseActivity {
     @Override
     public void onResume() {
         super.onResume();
-        if (dataObserver != null && !itemAdapter.getAdapterItems().isEmpty()) {
-            dataObserver.hideProgress();
-        }
     }
 
     @Override
@@ -101,8 +93,11 @@ public class DevAppsActivity extends BaseActivity {
             progressItemAdapter.clear();
         });
 
-        if (dataObserver != null)
-            dataObserver.checkIfEmpty();
+        if (itemAdapter != null && itemAdapter.getAdapterItems().size() > 0) {
+            viewFlipper.switchState(ViewFlipper2.DATA);
+        } else {
+            viewFlipper.switchState(ViewFlipper2.EMPTY);
+        }
     }
 
     private void setupActionBar() {
@@ -157,9 +152,6 @@ public class DevAppsActivity extends BaseActivity {
                 model.fetchQueriedApps(query, true);
             }
         };
-
-        dataObserver = new RecyclerDataObserver(recyclerView, emptyLayout, progressLayout);
-        fastAdapter.registerAdapterDataObserver(dataObserver);
 
         recyclerView.addOnScrollListener(endlessScrollListener);
         recyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));

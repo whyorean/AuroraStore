@@ -25,7 +25,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -34,12 +33,12 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.aurora.store.R;
-import com.aurora.store.RecyclerDataObserver;
 import com.aurora.store.manager.BlacklistManager;
 import com.aurora.store.model.items.BlacklistItem;
-import com.aurora.store.ui.view.CustomSwipeToRefresh;
+import com.aurora.store.ui.view.ViewFlipper2;
 import com.aurora.store.util.Log;
 import com.aurora.store.util.ViewUtil;
 import com.aurora.store.viewmodel.BlackListedAppsModel;
@@ -56,8 +55,11 @@ import butterknife.OnClick;
 
 
 public class BlacklistFragment extends Fragment {
+
     @BindView(R.id.swipe_layout)
-    CustomSwipeToRefresh swipeToRefresh;
+    SwipeRefreshLayout refreshLayout;
+    @BindView(R.id.viewFlipper)
+    ViewFlipper2 viewFlipper;
     @BindView(R.id.recycler)
     RecyclerView recyclerView;
     @BindView(R.id.btn_clear_all)
@@ -65,14 +67,8 @@ public class BlacklistFragment extends Fragment {
     @BindView(R.id.txt_blacklist)
     TextView txtBlacklist;
 
-    @BindView(R.id.empty_layout)
-    RelativeLayout emptyLayout;
-    @BindView(R.id.progress_layout)
-    RelativeLayout progressLayout;
-
     private BlacklistManager blacklistManager;
     private BlackListedAppsModel model;
-    private RecyclerDataObserver dataObserver;
     private FastItemAdapter<BlacklistItem> fastItemAdapter;
     private SelectExtension<BlacklistItem> selectExtension;
 
@@ -95,24 +91,18 @@ public class BlacklistFragment extends Fragment {
         model.getBlacklistedItems().observe(getViewLifecycleOwner(), blacklistItems -> {
             final List<BlacklistItem> sortedList = sortBlackListedApps(blacklistItems);
             fastItemAdapter.add(sortedList);
-            swipeToRefresh.setRefreshing(false);
-
-            if (dataObserver != null)
-                dataObserver.checkIfEmpty();
-
+            refreshLayout.setRefreshing(false);
+            updatePageData();
             updateCount();
         });
 
-        swipeToRefresh.setRefreshing(true);
-        swipeToRefresh.setOnRefreshListener(() -> model.fetchBlackListedApps());
+        refreshLayout.setRefreshing(true);
+        refreshLayout.setOnRefreshListener(() -> model.fetchBlackListedApps());
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        if (dataObserver != null && !fastItemAdapter.getAdapterItems().isEmpty()) {
-            dataObserver.hideProgress();
-        }
     }
 
     @OnClick(R.id.btn_clear_all)
@@ -148,6 +138,14 @@ public class BlacklistFragment extends Fragment {
         return sortedList;
     }
 
+    private void updatePageData() {
+        if (fastItemAdapter != null && fastItemAdapter.getAdapterItems().size() > 0) {
+            viewFlipper.switchState(ViewFlipper2.DATA);
+        } else {
+            viewFlipper.switchState(ViewFlipper2.EMPTY);
+        }
+    }
+
     private void setupRecycler() {
         blacklistManager = new BlacklistManager(requireContext());
         fastItemAdapter = new FastItemAdapter<>();
@@ -158,9 +156,6 @@ public class BlacklistFragment extends Fragment {
 
         fastItemAdapter.addExtension(selectExtension);
         fastItemAdapter.addEventHook(new BlacklistItem.CheckBoxClickEvent());
-
-        dataObserver = new RecyclerDataObserver(recyclerView, emptyLayout, progressLayout);
-        fastItemAdapter.registerAdapterDataObserver(dataObserver);
 
         selectExtension.setMultiSelect(true);
         selectExtension.setSelectionListener((item, selected) -> {

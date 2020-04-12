@@ -25,20 +25,21 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.ColorUtils;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.aurora.store.Constants;
 import com.aurora.store.R;
-import com.aurora.store.RecyclerDataObserver;
 import com.aurora.store.exception.MalformedRequestException;
 import com.aurora.store.manager.FavouritesManager;
 import com.aurora.store.model.App;
@@ -46,7 +47,8 @@ import com.aurora.store.model.items.FavouriteItem;
 import com.aurora.store.task.LiveUpdate;
 import com.aurora.store.task.ObservableDeliveryData;
 import com.aurora.store.ui.details.DetailsActivity;
-import com.aurora.store.ui.view.CustomSwipeToRefresh;
+import com.aurora.store.ui.view.ViewFlipper2;
+import com.aurora.store.util.ImageUtil;
 import com.aurora.store.util.Log;
 import com.aurora.store.util.PackageUtil;
 import com.aurora.store.util.PathUtil;
@@ -55,6 +57,7 @@ import com.aurora.store.viewmodel.FavouriteAppsModel;
 import com.google.android.material.button.MaterialButton;
 import com.mikepenz.fastadapter.adapters.FastItemAdapter;
 import com.mikepenz.fastadapter.select.SelectExtension;
+import com.mikepenz.fastadapter.swipe.SimpleSwipeCallback;
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -75,10 +78,12 @@ import butterknife.ButterKnife;
 import io.reactivex.Observable;
 import io.reactivex.schedulers.Schedulers;
 
-public class FavouriteFragment extends BaseFragment {
+public class FavouriteFragment extends BaseFragment implements SimpleSwipeCallback.ItemSwipeCallback {
 
-    @BindView(R.id.swipe_refresh_layout)
-    CustomSwipeToRefresh swipeToRefresh;
+    @BindView(R.id.viewFlipper)
+    ViewFlipper2 viewFlipper;
+    @BindView(R.id.swipe_layout)
+    SwipeRefreshLayout swipeLayout;
     @BindView(R.id.recycler)
     RecyclerView recyclerView;
     @BindView(R.id.export_list)
@@ -88,14 +93,8 @@ public class FavouriteFragment extends BaseFragment {
     @BindView(R.id.count_selection)
     TextView txtCount;
 
-    @BindView(R.id.empty_layout)
-    RelativeLayout emptyLayout;
-    @BindView(R.id.progress_layout)
-    RelativeLayout progressLayout;
-
     private Set<App> selectedAppSet = new HashSet<>();
     private FavouriteAppsModel model;
-    private RecyclerDataObserver dataObserver;
     private FavouritesManager favouritesManager;
 
     private FastItemAdapter<FavouriteItem> fastItemAdapter;
@@ -124,12 +123,12 @@ public class FavouriteFragment extends BaseFragment {
         model = new ViewModelProvider(this).get(FavouriteAppsModel.class);
         model.getFavouriteApps().observe(getViewLifecycleOwner(), favouriteItems -> {
             fastItemAdapter.add(favouriteItems);
-            swipeToRefresh.setRefreshing(false);
+            swipeLayout.setRefreshing(false);
             updatePageData();
         });
 
-        swipeToRefresh.setRefreshing(true);
-        swipeToRefresh.setOnRefreshListener(() -> {
+        swipeLayout.setRefreshing(true);
+        swipeLayout.setOnRefreshListener(() -> {
             model.fetchFavouriteApps();
         });
     }
@@ -137,14 +136,11 @@ public class FavouriteFragment extends BaseFragment {
     @Override
     public void onResume() {
         super.onResume();
-        if (dataObserver != null && !fastItemAdapter.getAdapterItems().isEmpty()) {
-            dataObserver.hideProgress();
-        }
     }
 
     @Override
     public void onPause() {
-        swipeToRefresh.setRefreshing(false);
+        swipeLayout.setRefreshing(false);
         super.onPause();
     }
 
@@ -208,8 +204,11 @@ public class FavouriteFragment extends BaseFragment {
         updateButtons();
         updateActions();
 
-        if (dataObserver != null)
-            dataObserver.checkIfEmpty();
+        if (fastItemAdapter != null && fastItemAdapter.getAdapterItems().size() > 0) {
+            viewFlipper.switchState(ViewFlipper2.DATA);
+        } else {
+            viewFlipper.switchState(ViewFlipper2.EMPTY);
+        }
     }
 
     private void updateText() {
@@ -228,6 +227,10 @@ public class FavouriteFragment extends BaseFragment {
 
     private void updateActions() {
         btnInstall.setOnClickListener(bulkInstallListener());
+        btnAction.setText(fastItemAdapter.getAdapterItems().size() == 0
+                ? getString(R.string.action_import)
+                : getString(R.string.action_export));
+
         btnAction.setOnClickListener(v -> {
             if (fastItemAdapter.getAdapterItems().size() == 0) {
                 importList();
@@ -254,9 +257,6 @@ public class FavouriteFragment extends BaseFragment {
         fastItemAdapter.addExtension(selectExtension);
         fastItemAdapter.addEventHook(new FavouriteItem.CheckBoxClickEvent());
 
-        dataObserver = new RecyclerDataObserver(recyclerView, emptyLayout, progressLayout);
-        fastItemAdapter.registerAdapterDataObserver(dataObserver);
-
         selectExtension.setMultiSelect(true);
         selectExtension.setSelectionListener((item, selected) -> {
             if (selected) {
@@ -267,7 +267,25 @@ public class FavouriteFragment extends BaseFragment {
             updatePageData();
         });
 
+        final SimpleSwipeCallback callback = new SimpleSwipeCallback(
+                this,
+                getResources().getDrawable(R.drawable.ic_delete),
+                ItemTouchHelper.LEFT,
+                ColorUtils.setAlphaComponent(ImageUtil.getSolidColor(0), 120));
+
+        final ItemTouchHelper itemTouchHelper = new ItemTouchHelper(callback);
+        itemTouchHelper.attachToRecyclerView(recyclerView);
+
         recyclerView.setAdapter(fastItemAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
+    }
+
+    @Override
+    public void itemSwiped(int position, int direction) {
+        final FavouriteItem item = fastItemAdapter.getAdapterItem(position);
+        new FavouritesManager(requireContext()).removeFromFavourites(item.getPackageName());
+        fastItemAdapter.remove(position);
+        fastItemAdapter.notifyAdapterItemChanged(position);
+        updatePageData();
     }
 }

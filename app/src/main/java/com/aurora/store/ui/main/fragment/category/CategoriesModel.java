@@ -3,12 +3,12 @@ package com.aurora.store.ui.main.fragment.category;
 import android.app.Application;
 
 import androidx.annotation.NonNull;
-import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
 import com.aurora.store.AuroraApplication;
 import com.aurora.store.manager.CategoryManager;
 import com.aurora.store.task.CategoryListTask;
+import com.aurora.store.viewmodel.BaseViewModel;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 
 import io.reactivex.Observable;
@@ -16,14 +16,14 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
 
-public class CategoriesModel extends AndroidViewModel {
+public class CategoriesModel extends BaseViewModel {
 
     private Application application;
     private CompositeDisposable disposable = new CompositeDisposable();
 
     private GooglePlayAPI api;
     private CategoryManager categoryManager;
-    private MutableLiveData<Boolean> fetchCompleted = new MutableLiveData<>();
+    private MutableLiveData<Boolean> data = new MutableLiveData<>();
 
     public CategoriesModel(@NonNull Application application) {
         super(application);
@@ -32,15 +32,15 @@ public class CategoriesModel extends AndroidViewModel {
         this.categoryManager = new CategoryManager(application);
     }
 
-    public MutableLiveData<Boolean> getFetchCompleted() {
-        return fetchCompleted;
+    public MutableLiveData<Boolean> getData() {
+        return data;
     }
 
     public void fetchCategories() {
         if (categoryManager.categoryListEmpty())
             getCategoriesFromAPI();
         else
-            fetchCompleted.setValue(true);
+            data.setValue(true);
     }
 
     private void getCategoriesFromAPI() {
@@ -48,11 +48,7 @@ public class CategoriesModel extends AndroidViewModel {
                 .getResult())
                 .subscribeOn(Schedulers.computation())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(status -> {
-                    fetchCompleted.setValue(status);
-                }, err -> {
-
-                }));
+                .subscribe(status -> data.setValue(status), this::handleError));
     }
 
     @Override

@@ -3,7 +3,6 @@ package com.aurora.store.ui.installed;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.RelativeLayout;
 
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.lifecycle.ViewModelProvider;
@@ -11,17 +10,17 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.aurora.store.AuroraApplication;
 import com.aurora.store.Constants;
 import com.aurora.store.R;
-import com.aurora.store.RecyclerDataObserver;
 import com.aurora.store.model.App;
 import com.aurora.store.model.items.InstalledItem;
 import com.aurora.store.sheet.AppMenuSheet;
 import com.aurora.store.ui.details.DetailsActivity;
 import com.aurora.store.ui.single.activity.BaseActivity;
-import com.aurora.store.ui.view.CustomSwipeToRefresh;
+import com.aurora.store.ui.view.ViewFlipper2;
 import com.aurora.store.util.PrefUtil;
 import com.aurora.store.util.Util;
 import com.aurora.store.util.ViewUtil;
@@ -43,18 +42,13 @@ public class InstalledAppActivity extends BaseActivity {
     CoordinatorLayout coordinator;
     @BindView(R.id.switch_system)
     SwitchMaterial switchSystem;
+    @BindView(R.id.viewFlipper)
+    ViewFlipper2 viewFlipper;
     @BindView(R.id.swipe_layout)
-    CustomSwipeToRefresh swipeToRefresh;
+    SwipeRefreshLayout swipeToRefresh;
     @BindView(R.id.recycler)
     RecyclerView recyclerView;
-
-    @BindView(R.id.empty_layout)
-    RelativeLayout emptyLayout;
-    @BindView(R.id.progress_layout)
-    RelativeLayout progressLayout;
-
     private InstalledAppsModel model;
-    private RecyclerDataObserver dataObserver;
     private FastAdapter<InstalledItem> fastAdapter;
     private ItemAdapter<InstalledItem> itemAdapter;
 
@@ -114,9 +108,12 @@ public class InstalledAppActivity extends BaseActivity {
     @Override
     public void onResume() {
         super.onResume();
-        if (dataObserver != null && !itemAdapter.getAdapterItems().isEmpty()) {
-            dataObserver.hideProgress();
-        }
+    }
+
+    @Override
+    protected void onPause() {
+        swipeToRefresh.setRefreshing(false);
+        super.onPause();
     }
 
     @Override
@@ -138,8 +135,11 @@ public class InstalledAppActivity extends BaseActivity {
         final DiffUtil.DiffResult diffResult = fastAdapterDiffUtil.calculateDiff(itemAdapter, installedItemList, diffCallback);
         fastAdapterDiffUtil.set(itemAdapter, diffResult);
 
-        if (dataObserver != null)
-            dataObserver.checkIfEmpty();
+        if (itemAdapter != null && itemAdapter.getAdapterItems().size() > 0) {
+            viewFlipper.switchState(ViewFlipper2.DATA);
+        } else {
+            viewFlipper.switchState(ViewFlipper2.EMPTY);
+        }
     }
 
     private void removeItemByPackageName(String packageName) {
@@ -179,9 +179,6 @@ public class InstalledAppActivity extends BaseActivity {
             menuSheet.show(getSupportFragmentManager(), AppMenuSheet.TAG);
             return true;
         });
-
-        dataObserver = new RecyclerDataObserver(recyclerView, emptyLayout, progressLayout);
-        fastAdapter.registerAdapterDataObserver(dataObserver);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setItemAnimator(new DefaultItemAnimator());

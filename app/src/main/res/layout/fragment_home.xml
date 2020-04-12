@@ -30,7 +30,6 @@
         android:layout_height="match_parent"
         android:clipToPadding="false"
         android:overScrollMode="never"
-        android:paddingTop="@dimen/margin_bottom"
         android:paddingBottom="@dimen/margin_bottom"
         android:scrollbars="none">
 

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Aurora Droid
+  ~ Copyright (C) 2019-20, Rahul Kumar Patel <whyorean@gmail.com>
+  ~
+  ~ Aurora Droid is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ Aurora Droid is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with Aurora Droid.  If not, see <http://www.gnu.org/licenses/>.
+  ~
+  -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/empty_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/img_empty"
+        android:layout_width="@dimen/icon_size"
+        android:layout_height="@dimen/icon_size"
+        android:layout_above="@id/txt_empty"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/margin_small"
+        android:src="@drawable/ic_apps"
+        app:tint="?colorAccent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txt_empty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="@string/error_search_not_found"
+        android:textAppearance="@style/TextAppearance.Aurora.Line1" />
+</RelativeLayout>

@@ -25,7 +25,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -37,11 +36,11 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.aurora.store.AuroraApplication;
 import com.aurora.store.Constants;
 import com.aurora.store.R;
-import com.aurora.store.RecyclerDataObserver;
 import com.aurora.store.download.DownloadManager;
 import com.aurora.store.manager.IgnoreListManager;
 import com.aurora.store.model.App;
@@ -49,7 +48,7 @@ import com.aurora.store.model.items.UpdatesItem;
 import com.aurora.store.sheet.AppMenuSheet;
 import com.aurora.store.ui.details.DetailsActivity;
 import com.aurora.store.ui.single.fragment.BaseFragment;
-import com.aurora.store.ui.view.CustomSwipeToRefresh;
+import com.aurora.store.ui.view.ViewFlipper2;
 import com.aurora.store.util.Util;
 import com.aurora.store.util.ViewUtil;
 import com.aurora.store.util.diff.UpdatesDiffCallback;
@@ -58,9 +57,10 @@ import com.mikepenz.fastadapter.FastAdapter;
 import com.mikepenz.fastadapter.adapters.ItemAdapter;
 import com.mikepenz.fastadapter.diff.FastAdapterDiffUtil;
 import com.mikepenz.fastadapter.select.SelectExtension;
-import com.tonyodev.fetch2.AbstractFetchListener;
+import com.tonyodev.fetch2.AbstractFetchGroupListener;
 import com.tonyodev.fetch2.Download;
 import com.tonyodev.fetch2.Fetch;
+import com.tonyodev.fetch2.FetchGroup;
 import com.tonyodev.fetch2.FetchListener;
 
 import org.apache.commons.lang3.StringUtils;
@@ -80,7 +80,9 @@ public class UpdatesFragment extends BaseFragment {
     @BindView(R.id.coordinator)
     CoordinatorLayout coordinator;
     @BindView(R.id.swipe_layout)
-    CustomSwipeToRefresh swipeToRefresh;
+    SwipeRefreshLayout swipeLayout;
+    @BindView(R.id.viewFlipper)
+    ViewFlipper2 viewFlipper;
     @BindView(R.id.recycler)
     RecyclerView recyclerView;
     @BindView(R.id.txt_update_all)
@@ -88,17 +90,10 @@ public class UpdatesFragment extends BaseFragment {
     @BindView(R.id.btn_action)
     MaterialButton btnAction;
 
-    @BindView(R.id.empty_layout)
-    RelativeLayout emptyLayout;
-    @BindView(R.id.progress_layout)
-    RelativeLayout progressLayout;
-
     private Fetch fetch;
     private Set<UpdatesItem> selectedItems = new HashSet<>();
 
     private UpdatableAppsModel model;
-    private RecyclerDataObserver dataObserver;
-
     private FastAdapter<UpdatesItem> fastAdapter;
     private ItemAdapter<UpdatesItem> itemAdapter;
     private SelectExtension<UpdatesItem> selectExtension;
@@ -118,10 +113,12 @@ public class UpdatesFragment extends BaseFragment {
         setupRecycler();
 
         model = new ViewModelProvider(this).get(UpdatableAppsModel.class);
+
         model.getData().observe(getViewLifecycleOwner(), updatesItems -> {
             dispatchAppsToAdapter(updatesItems);
-            swipeToRefresh.setRefreshing(false);
+            swipeLayout.setRefreshing(false);
         });
+
         model.getError().observe(getViewLifecycleOwner(), errorType -> {
             switch (errorType) {
                 case NO_API:
@@ -135,8 +132,8 @@ public class UpdatesFragment extends BaseFragment {
             }
         });
 
-        swipeToRefresh.setRefreshing(true);
-        swipeToRefresh.setOnRefreshListener(() -> model.fetchUpdatableApps());
+        swipeLayout.setRefreshing(true);
+        swipeLayout.setOnRefreshListener(() -> model.fetchUpdatableApps());
 
         AuroraApplication
                 .getRelayBus()
@@ -180,14 +177,11 @@ public class UpdatesFragment extends BaseFragment {
     @Override
     public void onResume() {
         super.onResume();
-        if (dataObserver != null && !itemAdapter.getAdapterItems().isEmpty()) {
-            dataObserver.hideProgress();
-        }
     }
 
     @Override
     public void onPause() {
-        swipeToRefresh.setRefreshing(false);
+        swipeLayout.setRefreshing(false);
         super.onPause();
     }
 
@@ -228,8 +222,12 @@ public class UpdatesFragment extends BaseFragment {
         updateText();
         updateButtons();
         updateButtonActions();
-        if (dataObserver != null)
-            dataObserver.checkIfEmpty();
+
+        if (itemAdapter != null && itemAdapter.getAdapterItems().size() > 0) {
+            viewFlipper.switchState(ViewFlipper2.DATA);
+        } else {
+            viewFlipper.switchState(ViewFlipper2.EMPTY);
+        }
     }
 
     private void dispatchAppsToAdapter(List<UpdatesItem> updatesItems) {
@@ -268,9 +266,6 @@ public class UpdatesFragment extends BaseFragment {
 
         fastAdapter.addExtension(selectExtension);
         fastAdapter.addEventHook(new UpdatesItem.CheckBoxClickEvent());
-
-        dataObserver = new RecyclerDataObserver(recyclerView, emptyLayout, progressLayout);
-        fastAdapter.registerAdapterDataObserver(dataObserver);
 
         selectExtension.setMultiSelect(true);
         selectExtension.setSelectionListener((item, selected) -> {
@@ -315,30 +310,39 @@ public class UpdatesFragment extends BaseFragment {
         Observable.fromIterable(selectiveUpdate
                 ? selectedItems
                 : itemAdapter.getAdapterItems())
-                .map(UpdatesItem::getPackageName)
-                .toList()
-                .doOnSuccess(packages -> {
-                    final List<String> packageList = new ArrayList<>(packages);
-                    final FetchListener fetchListener = new AbstractFetchListener() {
+                .map(updatesItem -> updatesItem.getPackageName().hashCode())
+                .doOnNext(hashcode -> {
+                    final FetchListener fetchListener = new AbstractFetchGroupListener() {
                         @Override
-                        public void onAdded(@NotNull Download download) {
-                            DownloadManager.updateOngoingDownloads(fetch, packageList, download, this);
+                        public void onAdded(int groupId, @NotNull Download download, @NotNull FetchGroup fetchGroup) {
+                            super.onAdded(groupId, download, fetchGroup);
+                            if (hashcode == groupId) {
+                                fetch.cancelGroup(groupId);
+                                fetch.removeListener(this);
+                            }
                         }
 
                         @Override
-                        public void onQueued(@NotNull Download download, boolean b) {
-                            DownloadManager.updateOngoingDownloads(fetch, packageList, download, this);
+                        public void onProgress(int groupId, @NotNull Download download, long etaInMilliSeconds, long downloadedBytesPerSecond, @NotNull FetchGroup fetchGroup) {
+                            super.onProgress(groupId, download, etaInMilliSeconds, downloadedBytesPerSecond, fetchGroup);
+                            if (hashcode == groupId) {
+                                fetch.cancelGroup(groupId);
+                                fetch.removeListener(this);
+                            }
                         }
 
                         @Override
-                        public void onProgress(@NotNull Download download, long etaInMilliSeconds, long downloadedBytesPerSecond) {
-                            super.onProgress(download, etaInMilliSeconds, downloadedBytesPerSecond);
-                            DownloadManager.updateOngoingDownloads(fetch, packageList, download, this);
+                        public void onQueued(int groupId, @NotNull Download download, boolean waitingNetwork, @NotNull FetchGroup fetchGroup) {
+                            super.onQueued(groupId, download, waitingNetwork, fetchGroup);
+                            if (hashcode == groupId) {
+                                fetch.cancelGroup(groupId);
+                                fetch.removeListener(this);
+                            }
                         }
                     };
-
                     fetch.addListener(fetchListener);
-
+                })
+                .doOnComplete(() -> {
                     //Clear ongoing update list
                     AuroraApplication.setOngoingUpdateList(new ArrayList<>());
                     //Start BulkUpdate cancellation request

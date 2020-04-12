@@ -53,7 +53,7 @@ public class SearchAppsModel extends BaseViewModel {
         if (!shouldIterate)
             getIterator(query);
 
-        Observable.fromCallable(() -> new SearchTask(getApplication())
+        disposable.add(Observable.fromCallable(() -> new SearchTask(getApplication())
                 .getSearchResults(iterator))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -62,9 +62,7 @@ public class SearchAppsModel extends BaseViewModel {
                         .toList()
                         .toObservable()
                 )
-                .doOnNext(searchItems -> listMutableLiveData.setValue(searchItems))
-                .doOnError(this::handleError)
-                .subscribe();
+                .subscribe(searchItems -> listMutableLiveData.setValue(searchItems), this::handleError));
     }
 
     public void getIterator(String query) {

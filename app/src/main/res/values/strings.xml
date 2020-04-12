@@ -16,6 +16,7 @@
     <string name="action_done">"Done"</string>
     <string name="action_enable">"Enable"</string>
     <string name="action_export">"Export"</string>
+    <string name="action_import">"Import"</string>
     <string name="action_favourites">"Favourite apps"</string>
     <string name="action_filter">"Filters"</string>
     <string name="action_filter_all">"All"</string>
@@ -106,6 +107,7 @@
     <string name="list_app_user">"User app"</string>
     <string name="list_blacklist">"Blacklisted apps"</string>
     <string name="list_blacklist_none">"No apps blacklisted"</string>
+    <string name="list_categories_none">"No categories available"</string>
     <string name="list_empty_fav">"No favourites"</string>
     <string name="list_empty_updates">"No updates available"</string>
     <string name="list_installed">"Installed"</string>
