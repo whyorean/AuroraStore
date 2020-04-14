@@ -30,6 +30,7 @@ import com.aurora.store.util.ViewUtil;
 import com.aurora.store.util.WorkerUtil;
 import com.aurora.store.util.diff.SuggestionDiffCallback;
 import com.aurora.store.worker.ApiValidator;
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.mikepenz.fastadapter.FastAdapter;
 import com.mikepenz.fastadapter.adapters.ItemAdapter;
@@ -54,8 +55,11 @@ public class SearchActivity extends BaseActivity {
     ImageView action2;
     @BindView(R.id.coordinator)
     CoordinatorLayout coordinator;
+    @BindView(R.id.fab_ime)
+    ExtendedFloatingActionButton fabIme;
 
     private String query;
+    private boolean imeVisible = false;
     private SearchSuggestionModel model;
     private InputMethodManager inputMethodManager;
 
@@ -99,7 +103,18 @@ public class SearchActivity extends BaseActivity {
                     break;
                 }
             }
-        });
+        });/*
+
+        coordinator.getViewTreeObserver().addOnGlobalLayoutListener(() -> {
+            if (coordinator != null) {
+                int heightDiff = coordinator.getRootView().getHeight() - coordinator.getHeight();
+                if (heightDiff > ViewUtil.dpToPx(this, 100 *//*Dirty, but works*//*)) {
+                    fabIme.hide();
+                } else {
+                    fabIme.show();
+                }
+            }
+        });*/
 
         onNewIntent(getIntent());
     }
@@ -111,8 +126,15 @@ public class SearchActivity extends BaseActivity {
 
     @OnClick(R.id.fab_ime)
     public void toggleKeyBoard() {
-        if (inputMethodManager != null)
-            inputMethodManager.showSoftInput(searchView, InputMethodManager.SHOW_IMPLICIT);
+        if (inputMethodManager != null) {
+            if (imeVisible) {
+                inputMethodManager.showSoftInput(searchView, InputMethodManager.SHOW_IMPLICIT);
+            } else {
+                inputMethodManager.hideSoftInputFromWindow(searchView.getWindowToken(),
+                        InputMethodManager.HIDE_IMPLICIT_ONLY);
+            }
+            imeVisible = !imeVisible;
+        }
     }
 
     @Override
