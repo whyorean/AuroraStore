@@ -37,6 +37,7 @@ import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+import androidx.work.OneTimeWorkRequest;
 
 import com.aurora.store.AuroraApplication;
 import com.aurora.store.Constants;
@@ -51,7 +52,9 @@ import com.aurora.store.ui.single.fragment.BaseFragment;
 import com.aurora.store.ui.view.ViewFlipper2;
 import com.aurora.store.util.Util;
 import com.aurora.store.util.ViewUtil;
+import com.aurora.store.util.WorkerUtil;
 import com.aurora.store.util.diff.UpdatesDiffCallback;
+import com.aurora.store.worker.ApiValidator;
 import com.google.android.material.button.MaterialButton;
 import com.mikepenz.fastadapter.FastAdapter;
 import com.mikepenz.fastadapter.adapters.ItemAdapter;
@@ -124,8 +127,9 @@ public class UpdatesFragment extends BaseFragment {
                 case NO_API:
                 case SESSION_EXPIRED:
                     awaiting = true;
-                    Util.startValidationService(requireContext());
+                    buildAndTestApi();
                     break;
+
                 case NO_NETWORK:
                     awaiting = true;
                     break;
@@ -216,6 +220,24 @@ public class UpdatesFragment extends BaseFragment {
     private void updateItemList(String packageName) {
         AuroraApplication.removeFromOngoingUpdateList(packageName);
         updatePageData();
+    }
+
+    private void buildAndTestApi() {
+        final OneTimeWorkRequest workRequest = WorkerUtil.getWorkRequest(ApiValidator.TAG,
+                WorkerUtil.getNetworkConstraints(),
+                ApiValidator.class);
+
+        WorkerUtil.enqueue(requireContext(), getViewLifecycleOwner(), workRequest, workInfo -> {
+            switch (workInfo.getState()) {
+                case FAILED:
+                    showSnackBar(coordinator, R.string.toast_api_build_failed, null);
+                    break;
+
+                case SUCCEEDED:
+                    model.getData();
+                    break;
+            }
+        });
     }
 
     private void updatePageData() {

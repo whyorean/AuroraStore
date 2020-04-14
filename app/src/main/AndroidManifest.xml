@@ -198,7 +198,6 @@
 
         <service android:name=".installer.InstallerService" />
         <service android:name=".service.SelfUpdateService" />
-        <service android:name=".service.ValidateApiService" />
         <service android:name=".service.BulkUpdateService" />
         <service android:name=".service.NotificationService" />
     </application>

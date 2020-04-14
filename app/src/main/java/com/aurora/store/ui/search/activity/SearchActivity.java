@@ -16,6 +16,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.work.OneTimeWorkRequest;
 
 import com.aurora.store.Constants;
 import com.aurora.store.R;
@@ -26,7 +27,9 @@ import com.aurora.store.ui.single.activity.BaseActivity;
 import com.aurora.store.util.ContextUtil;
 import com.aurora.store.util.Util;
 import com.aurora.store.util.ViewUtil;
+import com.aurora.store.util.WorkerUtil;
 import com.aurora.store.util.diff.SuggestionDiffCallback;
+import com.aurora.store.worker.ApiValidator;
 import com.google.android.material.textfield.TextInputEditText;
 import com.mikepenz.fastadapter.FastAdapter;
 import com.mikepenz.fastadapter.adapters.ItemAdapter;
@@ -80,15 +83,13 @@ public class SearchActivity extends BaseActivity {
         inputMethodManager = (InputMethodManager) object;
 
         model = new ViewModelProvider(this).get(SearchSuggestionModel.class);
-        model.getSuggestions().observe(this, searchSuggestEntries -> {
-            dispatchAppsToAdapter(searchSuggestEntries);
-        });
+        model.getSuggestions().observe(this, this::dispatchAppsToAdapter);
 
         model.getError().observe(this, errorType -> {
             switch (errorType) {
                 case NO_API:
                 case SESSION_EXPIRED: {
-                    Util.startValidationService(this);
+                    buildAndTestApi();
                     break;
                 }
                 case NO_NETWORK: {
@@ -99,6 +100,7 @@ public class SearchActivity extends BaseActivity {
                 }
             }
         });
+
         onNewIntent(getIntent());
     }
 
@@ -135,6 +137,24 @@ public class SearchActivity extends BaseActivity {
                 finishAfterTransition();
             }
         }
+    }
+
+    private void buildAndTestApi() {
+        final OneTimeWorkRequest workRequest = WorkerUtil.getWorkRequest(ApiValidator.TAG,
+                WorkerUtil.getNetworkConstraints(),
+                ApiValidator.class);
+
+        WorkerUtil.enqueue(this, this, workRequest, workInfo -> {
+            switch (workInfo.getState()) {
+                case FAILED:
+                    showSnackBar(coordinator, R.string.toast_api_build_failed, null);
+                    break;
+
+                case SUCCEEDED:
+                    model.getSuggestions();
+                    break;
+            }
+        });
     }
 
     private void setupSearch() {

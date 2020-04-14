@@ -43,7 +43,6 @@ import com.aurora.store.R;
 import com.aurora.store.receiver.UpdatesReceiver;
 import com.aurora.store.service.BulkUpdateService;
 import com.aurora.store.service.NotificationService;
-import com.aurora.store.service.ValidateApiService;
 import com.aurora.store.ui.main.AuroraActivity;
 import com.aurora.store.ui.single.activity.SplashActivity;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -550,15 +549,6 @@ public class Util {
             Log.d(e.getMessage());
         }
         return cookieList;
-    }
-
-    public static void startValidationService(Context context) {
-        try {
-            if (!ValidateApiService.isServiceRunning())
-                context.startService(new Intent(context, ValidateApiService.class));
-        } catch (IllegalStateException e) {
-            Log.e(e.getMessage());
-        }
     }
 
     public static void startBulkUpdateService(Context context) {

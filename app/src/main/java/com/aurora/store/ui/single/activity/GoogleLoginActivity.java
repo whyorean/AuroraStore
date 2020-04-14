@@ -12,10 +12,11 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
 
-import com.aurora.store.AuroraApplication;
 import com.aurora.store.R;
 import com.aurora.store.task.AuthTask;
 import com.aurora.store.util.Accountant;
+import com.aurora.store.util.Log;
+import com.aurora.store.util.NetworkUtil;
 import com.aurora.store.util.Util;
 
 import org.apache.commons.lang3.StringUtils;
@@ -60,21 +61,13 @@ public class GoogleLoginActivity extends BaseActivity {
 
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
-        setupWebView();
 
-        disposable.add(AuroraApplication
-                .getRxBus()
-                .getBus()
-                .subscribe(event -> {
-                    switch (event.getSubType()) {
-                        case NETWORK_AVAILABLE:
-                            setupWebView();
-                            break;
-                        case NETWORK_UNAVAILABLE:
-                            Toast.makeText(this, getString(R.string.error_no_network), Toast.LENGTH_LONG).show();
-                            break;
-                    }
-                }));
+        if (NetworkUtil.isConnected(this)) {
+            setupWebView();
+        } else {
+            Toast.makeText(this, getString(R.string.error_no_network), Toast.LENGTH_LONG).show();
+            finish();
+        }
     }
 
     @SuppressLint("SetJavaScriptEnabled")
@@ -118,21 +111,21 @@ public class GoogleLoginActivity extends BaseActivity {
 
     private void generateTokens(String email, String token) {
         disposable.add(Observable.fromCallable(() -> new AuthTask(this).getAASToken(email, token))
-                .map(aas_token -> new AuthTask(this).getAuthToken(email, aas_token))
                 .subscribeOn(Schedulers.io())
+                .map(aasToken -> new AuthTask(this).getAuthToken(email, aasToken))
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(success -> {
                     if (success) {
                         Toast.makeText(this, getText(R.string.toast_login_success), Toast.LENGTH_SHORT).show();
                         Accountant.setLoggedIn(this);
                         Accountant.setAnonymous(this, false);
-                        supportFinishAfterTransition();
+                        finish();
                     } else {
                         Toast.makeText(this, getText(R.string.toast_login_failed), Toast.LENGTH_LONG).show();
                     }
                 }, err -> {
-                    err.printStackTrace();
                     Toast.makeText(this, getText(R.string.toast_login_failed), Toast.LENGTH_LONG).show();
+                    Log.e(err.getMessage());
                 }));
     }
 }

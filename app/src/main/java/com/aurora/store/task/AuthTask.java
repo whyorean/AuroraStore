@@ -28,23 +28,29 @@ public class AuthTask extends BaseTask {
         return api.generateAASToken(email, oauth_token);
     }
 
-    public boolean getAuthToken(String email, String aas_token) throws Exception {
+    public boolean getAuthToken(String email, String aasToken) throws Exception {
         GooglePlayAPI api = new GooglePlayAPI();
         api.setDeviceInfoProvider(ApiBuilderUtil.getDeviceInfoProvider(context));
         api.setLocale(Locale.getDefault());
         api.setClient(new OkHttpClientAdapter(context));
+
         String gsfId = api.generateGsfId();
         api.setGsfId(gsfId);
         api.uploadDeviceConfig();
-        String token = api.generateToken(email, aas_token);
+
+        String token = api.generateToken(email, aasToken);
         api.setToken(token);
 
         LoginInfo loginInfo = new LoginInfo();
-        loginInfo.setAasToken(aas_token);
+        loginInfo.setAasToken(aasToken);
         loginInfo.setAuthToken(token);
         loginInfo.setEmail(email);
         loginInfo.setGsfId(gsfId);
         loginInfo.setLocale(Locale.getDefault().toString());
+        loginInfo.setDeviceCheckinConsistencyToken(api.getDeviceCheckinConsistencyToken());
+        loginInfo.setDeviceConfigToken(api.getDeviceConfigToken());
+        loginInfo.setDfeCookie(api.getDfeCookie());
+
         LoginInfo.save(context, loginInfo);
 
         UserProfile userProfile = api.userProfile().getUserProfile();
@@ -59,6 +65,7 @@ public class AuthTask extends BaseTask {
                 PrefUtil.putString(context, Accountant.PROFILE_BACKGROUND, image.getImageUrl());
             }
         }
+
         AuroraApplication.api = api;
         return !loginInfo.isEmpty();
     }

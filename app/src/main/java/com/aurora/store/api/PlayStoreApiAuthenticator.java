@@ -34,14 +34,6 @@ import java.io.IOException;
 
 public class PlayStoreApiAuthenticator {
 
-    public static boolean login(Context context, String email, String password) throws IOException {
-        LoginInfo loginInfo = new LoginInfo();
-        loginInfo.setEmail(email);
-        loginInfo.setAasToken(password);
-        GooglePlayAPI api = ApiBuilderUtil.buildApi(context, loginInfo, false);
-        return api != null;
-    }
-
     public static GooglePlayAPI login(Context context) throws IOException {
         LoginInfo loginInfo = new LoginInfo();
         loginInfo.setTokenDispenserUrl(TokenDispenserMirrors.get(context));

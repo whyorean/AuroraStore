@@ -114,6 +114,7 @@ public class AuroraActivity extends BaseActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         fragmentCur = Util.getDefaultTab(this);
+
         onNewIntent(getIntent());
 
         if (Accountant.isLoggedIn(this))

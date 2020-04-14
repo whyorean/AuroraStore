@@ -51,6 +51,7 @@ import com.aurora.store.util.ContextUtil;
 import com.aurora.store.util.NetworkUtil;
 import com.aurora.store.util.PrefUtil;
 import com.aurora.store.util.ViewUtil;
+import com.aurora.store.util.diff.NavigationUtil;
 import com.google.android.material.button.MaterialButton;
 
 import butterknife.BindView;
@@ -108,7 +109,7 @@ public class IntroActivity extends BaseActivity {
     protected void onResume() {
         super.onResume();
         if (Accountant.isLoggedIn(this)) {
-            startActivity(new Intent(this, AuroraActivity.class));
+            NavigationUtil.launchAuroraActivity(this);
             finish();
         }
     }

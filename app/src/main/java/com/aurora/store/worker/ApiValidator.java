@@ -39,8 +39,9 @@ public class ApiValidator extends Worker {
             if (testApi(googlePlayAPI)) {
                 AuroraApplication.api = googlePlayAPI;
                 return Result.success();
-            } else
+            } else {
                 return Result.failure();
+            }
         } catch (Exception e) {
             Log.e(e.getMessage());
             return Result.failure();

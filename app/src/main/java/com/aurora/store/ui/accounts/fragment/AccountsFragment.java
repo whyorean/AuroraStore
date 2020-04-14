@@ -39,6 +39,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.aurora.store.AuroraApplication;
 import com.aurora.store.GlideApp;
 import com.aurora.store.R;
 import com.aurora.store.api.PlayStoreApiAuthenticator;
@@ -143,30 +144,28 @@ public class AccountsFragment extends Fragment {
 
     @OnClick(R.id.btn_anonymous)
     public void loginAnonymous() {
-        if (!NetworkUtil.isConnected(requireContext())) {
+        if (NetworkUtil.isConnected(requireContext())) {
+            disposable.add(Observable.fromCallable(() -> PlayStoreApiAuthenticator
+                    .login(requireContext()))
+                    .subscribeOn(Schedulers.io())
+                    .map(api -> {
+                        AuroraApplication.api = api;
+                        return api.userProfile().getUserProfile();
+                    })
+                    .doOnSubscribe(d -> updateAnonymousAction(true))
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(userProfile -> {
+                        Toast.makeText(requireContext(), getString(R.string.toast_login_success), Toast.LENGTH_LONG).show();
+                        Accountant.setAnonymous(requireContext(), true);
+                        updateUI(userProfile);
+                    }, err -> {
+                        Toast.makeText(requireContext(), getString(R.string.toast_login_success), Toast.LENGTH_LONG).show();
+                        ContextUtil.runOnUiThread(() -> updateAnonymousAction(false));
+                        Log.e(err.getMessage());
+                    }));
+        } else {
             Toast.makeText(requireContext(), getString(R.string.error_no_network), Toast.LENGTH_SHORT).show();
-            return;
         }
-
-        disposable.add(Observable.fromCallable(() -> PlayStoreApiAuthenticator
-                .login(requireContext()))
-                .map(api -> api.userProfile().getUserProfile())
-                .subscribeOn(Schedulers.computation())
-                .observeOn(AndroidSchedulers.mainThread())
-                .doOnSubscribe(d -> {
-                    btnAnonymous.setText(getText(R.string.action_logging_in));
-                    btnAnonymous.setEnabled(false);
-                    progressBar.setVisibility(View.VISIBLE);
-                })
-                .doOnComplete(() -> ContextUtil.runOnUiThread(() -> resetAnonymousLogin()))
-                .subscribe(userProfile -> {
-                    Toast.makeText(requireContext(), "Successfully logged in", Toast.LENGTH_LONG).show();
-                    Accountant.setAnonymous(requireContext(), true);
-                    updateUI(userProfile);
-                }, err -> {
-                    Toast.makeText(requireContext(), err.getMessage(), Toast.LENGTH_LONG).show();
-                    ContextUtil.runOnUiThread(() -> resetAnonymousLogin());
-                }));
     }
 
     private void init() {
@@ -230,11 +229,10 @@ public class AccountsFragment extends Fragment {
         init();
     }
 
-
-    private void resetAnonymousLogin() {
-        btnAnonymous.setEnabled(true);
-        btnAnonymous.setText(getText(R.string.account_dummy));
-        progressBar.setVisibility(View.INVISIBLE);
+    private void updateAnonymousAction(boolean progress) {
+        btnAnonymous.setEnabled(!progress);
+        btnAnonymous.setText(progress ? getString(R.string.action_logging_in) : getText(R.string.account_dummy));
+        progressBar.setVisibility(progress ? View.VISIBLE : View.INVISIBLE);
     }
 
     private void openWebView(String URL) {

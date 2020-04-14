@@ -22,7 +22,6 @@ import com.aurora.store.ui.details.DetailsActivity;
 import com.aurora.store.ui.single.activity.BaseActivity;
 import com.aurora.store.ui.view.ViewFlipper2;
 import com.aurora.store.util.PrefUtil;
-import com.aurora.store.util.Util;
 import com.aurora.store.util.ViewUtil;
 import com.aurora.store.util.diff.InstalledDiffCallback;
 import com.google.android.material.switchmaterial.SwitchMaterial;
@@ -69,19 +68,6 @@ public class InstalledAppActivity extends BaseActivity {
         model.getData().observe(this, appList -> {
             dispatchAppsToAdapter(appList);
             swipeToRefresh.setRefreshing(false);
-        });
-
-        model.getError().observe(this, errorType -> {
-            switch (errorType) {
-                case NO_API:
-                case SESSION_EXPIRED:
-                    Util.startValidationService(this);
-                    break;
-                case NO_NETWORK: {
-                    showSnackBar(coordinator, R.string.error_no_network, v -> fetchApps());
-                    break;
-                }
-            }
         });
 
         swipeToRefresh.setRefreshing(true);
