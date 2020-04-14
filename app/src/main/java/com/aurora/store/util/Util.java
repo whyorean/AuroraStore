@@ -359,6 +359,11 @@ public class Util {
         return getPrefs(context).getBoolean(Constants.PREFERENCE_ENABLE_CUSTOM_TOKENIZER, false);
     }
 
+    public static boolean isInternalStorageEnabled(Context context) {
+        return getPrefs(context).getBoolean(Constants.PREFERENCE_DOWNLOAD_INTERNAL, false);
+    }
+
+
     public static String getCustomTokenizerURL(Context context) {
         return getPrefs(context).getString(Constants.PREFERENCE_CUSTOM_TOKENIZER_URL, Constants.DISPENSER_PRIMARY);
     }
