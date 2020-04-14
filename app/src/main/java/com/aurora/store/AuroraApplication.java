@@ -26,6 +26,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 
 import com.aurora.store.events.Event;
 import com.aurora.store.events.RxBus;
@@ -138,6 +139,12 @@ public class AuroraApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+
+        //Clear preferences for app version below 3.2.5
+        if (BuildConfig.VERSION_CODE < 24) {
+            SharedPreferences preferences = Util.getPrefs(this);
+            preferences.edit().clear().apply();
+        }
 
         rxBus = new RxBus();
         installer = new Installer(this);
