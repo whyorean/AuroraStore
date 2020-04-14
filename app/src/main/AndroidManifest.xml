@@ -80,8 +80,8 @@
         </activity>
         <activity
             android:name=".ui.details.DetailsActivity"
-            android:launchMode="singleTask"
-            android:configChanges="keyboardHidden|locale|orientation|fontScale">
+            android:configChanges="keyboardHidden|locale|orientation|fontScale"
+            android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 

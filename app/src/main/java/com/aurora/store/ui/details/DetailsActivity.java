@@ -32,6 +32,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.widget.AppCompatImageView;
@@ -39,6 +40,7 @@ import androidx.appcompat.widget.AppCompatTextView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.work.OneTimeWorkRequest;
 
 import com.aurora.store.AuroraApplication;
 import com.aurora.store.AutoDisposable;
@@ -59,11 +61,14 @@ import com.aurora.store.ui.details.views.Video;
 import com.aurora.store.ui.single.activity.BaseActivity;
 import com.aurora.store.ui.single.activity.DownloadsActivity;
 import com.aurora.store.ui.single.activity.ManualDownloadActivity;
+import com.aurora.store.ui.view.ViewFlipper2;
 import com.aurora.store.util.ContextUtil;
 import com.aurora.store.util.Log;
 import com.aurora.store.util.PackageUtil;
-import com.aurora.store.util.Util;
 import com.aurora.store.util.ViewUtil;
+import com.aurora.store.util.WorkerUtil;
+import com.aurora.store.util.diff.NavigationUtil;
+import com.aurora.store.worker.ApiValidator;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -80,6 +85,9 @@ public class DetailsActivity extends BaseActivity {
     Toolbar toolbar;
     @BindView(R.id.coordinator)
     CoordinatorLayout coordinator;
+    @BindView(R.id.view_flipper)
+    ViewFlipper2 viewFlipper;
+
     @BindView(R.id.icon)
     AppCompatImageView icon;
     @BindView(R.id.displayName)
@@ -124,19 +132,18 @@ public class DetailsActivity extends BaseActivity {
         setContentView(R.layout.activity_details);
         ButterKnife.bind(this);
         setupActionBar();
+
         autoDisposable.bindTo(getLifecycle());
         favouritesManager = new FavouritesManager(this);
 
         model = new ViewModelProvider(this).get(DetailsAppModel.class);
-        model.getAppDetails().observe(this, detailApp -> {
-            draw(detailApp);
-        });
+        model.getAppDetails().observe(this, this::draw);
 
         model.getError().observe(this, errorType -> {
             switch (errorType) {
                 case NO_API:
                 case SESSION_EXPIRED:
-                    Util.startValidationService(this);
+                    buildAndTestApi();
                     break;
                 case NO_NETWORK:
                     showSnackBar(coordinator, R.string.error_no_network, -2, v -> {
@@ -144,14 +151,18 @@ public class DetailsActivity extends BaseActivity {
                     });
                     break;
                 case APP_NOT_FOUND:
-                    ContextUtil.toastLong(this, getString(R.string.error_app_not_found));
-                    if (app != null)
+                    if (app != null) {
                         drawMinimalDetails(app);
+                    } else {
+                        ContextUtil.toastLong(this, getString(R.string.error_app_not_found));
+                        finish();
+                    }
                     break;
             }
         });
 
         registerReceiver(globalInstallReceiver, PackageUtil.getFilter());
+
         Disposable disposable = AuroraApplication
                 .getRxBus()
                 .getBus()
@@ -168,6 +179,26 @@ public class DetailsActivity extends BaseActivity {
                 });
         autoDisposable.add(disposable);
         onNewIntent(getIntent());
+    }
+
+    private void buildAndTestApi() {
+        final OneTimeWorkRequest workRequest = WorkerUtil.getWorkRequest(ApiValidator.TAG,
+                WorkerUtil.getNetworkConstraints(),
+                ApiValidator.class);
+
+        WorkerUtil.enqueue(this, this, workRequest, workInfo -> {
+            switch (workInfo.getState()) {
+                case FAILED:
+                    Toast.makeText(this, "You were logged out!", Toast.LENGTH_SHORT).show();
+                    NavigationUtil.launchAccountsActivity(this);
+                    finish();
+                    break;
+
+                case SUCCEEDED:
+                    model.fetchAppDetails(packageName);
+                    break;
+            }
+        });
     }
 
     @Override
@@ -296,6 +327,13 @@ public class DetailsActivity extends BaseActivity {
     }
 
     private void draw(App appFromMarket) {
+
+        if (appFromMarket != null) {
+            viewFlipper.switchState(ViewFlipper2.DATA);
+        } else {
+            viewFlipper.switchState(ViewFlipper2.EMPTY);
+        }
+
         app = appFromMarket;
         Disposable disposable = Observable.just(
                 new GeneralDetails(this, app),

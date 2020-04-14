@@ -42,7 +42,7 @@ public class InstalledAppActivity extends BaseActivity {
     CoordinatorLayout coordinator;
     @BindView(R.id.switch_system)
     SwitchMaterial switchSystem;
-    @BindView(R.id.viewFlipper)
+    @BindView(R.id.view_flipper)
     ViewFlipper2 viewFlipper;
     @BindView(R.id.swipe_layout)
     SwipeRefreshLayout swipeToRefresh;

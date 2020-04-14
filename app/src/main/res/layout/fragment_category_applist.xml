@@ -24,7 +24,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <com.aurora.store.ui.view.ViewFlipper2
-        android:id="@+id/viewFlipper"
+        android:id="@+id/view_flipper"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/layout_top"

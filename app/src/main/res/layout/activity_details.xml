@@ -27,147 +27,162 @@
 
     <include layout="@layout/toolbar_main" />
 
-    <androidx.core.widget.NestedScrollView
-        android:id="@+id/scroll_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:overScrollMode="never"
+    <com.aurora.store.ui.view.ViewFlipper2
+        android:id="@+id/view_flipper"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
-        <LinearLayout
-            android:id="@+id/root_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:animateLayoutChanges="true"
-            android:orientation="vertical">
+        <com.aurora.store.ui.view.placeholder.ProgressView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            app:progressText="@string/action_loading" />
 
-            <!-- App Header -->
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/scroll_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:overScrollMode="never"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
             <LinearLayout
+                android:id="@+id/root_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:animateLayoutChanges="true"
                 android:orientation="vertical">
 
-                <!-- App Info : Icon, Name, Developer, Version -->
-                <include layout="@layout/include_details_main" />
-
-                <!-- Action : Download, Update, Uninstall -->
-                <include layout="@layout/include_details_actions" />
-
-            </LinearLayout>
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/app_desc_short"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/margin_medium"
-                android:layout_marginEnd="@dimen/margin_medium"
-                android:layout_marginBottom="@dimen/margin_medium"
-                android:background="@drawable/generic_bg"
-                android:gravity="center"
-                android:minHeight="?actionBarSize"
-                android:padding="@dimen/margin_small"
-                android:text="@string/details_no_changes"
-                android:textAlignment="center"
-                android:textAppearance="@style/TextAppearance.Aurora.Line1"
-                android:textIsSelectable="true"
-                android:visibility="invisible"
-                app:autoSizeMaxTextSize="16sp"
-                app:autoSizeMinTextSize="12sp"
-                app:autoSizeTextType="uniform"
-                tools:visibility="visible" />
-
-            <HorizontalScrollView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:clipToPadding="false"
-                android:paddingStart="@dimen/margin_normal"
-                android:paddingEnd="@dimen/margin_normal"
-                android:scrollbars="none">
-
-                <com.google.android.material.chip.ChipGroup
-                    android:id="@+id/chip_group_features"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:visibility="invisible"
-                    tools:visibility="visible" />
-            </HorizontalScrollView>
-
-            <!-- Read More -->
-            <include layout="@layout/include_details_readmore" />
-
-            <!-- Screenshot -->
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recycler"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_medium"
-                android:layout_marginBottom="@dimen/margin_medium"
-                android:clipToPadding="false"
-                android:orientation="horizontal"
-                android:paddingStart="@dimen/margin_small"
-                android:paddingEnd="@dimen/margin_small" />
-
-            <!-- Reviews -->
-            <include layout="@layout/include_details_reviews" />
-
-            <!-- Report -->
-            <include layout="@layout/include_details_exodus" />
-
-            <!-- App Video -->
-            <RelativeLayout
-                android:id="@+id/app_video"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/margin_medium"
-                android:layout_marginTop="@dimen/margin_medium"
-                android:layout_marginEnd="@dimen/margin_medium"
-                android:visibility="gone">
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/thumbnail"
+                <!-- App Header -->
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    android:scaleType="centerCrop"
-                    android:src="?android:attr/colorPrimaryDark" />
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/video_play"
-                    android:layout_width="@dimen/icon_size"
-                    android:layout_height="@dimen/icon_size"
-                    android:layout_centerHorizontal="true"
-                    android:layout_centerVertical="true"
-                    android:layout_gravity="center"
-                    android:background="@drawable/circle_bg_light"
-                    android:elevation="1dp"
-                    android:padding="@dimen/margin_small"
-                    android:src="@drawable/ic_play" />
-            </RelativeLayout>
+                    <!-- App Info : Icon, Name, Developer, Version -->
+                    <include layout="@layout/include_details_main" />
 
-            <!-- Beta -->
-            <include layout="@layout/include_details_beta" />
+                    <!-- Action : Download, Update, Uninstall -->
+                    <include layout="@layout/include_details_actions" />
 
-            <!-- Dev Info -->
-            <include layout="@layout/include_details_dev_info" />
-
-            <!-- Bottom Actions -->
-            <include layout="@layout/include_details_bottom" />
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/height_searchview"
-                android:layout_marginTop="@dimen/margin_small"
-                android:background="@color/colorScrim">
+                </LinearLayout>
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/txt_footer"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/app_desc_short"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:textAppearance="@style/TextAppearance.Aurora.Line2"
-                    android:textColor="?android:attr/colorAccent" />
-            </RelativeLayout>
-        </LinearLayout>
-    </androidx.core.widget.NestedScrollView>
+                    android:layout_marginStart="@dimen/margin_medium"
+                    android:layout_marginEnd="@dimen/margin_medium"
+                    android:layout_marginBottom="@dimen/margin_medium"
+                    android:background="@drawable/generic_bg"
+                    android:gravity="center"
+                    android:minHeight="?actionBarSize"
+                    android:padding="@dimen/margin_small"
+                    android:text="@string/details_no_changes"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.Aurora.Line1"
+                    android:textIsSelectable="true"
+                    android:visibility="invisible"
+                    app:autoSizeMaxTextSize="16sp"
+                    app:autoSizeMinTextSize="12sp"
+                    app:autoSizeTextType="uniform"
+                    tools:visibility="visible" />
 
-    <include layout="@layout/include_no_app_layouts" />
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:paddingStart="@dimen/margin_normal"
+                    android:paddingEnd="@dimen/margin_normal"
+                    android:scrollbars="none">
+
+                    <com.google.android.material.chip.ChipGroup
+                        android:id="@+id/chip_group_features"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:visibility="invisible"
+                        tools:visibility="visible" />
+                </HorizontalScrollView>
+
+                <!-- Read More -->
+                <include layout="@layout/include_details_readmore" />
+
+                <!-- Screenshot -->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    android:layout_marginBottom="@dimen/margin_medium"
+                    android:clipToPadding="false"
+                    android:orientation="horizontal"
+                    android:paddingStart="@dimen/margin_small"
+                    android:paddingEnd="@dimen/margin_small" />
+
+                <!-- Reviews -->
+                <include layout="@layout/include_details_reviews" />
+
+                <!-- Report -->
+                <include layout="@layout/include_details_exodus" />
+
+                <!-- App Video -->
+                <RelativeLayout
+                    android:id="@+id/app_video"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_medium"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    android:layout_marginEnd="@dimen/margin_medium"
+                    android:visibility="gone">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/thumbnail"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:scaleType="centerCrop"
+                        android:src="?android:attr/colorPrimaryDark" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/video_play"
+                        android:layout_width="@dimen/icon_size"
+                        android:layout_height="@dimen/icon_size"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:layout_gravity="center"
+                        android:background="@drawable/circle_bg_light"
+                        android:elevation="1dp"
+                        android:padding="@dimen/margin_small"
+                        android:src="@drawable/ic_play" />
+                </RelativeLayout>
+
+                <!-- Beta -->
+                <include layout="@layout/include_details_beta" />
+
+                <!-- Dev Info -->
+                <include layout="@layout/include_details_dev_info" />
+
+                <!-- Bottom Actions -->
+                <include layout="@layout/include_details_bottom" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/height_searchview"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:background="@color/colorScrim">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/txt_footer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:textAppearance="@style/TextAppearance.Aurora.Line2"
+                        android:textColor="?android:attr/colorAccent" />
+                </RelativeLayout>
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+
+        <include layout="@layout/include_no_app_layouts" />
+
+    </com.aurora.store.ui.view.ViewFlipper2>
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

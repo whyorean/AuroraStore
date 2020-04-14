@@ -63,7 +63,7 @@ public class SubCategoryFragment extends BaseFragment implements
 
     @BindView(R.id.recycler)
     RecyclerView recyclerView;
-    @BindView(R.id.viewFlipper)
+    @BindView(R.id.view_flipper)
     ViewFlipper2 viewFlipper;
 
     private GooglePlayAPI.SUBCATEGORY subcategory = GooglePlayAPI.SUBCATEGORY.TOP_FREE;

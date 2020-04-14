@@ -78,7 +78,8 @@ buildscript {
         versions = [
                 fastAdapter: "5.0.0",
                 okhttp3    : "4.3.1",
-                glide      : "4.11.0"
+                glide      : "4.11.0",
+                workmanager : "2.3.4"
         ]
     }
 }
@@ -100,6 +101,9 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
     implementation "androidx.navigation:navigation-fragment:2.2.1"
     implementation "androidx.navigation:navigation-ui:2.2.1"
+    implementation "androidx.work:work-runtime:${versions.workmanager}"
+    implementation "androidx.work:work-rxjava2:${versions.workmanager}"
+
 
     //Extensions
     implementation "com.mikepenz:fastadapter:${versions.fastAdapter}"

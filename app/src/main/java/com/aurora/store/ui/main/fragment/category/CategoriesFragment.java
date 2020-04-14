@@ -55,7 +55,7 @@ public class CategoriesFragment extends Fragment {
 
     @BindView(R.id.swipe_layout)
     SwipeRefreshLayout swipeLayout;
-    @BindView(R.id.viewFlipper)
+    @BindView(R.id.view_flipper)
     ViewFlipper2 viewFlipper;
     @BindView(R.id.recycler)
     RecyclerView recyclerView;

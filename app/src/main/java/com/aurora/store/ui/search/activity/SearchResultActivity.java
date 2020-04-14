@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.work.OneTimeWorkRequest;
 
 import com.aurora.store.AuroraApplication;
 import com.aurora.store.Constants;
@@ -25,6 +26,8 @@ import com.aurora.store.ui.single.activity.BaseActivity;
 import com.aurora.store.ui.view.ViewFlipper2;
 import com.aurora.store.util.Util;
 import com.aurora.store.util.ViewUtil;
+import com.aurora.store.util.WorkerUtil;
+import com.aurora.store.worker.ApiValidator;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.mikepenz.fastadapter.FastAdapter;
@@ -45,7 +48,7 @@ public class SearchResultActivity extends BaseActivity implements
     CoordinatorLayout coordinator;
     @BindView(R.id.search_view)
     TextInputEditText searchView;
-    @BindView(R.id.viewFlipper)
+    @BindView(R.id.view_flipper)
     ViewFlipper2 viewFlipper;
     @BindView(R.id.recycler)
     RecyclerView recyclerView;
@@ -81,7 +84,7 @@ public class SearchResultActivity extends BaseActivity implements
             switch (errorType) {
                 case NO_API:
                 case SESSION_EXPIRED: {
-                    Util.startValidationService(this);
+                    buildAndTestApi();
                     break;
                 }
                 case NO_NETWORK: {
@@ -233,6 +236,26 @@ public class SearchResultActivity extends BaseActivity implements
         recyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(fastAdapter);
+    }
+
+    private void buildAndTestApi() {
+        final OneTimeWorkRequest workRequest = WorkerUtil.getWorkRequest(ApiValidator.TAG,
+                WorkerUtil.getNetworkConstraints(),
+                ApiValidator.class);
+
+        WorkerUtil.enqueue(this, this, workRequest, workInfo -> {
+            switch (workInfo.getState()) {
+                case FAILED:
+                    showSnackBar(coordinator, R.string.toast_api_build_failed, v -> {
+                        model.fetchQueriedApps(query, false);
+                    });
+                    break;
+
+                case SUCCEEDED:
+                    model.fetchQueriedApps(query, false);
+                    break;
+            }
+        });
     }
 
     @Override

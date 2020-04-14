@@ -80,7 +80,7 @@ import io.reactivex.schedulers.Schedulers;
 
 public class FavouriteFragment extends BaseFragment implements SimpleSwipeCallback.ItemSwipeCallback {
 
-    @BindView(R.id.viewFlipper)
+    @BindView(R.id.view_flipper)
     ViewFlipper2 viewFlipper;
     @BindView(R.id.swipe_layout)
     SwipeRefreshLayout swipeLayout;

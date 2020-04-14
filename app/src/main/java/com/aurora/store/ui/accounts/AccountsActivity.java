@@ -35,6 +35,7 @@ import com.aurora.store.ui.main.AuroraActivity;
 import com.aurora.store.ui.preference.SettingsActivity;
 import com.aurora.store.ui.single.activity.BaseActivity;
 import com.aurora.store.util.ViewUtil;
+import com.aurora.store.util.diff.NavigationUtil;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -85,6 +86,13 @@ public class AccountsActivity extends BaseActivity {
     public boolean onCreateOptionsMenu(final Menu menu) {
         getMenuInflater().inflate(R.menu.menu_intro, menu);
         return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        NavigationUtil.launchAuroraActivity(this);
+        finish();
+        super.onBackPressed();
     }
 
     private void setupActionbar() {
