@@ -18,10 +18,10 @@
   ~
   -->
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
 
     <com.aurora.store.ui.view.ViewFlipper2
         android:id="@+id/view_flipper"
@@ -39,6 +39,8 @@
             android:id="@+id/recycler"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:paddingBottom="@dimen/margin_bottom"
             android:scrollbars="vertical"
             tools:listitem="@layout/item_installed" />
 
