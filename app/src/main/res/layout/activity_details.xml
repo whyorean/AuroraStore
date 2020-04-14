@@ -164,10 +164,12 @@
                 <include layout="@layout/include_details_bottom" />
 
                 <RelativeLayout
+                    android:id="@+id/layout_footer"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/height_searchview"
                     android:layout_marginTop="@dimen/margin_small"
-                    android:background="@color/colorScrim">
+                    android:background="@color/colorScrim"
+                    android:visibility="invisible">
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/txt_footer"
@@ -179,7 +181,6 @@
                 </RelativeLayout>
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
-
 
         <include layout="@layout/include_no_app_layouts" />
 

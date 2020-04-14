@@ -122,7 +122,9 @@ public class DetailsActivity extends BaseActivity {
             if (intent.getData() == null || !TextUtils.equals(packageName, intent.getData().getSchemeSpecificPart())) {
                 return;
             }
-            ContextUtil.runOnUiThread(() -> drawButtons());
+
+            if (app != null)
+                ContextUtil.runOnUiThread(() -> draw(app));
         }
     };
 
@@ -170,7 +172,8 @@ public class DetailsActivity extends BaseActivity {
                     switch (event.getSubType()) {
                         case INSTALLED:
                         case UNINSTALLED:
-                            drawButtons();
+                            if (app != null)
+                                draw(app);
                             break;
                         case API_SUCCESS:
                             model.fetchAppDetails(packageName);
@@ -327,36 +330,26 @@ public class DetailsActivity extends BaseActivity {
     }
 
     private void draw(App appFromMarket) {
-
         if (appFromMarket != null) {
+            app = appFromMarket;
+            Disposable disposable = Observable.just(
+                    new GeneralDetails(this, app),
+                    new Screenshot(this, app),
+                    new Reviews(this, app),
+                    new ExodusPrivacy(this, app),
+                    new Video(this, app),
+                    new Beta(this, app),
+                    new AppLinks(this, app),
+                    new ActionButton(this, app))
+                    .subscribeOn(Schedulers.computation())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .doOnNext(AbstractDetails::draw)
+                    .subscribe();
+            autoDisposable.add(disposable);
             viewFlipper.switchState(ViewFlipper2.DATA);
         } else {
             viewFlipper.switchState(ViewFlipper2.EMPTY);
         }
-
-        app = appFromMarket;
-        Disposable disposable = Observable.just(
-                new GeneralDetails(this, app),
-                new Screenshot(this, app),
-                new Reviews(this, app),
-                new ExodusPrivacy(this, app),
-                new Video(this, app),
-                new Beta(this, app),
-                new AppLinks(this, app),
-                actionButton = new ActionButton(this, app))
-                .subscribeOn(Schedulers.computation())
-                .observeOn(AndroidSchedulers.mainThread())
-                .doOnNext(AbstractDetails::draw)
-                .subscribe();
-        autoDisposable.add(disposable);
-        drawButtons();
-    }
-
-    public void drawButtons() {
-        if (PackageUtil.isInstalled(this, app))
-            app.setInstalled(true);
-        if (actionButton != null)
-            actionButton.draw();
     }
 
     protected boolean isPlayStoreInstalled() {

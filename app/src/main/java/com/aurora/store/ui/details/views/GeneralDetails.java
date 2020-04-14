@@ -105,6 +105,8 @@ public class GeneralDetails extends AbstractDetails {
     MaterialButton btnPositive;
     @BindView(R.id.btn_negative)
     MaterialButton btnNegative;
+    @BindView(R.id.layout_footer)
+    RelativeLayout layoutFooter;
 
     public GeneralDetails(DetailsActivity activity, App app) {
         super(activity, app);
@@ -159,6 +161,7 @@ public class GeneralDetails extends AbstractDetails {
 
         setText(R.id.app_desc_short, TextUtil.emptyIfNull(app.getShortDescription()));
         setText(R.id.txt_footer, TextUtil.emptyIfNull(app.getFooterHtml()));
+        layoutFooter.setVisibility(View.VISIBLE);
 
         txtDevWeb.setText(app.getDeveloperWebsite());
         txtDevEmail.setText(app.getDeveloperEmail());

@@ -44,4 +44,5 @@ public class ViewFlipper2 extends ViewFlipper {
     public void switchState(int state) {
         setDisplayedChild(state);
     }
+
 }
