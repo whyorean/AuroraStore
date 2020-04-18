@@ -1,7 +1,7 @@
 {
-  "version_name": "3.1.3",
-  "version_code": 13,
-  "aurora_build": "https://gitlab.com/AuroraOSS/AuroraStore/uploads/f44b0b860cc8e29885d32c77b467d82a/AuroraStore_3.1.3.apk",
+  "version_name": "3.2.6",
+  "version_code": 26,
+  "aurora_build": "https://gitlab.com/AuroraOSS/AuroraStore/uploads/7fcef5ef1711ec8398e05e6cadaeb4b8/AuroraStore_3.2.6.apk",
   "fdroid_build": "",
-  "changelog": "\n Changelog : v3.1.3\n • Fix Google login issue\n • Fix user reviews\n • Update exodus trackers list\n • Bug fixes and improvements"
+  "changelog": "\n Changelog : v3.2.6\n • Bug fixes and improvements"
 }
