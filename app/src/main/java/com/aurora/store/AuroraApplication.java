@@ -140,8 +140,8 @@ public class AuroraApplication extends Application {
     public void onCreate() {
         super.onCreate();
 
-        //Clear preferences for app version below 3.2.5
-        if (BuildConfig.VERSION_CODE < 24) {
+        //Clear preferences for app version below 3.2.6
+        if (BuildConfig.VERSION_CODE < 26) {
             SharedPreferences preferences = Util.getPrefs(this);
             preferences.edit().clear().apply();
         }

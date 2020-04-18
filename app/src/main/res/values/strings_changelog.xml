@@ -21,6 +21,9 @@
 <resources>
     <string name="app_log" translatable="false">
         \n
+        \n Changelog : v3.2.6
+        \n • Bug Fixes and Improvements
+        \n
         \n Changelog : v3.2.5
         \n • Fixed auto install issues for bulk updates
         \n • Fixed no-network issues for Anbox setups

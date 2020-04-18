@@ -21,7 +21,7 @@
 package com.aurora.store;
 
 public class Constants {
-    public static final String SHARED_PREFERENCES_KEY = "com.aurora.store";
+    public static final String SHARED_PREFERENCES_KEY = "com.aurora.store.26";
     public static final String SERVICE_PACKAGE = "com.aurora.services";
     public static final String APP_DETAIL_URL = "https://play.google.com/store/apps/details?id=";
     public static final String APP_ICON_URL = "https://gitlab.com/AuroraOSS/AuroraStore/raw/master/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png";

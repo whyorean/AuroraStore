@@ -1,6 +1,7 @@
 package com.aurora.store.report;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -13,6 +14,7 @@ import androidx.appcompat.widget.Toolbar;
 import com.aurora.store.BuildConfig;
 import com.aurora.store.R;
 import com.aurora.store.ui.single.activity.BaseActivity;
+import com.aurora.store.util.Util;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -118,6 +120,8 @@ public class AcraErrorActivity extends BaseActivity {
 
     @OnClick(R.id.btn_negative)
     public void setBtnNegative() {
-        finishAfterTransition();
+        SharedPreferences preferences = Util.getPrefs(this);
+        preferences.edit().clear().apply();
+        Util.restartApp(this);
     }
 }

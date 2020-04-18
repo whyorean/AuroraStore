@@ -67,8 +67,6 @@ public class ApiBuilderUtil {
             GooglePlayAPI api = builder.build();
             loginInfo.setEmail(builder.getEmail());
 
-            Log.e(loginInfo.toString());
-
             if (api != null) {
                 loginInfo.setGsfId(api.getGsfId());
                 loginInfo.setAuthToken(api.getToken());

@@ -28,8 +28,8 @@ android {
         applicationId "com.aurora.store"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 25
-        versionName "3.2.5"
+        versionCode 26
+        versionName "3.2.6"
 
         resConfigs "ar-rSA", "b+ast", "bh-rIN", "bg-rBG", "ca-rES", "de-rDE", "es-rES", "el-rGR", "fr-rFR", "gl-rES", "hi-rIN", "hr-rHR", "hu-rHU", "in-rID", "it-rIT", "iw-rIL", "ja-rJP", "ko-rKR", "lt-rLT",
                 "pl-rPL", "pt-rPT", "pt-rBR", "ro-rRO", "ru-rRU", "sc-rIT", "sk-rSK", "sr-rSR", "sv-rSE", "th-rTH", "tr-rTR", "uk-rUA", "vi-rVN", "zh-rCN", "zh-rTW", "nl-rNL", "be-rBY", "nb-rNO", "pa-rIN",
@@ -79,7 +79,8 @@ buildscript {
                 fastAdapter: "5.0.0",
                 okhttp3    : "4.3.1",
                 glide      : "4.11.0",
-                workmanager : "2.3.4"
+                workmanager: "2.3.4",
+                navigation : "2.2.2"
         ]
     }
 }
@@ -99,8 +100,8 @@ dependencies {
 
     //JetPack Components
     implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
-    implementation "androidx.navigation:navigation-fragment:2.2.1"
-    implementation "androidx.navigation:navigation-ui:2.2.1"
+    implementation "androidx.navigation:navigation-fragment:${versions.navigation}"
+    implementation "androidx.navigation:navigation-ui:${versions.navigation}"
     implementation "androidx.work:work-runtime:${versions.workmanager}"
     implementation "androidx.work:work-rxjava2:${versions.workmanager}"
 
@@ -120,8 +121,8 @@ dependencies {
     implementation "com.google.code.gson:gson:2.8.6"
 
     //Lombok
-    compileOnly "org.projectlombok:lombok:1.18.10"
-    annotationProcessor "org.projectlombok:lombok:1.18.10"
+    compileOnly "org.projectlombok:lombok:1.18.12"
+    annotationProcessor "org.projectlombok:lombok:1.18.12"
 
     //PlayStoreApi
     implementation "com.github.whyorean:playstore-api-v2:2.5"

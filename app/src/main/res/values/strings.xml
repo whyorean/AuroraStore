@@ -10,6 +10,7 @@
     <string name="action_cancel">"Cancel"</string>
     <string name="action_clear">"Clear"</string>
     <string name="action_clear_all">"Clear all"</string>
+    <string name="action_clear_restart">"Clear data"</string>
     <string name="action_copied">"Link copied to clipboard"</string>
     <string name="action_copy">"Copy Link"</string>
     <string name="action_disable">"Disable"</string>
@@ -343,6 +344,7 @@
     <string name="crash_title">"Aurora Crash Report"</string>
     <string name="crash_line1">"Well that's embarrassing !"</string>
     <string name="crash_line2">"You can send this report to Aurora Dev, to help resolve the issue."</string>
+    <string name="crash_line3">"Optionally, you may try clearing app data and retry launching the app."</string>
     <string name="action_ignore">"Ignore this version"</string>
     <string name="action_ignore_remove">"Remove from ignore list"</string>
     <string name="action_disabled">"Disabled"</string>
