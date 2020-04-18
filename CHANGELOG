@@ -121,3 +121,28 @@ Changelog : v3.1.9
 Changelog : v3.2.0
 • Updated translations
 • Bug fixes and improvements
+
+Changelog : v3.2.1
+• Updated translations
+• Fixed search issues
+
+Changelog : v3.2.2
+• Updated translations
+• Bug fixes and improvements
+
+Changelog : v3.2.3
+• Fix root installs
+• Fix files details not being displayed
+
+Changelog : v3.2.4
+• Fix notifications & auto-installs
+• Fix few apps not downloading issue
+
+Changelog : v3.2.5
+• Fixed auto-install issues for bulk updates
+• Fixed no-network issues for Anbox setups
+• Various other bug fixes and improvements
+• Updated Translations
+
+Changelog : v3.2.6
+• Bug fixes and improvements
