@@ -146,3 +146,6 @@ Changelog : v3.2.5
 
 Changelog : v3.2.6
 • Bug fixes and improvements
+
+Changelog : v3.2.7
+• Fixed api building when session expires
