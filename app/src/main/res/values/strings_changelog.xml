@@ -21,6 +21,9 @@
 <resources>
     <string name="app_log" translatable="false">
         \n
+        \n Changelog : v3.2.7
+        \n • Fixed api building when session expires
+        \n
         \n Changelog : v3.2.6
         \n • Bug Fixes and Improvements
         \n
