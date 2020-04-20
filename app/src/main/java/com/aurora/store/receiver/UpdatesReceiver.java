@@ -8,13 +8,13 @@ import android.content.Intent;
 import com.aurora.store.AuroraApplication;
 import com.aurora.store.Constants;
 import com.aurora.store.R;
-import com.aurora.store.api.PlayStoreApiAuthenticator;
 import com.aurora.store.model.App;
 import com.aurora.store.notification.QuickNotification;
 import com.aurora.store.task.LiveUpdate;
 import com.aurora.store.task.ObservableDeliveryData;
 import com.aurora.store.task.UpdatableAppsTask;
 import com.aurora.store.ui.main.AuroraActivity;
+import com.aurora.store.util.ApiBuilderUtil;
 import com.aurora.store.util.Log;
 import com.aurora.store.util.TextUtil;
 import com.aurora.store.util.Util;
@@ -37,7 +37,7 @@ public class UpdatesReceiver extends BroadcastReceiver {
         this.context = context;
         Log.i("Update check Started");
 
-        disposable.add(Observable.fromCallable(() -> new PlayStoreApiAuthenticator().getPlayApi(context))
+        disposable.add(Observable.fromCallable(() -> ApiBuilderUtil.getPlayApi(context))
                 .subscribeOn(Schedulers.io())
                 .map(api -> new UpdatableAppsTask(AuroraApplication.api, context).getUpdatableApps())
                 .subscribe(apps -> {

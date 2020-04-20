@@ -8,6 +8,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatImageView;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.work.Constraints;
+import androidx.work.Data;
 import androidx.work.NetworkType;
 import androidx.work.OneTimeWorkRequest;
 import androidx.work.WorkManager;
@@ -78,9 +79,16 @@ public class SplashActivity extends BaseActivity {
                         case ENQUEUED:
                             status.setText(R.string.toast_api_build_api);
                             break;
-
                         case FAILED:
-                            status.setText(R.string.toast_api_build_failed);
+                            Data data = workInfo.getOutputData();
+                            int errorCode = data.getInt(ApiValidator.ERROR_KEY, -1);
+                            if (errorCode == 0) {
+                                status.setText(R.string.toast_login_failed);
+                                NavigationUtil.launchAccountsActivity(this);
+                            } else if (errorCode == 1)
+                                status.setText(R.string.toast_api_build_failed);
+                            else if (errorCode == 2)
+                                status.setText(R.string.error_no_network);
                             break;
 
                         case SUCCEEDED:

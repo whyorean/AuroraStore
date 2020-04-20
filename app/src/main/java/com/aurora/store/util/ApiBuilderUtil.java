@@ -5,8 +5,8 @@ import android.content.SharedPreferences;
 import android.text.TextUtils;
 
 import com.aurora.store.Constants;
+import com.aurora.store.TokenDispenserMirrors;
 import com.aurora.store.adapter.OkHttpClientAdapter;
-import com.aurora.store.api.PlayStoreApiAuthenticator;
 import com.aurora.store.exception.CredentialsEmptyException;
 import com.aurora.store.manager.LocaleManager;
 import com.aurora.store.manager.SpoofManager;
@@ -39,7 +39,7 @@ public class ApiBuilderUtil {
         GooglePlayAPI api;
         LoginInfo loginInfo;
         if (Accountant.isAnonymous(context)) {
-            api = PlayStoreApiAuthenticator.login(context);
+            api = login(context);
             loginInfo = LoginInfo.getSavedInstance(context);
         } else {
             loginInfo = LoginInfo.getSavedInstance(context);
@@ -114,6 +114,20 @@ public class ApiBuilderUtil {
             ((PropertiesDeviceInfoProvider) deviceInfoProvider).setLocaleString(new LocaleManager(context).getLocale().toString());
         }
         return deviceInfoProvider;
+    }
+
+    public static GooglePlayAPI login(Context context) throws IOException {
+        LoginInfo loginInfo = new LoginInfo();
+        loginInfo.setTokenDispenserUrl(TokenDispenserMirrors.get(context));
+        return buildApi(context, loginInfo, true);
+    }
+
+    public static GooglePlayAPI getApi(Context context) throws Exception {
+        return buildFromPreferences(context);
+    }
+
+    public static GooglePlayAPI getPlayApi(Context context) throws Exception {
+        return buildFromPreferences(context);
     }
 
 }

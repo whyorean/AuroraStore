@@ -42,9 +42,9 @@ import androidx.fragment.app.Fragment;
 import com.aurora.store.AuroraApplication;
 import com.aurora.store.GlideApp;
 import com.aurora.store.R;
-import com.aurora.store.api.PlayStoreApiAuthenticator;
 import com.aurora.store.ui.single.activity.GoogleLoginActivity;
 import com.aurora.store.util.Accountant;
+import com.aurora.store.util.ApiBuilderUtil;
 import com.aurora.store.util.ContextUtil;
 import com.aurora.store.util.Log;
 import com.aurora.store.util.NetworkUtil;
@@ -145,7 +145,7 @@ public class AccountsFragment extends Fragment {
     @OnClick(R.id.btn_anonymous)
     public void loginAnonymous() {
         if (NetworkUtil.isConnected(requireContext())) {
-            disposable.add(Observable.fromCallable(() -> PlayStoreApiAuthenticator
+            disposable.add(Observable.fromCallable(() -> ApiBuilderUtil
                     .login(requireContext()))
                     .subscribeOn(Schedulers.io())
                     .map(api -> {

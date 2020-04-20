@@ -40,13 +40,12 @@ import androidx.navigation.Navigation;
 
 import com.aurora.store.Constants;
 import com.aurora.store.R;
-import com.aurora.store.api.PlayStoreApiAuthenticator;
-import com.aurora.store.ui.main.AuroraActivity;
 import com.aurora.store.ui.preference.SettingsActivity;
 import com.aurora.store.ui.single.activity.BaseActivity;
 import com.aurora.store.ui.single.activity.GoogleLoginActivity;
 import com.aurora.store.ui.single.activity.SplashActivity;
 import com.aurora.store.util.Accountant;
+import com.aurora.store.util.ApiBuilderUtil;
 import com.aurora.store.util.ContextUtil;
 import com.aurora.store.util.NetworkUtil;
 import com.aurora.store.util.PrefUtil;
@@ -183,7 +182,7 @@ public class IntroActivity extends BaseActivity {
             return;
         }
 
-        Disposable disposable = Observable.fromCallable(() -> PlayStoreApiAuthenticator
+        Disposable disposable = Observable.fromCallable(() -> ApiBuilderUtil
                 .login(this))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

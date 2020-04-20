@@ -23,8 +23,8 @@ package com.aurora.store.task;
 import android.content.Context;
 import android.content.ContextWrapper;
 
-import com.aurora.store.api.PlayStoreApiAuthenticator;
 import com.aurora.store.model.App;
+import com.aurora.store.util.ApiBuilderUtil;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 
 import java.util.ArrayList;
@@ -43,7 +43,7 @@ public abstract class BaseTask extends ContextWrapper {
     }
 
     public GooglePlayAPI getApi() throws Exception {
-        return PlayStoreApiAuthenticator.getApi(context);
+        return ApiBuilderUtil.getApi(context);
     }
 
     public Context getContext() {
