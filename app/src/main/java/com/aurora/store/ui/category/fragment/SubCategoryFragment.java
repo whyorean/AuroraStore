@@ -74,6 +74,7 @@ public class SubCategoryFragment extends BaseFragment implements
     private FastAdapter fastAdapter;
     private ItemAdapter<EndlessItem> itemAdapter;
     private ItemAdapter<ProgressItem> progressItemAdapter;
+    private EndlessRecyclerOnScrollListener endlessScrollListener;
 
     private GooglePlayAPI.SUBCATEGORY getSubcategory() {
         return subcategory;
@@ -151,6 +152,7 @@ public class SubCategoryFragment extends BaseFragment implements
         recyclerView.post(() -> {
             progressItemAdapter.clear();
             itemAdapter.clear();
+            endlessScrollListener.resetPageCount();
         });
     }
 
@@ -186,7 +188,7 @@ public class SubCategoryFragment extends BaseFragment implements
             return true;
         });
 
-        EndlessRecyclerOnScrollListener endlessScrollListener = new EndlessRecyclerOnScrollListener(progressItemAdapter) {
+        endlessScrollListener = new EndlessRecyclerOnScrollListener(progressItemAdapter) {
             @Override
             public void onLoadMore(int currentPage) {
                 recyclerView.post(() -> {

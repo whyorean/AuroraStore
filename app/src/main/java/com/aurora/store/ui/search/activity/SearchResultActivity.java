@@ -63,6 +63,7 @@ public class SearchResultActivity extends BaseActivity implements
     private FastAdapter fastAdapter;
     private ItemAdapter<EndlessItem> itemAdapter;
     private ItemAdapter<ProgressItem> progressItemAdapter;
+    private EndlessRecyclerOnScrollListener endlessScrollListener;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -156,6 +157,7 @@ public class SearchResultActivity extends BaseActivity implements
         recyclerView.post(() -> {
             progressItemAdapter.clear();
             itemAdapter.clear();
+            endlessScrollListener.resetPageCount();
         });
     }
 
@@ -209,7 +211,7 @@ public class SearchResultActivity extends BaseActivity implements
             return true;
         });
 
-        EndlessRecyclerOnScrollListener endlessScrollListener = new EndlessRecyclerOnScrollListener(progressItemAdapter) {
+        endlessScrollListener = new EndlessRecyclerOnScrollListener(progressItemAdapter) {
             @Override
             public void onLoadMore(int currentPage) {
                 recyclerView.post(() -> {

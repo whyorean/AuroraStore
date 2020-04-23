@@ -45,6 +45,7 @@ public class DevAppsActivity extends BaseActivity {
     private FastAdapter fastAdapter;
     private ItemAdapter<EndlessItem> itemAdapter;
     private ItemAdapter<ProgressItem> progressItemAdapter;
+    private EndlessRecyclerOnScrollListener endlessScrollListener;
 
     private String query;
     private String title;
@@ -142,7 +143,7 @@ public class DevAppsActivity extends BaseActivity {
             return true;
         });
 
-        EndlessRecyclerOnScrollListener endlessScrollListener = new EndlessRecyclerOnScrollListener(progressItemAdapter) {
+        endlessScrollListener = new EndlessRecyclerOnScrollListener(progressItemAdapter) {
             @Override
             public void onLoadMore(int currentPage) {
                 recyclerView.post(() -> {

@@ -62,6 +62,7 @@ public class ReviewsActivity extends BaseActivity {
     private FastAdapter fastAdapter;
     private ItemAdapter<ReviewItem> itemAdapter;
     private ItemAdapter<ProgressItem> progressItemAdapter;
+    private EndlessRecyclerOnScrollListener endlessScrollListener;
 
     private GooglePlayAPI.REVIEW_SORT reviewSort = GooglePlayAPI.REVIEW_SORT.HIGHRATING;
 
@@ -131,6 +132,7 @@ public class ReviewsActivity extends BaseActivity {
         recyclerView.post(() -> {
             progressItemAdapter.clear();
             itemAdapter.clear();
+            endlessScrollListener.resetPageCount();
         });
     }
 
@@ -143,7 +145,7 @@ public class ReviewsActivity extends BaseActivity {
         fastAdapter.addAdapter(1, progressItemAdapter);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
-        EndlessRecyclerOnScrollListener endlessScrollListener = new EndlessRecyclerOnScrollListener(progressItemAdapter) {
+        endlessScrollListener = new EndlessRecyclerOnScrollListener(progressItemAdapter) {
             @Override
             public void onLoadMore(int currentPage) {
                 recyclerView.post(() -> {
