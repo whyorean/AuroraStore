@@ -9,13 +9,12 @@ import androidx.work.WorkerParameters;
 
 import com.aurora.store.AuroraApplication;
 import com.aurora.store.exception.CredentialsEmptyException;
-import com.aurora.store.exception.TooManyRequestsException;
 import com.aurora.store.util.ApiBuilderUtil;
 import com.aurora.store.util.Log;
-import com.dragons.aurora.playstoreapiv2.AuthException;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 import com.dragons.aurora.playstoreapiv2.TocResponse;
 
+import java.io.IOException;
 import java.net.UnknownHostException;
 
 public class ApiValidator extends Worker {
@@ -39,19 +38,26 @@ public class ApiValidator extends Worker {
 
     private GooglePlayAPI buildApi() throws Exception {
         try {
-            return ApiBuilderUtil.getPlayApi(getApplicationContext());
+            final GooglePlayAPI api = ApiBuilderUtil.getApi(getApplicationContext());
+            if (testApi(api))
+                return api;
+            else {
+                errorCode = 0;
+                return null;
+            }
         } catch (Exception e) {
             if (e instanceof CredentialsEmptyException) {
                 errorCode = 0;
                 return null;
-            } else if (e instanceof AuthException || e instanceof TooManyRequestsException) {
-                errorCode = 1;
-                return ApiBuilderUtil.generateApiWithNewAuthToken(getApplicationContext());
             } else if (e instanceof UnknownHostException) {
                 errorCode = 2;
                 return null;
+            } else if (e instanceof IOException) {
+                errorCode = 1;
+                return ApiBuilderUtil.generateApiWithNewAuthToken(getApplicationContext());
             } else {
                 errorCode = 3;
+                e.printStackTrace();
                 return null;
             }
         }
@@ -75,15 +81,10 @@ public class ApiValidator extends Worker {
             GooglePlayAPI googlePlayAPI = buildApi();
 
             if (googlePlayAPI == null) {
-
                 return Result.failure(getOutputData());
-            }
-
-            if (testApi(googlePlayAPI)) {
+            }else {
                 AuroraApplication.api = googlePlayAPI;
                 return Result.success();
-            } else {
-                return Result.failure(getOutputData());
             }
         } catch (Exception e) {
             return Result.failure(getOutputData());

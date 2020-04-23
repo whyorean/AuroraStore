@@ -1,7 +1,6 @@
 package com.aurora.store.util;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.text.TextUtils;
 
 import com.aurora.store.Constants;
@@ -17,8 +16,6 @@ import com.dragons.aurora.playstoreapiv2.DeviceInfoProvider;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 import com.dragons.aurora.playstoreapiv2.PlayStoreApiBuilder;
 import com.dragons.aurora.playstoreapiv2.PropertiesDeviceInfoProvider;
-
-import org.apache.commons.lang3.StringUtils;
 
 import java.io.IOException;
 import java.util.Locale;
@@ -83,8 +80,7 @@ public class ApiBuilderUtil {
     }
 
     private static PlayStoreApiBuilder getBuilder(Context context, LoginInfo loginInfo) {
-        SharedPreferences sharedPreferences = Util.getPrefs(context);
-        String locale = sharedPreferences.getString(Constants.PREFERENCE_SPOOF_LOCALE, StringUtils.EMPTY);
+        String locale = PrefUtil.getString(context, Constants.PREFERENCE_SPOOF_LOCALE);
         loginInfo.setLocale(TextUtils.isEmpty(locale) ? Locale.getDefault().getLanguage() : locale);
 
         PlayStoreApiBuilder builder = new PlayStoreApiBuilder();
@@ -104,6 +100,7 @@ public class ApiBuilderUtil {
     public static DeviceInfoProvider getDeviceInfoProvider(Context context) {
         DeviceInfoProvider deviceInfoProvider;
         String spoofDevice = PrefUtil.getString(context, Constants.PREFERENCE_SPOOF_DEVICE);
+
         if (TextUtils.isEmpty(spoofDevice)) {
             deviceInfoProvider = new NativeDeviceInfoProvider();
             ((NativeDeviceInfoProvider) deviceInfoProvider).setContext(context);
@@ -123,10 +120,6 @@ public class ApiBuilderUtil {
     }
 
     public static GooglePlayAPI getApi(Context context) throws Exception {
-        return buildFromPreferences(context);
-    }
-
-    public static GooglePlayAPI getPlayApi(Context context) throws Exception {
         return buildFromPreferences(context);
     }
 

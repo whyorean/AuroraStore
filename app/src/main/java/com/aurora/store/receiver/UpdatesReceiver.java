@@ -37,7 +37,7 @@ public class UpdatesReceiver extends BroadcastReceiver {
         this.context = context;
         Log.i("Update check Started");
 
-        disposable.add(Observable.fromCallable(() -> ApiBuilderUtil.getPlayApi(context))
+        disposable.add(Observable.fromCallable(() -> ApiBuilderUtil.getApi(context))
                 .subscribeOn(Schedulers.io())
                 .map(api -> new UpdatableAppsTask(AuroraApplication.api, context).getUpdatableApps())
                 .subscribe(apps -> {
