@@ -21,6 +21,7 @@
 <com.google.android.material.appbar.AppBarLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     style="@style/Widget.AppBar"
+    android:id="@+id/search_bar"
     android:layout_width="match_parent"
     android:layout_height="?actionBarSize"
     android:translationZ="1dp"

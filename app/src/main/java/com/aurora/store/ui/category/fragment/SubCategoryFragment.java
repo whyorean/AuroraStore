@@ -117,9 +117,7 @@ public class SubCategoryFragment extends BaseFragment implements
         setupRecycler();
 
         model = new ViewModelProvider(this).get(CategoryAppsModel.class);
-        model.getCategoryApps().observe(getViewLifecycleOwner(), appList -> {
-            dispatchAppsToAdapter(appList);
-        });
+        model.getCategoryApps().observe(getViewLifecycleOwner(), this::dispatchAppsToAdapter);
         model.fetchCategoryApps(CategoryAppsActivity.categoryId, getSubcategory(), false);
     }
 
