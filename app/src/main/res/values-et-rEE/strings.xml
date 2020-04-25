@@ -364,4 +364,7 @@ Jäta meelde, et rakenduse suvaliste versioonide allalaadimine pole Google Play 
     <string name="about_bitcoin_eth_summary">"Anneta Ethereum'i (ETH)"</string>
     <string name="about_bhim">"BHIM - UPI"</string>
     <string name="about_bhim_summary">"Anneta UPI"</string>
+    <string name="download_metadata">"Metaandmete hankimine"</string>
+    <string name="list_empty_blacklist">"Mustas nimekirjas rakendused puuduvad"</string>
+    <string name="pref_notification_title_geo_spoof">"Aurora asukohapete"</string>
 </resources>
