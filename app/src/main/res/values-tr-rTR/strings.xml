@@ -334,7 +334,7 @@
     <string name="review_helpful">"Yararlı"</string>
     <string name="notification_channel_alert">"Hızlı bildirim"</string>
     <string name="notification_channel_general">"Genel bildirim"</string>
-    <string name="action_continue_anyway">"Yine de devam et?"</string>
+    <string name="action_continue_anyway">"Yine de devam edilsin mi?"</string>
     <string name="details_files">"Dosya ayrıntıları"</string>
     <string name="pref_requested_location_enable">"Sahte Konumu Geliştirici Seçeneklerinden el ile etkinleştirmeniz gerekir. Yakındaki bir yere bir VPN bağlantısı zorunludur."</string>
     <string name="toast_api_build_delayed">"Beklenenden daha uzun sürüyor"</string>
@@ -364,4 +364,7 @@
     <string name="about_bitcoin_eth_summary">"Ethereum (ETH) ile bağış yapın"</string>
     <string name="about_bhim">"BHIM - UPI"</string>
     <string name="about_bhim_summary">"UPI ile bağış yapın"</string>
+    <string name="download_metadata">"Üst veri alınıyor"</string>
+    <string name="list_empty_blacklist">"Kara listeye alınan uygulama yok"</string>
+    <string name="pref_notification_title_geo_spoof">"Aurora Geo Kandırma"</string>
 </resources>
