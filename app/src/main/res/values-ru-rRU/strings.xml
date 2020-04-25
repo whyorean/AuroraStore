@@ -22,7 +22,7 @@
     <string name="action_filter">"Фильтры"</string>
     <string name="action_filter_all">"Все"</string>
     <string name="action_filter_apply">"Применить"</string>
-    <string name="action_filter_apps_with_ads">"Приложения с рекламой"</string>
+    <string name="action_filter_apps_with_ads">"Содержит рекламу"</string>
     <string name="action_filter_downloads">"Загрузки"</string>
     <string name="action_filter_gsf_dependent_apps">"Зависит от GSF"</string>
     <string name="action_filter_misc">"Разное"</string>
@@ -72,7 +72,7 @@
     <string name="details_no_ads">"Без рекламы"</string>
     <string name="details_permissions">"Разрешения приложения"</string>
     <string name="details_purchase">"Купить"</string>
-    <string name="details_rate_this_app">"Оцените это приложение"</string>
+    <string name="details_rate_this_app">"Оцените приложение"</string>
     <string name="details_rating_reviews">"Рейтинги и обзоры"</string>
     <string name="details_reviews">"Обзоры приложения"</string>
     <string name="details_run">"Открыть"</string>
@@ -130,7 +130,7 @@ https://exodus-privacy.eu.org/en/. Это как "отчёт от аваста" 
     <!-- Скрыть системные shorten than показывать пользовательские -->
     <string name="list_installed_system">"Скрыть системные приложения"</string>
     <string name="list_not_installd">"Не установлено"</string>
-    <string name="list_update_all">"Обновить всё"</string>
+    <string name="list_update_all">"Обновить все"</string>
 
     <!-- Required declension -->
     <string name="list_update_all_txt">"обновлений доступно"</string>
@@ -175,13 +175,13 @@ https://exodus-privacy.eu.org/en/. Это как "отчёт от аваста" 
 
     <!-- "Приложения gapps" звучит как: "приложения гугл приложения". Gapps это уже google apps. Так что или "скрывать gapps" или "скрывать приложения google". ИМХО -->
     <string name="pref_filter_google_title">"Скрывать приложения Google"</string>
-    <string name="pref_filter_search_summary">"Сбрасывать фильтры поиска при каждом новом поиске. Отключите, чтобы фильтры сохранялись"</string>
+    <string name="pref_filter_search_summary">"Сбрасывать фильтры поиска при каждом новом поиске; отключите, чтобы фильтры сохранялись"</string>
 
     <!-- Invert toggle. "Use persistent search filter (○   )" -->
     <string name="pref_filter_search_title">"Временный фильтр поиска"</string>
     <string name="pref_install_auto_summary">"Устанавливать приложения сразу после завершения загрузки"</string>
     <string name="pref_install_auto_title">"Автоматическая установка"</string>
-    <string name="pref_install_delete_title">"Удалять APK-файлы после установки"</string>
+    <string name="pref_install_delete_title">"Удалять APK после установки"</string>
     <string name="pref_install_mode_summary">"Выберите способ установки APK-файлов"</string>
     <string name="pref_install_mode_title">"Способ установки"</string>
 
@@ -202,7 +202,7 @@ https://exodus-privacy.eu.org/en/. Это как "отчёт от аваста" 
     <string name="pref_ui_card_summary">"Использовать старый вид карточек для приложений"</string>
     <string name="pref_ui_card_title">"Старый вид карточек"</string>
     <string name="pref_ui_snap_summary">"Показывать только одно приложение на строку"</string>
-    <string name="pref_ui_snap_title">"Использовать SnapView для приложений"</string>
+    <string name="pref_ui_snap_title">"Быстрый просмотр приложений"</string>
     <string name="pref_ui_theme_title">"Тема оформления"</string>
     <string name="testing_program_opt_in">"Присоединиться"</string>
     <string name="testing_program_opt_out">"Выйти"</string>
@@ -267,8 +267,8 @@ Aurora позволяет искать, загружать, устанавлив
     <string name="notification_installation_manual">"Bundled APK, требуется участие пользователя"</string>
 
     <!-- https://developer.android.com/guide/app-bundle -->
-    <string name="pref_install_type_summary">"Использовать системный установщик для установки APK-файлов; ломает установку APK, состоящих из нескольких частей."</string>
-    <string name="pref_install_type_title">"Принудительно использовать системный установщик"</string>
+    <string name="pref_install_type_summary">"Использовать системный установщик для установки APK-файлов; ломает установку APK, состоящих из нескольких частей"</string>
+    <string name="pref_install_type_title">"Только системный установщик"</string>
     <string name="pref_ui_tab_default_title">"Вкладка по умолчанию"</string>
     <string name="pref_update_interval_title">"Частота проверки"</string>
     <string name="pref_update_interval_manually">"Вручную"</string>
@@ -306,7 +306,7 @@ Aurora позволяет искать, загружать, устанавлив
     <string name="pref_services_title">"Aurora Services"</string>
     <string name="pref_services_desc">"Запустить Aurora Services"</string>
     <string name="pref_services_desc_alt">"Aurora Services недоступно"</string>
-    <string name="pref_custom_tokenizer">"Пользовательский токен-диспенсер"</string>
+    <string name="pref_custom_tokenizer">"Свой токен-диспенсер"</string>
     <string name="pref_custom_tokenizer_url">"URL токен-диспенсера"</string>
     <string name="action_export_device">"Экспортировать конфигурацию устройства"</string>
     <string name="action_export_info">"Конфигурация устройства экспортирована"</string>
@@ -343,8 +343,8 @@ Aurora позволяет искать, загружать, устанавлив
     <string name="list_update_all_txt_one">"доступно обновление"</string>
     <string name="pref_ui_package">"Поиск по имени пакета"</string>
     <string name="pref_ui_package_summary">"Разрешить поиск приложений по имени пакета"</string>
-    <string name="pref_update_self_title">"Проверять наличие обновлений"</string>
-    <string name="pref_update_self_desc">"Проверять наличие обновлений Aurora Store"</string>
+    <string name="pref_update_self_title">"Проверить наличие обновлений"</string>
+    <string name="pref_update_self_desc">"Проверить наличие обновлений Aurora Store"</string>
     <string name="list_updating_background">"Загружаемые в фоне приложения"</string>
     <string name="list_updating_failed">"Обновление невозможно"</string>
     <string name="pref_updates_auto">"Автоматическое обновление"</string>
@@ -390,4 +390,17 @@ Aurora позволяет искать, загружать, устанавлив
     <string name="crash_title">"Отчёт о сбое в Aurora"</string>
     <string name="crash_line1">"Неловко получилось!"</string>
     <string name="crash_line2">"Вы можете отправить этот отчёт разработчику Aurora, чтобы помочь решить проблему."</string>
+    <string name="action_ignore">"Игнорировать"</string>
+    <string name="action_ignore_remove">"Не игнорировать"</string>
+    <string name="action_disabled">"Отключено"</string>
+    <string name="exodus_progress">"Проверка наличия трекеров"</string>
+    <string name="list_update_selected">"Обновить выбранные"</string>
+    <string name="about_libera_summary">"Стать спонсором на Libera Pay"</string>
+    <string name="about_bitcoin_btc_summary">"Пожертвовать через Bitcoin (BTC)"</string>
+    <string name="about_bitcoin_bch_summary">"Пожертвовать через Bitcoin Cash (BCH)"</string>
+    <string name="about_bitcoin_eth_summary">"Пожертвовать через Ethereum (ETH)"</string>
+    <string name="about_bhim_summary">"Пожертвовать через UPI"</string>
+    <string name="download_metadata">"Получение метаданных"</string>
+    <string name="list_empty_blacklist">"Чёрный список пуст"</string>
+    <string name="pref_notification_title_geo_spoof">"Подмена местоположения Aurora"</string>
 </resources>
