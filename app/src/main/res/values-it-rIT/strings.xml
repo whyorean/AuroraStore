@@ -402,8 +402,21 @@ Inoltre fornisce una lista di tracker incorporati in una applicazione."</string>
     <string name="crash_line1">"Ops, questo è imbarazzante!"</string>
     <string name="crash_line2">"Puoi inviare questo report allo sviluppatore di Aurora Store per aiutarlo a risolvere il problema."</string>
     <string name="action_ignore">"Ignora questa versione"</string>
+    <string name="action_ignore_remove">"Rimuovi dalla lista Ignorare"</string>
     <string name="action_disabled">"Disabilitato"</string>
+    <string name="exodus_progress">"Controllo trackers"</string>
     <string name="list_update_selected">"Aggiornamento selezionato"</string>
+    <string name="about_libera">"Libera Pay"</string>
+    <string name="about_libera_summary">"Diventa sostenitore su Libera Pay"</string>
     <string name="about_bitcoin_btc">"Bitcoin"</string>
+    <string name="about_bitcoin_btc_summary">"Dona via Bitcoin (BTC)"</string>
+    <string name="about_bitcoin_bch">"Bitcoin Cash"</string>
+    <string name="about_bitcoin_bch_summary">"Dona via Bitcoin cash (BCH)"</string>
     <string name="about_bitcoin_eth">"Ethereum"</string>
+    <string name="about_bitcoin_eth_summary">"Dona via Ethereum (ETH)"</string>
+    <string name="about_bhim">"BHIM - UPI"</string>
+    <string name="about_bhim_summary">"Dona via UPI"</string>
+    <string name="download_metadata">"Ottieni metadata"</string>
+    <string name="list_empty_blacklist">"Nessuna app in blacklist"</string>
+    <string name="pref_notification_title_geo_spoof">"Aurora Geolocalizzazione"</string>
 </resources>
