@@ -319,7 +319,7 @@ public class Util {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P && Util.isRootInstallEnabled(context)) {
             return true;
         } else
-            return getPrefs(context).getBoolean(Constants.PREFERENCE_INSTALLATION_DELETE, false);
+            return getPrefs(context).getBoolean(Constants.PREFERENCE_INSTALLATION_DELETE, true);
     }
 
     public static boolean isNativeInstallerEnforced(Context context) {
