@@ -200,12 +200,12 @@ Ammenta·ti chi iscarrigare versiones arbitràrias de sas aplicatziones no est s
     <string name="about_paypal_summary">"Faghe·mi una donatzione in Paypal"</string>
     <string name="about_fdroid">"F-Droid"</string>
     <string name="about_gitlab">"GitLab"</string>
-    <string name="about_gitlab_summary">"Otene su còdighe mitza dae Aurora OSS in GitLab"</string>
+    <string name="about_gitlab_summary">"Otene su còdighe mitza de Aurora Store dae Aurora OSS in GitLab."</string>
     <string name="about_telegram">"Telegram"</string>
     <string name="about_telegram_summary">"Auni·ti a su grupu de suportu de Aurora Store pro arresonos e impòsitos."</string>
     <string name="about_fdroid_summary">"Otene Aurora in su depòsitu F-Droid"</string>
     <string name="about_xda">"Discussione Isvilupadores"</string>
-    <string name="about_xda_summary">"Abbàida sa discussione de AuroraStore in XDA pro arresonos o impòsitos."</string>
+    <string name="about_xda_summary">"Pòmpia·ti sa discussione de Aurora Store in XDA pro arresonos o impòsitos."</string>
     <string name="action_about">"Informatziones"</string>
     <string name="pref_downloader_strategy_summary">"Ischerta s'istrategia predefinida de iscarrigamentu, s'istrategia parallela est cussa racumandada pro un'iscarrigamentu prus lestru"</string>
     <string name="pref_downloader_strategy_title">"Istrategia de iscarrigamentu"</string>
@@ -355,7 +355,7 @@ Ammenta·ti chi iscarrigare versiones arbitràrias de sas aplicatziones no est s
     <string name="exodus_progress">"Chirchende arrastadores"</string>
     <string name="list_update_selected">"Agiornamentu ischertadu"</string>
     <string name="about_libera">"Libera Pay"</string>
-    <string name="about_libera_summary">"Diventa sustenidore cun Libera Pay"</string>
+    <string name="about_libera_summary">"Diveni sustenidore cun Libera Pay"</string>
     <string name="about_bitcoin_btc">"Bitcoin"</string>
     <string name="about_bitcoin_btc_summary">"Dona pro mèdiu de Bitcoin (BTC)"</string>
     <string name="about_bitcoin_bch">"Bitcoin Cash"</string>
@@ -364,4 +364,7 @@ Ammenta·ti chi iscarrigare versiones arbitràrias de sas aplicatziones no est s
     <string name="about_bitcoin_eth_summary">"Dona pro mèdiu de Ethereum (ETH)"</string>
     <string name="about_bhim">"BHIM - UPI"</string>
     <string name="about_bhim_summary">"Dona pro mèdiu de UPI"</string>
+    <string name="download_metadata">"Retzende meta-datos"</string>
+    <string name="list_empty_blacklist">"Peruna apl. in lista niedda"</string>
+    <string name="pref_notification_title_geo_spoof">"Dispintadura Geogr. de Aurora"</string>
 </resources>
