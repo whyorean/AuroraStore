@@ -360,4 +360,7 @@
     <string name="about_bitcoin_eth_summary">"دعم عبر اثوريوم"</string>
     <string name="about_bhim">"BHIM - UPI"</string>
     <string name="about_bhim_summary">"دعم عبر  UPI"</string>
+    <string name="download_metadata">"يتم الحصول على البيانات الوصفية"</string>
+    <string name="list_empty_blacklist">"لاتوجد تطبيقات في القامة السوداء"</string>
+    <string name="pref_notification_title_geo_spoof">"ارورا تزيف الموقع الجغرافي"</string>
 </resources>
