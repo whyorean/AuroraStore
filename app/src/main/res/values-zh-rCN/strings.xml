@@ -330,7 +330,7 @@
     <string name="pref_updates_auto_desc">"每当新版本可用时更新应用"</string>
     <string name="toast_login_success">"登录成功"</string>
     <string name="toast_login_failed">"登录失败"</string>
-    <string name="disclaimer">"使用您自己的Google账户登录Aurora Store可能会导致您的账户被列入黑名单或停用，因为Aurora Store违反了Google服务条款3.3，风险自负。您可以使用匿名或一次性账户来登录Aurora Store"</string>
+    <string name="disclaimer">"使用您自己的 Google 账户登录 Aurora Store 可能会导致您的账户被列入黑名单或停用，因为 Aurora Store 违反了 Google 服务条款3.3，风险自负。您可以使用匿名或一次性账户来登录 Aurora Store"</string>
     <string name="menu_blacklist">"添加到黑名单"</string>
     <string name="action_unknown">"未知"</string>
     <string name="details_dev_details">"开发者联系方式"</string>
@@ -346,9 +346,9 @@
     <string name="testing_program_opt_out_failed">"退出测试版计划失败"</string>
     <string name="title_categories">"分类"</string>
     <string name="toast_api_all_ok">"一切准备就绪"</string>
-    <string name="toast_api_build_retrying">"生成API失败，正在重试。"</string>
-    <string name="toast_api_build_failed">"生成API失败。"</string>
-    <string name="toast_api_build_api">"正在生成GooglePlay API"</string>
+    <string name="toast_api_build_retrying">"生成 API 失败，正在重试。"</string>
+    <string name="toast_api_build_failed">"生成 API 失败。"</string>
+    <string name="toast_api_build_api">"正在生成 GooglePlay API"</string>
     <string name="review_positive">"积极"</string>
     <string name="review_recent">"最近"</string>
     <string name="review_helpful">"有帮助"</string>
@@ -356,7 +356,7 @@
     <string name="notification_channel_general">"普通通知"</string>
     <string name="action_continue_anyway">"是否仍要继续？"</string>
     <string name="details_files">"文件详情"</string>
-    <string name="pref_requested_location_enable">"您需要在开发者选项中手动启用模拟位置。必须连接到该位置附近的VPN。"</string>
+    <string name="pref_requested_location_enable">"您需要在开发者选项中手动启用模拟位置。必须连接到该位置附近的 VPN。"</string>
     <string name="toast_api_build_delayed">"耗时超过预期"</string>
     <string name="dialog_uninstall_confirmation">"您是否要卸载此应用？"</string>
     <string name="action_send">"发送"</string>
@@ -375,7 +375,7 @@
     <string name="exodus_progress">"正在检查跟踪器"</string>
     <string name="list_update_selected">"更新已选择"</string>
     <string name="about_libera">"Libera Pay"</string>
-    <string name="about_libera_summary">"注册Libera Pay成为赞助者"</string>
+    <string name="about_libera_summary">"注册 Libera Pay 成为赞助者"</string>
     <string name="about_bitcoin_btc">"比特币"</string>
     <string name="about_bitcoin_btc_summary">"通过比特币(BTC)捐款"</string>
     <string name="about_bitcoin_bch">"比特币现金"</string>
@@ -383,5 +383,8 @@
     <string name="about_bitcoin_eth">"以太坊"</string>
     <string name="about_bitcoin_eth_summary">"通过以太坊(ETH)捐款"</string>
     <string name="about_bhim">"BHIM - UPI"</string>
-    <string name="about_bhim_summary">"通过UPI捐款"</string>
+    <string name="about_bhim_summary">"通过 UPI 捐款"</string>
+    <string name="download_metadata">"正在获取元数据"</string>
+    <string name="list_empty_blacklist">"没有列入黑名单的应用"</string>
+    <string name="pref_notification_title_geo_spoof">"Aurora 地理位置欺骗"</string>
 </resources>
