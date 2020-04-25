@@ -204,7 +204,7 @@
     <string name="about_fdroid_summary">"ਔਰੋਰਾ ਸਟੋਰ F-Droid ਤੋਂ ਪ੍ਰਾਪਤ ਕਰੋ"</string>
     <string name="about_xda">"ਡਿਵੈਲਪਰ ਵੈਬਸਾਈਟ"</string>
     <string name="about_xda_summary">"ਕੋਈ ਚਰਚਾ ਜਾਂ ਸੁਝਾਅ ਦੇਣ ਵਾਸਤੇ ਔਰੋਰਾ ਸਟੋਰ ਦੀ XDA ਵੈਬਸਾਈਟ ਵੇਖੋ"</string>
-    <string name="action_about">"ਐਪ ਬਾਰੇ"</string>
+    <string name="action_about">"ਇਸ ਐਪ ਬਾਰੇ ਹੋਰ ਜਾਣੋ"</string>
     <string name="pref_downloader_strategy_summary">"ਡਾਊਨਲੋਡ ਕਰਨ ਦੀ ਰਣਨੀਤੀ ਚੁਣੋ। ਸਭ ਤੋਂ ਤੇਜ਼ ਡਾਊਨਲੋਡ ਵਾਸਤੇ ਸਮਾਨਾਂਤਰ ਰਣਨੀਤੀ ਚੁਣੋ"</string>
     <string name="pref_downloader_strategy_title">"ਡਾਊਨਲੋਡ ਰਣਨੀਤੀ"</string>
     <string name="pref_downloader_strategy_sequential">"ਕਤਾਰਬੱਧ ਡਾਊਨਲੋਡ"</string>
@@ -352,14 +352,17 @@
     <string name="action_disabled">"ਬੰਦ"</string>
     <string name="exodus_progress">"ਐਪ ਟਰੈਕਰਾਂ ਦੀ ਜਾਂਚ ਜਾਰੀ"</string>
     <string name="list_update_selected">"ਚੁਣੇ ਹੋਏ ਅੱਪਡੇਟ ਕਰੋ"</string>
-    <string name="about_libera">"ਲਿਬੇਰਾ-ਪੇ"</string>
-    <string name="about_libera_summary">"ਲਿਬੇਰਾ-ਪੇ ਤੇ ਸਰਪ੍ਰਸਤ ਬਣੋ"</string>
-    <string name="about_bitcoin_btc">"ਬਿੱਟ-ਕੋਆਈਨ"</string>
-    <string name="about_bitcoin_btc_summary">"ਬਿੱਟ-ਕੋਆਈਨ (BTC) ਦੁਆਰਾ ਦਾਨ ਕਰੋ"</string>
-    <string name="about_bitcoin_bch">"ਬਿੱਟ-ਕੋਆਈਨ ਕੈਸ਼"</string>
-    <string name="about_bitcoin_bch_summary">"ਬਿੱਟ-ਕੋਆਈਨ ਕੈਸ਼ (BCH) ਦੁਆਰਾ ਦਾਨ ਕਰੋ"</string>
+    <string name="about_libera">"ਲਾਇਬੇਰਾ-ਪੇ"</string>
+    <string name="about_libera_summary">"ਲਾਇਬੇਰਾ-ਪੇ ਤੇ ਸਰਪ੍ਰਸਤ ਬਣੋ"</string>
+    <string name="about_bitcoin_btc">"ਬਿੱਟ-ਕੋਆਇਨ"</string>
+    <string name="about_bitcoin_btc_summary">"ਬਿੱਟ-ਕੋਆਇਨ (BTC) ਦੁਆਰਾ ਦਾਨ ਕਰੋ"</string>
+    <string name="about_bitcoin_bch">"ਬਿੱਟ-ਕੋਆਇਨ ਕੈਸ਼"</string>
+    <string name="about_bitcoin_bch_summary">"ਬਿੱਟ-ਕੋਆਇਨ ਕੈਸ਼ (BCH) ਦੁਆਰਾ ਦਾਨ ਕਰੋ"</string>
     <string name="about_bitcoin_eth">"ਐਥੇਰਈਅਮ"</string>
-    <string name="about_bitcoin_eth_summary">"ਐਥੇਰਈਅਮ (ETH) ਦੁਆਰਾ ਦਾਨ ਕਰੋ"</string>
+    <string name="about_bitcoin_eth_summary">"ਐਥੇਰੀਯਮ (ETH) ਦੁਆਰਾ ਦਾਨ ਕਰੋ"</string>
     <string name="about_bhim">"ਭੀਮ - ਯੂਪੀਆਈ"</string>
     <string name="about_bhim_summary">"ਯੂਪੀਆਈ (UPI) ਦੁਆਰਾ ਦਾਨ ਕਰੋ"</string>
+    <string name="download_metadata">"ਮੈਟਾ-ਡਾਟਾ ਪ੍ਰਾਪਤ ਹੋ ਰਿਹਾ ਹੈ"</string>
+    <string name="list_empty_blacklist">"ਕੋਈ ਐਪ ਬਲੈਕ-ਲਿਸਟ ਨਹੀਂ"</string>
+    <string name="pref_notification_title_geo_spoof">"ਔਰੋਰਾ Geo-Spoof"</string>
 </resources>
