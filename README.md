@@ -69,7 +69,7 @@ While *Aurora Store* was originally based on Sergei Yeriomin's [Yalp store](http
 
 * <b> Why create *Aurora Store*?</b>
 
-  Because Google's Play store disappoints with a lack of features; Play is also proven to be [spyware/malicious](https://www.gnu.org/proprietary/malware-google.html).<br/>
+  Because Google's Play store disappoints with a lack of features; Play is also proven to be [spyware/malicious](https://www.gnu.org/proprietary/malware-google.html).
   Unfortunately, we cannot always get by with just FOSS apps, so *Aurora Store* helps us retrieve apps from the Google Play repository without having to trouble you and your device with Google Apps.
 
 * <b>Do I need Google Play Services to use *Aurora Store*?</b>
@@ -82,13 +82,13 @@ While *Aurora Store* was originally based on Sergei Yeriomin's [Yalp store](http
 
 * <b>Is it safe to use Aurora store?</b>
 
-  Aurora is fully open source and verified by FDroid. If you're talking about the safety of the apps in the store, it just gets them from the same place<br/>
-  that the PlayStore would, and are verified by Google. A lot of dangerous stuff seems to sneak past them though, so as a rule of thumb, don't download anything<br/>
+  Aurora is fully open source and verified by FDroid. If you're talking about the safety of the apps in the store, it just gets them from the same place
+  that the PlayStore would, and are verified by Google. A lot of dangerous stuff seems to sneak past them though, so as a rule of thumb, don't download anything
   which you're not sure about.
 
 * <b>What data does *Aurora Store* send to Google?</b>
 
-  *Aurora Store* does its best to send the least identifiable information possible. It does send list of package names of your installed apps (for fetching updates).<br/>
+  *Aurora Store* does its best to send the least identifiable information possible. It does send list of package names of your installed apps (for fetching updates).
   It also sends your search queries and your downloads for obvious reasons.
 
 * <b>Do I need to use my own Google account to log in?</b>
@@ -97,7 +97,7 @@ While *Aurora Store* was originally based on Sergei Yeriomin's [Yalp store](http
 
 * <b>Why would I use my own account? Is it safe?</b>
 
-  You can use your own account to download apps purchased by you or to access your wishlist. However, you may want to be careful as Google retains <br/>
+  You can use your own account to download apps purchased by you or to access your wishlist. However, you may want to be careful as Google retains
   the right to block any account. It might be worth using a dummy account for that reason.
 
 * <b>How do I log in if I have two-factor authentication enabled?</b>
@@ -118,12 +118,12 @@ While *Aurora Store* was originally based on Sergei Yeriomin's [Yalp store](http
 
 * <b>What is the FDroid filter?</b>
 
-  Since F-Droid signs APKs with its own keys, the Play store variants of apps cannot be installed over them. The F-Droid filter excludes all the apps <br/>
+  Since F-Droid signs APKs with its own keys, the Play store variants of apps cannot be installed over them. The F-Droid filter excludes all the apps
   it finds with FDroid signatures on your device to prevent such conflicts.
 
 * <b>What is the spoofing feature?</b>
 
-  Spoofing allows you to pretend to be any other device at any other location in the world in order to download geo-restricted apps. You can use your own custom device<br/>
+  Spoofing allows you to pretend to be any other device at any other location in the world in order to download geo-restricted apps. You can use your own custom device
   configs by dropping the .properties file in the Downloads directory (Settings -> Downloads -> Download Path).
 
 * <b>How does *Aurora* install apps?</b>
@@ -153,7 +153,7 @@ While *Aurora Store* was originally based on Sergei Yeriomin's [Yalp store](http
 
 * <b>How can I submit/improve translations ?</b>
 
-  Go to [POEditor](https://poeditor.com/join/project/54swaCpFXJ), and inform me when done.<br/>
+  Go to [POEditor](https://poeditor.com/join/project/54swaCpFXJ), and inform me when done.
   (I typically keep track of translations progress, but it's possible that I missed a contribution. If you don't receive a reply, please remind me!)
 
 * <b>Why do I have two *Aurora Store* installations after installing the new builds?</b>
@@ -162,7 +162,7 @@ While *Aurora Store* was originally based on Sergei Yeriomin's [Yalp store](http
 
 * <b>Why are the versions on F-Droid and XDA labs outdate? When will they be updated ?</b>
 
-  Aurora Store is still in a development phase right now; Only infrequent, stable builds will be uploaded there. F-Droid's review & build process is also quite lengthy. <br/>
+  Aurora Store is still in a development phase right now; Only infrequent, stable builds will be uploaded there. F-Droid's review & build process is also quite lengthy.
   You can always grab the latest tests builds either from the [Telegram Group](https://t.me/AuroraSupport) or from [AuroraOSS](http://auroraoss.com/Nightly/)
 
 * <b>"Please add support for F-Droid/Amazon/Yada repositories!"</b>
