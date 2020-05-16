@@ -46,6 +46,7 @@ public class UpdatesItem extends AbstractItem<UpdatesItem.ViewHolder> {
     private String packageName;
 
     private boolean checked;
+    private boolean expanded;
 
     public UpdatesItem(App app) {
         this.app = app;
@@ -118,15 +119,23 @@ public class UpdatesItem extends AbstractItem<UpdatesItem.ViewHolder> {
                     .into(imgIcon);
 
             imgExpand.setOnClickListener(v -> {
-                boolean isVisible = layoutChanges.getVisibility() == View.VISIBLE;
-                if (isVisible) {
+                if (item.expanded) {
                     ViewUtil.collapse(layoutChanges);
                     ViewUtil.rotateView(imgExpand, true);
+                    item.expanded = false;
                 } else {
                     ViewUtil.rotateView(imgExpand, false);
                     ViewUtil.expand(layoutChanges);
+                    item.expanded = true;
                 }
             });
+            if (item.expanded) {
+                imgExpand.setRotation(180);
+                layoutChanges.setVisibility(View.VISIBLE);
+            } else {
+                imgExpand.setRotation(0);
+                layoutChanges.setVisibility(View.GONE);
+            }
             checkBox.setChecked(item.checked);
         }
 
