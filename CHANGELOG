@@ -1,3 +1,146 @@
+Changelog : v3.2.8
+• Bug Fixes and Improvements
+• Updated Translations
+
+Changelog : v3.2.7
+• Fixed api building when session expires
+
+Changelog : v3.2.6
+• Bug fixes and improvements
+
+Changelog : v3.2.5
+• Fixed auto-install issues for bulk updates
+• Fixed no-network issues for Anbox setups
+• Various other bug fixes and improvements
+• Updated Translations
+
+Changelog : v3.2.4
+• Fix notifications & auto-installs
+• Fix few apps not downloading issue
+
+Changelog : v3.2.3
+• Fix root installs
+• Fix files details not being displayed
+
+Changelog : v3.2.2
+• Updated translations
+• Bug fixes and improvements
+
+Changelog : v3.2.1
+• Updated translations
+• Fixed search issues
+
+Changelog : v3.2.0
+• Updated translations
+• Bug fixes and improvements
+
+Changelog : v3.1.9
+• Updated translations
+• Bug fixes and improvements
+
+Changelog : v3.1.8
+• Fixed Exodus report
+• Fixed Login/No network issue
+• Fixed Splash screen issue
+• Fixed 2FA login issues
+• Fixed multiple other issues
+• Updated translations
+
+Changelog : v3.1.7
+• Fix a critical serialization/deserialization issue
+
+Changelog : v3.1.6
+• Update UI
+• Fixed issues related to beta subscriptions
+• Fixed login issues
+• Bug fixes and improvements
+
+Changelog : v3.1.5
+• Updated translations
+• Bug fixes and improvements
+
+Changelog : v3.1.4
+• Fixed login issues
+• Bug fixes and improvements
+
+Changelog : v3.1.3
+• Fix Google login issue
+• Fix user reviews
+• Update exodus trackers list
+• Bug fixes and improvements
+
+Changelog : v3.1.2
+• Fix downloads on Android 10
+• Notify user if 2FA is enabled
+• Improve dummy logins and handle rate-limit
+• Add self-update module
+• Bug fixes and improvements
+
+Changelog : v3.1.1
+• Do not cache updatable apps, its fetched on each launch
+• Make installation sequential
+• Improve notifications
+• Improve app aesthetics
+• Bug fixes and improvements
+
+Changelog : 3.1.0
+• Cache apps to reduce network calls, auto clear after 3 days
+• Fix Google account login
+• Fix OBB issue for big games
+• Bug fixes and improvements
+
+Changelog : v3.0.9
+• Added option to install apps directly to work profile (only rooted users)
+• Added cleanup routines and image caching control routine
+• Added new locales - Punjabi, Belarusian and Norwegian Bokmål
+• Bug fixes and improvements
+
+Changelog : v3.0.8
+• Added option to export current device info
+• Improved Search UI
+• Bug fixes and improvements
+
+Changelog : v3.0.7
+• Added option to use custom token dispensers (Settings->Network) 
+• Added new dummy accounts & dispenser
+• Added support for Aurora Services
+• Added option to view AppInfo from list menu
+• Zip the splits to backup bundled apps
+• Bug fixes & improvements
+• Updated translation
+
+Changelog : v3.0.6
+• Improved legacy card style
+• Added support for TV
+• Improved Accounts and added support for 2FA
+• Fixed exodus showing old reports
+• Fixed and improved search results
+• Added new locale - Dutch
+• Updated translation
+
+Changelog : v3.0.5
+• Bug fixes & improvements
+
+Changelog : v3.0.4
+• Bug fixes & improvements 
+• Added new locales (Asturian, Catalan and Sardinian)
+• Added new spoof location : Tokyo, Japan
+
+Changelog : v3.0.3
+• Sort app list in ascending order of app name
+• Enforced proxy network on download requests
+• Show update size in updatable app list
+• Disable quick notification completely if notifications are turned off
+
+Changelog : v3.0.2
+• Updated translations & added new Koffrora (Meme) locale
+• Enforced root install method to set installer as 'com.android.vending' allowing app to work that 
+   impose restricts if installed from other sources except Play Store.
+• Fix bugs related to search bar & search history
+• Fix bugs related to Downloader
+• Added option to view changelogs in updatable app list
+• UI improvements
+
 Changelog : v3.0.1
 
 • Written from scratch
@@ -9,149 +152,3 @@ Changelog : v3.0.1
 • Improved Blacklist Manager
 • Added Favourite Apps Manager
 • and more..
-
-Changelog : v3.0.2
-• Updated translations & added new Koffrora (Meme) locale
-• Enforced root install method to set installer as 'com.android.vending' allowing app to work that 
-   impose restricts if installed from other sources except Play Store.
-• Fix bugs related to search bar & search history
-• Fix bugs related to Downloader
-• Added option to view changelogs in updatable app list
-• UI improvements
-
-Changelog : v3.0.3
-• Sort app list in ascending order of app name
-• Enforced proxy network on download requests
-• Show update size in updatable app list
-• Disable quick notification completely if notifications are turned off
-
-Changelog : v3.0.4
-• Bug fixes & improvements 
-• Added new locales (Asturian, Catalan and Sardinian)
-• Added new spoof location : Tokyo, Japan
-
-Changelog : v3.0.5
-• Bug fixes & improvements
-
-Changelog : v3.0.6
-• Improved legacy card style
-• Added support for TV
-• Improved Accounts and added support for 2FA
-• Fixed exodus showing old reports
-• Fixed and improved search results
-• Added new locale - Dutch
-• Updated translation
-
-Changelog : v3.0.7
-• Added option to use custom token dispensers (Settings->Network) 
-• Added new dummy accounts & dispenser
-• Added support for Aurora Services
-• Added option to view AppInfo from list menu
-• Zip the splits to backup bundled apps
-• Bug fixes & improvements
-• Updated translation
-
-Changelog : v3.0.8
-• Added option to export current device info
-• Improved Search UI
-• Bug fixes and improvements
-
-Changelog : v3.0.9
-• Added option to install apps directly to work profile (only rooted users)
-• Added cleanup routines and image caching control routine
-• Added new locales - Punjabi, Belarusian and Norwegian Bokmål
-• Bug fixes and improvements
-
-Changelog : 3.1.0
-• Cache apps to reduce network calls, auto clear after 3 days
-• Fix Google account login
-• Fix OBB issue for big games
-• Bug fixes and improvements
-
-Changelog : v3.1.1
-• Do not cache updatable apps, its fetched on each launch
-• Make installation sequential
-• Improve notifications
-• Improve app aesthetics
-• Bug fixes and improvements
-
-Changelog : v3.1.2
-• Fix downloads on Android 10
-• Notify user if 2FA is enabled
-• Improve dummy logins and handle rate-limit
-• Add self-update module
-• Bug fixes and improvements
-
-Changelog : v3.1.3
-• Fix Google login issue
-• Fix user reviews
-• Update exodus trackers list
-• Bug fixes and improvements
-
-Changelog : v3.1.4
-• Fixed login issues
-• Bug fixes and improvements
-
-Changelog : v3.1.5
-• Updated translations
-• Bug fixes and improvements
-
-Changelog : v3.1.6
-• Update UI
-• Fixed issues related to beta subscriptions
-• Fixed login issues
-• Bug fixes and improvements
-
-Changelog : v3.1.7
-• Fix a critical serialization/deserialization issue
-
-Changelog : v3.1.8
-• Fixed Exodus report
-• Fixed Login/No network issue
-• Fixed Splash screen issue
-• Fixed 2FA login issues
-• Fixed multiple other issues
-• Updated translations
-
-Changelog : v3.1.9
-• Updated translations
-• Bug fixes and improvements
-
-
-Changelog : v3.2.0
-• Updated translations
-• Bug fixes and improvements
-
-Changelog : v3.2.1
-• Updated translations
-• Fixed search issues
-
-Changelog : v3.2.2
-• Updated translations
-• Bug fixes and improvements
-
-Changelog : v3.2.3
-• Fix root installs
-• Fix files details not being displayed
-
-Changelog : v3.2.4
-• Fix notifications & auto-installs
-• Fix few apps not downloading issue
-
-Changelog : v3.2.5
-• Fixed auto-install issues for bulk updates
-• Fixed no-network issues for Anbox setups
-• Various other bug fixes and improvements
-• Updated Translations
-
-Changelog : v3.2.6
-• Bug fixes and improvements
-
-Changelog : v3.2.7
-• Fixed api building when session expires
-
-Changelog : v3.2.8
-• Bug Fixes and Improvements
-• Updated Translations
-
-
