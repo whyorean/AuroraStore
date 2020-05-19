@@ -71,22 +71,24 @@ public class BulkUpdateService extends Service {
         AuroraApplication.setBulkUpdateAlive(true);
         AuroraApplication.rxNotify(new Event(Event.SubType.BULK_UPDATE_NOTIFY));
         disposable.add(Observable.fromIterable(appList)
-                .flatMap(app -> new ObservableDeliveryData(getApplicationContext()).getDeliveryData(app))
+                .flatMap(app -> new ObservableDeliveryData(getApplicationContext()).getDeliveryData(app)
+                        .doOnError(err -> {
+                            if (err instanceof MalformedRequestException || err instanceof NotPurchasedException) {
+                                QuickNotification.show(getApplication(),
+                                        getString(R.string.action_updates),
+                                        err.getMessage(),
+                                        null);
+                            }
+                            processException(err);
+                            Log.e(err.getMessage());
+                        })
+                        .onErrorResumeNext(Observable.empty())
+                )
                 .subscribeOn(Schedulers.computation())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnNext(deliveryDataBundle -> new LiveUpdate(getApplicationContext())
                         .enqueueUpdate(deliveryDataBundle.getApp(),
                                 deliveryDataBundle.getAndroidAppDeliveryData()))
-                .doOnError(err -> {
-                    if (err instanceof MalformedRequestException || err instanceof NotPurchasedException) {
-                        QuickNotification.show(getApplication(),
-                                getString(R.string.action_updates),
-                                err.getMessage(),
-                                null);
-                    }
-                    processException(err);
-                    Log.e(err.getMessage());
-                })
                 .subscribe());
     }
 
