@@ -48,8 +48,13 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onDestroy() {
+    protected void onPause() {
         connectionLiveData.removeObservers(this);
+        super.onPause();
+    }
+
+    @Override
+    protected void onDestroy() {
         super.onDestroy();
     }
 
