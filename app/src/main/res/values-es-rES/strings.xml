@@ -337,4 +337,30 @@ También ofrece una lista de los trackers incluidos en una aplicación."</string
     <string name="pref_requested_location_enable">"Tienes que habilitar manualmente Simular Ubicación en las Opciones para desarrolladores. Una conexión VPN a una ubicación cercana es obligatoria."</string>
     <string name="toast_api_build_delayed">"Está tardando más de lo esperado"</string>
     <string name="dialog_uninstall_confirmation">"Quieres desinstalar esta aplicación?"</string>
+    <string name="action_send">"Enviar"</string>
+    <string name="dialog_unavailable_title">"Aplicación no disponible"</string>
+    <string name="dialog_unavailable_desc">"No encontramos la aplicación que querías comprar, intenta suplantar la identidad de tu dispositivo (spoof) o cambia de cuenta."</string>
+    <string name="privacy_title">"la política de privacidad de Aurora OSS"</string>
+    <string name="privacy_policy">"política de privacidad"</string>
+    <string name="action_accept">"Aceptar"</string>
+    <string name="action_decline">"Rechazar"</string>
+    <string name="crash_line1">"¡Ay qué vergüenza!"</string>
+    <string name="crash_line2">"Puedes enviar este informe a Aurora Dev para resolver el problema."</string>
+    <string name="action_ignore">"Ignorar esta versión"</string>
+    <string name="action_ignore_remove">"Quitar de la lista de ignorados"</string>
+    <string name="action_disabled">"Desactivado"</string>
+    <string name="list_update_selected">"Actualizar seleccionadas"</string>
+    <string name="about_libera">"Libera Pay"</string>
+    <string name="about_bitcoin_btc">"bitcoin"</string>
+    <string name="about_bitcoin_btc_summary">"Realizar una donación mediante Bitcoin (BTC)"</string>
+    <string name="about_bitcoin_bch">"Bitcoin Cash
+"</string>
+    <string name="about_bitcoin_bch_summary">"Realizar una donación mediante Bitcoin Cash (BCH)"</string>
+    <string name="about_bitcoin_eth">"Ethereum"</string>
+    <string name="about_bitcoin_eth_summary">"Realizar una donación mediante Ethereum (ETH)"</string>
+    <string name="about_bhim">"BHIM - UPI"</string>
+    <string name="about_bhim_summary">"Realizar una donación mediante UPI"</string>
+    <string name="download_metadata">"Descarga de metadatos"</string>
+    <string name="list_empty_blacklist">"Lista negra vacía"</string>
+    <string name="pref_notification_title_geo_spoof">"Aurora Suplantar Localización"</string>
 </resources>
