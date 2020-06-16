@@ -31,6 +31,7 @@
     <string name="action_installations">"Instalaciones"</string>
     <string name="action_installed">"Instalóse"</string>
     <string name="action_later">"Más sero"</string>
+    <string name="action_logging_in">"Aniciando sesión"</string>
     <string name="action_logout">"Zarrar sesión"</string>
     <string name="action_manual">"Baxar a mano"</string>
     <string name="action_more">"Más"</string>
@@ -102,7 +103,7 @@
     <string name="list_empty_fav">"Nun hai favoritos"</string>
     <string name="list_empty_updates">"Nun hai anovamientos disponibles"</string>
     <string name="list_installed">"Instalóse"</string>
-    <string name="list_installed_system">"Amosar namái les aplicaciones d'usuariu"</string>
+    <string name="list_installed_system">"Amosar namás les aplicaciones d'usuariu"</string>
     <string name="list_not_installd">"Nun s'instaló"</string>
     <string name="list_update_all">"Anovar too"</string>
     <string name="list_update_all_txt">"anovamientu(os) disponible(s)"</string>
@@ -132,7 +133,7 @@ Decátate que baxar versiones al debalu nun lo sofita la tienda Google Play. L'�
     <string name="pref_downloader_debug_summary">"Activa la depuración de les descargues pa consiguir los rexistros detallaos"</string>
     <string name="pref_downloader_debug_title">"Depuración de les descargues"</string>
     <string name="pref_downloader_path_title">"Camín de les descargues"</string>
-    <string name="pref_downloader_wifi_title">"Baxar usando namái la Wi-Fi"</string>
+    <string name="pref_downloader_wifi_title">"Baxar usando namás la Wi-Fi"</string>
     <string name="pref_filter_fdroid_summary">"Desanicia les aplicaciones de F-Droid de les llistes d'aplicaciones"</string>
     <string name="pref_filter_fdroid_title">"Peñerar les aplicaciones de F-Droid"</string>
     <string name="pref_filter_google_summary">"Desanicia toles aplicaciones de Google nes guetes y estayes"</string>
@@ -150,7 +151,7 @@ Decátate que baxar versiones al debalu nun lo sofita la tienda Google Play. L'�
     <string name="pref_proxy_host">"Agospiu del proxy"</string>
     <string name="pref_proxy_port">"Puertu del proxy"</string>
     <string name="pref_proxy_type">"Triba del proxy"</string>
-    <string name="pref_ui_snap_summary">"Amuesa namái una aplicación al desplazase"</string>
+    <string name="pref_ui_snap_summary">"Amuesa namás una aplicación al desplazase"</string>
     <string name="pref_ui_theme_title">"Estilu"</string>
     <string name="testing_program_opt_in">"Xunise"</string>
     <string name="testing_program_opt_out">"Colar"</string>
@@ -198,7 +199,7 @@ Decátate que baxar versiones al debalu nun lo sofita la tienda Google Play. L'�
     <string name="exodus_hasTracker">"Númberu de rastrexadores:"</string>
 
     <!-- Fuzzy -->
-    <string name="notification_installation_auto">"Baxó, calca pa instalar"</string>
+    <string name="notification_installation_auto">"Calca pa instalar"</string>
     <string name="pref_install_type_title">"Forciar l'instalador nativu"</string>
     <string name="pref_ui_tab_default_title">"Llingüeta predeterminada"</string>
     <string name="pref_update_interval_title">"Intervalu de los anovamientos"</string>
@@ -207,7 +208,7 @@ Decátate que baxar versiones al debalu nun lo sofita la tienda Google Play. L'�
     <string name="pref_update_interval_daily">"Cada selmana"</string>
     <string name="pref_update_interval_weekly">"Caldía"</string>
     <string name="download_none">"Nun hai descargues"</string>
-    <string name="details_new_changes">"Qué hai nuevo"</string>
+    <string name="details_new_changes">"Novedaes"</string>
     <string name="cat_top_apps">"Aplicaciones destacaes"</string>
     <string name="cat_top_games">"Xuegos destacaos"</string>
     <string name="cat_top_family">"Aplicaciones familiares destacaes"</string>
@@ -222,6 +223,7 @@ Decátate que baxar versiones al debalu nun lo sofita la tienda Google Play. L'�
     <string name="action_loading">"Cargando"</string>
     <string name="pref_default">"Por defeutu"</string>
     <string name="dialog_purchase_desc">"Primero precises mercar esta aplicación darréu qu'Aurora Store nun sofita merques. Vamos redirixite a la páxina web pa la merca."</string>
+    <string name="dialog_geores_title">"Rexón torgada"</string>
     <string name="dialog_geores_desc">"L'aplicación que tas tentando de baxar nun ta disponible nel to país. Tenta de suplantar la to rexón dientro de los axustes d'Aurora y volvi tentalo."</string>
     <string name="dialog_incompat_title">"Aplicación incompatible"</string>
     <string name="dialog_incompat_desc">"L'aplicación que tas tentando de baxar nun ye compatible col preséu. Nos axustes, prueba a suplantar la identidá del preséu."</string>
@@ -246,11 +248,11 @@ Decátate que baxar versiones al debalu nun lo sofita la tienda Google Play. L'�
     <string name="installer_status_user_action">"Esperando pola confirmación del usuariu"</string>
     <string name="pref_downloader_internal">"Baxar les aplicaciones al almacenamientu internu"</string>
     <string name="pref_downloader_internal_desc">"Si s'activa, nun vas ser a instalar aplicaciones per Servicios d'Aurora"</string>
-    <string name="pref_install_profile_summary">"Esbilla'l perfil de destín onde instalar les aplicaciones. Namái funciona col métodu d'instalación root"</string>
+    <string name="pref_install_profile_summary">"Esbilla'l perfil de destín onde instalar les aplicaciones. Namás funciona col métodu d'instalación root"</string>
     <string name="pref_install_profile_title">"Perfiles d'instalación (esperimental)"</string>
     <string name="pref_updates_extended">"Anovamientos estendíos"</string>
     <string name="pref_updates_extended_desc">"Activa la comprobación d'anovamientos d'aplicaciones desactivaes"</string>
-    <string name="pref_caching_strategy">"Estratexa p'atroxa imáxenes"</string>
+    <string name="pref_caching_strategy">"Estratexa p'atroxar imáxenes"</string>
     <string name="pref_caching_strategy_all">"Toes"</string>
     <string name="pref_caching_strategy_automatic">"Automática"</string>
     <string name="pref_caching_strategy_none">"Nenguna"</string>
@@ -263,6 +265,7 @@ Decátate que baxar versiones al debalu nun lo sofita la tienda Google Play. L'�
     <string name="dialog_title_self_update">"Hai un anovamientu"</string>
     <string name="dialog_desc_self_update">"¿Deseyes anovar agora?"</string>
     <string name="list_updating_failed">"Fallu al anovar"</string>
+    <string name="toast_login_success">"Aniciesti sesión con ésitu"</string>
     <string name="toast_login_failed">"Fallu al aniciar sesión"</string>
     <string name="disclaimer">"Al usar Aurora Store cola to cuenta de Google pue facer que te la desactiven darréu qu'esti programa viola los términos del serviciu de Google na cláusula 3.3. Por embargu, pues usar l'aniciu de sesión anónimu qu'usa una cuenta universal pa saltar esti riesgu"</string>
     <string name="details_dev_details">"Contautu del desendolcador"</string>
@@ -287,4 +290,14 @@ Decátate que baxar versiones al debalu nun lo sofita la tienda Google Play. L'�
     <string name="action_accept">"Aceutar"</string>
     <string name="action_decline">"Refugar"</string>
     <string name="crash_line2">"Pues unviar esti informe al desendolcador d'Aurora p'ayudar a iguar el problema."</string>
+    <string name="about_libera">"Libera Pay"</string>
+    <string name="about_bitcoin_btc">"Bitcoin"</string>
+    <string name="about_bitcoin_btc_summary">"Dona per Bitcoin (BTC)"</string>
+    <string name="about_bitcoin_bch">"Bitcoin Cash"</string>
+    <string name="about_bitcoin_bch_summary">"Dona per Bitcoin Cash (BCH)"</string>
+    <string name="about_bitcoin_eth">"Ethereum"</string>
+    <string name="about_bitcoin_eth_summary">"Dona per Ethereum (ETH) "</string>
+    <string name="about_bhim">"BHIM - UPI"</string>
+    <string name="about_bhim_summary">"Dona per UPI"</string>
+    <string name="download_metadata">"Consiguiendo los metadatos"</string>
 </resources>
