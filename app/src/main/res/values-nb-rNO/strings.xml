@@ -331,4 +331,11 @@ Husk at nedlasting av vilkårlig versjoner av apper ikke støttes av Google Play
     <string name="details_files">"Fildetaljer"</string>
     <string name="toast_api_build_delayed">"Det tar lenger tid enn forventet"</string>
     <string name="dialog_uninstall_confirmation">"Vil du avinstallere denne appen?"</string>
+    <string name="action_send">"Send"</string>
+    <string name="dialog_unavailable_title">"Appen er ikke tilgjengelig"</string>
+    <string name="action_accept">"Godta"</string>
+    <string name="action_decline">"Avslå"</string>
+    <string name="crash_line2">"Du kan sende denne rapporten til Aurora Dev, for å hjelpe deg med å løse problemet."</string>
+    <string name="action_ignore">"Ignorer denne versjonen"</string>
+    <string name="action_disabled">"Deaktivert"</string>
 </resources>
