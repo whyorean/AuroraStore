@@ -26,7 +26,7 @@
     <string name="action_filter_misc">"Divers"</string>
     <string name="action_filter_paid_apps">"Payant"</string>
     <string name="action_filter_rating">"Évaluations"</string>
-    <string name="action_get_local_apk">"Obtenir l'APK Local"</string>
+    <string name="action_get_local_apk">"Obtenir l'APK local"</string>
     <string name="action_home">"Accueil"</string>
     <string name="action_installations">"Installations"</string>
     <string name="action_installed">"Installée"</string>
@@ -114,10 +114,10 @@
     <string name="list_update_all">"Tout mettre à jour"</string>
     <string name="list_update_all_txt">"mise(s) à jour disponible(s)"</string>
     <string name="manual_download_disclaimer">"Avertissement"</string>
-    <string name="manual_download_incompatible">"Google Play Store considère cette application incompatible avec votre appareil. Cela signifie que le code de version n'a pas été renvoyé par le serveur Google Play Store."</string>
+    <string name="manual_download_incompatible">"Google Play Store considère cette application incompatible avec votre appareil. Ceci signifie que le code de version n'a pas été renvoyé par le serveur Google Play Store."</string>
     <string name="manual_download_warning">"Cette page vous permet de choisir manuellement la version de l'application à télécharger.
 
-Gardez à l'esprit que le téléchargement de versions arbitraires d'applications n'est pas pris en charge par Google Play Store. Votre succès est aléatoire et dépend de la version du code. Même si tout à l'air OK et que le téléchargement commence, vous obtiendrez peut-être un apk incompatible."</string>
+Gardez à l'esprit que le téléchargement de versions arbitraires d'applications n'est pas pris en charge par Google Play Store. Votre succès est aléatoire et dépend de la version du code. Même si tout à l'air OK et que le téléchargement commence, vous obtiendrez peut-être un APK incompatible."</string>
     <string name="menu_account">"Comptes"</string>
     <string name="menu_disclaimer">"Avertissement"</string>
     <string name="menu_downloads">"Téléchargements"</string>
@@ -178,9 +178,9 @@ Gardez à l'esprit que le téléchargement de versions arbitraires d'application
     <string name="testing_program_section_opted_out_title">"Devenir bêta testeur"</string>
     <string name="title_all_apps">"Toutes les applications"</string>
     <string name="title_home">"Aurora Store"</string>
-    <string name="title_installed">"Mes apps &amp; jeux"</string>
+    <string name="title_installed">"Mes applis &amp; jeux"</string>
     <string name="title_perm">"Permissions"</string>
-    <string name="title_search">"Chercher apps &amp; jeux"</string>
+    <string name="title_search">"Chercher applis &amp; jeux"</string>
     <string name="title_updates">"Mises à jour disponibles"</string>
     <string name="title_welcome">"Bienvenue"</string>
     <string name="toast_apk_blacklisted">"Sur liste noire"</string>
@@ -219,12 +219,12 @@ Elle fournit également une liste de traqueurs intégrés dans une application."
     <string name="pref_ui_theme_black">"Noir"</string>
     <string name="action_close">"Fermer"</string>
     <string name="exodus_hasTracker">"Contient des traqueurs"</string>
-    <string name="list_selected">"Apps sélectionnées"</string>
+    <string name="list_selected">"Applis sélectionnées"</string>
 
     <!-- Fuzzy -->
     <string name="notification_installation_auto">"Téléchargé, cliquez pour installer"</string>
-    <string name="notification_installation_manual">"Apk groupée, action manuelle requise"</string>
-    <string name="pref_install_type_summary">"Utiliser le programme d'installation natif pour installer les paquets, casse les installations d'apk groupés."</string>
+    <string name="notification_installation_manual">"APK groupée, action manuelle requise"</string>
+    <string name="pref_install_type_summary">"Utiliser le programme d'installation natif pour installer les paquets, casse les installations d'APK groupés."</string>
     <string name="pref_install_type_title">"Forcer le programme d'installation natif"</string>
     <string name="pref_ui_tab_default_title">"Sélectionner l'onglet par défaut"</string>
     <string name="pref_update_interval_title">"Intervalle de mise à jour"</string>
@@ -244,8 +244,8 @@ Elle fournit également une liste de traqueurs intégrés dans une application."
     <string name="link_setting">"Réglages"</string>
     <string name="link_share">"Partager"</string>
     <string name="pref_install_mode_no_root">"L'accès root n'est pas disponible, assurez-vous que votre appareil est rooté."</string>
-    <string name="pref_install_mode_root_warn">"La méthode d'installation root nécessite que l'apk soit téléchargé dans les données de l'application, afin d'installer via adb shell, Android Pie +."</string>
-    <string name="pref_install_delete_summary">"Sur les appareils exécutant Android Pie + avec la méthode d'installation root, les APKs sont supprimés par défaut."</string>
+    <string name="pref_install_mode_root_warn">"La méthode d'installation root nécessite que l'APK soit téléchargé dans les données de l'application, afin d'installer via adb shell, Android Pie +."</string>
+    <string name="pref_install_delete_summary">"Sur les appareils exécutant Android Pie + avec la méthode d'installation root, les APK sont supprimés par défaut."</string>
     <string name="action_loading">"Chargement"</string>
     <string name="pref_default">"Défaut"</string>
     <string name="dialog_purchase_title">"Achat d'application"</string>
@@ -304,8 +304,8 @@ Elle fournit également une liste de traqueurs intégrés dans une application."
     <string name="pref_update_self_desc">"Vérifie les dernières mises à jour disponibles de Aurora Store"</string>
     <string name="list_updating_background">"Téléchargement des applis en arrière plan"</string>
     <string name="list_updating_failed">"Échec de la mise a jour"</string>
-    <string name="pref_updates_auto">"Activer les mises a jour automatiques"</string>
-    <string name="pref_updates_auto_desc">"Mettre les applis a jour dès qu'une nouvelle version est disponible"</string>
+    <string name="pref_updates_auto">"Activer les mises à jour automatiques"</string>
+    <string name="pref_updates_auto_desc">"Mettre les applis à jour dès qu'une nouvelle version est disponible"</string>
     <string name="toast_login_success">"Connexion réussie"</string>
     <string name="toast_login_failed">"Échec de la connexion"</string>
     <string name="disclaimer">"L'utilisation d'Aurora Store avec votre propre compte Google peut entraîner la mise sur liste noire ou la désactivation de votre compte, étant donné qu'Aurora enfreint les conditions d'utilisation 3.3 de Google, son utilisation se fait à vos propres risques. Vous pouvez opter pour l'anonymat et utiliser un compte jetable pour vous connecter à Aurora Store. "</string>
