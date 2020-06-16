@@ -38,6 +38,7 @@ import com.aurora.store.R;
 import com.aurora.store.model.App;
 import com.aurora.store.ui.details.DetailsActivity;
 import com.aurora.store.ui.details.ReadMoreActivity;
+import com.aurora.store.ui.view.DevInfoLayout;
 import com.aurora.store.ui.view.FeatureChip;
 import com.aurora.store.util.ContextUtil;
 import com.aurora.store.util.TextUtil;
@@ -95,12 +96,12 @@ public class GeneralDetails extends AbstractDetails {
     Chip category;
     @BindView(R.id.txt_footer)
     TextView txtFooter;
-    @BindView(R.id.txt_dev_web_desc)
-    TextView txtDevWeb;
-    @BindView(R.id.txt_dev_email_desc)
-    TextView txtDevEmail;
-    @BindView(R.id.txt_dev_addr_desc)
-    TextView txtDevAddr;
+    @BindView(R.id.layout_dev_web)
+    DevInfoLayout txtDevWeb;
+    @BindView(R.id.layout_dev_mail)
+    DevInfoLayout txtDevEmail;
+    @BindView(R.id.layout_dev_address)
+    DevInfoLayout txtDevAddr;
     @BindView(R.id.btn_positive)
     MaterialButton btnPositive;
     @BindView(R.id.btn_negative)
@@ -163,9 +164,20 @@ public class GeneralDetails extends AbstractDetails {
         setText(R.id.txt_footer, TextUtil.emptyIfNull(app.getFooterHtml()));
         layoutFooter.setVisibility(View.VISIBLE);
 
-        txtDevWeb.setText(app.getDeveloperWebsite());
-        txtDevEmail.setText(app.getDeveloperEmail());
-        txtDevAddr.setText(HtmlCompat.fromHtml(app.getDeveloperAddress(), HtmlCompat.FROM_HTML_MODE_LEGACY));
+        if (StringUtils.isNotEmpty(app.getDeveloperAddress())) {
+            txtDevAddr.setTxtSubtitle(HtmlCompat.fromHtml(app.getDeveloperAddress(), HtmlCompat.FROM_HTML_MODE_LEGACY).toString());
+            txtDevAddr.setVisibility(View.VISIBLE);
+        }
+
+        if (StringUtils.isNotEmpty(app.getDeveloperWebsite())) {
+            txtDevWeb.setTxtSubtitle(app.getDeveloperWebsite());
+            txtDevWeb.setVisibility(View.VISIBLE);
+        }
+
+        if (StringUtils.isNotEmpty(app.getDeveloperEmail())) {
+            txtDevEmail.setTxtSubtitle(app.getDeveloperEmail());
+            txtDevEmail.setVisibility(View.VISIBLE);
+        }
 
         drawOfferDetails();
         drawFeatures();

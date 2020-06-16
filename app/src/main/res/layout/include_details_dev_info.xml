@@ -19,6 +19,7 @@
   -->
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/developer_container"
     android:layout_width="match_parent"
@@ -39,127 +40,30 @@
         android:textAlignment="viewStart"
         android:textAppearance="@style/TextAppearance.Aurora.SubTitle" />
 
-    <RelativeLayout
-        android:id="@+id/layoutsite"
+    <com.aurora.store.ui.view.DevInfoLayout
+        android:id="@+id/layout_dev_web"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_weight="1"
-        android:orientation="vertical"
-        android:paddingTop="@dimen/margin_xxsmall"
-        android:paddingBottom="@dimen/margin_xxsmall">
+        android:visibility="gone"
+        app:imgIcon="@drawable/ic_network"
+        app:txtTitle="@string/details_dev_website"
+        tools:visibility="visible" />
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/img_dev"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/margin_xxsmall"
-            android:src="@drawable/ic_network"
-            android:tint="?android:attr/colorAccent" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/txt_dev_web_title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_normal"
-            android:layout_toEndOf="@id/img_dev"
-            android:text="@string/details_dev_website"
-            android:textAppearance="@style/TextAppearance.Aurora.Line2"
-            android:textColor="?android:attr/textColorPrimary"
-            android:textStyle="bold" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/txt_dev_web_desc"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/txt_dev_web_title"
-            android:layout_alignStart="@id/txt_dev_web_title"
-            android:autoLink="web"
-            android:linksClickable="true"
-            android:textAppearance="@style/TextAppearance.Aurora.Line3"
-            android:textColorLink="?android:attr/textColorSecondary" />
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/layout_email"
+    <com.aurora.store.ui.view.DevInfoLayout
+        android:id="@+id/layout_dev_mail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_weight="1"
-        android:orientation="vertical"
-        android:paddingTop="@dimen/margin_xxsmall"
-        android:paddingBottom="@dimen/margin_xxsmall">
+        android:visibility="gone"
+        app:imgIcon="@drawable/ic_mail"
+        app:txtTitle="@string/details_dev_email"
+        tools:visibility="visible" />
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/img_dev_email"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/margin_xxsmall"
-            android:src="@drawable/ic_mail"
-            android:tint="?android:attr/colorAccent" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/txt_dev_email_title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_normal"
-            android:layout_toEndOf="@id/img_dev_email"
-            android:text="@string/details_dev_email"
-            android:textAppearance="@style/TextAppearance.Aurora.Line2"
-            android:textColor="?android:attr/textColorPrimary"
-            android:textStyle="bold" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/txt_dev_email_desc"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/txt_dev_email_title"
-            android:layout_alignStart="@id/txt_dev_email_title"
-            android:autoLink="email"
-            android:linksClickable="true"
-            android:textAppearance="@style/TextAppearance.Aurora.Line3"
-            android:textColorLink="?android:attr/textColorSecondary" />
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/layout_addr"
+    <com.aurora.store.ui.view.DevInfoLayout
+        android:id="@+id/layout_dev_address"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_weight="1"
-        android:orientation="vertical"
-        android:paddingTop="@dimen/margin_xxsmall"
-        android:paddingBottom="@dimen/margin_xxsmall">
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/img_dev_addr"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/margin_xxsmall"
-            android:src="@drawable/ic_map"
-            android:tint="?android:attr/colorAccent" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/txt_dev_addr_title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_normal"
-            android:layout_toEndOf="@id/img_dev_addr"
-            android:text="@string/details_dev_address"
-            android:textAppearance="@style/TextAppearance.Aurora.Line2"
-            android:textColor="?android:attr/textColorPrimary"
-            android:textStyle="bold" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/txt_dev_addr_desc"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/txt_dev_addr_title"
-            android:layout_alignStart="@id/txt_dev_addr_title"
-            android:autoLink="map"
-            android:linksClickable="true"
-            android:textAppearance="@style/TextAppearance.Aurora.Line3"
-            android:textColorLink="?android:attr/textColorSecondary"
-            android:textIsSelectable="true" />
-    </RelativeLayout>
+        android:visibility="gone"
+        app:imgIcon="@drawable/ic_map"
+        app:txtTitle="@string/details_dev_address"
+        tools:visibility="visible" />
 </LinearLayout>
