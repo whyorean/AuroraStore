@@ -304,7 +304,7 @@ Aurora дозволяє шукати, завантажувати, встанов
     <string name="list_updating_failed">"Не вдалося оновити"</string>
     <string name="pref_updates_auto">"Увімкнути автоматичні оновлення"</string>
     <string name="pref_updates_auto_desc">"Оновлювати програми, як тільки доступна нова версія"</string>
-    <string name="toast_login_success">"Вхід успішний"</string>
+    <string name="toast_login_success">"Успішно увійшли"</string>
     <string name="toast_login_failed">"Не вдалося увійти"</string>
     <string name="disclaimer">"Використання Aurora Store з вашим власним акаунтом Google може призвести до його деактивації або занесення до чорного списку, так як Aurora Store порушує Умови використання Google Play. Користуйтесь на свій страх і ризик. У вас є можливість увійти анонімно, в такому разі ви увійдете у тимчасовий акаунт."</string>
     <string name="menu_blacklist">"Додати до чорного списку"</string>
@@ -345,4 +345,17 @@ Aurora дозволяє шукати, завантажувати, встанов
     <string name="crash_title">"Звіт про збій"</string>
     <string name="crash_line1">"Яка прикра несподіванка!"</string>
     <string name="crash_line2">"Ви можете надіслати цей звіт розробнику Aurora, щоб ця проблема була вирішена."</string>
+    <string name="action_ignore">"Ігнорувати цю версію"</string>
+    <string name="action_ignore_remove">"Видалити зі списку ігнорування"</string>
+    <string name="action_disabled">"Вимкненно"</string>
+    <string name="exodus_progress">"Перевірка трекерів"</string>
+    <string name="list_update_selected">"Оновити вибрані"</string>
+    <string name="about_libera_summary">"Стати спонсором на Libera Pay "</string>
+    <string name="about_bitcoin_btc_summary">"Задонатити через Bitcoin (BTC)"</string>
+    <string name="about_bitcoin_bch_summary">"Задонатити  через Bitcoin Cash (BCH)"</string>
+    <string name="about_bitcoin_eth_summary">"Задонатити  через Ethereum (ETH)"</string>
+    <string name="about_bhim_summary">"Задонатити через UPI"</string>
+    <string name="download_metadata">"Отримуємо метадані"</string>
+    <string name="list_empty_blacklist">"Чорний список пустий"</string>
+    <string name="pref_notification_title_geo_spoof">"Підміна геолокації Aurora"</string>
 </resources>
