@@ -222,9 +222,7 @@ Het biedt ook een lijst met ingebouwde trackers in een applicatie."</string>
     <string name="action_close">"Sluiten"</string>
     <string name="exodus_hasTracker">"Bevat trackers"</string>
     <string name="list_selected">"Geselecteerde apps"</string>
-
-    <!-- Fuzzy -->
-    <string name="notification_installation_auto">"Gedownload, klik om te installeren"</string>
+    <string name="notification_installation_auto">"Klik om te installeren"</string>
     <string name="notification_installation_manual">"Gebundelde APK, handmatige actie vereist"</string>
     <string name="pref_install_type_summary">"Gebruik het eigen installatieprogramma om de pakketten te installeren, gebundelde APK installaties kunnen niet meer werken"</string>
     <string name="pref_install_type_title">"Forceer het native installatieprogramma"</string>
@@ -353,4 +351,22 @@ Het biedt ook een lijst met ingebouwde trackers in een applicatie."</string>
     <string name="crash_line1">"Dat is beschamend!
 "</string>
     <string name="crash_line2">"U kunt dit rapport naar Aurora Dev sturen om het probleem op te lossen."</string>
+    <string name="action_ignore">"Negeer deze versie"</string>
+    <string name="action_ignore_remove">"Verwijderen uit negeerlijst"</string>
+    <string name="action_disabled">"Uitgeschakeld"</string>
+    <string name="exodus_progress">"Controleren op trackers"</string>
+    <string name="list_update_selected">"Update geselecteerd"</string>
+    <string name="about_libera">"Libera Pay"</string>
+    <string name="about_libera_summary">"Word donateur op Libera Pay"</string>
+    <string name="about_bitcoin_btc">"Bitcoin"</string>
+    <string name="about_bitcoin_btc_summary">"Doneer via Bitcoin (BTC)"</string>
+    <string name="about_bitcoin_bch">"Bitcoin Cash"</string>
+    <string name="about_bitcoin_bch_summary">"Doneer via Bitcoin Cash (BCH)"</string>
+    <string name="about_bitcoin_eth">"Ethereum"</string>
+    <string name="about_bitcoin_eth_summary">"Doneer via Ethereum (ETH)"</string>
+    <string name="about_bhim">"BHIM - UPI"</string>
+    <string name="about_bhim_summary">"Doneer via UPI"</string>
+    <string name="download_metadata">"Metadata ophalen"</string>
+    <string name="list_empty_blacklist">"Geen  geplaatste apps op de zwarte lijst"</string>
+    <string name="pref_notification_title_geo_spoof">"Aurora Geo Spoof"</string>
 </resources>
