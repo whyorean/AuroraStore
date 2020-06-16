@@ -77,6 +77,8 @@ import java.util.Set;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.reactivex.Observable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
 
 
 public class UpdatesFragment extends BaseFragment {
@@ -100,6 +102,8 @@ public class UpdatesFragment extends BaseFragment {
     private FastAdapter<UpdatesItem> fastAdapter;
     private ItemAdapter<UpdatesItem> itemAdapter;
     private SelectExtension<UpdatesItem> selectExtension;
+
+    private CompositeDisposable disposable = new CompositeDisposable();
 
     @Nullable
     @Override
@@ -139,9 +143,10 @@ public class UpdatesFragment extends BaseFragment {
         swipeLayout.setRefreshing(true);
         swipeLayout.setOnRefreshListener(() -> model.fetchUpdatableApps());
 
-        AuroraApplication
+        disposable.add(AuroraApplication
                 .getRelayBus()
-                .doOnNext(event -> {
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(event -> {
                     //Handle list update events
                     switch (event.getSubType()) {
                         case BLACKLIST:
@@ -174,13 +179,7 @@ public class UpdatesFragment extends BaseFragment {
                             //TODO:Check for update and add app to list if update is available
                             break;
                     }
-                })
-                .subscribe();
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
+                }));
     }
 
     @Override
@@ -191,6 +190,7 @@ public class UpdatesFragment extends BaseFragment {
 
     @Override
     public void onDestroy() {
+        disposable.dispose();
         super.onDestroy();
     }
 
@@ -340,6 +340,7 @@ public class UpdatesFragment extends BaseFragment {
                             super.onAdded(groupId, download, fetchGroup);
                             if (hashcode == groupId) {
                                 fetch.cancelGroup(groupId);
+                                fetch.deleteGroup(groupId);
                                 fetch.removeListener(this);
                             }
                         }
@@ -349,6 +350,7 @@ public class UpdatesFragment extends BaseFragment {
                             super.onProgress(groupId, download, etaInMilliSeconds, downloadedBytesPerSecond, fetchGroup);
                             if (hashcode == groupId) {
                                 fetch.cancelGroup(groupId);
+                                fetch.deleteGroup(groupId);
                                 fetch.removeListener(this);
                             }
                         }
@@ -358,6 +360,7 @@ public class UpdatesFragment extends BaseFragment {
                             super.onQueued(groupId, download, waitingNetwork, fetchGroup);
                             if (hashcode == groupId) {
                                 fetch.cancelGroup(groupId);
+                                fetch.deleteGroup(groupId);
                                 fetch.removeListener(this);
                             }
                         }
