@@ -66,8 +66,12 @@ public final class CertUtil {
             return false;
         else {
             X509Certificate cert = certs[0];
-            String DN = cert.getSubjectDN().getName().toUpperCase();
-            return DN.contains(FDROID) || DN.contains(GUARDIAN);
+            if (cert.getSubjectDN() != null) {
+                String DN = cert.getSubjectDN().getName().toUpperCase();
+                return DN.contains(FDROID) || DN.contains(GUARDIAN);
+            } else {
+                return false;
+            }
         }
     }
 }
