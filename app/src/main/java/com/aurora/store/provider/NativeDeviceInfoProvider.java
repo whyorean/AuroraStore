@@ -38,6 +38,8 @@ import com.dragons.aurora.playstoreapiv2.AndroidCheckinRequest;
 import com.dragons.aurora.playstoreapiv2.DeviceConfigurationProto;
 import com.dragons.aurora.playstoreapiv2.DeviceInfoProvider;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -180,7 +182,7 @@ public class NativeDeviceInfoProvider implements DeviceInfoProvider {
                 .setId(Build.FINGERPRINT)
                 .setProduct(Build.HARDWARE)
                 .setCarrier(Build.BRAND)
-                .setRadio(Build.getRadioVersion())
+                .setRadio(StringUtils.isNotEmpty(Build.getRadioVersion()) ? Build.getRadioVersion() : StringUtils.EMPTY)
                 .setBootloader(Build.BOOTLOADER)
                 .setDevice(Build.DEVICE)
                 .setSdkVersion(Build.VERSION.SDK_INT)

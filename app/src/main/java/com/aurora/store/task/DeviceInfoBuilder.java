@@ -36,6 +36,8 @@ import com.aurora.store.provider.NativeGsfVersionProvider;
 import com.aurora.store.util.Log;
 import com.aurora.store.util.PathUtil;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -118,7 +120,7 @@ public class DeviceInfoBuilder {
     private Map<String, String> getBuildValues() {
         final Map<String, String> values = new LinkedHashMap<>();
         values.put("Build.HARDWARE", Build.HARDWARE);
-        values.put("Build.RADIO", Build.getRadioVersion());
+        values.put("Build.RADIO", StringUtils.isNotEmpty(Build.getRadioVersion()) ? Build.getRadioVersion() : StringUtils.EMPTY);
         values.put("Build.BOOTLOADER", Build.BOOTLOADER);
         values.put("Build.FINGERPRINT", Build.FINGERPRINT);
         values.put("Build.BRAND", Build.BRAND);
