@@ -76,8 +76,8 @@
       "id": 10,
       "name": "Xiti",
       "creation_date": "2017-09-24",
-      "code_signature": "NC",
-      "network_signature": "NC",
+      "code_signature": "",
+      "network_signature": "",
       "website": "http://Xiti.com"
     },
     "11": {
@@ -348,7 +348,7 @@
       "id": 46,
       "name": "CrowdTangle",
       "creation_date": "2017-12-03",
-      "code_signature": ".",
+      "code_signature": "",
       "network_signature": "api\\.crowdtangle\\.com",
       "website": "https://www.crowdtangle.com/"
     },
@@ -677,7 +677,7 @@
       "name": "Retency",
       "creation_date": "2018-03-04",
       "code_signature": "com.retency.sdk.android",
-      "network_signature": "NC",
+      "network_signature": "",
       "website": "http://retency.com"
     },
     "89": {
@@ -709,7 +709,7 @@
       "name": "Amazon Advertisement",
       "creation_date": "2018-03-04",
       "code_signature": "com.amazon.device.ads",
-      "network_signature": "NC",
+      "network_signature": "",
       "website": "https://developer.amazon.com/public/apis/earn/mobile-ads/docs/quick-start"
     },
     "93": {
@@ -717,7 +717,7 @@
       "name": "Amazon Mobile Associates",
       "creation_date": "2018-03-04",
       "code_signature": "com.amazon.device.associates",
-      "network_signature": "NC",
+      "network_signature": "",
       "website": "https://developer.amazon.com/mobile-associates"
     },
     "94": {
@@ -741,7 +741,7 @@
       "name": "Baidu APPX",
       "creation_date": "2018-03-04",
       "code_signature": "com.baidu.appx",
-      "network_signature": "NC",
+      "network_signature": "",
       "website": "https://app.baidu.com/"
     },
     "97": {
@@ -749,7 +749,7 @@
       "name": "Baidu Location",
       "creation_date": "2018-03-04",
       "code_signature": "com.baidu.location",
-      "network_signature": "NC",
+      "network_signature": "",
       "website": "https://developer.baidu.com/"
     },
     "99": {
@@ -757,7 +757,7 @@
       "name": "Baidu Map",
       "creation_date": "2018-03-04",
       "code_signature": "com.baidu.mapapi",
-      "network_signature": "NC",
+      "network_signature": "",
       "website": "http://lbsyun.baidu.com/"
     },
     "100": {
@@ -765,7 +765,7 @@
       "name": "Baidu Mobile Ads",
       "creation_date": "2018-03-04",
       "code_signature": "com.baidu.mobads",
-      "network_signature": "NC",
+      "network_signature": "",
       "website": "https://developer.baidu.com/"
     },
     "101": {
@@ -773,7 +773,7 @@
       "name": "Baidu Mobile Stat",
       "creation_date": "2018-03-04",
       "code_signature": "com.baidu.mobstat",
-      "network_signature": "NC",
+      "network_signature": "",
       "website": "https://developer.baidu.com/"
     },
     "102": {
@@ -781,7 +781,7 @@
       "name": "Estimote",
       "creation_date": "2018-03-04",
       "code_signature": "com.estimote.",
-      "network_signature": "NC",
+      "network_signature": "",
       "website": "https://estimote.com/"
     },
     "103": {
@@ -789,7 +789,7 @@
       "name": "Baidu Navigation",
       "creation_date": "2018-03-04",
       "code_signature": "com.baidu.navi",
-      "network_signature": "NC",
+      "network_signature": "",
       "website": "http://lbsyun.baidu.com/index.php?title=android-navsdk"
     },
     "104": {
@@ -797,7 +797,7 @@
       "name": "Fyber",
       "creation_date": "2018-03-04",
       "code_signature": "com.fyber.",
-      "network_signature": "adproxy.fyber.com|appengage-video.fyber.com|banner.fyber.com|engine.fyber.com|interstitial.fyber.com|mbe-cdn.fyber.com|offer.fyber.com|service.fyber.com|tracker.fyber.com|video.fyber.com|video-interstitial-assets-cdn.fyber.com",
+      "network_signature": "adproxy\\.fyber\\.com|appengage-video\\.fyber\\.com|banner\\.fyber\\.com|engine\\.fyber\\.com|interstitial\\.fyber\\.com|mbe-cdn\\.fyber\\.com|offer\\.fyber\\.com|service\\.fyber\\.com|tracker\\.fyber\\.com|video\\.fyber\\.com|video-interstitial-assets-cdn\\.fyber\\.com",
       "website": "https://www.fyber.com/"
     },
     "105": {
@@ -829,7 +829,7 @@
       "name": "Snowplow",
       "creation_date": "2018-03-04",
       "code_signature": "com.snowplowanalytics.",
-      "network_signature": "NC",
+      "network_signature": "",
       "website": "https://snowplowanalytics.com/"
     },
     "109": {
@@ -861,7 +861,7 @@
       "name": "Tencent Map LBS",
       "creation_date": "2018-03-04",
       "code_signature": "com.tencent.lbs",
-      "network_signature": "NC",
+      "network_signature": "",
       "website": "https://lbs.qq.com/"
     },
     "113": {
@@ -869,7 +869,7 @@
       "name": "Tencent MobWin",
       "creation_date": "2018-03-04",
       "code_signature": "com.tencent.mobwin",
-      "network_signature": "NC",
+      "network_signature": "",
       "website": "https://www.tencent.com/en-us/"
     },
     "114": {
@@ -877,7 +877,7 @@
       "name": "Tencent MTA",
       "creation_date": "2018-03-04",
       "code_signature": "com.tencent.mta",
-      "network_signature": "NC",
+      "network_signature": "",
       "website": "https://mta.qq.com/"
     },
     "115": {
@@ -893,7 +893,7 @@
       "name": "Tencent Stats",
       "creation_date": "2018-03-04",
       "code_signature": "com.tencent.stat",
-      "network_signature": "NC",
+      "network_signature": "",
       "website": "http://stat.qq.com/"
     },
     "117": {
@@ -901,7 +901,7 @@
       "name": "Tencent Weiyun",
       "creation_date": "2018-03-04",
       "code_signature": "com.tencent.weiyun",
-      "network_signature": "NC",
+      "network_signature": "",
       "website": "https://www.weiyun.com"
     },
     "118": {
@@ -941,7 +941,7 @@
       "name": "Countly",
       "creation_date": "2018-03-04",
       "code_signature": "ly.count.android.",
-      "network_signature": "NC",
+      "network_signature": "",
       "website": "https://count.ly/"
     },
     "123": {
@@ -957,7 +957,7 @@
       "name": "Yandex Ad",
       "creation_date": "2018-03-04",
       "code_signature": "com.yandex.mobile.ads",
-      "network_signature": "appmetrica.yandex.com|report.appmetrica.yandex.net|analytics.mobile.yandex.net|banners.mobile.yandex.net|banners-slb.mobile.yandex.net|startup.mobile.yandex.net|mc.yandex.ru",
+      "network_signature": "appmetrica\\.yandex\\.com|report\\.appmetrica\\.yandex\\.net|analytics\\.mobile\\.yandex\\.net|banners\\.mobile\\.yandex\\.net|banners-slb\\.mobile\\.yandex\\.net|startup\\.mobile\\.yandex\\.net|mc\\.yandex\\.ru",
       "website": "https://www.yandex.com/"
     },
     "125": {
@@ -1005,7 +1005,7 @@
       "name": "AppAnalytics",
       "creation_date": "2018-03-04",
       "code_signature": "io.appanalytics.sdk",
-      "network_signature": "NC",
+      "network_signature": "",
       "website": "http://appanalytics.io/"
     },
     "132": {
@@ -1045,7 +1045,7 @@
       "name": "Dynatrace",
       "creation_date": "2018-03-04",
       "code_signature": "com.dynatrace.android.app.",
-      "network_signature": ".dynatrace.com",
+      "network_signature": "\\.dynatrace\\.com",
       "website": "https://www.dynatrace.com"
     },
     "138": {
@@ -1077,7 +1077,7 @@
       "name": "Sensoro",
       "creation_date": "2018-08-16",
       "code_signature": "com.sensoro.beacon.kit.|com.sensoro.cloud",
-      "network_signature": "NC",
+      "network_signature": "",
       "website": "https://www.sensoro.com/"
     },
     "144": {
@@ -1101,7 +1101,7 @@
       "name": "ironSource",
       "creation_date": "2018-08-16",
       "code_signature": "com.ironsource.",
-      "network_signature": "NC",
+      "network_signature": "",
       "website": "https://www.ironsrc.com"
     },
     "147": {
@@ -1165,7 +1165,7 @@
       "name": "BlueConic",
       "creation_date": "2018-08-16",
       "code_signature": "com.blueconic",
-      "network_signature": "NC",
+      "network_signature": "",
       "website": "https://www.blueconic.com"
     },
     "155": {
@@ -1213,7 +1213,7 @@
       "name": "Placed",
       "creation_date": "2019-03-10",
       "code_signature": "com.placed.client",
-      "network_signature": "NC",
+      "network_signature": "",
       "website": "http://placed.com/"
     },
     "161": {
@@ -1237,7 +1237,7 @@
       "name": "AppMonet",
       "creation_date": "2019-03-10",
       "code_signature": "com.monet.",
-      "network_signature": "NC",
+      "network_signature": "",
       "website": "http://appmonet.com"
     },
     "164": {
@@ -1413,7 +1413,7 @@
       "name": "MobFox",
       "creation_date": "2019-03-19",
       "code_signature": "com.mobfox.",
-      "network_signature": "NC",
+      "network_signature": "",
       "website": "https://www.mobfox.com/"
     },
     "186": {
@@ -1421,7 +1421,7 @@
       "name": "ShallWeAD",
       "creation_date": "2019-03-19",
       "code_signature": "com.jm.co.shallwead.sdk.|com.co.shallwead.sdk.",
-      "network_signature": "NC",
+      "network_signature": "",
       "website": "http://www.shallwead.com"
     },
     "187": {
@@ -1485,7 +1485,7 @@
       "name": "Appdynamics",
       "creation_date": "2019-04-15",
       "code_signature": "com.appdynamics.",
-      "network_signature": "NC",
+      "network_signature": "",
       "website": "https://www.appdynamics.com/"
     },
     "195": {
@@ -1517,7 +1517,7 @@
       "name": "myTarget",
       "creation_date": "2019-04-15",
       "code_signature": "com.my.target.",
-      "network_signature": "NC",
+      "network_signature": "",
       "website": "https://target.my.com/"
     },
     "199": {
@@ -1573,7 +1573,7 @@
       "name": "GameAnalytics",
       "creation_date": "2019-06-12",
       "code_signature": "com.gameanalytics.sdk",
-      "network_signature": "NC",
+      "network_signature": "",
       "website": "https://gameanalytics.com/features"
     },
     "206": {
@@ -1581,7 +1581,7 @@
       "name": "Instabug",
       "creation_date": "2019-06-12",
       "code_signature": "com.instabug.library.tracking|com.instabug.bug",
-      "network_signature": "NC",
+      "network_signature": "",
       "website": "https://instabug.com/crash-reporting"
     },
     "207": {
@@ -1589,7 +1589,7 @@
       "name": "Bugsnag",
       "creation_date": "2019-06-12",
       "code_signature": "com.bugsnag.",
-      "network_signature": "NC",
+      "network_signature": "",
       "website": "https://www.bugsnag.com/"
     },
     "208": {
@@ -1613,7 +1613,7 @@
       "name": "OpenX",
       "creation_date": "2019-06-20",
       "code_signature": "com.openx.view.plugplay|com.openx.android_sdk_openx",
-      "network_signature": "NC",
+      "network_signature": "",
       "website": "https://www.openx.com/"
     },
     "211": {
@@ -1677,7 +1677,7 @@
       "name": "AltBeacon",
       "creation_date": "2019-10-26",
       "code_signature": "org.altbeacon.beacon.|com.altbeacon.beacon.",
-      "network_signature": "NC",
+      "network_signature": "",
       "website": "https://altbeacon.org"
     },
     "220": {
@@ -1685,7 +1685,7 @@
       "name": "Salesforce Marketing Cloud",
       "creation_date": "2019-10-26",
       "code_signature": "com.salesforce.marketingcloud",
-      "network_signature": "NC",
+      "network_signature": "",
       "website": "https://www.salesforce.com/products/marketing-cloud/"
     },
     "221": {
@@ -1693,7 +1693,7 @@
       "name": "Mozilla Telemetry",
       "creation_date": "2019-10-26",
       "code_signature": "org.mozilla.telemetry|org.mozilla.gecko.telemetry",
-      "network_signature": "NC",
+      "network_signature": "",
       "website": "https://wiki.mozilla.org/Telemetry"
     },
     "222": {
@@ -1709,7 +1709,7 @@
       "name": "Pusher",
       "creation_date": "2019-10-26",
       "code_signature": "com.pusher.client.",
-      "network_signature": "NC",
+      "network_signature": "",
       "website": "https://pusher.com/"
     },
     "224": {
@@ -1725,7 +1725,7 @@
       "name": "TNK Factory",
       "creation_date": "2019-10-26",
       "code_signature": "com.tnkfactory.ad",
-      "network_signature": "NC",
+      "network_signature": "",
       "website": "http://www.tnkfactory.com"
     },
     "226": {
@@ -1749,7 +1749,7 @@
       "name": "YouAppi",
       "creation_date": "2019-10-26",
       "code_signature": "com.youappi.sdk.",
-      "network_signature": "NC",
+      "network_signature": "",
       "website": "https://www.youappi.com"
     },
     "229": {
@@ -1757,7 +1757,7 @@
       "name": "Adobe Experience Cloud",
       "creation_date": "2019-10-26",
       "code_signature": "com.adobe.marketing.mobile",
-      "network_signature": "NC",
+      "network_signature": "",
       "website": "https://www.adobe.com/experience-cloud.html"
     },
     "230": {
@@ -1781,7 +1781,7 @@
       "name": "IQzone",
       "creation_date": "2019-10-26",
       "code_signature": "com.iqzone",
-      "network_signature": "NC",
+      "network_signature": "",
       "website": "https://iqzone.com"
     },
     "233": {
@@ -1789,7 +1789,7 @@
       "name": "Bugfender",
       "creation_date": "2019-10-26",
       "code_signature": "com.bugfender.sdk.",
-      "network_signature": "NC",
+      "network_signature": "",
       "website": "https://bugfender.com/"
     },
     "234": {
@@ -1805,7 +1805,7 @@
       "name": "KIDOZ",
       "creation_date": "2019-10-26",
       "code_signature": "com.kidoz.sdk",
-      "network_signature": "NC",
+      "network_signature": "",
       "website": "https://kidoz.net/kidoz-sdk/"
     },
     "236": {
@@ -1821,7 +1821,7 @@
       "name": "Kissmetrics",
       "creation_date": "2019-11-09",
       "code_signature": "com.kissmetrics",
-      "network_signature": "NC",
+      "network_signature": "",
       "website": "https://www.kissmetricshq.com/"
     },
     "238": {
@@ -1829,7 +1829,7 @@
       "name": "Microsoft Appcenter Crashes",
       "creation_date": "2019-11-09",
       "code_signature": "com.microsoft.appcenter.crashes",
-      "network_signature": "NC",
+      "network_signature": "",
       "website": "https://docs.microsoft.com/en-us/appcenter/sdk/crashes/android"
     },
     "239": {
@@ -1837,7 +1837,7 @@
       "name": "Webtrekk",
       "creation_date": "2019-11-09",
       "code_signature": "com.webtrekk.webtrekksdk",
-      "network_signature": "NC",
+      "network_signature": "",
       "website": "https://www.webtrekk.com/"
     },
     "240": {
@@ -1845,7 +1845,7 @@
       "name": "google-analytics-plugin",
       "creation_date": "2019-11-09",
       "code_signature": "com.danielcwilson.plugins.analytics",
-      "network_signature": "NC",
+      "network_signature": "",
       "website": "https://github.com/danwilson/google-analytics-plugin"
     },
     "241": {
@@ -1853,7 +1853,7 @@
       "name": "Bugsee",
       "creation_date": "2019-11-09",
       "code_signature": "com.bugsee.library.Bugsee",
-      "network_signature": "NC",
+      "network_signature": "",
       "website": "https://www.bugsee.com/"
     },
     "242": {
@@ -1861,7 +1861,7 @@
       "name": "Splunk MINT",
       "creation_date": "2019-11-09",
       "code_signature": "com.splunk.mint",
-      "network_signature": "NC",
+      "network_signature": "",
       "website": "https://mint.splunk.com/"
     },
     "243": {
@@ -1869,7 +1869,7 @@
       "name": "Microsoft Appcenter Analytics",
       "creation_date": "2019-11-09",
       "code_signature": "com.microsoft.appcenter.analytics",
-      "network_signature": "NC",
+      "network_signature": "",
       "website": "https://docs.microsoft.com/en-us/appcenter/sdk/#app-center-analytics"
     },
     "244": {
@@ -1877,7 +1877,7 @@
       "name": "Nielsen",
       "creation_date": "2019-11-09",
       "code_signature": "com.nielsen.app",
-      "network_signature": "NC",
+      "network_signature": "",
       "website": "https://www.nielsen.com"
     },
     "245": {
@@ -1885,7 +1885,7 @@
       "name": "Reveal Mobile",
       "creation_date": "2019-11-09",
       "code_signature": "com.stepleaderdigital.reveal",
-      "network_signature": "NC",
+      "network_signature": "",
       "website": "https://revealmobile.com/"
     },
     "246": {
@@ -1893,7 +1893,7 @@
       "name": "Metrics",
       "creation_date": "2019-11-09",
       "code_signature": "com.codahale.metrics",
-      "network_signature": "NC",
+      "network_signature": "",
       "website": "https://metrics.dropwizard.io"
     },
     "247": {
@@ -1901,7 +1901,7 @@
       "name": "Repro",
       "creation_date": "2019-11-09",
       "code_signature": "io.repro.android.Repro",
-      "network_signature": "NC",
+      "network_signature": "",
       "website": "https://repro.io/"
     },
     "248": {
@@ -1909,7 +1909,7 @@
       "name": "Sensors Analytics",
       "creation_date": "2019-11-09",
       "code_signature": "com.sensorsdata.analytics.android.sdk",
-      "network_signature": "NC",
+      "network_signature": "",
       "website": "https://www.sensorsdata.cn"
     },
     "249": {
@@ -1917,7 +1917,7 @@
       "name": "Tenjin",
       "creation_date": "2019-11-09",
       "code_signature": "com.tenjin.android.TenjinSDK",
-      "network_signature": "NC",
+      "network_signature": "",
       "website": "https://www.tenjin.com/"
     },
     "250": {
@@ -1925,7 +1925,7 @@
       "name": "Tapstream",
       "creation_date": "2019-11-09",
       "code_signature": "com.tapstream.sdk",
-      "network_signature": "NC",
+      "network_signature": "",
       "website": "https://www.tapstream.com/"
     },
     "251": {
@@ -1933,7 +1933,7 @@
       "name": "Singular",
       "creation_date": "2019-11-09",
       "code_signature": "com.singular.sdk",
-      "network_signature": "NC",
+      "network_signature": "",
       "website": "https://singular.net/"
     },
     "252": {
@@ -1941,7 +1941,7 @@
       "name": "CallDorado",
       "creation_date": "2019-11-09",
       "code_signature": "com.calldorado.android",
-      "network_signature": "NC",
+      "network_signature": "",
       "website": "http://calldorado.com"
     },
     "253": {
@@ -1949,7 +1949,7 @@
       "name": "UXCam",
       "creation_date": "2019-11-09",
       "code_signature": "com.uxcam.UXCam",
-      "network_signature": "NC",
+      "network_signature": "",
       "website": "https://uxcam.com/"
     },
     "254": {
@@ -1957,7 +1957,7 @@
       "name": "Upsight",
       "creation_date": "2019-11-09",
       "code_signature": "com.upsight.android",
-      "network_signature": "NC",
+      "network_signature": "",
       "website": "https://www.upsight.com/"
     },
     "255": {
@@ -1973,7 +1973,7 @@
       "name": "Adbrix",
       "creation_date": "2019-11-09",
       "code_signature": "com.igaworks.adbrix",
-      "network_signature": "ad-brix.com",
+      "network_signature": "ad-brix\\.com",
       "website": "http://ad-brix.com/"
     },
     "257": {
@@ -1997,7 +1997,7 @@
       "name": "Verve",
       "creation_date": "2019-11-09",
       "code_signature": "com.vervewireless.advert.",
-      "network_signature": "NC",
+      "network_signature": "",
       "website": "https://www.verve.com"
     },
     "260": {
@@ -2029,7 +2029,7 @@
       "name": "Revmob",
       "creation_date": "2020-01-02",
       "code_signature": "com.revmob.ads.",
-      "network_signature": "NC",
+      "network_signature": "",
       "website": "https://www.crunchbase.com/organization/revmob"
     },
     "264": {
@@ -2085,7 +2085,7 @@
       "name": "Tealeaf",
       "creation_date": "2020-02-25",
       "code_signature": "com.tl.uic.Tealeaf",
-      "network_signature": "NC",
+      "network_signature": "",
       "website": "https://acoustic.co/products/experience-analytics/"
     },
     "271": {
@@ -2093,7 +2093,7 @@
       "name": "AMoAd",
       "creation_date": "2020-02-25",
       "code_signature": "com.amoad.",
-      "network_signature": "NC",
+      "network_signature": "",
       "website": "https://www.amoad.com"
     },
     "272": {
@@ -2109,7 +2109,7 @@
       "name": "AdMuing",
       "creation_date": "2020-02-25",
       "code_signature": "com.admuing.danmaku.",
-      "network_signature": "NC",
+      "network_signature": "",
       "website": "https://github.com/admuing"
     },
     "274": {
@@ -2117,7 +2117,7 @@
       "name": "Adcash",
       "creation_date": "2020-02-25",
       "code_signature": "com.adcash.mobileads.",
-      "network_signature": "NC",
+      "network_signature": "",
       "website": "https://adcash.com"
     },
     "275": {
@@ -2141,7 +2141,7 @@
       "name": "Alohalytics",
       "creation_date": "2020-02-25",
       "code_signature": "org.alohalytics.",
-      "network_signature": "NC",
+      "network_signature": "",
       "website": "https://github.com/biodranik/Alohalytics"
     },
     "278": {
@@ -2157,7 +2157,7 @@
       "name": "Anagog",
       "creation_date": "2020-02-25",
       "code_signature": "com.anagog.jedai",
-      "network_signature": "NC",
+      "network_signature": "",
       "website": "https://anagog.com"
     },
     "280": {
@@ -2165,7 +2165,7 @@
       "name": "Bazaarvoice",
       "creation_date": "2020-02-25",
       "code_signature": "com.bazaarvoice.bvandroidsdk",
-      "network_signature": "NC",
+      "network_signature": "",
       "website": "https://www.bazaarvoice.com/"
     },
     "281": {
@@ -2173,7 +2173,7 @@
       "name": "BeaconsInSpace (Fysical)",
       "creation_date": "2020-02-25",
       "code_signature": "com.beaconsinspace.android.beacon.detector.",
-      "network_signature": "NC",
+      "network_signature": "",
       "website": "https://beaconsinspace.com"
     },
     "282": {
@@ -2197,7 +2197,7 @@
       "name": "Herow",
       "creation_date": "2020-02-25",
       "code_signature": "com.connecthings.herow",
-      "network_signature": "NC",
+      "network_signature": "",
       "website": "https://herow.io/"
     },
     "285": {
@@ -2205,7 +2205,7 @@
       "name": "Placer",
       "creation_date": "2020-02-25",
       "code_signature": "com.placer.client.Placer",
-      "network_signature": "NC",
+      "network_signature": "",
       "website": "https://placer.io/"
     },
     "286": {
@@ -2229,7 +2229,7 @@
       "name": "Radar",
       "creation_date": "2020-02-25",
       "code_signature": "io.radar.sdk.Radar",
-      "network_signature": "NC",
+      "network_signature": "",
       "website": "https://radar.io/"
     },
     "289": {
@@ -2277,7 +2277,7 @@
       "name": "flymob",
       "creation_date": "2020-02-25",
       "code_signature": "com.flymob.sdk.",
-      "network_signature": "NC",
+      "network_signature": "",
       "website": "https://flymob.com/"
     }
   }
