@@ -12,6 +12,9 @@
 bin/
 gen/
 
+# Gitlab files
+.gitlab/
+
 # Gradle files
 .gradle/
 build/
