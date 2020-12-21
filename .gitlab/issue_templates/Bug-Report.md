@@ -1,8 +1,8 @@
 <!---
 - Please read Troubleshooting and FAQs on the GitLab wiki before writing an issue to see if it helps solve your problem!
--Provide a general summary of the issue in the Title above.
+- Provide a general summary of the issue in the Title above.
 - Check if your issue or something similar has been reported before (if yes upvote/comment there)
-- Please not that we don't accept any bug reports for v.1.* & v.2.* anymore!
+- Please use the latest stable release and note that we don't accept any bug reports for v.1.* & v.2.* anymore!
 - If you did not know already, everything between "<!---" & "~->" are comments in Markdown. These will not be visible unless when editing.
 -->
 
@@ -38,6 +38,7 @@ For example:
 * Device model & codename: Samsung Galaxy S10 "beyondlte"
 * Android version: 9.0.0
 * Aurora Store version: 3.2.9
+* Installation method: root/session/native/Aurora Services   # Please note that Aurora Services will not work in version 4! Read the roadmap on the GitLab wiki for more info.
 * OS: OneUI 1.2
 -->
 
@@ -45,6 +46,7 @@ For example:
 * Device model & codename:
 * Android version:
 * Aurora Store version:
+* Installation method:
 * OS:
 
 
@@ -52,7 +54,7 @@ For example:
 <!---
 - If possible, include a logcat of the issue and upload on dogbin or nekobin, otherwise remove this section.
 - The simplest way to get logs is by using Matlog or similar apps to start logging, then do your steps and save the logs as a .txt file.
-- Upload the .tt file or copy/paste to https://del.dog/ or https://nekobin.com/ and paste your link after this comment section.
+- Upload the .txt file or copy/paste to https://del.dog/ or https://nekobin.com/ and paste your link after this comment section.
 -->
 
 ## Additional context
