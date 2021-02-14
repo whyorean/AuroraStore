@@ -1,0 +1,166 @@
+/*
+ * Aurora Store
+ *  Copyright (C) 2021, Rahul Kumar Patel <whyorean@gmail.com>
+ *
+ *  Aurora Store is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 2 of the License, or
+ *  (at your option) any later version.
+ *
+ *  Aurora Store is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with Aurora Store.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ */
+
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: "androidx.navigation.safeargs.kotlin"
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.3"
+
+    defaultConfig {
+        applicationId "com.aurora.store"
+        minSdkVersion 19
+        targetSdkVersion 30
+
+        versionCode 30
+        versionName "4.0.1"
+
+        vectorDrawables.useSupportLibrary = true
+        multiDexEnabled true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            zipAlignEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+
+        beta {
+            initWith release
+            applicationIdSuffix = ".beta"
+        }
+
+        debug {
+            applicationIdSuffix = ".debug"
+        }
+    }
+
+    buildFeatures {
+        viewBinding true
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+buildscript {
+    ext {
+        versions = [
+                okhttp3  : "4.9.0",
+                fetch2   : "3.1.6",
+                fuel     : "2.3.0",
+                glide    : "4.11.0",
+                lifecycle: "2.3.0",
+                epoxy    : "4.3.1",
+                libsu    : "2.5.1"
+        ]
+    }
+}
+
+kapt {
+    correctErrorTypes = true
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+
+    //MultiDex for Kitkat support
+    implementation("androidx.multidex:multidex:2.0.1")
+
+    //Protobuf
+    implementation("com.google.protobuf:protobuf-java:3.14.0")
+
+    //Apache's Goodies
+    implementation("commons-io:commons-io:2.7")
+    implementation("org.apache.commons:commons-text:1.8")
+
+    //Google's Goodies
+    implementation("com.google.android.material:material:1.3.0")
+    implementation("com.google.android:flexbox:2.0.1")
+    implementation("com.google.code.gson:gson:2.8.6")
+
+    //AndroidX
+    implementation("androidx.core:core-ktx:1.3.2")
+    implementation("androidx.viewpager2:viewpager2:1.0.0")
+    implementation("androidx.vectordrawable:vectordrawable:1.1.0")
+    implementation("androidx.preference:preference-ktx:1.1.1")
+    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
+
+    //Arch LifeCycle
+    implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:${versions.lifecycle}")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:${versions.lifecycle}")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-savedstate:${versions.lifecycle}")
+
+    //Arch Navigation
+    implementation("androidx.navigation:navigation-fragment-ktx:${navigation}")
+    implementation("androidx.navigation:navigation-runtime-ktx:${navigation}")
+    implementation("androidx.navigation:navigation-ui-ktx:${navigation}")
+
+    //UI Addons
+    implementation("com.github.florent37:expansionpanel:1.2.4")
+
+    //Easy Permission
+    implementation("com.github.quickpermissions:quickpermissions-kotlin:0.4.0")
+
+    //Glide
+    implementation("com.github.bumptech.glide:glide:${versions.glide}")
+    kapt("com.github.bumptech.glide:compiler:${versions.glide}")
+
+    //Shimmer
+    implementation("com.facebook.shimmer:shimmer:0.5.0")
+
+    //Epoxy
+    implementation("com.airbnb.android:epoxy:${versions.epoxy}")
+    kapt("com.airbnb.android:epoxy-processor:${versions.epoxy}")
+
+    //Merlin
+    implementation("com.novoda:merlin:1.2.0")
+
+    //HTTP Clients
+    implementation("com.github.kittinunf.fuel:fuel:${versions.fuel}")
+    implementation("com.squareup.okhttp3:okhttp:${versions.okhttp3}")
+
+    //Fetch - Downloader
+    implementation "androidx.tonyodev.fetch2:xfetch2:${versions.fetch2}"
+
+    //Kovenant
+    implementation("nl.komponents.kovenant:kovenant:3.3.0")
+    implementation("nl.komponents.kovenant:kovenant-android:3.3.0")
+
+    //EventBus
+    implementation("org.greenrobot:eventbus:3.2.0")
+
+    //Lib-SU
+    implementation "com.github.topjohnwu.libsu:core:${versions.libsu}"
+
+    //Love <3
+    api("com.gitlab.AuroraOSS:gplayapi:514f061739")
+}

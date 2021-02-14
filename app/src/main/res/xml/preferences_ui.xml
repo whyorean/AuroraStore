@@ -1,0 +1,39 @@
+<!--
+  ~ Aurora Store
+  ~  Copyright (C) 2021, Rahul Kumar Patel <whyorean@gmail.com>
+  ~
+  ~  Aurora Store is free software: you can redistribute it and/or modify
+  ~  it under the terms of the GNU General Public License as published by
+  ~  the Free Software Foundation, either version 2 of the License, or
+  ~  (at your option) any later version.
+  ~
+  ~  Aurora Store is distributed in the hope that it will be useful,
+  ~  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~  GNU General Public License for more details.
+  ~
+  ~  You should have received a copy of the GNU General Public License
+  ~  along with Aurora Store.  If not, see <http://www.gnu.org/licenses/>.
+  ~
+  -->
+
+<androidx.preference.PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.aurora.store.view.custom.preference.AuroraListPreference
+        app:defaultValue="0"
+        app:entries="@array/pref_themes"
+        app:entryValues="@array/pref_themes_values"
+        app:iconSpaceReserved="false"
+        app:key="PREFERENCE_THEME_TYPE"
+        app:title="@string/pref_ui_theme_title"
+        app:useSimpleSummaryProvider="true" />
+
+    <com.aurora.store.view.custom.preference.AuroraListPreference
+        app:defaultValue="1"
+        app:entries="@array/pref_accent"
+        app:entryValues="@array/pref_accent_values"
+        app:iconSpaceReserved="false"
+        app:key="PREFERENCE_THEME_ACCENT"
+        app:title="@string/pref_ui_theme_title"
+        app:useSimpleSummaryProvider="true" />
+</androidx.preference.PreferenceScreen>

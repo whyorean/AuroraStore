@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Aurora Store
+  ~  Copyright (C) 2021, Rahul Kumar Patel <whyorean@gmail.com>
+  ~
+  ~  Aurora Store is free software: you can redistribute it and/or modify
+  ~  it under the terms of the GNU General Public License as published by
+  ~  the Free Software Foundation, either version 2 of the License, or
+  ~  (at your option) any later version.
+  ~
+  ~  Aurora Store is distributed in the hope that it will be useful,
+  ~  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~  GNU General Public License for more details.
+  ~
+  ~  You should have received a copy of the GNU General Public License
+  ~  along with Aurora Store.  If not, see <http://www.gnu.org/licenses/>.
+  ~
+  -->
+
+<resources>
+    <array name="auto_size_text_sizes">
+        <item>12sp</item>
+        <item>13sp</item>
+        <item>14sp</item>
+        <item>15sp</item>
+        <item>16sp</item>
+        <item>17sp</item>
+        <item>18sp</item>
+        <item>19sp</item>
+        <item>20sp</item>
+    </array>
+    <array name="auto_size_text_sizes_large">
+        <item>24sp</item>
+        <item>25sp</item>
+        <item>26sp</item>
+        <item>27sp</item>
+        <item>28sp</item>
+        <item>29sp</item>
+        <item>30sp</item>
+        <item>31sp</item>
+        <item>32sp</item>
+        <item>33sp</item>
+        <item>34sp</item>
+        <item>35sp</item>
+        <item>36sp</item>
+        <item>37sp</item>
+        <item>38sp</item>
+        <item>39sp</item>
+        <item>40sp</item>
+        <item>41sp</item>
+        <item>42sp</item>
+        <item>43sp</item>
+        <item>44sp</item>
+        <item>45sp</item>
+        <item>46sp</item>
+        <item>47sp</item>
+        <item>48sp</item>
+    </array>
+
+    <string-array name="pref_themes">
+        <item>@string/pref_ui_theme_system</item>
+        <item>@string/pref_ui_theme_light</item>
+        <item>@string/pref_ui_theme_dark</item>
+        <item>@string/pref_ui_theme_black</item>
+        <item>@string/pref_ui_theme_dark_x</item>
+        <item>@string/pref_ui_theme_darkord</item>
+    </string-array>
+
+    <string-array name="pref_themes_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
+
+    <string-array name="pref_accent">
+        <item>@string/ui_accent_1</item>
+        <item>@string/ui_accent_2</item>
+        <item>@string/ui_accent_3</item>
+        <item>@string/ui_accent_4</item>
+        <item>@string/ui_accent_5</item>
+        <item>@string/ui_accent_6</item>
+        <item>@string/ui_accent_7</item>
+        <item>@string/ui_accent_8</item>
+        <item>@string/ui_accent_9</item>
+        <item>@string/ui_accent_10</item>
+        <item>@string/ui_accent_11</item>
+        <item>@string/ui_accent_12</item>
+    </string-array>
+
+    <string-array name="pref_accent_values">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+    </string-array>
+
+    <string-array name="pref_installation_method">
+        <item>@string/pref_install_mode_session</item>
+        <item>@string/pref_install_mode_native</item>
+        <item>@string/pref_install_mode_root</item>
+        <item>@string/pref_install_mode_services</item>
+    </string-array>
+
+    <string-array name="pref_installation_method_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+
+    <string-array name="link_urls">
+        <item>"bc1qu7cy9fepjj309y4r2x3rymve7mw4ff39c8cpe0"</item>
+        <item>"qpqus3qdlz8guf476vwz0fjl8s34fseukcmrl6eknl"</item>
+        <item>"0x6977446933EC8b5964D921f7377950992337B1C6"</item>
+        <item>"whyorean@dbs"</item>
+        <item>"https://paypal.me/AuroraDev"</item>
+        <item>"https://liberapay.com/on/gitlab/whyorean/ "</item>
+        <item>"https://gitlab.com/AuroraOSS/AuroraStore"</item>
+        <item>"https://forum.xda-developers.com/android/apps-games/galaxy-playstore-alternative-t3739733"</item>
+        <item>"https://t.me/AuroraSupport"</item>
+        <item>"https://f-droid.org/en/packages/com.aurora.store/"</item>
+    </string-array>
+
+    <string-array name="link_titles">
+        <item>@string/about_bitcoin_btc</item>
+        <item>@string/about_bitcoin_bch</item>
+        <item>@string/about_bitcoin_eth</item>
+        <item>@string/about_bhim</item>
+        <item>@string/about_paypal</item>
+        <item>@string/about_libera</item>
+        <item>@string/about_gitlab</item>
+        <item>@string/about_xda</item>
+        <item>@string/about_telegram</item>
+        <item>@string/about_fdroid</item>
+    </string-array>
+
+    <string-array name="link_subtitle">
+        <item>@string/about_bitcoin_btc_summary</item>
+        <item>@string/about_bitcoin_bch_summary</item>
+        <item>@string/about_bitcoin_eth_summary</item>
+        <item>@string/about_bhim_summary</item>
+        <item>@string/about_paypal_summary</item>
+        <item>@string/about_libera_summary</item>
+        <item>@string/about_gitlab_summary</item>
+        <item>@string/about_xda_summary</item>
+        <item>@string/about_telegram_summary</item>
+        <item>@string/about_fdroid_summary</item>
+    </string-array>
+</resources>

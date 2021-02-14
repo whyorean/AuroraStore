@@ -1,0 +1,37 @@
+[
+  {
+    "id": "0",
+    "title": "FAQs",
+    "subtitle": "Have questions? Find out the answers.",
+    "icon": "ic_faq",
+    "url": "https://gitlab.com/AuroraOSS/AuroraStore"
+  },
+  {
+    "id": "1",
+    "title": "Source code",
+    "icon": "ic_code",
+    "subtitle": "Find out what's inside.",
+    "url": "https://gitlab.com/AuroraOSS/AuroraStore/-/blob/master"
+  },
+  {
+    "id": "2",
+    "title": "License",
+    "subtitle": "Yes we do have one ;)",
+    "icon": "ic_license",
+    "url": "https://gitlab.com/AuroraOSS/AuroraStore/-/raw/master/LICENSE"
+  },
+  {
+    "id": "3",
+    "title": "Privacy",
+    "subtitle": "Find out if we have your nudes :p",
+    "icon": "ic_privacy",
+    "url": "https://gitlab.com/AuroraOSS/AuroraStore/-/raw/master/PRIVACY"
+  },
+  {
+    "id": "4",
+    "title": "Disclaimer",
+    "subtitle": "Hold your own beer!",
+    "icon": "ic_disclaimer",
+    "url": "https://gitlab.com/AuroraOSS/AuroraStore/-/raw/master/DISCLAIMER"
+  }
+]

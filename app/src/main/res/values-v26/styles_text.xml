@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Aurora Store
+  ~  Copyright (C) 2021, Rahul Kumar Patel <whyorean@gmail.com>
+  ~
+  ~  Aurora Store is free software: you can redistribute it and/or modify
+  ~  it under the terms of the GNU General Public License as published by
+  ~  the Free Software Foundation, either version 2 of the License, or
+  ~  (at your option) any later version.
+  ~
+  ~  Aurora Store is distributed in the hope that it will be useful,
+  ~  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~  GNU General Public License for more details.
+  ~
+  ~  You should have received a copy of the GNU General Public License
+  ~  along with Aurora Store.  If not, see <http://www.gnu.org/licenses/>.
+  ~
+  -->
+
+<resources>
+
+    <style name="AuroraTextStyle" parent="Widget.AppCompat.TextView">
+        <item name="android:autoSizeTextType">uniform</item>
+        <item name="android:autoSizeMinTextSize">12sp</item>
+        <item name="android:autoSizeStepGranularity">1sp</item>
+        <item name="android:autoSizePresetSizes">@array/auto_size_text_sizes</item>
+    </style>
+
+    <style name="AuroraTextStyle.Title" parent="AuroraTextStyle">
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:autoSizeMaxTextSize">20sp</item>
+        <item name="android:textAppearance">@style/TextAppearance.Aurora.Title</item>
+    </style>
+
+    <!--  Subtitle Styles  -->
+    <style name="AuroraTextStyle.Subtitle" parent="AuroraTextStyle">
+        <item name="android:autoSizeMaxTextSize">16sp</item>
+        <item name="android:textAppearance">@style/TextAppearance.Aurora.SubTitle</item>
+    </style>
+
+    <style name="AuroraTextStyle.Subtitle.Alt" parent="AuroraTextStyle">
+        <item name="android:autoSizeMaxTextSize">18sp</item>
+        <item name="android:textAppearance">@style/TextAppearance.Aurora.SubTitle.Alt</item>
+    </style>
+
+    <style name="AuroraTextStyle.Subtitle.Secondary" parent="AuroraTextStyle">
+        <item name="android:autoSizeMaxTextSize">16sp</item>
+        <item name="android:textAppearance">@style/TextAppearance.Aurora.Line1</item>
+    </style>
+
+
+    <!-- Line Styles -->
+    <style name="AuroraTextStyle.Line3" parent="AuroraTextStyle.Line1">
+        <item name="android:autoSizeMaxTextSize">10sp</item>
+        <item name="android:textAppearance">@style/TextAppearance.Aurora.Line3</item>
+    </style>
+
+    <style name="AuroraTextStyle.Line2" parent="AuroraTextStyle.Line1">
+        <item name="android:autoSizeMaxTextSize">12sp</item>
+        <item name="android:textAppearance">@style/TextAppearance.Aurora.Line2</item>
+    </style>
+
+    <style name="AuroraTextStyle.Line1" parent="AuroraTextStyle">
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:autoSizeMaxTextSize">14sp</item>
+        <item name="android:textAppearance">@style/TextAppearance.Aurora.Line1</item>
+    </style>
+</resources>

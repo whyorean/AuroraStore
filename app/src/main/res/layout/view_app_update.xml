@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~ Aurora Store
+  ~  Copyright (C) 2021, Rahul Kumar Patel <whyorean@gmail.com>
+  ~
+  ~  Aurora Store is free software: you can redistribute it and/or modify
+  ~  it under the terms of the GNU General Public License as published by
+  ~  the Free Software Foundation, either version 2 of the License, or
+  ~  (at your option) any later version.
+  ~
+  ~  Aurora Store is distributed in the hope that it will be useful,
+  ~  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~  GNU General Public License for more details.
+  ~
+  ~  You should have received a copy of the GNU General Public License
+  ~  along with Aurora Store.  If not, see <http://www.gnu.org/licenses/>.
+  ~
+  -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?selectableItemBackground"
+    android:orientation="vertical"
+    android:paddingStart="@dimen/padding_normal"
+    android:paddingEnd="@dimen/padding_small">
+
+    <com.github.florent37.expansionpanel.ExpansionHeader
+        android:id="@+id/expansion_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:expansion_headerIndicator="@id/headerIndicator"
+        app:expansion_layout="@id/expansionLayout"
+        app:expansion_toggleOnClick="true">
+
+        <RelativeLayout
+            android:id="@+id/layout_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/img_icon"
+                android:layout_width="@dimen/icon_size_medium"
+                android:layout_height="@dimen/icon_size_medium" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txt_line1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_normal"
+                android:layout_marginEnd="@dimen/margin_normal"
+                android:layout_toStartOf="@+id/layout_action"
+                android:layout_toEndOf="@id/img_icon"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:textAppearance="@style/TextAppearance.Aurora.Line1" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txt_line2"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txt_line1"
+                android:layout_alignStart="@+id/txt_line1"
+                android:layout_alignEnd="@id/txt_line1"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:textAppearance="@style/TextAppearance.Aurora.Line3" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txt_line3"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txt_line2"
+                android:layout_alignStart="@+id/txt_line1"
+                android:layout_alignEnd="@id/txt_line1"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:textAppearance="@style/TextAppearance.Aurora.Line3" />
+
+            <LinearLayout
+                android:id="@+id/layout_action"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/headerIndicator"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:adjustViewBounds="true"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:padding="@dimen/margin_small"
+                    app:srcCompat="@drawable/ic_arrow_right"
+                    app:tint="?colorControlNormal" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="@dimen/icon_size_small"
+                    android:layout_marginStart="@dimen/margin_small"
+                    android:layout_marginEnd="@dimen/margin_small"
+                    android:background="@drawable/bg_placeholder"
+                    android:backgroundTint="?android:colorControlNormal" />
+
+                <com.google.android.material.checkbox.MaterialCheckBox
+                    android:id="@+id/checkbox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+            </LinearLayout>
+        </RelativeLayout>
+    </com.github.florent37.expansionpanel.ExpansionHeader>
+
+    <com.github.florent37.expansionpanel.ExpansionLayout
+        android:id="@+id/expansionLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/expansion_header"
+        android:layout_marginTop="@dimen/margin_small">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txt_changelog"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/txt_line1"
+            android:layout_alignEnd="@id/txt_line1"
+            android:background="@drawable/bg_changelog"
+            android:ellipsize="end"
+            android:minHeight="?actionBarSize"
+            android:singleLine="false"
+            android:textAppearance="@style/TextAppearance.Aurora.Line2" />
+    </com.github.florent37.expansionpanel.ExpansionLayout>
+</RelativeLayout>

@@ -1,0 +1,32 @@
+[
+  {
+    "id": "0",
+    "title": "System",
+    "subtitle": "Follow system themes."
+  },
+  {
+    "id": "1",
+    "title": "Light",
+    "subtitle": "White UI must die, may slap on your face at night."
+  },
+  {
+    "id": "2",
+    "title": "Dark",
+    "subtitle": "As dark as your humour, suitable for night-owls."
+  },
+  {
+    "id": "3",
+    "title": "Pitch Black",
+    "subtitle": "The black, that matters."
+  },
+  {
+    "id": "4",
+    "title": "Dark-X",
+    "subtitle": "The dark, that looks cool?"
+  },
+  {
+    "id": "5",
+    "title": "Disskord",
+    "subtitle": "Kanged from discord"
+  }
+]

@@ -1,0 +1,58 @@
+<!--
+  ~ Aurora Store
+  ~  Copyright (C) 2021, Rahul Kumar Patel <whyorean@gmail.com>
+  ~
+  ~  Aurora Store is free software: you can redistribute it and/or modify
+  ~  it under the terms of the GNU General Public License as published by
+  ~  the Free Software Foundation, either version 2 of the License, or
+  ~  (at your option) any later version.
+  ~
+  ~  Aurora Store is distributed in the hope that it will be useful,
+  ~  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~  GNU General Public License for more details.
+  ~
+  ~  You should have received a copy of the GNU General Public License
+  ~  along with Aurora Store.  If not, see <http://www.gnu.org/licenses/>.
+  ~
+  -->
+
+<androidx.preference.PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+    <SwitchPreferenceCompat
+        app:defaultValue="false"
+        app:iconSpaceReserved="false"
+        app:isPreferenceVisible="false"
+        app:key="PREFERENCE_AUTO_INSTALL"
+        app:summary="@string/pref_install_auto_summary"
+        app:title="@string/pref_install_auto_title" />
+
+    <SwitchPreferenceCompat
+        app:defaultValue="true"
+        app:iconSpaceReserved="false"
+        app:key="PREFERENCE_AUTO_DELETE"
+        app:summary="@string/pref_install_delete_summary"
+        app:title="@string/pref_install_delete_title" />
+
+    <com.aurora.store.view.custom.preference.AuroraListPreference
+        app:defaultValue="0"
+        app:entries="@array/pref_installation_method"
+        app:entryValues="@array/pref_installation_method_values"
+        app:iconSpaceReserved="false"
+        app:key="PREFERENCE_INSTALLER_ID"
+        app:summary="@string/pref_install_mode_summary"
+        app:title="@string/pref_install_mode_title" />
+
+    <Preference
+        app:iconSpaceReserved="false"
+        app:key="INSTALLATION_ABANDON_SESSION"
+        app:summary="@string/pref_abandon_session_desc"
+        app:title="@string/pref_abandon_session" />
+
+    <ListPreference
+        app:defaultValue="0"
+        app:iconSpaceReserved="false"
+        app:isPreferenceVisible="false"
+        app:key="INSTALLATION_PROFILE"
+        app:summary="@string/pref_install_profile_summary"
+        app:title="@string/pref_install_profile_title" />
+</androidx.preference.PreferenceScreen>

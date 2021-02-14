@@ -1,0 +1,329 @@
+/*
+ * Aurora Store
+ *  Copyright (C) 2021, Rahul Kumar Patel <whyorean@gmail.com>
+ *
+ *  Aurora Store is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 2 of the License, or
+ *  (at your option) any later version.
+ *
+ *  Aurora Store is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with Aurora Store.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ */
+
+package com.aurora.store.view.ui.details
+
+import android.app.ActivityOptions
+import android.content.Intent
+import android.os.Build
+import android.text.Html
+import android.text.Layout
+import android.view.View
+import android.widget.RelativeLayout
+import android.widget.Toast
+import androidx.core.content.ContextCompat
+import androidx.core.text.HtmlCompat
+import com.aurora.Constants
+import com.aurora.gplayapi.data.models.App
+import com.aurora.gplayapi.data.models.Review
+import com.aurora.gplayapi.helpers.ReviewsHelper
+import com.aurora.store.R
+import com.aurora.store.data.model.ExodusReport
+import com.aurora.store.data.model.Report
+import com.aurora.store.data.network.HttpClient
+import com.aurora.store.data.providers.AuthProvider
+import com.aurora.store.databinding.LayoutDetailsDescriptionBinding
+import com.aurora.store.databinding.LayoutDetailsDevBinding
+import com.aurora.store.databinding.LayoutDetailsPrivacyBinding
+import com.aurora.store.databinding.LayoutDetailsReviewBinding
+import com.aurora.store.util.CommonUtil
+import com.aurora.store.util.NavigationUtil
+import com.aurora.store.util.extensions.toast
+import com.aurora.store.view.custom.RatingView
+import com.aurora.store.view.epoxy.views.*
+import com.aurora.store.view.ui.commons.BaseActivity
+import nl.komponents.kovenant.task
+import nl.komponents.kovenant.ui.failUi
+import nl.komponents.kovenant.ui.successUi
+import org.json.JSONObject
+import java.util.*
+
+abstract class BaseDetailsActivity : BaseActivity() {
+
+    private val exodusBaseUrl = "https://reports.exodus-privacy.eu.org/api/search/"
+    private val exodusApiKey = "Token bbe6ebae4ad45a9cbacb17d69739799b8df2c7ae"
+
+    //Sub Section Inflation
+    fun inflateAppDescription(B: LayoutDetailsDescriptionBinding, app: App) {
+        B.txtInstalls.text = CommonUtil.addDiPrefix(app.installs)
+        B.txtSize.text = CommonUtil.addSiPrefix(app.size)
+        B.txtRating.text = app.labeledRating
+        B.txtSdk.text = String.format("Target SDK %s", "${app.targetSdk}")
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            B.txtDescription.justificationMode = Layout.JUSTIFICATION_MODE_INTER_WORD
+        }
+
+        B.txtDescription.text = Html.fromHtml(app.shortDescription)
+
+        app.changes.apply {
+            if (isEmpty()) {
+                B.txtChangelog.text = getString(R.string.details_changelog_unavailable)
+            } else {
+                B.txtChangelog.text = Html.fromHtml(this)
+            }
+        }
+
+        B.headerDescription.addClickListener {
+            openDetailsMoreActivity(app)
+        }
+
+        B.epoxyRecycler.withModels {
+            setFilterDuplicates(true)
+            var position = 0
+            app.screenshots
+                //.sortedWith { o1, o2 -> o2.height.compareTo(o1.height) }
+                .forEach { artwork ->
+                    add(
+                        ScreenshotViewModel_()
+                            .id(artwork.url)
+                            .artwork(artwork)
+                            .position(position++)
+                            .callback(object : ScreenshotView.ScreenshotCallback {
+                                override fun onClick(position: Int) {
+                                    openScreenshotActivity(app, position)
+                                }
+                            })
+                    )
+                }
+        }
+    }
+
+    fun inflateAppRatingAndReviews(B: LayoutDetailsReviewBinding, app: App) {
+        B.averageRating.text = app.rating.average.toString()
+        B.txtReviewCount.text = app.rating.abbreviatedLabel
+
+        var totalStars = 0L
+        totalStars += app.rating.oneStar
+        totalStars += app.rating.twoStar
+        totalStars += app.rating.threeStar
+        totalStars += app.rating.fourStar
+        totalStars += app.rating.fiveStar
+
+        B.avgRatingLayout.apply {
+            removeAllViews()
+            addView(addAvgReviews(5, totalStars, app.rating.fiveStar))
+            addView(addAvgReviews(4, totalStars, app.rating.fourStar))
+            addView(addAvgReviews(3, totalStars, app.rating.threeStar))
+            addView(addAvgReviews(2, totalStars, app.rating.twoStar))
+            addView(addAvgReviews(1, totalStars, app.rating.oneStar))
+        }
+
+        B.averageRating.text = String.format(Locale.getDefault(), "%.1f", app.rating.average)
+        B.txtReviewCount.text = app.rating.abbreviatedLabel
+
+        val authData = AuthProvider.with(this).getAuthData()
+
+        B.btnPostReview.setOnClickListener {
+            if (authData.isAnonymous) {
+                toast(R.string.toast_anonymous_restriction)
+            } else {
+                addOrUpdateReview(B, app, Review().apply {
+                    title = authData.userProfile!!.name
+                    rating = B.userStars.rating.toInt()
+                    comment = B.inputReview.text.toString()
+                })
+            }
+        }
+
+        B.headerRatingReviews.addClickListener {
+            openDetailsReviewActivity(app)
+        }
+
+        task {
+            fetchFirstFewReviews(app)
+        } successUi {
+            B.epoxyRecycler.withModels {
+                it.take(4)
+                    .forEach {
+                        add(
+                            ReviewViewModel_()
+                                .id(it.timeStamp)
+                                .review(it)
+                        )
+                    }
+            }
+        } failUi {
+
+        }
+
+    }
+
+    fun inflateAppPrivacy(B: LayoutDetailsPrivacyBinding, app: App) {
+
+        task {
+            fetchReport(app.packageName)
+        } successUi { report ->
+            if (report.trackers.isNotEmpty()) {
+                B.txtStatus.apply {
+                    setTextColor(
+                        ContextCompat.getColor(
+                            this@BaseDetailsActivity,
+                            if (report.trackers.size > 4)
+                                R.color.colorRed
+                            else
+                                R.color.colorOrange
+                        )
+                    )
+                    text =
+                        ("${report.trackers.size} ${getString(R.string.exodus_substring)} ${report.version}")
+                }
+
+                B.headerPrivacy.addClickListener {
+                    NavigationUtil.openExodusActivity(this, app, report)
+                }
+            } else {
+                B.txtStatus.apply {
+                    setTextColor(
+                        ContextCompat.getColor(
+                            this@BaseDetailsActivity,
+                            R.color.colorGreen
+                        )
+                    )
+                    text = getString(R.string.exodus_no_tracker)
+                }
+            }
+        } failUi {
+            B.txtStatus.text = it.message
+        }
+    }
+
+    fun inflateAppDevInfo(B: LayoutDetailsDevBinding, app: App) {
+        if (app.developerAddress.isNotEmpty()) {
+            B.devAddress.apply {
+                setTxtSubtitle(
+                    HtmlCompat.fromHtml(
+                        app.developerAddress,
+                        HtmlCompat.FROM_HTML_MODE_LEGACY
+                    ).toString()
+                )
+                visibility = View.VISIBLE
+            }
+        }
+
+        if (app.developerWebsite.isNotEmpty()) {
+            B.devWeb.apply {
+                setTxtSubtitle(app.developerWebsite)
+                visibility = View.VISIBLE
+            }
+        }
+
+        if (app.developerEmail.isNotEmpty()) {
+            B.devWeb.apply {
+                setTxtSubtitle(app.developerEmail)
+                visibility = View.VISIBLE
+            }
+        }
+    }
+
+    //Helpers
+    private fun openScreenshotActivity(app: App, position: Int) {
+        val intent = Intent(
+            this,
+            ScreenshotActivity::class.java
+        ).apply {
+            putExtra(Constants.STRING_EXTRA, gson.toJson(app.screenshots))
+            putExtra(Constants.INT_EXTRA, position)
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            val options =
+                ActivityOptions.makeSceneTransitionAnimation(this)
+            startActivity(intent, options.toBundle())
+        } else {
+            startActivity(intent)
+        }
+    }
+
+    private fun addAvgReviews(number: Int, max: Long, rating: Long): RelativeLayout {
+        return RatingView(this, number, max.toInt(), rating.toInt())
+    }
+
+    private fun addOrUpdateReview(
+        B: LayoutDetailsReviewBinding,
+        app: App,
+        review: Review,
+        isBeta: Boolean = false
+    ) {
+        task {
+            val authData = AuthProvider.with(this).getAuthData()
+            ReviewsHelper
+                .with(authData)
+                .using(HttpClient.getPreferredClient())
+                .addOrEditReview(
+                    app.packageName,
+                    review.title,
+                    review.comment,
+                    review.rating,
+                    isBeta
+                )
+        }.successUi {
+            it?.let {
+                B.userStars.rating = it.rating.toFloat()
+                Toast.makeText(this, "Rated successfully", Toast.LENGTH_SHORT).show()
+            }
+        }.failUi {
+            Toast.makeText(this, "Failed to submit rating", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun fetchFirstFewReviews(app: App): List<Review> {
+        val authData = AuthProvider
+            .with(this)
+            .getAuthData()
+        val reviewsHelper = ReviewsHelper
+            .with(authData)
+            .using(HttpClient.getPreferredClient())
+        return reviewsHelper.getReviews(app.packageName, Review.Filter.CRITICAL)
+    }
+
+    /*---------------------------------- HELPERS FOR APP PRIVACY ---------------------------------*/
+
+    private fun parseResponse(response: String, packageName: String): List<Report> {
+        try {
+            val jsonObject = JSONObject(response)
+            val exodusObject = jsonObject.getJSONObject(packageName)
+            val exodusReport: ExodusReport = gson.fromJson(
+                exodusObject.toString(),
+                ExodusReport::class.java
+            )
+            return exodusReport.reports
+        } catch (e: Exception) {
+            throw Exception("No reports found")
+        }
+    }
+
+    private fun fetchReport(packageName: String): Report {
+        val headers: MutableMap<String, String> = mutableMapOf()
+        headers["Content-Type"] = "application/json"
+        headers["Accept"] = "application/json"
+        headers["Authorization"] = exodusApiKey
+
+        val url = exodusBaseUrl + packageName
+
+        val playResponse = HttpClient
+            .getPreferredClient()
+            .get(url, headers)
+
+        if (playResponse.isSuccessful) {
+            return parseResponse(String(playResponse.responseBytes), packageName)[0]
+        } else {
+            throw Exception("Failed to fetch report")
+        }
+    }
+}

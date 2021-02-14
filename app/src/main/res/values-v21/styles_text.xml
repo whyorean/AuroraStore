@@ -1,0 +1,133 @@
+<!--
+  ~ Aurora Store
+  ~  Copyright (C) 2021, Rahul Kumar Patel <whyorean@gmail.com>
+  ~
+  ~  Aurora Store is free software: you can redistribute it and/or modify
+  ~  it under the terms of the GNU General Public License as published by
+  ~  the Free Software Foundation, either version 2 of the License, or
+  ~  (at your option) any later version.
+  ~
+  ~  Aurora Store is distributed in the hope that it will be useful,
+  ~  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~  GNU General Public License for more details.
+  ~
+  ~  You should have received a copy of the GNU General Public License
+  ~  along with Aurora Store.  If not, see <http://www.gnu.org/licenses/>.
+  ~
+  -->
+
+<resources>
+    <!-- Title Styles -->
+
+    <style name="AuroraTextStyle" parent="Widget.AppCompat.TextView">
+        <item name="autoSizeTextType">uniform</item>
+        <item name="autoSizeMinTextSize">12sp</item>
+        <item name="autoSizeStepGranularity">1sp</item>
+        <item name="autoSizePresetSizes">@array/auto_size_text_sizes</item>
+    </style>
+
+    <style name="AuroraTextStyle.Title" parent="AuroraTextStyle">
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+        <item name="autoSizeMaxTextSize">20sp</item>
+        <item name="android:textAppearance">@style/TextAppearance.Aurora.Title</item>
+    </style>
+
+    <style name="AuroraTextStyle.Title.Primary" parent="AuroraTextStyle.Title">
+        <item name="android:textAppearance">@style/TextAppearance.Aurora.Title.Primary</item>
+    </style>
+
+    <style name="TextAppearance.Aurora.Title" parent="TextAppearance.AppCompat.Medium">
+        <item name="android:letterSpacing">0.05</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:fontFamily">@font/gilroy_extra_bold</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+    </style>
+
+    <style name="TextAppearance.Aurora.Title.Primary" parent="TextAppearance.Aurora.Title">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="textAllCaps">true</item>
+    </style>
+
+    <!--  Subtitle Styles  -->
+
+    <style name="AuroraTextStyle.Subtitle" parent="AuroraTextStyle">
+        <item name="autoSizeMaxTextSize">16sp</item>
+        <item name="android:textAppearance">@style/TextAppearance.Aurora.SubTitle</item>
+    </style>
+
+    <style name="AuroraTextStyle.Subtitle.Alt" parent="AuroraTextStyle">
+        <item name="autoSizeMaxTextSize">18sp</item>
+        <item name="android:textAppearance">@style/TextAppearance.Aurora.SubTitle.Alt</item>
+    </style>
+
+    <style name="AuroraTextStyle.Subtitle.Secondary" parent="AuroraTextStyle">
+        <item name="autoSizeMaxTextSize">16sp</item>
+        <item name="android:textAppearance">@style/TextAppearance.Aurora.Line1</item>
+    </style>
+
+    <style name="TextAppearance.Aurora.SubTitle" parent="TextAppearance.Aurora.Title">
+        <item name="android:letterSpacing">0.025</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="TextAppearance.Aurora.SubTitle.Alt" parent="TextAppearance.Aurora.Title">
+        <item name="android:letterSpacing">0.005</item>
+        <item name="android:fontFamily">@font/montserrat_regular</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <!-- Line Styles -->
+    <style name="AuroraTextStyle.Line1" parent="AuroraTextStyle">
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+        <item name="autoSizeMaxTextSize">14sp</item>
+        <item name="android:textAppearance">@style/TextAppearance.Aurora.Line1</item>
+    </style>
+
+    <style name="AuroraTextStyle.Line2" parent="AuroraTextStyle.Line1">
+        <item name="autoSizeMaxTextSize">12sp</item>
+        <item name="android:textAppearance">@style/TextAppearance.Aurora.Line2</item>
+    </style>
+
+    <style name="AuroraTextStyle.Line3" parent="AuroraTextStyle.Line1">
+        <item name="autoSizeMaxTextSize">10sp</item>
+        <item name="android:textAppearance">@style/TextAppearance.Aurora.Line3</item>
+    </style>
+
+    <style name="TextAppearance.Aurora.Line1" parent="TextAppearance.AppCompat.Medium">
+        <item name="android:ellipsize">end</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+    </style>
+
+    <style name="TextAppearance.Aurora.Line2" parent="TextAppearance.Aurora.Line1">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">?android:attr/textColorSecondary</item>
+    </style>
+
+    <style name="TextAppearance.Aurora.Line3" parent="TextAppearance.Aurora.Line2">
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">?android:attr/textColorTertiary</item>
+    </style>
+
+    <style name="TextAppearance.Aurora.Tab" parent="Widget.AppCompat.Light.ActionBar.TabText">
+        <item name="android:fontFamily">@font/gilroy_extra_bold</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="TextAppearance.Aurora.Tab.Title" parent="TextAppearance.Aurora.Tab">
+        <item name="android:letterSpacing">0.075</item>
+        <item name="textAllCaps">true</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="TextAppearance.Aurora.Chip" parent="TextAppearance.Aurora.SubTitle">
+        <item name="android:textSize">14sp</item>
+    </style>
+</resources>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Aurora Store
+  ~  Copyright (C) 2021, Rahul Kumar Patel <whyorean@gmail.com>
+  ~
+  ~  Aurora Store is free software: you can redistribute it and/or modify
+  ~  it under the terms of the GNU General Public License as published by
+  ~  the Free Software Foundation, either version 2 of the License, or
+  ~  (at your option) any later version.
+  ~
+  ~  Aurora Store is distributed in the hope that it will be useful,
+  ~  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~  GNU General Public License for more details.
+  ~
+  ~  You should have received a copy of the GNU General Public License
+  ~  along with Aurora Store.  If not, see <http://www.gnu.org/licenses/>.
+  ~
+  -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="?actionBarSize"
+    android:paddingStart="@dimen/padding_normal"
+    android:paddingEnd="@dimen/padding_normal">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/img_action_primary"
+        android:layout_width="@dimen/icon_size_default"
+        android:layout_height="@dimen/icon_size_default"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="@dimen/margin_small"
+        android:background="?selectableItemBackgroundBorderless"
+        android:padding="@dimen/padding_xxsmall"
+        app:srcCompat="@drawable/ic_menu_unfold"
+        app:tint="?colorControlNormal" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txt_title"
+        style="@style/AuroraTextStyle.Subtitle.Alt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toStartOf="@id/img_action_secondary"
+        android:layout_toEndOf="@id/img_action_primary"
+        android:gravity="center_vertical"
+        android:paddingStart="@dimen/padding_normal"
+        android:paddingEnd="@dimen/padding_normal"
+        android:singleLine="true"
+        android:text="@string/app_name" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/img_action_secondary"
+        android:layout_width="@dimen/icon_size_default"
+        android:layout_height="@dimen/icon_size_default"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="@dimen/margin_small"
+        android:background="?selectableItemBackgroundBorderless"
+        android:padding="@dimen/padding_xxsmall"
+        app:srcCompat="@drawable/ic_download"
+        app:tint="?colorControlNormal" />
+</RelativeLayout>

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~ Aurora Store
+  ~  Copyright (C) 2021, Rahul Kumar Patel <whyorean@gmail.com>
+  ~
+  ~  Aurora Store is free software: you can redistribute it and/or modify
+  ~  it under the terms of the GNU General Public License as published by
+  ~  the Free Software Foundation, either version 2 of the License, or
+  ~  (at your option) any later version.
+  ~
+  ~  Aurora Store is distributed in the hope that it will be useful,
+  ~  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~  GNU General Public License for more details.
+  ~
+  ~  You should have received a copy of the GNU General Public License
+  ~  along with Aurora Store.  If not, see <http://www.gnu.org/licenses/>.
+  ~
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="2">
+
+    <include
+        android:id="@+id/layout_toolbar_action"
+        layout="@layout/view_toolbar_native" />
+
+    <RelativeLayout
+        android:id="@+id/layout_top"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img_icon"
+            android:layout_width="@dimen/icon_size_avatar"
+            android:layout_height="@dimen/icon_size_avatar"
+            android:layout_centerInParent="true"
+            android:minWidth="176dp"
+            app:srcCompat="@drawable/bg_placeholder" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txt_title"
+            style="@style/TextAppearance.Aurora.Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/img_icon"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/margin_normal"
+            android:layout_marginBottom="@dimen/margin_xsmall"
+            android:text="@string/app_name"
+            android:textAlignment="center" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txt_status"
+            style="@style/TextAppearance.Aurora.Line1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txt_title"
+            android:layout_centerHorizontal="true"
+            android:textAlignment="center"
+            tools:text="Sign in first" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout_action"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center_horizontal|center_vertical"
+        android:orientation="vertical"
+        android:padding="@dimen/padding_large"
+        android:visibility="invisible"
+        tools:visibility="visible">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/txt_action"
+            style="@style/AuroraTextStyle.Line1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/margin_normal"
+            android:text="@string/account_login_using"
+            android:textAlignment="center" />
+
+        <com.aurora.store.view.custom.StateButton
+            android:id="@+id/btn_google"
+            android:layout_width="@dimen/width_button"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txt_action"
+            android:layout_centerHorizontal="true"
+            app:btnStateIcon="@drawable/ic_google"
+            app:btnStateText="@string/account_google" />
+
+        <com.aurora.store.view.custom.StateButton
+            android:id="@+id/btn_anonymous"
+            android:layout_width="@dimen/width_button"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btn_google"
+            android:layout_centerHorizontal="true"
+            app:btnStateIcon="@drawable/ic_anonymous"
+            app:btnStateText="@string/account_anonymous" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/txt_footer"
+            style="@style/AuroraTextStyle.Line3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/margin_small"
+            android:textAlignment="center"
+            tools:text="Version 4.0.1" />
+    </RelativeLayout>
+</LinearLayout>

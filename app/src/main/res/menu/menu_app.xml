@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Aurora Store
+  ~  Copyright (C) 2021, Rahul Kumar Patel <whyorean@gmail.com>
+  ~
+  ~  Aurora Store is free software: you can redistribute it and/or modify
+  ~  it under the terms of the GNU General Public License as published by
+  ~  the Free Software Foundation, either version 2 of the License, or
+  ~  (at your option) any later version.
+  ~
+  ~  Aurora Store is distributed in the hope that it will be useful,
+  ~  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~  GNU General Public License for more details.
+  ~
+  ~  You should have received a copy of the GNU General Public License
+  ~  along with Aurora Store.  If not, see <http://www.gnu.org/licenses/>.
+  ~
+  -->
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/action_blacklist"
+        android:title="@string/action_blacklist" />
+    <item
+        android:id="@+id/action_ignore"
+        android:title="@string/action_ignore"
+        android:visible="false" />
+    <item
+        android:id="@+id/action_local"
+        android:title="@string/action_get_local_apk" />
+    <item
+        android:id="@+id/action_uninstall"
+        android:title="@string/action_uninstall" />
+    <item
+        android:id="@+id/action_info"
+        android:title="@string/action_info" />
+</menu>

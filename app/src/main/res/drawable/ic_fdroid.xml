@@ -1,0 +1,134 @@
+<!--
+  ~ Aurora Store
+  ~  Copyright (C) 2021, Rahul Kumar Patel <whyorean@gmail.com>
+  ~
+  ~  Aurora Store is free software: you can redistribute it and/or modify
+  ~  it under the terms of the GNU General Public License as published by
+  ~  the Free Software Foundation, either version 2 of the License, or
+  ~  (at your option) any later version.
+  ~
+  ~  Aurora Store is distributed in the hope that it will be useful,
+  ~  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~  GNU General Public License for more details.
+  ~
+  ~  You should have received a copy of the GNU General Public License
+  ~  along with Aurora Store.  If not, see <http://www.gnu.org/licenses/>.
+  ~
+  -->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="48.0"
+    android:viewportHeight="48.0">
+
+    <path
+        android:fillAlpha="1"
+        android:fillColor="#8ab000"
+        android:fillType="evenOdd"
+        android:pathData="m45.41,2.5 l-4.25,5.5"
+        android:strokeWidth="2.5"
+        android:strokeAlpha="1"
+        android:strokeColor="#8ab000"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="miter" />
+
+    <path
+        android:fillAlpha="1"
+        android:fillColor="#8ab000"
+        android:fillType="evenOdd"
+        android:pathData="m2.59,2.5 l4.25,5.5"
+        android:strokeWidth="2.5"
+        android:strokeAlpha="1"
+        android:strokeColor="#8ab000"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="miter" />
+
+    <path
+        android:fillAlpha="1"
+        android:fillColor="#aeea00"
+        android:pathData="M8,6L40,6A3,3 0,0 1,43 9L43,16A3,3 0,0 1,40 19L8,19A3,3 0,0 1,5 16L5,9A3,3 0,0 1,8 6z"
+        android:strokeWidth="3"
+        android:strokeAlpha="1"
+        android:strokeColor="#00000000"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="miter" />
+
+    <path
+        android:fillAlpha="1"
+        android:fillColor="#aeea00"
+        android:pathData="M8,7L40,7A3,2.54 0,0 1,43 9.54L43,15.46A3,2.54 0,0 1,40 18L8,18A3,2.54 0,0 1,5 15.46L5,9.54A3,2.54 0,0 1,8 7z"
+        android:strokeWidth="3"
+        android:strokeAlpha="1"
+        android:strokeColor="#00000000"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="miter" />
+    <path
+        android:fillAlpha="1"
+        android:fillColor="#1976d2"
+        android:pathData="M8,20L40,20A3,3 0,0 1,43 23L43,43A3,3 0,0 1,40 46L8,46A3,3 0,0 1,5 43L5,23A3,3 0,0 1,8 20z"
+        android:strokeWidth="3"
+        android:strokeAlpha="1"
+        android:strokeColor="#00000000"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="miter" />
+
+    <path
+        android:fillAlpha="1"
+        android:fillColor="#1976d2"
+        android:pathData="M8,21L40,21A3,2.77 0,0 1,43 23.77L43,42.23A3,2.77 0,0 1,40 45L8,45A3,2.77 0,0 1,5 42.23L5,23.77A3,2.77 0,0 1,8 21z"
+        android:strokeWidth="3"
+        android:strokeAlpha="1"
+        android:strokeColor="#00000000"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="miter" />
+    <path
+        android:fillAlpha="1"
+        android:fillColor="#0d47a1"
+        android:fillType="nonZero"
+        android:pathData="m24,26.75c-2.88,0 -5.32,1.98 -6.03,4.65l3.21,0C21.73,30.42 22.77,29.75 24,29.75c1.81,0 3.25,1.44 3.25,3.25 0,1.81 -1.44,3.25 -3.25,3.25 -1.31,0 -2.41,-0.75 -2.93,-1.85l-3.15,0C18.56,37.17 21.05,39.25 24,39.25c3.43,0 6.25,-2.82 6.25,-6.25 0,-3.43 -2.82,-6.25 -6.25,-6.25z"
+        android:strokeWidth="3"
+        android:strokeAlpha="1"
+        android:strokeColor="#00000000"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="miter" />
+    <path
+        android:fillAlpha="0.40392157"
+        android:fillColor="#00000000"
+        android:pathData="M24,33m-9.55,0a9.55,9.55 0,1 1,19.1 0a9.55,9.55 0,1 1,-19.1 0"
+        android:strokeWidth="1.89999998"
+        android:strokeAlpha="1"
+        android:strokeColor="#0d47a1"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="miter" />
+
+    <path
+        android:fillAlpha="1"
+        android:fillColor="#ffffff"
+        android:pathData="M14.38,13.13m-3.38,0a3.38,3.38 0,1 1,6.75 0a3.38,3.38 0,1 1,-6.75 0"
+        android:strokeWidth="1.89999998"
+        android:strokeAlpha="0.69721117"
+        android:strokeColor="#00000000"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="miter" />
+
+    <path
+        android:fillAlpha="1"
+        android:fillColor="#ffffff"
+        android:pathData="M33.88,13.13m-3.38,0a3.38,3.38 0,1 1,6.75 0a3.38,3.38 0,1 1,-6.75 0"
+        android:strokeWidth="1.89999998"
+        android:strokeAlpha="0.69721117"
+        android:strokeColor="#00000000"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="miter" />
+    <path
+        android:fillAlpha="1"
+        android:fillType="evenOdd"
+        android:pathData="m2.61,1.24a1.25,1.25 0,0 0,-1.01 2.03l3.6,4.66c-0.13,0.33 -0.2,0.69 -0.2,1.07l0,4 0,2.87 0,0.13c0,1.66 1.34,3 3,3l32,0c1.66,0 3,-1.34 3,-3l0,-4 0,-2.87 0,-0.13c0,-0.38 -0.08,-0.74 -0.21,-1.07l3.6,-4.66a1.25,1.25 0,0 0,-1.05 -2.03,1.25 1.25,0 0,0 -0.93,0.5l-3.43,4.44c-0.31,-0.11 -0.64,-0.18 -0.99,-0.18l-32,0c-0.35,0 -0.68,0.07 -0.99,0.18l-3.43,-4.44a1.25,1.25 0,0 0,-0.97 -0.5zM8,20c-0.21,0 -0.41,0.02 -0.61,0.06 -1.37,0.28 -2.39,1.47 -2.39,2.91l0,0.03 0,19.78 0,0.03 0,0.19c0,1.66 1.34,3 3,3l32,0c1.66,0 3,-1.34 3,-3l0,-20 0,-0.03c0,-1.44 -1.03,-2.63 -2.39,-2.91 -0.2,-0.04 -0.4,-0.06 -0.61,-0.06l-32,0z"
+        android:strokeWidth="2.5"
+        android:strokeAlpha="1"
+        android:strokeColor="#00000000"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="miter" />
+</vector>

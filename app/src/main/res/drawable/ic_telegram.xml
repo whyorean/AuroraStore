@@ -1,0 +1,37 @@
+<!--
+  ~ Aurora Store
+  ~  Copyright (C) 2021, Rahul Kumar Patel <whyorean@gmail.com>
+  ~
+  ~  Aurora Store is free software: you can redistribute it and/or modify
+  ~  it under the terms of the GNU General Public License as published by
+  ~  the Free Software Foundation, either version 2 of the License, or
+  ~  (at your option) any later version.
+  ~
+  ~  Aurora Store is distributed in the hope that it will be useful,
+  ~  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~  GNU General Public License for more details.
+  ~
+  ~  You should have received a copy of the GNU General Public License
+  ~  along with Aurora Store.  If not, see <http://www.gnu.org/licenses/>.
+  ~
+  -->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="240.0"
+    android:viewportHeight="240.0">
+    <path
+        android:fillColor="#37AEE2"
+        android:pathData="M120,120m-120,0a120,120 0,1 1,240 0a120,120 0,1 1,-240 0" />
+    <path
+        android:fillColor="#C8DAEA"
+        android:pathData="m98,175c-3.89,0 -3.23,-1.47 -4.57,-5.17L82,132.21 170,80" />
+    <path
+        android:fillColor="#A9C9DD"
+        android:pathData="m98,175c3,0 4.33,-1.37 6,-3l16,-15.56 -19.96,-12.03" />
+    <path
+        android:fillColor="#EFF7FC"
+        android:pathData="m100.04,144.41 l48.36,35.73c5.52,3.04 9.5,1.47 10.88,-5.12l19.68,-92.76c2.02,-8.08 -3.08,-11.74 -8.36,-9.35l-115.59,44.57c-7.89,3.16 -7.84,7.57 -1.44,9.53l29.66,9.26 68.67,-43.33c3.24,-1.97 6.22,-0.91 3.78,1.26" />
+</vector>
