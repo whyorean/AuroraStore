@@ -20,16 +20,19 @@
 package com.aurora.store.view.ui.details
 
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.aurora.Constants
 import com.aurora.gplayapi.data.models.Artwork
+import com.aurora.store.R
 import com.aurora.store.databinding.ActivityScreenshotBinding
 import com.aurora.store.util.extensions.close
 import com.aurora.store.view.epoxy.views.LargeScreenshotViewModel_
 import com.aurora.store.view.ui.commons.BaseActivity
 import com.google.gson.reflect.TypeToken
+import com.tonyodev.fetch2.Status
 
 class ScreenshotActivity : BaseActivity() {
 
@@ -44,6 +47,7 @@ class ScreenshotActivity : BaseActivity() {
         B = ActivityScreenshotBinding.inflate(layoutInflater)
         setContentView(B.root)
 
+        attachToolbar()
         attachRecycler()
 
         if (intent != null) {
@@ -53,6 +57,27 @@ class ScreenshotActivity : BaseActivity() {
             updateController(artworks, position)
         } else {
             close()
+        }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> {
+                onBackPressed()
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    private fun attachToolbar() {
+        setSupportActionBar(B.toolbar)
+        val actionBar = supportActionBar
+        if (actionBar != null) {
+            actionBar.setDisplayShowCustomEnabled(true)
+            actionBar.setDisplayHomeAsUpEnabled(true)
+            actionBar.elevation = 0f
+            actionBar.title = ""
         }
     }
 
