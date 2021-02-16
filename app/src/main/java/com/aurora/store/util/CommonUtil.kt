@@ -40,8 +40,8 @@ object CommonUtil {
     private val diPrefixes: Map<Int, String> = hashMapOf(
         Pair(1, ""),
         Pair(3, " K"),
-        Pair(6, " Million"),
-        Pair(9, " Billion")
+        Pair(6, " M"),
+        Pair(9, " B")
     )
 
     fun addSiPrefix(value: Long): String {
