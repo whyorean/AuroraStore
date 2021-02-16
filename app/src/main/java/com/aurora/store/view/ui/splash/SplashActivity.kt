@@ -22,15 +22,16 @@ package com.aurora.store.view.ui.splash
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import com.aurora.store.MainActivity
 import com.aurora.store.R
 import com.aurora.store.data.AuthState
 import com.aurora.store.data.event.BusEvent
 import com.aurora.store.databinding.ActivitySplashBinding
+import com.aurora.store.util.extensions.hide
 import com.aurora.store.util.extensions.load
 import com.aurora.store.util.extensions.open
+import com.aurora.store.util.extensions.show
 import com.aurora.store.view.ui.commons.BaseActivity
 import com.aurora.store.view.ui.commons.BlacklistActivity
 import com.aurora.store.view.ui.spoof.SpoofActivity
@@ -175,9 +176,9 @@ class SplashActivity : BaseActivity() {
 
     private fun updateActionLayout(isVisible: Boolean) {
         if (isVisible) {
-            B.layoutAction.visibility = View.VISIBLE
+            B.layoutAction.show()
         } else {
-            B.layoutAction.visibility = View.INVISIBLE
+            B.layoutAction.hide()
         }
     }
 

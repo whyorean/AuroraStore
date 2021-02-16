@@ -65,8 +65,7 @@
         tools:targetApi="m">
 
         <activity
-            android:name=".view.ui.onboarding.OnboardingActivity"
-            android:screenOrientation="portrait">
+            android:name=".view.ui.onboarding.OnboardingActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

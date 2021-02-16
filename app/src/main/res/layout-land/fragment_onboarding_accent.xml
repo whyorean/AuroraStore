@@ -29,33 +29,44 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:divider="@drawable/divider"
-        android:orientation="vertical">
+        android:orientation="horizontal"
+        android:showDividers="middle"
+        android:weightSum="2">
 
-        <androidx.appcompat.widget.AppCompatTextView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:includeFontPadding="true"
-            android:paddingStart="@dimen/padding_normal"
-            android:paddingEnd="@dimen/padding_normal"
-            android:text="@string/onboarding_title_accent"
-            android:textAlignment="textStart"
-            android:textColor="?colorAccent"
-            android:textSize="42sp"
-            app:fontFamily="@font/montserrat_regular" />
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
 
-        <androidx.appcompat.widget.AppCompatTextView
-            style="@style/AuroraTextStyle.Subtitle.Alt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingStart="@dimen/padding_normal"
-            android:paddingEnd="@dimen/padding_normal"
-            android:text="@string/onboarding_theme_select"
-            android:textAlignment="textStart" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:includeFontPadding="true"
+                android:paddingStart="@dimen/padding_normal"
+                android:paddingEnd="@dimen/padding_normal"
+                android:text="@string/onboarding_title_accent"
+                android:textAlignment="textStart"
+                android:textColor="?colorAccent"
+                android:textSize="42sp"
+                app:fontFamily="@font/montserrat_regular" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/AuroraTextStyle.Subtitle.Alt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="@dimen/padding_normal"
+                android:paddingEnd="@dimen/padding_normal"
+                android:text="@string/onboarding_theme_select"
+                android:textAlignment="textStart" />
+        </LinearLayout>
 
         <com.airbnb.epoxy.EpoxyRecyclerView
             android:id="@+id/epoxy_recycler"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_weight="1"
             android:clipToPadding="false"
             android:overScrollMode="never"
             android:padding="@dimen/padding_normal"

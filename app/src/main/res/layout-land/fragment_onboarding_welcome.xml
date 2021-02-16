@@ -19,25 +19,29 @@
   ~
   -->
 
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:divider="@drawable/divider"
+    android:orientation="horizontal"
+    android:showDividers="middle">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:divider="@drawable/divider"
+        android:layout_weight="1"
+        android:gravity="center"
         android:orientation="vertical">
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:includeFontPadding="true"
             android:paddingStart="@dimen/padding_normal"
             android:paddingEnd="@dimen/padding_normal"
-            android:text="@string/onboarding_title_accent"
+            android:text="@string/onboarding_title_welcome"
             android:textAlignment="textStart"
             android:textColor="?colorAccent"
             android:textSize="42sp"
@@ -45,29 +49,24 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             style="@style/AuroraTextStyle.Subtitle.Alt"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingStart="@dimen/padding_normal"
             android:paddingEnd="@dimen/padding_normal"
-            android:text="@string/onboarding_theme_select"
+            android:text="@string/onboarding_welcome_select"
             android:textAlignment="textStart" />
 
-        <com.airbnb.epoxy.EpoxyRecyclerView
-            android:id="@+id/epoxy_recycler"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:clipToPadding="false"
-            android:overScrollMode="never"
-            android:padding="@dimen/padding_normal"
-            android:scrollbars="none"
-            app:itemSpacing="@dimen/margin_small"
-            tools:listitem="@layout/view_theme" />
     </LinearLayout>
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/theme_switch_image"
+    <com.airbnb.epoxy.EpoxyRecyclerView
+        android:id="@+id/epoxy_recycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:translationZ="15dp"
-        android:visibility="gone" />
-</FrameLayout>
+        android:layout_weight="1"
+        android:clipToPadding="false"
+        android:overScrollMode="never"
+        android:padding="@dimen/padding_normal"
+        android:scrollbars="none"
+        app:itemSpacing="@dimen/margin_small"
+        tools:listitem="@layout/view_theme" />
+</LinearLayout>
