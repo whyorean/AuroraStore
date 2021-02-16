@@ -120,9 +120,10 @@ class AboutActivity : BaseActivity() {
     }
 
     private fun processUrl(url: String) {
-        if (url.startsWith("http"))
-            browse(url)
-        else
-            copyToClipBoard(url)
+        when {
+            url.startsWith("http") -> browse(url)
+            url.startsWith("upi") -> browse(url)
+            else -> copyToClipBoard(url)
+        }
     }
 }

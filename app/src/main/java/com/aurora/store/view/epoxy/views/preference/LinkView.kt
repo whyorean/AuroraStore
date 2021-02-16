@@ -28,6 +28,7 @@ import com.airbnb.epoxy.ModelView
 import com.aurora.store.R
 import com.aurora.store.data.model.Link
 import com.aurora.store.databinding.ViewLinkBinding
+import com.aurora.store.util.extensions.hide
 import com.aurora.store.util.extensions.load
 import com.aurora.store.util.extensions.show
 import com.aurora.store.view.epoxy.views.BaseView
@@ -65,12 +66,14 @@ class LinkView : RelativeLayout {
     fun link(link: Link) {
         B.line1.text = link.title
         B.line2.text = link.subtitle
-        if (!link.url.startsWith("http")) {
-            B.line3.show()
-            B.line3.text = link.url
+
+        if (link.url.startsWith("http") || link.url.startsWith("upi")) {
+            B.line3.hide()
         } else {
             B.line3.show()
+            B.line3.text = link.url
         }
+
         B.imgIcon.load(link.icon)
     }
 
