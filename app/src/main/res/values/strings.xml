@@ -287,5 +287,5 @@
     <string name="toast_apk_copy_failed">"APK export failed"</string>
     <string name="toast_apk_copy_success">"APK exported successfully"</string>
     <string name="toast_apk_whitelisted">"Whitelisted"</string>
-    <string name="toast_clipboard_copied">"Not available on anonymous accounts"</string>
+    <string name="toast_clipboard_copied">"Copied to clipboard"</string>
 </resources>
