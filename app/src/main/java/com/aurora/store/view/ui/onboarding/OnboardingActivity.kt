@@ -29,7 +29,15 @@ import com.aurora.Constants
 import com.aurora.store.R
 import com.aurora.store.databinding.ActivityOnboardingBinding
 import com.aurora.store.util.Preferences
+import com.aurora.store.util.Preferences.PREFERENCE_AUTO_DELETE
+import com.aurora.store.util.Preferences.PREFERENCE_DEFAULT
+import com.aurora.store.util.Preferences.PREFERENCE_DOWNLOAD_ACTIVE
+import com.aurora.store.util.Preferences.PREFERENCE_FILTER_FDROID
+import com.aurora.store.util.Preferences.PREFERENCE_FILTER_GOOGLE
+import com.aurora.store.util.Preferences.PREFERENCE_INSTALLER_ID
 import com.aurora.store.util.Preferences.PREFERENCE_INTRO
+import com.aurora.store.util.Preferences.PREFERENCE_THEME_ACCENT
+import com.aurora.store.util.Preferences.PREFERENCE_THEME_TYPE
 import com.aurora.store.util.extensions.open
 import com.aurora.store.util.save
 import com.aurora.store.view.ui.commons.BaseActivity
@@ -50,8 +58,16 @@ class OnboardingActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
 
         val isIntroDone = Preferences.getBoolean(this, PREFERENCE_INTRO)
-        if (isIntroDone)
+        if (isIntroDone) {
             runOnUiThread { open(SplashActivity::class.java, true) }
+            return
+        }
+
+        val isDefaultPrefLoaded = Preferences.getBoolean(this, PREFERENCE_DEFAULT)
+        if (!isDefaultPrefLoaded) {
+            save(PREFERENCE_DEFAULT, true)
+            loadDefaultPreferences()
+        }
 
         B = ActivityOnboardingBinding.inflate(layoutInflater)
 
@@ -124,6 +140,23 @@ class OnboardingActivity : BaseActivity() {
         } else {
             B.viewpager2.currentItem = B.viewpager2.currentItem - 1
         }
+    }
+
+    private fun loadDefaultPreferences() {
+        /*Filters*/
+        save(PREFERENCE_FILTER_FDROID, true)
+        save(PREFERENCE_FILTER_GOOGLE, false)
+
+        /*Downloader*/
+        save(PREFERENCE_DOWNLOAD_ACTIVE, 3)
+
+        /*Theme*/
+        save(PREFERENCE_THEME_TYPE, 0)
+        save(PREFERENCE_THEME_ACCENT, 0)
+
+        /*Installer*/
+        save(PREFERENCE_AUTO_DELETE, false)
+        save(PREFERENCE_INSTALLER_ID, 0)
     }
 
     internal class PagerAdapter(fragmentActivity: FragmentActivity) :

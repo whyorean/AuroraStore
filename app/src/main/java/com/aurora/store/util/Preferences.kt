@@ -26,6 +26,8 @@ import androidx.preference.PreferenceManager
 
 object Preferences {
 
+    const val PREFERENCE_DEFAULT = "PREFERENCE_DEFAULT"
+
     const val PREFERENCE_AUTH_DATA = "PREFERENCE_AUTH_DATA"
     const val PREFERENCE_INSTALLER_ID = "PREFERENCE_INSTALLER_ID"
     const val PREFERENCE_THEME_TYPE = "PREFERENCE_THEME_TYPE"
