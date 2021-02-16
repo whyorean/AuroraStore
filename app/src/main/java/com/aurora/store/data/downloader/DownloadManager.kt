@@ -44,7 +44,7 @@ class DownloadManager private constructor(var context: Context) {
     private fun getFetchConfiguration(context: Context): FetchConfiguration {
         var maxActive = Preferences.getInteger(context, Preferences.PREFERENCE_DOWNLOAD_ACTIVE)
         if (maxActive == 0)
-            maxActive = 1
+            maxActive = 3
         return FetchConfiguration.Builder(context)
             .setDownloadConcurrentLimit(maxActive)
             .enableLogging(BuildConfig.DEBUG)
