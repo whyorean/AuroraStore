@@ -44,7 +44,7 @@ fun Fragment.applyTheme(
 ) {
     val themeStyle = CommonUtil.getThemeStyleById(themeId)
 
-    if (themeStyle == 0) {
+    if (themeId == 0) {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
         (requireActivity() as AppCompatActivity).applyDayNightMask()
     } else {
@@ -77,7 +77,7 @@ fun AppCompatActivity.applyTheme(themeId: Int, accentId: Int = 1) {
     val themeStyle = CommonUtil.getThemeStyleById(themeId)
     val accentStyle = CommonUtil.getAccentStyleById(accentId)
 
-    if (themeStyle == 0) {
+    if (themeId == 0) {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
         applyDayNightMask()
     } else {
