@@ -77,8 +77,7 @@
 
         <activity
             android:name=".view.ui.splash.SplashActivity"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait" />
+            android:launchMode="singleTask" />
 
         <activity
             android:name=".MainActivity"
