@@ -41,3 +41,9 @@ gradle-app.setting
 app/release/*
 app/beta/*
 app/alpha/*
+app/nightly/*
+
+
+#Exclude signing configurations & keystore
+signing.properties
+*.keystore
