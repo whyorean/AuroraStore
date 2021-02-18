@@ -39,8 +39,7 @@ import kotlinx.coroutines.supervisorScope
 class SubCategoryClusterViewModel(application: Application) : BaseAndroidViewModel(application) {
 
     var authData: AuthData = AuthProvider.with(application).getAuthData()
-    var categoryHelper: CategoryHelper = CategoryHelper
-        .with(authData)
+    var categoryHelper: CategoryHelper = CategoryHelper(authData)
         .using(HttpClient.getPreferredClient())
 
     val liveData: MutableLiveData<ViewState> = MutableLiveData()

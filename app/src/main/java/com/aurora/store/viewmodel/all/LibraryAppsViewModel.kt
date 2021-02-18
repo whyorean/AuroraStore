@@ -37,7 +37,7 @@ class LibraryAppsViewModel(application: Application) : BaseAndroidViewModel(appl
 
     private val authData: AuthData = AuthProvider.with(application).getAuthData()
     private val clusterHelper: ClusterHelper =
-        ClusterHelper.with(authData).using(HttpClient.getPreferredClient())
+        ClusterHelper(authData).using(HttpClient.getPreferredClient())
 
     val liveData: MutableLiveData<StreamCluster> = MutableLiveData()
     var streamCluster: StreamCluster = StreamCluster()

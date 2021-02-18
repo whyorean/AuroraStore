@@ -37,8 +37,7 @@ import kotlinx.coroutines.supervisorScope
 class StreamBrowseViewModel(application: Application) : BaseAndroidViewModel(application) {
 
     private val authData: AuthData = AuthProvider.with(application).getAuthData()
-    private val streamHelper: StreamHelper = StreamHelper
-        .with(authData)
+    private val streamHelper: StreamHelper = StreamHelper(authData)
         .using(HttpClient.getPreferredClient())
 
     val liveData: MutableLiveData<StreamCluster> = MutableLiveData()

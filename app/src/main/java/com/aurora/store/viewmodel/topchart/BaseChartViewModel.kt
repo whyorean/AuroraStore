@@ -37,7 +37,7 @@ abstract class BaseChartViewModel(application: Application) : BaseAndroidViewMod
 
     private val authData: AuthData = AuthProvider.with(application).getAuthData()
     private val topChartsHelper: TopChartsHelper =
-        TopChartsHelper.with(authData).using(HttpClient.getPreferredClient())
+        TopChartsHelper(authData).using(HttpClient.getPreferredClient())
 
     lateinit var type: TopChartsHelper.Type
     lateinit var chart: TopChartsHelper.Chart
