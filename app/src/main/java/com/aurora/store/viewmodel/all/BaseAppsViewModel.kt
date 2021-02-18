@@ -34,14 +34,12 @@ import java.util.*
 
 abstract class BaseAppsViewModel(application: Application) : BaseAndroidViewModel(application) {
 
-    val authData = AuthProvider
+    private val authData = AuthProvider
         .with(application)
         .getAuthData()
 
-    val appDetailsHelper =
-        AppDetailsHelper
-            .with(authData)
-            .using(HttpClient.getPreferredClient())
+    private val appDetailsHelper = AppDetailsHelper(authData)
+        .using(HttpClient.getPreferredClient())
 
     var blacklistProvider = BlacklistProvider
         .with(application)

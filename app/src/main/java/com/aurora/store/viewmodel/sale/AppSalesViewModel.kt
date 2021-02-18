@@ -35,7 +35,7 @@ class AppSalesViewModel(application: Application) : AndroidViewModel(application
 
     private val authData: AuthData = AuthProvider.with(application).getAuthData()
     private val appSalesHelper: AppSalesHelper =
-        AppSalesHelper.with(authData).using(HttpClient.getPreferredClient())
+        AppSalesHelper(authData).using(HttpClient.getPreferredClient())
 
     val liveAppList: MutableLiveData<List<App>> = MutableLiveData()
 

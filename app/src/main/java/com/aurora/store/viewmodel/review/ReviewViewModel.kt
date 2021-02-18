@@ -40,8 +40,7 @@ class ReviewViewModel(application: Application) : BaseAndroidViewModel(applicati
         .with(application)
         .getAuthData()
 
-    var reviewsHelper: ReviewsHelper = ReviewsHelper
-        .with(authData)
+    var reviewsHelper: ReviewsHelper = ReviewsHelper(authData)
         .using(HttpClient.getPreferredClient())
 
     val liveData: MutableLiveData<ViewState> = MutableLiveData()

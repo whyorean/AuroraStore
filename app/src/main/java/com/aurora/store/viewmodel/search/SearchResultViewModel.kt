@@ -39,8 +39,7 @@ class SearchResultViewModel(application: Application) : AndroidViewModel(applica
         .with(application)
         .getAuthData()
 
-    private val searchHelper: SearchHelper = SearchHelper
-        .with(authData)
+    private val searchHelper: SearchHelper = SearchHelper(authData)
         .using(HttpClient.getPreferredClient())
 
     val liveData: MutableLiveData<SearchBundle> = MutableLiveData()

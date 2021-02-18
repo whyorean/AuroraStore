@@ -38,8 +38,7 @@ abstract class BaseCategoryViewModel(application: Application) : BaseAndroidView
         .with(application)
         .getAuthData()
 
-    private val streamHelper: CategoryHelper = CategoryHelper
-        .with(authData)
+    private val streamHelper: CategoryHelper = CategoryHelper(authData)
         .using(HttpClient.getPreferredClient())
 
     val liveData: MutableLiveData<List<Category>> = MutableLiveData()

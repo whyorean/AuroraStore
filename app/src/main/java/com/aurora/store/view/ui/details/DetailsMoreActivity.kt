@@ -143,8 +143,7 @@ class DetailsMoreActivity : BaseActivity() {
             .with(this)
             .getAuthData()
         task {
-            AppDetailsHelper
-                .with(authData)
+            AppDetailsHelper(authData)
                 .getAppByPackageName(app.dependencies.dependentPackages)
         } successUi {
             B.recyclerDependency.withModels {

@@ -81,7 +81,7 @@ class UpdatesFragment : BaseFragment() {
         VM = ViewModelProvider(requireActivity()).get(UpdatesViewModel::class.java)
 
         authData = AuthProvider.with(requireContext()).getAuthData()
-        purchaseHelper = PurchaseHelper.with(authData)
+        purchaseHelper = PurchaseHelper(authData)
 
         fetch = DownloadManager.with(requireContext()).fetch
         fetchListener = object : AbstractFetchGroupListener() {

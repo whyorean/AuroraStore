@@ -227,7 +227,7 @@ class AppDetailsActivity : BaseDetailsActivity() {
     private fun fetchCompleteApp() {
         task {
             val authData = AuthProvider.with(this).getAuthData()
-            return@task AppDetailsHelper.with(authData)
+            return@task AppDetailsHelper(authData)
                 .using(HttpClient.getPreferredClient())
                 .getAppByPackageName(app.packageName)
         } successUi {
@@ -324,8 +324,7 @@ class AppDetailsActivity : BaseDetailsActivity() {
                 .with(this)
                 .getAuthData()
 
-            PurchaseHelper
-                .with(authData)
+            PurchaseHelper(authData)
                 .using(HttpClient.getPreferredClient())
                 .purchase(app.packageName, app.versionCode, app.offerType)
         } successUi {

@@ -262,8 +262,7 @@ abstract class BaseDetailsActivity : BaseActivity() {
     ) {
         task {
             val authData = AuthProvider.with(this).getAuthData()
-            ReviewsHelper
-                .with(authData)
+            ReviewsHelper(authData)
                 .using(HttpClient.getPreferredClient())
                 .addOrEditReview(
                     app.packageName,
@@ -286,8 +285,7 @@ abstract class BaseDetailsActivity : BaseActivity() {
         val authData = AuthProvider
             .with(this)
             .getAuthData()
-        val reviewsHelper = ReviewsHelper
-            .with(authData)
+        val reviewsHelper = ReviewsHelper(authData)
             .using(HttpClient.getPreferredClient())
         return reviewsHelper.getReviews(app.packageName, Review.Filter.CRITICAL)
     }

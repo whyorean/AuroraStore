@@ -169,7 +169,7 @@ class AuthViewModel(application: Application) : BaseAndroidViewModel(application
 
     private fun isValid(authData: AuthData): Boolean {
         return try {
-            AuthValidator.with(authData)
+            AuthValidator(authData)
                 .using(HttpClient.getPreferredClient())
                 .isValid()
         } catch (e: Exception) {
