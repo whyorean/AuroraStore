@@ -85,6 +85,10 @@
                             layout="@layout/layout_details_privacy" />
 
                         <include
+                            android:id="@+id/layout_details_beta"
+                            layout="@layout/layout_details_beta" />
+
+                        <include
                             android:id="@+id/layout_details_dev"
                             layout="@layout/layout_details_dev" />
                     </LinearLayout>
