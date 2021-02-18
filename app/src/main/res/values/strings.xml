@@ -84,7 +84,9 @@
     <string name="action_installations">"Installations"</string>
     <string name="action_installed">"Installed"</string>
     <string name="action_installing">"Installing"</string>
+    <string name="action_join">"Join"</string>
     <string name="action_later">"Later"</string>
+    <string name="action_leave">"Leave"</string>
     <string name="action_logging_in">"Logging in"</string>
     <string name="action_logout">"Logout"</string>
     <string name="action_manual">"Manual download"</string>
@@ -92,6 +94,7 @@
     <string name="action_next">"Next"</string>
     <string name="action_open">"Open"</string>
     <string name="action_pause">"Pause"</string>
+    <string name="action_pending">"Pending"</string>
     <string name="action_post">"Post"</string>
     <string name="action_previous">"Previous"</string>
     <string name="action_purchase">"Purchase"</string>
@@ -117,6 +120,11 @@
     <string name="action_whitelist">"Whitelist"</string>
     <string name="action_wishlist_add">"Add to wishlist"</string>
 
+    <string name="details_beta">"Beta program"</string>
+    <string name="details_beta_subscribed">"You're a beta tester"</string>
+    <string name="details_beta_available">"Join beta program ?"</string>
+    <string name="details_beta_description">"You will see new features and bugs before the public does. Give your feedback to developers to help them improve."</string>
+    <string name="details_beta_delay">"Enrollment may take some time, you can check status later."</string>
     <string name="details_changelog">"Changelog"</string>
     <string name="details_changelog_unavailable">"Changelog not provided"</string>
     <string name="details_contains_ads">"Contains Ads"</string>

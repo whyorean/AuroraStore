@@ -30,6 +30,7 @@ import android.view.View
 import android.widget.LinearLayout
 import com.aurora.Constants
 import com.aurora.gplayapi.data.models.App
+import com.aurora.gplayapi.data.models.AuthData
 import com.aurora.gplayapi.data.models.File
 import com.aurora.gplayapi.helpers.AppDetailsHelper
 import com.aurora.gplayapi.helpers.PurchaseHelper
@@ -63,6 +64,7 @@ class AppDetailsActivity : BaseDetailsActivity() {
     private lateinit var B: ActivityDetailsBinding
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<LinearLayout>
 
+    private lateinit var authData: AuthData
     private lateinit var app: App
     private lateinit var downloadManager: DownloadManager
     private lateinit var fetch: Fetch
@@ -226,7 +228,7 @@ class AppDetailsActivity : BaseDetailsActivity() {
 
     private fun fetchCompleteApp() {
         task {
-            val authData = AuthProvider.with(this).getAuthData()
+            authData = AuthProvider.with(this).getAuthData()
             return@task AppDetailsHelper(authData)
                 .using(HttpClient.getPreferredClient())
                 .getAppByPackageName(app.packageName)
@@ -285,6 +287,16 @@ class AppDetailsActivity : BaseDetailsActivity() {
             inflateAppRatingAndReviews(B.layoutDetailsReview, app)
             inflateAppDevInfo(B.layoutDetailsDev, app)
             inflateAppPrivacy(B.layoutDetailsPrivacy, app)
+
+            if (!authData.isAnonymous) {
+                app.testingProgram?.let {
+                    if (it.isAvailable && it.isSubscribed) {
+                        B.layoutDetailsApp.txtLine1.text = it.displayName
+                    }
+                }
+
+                inflateBetaSubscription(B.layoutDetailsBeta, app)
+            }
         }
     }
 

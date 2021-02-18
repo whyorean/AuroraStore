@@ -32,18 +32,19 @@ import androidx.core.text.HtmlCompat
 import com.aurora.Constants
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.Review
+import com.aurora.gplayapi.helpers.AppDetailsHelper
 import com.aurora.gplayapi.helpers.ReviewsHelper
 import com.aurora.store.R
 import com.aurora.store.data.model.ExodusReport
 import com.aurora.store.data.model.Report
 import com.aurora.store.data.network.HttpClient
 import com.aurora.store.data.providers.AuthProvider
-import com.aurora.store.databinding.LayoutDetailsDescriptionBinding
-import com.aurora.store.databinding.LayoutDetailsDevBinding
-import com.aurora.store.databinding.LayoutDetailsPrivacyBinding
-import com.aurora.store.databinding.LayoutDetailsReviewBinding
+import com.aurora.store.databinding.*
 import com.aurora.store.util.CommonUtil
 import com.aurora.store.util.NavigationUtil
+import com.aurora.store.util.extensions.hide
+import com.aurora.store.util.extensions.load
+import com.aurora.store.util.extensions.show
 import com.aurora.store.util.extensions.toast
 import com.aurora.store.view.custom.RatingView
 import com.aurora.store.view.epoxy.views.*
@@ -231,6 +232,60 @@ abstract class BaseDetailsActivity : BaseActivity() {
             }
         }
     }
+
+    fun inflateBetaSubscription(B: LayoutDetailsBetaBinding, app: App) {
+        app.testingProgram?.let { betaProgram ->
+            if (betaProgram.isAvailable) {
+                B.root.show()
+
+                updateBetaActions(B, betaProgram.isSubscribed)
+
+                if (betaProgram.isSubscribedAndInstalled) {
+
+                }
+
+                B.imgBeta.load(betaProgram.artwork.url) {
+
+                }
+
+                B.btnBetaAction.setOnClickListener {
+                    val authData = AuthProvider.with(this).getAuthData()
+                    task {
+                        B.btnBetaAction.text = getString(R.string.action_pending)
+                        B.btnBetaAction.isEnabled = false
+                        AppDetailsHelper(authData).testingProgram(
+                            app.packageName,
+                            !betaProgram.isSubscribed
+                        )
+                    } successUi {
+                        B.btnBetaAction.isEnabled = true
+                        if (it.subscribed) {
+                            updateBetaActions(B, true)
+                        }
+                        if (it.unsubscribed) {
+                            updateBetaActions(B, false)
+                        }
+                    } failUi {
+                        updateBetaActions(B, betaProgram.isSubscribed)
+                        toast("Failed to update beta status")
+                    }
+                }
+            } else {
+                B.root.hide()
+            }
+        }
+    }
+
+    private fun updateBetaActions(B: LayoutDetailsBetaBinding, isSubscribed: Boolean) {
+        if (isSubscribed) {
+            B.btnBetaAction.text = getString(R.string.action_leave)
+            B.txtBetaTitle.text = getString(R.string.details_beta_subscribed)
+        } else {
+            B.btnBetaAction.text = getString(R.string.action_join)
+            B.txtBetaTitle.text = getString(R.string.details_beta_available)
+        }
+    }
+
 
     //Helpers
     private fun openScreenshotActivity(app: App, position: Int) {
