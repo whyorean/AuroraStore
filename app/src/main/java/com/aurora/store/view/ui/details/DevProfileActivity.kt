@@ -32,7 +32,9 @@ import com.aurora.store.util.extensions.close
 import com.aurora.store.util.extensions.load
 import com.aurora.store.util.extensions.toast
 import com.aurora.store.view.epoxy.groups.CarouselHorizontalModel_
-import com.aurora.store.view.epoxy.views.*
+import com.aurora.store.view.epoxy.views.AppListViewModel_
+import com.aurora.store.view.epoxy.views.AppViewModel_
+import com.aurora.store.view.epoxy.views.HeaderViewModel_
 import com.aurora.store.view.epoxy.views.details.ScreenshotViewModel_
 import com.aurora.store.view.ui.commons.BaseActivity
 import nl.komponents.kovenant.task
@@ -63,6 +65,8 @@ class DevProfileActivity : BaseActivity() {
         setContentView(B.root)
 
         attachToolbar()
+
+        B.viewFlipper.displayedChild = 1
 
         onNewIntent(intent)
     }
@@ -164,6 +168,7 @@ class DevProfileActivity : BaseActivity() {
         task {
             AppDetailsHelper(authData).getDeveloperStream(devId)
         } successUi {
+            B.viewFlipper.displayedChild = 0
             updateInfo(it)
             updateController(it)
         } failUi {
