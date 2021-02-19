@@ -26,7 +26,7 @@ import com.aurora.gplayapi.data.models.StreamCluster
 import com.aurora.store.R
 import com.aurora.store.view.epoxy.groups.CarouselModelGroup
 import com.aurora.store.view.epoxy.groups.CarouselShimmerGroup
-import com.aurora.store.view.epoxy.views.AppListViewModel_
+import com.aurora.store.view.epoxy.views.app.AppListViewModel_
 import com.aurora.store.view.epoxy.views.AppProgressViewModel_
 import com.aurora.store.view.epoxy.views.app.NoAppViewModel_
 

@@ -17,7 +17,7 @@
  *
  */
 
-package com.aurora.store.view.epoxy.views
+package com.aurora.store.view.epoxy.views.app
 
 import android.content.Context
 import android.util.AttributeSet
@@ -33,6 +33,7 @@ import com.aurora.store.util.CommonUtil
 import com.aurora.store.util.extensions.clear
 import com.aurora.store.util.extensions.getString
 import com.aurora.store.util.extensions.load
+import com.aurora.store.view.epoxy.views.BaseView
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 
 @ModelView(
@@ -90,7 +91,7 @@ class AppListView : RelativeLayout {
         if (app.dependencies.dependentPackages.isNotEmpty())
             extras.add(getString(R.string.details_gsf_dependent))
 
-        B.txtLine3.text = extras.joinToString(separator = " • ")
+        B.txtLine3.text = extras.joinToString(separator = "  •  ")
     }
 
     @CallbackProp

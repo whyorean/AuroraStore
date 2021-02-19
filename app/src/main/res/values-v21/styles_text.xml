@@ -117,13 +117,13 @@
     </style>
 
     <style name="TextAppearance.Aurora.Tab" parent="Widget.AppCompat.Light.ActionBar.TabText">
-        <item name="android:fontFamily">@font/gilroy_extra_bold</item>
-        <item name="android:textSize">12sp</item>
+        <item name="android:textSize">14sp</item>
     </style>
 
     <style name="TextAppearance.Aurora.Tab.Title" parent="TextAppearance.Aurora.Tab">
         <item name="android:letterSpacing">0.075</item>
-        <item name="textAllCaps">true</item>
+        <item name="textAllCaps">false</item>
+        <item name="android:textStyle">bold</item>
         <item name="android:textSize">14sp</item>
     </style>
 

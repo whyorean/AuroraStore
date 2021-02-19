@@ -32,8 +32,8 @@ import com.aurora.store.util.extensions.close
 import com.aurora.store.util.extensions.load
 import com.aurora.store.util.extensions.toast
 import com.aurora.store.view.epoxy.groups.CarouselHorizontalModel_
-import com.aurora.store.view.epoxy.views.AppListViewModel_
-import com.aurora.store.view.epoxy.views.AppViewModel_
+import com.aurora.store.view.epoxy.views.app.AppListViewModel_
+import com.aurora.store.view.epoxy.views.app.AppViewModel_
 import com.aurora.store.view.epoxy.views.HeaderViewModel_
 import com.aurora.store.view.epoxy.views.details.ScreenshotViewModel_
 import com.aurora.store.view.ui.commons.BaseActivity

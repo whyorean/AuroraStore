@@ -24,27 +24,29 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
-import com.aurora.gplayapi.data.models.StreamCluster
+import com.aurora.Constants
+import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
 import com.aurora.store.databinding.FragmentUpdatesBinding
 import com.aurora.store.view.custom.recycler.EndlessRecyclerOnScrollListener
 import com.aurora.store.view.epoxy.views.app.AppListViewModel_
-import com.aurora.store.view.epoxy.views.AppProgressViewModel_
 import com.aurora.store.view.epoxy.views.HeaderViewModel_
 import com.aurora.store.view.epoxy.views.shimmer.AppListViewShimmerModel_
 import com.aurora.store.view.ui.commons.BaseFragment
-import com.aurora.store.viewmodel.all.LibraryAppsViewModel
+import com.aurora.store.view.ui.sheets.AppMenuSheet
+import com.aurora.store.viewmodel.all.InstalledViewModel
+import com.aurora.store.viewmodel.all.PurchasedViewModel
 
-class LibraryAppsFragment : BaseFragment() {
+class PurchasedAppsFragment : BaseFragment() {
 
-    private lateinit var VM: LibraryAppsViewModel
+    private lateinit var VM: PurchasedViewModel
     private lateinit var B: FragmentUpdatesBinding
     lateinit var endlessRecyclerOnScrollListener: EndlessRecyclerOnScrollListener
 
     companion object {
         @JvmStatic
-        fun newInstance(): LibraryAppsFragment {
-            return LibraryAppsFragment().apply {
+        fun newInstance(): PurchasedAppsFragment {
+            return PurchasedAppsFragment().apply {
 
             }
         }
@@ -63,17 +65,22 @@ class LibraryAppsFragment : BaseFragment() {
             )
         )
 
-        VM = ViewModelProvider(requireActivity()).get(LibraryAppsViewModel::class.java)
+        VM = ViewModelProvider(requireActivity()).get(PurchasedViewModel::class.java)
 
         return B.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        B.swipeRefreshLayout.isEnabled = false
         VM.liveData.observe(viewLifecycleOwner, {
             updateController(it)
+            B.swipeRefreshLayout.isRefreshing = false
         })
+
+        B.swipeRefreshLayout.setOnRefreshListener {
+            VM.observe()
+        }
+
         attachRecycler()
 
         updateController(null)
@@ -88,10 +95,11 @@ class LibraryAppsFragment : BaseFragment() {
         B.recycler.addOnScrollListener(endlessRecyclerOnScrollListener)
     }
 
-    private fun updateController(streamCluster: StreamCluster?) {
+
+    private fun updateController(appList: List<App>?) {
         B.recycler.withModels {
             setFilterDuplicates(true)
-            if (streamCluster == null) {
+            if (appList == null) {
                 for (i in 1..6) {
                     add(
                         AppListViewShimmerModel_()
@@ -102,29 +110,36 @@ class LibraryAppsFragment : BaseFragment() {
                 add(
                     HeaderViewModel_()
                         .id("header")
-                        .title(
-                            if (streamCluster.clusterTitle.isEmpty())
-                                getString(R.string.title_apps_library)
-                            else
-                                streamCluster.clusterTitle
-                        )
+                        .title("${appList.size} apps purchased")
                 )
-                streamCluster.clusterAppList.forEach { app ->
+                appList.forEach { app ->
                     add(
                         AppListViewModel_()
                             .id(app.id)
                             .app(app)
                             .click { _ -> openDetailsActivity(app) }
-                    )
-                }
-
-                if (streamCluster.hasNext()) {
-                    add(
-                        AppProgressViewModel_()
-                            .id("progress")
+                            .longClick { _ ->
+                                openAppMenuSheet(app)
+                                false
+                            }
                     )
                 }
             }
         }
+    }
+
+    private fun openAppMenuSheet(app: App) {
+        val fragment = childFragmentManager.findFragmentByTag(AppMenuSheet.TAG)
+        if (fragment != null)
+            childFragmentManager.beginTransaction().remove(fragment)
+
+        AppMenuSheet().apply {
+            arguments = Bundle().apply {
+                putString(Constants.STRING_EXTRA, gson.toJson(app))
+            }
+        }.show(
+            childFragmentManager,
+            AppMenuSheet.TAG
+        )
     }
 }

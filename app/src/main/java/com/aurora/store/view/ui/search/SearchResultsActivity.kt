@@ -33,7 +33,7 @@ import com.aurora.store.databinding.ActivitySearchResultBinding
 import com.aurora.store.util.extensions.close
 import com.aurora.store.util.extensions.open
 import com.aurora.store.view.custom.recycler.EndlessRecyclerOnScrollListener
-import com.aurora.store.view.epoxy.views.AppListViewModel_
+import com.aurora.store.view.epoxy.views.app.AppListViewModel_
 import com.aurora.store.view.epoxy.views.AppProgressViewModel_
 import com.aurora.store.view.ui.commons.BaseActivity
 import com.aurora.store.view.ui.downloads.DownloadActivity
