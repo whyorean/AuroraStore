@@ -21,29 +21,28 @@ package com.aurora.store.view.ui.details
 
 import android.content.Intent
 import android.os.Bundle
-import com.airbnb.epoxy.EpoxyModel
+import androidx.lifecycle.ViewModelProvider
+import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.AuthData
+import com.aurora.gplayapi.data.models.StreamCluster
 import com.aurora.gplayapi.data.models.details.DevStream
-import com.aurora.gplayapi.helpers.AppDetailsHelper
 import com.aurora.store.R
+import com.aurora.store.data.ViewState
 import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.databinding.ActivityDevProfileBinding
 import com.aurora.store.util.extensions.close
 import com.aurora.store.util.extensions.load
-import com.aurora.store.util.extensions.toast
-import com.aurora.store.view.epoxy.groups.CarouselHorizontalModel_
-import com.aurora.store.view.epoxy.views.app.AppListViewModel_
-import com.aurora.store.view.epoxy.views.app.AppViewModel_
-import com.aurora.store.view.epoxy.views.HeaderViewModel_
-import com.aurora.store.view.epoxy.views.details.ScreenshotViewModel_
+import com.aurora.store.view.epoxy.controller.DeveloperCarouselController
+import com.aurora.store.view.epoxy.controller.EarlyAccessCarouselController
+import com.aurora.store.view.epoxy.controller.GenericCarouselController
 import com.aurora.store.view.ui.commons.BaseActivity
-import nl.komponents.kovenant.task
-import nl.komponents.kovenant.ui.failUi
-import nl.komponents.kovenant.ui.successUi
+import com.aurora.store.viewmodel.details.DevProfileViewModel
 
-class DevProfileActivity : BaseActivity() {
+class DevProfileActivity : BaseActivity(), GenericCarouselController.Callbacks {
 
     private lateinit var B: ActivityDevProfileBinding
+    private lateinit var VM: DevProfileViewModel
+    private lateinit var C: DeveloperCarouselController
     private lateinit var authData: AuthData
 
     override fun onConnected() {
@@ -60,11 +59,35 @@ class DevProfileActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         B = ActivityDevProfileBinding.inflate(layoutInflater)
+        C = DeveloperCarouselController(this)
+        VM = ViewModelProvider(this).get(DevProfileViewModel::class.java)
+
         authData = AuthProvider.with(this).getAuthData()
 
         setContentView(B.root)
 
         attachToolbar()
+        attachRecycler()
+
+        VM.liveData.observe(this, {
+            when (it) {
+                is ViewState.Empty -> {
+                }
+                is ViewState.Loading -> {
+
+                }
+                is ViewState.Error -> {
+
+                }
+                is ViewState.Status -> {
+
+                }
+                is ViewState.Success<*> -> {
+                    updateInfo(it.data as DevStream)
+                    updateController(it.data as DevStream)
+                }
+            }
+        })
 
         B.viewFlipper.displayedChild = 1
 
@@ -79,7 +102,7 @@ class DevProfileActivity : BaseActivity() {
                 if (devId.isNullOrEmpty()) {
                     close()
                 } else {
-                    fetchDevProfile(devId)
+                    VM.getStreamBundle(devId)
                 }
             }
         } else {
@@ -94,86 +117,35 @@ class DevProfileActivity : BaseActivity() {
         B.layoutToolbarAction.txtTitle.text = getString(R.string.details_dev_profile)
     }
 
+    private fun attachRecycler() {
+        B.recycler.setController(C)
+    }
+
     private fun updateInfo(devStream: DevStream) {
         B.layoutToolbarAction.txtTitle.text = devStream.title
         B.txtDevName.text = devStream.title
         B.txtDevDescription.text = devStream.description
         B.imgIcon.load(devStream.imgUrl)
+        B.viewFlipper.displayedChild = 0
     }
 
     private fun updateController(devStream: DevStream) {
-        B.recycler
-            .withModels {
-                setFilterDuplicates(true)
-
-                for (entry in devStream.appListMap) {
-                    val clusterViewModels = mutableListOf<EpoxyModel<*>>()
-                    val screenshotsViewModels = mutableListOf<EpoxyModel<*>>()
-
-                    if (entry.value.size == 1) {
-                        val app = entry.value[0]
-                        for (artwork in app.screenshots) {
-                            screenshotsViewModels.add(
-                                ScreenshotViewModel_()
-                                    .id(artwork.url)
-                                    .artwork(artwork)
-                            )
-                        }
-
-                        clusterViewModels.add(
-                            AppListViewModel_()
-                                .id(app.id)
-                                .app(app)
-                                .click { _ ->
-                                    openDetailsActivity(app)
-                                }
-                        )
-                    } else {
-                        for (app in entry.value) {
-                            clusterViewModels.add(
-                                AppViewModel_()
-                                    .id(app.id)
-                                    .app(app)
-                                    .click { _ ->
-                                        openDetailsActivity(app)
-                                    }
-                            )
-                        }
-                    }
-
-                    add(
-                        HeaderViewModel_()
-                            .id(entry.key)
-                            .title(entry.key)
-                    )
-
-                    if (screenshotsViewModels.isNotEmpty()) {
-                        add(
-                            CarouselHorizontalModel_()
-                                .id("${entry.key}_screenshots")
-                                .models(screenshotsViewModels)
-                        )
-                    }
-
-                    add(
-                        CarouselHorizontalModel_()
-                            .id("${entry.key}_cluster")
-                            .models(clusterViewModels)
-                    )
-                }
-            }
+        C.setData(devStream.streamBundle)
     }
 
-    private fun fetchDevProfile(devId: String) {
-        task {
-            AppDetailsHelper(authData).getDeveloperStream(devId)
-        } successUi {
-            B.viewFlipper.displayedChild = 0
-            updateInfo(it)
-            updateController(it)
-        } failUi {
-            toast("Dev profile unavailable")
-            close()
-        }
+    override fun onHeaderClicked(streamCluster: StreamCluster) {
+        openStreamBrowseActivity(streamCluster.clusterBrowseUrl)
+    }
+
+    override fun onClusterScrolled(streamCluster: StreamCluster) {
+        VM.observeCluster(streamCluster)
+    }
+
+    override fun onAppClick(app: App) {
+        openDetailsActivity(app)
+    }
+
+    override fun onAppLongClick(app: App) {
+
     }
 }
