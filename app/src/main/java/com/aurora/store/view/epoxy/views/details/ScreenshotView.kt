@@ -17,7 +17,7 @@
  *
  */
 
-package com.aurora.store.view.epoxy.views
+package com.aurora.store.view.epoxy.views.details
 
 import android.content.Context
 import android.util.AttributeSet
@@ -32,9 +32,9 @@ import com.aurora.store.databinding.ViewScreenshotBinding
 import com.aurora.store.util.extensions.clear
 import com.aurora.store.util.extensions.load
 import com.aurora.store.util.extensions.px
+import com.aurora.store.view.epoxy.views.BaseView
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
-
 
 @ModelView(
     autoLayout = ModelView.Size.WRAP_WIDTH_WRAP_HEIGHT,
@@ -79,7 +79,7 @@ class ScreenshotView : RelativeLayout {
     @ModelProp
     fun artwork(artwork: Artwork) {
         normalizeSize(artwork)
-        B.img.load(artwork.url, DrawableTransitionOptions.withCrossFade()) {
+        B.img.load("${artwork.url}=rw-h480-v1-e15", DrawableTransitionOptions.withCrossFade()) {
             placeholder(R.drawable.bg_rounded)
             transform(RoundedCorners(8.px.toInt()))
         }

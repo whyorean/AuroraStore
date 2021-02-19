@@ -133,6 +133,7 @@
     <string name="details_dev_address">"Address"</string>
     <string name="details_dev_details">"Developer contact"</string>
     <string name="details_dev_email">"Email"</string>
+    <string name="details_dev_profile">"Developer profile"</string>
     <string name="details_dev_reply">"Developer\'s reply"</string>
     <string name="details_dev_website">"Website"</string>
     <string name="details_files">"Files"</string>

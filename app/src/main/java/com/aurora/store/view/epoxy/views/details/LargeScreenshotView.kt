@@ -17,7 +17,7 @@
  *
  */
 
-package com.aurora.store.view.epoxy.views
+package com.aurora.store.view.epoxy.views.details
 
 import android.content.Context
 import android.content.res.Resources
@@ -34,12 +34,12 @@ import com.aurora.store.databinding.ViewScreenshotLargeBinding
 import com.aurora.store.util.extensions.clear
 import com.aurora.store.util.extensions.px
 import com.aurora.store.util.extensions.runOnUiThread
+import com.aurora.store.view.epoxy.views.BaseView
 import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
-
 
 @ModelView(
     autoLayout = ModelView.Size.MATCH_WIDTH_MATCH_HEIGHT,

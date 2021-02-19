@@ -17,7 +17,7 @@
  *
  */
 
-package com.aurora.store.view.epoxy.views
+package com.aurora.store.view.epoxy.views.details
 
 import android.content.Context
 import android.util.AttributeSet
@@ -29,7 +29,7 @@ import com.airbnb.epoxy.OnViewRecycled
 import com.aurora.store.R
 import com.aurora.store.data.model.ExodusTracker
 import com.aurora.store.databinding.ViewExodusBinding
-
+import com.aurora.store.view.epoxy.views.BaseView
 
 @ModelView(
     autoLayout = ModelView.Size.MATCH_WIDTH_WRAP_HEIGHT,

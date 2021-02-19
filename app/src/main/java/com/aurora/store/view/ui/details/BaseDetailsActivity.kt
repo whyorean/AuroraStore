@@ -48,6 +48,9 @@ import com.aurora.store.util.extensions.show
 import com.aurora.store.util.extensions.toast
 import com.aurora.store.view.custom.RatingView
 import com.aurora.store.view.epoxy.views.*
+import com.aurora.store.view.epoxy.views.details.ReviewViewModel_
+import com.aurora.store.view.epoxy.views.details.ScreenshotView
+import com.aurora.store.view.epoxy.views.details.ScreenshotViewModel_
 import com.aurora.store.view.ui.commons.BaseActivity
 import nl.komponents.kovenant.task
 import nl.komponents.kovenant.ui.failUi

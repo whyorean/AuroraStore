@@ -29,7 +29,7 @@ import com.aurora.store.data.ViewState
 import com.aurora.store.databinding.ActivityDetailsReviewBinding
 import com.aurora.store.util.extensions.close
 import com.aurora.store.view.custom.recycler.EndlessRecyclerOnScrollListener
-import com.aurora.store.view.epoxy.views.ReviewViewModel_
+import com.aurora.store.view.epoxy.views.details.ReviewViewModel_
 import com.aurora.store.view.ui.commons.BaseActivity
 import com.aurora.store.viewmodel.review.ReviewViewModel
 

@@ -27,6 +27,7 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.RawRes
 import com.bumptech.glide.Glide
 import com.bumptech.glide.TransitionOptions
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade
 import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.ViewTarget

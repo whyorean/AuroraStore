@@ -110,6 +110,21 @@
             </intent-filter>
         </activity>
 
+
+        <activity android:name=".view.ui.details.DevProfileActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="http" />
+                <data android:scheme="https" />
+                <data android:host="play.google.com" />
+                <data android:path="/store/apps/dev" />
+            </intent-filter>
+        </activity>
+
         <activity android:name=".view.ui.search.SearchSuggestionActivity" />
         <activity android:name=".view.ui.search.SearchResultsActivity" />
         <activity android:name=".view.ui.commons.StreamBrowseActivity" />

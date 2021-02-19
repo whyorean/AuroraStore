@@ -17,7 +17,7 @@
  *
  */
 
-package com.aurora.store.view.epoxy.views
+package com.aurora.store.view.epoxy.views.details
 
 import android.content.Context
 import android.util.AttributeSet
@@ -32,6 +32,7 @@ import com.aurora.store.databinding.ViewReviewBinding
 import com.aurora.store.util.extensions.clear
 import com.aurora.store.util.extensions.load
 import com.aurora.store.util.extensions.toDate
+import com.aurora.store.view.epoxy.views.BaseView
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 

@@ -33,7 +33,6 @@ import com.aurora.store.databinding.ViewMoreBadgeBinding
 import com.aurora.store.util.extensions.load
 import com.aurora.store.view.epoxy.views.BaseView
 
-
 @ModelView(
     autoLayout = ModelView.Size.WRAP_WIDTH_WRAP_HEIGHT,
     baseModelClass = BaseView::class

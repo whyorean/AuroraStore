@@ -17,7 +17,7 @@
  *
  */
 
-package com.aurora.store.view.epoxy.views
+package com.aurora.store.view.epoxy.views.details
 
 import android.content.Context
 import android.util.AttributeSet
@@ -30,7 +30,7 @@ import com.aurora.gplayapi.data.models.details.Badge
 import com.aurora.store.R
 import com.aurora.store.databinding.ViewBadgeBinding
 import com.aurora.store.util.extensions.load
-
+import com.aurora.store.view.epoxy.views.BaseView
 
 @ModelView(
     autoLayout = ModelView.Size.WRAP_WIDTH_WRAP_HEIGHT,
