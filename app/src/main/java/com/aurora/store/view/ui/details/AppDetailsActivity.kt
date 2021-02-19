@@ -324,6 +324,8 @@ class AppDetailsActivity : BaseDetailsActivity() {
 
                 inflateBetaSubscription(B.layoutDetailsBeta, app)
             }
+
+            inflateAppStream(B.epoxyRecyclerStream, app)
         }
     }
 

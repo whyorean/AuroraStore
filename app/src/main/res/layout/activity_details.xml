@@ -18,6 +18,8 @@
   -->
 
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -87,6 +89,18 @@
                         <include
                             android:id="@+id/layout_details_beta"
                             layout="@layout/layout_details_beta" />
+
+                        <com.airbnb.epoxy.EpoxyRecyclerView
+                            android:id="@+id/epoxy_recycler_stream"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:clipToPadding="false"
+                            android:orientation="vertical"
+                            android:paddingStart="@dimen/padding_small"
+                            android:paddingEnd="@dimen/padding_small"
+                            app:itemSpacing="@dimen/margin_small"
+                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                            tools:listitem="@layout/view_app" />
 
                         <include
                             android:id="@+id/layout_details_dev"
