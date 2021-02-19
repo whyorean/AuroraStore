@@ -34,6 +34,7 @@ import com.aurora.gplayapi.data.models.AuthData
 import com.aurora.gplayapi.data.models.File
 import com.aurora.gplayapi.helpers.AppDetailsHelper
 import com.aurora.gplayapi.helpers.PurchaseHelper
+import com.aurora.store.MainActivity
 import com.aurora.store.R
 import com.aurora.store.data.downloader.DownloadManager
 import com.aurora.store.data.downloader.RequestBuilder
@@ -70,6 +71,7 @@ class AppDetailsActivity : BaseDetailsActivity() {
     private lateinit var fetch: Fetch
     private lateinit var fetchGroupListener: FetchGroupListener
 
+    private var isExternal = false
     private var isNone = false
     private var status = Status.NONE
     private var isInstalled: Boolean = false
@@ -119,6 +121,14 @@ class AppDetailsActivity : BaseDetailsActivity() {
         onNewIntent(intent)
     }
 
+    override fun onBackPressed() {
+        if (isExternal) {
+            open(MainActivity::class.java, true)
+        }
+        super.onBackPressed()
+
+    }
+
     override fun onResume() {
         if (!isLAndAbove()) {
             checkAndSetupInstall()
@@ -128,16 +138,27 @@ class AppDetailsActivity : BaseDetailsActivity() {
 
     override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
-        val itemRaw: String? = intent.getStringExtra(Constants.STRING_EXTRA)
-        if (itemRaw != null) {
-            app = gson.fromJson(itemRaw, App::class.java)
-            isInstalled = PackageUtil.isInstalled(this, app.packageName)
 
-            inflatePartialApp()
-
-            fetchCompleteApp()
+        if (intent.scheme != null && (intent.scheme == "market" || intent.scheme == "http" || intent.scheme == "https")) {
+            val packageName = intent.data!!.getQueryParameter("id")
+            if (packageName.isNullOrEmpty()) {
+                close()
+            } else {
+                isExternal = true
+                app = App(packageName)
+                fetchCompleteApp()
+            }
         } else {
-            close()
+            val rawApp: String? = intent.getStringExtra(Constants.STRING_EXTRA)
+            if (rawApp != null) {
+                app = gson.fromJson(rawApp, App::class.java)
+                isInstalled = PackageUtil.isInstalled(this, app.packageName)
+
+                inflatePartialApp()
+                fetchCompleteApp()
+            } else {
+                close()
+            }
         }
     }
 
@@ -233,6 +254,10 @@ class AppDetailsActivity : BaseDetailsActivity() {
                 .using(HttpClient.getPreferredClient())
                 .getAppByPackageName(app.packageName)
         } successUi {
+            if (isExternal) {
+                app = it
+                inflatePartialApp()
+            }
             inflateExtraDetails(it)
         } failUi {
             toast("Failed to fetch app details")
@@ -240,12 +265,14 @@ class AppDetailsActivity : BaseDetailsActivity() {
     }
 
     private fun inflatePartialApp() {
-        attachWhiteListStatus()
-        attachHeader()
-        attachToolbar()
-        attachBottomSheet()
-        attachFetch()
-        attachActions()
+        if (::app.isInitialized) {
+            attachWhiteListStatus()
+            attachHeader()
+            attachToolbar()
+            attachBottomSheet()
+            attachFetch()
+            attachActions()
+        }
     }
 
     private fun attachHeader() {

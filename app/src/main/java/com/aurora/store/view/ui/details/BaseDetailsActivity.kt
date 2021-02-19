@@ -55,6 +55,7 @@ import nl.komponents.kovenant.ui.successUi
 import org.json.JSONObject
 import java.util.*
 
+
 abstract class BaseDetailsActivity : BaseActivity() {
 
     private val exodusBaseUrl = "https://reports.exodus-privacy.eu.org/api/search/"
@@ -267,7 +268,7 @@ abstract class BaseDetailsActivity : BaseActivity() {
                         }
                     } failUi {
                         updateBetaActions(B, betaProgram.isSubscribed)
-                        toast("Failed to update beta status")
+                        toast(getString(R.string.details_beta_delay))
                     }
                 }
             } else {
@@ -286,8 +287,22 @@ abstract class BaseDetailsActivity : BaseActivity() {
         }
     }
 
-
     //Helpers
+
+    open fun getIntentPackageName(intent: Intent): String? {
+        if (intent.hasExtra(Constants.STRING_EXTRA)) {
+            return intent.getStringExtra(Constants.STRING_EXTRA)
+        } else if (intent.scheme != null && (intent.scheme == "market" || intent.scheme == "http" || intent.scheme == "https")
+        ) {
+            return intent.data!!.getQueryParameter("id")
+        } else if (intent.extras != null) {
+            val bundle = intent.extras
+            return bundle!!.getString(Constants.STRING_EXTRA)
+        }
+        return null
+    }
+
+
     private fun openScreenshotActivity(app: App, position: Int) {
         val intent = Intent(
             this,
