@@ -22,6 +22,7 @@ package com.aurora.store.view.ui.details
 import android.content.Intent
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
+import com.aurora.Constants
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.AuthData
 import com.aurora.gplayapi.data.models.StreamCluster
@@ -33,7 +34,6 @@ import com.aurora.store.databinding.ActivityDevProfileBinding
 import com.aurora.store.util.extensions.close
 import com.aurora.store.util.extensions.load
 import com.aurora.store.view.epoxy.controller.DeveloperCarouselController
-import com.aurora.store.view.epoxy.controller.EarlyAccessCarouselController
 import com.aurora.store.view.epoxy.controller.GenericCarouselController
 import com.aurora.store.view.ui.commons.BaseActivity
 import com.aurora.store.viewmodel.details.DevProfileViewModel
@@ -104,6 +104,13 @@ class DevProfileActivity : BaseActivity(), GenericCarouselController.Callbacks {
                 } else {
                     VM.getStreamBundle(devId)
                 }
+            } else {
+                intent.getStringExtra(Constants.BROWSE_EXTRA)?.let {
+                    VM.getStreamBundle(it.substringAfter("developer-"))
+                }
+                intent.getStringExtra(Constants.STRING_EXTRA)?.let {
+                    B.layoutToolbarAction.txtTitle.text = it
+                }
             }
         } else {
             close()
@@ -134,7 +141,7 @@ class DevProfileActivity : BaseActivity(), GenericCarouselController.Callbacks {
     }
 
     override fun onHeaderClicked(streamCluster: StreamCluster) {
-        openStreamBrowseActivity(streamCluster.clusterBrowseUrl)
+        openStreamBrowseActivity(streamCluster.clusterBrowseUrl, streamCluster.clusterTitle)
     }
 
     override fun onClusterScrolled(streamCluster: StreamCluster) {

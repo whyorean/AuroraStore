@@ -37,6 +37,7 @@ import com.aurora.store.view.ui.account.GoogleActivity
 import com.aurora.store.view.ui.details.AppDetailsActivity
 import com.aurora.store.view.ui.details.DetailsMoreActivity
 import com.aurora.store.view.ui.details.DetailsReviewActivity
+import com.aurora.store.view.ui.details.DevProfileActivity
 import com.aurora.store.view.ui.sheets.NetworkDialogSheet
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
@@ -99,9 +100,15 @@ abstract class BaseActivity : AppCompatActivity(), NetworkProvider.NetworkListen
         }
     }
 
-    fun openStreamBrowseActivity(browseUrl: String) {
-        val intent = Intent(this, StreamBrowseActivity::class.java)
+    fun openStreamBrowseActivity(browseUrl: String, title: String = "") {
+        val intent = if (browseUrl.toLowerCase().contains("expanded"))
+            Intent(this, ExpandedStreamBrowseActivity::class.java)
+        else if (browseUrl.toLowerCase().contains("developer"))
+            Intent(this, DevProfileActivity::class.java)
+        else
+            Intent(this, StreamBrowseActivity::class.java)
         intent.putExtra(Constants.BROWSE_EXTRA, browseUrl)
+        intent.putExtra(Constants.STRING_EXTRA, title)
         startActivity(
             intent,
             ViewUtil.getEmptyActivityBundle(this)

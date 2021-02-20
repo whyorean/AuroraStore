@@ -29,13 +29,13 @@ import com.aurora.store.view.custom.recycler.EndlessRecyclerOnScrollListener
 import com.aurora.store.view.epoxy.views.AppProgressViewModel_
 import com.aurora.store.view.epoxy.views.app.AppListViewModel_
 import com.aurora.store.view.epoxy.views.shimmer.AppListViewShimmerModel_
-import com.aurora.store.viewmodel.browse.StreamBrowseViewModel
+import com.aurora.store.viewmodel.browse.ExpandedStreamBrowseViewModel
 
 
-class StreamBrowseActivity : BaseActivity() {
+class ExpandedStreamBrowseActivity : BaseActivity() {
 
     lateinit var B: ActivityGenericRecyclerBinding
-    lateinit var VM: StreamBrowseViewModel
+    lateinit var VM: ExpandedStreamBrowseViewModel
 
     lateinit var endlessRecyclerOnScrollListener: EndlessRecyclerOnScrollListener
 
@@ -54,12 +54,11 @@ class StreamBrowseActivity : BaseActivity() {
 
     }
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         B = ActivityGenericRecyclerBinding.inflate(layoutInflater)
-        VM = ViewModelProvider(this).get(StreamBrowseViewModel::class.java)
+        VM = ViewModelProvider(this).get(ExpandedStreamBrowseViewModel::class.java)
 
         setContentView(B.root)
 
@@ -77,7 +76,10 @@ class StreamBrowseActivity : BaseActivity() {
 
         intent.apply {
             getStringExtra(Constants.BROWSE_EXTRA)?.let {
-                VM.getStreamBundle(it)
+                VM.getInitialCluster(it)
+            }
+            getStringExtra(Constants.STRING_EXTRA)?.let {
+                B.layoutToolbarAction.txtTitle.text = it
             }
         }
 
@@ -85,7 +87,8 @@ class StreamBrowseActivity : BaseActivity() {
     }
 
     private fun updateTitle(streamCluster: StreamCluster) {
-        B.layoutToolbarAction.txtTitle.text = streamCluster.clusterTitle
+        if (streamCluster.clusterTitle.isNotEmpty())
+            B.layoutToolbarAction.txtTitle.text = streamCluster.clusterTitle
     }
 
     private fun attachToolbar() {
@@ -97,7 +100,7 @@ class StreamBrowseActivity : BaseActivity() {
     private fun attachRecycler() {
         endlessRecyclerOnScrollListener = object : EndlessRecyclerOnScrollListener() {
             override fun onLoadMore(currentPage: Int) {
-                VM.nextCluster()
+                VM.next()
             }
         }
         B.recycler.addOnScrollListener(endlessRecyclerOnScrollListener)
@@ -115,6 +118,7 @@ class StreamBrowseActivity : BaseActivity() {
                 }
             } else {
                 streamCluster.clusterAppList.forEach {
+
                     add(
                         AppListViewModel_()
                             .id(it.packageName.hashCode())

@@ -294,7 +294,10 @@ abstract class BaseDetailsActivity : BaseActivity() {
                 DetailsCarouselController(object : GenericCarouselController.Callbacks {
                     override fun onHeaderClicked(streamCluster: StreamCluster) {
                         if (streamCluster.clusterBrowseUrl.isNotEmpty())
-                            openStreamBrowseActivity(streamCluster.clusterBrowseUrl)
+                            openStreamBrowseActivity(
+                                streamCluster.clusterBrowseUrl,
+                                streamCluster.clusterTitle
+                            )
                         else
                             toast("Browse page unavailable")
                     }
