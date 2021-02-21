@@ -23,7 +23,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.aurora.Constants
 import com.aurora.gplayapi.data.models.App
@@ -140,8 +139,6 @@ class ForYouFragment : BaseFragment(), GenericCarouselController.Callbacks {
     override fun onHeaderClicked(streamCluster: StreamCluster) {
         if (streamCluster.clusterBrowseUrl.isNotEmpty())
             openStreamBrowseActivity(streamCluster.clusterBrowseUrl, streamCluster.clusterTitle)
-        else
-            Toast.makeText(requireContext(), "Browse page unavailable", Toast.LENGTH_SHORT).show()
     }
 
     override fun onClusterScrolled(streamCluster: StreamCluster) {
@@ -153,6 +150,6 @@ class ForYouFragment : BaseFragment(), GenericCarouselController.Callbacks {
     }
 
     override fun onAppLongClick(app: App) {
-        AppPeekDialogSheet.newInstance(app).show(parentFragmentManager, "APDS")
+
     }
 }
