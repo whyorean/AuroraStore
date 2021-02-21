@@ -21,8 +21,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:minWidth="72dp"
-    android:padding="@dimen/padding_small">
+    android:paddingStart="@dimen/padding_normal"
+    android:paddingEnd="@dimen/padding_normal"
+    android:paddingTop="@dimen/padding_xsmall"
+    android:paddingBottom="@dimen/padding_xsmall">
 
     <LinearLayout
         android:layout_width="match_parent"
