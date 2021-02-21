@@ -75,6 +75,7 @@ class LargeScreenshotView : RelativeLayout {
         val displayMetrics = Resources.getSystem().displayMetrics
         GlideApp.with(context)
             .load("${artwork.url}=rw-w${displayMetrics.widthPixels}-v1-e15")
+            .placeholder(R.drawable.bg_placeholder)
             .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
             .addListener(object : RequestListener<Drawable> {
                 override fun onLoadFailed(
@@ -98,7 +99,6 @@ class LargeScreenshotView : RelativeLayout {
                             B.img.layoutParams.height = artwork.height.px.toInt()
                             B.img.layoutParams.width = artwork.width.px.toInt()
                         } else {
-                            val displayMetrics = Resources.getSystem().displayMetrics
                             val height = displayMetrics.heightPixels
                             val width = displayMetrics.widthPixels
                             B.img.layoutParams.width = width
