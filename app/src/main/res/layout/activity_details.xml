@@ -99,6 +99,8 @@
                             android:paddingStart="@dimen/padding_small"
                             android:paddingEnd="@dimen/padding_small"
                             app:itemSpacing="@dimen/margin_small"
+                            android:scrollbars="none"
+                            android:overScrollMode="never"
                             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                             tools:listitem="@layout/view_app" />
 
