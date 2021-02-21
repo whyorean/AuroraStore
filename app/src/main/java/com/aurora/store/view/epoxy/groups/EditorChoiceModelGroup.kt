@@ -48,21 +48,32 @@ class EditorChoiceModelGroup(
 
             val idPrefix = editorChoiceCluster.id
 
+
+            models.add(
+                EditorImageViewModel_()
+                    .id("artwork_header_${idPrefix}")
+                    .artwork(editorChoiceCluster.clusterArtwork[0])
+                    .click { _ -> callbacks.onClick(editorChoiceCluster) }
+
+            )
+
             models.add(
                 EditorHeadViewModel_()
                     .id("header_${idPrefix}")
                     .title(editorChoiceCluster.clusterTitle)
             )
 
-            editorChoiceCluster.clusterArtwork.forEach {
-                clusterViewModels.add(
-                    EditorImageViewModel_()
-                        .id("artwork_${idPrefix}")
-                        .artwork(it)
-                        .click { _ -> callbacks.onClick(editorChoiceCluster) }
+            editorChoiceCluster.clusterArtwork
+                .drop(1)
+                .forEach {
+                    clusterViewModels.add(
+                        EditorImageViewModel_()
+                            .id("artwork_${idPrefix}_${it.url}")
+                            .artwork(it)
+                            .click { _ -> callbacks.onClick(editorChoiceCluster) }
 
-                )
-            }
+                    )
+                }
 
             models.add(
                 CarouselHorizontalModel_()

@@ -19,7 +19,6 @@
 
 package com.aurora.store.view.ui.details
 
-import android.app.ActivityOptions
 import android.content.Intent
 import android.os.Build
 import android.text.Html
@@ -363,23 +362,6 @@ abstract class BaseDetailsActivity : BaseActivity() {
             return bundle!!.getString(Constants.STRING_EXTRA)
         }
         return null
-    }
-
-    private fun openScreenshotActivity(app: App, position: Int) {
-        val intent = Intent(
-            this,
-            ScreenshotActivity::class.java
-        ).apply {
-            putExtra(Constants.STRING_EXTRA, gson.toJson(app.screenshots))
-            putExtra(Constants.INT_EXTRA, position)
-        }
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            val options =
-                ActivityOptions.makeSceneTransitionAnimation(this)
-            startActivity(intent, options.toBundle())
-        } else {
-            startActivity(intent)
-        }
     }
 
     private fun addAvgReviews(number: Int, max: Long, rating: Long): RelativeLayout {

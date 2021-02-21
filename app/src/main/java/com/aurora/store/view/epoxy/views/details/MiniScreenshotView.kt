@@ -17,10 +17,9 @@
  *
  */
 
-package com.aurora.store.view.epoxy.views
+package com.aurora.store.view.epoxy.views.details
 
 import android.content.Context
-import android.content.res.Resources
 import android.util.AttributeSet
 import android.widget.RelativeLayout
 import com.airbnb.epoxy.CallbackProp
@@ -29,10 +28,11 @@ import com.airbnb.epoxy.ModelView
 import com.airbnb.epoxy.OnViewRecycled
 import com.aurora.gplayapi.data.models.Artwork
 import com.aurora.store.R
-import com.aurora.store.databinding.ViewEditorImageBinding
+import com.aurora.store.databinding.ViewScreenshotMiniBinding
 import com.aurora.store.util.extensions.clear
 import com.aurora.store.util.extensions.load
 import com.aurora.store.util.extensions.px
+import com.aurora.store.view.epoxy.views.BaseView
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 
@@ -40,9 +40,15 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
     autoLayout = ModelView.Size.WRAP_WIDTH_WRAP_HEIGHT,
     baseModelClass = BaseView::class
 )
-class EditorImageView : RelativeLayout {
+class MiniScreenshotView : RelativeLayout {
 
-    private lateinit var B: ViewEditorImageBinding
+    private lateinit var B: ViewScreenshotMiniBinding
+
+    private var position: Int = 0
+
+    interface ScreenshotCallback {
+        fun onClick(position: Int = 0)
+    }
 
     constructor(context: Context?) : super(context) {
         init(context, null)
@@ -61,36 +67,56 @@ class EditorImageView : RelativeLayout {
     }
 
     private fun init(context: Context?, attrs: AttributeSet?) {
-        val view = inflate(context, R.layout.view_editor_image, this)
-        B = ViewEditorImageBinding.bind(view)
+        val view = inflate(context, R.layout.view_screenshot_mini, this)
+        B = ViewScreenshotMiniBinding.bind(view)
+    }
+
+    @ModelProp
+    fun position(pos: Int) {
+        position = pos
     }
 
     @ModelProp
     fun artwork(artwork: Artwork) {
-        when (artwork.type) {
-            14 -> {
-                B.img.layoutParams.height = 108.px.toInt()
-                B.img.layoutParams.width = 192.px.toInt()
-                B.img.requestLayout()
+        normalizeSize(artwork)
+        B.img.load("${artwork.url}=rw-w480-v1-e15", DrawableTransitionOptions.withCrossFade()) {
+            placeholder(R.drawable.bg_rounded)
+            transform(RoundedCorners(8.px.toInt()))
+        }
+    }
 
-                B.img.load(artwork.url, DrawableTransitionOptions.withCrossFade()) {
-                    transform(RoundedCorners(8.px.toInt()))
+    private fun normalizeSize(artwork: Artwork) {
+        if (artwork.height != 0 && artwork.width != 0) {
+
+            val artworkHeight = artwork.height
+            val artworkWidth = artwork.width
+
+            val normalizedHeight: Float
+            val normalizedWidth: Float
+
+            when {
+                artworkHeight == artworkWidth -> {
+                    normalizedHeight = 120f
+                    normalizedWidth = 120f
+                }
+                else -> {
+                    val factor = artworkHeight / 120f
+                    normalizedHeight = 120f
+                    normalizedWidth = (artworkWidth / factor)
                 }
             }
-            else -> {
-                B.img.layoutParams.width = 24.px.toInt()
-                B.img.layoutParams.height = 24.px.toInt()
-                B.img.requestLayout()
-                B.img.load(artwork.url, DrawableTransitionOptions.withCrossFade()) {
-                    transform(RoundedCorners(4.px.toInt()))
-                }
-            }
+
+            B.img.layoutParams.height = normalizedHeight.px.toInt()
+            B.img.layoutParams.width = normalizedWidth.px.toInt()
+            B.img.requestLayout()
         }
     }
 
     @CallbackProp
-    fun click(onClickListener: OnClickListener?) {
-        B.root.setOnClickListener(onClickListener)
+    fun callback(screenshotCallback: ScreenshotCallback?) {
+        B.img.setOnClickListener {
+            screenshotCallback?.onClick(position)
+        }
     }
 
     @OnViewRecycled

@@ -34,10 +34,7 @@ import com.aurora.store.util.Preferences.PREFERENCE_THEME_TYPE
 import com.aurora.store.util.ViewUtil
 import com.aurora.store.util.extensions.applyTheme
 import com.aurora.store.view.ui.account.GoogleActivity
-import com.aurora.store.view.ui.details.AppDetailsActivity
-import com.aurora.store.view.ui.details.DetailsMoreActivity
-import com.aurora.store.view.ui.details.DetailsReviewActivity
-import com.aurora.store.view.ui.details.DevProfileActivity
+import com.aurora.store.view.ui.details.*
 import com.aurora.store.view.ui.sheets.NetworkDialogSheet
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
@@ -113,6 +110,23 @@ abstract class BaseActivity : AppCompatActivity(), NetworkProvider.NetworkListen
             intent,
             ViewUtil.getEmptyActivityBundle(this)
         )
+    }
+
+    fun openScreenshotActivity(app: App, position: Int) {
+        val intent = Intent(
+            this,
+            ScreenshotActivity::class.java
+        ).apply {
+            putExtra(Constants.STRING_EXTRA, gson.toJson(app.screenshots))
+            putExtra(Constants.INT_EXTRA, position)
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            val options =
+                ActivityOptions.makeSceneTransitionAnimation(this)
+            startActivity(intent, options.toBundle())
+        } else {
+            startActivity(intent)
+        }
     }
 
     fun openGoogleActivity() {

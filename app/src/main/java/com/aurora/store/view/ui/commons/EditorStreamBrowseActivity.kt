@@ -21,11 +21,15 @@ package com.aurora.store.view.ui.commons
 
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
+import com.airbnb.epoxy.EpoxyModel
 import com.aurora.Constants
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.databinding.ActivityGenericRecyclerBinding
 import com.aurora.store.util.extensions.close
+import com.aurora.store.view.epoxy.groups.CarouselHorizontalModel_
 import com.aurora.store.view.epoxy.views.app.AppListViewModel_
+import com.aurora.store.view.epoxy.views.details.MiniScreenshotView
+import com.aurora.store.view.epoxy.views.details.MiniScreenshotViewModel_
 import com.aurora.store.view.epoxy.views.shimmer.AppListViewShimmerModel_
 import com.aurora.store.viewmodel.editorschoice.EditorBrowseViewModel
 
@@ -92,6 +96,29 @@ class EditorStreamBrowseActivity : BaseActivity() {
                 }
             } else {
                 appList.forEach {
+                    val screenshotsViewModels = mutableListOf<EpoxyModel<*>>()
+
+                    for ((position, artwork) in it.screenshots.withIndex()) {
+                        screenshotsViewModels.add(
+                            MiniScreenshotViewModel_()
+                                .id(artwork.url)
+                                .position(position)
+                                .artwork(artwork)
+                                .callback(object : MiniScreenshotView.ScreenshotCallback {
+                                    override fun onClick(position: Int) {
+                                        openScreenshotActivity(it, position)
+                                    }
+                                })
+                        )
+                    }
+
+                    if (screenshotsViewModels.isNotEmpty()) {
+                        add(
+                            CarouselHorizontalModel_()
+                                .id("${it.id}_screenshots")
+                                .models(screenshotsViewModels)
+                        )
+                    }
 
                     add(
                         AppListViewModel_()

@@ -17,19 +17,9 @@
   ~
   -->
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:padding="@dimen/padding_small">
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <corners android:radius="8dp" />
+    <solid android:color="@color/colorScrim" />
+</shape>
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:maxLines="4"
-        android:singleLine="false"
-        android:textAppearance="@style/TextAppearance.Aurora.Line1"
-        app:drawableTint="?colorControlNormal" />
-</RelativeLayout>

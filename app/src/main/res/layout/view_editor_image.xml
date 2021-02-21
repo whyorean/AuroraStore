@@ -23,6 +23,6 @@
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/img"
-        android:layout_width="@dimen/icon_size_large"
-        android:layout_height="@dimen/icon_size_large" />
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </RelativeLayout>
