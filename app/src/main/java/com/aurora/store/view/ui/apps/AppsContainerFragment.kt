@@ -70,10 +70,10 @@ class AppsContainerFragment : Fragment() {
 
         TabLayoutMediator(B.tabLayout, B.pager, true) { tab: TabLayout.Tab, position: Int ->
             when (position) {
-                0 -> tab.text = "For you"
-                1 -> tab.text = "Top charts"
-                2 -> tab.text = "Categories"
-                3 -> tab.text = "Editor's choice"
+                0 -> tab.text = getString(R.string.tab_for_you)
+                1 -> tab.text = getString(R.string.tab_top_charts)
+                2 -> tab.text = getString(R.string.tab_categories)
+                3 -> tab.text = getString(R.string.tab_editor_choice)
                 else -> {
                 }
             }
