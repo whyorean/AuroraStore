@@ -22,6 +22,7 @@ package com.aurora.store.view.epoxy.views
 import android.content.Context
 import android.util.AttributeSet
 import android.widget.RelativeLayout
+import com.airbnb.epoxy.CallbackProp
 import com.airbnb.epoxy.ModelProp
 import com.airbnb.epoxy.ModelView
 import com.airbnb.epoxy.OnViewRecycled
@@ -81,6 +82,11 @@ class EditorImageView : RelativeLayout {
                 }
             }
         }
+    }
+
+    @CallbackProp
+    fun click(onClickListener: OnClickListener?) {
+        B.root.setOnClickListener(onClickListener)
     }
 
     @OnViewRecycled

@@ -79,4 +79,14 @@ open class BaseFragment : Fragment() {
             ViewUtil.getEmptyActivityBundle(requireContext())
         )
     }
+
+    fun openEditorStreamBrowseActivity(browseUrl: String, title: String = "") {
+        val intent = Intent(requireContext(), EditorStreamBrowseActivity::class.java)
+        intent.putExtra(Constants.BROWSE_EXTRA, browseUrl)
+        intent.putExtra(Constants.STRING_EXTRA, title)
+        startActivity(
+            intent,
+            ViewUtil.getEmptyActivityBundle(requireContext())
+        )
+    }
 }

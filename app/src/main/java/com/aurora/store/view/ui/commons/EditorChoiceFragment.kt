@@ -23,7 +23,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.aurora.Constants
 import com.aurora.gplayapi.data.models.editor.EditorChoiceBundle
@@ -35,7 +34,7 @@ import com.aurora.store.viewmodel.editorschoice.AppEditorChoiceViewModel
 import com.aurora.store.viewmodel.editorschoice.BaseEditorChoiceViewModel
 import com.aurora.store.viewmodel.editorschoice.GameEditorChoiceViewModel
 
-class EditorChoiceFragment : Fragment(), EditorChoiceController.Callbacks {
+class EditorChoiceFragment : BaseFragment(), EditorChoiceController.Callbacks {
 
     private lateinit var B: FragmentForYouBinding
     private lateinit var C: EditorChoiceController
@@ -97,6 +96,9 @@ class EditorChoiceFragment : Fragment(), EditorChoiceController.Callbacks {
     }
 
     override fun onClick(editorChoiceCluster: EditorChoiceCluster) {
-
+        openEditorStreamBrowseActivity(
+            editorChoiceCluster.clusterBrowseUrl,
+            editorChoiceCluster.clusterTitle
+        )
     }
 }

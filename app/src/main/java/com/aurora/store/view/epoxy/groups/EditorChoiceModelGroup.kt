@@ -24,8 +24,8 @@ import com.airbnb.epoxy.EpoxyModelGroup
 import com.aurora.gplayapi.data.models.editor.EditorChoiceCluster
 import com.aurora.store.R
 import com.aurora.store.view.epoxy.controller.EditorChoiceController
+import com.aurora.store.view.epoxy.views.EditorHeadViewModel_
 import com.aurora.store.view.epoxy.views.EditorImageViewModel_
-import com.aurora.store.view.epoxy.views.HeaderViewModel_
 
 class EditorChoiceModelGroup(
     editorChoiceCluster: EditorChoiceCluster,
@@ -49,11 +49,9 @@ class EditorChoiceModelGroup(
             val idPrefix = editorChoiceCluster.id
 
             models.add(
-                HeaderViewModel_()
+                EditorHeadViewModel_()
                     .id("header_${idPrefix}")
                     .title(editorChoiceCluster.clusterTitle)
-                    .browseUrl(editorChoiceCluster.clusterBrowseUrl)
-                    .click { _ -> callbacks.onClick(editorChoiceCluster) }
             )
 
             editorChoiceCluster.clusterArtwork.forEach {
@@ -61,6 +59,8 @@ class EditorChoiceModelGroup(
                     EditorImageViewModel_()
                         .id("artwork_${idPrefix}")
                         .artwork(it)
+                        .click { _ -> callbacks.onClick(editorChoiceCluster) }
+
                 )
             }
 
