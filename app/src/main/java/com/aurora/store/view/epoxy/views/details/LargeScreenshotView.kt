@@ -72,8 +72,9 @@ class LargeScreenshotView : RelativeLayout {
 
     @ModelProp
     fun artwork(artwork: Artwork) {
+        val displayMetrics = Resources.getSystem().displayMetrics
         GlideApp.with(context)
-            .load(artwork.url)
+            .load("${artwork.url}=rw-w${displayMetrics.widthPixels}-v1-e15")
             .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
             .addListener(object : RequestListener<Drawable> {
                 override fun onLoadFailed(

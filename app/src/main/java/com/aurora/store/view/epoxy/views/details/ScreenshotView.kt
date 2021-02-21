@@ -20,6 +20,7 @@
 package com.aurora.store.view.epoxy.views.details
 
 import android.content.Context
+import android.content.res.Resources
 import android.util.AttributeSet
 import android.widget.RelativeLayout
 import com.airbnb.epoxy.CallbackProp
@@ -29,6 +30,7 @@ import com.airbnb.epoxy.OnViewRecycled
 import com.aurora.gplayapi.data.models.Artwork
 import com.aurora.store.R
 import com.aurora.store.databinding.ViewScreenshotBinding
+import com.aurora.store.util.Log
 import com.aurora.store.util.extensions.clear
 import com.aurora.store.util.extensions.load
 import com.aurora.store.util.extensions.px
@@ -79,7 +81,7 @@ class ScreenshotView : RelativeLayout {
     @ModelProp
     fun artwork(artwork: Artwork) {
         normalizeSize(artwork)
-        B.img.load("${artwork.url}=rw-h480-v1-e15", DrawableTransitionOptions.withCrossFade()) {
+        B.img.load("${artwork.url}=rw-w480-v1-e15", DrawableTransitionOptions.withCrossFade()) {
             placeholder(R.drawable.bg_rounded)
             transform(RoundedCorners(8.px.toInt()))
         }
@@ -88,22 +90,22 @@ class ScreenshotView : RelativeLayout {
     private fun normalizeSize(artwork: Artwork) {
         if (artwork.height != 0 && artwork.width != 0) {
 
-            val viewHeight = artwork.height
-            val viewWidth = artwork.width
+            val artworkHeight = artwork.height
+            val artworkWidth = artwork.width
 
-            var normalizedHeight: Int = viewHeight
-            var normalizedWidth: Int = viewWidth
+            val normalizedHeight: Float
+            val normalizedWidth: Float
 
-
-            if (viewHeight == viewWidth) {
-                normalizedHeight = 240
-                normalizedWidth = 240
-            } else if (viewHeight > viewWidth) {
-                normalizedHeight = 240
-                normalizedWidth = 135
-            } else if (viewHeight < viewWidth) {
-                normalizedHeight = 240
-                normalizedWidth = 427
+            when {
+                artworkHeight == artworkWidth -> {
+                    normalizedHeight = 192f
+                    normalizedWidth = 192f
+                }
+                else -> {
+                    val factor = artworkHeight / 192f
+                    normalizedHeight = 192f
+                    normalizedWidth = (artworkWidth / factor)
+                }
             }
 
             B.img.layoutParams.height = normalizedHeight.px.toInt()

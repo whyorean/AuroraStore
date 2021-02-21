@@ -44,8 +44,8 @@
     <dimen name="icon_size_avatar">108dp</dimen>
 
     <!--Almost 16 : 9-->
-    <dimen name="screenshot_height">240dp</dimen>
-    <dimen name="screenshot_width">135dp</dimen>
+    <dimen name="screenshot_height">192dp</dimen>
+    <dimen name="screenshot_width">108dp</dimen>
 
     <dimen name="height_bottom_adj">64dp</dimen>
 
