@@ -27,6 +27,8 @@ import com.aurora.gplayapi.data.models.App
 import com.aurora.store.databinding.ActivityGenericRecyclerBinding
 import com.aurora.store.util.extensions.close
 import com.aurora.store.view.epoxy.groups.CarouselHorizontalModel_
+import com.aurora.store.view.epoxy.views.EditorHeadViewModel_
+import com.aurora.store.view.epoxy.views.HorizontalDividerViewModel_
 import com.aurora.store.view.epoxy.views.app.AppListViewModel_
 import com.aurora.store.view.epoxy.views.details.MiniScreenshotView
 import com.aurora.store.view.epoxy.views.details.MiniScreenshotViewModel_
@@ -95,10 +97,10 @@ class EditorStreamBrowseActivity : BaseActivity() {
                     )
                 }
             } else {
-                appList.forEach {
+                appList.forEach { app ->
                     val screenshotsViewModels = mutableListOf<EpoxyModel<*>>()
 
-                    for ((position, artwork) in it.screenshots.withIndex()) {
+                    for ((position, artwork) in app.screenshots.withIndex()) {
                         screenshotsViewModels.add(
                             MiniScreenshotViewModel_()
                                 .id(artwork.url)
@@ -106,25 +108,54 @@ class EditorStreamBrowseActivity : BaseActivity() {
                                 .artwork(artwork)
                                 .callback(object : MiniScreenshotView.ScreenshotCallback {
                                     override fun onClick(position: Int) {
-                                        openScreenshotActivity(it, position)
+                                        openScreenshotActivity(app, position)
                                     }
                                 })
+                        )
+                    }
+
+                    add(
+                        AppListViewModel_()
+                            .id("app_${app.id}")
+                            .app(app)
+                            .click { _ -> openDetailsActivity(app) }
+                    )
+
+                    app.editorReason?.let { editorReason ->
+                        add(
+                            EditorHeadViewModel_()
+                                .id("bulletin_${app.id}")
+                                .title(
+                                    editorReason.bulletins
+                                        .joinToString(transform = { "\n• $it" })
+                                        .substringAfter(delimiter = "\n")
+                                )
+                                .click { _ -> openDetailsActivity(app) }
                         )
                     }
 
                     if (screenshotsViewModels.isNotEmpty()) {
                         add(
                             CarouselHorizontalModel_()
-                                .id("${it.id}_screenshots")
+                                .id("screenshots_${app.id}")
                                 .models(screenshotsViewModels)
                         )
                     }
 
+                    app.editorReason?.let { editorReason ->
+                        if (editorReason.description.isNotEmpty()) {
+                            add(
+                                EditorHeadViewModel_()
+                                    .id("description_${app.id}")
+                                    .title(editorReason.description)
+                                    .click { _ -> openDetailsActivity(app) }
+                            )
+                        }
+                    }
+
                     add(
-                        AppListViewModel_()
-                            .id(it.packageName.hashCode())
-                            .app(it)
-                            .click { _ -> openDetailsActivity(it) }
+                        HorizontalDividerViewModel_()
+                            .id("divider_${app.id}")
                     )
                 }
             }

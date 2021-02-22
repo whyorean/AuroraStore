@@ -60,7 +60,7 @@ class EditorBrowseViewModel(application: Application) : BaseAndroidViewModel(app
                         streamHelper.getNextStreamResponse(browseResponse.browseTab.listUrl)
 
                     listResponse.itemList.forEach {
-                        it?.let{
+                        it?.let {
                             it.subItemList.forEach {
                                 appList.addAll(streamHelper.getAppsFromItem(it))
                             }

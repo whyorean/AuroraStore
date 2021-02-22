@@ -30,13 +30,10 @@ import com.aurora.store.view.epoxy.views.EditorImageViewModel_
 class EditorChoiceModelGroup(
     editorChoiceCluster: EditorChoiceCluster,
     callbacks: EditorChoiceController.Callbacks
-) :
-    EpoxyModelGroup(
-        R.layout.model_editorchoice_group, buildModels(
-            editorChoiceCluster,
-            callbacks
-        )
-    ) {
+) : EpoxyModelGroup(
+    R.layout.model_editorchoice_group,
+    buildModels(editorChoiceCluster, callbacks)
+) {
     companion object {
         private fun buildModels(
             editorChoiceCluster: EditorChoiceCluster,
@@ -61,6 +58,7 @@ class EditorChoiceModelGroup(
                 EditorHeadViewModel_()
                     .id("header_${idPrefix}")
                     .title(editorChoiceCluster.clusterTitle)
+                    .click { _ -> callbacks.onClick(editorChoiceCluster) }
             )
 
             editorChoiceCluster.clusterArtwork
