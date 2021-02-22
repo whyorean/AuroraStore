@@ -27,9 +27,10 @@ import androidx.core.content.FileProvider
 import com.aurora.store.BuildConfig
 import java.io.File
 
+private val enqueuedInstalls: MutableSet<String> = mutableSetOf()
+
 abstract class InstallerBase(protected var context: Context) : IInstaller {
 
-    private val enqueuedInstalls: MutableSet<String> = mutableSetOf()
 
     override fun clearQueue() {
         enqueuedInstalls.clear()
