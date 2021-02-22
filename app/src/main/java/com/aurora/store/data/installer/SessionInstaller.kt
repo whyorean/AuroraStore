@@ -106,13 +106,11 @@ class SessionInstaller(context: Context) : InstallerBase(context) {
             file
         )
 
-        uri.apply {
-            context.grantUriPermission(
-                BuildConfig.APPLICATION_ID,
-                uri,
-                Intent.FLAG_GRANT_READ_URI_PERMISSION
-            )
-        }
+        context.grantUriPermission(
+            BuildConfig.APPLICATION_ID,
+            uri,
+            Intent.FLAG_GRANT_READ_URI_PERMISSION or Intent.FLAG_GRANT_WRITE_URI_PERMISSION
+        )
 
         return uri
     }

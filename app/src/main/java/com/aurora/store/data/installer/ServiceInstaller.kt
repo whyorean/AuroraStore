@@ -28,6 +28,7 @@ import android.os.Build
 import android.os.IBinder
 import android.os.RemoteException
 import androidx.annotation.RequiresApi
+import androidx.core.content.FileProvider
 import com.aurora.services.IPrivilegedCallback
 import com.aurora.services.IPrivilegedService
 import com.aurora.store.BuildConfig
@@ -102,5 +103,21 @@ class ServiceInstaller(context: Context) : InstallerBase(context) {
             serviceConnection,
             Context.BIND_AUTO_CREATE
         )
+    }
+
+    override fun getUri(file: File): Uri {
+        val uri = FileProvider.getUriForFile(
+            context,
+            "${BuildConfig.APPLICATION_ID}.fileProvider",
+            file
+        )
+
+        context.grantUriPermission(
+            PRIVILEGED_EXTENSION_PACKAGE_NAME,
+            uri,
+            Intent.FLAG_GRANT_READ_URI_PERMISSION or Intent.FLAG_GRANT_WRITE_URI_PERMISSION
+        )
+
+        return uri
     }
 }
