@@ -39,7 +39,7 @@ import com.aurora.store.data.receiver.DownloadResumeReceiver
 import com.aurora.store.data.receiver.InstallReceiver
 import com.aurora.store.util.CommonUtil
 import com.aurora.store.util.Log
-import com.aurora.store.util.extensions.isLAndAbove
+import com.aurora.extensions.isLAndAbove
 import com.aurora.store.view.ui.details.AppDetailsActivity
 import com.aurora.store.view.ui.downloads.DownloadActivity
 import com.google.gson.Gson

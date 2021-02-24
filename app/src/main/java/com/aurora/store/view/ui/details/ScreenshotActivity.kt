@@ -27,7 +27,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.aurora.Constants
 import com.aurora.gplayapi.data.models.Artwork
 import com.aurora.store.databinding.ActivityScreenshotBinding
-import com.aurora.store.util.extensions.close
+import com.aurora.extensions.close
 import com.aurora.store.view.epoxy.views.details.LargeScreenshotViewModel_
 import com.aurora.store.view.ui.commons.BaseActivity
 import com.google.gson.reflect.TypeToken

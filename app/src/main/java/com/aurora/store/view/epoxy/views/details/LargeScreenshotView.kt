@@ -31,9 +31,9 @@ import com.aurora.gplayapi.data.models.Artwork
 import com.aurora.store.GlideApp
 import com.aurora.store.R
 import com.aurora.store.databinding.ViewScreenshotLargeBinding
-import com.aurora.store.util.extensions.clear
-import com.aurora.store.util.extensions.px
-import com.aurora.store.util.extensions.runOnUiThread
+import com.aurora.extensions.clear
+import com.aurora.extensions.px
+import com.aurora.extensions.runOnUiThread
 import com.aurora.store.view.epoxy.views.BaseView
 import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.DiskCacheStrategy

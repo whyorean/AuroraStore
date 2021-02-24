@@ -29,6 +29,9 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.LinearLayout
 import com.aurora.Constants
+import com.aurora.extensions.isLAndAbove
+import com.aurora.extensions.load
+import com.aurora.extensions.toast
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.AuthData
 import com.aurora.gplayapi.data.models.File
@@ -44,7 +47,7 @@ import com.aurora.store.data.network.HttpClient
 import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.databinding.ActivityDetailsBinding
 import com.aurora.store.util.*
-import com.aurora.store.util.extensions.*
+import com.aurora.extensions.*
 import com.aurora.store.view.ui.downloads.DownloadActivity
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.google.android.material.bottomsheet.BottomSheetBehavior

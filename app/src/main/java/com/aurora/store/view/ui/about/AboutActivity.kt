@@ -26,10 +26,10 @@ import com.aurora.store.BuildConfig
 import com.aurora.store.R
 import com.aurora.store.data.model.Link
 import com.aurora.store.databinding.ActivityAboutBinding
-import com.aurora.store.util.extensions.browse
-import com.aurora.store.util.extensions.close
-import com.aurora.store.util.extensions.copyToClipBoard
-import com.aurora.store.util.extensions.load
+import com.aurora.extensions.browse
+import com.aurora.extensions.close
+import com.aurora.extensions.copyToClipBoard
+import com.aurora.extensions.load
 import com.aurora.store.view.epoxy.views.preference.LinkViewModel_
 import com.aurora.store.view.ui.commons.BaseActivity
 

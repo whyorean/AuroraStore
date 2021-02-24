@@ -24,7 +24,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.aurora.Constants
 import com.aurora.gplayapi.data.models.StreamCluster
 import com.aurora.store.databinding.ActivityGenericRecyclerBinding
-import com.aurora.store.util.extensions.close
+import com.aurora.extensions.close
 import com.aurora.store.view.custom.recycler.EndlessRecyclerOnScrollListener
 import com.aurora.store.view.epoxy.views.AppProgressViewModel_
 import com.aurora.store.view.epoxy.views.app.AppListViewModel_

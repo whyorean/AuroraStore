@@ -17,25 +17,25 @@
  *
  */
 
-package com.aurora.store.util.extensions
+package com.aurora.extensions
 
 import android.os.Build
-import android.text.format.DateFormat
-import androidx.annotation.RequiresApi
-import java.util.*
 
-fun Long.toDate(): String {
-    val calendar = Calendar.getInstance(Locale.getDefault())
-    calendar.timeInMillis = this
-    return DateFormat.format("dd/MM/yy", calendar).toString()
-}
 
 fun isLAndAbove(): Boolean {
     return Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP
 }
 
+fun isMAndAbove(): Boolean {
+    return Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
+}
+
 fun isNAndAbove(): Boolean {
     return Build.VERSION.SDK_INT >= Build.VERSION_CODES.N
+}
+
+fun isOAndAbove(): Boolean {
+    return Build.VERSION.SDK_INT >= Build.VERSION_CODES.O
 }
 
 fun isPAndAbove(): Boolean {

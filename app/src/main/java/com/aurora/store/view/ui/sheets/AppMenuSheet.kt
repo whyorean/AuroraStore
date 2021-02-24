@@ -34,8 +34,8 @@ import com.aurora.store.data.providers.BlacklistProvider
 import com.aurora.store.databinding.SheetAppMenuBinding
 import com.aurora.store.util.ApkCopier
 import com.aurora.store.util.PackageUtil
-import com.aurora.store.util.extensions.openInfo
-import com.aurora.store.util.extensions.toast
+import com.aurora.extensions.openInfo
+import com.aurora.extensions.toast
 import com.livinglifetechway.quickpermissions_kotlin.runWithPermissions
 import nl.komponents.kovenant.task
 import org.greenrobot.eventbus.EventBus

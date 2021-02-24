@@ -43,10 +43,10 @@ import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.databinding.*
 import com.aurora.store.util.CommonUtil
 import com.aurora.store.util.NavigationUtil
-import com.aurora.store.util.extensions.hide
-import com.aurora.store.util.extensions.load
-import com.aurora.store.util.extensions.show
-import com.aurora.store.util.extensions.toast
+import com.aurora.extensions.hide
+import com.aurora.extensions.load
+import com.aurora.extensions.show
+import com.aurora.extensions.toast
 import com.aurora.store.view.custom.RatingView
 import com.aurora.store.view.epoxy.controller.DetailsCarouselController
 import com.aurora.store.view.epoxy.controller.GenericCarouselController

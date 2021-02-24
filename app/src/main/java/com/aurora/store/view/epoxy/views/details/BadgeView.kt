@@ -29,7 +29,7 @@ import com.airbnb.epoxy.OnViewRecycled
 import com.aurora.gplayapi.data.models.details.Badge
 import com.aurora.store.R
 import com.aurora.store.databinding.ViewBadgeBinding
-import com.aurora.store.util.extensions.load
+import com.aurora.extensions.load
 import com.aurora.store.view.epoxy.views.BaseView
 
 @ModelView(

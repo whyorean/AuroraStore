@@ -26,8 +26,8 @@ import androidx.preference.PreferenceFragmentCompat
 import com.aurora.store.R
 import com.aurora.store.util.CommonUtil
 import com.aurora.store.util.Preferences
-import com.aurora.store.util.extensions.runOnUiThread
-import com.aurora.store.util.extensions.toast
+import com.aurora.extensions.runOnUiThread
+import com.aurora.extensions.toast
 
 
 class InstallationPreference : PreferenceFragmentCompat() {

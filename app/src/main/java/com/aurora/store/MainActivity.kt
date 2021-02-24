@@ -45,9 +45,8 @@ import com.aurora.store.databinding.ActivityMainBinding
 import com.aurora.store.util.Log
 import com.aurora.store.util.ViewUtil
 import com.aurora.store.util.ViewUtil.getStyledAttribute
-import com.aurora.store.util.extensions.isRAndAbove
-import com.aurora.store.util.extensions.load
-import com.aurora.store.util.extensions.open
+import com.aurora.extensions.load
+import com.aurora.extensions.open
 import com.aurora.store.view.ui.about.AboutActivity
 import com.aurora.store.view.ui.account.AccountActivity
 import com.aurora.store.view.ui.all.AppsGamesActivity

@@ -25,7 +25,7 @@ import com.aurora.store.R
 import com.aurora.store.data.model.Black
 import com.aurora.store.data.providers.BlacklistProvider
 import com.aurora.store.databinding.ActivityGenericRecyclerBinding
-import com.aurora.store.util.extensions.close
+import com.aurora.extensions.close
 import com.aurora.store.view.epoxy.views.BlackViewModel_
 import com.aurora.store.view.epoxy.views.shimmer.AppListViewShimmerModel_
 import com.aurora.store.viewmodel.all.BlacklistViewModel

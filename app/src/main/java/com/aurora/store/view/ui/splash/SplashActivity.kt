@@ -28,10 +28,10 @@ import com.aurora.store.R
 import com.aurora.store.data.AuthState
 import com.aurora.store.data.event.BusEvent
 import com.aurora.store.databinding.ActivitySplashBinding
-import com.aurora.store.util.extensions.hide
-import com.aurora.store.util.extensions.load
-import com.aurora.store.util.extensions.open
-import com.aurora.store.util.extensions.show
+import com.aurora.extensions.hide
+import com.aurora.extensions.load
+import com.aurora.extensions.open
+import com.aurora.extensions.show
 import com.aurora.store.view.ui.commons.BaseActivity
 import com.aurora.store.view.ui.commons.BlacklistActivity
 import com.aurora.store.view.ui.spoof.SpoofActivity

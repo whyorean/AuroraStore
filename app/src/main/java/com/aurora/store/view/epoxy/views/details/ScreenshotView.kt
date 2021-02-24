@@ -20,7 +20,6 @@
 package com.aurora.store.view.epoxy.views.details
 
 import android.content.Context
-import android.content.res.Resources
 import android.util.AttributeSet
 import android.widget.RelativeLayout
 import com.airbnb.epoxy.CallbackProp
@@ -30,10 +29,9 @@ import com.airbnb.epoxy.OnViewRecycled
 import com.aurora.gplayapi.data.models.Artwork
 import com.aurora.store.R
 import com.aurora.store.databinding.ViewScreenshotBinding
-import com.aurora.store.util.Log
-import com.aurora.store.util.extensions.clear
-import com.aurora.store.util.extensions.load
-import com.aurora.store.util.extensions.px
+import com.aurora.extensions.clear
+import com.aurora.extensions.load
+import com.aurora.extensions.px
 import com.aurora.store.view.epoxy.views.BaseView
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions

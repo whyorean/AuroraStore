@@ -27,7 +27,7 @@ import androidx.preference.PreferenceFragmentCompat
 import com.aurora.store.R
 import com.aurora.store.databinding.ActivitySettingBinding
 import com.aurora.store.util.ViewUtil.getStyledAttribute
-import com.aurora.store.util.extensions.restartApp
+import com.aurora.extensions.restartApp
 import com.aurora.store.view.ui.commons.BaseActivity
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 

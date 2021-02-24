@@ -17,7 +17,7 @@
  *
  */
 
-package com.aurora.store.util.extensions
+package com.aurora.extensions
 
 import android.content.res.Resources
 

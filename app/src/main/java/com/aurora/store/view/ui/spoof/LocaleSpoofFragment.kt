@@ -27,7 +27,7 @@ import com.aurora.store.R
 import com.aurora.store.data.providers.SpoofProvider
 import com.aurora.store.databinding.FragmentGenericRecyclerBinding
 import com.aurora.store.util.Log
-import com.aurora.store.util.extensions.toast
+import com.aurora.extensions.toast
 import com.aurora.store.view.epoxy.views.preference.LocaleViewModel_
 import com.aurora.store.view.ui.commons.BaseFragment
 import nl.komponents.kovenant.task

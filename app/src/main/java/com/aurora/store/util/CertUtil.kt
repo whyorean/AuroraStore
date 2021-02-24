@@ -21,7 +21,7 @@ package com.aurora.store.util
 
 import android.content.Context
 import android.content.pm.PackageManager
-import com.aurora.store.util.extensions.isPAndAbove
+import com.aurora.extensions.isPAndAbove
 import java.io.ByteArrayInputStream
 import java.io.InputStream
 import java.security.cert.CertificateFactory

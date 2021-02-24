@@ -22,8 +22,8 @@ package com.aurora.store.data.installer
 import android.content.Context
 import com.aurora.store.R
 import com.aurora.store.util.Log
-import com.aurora.store.util.extensions.isLAndAbove
-import com.aurora.store.util.extensions.toast
+import com.aurora.extensions.isLAndAbove
+import com.aurora.extensions.toast
 import com.topjohnwu.superuser.Shell
 import java.io.File
 import java.util.regex.Pattern

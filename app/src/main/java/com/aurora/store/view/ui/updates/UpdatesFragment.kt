@@ -35,8 +35,8 @@ import com.aurora.store.data.installer.AppInstaller
 import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.databinding.FragmentUpdatesBinding
 import com.aurora.store.util.Log
-import com.aurora.store.util.extensions.flushAndAdd
-import com.aurora.store.util.extensions.toast
+import com.aurora.extensions.flushAndAdd
+import com.aurora.extensions.toast
 import com.aurora.store.view.epoxy.views.app.AppUpdateViewModel_
 import com.aurora.store.view.epoxy.views.UpdateHeaderViewModel_
 import com.aurora.store.view.epoxy.views.app.NoAppViewModel_

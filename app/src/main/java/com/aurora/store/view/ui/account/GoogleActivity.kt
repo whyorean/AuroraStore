@@ -33,8 +33,8 @@ import com.aurora.store.databinding.ActivityGoogleBinding
 import com.aurora.store.util.AC2DMTask
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Util
-import com.aurora.store.util.extensions.close
-import com.aurora.store.util.extensions.isLAndAbove
+import com.aurora.extensions.close
+import com.aurora.extensions.isLAndAbove
 import com.aurora.store.view.ui.commons.BaseActivity
 import nl.komponents.kovenant.task
 import org.greenrobot.eventbus.EventBus

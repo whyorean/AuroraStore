@@ -29,9 +29,9 @@ import com.airbnb.epoxy.OnViewRecycled
 import com.aurora.gplayapi.data.models.Review
 import com.aurora.store.R
 import com.aurora.store.databinding.ViewReviewBinding
-import com.aurora.store.util.extensions.clear
-import com.aurora.store.util.extensions.load
-import com.aurora.store.util.extensions.toDate
+import com.aurora.extensions.clear
+import com.aurora.extensions.load
+import com.aurora.extensions.toDate
 import com.aurora.store.view.epoxy.views.BaseView
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions

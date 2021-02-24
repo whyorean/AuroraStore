@@ -17,7 +17,7 @@
  *
  */
 
-package com.aurora.store.util.extensions
+package com.aurora.extensions
 
 import android.app.AlarmManager
 import android.app.PendingIntent

@@ -28,8 +28,8 @@ import com.aurora.store.data.model.Installer
 import com.aurora.store.databinding.FragmentOnboardingInstallerBinding
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_INSTALLER_ID
-import com.aurora.store.util.extensions.runOnUiThread
-import com.aurora.store.util.extensions.toast
+import com.aurora.extensions.runOnUiThread
+import com.aurora.extensions.toast
 import com.aurora.store.util.save
 import com.aurora.store.view.epoxy.views.preference.InstallerViewModel_
 import com.aurora.store.view.ui.commons.BaseFragment

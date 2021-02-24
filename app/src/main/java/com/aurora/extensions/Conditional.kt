@@ -17,14 +17,16 @@
  *
  */
 
-package com.aurora.store.util.extensions
+package com.aurora.extensions
 
-fun <T> MutableList<T>.flushAndAdd(list: List<T>) {
-    clear()
-    addAll(list)
+inline fun doIf(condition: Boolean?, action: () -> Unit) {
+    if (condition == true) action()
 }
 
-fun <T> MutableSet<T>.flushAndAdd(list: Set<T>) {
-    clear()
-    addAll(list)
+inline fun doIf(condition: () -> Boolean?, action: () -> Unit) {
+    if (condition() == true) action()
+}
+
+inline fun doIf(any: Any?, action: () -> Unit) {
+    if (any != null) action()
 }

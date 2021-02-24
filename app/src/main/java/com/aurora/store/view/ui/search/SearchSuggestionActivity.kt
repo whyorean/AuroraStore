@@ -31,9 +31,9 @@ import com.aurora.Constants
 import com.aurora.gplayapi.SearchSuggestEntry
 import com.aurora.store.databinding.ActivitySearchSuggestionBinding
 import com.aurora.store.util.ViewUtil
-import com.aurora.store.util.extensions.close
-import com.aurora.store.util.extensions.open
-import com.aurora.store.util.extensions.showKeyboard
+import com.aurora.extensions.close
+import com.aurora.extensions.open
+import com.aurora.extensions.showKeyboard
 import com.aurora.store.view.epoxy.views.SearchSuggestionViewModel_
 import com.aurora.store.view.ui.commons.BaseActivity
 import com.aurora.store.view.ui.downloads.DownloadActivity

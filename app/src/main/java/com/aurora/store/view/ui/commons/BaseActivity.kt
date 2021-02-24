@@ -32,7 +32,7 @@ import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_THEME_ACCENT
 import com.aurora.store.util.Preferences.PREFERENCE_THEME_TYPE
 import com.aurora.store.util.ViewUtil
-import com.aurora.store.util.extensions.applyTheme
+import com.aurora.extensions.applyTheme
 import com.aurora.store.view.ui.account.GoogleActivity
 import com.aurora.store.view.ui.details.*
 import com.aurora.store.view.ui.sheets.NetworkDialogSheet

@@ -23,7 +23,7 @@ import android.content.Context
 import android.os.Environment
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.File
-import com.aurora.store.util.extensions.isLAndAbove
+import com.aurora.extensions.isLAndAbove
 
 fun Context.getInternalBaseDirectory(): String {
     return filesDir.path

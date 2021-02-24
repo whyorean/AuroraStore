@@ -39,7 +39,7 @@ import com.aurora.store.util.Preferences.PREFERENCE_INSTALLER_ID
 import com.aurora.store.util.Preferences.PREFERENCE_INTRO
 import com.aurora.store.util.Preferences.PREFERENCE_THEME_ACCENT
 import com.aurora.store.util.Preferences.PREFERENCE_THEME_TYPE
-import com.aurora.store.util.extensions.open
+import com.aurora.extensions.open
 import com.aurora.store.util.save
 import com.aurora.store.view.ui.commons.BaseActivity
 import com.aurora.store.view.ui.splash.SplashActivity

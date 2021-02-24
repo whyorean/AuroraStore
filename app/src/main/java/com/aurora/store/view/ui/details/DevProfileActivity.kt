@@ -31,8 +31,8 @@ import com.aurora.store.R
 import com.aurora.store.data.ViewState
 import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.databinding.ActivityDevProfileBinding
-import com.aurora.store.util.extensions.close
-import com.aurora.store.util.extensions.load
+import com.aurora.extensions.close
+import com.aurora.extensions.load
 import com.aurora.store.view.epoxy.controller.DeveloperCarouselController
 import com.aurora.store.view.epoxy.controller.GenericCarouselController
 import com.aurora.store.view.ui.commons.BaseActivity

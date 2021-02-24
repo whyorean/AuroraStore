@@ -32,9 +32,9 @@ import com.aurora.store.data.providers.AccountProvider
 import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.databinding.ActivityAccountBinding
 import com.aurora.store.util.CommonUtil.getEmptyActivityBundle
-import com.aurora.store.util.extensions.browse
-import com.aurora.store.util.extensions.close
-import com.aurora.store.util.extensions.load
+import com.aurora.extensions.browse
+import com.aurora.extensions.close
+import com.aurora.extensions.load
 import com.aurora.store.view.ui.commons.BaseActivity
 import com.aurora.store.viewmodel.auth.AuthViewModel
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
