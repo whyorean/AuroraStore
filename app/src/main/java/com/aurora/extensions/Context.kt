@@ -25,18 +25,27 @@ import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.net.Uri
-import android.os.Build
+import android.os.Bundle
+import android.util.DisplayMetrics
+import android.util.TypedValue
+import android.view.LayoutInflater
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityOptionsCompat
 import androidx.core.app.ShareCompat
 import com.aurora.Constants
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.MainActivity
 import com.aurora.store.R
 import com.aurora.store.util.Log
-import com.aurora.store.util.ViewUtil
 import kotlin.system.exitProcess
 
+val Context.inflater: LayoutInflater
+    get() = LayoutInflater.from(this)
+
+val Context.displayMetrics: DisplayMetrics
+    get() = resources.displayMetrics
 
 fun Context.browse(url: String) {
     try {
@@ -82,16 +91,8 @@ fun <T> Context.open(className: Class<T>, newTask: Boolean = false) {
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
     startActivity(
         intent,
-        ViewUtil.getEmptyActivityBundle(this)
+        getEmptyActivityBundle()
     )
-}
-
-fun AppCompatActivity.close() {
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-        finishAfterTransition()
-    } else {
-        finish()
-    }
 }
 
 fun Context.restartApp() {
@@ -107,8 +108,23 @@ fun Context.restartApp() {
     exitProcess(0)
 }
 
+fun Context.getEmptyActivityBundle(): Bundle? {
+    return ActivityOptionsCompat.makeCustomAnimation(
+        this,
+        android.R.anim.fade_in,
+        android.R.anim.fade_out
+    ).toBundle()
+}
+
 fun Context.copyToClipBoard(data: String?) {
     val clipboard = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
     val clip = ClipData.newPlainText("Download Url", data)
     clipboard.setPrimaryClip(clip)
+}
+
+fun Context.getStyledAttributeColor(id: Int): Int {
+    val arr = obtainStyledAttributes(TypedValue().data, intArrayOf(id))
+    val styledAttr = arr.getColor(0, Color.WHITE)
+    arr.recycle()
+    return styledAttr
 }

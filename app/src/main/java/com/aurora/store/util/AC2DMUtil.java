@@ -25,7 +25,7 @@ import java.util.StringTokenizer;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Util {
+public class AC2DMUtil {
 
     public static Map<String, String> parseResponse(String response) {
         Map<String, String> keyValueMap = new HashMap<String, String>();

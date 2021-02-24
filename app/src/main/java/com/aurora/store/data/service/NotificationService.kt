@@ -29,6 +29,7 @@ import android.util.ArrayMap
 import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
 import com.aurora.Constants
+import com.aurora.extensions.isLAndAbove
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
 import com.aurora.store.data.downloader.DownloadManager
@@ -39,7 +40,6 @@ import com.aurora.store.data.receiver.DownloadResumeReceiver
 import com.aurora.store.data.receiver.InstallReceiver
 import com.aurora.store.util.CommonUtil
 import com.aurora.store.util.Log
-import com.aurora.extensions.isLAndAbove
 import com.aurora.store.view.ui.details.AppDetailsActivity
 import com.aurora.store.view.ui.downloads.DownloadActivity
 import com.google.gson.Gson

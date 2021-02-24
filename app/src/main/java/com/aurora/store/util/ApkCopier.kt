@@ -22,11 +22,8 @@ package com.aurora.store.util
 import android.content.Context
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
-import android.net.Uri
 import android.os.Build
 import androidx.annotation.RequiresApi
-import androidx.core.content.FileProvider
-import com.aurora.store.BuildConfig
 import com.aurora.extensions.isLAndAbove
 import org.apache.commons.io.IOUtils
 import java.io.File
@@ -110,13 +107,5 @@ class ApkCopier(private val context: Context, private val packageName: String) {
             e.printStackTrace()
             Log.e("ApkCopier : %s", e.message)
         }
-    }
-
-    fun getUri(file: File): Uri {
-        return FileProvider.getUriForFile(
-            context,
-            "${BuildConfig.APPLICATION_ID}.fileProvider",
-            file
-        )
     }
 }

@@ -21,16 +21,28 @@ package com.aurora.extensions
 
 import android.content.Context
 import android.widget.Toast
-import androidx.annotation.StringRes
+import androidx.fragment.app.Fragment
 
-fun Context.toast(text: CharSequence): Toast =
-    Toast.makeText(this, text, Toast.LENGTH_SHORT).apply { show() }
-
-fun Context.longToast(text: CharSequence): Toast =
-    Toast.makeText(this, text, Toast.LENGTH_LONG).apply { show() }
-
-fun Context.toast(@StringRes resId: Int): Toast =
+fun Context.toast(resId: Int) = runOnUiThread {
     Toast.makeText(this, resId, Toast.LENGTH_SHORT).apply { show() }
+}
 
-fun Context.longToast(@StringRes resId: Int): Toast =
+fun Context.toast(text: CharSequence) = runOnUiThread {
+    Toast.makeText(this, text, Toast.LENGTH_SHORT).apply { show() }
+}
+
+fun Context.toastLong(resId: Int) = runOnUiThread {
     Toast.makeText(this, resId, Toast.LENGTH_LONG).apply { show() }
+}
+
+fun Context.toastLong(text: CharSequence) = runOnUiThread {
+    Toast.makeText(this, text, Toast.LENGTH_LONG).apply { show() }
+}
+
+fun Fragment.toast(resId: Int) = requireContext().toast(resId)
+
+fun Fragment.toast(text: CharSequence) = requireContext().toast(text)
+
+fun Fragment.toastLong(resId: Int) = requireContext().toastLong(resId)
+
+fun Fragment.toastLong(text: CharSequence) = requireContext().toastLong(text)

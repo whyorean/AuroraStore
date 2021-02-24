@@ -19,22 +19,19 @@
 
 package com.aurora.store.view.ui.account
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
+import com.aurora.extensions.browse
+import com.aurora.extensions.close
+import com.aurora.extensions.load
 import com.aurora.gplayapi.data.models.AuthData
-import com.aurora.store.MainActivity
 import com.aurora.store.R
 import com.aurora.store.data.AuthState
 import com.aurora.store.data.event.BusEvent
 import com.aurora.store.data.providers.AccountProvider
 import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.databinding.ActivityAccountBinding
-import com.aurora.store.util.CommonUtil.getEmptyActivityBundle
-import com.aurora.extensions.browse
-import com.aurora.extensions.close
-import com.aurora.extensions.load
 import com.aurora.store.view.ui.commons.BaseActivity
 import com.aurora.store.viewmodel.auth.AuthViewModel
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
@@ -221,14 +218,6 @@ class AccountActivity : BaseActivity() {
             }
             B.txtName.text = getString(R.string.app_name)
             B.txtEmail.text = getString(R.string.account_logged_out)
-        }
-    }
-
-    private fun moveToContent() {
-        runOnUiThread {
-            val intent = Intent(this, MainActivity::class.java)
-            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-            startActivity(intent, getEmptyActivityBundle(this))
         }
     }
 

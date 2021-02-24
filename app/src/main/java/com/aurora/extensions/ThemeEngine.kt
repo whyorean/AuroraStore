@@ -33,8 +33,6 @@ import androidx.fragment.app.Fragment
 import com.aurora.Constants
 import com.aurora.store.R
 import com.aurora.store.util.CommonUtil
-import com.aurora.store.util.ViewUtil
-
 
 fun Fragment.applyTheme(
     themeId: Int,
@@ -140,8 +138,7 @@ private fun AppCompatActivity.setLightStatusBar() {
 private fun AppCompatActivity.setLightNavigationBar() {
     var flags = window.decorView.systemUiVisibility
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-        window.navigationBarColor =
-            ViewUtil.getStyledAttribute(this, android.R.attr.colorBackground)
+        window.navigationBarColor = getStyledAttributeColor(android.R.attr.colorBackground)
         flags = flags or View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR
     }
     window.decorView.systemUiVisibility = flags

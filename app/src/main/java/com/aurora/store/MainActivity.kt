@@ -39,14 +39,14 @@ import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
+import com.aurora.extensions.getEmptyActivityBundle
+import com.aurora.extensions.getStyledAttributeColor
+import com.aurora.extensions.load
+import com.aurora.extensions.open
 import com.aurora.gplayapi.data.models.AuthData
 import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.databinding.ActivityMainBinding
 import com.aurora.store.util.Log
-import com.aurora.store.util.ViewUtil
-import com.aurora.store.util.ViewUtil.getStyledAttribute
-import com.aurora.extensions.load
-import com.aurora.extensions.open
 import com.aurora.store.view.ui.about.AboutActivity
 import com.aurora.store.view.ui.account.AccountActivity
 import com.aurora.store.view.ui.all.AppsGamesActivity
@@ -122,8 +122,7 @@ class MainActivity : BaseActivity() {
         }
 
         B.viewToolbar.imgActionSecondary.setOnClickListener {
-            val userAppIntent = Intent(this, DownloadActivity::class.java)
-            startActivity(userAppIntent, ViewUtil.getEmptyActivityBundle(this))
+            open(DownloadActivity::class.java)
         }
     }
 
@@ -131,7 +130,7 @@ class MainActivity : BaseActivity() {
         B.searchFab.setOnClickListener {
             startActivity(
                 Intent(this, SearchSuggestionActivity::class.java),
-                ViewUtil.getEmptyActivityBundle(this)
+                getEmptyActivityBundle()
             )
         }
     }
@@ -140,7 +139,7 @@ class MainActivity : BaseActivity() {
         val bottomNavigationView: BottomNavigationView = B.navView
         navController = Navigation.findNavController(this, R.id.nav_host_fragment)
 
-        val backGroundColor = getStyledAttribute(this, android.R.attr.colorBackground)
+        val backGroundColor = getStyledAttributeColor(android.R.attr.colorBackground)
         bottomNavigationView.setBackgroundColor(ColorUtils.setAlphaComponent(backGroundColor, 245))
 
 

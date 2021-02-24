@@ -21,8 +21,6 @@ package com.aurora.store.util
 
 import android.content.Context
 import android.os.Build
-import android.os.Bundle
-import androidx.core.app.ActivityOptionsCompat
 import com.aurora.store.R
 import java.text.DecimalFormat
 import java.util.*
@@ -37,6 +35,7 @@ object CommonUtil {
         Pair(6, " MB"),
         Pair(9, " GB")
     )
+
     private val diPrefixes: Map<Int, String> = hashMapOf(
         Pair(1, ""),
         Pair(3, " K"),
@@ -132,14 +131,6 @@ object CommonUtil {
                 context.getString(R.string.download_speed_bytes, downloadedBytesPerSecond)
             }
         }
-    }
-
-    fun getEmptyActivityBundle(context: Context): Bundle? {
-        return ActivityOptionsCompat.makeCustomAnimation(
-            context,
-            android.R.anim.fade_in,
-            android.R.anim.fade_out
-        ).toBundle()
     }
 
     fun cleanupInstallationSessions(context: Context) {

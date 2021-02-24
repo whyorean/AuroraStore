@@ -19,16 +19,24 @@
 
 package com.aurora.extensions
 
-import android.os.Handler
-import android.os.Looper
+import android.content.Context
+import android.content.Intent
+import android.os.Bundle
 
-fun runAsync(action: () -> Unit) = Thread(Runnable(action)).start()
+inline fun <reified T : Context> Context.newIntent(): Intent =
+    Intent(this, T::class.java)
 
-fun runOnUiThread(action: () -> Unit) {
-    when {
-        isMainThread() -> action.invoke()
-        else -> Handler(Looper.getMainLooper()).post(Runnable(action))
-    }
+inline fun <reified T : Context> Context.newIntent(flags: Int): Intent {
+    val intent = newIntent<T>()
+    intent.flags = flags
+    return intent
 }
 
-private fun isMainThread() = Looper.myLooper() == Looper.getMainLooper()
+inline fun <reified T : Context> Context.newIntent(extras: Bundle): Intent =
+    newIntent<T>(0, extras)
+
+inline fun <reified T : Context> Context.newIntent(flags: Int, extras: Bundle): Intent {
+    val intent = newIntent<T>(flags)
+    intent.putExtras(extras)
+    return intent
+}

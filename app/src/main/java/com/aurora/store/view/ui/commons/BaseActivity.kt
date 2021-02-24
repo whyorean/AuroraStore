@@ -26,13 +26,13 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.aurora.Constants
+import com.aurora.extensions.applyTheme
+import com.aurora.extensions.getEmptyActivityBundle
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.data.providers.NetworkProvider
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_THEME_ACCENT
 import com.aurora.store.util.Preferences.PREFERENCE_THEME_TYPE
-import com.aurora.store.util.ViewUtil
-import com.aurora.extensions.applyTheme
 import com.aurora.store.view.ui.account.GoogleActivity
 import com.aurora.store.view.ui.details.*
 import com.aurora.store.view.ui.sheets.NetworkDialogSheet
@@ -108,7 +108,7 @@ abstract class BaseActivity : AppCompatActivity(), NetworkProvider.NetworkListen
         intent.putExtra(Constants.STRING_EXTRA, title)
         startActivity(
             intent,
-            ViewUtil.getEmptyActivityBundle(this)
+            getEmptyActivityBundle()
         )
     }
 
@@ -133,7 +133,7 @@ abstract class BaseActivity : AppCompatActivity(), NetworkProvider.NetworkListen
         val intent = Intent(this, GoogleActivity::class.java)
         startActivity(
             intent,
-            ViewUtil.getEmptyActivityBundle(this)
+            getEmptyActivityBundle()
         )
     }
 
