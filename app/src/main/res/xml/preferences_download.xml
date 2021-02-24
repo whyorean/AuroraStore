@@ -20,6 +20,13 @@
 <androidx.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <SwitchPreferenceCompat
+        app:defaultValue="false"
+        app:iconSpaceReserved="false"
+        app:key="PREFERENCE_DOWNLOAD_EXTERNAL"
+        app:summary="@string/pref_downloader_external_desc"
+        app:title="@string/pref_downloader_external" />
+
     <SeekBarPreference
         android:defaultValue="3"
         android:key="PREFERENCE_DOWNLOAD_ACTIVE"

@@ -32,14 +32,18 @@ fun Context.getInternalBaseDirectory(): String {
 object PathUtil {
 
     private fun getDownloadDirectory(context: Context): String {
-        return if (isLAndAbove())
-            context.getInternalBaseDirectory() + "/Downloads"
-        else
+        return if (isLAndAbove()) {
+            if (Preferences.getBoolean(context, Preferences.PREFERENCE_DOWNLOAD_EXTERNAL))
+                getExternalPath()
+            else
+                context.getInternalBaseDirectory() + "/Downloads"
+        } else {
             getExternalPath()
+        }
     }
 
     fun getPackageDirectory(context: Context, packageName: String): String {
-        return getDownloadDirectory(context) + "/$packageName"
+        return getDownloadDirectory(context) + "/Downloads/$packageName"
     }
 
     private fun getVersionDirectory(
@@ -59,11 +63,11 @@ object PathUtil {
     }
 
     fun getExternalPath(): String {
-        return Environment.getExternalStorageDirectory().toString() + "/Aurora/"
+        return Environment.getExternalStorageDirectory().toString() + "/Aurora/Store"
     }
 
     fun getBaseCopyDirectory(): String {
-        return "${getExternalPath()}/files/export/"
+        return "${getExternalPath()}/Exports/"
     }
 
     private fun getObbDownloadPath(context: Context, app: App): String {

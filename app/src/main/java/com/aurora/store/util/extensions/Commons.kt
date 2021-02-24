@@ -21,6 +21,7 @@ package com.aurora.store.util.extensions
 
 import android.os.Build
 import android.text.format.DateFormat
+import androidx.annotation.RequiresApi
 import java.util.*
 
 fun Long.toDate(): String {
@@ -43,4 +44,8 @@ fun isPAndAbove(): Boolean {
 
 fun isQAndAbove(): Boolean {
     return Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q
+}
+
+fun isRAndAbove(): Boolean {
+    return Build.VERSION.SDK_INT >= Build.VERSION_CODES.R
 }

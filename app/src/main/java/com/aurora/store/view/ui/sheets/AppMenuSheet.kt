@@ -34,7 +34,6 @@ import com.aurora.store.data.providers.BlacklistProvider
 import com.aurora.store.databinding.SheetAppMenuBinding
 import com.aurora.store.util.ApkCopier
 import com.aurora.store.util.PackageUtil
-import com.aurora.store.util.extensions.isQAndAbove
 import com.aurora.store.util.extensions.openInfo
 import com.aurora.store.util.extensions.toast
 import com.livinglifetechway.quickpermissions_kotlin.runWithPermissions
@@ -86,11 +85,6 @@ class AppMenuSheet : BaseBottomSheet() {
             val installed = PackageUtil.isInstalled(requireContext(), app.packageName)
             menu.findItem(R.id.action_uninstall).isVisible = installed
             menu.findItem(R.id.action_local).isVisible = installed
-
-            if (isQAndAbove()) {
-                //TODO: Add Scoped Storage Access
-                menu.findItem(R.id.action_local).isVisible = false
-            }
 
             setNavigationItemSelectedListener { item ->
                 when (item.itemId) {

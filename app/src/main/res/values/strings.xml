@@ -234,6 +234,8 @@
     <string name="pref_dialog_to_apply_restart">"This setting will be applied after you restart the app"</string>
     <string name="pref_downloader_active_summary">"Maximum number of active downloads"</string>
     <string name="pref_downloader_active_title">"Active download"</string>
+    <string name="pref_downloader_external">"User external storage"</string>
+    <string name="pref_downloader_external_desc">"External storage will be used for downloads, exports etc."</string>
     <string name="pref_filter_fdroid_summary">"Removes F-Droid apps from app lists"</string>
     <string name="pref_filter_fdroid_title">"Filter F-Droid apps"</string>
     <string name="pref_filter_google_summary">"Removes all Google Apps from search results and category apps"</string>

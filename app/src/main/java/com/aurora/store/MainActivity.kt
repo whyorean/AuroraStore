@@ -21,7 +21,10 @@ package com.aurora.store
 
 import android.Manifest
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
+import android.os.Environment
+import android.provider.Settings
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -42,7 +45,7 @@ import com.aurora.store.databinding.ActivityMainBinding
 import com.aurora.store.util.Log
 import com.aurora.store.util.ViewUtil
 import com.aurora.store.util.ViewUtil.getStyledAttribute
-import com.aurora.store.util.extensions.isQAndAbove
+import com.aurora.store.util.extensions.isRAndAbove
 import com.aurora.store.util.extensions.load
 import com.aurora.store.util.extensions.open
 import com.aurora.store.view.ui.about.AboutActivity
@@ -97,16 +100,20 @@ class MainActivity : BaseActivity() {
         attachSearch()
 
         checkPermission()
+        checkStoragePermission()
     }
 
     private fun checkPermission() = runWithPermissions(
         Manifest.permission.READ_EXTERNAL_STORAGE,
         Manifest.permission.WRITE_EXTERNAL_STORAGE
     ) {
-        Log.i("External Storage Access Available")
+        Log.i("Required permissions available")
+    }
 
-        if (isQAndAbove()) {
-            //pickExternalFileDir()
+    private fun checkStoragePermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            if (!Environment.isExternalStorageManager())
+                startActivity(Intent(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION))
         }
     }
 

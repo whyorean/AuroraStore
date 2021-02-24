@@ -32,6 +32,7 @@ import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_AUTO_DELETE
 import com.aurora.store.util.Preferences.PREFERENCE_DEFAULT
 import com.aurora.store.util.Preferences.PREFERENCE_DOWNLOAD_ACTIVE
+import com.aurora.store.util.Preferences.PREFERENCE_DOWNLOAD_EXTERNAL
 import com.aurora.store.util.Preferences.PREFERENCE_FILTER_FDROID
 import com.aurora.store.util.Preferences.PREFERENCE_FILTER_GOOGLE
 import com.aurora.store.util.Preferences.PREFERENCE_INSTALLER_ID
@@ -149,13 +150,14 @@ class OnboardingActivity : BaseActivity() {
 
         /*Downloader*/
         save(PREFERENCE_DOWNLOAD_ACTIVE, 3)
+        save(PREFERENCE_DOWNLOAD_EXTERNAL, false)
 
         /*Theme*/
         save(PREFERENCE_THEME_TYPE, 0)
         save(PREFERENCE_THEME_ACCENT, 0)
 
         /*Installer*/
-        save(PREFERENCE_AUTO_DELETE, false)
+        save(PREFERENCE_AUTO_DELETE, true)
         save(PREFERENCE_INSTALLER_ID, 0)
     }
 
