@@ -490,12 +490,15 @@ class AppDetailsActivity : BaseDetailsActivity() {
                     app.versionCode.toLong()
                 )
 
+                val installedVersion = PackageUtil.getInstalledVersion(this, app.packageName)
+
                 if (isUpdatable) {
+                    B.layoutDetailsApp.txtLine3.text =
+                        ("$installedVersion > ${app.versionName}.${app.versionCode}")
                     btn.setText(R.string.action_update)
-                    btn.addOnClickListener {
-                        startDownload()
-                    }
+                    btn.addOnClickListener { startDownload() }
                 } else {
+                    B.layoutDetailsApp.txtLine3.text = installedVersion
                     btn.setText(R.string.action_open)
                     btn.addOnClickListener { openApp() }
                 }
