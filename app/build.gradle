@@ -172,7 +172,7 @@ dependencies {
     implementation "com.github.topjohnwu.libsu:core:${versions.libsu}"
 
     //Love <3
-    api("com.gitlab.AuroraOSS:gplayapi:bac20177ce")
+    api("com.gitlab.AuroraOSS:gplayapi:7d7a0deab4")
 }
 
 Properties props = new Properties()
