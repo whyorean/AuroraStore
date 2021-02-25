@@ -35,6 +35,7 @@ import com.aurora.store.BuildConfig
 import com.aurora.store.R
 import com.aurora.store.data.event.SessionEvent
 import com.aurora.store.util.Log
+import com.aurora.store.util.PackageUtil
 import org.greenrobot.eventbus.EventBus
 import java.io.File
 
@@ -48,21 +49,34 @@ class ServiceInstaller(context: Context) : InstallerBase(context) {
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun install(packageName: String, files: List<Any>) {
-        if (isAlreadyQueued(packageName)) {
-            Log.i("$packageName already queued")
-        } else {
-            Log.i("Received service install request for $packageName")
-            val uriList = files.map {
-                when (it) {
-                    is File -> getUri(it)
-                    is String -> getUri(File(it))
-                    else -> {
-                        throw Exception("Invalid data, expecting listOf() File or String")
-                    }
-                }
+
+        when {
+            isAlreadyQueued(packageName) -> {
+                Log.i("$packageName already queued")
             }
 
-            xInstall(packageName, uriList)
+            PackageUtil.isInstalled(context, PRIVILEGED_EXTENSION_PACKAGE_NAME) -> {
+                Log.i("Received service install request for $packageName")
+                val uriList = files.map {
+                    when (it) {
+                        is File -> getUri(it)
+                        is String -> getUri(File(it))
+                        else -> {
+                            throw Exception("Invalid data, expecting listOf() File or String")
+                        }
+                    }
+                }
+
+                xInstall(packageName, uriList)
+            }
+            else -> {
+                val event = SessionEvent.Failed(
+                    packageName,
+                    context.getString(R.string.installer_status_failure),
+                    context.getString(R.string.installer_service_unavailable)
+                )
+                EventBus.getDefault().post(event)
+            }
         }
     }
 
@@ -103,16 +117,13 @@ class ServiceInstaller(context: Context) : InstallerBase(context) {
                         Log.e("Failed to connect Aurora Services")
                     }
                 } else {
-                    Log.e(context.getString(R.string.installer_service_unavailable))
-                    EventBus
-                        .getDefault()
-                        .post(
-                            SessionEvent.Failed(
-                                packageName,
-                                context.getString(R.string.installer_status_failure),
-                                context.getString(R.string.installer_service_unavailable)
-                            )
-                        )
+                    Log.e(context.getString(R.string.installer_service_misconfigured))
+                    val event = SessionEvent.Failed(
+                        packageName,
+                        context.getString(R.string.installer_status_failure),
+                        context.getString(R.string.installer_service_misconfigured)
+                    )
+                    EventBus.getDefault().post(event)
                 }
             }
 

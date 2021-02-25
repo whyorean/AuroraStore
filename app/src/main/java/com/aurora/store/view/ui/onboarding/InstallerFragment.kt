@@ -19,20 +19,26 @@
 
 package com.aurora.store.view.ui.onboarding
 
+import android.content.DialogInterface
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.StringRes
+import com.aurora.extensions.getStyledAttributeColor
+import com.aurora.extensions.runOnUiThread
 import com.aurora.store.R
+import com.aurora.store.data.installer.ServiceInstaller
 import com.aurora.store.data.model.Installer
 import com.aurora.store.databinding.FragmentOnboardingInstallerBinding
+import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_INSTALLER_ID
-import com.aurora.extensions.runOnUiThread
-import com.aurora.extensions.toast
 import com.aurora.store.util.save
 import com.aurora.store.view.epoxy.views.preference.InstallerViewModel_
 import com.aurora.store.view.ui.commons.BaseFragment
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.gson.reflect.TypeToken
 import com.topjohnwu.superuser.Shell
 import java.nio.charset.StandardCharsets
@@ -81,12 +87,9 @@ class InstallerFragment : BaseFragment() {
                         .id(it.id)
                         .installer(it)
                         .markChecked(installerId == it.id)
-                        .checked { _, checked ->
-                            if (checked) {
-                                installerId = it.id
-                                save(installerId)
-                                requestModelBuild()
-                            }
+                        .click { _ ->
+                            save(it.id)
+                            requestModelBuild()
                         }
                 )
             }
@@ -94,21 +97,32 @@ class InstallerFragment : BaseFragment() {
     }
 
     private fun save(installerId: Int) {
-        if (installerId == 2) {
-            checkRoot()
-        }
-        save(PREFERENCE_INSTALLER_ID, installerId)
-    }
-
-    private fun checkRoot() {
-        Shell.getShell {
-            runOnUiThread {
-                requireContext().toast(
-                    if (it.isRoot)
-                        getString(R.string.installer_root_available)
-                    else
-                        getString(R.string.installer_root_unavailable)
-                )
+        when (installerId) {
+            2 -> {
+                if (checkRootAvailability()) {
+                    this.installerId = installerId
+                    save(PREFERENCE_INSTALLER_ID, installerId)
+                } else {
+                    showDialog(
+                        R.string.action_installations,
+                        R.string.installer_root_unavailable
+                    )
+                }
+            }
+            3 -> {
+                if (checkServicesAvailability()) {
+                    this.installerId = installerId
+                    save(PREFERENCE_INSTALLER_ID, installerId)
+                } else {
+                    showDialog(
+                        R.string.action_installations,
+                        R.string.installer_service_unavailable
+                    )
+                }
+            }
+            else -> {
+                this.installerId = installerId
+                save(PREFERENCE_INSTALLER_ID, installerId)
             }
         }
     }
@@ -124,5 +138,32 @@ class InstallerFragment : BaseFragment() {
             json,
             object : TypeToken<MutableList<Installer?>?>() {}.type
         )
+    }
+
+    private fun checkRootAvailability(): Boolean {
+        return Shell.getShell().isRoot
+    }
+
+    private fun checkServicesAvailability(): Boolean {
+        return PackageUtil.isInstalled(
+            requireContext(),
+            ServiceInstaller.PRIVILEGED_EXTENSION_PACKAGE_NAME
+        )
+    }
+
+    private fun showDialog(@StringRes titleId: Int, @StringRes messageId: Int) {
+        runOnUiThread {
+            val backgroundColor: Int =
+                requireContext().getStyledAttributeColor(android.R.attr.colorBackground)
+
+            val builder = MaterialAlertDialogBuilder(requireContext()).apply {
+                setTitle(titleId)
+                setMessage(messageId)
+                setPositiveButton(android.R.string.ok) { dialog: DialogInterface, _ -> dialog.dismiss() }
+                background = ColorDrawable(backgroundColor)
+            }.create()
+
+            builder.show()
+        }
     }
 }

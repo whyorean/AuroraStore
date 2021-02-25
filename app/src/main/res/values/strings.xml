@@ -205,7 +205,8 @@
     <string name="installer_root_available">"Root access available"</string>
     <string name="installer_root_unavailable">"No Root, grant root access or change the installer."</string>
     <string name="installer_service_available">"Aurora services is available and ready to install."</string>
-    <string name="installer_service_unavailable">"Aurora services not configured. Make sure service is enabled &amp; all permissions are granted"</string>
+    <string name="installer_service_unavailable">"Aurora services not installed, kindly install it or change installer"</string>
+    <string name="installer_service_misconfigured">"Aurora services not configured. Make sure service is enabled &amp; all permissions are granted"</string>
     <string name="installer_status_failure">"Installation failed"</string>
     <string name="installer_status_failure_aborted">"Installation cancelled"</string>
     <string name="installer_status_failure_blocked">"Installation was blocked"</string>
