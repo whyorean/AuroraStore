@@ -3,14 +3,14 @@
     "id": "0",
     "title": "Session installer",
     "subtitle": "Session based installer for bundled/split APKs",
-    "description": "Best suited for devices running Android 5.0+.",
+    "description": "Best suited for devices running Android 5.0+",
     "url": "https://developer.android.com/reference/android/content/pm/PackageInstaller.Session"
   },
   {
     "id": "1",
     "title": "Native installer",
     "subtitle": "Intent based installer, available on all devices",
-    "description": "Best suited for devices running below Android 4.4 or OEM modified ROMs like MIUI, One-UI.",
+    "description": "Best suited for devices running below Android 4.4",
     "url": "https://developer.android.com/reference/android/content/Intent#setDataAndType"
   },
   {

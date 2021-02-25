@@ -45,7 +45,7 @@ import java.net.UnknownHostException
 
 class AuthViewModel(application: Application) : BaseAndroidViewModel(application) {
 
-    private val spoofProvider = SpoofProvider.with(getApplication())
+    private val spoofProvider = SpoofProvider(getApplication())
 
     val liveData: MutableLiveData<AuthState> = MutableLiveData()
 

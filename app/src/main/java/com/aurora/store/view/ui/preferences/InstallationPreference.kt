@@ -19,15 +19,12 @@
 
 package com.aurora.store.view.ui.preferences
 
-import android.content.DialogInterface
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.View
-import androidx.annotation.StringRes
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
-import com.aurora.extensions.getStyledAttributeColor
 import com.aurora.extensions.runOnUiThread
+import com.aurora.extensions.showDialog
 import com.aurora.extensions.toast
 import com.aurora.store.R
 import com.aurora.store.data.installer.ServiceInstaller
@@ -36,7 +33,6 @@ import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.save
 import com.aurora.store.view.custom.preference.AuroraListPreference
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.topjohnwu.superuser.Shell
 
 
@@ -108,21 +104,5 @@ class InstallationPreference : PreferenceFragmentCompat() {
             requireContext(),
             ServiceInstaller.PRIVILEGED_EXTENSION_PACKAGE_NAME
         )
-    }
-
-    private fun showDialog(@StringRes titleId: Int, @StringRes messageId: Int) {
-        runOnUiThread {
-            val backgroundColor: Int =
-                requireContext().getStyledAttributeColor(android.R.attr.colorBackground)
-
-            val builder = MaterialAlertDialogBuilder(requireContext()).apply {
-                setTitle(titleId)
-                setMessage(messageId)
-                setPositiveButton(android.R.string.ok) { dialog: DialogInterface, _ -> dialog.dismiss() }
-                background = ColorDrawable(backgroundColor)
-            }.create()
-
-            builder.show()
-        }
     }
 }

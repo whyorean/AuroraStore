@@ -23,17 +23,15 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.lifecycle.ViewModelProvider
+import com.aurora.extensions.*
 import com.aurora.store.MainActivity
 import com.aurora.store.R
 import com.aurora.store.data.AuthState
 import com.aurora.store.data.event.BusEvent
 import com.aurora.store.databinding.ActivitySplashBinding
-import com.aurora.extensions.hide
-import com.aurora.extensions.load
-import com.aurora.extensions.open
-import com.aurora.extensions.show
 import com.aurora.store.view.ui.commons.BaseActivity
 import com.aurora.store.view.ui.commons.BlacklistActivity
+import com.aurora.store.view.ui.sheets.DeviceHuaweiSheet
 import com.aurora.store.view.ui.spoof.SpoofActivity
 import com.aurora.store.viewmodel.auth.AuthViewModel
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
@@ -91,6 +89,13 @@ class SplashActivity : BaseActivity() {
                 AuthState.Unavailable -> {
                     updateStatus("You need to login first")
                     updateActionLayout(true)
+
+                    if (isHuawei()) {
+                        runOnUiThread {
+                            DeviceHuaweiSheet.newInstance()
+                                .show(supportFragmentManager, DeviceHuaweiSheet.TAG)
+                        }
+                    }
                 }
 
                 AuthState.SignedIn -> {

@@ -23,13 +23,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.aurora.extensions.toast
 import com.aurora.store.R
 import com.aurora.store.data.providers.NativeDeviceInfoProvider
 import com.aurora.store.data.providers.SpoofDeviceProvider
 import com.aurora.store.data.providers.SpoofProvider
 import com.aurora.store.databinding.FragmentGenericRecyclerBinding
 import com.aurora.store.util.Log
-import com.aurora.extensions.toast
 import com.aurora.store.view.epoxy.views.preference.DeviceViewModel_
 import com.aurora.store.view.ui.commons.BaseFragment
 import nl.komponents.kovenant.task
@@ -68,7 +68,7 @@ class DeviceSpoofFragment : BaseFragment() {
         )
 
         properties = NativeDeviceInfoProvider(requireContext()).getNativeDeviceProperties()
-        spoofProvider = SpoofProvider.with(requireContext())
+        spoofProvider = SpoofProvider(requireContext())
 
         return B.root
     }
@@ -91,21 +91,27 @@ class DeviceSpoofFragment : BaseFragment() {
     private fun updateController(locales: List<Properties>) {
         B.recycler.withModels {
             setFilterDuplicates(true)
-            locales.forEach {
-                add(
-                    DeviceViewModel_()
-                        .id(it.hashCode())
-                        .markChecked(properties == it)
-                        .checked { _, checked ->
-                            if (checked) {
-                                properties = it
-                                saveSelection(it)
-                                requestModelBuild()
+            locales
+                .sortedBy { it.getProperty("UserReadableName") }
+                .forEach {
+                    add(
+                        DeviceViewModel_()
+                            .id(it.hashCode())
+                            .markChecked(
+                                properties.getProperty("UserReadableName") == it.getProperty(
+                                    "UserReadableName"
+                                )
+                            )
+                            .checked { _, checked ->
+                                if (checked) {
+                                    properties = it
+                                    saveSelection(it)
+                                    requestModelBuild()
+                                }
                             }
-                        }
-                        .properties(it)
-                )
-            }
+                            .properties(it)
+                    )
+                }
         }
     }
 

@@ -65,7 +65,7 @@ class LocaleSpoofFragment : BaseFragment() {
             )
         )
 
-        spoofProvider = SpoofProvider.with(requireContext())
+        spoofProvider = SpoofProvider(requireContext())
 
         return B.root
     }

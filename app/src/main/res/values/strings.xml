@@ -47,6 +47,7 @@
 
     <string name="action_accounts">"Accounts"</string>
     <string name="action_all_reviews">"All reviews"</string>
+    <string name="action_apply">"Apply"</string>
     <string name="action_ask">"Ask"</string>
     <string name="action_back">"Back"</string>
     <string name="action_blacklist">"Blacklist"</string>
@@ -223,6 +224,15 @@
     <string name="menu_license">"License"</string>
     <string name="menu_terms">"Terms of service"</string>
 
+    <string name="device_huawei_title">"Huawei detected!"</string>
+    <string name="device_huawei_subtitle">"You seem to be using a Huawei device, due to recent bans by Google you may not be able to login."</string>
+    <string name="device_huawei_description">"We suggest you to use device spoof in case you have a recent Huawei device. Do you wish to apply spoof now?"</string>
+
+    <string name="device_miui_title">"MIUI detected!"</string>
+    <string name="device_miui_subtitle">"Session installer can not install apps due to MIUI Optimizations."</string>
+    <string name="device_miui_description">"Please, disable MIUI optimizations to allow installations, otherwise you can choose Root or Services installer."</string>
+    <string name="device_miui_extra">"Optionally you can choose Native installer, but then you can not install bundled (split) APKs, so choice is yours."</string>
+
     <string name="notification_channel_alert">"Quick notification"</string>
     <string name="notification_channel_general">"General notification"</string>
     <string name="notification_installation_auto">"Click to install"</string>
@@ -312,4 +322,6 @@
     <string name="toast_apk_copy_success">"APK exported successfully"</string>
     <string name="toast_apk_whitelisted">"Whitelisted"</string>
     <string name="toast_clipboard_copied">"Copied to clipboard"</string>
+    <string name="toast_developer_setting_failed">"Failed to open developer settings, make sure it is enabled from device settings."</string>
+    <string name="toast_spoof_applied">"Device spoof applied successfully."</string>
 </resources>

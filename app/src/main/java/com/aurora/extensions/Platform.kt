@@ -19,7 +19,9 @@
 
 package com.aurora.extensions
 
+import android.annotation.SuppressLint
 import android.os.Build
+import java.util.*
 
 
 fun isLAndAbove(): Boolean {
@@ -48,4 +50,47 @@ fun isQAndAbove(): Boolean {
 
 fun isRAndAbove(): Boolean {
     return Build.VERSION.SDK_INT >= Build.VERSION_CODES.R
+}
+
+fun isMIUI(): Boolean {
+    return getSystemProperty("ro.miui.ui.version.name").isNotEmpty()
+}
+
+fun isHuawei(): Boolean {
+    return Build.MANUFACTURER.toLowerCase(Locale.getDefault()).contains("huawei")
+            || Build.HARDWARE.toLowerCase(Locale.getDefault()).contains("kirin")
+            || Build.HARDWARE.toLowerCase(Locale.getDefault()).contains("hi3")
+}
+
+fun getMIUIVersion(): String {
+    val version = getSystemProperty("ro.miui.ui.version.name")
+    val versionCode = getSystemProperty("ro.miui.ui.version.code")
+    return if (version.isNotEmpty() && versionCode.isNotEmpty())
+        "$version.$versionCode"
+    else
+        "unknown"
+}
+
+@SuppressLint("PrivateApi")
+fun isMiuiOptimizationDisabled(): Boolean {
+    if ("0" == getSystemProperty("persist.sys.miui_optimization")) {
+        return true
+    } else try {
+        return Class.forName("android.miui.AppOpsUtils")
+            .getDeclaredMethod("isXOptMode")
+            .invoke(null) as Boolean
+    } catch (e: java.lang.Exception) {
+        return false
+    }
+}
+
+@SuppressLint("PrivateApi")
+fun getSystemProperty(key: String): String {
+    return try {
+        Class.forName("android.os.SystemProperties")
+            .getDeclaredMethod("get", String::class.java)
+            .invoke(null, key) as String
+    } catch (e: Exception) {
+        ""
+    }
 }

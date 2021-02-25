@@ -19,15 +19,13 @@
 
 package com.aurora.store.view.ui.onboarding
 
-import android.content.DialogInterface
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.annotation.StringRes
-import com.aurora.extensions.getStyledAttributeColor
-import com.aurora.extensions.runOnUiThread
+import com.aurora.extensions.isMIUI
+import com.aurora.extensions.isMiuiOptimizationDisabled
+import com.aurora.extensions.showDialog
 import com.aurora.store.R
 import com.aurora.store.data.installer.ServiceInstaller
 import com.aurora.store.data.model.Installer
@@ -38,7 +36,7 @@ import com.aurora.store.util.Preferences.PREFERENCE_INSTALLER_ID
 import com.aurora.store.util.save
 import com.aurora.store.view.epoxy.views.preference.InstallerViewModel_
 import com.aurora.store.view.ui.commons.BaseFragment
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.aurora.store.view.ui.sheets.DeviceMiuiSheet
 import com.google.gson.reflect.TypeToken
 import com.topjohnwu.superuser.Shell
 import java.nio.charset.StandardCharsets
@@ -94,10 +92,21 @@ class InstallerFragment : BaseFragment() {
                 )
             }
         }
+
+        if (isMIUI() && !isMiuiOptimizationDisabled()) {
+            DeviceMiuiSheet.newInstance().show(childFragmentManager, DeviceMiuiSheet.TAG)
+        }
     }
 
     private fun save(installerId: Int) {
         when (installerId) {
+            0 -> {
+                if (isMIUI() && !isMiuiOptimizationDisabled()) {
+                    DeviceMiuiSheet.newInstance().show(childFragmentManager, DeviceMiuiSheet.TAG)
+                }
+                this.installerId = installerId
+                save(PREFERENCE_INSTALLER_ID, installerId)
+            }
             2 -> {
                 if (checkRootAvailability()) {
                     this.installerId = installerId
@@ -149,21 +158,5 @@ class InstallerFragment : BaseFragment() {
             requireContext(),
             ServiceInstaller.PRIVILEGED_EXTENSION_PACKAGE_NAME
         )
-    }
-
-    private fun showDialog(@StringRes titleId: Int, @StringRes messageId: Int) {
-        runOnUiThread {
-            val backgroundColor: Int =
-                requireContext().getStyledAttributeColor(android.R.attr.colorBackground)
-
-            val builder = MaterialAlertDialogBuilder(requireContext()).apply {
-                setTitle(titleId)
-                setMessage(messageId)
-                setPositiveButton(android.R.string.ok) { dialog: DialogInterface, _ -> dialog.dismiss() }
-                background = ColorDrawable(backgroundColor)
-            }.create()
-
-            builder.show()
-        }
     }
 }
