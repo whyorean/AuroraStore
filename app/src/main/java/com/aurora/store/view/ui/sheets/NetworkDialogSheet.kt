@@ -23,22 +23,20 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.aurora.Constants
 import com.aurora.store.databinding.SheetNetworkBinding
 
 class NetworkDialogSheet : BaseBottomSheet() {
 
     lateinit var B: SheetNetworkBinding
 
-    private var type = 0
-
     companion object {
+
+        const val TAG = "NetworkDialogSheet"
+
         @JvmStatic
-        fun newInstance(type: Int): NetworkDialogSheet {
+        fun newInstance(): NetworkDialogSheet {
             return NetworkDialogSheet().apply {
-                arguments = Bundle().apply {
-                    putInt(Constants.INT_EXTRA, type)
-                }
+
             }
         }
     }
@@ -47,18 +45,14 @@ class NetworkDialogSheet : BaseBottomSheet() {
         inflater: LayoutInflater,
         container: ViewGroup,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         B = SheetNetworkBinding.inflate(inflater, container, false)
-
-        val bundle = arguments
-        if (bundle != null) {
-            type = bundle.getInt(Constants.INT_EXTRA, 0)
-        }
-
         return B.root
     }
 
     override fun onContentViewCreated(view: View, savedInstanceState: Bundle?) {
-
+        B.btnAction.setOnClickListener {
+            dismissAllowingStateLoss()
+        }
     }
 }

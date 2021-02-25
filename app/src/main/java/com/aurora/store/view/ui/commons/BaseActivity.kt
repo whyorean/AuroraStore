@@ -24,7 +24,6 @@ import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
 import com.aurora.Constants
 import com.aurora.extensions.applyTheme
 import com.aurora.extensions.getEmptyActivityBundle
@@ -138,24 +137,25 @@ abstract class BaseActivity : AppCompatActivity(), NetworkProvider.NetworkListen
     }
 
     fun showNetworkConnectivitySheet() {
-        supportFragmentManager.beginTransaction()
-            .add(NetworkDialogSheet.newInstance(0), "NDS")
-            .commitAllowingStateLoss()
+        runOnUiThread {
+            supportFragmentManager.beginTransaction()
+                .add(NetworkDialogSheet.newInstance(), NetworkDialogSheet.TAG)
+                .commitAllowingStateLoss()
+        }
     }
 
     fun hideNetworkConnectivitySheet() {
-        val fragment: Fragment? = supportFragmentManager.findFragmentByTag("NDS")
-        if (fragment != null) {
-            supportFragmentManager.beginTransaction()
-                .remove(fragment)
-                .commitAllowingStateLoss()
+        runOnUiThread {
+            val fragment = supportFragmentManager.findFragmentByTag(NetworkDialogSheet.TAG)
+            fragment?.let {
+                supportFragmentManager.beginTransaction().remove(fragment).commitAllowingStateLoss()
+            }
         }
     }
 
     override fun onStart() {
         super.onStart()
         NetworkProvider.addListener(this)
-
     }
 
     override fun onStop() {

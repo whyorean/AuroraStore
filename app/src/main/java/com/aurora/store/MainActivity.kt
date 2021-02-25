@@ -70,6 +70,18 @@ class MainActivity : BaseActivity() {
 
     private var lastBackPressed = 0L
 
+    override fun onConnected() {
+        hideNetworkConnectivitySheet()
+    }
+
+    override fun onDisconnected() {
+        showNetworkConnectivitySheet()
+    }
+
+    override fun onReconnected() {
+
+    }
+
     companion object {
         @JvmStatic
         private fun matchDestination(
@@ -218,18 +230,6 @@ class MainActivity : BaseActivity() {
                 Toast.makeText(this, "Click twice to exit", Toast.LENGTH_SHORT).show()
             }
         }
-    }
-
-    override fun onConnected() {
-        hideNetworkConnectivitySheet()
-    }
-
-    override fun onDisconnected() {
-        showNetworkConnectivitySheet()
-    }
-
-    override fun onReconnected() {
-
     }
 
     private fun pickExternalFileDir() {
