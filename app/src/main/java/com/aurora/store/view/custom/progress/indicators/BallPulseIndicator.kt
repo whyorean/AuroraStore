@@ -35,12 +35,12 @@ class BallPulseIndicator : Indicator() {
 
         for (i in 0..2) {
             val scaleAnim = ValueAnimator.ofFloat(1f, 0.3f, 1f)
-            scaleAnim.duration = 750
+            scaleAnim.duration = 1000
             scaleAnim.repeatCount = -1
             scaleAnim.startDelay = delays[i].toLong()
 
-            addUpdateListener(scaleAnim) { animation: ValueAnimator ->
-                scaleFloats[i] = animation.animatedValue as Float
+            addUpdateListener(scaleAnim) {
+                scaleFloats[i] = it.animatedValue as Float
                 postInvalidate()
             }
 

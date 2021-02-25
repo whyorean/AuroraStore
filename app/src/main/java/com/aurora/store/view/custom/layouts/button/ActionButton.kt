@@ -113,7 +113,6 @@ class ActionButton : RelativeLayout {
         if (B.viewFlipper.displayedChild != displayChild) {
             runOnUiThread {
                 B.viewFlipper.displayedChild = displayChild
-
                 if (displayChild == 2)
                     switchToIdle()
             }

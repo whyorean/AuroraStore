@@ -511,8 +511,6 @@ class AppDetailsActivity : BaseDetailsActivity() {
                     startDownload()
                 }
             }
-
-            btn.updateState(ActionButton.State.IDLE)
         }
     }
 
