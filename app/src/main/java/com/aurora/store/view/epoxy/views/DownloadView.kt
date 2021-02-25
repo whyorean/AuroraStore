@@ -45,7 +45,7 @@ import java.lang.reflect.Modifier
 import java.util.*
 
 @ModelView(
-    autoLayout = ModelView.Size.WRAP_WIDTH_WRAP_HEIGHT,
+    autoLayout = ModelView.Size.MATCH_WIDTH_WRAP_HEIGHT,
     baseModelClass = BaseView::class
 )
 class DownloadView : RelativeLayout {

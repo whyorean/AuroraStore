@@ -38,7 +38,7 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
     autoLayout = ModelView.Size.MATCH_WIDTH_WRAP_HEIGHT,
     baseModelClass = BaseView::class
 )
-class BlackView : RelativeLayout {
+class BlackListView : RelativeLayout {
 
     private lateinit var B: ViewBlackBinding
 

@@ -30,7 +30,7 @@ import com.aurora.store.R
 import com.aurora.store.databinding.ViewEditorHeadBinding
 
 @ModelView(
-    autoLayout = ModelView.Size.WRAP_WIDTH_WRAP_HEIGHT,
+    autoLayout = ModelView.Size.MATCH_WIDTH_WRAP_HEIGHT,
     baseModelClass = BaseView::class
 )
 class EditorHeadView : RelativeLayout {
