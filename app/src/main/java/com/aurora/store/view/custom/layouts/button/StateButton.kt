@@ -17,7 +17,7 @@
  *
  */
 
-package com.aurora.store.view.custom
+package com.aurora.store.view.custom.layouts.button
 
 import android.content.Context
 import android.os.Build

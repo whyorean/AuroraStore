@@ -29,9 +29,7 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.LinearLayout
 import com.aurora.Constants
-import com.aurora.extensions.isLAndAbove
-import com.aurora.extensions.load
-import com.aurora.extensions.toast
+import com.aurora.extensions.*
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.AuthData
 import com.aurora.gplayapi.data.models.File
@@ -42,13 +40,15 @@ import com.aurora.store.R
 import com.aurora.store.data.downloader.DownloadManager
 import com.aurora.store.data.downloader.RequestBuilder
 import com.aurora.store.data.event.BusEvent
+import com.aurora.store.data.event.SessionEvent
 import com.aurora.store.data.installer.AppInstaller
 import com.aurora.store.data.network.HttpClient
 import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.databinding.ActivityDetailsBinding
 import com.aurora.store.util.*
-import com.aurora.extensions.*
+import com.aurora.store.view.custom.layouts.button.ActionButton
 import com.aurora.store.view.ui.downloads.DownloadActivity
+import com.aurora.store.view.ui.sheets.InstallErrorDialogSheet
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetBehavior.BottomSheetCallback
@@ -102,13 +102,29 @@ class AppDetailsActivity : BaseDetailsActivity() {
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
-    fun onEventMainThread(event: BusEvent) {
+    fun onEventMainThread(event: Any) {
         when (event) {
             is BusEvent.InstallEvent -> {
-                attachActions()
+                if (app.packageName == event.packageName) {
+                    attachActions()
+                }
             }
             is BusEvent.UninstallEvent -> {
-                attachActions()
+                if (app.packageName == event.packageName) {
+                    attachActions()
+                }
+            }
+            is SessionEvent.Failed -> {
+                if (app.packageName == event.packageName) {
+                    InstallErrorDialogSheet.newInstance(
+                        app,
+                        event.packageName,
+                        event.error,
+                        event.extra
+                    ).show(supportFragmentManager, "SED")
+                    attachActions()
+                    updateActionState(ActionButton.State.IDLE)
+                }
             }
             else -> {
 
@@ -208,6 +224,10 @@ class AppDetailsActivity : BaseDetailsActivity() {
         checkAndSetupInstall()
     }
 
+    private fun updateActionState(state: ActionButton.State) {
+        B.layoutDetailsInstall.btnDownload.updateState(state)
+    }
+
     private fun openApp() {
         val intent = PackageUtil.getLaunchIntent(this, app.packageName)
         if (intent != null) {
@@ -221,8 +241,10 @@ class AppDetailsActivity : BaseDetailsActivity() {
 
     @Synchronized
     private fun install(files: List<Download>) {
+        updateActionState(ActionButton.State.IDLE)
+
         task {
-            AppInstaller.with(this)
+            AppInstaller(this)
                 .getPreferredInstaller()
                 .install(
                     app.packageName,
@@ -241,7 +263,7 @@ class AppDetailsActivity : BaseDetailsActivity() {
 
     @Synchronized
     private fun uninstallApp() {
-        AppInstaller.with(this)
+        AppInstaller(this)
             .getPreferredInstaller()
             .uninstall(app.packageName)
     }
@@ -363,6 +385,7 @@ class AppDetailsActivity : BaseDetailsActivity() {
     }
 
     private fun purchase() {
+        updateActionState(ActionButton.State.PROGRESS)
         task {
             val authData = AuthProvider
                 .with(this)
@@ -376,9 +399,11 @@ class AppDetailsActivity : BaseDetailsActivity() {
                 enqueue(it)
             } else {
                 Log.e("Failed to download : ${app.displayName}")
+                updateActionState(ActionButton.State.IDLE)
             }
         } failUi {
             expandBottomSheet(it.message)
+            updateActionState(ActionButton.State.IDLE)
             Log.e("Failed to purchase ${app.displayName} : ${it.message}")
         }
     }
@@ -402,6 +427,7 @@ class AppDetailsActivity : BaseDetailsActivity() {
                 Log.i("Downloading Apks : %s", app.displayName)
             }
         } else {
+            updateActionState(ActionButton.State.IDLE)
             expandBottomSheet(getString(R.string.purchase_no_file))
         }
     }
@@ -443,8 +469,14 @@ class AppDetailsActivity : BaseDetailsActivity() {
         bottomSheetBehavior.isHideable = false
         bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
 
-        B.layoutDetailsInstall.txtPurchaseError.text = message
-        B.layoutDetailsInstall.btnDownload.updateProgress(false)
+        with(B.layoutDetailsInstall) {
+            txtPurchaseError.text = message
+            btnDownload.updateState(ActionButton.State.IDLE)
+            if (app.isFree)
+                btnDownload.setText(R.string.action_install)
+            else
+                btnDownload.setText(app.price)
+        }
     }
 
     private fun checkAndSetupInstall() {
@@ -459,39 +491,40 @@ class AppDetailsActivity : BaseDetailsActivity() {
                 )
 
                 if (isUpdatable) {
-                    btn.setText(getString(R.string.action_update))
+                    btn.setText(R.string.action_update)
                     btn.addOnClickListener {
-                        btn.updateProgress(true)
                         startDownload()
                     }
                 } else {
-                    btn.setText(getString(R.string.action_open))
+                    btn.setText(R.string.action_open)
                     btn.addOnClickListener { openApp() }
                 }
             } else {
                 if (app.isFree) {
-                    btn.setText(getString(R.string.action_install))
+                    btn.setText(R.string.action_install)
                 } else {
                     btn.setText(app.price)
                 }
 
                 btn.addOnClickListener {
-                    btn.setText(getString(R.string.download_metadata))
-                    btn.updateProgress(true)
+                    btn.setText(R.string.download_metadata)
                     startDownload()
                 }
             }
 
-            btn.updateProgress(false)
+            btn.updateState(ActionButton.State.IDLE)
         }
     }
 
     @Synchronized
     private fun flip(nextView: Int) {
         runOnUiThread {
-            B.layoutDetailsInstall.viewFlipper.displayedChild = nextView
-            if (nextView == 0)
-                checkAndSetupInstall()
+            val displayChild = B.layoutDetailsInstall.viewFlipper.displayedChild
+            if (displayChild != nextView) {
+                B.layoutDetailsInstall.viewFlipper.displayedChild = nextView
+                if (nextView == 0)
+                    checkAndSetupInstall()
+            }
         }
     }
 

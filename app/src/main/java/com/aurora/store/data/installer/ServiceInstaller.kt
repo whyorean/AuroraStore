@@ -32,7 +32,10 @@ import androidx.core.content.FileProvider
 import com.aurora.services.IPrivilegedCallback
 import com.aurora.services.IPrivilegedService
 import com.aurora.store.BuildConfig
+import com.aurora.store.R
+import com.aurora.store.data.event.SessionEvent
 import com.aurora.store.util.Log
+import org.greenrobot.eventbus.EventBus
 import java.io.File
 
 class ServiceInstaller(context: Context) : InstallerBase(context) {
@@ -65,27 +68,51 @@ class ServiceInstaller(context: Context) : InstallerBase(context) {
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     private fun xInstall(packageName: String, uriList: List<Uri>) {
-
         val serviceConnection = object : ServiceConnection {
             override fun onServiceConnected(name: ComponentName, binder: IBinder) {
                 val service = IPrivilegedService.Stub.asInterface(binder)
-                val callback = object : IPrivilegedCallback.Stub() {
-                    override fun handleResult(packageName: String, returnCode: Int) {
-                        removeFromInstallQueue(packageName)
-                    }
-                }
 
-                try {
-                    service.installSplitPackage(
-                        packageName,
-                        uriList,
-                        ACTION_INSTALL_REPLACE_EXISTING,
-                        BuildConfig.APPLICATION_ID,
-                        callback
-                    )
-                } catch (e: RemoteException) {
-                    removeFromInstallQueue(packageName)
-                    Log.e("Failed to connect Aurora Services")
+                if (service.hasPrivilegedPermissions()) {
+                    Log.i(context.getString(R.string.installer_service_available))
+                    val callback = object : IPrivilegedCallback.Stub() {
+                        override fun handleResult(packageName: String, returnCode: Int) {
+                            Log.e("$packageName : $returnCode")
+                            removeFromInstallQueue(packageName)
+                        }
+                    }
+
+                    try {
+                        service.installSplitPackage(
+                            packageName,
+                            uriList,
+                            ACTION_INSTALL_REPLACE_EXISTING,
+                            BuildConfig.APPLICATION_ID,
+                            callback
+                        )
+                    } catch (e: RemoteException) {
+                        removeFromInstallQueue(packageName)
+                        EventBus
+                            .getDefault()
+                            .post(
+                                SessionEvent.Failed(
+                                    packageName,
+                                    e.localizedMessage,
+                                    e.stackTraceToString()
+                                )
+                            )
+                        Log.e("Failed to connect Aurora Services")
+                    }
+                } else {
+                    Log.e(context.getString(R.string.installer_service_unavailable))
+                    EventBus
+                        .getDefault()
+                        .post(
+                            SessionEvent.Failed(
+                                packageName,
+                                context.getString(R.string.installer_status_failure),
+                                context.getString(R.string.installer_service_unavailable)
+                            )
+                        )
                 }
             }
 

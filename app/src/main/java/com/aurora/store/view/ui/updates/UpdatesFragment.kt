@@ -93,16 +93,22 @@ class UpdatesFragment : BaseFragment() {
             }
         }
 
-        fetch.addListener(fetchListener)
 
         return B.root
     }
 
-    override fun onDestroyView() {
+    override fun onResume() {
+        super.onResume()
+        if (::fetch.isInitialized && ::fetchListener.isInitialized) {
+            fetch.addListener(fetchListener)
+        }
+    }
+
+    override fun onPause() {
         if (::fetch.isInitialized && ::fetchListener.isInitialized) {
             fetch.removeListener(fetchListener)
         }
-        super.onDestroyView()
+        super.onPause()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -249,7 +255,7 @@ class UpdatesFragment : BaseFragment() {
     @Synchronized
     private fun install(packageName: String, files: List<Download>) {
         task {
-            AppInstaller.with(requireContext())
+            AppInstaller(requireContext())
                 .getPreferredInstaller()
                 .install(
                     packageName,

@@ -29,3 +29,16 @@ sealed class BusEvent {
         var aasToken: String = String()
     ) : BusEvent()
 }
+
+sealed class SessionEvent {
+    data class Success(
+        var packageName: String? = "",
+        var extra: String? = ""
+    ) : SessionEvent()
+
+    data class Failed(
+        var packageName: String? = "",
+        var error: String? = "",
+        var extra: String? = ""
+    ) : SessionEvent()
+}

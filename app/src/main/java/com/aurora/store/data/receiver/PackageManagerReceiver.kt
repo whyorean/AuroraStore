@@ -43,7 +43,7 @@ open class PackageManagerReceiver : BroadcastReceiver() {
                         .post(InstallEvent(packageName, ""))
 
                     //Clear installation queue
-                    AppInstaller.with(context)
+                    AppInstaller(context)
                         .getPreferredInstaller()
                         .removeFromInstallQueue(packageName)
                 }

@@ -17,16 +17,22 @@
  *
  */
 
-package com.aurora.store.view.custom
+package com.aurora.store.view.custom.layouts.button
 
 import android.content.Context
+import android.content.res.ColorStateList
 import android.os.Build
 import android.util.AttributeSet
-import android.view.View
 import android.widget.RelativeLayout
 import androidx.annotation.RequiresApi
+import androidx.core.content.ContextCompat
+import com.aurora.extensions.getString
+import com.aurora.extensions.isLAndAbove
+import com.aurora.extensions.runOnUiThread
 import com.aurora.store.R
 import com.aurora.store.databinding.ViewActionButtonBinding
+import nl.komponents.kovenant.task
+import java.util.concurrent.TimeUnit
 
 class ActionButton : RelativeLayout {
 
@@ -64,23 +70,71 @@ class ActionButton : RelativeLayout {
 
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.ActionButton)
         val btnTxt = typedArray.getString(R.styleable.ActionButton_btnActionText)
+
+        val btnTxtColor = typedArray.getResourceId(
+            R.styleable.ActionButton_btnActionTextColor,
+            R.color.colorWhite
+        )
+
+        val stateIcon = typedArray.getResourceId(
+            R.styleable.ActionButton_btnActionIcon,
+            R.drawable.ic_check
+        )
+
+        val stateColor = ContextCompat.getColor(context, btnTxtColor)
+
         B.btn.text = btnTxt
+        B.btn.setTextColor(stateColor)
+        B.img.setImageDrawable(ContextCompat.getDrawable(context, stateIcon))
+        if (isLAndAbove()) {
+            B.img.imageTintList = ColorStateList.valueOf(stateColor)
+        }
+
         typedArray.recycle()
     }
 
     fun setText(text: String) {
+        B.viewFlipper.displayedChild = 0
         B.btn.text = text
     }
 
-    fun updateProgress(isVisible: Boolean) {
-        if (isVisible)
-            B.progress.visibility = View.VISIBLE
-        else
+    fun setText(text: Int) {
+        B.viewFlipper.displayedChild = 0
+        B.btn.text = getString(text)
+    }
 
-            B.progress.visibility = View.INVISIBLE
+    fun updateState(state: State) {
+        val displayChild = when (state) {
+            State.IDLE -> 0
+            State.PROGRESS -> 1
+            State.COMPLETE -> 2
+        }
+
+        if (B.viewFlipper.displayedChild != displayChild) {
+            runOnUiThread {
+                B.viewFlipper.displayedChild = displayChild
+
+                if (displayChild == 2)
+                    switchToIdle()
+            }
+        }
+    }
+
+    private fun switchToIdle() {
+        task {
+            TimeUnit.SECONDS.sleep(3)
+        } success {
+            updateState(State.IDLE)
+        }
     }
 
     fun addOnClickListener(onClickListener: OnClickListener) {
         B.btn.setOnClickListener(onClickListener)
+    }
+
+    enum class State {
+        IDLE,
+        PROGRESS,
+        COMPLETE,
     }
 }

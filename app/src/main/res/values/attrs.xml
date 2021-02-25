@@ -38,6 +38,24 @@
 
     <declare-styleable name="ActionButton">
         <attr name="btnActionText" format="string" />
+        <attr name="btnActionTextColor" format="string" />
+        <attr name="btnActionIcon" format="string" />
+        <attr name="btnActionBackground" format="enum">
+            <enum name="outlined" value="0" />
+            <enum name="roundedOutlined" value="1" />
+            <enum name="flat" value="2" />
+            <enum name="roundedFlat" value="3" />
+            <enum name="none" value="4" />
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="AuroraProgressView">
+        <attr name="minWidth" format="dimension" />
+        <attr name="maxWidth" format="dimension" />
+        <attr name="minHeight" format="dimension" />
+        <attr name="maxHeight" format="dimension" />
+        <attr name="indicatorName" format="string" />
+        <attr name="indicatorColor" format="color" />
     </declare-styleable>
 
     <declare-styleable name="DevInfoLayout">

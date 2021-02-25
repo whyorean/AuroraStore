@@ -20,10 +20,20 @@
 package com.aurora.extensions
 
 import android.text.format.DateFormat
+import java.io.PrintWriter
+import java.io.StringWriter
 import java.util.*
 
 fun Long.toDate(): String {
     val calendar = Calendar.getInstance(Locale.getDefault())
     calendar.timeInMillis = this
     return DateFormat.format("dd/MM/yy", calendar).toString()
+}
+
+fun Throwable.stackTraceToString(): String {
+    val stringWriter = StringWriter(1024)
+    val printWriter = PrintWriter(stringWriter)
+    printStackTrace(printWriter)
+    printWriter.close()
+    return stringWriter.toString()
 }

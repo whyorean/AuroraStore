@@ -25,9 +25,7 @@ import com.aurora.store.data.SingletonHolder
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_INSTALLER_ID
 
-open class AppInstaller private constructor(var context: Context) {
-
-    companion object : SingletonHolder<AppInstaller, Context>(::AppInstaller)
+open class AppInstaller constructor(var context: Context) {
 
     fun getPreferredInstaller(): IInstaller {
         val prefValue = Preferences.getInteger(

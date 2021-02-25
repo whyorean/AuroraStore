@@ -36,6 +36,10 @@ class AuroraApplication : MultiDexApplication() {
     private lateinit var fetch: Fetch
     private lateinit var packageManagerReceiver: PackageManagerReceiver
 
+    companion object{
+        val enqueuedInstalls: MutableSet<String> = mutableSetOf()
+    }
+
     override fun onCreate() {
         super.onCreate()
 

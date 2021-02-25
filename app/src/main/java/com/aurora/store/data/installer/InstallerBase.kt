@@ -24,24 +24,22 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Build
 import androidx.core.content.FileProvider
+import com.aurora.store.AuroraApplication
 import com.aurora.store.BuildConfig
 import java.io.File
 
-private val enqueuedInstalls: MutableSet<String> = mutableSetOf()
-
 abstract class InstallerBase(protected var context: Context) : IInstaller {
 
-
     override fun clearQueue() {
-        enqueuedInstalls.clear()
+        AuroraApplication.enqueuedInstalls.clear()
     }
 
     override fun isAlreadyQueued(packageName: String): Boolean {
-        return enqueuedInstalls.contains(packageName)
+        return AuroraApplication.enqueuedInstalls.contains(packageName)
     }
 
     override fun removeFromInstallQueue(packageName: String) {
-        enqueuedInstalls.remove(packageName)
+        AuroraApplication.enqueuedInstalls.remove(packageName)
     }
 
     override fun uninstall(packageName: String) {

@@ -21,37 +21,59 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="@dimen/height_button">
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn"
-        style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+    <ViewFlipper
+        android:id="@+id/view_flipper"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:paddingVertical="@dimen/padding_normal"
-        android:paddingStart="24dp"
-        android:paddingEnd="24dp"
-        android:textAllCaps="true"
-        android:textAppearance="@style/TextAppearance.Aurora.SubTitle"
-        android:textColor="@color/colorWhite"
-        app:iconPadding="@dimen/padding_large"
-        app:iconTint="?colorAccent"
-        tools:text="Install" />
+        android:layout_height="match_parent"
+        android:animateFirstView="true"
+        android:inAnimation="@anim/fade_in"
+        android:outAnimation="@anim/fade_out"
+        tools:ignore="UselessParent">
 
-    <androidx.core.widget.ContentLoadingProgressBar
-        android:id="@+id/progress"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="@dimen/icon_size_default"
-        android:layout_height="@dimen/icon_size_default"
-        android:layout_alignEnd="@id/btn"
-        android:layout_centerVertical="true"
-        android:layout_marginEnd="@dimen/icon_size_default"
-        android:elevation="8dp"
-        android:indeterminateTint="@color/colorWhite"
-        android:progressTint="@color/colorWhite"
-        android:visibility="invisible"
-        tools:visibility="visible" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn"
+                style="@style/Widget.MaterialComponents.Button.TextButton.Dialog.Flush"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true"
+                android:textAllCaps="true"
+                android:textAppearance="@style/TextAppearance.Aurora.SubTitle"
+                app:iconPadding="@dimen/padding_large"
+                app:iconTint="@color/colorWhite"
+                tools:text="Install" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.aurora.store.view.custom.progress.AuroraProgressView
+                android:id="@+id/progress"
+                android:layout_width="@dimen/icon_size_small"
+                android:layout_height="@dimen/icon_size_small"
+                android:layout_centerInParent="true"
+                tools:indicatorColor="@color/colorAccent" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                app:srcCompat="@drawable/ic_check"
+                app:tint="@color/colorWhite" />
+        </RelativeLayout>
+    </ViewFlipper>
 </RelativeLayout>
 
 
