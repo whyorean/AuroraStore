@@ -23,11 +23,14 @@ import android.os.Bundle
 import android.view.View
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
+import com.aurora.extensions.runOnUiThread
+import com.aurora.extensions.toast
 import com.aurora.store.R
 import com.aurora.store.util.CommonUtil
 import com.aurora.store.util.Preferences
-import com.aurora.extensions.runOnUiThread
-import com.aurora.extensions.toast
+import com.aurora.store.util.save
+import com.aurora.store.view.custom.preference.AuroraListPreference
+import com.topjohnwu.superuser.Shell
 
 
 class InstallationPreference : PreferenceFragmentCompat() {
@@ -40,6 +43,7 @@ class InstallationPreference : PreferenceFragmentCompat() {
 
         val abandonPreference: Preference? =
             findPreference(Preferences.INSTALLATION_ABANDON_SESSION)
+
         abandonPreference?.let {
             it.onPreferenceClickListener =
                 Preference.OnPreferenceClickListener {
@@ -50,5 +54,41 @@ class InstallationPreference : PreferenceFragmentCompat() {
                     false
                 }
         }
+
+        val installerPreference: AuroraListPreference? =
+            findPreference(Preferences.PREFERENCE_INSTALLER_ID)
+
+        installerPreference?.let {
+            it.onPreferenceChangeListener =
+                Preference.OnPreferenceChangeListener { _, newValue ->
+                    val selectedId = Integer.parseInt(newValue as String)
+                    if (selectedId == 2) {
+                        if (checkRoot()) {
+                            save(Preferences.PREFERENCE_INSTALLER_ID, selectedId)
+                            true
+                        } else {
+                            false
+                        }
+                    } else {
+                        save(Preferences.PREFERENCE_INSTALLER_ID, selectedId)
+                        true
+                    }
+                }
+        }
+    }
+
+    private fun checkRoot(): Boolean {
+        var isRootAvailable = false
+
+        Shell.getShell {
+            isRootAvailable = it.isRoot
+
+            if (isRootAvailable)
+                toast(R.string.installer_root_available)
+            else
+                toast(R.string.installer_root_unavailable)
+        }
+
+        return isRootAvailable
     }
 }
