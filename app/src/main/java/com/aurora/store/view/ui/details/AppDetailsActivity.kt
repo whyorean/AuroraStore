@@ -40,7 +40,7 @@ import com.aurora.store.R
 import com.aurora.store.data.downloader.DownloadManager
 import com.aurora.store.data.downloader.RequestBuilder
 import com.aurora.store.data.event.BusEvent
-import com.aurora.store.data.event.SessionEvent
+import com.aurora.store.data.event.InstallerEvent
 import com.aurora.store.data.installer.AppInstaller
 import com.aurora.store.data.network.HttpClient
 import com.aurora.store.data.providers.AuthProvider
@@ -114,7 +114,7 @@ class AppDetailsActivity : BaseDetailsActivity() {
                     attachActions()
                 }
             }
-            is SessionEvent.Failed -> {
+            is InstallerEvent.Failed -> {
                 if (app.packageName == event.packageName) {
                     InstallErrorDialogSheet.newInstance(
                         app,

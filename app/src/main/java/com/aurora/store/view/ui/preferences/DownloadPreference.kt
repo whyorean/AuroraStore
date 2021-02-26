@@ -20,12 +20,44 @@
 package com.aurora.store.view.ui.preferences
 
 import android.os.Bundle
+import android.view.View
+import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
+import androidx.preference.SwitchPreferenceCompat
 import com.aurora.store.R
+import com.aurora.store.util.Preferences
 
 
 class DownloadPreference : PreferenceFragmentCompat() {
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.preferences_download, rootKey)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val downloadExternalPreference: SwitchPreferenceCompat? =
+            findPreference(Preferences.PREFERENCE_DOWNLOAD_EXTERNAL)
+
+        val autoDeletePreference: SwitchPreferenceCompat? =
+            findPreference(Preferences.PREFERENCE_AUTO_DELETE)
+
+
+        downloadExternalPreference?.let { switchPreferenceCompat ->
+            switchPreferenceCompat.onPreferenceChangeListener =
+                Preference.OnPreferenceChangeListener { _, newValue ->
+                    val checked = newValue.toString().toBoolean()
+                    autoDeletePreference?.let {
+                        if (checked) {
+                            it.isEnabled = true
+                        } else {
+                            it.isEnabled = false
+                            it.isChecked = true
+                        }
+                    }
+
+                    true
+                }
+        }
     }
 }

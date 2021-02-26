@@ -21,9 +21,8 @@ package com.aurora.store.data.installer
 
 import android.content.Context
 import com.aurora.extensions.isLAndAbove
-import com.aurora.extensions.toast
 import com.aurora.store.R
-import com.aurora.store.data.event.SessionEvent
+import com.aurora.store.data.event.InstallerEvent
 import com.aurora.store.util.Log
 import com.topjohnwu.superuser.Shell
 import org.greenrobot.eventbus.EventBus
@@ -52,7 +51,7 @@ class RootInstaller(context: Context) : InstallerBase(context) {
                         xInstallLegacy(packageName, it)
                 }
             } else {
-                val event = SessionEvent.Failed(
+                val event = InstallerEvent.Failed(
                     packageName,
                     context.getString(R.string.installer_status_failure),
                     context.getString(R.string.installer_root_unavailable)
@@ -91,7 +90,7 @@ class RootInstaller(context: Context) : InstallerBase(context) {
 
                 if (!shellResult.isSuccess) {
                     removeFromInstallQueue(packageName)
-                    val event = SessionEvent.Failed(
+                    val event = InstallerEvent.Failed(
                         packageName,
                         context.getString(R.string.installer_status_failure),
                         parseError(shellResult)
@@ -100,7 +99,7 @@ class RootInstaller(context: Context) : InstallerBase(context) {
                 }
             } else {
                 removeFromInstallQueue(packageName)
-                val event = SessionEvent.Failed(
+                val event = InstallerEvent.Failed(
                     packageName,
                     context.getString(R.string.installer_status_failure),
                     context.getString(R.string.installer_root_unavailable)
@@ -109,7 +108,7 @@ class RootInstaller(context: Context) : InstallerBase(context) {
             }
         } else {
             removeFromInstallQueue(packageName)
-            val event = SessionEvent.Failed(
+            val event = InstallerEvent.Failed(
                 packageName,
                 context.getString(R.string.installer_status_failure),
                 context.getString(R.string.installer_status_failure_session)

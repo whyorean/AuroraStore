@@ -33,7 +33,7 @@ import com.aurora.services.IPrivilegedCallback
 import com.aurora.services.IPrivilegedService
 import com.aurora.store.BuildConfig
 import com.aurora.store.R
-import com.aurora.store.data.event.SessionEvent
+import com.aurora.store.data.event.InstallerEvent
 import com.aurora.store.util.Log
 import com.aurora.store.util.PackageUtil
 import org.greenrobot.eventbus.EventBus
@@ -70,7 +70,7 @@ class ServiceInstaller(context: Context) : InstallerBase(context) {
                 xInstall(packageName, uriList)
             }
             else -> {
-                val event = SessionEvent.Failed(
+                val event = InstallerEvent.Failed(
                     packageName,
                     context.getString(R.string.installer_status_failure),
                     context.getString(R.string.installer_service_unavailable)
@@ -108,7 +108,7 @@ class ServiceInstaller(context: Context) : InstallerBase(context) {
                         EventBus
                             .getDefault()
                             .post(
-                                SessionEvent.Failed(
+                                InstallerEvent.Failed(
                                     packageName,
                                     e.localizedMessage,
                                     e.stackTraceToString()
@@ -118,7 +118,7 @@ class ServiceInstaller(context: Context) : InstallerBase(context) {
                     }
                 } else {
                     Log.e(context.getString(R.string.installer_service_misconfigured))
-                    val event = SessionEvent.Failed(
+                    val event = InstallerEvent.Failed(
                         packageName,
                         context.getString(R.string.installer_status_failure),
                         context.getString(R.string.installer_service_misconfigured)

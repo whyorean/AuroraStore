@@ -26,13 +26,6 @@
         app:summary="@string/pref_install_auto_summary"
         app:title="@string/pref_install_auto_title" />
 
-    <SwitchPreferenceCompat
-        app:defaultValue="true"
-        app:iconSpaceReserved="false"
-        app:key="PREFERENCE_AUTO_DELETE"
-        app:summary="@string/pref_install_delete_summary"
-        app:title="@string/pref_install_delete_title" />
-
     <com.aurora.store.view.custom.preference.AuroraListPreference
         app:defaultValue="0"
         app:entries="@array/pref_installation_method"

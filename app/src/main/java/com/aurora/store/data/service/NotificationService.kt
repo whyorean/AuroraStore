@@ -34,7 +34,7 @@ import com.aurora.extensions.isLAndAbove
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
 import com.aurora.store.data.downloader.DownloadManager
-import com.aurora.store.data.event.SessionEvent
+import com.aurora.store.data.event.InstallerEvent
 import com.aurora.store.data.installer.AppInstaller
 import com.aurora.store.data.receiver.DownloadCancelReceiver
 import com.aurora.store.data.receiver.DownloadPauseReceiver
@@ -361,12 +361,12 @@ class NotificationService : Service() {
     @Subscribe()
     fun onEventMainThread(event: Any) {
         when (event) {
-            is SessionEvent.Success -> {
+            is InstallerEvent.Success -> {
                 val app = appMap[event.packageName.hashCode()]
                 if (app != null)
                     notifyInstallationStatus(app, event.extra)
             }
-            is SessionEvent.Failed -> {
+            is InstallerEvent.Failed -> {
                 val app = appMap[event.packageName.hashCode()]
                 if (app != null)
                     notifyInstallationStatus(app, event.error)

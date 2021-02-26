@@ -29,7 +29,7 @@ import androidx.annotation.RequiresApi
 import androidx.core.content.FileProvider
 import com.aurora.extensions.isNAndAbove
 import com.aurora.store.BuildConfig
-import com.aurora.store.data.event.SessionEvent
+import com.aurora.store.data.event.InstallerEvent
 import com.aurora.store.util.Log
 import org.apache.commons.io.IOUtils
 import org.greenrobot.eventbus.EventBus
@@ -102,7 +102,7 @@ class SessionInstaller(context: Context) : InstallerBase(context) {
         } catch (e: Exception) {
             session.abandon()
             removeFromInstallQueue(packageName)
-            val event = SessionEvent.Failed(
+            val event = InstallerEvent.Failed(
                 packageName,
                 e.localizedMessage,
                 e.stackTraceToString()

@@ -27,6 +27,13 @@
         app:summary="@string/pref_downloader_external_desc"
         app:title="@string/pref_downloader_external" />
 
+    <SwitchPreferenceCompat
+        app:defaultValue="true"
+        app:iconSpaceReserved="false"
+        app:key="PREFERENCE_AUTO_DELETE"
+        app:summary="@string/pref_install_delete_summary"
+        app:title="@string/pref_install_delete_title" />
+
     <SeekBarPreference
         android:defaultValue="3"
         android:key="PREFERENCE_DOWNLOAD_ACTIVE"

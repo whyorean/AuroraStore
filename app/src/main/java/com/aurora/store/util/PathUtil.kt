@@ -21,9 +21,9 @@ package com.aurora.store.util
 
 import android.content.Context
 import android.os.Environment
+import com.aurora.extensions.isLAndAbove
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.File
-import com.aurora.extensions.isLAndAbove
 
 fun Context.getInternalBaseDirectory(): String {
     return filesDir.path
@@ -33,7 +33,7 @@ object PathUtil {
 
     private fun getDownloadDirectory(context: Context): String {
         return if (isLAndAbove()) {
-            if (Preferences.getBoolean(context, Preferences.PREFERENCE_DOWNLOAD_EXTERNAL))
+            if (context.isExternalStorageEnable())
                 getExternalPath()
             else
                 context.getInternalBaseDirectory() + "/Downloads"
@@ -79,4 +79,8 @@ object PathUtil {
         val obbDir = getObbDownloadPath(context, app)
         return "$obbDir/${file.name}"
     }
+}
+
+fun Context.isExternalStorageEnable(): Boolean {
+    return Preferences.getBoolean(this, Preferences.PREFERENCE_DOWNLOAD_EXTERNAL)
 }

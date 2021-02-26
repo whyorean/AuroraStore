@@ -26,7 +26,7 @@ import android.os.Build
 import android.os.IBinder
 import androidx.annotation.RequiresApi
 import com.aurora.store.R
-import com.aurora.store.data.event.SessionEvent
+import com.aurora.store.data.event.InstallerEvent
 import com.aurora.store.util.Log
 import org.greenrobot.eventbus.EventBus
 
@@ -65,12 +65,12 @@ class InstallerService : Service() {
     private fun postStatus(status: Int, packageName: String?, extra: String?) {
         when (status) {
             PackageInstaller.STATUS_SUCCESS -> {
-                EventBus.getDefault().post(SessionEvent.Success(packageName, "Success"))
+                EventBus.getDefault().post(InstallerEvent.Success(packageName, "Success"))
             }
             else -> {
                 val errorString = getErrorString(status)
                 Log.e("$packageName : $errorString")
-                EventBus.getDefault().post(SessionEvent.Failed(packageName, errorString, extra))
+                EventBus.getDefault().post(InstallerEvent.Failed(packageName, errorString, extra))
             }
         }
     }
