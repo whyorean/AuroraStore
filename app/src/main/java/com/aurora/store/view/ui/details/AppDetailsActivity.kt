@@ -204,6 +204,10 @@ class AppDetailsActivity : BaseDetailsActivity() {
                 open(DownloadActivity::class.java)
                 return true
             }
+            R.id.action_playstore -> {
+                browse("${Constants.SHARE_URL}${app.packageName}")
+                return true
+            }
         }
         return super.onOptionsItemSelected(item)
     }

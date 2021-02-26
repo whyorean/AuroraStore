@@ -305,6 +305,7 @@
     <string name="title_details">"Details"</string>
     <string name="title_device">"Device"</string>
     <string name="title_download_manager">"Downloads"</string>
+    <string name="title_download_playstore">"Play Store"</string>
     <string name="title_games">"Games"</string>
     <string name="title_installation">"Installation"</string>
     <string name="title_installed">"Installed"</string>
