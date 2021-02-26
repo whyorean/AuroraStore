@@ -124,7 +124,7 @@ object PackageUtil {
             }
 
         if (isFdroidFilterEnabled) {
-            packageInfoList
+            packageInfoList = packageInfoList
                 .filter {
                     val packageInstaller = packageManager.getInstallerPackageName(it.packageName)
                     packageInstaller != "org.fdroid.fdroid.privileged"
