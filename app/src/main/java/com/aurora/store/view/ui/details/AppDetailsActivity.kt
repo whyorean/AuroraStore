@@ -343,6 +343,7 @@ class AppDetailsActivity : BaseDetailsActivity() {
             inflateAppRatingAndReviews(B.layoutDetailsReview, app)
             inflateAppDevInfo(B.layoutDetailsDev, app)
             inflateAppPrivacy(B.layoutDetailsPrivacy, app)
+            inflateAppPermission(B.layoutDetailsPermissions, app)
 
             if (!authData.isAnonymous) {
                 app.testingProgram?.let {

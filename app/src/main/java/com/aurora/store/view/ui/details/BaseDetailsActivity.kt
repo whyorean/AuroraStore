@@ -31,6 +31,10 @@ import androidx.core.text.HtmlCompat
 import androidx.lifecycle.ViewModelProvider
 import com.airbnb.epoxy.EpoxyRecyclerView
 import com.aurora.Constants
+import com.aurora.extensions.hide
+import com.aurora.extensions.load
+import com.aurora.extensions.show
+import com.aurora.extensions.toast
 import com.aurora.gplayapi.data.models.*
 import com.aurora.gplayapi.helpers.AppDetailsHelper
 import com.aurora.gplayapi.helpers.ReviewsHelper
@@ -43,10 +47,6 @@ import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.databinding.*
 import com.aurora.store.util.CommonUtil
 import com.aurora.store.util.NavigationUtil
-import com.aurora.extensions.hide
-import com.aurora.extensions.load
-import com.aurora.extensions.show
-import com.aurora.extensions.toast
 import com.aurora.store.view.custom.RatingView
 import com.aurora.store.view.epoxy.controller.DetailsCarouselController
 import com.aurora.store.view.epoxy.controller.GenericCarouselController
@@ -55,6 +55,7 @@ import com.aurora.store.view.epoxy.views.details.ReviewViewModel_
 import com.aurora.store.view.epoxy.views.details.ScreenshotView
 import com.aurora.store.view.epoxy.views.details.ScreenshotViewModel_
 import com.aurora.store.view.ui.commons.BaseActivity
+import com.aurora.store.view.ui.sheets.PermissionBottomSheet
 import com.aurora.store.viewmodel.details.DetailsClusterViewModel
 import nl.komponents.kovenant.task
 import nl.komponents.kovenant.ui.failUi
@@ -337,6 +338,14 @@ abstract class BaseDetailsActivity : BaseActivity() {
 
             VM.getStreamBundle(it)
         }
+    }
+
+    fun inflateAppPermission(B: LayoutDetailsPermissionsBinding, app: App) {
+        B.headerPermission.addClickListener {
+            PermissionBottomSheet.newInstance(app)
+                .show(supportFragmentManager, PermissionBottomSheet.TAG)
+        }
+        B.txtPermissionCount.text = ("${app.permissions.size} permissions")
     }
 
     private fun updateBetaActions(B: LayoutDetailsBetaBinding, isSubscribed: Boolean) {

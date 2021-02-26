@@ -150,11 +150,13 @@
     <string name="details_no_app">"No apps available"</string>
     <string name="details_no_dependencies">"No Dependencies"</string>
     <string name="details_no_previews">"No previews available"</string>
+    <string name="details_no_permission">"No permissions"</string>
     <string name="details_no_reviews">"No reviews available"</string>
     <string name="details_no_updates">"No updates available"</string>
     <string name="details_no_whitelist">"No apps whitelisted"</string>
     <string name="details_others_think">"See what others think about this app"</string>
     <string name="details_paid">"Paid"</string>
+    <string name="details_permission">"Permission"</string>
     <string name="details_privacy">"Privacy"</string>
     <string name="details_rate_stars_first">"Enter star rating first"</string>
     <string name="details_rate_this_app">"Rate this app"</string>

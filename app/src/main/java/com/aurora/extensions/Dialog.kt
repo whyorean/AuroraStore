@@ -40,7 +40,7 @@ fun Context.showDialog(@StringRes titleId: Int, @StringRes messageId: Int) {
     }
 }
 
-fun Context.showDialog(title: String, message: String) {
+fun Context.showDialog(title: String?, message: String?) {
     runOnUiThread {
         val backgroundColor: Int = getStyledAttributeColor(android.R.attr.colorBackground)
         val builder = MaterialAlertDialogBuilder(this).apply {
