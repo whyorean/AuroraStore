@@ -51,7 +51,7 @@
         android:layout_below="@id/txt_title"
         android:layout_alignStart="@id/txt_title"
         android:layout_alignEnd="@id/txt_title"
-        android:autoLink="map"
+        android:autoLink="all"
         android:linksClickable="true"
         android:textAppearance="@style/TextAppearance.Aurora.Line2"
         android:textColorLink="?android:attr/textColorSecondary"

@@ -19,7 +19,6 @@
 
 package com.aurora.store.view.ui.details
 
-import android.app.ActivityOptions
 import android.content.Intent
 import android.os.Build
 import android.text.Html
@@ -29,12 +28,18 @@ import android.widget.RelativeLayout
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.text.HtmlCompat
+import androidx.lifecycle.ViewModelProvider
+import com.airbnb.epoxy.EpoxyRecyclerView
 import com.aurora.Constants
-import com.aurora.gplayapi.data.models.App
-import com.aurora.gplayapi.data.models.Review
+import com.aurora.extensions.hide
+import com.aurora.extensions.load
+import com.aurora.extensions.show
+import com.aurora.extensions.toast
+import com.aurora.gplayapi.data.models.*
 import com.aurora.gplayapi.helpers.AppDetailsHelper
 import com.aurora.gplayapi.helpers.ReviewsHelper
 import com.aurora.store.R
+import com.aurora.store.data.ViewState
 import com.aurora.store.data.model.ExodusReport
 import com.aurora.store.data.model.Report
 import com.aurora.store.data.network.HttpClient
@@ -42,18 +47,22 @@ import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.databinding.*
 import com.aurora.store.util.CommonUtil
 import com.aurora.store.util.NavigationUtil
-import com.aurora.store.util.extensions.hide
-import com.aurora.store.util.extensions.load
-import com.aurora.store.util.extensions.show
-import com.aurora.store.util.extensions.toast
 import com.aurora.store.view.custom.RatingView
+import com.aurora.store.view.epoxy.controller.DetailsCarouselController
+import com.aurora.store.view.epoxy.controller.GenericCarouselController
 import com.aurora.store.view.epoxy.views.*
+import com.aurora.store.view.epoxy.views.details.ReviewViewModel_
+import com.aurora.store.view.epoxy.views.details.ScreenshotView
+import com.aurora.store.view.epoxy.views.details.ScreenshotViewModel_
 import com.aurora.store.view.ui.commons.BaseActivity
+import com.aurora.store.view.ui.sheets.PermissionBottomSheet
+import com.aurora.store.viewmodel.details.DetailsClusterViewModel
 import nl.komponents.kovenant.task
 import nl.komponents.kovenant.ui.failUi
 import nl.komponents.kovenant.ui.successUi
 import org.json.JSONObject
 import java.util.*
+
 
 abstract class BaseDetailsActivity : BaseActivity() {
 
@@ -65,7 +74,8 @@ abstract class BaseDetailsActivity : BaseActivity() {
         B.txtInstalls.text = CommonUtil.addDiPrefix(app.installs)
         B.txtSize.text = CommonUtil.addSiPrefix(app.size)
         B.txtRating.text = app.labeledRating
-        B.txtSdk.text = String.format("Target SDK %s", "${app.targetSdk}")
+        B.txtSdk.text = ("Target SDK ${app.targetSdk}")
+        B.txtUpdated.text = app.updatedOn
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             B.txtDescription.justificationMode = Layout.JUSTIFICATION_MODE_INTER_WORD
@@ -267,13 +277,75 @@ abstract class BaseDetailsActivity : BaseActivity() {
                         }
                     } failUi {
                         updateBetaActions(B, betaProgram.isSubscribed)
-                        toast("Failed to update beta status")
+                        toast(getString(R.string.details_beta_delay))
                     }
                 }
             } else {
                 B.root.hide()
             }
         }
+    }
+
+    fun inflateAppStream(epoxyRecyclerView: EpoxyRecyclerView, app: App) {
+        app.detailsStreamUrl?.let {
+            val VM = ViewModelProvider(this).get(DetailsClusterViewModel::class.java)
+
+            val carouselController =
+                DetailsCarouselController(object : GenericCarouselController.Callbacks {
+                    override fun onHeaderClicked(streamCluster: StreamCluster) {
+                        if (streamCluster.clusterBrowseUrl.isNotEmpty())
+                            openStreamBrowseActivity(
+                                streamCluster.clusterBrowseUrl,
+                                streamCluster.clusterTitle
+                            )
+                        else
+                            toast("Browse page unavailable")
+                    }
+
+                    override fun onClusterScrolled(streamCluster: StreamCluster) {
+                        VM.observeCluster(streamCluster)
+                    }
+
+                    override fun onAppClick(app: App) {
+                        openDetailsActivity(app)
+                    }
+
+                    override fun onAppLongClick(app: App) {
+
+                    }
+                })
+
+            VM.liveData.observe(this, {
+                when (it) {
+                    is ViewState.Empty -> {
+                    }
+                    is ViewState.Loading -> {
+
+                    }
+                    is ViewState.Error -> {
+
+                    }
+                    is ViewState.Status -> {
+
+                    }
+                    is ViewState.Success<*> -> {
+                        carouselController.setData(it.data as StreamBundle)
+                    }
+                }
+            })
+
+            epoxyRecyclerView.setController(carouselController)
+
+            VM.getStreamBundle(it)
+        }
+    }
+
+    fun inflateAppPermission(B: LayoutDetailsPermissionsBinding, app: App) {
+        B.headerPermission.addClickListener {
+            PermissionBottomSheet.newInstance(app)
+                .show(supportFragmentManager, PermissionBottomSheet.TAG)
+        }
+        B.txtPermissionCount.text = ("${app.permissions.size} permissions")
     }
 
     private fun updateBetaActions(B: LayoutDetailsBetaBinding, isSubscribed: Boolean) {
@@ -286,23 +358,19 @@ abstract class BaseDetailsActivity : BaseActivity() {
         }
     }
 
-
     //Helpers
-    private fun openScreenshotActivity(app: App, position: Int) {
-        val intent = Intent(
-            this,
-            ScreenshotActivity::class.java
-        ).apply {
-            putExtra(Constants.STRING_EXTRA, gson.toJson(app.screenshots))
-            putExtra(Constants.INT_EXTRA, position)
+
+    open fun getIntentPackageName(intent: Intent): String? {
+        if (intent.hasExtra(Constants.STRING_EXTRA)) {
+            return intent.getStringExtra(Constants.STRING_EXTRA)
+        } else if (intent.scheme != null && (intent.scheme == "market" || intent.scheme == "http" || intent.scheme == "https")
+        ) {
+            return intent.data!!.getQueryParameter("id")
+        } else if (intent.extras != null) {
+            val bundle = intent.extras
+            return bundle!!.getString(Constants.STRING_EXTRA)
         }
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            val options =
-                ActivityOptions.makeSceneTransitionAnimation(this)
-            startActivity(intent, options.toBundle())
-        } else {
-            startActivity(intent)
-        }
+        return null
     }
 
     private fun addAvgReviews(number: Int, max: Long, rating: Long): RelativeLayout {

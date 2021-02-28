@@ -35,9 +35,9 @@ import com.aurora.store.data.installer.AppInstaller
 import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.databinding.FragmentUpdatesBinding
 import com.aurora.store.util.Log
-import com.aurora.store.util.extensions.flushAndAdd
-import com.aurora.store.util.extensions.toast
-import com.aurora.store.view.epoxy.views.AppUpdateViewModel_
+import com.aurora.extensions.flushAndAdd
+import com.aurora.extensions.toast
+import com.aurora.store.view.epoxy.views.app.AppUpdateViewModel_
 import com.aurora.store.view.epoxy.views.UpdateHeaderViewModel_
 import com.aurora.store.view.epoxy.views.app.NoAppViewModel_
 import com.aurora.store.view.epoxy.views.shimmer.AppListViewShimmerModel_
@@ -93,16 +93,22 @@ class UpdatesFragment : BaseFragment() {
             }
         }
 
-        fetch.addListener(fetchListener)
 
         return B.root
     }
 
-    override fun onDestroyView() {
+    override fun onResume() {
+        super.onResume()
+        if (::fetch.isInitialized && ::fetchListener.isInitialized) {
+            fetch.addListener(fetchListener)
+        }
+    }
+
+    override fun onPause() {
         if (::fetch.isInitialized && ::fetchListener.isInitialized) {
             fetch.removeListener(fetchListener)
         }
-        super.onDestroyView()
+        super.onPause()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -249,7 +255,7 @@ class UpdatesFragment : BaseFragment() {
     @Synchronized
     private fun install(packageName: String, files: List<Download>) {
         task {
-            AppInstaller.with(requireContext())
+            AppInstaller(requireContext())
                 .getPreferredInstaller()
                 .install(
                     packageName,

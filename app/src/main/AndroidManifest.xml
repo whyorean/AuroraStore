@@ -55,17 +55,20 @@
         android:name=".AuroraApplication"
         android:allowBackup="true"
         android:banner="@drawable/ic_launcher_background"
+        android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"
+        android:killAfterRestore="false"
         android:label="@string/app_name"
         android:requestLegacyExternalStorage="true"
+        android:restoreAnyVersion="true"
+        android:restoreNeedsApplication="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
 
-        <activity
-            android:name=".view.ui.onboarding.OnboardingActivity">
+        <activity android:name=".view.ui.onboarding.OnboardingActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -82,11 +85,50 @@
             android:name=".MainActivity"
             android:launchMode="singleTask" />
 
+        <activity android:name=".view.ui.details.AppDetailsActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="http" />
+                <data android:scheme="https" />
+                <data android:host="market.android.com" />
+                <data android:path="/store/apps/details" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="http" />
+                <data android:scheme="https" />
+                <data android:host="play.google.com" />
+                <data android:path="/store/apps/details" />
+            </intent-filter>
+        </activity>
+
+
+        <activity android:name=".view.ui.details.DevProfileActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="http" />
+                <data android:scheme="https" />
+                <data android:host="play.google.com" />
+                <data android:path="/store/apps/dev" />
+            </intent-filter>
+        </activity>
+
         <activity android:name=".view.ui.search.SearchSuggestionActivity" />
         <activity android:name=".view.ui.search.SearchResultsActivity" />
         <activity android:name=".view.ui.commons.StreamBrowseActivity" />
         <activity android:name=".view.ui.sale.AppSalesActivity" />
-        <activity android:name=".view.ui.details.AppDetailsActivity" />
         <activity android:name=".view.ui.details.ScreenshotActivity" />
         <activity android:name=".view.ui.all.AppsGamesActivity" />
         <activity android:name=".view.ui.commons.CategoryBrowseActivity" />
@@ -101,6 +143,8 @@
         <activity android:name=".view.ui.commons.BlacklistActivity" />
         <activity android:name=".view.ui.preferences.SettingsActivity" />
         <activity android:name=".view.ui.about.AboutActivity" />
+        <activity android:name=".view.ui.commons.ExpandedStreamBrowseActivity" />
+        <activity android:name=".view.ui.commons.EditorStreamBrowseActivity" />
 
         <service android:name=".data.service.NotificationService" />
         <service android:name=".data.installer.InstallerService" />

@@ -22,13 +22,15 @@ package com.aurora.store.view.epoxy.views
 import android.content.Context
 import android.util.AttributeSet
 import android.widget.RelativeLayout
+import androidx.core.text.HtmlCompat
+import com.airbnb.epoxy.CallbackProp
 import com.airbnb.epoxy.ModelProp
 import com.airbnb.epoxy.ModelView
 import com.aurora.store.R
 import com.aurora.store.databinding.ViewEditorHeadBinding
 
 @ModelView(
-    autoLayout = ModelView.Size.WRAP_WIDTH_WRAP_HEIGHT,
+    autoLayout = ModelView.Size.MATCH_WIDTH_WRAP_HEIGHT,
     baseModelClass = BaseView::class
 )
 class EditorHeadView : RelativeLayout {
@@ -54,6 +56,11 @@ class EditorHeadView : RelativeLayout {
     private fun init(context: Context?, attrs: AttributeSet?) {
         val view = inflate(context, R.layout.view_editor_head, this)
         B = ViewEditorHeadBinding.bind(view)
+    }
+
+    @CallbackProp
+    fun click(onClickListener: OnClickListener?) {
+        B.root.setOnClickListener(onClickListener)
     }
 
     @ModelProp

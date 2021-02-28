@@ -57,6 +57,7 @@
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
         android:layout_marginStart="@dimen/margin_small"
+        android:background="?selectableItemBackgroundBorderless"
         android:padding="@dimen/padding_xsmall"
         app:srcCompat="@drawable/ic_arrow_right"
         app:tint="?android:textColorPrimary" />

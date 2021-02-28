@@ -29,12 +29,12 @@ import com.airbnb.epoxy.OnViewRecycled
 import com.aurora.gplayapi.data.models.Category
 import com.aurora.store.R
 import com.aurora.store.databinding.ViewCategoryBinding
-import com.aurora.store.util.extensions.clear
-import com.aurora.store.util.extensions.load
+import com.aurora.extensions.clear
+import com.aurora.extensions.load
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 
 @ModelView(
-    autoLayout = ModelView.Size.WRAP_WIDTH_WRAP_HEIGHT,
+    autoLayout = ModelView.Size.MATCH_WIDTH_WRAP_HEIGHT,
     baseModelClass = BaseView::class
 )
 class CategoryView : RelativeLayout {

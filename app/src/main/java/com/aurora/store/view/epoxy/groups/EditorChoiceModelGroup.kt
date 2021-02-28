@@ -24,19 +24,16 @@ import com.airbnb.epoxy.EpoxyModelGroup
 import com.aurora.gplayapi.data.models.editor.EditorChoiceCluster
 import com.aurora.store.R
 import com.aurora.store.view.epoxy.controller.EditorChoiceController
+import com.aurora.store.view.epoxy.views.EditorHeadViewModel_
 import com.aurora.store.view.epoxy.views.EditorImageViewModel_
-import com.aurora.store.view.epoxy.views.HeaderViewModel_
 
 class EditorChoiceModelGroup(
     editorChoiceCluster: EditorChoiceCluster,
     callbacks: EditorChoiceController.Callbacks
-) :
-    EpoxyModelGroup(
-        R.layout.model_editorchoice_group, buildModels(
-            editorChoiceCluster,
-            callbacks
-        )
-    ) {
+) : EpoxyModelGroup(
+    R.layout.model_editorchoice_group,
+    buildModels(editorChoiceCluster, callbacks)
+) {
     companion object {
         private fun buildModels(
             editorChoiceCluster: EditorChoiceCluster,
@@ -48,21 +45,33 @@ class EditorChoiceModelGroup(
 
             val idPrefix = editorChoiceCluster.id
 
+
             models.add(
-                HeaderViewModel_()
+                EditorImageViewModel_()
+                    .id("artwork_header_${idPrefix}")
+                    .artwork(editorChoiceCluster.clusterArtwork[0])
+                    .click { _ -> callbacks.onClick(editorChoiceCluster) }
+
+            )
+
+            models.add(
+                EditorHeadViewModel_()
                     .id("header_${idPrefix}")
                     .title(editorChoiceCluster.clusterTitle)
-                    .browseUrl(editorChoiceCluster.clusterBrowseUrl)
                     .click { _ -> callbacks.onClick(editorChoiceCluster) }
             )
 
-            editorChoiceCluster.clusterArtwork.forEach {
-                clusterViewModels.add(
-                    EditorImageViewModel_()
-                        .id("artwork_${idPrefix}")
-                        .artwork(it)
-                )
-            }
+            editorChoiceCluster.clusterArtwork
+                .drop(1)
+                .forEach {
+                    clusterViewModels.add(
+                        EditorImageViewModel_()
+                            .id("artwork_${idPrefix}_${it.url}")
+                            .artwork(it)
+                            .click { _ -> callbacks.onClick(editorChoiceCluster) }
+
+                    )
+                }
 
             models.add(
                 CarouselHorizontalModel_()

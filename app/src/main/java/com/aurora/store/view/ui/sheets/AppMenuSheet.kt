@@ -34,9 +34,8 @@ import com.aurora.store.data.providers.BlacklistProvider
 import com.aurora.store.databinding.SheetAppMenuBinding
 import com.aurora.store.util.ApkCopier
 import com.aurora.store.util.PackageUtil
-import com.aurora.store.util.extensions.isQAndAbove
-import com.aurora.store.util.extensions.openInfo
-import com.aurora.store.util.extensions.toast
+import com.aurora.extensions.openInfo
+import com.aurora.extensions.toast
 import com.livinglifetechway.quickpermissions_kotlin.runWithPermissions
 import nl.komponents.kovenant.task
 import org.greenrobot.eventbus.EventBus
@@ -87,11 +86,6 @@ class AppMenuSheet : BaseBottomSheet() {
             menu.findItem(R.id.action_uninstall).isVisible = installed
             menu.findItem(R.id.action_local).isVisible = installed
 
-            if (isQAndAbove()) {
-                //TODO: Add Scoped Storage Access
-                menu.findItem(R.id.action_local).isVisible = false
-            }
-
             setNavigationItemSelectedListener { item ->
                 when (item.itemId) {
                     R.id.action_blacklist -> {
@@ -113,8 +107,7 @@ class AppMenuSheet : BaseBottomSheet() {
                     }
 
                     R.id.action_uninstall -> {
-                        AppInstaller
-                            .with(requireContext())
+                        AppInstaller(requireContext())
                             .getPreferredInstaller().uninstall(app.packageName)
                     }
 

@@ -17,7 +17,7 @@
  *
  */
 
-package com.aurora.store.view.epoxy.views
+package com.aurora.store.view.epoxy.views.app
 
 import android.content.Context
 import android.util.AttributeSet
@@ -28,17 +28,18 @@ import com.airbnb.epoxy.CallbackProp
 import com.airbnb.epoxy.ModelProp
 import com.airbnb.epoxy.ModelView
 import com.airbnb.epoxy.OnViewRecycled
+import com.aurora.extensions.clear
+import com.aurora.extensions.load
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
 import com.aurora.store.databinding.ViewAppUpdateBinding
 import com.aurora.store.util.CommonUtil
-import com.aurora.store.util.extensions.clear
-import com.aurora.store.util.extensions.load
+import com.aurora.store.view.epoxy.views.BaseView
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade
 
 @ModelView(
-    autoLayout = ModelView.Size.WRAP_WIDTH_WRAP_HEIGHT,
+    autoLayout = ModelView.Size.MATCH_WIDTH_WRAP_HEIGHT,
     baseModelClass = BaseView::class
 )
 class AppUpdateView : RelativeLayout {
@@ -76,7 +77,8 @@ class AppUpdateView : RelativeLayout {
         }
 
         B.txtLine2.text = app.developerName
-        B.txtLine3.text = CommonUtil.addSiPrefix(app.size)
+        B.txtLine3.text = ("${CommonUtil.addSiPrefix(app.size)}  •  ${app.updatedOn}")
+        B.txtLine4.text = ("v${app.versionName}.${app.versionCode}")
         B.txtChangelog.text = if (app.changes.isNotEmpty())
             HtmlCompat.fromHtml(
                 app.changes,

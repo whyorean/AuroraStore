@@ -28,12 +28,12 @@ import android.view.inputmethod.EditorInfo
 import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
 import com.aurora.Constants
+import com.aurora.extensions.close
+import com.aurora.extensions.getEmptyActivityBundle
+import com.aurora.extensions.open
+import com.aurora.extensions.showKeyboard
 import com.aurora.gplayapi.SearchSuggestEntry
 import com.aurora.store.databinding.ActivitySearchSuggestionBinding
-import com.aurora.store.util.ViewUtil
-import com.aurora.store.util.extensions.close
-import com.aurora.store.util.extensions.open
-import com.aurora.store.util.extensions.showKeyboard
 import com.aurora.store.view.epoxy.views.SearchSuggestionViewModel_
 import com.aurora.store.view.ui.commons.BaseActivity
 import com.aurora.store.view.ui.downloads.DownloadActivity
@@ -151,9 +151,6 @@ class SearchSuggestionActivity : BaseActivity() {
     private fun search(query: String) {
         val intent = Intent(this, SearchResultsActivity::class.java)
         intent.putExtra(Constants.STRING_EXTRA, query)
-        startActivity(
-            intent,
-            ViewUtil.getEmptyActivityBundle(this)
-        )
+        startActivity(intent, getEmptyActivityBundle())
     }
 }

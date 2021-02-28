@@ -24,10 +24,10 @@ import android.os.Bundle
 import android.view.MenuItem
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
+import com.aurora.extensions.getStyledAttributeColor
+import com.aurora.extensions.restartApp
 import com.aurora.store.R
 import com.aurora.store.databinding.ActivitySettingBinding
-import com.aurora.store.util.ViewUtil.getStyledAttribute
-import com.aurora.store.util.extensions.restartApp
 import com.aurora.store.view.ui.commons.BaseActivity
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
@@ -144,7 +144,7 @@ class SettingsActivity : BaseActivity(),
                 restartApp()
             }
             .setNegativeButton(getString(R.string.action_later)) { dialog, _ -> dialog.dismiss() }
-        val backGroundColor = getStyledAttribute(this, android.R.attr.colorBackground)
+        val backGroundColor = getStyledAttributeColor(android.R.attr.colorBackground)
         builder.background = ColorDrawable(backGroundColor)
         builder.create()
         builder.show()

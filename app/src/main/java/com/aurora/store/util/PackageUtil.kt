@@ -51,6 +51,19 @@ object PackageUtil {
         }
     }
 
+    fun getInstalledVersion(context: Context, packageName: String): String {
+        return try {
+            val packageInfo = getPackageInfo(context, packageName)
+            if (packageInfo != null) {
+                "${packageInfo.versionName}.${packageInfo.versionCode}"
+            } else {
+                ""
+            }
+        } catch (e: PackageManager.NameNotFoundException) {
+            ""
+        }
+    }
+
     fun isTv(context: Context): Boolean {
         val uiMode = context.resources.configuration.uiMode
         return uiMode and Configuration.UI_MODE_TYPE_MASK == Configuration.UI_MODE_TYPE_TELEVISION
@@ -111,7 +124,7 @@ object PackageUtil {
             }
 
         if (isFdroidFilterEnabled) {
-            packageInfoList
+            packageInfoList = packageInfoList
                 .filter {
                     val packageInstaller = packageManager.getInstallerPackageName(it.packageName)
                     packageInstaller != "org.fdroid.fdroid.privileged"

@@ -17,7 +17,7 @@
  *
  */
 
-package com.aurora.store.view.epoxy.views
+package com.aurora.store.view.epoxy.views.details
 
 import android.content.Context
 import android.util.AttributeSet
@@ -28,6 +28,7 @@ import com.aurora.gplayapi.data.models.File
 import com.aurora.store.R
 import com.aurora.store.databinding.ViewFileBinding
 import com.aurora.store.util.CommonUtil
+import com.aurora.store.view.epoxy.views.BaseView
 
 @ModelView(
     autoLayout = ModelView.Size.WRAP_WIDTH_WRAP_HEIGHT,

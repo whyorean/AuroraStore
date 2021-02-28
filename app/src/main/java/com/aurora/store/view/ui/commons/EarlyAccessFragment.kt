@@ -123,8 +123,6 @@ class EarlyAccessFragment : BaseFragment(), GenericCarouselController.Callbacks 
     override fun onHeaderClicked(streamCluster: StreamCluster) {
         if (streamCluster.clusterBrowseUrl.isNotEmpty())
             openStreamBrowseActivity(streamCluster.clusterBrowseUrl)
-        else
-            Toast.makeText(requireContext(), "Browse page unavailable", Toast.LENGTH_SHORT).show()
     }
 
     override fun onClusterScrolled(streamCluster: StreamCluster) {

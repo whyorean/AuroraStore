@@ -20,12 +20,37 @@
 package com.aurora.store.data.event
 
 sealed class BusEvent {
-    data class InstallEvent(var packageName: String, var error: String = String()) : BusEvent()
-    data class UninstallEvent(var packageName: String, var error: String = String()) : BusEvent()
-    data class Blacklisted(var packageName: String, var error: String = String()) : BusEvent()
+    data class InstallEvent(
+        var packageName: String,
+        var extra: String? = ""
+    ) : BusEvent()
+
+    data class UninstallEvent(
+        var packageName: String,
+        var extra: String? = ""
+    ) : BusEvent()
+
+    data class Blacklisted(
+        var packageName: String,
+        var error: String? = ""
+    ) : BusEvent()
+
     data class GoogleAAS(
         var success: Boolean,
         var email: String = String(),
         var aasToken: String = String()
     ) : BusEvent()
+}
+
+sealed class InstallerEvent {
+    data class Success(
+        var packageName: String? = "",
+        var extra: String? = ""
+    ) : InstallerEvent()
+
+    data class Failed(
+        var packageName: String? = "",
+        var error: String? = "",
+        var extra: String? = ""
+    ) : InstallerEvent()
 }

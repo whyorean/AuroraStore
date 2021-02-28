@@ -27,9 +27,12 @@ import android.net.Uri
 import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.core.content.FileProvider
+import com.aurora.extensions.isNAndAbove
 import com.aurora.store.BuildConfig
+import com.aurora.store.data.event.InstallerEvent
 import com.aurora.store.util.Log
 import org.apache.commons.io.IOUtils
+import org.greenrobot.eventbus.EventBus
 import java.io.File
 
 class SessionInstaller(context: Context) : InstallerBase(context) {
@@ -57,18 +60,22 @@ class SessionInstaller(context: Context) : InstallerBase(context) {
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     private fun xInstall(packageName: String, uriList: List<Uri>) {
         val packageInstaller = context.packageManager.packageInstaller
-        val sessionParams = SessionParams(SessionParams.MODE_FULL_INSTALL)
+        val sessionParams = SessionParams(SessionParams.MODE_FULL_INSTALL).apply {
+            setAppPackageName(packageName)
+            if (isNAndAbove()) {
+                setOriginatingUid(android.os.Process.myUid())
+            }
+        }
         val sessionId = packageInstaller.createSession(sessionParams)
         val session = packageInstaller.openSession(sessionId)
 
         try {
-
             Log.i("Writing splits to session for $packageName")
-            var apkId = 1
+
             for (uri in uriList) {
                 val inputStream = context.contentResolver.openInputStream(uri)
                 val outputStream = session.openWrite(
-                    "${packageName}_${apkId++}",
+                    "${packageName}_${System.currentTimeMillis()}",
                     0,
                     -1
                 )
@@ -81,11 +88,11 @@ class SessionInstaller(context: Context) : InstallerBase(context) {
                 IOUtils.close(outputStream)
             }
 
-            val intent = Intent(context, InstallerService::class.java)
+            val callBackIntent = Intent(context, InstallerService::class.java)
             val pendingIntent = PendingIntent.getService(
                 context,
                 sessionId,
-                intent,
+                callBackIntent,
                 PendingIntent.FLAG_UPDATE_CURRENT
             )
 
@@ -95,6 +102,12 @@ class SessionInstaller(context: Context) : InstallerBase(context) {
         } catch (e: Exception) {
             session.abandon()
             removeFromInstallQueue(packageName)
+            val event = InstallerEvent.Failed(
+                packageName,
+                e.localizedMessage,
+                e.stackTraceToString()
+            )
+            EventBus.getDefault().post(event)
             Log.e("Failed to install $packageName : %s", e.message)
         }
     }
@@ -106,13 +119,11 @@ class SessionInstaller(context: Context) : InstallerBase(context) {
             file
         )
 
-        uri.apply {
-            context.grantUriPermission(
-                BuildConfig.APPLICATION_ID,
-                uri,
-                Intent.FLAG_GRANT_READ_URI_PERMISSION
-            )
-        }
+        context.grantUriPermission(
+            BuildConfig.APPLICATION_ID,
+            uri,
+            Intent.FLAG_GRANT_READ_URI_PERMISSION or Intent.FLAG_GRANT_WRITE_URI_PERMISSION
+        )
 
         return uri
     }

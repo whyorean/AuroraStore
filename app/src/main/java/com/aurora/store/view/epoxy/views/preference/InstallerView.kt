@@ -76,4 +76,9 @@ class InstallerView : RelativeLayout {
     fun checked(onCheckedChangeListener: CompoundButton.OnCheckedChangeListener?) {
         B.checkbox.setOnCheckedChangeListener(onCheckedChangeListener)
     }
+
+    @CallbackProp
+    fun click(onClickListener: OnClickListener?) {
+        B.root.setOnClickListener(onClickListener)
+    }
 }

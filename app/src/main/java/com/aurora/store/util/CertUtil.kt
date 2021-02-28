@@ -21,7 +21,7 @@ package com.aurora.store.util
 
 import android.content.Context
 import android.content.pm.PackageManager
-import com.aurora.store.util.extensions.isPAndAbove
+import com.aurora.extensions.isPAndAbove
 import java.io.ByteArrayInputStream
 import java.io.InputStream
 import java.security.cert.CertificateFactory
@@ -35,22 +35,24 @@ object CertUtil {
     private fun getX509Certificates(
         context: Context,
         packageName: String
-    ): List<X509Certificate?> {
-        val certificates: MutableList<X509Certificate?> = mutableListOf()
+    ): List<X509Certificate> {
+        val certificates: MutableList<X509Certificate> = mutableListOf()
         val packageManager = context.applicationContext.packageManager
 
         try {
 
-            val packageInfo = if (isPAndAbove())
+            val packageInfo = if (isPAndAbove()) {
                 packageManager.getPackageInfo(
                     packageName,
                     PackageManager.GET_SIGNING_CERTIFICATES
                 )
-            else
+            }
+            else {
                 packageManager.getPackageInfo(
                     packageName,
                     PackageManager.GET_SIGNATURES
                 )
+            }
 
             val certificateFactory = CertificateFactory.getInstance("X509")
 
@@ -63,7 +65,7 @@ object CertUtil {
                     )
                 }
             } else {
-                for (i in 0..packageInfo.signatures.size) {
+                for (i in packageInfo.signatures.indices) {
                     val bytes = packageInfo.signatures[i].toByteArray()
                     val inStream: InputStream = ByteArrayInputStream(bytes)
                     certificates.add(
@@ -72,7 +74,7 @@ object CertUtil {
                 }
             }
         } catch (e: Exception) {
-            Log.e(e.message)
+
         }
 
         return certificates
@@ -85,13 +87,10 @@ object CertUtil {
             false
         else {
             val cert = certificates[0]
-            if (cert != null) {
-                if (cert.subjectDN != null) {
-                    val DN = cert.subjectDN.name.toUpperCase(Locale.getDefault())
-                    DN.contains(FDROID) || DN.contains(GUARDIAN)
-                } else {
-                    false
-                }
+
+            if (cert.subjectDN != null) {
+                val DN = cert.subjectDN.name.toUpperCase(Locale.getDefault())
+                DN.contains(FDROID) || DN.contains(GUARDIAN)
             } else {
                 false
             }

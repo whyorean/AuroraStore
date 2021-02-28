@@ -20,16 +20,15 @@
 package com.aurora.store.data.providers
 
 import android.content.Context
-import com.aurora.store.data.SingletonHolder
 import com.aurora.store.util.Preferences
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import java.lang.reflect.Modifier
 import java.util.*
 
-class SpoofProvider private constructor(var context: Context) {
+class SpoofProvider constructor(var context: Context) {
 
-    companion object : SingletonHolder<SpoofProvider, Context>(::SpoofProvider) {
+    companion object {
         const val LOCALE_SPOOF_ENABLED = "LOCALE_SPOOF_ENABLED"
         const val LOCALE_SPOOF_LANG = "LOCALE_SPOOF_LANG"
         const val LOCALE_SPOOF_COUNTRY = "LOCALE_SPOOF_COUNTRY"

@@ -28,13 +28,15 @@ import com.aurora.gplayapi.helpers.AppDetailsHelper
 import com.aurora.store.R
 import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.databinding.ActivityDetailsMoreBinding
-import com.aurora.store.util.extensions.close
-import com.aurora.store.view.epoxy.views.FileViewModel_
+import com.aurora.extensions.close
 import com.aurora.store.view.epoxy.views.HeaderViewModel_
 import com.aurora.store.view.epoxy.views.app.NoAppAltViewModel_
 import com.aurora.store.view.epoxy.views.details.AppDependentViewModel_
+import com.aurora.store.view.epoxy.views.details.FileViewModel_
+import com.aurora.store.view.epoxy.views.details.InfoViewModel_
 import com.aurora.store.view.epoxy.views.details.MoreBadgeViewModel_
 import com.aurora.store.view.ui.commons.BaseActivity
+import com.google.protobuf.MapEntry
 import nl.komponents.kovenant.task
 import nl.komponents.kovenant.ui.failUi
 import nl.komponents.kovenant.ui.successUi
@@ -133,6 +135,21 @@ class DetailsMoreActivity : BaseActivity() {
                                     .badge(it)
                             )
                         }
+                }
+            }
+
+            if (app.appInfo.appInfoMap.isNotEmpty()){
+                add(
+                    HeaderViewModel_()
+                        .id("info_header")
+                        .title("Info")
+                )
+                app.appInfo.appInfoMap.forEach{
+                    add(
+                        InfoViewModel_()
+                            .id(it.key)
+                            .badge(it)
+                    )
                 }
             }
         }

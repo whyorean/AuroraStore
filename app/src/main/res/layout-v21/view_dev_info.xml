@@ -30,7 +30,6 @@
         android:id="@+id/img"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/margin_xxsmall"
         app:tint="?colorAccent"
         tools:src="@drawable/ic_download" />
 
@@ -51,7 +50,7 @@
         android:layout_below="@id/txt_title"
         android:layout_alignStart="@id/txt_title"
         android:layout_alignEnd="@id/txt_title"
-        android:autoLink="map"
+        android:autoLink="all"
         android:linksClickable="true"
         android:textAppearance="@style/TextAppearance.Aurora.Line2"
         android:textColorLink="?android:attr/textColorSecondary"

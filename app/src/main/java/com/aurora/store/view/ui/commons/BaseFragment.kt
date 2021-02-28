@@ -24,10 +24,11 @@ import android.content.Intent
 import android.os.Build
 import androidx.fragment.app.Fragment
 import com.aurora.Constants
+import com.aurora.extensions.getEmptyActivityBundle
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.Category
-import com.aurora.store.util.ViewUtil
 import com.aurora.store.view.ui.details.AppDetailsActivity
+import com.aurora.store.view.ui.details.DevProfileActivity
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import java.lang.reflect.Modifier
@@ -63,12 +64,23 @@ open class BaseFragment : Fragment() {
         }
     }
 
-    fun openStreamBrowseActivity(browseUrl: String) {
-        val intent = Intent(requireContext(), StreamBrowseActivity::class.java)
+    fun openStreamBrowseActivity(browseUrl: String, title: String = "") {
+        val intent = if (browseUrl.toLowerCase().contains("expanded"))
+            Intent(requireContext(), ExpandedStreamBrowseActivity::class.java)
+        else if (browseUrl.toLowerCase().contains("developer"))
+            Intent(requireContext(), DevProfileActivity::class.java)
+        else
+            Intent(requireContext(), StreamBrowseActivity::class.java)
+
         intent.putExtra(Constants.BROWSE_EXTRA, browseUrl)
-        startActivity(
-            intent,
-            ViewUtil.getEmptyActivityBundle(requireContext())
-        )
+        intent.putExtra(Constants.STRING_EXTRA, title)
+        startActivity(intent, requireContext().getEmptyActivityBundle())
+    }
+
+    fun openEditorStreamBrowseActivity(browseUrl: String, title: String = "") {
+        val intent = Intent(requireContext(), EditorStreamBrowseActivity::class.java)
+        intent.putExtra(Constants.BROWSE_EXTRA, browseUrl)
+        intent.putExtra(Constants.STRING_EXTRA, title)
+        startActivity(intent, requireContext().getEmptyActivityBundle())
     }
 }

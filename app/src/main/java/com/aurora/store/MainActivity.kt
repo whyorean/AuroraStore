@@ -21,7 +21,10 @@ package com.aurora.store
 
 import android.Manifest
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
+import android.os.Environment
+import android.provider.Settings
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -36,15 +39,14 @@ import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
+import com.aurora.extensions.getEmptyActivityBundle
+import com.aurora.extensions.getStyledAttributeColor
+import com.aurora.extensions.load
+import com.aurora.extensions.open
 import com.aurora.gplayapi.data.models.AuthData
 import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.databinding.ActivityMainBinding
 import com.aurora.store.util.Log
-import com.aurora.store.util.ViewUtil
-import com.aurora.store.util.ViewUtil.getStyledAttribute
-import com.aurora.store.util.extensions.isQAndAbove
-import com.aurora.store.util.extensions.load
-import com.aurora.store.util.extensions.open
 import com.aurora.store.view.ui.about.AboutActivity
 import com.aurora.store.view.ui.account.AccountActivity
 import com.aurora.store.view.ui.all.AppsGamesActivity
@@ -67,6 +69,18 @@ class MainActivity : BaseActivity() {
     private lateinit var authData: AuthData
 
     private var lastBackPressed = 0L
+
+    override fun onConnected() {
+        hideNetworkConnectivitySheet()
+    }
+
+    override fun onDisconnected() {
+        showNetworkConnectivitySheet()
+    }
+
+    override fun onReconnected() {
+
+    }
 
     companion object {
         @JvmStatic
@@ -97,16 +111,20 @@ class MainActivity : BaseActivity() {
         attachSearch()
 
         checkPermission()
+        checkStoragePermission()
     }
 
     private fun checkPermission() = runWithPermissions(
         Manifest.permission.READ_EXTERNAL_STORAGE,
         Manifest.permission.WRITE_EXTERNAL_STORAGE
     ) {
-        Log.i("External Storage Access Available")
+        Log.i("Required permissions available")
+    }
 
-        if (isQAndAbove()) {
-            //pickExternalFileDir()
+    private fun checkStoragePermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            if (!Environment.isExternalStorageManager())
+                startActivity(Intent(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION))
         }
     }
 
@@ -116,8 +134,7 @@ class MainActivity : BaseActivity() {
         }
 
         B.viewToolbar.imgActionSecondary.setOnClickListener {
-            val userAppIntent = Intent(this, DownloadActivity::class.java)
-            startActivity(userAppIntent, ViewUtil.getEmptyActivityBundle(this))
+            open(DownloadActivity::class.java)
         }
     }
 
@@ -125,7 +142,7 @@ class MainActivity : BaseActivity() {
         B.searchFab.setOnClickListener {
             startActivity(
                 Intent(this, SearchSuggestionActivity::class.java),
-                ViewUtil.getEmptyActivityBundle(this)
+                getEmptyActivityBundle()
             )
         }
     }
@@ -134,7 +151,7 @@ class MainActivity : BaseActivity() {
         val bottomNavigationView: BottomNavigationView = B.navView
         navController = Navigation.findNavController(this, R.id.nav_host_fragment)
 
-        val backGroundColor = getStyledAttribute(this, android.R.attr.colorBackground)
+        val backGroundColor = getStyledAttributeColor(android.R.attr.colorBackground)
         bottomNavigationView.setBackgroundColor(ColorUtils.setAlphaComponent(backGroundColor, 245))
 
 
@@ -213,18 +230,6 @@ class MainActivity : BaseActivity() {
                 Toast.makeText(this, "Click twice to exit", Toast.LENGTH_SHORT).show()
             }
         }
-    }
-
-    override fun onConnected() {
-        hideNetworkConnectivitySheet()
-    }
-
-    override fun onDisconnected() {
-        showNetworkConnectivitySheet()
-    }
-
-    override fun onReconnected() {
-
     }
 
     private fun pickExternalFileDir() {

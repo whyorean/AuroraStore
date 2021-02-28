@@ -17,7 +17,7 @@
  *
  */
 
-package com.aurora.store.view.epoxy.views
+package com.aurora.store.view.epoxy.views.app
 
 import android.content.Context
 import android.util.AttributeSet
@@ -30,8 +30,9 @@ import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
 import com.aurora.store.databinding.ViewAppBinding
 import com.aurora.store.util.CommonUtil
-import com.aurora.store.util.extensions.clear
-import com.aurora.store.util.extensions.load
+import com.aurora.extensions.clear
+import com.aurora.extensions.load
+import com.aurora.store.view.epoxy.views.BaseView
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 
 

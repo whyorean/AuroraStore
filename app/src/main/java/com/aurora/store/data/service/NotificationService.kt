@@ -29,9 +29,12 @@ import android.util.ArrayMap
 import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
 import com.aurora.Constants
+import com.aurora.extensions.getStyledAttributeColor
+import com.aurora.extensions.isLAndAbove
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
 import com.aurora.store.data.downloader.DownloadManager
+import com.aurora.store.data.event.InstallerEvent
 import com.aurora.store.data.installer.AppInstaller
 import com.aurora.store.data.receiver.DownloadCancelReceiver
 import com.aurora.store.data.receiver.DownloadPauseReceiver
@@ -39,13 +42,14 @@ import com.aurora.store.data.receiver.DownloadResumeReceiver
 import com.aurora.store.data.receiver.InstallReceiver
 import com.aurora.store.util.CommonUtil
 import com.aurora.store.util.Log
-import com.aurora.store.util.extensions.isLAndAbove
 import com.aurora.store.view.ui.details.AppDetailsActivity
 import com.aurora.store.view.ui.downloads.DownloadActivity
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.tonyodev.fetch2.*
 import org.apache.commons.lang3.StringUtils
+import org.greenrobot.eventbus.EventBus
+import org.greenrobot.eventbus.Subscribe
 import java.lang.reflect.Modifier
 import java.util.*
 
@@ -83,6 +87,8 @@ class NotificationService : Service() {
 
         Log.i("Notification Service Started")
 
+        EventBus.getDefault().register(this)
+
         notificationManager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
 
         //Create Notification Channels : General & Alert
@@ -97,9 +103,6 @@ class NotificationService : Service() {
 
             override fun onCompleted(groupId: Int, download: Download, fetchGroup: FetchGroup) {
                 showNotification(groupId, download, fetchGroup)
-                if (fetchGroup.groupDownloadProgress == 100) {
-                    install(download.tag!!, fetchGroup.downloads)
-                }
             }
 
             override fun onError(
@@ -214,8 +217,8 @@ class NotificationService : Service() {
         }
         val progress = fetchGroup.groupDownloadProgress
         val progressBigText = NotificationCompat.BigTextStyle()
-        when (status) {
 
+        when (status) {
             Status.QUEUED -> {
                 builder.setProgress(100, 0, true)
                 progressBigText.bigText(getString(R.string.download_queued))
@@ -308,7 +311,6 @@ class NotificationService : Service() {
             app.id,
             builder.build()
         )
-        //}
     }
 
     private fun getPauseIntent(groupId: Int): PendingIntent {
@@ -356,9 +358,28 @@ class NotificationService : Service() {
         )
     }
 
+    @Subscribe()
+    fun onEventMainThread(event: Any) {
+        when (event) {
+            is InstallerEvent.Success -> {
+                val app = appMap[event.packageName.hashCode()]
+                if (app != null)
+                    notifyInstallationStatus(app, event.extra)
+            }
+            is InstallerEvent.Failed -> {
+                val app = appMap[event.packageName.hashCode()]
+                if (app != null)
+                    notifyInstallationStatus(app, event.error)
+            }
+            else -> {
+
+            }
+        }
+    }
+
     @Synchronized
     private fun install(packageName: String, files: List<Download>) {
-        AppInstaller.with(this)
+        AppInstaller(this)
             .getPreferredInstaller()
             .install(
                 packageName,
@@ -370,9 +391,25 @@ class NotificationService : Service() {
             )
     }
 
+    private fun notifyInstallationStatus(app: App, status: String?) {
+        val builder = NotificationCompat.Builder(this, Constants.NOTIFICATION_CHANNEL_ALERT)
+        builder.color = getStyledAttributeColor(R.attr.colorAccent)
+        builder.setSmallIcon(R.drawable.ic_install)
+        builder.setContentTitle(app.displayName)
+        builder.setContentText(status)
+        builder.setSubText(app.packageName)
+
+        notificationManager.notify(
+            app.packageName,
+            app.id,
+            builder.build()
+        )
+    }
+
     override fun onDestroy() {
         Log.i("Notification Service Stopped")
         fetch.removeListener(fetchListener)
+        EventBus.getDefault().unregister(this);
         super.onDestroy()
     }
 }

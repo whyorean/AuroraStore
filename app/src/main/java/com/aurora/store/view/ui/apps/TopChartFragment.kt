@@ -29,8 +29,8 @@ import com.aurora.gplayapi.data.models.StreamCluster
 import com.aurora.store.R
 import com.aurora.store.databinding.FragmentTopContainerBinding
 import com.aurora.store.view.custom.recycler.EndlessRecyclerOnScrollListener
-import com.aurora.store.view.epoxy.views.AppListViewModel_
 import com.aurora.store.view.epoxy.views.AppProgressViewModel_
+import com.aurora.store.view.epoxy.views.app.AppListViewModel_
 import com.aurora.store.view.epoxy.views.shimmer.AppListViewShimmerModel_
 import com.aurora.store.view.ui.commons.BaseFragment
 import com.aurora.store.viewmodel.topchart.*
@@ -39,6 +39,8 @@ class TopChartFragment : BaseFragment() {
 
     private lateinit var VM: BaseChartViewModel
     private lateinit var B: FragmentTopContainerBinding
+
+    private lateinit var streamCluster: StreamCluster
 
     private var chartType = 0
     private var chartCategory = 0
@@ -88,16 +90,23 @@ class TopChartFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         VM.liveData.observe(viewLifecycleOwner, {
-            updateController(it)
+            if (!::streamCluster.isInitialized)
+                attachRecycler()
+
+            streamCluster = it
+
+            updateController(streamCluster)
         })
 
+        updateController(null)
+    }
+
+    private fun attachRecycler() {
         B.recycler.addOnScrollListener(object : EndlessRecyclerOnScrollListener() {
             override fun onLoadMore(currentPage: Int) {
                 VM.nextCluster()
             }
         })
-
-        updateController(null)
     }
 
     private fun updateController(streamCluster: StreamCluster?) {

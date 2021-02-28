@@ -24,20 +24,10 @@
     android:orientation="vertical"
     android:padding="@dimen/padding_small">
 
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/title"
-        style="@style/AuroraTextStyle.Title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:text="Network" />
-
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/animationView"
-        android:layout_width="176dp"
-        android:layout_height="176dp"
-        android:layout_below="@id/title"
+        android:id="@+id/img"
+        android:layout_width="@dimen/icon_size_avatar"
+        android:layout_height="@dimen/icon_size_avatar"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/margin_normal"
         android:layout_marginBottom="@dimen/margin_normal"
@@ -45,19 +35,20 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/txt_warning"
-        style="@style/AuroraTextStyle.Line1"
+        style="@style/AuroraTextStyle.Subtitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/animationView"
-        android:text="No network!"
+        android:layout_below="@id/img"
+        android:text="@string/title_no_network"
         android:textAlignment="center" />
 
     <com.google.android.material.button.MaterialButton
         style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+        android:id="@+id/btn_action"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/txt_warning"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/margin_normal"
-        android:text="Try Later" />
+        android:text="@string/action_try_later" />
 </RelativeLayout>

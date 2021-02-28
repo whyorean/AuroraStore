@@ -23,16 +23,20 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.aurora.extensions.isMIUI
+import com.aurora.extensions.isMiuiOptimizationDisabled
+import com.aurora.extensions.showDialog
 import com.aurora.store.R
+import com.aurora.store.data.installer.ServiceInstaller
 import com.aurora.store.data.model.Installer
 import com.aurora.store.databinding.FragmentOnboardingInstallerBinding
+import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_INSTALLER_ID
-import com.aurora.store.util.extensions.runOnUiThread
-import com.aurora.store.util.extensions.toast
 import com.aurora.store.util.save
 import com.aurora.store.view.epoxy.views.preference.InstallerViewModel_
 import com.aurora.store.view.ui.commons.BaseFragment
+import com.aurora.store.view.ui.sheets.DeviceMiuiSheet
 import com.google.gson.reflect.TypeToken
 import com.topjohnwu.superuser.Shell
 import java.nio.charset.StandardCharsets
@@ -81,34 +85,53 @@ class InstallerFragment : BaseFragment() {
                         .id(it.id)
                         .installer(it)
                         .markChecked(installerId == it.id)
-                        .checked { _, checked ->
-                            if (checked) {
-                                installerId = it.id
-                                save(installerId)
-                                requestModelBuild()
-                            }
+                        .click { _ ->
+                            save(it.id)
+                            requestModelBuild()
                         }
                 )
             }
         }
+
+        if (isMIUI() && !isMiuiOptimizationDisabled()) {
+            DeviceMiuiSheet.newInstance().show(childFragmentManager, DeviceMiuiSheet.TAG)
+        }
     }
 
     private fun save(installerId: Int) {
-        if (installerId == 2) {
-            checkRoot()
-        }
-        save(PREFERENCE_INSTALLER_ID, installerId)
-    }
-
-    private fun checkRoot() {
-        Shell.getShell {
-            runOnUiThread {
-                requireContext().toast(
-                    if (it.isRoot)
-                        getString(R.string.installer_root_available)
-                    else
-                        getString(R.string.installer_root_unavailable)
-                )
+        when (installerId) {
+            0 -> {
+                if (isMIUI() && !isMiuiOptimizationDisabled()) {
+                    DeviceMiuiSheet.newInstance().show(childFragmentManager, DeviceMiuiSheet.TAG)
+                }
+                this.installerId = installerId
+                save(PREFERENCE_INSTALLER_ID, installerId)
+            }
+            2 -> {
+                if (checkRootAvailability()) {
+                    this.installerId = installerId
+                    save(PREFERENCE_INSTALLER_ID, installerId)
+                } else {
+                    showDialog(
+                        R.string.action_installations,
+                        R.string.installer_root_unavailable
+                    )
+                }
+            }
+            3 -> {
+                if (checkServicesAvailability()) {
+                    this.installerId = installerId
+                    save(PREFERENCE_INSTALLER_ID, installerId)
+                } else {
+                    showDialog(
+                        R.string.action_installations,
+                        R.string.installer_service_unavailable
+                    )
+                }
+            }
+            else -> {
+                this.installerId = installerId
+                save(PREFERENCE_INSTALLER_ID, installerId)
             }
         }
     }
@@ -123,6 +146,17 @@ class InstallerFragment : BaseFragment() {
         return gson.fromJson<MutableList<Installer>?>(
             json,
             object : TypeToken<MutableList<Installer?>?>() {}.type
+        )
+    }
+
+    private fun checkRootAvailability(): Boolean {
+        return Shell.getShell().isRoot
+    }
+
+    private fun checkServicesAvailability(): Boolean {
+        return PackageUtil.isInstalled(
+            requireContext(),
+            ServiceInstaller.PRIVILEGED_EXTENSION_PACKAGE_NAME
         )
     }
 }

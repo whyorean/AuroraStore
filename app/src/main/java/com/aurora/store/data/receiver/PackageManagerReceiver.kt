@@ -28,6 +28,7 @@ import com.aurora.store.data.event.BusEvent.UninstallEvent
 import com.aurora.store.data.installer.AppInstaller
 import com.aurora.store.util.PathUtil
 import com.aurora.store.util.Preferences
+import com.aurora.store.util.isExternalStorageEnable
 import org.greenrobot.eventbus.EventBus
 import java.io.File
 
@@ -39,19 +40,20 @@ open class PackageManagerReceiver : BroadcastReceiver() {
 
             when (intent.action) {
                 Intent.ACTION_PACKAGE_ADDED -> {
-                    EventBus.getDefault()
-                        .post(InstallEvent(packageName, ""))
-
-                    //Clear installation queue
-                    AppInstaller.with(context)
-                        .getPreferredInstaller()
-                        .removeFromInstallQueue(packageName)
+                    EventBus.getDefault().post(InstallEvent(packageName, ""))
                 }
-                Intent.ACTION_PACKAGE_REMOVED -> EventBus.getDefault()
-                    .post(UninstallEvent(packageName, ""))
+
+                Intent.ACTION_PACKAGE_REMOVED -> {
+                    EventBus.getDefault().post(UninstallEvent(packageName, ""))
+                }
             }
 
-            clearNotification(context, packageName)
+            //Clear installation queue
+            AppInstaller(context)
+                .getPreferredInstaller()
+                .removeFromInstallQueue(packageName)
+
+            //clearNotification(context, packageName)
 
             val isAutoDeleteAPKEnabled = Preferences.getBoolean(
                 context,

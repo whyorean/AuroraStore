@@ -23,7 +23,7 @@ import com.airbnb.epoxy.TypedEpoxyController
 import com.aurora.gplayapi.data.models.editor.EditorChoiceBundle
 import com.aurora.gplayapi.data.models.editor.EditorChoiceCluster
 import com.aurora.store.view.epoxy.groups.EditorChoiceModelGroup
-import com.aurora.store.view.epoxy.views.EditorHeadViewModel_
+import com.aurora.store.view.epoxy.views.HeaderViewModel_
 
 class EditorChoiceController(private val callbacks: Callbacks) :
     TypedEpoxyController<List<EditorChoiceBundle>>() {
@@ -37,7 +37,7 @@ class EditorChoiceController(private val callbacks: Callbacks) :
             val idPrefix = editorChoiceBundle.id
 
             add(
-                EditorHeadViewModel_()
+                HeaderViewModel_()
                     .id("header_${idPrefix}")
                     .title(editorChoiceBundle.bundleTitle)
             )

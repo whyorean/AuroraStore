@@ -33,70 +33,84 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <com.google.android.flexbox.FlexboxLayout
+        <HorizontalScrollView
             android:id="@+id/layout_extras"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="@dimen/padding_small"
-            app:alignContent="space_between"
-            app:alignItems="center"
-            app:dividerDrawableHorizontal="@drawable/divider"
-            app:dividerDrawableVertical="@drawable/divider_line"
-            app:flexDirection="row"
-            app:flexWrap="wrap"
-            app:showDividerHorizontal="middle"
-            app:showDividerVertical="middle">
+            android:scrollbars="none">
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/txt_rating"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/margin_small"
-                android:layout_marginEnd="@dimen/margin_small"
-                android:drawablePadding="@dimen/padding_small"
-                android:gravity="center_vertical"
-                android:textAppearance="@style/TextAppearance.Aurora.Line1"
-                app:drawableStartCompat="@drawable/ic_star"
-                app:drawableTint="?colorAccent"
-                tools:text="3.5" />
+                android:divider="@drawable/divider_line"
+                android:orientation="horizontal"
+                android:showDividers="middle">
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/txt_installs"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/margin_small"
-                android:layout_marginEnd="@dimen/margin_small"
-                android:drawablePadding="@dimen/padding_small"
-                android:gravity="center_vertical"
-                android:textAppearance="@style/TextAppearance.Aurora.Line1"
-                app:drawableStartCompat="@drawable/ic_download"
-                app:drawableTint="?colorAccent"
-                tools:text="2500" />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txt_rating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_small"
+                    android:layout_marginEnd="@dimen/margin_small"
+                    android:drawablePadding="@dimen/padding_small"
+                    android:gravity="center_vertical"
+                    android:textAppearance="@style/TextAppearance.Aurora.Line1"
+                    app:drawableStartCompat="@drawable/ic_star"
+                    app:drawableTint="?colorAccent"
+                    tools:text="3.5" />
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/txt_size"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/margin_small"
-                android:layout_marginEnd="@dimen/margin_small"
-                android:drawablePadding="@dimen/padding_small"
-                android:gravity="center_vertical"
-                android:textAppearance="@style/TextAppearance.Aurora.Line1"
-                app:drawableTint="?colorAccent"
-                tools:text="25 MB" />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txt_installs"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_small"
+                    android:layout_marginEnd="@dimen/margin_small"
+                    android:drawablePadding="@dimen/padding_small"
+                    android:gravity="center_vertical"
+                    android:textAppearance="@style/TextAppearance.Aurora.Line1"
+                    app:drawableStartCompat="@drawable/ic_download"
+                    app:drawableTint="?colorAccent"
+                    tools:text="2500" />
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/txt_sdk"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/margin_small"
-                android:layout_marginEnd="@dimen/margin_small"
-                android:drawablePadding="@dimen/padding_small"
-                android:gravity="center_vertical"
-                android:textAppearance="@style/TextAppearance.Aurora.Line1"
-                app:drawableTint="?colorAccent"
-                tools:text="Android 7+" />
-        </com.google.android.flexbox.FlexboxLayout>
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txt_size"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_small"
+                    android:layout_marginEnd="@dimen/margin_small"
+                    android:drawablePadding="@dimen/padding_small"
+                    android:gravity="center_vertical"
+                    android:textAppearance="@style/TextAppearance.Aurora.Line1"
+                    app:drawableTint="?colorAccent"
+                    tools:text="25 MB" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txt_sdk"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_small"
+                    android:layout_marginEnd="@dimen/margin_small"
+                    android:drawablePadding="@dimen/padding_small"
+                    android:gravity="center_vertical"
+                    android:textAppearance="@style/TextAppearance.Aurora.Line1"
+                    app:drawableTint="?colorAccent"
+                    tools:text="Android 7+" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txt_updated"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_small"
+                    android:layout_marginEnd="@dimen/margin_small"
+                    android:drawablePadding="@dimen/padding_small"
+                    android:gravity="center_vertical"
+                    android:textAppearance="@style/TextAppearance.Aurora.Line1"
+                    app:drawableTint="?colorAccent"
+                    tools:text="Jan 21 2020" />
+
+            </LinearLayout>
+        </HorizontalScrollView>
 
         <LinearLayout
             android:id="@+id/layout_description"

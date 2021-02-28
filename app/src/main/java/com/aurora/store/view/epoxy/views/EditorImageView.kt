@@ -22,14 +22,16 @@ package com.aurora.store.view.epoxy.views
 import android.content.Context
 import android.util.AttributeSet
 import android.widget.RelativeLayout
+import com.airbnb.epoxy.CallbackProp
 import com.airbnb.epoxy.ModelProp
 import com.airbnb.epoxy.ModelView
 import com.airbnb.epoxy.OnViewRecycled
 import com.aurora.gplayapi.data.models.Artwork
 import com.aurora.store.R
 import com.aurora.store.databinding.ViewEditorImageBinding
-import com.aurora.store.util.extensions.clear
-import com.aurora.store.util.extensions.load
+import com.aurora.extensions.clear
+import com.aurora.extensions.load
+import com.aurora.extensions.px
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 
@@ -66,21 +68,28 @@ class EditorImageView : RelativeLayout {
     fun artwork(artwork: Artwork) {
         when (artwork.type) {
             14 -> {
-                B.img.layoutParams.width =
-                    resources.getDimension(R.dimen.icon_size_large).toInt() * 2
+                B.img.layoutParams.height = 108.px.toInt()
+                B.img.layoutParams.width = 192.px.toInt()
                 B.img.requestLayout()
+
                 B.img.load(artwork.url, DrawableTransitionOptions.withCrossFade()) {
-                    transform(RoundedCorners(16))
+                    transform(RoundedCorners(8.px.toInt()))
                 }
             }
             else -> {
-                B.img.layoutParams.width = resources.getDimension(R.dimen.icon_size_large).toInt()
+                B.img.layoutParams.width = 24.px.toInt()
+                B.img.layoutParams.height = 24.px.toInt()
                 B.img.requestLayout()
                 B.img.load(artwork.url, DrawableTransitionOptions.withCrossFade()) {
-                    transform(RoundedCorners(16))
+                    transform(RoundedCorners(4.px.toInt()))
                 }
             }
         }
+    }
+
+    @CallbackProp
+    fun click(onClickListener: OnClickListener?) {
+        B.root.setOnClickListener(onClickListener)
     }
 
     @OnViewRecycled

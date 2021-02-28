@@ -34,8 +34,8 @@ import com.aurora.store.databinding.ViewDownloadBinding
 import com.aurora.store.util.CommonUtil.getDownloadSpeedString
 import com.aurora.store.util.CommonUtil.getETAString
 import com.aurora.store.util.CommonUtil.humanReadableByteValue
-import com.aurora.store.util.extensions.clear
-import com.aurora.store.util.extensions.load
+import com.aurora.extensions.clear
+import com.aurora.extensions.load
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.google.gson.Gson
@@ -45,7 +45,7 @@ import java.lang.reflect.Modifier
 import java.util.*
 
 @ModelView(
-    autoLayout = ModelView.Size.WRAP_WIDTH_WRAP_HEIGHT,
+    autoLayout = ModelView.Size.MATCH_WIDTH_WRAP_HEIGHT,
     baseModelClass = BaseView::class
 )
 class DownloadView : RelativeLayout {

@@ -38,7 +38,9 @@ abstract class BaseBottomSheet : BottomSheetDialogFragment() {
 
     lateinit var VM: SheetBaseBinding
 
-    var gson: Gson = GsonBuilder().excludeFieldsWithModifiers(Modifier.TRANSIENT).create()
+    var gson: Gson = GsonBuilder()
+        .excludeFieldsWithModifiers(Modifier.STATIC, Modifier.TRANSIENT)
+        .create()
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val bottomSheetDialog = BottomSheetDialog(

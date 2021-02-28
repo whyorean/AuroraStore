@@ -23,7 +23,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.aurora.Constants
 import com.aurora.gplayapi.data.models.App
@@ -46,6 +45,7 @@ class ForYouFragment : BaseFragment(), GenericCarouselController.Callbacks {
     private lateinit var C: GenericCarouselController
     private lateinit var VM: BaseClusterViewModel
 
+    private lateinit var streamBundle: StreamBundle
     private lateinit var endlessRecyclerOnScrollListener: EndlessRecyclerOnScrollListener
 
     private var pageType = 0
@@ -110,11 +110,18 @@ class ForYouFragment : BaseFragment(), GenericCarouselController.Callbacks {
 
                 }
                 is ViewState.Success<*> -> {
-                    updateController(it.data as StreamBundle)
+                    if (!::streamBundle.isInitialized)
+                        attachRecycler()
+
+                    streamBundle = it.data as StreamBundle
+
+                    updateController(streamBundle)
                 }
             }
         })
+    }
 
+    private fun attachRecycler() {
         endlessRecyclerOnScrollListener =
             object : EndlessRecyclerOnScrollListener() {
                 override fun onLoadMore(currentPage: Int) {
@@ -131,9 +138,7 @@ class ForYouFragment : BaseFragment(), GenericCarouselController.Callbacks {
 
     override fun onHeaderClicked(streamCluster: StreamCluster) {
         if (streamCluster.clusterBrowseUrl.isNotEmpty())
-            openStreamBrowseActivity(streamCluster.clusterBrowseUrl)
-        else
-            Toast.makeText(requireContext(), "Browse page unavailable", Toast.LENGTH_SHORT).show()
+            openStreamBrowseActivity(streamCluster.clusterBrowseUrl, streamCluster.clusterTitle)
     }
 
     override fun onClusterScrolled(streamCluster: StreamCluster) {
@@ -145,6 +150,6 @@ class ForYouFragment : BaseFragment(), GenericCarouselController.Callbacks {
     }
 
     override fun onAppLongClick(app: App) {
-        AppPeekDialogSheet.newInstance(app).show(parentFragmentManager, "APDS")
+
     }
 }

@@ -25,52 +25,69 @@ import android.content.pm.PackageInstaller
 import android.os.Build
 import android.os.IBinder
 import androidx.annotation.RequiresApi
-import org.apache.commons.lang3.StringUtils
+import com.aurora.store.R
+import com.aurora.store.data.event.InstallerEvent
+import com.aurora.store.util.Log
+import org.greenrobot.eventbus.EventBus
 
 class InstallerService : Service() {
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     override fun onStartCommand(intent: Intent, flags: Int, startId: Int): Int {
-        val status = intent.getIntExtra(PackageInstaller.EXTRA_STATUS, -1)
+        val status = intent.getIntExtra(PackageInstaller.EXTRA_STATUS, -69)
         val packageName = intent.getStringExtra(PackageInstaller.EXTRA_PACKAGE_NAME)
-
-        //Send broadcast for the installation status of the package
-        sendStatusBroadcast(status, packageName)
-
-        //Launch user confirmation activity
-        if (status == PackageInstaller.STATUS_PENDING_USER_ACTION) {
-            val confirmationIntent = intent.getParcelableExtra<Intent>(Intent.EXTRA_INTENT)
-            confirmationIntent!!.putExtra(Intent.EXTRA_NOT_UNKNOWN_SOURCE, true)
-            confirmationIntent.putExtra(
-                Intent.EXTRA_INSTALLER_PACKAGE_NAME,
-                "com.android.vending"
-            )
-            confirmationIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-            try {
-                startActivity(confirmationIntent)
-            } catch (e: Exception) {
-                sendStatusBroadcast(PackageInstaller.STATUS_FAILURE, packageName)
-            }
+        val extra = intent.getStringExtra(PackageInstaller.EXTRA_STATUS_MESSAGE);
+        when (status) {
+            PackageInstaller.STATUS_PENDING_USER_ACTION -> promptUser(intent)
+            else -> postStatus(status, packageName, extra)
         }
+
         stopSelf()
         return START_NOT_STICKY
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    private fun sendStatusBroadcast(status: Int, packageName: String?) {
-        if (StringUtils.isNotEmpty(packageName)) {
-            val statusIntent = Intent(ACTION_SESSION_INSTALLER)
-            statusIntent.putExtra(PackageInstaller.EXTRA_STATUS, status)
-            statusIntent.putExtra(PackageInstaller.EXTRA_PACKAGE_NAME, packageName)
-            sendBroadcast(statusIntent)
+    private fun promptUser(intent: Intent) {
+        val confirmationIntent: Intent? = intent.getParcelableExtra(Intent.EXTRA_INTENT)
+
+        confirmationIntent?.let {
+            it.putExtra(Intent.EXTRA_NOT_UNKNOWN_SOURCE, true)
+            it.putExtra(Intent.EXTRA_INSTALLER_PACKAGE_NAME, "com.android.vending")
+            it.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+
+            try {
+                startActivity(it)
+            } catch (e: Exception) {
+                Log.e(e.message)
+            }
+        }
+    }
+
+    private fun postStatus(status: Int, packageName: String?, extra: String?) {
+        when (status) {
+            PackageInstaller.STATUS_SUCCESS -> {
+                EventBus.getDefault().post(InstallerEvent.Success(packageName, "Success"))
+            }
+            else -> {
+                val errorString = getErrorString(status)
+                Log.e("$packageName : $errorString")
+                EventBus.getDefault().post(InstallerEvent.Failed(packageName, errorString, extra))
+            }
+        }
+    }
+
+    private fun getErrorString(status: Int): String {
+        return when (status) {
+            PackageInstaller.STATUS_FAILURE_ABORTED -> getString(R.string.installer_status_user_action)
+            PackageInstaller.STATUS_FAILURE_BLOCKED -> getString(R.string.installer_status_failure_blocked)
+            PackageInstaller.STATUS_FAILURE_CONFLICT -> getString(R.string.installer_status_failure_conflict)
+            PackageInstaller.STATUS_FAILURE_INCOMPATIBLE -> getString(R.string.installer_status_failure_incompatible)
+            PackageInstaller.STATUS_FAILURE_INVALID -> getString(R.string.installer_status_failure_invalid)
+            PackageInstaller.STATUS_FAILURE_STORAGE -> getString(R.string.installer_status_failure_storage)
+            else -> getString(R.string.installer_status_failure)
         }
     }
 
     override fun onBind(intent: Intent): IBinder? {
         return null
-    }
-
-    companion object {
-        private const val ACTION_SESSION_INSTALLER = "ACTION_SESSION_INSTALLER"
     }
 }

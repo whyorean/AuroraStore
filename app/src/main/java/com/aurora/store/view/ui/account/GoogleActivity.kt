@@ -32,9 +32,9 @@ import com.aurora.store.data.event.BusEvent
 import com.aurora.store.databinding.ActivityGoogleBinding
 import com.aurora.store.util.AC2DMTask
 import com.aurora.store.util.Preferences
-import com.aurora.store.util.Util
-import com.aurora.store.util.extensions.close
-import com.aurora.store.util.extensions.isLAndAbove
+import com.aurora.store.util.AC2DMUtil
+import com.aurora.extensions.close
+import com.aurora.extensions.isLAndAbove
 import com.aurora.store.view.ui.commons.BaseActivity
 import nl.komponents.kovenant.task
 import org.greenrobot.eventbus.EventBus
@@ -79,7 +79,7 @@ class GoogleActivity : BaseActivity() {
         B.webview.webViewClient = object : WebViewClient() {
             override fun onPageFinished(view: WebView, url: String) {
                 val cookies = CookieManager.getInstance().getCookie(url)
-                val cookieMap = Util.parseCookieString(cookies)
+                val cookieMap = AC2DMUtil.parseCookieString(cookies)
                 if (cookieMap.isNotEmpty() && cookieMap[AUTH_TOKEN] != null) {
                     val oauthToken = cookieMap[AUTH_TOKEN]
                     B.webview.evaluateJavascript("(function() { return document.getElementById('profileIdentifier').innerHTML; })();") {

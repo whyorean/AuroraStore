@@ -28,10 +28,15 @@ import android.os.Build
 import android.os.IBinder
 import android.os.RemoteException
 import androidx.annotation.RequiresApi
+import androidx.core.content.FileProvider
 import com.aurora.services.IPrivilegedCallback
 import com.aurora.services.IPrivilegedService
 import com.aurora.store.BuildConfig
+import com.aurora.store.R
+import com.aurora.store.data.event.InstallerEvent
 import com.aurora.store.util.Log
+import com.aurora.store.util.PackageUtil
+import org.greenrobot.eventbus.EventBus
 import java.io.File
 
 class ServiceInstaller(context: Context) : InstallerBase(context) {
@@ -44,47 +49,81 @@ class ServiceInstaller(context: Context) : InstallerBase(context) {
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun install(packageName: String, files: List<Any>) {
-        if (isAlreadyQueued(packageName)) {
-            Log.i("$packageName already queued")
-        } else {
-            Log.i("Received service install request for $packageName")
-            val uriList = files.map {
-                when (it) {
-                    is File -> getUri(it)
-                    is String -> getUri(File(it))
-                    else -> {
-                        throw Exception("Invalid data, expecting listOf() File or String")
-                    }
-                }
+
+        when {
+            isAlreadyQueued(packageName) -> {
+                Log.i("$packageName already queued")
             }
 
-            xInstall(packageName, uriList)
+            PackageUtil.isInstalled(context, PRIVILEGED_EXTENSION_PACKAGE_NAME) -> {
+                Log.i("Received service install request for $packageName")
+                val uriList = files.map {
+                    when (it) {
+                        is File -> getUri(it)
+                        is String -> getUri(File(it))
+                        else -> {
+                            throw Exception("Invalid data, expecting listOf() File or String")
+                        }
+                    }
+                }
+
+                xInstall(packageName, uriList)
+            }
+            else -> {
+                val event = InstallerEvent.Failed(
+                    packageName,
+                    context.getString(R.string.installer_status_failure),
+                    context.getString(R.string.installer_service_unavailable)
+                )
+                EventBus.getDefault().post(event)
+            }
         }
     }
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     private fun xInstall(packageName: String, uriList: List<Uri>) {
-
         val serviceConnection = object : ServiceConnection {
             override fun onServiceConnected(name: ComponentName, binder: IBinder) {
                 val service = IPrivilegedService.Stub.asInterface(binder)
-                val callback = object : IPrivilegedCallback.Stub() {
-                    override fun handleResult(packageName: String, returnCode: Int) {
-                        removeFromInstallQueue(packageName)
-                    }
-                }
 
-                try {
-                    service.installSplitPackage(
+                if (service.hasPrivilegedPermissions()) {
+                    Log.i(context.getString(R.string.installer_service_available))
+                    val callback = object : IPrivilegedCallback.Stub() {
+                        override fun handleResult(packageName: String, returnCode: Int) {
+                            Log.e("$packageName : $returnCode")
+                            removeFromInstallQueue(packageName)
+                        }
+                    }
+
+                    try {
+                        service.installSplitPackage(
+                            packageName,
+                            uriList,
+                            ACTION_INSTALL_REPLACE_EXISTING,
+                            BuildConfig.APPLICATION_ID,
+                            callback
+                        )
+                    } catch (e: RemoteException) {
+                        removeFromInstallQueue(packageName)
+                        EventBus
+                            .getDefault()
+                            .post(
+                                InstallerEvent.Failed(
+                                    packageName,
+                                    e.localizedMessage,
+                                    e.stackTraceToString()
+                                )
+                            )
+                        Log.e("Failed to connect Aurora Services")
+                    }
+                } else {
+                    Log.e(context.getString(R.string.installer_service_misconfigured))
+                    val event = InstallerEvent.Failed(
                         packageName,
-                        uriList,
-                        ACTION_INSTALL_REPLACE_EXISTING,
-                        BuildConfig.APPLICATION_ID,
-                        callback
+                        context.getString(R.string.installer_status_failure),
+                        context.getString(R.string.installer_service_misconfigured)
                     )
-                } catch (e: RemoteException) {
-                    removeFromInstallQueue(packageName)
-                    Log.e("Failed to connect Aurora Services")
+                    EventBus.getDefault().post(event)
                 }
             }
 
@@ -102,5 +141,21 @@ class ServiceInstaller(context: Context) : InstallerBase(context) {
             serviceConnection,
             Context.BIND_AUTO_CREATE
         )
+    }
+
+    override fun getUri(file: File): Uri {
+        val uri = FileProvider.getUriForFile(
+            context,
+            "${BuildConfig.APPLICATION_ID}.fileProvider",
+            file
+        )
+
+        context.grantUriPermission(
+            PRIVILEGED_EXTENSION_PACKAGE_NAME,
+            uri,
+            Intent.FLAG_GRANT_READ_URI_PERMISSION or Intent.FLAG_GRANT_WRITE_URI_PERMISSION
+        )
+
+        return uri
     }
 }

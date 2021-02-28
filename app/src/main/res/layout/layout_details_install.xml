@@ -36,9 +36,13 @@
     <ViewFlipper
         android:id="@+id/view_flipper"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:animateFirstView="true"
+        android:inAnimation="@anim/fade_in"
+        android:outAnimation="@anim/fade_out"
+        tools:ignore="UselessParent">
 
-        <com.aurora.store.view.custom.ActionButton
+        <com.aurora.store.view.custom.layouts.button.ActionButton
             android:id="@+id/btn_download"
             android:layout_width="match_parent"
             android:layout_height="@dimen/height_button"
@@ -113,7 +117,6 @@
                 </LinearLayout>
             </LinearLayout>
 
-
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/img_cancel"
                 android:layout_width="@dimen/icon_size_small"
@@ -125,7 +128,6 @@
                 android:padding="@dimen/padding_medium"
                 app:srcCompat="@drawable/ic_cancel" />
         </RelativeLayout>
-
     </ViewFlipper>
 
     <LinearLayout

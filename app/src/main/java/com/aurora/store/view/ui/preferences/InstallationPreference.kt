@@ -23,11 +23,17 @@ import android.os.Bundle
 import android.view.View
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
+import com.aurora.extensions.runOnUiThread
+import com.aurora.extensions.showDialog
+import com.aurora.extensions.toast
 import com.aurora.store.R
+import com.aurora.store.data.installer.ServiceInstaller
 import com.aurora.store.util.CommonUtil
+import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.Preferences
-import com.aurora.store.util.extensions.runOnUiThread
-import com.aurora.store.util.extensions.toast
+import com.aurora.store.util.save
+import com.aurora.store.view.custom.preference.AuroraListPreference
+import com.topjohnwu.superuser.Shell
 
 
 class InstallationPreference : PreferenceFragmentCompat() {
@@ -40,6 +46,7 @@ class InstallationPreference : PreferenceFragmentCompat() {
 
         val abandonPreference: Preference? =
             findPreference(Preferences.INSTALLATION_ABANDON_SESSION)
+
         abandonPreference?.let {
             it.onPreferenceClickListener =
                 Preference.OnPreferenceClickListener {
@@ -50,5 +57,52 @@ class InstallationPreference : PreferenceFragmentCompat() {
                     false
                 }
         }
+
+        val installerPreference: AuroraListPreference? =
+            findPreference(Preferences.PREFERENCE_INSTALLER_ID)
+
+        installerPreference?.let {
+            it.onPreferenceChangeListener =
+                Preference.OnPreferenceChangeListener { _, newValue ->
+                    val selectedId = Integer.parseInt(newValue as String)
+                    if (selectedId == 2) {
+                        if (checkRootAvailability()) {
+                            save(Preferences.PREFERENCE_INSTALLER_ID, selectedId)
+                            true
+                        } else {
+                            showDialog(
+                                R.string.action_installations,
+                                R.string.installer_root_unavailable
+                            )
+                            false
+                        }
+                    } else if (selectedId == 3) {
+                        if (checkServicesAvailability()) {
+                            save(Preferences.PREFERENCE_INSTALLER_ID, selectedId)
+                            true
+                        } else {
+                            showDialog(
+                                R.string.action_installations,
+                                R.string.installer_service_unavailable
+                            )
+                            false
+                        }
+                    } else {
+                        save(Preferences.PREFERENCE_INSTALLER_ID, selectedId)
+                        true
+                    }
+                }
+        }
+    }
+
+    private fun checkRootAvailability(): Boolean {
+        return Shell.getShell().isRoot
+    }
+
+    private fun checkServicesAvailability(): Boolean {
+        return PackageUtil.isInstalled(
+            requireContext(),
+            ServiceInstaller.PRIVILEGED_EXTENSION_PACKAGE_NAME
+        )
     }
 }

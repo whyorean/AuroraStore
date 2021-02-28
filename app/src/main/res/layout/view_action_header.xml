@@ -35,7 +35,7 @@
         <View
             android:layout_width="4dp"
             android:layout_height="match_parent"
-            android:layout_marginStart="@dimen/padding_xxsmall"
+            android:layout_marginStart="@dimen/padding_xsmall"
             android:background="?colorAccent" />
 
         <TextView
@@ -57,7 +57,7 @@
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
         android:layout_marginStart="@dimen/margin_small"
-        android:layout_marginEnd="@dimen/margin_small"
+        android:padding="@dimen/padding_xsmall"
         android:background="?selectableItemBackgroundBorderless"
         android:visibility="invisible"
         app:srcCompat="@drawable/ic_arrow_right"

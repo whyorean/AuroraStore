@@ -24,19 +24,16 @@ import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
 import com.aurora.Constants
+import com.aurora.extensions.applyTheme
+import com.aurora.extensions.getEmptyActivityBundle
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.data.providers.NetworkProvider
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_THEME_ACCENT
 import com.aurora.store.util.Preferences.PREFERENCE_THEME_TYPE
-import com.aurora.store.util.ViewUtil
-import com.aurora.store.util.extensions.applyTheme
 import com.aurora.store.view.ui.account.GoogleActivity
-import com.aurora.store.view.ui.details.AppDetailsActivity
-import com.aurora.store.view.ui.details.DetailsMoreActivity
-import com.aurora.store.view.ui.details.DetailsReviewActivity
+import com.aurora.store.view.ui.details.*
 import com.aurora.store.view.ui.sheets.NetworkDialogSheet
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
@@ -99,42 +96,66 @@ abstract class BaseActivity : AppCompatActivity(), NetworkProvider.NetworkListen
         }
     }
 
-    fun openStreamBrowseActivity(browseUrl: String) {
-        val intent = Intent(this, StreamBrowseActivity::class.java)
+    fun openStreamBrowseActivity(browseUrl: String, title: String = "") {
+        val intent = if (browseUrl.toLowerCase().contains("expanded"))
+            Intent(this, ExpandedStreamBrowseActivity::class.java)
+        else if (browseUrl.toLowerCase().contains("developer"))
+            Intent(this, DevProfileActivity::class.java)
+        else
+            Intent(this, StreamBrowseActivity::class.java)
         intent.putExtra(Constants.BROWSE_EXTRA, browseUrl)
+        intent.putExtra(Constants.STRING_EXTRA, title)
         startActivity(
             intent,
-            ViewUtil.getEmptyActivityBundle(this)
+            getEmptyActivityBundle()
         )
+    }
+
+    fun openScreenshotActivity(app: App, position: Int) {
+        val intent = Intent(
+            this,
+            ScreenshotActivity::class.java
+        ).apply {
+            putExtra(Constants.STRING_EXTRA, gson.toJson(app.screenshots))
+            putExtra(Constants.INT_EXTRA, position)
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            val options =
+                ActivityOptions.makeSceneTransitionAnimation(this)
+            startActivity(intent, options.toBundle())
+        } else {
+            startActivity(intent)
+        }
     }
 
     fun openGoogleActivity() {
         val intent = Intent(this, GoogleActivity::class.java)
         startActivity(
             intent,
-            ViewUtil.getEmptyActivityBundle(this)
+            getEmptyActivityBundle()
         )
     }
 
     fun showNetworkConnectivitySheet() {
-        supportFragmentManager.beginTransaction()
-            .add(NetworkDialogSheet.newInstance(0), "NDS")
-            .commitAllowingStateLoss()
+        runOnUiThread {
+            supportFragmentManager.beginTransaction()
+                .add(NetworkDialogSheet.newInstance(), NetworkDialogSheet.TAG)
+                .commitAllowingStateLoss()
+        }
     }
 
     fun hideNetworkConnectivitySheet() {
-        val fragment: Fragment? = supportFragmentManager.findFragmentByTag("NDS")
-        if (fragment != null) {
-            supportFragmentManager.beginTransaction()
-                .remove(fragment)
-                .commitAllowingStateLoss()
+        runOnUiThread {
+            val fragment = supportFragmentManager.findFragmentByTag(NetworkDialogSheet.TAG)
+            fragment?.let {
+                supportFragmentManager.beginTransaction().remove(fragment).commitAllowingStateLoss()
+            }
         }
     }
 
     override fun onStart() {
         super.onStart()
         NetworkProvider.addListener(this)
-
     }
 
     override fun onStop() {

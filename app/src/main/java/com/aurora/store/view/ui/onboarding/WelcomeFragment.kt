@@ -26,7 +26,7 @@ import android.view.ViewGroup
 import com.aurora.store.R
 import com.aurora.store.data.model.Dash
 import com.aurora.store.databinding.FragmentOnboardingWelcomeBinding
-import com.aurora.store.util.extensions.browse
+import com.aurora.extensions.browse
 import com.aurora.store.view.epoxy.views.preference.DashViewModel_
 import com.aurora.store.view.ui.commons.BaseFragment
 import com.google.gson.reflect.TypeToken

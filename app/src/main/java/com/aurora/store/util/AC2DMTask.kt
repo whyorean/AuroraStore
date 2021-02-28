@@ -52,7 +52,7 @@ class AC2DMTask {
             .response()
 
         return response.third.fold(success = {
-            Util.parseResponse(String(it))
+            AC2DMUtil.parseResponse(String(it))
         }, failure = {
             mapOf()
         })

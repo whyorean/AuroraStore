@@ -28,7 +28,7 @@ import com.aurora.gplayapi.data.models.AuthData
 import com.aurora.store.R
 import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.databinding.ActivityGenericPagerBinding
-import com.aurora.store.util.extensions.close
+import com.aurora.extensions.close
 import com.aurora.store.view.ui.commons.BaseActivity
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
@@ -73,6 +73,7 @@ class AppsGamesActivity : BaseActivity() {
             when (position) {
                 0 -> tab.text = getString(R.string.title_installed)
                 1 -> tab.text = getString(R.string.title_library)
+                2 -> tab.text = getString(R.string.title_purchase_history)
                 else -> {
                 }
             }
@@ -89,6 +90,7 @@ class AppsGamesActivity : BaseActivity() {
             return when (position) {
                 0 -> InstalledAppsFragment.newInstance()
                 1 -> LibraryAppsFragment.newInstance()
+                2 -> PurchasedAppsFragment.newInstance()
                 else -> Fragment()
             }
         }
@@ -97,7 +99,7 @@ class AppsGamesActivity : BaseActivity() {
             return if (isAnonymous)
                 1
             else
-                2
+                3
         }
     }
 }

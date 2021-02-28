@@ -35,10 +35,10 @@ import com.aurora.store.databinding.FragmentOnboardingThemeBinding
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_THEME_ACCENT
 import com.aurora.store.util.Preferences.PREFERENCE_THEME_TYPE
-import com.aurora.store.util.extensions.applyTheme
-import com.aurora.store.util.extensions.hide
-import com.aurora.store.util.extensions.isVisible
-import com.aurora.store.util.extensions.show
+import com.aurora.extensions.applyTheme
+import com.aurora.extensions.hide
+import com.aurora.extensions.isVisible
+import com.aurora.extensions.show
 import com.aurora.store.util.save
 import com.aurora.store.view.custom.CubicBezierInterpolator
 import com.aurora.store.view.epoxy.views.ThemeViewModel_

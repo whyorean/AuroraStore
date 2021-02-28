@@ -24,10 +24,10 @@ import androidx.lifecycle.ViewModelProvider
 import com.aurora.Constants
 import com.aurora.gplayapi.data.models.StreamCluster
 import com.aurora.store.databinding.ActivityGenericRecyclerBinding
-import com.aurora.store.util.extensions.close
+import com.aurora.extensions.close
 import com.aurora.store.view.custom.recycler.EndlessRecyclerOnScrollListener
-import com.aurora.store.view.epoxy.views.AppListViewModel_
 import com.aurora.store.view.epoxy.views.AppProgressViewModel_
+import com.aurora.store.view.epoxy.views.app.AppListViewModel_
 import com.aurora.store.view.epoxy.views.shimmer.AppListViewShimmerModel_
 import com.aurora.store.viewmodel.browse.StreamBrowseViewModel
 
@@ -40,6 +40,7 @@ class StreamBrowseActivity : BaseActivity() {
     lateinit var endlessRecyclerOnScrollListener: EndlessRecyclerOnScrollListener
 
     lateinit var title: String
+    lateinit var cluster: StreamCluster
 
     override fun onConnected() {
         hideNetworkConnectivitySheet()
@@ -63,11 +64,15 @@ class StreamBrowseActivity : BaseActivity() {
         setContentView(B.root)
 
         attachToolbar()
-        attachRecycler()
 
         VM.liveData.observe(this, {
-            updateController(it)
-            updateTitle(it)
+            if (!::cluster.isInitialized)
+                attachRecycler()
+
+            cluster = it
+
+            updateController(cluster)
+            updateTitle(cluster)
         })
 
         intent.apply {

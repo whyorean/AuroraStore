@@ -24,7 +24,7 @@ import androidx.lifecycle.viewModelScope
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.data.RequestState
 import com.aurora.store.data.event.BusEvent
-import com.aurora.store.util.extensions.flushAndAdd
+import com.aurora.extensions.flushAndAdd
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import org.greenrobot.eventbus.EventBus

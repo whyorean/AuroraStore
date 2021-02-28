@@ -43,6 +43,7 @@ object Preferences {
     const val INSTALLATION_ABANDON_SESSION = "INSTALLATION_ABANDON_SESSION"
 
     const val PREFERENCE_DOWNLOAD_ACTIVE = "PREFERENCE_DOWNLOAD_ACTIVE"
+    const val PREFERENCE_DOWNLOAD_EXTERNAL = "PREFERENCE_DOWNLOAD_EXTERNAL"
     const val PREFERENCE_DOWNLOAD_WIFI = "PREFERENCE_DOWNLOAD_WIFI"
 
 
@@ -91,26 +92,17 @@ object Preferences {
     }
 }
 
-fun Context.save(key: String, value: Int) {
-    Preferences.putInteger(this, key, value)
-}
+/*Preference Extensions*/
 
-fun Fragment.save(key: String, value: Int) {
-    Preferences.putInteger(requireContext(), key, value)
-}
+fun Context.save(key: String, value: Int) = Preferences.putInteger(this, key, value)
 
-fun Context.save(key: String, value: Boolean) {
-    Preferences.putBoolean(this, key, value)
-}
+fun Context.save(key: String, value: Boolean) = Preferences.putBoolean(this, key, value)
 
-fun Fragment.save(key: String, value: Boolean) {
-    Preferences.putBoolean(requireContext(), key, value)
-}
+fun Context.save(key: String, value: String) = Preferences.putString(this, key, value)
 
-fun Context.save(key: String, value: String) {
-    Preferences.putString(this, key, value)
-}
 
-fun Fragment.save(key: String, value: String) {
-    Preferences.putString(requireContext(), key, value)
-}
+fun Fragment.save(key: String, value: Int) = requireContext().save(key, value)
+
+fun Fragment.save(key: String, value: Boolean) = requireContext().save(key, value)
+
+fun Fragment.save(key: String, value: String) = requireContext().save(key, value)

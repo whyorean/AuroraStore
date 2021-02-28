@@ -80,6 +80,17 @@
                 android:singleLine="true"
                 android:textAppearance="@style/TextAppearance.Aurora.Line3" />
 
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txt_line4"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txt_line3"
+                android:layout_alignStart="@+id/txt_line1"
+                android:layout_alignEnd="@id/txt_line1"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:textAppearance="@style/TextAppearance.Aurora.Line3" />
+
             <LinearLayout
                 android:id="@+id/layout_action"
                 android:layout_width="wrap_content"

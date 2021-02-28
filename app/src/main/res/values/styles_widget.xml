@@ -72,4 +72,28 @@
     <style name="Aurora.BottomSheetDialog" parent="Theme.Design.BottomSheetDialog">
         <item name="bottomSheetStyle">@style/Aurora.BottomSheetDialogStyle</item>
     </style>
+
+    <style name="AuroraProgressView">
+        <item name="minWidth">32dp</item>
+        <item name="maxWidth">46dp</item>
+        <item name="minHeight">36dp</item>
+        <item name="maxHeight">36dp</item>
+        <item name="indicatorName">BallPulseIndicator</item>
+    </style>
+
+    <style name="AuroraProgressView.Large">
+        <item name="minWidth">48dp</item>
+        <item name="maxWidth">48dp</item>
+        <item name="minHeight">56dp</item>
+        <item name="maxHeight">56dp</item>
+        <item name="indicatorName">BallPulseIndicator</item>
+    </style>
+
+    <style name="AuroraProgressView.Small">
+        <item name="minWidth">24dp</item>
+        <item name="maxWidth">24dp</item>
+        <item name="minHeight">24dp</item>
+        <item name="maxHeight">24dp</item>
+        <item name="indicatorName">BallPulseIndicator</item>
+    </style>
 </resources>

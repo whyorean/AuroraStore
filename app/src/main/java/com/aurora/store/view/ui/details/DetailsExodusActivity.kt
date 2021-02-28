@@ -27,10 +27,10 @@ import com.aurora.store.data.model.ExodusTracker
 import com.aurora.store.data.model.Report
 import com.aurora.store.data.providers.ExodusDataProvider
 import com.aurora.store.databinding.ActivityGenericRecyclerBinding
-import com.aurora.store.util.extensions.browse
-import com.aurora.store.util.extensions.close
-import com.aurora.store.view.epoxy.views.ExodusViewModel_
+import com.aurora.extensions.browse
+import com.aurora.extensions.close
 import com.aurora.store.view.epoxy.views.HeaderViewModel_
+import com.aurora.store.view.epoxy.views.details.ExodusViewModel_
 import com.aurora.store.view.ui.commons.BaseActivity
 import org.json.JSONObject
 

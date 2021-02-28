@@ -20,11 +20,12 @@
 package com.aurora.store.data.installer
 
 import android.content.Context
+import com.aurora.extensions.isLAndAbove
 import com.aurora.store.R
+import com.aurora.store.data.event.InstallerEvent
 import com.aurora.store.util.Log
-import com.aurora.store.util.extensions.isLAndAbove
-import com.aurora.store.util.extensions.toast
 import com.topjohnwu.superuser.Shell
+import org.greenrobot.eventbus.EventBus
 import java.io.File
 import java.util.regex.Pattern
 
@@ -50,7 +51,12 @@ class RootInstaller(context: Context) : InstallerBase(context) {
                         xInstallLegacy(packageName, it)
                 }
             } else {
-                context.toast(context.getString(R.string.installer_root_unavailable))
+                val event = InstallerEvent.Failed(
+                    packageName,
+                    context.getString(R.string.installer_status_failure),
+                    context.getString(R.string.installer_root_unavailable)
+                )
+                EventBus.getDefault().post(event)
                 Log.e(" >>>>>>>>>>>>>>>>>>>>>>>>>> NO ROOT ACCESS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<")
             }
         }
@@ -80,12 +86,34 @@ class RootInstaller(context: Context) : InstallerBase(context) {
                         .exec()
                 }
 
-                Shell.su("pm install-commit $sessionId").exec()
+                val shellResult = Shell.su("pm install-commit $sessionId").exec()
+
+                if (!shellResult.isSuccess) {
+                    removeFromInstallQueue(packageName)
+                    val event = InstallerEvent.Failed(
+                        packageName,
+                        context.getString(R.string.installer_status_failure),
+                        parseError(shellResult)
+                    )
+                    EventBus.getDefault().post(event)
+                }
             } else {
                 removeFromInstallQueue(packageName)
+                val event = InstallerEvent.Failed(
+                    packageName,
+                    context.getString(R.string.installer_status_failure),
+                    context.getString(R.string.installer_root_unavailable)
+                )
+                EventBus.getDefault().post(event)
             }
         } else {
             removeFromInstallQueue(packageName)
+            val event = InstallerEvent.Failed(
+                packageName,
+                context.getString(R.string.installer_status_failure),
+                context.getString(R.string.installer_status_failure_session)
+            )
+            EventBus.getDefault().post(event)
         }
     }
 
@@ -95,5 +123,9 @@ class RootInstaller(context: Context) : InstallerBase(context) {
         } else {
             removeFromInstallQueue(packageName)
         }
+    }
+
+    private fun parseError(result: Shell.Result): String {
+        return result.err.joinToString(separator = "\n")
     }
 }
