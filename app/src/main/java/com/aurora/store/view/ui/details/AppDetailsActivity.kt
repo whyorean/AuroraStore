@@ -364,15 +364,8 @@ class AppDetailsActivity : BaseDetailsActivity() {
         when (status) {
             Status.PAUSED -> {
                 fetch.resumeGroup(app.id)
-                isNone = false
             }
-            Status.NONE, Status.CANCELLED -> {
-                fetch.deleteGroup(app.id)
-                isNone = true
-            }
-            Status.ADDED -> isNone = false
             Status.DOWNLOADING -> {
-                isNone = false
                 flip(1)
                 toast("Already downloading")
             }
@@ -382,10 +375,8 @@ class AppDetailsActivity : BaseDetailsActivity() {
                 }
             }
             else -> {
+                purchase()
             }
-        }
-        if (isNone) {
-            purchase()
         }
     }
 

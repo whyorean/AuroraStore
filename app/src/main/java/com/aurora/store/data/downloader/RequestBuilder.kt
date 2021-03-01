@@ -35,7 +35,7 @@ private inline fun Request.attachMetaData(app: App) {
     apply {
         groupId = app.id
         tag = app.packageName
-        enqueueAction = EnqueueAction.UPDATE_ACCORDINGLY
+        enqueueAction = EnqueueAction.REPLACE_EXISTING
         networkType = NetworkType.ALL
     }
 }
