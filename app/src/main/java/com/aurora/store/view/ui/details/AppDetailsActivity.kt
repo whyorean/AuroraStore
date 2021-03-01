@@ -183,6 +183,10 @@ class AppDetailsActivity : BaseDetailsActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_details, menu)
+        if (::app.isInitialized) {
+            val installed = PackageUtil.isInstalled(this, app.packageName)
+            menu?.findItem(R.id.action_uninstall)?.isVisible = installed
+        }
         return true
     }
 
