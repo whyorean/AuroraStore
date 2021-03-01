@@ -19,7 +19,6 @@
 
 package com.aurora.store.data.network
 
-import com.aurora.gplayapi.GooglePlayApi
 import com.aurora.gplayapi.data.models.PlayResponse
 import com.aurora.gplayapi.network.IHttpClient
 import com.aurora.store.BuildConfig
@@ -108,8 +107,6 @@ object FuelClient : IHttpClient {
         return PlayResponse().apply {
             isSuccessful = response.isSuccessful
             code = response.statusCode
-
-            GooglePlayApi
 
             if (response.isSuccessful) {
                 responseBytes = response.body().toByteArray()
