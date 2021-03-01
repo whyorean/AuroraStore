@@ -212,7 +212,9 @@ class MainActivity : BaseActivity() {
     }
 
     override fun onBackPressed() {
-        if (!navController.navigateUp()) {
+        if (B.drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            B.drawerLayout.close()
+        } else if (!navController.navigateUp()) {
             if (lastBackPressed + 1000 > System.currentTimeMillis()) {
                 super.onBackPressed()
             } else {
