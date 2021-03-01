@@ -35,9 +35,13 @@ import com.aurora.store.util.Preferences.PREFERENCE_THEME_TYPE
 import com.aurora.store.view.ui.account.GoogleActivity
 import com.aurora.store.view.ui.details.*
 import com.aurora.store.view.ui.sheets.NetworkDialogSheet
+import com.aurora.store.view.ui.sheets.TOSSheet
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
+import nl.komponents.kovenant.task
+import nl.komponents.kovenant.ui.successUi
 import java.lang.reflect.Modifier
+import java.util.concurrent.TimeUnit
 
 
 abstract class BaseActivity : AppCompatActivity(), NetworkProvider.NetworkListener {
@@ -135,6 +139,15 @@ abstract class BaseActivity : AppCompatActivity(), NetworkProvider.NetworkListen
             getEmptyActivityBundle()
         )
     }
+
+    fun askToReadTOS() {
+        task {
+            TimeUnit.SECONDS.sleep(5)
+        } successUi {
+            TOSSheet.newInstance().show(supportFragmentManager, TOSSheet.TAG)
+        }
+    }
+
 
     fun showNetworkConnectivitySheet() {
         runOnUiThread {

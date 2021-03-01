@@ -46,6 +46,8 @@ object Preferences {
     const val PREFERENCE_DOWNLOAD_EXTERNAL = "PREFERENCE_DOWNLOAD_EXTERNAL"
     const val PREFERENCE_DOWNLOAD_WIFI = "PREFERENCE_DOWNLOAD_WIFI"
 
+    const val PREFERENCE_TOS_READ = "PREFERENCE_TOS_READ"
+
 
     private fun getPrefs(context: Context): SharedPreferences {
         return PreferenceManager.getDefaultSharedPreferences(context)

@@ -32,6 +32,7 @@ object Constants {
     const val EXODUS_BASE_URL = "https://reports.exodus-privacy.eu.org/api/search/"
     const val EXODUS_REPORT_URL = "https://reports.exodus-privacy.eu.org/reports/"
     const val SHARE_URL = "http://play.google.com/store/apps/details?id="
+    const val TOS_URL = "https://gitlab.com/AuroraOSS/AuroraStore/-/raw/master/TermsOfService.md"
     const val UPDATE_URL = "https://gitlab.com/AuroraOSS/AuroraStore/raw/master/updates.json"
 
     const val NOTIFICATION_CHANNEL_ALERT = "NOTIFICATION_CHANNEL_ALERT"

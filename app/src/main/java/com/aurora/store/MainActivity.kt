@@ -115,6 +115,10 @@ class MainActivity : BaseActivity() {
         attachDrawer()
         attachSearch()
 
+        if (!Preferences.getBoolean(this, Preferences.PREFERENCE_TOS_READ)) {
+            askToReadTOS()
+        }
+
         /*Check only if download to external storage is enabled*/
         if (Preferences.getBoolean(this, Preferences.PREFERENCE_DOWNLOAD_EXTERNAL)) {
             checkExternalStorageAccessPermission()

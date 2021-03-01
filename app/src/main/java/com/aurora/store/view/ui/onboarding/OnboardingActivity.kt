@@ -26,6 +26,7 @@ import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
 import com.aurora.Constants
+import com.aurora.extensions.open
 import com.aurora.store.R
 import com.aurora.store.databinding.ActivityOnboardingBinding
 import com.aurora.store.util.Preferences
@@ -39,7 +40,6 @@ import com.aurora.store.util.Preferences.PREFERENCE_INSTALLER_ID
 import com.aurora.store.util.Preferences.PREFERENCE_INTRO
 import com.aurora.store.util.Preferences.PREFERENCE_THEME_ACCENT
 import com.aurora.store.util.Preferences.PREFERENCE_THEME_TYPE
-import com.aurora.extensions.open
 import com.aurora.store.util.save
 import com.aurora.store.view.ui.commons.BaseActivity
 import com.aurora.store.view.ui.splash.SplashActivity
@@ -84,6 +84,10 @@ class OnboardingActivity : BaseActivity() {
             moveBackward()
         }
 
+        if (!Preferences.getBoolean(this, Preferences.PREFERENCE_TOS_READ)) {
+            askToReadTOS()
+        }
+
         onNewIntent(intent)
     }
 
@@ -92,7 +96,6 @@ class OnboardingActivity : BaseActivity() {
         intent?.let {
             val pos = intent.getIntExtra(Constants.INT_EXTRA, 0)
             B.viewpager2.setCurrentItem(pos, false)
-
         }
     }
 

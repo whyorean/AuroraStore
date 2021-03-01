@@ -45,6 +45,7 @@
     <string name="account_login_using">"Login using"</string>
     <string name="account_logout">"Logout from Aurora"</string>
 
+    <string name="action_accept">"Accept"</string>
     <string name="action_accounts">"Accounts"</string>
     <string name="action_all_reviews">"All reviews"</string>
     <string name="action_apply">"Apply"</string>
@@ -104,6 +105,7 @@
     <string name="action_post">"Post"</string>
     <string name="action_previous">"Previous"</string>
     <string name="action_purchase">"Purchase"</string>
+    <string name="action_read_accept">"Read &amp; accept"</string>
     <string name="action_resend">"Resend"</string>
     <string name="action_restart">"Restart"</string>
     <string name="action_resume">"Resume"</string>
@@ -238,7 +240,6 @@
     <string name="device_miui_description">"Please, disable MIUI optimizations to allow installations, otherwise you can choose Root or Services installer."</string>
     <string name="device_miui_extra">"Optionally you can choose Native installer, but then you can not install bundled (split) APKs, so choice is yours."</string>
 
-
     <string name="dialog_title_self_update">"New update available"</string>
     <string name="dialog_desc_self_update">"Do you wish to update now ?"</string>
     <string name="list_update_all_txt_one">"update available"</string>
@@ -255,6 +256,8 @@
     <string name="onboarding_title_permissions">"Permissions"</string>
     <string name="onboarding_title_theme">"Themes"</string>
     <string name="onboarding_title_welcome">"Welcome"</string>
+    <string name="onboarding_tos">"Terms of services"</string>
+    <string name="onboarding_tos_desc">"Read our Terms of services and accept it before you continue to use Aurora Store."</string>
     <string name="onboarding_welcome_select">"How you doing?"</string>
 
     <string name="onboarding_permission_esa">"External Storage Access"</string>
