@@ -22,16 +22,16 @@
   },
   {
     "id": "3",
-    "title": "Privacy",
+    "title": "Privacy Policy",
     "subtitle": "Find out if we have your nudes :p",
     "icon": "ic_privacy",
-    "url": "https://gitlab.com/AuroraOSS/AuroraStore/-/raw/master/PRIVACY"
+    "url": "https://gitlab.com/AuroraOSS/AuroraStore/-/raw/master/POLICY.md"
   },
   {
     "id": "4",
     "title": "Disclaimer",
     "subtitle": "Hold your own beer!",
     "icon": "ic_disclaimer",
-    "url": "https://gitlab.com/AuroraOSS/AuroraStore/-/raw/master/DISCLAIMER"
+    "url": "https://gitlab.com/AuroraOSS/AuroraStore/-/raw/master/DISCLAIMER.md"
   }
 ]
