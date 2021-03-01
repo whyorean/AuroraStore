@@ -54,6 +54,20 @@ fun Context.showDialog(title: String?, message: String?) {
     }
 }
 
+fun Context.showDialog(title: String?, message: String?, listener: DialogInterface.OnDismissListener) {
+    runOnUiThread {
+        val backgroundColor: Int = getStyledAttributeColor(android.R.attr.colorBackground)
+        val builder = MaterialAlertDialogBuilder(this).apply {
+            setTitle(title)
+            setMessage(message)
+            setPositiveButton(android.R.string.ok) { dialog: DialogInterface, _ -> listener }
+            background = ColorDrawable(backgroundColor)
+        }.create()
+
+        builder.show()
+    }
+}
+
 fun Fragment.showDialog(@StringRes titleId: Int, @StringRes messageId: Int) {
     requireContext().showDialog(titleId, messageId)
 }

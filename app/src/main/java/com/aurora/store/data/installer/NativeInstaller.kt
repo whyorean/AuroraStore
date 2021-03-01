@@ -32,6 +32,7 @@ class NativeInstaller(context: Context) : InstallerBase(context) {
         if (isAlreadyQueued(packageName)) {
             Log.i("$packageName already queued")
         } else {
+            Log.i("Received native install request for $packageName")
             files.map {
                 when (it) {
                     is File -> it

@@ -23,12 +23,12 @@ import android.app.NotificationManager
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import com.aurora.store.BuildConfig
 import com.aurora.store.data.event.BusEvent.InstallEvent
 import com.aurora.store.data.event.BusEvent.UninstallEvent
 import com.aurora.store.data.installer.AppInstaller
 import com.aurora.store.util.PathUtil
 import com.aurora.store.util.Preferences
-import com.aurora.store.util.isExternalStorageEnable
 import org.greenrobot.eventbus.EventBus
 import java.io.File
 
@@ -61,6 +61,10 @@ open class PackageManagerReceiver : BroadcastReceiver() {
             )
 
             if (isAutoDeleteAPKEnabled)
+                clearDownloads(context, packageName)
+
+            //Clear self update apk
+            if (packageName == BuildConfig.APPLICATION_ID)
                 clearDownloads(context, packageName)
         }
     }

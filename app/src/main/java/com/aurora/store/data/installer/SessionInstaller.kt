@@ -42,7 +42,7 @@ class SessionInstaller(context: Context) : InstallerBase(context) {
         if (isAlreadyQueued(packageName)) {
             Log.i("$packageName already queued")
         } else {
-            Log.i("Received service install request for $packageName")
+            Log.i("Received session install request for $packageName")
             val uriList = files.map {
                 when (it) {
                     is File -> getUri(it)

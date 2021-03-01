@@ -21,6 +21,7 @@ package com.aurora.store
 
 import android.Manifest
 import android.content.Intent
+import android.graphics.drawable.ColorDrawable
 import android.os.Build
 import android.os.Bundle
 import android.os.Environment
@@ -39,13 +40,15 @@ import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
-import com.aurora.extensions.getEmptyActivityBundle
-import com.aurora.extensions.getStyledAttributeColor
-import com.aurora.extensions.load
-import com.aurora.extensions.open
+import com.aurora.Constants
+import com.aurora.extensions.*
 import com.aurora.gplayapi.data.models.AuthData
+import com.aurora.store.data.model.SelfUpdate
+import com.aurora.store.data.network.HttpClient
 import com.aurora.store.data.providers.AuthProvider
+import com.aurora.store.data.service.SelfUpdateService
 import com.aurora.store.databinding.ActivityMainBinding
+import com.aurora.store.util.CertUtil.isFDroidApp
 import com.aurora.store.util.Log
 import com.aurora.store.util.Preferences
 import com.aurora.store.view.ui.about.AboutActivity
@@ -60,7 +63,10 @@ import com.aurora.store.view.ui.search.SearchSuggestionActivity
 import com.aurora.store.view.ui.spoof.SpoofActivity
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.livinglifetechway.quickpermissions_kotlin.runWithPermissions
+import nl.komponents.kovenant.task
+import nl.komponents.kovenant.ui.successUi
 
 
 class MainActivity : BaseActivity() {
@@ -116,6 +122,9 @@ class MainActivity : BaseActivity() {
             checkExternalStorageAccessPermission()
             checkExternalStorageManagerPermission()
         }
+
+        /* Check self update */
+        checkSelfUpdate()
     }
 
     private fun attachToolbar() {
@@ -236,5 +245,64 @@ class MainActivity : BaseActivity() {
             if (!Environment.isExternalStorageManager())
                 startActivity(Intent(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION))
         }
+    }
+
+    private fun checkSelfUpdate() {
+        task {
+            HttpClient.getPreferredClient().get(Constants.UPDATE_URL, mapOf())
+        } successUi { playResponse ->
+            if (playResponse.isSuccessful) {
+                val selfUpdate = gson.fromJson(
+                    String(playResponse.responseBytes),
+                    SelfUpdate::class.java
+                )
+
+                selfUpdate?.let { it ->
+                    if (it.versionCode > BuildConfig.VERSION_CODE) {
+                        if (isFDroidApp(this, BuildConfig.APPLICATION_ID)) {
+                            if (it.fdroidBuild.isNotEmpty()) {
+                                showUpdatesDialog(it)
+                            }
+                        } else if (it.auroraBuild.isNotEmpty()) {
+                            showUpdatesDialog(it)
+                        } else {
+                            Log.i(getString(R.string.details_no_updates))
+                        }
+                    } else {
+                        Log.i(getString(R.string.details_no_updates))
+                    }
+                }
+            } else {
+                Log.e("Failed to check self update")
+            }
+        }
+    }
+
+    private fun showUpdatesDialog(selfUpdate: SelfUpdate) {
+        val messages: List<String> = listOf(
+            selfUpdate.versionCode.toString(),
+            if (selfUpdate.changelog.isEmpty())
+                getString(R.string.details_changelog_unavailable)
+            else
+                selfUpdate.changelog,
+            getString(R.string.dialog_desc_self_update)
+        )
+
+        val builder: MaterialAlertDialogBuilder = MaterialAlertDialogBuilder(this)
+            .setTitle(getString(R.string.dialog_title_self_update))
+            .setMessage(messages.joinToString(separator = "\n"))
+            .setPositiveButton(getString(R.string.action_update)) { _, _ ->
+                val intent = Intent(this, SelfUpdateService::class.java)
+                intent.putExtra(Constants.STRING_EXTRA, gson.toJson(selfUpdate))
+                startService(intent)
+            }
+            .setNegativeButton(getString(R.string.action_later)) { dialog, _ ->
+                dialog.dismiss()
+            }
+
+        val backGroundColor: Int = getStyledAttributeColor(android.R.attr.colorBackground)
+        builder.background = ColorDrawable(backGroundColor)
+        builder.create()
+        builder.show()
     }
 }

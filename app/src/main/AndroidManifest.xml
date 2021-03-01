@@ -150,6 +150,7 @@
         <service
             android:name="com.novoda.merlin.MerlinService"
             android:exported="false" />
+        <service android:name=".data.service.SelfUpdateService" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
