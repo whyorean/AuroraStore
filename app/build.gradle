@@ -51,11 +51,6 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
 
-        beta {
-            initWith release
-            applicationIdSuffix = ".beta"
-        }
-
         nightly {
             initWith release
             applicationIdSuffix = ".nightly"
