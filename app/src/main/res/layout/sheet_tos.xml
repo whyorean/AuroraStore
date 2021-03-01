@@ -18,10 +18,9 @@
   -->
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <LinearLayout
@@ -61,18 +60,26 @@
             android:id="@+id/txt_line1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:maxLines="3"
-            android:text="@string/onboarding_tos"
-            android:textAlignment="viewStart"
-            android:textAppearance="@style/TextAppearance.Aurora.Line1" />
-
-        <TextView
-            android:id="@+id/txt_line2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:maxLines="10"
             android:text="@string/onboarding_tos_desc"
             android:textAlignment="viewStart"
+            android:textAppearance="@style/TextAppearance.Aurora.Line1" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_read"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:textAllCaps="false"
+            android:text="@string/onboarding_tos" />
+
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:id="@+id/checkbox_accept"
+            android:minHeight="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/onboarding_tos_confirmation"
             android:textAppearance="@style/TextAppearance.Aurora.Line2" />
     </LinearLayout>
 
@@ -88,7 +95,7 @@
             android:layout_width="0dp"
             android:layout_height="@dimen/height_button"
             android:layout_weight="1"
-            android:text="@string/action_accept" />
+            android:text="@string/action_deny" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_primary"
@@ -96,6 +103,6 @@
             android:layout_width="0dp"
             android:layout_height="@dimen/height_button"
             android:layout_weight="1"
-            android:text="@string/action_read_accept" />
+            android:text="@string/action_accept" />
     </LinearLayout>
 </LinearLayout>

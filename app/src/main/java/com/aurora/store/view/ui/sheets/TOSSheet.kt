@@ -25,8 +25,11 @@ import android.view.View
 import android.view.ViewGroup
 import com.aurora.Constants
 import com.aurora.extensions.browse
+import com.aurora.extensions.toast
+import com.aurora.store.R
 import com.aurora.store.databinding.SheetTosBinding
 import com.aurora.store.util.Preferences
+import kotlin.system.exitProcess
 
 class TOSSheet : BaseBottomSheet() {
 
@@ -63,14 +66,22 @@ class TOSSheet : BaseBottomSheet() {
     }
 
     private fun attachAction() {
-        B.btnPrimary.setOnClickListener {
+        B.btnRead.setOnClickListener {
             requireContext().browse(Constants.TOS_URL)
-            Preferences.putBoolean(requireContext(), Preferences.PREFERENCE_TOS_READ, true)
+        }
+
+        B.btnPrimary.setOnClickListener {
+            if (B.checkboxAccept.isChecked){
+                Preferences.putBoolean(requireContext(), Preferences.PREFERENCE_TOS_READ, true)
+                dismissAllowingStateLoss()
+            }else{
+                toast(R.string.onboarding_tos_error)
+            }
         }
 
         B.btnSecondary.setOnClickListener {
-            Preferences.putBoolean(requireContext(), Preferences.PREFERENCE_TOS_READ, true)
-            dismissAllowingStateLoss()
+            requireActivity().finish();
+            exitProcess(0);
         }
     }
 }

@@ -61,6 +61,7 @@
     <string name="action_close">"Close"</string>
     <string name="action_copy">"Copy"</string>
     <string name="action_copy_link">"Copy Link"</string>
+    <string name="action_deny">"Deny"</string>
     <string name="action_disable">"Disable"</string>
     <string name="action_discard">"Discard"</string>
     <string name="action_discover">"Discover"</string>
@@ -105,7 +106,7 @@
     <string name="action_post">"Post"</string>
     <string name="action_previous">"Previous"</string>
     <string name="action_purchase">"Purchase"</string>
-    <string name="action_read_accept">"Read &amp; accept"</string>
+    <string name="action_read">"Read"</string>
     <string name="action_resend">"Resend"</string>
     <string name="action_restart">"Restart"</string>
     <string name="action_resume">"Resume"</string>
@@ -257,7 +258,9 @@
     <string name="onboarding_title_theme">"Themes"</string>
     <string name="onboarding_title_welcome">"Welcome"</string>
     <string name="onboarding_tos">"Terms of services"</string>
-    <string name="onboarding_tos_desc">"Read our Terms of services and accept it before you continue to use Aurora Store."</string>
+    <string name="onboarding_tos_desc">"Please read our Terms of Service and accept it to use Aurora Store."</string>
+    <string name="onboarding_tos_confirmation">"I have read the Aurora Store's Terms of Service."</string>
+    <string name="onboarding_tos_error">"You need to mark TOS read first."</string>
     <string name="onboarding_welcome_select">"How you doing?"</string>
 
     <string name="onboarding_permission_esa">"External Storage Access"</string>
