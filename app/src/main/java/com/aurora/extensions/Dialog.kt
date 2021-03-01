@@ -52,10 +52,6 @@ fun Context.showDialog(
                 setPositiveButton(android.R.string.ok) { dialog, _ -> dialog.dismiss() }
             }
 
-            positiveListener?.let {
-
-            }
-
             negativeListener?.let {
                 setNegativeButton(android.R.string.cancel, negativeListener)
             }
