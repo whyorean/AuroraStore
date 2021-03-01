@@ -1,0 +1,7 @@
+{
+  "version_name": "3.2.9",
+  "version_code": 29,
+  "aurora_build": "https://gitlab.com/AuroraOSS/AuroraStore/uploads/2b8a9544eb228170e5708ffb46cb55f5/AuroraStore_3.2.9.apk",
+  "fdroid_build": "",
+  "changelog": "\n Changelog : v3.2.9\n • Bug fixes and improvements\n • Updated translations"
+}
