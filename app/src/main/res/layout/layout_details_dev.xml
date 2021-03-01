@@ -33,7 +33,7 @@
         android:layout_height="wrap_content"
         app:headerTitle="@string/details_dev_details" />
 
-    <com.aurora.store.view.custom.layouts.ViewDevInfo
+    <com.aurora.store.view.custom.layouts.DevInfoLayout
         android:id="@+id/dev_web"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -42,7 +42,7 @@
         app:txtTitle="@string/details_dev_website"
         tools:visibility="visible" />
 
-    <com.aurora.store.view.custom.layouts.ViewDevInfo
+    <com.aurora.store.view.custom.layouts.DevInfoLayout
         android:id="@+id/dev_mail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -51,7 +51,7 @@
         app:txtTitle="@string/details_dev_email"
         tools:visibility="visible" />
 
-    <com.aurora.store.view.custom.layouts.ViewDevInfo
+    <com.aurora.store.view.custom.layouts.DevInfoLayout
         android:id="@+id/dev_address"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

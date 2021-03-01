@@ -19,10 +19,7 @@
 
 package com.aurora.store.view.ui.details
 
-import android.content.Intent
-import android.os.Build
 import android.text.Html
-import android.text.Layout
 import android.view.View
 import android.widget.RelativeLayout
 import android.widget.Toast
@@ -30,7 +27,6 @@ import androidx.core.content.ContextCompat
 import androidx.core.text.HtmlCompat
 import androidx.lifecycle.ViewModelProvider
 import com.airbnb.epoxy.EpoxyRecyclerView
-import com.aurora.Constants
 import com.aurora.extensions.hide
 import com.aurora.extensions.load
 import com.aurora.extensions.show
@@ -76,12 +72,10 @@ abstract class BaseDetailsActivity : BaseActivity() {
         B.txtRating.text = app.labeledRating
         B.txtSdk.text = ("Target SDK ${app.targetSdk}")
         B.txtUpdated.text = app.updatedOn
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            B.txtDescription.justificationMode = Layout.JUSTIFICATION_MODE_INTER_WORD
-        }
-
-        B.txtDescription.text = Html.fromHtml(app.shortDescription)
+        B.txtDescription.text = HtmlCompat.fromHtml(
+            app.shortDescription,
+            HtmlCompat.FROM_HTML_OPTION_USE_CSS_COLORS
+        )
 
         app.changes.apply {
             if (isEmpty()) {
@@ -236,7 +230,7 @@ abstract class BaseDetailsActivity : BaseActivity() {
         }
 
         if (app.developerEmail.isNotEmpty()) {
-            B.devWeb.apply {
+            B.devMail.apply {
                 setTxtSubtitle(app.developerEmail)
                 visibility = View.VISIBLE
             }
@@ -360,20 +354,7 @@ abstract class BaseDetailsActivity : BaseActivity() {
         }
     }
 
-    //Helpers
-
-    open fun getIntentPackageName(intent: Intent): String? {
-        if (intent.hasExtra(Constants.STRING_EXTRA)) {
-            return intent.getStringExtra(Constants.STRING_EXTRA)
-        } else if (intent.scheme != null && (intent.scheme == "market" || intent.scheme == "http" || intent.scheme == "https")
-        ) {
-            return intent.data!!.getQueryParameter("id")
-        } else if (intent.extras != null) {
-            val bundle = intent.extras
-            return bundle!!.getString(Constants.STRING_EXTRA)
-        }
-        return null
-    }
+    /* App Review Helpers */
 
     private fun addAvgReviews(number: Int, max: Long, rating: Long): RelativeLayout {
         return RatingView(this, number, max.toInt(), rating.toInt())
@@ -415,7 +396,7 @@ abstract class BaseDetailsActivity : BaseActivity() {
         return reviewsHelper.getReviews(app.packageName, Review.Filter.CRITICAL)
     }
 
-    /*---------------------------------- HELPERS FOR APP PRIVACY ---------------------------------*/
+    /* App Privacy Helpers */
 
     private fun parseResponse(response: String, packageName: String): List<Report> {
         try {

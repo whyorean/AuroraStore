@@ -27,7 +27,7 @@ import androidx.annotation.RequiresApi
 import com.aurora.store.R
 import com.aurora.store.databinding.ViewDevInfoBinding
 
-class ViewDevInfo : RelativeLayout {
+class DevInfoLayout : RelativeLayout {
 
     private lateinit var B: ViewDevInfoBinding
 
