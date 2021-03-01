@@ -31,7 +31,7 @@ class NativeDeviceInfoProvider(context: Context) : ContextWrapper(context) {
     fun getNativeDeviceProperties(): Properties {
         return Properties().apply {
             //Build Props
-            setProperty("UserReadableName", Build.DEVICE)
+            setProperty("UserReadableName", "${Build.DEVICE}-default")
             setProperty("Build.HARDWARE", Build.HARDWARE)
             setProperty(
                 "Build.RADIO",
