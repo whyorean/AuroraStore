@@ -37,7 +37,6 @@ import com.aurora.extensions.toast
 import com.aurora.store.BuildConfig
 import com.aurora.store.R
 import com.aurora.store.data.model.Permission
-import com.aurora.store.databinding.FragmentOnboardingInstallerBinding
 import com.aurora.store.databinding.FragmentOnboardingPermissionsBinding
 import com.aurora.store.view.epoxy.views.preference.PermissionViewModel_
 import com.aurora.store.view.ui.commons.BaseFragment
@@ -104,8 +103,8 @@ class PermissionsFragment : BaseFragment() {
                                     requireContext(),
                                     Manifest.permission.WRITE_EXTERNAL_STORAGE
                                 ) == PackageManager.PERMISSION_GRANTED
-                                1 -> isRAndAbove() && Environment.isExternalStorageManager()
-                                2 -> isOAndAbove() && requireContext().packageManager.canRequestPackageInstalls()
+                                1 -> if (isRAndAbove()) Environment.isExternalStorageManager() else true
+                                2 -> if (isOAndAbove()) requireContext().packageManager.canRequestPackageInstalls() else true
                                 else -> false
                             }
                         )

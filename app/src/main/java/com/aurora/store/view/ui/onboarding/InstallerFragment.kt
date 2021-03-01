@@ -26,6 +26,7 @@ import android.view.ViewGroup
 import com.aurora.extensions.isMIUI
 import com.aurora.extensions.isMiuiOptimizationDisabled
 import com.aurora.extensions.showDialog
+import com.aurora.store.BuildConfig
 import com.aurora.store.R
 import com.aurora.store.data.installer.ServiceInstaller
 import com.aurora.store.data.model.Installer
@@ -154,9 +155,18 @@ class InstallerFragment : BaseFragment() {
     }
 
     private fun checkServicesAvailability(): Boolean {
-        return PackageUtil.isInstalled(
+        val isInstalled = PackageUtil.isInstalled(
             requireContext(),
             ServiceInstaller.PRIVILEGED_EXTENSION_PACKAGE_NAME
         )
+
+        val isCorrectVersionInstalled =
+            PackageUtil.isInstalled(
+                requireContext(),
+                ServiceInstaller.PRIVILEGED_EXTENSION_PACKAGE_NAME,
+                if (BuildConfig.VERSION_CODE < 31) 8 else 9
+            )
+
+        return isInstalled && isCorrectVersionInstalled
     }
 }

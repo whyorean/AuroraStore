@@ -26,6 +26,7 @@ import androidx.preference.PreferenceFragmentCompat
 import com.aurora.extensions.runOnUiThread
 import com.aurora.extensions.showDialog
 import com.aurora.extensions.toast
+import com.aurora.store.BuildConfig
 import com.aurora.store.R
 import com.aurora.store.data.installer.ServiceInstaller
 import com.aurora.store.util.CommonUtil
@@ -100,9 +101,18 @@ class InstallationPreference : PreferenceFragmentCompat() {
     }
 
     private fun checkServicesAvailability(): Boolean {
-        return PackageUtil.isInstalled(
+        val isInstalled = PackageUtil.isInstalled(
             requireContext(),
             ServiceInstaller.PRIVILEGED_EXTENSION_PACKAGE_NAME
         )
+
+        val isCorrectVersionInstalled =
+            PackageUtil.isInstalled(
+                requireContext(),
+                ServiceInstaller.PRIVILEGED_EXTENSION_PACKAGE_NAME,
+                if (BuildConfig.VERSION_CODE < 31) 8 else 9
+            )
+
+        return isInstalled && isCorrectVersionInstalled
     }
 }
