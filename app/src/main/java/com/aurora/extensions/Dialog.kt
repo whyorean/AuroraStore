@@ -27,40 +27,39 @@ import androidx.fragment.app.Fragment
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 fun Context.showDialog(@StringRes titleId: Int, @StringRes messageId: Int) {
-    runOnUiThread {
-        val backgroundColor: Int = getStyledAttributeColor(android.R.attr.colorBackground)
-        val builder = MaterialAlertDialogBuilder(this).apply {
-            setTitle(titleId)
-            setMessage(messageId)
-            setPositiveButton(android.R.string.ok) { dialog: DialogInterface, _ -> dialog.dismiss() }
-            background = ColorDrawable(backgroundColor)
-        }.create()
-
-        builder.show()
-    }
+    showDialog(getString(titleId), getString(messageId), null, null)
 }
 
 fun Context.showDialog(title: String?, message: String?) {
-    runOnUiThread {
-        val backgroundColor: Int = getStyledAttributeColor(android.R.attr.colorBackground)
-        val builder = MaterialAlertDialogBuilder(this).apply {
-            setTitle(title)
-            setMessage(message)
-            setPositiveButton(android.R.string.ok) { dialog: DialogInterface, _ -> dialog.dismiss() }
-            background = ColorDrawable(backgroundColor)
-        }.create()
-
-        builder.show()
-    }
+    showDialog(title, message, null, null)
 }
 
-fun Context.showDialog(title: String?, message: String?, listener: DialogInterface.OnDismissListener) {
+fun Context.showDialog(
+    title: String?,
+    message: String?,
+    positiveListener: DialogInterface.OnClickListener?,
+    negativeListener: DialogInterface.OnClickListener?
+) {
     runOnUiThread {
         val backgroundColor: Int = getStyledAttributeColor(android.R.attr.colorBackground)
         val builder = MaterialAlertDialogBuilder(this).apply {
             setTitle(title)
             setMessage(message)
-            setPositiveButton(android.R.string.ok) { dialog: DialogInterface, _ -> listener }
+
+            if (positiveListener != null) {
+                setPositiveButton(android.R.string.ok, positiveListener)
+            } else {
+                setPositiveButton(android.R.string.ok) { dialog, _ -> dialog.dismiss() }
+            }
+
+            positiveListener?.let {
+
+            }
+
+            negativeListener?.let {
+                setNegativeButton(android.R.string.cancel, negativeListener)
+            }
+
             background = ColorDrawable(backgroundColor)
         }.create()
 

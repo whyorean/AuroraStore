@@ -21,7 +21,6 @@ package com.aurora.store
 
 import android.Manifest
 import android.content.Intent
-import android.graphics.drawable.ColorDrawable
 import android.os.Build
 import android.os.Bundle
 import android.os.Environment
@@ -63,7 +62,6 @@ import com.aurora.store.view.ui.search.SearchSuggestionActivity
 import com.aurora.store.view.ui.spoof.SpoofActivity
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.livinglifetechway.quickpermissions_kotlin.runWithPermissions
 import nl.komponents.kovenant.task
 import nl.komponents.kovenant.ui.successUi
@@ -288,21 +286,17 @@ class MainActivity : BaseActivity() {
             getString(R.string.dialog_desc_self_update)
         )
 
-        val builder: MaterialAlertDialogBuilder = MaterialAlertDialogBuilder(this)
-            .setTitle(getString(R.string.dialog_title_self_update))
-            .setMessage(messages.joinToString(separator = "\n"))
-            .setPositiveButton(getString(R.string.action_update)) { _, _ ->
+        showDialog(
+            getString(R.string.dialog_title_self_update),
+            messages.joinToString(separator = "\n"),
+            { _, _ ->
                 val intent = Intent(this, SelfUpdateService::class.java)
                 intent.putExtra(Constants.STRING_EXTRA, gson.toJson(selfUpdate))
                 startService(intent)
-            }
-            .setNegativeButton(getString(R.string.action_later)) { dialog, _ ->
+            },
+            { dialog, _ ->
                 dialog.dismiss()
-            }
-
-        val backGroundColor: Int = getStyledAttributeColor(android.R.attr.colorBackground)
-        builder.background = ColorDrawable(backGroundColor)
-        builder.create()
-        builder.show()
+            },
+        )
     }
 }
