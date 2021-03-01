@@ -342,8 +342,10 @@ abstract class BaseDetailsActivity : BaseActivity() {
 
     fun inflateAppPermission(B: LayoutDetailsPermissionsBinding, app: App) {
         B.headerPermission.addClickListener {
-            PermissionBottomSheet.newInstance(app)
-                .show(supportFragmentManager, PermissionBottomSheet.TAG)
+            if (app.permissions.size > 0) {
+                PermissionBottomSheet.newInstance(app)
+                    .show(supportFragmentManager, PermissionBottomSheet.TAG)
+            }
         }
         B.txtPermissionCount.text = ("${app.permissions.size} permissions")
     }
