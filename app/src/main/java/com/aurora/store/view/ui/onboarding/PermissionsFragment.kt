@@ -38,6 +38,7 @@ import com.aurora.store.BuildConfig
 import com.aurora.store.R
 import com.aurora.store.data.model.Permission
 import com.aurora.store.databinding.FragmentOnboardingInstallerBinding
+import com.aurora.store.databinding.FragmentOnboardingPermissionsBinding
 import com.aurora.store.view.epoxy.views.preference.PermissionViewModel_
 import com.aurora.store.view.ui.commons.BaseFragment
 import com.livinglifetechway.quickpermissions_kotlin.runWithPermissions
@@ -45,14 +46,14 @@ import com.livinglifetechway.quickpermissions_kotlin.runWithPermissions
 
 class PermissionsFragment : BaseFragment() {
 
-    private lateinit var B: FragmentOnboardingInstallerBinding
+    private lateinit var B: FragmentOnboardingPermissionsBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        B = FragmentOnboardingInstallerBinding.bind(
+        B = FragmentOnboardingPermissionsBinding.bind(
             inflater.inflate(
                 R.layout.fragment_onboarding_installer,
                 container,
