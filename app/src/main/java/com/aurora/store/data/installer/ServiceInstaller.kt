@@ -96,7 +96,7 @@ class ServiceInstaller(context: Context) : InstallerBase(context) {
                     }
 
                     try {
-                        service.installSplitPackage(
+                        service.installSplitPackageX(
                             packageName,
                             uriList,
                             ACTION_INSTALL_REPLACE_EXISTING,
