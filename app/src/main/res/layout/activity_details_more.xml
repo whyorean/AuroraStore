@@ -28,9 +28,10 @@
         android:id="@+id/layout_toolbar_action_more"
         layout="@layout/view_toolbar_action" />
 
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -82,7 +83,7 @@
             <com.airbnb.epoxy.EpoxyRecyclerView
                 android:id="@+id/recycler_more"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:clipToPadding="true"
                 android:nestedScrollingEnabled="false"
                 android:orientation="vertical"
@@ -93,5 +94,5 @@
                 tools:itemCount="4"
                 tools:listitem="@layout/view_file" />
         </LinearLayout>
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 </LinearLayout>
