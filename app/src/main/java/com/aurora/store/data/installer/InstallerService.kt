@@ -25,7 +25,6 @@ import android.content.pm.PackageInstaller
 import android.os.Build
 import android.os.IBinder
 import androidx.annotation.RequiresApi
-import com.aurora.store.R
 import com.aurora.store.data.event.InstallerEvent
 import com.aurora.store.util.Log
 import org.greenrobot.eventbus.EventBus
@@ -37,6 +36,7 @@ class InstallerService : Service() {
         val status = intent.getIntExtra(PackageInstaller.EXTRA_STATUS, -69)
         val packageName = intent.getStringExtra(PackageInstaller.EXTRA_PACKAGE_NAME)
         val extra = intent.getStringExtra(PackageInstaller.EXTRA_STATUS_MESSAGE);
+
         when (status) {
             PackageInstaller.STATUS_PENDING_USER_ACTION -> promptUser(intent)
             else -> postStatus(status, packageName, extra)
@@ -68,22 +68,13 @@ class InstallerService : Service() {
                 EventBus.getDefault().post(InstallerEvent.Success(packageName, "Success"))
             }
             else -> {
-                val errorString = getErrorString(status)
+                val errorString =
+                    AppInstaller.getErrorString(this, status)
+                val event =
+                    InstallerEvent.Failed(packageName, errorString, extra)
                 Log.e("$packageName : $errorString")
-                EventBus.getDefault().post(InstallerEvent.Failed(packageName, errorString, extra))
+                EventBus.getDefault().post(event)
             }
-        }
-    }
-
-    private fun getErrorString(status: Int): String {
-        return when (status) {
-            PackageInstaller.STATUS_FAILURE_ABORTED -> getString(R.string.installer_status_user_action)
-            PackageInstaller.STATUS_FAILURE_BLOCKED -> getString(R.string.installer_status_failure_blocked)
-            PackageInstaller.STATUS_FAILURE_CONFLICT -> getString(R.string.installer_status_failure_conflict)
-            PackageInstaller.STATUS_FAILURE_INCOMPATIBLE -> getString(R.string.installer_status_failure_incompatible)
-            PackageInstaller.STATUS_FAILURE_INVALID -> getString(R.string.installer_status_failure_invalid)
-            PackageInstaller.STATUS_FAILURE_STORAGE -> getString(R.string.installer_status_failure_storage)
-            else -> getString(R.string.installer_status_failure)
         }
     }
 

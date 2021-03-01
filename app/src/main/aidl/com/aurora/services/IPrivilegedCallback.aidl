@@ -21,4 +21,10 @@ interface IPrivilegedCallback {
         in String packageName,
         in int returnCode
     );
+
+    void handleResultX(
+            in String packageName,
+            in int returnCode,
+            in String extra
+    );
 }

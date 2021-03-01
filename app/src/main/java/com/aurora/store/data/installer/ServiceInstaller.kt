@@ -23,6 +23,7 @@ import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.content.ServiceConnection
+import android.content.pm.PackageInstaller
 import android.net.Uri
 import android.os.Build
 import android.os.IBinder
@@ -80,6 +81,67 @@ class ServiceInstaller(context: Context) : InstallerBase(context) {
         }
     }
 
+    override fun uninstall(packageName: String) {
+        val serviceConnection = object : ServiceConnection {
+            override fun onServiceConnected(name: ComponentName, binder: IBinder) {
+                val service = IPrivilegedService.Stub.asInterface(binder)
+
+                if (service.hasPrivilegedPermissions()) {
+                    Log.i(context.getString(R.string.installer_service_available))
+
+                    val callback = object : IPrivilegedCallback.Stub() {
+
+                        override fun handleResult(packageName: String, returnCode: Int) {
+
+                        }
+
+                        override fun handleResultX(
+                            packageName: String,
+                            returnCode: Int,
+                            extra: String?
+                        ) {
+
+                        }
+                    }
+
+                    try {
+                        service.deletePackageX(
+                            packageName,
+                            2,
+                            BuildConfig.APPLICATION_ID,
+                            callback
+                        )
+                    } catch (e: RemoteException) {
+                        Log.e("Failed to connect Aurora Services")
+                    }
+
+                } else {
+                    Log.e(context.getString(R.string.installer_service_misconfigured))
+                    val event = InstallerEvent.Failed(
+                        packageName,
+                        context.getString(R.string.installer_status_failure),
+                        context.getString(R.string.installer_service_misconfigured)
+                    )
+                    EventBus.getDefault().post(event)
+                }
+            }
+
+            override fun onServiceDisconnected(name: ComponentName) {
+                removeFromInstallQueue(packageName)
+                Log.e("Disconnected from Aurora Services")
+            }
+        }
+
+        val intent = Intent(PRIVILEGED_EXTENSION_SERVICE_INTENT)
+        intent.setPackage(PRIVILEGED_EXTENSION_PACKAGE_NAME)
+
+        context.bindService(
+            intent,
+            serviceConnection,
+            Context.BIND_AUTO_CREATE
+        )
+    }
+
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     private fun xInstall(packageName: String, uriList: List<Uri>) {
         val serviceConnection = object : ServiceConnection {
@@ -89,9 +151,38 @@ class ServiceInstaller(context: Context) : InstallerBase(context) {
                 if (service.hasPrivilegedPermissions()) {
                     Log.i(context.getString(R.string.installer_service_available))
                     val callback = object : IPrivilegedCallback.Stub() {
+
                         override fun handleResult(packageName: String, returnCode: Int) {
                             Log.e("$packageName : $returnCode")
                             removeFromInstallQueue(packageName)
+                        }
+
+                        override fun handleResultX(
+                            packageName: String,
+                            returnCode: Int,
+                            extra: String?
+                        ) {
+                            when (returnCode) {
+                                PackageInstaller.STATUS_SUCCESS -> {
+                                    EventBus.getDefault()
+                                        .post(InstallerEvent.Success(packageName, "Success"))
+                                }
+                                else -> {
+                                    val errorString = AppInstaller.getErrorString(
+                                        context,
+                                        returnCode
+                                    )
+
+                                    val event = InstallerEvent.Failed(
+                                        packageName,
+                                        errorString,
+                                        extra
+                                    )
+
+                                    Log.e("$packageName : $errorString")
+                                    EventBus.getDefault().post(event)
+                                }
+                            }
                         }
                     }
 
@@ -105,15 +196,12 @@ class ServiceInstaller(context: Context) : InstallerBase(context) {
                         )
                     } catch (e: RemoteException) {
                         removeFromInstallQueue(packageName)
-                        EventBus
-                            .getDefault()
-                            .post(
-                                InstallerEvent.Failed(
-                                    packageName,
-                                    e.localizedMessage,
-                                    e.stackTraceToString()
-                                )
-                            )
+                        val event = InstallerEvent.Failed(
+                            packageName,
+                            e.localizedMessage,
+                            e.stackTraceToString()
+                        )
+                        EventBus.getDefault().post(event)
                         Log.e("Failed to connect Aurora Services")
                     }
                 } else {

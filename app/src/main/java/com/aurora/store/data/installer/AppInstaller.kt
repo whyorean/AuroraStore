@@ -20,12 +20,27 @@
 package com.aurora.store.data.installer
 
 import android.content.Context
+import android.content.pm.PackageInstaller
 import android.os.Build
-import com.aurora.store.data.SingletonHolder
+import com.aurora.store.R
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_INSTALLER_ID
 
 open class AppInstaller constructor(var context: Context) {
+
+    companion object {
+        fun getErrorString(context: Context, status: Int): String {
+            return when (status) {
+                PackageInstaller.STATUS_FAILURE_ABORTED -> context.getString(R.string.installer_status_user_action)
+                PackageInstaller.STATUS_FAILURE_BLOCKED -> context.getString(R.string.installer_status_failure_blocked)
+                PackageInstaller.STATUS_FAILURE_CONFLICT -> context.getString(R.string.installer_status_failure_conflict)
+                PackageInstaller.STATUS_FAILURE_INCOMPATIBLE -> context.getString(R.string.installer_status_failure_incompatible)
+                PackageInstaller.STATUS_FAILURE_INVALID -> context.getString(R.string.installer_status_failure_invalid)
+                PackageInstaller.STATUS_FAILURE_STORAGE -> context.getString(R.string.installer_status_failure_storage)
+                else -> context.getString(R.string.installer_status_failure)
+            }
+        }
+    }
 
     fun getPreferredInstaller(): IInstaller {
         val prefValue = Preferences.getInteger(
