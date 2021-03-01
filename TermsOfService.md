@@ -66,4 +66,4 @@ If you discover or suspect any Service security breaches, please let us know as 
 
 ## Questions & Contact Information
 
-Questions or comments about the Service may be directed to us at the email address **aurora.dev@gmail.com**.
+Questions or comments about the Service may be directed to us at the email address **auroraoss.dev@gmail.com**.
