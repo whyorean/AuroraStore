@@ -55,7 +55,7 @@
         android:layout_width="@dimen/icon_size_category"
         android:layout_height="@dimen/icon_size_category"
         android:layout_alignParentEnd="true"
-        android:layout_centerInParent="true"
+        android:layout_centerVertical="true"
         android:clickable="false"
         android:focusable="false"
         android:minWidth="0dp" />

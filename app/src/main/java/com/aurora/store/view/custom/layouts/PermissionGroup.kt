@@ -70,7 +70,7 @@ class PermissionGroup : LinearLayout {
     }
 
     private fun init() {
-        inflate(context, R.layout.view_permission, this)
+        inflate(context, R.layout.layout_permission, this)
         packageManager = context.packageManager
     }
 

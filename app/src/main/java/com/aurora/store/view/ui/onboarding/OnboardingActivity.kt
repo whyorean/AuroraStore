@@ -104,7 +104,7 @@ class OnboardingActivity : BaseActivity() {
             override fun onPageSelected(position: Int) {
                 runOnUiThread {
                     B.btnBackward.isEnabled = position != 0
-                    if (position == 3) {
+                    if (position == 4) {
                         B.btnForward.text = getString(R.string.action_finish)
                         B.btnForward.setOnClickListener {
                             save(PREFERENCE_INTRO, true)
@@ -169,12 +169,13 @@ class OnboardingActivity : BaseActivity() {
                 1 -> return InstallerFragment()
                 2 -> return ThemeFragment()
                 3 -> return AccentFragment()
+                4 -> return PermissionsFragment()
             }
             return Fragment()
         }
 
         override fun getItemCount(): Int {
-            return 4
+            return 5
         }
     }
 }

@@ -47,6 +47,7 @@ import com.aurora.gplayapi.data.models.AuthData
 import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.databinding.ActivityMainBinding
 import com.aurora.store.util.Log
+import com.aurora.store.util.Preferences
 import com.aurora.store.view.ui.about.AboutActivity
 import com.aurora.store.view.ui.account.AccountActivity
 import com.aurora.store.view.ui.all.AppsGamesActivity
@@ -110,21 +111,10 @@ class MainActivity : BaseActivity() {
         attachDrawer()
         attachSearch()
 
-        checkPermission()
-        checkStoragePermission()
-    }
-
-    private fun checkPermission() = runWithPermissions(
-        Manifest.permission.READ_EXTERNAL_STORAGE,
-        Manifest.permission.WRITE_EXTERNAL_STORAGE
-    ) {
-        Log.i("Required permissions available")
-    }
-
-    private fun checkStoragePermission() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            if (!Environment.isExternalStorageManager())
-                startActivity(Intent(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION))
+        /*Check only if download to external storage is enabled*/
+        if (Preferences.getBoolean(this, Preferences.PREFERENCE_DOWNLOAD_EXTERNAL)) {
+            checkExternalStorageAccessPermission()
+            checkExternalStorageManagerPermission()
         }
     }
 
@@ -232,17 +222,17 @@ class MainActivity : BaseActivity() {
         }
     }
 
-    private fun pickExternalFileDir() {
-        val getContentIntent = Intent(Intent.ACTION_GET_CONTENT)
-        getContentIntent.type = "*/*"
-        getContentIntent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true)
-        getContentIntent.putExtra(Intent.EXTRA_LOCAL_ONLY, true)
-        getContentIntent.addCategory(Intent.CATEGORY_OPENABLE)
-        startActivityForResult(
-            Intent.createChooser(
-                getContentIntent,
-                "Aurora Store - External Storage Access"
-            ), 1337
-        )
+    private fun checkExternalStorageAccessPermission() = runWithPermissions(
+        Manifest.permission.READ_EXTERNAL_STORAGE,
+        Manifest.permission.WRITE_EXTERNAL_STORAGE
+    ) {
+        Log.i("Required permissions available")
+    }
+
+    private fun checkExternalStorageManagerPermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            if (!Environment.isExternalStorageManager())
+                startActivity(Intent(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION))
+        }
     }
 }

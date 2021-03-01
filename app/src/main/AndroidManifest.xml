@@ -40,8 +40,7 @@
         android:name="android.permission.DELETE_PACKAGES"
         tools:ignore="ProtectedPermissions" />
     <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
-    <uses-permission android:name="android.permission.REQUEST_DELETE_PACKAGES" /> <!-- MIUI -->
-    <uses-permission android:name="com.miui.securitycenter.permission.GLOBAL_PACKAGEINSTALLER" />
+    <uses-permission android:name="android.permission.REQUEST_DELETE_PACKAGES" />
 
     <uses-feature
         android:name="android.software.leanback"

@@ -79,6 +79,8 @@
     <string name="action_filter_rating">"Ratings"</string>
     <string name="action_finish">"Finish"</string>
     <string name="action_get_local_apk">"Save App bundle"</string>
+    <string name="action_grant">"Grant"</string>
+    <string name="action_granted">"Granted"</string>
     <string name="action_home">"Home"</string>
     <string name="action_ignore">"Ignore"</string>
     <string name="action_ignore_version">Ignore version</string>
@@ -241,12 +243,21 @@
     <string name="notification_installation_auto">"Click to install"</string>
 
     <string name="onboarding_installer_select">"Select a suitable installer"</string>
+    <string name="onboarding_permission_select">"Aurora Store requires following permissions"</string>
     <string name="onboarding_theme_select">"Select what you like"</string>
     <string name="onboarding_title_accent">"Accent"</string>
     <string name="onboarding_title_installer">"Installer"</string>
+    <string name="onboarding_title_permissions">"Permissions"</string>
     <string name="onboarding_title_theme">"Themes"</string>
     <string name="onboarding_title_welcome">"Welcome"</string>
     <string name="onboarding_welcome_select">"How you doing?"</string>
+
+    <string name="onboarding_permission_esa">"External Storage Access"</string>
+    <string name="onboarding_permission_esa_desc">"To save downloads (APKs &amp; OBBs), export &amp;  import device configs on external storage."</string>
+    <string name="onboarding_permission_esm">"External Storage Manager"</string>
+    <string name="onboarding_permission_esm_desc">"Required on devices running Android R+, additional to External Storage Access"</string>
+    <string name="onboarding_permission_installer">"Installer Permission"</string>
+    <string name="onboarding_permission_installer_desc">"Allow installing apps from Aurora Store"</string>
 
     <string name="pref_abandon_session">"Force clear installation sessions"</string>
     <string name="pref_abandon_session_desc">"Clear abandon or pending installation sessions"</string>
@@ -328,5 +339,6 @@
     <string name="toast_apk_whitelisted">"Whitelisted"</string>
     <string name="toast_clipboard_copied">"Copied to clipboard"</string>
     <string name="toast_developer_setting_failed">"Failed to open developer settings, make sure it is enabled from device settings."</string>
+    <string name="toast_permission_granted">"Permission granted"</string>
     <string name="toast_spoof_applied">"Device spoof applied successfully."</string>
 </resources>
