@@ -229,4 +229,22 @@
     <string name="about_gitlab">GitLab</string>
     <string name="about_fdroid_summary">Télécharger Aurora Store via F-Droid.</string>
     <string name="about_fdroid">F-Droid</string>
+    <string name="download_progress">Téléchargement</string>
+    <string name="download_paused">En pause</string>
+    <string name="download_pause">Pause</string>
+    <string name="download_none">Aucun téléchargement</string>
+    <string name="download_metadata">Obtention des métadonnées</string>
+    <string name="download_force_clear_all">Tout effacer de force</string>
+    <string name="download_failed">Le téléchargement a échoué</string>
+    <string name="download_eta_calculating">Calcul en cours</string>
+    <string name="download_deleted">Supprimé</string>
+    <string name="details_rate_stars_first">Saisissez d’abord le nombre d’étoiles</string>
+    <string name="details_others_think">Voir ce que les autres pensent de cette application</string>
+    <string name="details_beta_delay">L’inscription peut prendre un certain temps, vous pouvez vérifier le statut plus tard.</string>
+    <string name="details_beta_description">Vous verrez de nouvelles fonctionnalités et des erreurs avant que le public le fasse. Donnez votre avis aux développeurs pour les aider à améliorer les choses.</string>
+    <string name="action_read">Lire</string>
+    <string name="action_granted">Accordé</string>
+    <string name="action_grant">Accorder</string>
+    <string name="action_deny">Refuser</string>
+    <string name="action_accept">Accepter</string>
 </resources>
