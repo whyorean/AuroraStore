@@ -38,4 +38,9 @@
     <string name="about_libera">Liberapay</string>
     <string name="about_gitlab">GitLab</string>
     <string name="about_bitcoin_eth">Ethereum</string>
+    <string name="about_fdroid_summary">Aurora von F-Droid beziehen.</string>
+    <string name="about_fdroid">F-Droid</string>
+    <string name="about_bitcoin_btc">Bitcoin</string>
+    <string name="details_dev_website">Website</string>
+    <string name="details_dev_email">E-Mail</string>
 </resources>
