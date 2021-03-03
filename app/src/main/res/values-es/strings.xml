@@ -190,12 +190,12 @@
     <string name="details_no_dependencies">Sin dependencias</string>
     <string name="details_no_app">No hay apps disponibles</string>
     <string name="details_no_ads">Sin anuncios</string>
-    <string name="details_more_about_app">Más acerca de la app</string>
-    <string name="details_in_app_purchase">Compras in-app</string>
+    <string name="details_more_about_app">Más acerca de la aplicación</string>
+    <string name="details_in_app_purchase">Compras en la aplicación</string>
     <string name="details_gsf_dependent">Requiere GSF</string>
     <string name="details_free">Gratis</string>
     <string name="details_files">Archivos</string>
-    <string name="details_dev_website">Página web</string>
+    <string name="details_dev_website">Sitio web</string>
     <string name="details_dev_reply">Respuesta del desarrollador</string>
     <string name="details_dev_profile">Perfil del desarrollador</string>
     <string name="details_dev_email">Correo electrónico</string>
