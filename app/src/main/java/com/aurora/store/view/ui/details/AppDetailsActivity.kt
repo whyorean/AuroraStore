@@ -58,6 +58,7 @@ import com.tonyodev.fetch2core.DownloadBlock
 import nl.komponents.kovenant.task
 import nl.komponents.kovenant.ui.failUi
 import nl.komponents.kovenant.ui.successUi
+import org.apache.commons.io.FileUtils
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
@@ -375,7 +376,16 @@ class AppDetailsActivity : BaseDetailsActivity() {
             }
             Status.COMPLETED -> {
                 fetch.getFetchGroup(app.id) {
-                    install(it.downloads)
+                    var filesExist = true
+
+                    it.downloads.forEach { download ->
+                      filesExist =  filesExist && FileUtils.getFile(download.file).exists()
+                    }
+
+                    if (filesExist)
+                        install(it.downloads)
+                    else
+                        purchase()
                 }
             }
             else -> {
