@@ -379,7 +379,7 @@ class AppDetailsActivity : BaseDetailsActivity() {
                     var filesExist = true
 
                     it.downloads.forEach { download ->
-                      filesExist =  filesExist && FileUtils.getFile(download.file).exists()
+                        filesExist = filesExist && FileUtils.getFile(download.file).exists()
                     }
 
                     if (filesExist)
@@ -396,6 +396,7 @@ class AppDetailsActivity : BaseDetailsActivity() {
 
     private fun purchase() {
         updateActionState(ActionButton.State.PROGRESS)
+
         task {
             val authData = AuthProvider
                 .with(this)
@@ -404,9 +405,20 @@ class AppDetailsActivity : BaseDetailsActivity() {
             PurchaseHelper(authData)
                 .using(HttpClient.getPreferredClient())
                 .purchase(app.packageName, app.versionCode, app.offerType)
-        } successUi {
-            if (it.isNotEmpty()) {
-                enqueue(it)
+        } successUi { files ->
+            if (files.isNotEmpty()) {
+                var hasOBB = false
+
+                files.forEach { file ->
+                    if (file.type == File.FileType.OBB || file.type == File.FileType.PATCH) {
+                        hasOBB = true
+                    }
+                }
+
+                if (hasOBB)
+                    enqueueWithStoragePermission(files)
+                else
+                    enqueue(files)
             } else {
                 Log.e("Failed to download : ${app.displayName}")
                 updateActionState(ActionButton.State.IDLE)
@@ -418,10 +430,14 @@ class AppDetailsActivity : BaseDetailsActivity() {
         }
     }
 
-    private fun enqueue(files: List<File>) = runWithPermissions(
+    private fun enqueueWithStoragePermission(files: List<File>) = runWithPermissions(
         Manifest.permission.READ_EXTERNAL_STORAGE,
         Manifest.permission.WRITE_EXTERNAL_STORAGE
     ) {
+        enqueue(files)
+    }
+
+    private fun enqueue(files: List<File>) {
         val requestList = files
             .filter { it.url.isNotEmpty() }
             .map {
