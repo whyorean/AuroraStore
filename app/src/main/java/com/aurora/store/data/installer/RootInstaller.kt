@@ -51,14 +51,37 @@ class RootInstaller(context: Context) : InstallerBase(context) {
                         xInstallLegacy(packageName, it)
                 }
             } else {
-                val event = InstallerEvent.Failed(
+                postError(
                     packageName,
                     context.getString(R.string.installer_status_failure),
                     context.getString(R.string.installer_root_unavailable)
                 )
-                EventBus.getDefault().post(event)
                 Log.e(" >>>>>>>>>>>>>>>>>>>>>>>>>> NO ROOT ACCESS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<")
             }
+        }
+    }
+
+    override fun uninstall(packageName: String) {
+        if (Shell.getShell().isRoot) {
+            val result: Shell.Result =
+                Shell.su("pm uninstall --user 0 $packageName")
+                    .exec()
+            val response = result.out
+
+            if (response[0] != "Success") {
+                postError(
+                    packageName,
+                    context.getString(R.string.installer_status_failure),
+                    parseError(result)
+                )
+            }
+        } else {
+            postError(
+                packageName,
+                context.getString(R.string.installer_status_failure),
+                context.getString(R.string.installer_root_unavailable)
+            )
+            Log.e(" >>>>>>>>>>>>>>>>>>>>>>>>>> NO ROOT ACCESS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<")
         }
     }
 
@@ -99,21 +122,19 @@ class RootInstaller(context: Context) : InstallerBase(context) {
                 }
             } else {
                 removeFromInstallQueue(packageName)
-                val event = InstallerEvent.Failed(
+                postError(
                     packageName,
                     context.getString(R.string.installer_status_failure),
                     context.getString(R.string.installer_root_unavailable)
                 )
-                EventBus.getDefault().post(event)
             }
         } else {
             removeFromInstallQueue(packageName)
-            val event = InstallerEvent.Failed(
+            postError(
                 packageName,
                 context.getString(R.string.installer_status_failure),
                 context.getString(R.string.installer_status_failure_session)
             )
-            EventBus.getDefault().post(event)
         }
     }
 

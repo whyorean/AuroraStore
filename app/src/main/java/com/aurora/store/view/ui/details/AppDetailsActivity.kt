@@ -272,9 +272,11 @@ class AppDetailsActivity : BaseDetailsActivity() {
 
     @Synchronized
     private fun uninstallApp() {
-        AppInstaller(this)
-            .getPreferredInstaller()
-            .uninstall(app.packageName)
+        task {
+            AppInstaller(this)
+                .getPreferredInstaller()
+                .uninstall(app.packageName)
+        }
     }
 
     private fun attachWhiteListStatus() {

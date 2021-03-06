@@ -46,7 +46,7 @@
         android:fragment="com.aurora.store.view.ui.preferences.DownloadPreference"
         app:icon="@drawable/ic_download_manager"
         app:iconSpaceReserved="false"
-        app:key="pref_ui"
+        app:key="pref_download"
         app:layout="@layout/item_preference"
         app:title="@string/pref_app_download" />
 </PreferenceScreen>
