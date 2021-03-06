@@ -152,7 +152,7 @@ abstract class BaseDetailsActivity : BaseActivity() {
         }
 
         task {
-            fetchFirstFewReviews(app)
+            fetchReviewSummary(app)
         } successUi {
             B.epoxyRecycler.withModels {
                 it.take(4)
@@ -387,13 +387,13 @@ abstract class BaseDetailsActivity : BaseActivity() {
         }
     }
 
-    private fun fetchFirstFewReviews(app: App): List<Review> {
+    private fun fetchReviewSummary(app: App): List<Review> {
         val authData = AuthProvider
             .with(this)
             .getAuthData()
         val reviewsHelper = ReviewsHelper(authData)
             .using(HttpClient.getPreferredClient())
-        return reviewsHelper.getReviews(app.packageName, Review.Filter.CRITICAL)
+        return reviewsHelper.getReviewSummary(app.packageName)
     }
 
     /* App Privacy Helpers */

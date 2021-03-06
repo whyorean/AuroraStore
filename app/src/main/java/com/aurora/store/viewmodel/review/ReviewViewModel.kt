@@ -24,9 +24,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.aurora.gplayapi.data.models.AuthData
 import com.aurora.gplayapi.data.models.Review
+import com.aurora.gplayapi.data.models.ReviewCluster
 import com.aurora.gplayapi.helpers.ReviewsHelper
 import com.aurora.store.data.RequestState
-import com.aurora.store.data.ViewState
 import com.aurora.store.data.network.HttpClient
 import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.viewmodel.BaseAndroidViewModel
@@ -43,19 +43,16 @@ class ReviewViewModel(application: Application) : BaseAndroidViewModel(applicati
     var reviewsHelper: ReviewsHelper = ReviewsHelper(authData)
         .using(HttpClient.getPreferredClient())
 
-    val liveData: MutableLiveData<ViewState> = MutableLiveData()
+    val liveData: MutableLiveData<ReviewCluster> = MutableLiveData()
 
-    private val reviews: MutableList<Review> = mutableListOf()
-    private var offset: Int = 0
+    private lateinit var reviewsCluster: ReviewCluster
 
     fun fetchReview(packageName: String, filter: Review.Filter) {
         viewModelScope.launch(Dispatchers.IO) {
             supervisorScope {
                 try {
-                    val newReviews = reviewsHelper.getReviews(packageName, filter, offset)
-                    reviews.addAll(newReviews)
-                    offset = reviews.size
-                    liveData.postValue(ViewState.Success(reviews))
+                    reviewsCluster = reviewsHelper.getReviews(packageName, filter)
+                    liveData.postValue(reviewsCluster)
                 } catch (e: Exception) {
                     requestState = RequestState.Pending
                 }
@@ -63,9 +60,23 @@ class ReviewViewModel(application: Application) : BaseAndroidViewModel(applicati
         }
     }
 
-    fun reset() {
-        reviews.clear()
-        offset = 0
+    fun next(nextReviewPageUrl: String) {
+        viewModelScope.launch(Dispatchers.IO) {
+            supervisorScope {
+                try {
+                    val nextReviewCluster = reviewsHelper.next(nextReviewPageUrl)
+
+                    reviewsCluster.apply {
+                        reviewList.addAll(nextReviewCluster.reviewList)
+                        nextPageUrl = nextReviewCluster.nextPageUrl
+                    }
+
+                    liveData.postValue(reviewsCluster)
+                } catch (e: Exception) {
+                    requestState = RequestState.Pending
+                }
+            }
+        }
     }
 
     override fun observe() {

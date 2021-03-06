@@ -22,13 +22,14 @@ package com.aurora.store.view.ui.details
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
 import com.aurora.Constants
+import com.aurora.extensions.close
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.Review
+import com.aurora.gplayapi.data.models.ReviewCluster
 import com.aurora.store.R
-import com.aurora.store.data.ViewState
 import com.aurora.store.databinding.ActivityDetailsReviewBinding
-import com.aurora.extensions.close
 import com.aurora.store.view.custom.recycler.EndlessRecyclerOnScrollListener
+import com.aurora.store.view.epoxy.views.AppProgressViewModel_
 import com.aurora.store.view.epoxy.views.details.ReviewViewModel_
 import com.aurora.store.view.ui.commons.BaseActivity
 import com.aurora.store.viewmodel.review.ReviewViewModel
@@ -37,9 +38,12 @@ class DetailsReviewActivity : BaseActivity() {
 
     private lateinit var B: ActivityDetailsReviewBinding
     private lateinit var VM: ReviewViewModel
+
     private lateinit var endlessRecyclerOnScrollListener: EndlessRecyclerOnScrollListener
+
     private lateinit var app: App
     private lateinit var filter: Review.Filter
+    private lateinit var reviewCluster: ReviewCluster
 
     override fun onConnected() {
 
@@ -61,23 +65,16 @@ class DetailsReviewActivity : BaseActivity() {
         setContentView(B.root)
 
         VM.liveData.observe(this, {
-            when (it) {
-                is ViewState.Empty -> {
-                }
-                is ViewState.Loading -> {
-                }
-                is ViewState.Error -> {
-                }
-                is ViewState.Success<*> -> {
-                    updateController(it.data as List<Review>)
-                }
-                else -> {
+            if (!::reviewCluster.isInitialized) {
+                attachRecycler()
+            }
 
-                }
+            it?.let {
+                reviewCluster = it
+                updateController(reviewCluster)
             }
         })
 
-        attachRecycler()
         attachChips()
 
         val itemRaw: String? = intent.getStringExtra(Constants.STRING_EXTRA)
@@ -120,19 +117,29 @@ class DetailsReviewActivity : BaseActivity() {
     private fun attachRecycler() {
         endlessRecyclerOnScrollListener = object : EndlessRecyclerOnScrollListener() {
             override fun onLoadMore(currentPage: Int) {
-                VM.fetchReview(app.packageName, filter)
+                if (::reviewCluster.isInitialized) {
+                    VM.next(reviewCluster.nextPageUrl)
+                }
             }
         }
         B.recycler.addOnScrollListener(endlessRecyclerOnScrollListener)
     }
 
-    private fun updateController(reviews: List<Review>) {
+    private fun updateController(reviewCluster: ReviewCluster) {
         B.recycler.withModels {
-            reviews.forEach {
+            setFilterDuplicates(true)
+            reviewCluster.reviewList.forEach {
                 add(
                     ReviewViewModel_()
-                        .id(it.userName)
+                        .id(it.commentId)
                         .review(it)
+                )
+            }
+
+            if (reviewCluster.hasNext()){
+                add(
+                    AppProgressViewModel_()
+                        .id("progress")
                 )
             }
         }
@@ -144,7 +151,5 @@ class DetailsReviewActivity : BaseActivity() {
 
     private fun resetPage() {
         endlessRecyclerOnScrollListener.resetPageCount()
-        B.recycler.clear()
-        VM.reset()
     }
 }
