@@ -58,6 +58,7 @@
                     android:id="@+id/txt_description"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:autoLink="all"
                     android:textAppearance="@style/TextAppearance.Aurora.Line1" />
 
                 <com.aurora.store.view.custom.layouts.ActionHeaderLayout
