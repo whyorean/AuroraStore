@@ -33,6 +33,7 @@ import com.aurora.extensions.*
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.AuthData
 import com.aurora.gplayapi.data.models.File
+import com.aurora.gplayapi.exceptions.ApiException
 import com.aurora.gplayapi.helpers.AppDetailsHelper
 import com.aurora.gplayapi.helpers.PurchaseHelper
 import com.aurora.store.MainActivity
@@ -426,9 +427,30 @@ class AppDetailsActivity : BaseDetailsActivity() {
                 updateActionState(ActionButton.State.IDLE)
             }
         } failUi {
-            expandBottomSheet(it.message)
             updateActionState(ActionButton.State.IDLE)
-            Log.e("Failed to purchase ${app.displayName} : ${it.message}")
+            var reason = "Unknown"
+
+            when (it) {
+                is ApiException.AppNotPurchased -> {
+                    reason = getString(R.string.purchase_invalid)
+                }
+
+                is ApiException.AppNotFound -> {
+                    reason = getString(R.string.purchase_not_found)
+                }
+
+                is ApiException.AppNotSupported -> {
+                    reason = getString(R.string.purchase_unsupported)
+                }
+
+                is ApiException.EmptyDownloads -> {
+                    reason = getString(R.string.purchase_no_file)
+                }
+            }
+
+            expandBottomSheet(reason)
+
+            Log.e("Failed to purchase ${app.displayName} : $reason")
         }
     }
 
@@ -456,7 +478,7 @@ class AppDetailsActivity : BaseDetailsActivity() {
             }
         } else {
             updateActionState(ActionButton.State.IDLE)
-            expandBottomSheet(getString(R.string.purchase_no_file))
+            expandBottomSheet(getString(R.string.purchase_session_expired))
         }
     }
 

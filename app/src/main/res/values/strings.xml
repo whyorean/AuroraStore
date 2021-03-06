@@ -306,7 +306,10 @@
 
     <string name="purchase_failed">"Download Failed"</string>
     <string name="purchase_invalid">"App not purchased"</string>
+    <string name="purchase_unsupported">"App not supported"</string>
+    <string name="purchase_not_found">"App not found"</string>
     <string name="purchase_no_file">"Could not get files"</string>
+    <string name="purchase_session_expired">"Session expired, re-login to obtain new session."</string>
 
     <string name="spoof_apply">"Make sure you re-login to apply the spoof"</string>
 
