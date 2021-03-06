@@ -68,7 +68,7 @@ class ReviewView : RelativeLayout {
     @ModelProp
     fun review(review: Review) {
         B.txtAuthor.text = review.userName
-        B.txtTime.text = review.timeStamp.toDate()
+        B.txtTime.text = ("${review.timeStamp.toDate()}  •  v${review.appVersion}")
         B.txtComment.text = review.comment
 
         B.img.load(review.userPhotoUrl, DrawableTransitionOptions.withCrossFade()) {
