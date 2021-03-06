@@ -26,6 +26,9 @@ import android.os.Build
 import androidx.core.content.FileProvider
 import com.aurora.store.AuroraApplication
 import com.aurora.store.BuildConfig
+import com.aurora.store.data.event.InstallerEvent
+import com.aurora.store.util.Log
+import org.greenrobot.eventbus.EventBus
 import java.io.File
 
 abstract class InstallerBase(protected var context: Context) : IInstaller {
@@ -57,6 +60,18 @@ abstract class InstallerBase(protected var context: Context) : IInstaller {
         }
 
         context.startActivity(intent)
+    }
+
+    open fun postError(packageName: String, error: String?, extra: String?) {
+        Log.e("Service Error :$error")
+
+        val event = InstallerEvent.Failed(
+            packageName,
+            error,
+            extra
+        )
+
+        EventBus.getDefault().post(event)
     }
 
     open fun getUri(file: File): Uri {

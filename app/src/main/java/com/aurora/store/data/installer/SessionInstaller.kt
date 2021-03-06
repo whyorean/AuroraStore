@@ -29,10 +29,8 @@ import androidx.annotation.RequiresApi
 import androidx.core.content.FileProvider
 import com.aurora.extensions.isNAndAbove
 import com.aurora.store.BuildConfig
-import com.aurora.store.data.event.InstallerEvent
 import com.aurora.store.util.Log
 import org.apache.commons.io.IOUtils
-import org.greenrobot.eventbus.EventBus
 import java.io.File
 
 class SessionInstaller(context: Context) : InstallerBase(context) {
@@ -102,13 +100,12 @@ class SessionInstaller(context: Context) : InstallerBase(context) {
         } catch (e: Exception) {
             session.abandon()
             removeFromInstallQueue(packageName)
-            val event = InstallerEvent.Failed(
+
+            postError(
                 packageName,
                 e.localizedMessage,
                 e.stackTraceToString()
             )
-            EventBus.getDefault().post(event)
-            Log.e("Failed to install $packageName : %s", e.message)
         }
     }
 

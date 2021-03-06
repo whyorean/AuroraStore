@@ -35,7 +35,7 @@ class InstallerService : Service() {
     override fun onStartCommand(intent: Intent, flags: Int, startId: Int): Int {
         val status = intent.getIntExtra(PackageInstaller.EXTRA_STATUS, -69)
         val packageName = intent.getStringExtra(PackageInstaller.EXTRA_PACKAGE_NAME)
-        val extra = intent.getStringExtra(PackageInstaller.EXTRA_STATUS_MESSAGE);
+        val extra = intent.getStringExtra(PackageInstaller.EXTRA_STATUS_MESSAGE)
 
         when (status) {
             PackageInstaller.STATUS_PENDING_USER_ACTION -> promptUser(intent)

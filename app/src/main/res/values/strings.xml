@@ -216,7 +216,7 @@
     <string name="installer_service_available">"Aurora services is available and ready to install."</string>
     <string name="installer_service_unavailable">"Aurora services is either not installed or version is incorrect (required >= 1.0.9), kindly install it or change installer"</string>
     <string name="installer_service_misconfigured">"Aurora services not configured. Make sure service is enabled &amp; all permissions are granted"</string>
-    <string name="installer_status_failure">"Installation failed"</string>
+    <string name="installer_status_failure">"Installer failed"</string>
     <string name="installer_status_failure_aborted">"Installation cancelled"</string>
     <string name="installer_status_failure_blocked">"Installation was blocked"</string>
     <string name="installer_status_failure_session">"Could not create session"</string>

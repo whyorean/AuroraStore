@@ -71,12 +71,11 @@ class ServiceInstaller(context: Context) : InstallerBase(context) {
                 xInstall(packageName, uriList)
             }
             else -> {
-                val event = InstallerEvent.Failed(
+                postError(
                     packageName,
                     context.getString(R.string.installer_status_failure),
                     context.getString(R.string.installer_service_unavailable)
                 )
-                EventBus.getDefault().post(event)
             }
         }
     }
@@ -100,7 +99,8 @@ class ServiceInstaller(context: Context) : InstallerBase(context) {
                             returnCode: Int,
                             extra: String?
                         ) {
-
+                            removeFromInstallQueue(packageName)
+                            handleCallback(packageName, returnCode, extra)
                         }
                     }
 
@@ -114,15 +114,12 @@ class ServiceInstaller(context: Context) : InstallerBase(context) {
                     } catch (e: RemoteException) {
                         Log.e("Failed to connect Aurora Services")
                     }
-
                 } else {
-                    Log.e(context.getString(R.string.installer_service_misconfigured))
-                    val event = InstallerEvent.Failed(
+                    postError(
                         packageName,
                         context.getString(R.string.installer_status_failure),
                         context.getString(R.string.installer_service_misconfigured)
                     )
-                    EventBus.getDefault().post(event)
                 }
             }
 
@@ -150,11 +147,11 @@ class ServiceInstaller(context: Context) : InstallerBase(context) {
 
                 if (service.hasPrivilegedPermissions()) {
                     Log.i(context.getString(R.string.installer_service_available))
+
                     val callback = object : IPrivilegedCallback.Stub() {
 
                         override fun handleResult(packageName: String, returnCode: Int) {
-                            Log.e("$packageName : $returnCode")
-                            removeFromInstallQueue(packageName)
+
                         }
 
                         override fun handleResultX(
@@ -162,27 +159,8 @@ class ServiceInstaller(context: Context) : InstallerBase(context) {
                             returnCode: Int,
                             extra: String?
                         ) {
-                            when (returnCode) {
-                                PackageInstaller.STATUS_SUCCESS -> {
-                                    EventBus.getDefault()
-                                        .post(InstallerEvent.Success(packageName, "Success"))
-                                }
-                                else -> {
-                                    val errorString = AppInstaller.getErrorString(
-                                        context,
-                                        returnCode
-                                    )
-
-                                    val event = InstallerEvent.Failed(
-                                        packageName,
-                                        errorString,
-                                        extra
-                                    )
-
-                                    Log.e("$packageName : $errorString")
-                                    EventBus.getDefault().post(event)
-                                }
-                            }
+                            removeFromInstallQueue(packageName)
+                            handleCallback(packageName, returnCode, extra)
                         }
                     }
 
@@ -196,22 +174,14 @@ class ServiceInstaller(context: Context) : InstallerBase(context) {
                         )
                     } catch (e: RemoteException) {
                         removeFromInstallQueue(packageName)
-                        val event = InstallerEvent.Failed(
-                            packageName,
-                            e.localizedMessage,
-                            e.stackTraceToString()
-                        )
-                        EventBus.getDefault().post(event)
-                        Log.e("Failed to connect Aurora Services")
+                        postError(packageName, e.localizedMessage, e.stackTraceToString())
                     }
                 } else {
-                    Log.e(context.getString(R.string.installer_service_misconfigured))
-                    val event = InstallerEvent.Failed(
+                    postError(
                         packageName,
                         context.getString(R.string.installer_status_failure),
                         context.getString(R.string.installer_service_misconfigured)
                     )
-                    EventBus.getDefault().post(event)
                 }
             }
 
@@ -229,6 +199,24 @@ class ServiceInstaller(context: Context) : InstallerBase(context) {
             serviceConnection,
             Context.BIND_AUTO_CREATE
         )
+    }
+
+    private fun handleCallback(packageName: String, returnCode: Int, extra: String?) {
+        Log.i("Services Callback : $packageName $returnCode $extra")
+
+        when (returnCode) {
+            PackageInstaller.STATUS_SUCCESS -> {
+                EventBus.getDefault().post(InstallerEvent.Success(packageName, "Success"))
+            }
+            else -> {
+                val error = AppInstaller.getErrorString(
+                    context,
+                    returnCode
+                )
+
+                postError(packageName, error, extra)
+            }
+        }
     }
 
     override fun getUri(file: File): Uri {

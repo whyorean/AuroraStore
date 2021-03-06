@@ -162,7 +162,15 @@
                 android:resource="@xml/paths" />
         </provider>
 
-        <receiver android:name=".data.receiver.PackageManagerReceiver" />
+        <receiver android:name=".data.receiver.PackageManagerReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_ADDED" />
+                <action android:name="android.intent.action.PACKAGE_CHANGED" />
+                <action android:name="android.intent.action.PACKAGE_REMOVED" />
+
+                <data android:scheme="package" />
+            </intent-filter>
+        </receiver>
         <receiver android:name=".data.receiver.DownloadResumeReceiver" />
         <receiver android:name=".data.receiver.DownloadPauseReceiver" />
         <receiver android:name=".data.receiver.DownloadCancelReceiver" />
