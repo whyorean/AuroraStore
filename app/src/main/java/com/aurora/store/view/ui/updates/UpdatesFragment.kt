@@ -25,20 +25,21 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import com.aurora.Constants
+import com.aurora.extensions.toast
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.AuthData
 import com.aurora.gplayapi.helpers.PurchaseHelper
 import com.aurora.store.R
+import com.aurora.store.State
 import com.aurora.store.data.downloader.DownloadManager
 import com.aurora.store.data.downloader.RequestBuilder
 import com.aurora.store.data.installer.AppInstaller
+import com.aurora.store.data.model.UpdateFile
 import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.databinding.FragmentUpdatesBinding
 import com.aurora.store.util.Log
-import com.aurora.extensions.flushAndAdd
-import com.aurora.extensions.toast
-import com.aurora.store.view.epoxy.views.app.AppUpdateViewModel_
 import com.aurora.store.view.epoxy.views.UpdateHeaderViewModel_
+import com.aurora.store.view.epoxy.views.app.AppUpdateViewModel_
 import com.aurora.store.view.epoxy.views.app.NoAppViewModel_
 import com.aurora.store.view.epoxy.views.shimmer.AppListViewShimmerModel_
 import com.aurora.store.view.ui.commons.BaseFragment
@@ -63,7 +64,7 @@ class UpdatesFragment : BaseFragment() {
     private lateinit var fetch: Fetch
     private lateinit var fetchListener: AbstractFetchGroupListener
 
-    private val appList: MutableList<App> = mutableListOf()
+    private var updateFileMap: MutableMap<Int, UpdateFile> = mutableMapOf()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -85,14 +86,36 @@ class UpdatesFragment : BaseFragment() {
 
         fetch = DownloadManager.with(requireContext()).fetch
         fetchListener = object : AbstractFetchGroupListener() {
+
+            override fun onAdded(groupId: Int, download: Download, fetchGroup: FetchGroup) {
+                VM.updateDownload(groupId, fetchGroup)
+            }
+
+            override fun onProgress(
+                groupId: Int,
+                download: Download,
+                etaInMilliSeconds: Long,
+                downloadedBytesPerSecond: Long,
+                fetchGroup: FetchGroup
+            ) {
+                VM.updateDownload(groupId, fetchGroup)
+            }
+
             override fun onCompleted(groupId: Int, download: Download, fetchGroup: FetchGroup) {
-                super.onCompleted(groupId, download, fetchGroup)
                 if (fetchGroup.groupDownloadProgress == 100) {
+                    VM.updateDownload(groupId, fetchGroup)
                     install(download.tag!!, fetchGroup.downloads)
                 }
             }
-        }
 
+            override fun onCancelled(groupId: Int, download: Download, fetchGroup: FetchGroup) {
+                VM.updateDownload(groupId, fetchGroup,true)
+            }
+
+            override fun onDeleted(groupId: Int, download: Download, fetchGroup: FetchGroup) {
+                VM.updateDownload(groupId, fetchGroup,true)
+            }
+        }
 
         return B.root
     }
@@ -113,9 +136,10 @@ class UpdatesFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        VM.liveData.observe(viewLifecycleOwner, {
-            appList.flushAndAdd(it)
-            updateController(it)
+
+        VM.liveUpdateData.observe(viewLifecycleOwner, {
+            updateFileMap = it
+            updateController(updateFileMap)
             B.swipeRefreshLayout.isRefreshing = false
         })
 
@@ -126,10 +150,10 @@ class UpdatesFragment : BaseFragment() {
         updateController(null)
     }
 
-    private fun updateController(appList: List<App>?) {
+    private fun updateController(updateFileMap: MutableMap<Int, UpdateFile>?) {
         B.recycler.withModels {
             setFilterDuplicates(true)
-            if (appList == null) {
+            if (updateFileMap == null) {
                 for (i in 1..6) {
                     add(
                         AppListViewShimmerModel_()
@@ -137,7 +161,7 @@ class UpdatesFragment : BaseFragment() {
                     )
                 }
             } else {
-                if (appList.isEmpty()) {
+                if (updateFileMap.isEmpty()) {
                     add(
                         NoAppViewModel_()
                             .id("no_update")
@@ -146,44 +170,26 @@ class UpdatesFragment : BaseFragment() {
                     )
                 } else {
                     add(
-                        if (VM.selectedUpdates.isEmpty()) {
-                            UpdateHeaderViewModel_()
-                                .id("header_all")
-                                .title("${appList.size} updates available")
-                                .action(getString(R.string.action_update_all))
-                                .click { v ->
-                                    updateAction(false)
-                                }
-                        } else {
-                            UpdateHeaderViewModel_()
-                                .id("header_selected")
-                                .title("${VM.selectedUpdates.size} updates selected")
-                                .action(getString(R.string.action_update))
-                                .click { v ->
-                                    updateAction(true)
-                                }
-                        }
+                        UpdateHeaderViewModel_()
+                            .id("header_all")
+                            .title("${updateFileMap.size} updates available")
+                            .action(getString(R.string.action_update_all))
+                            .click { _ -> updateAll() }
                     )
 
-                    appList.forEach { app ->
+                    updateFileMap.values.forEach { updateFile ->
                         add(
                             AppUpdateViewModel_()
-                                .id(app.id)
-                                .app(app)
-                                .click { _ -> openDetailsActivity(app) }
+                                .id(updateFile.hashCode())
+                                .updateFile(updateFile)
+                                .click { _ -> openDetailsActivity(updateFile.app) }
                                 .longClick { _ ->
-                                    openAppMenuSheet(app)
+                                    openAppMenuSheet(updateFile.app)
                                     false
                                 }
-                                .markChecked(VM.selectedUpdates.contains(app.packageName))
-                                .checked { _, isChecked ->
-                                    if (isChecked)
-                                        VM.selectedUpdates.add(app.packageName)
-                                    else
-                                        VM.selectedUpdates.remove(app.packageName)
-
-                                    requestModelBuild()
-                                }
+                                .positiveAction { _ -> updateSingle(updateFile.app) }
+                                .negativeAction { _ -> cancelSingle(updateFile.app) }
+                                .state(updateFile.state)
                         )
                     }
                 }
@@ -191,65 +197,38 @@ class UpdatesFragment : BaseFragment() {
         }
     }
 
-    private fun updateAction(selectedOnly: Boolean) {
-        if (VM.isUpdating) {
-            requireContext().toast("Update in progress, let previous batch finish first")
-        } else {
-            if (selectedOnly) {
-                updateSelected()
+    private fun updateSingle(app: App) {
+
+        VM.updateState(app.id, State.QUEUED)
+
+        task {
+            val files = purchaseHelper.purchase(
+                app.packageName,
+                app.versionCode,
+                app.offerType
+            )
+
+            files.map { RequestBuilder.buildRequest(requireContext(), app, it) }
+        } successUi {
+            val requests = it.filter { request -> request.url.isNotEmpty() }.toList()
+            if (requests.isNotEmpty()) {
+                fetch.enqueue(requests) {
+                    Log.i("Updating ${app.displayName}")
+                }
             } else {
-                updateAll()
+                requireContext().toast("Failed to update ${app.displayName}")
             }
+        } failUi {
+            Log.e("Failed to update ${app.displayName}")
         }
+    }
+
+    private fun cancelSingle(app: App) {
+        fetch.cancelGroup(app.id)
     }
 
     private fun updateAll() {
-        appList.forEach { app ->
-            task {
-                val files = purchaseHelper.purchase(app.packageName, app.versionCode, app.offerType)
-                files.map { RequestBuilder.buildRequest(requireContext(), app, it) }
-            } successUi {
-                val requests = it.filter { request -> request.url.isNotEmpty() }.toList()
-                if (requests.isNotEmpty()) {
-                    VM.isUpdating = true
-                    fetch.enqueue(requests) {
-                        Log.i("Updating ${app.displayName}")
-                    }
-                } else {
-                    requireContext().toast("Failed to update ${app.displayName}")
-                }
-            } failUi {
-                Log.e("Failed to update ${app.displayName}")
-            }
-        }
-    }
-
-    private fun updateSelected() {
-        val selectedPackages = VM.selectedUpdates
-        appList.forEach { app ->
-            if (selectedPackages.contains(app.packageName)) {
-                task {
-                    val files = purchaseHelper.purchase(
-                        app.packageName,
-                        app.versionCode,
-                        app.offerType
-                    )
-                    files.map { RequestBuilder.buildRequest(requireContext(), app, it) }
-                } successUi {
-                    val requests = it.filter { request -> request.url.isNotEmpty() }.toList()
-                    if (requests.isNotEmpty()) {
-                        VM.isUpdating = true
-                        fetch.enqueue(requests) {
-                            Log.i("Updating ${app.displayName}")
-                        }
-                    } else {
-                        requireContext().toast("Failed to update ${app.displayName}")
-                    }
-                } failUi {
-                    Log.e("Failed to update ${app.displayName}")
-                }
-            }
-        }
+        updateFileMap.values.forEach { updateSingle(it.app) }
     }
 
     @Synchronized

@@ -38,6 +38,7 @@ import com.aurora.gplayapi.helpers.AppDetailsHelper
 import com.aurora.gplayapi.helpers.PurchaseHelper
 import com.aurora.store.MainActivity
 import com.aurora.store.R
+import com.aurora.store.State
 import com.aurora.store.data.downloader.DownloadManager
 import com.aurora.store.data.downloader.RequestBuilder
 import com.aurora.store.data.event.BusEvent
@@ -47,7 +48,6 @@ import com.aurora.store.data.network.HttpClient
 import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.databinding.ActivityDetailsBinding
 import com.aurora.store.util.*
-import com.aurora.store.view.custom.layouts.button.ActionButton
 import com.aurora.store.view.ui.downloads.DownloadActivity
 import com.aurora.store.view.ui.sheets.InstallErrorDialogSheet
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
@@ -125,7 +125,7 @@ class AppDetailsActivity : BaseDetailsActivity() {
                         event.extra
                     ).show(supportFragmentManager, "SED")
                     attachActions()
-                    updateActionState(ActionButton.State.IDLE)
+                    updateActionState(State.IDLE)
                 }
             }
             else -> {
@@ -234,7 +234,7 @@ class AppDetailsActivity : BaseDetailsActivity() {
         checkAndSetupInstall()
     }
 
-    private fun updateActionState(state: ActionButton.State) {
+    private fun updateActionState(state: State) {
         B.layoutDetailsInstall.btnDownload.updateState(state)
     }
 
@@ -251,7 +251,7 @@ class AppDetailsActivity : BaseDetailsActivity() {
 
     @Synchronized
     private fun install(files: List<Download>) {
-        updateActionState(ActionButton.State.IDLE)
+        updateActionState(State.IDLE)
 
         task {
             AppInstaller(this)
@@ -398,7 +398,7 @@ class AppDetailsActivity : BaseDetailsActivity() {
     }
 
     private fun purchase() {
-        updateActionState(ActionButton.State.PROGRESS)
+        updateActionState(State.PROGRESS)
 
         task {
             val authData = AuthProvider
@@ -424,10 +424,10 @@ class AppDetailsActivity : BaseDetailsActivity() {
                     enqueue(files)
             } else {
                 Log.e("Failed to download : ${app.displayName}")
-                updateActionState(ActionButton.State.IDLE)
+                updateActionState(State.IDLE)
             }
         } failUi {
-            updateActionState(ActionButton.State.IDLE)
+            updateActionState(State.IDLE)
             var reason = "Unknown"
 
             when (it) {
@@ -477,7 +477,7 @@ class AppDetailsActivity : BaseDetailsActivity() {
                 Log.i("Downloading Apks : %s", app.displayName)
             }
         } else {
-            updateActionState(ActionButton.State.IDLE)
+            updateActionState(State.IDLE)
             expandBottomSheet(getString(R.string.purchase_session_expired))
         }
     }
@@ -521,7 +521,7 @@ class AppDetailsActivity : BaseDetailsActivity() {
 
         with(B.layoutDetailsInstall) {
             txtPurchaseError.text = message
-            btnDownload.updateState(ActionButton.State.IDLE)
+            btnDownload.updateState(State.IDLE)
             if (app.isFree)
                 btnDownload.setText(R.string.action_install)
             else

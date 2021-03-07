@@ -30,6 +30,7 @@ import com.aurora.extensions.getString
 import com.aurora.extensions.isLAndAbove
 import com.aurora.extensions.runOnUiThread
 import com.aurora.store.R
+import com.aurora.store.State
 import com.aurora.store.databinding.ViewActionButtonBinding
 import nl.komponents.kovenant.task
 import java.util.concurrent.TimeUnit
@@ -81,6 +82,20 @@ class ActionButton : RelativeLayout {
             R.drawable.ic_check
         )
 
+        val stateBackground =
+            when (typedArray.getString(R.styleable.ActionButton_btnActionBackground)) {
+                "0" -> R.drawable.bg_state_outline
+                "1" -> R.drawable.bg_state_outline_rounded
+                "2" -> R.drawable.bg_state_flat
+                "3" -> R.drawable.bg_state_flat_rounded
+                "4" -> null
+                else -> null
+            }
+
+        stateBackground?.let {
+            B.root.background = ContextCompat.getDrawable(context, it)
+        }
+
         val stateColor = ContextCompat.getColor(context, btnTxtColor)
 
         B.btn.text = btnTxt
@@ -108,6 +123,7 @@ class ActionButton : RelativeLayout {
             State.IDLE -> 0
             State.PROGRESS -> 1
             State.COMPLETE -> 2
+            else -> 0
         }
 
         if (B.viewFlipper.displayedChild != displayChild) {
@@ -127,13 +143,7 @@ class ActionButton : RelativeLayout {
         }
     }
 
-    fun addOnClickListener(onClickListener: OnClickListener) {
+    fun addOnClickListener(onClickListener: OnClickListener?) {
         B.btn.setOnClickListener(onClickListener)
-    }
-
-    enum class State {
-        IDLE,
-        PROGRESS,
-        COMPLETE,
     }
 }

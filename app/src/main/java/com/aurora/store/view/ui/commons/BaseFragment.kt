@@ -35,8 +35,6 @@ import java.lang.reflect.Modifier
 
 open class BaseFragment : Fragment() {
 
-    protected lateinit var app: App
-
     var gson: Gson = GsonBuilder().excludeFieldsWithModifiers(
         Modifier.TRANSIENT
     ).create()

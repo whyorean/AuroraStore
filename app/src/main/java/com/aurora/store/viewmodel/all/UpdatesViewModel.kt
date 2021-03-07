@@ -20,11 +20,15 @@
 package com.aurora.store.viewmodel.all
 
 import android.app.Application
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.aurora.gplayapi.data.models.App
+import com.aurora.store.State
 import com.aurora.store.data.RequestState
 import com.aurora.store.data.event.BusEvent
-import com.aurora.extensions.flushAndAdd
+import com.aurora.store.data.event.InstallerEvent
+import com.aurora.store.data.model.UpdateFile
+import com.tonyodev.fetch2.FetchGroup
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import org.greenrobot.eventbus.EventBus
@@ -33,8 +37,8 @@ import org.greenrobot.eventbus.ThreadMode
 
 class UpdatesViewModel(application: Application) : BaseAppsViewModel(application) {
 
-    var selectedUpdates: MutableSet<String> = mutableSetOf()
-    var isUpdating: Boolean = false
+    var updateFileMap: MutableMap<Int, UpdateFile> = mutableMapOf()
+    var liveUpdateData: MutableLiveData<MutableMap<Int, UpdateFile>> = MutableLiveData()
 
     init {
         EventBus.getDefault().register(this)
@@ -63,14 +67,17 @@ class UpdatesViewModel(application: Application) : BaseAppsViewModel(application
                 false
             }
         }.also { apps ->
-            appList.flushAndAdd(apps)
-            liveData.postValue(appList.sortedBy { it.displayName })
+            apps.forEach {
+                updateFileMap[it.id] = UpdateFile(it)
+            }
+
+            liveUpdateData.postValue(updateFileMap)
             requestState = RequestState.Complete
         }
     }
 
     @Subscribe(threadMode = ThreadMode.BACKGROUND)
-    fun onEvent(event: BusEvent) {
+    fun onBusEvent(event: BusEvent) {
         when (event) {
             is BusEvent.InstallEvent -> {
                 updateListAndPost(event.packageName)
@@ -87,22 +94,44 @@ class UpdatesViewModel(application: Application) : BaseAppsViewModel(application
         }
     }
 
+    @Subscribe(threadMode = ThreadMode.BACKGROUND)
+    fun onInstallerEvent(event: InstallerEvent) {
+        when (event) {
+            is InstallerEvent.Success -> {
+
+            }
+            is InstallerEvent.Failed -> {
+                val packageName = event.packageName
+                packageName?.let {
+                    updateDownload(packageName.hashCode(), null, true)
+                }
+            }
+        }
+    }
+
+    fun updateState(id: Int, state: State) {
+        updateFileMap[id]?.state = state
+        liveUpdateData.postValue(updateFileMap)
+    }
+
+    fun updateDownload(id: Int, group: FetchGroup?, isCancelled: Boolean = false) {
+        if (isCancelled) {
+            updateFileMap[id]?.state = State.IDLE
+            updateFileMap[id]?.group = null
+        } else {
+            updateFileMap[id]?.state = State.PROGRESS
+            updateFileMap[id]?.group = group
+        }
+
+        liveUpdateData.postValue(updateFileMap)
+    }
+
     private fun updateListAndPost(packageName: String) {
-        //Remove from selected updates
-        selectedUpdates.remove(packageName)
-
-        if (selectedUpdates.isEmpty())
-            isUpdating = false
-
-        //Remove from current update list
-        val updatedList = appList.filter {
-            it.packageName != packageName
-        }.toList()
-
-        appList.flushAndAdd(updatedList)
+        //Remove from map
+        updateFileMap.remove(packageName.hashCode())
 
         //Post new update list
-        liveData.postValue(appList.sortedBy { it.displayName })
+        liveUpdateData.postValue(updateFileMap)
     }
 
     override fun onCleared() {
