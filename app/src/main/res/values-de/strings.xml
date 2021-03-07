@@ -51,7 +51,7 @@
     <string name="action_back">Zurück</string>
     <string name="action_discard">Verwerfen</string>
     <string name="action_done">Fertig</string>
-    <string name="about_gitlab_summary">Hol dich den Aurora Store-Quellcode von Aurora OSS auf GitLab.</string>
+    <string name="about_gitlab_summary">Hol dir den Aurora Store-Quellcode von Aurora OSS auf GitLab.</string>
     <string name="about_bitcoin_btc_summary">Per Bitcoin spenden (BTC)</string>
     <string name="about_bitcoin_bch_summary">Per Bitcoin Cash spenden (BCH)</string>
     <string name="about_bhim_summary">Per UPI spenden</string>
