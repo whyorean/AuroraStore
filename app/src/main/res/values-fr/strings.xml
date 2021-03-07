@@ -10,7 +10,7 @@
     <string name="filter_review_critical">Critique</string>
     <string name="installer_status_failure_blocked">L’installation a été bloquée</string>
     <string name="installer_status_failure_aborted">Installation annulée</string>
-    <string name="installer_status_failure">L’installation a échoué</string>
+    <string name="installer_status_failure">Échec de l’installateur</string>
     <string name="installer_status_failure_session">Impossible de créer une session</string>
     <string name="installer_status_failure_storage">Espace mémoire insuffisant</string>
     <string name="installer_status_failure_invalid">APK invalide ou corrompu</string>
@@ -314,4 +314,7 @@
     <string name="download_resume">Reprendre</string>
     <string name="download_queued">En file d’attente</string>
     <string name="download_pause_all">Tout mettre en pause</string>
+    <string name="purchase_session_expired">Session expirée, reconnectez-vous pour obtenir une nouvelle session.</string>
+    <string name="purchase_not_found">Application introuvable</string>
+    <string name="purchase_unsupported">Application non prise en charge</string>
 </resources>
