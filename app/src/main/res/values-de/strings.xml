@@ -47,7 +47,7 @@
     <string name="account_anonymous">Anonym</string>
     <string name="action_buy">Kaufen</string>
     <string name="action_blacklist_add">Zur Blacklist hinzufügen</string>
-    <string name="action_blacklist">Blacklist</string>
+    <string name="action_blacklist">Schwarze Liste</string>
     <string name="action_back">Zurück</string>
     <string name="action_discard">Verwerfen</string>
     <string name="action_done">Fertig</string>
