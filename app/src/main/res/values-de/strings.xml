@@ -164,7 +164,6 @@
     <string name="onboarding_title_welcome">Willkommen</string>
     <string name="onboarding_title_theme">Themen</string>
     <string name="onboarding_title_permissions">Berechtigungen</string>
-    <string name="onboarding_title_accent"></string>
     <string name="onboarding_theme_select">Wählen Sie aus</string>
     <string name="onboarding_permission_select">Aurora Store benötigt folgende Berechtigungen</string>
     <string name="onboarding_installer_select">Wählen Sie einen geeigneten Installationsmodus</string>
