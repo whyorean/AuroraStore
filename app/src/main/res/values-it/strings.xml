@@ -1,2 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="details_changelog_unavailable">Registro modifiche non fornito</string>
+    <string name="details_changelog">Registro delle modifiche</string>
+    <string name="details_contains_ads">Contiene annunci</string>
+    <string name="details_description">Descrizione</string>
+    <string name="details_dev_details">Contatto dello sviluppatore</string>
+    <string name="purchase_no_file">Impossibile ottenere i file</string>
+    <string name="pref_install_profile_title">Profili di installazione (Sperimentale)</string>
+    <string name="details_files">File</string>
+    <string name="details_dev_website">Sito web</string>
+    <string name="details_dev_address">Indirizzo</string>
+    <string name="details_dev_email">Posta elettronica</string>
+</resources>
