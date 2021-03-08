@@ -220,7 +220,7 @@
     <string name="download_resume_all">Alle fortsetzen</string>
     <string name="download_resume">Fortsetzen</string>
     <string name="download_queued">In der Warteschlange</string>
-    <string name="download_progress">Herunterladen …</string>
+    <string name="download_progress">Herunterladen</string>
     <string name="download_paused">Pausiert</string>
     <string name="download_pause_all">Alle pausieren</string>
     <string name="download_pause">Pausieren</string>
