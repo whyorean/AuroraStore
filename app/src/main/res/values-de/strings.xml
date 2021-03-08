@@ -6,7 +6,7 @@
     <string name="action_installed">Installiert</string>
     <string name="action_installations">Installationen</string>
     <string name="action_install">Installieren</string>
-    <string name="action_import">Import</string>
+    <string name="action_import">Importieren</string>
     <string name="action_ignore_version">Version ignorieren</string>
     <string name="action_ignore">Ignorieren</string>
     <string name="action_home">Startseite</string>
@@ -211,8 +211,8 @@
     <string name="exodus_title_alt">Exodus Bericht</string>
     <string name="exodus_title">Aurora Schutz</string>
     <string name="exodus_substring">Tracker gefunden in</string>
-    <string name="exodus_report">Exodus Bericht</string>
-    <string name="exodus_progress">Prüfe auf Tracker…</string>
+    <string name="exodus_report">Exodus-Bericht</string>
+    <string name="exodus_progress">Prüfe auf Tracker …</string>
     <string name="exodus_powered">Bereitgestellt von Exodus</string>
     <string name="exodus_no_tracker">Enthält keine Tracker</string>
     <string name="exodus_no_report">Keine Berichte verfügbar</string>
@@ -250,10 +250,10 @@
     <string name="details_contains_ads">Enthält Werbung</string>
     <string name="details_changelog_unavailable">Änderungsprotokoll nicht verfügbar</string>
     <string name="details_changelog">Änderungsprotokoll</string>
-    <string name="details_beta_delay">Die Registrierung kann einige Zeit dauern, Sie können den Status später überprüfen.</string>
-    <string name="details_beta_description">Sie werden neue Funktionen und auch Fehler sehen, bevor die Öffentlichkeit sie sieht. Geben Sie den Entwicklern Ihr Feedback, um sie bei der Entwicklung zu unterstützen.</string>
+    <string name="details_beta_delay">Die Registrierung kann einige Zeit dauern; du kannst den Status später überprüfen.</string>
+    <string name="details_beta_description">Du wirst neue Funktionen und auch Fehler sehen, bevor die Öffentlichkeit sie sieht. Gib den Entwicklern deine Rückmeldung, um sie bei der Entwicklung zu unterstützen.</string>
     <string name="details_beta_available">Am Betaprogramm teilnehmen\?</string>
-    <string name="details_beta_subscribed">Sie sind ein Beta-Tester</string>
+    <string name="details_beta_subscribed">Du bist ein Beta-Tester</string>
     <string name="details_beta">Beta Programm</string>
     <string name="action_wishlist_add">Zur Wunschliste hinzufügen</string>
     <string name="action_whitelist">Weiße Liste</string>
@@ -262,7 +262,7 @@
     <string name="action_update_all">Alle aktualisieren</string>
     <string name="action_update">Aktualisieren</string>
     <string name="action_previous">Vorherige</string>
-    <string name="action_post">Posten</string>
+    <string name="action_post">Veröffentlichen</string>
     <string name="action_next">Weiter</string>
     <string name="action_join">Beitreten</string>
     <string name="action_get_local_apk">App-Paket speichern</string>
@@ -284,7 +284,7 @@
     <string name="action_save">Speichern</string>
     <string name="action_retry">Wiederholen</string>
     <string name="action_resume">Fortsetzen</string>
-    <string name="action_restart">Neustart</string>
+    <string name="action_restart">Neu starten</string>
     <string name="action_resend">Erneut senden</string>
     <string name="action_read">Lesen</string>
     <string name="action_purchase">Kaufen</string>
