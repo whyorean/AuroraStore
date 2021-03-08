@@ -142,7 +142,7 @@
     <string name="pref_install_profile_title">Installationsprofile (Experimentell)</string>
     <string name="pref_install_mode_title">Installationsmethode</string>
     <string name="pref_install_mode_summary">Modus der APK-Installation wählen</string>
-    <string name="pref_install_mode_services">Aurora Dienste</string>
+    <string name="pref_install_mode_services">Aurora-Dienste</string>
     <string name="about_libera_summary">Werden Sie Unterstützer auf Liberapay</string>
     <string name="pref_install_delete_title">APK nach der Installation löschen</string>
     <string name="pref_install_delete_summary">APKs werden standardmäßig gelöscht</string>
@@ -225,7 +225,7 @@
     <string name="download_pause_all">Alle pausieren</string>
     <string name="download_pause">Pausieren</string>
     <string name="download_none">Keine Herunterladen-Ereignisse</string>
-    <string name="download_metadata">Metadaten abrufen</string>
+    <string name="download_metadata">Abruf der Metadaten</string>
     <string name="download_force_clear_all">Alle löschen erzwingen</string>
     <string name="download_failed">Herunterladen fehlgeschlagen</string>
     <string name="download_eta_calculating">Berechnen</string>
