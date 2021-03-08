@@ -121,7 +121,7 @@
     <string name="details_beta_available">Rejoindre le programme bêta \?</string>
     <string name="details_beta_subscribed">Vous êtes bêta-testeur</string>
     <string name="details_beta">Programme bêta</string>
-    <string name="action_wishlist_add">Ajouter à la liste blanche</string>
+    <string name="action_wishlist_add">Ajouter à la liste de souhaits</string>
     <string name="action_whitelist">Liste blanche</string>
     <string name="action_wait">Attendre</string>
     <string name="action_updates">Mises à jour</string>
