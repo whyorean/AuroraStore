@@ -153,7 +153,7 @@
     <string name="details_dev_profile">Профиль разработчика</string>
     <string name="details_dev_email">Электронная почта</string>
     <string name="details_dev_details">Связь с разработчиком</string>
-    <string name="details_dev_address">Адрес разработчика</string>
+    <string name="details_dev_address">Адрес</string>
     <string name="details_description">Описание</string>
     <string name="details_dependencies">Зависимости</string>
     <string name="details_contains_ads">Содержит рекламу</string>
