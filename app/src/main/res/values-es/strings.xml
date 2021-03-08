@@ -314,4 +314,5 @@
     <string name="about_bitcoin_bch_summary">Donar vía Bitcoin Cash (BCH)</string>
     <string name="about_bitcoin_bch">Bitcoin Cash</string>
     <string name="about_bhim_summary">Donar vía UPI</string>
+    <string name="purchase_not_found">Aplicación no encontrada</string>
 </resources>
