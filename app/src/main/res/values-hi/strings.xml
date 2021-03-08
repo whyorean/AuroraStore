@@ -44,4 +44,6 @@
     <string name="about_bitcoin_bch_summary">बिटकॉइन कैश (BCH) के माध्यम से दान करें</string>
     <string name="about_bitcoin_bch">बिटकॉइन कैश</string>
     <string name="about_bhim_summary">UPI के माध्यम से दान करें</string>
+    <string name="details_dev_website">वेबसाइट</string>
+    <string name="details_dev_address">पता</string>
 </resources>
