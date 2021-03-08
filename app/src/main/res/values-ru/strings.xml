@@ -310,4 +310,11 @@
     <string name="installer_status_failure_conflict">Конфликтующий пакет существует</string>
     <string name="installer_status_failure_session">Не удалось создать сеанс</string>
     <string name="title_no_network">Нет соединения</string>
+    <string name="installer_status_failure">Ошибка установки</string>
+    <string name="action_submit">Отправить</string>
+    <string name="action_sign_up">Регистрация</string>
+    <string name="action_ignore_version">Игнорировать версию</string>
+    <string name="action_filter_misc">Разное</string>
+    <string name="action_filter_apply">Применить</string>
+    <string name="action_apply">Применить</string>
 </resources>
