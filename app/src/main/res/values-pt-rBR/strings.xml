@@ -1,2 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="details_dev_website">Saite</string>
+    <string name="details_dev_reply">Resposta do desenvolvedor</string>
+    <string name="details_dev_profile">Perfil do desenvolvedor</string>
+    <string name="details_dev_details">Contato do desenvolvedor</string>
+    <string name="details_dev_address">Endereço</string>
+    <string name="details_dev_email">Correio eletrônico</string>
+</resources>
