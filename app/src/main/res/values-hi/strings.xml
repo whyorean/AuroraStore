@@ -1,2 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="details_dev_email">ईमेल</string>
+    <string name="about_bhim">BHIM - UPI</string>
+    <string name="action_disable">निष्क्रिय</string>
+    <string name="action_deny">मना</string>
+    <string name="action_copy_link">कॉपी लिंक</string>
+    <string name="action_copy">कॉपी</string>
+    <string name="action_close">बंद करें</string>
+    <string name="action_clear_restart">डाटा साफ करें</string>
+    <string name="action_clear_all">सब कुछ साफ करें</string>
+    <string name="action_clear">साफ करें</string>
+    <string name="action_cancel">रद्द करें</string>
+    <string name="action_buy">खरीदें</string>
+    <string name="action_blacklist_add">काला सूची में डालें</string>
+    <string name="action_blacklist">काला सूची</string>
+    <string name="action_back">वापस</string>
+    <string name="action_ask">पूछना</string>
+    <string name="action_apply">लागू</string>
+    <string name="action_all_reviews">सभी रिव्यूज</string>
+    <string name="action_accounts">अकाउंट्स</string>
+    <string name="action_accept">स्वीकार करें</string>
+    <string name="account_logout">अरोरा से लॉगआउट</string>
+    <string name="account_login_using">लॉगिन का उपयोग</string>
+    <string name="account_logged_out">आप लॉग आउट हैं</string>
+    <string name="account_google">गूगल</string>
+    <string name="account_anonymous">गुमनाम</string>
+    <string name="about_xda_summary">चर्चा या सुझाव के लिए अरोरा स्टोर XDA thread देखें।</string>
+    <string name="about_xda">Dev Thread</string>
+    <string name="about_telegram_summary">चर्चा या सुझाव के लिए अरोरा सहायता समूह में शामिल हों।</string>
+    <string name="about_telegram">Telegram</string>
+    <string name="about_paypal_summary">PayPal के माध्यम से दान करें</string>
+    <string name="about_paypal">Paypal</string>
+    <string name="about_libera_summary">Liberapay पर संरक्षक बनें</string>
+    <string name="about_libera">Liberapay</string>
+    <string name="about_gitlab_summary">GitLab पर अरोरा OSS से अरोरा स्टोर स्रोत कोड प्राप्त करें।</string>
+    <string name="about_gitlab">GitLab</string>
+    <string name="about_fdroid_summary">F-Droid के माध्यम से अरोरा स्टोर प्राप्त करें।</string>
+    <string name="about_fdroid">F-Droid</string>
+    <string name="about_bitcoin_eth_summary">एथेरुम (ETH) के माध्यम से दान करें</string>
+    <string name="about_bitcoin_eth">एथेरुम</string>
+    <string name="about_bitcoin_btc_summary">बिटकॉइन (BTC) के माध्यम से दान करें</string>
+    <string name="about_bitcoin_btc">बिटकॉइन</string>
+    <string name="about_bitcoin_bch_summary">बिटकॉइन कैश (BCH) के माध्यम से दान करें</string>
+    <string name="about_bitcoin_bch">बिटकॉइन कैश</string>
+    <string name="about_bhim_summary">UPI के माध्यम से दान करें</string>
+</resources>
