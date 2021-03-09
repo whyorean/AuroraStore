@@ -132,4 +132,7 @@
     <string name="about_bitcoin_bch">Bitcoin Cash</string>
     <string name="about_bhim_summary">Wsparcie poprzez UPI</string>
     <string name="about_bhim">BHIM - UPI</string>
+    <string name="action_installations">Instalacje</string>
+    <string name="action_granted">Zgoda udzielona</string>
+    <string name="action_grant">Udziel zgody</string>
 </resources>
