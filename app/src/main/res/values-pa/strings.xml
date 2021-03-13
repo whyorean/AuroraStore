@@ -1,2 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="about_bhim_summary">UPI ਜ਼ਰੀਏ ਦਾਨ ਕਰੋ</string>
+    <string name="about_bhim">ਭੀਮ UPI</string>
+</resources>
