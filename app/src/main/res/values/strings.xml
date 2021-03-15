@@ -355,4 +355,5 @@
     <string name="toast_developer_setting_failed">"Failed to open developer settings, make sure it is enabled from device settings."</string>
     <string name="toast_permission_granted">"Permission granted"</string>
     <string name="toast_spoof_applied">"Device spoof applied successfully."</string>
+    <string name="toast_purchase_blocked">"App purchases not available on Anonymous accounts."</string>
 </resources>

@@ -560,8 +560,12 @@ class AppDetailsActivity : BaseDetailsActivity() {
                 }
 
                 btn.addOnClickListener {
-                    btn.setText(R.string.download_metadata)
-                    startDownload()
+                    if (authData.isAnonymous && !app.isFree) {
+                        toast(R.string.toast_purchase_blocked)
+                    } else {
+                        btn.setText(R.string.download_metadata)
+                        startDownload()
+                    }
                 }
             }
         }
