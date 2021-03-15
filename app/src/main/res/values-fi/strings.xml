@@ -30,4 +30,5 @@
     <string name="details_dev_profile">Kehittäjän profiili</string>
     <string name="details_dev_email">Sähköposti</string>
     <string name="details_dev_address">Osoite</string>
+    <string name="details_no_app">Sovelluksia ei ole saatavilla</string>
 </resources>

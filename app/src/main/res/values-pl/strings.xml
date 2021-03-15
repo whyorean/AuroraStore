@@ -13,7 +13,7 @@
     <string name="details_dev_website">Strona internetowa</string>
     <string name="details_dev_reply">Odpowiedź dewelopera</string>
     <string name="details_dev_profile">Profil dewelopera</string>
-    <string name="details_dev_email">Email</string>
+    <string name="details_dev_email">Poczta elektroniczna</string>
     <string name="details_dev_details">Kontakt z deweloperem</string>
     <string name="details_dev_address">Adres</string>
     <string name="details_description">Opis</string>
@@ -71,7 +71,7 @@
     <string name="action_ignore_version">Ignoruj wersję</string>
     <string name="action_ignore">Ignoruj</string>
     <string name="action_home">Główna</string>
-    <string name="action_get_local_apk">Zapisz pakiet aplikacji</string>
+    <string name="action_get_local_apk">Pobierz paczkę z aplikacją</string>
     <string name="action_finish">Zakończ</string>
     <string name="action_filter_rating">Oceny</string>
     <string name="action_filter_paid_apps">Płatne</string>
@@ -190,7 +190,7 @@
     <string name="pref_ui_theme_dark_x">Ciemny X</string>
     <string name="pref_ui_theme_dark">Ciemny</string>
     <string name="pref_ui_theme_black">Czarny</string>
-    <string name="pref_ui_accent_title">Zastosuj</string>
+    <string name="pref_ui_accent_title">Akcent</string>
     <string name="pref_install_profile_title">Profile instalacji (eksperymentalne)</string>
     <string name="pref_install_profile_summary">Wybierz profil, na którym chcesz instalować aplikacje. Działa tylko z metodą instalacji poprzez roota</string>
     <string name="pref_install_mode_summary">Wybierz tryb instalacji plików APK</string>
@@ -207,7 +207,7 @@
     <string name="pref_filter_fdroid_title">Filtruj aplikacje F-Droid</string>
     <string name="pref_filter_fdroid_summary">Usuń z listy aplikacje pochodzące z F-Droid</string>
     <string name="pref_downloader_external_desc">Pamięć zewnętrzna będzie używana do przechowywania pobieranych lub wyeksportowanych plików, itp.</string>
-    <string name="pref_downloader_external">Pamięć zewnętrzna użytkownika</string>
+    <string name="pref_downloader_external">Pamięć zewnętrzna</string>
     <string name="pref_downloader_active_summary">Maksymalna liczba aktywnych pobierań</string>
     <string name="pref_downloader_active_title">Aktywne pobieranie</string>
     <string name="title_installation">Instalacja</string>
@@ -278,7 +278,7 @@
     <string name="exodus_view_more">Zobacz</string>
     <string name="exodus_title_alt">Raport Exodus-u</string>
     <string name="exodus_title">Ochrona Aurory</string>
-    <string name="exodus_substring">elementów śledzących w</string>
+    <string name="exodus_substring">elementy śledzące w</string>
     <string name="exodus_report">Raport Exodus-u</string>
     <string name="exodus_progress">Sprawdzam usługi śledzące…</string>
     <string name="exodus_powered">Obsługiwany przez Exodus</string>
@@ -294,7 +294,7 @@
     <string name="download_pause">Wstrzymaj</string>
     <string name="download_none">Brak pobranych</string>
     <string name="download_metadata">Pobieranie metadanych</string>
-    <string name="download_force_clear_all">Wyczyść wszystko</string>
+    <string name="download_force_clear_all">Wyczyść wszystkie</string>
     <string name="download_failed">Pobieranie nieudane</string>
     <string name="download_eta_calculating">Obliczenie</string>
     <string name="download_deleted">Usunięto</string>

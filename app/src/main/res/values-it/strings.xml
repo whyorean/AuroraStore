@@ -139,8 +139,8 @@
     <string name="action_save">Salva</string>
     <string name="action_retry">Riprova</string>
     <string name="action_resume">Riprendi</string>
-    <string name="about_xda_summary">Vedi il thread di Aurora Store XDA per discussioni o suggerimenti.</string>
-    <string name="about_xda">Thread dello sviluppatore</string>
+    <string name="about_xda_summary">Vedi la discussione di Aurora Store XDA per dibattiti o suggerimenti.</string>
+    <string name="about_xda">Discussione sviluppatori</string>
     <string name="about_telegram_summary">Unisciti al gruppo di supporto Aurora per discussioni o suggerimenti.</string>
     <string name="action_restart">Riavvia</string>
     <string name="action_resend">Reinvia</string>
