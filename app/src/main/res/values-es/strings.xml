@@ -122,7 +122,7 @@
     <string name="installer_status_failure_session">No se ha podido crear la sesión</string>
     <string name="installer_status_failure_blocked">La instalación se bloqueó</string>
     <string name="installer_status_failure_aborted">Instalación cancelada</string>
-    <string name="installer_status_failure">Instalación fallida</string>
+    <string name="installer_status_failure">El instalador falló</string>
     <string name="installer_service_misconfigured">Los servicios de Aurora no están configurados. Asegúrese de que el servicio está habilitado y todos los permisos están concedidos</string>
     <string name="installer_service_unavailable">Los servicios de Aurora no están instalados o la versión es incorrecta (requiere &gt;= 1.0.9), por favor instálela o cambie el instalador</string>
     <string name="installer_service_available">Los servicios de Aurora están disponibles y listos para ser instalados.</string>
@@ -315,4 +315,6 @@
     <string name="about_bitcoin_bch">Bitcoin Cash</string>
     <string name="about_bhim_summary">Donar vía UPI</string>
     <string name="purchase_not_found">Aplicación no encontrada</string>
+    <string name="purchase_session_expired">La sesión expiró, vuelva a iniciar sesión para obtener una nueva sesión.</string>
+    <string name="purchase_unsupported">Aplicación no compatible</string>
 </resources>
