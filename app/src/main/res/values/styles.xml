@@ -37,6 +37,7 @@
         <item name="colorPrimaryDark">@color/colorWhite</item>
         <item name="android:windowBackground">@color/colorWhite</item>
         <item name="android:colorBackground">@color/colorWhite</item>
+        <item name="android:navigationBarColor">@color/colorWhite</item>
         <item name="scrim">@color/colorScrim</item>
         <item name="scrimAccent">@color/colorScrimAccent</item>
         <item name="scrimAlt">@color/colorScrimAlt</item>
