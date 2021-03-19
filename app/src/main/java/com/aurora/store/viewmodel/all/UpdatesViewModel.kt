@@ -39,6 +39,7 @@ class UpdatesViewModel(application: Application) : BaseAppsViewModel(application
 
     var updateFileMap: MutableMap<Int, UpdateFile> = mutableMapOf()
     var liveUpdateData: MutableLiveData<MutableMap<Int, UpdateFile>> = MutableLiveData()
+    var updateAllEnqueued: Boolean = false
 
     init {
         EventBus.getDefault().register(this)
@@ -100,6 +101,9 @@ class UpdatesViewModel(application: Application) : BaseAppsViewModel(application
             is InstallerEvent.Success -> {
 
             }
+            is InstallerEvent.Cancelled -> {
+
+            }
             is InstallerEvent.Failed -> {
                 val packageName = event.packageName
                 packageName?.let {
@@ -114,13 +118,25 @@ class UpdatesViewModel(application: Application) : BaseAppsViewModel(application
         liveUpdateData.postValue(updateFileMap)
     }
 
-    fun updateDownload(id: Int, group: FetchGroup?, isCancelled: Boolean = false) {
-        if (isCancelled) {
-            updateFileMap[id]?.state = State.IDLE
-            updateFileMap[id]?.group = null
-        } else {
-            updateFileMap[id]?.state = State.PROGRESS
-            updateFileMap[id]?.group = group
+    fun updateDownload(
+        id: Int,
+        group: FetchGroup?,
+        isCancelled: Boolean = false,
+        isComplete: Boolean = false
+    ) {
+        when {
+            isCancelled -> {
+                updateFileMap[id]?.state = State.IDLE
+                updateFileMap[id]?.group = null
+            }
+            isComplete -> {
+                updateFileMap[id]?.state = State.COMPLETE
+                updateFileMap[id]?.group = group
+            }
+            else -> {
+                updateFileMap[id]?.state = State.PROGRESS
+                updateFileMap[id]?.group = group
+            }
         }
 
         liveUpdateData.postValue(updateFileMap)

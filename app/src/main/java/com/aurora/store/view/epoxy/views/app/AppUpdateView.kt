@@ -27,7 +27,7 @@ import com.airbnb.epoxy.CallbackProp
 import com.airbnb.epoxy.ModelProp
 import com.airbnb.epoxy.ModelView
 import com.airbnb.epoxy.OnViewRecycled
-import com.aurora.extensions.hide
+import com.aurora.extensions.invisible
 import com.aurora.extensions.load
 import com.aurora.extensions.px
 import com.aurora.extensions.show
@@ -105,22 +105,32 @@ class AppUpdateView : RelativeLayout {
 
             /*Inflate Download details*/
             updateFile.group?.let {
-                if (updateFile.state == State.PROGRESS) {
-                    val progress = it.groupDownloadProgress
-                    if (progress > 0) {
-                        if (progress == 100) {
-                            B.txtProgressPercent.hide()
-                        } else {
-                            B.txtProgressPercent.show()
-                            B.txtProgressPercent.text = ("${progress}%")
+                when (updateFile.state) {
+                    State.QUEUED -> {
+                        B.progressDownload.progress = 0
+                        B.progressDownload.show()
+                        B.btnAction.updateState(State.QUEUED)
+                    }
+                    State.IDLE, State.CANCELED -> {
+                        B.progressDownload.progress = 0
+                        B.progressDownload.invisible()
+                        B.btnAction.updateState(State.IDLE)
+                    }
+                    State.PROGRESS -> {
+                        val progress = it.groupDownloadProgress
+                        if (progress > 0) {
+                            if (progress == 100) {
+                                B.progressDownload.invisible()
+                            } else {
+                                B.progressDownload.progress = progress
+                                B.progressDownload.show()
+                            }
                         }
                     }
-                } else if (updateFile.state == State.IDLE || updateFile.state == State.CANCELED) {
-                    B.btnAction.updateState(State.IDLE)
-                    B.txtProgressPercent.text = ("0%")
-                    B.txtProgressPercent.hide()
-                } else if (updateFile.state == State.QUEUED) {
-                    B.btnAction.updateState(State.QUEUED)
+                    State.COMPLETE -> {
+                        B.progressDownload.invisible()
+                        B.btnAction.updateState(State.COMPLETE)
+                    }
                 }
             }
         }
@@ -149,6 +159,11 @@ class AppUpdateView : RelativeLayout {
     }
 
     @CallbackProp
+    fun installAction(onClickListener: OnClickListener?) {
+        B.btnAction.addInstallOnClickListener(onClickListener)
+    }
+
+    @CallbackProp
     fun longClick(onClickListener: OnLongClickListener?) {
         B.layoutContent.setOnLongClickListener(onClickListener)
     }
@@ -156,5 +171,6 @@ class AppUpdateView : RelativeLayout {
     @OnViewRecycled
     fun clear() {
         B.headerIndicator.removeCallbacks { }
+        B.progressDownload.invisible()
     }
 }

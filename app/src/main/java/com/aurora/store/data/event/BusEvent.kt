@@ -48,6 +48,11 @@ sealed class InstallerEvent {
         var extra: String? = ""
     ) : InstallerEvent()
 
+    data class Cancelled(
+        var packageName: String? = "",
+        var extra: String? = ""
+    ) : InstallerEvent()
+
     data class Failed(
         var packageName: String? = "",
         var error: String? = "",

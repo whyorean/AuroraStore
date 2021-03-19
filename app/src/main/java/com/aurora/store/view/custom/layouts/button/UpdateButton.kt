@@ -77,9 +77,10 @@ class UpdateButton : RelativeLayout {
 
     fun updateState(state: State) {
         val displayChild = when (state) {
-            State.IDLE, State.COMPLETE, State.CANCELED -> 0
+            State.IDLE, State.CANCELED -> 0
             State.QUEUED -> 1
             State.PROGRESS -> 2
+            State.COMPLETE -> 3
         }
 
         if (B.viewFlipper.displayedChild != displayChild) {
@@ -95,5 +96,9 @@ class UpdateButton : RelativeLayout {
 
     fun addNegativeOnClickListener(onClickListener: OnClickListener?) {
         B.btnNegative.setOnClickListener(onClickListener)
+    }
+
+    fun addInstallOnClickListener(onClickListener: OnClickListener?) {
+        B.btnInstall.setOnClickListener(onClickListener)
     }
 }

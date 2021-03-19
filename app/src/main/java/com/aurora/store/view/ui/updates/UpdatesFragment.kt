@@ -52,6 +52,7 @@ import com.tonyodev.fetch2.FetchGroup
 import nl.komponents.kovenant.task
 import nl.komponents.kovenant.ui.failUi
 import nl.komponents.kovenant.ui.successUi
+import org.apache.commons.io.FileUtils
 
 class UpdatesFragment : BaseFragment() {
 
@@ -103,17 +104,17 @@ class UpdatesFragment : BaseFragment() {
 
             override fun onCompleted(groupId: Int, download: Download, fetchGroup: FetchGroup) {
                 if (fetchGroup.groupDownloadProgress == 100) {
-                    VM.updateDownload(groupId, fetchGroup)
+                    VM.updateDownload(groupId, fetchGroup, isComplete = true)
                     install(download.tag!!, fetchGroup.downloads)
                 }
             }
 
             override fun onCancelled(groupId: Int, download: Download, fetchGroup: FetchGroup) {
-                VM.updateDownload(groupId, fetchGroup,true)
+                VM.updateDownload(groupId, fetchGroup, isCancelled = true)
             }
 
             override fun onDeleted(groupId: Int, download: Download, fetchGroup: FetchGroup) {
-                VM.updateDownload(groupId, fetchGroup,true)
+                VM.updateDownload(groupId, fetchGroup, isCancelled = true)
             }
         }
 
@@ -127,11 +128,11 @@ class UpdatesFragment : BaseFragment() {
         }
     }
 
-    override fun onPause() {
+    override fun onDestroy() {
         if (::fetch.isInitialized && ::fetchListener.isInitialized) {
             fetch.removeListener(fetchListener)
         }
-        super.onPause()
+        super.onDestroy()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -173,8 +174,20 @@ class UpdatesFragment : BaseFragment() {
                         UpdateHeaderViewModel_()
                             .id("header_all")
                             .title("${updateFileMap.size} updates available")
-                            .action(getString(R.string.action_update_all))
-                            .click { _ -> updateAll() }
+                            .action(
+                                if (VM.updateAllEnqueued)
+                                    getString(R.string.action_cancel)
+                                else
+                                    getString(R.string.action_update_all)
+                            )
+                            .click { _ ->
+                                if (VM.updateAllEnqueued)
+                                    cancelAll()
+                                else
+                                    updateAll()
+
+                                requestModelBuild()
+                            }
                     )
 
                     updateFileMap.values.forEach { updateFile ->
@@ -189,6 +202,12 @@ class UpdatesFragment : BaseFragment() {
                                 }
                                 .positiveAction { _ -> updateSingle(updateFile.app) }
                                 .negativeAction { _ -> cancelSingle(updateFile.app) }
+                                .installAction { _ ->
+                                    install(
+                                        updateFile.app.packageName,
+                                        updateFile.group?.downloads
+                                    )
+                                }
                                 .state(updateFile.state)
                         )
                     }
@@ -229,19 +248,35 @@ class UpdatesFragment : BaseFragment() {
 
     private fun updateAll() {
         updateFileMap.values.forEach { updateSingle(it.app) }
+        VM.updateAllEnqueued = true
+    }
+
+    private fun cancelAll() {
+        VM.updateAllEnqueued = false
+        updateFileMap.values.forEach { fetch.cancelGroup(it.app.id) }
     }
 
     @Synchronized
-    private fun install(packageName: String, files: List<Download>) {
-        task {
-            AppInstaller(requireContext())
-                .getPreferredInstaller()
-                .install(
-                    packageName,
-                    files
-                        .filter { it.file.endsWith(".apk") }
-                        .map { it.file }.toList()
-                )
+    private fun install(packageName: String, files: List<Download>?) {
+        files?.let { downloads ->
+            var filesExist = true
+
+            downloads.forEach { download ->
+                filesExist = filesExist && FileUtils.getFile(download.file).exists()
+            }
+
+            if (filesExist) {
+                task {
+                    AppInstaller(requireContext())
+                        .getPreferredInstaller()
+                        .install(
+                            packageName,
+                            files
+                                .filter { it.file.endsWith(".apk") }
+                                .map { it.file }.toList()
+                        )
+                }
+            }
         }
     }
 

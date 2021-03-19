@@ -67,6 +67,13 @@ class InstallerService : Service() {
             PackageInstaller.STATUS_SUCCESS -> {
                 EventBus.getDefault().post(InstallerEvent.Success(packageName, "Success"))
             }
+            PackageInstaller.STATUS_FAILURE_ABORTED -> {
+                val errorString = AppInstaller.getErrorString(this, status)
+                val event =
+                    InstallerEvent.Cancelled(packageName, errorString)
+                Log.e("$packageName : $errorString")
+                EventBus.getDefault().post(event)
+            }
             else -> {
                 val errorString =
                     AppInstaller.getErrorString(this, status)

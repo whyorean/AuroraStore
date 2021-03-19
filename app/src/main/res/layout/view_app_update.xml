@@ -21,6 +21,7 @@
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="?selectableItemBackground"
@@ -52,20 +53,15 @@
                     android:layout_width="@dimen/icon_size_medium"
                     android:layout_height="@dimen/icon_size_medium" />
 
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/txt_progress_percent"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                <ProgressBar
+                    android:id="@+id/progress_download"
+                    style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                    android:layout_width="@dimen/icon_size_medium"
+                    android:layout_height="@dimen/icon_size_medium"
                     android:layout_centerInParent="true"
-                    android:visibility="gone"
-                    android:background="@drawable/bg_rounded"
-                    android:gravity="center"
-                    android:paddingStart="@dimen/padding_normal"
-                    android:paddingEnd="@dimen/padding_normal"
-                    android:text="0%"
-                    android:textAlignment="center"
-                    android:textSize="12sp"
-                    app:fontFamily="@font/gilroy_extra_bold" />
+                    android:progressDrawable="@drawable/progressbar_bg"
+                    android:visibility="invisible"
+                    tools:progress="40" />
             </RelativeLayout>
 
             <androidx.appcompat.widget.AppCompatTextView
