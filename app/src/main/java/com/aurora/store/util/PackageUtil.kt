@@ -39,11 +39,11 @@ object PackageUtil {
         }
     }
 
-    fun isInstalled(context: Context, packageName: String,versionCode: Int): Boolean {
+    fun isInstalled(context: Context, packageName: String, versionCode: Int): Boolean {
         return try {
             val packageInfo = getPackageInfo(context, packageName)
             if (packageInfo != null) {
-                return versionCode == packageInfo.versionCode
+                return packageInfo.versionCode >= versionCode
             }
             true
         } catch (e: PackageManager.NameNotFoundException) {
