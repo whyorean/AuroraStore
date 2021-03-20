@@ -317,4 +317,5 @@
     <string name="action_filter_misc">Разное</string>
     <string name="action_filter_apply">Применить</string>
     <string name="action_apply">Применить</string>
+    <string name="toast_purchase_blocked">Покупка приложений недоступна для анонимных аккаунтов.</string>
 </resources>
