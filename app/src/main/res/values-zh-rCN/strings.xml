@@ -279,7 +279,7 @@
     <string name="onboarding_permission_esa">外部存储访问</string>
     <string name="onboarding_tos_error">你必须先标记服务条款为已读。</string>
     <string name="onboarding_tos_confirmation">我已经阅读了 Aurora 商店的服务条款。</string>
-    <string name="onboarding_tos_desc">请阅读我们的服务条款，接受它才能使用Aurora 商店。</string>
+    <string name="onboarding_tos_desc">请阅读我们的服务条款，接受它才能使用 Aurora 商店。</string>
     <string name="onboarding_tos">服务条款</string>
     <string name="onboarding_title_welcome">欢迎</string>
     <string name="onboarding_title_theme">主题</string>
