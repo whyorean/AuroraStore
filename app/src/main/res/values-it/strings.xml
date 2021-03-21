@@ -10,7 +10,7 @@
     <string name="details_files">File</string>
     <string name="details_dev_website">Sito web</string>
     <string name="details_dev_address">Indirizzo</string>
-    <string name="details_dev_email">E-mail</string>
+    <string name="details_dev_email">Posta elettronica</string>
     <string name="toast_clipboard_copied">Copiato negli appunti</string>
     <string name="toast_apk_whitelisted">Messo in lista bianca</string>
     <string name="toast_apk_copy_success">APK esportato con successo</string>
@@ -32,10 +32,10 @@
     <string name="title_download_manager">Trasferimenti</string>
     <string name="purchase_failed">Trasferimento fallito</string>
     <string name="pref_install_auto_title">Installa automaticamente gli APK dopo il trasferimento</string>
-    <string name="pref_downloader_external_desc">L\'archiviazione esterna verrà utilizzata per scaricamenti, esportazioni, ecc.</string>
+    <string name="pref_downloader_external_desc">L’archiviazione esterna verrà utilizzata per scaricamenti, esportazioni, ecc.</string>
     <string name="pref_downloader_active_title">Trasferimento attivo</string>
     <string name="pref_downloader_active_summary">Numero massimo di trasferimenti attivi</string>
-    <string name="onboarding_permission_esa_desc">Per salvare gli scaricamenti (APK e OBB), esportare e importare le configurazioni del dispositivo nell\'archiviazione esterna.</string>
+    <string name="onboarding_permission_esa_desc">Per salvare gli scaricamenti (APK e OBB), esportare e importare le configurazioni del dispositivo nell’archiviazione esterna.</string>
     <string name="download_resume_all">Riprendi tutti</string>
     <string name="download_resume">Riprendi</string>
     <string name="download_queued">In coda</string>
@@ -68,17 +68,17 @@
     <string name="pref_filter_google_summary">Rimuove tutte le applicazioni Google dai risultati di ricerca e dalle applicazioni di categoria</string>
     <string name="pref_filter_fdroid_title">Filtra le applicazioni F-droid</string>
     <string name="pref_filter_fdroid_summary">Rimuove le applicazioni F-Droid dalle liste di applicazioni</string>
-    <string name="pref_dialog_to_apply_restart">Questa impostazione verrà applicata dopo il riavvio dell\'applicazione</string>
+    <string name="pref_dialog_to_apply_restart">Questa impostazione verrà applicata dopo il riavvio dell’applicazione</string>
     <string name="pref_app_download">Trasferimenti</string>
-    <string name="onboarding_permission_installer_desc">Consenti l\'installazione di app da Aurora Store</string>
+    <string name="onboarding_permission_installer_desc">Consenti l’installazione di app da Aurora Store</string>
     <string name="installer_status_failure_incompatible">Applicazione incompatibile</string>
     <string name="details_think_this_app">Cosa ne pensi di questa applicazione\?</string>
     <string name="details_rate_this_app">Valuta questa applicazione</string>
     <string name="details_others_think">Scopri cosa pensano gli altri di questa applicazione</string>
     <string name="details_no_whitelist">Nessuna applicazione in lista bianca</string>
     <string name="details_no_app">Nessuna applicazione disponibile</string>
-    <string name="details_more_about_app">Altre informazioni sull\'app</string>
-    <string name="details_in_app_purchase">Acquisti integrati nell\'app</string>
+    <string name="details_more_about_app">Altre informazioni sull’app</string>
+    <string name="details_in_app_purchase">Acquisti integrati nell’app</string>
     <string name="action_info">Informazioni app</string>
     <string name="action_get_local_apk">Salva pacchetto di app</string>
     <string name="action_filter_paid_apps">A pagamento</string>
@@ -115,7 +115,7 @@
     <string name="details_dev_reply">Risposta dello sviluppatore</string>
     <string name="details_dev_profile">Profilo sviluppatore</string>
     <string name="details_dependencies">Dipendenze</string>
-    <string name="details_beta_delay">L\'iscrizione potrebbe richiedere del tempo; è possibile controllare lo stato in un secondo momento.</string>
+    <string name="details_beta_delay">L’iscrizione potrebbe richiedere del tempo; è possibile controllare lo stato in un secondo momento.</string>
     <string name="details_beta_description">Vedrai nuove funzionalità e difetti prima che lo faccia il pubblico. Dai il tuo feedback agli sviluppatori per aiutarli a migliorare.</string>
     <string name="details_beta_available">Partecipare al programma Beta\?</string>
     <string name="details_beta_subscribed">Sei un Beta-tester</string>
@@ -232,9 +232,9 @@
     <string name="tab_top_free">Principali gratis</string>
     <string name="tab_top_charts">Classifiche principali</string>
     <string name="tab_for_you">Per te</string>
-    <string name="tab_editor_choice">Scelta dell\'editore</string>
+    <string name="tab_editor_choice">Scelta dell’editore</string>
     <string name="tab_categories">Categorie</string>
-    <string name="spoof_apply">Assicurarsi di effettuare di nuovo l\'accesso per applicare la simulazione</string>
+    <string name="spoof_apply">Assicurarsi di effettuare di nuovo l’accesso per applicare la simulazione</string>
     <string name="purchase_session_expired">Sessione scaduta, effettuare nuovo accesso per ottenere una nuova sessione.</string>
     <string name="pref_ui_title">Personalizzazione</string>
     <string name="pref_ui_theme_title">Tema</string>
@@ -251,18 +251,18 @@
     <string name="pref_install_mode_services">Aurora Services</string>
     <string name="pref_install_mode_root">Programma di installazione Root</string>
     <string name="pref_install_mode_native">Programma di installazione nativo</string>
-    <string name="pref_install_delete_title">Elimina gli APK dopo l\'installazione</string>
+    <string name="pref_install_delete_title">Elimina gli APK dopo l’installazione</string>
     <string name="pref_install_delete_summary">Gli APK verranno eliminati per impostazione predefinita</string>
-    <string name="pref_downloader_external">Archiviazione esterna dell\'utente</string>
+    <string name="pref_downloader_external">Archiviazione esterna dell’utente</string>
     <string name="pref_abandon_session_desc">Cancellare le sessioni di installazione in sospeso o abbandonate</string>
     <string name="pref_abandon_session">Forza cancella sessioni di installazione</string>
     <string name="onboarding_permission_installer">Autorizzazione programma di installazione</string>
-    <string name="onboarding_permission_esm_desc">Necessario nei dispositivi che eseguono Android R+, oltre all\'accesso all\'archiviazione esterna</string>
+    <string name="onboarding_permission_esm_desc">Necessario nei dispositivi che eseguono Android R+, oltre all’accesso all’archiviazione esterna</string>
     <string name="onboarding_permission_esm">Gestore archiviazione esterna</string>
     <string name="onboarding_permission_esa">Accesso archiviazione esterna</string>
     <string name="onboarding_welcome_select">Come va\?</string>
     <string name="onboarding_tos_error">È necessario prima contrassegnare la lettura dei TdS.</string>
-    <string name="onboarding_tos_confirmation">Ho letto i Termini di Servizio di Aurora Store.</string>
+    <string name="onboarding_tos_confirmation">Ho letto i termini di servizio di Aurora Store.</string>
     <string name="onboarding_tos_desc">Si prega di leggere i nostri Termini di Servizio e di accettarli per poter usare Aurora Store.</string>
     <string name="onboarding_tos">Termini di Servizio</string>
     <string name="onboarding_title_welcome">Benvenuti</string>
@@ -289,7 +289,7 @@
     <string name="menu_terms">Termini di servizio</string>
     <string name="menu_license">Licenza</string>
     <string name="menu_disclaimer">Avvertenza</string>
-    <string name="installer_status_user_action">In attesa della conferma dell\'utente</string>
+    <string name="installer_status_user_action">In attesa della conferma dell’utente</string>
     <string name="installer_status_unknown">Sconosciuto</string>
     <string name="installer_status_success">Installata con successo</string>
     <string name="installer_status_failure_storage">Spazio di memoria insufficiente</string>
@@ -301,8 +301,8 @@
     <string name="installer_status_failure_aborted">Installazione annullata</string>
     <string name="installer_service_misconfigured">Aurora Services non è configurato; assicuratevi che il servizio sia abilitato e che tutti le autorizzazioni siano state concesse</string>
     <string name="installer_service_unavailable">Aurora Services non è installato o la versione non è corretta (richiesto &gt;= 1.0.9); si prega di installarlo o modificare il programma di installazione</string>
-    <string name="installer_service_available">Aurora Services è disponibile e pronto per l\'installazione.</string>
-    <string name="installer_root_unavailable">Nessun Root. Concedere l\'accesso root o modificare il programma di installazione.</string>
+    <string name="installer_service_available">Aurora Services è disponibile e pronto per l’installazione.</string>
+    <string name="installer_root_unavailable">Nessun accesso radice. Concedere l’accesso radice o modificare il programma di installazione.</string>
     <string name="installer_root_available">Accesso Root disponibile</string>
     <string name="filter_review_two">Due</string>
     <string name="filter_review_three">Tre</string>
@@ -317,5 +317,5 @@
     <string name="exodus_title_alt">Rapporto Exodus</string>
     <string name="exodus_title">Aurora Protect</string>
     <string name="exodus_substring">tracciante/i trovato/i in</string>
-    <string name="toast_purchase_blocked">Acquisti di app non disponibili su profili anonimi.</string>
+    <string name="toast_purchase_blocked">Acquisti di applicazioni non disponibili su profili anonimi.</string>
 </resources>
