@@ -317,4 +317,5 @@
     <string name="onboarding_permission_installer">Berechtigung des Installationsprogramms</string>
     <string name="onboarding_title_installer">Installationsprogramm</string>
     <string name="onboarding_title_accent">Akzentfarbe</string>
+    <string name="toast_purchase_blocked">App-Käufe sind für anonyme Konten nicht verfügbar.</string>
 </resources>

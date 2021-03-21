@@ -175,7 +175,7 @@
     <string name="action_uninstall">Удалить</string>
     <string name="action_skip">Пропустить</string>
     <string name="action_sign_in">Войти</string>
-    <string name="action_discard">Отменить</string>
+    <string name="action_discard">Отмена</string>
     <string name="title_spoof_manager">Менеджер подмены</string>
     <string name="spoof_apply">Убедитесь, что перезашли в аккаунт для применения подмены устройства</string>
     <string name="pref_install_profile_summary">Выберите целевой профиль для установки приложений. Работает только с методом root-установки</string>
@@ -188,9 +188,9 @@
     <string name="exodus_title_alt">Отчёт Exodus</string>
     <string name="exodus_report">Отчёт Exodus</string>
     <string name="action_spoofed">Подмена</string>
-    <string name="action_resend">Отправить повторно</string>
+    <string name="action_resend">Переотправить</string>
     <string name="action_post">Отправить</string>
-    <string name="action_get_local_apk">Сохранить приложение</string>
+    <string name="action_get_local_apk">Сохранить пакет приложения</string>
     <string name="action_discover">Обзор</string>
     <string name="action_ask">Спросить</string>
     <string name="toast_spoof_applied">Подмена устройства успешно применена.</string>
@@ -317,4 +317,5 @@
     <string name="action_filter_misc">Разное</string>
     <string name="action_filter_apply">Применить</string>
     <string name="action_apply">Применить</string>
+    <string name="toast_purchase_blocked">Покупка приложений недоступна для анонимных аккаунтов.</string>
 </resources>
