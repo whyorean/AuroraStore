@@ -225,7 +225,7 @@
     <string name="onboarding_permission_esa">Dostęp do pamięci zewnętrznej</string>
     <string name="onboarding_tos_error">Najpierw zaznacz, że przeczytałeś Warunki Świadczenia Usługi.</string>
     <string name="onboarding_tos_confirmation">Zapoznałem się z Warunkami Świadczenia Usługi dla Aurora Store.</string>
-    <string name="onboarding_tos">Warunki świadczenia usługi</string>
+    <string name="onboarding_tos">Warunki Świadczenia Usługi</string>
     <string name="onboarding_tos_desc">Przeczytaj nasze Warunki Świadczenia Usługi i zaakceptuj je, aby korzystać z Aurora Store.</string>
     <string name="onboarding_title_permissions">Uprawnienia</string>
     <string name="onboarding_permission_select">Aurora Store wymaga następujących uprawnień</string>
@@ -317,4 +317,5 @@
     <string name="details_no_whitelist">Brak aplikacji na białej liście</string>
     <string name="details_no_updates">Brak dostępnych aktualizacji</string>
     <string name="details_no_reviews">Brak dostępnych recenzji</string>
+    <string name="toast_purchase_blocked">Zakup aplikacji nie jest dostępny na kontach anonimowych.</string>
 </resources>
