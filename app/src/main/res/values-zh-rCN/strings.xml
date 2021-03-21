@@ -208,7 +208,7 @@
     <string name="title_no_network">无网络</string>
     <string name="title_library">库</string>
     <string name="title_language">语言</string>
-    <string name="title_installer">应用安装包</string>
+    <string name="title_installer">应用安装器</string>
     <string name="title_installed">已安装</string>
     <string name="title_installation">安装</string>
     <string name="title_games">游戏</string>
