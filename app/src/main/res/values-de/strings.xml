@@ -175,7 +175,7 @@
     <string name="dialog_title_self_update">Neue Aktualisierung verfügbar</string>
     <string name="device_miui_extra">Optional können Sie den Native Installer wählen, aber dann können Sie keine gebündelten (geteilten) APKs installieren, Sie haben also die Wahl.</string>
     <string name="device_miui_description">Bitte deaktiviere die MIUI-Optimierungen, um Installationen zu ermöglichen, andernfalls kannst du das Wurzel- oder Services-Installationsprogramm wählen.</string>
-    <string name="device_miui_subtitle">Das Installationsprogramm kann aufgrund von MIUI-Optimierungen keine Apps installieren.</string>
+    <string name="device_miui_subtitle">Session-Installer kann aufgrund von MIUI-Optimierungen keine Apps installieren.</string>
     <string name="device_miui_title">MIUI erkannt!</string>
     <string name="device_huawei_description">Wir empfehlen Ihnen, das Geräte-Vortäuschen zu verwenden, wenn Sie ein aktuelles Huawei-Gerät besitzen. Möchten Sie das Vortäuschen jetzt anwenden\?</string>
     <string name="device_huawei_subtitle">Sie scheinen ein Huawei-Gerät zu verwenden. Aufgrund der jüngsten Einschränkungen durch Google können Sie sich möglicherweise nicht anmelden.</string>
@@ -189,7 +189,7 @@
     <string name="installer_status_failure_storage">Unzureichender Speicherplatz</string>
     <string name="installer_status_failure_invalid">Ungültige oder beschädigte APK</string>
     <string name="installer_status_failure_conflict">Konkurrierendes Paket vorhanden</string>
-    <string name="installer_status_failure_session">Session konnte nicht erstellt werden</string>
+    <string name="installer_status_failure_session">Sitzung konnte nicht erstellt werden</string>
     <string name="installer_status_failure_blocked">Installation wurde blockiert</string>
     <string name="installer_status_failure_aborted">Installation abgebrochen</string>
     <string name="installer_status_failure">Installation fehlgeschlagen</string>
