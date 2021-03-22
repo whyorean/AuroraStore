@@ -18,7 +18,7 @@ If you continue to use the Service after the revised Terms go into effect, then 
 
 ## Privacy Policy
 
-We have a privacy policy covering the collection, use, and disclosure of user information, which can be found at **https://gitlab.com/AuroraOSS/AuroraStore/POLICY.md**.
+We have a privacy policy covering the collection, use, and disclosure of user information, which can be found at **https://gitlab.com/AuroraOSS/AuroraStore/-/blob/master/POLICY.md**.
 
 ## Copyright Policy
 
@@ -26,7 +26,7 @@ We take intellectual property rights seriously, and by using a copyright policy 
 
 ## Disclaimer
 
-We have a disclaimer covering the use of our Service and the content within **Aurora Store**, which can be found at **https://gitlab.com/AuroraOSS/AuroraStore/DISCLAIMER.md**
+We have a disclaimer covering the use of our Service and the content within **Aurora Store**, which can be found at **https://gitlab.com/AuroraOSS/AuroraStore/-/blob/master/DISCLAIMER.md**
 
 ## Third-Party Services
 
