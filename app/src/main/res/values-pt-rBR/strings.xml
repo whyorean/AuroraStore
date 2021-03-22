@@ -7,7 +7,7 @@
     <string name="details_dev_address">Endereço</string>
     <string name="details_dev_email">Correio eletrônico</string>
     <string name="details_description">Descrição</string>
-    <string name="title_spoof_manager">Gerenciar spoofing (falsificação)</string>
+    <string name="title_spoof_manager">Gerenciar simulação</string>
     <string name="action_whitelist">Lista de permissões</string>
     <string name="title_blacklist_manager">Gerenciar lista negra</string>
     <string name="pref_ui_theme_black">Preto</string>
@@ -32,7 +32,7 @@
     <string name="about_bitcoin_btc">Bitcoin</string>
     <string name="about_bitcoin_bch">Bitcoin Cash</string>
     <string name="about_bhim">BHIM - UPI</string>
-    <string name="action_spoofed">Falsificar</string>
+    <string name="action_spoofed">Simular</string>
     <string name="action_ok">Okay</string>
     <string name="action_filter_apps_with_ads">Apps com anúncios</string>
     <string name="action_export">Exportar</string>
@@ -44,7 +44,7 @@
     <string name="about_xda">Dev Tópico</string>
     <string name="about_libera">Liberapay</string>
     <string name="toast_purchase_blocked">As compras de aplicativos não estão disponíveis em contas anônimas.</string>
-    <string name="toast_spoof_applied">Falsificação de dispositivo aplicada com sucesso.</string>
+    <string name="toast_spoof_applied">Simulação de dispositivo aplicada com sucesso.</string>
     <string name="toast_permission_granted">Permissão garantida</string>
     <string name="toast_developer_setting_failed">Falha ao abrir as configurações do desenvolvedor, certifique-se de que esteja habilitado nas configurações do dispositivo.</string>
     <string name="toast_clipboard_copied">Copiado para a área de transferência</string>
@@ -94,7 +94,7 @@
     <string name="device_miui_description">Por favor, desative as otimizações MIUI para permitir as instalações, caso contrário, você pode escolher o instalador Root ou Services.</string>
     <string name="device_miui_subtitle">O instalador de sessão não pode instalar aplicativos devido a otimizações MIUI.</string>
     <string name="device_miui_title">MIUI detectado!</string>
-    <string name="device_huawei_description">Sugerimos que você use a falsificação de dispositivo caso tenha um dispositivo Huawei recente. Você deseja aplicar a falsificasão agora\?</string>
+    <string name="device_huawei_description">Sugerimos que você use a Simulação de dispositivo caso tenha um dispositivo Huawei recente. Você deseja aplicar a Simulação agora\?</string>
     <string name="device_huawei_subtitle">Parece que você está usando um dispositivo Huawei, devido a recentes banimentos do Google, você pode não conseguir fazer o login.</string>
     <string name="device_huawei_title">Huawei detectado!</string>
     <string name="menu_terms">Termos de serviço</string>
@@ -287,7 +287,7 @@
     <string name="tab_for_you">Para você</string>
     <string name="tab_editor_choice">Escolha dos editores</string>
     <string name="tab_categories">Categorias</string>
-    <string name="spoof_apply">Certifique-se de fazer login novamente para aplicar a falsificação</string>
+    <string name="spoof_apply">Certifique-se de fazer login novamente para aplicar a simulação</string>
     <string name="purchase_session_expired">Sessão expirada, faça login novamente para obter uma nova sessão.</string>
     <string name="purchase_no_file">Não foi possível obter arquivos</string>
     <string name="purchase_not_found">App não encontrado</string>
