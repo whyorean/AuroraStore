@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="details_dev_website">موقع الكتروني</string>
+    <string name="details_dev_website">الموقع الإكتروني</string>
     <string name="details_dev_email">البريد الإلكتروني</string>
     <string name="details_no_dependencies">لا توجد اعتماديات</string>
     <string name="details_dependencies">الاعتماديات</string>
@@ -12,8 +12,8 @@
     <string name="filter_review_four">أربع</string>
     <string name="filter_review_five">خمس</string>
     <string name="download_speed_estimating">يتم التقدير</string>
-    <string name="account_google">قوقل</string>
-    <string name="exodus_substring">تتبع (s) وجدت في</string>
+    <string name="account_google">حساب قوقل</string>
+    <string name="exodus_substring">تم العثور على برمجيات تتبع وعددها</string>
     <string name="title_spoof_manager">مدير المحاكاة الوهمية</string>
     <string name="toast_permission_granted">الإذن الممنوح</string>
     <string name="toast_developer_setting_failed">فشل في فتح إعدادات المطور ، تأكد من تمكينها من إعدادات الجهاز.</string>
@@ -29,14 +29,14 @@
     <string name="title_device">الجهاز</string>
     <string name="title_details">التفاصيل</string>
     <string name="title_blacklist_manager">مدير القائمة السوداء</string>
-    <string name="title_apps_sale">التطبيقات المعروضة للبيع</string>
+    <string name="title_apps_sale">تطبيقات بسعر مخفض</string>
     <string name="title_apps_library">تطبيقات في المكتبة</string>
     <string name="title_apps">التطبيقات</string>
     <string name="title_account_manager">الحسابات</string>
     <string name="action_post">ارسال</string>
     <string name="title_about">حول</string>
     <string name="tab_trending">المتصدرة</string>
-    <string name="tab_top_paid">افضل المدفوعة</string>
+    <string name="tab_top_paid">افضل التطبيقات المدفوعة</string>
     <string name="tab_top_grossing">الاكثر شهرة</string>
     <string name="tab_top_free">المجانية المتصدرة</string>
     <string name="tab_top_charts">الاعلى تقييما</string>
@@ -91,13 +91,13 @@
     <string name="menu_disclaimer">اخلاء المسؤوليه</string>
     <string name="installer_status_unknown">غير معروف</string>
     <string name="installer_status_success">تم التثبيت بنجاح</string>
-    <string name="installer_status_failure_storage">مساحة ذاكرة غير كافية</string>
+    <string name="installer_status_failure_storage">مساحة التخزين غير كافية</string>
     <string name="installer_status_failure_incompatible">تطبيق غير متوافق</string>
     <string name="installer_status_failure_conflict">توجد حزمة متعارضة</string>
     <string name="installer_status_failure_blocked">تم حظر التثبيت</string>
     <string name="installer_status_failure_aborted">تم إلغاء التثبيت</string>
     <string name="installer_status_failure">فشل التثبيت</string>
-    <string name="installer_root_available">الوصول إلى الجذر متاح</string>
+    <string name="installer_root_available">الوصول إلى صلاحية الروت متاح</string>
     <string name="filter_review_positive">إيجابية</string>
     <string name="filter_review_critical">الحرجه</string>
     <string name="filter_review_all">الجميع</string>
@@ -194,7 +194,7 @@
     <string name="action_ignore">تجاهل</string>
     <string name="action_filter_paid_apps">مدفوع</string>
     <string name="action_filter_misc">متفرقات</string>
-    <string name="action_filter_gsf_dependent_apps">تعتمد على خدمات قوقل GSF</string>
+    <string name="action_filter_gsf_dependent_apps">يعتمد على خدمات قوقل GSF</string>
     <string name="action_filter_apply">تطبيق</string>
     <string name="action_filter_all">الجميع</string>
     <string name="action_filter">عوامل التصفيه</string>
@@ -236,8 +236,8 @@
     <string name="details_others_think">انظر ما يعتقده الآخرون حول هذا التطبيق</string>
     <string name="spoof_apply">تأكد من إعادة تسجيل الدخول لتطبيق المحاكاة التحايلية</string>
     <string name="installer_service_available">خدمات Aurora متاحة وجاهزة للتثبيت.</string>
-    <string name="pref_downloader_external_desc">سيتم استخدام التخزين الخارجي للتنزيلات والتصدير وما إلى ذلك.</string>
-    <string name="installer_root_unavailable">لا توجد صلاحيات الجذر ، امنح حق الوصول إلى الجذر أو قم بتغيير المثبت.</string>
+    <string name="pref_downloader_external_desc">سيتم استخدام وحدة التخزين الخارجي للتنزيلات والتصدير وما إلى ذلك.</string>
+    <string name="installer_root_unavailable">لا توجد صلاحيات الروت ، امنح حق الوصول إلى الروت أو قم بتغيير المثبت.</string>
     <string name="pref_filter_google_summary">إزالة جميع تطبيقات Google من نتائج البحث وفئات التطبيقات</string>
     <string name="pref_dialog_to_apply_restart">سيتم تطبيق هذا الإعداد بعد إعادة تشغيل التطبيق</string>
     <string name="device_miui_subtitle">لا يمكن لمثبت الجلسة تثبيت التطبيقات بسبب تحسينات MIUI.</string>
@@ -246,7 +246,7 @@
     <string name="onboarding_tos_desc">يرجى قراءة شروط الخدمة الخاصة بنا وقبولها لاستخدام متجر Aurora.</string>
     <string name="onboarding_permission_esa_desc">لحفظ التنزيلات (APKs وOBBs) ، قم بتصدير واستيراد تكوينات الجهاز على وحدة التخزين الخارجية.</string>
     <string name="installer_service_misconfigured">لم يتم تكوين خدمات Aurora. تأكد من تمكين الخدمة ومنح جميع الأذونات</string>
-    <string name="pref_install_profile_summary">حدد ملف التعريف الهدف لتثبيت التطبيقات عليه. يعمل فقط مع طريقة تثبيت الجذر</string>
+    <string name="pref_install_profile_summary">حدد ملف التعريف الهدف لتثبيت التطبيقات عليه. يعمل فقط مع طريقة تثبيت الروت</string>
     <string name="device_miui_extra">اختياريا يمكنك اختيار المثبت الأصلي، ولكن بعد ذلك لا يمكنك تثبيت التطبيقات المجمعة (تقسيم) APKs، لذلك الخيار لك.</string>
     <string name="installer_service_unavailable">خدمات Aurora إما غير مثبتة أو الإصدار غير صحيح (مطلوب &gt; = 1.0.9) ، يرجى تثبيته أو تغيير المثبت</string>
     <string name="details_beta_description">سترى ميزات وأخطاء جديدة قبل أن يراها المستخدمون. قدم ملاحظاتك للمطورين لمساعدتهم على التحسين من جودة تطبيقاتهم.</string>
@@ -290,16 +290,16 @@
     <string name="account_logout">تسجيل الخروج من Aurora</string>
     <string name="account_login_using">تسجيل الدخول باستخدام</string>
     <string name="account_logged_out">لقد تم تسجيل خروجك</string>
-    <string name="account_anonymous">مجهول</string>
+    <string name="account_anonymous">حساب مجهول</string>
     <string name="about_xda_summary">اطلع على موضوع Aurora Store على XDA للمناقشات أو الاقتراحات.</string>
     <string name="about_xda">موضوع المطور</string>
     <string name="about_telegram_summary">انضم إلى مجموعة دعم Aurora للمناقشات أو الاقتراحات.</string>
     <string name="about_telegram">تيليجرام</string>
     <string name="about_paypal_summary">تبرع عبر بايبال</string>
     <string name="about_paypal">باي بال</string>
-    <string name="about_libera_summary">كن راعياً على Liberapay</string>
+    <string name="about_libera_summary">كن داعما على Liberapay</string>
     <string name="about_libera">ليبراباي</string>
-    <string name="about_gitlab_summary">احصل على شفرة المصدر لمتجر أورورا من Aurora OSS على GitLab.</string>
+    <string name="about_gitlab_summary">احصل على الشفرة المصدرية لمتجر أورورا من Aurora OSS على GitLab.</string>
     <string name="about_gitlab">جيت لاب</string>
     <string name="about_fdroid_summary">احصل على متجر Aurora عبر F-Droid.</string>
     <string name="about_fdroid">اف-درويد</string>
