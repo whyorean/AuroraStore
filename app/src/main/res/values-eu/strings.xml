@@ -149,7 +149,7 @@
     <string name="exodus_progress">Aztarnariren bila…</string>
     <string name="exodus_powered">Exodus-ek egindakoa</string>
     <string name="exodus_no_tracker">Ez dauka aztarnaririk</string>
-    <string name="exodus_no_report">Ez dago informerik</string>
+    <string name="exodus_no_report">Ez dago txostenik</string>
     <string name="download_speed_estimating">Bailoztatzen</string>
     <string name="download_resume_all">Guztiak jarraitu</string>
     <string name="download_resume">Jarraitu</string>
