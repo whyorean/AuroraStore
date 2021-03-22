@@ -38,7 +38,7 @@
     <string name="about_libera">Liberapay</string>
     <string name="about_gitlab">GitLab</string>
     <string name="about_bitcoin_eth">Ethereum</string>
-    <string name="about_fdroid_summary">Aurora von F-Droid beziehen.</string>
+    <string name="about_fdroid_summary">Aurora Store von F-Droid beziehen.</string>
     <string name="about_fdroid">F-Droid</string>
     <string name="about_bitcoin_btc">Bitcoin</string>
     <string name="details_dev_website">Website</string>
@@ -175,7 +175,7 @@
     <string name="dialog_title_self_update">Neue Aktualisierung verfügbar</string>
     <string name="device_miui_extra">Optional können Sie den Native Installer wählen, aber dann können Sie keine gebündelten (geteilten) APKs installieren, Sie haben also die Wahl.</string>
     <string name="device_miui_description">Bitte deaktiviere die MIUI-Optimierungen, um Installationen zu ermöglichen, andernfalls kannst du das Wurzel- oder Services-Installationsprogramm wählen.</string>
-    <string name="device_miui_subtitle">Das Installationsprogramm kann aufgrund von MIUI-Optimierungen keine Apps installieren.</string>
+    <string name="device_miui_subtitle">Das Sitzungsinstallationsprogramm kann aufgrund von MIUI-Optimierungen keine Anwendungen installieren.</string>
     <string name="device_miui_title">MIUI erkannt!</string>
     <string name="device_huawei_description">Wir empfehlen Ihnen, das Geräte-Vortäuschen zu verwenden, wenn Sie ein aktuelles Huawei-Gerät besitzen. Möchten Sie das Vortäuschen jetzt anwenden\?</string>
     <string name="device_huawei_subtitle">Sie scheinen ein Huawei-Gerät zu verwenden. Aufgrund der jüngsten Einschränkungen durch Google können Sie sich möglicherweise nicht anmelden.</string>
@@ -189,7 +189,7 @@
     <string name="installer_status_failure_storage">Unzureichender Speicherplatz</string>
     <string name="installer_status_failure_invalid">Ungültige oder beschädigte APK</string>
     <string name="installer_status_failure_conflict">Konkurrierendes Paket vorhanden</string>
-    <string name="installer_status_failure_session">Session konnte nicht erstellt werden</string>
+    <string name="installer_status_failure_session">Sitzung konnte nicht erstellt werden</string>
     <string name="installer_status_failure_blocked">Installation wurde blockiert</string>
     <string name="installer_status_failure_aborted">Installation abgebrochen</string>
     <string name="installer_status_failure">Installation fehlgeschlagen</string>
@@ -270,7 +270,7 @@
     <string name="action_ask">Fragen</string>
     <string name="about_xda_summary">Besuche den Aurora Store XDA-Thread für Diskussionen oder Tipps.</string>
     <string name="about_xda">Entwickler-Thread</string>
-    <string name="about_telegram_summary">Treten Sie der Aurora-Supportgruppe bei, um zu diskutieren oder Tipps zu erhalten.</string>
+    <string name="about_telegram_summary">Tritt der Aurora-Hilfesgruppe bei, um zu diskutieren oder Vorschläge einzureichen.</string>
     <string name="action_uninstall">Deinstallieren</string>
     <string name="action_try_later">Später versuchen</string>
     <string name="action_submit">Absenden</string>
@@ -289,7 +289,7 @@
     <string name="action_read">Lesen</string>
     <string name="action_purchase">Kaufen</string>
     <string name="action_pending">Ausstehend</string>
-    <string name="action_pause">Pause</string>
+    <string name="action_pause">Anhalten</string>
     <string name="action_open">Öffnen</string>
     <string name="action_ok">OK</string>
     <string name="action_manual">Manuelles Herunterladen</string>
@@ -317,5 +317,5 @@
     <string name="onboarding_permission_installer">Berechtigung des Installationsprogramms</string>
     <string name="onboarding_title_installer">Installationsprogramm</string>
     <string name="onboarding_title_accent">Akzentfarbe</string>
-    <string name="toast_purchase_blocked">App-Käufe sind für anonyme Konten nicht verfügbar.</string>
+    <string name="toast_purchase_blocked">Anwendungskäufe sind für anonyme Konten nicht verfügbar.</string>
 </resources>

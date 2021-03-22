@@ -317,4 +317,5 @@
     <string name="purchase_session_expired">Session expirée, reconnectez-vous pour obtenir une nouvelle session.</string>
     <string name="purchase_not_found">Application introuvable</string>
     <string name="purchase_unsupported">Application non prise en charge</string>
+    <string name="toast_purchase_blocked">Les achats d’applications ne sont pas disponibles sur les comptes anonymes.</string>
 </resources>

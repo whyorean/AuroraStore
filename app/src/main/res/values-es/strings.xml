@@ -317,4 +317,5 @@
     <string name="purchase_not_found">Aplicación no encontrada</string>
     <string name="purchase_session_expired">La sesión expiró, vuelva a iniciar sesión para obtener una nueva sesión.</string>
     <string name="purchase_unsupported">Aplicación no compatible</string>
+    <string name="toast_purchase_blocked">Las compras de aplicaciones no están disponibles en cuentas anónimas.</string>
 </resources>
