@@ -120,7 +120,7 @@
     <string name="details_paid">有料</string>
     <string name="details_others_think">他の人の意見を見る</string>
     <string name="details_no_whitelist">ホワイトリストアプリがありません</string>
-    <string name="details_no_updates">アップデートがありません</string>
+    <string name="details_no_updates">更新がありません</string>
     <string name="details_no_reviews">レビューがありません</string>
     <string name="details_no_permission">権限がありません</string>
     <string name="details_no_previews">プレビューがありません</string>
@@ -149,9 +149,9 @@
     <string name="action_wishlist_add">ウィッシュリストに追加</string>
     <string name="action_whitelist">ホワイトリスト</string>
     <string name="action_wait">待機</string>
-    <string name="action_updates">アップデート</string>
-    <string name="action_update_all">全てアップデート</string>
-    <string name="action_update">アップデート</string>
+    <string name="action_updates">更新</string>
+    <string name="action_update_all">全て更新</string>
+    <string name="action_update">更新</string>
     <string name="action_info">情報</string>
     <string name="action_uninstall">アンインストール</string>
     <string name="action_try_later">後で</string>
