@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="details_dev_email">ই-মেইল</string>
+    <string name="about_bitcoin_btc_summary">Bitcoin (BTC) দ্বারা ডোনাট করুন</string>
+    <string name="about_bitcoin_bch_summary">Bitcoin Cash (BHC) এ ডোনেট করুণ</string>
+    <string name="about_bitcoin_bch">Bitcoin Cash</string>
+    <string name="about_bhim_summary">UPI দ্বারা ডোনাট করুন</string>
 </resources>
