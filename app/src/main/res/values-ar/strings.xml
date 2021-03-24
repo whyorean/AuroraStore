@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="details_dev_website">الموقع الإكتروني</string>
+    <string name="details_dev_website">الموقع الإلكتروني</string>
     <string name="details_dev_email">البريد الإلكتروني</string>
     <string name="details_no_dependencies">لا توجد اعتماديات</string>
     <string name="details_dependencies">الاعتماديات</string>
@@ -13,7 +13,7 @@
     <string name="filter_review_five">خمس</string>
     <string name="download_speed_estimating">يتم التقدير</string>
     <string name="account_google">حساب قوقل</string>
-    <string name="exodus_substring">تم العثور على برمجيات تتبع وعددها</string>
+    <string name="exodus_substring">من برمجيات التتبع تم العثور عليها بإصدار التطبيق</string>
     <string name="title_spoof_manager">مدير المحاكاة الوهمية</string>
     <string name="toast_permission_granted">الإذن الممنوح</string>
     <string name="toast_developer_setting_failed">فشل في فتح إعدادات المطور ، تأكد من تمكينها من إعدادات الجهاز.</string>
@@ -66,7 +66,7 @@
     <string name="pref_filter_google_title">تصفية تطبيقات قوقل</string>
     <string name="pref_filter_fdroid_title">تصفية تطبيقات F-Droid</string>
     <string name="pref_downloader_external">استخدم وحدة التخزين الخارجي</string>
-    <string name="pref_downloader_active_title">التحميل النشط</string>
+    <string name="pref_downloader_active_title">التنزيل النشط</string>
     <string name="pref_app_download">التنزيلات</string>
     <string name="onboarding_permission_installer">إذن المثبت</string>
     <string name="onboarding_permission_esm">مدير التخزين الخارجي</string>
@@ -113,7 +113,7 @@
     <string name="download_resume_all">استئناف الكل</string>
     <string name="download_resume">إستئناف</string>
     <string name="download_queued">في قائمة الإنتظار</string>
-    <string name="download_progress">جارٍ التحميل</string>
+    <string name="download_progress">جارٍ التنزيل</string>
     <string name="download_paused">متوقف</string>
     <string name="download_pause_all">إيقاف الكل مؤقتًا</string>
     <string name="download_pause">إيقاف</string>
@@ -123,7 +123,7 @@
     <string name="download_failed">فشل التنزيل</string>
     <string name="download_eta_calculating">يتم الحساب</string>
     <string name="download_deleted">تم الحذف</string>
-    <string name="download_completed">تم تحميله</string>
+    <string name="download_completed">تم تنزيله</string>
     <string name="download_clear_completed">اكتمل المسح</string>
     <string name="download_canceled">ألغيت</string>
     <string name="download_cancel_all">إلغاء الكل</string>
@@ -179,7 +179,7 @@
     <string name="action_ok">حسناً</string>
     <string name="action_next">التالي</string>
     <string name="action_more">المزيد</string>
-    <string name="action_manual">تحميل يدوي</string>
+    <string name="action_manual">تنزيل يدوي</string>
     <string name="action_logout">تسجيل خروج</string>
     <string name="action_logging_in">جاري تسجيل الدخول</string>
     <string name="action_leave">غادر</string>
@@ -212,7 +212,7 @@
     <string name="details_more_about_app">المزيد حول التطبيق</string>
     <string name="details_changelog_unavailable">لم يتم توفير سجل التغيير</string>
     <string name="action_wishlist_add">إضافة إلى قائمة الأمنيات</string>
-    <string name="action_get_local_apk">حفظ حزمة التطبيقات</string>
+    <string name="action_get_local_apk">حفظ حزمة التطبيق</string>
     <string name="action_filter_apps_with_ads">التطبيقات التي تتضمن إعلانات</string>
     <string name="installer_status_failure_session">تعذر إنشاء الجلسة</string>
     <string name="details_rate_stars_first">أدخل تصنيف النجوم أولاً</string>
@@ -265,7 +265,7 @@
     <string name="action_favourites">التطبيقات المفضلة</string>
     <string name="action_export">تصدير</string>
     <string name="action_enable">تمكين</string>
-    <string name="action_download">تحميل</string>
+    <string name="action_download">تنزيل</string>
     <string name="action_done">إنتهى</string>
     <string name="action_discover">اكتشف</string>
     <string name="action_discard">تجاهل</string>
