@@ -62,4 +62,6 @@
     <string name="action_installing">כעת בהתקנה</string>
     <string name="action_installations">התקנות</string>
     <string name="action_install">התקנה</string>
+    <string name="details_dev_website">אתר אינטרנט</string>
+    <string name="details_dev_email">דוא״ל</string>
 </resources>
