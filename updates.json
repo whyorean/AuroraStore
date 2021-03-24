@@ -1,7 +1,7 @@
 {
-  "version_name": "4.0.1",
+  "version_name": "4.0.2",
   "version_code": 32,
-  "aurora_build": "https://gitlab.com/AuroraOSS/AuroraStore/uploads/93e6403ebaff4f8797cd50f696fa019e/AuroraStore_4.0.1.apk",
+  "aurora_build": "https://gitlab.com/AuroraOSS/AuroraStore/uploads/d60cc83b3d5db6cb680a8083febf9aa8/AuroraStore_4.0.2.apk",
   "fdroid_build": "",
   "changelog": "\n Changelog : v4.0.1\n • New GPlay API\n • New improved UI\n • Better app installers\n • Theme Engine\n • Bug fixes & improvements"
 }
