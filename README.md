@@ -45,7 +45,7 @@ Nightlies are released here:
 
 `Aurora Store v3 is still in development! Bugs are to be expected! Any bug reports are appreciated.`
 
-[<img src="https://f-droid.org/badge/get-it-on.png" alt="Get it on F-Droid" height="60">](https://f-droid.org/packages/com.dragons.aurora/)
+[<img src="https://f-droid.org/badge/get-it-on.png" alt="Get it on F-Droid" height="60">](https://f-droid.org/en/packages/com.aurora.store/)
 
 ## FAQ
 
