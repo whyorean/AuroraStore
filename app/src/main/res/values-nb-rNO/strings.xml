@@ -1,2 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="details_free">Gratis</string>
+    <string name="details_files">Filer</string>
+    <string name="details_dev_website">Nettsted</string>
+    <string name="details_dev_reply">Utviklerens svar</string>
+    <string name="details_dev_profile">Utviklerprofil</string>
+    <string name="details_dev_email">E-post</string>
+    <string name="details_dev_details">Utviklerkontakt</string>
+    <string name="details_dev_address">Adresse</string>
+</resources>
