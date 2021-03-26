@@ -29,6 +29,8 @@ import com.aurora.extensions.toast
 import com.aurora.store.R
 import com.aurora.store.databinding.SheetTosBinding
 import com.aurora.store.util.Preferences
+import nl.komponents.kovenant.task
+import java.util.concurrent.TimeUnit
 import kotlin.system.exitProcess
 
 class TOSSheet : BaseBottomSheet() {
@@ -71,17 +73,22 @@ class TOSSheet : BaseBottomSheet() {
         }
 
         B.btnPrimary.setOnClickListener {
-            if (B.checkboxAccept.isChecked){
+            if (B.checkboxAccept.isChecked) {
                 Preferences.putBoolean(requireContext(), Preferences.PREFERENCE_TOS_READ, true)
                 dismissAllowingStateLoss()
-            }else{
+            } else {
                 toast(R.string.onboarding_tos_error)
             }
         }
 
         B.btnSecondary.setOnClickListener {
-            requireActivity().finish();
-            exitProcess(0);
+            toast("Bye Bye")
+            task {
+                TimeUnit.SECONDS.sleep(2)
+            } success {
+                requireActivity().finish();
+                exitProcess(0);
+            }
         }
     }
 }

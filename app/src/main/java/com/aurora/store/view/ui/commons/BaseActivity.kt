@@ -144,7 +144,9 @@ abstract class BaseActivity : AppCompatActivity(), NetworkProvider.NetworkListen
         task {
             TimeUnit.SECONDS.sleep(5)
         } successUi {
-            TOSSheet.newInstance().show(supportFragmentManager, TOSSheet.TAG)
+            val sheet = TOSSheet.newInstance()
+            sheet.isCancelable = false
+            sheet.show(supportFragmentManager, TOSSheet.TAG)
         }
     }
 
