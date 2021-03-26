@@ -32,8 +32,10 @@ import com.aurora.store.R
 import com.aurora.store.data.AuthState
 import com.aurora.store.data.event.BusEvent
 import com.aurora.store.databinding.ActivitySplashBinding
+import com.aurora.store.view.ui.account.AccountActivity
 import com.aurora.store.view.ui.commons.BaseActivity
 import com.aurora.store.view.ui.commons.BlacklistActivity
+import com.aurora.store.view.ui.preferences.SettingsActivity
 import com.aurora.store.view.ui.spoof.SpoofActivity
 import com.aurora.store.viewmodel.auth.AuthViewModel
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
@@ -129,6 +131,14 @@ class SplashActivity : BaseActivity() {
             }
             R.id.menu_spoof_manager -> {
                 open(SpoofActivity::class.java)
+                return true
+            }
+            R.id.menu_account_manager -> {
+                open(AccountActivity::class.java)
+                return true
+            }
+            R.id.menu_settings -> {
+                open(SettingsActivity::class.java)
                 return true
             }
         }
