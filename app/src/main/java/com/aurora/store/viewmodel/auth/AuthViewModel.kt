@@ -42,6 +42,7 @@ import kotlinx.coroutines.supervisorScope
 import nl.komponents.kovenant.task
 import java.net.ConnectException
 import java.net.UnknownHostException
+import java.util.*
 
 class AuthViewModel(application: Application) : BaseAndroidViewModel(application) {
 
@@ -182,6 +183,8 @@ class AuthViewModel(application: Application) : BaseAndroidViewModel(application
 
         if (spoofProvider.isLocaleSpoofEnabled()) {
             authData.locale = spoofProvider.getSpoofLocale()
+        } else {
+            authData.locale = Locale.getDefault()
         }
 
         if (authData.authToken.isNotEmpty() && authData.deviceConfigToken.isNotEmpty()) {
