@@ -24,12 +24,13 @@ import android.content.ContextWrapper
 import android.content.res.Configuration
 import android.os.Build
 import android.text.TextUtils
+import com.aurora.extensions.isHuawei
 import java.util.*
 
 class NativeDeviceInfoProvider(context: Context) : ContextWrapper(context) {
 
     fun getNativeDeviceProperties(): Properties {
-        return Properties().apply {
+        val properties = Properties().apply {
             //Build Props
             setProperty("UserReadableName", "${Build.DEVICE}-default")
             setProperty("Build.HARDWARE", Build.HARDWARE)
@@ -116,6 +117,11 @@ class NativeDeviceInfoProvider(context: Context) : ContextWrapper(context) {
             setProperty("CellOperator", "310")
             setProperty("SimOperator", "38")
         }
+
+        if (isHuawei())
+            stripHuaweiProperties(properties)
+
+        return properties
     }
 
     private fun getFeatures(): List<String> {
@@ -163,5 +169,18 @@ class NativeDeviceInfoProvider(context: Context) : ContextWrapper(context) {
 
         }
         return libraries
+    }
+
+    private fun stripHuaweiProperties(properties: Properties): Properties {
+        //Add i-Phoney properties
+        properties["Build.HARDWARE"] = "unknown"
+        properties["Build.BOOTLOADER"] = "unknown"
+        properties["Build.BRAND"] = "PassionFruit"
+        properties["Build.DEVICE"] = "ProPlus5GFold"
+        properties["Build.MODEL"] = "iPhoney"
+        properties["Build.MANUFACTURER"] = "PassionFruit"
+        properties["Build.PRODUCT"] = "iPhoney_24"
+        properties["Build.ID"] = "ABC.123"
+        return properties
     }
 }
