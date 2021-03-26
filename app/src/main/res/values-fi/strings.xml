@@ -31,4 +31,6 @@
     <string name="details_dev_email">Sähköposti</string>
     <string name="details_dev_address">Osoite</string>
     <string name="details_no_app">Sovelluksia ei ole saatavilla</string>
+    <string name="toast_clipboard_copied">Kopioitu leikepöydälle</string>
+    <string name="toast_purchase_blocked">Sovellusostot eivät ole käytettävissä anonyymeillä tileillä.</string>
 </resources>
