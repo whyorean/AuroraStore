@@ -289,7 +289,7 @@
     <string name="onboarding_tos_desc">Veuillez lire nos conditions d’utilisation et les accepter pour utiliser Aurora Store.</string>
     <string name="onboarding_tos">Conditions d’utilisation</string>
     <string name="onboarding_title_permissions">Autorisations</string>
-    <string name="onboarding_title_accent">Accentuation</string>
+    <string name="onboarding_title_accent">Couleur</string>
     <string name="onboarding_permission_select">Aurora Store utilise les autorisations suivantes</string>
     <string name="list_update_all_txt_one">mise à jour disponible</string>
     <string name="dialog_desc_self_update">Souhaitez-vous mettre à jour \?</string>
