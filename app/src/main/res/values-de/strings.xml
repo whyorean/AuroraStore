@@ -38,7 +38,7 @@
     <string name="about_libera">Liberapay</string>
     <string name="about_gitlab">GitLab</string>
     <string name="about_bitcoin_eth">Ethereum</string>
-    <string name="about_fdroid_summary">Aurora Store von F-Droid beziehen.</string>
+    <string name="about_fdroid_summary">Aurora Store über F-Droid beziehen.</string>
     <string name="about_fdroid">F-Droid</string>
     <string name="about_bitcoin_btc">Bitcoin</string>
     <string name="details_dev_website">Website</string>
@@ -71,24 +71,24 @@
     <string name="title_language">Sprache</string>
     <string name="toast_clipboard_copied">In Zwischenablage kopiert</string>
     <string name="toast_apk_whitelisted">Wird nicht mehr ignoriert</string>
-    <string name="title_installer">Anwendungsinstallationsprogramm</string>
+    <string name="title_installer">Appinstallationsprogramm</string>
     <string name="title_apps_sale">Reduzierte Apps</string>
-    <string name="title_apps_library">Anwendungen in der Bibliothek</string>
+    <string name="title_apps_library">Apps in der Bibliothek</string>
     <string name="title_apps_games">Meine Apps und Spiele</string>
-    <string name="title_apps">Anwendungen</string>
-    <string name="purchase_not_found">Anwendung nicht gefunden</string>
-    <string name="purchase_unsupported">Anwendung nicht unterstützt</string>
-    <string name="purchase_invalid">Anwendung nicht gekauft</string>
-    <string name="pref_install_profile_summary">Wähle das Ziel-Profil aus, um Anwendungen zu installieren. Dies funktioniert nur mit der Root-Installationsmethode</string>
-    <string name="pref_install_auto_summary">Anwendungen werden sofort nach Abschluss des Herunterladen installiert</string>
-    <string name="pref_filter_google_title">Google-Anwendungen filtern</string>
-    <string name="pref_filter_google_summary">Entfernt alle Google-Anwendungen aus Suchergebnissen und Kategorie-Anwendungen</string>
-    <string name="pref_filter_fdroid_title">F-Droid-Anwendungen filtern</string>
-    <string name="pref_filter_fdroid_summary">Entfernt F-Droid-Anwendungen aus Anwendungslisten</string>
-    <string name="pref_dialog_to_apply_restart">Diese Einstellung wird nach dem Neustart der Anwendung angewendet</string>
+    <string name="title_apps">Apps</string>
+    <string name="purchase_not_found">App nicht gefunden</string>
+    <string name="purchase_unsupported">App wird nicht unterstützt</string>
+    <string name="purchase_invalid">App nicht gekauft</string>
+    <string name="pref_install_profile_summary">Wähle das Ziel-Profil aus, um Apps zu installieren. Dies funktioniert nur mit der Root-Installationsmethode</string>
+    <string name="pref_install_auto_summary">Apps werden sofort nach dem Herunterladen installiert</string>
+    <string name="pref_filter_google_title">Google-Apps filtern</string>
+    <string name="pref_filter_google_summary">Entfernt alle Google-Apps aus Suchergebnissen und den Kategorien</string>
+    <string name="pref_filter_fdroid_title">F-Droid-Apps filtern</string>
+    <string name="pref_filter_fdroid_summary">Entfernt F-Droid-Apps aus den Applisten</string>
+    <string name="pref_dialog_to_apply_restart">Diese Einstellung wird nach dem Neustart der App angewendet</string>
     <string name="pref_app_download">Heruntergeladene</string>
-    <string name="onboarding_permission_installer_desc">Installation von Anwendungen aus dem Aurora Store ermöglichen</string>
-    <string name="installer_status_failure_incompatible">Anwendung inkompatibel</string>
+    <string name="onboarding_permission_installer_desc">Installation von Apps aus dem Aurora Store erlauben</string>
+    <string name="installer_status_failure_incompatible">App inkompatibel</string>
     <string name="details_reviews_about_app">Mehr Bewertungen</string>
     <string name="details_rate_this_app">Diese App bewerten</string>
     <string name="details_no_whitelist">Keine Anwendungen auf der weißen Liste</string>
@@ -105,7 +105,7 @@
     <string name="toast_developer_setting_failed">Die Entwicklereinstellungen konnten nicht geöffnet werden, stelle sicher, dass sie in den Geräteeinstellungen aktiviert sind.</string>
     <string name="toast_apk_copy_success">APK erfolgreich exportiert</string>
     <string name="toast_apk_copy_failed">APK-Export fehlgeschlagen</string>
-    <string name="toast_apk_blacklisted">Auf der schwarzen Liste</string>
+    <string name="toast_apk_blacklisted">Auf der Blacklist</string>
     <string name="toast_anonymous_restriction">Nicht verfügbar bei anonymen Konten</string>
     <string name="toast_abandon_sessions">Alte Installationssitzungen abgebrochen</string>
     <string name="title_updates">Aktualisierungen</string>
@@ -121,7 +121,7 @@
     <string name="title_download_manager">Heruntergeladene</string>
     <string name="title_device">Gerät</string>
     <string name="title_details">Details</string>
-    <string name="title_blacklist_manager">Schwarze-Liste verwalten</string>
+    <string name="title_blacklist_manager">Blacklists verwalten</string>
     <string name="title_account_manager">Konten</string>
     <string name="title_about">Über</string>
     <string name="tab_trending">Aktuelle Trends</string>
@@ -175,7 +175,7 @@
     <string name="dialog_title_self_update">Neue Aktualisierung verfügbar</string>
     <string name="device_miui_extra">Optional kannst du den Native Installer wählen, aber dann kannst du keine gebündelten (geteilten) APKs installieren. Die Auswahl liegt also bei dir.</string>
     <string name="device_miui_description">Bitte deaktiviere die MIUI-Optimierungen, um Installationen zu ermöglichen, andernfalls kannst du das Root- oder Services-Installationsprogramm wählen.</string>
-    <string name="device_miui_subtitle">Das Sitzungsinstallationsprogramm kann aufgrund von MIUI-Optimierungen keine Anwendungen installieren.</string>
+    <string name="device_miui_subtitle">Das Sitzungsinstallationsprogramm kann aufgrund von MIUI-Optimierungen keine Apps installieren.</string>
     <string name="device_miui_title">MIUI erkannt!</string>
     <string name="device_huawei_description">Wir empfehlen dir, die Geräte-Vortäuschen Option zu verwenden, wenn du ein aktuelles Huawei-Gerät besitzst. Möchtest du das Vortäuschen jetzt anwenden\?</string>
     <string name="device_huawei_subtitle">Du scheinst ein Huawei-Gerät zu verwenden. Aufgrund der jüngsten Einschränkungen durch Google kannst du dich möglicherweise nicht anmelden.</string>
@@ -187,16 +187,16 @@
     <string name="installer_status_unknown">Unbekannt</string>
     <string name="installer_status_success">Erfolgreich installiert</string>
     <string name="installer_status_failure_storage">Unzureichender Speicherplatz</string>
-    <string name="installer_status_failure_invalid">Ungültige oder beschädigte APK</string>
+    <string name="installer_status_failure_invalid">Ungültige oder beschädigte APK Datei</string>
     <string name="installer_status_failure_conflict">Konkurrierendes Paket vorhanden</string>
-    <string name="installer_status_failure_session">Sitzung konnte nicht erstellt werden</string>
+    <string name="installer_status_failure_session">Sitzung konnte nicht gestartet werden</string>
     <string name="installer_status_failure_blocked">Installation wurde blockiert</string>
     <string name="installer_status_failure_aborted">Installation abgebrochen</string>
     <string name="installer_status_failure">Installation fehlgeschlagen</string>
     <string name="installer_service_misconfigured">Aurora Services nicht konfiguriert. Stelle sicher, dass diese aktiviert sind und alle Berechtigungen erteilt wurden</string>
-    <string name="installer_service_unavailable">Aurora-Dienste ist entweder nicht installiert oder die Version ist falsch (erforderlich &gt;= 1.0.9), bitte installiere diese oder ändere den Installationsmodus</string>
+    <string name="installer_service_unavailable">Aurora-Dienste sind entweder nicht installiert oder veraltet (erforderlich &gt;= 1.0.9), bitte installiere diese oder wechsel die Installationsart</string>
     <string name="installer_service_available">Aurora Services sind verfügbar und bereit zur Installation.</string>
-    <string name="installer_root_unavailable">Keine Root-Berechtigung! Bitte fehlende Berechtigung gewähren oder anderen Installer wählen.</string>
+    <string name="installer_root_unavailable">Keine Root-Berechtigung! Bitte fehlende Berechtigung gewähren oder anderen Installationsmodus wählen.</string>
     <string name="installer_root_available">Root-Zugriff verfügbar</string>
     <string name="filter_review_two">Zwei</string>
     <string name="filter_review_three">Drei</string>
@@ -233,7 +233,7 @@
     <string name="download_completed">Heruntergeladen</string>
     <string name="download_clear_completed">Löschen abgeschlossen</string>
     <string name="download_canceled">Storniert</string>
-    <string name="download_cancel_all">Alles stornieren.</string>
+    <string name="download_cancel_all">Alles stornieren</string>
     <string name="details_screenshots">Bildschirmfotos</string>
     <string name="details_review_submitted">Bewertung gesendet</string>
     <string name="details_reviews">Bewertungen</string>
@@ -302,7 +302,7 @@
     <string name="account_logout">Abmelden</string>
     <string name="action_accept">Akzeptieren</string>
     <string name="account_login_using">Anmelden mit</string>
-    <string name="account_logged_out">Du bist nicht angemeldet.</string>
+    <string name="account_logged_out">Du bist nicht angemeldet</string>
     <string name="about_paypal_summary">Per PayPal spenden</string>
     <string name="tab_top_grossing">Erfolgreichste</string>
     <string name="tab_editor_choice">Auswahl der Redaktion</string>
@@ -317,5 +317,5 @@
     <string name="onboarding_permission_installer">Berechtigung des Installationsprogramms</string>
     <string name="onboarding_title_installer">Installationsprogramm</string>
     <string name="onboarding_title_accent">Akzentfarbe</string>
-    <string name="toast_purchase_blocked">Anwendungskäufe sind für anonyme Konten nicht verfügbar.</string>
+    <string name="toast_purchase_blocked">Appkäufe sind für anonyme Konten nicht verfügbar.</string>
 </resources>
