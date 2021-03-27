@@ -46,8 +46,8 @@
     <string name="about_bitcoin_eth_summary">Per Ethereum spenden (ETH)</string>
     <string name="account_anonymous">Anonym</string>
     <string name="action_buy">Kaufen</string>
-    <string name="action_blacklist_add">Zur Blacklist hinzufügen</string>
-    <string name="action_blacklist">Blacklist</string>
+    <string name="action_blacklist_add">Zur schwarzen Liste hinzufügen</string>
+    <string name="action_blacklist">Schwarze Liste</string>
     <string name="action_back">Zurück</string>
     <string name="action_discard">Verwerfen</string>
     <string name="action_done">Fertig</string>
@@ -91,7 +91,7 @@
     <string name="installer_status_failure_incompatible">Anwendung inkompatibel</string>
     <string name="details_reviews_about_app">Mehr Bewertungen</string>
     <string name="details_rate_this_app">Diese App bewerten</string>
-    <string name="details_no_whitelist">Keine Apps auf der Whitelist</string>
+    <string name="details_no_whitelist">Keine Anwendungen auf der weißen Liste</string>
     <string name="details_no_app">Keine Apps verfügbar</string>
     <string name="details_more_about_app">Mehr über diese App</string>
     <string name="details_in_app_purchase">In-App-Käufe</string>
@@ -256,7 +256,7 @@
     <string name="details_beta_subscribed">Du bist ein Beta-Tester</string>
     <string name="details_beta">Beta Programm</string>
     <string name="action_wishlist_add">Zur Wunschliste hinzufügen</string>
-    <string name="action_whitelist">Whitelist</string>
+    <string name="action_whitelist">Weiße Liste</string>
     <string name="action_wait">Warten</string>
     <string name="action_updates">Updates</string>
     <string name="action_update_all">Alle aktualisieren</string>
