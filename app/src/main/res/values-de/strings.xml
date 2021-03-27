@@ -196,7 +196,7 @@
     <string name="installer_service_misconfigured">Aurora Services nicht konfiguriert. Stelle sicher, dass diese aktiviert sind und alle Berechtigungen erteilt wurden</string>
     <string name="installer_service_unavailable">Aurora-Dienste ist entweder nicht installiert oder die Version ist falsch (erforderlich &gt;= 1.0.9), bitte installiere diese oder ändere den Installationsmodus</string>
     <string name="installer_service_available">Aurora Services sind verfügbar und bereit zur Installation.</string>
-    <string name="installer_root_unavailable">Kein Root, gewähre Root-Zugriff oder ändere den Installationsmodus.</string>
+    <string name="installer_root_unavailable">Keine Root-Berechtigung! Bitte fehlende Berechtigung gewähren oder anderen Installer wählen.</string>
     <string name="installer_root_available">Root-Zugriff verfügbar</string>
     <string name="filter_review_two">Zwei</string>
     <string name="filter_review_three">Drei</string>
