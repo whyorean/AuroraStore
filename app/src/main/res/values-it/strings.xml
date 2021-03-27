@@ -235,7 +235,7 @@
     <string name="tab_editor_choice">Da non perdere</string>
     <string name="tab_categories">Categorie</string>
     <string name="spoof_apply">Assicurarsi di effettuare di nuovo l’accesso per applicare la simulazione</string>
-    <string name="purchase_session_expired">Sessione scaduta, effettuare di nuovo l\'accesso per ottenere una nuova sessione.</string>
+    <string name="purchase_session_expired">Sessione scaduta, effettuare di nuovo l’accesso per ottenere una nuova sessione.</string>
     <string name="pref_ui_title">Personalizzazione</string>
     <string name="pref_ui_theme_title">Tema</string>
     <string name="pref_ui_theme_system">Segui il sistema</string>
