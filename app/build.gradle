@@ -120,7 +120,8 @@ dependencies {
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
 
     //Arch LifeCycle
-    implementation("androidx.lifecycle:lifecycle-extensions:${versions.lifecycle}")
+    implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
+
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:${versions.lifecycle}")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:${versions.lifecycle}")
     implementation("androidx.lifecycle:lifecycle-viewmodel-savedstate:${versions.lifecycle}")

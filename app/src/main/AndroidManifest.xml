@@ -50,10 +50,14 @@
         android:name="android.hardware.touchscreen"
         android:required="false" />
 
+    <uses-feature
+        android:name="android.hardware.gamepad"
+        android:required="false"/>
+
     <application
         android:name=".AuroraApplication"
         android:allowBackup="true"
-        android:banner="@drawable/ic_launcher_background"
+        android:banner="@drawable/ic_tv_banner"
         android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"
         android:killAfterRestore="false"
