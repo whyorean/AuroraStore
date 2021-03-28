@@ -78,13 +78,14 @@ android {
 buildscript {
     ext {
         versions = [
-                okhttp3  : "4.9.0",
-                fetch2   : "3.1.6",
-                fuel     : "2.3.0",
-                glide    : "4.11.0",
-                lifecycle: "2.3.0",
-                epoxy    : "4.3.1",
-                libsu    : "2.5.1"
+                okhttp3   : "4.9.0",
+                fetch2    : "3.1.6",
+                fuel      : "2.3.0",
+                glide     : "4.11.0",
+                lifecycle : "2.3.1",
+                navigation: "2.3.4",
+                epoxy     : "4.3.1",
+                libsu     : "3.0.2"
         ]
     }
 }
@@ -103,7 +104,7 @@ dependencies {
     implementation("com.google.protobuf:protobuf-java:3.14.0")
 
     //Apache's Goodies
-    implementation("commons-io:commons-io:2.7")
+    implementation("commons-io:commons-io:2.8.0")
     implementation("org.apache.commons:commons-text:1.8")
 
     //Google's Goodies
@@ -119,15 +120,15 @@ dependencies {
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
 
     //Arch LifeCycle
-    implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
+    implementation("androidx.lifecycle:lifecycle-extensions:${versions.lifecycle}")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:${versions.lifecycle}")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:${versions.lifecycle}")
     implementation("androidx.lifecycle:lifecycle-viewmodel-savedstate:${versions.lifecycle}")
 
     //Arch Navigation
-    implementation("androidx.navigation:navigation-fragment-ktx:${navigation}")
-    implementation("androidx.navigation:navigation-runtime-ktx:${navigation}")
-    implementation("androidx.navigation:navigation-ui-ktx:${navigation}")
+    implementation("androidx.navigation:navigation-fragment-ktx:${versions.navigation}")
+    implementation("androidx.navigation:navigation-runtime-ktx:${versions.navigation}")
+    implementation("androidx.navigation:navigation-ui-ktx:${versions.navigation}")
 
     //UI Addons
     implementation("com.github.florent37:expansionpanel:1.2.4")
