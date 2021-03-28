@@ -12,7 +12,7 @@
     <string name="details_dev_address">Indirizzo</string>
     <string name="details_dev_email">E-mail</string>
     <string name="toast_clipboard_copied">Copiato negli appunti</string>
-    <string name="toast_apk_whitelisted">Rimosso dalla lista nera</string>
+    <string name="toast_apk_whitelisted">Rimossa dalla lista nera</string>
     <string name="toast_apk_copy_success">APK esportato con successo</string>
     <string name="toast_apk_copy_failed">Esportazione APK fallita</string>
     <string name="toast_apk_blacklisted">Messo in lista nera</string>
@@ -75,7 +75,7 @@
     <string name="details_think_this_app">Cosa ne pensi di questa applicazione\?</string>
     <string name="details_rate_this_app">Valuta questa applicazione</string>
     <string name="details_others_think">Scopri cosa pensano gli altri di questa applicazione</string>
-    <string name="details_no_whitelist">Nessuna applicazione rimossa dalla lista nera</string>
+    <string name="details_no_whitelist">Nessuna applicazione esclusa dalla lista nera</string>
     <string name="details_no_app">Nessuna applicazione disponibile</string>
     <string name="details_more_about_app">Altre informazioni sull’app</string>
     <string name="details_in_app_purchase">Acquisti in-app</string>
@@ -121,7 +121,7 @@
     <string name="details_beta_subscribed">Sei un Beta-tester</string>
     <string name="details_beta">Programma Beta</string>
     <string name="action_wishlist_add">Aggiungi alla lista dei desideri</string>
-    <string name="action_whitelist">Rimuovi dalla lista nera</string>
+    <string name="action_whitelist">Rimuovi da lista nera</string>
     <string name="action_wait">Aspetta</string>
     <string name="action_updates">Aggiornamenti</string>
     <string name="action_update_all">Aggiorna tutte</string>
@@ -235,7 +235,7 @@
     <string name="tab_editor_choice">Da non perdere</string>
     <string name="tab_categories">Categorie</string>
     <string name="spoof_apply">Assicurarsi di effettuare di nuovo l’accesso per applicare la simulazione</string>
-    <string name="purchase_session_expired">Sessione scaduta, effettuare di nuovo l\'accesso per ottenere una nuova sessione.</string>
+    <string name="purchase_session_expired">Sessione scaduta, effettuare di nuovo l’accesso per ottenere una nuova sessione.</string>
     <string name="pref_ui_title">Personalizzazione</string>
     <string name="pref_ui_theme_title">Tema</string>
     <string name="pref_ui_theme_system">Segui il sistema</string>
