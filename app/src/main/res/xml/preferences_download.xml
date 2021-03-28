@@ -29,6 +29,8 @@
 
     <SwitchPreferenceCompat
         app:defaultValue="true"
+        app:dependency="PREFERENCE_DOWNLOAD_EXTERNAL"
+        app:disableDependentsState="false"
         app:iconSpaceReserved="false"
         app:key="PREFERENCE_AUTO_DELETE"
         app:summary="@string/pref_install_delete_summary"
