@@ -64,4 +64,5 @@
     <string name="action_install">התקנה</string>
     <string name="details_dev_website">אתר אינטרנט</string>
     <string name="details_dev_email">דוא״ל</string>
+    <string name="tab_editor_choice">בחירת העורך</string>
 </resources>
