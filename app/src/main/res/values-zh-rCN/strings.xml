@@ -202,9 +202,9 @@
     <string name="toast_anonymous_restriction">对匿名账户不可用</string>
     <string name="toast_abandon_sessions">旧的安装会话已废弃</string>
     <string name="title_updates">更新</string>
-    <string name="title_spoof_manager">伪装管理器</string>
+    <string name="title_spoof_manager">伪装</string>
     <string name="title_settings">设置</string>
-    <string name="title_purchase_history">购买历史</string>
+    <string name="title_purchase_history">交易记录</string>
     <string name="title_no_network">无网络</string>
     <string name="title_library">库</string>
     <string name="title_language">语言</string>
@@ -216,7 +216,7 @@
     <string name="title_download_manager">下载</string>
     <string name="title_device">设备</string>
     <string name="title_details">详情</string>
-    <string name="title_blacklist_manager">黑名单管理器</string>
+    <string name="title_blacklist_manager">黑名单管理</string>
     <string name="title_apps_sale">促销应用</string>
     <string name="title_apps_library">库内应用</string>
     <string name="title_apps_games">我的应用和游戏</string>
@@ -242,7 +242,7 @@
     <string name="pref_ui_theme_title">主题</string>
     <string name="pref_ui_theme_system">跟随系统</string>
     <string name="pref_ui_theme_light">浅色</string>
-    <string name="pref_ui_theme_darkord">Disskord</string>
+    <string name="pref_ui_theme_darkord">Discord</string>
     <string name="pref_ui_theme_dark_x">深色 X</string>
     <string name="pref_ui_theme_dark">深色</string>
     <string name="pref_ui_theme_black">黑色</string>
@@ -288,7 +288,7 @@
     <string name="onboarding_title_accent">强调色</string>
     <string name="onboarding_theme_select">选择您喜欢的</string>
     <string name="onboarding_permission_select">Aurora 商店需要以下权限</string>
-    <string name="onboarding_installer_select">授予必要的权限</string>
+    <string name="onboarding_installer_select">选择合适的安装方式</string>
     <string name="notification_installation_auto">点击安装</string>
     <string name="notification_channel_general">一般通知</string>
     <string name="notification_channel_alert">快速通知</string>
