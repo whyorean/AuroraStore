@@ -144,26 +144,32 @@ abstract class BaseActivity : AppCompatActivity(), NetworkProvider.NetworkListen
         task {
             TimeUnit.SECONDS.sleep(5)
         } successUi {
-            val sheet = TOSSheet.newInstance()
-            sheet.isCancelable = false
-            sheet.show(supportFragmentManager, TOSSheet.TAG)
+            if (!supportFragmentManager.isDestroyed) {
+                val sheet = TOSSheet.newInstance()
+                sheet.isCancelable = false
+                sheet.show(supportFragmentManager, TOSSheet.TAG)
+            }
         }
     }
 
-
     fun showNetworkConnectivitySheet() {
         runOnUiThread {
-            supportFragmentManager.beginTransaction()
-                .add(NetworkDialogSheet.newInstance(), NetworkDialogSheet.TAG)
-                .commitAllowingStateLoss()
+            if (!supportFragmentManager.isDestroyed) {
+                supportFragmentManager.beginTransaction()
+                    .add(NetworkDialogSheet.newInstance(), NetworkDialogSheet.TAG)
+                    .commitAllowingStateLoss()
+            }
         }
     }
 
     fun hideNetworkConnectivitySheet() {
         runOnUiThread {
-            val fragment = supportFragmentManager.findFragmentByTag(NetworkDialogSheet.TAG)
-            fragment?.let {
-                supportFragmentManager.beginTransaction().remove(fragment).commitAllowingStateLoss()
+            if (!supportFragmentManager.isDestroyed) {
+                val fragment = supportFragmentManager.findFragmentByTag(NetworkDialogSheet.TAG)
+                fragment?.let {
+                    supportFragmentManager.beginTransaction().remove(fragment)
+                        .commitAllowingStateLoss()
+                }
             }
         }
     }

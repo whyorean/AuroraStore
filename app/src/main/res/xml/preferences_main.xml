@@ -49,4 +49,12 @@
         app:key="pref_download"
         app:layout="@layout/item_preference"
         app:title="@string/pref_app_download" />
+
+    <Preference
+        android:fragment="com.aurora.store.view.ui.preferences.NetworkPreference"
+        app:icon="@drawable/ic_network"
+        app:iconSpaceReserved="false"
+        app:key="pref_network"
+        app:layout="@layout/item_preference"
+        app:title="@string/pref_network_title" />
 </PreferenceScreen>

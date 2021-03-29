@@ -36,6 +36,7 @@ import com.aurora.store.util.Preferences.PREFERENCE_DOWNLOAD_ACTIVE
 import com.aurora.store.util.Preferences.PREFERENCE_DOWNLOAD_EXTERNAL
 import com.aurora.store.util.Preferences.PREFERENCE_FILTER_FDROID
 import com.aurora.store.util.Preferences.PREFERENCE_FILTER_GOOGLE
+import com.aurora.store.util.Preferences.PREFERENCE_INSECURE_ANONYMOUS
 import com.aurora.store.util.Preferences.PREFERENCE_INSTALLER_ID
 import com.aurora.store.util.Preferences.PREFERENCE_INTRO
 import com.aurora.store.util.Preferences.PREFERENCE_THEME_ACCENT
@@ -154,6 +155,9 @@ class OnboardingActivity : BaseActivity() {
         /*Downloader*/
         save(PREFERENCE_DOWNLOAD_ACTIVE, 3)
         save(PREFERENCE_DOWNLOAD_EXTERNAL, false)
+
+        /*Network*/
+        save(PREFERENCE_INSECURE_ANONYMOUS, false)
 
         /*Theme*/
         save(PREFERENCE_THEME_TYPE, 0)

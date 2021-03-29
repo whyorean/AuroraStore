@@ -48,6 +48,8 @@ object Preferences {
 
     const val PREFERENCE_TOS_READ = "PREFERENCE_TOS_READ"
 
+    const val PREFERENCE_INSECURE_ANONYMOUS = "PREFERENCE_INSECURE_ANONYMOUS"
+
 
     private fun getPrefs(context: Context): SharedPreferences {
         return PreferenceManager.getDefaultSharedPreferences(context)

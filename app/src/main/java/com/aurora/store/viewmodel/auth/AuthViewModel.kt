@@ -24,11 +24,13 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.aurora.Constants
 import com.aurora.gplayapi.data.models.AuthData
+import com.aurora.gplayapi.data.providers.DeviceInfoProvider
 import com.aurora.gplayapi.helpers.AuthHelper
 import com.aurora.gplayapi.helpers.AuthValidator
 import com.aurora.store.AccountType
 import com.aurora.store.data.AuthState
 import com.aurora.store.data.RequestState
+import com.aurora.store.data.model.InsecureAuth
 import com.aurora.store.data.network.HttpClient
 import com.aurora.store.data.providers.AccountProvider
 import com.aurora.store.data.providers.NativeDeviceInfoProvider
@@ -81,6 +83,19 @@ class AuthViewModel(application: Application) : BaseAndroidViewModel(application
     }
 
     fun buildAnonymousAuthData() {
+        val insecure = Preferences.getBoolean(
+            getApplication(),
+            Preferences.PREFERENCE_INSECURE_ANONYMOUS
+        )
+
+        if (insecure) {
+            buildInSecureAnonymousAuthData()
+        } else {
+            buildSecureAnonymousAuthData()
+        }
+    }
+
+    private fun buildSecureAnonymousAuthData() {
         updateStatus("Requesting new session")
 
         task {
@@ -109,6 +124,54 @@ class AuthViewModel(application: Application) : BaseAndroidViewModel(application
                     else -> throw Exception(playResponse.errorString)
                 }
             }
+        } success {
+            //Set AuthData as anonymous
+            it.isAnonymous = true
+            verifyAndSaveAuth(it, AccountType.ANONYMOUS)
+        } fail {
+            updateStatus(it.message.toString())
+        }
+    }
+
+    private fun buildInSecureAnonymousAuthData() {
+        updateStatus("Requesting new session")
+
+        task {
+            var properties = NativeDeviceInfoProvider(getApplication())
+                .getNativeDeviceProperties()
+
+            if (spoofProvider.isDeviceSpoofEnabled())
+                properties = spoofProvider.getSpoofDeviceProperties()
+
+            val playResponse = HttpClient
+                .getPreferredClient()
+                .getAuth(
+                    Constants.URL_DISPENSER
+                )
+
+            val insecureAuth: InsecureAuth
+
+            if (playResponse.isSuccessful) {
+                insecureAuth = gson.fromJson(
+                    String(playResponse.responseBytes),
+                    InsecureAuth::class.java
+                )
+            } else {
+                when (playResponse.code) {
+                    404 -> throw Exception("Server unreachable")
+                    429 -> throw Exception("Oops, You are rate limited")
+                    else -> throw Exception(playResponse.errorString)
+                }
+            }
+
+            val deviceInfoProvider = DeviceInfoProvider(properties, Locale.getDefault().toString())
+
+            AuthHelper.buildInsecure(
+                insecureAuth.email,
+                insecureAuth.auth,
+                Locale.getDefault(),
+                deviceInfoProvider
+            )
         } success {
             //Set AuthData as anonymous
             it.isAnonymous = true
