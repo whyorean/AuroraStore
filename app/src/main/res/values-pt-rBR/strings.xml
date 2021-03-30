@@ -25,7 +25,7 @@
     <string name="download_progress">Baixando</string>
     <string name="action_filter_downloads">Downloads</string>
     <string name="about_telegram">Telegram</string>
-    <string name="about_paypal">Paypal</string>
+    <string name="about_paypal">PayPal</string>
     <string name="about_gitlab">GitLab</string>
     <string name="about_fdroid">F-Droid</string>
     <string name="about_bitcoin_eth">Ethereum</string>
