@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="purchase_no_file"/>
     <string name="pref_filter_fdroid_summary"/>
-    <string name="dialog_desc_self_update"/>
     <string name="filter_review_four"/>
-    <string name="details_think_this_app"/>
     <string name="details_dependencies"/>
-    <string name="action_grant"/>
     <string name="action_ask"/>
-    <string name="toast_apk_whitelisted"/>
     <string name="action_installations"/>
 </resources>
