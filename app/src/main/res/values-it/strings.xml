@@ -203,7 +203,7 @@
     <string name="account_anonymous">Anonimo</string>
     <string name="about_telegram">Telegram</string>
     <string name="about_paypal_summary">Dona via PayPal</string>
-    <string name="about_paypal">Paypal</string>
+    <string name="about_paypal">PayPal</string>
     <string name="about_libera_summary">Diventa sostenitore su Liberapay</string>
     <string name="about_libera">Liberapay</string>
     <string name="about_gitlab_summary">Ottieni il codice sorgente di Aurora Store da Aurora OSS su GitLab.</string>
@@ -318,4 +318,8 @@
     <string name="exodus_title">Aurora Protect</string>
     <string name="exodus_substring">tracciante/i trovato/i in</string>
     <string name="toast_purchase_blocked">Acquisti di applicazioni non disponibili su profili anonimi.</string>
+    <string name="insecure_anonymous_apply">Assicurati di effettuare nuovamente l’accesso e riavviare l’applicazione per applicare le modifiche.</string>
+    <string name="pref_network_title">Rete</string>
+    <string name="pref_insecure_anonymous_title">Sessione anonima non sicura</string>
+    <string name="pref_insecure_anonymous_summary">Genera l’ID GSF localmente sul dispositivo</string>
 </resources>
