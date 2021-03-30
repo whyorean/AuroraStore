@@ -30,8 +30,8 @@
     <string name="action_whitelist">Biała lista</string>
     <string name="action_wait">Czekaj</string>
     <string name="action_updates">Aktualizacje</string>
-    <string name="action_update_all">Zaktualizuj wszystkie</string>
-    <string name="action_update">Zaktualizuj</string>
+    <string name="action_update_all">Aktualizuj wszystkie</string>
+    <string name="action_update">Aktualizuj</string>
     <string name="action_info">O aplikacji</string>
     <string name="action_uninstall">Odinstaluj</string>
     <string name="action_try_later">Spróbuj później</string>
@@ -198,15 +198,15 @@
     <string name="pref_install_mode_services">Usługi Aurora</string>
     <string name="pref_install_mode_root">Root instalator</string>
     <string name="pref_install_mode_native">Natywny instalator</string>
-    <string name="pref_install_delete_title">Usuń plik APK po zainstalowaniu</string>
+    <string name="pref_install_delete_title">Usuń APK po zainstalowaniu</string>
     <string name="pref_install_delete_summary">Pliki APK będą domyślnie usuwane</string>
     <string name="pref_install_auto_title">Automatyczna instalacja plików APK po pobraniu</string>
     <string name="pref_install_auto_summary">Aplikacje będą instalowane natychmiast po zakończeniu pobierania</string>
     <string name="pref_filter_google_title">Filtruj aplikacje Google</string>
     <string name="pref_filter_google_summary">Usuń wszystkie aplikacje Google z wyników wyszukiwania i kategorii aplikacji</string>
     <string name="pref_filter_fdroid_title">Filtruj aplikacje F-Droid</string>
-    <string name="pref_filter_fdroid_summary">Usuń z listy aplikacje pochodzące z F-Droid</string>
-    <string name="pref_downloader_external_desc">Pamięć zewnętrzna będzie używana do przechowywania pobieranych lub wyeksportowanych plików, itp.</string>
+    <string name="pref_filter_fdroid_summary">Usuń aplikacje F-Droid z listy aplikacji</string>
+    <string name="pref_downloader_external_desc">Pamięć zewnętrzna zostanie użyta do przechowywania pobranych lub wyeksportowanych plików, itp.</string>
     <string name="pref_downloader_external">Pamięć zewnętrzna</string>
     <string name="pref_downloader_active_summary">Maksymalna liczba aktywnych pobierań</string>
     <string name="pref_downloader_active_title">Aktywne pobieranie</string>
@@ -318,4 +318,8 @@
     <string name="details_no_updates">Brak dostępnych aktualizacji</string>
     <string name="details_no_reviews">Brak dostępnych recenzji</string>
     <string name="toast_purchase_blocked">Zakup aplikacji nie jest dostępny na kontach anonimowych.</string>
+    <string name="insecure_anonymous_apply">Zaloguj się ponownie i zrestartuj aplikację, aby zastosować zmiany.</string>
+    <string name="pref_insecure_anonymous_summary">Wygeneruj GSF ID na urządzeniu</string>
+    <string name="pref_network_title">Sieć</string>
+    <string name="pref_insecure_anonymous_title">Niezabezpieczona sesja anonimowa</string>
 </resources>
