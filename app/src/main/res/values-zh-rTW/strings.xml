@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="pref_filter_fdroid_summary"/>
     <string name="filter_review_four"/>
-    <string name="details_dependencies"/>
     <string name="action_ask"/>
-    <string name="action_installations"/>
 </resources>
