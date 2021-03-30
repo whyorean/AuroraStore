@@ -318,4 +318,8 @@
     <string name="installer_status_failure">安装失败</string>
     <string name="installer_service_misconfigured">未配置 Aurora 服务，请确保已启用服务并授予了所有权限</string>
     <string name="installer_service_unavailable">Aurora 服务未安装或版本不正确 (需 &gt; = 1.0.9 版本)，请安装服务或更改安装程序</string>
+    <string name="insecure_anonymous_apply">确保你重新登录并重新启动应用程序以应用更改。</string>
+    <string name="pref_network_title">网络</string>
+    <string name="pref_insecure_anonymous_title">不安全的匿名会话</string>
+    <string name="pref_insecure_anonymous_summary">在设备上本地生成 GSF ID</string>
 </resources>
