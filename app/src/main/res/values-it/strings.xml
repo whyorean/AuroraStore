@@ -78,7 +78,7 @@
     <string name="details_no_whitelist">Nessuna applicazione esclusa dalla lista nera</string>
     <string name="details_no_app">Nessuna applicazione disponibile</string>
     <string name="details_more_about_app">Altre informazioni sull’app</string>
-    <string name="details_in_app_purchase">Acquisti in-app</string>
+    <string name="details_in_app_purchase">Acquisti integrati nell’app</string>
     <string name="action_info">Informazioni sull’app</string>
     <string name="action_get_local_apk">Salva pacchetto di app</string>
     <string name="action_filter_paid_apps">A pagamento</string>
