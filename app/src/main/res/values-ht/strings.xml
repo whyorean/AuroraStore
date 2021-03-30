@@ -56,7 +56,7 @@
     <string name="action_next">Pwochen</string>
     <string name="action_more">Plis</string>
     <string name="action_manual">Telechajman manyèl</string>
-    <string name="action_logout">Dekonekte</string>
+    <string name="action_logout">Dekonèkte</string>
     <string name="action_logging_in">Konèksyon…</string>
     <string name="action_leave">Kite</string>
     <string name="action_later">Pita</string>
@@ -96,7 +96,7 @@
     <string name="action_apply">Aplike</string>
     <string name="action_accounts">Kont</string>
     <string name="action_accept">Aksepte</string>
-    <string name="account_login_using">Konekte avèk</string>
+    <string name="account_login_using">Konèkte avèk</string>
     <string name="account_logged_out">Ou se dekonekte</string>
     <string name="account_google">Google</string>
     <string name="account_anonymous">Anonim</string>
@@ -104,7 +104,7 @@
     <string name="about_telegram_summary">Antre nan gwoup èd Aurora pou diskisyon oswa sijesyon.</string>
     <string name="about_telegram">Telegram</string>
     <string name="about_paypal_summary">Fè don vya PayPal</string>
-    <string name="about_paypal">Paypal</string>
+    <string name="about_paypal">PayPal</string>
     <string name="about_libera_summary">Vin yon mesèn sou Liberapay</string>
     <string name="about_libera">Liberapay</string>
     <string name="about_gitlab_summary">Jwenn kòd sous Aurora Store la nan Aurora OSS sou GitLab.</string>
