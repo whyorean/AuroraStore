@@ -1,23 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="title_apps_library"/>
     <string name="purchase_no_file"/>
-    <string name="pref_install_profile_summary"/>
     <string name="pref_filter_fdroid_summary"/>
-    <string name="onboarding_tos_error"/>
     <string name="dialog_desc_self_update"/>
-    <string name="installer_status_failure_invalid"/>
     <string name="filter_review_four"/>
-    <string name="download_resume"/>
     <string name="details_think_this_app"/>
-    <string name="details_no_previews"/>
     <string name="details_dependencies"/>
-    <string name="action_uninstall"/>
     <string name="action_grant"/>
-    <string name="action_done"/>
     <string name="action_ask"/>
-    <string name="about_libera_summary"/>
     <string name="toast_apk_whitelisted"/>
-    <string name="action_previous"/>
     <string name="action_installations"/>
 </resources>
