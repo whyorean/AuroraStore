@@ -1,43 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="title_installation"/>
     <string name="title_apps_library"/>
-    <string name="tab_top_free"/>
     <string name="purchase_no_file"/>
-    <string name="pref_ui_theme_light"/>
     <string name="pref_install_profile_summary"/>
-    <string name="pref_install_delete_summary"/>
     <string name="pref_filter_fdroid_summary"/>
-    <string name="pref_abandon_session"/>
     <string name="onboarding_tos_error"/>
-    <string name="onboarding_title_accent"/>
     <string name="dialog_desc_self_update"/>
-    <string name="device_huawei_title"/>
     <string name="installer_status_failure_invalid"/>
-    <string name="installer_service_unavailable"/>
     <string name="filter_review_four"/>
-    <string name="exodus_substring"/>
     <string name="download_resume"/>
-    <string name="download_force_clear_all"/>
     <string name="details_think_this_app"/>
-    <string name="details_privacy"/>
     <string name="details_no_previews"/>
-    <string name="details_files"/>
     <string name="details_dependencies"/>
-    <string name="details_beta"/>
     <string name="action_uninstall"/>
-    <string name="action_settings"/>
     <string name="action_grant"/>
-    <string name="action_filter_apps_with_ads"/>
     <string name="action_done"/>
-    <string name="action_clear_restart"/>
     <string name="action_ask"/>
-    <string name="account_google"/>
     <string name="about_libera_summary"/>
-    <string name="about_bitcoin_btc_summary"/>
     <string name="toast_apk_whitelisted"/>
-    <string name="title_settings"/>
     <string name="action_previous"/>
-    <string name="action_manual"/>
     <string name="action_installations"/>
 </resources>
