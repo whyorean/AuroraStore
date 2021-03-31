@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="title_about">Over</string>
+    <string name="title_apps">Apps</string>
+    <string name="title_account_manager">Accounts</string>
+    <string name="action_blacklist_add">Toevoegen aan zwarte lijst</string>
+    <string name="action_blacklist">Zwarte lijst</string>
+    <string name="toast_apk_blacklisted">Op zwarte lijst</string>
+    <string name="details_in_app_purchase">In-app aankoop</string>
+    <string name="details_free">Gratis</string>
+    <string name="details_files">Bestanden</string>
+    <string name="details_dev_website">Webstek</string>
+    <string name="details_dev_reply">Antwoord van de ontwikkelaar</string>
+    <string name="details_dev_profile">Ontwikkelaarsprofiel</string>
+    <string name="details_dev_details">Contact met ontwikkelaar</string>
+    <string name="details_dev_address">Adres</string>
+    <string name="details_description">Beschrijving</string>
+    <string name="details_dev_email">E-mail</string>
+</resources>

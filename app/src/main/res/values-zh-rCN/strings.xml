@@ -181,7 +181,7 @@
     <string name="action_next">下一个</string>
     <string name="action_more">更多</string>
     <string name="action_manual">手动下载</string>
-    <string name="action_logout">登出</string>
+    <string name="action_logout">注销</string>
     <string name="action_logging_in">正在登录</string>
     <string name="action_leave">离开</string>
     <string name="action_later">稍后</string>

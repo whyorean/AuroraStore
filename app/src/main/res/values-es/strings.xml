@@ -300,7 +300,7 @@
     <string name="about_telegram_summary">Únase al grupo de soporte a Aurora para debatir o hacer sugerencias.</string>
     <string name="about_telegram">Telegram</string>
     <string name="about_paypal_summary">Donar vía Paypal</string>
-    <string name="about_paypal">Paypal</string>
+    <string name="about_paypal">PayPal</string>
     <string name="about_libera_summary">Hágase mecenas en Liberapay</string>
     <string name="about_libera">Liberapay</string>
     <string name="about_fdroid_summary">Obtenga la Aurora Store vía F-Droid.</string>
@@ -318,4 +318,7 @@
     <string name="purchase_session_expired">La sesión expiró, vuelva a iniciar sesión para obtener una nueva sesión.</string>
     <string name="purchase_unsupported">Aplicación no compatible</string>
     <string name="toast_purchase_blocked">Las compras de aplicaciones no están disponibles en cuentas anónimas.</string>
+    <string name="insecure_anonymous_apply">Asegúrese de volver a iniciar sesión y reiniciar la aplicación para aplicar los cambios.</string>
+    <string name="pref_network_title">Redes</string>
+    <string name="pref_insecure_anonymous_title">Sesión anónima insegura</string>
 </resources>
