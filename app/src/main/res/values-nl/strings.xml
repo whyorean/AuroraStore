@@ -16,4 +16,7 @@
     <string name="details_dev_address">Adres</string>
     <string name="details_description">Beschrijving</string>
     <string name="details_dev_email">E-mail</string>
+    <string name="action_accept">Aanvaarden</string>
+    <string name="account_logged_out">U bent uitgelogd</string>
+    <string name="action_accounts">Accounts</string>
 </resources>
