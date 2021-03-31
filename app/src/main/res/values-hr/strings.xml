@@ -120,4 +120,7 @@
     <string name="about_bitcoin_bch">Bitcoin Cash</string>
     <string name="about_bhim_summary">Doniraj putem usluge UPI</string>
     <string name="about_bhim">BHIM – UPI</string>
+    <string name="details_dev_address">Adresa</string>
+    <string name="details_dev_website">Mrežne stranice</string>
+    <string name="details_dev_email">E-pošta</string>
 </resources>
