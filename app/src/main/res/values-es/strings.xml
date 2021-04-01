@@ -321,4 +321,5 @@
     <string name="insecure_anonymous_apply">Asegúrese de volver a iniciar sesión y reiniciar la aplicación para aplicar los cambios.</string>
     <string name="pref_network_title">Redes</string>
     <string name="pref_insecure_anonymous_title">Sesión anónima insegura</string>
+    <string name="pref_insecure_anonymous_summary">Generar el ID GSF localmente en el dispositivo</string>
 </resources>
