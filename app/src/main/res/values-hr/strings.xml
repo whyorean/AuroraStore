@@ -123,4 +123,7 @@
     <string name="details_dev_address">Adresa</string>
     <string name="details_dev_website">Mrežne stranice</string>
     <string name="details_dev_email">E-pošta</string>
+    <string name="details_dev_reply">Odgovor programera</string>
+    <string name="details_dev_profile">Profil programera</string>
+    <string name="details_dev_email">E-adresa</string>
 </resources>
