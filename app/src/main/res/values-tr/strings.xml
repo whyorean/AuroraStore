@@ -3,4 +3,5 @@
     <string name="details_dev_email">E-posta</string>
     <string name="about_bitcoin_bch">Bitcoin Cash</string>
     <string name="about_bhim">BHIM - UPI</string>
+    <string name="details_dev_website">Web sitesi</string>
 </resources>
