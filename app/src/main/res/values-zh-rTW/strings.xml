@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="details_dev_email">電子郵件</string>
+    <string name="details_dev_website">網站</string>
 </resources>
