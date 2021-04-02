@@ -122,4 +122,5 @@
     <string name="about_bitcoin_bch_summary">Ủng hộ bằng Bitcoin Cash (BCH)</string>
     <string name="about_bitcoin_bch">Bitcoin Cash</string>
     <string name="about_bhim_summary">Ủng hộ bằng UPI</string>
+    <string name="details_dev_website">Trang web</string>
 </resources>
