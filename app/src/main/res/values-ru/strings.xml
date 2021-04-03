@@ -42,7 +42,7 @@
     <string name="action_favourites">Избранные</string>
     <string name="action_export">Экспортировать</string>
     <string name="action_enable">Включить</string>
-    <string name="action_download">Загрузка</string>
+    <string name="action_download">Загрузить</string>
     <string name="action_done">Готово</string>
     <string name="action_disable">Отключить</string>
     <string name="action_deny">Отказаться</string>
