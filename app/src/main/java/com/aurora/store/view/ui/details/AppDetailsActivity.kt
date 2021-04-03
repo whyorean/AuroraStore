@@ -363,7 +363,9 @@ class AppDetailsActivity : BaseDetailsActivity() {
                 inflateBetaSubscription(B.layoutDetailsBeta, app)
             }
 
-            inflateAppStream(B.epoxyRecyclerStream, app)
+            if (Preferences.getBoolean(this, Preferences.PREFERENCE_SIMILAR)) {
+                inflateAppStream(B.epoxyRecyclerStream, app)
+            }
         }
     }
 
