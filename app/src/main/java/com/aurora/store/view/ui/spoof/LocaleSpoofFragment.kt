@@ -88,7 +88,9 @@ class LocaleSpoofFragment : BaseFragment() {
     private fun updateController(locales: List<Locale>) {
         B.recycler.withModels {
             setFilterDuplicates(true)
-            locales.forEach {
+            locales
+                .sortedBy { it.displayName }
+                .forEach {
                 add(
                     LocaleViewModel_()
                         .id(it.language)
