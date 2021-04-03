@@ -31,8 +31,8 @@ import com.aurora.gplayapi.data.models.AuthData
 import com.aurora.store.R
 import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.databinding.FragmentAppsGamesBinding
+import com.aurora.store.util.Preferences
 import com.aurora.store.view.ui.commons.CategoryFragment
-import com.aurora.store.view.ui.commons.EarlyAccessFragment
 import com.aurora.store.view.ui.commons.EditorChoiceFragment
 import com.aurora.store.view.ui.commons.ForYouFragment
 import com.google.android.material.tabs.TabLayout
@@ -66,44 +66,66 @@ class GamesContainerFragment : Fragment() {
     }
 
     private fun setupViewPager() {
-        B.pager.adapter = ViewPagerAdapter(childFragmentManager, lifecycle, authData.isAnonymous)
+        val isForYouEnabled = Preferences.getBoolean(
+            requireContext(),
+            Preferences.PREFERENCE_FOR_YOU
+        )
+
+        val isGoogleAccount = !authData.isAnonymous
+
+        B.pager.adapter = ViewPagerAdapter(
+            childFragmentManager,
+            lifecycle,
+            isGoogleAccount,
+            isForYouEnabled
+        )
+
         B.pager.isUserInputEnabled = false
 
-        TabLayoutMediator(B.tabLayout, B.pager, true) { tab: TabLayout.Tab, position: Int ->
-            when (position) {
-                0 -> tab.text = "For you"
-                1 -> tab.text = "Top charts"
-                2 -> tab.text = "Categories"
-                3 -> tab.text = "Early access"
-                4 -> tab.text = "Editor choice"
-                else -> {
-                }
+        val tabTitles: MutableList<String> = mutableListOf<String>().apply {
+            if (isForYouEnabled) {
+                add(getString(R.string.tab_for_you))
             }
+
+            add(getString(R.string.tab_top_charts))
+            add(getString(R.string.tab_categories))
+
+            if (isGoogleAccount) {
+                add(getString(R.string.tab_editor_choice))
+            }
+        }
+
+        TabLayoutMediator(B.tabLayout, B.pager, true) { tab: TabLayout.Tab, position: Int ->
+            tab.text = tabTitles[position]
         }.attach()
     }
 
     internal class ViewPagerAdapter(
         fragment: FragmentManager,
         lifecycle: Lifecycle,
-        private val isAnonymous: Boolean
+        private val isGoogleAccount: Boolean,
+        private val isForYouEnabled: Boolean
     ) :
         FragmentStateAdapter(fragment, lifecycle) {
-        override fun createFragment(position: Int): Fragment {
-            return when (position) {
-                0 -> ForYouFragment.newInstance(1)
-                1 -> TopChartContainerFragment()
-                2 -> CategoryFragment.newInstance(1)
-                3 -> EarlyAccessFragment.newInstance(1)
-                4 -> EditorChoiceFragment.newInstance(1)
-                else -> Fragment()
+        private val tabFragments: MutableList<Fragment> = mutableListOf<Fragment>().apply {
+            if (isForYouEnabled) {
+                add(ForYouFragment.newInstance(1))
+            }
+
+            add(TopChartContainerFragment())
+            add(CategoryFragment.newInstance(1))
+
+            if (isGoogleAccount) {
+                add(EditorChoiceFragment.newInstance(1))
             }
         }
 
+        override fun createFragment(position: Int): Fragment {
+            return tabFragments[position]
+        }
+
         override fun getItemCount(): Int {
-            return if (isAnonymous)
-                3
-            else
-                5
+            return tabFragments.size
         }
     }
 }

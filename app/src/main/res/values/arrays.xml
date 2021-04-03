@@ -159,4 +159,17 @@
         <item>@string/about_telegram_summary</item>
         <item>@string/about_fdroid_summary</item>
     </string-array>
+
+    <string-array name="pref_default_tab">
+        <item>@string/title_apps</item>
+        <item>@string/title_games</item>
+        <item>@string/title_updates</item>
+    </string-array>
+
+    <string-array name="pref_default_tab_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
 </resources>

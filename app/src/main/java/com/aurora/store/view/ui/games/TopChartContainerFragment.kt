@@ -87,18 +87,20 @@ class TopChartContainerFragment : Fragment() {
 
     internal class ViewPagerAdapter(fragment: FragmentManager, lifecycle: Lifecycle) :
         FragmentStateAdapter(fragment, lifecycle) {
+
+        private val tabFragments: MutableList<TopChartFragment> = mutableListOf(
+            TopChartFragment.newInstance(1, 0),
+            TopChartFragment.newInstance(1, 1),
+            TopChartFragment.newInstance(1, 2),
+            TopChartFragment.newInstance(1, 3)
+        )
+
         override fun createFragment(position: Int): Fragment {
-            return when (position) {
-                0 -> TopChartFragment.newInstance(1, 0)
-                1 -> TopChartFragment.newInstance(1, 1)
-                2 -> TopChartFragment.newInstance(1, 2)
-                3 -> TopChartFragment.newInstance(1, 3)
-                else -> Fragment()
-            }
+            return tabFragments[position]
         }
 
         override fun getItemCount(): Int {
-            return 4
+            return tabFragments.size
         }
     }
 }

@@ -155,7 +155,6 @@ class MainActivity : BaseActivity() {
         val backGroundColor = getStyledAttributeColor(android.R.attr.colorBackground)
         bottomNavigationView.setBackgroundColor(ColorUtils.setAlphaComponent(backGroundColor, 245))
 
-
         bottomNavigationView.setOnNavigationItemSelectedListener { item ->
             if (item.itemId == bottomNavigationView.selectedItemId)
                 return@setOnNavigationItemSelectedListener false
@@ -173,6 +172,17 @@ class MainActivity : BaseActivity() {
                 }
             }
         }
+
+        val defaultTab = Preferences.getInteger(this, Preferences.PREFERENCE_DEFAULT_SELECTED_TAB)
+        val graph = navController.graph
+
+        when (defaultTab) {
+            0 -> graph.startDestination = R.id.navigation_apps
+            1 -> graph.startDestination = R.id.navigation_games
+            2 -> graph.startDestination = R.id.navigation_updates
+        }
+
+        navController.graph = graph
     }
 
     private fun attachDrawer() {
@@ -226,11 +236,15 @@ class MainActivity : BaseActivity() {
         if (B.drawerLayout.isDrawerOpen(GravityCompat.START)) {
             B.drawerLayout.close()
         } else if (!navController.navigateUp()) {
-            if (lastBackPressed + 1000 > System.currentTimeMillis()) {
+            if (Preferences.getBoolean(this, Preferences.PREFERENCE_QUICK_EXIT)) {
                 super.onBackPressed()
             } else {
-                lastBackPressed = System.currentTimeMillis()
-                Toast.makeText(this, "Click twice to exit", Toast.LENGTH_SHORT).show()
+                if (lastBackPressed + 1000 > System.currentTimeMillis()) {
+                    super.onBackPressed()
+                } else {
+                    lastBackPressed = System.currentTimeMillis()
+                    Toast.makeText(this, "Click twice to exit", Toast.LENGTH_SHORT).show()
+                }
             }
         }
     }

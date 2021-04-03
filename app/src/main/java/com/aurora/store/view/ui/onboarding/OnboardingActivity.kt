@@ -32,13 +32,16 @@ import com.aurora.store.databinding.ActivityOnboardingBinding
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_AUTO_DELETE
 import com.aurora.store.util.Preferences.PREFERENCE_DEFAULT
+import com.aurora.store.util.Preferences.PREFERENCE_DEFAULT_SELECTED_TAB
 import com.aurora.store.util.Preferences.PREFERENCE_DOWNLOAD_ACTIVE
 import com.aurora.store.util.Preferences.PREFERENCE_DOWNLOAD_EXTERNAL
 import com.aurora.store.util.Preferences.PREFERENCE_FILTER_FDROID
 import com.aurora.store.util.Preferences.PREFERENCE_FILTER_GOOGLE
+import com.aurora.store.util.Preferences.PREFERENCE_FOR_YOU
 import com.aurora.store.util.Preferences.PREFERENCE_INSECURE_ANONYMOUS
 import com.aurora.store.util.Preferences.PREFERENCE_INSTALLER_ID
 import com.aurora.store.util.Preferences.PREFERENCE_INTRO
+import com.aurora.store.util.Preferences.PREFERENCE_QUICK_EXIT
 import com.aurora.store.util.Preferences.PREFERENCE_THEME_ACCENT
 import com.aurora.store.util.Preferences.PREFERENCE_THEME_TYPE
 import com.aurora.store.util.save
@@ -159,9 +162,12 @@ class OnboardingActivity : BaseActivity() {
         /*Network*/
         save(PREFERENCE_INSECURE_ANONYMOUS, false)
 
-        /*Theme*/
+        /*Customization*/
         save(PREFERENCE_THEME_TYPE, 0)
         save(PREFERENCE_THEME_ACCENT, 0)
+        save(PREFERENCE_DEFAULT_SELECTED_TAB, 0)
+        save(PREFERENCE_QUICK_EXIT, false)
+        save(PREFERENCE_FOR_YOU, true)
 
         /*Installer*/
         save(PREFERENCE_AUTO_DELETE, true)

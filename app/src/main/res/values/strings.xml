@@ -257,6 +257,8 @@
     <string name="pref_abandon_session">"Force clear installation sessions"</string>
     <string name="pref_abandon_session_desc">"Clear abandon or pending installation sessions"</string>
     <string name="pref_app_download">"Downloads"</string>
+    <string name="pref_common_advance">"Advance"</string>
+    <string name="pref_common_extra">"Extras"</string>
     <string name="pref_dialog_to_apply_restart">"This setting will be applied after you restart the app"</string>
     <string name="pref_downloader_active_summary">"Maximum number of active downloads"</string>
     <string name="pref_downloader_active_title">"Active download"</string>
@@ -290,6 +292,12 @@
     <string name="pref_ui_theme_system">"Follow System"</string>
     <string name="pref_ui_theme_title">"Theme"</string>
     <string name="pref_ui_title">"Customization"</string>
+    <string name="pref_ui_layout">"Layout"</string>
+    <string name="pref_ui_layout_tab">"Select default tab"</string>
+    <string name="pref_ui_quick_exit">"Quick exit"</string>
+    <string name="pref_ui_quick_exit_desc">"Exit app on single back action"</string>
+    <string name="pref_ui_no_for_you">"For You Pages"</string>
+    <string name="pref_ui_no_for_you_desc">"Display For You Pages on home screen"</string>
     <string name="purchase_failed">"Download Failed"</string>
     <string name="purchase_invalid">"App not purchased"</string>
     <string name="purchase_unsupported">"App not supported"</string>

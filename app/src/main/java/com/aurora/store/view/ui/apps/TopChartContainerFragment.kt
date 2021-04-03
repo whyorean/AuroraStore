@@ -32,6 +32,7 @@ import com.aurora.gplayapi.data.models.AuthData
 import com.aurora.store.R
 import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.databinding.FragmentTopChartBinding
+import com.aurora.store.view.ui.games.TopChartFragment
 
 
 class TopChartContainerFragment : Fragment() {
@@ -87,18 +88,19 @@ class TopChartContainerFragment : Fragment() {
 
     internal class ViewPagerAdapter(fragment: FragmentManager, lifecycle: Lifecycle) :
         FragmentStateAdapter(fragment, lifecycle) {
+        private val tabFragments: MutableList<TopChartFragment> = mutableListOf(
+            TopChartFragment.newInstance(0, 0),
+            TopChartFragment.newInstance(0, 1),
+            TopChartFragment.newInstance(0, 2),
+            TopChartFragment.newInstance(0, 3)
+        )
+
         override fun createFragment(position: Int): Fragment {
-            return when (position) {
-                0 -> TopChartFragment.newInstance(0, 0)
-                1 -> TopChartFragment.newInstance(0, 1)
-                2 -> TopChartFragment.newInstance(0, 2)
-                3 -> TopChartFragment.newInstance(0, 3)
-                else -> Fragment()
-            }
+            return tabFragments[position]
         }
 
         override fun getItemCount(): Int {
-            return 4
+            return tabFragments.size
         }
     }
 }
