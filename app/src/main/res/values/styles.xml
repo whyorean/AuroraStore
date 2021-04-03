@@ -37,6 +37,7 @@
         <item name="colorPrimaryDark">@color/colorWhite</item>
         <item name="android:windowBackground">@color/colorWhite</item>
         <item name="android:colorBackground">@color/colorWhite</item>
+        <item name="android:windowLightNavigationBar">true</item>
         <item name="android:navigationBarColor">@color/colorWhite</item>
         <item name="scrim">@color/colorScrim</item>
         <item name="scrimAccent">@color/colorScrimAccent</item>
@@ -53,6 +54,8 @@
         <item name="colorBackgroundFloating">@color/colorDarkBackground</item>
         <item name="android:windowBackground">@color/colorDarkWindowBackground</item>
         <item name="android:colorBackground">@color/colorDarkBackground</item>
+        <item name="android:windowLightNavigationBar">false</item>
+        <item name="android:navigationBarColor">@color/colorDarkPrimaryDark</item>
         <item name="scrim">@color/colorScrim</item>
         <item name="scrimAccent">@color/colorScrimAccent</item>
         <item name="scrimAlt">@color/colorScrimAlt</item>
@@ -66,6 +69,7 @@
         <item name="colorBackgroundFloating">@color/colorDarkXBackground</item>
         <item name="android:windowBackground">@color/colorDarkXWindowBackground</item>
         <item name="android:colorBackground">@color/colorDarkXBackground</item>
+        <item name="android:navigationBarColor">@color/colorDarkXPrimaryDark</item>
         <item name="colorShimmer">@color/colorShimmerDarkX</item>
         <item name="colorStroke">@color/colorStrokeDarkX</item>
     </style>
@@ -75,6 +79,7 @@
         <item name="colorBackgroundFloating">@color/colorDarkordBackground</item>
         <item name="android:windowBackground">@color/colorDarkordWindowBackground</item>
         <item name="android:colorBackground">@color/colorDarkordBackground</item>
+        <item name="android:navigationBarColor">@color/colorDarkordPrimaryDark</item>
         <item name="colorShimmer">@color/colorShimmerDarkord</item>
         <item name="colorStroke">@color/colorStrokeDarkord</item>
     </style>
@@ -84,6 +89,7 @@
         <item name="android:windowBackground">@color/colorBlack</item>
         <item name="android:colorBackground">@color/colorBlack</item>
         <item name="colorBackgroundFloating">@color/colorBlack</item>
+        <item name="android:navigationBarColor">@color/colorBlack</item>
         <item name="colorShimmer">@color/colorShimmerBlack</item>
         <item name="colorStroke">@color/colorStrokeBlack</item>
     </style>
