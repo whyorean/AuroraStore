@@ -38,7 +38,9 @@ object OkHttpClient : IHttpClient {
     private const val GET = "GET"
 
     private val okHttpClient = OkHttpClient().newBuilder()
-        .connectTimeout(20, TimeUnit.SECONDS)
+        .connectTimeout(25, TimeUnit.SECONDS)
+        .readTimeout(25, TimeUnit.SECONDS)
+        .writeTimeout(25, TimeUnit.SECONDS)
         .retryOnConnectionFailure(true)
         .followRedirects(true)
         .followSslRedirects(true)
