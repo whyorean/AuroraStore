@@ -2,7 +2,7 @@
 <resources>
     <string name="details_dev_reply">Phản hồi của nhà phát triển</string>
     <string name="details_dev_profile">Hồ sơ nhà phát triển</string>
-    <string name="details_dev_email">Email</string>
+    <string name="details_dev_email">Thư điện tử</string>
     <string name="details_dev_details">Liên hệ nhà phát triển</string>
     <string name="details_dev_address">Địa chỉ</string>
     <string name="details_description">Mô tả</string>
