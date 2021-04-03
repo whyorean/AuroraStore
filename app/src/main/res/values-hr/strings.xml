@@ -125,7 +125,6 @@
     <string name="details_dev_email">E-pošta</string>
     <string name="details_dev_reply">Odgovor programera</string>
     <string name="details_dev_profile">Profil programera</string>
-    <string name="details_dev_email">E-adresa</string>
     <string name="toast_purchase_blocked">Kupljeni programi nisu dostupni na anonimnim računima.</string>
     <string name="toast_spoof_applied">Simuliranje uređaja je uspješno primijenjeno.</string>
     <string name="toast_permission_granted">Dozvola odobrena</string>
