@@ -36,7 +36,7 @@ class FilterSheet : BaseBottomSheet() {
 
     companion object {
 
-        const val TAG = "TOSSheet"
+        const val TAG = "FilterSheet"
 
         @JvmStatic
         fun newInstance(): FilterSheet {

@@ -123,7 +123,7 @@ class SearchResultsActivity : BaseActivity(), OnSharedPreferenceChangeListener {
 
     private fun attachFilter() {
         B.filterFab.setOnClickListener {
-            FilterSheet.newInstance().show(supportFragmentManager, "")
+            FilterSheet.newInstance().show(supportFragmentManager, FilterSheet.TAG)
         }
     }
 
