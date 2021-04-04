@@ -172,4 +172,49 @@
         <item>2</item>
     </string-array>
 
+    <string-array name="filterRatingValues" translatable="false">
+        <item>0</item>
+        <item>1.0</item>
+        <item>2.0</item>
+        <item>3.0</item>
+        <item>4.0</item>
+        <item>4.5</item>
+        <item>4.7</item>
+    </string-array>
+
+    <string-array name="filterRatingLabels" translatable="false">
+        <item>@string/action_filter_all</item>
+        <item> 1 + </item>
+        <item> 2 + </item>
+        <item> 3 + </item>
+        <item> 4 + </item>
+        <item> 4.5 + </item>
+        <item> 4.7 + </item>
+    </string-array>
+
+    <string-array name="filterDownloadsValues" translatable="false">
+        <item>0</item>
+        <item>100</item>
+        <item>1000</item>
+        <item>10000</item>
+        <item>50000</item>
+        <item>100000</item>
+        <item>1000000</item>
+        <item>10000000</item>
+        <item>50000000</item>
+        <item>100000000</item>
+    </string-array>
+
+    <string-array name="filterDownloadsLabels" translatable="false">
+        <item>@string/action_filter_all</item>
+        <item> > 100 </item>
+        <item> > 1 K </item>
+        <item> > 10 K </item>
+        <item> > 50 K </item>
+        <item> > 100 K </item>
+        <item> > 1 M </item>
+        <item> > 10 M </item>
+        <item> > 50 M </item>
+        <item> > 100 M </item>
+    </string-array>
 </resources>

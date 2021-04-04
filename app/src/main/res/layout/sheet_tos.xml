@@ -71,14 +71,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
-            android:textAllCaps="false"
-            android:text="@string/onboarding_tos" />
+            android:text="@string/onboarding_tos"
+            android:textAllCaps="false" />
 
         <androidx.appcompat.widget.AppCompatCheckBox
             android:id="@+id/checkbox_accept"
-            android:minHeight="0dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:minHeight="0dp"
             android:text="@string/onboarding_tos_confirmation"
             android:textAppearance="@style/TextAppearance.Aurora.Line2" />
     </LinearLayout>

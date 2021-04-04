@@ -40,6 +40,7 @@ object Preferences {
 
     const val PREFERENCE_FILTER_GOOGLE = "PREFERENCE_FILTER_GOOGLE"
     const val PREFERENCE_FILTER_FDROID = "PREFERENCE_FILTER_FDROID"
+    const val PREFERENCE_FILTER_SEARCH = "PREFERENCE_FILTER_SEARCH"
 
     const val PREFERENCE_AUTO_INSTALL = "PREFERENCE_AUTO_INSTALL"
     const val PREFERENCE_AUTO_DELETE = "PREFERENCE_AUTO_DELETE"
@@ -55,7 +56,7 @@ object Preferences {
     const val PREFERENCE_INSECURE_ANONYMOUS = "PREFERENCE_INSECURE_ANONYMOUS"
 
 
-    private fun getPrefs(context: Context): SharedPreferences {
+    fun getPrefs(context: Context): SharedPreferences {
         return PreferenceManager.getDefaultSharedPreferences(context)
     }
 

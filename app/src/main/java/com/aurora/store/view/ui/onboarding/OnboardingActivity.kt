@@ -37,6 +37,7 @@ import com.aurora.store.util.Preferences.PREFERENCE_DOWNLOAD_ACTIVE
 import com.aurora.store.util.Preferences.PREFERENCE_DOWNLOAD_EXTERNAL
 import com.aurora.store.util.Preferences.PREFERENCE_FILTER_FDROID
 import com.aurora.store.util.Preferences.PREFERENCE_FILTER_GOOGLE
+import com.aurora.store.util.Preferences.PREFERENCE_FILTER_SEARCH
 import com.aurora.store.util.Preferences.PREFERENCE_FOR_YOU
 import com.aurora.store.util.Preferences.PREFERENCE_INSECURE_ANONYMOUS
 import com.aurora.store.util.Preferences.PREFERENCE_INSTALLER_ID
@@ -155,6 +156,7 @@ class OnboardingActivity : BaseActivity() {
         /*Filters*/
         save(PREFERENCE_FILTER_FDROID, true)
         save(PREFERENCE_FILTER_GOOGLE, false)
+        save(PREFERENCE_FILTER_SEARCH, true)
 
         /*Downloader*/
         save(PREFERENCE_DOWNLOAD_ACTIVE, 3)
