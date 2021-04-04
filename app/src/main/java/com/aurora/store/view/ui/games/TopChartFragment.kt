@@ -29,8 +29,8 @@ import com.aurora.gplayapi.data.models.StreamCluster
 import com.aurora.store.R
 import com.aurora.store.databinding.FragmentTopContainerBinding
 import com.aurora.store.view.custom.recycler.EndlessRecyclerOnScrollListener
-import com.aurora.store.view.epoxy.views.app.AppListViewModel_
 import com.aurora.store.view.epoxy.views.AppProgressViewModel_
+import com.aurora.store.view.epoxy.views.app.AppListViewModel_
 import com.aurora.store.view.epoxy.views.shimmer.AppListViewShimmerModel_
 import com.aurora.store.view.ui.commons.BaseFragment
 import com.aurora.store.viewmodel.topchart.*
@@ -40,7 +40,7 @@ class TopChartFragment : BaseFragment() {
     private lateinit var VM: BaseChartViewModel
     private lateinit var B: FragmentTopContainerBinding
 
-    private var chartType = 1
+    private var chartType = 0
     private var chartCategory = 0
 
     companion object {
@@ -74,16 +74,31 @@ class TopChartFragment : BaseFragment() {
             chartCategory = bundle.getInt(Constants.TOP_CHART_CATEGORY, 0)
         }
 
-        when (chartCategory) {
-            0 -> VM =
-                ViewModelProvider(requireActivity()).get(TopFreeGameChartViewModel::class.java)
-            1 -> VM =
-                ViewModelProvider(requireActivity()).get(TopGrossingGameChartViewModel::class.java)
-            2 -> VM =
-                ViewModelProvider(requireActivity()).get(TrendingGameChartViewModel::class.java)
-            3 -> VM =
-                ViewModelProvider(requireActivity()).get(TopPaidGameChartViewModel::class.java)
+        when (chartType) {
+            0 -> when (chartCategory) {
+                0 -> VM =
+                    ViewModelProvider(requireActivity()).get(TopFreeAppChartViewModel::class.java)
+                1 -> VM =
+                    ViewModelProvider(requireActivity()).get(TopGrossingAppChartViewModel::class.java)
+                2 -> VM =
+                    ViewModelProvider(requireActivity()).get(TrendingAppChartViewModel::class.java)
+                3 -> VM =
+                    ViewModelProvider(requireActivity()).get(TopPaidAppChartViewModel::class.java)
+            }
+
+            1 -> when (chartCategory) {
+                0 -> VM =
+                    ViewModelProvider(requireActivity()).get(TopFreeGameChartViewModel::class.java)
+                1 -> VM =
+                    ViewModelProvider(requireActivity()).get(TopGrossingGameChartViewModel::class.java)
+                2 -> VM =
+                    ViewModelProvider(requireActivity()).get(TrendingGameChartViewModel::class.java)
+                3 -> VM =
+                    ViewModelProvider(requireActivity()).get(TopPaidGameChartViewModel::class.java)
+            }
         }
+
+
 
         return B.root
     }

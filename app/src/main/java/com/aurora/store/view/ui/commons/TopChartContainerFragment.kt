@@ -17,7 +17,7 @@
  *
  */
 
-package com.aurora.store.view.ui.games
+package com.aurora.store.view.ui.commons
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -28,10 +28,12 @@ import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
+import com.aurora.Constants
 import com.aurora.gplayapi.data.models.AuthData
 import com.aurora.store.R
 import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.databinding.FragmentTopChartBinding
+import com.aurora.store.view.ui.games.TopChartFragment
 
 
 class TopChartContainerFragment : Fragment() {
@@ -40,11 +42,24 @@ class TopChartContainerFragment : Fragment() {
 
     private lateinit var authData: AuthData
 
+    private var chartType = 0
+
+    companion object {
+        @JvmStatic
+        fun newInstance(chartType: Int): TopChartContainerFragment {
+            return TopChartContainerFragment().apply {
+                arguments = Bundle().apply {
+                    putInt(Constants.TOP_CHART_TYPE, chartType)
+                }
+            }
+        }
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         B = FragmentTopChartBinding.bind(
             inflater.inflate(
                 R.layout.fragment_top_chart,
@@ -52,6 +67,12 @@ class TopChartContainerFragment : Fragment() {
                 false
             )
         )
+
+        val bundle = arguments
+        if (bundle != null) {
+            chartType = bundle.getInt(Constants.TOP_CHART_TYPE, 0)
+        }
+
         return B.root
     }
 
@@ -62,7 +83,7 @@ class TopChartContainerFragment : Fragment() {
     }
 
     private fun setupViewPager() {
-        B.pager.adapter = ViewPagerAdapter(childFragmentManager, lifecycle)
+        B.pager.adapter = ViewPagerAdapter(childFragmentManager, lifecycle, chartType)
         B.topTabGroup.setOnCheckedChangeListener { group, checkedId ->
             when (checkedId) {
                 R.id.tab_top_free -> B.pager.setCurrentItem(0, true)
@@ -85,14 +106,17 @@ class TopChartContainerFragment : Fragment() {
         })
     }
 
-    internal class ViewPagerAdapter(fragment: FragmentManager, lifecycle: Lifecycle) :
+    internal class ViewPagerAdapter(
+        fragment: FragmentManager,
+        lifecycle: Lifecycle,
+        chartType: Int
+    ) :
         FragmentStateAdapter(fragment, lifecycle) {
-
         private val tabFragments: MutableList<TopChartFragment> = mutableListOf(
-            TopChartFragment.newInstance(1, 0),
-            TopChartFragment.newInstance(1, 1),
-            TopChartFragment.newInstance(1, 2),
-            TopChartFragment.newInstance(1, 3)
+            TopChartFragment.newInstance(chartType, 0),
+            TopChartFragment.newInstance(chartType, 1),
+            TopChartFragment.newInstance(chartType, 2),
+            TopChartFragment.newInstance(chartType, 3)
         )
 
         override fun createFragment(position: Int): Fragment {

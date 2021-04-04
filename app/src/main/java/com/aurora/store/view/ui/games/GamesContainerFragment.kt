@@ -35,6 +35,7 @@ import com.aurora.store.util.Preferences
 import com.aurora.store.view.ui.commons.CategoryFragment
 import com.aurora.store.view.ui.commons.EditorChoiceFragment
 import com.aurora.store.view.ui.commons.ForYouFragment
+import com.aurora.store.view.ui.commons.TopChartContainerFragment
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 
@@ -112,7 +113,7 @@ class GamesContainerFragment : Fragment() {
                 add(ForYouFragment.newInstance(1))
             }
 
-            add(TopChartContainerFragment())
+            add(TopChartContainerFragment.newInstance(1))
             add(CategoryFragment.newInstance(1))
 
             if (isGoogleAccount) {
