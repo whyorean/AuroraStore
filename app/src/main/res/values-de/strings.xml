@@ -322,4 +322,6 @@
     <string name="pref_network_title">Vernetzung</string>
     <string name="pref_insecure_anonymous_title">Unsichere anonyme Sitzung</string>
     <string name="pref_insecure_anonymous_summary">GSF-ID lokal auf dem Gerät generieren</string>
+    <string name="pref_ui_similar_apps_desc">Ähnliche und verwandte Cluster auf der App-Detailseite anzeigen</string>
+    <string name="pref_ui_similar_apps">Ähnliche und verwandte Apps</string>
 </resources>
