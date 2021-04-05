@@ -1,3 +1,15 @@
+Changelog : v4.0.3 (34)
+• Add back search filters
+• Add back manual downloads
+• Fixed installer related issues
+• Fixed language spoof issue
+• Fixed dispenser timeout issue
+• Added support for insecure anonymous sessions
+• Fixed ABI mismatch issues on Huawei devices
+• Added options to disable ForYouPage & customize default tab
+• Bug fixes & improvements
+• Updated Translations
+
 Changelog : v4.0.1
 • New improved GPlay-API v3
 • New improved UI
