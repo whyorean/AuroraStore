@@ -322,4 +322,17 @@
     <string name="pref_network_title">网络</string>
     <string name="pref_insecure_anonymous_title">不安全的匿名会话</string>
     <string name="pref_insecure_anonymous_summary">在设备上本地生成 GSF ID</string>
+    <string name="pref_ui_similar_apps_desc">在应用程序详细信息页面上显示相似和相关的集群</string>
+    <string name="pref_ui_similar_apps">相似及相关应用</string>
+    <string name="pref_ui_no_for_you_desc">在主页展示 For You 页面</string>
+    <string name="pref_ui_no_for_you">For You 页面</string>
+    <string name="pref_ui_quick_exit_desc">单次返回操作即可退出应用</string>
+    <string name="pref_ui_quick_exit">快速退出</string>
+    <string name="pref_ui_layout_tab">选择默认标签</string>
+    <string name="pref_ui_layout">布局</string>
+    <string name="pref_filter_search_title">使用非永久性搜索过滤器</string>
+    <string name="pref_filter_search_summary">搜索过滤器会在每次搜索时重置。 关闭以保存搜索过滤器</string>
+    <string name="pref_common_extra">附加</string>
+    <string name="pref_common_advance">高级</string>
+    <string name="details_no_app_match">没找到匹配的应用</string>
 </resources>

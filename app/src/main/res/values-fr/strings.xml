@@ -322,4 +322,17 @@
     <string name="pref_network_title">Mise en réseau</string>
     <string name="pref_insecure_anonymous_title">Session anonyme non sécurisée</string>
     <string name="pref_insecure_anonymous_summary">Générer un identifiant GSF localement sur l’appareil</string>
+    <string name="pref_ui_no_for_you">Pages « pour vous »</string>
+    <string name="pref_ui_similar_apps_desc">Afficher les grappes similaires et connexes sur la page de détails de l’application</string>
+    <string name="pref_ui_similar_apps">Applications similaires et connexes</string>
+    <string name="pref_ui_no_for_you_desc">Afficher les pages « Pour vous » sur l’écran d’accueil</string>
+    <string name="pref_ui_quick_exit_desc">Quitter l’application par une seule action de retour</string>
+    <string name="pref_ui_quick_exit">Sortie rapide</string>
+    <string name="pref_ui_layout_tab">Sélectionner l’onglet par défaut</string>
+    <string name="pref_ui_layout">Disposition</string>
+    <string name="pref_filter_search_title">Utiliser un filtre de recherche non persistant</string>
+    <string name="pref_filter_search_summary">Les filtres de recherche sont réinitialisés à chaque recherche. Désactiver pour enregistrer les filtres de recherche</string>
+    <string name="pref_common_extra">Extras</string>
+    <string name="pref_common_advance">Avancé</string>
+    <string name="details_no_app_match">Aucune correspondance trouvée</string>
 </resources>

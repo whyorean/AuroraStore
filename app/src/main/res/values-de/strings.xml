@@ -322,4 +322,17 @@
     <string name="pref_network_title">Vernetzung</string>
     <string name="pref_insecure_anonymous_title">Unsichere anonyme Sitzung</string>
     <string name="pref_insecure_anonymous_summary">GSF-ID lokal auf dem Gerät generieren</string>
+    <string name="pref_ui_similar_apps_desc">Ähnliche und verwandte Anwendungsgruppen auf der Detailseite anzeigen</string>
+    <string name="pref_ui_similar_apps">Ähnliche und verwandte Apps</string>
+    <string name="pref_ui_no_for_you_desc">„Für dich“-Seiten auf dem Startbildschirm anzeigen</string>
+    <string name="pref_ui_no_for_you">„Für dich“-Seiten</string>
+    <string name="pref_ui_quick_exit_desc">Beenden bei einmaliger Zurück-Aktion</string>
+    <string name="pref_ui_quick_exit">Schnelles Beenden</string>
+    <string name="pref_ui_layout_tab">Standard-Registerkarte auswählen</string>
+    <string name="pref_ui_layout">Aussehen</string>
+    <string name="pref_filter_search_title">Nicht-persistente Suchfilter benutzen</string>
+    <string name="pref_filter_search_summary">Die Suchfilter werden bei jeder Suche zurückgesetzt. Deaktiviere diese Option, um Suchfilter zu speichern</string>
+    <string name="pref_common_extra">Extras</string>
+    <string name="pref_common_advance">Erweitert</string>
+    <string name="details_no_app_match">Keine passende Ergebnisse gefunden</string>
 </resources>

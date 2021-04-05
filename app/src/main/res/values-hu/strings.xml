@@ -322,4 +322,17 @@
     <string name="action_clear_all">Törli mind</string>
     <string name="action_clear">Töröl</string>
     <string name="action_ask">Kérdez</string>
+    <string name="pref_ui_similar_apps_desc">Hasonló és kapcsolódó csoportok megjelenítése a részletek lapon</string>
+    <string name="pref_ui_similar_apps">Hasonló és kapcsolódó appok</string>
+    <string name="pref_ui_no_for_you_desc">Oldalak neked megjelenítés a Kezdőlapon</string>
+    <string name="pref_ui_no_for_you">Oldalak neked</string>
+    <string name="pref_ui_quick_exit_desc">Kilépés egyetlen Vissza művelettel</string>
+    <string name="pref_ui_quick_exit">Gyors kilépés</string>
+    <string name="pref_ui_layout_tab">Alapért. fül kiválasztása</string>
+    <string name="pref_ui_layout">Elrendezés</string>
+    <string name="pref_filter_search_title">Használjon nem állandó kereső szűrőt</string>
+    <string name="pref_filter_search_summary">A keresési szűrők mindig alapra állnak. Kapcsolja ki a keresési szűrők mentéséhez</string>
+    <string name="pref_common_extra">Extrák</string>
+    <string name="pref_common_advance">Haladó</string>
+    <string name="details_no_app_match">Nem található app egyezés</string>
 </resources>

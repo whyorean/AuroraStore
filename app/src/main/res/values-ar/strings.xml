@@ -322,4 +322,17 @@
     <string name="pref_network_title">الشبكات</string>
     <string name="pref_insecure_anonymous_title">جلسة مجهولة غير آمنة</string>
     <string name="pref_insecure_anonymous_summary">إنشاء معرف GSF محلياً على الجهاز</string>
+    <string name="pref_ui_similar_apps_desc">عرض مجموعات متشابهة وذات صلة في صفحة تفاصيل التطبيق</string>
+    <string name="pref_ui_similar_apps">تطبيقات مشابهة و ذات صلة</string>
+    <string name="pref_ui_no_for_you_desc">عرض صفحات لك على الشاشة الرئيسية</string>
+    <string name="pref_ui_no_for_you">صفحات لك</string>
+    <string name="pref_ui_quick_exit_desc">الخروج من التطبيق بعد ضغطة رجوع واحده</string>
+    <string name="pref_ui_quick_exit">خروج سريع</string>
+    <string name="pref_ui_layout_tab">حدد علامة التبويب الافتراضية</string>
+    <string name="pref_ui_layout">التخطيط</string>
+    <string name="pref_filter_search_title">استخدام عامل تصفية البحث غير الدائم</string>
+    <string name="pref_filter_search_summary">يتم إعادة تعيين عوامل تصفية البحث في كل بحث. قم بإيقاف التشغيل لحفظ عوامل تصفية البحث</string>
+    <string name="pref_common_extra">إضافية</string>
+    <string name="pref_common_advance">متقدم</string>
+    <string name="details_no_app_match">لم يتم العثور على تطبيق مماثل</string>
 </resources>

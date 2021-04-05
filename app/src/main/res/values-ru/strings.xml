@@ -61,7 +61,7 @@
     <string name="about_fdroid">F-Droid</string>
     <string name="about_bitcoin_btc">Bitcoin</string>
     <string name="about_bhim">BHIM - UPI</string>
-    <string name="about_bitcoin_bch">Bitcoin Cash</string>
+    <string name="about_bitcoin_bch">Bitcoin Сash</string>
     <string name="about_telegram">Telegram</string>
     <string name="action_blacklist_add">Добавить в чёрный список</string>
     <string name="action_blacklist">Чёрный список</string>
@@ -244,7 +244,7 @@
     <string name="pref_ui_theme_dark">Тёмная</string>
     <string name="pref_ui_theme_black">Чёрная</string>
     <string name="pref_ui_theme_light">Светлая</string>
-    <string name="pref_ui_theme_darkord">Disskord</string>
+    <string name="pref_ui_theme_darkord">Darkоrd</string>
     <string name="pref_ui_accent_title">Акцент</string>
     <string name="pref_install_profile_title">Установочные профили (экспериментальная функция)</string>
     <string name="pref_install_mode_title">Способ установки</string>
@@ -322,4 +322,17 @@
     <string name="insecure_anonymous_apply">Убедитесь, что выполнили новый вход и перезапустили приложение для примения изменений.</string>
     <string name="pref_network_title">Сеть</string>
     <string name="pref_insecure_anonymous_summary">Создавать GSF ID на устройстве</string>
+    <string name="pref_ui_similar_apps_desc">Показать секции похожих и связанных на странице приложения</string>
+    <string name="pref_ui_no_for_you_desc">Показать \"Страницы для Вас\" на домашнем экране</string>
+    <string name="pref_ui_layout_tab">Выбрать страницу по умолчанию</string>
+    <string name="pref_ui_layout">Страницы</string>
+    <string name="pref_filter_search_title">Использовать непостоянный поисковый фильтр</string>
+    <string name="pref_common_extra">Дополнительно</string>
+    <string name="pref_common_advance">Продвинутые</string>
+    <string name="pref_ui_similar_apps">Похожие и связанные приложения</string>
+    <string name="pref_ui_no_for_you">Страницы для Вас</string>
+    <string name="pref_ui_quick_exit_desc">Выйти из приложения одним нажатием кнопки \"назад\"</string>
+    <string name="pref_ui_quick_exit">Быстрый выход</string>
+    <string name="pref_filter_search_summary">Фильтры поиска сбрасываются при каждом поиске. Отключите чтобы сохранить фильтры</string>
+    <string name="details_no_app_match">Приложения не найдены</string>
 </resources>
