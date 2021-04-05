@@ -40,6 +40,11 @@ sealed class BusEvent {
         var email: String = String(),
         var aasToken: String = String()
     ) : BusEvent()
+
+    data class ManualDownload(
+        var packageName: String,
+        var versionCode: Int
+    ) : BusEvent()
 }
 
 sealed class InstallerEvent {

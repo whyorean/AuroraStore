@@ -29,6 +29,10 @@
         android:title="@string/action_uninstall" />
 
     <item
+        android:id="@+id/menu_download_manual"
+        android:title="@string/title_manual_download" />
+
+    <item
         android:id="@+id/menu_download_manager"
         android:title="@string/title_download_manager" />
 

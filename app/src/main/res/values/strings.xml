@@ -52,6 +52,7 @@
     <string name="action_blacklist_add">"Add to Blacklist"</string>
     <string name="action_buy">"Buy"</string>
     <string name="action_cancel">"Cancel"</string>
+    <string name="action_check">"Check"</string>
     <string name="action_clear">"Clear"</string>
     <string name="action_clear_all">"Clear all"</string>
     <string name="action_clear_restart">"Clear data"</string>
@@ -341,6 +342,7 @@
     <string name="title_settings">"Settings"</string>
     <string name="title_spoof_manager">"Spoof manager"</string>
     <string name="title_updates">"Updates"</string>
+    <string name="title_manual_download">"Manual download"</string>
     <string name="toast_abandon_sessions">"Old installation sessions abandoned"</string>
     <string name="toast_anonymous_restriction">"Not available on anonymous accounts"</string>
     <string name="toast_apk_blacklisted">"Blacklisted"</string>
@@ -352,4 +354,6 @@
     <string name="toast_permission_granted">"Permission granted"</string>
     <string name="toast_spoof_applied">"Device spoof applied successfully."</string>
     <string name="toast_purchase_blocked">"App purchases not available on Anonymous accounts."</string>
+    <string name="toast_manual_unavailable">"The version code you are requesting is unavailable."</string>
+    <string name="toast_manual_available">"Congrats, requested version code is available, downloading now."</string>
 </resources>

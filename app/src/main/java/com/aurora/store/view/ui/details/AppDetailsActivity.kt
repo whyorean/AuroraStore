@@ -50,6 +50,7 @@ import com.aurora.store.databinding.ActivityDetailsBinding
 import com.aurora.store.util.*
 import com.aurora.store.view.ui.downloads.DownloadActivity
 import com.aurora.store.view.ui.sheets.InstallErrorDialogSheet
+import com.aurora.store.view.ui.sheets.ManualDownloadSheet
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetBehavior.BottomSheetCallback
@@ -114,6 +115,12 @@ class AppDetailsActivity : BaseDetailsActivity() {
             is BusEvent.UninstallEvent -> {
                 if (app.packageName == event.packageName) {
                     attachActions()
+                }
+            }
+            is BusEvent.ManualDownload -> {
+                if (app.packageName == event.packageName) {
+                    app.versionCode = event.versionCode
+                    purchase()
                 }
             }
             is InstallerEvent.Failed -> {
@@ -204,6 +211,12 @@ class AppDetailsActivity : BaseDetailsActivity() {
             }
             R.id.action_uninstall -> {
                 uninstallApp()
+                return true
+            }
+            R.id.menu_download_manual -> {
+                val sheet = ManualDownloadSheet.newInstance(app)
+                sheet.isCancelable = false
+                sheet.show(supportFragmentManager, ManualDownloadSheet.TAG)
                 return true
             }
             R.id.menu_download_manager -> {
@@ -327,7 +340,7 @@ class AppDetailsActivity : BaseDetailsActivity() {
                     app
                 )
             }
-            txtLine3.text = ("v${app.versionName}.${app.versionCode}")
+            txtLine3.text = ("${app.versionName} (${app.versionCode})")
 
             val tags = mutableListOf<String>()
             if (app.isFree)
@@ -546,7 +559,7 @@ class AppDetailsActivity : BaseDetailsActivity() {
 
                 if (isUpdatable) {
                     B.layoutDetailsApp.txtLine3.text =
-                        ("$installedVersion > ${app.versionName}.${app.versionCode}")
+                        ("$installedVersion > ${app.versionName} (${app.versionCode})")
                     btn.setText(R.string.action_update)
                     btn.addOnClickListener { startDownload() }
                 } else {

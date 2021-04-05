@@ -67,7 +67,7 @@ object PackageUtil {
         return try {
             val packageInfo = getPackageInfo(context, packageName)
             if (packageInfo != null) {
-                "${packageInfo.versionName}.${packageInfo.versionCode}"
+                "${packageInfo.versionName} (${packageInfo.versionCode})"
             } else {
                 ""
             }
