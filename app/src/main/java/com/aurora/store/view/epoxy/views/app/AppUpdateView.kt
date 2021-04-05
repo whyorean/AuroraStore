@@ -83,7 +83,7 @@ class AppUpdateView : RelativeLayout {
 
                 B.txtLine2.text = developerName
                 B.txtLine3.text = ("${CommonUtil.addSiPrefix(size)}  •  $updatedOn")
-                B.txtLine4.text = ("v${versionName}.${versionCode}")
+                B.txtLine4.text = ("$versionName (${versionCode})")
                 B.txtChangelog.text = if (changes.isNotEmpty())
                     HtmlCompat.fromHtml(
                         changes,
