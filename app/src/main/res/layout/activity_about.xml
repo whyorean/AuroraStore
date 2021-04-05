@@ -31,8 +31,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <androidx.appcompat.widget.AppCompatImageView
@@ -40,8 +39,7 @@
             android:layout_width="@dimen/icon_size_avatar"
             android:layout_height="@dimen/icon_size_avatar"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/margin_xlarge"
-            android:minWidth="176dp"
+            android:layout_marginTop="@dimen/margin_small"
             app:srcCompat="@drawable/bg_placeholder" />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -62,30 +60,31 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/line1"
             android:layout_centerHorizontal="true"
-            android:gravity="center_vertical"
-            tools:text="4.0.1" />
+            tools:text="4.0.1 (30)" />
 
         <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/line3"
             style="@style/TextAppearance.Aurora.Line3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/line2"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/margin_xsmall"
-            android:gravity="center_vertical"
+            android:layout_marginBottom="@dimen/margin_small"
             android:text="Made with ❤ in India" />
     </RelativeLayout>
 
     <com.airbnb.epoxy.EpoxyRecyclerView
         android:id="@+id/epoxy_recycler"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="2"
+        android:layout_height="match_parent"
         android:clipToPadding="false"
         android:orientation="vertical"
         android:overScrollMode="never"
         android:paddingStart="@dimen/padding_normal"
+        android:paddingTop="@dimen/padding_small"
         android:paddingEnd="@dimen/padding_normal"
+        android:paddingBottom="@dimen/padding_small"
         app:itemSpacing="@dimen/margin_small"
         tools:listitem="@layout/view_link" />
 </LinearLayout>

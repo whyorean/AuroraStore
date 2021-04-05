@@ -69,7 +69,7 @@ class AboutActivity : BaseActivity() {
 
     private fun attachAppDetails() {
         B.imgIcon.load(R.drawable.ic_logo)
-        B.line2.text = ("v${BuildConfig.VERSION_NAME}.${BuildConfig.VERSION_CODE}")
+        B.line2.text = ("v${BuildConfig.VERSION_NAME}(${BuildConfig.VERSION_CODE})")
     }
 
     private fun attachRecycler() {
