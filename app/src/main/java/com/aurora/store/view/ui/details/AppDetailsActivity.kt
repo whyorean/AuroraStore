@@ -262,6 +262,19 @@ class AppDetailsActivity : BaseDetailsActivity() {
         }
     }
 
+    private fun verifyAndInstall(files: List<Download>) {
+        var filesExist = true
+
+        files.forEach { download ->
+            filesExist = filesExist && FileUtils.getFile(download.file).exists()
+        }
+
+        if (filesExist)
+            install(files)
+        else
+            purchase()
+    }
+
     @Synchronized
     private fun install(files: List<Download>) {
         updateActionState(State.IDLE)
@@ -394,16 +407,7 @@ class AppDetailsActivity : BaseDetailsActivity() {
             }
             Status.COMPLETED -> {
                 fetch.getFetchGroup(app.id) {
-                    var filesExist = true
-
-                    it.downloads.forEach { download ->
-                        filesExist = filesExist && FileUtils.getFile(download.file).exists()
-                    }
-
-                    if (filesExist)
-                        install(it.downloads)
-                    else
-                        purchase()
+                    verifyAndInstall(it.downloads)
                 }
             }
             else -> {
@@ -485,6 +489,10 @@ class AppDetailsActivity : BaseDetailsActivity() {
             .toList()
 
         if (requestList.isNotEmpty()) {
+            /*Remove old fetch group if downloaded earlier, mostly in case of updates*/
+            fetch.deleteGroup(app.id)
+
+            /*Enqueue new fetch group*/
             fetch.enqueue(
                 requestList
             ) {
@@ -666,7 +674,7 @@ class AppDetailsActivity : BaseDetailsActivity() {
                 if (groupId == app.id && fetchGroup.groupDownloadProgress == 100) {
                     status = download.status
                     flip(0)
-                    install(fetchGroup.downloads)
+                    verifyAndInstall(fetchGroup.downloads)
                     updateProgress(fetchGroup, -1, -1)
                 }
             }
