@@ -15,7 +15,7 @@ import com.aurora.store.BuildConfig
 import com.aurora.store.R
 import com.aurora.store.data.downloader.DownloadManager
 import com.aurora.store.data.downloader.RequestBuilder.buildRequest
-import com.aurora.store.data.installer.AppInstaller
+import com.aurora.store.data.installer.NativeInstaller
 import com.aurora.store.data.model.SelfUpdate
 import com.aurora.store.util.CertUtil.isFDroidApp
 import com.aurora.store.util.Log
@@ -144,10 +144,15 @@ class SelfUpdateService : Service() {
             override fun onCompleted(groupId: Int, download: Download, fetchGroup: FetchGroup) {
                 if (groupId == app.id && fetchGroup.groupDownloadProgress == 100) {
                     Log.d("Calling installer ${app.displayName}")
-                    AppInstaller(this@SelfUpdateService).getPreferredInstaller().install(
-                        BuildConfig.APPLICATION_ID,
-                        listOf(download.file)
-                    )
+
+                    try {
+                        NativeInstaller(this@SelfUpdateService).install(
+                            app.packageName,
+                            fetchGroup.downloads.map { it.file }
+                        )
+                    } catch (e: Exception) {
+                        Log.e("Self update : ${e.stackTraceToString()}")
+                    }
 
                     task {
                         TimeUnit.SECONDS.sleep(10)

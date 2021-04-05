@@ -45,7 +45,6 @@ import com.aurora.gplayapi.data.models.AuthData
 import com.aurora.store.data.model.SelfUpdate
 import com.aurora.store.data.network.HttpClient
 import com.aurora.store.data.providers.AuthProvider
-import com.aurora.store.data.service.SelfUpdateService
 import com.aurora.store.databinding.ActivityMainBinding
 import com.aurora.store.util.CertUtil.isFDroidApp
 import com.aurora.store.util.Log
@@ -59,6 +58,7 @@ import com.aurora.store.view.ui.downloads.DownloadActivity
 import com.aurora.store.view.ui.preferences.SettingsActivity
 import com.aurora.store.view.ui.sale.AppSalesActivity
 import com.aurora.store.view.ui.search.SearchSuggestionActivity
+import com.aurora.store.view.ui.sheets.SelfUpdateSheet
 import com.aurora.store.view.ui.spoof.SpoofActivity
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -277,10 +277,10 @@ class MainActivity : BaseActivity() {
                     if (it.versionCode > BuildConfig.VERSION_CODE) {
                         if (isFDroidApp(this, BuildConfig.APPLICATION_ID)) {
                             if (it.fdroidBuild.isNotEmpty()) {
-                                showUpdatesDialog(it)
+                                showUpdatesSheet(it)
                             }
                         } else if (it.auroraBuild.isNotEmpty()) {
-                            showUpdatesDialog(it)
+                            showUpdatesSheet(it)
                         } else {
                             Log.i(getString(R.string.details_no_updates))
                         }
@@ -294,27 +294,11 @@ class MainActivity : BaseActivity() {
         }
     }
 
-    private fun showUpdatesDialog(selfUpdate: SelfUpdate) {
-        val messages: List<String> = listOf(
-            selfUpdate.versionCode.toString(),
-            if (selfUpdate.changelog.isEmpty())
-                getString(R.string.details_changelog_unavailable)
-            else
-                selfUpdate.changelog,
-            getString(R.string.dialog_desc_self_update)
-        )
-
-        showDialog(
-            getString(R.string.dialog_title_self_update),
-            messages.joinToString(separator = "\n"),
-            { _, _ ->
-                val intent = Intent(this, SelfUpdateService::class.java)
-                intent.putExtra(Constants.STRING_EXTRA, gson.toJson(selfUpdate))
-                startService(intent)
-            },
-            { dialog, _ ->
-                dialog.dismiss()
-            },
-        )
+    private fun showUpdatesSheet(selfUpdate: SelfUpdate) {
+        if (!supportFragmentManager.isDestroyed) {
+            val sheet = SelfUpdateSheet.newInstance(selfUpdate)
+            sheet.isCancelable = false
+            sheet.show(supportFragmentManager, SelfUpdateSheet.TAG)
+        }
     }
 }
