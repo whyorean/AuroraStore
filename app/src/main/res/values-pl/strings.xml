@@ -339,4 +339,5 @@
     <string name="toast_manual_unavailable">Żądany kod wersji jest niedostępny.</string>
     <string name="title_manual_download">Pobierz ręcznie</string>
     <string name="action_check">Sprawdź</string>
+    <string name="dialog_desc_native_split">Nie można instalować pakietów aplikacji (dzielonych) za pośrednictwem natywnego instalatora. Zmień instalator na sesję, usługi lub root.</string>
 </resources>
