@@ -335,4 +335,8 @@
     <string name="pref_common_extra">Extra</string>
     <string name="pref_common_advance">Avanzato</string>
     <string name="details_no_app_match">Nessuna corrispondenza trovata</string>
+    <string name="toast_manual_available">Congratulazioni, il codice di versione richiesto è disponibile; scaricamento in corso.</string>
+    <string name="toast_manual_unavailable">Il codice di versione richiesto non è disponibile.</string>
+    <string name="title_manual_download">Scaricamento manuale</string>
+    <string name="action_check">Verifica</string>
 </resources>
