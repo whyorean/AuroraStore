@@ -27,6 +27,7 @@ object Constants {
     const val BROWSE_EXTRA = "BROWSE_EXTRA"
 
     const val FETCH_GROUP_ID = "FETCH_GROUP_ID"
+    const val APP_ID = "com.aurora.store"
 
     const val CONNECTIVITY_CHECK_URL = "https://connectivitycheck.android.com/generate_204"
     const val EXODUS_BASE_URL = "https://reports.exodus-privacy.eu.org/api/search/"

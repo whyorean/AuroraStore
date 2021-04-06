@@ -125,8 +125,9 @@ class MainActivity : BaseActivity() {
             checkExternalStorageManagerPermission()
         }
 
-        /* Check self update */
-        checkSelfUpdate()
+        /* Check self update only for stable release, skip debug & nightlies*/
+        if (BuildConfig.APPLICATION_ID == Constants.APP_ID)
+            checkSelfUpdate()
     }
 
     private fun attachToolbar() {
