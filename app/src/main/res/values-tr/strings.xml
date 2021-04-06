@@ -187,7 +187,7 @@
     <string name="installer_status_failure_aborted">Yükleme iptal edildi</string>
     <string name="installer_status_failure">Yükleyici başarısız oldu</string>
     <string name="installer_service_misconfigured">Aurora hizmetleri yapılandırılmadı. Hizmetin etkinleştirildiğinden ve tüm izinlerin verildiğinden emin olun</string>
-    <string name="installer_service_unavailable">Aurora servisleri hiç yüklenmedi ya da sürüm uyumsuz (1.0.9 ve üstü gerekir), lütfen yükleyin veya yükleyiciyi değiştirin</string>
+    <string name="installer_service_unavailable">Aurora hizmetleri kurulu değil ya da sürüm uyumsuz (1.0.9 ve üstü gerekir), lütfen kurun veya kurucuyu değiştirin</string>
     <string name="installer_service_available">Aurora hizmetleri var ve kuruluma hazır.</string>
     <string name="installer_root_unavailable">Kök erişimi yok, izin verin veya yükleyiciyi değiştirin.</string>
     <string name="installer_root_available">Kök erişimi mevcut</string>
