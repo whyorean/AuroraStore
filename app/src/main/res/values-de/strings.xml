@@ -339,4 +339,5 @@
     <string name="toast_manual_unavailable">Der angeforderte Versionscode ist nicht verfügbar.</string>
     <string name="title_manual_download">Manuelles Herunterladen</string>
     <string name="action_check">Überprüfen</string>
+    <string name="dialog_desc_native_split">Gebündelte (geteilte) Anwendungen können mit dem nativen Installationsprogramm nicht installiert werden. Ändere die Installationsmethode zu Sitzung, Dienste oder Wurzel.</string>
 </resources>
