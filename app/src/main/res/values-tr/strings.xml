@@ -132,8 +132,8 @@
     <string name="pref_filter_fdroid_summary">F-Droid uygulamalarını listeden kaldırır</string>
     <string name="pref_downloader_external_desc">Harici depolama indirilenler ve daha fazlası için kullanılacak.</string>
     <string name="pref_downloader_external">Harici depolama kullanıcısı</string>
-    <string name="pref_downloader_active_title">Aktif indirme</string>
-    <string name="pref_downloader_active_summary">En fazla aktif indirme sayısı</string>
+    <string name="pref_downloader_active_title">Etkin indirme</string>
+    <string name="pref_downloader_active_summary">En fazla etkin indirme sayısı</string>
     <string name="pref_dialog_to_apply_restart">Bu seçenek uygulamayı yeniden başlattıktan sonra uygulanacak</string>
     <string name="pref_common_extra">İlaveler</string>
     <string name="pref_common_advance">Gelişmiş</string>
@@ -186,9 +186,9 @@
     <string name="installer_status_failure_blocked">Yükleme engellendi</string>
     <string name="installer_status_failure_aborted">Yükleme iptal edildi</string>
     <string name="installer_status_failure">Yükleyici başarısız oldu</string>
-    <string name="installer_service_misconfigured">Aurora servisleri ayarlanmadı. Lütfen servisin aktif olduğundan ve gerekli izinlerin verildiğinden emin olun.</string>
+    <string name="installer_service_misconfigured">Aurora hizmetleri yapılandırılmadı. Hizmetin etkinleştirildiğinden ve tüm izinlerin verildiğinden emin olun</string>
     <string name="installer_service_unavailable">Aurora servisleri hiç yüklenmedi ya da sürüm uyumsuz (1.0.9 ve üstü gerekir), lütfen yükleyin veya yükleyiciyi değiştirin</string>
-    <string name="installer_service_available">Aurora servisleri yüklenmeye hazır.</string>
+    <string name="installer_service_available">Aurora hizmetleri var ve kuruluma hazır.</string>
     <string name="installer_root_unavailable">Kök erişimi yok, izin verin veya yükleyiciyi değiştirin.</string>
     <string name="installer_root_available">Kök erişimi mevcut</string>
     <string name="filter_review_two">İki</string>
@@ -328,7 +328,7 @@
     <string name="action_filter">Filtreler</string>
     <string name="action_favourites">Favori uygulamalar</string>
     <string name="action_export">Dışarı Çıkar</string>
-    <string name="action_enable">Aktifleştir</string>
+    <string name="action_enable">Etkinleştir</string>
     <string name="action_download">İndir</string>
     <string name="action_done">Tamam</string>
     <string name="action_discover">Keşfet</string>
