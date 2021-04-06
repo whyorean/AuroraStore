@@ -335,4 +335,9 @@
     <string name="pref_ui_layout">Raspored</string>
     <string name="details_no_app_match">Nema odgovarajućeg programa</string>
     <string name="action_check">Označi</string>
+    <string name="pref_common_extra">Dodatno</string>
+    <string name="pref_common_advance">Napredno</string>
+    <string name="dialog_desc_native_split">Paketirane (podijeljene) programe ne možeš instalirati putem nativnog programa za insatliranje instalacije. Promijeni instalatera u sesija, usluge ili administrator.</string>
+    <string name="pref_filter_search_title">Koristi ne trajni filtar pretrage</string>
+    <string name="pref_filter_search_summary">Filtri pretrage obnavljaju se nakon svakog pretraživanja. Isključi za spremanje filtara pretrage</string>
 </resources>
