@@ -335,4 +335,8 @@
     <string name="pref_common_extra">Extrák</string>
     <string name="pref_common_advance">Haladó</string>
     <string name="details_no_app_match">Nem található app egyezés</string>
+    <string name="toast_manual_available">Gratulálunk, a kért verziókód elérhető, letöltése folyamatban van.</string>
+    <string name="toast_manual_unavailable">A kért verziókód nem érhető el.</string>
+    <string name="title_manual_download">Manuális letöltés</string>
+    <string name="action_check">Ellenőrzés</string>
 </resources>
