@@ -279,21 +279,24 @@ class AppDetailsActivity : BaseDetailsActivity() {
     private fun install(files: List<Download>) {
         updateActionState(State.IDLE)
 
-        task {
-            AppInstaller(this)
-                .getPreferredInstaller()
-                .install(
-                    app.packageName,
-                    files
-                        .filter { it.file.endsWith(".apk") }
-                        .map {
-                            it.file
-                        }.toList()
-                )
-        }
+        val apkFiles = files.filter { it.file.endsWith(".apk") }
+        val preferredInstaller = Preferences.getInteger(this, Preferences.PREFERENCE_INSTALLER_ID)
 
-        runOnUiThread {
-            B.layoutDetailsInstall.btnDownload.setText(getString(R.string.action_installing))
+        if (apkFiles.size > 1 && preferredInstaller == 1) {
+            showDialog(R.string.title_installer, R.string.dialog_desc_native_split)
+        } else {
+            task {
+                AppInstaller(this)
+                    .getPreferredInstaller()
+                    .install(
+                        app.packageName,
+                        apkFiles.map { it.file }
+                    )
+            }
+
+            runOnUiThread {
+                B.layoutDetailsInstall.btnDownload.setText(getString(R.string.action_installing))
+            }
         }
     }
 

@@ -233,6 +233,7 @@
     <string name="device_miui_extra">"Optionally you can choose Native installer, but then you can not install bundled (split) APKs, so choice is yours."</string>
     <string name="dialog_title_self_update">"New update available"</string>
     <string name="dialog_desc_self_update">"Do you wish to update now ?"</string>
+    <string name="dialog_desc_native_split">"You can not install bundled(split) apps via Native Installer. Change your installer to Session, Services or Root."</string>
     <string name="list_update_all_txt_one">"update available"</string>
     <string name="notification_channel_alert">"Quick notification"</string>
     <string name="notification_channel_general">"General notification"</string>
