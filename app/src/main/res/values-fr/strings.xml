@@ -154,7 +154,7 @@
     <string name="action_more">Plus</string>
     <string name="action_manual">Téléchargement manuel</string>
     <string name="action_logout">Se déconnecter</string>
-    <string name="action_logging_in">Connexion</string>
+    <string name="action_logging_in">Connexion en cours</string>
     <string name="action_leave">Quitter</string>
     <string name="action_later">Plus tard</string>
     <string name="action_join">Rejoindre</string>
@@ -335,4 +335,8 @@
     <string name="pref_common_extra">Extras</string>
     <string name="pref_common_advance">Avancé</string>
     <string name="details_no_app_match">Aucune correspondance trouvée</string>
+    <string name="toast_manual_available">Félicitations, le code de version demandé est disponible ; téléchargement en cours.</string>
+    <string name="toast_manual_unavailable">Le code de version que vous demandez n’est pas disponible.</string>
+    <string name="title_manual_download">Téléchargement manuel</string>
+    <string name="action_check">Vérifier</string>
 </resources>
