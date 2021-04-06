@@ -182,7 +182,7 @@ class DownloadActivity : BaseActivity() {
             fetch.getDownloads { downloads ->
                 updateController(
                     downloads
-                        .filter { it.id == BuildConfig.APPLICATION_ID.hashCode() }
+                        .filter { it.id != BuildConfig.APPLICATION_ID.hashCode() }
                         .sortedWith { o1, o2 -> o2.created.compareTo(o1.created) }
                         .map { DownloadFile(it) }
                 )
