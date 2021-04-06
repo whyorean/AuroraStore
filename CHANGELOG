@@ -1,3 +1,8 @@
+Changelog : v4.0.4 (35)
+• Fix missing download entries
+• Do not allow users to install bundled apps via Native Installer
+• Updated Translations
+
 Changelog : v4.0.3 (34)
 • Add back search filters
 • Add back manual downloads
