@@ -322,4 +322,21 @@
     <string name="pref_network_title">Redes</string>
     <string name="pref_insecure_anonymous_title">Sesión anónima insegura</string>
     <string name="pref_insecure_anonymous_summary">Generar el ID GSF localmente en el dispositivo</string>
+    <string name="toast_manual_available">Felicidades, el código de la versión solicitada está disponible, descargándolo ahora.</string>
+    <string name="toast_manual_unavailable">El código de la versión que solicita no está disponible.</string>
+    <string name="title_manual_download">Descarga manual</string>
+    <string name="pref_ui_similar_apps_desc">Mostrar grupos similares y relacionados en la página de detalles de la aplicación</string>
+    <string name="pref_ui_similar_apps">Aplicaciones similares y relacionadas</string>
+    <string name="pref_ui_no_for_you_desc">Mostrar páginas para usted en la pantalla de inicio</string>
+    <string name="pref_ui_no_for_you">Páginas para usted</string>
+    <string name="pref_ui_quick_exit_desc">Salir de la aplicación con una sola acción hacia atrás</string>
+    <string name="pref_ui_quick_exit">Salida rápida</string>
+    <string name="pref_ui_layout_tab">Seleccionar la pestaña por defecto</string>
+    <string name="pref_ui_layout">Diseño</string>
+    <string name="pref_filter_search_title">Utilizar un filtro de búsqueda no persistente</string>
+    <string name="pref_filter_search_summary">Los filtros de búsqueda se restablecen en cada búsqueda. Desactivar para guardar los filtros de búsqueda</string>
+    <string name="pref_common_extra">Extras</string>
+    <string name="pref_common_advance">Avanzado</string>
+    <string name="details_no_app_match">No se ha encontrado ninguna aplicación que coincida</string>
+    <string name="action_check">Comprobar</string>
 </resources>

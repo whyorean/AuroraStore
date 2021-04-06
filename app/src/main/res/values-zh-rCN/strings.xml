@@ -335,4 +335,8 @@
     <string name="pref_common_extra">附加</string>
     <string name="pref_common_advance">高级</string>
     <string name="details_no_app_match">没找到匹配的应用</string>
+    <string name="toast_manual_available">恭喜，你请求的版本代码可用，现在下载。</string>
+    <string name="toast_manual_unavailable">你请求的版本代码不可用。</string>
+    <string name="title_manual_download">手动下载</string>
+    <string name="action_check">检查</string>
 </resources>

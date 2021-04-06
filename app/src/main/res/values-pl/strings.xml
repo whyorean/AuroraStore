@@ -217,9 +217,9 @@
     <string name="pref_dialog_to_apply_restart">Zmiany zaczną obowiązywać po ponownym uruchomieniu aplikacji</string>
     <string name="pref_abandon_session_desc">Wyczyść porzucone lub oczekujące sesje instalacyjne</string>
     <string name="pref_abandon_session">Wyczyść sesje instalacyjne</string>
-    <string name="onboarding_permission_installer_desc">Zezwalaj na instalowanie aplikacji z Aurora Store</string>
+    <string name="onboarding_permission_installer_desc">Zezwól na instalowanie aplikacji z Aurora Store</string>
     <string name="onboarding_permission_installer">Uprawnienia instalatora</string>
-    <string name="onboarding_permission_esm_desc">Wymagany na urządzeniach z systemem Android R+, dodatkowo z dostępem do pamięci zewnętrznej</string>
+    <string name="onboarding_permission_esm_desc">Wymagany na urządzeniach z systemem Android R+, dodatkowy dostęp do pamięci zewnętrznej</string>
     <string name="onboarding_permission_esm">Menedżer pamięci zewnętrznej</string>
     <string name="onboarding_permission_esa_desc">Aby zapisać pobrane pliki (APK i OBB), wyeksportować i zaimportować konfiguracje urządzenia w pamięci zewnętrznej.</string>
     <string name="onboarding_permission_esa">Dostęp do pamięci zewnętrznej</string>
@@ -240,8 +240,8 @@
     <string name="notification_channel_general">Ogólne powiadomienia</string>
     <string name="notification_channel_alert">Szybkie powiadomienia</string>
     <string name="list_update_all_txt_one">dostępna aktualizacja</string>
-    <string name="dialog_title_self_update">Dostępna jest aktualizacja</string>
-    <string name="dialog_desc_self_update">Czy chcesz zaktualizować teraz\?</string>
+    <string name="dialog_title_self_update">Dostępna jest nowa aktualizacja</string>
+    <string name="dialog_desc_self_update">Czy chcesz teraz dokonać aktualizacji\?</string>
     <string name="device_miui_subtitle">Instalator sesji nie będzie mógł instalować aplikacji z powodu włączonej optymalizacji MIUI.</string>
     <string name="device_miui_title">Wykryto MIUI!</string>
     <string name="device_huawei_subtitle">Wygląda na to, że używasz urządzenia firmy Huawei. Z powodu ograniczeń nałożonych przez Google, możesz nie być w stanie zalogować się do usług Google.</string>
@@ -322,7 +322,7 @@
     <string name="pref_insecure_anonymous_summary">Wygeneruj GSF ID na urządzeniu</string>
     <string name="pref_network_title">Sieć</string>
     <string name="pref_insecure_anonymous_title">Niezabezpieczona sesja anonimowa</string>
-    <string name="pref_common_extra">Extras</string>
+    <string name="pref_common_extra">Dodatkowe</string>
     <string name="pref_common_advance">Advance</string>
     <string name="pref_filter_search_title">Użyj nietrwałego filtru wyszukiwania</string>
     <string name="pref_filter_search_summary">Filtry wyszukiwania są resetowane po każdym wyszukiwaniu. Wyłącz, aby zapisać filtry wyszukiwania</string>
@@ -330,9 +330,13 @@
     <string name="pref_ui_no_for_you">Strony dla ciebie</string>
     <string name="pref_ui_no_for_you_desc">Wyświetl strony dla ciebie na ekranie głównym</string>
     <string name="pref_ui_similar_apps_desc">Wyświetl grupę podobne i powiązane na stronie szczegółów aplikacji</string>
-    <string name="pref_ui_similar_apps">Podobne i powiązane aplikacje</string>
+    <string name="pref_ui_similar_apps">Aplikacje podobne i powiązane</string>
     <string name="pref_ui_quick_exit">Szybkie wyjście</string>
     <string name="pref_ui_layout_tab">Wybierz domyślną zakładkę</string>
     <string name="pref_ui_layout">Układ</string>
     <string name="details_no_app_match">Nie znaleziono pasującej aplikacji</string>
+    <string name="toast_manual_available">Gratulacje, żądany kod wersji jest dostępny, rozpoczynam pobieranie.</string>
+    <string name="toast_manual_unavailable">Żądany kod wersji jest niedostępny.</string>
+    <string name="title_manual_download">Pobierz ręcznie</string>
+    <string name="action_check">Sprawdź</string>
 </resources>

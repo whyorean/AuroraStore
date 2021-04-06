@@ -228,7 +228,7 @@
     <string name="action_apply">適用</string>
     <string name="action_accounts">アカウント</string>
     <string name="action_accept">承認</string>
-    <string name="account_logout">ログアウト</string>
+    <string name="account_logout">Auroraからログアウトする</string>
     <string name="title_device">端末</string>
     <string name="onboarding_permission_esm_desc">Android R(11) 以降の端末では外部ストレージアクセスに加えて必要</string>
     <string name="onboarding_permission_esa_desc">ダウンロードしたAPK、OBBの保存、端末設定のインポート、エクスポートに必要。</string>
@@ -322,4 +322,21 @@
     <string name="pref_network_title">ネットワーク</string>
     <string name="pref_insecure_anonymous_title">安全でない匿名セッション</string>
     <string name="pref_insecure_anonymous_summary">端末でGSF IDを生成する</string>
+    <string name="pref_common_extra">その他</string>
+    <string name="pref_common_advance">進む</string>
+    <string name="toast_manual_unavailable">要求したバージョン番号は利用できません。</string>
+    <string name="toast_manual_available">おめでとう！要求したバージョンコードが利用できます。ダウンロード中。</string>
+    <string name="title_manual_download">手動ダウンロード</string>
+    <string name="pref_ui_similar_apps_desc">似たアプリをアプリ詳細ページに表示する</string>
+    <string name="pref_ui_similar_apps">似たアプリ</string>
+    <string name="pref_ui_no_for_you_desc">ホーム画面におすすめページを表示する</string>
+    <string name="pref_ui_no_for_you">おすすめページ</string>
+    <string name="pref_ui_quick_exit_desc">一度の「戻る」でアプリを終了する</string>
+    <string name="pref_ui_quick_exit">クイック終了</string>
+    <string name="pref_ui_layout_tab">デフォルトタブを設定</string>
+    <string name="pref_ui_layout">レイアウト</string>
+    <string name="pref_filter_search_title">非永続検索フィルタ</string>
+    <string name="pref_filter_search_summary">検索フィルタを毎回リセットする。検索フィルタを保持するには無効化してください</string>
+    <string name="details_no_app_match">アプリが見つかりませんでした</string>
+    <string name="action_check">確認</string>
 </resources>
