@@ -279,7 +279,7 @@
     <string name="list_update_all_txt_one">aggiornamento disponibile</string>
     <string name="dialog_desc_self_update">Si desidera aggiornare ora\?</string>
     <string name="dialog_title_self_update">Nuovo aggiornamento disponibile</string>
-    <string name="device_miui_extra">Facoltativamente è possibile scegliere programma di installazione nativo, ma quindi non è possibile installare APK in bundle (divisi), quindi la scelta è vostra.</string>
+    <string name="device_miui_extra">Facoltativamente è possibile scegliere programma di installazione nativo, ma quindi non è possibile installare APK aggregati (divisi), quindi la scelta è vostra.</string>
     <string name="device_miui_description">Si prega di disabilitare le ottimizzazioni MIUI per consentire le installazioni, altrimenti è possibile scegliere programma di installazione Root o Services.</string>
     <string name="device_miui_subtitle">Il programma di installazione di sessione non è in grado di installare app a causa delle ottimizzazioni MIUI.</string>
     <string name="device_miui_title">Dispositivo MIUI rilevato!</string>
@@ -339,4 +339,5 @@
     <string name="toast_manual_unavailable">Il codice di versione richiesto non è disponibile.</string>
     <string name="title_manual_download">Scaricamento manuale</string>
     <string name="action_check">Verifica</string>
+    <string name="dialog_desc_native_split">Non puoi installare le applicazioni aggregate (divise), tramite il programma di installazione nativo. Cambia il tuo metodo di installazione in Sessione, Servizi o Radice.</string>
 </resources>
