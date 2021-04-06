@@ -168,9 +168,9 @@
     <string name="device_miui_extra">İsteğe bağlı olarak Yerel kurucuyu seçebilirsiniz, ancak daha sonra paketlenmiş (bölünmüş) APK\'ları kuramazsınız, bu nedenle seçim sizin.</string>
     <string name="device_miui_description">Lütfen kurulumlara izin vermek için MIUI iyileştirmelerini devre dışı bırakın, aksi takdirde Kök veya Hizmetler kurucusunu seçebilirsiniz.</string>
     <string name="device_miui_subtitle">Oturum kurucu, MIUI iyileştirmeleri nedeniyle uygulamaları kuramıyor.</string>
-    <string name="device_miui_title">MIUI algılandı!</string>
-    <string name="device_huawei_description">Yakın tarihli bir Huawei aygıtınız olması durumunda aygıt kandırmasını kullanmanızı öneririz. Şimdi kandırma uygulamak ister misiniz\?</string>
-    <string name="device_huawei_subtitle">Bir Huawei aygıtı kullanıyor görünüyorsunuz, Google\'ın son zamanlarda yaptığı yasaklar nedeniyle giriş yapamayabilirsiniz.</string>
+    <string name="device_miui_title">MEMEUI algılandı!</string>
+    <string name="device_huawei_description">Güncel Huawei modellerinde kandırıcıyı kullanmanı öneriyoruz. Kandırıcıyı kullanmak ister misin\?</string>
+    <string name="device_huawei_subtitle">Huawei kullanıyorsunuz gibi görünüyor, Google kısıtlamalarından dolayı giriş yapamayabilirsiniz. Daha fazla bilgi için huaweiailesi web sitesine erişebilirsiniz.</string>
     <string name="device_huawei_title">Huawei algılandı!</string>
     <string name="menu_terms">Kullanım şartları</string>
     <string name="menu_license">Lisans</string>
