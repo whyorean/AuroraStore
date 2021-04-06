@@ -8,4 +8,6 @@
     <string name="about_fdroid_summary">Dapatkan Aurora Store lewat F-Droid.</string>
     <string name="about_bhim_summary">Donasi via UPI</string>
     <string name="about_bhim">BHIM - UPI</string>
+    <string name="details_dev_website">Situs web</string>
+    <string name="details_dev_email">Surel</string>
 </resources>
