@@ -1,7 +1,7 @@
 {
-  "version_name": "4.0.3",
-  "version_code": 34,
-  "aurora_build": "https://gitlab.com/AuroraOSS/AuroraStore/uploads/a502c85f976d9b43b9cfecf1b09ef3bf/AuroraStore_4.0.3.apk",
+  "version_name": "4.0.4",
+  "version_code": 35,
+  "aurora_build": "https://gitlab.com/AuroraOSS/AuroraStore/uploads/166ad2bf6a08744b432498e51e2b75e5/AuroraStore_4.0.4.apk",
   "fdroid_build": "",
-  "changelog": "Changelog : v4.0.3\n • Add back search filters\n • Add back manual downloads\n • Fixed installer related issues\n • Fixed language spoof issue\n • Fixed dispenser timeout issue\n • Added support for insecure anonymous sessions\n • Fixed ABI mismatch issues on Huawei devices\n • Added options to disable ForYouPage & customize default tab\n • Bug fixes & improvements\n • Updated Translations"
+  "changelog": "Changelog : v4.0.3\n • Fix missing download entries\n • Do not allow users to install bundled apps via Native Installer\n • Updated Translations"
 }
