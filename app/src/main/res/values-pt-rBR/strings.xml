@@ -333,4 +333,10 @@
     <string name="pref_filter_search_title">Use um filtro de pesquisa não permanente</string>
     <string name="pref_filter_search_summary">Os filtros de pesquisa são redefinidos em cada pesquisa. Desative para salvar filtros de pesquisa</string>
     <string name="details_no_app_match">Nenhum aplicativo correspondente encontrado</string>
+    <string name="pref_ui_similar_apps">Aplicativos semelhantes e relacionados</string>
+    <string name="pref_ui_layout_tab">Selecione a guia padrão</string>
+    <string name="pref_ui_layout">Leiaute</string>
+    <string name="pref_common_extra">Extras</string>
+    <string name="pref_common_advance">Avançar</string>
+    <string name="action_check">Verificar</string>
 </resources>
