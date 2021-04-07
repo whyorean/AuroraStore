@@ -339,4 +339,5 @@
     <string name="toast_manual_unavailable">你请求的版本代码不可用。</string>
     <string name="title_manual_download">手动下载</string>
     <string name="action_check">检查</string>
+    <string name="dialog_desc_native_split">你不能通过本机安装程序安装捆绑的（拆分）应用程序。 将你的安装程序更改为会话、服务或根。</string>
 </resources>
