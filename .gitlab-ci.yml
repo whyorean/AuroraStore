@@ -24,7 +24,7 @@ stages:
 assembleDebug:
   stage: build
   script:
-  - curl -s -X POST ${MSG_URL} -d chat_id=${TELEGRAM_CHAT_ID} -d text='Project:+${CI_PROJECT_NAME}<a+href="${CI_PIPELINE_URL}"><b>Building</b></a>+with+HEAD+at+<a+href="${COMMIT_URL}"><b>${CI_COMMIT_SHORT_SHA}</b><a/>+by+${CI_COMMIT_AUTHOR}.%0ABranch:+${CI_COMMIT_BRANCH}'
+  - curl -s -X POST ${MSG_URL} -d chat_id=${TELEGRAM_CHAT_ID} -d text=Project:+${CI_PROJECT_NAME}%3Ca+href=%22${CI_PIPELINE_URL}%22%3E%3Cb%3EBuilding%3C/b%3E%3C/a%3E+with+HEAD+at+%3Ca+href=%22${COMMIT_URL}%22%3E%3Cb%3E${CI_COMMIT_SHORT_SHA}%3C/b%3E%3Ca/%3E+by+${CI_COMMIT_AUTHOR}.%0ABranch:+${CI_COMMIT_BRANCH}
     -d "disable_web_page_preview=true" 
     -d "parse_mode=HTML"
   - ./gradlew assembleDebug
