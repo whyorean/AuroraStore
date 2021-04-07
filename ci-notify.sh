@@ -14,8 +14,8 @@ curl -s --max-time $TIME $msgURL -d chat_id=$TELEGRAM_CHAT_ID \
     -d "parse_mode=html" \
     -d text=$TEXT
 
-if [ -f app/bappld/outputs/apk/debug/app-debug.apk ]; then
-    cp app/bappld/outputs/apk/debug/app-debug.apk app/build/outputs/apk/debug/AuroraStore_$DATE.apk
+if [ -f app/build/outputs/apk/debug/app-debug.apk ]; then
+    cp app/build/outputs/apk/debug/app-debug.apk app/build/outputs/apk/debug/AuroraStore_$DATE.apk
     cd app/build/outputs/apk/debug/
     APK=$(echo AuroraStore_*.apk)
     curl -F document=@"$APK" $docURL \
