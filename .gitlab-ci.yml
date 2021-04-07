@@ -1,18 +1,18 @@
 image: jangrewe/gitlab-ci-android
 
 before_script:
-  - export GRADLE_USER_HOME=$(pwd)/.gradle
-  - chmod +x ./gradlew
+- export GRADLE_USER_HOME=$(pwd)/.gradle
+- chmod +x ./gradlew
 
 cache:
   key: ${CI_PROJECT_ID}
   paths:
-    - .gradle/
+  - .gradle/
 
 stages:
-  - build
-  # - test
-  - notify
+- build
+# - test
+- notify
 
 # lintDebug:
 #   stage: build
@@ -22,11 +22,11 @@ stages:
 assembleDebug:
   stage: build
   script:
-    - sh ci-notify.sh #build succeeded
-    - ./gradlew assembleDebug
+  - sh ci-notify.sh #build succeeded
+  - ./gradlew assembleDebug
   artifacts:
     paths:
-      - app/build/outputs/
+    - app/build/outputs/
 
 # testDebug:
 #   stage: test
@@ -36,5 +36,5 @@ assembleDebug:
 notify_error:
   stage: notify
   script:
-    - sh ci-notify.sh
+  - sh ci-notify.sh
   when: on_failure #build failed
