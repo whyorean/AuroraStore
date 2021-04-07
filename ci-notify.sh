@@ -1,6 +1,5 @@
 #!/bin/bash
 
-TIME="10"
 msgURL="https://api.telegram.org/bot$TELEGRAM_BOT_TOKEN/sendMessage"
 docURL="https://api.telegram.org/bot$TELEGRAM_BOT_TOKEN/sendDocument"
 commitURL="https://gitlab.com/AuroraOSS/AuroraStore/-/commit/$CI_COMMIT_SHA"
@@ -9,7 +8,7 @@ TEXT="Project:+$CI_PROJECT_NAME<a href=$CI_PIPELINE_URL><b>Building<b><a> with H
 
 #curl -s --max-time $TIME -d "chat_id=$TELEGRAM_CHAT_ID&disable_web_page_preview=1&text=$TEXT" $msgURL > /dev/null
 
-curl -s --max-time $TIME $msgURL -d chat_id=$TELEGRAM_CHAT_ID \
+curl -s -X POST $msgURL -d chat_id=$TELEGRAM_CHAT_ID \
     -d "disable_web_page_preview=true" \
     -d "parse_mode=html" \
     -d text=$TEXT
@@ -23,7 +22,7 @@ if [ -f app/build/outputs/apk/debug/app-debug.apk ]; then
         -F "disable_web_page_preview=true" \
         -F "parse_mode=html" \
         -F caption="✅ <b>CI build completed successfully!</b>"
-    rm -rf ui/build/outputs/apk
+    rm -rf app/build/outputs/apk
 else
     curl -s -X POST $msgURL -d chat_id=$TELEGRAM_CHAT_ID \
         -d "disable_web_page_preview=true" \

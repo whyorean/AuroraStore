@@ -22,7 +22,6 @@ stages:
 assembleDebug:
   stage: build
   script:
-  - sh ci-notify.sh #build succeeded
   - ./gradlew assembleDebug
   artifacts:
     paths:
@@ -33,8 +32,7 @@ assembleDebug:
 #   script:
 #   - ./gradlew -Pci --console=plain :app:testDebug
 
-notify_error:
+notifyTelegram:
   stage: notify
   script:
-  - sh ci-notify.sh
-  when: on_failure #build failed
+  - script -c "bash -x ci-notify.sh" > ci-logs.log #build succeeded
