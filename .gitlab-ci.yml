@@ -25,8 +25,8 @@ assembleDebug:
   - sh .ci-notify.sh ✅ #build succeeded
   - ./gradlew assembleDebug
   artifacts:
-  paths:
-  - app/build/outputs/
+    paths:
+    - app/build/outputs/
 
 # testDebug:
 #   stage: test
