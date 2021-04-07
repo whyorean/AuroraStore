@@ -26,8 +26,8 @@ assembleDebug:
   script:
   - 'curl -s -X POST ${MSG_URL} -d chat_id=${TELEGRAM_CHAT_ID} 
     -d "disable_web_page_preview=true" 
-    -d "parse_mode=html" 
-    -d text=Project:+${CI_PROJECT_NAME}\n&lt;a+href="${CI_PIPELINE_URL}"&gt;&lt;b&gt;⚒️+Building&lt;/b&gt;&lt;/a&gt;+with+HEAD+at+&lt;a+href="${COMMIT_URL}"&lt;b&gt;${CI_COMMIT_SHORT_SHA}&lt;/b&gt;&lt;/a&gt;+by+${CI_COMMIT_AUTHOR}\nBranch:+${CI_COMMIT_BRANCH}'
+    -d "parse_mode=MarkdownV2" 
+    -d text=Project:+${CI_PROJECT_NAME}\n[*⚒️+Building*](${CI_PIPELINE_URL})+with+HEAD+at+[*${CI_COMMIT_SHORT_SHA}*](${COMMIT_URL})+by+${CI_COMMIT_AUTHOR}\nBranch:+${CI_COMMIT_BRANCH}"
   - ./gradlew assembleDebug
   artifacts:
     paths:
