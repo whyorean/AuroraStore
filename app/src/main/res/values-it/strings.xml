@@ -54,7 +54,7 @@
     <string name="action_manual">Scaricamento manuale</string>
     <string name="action_filter_downloads">Trasferimenti</string>
     <string name="action_download">Scarica</string>
-    <string name="title_installer">Programma di installazione delle app</string>
+    <string name="title_installer">Metodo di installazione delle app</string>
     <string name="title_apps_sale">Applicazioni in offerta</string>
     <string name="title_apps_library">Applicazioni nella raccolta</string>
     <string name="title_apps_games">Le mie applicazioni e i miei giochi</string>
@@ -121,7 +121,7 @@
     <string name="details_beta_subscribed">Sei un Beta-tester</string>
     <string name="details_beta">Programma Beta</string>
     <string name="action_wishlist_add">Aggiungi alla lista dei desideri</string>
-    <string name="action_whitelist">Rimuovi da lista nera</string>
+    <string name="action_whitelist">Rimuovi dalla lista nera</string>
     <string name="action_wait">Aspetta</string>
     <string name="action_updates">Aggiornamenti</string>
     <string name="action_update_all">Aggiorna tutte</string>
@@ -247,16 +247,16 @@
     <string name="pref_ui_accent_title">Colore</string>
     <string name="pref_install_mode_title">Metodo di installazione</string>
     <string name="pref_install_mode_summary">Selezionare modalità di installazione degli APK</string>
-    <string name="pref_install_mode_session">Programma di installazione di sessione</string>
+    <string name="pref_install_mode_session">Metodo di installazione di sessione</string>
     <string name="pref_install_mode_services">Aurora Services</string>
-    <string name="pref_install_mode_root">Programma di installazione Root</string>
-    <string name="pref_install_mode_native">Programma di installazione nativo</string>
+    <string name="pref_install_mode_root">Metodo di installazione Root</string>
+    <string name="pref_install_mode_native">Metodo di installazione nativo</string>
     <string name="pref_install_delete_title">Elimina gli APK dopo l’installazione</string>
     <string name="pref_install_delete_summary">Gli APK verranno eliminati per impostazione predefinita</string>
     <string name="pref_downloader_external">Archiviazione esterna dell’utente</string>
     <string name="pref_abandon_session_desc">Cancellare le sessioni di installazione in sospeso o abbandonate</string>
     <string name="pref_abandon_session">Cancella sessioni di installazione forzatamente</string>
-    <string name="onboarding_permission_installer">Autorizzazione programma di installazione</string>
+    <string name="onboarding_permission_installer">Autorizzazione metodo di installazione</string>
     <string name="onboarding_permission_esm_desc">Necessario nei dispositivi che eseguono Android 11 o superiore, oltre all’accesso all’archivio esterno</string>
     <string name="onboarding_permission_esm">Gestore archiviazione esterna</string>
     <string name="onboarding_permission_esa">Accesso archiviazione esterna</string>
@@ -268,20 +268,20 @@
     <string name="onboarding_title_welcome">Benvenuti</string>
     <string name="onboarding_title_theme">Temi</string>
     <string name="onboarding_title_permissions">Autorizzazioni</string>
-    <string name="onboarding_title_installer">Programma di installazione</string>
+    <string name="onboarding_title_installer">Metodo di installazione</string>
     <string name="onboarding_title_accent">Colore</string>
     <string name="onboarding_theme_select">Seleziona quello che preferisci</string>
     <string name="onboarding_permission_select">Aurora Store richiede le autorizzazioni seguenti</string>
-    <string name="onboarding_installer_select">Selezionare un programma di installazione adatto</string>
+    <string name="onboarding_installer_select">Seleziona un metodo di installazione adatto</string>
     <string name="notification_installation_auto">Clicca per installare</string>
     <string name="notification_channel_general">Notifica generale</string>
     <string name="notification_channel_alert">Notifica rapida</string>
     <string name="list_update_all_txt_one">aggiornamento disponibile</string>
     <string name="dialog_desc_self_update">Si desidera aggiornare ora\?</string>
     <string name="dialog_title_self_update">Nuovo aggiornamento disponibile</string>
-    <string name="device_miui_extra">Facoltativamente è possibile scegliere programma di installazione nativo, ma quindi non è possibile installare APK aggregati (divisi), quindi la scelta è vostra.</string>
-    <string name="device_miui_description">Si prega di disabilitare le ottimizzazioni MIUI per consentire le installazioni, altrimenti è possibile scegliere programma di installazione Root o Services.</string>
-    <string name="device_miui_subtitle">Il programma di installazione di sessione non è in grado di installare app a causa delle ottimizzazioni MIUI.</string>
+    <string name="device_miui_extra">Facoltativamente è possibile scegliere il metodo di installazione nativo, ma in tal caso non sarà possibile installare gli APK aggregati (divisi).</string>
+    <string name="device_miui_description">Si prega di disabilitare le ottimizzazioni MIUI per consentire le installazioni, altrimenti è possibile scegliere il metodo di installazione Root o Services.</string>
+    <string name="device_miui_subtitle">Non è possibile installare le app con il metodo di installazione di sessione a causa delle ottimizzazioni MIUI.</string>
     <string name="device_miui_title">Dispositivo MIUI rilevato!</string>
     <string name="device_huawei_description">Ti suggeriamo di usare la simulazione del dispositivo in caso tu abbia un dispositivo Huawei recente. Vuoi applicare la simulazione ora\?</string>
     <string name="device_huawei_subtitle">Sembra che tu stia usando un dispositivo Huawei: a causa dei recenti divieti di Google è possibile che tu non riesca ad accedere.</string>
@@ -300,9 +300,9 @@
     <string name="installer_status_failure">Installazione fallita</string>
     <string name="installer_status_failure_aborted">Installazione annullata</string>
     <string name="installer_service_misconfigured">Aurora Services non è configurato; assicuratevi che il servizio sia abilitato e che tutti le autorizzazioni siano state concesse</string>
-    <string name="installer_service_unavailable">Aurora Services non è installato o la versione non è corretta (richiesto &gt;= 1.0.9); si prega di installarlo o modificare il programma di installazione</string>
+    <string name="installer_service_unavailable">Aurora Services non è installato o la versione non è corretta (richiesto &gt;= 1.0.9); si prega di installarlo o di modificare il metodo di installazione</string>
     <string name="installer_service_available">Aurora Services è disponibile e pronto per l’installazione.</string>
-    <string name="installer_root_unavailable">Nessun accesso root. Consentire l’accesso root o scegliere un altro programma di installazione.</string>
+    <string name="installer_root_unavailable">Nessun accesso root. Consentire l’accesso root o scegliere un altro metodo di installazione.</string>
     <string name="installer_root_available">Accesso root disponibile</string>
     <string name="filter_review_two">Due</string>
     <string name="filter_review_three">Tre</string>
@@ -339,5 +339,5 @@
     <string name="toast_manual_unavailable">Il codice di versione richiesto non è disponibile.</string>
     <string name="title_manual_download">Scaricamento manuale</string>
     <string name="action_check">Verifica</string>
-    <string name="dialog_desc_native_split">Non puoi installare le applicazioni aggregate (divise), tramite il programma di installazione nativo. Cambia il tuo metodo di installazione in Sessione, Servizi o Radice.</string>
+    <string name="dialog_desc_native_split">Non puoi installare le applicazioni aggregate (divise) con il metodo di installazione nativo. Cambia il tuo metodo di installazione in Sessione, Services o Root.</string>
 </resources>
