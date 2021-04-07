@@ -177,7 +177,7 @@
     <string name="action_open">開く</string>
     <string name="action_more">さらに</string>
     <string name="action_ok">OK</string>
-    <string name="action_next">次</string>
+    <string name="action_next">進む</string>
     <string name="action_manual">手動ダウンロード</string>
     <string name="action_logout">ログアウト</string>
     <string name="action_logging_in">ログイン中</string>
@@ -339,4 +339,5 @@
     <string name="pref_filter_search_summary">検索フィルタを毎回リセットする。検索フィルタを保持するには無効化してください</string>
     <string name="details_no_app_match">アプリが見つかりませんでした</string>
     <string name="action_check">確認</string>
+    <string name="dialog_desc_native_split">ネイティブインストーラではバンドル(分割された)アプリをインストールできません。インストーラをセッション、Service、Rootのいずれかに変更してください。</string>
 </resources>
