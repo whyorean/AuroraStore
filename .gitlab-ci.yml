@@ -1,8 +1,6 @@
 image: jangrewe/gitlab-ci-android
 
 before_script: 
-- COMMIT_URL="https://gitlab.com/AuroraOSS/AuroraStore/-/commit/${CI_COMMIT_SHA}"
-- MSG_URL="https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage"
 - export GRADLE_USER_HOME=$(pwd)/.gradle
 - chmod +x ./gradlew
 
