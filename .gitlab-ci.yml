@@ -22,7 +22,7 @@ stages:
 assembleDebug:
   stage: build
   script:
-  - script -c "bash -x ci-build.sh" > ci-logs.log
+  - sh ci-build.sh 
   - ./gradlew assembleDebug
   artifacts:
     paths:
