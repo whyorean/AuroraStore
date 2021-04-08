@@ -9,7 +9,7 @@ TEXT="Project:+[${CI_PROJECT_NAME}](${CI_PROJECT_URL})%0A[*⚒️+Building*](${C
 # send message to Telegram channel
 curl -s -X POST $MSG_URL -d chat_id=$TELEGRAM_CHAT_ID \
     -d "disable_web_page_preview=true" \
-    -d "parse_mode=HTML" \
+    -d "parse_mode=MarkdownV2" \
     -d text=$TEXT
 
 # NOTES: $CI_COMMIT_AUTHOR and $CI_COMMIT_BRANCH won't work due to Telegram's awful Markdown flavour. 
