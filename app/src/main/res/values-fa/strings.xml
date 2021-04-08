@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="details_dev_website">وبگاه</string>
-    <string name="pref_filter_google_summary"/>
     <string name="onboarding_theme_select"/>
-    <string name="about_libera_summary"/>
     <string name="details_description"/>
-    <string name="toast_purchase_blocked"/>
     <string name="action_clear_all"/>
-    <string name="action_clear"/>
     <string name="action_all_reviews"/>
-    <string name="tab_editor_choice"/>
     <string name="download_clear_completed"/>
 </resources>

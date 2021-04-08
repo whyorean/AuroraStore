@@ -2,14 +2,9 @@
 <resources>
     <string name="details_dev_website">Вебсайт</string>
     <string name="details_dev_email">Електронна пошта</string>
-    <string name="about_fdroid_summary"/>
     <string name="toast_apk_copy_failed"/>
-    <string name="installer_root_available"/>
     <string name="action_open"/>
-    <string name="exodus_no_report"/>
     <string name="pref_ui_quick_exit_desc"/>
-    <string name="pref_downloader_active_summary"/>
     <string name="notification_channel_general"/>
-    <string name="exodus_powered"/>
     <string name="action_share"/>
 </resources>

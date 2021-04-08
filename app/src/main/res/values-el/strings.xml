@@ -3,14 +3,9 @@
     <string name="details_files">Αρχεία</string>
     <string name="details_dev_website">Ιστότοπος</string>
     <string name="details_dev_email">Ηλεκτρονικό ταχυδρομείο</string>
-    <string name="download_progress"/>
     <string name="details_reviews"/>
-    <string name="action_pause"/>
     <string name="action_filter_rating"/>
-    <string name="onboarding_title_accent"/>
     <string name="tab_top_grossing"/>
-    <string name="action_sign_in"/>
     <string name="action_accept"/>
-    <string name="action_copy_link"/>
     <string name="about_bitcoin_bch_summary"/>
 </resources>

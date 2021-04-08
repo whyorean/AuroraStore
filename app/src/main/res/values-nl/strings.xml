@@ -19,14 +19,9 @@
     <string name="action_accept">Aanvaarden</string>
     <string name="account_logged_out">U bent uitgelogd</string>
     <string name="action_accounts">Accounts</string>
-    <string name="pref_filter_search_summary"/>
     <string name="installer_status_user_action"/>
-    <string name="onboarding_tos_confirmation"/>
     <string name="filter_review_all"/>
-    <string name="pref_install_mode_title"/>
     <string name="action_share"/>
-    <string name="download_deleted"/>
     <string name="installer_status_failure_invalid"/>
-    <string name="about_bitcoin_btc_summary"/>
     <string name="about_bitcoin_bch"/>
 </resources>

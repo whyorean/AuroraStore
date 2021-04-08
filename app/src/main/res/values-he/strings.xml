@@ -65,12 +65,8 @@
     <string name="details_dev_website">אתר אינטרנט</string>
     <string name="details_dev_email">דוא״ל</string>
     <string name="tab_editor_choice">בחירת העורך</string>
-    <string name="action_update"/>
     <string name="installer_status_failure_conflict"/>
-    <string name="onboarding_permission_esm"/>
     <string name="purchase_failed"/>
-    <string name="device_huawei_title"/>
     <string name="onboarding_tos"/>
-    <string name="action_read"/>
     <string name="onboarding_tos_desc"/>
 </resources>

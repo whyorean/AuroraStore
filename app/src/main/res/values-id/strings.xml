@@ -42,13 +42,8 @@
     <string name="action_accounts">Akun</string>
     <string name="about_telegram_summary">Bergabunglah di grup dukungan Aurora untuk diskusi dan saran.</string>
     <string name="about_telegram">Telegram</string>
-    <string name="action_ignore"/>
     <string name="pref_ui_title"/>
-    <string name="title_purchase_history"/>
     <string name="notification_installation_auto"/>
-    <string name="toast_developer_setting_failed"/>
     <string name="toast_manual_available"/>
-    <string name="device_miui_description"/>
     <string name="device_miui_subtitle"/>
-    <string name="about_xda_summary"/>
 </resources>

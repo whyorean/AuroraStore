@@ -2,14 +2,9 @@
 <resources>
     <string name="details_dev_email">電子郵件</string>
     <string name="details_dev_website">網站</string>
-    <string name="filter_review_positive"/>
     <string name="onboarding_permission_esa_desc"/>
-    <string name="account_logout"/>
     <string name="onboarding_permission_esa"/>
-    <string name="toast_permission_granted"/>
     <string name="device_miui_extra"/>
-    <string name="pref_ui_title"/>
     <string name="action_ask"/>
-    <string name="title_installation"/>
     <string name="toast_clipboard_copied"/>
 </resources>
