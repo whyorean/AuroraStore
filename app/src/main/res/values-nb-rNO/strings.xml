@@ -274,12 +274,8 @@
     <string name="details_in_app_purchase">Kjøp i appen</string>
     <string name="details_gsf_dependent">Krever GSF</string>
     <string name="details_changelog_unavailable">Endringslogg ikke inkludert</string>
-    <string name="toast_apk_copy_success"/>
     <string name="pref_filter_search_summary"/>
-    <string name="installer_root_unavailable"/>
     <string name="download_force_clear_all"/>
-    <string name="action_get_local_apk"/>
     <string name="pref_ui_theme_darkord"/>
-    <string name="pref_install_mode_native"/>
     <string name="pref_common_advance"/>
 </resources>

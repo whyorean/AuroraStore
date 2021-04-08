@@ -1,46 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="details_dev_website">وبگاه</string>
-    <string name="exodus_no_report"/>
     <string name="action_discard"/>
-    <string name="tab_top_charts"/>
     <string name="pref_filter_google_summary"/>
-    <string name="about_bhim"/>
     <string name="action_disable"/>
-    <string name="title_details"/>
     <string name="onboarding_theme_select"/>
-    <string name="details_beta_delay"/>
     <string name="pref_ui_quick_exit_desc"/>
-    <string name="download_force_clear_all"/>
     <string name="about_libera_summary"/>
-    <string name="details_rate_this_app"/>
     <string name="details_privacy"/>
-    <string name="pref_dialog_to_apply_restart"/>
     <string name="details_description"/>
-    <string name="details_no_dependencies"/>
     <string name="details_no_reviews"/>
-    <string name="pref_ui_similar_apps"/>
     <string name="toast_purchase_blocked"/>
-    <string name="action_ok"/>
     <string name="onboarding_welcome_select"/>
-    <string name="installer_service_available"/>
     <string name="action_clear_all"/>
-    <string name="title_account_manager"/>
     <string name="account_login_using"/>
-    <string name="installer_status_user_action"/>
     <string name="action_clear"/>
-    <string name="about_bitcoin_eth"/>
     <string name="exodus_substring"/>
-    <string name="installer_status_failure_incompatible"/>
     <string name="action_all_reviews"/>
-    <string name="about_paypal"/>
     <string name="details_no_whitelist"/>
-    <string name="action_done"/>
     <string name="tab_editor_choice"/>
-    <string name="notification_channel_general"/>
     <string name="title_apps"/>
-    <string name="action_filter_apps_with_ads"/>
     <string name="download_clear_completed"/>
-    <string name="action_pause"/>
     <string name="action_cancel"/>
 </resources>

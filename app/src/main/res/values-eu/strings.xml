@@ -318,6 +318,5 @@
     <string name="about_bitcoin_bch">Bitcoin cash</string>
     <string name="about_bhim_summary">UPI-ren bidez eman</string>
     <string name="about_bhim">BHIM - UPI</string>
-    <string name="insecure_anonymous_apply"/>
     <string name="pref_filter_search_title"/>
 </resources>
