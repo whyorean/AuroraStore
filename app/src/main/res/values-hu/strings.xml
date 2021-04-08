@@ -339,5 +339,4 @@
     <string name="toast_manual_unavailable">A kért verziókód nem érhető el.</string>
     <string name="title_manual_download">Manuális letöltés</string>
     <string name="action_check">Ellenőrzés</string>
-    <string name="dialog_desc_native_split"></string>
 </resources>
