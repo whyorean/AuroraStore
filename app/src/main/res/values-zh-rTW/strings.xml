@@ -322,4 +322,22 @@
     <string name="purchase_not_found"></string>
     <string name="onboarding_permission_select"></string>
     <string name="toast_clipboard_copied"></string>
+    <string name="pref_ui_layout_tab"></string>
+    <string name="pref_filter_search_title"></string>
+    <string name="pref_ui_quick_exit"></string>
+    <string name="title_manual_download"></string>
+    <string name="pref_common_advance"></string>
+    <string name="pref_ui_layout"></string>
+    <string name="dialog_desc_native_split"></string>
+    <string name="pref_common_extra"></string>
+    <string name="pref_ui_no_for_you"></string>
+    <string name="pref_ui_similar_apps_desc"></string>
+    <string name="details_no_app_match"></string>
+    <string name="pref_filter_search_summary"></string>
+    <string name="toast_manual_available"></string>
+    <string name="action_check"></string>
+    <string name="toast_manual_unavailable"></string>
+    <string name="pref_ui_similar_apps"></string>
+    <string name="pref_ui_no_for_you_desc"></string>
+    <string name="pref_ui_quick_exit_desc"></string>
 </resources>
