@@ -2,6 +2,5 @@
 <resources>
     <string name="details_dev_website">Sitiu web</string>
     <string name="details_dev_email">Corréu electrónicu</string>
-    <string name="onboarding_permission_esa_desc"/>
     <string name="details_more_about_app"/>
 </resources>

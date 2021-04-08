@@ -2,6 +2,5 @@
 <resources>
     <string name="details_dev_email">電子郵件</string>
     <string name="details_dev_website">網站</string>
-    <string name="onboarding_permission_esa"/>
     <string name="action_ask"/>
 </resources>

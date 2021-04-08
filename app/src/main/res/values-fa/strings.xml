@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="details_dev_website">وبگاه</string>
-    <string name="details_description"/>
     <string name="action_all_reviews"/>
 </resources>

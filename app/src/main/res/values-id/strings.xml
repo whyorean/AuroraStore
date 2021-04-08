@@ -42,6 +42,5 @@
     <string name="action_accounts">Akun</string>
     <string name="about_telegram_summary">Bergabunglah di grup dukungan Aurora untuk diskusi dan saran.</string>
     <string name="about_telegram">Telegram</string>
-    <string name="notification_installation_auto"/>
     <string name="device_miui_subtitle"/>
 </resources>
