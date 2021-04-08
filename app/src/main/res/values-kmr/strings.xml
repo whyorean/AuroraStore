@@ -318,4 +318,26 @@
     <string name="details_no_whitelist">Sepanên di lîsteya spî de tune</string>
     <string name="details_no_updates">Nûvekirin tune</string>
     <string name="details_no_reviews">Çu nirxandin tune</string>
+    <string name="details_no_app_match"></string>
+    <string name="dialog_desc_native_split"></string>
+    <string name="pref_ui_similar_apps"></string>
+    <string name="action_check"></string>
+    <string name="pref_ui_no_for_you_desc"></string>
+    <string name="insecure_anonymous_apply"></string>
+    <string name="pref_ui_layout_tab"></string>
+    <string name="toast_manual_available"></string>
+    <string name="pref_filter_search_summary"></string>
+    <string name="pref_insecure_anonymous_summary"></string>
+    <string name="pref_ui_quick_exit_desc"></string>
+    <string name="pref_ui_layout"></string>
+    <string name="toast_manual_unavailable"></string>
+    <string name="pref_common_extra"></string>
+    <string name="pref_insecure_anonymous_title"></string>
+    <string name="pref_common_advance"></string>
+    <string name="title_manual_download"></string>
+    <string name="pref_ui_no_for_you"></string>
+    <string name="pref_ui_quick_exit"></string>
+    <string name="pref_ui_similar_apps_desc"></string>
+    <string name="pref_network_title"></string>
+    <string name="pref_filter_search_title"></string>
 </resources>
