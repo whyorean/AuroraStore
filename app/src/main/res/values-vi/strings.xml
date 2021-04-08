@@ -320,9 +320,6 @@
     <string name="details_gsf_dependent">Yêu cầu GSF</string>
     <string name="details_free">Miễn phí</string>
     <string name="details_files">Các tệp</string>
-    <string name="action_check"/>
     <string name="pref_common_advance"/>
-    <string name="details_no_app_match"/>
     <string name="pref_ui_quick_exit"/>
-    <string name="dialog_desc_native_split"/>
 </resources>
