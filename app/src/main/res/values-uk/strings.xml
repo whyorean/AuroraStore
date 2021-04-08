@@ -2,5 +2,4 @@
 <resources>
     <string name="details_dev_website">Вебсайт</string>
     <string name="details_dev_email">Електронна пошта</string>
-    <string name="notification_channel_general"/>
 </resources>

@@ -19,5 +19,4 @@
     <string name="action_accept">Aanvaarden</string>
     <string name="account_logged_out">U bent uitgelogd</string>
     <string name="action_accounts">Accounts</string>
-    <string name="installer_status_failure_invalid"/>
 </resources>
