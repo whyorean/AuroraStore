@@ -319,15 +319,9 @@
     <string name="about_bitcoin_btc">Bitcoin</string>
     <string name="about_bitcoin_bch">Bitcoin Cash</string>
     <string name="about_bhim">BHIM - UPI</string>
-    <string name="toast_manual_unavailable"/>
     <string name="details_no_app_match"/>
-    <string name="pref_ui_no_for_you_desc"/>
     <string name="insecure_anonymous_apply"/>
-    <string name="toast_manual_available"/>
     <string name="pref_ui_no_for_you"/>
-    <string name="pref_ui_similar_apps_desc"/>
     <string name="pref_network_title"/>
-    <string name="pref_ui_layout"/>
     <string name="pref_ui_quick_exit_desc"/>
-    <string name="pref_ui_layout_tab"/>
 </resources>

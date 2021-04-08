@@ -318,15 +318,9 @@
     <string name="about_bitcoin_bch">Bitcoin cash</string>
     <string name="about_bhim_summary">UPI-ren bidez eman</string>
     <string name="about_bhim">BHIM - UPI</string>
-    <string name="pref_ui_similar_apps_desc"/>
     <string name="pref_ui_layout_tab"/>
-    <string name="details_no_app_match"/>
     <string name="insecure_anonymous_apply"/>
-    <string name="pref_ui_no_for_you_desc"/>
     <string name="toast_manual_unavailable"/>
-    <string name="toast_manual_available"/>
     <string name="pref_filter_search_title"/>
-    <string name="dialog_desc_native_split"/>
     <string name="pref_ui_quick_exit"/>
-    <string name="title_manual_download"/>
 </resources>
