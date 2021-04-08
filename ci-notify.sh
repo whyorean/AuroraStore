@@ -14,9 +14,9 @@ DOC_URL="https://api.telegram.org/bot$TELEGRAM_BOT_TOKEN/sendDocument"
 #     -d text=$TEXT
 
 if [ -f app/build/outputs/apk/debug/app-debug.apk ]; then
-    cp app/build/outputs/apk/debug/app-debug.apk app/build/outputs/apk/debug/AuroraStore_$DATE.apk
+    cp app/build/outputs/apk/debug/app-debug.apk app/build/outputs/apk/debug/AuroraStore_CI_$DATE.apk
     cd app/build/outputs/apk/debug/
-    APK=$(echo AuroraStore_*.apk)
+    APK=$(echo AuroraStore_CI_*.apk)
     curl -F document=@"$APK" $DOC_URL \
         -F chat_id=$TELEGRAM_CHAT_ID \
         -F "disable_web_page_preview=true" \
