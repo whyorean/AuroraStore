@@ -2,9 +2,6 @@
 <resources>
     <string name="details_dev_website">Вебсайт</string>
     <string name="details_dev_email">Електронна пошта</string>
-    <string name="toast_apk_copy_failed"/>
     <string name="action_open"/>
-    <string name="pref_ui_quick_exit_desc"/>
     <string name="notification_channel_general"/>
-    <string name="action_share"/>
 </resources>

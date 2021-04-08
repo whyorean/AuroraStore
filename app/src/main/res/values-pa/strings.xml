@@ -2,9 +2,6 @@
 <resources>
     <string name="about_bhim_summary">UPI ਜ਼ਰੀਏ ਦਾਨ ਕਰੋ</string>
     <string name="about_bhim">ਭੀਮ UPI</string>
-    <string name="pref_filter_google_title"/>
     <string name="tab_top_charts"/>
-    <string name="action_grant"/>
     <string name="download_failed"/>
-    <string name="pref_filter_search_title"/>
 </resources>

@@ -65,8 +65,6 @@
     <string name="details_dev_website">אתר אינטרנט</string>
     <string name="details_dev_email">דוא״ל</string>
     <string name="tab_editor_choice">בחירת העורך</string>
-    <string name="installer_status_failure_conflict"/>
     <string name="purchase_failed"/>
-    <string name="onboarding_tos"/>
     <string name="onboarding_tos_desc"/>
 </resources>

@@ -79,8 +79,6 @@
     <string name="action_done">हो गया</string>
     <string name="action_discover">डिस्कवर</string>
     <string name="action_discard">रद्द करें</string>
-    <string name="pref_filter_google_summary"/>
     <string name="download_eta_calculating"/>
-    <string name="pref_downloader_external_desc"/>
     <string name="installer_service_misconfigured"/>
 </resources>

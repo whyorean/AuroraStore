@@ -26,8 +26,6 @@
     <string name="details_dev_address">Endereço</string>
     <string name="details_description">Descrição</string>
     <string name="details_files">Ficheiros</string>
-    <string name="action_post"/>
     <string name="toast_abandon_sessions"/>
-    <string name="download_pause"/>
     <string name="title_download_manager"/>
 </resources>

@@ -121,7 +121,5 @@
     <string name="about_bhim">BHIM - UPI</string>
     <string name="onboarding_title_welcome">Byenvini</string>
     <string name="onboarding_tos_error">Ou dwa make CI li an premye.</string>
-    <string name="purchase_invalid"/>
     <string name="purchase_not_found"/>
-    <string name="pref_downloader_active_title"/>
 </resources>
