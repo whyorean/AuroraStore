@@ -9,4 +9,4 @@ COMMIT_URL="https://gitlab.com/AuroraOSS/AuroraStore/-/commit/$CI_COMMIT_SHA"
 curl -s -X POST $MSG_URL -d chat_id=$TELEGRAM_CHAT_ID \
     -d "disable_web_page_preview=true" \
     -d "parse_mode=HTML" \
-    -d text=Project:+<a+href=${CI_PROJECT_URL}>${CI_PROJECT_NAME}</a>%0A<a+href=${CI_JOB_URL}><b>⚒️+Building</b></a>+with+HEAD+at+<a+href=${COMMIT_URL}><b>${CI_COMMIT_SHORT_SHA}</b></a>+by+${CI_COMMIT_AUTHOR}
+    -d text="Project:+<a+href=${CI_PROJECT_URL}>${CI_PROJECT_NAME}</a>%0A<a+href=%22${CI_JOB_URL}%22><b>⚒️+Building</b></a>+with+HEAD+at+<a+href=%22${COMMIT_URL}%22><b>${CI_COMMIT_SHORT_SHA}</b></a>+by+${CI_COMMIT_AUTHOR}"
