@@ -11,4 +11,4 @@ curl -s -X POST $MSG_URL -d chat_id=$TELEGRAM_CHAT_ID \
     -d "parse_mode=HTML" \
     -d text=$TEXT
 
-curl -s -X POST $MSG_URL\?text\=Project:+%3Ca+href=${CI_PROJECT_URL}%3E${CI_PROJECT_NAME}%3C/a%3E%0A%3Ca+href=${CI_JOB_URL}%3E%3Cb%3E⚒️+Building%3C/b%3E%3C/a%3E+with+HEAD+at+%3Ca+href=${COMMIT_URL}%3E%3Cb%3E${CI_COMMIT_SHORT_SHA}%3C/b%3E%3C/a%3E+by+${CI_COMMIT_AUTHOR} -d chat_id=-1001243261474 -d "parse_mode=HTML" -d "disable_web_page_preview=true"
+curl -s -X POST $MSG_URL\?text\=Project:+%3Ca+href=$CI_PROJECT_URL%3E$CI_PROJECT_NAME%3C/a%3E%0A%3Ca+href=$CI_JOB_URL%3E%3Cb%3E⚒️+Building%3C/b%3E%3C/a%3E+with+HEAD+at+%3Ca+href=$COMMIT_URL%3E%3Cb%3E$CI_COMMIT_SHORT_SHA%3C/b%3E%3C/a%3E+by+$CI_COMMIT_AUTHOR -d chat_id=-1001243261474 -d "parse_mode=HTML" -d "disable_web_page_preview=true"
