@@ -26,23 +26,13 @@
     <string name="details_dev_address">Endereço</string>
     <string name="details_description">Descrição</string>
     <string name="details_files">Ficheiros</string>
-    <string name="action_open"/>
     <string name="filter_review_critical"/>
-    <string name="title_installation"/>
     <string name="action_post"/>
-    <string name="pref_install_mode_summary"/>
     <string name="pref_ui_theme_dark_x"/>
-    <string name="dialog_desc_self_update"/>
     <string name="toast_abandon_sessions"/>
-    <string name="action_all_reviews"/>
     <string name="action_search"/>
-    <string name="details_others_think"/>
     <string name="download_pause"/>
-    <string name="download_pause_all"/>
     <string name="action_accounts"/>
-    <string name="pref_ui_no_for_you_desc"/>
     <string name="title_download_manager"/>
-    <string name="toast_apk_copy_success"/>
     <string name="action_grant"/>
-    <string name="details_no_app"/>
 </resources>

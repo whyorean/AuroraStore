@@ -42,22 +42,13 @@
     <string name="action_accounts">Akun</string>
     <string name="about_telegram_summary">Bergabunglah di grup dukungan Aurora untuk diskusi dan saran.</string>
     <string name="about_telegram">Telegram</string>
-    <string name="details_ratings"/>
     <string name="action_ignore"/>
-    <string name="installer_status_failure_conflict"/>
     <string name="pref_ui_title"/>
-    <string name="download_canceled"/>
     <string name="title_purchase_history"/>
-    <string name="installer_status_failure_invalid"/>
     <string name="notification_installation_auto"/>
-    <string name="installer_status_failure"/>
     <string name="toast_developer_setting_failed"/>
-    <string name="pref_ui_layout_tab"/>
     <string name="toast_manual_available"/>
-    <string name="toast_purchase_blocked"/>
     <string name="device_miui_description"/>
-    <string name="action_accept"/>
     <string name="device_miui_subtitle"/>
-    <string name="pref_dialog_to_apply_restart"/>
     <string name="about_xda_summary"/>
 </resources>

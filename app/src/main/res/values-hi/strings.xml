@@ -79,20 +79,12 @@
     <string name="action_done">हो गया</string>
     <string name="action_discover">डिस्कवर</string>
     <string name="action_discard">रद्द करें</string>
-    <string name="action_updates"/>
     <string name="pref_install_mode_session"/>
-    <string name="device_huawei_subtitle"/>
     <string name="pref_filter_google_summary"/>
-    <string name="action_manual"/>
     <string name="installer_status_success"/>
-    <string name="menu_disclaimer"/>
     <string name="download_eta_calculating"/>
-    <string name="title_no_network"/>
     <string name="spoof_apply"/>
-    <string name="onboarding_permission_select"/>
     <string name="pref_downloader_external_desc"/>
-    <string name="title_download_manager"/>
     <string name="device_huawei_title"/>
-    <string name="onboarding_permission_esa"/>
     <string name="installer_service_misconfigured"/>
 </resources>

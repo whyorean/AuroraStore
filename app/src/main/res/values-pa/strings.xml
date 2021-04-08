@@ -2,25 +2,14 @@
 <resources>
     <string name="about_bhim_summary">UPI ਜ਼ਰੀਏ ਦਾਨ ਕਰੋ</string>
     <string name="about_bhim">ਭੀਮ UPI</string>
-    <string name="filter_review_five"/>
     <string name="details_reviews"/>
-    <string name="menu_license"/>
     <string name="pref_filter_google_title"/>
-    <string name="installer_service_unavailable"/>
     <string name="title_download_playstore"/>
-    <string name="onboarding_permission_esa"/>
     <string name="tab_top_charts"/>
-    <string name="details_review_submitted"/>
     <string name="onboarding_tos"/>
-    <string name="action_sign_in"/>
     <string name="action_grant"/>
-    <string name="tab_trending"/>
     <string name="action_deny"/>
-    <string name="pref_ui_layout_tab"/>
     <string name="download_failed"/>
-    <string name="download_none"/>
     <string name="pref_filter_google_summary"/>
-    <string name="title_apps_games"/>
     <string name="pref_filter_search_title"/>
-    <string name="action_granted"/>
 </resources>

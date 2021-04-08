@@ -42,22 +42,13 @@
     <string name="about_bitcoin_eth_summary">Lahjoita Ethereumia</string>
     <string name="about_bitcoin_btc_summary">Lahjoita Bitcoinia</string>
     <string name="about_bhim_summary">Lahjoita UPI:n kautta</string>
-    <string name="action_ask"/>
     <string name="action_save"/>
-    <string name="details_changelog_unavailable"/>
     <string name="details_contains_ads"/>
-    <string name="filter_review_five"/>
     <string name="pref_ui_theme_title"/>
-    <string name="action_filter_misc"/>
     <string name="onboarding_permission_esm"/>
-    <string name="pref_common_advance"/>
     <string name="about_libera"/>
-    <string name="purchase_session_expired"/>
     <string name="title_language"/>
-    <string name="pref_install_mode_summary"/>
     <string name="details_gsf_dependent"/>
-    <string name="action_export"/>
     <string name="toast_spoof_applied"/>
-    <string name="filter_review_three"/>
     <string name="pref_filter_search_summary"/>
 </resources>

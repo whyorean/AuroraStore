@@ -65,21 +65,12 @@
     <string name="details_dev_website">אתר אינטרנט</string>
     <string name="details_dev_email">דוא״ל</string>
     <string name="tab_editor_choice">בחירת העורך</string>
-    <string name="action_blacklist"/>
     <string name="action_update"/>
-    <string name="about_bitcoin_eth"/>
     <string name="installer_status_failure_conflict"/>
-    <string name="details_paid"/>
     <string name="onboarding_permission_esm"/>
-    <string name="exodus_no_tracker"/>
     <string name="purchase_failed"/>
-    <string name="pref_downloader_active_title"/>
     <string name="device_huawei_title"/>
-    <string name="notification_channel_alert"/>
     <string name="onboarding_tos"/>
-    <string name="tab_top_charts"/>
     <string name="action_read"/>
-    <string name="download_deleted"/>
     <string name="onboarding_tos_desc"/>
-    <string name="action_update_all"/>
 </resources>

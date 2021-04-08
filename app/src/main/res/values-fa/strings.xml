@@ -1,25 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="details_dev_website">وبگاه</string>
-    <string name="action_discard"/>
     <string name="pref_filter_google_summary"/>
-    <string name="action_disable"/>
     <string name="onboarding_theme_select"/>
-    <string name="pref_ui_quick_exit_desc"/>
     <string name="about_libera_summary"/>
-    <string name="details_privacy"/>
     <string name="details_description"/>
-    <string name="details_no_reviews"/>
     <string name="toast_purchase_blocked"/>
-    <string name="onboarding_welcome_select"/>
     <string name="action_clear_all"/>
-    <string name="account_login_using"/>
     <string name="action_clear"/>
-    <string name="exodus_substring"/>
     <string name="action_all_reviews"/>
-    <string name="details_no_whitelist"/>
     <string name="tab_editor_choice"/>
-    <string name="title_apps"/>
     <string name="download_clear_completed"/>
-    <string name="action_cancel"/>
 </resources>

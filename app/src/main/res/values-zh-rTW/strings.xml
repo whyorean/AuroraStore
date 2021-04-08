@@ -2,25 +2,14 @@
 <resources>
     <string name="details_dev_email">電子郵件</string>
     <string name="details_dev_website">網站</string>
-    <string name="onboarding_theme_select"/>
     <string name="filter_review_positive"/>
-    <string name="action_wishlist_add"/>
     <string name="onboarding_permission_esa_desc"/>
-    <string name="title_download_playstore"/>
     <string name="account_logout"/>
-    <string name="about_bitcoin_btc"/>
     <string name="onboarding_permission_esa"/>
-    <string name="details_no_permission"/>
     <string name="toast_permission_granted"/>
-    <string name="about_xda_summary"/>
     <string name="device_miui_extra"/>
-    <string name="about_fdroid"/>
     <string name="pref_ui_title"/>
-    <string name="title_about"/>
     <string name="action_ask"/>
-    <string name="exodus_report"/>
     <string name="title_installation"/>
-    <string name="pref_install_mode_session"/>
     <string name="toast_clipboard_copied"/>
-    <string name="pref_ui_similar_apps"/>
 </resources>

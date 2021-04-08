@@ -319,5 +319,4 @@
     <string name="about_bitcoin_btc">Bitcoin</string>
     <string name="about_bitcoin_bch">Bitcoin Cash</string>
     <string name="about_bhim">BHIM - UPI</string>
-    <string name="pref_network_title"/>
 </resources>

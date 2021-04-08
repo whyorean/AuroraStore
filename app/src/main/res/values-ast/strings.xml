@@ -2,25 +2,14 @@
 <resources>
     <string name="details_dev_website">Sitiu web</string>
     <string name="details_dev_email">Corréu electrónicu</string>
-    <string name="details_no_permission"/>
     <string name="download_eta_calculating"/>
-    <string name="action_all_reviews"/>
     <string name="installer_service_misconfigured"/>
-    <string name="onboarding_installer_select"/>
     <string name="onboarding_theme_select"/>
-    <string name="details_no_app"/>
     <string name="onboarding_permission_esa_desc"/>
-    <string name="action_settings"/>
     <string name="action_logging_in"/>
-    <string name="action_finish"/>
     <string name="pref_ui_theme_light"/>
-    <string name="pref_install_mode_summary"/>
     <string name="action_clear_restart"/>
-    <string name="toast_permission_granted"/>
     <string name="details_more_about_app"/>
-    <string name="action_home"/>
     <string name="filter_review_all"/>
-    <string name="action_buy"/>
     <string name="action_install"/>
-    <string name="onboarding_tos"/>
 </resources>

@@ -3,25 +3,14 @@
     <string name="details_files">Αρχεία</string>
     <string name="details_dev_website">Ιστότοπος</string>
     <string name="details_dev_email">Ηλεκτρονικό ταχυδρομείο</string>
-    <string name="pref_ui_theme_title"/>
     <string name="download_progress"/>
-    <string name="title_installation"/>
     <string name="details_reviews"/>
-    <string name="details_paid"/>
     <string name="action_pause"/>
-    <string name="title_games"/>
     <string name="action_filter_rating"/>
-    <string name="pref_common_advance"/>
     <string name="onboarding_title_accent"/>
-    <string name="installer_root_unavailable"/>
     <string name="tab_top_grossing"/>
-    <string name="purchase_no_file"/>
     <string name="action_sign_in"/>
-    <string name="download_deleted"/>
     <string name="action_accept"/>
-    <string name="installer_status_failure_invalid"/>
     <string name="action_copy_link"/>
-    <string name="purchase_session_expired"/>
     <string name="about_bitcoin_bch_summary"/>
-    <string name="notification_installation_auto"/>
 </resources>
