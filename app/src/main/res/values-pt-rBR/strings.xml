@@ -5,7 +5,7 @@
     <string name="details_dev_profile">Perfil do desenvolvedor</string>
     <string name="details_dev_details">Contato do desenvolvedor</string>
     <string name="details_dev_address">Endereço</string>
-    <string name="details_dev_email">Email</string>
+    <string name="details_dev_email">E-mail</string>
     <string name="details_description">Descrição</string>
     <string name="title_spoof_manager">Gerenciar simulação</string>
     <string name="action_whitelist">Lista de permissões</string>
@@ -319,12 +319,12 @@
     <string name="pref_downloader_active_title">Download ativo</string>
     <string name="pref_downloader_active_summary">Número máximo de downloads ativos</string>
     <string name="insecure_anonymous_apply">Tenha certeza que você se reconectou e reinicie o aplicativo para aplicar as mudanças.</string>
-    <string name="pref_ui_no_for_you">Sugestões Para Você</string>
+    <string name="pref_ui_no_for_you">Pagina Para Você</string>
     <string name="toast_manual_available">Parabéns, o código da versão solicitada está disponível, baixando agora.</string>
     <string name="toast_manual_unavailable">O código de versão que você está solicitando não está disponível.</string>
     <string name="title_manual_download">Download manual</string>
     <string name="pref_ui_similar_apps_desc">Exibir grupos semelhantes e relacionados na página de detalhes do aplicativo</string>
-    <string name="pref_ui_no_for_you_desc">Exibir Sugestões Para Você na tela inicial</string>
+    <string name="pref_ui_no_for_you_desc">Exibe uma aba de sugestões Para Você na tela inicial</string>
     <string name="pref_ui_quick_exit_desc">Sair do aplicativo com um único toque em voltar</string>
     <string name="pref_ui_quick_exit">Saída rápida</string>
     <string name="pref_network_title">Gerenciamento</string>
@@ -339,4 +339,5 @@
     <string name="pref_common_extra">Extras</string>
     <string name="pref_common_advance">Avançar</string>
     <string name="action_check">Verificar</string>
+    <string name="dialog_desc_native_split">Você não pode instalar pacote de aplicativos (divididos) por meio do Instalador nativo. Mude seu instalador para Sessão, Serviços ou Root.</string>
 </resources>

@@ -339,4 +339,5 @@
     <string name="toast_manual_available">تهانينا ، كود الإصدار المطلوب متاح ، يتم تنزيله الآن.</string>
     <string name="toast_manual_unavailable">رمز الإصدار الذي تطلبه غير متوفر.</string>
     <string name="title_manual_download">تحميل يدوي</string>
+    <string name="dialog_desc_native_split">لا يمكنك تثبيت تطبيقات المجمعة او (المقسمة) عبر Native Installer. قم بتغيير المثبت الخاص بك إلى جلسة أو خدمات أو الجذر.</string>
 </resources>
