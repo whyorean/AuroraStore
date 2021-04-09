@@ -292,6 +292,8 @@ class AppDetailsActivity : BaseDetailsActivity() {
                         app.packageName,
                         apkFiles.map { it.file }
                     )
+            } fail {
+                Log.e(it.stackTraceToString())
             }
 
             runOnUiThread {
@@ -677,8 +679,12 @@ class AppDetailsActivity : BaseDetailsActivity() {
                 if (groupId == app.id && fetchGroup.groupDownloadProgress == 100) {
                     status = download.status
                     flip(0)
-                    verifyAndInstall(fetchGroup.downloads)
                     updateProgress(fetchGroup, -1, -1)
+                    try {
+                        verifyAndInstall(fetchGroup.downloads)
+                    } catch (e: Exception) {
+                        Log.e(e.stackTraceToString())
+                    }
                 }
             }
 

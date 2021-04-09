@@ -25,6 +25,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import com.aurora.Constants
+import com.aurora.extensions.stackTraceToString
 import com.aurora.extensions.toast
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.AuthData
@@ -105,7 +106,11 @@ class UpdatesFragment : BaseFragment() {
             override fun onCompleted(groupId: Int, download: Download, fetchGroup: FetchGroup) {
                 if (fetchGroup.groupDownloadProgress == 100) {
                     VM.updateDownload(groupId, fetchGroup, isComplete = true)
-                    install(download.tag!!, fetchGroup.downloads)
+                    try {
+                        install(download.tag!!, fetchGroup.downloads)
+                    } catch (e: Exception) {
+                        Log.e(e.stackTraceToString())
+                    }
                 }
             }
 
@@ -275,6 +280,8 @@ class UpdatesFragment : BaseFragment() {
                                 .filter { it.file.endsWith(".apk") }
                                 .map { it.file }.toList()
                         )
+                } fail {
+                    Log.e(it.stackTraceToString())
                 }
             }
         }
