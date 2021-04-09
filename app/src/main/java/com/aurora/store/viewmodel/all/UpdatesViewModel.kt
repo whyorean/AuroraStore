@@ -34,6 +34,7 @@ import kotlinx.coroutines.launch
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
+import java.util.*
 
 class UpdatesViewModel(application: Application) : BaseAppsViewModel(application) {
 
@@ -67,7 +68,7 @@ class UpdatesViewModel(application: Application) : BaseAppsViewModel(application
             } else {
                 false
             }
-        }.also { apps ->
+        }.sortedBy { it.displayName.toLowerCase(Locale.getDefault()) }.also { apps ->
             apps.forEach {
                 updateFileMap[it.id] = UpdateFile(it)
             }

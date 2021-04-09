@@ -31,6 +31,7 @@ import com.aurora.store.viewmodel.BaseAndroidViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.supervisorScope
+import java.util.*
 
 class BlacklistViewModel(application: Application) : BaseAndroidViewModel(application) {
 
@@ -70,7 +71,7 @@ class BlacklistViewModel(application: Application) : BaseAndroidViewModel(applic
                             }
                             blackList.add(black)
                         }
-                    liveData.postValue(blackList.sortedBy { it.displayName })
+                    liveData.postValue(blackList.sortedBy { it.displayName.toLowerCase(Locale.getDefault()) })
                     requestState = RequestState.Complete
                 } catch (e: Exception) {
                     e.printStackTrace()
