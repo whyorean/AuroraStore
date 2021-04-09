@@ -119,4 +119,6 @@
     <string name="about_bitcoin_bch_summary">Fè don vya Bitcoin Cash (BCH)</string>
     <string name="about_bitcoin_bch">Bitcoin Cash</string>
     <string name="about_bhim">BHIM - UPI</string>
+    <string name="onboarding_title_welcome">Byenvini</string>
+    <string name="onboarding_tos_error">Ou dwa make CI li an premye.</string>
 </resources>
