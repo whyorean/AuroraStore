@@ -293,7 +293,7 @@ abstract class BaseDetailsActivity : BaseActivity() {
                                 streamCluster.clusterTitle
                             )
                         else
-                            toast("Browse page unavailable")
+                            toast(getString(R.string.toast_page_unavailable))
                     }
 
                     override fun onClusterScrolled(streamCluster: StreamCluster) {
@@ -380,10 +380,10 @@ abstract class BaseDetailsActivity : BaseActivity() {
         }.successUi {
             it?.let {
                 B.userStars.rating = it.rating.toFloat()
-                Toast.makeText(this, "Rated successfully", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.toast_rated_success), Toast.LENGTH_SHORT).show()
             }
         }.failUi {
-            Toast.makeText(this, "Failed to submit rating", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.toast_rated_failed), Toast.LENGTH_SHORT).show()
         }
     }
 

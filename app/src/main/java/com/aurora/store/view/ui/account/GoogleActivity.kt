@@ -118,14 +118,14 @@ class GoogleActivity : BaseActivity() {
                     EventBus.getDefault().post(BusEvent.GoogleAAS(false))
                 }
             } else {
-                Toast.makeText(this, "Failed to generate AAS Token", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, getString(R.string.toast_aas_token_failed), Toast.LENGTH_LONG).show()
                 EventBus.getDefault().post(BusEvent.GoogleAAS(false))
             }
 
             //Close Activity
             close()
         } fail {
-            Toast.makeText(this, "Failed to generate AAS Token", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, getString(R.string.toast_aas_token_failed), Toast.LENGTH_LONG).show()
             EventBus.getDefault().post(BusEvent.GoogleAAS(false))
 
             //Close Activity
