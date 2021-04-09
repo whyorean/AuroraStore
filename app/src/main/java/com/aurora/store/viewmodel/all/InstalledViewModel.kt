@@ -29,6 +29,7 @@ import kotlinx.coroutines.launch
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
+import java.util.*
 
 class InstalledViewModel(application: Application) : BaseAppsViewModel(application) {
 
@@ -43,7 +44,7 @@ class InstalledViewModel(application: Application) : BaseAppsViewModel(applicati
         viewModelScope.launch(Dispatchers.IO) {
             try {
                 appList.flushAndAdd(getFilteredApps())
-                liveData.postValue(appList.sortedBy { it.displayName })
+                liveData.postValue(appList.sortedBy { it.displayName.toLowerCase(Locale.getDefault()) })
                 requestState = RequestState.Complete
             } catch (e: Exception) {
                 requestState = RequestState.Pending
@@ -78,7 +79,7 @@ class InstalledViewModel(application: Application) : BaseAppsViewModel(applicati
         appList.flushAndAdd(updatedList)
 
         //Post new update list
-        liveData.postValue(appList.sortedBy { it.displayName })
+        liveData.postValue(appList.sortedBy { it.displayName.toLowerCase(Locale.getDefault()) })
     }
 
     override fun onCleared() {
