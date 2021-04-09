@@ -357,4 +357,9 @@
     <string name="toast_purchase_blocked">"App purchases not available on Anonymous accounts."</string>
     <string name="toast_manual_unavailable">"The version code you are requesting is unavailable."</string>
     <string name="toast_manual_available">"Congrats, requested version code is available, downloading now."</string>
+    <string name="toast_double_press_to_exit">Click twice to exit</string>
+    <string name="toast_page_unavailable">Browse page unavailable</string>
+    <string name="toast_rated_success">Rated successfully</string>
+    <string name="toast_rated_failed">Failed to submit rating</string>
+    <string name="toast_aas_token_failed">Failed to generate AAS Token</string>
 </resources>

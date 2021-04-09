@@ -244,7 +244,7 @@ class MainActivity : BaseActivity() {
                     super.onBackPressed()
                 } else {
                     lastBackPressed = System.currentTimeMillis()
-                    Toast.makeText(this, "Click twice to exit", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, getString(R.string.toast_double_press_to_exit), Toast.LENGTH_SHORT).show()
                 }
             }
         }
