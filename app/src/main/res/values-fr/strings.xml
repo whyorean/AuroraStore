@@ -46,7 +46,7 @@
     <string name="title_apps_games">Mes applis et jeux</string>
     <string name="title_details">Détails</string>
     <string name="title_blacklist_manager">Gestionnaire de la liste noire</string>
-    <string name="title_apps_sale">Applications en vente</string>
+    <string name="title_apps_sale">Applications en promo</string>
     <string name="title_apps_library">Applications dans la bibliothèque</string>
     <string name="toast_anonymous_restriction">Non disponible sur les comptes anonymes</string>
     <string name="toast_abandon_sessions">Anciennes sessions d’installation abandonnées</string>
