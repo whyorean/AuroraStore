@@ -1,20 +1,18 @@
 image: jangrewe/gitlab-ci-android
 
-before_script:
-  - COMMIT_URL="https://gitlab.com/AuroraOSS/AuroraStore/-/commit/${CI_COMMIT_SHA}"
-  - MSG_URL="https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage"
-  - export GRADLE_USER_HOME=$(pwd)/.gradle
-  - chmod +x ./gradlew
+before_script: 
+- export GRADLE_USER_HOME=$(pwd)/.gradle
+- chmod +x ./gradlew
 
 cache:
   key: ${CI_PROJECT_ID}
   paths:
-    - .gradle/
+  - .gradle/
 
 stages:
-  - build
-  # - test
-  - notify
+- build
+# - test
+- notify
 
 # lintDebug:
 #   stage: build
@@ -24,14 +22,12 @@ stages:
 assembleDebug:
   stage: build
   script:
-    - ./gradlew assembleDebug
-    - 'curl -s -X POST ${MSG_URL} -d chat_id=${TELEGRAM_CHAT_ID}
-    -d "disable_web_page_preview=true"
-    -d "parse_mode=html"
-    -d text=Project: ${CI_PROJECT_NAME}\n<a href="${CI_PIPELINE_URL}"><b>⚒️ Building</b></a> with HEAD at <a href="${COMMIT_URL}"><b>${CI_COMMIT_SHORT_SHA}</b></a> by ${CI_COMMIT_AUTHOR}\nBranch: ${CI_COMMIT_BRANCH}'
+  - script -c "bash -x ci-notify.sh --build" > ci-logs.log
+  - ./gradlew assembleDebug
   artifacts:
     paths:
-      - app/build/outputs/
+    - app/build/outputs/
+    - ci-logs.log
 
 # testDebug:
 #   stage: test
@@ -42,4 +38,15 @@ assembleDebug:
 notifyTelegram:
   stage: notify
   script:
-    - script -c "bash -x ci-notify.sh" > ci-logs.log # build succeeded with apk file attached or failed
+  - script -c "bash -x ci-notify.sh --notify" > ci-logs.log # build succeeded with apk file attached or failed
+  artifacts:
+    paths:
+      - ci-logs.log
+
+# if all build fails send log
+sendLogs:
+  stage: notify
+  script:
+  - sh ci-notify.sh --logs
+  when: on_failure
+  
