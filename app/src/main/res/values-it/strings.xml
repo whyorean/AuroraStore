@@ -300,7 +300,7 @@
     <string name="installer_status_failure">L\'installatore ha fallito</string>
     <string name="installer_status_failure_aborted">Installazione annullata</string>
     <string name="installer_service_misconfigured">Servizi Aurora non è configurato; assicurati che il servizio sia abilitato e che tutti le autorizzazioni siano state concesse</string>
-    <string name="installer_service_unavailable">Servizi Aurora non è installato o la versione non è corretta (richiesto &gt;= 1.0.9); si prega di installarlo o di modificare l\'installatore</string>
+    <string name="installer_service_unavailable">Servizi Aurora non è installato o la versione non è corretta (richiesto &gt;= 1.0.9); si prega di installarlo o di modificare l’installatore</string>
     <string name="installer_service_available">Servizi Aurora è disponibile e pronto per l’installazione.</string>
     <string name="installer_root_unavailable">Nessun accesso root. Consentire l’accesso root o scegliere un altro installatore.</string>
     <string name="installer_root_available">Accesso root disponibile</string>
