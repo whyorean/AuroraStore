@@ -22,11 +22,12 @@ stages:
 assembleDebug:
   stage: build
   script:
-  - sh ci-build.sh 
+  - script -c "bash -x ci-notify.sh --build" > ci-logs.log
   - ./gradlew assembleDebug
   artifacts:
     paths:
     - app/build/outputs/
+    - ci-logs.log
 
 # testDebug:
 #   stage: test
@@ -37,4 +38,12 @@ assembleDebug:
 notifyTelegram:
   stage: notify
   script:
-  - script -c "bash -x ci-notify.sh" > ci-logs.log # build succeeded with apk file attached or failed
+  - script -c "bash -x ci-notify.sh --notify" > ci-logs.log # build succeeded with apk file attached or failed
+
+# if all build fails send log
+sendLogs:
+  stage: notify
+  script:
+  - sh ci-notify.sh --logs
+  when: on_failure
+  
