@@ -340,4 +340,9 @@
     <string name="pref_dialog_to_apply_restart">Цей параметр буде застосовано після перезапуску програми</string>
     <string name="pref_common_extra">Додаткові</string>
     <string name="pref_common_advance">Розширені</string>
+    <string name="toast_aas_token_failed">Не вдалося створити токен AAS</string>
+    <string name="toast_rated_failed">Не вдалося надіслати оцінку</string>
+    <string name="toast_rated_success">Успішно оцінено</string>
+    <string name="toast_page_unavailable">Сторінка огляду недоступна</string>
+    <string name="toast_double_press_to_exit">Клацніть двічі, щоб вийти</string>
 </resources>
