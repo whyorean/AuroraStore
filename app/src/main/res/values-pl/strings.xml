@@ -340,4 +340,9 @@
     <string name="title_manual_download">Pobierz ręcznie</string>
     <string name="action_check">Sprawdź</string>
     <string name="dialog_desc_native_split">Nie można instalować pakietów aplikacji (dzielonych) za pośrednictwem natywnego instalatora. Zmień instalator na sesję, usługi lub root.</string>
+    <string name="toast_page_unavailable">Przeglądana strona jest niedostępna</string>
+    <string name="toast_rated_success">Przesłano ocenę</string>
+    <string name="toast_aas_token_failed">Generowanie tokena AAS zakończone niepowodzeniem</string>
+    <string name="toast_double_press_to_exit">Kliknij dwukrotnie, aby wyjść</string>
+    <string name="toast_rated_failed">Przesyłanie oceny zakończone niepowodzeniem</string>
 </resources>
