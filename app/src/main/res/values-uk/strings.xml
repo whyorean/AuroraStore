@@ -183,7 +183,7 @@
     <string name="about_bhim">BHIM - UPI</string>
     <string name="toast_manual_available">Вітаємо, запитаний код версії доступний, завантажується зараз.</string>
     <string name="toast_manual_unavailable">Запитуваний код версії недоступний.</string>
-    <string name="toast_purchase_blocked">Покупки застосунків недоступні у знеособлених облікових записах.</string>
+    <string name="toast_purchase_blocked">Покупки застосунків недоступні у анонімних облікових записах.</string>
     <string name="toast_spoof_applied">Підміну пристрою успішно застосовано.</string>
     <string name="toast_permission_granted">Дозвіл надано</string>
     <string name="toast_developer_setting_failed">Не вдалося відкрити параметри розробника, переконайтеся, що його ввімкнуто з параметрів пристрою.</string>
@@ -192,7 +192,7 @@
     <string name="toast_apk_copy_success">APK успішно експортовано</string>
     <string name="toast_apk_copy_failed">Не вдалося експортувати APK</string>
     <string name="toast_apk_blacklisted">В чорному списку</string>
-    <string name="toast_anonymous_restriction">Недоступно для знеособлених облікових записів</string>
+    <string name="toast_anonymous_restriction">Недоступно для анонімних облікових записів</string>
     <string name="toast_abandon_sessions">Старі сеанси встановлення очищено</string>
     <string name="title_manual_download">Власноручне завантаження</string>
     <string name="title_updates">Оновлення</string>
@@ -223,7 +223,7 @@
     <string name="tab_top_free">Найкращі безкоштовні</string>
     <string name="tab_top_charts">Найпопулярніші</string>
     <string name="tab_for_you">Для вас</string>
-    <string name="tab_editor_choice">Вибір редактора</string>
+    <string name="tab_editor_choice">Вибір редакції</string>
     <string name="tab_categories">Категорії</string>
     <string name="insecure_anonymous_apply">Переконайтеся, що ви повторно увійшли та перезапустили застосунок, щоб застосувати зміни.</string>
     <string name="spoof_apply">Переконайтеся, що ви повторно увійшли, щоб застосувати підміну</string>
@@ -263,7 +263,7 @@
     <string name="pref_install_delete_summary">Типово APK буде видалено</string>
     <string name="pref_install_auto_title">Автоматичне встановлення APK після завантаження</string>
     <string name="pref_install_auto_summary">Застосунки встановлюються відразу після завершення завантаження</string>
-    <string name="pref_insecure_anonymous_title">Небезпечний знеособлений сеанс</string>
+    <string name="pref_insecure_anonymous_title">Небезпечний анонімний сеанс</string>
     <string name="pref_insecure_anonymous_summary">Локальне створення ідентифікатора GSF на пристрої</string>
     <string name="pref_filter_search_title">Використовувати непостійний фільтр пошуку</string>
     <string name="pref_filter_search_summary">Фільтри пошуку скидаються за кожного пошуку. Вимкніть, щоб зберегти фільтри пошуку</string>
