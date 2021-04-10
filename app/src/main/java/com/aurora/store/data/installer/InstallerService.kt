@@ -25,6 +25,7 @@ import android.content.pm.PackageInstaller
 import android.os.Build
 import android.os.IBinder
 import androidx.annotation.RequiresApi
+import com.aurora.store.R
 import com.aurora.store.data.event.InstallerEvent
 import com.aurora.store.util.Log
 import org.greenrobot.eventbus.EventBus
@@ -65,7 +66,7 @@ class InstallerService : Service() {
     private fun postStatus(status: Int, packageName: String?, extra: String?) {
         when (status) {
             PackageInstaller.STATUS_SUCCESS -> {
-                EventBus.getDefault().post(InstallerEvent.Success(packageName, "Success"))
+                EventBus.getDefault().post(InstallerEvent.Success(packageName, this.getString(R.string.installer_status_success)))
             }
             PackageInstaller.STATUS_FAILURE_ABORTED -> {
                 val errorString = AppInstaller.getErrorString(this, status)

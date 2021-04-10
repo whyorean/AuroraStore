@@ -11,7 +11,7 @@
 
 For those concerned with privacy, **Aurora Store** does not require Google's proprietary framework (spyware?) to operate. It works perfectly fine with or without Google Play Services or [MicroG](https://microg.org/).
 
-**Aurora Store** was originally based on Sergei Yeriomin's [Yalp store](https://github.com/yeriomin/YalpStore). **Aurora Store** v4.0 is a rewrite of version 3 in Kotlin that follows Material Design and runs on all devices running Android 4.4+. Read the roadmap page on our Wiki for more info!
+**Aurora Store** was originally based on Sergei Yeriomin's [Yalp store](https://github.com/yeriomin/YalpStore). **Aurora Store** v4.0 is a rewrite of version 3 in Kotlin and runs on all devices running Android 4.4+. Read the roadmap page on our Wiki for more info!
 
 ## Screenshots
 
@@ -33,23 +33,23 @@ For those concerned with privacy, **Aurora Store** does not require Google's pro
 Please only download the latest stable releases from GitLab or one of these sources:
 
 - GitLab: [Releases](https://gitlab.com/AuroraOSS/AuroraStore/-/releases)
-- AuroraOSS: [Downloads](https://auroraoss.com/downloads.php)
-- AuroraOSS: [Stable](https://auroraoss.com/AuroraStore/Stable/)
+- AuroraOSS: [Downloads](https://files.auroraoss.com)
+- AuroraOSS: [Stable](https://files.auroraoss.com/AuroraStore/Stable/)
 - F-Droid: [Link](https://f-droid.org/en/packages/com.aurora.store/)
 - Telegram: [Channel](https://t.me/AuroraOfficial)
-- XDA Forum: [Thread](https://forum.xda-developers.com/android/apps-games/galaxy-playstore-alternative-t3739733)
+- XDA Forum: [Thread](https://forum.xda-developers.com/t/app-4-4-aurora-store-open-source-play-store-client-april-8-2021.3739733/)
 
 Nightlies are released here:
 
-- AuroraOSS: [Nightlies](https://auroraoss.com/AuroraStore/Nightly/)
+- AuroraOSS: [Nightlies](https://files.auroraoss.com/AuroraStore/Nightly/)
 
-`Aurora Store v3 is still in development! Bugs are to be expected! Any bug reports are appreciated.`
+`Aurora Store v4 is still in on-going development! Bugs are to be expected! Any bug reports are appreciated.`
 
 [<img src="https://f-droid.org/badge/get-it-on.png" alt="Get it on F-Droid" height="60">](https://f-droid.org/en/packages/com.aurora.store/)
 
-## FAQ
+## FAQs
 
-Please visit the [GitLab Wiki](https://gitlab.com/AuroraOSS/AuroraStore/-/wikis/Home). You can also reach out to us on our support chat on [Telegram](https://t.me/AuroraSupport).
+Please visit the [Aurora Wiki](https://auroraoss.com/faq/) on our website. You can also reach out to us on our support chat on [Telegram](https://t.me/AuroraSupport).
 
 ## Translations
 

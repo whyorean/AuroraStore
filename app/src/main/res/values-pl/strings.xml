@@ -71,7 +71,7 @@
     <string name="action_ignore_version">Ignoruj wersję</string>
     <string name="action_ignore">Ignoruj</string>
     <string name="action_home">Główna</string>
-    <string name="action_get_local_apk">Pobierz paczkę z aplikacją</string>
+    <string name="action_get_local_apk">Zapisz paczkę z aplikacją</string>
     <string name="action_finish">Zakończ</string>
     <string name="action_filter_rating">Oceny</string>
     <string name="action_filter_paid_apps">Płatne</string>
@@ -147,7 +147,7 @@
     <string name="toast_apk_copy_failed">Eksport pliku APK zakończony niepowodzeniem</string>
     <string name="toast_apk_blacklisted">Czarna lista</string>
     <string name="toast_anonymous_restriction">Niedostępne na kontach anonimowych</string>
-    <string name="toast_abandon_sessions">Porzucono stare sesje instalacji</string>
+    <string name="toast_abandon_sessions">Porzucono stare sesje instalacyjne</string>
     <string name="title_updates">Aktualizacje</string>
     <string name="title_spoof_manager">Menedżer podmiany</string>
     <string name="title_settings">Ustawienia</string>
@@ -246,7 +246,7 @@
     <string name="device_miui_title">Wykryto MIUI!</string>
     <string name="device_huawei_subtitle">Wygląda na to, że używasz urządzenia firmy Huawei. Z powodu ograniczeń nałożonych przez Google, możesz nie być w stanie zalogować się do usług Google.</string>
     <string name="device_huawei_title">Wykryto Huawei!</string>
-    <string name="menu_terms">Warunki usługi</string>
+    <string name="menu_terms">Warunki świadczenia usługi</string>
     <string name="menu_license">Licencja</string>
     <string name="menu_disclaimer">Zrzeczenie się odpowiedzialności</string>
     <string name="installer_status_user_action">Czekam na potwierdzenie użytkownika</string>
@@ -339,4 +339,5 @@
     <string name="toast_manual_unavailable">Żądany kod wersji jest niedostępny.</string>
     <string name="title_manual_download">Pobierz ręcznie</string>
     <string name="action_check">Sprawdź</string>
+    <string name="dialog_desc_native_split">Nie można instalować pakietów aplikacji (dzielonych) za pośrednictwem natywnego instalatora. Zmień instalator na sesję, usługi lub root.</string>
 </resources>
