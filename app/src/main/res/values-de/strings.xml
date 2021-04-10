@@ -46,8 +46,8 @@
     <string name="about_bitcoin_eth_summary">Per Ethereum spenden (ETH)</string>
     <string name="account_anonymous">Anonym</string>
     <string name="action_buy">Kaufen</string>
-    <string name="action_blacklist_add">Zur Blockier-Liste hinzufügen</string>
-    <string name="action_blacklist">Blockier-Liste</string>
+    <string name="action_blacklist_add">Zur Sperrliste hinzufügen</string>
+    <string name="action_blacklist">Sperrliste</string>
     <string name="action_back">Zurück</string>
     <string name="action_discard">Verwerfen</string>
     <string name="action_done">Fertig</string>
@@ -100,12 +100,12 @@
     <string name="action_filter_apply">Anwenden</string>
     <string name="action_favourites">Favoriten</string>
     <string name="action_apply">Anwenden</string>
-    <string name="toast_spoof_applied">Geräte-Vortäuschen erfolgreich angewendet.</string>
+    <string name="toast_spoof_applied">Gerätevortäuschung erfolgreich angewendet.</string>
     <string name="toast_permission_granted">Berechtigung gewährt</string>
     <string name="toast_developer_setting_failed">Die Entwicklereinstellungen konnten nicht geöffnet werden, stelle sicher, dass sie in den Geräteeinstellungen aktiviert sind.</string>
     <string name="toast_apk_copy_success">APK erfolgreich exportiert</string>
     <string name="toast_apk_copy_failed">APK-Export fehlgeschlagen</string>
-    <string name="toast_apk_blacklisted">Auf der Blockier-Liste</string>
+    <string name="toast_apk_blacklisted">Auf der Sperrliste</string>
     <string name="toast_anonymous_restriction">Nicht verfügbar bei anonymen Konten</string>
     <string name="toast_abandon_sessions">Alte Installationssitzungen abgebrochen</string>
     <string name="title_updates">Aktualisierungen</string>
@@ -121,7 +121,7 @@
     <string name="title_download_manager">Heruntergeladene</string>
     <string name="title_device">Gerät</string>
     <string name="title_details">Details</string>
-    <string name="title_blacklist_manager">Blockier-Liste verwalten</string>
+    <string name="title_blacklist_manager">Sperrliste verwalten</string>
     <string name="title_account_manager">Konten</string>
     <string name="title_about">Über</string>
     <string name="tab_trending">Aktuelle Trends</string>
@@ -339,4 +339,5 @@
     <string name="toast_manual_unavailable">Der angeforderte Versionscode ist nicht verfügbar.</string>
     <string name="title_manual_download">Manuelles Herunterladen</string>
     <string name="action_check">Überprüfen</string>
+    <string name="dialog_desc_native_split">Gebündelte (geteilte) Anwendungen können mit dem nativen Installationsprogramm nicht installiert werden. Ändere die Installationsmethode zu Sitzung, Dienste oder Wurzel.</string>
 </resources>
