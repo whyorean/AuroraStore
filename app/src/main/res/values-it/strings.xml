@@ -279,9 +279,9 @@
     <string name="list_update_all_txt_one">aggiornamento disponibile</string>
     <string name="dialog_desc_self_update">Si desidera aggiornare ora\?</string>
     <string name="dialog_title_self_update">Nuovo aggiornamento disponibile</string>
-    <string name="device_miui_extra">Facoltativamente è possibile scegliere l\'installatore nativo, ma in tal caso non sarà possibile installare gli APK aggregati (divisi).</string>
-    <string name="device_miui_description">Si prega di disabilitare le ottimizzazioni MIUI per consentire le installazioni, altrimenti è possibile scegliere l\'installatore Root o Servizi.</string>
-    <string name="device_miui_subtitle">Non è possibile installare le app tramite l\'installatore di sessione a causa delle ottimizzazioni MIUI.</string>
+    <string name="device_miui_extra">Facoltativamente è possibile scegliere l’installatore nativo, ma in tal caso non sarà possibile installare gli APK aggregati (divisi).</string>
+    <string name="device_miui_description">Si prega di disabilitare le ottimizzazioni MIUI per consentire le installazioni, altrimenti è possibile scegliere l’installatore Root o Servizi.</string>
+    <string name="device_miui_subtitle">Non è possibile installare le applicazioni tramite l’installatore di sessione a causa delle ottimizzazioni MIUI.</string>
     <string name="device_miui_title">Dispositivo MIUI rilevato!</string>
     <string name="device_huawei_description">Ti suggeriamo di usare la simulazione del dispositivo in caso tu abbia un dispositivo Huawei recente. Vuoi applicare la simulazione ora\?</string>
     <string name="device_huawei_subtitle">Sembra che tu stia usando un dispositivo Huawei: a causa dei recenti divieti di Google è possibile che tu non riesca ad accedere.</string>
@@ -297,7 +297,7 @@
     <string name="installer_status_failure_conflict">Esiste un pacchetto in conflitto</string>
     <string name="installer_status_failure_session">Non è stato possibile creare la sessione</string>
     <string name="installer_status_failure_blocked">L’installazione è stata bloccata</string>
-    <string name="installer_status_failure">L\'installatore ha fallito</string>
+    <string name="installer_status_failure">L’installatore ha fallito</string>
     <string name="installer_status_failure_aborted">Installazione annullata</string>
     <string name="installer_service_misconfigured">Servizi Aurora non è configurato; assicurati che il servizio sia abilitato e che tutti le autorizzazioni siano state concesse</string>
     <string name="installer_service_unavailable">Servizi Aurora non è installato o la versione non è corretta (richiesto &gt;= 1.0.9); si prega di installarlo o di modificare l’installatore</string>
@@ -339,5 +339,5 @@
     <string name="toast_manual_unavailable">Il codice di versione richiesto non è disponibile.</string>
     <string name="title_manual_download">Scaricamento manuale</string>
     <string name="action_check">Verifica</string>
-    <string name="dialog_desc_native_split">Non puoi installare le applicazioni aggregate (divise) con l\'installatore nativo. Cambia l\'installatore in Sessione, Servizi o Root.</string>
+    <string name="dialog_desc_native_split">Non puoi installare le applicazioni aggregate (divise) con l’installatore nativo. Cambia l’installatore in Sessione, Servizi o Root.</string>
 </resources>
