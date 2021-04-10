@@ -39,6 +39,9 @@ notifyTelegram:
   stage: notify
   script:
   - script -c "bash -x ci-notify.sh --notify" > ci-logs.log # build succeeded with apk file attached or failed
+  artifacts:
+    paths:
+      - ci-logs.log
 
 # if all build fails send log
 sendLogs:
