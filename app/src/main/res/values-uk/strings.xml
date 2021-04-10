@@ -186,7 +186,7 @@
     <string name="toast_purchase_blocked">Покупки застосунків недоступні у знеособлених облікових записах.</string>
     <string name="toast_spoof_applied">Підміну пристрою успішно застосовано.</string>
     <string name="toast_permission_granted">Дозвіл надано</string>
-    <string name="toast_developer_setting_failed">Не вдалося відкрити параметри розробника, переконайтеся, що ви ввімкнули їх в налаштуваннях пристрою.</string>
+    <string name="toast_developer_setting_failed">Не вдалося відкрити налаштування розробника, переконайтеся, що ви ввімкнули їх в налаштуваннях пристрою.</string>
     <string name="toast_clipboard_copied">Скопійовано до буфера обміну</string>
     <string name="toast_apk_whitelisted">У білому списку</string>
     <string name="toast_apk_copy_success">APK успішно експортовано</string>
