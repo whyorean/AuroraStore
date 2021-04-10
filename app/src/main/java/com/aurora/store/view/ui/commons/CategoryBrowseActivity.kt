@@ -133,7 +133,7 @@ class CategoryBrowseActivity : BaseActivity(), GenericCarouselController.Callbac
         if (streamCluster.clusterBrowseUrl.isNotEmpty())
             openStreamBrowseActivity(streamCluster.clusterBrowseUrl)
         else
-            Toast.makeText(this, "Browse page unavailable", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.toast_page_unavailable), Toast.LENGTH_SHORT).show()
     }
 
     override fun onClusterScrolled(streamCluster: StreamCluster) {
