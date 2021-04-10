@@ -80,7 +80,7 @@ case $i in
     tg_push_error
     tg_push_log
     shift
-    ;;;
+    ;;
     *)
     echo "Use available commands: --build, --notify & --logs"
     exit    
