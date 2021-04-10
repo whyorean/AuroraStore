@@ -79,7 +79,7 @@
     <string name="purchase_not_found">Anwendung nicht gefunden</string>
     <string name="purchase_unsupported">Anwendung wird nicht unterstützt</string>
     <string name="purchase_invalid">Anwendung nicht gekauft</string>
-    <string name="pref_install_profile_summary">Wähle das Ziel-Profil aus, um Apps zu installieren. Dies funktioniert nur mit der Root-Installationsmethode</string>
+    <string name="pref_install_profile_summary">Wähle das Ziel-Profil aus, um Anwendungen zu installieren. Dies funktioniert nur mit der Wurzel-Installationsmethode</string>
     <string name="pref_install_auto_summary">Anwendungen werden sofort nach dem Herunterladen installiert</string>
     <string name="pref_filter_google_title">Google-Anwendungen filtern</string>
     <string name="pref_filter_google_summary">Entfernt alle Google-Anwendungen aus Suchergebnissen und den Kategorien</string>
@@ -94,7 +94,7 @@
     <string name="details_no_whitelist">Keine Anwendungen auf der weißen Liste</string>
     <string name="details_no_app">Keine Anwendungen verfügbar</string>
     <string name="details_more_about_app">Mehr über diese Anwendung</string>
-    <string name="details_in_app_purchase">In-App-Käufe</string>
+    <string name="details_in_app_purchase">In-Anwendung-Käufe</string>
     <string name="action_info">Anwendungsinfos</string>
     <string name="action_filter_gsf_dependent_apps">GSF-abhängig</string>
     <string name="action_filter_apply">Anwenden</string>
@@ -147,14 +147,14 @@
     <string name="pref_install_delete_title">APK nach der Installation löschen</string>
     <string name="pref_install_delete_summary">APKs werden standardmäßig gelöscht</string>
     <string name="pref_install_auto_title">APKs nach dem Herunterladen automatisch installieren</string>
-    <string name="pref_downloader_external_desc">Den externen Speicher fürs Herunterladen, Exportieren usw. verwenden</string>
+    <string name="pref_downloader_external_desc">Den externen Speicher fürs Herunterladen, Exportieren usw. verwenden.</string>
     <string name="pref_downloader_active_title">Aktive Downloads</string>
     <string name="pref_downloader_active_summary">Maximale Anzahl von aktiven Downloads</string>
     <string name="pref_abandon_session_desc">Abgebrochene oder ausstehende Installationssitzungen löschen</string>
     <string name="pref_abandon_session">Löschen der Installationssitzungen erzwingen</string>
     <string name="onboarding_permission_esm_desc">Erforderlich bei Geräten mit Android R+, zusätzlich zum externen Speicherzugriff</string>
     <string name="onboarding_permission_esm">Externe Speicherverwaltung</string>
-    <string name="onboarding_permission_esa_desc">Zum Speichern von Downloads (APKs und OBBs), Export und Import von Gerätekonfigurationen auf externem Speicher</string>
+    <string name="onboarding_permission_esa_desc">Zum Speichern von heruntergeladenen Dateien (APKs und OBBs), Export und Import von Gerätekonfigurationen auf externem Speicher.</string>
     <string name="onboarding_permission_esa">Externer Speicherzugriff</string>
     <string name="onboarding_welcome_select">Wie geht es dir\?</string>
     <string name="onboarding_tos_error">Du musst zuerst die Nutzungsbedingungen als gelesen markieren.</string>
@@ -318,12 +318,12 @@
     <string name="onboarding_title_installer">Installationsprogramm</string>
     <string name="onboarding_title_accent">Akzentfarbe</string>
     <string name="toast_purchase_blocked">Anwendungskäufe sind für anonyme Konten nicht verfügbar.</string>
-    <string name="insecure_anonymous_apply">Stelle sicher, dass du dich erneut anmeldest und die App neu startest, um die Änderungen zu übernehmen.</string>
+    <string name="insecure_anonymous_apply">Stelle sicher, dass du dich erneut anmeldest und die Anwemdung neu startest, um die Änderungen zu übernehmen.</string>
     <string name="pref_network_title">Netzwerk</string>
     <string name="pref_insecure_anonymous_title">Unsichere anonyme Sitzung</string>
     <string name="pref_insecure_anonymous_summary">GSF-ID lokal auf dem Gerät generieren</string>
-    <string name="pref_ui_similar_apps_desc">Ähnliche und verwandte Apps auf der Detailseite anzeigen</string>
-    <string name="pref_ui_similar_apps">Ähnliche und verwandte Apps</string>
+    <string name="pref_ui_similar_apps_desc">Ähnliche und verwandte Anwendungen auf der Detailseite anzeigen</string>
+    <string name="pref_ui_similar_apps">Ähnliche und verwandte Anwendungen</string>
     <string name="pref_ui_no_for_you_desc">„Für dich“-Seiten auf dem Startbildschirm anzeigen</string>
     <string name="pref_ui_no_for_you">„Für dich“-Seiten</string>
     <string name="pref_ui_quick_exit_desc">Beenden bei einmaliger Zurück-Aktion</string>
@@ -344,5 +344,5 @@
     <string name="toast_page_unavailable">Seite nicht verfügbar</string>
     <string name="toast_rated_success">Erfolgreich bewertet</string>
     <string name="toast_rated_failed">Bewertung fehlgeschlagen</string>
-    <string name="toast_aas_token_failed">Erstellung des AAS Token fehlgeschlagen</string>
+    <string name="toast_aas_token_failed">Erstellung des AAS-Token fehlgeschlagen</string>
 </resources>
