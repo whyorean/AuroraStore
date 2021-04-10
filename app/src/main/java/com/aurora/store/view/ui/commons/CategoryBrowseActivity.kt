@@ -23,12 +23,13 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.aurora.Constants
+import com.aurora.extensions.close
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.StreamBundle
 import com.aurora.gplayapi.data.models.StreamCluster
+import com.aurora.store.R
 import com.aurora.store.data.ViewState
 import com.aurora.store.databinding.ActivityGenericRecyclerBinding
-import com.aurora.extensions.close
 import com.aurora.store.view.custom.recycler.EndlessRecyclerOnScrollListener
 import com.aurora.store.view.epoxy.controller.CategoryCarouselController
 import com.aurora.store.view.epoxy.controller.GenericCarouselController
@@ -133,7 +134,8 @@ class CategoryBrowseActivity : BaseActivity(), GenericCarouselController.Callbac
         if (streamCluster.clusterBrowseUrl.isNotEmpty())
             openStreamBrowseActivity(streamCluster.clusterBrowseUrl)
         else
-            Toast.makeText(this, getString(R.string.toast_page_unavailable), Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.toast_page_unavailable), Toast.LENGTH_SHORT)
+                .show()
     }
 
     override fun onClusterScrolled(streamCluster: StreamCluster) {

@@ -28,13 +28,14 @@ import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.Toast
 import com.aurora.Constants
+import com.aurora.extensions.close
+import com.aurora.extensions.isLAndAbove
+import com.aurora.store.R
 import com.aurora.store.data.event.BusEvent
 import com.aurora.store.databinding.ActivityGoogleBinding
 import com.aurora.store.util.AC2DMTask
-import com.aurora.store.util.Preferences
 import com.aurora.store.util.AC2DMUtil
-import com.aurora.extensions.close
-import com.aurora.extensions.isLAndAbove
+import com.aurora.store.util.Preferences
 import com.aurora.store.view.ui.commons.BaseActivity
 import nl.komponents.kovenant.task
 import org.greenrobot.eventbus.EventBus
@@ -118,14 +119,16 @@ class GoogleActivity : BaseActivity() {
                     EventBus.getDefault().post(BusEvent.GoogleAAS(false))
                 }
             } else {
-                Toast.makeText(this, getString(R.string.toast_aas_token_failed), Toast.LENGTH_LONG).show()
+                Toast.makeText(this, getString(R.string.toast_aas_token_failed), Toast.LENGTH_LONG)
+                    .show()
                 EventBus.getDefault().post(BusEvent.GoogleAAS(false))
             }
 
             //Close Activity
             close()
         } fail {
-            Toast.makeText(this, getString(R.string.toast_aas_token_failed), Toast.LENGTH_LONG).show()
+            Toast.makeText(this, getString(R.string.toast_aas_token_failed), Toast.LENGTH_LONG)
+                .show()
             EventBus.getDefault().post(BusEvent.GoogleAAS(false))
 
             //Close Activity

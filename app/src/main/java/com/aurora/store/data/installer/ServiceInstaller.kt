@@ -206,7 +206,12 @@ class ServiceInstaller(context: Context) : InstallerBase(context) {
 
         when (returnCode) {
             PackageInstaller.STATUS_SUCCESS -> {
-                EventBus.getDefault().post(InstallerEvent.Success(packageName, this.getString(R.string.installer_status_success)))
+                EventBus.getDefault().post(
+                    InstallerEvent.Success(
+                        packageName,
+                        context.getString(R.string.installer_status_success)
+                    )
+                )
             }
             else -> {
                 val error = AppInstaller.getErrorString(
