@@ -69,18 +69,18 @@ for i in "$@"
 do
 case $i in
     --build)
-    tg_build_start()
+    tg_build_start
     shift
     ;;
     --notify)
-    tg_build_data()
+    tg_build_data
     shift
     ;;
     --logs)
-    tg_push_error()
-    tg_push_log()
+    tg_push_error
+    tg_push_log
     shift
-    ;;
+    ;;;
     *)
     echo "Use available commands: --build, --notify & --logs"
     exit    
