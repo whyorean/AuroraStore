@@ -339,4 +339,10 @@
     <string name="action_copy">Kopyala</string>
     <string name="action_close">Kapat</string>
     <string name="action_check">Denetle</string>
+    <string name="toast_aas_token_failed">AAS Belirteci oluşturulamadı</string>
+    <string name="toast_rated_failed">Derecelendirme gönderilemedi</string>
+    <string name="toast_rated_success">Başarıyla derecelendirildi</string>
+    <string name="toast_page_unavailable">Göz atma sayfası kullanılamıyor</string>
+    <string name="toast_double_press_to_exit">Çıkmak için iki kere tıklayın</string>
+    <string name="dialog_desc_native_split">Paketlenmiş (bölünmüş) uygulamaları Yerel Kurucu aracılığıyla kuramazsınız. Kurucunuzu Oturum, Hizmetler veya Kök olarak değiştirin.</string>
 </resources>
