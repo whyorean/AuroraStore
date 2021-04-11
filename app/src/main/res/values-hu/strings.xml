@@ -339,4 +339,10 @@
     <string name="toast_manual_unavailable">A kért verziókód nem érhető el.</string>
     <string name="title_manual_download">Manuális letöltés</string>
     <string name="action_check">Ellenőrzés</string>
+    <string name="toast_aas_token_failed">Nem sikerült az AAS Token generálása</string>
+    <string name="toast_rated_failed">Az értékelést nem sikerült elküldeni</string>
+    <string name="toast_rated_success">Sikeresen értékeltél</string>
+    <string name="toast_page_unavailable">A böngésző lap nem érhető el</string>
+    <string name="toast_double_press_to_exit">Kattints kétszer a kilépéshez</string>
+    <string name="dialog_desc_native_split">A Native Installer segítségével nem lehet telepíteni a kötegelt (osztott) alkalmazásokat. Változtasd a telepítőt Session, Services vagy Root-ra.</string>
 </resources>
