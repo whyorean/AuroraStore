@@ -29,7 +29,6 @@ object Constants {
     const val FETCH_GROUP_ID = "FETCH_GROUP_ID"
     const val APP_ID = "com.aurora.store"
 
-    const val CONNECTIVITY_CHECK_URL = "https://connectivitycheck.android.com/generate_204"
     const val EXODUS_BASE_URL = "https://reports.exodus-privacy.eu.org/api/search/"
     const val EXODUS_REPORT_URL = "https://reports.exodus-privacy.eu.org/reports/"
     const val SHARE_URL = "http://play.google.com/store/apps/details?id="

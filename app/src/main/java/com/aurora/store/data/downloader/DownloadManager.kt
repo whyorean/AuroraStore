@@ -20,7 +20,6 @@
 package com.aurora.store.data.downloader
 
 import android.content.Context
-import com.aurora.Constants
 import com.aurora.store.data.SingletonHolder
 import com.aurora.store.util.Preferences
 import com.tonyodev.fetch2.*
@@ -52,7 +51,6 @@ class DownloadManager private constructor(var context: Context) {
             .enableFileExistChecks(true)
             .enableRetryOnNetworkGain(true)
             .enableAutoStart(true)
-            .setInternetAccessUrlCheck(Constants.CONNECTIVITY_CHECK_URL)
             .setAutoRetryMaxAttempts(3)
             .setProgressReportingInterval(3000)
             .setNamespace(BuildConfig.APPLICATION_ID)
