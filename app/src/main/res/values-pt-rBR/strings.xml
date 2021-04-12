@@ -340,4 +340,9 @@
     <string name="pref_common_advance">Avançar</string>
     <string name="action_check">Verificar</string>
     <string name="dialog_desc_native_split">Você não pode instalar pacote de aplicativos (divididos) por meio do Instalador nativo. Mude seu instalador para Sessão, Serviços ou Root.</string>
+    <string name="toast_aas_token_failed">Falha na geração de Token AAS</string>
+    <string name="toast_rated_failed">Falha na classificação</string>
+    <string name="toast_rated_success">Avaliado com sucesso</string>
+    <string name="toast_page_unavailable">Página indisponível</string>
+    <string name="toast_double_press_to_exit">Clique duas vezes para sair</string>
 </resources>
