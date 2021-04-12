@@ -340,4 +340,9 @@
     <string name="about_bhim_summary">Darujte prostřednictvím UPI</string>
     <string name="about_bhim">BHIM - UPI</string>
     <string name="dialog_desc_native_split">Přes nativní instalátor nelze instalovat skupiny aplikací. Změňte instalátor na Session, Services nebo Root.</string>
+    <string name="toast_aas_token_failed">Nepodařilo se vygenerovat token AAS</string>
+    <string name="toast_rated_failed">Hodnocení se nepodařilo odeslat</string>
+    <string name="toast_rated_success">Úspěšně hodnoceno</string>
+    <string name="toast_page_unavailable">Procházet stránku není k dispozici</string>
+    <string name="toast_double_press_to_exit">Chcete-li ukončit program, klepněte dvakrát</string>
 </resources>
