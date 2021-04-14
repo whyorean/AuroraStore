@@ -259,7 +259,7 @@
     <string name="pref_install_mode_services">Служби Aurora</string>
     <string name="pref_install_mode_root">Кореневий встановлювач</string>
     <string name="pref_install_mode_native">Власний встановлювач</string>
-    <string name="pref_install_delete_title">Видаліть APK після встановлення</string>
+    <string name="pref_install_delete_title">Видалити APK після встановлення</string>
     <string name="pref_install_delete_summary">Типово APK буде видалено</string>
     <string name="pref_install_auto_title">Автоматичне встановлення APK після завантаження</string>
     <string name="pref_install_auto_summary">Застосунки встановлюються відразу після завершення завантаження</string>
