@@ -145,7 +145,7 @@
     <string name="toast_apk_whitelisted">Biała lista</string>
     <string name="toast_apk_copy_success">Eksport pliku APK zakończony pomyślnie</string>
     <string name="toast_apk_copy_failed">Eksport pliku APK zakończony niepowodzeniem</string>
-    <string name="toast_apk_blacklisted">Czarna lista</string>
+    <string name="toast_apk_blacklisted">Dodano do czarnej listy</string>
     <string name="toast_anonymous_restriction">Niedostępne na kontach anonimowych</string>
     <string name="toast_abandon_sessions">Porzucono stare sesje instalacyjne</string>
     <string name="title_updates">Aktualizacje</string>
