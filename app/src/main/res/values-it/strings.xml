@@ -57,7 +57,7 @@
     <string name="title_installer">Installatore delle app</string>
     <string name="title_apps_sale">Applicazioni in offerta</string>
     <string name="title_apps_library">Applicazioni nella raccolta</string>
-    <string name="title_apps_games">Le mie applicazioni e i miei giochi</string>
+    <string name="title_apps_games">Le mie app e i miei giochi</string>
     <string name="title_apps">Applicazioni</string>
     <string name="purchase_not_found">Applicazione non trovata</string>
     <string name="purchase_unsupported">Applicazione non supportata</string>
@@ -78,7 +78,7 @@
     <string name="details_no_whitelist">Nessuna applicazione esclusa dalla lista nera</string>
     <string name="details_no_app">Nessuna applicazione disponibile</string>
     <string name="details_more_about_app">Altre informazioni sull’app</string>
-    <string name="details_in_app_purchase">Acquisti integrati nell’app</string>
+    <string name="details_in_app_purchase">Acquisti in-app</string>
     <string name="action_info">Informazioni sull’app</string>
     <string name="action_get_local_apk">Salva pacchetto di app</string>
     <string name="action_filter_paid_apps">A pagamento</string>
@@ -88,7 +88,7 @@
     <string name="action_favourites">Applicazioni preferite</string>
     <string name="action_apply">Applica</string>
     <string name="exodus_report">Rapporto Exodus</string>
-    <string name="exodus_progress">Controllo della presenza di elementi traccianti…</string>
+    <string name="exodus_progress">Controllo della presenza di traccianti…</string>
     <string name="exodus_powered">Dati forniti da Exodus</string>
     <string name="exodus_no_tracker">Non contiene traccianti</string>
     <string name="exodus_no_report">Nessun rapporto disponibile</string>
@@ -297,7 +297,7 @@
     <string name="installer_status_failure_conflict">Esiste un pacchetto in conflitto</string>
     <string name="installer_status_failure_session">Non è stato possibile creare la sessione</string>
     <string name="installer_status_failure_blocked">L’installazione è stata bloccata</string>
-    <string name="installer_status_failure">L’installatore ha fallito</string>
+    <string name="installer_status_failure">Installazione fallita</string>
     <string name="installer_status_failure_aborted">Installazione annullata</string>
     <string name="installer_service_misconfigured">Servizi Aurora non è configurato; assicurati che il servizio sia abilitato e che tutti le autorizzazioni siano state concesse</string>
     <string name="installer_service_unavailable">Servizi Aurora non è installato o la versione non è corretta (richiesto &gt;= 1.0.9); si prega di installarlo o di modificare l’installatore</string>
