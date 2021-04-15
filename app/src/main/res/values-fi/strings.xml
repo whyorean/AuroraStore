@@ -37,7 +37,7 @@
     <string name="about_paypal_summary">Lahjoita PayPalilla</string>
     <string name="about_bitcoin_bch_summary">Lahjoita Bitcoin Cashia (BCH)</string>
     <string name="about_bitcoin_bch">Bitcoin Cash</string>
-    <string name="about_gitlab_summary">Hanki lähdekoodi Aurora OSS:ta tai GitLabista</string>
+    <string name="about_gitlab_summary">Hanki lähdekoodi Aurora OSS:ta tai GitLabista.</string>
     <string name="about_fdroid_summary">Lataa Aurora Store F-Droidista.</string>
     <string name="about_bitcoin_eth_summary">Lahjoita Ethereumia</string>
     <string name="about_bitcoin_btc_summary">Lahjoita Bitcoinia</string>
