@@ -282,7 +282,7 @@
     <string name="onboarding_permission_installer">Autorisation de l’installateur</string>
     <string name="onboarding_permission_esm_desc">Nécessaire sur les appareils exécutant Android R+, en plus de l’accès au stockage externe</string>
     <string name="onboarding_permission_esm">Gestionnaire de stockage externe</string>
-    <string name="onboarding_permission_esa_desc">Pour enregistrer les téléchargements (APK et OBB), exportez et importez les configurations de l’appareil sur le stockage externe.</string>
+    <string name="onboarding_permission_esa_desc">Pour enregistrer les téléchargements (APK et OBB), exporter et importer les configurations de l’appareil sur un stockage externe.</string>
     <string name="onboarding_permission_esa">Accès au stockage externe</string>
     <string name="onboarding_tos_error">Vous devez d’abord marquer les CdU comme lues.</string>
     <string name="onboarding_tos_confirmation">J’ai lu les conditions d’utilisation d’Aurora Store.</string>
@@ -340,4 +340,9 @@
     <string name="title_manual_download">Téléchargement manuel</string>
     <string name="action_check">Vérifier</string>
     <string name="dialog_desc_native_split">Vous ne pouvez pas installer d’applications groupées (fractionnées) via le programme d’installation natif. Changez de méthode d’installation pour Session, Services ou Racine.</string>
+    <string name="toast_aas_token_failed">Échec de la génération du jeton AAS</string>
+    <string name="toast_rated_failed">Échec de l’évaluation</string>
+    <string name="toast_rated_success">Évalué avec succès</string>
+    <string name="toast_page_unavailable">Page de navigation indisponible</string>
+    <string name="toast_double_press_to_exit">Cliquez deux fois pour quitter</string>
 </resources>

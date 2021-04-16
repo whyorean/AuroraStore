@@ -340,4 +340,9 @@
     <string name="details_no_app_match">No se ha encontrado ninguna aplicación que coincida</string>
     <string name="action_check">Comprobar</string>
     <string name="dialog_desc_native_split">No se pueden instalar aplicaciones agrupadas (divididas) a través del instalador nativo. Cambie el instalador a Sesión, Servicios o Root.</string>
+    <string name="toast_aas_token_failed">No se ha podido generar el token AAS</string>
+    <string name="toast_rated_failed">No se ha enviado la calificación</string>
+    <string name="toast_rated_success">Calificado con éxito</string>
+    <string name="toast_page_unavailable">Página de navegación no disponible</string>
+    <string name="toast_double_press_to_exit">Pulse dos veces para salir</string>
 </resources>

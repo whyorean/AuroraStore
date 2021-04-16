@@ -79,7 +79,7 @@
     <string name="purchase_not_found">Anwendung nicht gefunden</string>
     <string name="purchase_unsupported">Anwendung wird nicht unterstützt</string>
     <string name="purchase_invalid">Anwendung nicht gekauft</string>
-    <string name="pref_install_profile_summary">Wähle das Ziel-Profil aus, um Apps zu installieren. Dies funktioniert nur mit der Root-Installationsmethode</string>
+    <string name="pref_install_profile_summary">Wähle das Ziel-Profil aus, um Anwendungen zu installieren. Dies funktioniert nur mit der Wurzel-Installationsmethode</string>
     <string name="pref_install_auto_summary">Anwendungen werden sofort nach dem Herunterladen installiert</string>
     <string name="pref_filter_google_title">Google-Anwendungen filtern</string>
     <string name="pref_filter_google_summary">Entfernt alle Google-Anwendungen aus Suchergebnissen und den Kategorien</string>
@@ -94,7 +94,7 @@
     <string name="details_no_whitelist">Keine Anwendungen auf der weißen Liste</string>
     <string name="details_no_app">Keine Anwendungen verfügbar</string>
     <string name="details_more_about_app">Mehr über diese Anwendung</string>
-    <string name="details_in_app_purchase">In-App-Käufe</string>
+    <string name="details_in_app_purchase">In-Anwendung-Käufe</string>
     <string name="action_info">Anwendungsinfos</string>
     <string name="action_filter_gsf_dependent_apps">GSF-abhängig</string>
     <string name="action_filter_apply">Anwenden</string>
@@ -147,14 +147,14 @@
     <string name="pref_install_delete_title">APK nach der Installation löschen</string>
     <string name="pref_install_delete_summary">APKs werden standardmäßig gelöscht</string>
     <string name="pref_install_auto_title">APKs nach dem Herunterladen automatisch installieren</string>
-    <string name="pref_downloader_external_desc">Den externen Speicher fürs Herunterladen, Exportieren usw. verwenden</string>
+    <string name="pref_downloader_external_desc">Den externen Speicher fürs Herunterladen, Exportieren usw. verwenden.</string>
     <string name="pref_downloader_active_title">Aktive Downloads</string>
     <string name="pref_downloader_active_summary">Maximale Anzahl von aktiven Downloads</string>
     <string name="pref_abandon_session_desc">Abgebrochene oder ausstehende Installationssitzungen löschen</string>
     <string name="pref_abandon_session">Löschen der Installationssitzungen erzwingen</string>
     <string name="onboarding_permission_esm_desc">Erforderlich bei Geräten mit Android R+, zusätzlich zum externen Speicherzugriff</string>
     <string name="onboarding_permission_esm">Externe Speicherverwaltung</string>
-    <string name="onboarding_permission_esa_desc">Zum Speichern von Downloads (APKs und OBBs), Export und Import von Gerätekonfigurationen auf externem Speicher</string>
+    <string name="onboarding_permission_esa_desc">Zum Speichern von heruntergeladenen Dateien (APKs und OBBs), Export und Import von Gerätekonfigurationen auf externem Speicher.</string>
     <string name="onboarding_permission_esa">Externer Speicherzugriff</string>
     <string name="onboarding_welcome_select">Wie geht es dir\?</string>
     <string name="onboarding_tos_error">Du musst zuerst die Nutzungsbedingungen als gelesen markieren.</string>
@@ -174,7 +174,7 @@
     <string name="dialog_desc_self_update">Möchtenst du jetzt aktualisieren\?</string>
     <string name="dialog_title_self_update">Neue Aktualisierung verfügbar</string>
     <string name="device_miui_extra">Optional kannst du das native Installationsprogramm wählen, aber dann kannst du keine Bundle (Split)-APKs installieren. Die Auswahl liegt also bei dir.</string>
-    <string name="device_miui_description">Bitte deaktiviere die MIUI-Optimierungen, um Installationen zu ermöglichen, andernfalls kannst du die Root- oder Dienste-Installationsmethode wählen.</string>
+    <string name="device_miui_description">Bitte deaktiviere die MIUI-Optimierungen, um Installationen zu ermöglichen, andernfalls kannst du die Wurzel- oder Dienste-Installationsmethode wählen.</string>
     <string name="device_miui_subtitle">Das Sitzungsinstallation kann aufgrund von MIUI-Optimierungen keine Anwendungen installieren.</string>
     <string name="device_miui_title">MIUI erkannt!</string>
     <string name="device_huawei_description">Wir empfehlen dir, die Gerätevortäuschung-Option zu verwenden, wenn du ein aktuelles Huawei-Gerät besitzst. Möchtest du das Vortäuschen jetzt anwenden\?</string>
@@ -196,8 +196,8 @@
     <string name="installer_service_misconfigured">Aurora-Dienste nicht konfiguriert. Stelle sicher, dass diese aktiviert sind und alle Berechtigungen erteilt wurden</string>
     <string name="installer_service_unavailable">Aurora-Dienste sind entweder nicht installiert oder veraltet (erforderlich &gt;= 1.0.9), bitte installiere diese oder wechsel die Installationsart</string>
     <string name="installer_service_available">Aurora-Dienste sind verfügbar und bereit zur Installation.</string>
-    <string name="installer_root_unavailable">Keine Root-Berechtigung! Bitte fehlende Berechtigung gewähren oder andere Installationsmethode wählen.</string>
-    <string name="installer_root_available">Root-Zugriff verfügbar</string>
+    <string name="installer_root_unavailable">Keine Wurzel-Berechtigung! Bitte fehlende Berechtigung gewähren oder andere Installationsmethode wählen.</string>
+    <string name="installer_root_available">Wurzel-Zugriff verfügbar</string>
     <string name="filter_review_two">Zwei</string>
     <string name="filter_review_three">Drei</string>
     <string name="filter_review_positive">Positiv</string>
@@ -311,19 +311,19 @@
     <string name="pref_ui_theme_darkord">Disskord</string>
     <string name="pref_ui_accent_title">Akzentfarbe</string>
     <string name="pref_install_mode_session">Sitzungsinstallation</string>
-    <string name="pref_install_mode_root">Root-Installation</string>
+    <string name="pref_install_mode_root">Wurzel-Installation</string>
     <string name="pref_install_mode_native">Native Installation</string>
     <string name="pref_downloader_external">Externer Speicher</string>
     <string name="onboarding_permission_installer">Berechtigung des Installationsprogramms</string>
     <string name="onboarding_title_installer">Installationsprogramm</string>
     <string name="onboarding_title_accent">Akzentfarbe</string>
     <string name="toast_purchase_blocked">Anwendungskäufe sind für anonyme Konten nicht verfügbar.</string>
-    <string name="insecure_anonymous_apply">Stelle sicher, dass du dich erneut anmeldest und die App neu startest, um die Änderungen zu übernehmen.</string>
+    <string name="insecure_anonymous_apply">Stelle sicher, dass du dich erneut anmeldest und die Anwendung neu startest, um die Änderungen zu übernehmen.</string>
     <string name="pref_network_title">Netzwerk</string>
     <string name="pref_insecure_anonymous_title">Unsichere anonyme Sitzung</string>
     <string name="pref_insecure_anonymous_summary">GSF-ID lokal auf dem Gerät generieren</string>
-    <string name="pref_ui_similar_apps_desc">Ähnliche und verwandte Apps auf der Detailseite anzeigen</string>
-    <string name="pref_ui_similar_apps">Ähnliche und verwandte Apps</string>
+    <string name="pref_ui_similar_apps_desc">Ähnliche und verwandte Anwendungen auf der Detailseite anzeigen</string>
+    <string name="pref_ui_similar_apps">Ähnliche und verwandte Anwendungen</string>
     <string name="pref_ui_no_for_you_desc">„Für dich“-Seiten auf dem Startbildschirm anzeigen</string>
     <string name="pref_ui_no_for_you">„Für dich“-Seiten</string>
     <string name="pref_ui_quick_exit_desc">Beenden bei einmaliger Zurück-Aktion</string>
@@ -339,10 +339,10 @@
     <string name="toast_manual_unavailable">Der angeforderte Versionscode ist nicht verfügbar.</string>
     <string name="title_manual_download">Manuell herunterladen</string>
     <string name="action_check">Überprüfen</string>
-    <string name="dialog_desc_native_split">Bundle (Split)-APKs können nicht mit dem nativen Installer installiert werden. Ändere die Installationsmethode zu Sitzung, Dienste oder Root.</string>
+    <string name="dialog_desc_native_split">Bundle (Split)-APKs können nicht mit dem nativen Installer installiert werden. Ändere die Installationsmethode zu Sitzung, Dienste oder Wurzel.</string>
     <string name="toast_double_press_to_exit">Nochmal drücken zum Beenden</string>
     <string name="toast_page_unavailable">Seite nicht verfügbar</string>
     <string name="toast_rated_success">Erfolgreich bewertet</string>
     <string name="toast_rated_failed">Bewertung fehlgeschlagen</string>
-    <string name="toast_aas_token_failed">Erstellung des AAS Token fehlgeschlagen</string>
+    <string name="toast_aas_token_failed">Erstellung des AAS-Token fehlgeschlagen</string>
 </resources>

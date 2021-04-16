@@ -169,7 +169,7 @@
     <string name="about_paypal">PayPal</string>
     <string name="about_libera_summary">Стати спонсором на Liberapay</string>
     <string name="about_libera">Liberapay</string>
-    <string name="about_gitlab_summary">Джерельний код Aurora Store в репозиторії Aurora OSS на GitLab.</string>
+    <string name="about_gitlab_summary">Початковий код Aurora Store в репозиторії Aurora OSS на GitLab.</string>
     <string name="about_gitlab">GitLab</string>
     <string name="about_fdroid_summary">Завантажити Aurora Store з репозиторію F-Droid.</string>
     <string name="about_fdroid">F-Droid</string>
@@ -186,7 +186,7 @@
     <string name="toast_purchase_blocked">Покупки застосунків недоступні у знеособлених облікових записах.</string>
     <string name="toast_spoof_applied">Підміну пристрою успішно застосовано.</string>
     <string name="toast_permission_granted">Дозвіл надано</string>
-    <string name="toast_developer_setting_failed">Не вдалося відкрити параметри розробника, переконайтеся, що його ввімкнуто з параметрів пристрою.</string>
+    <string name="toast_developer_setting_failed">Не вдалося відкрити налаштування розробника, переконайтеся, що ви ввімкнули їх в налаштуваннях пристрою.</string>
     <string name="toast_clipboard_copied">Скопійовано до буфера обміну</string>
     <string name="toast_apk_whitelisted">У білому списку</string>
     <string name="toast_apk_copy_success">APK успішно експортовано</string>
@@ -197,7 +197,7 @@
     <string name="title_manual_download">Власноручне завантаження</string>
     <string name="title_updates">Оновлення</string>
     <string name="title_spoof_manager">Менеджер підміни</string>
-    <string name="title_settings">Параметри</string>
+    <string name="title_settings">Налаштування</string>
     <string name="title_purchase_history">Історія покупок</string>
     <string name="title_no_network">Немає мережі</string>
     <string name="title_library">Бібліотека</string>
@@ -255,11 +255,11 @@
     <string name="pref_install_profile_summary">Вибір профілю для встановлення застосунків, працює лише з кореневим методом встановлення</string>
     <string name="pref_install_mode_title">Спосіб встановлення</string>
     <string name="pref_install_mode_summary">Виберіть режим встановлення APK</string>
-    <string name="pref_install_mode_session">Встановлювач сеансу</string>
+    <string name="pref_install_mode_session">Установник Android</string>
     <string name="pref_install_mode_services">Служби Aurora</string>
     <string name="pref_install_mode_root">Кореневий встановлювач</string>
     <string name="pref_install_mode_native">Власний встановлювач</string>
-    <string name="pref_install_delete_title">Видаліть APK після встановлення</string>
+    <string name="pref_install_delete_title">Видалити APK після встановлення</string>
     <string name="pref_install_delete_summary">Типово APK буде видалено</string>
     <string name="pref_install_auto_title">Автоматичне встановлення APK після завантаження</string>
     <string name="pref_install_auto_summary">Застосунки встановлюються відразу після завершення завантаження</string>
@@ -295,12 +295,12 @@
     <string name="notification_channel_general">Загальне сповіщення</string>
     <string name="notification_channel_alert">Швидке сповіщення</string>
     <string name="list_update_all_txt_one">доступне оновлення</string>
-    <string name="dialog_desc_native_split">Ви не можете встановити пакетні (розділені) програми через Native Installer. Змініть встановлювач на Session, Services або Root.</string>
+    <string name="dialog_desc_native_split">Неможливо встановити пакети застосунків (split) через системний установник Android. Змініть установник на Session, служби Aurora або Root.</string>
     <string name="dialog_desc_self_update">Бажаєте оновити зараз\?</string>
     <string name="dialog_title_self_update">Доступне нове оновлення</string>
-    <string name="device_miui_extra">За бажання ви можете вибрати власний встановлювач, але тоді ви не можете встановлювати пакетні (розділені) APK, тому вибір за вами.</string>
+    <string name="device_miui_extra">За бажанням ви можете вибрати власний встановлювач, але тоді ви не можете встановлювати розділені (split) APK, тому вибір за вами.</string>
     <string name="device_miui_description">Вимкніть оптимізацію MIUI, щоб дозволити встановлення, інакше ви можете вибрати встановлювач Root або Services.</string>
-    <string name="device_miui_subtitle">Встановлювач сеансу не може встановлювати застосунки через оптимізацію MIUI.</string>
+    <string name="device_miui_subtitle">Установник Android не може встановлювати застосунки через оптимізацію MIUI.</string>
     <string name="device_miui_title">Виявлено MIUI!</string>
     <string name="device_huawei_description">Ми радимо користуватися функцією підміни пристрою, якщо у вас новіший пристрій Huawei. Ви хочете застосувати функцію підміни зараз\?</string>
     <string name="device_huawei_subtitle">Здається, ви користуєтеся пристроєм Huawei, через нещодавні заборони Google ви не зможете ввійти в систему.</string>
@@ -322,8 +322,8 @@
     <string name="installer_service_misconfigured">Служби Aurora не налаштовано. Переконайтеся, що службу ввімкнено та надано всі дозволи</string>
     <string name="installer_service_unavailable">Служби Aurora або не встановлені, або версія неправильна (потрібно &gt; = 1.0.9), встановіть її або змініть встановлювач</string>
     <string name="installer_service_available">Служби Aurora доступні та готові до встановлення.</string>
-    <string name="installer_root_unavailable">Немає кореневого доступу, надайте кореневий доступ або змініть встановлювач.</string>
-    <string name="installer_root_available">Кореневий доступ доступний</string>
+    <string name="installer_root_unavailable">Немає root доступу, надайте root доступ або змініть встановлювач.</string>
+    <string name="installer_root_available">Root доступ доступний</string>
     <string name="filter_review_two">Два</string>
     <string name="filter_review_three">Три</string>
     <string name="filter_review_positive">Позитивні</string>
@@ -340,4 +340,9 @@
     <string name="pref_dialog_to_apply_restart">Цей параметр буде застосовано після перезапуску програми</string>
     <string name="pref_common_extra">Додаткові</string>
     <string name="pref_common_advance">Розширені</string>
+    <string name="toast_aas_token_failed">Не вдалося створити токен AAS</string>
+    <string name="toast_rated_failed">Не вдалося надіслати оцінку</string>
+    <string name="toast_rated_success">Успішно оцінено</string>
+    <string name="toast_page_unavailable">Сторінка огляду недоступна</string>
+    <string name="toast_double_press_to_exit">Клацніть двічі, щоб вийти</string>
 </resources>
