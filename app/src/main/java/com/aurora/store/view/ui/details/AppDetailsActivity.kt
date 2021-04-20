@@ -81,6 +81,8 @@ class AppDetailsActivity : BaseDetailsActivity() {
     private var isNone = false
     private var status = Status.NONE
     private var isInstalled: Boolean = false
+    private var autoDownload: Boolean = false
+    private var downloadOnly: Boolean = false
 
     override fun onConnected() {
 
@@ -97,6 +99,9 @@ class AppDetailsActivity : BaseDetailsActivity() {
     override fun onStart() {
         super.onStart()
         EventBus.getDefault().register(this)
+        if (autoDownload) {
+            purchase()
+        }
     }
 
     override fun onStop() {
@@ -169,13 +174,20 @@ class AppDetailsActivity : BaseDetailsActivity() {
 
         if (intent.scheme != null && (intent.scheme == "market" || intent.scheme == "http" || intent.scheme == "https")) {
             val packageName = intent.data!!.getQueryParameter("id")
+            val packageVersion = intent.data!!.getQueryParameter("v")
             if (packageName.isNullOrEmpty()) {
                 close()
             } else {
                 isExternal = true
                 app = App(packageName)
+                if (!packageVersion.isNullOrEmpty()) {
+                    app.versionCode = packageVersion.toInt()
+                }
                 fetchCompleteApp()
             }
+
+            autoDownload = intent.data!!.getBooleanQueryParameter("download", false)
+            downloadOnly = !intent.data!!.getBooleanQueryParameter("install", false)
         } else {
             val rawApp: String? = intent.getStringExtra(Constants.STRING_EXTRA)
             if (rawApp != null) {
@@ -263,6 +275,9 @@ class AppDetailsActivity : BaseDetailsActivity() {
     }
 
     private fun verifyAndInstall(files: List<Download>) {
+        if (downloadOnly)
+            return
+
         var filesExist = true
 
         files.forEach { download ->
@@ -340,6 +355,10 @@ class AppDetailsActivity : BaseDetailsActivity() {
             attachBottomSheet()
             attachFetch()
             attachActions()
+
+            if (autoDownload) {
+                purchase()
+            }
         }
     }
 
