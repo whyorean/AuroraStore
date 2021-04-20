@@ -1,4 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="details_dev_website">وبگاه</string>
+    <string name="details_dev_website">تارنما</string>
+    <string name="title_settings">ساماندَھی</string>
+    <string name="title_language">زَبان</string>
+    <string name="title_apps_games">بَرنامہ‌ھا و بازی‌هایِ مَن</string>
+    <string name="title_apps">بَرنامہ‌ھا</string>
+    <string name="title_account_manager">کاربَری‌ھا</string>
+    <string name="title_about">دَرباره</string>
+    <string name="tab_for_you">بَرایِ شُما</string>
+    <string name="pref_ui_theme_light">روشَن</string>
+    <string name="pref_ui_theme_dark">تیره</string>
+    <string name="pref_ui_theme_black">سیاه</string>
+    <string name="pref_filter_fdroid_summary">بَرنامہ‌ھای اِف‌دروید را از پِہرِستِ بَرنامہ‌ھا می‌زُدایَد</string>
+    <string name="onboarding_title_welcome">خوش‌آمَدید</string>
+    <string name="filter_review_five">پنج</string>
+    <string name="filter_review_four">چهار</string>
+    <string name="filter_review_three">سہ</string>
+    <string name="filter_review_one">یک</string>
+    <string name="filter_review_two">دو</string>
+    <string name="filter_review_all">ھمہ</string>
+    <string name="details_screenshots">نماگِرِفت‌ها</string>
+    <string name="details_free">رایگان</string>
+    <string name="details_dev_address">نشانی</string>
+    <string name="action_settings">ساماندَهی</string>
+    <string name="action_share">هَمرَسانی</string>
+    <string name="action_search">جُستجو</string>
+    <string name="action_previous">پیشین</string>
+    <string name="action_next">پَسین</string>
+    <string name="action_install">بَرپاسازی</string>
+    <string name="action_home">خانه</string>
+    <string name="action_finish">پایان</string>
+    <string name="action_filter_all">ھمہ</string>
+    <string name="action_download">بارگیری</string>
+    <string name="action_accounts">کاربری‌ها</string>
+    <string name="account_google">گوگل</string>
+    <string name="about_gitlab">گیت‌لَب</string>
+    <string name="about_telegram">تِلِگرام</string>
+    <string name="about_fdroid">اِف‌دروید</string>
+    <string name="about_bitcoin_btc">بیتـکوین</string>
 </resources>

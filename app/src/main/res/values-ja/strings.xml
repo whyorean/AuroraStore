@@ -340,4 +340,9 @@
     <string name="details_no_app_match">アプリが見つかりませんでした</string>
     <string name="action_check">確認</string>
     <string name="dialog_desc_native_split">ネイティブインストーラではバンドル(分割された)アプリをインストールできません。インストーラをセッション、Service、Rootのいずれかに変更してください。</string>
+    <string name="toast_aas_token_failed">AASトークン生成に失敗しました</string>
+    <string name="toast_rated_failed">評価に失敗しました</string>
+    <string name="toast_rated_success">評価に成功しました</string>
+    <string name="toast_page_unavailable">閲覧ページがありません</string>
+    <string name="toast_double_press_to_exit">2回タップして終了</string>
 </resources>
