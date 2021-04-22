@@ -183,7 +183,7 @@
     <string name="menu_terms">Nutzungsbedingungen</string>
     <string name="menu_license">Lizenz</string>
     <string name="menu_disclaimer">Haftungsausschluss</string>
-    <string name="installer_status_user_action">Warten auf Benutzerbestätigung</string>
+    <string name="installer_status_user_action">Warte auf Benutzerbestätigung</string>
     <string name="installer_status_unknown">Unbekannt</string>
     <string name="installer_status_success">Erfolgreich installiert</string>
     <string name="installer_status_failure_storage">Unzureichender Speicherplatz</string>
