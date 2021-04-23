@@ -57,7 +57,7 @@
     <string name="about_bhim_summary">Per UPI spenden</string>
     <string name="about_bhim">BHIM - UPI</string>
     <string name="details_think_this_app">Was denkst du über diese Anwendung\?</string>
-    <string name="details_others_think">Was sagen andere zu dieser Anwendung\?</string>
+    <string name="details_others_think">Sehen Sie, was andere über diese App meinen</string>
     <string name="details_rate_stars_first">Gib zuerst die Bewertung in Sternen an</string>
     <string name="details_privacy">Datenschutz</string>
     <string name="details_permission">Berechtigung</string>
@@ -72,7 +72,7 @@
     <string name="toast_clipboard_copied">In Zwischenablage kopiert</string>
     <string name="toast_apk_whitelisted">Wird nicht mehr ignoriert</string>
     <string name="title_installer">Installationsmethode</string>
-    <string name="title_apps_sale">Reduzierte Anwendungen</string>
+    <string name="title_apps_sale">Beworbene Anwendungen</string>
     <string name="title_apps_library">Anwendungen in der Bibliothek</string>
     <string name="title_apps_games">Meine Anwendungen und Spiele</string>
     <string name="title_apps">Anwendungen</string>
@@ -209,7 +209,7 @@
     <string name="exodus_view_report">Bericht ansehen</string>
     <string name="exodus_view_more">Ansehen</string>
     <string name="exodus_title_alt">Exodus Bericht</string>
-    <string name="exodus_title">Aurora Protect</string>
+    <string name="exodus_title">Aurora-Schutz</string>
     <string name="exodus_substring">Tracker gefunden in</string>
     <string name="exodus_report">Exodus-Bericht</string>
     <string name="exodus_progress">Prüfe auf Tracker …</string>
@@ -220,11 +220,11 @@
     <string name="download_resume_all">Alle fortsetzen</string>
     <string name="download_resume">Fortsetzen</string>
     <string name="download_queued">In der Warteschlange</string>
-    <string name="download_progress">Wird heruntergeladen …</string>
+    <string name="download_progress">Wird heruntergeladen</string>
     <string name="download_paused">Pausiert</string>
     <string name="download_pause_all">Alle pausieren</string>
     <string name="download_pause">Pausieren</string>
-    <string name="download_none">Nichts heruntergeladen</string>
+    <string name="download_none">Keine Downloads</string>
     <string name="download_metadata">Metadaten laden</string>
     <string name="download_force_clear_all">Alle löschen</string>
     <string name="download_failed">Herunterladen fehlgeschlagen</string>
@@ -294,10 +294,10 @@
     <string name="action_ok">Okay</string>
     <string name="action_manual">Manuell herunterladen</string>
     <string name="action_logout">Abmelden</string>
-    <string name="action_logging_in">Anmeldevorgang …</string>
-    <string name="action_installing">Wird installiert …</string>
+    <string name="action_logging_in">Anmeldevorgang</string>
+    <string name="action_installing">Wird installiert</string>
     <string name="action_filter_misc">Verschiedenes</string>
-    <string name="action_filter_downloads">Heruntergeladen</string>
+    <string name="action_filter_downloads">Downloads</string>
     <string name="action_export">Exportieren</string>
     <string name="account_logout">Von Aurora abmelden</string>
     <string name="action_accept">Akzeptieren</string>
@@ -306,8 +306,8 @@
     <string name="about_paypal_summary">Per PayPal spenden</string>
     <string name="tab_top_grossing">Erfolgreichste</string>
     <string name="tab_editor_choice">Auswahl der Redaktion</string>
-    <string name="pref_ui_theme_title">Thema</string>
-    <string name="pref_ui_theme_system">Systemdefiniert</string>
+    <string name="pref_ui_theme_title">Design</string>
+    <string name="pref_ui_theme_system">System</string>
     <string name="pref_ui_theme_darkord">Disskord</string>
     <string name="pref_ui_accent_title">Akzentfarbe</string>
     <string name="pref_install_mode_session">Sitzungsinstallation</string>
@@ -330,7 +330,7 @@
     <string name="pref_ui_quick_exit">Schnelles Beenden</string>
     <string name="pref_ui_layout_tab">Standard-Registerkarte auswählen</string>
     <string name="pref_ui_layout">Aussehen</string>
-    <string name="pref_filter_search_title">Nicht-persistente Suchfilter benutzen</string>
+    <string name="pref_filter_search_title">Nicht beständige Suchfilter benutzen</string>
     <string name="pref_filter_search_summary">Die Suchfilter werden bei jeder Suche zurückgesetzt. Deaktiviere diese Option, um Suchfilter zu speichern</string>
     <string name="pref_common_extra">Extras</string>
     <string name="pref_common_advance">Erweitert</string>
