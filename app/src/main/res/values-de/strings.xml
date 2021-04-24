@@ -57,7 +57,7 @@
     <string name="about_bhim_summary">Per UPI spenden</string>
     <string name="about_bhim">BHIM - UPI</string>
     <string name="details_think_this_app">Was denkst du über diese Anwendung\?</string>
-    <string name="details_others_think">Sehen Sie, was andere über diese App meinen</string>
+    <string name="details_others_think">Siehe, was andere über diese Anwendung meinen</string>
     <string name="details_rate_stars_first">Gib zuerst die Bewertung in Sternen an</string>
     <string name="details_privacy">Datenschutz</string>
     <string name="details_permission">Berechtigung</string>
@@ -86,7 +86,7 @@
     <string name="pref_filter_fdroid_title">F-Droid-Anwendungen filtern</string>
     <string name="pref_filter_fdroid_summary">Entfernt F-Droid-Anwendungen aus den Anwendungslisten</string>
     <string name="pref_dialog_to_apply_restart">Diese Einstellung wird nach dem Neustart der Anwendung angewendet</string>
-    <string name="pref_app_download">Downloads</string>
+    <string name="pref_app_download">Herunterladen-Optionen</string>
     <string name="onboarding_permission_installer_desc">Installation von Anwendungen aus dem Aurora Store erlauben</string>
     <string name="installer_status_failure_incompatible">Anwendung inkompatibel</string>
     <string name="details_reviews_about_app">Mehr Bewertungen</string>
@@ -118,7 +118,7 @@
     <string name="title_installation">Installation</string>
     <string name="title_games">Spiele</string>
     <string name="title_download_playstore">Play Store</string>
-    <string name="title_download_manager">Downloads</string>
+    <string name="title_download_manager">Datenübertragungen</string>
     <string name="title_device">Gerät</string>
     <string name="title_details">Details</string>
     <string name="title_blacklist_manager">Sperrliste verwalten</string>
@@ -148,8 +148,8 @@
     <string name="pref_install_delete_summary">APKs werden standardmäßig gelöscht</string>
     <string name="pref_install_auto_title">APKs nach dem Herunterladen automatisch installieren</string>
     <string name="pref_downloader_external_desc">Den externen Speicher fürs Herunterladen, Exportieren usw. verwenden.</string>
-    <string name="pref_downloader_active_title">Aktive Downloads</string>
-    <string name="pref_downloader_active_summary">Maximale Anzahl von aktiven Downloads</string>
+    <string name="pref_downloader_active_title">Aktive Datenübertragung</string>
+    <string name="pref_downloader_active_summary">Maximale Anzahl von aktiven Datenübertragungen</string>
     <string name="pref_abandon_session_desc">Abgebrochene oder ausstehende Installationssitzungen löschen</string>
     <string name="pref_abandon_session">Löschen der Installationssitzungen erzwingen</string>
     <string name="onboarding_permission_esm_desc">Erforderlich bei Geräten mit Android R+, zusätzlich zum externen Speicherzugriff</string>
@@ -224,7 +224,7 @@
     <string name="download_paused">Pausiert</string>
     <string name="download_pause_all">Alle pausieren</string>
     <string name="download_pause">Pausieren</string>
-    <string name="download_none">Keine Downloads</string>
+    <string name="download_none">Keine heruntergeladene Dateien</string>
     <string name="download_metadata">Metadaten laden</string>
     <string name="download_force_clear_all">Alle löschen</string>
     <string name="download_failed">Herunterladen fehlgeschlagen</string>
@@ -297,7 +297,7 @@
     <string name="action_logging_in">Anmeldevorgang</string>
     <string name="action_installing">Wird installiert</string>
     <string name="action_filter_misc">Verschiedenes</string>
-    <string name="action_filter_downloads">Downloads</string>
+    <string name="action_filter_downloads">Heruntergeladene Dateien</string>
     <string name="action_export">Exportieren</string>
     <string name="account_logout">Von Aurora abmelden</string>
     <string name="action_accept">Akzeptieren</string>
