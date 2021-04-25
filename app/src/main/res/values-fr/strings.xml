@@ -257,7 +257,7 @@
     <string name="device_miui_description">Veuillez désactiver les optimisations MIUI pour autoriser les installations, sinon vous pouvez choisir le programme d’installation racine ou services.</string>
     <string name="device_miui_subtitle">Le programme d’installation de session ne peut pas installer d’applications en raison des optimisations MIUI.</string>
     <string name="pref_ui_theme_darkord">Disskord</string>
-    <string name="pref_ui_accent_title">Accentuation</string>
+    <string name="pref_ui_accent_title">Couleur</string>
     <string name="pref_install_profile_title">Profils d’installation (expérimental)</string>
     <string name="pref_install_profile_summary">Sélectionnez le profil cible pour installer les applications ; fonctionne uniquement avec la méthode d’installation racine</string>
     <string name="pref_install_mode_summary">Sélectionnez le mode d’installation de l’APK</string>
