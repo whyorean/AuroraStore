@@ -132,9 +132,9 @@
     <string name="pref_filter_google_summary">Remove todas as aplicações Google dos resultados de pesquisa e categorias</string>
     <string name="pref_filter_fdroid_summary">Remove aplicações instaladas via F-Droid das listas de aplicações</string>
     <string name="pref_filter_fdroid_title">Filtrar aplicações F-Droid</string>
-    <string name="pref_downloader_external_desc">O armazenamento externo será utilizado para transferências, exportações, etc.</string>
+    <string name="pref_downloader_external_desc">O armazenamento externo será usado para transferências, exportações, etc.</string>
     <string name="pref_downloader_external">Armazenamento externo do utilizador</string>
-    <string name="pref_downloader_active_title">Transferência ativa</string>
+    <string name="pref_downloader_active_title">Transferências ativas</string>
     <string name="pref_downloader_active_summary">Número máximo de transferências ativas</string>
     <string name="pref_dialog_to_apply_restart">Esta definição será aplicada após reiniciar a app</string>
     <string name="pref_common_extra">Extras</string>
@@ -144,7 +144,7 @@
     <string name="pref_abandon_session">Forçar limpeza de sessões de instalação</string>
     <string name="onboarding_permission_installer">Permissão do Instalador</string>
     <string name="onboarding_permission_esm">Gestor de Armazenamento Externo</string>
-    <string name="onboarding_permission_esa_desc">Para guardar as transferências (APKs &amp; OBBs) exporte &amp; importe as definições do dispositivo no armazenamento externo.</string>
+    <string name="onboarding_permission_esa_desc">Para guardar as transferências (APKs &amp; OBBs) exporte &amp; importe as definições do dispositivo recorrendo ao armazenamento externo.</string>
     <string name="onboarding_permission_esa">Acesso a Armazenamento Externo</string>
     <string name="onboarding_welcome_select">Como está\?</string>
     <string name="onboarding_tos_error">Tem de confirmar a leitura das Condições de Serviço.</string>
