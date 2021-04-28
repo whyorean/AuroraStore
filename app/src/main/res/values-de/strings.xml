@@ -231,7 +231,7 @@
     <string name="download_eta_calculating">Berechnen</string>
     <string name="download_deleted">Gelöscht</string>
     <string name="download_completed">Heruntergeladen</string>
-    <string name="download_clear_completed">Abgeschlossene löschen</string>
+    <string name="download_clear_completed">Fertiggestellte löschen</string>
     <string name="download_canceled">Storniert</string>
     <string name="download_cancel_all">Alles stornieren</string>
     <string name="details_screenshots">Bildschirmfotos</string>
