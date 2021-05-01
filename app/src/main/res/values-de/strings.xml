@@ -15,7 +15,7 @@
     <string name="action_finish">Fertig</string>
     <string name="action_filter_rating">Bewertungen</string>
     <string name="action_filter_paid_apps">Kostenpflichtig</string>
-    <string name="action_filter_apps_with_ads">Anwendung mit Werbung</string>
+    <string name="action_filter_apps_with_ads">Anwendungen mit Werbung</string>
     <string name="action_filter_all">Alle</string>
     <string name="action_filter">Filter</string>
     <string name="action_enable">Aktivieren</string>
@@ -70,7 +70,7 @@
     <string name="details_files">Dateien</string>
     <string name="title_language">Sprache</string>
     <string name="toast_clipboard_copied">In Zwischenablage kopiert</string>
-    <string name="toast_apk_whitelisted">Wird nicht mehr ignoriert</string>
+    <string name="toast_apk_whitelisted">Auf der Ausnahmeliste</string>
     <string name="title_installer">Installationsmethode</string>
     <string name="title_apps_sale">Beworbene Anwendungen</string>
     <string name="title_apps_library">Anwendungen in der Bibliothek</string>
@@ -79,7 +79,7 @@
     <string name="purchase_not_found">Anwendung nicht gefunden</string>
     <string name="purchase_unsupported">Anwendung wird nicht unterstützt</string>
     <string name="purchase_invalid">Anwendung nicht gekauft</string>
-    <string name="pref_install_profile_summary">Wähle das Ziel-Profil aus, um Anwendungen zu installieren. Dies funktioniert nur mit der Root-Installationsmethode</string>
+    <string name="pref_install_profile_summary">Wähle das Zielprofil aus, um Anwendungen zu installieren. Dies funktioniert nur mit der Root-Installationsmethode</string>
     <string name="pref_install_auto_summary">Anwendungen werden sofort nach dem Herunterladen installiert</string>
     <string name="pref_filter_google_title">Google-Anwendungen filtern</string>
     <string name="pref_filter_google_summary">Entfernt alle Google-Anwendungen aus Suchergebnissen und den Kategorien</string>
@@ -91,7 +91,7 @@
     <string name="installer_status_failure_incompatible">Anwendung inkompatibel</string>
     <string name="details_reviews_about_app">Mehr Bewertungen</string>
     <string name="details_rate_this_app">Diese Anwendung bewerten</string>
-    <string name="details_no_whitelist">Keine Anwendungen auf der weißen Liste</string>
+    <string name="details_no_whitelist">Keine Anwendungen auf der Ausnahmeliste</string>
     <string name="details_no_app">Keine Anwendungen verfügbar</string>
     <string name="details_more_about_app">Mehr über diese Anwendung</string>
     <string name="details_in_app_purchase">In-Anwendung-Käufe</string>
@@ -171,7 +171,7 @@
     <string name="notification_channel_general">Allgemeine Benachrichtigung</string>
     <string name="notification_channel_alert">Kurznachricht</string>
     <string name="list_update_all_txt_one">Aktualisierung verfügbar</string>
-    <string name="dialog_desc_self_update">Möchtenst du jetzt aktualisieren\?</string>
+    <string name="dialog_desc_self_update">Möchtest du jetzt aktualisieren\?</string>
     <string name="dialog_title_self_update">Neue Aktualisierung verfügbar</string>
     <string name="device_miui_extra">Optional kannst du das native Installationsprogramm wählen, aber dann kannst du keine Bundle (Split)-APKs installieren. Die Auswahl liegt also bei dir.</string>
     <string name="device_miui_description">Bitte deaktiviere die MIUI-Optimierungen, um Installationen zu ermöglichen, andernfalls kannst du die Root- oder Dienste-Installationsmethode wählen.</string>
@@ -196,8 +196,8 @@
     <string name="installer_service_misconfigured">Aurora-Dienste nicht konfiguriert. Stelle sicher, dass diese aktiviert sind und alle Berechtigungen erteilt wurden</string>
     <string name="installer_service_unavailable">Aurora-Dienste sind entweder nicht installiert oder veraltet (erforderlich &gt;= 1.0.9), bitte installiere diese oder wechsel die Installationsart</string>
     <string name="installer_service_available">Aurora-Dienste sind verfügbar und bereit zur Installation.</string>
-    <string name="installer_root_unavailable">Keine Root Berechtigung! Bitte Root Berechtigung gewähren oder andere Installationsmethode wählen.</string>
-    <string name="installer_root_available">Root Zugriff verfügbar</string>
+    <string name="installer_root_unavailable">Keine Root-Berechtigung! Bitte fehlende Berechtigung gewähren oder andere Installationsmethode wählen.</string>
+    <string name="installer_root_available">Root-Zugriff verfügbar</string>
     <string name="filter_review_two">Zwei</string>
     <string name="filter_review_three">Drei</string>
     <string name="filter_review_positive">Positiv</string>
@@ -256,7 +256,7 @@
     <string name="details_beta_subscribed">Du bist ein Beta-Tester</string>
     <string name="details_beta">Beta Programm</string>
     <string name="action_wishlist_add">Zur Wunschliste hinzufügen</string>
-    <string name="action_whitelist">Weiße Liste</string>
+    <string name="action_whitelist">Ausnahmeliste</string>
     <string name="action_wait">Warten</string>
     <string name="action_updates">Aktualisierungen</string>
     <string name="action_update_all">Alle aktualisieren</string>
