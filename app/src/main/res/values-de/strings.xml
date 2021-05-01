@@ -79,7 +79,7 @@
     <string name="purchase_not_found">Anwendung nicht gefunden</string>
     <string name="purchase_unsupported">Anwendung wird nicht unterstützt</string>
     <string name="purchase_invalid">Anwendung nicht gekauft</string>
-    <string name="pref_install_profile_summary">Wähle das Ziel-Profil aus, um Anwendungen zu installieren. Dies funktioniert nur mit der Wurzel-Installationsmethode</string>
+    <string name="pref_install_profile_summary">Wähle das Ziel-Profil aus, um Anwendungen zu installieren. Dies funktioniert nur mit der Root-Installationsmethode</string>
     <string name="pref_install_auto_summary">Anwendungen werden sofort nach dem Herunterladen installiert</string>
     <string name="pref_filter_google_title">Google-Anwendungen filtern</string>
     <string name="pref_filter_google_summary">Entfernt alle Google-Anwendungen aus Suchergebnissen und den Kategorien</string>
@@ -174,7 +174,7 @@
     <string name="dialog_desc_self_update">Möchtenst du jetzt aktualisieren\?</string>
     <string name="dialog_title_self_update">Neue Aktualisierung verfügbar</string>
     <string name="device_miui_extra">Optional kannst du das native Installationsprogramm wählen, aber dann kannst du keine Bundle (Split)-APKs installieren. Die Auswahl liegt also bei dir.</string>
-    <string name="device_miui_description">Bitte deaktiviere die MIUI-Optimierungen, um Installationen zu ermöglichen, andernfalls kannst du die Wurzel- oder Dienste-Installationsmethode wählen.</string>
+    <string name="device_miui_description">Bitte deaktiviere die MIUI-Optimierungen, um Installationen zu ermöglichen, andernfalls kannst du die Root- oder Dienste-Installationsmethode wählen.</string>
     <string name="device_miui_subtitle">Das Sitzungsinstallation kann aufgrund von MIUI-Optimierungen keine Anwendungen installieren.</string>
     <string name="device_miui_title">MIUI erkannt!</string>
     <string name="device_huawei_description">Wir empfehlen dir, die Gerätevortäuschung-Option zu verwenden, wenn du ein aktuelles Huawei-Gerät besitzst. Möchtest du das Vortäuschen jetzt anwenden\?</string>
@@ -196,8 +196,8 @@
     <string name="installer_service_misconfigured">Aurora-Dienste nicht konfiguriert. Stelle sicher, dass diese aktiviert sind und alle Berechtigungen erteilt wurden</string>
     <string name="installer_service_unavailable">Aurora-Dienste sind entweder nicht installiert oder veraltet (erforderlich &gt;= 1.0.9), bitte installiere diese oder wechsel die Installationsart</string>
     <string name="installer_service_available">Aurora-Dienste sind verfügbar und bereit zur Installation.</string>
-    <string name="installer_root_unavailable">Keine Wurzel-Berechtigung! Bitte fehlende Berechtigung gewähren oder andere Installationsmethode wählen.</string>
-    <string name="installer_root_available">Wurzel-Zugriff verfügbar</string>
+    <string name="installer_root_unavailable">Keine Root Berechtigung! Bitte Root Berechtigung gewähren oder andere Installationsmethode wählen.</string>
+    <string name="installer_root_available">Root Zugriff verfügbar</string>
     <string name="filter_review_two">Zwei</string>
     <string name="filter_review_three">Drei</string>
     <string name="filter_review_positive">Positiv</string>
@@ -308,10 +308,10 @@
     <string name="tab_editor_choice">Auswahl der Redaktion</string>
     <string name="pref_ui_theme_title">Design</string>
     <string name="pref_ui_theme_system">System</string>
-    <string name="pref_ui_theme_darkord">Disskord</string>
+    <string name="pref_ui_theme_darkord">Discord</string>
     <string name="pref_ui_accent_title">Akzentfarbe</string>
     <string name="pref_install_mode_session">Sitzungsinstallation</string>
-    <string name="pref_install_mode_root">Wurzel-Installation</string>
+    <string name="pref_install_mode_root">Root-Installationsmethode</string>
     <string name="pref_install_mode_native">Native Installation</string>
     <string name="pref_downloader_external">Externer Speicher</string>
     <string name="onboarding_permission_installer">Berechtigung des Installationsprogramms</string>
@@ -339,7 +339,7 @@
     <string name="toast_manual_unavailable">Der angeforderte Versionscode ist nicht verfügbar.</string>
     <string name="title_manual_download">Manuell herunterladen</string>
     <string name="action_check">Überprüfen</string>
-    <string name="dialog_desc_native_split">Bundle (Split)-APKs können nicht mit dem nativen Installer installiert werden. Ändere die Installationsmethode zu Sitzung, Dienste oder Wurzel.</string>
+    <string name="dialog_desc_native_split">Bundle (Split)-APKs können nicht mit dem nativen Installer installiert werden. Ändere die Installationsmethode zu Sitzung, Dienste oder Root.</string>
     <string name="toast_double_press_to_exit">Nochmal drücken zum Beenden</string>
     <string name="toast_page_unavailable">Seite nicht verfügbar</string>
     <string name="toast_rated_success">Erfolgreich bewertet</string>
