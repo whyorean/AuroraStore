@@ -265,7 +265,7 @@
     <string name="action_post">Veröffentlichen</string>
     <string name="action_next">Weiter</string>
     <string name="action_join">Beitreten</string>
-    <string name="action_get_local_apk">App-Paket speichern</string>
+    <string name="action_get_local_apk">Anwendungspaket speichern</string>
     <string name="action_download">Herunterladen</string>
     <string name="action_ask">Fragen</string>
     <string name="about_xda_summary">Besuche den Aurora Store XDA-Thread für Support und Verbesserungsvorschläge.</string>
@@ -308,7 +308,7 @@
     <string name="tab_editor_choice">Auswahl der Redaktion</string>
     <string name="pref_ui_theme_title">Design</string>
     <string name="pref_ui_theme_system">System</string>
-    <string name="pref_ui_theme_darkord">Discord</string>
+    <string name="pref_ui_theme_darkord">Disskord</string>
     <string name="pref_ui_accent_title">Akzentfarbe</string>
     <string name="pref_install_mode_session">Sitzungsinstallation</string>
     <string name="pref_install_mode_root">Root-Installationsmethode</string>
