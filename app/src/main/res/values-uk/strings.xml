@@ -41,7 +41,7 @@
     <string name="details_rate_stars_first">Вкажіть оцінку зірками</string>
     <string name="details_paid">Платний</string>
     <string name="details_privacy">Приватність</string>
-    <string name="details_permission">Дозвіл</string>
+    <string name="details_permission">Дозволи</string>
     <string name="details_others_think">Перегляньте, що інші думають про цей застосунок</string>
     <string name="details_no_whitelist">Немає додатків в білому списку</string>
     <string name="details_no_updates">Немає оновлень</string>
@@ -55,7 +55,7 @@
     <string name="details_more_about_app">Докладніше про застосунок</string>
     <string name="details_in_app_purchase">Покупки в застосунку</string>
     <string name="details_gsf_dependent">Потребує GSF</string>
-    <string name="details_free">Безплатно</string>
+    <string name="details_free">Безкоштовно</string>
     <string name="details_files">Файли</string>
     <string name="details_dev_reply">Відповідь розробника</string>
     <string name="details_dev_profile">Профіль розробника</string>
