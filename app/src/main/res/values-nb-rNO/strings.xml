@@ -274,4 +274,5 @@
     <string name="details_in_app_purchase">Kjøp i appen</string>
     <string name="details_gsf_dependent">Krever GSF</string>
     <string name="details_changelog_unavailable">Endringslogg ikke inkludert</string>
+    <string name="action_check">Sjekk</string>
 </resources>
