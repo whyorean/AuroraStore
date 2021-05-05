@@ -74,7 +74,7 @@
     <string name="title_installer">Installationsmethode</string>
     <string name="title_apps_sale">Beworbene Anwendungen</string>
     <string name="title_apps_library">Anwendungen in der Bibliothek</string>
-    <string name="title_apps_games">Meine Apps und Spiele</string>
+    <string name="title_apps_games">Meine Anwendungen und Spiele</string>
     <string name="title_apps">Anwendungen</string>
     <string name="purchase_not_found">Anwendung nicht gefunden</string>
     <string name="purchase_unsupported">Anwendung wird nicht unterstützt</string>
@@ -134,7 +134,7 @@
     <string name="purchase_session_expired">Die Sitzung ist abgelaufen, melde dich erneut an, um eine neue Sitzung zu starten.</string>
     <string name="purchase_no_file">Konnte keine Dateien abrufen</string>
     <string name="purchase_failed">Herunterladen fehlgeschlagen</string>
-    <string name="pref_ui_title">Aussehen</string>
+    <string name="pref_ui_title">Anpassung</string>
     <string name="pref_ui_theme_light">Hell</string>
     <string name="pref_ui_theme_dark_x">Dunkel X</string>
     <string name="pref_ui_theme_dark">Dunkel</string>
@@ -148,8 +148,8 @@
     <string name="pref_install_delete_summary">APKs werden standardmäßig gelöscht</string>
     <string name="pref_install_auto_title">APKs nach dem Herunterladen automatisch installieren</string>
     <string name="pref_downloader_external_desc">Den externen Speicher fürs Herunterladen, Exportieren usw. verwenden.</string>
-    <string name="pref_downloader_active_title">Aktive Downloads</string>
-    <string name="pref_downloader_active_summary">Maximale Anzahl von gleichzeitigen Downloads</string>
+    <string name="pref_downloader_active_title">Aktive Datenübertragung</string>
+    <string name="pref_downloader_active_summary">Maximale Anzahl von gleichzeitigen Datenübertagungen</string>
     <string name="pref_abandon_session_desc">Abgebrochene oder ausstehende Installationssitzungen löschen</string>
     <string name="pref_abandon_session">Löschen der Installationssitzungen erzwingen</string>
     <string name="onboarding_permission_esm_desc">Erforderlich bei Geräten mit Android R+, zusätzlich zum externen Speicherzugriff</string>
@@ -329,7 +329,7 @@
     <string name="pref_ui_quick_exit_desc">Beenden bei einmaligem Zurück-Klick</string>
     <string name="pref_ui_quick_exit">Schnelles Beenden</string>
     <string name="pref_ui_layout_tab">Standard-Registerkarte auswählen</string>
-    <string name="pref_ui_layout">Layout</string>
+    <string name="pref_ui_layout">Seitengestaltung</string>
     <string name="pref_filter_search_title">Nicht beständige Suchfilter benutzen</string>
     <string name="pref_filter_search_summary">Die Suchfilter werden bei jeder Suche zurückgesetzt. Deaktiviere diese Option, um Suchfilter zu speichern</string>
     <string name="pref_common_extra">Extras</string>
