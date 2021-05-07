@@ -296,7 +296,7 @@
     <string name="download_metadata">Pobieranie metadanych</string>
     <string name="download_force_clear_all">Wyczyść wszystkie</string>
     <string name="download_failed">Pobieranie nieudane</string>
-    <string name="download_eta_calculating">Obliczenie</string>
+    <string name="download_eta_calculating">Obliczanie</string>
     <string name="download_deleted">Usunięto</string>
     <string name="download_completed">Pobrano</string>
     <string name="download_clear_completed">Wyczyść zakończone</string>
