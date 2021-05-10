@@ -97,7 +97,7 @@
     <string name="details_changelog">Endringslogg</string>
     <string name="details_beta_subscribed">Du er en betatester</string>
     <string name="details_beta">Betaprogram</string>
-    <string name="action_whitelist">Hvitlist</string>
+    <string name="action_whitelist">Hviteliste</string>
     <string name="action_wishlist_add">Legg til på hvitliste</string>
     <string name="action_updates">Oppgraderinger</string>
     <string name="action_update">Oppgrader</string>
@@ -275,4 +275,5 @@
     <string name="details_gsf_dependent">Krever GSF</string>
     <string name="details_changelog_unavailable">Endringslogg ikke inkludert</string>
     <string name="action_check">Sjekk</string>
+    <string name="about_libera_summary">Bli patron på Liberapay</string>
 </resources>
