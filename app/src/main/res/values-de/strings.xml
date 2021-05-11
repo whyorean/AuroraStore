@@ -15,7 +15,7 @@
     <string name="action_finish">Fertig</string>
     <string name="action_filter_rating">Bewertungen</string>
     <string name="action_filter_paid_apps">Kostenpflichtig</string>
-    <string name="action_filter_apps_with_ads">Apps mit Werbung</string>
+    <string name="action_filter_apps_with_ads">Anwendungen mit Werbung</string>
     <string name="action_filter_all">Alle</string>
     <string name="action_filter">Filter</string>
     <string name="action_enable">Aktivieren</string>
