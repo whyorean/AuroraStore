@@ -175,7 +175,7 @@
     <string name="dialog_title_self_update">Neue Aktualisierung verfügbar</string>
     <string name="device_miui_extra">Optional kannst du das native Installationsprogramm wählen, aber dann kannst du keine Bundle (Split)-APKs installieren. Die Auswahl liegt also bei dir.</string>
     <string name="device_miui_description">Bitte deaktiviere die MIUI-Optimierungen, um Installationen zu ermöglichen, andernfalls kannst du die Root- oder Dienste-Installationsmethode wählen.</string>
-    <string name="device_miui_subtitle">Das Sitzungsinstallation kann aufgrund von MIUI-Optimierungen keine Apps installieren.</string>
+    <string name="device_miui_subtitle">Das Sitzungsinstallation kann aufgrund von MIUI-Optimierungen keine Anwendungen installieren.</string>
     <string name="device_miui_title">MIUI erkannt!</string>
     <string name="device_huawei_description">Wir empfehlen dir, die Gerätevortäuschung zu verwenden, wenn du ein aktuelles Huawei-Gerät hast. Möchtest du das Vortäuschen jetzt anwenden\?</string>
     <string name="device_huawei_subtitle">Du scheinst ein Huawei-Gerät zu verwenden. Aufgrund der jüngsten Einschränkungen durch Google kannst du dich möglicherweise nicht anmelden.</string>
