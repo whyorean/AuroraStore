@@ -91,7 +91,7 @@
     <string name="installer_status_failure_incompatible">App inkompatibel</string>
     <string name="details_reviews_about_app">Mehr Bewertungen</string>
     <string name="details_rate_this_app">Diese App bewerten</string>
-    <string name="details_no_whitelist">Keine Apps auf der Ausnahmeliste</string>
+    <string name="details_no_whitelist">Keine Anwendungen auf der Ausnahmeliste</string>
     <string name="details_no_app">Keine Anwendungen verfügbar</string>
     <string name="details_more_about_app">Mehr über die App</string>
     <string name="details_in_app_purchase">In-App-Kauf</string>
