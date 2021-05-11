@@ -323,7 +323,7 @@
     <string name="pref_insecure_anonymous_title">Unsichere anonyme Sitzung</string>
     <string name="pref_insecure_anonymous_summary">GSF-ID lokal auf dem Gerät generieren</string>
     <string name="pref_ui_similar_apps_desc">Ähnliche und verwandte Apps auf der Detailseite anzeigen</string>
-    <string name="pref_ui_similar_apps">Ähnliche und verwandte Apps</string>
+    <string name="pref_ui_similar_apps">Ähnliche und verwandte Anwendungen</string>
     <string name="pref_ui_no_for_you_desc">„Für dich“-Seiten auf dem Startbildschirm anzeigen</string>
     <string name="pref_ui_no_for_you">„Für dich“-Seiten</string>
     <string name="pref_ui_quick_exit_desc">Beenden der App bei einmaliger Zurück-Aktion</string>
