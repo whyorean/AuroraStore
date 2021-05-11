@@ -81,7 +81,7 @@
     <string name="purchase_invalid">App nicht gekauft</string>
     <string name="pref_install_profile_summary">Wähle den Zielprofil aus, um Apps zu installieren. Dies funktioniert nur mit der Root-Installationsmethode</string>
     <string name="pref_install_auto_summary">Apps werden sofort nach dem Herunterladen installiert</string>
-    <string name="pref_filter_google_title">Google-Apps filtern</string>
+    <string name="pref_filter_google_title">Google-Anwendungen filtern</string>
     <string name="pref_filter_google_summary">Entfernt alle Google-Anwendungen aus Suchergebnissen und den Kategorien</string>
     <string name="pref_filter_fdroid_title">F-Droid-Anwendungen filtern</string>
     <string name="pref_filter_fdroid_summary">Entfernt F-Droid-Anwendungen aus den App-Listen</string>
