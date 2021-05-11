@@ -87,7 +87,7 @@
     <string name="pref_filter_fdroid_summary">Entfernt F-Droid-Apps aus den App-Listen</string>
     <string name="pref_dialog_to_apply_restart">Diese Einstellung wird nach dem Neustart der App angewendet</string>
     <string name="pref_app_download">Herunterladen</string>
-    <string name="onboarding_permission_installer_desc">Installation von Apps aus dem Aurora Store erlauben</string>
+    <string name="onboarding_permission_installer_desc">Installation von Anwendungen aus dem Aurora Store erlauben</string>
     <string name="installer_status_failure_incompatible">App inkompatibel</string>
     <string name="details_reviews_about_app">Mehr Bewertungen</string>
     <string name="details_rate_this_app">Diese App bewerten</string>
