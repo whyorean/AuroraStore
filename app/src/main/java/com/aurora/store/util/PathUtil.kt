@@ -36,7 +36,7 @@ object PathUtil {
             if (context.isExternalStorageEnable())
                 getExternalPath()
             else
-                context.getInternalBaseDirectory() + "/Downloads"
+                context.getInternalBaseDirectory()
         } else {
             getExternalPath()
         }
