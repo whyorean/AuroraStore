@@ -26,12 +26,12 @@ import com.airbnb.epoxy.CallbackProp
 import com.airbnb.epoxy.ModelProp
 import com.airbnb.epoxy.ModelView
 import com.airbnb.epoxy.OnViewRecycled
-import com.aurora.gplayapi.data.models.Artwork
-import com.aurora.store.R
-import com.aurora.store.databinding.ViewScreenshotBinding
 import com.aurora.extensions.clear
 import com.aurora.extensions.load
 import com.aurora.extensions.px
+import com.aurora.gplayapi.data.models.Artwork
+import com.aurora.store.R
+import com.aurora.store.databinding.ViewScreenshotBinding
 import com.aurora.store.view.epoxy.views.BaseView
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
@@ -79,7 +79,11 @@ class ScreenshotView : RelativeLayout {
     @ModelProp
     fun artwork(artwork: Artwork) {
         normalizeSize(artwork)
-        B.img.load("${artwork.url}=rw-w480-v1-e15", DrawableTransitionOptions.withCrossFade()) {
+        val imgUrl = if (artwork.url.endsWith(".webp"))
+            artwork.url
+        else
+            "${artwork.url}=rw-w480-v1-e15"
+        B.img.load(imgUrl, DrawableTransitionOptions.withCrossFade()) {
             placeholder(R.drawable.bg_rounded)
             transform(RoundedCorners(8.px.toInt()))
         }

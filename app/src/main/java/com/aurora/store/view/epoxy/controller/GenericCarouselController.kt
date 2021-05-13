@@ -44,7 +44,7 @@ open class GenericCarouselController(private val callbacks: Callbacks) :
     open fun applyFilter(streamBundle: StreamCluster): Boolean {
         return streamBundle.clusterTitle.isNotBlank()  //Filter noisy cluster
                 && streamBundle.clusterAppList.isNotEmpty() //Filter empty clusters
-                && streamBundle.clusterAppList.count() > 1 //Filter clusters with single apps (mostly promotions)
+                && streamBundle.clusterAppList.count() >= 1 //Filter clusters with single apps (mostly promotions)
     }
 
     override fun buildModels(streamBundle: StreamBundle?) {

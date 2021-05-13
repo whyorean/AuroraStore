@@ -144,6 +144,7 @@ class AppDetailsActivity : BaseDetailsActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         B = ActivityDetailsBinding.inflate(layoutInflater)
+        authData = AuthProvider.with(this).getAuthData()
         setContentView(B.root)
 
         onNewIntent(intent)
@@ -174,7 +175,9 @@ class AppDetailsActivity : BaseDetailsActivity() {
             } else {
                 isExternal = true
                 app = App(packageName)
-                fetchCompleteApp()
+                if (app.inPlayStore) {
+                    fetchCompleteApp()
+                }
             }
         } else {
             val rawApp: String? = intent.getStringExtra(Constants.STRING_EXTRA)
@@ -183,7 +186,11 @@ class AppDetailsActivity : BaseDetailsActivity() {
                 isInstalled = PackageUtil.isInstalled(this, app.packageName)
 
                 inflatePartialApp()
-                fetchCompleteApp()
+                if (app.inPlayStore) {
+                    fetchCompleteApp()
+                } else {
+                    inflateExtraDetails(app)
+                }
             } else {
                 close()
             }
@@ -317,7 +324,6 @@ class AppDetailsActivity : BaseDetailsActivity() {
 
     private fun fetchCompleteApp() {
         task {
-            authData = AuthProvider.with(this).getAuthData()
             return@task AppDetailsHelper(authData)
                 .using(HttpClient.getPreferredClient())
                 .getAppByPackageName(app.packageName)
@@ -379,23 +385,30 @@ class AppDetailsActivity : BaseDetailsActivity() {
         app?.let {
             B.viewFlipper.displayedChild = 1
             inflateAppDescription(B.layoutDetailDescription, app)
-            inflateAppRatingAndReviews(B.layoutDetailsReview, app)
+
             inflateAppDevInfo(B.layoutDetailsDev, app)
             inflateAppPrivacy(B.layoutDetailsPrivacy, app)
             inflateAppPermission(B.layoutDetailsPermissions, app)
 
-            if (!authData.isAnonymous) {
-                app.testingProgram?.let {
-                    if (it.isAvailable && it.isSubscribed) {
-                        B.layoutDetailsApp.txtLine1.text = it.displayName
+            if (app.inPlayStore) {
+                inflateAppRatingAndReviews(B.layoutDetailsReview, app)
+                if (!authData.isAnonymous) {
+                    app.testingProgram?.let {
+                        if (it.isAvailable && it.isSubscribed) {
+                            B.layoutDetailsApp.txtLine1.text = it.displayName
+                        }
                     }
+
+                    inflateBetaSubscription(B.layoutDetailsBeta, app)
                 }
 
-                inflateBetaSubscription(B.layoutDetailsBeta, app)
-            }
-
-            if (Preferences.getBoolean(this, Preferences.PREFERENCE_SIMILAR)) {
-                inflateAppStream(B.epoxyRecyclerStream, app)
+                if (Preferences.getBoolean(this, Preferences.PREFERENCE_SIMILAR)) {
+                    inflateAppStream(B.epoxyRecyclerStream, app)
+                }
+            } else {
+                B.layoutDetailsReview.root.hide()
+                B.layoutDetailsBeta.root.hide()
+                B.epoxyRecyclerStream.hide()
             }
         }
     }
@@ -425,13 +438,16 @@ class AppDetailsActivity : BaseDetailsActivity() {
         updateActionState(State.PROGRESS)
 
         task {
-            val authData = AuthProvider
-                .with(this)
-                .getAuthData()
-
-            PurchaseHelper(authData)
-                .using(HttpClient.getPreferredClient())
-                .purchase(app.packageName, app.versionCode, app.offerType)
+            if (app.inPlayStore) {
+                PurchaseHelper(authData)
+                    .using(HttpClient.getPreferredClient())
+                    .purchase(app.packageName, app.versionCode, app.offerType)
+            } else {
+                val metaFile = app.fileList[0]
+                val fileList: MutableList<File> = mutableListOf()
+                fileList.add(metaFile)
+                fileList
+            }
         } successUi { files ->
             if (files.isNotEmpty()) {
                 var hasOBB = false
