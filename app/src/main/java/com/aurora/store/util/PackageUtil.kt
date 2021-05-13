@@ -130,10 +130,18 @@ object PackageUtil {
             Preferences.PREFERENCE_FILTER_FDROID
         )
 
-        packageInfoList = packageInfoList
-            .filter {
-                it.packageName != null && it.applicationInfo != null && it.applicationInfo.enabled
-            }
+        val isExtendedUpdateEnabled = Preferences.getBoolean(
+            context,
+            Preferences.PREFERENCE_UPDATES_EXTENDED
+        )
+
+        packageInfoList = packageInfoList.filter {
+            it.packageName != null && it.applicationInfo != null
+        }
+
+        if (!isExtendedUpdateEnabled) {
+            packageInfoList = packageInfoList.filter { it.applicationInfo.enabled }
+        }
 
         if (isFdroidFilterEnabled) {
             packageInfoList = packageInfoList
@@ -163,11 +171,7 @@ object PackageUtil {
     }
 
     private fun getAllFlags(): Int {
-        var flags = (PackageManager.GET_META_DATA
-                or PackageManager.GET_ACTIVITIES
-                or PackageManager.GET_SERVICES
-                or PackageManager.GET_PROVIDERS
-                or PackageManager.GET_RECEIVERS)
+        var flags = (PackageManager.GET_META_DATA)
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
             flags = flags or PackageManager.GET_DISABLED_COMPONENTS
             flags = flags or PackageManager.GET_UNINSTALLED_PACKAGES

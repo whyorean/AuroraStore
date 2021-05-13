@@ -47,6 +47,7 @@ import com.aurora.store.util.Preferences.PREFERENCE_QUICK_EXIT
 import com.aurora.store.util.Preferences.PREFERENCE_SIMILAR
 import com.aurora.store.util.Preferences.PREFERENCE_THEME_ACCENT
 import com.aurora.store.util.Preferences.PREFERENCE_THEME_TYPE
+import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_EXTENDED
 import com.aurora.store.util.save
 import com.aurora.store.view.ui.commons.BaseActivity
 import com.aurora.store.view.ui.splash.SplashActivity
@@ -178,6 +179,9 @@ class OnboardingActivity : BaseActivity() {
         /*Installer*/
         save(PREFERENCE_AUTO_DELETE, true)
         save(PREFERENCE_INSTALLER_ID, 0)
+
+        /*Updates*/
+        save(PREFERENCE_UPDATES_EXTENDED, false)
     }
 
     internal class PagerAdapter(fragmentActivity: FragmentActivity) :

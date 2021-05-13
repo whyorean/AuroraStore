@@ -57,4 +57,12 @@
         app:key="pref_network"
         app:layout="@layout/item_preference"
         app:title="@string/pref_network_title" />
+
+    <Preference
+        android:fragment="com.aurora.store.view.ui.preferences.UpdatesPreference"
+        app:icon="@drawable/ic_updates"
+        app:iconSpaceReserved="false"
+        app:key="pref_network"
+        app:layout="@layout/item_preference"
+        app:title="@string/title_updates" />
 </PreferenceScreen>

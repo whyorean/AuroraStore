@@ -56,6 +56,8 @@ object Preferences {
 
     const val PREFERENCE_INSECURE_ANONYMOUS = "PREFERENCE_INSECURE_ANONYMOUS"
 
+    const val PREFERENCE_UPDATES_EXTENDED = "PREFERENCE_UPDATES_EXTENDED"
+
 
     fun getPrefs(context: Context): SharedPreferences {
         return PreferenceManager.getDefaultSharedPreferences(context)

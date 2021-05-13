@@ -69,6 +69,8 @@ class UpdatesViewModel(application: Application) : BaseAppsViewModel(application
                 false
             }
         }.sortedBy { it.displayName.toLowerCase(Locale.getDefault()) }.also { apps ->
+            updateFileMap.clear()
+
             apps.forEach {
                 updateFileMap[it.id] = UpdateFile(it)
             }

@@ -307,6 +307,8 @@
     <string name="pref_ui_no_promotional_desc">"Display apps promoted by us on home screen"</string>
     <string name="pref_ui_similar_apps">"Similar and related apps"</string>
     <string name="pref_ui_similar_apps_desc">"Display similar and related clusters on app details page"</string>
+    <string name="pref_updates_extended">Extended updates</string>
+    <string name="pref_updates_extended_desc">Enable to check updates for disabled apps</string>
     <string name="purchase_failed">"Download Failed"</string>
     <string name="purchase_invalid">"App not purchased"</string>
     <string name="purchase_unsupported">"App not supported"</string>
