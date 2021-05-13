@@ -364,4 +364,6 @@
     <string name="toast_rated_success">Rated successfully</string>
     <string name="toast_rated_failed">Failed to submit rating</string>
     <string name="toast_aas_token_failed">Failed to generate AAS Token</string>
+    <string name="toast_export_success">Device config exported successfully</string>
+    <string name="toast_export_failed">Failed to export device config</string>
 </resources>

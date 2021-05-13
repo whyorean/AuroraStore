@@ -20,6 +20,7 @@
 package com.aurora.store.view.ui.all
 
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
@@ -28,7 +29,6 @@ import com.aurora.gplayapi.data.models.AuthData
 import com.aurora.store.R
 import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.databinding.ActivityGenericPagerBinding
-import com.aurora.extensions.close
 import com.aurora.store.view.ui.commons.BaseActivity
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
@@ -59,10 +59,24 @@ class AppsGamesActivity : BaseActivity() {
         attachViewPager()
     }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> {
+                onBackPressed()
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
     private fun attachToolbar() {
-        B.layoutToolbarAction.txtTitle.text = getString(R.string.title_apps_games)
-        B.layoutToolbarAction.imgActionPrimary.setOnClickListener {
-            close()
+        setSupportActionBar(B.layoutActionToolbar.toolbar)
+        val actionBar = supportActionBar
+        if (actionBar != null) {
+            actionBar.setDisplayShowCustomEnabled(true)
+            actionBar.setDisplayHomeAsUpEnabled(true)
+            actionBar.elevation = 0f
+            actionBar.title = getString(R.string.title_apps_games)
         }
     }
 

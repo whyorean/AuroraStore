@@ -23,14 +23,14 @@
     android:layout_height="match_parent">
 
     <include
-        android:id="@+id/layout_toolbar_action"
-        layout="@layout/view_toolbar_action" />
+        android:id="@+id/layout_action_toolbar"
+        layout="@layout/view_toolbar_native" />
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tab_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/layout_toolbar_action"
+        android:layout_below="@id/layout_action_toolbar"
         android:background="@android:color/transparent"
         android:paddingStart="@dimen/margin_large"
         android:paddingEnd="@dimen/margin_large"

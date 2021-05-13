@@ -20,16 +20,25 @@
 package com.aurora.store.view.ui.spoof
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.aurora.store.R
-import com.aurora.store.databinding.ActivityGenericPagerBinding
 import com.aurora.extensions.close
+import com.aurora.extensions.toast
+import com.aurora.store.R
+import com.aurora.store.data.providers.NativeDeviceInfoProvider
+import com.aurora.store.databinding.ActivityGenericPagerBinding
+import com.aurora.store.util.PathUtil
 import com.aurora.store.view.ui.commons.BaseActivity
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
+import nl.komponents.kovenant.task
+import nl.komponents.kovenant.ui.failUi
+import nl.komponents.kovenant.ui.successUi
+import java.io.FileOutputStream
 
 class SpoofActivity : BaseActivity() {
 
@@ -55,10 +64,32 @@ class SpoofActivity : BaseActivity() {
         attachViewPager()
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_spoof, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> {
+                onBackPressed()
+                return true
+            }
+            R.id.action_export -> {
+                exportDeviceConfig()
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
     private fun attachToolbar() {
-        B.layoutToolbarAction.txtTitle.text = getString(R.string.title_spoof_manager)
-        B.layoutToolbarAction.imgActionPrimary.setOnClickListener {
-            close()
+        setSupportActionBar(B.layoutActionToolbar.toolbar)
+        val actionBar = supportActionBar
+        if (actionBar != null) {
+            actionBar.setDisplayShowCustomEnabled(true)
+            actionBar.setDisplayHomeAsUpEnabled(true)
+            actionBar.elevation = 0f
+            actionBar.title = getString(R.string.title_spoof_manager)
         }
     }
 
@@ -73,6 +104,24 @@ class SpoofActivity : BaseActivity() {
                 }
             }
         }.attach()
+    }
+
+    private fun exportDeviceConfig() {
+        task {
+            NativeDeviceInfoProvider(this)
+                .getNativeDeviceProperties()
+                .store(
+                    FileOutputStream(
+                        PathUtil.getExternalPath() + "/native-device.properties.export"
+                    ),
+                    "DEVICE_CONFIG"
+                )
+        } successUi {
+            toast(R.string.toast_export_success)
+        } failUi {
+            it.printStackTrace()
+            toast(R.string.toast_export_failed)
+        }
     }
 
     internal class ViewPagerAdapter(fragment: FragmentManager, lifecycle: Lifecycle) :
