@@ -73,6 +73,15 @@
     <SwitchPreferenceCompat
         app:defaultValue="true"
         app:iconSpaceReserved="false"
+        app:key="PREFERENCE_PROMOTIONAL"
+        app:dependency="PREFERENCE_FOR_YOU"
+        app:disableDependentsState="false"
+        app:summary="@string/pref_ui_no_promotional_desc"
+        app:title="@string/pref_ui_no_promotional" />
+
+    <SwitchPreferenceCompat
+        app:defaultValue="true"
+        app:iconSpaceReserved="false"
         app:key="PREFERENCE_SIMILAR"
         app:summary="@string/pref_ui_similar_apps_desc"
         app:title="@string/pref_ui_similar_apps" />

@@ -42,6 +42,7 @@ import com.aurora.store.util.Preferences.PREFERENCE_FOR_YOU
 import com.aurora.store.util.Preferences.PREFERENCE_INSECURE_ANONYMOUS
 import com.aurora.store.util.Preferences.PREFERENCE_INSTALLER_ID
 import com.aurora.store.util.Preferences.PREFERENCE_INTRO
+import com.aurora.store.util.Preferences.PREFERENCE_PROMOTIONAL
 import com.aurora.store.util.Preferences.PREFERENCE_QUICK_EXIT
 import com.aurora.store.util.Preferences.PREFERENCE_SIMILAR
 import com.aurora.store.util.Preferences.PREFERENCE_THEME_ACCENT
@@ -171,6 +172,7 @@ class OnboardingActivity : BaseActivity() {
         save(PREFERENCE_DEFAULT_SELECTED_TAB, 0)
         save(PREFERENCE_QUICK_EXIT, false)
         save(PREFERENCE_FOR_YOU, true)
+        save(PREFERENCE_PROMOTIONAL, true)
         save(PREFERENCE_SIMILAR, true)
 
         /*Installer*/
