@@ -84,7 +84,7 @@
     <string name="pref_filter_google_title">Google-Anwendungen filtern</string>
     <string name="pref_filter_google_summary">Entfernt alle Google-Anwendungen aus Suchergebnissen und den Kategorien</string>
     <string name="pref_filter_fdroid_title">F-Droid-Anwendungen filtern</string>
-    <string name="pref_filter_fdroid_summary">Entfernt F-Droid-Anwendungen aus den Anwendung-Listen</string>
+    <string name="pref_filter_fdroid_summary">Entfernt F-Droid-Anwendungen aus den Anwendungslisten</string>
     <string name="pref_dialog_to_apply_restart">Diese Einstellung wird nach dem Neustart der Anwendung angewendet</string>
     <string name="pref_app_download">Herunterladen</string>
     <string name="onboarding_permission_installer_desc">Installation von Anwendungen aus dem Aurora Store erlauben</string>
