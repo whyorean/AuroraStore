@@ -345,4 +345,10 @@
     <string name="toast_rated_success">Erfolgreich bewertet</string>
     <string name="toast_rated_failed">Bewertung fehlgeschlagen</string>
     <string name="toast_aas_token_failed">Erstellung des AAS-Token fehlgeschlagen</string>
+    <string name="pref_ui_no_promotional_desc">Von uns beworbene Anwendungen auf dem Startbildschirm anzeigen</string>
+    <string name="pref_ui_no_promotional">Beworbene Anwendungen</string>
+    <string name="toast_export_failed">Fehler beim Exportieren der Gerätekonfiguration</string>
+    <string name="toast_export_success">Gerätekonfiguration erfolgreich exportiert</string>
+    <string name="pref_updates_extended_desc">Aktivieren, um nach Aktualisierungen für deaktivierte Anwendungen zu prüfen</string>
+    <string name="pref_updates_extended">Erweiterte Aktualisierungen</string>
 </resources>
