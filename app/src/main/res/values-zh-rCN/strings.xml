@@ -345,4 +345,10 @@
     <string name="toast_rated_success">打分成功</string>
     <string name="toast_page_unavailable">浏览页不可用</string>
     <string name="toast_double_press_to_exit">点击两次退出</string>
+    <string name="toast_export_failed">导出设备配置失败</string>
+    <string name="toast_export_success">设备配置成功导出</string>
+    <string name="pref_updates_extended_desc">启用以检查已禁用的应用程序的更新</string>
+    <string name="pref_updates_extended">扩展更新</string>
+    <string name="pref_ui_no_promotional_desc">在主屏幕上显示由我们推广的应用</string>
+    <string name="pref_ui_no_promotional">推广应用</string>
 </resources>
