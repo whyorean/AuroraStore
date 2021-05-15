@@ -328,7 +328,7 @@
     <string name="pref_filter_search_summary">Filtry wyszukiwania są resetowane po każdym wyszukiwaniu. Wyłącz, aby zapisać filtry wyszukiwania</string>
     <string name="pref_ui_quick_exit_desc">Wyjdź z aplikacji przy pojedynczej akcji wstecz</string>
     <string name="pref_ui_no_for_you">Strony dla ciebie</string>
-    <string name="pref_ui_no_for_you_desc">Wyświetl strony dla ciebie na ekranie głównym</string>
+    <string name="pref_ui_no_for_you_desc">Wyświetl kartę \"Strony dla ciebie\" na ekranie głównym</string>
     <string name="pref_ui_similar_apps_desc">Wyświetl grupę podobne i powiązane na stronie szczegółów aplikacji</string>
     <string name="pref_ui_similar_apps">Aplikacje podobne i powiązane</string>
     <string name="pref_ui_quick_exit">Szybkie wyjście</string>
@@ -345,4 +345,10 @@
     <string name="toast_aas_token_failed">Nie udało się wygenerować tokena AAS</string>
     <string name="toast_double_press_to_exit">Kliknij dwukrotnie, aby wyjść</string>
     <string name="toast_rated_failed">Nie udało się przesłać oceny</string>
+    <string name="toast_export_failed">Nie udało się wyeksportować konfiguracji urządzenia</string>
+    <string name="toast_export_success">Wyeksportowano konfigurację urządzenia</string>
+    <string name="pref_updates_extended_desc">Włącz sprawdzanie aktualizacji dla wyłączonych aplikacji</string>
+    <string name="pref_updates_extended">Rozszerzone aktualizacje</string>
+    <string name="pref_ui_no_promotional_desc">Wyświetl promowane przez nas aplikacje na ekranie głównym</string>
+    <string name="pref_ui_no_promotional">Aplikacje promocyjne</string>
 </resources>
