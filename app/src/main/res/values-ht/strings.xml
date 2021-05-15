@@ -121,4 +121,5 @@
     <string name="about_bhim">BHIM - UPI</string>
     <string name="onboarding_title_welcome">Byenvini</string>
     <string name="onboarding_tos_error">Ou dwa make CI li an premye.</string>
+    <string name="toast_double_press_to_exit">Klike de fwa pou sòti</string>
 </resources>
