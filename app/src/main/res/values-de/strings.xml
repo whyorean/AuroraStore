@@ -95,7 +95,7 @@
     <string name="details_no_app">Keine Anwendungen verfügbar</string>
     <string name="details_more_about_app">Mehr über die Anwendung</string>
     <string name="details_in_app_purchase">In-Anwendung-Kauf</string>
-    <string name="action_info">Anwendung-Info</string>
+    <string name="action_info">Anwendungsinfos</string>
     <string name="action_filter_gsf_dependent_apps">GSF-abhängig</string>
     <string name="action_filter_apply">Anwenden</string>
     <string name="action_favourites">Favoriten</string>
@@ -265,7 +265,7 @@
     <string name="action_post">Veröffentlichen</string>
     <string name="action_next">Weiter</string>
     <string name="action_join">Beitreten</string>
-    <string name="action_get_local_apk">Anwendung-Paket speichern</string>
+    <string name="action_get_local_apk">Anwendungspaket speichern</string>
     <string name="action_download">Herunterladen</string>
     <string name="action_ask">Fragen</string>
     <string name="about_xda_summary">Besuche den Aurora Store XDA-Thread für Support und Verbesserungsvorschläge.</string>
@@ -323,7 +323,7 @@
     <string name="pref_insecure_anonymous_title">Unsichere anonyme Sitzung</string>
     <string name="pref_insecure_anonymous_summary">GSF-ID lokal auf dem Gerät generieren</string>
     <string name="pref_ui_similar_apps_desc">Ähnliche und verwandte Anwendungen auf der Detailseite anzeigen</string>
-    <string name="pref_ui_similar_apps">Ähnliche und verwandte Anwendungen</string>
+    <string name="pref_ui_similar_apps">Verwandte Anwendungen</string>
     <string name="pref_ui_no_for_you_desc">„Für dich“-Seiten auf dem Startbildschirm anzeigen</string>
     <string name="pref_ui_no_for_you">„Für dich“-Seiten</string>
     <string name="pref_ui_quick_exit_desc">Beenden der Anwendung bei einmaliger Zurück-Aktion</string>
