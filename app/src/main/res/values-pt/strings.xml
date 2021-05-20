@@ -40,7 +40,7 @@
     <string name="action_filter_paid_apps">Paga</string>
     <string name="action_filter_apps_with_ads">Aplicações com publicidade</string>
     <string name="action_favourites">Aplicações favoritas</string>
-    <string name="pref_install_mode_services">Aurora Services</string>
+    <string name="pref_install_mode_services">Serviços Aurora</string>
     <string name="onboarding_permission_esm_desc">É necessário em aparelho Android R+, para além do Acesso a Armazenamento Externo</string>
     <string name="download_speed_estimating">A estimar</string>
     <string name="action_spoofed">Disfarce</string>
@@ -225,10 +225,10 @@
     <string name="download_canceled">Cancelada</string>
     <string name="download_cancel_all">Cancelar todas</string>
     <string name="details_others_think">Veja o que outros acham desta app</string>
-    <string name="details_think_this_app">O que acha desta app\?</string>
+    <string name="details_think_this_app">O que acha desta aplicação\?</string>
     <string name="details_screenshots">Imagens</string>
     <string name="details_review_submitted">Comentário submetido</string>
-    <string name="details_rate_this_app">Avalie esta app</string>
+    <string name="details_rate_this_app">Avalie esta aplicação</string>
     <string name="details_privacy">Privacidade</string>
     <string name="details_permission">Permissões</string>
     <string name="details_paid">Paga</string>
@@ -243,7 +243,7 @@
     <string name="details_ratings">Avaliações e comentários</string>
     <string name="action_all_reviews">Todos os comentários</string>
     <string name="details_no_reviews">Não existem comentários</string>
-    <string name="details_more_about_app">Acerca da App</string>
+    <string name="details_more_about_app">Acerca da aplicação</string>
     <string name="details_free">Gratuita</string>
     <string name="details_contains_ads">Contém publicidade</string>
     <string name="details_changelog_unavailable">Alterações não disponibilizadas</string>
@@ -270,7 +270,7 @@
     <string name="action_updates">Atualizações</string>
     <string name="action_update_all">Atualizar todos</string>
     <string name="action_update">Atualizar</string>
-    <string name="action_info">Informação da App</string>
+    <string name="action_info">Informações da aplicação</string>
     <string name="action_uninstall">Desinstalar</string>
     <string name="action_try_later">Tente mais tarde</string>
     <string name="action_submit">Submeter</string>
@@ -311,7 +311,7 @@
     <string name="action_home">Menu inicial</string>
     <string name="action_granted">Atribuído</string>
     <string name="action_grant">Atribuir</string>
-    <string name="action_get_local_apk">Guardar pacote da App</string>
+    <string name="action_get_local_apk">Guardar pacote de app</string>
     <string name="action_finish">Terminado</string>
     <string name="action_filter_misc">Misto</string>
     <string name="action_filter_gsf_dependent_apps">Dependente de GSF</string>
