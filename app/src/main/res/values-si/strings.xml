@@ -2,4 +2,28 @@
 <resources>
     <string name="details_dev_website">වෙබ් අඩවි</string>
     <string name="details_dev_email">විද්‍යුත් තැපෑල</string>
+    <string name="action_install">ස්ථාපනය</string>
+    <string name="action_filter_downloads">බාගැනීම්</string>
+    <string name="action_filter_apps_with_ads">දැන්වීම් සහිත යෙදුම්</string>
+    <string name="action_filter_apply">යොදන්න</string>
+    <string name="action_filter_all">සියල්ල</string>
+    <string name="action_copy_link">සබැඳිය පිටපත් කරන්න</string>
+    <string name="action_copy">පිටපත්</string>
+    <string name="action_close">වසන්න</string>
+    <string name="action_enable">සබල කරන්න</string>
+    <string name="action_download">බාගන්න</string>
+    <string name="action_cancel">අවලංගු</string>
+    <string name="action_buy">මිලදී ගන්න</string>
+    <string name="action_back">ආපසු</string>
+    <string name="action_ask">අහන්න</string>
+    <string name="action_apply">යොදන්න</string>
+    <string name="action_accounts">ගිණුම්</string>
+    <string name="action_accept">පිළිගන්න</string>
+    <string name="account_google">ගූගල්</string>
+    <string name="account_anonymous">නිර්නාමික</string>
+    <string name="about_telegram">ටෙලිග්‍රෑම්</string>
+    <string name="about_libera">ලිබෙරාපේ</string>
+    <string name="about_gitlab">ගිට්ලැබ්</string>
+    <string name="about_fdroid">එෆ්-ඩ්‍රොයිඩ්</string>
+    <string name="about_bitcoin_btc">බිට්කොයින්</string>
 </resources>
