@@ -46,8 +46,8 @@
     <string name="about_bitcoin_eth_summary">Per Ethereum spenden (ETH)</string>
     <string name="account_anonymous">Anonym</string>
     <string name="action_buy">Kaufen</string>
-    <string name="action_blacklist_add">Zur Blacklist hinzufügen</string>
-    <string name="action_blacklist">Blacklist</string>
+    <string name="action_blacklist_add">Zur Sperrliste hinzufügen</string>
+    <string name="action_blacklist">Sperrliste</string>
     <string name="action_back">Zurück</string>
     <string name="action_discard">Verwerfen</string>
     <string name="action_done">Fertig</string>
@@ -209,7 +209,7 @@
     <string name="exodus_view_report">Bericht ansehen</string>
     <string name="exodus_view_more">Ansehen</string>
     <string name="exodus_title_alt">Exodus Bericht</string>
-    <string name="exodus_title">Aurora Protect</string>
+    <string name="exodus_title">Aurora-Schutz</string>
     <string name="exodus_substring">Tracker gefunden in</string>
     <string name="exodus_report">Exodus-Bericht</string>
     <string name="exodus_progress">Prüfe auf Tracker …</string>
@@ -256,7 +256,7 @@
     <string name="details_beta_subscribed">Du bist ein Beta-Tester</string>
     <string name="details_beta">Beta Programm</string>
     <string name="action_wishlist_add">Zur Wunschliste hinzufügen</string>
-    <string name="action_whitelist">Whitelist</string>
+    <string name="action_whitelist">Ausnahmeliste</string>
     <string name="action_wait">Warten</string>
     <string name="action_updates">Aktualisierungen</string>
     <string name="action_update_all">Alle aktualisieren</string>
