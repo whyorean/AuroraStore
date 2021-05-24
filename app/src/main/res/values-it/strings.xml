@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="details_changelog_unavailable">Lista delle novità non fornita dallo sviluppatore</string>
+    <string name="details_changelog_unavailable">Lista delle novità non fornita</string>
     <string name="details_changelog">Novità</string>
     <string name="details_contains_ads">Contiene annunci</string>
     <string name="details_description">Descrizione</string>
@@ -94,7 +94,7 @@
     <string name="exodus_no_report">Nessun rapporto disponibile</string>
     <string name="download_speed_estimating">Stima in corso</string>
     <string name="download_force_clear_all">Rimuovi tutti</string>
-    <string name="download_clear_completed">Rimozione completata</string>
+    <string name="download_clear_completed">Rimuovi i completati</string>
     <string name="details_screenshots">Schermate</string>
     <string name="details_reviews_about_app">Altre recensioni</string>
     <string name="details_reviews">Recensioni</string>
