@@ -248,7 +248,7 @@
     <string name="details_description">Beschreibung</string>
     <string name="details_dependencies">Abhängigkeiten</string>
     <string name="details_contains_ads">Enthält Werbung</string>
-    <string name="details_changelog_unavailable">Änderungsprotokoll nicht angegeben</string>
+    <string name="details_changelog_unavailable">Änderungsprotokoll nicht bereitgestellt</string>
     <string name="details_changelog">Änderungsprotokoll</string>
     <string name="details_beta_delay">Die Registrierung kann einige Zeit dauern, du kannst den Status der Registrierung später überprüfen.</string>
     <string name="details_beta_description">Du bekommst neue Funktionen und Fehler vor der Öffentlichkeit zu sehen. Um den Entwicklern zu helfen, kannst du ihnen Kommentare senden.</string>
