@@ -74,7 +74,7 @@
     <string name="about_bitcoin_btc_summary">Donasi via Bitcoin (BTC)</string>
     <string name="about_bitcoin_btc">Bitcoin</string>
     <string name="about_bitcoin_bch_summary">Donasi via Bitcoin Cash (BCH)</string>
-    <string name="about_bitcoin_bch">Bitcoin Cash</string>
+    <string name="about_bitcoin_bch">Uang Bitcoin</string>
     <string name="account_login_using">Masuk menggunakan</string>
     <string name="action_accept">Terima</string>
     <string name="account_logout">Keluar dari Aurora</string>
@@ -225,7 +225,7 @@
     <string name="exodus_progress">Memeriksa pelacak…</string>
     <string name="exodus_powered">Diberdayakan oleh Exodus</string>
     <string name="exodus_no_tracker">Tidak mengandung pelacak</string>
-    <string name="action_spoofed">Spoof</string>
+    <string name="action_spoofed">Lelucon</string>
     <string name="exodus_no_report">Tidak ada laporan yang tersedia</string>
     <string name="download_speed_estimating">Memperkirakan</string>
     <string name="download_resume_all">Lanjutkan semua</string>
@@ -309,7 +309,7 @@
     <string name="pref_ui_theme_title">Tema</string>
     <string name="pref_ui_theme_system">Mengikuti Sistem</string>
     <string name="pref_ui_theme_light">Terang</string>
-    <string name="pref_ui_theme_darkord">Disskord</string>
+    <string name="pref_ui_theme_darkord">Discord</string>
     <string name="pref_ui_theme_dark_x">Gelap X</string>
     <string name="pref_ui_theme_dark">Gelap</string>
     <string name="pref_ui_theme_black">Hitam</string>
@@ -345,4 +345,10 @@
     <string name="device_huawei_subtitle">Sepertinya anda menggunakan perangkat Huawei, karena pelarangan baru dari Google anda tidak dapat masuk.</string>
     <string name="installer_service_misconfigured">Layanan Aurora belum terkonfigurasi. Pastikan layanan sudah diaktifkan &amp; semua izin telah diperbolehkan</string>
     <string name="purchase_failed">Pengunduhan Gagal</string>
+    <string name="toast_export_failed">gagal untuk mengeksport konfigirasi perangkat</string>
+    <string name="toast_export_success">konfigurasi perangkat telah selesai di eksport</string>
+    <string name="pref_updates_extended_desc">Izinkan untuk mengecek perbaruan dari aplikasi-aplikasi yang dimatikan</string>
+    <string name="pref_updates_extended">pembaruan yang diperluas</string>
+    <string name="pref_ui_no_promotional_desc">Tunjukkan aplikasi-aplikasi yang dipromosikan oleh kami di layar utama</string>
+    <string name="pref_ui_no_promotional">aplikasi yang digunakan untuk mempromosikan</string>
 </resources>
