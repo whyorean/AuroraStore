@@ -1,2 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="details_description">설명</string>
+    <string name="details_dev_address">주소</string>
+    <string name="details_dev_website">웹사이트</string>
+    <string name="details_dev_email">전자우편</string>
+</resources>
