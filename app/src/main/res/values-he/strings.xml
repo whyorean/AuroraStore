@@ -7,7 +7,7 @@
     <string name="about_paypal">פייפאל</string>
     <string name="about_libera">‏Liberapay</string>
     <string name="about_gitlab">‏GitLab</string>
-    <string name="about_fdroid_summary">הורדת חנות Aurora דרך F-Droid.</string>
+    <string name="about_fdroid_summary">הורדת Aurora Store דרך F-Droid.</string>
     <string name="about_fdroid">‏F-Droid</string>
     <string name="about_bitcoin_btc_summary">תרומה דרך ביטקוין (BTC)</string>
     <string name="about_bitcoin_btc">ביטקוין</string>
@@ -65,4 +65,22 @@
     <string name="details_dev_website">אתר אינטרנט</string>
     <string name="details_dev_email">דוא״ל</string>
     <string name="tab_editor_choice">בחירת העורך</string>
+    <string name="action_filter_gsf_dependent_apps">נשען על GSF</string>
+    <string name="action_export">ייצוא</string>
+    <string name="action_favourites">יישומים מועדפים</string>
+    <string name="action_download">הורדה</string>
+    <string name="action_discover">גלה</string>
+    <string name="action_close">סגירה</string>
+    <string name="action_cancel">ביטול</string>
+    <string name="action_back">חזרה</string>
+    <string name="action_blacklist_add">הוסף לרשימה השחורה</string>
+    <string name="action_blacklist">רשימה שחורה</string>
+    <string name="action_accept">קבל</string>
+    <string name="about_telegram_summary">הצטרף לקבוצת Aurora Support לדיונים או הצעות.</string>
+    <string name="about_libera_summary">תמיכה ב-Liberapay</string>
+    <string name="about_gitlab_summary">השג את קוד המקור של Aurora Store מ-Aurora OSS ב-GitLab.</string>
+    <string name="about_bitcoin_eth_summary">תרומה דרך אתריום (ETH)</string>
+    <string name="about_bitcoin_eth">אתריום</string>
+    <string name="about_bitcoin_bch_summary">תרומה דרך ביטקוין קאש (BCH)</string>
+    <string name="about_bitcoin_bch">ביטקוין קאש</string>
 </resources>

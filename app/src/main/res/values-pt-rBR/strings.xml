@@ -17,8 +17,8 @@
     <string name="pref_ui_theme_dark_x">Escuro X</string>
     <string name="title_download_playstore">Play Store</string>
     <string name="title_download_manager">Downloads</string>
-    <string name="title_apps">Apps</string>
-    <string name="pref_ui_theme_darkord">Disskord</string>
+    <string name="title_apps">Aplicativos</string>
+    <string name="pref_ui_theme_darkord">Discord</string>
     <string name="pref_install_mode_services">Serviços da Aurora</string>
     <string name="pref_app_download">Downloads</string>
     <string name="exodus_title">Proteção Aurora</string>
@@ -30,7 +30,7 @@
     <string name="about_fdroid">F-Droid</string>
     <string name="about_bitcoin_eth">Ethereum</string>
     <string name="about_bitcoin_btc">Bitcoin</string>
-    <string name="about_bitcoin_bch">Bitcoin Cash</string>
+    <string name="about_bitcoin_bch">Dinheiro por Bitcoin</string>
     <string name="about_bhim">BHIM - UPI</string>
     <string name="action_spoofed">Simular</string>
     <string name="action_ok">OK</string>
@@ -176,7 +176,7 @@
     <string name="details_free">Grátis</string>
     <string name="details_files">Arquivos</string>
     <string name="details_dependencies">Dependências</string>
-    <string name="details_contains_ads">Contém Anúncios</string>
+    <string name="details_contains_ads">Contém anúncios</string>
     <string name="details_changelog_unavailable">Mudanças não fornecidas</string>
     <string name="details_changelog">Mudanças</string>
     <string name="details_beta_delay">A inscrição pode levar algum tempo, você pode verificar o status mais tarde.</string>
@@ -345,4 +345,10 @@
     <string name="toast_rated_success">Avaliado com sucesso</string>
     <string name="toast_page_unavailable">Página indisponível</string>
     <string name="toast_double_press_to_exit">Clique duas vezes para sair</string>
+    <string name="toast_export_failed">Falha ao exportar configuração do dispositivo</string>
+    <string name="toast_export_success">Configuração do dispositivo exportada com sucesso</string>
+    <string name="pref_updates_extended_desc">Ativar procurar por atualizações para aplicativos desativados</string>
+    <string name="pref_updates_extended">Atualizações estendidas</string>
+    <string name="pref_ui_no_promotional_desc">Mostrar aplicativos promovidos por nós na tela inicial</string>
+    <string name="pref_ui_no_promotional">Aplicativos promocionais</string>
 </resources>

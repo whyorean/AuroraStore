@@ -140,11 +140,11 @@
     <string name="device_miui_extra">Opcjonalnie możesz wybrać natywny instalator, ale wtedy nie będziesz w stanie instalować pakietów APK (podzielonych), więc wybór należy do ciebie.</string>
     <string name="toast_spoof_applied">Urządzenie zostało podmienione.</string>
     <string name="toast_permission_granted">Przyznane uprawnienia</string>
-    <string name="toast_developer_setting_failed">Nie można otworzyć ustawień programisty. Upewnij się, że są one włączone w ustawieniach urządzenia.</string>
+    <string name="toast_developer_setting_failed">Nie udało się otworzyć ustawień programisty. Upewnij się, że są one włączone w ustawieniach urządzenia.</string>
     <string name="toast_clipboard_copied">Skopiowano do schowka</string>
     <string name="toast_apk_whitelisted">Biała lista</string>
-    <string name="toast_apk_copy_success">Eksport pliku APK zakończony pomyślnie</string>
-    <string name="toast_apk_copy_failed">Eksport pliku APK zakończony niepowodzeniem</string>
+    <string name="toast_apk_copy_success">Wyeksportowano pliku APK</string>
+    <string name="toast_apk_copy_failed">Nie udało się wyeksportować pliku APK</string>
     <string name="toast_apk_blacklisted">Dodano do czarnej listy</string>
     <string name="toast_anonymous_restriction">Niedostępne na kontach anonimowych</string>
     <string name="toast_abandon_sessions">Porzucono stare sesje instalacyjne</string>
@@ -328,7 +328,7 @@
     <string name="pref_filter_search_summary">Filtry wyszukiwania są resetowane po każdym wyszukiwaniu. Wyłącz, aby zapisać filtry wyszukiwania</string>
     <string name="pref_ui_quick_exit_desc">Wyjdź z aplikacji przy pojedynczej akcji wstecz</string>
     <string name="pref_ui_no_for_you">Strony dla ciebie</string>
-    <string name="pref_ui_no_for_you_desc">Wyświetl strony dla ciebie na ekranie głównym</string>
+    <string name="pref_ui_no_for_you_desc">Wyświetl kartę „Strony dla ciebie” na ekranie głównym</string>
     <string name="pref_ui_similar_apps_desc">Wyświetl grupę podobne i powiązane na stronie szczegółów aplikacji</string>
     <string name="pref_ui_similar_apps">Aplikacje podobne i powiązane</string>
     <string name="pref_ui_quick_exit">Szybkie wyjście</string>
@@ -342,7 +342,13 @@
     <string name="dialog_desc_native_split">Nie można instalować pakietów aplikacji (dzielonych) za pośrednictwem natywnego instalatora. Zmień instalator na sesję, usługi lub root.</string>
     <string name="toast_page_unavailable">Przeglądana strona jest niedostępna</string>
     <string name="toast_rated_success">Przesłano ocenę</string>
-    <string name="toast_aas_token_failed">Generowanie tokena AAS zakończone niepowodzeniem</string>
+    <string name="toast_aas_token_failed">Nie udało się wygenerować tokena AAS</string>
     <string name="toast_double_press_to_exit">Kliknij dwukrotnie, aby wyjść</string>
-    <string name="toast_rated_failed">Przesyłanie oceny zakończone niepowodzeniem</string>
+    <string name="toast_rated_failed">Nie udało się przesłać oceny</string>
+    <string name="toast_export_failed">Nie udało się wyeksportować konfiguracji urządzenia</string>
+    <string name="toast_export_success">Wyeksportowano konfigurację urządzenia</string>
+    <string name="pref_updates_extended_desc">Włącz sprawdzanie aktualizacji dla wyłączonych aplikacji</string>
+    <string name="pref_updates_extended">Rozszerzone aktualizacje</string>
+    <string name="pref_ui_no_promotional_desc">Wyświetl promowane przez nas aplikacje na ekranie głównym</string>
+    <string name="pref_ui_no_promotional">Aplikacje promocyjne</string>
 </resources>
