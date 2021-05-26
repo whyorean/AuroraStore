@@ -303,8 +303,6 @@
     <string name="pref_ui_quick_exit_desc">"Exit app on single back action"</string>
     <string name="pref_ui_no_for_you">"For You Pages"</string>
     <string name="pref_ui_no_for_you_desc">"Display For You Pages on home screen"</string>
-    <string name="pref_ui_no_promotional">"Promotional apps"</string>
-    <string name="pref_ui_no_promotional_desc">"Display apps promoted by us on home screen"</string>
     <string name="pref_ui_similar_apps">"Similar and related apps"</string>
     <string name="pref_ui_similar_apps_desc">"Display similar and related clusters on app details page"</string>
     <string name="pref_updates_extended">Extended updates</string>

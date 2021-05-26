@@ -31,7 +31,6 @@ import com.aurora.store.data.ViewState
 import com.aurora.store.data.network.HttpClient
 import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.util.Log
-import com.aurora.store.util.Preferences
 import com.aurora.store.viewmodel.BaseAndroidViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -48,10 +47,6 @@ abstract class BaseClusterViewModel(application: Application) : BaseAndroidViewM
 
     /* Should certainly do it in a better way :(*/
     var promotionsAdded: Boolean = false
-    val showPromotionalApps:Boolean = Preferences.getBoolean(
-        application,
-        Preferences.PREFERENCE_PROMOTIONAL
-    )
 
     lateinit var type: StreamHelper.Type
     lateinit var category: StreamHelper.Category
@@ -81,7 +76,7 @@ abstract class BaseClusterViewModel(application: Application) : BaseAndroidViewM
                         )
 
                         //Add promotional cluster
-                        if (!promotionsAdded && showPromotionalApps) {
+                        if (!promotionsAdded) {
                             val promotionalCluster = promotionalCluster()
                             newBundle.streamClusters[promotionalCluster.id] = promotionalCluster
                             promotionsAdded = true
