@@ -99,6 +99,7 @@ class ManualDownloadSheet : BaseBottomSheet() {
         B.txtLine3.text = ("${app.versionName} (${app.versionCode})")
 
         B.versionCodeLayout.hint = "${app.versionCode}"
+        B.versionCodeLayout.editText?.setText("${app.versionCode}")
     }
 
     private fun attachActions() {
