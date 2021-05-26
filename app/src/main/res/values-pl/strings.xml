@@ -143,7 +143,7 @@
     <string name="toast_developer_setting_failed">Nie udało się otworzyć ustawień programisty. Upewnij się, że są one włączone w ustawieniach urządzenia.</string>
     <string name="toast_clipboard_copied">Skopiowano do schowka</string>
     <string name="toast_apk_whitelisted">Biała lista</string>
-    <string name="toast_apk_copy_success">Wyeksportowano pliku APK</string>
+    <string name="toast_apk_copy_success">Wyeksportowano plik APK</string>
     <string name="toast_apk_copy_failed">Nie udało się wyeksportować pliku APK</string>
     <string name="toast_apk_blacklisted">Dodano do czarnej listy</string>
     <string name="toast_anonymous_restriction">Niedostępne na kontach anonimowych</string>
