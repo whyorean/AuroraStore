@@ -76,11 +76,15 @@ class AppDetailsActivity : BaseDetailsActivity() {
     private lateinit var downloadManager: DownloadManager
     private lateinit var fetch: Fetch
     private lateinit var fetchGroupListener: FetchGroupListener
+    private lateinit var completionMarker: java.io.File
+    private lateinit var inProgressMarker: java.io.File
 
     private var isExternal = false
     private var isNone = false
     private var status = Status.NONE
     private var isInstalled: Boolean = false
+    private var autoDownload: Boolean = false
+    private var downloadOnly: Boolean = false
 
     override fun onConnected() {
 
@@ -97,6 +101,9 @@ class AppDetailsActivity : BaseDetailsActivity() {
     override fun onStart() {
         super.onStart()
         EventBus.getDefault().register(this)
+        if (autoDownload) {
+            purchase()
+        }
     }
 
     override fun onStop() {
@@ -169,12 +176,21 @@ class AppDetailsActivity : BaseDetailsActivity() {
 
         if (intent.scheme != null && (intent.scheme == "market" || intent.scheme == "http" || intent.scheme == "https")) {
             val packageName = intent.data!!.getQueryParameter("id")
+            val packageVersion = intent.data!!.getQueryParameter("v")
             if (packageName.isNullOrEmpty()) {
                 close()
             } else {
                 isExternal = true
                 app = App(packageName)
+                if (!packageVersion.isNullOrEmpty()) {
+                    app.versionCode = packageVersion.toInt()
+                }
                 fetchCompleteApp()
+            }
+
+            intent.data?.let {
+                autoDownload = it.getBooleanQueryParameter("download", false)
+                downloadOnly = it.getBooleanQueryParameter("install", false)
             }
         } else {
             val rawApp: String? = intent.getStringExtra(Constants.STRING_EXTRA)
@@ -263,6 +279,9 @@ class AppDetailsActivity : BaseDetailsActivity() {
     }
 
     private fun verifyAndInstall(files: List<Download>) {
+        if (downloadOnly)
+            return
+
         var filesExist = true
 
         files.forEach { download ->
@@ -340,6 +359,10 @@ class AppDetailsActivity : BaseDetailsActivity() {
             attachBottomSheet()
             attachFetch()
             attachActions()
+
+            if (autoDownload) {
+                purchase()
+            }
         }
     }
 
@@ -642,6 +665,17 @@ class AppDetailsActivity : BaseDetailsActivity() {
                 if (groupId == app.id) {
                     status = download.status
                     flip(1)
+
+                    val pkgDir = PathUtil.getPackageDirectory(applicationContext, app.packageName)
+                    completionMarker =
+                        java.io.File("$pkgDir/.${app.versionCode}.download-complete")
+                    inProgressMarker =
+                        java.io.File("$pkgDir/.${app.versionCode}.download-in-progress")
+
+                    if (completionMarker.exists())
+                        completionMarker.delete()
+
+                    inProgressMarker.createNewFile()
                 }
             }
 
@@ -649,6 +683,7 @@ class AppDetailsActivity : BaseDetailsActivity() {
                 if (groupId == app.id) {
                     status = download.status
                     flip(1)
+                    FileUtils.touch(inProgressMarker)
                 }
             }
 
@@ -680,6 +715,8 @@ class AppDetailsActivity : BaseDetailsActivity() {
                     status = download.status
                     flip(0)
                     updateProgress(fetchGroup, -1, -1)
+                    inProgressMarker.delete()
+                    completionMarker.createNewFile()
                     try {
                         verifyAndInstall(fetchGroup.downloads)
                     } catch (e: Exception) {
@@ -692,6 +729,7 @@ class AppDetailsActivity : BaseDetailsActivity() {
                 if (groupId == app.id) {
                     status = download.status
                     flip(0)
+                    inProgressMarker.delete()
                 }
             }
 
@@ -705,6 +743,7 @@ class AppDetailsActivity : BaseDetailsActivity() {
                 if (groupId == app.id) {
                     status = download.status
                     flip(0)
+                    inProgressMarker.delete()
                 }
             }
         }
