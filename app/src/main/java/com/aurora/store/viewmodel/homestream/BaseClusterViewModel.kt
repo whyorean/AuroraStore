@@ -45,9 +45,6 @@ abstract class BaseClusterViewModel(application: Application) : BaseAndroidViewM
     val liveData: MutableLiveData<ViewState> = MutableLiveData()
     var streamBundle: StreamBundle = StreamBundle()
 
-    /* Should certainly do it in a better way :(*/
-    var promotionsAdded: Boolean = false
-
     lateinit var type: StreamHelper.Type
     lateinit var category: StreamHelper.Category
 
@@ -74,13 +71,6 @@ abstract class BaseClusterViewModel(application: Application) : BaseAndroidViewM
                             category,
                             type
                         )
-
-                        //Add promotional cluster
-                        if (!promotionsAdded) {
-                            val promotionalCluster = promotionalCluster()
-                            newBundle.streamClusters[promotionalCluster.id] = promotionalCluster
-                            promotionsAdded = true
-                        }
 
                         //Update old bundle
                         streamBundle.apply {
@@ -127,16 +117,5 @@ abstract class BaseClusterViewModel(application: Application) : BaseAndroidViewM
             clusterAppList.addAll(newCluster.clusterAppList)
             clusterNextPageUrl = newCluster.clusterNextPageUrl
         }
-    }
-
-    private fun promotionalCluster(): StreamCluster {
-        val response = HttpClient.getPreferredClient().get(
-            "https://promotions.auroraoss.com",
-            hashMapOf()
-        )
-        return if (response.isSuccessful)
-            gson.fromJson(String(response.responseBytes), StreamCluster::class.java)
-        else
-            StreamCluster()
     }
 }
