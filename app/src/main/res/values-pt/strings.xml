@@ -349,6 +349,5 @@
     <string name="toast_export_success">Definições do dispositivo exportadas com sucesso</string>
     <string name="pref_updates_extended_desc">Ativar para verificar atualizações para aplicações desativadas</string>
     <string name="pref_updates_extended">Atualizações alargadas</string>
-    <string name="pref_ui_no_promotional_desc">Mostrar aplicações promovidas por nós no ecrã inicial</string>
     <string name="pref_ui_no_promotional">Apps promocionais</string>
 </resources>

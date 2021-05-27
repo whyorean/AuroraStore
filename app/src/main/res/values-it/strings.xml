@@ -345,7 +345,6 @@
     <string name="toast_rated_success">Valutato con successo</string>
     <string name="toast_page_unavailable">Pagina non disponibile</string>
     <string name="toast_double_press_to_exit">Clicca due volte per uscire</string>
-    <string name="pref_ui_no_promotional_desc">Visualizza le applicazioni che promuoviamo sulla schermata iniziale</string>
     <string name="pref_ui_no_promotional">Applicazioni promozionali</string>
     <string name="toast_export_failed">Impossibile esportare la configurazione del dispositivo</string>
     <string name="toast_export_success">La configurazione del dispositivo è stata esportata con successo</string>

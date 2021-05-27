@@ -349,6 +349,5 @@
     <string name="toast_export_success">La configuration de l’appareil a été exportée avec succès</string>
     <string name="pref_updates_extended_desc">Vérifier les mises à jour des applications désactivées</string>
     <string name="pref_updates_extended">Mises à jour étendues</string>
-    <string name="pref_ui_no_promotional_desc">Afficher les applis dont nous faisons la promotion sur l’écran d’accueil</string>
     <string name="pref_ui_no_promotional">Applis promotionnelles</string>
 </resources>

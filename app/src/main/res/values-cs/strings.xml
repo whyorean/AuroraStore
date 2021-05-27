@@ -349,6 +349,5 @@
     <string name="toast_export_success">Konfigurace zařízení byla úspěšně exportována</string>
     <string name="pref_updates_extended_desc">Povolit kontrolu aktualizací pro zakázané aplikace</string>
     <string name="pref_updates_extended">Rozšířené aktualizace</string>
-    <string name="pref_ui_no_promotional_desc">Zobrazení námi propagovaných aplikací na domovské obrazovce</string>
     <string name="pref_ui_no_promotional">Propagační aplikace</string>
 </resources>
