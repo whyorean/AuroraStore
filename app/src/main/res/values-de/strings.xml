@@ -56,7 +56,7 @@
     <string name="about_bitcoin_bch_summary">Per Bitcoin Cash spenden (BCH)</string>
     <string name="about_bhim_summary">Per UPI spenden</string>
     <string name="about_bhim">BHIM - UPI</string>
-    <string name="details_think_this_app">Was hältst du von dieser Anwendung\?</string>
+    <string name="details_think_this_app">Wie findest du diese Anwendung\?</string>
     <string name="details_others_think">Was andere über diese Anwendung denken</string>
     <string name="details_rate_stars_first">Gib zuerst eine Sternebewertung ab</string>
     <string name="details_privacy">Datenschutz</string>
@@ -122,7 +122,7 @@
     <string name="title_device">Gerät</string>
     <string name="title_details">Details</string>
     <string name="title_blacklist_manager">Sperrliste verwalten</string>
-    <string name="title_account_manager">Konto</string>
+    <string name="title_account_manager">Konten</string>
     <string name="title_about">Über</string>
     <string name="tab_trending">Aktuelle Trends</string>
     <string name="tab_top_paid">Top kostenpflichtig</string>
@@ -225,7 +225,7 @@
     <string name="download_pause_all">Alle anhalten</string>
     <string name="download_pause">Anhalten</string>
     <string name="download_none">Keine heruntergeladenen Dateien</string>
-    <string name="download_metadata">Metadaten laden</string>
+    <string name="download_metadata">Metadaten werden geladen</string>
     <string name="download_force_clear_all">Sofort alles löschen</string>
     <string name="download_failed">Herunterladen fehlgeschlagen</string>
     <string name="download_eta_calculating">Berechne</string>
@@ -248,7 +248,7 @@
     <string name="details_description">Beschreibung</string>
     <string name="details_dependencies">Abhängigkeiten</string>
     <string name="details_contains_ads">Enthält Werbung</string>
-    <string name="details_changelog_unavailable">Änderungsprotokoll nicht angegeben</string>
+    <string name="details_changelog_unavailable">Änderungsprotokoll nicht bereitgestellt</string>
     <string name="details_changelog">Änderungsprotokoll</string>
     <string name="details_beta_delay">Die Registrierung kann einige Zeit dauern, du kannst den Status der Registrierung später überprüfen.</string>
     <string name="details_beta_description">Du bekommst neue Funktionen und Fehler vor der Öffentlichkeit zu sehen. Um den Entwicklern zu helfen, kannst du ihnen Kommentare senden.</string>
@@ -345,7 +345,6 @@
     <string name="toast_rated_success">Erfolgreich bewertet</string>
     <string name="toast_rated_failed">Bewertung fehlgeschlagen</string>
     <string name="toast_aas_token_failed">Erstellung des AAS-Token fehlgeschlagen</string>
-    <string name="pref_ui_no_promotional_desc">Von uns beworbene Anwendungen auf dem Startbildschirm anzeigen</string>
     <string name="pref_ui_no_promotional">Beworbene Anwendungen</string>
     <string name="toast_export_failed">Fehler beim Exportieren der Gerätekonfiguration</string>
     <string name="toast_export_success">Gerätekonfiguration erfolgreich exportiert</string>

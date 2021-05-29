@@ -349,6 +349,5 @@
     <string name="toast_export_success">Aygıt yapılandırması başarıyla dışarı aktarıldı</string>
     <string name="pref_updates_extended_desc">Devre dışı bırakılmış uygulamalar için güncellemeleri denetlemeyi etkinleştir</string>
     <string name="pref_updates_extended">Genişletilmiş güncellemeler</string>
-    <string name="pref_ui_no_promotional_desc">Bizim tarafımızdan tanıtılan uygulamaları ana ekranda göster</string>
     <string name="pref_ui_no_promotional">Tanıtımı yapılan uygulamalar</string>
 </resources>

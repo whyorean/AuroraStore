@@ -345,5 +345,4 @@
     <string name="toast_rated_success">評価に成功しました</string>
     <string name="toast_page_unavailable">閲覧ページがありません</string>
     <string name="toast_double_press_to_exit">2回タップして終了</string>
-    <string name="pref_ui_no_promotional">宣伝アプリ</string>
 </resources>

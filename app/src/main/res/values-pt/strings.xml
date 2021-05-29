@@ -243,7 +243,7 @@
     <string name="details_ratings">Avaliações e comentários</string>
     <string name="action_all_reviews">Todos os comentários</string>
     <string name="details_no_reviews">Não existem comentários</string>
-    <string name="details_more_about_app">Acerca da aplicação</string>
+    <string name="details_more_about_app">Sobre a aplicação</string>
     <string name="details_free">Gratuita</string>
     <string name="details_contains_ads">Contém publicidade</string>
     <string name="details_changelog_unavailable">Alterações não disponibilizadas</string>
@@ -258,7 +258,7 @@
     <string name="details_dev_profile">Perfil do programador</string>
     <string name="details_dev_details">Contacto do programador</string>
     <string name="details_dependencies">Dependências</string>
-    <string name="details_changelog">Alterações</string>
+    <string name="details_changelog">Novidades</string>
     <string name="details_beta_delay">A adesão poderá levar algum tempo. Poderá verificar o estado mais tarde.</string>
     <string name="details_beta_description">Terá acesso a novas funcionalidades e bugs antes do público. Dê o seu feedback aos programadores para ajudá-los a melhorar.</string>
     <string name="details_beta_available">Aderir ao programa beta\?</string>
@@ -349,6 +349,5 @@
     <string name="toast_export_success">Definições do dispositivo exportadas com sucesso</string>
     <string name="pref_updates_extended_desc">Ativar para verificar atualizações para aplicações desativadas</string>
     <string name="pref_updates_extended">Atualizações alargadas</string>
-    <string name="pref_ui_no_promotional_desc">Mostrar aplicações promovidas por nós no ecrã inicial</string>
     <string name="pref_ui_no_promotional">Apps promocionais</string>
 </resources>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="details_changelog_unavailable">Lista delle novità non fornita dallo sviluppatore</string>
+    <string name="details_changelog_unavailable">Lista delle novità non fornita</string>
     <string name="details_changelog">Novità</string>
     <string name="details_contains_ads">Contiene annunci</string>
     <string name="details_description">Descrizione</string>
@@ -94,7 +94,7 @@
     <string name="exodus_no_report">Nessun rapporto disponibile</string>
     <string name="download_speed_estimating">Stima in corso</string>
     <string name="download_force_clear_all">Rimuovi tutti</string>
-    <string name="download_clear_completed">Rimozione completata</string>
+    <string name="download_clear_completed">Rimuovi i completati</string>
     <string name="details_screenshots">Schermate</string>
     <string name="details_reviews_about_app">Altre recensioni</string>
     <string name="details_reviews">Recensioni</string>
@@ -345,7 +345,6 @@
     <string name="toast_rated_success">Valutato con successo</string>
     <string name="toast_page_unavailable">Pagina non disponibile</string>
     <string name="toast_double_press_to_exit">Clicca due volte per uscire</string>
-    <string name="pref_ui_no_promotional_desc">Visualizza le applicazioni che promuoviamo sulla schermata iniziale</string>
     <string name="pref_ui_no_promotional">Applicazioni promozionali</string>
     <string name="toast_export_failed">Impossibile esportare la configurazione del dispositivo</string>
     <string name="toast_export_success">La configurazione del dispositivo è stata esportata con successo</string>

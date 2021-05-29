@@ -143,7 +143,7 @@
     <string name="toast_developer_setting_failed">Nie udało się otworzyć ustawień programisty. Upewnij się, że są one włączone w ustawieniach urządzenia.</string>
     <string name="toast_clipboard_copied">Skopiowano do schowka</string>
     <string name="toast_apk_whitelisted">Biała lista</string>
-    <string name="toast_apk_copy_success">Wyeksportowano pliku APK</string>
+    <string name="toast_apk_copy_success">Wyeksportowano plik APK</string>
     <string name="toast_apk_copy_failed">Nie udało się wyeksportować pliku APK</string>
     <string name="toast_apk_blacklisted">Dodano do czarnej listy</string>
     <string name="toast_anonymous_restriction">Niedostępne na kontach anonimowych</string>
@@ -323,7 +323,7 @@
     <string name="pref_network_title">Sieć</string>
     <string name="pref_insecure_anonymous_title">Niezabezpieczona sesja anonimowa</string>
     <string name="pref_common_extra">Dodatkowe</string>
-    <string name="pref_common_advance">Advance</string>
+    <string name="pref_common_advance">Zaawansowane</string>
     <string name="pref_filter_search_title">Użyj nietrwałego filtru wyszukiwania</string>
     <string name="pref_filter_search_summary">Filtry wyszukiwania są resetowane po każdym wyszukiwaniu. Wyłącz, aby zapisać filtry wyszukiwania</string>
     <string name="pref_ui_quick_exit_desc">Wyjdź z aplikacji przy pojedynczej akcji wstecz</string>
@@ -349,6 +349,5 @@
     <string name="toast_export_success">Wyeksportowano konfigurację urządzenia</string>
     <string name="pref_updates_extended_desc">Włącz sprawdzanie aktualizacji dla wyłączonych aplikacji</string>
     <string name="pref_updates_extended">Rozszerzone aktualizacje</string>
-    <string name="pref_ui_no_promotional_desc">Wyświetl promowane przez nas aplikacje na ekranie głównym</string>
     <string name="pref_ui_no_promotional">Aplikacje promocyjne</string>
 </resources>
