@@ -6,4 +6,12 @@
     <string name="about_bitcoin_bch">Bitcoin Cash</string>
     <string name="about_bhim_summary">UPI দ্বারা ডোনাট করুন</string>
     <string name="details_dev_website">ওয়েবসাইটি</string>
+    <string name="account_anonymous">নামহীন</string>
+    <string name="about_telegram">টেলিগ্রাম</string>
+    <string name="about_paypal">পেপাল</string>
+    <string name="about_libera">লিবেরাপে</string>
+    <string name="about_gitlab">গিটল্যাব</string>
+    <string name="about_fdroid">এফ-ড্রয়েড</string>
+    <string name="about_bitcoin_eth">ইথেরাম</string>
+    <string name="about_bitcoin_btc">বিটকয়েন</string>
 </resources>
