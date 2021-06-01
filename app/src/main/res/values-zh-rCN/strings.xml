@@ -349,5 +349,4 @@
     <string name="toast_export_success">设备配置成功导出</string>
     <string name="pref_updates_extended_desc">启用以检查已禁用的应用程序的更新</string>
     <string name="pref_updates_extended">扩展更新</string>
-    <string name="pref_ui_no_promotional">推广应用</string>
 </resources>

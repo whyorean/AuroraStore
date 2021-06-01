@@ -349,5 +349,4 @@
     <string name="toast_export_success">تم تصدير اعدادات الجهاز بنجاح</string>
     <string name="pref_updates_extended_desc">تمكين للتحقق من التحديثات للتطبيقات المعطلة</string>
     <string name="pref_updates_extended">التحديثات الموسعة</string>
-    <string name="pref_ui_no_promotional">التطبيقات الترويجية</string>
 </resources>
