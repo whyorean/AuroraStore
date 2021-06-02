@@ -194,7 +194,7 @@
     <string name="installer_status_failure_aborted">Installation abgebrochen</string>
     <string name="installer_status_failure">Installation fehlgeschlagen</string>
     <string name="installer_service_misconfigured">Richte die Aurora-Dienste ein und stelle sicher, dass alle Berechtigungen erteilt wurden</string>
-    <string name="installer_service_unavailable">Installiere Aurora-Dienste 1.0.9 oder höher oder ändere den Installer.</string>
+    <string name="installer_service_unavailable">Installiere Aurora-Dienste 1.0.9 oder höher, oder ändere die Installationsmethode.</string>
     <string name="installer_service_available">Aurora-Dienste sind verfügbar und bereit zur Installation.</string>
     <string name="installer_root_unavailable">Keine Root-Berechtigung. Bitte fehlende Berechtigung gewähren oder andere Installationsmethode wählen.</string>
     <string name="installer_root_available">Root-Zugriff verfügbar</string>
