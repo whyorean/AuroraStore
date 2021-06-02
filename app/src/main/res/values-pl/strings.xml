@@ -138,13 +138,13 @@
     <string name="device_miui_description">Proszę wyłączyć Optymalizację MIUI, aby zezwolić na instalacje albo wybrać Root instalator lub Usługi Aurora.</string>
     <string name="device_huawei_description">Jeśli posiadasz jeden z nowszych modeli urządzenia firmy Huawei, sugerujemy skorzystać z opcji podmiany urządzenia. Czy chcesz teraz użyć funkcji podmiany urządzenia\?</string>
     <string name="device_miui_extra">Opcjonalnie możesz wybrać natywny instalator, ale wtedy nie będziesz w stanie instalować pakietów APK (podzielonych), więc wybór należy do ciebie.</string>
-    <string name="toast_spoof_applied">Urządzenie zostało podmienione.</string>
+    <string name="toast_spoof_applied">Zastosowano podszywanie się urządzenia.</string>
     <string name="toast_permission_granted">Przyznane uprawnienia</string>
-    <string name="toast_developer_setting_failed">Nie udało się otworzyć ustawień programisty. Upewnij się, że są one włączone w ustawieniach urządzenia.</string>
+    <string name="toast_developer_setting_failed">Włącz ustawienia programisty w ustawieniach urządzenia, aby je otworzyć.</string>
     <string name="toast_clipboard_copied">Skopiowano do schowka</string>
     <string name="toast_apk_whitelisted">Biała lista</string>
-    <string name="toast_apk_copy_success">Wyeksportowano plik APK</string>
-    <string name="toast_apk_copy_failed">Nie udało się wyeksportować pliku APK</string>
+    <string name="toast_apk_copy_success">APK wyeksportowane</string>
+    <string name="toast_apk_copy_failed">Nie można wyeksportować APK</string>
     <string name="toast_apk_blacklisted">Dodano do czarnej listy</string>
     <string name="toast_anonymous_restriction">Niedostępne na kontach anonimowych</string>
     <string name="toast_abandon_sessions">Porzucono stare sesje instalacyjne</string>
@@ -206,7 +206,7 @@
     <string name="pref_filter_google_summary">Usuń wszystkie aplikacje Google z wyników wyszukiwania i kategorii aplikacji</string>
     <string name="pref_filter_fdroid_title">Filtruj aplikacje F-Droid</string>
     <string name="pref_filter_fdroid_summary">Usuń aplikacje F-Droid z listy aplikacji</string>
-    <string name="pref_downloader_external_desc">Pamięć zewnętrzna zostanie użyta do przechowywania pobranych lub wyeksportowanych plików, itp.</string>
+    <string name="pref_downloader_external_desc">Zewnętrzna pamięć masowa służy do pobierania, eksportowania itp.</string>
     <string name="pref_downloader_external">Pamięć zewnętrzna</string>
     <string name="pref_downloader_active_summary">Maksymalna liczba aktywnych pobierań</string>
     <string name="pref_downloader_active_title">Aktywne pobieranie</string>
@@ -260,8 +260,8 @@
     <string name="installer_status_failure_blocked">Instalacja zablokowana</string>
     <string name="installer_status_failure_aborted">Instalacja anulowana</string>
     <string name="installer_status_failure">Instalacja nieudana</string>
-    <string name="installer_service_misconfigured">Usługi Aurora nie są skonfigurowane. Upewnij się, że usługa jest włączona i wszystkie uprawnienia zostały przyznane</string>
-    <string name="installer_service_unavailable">Usługi Aurora nie są zainstalowane lub ich wersja jest niewłaściwa (wymagana &gt;= 1.0.9), zainstaluj je lub zmień instalator</string>
+    <string name="installer_service_misconfigured">Skonfiguruj usługi Aurora i przyznaj wszystkie uprawnienia.</string>
+    <string name="installer_service_unavailable">Zainstaluj usługi Aurora w wersji 1.0.9 lub wyższej, lub zmień instalator.</string>
     <string name="installer_service_available">Usługi Aurora są dostępne i gotowe do instalacji.</string>
     <string name="installer_root_unavailable">Brak dostępu do roota. Przyznaj go lub zmień instalator.</string>
     <string name="installer_root_available">Przyznano dostęp do roota</string>
@@ -341,12 +341,12 @@
     <string name="action_check">Sprawdź</string>
     <string name="dialog_desc_native_split">Nie można instalować pakietów aplikacji (dzielonych) za pośrednictwem natywnego instalatora. Zmień instalator na sesję, usługi lub root.</string>
     <string name="toast_page_unavailable">Przeglądana strona jest niedostępna</string>
-    <string name="toast_rated_success">Przesłano ocenę</string>
-    <string name="toast_aas_token_failed">Nie udało się wygenerować tokena AAS</string>
+    <string name="toast_rated_success">Oceniono</string>
+    <string name="toast_aas_token_failed">Nie można wygenerować tokenu AAS</string>
     <string name="toast_double_press_to_exit">Kliknij dwukrotnie, aby wyjść</string>
     <string name="toast_rated_failed">Nie udało się przesłać oceny</string>
     <string name="toast_export_failed">Nie udało się wyeksportować konfiguracji urządzenia</string>
     <string name="toast_export_success">Wyeksportowano konfigurację urządzenia</string>
-    <string name="pref_updates_extended_desc">Włącz sprawdzanie aktualizacji dla wyłączonych aplikacji</string>
+    <string name="pref_updates_extended_desc">Wyszukuje również nowe wersje wyłączonych aplikacji</string>
     <string name="pref_updates_extended">Rozszerzone aktualizacje</string>
 </resources>
