@@ -43,13 +43,13 @@
     <string name="toast_manual_available">Tebrikler, aradığınız sürüm kodu bulundu. Şimdi indiriliyor.</string>
     <string name="toast_manual_unavailable">Aradığınız sürüm kodu bulunamadı.</string>
     <string name="toast_purchase_blocked">Uygulama satın alma anonim hesaplarda kullanılamaz.</string>
-    <string name="toast_spoof_applied">Aygıt kandırması başarıyla uygulandı.</string>
+    <string name="toast_spoof_applied">Aygıt kandırması uygulandı.</string>
     <string name="toast_permission_granted">İzin verildi</string>
-    <string name="toast_developer_setting_failed">Geliştirici ayarları açılamadı, aygıt ayarlarından etkinleştirildiğinden emin olun.</string>
+    <string name="toast_developer_setting_failed">Açmak için aygıt ayarlarından geliştirici ayarlarını açın.</string>
     <string name="toast_clipboard_copied">Panoya kopyalandı</string>
     <string name="toast_apk_whitelisted">Beyaz listeye alındı</string>
-    <string name="toast_apk_copy_success">APK çıkarma başarılı</string>
-    <string name="toast_apk_copy_failed">APK çıkarma başarısız</string>
+    <string name="toast_apk_copy_success">APK dışa aktarıldı</string>
+    <string name="toast_apk_copy_failed">APK dışa aktarılamadı</string>
     <string name="toast_apk_blacklisted">Kara listeye alındı</string>
     <string name="toast_anonymous_restriction">Anonim hesaplarda kullanılamaz</string>
     <string name="toast_abandon_sessions">Eski kurulum oturumları kapatıldı</string>
@@ -130,7 +130,7 @@
     <string name="pref_filter_google_summary">Tüm tekelci Goolag uygulamalarını arama sonuçlarından ve kategorilerden kaldırır</string>
     <string name="pref_filter_fdroid_title">F-Droid uygulamalarını filtrele</string>
     <string name="pref_filter_fdroid_summary">F-Droid uygulamalarını listeden kaldırır</string>
-    <string name="pref_downloader_external_desc">Harici depolama indirilenler ve daha fazlası için kullanılacak.</string>
+    <string name="pref_downloader_external_desc">Harici depolama indirilenler, dışa aktarmalar vb. için kullanılır.</string>
     <string name="pref_downloader_external">Harici depolama kullanıcısı</string>
     <string name="pref_downloader_active_title">Etkin indirme</string>
     <string name="pref_downloader_active_summary">En fazla etkin indirme sayısı</string>
@@ -186,10 +186,10 @@
     <string name="installer_status_failure_blocked">Kurulum engellendi</string>
     <string name="installer_status_failure_aborted">Kurulum iptal edildi</string>
     <string name="installer_status_failure">Kurucu başarısız oldu</string>
-    <string name="installer_service_misconfigured">Aurora hizmetleri yapılandırılmadı. Hizmetin etkinleştirildiğinden ve tüm izinlerin verildiğinden emin olun</string>
-    <string name="installer_service_unavailable">Aurora hizmetleri kurulu değil ya da sürüm uyumsuz (1.0.9 ve üstü gerekir), lütfen kurun veya kurucuyu değiştirin</string>
+    <string name="installer_service_misconfigured">Önce Aurora hizmetlerini kurun ve tüm izinleri verin.</string>
+    <string name="installer_service_unavailable">Aurora hizmetleri 1.0.9 veya üstünü kurun ya da kurucuyu değiştirin.</string>
     <string name="installer_service_available">Aurora hizmetleri var ve kuruluma hazır.</string>
-    <string name="installer_root_unavailable">Kök erişimi yok, izin verin veya kurucuyu değiştirin.</string>
+    <string name="installer_root_unavailable">Kök erişimi yok. İzin verin veya kurucuyu değiştirin.</string>
     <string name="installer_root_available">Kök erişimi var</string>
     <string name="filter_review_two">İki</string>
     <string name="filter_review_three">Üç</string>
@@ -341,12 +341,12 @@
     <string name="action_check">Denetle</string>
     <string name="toast_aas_token_failed">AAS Belirteci oluşturulamadı</string>
     <string name="toast_rated_failed">Derecelendirme gönderilemedi</string>
-    <string name="toast_rated_success">Başarıyla derecelendirildi</string>
+    <string name="toast_rated_success">Derecelendirildi</string>
     <string name="toast_page_unavailable">Göz atma sayfası kullanılamıyor</string>
     <string name="toast_double_press_to_exit">Çıkmak için iki kere tıklayın</string>
     <string name="dialog_desc_native_split">Paketlenmiş (bölünmüş) uygulamaları Yerel Kurucu aracılığıyla kuramazsınız. Kurucunuzu Oturum, Hizmetler veya Kök olarak değiştirin.</string>
     <string name="toast_export_failed">Aygıt yapılandırması dışa aktarılamadı</string>
-    <string name="toast_export_success">Aygıt yapılandırması başarıyla dışarı aktarıldı</string>
-    <string name="pref_updates_extended_desc">Devre dışı bırakılmış uygulamalar için güncellemeleri denetlemeyi etkinleştir</string>
+    <string name="toast_export_success">Aygıt yapılandırması dışarı aktarıldı</string>
+    <string name="pref_updates_extended_desc">Devre dışı bırakılan uygulamaların da yeni sürümlerini arar</string>
     <string name="pref_updates_extended">Genişletilmiş güncellemeler</string>
 </resources>
