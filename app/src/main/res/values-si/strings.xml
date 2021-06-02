@@ -367,4 +367,5 @@
     <string name="pref_install_delete_title"></string>
     <string name="tab_top_charts"></string>
     <string name="tab_top_grossing"></string>
+    <string name="toast_aas_token_failed"></string>
 </resources>
