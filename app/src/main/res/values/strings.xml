@@ -206,10 +206,10 @@
     <string name="filter_review_three">"Three"</string>
     <string name="filter_review_two">"Two"</string>
     <string name="installer_root_available">"Root access available"</string>
-    <string name="installer_root_unavailable">"No Root, grant root access or change the installer."</string>
+    <string name="installer_root_unavailable">No root access. Grant it or change the installer.</string>
     <string name="installer_service_available">"Aurora services is available and ready to install."</string>
-    <string name="installer_service_unavailable">"Aurora services is either not installed or version is incorrect (required &gt;= 1.0.9), kindly install it or change installer"</string>
-    <string name="installer_service_misconfigured">"Aurora services not configured. Make sure service is enabled &amp; all permissions are granted"</string>
+    <string name="installer_service_unavailable">Install Aurora services 1.0.9 or above, or change the installer.</string>
+    <string name="installer_service_misconfigured">Set up Aurora services and grant all permissions first.</string>
     <string name="installer_status_failure">"Installer failed"</string>
     <string name="installer_status_failure_aborted">"Installation cancelled"</string>
     <string name="installer_status_failure_blocked">"Installation was blocked"</string>
@@ -252,7 +252,7 @@
     <string name="onboarding_tos_error">"You need to mark TOS read first."</string>
     <string name="onboarding_welcome_select">"How you doing?"</string>
     <string name="onboarding_permission_esa">"External Storage Access"</string>
-    <string name="onboarding_permission_esa_desc">"To save downloads (APKs &amp; OBBs), export &amp;  import device configs on external storage."</string>
+    <string name="onboarding_permission_esa_desc">To save downloads (APKs &amp; OBBs), export and import device configs to and from external storage.</string>
     <string name="onboarding_permission_esm">"External Storage Manager"</string>
     <string name="onboarding_permission_esm_desc">"Required on devices running Android R+, additional to External Storage Access"</string>
     <string name="onboarding_permission_installer">"Installer Permission"</string>
@@ -266,7 +266,7 @@
     <string name="pref_downloader_active_summary">"Maximum number of active downloads"</string>
     <string name="pref_downloader_active_title">"Active download"</string>
     <string name="pref_downloader_external">"User external storage"</string>
-    <string name="pref_downloader_external_desc">"External storage will be used for downloads, exports etc."</string>
+    <string name="pref_downloader_external_desc">External storage is used for downloads, exports, etc.</string>
     <string name="pref_filter_fdroid_summary">"Removes F-Droid apps from app lists"</string>
     <string name="pref_filter_fdroid_title">"Filter F-Droid apps"</string>
     <string name="pref_filter_google_summary">"Removes all Google Apps from search results and category apps"</string>
@@ -306,7 +306,7 @@
     <string name="pref_ui_similar_apps">"Similar and related apps"</string>
     <string name="pref_ui_similar_apps_desc">"Display similar and related clusters on app details page"</string>
     <string name="pref_updates_extended">Extended updates</string>
-    <string name="pref_updates_extended_desc">Enable to check updates for disabled apps</string>
+    <string name="pref_updates_extended_desc">Looks for new versions of disabled apps too</string>
     <string name="purchase_failed">"Download Failed"</string>
     <string name="purchase_invalid">"App not purchased"</string>
     <string name="purchase_unsupported">"App not supported"</string>
@@ -349,21 +349,21 @@
     <string name="toast_abandon_sessions">"Old installation sessions abandoned"</string>
     <string name="toast_anonymous_restriction">"Not available on anonymous accounts"</string>
     <string name="toast_apk_blacklisted">"Blacklisted"</string>
-    <string name="toast_apk_copy_failed">"APK export failed"</string>
-    <string name="toast_apk_copy_success">"APK exported successfully"</string>
+    <string name="toast_apk_copy_failed">Could not export APK</string>
+    <string name="toast_apk_copy_success">APK exported</string>
     <string name="toast_apk_whitelisted">"Whitelisted"</string>
     <string name="toast_clipboard_copied">"Copied to clipboard"</string>
-    <string name="toast_developer_setting_failed">"Failed to open developer settings, make sure it is enabled from device settings."</string>
+    <string name="toast_developer_setting_failed">Turn on developer settings from the device settings to open them.</string>
     <string name="toast_permission_granted">"Permission granted"</string>
-    <string name="toast_spoof_applied">"Device spoof applied successfully."</string>
+    <string name="toast_spoof_applied">Device spoof applied.</string>
     <string name="toast_purchase_blocked">"App purchases not available on Anonymous accounts."</string>
     <string name="toast_manual_unavailable">"The version code you are requesting is unavailable."</string>
     <string name="toast_manual_available">"Congrats, requested version code is available, downloading now."</string>
     <string name="toast_double_press_to_exit">Click twice to exit</string>
     <string name="toast_page_unavailable">Browse page unavailable</string>
-    <string name="toast_rated_success">Rated successfully</string>
-    <string name="toast_rated_failed">Failed to submit rating</string>
-    <string name="toast_aas_token_failed">Failed to generate AAS Token</string>
-    <string name="toast_export_success">Device config exported successfully</string>
-    <string name="toast_export_failed">Failed to export device config</string>
+    <string name="toast_rated_success">Rated</string>
+    <string name="toast_rated_failed">Could not submit rating</string>
+    <string name="toast_aas_token_failed">Could not generate AAS Token</string>
+    <string name="toast_export_success">Device config exported</string>
+    <string name="toast_export_failed">Could not export device config</string>
 </resources>
