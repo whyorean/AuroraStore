@@ -100,11 +100,11 @@
     <string name="action_filter_apply">Anwenden</string>
     <string name="action_favourites">Favoriten</string>
     <string name="action_apply">Anwenden</string>
-    <string name="toast_spoof_applied">Gerätevortäuschung erfolgreich angewendet.</string>
+    <string name="toast_spoof_applied">Gerätevortäuschung angewendet.</string>
     <string name="toast_permission_granted">Berechtigung gewährt</string>
-    <string name="toast_developer_setting_failed">Die Entwicklereinstellungen konnten nicht geöffnet werden, stelle sicher, dass sie in den Geräteeinstellungen aktiviert sind.</string>
-    <string name="toast_apk_copy_success">APK erfolgreich exportiert</string>
-    <string name="toast_apk_copy_failed">APK-Export fehlgeschlagen</string>
+    <string name="toast_developer_setting_failed">Aktiviere die Entwickleroptionen in den Geräteeinstellungen, um sie zu öffnen.</string>
+    <string name="toast_apk_copy_success">APK exportiert</string>
+    <string name="toast_apk_copy_failed">APK konnte nicht exportiert werden</string>
     <string name="toast_apk_blacklisted">Auf der Sperrliste</string>
     <string name="toast_anonymous_restriction">Nicht verfügbar bei anonymen Konten</string>
     <string name="toast_abandon_sessions">Alte Installationssitzungen abgebrochen</string>
@@ -147,7 +147,7 @@
     <string name="pref_install_delete_title">APK nach der Installation löschen</string>
     <string name="pref_install_delete_summary">APKs werden standardmäßig gelöscht</string>
     <string name="pref_install_auto_title">APKs nach dem Herunterladen automatisch installieren</string>
-    <string name="pref_downloader_external_desc">Den externen Speicher fürs Herunterladen, Exportieren usw. verwenden</string>
+    <string name="pref_downloader_external_desc">Der externe Speicher wird fürs Herunterladen, Exportieren usw. verwendet</string>
     <string name="pref_downloader_active_title">Aktive Datenübertragung</string>
     <string name="pref_downloader_active_summary">Maximale Anzahl von gleichzeitigen Datenübertragungen</string>
     <string name="pref_abandon_session_desc">Abgebrochene oder ausstehende Installationssitzungen löschen</string>
@@ -193,8 +193,8 @@
     <string name="installer_status_failure_blocked">Installation wurde blockiert</string>
     <string name="installer_status_failure_aborted">Installation abgebrochen</string>
     <string name="installer_status_failure">Installation fehlgeschlagen</string>
-    <string name="installer_service_misconfigured">Aurora-Dienste nicht konfiguriert. Stelle sicher, dass diese aktiviert sind und alle Berechtigungen erteilt wurden</string>
-    <string name="installer_service_unavailable">Aurora-Dienste sind entweder nicht installiert oder veraltet (erforderlich &gt;= 1.0.9), bitte installiere diese oder wechsel die Installationsart</string>
+    <string name="installer_service_misconfigured">Richte die Aurora-Dienste ein und stelle sicher, dass alle Berechtigungen erteilt wurden</string>
+    <string name="installer_service_unavailable">Installiere Aurora-Dienste 1.0.9 oder höher oder ändere den Installer.</string>
     <string name="installer_service_available">Aurora-Dienste sind verfügbar und bereit zur Installation.</string>
     <string name="installer_root_unavailable">Keine Root-Berechtigung! Bitte fehlende Berechtigung gewähren oder andere Installationsmethode wählen.</string>
     <string name="installer_root_available">Root-Zugriff verfügbar</string>
@@ -342,11 +342,11 @@
     <string name="dialog_desc_native_split">Bundle (Split)-APKs können nicht mit dem nativen Installer installiert werden. Ändere die Installationsmethode zu Sitzung, Dienste oder Root.</string>
     <string name="toast_double_press_to_exit">Zweimal drücken zum Beenden</string>
     <string name="toast_page_unavailable">Seite nicht verfügbar</string>
-    <string name="toast_rated_success">Erfolgreich bewertet</string>
-    <string name="toast_rated_failed">Bewertung fehlgeschlagen</string>
-    <string name="toast_aas_token_failed">Erstellung des AAS-Token fehlgeschlagen</string>
-    <string name="toast_export_failed">Fehler beim Exportieren der Gerätekonfiguration</string>
-    <string name="toast_export_success">Gerätekonfiguration erfolgreich exportiert</string>
-    <string name="pref_updates_extended_desc">Aktivieren, um nach Aktualisierungen für deaktivierte Anwendungen zu prüfen</string>
+    <string name="toast_rated_success">Bewertet</string>
+    <string name="toast_rated_failed">Bewertung konnte nicht übermittelt werden</string>
+    <string name="toast_aas_token_failed">Konnte keinen AAS-Token erstellen</string>
+    <string name="toast_export_failed">Konnte die Gerätekonfiguration nicht exportieren</string>
+    <string name="toast_export_success">Gerätekonfiguration exportiert</string>
+    <string name="pref_updates_extended_desc">Prüft auch für deaktivierte Anwendungen auf neue Versionen</string>
     <string name="pref_updates_extended">Erweiterte Aktualisierungen</string>
 </resources>
