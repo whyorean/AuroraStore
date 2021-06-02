@@ -32,4 +32,23 @@
     <string name="title_manual_download">Descarga manual</string>
     <string name="action_all_reviews">Toles reseñes</string>
     <string name="action_accounts">Cuentes</string>
+    <string name="onboarding_permission_esa_desc"></string>
+    <string name="account_login_using"></string>
+    <string name="installer_root_unavailable"></string>
+    <string name="installer_service_misconfigured"></string>
+    <string name="action_logout"></string>
+    <string name="pref_updates_extended_desc"></string>
+    <string name="toast_export_success"></string>
+    <string name="toast_rated_success"></string>
+    <string name="toast_apk_copy_failed"></string>
+    <string name="installer_service_unavailable"></string>
+    <string name="account_logout"></string>
+    <string name="toast_spoof_applied"></string>
+    <string name="toast_aas_token_failed"></string>
+    <string name="toast_rated_failed"></string>
+    <string name="pref_downloader_external_desc"></string>
+    <string name="toast_apk_copy_success"></string>
+    <string name="toast_export_failed"></string>
+    <string name="toast_developer_setting_failed"></string>
+    <string name="about_paypal"></string>
 </resources>
