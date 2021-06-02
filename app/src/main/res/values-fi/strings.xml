@@ -153,7 +153,7 @@
     <string name="details_privacy">Yksityisyys</string>
     <string name="details_permission">Käyttöoikeus</string>
     <string name="details_paid">Osta</string>
-    <string name="details_others_think">Katso, mitä muut ajattelevat tästä sovelluksesta.</string>
+    <string name="details_others_think">Katso, mitä muut ajattelevat tästä sovelluksesta</string>
     <string name="details_no_whitelist">Sovelluksia ei ole valkolistalla</string>
     <string name="details_no_updates">Päivityksiä ei ole saatavana</string>
     <string name="details_no_reviews">Arvosteluja ei ole saatavana</string>
@@ -245,4 +245,5 @@
     <string name="action_all_reviews">Kaikki arvostelut</string>
     <string name="account_anonymous">Nimetön</string>
     <string name="about_telegram_summary">Liity Auroran tukiryhmään keskusteluja tai ehdotuksia varten.</string>
+    <string name="toast_rated_success">Arvioitu</string>
 </resources>
