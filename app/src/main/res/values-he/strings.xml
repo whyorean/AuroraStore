@@ -364,4 +364,8 @@
     <string name="pref_common_advance"></string>
     <string name="pref_common_extra"></string>
     <string name="app_updater_service_notif_text"></string>
+    <string name="toast_aas_token_failed"></string>
+    <string name="toast_export_success"></string>
+    <string name="toast_export_failed"></string>
+    <string name="toast_rated_success"></string>
 </resources>
