@@ -13,8 +13,8 @@
     <string name="details_dev_email">E-mail</string>
     <string name="toast_clipboard_copied">Copiato negli appunti</string>
     <string name="toast_apk_whitelisted">Rimossa dalla lista nera</string>
-    <string name="toast_apk_copy_success">APK esportato con successo</string>
-    <string name="toast_apk_copy_failed">Esportazione APK fallita</string>
+    <string name="toast_apk_copy_success">APK esportato</string>
+    <string name="toast_apk_copy_failed">Impossibile esportare l’APK</string>
     <string name="toast_apk_blacklisted">Messo in lista nera</string>
     <string name="title_updates">Aggiornamenti</string>
     <string name="title_settings">Impostazioni</string>
@@ -32,10 +32,10 @@
     <string name="title_download_manager">Trasferimenti</string>
     <string name="purchase_failed">Trasferimento fallito</string>
     <string name="pref_install_auto_title">Installa automaticamente gli APK dopo il trasferimento</string>
-    <string name="pref_downloader_external_desc">L’archiviazione esterna verrà utilizzata per scaricamenti, esportazioni, ecc.</string>
+    <string name="pref_downloader_external_desc">L’archiviazione esterna viene utilizzata per scaricamenti, esportazioni, ecc.</string>
     <string name="pref_downloader_active_title">Trasferimento attivo</string>
     <string name="pref_downloader_active_summary">Numero massimo di trasferimenti attivi</string>
-    <string name="onboarding_permission_esa_desc">Per salvare gli scaricamenti (APK e OBB), esportare e importare le configurazioni del dispositivo nell’archiviazione esterna.</string>
+    <string name="onboarding_permission_esa_desc">Per salvare gli scaricamenti (APK e OBB), esportare e importare le configurazioni del dispositivo da e verso l’archiviazione esterna.</string>
     <string name="download_resume_all">Riprendi tutti</string>
     <string name="download_resume">Riprendi</string>
     <string name="download_queued">In coda</string>
@@ -218,9 +218,9 @@
     <string name="about_bitcoin_bch">Bitcoin Cash</string>
     <string name="about_bhim_summary">Dona via UPI</string>
     <string name="about_bhim">BHIM - UPI</string>
-    <string name="toast_spoof_applied">Simulazione del dispositivo applicata correttamente.</string>
+    <string name="toast_spoof_applied">Simulazione del dispositivo applicata.</string>
     <string name="toast_permission_granted">Autorizzazione concessa</string>
-    <string name="toast_developer_setting_failed">Impossibile aprire le impostazioni sviluppatore, assicurarsi che siano abilitate dalle impostazioni del dispositivo.</string>
+    <string name="toast_developer_setting_failed">Attiva le impostazioni sviluppatore dalle impostazioni del dispositivo per aprirle.</string>
     <string name="toast_anonymous_restriction">Non disponibile su profili anonimi</string>
     <string name="toast_abandon_sessions">Vecchie sessioni di installazione abbandonate</string>
     <string name="title_spoof_manager">Gestore simulazione</string>
@@ -299,10 +299,10 @@
     <string name="installer_status_failure_blocked">L’installazione è stata bloccata</string>
     <string name="installer_status_failure">Installazione fallita</string>
     <string name="installer_status_failure_aborted">Installazione annullata</string>
-    <string name="installer_service_misconfigured">Servizi Aurora non è configurato; assicurati che il servizio sia abilitato e che tutti le autorizzazioni siano state concesse</string>
-    <string name="installer_service_unavailable">Servizi Aurora non è installato o la versione non è corretta (richiesto &gt;= 1.0.9); si prega di installarlo o di modificare l’installatore</string>
+    <string name="installer_service_misconfigured">Imposta prima i servizi Aurora e concedi tutte le autorizzazioni.</string>
+    <string name="installer_service_unavailable">Installa i servizi Aurora 1.0.9 o superiore, o cambia l’installatore.</string>
     <string name="installer_service_available">Servizi Aurora è disponibile e pronto per l’installazione.</string>
-    <string name="installer_root_unavailable">Nessun accesso root. Consentire l’accesso root o scegliere un altro installatore.</string>
+    <string name="installer_root_unavailable">Nessun accesso root. Consentilo o cambia l’installatore.</string>
     <string name="installer_root_available">Accesso root disponibile</string>
     <string name="filter_review_two">Due</string>
     <string name="filter_review_three">Tre</string>
@@ -340,13 +340,13 @@
     <string name="title_manual_download">Scaricamento manuale</string>
     <string name="action_check">Verifica</string>
     <string name="dialog_desc_native_split">Non puoi installare le applicazioni aggregate (divise) con l’installatore nativo. Cambia l’installatore in Sessione, Servizi o Root.</string>
-    <string name="toast_aas_token_failed">Impossibile generare il token AAS</string>
+    <string name="toast_aas_token_failed">Impossibile generare un token AAS</string>
     <string name="toast_rated_failed">Impossibile inviare la valutazione</string>
-    <string name="toast_rated_success">Valutato con successo</string>
+    <string name="toast_rated_success">Valutato</string>
     <string name="toast_page_unavailable">Pagina non disponibile</string>
     <string name="toast_double_press_to_exit">Clicca due volte per uscire</string>
     <string name="toast_export_failed">Impossibile esportare la configurazione del dispositivo</string>
-    <string name="toast_export_success">La configurazione del dispositivo è stata esportata con successo</string>
-    <string name="pref_updates_extended_desc">Abilita per controllare gli aggiornamenti per le app disabilitate</string>
+    <string name="toast_export_success">Configurazione del dispositivo esportata</string>
+    <string name="pref_updates_extended_desc">Cerca anche nuove versioni delle app disabilitate</string>
     <string name="pref_updates_extended">Aggiornamenti estesi</string>
 </resources>
