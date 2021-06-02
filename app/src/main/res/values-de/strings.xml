@@ -189,7 +189,7 @@
     <string name="installer_status_failure_storage">Zu wenig Speicherplatz</string>
     <string name="installer_status_failure_invalid">Ungültige oder beschädigte APK-Datei</string>
     <string name="installer_status_failure_conflict">Konfliktverursachendes Paket existiert</string>
-    <string name="installer_status_failure_session">Sitzung konnte nicht erstellt werden</string>
+    <string name="installer_status_failure_session">Konnte keine Sitzung erstellen</string>
     <string name="installer_status_failure_blocked">Installation wurde blockiert</string>
     <string name="installer_status_failure_aborted">Installation abgebrochen</string>
     <string name="installer_status_failure">Installation fehlgeschlagen</string>
