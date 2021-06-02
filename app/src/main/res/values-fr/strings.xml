@@ -64,13 +64,13 @@
     <string name="title_no_network">Pas de réseau</string>
     <string name="title_updates">Mises à jour</string>
     <string name="title_spoof_manager">Gestionnaire d’usurpation</string>
-    <string name="toast_developer_setting_failed">Échec de l’ouverture des paramètres du développeur, assurez-vous qu’ils sont activés à partir des paramètres de l’appareil.</string>
+    <string name="toast_developer_setting_failed">Activez les paramètres du développeur à partir des paramètres de l’appareil pour les ouvrir.</string>
     <string name="toast_clipboard_copied">Copié dans le presse-papier</string>
     <string name="toast_apk_whitelisted">Sur liste blanche</string>
-    <string name="toast_apk_copy_success">APK exporté avec succès</string>
-    <string name="toast_apk_copy_failed">Échec de l’exportation de l’APK</string>
+    <string name="toast_apk_copy_success">APK exporté</string>
+    <string name="toast_apk_copy_failed">Impossible d’exporter l’APK</string>
     <string name="toast_apk_blacklisted">Sur liste noire</string>
-    <string name="toast_spoof_applied">Usurpation d’appareil appliquée avec succès.</string>
+    <string name="toast_spoof_applied">Usurpation d’appareil appliquée.</string>
     <string name="about_xda_summary">Voir le fil de discussion XDA d’Aurora Store pour des discussions ou des suggestions.</string>
     <string name="about_bitcoin_eth_summary">Faire un don via Ethereum (ETH)</string>
     <string name="about_bitcoin_eth">Ethereum</string>
@@ -271,7 +271,7 @@
     <string name="pref_install_auto_summary">Les applications sont installées instantanément une fois le téléchargement terminé</string>
     <string name="pref_filter_google_summary">Supprime toutes les applications Google des résultats de recherche et des applications de catégorie</string>
     <string name="pref_filter_fdroid_summary">Supprime les applications F-droid des listes d’applications</string>
-    <string name="pref_downloader_external_desc">Le stockage externe sera utilisé pour les téléchargements, les exportations, etc.</string>
+    <string name="pref_downloader_external_desc">Le stockage externe est utilisé pour les téléchargements, les exportations, etc.</string>
     <string name="pref_downloader_external">Stockage externe de l’utilisateur</string>
     <string name="pref_downloader_active_title">Téléchargement actif</string>
     <string name="pref_downloader_active_summary">Nombre maximal de téléchargements actifs</string>
@@ -282,7 +282,7 @@
     <string name="onboarding_permission_installer">Autorisation de l’installateur</string>
     <string name="onboarding_permission_esm_desc">Nécessaire sur les appareils exécutant Android R+, en plus de l’accès au stockage externe</string>
     <string name="onboarding_permission_esm">Gestionnaire de stockage externe</string>
-    <string name="onboarding_permission_esa_desc">Pour enregistrer les téléchargements (APK et OBB), exporter et importer les configurations de l’appareil sur un stockage externe.</string>
+    <string name="onboarding_permission_esa_desc">Pour sauvegarder les téléchargements (APK et OBB), exporter et importer les configurations de l’appareil vers et depuis le stockage externe.</string>
     <string name="onboarding_permission_esa">Accès au stockage externe</string>
     <string name="onboarding_tos_error">Vous devez d’abord marquer les CdU comme lues.</string>
     <string name="onboarding_tos_confirmation">J’ai lu les conditions d’utilisation d’Aurora Store.</string>
@@ -294,10 +294,10 @@
     <string name="list_update_all_txt_one">mise à jour disponible</string>
     <string name="dialog_desc_self_update">Souhaitez-vous mettre à jour \?</string>
     <string name="dialog_title_self_update">Nouvelle mise à jour disponible</string>
-    <string name="installer_service_misconfigured">Services Aurora non configurés. Assurez-vous que le service est activé et que toutes les autorisations sont accordées</string>
-    <string name="installer_service_unavailable">Les services Aurora ne sont pas installés ou la version est incorrecte (requis&gt; = 1.0.9), veuillez l’installer ou changer de programme d’installation</string>
+    <string name="installer_service_misconfigured">Configurez d’abord les services Aurora et accordez toutes les autorisations.</string>
+    <string name="installer_service_unavailable">Installez les services Aurora 1.0.9 ou ultérieurs, ou changez de programme d’installation.</string>
     <string name="installer_service_available">Les services Aurora sont disponibles et prêts à être installés.</string>
-    <string name="installer_root_unavailable">Pas de racine, accordez un accès à la racine ou changez d’installateur.</string>
+    <string name="installer_root_unavailable">Pas d’accès racine. Accordez-le ou changez l’installateur.</string>
     <string name="filter_review_all">Tout</string>
     <string name="exodus_view_report">Voir le rapport</string>
     <string name="exodus_view_more">Voir</string>
@@ -340,13 +340,13 @@
     <string name="title_manual_download">Téléchargement manuel</string>
     <string name="action_check">Vérifier</string>
     <string name="dialog_desc_native_split">Vous ne pouvez pas installer d’applications groupées (fractionnées) via le programme d’installation natif. Changez de méthode d’installation pour Session, Services ou Racine.</string>
-    <string name="toast_aas_token_failed">Échec de la génération du jeton AAS</string>
-    <string name="toast_rated_failed">Échec de l’évaluation</string>
-    <string name="toast_rated_success">Évalué avec succès</string>
+    <string name="toast_aas_token_failed">Impossible de générer le jeton AAS</string>
+    <string name="toast_rated_failed">Impossible de soumettre l’évaluation</string>
+    <string name="toast_rated_success">Évalué</string>
     <string name="toast_page_unavailable">Page de navigation indisponible</string>
     <string name="toast_double_press_to_exit">Cliquez deux fois pour quitter</string>
-    <string name="toast_export_failed">Échec de l’exportation de la configuration de l’appareil</string>
-    <string name="toast_export_success">La configuration de l’appareil a été exportée avec succès</string>
-    <string name="pref_updates_extended_desc">Vérifier les mises à jour des applications désactivées</string>
+    <string name="toast_export_failed">Impossible d’exporter la configuration du dispositif</string>
+    <string name="toast_export_success">Exportation de la configuration du dispositif</string>
+    <string name="pref_updates_extended_desc">Recherche également les nouvelles versions des applications désactivées</string>
     <string name="pref_updates_extended">Mises à jour étendues</string>
 </resources>
