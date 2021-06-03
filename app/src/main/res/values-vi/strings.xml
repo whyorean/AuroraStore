@@ -130,13 +130,13 @@
     <string name="action_later">Để sau</string>
     <string name="action_clear_restart">Xóa dữ liệu</string>
     <string name="toast_purchase_blocked">Mua ứng dụng không khả dụng trên tài khoản Ẩn danh.</string>
-    <string name="toast_spoof_applied">Đã áp dụng thành công che giấu thiết bị.</string>
+    <string name="toast_spoof_applied">Đã áp dụng che giấu thiết bị.</string>
     <string name="toast_permission_granted">Đã cấp quyền</string>
-    <string name="toast_developer_setting_failed">Mở cài đặt nhà phát triển thất bại, đảm bảo nó đã được kích hoạt từ cài đặt của thiết bị.</string>
+    <string name="toast_developer_setting_failed">Bật cài đặt cho nhà phát triển từ cài đặt thiết bị để mở nó.</string>
     <string name="toast_clipboard_copied">Đã chép vào bộ nhớ tạm</string>
     <string name="toast_apk_whitelisted">Đã vào danh sách trắng</string>
-    <string name="toast_apk_copy_success">Đã xuất APK thành công</string>
-    <string name="toast_apk_copy_failed">Xuất APK thất bại</string>
+    <string name="toast_apk_copy_success">Đã xuất APK</string>
+    <string name="toast_apk_copy_failed">Không thể xuất APK</string>
     <string name="toast_apk_blacklisted">Đã vào danh dách đen</string>
     <string name="toast_anonymous_restriction">Không khả dụng trên tài khoản ẩn danh</string>
     <string name="toast_abandon_sessions">Các phiên cài đặt cũ đã bị bỏ</string>
@@ -205,7 +205,7 @@
     <string name="pref_filter_google_summary">Xóa tất cả ứng dụng của Google khỏi kết quả tìm kiếm và danh mục ứng dụng</string>
     <string name="pref_filter_fdroid_title">Lọc ứng dụng F-Droid</string>
     <string name="pref_filter_fdroid_summary">Không bao gồm các ứng dụng của F-Droid trong danh sách ứng dụng</string>
-    <string name="pref_downloader_external_desc">Bộ nhớ ngoài sẽ được sử dụng để tải xuống, xuất, v.v.</string>
+    <string name="pref_downloader_external_desc">Bộ nhớ ngoài được sử dụng để tải xuống, xuất, v.v.</string>
     <string name="pref_downloader_external">Bộ nhớ ngoài của người dùng</string>
     <string name="pref_downloader_active_title">Đang tải xuống</string>
     <string name="pref_downloader_active_summary">Số lượng tải xuống cùng lúc tối đa</string>
@@ -216,7 +216,7 @@
     <string name="onboarding_permission_installer">Quyền của trình cài đặt</string>
     <string name="onboarding_permission_esm_desc">Yêu cầu trên các thiết bị chạy Android R+, bổ sung Quyền truy cập bộ nhớ ngoài</string>
     <string name="onboarding_permission_esm">Trình quản lý bộ nhớ ngoài</string>
-    <string name="onboarding_permission_esa_desc">Để lưu các tải xuống (APK và OBB), xuất &amp; nhập cấu hình thiết bị trên bộ nhớ ngoài.</string>
+    <string name="onboarding_permission_esa_desc">Để lưu các mục tải xuống (APK &amp; OBB), hãy xuất và nhập thiết lập thiết bị ra và từ bộ nhớ ngoài.</string>
     <string name="onboarding_permission_esa">Quyền truy cập bộ nhớ ngoài</string>
     <string name="onboarding_welcome_select">Bạn tốt chứ\?</string>
     <string name="onboarding_tos_error">Bạn cần đánh dấu đã đọc TOS trước.</string>
@@ -256,10 +256,10 @@
     <string name="installer_status_failure_blocked">Cài đặt đã bị chặn</string>
     <string name="installer_status_failure_aborted">Cài đặt bị huỷ bỏ</string>
     <string name="installer_status_failure">Trình cài đặt thất bại</string>
-    <string name="installer_service_misconfigured">Dịch vụ Aurora chưa được cấu hình. Hãy chắc rằng dịch vụ đang bật và tất cả các quyền đã được cấp</string>
-    <string name="installer_service_unavailable">Dịch vụ Aurora chưa được cài đặt hoặc không đúng phiên bản (yêu cầu &gt;=1.0.9), vui lòng cài đặt hoặc thay đổi trình cài đặt</string>
+    <string name="installer_service_misconfigured">Thiết lập Dịch vụ Aurora và cấp tất cả các quyền trước tiên.</string>
+    <string name="installer_service_unavailable">Cài đặt Dịch vụ Aurora 1.0.9 hoặc mới hơn, hoặc đổi trình cài đặt.</string>
     <string name="installer_service_available">Dịch vụ Aurora có sẵn và sẵn sàng cài đặt.</string>
-    <string name="installer_root_unavailable">Không Root, cấp quyền root hoặc thay đổi trình cài đặt.</string>
+    <string name="installer_root_unavailable">Không có quyền truy cập root. Hãy cấp quyền root hoặc đổi trình cài đặt.</string>
     <string name="installer_root_available">Quyền truy cập root có sẵn</string>
     <string name="filter_review_two">Hai</string>
     <string name="filter_review_three">Ba</string>
@@ -323,9 +323,9 @@
     <string name="action_check">Kiểm tra</string>
     <string name="pref_common_extra">Thêm</string>
     <string name="pref_common_advance">Nâng cao</string>
-    <string name="toast_aas_token_failed">Tạo Token AAS thất bại</string>
-    <string name="toast_rated_failed">Gửi đánh giá thất bại</string>
-    <string name="toast_rated_success">Đánh giá thành công</string>
+    <string name="toast_aas_token_failed">Không thể tạo Token AAS</string>
+    <string name="toast_rated_failed">Không thể gửi đánh giá</string>
+    <string name="toast_rated_success">Đã đánh giá</string>
     <string name="dialog_desc_native_split">Bạn không thể cài đặt ứng dụng gói(tách) bằng trình cài đặt gốc. Hãy thay đổi trình cài đặt thành Phiên, Dịch vụ hoặc Root.</string>
     <string name="details_no_app_match">Không tìm thấy ứng dụng nào trùng khớp</string>
     <string name="toast_page_unavailable">Trang duyệt không có sẵn</string>
@@ -345,8 +345,8 @@
     <string name="pref_ui_layout">Bố cục</string>
     <string name="pref_ui_accent_title">Màu nổi bật</string>
     <string name="onboarding_title_accent">Màu nổi bật</string>
-    <string name="toast_export_failed">Xuất thiết lập thiết bị thất bại</string>
-    <string name="toast_export_success">Xuất thiết lập thiết bị thành công</string>
-    <string name="pref_updates_extended_desc">Bật để kiểm tra cập nhật cho các ứng dụng bị tắt</string>
+    <string name="toast_export_failed">Không thể xuất thiết lập thiết bị</string>
+    <string name="toast_export_success">Đã xuất thiết lập thiết bị</string>
+    <string name="pref_updates_extended_desc">Cũng tìm các phiên bản mới của các ứng dụng bị tắt</string>
     <string name="pref_updates_extended">Bản cập nhật mở rộng</string>
 </resources>
