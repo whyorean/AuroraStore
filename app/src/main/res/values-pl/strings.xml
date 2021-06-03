@@ -221,7 +221,7 @@
     <string name="onboarding_permission_installer">Uprawnienia instalatora</string>
     <string name="onboarding_permission_esm_desc">Wymagany na urządzeniach z systemem Android R+, dodatkowy dostęp do pamięci zewnętrznej</string>
     <string name="onboarding_permission_esm">Menedżer pamięci zewnętrznej</string>
-    <string name="onboarding_permission_esa_desc">Aby zapisać pobrane pliki (APK i OBB), wyeksportować i zaimportować konfiguracje urządzenia w pamięci zewnętrznej.</string>
+    <string name="onboarding_permission_esa_desc">Aby zapisać pobrane pliki (APK i OBB), wyeksportować i zaimportować konfiguracje urządzenia do i z pamięci zewnętrznej.</string>
     <string name="onboarding_permission_esa">Dostęp do pamięci zewnętrznej</string>
     <string name="onboarding_tos_error">Najpierw zaznacz, że przeczytałeś Warunki Świadczenia Usługi.</string>
     <string name="onboarding_tos_confirmation">Zapoznałem się z Warunkami Świadczenia Usługi dla Aurora Store.</string>
@@ -263,7 +263,7 @@
     <string name="installer_service_misconfigured">Usługi Aurora nie są skonfigurowane. Upewnij się, że usługa jest włączona i wszystkie uprawnienia zostały przyznane</string>
     <string name="installer_service_unavailable">Usługi Aurora nie są zainstalowane lub ich wersja jest niewłaściwa (wymagana &gt;= 1.0.9), zainstaluj je lub zmień instalator</string>
     <string name="installer_service_available">Usługi Aurora są dostępne i gotowe do instalacji.</string>
-    <string name="installer_root_unavailable">Brak roota, przyznaj dostęp do roota lub zmień instalator.</string>
+    <string name="installer_root_unavailable">Brak dostępu do roota. Przyznaj go lub zmień instalator.</string>
     <string name="installer_root_available">Przyznano dostęp do roota</string>
     <string name="title_installed">Zainstalowane</string>
     <string name="filter_review_two">Dwa</string>
