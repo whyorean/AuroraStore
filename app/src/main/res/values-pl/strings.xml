@@ -138,7 +138,7 @@
     <string name="device_miui_description">Proszę wyłączyć Optymalizację MIUI, aby zezwolić na instalacje albo wybrać Root instalator lub Usługi Aurora.</string>
     <string name="device_huawei_description">Jeśli posiadasz jeden z nowszych modeli urządzenia firmy Huawei, sugerujemy skorzystać z opcji podmiany urządzenia. Czy chcesz teraz użyć funkcji podmiany urządzenia\?</string>
     <string name="device_miui_extra">Opcjonalnie możesz wybrać natywny instalator, ale wtedy nie będziesz w stanie instalować pakietów APK (podzielonych), więc wybór należy do ciebie.</string>
-    <string name="toast_spoof_applied">Zastosowano podszywanie się urządzenia.</string>
+    <string name="toast_spoof_applied">Zastosowano podmianę urządzenia.</string>
     <string name="toast_permission_granted">Przyznane uprawnienia</string>
     <string name="toast_developer_setting_failed">Włącz ustawienia programisty w ustawieniach urządzenia, aby je otworzyć.</string>
     <string name="toast_clipboard_copied">Skopiowano do schowka</string>
