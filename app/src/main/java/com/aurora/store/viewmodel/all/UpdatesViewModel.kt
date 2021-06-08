@@ -25,6 +25,8 @@ import androidx.lifecycle.viewModelScope
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.State
 import com.aurora.store.data.RequestState
+import com.aurora.store.data.downloader.RequestGroupIdBuilder
+import com.aurora.store.data.downloader.getGroupId
 import com.aurora.store.data.event.BusEvent
 import com.aurora.store.data.event.InstallerEvent
 import com.aurora.store.data.model.UpdateFile
@@ -72,7 +74,7 @@ class UpdatesViewModel(application: Application) : BaseAppsViewModel(application
             updateFileMap.clear()
 
             apps.forEach {
-                updateFileMap[it.id] = UpdateFile(it)
+                updateFileMap[it.getGroupId(getApplication<Application>().applicationContext)] = UpdateFile(it)
             }
 
             liveUpdateData.postValue(updateFileMap)
@@ -110,7 +112,10 @@ class UpdatesViewModel(application: Application) : BaseAppsViewModel(application
             is InstallerEvent.Failed -> {
                 val packageName = event.packageName
                 packageName?.let {
-                    updateDownload(packageName.hashCode(), null, true)
+                    val groupIDsOfPackageName = RequestGroupIdBuilder.getGroupIDsForApp(getApplication<Application>().applicationContext, packageName.hashCode())
+                    groupIDsOfPackageName.forEach {
+                        updateDownload(it, null, true)
+                    }
                 }
             }
         }
@@ -146,8 +151,11 @@ class UpdatesViewModel(application: Application) : BaseAppsViewModel(application
     }
 
     private fun updateListAndPost(packageName: String) {
-        //Remove from map
-        updateFileMap.remove(packageName.hashCode())
+        val groupIDsOfPackageName = RequestGroupIdBuilder.getGroupIDsForApp(getApplication<Application>().applicationContext, packageName.hashCode())
+        groupIDsOfPackageName.forEach {
+            //Remove from map
+            updateFileMap.remove(it)
+        }
 
         //Post new update list
         liveUpdateData.postValue(updateFileMap)

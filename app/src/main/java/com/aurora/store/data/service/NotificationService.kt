@@ -26,6 +26,7 @@ import android.graphics.Color
 import android.os.Build
 import android.os.IBinder
 import android.util.ArrayMap
+import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
 import com.aurora.Constants
@@ -34,6 +35,7 @@ import com.aurora.extensions.isLAndAbove
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
 import com.aurora.store.data.downloader.DownloadManager
+import com.aurora.store.data.downloader.RequestGroupIdBuilder
 import com.aurora.store.data.event.InstallerEvent
 import com.aurora.store.data.installer.AppInstaller
 import com.aurora.store.data.receiver.DownloadCancelReceiver
@@ -76,10 +78,6 @@ class NotificationService : Service() {
 
     override fun onBind(intent: Intent): IBinder? {
         return null
-    }
-
-    override fun onStartCommand(intent: Intent, flags: Int, startId: Int): Int {
-        return START_NOT_STICKY
     }
 
     override fun onCreate() {
@@ -137,6 +135,10 @@ class NotificationService : Service() {
             override fun onPaused(groupId: Int, download: Download, fetchGroup: FetchGroup) {
                 showNotification(groupId, download, fetchGroup)
             }
+
+            override fun onDeleted(groupId: Int, download: Download, fetchGroup: FetchGroup) {
+                showNotification(groupId, download, fetchGroup)
+            }
         }
 
         fetch.addListener(fetchListener)
@@ -184,6 +186,11 @@ class NotificationService : Service() {
         if (app == null)
             return
 
+        if (status == Status.DELETED) {
+            notificationManager.cancel(app.id)
+            return
+        }
+
         val builder = NotificationCompat.Builder(this, Constants.NOTIFICATION_CHANNEL_GENERAL)
         builder.setContentTitle(app.displayName)
         builder.setSmallIcon(R.drawable.ic_notification_outlined)
@@ -201,7 +208,8 @@ class NotificationService : Service() {
                 builder.setContentText(getString(R.string.download_canceled))
                 builder.color = Color.RED
             }
-            Status.FAILED -> {
+            Status.FAILED ->
+            {
                 builder.setSmallIcon(R.drawable.ic_download_fail)
                 builder.setContentText(getString(R.string.download_failed))
                 builder.color = Color.RED
@@ -362,12 +370,26 @@ class NotificationService : Service() {
     fun onEventMainThread(event: Any) {
         when (event) {
             is InstallerEvent.Success -> {
-                val app = appMap[event.packageName.hashCode()]
+                val groupIDsOfPackageName = RequestGroupIdBuilder.getGroupIDsForApp(this, event.packageName.hashCode())
+                var app: App? = null
+                for (item in groupIDsOfPackageName) {
+                    app = appMap[item]
+                    if (app != null) {
+                        break
+                    }
+                }
                 if (app != null)
                     notifyInstallationStatus(app, event.extra)
             }
             is InstallerEvent.Failed -> {
-                val app = appMap[event.packageName.hashCode()]
+                val groupIDsOfPackageName = RequestGroupIdBuilder.getGroupIDsForApp(this, event.packageName.hashCode())
+                var app: App? = null
+                for (item in groupIDsOfPackageName) {
+                    app = appMap[item]
+                    if (app != null) {
+                        break
+                    }
+                }
                 if (app != null)
                     notifyInstallationStatus(app, event.error)
             }

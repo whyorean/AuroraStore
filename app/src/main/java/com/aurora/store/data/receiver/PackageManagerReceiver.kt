@@ -24,6 +24,7 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import com.aurora.store.BuildConfig
+import com.aurora.store.data.downloader.RequestGroupIdBuilder
 import com.aurora.store.data.event.BusEvent.InstallEvent
 import com.aurora.store.data.event.BusEvent.UninstallEvent
 import com.aurora.store.data.installer.AppInstaller
@@ -72,7 +73,10 @@ open class PackageManagerReceiver : BroadcastReceiver() {
     private fun clearNotification(context: Context, packageName: String) {
         val notificationManager = context.applicationContext
             .getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-        notificationManager.cancel(packageName, packageName.hashCode())
+        val groupIDsOfPackageName = RequestGroupIdBuilder.getGroupIDsForApp(context, packageName.hashCode())
+        groupIDsOfPackageName.forEach {
+            notificationManager.cancel(packageName, it)
+        }
     }
 
     private fun clearDownloads(context: Context, packageName: String) {

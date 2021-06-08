@@ -41,6 +41,7 @@ import com.aurora.store.R
 import com.aurora.store.State
 import com.aurora.store.data.downloader.DownloadManager
 import com.aurora.store.data.downloader.RequestBuilder
+import com.aurora.store.data.downloader.getGroupId
 import com.aurora.store.data.event.BusEvent
 import com.aurora.store.data.event.InstallerEvent
 import com.aurora.store.data.installer.AppInstaller
@@ -427,14 +428,14 @@ class AppDetailsActivity : BaseDetailsActivity() {
     private fun startDownload() {
         when (status) {
             Status.PAUSED -> {
-                fetch.resumeGroup(app.id)
+                fetch.resumeGroup(app.getGroupId(this@AppDetailsActivity))
             }
             Status.DOWNLOADING -> {
                 flip(1)
                 toast("Already downloading")
             }
             Status.COMPLETED -> {
-                fetch.getFetchGroup(app.id) {
+                fetch.getFetchGroup(app.getGroupId(this@AppDetailsActivity)) {
                     verifyAndInstall(it.downloads)
                 }
             }
@@ -518,7 +519,7 @@ class AppDetailsActivity : BaseDetailsActivity() {
 
         if (requestList.isNotEmpty()) {
             /*Remove old fetch group if downloaded earlier, mostly in case of updates*/
-            fetch.deleteGroup(app.id)
+            fetch.deleteGroup(app.getGroupId(this@AppDetailsActivity))
 
             /*Enqueue new fetch group*/
             fetch.enqueue(
@@ -638,7 +639,7 @@ class AppDetailsActivity : BaseDetailsActivity() {
         downloadManager = DownloadManager.with(this)
         fetch = downloadManager.fetch
 
-        fetch.getFetchGroup(app.id) { fetchGroup: FetchGroup ->
+        fetch.getFetchGroup(app.getGroupId(this@AppDetailsActivity)) { fetchGroup: FetchGroup ->
             if (fetchGroup.groupDownloadProgress == 100 && fetchGroup.completedDownloads.isNotEmpty()) {
                 status = Status.COMPLETED
             } else if (downloadManager.isDownloading(fetchGroup)) {
@@ -662,7 +663,7 @@ class AppDetailsActivity : BaseDetailsActivity() {
                 totalBlocks: Int,
                 fetchGroup: FetchGroup
             ) {
-                if (groupId == app.id) {
+                if (groupId == app.getGroupId(this@AppDetailsActivity)) {
                     status = download.status
                     flip(1)
 
@@ -680,7 +681,7 @@ class AppDetailsActivity : BaseDetailsActivity() {
             }
 
             override fun onResumed(groupId: Int, download: Download, fetchGroup: FetchGroup) {
-                if (groupId == app.id) {
+                if (groupId == app.getGroupId(this@AppDetailsActivity)) {
                     status = download.status
                     flip(1)
                     FileUtils.touch(inProgressMarker)
@@ -688,7 +689,7 @@ class AppDetailsActivity : BaseDetailsActivity() {
             }
 
             override fun onPaused(groupId: Int, download: Download, fetchGroup: FetchGroup) {
-                if (groupId == app.id) {
+                if (groupId == app.getGroupId(this@AppDetailsActivity)) {
                     status = download.status
                     flip(0)
                 }
@@ -701,7 +702,7 @@ class AppDetailsActivity : BaseDetailsActivity() {
                 downloadedBytesPerSecond: Long,
                 fetchGroup: FetchGroup
             ) {
-                if (groupId == app.id) {
+                if (groupId == app.getGroupId(this@AppDetailsActivity)) {
                     updateProgress(fetchGroup, etaInMilliSeconds, downloadedBytesPerSecond)
                     Log.i(
                         "${app.displayName} : ${download.file} -> Progress : %d",
@@ -711,7 +712,7 @@ class AppDetailsActivity : BaseDetailsActivity() {
             }
 
             override fun onCompleted(groupId: Int, download: Download, fetchGroup: FetchGroup) {
-                if (groupId == app.id && fetchGroup.groupDownloadProgress == 100) {
+                if (groupId == app.getGroupId(this@AppDetailsActivity) && fetchGroup.groupDownloadProgress == 100) {
                     status = download.status
                     flip(0)
                     updateProgress(fetchGroup, -1, -1)
@@ -726,7 +727,7 @@ class AppDetailsActivity : BaseDetailsActivity() {
             }
 
             override fun onCancelled(groupId: Int, download: Download, fetchGroup: FetchGroup) {
-                if (groupId == app.id) {
+                if (groupId == app.getGroupId(this@AppDetailsActivity)) {
                     status = download.status
                     flip(0)
                     inProgressMarker.delete()
@@ -740,7 +741,7 @@ class AppDetailsActivity : BaseDetailsActivity() {
                 throwable: Throwable?,
                 fetchGroup: FetchGroup
             ) {
-                if (groupId == app.id) {
+                if (groupId == app.getGroupId(this@AppDetailsActivity)) {
                     status = download.status
                     flip(0)
                     inProgressMarker.delete()
@@ -752,7 +753,7 @@ class AppDetailsActivity : BaseDetailsActivity() {
 
         B.layoutDetailsInstall.imgCancel.setOnClickListener {
             fetch.cancelGroup(
-                app.id
+                app.getGroupId(this@AppDetailsActivity)
             )
         }
     }

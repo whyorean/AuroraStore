@@ -32,8 +32,10 @@ import androidx.annotation.RequiresApi
 import androidx.core.content.FileProvider
 import com.aurora.services.IPrivilegedCallback
 import com.aurora.services.IPrivilegedService
+import com.aurora.store.AuroraApplication
 import com.aurora.store.BuildConfig
 import com.aurora.store.R
+import com.aurora.store.data.event.BusEvent
 import com.aurora.store.data.event.InstallerEvent
 import com.aurora.store.util.Log
 import com.aurora.store.util.PackageUtil
@@ -41,6 +43,8 @@ import org.greenrobot.eventbus.EventBus
 import java.io.File
 
 class ServiceInstaller(context: Context) : InstallerBase(context) {
+
+    private lateinit var serviceConnection: ServiceConnection
 
     companion object {
         const val ACTION_INSTALL_REPLACE_EXISTING = 2
@@ -83,6 +87,7 @@ class ServiceInstaller(context: Context) : InstallerBase(context) {
     override fun uninstall(packageName: String) {
         val serviceConnection = object : ServiceConnection {
             override fun onServiceConnected(name: ComponentName, binder: IBinder) {
+                AuroraApplication.enqueuedInstalls.add(packageName)
                 val service = IPrivilegedService.Stub.asInterface(binder)
 
                 if (service.hasPrivilegedPermissions()) {
@@ -100,7 +105,7 @@ class ServiceInstaller(context: Context) : InstallerBase(context) {
                             extra: String?
                         ) {
                             removeFromInstallQueue(packageName)
-                            handleCallback(packageName, returnCode, extra)
+                            handleCallbackUninstall(packageName, returnCode, extra)
                         }
                     }
 
@@ -120,6 +125,7 @@ class ServiceInstaller(context: Context) : InstallerBase(context) {
                         context.getString(R.string.installer_status_failure),
                         context.getString(R.string.installer_service_misconfigured)
                     )
+                    removeFromInstallQueue(packageName)
                 }
             }
 
@@ -141,8 +147,15 @@ class ServiceInstaller(context: Context) : InstallerBase(context) {
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     private fun xInstall(packageName: String, uriList: List<Uri>) {
-        val serviceConnection = object : ServiceConnection {
+        serviceConnection = object : ServiceConnection {
             override fun onServiceConnected(name: ComponentName, binder: IBinder) {
+                if (isAlreadyQueued(packageName)) {
+                    if (::serviceConnection.isInitialized) {
+                        context.unbindService(serviceConnection)
+                    }
+                    return
+                }
+                AuroraApplication.enqueuedInstalls.add(packageName)
                 val service = IPrivilegedService.Stub.asInterface(binder)
 
                 if (service.hasPrivilegedPermissions()) {
@@ -182,6 +195,7 @@ class ServiceInstaller(context: Context) : InstallerBase(context) {
                         context.getString(R.string.installer_status_failure),
                         context.getString(R.string.installer_service_misconfigured)
                     )
+                    removeFromInstallQueue(packageName)
                 }
             }
 
@@ -199,6 +213,32 @@ class ServiceInstaller(context: Context) : InstallerBase(context) {
             serviceConnection,
             Context.BIND_AUTO_CREATE
         )
+    }
+
+    private fun handleCallbackUninstall(packageName: String, returnCode: Int, extra: String?) {
+        Log.i("Services Callback : $packageName $returnCode $extra")
+
+        when (returnCode) {
+            PackageInstaller.STATUS_SUCCESS -> {
+                EventBus.getDefault().post(
+                    BusEvent.UninstallEvent(
+                        packageName,
+                        context.getString(R.string.installer_status_success)
+                    )
+                )
+            }
+            else -> {
+                val error = AppInstaller.getErrorString(
+                    context,
+                    returnCode
+                )
+
+                postError(packageName, error, extra)
+            }
+        }
+        if (::serviceConnection.isInitialized) {
+            context.unbindService(serviceConnection)
+        }
     }
 
     private fun handleCallback(packageName: String, returnCode: Int, extra: String?) {
@@ -221,6 +261,16 @@ class ServiceInstaller(context: Context) : InstallerBase(context) {
 
                 postError(packageName, error, extra)
             }
+        }
+        if (::serviceConnection.isInitialized) {
+            context.unbindService(serviceConnection)
+        }
+    }
+
+    override fun postError(packageName: String, error: String?, extra: String?) {
+        super.postError(packageName, error, extra)
+        if (::serviceConnection.isInitialized) {
+            context.unbindService(serviceConnection)
         }
     }
 

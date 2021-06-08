@@ -19,7 +19,13 @@
 
 package com.aurora.store.view.ui.updates
 
+import android.app.Application
+import android.content.ComponentName
+import android.content.Context
+import android.content.Intent
+import android.content.ServiceConnection
 import android.os.Bundle
+import android.os.IBinder
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -34,9 +40,11 @@ import com.aurora.store.R
 import com.aurora.store.State
 import com.aurora.store.data.downloader.DownloadManager
 import com.aurora.store.data.downloader.RequestBuilder
+import com.aurora.store.data.downloader.getGroupId
 import com.aurora.store.data.installer.AppInstaller
 import com.aurora.store.data.model.UpdateFile
 import com.aurora.store.data.providers.AuthProvider
+import com.aurora.store.data.service.UpdateService
 import com.aurora.store.databinding.FragmentUpdatesBinding
 import com.aurora.store.util.Log
 import com.aurora.store.view.epoxy.views.UpdateHeaderViewModel_
@@ -60,11 +68,17 @@ class UpdatesFragment : BaseFragment() {
     private lateinit var B: FragmentUpdatesBinding
     private lateinit var VM: UpdatesViewModel
 
-    private lateinit var authData: AuthData
-    private lateinit var purchaseHelper: PurchaseHelper
-
-    private lateinit var fetch: Fetch
     private lateinit var fetchListener: AbstractFetchGroupListener
+    private var serviceConnection = object : ServiceConnection {
+        override fun onServiceConnected(name: ComponentName, binder: IBinder) {
+            updateService = (binder as UpdateService.UpdateServiceBinder).getUpdateService()
+            updateService!!.registerListener(fetchListener)
+        }
+
+        override fun onServiceDisconnected(name: ComponentName) {
+            updateService = null
+        }
+    }
 
     private var updateFileMap: MutableMap<Int, UpdateFile> = mutableMapOf()
 
@@ -83,10 +97,7 @@ class UpdatesFragment : BaseFragment() {
 
         VM = ViewModelProvider(requireActivity()).get(UpdatesViewModel::class.java)
 
-        authData = AuthProvider.with(requireContext()).getAuthData()
-        purchaseHelper = PurchaseHelper(authData)
 
-        fetch = DownloadManager.with(requireContext()).fetch
         fetchListener = object : AbstractFetchGroupListener() {
 
             override fun onAdded(groupId: Int, download: Download, fetchGroup: FetchGroup) {
@@ -106,11 +117,6 @@ class UpdatesFragment : BaseFragment() {
             override fun onCompleted(groupId: Int, download: Download, fetchGroup: FetchGroup) {
                 if (fetchGroup.groupDownloadProgress == 100) {
                     VM.updateDownload(groupId, fetchGroup, isComplete = true)
-                    try {
-                        install(download.tag!!, fetchGroup.downloads)
-                    } catch (e: Exception) {
-                        Log.e(e.stackTraceToString())
-                    }
                 }
             }
 
@@ -123,21 +129,30 @@ class UpdatesFragment : BaseFragment() {
             }
         }
 
+        getUpdateServiceInstance()
+
         return B.root
     }
 
     override fun onResume() {
+        getUpdateServiceInstance()
         super.onResume()
-        if (::fetch.isInitialized && ::fetchListener.isInitialized) {
-            fetch.addListener(fetchListener)
+    }
+
+    override fun onPause() {
+        if (updateService != null) {
+            updateService = null
+            requireContext().unbindService(serviceConnection)
         }
+        super.onPause()
     }
 
     override fun onDestroy() {
-        if (::fetch.isInitialized && ::fetchListener.isInitialized) {
-            fetch.removeListener(fetchListener)
-        }
         super.onDestroy()
+        if (updateService != null) {
+            updateService = null
+            requireContext().unbindService(serviceConnection)
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -147,6 +162,7 @@ class UpdatesFragment : BaseFragment() {
             updateFileMap = it
             updateController(updateFileMap)
             B.swipeRefreshLayout.isRefreshing = false
+            updateService?.liveUpdateData?.postValue(updateFileMap)
         })
 
         B.swipeRefreshLayout.setOnRefreshListener {
@@ -221,44 +237,41 @@ class UpdatesFragment : BaseFragment() {
         }
     }
 
+    private var updateService: UpdateService? = null
+
     private fun updateSingle(app: App) {
 
-        VM.updateState(app.id, State.QUEUED)
+        if (updateService != null) {
+            VM.updateState(app.getGroupId(requireContext()), State.QUEUED)
 
-        task {
-            val files = purchaseHelper.purchase(
-                app.packageName,
-                app.versionCode,
-                app.offerType
-            )
-
-            files.map { RequestBuilder.buildRequest(requireContext(), app, it) }
-        } successUi {
-            val requests = it.filter { request -> request.url.isNotEmpty() }.toList()
-            if (requests.isNotEmpty()) {
-                fetch.enqueue(requests) {
-                    Log.i("Updating ${app.displayName}")
-                }
-            } else {
-                requireContext().toast("Failed to update ${app.displayName}")
-            }
-        } failUi {
-            Log.e("Failed to update ${app.displayName}")
+            updateService?.updateApp(app)
         }
     }
 
     private fun cancelSingle(app: App) {
-        fetch.cancelGroup(app.id)
+        updateService?.fetch?.cancelGroup(app.getGroupId(requireContext()))
     }
 
     private fun updateAll() {
-        updateFileMap.values.forEach { updateSingle(it.app) }
+        updateService?.updateAll(updateFileMap)
         VM.updateAllEnqueued = true
     }
 
     private fun cancelAll() {
         VM.updateAllEnqueued = false
-        updateFileMap.values.forEach { fetch.cancelGroup(it.app.id) }
+        updateFileMap.values.forEach { updateService?.fetch?.cancelGroup(it.app.getGroupId(requireContext())) }
+    }
+
+    fun getUpdateServiceInstance() {
+        if (updateService == null) {
+            val intent = Intent(requireContext(), UpdateService::class.java)
+            requireContext().startService(intent)
+            requireContext().bindService(
+                intent,
+                serviceConnection,
+                0
+            )
+        }
     }
 
     @Synchronized

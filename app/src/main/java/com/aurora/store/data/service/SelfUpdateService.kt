@@ -15,6 +15,7 @@ import com.aurora.store.BuildConfig
 import com.aurora.store.R
 import com.aurora.store.data.downloader.DownloadManager
 import com.aurora.store.data.downloader.RequestBuilder.buildRequest
+import com.aurora.store.data.downloader.getGroupId
 import com.aurora.store.data.installer.NativeInstaller
 import com.aurora.store.data.model.SelfUpdate
 import com.aurora.store.util.CertUtil.isFDroidApp
@@ -135,14 +136,14 @@ class SelfUpdateService : Service() {
                 groupId: Int, download: Download, error: Error,
                 throwable: Throwable?, fetchGroup: FetchGroup
             ) {
-                if (groupId == app.id) {
+                if (groupId == app.getGroupId(this@SelfUpdateService)) {
                     Log.e("Error self-updating ${app.displayName}")
                     destroyService()
                 }
             }
 
             override fun onCompleted(groupId: Int, download: Download, fetchGroup: FetchGroup) {
-                if (groupId == app.id && fetchGroup.groupDownloadProgress == 100) {
+                if (groupId == app.getGroupId(this@SelfUpdateService) && fetchGroup.groupDownloadProgress == 100) {
                     Log.d("Calling installer ${app.displayName}")
 
                     try {
@@ -163,7 +164,7 @@ class SelfUpdateService : Service() {
             }
 
             override fun onCancelled(groupId: Int, download: Download, fetchGroup: FetchGroup) {
-                if (groupId == app.id) {
+                if (groupId == app.getGroupId(this@SelfUpdateService)) {
                     Log.d("Self-update cancelled ${app.displayName}")
                     destroyService()
                 }
