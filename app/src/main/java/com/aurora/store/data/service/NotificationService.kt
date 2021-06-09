@@ -401,7 +401,7 @@ class NotificationService : Service() {
 
     @Synchronized
     private fun install(packageName: String, files: List<Download>) {
-        AppInstaller(this)
+        AppInstaller.getInstance(this)
             .getPreferredInstaller()
             .install(
                 packageName,

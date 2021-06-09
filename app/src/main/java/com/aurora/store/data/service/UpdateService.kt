@@ -17,32 +17,31 @@ import com.aurora.gplayapi.helpers.PurchaseHelper
 import com.aurora.store.R
 import com.aurora.store.data.downloader.DownloadManager
 import com.aurora.store.data.downloader.RequestBuilder
-import com.aurora.store.data.downloader.RequestGroupIdBuilder
-import com.aurora.store.data.downloader.getGroupId
 import com.aurora.store.data.event.InstallerEvent
 import com.aurora.store.data.installer.AppInstaller
 import com.aurora.store.data.model.UpdateFile
 import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.util.Log
 import com.tonyodev.fetch2.*
+import com.tonyodev.fetch2core.DownloadBlock
 import com.tonyodev.fetch2core.FetchObserver
 import com.tonyodev.fetch2core.Reason
 import nl.komponents.kovenant.task
-import nl.komponents.kovenant.then
 import nl.komponents.kovenant.ui.failUi
 import nl.komponents.kovenant.ui.successUi
 import org.apache.commons.io.FileUtils
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
+import org.greenrobot.eventbus.ThreadMode
 import java.util.*
 import java.util.concurrent.atomic.AtomicBoolean
-import kotlin.collections.ArrayList
 import kotlin.concurrent.timerTask
 
 class UpdateService: LifecycleService() {
 
     lateinit var fetch: Fetch
-    private lateinit var fetchListener: AbstractFetchGroupListener
+    lateinit var downloadManager: DownloadManager
+    private lateinit var fetchListener: FetchGroupListener
     private var fetchActiveDownloadObserver = object : FetchObserver<Boolean> {
         override fun onChanged(data: Boolean, reason: Reason) {
             if (!data && !installing.get() && listeners.isEmpty()) {
@@ -56,7 +55,7 @@ class UpdateService: LifecycleService() {
     }
     private var hasActiveDownloadObserver = false
 
-    private val listeners: ArrayList<AbstractFetchGroupListener> = ArrayList()
+    private val listeners: ArrayList<FetchGroupListener> = ArrayList()
 
     private val pendingEvents: MutableMap</*groupId: */Int, AppDownloadStatus> = mutableMapOf()
 
@@ -114,8 +113,9 @@ class UpdateService: LifecycleService() {
         EventBus.getDefault().register(this)
         authData = AuthProvider.with(this).getAuthData()
         purchaseHelper = PurchaseHelper(authData)
-        fetch = DownloadManager.with(this).fetch
-        fetchListener = object : AbstractFetchGroupListener() {
+        downloadManager = DownloadManager.with(this)
+        fetch = downloadManager.fetch
+        fetchListener = object : FetchGroupListener {
 
             override fun onAdded(groupId: Int, download: Download, fetchGroup: FetchGroup) {
                 listeners.forEach {
@@ -124,6 +124,12 @@ class UpdateService: LifecycleService() {
                 if (!hasActiveDownloadObserver) {
                     hasActiveDownloadObserver = true
                     fetch.addActiveDownloadsObserver(true, fetchActiveDownloadObserver)
+                }
+            }
+
+            override fun onAdded(download: Download) {
+                listeners.forEach {
+                    it.onAdded(download)
                 }
             }
 
@@ -139,6 +145,86 @@ class UpdateService: LifecycleService() {
                 }
             }
 
+            override fun onProgress(download: Download, etaInMilliSeconds: Long, downloadedBytesPerSecond: Long) {
+                listeners.forEach {
+                    it.onProgress(download, etaInMilliSeconds, downloadedBytesPerSecond)
+                }
+            }
+
+            override fun onQueued(groupId: Int, download: Download, waitingNetwork: Boolean, fetchGroup: FetchGroup) {
+                listeners.forEach {
+                    it.onQueued(groupId, download, waitingNetwork, fetchGroup)
+                }
+            }
+
+            override fun onQueued(download: Download, waitingOnNetwork: Boolean) {
+                listeners.forEach {
+                    it.onQueued(download, waitingOnNetwork)
+                }
+            }
+
+            override fun onRemoved(groupId: Int, download: Download, fetchGroup: FetchGroup) {
+                listeners.forEach {
+                    it.onRemoved(groupId, download, fetchGroup)
+                }
+            }
+
+            override fun onRemoved(download: Download) {
+                listeners.forEach {
+                    it.onRemoved(download)
+                }
+            }
+
+            override fun onResumed(groupId: Int, download: Download, fetchGroup: FetchGroup) {
+                listeners.forEach {
+                    it.onResumed(groupId, download, fetchGroup)
+                }
+            }
+
+            override fun onResumed(download: Download) {
+                listeners.forEach {
+                    it.onResumed(download)
+                }
+            }
+
+            override fun onStarted(
+                groupId: Int,
+                download: Download,
+                downloadBlocks: List<DownloadBlock>,
+                totalBlocks: Int,
+                fetchGroup: FetchGroup
+            ) {
+                listeners.forEach {
+                    it.onStarted(
+                        groupId,
+                        download,
+                        downloadBlocks,
+                        totalBlocks,
+                        fetchGroup)
+                }
+            }
+
+            override fun onStarted(download: Download, downloadBlocks: List<DownloadBlock>, totalBlocks: Int) {
+                listeners.forEach {
+                    it.onStarted(
+                        download,
+                        downloadBlocks,
+                        totalBlocks)
+                }
+            }
+
+            override fun onWaitingNetwork(groupId: Int, download: Download, fetchGroup: FetchGroup) {
+                listeners.forEach {
+                    it.onWaitingNetwork(groupId, download, fetchGroup)
+                }
+            }
+
+            override fun onWaitingNetwork(download: Download) {
+                listeners.forEach {
+                    it.onWaitingNetwork(download)
+                }
+            }
+
             override fun onCompleted(groupId: Int, download: Download, fetchGroup: FetchGroup) {
                 listeners.forEach {
                     it.onCompleted(groupId, download, fetchGroup)
@@ -146,7 +232,7 @@ class UpdateService: LifecycleService() {
                 if (listeners.isEmpty()) {
                     pendingEvents[groupId] = AppDownloadStatus(download, fetchGroup, isComplete = true)
                 }
-                if (fetchGroup.groupDownloadProgress == 100 || fetchGroup.groupDownloadProgress == -1) {
+                if (fetchGroup.groupDownloadProgress == 100) {
                     Handler(Looper.getMainLooper()).post {
                         try {
                             install(download.tag!!, fetchGroup.downloads)
@@ -159,6 +245,12 @@ class UpdateService: LifecycleService() {
                 }*/
             }
 
+            override fun onCompleted(download: Download) {
+                listeners.forEach {
+                    it.onCompleted(download)
+                }
+            }
+
             override fun onCancelled(groupId: Int, download: Download, fetchGroup: FetchGroup) {
                 listeners.forEach {
                     it.onCancelled(groupId, download, fetchGroup)
@@ -168,12 +260,90 @@ class UpdateService: LifecycleService() {
                 }
             }
 
+            override fun onCancelled(download: Download) {
+                TODO("Not yet implemented")
+            }
+
             override fun onDeleted(groupId: Int, download: Download, fetchGroup: FetchGroup) {
                 listeners.forEach {
                     it.onDeleted(groupId, download, fetchGroup)
                 }
                 if (listeners.isEmpty()) {
                     pendingEvents[groupId] = AppDownloadStatus(download, fetchGroup, isCancelled = true)
+                }
+            }
+
+            override fun onDeleted(download: Download) {
+                listeners.forEach {
+                    it.onDeleted(download)
+                }
+            }
+
+            override fun onDownloadBlockUpdated(
+                groupId: Int,
+                download: Download,
+                downloadBlock: DownloadBlock,
+                totalBlocks: Int,
+                fetchGroup: FetchGroup
+            ) {
+                listeners.forEach {
+                    it.onDownloadBlockUpdated(
+                        groupId,
+                        download,
+                        downloadBlock,
+                        totalBlocks,
+                        fetchGroup
+                    )
+                }
+            }
+
+            override fun onDownloadBlockUpdated(download: Download, downloadBlock: DownloadBlock, totalBlocks: Int) {
+                listeners.forEach {
+                    it.onDownloadBlockUpdated(
+                        download,
+                        downloadBlock,
+                        totalBlocks
+                    )
+                }
+            }
+
+            override fun onError(
+                groupId: Int,
+                download: Download,
+                error: Error,
+                throwable: Throwable?,
+                fetchGroup: FetchGroup
+            ) {
+                listeners.forEach {
+                    it.onError(
+                        groupId,
+                        download,
+                        error,
+                        throwable,
+                        fetchGroup
+                    )
+                }
+            }
+
+            override fun onError(download: Download, error: Error, throwable: Throwable?) {
+                listeners.forEach {
+                    it.onError(
+                        download,
+                        error,
+                        throwable
+                    )
+                }
+            }
+
+            override fun onPaused(groupId: Int, download: Download, fetchGroup: FetchGroup) {
+                listeners.forEach {
+                    it.onPaused(groupId, download, fetchGroup)
+                }
+            }
+
+            override fun onPaused(download: Download) {
+                listeners.forEach {
+                    it.onPaused(download)
                 }
             }
         }
@@ -210,16 +380,16 @@ class UpdateService: LifecycleService() {
     }
 
     var timer: Timer? = null
-    val timerTask: TimerTask = timerTask {
+    val timerTaskRun: Runnable = Runnable {
         Handler(Looper.getMainLooper()).post {
             if (!installing.get() && listeners.isEmpty()) {
-                fetch.hasActiveDownloads(true, { hasActiveDownloads ->
+                fetch.hasActiveDownloads(true) { hasActiveDownloads ->
                     if (!hasActiveDownloads && !installing.get() && listeners.isEmpty()) {
                         Handler(Looper.getMainLooper()).post {
                             stopSelf()
                         }
                     }
-                })
+                }
             }
         }
     }
@@ -237,7 +407,7 @@ class UpdateService: LifecycleService() {
             if (filesExist) {
                 task {
                     try {
-                        val installer = AppInstaller(this)
+                        val installer = AppInstaller.getInstance(this)
                             .getPreferredInstaller()
                         installer.install(
                             packageName,
@@ -255,30 +425,24 @@ class UpdateService: LifecycleService() {
         }
     }
 
-    @Subscribe()
-    fun onEventMainThreadExec(event: Any) {
+    var timerLock = Object()
+
+    @Subscribe(threadMode = ThreadMode.BACKGROUND)
+    fun onEventBackgroundThreadExec(event: Any) {
         when (event) {
-            is InstallerEvent.Success -> {
-                if (timer != null) {
-                    timer!!.cancel()
-                    timer = null
-                }
-                if (timer == null) {
-                    timer = Timer()
-                }
-                installing.set(false)
-                timer!!.schedule(timerTask, 10 * 1000)
-            }
+            is InstallerEvent.Success,
             is InstallerEvent.Failed -> {
-                if (timer != null) {
-                    timer!!.cancel()
-                    timer = null
+                synchronized(timerLock) {
+                    if (timer != null) {
+                        timer!!.cancel()
+                        timer = null
+                    }
+                    if (timer == null) {
+                        timer = Timer()
+                    }
+                    installing.set(false)
+                    timer!!.schedule(timerTask { timerTaskRun.run() }, 10 * 1000)
                 }
-                if (timer == null) {
-                    timer = Timer()
-                }
-                installing.set(false)
-                timer!!.schedule(timerTask, 10 * 1000)
             }
             else -> {
 
@@ -286,7 +450,7 @@ class UpdateService: LifecycleService() {
         }
     }
 
-    fun registerListener(listener: AbstractFetchGroupListener) {
+    fun registerListener(listener: FetchGroupListener) {
         listeners.add(listener)
         val iterator = pendingEvents.iterator()
         while (iterator.hasNext()) {

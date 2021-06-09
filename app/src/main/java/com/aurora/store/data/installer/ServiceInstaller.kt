@@ -25,9 +25,7 @@ import android.content.Intent
 import android.content.ServiceConnection
 import android.content.pm.PackageInstaller
 import android.net.Uri
-import android.os.Build
-import android.os.IBinder
-import android.os.RemoteException
+import android.os.*
 import androidx.annotation.RequiresApi
 import androidx.core.content.FileProvider
 import com.aurora.services.IPrivilegedCallback
@@ -41,10 +39,14 @@ import com.aurora.store.util.Log
 import com.aurora.store.util.PackageUtil
 import org.greenrobot.eventbus.EventBus
 import java.io.File
+import java.util.concurrent.LinkedBlockingQueue
+import java.util.concurrent.ThreadPoolExecutor
+import java.util.concurrent.TimeUnit
 
 class ServiceInstaller(context: Context) : InstallerBase(context) {
 
     private lateinit var serviceConnection: ServiceConnection
+    private val executor = ThreadPoolExecutor(0, 1, 30L, TimeUnit.SECONDS, LinkedBlockingQueue())
 
     companion object {
         const val ACTION_INSTALL_REPLACE_EXISTING = 2
@@ -85,134 +87,168 @@ class ServiceInstaller(context: Context) : InstallerBase(context) {
     }
 
     override fun uninstall(packageName: String) {
-        val serviceConnection = object : ServiceConnection {
-            override fun onServiceConnected(name: ComponentName, binder: IBinder) {
-                AuroraApplication.enqueuedInstalls.add(packageName)
-                val service = IPrivilegedService.Stub.asInterface(binder)
-
-                if (service.hasPrivilegedPermissions()) {
-                    Log.i(context.getString(R.string.installer_service_available))
-
-                    val callback = object : IPrivilegedCallback.Stub() {
-
-                        override fun handleResult(packageName: String, returnCode: Int) {
-
+        executor.execute {
+            var readyWithAction = false
+            Handler(Looper.getMainLooper()).post {
+                serviceConnection = object : ServiceConnection {
+                    override fun onServiceConnected(name: ComponentName, binder: IBinder) {
+                        if (isAlreadyQueued(packageName)) {
+                            if (::serviceConnection.isInitialized) {
+                                context.unbindService(serviceConnection)
+                            }
+                            readyWithAction = true
+                            return
                         }
+                        AuroraApplication.enqueuedInstalls.add(packageName)
+                        val service = IPrivilegedService.Stub.asInterface(binder)
 
-                        override fun handleResultX(
-                            packageName: String,
-                            returnCode: Int,
-                            extra: String?
-                        ) {
+                        if (service.hasPrivilegedPermissions()) {
+                            Log.i(context.getString(R.string.installer_service_available))
+
+                            val callback = object : IPrivilegedCallback.Stub() {
+
+                                override fun handleResult(packageName: String, returnCode: Int) {
+
+                                }
+
+                                override fun handleResultX(
+                                    packageName: String,
+                                    returnCode: Int,
+                                    extra: String?
+                                ) {
+                                    removeFromInstallQueue(packageName)
+                                    readyWithAction = true
+                                    handleCallbackUninstall(packageName, returnCode, extra)
+                                }
+                            }
+
+                            try {
+                                service.deletePackageX(
+                                    packageName,
+                                    2,
+                                    BuildConfig.APPLICATION_ID,
+                                    callback
+                                )
+                            } catch (e: RemoteException) {
+                                Log.e("Failed to connect Aurora Services")
+                                removeFromInstallQueue(packageName)
+                                readyWithAction = true
+                            }
+                        } else {
                             removeFromInstallQueue(packageName)
-                            handleCallbackUninstall(packageName, returnCode, extra)
+                            readyWithAction = true
+                            postError(
+                                packageName,
+                                context.getString(R.string.installer_status_failure),
+                                context.getString(R.string.installer_service_misconfigured)
+                            )
                         }
                     }
 
-                    try {
-                        service.deletePackageX(
-                            packageName,
-                            2,
-                            BuildConfig.APPLICATION_ID,
-                            callback
-                        )
-                    } catch (e: RemoteException) {
-                        Log.e("Failed to connect Aurora Services")
+                    override fun onServiceDisconnected(name: ComponentName) {
+                        removeFromInstallQueue(packageName)
+                        Log.e("Disconnected from Aurora Services")
+                        readyWithAction = true
                     }
-                } else {
-                    postError(
-                        packageName,
-                        context.getString(R.string.installer_status_failure),
-                        context.getString(R.string.installer_service_misconfigured)
-                    )
-                    removeFromInstallQueue(packageName)
                 }
-            }
 
-            override fun onServiceDisconnected(name: ComponentName) {
-                removeFromInstallQueue(packageName)
-                Log.e("Disconnected from Aurora Services")
+                val intent = Intent(PRIVILEGED_EXTENSION_SERVICE_INTENT)
+                intent.setPackage(PRIVILEGED_EXTENSION_PACKAGE_NAME)
+
+                context.bindService(
+                    intent,
+                    serviceConnection,
+                    Context.BIND_AUTO_CREATE
+                )
+            }
+            while (!readyWithAction) {
+                Thread.sleep(1000)
             }
         }
-
-        val intent = Intent(PRIVILEGED_EXTENSION_SERVICE_INTENT)
-        intent.setPackage(PRIVILEGED_EXTENSION_PACKAGE_NAME)
-
-        context.bindService(
-            intent,
-            serviceConnection,
-            Context.BIND_AUTO_CREATE
-        )
     }
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     private fun xInstall(packageName: String, uriList: List<Uri>) {
-        serviceConnection = object : ServiceConnection {
-            override fun onServiceConnected(name: ComponentName, binder: IBinder) {
-                if (isAlreadyQueued(packageName)) {
-                    if (::serviceConnection.isInitialized) {
-                        context.unbindService(serviceConnection)
-                    }
-                    return
-                }
-                AuroraApplication.enqueuedInstalls.add(packageName)
-                val service = IPrivilegedService.Stub.asInterface(binder)
-
-                if (service.hasPrivilegedPermissions()) {
-                    Log.i(context.getString(R.string.installer_service_available))
-
-                    val callback = object : IPrivilegedCallback.Stub() {
-
-                        override fun handleResult(packageName: String, returnCode: Int) {
-
+        executor.execute {
+            var readyWithAction = false
+            Handler(Looper.getMainLooper()).post {
+                serviceConnection = object : ServiceConnection {
+                    override fun onServiceConnected(name: ComponentName, binder: IBinder) {
+                        if (isAlreadyQueued(packageName)) {
+                            if (::serviceConnection.isInitialized) {
+                                context.unbindService(serviceConnection)
+                            }
+                            readyWithAction = true
+                            return
                         }
+                        AuroraApplication.enqueuedInstalls.add(packageName)
+                        val service = IPrivilegedService.Stub.asInterface(binder)
 
-                        override fun handleResultX(
-                            packageName: String,
-                            returnCode: Int,
-                            extra: String?
-                        ) {
+                        if (service.hasPrivilegedPermissions()) {
+                            Log.i(context.getString(R.string.installer_service_available))
+
+                            val callback = object : IPrivilegedCallback.Stub() {
+
+                                override fun handleResult(packageName: String, returnCode: Int) {
+
+                                }
+
+                                override fun handleResultX(
+                                    packageName: String,
+                                    returnCode: Int,
+                                    extra: String?
+                                ) {
+                                    removeFromInstallQueue(packageName)
+                                    readyWithAction = true
+                                    handleCallback(packageName, returnCode, extra)
+                                }
+                            }
+
+                            try {
+                                service.installSplitPackageX(
+                                    packageName,
+                                    uriList,
+                                    ACTION_INSTALL_REPLACE_EXISTING,
+                                    BuildConfig.APPLICATION_ID,
+                                    callback
+                                )
+                            } catch (e: RemoteException) {
+                                removeFromInstallQueue(packageName)
+                                readyWithAction = true
+                                postError(packageName, e.localizedMessage, e.stackTraceToString())
+                            }
+                        } else {
                             removeFromInstallQueue(packageName)
-                            handleCallback(packageName, returnCode, extra)
+                            readyWithAction = true
+                            postError(
+                                packageName,
+                                context.getString(R.string.installer_status_failure),
+                                context.getString(R.string.installer_service_misconfigured)
+                            )
                         }
                     }
 
-                    try {
-                        service.installSplitPackageX(
-                            packageName,
-                            uriList,
-                            ACTION_INSTALL_REPLACE_EXISTING,
-                            BuildConfig.APPLICATION_ID,
-                            callback
-                        )
-                    } catch (e: RemoteException) {
+                    override fun onServiceDisconnected(name: ComponentName) {
                         removeFromInstallQueue(packageName)
-                        postError(packageName, e.localizedMessage, e.stackTraceToString())
+                        readyWithAction = true
+                        Log.e("Disconnected from Aurora Services")
                     }
-                } else {
-                    postError(
-                        packageName,
-                        context.getString(R.string.installer_status_failure),
-                        context.getString(R.string.installer_service_misconfigured)
-                    )
-                    removeFromInstallQueue(packageName)
                 }
-            }
 
-            override fun onServiceDisconnected(name: ComponentName) {
-                removeFromInstallQueue(packageName)
-                Log.e("Disconnected from Aurora Services")
+                val intent = Intent(PRIVILEGED_EXTENSION_SERVICE_INTENT)
+                intent.setPackage(PRIVILEGED_EXTENSION_PACKAGE_NAME)
+
+                context.bindService(
+                    intent,
+                    serviceConnection,
+                    Context.BIND_AUTO_CREATE
+                )
             }
+            while (!readyWithAction) {
+                Thread.sleep(1000)
+            }
+            Log.i("Services Callback : install wait done")
         }
-
-        val intent = Intent(PRIVILEGED_EXTENSION_SERVICE_INTENT)
-        intent.setPackage(PRIVILEGED_EXTENSION_PACKAGE_NAME)
-
-        context.bindService(
-            intent,
-            serviceConnection,
-            Context.BIND_AUTO_CREATE
-        )
     }
 
     private fun handleCallbackUninstall(packageName: String, returnCode: Int, extra: String?) {

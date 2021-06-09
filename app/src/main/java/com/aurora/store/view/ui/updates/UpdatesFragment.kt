@@ -285,7 +285,7 @@ class UpdatesFragment : BaseFragment() {
 
             if (filesExist) {
                 task {
-                    AppInstaller(requireContext())
+                    AppInstaller.getInstance(requireContext())
                         .getPreferredInstaller()
                         .install(
                             packageName,

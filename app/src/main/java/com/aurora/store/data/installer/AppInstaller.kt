@@ -26,9 +26,10 @@ import com.aurora.store.R
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_INSTALLER_ID
 
-open class AppInstaller constructor(var context: Context) {
+open class AppInstaller private constructor(var context: Context) {
 
     companion object {
+        private var instance: AppInstaller? = null
         fun getErrorString(context: Context, status: Int): String {
             return when (status) {
                 PackageInstaller.STATUS_FAILURE_ABORTED -> context.getString(R.string.installer_status_user_action)
@@ -40,7 +41,15 @@ open class AppInstaller constructor(var context: Context) {
                 else -> context.getString(R.string.installer_status_failure)
             }
         }
+        fun getInstance(context: Context): AppInstaller {
+            if (instance == null) {
+                instance = AppInstaller(context.applicationContext)
+            }
+            return instance!!
+        }
     }
+
+    val choiceAndInstaller = HashMap<Int, IInstaller>()
 
     fun getPreferredInstaller(): IInstaller {
         val prefValue = Preferences.getInteger(
@@ -48,14 +57,34 @@ open class AppInstaller constructor(var context: Context) {
             PREFERENCE_INSTALLER_ID
         )
 
+        if (choiceAndInstaller.containsKey(prefValue)) {
+            return choiceAndInstaller[prefValue]!!
+        }
+
         return when (prefValue) {
-            1 -> NativeInstaller(context)
-            2 -> RootInstaller(context)
-            3 -> ServiceInstaller(context)
+            1 -> {
+                val installer = NativeInstaller(context)
+                choiceAndInstaller[prefValue] = installer
+                installer
+            }
+            2 -> {
+                val installer = RootInstaller(context)
+                choiceAndInstaller[prefValue] = installer
+                installer
+            }
+            3 -> {
+                val installer = ServiceInstaller(context)
+                choiceAndInstaller[prefValue] = installer
+                installer
+            }
             else -> if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                SessionInstaller(context)
+                val installer = SessionInstaller(context)
+                choiceAndInstaller[prefValue] = installer
+                installer
             } else {
-                NativeInstaller(context)
+                val installer = NativeInstaller(context)
+                choiceAndInstaller[prefValue] = installer
+                installer
             }
         }
     }
