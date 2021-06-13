@@ -333,7 +333,6 @@
     <string name="pref_updates_extended">Eguneraketa hedatuak</string>
     <string name="pref_ui_similar_apps_desc">Erakutsi antzeko taldeak eta erlazionatuak aplikazioaren xehetasunen orrian</string>
     <string name="pref_ui_similar_apps">Antzeko aplikazioak eta erlazionatuak</string>
-    <string name="pref_ui_no_promotional">App promozionalak</string>
     <string name="pref_ui_no_for_you_desc">Erakutsi zuretzako orriak hasierako pantailan</string>
     <string name="pref_ui_no_for_you">Zuretzako orrialdeak</string>
     <string name="pref_ui_quick_exit_desc">Aplikaziotik atzeranzko ekintza bakarrarekin irten</string>
