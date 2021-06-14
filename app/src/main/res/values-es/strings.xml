@@ -346,7 +346,7 @@
     <string name="toast_page_unavailable">Página de navegación no disponible</string>
     <string name="toast_double_press_to_exit">Pulse dos veces para salir</string>
     <string name="toast_export_failed">No se ha podido exportar la configuración del dispositivo</string>
-    <string name="toast_export_success">Configuracion del dispositivo exportada</string>
+    <string name="toast_export_success">Configuración del dispositivo exportada</string>
     <string name="pref_updates_extended_desc">También busca nuevas versiones de aplicaciones deshabilitadas</string>
     <string name="pref_updates_extended">Aplicaciones extendidas</string>
 </resources>
