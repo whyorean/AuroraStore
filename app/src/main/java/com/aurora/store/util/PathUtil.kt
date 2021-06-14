@@ -26,7 +26,7 @@ import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.File
 
 fun Context.getInternalBaseDirectory(): String {
-    return filesDir.path
+    return (getExternalFilesDir(null) ?: filesDir).path
 }
 
 object PathUtil {

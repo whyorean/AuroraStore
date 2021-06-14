@@ -19,9 +19,7 @@
 
 package com.aurora.store.view.ui.updates
 
-import android.app.Application
 import android.content.ComponentName
-import android.content.Context
 import android.content.Intent
 import android.content.ServiceConnection
 import android.os.Bundle
@@ -32,18 +30,12 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import com.aurora.Constants
 import com.aurora.extensions.stackTraceToString
-import com.aurora.extensions.toast
 import com.aurora.gplayapi.data.models.App
-import com.aurora.gplayapi.data.models.AuthData
-import com.aurora.gplayapi.helpers.PurchaseHelper
 import com.aurora.store.R
 import com.aurora.store.State
-import com.aurora.store.data.downloader.DownloadManager
-import com.aurora.store.data.downloader.RequestBuilder
 import com.aurora.store.data.downloader.getGroupId
 import com.aurora.store.data.installer.AppInstaller
 import com.aurora.store.data.model.UpdateFile
-import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.data.service.UpdateService
 import com.aurora.store.databinding.FragmentUpdatesBinding
 import com.aurora.store.util.Log
@@ -56,11 +48,8 @@ import com.aurora.store.view.ui.sheets.AppMenuSheet
 import com.aurora.store.viewmodel.all.UpdatesViewModel
 import com.tonyodev.fetch2.AbstractFetchGroupListener
 import com.tonyodev.fetch2.Download
-import com.tonyodev.fetch2.Fetch
 import com.tonyodev.fetch2.FetchGroup
 import nl.komponents.kovenant.task
-import nl.komponents.kovenant.ui.failUi
-import nl.komponents.kovenant.ui.successUi
 import org.apache.commons.io.FileUtils
 
 class UpdatesFragment : BaseFragment() {
@@ -72,7 +61,7 @@ class UpdatesFragment : BaseFragment() {
     private var serviceConnection = object : ServiceConnection {
         override fun onServiceConnected(name: ComponentName, binder: IBinder) {
             updateService = (binder as UpdateService.UpdateServiceBinder).getUpdateService()
-            updateService!!.registerListener(fetchListener)
+            updateService!!.registerFetchListener(fetchListener)
         }
 
         override fun onServiceDisconnected(name: ComponentName) {
@@ -158,12 +147,12 @@ class UpdatesFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        VM.liveUpdateData.observe(viewLifecycleOwner, {
+        VM.liveUpdateData.observe(viewLifecycleOwner) {
             updateFileMap = it
             updateController(updateFileMap)
             B.swipeRefreshLayout.isRefreshing = false
             updateService?.liveUpdateData?.postValue(updateFileMap)
-        })
+        }
 
         B.swipeRefreshLayout.setOnRefreshListener {
             VM.observe()

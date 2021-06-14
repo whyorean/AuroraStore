@@ -28,6 +28,7 @@ import com.aurora.store.R
 import com.aurora.store.data.downloader.DownloadManager
 import com.aurora.store.data.model.DownloadFile
 import com.aurora.store.databinding.ActivityDownloadBinding
+import com.aurora.store.util.Preferences
 import com.aurora.store.view.epoxy.views.DownloadViewModel_
 import com.aurora.store.view.epoxy.views.app.NoAppViewModel_
 import com.aurora.store.view.ui.commons.BaseActivity
@@ -156,10 +157,12 @@ class DownloadActivity : BaseActivity() {
             }
             R.id.action_clear_completed -> {
                 fetch.removeAllWithStatus(Status.COMPLETED)
+                Preferences.getPrefs(this).edit().remove(Preferences.PREFERENCE_UNIQUE_GROUP_IDS).apply()
                 return true
             }
             R.id.action_force_clear_all -> {
                 fetch.deleteAll()
+                Preferences.getPrefs(this).edit().remove(Preferences.PREFERENCE_UNIQUE_GROUP_IDS).apply()
                 return true
             }
         }

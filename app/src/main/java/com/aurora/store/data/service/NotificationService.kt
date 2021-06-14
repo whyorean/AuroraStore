@@ -161,6 +161,13 @@ class NotificationService : Service() {
                     NotificationManager.IMPORTANCE_MIN
                 )
             )
+            channels.add(
+                NotificationChannel(
+                    Constants.NOTIFICATION_CHANNEL_UPDATER_SERVICE,
+                    getString(R.string.notification_channel_updater_service),
+                    NotificationManager.IMPORTANCE_MIN
+                )
+            )
             notificationManager.createNotificationChannels(channels)
         }
     }

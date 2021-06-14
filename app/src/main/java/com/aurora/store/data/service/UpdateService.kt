@@ -10,16 +10,18 @@ import androidx.lifecycle.LifecycleService
 import androidx.lifecycle.MutableLiveData
 import com.aurora.Constants
 import com.aurora.extensions.stackTraceToString
-import com.aurora.extensions.toast
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.AuthData
+import com.aurora.gplayapi.exceptions.ApiException
 import com.aurora.gplayapi.helpers.PurchaseHelper
 import com.aurora.store.R
 import com.aurora.store.data.downloader.DownloadManager
 import com.aurora.store.data.downloader.RequestBuilder
+import com.aurora.store.data.downloader.getGroupId
 import com.aurora.store.data.event.InstallerEvent
 import com.aurora.store.data.installer.AppInstaller
 import com.aurora.store.data.model.UpdateFile
+import com.aurora.store.data.network.HttpClient
 import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.util.Log
 import com.tonyodev.fetch2.*
@@ -34,7 +36,7 @@ import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
 import java.util.*
-import java.util.concurrent.atomic.AtomicBoolean
+import java.util.concurrent.CopyOnWriteArrayList
 import kotlin.concurrent.timerTask
 
 class UpdateService: LifecycleService() {
@@ -44,9 +46,9 @@ class UpdateService: LifecycleService() {
     private lateinit var fetchListener: FetchGroupListener
     private var fetchActiveDownloadObserver = object : FetchObserver<Boolean> {
         override fun onChanged(data: Boolean, reason: Reason) {
-            if (!data && !installing.get() && listeners.isEmpty()) {
+            if (!data && installing.isEmpty() && fetchListeners.isEmpty() && appMetadataListeners.isEmpty()) {
                 Handler(Looper.getMainLooper()).postDelayed ({
-                    if (!installing.get() && listeners.isEmpty()) {
+                    if (installing.isEmpty() && fetchListeners.isEmpty() && appMetadataListeners.isEmpty()) {
                         stopSelf()
                     }
                 }, 5 * 1000)
@@ -55,9 +57,13 @@ class UpdateService: LifecycleService() {
     }
     private var hasActiveDownloadObserver = false
 
-    private val listeners: ArrayList<FetchGroupListener> = ArrayList()
+    private val fetchListeners: ArrayList<FetchGroupListener> = ArrayList()
 
-    private val pendingEvents: MutableMap</*groupId: */Int, AppDownloadStatus> = mutableMapOf()
+    private val fetchPendingEvents: MutableMap</*groupId: */Int, AppDownloadStatus> = mutableMapOf()
+
+    private val appMetadataListeners: ArrayList<AppMetadataStatusListener> = ArrayList()
+
+    private val appMetadataPendingEvents: ArrayList<AppMetadataStatus> = ArrayList()
 
     var liveUpdateData: MutableLiveData<MutableMap<Int, UpdateFile>> = MutableLiveData()
 
@@ -67,7 +73,7 @@ class UpdateService: LifecycleService() {
         }
     }
 
-    private var installing: AtomicBoolean = AtomicBoolean()
+    private var installing = CopyOnWriteArrayList<String>()
 
 
     private lateinit var purchaseHelper: PurchaseHelper
@@ -79,19 +85,21 @@ class UpdateService: LifecycleService() {
                                  val isCancelled: Boolean = false,
                                  val isComplete: Boolean = false)
 
+    data class AppMetadataStatus(val reason: String, val app: App)
+
     @get:RequiresApi(Build.VERSION_CODES.O)
     private val notification: Notification
         get() {
             val notificationBuilder =
-                NotificationCompat.Builder(this, Constants.NOTIFICATION_CHANNEL_GENERAL)
+                NotificationCompat.Builder(this, Constants.NOTIFICATION_CHANNEL_UPDATER_SERVICE)
             return getNotification(notificationBuilder)
         }
 
     private fun getNotification(builder: NotificationCompat.Builder): Notification {
         return builder.setAutoCancel(true)
             .setColor(ContextCompat.getColor(this, R.color.colorAccent))
-            .setContentTitle("Updating apps")
-            .setContentText("Updating apps in the background")
+            .setContentTitle(getString(R.string.app_updater_service_notif_title))
+            .setContentText(getString(R.string.app_updater_service_notif_text))
             .setOngoing(true)
             .setSmallIcon(R.drawable.ic_notification_outlined)
             .build()
@@ -105,21 +113,24 @@ class UpdateService: LifecycleService() {
             val notification = getNotification(
                 NotificationCompat.Builder(
                     this,
-                    Constants.NOTIFICATION_CHANNEL_GENERAL
+                    Constants.NOTIFICATION_CHANNEL_UPDATER_SERVICE
                 )
             )
             startForeground(1, notification)
         }
         EventBus.getDefault().register(this)
         authData = AuthProvider.with(this).getAuthData()
-        purchaseHelper = PurchaseHelper(authData)
+        purchaseHelper = PurchaseHelper(authData).using(HttpClient.getPreferredClient())
         downloadManager = DownloadManager.with(this)
         fetch = downloadManager.fetch
         fetchListener = object : FetchGroupListener {
 
             override fun onAdded(groupId: Int, download: Download, fetchGroup: FetchGroup) {
-                listeners.forEach {
+                fetchListeners.forEach {
                     it.onAdded(groupId, download, fetchGroup)
+                }
+                if (download.tag != null) {
+                    installing.remove(download.tag)
                 }
                 if (!hasActiveDownloadObserver) {
                     hasActiveDownloadObserver = true
@@ -128,7 +139,7 @@ class UpdateService: LifecycleService() {
             }
 
             override fun onAdded(download: Download) {
-                listeners.forEach {
+                fetchListeners.forEach {
                     it.onAdded(download)
                 }
             }
@@ -140,49 +151,49 @@ class UpdateService: LifecycleService() {
                 downloadedBytesPerSecond: Long,
                 fetchGroup: FetchGroup
             ) {
-                listeners.forEach {
+                fetchListeners.forEach {
                     it.onProgress(groupId, download, etaInMilliSeconds, downloadedBytesPerSecond, fetchGroup)
                 }
             }
 
             override fun onProgress(download: Download, etaInMilliSeconds: Long, downloadedBytesPerSecond: Long) {
-                listeners.forEach {
+                fetchListeners.forEach {
                     it.onProgress(download, etaInMilliSeconds, downloadedBytesPerSecond)
                 }
             }
 
             override fun onQueued(groupId: Int, download: Download, waitingNetwork: Boolean, fetchGroup: FetchGroup) {
-                listeners.forEach {
+                fetchListeners.forEach {
                     it.onQueued(groupId, download, waitingNetwork, fetchGroup)
                 }
             }
 
             override fun onQueued(download: Download, waitingOnNetwork: Boolean) {
-                listeners.forEach {
+                fetchListeners.forEach {
                     it.onQueued(download, waitingOnNetwork)
                 }
             }
 
             override fun onRemoved(groupId: Int, download: Download, fetchGroup: FetchGroup) {
-                listeners.forEach {
+                fetchListeners.forEach {
                     it.onRemoved(groupId, download, fetchGroup)
                 }
             }
 
             override fun onRemoved(download: Download) {
-                listeners.forEach {
+                fetchListeners.forEach {
                     it.onRemoved(download)
                 }
             }
 
             override fun onResumed(groupId: Int, download: Download, fetchGroup: FetchGroup) {
-                listeners.forEach {
+                fetchListeners.forEach {
                     it.onResumed(groupId, download, fetchGroup)
                 }
             }
 
             override fun onResumed(download: Download) {
-                listeners.forEach {
+                fetchListeners.forEach {
                     it.onResumed(download)
                 }
             }
@@ -194,7 +205,7 @@ class UpdateService: LifecycleService() {
                 totalBlocks: Int,
                 fetchGroup: FetchGroup
             ) {
-                listeners.forEach {
+                fetchListeners.forEach {
                     it.onStarted(
                         groupId,
                         download,
@@ -205,7 +216,7 @@ class UpdateService: LifecycleService() {
             }
 
             override fun onStarted(download: Download, downloadBlocks: List<DownloadBlock>, totalBlocks: Int) {
-                listeners.forEach {
+                fetchListeners.forEach {
                     it.onStarted(
                         download,
                         downloadBlocks,
@@ -214,23 +225,23 @@ class UpdateService: LifecycleService() {
             }
 
             override fun onWaitingNetwork(groupId: Int, download: Download, fetchGroup: FetchGroup) {
-                listeners.forEach {
+                fetchListeners.forEach {
                     it.onWaitingNetwork(groupId, download, fetchGroup)
                 }
             }
 
             override fun onWaitingNetwork(download: Download) {
-                listeners.forEach {
+                fetchListeners.forEach {
                     it.onWaitingNetwork(download)
                 }
             }
 
             override fun onCompleted(groupId: Int, download: Download, fetchGroup: FetchGroup) {
-                listeners.forEach {
+                fetchListeners.forEach {
                     it.onCompleted(groupId, download, fetchGroup)
                 }
-                if (listeners.isEmpty()) {
-                    pendingEvents[groupId] = AppDownloadStatus(download, fetchGroup, isComplete = true)
+                if (fetchListeners.isEmpty()) {
+                    fetchPendingEvents[groupId] = AppDownloadStatus(download, fetchGroup, isComplete = true)
                 }
                 if (fetchGroup.groupDownloadProgress == 100) {
                     Handler(Looper.getMainLooper()).post {
@@ -246,35 +257,37 @@ class UpdateService: LifecycleService() {
             }
 
             override fun onCompleted(download: Download) {
-                listeners.forEach {
+                fetchListeners.forEach {
                     it.onCompleted(download)
                 }
             }
 
             override fun onCancelled(groupId: Int, download: Download, fetchGroup: FetchGroup) {
-                listeners.forEach {
+                fetchListeners.forEach {
                     it.onCancelled(groupId, download, fetchGroup)
                 }
-                if (listeners.isEmpty()) {
-                    pendingEvents[groupId] = AppDownloadStatus(download, fetchGroup, isCancelled = true)
+                if (fetchListeners.isEmpty()) {
+                    fetchPendingEvents[groupId] = AppDownloadStatus(download, fetchGroup, isCancelled = true)
                 }
             }
 
             override fun onCancelled(download: Download) {
-                TODO("Not yet implemented")
+                fetchListeners.forEach {
+                    it.onCancelled(download)
+                }
             }
 
             override fun onDeleted(groupId: Int, download: Download, fetchGroup: FetchGroup) {
-                listeners.forEach {
+                fetchListeners.forEach {
                     it.onDeleted(groupId, download, fetchGroup)
                 }
-                if (listeners.isEmpty()) {
-                    pendingEvents[groupId] = AppDownloadStatus(download, fetchGroup, isCancelled = true)
+                if (fetchListeners.isEmpty()) {
+                    fetchPendingEvents[groupId] = AppDownloadStatus(download, fetchGroup, isCancelled = true)
                 }
             }
 
             override fun onDeleted(download: Download) {
-                listeners.forEach {
+                fetchListeners.forEach {
                     it.onDeleted(download)
                 }
             }
@@ -286,7 +299,7 @@ class UpdateService: LifecycleService() {
                 totalBlocks: Int,
                 fetchGroup: FetchGroup
             ) {
-                listeners.forEach {
+                fetchListeners.forEach {
                     it.onDownloadBlockUpdated(
                         groupId,
                         download,
@@ -298,7 +311,7 @@ class UpdateService: LifecycleService() {
             }
 
             override fun onDownloadBlockUpdated(download: Download, downloadBlock: DownloadBlock, totalBlocks: Int) {
-                listeners.forEach {
+                fetchListeners.forEach {
                     it.onDownloadBlockUpdated(
                         download,
                         downloadBlock,
@@ -314,7 +327,7 @@ class UpdateService: LifecycleService() {
                 throwable: Throwable?,
                 fetchGroup: FetchGroup
             ) {
-                listeners.forEach {
+                fetchListeners.forEach {
                     it.onError(
                         groupId,
                         download,
@@ -326,7 +339,7 @@ class UpdateService: LifecycleService() {
             }
 
             override fun onError(download: Download, error: Error, throwable: Throwable?) {
-                listeners.forEach {
+                fetchListeners.forEach {
                     it.onError(
                         download,
                         error,
@@ -336,13 +349,13 @@ class UpdateService: LifecycleService() {
             }
 
             override fun onPaused(groupId: Int, download: Download, fetchGroup: FetchGroup) {
-                listeners.forEach {
+                fetchListeners.forEach {
                     it.onPaused(groupId, download, fetchGroup)
                 }
             }
 
             override fun onPaused(download: Download) {
-                listeners.forEach {
+                fetchListeners.forEach {
                     it.onPaused(download)
                 }
             }
@@ -355,8 +368,8 @@ class UpdateService: LifecycleService() {
         }
     }
 
-    fun updateApp(app: App) {
-        installing.set(true)
+    fun updateApp(app: App, removeExisiting: Boolean = false) {
+        installing.add(app.packageName)
         task {
             val files = purchaseHelper.purchase(
                 app.packageName,
@@ -364,27 +377,70 @@ class UpdateService: LifecycleService() {
                 app.offerType
             )
 
-            files.map { RequestBuilder.buildRequest(this, app, it) }
-        } successUi {
-            val requests = it.filter { request -> request.url.isNotEmpty() }.toList()
+            files.filter { it.url.isNotEmpty() }
+                .map { RequestBuilder.buildRequest(this, app, it) }
+                .toList()
+        } successUi { requests ->
             if (requests.isNotEmpty()) {
+                if (removeExisiting) {
+                    /*Remove old fetch group if downloaded earlier, mostly in case of updates*/
+                    fetch.deleteGroup(app.getGroupId(this))
+                }
                 fetch.enqueue(requests) {
                     Log.i("Updating ${app.displayName}")
                 }
             } else {
-                toast("Failed to update ${app.displayName}")
+                installing.remove(app.packageName)
+                Log.e("Failed to download : ${app.displayName}")
+                appMetadataListeners.forEach {
+                    it.onAppMetadataStatusError(getString(R.string.purchase_session_expired), app)
+                }
+
+                if (appMetadataListeners.isEmpty()) {
+                    appMetadataPendingEvents.add(AppMetadataStatus(getString(R.string.purchase_session_expired), app))
+                }
             }
-        } failUi {
-            Log.e("Failed to update ${app.displayName}")
+        } failUi { failException ->
+            installing.remove(app.packageName)
+            var reason = "Unknown"
+
+            when (failException) {
+                is ApiException.AppNotPurchased -> {
+                    reason = getString(R.string.purchase_invalid)
+                }
+
+                is ApiException.AppNotFound -> {
+                    reason = getString(R.string.purchase_not_found)
+                }
+
+                is ApiException.AppNotSupported -> {
+                    reason = getString(R.string.purchase_unsupported)
+                }
+
+                is ApiException.EmptyDownloads -> {
+                    reason = getString(R.string.purchase_no_file)
+                }
+            }
+
+            appMetadataListeners.forEach {
+                it.onAppMetadataStatusError(reason, app)
+            }
+
+            if (appMetadataListeners.isEmpty()) {
+                appMetadataPendingEvents.add(AppMetadataStatus(reason, app))
+            }
+
+
+            Log.e("Failed to purchase ${app.displayName} : $reason")
         }
     }
 
     var timer: Timer? = null
     val timerTaskRun: Runnable = Runnable {
         Handler(Looper.getMainLooper()).post {
-            if (!installing.get() && listeners.isEmpty()) {
+            if (installing.isEmpty() && fetchListeners.isEmpty() && appMetadataListeners.isEmpty()) {
                 fetch.hasActiveDownloads(true) { hasActiveDownloads ->
-                    if (!hasActiveDownloads && !installing.get() && listeners.isEmpty()) {
+                    if (!hasActiveDownloads && installing.isEmpty() && fetchListeners.isEmpty() && appMetadataListeners.isEmpty()) {
                         Handler(Looper.getMainLooper()).post {
                             stopSelf()
                         }
@@ -396,8 +452,8 @@ class UpdateService: LifecycleService() {
 
     @Synchronized
     private fun install(packageName: String, files: List<Download>?) {
+        installing.add(packageName)
         files?.let { downloads ->
-            installing.set(true)
             var filesExist = true
 
             downloads.forEach { download ->
@@ -431,7 +487,16 @@ class UpdateService: LifecycleService() {
     fun onEventBackgroundThreadExec(event: Any) {
         when (event) {
             is InstallerEvent.Success,
+            is InstallerEvent.Cancelled,
             is InstallerEvent.Failed -> {
+                when (event) {
+                    is InstallerEvent.Success -> event.packageName
+                    is InstallerEvent.Cancelled -> event.packageName
+                    is InstallerEvent.Failed -> event.packageName
+                    else -> null
+                }?.run {
+                    installing.remove(this)
+                }
                 synchronized(timerLock) {
                     if (timer != null) {
                         timer!!.cancel()
@@ -440,8 +505,7 @@ class UpdateService: LifecycleService() {
                     if (timer == null) {
                         timer = Timer()
                     }
-                    installing.set(false)
-                    timer!!.schedule(timerTask { timerTaskRun.run() }, 10 * 1000)
+                    timer!!.schedule(timerTask { timerTaskRun.run() }, 5 * 1000)
                 }
             }
             else -> {
@@ -450,9 +514,9 @@ class UpdateService: LifecycleService() {
         }
     }
 
-    fun registerListener(listener: FetchGroupListener) {
-        listeners.add(listener)
-        val iterator = pendingEvents.iterator()
+    fun registerFetchListener(listener: FetchGroupListener) {
+        fetchListeners.add(listener)
+        val iterator = fetchPendingEvents.iterator()
         while (iterator.hasNext()) {
             val item = iterator.next()
             if (item.value.isCancelled && !item.value.isComplete) {
@@ -464,8 +528,22 @@ class UpdateService: LifecycleService() {
         }
     }
 
-    fun unregisterListener(listener: AbstractFetchGroupListener) {
-        listeners.remove(listener)
+    fun registerAppMetadataListener(listener: AppMetadataStatusListener) {
+        appMetadataListeners.add(listener)
+        val iterator = appMetadataPendingEvents.iterator()
+        while (iterator.hasNext()) {
+            val item = iterator.next()
+            listener.onAppMetadataStatusError(item.reason, item.app)
+            iterator.remove()
+        }
+    }
+
+    fun unregisterAppMetadataListener(listener: AppMetadataStatusListener) {
+        appMetadataListeners.remove(listener)
+    }
+
+    fun unregisterFetchListener(listener: AbstractFetchGroupListener) {
+        fetchListeners.remove(listener)
     }
 
     private var binder: UpdateServiceBinder = UpdateServiceBinder()
@@ -476,15 +554,16 @@ class UpdateService: LifecycleService() {
     }
 
     override fun onUnbind(intent: Intent?): Boolean {
-        listeners.clear()
-        if (!installing.get()) {
-            fetch.hasActiveDownloads(true, { hasActiveDownloads ->
-                if (!hasActiveDownloads && !installing.get() && listeners.isEmpty()) {
+        fetchListeners.clear()
+        appMetadataListeners.clear()
+        if (installing.isEmpty()) {
+            fetch.hasActiveDownloads(true) { hasActiveDownloads ->
+                if (!hasActiveDownloads && installing.isEmpty() && fetchListeners.isEmpty() && appMetadataListeners.isEmpty()) {
                     Handler(Looper.getMainLooper()).post {
                         stopSelf()
                     }
                 }
-            })
+            }
         }
         return true
     }

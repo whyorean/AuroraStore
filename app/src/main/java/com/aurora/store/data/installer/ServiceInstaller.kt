@@ -73,8 +73,17 @@ class ServiceInstaller(context: Context) : InstallerBase(context) {
                         }
                     }
                 }
+                val fileList = files.map {
+                    when (it) {
+                        is File -> it.absolutePath
+                        is String -> File(it).absolutePath
+                        else -> {
+                            throw Exception("Invalid data, expecting listOf() File or String")
+                        }
+                    }
+                }
 
-                xInstall(packageName, uriList)
+                xInstall(packageName, uriList, fileList)
             }
             else -> {
                 postError(
@@ -168,7 +177,7 @@ class ServiceInstaller(context: Context) : InstallerBase(context) {
     }
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
-    private fun xInstall(packageName: String, uriList: List<Uri>) {
+    private fun xInstall(packageName: String, uriList: List<Uri>, fileList: List<String>) {
         executor.execute {
             var readyWithAction = false
             Handler(Looper.getMainLooper()).post {
@@ -205,17 +214,39 @@ class ServiceInstaller(context: Context) : InstallerBase(context) {
                             }
 
                             try {
-                                service.installSplitPackageX(
-                                    packageName,
-                                    uriList,
-                                    ACTION_INSTALL_REPLACE_EXISTING,
-                                    BuildConfig.APPLICATION_ID,
-                                    callback
-                                )
-                            } catch (e: RemoteException) {
-                                removeFromInstallQueue(packageName)
-                                readyWithAction = true
-                                postError(packageName, e.localizedMessage, e.stackTraceToString())
+                                if (service.isMoreMethodImplemented) {
+                                    try {
+                                        service.installSplitPackageMore(
+                                            packageName,
+                                            uriList,
+                                            ACTION_INSTALL_REPLACE_EXISTING,
+                                            BuildConfig.APPLICATION_ID,
+                                            callback,
+                                            fileList
+                                        )
+                                    } catch (e: RemoteException) {
+                                        removeFromInstallQueue(packageName)
+                                        readyWithAction = true
+                                        postError(packageName, e.localizedMessage, e.stackTraceToString())
+                                    }
+                                } else {
+                                    throw Exception("New method not implemented")
+                                }
+                            } catch (th: Throwable) {
+                                th.printStackTrace()
+                                try {
+                                    service.installSplitPackageX(
+                                        packageName,
+                                        uriList,
+                                        ACTION_INSTALL_REPLACE_EXISTING,
+                                        BuildConfig.APPLICATION_ID,
+                                        callback
+                                    )
+                                } catch (e: RemoteException) {
+                                    removeFromInstallQueue(packageName)
+                                    readyWithAction = true
+                                    postError(packageName, e.localizedMessage, e.stackTraceToString())
+                                }
                             }
                         } else {
                             removeFromInstallQueue(packageName)

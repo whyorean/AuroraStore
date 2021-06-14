@@ -91,6 +91,21 @@ class PermissionsFragment : BaseFragment() {
         )
 
         B.epoxyRecycler.withModels {
+            val writeExternalStorage = ActivityCompat.checkSelfPermission(
+                requireContext(),
+                Manifest.permission.WRITE_EXTERNAL_STORAGE
+            ) == PackageManager.PERMISSION_GRANTED
+            val storageManager = if (isRAndAbove()) Environment.isExternalStorageManager() else true
+            val canInstallPackages = if (isOAndAbove()) requireContext().packageManager.canRequestPackageInstalls() else true
+            canGoForward = writeExternalStorage && storageManager && canInstallPackages
+            if (canGoForwardInitial == null) {
+                canGoForwardInitial = canGoForward
+            }
+            if (canGoForward && canGoForwardInitial == false) {
+                if (activity is OnboardingActivity) {
+                    (activity!! as OnboardingActivity).refreshButtonState()
+                }
+            }
             setFilterDuplicates(true)
             installerList.forEach {
                 add(
@@ -99,12 +114,9 @@ class PermissionsFragment : BaseFragment() {
                         .permission(it)
                         .isGranted(
                             when (it.id) {
-                                0 -> ActivityCompat.checkSelfPermission(
-                                    requireContext(),
-                                    Manifest.permission.WRITE_EXTERNAL_STORAGE
-                                ) == PackageManager.PERMISSION_GRANTED
-                                1 -> if (isRAndAbove()) Environment.isExternalStorageManager() else true
-                                2 -> if (isOAndAbove()) requireContext().packageManager.canRequestPackageInstalls() else true
+                                0 -> writeExternalStorage
+                                1 -> storageManager
+                                2 -> canInstallPackages
                                 else -> false
                             }
                         )
@@ -163,5 +175,12 @@ class PermissionsFragment : BaseFragment() {
                 B.epoxyRecycler.requestModelBuild()
             }
         }
+    }
+
+    private var canGoForward = false
+    private var canGoForwardInitial: Boolean? = null
+
+    fun canGoForward(): Boolean {
+        return canGoForward
     }
 }
