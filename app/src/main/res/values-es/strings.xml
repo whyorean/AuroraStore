@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="toast_spoof_applied">Simulación de dispositivo aplicada con éxito.</string>
+    <string name="toast_spoof_applied">Suplantación de identidad del dispositivo aplicada.</string>
     <string name="toast_permission_granted">Permiso concedido</string>
-    <string name="toast_developer_setting_failed">No se ha podido abrir las opciones para desarrolladores, asegúrese de que está activada desde los ajustes del dispositivo.</string>
+    <string name="toast_developer_setting_failed">Active los ajustes de desarrollador desde las opciones del dispositivo.</string>
     <string name="toast_clipboard_copied">Copiado al portapapeles</string>
     <string name="toast_apk_whitelisted">En la lista blanca</string>
-    <string name="toast_apk_copy_success">APK exportado con éxito</string>
-    <string name="toast_apk_copy_failed">Fallo en la exportación del APK</string>
+    <string name="toast_apk_copy_success">APK exportado</string>
+    <string name="toast_apk_copy_failed">No se pudo exportar el APK</string>
     <string name="toast_apk_blacklisted">En la lista negra</string>
     <string name="toast_anonymous_restriction">No disponible en cuentas anónimas</string>
     <string name="toast_abandon_sessions">Instalación de sesiones antiguas abandonadas</string>
@@ -29,7 +29,7 @@
     <string name="title_apps_sale">Apps en oferta</string>
     <string name="title_apps_library">Apps en la biblioteca</string>
     <string name="title_apps_games">Mis apps y juegos</string>
-    <string name="title_apps">Apps</string>
+    <string name="title_apps">Aplicaciones</string>
     <string name="title_account_manager">Cuentas</string>
     <string name="title_about">Acerca de</string>
     <string name="tab_trending">Tendencias</string>
@@ -48,7 +48,7 @@
     <string name="pref_ui_theme_title">Tema</string>
     <string name="pref_ui_theme_system">Seguir al sistema</string>
     <string name="pref_ui_theme_light">Claro</string>
-    <string name="pref_ui_theme_darkord">Disskord</string>
+    <string name="pref_ui_theme_darkord">Disscord</string>
     <string name="pref_ui_theme_dark_x">Oscuro X</string>
     <string name="pref_ui_theme_dark">Oscuro</string>
     <string name="pref_ui_theme_black">Negro</string>
@@ -69,7 +69,7 @@
     <string name="pref_filter_google_summary">Elimina todas las aplicaciones de Google de los resultados de búsqueda y de las categorías de aplicaciones</string>
     <string name="pref_filter_fdroid_title">Filtrar las apps de F-Droid</string>
     <string name="pref_filter_fdroid_summary">Elimina las aplicaciones de F-Droid de las listas de apps</string>
-    <string name="pref_downloader_external_desc">El almacenamiento externo se utilizará para las descargas, las exportaciones, etc.</string>
+    <string name="pref_downloader_external_desc">El almacenamiento externo se utiliza para las descargas, exportaciones, etc.</string>
     <string name="pref_downloader_external">Almacenamiento externo del usuario</string>
     <string name="pref_downloader_active_title">Descarga activa</string>
     <string name="pref_downloader_active_summary">Número máximo de descargas activas</string>
@@ -123,15 +123,15 @@
     <string name="installer_status_failure_blocked">La instalación se bloqueó</string>
     <string name="installer_status_failure_aborted">Instalación cancelada</string>
     <string name="installer_status_failure">El instalador falló</string>
-    <string name="installer_service_misconfigured">Los servicios de Aurora no están configurados. Asegúrese de que el servicio está habilitado y todos los permisos están concedidos</string>
-    <string name="installer_service_unavailable">Los servicios de Aurora no están instalados o la versión es incorrecta (requiere &gt;= 1.0.9), por favor instálela o cambie el instalador</string>
+    <string name="installer_service_misconfigured">Configure los servicios de Aurora y conceda primero todos los permisos.</string>
+    <string name="installer_service_unavailable">Instale los servicios de Aurora 1.0.9 o superior, o cambie el instalador.</string>
     <string name="installer_service_available">Los servicios de Aurora están disponibles y listos para ser instalados.</string>
-    <string name="installer_root_unavailable">Sin root, conceda el acceso root o cambie el instalador.</string>
+    <string name="installer_root_unavailable">Sin acceso root. Conceda el acceso o cambie el instalador.</string>
     <string name="installer_root_available">Acceso root disponible</string>
     <string name="exodus_view_report">Ver informe</string>
     <string name="exodus_view_more">Ver</string>
     <string name="exodus_title_alt">Informe de Exodus</string>
-    <string name="exodus_title">Aurora Protect</string>
+    <string name="exodus_title">Proteccion Aurora</string>
     <string name="exodus_substring">rastreador(es) encontrados en</string>
     <string name="exodus_report">Informe de Exodus</string>
     <string name="exodus_progress">Comprobando los rastreadores…</string>
@@ -341,12 +341,12 @@
     <string name="action_check">Comprobar</string>
     <string name="dialog_desc_native_split">No se pueden instalar aplicaciones agrupadas (divididas) a través del instalador nativo. Cambie el instalador a Sesión, Servicios o Root.</string>
     <string name="toast_aas_token_failed">No se ha podido generar el token AAS</string>
-    <string name="toast_rated_failed">No se ha enviado la calificación</string>
-    <string name="toast_rated_success">Calificado con éxito</string>
+    <string name="toast_rated_failed">No se pudo enviar la calificación</string>
+    <string name="toast_rated_success">Calificado</string>
     <string name="toast_page_unavailable">Página de navegación no disponible</string>
     <string name="toast_double_press_to_exit">Pulse dos veces para salir</string>
     <string name="toast_export_failed">No se ha podido exportar la configuración del dispositivo</string>
-    <string name="toast_export_success">La configuración del dispositivo se ha exportado exitosamente</string>
-    <string name="pref_updates_extended_desc">Activar para comprobar actualizaciones de apps deshabilitadas</string>
+    <string name="toast_export_success">Configuracion del dispositivo exportada</string>
+    <string name="pref_updates_extended_desc">También busca nuevas versiones de aplicaciones deshabilitadas</string>
     <string name="pref_updates_extended">Aplicaciones extendidas</string>
 </resources>
