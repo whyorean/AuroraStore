@@ -16,7 +16,7 @@
     <string name="exodus_substring">من برمجيات التتبع تم العثور عليها بإصدار التطبيق</string>
     <string name="title_spoof_manager">مدير المحاكاة الوهمية</string>
     <string name="toast_permission_granted">الإذن الممنوح</string>
-    <string name="toast_developer_setting_failed">فشل في فتح إعدادات المطور ، تأكد من تمكينها من إعدادات الجهاز.</string>
+    <string name="toast_developer_setting_failed">قم بتشغيل إعدادات المطور من إعدادات الجهاز لفتحها.</string>
     <string name="toast_clipboard_copied">نُسخ الى الحافظة</string>
     <string name="toast_apk_whitelisted">مدرج في القائمة البيضاء</string>
     <string name="title_language">اللغة</string>
@@ -236,7 +236,7 @@
     <string name="details_others_think">انظر ما يعتقده الآخرون حول هذا التطبيق</string>
     <string name="spoof_apply">تأكد من إعادة تسجيل الدخول لتطبيق المحاكاة التحايلية</string>
     <string name="installer_service_available">خدمات Aurora متاحة وجاهزة للتثبيت.</string>
-    <string name="pref_downloader_external_desc">سيتم استخدام وحدة التخزين الخارجي للتنزيلات والتصدير وما إلى ذلك.</string>
+    <string name="pref_downloader_external_desc">تُستخدم وحدة التخزين الخارجية للتنزيلات والتصدير وما إلى ذلك.</string>
     <string name="installer_root_unavailable">لا توجد صلاحيات الروت ، امنح حق الوصول إلى الروت أو قم بتغيير المثبت.</string>
     <string name="pref_filter_google_summary">إزالة جميع تطبيقات Google من نتائج البحث وفئات التطبيقات</string>
     <string name="pref_dialog_to_apply_restart">سيتم تطبيق هذا الإعداد بعد إعادة تشغيل التطبيق</string>
@@ -244,16 +244,16 @@
     <string name="details_beta_delay">قد يستغرق التسجيل بعض الوقت ، يمكنك التحقق من الحالة لاحقًا.</string>
     <string name="onboarding_permission_esm_desc">مطلوب على الأجهزة التي تعمل بنظام Android R+، بالإضافة إلى الوصول إلى التخزين الخارجي</string>
     <string name="onboarding_tos_desc">يرجى قراءة شروط الخدمة الخاصة بنا وقبولها لاستخدام متجر Aurora.</string>
-    <string name="onboarding_permission_esa_desc">لحفظ التنزيلات (APKs وOBBs) ، قم بتصدير واستيراد تكوينات الجهاز على وحدة التخزين الخارجية.</string>
-    <string name="installer_service_misconfigured">لم يتم تكوين خدمات Aurora. تأكد من تمكين الخدمة ومنح جميع الأذونات</string>
+    <string name="onboarding_permission_esa_desc">لحفظ التحميلات (APKs وOBBs)، قم بتصدير واستيراد تكوينات الأجهزة من وإلى التخزين الخارجي.</string>
+    <string name="installer_service_misconfigured">إعداد خدمات أورورا ومنح كافة الأذونات أولا.</string>
     <string name="pref_install_profile_summary">حدد ملف التعريف الهدف لتثبيت التطبيقات عليه. يعمل فقط مع طريقة تثبيت الروت</string>
     <string name="device_miui_extra">اختياريا يمكنك اختيار المثبت الأصلي، ولكن بعد ذلك لا يمكنك تثبيت التطبيقات المجمعة (تقسيم) APKs، لذلك الخيار لك.</string>
-    <string name="installer_service_unavailable">خدمات Aurora إما غير مثبتة أو الإصدار غير صحيح (مطلوب &gt; = 1.0.9) ، يرجى تثبيته أو تغيير المثبت</string>
+    <string name="installer_service_unavailable">ثبت خدمات أورورا 1.0.9 أو أعلى، أو تغيير المثبت.</string>
     <string name="details_beta_description">سترى ميزات وأخطاء جديدة قبل أن يراها المستخدمون. قدم ملاحظاتك للمطورين لمساعدتهم على التحسين من جودة تطبيقاتهم.</string>
     <string name="device_huawei_subtitle">يبدو أنك تستخدم جهاز Huawei، نظرًا للحظر الذي فرضته Google مؤخرًا على اجهزة هواوي ، فقد لا تتمكن من تسجيل الدخول.</string>
     <string name="device_huawei_description">نقترح عليك استخدام محاكاة تحايلية للجهاز في حالة كون جهازك من اجهزة Huawei الحديثه. هل ترغب في تطبيق المحاكاة التحايلية الآن؟</string>
     <string name="about_bhim">BHIM - UPI</string>
-    <string name="toast_spoof_applied">تم تطبيق المحاكاة التحايلية للجهاز بنجاح.</string>
+    <string name="toast_spoof_applied">تم تطبيق المحاكاة التحايلية للجهاز .</string>
     <string name="toast_abandon_sessions">جلسات التثبيت القديمة التي تم التخلي عنها</string>
     <string name="title_apps_games">تطبيقاتي وألعابي</string>
     <string name="purchase_no_file">تعذر الحصول على الملفات</string>
@@ -310,8 +310,8 @@
     <string name="about_bitcoin_bch_summary">التبرع عبر بيتكوين كاش (BCH)</string>
     <string name="about_bitcoin_bch">بيتكوين كاش</string>
     <string name="about_bhim_summary">التبرع عبر UPI</string>
-    <string name="toast_apk_copy_success">تم تصدير حزمة APK بنجاح</string>
-    <string name="toast_apk_copy_failed">فشل تصدير حزمة APK</string>
+    <string name="toast_apk_copy_success">تم تصدير APK</string>
+    <string name="toast_apk_copy_failed">تعذر تصدير حزمة APK</string>
     <string name="toast_apk_blacklisted">مدرج في القائمة السوداء</string>
     <string name="title_updates">التحديثات</string>
     <string name="title_settings">الإعدادات</string>
@@ -340,14 +340,13 @@
     <string name="toast_manual_unavailable">رمز الإصدار الذي تطلبه غير متوفر.</string>
     <string name="title_manual_download">تحميل يدوي</string>
     <string name="dialog_desc_native_split">لا يمكنك تثبيت تطبيقات المجمعة او (المقسمة) عبر Native Installer. قم بتغيير المثبت الخاص بك إلى جلسة أو خدمات أو الجذر.</string>
-    <string name="toast_aas_token_failed">فشل في إنشاء رمز مميز لAAS</string>
-    <string name="toast_rated_failed">فشل في تقديم التقييم</string>
-    <string name="toast_rated_success">تم التقييم بنجاح</string>
+    <string name="toast_aas_token_failed">تعذر إنشاء الرمز المميز ل AAS</string>
+    <string name="toast_rated_failed">تعذر إرسال التقييم</string>
+    <string name="toast_rated_success">تم التقييم</string>
     <string name="toast_page_unavailable">صفحة المتصفح غير متوفرة</string>
     <string name="toast_double_press_to_exit">انقر مرتين للخروج</string>
-    <string name="toast_export_failed">فشل تصدير اعدادات الجهاز</string>
-    <string name="toast_export_success">تم تصدير اعدادات الجهاز بنجاح</string>
-    <string name="pref_updates_extended_desc">تمكين للتحقق من التحديثات للتطبيقات المعطلة</string>
+    <string name="toast_export_failed">تعذر تصدير تكوين الجهاز</string>
+    <string name="toast_export_success">تم تصدير اعدادات الجهاز</string>
+    <string name="pref_updates_extended_desc">البحث عن إصدارات جديدة من التطبيقات المعطلة أيضا</string>
     <string name="pref_updates_extended">التحديثات الموسعة</string>
-    <string name="pref_ui_no_promotional">التطبيقات الترويجية</string>
 </resources>

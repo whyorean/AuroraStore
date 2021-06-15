@@ -349,5 +349,4 @@
     <string name="toast_export_success">Конфигурация устройства успешно экспортирована</string>
     <string name="pref_updates_extended_desc">Проверять наличие обновлений для отключённых приложений</string>
     <string name="pref_updates_extended">Расширенное обновление</string>
-    <string name="pref_ui_no_promotional">Рекламные приложения</string>
 </resources>

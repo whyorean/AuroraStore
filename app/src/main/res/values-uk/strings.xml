@@ -184,13 +184,13 @@
     <string name="toast_manual_available">Вітаємо, запитаний код версії доступний, завантажується зараз.</string>
     <string name="toast_manual_unavailable">Запитуваний код версії недоступний.</string>
     <string name="toast_purchase_blocked">Покупки застосунків недоступні у знеособлених облікових записах.</string>
-    <string name="toast_spoof_applied">Підміну пристрою успішно застосовано.</string>
+    <string name="toast_spoof_applied">Підміну пристрою застосовано.</string>
     <string name="toast_permission_granted">Дозвіл надано</string>
-    <string name="toast_developer_setting_failed">Не вдалося відкрити налаштування розробника, переконайтеся, що ви ввімкнули їх в налаштуваннях пристрою.</string>
+    <string name="toast_developer_setting_failed">Увімкніть параметри розробника в налаштуваннях пристрою, щоб відкрити їх.</string>
     <string name="toast_clipboard_copied">Скопійовано до буфера обміну</string>
     <string name="toast_apk_whitelisted">У білому списку</string>
-    <string name="toast_apk_copy_success">APK успішно експортовано</string>
-    <string name="toast_apk_copy_failed">Не вдалося експортувати APK</string>
+    <string name="toast_apk_copy_success">APK експортовано</string>
+    <string name="toast_apk_copy_failed">Не вдалося експортувати файл APK</string>
     <string name="toast_apk_blacklisted">В чорному списку</string>
     <string name="toast_anonymous_restriction">Недоступно для знеособлених облікових записів</string>
     <string name="toast_abandon_sessions">Старі сеанси встановлення очищено</string>
@@ -276,7 +276,7 @@
     <string name="onboarding_permission_installer">Дозвіл встановлювача</string>
     <string name="onboarding_permission_esm_desc">Обов’язково на пристроях з ОС Android R +, додатково до зовнішнього доступу до сховища</string>
     <string name="onboarding_permission_esm">Менеджер зовнішнього сховища</string>
-    <string name="onboarding_permission_esa_desc">Щоб зберігати завантаження (APK &amp; OBB), експортувати та імпортувати конфігурації пристроїв на зовнішнє сховище.</string>
+    <string name="onboarding_permission_esa_desc">Щоб зберігати завантаження (APK &amp; OBB), експортувати та імпортувати конфігурації пристроїв на та із зовнішнього сховища.</string>
     <string name="onboarding_permission_esa">Доступ до зовнішнього сховища</string>
     <string name="onboarding_welcome_select">Як справи\?</string>
     <string name="onboarding_tos_error">Спочатку ви повинні позначити, що прочитали умови надання послуг.</string>
@@ -319,10 +319,10 @@
     <string name="installer_status_failure_blocked">Встановлення було заблоковано</string>
     <string name="installer_status_failure_aborted">Інсталяцію скасовано</string>
     <string name="installer_status_failure">Помилка встановлювача</string>
-    <string name="installer_service_misconfigured">Служби Aurora не налаштовано. Переконайтеся, що службу ввімкнено та надано всі дозволи</string>
-    <string name="installer_service_unavailable">Служби Aurora або не встановлені, або версія неправильна (потрібно &gt; = 1.0.9), встановіть її або змініть встановлювач</string>
+    <string name="installer_service_misconfigured">Налаштуйте служби Aurora, найперше надавши всі дозволи.</string>
+    <string name="installer_service_unavailable">Встановіть служби Aurora 1.0.9 чи новішу версію або змініть встановлювач.</string>
     <string name="installer_service_available">Служби Aurora доступні та готові до встановлення.</string>
-    <string name="installer_root_unavailable">Немає root доступу, надайте root доступ або змініть встановлювач.</string>
+    <string name="installer_root_unavailable">Немає root доступу, надайте його або змініть встановлювач.</string>
     <string name="installer_root_available">Root доступ доступний</string>
     <string name="filter_review_two">Два</string>
     <string name="filter_review_three">Три</string>
@@ -333,7 +333,7 @@
     <string name="filter_review_critical">Критичні</string>
     <string name="pref_filter_fdroid_title">Фільтрувати застосунки F-Droid</string>
     <string name="pref_filter_fdroid_summary">Вилучає програми F-Droid зі списків застосунків</string>
-    <string name="pref_downloader_external_desc">Зовнішнє сховище буде використовуватися для завантаження, експорту тощо.</string>
+    <string name="pref_downloader_external_desc">Зовнішнє сховище застосовується для завантажень, експорту тощо.</string>
     <string name="pref_downloader_external">Зовнішнє сховище</string>
     <string name="pref_downloader_active_title">Активні завантаження</string>
     <string name="pref_downloader_active_summary">Найбільша кількість активних завантажень</string>
@@ -342,12 +342,11 @@
     <string name="pref_common_advance">Розширені</string>
     <string name="toast_aas_token_failed">Не вдалося створити токен AAS</string>
     <string name="toast_rated_failed">Не вдалося надіслати оцінку</string>
-    <string name="toast_rated_success">Успішно оцінено</string>
+    <string name="toast_rated_success">Оцінено</string>
     <string name="toast_page_unavailable">Сторінка огляду недоступна</string>
     <string name="toast_double_press_to_exit">Клацніть двічі, щоб вийти</string>
     <string name="toast_export_failed">Не вдалося експортувати конфігурацію пристрою</string>
-    <string name="toast_export_success">Конфігурацію пристрою успішно експортовано</string>
-    <string name="pref_updates_extended_desc">Увімкнути для перевірки оновлень для вимкнених застосунків</string>
+    <string name="toast_export_success">Конфігурацію пристрою експортовано</string>
+    <string name="pref_updates_extended_desc">Також шукає нові версії вимкнених застосунків</string>
     <string name="pref_updates_extended">Розширені оновлення</string>
-    <string name="pref_ui_no_promotional">Рекламовані застосунки</string>
 </resources>

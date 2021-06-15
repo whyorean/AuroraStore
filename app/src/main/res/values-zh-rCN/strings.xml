@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="installer_service_available">Aurora 服务已可用并准备安装。</string>
-    <string name="installer_root_unavailable">无 Root 权限，授予 Root 权限或更改安装程序。</string>
+    <string name="installer_root_unavailable">无 Root 权限。授予 Root 权限或更改安装程序。</string>
     <string name="installer_root_available">Root 权限可用</string>
     <string name="filter_review_two">2★</string>
     <string name="filter_review_three">3★</string>
@@ -191,13 +191,13 @@
     <string name="action_pending">等待中</string>
     <string name="onboarding_welcome_select">你好吗？</string>
     <string name="toast_purchase_blocked">应用购买在匿名账户上不可用。</string>
-    <string name="toast_spoof_applied">成功应用了设备伪装。</string>
+    <string name="toast_spoof_applied">已应用设备伪装。</string>
     <string name="toast_permission_granted">已授予权限</string>
-    <string name="toast_developer_setting_failed">无法打开开发者选项，请确保它已被启用。</string>
+    <string name="toast_developer_setting_failed">从设备设置开启开发者设置来打开它们。</string>
     <string name="toast_clipboard_copied">已复制到剪贴板</string>
     <string name="toast_apk_whitelisted">已加入白名单</string>
-    <string name="toast_apk_copy_success">APK 导出成功</string>
-    <string name="toast_apk_copy_failed">APK 导出失败</string>
+    <string name="toast_apk_copy_success">APK 已导出</string>
+    <string name="toast_apk_copy_failed">无法导出 APK</string>
     <string name="toast_apk_blacklisted">已拉黑</string>
     <string name="toast_anonymous_restriction">对匿名账户不可用</string>
     <string name="toast_abandon_sessions">旧的安装会话已废弃</string>
@@ -263,7 +263,7 @@
     <string name="pref_filter_google_summary">从搜索结果和类别中删除所有 Google 出品的应用</string>
     <string name="pref_filter_fdroid_title">过滤 F-Droid 应用</string>
     <string name="pref_filter_fdroid_summary">从应用列表中排除 F-Droid 应用</string>
-    <string name="pref_downloader_external_desc">外部存储将被用于下载、导出等。</string>
+    <string name="pref_downloader_external_desc">外部存储用于下载、导出等操作。</string>
     <string name="pref_downloader_external">使用外部存储</string>
     <string name="pref_downloader_active_title">同时下载</string>
     <string name="pref_downloader_active_summary">最多同时下载数</string>
@@ -275,7 +275,7 @@
     <string name="onboarding_permission_installer">安装权限</string>
     <string name="onboarding_permission_esm_desc">在运行 Android R+ 的设备上，除了授予访问外部存储权限，还需授予这个权限</string>
     <string name="onboarding_permission_esm">外部存储管理器</string>
-    <string name="onboarding_permission_esa_desc">为了在外部存储上保存下载的文件 (APK 和 OBB) 并导入和导出设备配置。</string>
+    <string name="onboarding_permission_esa_desc">保存下载项 (APKs 和 OBBs)，将设备配置导出到外部存储和从外部存储导入设备配置。</string>
     <string name="onboarding_permission_esa">访问外部存储</string>
     <string name="onboarding_tos_error">请先勾选已阅读服务条款。</string>
     <string name="onboarding_tos_confirmation">我已阅读 Aurora Store 的服务条款。</string>
@@ -316,8 +316,8 @@
     <string name="installer_status_failure_blocked">安装被阻止</string>
     <string name="installer_status_failure_aborted">已取消安装</string>
     <string name="installer_status_failure">安装失败</string>
-    <string name="installer_service_misconfigured">未配置 Aurora 服务，请确保已启用服务并授予了所有权限</string>
-    <string name="installer_service_unavailable">Aurora 服务未安装或版本不正确 (需 &gt; = 1.0.9 版本)，请安装服务或更改安装程序</string>
+    <string name="installer_service_misconfigured">配置 Aurora 服务并首先授予所有权限。</string>
+    <string name="installer_service_unavailable">安装 Aurora 服务 1.09 或以上版本，或更改安装程序。</string>
     <string name="insecure_anonymous_apply">确保你重新登录并重新启动应用程序以应用更改。</string>
     <string name="pref_network_title">网络</string>
     <string name="pref_insecure_anonymous_title">不安全的匿名会话</string>
@@ -340,14 +340,13 @@
     <string name="title_manual_download">手动下载</string>
     <string name="action_check">检查</string>
     <string name="dialog_desc_native_split">你不能通过本机安装程序安装捆绑的（拆分）应用程序。 将你的安装程序更改为会话、服务或根。</string>
-    <string name="toast_aas_token_failed">未能生成 AAS 令牌</string>
+    <string name="toast_aas_token_failed">无法生成 AAS 令牌</string>
     <string name="toast_rated_failed">提交评分失败</string>
-    <string name="toast_rated_success">打分成功</string>
+    <string name="toast_rated_success">已打分</string>
     <string name="toast_page_unavailable">浏览页不可用</string>
     <string name="toast_double_press_to_exit">点击两次退出</string>
-    <string name="toast_export_failed">导出设备配置失败</string>
-    <string name="toast_export_success">设备配置成功导出</string>
-    <string name="pref_updates_extended_desc">启用以检查已禁用的应用程序的更新</string>
+    <string name="toast_export_failed">无法导出设备配置</string>
+    <string name="toast_export_success">设备配置已导出</string>
+    <string name="pref_updates_extended_desc">同样查找已禁用应用程序的新版本</string>
     <string name="pref_updates_extended">扩展更新</string>
-    <string name="pref_ui_no_promotional">推广应用</string>
 </resources>
