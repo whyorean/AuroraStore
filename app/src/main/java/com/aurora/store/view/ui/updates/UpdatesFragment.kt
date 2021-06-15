@@ -57,15 +57,26 @@ class UpdatesFragment : BaseFragment() {
     private lateinit var B: FragmentUpdatesBinding
     private lateinit var VM: UpdatesViewModel
 
+    val listOfActionsWhenServiceAttaches = ArrayList<Runnable>()
     private lateinit var fetchListener: AbstractFetchGroupListener
+    private var attachToServiceCalled = false
     private var serviceConnection = object : ServiceConnection {
         override fun onServiceConnected(name: ComponentName, binder: IBinder) {
             updateService = (binder as UpdateService.UpdateServiceBinder).getUpdateService()
             updateService!!.registerFetchListener(fetchListener)
+            if (listOfActionsWhenServiceAttaches.isNotEmpty()) {
+                val iterator = listOfActionsWhenServiceAttaches.iterator()
+                while (iterator.hasNext()) {
+                    val next = iterator.next()
+                    next.run()
+                    iterator.remove()
+                }
+            }
         }
 
         override fun onServiceDisconnected(name: ComponentName) {
             updateService = null
+            attachToServiceCalled = false
         }
     }
 
@@ -131,6 +142,7 @@ class UpdatesFragment : BaseFragment() {
     override fun onPause() {
         if (updateService != null) {
             updateService = null
+            attachToServiceCalled = false
             requireContext().unbindService(serviceConnection)
         }
         super.onPause()
@@ -140,6 +152,7 @@ class UpdatesFragment : BaseFragment() {
         super.onDestroy()
         if (updateService != null) {
             updateService = null
+            attachToServiceCalled = false
             requireContext().unbindService(serviceConnection)
         }
     }
@@ -228,9 +241,17 @@ class UpdatesFragment : BaseFragment() {
 
     private var updateService: UpdateService? = null
 
-    private fun updateSingle(app: App) {
+    fun runInService(runnable: Runnable) {
+        if (updateService == null) {
+            listOfActionsWhenServiceAttaches.add(runnable)
+            getUpdateServiceInstance()
+        } else {
+            runnable.run()
+        }
+    }
 
-        if (updateService != null) {
+    private fun updateSingle(app: App) {
+        runInService {
             VM.updateState(app.getGroupId(requireContext()), State.QUEUED)
 
             updateService?.updateApp(app)
@@ -238,21 +259,28 @@ class UpdatesFragment : BaseFragment() {
     }
 
     private fun cancelSingle(app: App) {
-        updateService?.fetch?.cancelGroup(app.getGroupId(requireContext()))
+        runInService {
+            updateService?.fetch?.cancelGroup(app.getGroupId(requireContext()))
+        }
     }
 
     private fun updateAll() {
-        updateService?.updateAll(updateFileMap)
-        VM.updateAllEnqueued = true
+        runInService {
+            updateService?.updateAll(updateFileMap)
+            VM.updateAllEnqueued = true
+        }
     }
 
     private fun cancelAll() {
-        VM.updateAllEnqueued = false
-        updateFileMap.values.forEach { updateService?.fetch?.cancelGroup(it.app.getGroupId(requireContext())) }
+        runInService {
+            VM.updateAllEnqueued = false
+            updateFileMap.values.forEach { updateService?.fetch?.cancelGroup(it.app.getGroupId(requireContext())) }
+        }
     }
 
     fun getUpdateServiceInstance() {
-        if (updateService == null) {
+        if (updateService == null && !attachToServiceCalled) {
+            attachToServiceCalled = true
             val intent = Intent(requireContext(), UpdateService::class.java)
             requireContext().startService(intent)
             requireContext().bindService(

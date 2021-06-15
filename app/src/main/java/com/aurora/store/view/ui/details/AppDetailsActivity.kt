@@ -77,21 +77,32 @@ class AppDetailsActivity : BaseDetailsActivity() {
     private var fetch: Fetch? = null
     private var downloadManager: DownloadManager? = null
 
+    private var attachToServiceCalled = false
     private var updateService: UpdateService? = null
-    private var pendingAddListener = true
+    private var pendingAddListeners = true
     private var serviceConnection = object : ServiceConnection {
         override fun onServiceConnected(name: ComponentName, binder: IBinder) {
             updateService = (binder as UpdateService.UpdateServiceBinder).getUpdateService()
-            if (::fetchGroupListener.isInitialized && ::appMetadataListener.isInitialized) {
+            if (::fetchGroupListener.isInitialized && ::appMetadataListener.isInitialized && pendingAddListeners) {
                 updateService!!.registerFetchListener(fetchGroupListener)
                 // appMetadataListener needs to be initialized after the fetchGroupListener
                 updateService!!.registerAppMetadataListener(appMetadataListener)
-                pendingAddListener = false
+                pendingAddListeners = false
+            }
+            if (listOfActionsWhenServiceAttaches.isNotEmpty()) {
+                val iterator = listOfActionsWhenServiceAttaches.iterator()
+                while (iterator.hasNext()) {
+                    val next = iterator.next()
+                    next.run()
+                    iterator.remove()
+                }
             }
         }
 
         override fun onServiceDisconnected(name: ComponentName) {
             updateService = null
+            attachToServiceCalled = false
+            pendingAddListeners = true
         }
     }
     private lateinit var fetchGroupListener: FetchGroupListener
@@ -103,6 +114,7 @@ class AppDetailsActivity : BaseDetailsActivity() {
     private var isNone = false
     private var status = Status.NONE
     private var isInstalled: Boolean = false
+    private var isUpdatable: Boolean = false
     private var autoDownload: Boolean = false
     private var downloadOnly: Boolean = false
 
@@ -466,6 +478,8 @@ class AppDetailsActivity : BaseDetailsActivity() {
         }
     }
 
+    val listOfActionsWhenServiceAttaches = ArrayList<Runnable>()
+
     private fun purchase() {
         bottomSheetBehavior.isHideable = false
         bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
@@ -475,7 +489,14 @@ class AppDetailsActivity : BaseDetailsActivity() {
             Manifest.permission.READ_EXTERNAL_STORAGE,
             Manifest.permission.WRITE_EXTERNAL_STORAGE
         ) {
-            updateService?.updateApp(app, removeExisiting = true)
+            if (updateService == null) {
+                listOfActionsWhenServiceAttaches.add({
+                    updateService?.updateApp(app, removeExisiting = true)
+                })
+                getUpdateServiceInstance()
+            } else {
+                updateService?.updateApp(app, removeExisiting = true)
+            }
         }
     }
 
@@ -485,9 +506,6 @@ class AppDetailsActivity : BaseDetailsActivity() {
         downloadedBytesPerSecond: Long
     ) {
         runOnUiThread {
-            if (isInstalled) {
-                return@runOnUiThread
-            }
             val progress = if (fetchGroup.groupDownloadProgress > 0)
                 fetchGroup.groupDownloadProgress
             else
@@ -538,7 +556,7 @@ class AppDetailsActivity : BaseDetailsActivity() {
 
         B.layoutDetailsInstall.btnDownload.let { btn ->
             if (isInstalled) {
-                val isUpdatable = PackageUtil.isUpdatable(
+                isUpdatable = PackageUtil.isUpdatable(
                     this,
                     app.packageName,
                     app.versionCode.toLong()
@@ -729,16 +747,19 @@ class AppDetailsActivity : BaseDetailsActivity() {
                 app.getGroupId(this@AppDetailsActivity)
             )
         }
-        if (pendingAddListener && updateService != null) {
-            pendingAddListener = false
+        if (updateService != null) {
+            pendingAddListeners = false
             updateService!!.registerFetchListener(fetchGroupListener)
             // appMetadataListener needs to be initialized after the fetchGroupListener
             updateService!!.registerAppMetadataListener(appMetadataListener)
+        } else {
+            pendingAddListeners = true
         }
     }
 
     fun getUpdateServiceInstance() {
-        if (updateService == null) {
+        if (updateService == null && !attachToServiceCalled) {
+            attachToServiceCalled = true
             val intent = Intent(this, UpdateService::class.java)
             startService(intent)
             bindService(
@@ -752,6 +773,8 @@ class AppDetailsActivity : BaseDetailsActivity() {
     override fun onPause() {
         if (updateService != null) {
             updateService = null
+            attachToServiceCalled = false
+            pendingAddListeners = true
             unbindService(serviceConnection)
         }
         super.onPause()
@@ -761,6 +784,8 @@ class AppDetailsActivity : BaseDetailsActivity() {
         super.onDestroy()
         if (updateService != null) {
             updateService = null
+            attachToServiceCalled = false
+            pendingAddListeners = true
             unbindService(serviceConnection)
         }
     }

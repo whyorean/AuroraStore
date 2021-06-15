@@ -36,7 +36,7 @@ import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
 import java.util.*
-import java.util.concurrent.CopyOnWriteArrayList
+import java.util.concurrent.locks.ReentrantLock
 import kotlin.concurrent.timerTask
 
 class UpdateService: LifecycleService() {
@@ -46,9 +46,9 @@ class UpdateService: LifecycleService() {
     private lateinit var fetchListener: FetchGroupListener
     private var fetchActiveDownloadObserver = object : FetchObserver<Boolean> {
         override fun onChanged(data: Boolean, reason: Reason) {
-            if (!data && installing.isEmpty() && fetchListeners.isEmpty() && appMetadataListeners.isEmpty()) {
+            if (!data && isEmptyInstalling() && fetchListeners.isEmpty() && appMetadataListeners.isEmpty()) {
                 Handler(Looper.getMainLooper()).postDelayed ({
-                    if (installing.isEmpty() && fetchListeners.isEmpty() && appMetadataListeners.isEmpty()) {
+                    if (isEmptyInstalling() && fetchListeners.isEmpty() && appMetadataListeners.isEmpty()) {
                         stopSelf()
                     }
                 }, 5 * 1000)
@@ -73,7 +73,97 @@ class UpdateService: LifecycleService() {
         }
     }
 
-    private var installing = CopyOnWriteArrayList<String>()
+    // HashMap<packageName, HashSet<downloadFilePath>>
+    private var downloadsInCompletedGroup = HashMap<String, HashSet<String>>()
+
+    private var installing = HashSet<String>()
+    private var lock = ReentrantLock()
+
+    fun putInInstalling(packageName: String?) {
+        if (packageName == null) {
+            return
+        }
+        if (lock.tryLock()) {
+            installing.add(packageName)
+            try {
+                lock.unlock()
+            } catch (th: Throwable) {
+                th.printStackTrace()
+            }
+        } else {
+            Thread {
+                while (!lock.tryLock()) {
+                    Thread.sleep(50)
+                }
+                installing.add(packageName)
+                try {
+                    lock.unlock()
+                } catch (th: Throwable) {
+                    th.printStackTrace()
+                }
+            }.start()
+        }
+    }
+
+    fun removeFromInstalling(packageName: String?, runFromCurrentThread: Boolean = false) {
+        if (packageName == null) {
+            return
+        }
+        if (lock.tryLock()) {
+            installing.remove(packageName)
+            try {
+                lock.unlock()
+            } catch (th: Throwable) {
+                th.printStackTrace()
+            }
+        } else {
+            val toRun = Runnable {
+                while (!lock.tryLock()) {
+                    Thread.sleep(50)
+                }
+                installing.remove(packageName)
+                try {
+                    lock.unlock()
+                } catch (th: Throwable) {
+                    th.printStackTrace()
+                }
+            }
+            if (runFromCurrentThread) {
+                toRun.run()
+            } else {
+                Thread(toRun).start()
+            }
+        }
+    }
+
+    fun isEmptyInstalling(): Boolean {
+        while (!lock.tryLock()) {
+            Thread.sleep(50)
+        }
+        val out: Boolean = installing.isEmpty()
+        try {
+            lock.unlock()
+        } catch (th: Throwable) {
+            th.printStackTrace()
+        }
+        return out
+    }
+
+    fun containsInInstalling(packageName: String?): Boolean {
+        if (packageName == null) {
+            return false
+        }
+        while (!lock.tryLock()) {
+            Thread.sleep(50)
+        }
+        val out = installing.contains(packageName)
+        try {
+            lock.unlock()
+        } catch (th: Throwable) {
+            th.printStackTrace()
+        }
+        return out
+    }
 
 
     private lateinit var purchaseHelper: PurchaseHelper
@@ -130,7 +220,7 @@ class UpdateService: LifecycleService() {
                     it.onAdded(groupId, download, fetchGroup)
                 }
                 if (download.tag != null) {
-                    installing.remove(download.tag)
+                    removeFromInstalling(download.tag, runFromCurrentThread = true)
                 }
                 if (!hasActiveDownloadObserver) {
                     hasActiveDownloadObserver = true
@@ -243,7 +333,18 @@ class UpdateService: LifecycleService() {
                 if (fetchListeners.isEmpty()) {
                     fetchPendingEvents[groupId] = AppDownloadStatus(download, fetchGroup, isComplete = true)
                 }
-                if (fetchGroup.groupDownloadProgress == 100) {
+                var packageDownloadFilesWhichCompleted = downloadsInCompletedGroup[download.tag!!]
+                if (packageDownloadFilesWhichCompleted == null) {
+                    packageDownloadFilesWhichCompleted = HashSet()
+                    downloadsInCompletedGroup[download.tag!!] = packageDownloadFilesWhichCompleted
+                }
+                packageDownloadFilesWhichCompleted.add(download.file)
+                if (fetchGroup.groupDownloadProgress == 100 && fetchGroup.downloads.all { packageDownloadFilesWhichCompleted.contains(it.file) }) {
+                    downloadsInCompletedGroup.remove(download.tag!!)
+                    if (download.tag != null) {
+                        removeFromInstalling(download.tag, runFromCurrentThread = true)
+                    }
+                    Log.d("Group (${download.tag!!}) downloaded and verified all downloaded!")
                     Handler(Looper.getMainLooper()).post {
                         try {
                             install(download.tag!!, fetchGroup.downloads)
@@ -251,6 +352,9 @@ class UpdateService: LifecycleService() {
                             Log.e(e.stackTraceToString())
                         }
                     }
+                }
+                if (fetchGroup.groupDownloadProgress == 100) {
+                    Log.d("Group (${download.tag!!}) downloaded but NOT verified all downloaded!")
                 } /* else if (fetchGroup.groupDownloadProgress == -1) {
                     fetch.deleteGroup(fetchGroup.id)
                 }*/
@@ -369,7 +473,7 @@ class UpdateService: LifecycleService() {
     }
 
     fun updateApp(app: App, removeExisiting: Boolean = false) {
-        installing.add(app.packageName)
+        putInInstalling(app.packageName)
         task {
             val files = purchaseHelper.purchase(
                 app.packageName,
@@ -390,7 +494,7 @@ class UpdateService: LifecycleService() {
                     Log.i("Updating ${app.displayName}")
                 }
             } else {
-                installing.remove(app.packageName)
+                removeFromInstalling(app.packageName)
                 Log.e("Failed to download : ${app.displayName}")
                 appMetadataListeners.forEach {
                     it.onAppMetadataStatusError(getString(R.string.purchase_session_expired), app)
@@ -401,7 +505,7 @@ class UpdateService: LifecycleService() {
                 }
             }
         } failUi { failException ->
-            installing.remove(app.packageName)
+            removeFromInstalling(app.packageName)
             var reason = "Unknown"
 
             when (failException) {
@@ -438,9 +542,9 @@ class UpdateService: LifecycleService() {
     var timer: Timer? = null
     val timerTaskRun: Runnable = Runnable {
         Handler(Looper.getMainLooper()).post {
-            if (installing.isEmpty() && fetchListeners.isEmpty() && appMetadataListeners.isEmpty()) {
+            if (isEmptyInstalling() && fetchListeners.isEmpty() && appMetadataListeners.isEmpty()) {
                 fetch.hasActiveDownloads(true) { hasActiveDownloads ->
-                    if (!hasActiveDownloads && installing.isEmpty() && fetchListeners.isEmpty() && appMetadataListeners.isEmpty()) {
+                    if (!hasActiveDownloads && isEmptyInstalling() && fetchListeners.isEmpty() && appMetadataListeners.isEmpty()) {
                         Handler(Looper.getMainLooper()).post {
                             stopSelf()
                         }
@@ -452,7 +556,11 @@ class UpdateService: LifecycleService() {
 
     @Synchronized
     private fun install(packageName: String, files: List<Download>?) {
-        installing.add(packageName)
+        if (containsInInstalling(packageName)) {
+            println("Already installing $packageName!")
+            return
+        }
+        putInInstalling(packageName)
         files?.let { downloads ->
             var filesExist = true
 
@@ -472,11 +580,15 @@ class UpdateService: LifecycleService() {
                                 .map { it.file }.toList()
                         )
                     } catch (th: Throwable) {
+                        removeFromInstalling(packageName)
                         th.printStackTrace()
                     }
                 }.fail {
+                    removeFromInstalling(packageName)
                     Log.e(it.stackTraceToString())
                 }
+            } else {
+                removeFromInstalling(packageName)
             }
         }
     }
@@ -495,7 +607,7 @@ class UpdateService: LifecycleService() {
                     is InstallerEvent.Failed -> event.packageName
                     else -> null
                 }?.run {
-                    installing.remove(this)
+                    removeFromInstalling(this)
                 }
                 synchronized(timerLock) {
                     if (timer != null) {
@@ -556,14 +668,15 @@ class UpdateService: LifecycleService() {
     override fun onUnbind(intent: Intent?): Boolean {
         fetchListeners.clear()
         appMetadataListeners.clear()
-        if (installing.isEmpty()) {
-            fetch.hasActiveDownloads(true) { hasActiveDownloads ->
-                if (!hasActiveDownloads && installing.isEmpty() && fetchListeners.isEmpty() && appMetadataListeners.isEmpty()) {
-                    Handler(Looper.getMainLooper()).post {
-                        stopSelf()
-                    }
-                }
+        synchronized(timerLock) {
+            if (timer != null) {
+                timer!!.cancel()
+                timer = null
             }
+            if (timer == null) {
+                timer = Timer()
+            }
+            timer!!.schedule(timerTask { timerTaskRun.run() }, 5 * 1000)
         }
         return true
     }
