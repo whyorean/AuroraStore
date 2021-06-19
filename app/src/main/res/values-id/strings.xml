@@ -116,8 +116,8 @@
     <string name="toast_double_press_to_exit">Ketuk dua kali untuk keluar</string>
     <string name="toast_clipboard_copied">Disalin ke papan klip</string>
     <string name="toast_apk_whitelisted">Masuk daftar putih</string>
-    <string name="toast_apk_copy_success">APK berhasil diekspor</string>
-    <string name="toast_apk_copy_failed">Ekspor APK gagal</string>
+    <string name="toast_apk_copy_success">APK diekspor</string>
+    <string name="toast_apk_copy_failed">Tidak bisa mengekspor APK</string>
     <string name="toast_apk_blacklisted">Dalam daftar hitam</string>
     <string name="toast_anonymous_restriction">Tidak tersedia di akun anonim</string>
     <string name="toast_abandon_sessions">Sesi instalasi lama ditinggalkan</string>
@@ -144,21 +144,21 @@
     <string name="title_download_manager">Unduhan</string>
     <string name="title_device">Perangkat</string>
     <string name="title_manual_download">Unduh manual</string>
-    <string name="toast_developer_setting_failed">Gagal membuka pengaturan pengembang, pastikan setelan ini aktif dari pengaturan perangkat.</string>
-    <string name="toast_rated_success">Berhasil dinilai</string>
-    <string name="toast_rated_failed">Gagal mengirimkan peringkat</string>
+    <string name="toast_developer_setting_failed">Aktifkan pengaturan pengembang dari pengaturan perangkat untuk membukanya.</string>
+    <string name="toast_rated_success">Dinilai</string>
+    <string name="toast_rated_failed">Tidak bisa mengirimkan peringkat</string>
     <string name="toast_manual_available">Selamat, kode versi yang diminta tersedia, unduh sekarang.</string>
     <string name="toast_manual_unavailable">Kode versi yang Anda minta tidak tersedia.</string>
     <string name="toast_purchase_blocked">Pembelian aplikasi tidak tersedia di akun Anonim.</string>
-    <string name="toast_spoof_applied">Spoof perangkat berhasil diterapkan.</string>
+    <string name="toast_spoof_applied">Spoof perangkat diterapkan.</string>
     <string name="toast_permission_granted">Izin diberikan</string>
-    <string name="toast_aas_token_failed">Gagal membuat Token AAS</string>
+    <string name="toast_aas_token_failed">Tidak bisa membuat Token AAS</string>
     <string name="pref_install_mode_title">Metode pemasangan</string>
     <string name="pref_filter_google_title">Filter aplikasi Google</string>
     <string name="pref_filter_google_summary">Hapus semua Aplikasi Google dari hasil pencarian dan kategori aplikasi</string>
     <string name="pref_filter_fdroid_title">Filter aplikasi F-droid</string>
     <string name="pref_filter_fdroid_summary">Hapus F-Droid dari daftar aplikasi</string>
-    <string name="pref_downloader_external_desc">Penyimpanan eksternal akan digunakan untuk unduhan, ekspor, dll.</string>
+    <string name="pref_downloader_external_desc">Penyimpanan eksternal digunakan untuk unduhan, ekspor, dll.</string>
     <string name="pref_downloader_external">Penyimpanan eksternal pengguna</string>
     <string name="pref_downloader_active_title">Unduhan aktif</string>
     <string name="pref_downloader_active_summary">Jumlah maksimum unduhan aktif</string>
@@ -172,7 +172,7 @@
     <string name="onboarding_permission_installer">Izin Pemasang</string>
     <string name="onboarding_permission_esm_desc">Diperlukan pada perangkat yang menjalankan Android R+, tambahan untuk Akses Penyimpanan Eksternal</string>
     <string name="onboarding_permission_esm">Manajer Penyimpanan Eksternal</string>
-    <string name="onboarding_permission_esa_desc">Untuk menyimpan unduhan (APK &amp; OBB), ekspor &amp; impor konfigurasi perangkat pada penyimpanan eksternal.</string>
+    <string name="onboarding_permission_esa_desc">Untuk menyimpan unduhan (APK &amp; OBB), ekspor &amp; impor konfigurasi perangkat ke dan dari penyimpanan eksternal.</string>
     <string name="onboarding_permission_esa">Akses Penyimpanan Eksternal</string>
     <string name="onboarding_welcome_select">Apa kabar\?</string>
     <string name="onboarding_tos_error">Anda perlu menandai TOS terlebih dahulu.</string>
@@ -202,7 +202,7 @@
     <string name="installer_status_failure_aborted">Pemasangan dibatalkan</string>
     <string name="installer_status_failure">Pemasangan gagal</string>
     <string name="installer_service_available">Layanan Aurora tersedia dan siap dipasang.</string>
-    <string name="installer_root_unavailable">Tanpa Root, berikan akses root atau ubah penginstal.</string>
+    <string name="installer_root_unavailable">Tidak ada akses Root. Berikan aksesnya atau ubah pemasang.</string>
     <string name="device_huawei_title">Huawei terdeteksi!</string>
     <string name="menu_terms">Ketentuan layanan</string>
     <string name="menu_license">Lisensi</string>
@@ -335,7 +335,7 @@
     <string name="device_miui_description">Harap nonaktifkan pengoptimalan MIUI untuk mengizinkan pemasangan, jika tidak, Anda dapat memilih pemasang Root atau Layanan.</string>
     <string name="device_miui_subtitle">Pemasang sesi tidak dapat memasang aplikasi karena Pengoptimalan MIUI.</string>
     <string name="device_huawei_description">Kami sarankan untuk menggunakan spoof perangkat jika Anda memiliki perangkat Huawei terbaru. Apakah Anda ingin menerapkan spoof sekarang\?</string>
-    <string name="installer_service_unavailable">Layanan Aurora belum terpasang atau versinya salah (diperlukan&gt; = 1.0.9), silakan pasang atau ubah pemasang</string>
+    <string name="installer_service_unavailable">Pasang layanan Aurora 1.0.9 atau lebih baru atau ubah pemasang.</string>
     <string name="tab_trending">Sedang tren</string>
     <string name="tab_top_paid">Berbayar teratas</string>
     <string name="onboarding_installer_select">Pilih pemasang yang sesuai</string>
@@ -343,10 +343,10 @@
     <string name="onboarding_title_accent">Aksen</string>
     <string name="onboarding_permission_select">Aurora Store memerlukan izin sebagai berikut</string>
     <string name="device_huawei_subtitle">Sepertinya anda menggunakan perangkat Huawei, karena pelarangan baru dari Google anda tidak dapat masuk.</string>
-    <string name="installer_service_misconfigured">Layanan Aurora belum terkonfigurasi. Pastikan layanan sudah diaktifkan &amp; semua izin telah diperbolehkan</string>
+    <string name="installer_service_misconfigured">Atur layanan Aurora dan berikan seluruh izin terlebih dahulu.</string>
     <string name="purchase_failed">Pengunduhan Gagal</string>
-    <string name="toast_export_failed">gagal untuk mengeksport konfigirasi perangkat</string>
-    <string name="toast_export_success">konfigurasi perangkat telah selesai di eksport</string>
-    <string name="pref_updates_extended_desc">Izinkan untuk mengecek perbaruan dari aplikasi-aplikasi yang dimatikan</string>
+    <string name="toast_export_failed">Tidak bisa mengekspor konfigurasi perangkat</string>
+    <string name="toast_export_success">Konfigurasi perangkat diekspor</string>
+    <string name="pref_updates_extended_desc">Lihat untuk versi terbaru dari aplikasi yang dimatikan juga</string>
     <string name="pref_updates_extended">pembaruan yang diperluas</string>
 </resources>
