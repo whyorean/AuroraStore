@@ -157,6 +157,7 @@
 
         <service android:name=".data.service.NotificationService" />
         <service android:name=".data.installer.InstallerService" />
+        <service android:name=".data.service.UpdateService" />
         <service
             android:name="com.novoda.merlin.MerlinService"
             android:exported="false" />

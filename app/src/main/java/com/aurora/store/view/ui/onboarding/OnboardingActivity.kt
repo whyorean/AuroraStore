@@ -113,21 +113,8 @@ class OnboardingActivity : BaseActivity() {
         B.viewpager2.registerOnPageChangeCallback(object : OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 runOnUiThread {
-                    B.btnBackward.isEnabled = position != 0
-                    if (position == 4) {
-                        B.btnForward.text = getString(R.string.action_finish)
-                        B.btnForward.setOnClickListener {
-                            save(PREFERENCE_INTRO, true)
-                            open(SplashActivity::class.java, true)
-                        }
-                    } else {
-                        B.btnForward.text = getString(R.string.action_next)
-                        B.btnForward.setOnClickListener {
-                            B.viewpager2.setCurrentItem(
-                                B.viewpager2.currentItem + 1, true
-                            )
-                        }
-                    }
+                    lastPosition = position
+                    refreshButtonState()
                 }
             }
         })
@@ -143,6 +130,32 @@ class OnboardingActivity : BaseActivity() {
 
     private fun moveBackward() {
         B.viewpager2.setCurrentItem(B.viewpager2.currentItem - 1, true)
+    }
+
+    var lastPosition = 0
+
+    fun refreshButtonState() {
+        B.btnBackward.isEnabled = lastPosition != 0
+        if (lastPosition == 4) {
+            B.btnForward.text = getString(R.string.action_finish)
+            B.btnForward.setOnClickListener {
+                save(PREFERENCE_INTRO, true)
+                open(SplashActivity::class.java, true)
+            }
+            for (fragment in supportFragmentManager.fragments) {
+                if (fragment is PermissionsFragment) {
+                    B.btnForward.isEnabled = fragment.canGoForward()
+                    break
+                }
+            }
+        } else {
+            B.btnForward.text = getString(R.string.action_next)
+            B.btnForward.setOnClickListener {
+                B.viewpager2.setCurrentItem(
+                    B.viewpager2.currentItem + 1, true
+                )
+            }
+        }
     }
 
     override fun onBackPressed() {

@@ -31,9 +31,9 @@ import com.tonyodev.fetch2.Request
 import com.tonyodev.fetch2core.Extras
 import java.lang.reflect.Modifier
 
-private inline fun Request.attachMetaData(app: App) {
+private inline fun Request.attachMetaData(context: Context, app: App) {
     apply {
-        groupId = app.id
+        groupId = app.getGroupId(context)
         tag = app.packageName
         enqueueAction = EnqueueAction.UPDATE_ACCORDINGLY
         networkType = NetworkType.ALL
@@ -61,7 +61,7 @@ object RequestBuilder {
             File.FileType.PATCH -> PathUtil.getObbDownloadFile(context, app, file)
         }
         return Request(file.url, fileName).apply {
-            attachMetaData(app)
+            attachMetaData(context, app)
             attachExtra(app)
         }
     }

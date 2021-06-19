@@ -21,9 +21,12 @@ package com.aurora.store.view.ui.details
 
 import android.Manifest
 import android.content.ActivityNotFoundException
+import android.content.ComponentName
 import android.content.Intent
+import android.content.ServiceConnection
 import android.os.Build
 import android.os.Bundle
+import android.os.IBinder
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -32,20 +35,19 @@ import com.aurora.Constants
 import com.aurora.extensions.*
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.AuthData
-import com.aurora.gplayapi.data.models.File
-import com.aurora.gplayapi.exceptions.ApiException
 import com.aurora.gplayapi.helpers.AppDetailsHelper
-import com.aurora.gplayapi.helpers.PurchaseHelper
 import com.aurora.store.MainActivity
 import com.aurora.store.R
 import com.aurora.store.State
 import com.aurora.store.data.downloader.DownloadManager
-import com.aurora.store.data.downloader.RequestBuilder
+import com.aurora.store.data.downloader.getGroupId
 import com.aurora.store.data.event.BusEvent
 import com.aurora.store.data.event.InstallerEvent
 import com.aurora.store.data.installer.AppInstaller
 import com.aurora.store.data.network.HttpClient
 import com.aurora.store.data.providers.AuthProvider
+import com.aurora.store.data.service.AppMetadataStatusListener
+import com.aurora.store.data.service.UpdateService
 import com.aurora.store.databinding.ActivityDetailsBinding
 import com.aurora.store.util.*
 import com.aurora.store.view.ui.downloads.DownloadActivity
@@ -64,7 +66,6 @@ import org.apache.commons.io.FileUtils
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
-import java.util.*
 
 class AppDetailsActivity : BaseDetailsActivity() {
 
@@ -73,9 +74,39 @@ class AppDetailsActivity : BaseDetailsActivity() {
 
     private lateinit var authData: AuthData
     private lateinit var app: App
-    private lateinit var downloadManager: DownloadManager
-    private lateinit var fetch: Fetch
+    private var fetch: Fetch? = null
+    private var downloadManager: DownloadManager? = null
+
+    private var attachToServiceCalled = false
+    private var updateService: UpdateService? = null
+    private var pendingAddListeners = true
+    private var serviceConnection = object : ServiceConnection {
+        override fun onServiceConnected(name: ComponentName, binder: IBinder) {
+            updateService = (binder as UpdateService.UpdateServiceBinder).getUpdateService()
+            if (::fetchGroupListener.isInitialized && ::appMetadataListener.isInitialized && pendingAddListeners) {
+                updateService!!.registerFetchListener(fetchGroupListener)
+                // appMetadataListener needs to be initialized after the fetchGroupListener
+                updateService!!.registerAppMetadataListener(appMetadataListener)
+                pendingAddListeners = false
+            }
+            if (listOfActionsWhenServiceAttaches.isNotEmpty()) {
+                val iterator = listOfActionsWhenServiceAttaches.iterator()
+                while (iterator.hasNext()) {
+                    val next = iterator.next()
+                    next.run()
+                    iterator.remove()
+                }
+            }
+        }
+
+        override fun onServiceDisconnected(name: ComponentName) {
+            updateService = null
+            attachToServiceCalled = false
+            pendingAddListeners = true
+        }
+    }
     private lateinit var fetchGroupListener: FetchGroupListener
+    private lateinit var appMetadataListener: AppMetadataStatusListener
     private lateinit var completionMarker: java.io.File
     private lateinit var inProgressMarker: java.io.File
 
@@ -83,6 +114,7 @@ class AppDetailsActivity : BaseDetailsActivity() {
     private var isNone = false
     private var status = Status.NONE
     private var isInstalled: Boolean = false
+    private var isUpdatable: Boolean = false
     private var autoDownload: Boolean = false
     private var downloadOnly: Boolean = false
 
@@ -165,9 +197,8 @@ class AppDetailsActivity : BaseDetailsActivity() {
     }
 
     override fun onResume() {
-        if (!isLAndAbove()) {
-            checkAndSetupInstall()
-        }
+        getUpdateServiceInstance()
+        checkAndSetupInstall()
         super.onResume()
     }
 
@@ -206,11 +237,14 @@ class AppDetailsActivity : BaseDetailsActivity() {
         }
     }
 
+    private var uninstallActionEnabled = false
+
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_details, menu)
         if (::app.isInitialized) {
             val installed = PackageUtil.isInstalled(this, app.packageName)
             menu?.findItem(R.id.action_uninstall)?.isVisible = installed
+            uninstallActionEnabled = installed
         }
         return true
     }
@@ -305,7 +339,7 @@ class AppDetailsActivity : BaseDetailsActivity() {
             showDialog(R.string.title_installer, R.string.dialog_desc_native_split)
         } else {
             task {
-                AppInstaller(this)
+                AppInstaller.getInstance(this)
                     .getPreferredInstaller()
                     .install(
                         app.packageName,
@@ -324,7 +358,7 @@ class AppDetailsActivity : BaseDetailsActivity() {
     @Synchronized
     private fun uninstallApp() {
         task {
-            AppInstaller(this)
+            AppInstaller.getInstance(this)
                 .getPreferredInstaller()
                 .uninstall(app.packageName)
         }
@@ -427,14 +461,14 @@ class AppDetailsActivity : BaseDetailsActivity() {
     private fun startDownload() {
         when (status) {
             Status.PAUSED -> {
-                fetch.resumeGroup(app.id)
+                fetch?.resumeGroup(app.getGroupId(this@AppDetailsActivity))
             }
             Status.DOWNLOADING -> {
                 flip(1)
                 toast("Already downloading")
             }
             Status.COMPLETED -> {
-                fetch.getFetchGroup(app.id) {
+                fetch?.getFetchGroup(app.getGroupId(this@AppDetailsActivity)) {
                     verifyAndInstall(it.downloads)
                 }
             }
@@ -444,92 +478,25 @@ class AppDetailsActivity : BaseDetailsActivity() {
         }
     }
 
+    val listOfActionsWhenServiceAttaches = ArrayList<Runnable>()
+
     private fun purchase() {
+        bottomSheetBehavior.isHideable = false
+        bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
         updateActionState(State.PROGRESS)
 
-        task {
-            val authData = AuthProvider
-                .with(this)
-                .getAuthData()
-
-            PurchaseHelper(authData)
-                .using(HttpClient.getPreferredClient())
-                .purchase(app.packageName, app.versionCode, app.offerType)
-        } successUi { files ->
-            if (files.isNotEmpty()) {
-                var hasOBB = false
-
-                files.forEach { file ->
-                    if (file.type == File.FileType.OBB || file.type == File.FileType.PATCH) {
-                        hasOBB = true
-                    }
-                }
-
-                if (hasOBB)
-                    enqueueWithStoragePermission(files)
-                else
-                    enqueue(files)
+        runWithPermissions(
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE
+        ) {
+            if (updateService == null) {
+                listOfActionsWhenServiceAttaches.add({
+                    updateService?.updateApp(app, removeExisiting = true)
+                })
+                getUpdateServiceInstance()
             } else {
-                Log.e("Failed to download : ${app.displayName}")
-                updateActionState(State.IDLE)
+                updateService?.updateApp(app, removeExisiting = true)
             }
-        } failUi {
-            updateActionState(State.IDLE)
-            var reason = "Unknown"
-
-            when (it) {
-                is ApiException.AppNotPurchased -> {
-                    reason = getString(R.string.purchase_invalid)
-                }
-
-                is ApiException.AppNotFound -> {
-                    reason = getString(R.string.purchase_not_found)
-                }
-
-                is ApiException.AppNotSupported -> {
-                    reason = getString(R.string.purchase_unsupported)
-                }
-
-                is ApiException.EmptyDownloads -> {
-                    reason = getString(R.string.purchase_no_file)
-                }
-            }
-
-            expandBottomSheet(reason)
-
-            Log.e("Failed to purchase ${app.displayName} : $reason")
-        }
-    }
-
-    private fun enqueueWithStoragePermission(files: List<File>) = runWithPermissions(
-        Manifest.permission.READ_EXTERNAL_STORAGE,
-        Manifest.permission.WRITE_EXTERNAL_STORAGE
-    ) {
-        enqueue(files)
-    }
-
-    private fun enqueue(files: List<File>) {
-        val requestList = files
-            .filter { it.url.isNotEmpty() }
-            .map {
-                RequestBuilder.buildRequest(this, app, it)
-            }
-            .toList()
-
-        if (requestList.isNotEmpty()) {
-            /*Remove old fetch group if downloaded earlier, mostly in case of updates*/
-            fetch.deleteGroup(app.id)
-
-            /*Enqueue new fetch group*/
-            fetch.enqueue(
-                requestList
-            ) {
-                status = Status.ADDED
-                Log.i("Downloading Apks : %s", app.displayName)
-            }
-        } else {
-            updateActionState(State.IDLE)
-            expandBottomSheet(getString(R.string.purchase_session_expired))
         }
     }
 
@@ -544,6 +511,10 @@ class AppDetailsActivity : BaseDetailsActivity() {
             else
                 0
 
+            if (progress == 100) {
+                B.layoutDetailsInstall.btnDownload.setText(getString(R.string.action_installing))
+                return@runOnUiThread
+            }
             B.layoutDetailsInstall.apply {
                 txtProgressPercent.text = ("${progress}%")
 
@@ -585,7 +556,7 @@ class AppDetailsActivity : BaseDetailsActivity() {
 
         B.layoutDetailsInstall.btnDownload.let { btn ->
             if (isInstalled) {
-                val isUpdatable = PackageUtil.isUpdatable(
+                isUpdatable = PackageUtil.isUpdatable(
                     this,
                     app.packageName,
                     app.versionCode.toLong()
@@ -603,6 +574,9 @@ class AppDetailsActivity : BaseDetailsActivity() {
                     btn.setText(R.string.action_open)
                     btn.addOnClickListener { openApp() }
                 }
+                if (!uninstallActionEnabled) {
+                    invalidateOptionsMenu()
+                }
             } else {
                 if (app.isFree) {
                     btn.setText(R.string.action_install)
@@ -617,6 +591,9 @@ class AppDetailsActivity : BaseDetailsActivity() {
                         btn.setText(R.string.download_metadata)
                         startDownload()
                     }
+                }
+                if (uninstallActionEnabled) {
+                    invalidateOptionsMenu()
                 }
             }
         }
@@ -635,16 +612,17 @@ class AppDetailsActivity : BaseDetailsActivity() {
     }
 
     private fun attachFetch() {
-        downloadManager = DownloadManager.with(this)
-        fetch = downloadManager.fetch
-
-        fetch.getFetchGroup(app.id) { fetchGroup: FetchGroup ->
+        if (fetch == null) {
+            downloadManager = DownloadManager.with(this)
+            fetch = downloadManager!!.fetch
+        }
+        fetch?.getFetchGroup(app.getGroupId(this@AppDetailsActivity)) { fetchGroup: FetchGroup ->
             if (fetchGroup.groupDownloadProgress == 100 && fetchGroup.completedDownloads.isNotEmpty()) {
                 status = Status.COMPLETED
-            } else if (downloadManager.isDownloading(fetchGroup)) {
+            } else if (downloadManager?.isDownloading(fetchGroup) == true) {
                 status = Status.DOWNLOADING
                 flip(1)
-            } else if (downloadManager.isCanceled(fetchGroup)) {
+            } else if (downloadManager?.isCanceled(fetchGroup) == true) {
                 status = Status.CANCELLED
             } else if (fetchGroup.pausedDownloads.isNotEmpty()) {
                 status = Status.PAUSED
@@ -655,6 +633,12 @@ class AppDetailsActivity : BaseDetailsActivity() {
 
         fetchGroupListener = object : AbstractFetchGroupListener() {
 
+            override fun onAdded(groupId: Int, download: Download, fetchGroup: FetchGroup) {
+                if (groupId == app.getGroupId(this@AppDetailsActivity)) {
+                    status = download.status
+                }
+            }
+
             override fun onStarted(
                 groupId: Int,
                 download: Download,
@@ -662,7 +646,7 @@ class AppDetailsActivity : BaseDetailsActivity() {
                 totalBlocks: Int,
                 fetchGroup: FetchGroup
             ) {
-                if (groupId == app.id) {
+                if (groupId == app.getGroupId(this@AppDetailsActivity)) {
                     status = download.status
                     flip(1)
 
@@ -680,7 +664,7 @@ class AppDetailsActivity : BaseDetailsActivity() {
             }
 
             override fun onResumed(groupId: Int, download: Download, fetchGroup: FetchGroup) {
-                if (groupId == app.id) {
+                if (groupId == app.getGroupId(this@AppDetailsActivity)) {
                     status = download.status
                     flip(1)
                     FileUtils.touch(inProgressMarker)
@@ -688,7 +672,7 @@ class AppDetailsActivity : BaseDetailsActivity() {
             }
 
             override fun onPaused(groupId: Int, download: Download, fetchGroup: FetchGroup) {
-                if (groupId == app.id) {
+                if (groupId == app.getGroupId(this@AppDetailsActivity)) {
                     status = download.status
                     flip(0)
                 }
@@ -701,7 +685,7 @@ class AppDetailsActivity : BaseDetailsActivity() {
                 downloadedBytesPerSecond: Long,
                 fetchGroup: FetchGroup
             ) {
-                if (groupId == app.id) {
+                if (groupId == app.getGroupId(this@AppDetailsActivity)) {
                     updateProgress(fetchGroup, etaInMilliSeconds, downloadedBytesPerSecond)
                     Log.i(
                         "${app.displayName} : ${download.file} -> Progress : %d",
@@ -711,22 +695,21 @@ class AppDetailsActivity : BaseDetailsActivity() {
             }
 
             override fun onCompleted(groupId: Int, download: Download, fetchGroup: FetchGroup) {
-                if (groupId == app.id && fetchGroup.groupDownloadProgress == 100) {
+                if (groupId == app.getGroupId(this@AppDetailsActivity) && fetchGroup.groupDownloadProgress == 100) {
                     status = download.status
                     flip(0)
                     updateProgress(fetchGroup, -1, -1)
-                    inProgressMarker.delete()
-                    completionMarker.createNewFile()
                     try {
-                        verifyAndInstall(fetchGroup.downloads)
-                    } catch (e: Exception) {
-                        Log.e(e.stackTraceToString())
+                        inProgressMarker.delete()
+                        completionMarker.createNewFile()
+                    } catch (ex: Exception) {
+                        ex.printStackTrace()
                     }
                 }
             }
 
             override fun onCancelled(groupId: Int, download: Download, fetchGroup: FetchGroup) {
-                if (groupId == app.id) {
+                if (groupId == app.getGroupId(this@AppDetailsActivity)) {
                     status = download.status
                     flip(0)
                     inProgressMarker.delete()
@@ -740,7 +723,7 @@ class AppDetailsActivity : BaseDetailsActivity() {
                 throwable: Throwable?,
                 fetchGroup: FetchGroup
             ) {
-                if (groupId == app.id) {
+                if (groupId == app.getGroupId(this@AppDetailsActivity)) {
                     status = download.status
                     flip(0)
                     inProgressMarker.delete()
@@ -748,12 +731,62 @@ class AppDetailsActivity : BaseDetailsActivity() {
             }
         }
 
-        fetch.addListener(fetchGroupListener)
+        appMetadataListener = object : AppMetadataStatusListener {
+            override fun onAppMetadataStatusError(reason: String, app: App) {
+                if (app.packageName == this@AppDetailsActivity.app.packageName) {
+                    updateActionState(State.IDLE)
+                    expandBottomSheet(reason)
+                }
+            }
+        }
+
+        getUpdateServiceInstance()
 
         B.layoutDetailsInstall.imgCancel.setOnClickListener {
-            fetch.cancelGroup(
-                app.id
+            fetch?.cancelGroup(
+                app.getGroupId(this@AppDetailsActivity)
             )
+        }
+        if (updateService != null) {
+            pendingAddListeners = false
+            updateService!!.registerFetchListener(fetchGroupListener)
+            // appMetadataListener needs to be initialized after the fetchGroupListener
+            updateService!!.registerAppMetadataListener(appMetadataListener)
+        } else {
+            pendingAddListeners = true
+        }
+    }
+
+    fun getUpdateServiceInstance() {
+        if (updateService == null && !attachToServiceCalled) {
+            attachToServiceCalled = true
+            val intent = Intent(this, UpdateService::class.java)
+            startService(intent)
+            bindService(
+                intent,
+                serviceConnection,
+                0
+            )
+        }
+    }
+
+    override fun onPause() {
+        if (updateService != null) {
+            updateService = null
+            attachToServiceCalled = false
+            pendingAddListeners = true
+            unbindService(serviceConnection)
+        }
+        super.onPause()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        if (updateService != null) {
+            updateService = null
+            attachToServiceCalled = false
+            pendingAddListeners = true
+            unbindService(serviceConnection)
         }
     }
 

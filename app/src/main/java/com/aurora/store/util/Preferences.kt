@@ -23,6 +23,8 @@ import android.content.Context
 import android.content.SharedPreferences
 import androidx.fragment.app.Fragment
 import androidx.preference.PreferenceManager
+import com.google.gson.Gson
+
 
 object Preferences {
 
@@ -57,9 +59,15 @@ object Preferences {
 
     const val PREFERENCE_UPDATES_EXTENDED = "PREFERENCE_UPDATES_EXTENDED"
 
+    const val PREFERENCE_UNIQUE_GROUP_IDS = "PREFERENCE_UNIQUE_GROUP_IDS"
+
+    private var prefs: SharedPreferences? = null
 
     fun getPrefs(context: Context): SharedPreferences {
-        return PreferenceManager.getDefaultSharedPreferences(context)
+        if (prefs == null) {
+            prefs = PreferenceManager.getDefaultSharedPreferences(context)
+        }
+        return prefs!!
     }
 
     fun putString(context: Context, key: String, value: String) {

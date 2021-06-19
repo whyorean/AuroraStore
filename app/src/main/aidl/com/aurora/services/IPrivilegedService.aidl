@@ -22,6 +22,8 @@ interface IPrivilegedService {
 
     boolean hasPrivilegedPermissions();
 
+    boolean isMoreMethodImplemented();
+
         oneway void installPackage(
             in Uri packageURI,
             in int flags,
@@ -50,6 +52,15 @@ interface IPrivilegedService {
             in int flags,
             in String installerPackageName,
             in IPrivilegedCallback callback
+        );
+
+        oneway void installSplitPackageMore(
+            in String packageName,
+            in List<Uri> uriList,
+            in int flags,
+            in String installerPackageName,
+            in IPrivilegedCallback callback,
+            in List<String> fileList
         );
 
         oneway void deletePackage(
