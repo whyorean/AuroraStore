@@ -79,4 +79,5 @@
     <string name="toast_purchase_blocked">پرداخت‌های برنامه در حساب های ناشناس در دسترس نیست.</string>
     <string name="toast_spoof_applied">جعل دستگاه با موفقیت اعمال شد.</string>
     <string name="toast_permission_granted">مجوز اعطا شده</string>
+    <string name="details_dev_email">پست الکترونیک</string>
 </resources>
