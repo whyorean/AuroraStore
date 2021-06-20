@@ -78,4 +78,6 @@
     <string name="about_bitcoin_btc">பிட்காயின்</string>
     <string name="about_bitcoin_bch">பிட்காயின் ரொக்கம்</string>
     <string name="about_bhim">பீம் - யுபிஐ</string>
+    <string name="details_dev_website">வலைத் தளம்</string>
+    <string name="details_dev_email">மின்னஞ்சல்</string>
 </resources>
