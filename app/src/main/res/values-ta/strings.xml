@@ -19,8 +19,7 @@
     <string name="action_ignore_version">பதிப்பை புறக்கணிக்கவும்</string>
     <string name="action_ignore">புறக்கணி</string>
     <string name="action_home">முகப்புப்பக்கம்</string>
-    <string name="about_bitcoin_eth_summary"></string>
-    <string name="about_libera_summary"></string>
+    <string name="about_libera_summary"/>
     <string name="action_get_local_apk">பயன்பாட்டு மூட்டை சேமிக்கவும்</string>
     <string name="action_finish">முடிந்தது</string>
     <string name="action_filter_rating">மதிப்பீடுகள்</string>
