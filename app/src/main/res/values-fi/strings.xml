@@ -296,7 +296,7 @@
     <string name="pref_install_mode_title">Asennustapa</string>
     <string name="pref_install_mode_summary">Valitse APK-asennustapa</string>
     <string name="pref_install_mode_session">Sessioasentaja</string>
-    <string name="pref_install_mode_services">Aurora Services</string>
+    <string name="pref_install_mode_services">Aurora-palvelut</string>
     <string name="pref_install_mode_root">Root-asentaja</string>
     <string name="pref_install_mode_native">Natiiviasentaja</string>
     <string name="pref_install_delete_title">Poista APK:t asennuksen jälkeen</string>
