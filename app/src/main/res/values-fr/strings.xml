@@ -346,7 +346,10 @@
     <string name="toast_page_unavailable">Page de navigation indisponible</string>
     <string name="toast_double_press_to_exit">Cliquez deux fois pour quitter</string>
     <string name="toast_export_failed">Impossible d’exporter la configuration du dispositif</string>
-    <string name="toast_export_success">Exportation de la configuration du dispositif</string>
+    <string name="toast_export_success">Configuration de l’appareil exportée</string>
     <string name="pref_updates_extended_desc">Recherche également les nouvelles versions des applications désactivées</string>
     <string name="pref_updates_extended">Mises à jour étendues</string>
+    <string name="app_updater_service_notif_text">Permet le téléchargement d’applis en arrière-plan</string>
+    <string name="app_updater_service_notif_title">Téléchargement des applis en arrière-plan</string>
+    <string name="notification_channel_updater_service">Service de téléchargement en arrière-plan des applis</string>
 </resources>
