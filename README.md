@@ -59,6 +59,10 @@ Don't see your preferred language? Click on the widget below to help translate A
   <img src="https://hosted.weblate.org/widgets/aurora-store/-/strings/horizontal-auto.svg" alt="Translation status" />
 </a>
 
+## Supported by
+
+[<img src="https://fosshost.org/img/FosshostLogo.png" width="400">](https://fosshost.org/)
+
 ## Project references
 
 <details><summary>Open Source libraries Aurora Store uses</summary>
