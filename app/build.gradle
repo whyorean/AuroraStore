@@ -31,8 +31,8 @@ android {
         minSdkVersion 19
         targetSdkVersion 30
 
-        versionCode 36
-        versionName "4.0.5"
+        versionCode 37
+        versionName "4.0.6"
 
         vectorDrawables.useSupportLibrary = true
         multiDexEnabled true
@@ -169,7 +169,7 @@ dependencies {
     implementation "com.github.topjohnwu.libsu:core:${versions.libsu}"
 
     //Love <3
-    api("com.gitlab.AuroraOSS:gplayapi:aa90467826")
+    api("com.gitlab.AuroraOSS:gplayapi:0e224071f3")
 }
 
 Properties props = new Properties()
