@@ -329,7 +329,7 @@
     <string name="pref_ui_quick_exit_desc">Wyjdź z aplikacji przy pojedynczej akcji wstecz</string>
     <string name="pref_ui_no_for_you">Strony dla ciebie</string>
     <string name="pref_ui_no_for_you_desc">Wyświetl strony „Dla ciebie” na ekranie głównym</string>
-    <string name="pref_ui_similar_apps_desc">Wyświetl grupy „Podobne aplikacje” i „Powiązane z tą aplikacją” na stronie szczegółów aplikacji</string>
+    <string name="pref_ui_similar_apps_desc">Wyświetl grupy podobnych i powiązanych na stronie szczegółów aplikacji</string>
     <string name="pref_ui_similar_apps">Aplikacje podobne i powiązane</string>
     <string name="pref_ui_quick_exit">Szybkie wyjście</string>
     <string name="pref_ui_layout_tab">Wybierz domyślną zakładkę</string>
