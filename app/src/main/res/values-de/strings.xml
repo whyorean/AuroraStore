@@ -74,7 +74,7 @@
     <string name="title_installer">Installationsmethode</string>
     <string name="title_apps_sale">Beworbene Anwendungen</string>
     <string name="title_apps_library">Anwendungen in der Bibliothek</string>
-    <string name="title_apps_games">Meine Apps &amp; Spiele</string>
+    <string name="title_apps_games">Meine Anwendungen</string>
     <string name="title_apps">Anwendungen</string>
     <string name="purchase_not_found">Anwendung nicht gefunden</string>
     <string name="purchase_unsupported">Anwendung wird nicht unterstützt</string>
