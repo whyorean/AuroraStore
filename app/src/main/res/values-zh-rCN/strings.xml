@@ -49,7 +49,7 @@
     <string name="details_rate_stars_first">先对应用进行评分</string>
     <string name="details_privacy">隐私</string>
     <string name="details_permission">权限</string>
-    <string name="details_paid">已付款</string>
+    <string name="details_paid">付费</string>
     <string name="details_others_think">看看其他人对这个应用的看法</string>
     <string name="details_no_whitelist">没有列入白名单的应用</string>
     <string name="details_no_updates">无更新</string>
