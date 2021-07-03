@@ -349,4 +349,7 @@
     <string name="toast_export_success">Configuração do dispositivo exportado</string>
     <string name="pref_updates_extended_desc">Procurar novas versões de aplicativos desativados também</string>
     <string name="pref_updates_extended">Atualizações estendidas</string>
+    <string name="app_updater_service_notif_text">Ativa o download de aplicativos em segundo plano</string>
+    <string name="app_updater_service_notif_title">Download de aplicativo em segundo plano</string>
+    <string name="notification_channel_updater_service">Serviço de download de aplicativos em segundo plano</string>
 </resources>
