@@ -11,4 +11,14 @@
     <string name="about_bitcoin_btc_summary">Ugu deeq Bitcoin (BTC)</string>
     <string name="about_bitcoin_btc">Bitcoin</string>
     <string name="about_bitcoin_bch">Kaashka Bitkooyn</string>
+    <string name="action_updates">Cusboonaysiin</string>
+    <string name="title_apps">Apps-ka</string>
+    <string name="title_games">Geemam</string>
+    <string name="title_apps_games">Apps-ka &amp; Gemaam kayga</string>
+    <string name="action_uninstall">Saar</string>
+    <string name="action_installing">Kushubaya</string>
+    <string name="action_installed">Kujira</string>
+    <string name="action_installations">Kushubida</string>
+    <string name="action_install">Kushub</string>
+    <string name="about_gitlab_summary">Ka hel koodhka Aurora Store barta GitLab ee Aurora OSS.</string>
 </resources>
