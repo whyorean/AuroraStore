@@ -28,6 +28,7 @@ import com.aurora.extensions.isMiuiOptimizationDisabled
 import com.aurora.extensions.showDialog
 import com.aurora.store.BuildConfig
 import com.aurora.store.R
+import com.aurora.store.data.installer.AMInstaller
 import com.aurora.store.data.installer.ServiceInstaller
 import com.aurora.store.data.model.Installer
 import com.aurora.store.databinding.FragmentOnboardingInstallerBinding
@@ -130,6 +131,17 @@ class InstallerFragment : BaseFragment() {
                     )
                 }
             }
+            4 -> {
+                if (checkAMAvailability()) {
+                    this.installerId = installerId
+                    save(Preferences.PREFERENCE_INSTALLER_ID, installerId)
+                } else {
+                    showDialog(
+                        R.string.action_installations,
+                        R.string.installer_am_unavailable
+                    )
+                }
+            }
             else -> {
                 this.installerId = installerId
                 save(PREFERENCE_INSTALLER_ID, installerId)
@@ -168,5 +180,15 @@ class InstallerFragment : BaseFragment() {
             )
 
         return isInstalled && isCorrectVersionInstalled
+    }
+
+    private fun checkAMAvailability(): Boolean {
+        return PackageUtil.isInstalled(
+            requireContext(),
+            AMInstaller.AM_PACKAGE_NAME
+        ) or PackageUtil.isInstalled(
+            requireContext(),
+            AMInstaller.AM_DEBUG_PACKAGE_NAME
+        )
     }
 }
