@@ -11,8 +11,8 @@
     <string name="details_free">Darmowa</string>
     <string name="details_files">Pliki</string>
     <string name="details_dev_website">Strona internetowa</string>
-    <string name="details_dev_reply">Odpowiedź dewelopera</string>
-    <string name="details_dev_profile">Profil dewelopera</string>
+    <string name="details_dev_reply">Odpowiedź programisty</string>
+    <string name="details_dev_profile">Profil programisty</string>
     <string name="details_dev_email">Poczta elektroniczna</string>
     <string name="details_dev_details">Kontakt z programistą</string>
     <string name="details_dev_address">Adres</string>
@@ -236,7 +236,7 @@
     <string name="onboarding_theme_select">Wybierz swój ulubiony</string>
     <string name="onboarding_title_accent">Akcent</string>
     <string name="onboarding_title_installer">Instalator</string>
-    <string name="notification_installation_auto">Kliknij, aby zainstalować</string>
+    <string name="notification_installation_auto">Naciśnij, aby zainstalować</string>
     <string name="notification_channel_general">Ogólne powiadomienia</string>
     <string name="notification_channel_alert">Szybkie powiadomienia</string>
     <string name="list_update_all_txt_one">dostępna aktualizacja</string>
@@ -343,7 +343,7 @@
     <string name="toast_page_unavailable">Przeglądana strona jest niedostępna</string>
     <string name="toast_rated_success">Oceniono</string>
     <string name="toast_aas_token_failed">Nie można wygenerować tokenu AAS</string>
-    <string name="toast_double_press_to_exit">Kliknij dwukrotnie, aby wyjść</string>
+    <string name="toast_double_press_to_exit">Naciśnij dwukrotnie, aby wyjść</string>
     <string name="toast_rated_failed">Nie udało się przesłać oceny</string>
     <string name="toast_export_failed">Nie udało się wyeksportować konfiguracji urządzenia</string>
     <string name="toast_export_success">Wyeksportowano konfigurację urządzenia</string>
