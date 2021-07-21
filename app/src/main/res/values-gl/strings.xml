@@ -124,7 +124,7 @@
     <string name="filter_review_four">Catro</string>
     <string name="filter_review_five">Cinco</string>
     <string name="filter_review_critical">Crítico</string>
-    <string name="filter_review_all">Todos</string>
+    <string name="filter_review_all">Todas</string>
     <string name="exodus_view_report">Ver relatorio</string>
     <string name="exodus_view_more">Ver</string>
     <string name="exodus_title_alt">Relatorio Exodus</string>
@@ -282,7 +282,7 @@
     <string name="about_bhim_summary">Doar vía UPI</string>
     <string name="about_bhim">BHIM - UPI</string>
     <string name="details_contains_ads">Contén publicidade</string>
-    <string name="details_changelog_unavailable">Lista de novidades non entregada</string>
+    <string name="details_changelog_unavailable">Novidades non proporcionadas</string>
     <string name="details_changelog">Novidades</string>
     <string name="details_beta_delay">A inscripción podería tomar algún tempo. Poderá verificar o estado máis tarde.</string>
     <string name="details_beta_description">Terá acceso ás novas funcionalidades e aos erros antes que o público. Dea a súa opinión aos programadores para axudalos a mellorar.</string>
@@ -343,4 +343,12 @@
     <string name="toast_double_press_to_exit">Presione dúas veces para saír</string>
     <string name="toast_manual_available">Parabéns, o código da versión solicitada está dispoñíbel. Descargándoo agora.</string>
     <string name="toast_manual_unavailable">O código de versión solicitado non está dispoñíbel.</string>
+    <string name="toast_aas_token_failed">O token AAS non puido ser xerado</string>
+    <string name="toast_spoof_applied">Disfrace do dispositivo aplicado.</string>
+    <string name="toast_developer_setting_failed">Active as opcións de desenvolvedor nas opcións do dispositivo.</string>
+    <string name="toast_clipboard_copied">Copiado na área de transferencia</string>
+    <string name="title_spoof_manager">Xestionar disfrace</string>
+    <string name="spoof_apply">Asegúrese de volver a iniciar sesión para aplicar o disfrace</string>
+    <string name="action_spoofed">Disfrace</string>
+    <string name="device_huawei_description">Suxerimos que empregue un disfrace no caso de ter un Huawei. Desexa aplicar o disfrace agora\?</string>
 </resources>
