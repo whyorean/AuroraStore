@@ -28,8 +28,18 @@ class AMInstaller(context: Context) : InstallerBase(context) {
                     }
                 }
             }
-            val apks = zipFile(fileList)
-            xInstall(packageName, apks)
+            when {
+                fileList.size == 1 -> {
+                    xInstall(packageName, File(fileList.first()))
+                }
+                fileList.size > 1 -> {
+                    val apks = zipFile(fileList)
+                    xInstall(packageName, apks)
+                }
+                else -> {
+                    throw Exception("Invalid data, expecting non empty fileList")
+                }
+            }
         }
     }
 
