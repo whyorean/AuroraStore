@@ -53,7 +53,7 @@
     <string name="action_previous">Poprzednia</string>
     <string name="action_post">Wyślij</string>
     <string name="action_pending">Oczekujący</string>
-    <string name="action_pause">Pauza</string>
+    <string name="action_pause">Wstrzymaj</string>
     <string name="action_open">Otwórz</string>
     <string name="action_ok">OK</string>
     <string name="action_next">Następna</string>
