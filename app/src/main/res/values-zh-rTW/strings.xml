@@ -172,7 +172,6 @@
     <string name="pref_ui_theme_title">主題</string>
     <string name="pref_ui_theme_system">跟隨系統</string>
     <string name="pref_ui_theme_light">淺色</string>
-    <string name="pref_ui_theme_darkord"></string>
     <string name="pref_ui_theme_dark_x">深色 X</string>
     <string name="pref_ui_theme_dark">深色</string>
     <string name="pref_ui_theme_black">黑色</string>
