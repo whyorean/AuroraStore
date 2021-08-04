@@ -21,7 +21,7 @@
     <string name="about_bitcoin_btc_summary">Doar através de Bitcoin (BTC)</string>
     <string name="about_bitcoin_btc">Bitcoin</string>
     <string name="about_bitcoin_bch_summary">Doar através de Bitcoin Cash (BCH)</string>
-    <string name="about_bitcoin_bch">Bitcoin Cash</string>
+    <string name="about_bitcoin_bch">Dinheiro em Bitcoin</string>
     <string name="about_bhim_summary">Doar através do UPI</string>
     <string name="details_dev_address">Endereço</string>
     <string name="details_description">Descrição</string>
@@ -44,7 +44,7 @@
     <string name="onboarding_permission_esm_desc">É necessário em dispositivos Android R+, para além do Acesso a Armazenamento Externo</string>
     <string name="download_speed_estimating">A estimar</string>
     <string name="action_spoofed">Disfarce</string>
-    <string name="toast_aas_token_failed">Falha ao gerar ASS Token</string>
+    <string name="toast_aas_token_failed">ASS Token não pôde ser gerado</string>
     <string name="toast_rated_success">Avaliação submetida</string>
     <string name="toast_page_unavailable">Página de navegação indisponível</string>
     <string name="toast_double_press_to_exit">Clique duas vezes para sair</string>
@@ -53,11 +53,11 @@
     <string name="toast_purchase_blocked">A compra de aplicações não está disponível em Contas Anónimas.</string>
     <string name="toast_spoof_applied">Disfarce do dispositivo aplicado.</string>
     <string name="toast_permission_granted">Permissão concedida</string>
-    <string name="toast_developer_setting_failed">Falhou ao abrir as opções de programador. Certifique-se que estão ativas nas definições do dispositivo.</string>
+    <string name="toast_developer_setting_failed">Falha ao abrir as opções de programador. Certifique-se que estão ativas nas definições do dispositivo.</string>
     <string name="toast_clipboard_copied">Copiado para a área de transferência</string>
     <string name="toast_apk_whitelisted">Adicionada à lista segura</string>
     <string name="toast_apk_copy_success">APK exportada</string>
-    <string name="toast_apk_copy_failed">Exportação de APK falhou</string>
+    <string name="toast_apk_copy_failed">Não pôde exportar o APK</string>
     <string name="toast_apk_blacklisted">Adicionada à lista negra</string>
     <string name="toast_anonymous_restriction">Não disponível em contas anónimas</string>
     <string name="toast_abandon_sessions">Antigas sessões de instalação abandonadas foram limpas</string>
@@ -144,7 +144,7 @@
     <string name="pref_abandon_session">Forçar limpeza de sessões de instalação</string>
     <string name="onboarding_permission_installer">Permissão do Instalador</string>
     <string name="onboarding_permission_esm">Gestor de Armazenamento Externo</string>
-    <string name="onboarding_permission_esa_desc">Para guardar as transferências (APKs &amp; OBBs) exporte &amp; importe as definições do dispositivo recorrendo ao armazenamento externo.</string>
+    <string name="onboarding_permission_esa_desc">Para guardar as transferências (APKs &amp; OBBs) exporte e importe as definições do dispositivo ao armazenamento externo.</string>
     <string name="onboarding_permission_esa">Acesso a Armazenamento Externo</string>
     <string name="onboarding_welcome_select">Como está\?</string>
     <string name="onboarding_tos_error">Tem de confirmar a leitura das Condições de Serviço.</string>
@@ -184,10 +184,10 @@
     <string name="installer_status_failure_blocked">A instalação foi bloqueada</string>
     <string name="installer_status_failure_aborted">Instalação cancelada</string>
     <string name="installer_status_failure">Instalador falhou</string>
-    <string name="installer_service_misconfigured">Aurora services não está configurado. Certifique-se que está instalado e todas as permissões autorizadas</string>
-    <string name="installer_service_unavailable">Aurora services não está instalado ou é uma versão incorreta (requer versão 1.0.9 ou superior). Por favor instale ou escolha outro instalador</string>
+    <string name="installer_service_misconfigured">Configure o Aurora services e conceda todas as permissões primeiro.</string>
+    <string name="installer_service_unavailable">Instale Aurora services 1.0.9 ou superior, ou escolha outro instalador.</string>
     <string name="installer_service_available">Aurora services está disponível e pronto a instalar.</string>
-    <string name="installer_root_unavailable">Root indisponível. Conceda permissões root ou escolha outro instalador.</string>
+    <string name="installer_root_unavailable">Sem acesso root. Conceda-o ou escolha outro instalador.</string>
     <string name="installer_root_available">Acesso root disponível</string>
     <string name="filter_review_two">Dois</string>
     <string name="filter_review_three">Três</string>
@@ -200,7 +200,7 @@
     <string name="exodus_view_report">Ver relatório</string>
     <string name="exodus_view_more">Ver</string>
     <string name="exodus_title_alt">Relatório Exodus</string>
-    <string name="exodus_title">Projeto Aurora</string>
+    <string name="exodus_title">Proteção Aurora</string>
     <string name="exodus_powered">Serviço disponibilizado pela Exodus</string>
     <string name="exodus_substring">rastreador(es) encontrado(s) na versão</string>
     <string name="exodus_report">Relatório Exodus</string>
@@ -235,7 +235,7 @@
     <string name="details_no_whitelist">Lista segura vazia</string>
     <string name="details_no_updates">Não existem atualizações</string>
     <string name="action_ask">Pergunte</string>
-    <string name="toast_rated_failed">Falha ao submeter avaliação</string>
+    <string name="toast_rated_failed">Avaliação não pôde ser submetida</string>
     <string name="details_rate_stars_first">Selecione uma estrela de avaliação</string>
     <string name="action_filter_rating">Avaliações</string>
     <string name="details_reviews_about_app">Mais comentários</string>
@@ -345,8 +345,11 @@
     <string name="account_logout">Terminar sessão</string>
     <string name="account_login_using">Iniciar sessão através</string>
     <string name="account_logged_out">Sem sessão iniciada</string>
-    <string name="toast_export_failed">Exportação das definições do dispositivo falhou</string>
+    <string name="toast_export_failed">Definições do dispositivo não puderam ser exportadas</string>
     <string name="toast_export_success">Definições do dispositivo exportadas</string>
-    <string name="pref_updates_extended_desc">Ativar para verificar atualizações para aplicações desativadas</string>
+    <string name="pref_updates_extended_desc">Buscar por novas versões de aplicações desativadas também</string>
     <string name="pref_updates_extended">Atualizações alargadas</string>
+    <string name="app_updater_service_notif_text">Permita o download de aplicação em fundo</string>
+    <string name="app_updater_service_notif_title">Descarregar aplicação em segundo plano</string>
+    <string name="notification_channel_updater_service">Serviço de download de aplicações em segundo plano</string>
 </resources>
