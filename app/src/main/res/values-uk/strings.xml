@@ -186,7 +186,7 @@
     <string name="toast_purchase_blocked">Покупки застосунків недоступні у знеособлених облікових записах.</string>
     <string name="toast_spoof_applied">Підміну пристрою застосовано.</string>
     <string name="toast_permission_granted">Дозвіл надано</string>
-    <string name="toast_developer_setting_failed">Увімкніть параметри розробника в налаштуваннях пристрою, щоб відкрити їх.</string>
+    <string name="toast_developer_setting_failed">Не вдалося відкрити налаштування розробника, переконайтеся, що ви ввімкнули їх в налаштуваннях пристрою.</string>
     <string name="toast_clipboard_copied">Скопійовано до буфера обміну</string>
     <string name="toast_apk_whitelisted">У білому списку</string>
     <string name="toast_apk_copy_success">APK експортовано</string>
@@ -223,7 +223,7 @@
     <string name="tab_top_free">Найкращі безкоштовні</string>
     <string name="tab_top_charts">Найпопулярніші</string>
     <string name="tab_for_you">Для вас</string>
-    <string name="tab_editor_choice">Вибір редактора</string>
+    <string name="tab_editor_choice">Вибір редакції</string>
     <string name="tab_categories">Категорії</string>
     <string name="insecure_anonymous_apply">Переконайтеся, що ви повторно увійшли та перезапустили застосунок, щоб застосувати зміни.</string>
     <string name="spoof_apply">Переконайтеся, що ви повторно увійшли, щоб застосувати підміну</string>

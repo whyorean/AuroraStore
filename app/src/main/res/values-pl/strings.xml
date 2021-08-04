@@ -11,10 +11,10 @@
     <string name="details_free">Darmowa</string>
     <string name="details_files">Pliki</string>
     <string name="details_dev_website">Strona internetowa</string>
-    <string name="details_dev_reply">Odpowiedź dewelopera</string>
-    <string name="details_dev_profile">Profil dewelopera</string>
+    <string name="details_dev_reply">Odpowiedź programisty</string>
+    <string name="details_dev_profile">Profil programisty</string>
     <string name="details_dev_email">Poczta elektroniczna</string>
-    <string name="details_dev_details">Kontakt z deweloperem</string>
+    <string name="details_dev_details">Kontakt z programistą</string>
     <string name="details_dev_address">Adres</string>
     <string name="details_description">Opis</string>
     <string name="details_dependencies">Zależności</string>
@@ -53,7 +53,7 @@
     <string name="action_previous">Poprzednia</string>
     <string name="action_post">Wyślij</string>
     <string name="action_pending">Oczekujący</string>
-    <string name="action_pause">Pauza</string>
+    <string name="action_pause">Wstrzymaj</string>
     <string name="action_open">Otwórz</string>
     <string name="action_ok">OK</string>
     <string name="action_next">Następna</string>
@@ -120,7 +120,7 @@
     <string name="about_paypal">PayPal</string>
     <string name="about_libera_summary">Zostań patronem w Liberapay</string>
     <string name="about_libera">Liberapay</string>
-    <string name="about_gitlab_summary">Pobierz kod źródłowy Aurora Store z Aurora OOS na GitLab-ie.</string>
+    <string name="about_gitlab_summary">Pobierz kod źródłowy Aurora Store z Aurora OOS na GitLabie.</string>
     <string name="about_gitlab">GitLab</string>
     <string name="about_fdroid_summary">Pobierz Aurora Store z repozytorium F-Droid.</string>
     <string name="about_fdroid">F-Droid</string>
@@ -139,7 +139,7 @@
     <string name="device_huawei_description">Jeśli posiadasz jeden z nowszych modeli urządzenia firmy Huawei, sugerujemy skorzystać z opcji podmiany urządzenia. Czy chcesz teraz użyć funkcji podmiany urządzenia\?</string>
     <string name="device_miui_extra">Opcjonalnie możesz wybrać natywny instalator, ale wtedy nie będziesz w stanie instalować pakietów APK (podzielonych), więc wybór należy do ciebie.</string>
     <string name="toast_spoof_applied">Zastosowano podmianę urządzenia.</string>
-    <string name="toast_permission_granted">Przyznane uprawnienia</string>
+    <string name="toast_permission_granted">Przyznano uprawnienie</string>
     <string name="toast_developer_setting_failed">Włącz ustawienia programisty w ustawieniach urządzenia, aby je otworzyć.</string>
     <string name="toast_clipboard_copied">Skopiowano do schowka</string>
     <string name="toast_apk_whitelisted">Biała lista</string>
@@ -216,7 +216,7 @@
     <string name="pref_app_download">Pobieranie</string>
     <string name="pref_dialog_to_apply_restart">Zmiany zaczną obowiązywać po ponownym uruchomieniu aplikacji</string>
     <string name="pref_abandon_session_desc">Wyczyść porzucone lub oczekujące sesje instalacyjne</string>
-    <string name="pref_abandon_session">Wyczyść sesje instalacyjne</string>
+    <string name="pref_abandon_session">Wymuś wyczyszczenie sesji instalacyjnych</string>
     <string name="onboarding_permission_installer_desc">Zezwól na instalowanie aplikacji z Aurora Store</string>
     <string name="onboarding_permission_installer">Uprawnienia instalatora</string>
     <string name="onboarding_permission_esm_desc">Wymagany na urządzeniach z systemem Android R+, dodatkowy dostęp do pamięci zewnętrznej</string>
@@ -236,7 +236,7 @@
     <string name="onboarding_theme_select">Wybierz swój ulubiony</string>
     <string name="onboarding_title_accent">Akcent</string>
     <string name="onboarding_title_installer">Instalator</string>
-    <string name="notification_installation_auto">Kliknij, aby zainstalować</string>
+    <string name="notification_installation_auto">Naciśnij, aby zainstalować</string>
     <string name="notification_channel_general">Ogólne powiadomienia</string>
     <string name="notification_channel_alert">Szybkie powiadomienia</string>
     <string name="list_update_all_txt_one">dostępna aktualizacja</string>
@@ -281,7 +281,7 @@
     <string name="exodus_substring">elementy śledzące w</string>
     <string name="exodus_report">Raport Exodus-u</string>
     <string name="exodus_progress">Sprawdzam usługi śledzące…</string>
-    <string name="exodus_powered">Obsługiwany przez Exodus</string>
+    <string name="exodus_powered">Na podstawie Exodus</string>
     <string name="exodus_no_tracker">Nie zawiera usług śledzących</string>
     <string name="exodus_no_report">Brak dostępnych raportów</string>
     <string name="download_speed_estimating">Szacowanie</string>
@@ -325,7 +325,7 @@
     <string name="pref_common_extra">Dodatkowe</string>
     <string name="pref_common_advance">Zaawansowane</string>
     <string name="pref_filter_search_title">Użyj nietrwałego filtru wyszukiwania</string>
-    <string name="pref_filter_search_summary">Filtry wyszukiwania są resetowane po każdym wyszukiwaniu. Wyłącz, aby zapisać filtry wyszukiwania</string>
+    <string name="pref_filter_search_summary">Filtry wyszukiwania są resetowane przy każdym wyszukiwaniu. Wyłącz, aby zapisywać filtry wyszukiwania</string>
     <string name="pref_ui_quick_exit_desc">Wyjdź z aplikacji przy pojedynczej akcji wstecz</string>
     <string name="pref_ui_no_for_you">Strony dla ciebie</string>
     <string name="pref_ui_no_for_you_desc">Wyświetl strony „Dla ciebie” na ekranie głównym</string>
@@ -343,7 +343,7 @@
     <string name="toast_page_unavailable">Przeglądana strona jest niedostępna</string>
     <string name="toast_rated_success">Oceniono</string>
     <string name="toast_aas_token_failed">Nie można wygenerować tokenu AAS</string>
-    <string name="toast_double_press_to_exit">Kliknij dwukrotnie, aby wyjść</string>
+    <string name="toast_double_press_to_exit">Naciśnij dwukrotnie, aby wyjść</string>
     <string name="toast_rated_failed">Nie udało się przesłać oceny</string>
     <string name="toast_export_failed">Nie udało się wyeksportować konfiguracji urządzenia</string>
     <string name="toast_export_success">Wyeksportowano konfigurację urządzenia</string>

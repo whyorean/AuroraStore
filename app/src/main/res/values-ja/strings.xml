@@ -67,10 +67,10 @@
     <string name="installer_status_failure_blocked">インストールがブロックされました</string>
     <string name="installer_status_failure_aborted">インストールがキャンセルされました</string>
     <string name="installer_status_failure">インストーラ失敗</string>
-    <string name="installer_service_misconfigured">Aurora servicesの設定がされていません。有効化され、全ての権限が付与されていることを確認してください</string>
-    <string name="installer_service_unavailable">Aurora servicesがインストールされていないか非対応バージョンです(1.0.9以上が必要)。インストールするかインストーラを変更してください</string>
+    <string name="installer_service_misconfigured">Aurora servicesをセットアップし、すべての権限を許可してください。</string>
+    <string name="installer_service_unavailable">Aurora services 1.0.9以上をインストールするか、インストーラを変更してください。</string>
     <string name="installer_service_available">Aurora servicesが使用可能でインストール準備ができました。</string>
-    <string name="installer_root_unavailable">Rootではありません。Root権限を与えるかインストーラを変更してください。</string>
+    <string name="installer_root_unavailable">Root権限がありません。権限を与えるかインストーラを変更してください。</string>
     <string name="installer_root_available">Root権限あり</string>
     <string name="filter_review_two">2つ星</string>
     <string name="filter_review_three">3つ星</string>
@@ -233,9 +233,9 @@
     <string name="onboarding_permission_esm_desc">Android R(11) 以降の端末では外部ストレージアクセスに加えて必要</string>
     <string name="onboarding_permission_esa_desc">ダウンロードしたAPK、OBBの保存、端末設定のインポート、エクスポートに必要。</string>
     <string name="toast_purchase_blocked">匿名アカウントではアプリ購入はできません。</string>
-    <string name="toast_spoof_applied">端末偽装に成功しました。</string>
+    <string name="toast_spoof_applied">端末偽装を適用しました。</string>
     <string name="toast_permission_granted">承認済み</string>
-    <string name="toast_developer_setting_failed">開発者設定を開けませんでした。端末設定で有効化されているか確認してください。</string>
+    <string name="toast_developer_setting_failed">端末設定で開発者設定を有効化してください。</string>
     <string name="toast_clipboard_copied">クリップボードにコピーしました</string>
     <string name="toast_apk_whitelisted">ホワイトリスト</string>
     <string name="toast_apk_copy_success">APKエクスポート成功</string>
@@ -340,9 +340,16 @@
     <string name="details_no_app_match">アプリが見つかりませんでした</string>
     <string name="action_check">確認</string>
     <string name="dialog_desc_native_split">ネイティブインストーラではバンドル(分割された)アプリをインストールできません。インストーラをセッション、Service、Rootのいずれかに変更してください。</string>
-    <string name="toast_aas_token_failed">AASトークン生成に失敗しました</string>
+    <string name="toast_aas_token_failed">AASトークンを生成できませんでした</string>
     <string name="toast_rated_failed">評価に失敗しました</string>
-    <string name="toast_rated_success">評価に成功しました</string>
+    <string name="toast_rated_success">評価完了</string>
     <string name="toast_page_unavailable">閲覧ページがありません</string>
     <string name="toast_double_press_to_exit">2回タップして終了</string>
+    <string name="app_updater_service_notif_text">バックグラウンドアプリダウンロードを有効化する</string>
+    <string name="app_updater_service_notif_title">バックグラウンドアプリダウンロード</string>
+    <string name="notification_channel_updater_service">アプリのバックグラウンドダウンロードサービス</string>
+    <string name="toast_export_failed">端末設定をエクスポートできませんでした</string>
+    <string name="toast_export_success">端末設定をエクスポートしました</string>
+    <string name="pref_updates_extended_desc">無効化したアプリの更新も確認する</string>
+    <string name="pref_updates_extended">追加アップデート</string>
 </resources>

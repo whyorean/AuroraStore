@@ -198,7 +198,7 @@
     <string name="action_accept">Accetta</string>
     <string name="account_logout">Esci da Aurora</string>
     <string name="account_login_using">Accedi usando</string>
-    <string name="account_logged_out">Sei stato disconnesso</string>
+    <string name="account_logged_out">Sei stato/a disconnesso/a</string>
     <string name="account_google">Google</string>
     <string name="account_anonymous">Anonimo</string>
     <string name="about_telegram">Telegram</string>

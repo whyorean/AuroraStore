@@ -226,7 +226,7 @@
     <string name="download_pause">Anhalten</string>
     <string name="download_none">Keine heruntergeladenen Dateien</string>
     <string name="download_metadata">Metadaten werden geladen</string>
-    <string name="download_force_clear_all">Sofort alles löschen</string>
+    <string name="download_force_clear_all">Sofort alle löschen</string>
     <string name="download_failed">Herunterladen fehlgeschlagen</string>
     <string name="download_eta_calculating">Berechne</string>
     <string name="download_deleted">Gelöscht</string>
@@ -291,7 +291,7 @@
     <string name="action_pending">Ausstehend</string>
     <string name="action_pause">Anhalten</string>
     <string name="action_open">Öffnen</string>
-    <string name="action_ok">Okay</string>
+    <string name="action_ok">OK</string>
     <string name="action_manual">Manuell herunterladen</string>
     <string name="action_logout">Abmelden</string>
     <string name="action_logging_in">Anmeldevorgang</string>

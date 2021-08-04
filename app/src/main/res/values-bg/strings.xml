@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="details_dev_website">Уебсайт</string>
+    <string name="details_dev_email">Електронна поща</string>
+</resources>
