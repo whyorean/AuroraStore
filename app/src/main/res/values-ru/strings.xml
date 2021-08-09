@@ -291,7 +291,7 @@
     <string name="notification_channel_general">Общее уведомление</string>
     <string name="notification_channel_alert">Быстрое уведомление</string>
     <string name="list_update_all_txt_one">доступно обновление</string>
-    <string name="dialog_desc_self_update">Вы хотите обновить сейчас\?</string>
+    <string name="dialog_desc_self_update">Хотите обновить сейчас\?</string>
     <string name="dialog_title_self_update">Доступно обновление</string>
     <string name="device_miui_extra">При желании вы можете выбрать ручную установку, но тогда вы не сможете устанавливать split APK, поэтому выбор за вами.</string>
     <string name="device_miui_description">Пожалуйста, отключите оптимизацию MIUI, чтобы разрешить установку. В ином случае вы можете выбрать \"Root-установщик\" или \"Сервисы Aurora\".</string>
@@ -339,7 +339,7 @@
     <string name="toast_manual_unavailable">Номер версии, который Вы запросили, недоступен.</string>
     <string name="title_manual_download">Ручная загрузка</string>
     <string name="action_check">Проверить</string>
-    <string name="dialog_desc_native_split">Невозможно устанавливать пакеты приложений (сплиты) через системный установщик Android. Используйте метод установки Aurora, службы Aurora или root.</string>
+    <string name="dialog_desc_native_split">Бандлы приложений (сплиты) через системный установщик Android установить невозможно. Используйте метод установки Aurora, службы Aurora или root.</string>
     <string name="toast_aas_token_failed">Не удалось сгенерировать AAS токен</string>
     <string name="toast_rated_failed">Не удалось обновить рейтинг</string>
     <string name="toast_rated_success">Рейтинг успешно обновлён</string>
