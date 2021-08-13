@@ -4,7 +4,7 @@
     <string name="title_account_manager">Contas</string>
     <string name="title_about">Sobre</string>
     <string name="tab_trending">Tendencia</string>
-    <string name="tab_top_paid">Pagas</string>
+    <string name="tab_top_paid">De pago</string>
     <string name="tab_top_grossing">Máis rentábeis</string>
     <string name="tab_top_free">Gratuítas</string>
     <string name="tab_for_you">Para ti</string>
@@ -163,7 +163,7 @@
     <string name="details_rate_stars_first">Seleccione unha avaliación por estrelas primeiro</string>
     <string name="details_privacy">Privacidade</string>
     <string name="details_permission">Permisos</string>
-    <string name="details_paid">Paga</string>
+    <string name="details_paid">De pago</string>
     <string name="details_others_think">Vexa o que outros achan da aplicación</string>
     <string name="details_no_whitelist">Lista branca baleira</string>
     <string name="details_no_updates">Sen actualizacións dispoñíbeis</string>
@@ -351,4 +351,5 @@
     <string name="spoof_apply">Asegúrese de volver a iniciar sesión para aplicar o disfrace</string>
     <string name="action_spoofed">Disfrace</string>
     <string name="device_huawei_description">Suxerimos que empregue un disfrace no caso de ter un Huawei. Desexa aplicar o disfrace agora\?</string>
+    <string name="tab_top_charts">Top da clasificación</string>
 </resources>
