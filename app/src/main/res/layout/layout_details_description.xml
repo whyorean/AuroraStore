@@ -127,23 +127,27 @@
                 android:id="@+id/header_changelog"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textIsSelectable="true"
                 app:headerTitle="@string/details_changelog" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/txt_changelog"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textIsSelectable="true"
                 android:background="@drawable/bg_changelog" />
 
             <com.aurora.store.view.custom.layouts.ActionHeaderLayout
                 android:id="@+id/header_description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textIsSelectable="true"
                 app:headerTitle="@string/details_more_about_app" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/txt_description"
                 android:layout_width="match_parent"
+                android:textIsSelectable="true"
                 android:layout_height="wrap_content" />
         </LinearLayout>
 

@@ -52,6 +52,7 @@
                 <com.aurora.store.view.custom.layouts.ActionHeaderLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textIsSelectable="true"
                     app:headerTitle="@string/details_description" />
 
                 <androidx.appcompat.widget.AppCompatTextView
@@ -59,11 +60,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:autoLink="all"
+                    android:textIsSelectable="true"
                     android:textAppearance="@style/TextAppearance.Aurora.Line1" />
 
                 <com.aurora.store.view.custom.layouts.ActionHeaderLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textIsSelectable="true"
                     app:headerTitle="@string/details_dependencies" />
 
                 <com.airbnb.epoxy.EpoxyRecyclerView
