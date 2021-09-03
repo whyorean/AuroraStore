@@ -141,9 +141,7 @@ abstract class BaseActivity : AppCompatActivity(), NetworkProvider.NetworkListen
     }
 
     fun askToReadTOS() {
-        task {
-            TimeUnit.SECONDS.sleep(5)
-        } successUi {
+        runOnUiThread {
             if (!supportFragmentManager.isDestroyed) {
                 val sheet = TOSSheet.newInstance()
                 sheet.isCancelable = false
