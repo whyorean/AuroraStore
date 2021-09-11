@@ -125,14 +125,14 @@
     <string name="details_dev_email">E-pošta</string>
     <string name="details_dev_reply">Odgovor programera</string>
     <string name="details_dev_profile">Profil programera</string>
-    <string name="toast_purchase_blocked">Kupljeni programi nisu dostupni na anonimnim računima.</string>
-    <string name="toast_spoof_applied">Simuliranje uređaja je uspješno primijenjeno.</string>
+    <string name="toast_purchase_blocked">Kupnje programa nisu dostupni na anonimnim računima.</string>
+    <string name="toast_spoof_applied">Simuliranje uređaja primijenjeno.</string>
     <string name="toast_permission_granted">Dozvola odobrena</string>
-    <string name="toast_developer_setting_failed">Neuspjelo otvaranje postavke za programere. Aktiviraj je u postavkama uređaja.</string>
+    <string name="toast_developer_setting_failed">Za otvaranje, uključi postavke za programere u postavkama uređaja.</string>
     <string name="toast_clipboard_copied">Kopirano u međuspremnik</string>
     <string name="toast_apk_whitelisted">Poželjni</string>
-    <string name="toast_apk_copy_success">APK datoteka je uspješno izvezena</string>
-    <string name="toast_apk_copy_failed">Izvoz APK datoteke nije uspio</string>
+    <string name="toast_apk_copy_success">APK datoteka izvezena</string>
+    <string name="toast_apk_copy_failed">Neuspio izvoz APK datoteke</string>
     <string name="toast_apk_blacklisted">Nepoželjni</string>
     <string name="toast_anonymous_restriction">Nije dostupno na anonimnim računima</string>
     <string name="toast_abandon_sessions">Stare instalacijske sesije napuštene</string>
@@ -168,7 +168,7 @@
     <string name="tab_categories">Kategorije</string>
     <string name="insecure_anonymous_apply">Da bi se promjene primijenile, ponovo se prijavi i ponovo pokreni program.</string>
     <string name="spoof_apply">Da bi se simuliranje uređaja primijenilo, ponovo se prijavi</string>
-    <string name="purchase_session_expired">Sesija je istekla, ponovno se prijavi za dobivanje nove sesije.</string>
+    <string name="purchase_session_expired">Sesija je istekla, ponovo se prijavi za dobivanje nove sesije.</string>
     <string name="purchase_no_file">Neuspjelo dohvaćanje datoteka</string>
     <string name="purchase_not_found">Program nije pronađen</string>
     <string name="purchase_unsupported">Program nije podržan</string>
@@ -202,7 +202,7 @@
     <string name="pref_filter_google_summary">Uklanja sve Google programe iz rezultata pretraživanja i programa kategorije</string>
     <string name="pref_filter_fdroid_title">Filtriraj F-Droid programe</string>
     <string name="pref_filter_fdroid_summary">Uklanja F-Droid programe s popisa programa</string>
-    <string name="pref_downloader_external_desc">Vanjska memorija će se koristiti za preuzimanja, izvoze, itd.</string>
+    <string name="pref_downloader_external_desc">Vanjska memorija se koristiti za preuzimanja, izvoze, itd.</string>
     <string name="pref_downloader_external">Vanjska memorija korisnika</string>
     <string name="pref_downloader_active_title">Aktivno preuzimanje</string>
     <string name="pref_downloader_active_summary">Maksimalan broj aktivnih preuzimanja</string>
@@ -214,7 +214,7 @@
     <string name="onboarding_permission_installer">Dozvola za instalaciju</string>
     <string name="onboarding_permission_esm_desc">Obavezno na uređajima s Androidom R+, uz mogućnost pristupa vanjskoj memoriji</string>
     <string name="onboarding_permission_esm">Upravljač vanjske memorije</string>
-    <string name="onboarding_permission_esa_desc">Za spremanje preuzimanja (APK i OBB datoteke), izvezi i uvezi konfiguracije uređaja na vanjsku memoriju.</string>
+    <string name="onboarding_permission_esa_desc">Za spremanje preuzimanja (APK i OBB datoteke), izvezi i uvezi konfiguracije uređaja u i iz vanjske memorije.</string>
     <string name="onboarding_permission_esa">Pristup vanjskoj memoriji</string>
     <string name="onboarding_welcome_select">Kako si\?</string>
     <string name="onboarding_tos_error">Najprije moraš prihvatiti uvjete usluge.</string>
@@ -256,10 +256,10 @@
     <string name="installer_status_failure_blocked">Instaliranje je blokirano</string>
     <string name="installer_status_failure_aborted">Instaliranje je prekinuto</string>
     <string name="installer_status_failure">Instalacija neuspjela</string>
-    <string name="installer_service_misconfigured">Program „Aurora usluge” nije konfiguriran. Provjeri da je usluga aktivirana i da su sve dozvole odobrene</string>
-    <string name="installer_service_unavailable">Program „Aurora usluge” nije instaliran ili je kriva verzija (potrebna je verzija 1.0.9 ili novija). Instaliraj ga ili promijeni instalaciju</string>
+    <string name="installer_service_misconfigured">Postavi Aurora usluge i najprije odobri sve dozvole.</string>
+    <string name="installer_service_unavailable">Instaliraj Aurora usluge 1.0.9 ili novije, ili promijeni instalaciju.</string>
     <string name="installer_service_available">Program „Aurora usluge” je instaliran i spreman za upotrebu.</string>
-    <string name="installer_root_unavailable">Nema administratora, odobri administratorski pristup ili promijeni instalaciju.</string>
+    <string name="installer_root_unavailable">Nema administratorskog pristupa. Odobri ga ili promijeni instalaciju.</string>
     <string name="installer_root_available">Dostupan je administratorski pristup</string>
     <string name="filter_review_two">Dvije</string>
     <string name="filter_review_three">Tri</string>
@@ -344,9 +344,12 @@
     <string name="toast_double_press_to_exit">Pritisni dvaput za zatvaranje programa</string>
     <string name="toast_aas_token_failed">Neuspjelo generiranje AAS tokena</string>
     <string name="toast_rated_failed">Neuspjelo slanje ocjene</string>
-    <string name="toast_rated_success">Uspjelo ocjenjivanje</string>
+    <string name="toast_rated_success">Ocjenjeno</string>
     <string name="toast_export_failed">Neuspio izvoz konfiguracije uređaja</string>
-    <string name="toast_export_success">Konfiguracija uređaja uspješno je izvezena</string>
-    <string name="pref_updates_extended_desc">Aktiviraj traženje novih verzija za deaktivirane programe</string>
+    <string name="toast_export_success">Konfiguracija uređaja izvezena</string>
+    <string name="pref_updates_extended_desc">Traži nove verzije za deaktivirane programe</string>
     <string name="pref_updates_extended">Proširena aktualiziranja</string>
+    <string name="app_updater_service_notif_text">Omogućuje preuzimanje programa u pozadini</string>
+    <string name="app_updater_service_notif_title">Preuzimanje programa u pozadini</string>
+    <string name="notification_channel_updater_service">Usluga za preuzimanje programa u pozadini</string>
 </resources>
