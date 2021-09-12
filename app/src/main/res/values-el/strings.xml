@@ -192,4 +192,8 @@
     <string name="action_filter_misc">Διάφορα</string>
     <string name="action_filter_gsf_dependent_apps">Εξαρτώμενο από GSF</string>
     <string name="about_bhim">BHIM - UPI</string>
+    <string name="title_settings">Ρυθμίσεις</string>
+    <string name="title_purchase_history">Ιστορικό αγορών</string>
+    <string name="title_no_network">Εκτός δικτύου</string>
+    <string name="title_library">Βιβλιοθήκη</string>
 </resources>
