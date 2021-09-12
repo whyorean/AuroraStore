@@ -78,4 +78,8 @@
     <string name="about_bhim">பீம் - யுபிஐ</string>
     <string name="details_dev_website">வலைத் தளம்</string>
     <string name="details_dev_email">மின்னஞ்சல்</string>
+    <string name="about_telegram">தந்தி</string>
+    <string name="about_libera_summary">லிபரபேயில் ஒரு புரவலர் ஆக</string>
+    <string name="about_bitcoin_eth_summary">Ethereum (ETH) வழியாக நன்கொடை அளிக்கவும்</string>
+    <string name="about_bitcoin_eth">ஈத்யூரம்</string>
 </resources>

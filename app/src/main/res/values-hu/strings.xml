@@ -151,7 +151,7 @@
     <string name="installer_status_failure_aborted">Telepítés megszakítva</string>
     <string name="installer_status_failure">Sikeretelen telepítés</string>
     <string name="installer_service_misconfigured">Az Aurora Szolgáltatások nincs konfigurálva. Ellenőrizd, hogy a szolgáltatás be van-e kapcsolva és meg van-e adva minden engedély</string>
-    <string name="installer_service_unavailable">Az Aurora Szolgáltatások nincs telepítve, vagy verzió régi (szükséges &gt;= 1.0.9), kérlek telepítsd vagy változtass a telepítési módszeren</string>
+    <string name="installer_service_unavailable">Telepítsd az Aurora services 1.0.9 vagy magasabb verziót, vagy változtass a telepítési módszeren.</string>
     <string name="installer_service_available">Az Aurora Services elérhető és telepítésre kész.</string>
     <string name="installer_root_unavailable">Nincs root, adj root hozzáférést vagy változtasd meg a telepítési módszert.</string>
     <string name="installer_root_available">Root hozzáférés elérhető</string>

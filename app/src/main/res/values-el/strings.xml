@@ -176,4 +176,20 @@
     <string name="action_installing">Εγκαθίσταται</string>
     <string name="about_xda_summary">Ανατρέξτε στο νήμα του Aurora Store στο XDA για συζητήσεις ή προτάσεις.</string>
     <string name="about_libera_summary">Υποστηρίξτε μας στο Liberapay</string>
+    <string name="exodus_view_more">Προβολή</string>
+    <string name="exodus_title_alt">Έκθεση Exodus</string>
+    <string name="exodus_title">Προστασία Aurora</string>
+    <string name="exodus_substring">ιχνηλάτης/-ες που βρέθηκαν στο</string>
+    <string name="exodus_report">Έκθεση Exodus</string>
+    <string name="exodus_progress">Έλεγχος για ιχνηλάτες…</string>
+    <string name="exodus_powered">Με την υποστήριξη του Exodus</string>
+    <string name="exodus_no_tracker">Δεν περιέχει ιχνηλάτες</string>
+    <string name="exodus_no_report">Δεν υπάρχουν διαθέσιμες αναφορές</string>
+    <string name="details_rate_stars_first">Καταχωρίστε πρώτα την αξιολόγηση σε αστέρια</string>
+    <string name="details_paid">Επί πληρωμή</string>
+    <string name="action_logging_in">Σύνδεση</string>
+    <string name="action_filter_paid_apps">Επί πληρωμή</string>
+    <string name="action_filter_misc">Διάφορα</string>
+    <string name="action_filter_gsf_dependent_apps">Εξαρτώμενο από GSF</string>
+    <string name="about_bhim">BHIM - UPI</string>
 </resources>
