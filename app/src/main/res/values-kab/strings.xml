@@ -1,2 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="details_more_about_app">Issin ugar ɣef wesnas</string>
+    <string name="action_filter_apply">Snes</string>
+    <string name="title_settings">Iɣewwaren</string>
+    <string name="action_settings">Iɣewwaren</string>
+</resources>
