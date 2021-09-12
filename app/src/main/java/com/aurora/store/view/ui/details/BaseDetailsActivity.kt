@@ -67,7 +67,14 @@ abstract class BaseDetailsActivity : BaseActivity() {
 
     //Sub Section Inflation
     fun inflateAppDescription(B: LayoutDetailsDescriptionBinding, app: App) {
-        B.txtInstalls.text = CommonUtil.addDiPrefix(app.installs)
+        val installs = CommonUtil.addDiPrefix(app.installs)
+
+        if (installs != "NA") {
+            B.txtInstalls.text = CommonUtil.addDiPrefix(app.installs)
+        } else {
+            B.txtInstalls.hide()
+        }
+
         B.txtSize.text = CommonUtil.addSiPrefix(app.size)
         B.txtRating.text = app.labeledRating
         B.txtSdk.text = ("Target SDK ${app.targetSdk}")

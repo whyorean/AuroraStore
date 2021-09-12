@@ -30,6 +30,7 @@ import kotlin.math.pow
 object CommonUtil {
 
     private val siPrefixes: Map<Int, String> = hashMapOf(
+        Pair(0, ""),
         Pair(1, ""),
         Pair(3, " KB"),
         Pair(6, " MB"),
@@ -37,6 +38,7 @@ object CommonUtil {
     )
 
     private val diPrefixes: Map<Int, String> = hashMapOf(
+        Pair(0, ""),
         Pair(1, ""),
         Pair(3, " K"),
         Pair(6, " M"),
@@ -44,7 +46,7 @@ object CommonUtil {
     )
 
     fun addSiPrefix(value: Long): String {
-        if (value <= 0L)
+        if (value <= 1L)
             return "NA"
         var tempValue = value
         var order = 0
@@ -56,7 +58,7 @@ object CommonUtil {
     }
 
     fun addDiPrefix(value: Long): String {
-        if (value <= 0L)
+        if (value <= 1L)
             return "NA"
         var tempValue = value
         var order = 0
