@@ -1,2 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="account_anonymous">അജ്ഞാതൻ</string>
+    <string name="about_xda_summary">ചർച്ചകൾക്കും നിർദ്ദേശങ്ങൾക്കും അറോറ സ്റ്റോർ XDA ത്രെഡ് കാണുക.</string>
+    <string name="about_telegram_summary">ചർച്ചകൾക്കും നിർദ്ദേശങ്ങൾക്കുമായി അറോറ സപ്പോർട്ട് ഗ്രൂപ്പിൽ ചേരുക.</string>
+    <string name="about_telegram">ടെലഗ്രാം</string>
+    <string name="about_paypal_summary">പേപാൽ വഴി സംഭാവന ചെയ്യുക</string>
+    <string name="about_paypal">പേപാൽ</string>
+    <string name="about_libera">ലിബെറപേ</string>
+    <string name="about_gitlab_summary">GitLab- ൽ Aurora OSS- ൽ നിന്ന് അറോറ സ്റ്റോർ സോഴ്സ് കോഡ് നേടുക.</string>
+    <string name="about_gitlab">ഗിറ്റ് ലാബ്</string>
+    <string name="about_fdroid_summary">എഫ്-ഡ്രോയിഡ് വഴി അറോറ സ്റ്റോർ നേടുക.</string>
+    <string name="about_fdroid">എഫ്-ഡ്രോയിഡ്</string>
+    <string name="about_bitcoin_eth_summary">എതീറിയം വഴി സംഭാവന ചെയ്യുക</string>
+    <string name="about_bitcoin_eth">എതീറിയം</string>
+    <string name="about_bitcoin_btc_summary">ബിറ്റ്കോയിൻ വഴി സംഭാവന ചെയ്യുക</string>
+    <string name="about_bitcoin_btc">ബിറ്റ്കോയിൻ</string>
+    <string name="about_bitcoin_bch">ബിറ്റ്കോയിൻ ക്യാഷ്</string>
+    <string name="about_bitcoin_bch_summary">ബിറ്റ്കോയിൻ ക്യാഷ് (BCH) വഴി സംഭാവന ചെയ്യുക</string>
+    <string name="about_bhim_summary">UPI വഴി സംഭാവന ചെയ്യുക</string>
+    <string name="about_bhim">ഭീം - യുപിഐ</string>
+</resources>
