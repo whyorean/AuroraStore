@@ -153,7 +153,7 @@
     <string name="installer_service_misconfigured">Az Aurora Szolgáltatások nincs konfigurálva. Ellenőrizd, hogy a szolgáltatás be van-e kapcsolva és meg van-e adva minden engedély</string>
     <string name="installer_service_unavailable">Telepítsd az Aurora services 1.0.9 vagy magasabb verziót, vagy változtass a telepítési módszeren.</string>
     <string name="installer_service_available">Az Aurora Services elérhető és telepítésre kész.</string>
-    <string name="installer_root_unavailable">Nincs root, adj root hozzáférést vagy változtasd meg a telepítési módszert.</string>
+    <string name="installer_root_unavailable">Nincs root hozzáférés. Add meg, vagy változtasd meg a telepítési módszert.</string>
     <string name="installer_root_available">Root hozzáférés elérhető</string>
     <string name="filter_review_two">Kettő</string>
     <string name="filter_review_three">Három</string>
