@@ -243,4 +243,13 @@
     <string name="title_apps">Aplikaĵoj</string>
     <string name="title_download_manager">Elŝutoj</string>
     <string name="title_library">Biblioteko</string>
+    <string name="about_libera_summary">Fariĝi donacanto ĉe Liberpay</string>
+    <string name="action_join">Aniĝi</string>
+    <string name="action_pending">Pritraktata</string>
+    <string name="action_post">Afiŝi</string>
+    <string name="action_restart">Restrarti</string>
+    <string name="details_beta_subscribed">Vi estas beta testanto</string>
+    <string name="details_beta_available">Ĉu aniĝi betan programon\?</string>
+    <string name="details_no_permission">Sen permesoj</string>
+    <string name="about_gitlab_summary">Akiri la Aurora Store fontkodon el Aurora OSS ĉe GitLab.</string>
 </resources>
