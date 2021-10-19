@@ -67,4 +67,5 @@
     <string name="about_paypal_summary">Ziedot ar PayPal</string>
     <string name="about_libera_summary">Kļūstiet par patronu uz Liberapay</string>
     <string name="about_gitlab_summary">Iegūstiet Aurora Store avota kodu no Aurora OSS, no GitLab.</string>
+    <string name="details_dev_website">Tīmekļa vietne</string>
 </resources>
