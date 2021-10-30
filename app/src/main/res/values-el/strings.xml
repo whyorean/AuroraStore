@@ -341,4 +341,13 @@
     <string name="filter_review_positive">Θετικός</string>
     <string name="toast_apk_blacklisted">Στην μάυρη λίστα</string>
     <string name="tab_top_grossing">Με Κορυφαίες Πωλήσεις</string>
+    <string name="toast_export_success">Εξαγωγή διαμόρφωσης συσκευής</string>
+    <string name="toast_manual_unavailable">Ο κωδικός έκδοσης που ζητάτε δεν είναι διαθέσιμος.</string>
+    <string name="toast_export_failed">Δεν ήταν δυνατή η εξαγωγή διαμόρφωσης συσκευής</string>
+    <string name="toast_rated_success">Βαθμολογήθηκε</string>
+    <string name="toast_page_unavailable">Η σελίδα περιήγησης δεν είναι διαθέσιμη</string>
+    <string name="toast_rated_failed">Δεν ήταν δυνατή η υποβολή αξιολόγησης</string>
+    <string name="toast_aas_token_failed">Δεν ήταν δυνατή η δημιουργία AAS Token</string>
+    <string name="toast_purchase_blocked">Οι αγορές εφαρμογών δεν είναι διαθέσιμες σε ανώνυμους λογαριασμούς.</string>
+    <string name="toast_double_press_to_exit">Κάντε κλικ δύο φορές για έξοδο</string>
 </resources>
