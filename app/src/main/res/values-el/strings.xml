@@ -202,4 +202,7 @@
     <string name="installer_root_available">Διατίθεται πρόσβαση Root</string>
     <string name="about_xda">Νήμα προγραμματιστή</string>
     <string name="action_post">Δημοσιεύω</string>
+    <string name="filter_review_four">Τέσσερις</string>
+    <string name="filter_review_one">Ένα</string>
+    <string name="filter_review_five">Πέντε</string>
 </resources>
