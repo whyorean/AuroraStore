@@ -245,7 +245,7 @@
     <string name="installer_status_failure_blocked">Η εγκατάσταση μπλοκαρίστηκε</string>
     <string name="installer_status_failure_session">Δεν ήταν δυνατή η δημιουργία περιόδου σύνδεσης</string>
     <string name="onboarding_tos">Όροι παροχής υπηρεσιών</string>
-    <string name="onboarding_tos_error">Πρέπει πρώτα να επιλέξετε το TOS</string>
+    <string name="onboarding_tos_error">Πρέπει πρώτα να επιλέξετε το TOS.</string>
     <string name="onboarding_tos_desc">Διαβάστε τους Όρους Παροχής Υπηρεσιών και αποδεχτείτε τους για τη χρήση του Aurora Store.</string>
     <string name="onboarding_tos_confirmation">Έχω διαβάσει τους Όρους Παροχής Υπηρεσιών του Aurora Store.</string>
     <string name="tab_categories">Κατηγορίες</string>
