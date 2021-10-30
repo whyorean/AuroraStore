@@ -196,4 +196,10 @@
     <string name="title_purchase_history">Ιστορικό αγορών</string>
     <string name="title_no_network">Εκτός δικτύου</string>
     <string name="title_library">Βιβλιοθήκη</string>
+    <string name="exodus_view_report">Προβολή αναφοράς</string>
+    <string name="action_get_local_apk">Αποθήκευση πακέτου εφαρμογής</string>
+    <string name="installer_root_unavailable">Δεν υπάρχει πρόσβαση Root. Επιτρέψτε το ή αλλάξτε το πρόγραμμα εγκατάστασης</string>
+    <string name="installer_root_available">Διατίθεται πρόσβαση Root</string>
+    <string name="about_xda">Νήμα προγραμματιστή</string>
+    <string name="action_post">Δημοσιεύω</string>
 </resources>
