@@ -126,4 +126,10 @@
     <string name="toast_permission_granted">Pèmisyon akòde</string>
     <string name="toast_manual_unavailable">Vèsyon kòd ap mande a pa disponib.</string>
     <string name="toast_purchase_blocked">Acha apli pa disponib sou kont anonim.</string>
+    <string name="title_apps_games">Aplikasyon ak jwèt mwen yo</string>
+    <string name="title_apps_library">Aplikasyon nan bibliyotèk</string>
+    <string name="title_account_manager">Kont</string>
+    <string name="title_details">Detay</string>
+    <string name="title_apps">Aplikasyon yo</string>
+    <string name="title_about">Enfomasyon</string>
 </resources>
