@@ -222,7 +222,7 @@
     <string name="installer_service_available">Οι υπηρεσίες Aurora είναι διαθέσιμες και έτοιμες για εγκατάσταση.</string>
     <string name="menu_terms">Όροι χρήσης</string>
     <string name="dialog_title_self_update">Διατίθεται νέα ενημέρωση</string>
-    <string name="onboarding_title_welcome">Καλώς ορίσατε!</string>
+    <string name="onboarding_title_welcome">Καλώς ορίσατε</string>
     <string name="installer_status_failure_aborted">Η εγκατάσταση ακυρώθηκε</string>
     <string name="installer_status_failure_incompatible">Μη συμβατή εφαρμογή</string>
     <string name="installer_status_failure_conflict">Υπάρχει αντικρουόμενο πακέτο</string>
