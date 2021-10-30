@@ -57,7 +57,7 @@
     <string name="action_accounts">Λογαριασμοί</string>
     <string name="action_accept">Αποδοχή</string>
     <string name="account_logout">Αποσυνδεθείτε</string>
-    <string name="account_login_using">Συνδεθείτε με τη χρήση</string>
+    <string name="account_login_using">Συνδεθείτε χρησιμοποιώντας</string>
     <string name="account_logged_out">Έχετε αποσυνδεθεί</string>
     <string name="account_google">Google</string>
     <string name="account_anonymous">Ανώνυμος</string>
@@ -332,4 +332,13 @@
     <string name="title_games">Παιχνίδια</string>
     <string name="toast_anonymous_restriction">Δεν διατίθεται σε ανώνυμους λογαριασμούς</string>
     <string name="toast_clipboard_copied">Αντιγράφηκε στο πρόχειρο</string>
+    <string name="filter_review_all">Όλα</string>
+    <string name="filter_review_critical">Κρίσιμος</string>
+    <string name="toast_apk_whitelisted">Στην άσπρη λίστα</string>
+    <string name="filter_review_two">Δύο</string>
+    <string name="filter_review_three">Τρεις</string>
+    <string name="pref_ui_theme_darkord">Disskord</string>
+    <string name="filter_review_positive">Θετικός</string>
+    <string name="toast_apk_blacklisted">Στην μάυρη λίστα</string>
+    <string name="tab_top_grossing">Με Κορυφαίες Πωλήσεις</string>
 </resources>
