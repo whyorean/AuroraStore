@@ -190,7 +190,7 @@
     <string name="action_installed">已安装</string>
     <string name="action_pending">等待中</string>
     <string name="onboarding_welcome_select">你好吗？</string>
-    <string name="toast_purchase_blocked">应用购买在匿名账户上不可用。</string>
+    <string name="toast_purchase_blocked">应用购买在匿名帐号上不可用。</string>
     <string name="toast_spoof_applied">已应用设备伪装。</string>
     <string name="toast_permission_granted">已授予权限</string>
     <string name="toast_developer_setting_failed">从设备设置开启开发者设置来打开它们。</string>
@@ -199,7 +199,7 @@
     <string name="toast_apk_copy_success">APK 已导出</string>
     <string name="toast_apk_copy_failed">无法导出 APK</string>
     <string name="toast_apk_blacklisted">已拉黑</string>
-    <string name="toast_anonymous_restriction">对匿名账户不可用</string>
+    <string name="toast_anonymous_restriction">对匿名帐号不可用</string>
     <string name="toast_abandon_sessions">旧的安装会话已废弃</string>
     <string name="title_updates">更新</string>
     <string name="title_spoof_manager">伪装</string>
@@ -221,7 +221,7 @@
     <string name="title_apps_library">库内应用</string>
     <string name="title_apps_games">我的应用和游戏</string>
     <string name="title_apps">应用</string>
-    <string name="title_account_manager">账户</string>
+    <string name="title_account_manager">帐号</string>
     <string name="title_about">关于</string>
     <string name="tab_trending">时下流行</string>
     <string name="tab_top_paid">热门付费</string>
@@ -238,7 +238,7 @@
     <string name="purchase_unsupported">应用不支持</string>
     <string name="purchase_invalid">未购买应用</string>
     <string name="purchase_failed">下载失败</string>
-    <string name="pref_ui_title">自定义</string>
+    <string name="pref_ui_title">定制</string>
     <string name="pref_ui_theme_title">主题</string>
     <string name="pref_ui_theme_system">跟随系统</string>
     <string name="pref_ui_theme_light">浅色</string>
@@ -246,7 +246,7 @@
     <string name="pref_ui_theme_dark_x">深色 X</string>
     <string name="pref_ui_theme_dark">深色</string>
     <string name="pref_ui_theme_black">黑色</string>
-    <string name="pref_ui_accent_title">强调色</string>
+    <string name="pref_ui_accent_title">主题色</string>
     <string name="pref_install_profile_title">安装配置文件 (实验性)</string>
     <string name="pref_install_profile_summary">选择要安装应用程序的目标配置文件。仅适用于 Root 安装方式</string>
     <string name="pref_install_mode_title">安装方式</string>
@@ -260,7 +260,7 @@
     <string name="pref_install_auto_title">下载后自动安装 APK</string>
     <string name="pref_install_auto_summary">下载完成后立即安装应用</string>
     <string name="pref_filter_google_title">过滤 Google 应用</string>
-    <string name="pref_filter_google_summary">从搜索结果和类别中删除所有 Google 出品的应用</string>
+    <string name="pref_filter_google_summary">从搜索结果和类别中排除所有 Google 出品的应用</string>
     <string name="pref_filter_fdroid_title">过滤 F-Droid 应用</string>
     <string name="pref_filter_fdroid_summary">从应用列表中排除 F-Droid 应用</string>
     <string name="pref_downloader_external_desc">外部存储用于下载、导出等操作。</string>
@@ -285,7 +285,7 @@
     <string name="onboarding_title_theme">主题</string>
     <string name="onboarding_title_permissions">权限</string>
     <string name="onboarding_title_installer">安装包</string>
-    <string name="onboarding_title_accent">强调色</string>
+    <string name="onboarding_title_accent">主题色</string>
     <string name="onboarding_theme_select">选择您喜欢的</string>
     <string name="onboarding_permission_select">Aurora 商店需要以下权限</string>
     <string name="onboarding_installer_select">选择合适的安装方式</string>
