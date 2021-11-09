@@ -1,5 +1,6 @@
 <!---
-- Please read Troubleshooting and FAQs on the GitLab wiki before writing an issue to see if it helps solve your problem!
+- Please read Troubleshooting and FAQs on the project's website before writing an issue to see if it helps solve your problem!
+  https://auroraoss.com/guides/wiki-home/
 - Provide a general summary of the issue in the Title above.
 - Check if your issue or something similar has been reported before (if yes upvote/comment there)
 - Please use the latest stable release and note that we don't accept any bug reports for v.1.*, v.2.* & v.3.* anymore!
