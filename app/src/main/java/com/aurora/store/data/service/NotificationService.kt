@@ -32,6 +32,7 @@ import androidx.core.content.ContextCompat
 import com.aurora.Constants
 import com.aurora.extensions.getStyledAttributeColor
 import com.aurora.extensions.isLAndAbove
+import com.aurora.extensions.isMAndAbove
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
 import com.aurora.store.data.downloader.DownloadManager
@@ -331,45 +332,63 @@ class NotificationService : Service() {
     private fun getPauseIntent(groupId: Int): PendingIntent {
         val intent = Intent(this, DownloadPauseReceiver::class.java)
         intent.putExtra(Constants.FETCH_GROUP_ID, groupId)
-        return PendingIntent.getBroadcast(this, groupId, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+        val flags = if (isMAndAbove())
+            PendingIntent.FLAG_CANCEL_CURRENT or PendingIntent.FLAG_IMMUTABLE
+        else PendingIntent.FLAG_CANCEL_CURRENT
+        return PendingIntent.getBroadcast(this, groupId, intent, flags)
     }
 
     private fun getResumeIntent(groupId: Int): PendingIntent {
         val intent = Intent(this, DownloadResumeReceiver::class.java)
         intent.putExtra(Constants.FETCH_GROUP_ID, groupId)
-        return PendingIntent.getBroadcast(this, groupId, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+        val flags = if (isMAndAbove())
+            PendingIntent.FLAG_CANCEL_CURRENT or PendingIntent.FLAG_IMMUTABLE
+        else PendingIntent.FLAG_CANCEL_CURRENT
+        return PendingIntent.getBroadcast(this, groupId, intent, flags)
     }
 
     private fun getCancelIntent(groupId: Int): PendingIntent {
         val intent = Intent(this, DownloadCancelReceiver::class.java)
         intent.putExtra(Constants.FETCH_GROUP_ID, groupId)
-        return PendingIntent.getBroadcast(this, groupId, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+        val flags = if (isMAndAbove())
+            PendingIntent.FLAG_CANCEL_CURRENT or PendingIntent.FLAG_IMMUTABLE
+        else PendingIntent.FLAG_CANCEL_CURRENT
+        return PendingIntent.getBroadcast(this, groupId, intent, flags)
     }
 
     private fun getContentIntentForDetails(app: App?): PendingIntent {
         val intent = Intent(this, AppDetailsActivity::class.java)
         intent.putExtra(Constants.STRING_EXTRA, gson.toJson(app))
+        val flags = if (isMAndAbove())
+            PendingIntent.FLAG_CANCEL_CURRENT or PendingIntent.FLAG_IMMUTABLE
+        else PendingIntent.FLAG_CANCEL_CURRENT
         return PendingIntent.getActivity(
             this,
             packageName.hashCode(),
             intent,
-            PendingIntent.FLAG_UPDATE_CURRENT
+            flags
         )
     }
 
     private fun getContentIntentForDownloads(): PendingIntent {
         val intent = Intent(this, DownloadActivity::class.java)
-        return PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+        val flags = if (isMAndAbove())
+            PendingIntent.FLAG_CANCEL_CURRENT or PendingIntent.FLAG_IMMUTABLE
+        else PendingIntent.FLAG_CANCEL_CURRENT
+        return PendingIntent.getActivity(this, 0, intent, flags)
     }
 
     private fun getInstallIntent(packageName: String, versionCode: String): PendingIntent {
         val intent = Intent(this, InstallReceiver::class.java)
         intent.putExtra(Constants.STRING_EXTRA, packageName)
+        val flags = if (isMAndAbove())
+            PendingIntent.FLAG_CANCEL_CURRENT or PendingIntent.FLAG_IMMUTABLE
+        else PendingIntent.FLAG_CANCEL_CURRENT
         return PendingIntent.getBroadcast(
             this,
             packageName.hashCode(),
             intent,
-            PendingIntent.FLAG_UPDATE_CURRENT
+            flags
         )
     }
 

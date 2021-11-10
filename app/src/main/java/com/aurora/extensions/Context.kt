@@ -96,11 +96,13 @@ fun <T> Context.open(className: Class<T>, newTask: Boolean = false) {
 }
 
 fun Context.restartApp() {
+    val flags = if (isMAndAbove()) PendingIntent.FLAG_CANCEL_CURRENT or PendingIntent.FLAG_IMMUTABLE
+    else PendingIntent.FLAG_CANCEL_CURRENT
     val pendingIntent = PendingIntent.getActivity(
         this,
         1337,
         Intent(this, MainActivity::class.java),
-        PendingIntent.FLAG_CANCEL_CURRENT
+        flags
     )
 
     val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
