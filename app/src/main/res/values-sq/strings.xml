@@ -1,2 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="about_bitcoin_bch">Bitcoin Cash</string>
+    <string name="about_bitcoin_btc">Bitcoin</string>
+    <string name="about_bitcoin_btc_summary">Dhuroni përmes Bitcoin (BTC)</string>
+    <string name="about_bitcoin_eth">Ethereum</string>
+    <string name="about_bitcoin_eth_summary">Dhuroni përmes Ethereum (ETH)</string>
+    <string name="about_fdroid">F-Droid</string>
+    <string name="about_fdroid_summary">Merreni Aurora Store-in përmes F-Droid-it.</string>
+    <string name="about_gitlab">GitLab</string>
+    <string name="about_libera">Liberapay</string>
+    <string name="about_libera_summary">Bëhuni një bamirës në Liberapay</string>
+    <string name="about_paypal">PayPal</string>
+    <string name="about_paypal_summary">Dhuroni përmes PayPal-it</string>
+    <string name="about_telegram">Telegram</string>
+    <string name="about_telegram_summary">Bëhuni pjesë e grupit të Asistencës për Aurora-n, për diskutime ose sugjerime.</string>
+    <string name="about_xda">Rrjedhë Zhvilluesish</string>
+    <string name="about_gitlab_summary">Merrni kodin burim të Aurora Store-it prej Aurora OSS në GitLab.</string>
+    <string name="about_bhim_summary">Dhuroni përmes UPI-t</string>
+    <string name="about_bitcoin_bch_summary">Dhuroni përmesa Bitcoin Cash (BCH)</string>
+</resources>
