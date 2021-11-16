@@ -169,9 +169,9 @@
     <string name="title_account_manager">Konta</string>
     <string name="title_about">O aplikacji</string>
     <string name="tab_trending">Najpopularniejsze</string>
-    <string name="tab_top_paid">Najlepiej płatne</string>
+    <string name="tab_top_paid">Najlepsze płatne</string>
     <string name="tab_top_grossing">Najbardziej dochodowe</string>
-    <string name="tab_top_free">Najlepsze darmowe</string>
+    <string name="tab_top_free">Najlepsze bezpłatne</string>
     <string name="tab_top_charts">Top listy</string>
     <string name="tab_for_you">Dla Ciebie</string>
     <string name="tab_editor_choice">Nasz wybór</string>
@@ -329,7 +329,7 @@
     <string name="pref_ui_quick_exit_desc">Wyjdź z aplikacji przy pojedynczej akcji wstecz</string>
     <string name="pref_ui_no_for_you">Strony dla Ciebie</string>
     <string name="pref_ui_no_for_you_desc">Wyświetl strony „Dla Ciebie” na ekranie głównym</string>
-    <string name="pref_ui_similar_apps_desc">Wyświetl podobne i powiązane grupy na stronie szczegółów aplikacji</string>
+    <string name="pref_ui_similar_apps_desc">Wyświetl grupy podobnych i powiązanych na stronie szczegółów aplikacji</string>
     <string name="pref_ui_similar_apps">Aplikacje podobne i powiązane</string>
     <string name="pref_ui_quick_exit">Szybkie wyjście</string>
     <string name="pref_ui_layout_tab">Wybierz domyślną zakładkę</string>
