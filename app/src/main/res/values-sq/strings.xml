@@ -18,4 +18,8 @@
     <string name="about_gitlab_summary">Merrni kodin burim të Aurora Store-it prej Aurora OSS në GitLab.</string>
     <string name="about_bhim_summary">Dhuroni përmes UPI-t</string>
     <string name="about_bitcoin_bch_summary">Dhuroni përmesa Bitcoin Cash (BCH)</string>
+    <string name="details_description">Përshkrim</string>
+    <string name="details_dev_website">Vënd i rrjetës</string>
+    <string name="details_dev_address">Adresë</string>
+    <string name="details_dev_email">Adresa e postës elektronike</string>
 </resources>
