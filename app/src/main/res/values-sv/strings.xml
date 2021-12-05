@@ -327,4 +327,8 @@
     <string name="onboarding_tos_error">Du behöver markera TOS som läst först.</string>
     <string name="onboarding_permission_esm_desc">Krävs i enheter som kör Android R+, tillägg till extern lagringstillgång</string>
     <string name="pref_abandon_session">Påtvinga rensning av installations-sessioner</string>
+    <string name="action_post">Skicka in</string>
+    <string name="device_miui_extra">Alternativt kan du välja Inbyggt installationsprogram, men då kan du inte installera buntade (delade) APK-filer, så valet är ditt.</string>
+    <string name="device_huawei_description">Vi föreslår att du använder enhetsförfalskning om du skulle ha den senaste Huawei-enheten. Vill du verkställa förfalskning nu\?</string>
+    <string name="installer_service_misconfigured">Ställ in Aurora-tjänster och godkänn alla åtkomster först.</string>
 </resources>
