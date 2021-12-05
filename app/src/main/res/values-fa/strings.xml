@@ -174,4 +174,13 @@
     <string name="action_retry">تلاش مجدد</string>
     <string name="action_info">اطلاعات برنامه</string>
     <string name="details_beta_available">پیوستن به برنامه آزمایشی ؟</string>
+    <string name="details_description">شرح</string>
+    <string name="action_filter_misc">متفرقه</string>
+    <string name="details_dev_details">تماس با توسعه‌دهنده</string>
+    <string name="details_changelog">تغییرات</string>
+    <string name="details_no_ads">بدون تبلیغات</string>
+    <string name="details_dev_profile">مشخصات توسعه‌دهنده</string>
+    <string name="details_dev_reply">پاسخ توسعه‌دهنده</string>
+    <string name="details_files">فایل‌ها</string>
+    <string name="details_no_app">هیچ برنامه‌ای موجود نیست</string>
 </resources>
