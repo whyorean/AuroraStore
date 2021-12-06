@@ -13,4 +13,16 @@
     <string name="about_bitcoin_bch_summary">Feu una donació amb Bitcoin Cash (BCH)</string>
     <string name="about_bitcoin_bch">Bitcoins</string>
     <string name="about_bhim_summary">Feu una donació mitjançant UPI</string>
+    <string name="about_gitlab">GitLab</string>
+    <string name="about_libera">Liberapay</string>
+    <string name="about_paypal">PayPal</string>
+    <string name="about_telegram_summary">Uniu-vos al grup d\'ajuda d\'Aurora per a debats o suggeriments.</string>
+    <string name="about_xda">Fil de desenvolupament</string>
+    <string name="about_xda_summary">Consulteu el fil d\'Aurora Store a XDA per a debats o suggeriments.</string>
+    <string name="account_anonymous">Anònim</string>
+    <string name="about_libera_summary">Feu-vos mecenes a Liberapay</string>
+    <string name="about_fdroid_summary">Obteniu l\'Aurora Store a través d\'F-Droid.</string>
+    <string name="about_telegram">Telegram</string>
+    <string name="about_gitlab_summary">Obteniu el codi font de l\'Aurora Store des d\'Aurora OSS a GitLab.</string>
+    <string name="about_paypal_summary">Dona a través de PayPal</string>
 </resources>
