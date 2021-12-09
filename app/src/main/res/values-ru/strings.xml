@@ -342,7 +342,7 @@
     <string name="dialog_desc_native_split">Бандлы приложений (сплиты) через системный установщик Android установить невозможно. Используйте метод установки Aurora, службы Aurora или root.</string>
     <string name="toast_aas_token_failed">Не удалось сгенерировать AAS токен</string>
     <string name="toast_rated_failed">Не удалось обновить рейтинг</string>
-    <string name="toast_rated_success">Рейтинг успешно обновлен</string>
+    <string name="toast_rated_success">Рейтинг успешно обновлён</string>
     <string name="toast_page_unavailable">Страница недоступна</string>
     <string name="toast_double_press_to_exit">Нажмите дважды для выхода</string>
     <string name="toast_export_failed">Экспорт конфигурации устройства не выполнен</string>
