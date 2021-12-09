@@ -250,8 +250,8 @@
     <string name="pref_install_mode_title">Способ установки</string>
     <string name="pref_install_mode_summary">Выберите режим установки APK</string>
     <string name="pref_install_mode_services">Сервисы Aurora</string>
-    <string name="pref_install_mode_root">Установка с помощью root</string>
-    <string name="pref_install_mode_native">Ручная установка</string>
+    <string name="pref_install_mode_root">Root-установщик</string>
+    <string name="pref_install_mode_native">Системный установщик</string>
     <string name="pref_install_delete_title">Удалить APK-файлы после установки</string>
     <string name="pref_install_delete_summary">APK-файлы будут удалены по умолчанию</string>
     <string name="pref_install_auto_title">Автоматическая установка APK-файлов после загрузки</string>
@@ -323,7 +323,7 @@
     <string name="pref_network_title">Сеть</string>
     <string name="pref_insecure_anonymous_summary">Создавать GSF ID на устройстве</string>
     <string name="pref_ui_similar_apps_desc">Показать секции похожих и связанных на странице приложения</string>
-    <string name="pref_ui_no_for_you_desc">Показать страницу \"Рекомендуем\" на вкладке приложений</string>
+    <string name="pref_ui_no_for_you_desc">Показать страницу рекомендаций на основном экране</string>
     <string name="pref_ui_layout_tab">Выбрать вкладку по умолчанию</string>
     <string name="pref_ui_layout">Вкладки</string>
     <string name="pref_filter_search_title">Не сохранять поисковый фильтр</string>
@@ -331,7 +331,7 @@
     <string name="pref_common_advance">Продвинутые</string>
     <string name="pref_ui_similar_apps">Похожие и связанные приложения</string>
     <string name="pref_ui_no_for_you">Страница рекомендаций</string>
-    <string name="pref_ui_quick_exit_desc">Выйти из приложения одним нажатием кнопки \"назад\"</string>
+    <string name="pref_ui_quick_exit_desc">Выйти из приложения одним нажатием кнопки Назад</string>
     <string name="pref_ui_quick_exit">Быстрый выход</string>
     <string name="pref_filter_search_summary">Фильтры поиска сбрасываются при каждом поиске. Отключите, чтобы сохранить фильтры.</string>
     <string name="details_no_app_match">Приложения не найдены</string>
