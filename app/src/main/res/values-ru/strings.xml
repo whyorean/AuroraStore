@@ -293,8 +293,8 @@
     <string name="list_update_all_txt_one">доступно обновление</string>
     <string name="dialog_desc_self_update">Хотите обновить сейчас\?</string>
     <string name="dialog_title_self_update">Доступно обновление</string>
-    <string name="device_miui_extra">При желании вы можете выбрать ручную установку, но тогда вы не сможете устанавливать split APK, поэтому выбор за вами.</string>
-    <string name="device_miui_description">Пожалуйста, отключите оптимизацию MIUI, чтобы разрешить установку. В ином случае вы можете выбрать \"Root-установщик\" или \"Сервисы Aurora\".</string>
+    <string name="device_miui_extra">При желании вы можете выбрать системный установщик, но тогда вы не сможете устанавливать split APK, поэтому выбор за вами.</string>
+    <string name="device_miui_description">Пожалуйста, отключите оптимизацию MIUI, чтобы разрешить установку. В ином случае вы можете выбрать Root-установщик или Сервисы Aurora.</string>
     <string name="device_miui_subtitle">Установщик сеанса не может устанавливать приложения из-за оптимизации MIUI.</string>
     <string name="device_miui_title">Обнаружен MIUI!</string>
     <string name="device_huawei_subtitle">Похоже, вы используете устройство Huawei, из-за недавних запретов Google вы не можете войти в аккаунт.</string>
@@ -307,7 +307,7 @@
     <string name="installer_status_failure_storage">Недостаточно памяти</string>
     <string name="installer_status_failure_invalid">Неправильный или повреждённый APK</string>
     <string name="installer_status_failure_incompatible">Несовместимое приложение</string>
-    <string name="installer_status_failure_conflict">Конфликтующий пакет существует</string>
+    <string name="installer_status_failure_conflict">Существует конфликтующий пакет</string>
     <string name="installer_status_failure_session">Невозможно создать сеанс</string>
     <string name="title_no_network">Нет соединения</string>
     <string name="installer_status_failure">Ошибка установки</string>
