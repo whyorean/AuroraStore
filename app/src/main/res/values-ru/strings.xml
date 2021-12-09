@@ -294,7 +294,7 @@
     <string name="dialog_desc_self_update">Хотите обновить сейчас\?</string>
     <string name="dialog_title_self_update">Доступно обновление</string>
     <string name="device_miui_extra">При желании вы можете выбрать системный установщик, но тогда вы не сможете устанавливать split APK, поэтому выбор за вами.</string>
-    <string name="device_miui_description">Пожалуйста, отключите оптимизацию MIUI, чтобы разрешить установку. В ином случае вы можете выбрать Root-установщик или Сервисы Aurora.</string>
+    <string name="device_miui_description">Отключите оптимизацию MIUI, чтобы разрешить установку. В ином случае вы можете выбрать root-установщик или сервисы Aurora.</string>
     <string name="device_miui_subtitle">Установщик сеанса не может устанавливать приложения из-за оптимизации MIUI.</string>
     <string name="device_miui_title">Обнаружен MIUI!</string>
     <string name="device_huawei_subtitle">Похоже, вы используете устройство Huawei, из-за недавних запретов Google вы не можете войти в аккаунт.</string>
@@ -319,7 +319,7 @@
     <string name="action_apply">Применить</string>
     <string name="toast_purchase_blocked">Покупка приложений недоступна для анонимных аккаунтов.</string>
     <string name="pref_insecure_anonymous_title">Незащищённый анонимный сеанс</string>
-    <string name="insecure_anonymous_apply">Убедитесь, что выполнили новый вход и перезапустили приложение для примения изменений.</string>
+    <string name="insecure_anonymous_apply">Убедитесь, что выполнили новый вход и перезапустили приложение для применения изменений.</string>
     <string name="pref_network_title">Сеть</string>
     <string name="pref_insecure_anonymous_summary">Создавать GSF ID на устройстве</string>
     <string name="pref_ui_similar_apps_desc">Показать секции похожих и связанных на странице приложения</string>
@@ -333,14 +333,14 @@
     <string name="pref_ui_no_for_you">Страница рекомендаций</string>
     <string name="pref_ui_quick_exit_desc">Выйти из приложения одним нажатием кнопки \"назад\"</string>
     <string name="pref_ui_quick_exit">Быстрый выход</string>
-    <string name="pref_filter_search_summary">Фильтры поиска сбрасываются при каждом поиске. Отключите чтобы сохранить фильтры</string>
+    <string name="pref_filter_search_summary">Фильтры поиска сбрасываются при каждом поиске. Отключите, чтобы сохранить фильтры.</string>
     <string name="details_no_app_match">Приложения не найдены</string>
     <string name="toast_manual_available">Поздравляем, этот номер версии доступен. Начинаем загрузку.</string>
     <string name="toast_manual_unavailable">Номер версии, который Вы запросили, недоступен.</string>
     <string name="title_manual_download">Ручная загрузка</string>
     <string name="action_check">Проверить</string>
-    <string name="dialog_desc_native_split">Бандлы приложений (сплиты) через системный установщик Android установить невозможно. Используйте метод установки Aurora, службы Aurora или root.</string>
-    <string name="toast_aas_token_failed">Не удалось сгенерировать AAS токен</string>
+    <string name="dialog_desc_native_split">Бандлы приложений (сплиты) через системный установщик Android установить невозможно. Используйте метод установки Aurora, сервисы Aurora или root.</string>
+    <string name="toast_aas_token_failed">Не удалось сгенерировать AAS-токен</string>
     <string name="toast_rated_failed">Не удалось обновить рейтинг</string>
     <string name="toast_rated_success">Рейтинг успешно обновлён</string>
     <string name="toast_page_unavailable">Страница недоступна</string>
