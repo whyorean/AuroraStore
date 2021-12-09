@@ -202,7 +202,7 @@
     <string name="toast_apk_copy_failed">Ошибка экспорта APK</string>
     <string name="toast_apk_blacklisted">Добавлен в чёрный список</string>
     <string name="toast_anonymous_restriction">Недоступно на анонимных аккаунтах</string>
-    <string name="toast_abandon_sessions">Старые сеансы установки прерваны</string>
+    <string name="toast_abandon_sessions">Прерванные предыдущие сеансы установки</string>
     <string name="title_updates">Обновления</string>
     <string name="title_settings">Настройки</string>
     <string name="title_purchase_history">История покупок</string>
@@ -335,14 +335,14 @@
     <string name="pref_ui_quick_exit">Быстрый выход</string>
     <string name="pref_filter_search_summary">Фильтры поиска сбрасываются при каждом поиске. Отключите, чтобы сохранить фильтры.</string>
     <string name="details_no_app_match">Приложения не найдены</string>
-    <string name="toast_manual_available">Поздравляем, этот номер версии доступен. Начинаем загрузку.</string>
-    <string name="toast_manual_unavailable">Номер версии, который Вы запросили, недоступен.</string>
+    <string name="toast_manual_available">Поздравляем, запрошенный код версии доступен. Начинаем загрузку.</string>
+    <string name="toast_manual_unavailable">Запрошенный вами код версии недоступен.</string>
     <string name="title_manual_download">Ручная загрузка</string>
     <string name="action_check">Проверить</string>
     <string name="dialog_desc_native_split">Бандлы приложений (сплиты) через системный установщик Android установить невозможно. Используйте метод установки Aurora, сервисы Aurora или root.</string>
     <string name="toast_aas_token_failed">Не удалось сгенерировать AAS-токен</string>
     <string name="toast_rated_failed">Не удалось обновить рейтинг</string>
-    <string name="toast_rated_success">Рейтинг успешно обновлён</string>
+    <string name="toast_rated_success">Оценка принята</string>
     <string name="toast_page_unavailable">Страница недоступна</string>
     <string name="toast_double_press_to_exit">Нажмите дважды для выхода</string>
     <string name="toast_export_failed">Экспорт конфигурации устройства не выполнен</string>
