@@ -331,7 +331,7 @@
     <string name="pref_common_advance">Продвинутые</string>
     <string name="pref_ui_similar_apps">Похожие и связанные приложения</string>
     <string name="pref_ui_no_for_you">Страница рекомендаций</string>
-    <string name="pref_ui_quick_exit_desc">Выйти из приложения одним нажатием кнопки Назад</string>
+    <string name="pref_ui_quick_exit_desc">Выйти из приложения одним нажатием кнопки \"Назад\"</string>
     <string name="pref_ui_quick_exit">Быстрый выход</string>
     <string name="pref_filter_search_summary">Фильтры поиска сбрасываются при каждом поиске. Отключите, чтобы сохранить фильтры.</string>
     <string name="details_no_app_match">Приложения не найдены</string>
