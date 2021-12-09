@@ -90,7 +90,7 @@
     <string name="installer_service_misconfigured">Сначала установите сервисы Aurora и выдайте и все разрешения.</string>
     <string name="installer_service_unavailable">Установите сервисы Aurora 1.0.9 или новее, либо смените установщик.</string>
     <string name="installer_service_available">Сервисы Aurora доступны и готовы к установке.</string>
-    <string name="installer_root_unavailable">Нет root-доступа, предоставьте его или смените установщик.</string>
+    <string name="installer_root_unavailable">Нет root-доступа. Предоставьте его или смените программу-установщик.</string>
     <string name="filter_review_two">Две</string>
     <string name="filter_review_three">Три</string>
     <string name="filter_review_one">Одна</string>
@@ -182,7 +182,7 @@
     <string name="pref_install_mode_session">Установка</string>
     <string name="device_huawei_description">Вам предлагается использовать подмену устройства, если у вас одна из новых моделей Huawei. Включить функцию подмены сейчас\?</string>
     <string name="menu_terms">Условия предоставления услуг</string>
-    <string name="installer_root_available">Root-доступ разрешен</string>
+    <string name="installer_root_available">Доступ к Root-доступу</string>
     <string name="filter_review_positive">Положительный</string>
     <string name="filter_review_critical">Отрицательный</string>
     <string name="exodus_title_alt">Отчет Exodus</string>
