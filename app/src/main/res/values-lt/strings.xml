@@ -334,4 +334,5 @@
     <string name="ui_accent_2">Purpurinė</string>
     <string name="ui_accent_5">Žalia</string>
     <string name="ui_accent_11">Šviesiai mėlyna</string>
+    <string name="action_try_later"></string>
 </resources>
