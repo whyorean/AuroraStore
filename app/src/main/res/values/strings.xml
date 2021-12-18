@@ -205,6 +205,7 @@
     <string name="filter_review_positive">"Positive"</string>
     <string name="filter_review_three">"Three"</string>
     <string name="filter_review_two">"Two"</string>
+    <string name="installer_am_unavailable">Install App Manager or change the installer.</string>
     <string name="installer_root_available">"Root access available"</string>
     <string name="installer_root_unavailable">No root access. Grant it or change the installer.</string>
     <string name="installer_service_available">"Aurora services is available and ready to install."</string>
@@ -279,6 +280,7 @@
     <string name="pref_install_auto_title">"Auto install APKs after download"</string>
     <string name="pref_install_delete_summary">"APKs will be deleted by default"</string>
     <string name="pref_install_delete_title">"Delete APK post-install"</string>
+    <string name="pref_install_mode_am">AM installer.</string>
     <string name="pref_install_mode_native">"Native installer"</string>
     <string name="pref_install_mode_root">"Root installer"</string>
     <string name="pref_install_mode_services">"Aurora Services"</string>

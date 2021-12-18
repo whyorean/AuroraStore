@@ -24,5 +24,11 @@
     "title": "Aurora Service",
     "subtitle": "Installer for background installations",
     "description": "Requires Aurora Services to be installed as system app."
+  },
+  {
+    "id": "4",
+    "title": "AM Installer",
+    "subtitle": "Install use App Manager",
+    "description": "You must have App Manager. Need adb/root mode to install when miui optimization is on."
   }
 ]
