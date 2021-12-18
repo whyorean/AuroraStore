@@ -212,7 +212,7 @@
     <string name="exodus_title">Aurora-Schutz</string>
     <string name="exodus_substring">Tracker gefunden in</string>
     <string name="exodus_report">Exodus-Bericht</string>
-    <string name="exodus_progress">Prüfe auf Tracker …</string>
+    <string name="exodus_progress">Prüfe auf Tracker…</string>
     <string name="exodus_powered">Bereitgestellt von Exodus</string>
     <string name="exodus_no_tracker">Enthält keine Tracker</string>
     <string name="exodus_no_report">Keine Berichte verfügbar</string>
@@ -352,4 +352,7 @@
     <string name="notification_channel_updater_service">Service zum Herunterladen von Anwendungen im Hintergrund</string>
     <string name="app_updater_service_notif_title">Herunterladen von Anwendungen im Hintergrund</string>
     <string name="app_updater_service_notif_text">Ermöglicht das Herunterladen von Anwendungen im Hintergrund</string>
+    <string name="account_anonymous_insecure">Anonym (unsicher)</string>
+    <string name="installer_am_unavailable">Installiere App Manager oder ändere das Installationsprogramm.</string>
+    <string name="pref_install_mode_am">AM-Installer.</string>
 </resources>
