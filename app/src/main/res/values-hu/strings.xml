@@ -110,7 +110,7 @@
     <string name="about_bitcoin_btc_summary">Bitcoin (BTC) adományozás</string>
     <string name="about_bitcoin_btc">Bitcoin</string>
     <string name="about_bitcoin_bch_summary">Bitcoin Cash (BCH) adományozás</string>
-    <string name="about_bitcoin_bch">Bitcoin Cash</string>
+    <string name="about_bitcoin_bch">Bitcoin Pénz</string>
     <string name="about_bhim_summary">UPI adományozás</string>
     <string name="about_bhim">BHIM - UPI</string>
     <string name="details_dev_email">E-mail</string>
@@ -150,10 +150,10 @@
     <string name="installer_status_failure_blocked">A telepítés blokkolva lett</string>
     <string name="installer_status_failure_aborted">Telepítés megszakítva</string>
     <string name="installer_status_failure">Sikeretelen telepítés</string>
-    <string name="installer_service_misconfigured">Az Aurora Szolgáltatások nincs konfigurálva. Ellenőrizd, hogy a szolgáltatás be van-e kapcsolva és meg van-e adva minden engedély</string>
+    <string name="installer_service_misconfigured">Állítsd be az Aurora Szolgáltatásokat és először adj meg minden engedélyt.</string>
     <string name="installer_service_unavailable">Telepítsd az Aurora services 1.0.9 vagy magasabb verziót, vagy változtass a telepítési módszeren.</string>
     <string name="installer_service_available">Az Aurora Services elérhető és telepítésre kész.</string>
-    <string name="installer_root_unavailable">Nincs root, adj root hozzáférést vagy változtasd meg a telepítési módszert.</string>
+    <string name="installer_root_unavailable">Nincs root hozzáférés. Add meg, vagy változtasd meg a telepítési módszert.</string>
     <string name="installer_root_available">Root hozzáférés elérhető</string>
     <string name="filter_review_two">Kettő</string>
     <string name="filter_review_three">Három</string>
@@ -176,20 +176,20 @@
     <string name="download_speed_estimating">Becslés</string>
     <string name="download_resume_all">Az összes folytatása</string>
     <string name="download_resume">Folytatás</string>
-    <string name="download_queued">Várakozik</string>
+    <string name="download_queued">Sorban áll</string>
     <string name="download_progress">Letöltés</string>
     <string name="download_paused">Szünetelve</string>
     <string name="download_pause_all">Az összes szüneteltetése</string>
     <string name="download_pause">Szüneteltetés</string>
     <string name="download_none">Nincs letöltés</string>
     <string name="download_metadata">Metaadatok megszerzése</string>
-    <string name="download_force_clear_all">Összes törlése</string>
+    <string name="download_force_clear_all">Minden törlése kényszerítése</string>
     <string name="download_failed">Letöltés sikertelen</string>
     <string name="download_eta_calculating">Számolás</string>
     <string name="download_deleted">Törölve</string>
     <string name="download_completed">Letöltve</string>
     <string name="download_canceled">Megszakítva</string>
-    <string name="download_cancel_all">Összes törlése</string>
+    <string name="download_cancel_all">Mindent megszakít</string>
     <string name="details_think_this_app">Mit gondolsz erről az alkalmazásról\?</string>
     <string name="details_screenshots">Képernyőképek</string>
     <string name="details_reviews_about_app">Még több vélemény</string>
@@ -216,10 +216,10 @@
     <string name="details_free">Ingyenes</string>
     <string name="details_files">Fájlok</string>
     <string name="details_dev_website">Weboldal</string>
-    <string name="details_dev_reply">Fejlesztői válasza</string>
+    <string name="details_dev_reply">Fejlesztő válasza</string>
     <string name="details_dev_profile">Fejlesztői profil</string>
     <string name="title_apps_sale">Eladó appok</string>
-    <string name="toast_developer_setting_failed">Nem sikerült megnyitni a fejlesztői beállításokat. Engedélyezd az eszköz beállításaiban.</string>
+    <string name="toast_developer_setting_failed">Az eszköze beállításain belül kapcsolja be a Fejlesztői beállításokat, így megnyitva őket.</string>
     <string name="pref_install_mode_session">Munkamenet telepítő</string>
     <string name="toast_purchase_blocked">Az app vásárlás nem érhető el Névtelen fiókkal.</string>
     <string name="toast_spoof_applied">Eszköz álnév sikeresen alkalmazva.</string>
@@ -295,7 +295,7 @@
     <string name="pref_filter_google_summary">Eltávolít minden Google appot a keresési eredményekből és app kategóriákból</string>
     <string name="pref_filter_fdroid_title">F-Droid appok szűrése</string>
     <string name="pref_filter_fdroid_summary">Eltávolítja az F-Droid appokat az app listákról</string>
-    <string name="pref_downloader_external_desc">Külső tárhelyet használunk letöltésekhez, exportáláshoz, stb.</string>
+    <string name="pref_downloader_external_desc">Külső tárhelyet van használatban letöltésekhez, exportáláshoz, stb.</string>
     <string name="pref_downloader_external">Felhasználó külső tárhelye</string>
     <string name="pref_downloader_active_title">Aktív letöltés</string>
     <string name="pref_downloader_active_summary">Az aktív letöltések max. száma</string>
@@ -307,7 +307,7 @@
     <string name="onboarding_permission_installer">Telepítési engedély</string>
     <string name="onboarding_permission_esm_desc">Android R+ rendszert futtató eszközökön szükséges, a külső tárhely-hozzáférés mellett</string>
     <string name="onboarding_permission_esm">Külső tárhely kezelő</string>
-    <string name="onboarding_permission_esa_desc">"A letöltések mentéséhez (APK &amp; OBB), exportálja &amp;  importálja az eszközkonfigurációkat a külső tárhelyre."</string>
+    <string name="onboarding_permission_esa_desc">A letöltések mentéséhez (APK &amp; OBB), exportálja &amp; importálja az eszközkonfigurációkat a külső tárhelyre.</string>
     <string name="onboarding_permission_esa">Külső tárhely elérés</string>
     <string name="onboarding_welcome_select">Hogy vagy\?</string>
     <string name="onboarding_tos_error">Először el kell olvasni a TOS-t.</string>
@@ -316,7 +316,7 @@
     <string name="download_clear_completed">Törlés befejezve</string>
     <string name="action_installations">Telepítések</string>
     <string name="action_discard">Elvet</string>
-    <string name="action_disable">Kikapcsol</string>
+    <string name="action_disable">Tilt</string>
     <string name="action_deny">Elutasít</string>
     <string name="action_clear_restart">Adat törlés</string>
     <string name="action_clear_all">Törli mind</string>
@@ -341,7 +341,7 @@
     <string name="action_check">Ellenőrzés</string>
     <string name="toast_aas_token_failed">Nem sikerült az AAS Token generálása</string>
     <string name="toast_rated_failed">Az értékelést nem sikerült elküldeni</string>
-    <string name="toast_rated_success">Sikeresen értékeltél</string>
+    <string name="toast_rated_success">Értékelve</string>
     <string name="toast_page_unavailable">A böngésző lap nem érhető el</string>
     <string name="toast_double_press_to_exit">Kattints kétszer a kilépéshez</string>
     <string name="dialog_desc_native_split">A Native Installer segítségével nem lehet telepíteni a kötegelt (osztott) alkalmazásokat. Változtasd a telepítőt Session, Services vagy Root-ra.</string>
@@ -349,4 +349,7 @@
     <string name="toast_export_success">Eszköz konfig. sikeresen exportálva</string>
     <string name="pref_updates_extended_desc">Letiltott appok frissítéseinek ellenőrzése</string>
     <string name="pref_updates_extended">Kiterjesztett frissítések</string>
+    <string name="app_updater_service_notif_text">Lehetővé teszi a háttérben történő alkalmazásletöltést</string>
+    <string name="app_updater_service_notif_title">Hátterbeli alkalmazásletöltés</string>
+    <string name="notification_channel_updater_service">Háttérbeli alkalmazásletöltési szolgáltatás</string>
 </resources>

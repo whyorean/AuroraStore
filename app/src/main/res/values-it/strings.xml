@@ -116,7 +116,7 @@
     <string name="details_dev_profile">Profilo sviluppatore</string>
     <string name="details_dependencies">Dipendenze</string>
     <string name="details_beta_delay">L’iscrizione potrebbe richiedere del tempo; è possibile controllare lo stato in un secondo momento.</string>
-    <string name="details_beta_description">Vedrai nuove funzionalità e difetti prima che lo faccia il pubblico. Scrivi i tuoi commenti agli sviluppatori per aiutarli a migliorare.</string>
+    <string name="details_beta_description">Vedrai nuove funzionalità e bugs prima che lo faccia il pubblico. Scrivi i tuoi commenti agli sviluppatori per aiutarli a migliorare.</string>
     <string name="details_beta_available">Partecipare al programma Beta\?</string>
     <string name="details_beta_subscribed">Sei un Beta-tester</string>
     <string name="details_beta">Programma Beta</string>
@@ -139,8 +139,8 @@
     <string name="action_save">Salva</string>
     <string name="action_retry">Riprova</string>
     <string name="action_resume">Riprendi</string>
-    <string name="about_xda_summary">Vedi la discussione XDA di Aurora Store per dibattiti o suggerimenti.</string>
-    <string name="about_xda">Discussione di sviluppo</string>
+    <string name="about_xda_summary">Vedi il rocchetto di filo XDA di Aurora Store per dibattiti o suggerimenti.</string>
+    <string name="about_xda">Rocchetto di filo dello sviluppo</string>
     <string name="about_telegram_summary">Unisciti al gruppo di supporto Aurora per discussioni o suggerimenti.</string>
     <string name="action_restart">Riavvia</string>
     <string name="action_resend">Invia di nuovo</string>
@@ -181,7 +181,7 @@
     <string name="action_discard">Scarta</string>
     <string name="action_disable">Disabilita</string>
     <string name="action_deny">Rifiuta</string>
-    <string name="action_copy_link">Copia collegamento</string>
+    <string name="action_copy_link">Copia link</string>
     <string name="action_copy">Copia</string>
     <string name="action_close">Chiudi</string>
     <string name="action_clear_restart">Cancella dati</string>
