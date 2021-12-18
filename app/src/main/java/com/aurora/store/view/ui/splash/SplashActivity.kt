@@ -198,6 +198,11 @@ class SplashActivity : BaseActivity() {
             VM.buildAnonymousAuthData()
         }
 
+        B.btnAnonymousInsecure.addOnClickListener {
+            B.btnAnonymousInsecure.updateProgress(true)
+            VM.buildInSecureAnonymousAuthData()
+        }
+
         B.btnGoogle.addOnClickListener {
             B.btnGoogle.updateProgress(true)
             openGoogleActivity()
