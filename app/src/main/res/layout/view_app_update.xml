@@ -155,6 +155,7 @@
             android:ellipsize="end"
             android:minHeight="?actionBarSize"
             android:singleLine="false"
+            android:textIsSelectable="true"
             android:textAppearance="@style/TextAppearance.Aurora.Line2" />
     </com.github.florent37.expansionpanel.ExpansionLayout>
 </RelativeLayout>
