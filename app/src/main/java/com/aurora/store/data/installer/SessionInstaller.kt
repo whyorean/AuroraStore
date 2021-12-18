@@ -27,7 +27,9 @@ import android.net.Uri
 import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.core.content.FileProvider
+import com.aurora.extensions.isMAndAbove
 import com.aurora.extensions.isNAndAbove
+import com.aurora.extensions.isSAndAbove
 import com.aurora.store.BuildConfig
 import com.aurora.store.util.Log
 import org.apache.commons.io.IOUtils
@@ -63,6 +65,9 @@ class SessionInstaller(context: Context) : InstallerBase(context) {
             if (isNAndAbove()) {
                 setOriginatingUid(android.os.Process.myUid())
             }
+            if (isSAndAbove()) {
+                setRequireUserAction(SessionParams.USER_ACTION_NOT_REQUIRED)
+            }
         }
         val sessionId = packageInstaller.createSession(sessionParams)
         val session = packageInstaller.openSession(sessionId)
@@ -87,11 +92,14 @@ class SessionInstaller(context: Context) : InstallerBase(context) {
             }
 
             val callBackIntent = Intent(context, InstallerService::class.java)
+            val flags = if (isSAndAbove())
+                PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_MUTABLE else
+                    PendingIntent.FLAG_UPDATE_CURRENT;
             val pendingIntent = PendingIntent.getService(
                 context,
                 sessionId,
                 callBackIntent,
-                PendingIntent.FLAG_UPDATE_CURRENT
+                flags
             )
 
             Log.i("Starting install session for $packageName")

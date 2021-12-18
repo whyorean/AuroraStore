@@ -52,6 +52,10 @@ fun isRAndAbove(): Boolean {
     return Build.VERSION.SDK_INT >= Build.VERSION_CODES.R
 }
 
+fun isSAndAbove(): Boolean {
+    return Build.VERSION.SDK_INT >= Build.VERSION_CODES.S
+}
+
 fun isMIUI(): Boolean {
     return getSystemProperty("ro.miui.ui.version.name").isNotEmpty()
 }

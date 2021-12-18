@@ -41,6 +41,7 @@
         tools:ignore="ProtectedPermissions" />
     <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
     <uses-permission android:name="android.permission.REQUEST_DELETE_PACKAGES" />
+    <uses-permission android:name="android.permission.UPDATE_PACKAGES_WITHOUT_USER_ACTION" />
 
     <uses-feature
         android:name="android.software.leanback"
@@ -71,7 +72,8 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
 
-        <activity android:name=".view.ui.onboarding.OnboardingActivity">
+        <activity android:name=".view.ui.onboarding.OnboardingActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -88,7 +90,8 @@
             android:name=".MainActivity"
             android:launchMode="singleTask" />
 
-        <activity android:name=".view.ui.details.AppDetailsActivity">
+        <activity android:name=".view.ui.details.AppDetailsActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -120,7 +123,8 @@
         </activity>
 
 
-        <activity android:name=".view.ui.details.DevProfileActivity">
+        <activity android:name=".view.ui.details.DevProfileActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
@@ -173,7 +177,8 @@
                 android:resource="@xml/paths" />
         </provider>
 
-        <receiver android:name=".data.receiver.PackageManagerReceiver">
+        <receiver android:name=".data.receiver.PackageManagerReceiver"
+            android:exported="false">
             <intent-filter>
                 <action android:name="android.intent.action.PACKAGE_ADDED" />
                 <action android:name="android.intent.action.PACKAGE_CHANGED" />
