@@ -135,7 +135,7 @@
     <string name="action_installations">Instalacje</string>
     <string name="action_granted">Zgoda udzielona</string>
     <string name="action_grant">Udziel zgody</string>
-    <string name="device_miui_description">Włącz optymalizację MIUI, aby zezwolić na instalacje, w przeciwnym razie wybierz instalator Root lub usługi Aurora.</string>
+    <string name="device_miui_description">Wyłącz optymalizację MIUI, aby zezwolić na instalacje, w przeciwnym razie wybierz instalator root lub usługi Aurora.</string>
     <string name="device_huawei_description">Jeśli posiadasz jeden z nowszych modeli urządzenia firmy Huawei, sugerujemy skorzystać z opcji podmiany urządzenia. Czy chcesz teraz użyć funkcji podmiany urządzenia\?</string>
     <string name="device_miui_extra">Opcjonalnie możesz wybrać natywny instalator, ale wtedy nie będziesz w stanie instalować pakietów APK (podzielonych), więc wybór należy do Ciebie.</string>
     <string name="toast_spoof_applied">Zastosowano podmianę urządzenia.</string>
@@ -196,9 +196,9 @@
     <string name="pref_install_mode_summary">Wybierz tryb instalacji plików APK</string>
     <string name="pref_install_mode_session">Instalator sesji</string>
     <string name="pref_install_mode_services">Usługi Aurora</string>
-    <string name="pref_install_mode_root">Root instalator</string>
-    <string name="pref_install_mode_native">Natywny instalator</string>
-    <string name="pref_install_delete_title">Usuń APK po zainstalowaniu</string>
+    <string name="pref_install_mode_root">Instalator root</string>
+    <string name="pref_install_mode_native">Instalator natywny</string>
+    <string name="pref_install_delete_title">Usuwaj APK po zainstalowaniu</string>
     <string name="pref_install_delete_summary">Pliki APK będą domyślnie usuwane</string>
     <string name="pref_install_auto_title">Automatyczna instalacja plików APK po pobraniu</string>
     <string name="pref_install_auto_summary">Aplikacje będą instalowane natychmiast po zakończeniu pobierania</string>
@@ -324,7 +324,7 @@
     <string name="pref_insecure_anonymous_title">Niezabezpieczona sesja anonimowa</string>
     <string name="pref_common_extra">Dodatkowe</string>
     <string name="pref_common_advance">Zaawansowane</string>
-    <string name="pref_filter_search_title">Użyj nietrwałego filtru wyszukiwania</string>
+    <string name="pref_filter_search_title">Używaj nietrwałego filtra wyszukiwania</string>
     <string name="pref_filter_search_summary">Filtry wyszukiwania są resetowane przy każdym wyszukiwaniu. Wyłącz, aby zapisywać filtry wyszukiwania</string>
     <string name="pref_ui_quick_exit_desc">Wyjdź z aplikacji przy pojedynczej akcji wstecz</string>
     <string name="pref_ui_no_for_you">Strony dla Ciebie</string>
@@ -332,7 +332,7 @@
     <string name="pref_ui_similar_apps_desc">Wyświetl grupy podobnych i powiązanych na stronie szczegółów aplikacji</string>
     <string name="pref_ui_similar_apps">Aplikacje podobne i powiązane</string>
     <string name="pref_ui_quick_exit">Szybkie wyjście</string>
-    <string name="pref_ui_layout_tab">Wybierz domyślną zakładkę</string>
+    <string name="pref_ui_layout_tab">Wybierz domyślną kartę</string>
     <string name="pref_ui_layout">Układ</string>
     <string name="details_no_app_match">Nie znaleziono pasującej aplikacji</string>
     <string name="toast_manual_available">Gratulacje, żądany kod wersji jest dostępny, rozpoczynam pobieranie.</string>
@@ -352,4 +352,7 @@
     <string name="app_updater_service_notif_text">Pobieranie aplikacji w tle włączone</string>
     <string name="app_updater_service_notif_title">Pobieranie aplikacji w tle</string>
     <string name="notification_channel_updater_service">Usługa pobierania aplikacji w tle</string>
+    <string name="pref_install_mode_am">Instalator menedżera aplikacji</string>
+    <string name="installer_am_unavailable">Zainstaluj menedżer aplikacji lub zmień instalator.</string>
+    <string name="account_anonymous_insecure">Anonimowe (niezabezpieczone)</string>
 </resources>
