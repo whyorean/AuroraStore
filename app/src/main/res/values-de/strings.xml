@@ -212,7 +212,7 @@
     <string name="exodus_title">Aurora-Schutz</string>
     <string name="exodus_substring">Tracker gefunden in</string>
     <string name="exodus_report">Exodus-Bericht</string>
-    <string name="exodus_progress">Prüfe auf Tracker…</string>
+    <string name="exodus_progress">Prüfe auf Tracker …</string>
     <string name="exodus_powered">Bereitgestellt von Exodus</string>
     <string name="exodus_no_tracker">Enthält keine Tracker</string>
     <string name="exodus_no_report">Keine Berichte verfügbar</string>
