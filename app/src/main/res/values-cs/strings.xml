@@ -3,12 +3,12 @@
     <string name="dialog_desc_self_update">Chcete nyní aktualizovat\?</string>
     <string name="action_updates">Aktualizace</string>
     <string name="action_update">Aktualizovat</string>
-    <string name="action_blacklist">Blacklist</string>
+    <string name="action_blacklist">Černá Listina</string>
     <string name="action_blacklist_add">Přidat na blacklist</string>
     <string name="title_blacklist_manager">Správce blacklist</string>
     <string name="toast_apk_blacklisted">Na blacklist</string>
     <string name="details_no_whitelist">Na whitelistu nejsou žádné aplikace</string>
-    <string name="action_whitelist">Whitelist</string>
+    <string name="action_whitelist">Bílá Listina</string>
     <string name="toast_manual_unavailable">Kód verze, který požadujete, není k dispozici.</string>
     <string name="toast_spoof_applied">Device spoof byl použit.</string>
     <string name="toast_apk_whitelisted">Na whitelistu</string>
@@ -241,7 +241,7 @@
     <string name="action_uninstall">Odinstalovat</string>
     <string name="action_try_later">Zkuste to později</string>
     <string name="action_submit">Odeslat</string>
-    <string name="action_spoofed">Spoof</string>
+    <string name="action_spoofed">Zfalšovat</string>
     <string name="action_skip">Přeskočit</string>
     <string name="action_sign_up">Registrovat</string>
     <string name="action_sign_in">Přihlásit se</string>
@@ -352,4 +352,7 @@
     <string name="app_updater_service_notif_text">Povolí stahování aplikací na pozadí</string>
     <string name="app_updater_service_notif_title">Stažení aplikace na pozadí</string>
     <string name="notification_channel_updater_service">Služba stahování aplikací na pozadí</string>
+    <string name="installer_am_unavailable">Nainstalujte si Správce Aplikací nebo změnte instalátor.</string>
+    <string name="account_anonymous_insecure">Anonymní (Nedůvěryhodné)</string>
+    <string name="pref_install_mode_am">AM instalátor.</string>
 </resources>
