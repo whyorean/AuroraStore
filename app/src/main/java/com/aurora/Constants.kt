@@ -39,7 +39,7 @@ object Constants {
     const val NOTIFICATION_CHANNEL_GENERAL = "NOTIFICATION_CHANNEL_GENERAL"
     const val NOTIFICATION_CHANNEL_UPDATER_SERVICE = "NOTIFICATION_CHANNEL_UPDATER_SERVICE"
 
-    const val URL_DISPENSER = "http://goolag.store:1337/api/auth"
+    const val URL_DISPENSER = "https://auroraoss.com/api/auth"
 
     //ACCOUNTS
     const val ACCOUNT_SIGNED_IN = "ACCOUNT_SIGNED_IN"
