@@ -51,7 +51,7 @@ class AccountActivity : BaseActivity() {
 
     private val URL_TOS = "https://www.google.com/mobile/android/market-tos.html"
     private val URL_LICENSE = "https://gitlab.com/AuroraOSS/AuroraStore/raw/master/LICENSE"
-    private val URL_DISCLAIMER = "https://gitlab.com/AuroraOSS/AuroraStore/raw/master/DISCLAIMER"
+    private val URL_DISCLAIMER = "https://gitlab.com/AuroraOSS/AuroraStore/raw/master/DISCLAIMER.md"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
