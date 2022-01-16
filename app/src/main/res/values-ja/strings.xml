@@ -352,4 +352,7 @@
     <string name="toast_export_success">端末設定をエクスポートしました</string>
     <string name="pref_updates_extended_desc">無効化したアプリの更新も確認する</string>
     <string name="pref_updates_extended">追加アップデート</string>
+    <string name="account_anonymous_insecure">匿名(非セキュア)</string>
+    <string name="installer_am_unavailable">App Managerをインストールするかインストーラを変更してください。</string>
+    <string name="pref_install_mode_am">AMインストーラ</string>
 </resources>

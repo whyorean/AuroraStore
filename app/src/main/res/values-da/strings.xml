@@ -16,4 +16,5 @@
     <string name="about_fdroid">F-Droid</string>
     <string name="details_dev_email">E-mail</string>
     <string name="details_description">Beskrivelse</string>
+    <string name="about_bhim_summary">Doner via UPI</string>
 </resources>
