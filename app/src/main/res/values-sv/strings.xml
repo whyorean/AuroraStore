@@ -331,4 +331,8 @@
     <string name="device_miui_extra">Alternativt kan du välja Inbyggt installationsprogram, men då kan du inte installera buntade (delade) APK-filer, så valet är ditt.</string>
     <string name="device_huawei_description">Vi föreslår att du använder enhetsförfalskning om du skulle ha den senaste Huawei-enheten. Vill du verkställa förfalskning nu\?</string>
     <string name="installer_service_misconfigured">Ställ in Aurora-tjänster och godkänn alla åtkomster först.</string>
+    <string name="pref_common_advance">Avancera</string>
+    <string name="device_miui_description">Snälla du, inaktivera MIUI-optimeringar för att tillåta installationer, annars kan du välja Root eller installationsprogrammet för Tjänster.</string>
+    <string name="account_anonymous_insecure">Anonymt (osäkert)</string>
+    <string name="installer_am_unavailable">Installera app-hanteraren eller ändra på installationsprogrammet.</string>
 </resources>
