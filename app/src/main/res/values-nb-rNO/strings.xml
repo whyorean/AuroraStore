@@ -38,7 +38,7 @@
     <string name="onboarding_title_theme">Drakter</string>
     <string name="onboarding_title_permissions">Tilganger</string>
     <string name="notification_installation_auto">Klikk for å installere</string>
-    <string name="device_huawei_title">Huawei oppdaget.</string>
+    <string name="device_huawei_title">Huawei oppdaget!</string>
     <string name="menu_terms">Tjenestevilkår</string>
     <string name="menu_license">Lisens</string>
     <string name="menu_disclaimer">Ansvarsfraskrivelse</string>
@@ -286,9 +286,9 @@
     <string name="toast_apk_copy_success">APK eksportert</string>
     <string name="pref_ui_similar_apps_desc">Vis lignende og relaterte klynger på appdetaljsiden</string>
     <string name="pref_ui_no_for_you_desc">Vis For You-sider på startskjermen</string>
-    <string name="pref_ui_theme_darkord">Disskord</string>
+    <string name="pref_ui_theme_darkord">Uenighet</string>
     <string name="pref_ui_accent_title">Aksent</string>
-    <string name="pref_filter_search_summary">Søkefilterne blir tilbakestilt ved hvert søk. Skru av for å lagre søkefilter.</string>
+    <string name="pref_filter_search_summary">Søkefiltre tilbakestilles ved hvert søk. Slå av for å lagre søkefiltre</string>
     <string name="pref_downloader_external">Eksternlager for bruker</string>
     <string name="pref_common_advance">Avansere</string>
     <string name="pref_abandon_session_desc">Fjern forlatte eller ventende installasjonsøkter</string>
@@ -330,7 +330,7 @@
     <string name="pref_ui_layout">Oppsett</string>
     <string name="pref_ui_title">Tilpasning</string>
     <string name="pref_install_profile_title">Installasjonsprofiler (eksperimentelt)</string>
-    <string name="pref_install_profile_summary">Velg målprofilen å installere programmer til. Virker kun med rot-installasjonsmetoden.</string>
+    <string name="pref_install_profile_summary">Velg målprofilen du vil installere apper på. Fungerer kun med rotinstallasjonsmetoden</string>
     <string name="pref_install_mode_native">Systemspesifikk installerer</string>
     <string name="pref_install_mode_session">Økt-installerer</string>
     <string name="pref_install_mode_root">Rot-installerer</string>
@@ -351,8 +351,8 @@
     <string name="action_get_local_apk">Lagre programknippe</string>
     <string name="notification_channel_updater_service">Tjeneste for nedlasting av programmer i bakgrunnen</string>
     <string name="app_updater_service_notif_title">Last ned bakgrunnsapp</string>
-    <string name="app_updater_service_notif_text">Skrur på nedlasting av programmer i bakgrunnen</string>
-    <string name="pref_install_mode_am">AM-installasjonskandidat.</string>
+    <string name="app_updater_service_notif_text">Aktiverer bakgrunnsappnedlasting</string>
+    <string name="pref_install_mode_am">AM installatør.</string>
     <string name="installer_am_unavailable">Installer App Manager eller endre installasjonsprogrammet.</string>
     <string name="account_anonymous_insecure">Anonym (usikkert)</string>
 </resources>
