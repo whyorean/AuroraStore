@@ -28,17 +28,4 @@
     <string name="download_speed_kb" translatable="false">%1$s KB/s</string>
     <string name="download_speed_mb" translatable="false">%1$s MB/s</string>
 
-    <string name="ui_accent_1">Blue</string>
-    <string name="ui_accent_2">Fuchsia</string>
-    <string name="ui_accent_3">Red</string>
-    <string name="ui_accent_4">Golden</string>
-    <string name="ui_accent_5">Green</string>
-    <string name="ui_accent_6">Purple</string>
-    <string name="ui_accent_7">Grey</string>
-    <string name="ui_accent_8">Pink</string>
-    <string name="ui_accent_9">Lime</string>
-    <string name="ui_accent_10">Orange</string>
-    <string name="ui_accent_11">Light blue</string>
-    <string name="ui_accent_12">Disskord blue</string>
-    <string name="ui_accent_13">Deep blue</string>
 </resources>
