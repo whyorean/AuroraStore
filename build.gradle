@@ -28,11 +28,12 @@ buildscript {
         kotlin_version = '1.4.30'
     }
 
-    ext.kotlin = "1.4.31"
-    ext.navigation= "2.3.4"
+    ext.kotlin = "1.5.30"
+    ext.navigation= "2.4.1"
+    ext.gradle = '7.1.0'
 
     dependencies {
-        classpath ('com.android.tools.build:gradle:7.0.3')
+        classpath ("com.android.tools.build:gradle:$gradle")
         classpath ("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin")
         classpath ("androidx.navigation:navigation-safe-args-gradle-plugin:$navigation")
     }

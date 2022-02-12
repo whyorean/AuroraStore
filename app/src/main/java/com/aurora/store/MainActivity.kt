@@ -178,9 +178,9 @@ class MainActivity : BaseActivity() {
         val graph = navController.graph
 
         when (defaultTab) {
-            0 -> graph.startDestination = R.id.navigation_apps
-            1 -> graph.startDestination = R.id.navigation_games
-            2 -> graph.startDestination = R.id.navigation_updates
+            0 -> graph.setStartDestination(R.id.navigation_apps)
+            1 -> graph.setStartDestination(R.id.navigation_games)
+            2 -> graph.setStartDestination(R.id.navigation_updates)
         }
 
         navController.graph = graph

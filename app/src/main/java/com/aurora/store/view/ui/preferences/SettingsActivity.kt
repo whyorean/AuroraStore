@@ -118,7 +118,7 @@ class SettingsActivity : BaseActivity(),
 
             val fragment = fragmentFactory.instantiate(
                 classLoader,
-                preference.fragment
+                preference.fragment.toString()
             ).apply {
                 arguments = args
                 setTargetFragment(caller, 0)

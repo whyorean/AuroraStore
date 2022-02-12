@@ -23,12 +23,12 @@ apply plugin: 'kotlin-kapt'
 apply plugin: "androidx.navigation.safeargs.kotlin"
 
 android {
-    compileSdkVersion 31
+    compileSdkVersion 32
 
     defaultConfig {
         applicationId "com.aurora.store"
         minSdkVersion 19
-        targetSdkVersion 31
+        targetSdkVersion 32
 
         versionCode 39
         versionName "4.1.0"
@@ -81,8 +81,8 @@ buildscript {
                 fetch2    : "3.1.6",
                 fuel      : "2.3.0",
                 glide     : "4.11.0",
-                lifecycle : '2.4.0',
-                navigation: '2.3.5',
+                lifecycle : '2.4.1',
+                navigation: '2.4.1',
                 epoxy     : "4.3.1",
                 libsu     : "3.0.2"
         ]
@@ -107,7 +107,7 @@ dependencies {
     implementation("org.apache.commons:commons-text:1.8")
 
     //Google's Goodies
-    implementation("com.google.android.material:material:1.4.0")
+    implementation("com.google.android.material:material:1.5.0")
     implementation("com.google.android:flexbox:2.0.1")
     implementation("com.google.code.gson:gson:2.8.6")
 
@@ -115,7 +115,7 @@ dependencies {
     implementation("androidx.core:core-ktx:1.7.0")
     implementation("androidx.viewpager2:viewpager2:1.0.0")
     implementation("androidx.vectordrawable:vectordrawable:1.1.0")
-    implementation("androidx.preference:preference-ktx:1.1.1")
+    implementation("androidx.preference:preference-ktx:1.2.0")
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
 
     //Arch LifeCycle
