@@ -352,4 +352,7 @@
     <string name="action_spoofed">Disfrace</string>
     <string name="device_huawei_description">Suxerimos que empregue un disfrace no caso de ter un Huawei. Desexa aplicar o disfrace agora\?</string>
     <string name="tab_top_charts">Top da clasificación</string>
+    <string name="pref_install_mode_am">Instalador XA.</string>
+    <string name="account_anonymous_insecure">Anónimo (inseguro)</string>
+    <string name="installer_am_unavailable">Instale o Xestor de Aplicacións ou mude o instalador.</string>
 </resources>

@@ -352,4 +352,7 @@
     <string name="toast_rated_success">Beoordeeld</string>
     <string name="title_manual_download">Handmatige installatie</string>
     <string name="title_updates">Updates</string>
+    <string name="account_anonymous_insecure">Anoniem (onveilig)</string>
+    <string name="installer_am_unavailable">Installeer App Manager of verander het installatieprogramma.</string>
+    <string name="pref_install_mode_am">AM-installatieprogramma.</string>
 </resources>
