@@ -17,7 +17,7 @@
     <string name="account_logged_out">Olet kirjautunut ulos</string>
     <string name="account_google">Google</string>
     <string name="about_telegram">Telegram</string>
-    <string name="about_paypal">Paypal</string>
+    <string name="about_paypal">PayPal</string>
     <string name="about_fdroid">F-Droid</string>
     <string name="about_bitcoin_eth">Ethereum</string>
     <string name="about_gitlab">GitLab</string>
@@ -126,11 +126,11 @@
     <string name="filter_review_critical">Kriittinen</string>
     <string name="exodus_title_alt">Exodus-raportti</string>
     <string name="exodus_title">Aurora-suojaus</string>
-    <string name="exodus_substring">seurantalaitteita löytyi</string>
+    <string name="exodus_substring">seurantasovelluksia löytyi</string>
     <string name="exodus_report">Exodus-raportti</string>
-    <string name="exodus_progress">Tarkistetaan seurantalaitteita…</string>
+    <string name="exodus_progress">Tarkistetaan seurantasovelluksia…</string>
     <string name="exodus_powered">Voimanlähteenä Exodus</string>
-    <string name="exodus_no_tracker">Ei sisällä seurantalaitteita</string>
+    <string name="exodus_no_tracker">Ei sisällä seurantasovelluksia</string>
     <string name="exodus_no_report">Raportteja ei saatavana</string>
     <string name="download_speed_estimating">Arviointi</string>
     <string name="download_pause_all">Tauota kaikki</string>
@@ -139,7 +139,7 @@
     <string name="download_eta_calculating">Lasketaan</string>
     <string name="download_deleted">Poistettu</string>
     <string name="download_completed">Ladattu</string>
-    <string name="download_clear_completed">Tyhjennys suoritettu</string>
+    <string name="download_clear_completed">Tyhjennä suoritetut</string>
     <string name="download_canceled">Peruutettu</string>
     <string name="download_cancel_all">Peruuta kaikki</string>
     <string name="details_think_this_app">Mitä ajattelet tästä sovelluksesta\?</string>
@@ -289,7 +289,7 @@
     <string name="pref_ui_theme_light">Vaalea</string>
     <string name="pref_ui_theme_dark_x">Tumma X</string>
     <string name="pref_ui_theme_dark">Tumma</string>
-    <string name="pref_ui_accent_title">Aksentti</string>
+    <string name="pref_ui_accent_title">Korostus</string>
     <string name="pref_network_title">Verkkoyhteys</string>
     <string name="pref_install_profile_title">Asennusprofiilit (kokeellinen)</string>
     <string name="pref_install_profile_summary">Valitse sovellusasennusten kohdeprofiili. Toimii vain root-asennustavalla</string>
@@ -327,7 +327,7 @@
     <string name="onboarding_title_theme">Teemat</string>
     <string name="onboarding_title_permissions">Käyttöoikeudet</string>
     <string name="onboarding_title_installer">Asentaja</string>
-    <string name="onboarding_title_accent">Aksentti</string>
+    <string name="onboarding_title_accent">Korostus</string>
     <string name="onboarding_theme_select">Valitse mistä tykkäät</string>
     <string name="onboarding_permission_select">Aurora Store vaatii seuraavat käyttöoikeudet</string>
     <string name="onboarding_installer_select">Valitse soveltuva asentaja</string>
