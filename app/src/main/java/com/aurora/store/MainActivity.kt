@@ -175,15 +175,12 @@ class MainActivity : BaseActivity() {
         }
 
         val defaultTab = Preferences.getInteger(this, Preferences.PREFERENCE_DEFAULT_SELECTED_TAB)
-        val graph = navController.graph
 
         when (defaultTab) {
-            0 -> graph.setStartDestination(R.id.navigation_apps)
-            1 -> graph.setStartDestination(R.id.navigation_games)
-            2 -> graph.setStartDestination(R.id.navigation_updates)
+            0 -> navController.navigate(R.id.navigation_apps)
+            1 -> navController.navigate(R.id.navigation_games)
+            2 -> navController.navigate(R.id.navigation_updates)
         }
-
-        navController.graph = graph
     }
 
     private fun attachDrawer() {
