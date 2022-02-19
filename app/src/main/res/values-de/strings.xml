@@ -118,7 +118,7 @@
     <string name="title_installation">Installation</string>
     <string name="title_games">Spiele</string>
     <string name="title_download_playstore">Zum Play Store</string>
-    <string name="title_download_manager">Heruntergeladene</string>
+    <string name="title_download_manager">Datenübertragungen</string>
     <string name="title_device">Gerät</string>
     <string name="title_details">Details</string>
     <string name="title_blacklist_manager">Sperrlisten-Verwaltung</string>
@@ -297,7 +297,7 @@
     <string name="action_logging_in">Anmeldevorgang</string>
     <string name="action_installing">Wird installiert</string>
     <string name="action_filter_misc">Verschiedenes</string>
-    <string name="action_filter_downloads">Heruntergeladene</string>
+    <string name="action_filter_downloads">Heruntergeladene Dateien</string>
     <string name="action_export">Exportieren</string>
     <string name="account_logout">Aus Aurora abmelden</string>
     <string name="action_accept">Akzeptieren</string>
