@@ -67,8 +67,8 @@ class HeaderView : RelativeLayout {
 
     @JvmOverloads
     @ModelProp
-    fun browseUrl(@Nullable browseUrl: String = String()) {
-        if (browseUrl.isEmpty())
+    fun browseUrl(@Nullable browseUrl: String? = String()) {
+        if (browseUrl.isNullOrEmpty())
             B.imgAction.visibility = INVISIBLE
     }
 
