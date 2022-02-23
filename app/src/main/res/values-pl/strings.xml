@@ -355,4 +355,17 @@
     <string name="pref_install_mode_am">Instalator menedżera aplikacji</string>
     <string name="installer_am_unavailable">Zainstaluj menedżera aplikacji lub zmień instalator.</string>
     <string name="account_anonymous_insecure">Anonimowe (niezabezpieczone)</string>
+    <string name="ui_accent_1">Niebieski</string>
+    <string name="ui_accent_2">Fuksja</string>
+    <string name="ui_accent_4">Złoty</string>
+    <string name="ui_accent_5">Zielony</string>
+    <string name="ui_accent_11">Jasnoniebieski</string>
+    <string name="ui_accent_12">Disskord niebieski</string>
+    <string name="ui_accent_13">Ciemnoniebieski</string>
+    <string name="ui_accent_9">Limonkowy</string>
+    <string name="ui_accent_3">Czerwony</string>
+    <string name="ui_accent_7">Szary</string>
+    <string name="ui_accent_8">Różowy</string>
+    <string name="ui_accent_6">Fioletowy</string>
+    <string name="ui_accent_10">Pomarańczowy</string>
 </resources>
