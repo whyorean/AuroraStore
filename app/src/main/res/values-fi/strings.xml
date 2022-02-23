@@ -355,4 +355,17 @@
     <string name="installer_am_unavailable">Asenna App Manager tai vaihda asennusohjelmaa.</string>
     <string name="pref_install_mode_am">AM-asennusohjelma.</string>
     <string name="account_anonymous_insecure">Anonyymi (epävarma)</string>
+    <string name="ui_accent_11">Vaaleansininen</string>
+    <string name="ui_accent_1">Sininen</string>
+    <string name="ui_accent_4">Kultainen</string>
+    <string name="ui_accent_10">Oranssi</string>
+    <string name="ui_accent_2">Fuksia</string>
+    <string name="ui_accent_3">Punainen</string>
+    <string name="ui_accent_5">Vihreä</string>
+    <string name="ui_accent_6">Violetti</string>
+    <string name="ui_accent_7">Harmaa</string>
+    <string name="ui_accent_8">Vaaleanpunainen</string>
+    <string name="ui_accent_9">Limetinvihreä</string>
+    <string name="ui_accent_12">Disskord-sininen</string>
+    <string name="ui_accent_13">Tummansininen</string>
 </resources>
