@@ -198,7 +198,7 @@
     <string name="pref_install_mode_services">Usługi Aurora</string>
     <string name="pref_install_mode_root">Instalator root</string>
     <string name="pref_install_mode_native">Instalator natywny</string>
-    <string name="pref_install_delete_title">Usuwaj APK po zainstalowaniu</string>
+    <string name="pref_install_delete_title">Usuń APK po zainstalowaniu</string>
     <string name="pref_install_delete_summary">Pliki APK będą domyślnie usuwane</string>
     <string name="pref_install_auto_title">Automatyczna instalacja plików APK po pobraniu</string>
     <string name="pref_install_auto_summary">Aplikacje będą instalowane natychmiast po zakończeniu pobierania</string>
@@ -206,7 +206,7 @@
     <string name="pref_filter_google_summary">Usuń wszystkie aplikacje Google z wyników wyszukiwania i kategorii aplikacji</string>
     <string name="pref_filter_fdroid_title">Filtruj aplikacje F-Droid</string>
     <string name="pref_filter_fdroid_summary">Usuń aplikacje F-Droid z listy aplikacji</string>
-    <string name="pref_downloader_external_desc">Zewnętrzna pamięć masowa służy do pobierania, eksportowania itp.</string>
+    <string name="pref_downloader_external_desc">Pamięć zewnętrzna służy do pobierania, eksportowania itp.</string>
     <string name="pref_downloader_external">Pamięć zewnętrzna</string>
     <string name="pref_downloader_active_summary">Maksymalna liczba aktywnych pobierań</string>
     <string name="pref_downloader_active_title">Aktywne pobieranie</string>
@@ -216,7 +216,7 @@
     <string name="pref_app_download">Pobieranie</string>
     <string name="pref_dialog_to_apply_restart">Zmiany zaczną obowiązywać po ponownym uruchomieniu aplikacji</string>
     <string name="pref_abandon_session_desc">Wyczyść porzucone lub oczekujące sesje instalacyjne</string>
-    <string name="pref_abandon_session">Wymuś wyczyszczenie sesji instalacyjnych</string>
+    <string name="pref_abandon_session">Wymuś czyszczenie sesji instalacyjnych</string>
     <string name="onboarding_permission_installer_desc">Zezwól na instalowanie aplikacji z Aurora Store</string>
     <string name="onboarding_permission_installer">Uprawnienia instalatora</string>
     <string name="onboarding_permission_esm_desc">Wymagany na urządzeniach z systemem Android R+, dodatkowy dostęp do pamięci zewnętrznej</string>
@@ -261,7 +261,7 @@
     <string name="installer_status_failure_aborted">Instalacja anulowana</string>
     <string name="installer_status_failure">Instalacja nieudana</string>
     <string name="installer_service_misconfigured">Skonfiguruj usługi Aurora i przyznaj wszystkie uprawnienia.</string>
-    <string name="installer_service_unavailable">Zainstaluj usługi Aurora w wersji 1.0.9 lub wyższej, lub zmień instalator.</string>
+    <string name="installer_service_unavailable">Zainstaluj usługi Aurora w wersji 1.0.9 lub wyższej lub zmień instalator.</string>
     <string name="installer_service_available">Usługi Aurora są dostępne i gotowe do instalacji.</string>
     <string name="installer_root_unavailable">Brak dostępu do roota. Przyznaj go lub zmień instalator.</string>
     <string name="installer_root_available">Przyznano dostęp do roota</string>
@@ -324,7 +324,7 @@
     <string name="pref_insecure_anonymous_title">Niezabezpieczona sesja anonimowa</string>
     <string name="pref_common_extra">Dodatkowe</string>
     <string name="pref_common_advance">Zaawansowane</string>
-    <string name="pref_filter_search_title">Używaj nietrwałego filtra wyszukiwania</string>
+    <string name="pref_filter_search_title">Użyj nietrwałego filtra wyszukiwania</string>
     <string name="pref_filter_search_summary">Filtry wyszukiwania są resetowane przy każdym wyszukiwaniu. Wyłącz, aby zapisywać filtry wyszukiwania</string>
     <string name="pref_ui_quick_exit_desc">Wyjdź z aplikacji przy pojedynczej akcji wstecz</string>
     <string name="pref_ui_no_for_you">Strony dla Ciebie</string>
@@ -347,8 +347,8 @@
     <string name="toast_rated_failed">Nie udało się przesłać oceny</string>
     <string name="toast_export_failed">Nie udało się wyeksportować konfiguracji urządzenia</string>
     <string name="toast_export_success">Wyeksportowano konfigurację urządzenia</string>
-    <string name="pref_updates_extended_desc">Wyszukuje również nowe wersje wyłączonych aplikacji</string>
-    <string name="pref_updates_extended">Rozszerzone aktualizacje</string>
+    <string name="pref_updates_extended_desc">Wyszukaj nowe wersje wyłączonych aplikacji</string>
+    <string name="pref_updates_extended">Rozszerz aktualizacje</string>
     <string name="app_updater_service_notif_text">Pobieranie aplikacji w tle włączone</string>
     <string name="app_updater_service_notif_title">Pobieranie aplikacji w tle</string>
     <string name="notification_channel_updater_service">Usługa pobierania aplikacji w tle</string>
