@@ -355,4 +355,17 @@
     <string name="account_anonymous_insecure">Анонимный (небезопасно)</string>
     <string name="installer_am_unavailable">Установите Менеджер Приложений или смените установщик.</string>
     <string name="pref_install_mode_am">Установщик МП</string>
+    <string name="ui_accent_1">Синий</string>
+    <string name="ui_accent_2">Фуксия</string>
+    <string name="ui_accent_3">Красный</string>
+    <string name="ui_accent_4">Золотистый</string>
+    <string name="ui_accent_5">Зелёный</string>
+    <string name="ui_accent_6">Фиолетовый</string>
+    <string name="ui_accent_7">Серый</string>
+    <string name="ui_accent_8">Розовый</string>
+    <string name="ui_accent_9">Лайм</string>
+    <string name="ui_accent_10">Оранжевый</string>
+    <string name="ui_accent_11">Светло-синий</string>
+    <string name="ui_accent_13">Тёмно-синий</string>
+    <string name="ui_accent_12">Насыщенно-синий</string>
 </resources>
