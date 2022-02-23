@@ -217,7 +217,7 @@
     <string name="pref_dialog_to_apply_restart">Zmiany zaczną obowiązywać po ponownym uruchomieniu aplikacji</string>
     <string name="pref_abandon_session_desc">Wyczyść porzucone lub oczekujące sesje instalacyjne</string>
     <string name="pref_abandon_session">Wymuś czyszczenie sesji instalacyjnych</string>
-    <string name="onboarding_permission_installer_desc">Zezwól na instalowanie aplikacji z Aurora Store</string>
+    <string name="onboarding_permission_installer_desc">Zezwól na instalację aplikacji z Aurora Store</string>
     <string name="onboarding_permission_installer">Uprawnienia instalatora</string>
     <string name="onboarding_permission_esm_desc">Wymagany na urządzeniach z systemem Android R+, dodatkowy dostęp do pamięci zewnętrznej</string>
     <string name="onboarding_permission_esm">Menedżer pamięci zewnętrznej</string>
