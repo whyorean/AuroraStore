@@ -354,4 +354,17 @@
     <string name="toast_page_unavailable">Pàgina de navigatzione no a disponimentu</string>
     <string name="toast_export_success">Configuratzione de su dispositivu esportada</string>
     <string name="toast_export_failed">Esportatzione de sa configuratzione de su dispositivu fallida</string>
+    <string name="ui_accent_1">Biaitu</string>
+    <string name="ui_accent_3">Ruju</string>
+    <string name="ui_accent_4">Oro</string>
+    <string name="ui_accent_5">Birde</string>
+    <string name="ui_accent_6">Tanadu</string>
+    <string name="ui_accent_7">Murru</string>
+    <string name="ui_accent_8">Rosa</string>
+    <string name="ui_accent_9">Lime</string>
+    <string name="ui_accent_13">Asuletu</string>
+    <string name="ui_accent_10">Arantzu</string>
+    <string name="ui_accent_11">Biaitu craru</string>
+    <string name="ui_accent_12">Biaitu Disskord</string>
+    <string name="ui_accent_2">Frùsia</string>
 </resources>
