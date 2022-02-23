@@ -355,4 +355,17 @@
     <string name="pref_install_mode_am">AM 安装程序。</string>
     <string name="installer_am_unavailable">安装 App Manager 或更改安装程序。</string>
     <string name="account_anonymous_insecure">匿名（不安全）</string>
+    <string name="ui_accent_1">蓝色</string>
+    <string name="ui_accent_2">紫红</string>
+    <string name="ui_accent_4">金色</string>
+    <string name="ui_accent_5">绿色</string>
+    <string name="ui_accent_6">紫色</string>
+    <string name="ui_accent_7">灰色</string>
+    <string name="ui_accent_8">粉色</string>
+    <string name="ui_accent_9">青柠</string>
+    <string name="ui_accent_10">橙色</string>
+    <string name="ui_accent_3">红色</string>
+    <string name="ui_accent_11">淡蓝</string>
+    <string name="ui_accent_12">Disskord 蓝</string>
+    <string name="ui_accent_13">深蓝</string>
 </resources>
