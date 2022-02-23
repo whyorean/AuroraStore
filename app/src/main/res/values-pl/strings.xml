@@ -206,7 +206,7 @@
     <string name="pref_filter_google_summary">Usuń wszystkie aplikacje Google z wyników wyszukiwania i kategorii aplikacji</string>
     <string name="pref_filter_fdroid_title">Filtruj aplikacje F-Droid</string>
     <string name="pref_filter_fdroid_summary">Usuń aplikacje F-Droid z listy aplikacji</string>
-    <string name="pref_downloader_external_desc">Pamięć zewnętrzna służy do pobierania, eksportowania itp.</string>
+    <string name="pref_downloader_external_desc">Pamięć zewnętrzna jest używana do pobierania, eksportowania itp.</string>
     <string name="pref_downloader_external">Pamięć zewnętrzna</string>
     <string name="pref_downloader_active_summary">Maksymalna liczba aktywnych pobierań</string>
     <string name="pref_downloader_active_title">Aktywne pobieranie</string>
@@ -261,7 +261,7 @@
     <string name="installer_status_failure_aborted">Instalacja anulowana</string>
     <string name="installer_status_failure">Instalacja nieudana</string>
     <string name="installer_service_misconfigured">Skonfiguruj usługi Aurora i przyznaj wszystkie uprawnienia.</string>
-    <string name="installer_service_unavailable">Zainstaluj usługi Aurora w wersji 1.0.9 lub wyższej lub zmień instalator.</string>
+    <string name="installer_service_unavailable">Zainstaluj usługi Aurora w wersji 1.0.9 lub wyższej albo zmień instalator.</string>
     <string name="installer_service_available">Usługi Aurora są dostępne i gotowe do instalacji.</string>
     <string name="installer_root_unavailable">Brak dostępu do roota. Przyznaj go lub zmień instalator.</string>
     <string name="installer_root_available">Przyznano dostęp do roota</string>
