@@ -11,7 +11,7 @@
     <string name="details_changelog_unavailable">Nhật kí thay đổi không được cung cấp</string>
     <string name="details_changelog">Nhật kí thay đổi</string>
     <string name="details_beta_delay">Việc tham gia sẽ tốn một chút thời gian, bạn có thể kiểm tra tình trạng sau.</string>
-    <string name="details_beta_description">Bạn sẽ nhận được các tính năng mới và lỗi trước bản chính thức. Phản hồi cho nhà phát triển để giúp họ cải thiện.</string>
+    <string name="details_beta_description">Bạn sẽ nhận được các tính năng mới và cả lỗi trước bản chính thức. Phản hồi cho nhà phát triển để giúp họ cải thiện.</string>
     <string name="details_beta_available">Tham gia chương trình beta\?</string>
     <string name="details_beta_subscribed">Bạn là một người thử nghiệm beta</string>
     <string name="details_beta">Chương trình beta</string>
@@ -25,7 +25,7 @@
     <string name="action_uninstall">Gỡ cài đặt</string>
     <string name="action_try_later">Thử lại sau</string>
     <string name="action_submit">Gửi</string>
-    <string name="action_spoofed">Che giấu</string>
+    <string name="action_spoofed">Giả mạo</string>
     <string name="action_skip">Bỏ qua</string>
     <string name="action_sign_up">Đăng kí</string>
     <string name="action_sign_in">Đăng nhập</string>
@@ -130,7 +130,7 @@
     <string name="action_later">Để sau</string>
     <string name="action_clear_restart">Làm sạch dữ liệu</string>
     <string name="toast_purchase_blocked">Mua ứng dụng không khả dụng trên tài khoản Ẩn danh.</string>
-    <string name="toast_spoof_applied">Đã áp dụng che giấu thiết bị.</string>
+    <string name="toast_spoof_applied">Đã áp dụng giả mạo thiết bị.</string>
     <string name="toast_permission_granted">Đã cấp quyền</string>
     <string name="toast_developer_setting_failed">Bật cài đặt cho nhà phát triển từ cài đặt thiết bị để mở nó.</string>
     <string name="toast_clipboard_copied">Đã chép vào bộ nhớ tạm</string>
@@ -141,7 +141,7 @@
     <string name="toast_anonymous_restriction">Không khả dụng trên tài khoản ẩn danh</string>
     <string name="toast_abandon_sessions">Các phiên cài đặt cũ đã bị bỏ</string>
     <string name="title_updates">Cập nhật</string>
-    <string name="title_spoof_manager">Trình quản lý che giấu</string>
+    <string name="title_spoof_manager">Trình quản lý giả mạo</string>
     <string name="title_settings">Cài đặt</string>
     <string name="title_purchase_history">Lịch sử giao dịch</string>
     <string name="title_no_network">Không có mạng</string>
@@ -171,7 +171,7 @@
     <string name="tab_editor_choice">Lựa chọn của biên tập viên</string>
     <string name="tab_categories">Thể loại</string>
     <string name="insecure_anonymous_apply">Đảm bảo bạn đã đăng nhập lại và khởi động lại ứng dụng để áp dụng các thay đổi.</string>
-    <string name="spoof_apply">Hãy chắc rằng bạn đã đăng nhập lại để áp dụng sự che giấu</string>
+    <string name="spoof_apply">Hãy chắc rằng bạn đã đăng nhập lại để áp dụng sự giả mạo</string>
     <string name="purchase_session_expired">Phiên đã hết hạn, đăng nhập lại để có phiên mới.</string>
     <string name="purchase_no_file">Không thể lấy được tệp</string>
     <string name="purchase_not_found">Không tìm thấy ứng dụng</string>
@@ -235,7 +235,7 @@
     <string name="device_miui_description">Vui lòng tắt tối ưu hóa MIUI để có thể cài đặt, nếu không, bạn có thể chọn trình cài đặt Root hoặc Trình cài đặt dịch vụ.</string>
     <string name="device_miui_subtitle">Trình cài đặt phiên không thể cài đặt ứng dụng do có Tối ưu hóa MIUI.</string>
     <string name="device_miui_title">Đã phát hiện MIUI!</string>
-    <string name="device_huawei_description">Chúng tôi đề xuất bạn sử dụng che giấu thiết bị trong trường hợp bạn đang dùng Huawei. Bạn có muốn áp dụng che giấu ngay bây giờ\?</string>
+    <string name="device_huawei_description">Chúng tôi đề xuất bạn sử dụng giả mạo thiết bị trong trường hợp bạn đang dùng Huawei. Bạn có muốn áp dụng giả mạo ngay bây giờ\?</string>
     <string name="onboarding_theme_select">Chọn những gì bạn thích</string>
     <string name="onboarding_permission_select">Aurora Store yêu cầu các quyền sau</string>
     <string name="onboarding_installer_select">Chọn trình cài đặt tương thích</string>
