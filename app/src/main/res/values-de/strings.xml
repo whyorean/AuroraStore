@@ -108,7 +108,7 @@
     <string name="toast_apk_blacklisted">Auf der Sperrliste</string>
     <string name="toast_anonymous_restriction">Bei anonymen Konten nicht verfügbar</string>
     <string name="toast_abandon_sessions">Ausstehende Installationen beendet</string>
-    <string name="title_updates">Aktualisierungen</string>
+    <string name="title_updates">Updates</string>
     <string name="title_spoof_manager">Vortäuschungen</string>
     <string name="title_settings">Einstellungen</string>
     <string name="title_purchase_history">Kaufhistorie</string>
