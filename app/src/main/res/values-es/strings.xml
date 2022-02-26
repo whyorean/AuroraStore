@@ -362,4 +362,10 @@
     <string name="ui_accent_11">Azul claro</string>
     <string name="ui_accent_12">Azul Disskord</string>
     <string name="ui_accent_7">Gris</string>
+    <string name="ui_accent_2">Fucsia</string>
+    <string name="ui_accent_4">Dorado</string>
+    <string name="ui_accent_6">Morado</string>
+    <string name="ui_accent_9">Lima</string>
+    <string name="ui_accent_10">Naranja</string>
+    <string name="ui_accent_13">Azul oscuro</string>
 </resources>
