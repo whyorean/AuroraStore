@@ -54,7 +54,7 @@ class PermissionsFragment : BaseFragment() {
     ): View {
         B = FragmentOnboardingPermissionsBinding.bind(
             inflater.inflate(
-                R.layout.fragment_onboarding_installer,
+                R.layout.fragment_onboarding_permissions,
                 container,
                 false
             )
