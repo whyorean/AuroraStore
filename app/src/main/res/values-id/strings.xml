@@ -355,4 +355,17 @@
     <string name="pref_install_mode_am">Pemasang AM.</string>
     <string name="account_anonymous_insecure">Anonim (tidak aman)</string>
     <string name="installer_am_unavailable">Pasang Manajer Aplikasi atau ubah pemasang.</string>
+    <string name="ui_accent_1">Biru</string>
+    <string name="ui_accent_3">Merah</string>
+    <string name="ui_accent_4">Emas</string>
+    <string name="ui_accent_5">Hijau</string>
+    <string name="ui_accent_6">Ungu</string>
+    <string name="ui_accent_7">Abu-Abu</string>
+    <string name="ui_accent_8">Merah Muda</string>
+    <string name="ui_accent_10">Jingga</string>
+    <string name="ui_accent_11">Biru Muda</string>
+    <string name="ui_accent_12">Biru Disskord</string>
+    <string name="ui_accent_13">Biru Laut Tua</string>
+    <string name="ui_accent_2">Fuchsia</string>
+    <string name="ui_accent_9">Jeruk nipis</string>
 </resources>

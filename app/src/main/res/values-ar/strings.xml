@@ -355,4 +355,17 @@
     <string name="installer_am_unavailable">قم بتثبيت مدير التطبيقات أو تغيير المثبت.</string>
     <string name="pref_install_mode_am">AM المثبت.</string>
     <string name="account_anonymous_insecure">مجهول (غير آمن)</string>
+    <string name="ui_accent_4">ذهبي</string>
+    <string name="ui_accent_5">أخضر</string>
+    <string name="ui_accent_13">أزرق عميق</string>
+    <string name="ui_accent_12">الازرق</string>
+    <string name="ui_accent_1">أزرق</string>
+    <string name="ui_accent_2">فوشيا</string>
+    <string name="ui_accent_3">أحمر</string>
+    <string name="ui_accent_6">بنفسجي</string>
+    <string name="ui_accent_7">رمادي</string>
+    <string name="ui_accent_8">وردي</string>
+    <string name="ui_accent_9">جير</string>
+    <string name="ui_accent_10">برتقالي</string>
+    <string name="ui_accent_11">أزرق فاتح</string>
 </resources>

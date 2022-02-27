@@ -355,4 +355,17 @@
     <string name="installer_am_unavailable">App Manager kurun veya kurucuyu değiştirin.</string>
     <string name="pref_install_mode_am">AM kurucu.</string>
     <string name="account_anonymous_insecure">Anonim (güvenli değil)</string>
+    <string name="ui_accent_1">Mavi</string>
+    <string name="ui_accent_2">Fuşya</string>
+    <string name="ui_accent_3">Kırmızı</string>
+    <string name="ui_accent_4">Altın</string>
+    <string name="ui_accent_5">Yeşil</string>
+    <string name="ui_accent_6">Mor</string>
+    <string name="ui_accent_7">Gri</string>
+    <string name="ui_accent_8">Pembe</string>
+    <string name="ui_accent_9">Kireç</string>
+    <string name="ui_accent_11">Açık mavi</string>
+    <string name="ui_accent_10">Turuncu</string>
+    <string name="ui_accent_12">Disskord mavisi</string>
+    <string name="ui_accent_13">Koyu mavi</string>
 </resources>

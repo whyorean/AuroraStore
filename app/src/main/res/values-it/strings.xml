@@ -355,4 +355,17 @@
     <string name="pref_install_mode_am">Installatore AM.</string>
     <string name="account_anonymous_insecure">Anonimo (non sicuro)</string>
     <string name="installer_am_unavailable">Installa App Manager o cambia il programma di installazione.</string>
+    <string name="ui_accent_1">Blu</string>
+    <string name="ui_accent_8">Rosa</string>
+    <string name="ui_accent_9">Verde limone</string>
+    <string name="ui_accent_10">Arancione</string>
+    <string name="ui_accent_11">Azzurro</string>
+    <string name="ui_accent_12">Blu Disskord</string>
+    <string name="ui_accent_13">Blu scuro</string>
+    <string name="ui_accent_3">Rosso</string>
+    <string name="ui_accent_6">Viola</string>
+    <string name="ui_accent_5">Verde</string>
+    <string name="ui_accent_7">Grigio</string>
+    <string name="ui_accent_2">Fucsia</string>
+    <string name="ui_accent_4">Dorato</string>
 </resources>

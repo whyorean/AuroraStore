@@ -242,7 +242,7 @@
     <string name="pref_ui_theme_system">Задано системой</string>
     <string name="pref_ui_theme_dark_x">Тёмная X</string>
     <string name="pref_ui_theme_dark">Тёмная</string>
-    <string name="pref_ui_theme_black">Черная</string>
+    <string name="pref_ui_theme_black">Чёрная</string>
     <string name="pref_ui_theme_light">Светлая</string>
     <string name="pref_ui_theme_darkord">Darkоrd</string>
     <string name="pref_ui_accent_title">Акцент</string>
@@ -349,10 +349,23 @@
     <string name="toast_export_success">Конфигурация устройства успешно экспортирована</string>
     <string name="pref_updates_extended_desc">Проверять наличие обновлений для отключённых приложений</string>
     <string name="pref_updates_extended">Расширенное обновление</string>
-    <string name="app_updater_service_notif_text">Используется для загрузки приложения в фоне</string>
+    <string name="app_updater_service_notif_text">Позволяет загружать приложения в фоновом режиме</string>
     <string name="app_updater_service_notif_title">Фоновая загрузка приложений</string>
     <string name="notification_channel_updater_service">Служба фоновой загрузки приложений</string>
     <string name="account_anonymous_insecure">Анонимный (небезопасно)</string>
     <string name="installer_am_unavailable">Установите Менеджер Приложений или смените установщик.</string>
     <string name="pref_install_mode_am">Установщик МП</string>
+    <string name="ui_accent_1">Синий</string>
+    <string name="ui_accent_2">Пурпурный</string>
+    <string name="ui_accent_3">Красный</string>
+    <string name="ui_accent_4">Золотой</string>
+    <string name="ui_accent_5">Зелёный</string>
+    <string name="ui_accent_6">Фиолетовый</string>
+    <string name="ui_accent_7">Серый</string>
+    <string name="ui_accent_8">Розовый</string>
+    <string name="ui_accent_9">Лайм</string>
+    <string name="ui_accent_10">Оранжевый</string>
+    <string name="ui_accent_11">Светло-синий</string>
+    <string name="ui_accent_13">Тёмно-синий</string>
+    <string name="ui_accent_12">Насыщенно-синий</string>
 </resources>
