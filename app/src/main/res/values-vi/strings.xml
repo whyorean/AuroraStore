@@ -355,4 +355,17 @@
     <string name="account_anonymous_insecure">Ẩn danh (không bảo mật)</string>
     <string name="pref_install_mode_am">Trình cài đặt AM.</string>
     <string name="installer_am_unavailable">Hãy cài đặt App Manager hoặc đổi trình cài đặt.</string>
+    <string name="ui_accent_1">Xanh lam</string>
+    <string name="ui_accent_3">Đỏ</string>
+    <string name="ui_accent_4">Vàng</string>
+    <string name="ui_accent_5">Xanh lá</string>
+    <string name="ui_accent_2">Hoa vân anh</string>
+    <string name="ui_accent_6">Tím</string>
+    <string name="ui_accent_7">Xám</string>
+    <string name="ui_accent_8">Hồng</string>
+    <string name="ui_accent_9">Vàng chanh</string>
+    <string name="ui_accent_10">Cam</string>
+    <string name="ui_accent_11">Xanh lam nhạt</string>
+    <string name="ui_accent_12">Xanh lam Disskord</string>
+    <string name="ui_accent_13">Xanh lam đậm</string>
 </resources>
