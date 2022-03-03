@@ -161,7 +161,7 @@
     <string name="toast_rated_failed">மதிப்பீட்டைச் சமர்ப்பிக்க முடியவில்லை</string>
     <string name="toast_apk_blacklisted">கரும்பட்டியலிடப்பட்டது</string>
     <string name="toast_manual_unavailable">நீங்கள் கோரும் பதிப்புக் குறியீடு கிடைக்கவில்லை.</string>
-    <string name="toast_rated_success">மதிப்பிடப்பட்டது</string>
+    <string name="toast_rated_success">தரமிடப்பட்ட</string>
     <string name="app_updater_service_notif_title">பின்னணி பயன்பாடு பதிவிறக்கம்</string>
     <string name="action_retry">மீண்டும் முயற்சிக்கவும்</string>
     <string name="action_save">சேமி</string>
@@ -277,7 +277,7 @@
     <string name="onboarding_permission_installer_desc">அரோரா ஸ்டோரிலிருந்து செயலிகள் நிறுவ அனுமதி</string>
     <string name="pref_abandon_session_desc">கைவிடப்பட்ட அல்லது நிலுவை நிறுவல் அமர்வுகளைத் துடை</string>
     <string name="pref_app_download">பதிவிறக்கங்கள்</string>
-    <string name="pref_common_advance">மேம்படுத்தபட்ட</string>
+    <string name="pref_common_advance">மேம்பட்ட</string>
     <string name="pref_common_extra">கூடுதல்</string>
     <string name="pref_dialog_to_apply_restart">நீங்கள் பயன்பாட்டை மறுதொடக்கம் செய்த பிறகு இந்த அமைப்பு பயன்படுத்தப்படும்</string>
     <string name="pref_downloader_active_title">செயலில் பதிவிறக்கம்</string>
@@ -288,7 +288,7 @@
     <string name="pref_install_auto_summary">பதிவிறக்கம் முடிந்ததும் பயன்பாடுகள் உடனடியாக நிறுவப்படும்</string>
     <string name="pref_install_delete_summary">APKகள் இயல்பாகவே அழிக்கப்படும்</string>
     <string name="pref_install_delete_title">APK நிறுவலுக்குப் பின் அழி</string>
-    <string name="pref_install_mode_native">சொந்த நிறுவி</string>
+    <string name="pref_install_mode_native">சாதன நிறுவி</string>
     <string name="pref_install_mode_root">ரூட் நிறுவி</string>
     <string name="pref_install_mode_session">அமர்வு நிறுவி</string>
     <string name="pref_install_mode_title">நிறுவல் பயன்முறை</string>
@@ -354,4 +354,17 @@
     <string name="download_clear_completed">துடைப்பு முடிந்தது</string>
     <string name="download_resume">மீண்டுந்தொடர்</string>
     <string name="pref_install_mode_am">AM நிறுவி.</string>
+    <string name="ui_accent_1">நீலம்</string>
+    <string name="ui_accent_3">சிவப்பு</string>
+    <string name="ui_accent_4">தங்கமான</string>
+    <string name="ui_accent_5">பச்சை</string>
+    <string name="ui_accent_6">கத்திரிப்பு</string>
+    <string name="ui_accent_7">சாம்பல்</string>
+    <string name="ui_accent_8">இளஞ்சிவப்பு</string>
+    <string name="ui_accent_9">சுண்ணாம்பு</string>
+    <string name="ui_accent_10">ஆரஞ்சு</string>
+    <string name="ui_accent_11">வெளிர் நீலம்</string>
+    <string name="ui_accent_12">டிசுகார்டு நீலம்</string>
+    <string name="ui_accent_13">கரு நீலம்</string>
+    <string name="ui_accent_2">ஃபியூசியா</string>
 </resources>
