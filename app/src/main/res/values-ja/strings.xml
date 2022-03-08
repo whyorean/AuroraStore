@@ -355,13 +355,13 @@
     <string name="account_anonymous_insecure">匿名(非セキュア)</string>
     <string name="installer_am_unavailable">App Managerをインストールするかインストーラを変更してください。</string>
     <string name="pref_install_mode_am">AMインストーラ</string>
-    <string name="ui_accent_6">パープル</string>
+    <string name="ui_accent_6">紫</string>
     <string name="ui_accent_1">ブルー</string>
     <string name="ui_accent_2">フクシャ</string>
-    <string name="ui_accent_3">レッド</string>
+    <string name="ui_accent_3">赤</string>
     <string name="ui_accent_4">ゴールド</string>
-    <string name="ui_accent_5">グリーン</string>
-    <string name="ui_accent_7">グレー</string>
+    <string name="ui_accent_5">緑</string>
+    <string name="ui_accent_7">灰色</string>
     <string name="ui_accent_8">ピンク</string>
     <string name="ui_accent_9">ライム</string>
     <string name="ui_accent_10">オレンジ</string>
