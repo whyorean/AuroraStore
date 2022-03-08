@@ -366,4 +366,6 @@
     <string name="account_anonymous_insecure">Anônimo (inseguro)</string>
     <string name="pref_install_mode_am">Instalador AM.</string>
     <string name="installer_am_unavailable">Instale o Gerenciador de Aplicativos ou mude o instalador.</string>
+    <string name="ui_accent_2">Magenta</string>
+    <string name="ui_accent_12">Azul disskord</string>
 </resources>
