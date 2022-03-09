@@ -358,4 +358,5 @@
     <string name="pref_abandon_session_desc">අතහැර දැමූ හෝ බලාසිටින ස්ථාපන වාර හිස් කරන්න</string>
     <string name="dialog_desc_native_split">නිසග ස්ථාපකය හරහා පොදි(පංගු) යෙදුම් ස්ථාපනය කිරීමට නොහැකිය. ස්ථාපකය මූල, සේවා හෝ වාරය ට වෙනස් කරන්න.</string>
     <string name="device_miui_extra">වෛකල්පිතව, ඔබට නිසග ස්ථාපකය තේරීමට හැකිය නමුත් ඊළඟට ඔබට පොදි(පංගු) APKs ස්ථානය කිරීමට නොහැකිය, තීරණය ඔබ සතුය.</string>
+    <string name="toast_page_unavailable">පිරික්සන ලද පිටුව නොතිබේ</string>
 </resources>
