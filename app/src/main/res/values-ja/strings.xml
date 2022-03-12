@@ -247,7 +247,7 @@
     <string name="title_spoof_manager">偽装マネージャ</string>
     <string name="title_settings">設定</string>
     <string name="title_purchase_history">購入履歴</string>
-    <string name="title_no_network">ネットワーク接続なし</string>
+    <string name="title_no_network">ネットワーク接続がありません</string>
     <string name="title_library">ライブラリ</string>
     <string name="title_language">言語</string>
     <string name="title_installer">アプリインストーラ</string>
