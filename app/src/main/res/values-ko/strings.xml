@@ -7,11 +7,11 @@
     <string name="action_back">뒤로</string>
     <string name="about_telegram">텔레그램</string>
     <string name="about_bhim">BHIM - UPI</string>
-    <string name="about_bhim_summary">UPI를 통해 기부</string>
+    <string name="about_bhim_summary">UPI을 통해서 후원하기</string>
     <string name="about_bitcoin_bch">비트코인 캐시</string>
-    <string name="about_bitcoin_bch_summary">비트코인 캐시(BCH)를 통한 기부</string>
+    <string name="about_bitcoin_bch_summary">비트코인 캐시(BCH)를 통해서 후원하기</string>
     <string name="about_bitcoin_btc">비트코인</string>
-    <string name="about_bitcoin_btc_summary">비트코인(BTC)을 통해 기부</string>
+    <string name="about_bitcoin_btc_summary">비트코인(BTC)을 통해서 후원하기</string>
     <string name="about_bitcoin_eth">이더리움</string>
     <string name="about_fdroid">F-드로이드</string>
     <string name="about_fdroid_summary">F-드로이드를 통해 오로라 스토어를 가져옵니다.</string>
@@ -140,7 +140,7 @@
     <string name="details_no_permission">사용 권한 없음</string>
     <string name="details_no_reviews">이용 가능한 리뷰가 없습니다</string>
     <string name="details_no_updates">사용할 수 있는 업데이트 없음</string>
-    <string name="details_no_whitelist">허용된 앱이 없습니다.</string>
+    <string name="details_no_whitelist">허용된 앱이 없습니다</string>
     <string name="details_others_think">다른 사람들이 앱에 대해 어떻게 생각하는지 확인</string>
     <string name="details_paid">유료</string>
     <string name="details_permission">권한</string>
@@ -154,4 +154,10 @@
     <string name="details_screenshots">스크린샷</string>
     <string name="details_think_this_app">이 앱에 대해 어떻게 생각하세요\?</string>
     <string name="download_cancel_all">모두 취소</string>
+    <string name="download_canceled">취소 된</string>
+    <string name="download_clear_completed">명확한 완료</string>
+    <string name="download_completed">완료</string>
+    <string name="download_deleted">삭제됨</string>
+    <string name="download_eta_calculating">계산중</string>
+    <string name="download_failed">다운로드 실패</string>
 </resources>
