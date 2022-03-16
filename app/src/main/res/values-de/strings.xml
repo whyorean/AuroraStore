@@ -61,7 +61,7 @@
     <string name="details_rate_stars_first">Gib zuerst eine Sternebewertung ab</string>
     <string name="details_privacy">Datenschutz</string>
     <string name="details_permission">Berechtigungen</string>
-    <string name="details_no_updates">Keine Aktualisierungen verfügbar</string>
+    <string name="details_no_updates">Keine Updates verfügbar</string>
     <string name="details_no_reviews">Keine Bewertungen verfügbar</string>
     <string name="details_no_permission">Keine Berechtigungen</string>
     <string name="details_no_previews">Keine Vorschau verfügbar</string>
@@ -74,8 +74,8 @@
     <string name="title_installer">Installationsmethode</string>
     <string name="title_apps_sale">Apps im Angebot</string>
     <string name="title_apps_library">Apps in der Bibliothek</string>
-    <string name="title_apps_games">Meine Apps &amp; Spiele</string>
-    <string name="title_apps">Apps</string>
+    <string name="title_apps_games">Meine Anwendungen und Spiele</string>
+    <string name="title_apps">Anwendungen</string>
     <string name="purchase_not_found">App nicht gefunden</string>
     <string name="purchase_unsupported">App wird nicht unterstützt</string>
     <string name="purchase_invalid">App nicht gekauft</string>
@@ -108,7 +108,7 @@
     <string name="toast_apk_blacklisted">Auf der Sperrliste</string>
     <string name="toast_anonymous_restriction">Bei anonymen Konten nicht verfügbar</string>
     <string name="toast_abandon_sessions">Ausstehende Installationen beendet</string>
-    <string name="title_updates">Aktualisierungen</string>
+    <string name="title_updates">Updates</string>
     <string name="title_spoof_manager">Vortäuschungen</string>
     <string name="title_settings">Einstellungen</string>
     <string name="title_purchase_history">Kaufhistorie</string>
@@ -156,7 +156,7 @@
     <string name="onboarding_permission_esm">Speicherverwaltung</string>
     <string name="onboarding_permission_esa_desc">Erforderlich zur Speicherung der heruntergeladenen Dateien (APKs und OBBs) sowie dem Export und Import von Gerätekonfigurationen</string>
     <string name="onboarding_permission_esa">Speicherzugriff</string>
-    <string name="onboarding_welcome_select">Wie geht\'s\?</string>
+    <string name="onboarding_welcome_select">Wie geht’s\?</string>
     <string name="onboarding_tos_error">Die Nutzungsbedingungen müssen zuerst als gelesen markiert werden.</string>
     <string name="onboarding_tos_confirmation">Ich habe die Nutzungsbedingungen des Aurora Stores gelesen.</string>
     <string name="onboarding_tos_desc">Um den Aurora Store nutzen zu können, lies dir bitte unsere Nutzungsbedingungen sorgfältig durch und akzeptiere diese.</string>
@@ -170,9 +170,9 @@
     <string name="notification_installation_auto">Zum Installieren anklicken</string>
     <string name="notification_channel_general">Allgemeine Benachrichtigung</string>
     <string name="notification_channel_alert">Kurznachricht</string>
-    <string name="list_update_all_txt_one">Aktualisierung verfügbar</string>
+    <string name="list_update_all_txt_one">Update verfügbar</string>
     <string name="dialog_desc_self_update">Möchtest du jetzt aktualisieren\?</string>
-    <string name="dialog_title_self_update">Neue Aktualisierung verfügbar</string>
+    <string name="dialog_title_self_update">Neues Update verfügbar</string>
     <string name="device_miui_extra">Optional kannst du die systemeigene Installation wählen, aber dann kannst du keine zusammengefassten/geteilten APK-Dateien installieren. Die Entscheidung liegt also bei dir.</string>
     <string name="device_miui_description">Bitte deaktiviere die MIUI-Optimierungen, um Installationen zu ermöglichen. Andernfalls kannst du die Root- oder Services-Installationsmethode wählen.</string>
     <string name="device_miui_subtitle">Die Sitzungs-Installation kann aufgrund von MIUI-Optimierungen keine Apps installieren.</string>
@@ -258,7 +258,7 @@
     <string name="action_wishlist_add">Zur Wunschliste hinzufügen</string>
     <string name="action_whitelist">Erlaubnisliste</string>
     <string name="action_wait">Warten</string>
-    <string name="action_updates">Aktualisierungen</string>
+    <string name="action_updates">Updates</string>
     <string name="action_update_all">Alle aktualisieren</string>
     <string name="action_update">Aktualisieren</string>
     <string name="action_previous">Vorherige</string>
@@ -349,7 +349,7 @@
     <string name="toast_export_failed">Gerätekonfiguration konnte nicht exportiert werden</string>
     <string name="toast_export_success">Gerätekonfiguration wurde exportiert</string>
     <string name="pref_updates_extended_desc">Auch deaktivierte Apps auf neue Versionen prüfen</string>
-    <string name="pref_updates_extended">Erweiterte Aktualisierungen</string>
+    <string name="pref_updates_extended">Erweiterte Updates</string>
     <string name="notification_channel_updater_service">Service zum Download von Apps im Hintergrund</string>
     <string name="app_updater_service_notif_title">Download von Apps im Hintergrund</string>
     <string name="app_updater_service_notif_text">Ermöglicht den Download von Apps im Hintergrund</string>
