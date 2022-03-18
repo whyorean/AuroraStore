@@ -102,8 +102,8 @@
     <string name="account_logged_out">Bạn đã đăng xuất</string>
     <string name="account_google">Google</string>
     <string name="account_anonymous">Ẩn danh</string>
-    <string name="about_xda_summary">Xem chủ đề XDA Aurora Store để thảo luận và đề xuất.</string>
-    <string name="about_xda">Chủ đề Phát triển</string>
+    <string name="about_xda_summary">Xem chủ đề XDA Aurora Store để thảo luận và góp ý.</string>
+    <string name="about_xda">Bài viết của Nhà phát triển</string>
     <string name="about_telegram_summary">Tham gia nhóm Hỗ trợ Aurora để thảo luận và đề xuất.</string>
     <string name="about_telegram">Telegram</string>
     <string name="about_paypal_summary">Ủng hộ qua PayPal</string>
@@ -306,7 +306,7 @@
     <string name="details_rate_stars_first">Nhập số sao trước</string>
     <string name="details_privacy">Riêng tư</string>
     <string name="details_permission">Quyền</string>
-    <string name="details_paid">Đã thanh toán</string>
+    <string name="details_paid">Trả phí</string>
     <string name="details_others_think">Xem người khác nghĩ thế nào về ứng dụng này</string>
     <string name="details_no_whitelist">Chưa đưa ứng dụng nào vào danh sách trắng</string>
     <string name="details_no_updates">Không có cập nhật mới</string>
