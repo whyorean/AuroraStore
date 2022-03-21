@@ -160,4 +160,14 @@
     <string name="download_deleted">삭제됨</string>
     <string name="download_eta_calculating">계산중</string>
     <string name="download_failed">다운로드 실패</string>
+    <string name="download_pause">중지</string>
+    <string name="download_force_clear_all">강제로 모두 지우기</string>
+    <string name="download_metadata">메타데이터 가져오기</string>
+    <string name="download_none">다운로드 없음</string>
+    <string name="download_pause_all">모두 일시 중지</string>
+    <string name="download_paused">일시 중지됨</string>
+    <string name="download_queued">대기 중</string>
+    <string name="download_progress">다운로드 중</string>
+    <string name="download_resume">재개</string>
+    <string name="download_resume_all">모두 재개</string>
 </resources>
