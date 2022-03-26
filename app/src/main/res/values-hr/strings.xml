@@ -355,4 +355,17 @@
     <string name="pref_install_mode_am">AM instalater.</string>
     <string name="account_anonymous_insecure">Anonimno (nesigurno)</string>
     <string name="installer_am_unavailable">Instaliraj App Manager ili promijeni instalacijski program.</string>
+    <string name="ui_accent_1">Plava</string>
+    <string name="ui_accent_4">Zlatna</string>
+    <string name="ui_accent_5">Zelena</string>
+    <string name="ui_accent_8">Ružičasta</string>
+    <string name="ui_accent_9">Limunasta</string>
+    <string name="ui_accent_10">Narančasta</string>
+    <string name="ui_accent_12">Diskord plava</string>
+    <string name="ui_accent_13">Tamnoplava</string>
+    <string name="ui_accent_2">Ružičasta</string>
+    <string name="ui_accent_3">Crvena</string>
+    <string name="ui_accent_6">Ljubičasta</string>
+    <string name="ui_accent_7">Siva</string>
+    <string name="ui_accent_11">Svjetloplava</string>
 </resources>
