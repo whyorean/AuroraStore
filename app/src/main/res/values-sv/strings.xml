@@ -339,4 +339,9 @@
     <string name="pref_common_extra">Extra</string>
     <string name="pref_install_mode_am">AM-installatör.</string>
     <string name="pref_abandon_session_desc">Ta bort övergivna eller väntande installationssessioner</string>
+    <string name="pref_install_mode_native">Systemspecifik installerare</string>
+    <string name="title_installer">App-installerare</string>
+    <string name="pref_install_profile_summary">Välj målprofilen som appar ska installeras till. Fungerar endast med installationsmetoden som root</string>
+    <string name="dialog_desc_native_split">Du kan inte installera medföljande (delade) appar via Systemspecifik installerare. Ändra installationsprogrammet till Session, Tjänster eller Root.</string>
+    <string name="spoof_apply">Se till att du loggar in igen för att verkställa fusket</string>
 </resources>
