@@ -43,7 +43,7 @@
     <string name="about_bitcoin_btc">Bitcoin</string>
     <string name="details_dev_website">Website</string>
     <string name="details_dev_email">E-Mail</string>
-    <string name="about_bitcoin_eth_summary">Per Ethereum spenden (ETH)</string>
+    <string name="about_bitcoin_eth_summary">Mit Ethereum spenden (ETH)</string>
     <string name="account_anonymous">Anonym</string>
     <string name="action_buy">Kaufen</string>
     <string name="action_blacklist_add">Zur Sperrliste hinzufügen</string>
@@ -52,9 +52,9 @@
     <string name="action_discard">Verwerfen</string>
     <string name="action_done">Fertig</string>
     <string name="about_gitlab_summary">Den Aurora Store-Quellcode von Aurora OSS bei GitLab herunterladen</string>
-    <string name="about_bitcoin_btc_summary">Per Bitcoin spenden (BTC)</string>
-    <string name="about_bitcoin_bch_summary">Per Bitcoin Cash spenden (BCH)</string>
-    <string name="about_bhim_summary">Per UPI spenden</string>
+    <string name="about_bitcoin_btc_summary">Mit Bitcoin spenden (BTC)</string>
+    <string name="about_bitcoin_bch_summary">Mit Bitcoin Cash spenden (BCH)</string>
+    <string name="about_bhim_summary">Mit UPI spenden</string>
     <string name="about_bhim">BHIM - UPI</string>
     <string name="details_think_this_app">Wie findest du diese App\?</string>
     <string name="details_others_think">Was andere über diese App denken</string>
@@ -108,7 +108,7 @@
     <string name="toast_apk_blacklisted">Auf der Sperrliste</string>
     <string name="toast_anonymous_restriction">Bei anonymen Konten nicht verfügbar</string>
     <string name="toast_abandon_sessions">Ausstehende Installationen beendet</string>
-    <string name="title_updates">Updates</string>
+    <string name="title_updates">Aktualisierungen</string>
     <string name="title_spoof_manager">Vortäuschungen</string>
     <string name="title_settings">Einstellungen</string>
     <string name="title_purchase_history">Kaufhistorie</string>
@@ -216,7 +216,7 @@
     <string name="exodus_powered">Bereitgestellt von Exodus</string>
     <string name="exodus_no_tracker">Enthält keine Tracker</string>
     <string name="exodus_no_report">Keine Berichte verfügbar</string>
-    <string name="download_speed_estimating">Geschwindigkeit wird ermittelt …</string>
+    <string name="download_speed_estimating">Schätzen</string>
     <string name="download_resume_all">Alle fortsetzen</string>
     <string name="download_resume">Fortsetzen</string>
     <string name="download_queued">In der Warteschlange</string>
@@ -228,7 +228,7 @@
     <string name="download_metadata">Metadaten werden geladen</string>
     <string name="download_force_clear_all">Alle löschen</string>
     <string name="download_failed">Download fehlgeschlagen</string>
-    <string name="download_eta_calculating">Übertragungsdauer wird berechnet …</string>
+    <string name="download_eta_calculating">Berechne</string>
     <string name="download_deleted">Gelöscht</string>
     <string name="download_completed">Heruntergeladen</string>
     <string name="download_clear_completed">Fertige löschen</string>
@@ -258,7 +258,7 @@
     <string name="action_wishlist_add">Zur Wunschliste hinzufügen</string>
     <string name="action_whitelist">Erlaubnisliste</string>
     <string name="action_wait">Warten</string>
-    <string name="action_updates">Updates</string>
+    <string name="action_updates">Aktualisierungen</string>
     <string name="action_update_all">Alle aktualisieren</string>
     <string name="action_update">Aktualisieren</string>
     <string name="action_previous">Vorherige</string>
@@ -303,7 +303,7 @@
     <string name="action_accept">Akzeptieren</string>
     <string name="account_login_using">Anmelden mit</string>
     <string name="account_logged_out">Du bist nicht angemeldet</string>
-    <string name="about_paypal_summary">Per PayPal spenden</string>
+    <string name="about_paypal_summary">Mit PayPal spenden</string>
     <string name="tab_top_grossing">Erfolgreich</string>
     <string name="tab_editor_choice">Auswahl der Redaktion</string>
     <string name="pref_ui_theme_title">Darstellung</string>
