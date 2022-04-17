@@ -174,7 +174,7 @@
     <string name="details_changelog">Novetats</string>
     <string name="details_changelog_unavailable">No s\'han proporcionat les novetats</string>
     <string name="details_contains_ads">Conté anuncis</string>
-    <string name="details_dependencies">Dependencies</string>
+    <string name="details_dependencies">Dependències</string>
     <string name="details_files">Fitxers</string>
     <string name="details_free">Gratuït</string>
     <string name="details_gsf_dependent">Requereix els serveis de Google (GSF)</string>
