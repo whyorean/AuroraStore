@@ -108,7 +108,7 @@
     <string name="toast_apk_blacklisted">Auf der Sperrliste</string>
     <string name="toast_anonymous_restriction">Bei anonymen Konten nicht verfügbar</string>
     <string name="toast_abandon_sessions">Ausstehende Installationen beendet</string>
-    <string name="title_updates">Aktualisierungen</string>
+    <string name="title_updates">Updates</string>
     <string name="title_spoof_manager">Vortäuschungen</string>
     <string name="title_settings">Einstellungen</string>
     <string name="title_purchase_history">Kaufhistorie</string>
@@ -216,7 +216,7 @@
     <string name="exodus_powered">Bereitgestellt von Exodus</string>
     <string name="exodus_no_tracker">Enthält keine Tracker</string>
     <string name="exodus_no_report">Keine Berichte verfügbar</string>
-    <string name="download_speed_estimating">Schätzen</string>
+    <string name="download_speed_estimating">Geschwindigkeit wird ermittelt …</string>
     <string name="download_resume_all">Alle fortsetzen</string>
     <string name="download_resume">Fortsetzen</string>
     <string name="download_queued">In der Warteschlange</string>
@@ -228,7 +228,7 @@
     <string name="download_metadata">Metadaten werden geladen</string>
     <string name="download_force_clear_all">Alle löschen</string>
     <string name="download_failed">Download fehlgeschlagen</string>
-    <string name="download_eta_calculating">Berechne</string>
+    <string name="download_eta_calculating">Übertragungsdauer wird berechnet …</string>
     <string name="download_deleted">Gelöscht</string>
     <string name="download_completed">Heruntergeladen</string>
     <string name="download_clear_completed">Fertige löschen</string>
@@ -258,7 +258,7 @@
     <string name="action_wishlist_add">Zur Wunschliste hinzufügen</string>
     <string name="action_whitelist">Erlaubnisliste</string>
     <string name="action_wait">Warten</string>
-    <string name="action_updates">Aktualisierungen</string>
+    <string name="action_updates">Updates</string>
     <string name="action_update_all">Alle aktualisieren</string>
     <string name="action_update">Aktualisieren</string>
     <string name="action_previous">Vorherige</string>
