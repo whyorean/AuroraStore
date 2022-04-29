@@ -30,7 +30,7 @@
     <string name="about_fdroid">F-Droid</string>
     <string name="about_bitcoin_eth">Ethereum</string>
     <string name="about_bitcoin_btc">Bitcoin</string>
-    <string name="about_bitcoin_bch">Pagamento em Bitcoin</string>
+    <string name="about_bitcoin_bch">Dinheiro em Bitcoin</string>
     <string name="about_bhim">BHIM - UPI</string>
     <string name="action_spoofed">Falsificar</string>
     <string name="action_ok">OK</string>
