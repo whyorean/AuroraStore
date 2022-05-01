@@ -38,7 +38,7 @@
     <string name="about_libera">Liberapay</string>
     <string name="about_gitlab">GitLab</string>
     <string name="about_bitcoin_eth">Ethereum</string>
-    <string name="about_fdroid_summary">Aurora Store über F-Droid herunterladen</string>
+    <string name="about_fdroid_summary">Aurora Store über F-Droid herunterladen.</string>
     <string name="about_fdroid">F-Droid</string>
     <string name="about_bitcoin_btc">Bitcoin</string>
     <string name="details_dev_website">Website</string>
@@ -51,7 +51,7 @@
     <string name="action_back">Zurück</string>
     <string name="action_discard">Verwerfen</string>
     <string name="action_done">Fertig</string>
-    <string name="about_gitlab_summary">Den Aurora Store-Quellcode von Aurora OSS bei GitLab herunterladen</string>
+    <string name="about_gitlab_summary">Den Aurora Store-Quellcode von Aurora OSS bei GitLab herunterladen.</string>
     <string name="about_bitcoin_btc_summary">Mit Bitcoin spenden (BTC)</string>
     <string name="about_bitcoin_bch_summary">Mit Bitcoin Cash spenden (BCH)</string>
     <string name="about_bhim_summary">Mit UPI spenden</string>
@@ -79,13 +79,13 @@
     <string name="purchase_not_found">App nicht gefunden</string>
     <string name="purchase_unsupported">App wird nicht unterstützt</string>
     <string name="purchase_invalid">App nicht gekauft</string>
-    <string name="pref_install_profile_summary">Wähle das Zielprofil aus, um Apps zu installieren. Dies funktioniert nur mit der Root-Installationsmethode.</string>
+    <string name="pref_install_profile_summary">Wähle das Zielprofil aus, um Apps zu installieren. Dies funktioniert nur mit der Root-Installationsmethode</string>
     <string name="pref_install_auto_summary">Apps werden sofort nach dem Download installiert</string>
     <string name="pref_filter_google_title">Google-Apps filtern</string>
     <string name="pref_filter_google_summary">Alle Google-Apps aus den Suchergebnissen und Kategorien entfernen</string>
     <string name="pref_filter_fdroid_title">F-Droid-Apps filtern</string>
     <string name="pref_filter_fdroid_summary">F-Droid-Apps in allen App-Listen ausblenden</string>
-    <string name="pref_dialog_to_apply_restart">Die Einstellung wird nach einem Neustart der App übernommen.</string>
+    <string name="pref_dialog_to_apply_restart">Die Einstellung wird nach einem Neustart der App übernommen</string>
     <string name="pref_app_download">Downloads</string>
     <string name="onboarding_permission_installer_desc">Erforderlich für die Installation von Apps aus dem Aurora Store</string>
     <string name="installer_status_failure_incompatible">Inkompatible App</string>
@@ -100,7 +100,7 @@
     <string name="action_filter_apply">Anwenden</string>
     <string name="action_favourites">Favoriten</string>
     <string name="action_apply">Anwenden</string>
-    <string name="toast_spoof_applied">Gerätevortäuschung angewendet</string>
+    <string name="toast_spoof_applied">Gerätevortäuschung angewendet.</string>
     <string name="toast_permission_granted">Berechtigung gewährt</string>
     <string name="toast_developer_setting_failed">Aktiviere die Entwickleroptionen in den Geräteeinstellungen, um sie zu öffnen.</string>
     <string name="toast_apk_copy_success">APK-Datei wurde exportiert</string>
@@ -130,7 +130,7 @@
     <string name="tab_top_charts">Bestenliste</string>
     <string name="tab_for_you">Für dich</string>
     <string name="tab_categories">Kategorien</string>
-    <string name="spoof_apply">Du musst dich neu anmelden, damit die Vortäuschung wirksam wird.</string>
+    <string name="spoof_apply">Du musst dich neu anmelden, damit die Vortäuschung wirksam wird</string>
     <string name="purchase_session_expired">Die Sitzung ist abgelaufen. Melde dich wieder an, um eine neue Sitzung zu starten.</string>
     <string name="purchase_no_file">Keine Dateien erhalten</string>
     <string name="purchase_failed">Download fehlgeschlagen</string>
@@ -147,14 +147,14 @@
     <string name="pref_install_delete_title">APK-Datei nach der Installation löschen</string>
     <string name="pref_install_delete_summary">APK-Dateien automatisch löschen</string>
     <string name="pref_install_auto_title">APK-Dateien nach dem Download automatisch installieren</string>
-    <string name="pref_downloader_external_desc">Externen Speicher für Download, Export usw. verwenden</string>
+    <string name="pref_downloader_external_desc">Externen Speicher für Download, Export usw. verwenden.</string>
     <string name="pref_downloader_active_title">Aktive Downloads</string>
     <string name="pref_downloader_active_summary">Maximale Anzahl gleichzeitiger Downloads</string>
     <string name="pref_abandon_session_desc">Abgebrochene oder ausstehende Installationen jetzt sofort beenden</string>
     <string name="pref_abandon_session">Beenden von Installationen erzwingen</string>
     <string name="onboarding_permission_esm_desc">Erforderlich für Geräte ab Android 11 (zusätzlich zum Speicherzugriff)</string>
     <string name="onboarding_permission_esm">Speicherverwaltung</string>
-    <string name="onboarding_permission_esa_desc">Erforderlich zur Speicherung der heruntergeladenen Dateien (APKs und OBBs) sowie dem Export und Import von Gerätekonfigurationen</string>
+    <string name="onboarding_permission_esa_desc">Erforderlich zur Speicherung der heruntergeladenen Dateien (APKs und OBBs) sowie dem Export und Import von Gerätekonfigurationen.</string>
     <string name="onboarding_permission_esa">Speicherzugriff</string>
     <string name="onboarding_welcome_select">Wie geht’s\?</string>
     <string name="onboarding_tos_error">Die Nutzungsbedingungen müssen zuerst als gelesen markiert werden.</string>
@@ -216,7 +216,7 @@
     <string name="exodus_powered">Bereitgestellt von Exodus</string>
     <string name="exodus_no_tracker">Enthält keine Tracker</string>
     <string name="exodus_no_report">Keine Berichte verfügbar</string>
-    <string name="download_speed_estimating">Geschwindigkeit wird ermittelt …</string>
+    <string name="download_speed_estimating">Geschwindigkeit wird ermittelt</string>
     <string name="download_resume_all">Alle fortsetzen</string>
     <string name="download_resume">Fortsetzen</string>
     <string name="download_queued">In der Warteschlange</string>
@@ -228,7 +228,7 @@
     <string name="download_metadata">Metadaten werden geladen</string>
     <string name="download_force_clear_all">Alle löschen</string>
     <string name="download_failed">Download fehlgeschlagen</string>
-    <string name="download_eta_calculating">Übertragungsdauer wird berechnet …</string>
+    <string name="download_eta_calculating">Übertragungsdauer wird berechnet</string>
     <string name="download_deleted">Gelöscht</string>
     <string name="download_completed">Heruntergeladen</string>
     <string name="download_clear_completed">Fertige löschen</string>
@@ -268,9 +268,9 @@
     <string name="action_get_local_apk">App-Paket speichern</string>
     <string name="action_download">Download</string>
     <string name="action_ask">Fragen</string>
-    <string name="about_xda_summary">Den Aurora Store-XDA-Themenbereich für Diskussionen oder Vorschläge besuchen</string>
+    <string name="about_xda_summary">Den Aurora Store-XDA-Themenbereich für Diskussionen oder Vorschläge besuchen.</string>
     <string name="about_xda">XDA Entwickler-Forum</string>
-    <string name="about_telegram_summary">Der Aurora-Support-Gruppe für Diskussionen oder Vorschläge beitreten</string>
+    <string name="about_telegram_summary">Der Aurora-Support-Gruppe für Diskussionen oder Vorschläge beitreten.</string>
     <string name="action_uninstall">Deinstallieren</string>
     <string name="action_try_later">Später versuchen</string>
     <string name="action_submit">Absenden</string>
@@ -317,7 +317,7 @@
     <string name="onboarding_permission_installer">Installation unbekannter Apps</string>
     <string name="onboarding_title_installer">Installationsmethode</string>
     <string name="onboarding_title_accent">Akzentfarbe</string>
-    <string name="toast_purchase_blocked">App-Käufe sind für anonyme Konten nicht verfügbar</string>
+    <string name="toast_purchase_blocked">App-Käufe sind für anonyme Konten nicht verfügbar.</string>
     <string name="insecure_anonymous_apply">Du musst dich neu anmelden und die App neu starten, um die Änderungen zu übernehmen.</string>
     <string name="pref_network_title">Netzwerk</string>
     <string name="pref_insecure_anonymous_title">Unsichere anonyme Sitzungen</string>
@@ -331,13 +331,12 @@
     <string name="pref_ui_layout_tab">Vorgabe für die App-Anzeige</string>
     <string name="pref_ui_layout">Seitengestaltung</string>
     <string name="pref_filter_search_title">Nichtbeständigen Suchfilter verwenden</string>
-    <string name="pref_filter_search_summary">Suchfilter bei jeder Suche zurücksetzen
-\n(Suchfilter bleibt bei ausgeschalteter Option erhalten)</string>
+    <string name="pref_filter_search_summary">Suchfilter bei jeder Suche zurücksetzen. (Suchfilter bleibt bei ausgeschalteter Option erhalten)</string>
     <string name="pref_common_extra">Extras</string>
     <string name="pref_common_advance">Erweitert</string>
     <string name="details_no_app_match">Keine passende App gefunden</string>
-    <string name="toast_manual_available">Angeforderte Version ist verfügbar und wird jetzt heruntergeladen</string>
-    <string name="toast_manual_unavailable">Angeforderte Version ist nicht verfügbar</string>
+    <string name="toast_manual_available">Angeforderte Version ist verfügbar und wird jetzt heruntergeladen.</string>
+    <string name="toast_manual_unavailable">Angeforderte Version ist nicht verfügbar.</string>
     <string name="title_manual_download">Version auswählen</string>
     <string name="action_check">Prüfen</string>
     <string name="dialog_desc_native_split">Zusammengefasste/geteilte APK-Dateien können nicht mit der systemeigenen Installation installiert werden. Ändere die Installationsmethode zu Sitzung, Services oder Root.</string>
@@ -355,7 +354,7 @@
     <string name="app_updater_service_notif_text">Ermöglicht den Download von Apps im Hintergrund</string>
     <string name="account_anonymous_insecure">Anonym (unsicher)</string>
     <string name="installer_am_unavailable">Diese Methode ist für Installationen nicht verfügbar. Installiere »App Manager« oder ändere die Installationsmethode.</string>
-    <string name="pref_install_mode_am">AM-Installation</string>
+    <string name="pref_install_mode_am">AM-Installation.</string>
     <string name="ui_accent_1">Blau</string>
     <string name="ui_accent_2">Magenta</string>
     <string name="ui_accent_3">Rot</string>
