@@ -100,7 +100,7 @@
     <string name="download_none">ダウンロードなし</string>
     <string name="download_metadata">メタデータ取得中</string>
     <string name="download_force_clear_all">全て強制クリア</string>
-    <string name="download_failed">ダウンロード失敗</string>
+    <string name="download_failed">ダウンロードに失敗しました</string>
     <string name="download_eta_calculating">計算中</string>
     <string name="download_deleted">削除済み</string>
     <string name="download_completed">ダウンロード済み</string>
@@ -120,7 +120,7 @@
     <string name="details_paid">有料</string>
     <string name="details_others_think">他の人の意見を見る</string>
     <string name="details_no_whitelist">ホワイトリストアプリがありません</string>
-    <string name="details_no_updates">更新がありません</string>
+    <string name="details_no_updates">更新はありません</string>
     <string name="details_no_reviews">レビューがありません</string>
     <string name="details_no_permission">権限がありません</string>
     <string name="details_no_previews">プレビューがありません</string>
@@ -144,7 +144,7 @@
     <string name="details_beta_delay">登録には時間がかかる場合があります。後で状態を確認できます。</string>
     <string name="details_beta_description">正式版公開前の新機能やバグがあります。改善のため開発者へフィードバックを送ってください。</string>
     <string name="details_beta">ベータプログラム</string>
-    <string name="details_beta_available">ベータプログラムに参加？</string>
+    <string name="details_beta_available">ベータプログラムに参加しますか？</string>
     <string name="details_beta_subscribed">あなたはベータテスターです</string>
     <string name="action_wishlist_add">ウィッシュリストに追加</string>
     <string name="action_whitelist">ホワイトリスト</string>
@@ -177,7 +177,7 @@
     <string name="action_open">開く</string>
     <string name="action_more">さらに</string>
     <string name="action_ok">OK</string>
-    <string name="action_next">進む</string>
+    <string name="action_next">次へ</string>
     <string name="action_manual">手動ダウンロード</string>
     <string name="action_logout">ログアウト</string>
     <string name="action_logging_in">ログイン中</string>
@@ -247,7 +247,7 @@
     <string name="title_spoof_manager">偽装マネージャ</string>
     <string name="title_settings">設定</string>
     <string name="title_purchase_history">購入履歴</string>
-    <string name="title_no_network">ネットワーク接続なし</string>
+    <string name="title_no_network">ネットワーク接続がありません</string>
     <string name="title_library">ライブラリ</string>
     <string name="title_language">言語</string>
     <string name="title_installer">アプリインストーラ</string>
@@ -355,4 +355,17 @@
     <string name="account_anonymous_insecure">匿名(非セキュア)</string>
     <string name="installer_am_unavailable">App Managerをインストールするかインストーラを変更してください。</string>
     <string name="pref_install_mode_am">AMインストーラ</string>
+    <string name="ui_accent_6">紫</string>
+    <string name="ui_accent_1">ブルー</string>
+    <string name="ui_accent_2">フクシャ</string>
+    <string name="ui_accent_3">赤</string>
+    <string name="ui_accent_4">ゴールド</string>
+    <string name="ui_accent_5">緑</string>
+    <string name="ui_accent_7">灰色</string>
+    <string name="ui_accent_8">ピンク</string>
+    <string name="ui_accent_9">ライム</string>
+    <string name="ui_accent_10">オレンジ</string>
+    <string name="ui_accent_12">Disskordブルー</string>
+    <string name="ui_accent_13">ディープブルー</string>
+    <string name="ui_accent_11">ライトブルー</string>
 </resources>
