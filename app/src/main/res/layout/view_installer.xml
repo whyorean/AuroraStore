@@ -50,8 +50,8 @@
         android:layout_marginTop="@dimen/margin_xxsmall"
         android:textSize="12sp" />
 
-    <com.google.android.material.checkbox.MaterialCheckBox
-        android:id="@+id/checkbox"
+    <com.google.android.material.radiobutton.MaterialRadioButton
+        android:id="@+id/radiobutton"
         android:layout_width="@dimen/icon_size_category"
         android:layout_height="@dimen/icon_size_category"
         android:layout_alignParentEnd="true"

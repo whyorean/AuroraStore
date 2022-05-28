@@ -69,12 +69,12 @@ class InstallerView : RelativeLayout {
 
     @ModelProp
     fun markChecked(isChecked: Boolean) {
-        B.checkbox.isChecked = isChecked
+        B.radiobutton.isChecked = isChecked
     }
 
     @CallbackProp
     fun checked(onCheckedChangeListener: CompoundButton.OnCheckedChangeListener?) {
-        B.checkbox.setOnCheckedChangeListener(onCheckedChangeListener)
+        B.radiobutton.setOnCheckedChangeListener(onCheckedChangeListener)
     }
 
     @CallbackProp
