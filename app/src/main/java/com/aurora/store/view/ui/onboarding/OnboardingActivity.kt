@@ -136,6 +136,7 @@ class OnboardingActivity : BaseActivity() {
 
     fun refreshButtonState() {
         B.btnBackward.isEnabled = lastPosition != 0
+        B.btnForward.isEnabled = lastPosition != 4
         if (lastPosition == 4) {
             B.btnForward.text = getString(R.string.action_finish)
             B.btnForward.setOnClickListener {
