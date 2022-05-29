@@ -203,7 +203,7 @@
     <string name="download_pause">Dayandır</string>
     <string name="download_pause_all">Hamısını dayandırın</string>
     <string name="download_paused">Dayandırıldı</string>
-    <string name="download_progress">Endirilir...</string>
+    <string name="download_progress">Endirilir</string>
     <string name="download_queued">Növbəyə salındı</string>
     <string name="download_resume">Davam etdir</string>
     <string name="download_resume_all">Hamısını davam etdirin</string>
