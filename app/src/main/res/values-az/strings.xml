@@ -101,7 +101,7 @@
     <string name="pref_updates_extended">Genişləndirilmiş yeniləmələr</string>
     <string name="pref_ui_no_for_you">Sizə Özəl Səhifələr</string>
     <string name="insecure_anonymous_apply">Dəyişiklikləri tətbiq etmək üçün yenidən daxil olduğunuzdan və tətbiqi yenidən başlatdığınızdan əmin olun.</string>
-    <string name="tab_trending">Trenddə olan</string>
+    <string name="tab_trending">Populyar</string>
     <string name="tab_top_paid">Ən yüksək ödənişli</string>
     <string name="title_games">Oyunlar</string>
     <string name="title_no_network">Şəbəkə yoxdur</string>
@@ -252,7 +252,7 @@
     <string name="onboarding_permission_select">Aurora Mağazası aşağıdakı icazələri tələb edir</string>
     <string name="onboarding_theme_select">Nəyi bəyəndiyinizi seçin</string>
     <string name="onboarding_title_theme">Mövzular</string>
-    <string name="onboarding_title_welcome">Xoş gəldiniz</string>
+    <string name="onboarding_title_welcome">Xoş Gəldiniz</string>
     <string name="onboarding_tos">Xidmət şərtləri</string>
     <string name="onboarding_tos_desc">Lütfən, Xidmət Şərtlərimizi oxuyun və Aurora Mağazasından istifadə etmək üçün onu qəbul edin.</string>
     <string name="onboarding_tos_error">Əvvəlcə XŞ-imizi oxunmuş kimi qeyd etməlisiniz.</string>
@@ -330,7 +330,7 @@
     <string name="title_language">Dil</string>
     <string name="title_library">Kitabxana</string>
     <string name="title_purchase_history">Alış tarixi</string>
-    <string name="title_spoof_manager">Hiylə meneceri</string>
+    <string name="title_spoof_manager">Aldatma meneceri</string>
     <string name="title_updates">Yeniləmələr</string>
     <string name="title_manual_download">Manual yükləmə</string>
     <string name="toast_abandon_sessions">Köhnə quraşdırma hesablardan çıxıldı</string>
