@@ -97,14 +97,14 @@
     <string name="filter_review_four">Четыре</string>
     <string name="filter_review_five">Пять</string>
     <string name="filter_review_all">Все</string>
-    <string name="exodus_view_report">Посмотреть отчет</string>
+    <string name="exodus_view_report">Посмотреть отчёт</string>
     <string name="exodus_view_more">Посмотреть</string>
     <string name="exodus_title">Защита Aurora</string>
     <string name="exodus_substring">найден(-ы) трекер(-ы)</string>
     <string name="exodus_progress">Проверка трекеров…</string>
     <string name="exodus_powered">При поддержке Exodus</string>
     <string name="exodus_no_tracker">Не содержит трекеров</string>
-    <string name="exodus_no_report">Нет доступных отчетов</string>
+    <string name="exodus_no_report">Нет доступных отчётов</string>
     <string name="download_speed_estimating">Оценка</string>
     <string name="download_pause">Приостановить</string>
     <string name="download_paused">Приостановлено</string>
