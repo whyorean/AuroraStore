@@ -11,8 +11,8 @@
     <string name="action_whitelist">Lista de permissões</string>
     <string name="title_blacklist_manager">Gerenciar lista de bloqueio</string>
     <string name="pref_ui_theme_black">Preto</string>
-    <string name="pref_ui_accent_title">Cor de Realçe</string>
-    <string name="onboarding_title_accent">Cor de Realçe</string>
+    <string name="pref_ui_accent_title">Cor de Realce</string>
+    <string name="onboarding_title_accent">Cor de Realce</string>
     <string name="onboarding_tos_confirmation">Eu li os Termos de Serviço da Loja Aurora.</string>
     <string name="pref_ui_theme_dark_x">Escuro X</string>
     <string name="title_download_playstore">Play Store</string>
@@ -335,7 +335,7 @@
     <string name="details_no_app_match">Nenhum aplicativo correspondente encontrado</string>
     <string name="pref_ui_similar_apps">Aplicativos semelhantes e relacionados</string>
     <string name="pref_ui_layout_tab">Selecione a aba padrão</string>
-    <string name="pref_ui_layout">Leiaute</string>
+    <string name="pref_ui_layout">Esquema</string>
     <string name="pref_common_extra">Extras</string>
     <string name="pref_common_advance">Avançar</string>
     <string name="action_check">Verificar</string>
