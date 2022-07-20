@@ -64,7 +64,7 @@
     <string name="about_bitcoin_bch">Bitcoin Сash</string>
     <string name="about_telegram">Telegram</string>
     <string name="action_blacklist_add">Добавить в чёрный список</string>
-    <string name="action_blacklist">Черный список</string>
+    <string name="action_blacklist">Чёрный список</string>
     <string name="action_back">Назад</string>
     <string name="action_all_reviews">Все отзывы</string>
     <string name="action_accounts">Аккаунты</string>
