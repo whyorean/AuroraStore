@@ -566,7 +566,7 @@ class AppDetailsActivity : BaseDetailsActivity() {
 
                 if (isUpdatable) {
                     B.layoutDetailsApp.txtLine3.text =
-                        ("$installedVersion > ${app.versionName} (${app.versionCode})")
+                        ("$installedVersion ➔ ${app.versionName} (${app.versionCode})")
                     btn.setText(R.string.action_update)
                     btn.addOnClickListener { startDownload() }
                 } else {
