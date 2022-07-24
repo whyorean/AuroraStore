@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="action_filter_paid_apps">Köpt</string>
-    <string name="account_login_using">Logga in med att använda</string>
-    <string name="about_xda">Utvecklingstråd</string>
+    <string name="account_login_using">Logga in genom att använda</string>
+    <string name="about_xda">Utv. tråd</string>
     <string name="about_telegram_summary">Gå med i Aurora\'s hjälp-grupp för diskussioner eller förslag.</string>
     <string name="about_libera_summary">Bli en patron i Liberapay</string>
-    <string name="about_gitlab_summary">Hämta Aurora-butiken\'s källkod från Aurora OSS i GitLab.</string>
+    <string name="about_gitlab_summary">Hämta källkoden för Aurora-butiken från Aurora OSS i GitLab.</string>
     <string name="toast_rated_success">Betygssattes</string>
     <string name="toast_page_unavailable">Bläddringssidan otillgänglig</string>
     <string name="toast_double_press_to_exit">Klicka två gånger för att avsluta</string>
@@ -360,4 +360,12 @@
     <string name="app_updater_service_notif_title">Ladda ner appen i bakgrunden</string>
     <string name="toast_permission_granted">Åtkomst godkändes</string>
     <string name="toast_aas_token_failed">Kunde inte generera AAS-symbol</string>
+    <string name="ui_accent_12">Disskord-blå</string>
+    <string name="pref_ui_accent_title">Brytning</string>
+    <string name="pref_ui_quick_exit_desc">Avsluta programmet vid ett enkelt tryck på Tillbaka-knappen</string>
+    <string name="title_spoof_manager">Lurendrejeri-hanterare</string>
+    <string name="toast_abandon_sessions">Gamla installationssessioner övergavs</string>
+    <string name="toast_developer_setting_failed">Skruva på inställningen för utvecklare från enhetens inställningar för att öppna dem.</string>
+    <string name="toast_spoof_applied">Enhetsförfalskning tillämpades.</string>
+    <string name="app_updater_service_notif_text">Aktiverar nedladdning av appar i bakgrunden</string>
 </resources>

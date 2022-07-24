@@ -350,4 +350,21 @@
     <string name="toast_aas_token_failed">Δεν ήταν δυνατή η δημιουργία AAS Token</string>
     <string name="toast_purchase_blocked">Οι αγορές εφαρμογών δεν είναι διαθέσιμες σε ανώνυμους λογαριασμούς.</string>
     <string name="toast_double_press_to_exit">Κάντε κλικ δύο φορές για έξοδο</string>
+    <string name="ui_accent_1">Μπλε</string>
+    <string name="ui_accent_2">Φούξια</string>
+    <string name="ui_accent_3">Κόκκινο</string>
+    <string name="ui_accent_4">Χρυσό</string>
+    <string name="ui_accent_5">Πράσινο</string>
+    <string name="ui_accent_6">Μωβ</string>
+    <string name="ui_accent_7">Γκρι</string>
+    <string name="ui_accent_8">Ροζ</string>
+    <string name="ui_accent_9">Λεμονί</string>
+    <string name="ui_accent_10">Πορτοκαλί</string>
+    <string name="ui_accent_11">Ανοιχτό μπλε</string>
+    <string name="ui_accent_12">Disskord μπλε</string>
+    <string name="ui_accent_13">Βαθύ μπλε</string>
+    <string name="account_anonymous_insecure">Ανώνυμος (μη ασφαλές)</string>
+    <string name="pref_ui_quick_exit_desc">Έξοδος με μονό πάτημα πίσω</string>
+    <string name="installer_am_unavailable">Εγκατάσταση Διαχειριστή εφαρμογών ή άλλαξε το πρόγραμμα εγκατάστασης.</string>
+    <string name="pref_abandon_session">Εξαναγκασμός εκκαθάρισης συνεδριάσεων</string>
 </resources>

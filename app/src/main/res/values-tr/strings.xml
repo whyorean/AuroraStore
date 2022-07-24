@@ -174,7 +174,7 @@
     <string name="device_huawei_title">Huawei algılandı!</string>
     <string name="menu_terms">Hizmet koşulları</string>
     <string name="menu_license">Lisans</string>
-    <string name="menu_disclaimer">Feragatname</string>
+    <string name="menu_disclaimer">Sorumluluk reddi</string>
     <string name="installer_status_user_action">Kullanıcı onayı bekleniyor</string>
     <string name="installer_status_unknown">Bilinmiyor</string>
     <string name="installer_status_success">Başarıyla kuruldu</string>

@@ -90,7 +90,7 @@
     <string name="action_accept">Elfogadom</string>
     <string name="account_logout">Kijelentkezés az Aurorából</string>
     <string name="account_login_using">Bejelentkezés ezzel</string>
-    <string name="account_logged_out">Nem vagy bejelentkezve</string>
+    <string name="account_logged_out">Ki lettél jelentkeztetve</string>
     <string name="account_google">Google</string>
     <string name="account_anonymous">Névtelen</string>
     <string name="about_xda_summary">Nézd meg az Aurora Store XDA témát beszélgetéshez és javaslatokért.</string>
@@ -101,7 +101,7 @@
     <string name="about_paypal">PayPal</string>
     <string name="about_libera_summary">Liberapay támogatás</string>
     <string name="about_libera">Liberapay</string>
-    <string name="about_gitlab_summary">Az Aurora Store forráskódjának beszerzése GitLabről.</string>
+    <string name="about_gitlab_summary">Az Aurora Store forráskódjának beszerzése GitLabról.</string>
     <string name="about_gitlab">GitLab</string>
     <string name="about_fdroid_summary">Az Aurora Store beszerzése F-Droidról.</string>
     <string name="about_fdroid">F-Droid</string>
@@ -110,7 +110,7 @@
     <string name="about_bitcoin_btc_summary">Bitcoin (BTC) adományozás</string>
     <string name="about_bitcoin_btc">Bitcoin</string>
     <string name="about_bitcoin_bch_summary">Bitcoin Cash (BCH) adományozás</string>
-    <string name="about_bitcoin_bch">Bitcoin Pénz</string>
+    <string name="about_bitcoin_bch">Bitcoin Pénz (Bitcoin Cash)</string>
     <string name="about_bhim_summary">UPI adományozás</string>
     <string name="about_bhim">BHIM - UPI</string>
     <string name="details_dev_email">E-mail</string>
@@ -176,14 +176,14 @@
     <string name="download_speed_estimating">Becslés</string>
     <string name="download_resume_all">Az összes folytatása</string>
     <string name="download_resume">Folytatás</string>
-    <string name="download_queued">Sorban áll</string>
+    <string name="download_queued">Besorolt</string>
     <string name="download_progress">Letöltés</string>
     <string name="download_paused">Szünetelve</string>
     <string name="download_pause_all">Az összes szüneteltetése</string>
     <string name="download_pause">Szüneteltetés</string>
     <string name="download_none">Nincs letöltés</string>
     <string name="download_metadata">Metaadatok megszerzése</string>
-    <string name="download_force_clear_all">Minden törlése kényszerítése</string>
+    <string name="download_force_clear_all">Kényszertett mindent törlés</string>
     <string name="download_failed">Letöltés sikertelen</string>
     <string name="download_eta_calculating">Számolás</string>
     <string name="download_deleted">Törölve</string>
@@ -216,7 +216,7 @@
     <string name="details_free">Ingyenes</string>
     <string name="details_files">Fájlok</string>
     <string name="details_dev_website">Weboldal</string>
-    <string name="details_dev_reply">Fejlesztő válasza</string>
+    <string name="details_dev_reply">A fejlesztő válasza</string>
     <string name="details_dev_profile">Fejlesztői profil</string>
     <string name="title_apps_sale">Eladó appok</string>
     <string name="toast_developer_setting_failed">Az eszköze beállításain belül kapcsolja be a Fejlesztői beállításokat, így megnyitva őket.</string>
@@ -352,4 +352,20 @@
     <string name="app_updater_service_notif_text">Lehetővé teszi a háttérben történő alkalmazásletöltést</string>
     <string name="app_updater_service_notif_title">Hátterbeli alkalmazásletöltés</string>
     <string name="notification_channel_updater_service">Háttérbeli alkalmazásletöltési szolgáltatás</string>
+    <string name="ui_accent_1">Kék</string>
+    <string name="ui_accent_3">Piros</string>
+    <string name="ui_accent_4">Arany</string>
+    <string name="ui_accent_5">Zöld</string>
+    <string name="ui_accent_7">Szürke</string>
+    <string name="ui_accent_10">Narancs</string>
+    <string name="ui_accent_11">Világos kék</string>
+    <string name="ui_accent_12">Diszkord kék</string>
+    <string name="ui_accent_2">Fukszia</string>
+    <string name="ui_accent_13">Mélykék</string>
+    <string name="account_anonymous_insecure">Névtelen (bizonytalan)</string>
+    <string name="installer_am_unavailable">Telepítse az App Manager-t vagy változtassa meg a telepítőt.</string>
+    <string name="pref_install_mode_am">AM telepítő.</string>
+    <string name="ui_accent_6">Lila</string>
+    <string name="ui_accent_8">Rózsaszín</string>
+    <string name="ui_accent_9">Lime</string>
 </resources>
