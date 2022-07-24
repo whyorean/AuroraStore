@@ -103,11 +103,10 @@ class NativeDeviceInfoProvider(context: Context) : ContextWrapper(context) {
             )
 
             //Google Related Props
-            val gsfVersionProvider = NativeGsfVersionProvider(applicationContext)
             setProperty("Client", "android-google")
-            setProperty("GSF.version", "${gsfVersionProvider.getGsfVersionCode(true)}")
-            setProperty("Vending.version", "${gsfVersionProvider.getVendingVersionCode(true)}")
-            setProperty("Vending.versionString", gsfVersionProvider.getVendingVersionString(true))
+            setProperty("GSF.version", "203615037")
+            setProperty("Vending.version", "82201710")
+            setProperty("Vending.versionString", "22.0.17-21 [0] [PR] 332555730")
 
             //MISC
             setProperty("Roaming", "mobile-notroaming")
