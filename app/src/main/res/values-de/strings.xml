@@ -228,7 +228,7 @@
     <string name="download_metadata">Metadaten werden geladen</string>
     <string name="download_force_clear_all">Alle löschen</string>
     <string name="download_failed">Download fehlgeschlagen</string>
-    <string name="download_eta_calculating">Wird berechnet</string>
+    <string name="download_eta_calculating">Übertragungsdauer wird berechnet …</string>
     <string name="download_deleted">Gelöscht</string>
     <string name="download_completed">Heruntergeladen</string>
     <string name="download_clear_completed">Fertige löschen</string>
