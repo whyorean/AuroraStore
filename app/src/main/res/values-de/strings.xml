@@ -38,7 +38,7 @@
     <string name="about_libera">Liberapay</string>
     <string name="about_gitlab">GitLab</string>
     <string name="about_bitcoin_eth">Ethereum</string>
-    <string name="about_fdroid_summary">Aurora Store über F-Droid herunterladen</string>
+    <string name="about_fdroid_summary">Aurora Store über F-Droid herunterladen.</string>
     <string name="about_fdroid">F-Droid</string>
     <string name="about_bitcoin_btc">Bitcoin</string>
     <string name="details_dev_website">Website</string>
@@ -51,7 +51,7 @@
     <string name="action_back">Zurück</string>
     <string name="action_discard">Verwerfen</string>
     <string name="action_done">Fertig</string>
-    <string name="about_gitlab_summary">Den Aurora Store-Quellcode von Aurora OSS bei GitLab herunterladen</string>
+    <string name="about_gitlab_summary">Den Aurora Store-Quellcode von Aurora OSS auf GitLab herunterladen.</string>
     <string name="about_bitcoin_btc_summary">Mit Bitcoin spenden (BTC)</string>
     <string name="about_bitcoin_bch_summary">Mit Bitcoin Cash spenden (BCH)</string>
     <string name="about_bhim_summary">Mit UPI spenden</string>
@@ -85,7 +85,7 @@
     <string name="pref_filter_google_summary">Alle Google-Apps aus den Suchergebnissen und Kategorien entfernen</string>
     <string name="pref_filter_fdroid_title">F-Droid-Apps filtern</string>
     <string name="pref_filter_fdroid_summary">F-Droid-Apps in allen App-Listen ausblenden</string>
-    <string name="pref_dialog_to_apply_restart">Die Einstellung wird nach einem Neustart der App übernommen.</string>
+    <string name="pref_dialog_to_apply_restart">Die Einstellung wird nach einem Neustart der App übernommen</string>
     <string name="pref_app_download">Downloads</string>
     <string name="onboarding_permission_installer_desc">Erforderlich für die Installation von Apps aus dem Aurora Store</string>
     <string name="installer_status_failure_incompatible">Inkompatible App</string>
@@ -216,7 +216,7 @@
     <string name="exodus_powered">Bereitgestellt von Exodus</string>
     <string name="exodus_no_tracker">Enthält keine Tracker</string>
     <string name="exodus_no_report">Keine Berichte verfügbar</string>
-    <string name="download_speed_estimating">Geschwindigkeit wird ermittelt …</string>
+    <string name="download_speed_estimating">Schätzen</string>
     <string name="download_resume_all">Alle fortsetzen</string>
     <string name="download_resume">Fortsetzen</string>
     <string name="download_queued">In der Warteschlange</string>
@@ -228,7 +228,7 @@
     <string name="download_metadata">Metadaten werden geladen</string>
     <string name="download_force_clear_all">Alle löschen</string>
     <string name="download_failed">Download fehlgeschlagen</string>
-    <string name="download_eta_calculating">Übertragungsdauer wird berechnet …</string>
+    <string name="download_eta_calculating">Berechnen</string>
     <string name="download_deleted">Gelöscht</string>
     <string name="download_completed">Heruntergeladen</string>
     <string name="download_clear_completed">Fertige löschen</string>
@@ -258,7 +258,7 @@
     <string name="action_wishlist_add">Zur Wunschliste hinzufügen</string>
     <string name="action_whitelist">Erlaubnisliste</string>
     <string name="action_wait">Warten</string>
-    <string name="action_updates">Updates</string>
+    <string name="action_updates">Aktualisierungen</string>
     <string name="action_update_all">Alle aktualisieren</string>
     <string name="action_update">Aktualisieren</string>
     <string name="action_previous">Vorherige</string>
@@ -268,9 +268,9 @@
     <string name="action_get_local_apk">App-Paket speichern</string>
     <string name="action_download">Download</string>
     <string name="action_ask">Fragen</string>
-    <string name="about_xda_summary">Den Aurora Store-XDA-Themenbereich für Diskussionen oder Vorschläge besuchen</string>
+    <string name="about_xda_summary">Den Aurora Store-XDA-Themenbereich für Diskussionen oder Vorschläge besuchen.</string>
     <string name="about_xda">XDA Entwickler-Forum</string>
-    <string name="about_telegram_summary">Der Aurora-Support-Gruppe für Diskussionen oder Vorschläge beitreten</string>
+    <string name="about_telegram_summary">Der Aurora-Support-Gruppe für Diskussionen oder Vorschläge beitreten.</string>
     <string name="action_uninstall">Deinstallieren</string>
     <string name="action_try_later">Später versuchen</string>
     <string name="action_submit">Absenden</string>
