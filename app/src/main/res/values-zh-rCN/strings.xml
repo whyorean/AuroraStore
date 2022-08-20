@@ -77,9 +77,9 @@
     <string name="details_changelog">更新日志</string>
     <string name="details_beta_delay">加入测试可能需要一些时间，您可以稍后查看状态。</string>
     <string name="details_beta_description">您会先于公众发现新功能和错误。向开发者提供反馈，以帮助他们改进。</string>
-    <string name="details_beta_available">要加入 Beta 版计划吗？</string>
-    <string name="details_beta_subscribed">您已成为 Beta 版测试人员</string>
-    <string name="details_beta">Beta 版计划</string>
+    <string name="details_beta_available">要加入预览版计划吗？</string>
+    <string name="details_beta_subscribed">您已成为预览版测试人员</string>
+    <string name="details_beta">预览版计划</string>
     <string name="action_wishlist_add">添加到白名单</string>
     <string name="action_whitelist">白名单</string>
     <string name="action_wait">等待</string>
