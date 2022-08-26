@@ -154,7 +154,7 @@ class ThemeFragment : BaseFragment() {
                 anim.duration = 450
                 anim.interpolator = CubicBezierInterpolator.EASE_IN_OUT_QUAD
                 anim.addListener(object : AnimatorListenerAdapter() {
-                    override fun onAnimationEnd(animation: Animator?) {
+                    override fun onAnimationEnd(animation: Animator) {
                         B.themeSwitchImage.setImageDrawable(null)
                         B.themeSwitchImage.hide()
                     }

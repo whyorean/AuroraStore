@@ -1,6 +1,7 @@
 /*
  * Aurora Store
  *  Copyright (C) 2021, Rahul Kumar Patel <whyorean@gmail.com>
+ *  Copyright (C) 2022, The Calyx Institute
  *
  *  Aurora Store is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -17,34 +18,10 @@
  *
  */
 
-buildscript {
-
-    repositories {
-        google()
-        jcenter()
-    }
-
-    ext {
-        kotlin_version = '1.4.30'
-    }
-
-    ext.kotlin = "1.5.30"
-    ext.navigation= "2.4.1"
-    ext.gradle = '7.1.1'
-
-    dependencies {
-        classpath ("com.android.tools.build:gradle:$gradle")
-        classpath ("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin")
-        classpath ("androidx.navigation:navigation-safe-args-gradle-plugin:$navigation")
-    }
-}
-
-allprojects {
-    repositories {
-        google()
-        jcenter()
-        maven { url 'https://jitpack.io' }
-    }
+plugins {
+    id 'com.android.application' version '7.2.2' apply false
+    id 'org.jetbrains.kotlin.android' version '1.7.10' apply false
+    id 'androidx.navigation.safeargs.kotlin' version '2.5.1' apply false
 }
 
 task clean(type: Delete) {

@@ -1,6 +1,7 @@
 /*
  * Aurora Store
  *  Copyright (C) 2021, Rahul Kumar Patel <whyorean@gmail.com>
+ *  Copyright (C) 2022, The Calyx Institute
  *
  *  Aurora Store is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -17,18 +18,33 @@
  *
  */
 
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-kapt'
-apply plugin: "androidx.navigation.safeargs.kotlin"
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'org.jetbrains.kotlin.kapt'
+    id 'androidx.navigation.safeargs.kotlin'
+}
+
+project.ext {
+    versions = [
+            okhttp3   : "4.10.0",
+            fetch2    : "3.1.6",
+            fuel      : "2.3.0",
+            glide     : "4.11.0",
+            lifecycle : '2.5.1',
+            navigation: '2.5.1',
+            epoxy     : "4.3.1",
+            libsu     : "3.0.2"
+    ]
+}
 
 android {
-    compileSdkVersion 32
+    compileSdk 33
 
     defaultConfig {
         applicationId "com.aurora.store"
-        minSdkVersion 19
-        targetSdkVersion 32
+        minSdk 19
+        targetSdk 33
 
         versionCode 41
         versionName "4.1.1"
@@ -65,27 +81,12 @@ android {
     }
 
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = JavaVersion.VERSION_11.toString()
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-}
-
-buildscript {
-    ext {
-        versions = [
-                okhttp3   : "4.9.0",
-                fetch2    : "3.1.6",
-                fuel      : "2.3.0",
-                glide     : "4.11.0",
-                lifecycle : '2.4.1',
-                navigation: '2.4.1',
-                epoxy     : "4.3.1",
-                libsu     : "3.0.2"
-        ]
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
     }
 }
 
@@ -94,81 +95,79 @@ kapt {
 }
 
 dependencies {
-    implementation fileTree(dir: "libs", include: ["*.jar"])
-
     //MultiDex for Kitkat support
-    implementation("androidx.multidex:multidex:2.0.1")
+    implementation "androidx.multidex:multidex:2.0.1"
 
     //Protobuf
-    implementation("com.google.protobuf:protobuf-java:3.14.0")
+    implementation "com.google.protobuf:protobuf-java:3.14.0"
 
     //Apache's Goodies
-    implementation("commons-io:commons-io:2.8.0")
-    implementation("org.apache.commons:commons-text:1.8")
+    implementation "commons-io:commons-io:2.8.0"
+    implementation "org.apache.commons:commons-text:1.8"
 
     //Google's Goodies
-    implementation("com.google.android.material:material:1.5.0")
-    implementation("com.google.android:flexbox:2.0.1")
-    implementation("com.google.code.gson:gson:2.8.6")
+    implementation "com.google.android.material:material:1.6.1"
+    implementation "com.google.android.flexbox:flexbox:3.0.0"
+    implementation "com.google.code.gson:gson:2.9.0"
 
     //AndroidX
-    implementation("androidx.core:core-ktx:1.7.0")
-    implementation("androidx.viewpager2:viewpager2:1.0.0")
-    implementation("androidx.vectordrawable:vectordrawable:1.1.0")
-    implementation("androidx.preference:preference-ktx:1.2.0")
-    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
+    implementation "androidx.core:core-ktx:1.8.0"
+    implementation "androidx.viewpager2:viewpager2:1.0.0"
+    implementation "androidx.vectordrawable:vectordrawable:1.1.0"
+    implementation "androidx.preference:preference-ktx:1.2.0"
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
 
     //Arch LifeCycle
-    implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
+    implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
 
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:${versions.lifecycle}")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:${versions.lifecycle}")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-savedstate:${versions.lifecycle}")
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:${versions.lifecycle}"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:${versions.lifecycle}"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-savedstate:${versions.lifecycle}"
 
     //Arch Navigation
-    implementation("androidx.navigation:navigation-fragment-ktx:${versions.navigation}")
-    implementation("androidx.navigation:navigation-runtime-ktx:${versions.navigation}")
-    implementation("androidx.navigation:navigation-ui-ktx:${versions.navigation}")
+    implementation "androidx.navigation:navigation-fragment-ktx:${versions.navigation}"
+    implementation "androidx.navigation:navigation-runtime-ktx:${versions.navigation}"
+    implementation "androidx.navigation:navigation-ui-ktx:${versions.navigation}"
 
     //UI Addons
-    implementation("com.github.florent37:expansionpanel:1.2.4")
+    implementation "com.github.florent37:expansionpanel:1.2.4"
 
     //Easy Permission
-    implementation("com.github.quickpermissions:quickpermissions-kotlin:0.4.0")
+    implementation "com.github.quickpermissions:quickpermissions-kotlin:0.4.0"
 
     //Glide
-    implementation("com.github.bumptech.glide:glide:${versions.glide}")
-    kapt("com.github.bumptech.glide:compiler:${versions.glide}")
+    implementation "com.github.bumptech.glide:glide:${versions.glide}"
+    kapt "com.github.bumptech.glide:compiler:${versions.glide}"
 
     //Shimmer
-    implementation("com.facebook.shimmer:shimmer:0.5.0")
+    implementation "com.facebook.shimmer:shimmer:0.5.0"
 
     //Epoxy
-    implementation("com.airbnb.android:epoxy:${versions.epoxy}")
-    kapt("com.airbnb.android:epoxy-processor:${versions.epoxy}")
+    implementation "com.airbnb.android:epoxy:${versions.epoxy}"
+    kapt "com.airbnb.android:epoxy-processor:${versions.epoxy}"
 
     //Merlin
-    implementation("com.novoda:merlin:1.2.0")
+    implementation "com.novoda:merlin:1.2.0"
 
     //HTTP Clients
-    implementation("com.github.kittinunf.fuel:fuel:${versions.fuel}")
-    implementation("com.squareup.okhttp3:okhttp:${versions.okhttp3}")
+    implementation "com.github.kittinunf.fuel:fuel:${versions.fuel}"
+    implementation "com.squareup.okhttp3:okhttp:${versions.okhttp3}"
 
     //Fetch - Downloader
     implementation "androidx.tonyodev.fetch2:xfetch2:${versions.fetch2}"
 
     //Kovenant
-    implementation("nl.komponents.kovenant:kovenant:3.3.0")
-    implementation("nl.komponents.kovenant:kovenant-android:3.3.0")
+    implementation "nl.komponents.kovenant:kovenant:3.3.0"
+    implementation "nl.komponents.kovenant:kovenant-android:3.3.0"
 
     //EventBus
-    implementation("org.greenrobot:eventbus:3.2.0")
+    implementation "org.greenrobot:eventbus:3.2.0"
 
     //Lib-SU
     implementation "com.github.topjohnwu.libsu:core:${versions.libsu}"
 
     //Love <3
-    api("com.gitlab.AuroraOSS:gplayapi:0e224071f3")
+    api "com.gitlab.AuroraOSS:gplayapi:0e224071f3"
 }
 
 Properties props = new Properties()
