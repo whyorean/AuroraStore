@@ -1,6 +1,7 @@
 /*
  * Aurora Store
  *  Copyright (C) 2021, Rahul Kumar Patel <whyorean@gmail.com>
+ *  Copyright (C) 2022, The Calyx Institute
  *
  *  Aurora Store is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -17,5 +18,28 @@
  *
  */
 
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        jcenter() // Required for com.novoda:merlin:1.2.0
+        mavenCentral()
+        maven {
+            name 'JitPack'
+            url 'https://jitpack.io/'
+        }
+        maven {
+            name 'Google'
+            url 'https://maven.google.com/'
+        }
+    }
+}
 include ':app'
 rootProject.name = "AuroraStore4"

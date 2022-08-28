@@ -109,6 +109,7 @@ class CategoryBrowseActivity : BaseActivity(), GenericCarouselController.Callbac
                 is ViewState.Success<*> -> {
                     updateController(it.data as StreamBundle)
                 }
+                else -> {}
             }
         })
 
