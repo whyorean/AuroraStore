@@ -1,6 +1,7 @@
 /*
  * Aurora Store
  *  Copyright (C) 2021, Rahul Kumar Patel <whyorean@gmail.com>
+ *  Copyright (C) 2022, The Calyx Institute
  *
  *  Aurora Store is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -70,19 +71,7 @@ class PermissionsFragment : BaseFragment() {
 
     private fun updateController() {
 
-        val installerList: List<Permission> = listOf(
-            Permission(
-                0,
-                getString(R.string.onboarding_permission_esa),
-                getString(R.string.onboarding_permission_esa_desc)
-            ),
-
-            Permission(
-                1,
-                getString(R.string.onboarding_permission_esm),
-                getString(R.string.onboarding_permission_esm_desc)
-            ),
-
+        val installerList = mutableListOf(
             Permission(
                 2,
                 getString(R.string.onboarding_permission_installer),
@@ -90,11 +79,29 @@ class PermissionsFragment : BaseFragment() {
             )
         )
 
+        if (isRAndAbove()) {
+            installerList.add(
+                Permission(
+                    1,
+                    getString(R.string.onboarding_permission_esm),
+                    getString(R.string.onboarding_permission_esm_desc)
+                )
+            )
+        } else {
+            installerList.add(
+                Permission(
+                    0,
+                    getString(R.string.onboarding_permission_esa),
+                    getString(R.string.onboarding_permission_esa_desc)
+                )
+            )
+        }
+
         B.epoxyRecycler.withModels {
-            val writeExternalStorage = ActivityCompat.checkSelfPermission(
+            val writeExternalStorage = if (!isRAndAbove()) ActivityCompat.checkSelfPermission(
                 requireContext(),
                 Manifest.permission.WRITE_EXTERNAL_STORAGE
-            ) == PackageManager.PERMISSION_GRANTED
+            ) == PackageManager.PERMISSION_GRANTED else true
             val storageManager = if (isRAndAbove()) Environment.isExternalStorageManager() else true
             val canInstallPackages = if (isOAndAbove()) requireContext().packageManager.canRequestPackageInstalls() else true
             canGoForward = writeExternalStorage && storageManager && canInstallPackages
