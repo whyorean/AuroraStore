@@ -256,7 +256,6 @@
     <string name="onboarding_permission_esa">"External Storage Access"</string>
     <string name="onboarding_permission_esa_desc">To save downloads (APKs &amp; OBBs), export and import device configs to and from external storage.</string>
     <string name="onboarding_permission_esm">"External Storage Manager"</string>
-    <string name="onboarding_permission_esm_desc">"Required on devices running Android R+, additional to External Storage Access"</string>
     <string name="onboarding_permission_installer">"Installer Permission"</string>
     <string name="onboarding_permission_installer_desc">"Allow installing apps from Aurora Store"</string>
     <string name="pref_abandon_session">"Force clear installation sessions"</string>

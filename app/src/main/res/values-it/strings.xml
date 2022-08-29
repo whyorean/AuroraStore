@@ -257,7 +257,6 @@
     <string name="pref_abandon_session_desc">Cancellare le sessioni di installazione in sospeso o abbandonate</string>
     <string name="pref_abandon_session">Cancella sessioni di installazione forzatamente</string>
     <string name="onboarding_permission_installer">Autorizzazione installatore</string>
-    <string name="onboarding_permission_esm_desc">Necessario nei dispositivi che eseguono Android 11 o superiore, oltre all’accesso all’archivio esterno</string>
     <string name="onboarding_permission_esm">Gestore archiviazione esterna</string>
     <string name="onboarding_permission_esa">Accesso archiviazione esterna</string>
     <string name="onboarding_welcome_select">Come va\?</string>

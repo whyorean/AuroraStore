@@ -41,7 +41,6 @@
     <string name="action_filter_apps_with_ads">Aplicações com publicidade</string>
     <string name="action_favourites">Aplicações favoritas</string>
     <string name="pref_install_mode_services">Aurora Services</string>
-    <string name="onboarding_permission_esm_desc">Necessário em dispositivos Android R+, para além do acesso a armazenamento externo</string>
     <string name="download_speed_estimating">A estimar</string>
     <string name="action_spoofed">Disfarce</string>
     <string name="toast_aas_token_failed">Não foi possível gerar o Token AAS</string>

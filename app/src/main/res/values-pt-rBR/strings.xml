@@ -69,7 +69,6 @@
     <string name="pref_abandon_session">Forçar limpeza das sessões de instalações</string>
     <string name="onboarding_permission_installer_desc">Permitir a instalação de aplicativos da Aurora Store</string>
     <string name="onboarding_permission_installer">Permissão do instalador</string>
-    <string name="onboarding_permission_esm_desc">Obrigatório em dispositivos com Android R+, além do acesso ao armazenamento externo</string>
     <string name="onboarding_permission_esm">Gerenciador de Armazenamento Externo</string>
     <string name="onboarding_permission_esa_desc">Para salvar downloads (APKs e OBBs), exporte e importe configurações do dispositivo para e do armazenamento externo.</string>
     <string name="onboarding_permission_esa">Acesso de armazenamento externo</string>

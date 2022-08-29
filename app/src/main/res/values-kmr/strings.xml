@@ -145,7 +145,6 @@
     <string name="pref_abandon_session">Danişînên sazkirinê yên zelal ferz bikin</string>
     <string name="onboarding_permission_installer_desc">Destûrê bidin sazkirina sepanan ji Aurora Store</string>
     <string name="onboarding_permission_installer">Destûra Sazker</string>
-    <string name="onboarding_permission_esm_desc">Pêdivî ye ku li ser cîhazên ku Android R+ dixebitin, ji bilî Gihîştina Depoya ya Derve</string>
     <string name="onboarding_permission_esm">Gerînendeyê Stoka Derve</string>
     <string name="onboarding_permission_esa_desc">Ji bo barkirina dakêşanan (APK &amp; OBBs), vesazkirin û vesazkirina amûrê li ser depoya derveyî.</string>
     <string name="onboarding_permission_esa">Gihîştina depoya derveyî</string>

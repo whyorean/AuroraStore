@@ -109,7 +109,6 @@
     <string name="pref_abandon_session">Vynucené ukončení nedokončených instalací</string>
     <string name="onboarding_permission_installer_desc">Povolit instalaci aplikací z obchodu Aurora</string>
     <string name="onboarding_permission_installer">Instalační oprávnění</string>
-    <string name="onboarding_permission_esm_desc">Vyžadováno na zařízeních se systémem Android R +, doplňující přístup k externímu úložišti</string>
     <string name="onboarding_permission_esm">Správce externího úložiště</string>
     <string name="onboarding_permission_esa_desc">Ukládání stažených souborů (APK a OBB), export a import konfigurací zařízení do externího úložiště a z něj.</string>
     <string name="onboarding_permission_esa">Přístup k externímu úložišti</string>

@@ -162,7 +162,6 @@
     <string name="device_miui_extra">Du kan vælge at bruge Native installationsmuligheden, men så kan du ikke installere medfølgende (split) APK-er.</string>
     <string name="dialog_desc_self_update">Ønsker du at opdatere nu\?</string>
     <string name="dialog_desc_native_split">Du kan ikke installere medfølgende (split) app via Native installatøren. Skift din installatør til Session, Services eller Root.</string>
-    <string name="onboarding_permission_esm_desc">Kræves på enheder, som kører på Android R+ i tillæg med Ekstern opbevaringsadgang</string>
     <string name="pref_common_advance">Fremad</string>
     <string name="pref_filter_fdroid_summary">Fjern F-Droid apps fra app lister</string>
     <string name="pref_filter_google_title">Filtrer Google apps</string>

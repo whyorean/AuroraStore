@@ -214,7 +214,6 @@
     <string name="pref_abandon_session">Buộc xóa các phiên cài đặt</string>
     <string name="onboarding_permission_installer_desc">Cho phép cài đặt các ứng dụng từ Aurora Store</string>
     <string name="onboarding_permission_installer">Quyền của trình cài đặt</string>
-    <string name="onboarding_permission_esm_desc">Yêu cầu trên các thiết bị chạy Android R+, bổ sung Quyền truy cập bộ nhớ ngoài</string>
     <string name="onboarding_permission_esm">Trình quản lý bộ nhớ ngoài</string>
     <string name="onboarding_permission_esa_desc">Để lưu các mục tải xuống (APK &amp; OBB), hãy xuất và nhập thiết lập thiết bị ra và từ bộ nhớ ngoài.</string>
     <string name="onboarding_permission_esa">Quyền truy cập bộ nhớ ngoài</string>

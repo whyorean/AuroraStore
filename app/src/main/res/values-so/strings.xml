@@ -150,7 +150,6 @@
     <string name="pref_abandon_session">Xoog kunadiifi xidhiidhka kushubida</string>
     <string name="onboarding_permission_installer_desc">Ogolow in Dukaanka Aurora appska lagaga sooshubo</string>
     <string name="onboarding_permission_installer">Fasaxa Kushubaha</string>
-    <string name="onboarding_permission_esm_desc">Waxaa ubaahan aalladaha isticmaalaya Androud 11+, udheeraad ah Ogolaansha Kaydka Dibada</string>
     <string name="onboarding_permission_esm">Maamulaha Kayka Dibada</string>
     <string name="onboarding_permission_esa_desc">Si aad ukaydiso soodajinta (APK-yada &amp; OBB-yada), ugudbiso ood uga soogaliso fadhiga aallada kaydka dibada.</string>
     <string name="onboarding_permission_esa">Ogolaansha Kaydka Dibada</string>

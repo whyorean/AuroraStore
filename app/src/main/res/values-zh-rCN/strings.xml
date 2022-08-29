@@ -273,7 +273,6 @@
     <string name="pref_abandon_session">强制清除安装会话</string>
     <string name="onboarding_permission_installer_desc">允许 Aurora 商店安装应用</string>
     <string name="onboarding_permission_installer">安装权限</string>
-    <string name="onboarding_permission_esm_desc">在运行 Android R+ 的设备上，除了授予访问外部存储权限，还需授予这个权限</string>
     <string name="onboarding_permission_esm">外部存储管理器</string>
     <string name="onboarding_permission_esa_desc">保存下载项 (APKs 和 OBBs)，将设备配置导出到外部存储和从外部存储导入设备配置。</string>
     <string name="onboarding_permission_esa">访问外部存储</string>

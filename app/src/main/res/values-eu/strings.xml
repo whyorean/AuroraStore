@@ -86,7 +86,6 @@
     <string name="pref_abandon_session">Instalazio saioen garbiketa behartu</string>
     <string name="onboarding_permission_installer_desc">Aurora Store-ri aplikazioak instalatzeko baimena eman</string>
     <string name="onboarding_permission_installer">Instalatzailearen baimena</string>
-    <string name="onboarding_permission_esm_desc">Android R+ erabiltzen duten gailuek eskatuta, kanpoko memoriaz gain</string>
     <string name="onboarding_permission_esm">Kanpoko memoriaren gestorea</string>
     <string name="onboarding_permission_esa_desc">Kanpoko memorian deskargak gordetzeko (APK-k eta OBB-ak) eta konfigurazioa esportatzeko eta inportatzeko.</string>
     <string name="onboarding_permission_esa">Kanpoko memoriarako sarbidea</string>

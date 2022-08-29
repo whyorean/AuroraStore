@@ -212,7 +212,6 @@
     <string name="pref_abandon_session">Prisilno izbriši sesije instaliranja</string>
     <string name="onboarding_permission_installer_desc">Dozvoli instaliranje programa iz Aurora trgovine</string>
     <string name="onboarding_permission_installer">Dozvola za instalaciju</string>
-    <string name="onboarding_permission_esm_desc">Obavezno na uređajima s Androidom R+, uz mogućnost pristupa vanjskoj memoriji</string>
     <string name="onboarding_permission_esm">Upravljač vanjske memorije</string>
     <string name="onboarding_permission_esa_desc">Za spremanje preuzimanja (APK i OBB datoteke), izvezi i uvezi konfiguracije uređaja u i iz vanjske memorije.</string>
     <string name="onboarding_permission_esa">Pristup vanjskoj memoriji</string>

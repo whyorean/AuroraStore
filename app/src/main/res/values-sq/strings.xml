@@ -240,7 +240,6 @@
     <string name="onboarding_permission_esa">Hyrje Në Depozitë të Jashtme</string>
     <string name="onboarding_permission_esa_desc">Që të ruhen shkarkimet (APK &amp; OBB), eksportoni dhe importoni formësime pajisjeje te dhe prej depozite të jashtme.</string>
     <string name="onboarding_permission_esm">Përgjegjësi Depozitash të Jashtme</string>
-    <string name="onboarding_permission_esm_desc">E domosdoshme në pajisje që xhirojnë Android R+, si shtesë ndaj Hyrje Në Depozita të Jashtme</string>
     <string name="onboarding_permission_installer">Leje Instaluesi</string>
     <string name="onboarding_permission_installer_desc">Lejo instalim aplikacionesh prej Shitores Aurora</string>
     <string name="pref_app_download">Shkarkime</string>

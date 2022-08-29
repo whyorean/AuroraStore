@@ -140,7 +140,6 @@
     <string name="pref_abandon_session">Forceer verwijder installatie sessies</string>
     <string name="onboarding_permission_installer_desc">Sta installeren van apps van Aurora Store toe</string>
     <string name="onboarding_permission_installer">Installateur Recht</string>
-    <string name="onboarding_permission_esm_desc">Externe opslag toegang is vereist op apparaten werkend met Android R+</string>
     <string name="onboarding_permission_esm">Externe Opslag Beheerder</string>
     <string name="onboarding_permission_esa_desc">Om je downloads op te slaan (APKs en OBBs), exporteer en importeer apparaat configuraties naar en van externe opslag.</string>
     <string name="onboarding_permission_esa">Externe Opslag Toegang</string>

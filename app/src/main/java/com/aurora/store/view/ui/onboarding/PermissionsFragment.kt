@@ -84,7 +84,7 @@ class PermissionsFragment : BaseFragment() {
                 Permission(
                     1,
                     getString(R.string.onboarding_permission_esm),
-                    getString(R.string.onboarding_permission_esm_desc)
+                    getString(R.string.onboarding_permission_esa_desc)
                 )
             )
         } else {
