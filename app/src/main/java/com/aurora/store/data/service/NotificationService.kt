@@ -1,6 +1,7 @@
 /*
  * Aurora Store
  *  Copyright (C) 2021, Rahul Kumar Patel <whyorean@gmail.com>
+ *  Copyright (C) 2022, The Calyx Institute
  *
  *  Aurora Store is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -28,6 +29,7 @@ import android.os.IBinder
 import android.util.ArrayMap
 import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
 import com.aurora.Constants
 import com.aurora.extensions.getStyledAttributeColor
@@ -322,11 +324,13 @@ class NotificationService : Service() {
             }
         }
 
-        notificationManager.notify(
-            app.packageName,
-            app.id,
-            builder.build()
-        )
+        if (NotificationManagerCompat.from(this).areNotificationsEnabled()) {
+            notificationManager.notify(
+                app.packageName,
+                app.id,
+                builder.build()
+            )
+        }
     }
 
     private fun getPauseIntent(groupId: Int): PendingIntent {
@@ -447,11 +451,13 @@ class NotificationService : Service() {
         builder.setContentText(status)
         builder.setSubText(app.packageName)
 
-        notificationManager.notify(
-            app.packageName,
-            app.id,
-            builder.build()
-        )
+        if (NotificationManagerCompat.from(this).areNotificationsEnabled()) {
+            notificationManager.notify(
+                app.packageName,
+                app.id,
+                builder.build()
+            )
+        }
     }
 
     override fun onDestroy() {
