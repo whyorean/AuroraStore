@@ -176,6 +176,9 @@
     <string name="download_completed">"Downloaded"</string>
     <string name="download_deleted">"Deleted"</string>
     <string name="download_eta_calculating">"Calculating"</string>
+    <string name="download_eta_hrs">%1$dh %2$dm %3$ds left</string>
+    <string name="download_eta_min">%1$dm %2$ds left</string>
+    <string name="download_eta_sec">%1$ds left</string>
     <string name="download_failed">"Download failed"</string>
     <string name="download_force_clear_all">"Force clear all"</string>
     <string name="download_metadata">"Getting metadata"</string>

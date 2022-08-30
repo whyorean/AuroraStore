@@ -21,9 +21,6 @@
     <string name="app_name">"Aurora Store"</string>
 
     <string name="app_list_rating">"%s • %s★ • %s"</string>
-    <string name="download_eta_hrs" translatable="false">%1$dh %2$dm %3$ds left</string>
-    <string name="download_eta_min" translatable="false">%1$dm %2$ds left</string>
-    <string name="download_eta_sec" translatable="false">%1$ds left</string>
     <string name="download_speed_bytes" translatable="false">%1$d B/s</string>
     <string name="download_speed_kb" translatable="false">%1$s KB/s</string>
     <string name="download_speed_mb" translatable="false">%1$s MB/s</string>
