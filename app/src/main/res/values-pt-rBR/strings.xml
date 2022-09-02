@@ -19,7 +19,7 @@
     <string name="title_download_manager">Downloads</string>
     <string name="title_apps">Aplicativos</string>
     <string name="pref_ui_theme_darkord">Disscord</string>
-    <string name="pref_install_mode_services">Serviços Aurora (Núcleo)</string>
+    <string name="pref_install_mode_services">Serviços Aurora</string>
     <string name="pref_app_download">Baixados</string>
     <string name="exodus_title">Proteção Aurora</string>
     <string name="download_progress">Baixando</string>
