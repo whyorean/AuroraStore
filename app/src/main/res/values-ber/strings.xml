@@ -366,4 +366,5 @@
     <string name="ui_accent_4"></string>
     <string name="ui_accent_6"></string>
     <string name="ui_accent_8"></string>
+    <string name="download_completed"></string>
 </resources>
