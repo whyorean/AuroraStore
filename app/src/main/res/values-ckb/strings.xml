@@ -366,4 +366,5 @@
     <string name="toast_double_press_to_exit"></string>
     <string name="toast_page_unavailable"></string>
     <string name="toast_rated_success"></string>
+    <string name="download_completed"></string>
 </resources>
