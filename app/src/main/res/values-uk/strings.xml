@@ -27,7 +27,7 @@
     <string name="download_failed">Помилка завантаження</string>
     <string name="download_eta_calculating">Обчислюється</string>
     <string name="download_deleted">Видалено</string>
-    <string name="download_completed">Завантажено</string>
+    <string name="download_completed">Завантаження завершено</string>
     <string name="download_clear_completed">Очистити завершені</string>
     <string name="download_cancel_all">Скасувати всі</string>
     <string name="download_canceled">Скасовано</string>
