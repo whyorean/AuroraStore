@@ -367,4 +367,5 @@
     <string name="spoof_apply"></string>
     <string name="tab_top_free"></string>
     <string name="pref_ui_theme_darkord"></string>
+    <string name="download_completed"></string>
 </resources>
