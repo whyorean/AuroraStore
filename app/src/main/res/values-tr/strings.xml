@@ -223,7 +223,7 @@
     <string name="download_failed">İndirme başarısız</string>
     <string name="download_eta_calculating">Hesaplanıyor</string>
     <string name="download_deleted">Silindi</string>
-    <string name="download_completed">İndirildi</string>
+    <string name="download_completed">İndirme tamamlandı</string>
     <string name="download_clear_completed">Temizleme tamamlandı</string>
     <string name="download_canceled">İptal edildi</string>
     <string name="download_cancel_all">Tümünü iptal et</string>
