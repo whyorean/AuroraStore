@@ -173,7 +173,7 @@
     <string name="download_cancel_all">"Cancel all"</string>
     <string name="download_canceled">"Cancelled"</string>
     <string name="download_clear_completed">"Clear completed"</string>
-    <string name="download_completed">"Downloaded"</string>
+    <string name="download_completed">Download completed</string>
     <string name="download_deleted">"Deleted"</string>
     <string name="download_eta_calculating">"Calculating"</string>
     <string name="download_failed">"Download failed"</string>
