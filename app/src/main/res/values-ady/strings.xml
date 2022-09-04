@@ -351,4 +351,5 @@
     <string name="pref_dialog_to_apply_restart"></string>
     <string name="pref_ui_quick_exit"></string>
     <string name="title_apps_library"></string>
+    <string name="download_completed"></string>
 </resources>
