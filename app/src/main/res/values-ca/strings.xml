@@ -367,4 +367,5 @@
     <string name="pref_updates_extended">Actualitzacions ampliades</string>
     <string name="purchase_invalid">Aplicació no comprada</string>
     <string name="pref_updates_extended_desc">També cerca versions noves d\'aplicacions inhabilitades</string>
+    <string name="title_about">Quant a</string>
 </resources>
