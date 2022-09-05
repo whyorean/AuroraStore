@@ -367,4 +367,5 @@
     <string name="toast_page_unavailable"></string>
     <string name="toast_rated_success"></string>
     <string name="download_completed"></string>
+    <string name="pref_ui_theme_darkord"></string>
 </resources>
