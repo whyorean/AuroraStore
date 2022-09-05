@@ -366,4 +366,5 @@
     <string name="menu_terms"></string>
     <string name="device_huawei_subtitle"></string>
     <string name="dialog_desc_native_split"></string>
+    <string name="pref_ui_theme_darkord"></string>
 </resources>
