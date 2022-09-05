@@ -248,7 +248,7 @@
     <string name="pref_ui_theme_black">Чорна</string>
     <string name="pref_ui_theme_title">Тема</string>
     <string name="pref_ui_theme_system">Визначається системою</string>
-    <string name="pref_ui_theme_darkord">Disskord</string>
+    <string name="pref_ui_theme_darkord">Darkord</string>
     <string name="pref_ui_accent_title">Основний колір</string>
     <string name="pref_network_title">Мережа</string>
     <string name="pref_install_profile_title">Профілі встановлення (Експериментально)</string>
