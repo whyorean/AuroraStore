@@ -295,7 +295,7 @@
     <string name="pref_ui_theme_black">"Black"</string>
     <string name="pref_ui_theme_dark">"Dark"</string>
     <string name="pref_ui_theme_dark_x">"Dark X"</string>
-    <string name="pref_ui_theme_darkord">Darkord</string>
+    <string name="pref_ui_theme_darkord">Discord</string>
     <string name="pref_ui_theme_light">"Light"</string>
     <string name="pref_ui_theme_system">"Follow System"</string>
     <string name="pref_ui_theme_title">"Theme"</string>
