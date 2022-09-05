@@ -366,4 +366,5 @@
     <string name="toast_rated_success"></string>
     <string name="toast_rated_failed"></string>
     <string name="app_updater_service_notif_title"></string>
+    <string name="pref_ui_theme_darkord"></string>
 </resources>
