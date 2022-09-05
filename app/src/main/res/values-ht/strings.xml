@@ -367,4 +367,5 @@
     <string name="toast_export_success"></string>
     <string name="toast_apk_copy_success"></string>
     <string name="pref_updates_extended_desc"></string>
+    <string name="pref_ui_theme_darkord"></string>
 </resources>
