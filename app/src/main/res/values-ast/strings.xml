@@ -367,4 +367,5 @@
     <string name="pref_ui_theme_black"></string>
     <string name="title_installer"></string>
     <string name="download_completed"></string>
+    <string name="pref_ui_theme_darkord"></string>
 </resources>
