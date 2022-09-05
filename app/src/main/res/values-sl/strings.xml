@@ -367,4 +367,5 @@
     <string name="ui_accent_3"></string>
     <string name="ui_accent_5"></string>
     <string name="ui_accent_8"></string>
+    <string name="pref_ui_theme_darkord"></string>
 </resources>
