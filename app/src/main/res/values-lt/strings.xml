@@ -250,7 +250,6 @@
     <string name="action_clear_all">Išvalyti viską</string>
     <string name="action_grant">Suteikti</string>
     <string name="action_granted">Suteiktas</string>
-    <string name="action_try_later"></string>
     <string name="action_update_all">Atnaujinti visas</string>
     <string name="action_updates">Atnaujinimai</string>
     <string name="details_beta">Beta testavimas</string>
