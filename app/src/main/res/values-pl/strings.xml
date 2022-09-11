@@ -186,7 +186,7 @@
     <string name="pref_ui_theme_title">Motyw</string>
     <string name="pref_ui_theme_system">Systemowy</string>
     <string name="pref_ui_theme_light">Jasny</string>
-    <string name="pref_ui_theme_darkord">Disskord</string>
+    <string name="pref_ui_theme_darkord">Discord</string>
     <string name="pref_ui_theme_dark_x">Ciemny X</string>
     <string name="pref_ui_theme_dark">Ciemny</string>
     <string name="pref_ui_theme_black">Czarny</string>
@@ -298,7 +298,7 @@
     <string name="download_failed">Pobieranie nieudane</string>
     <string name="download_eta_calculating">Obliczanie</string>
     <string name="download_deleted">Usunięto</string>
-    <string name="download_completed">Pobrano</string>
+    <string name="download_completed">Pobieranie zakończone</string>
     <string name="download_clear_completed">Wyczyść zakończone</string>
     <string name="download_canceled">Anulowano</string>
     <string name="download_cancel_all">Anuluj wszystkie</string>
