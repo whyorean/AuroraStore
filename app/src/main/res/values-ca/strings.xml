@@ -53,7 +53,7 @@
     <string name="details_dev_profile">Perfil del desenvolupador</string>
     <string name="details_ratings">Valoració i revisions</string>
     <string name="details_think_this_app">Què en penses d\'aquesta aplicació\?</string>
-    <string name="exodus_title">Aurora Protect</string>
+    <string name="exodus_title">Protecció Aurora</string>
     <string name="details_reviews">Valoracions</string>
     <string name="details_reviews_about_app">Més valoracions</string>
     <string name="download_canceled">Cancel·lat</string>
@@ -199,7 +199,7 @@
     <string name="details_screenshots">Captures de pantalla</string>
     <string name="download_cancel_all">Cancel·lar-ho tot</string>
     <string name="download_clear_completed">Neteja completada</string>
-    <string name="download_completed">Baixat</string>
+    <string name="download_completed">Baixada completada</string>
     <string name="download_deleted">Esborrat</string>
     <string name="download_eta_calculating">Calculant</string>
     <string name="download_failed">Ha fallat la baixada</string>
@@ -363,7 +363,7 @@
     <string name="ui_accent_13">Blau intens</string>
     <string name="ui_accent_12">Blau Disskord</string>
     <string name="title_spoof_manager">Gestor de falsificacions</string>
-    <string name="pref_ui_theme_darkord">Disskord</string>
+    <string name="pref_ui_theme_darkord">Discord</string>
     <string name="pref_updates_extended">Actualitzacions ampliades</string>
     <string name="purchase_invalid">Aplicació no comprada</string>
     <string name="pref_updates_extended_desc">També cerca versions noves d\'aplicacions inhabilitades</string>
