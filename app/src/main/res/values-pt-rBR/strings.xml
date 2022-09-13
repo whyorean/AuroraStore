@@ -18,7 +18,7 @@
     <string name="title_download_playstore">Play Store</string>
     <string name="title_download_manager">Downloads</string>
     <string name="title_apps">Aplicativos</string>
-    <string name="pref_ui_theme_darkord">Disscord</string>
+    <string name="pref_ui_theme_darkord">Discord</string>
     <string name="pref_install_mode_services">Serviços Aurora</string>
     <string name="pref_app_download">Baixados</string>
     <string name="exodus_title">Proteção Aurora</string>
@@ -146,7 +146,7 @@
     <string name="download_failed">Falha ao baixar</string>
     <string name="download_eta_calculating">Calculando</string>
     <string name="download_deleted">Apagados</string>
-    <string name="download_completed">Baixado</string>
+    <string name="download_completed">Download concluído</string>
     <string name="download_clear_completed">Limpar concluído</string>
     <string name="download_canceled">Cancelado</string>
     <string name="download_cancel_all">Cancelar tudo</string>
