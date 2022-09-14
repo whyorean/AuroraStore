@@ -183,7 +183,7 @@
     <string name="details_dev_reply">پاسخ توسعه‌دهنده</string>
     <string name="details_files">فایل‌ها</string>
     <string name="details_no_app">هیچ برنامه‌ای موجود نیست</string>
-    <string name="exodus_no_tracker">هیچ ترکری ندارد</string>
+    <string name="exodus_no_tracker">فاقد ردیاب</string>
     <string name="download_none">هیچ دانلودی موجود نیست</string>
     <string name="details_dependencies">نیازمندی ها</string>
     <string name="action_filter_gsf_dependent_apps">به فریم ورک گوگل (GSF) نیازمند است</string>
@@ -191,7 +191,7 @@
     <string name="details_ratings">رده‌بندی‌ها و مرورها</string>
     <string name="details_no_whitelist">هیچ برنامه ای در لیست سفید نیست</string>
     <string name="download_progress">در حال دانلود</string>
-    <string name="exodus_progress">درحال پیدا کردن ترکرها…</string>
+    <string name="exodus_progress">در حال بررسی ردیاب‌ها…</string>
     <string name="exodus_powered">از Exodus</string>
     <string name="details_rate_stars_first">ابتدا رتبه‌بندی ستاره را وارد کنید</string>
     <string name="details_others_think">ببینید بقیه چه نظری درباره ی این برنامه دارند</string>
