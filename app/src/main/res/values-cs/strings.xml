@@ -71,7 +71,7 @@
     <string name="pref_ui_title">Přizpůsobení</string>
     <string name="pref_ui_theme_title">Motiv</string>
     <string name="pref_ui_theme_system">Následovat systém</string>
-    <string name="pref_ui_theme_darkord">Šedý</string>
+    <string name="pref_ui_theme_darkord">Šedá</string>
     <string name="pref_ui_theme_dark_x">Tmavý X</string>
     <string name="pref_ui_theme_dark">Tmavý</string>
     <string name="pref_ui_theme_black">Černý</string>
