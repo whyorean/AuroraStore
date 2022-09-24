@@ -20,11 +20,14 @@
 package com.aurora.store.data.providers
 
 import android.content.Context
+import android.content.SharedPreferences
+import androidx.preference.PreferenceManager
 import com.aurora.store.data.SingletonHolder
 import com.aurora.store.util.Preferences
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
+import java.io.File
 import java.lang.reflect.Modifier
 
 class BlacklistProvider private constructor(var context: Context) {
@@ -38,9 +41,13 @@ class BlacklistProvider private constructor(var context: Context) {
         .create()
 
     fun getBlackList(): MutableSet<String> {
-        val rawBlacklist = Preferences.getString(context, PREFERENCE_BLACKLIST)
+        val rawBlacklist = PreferenceManager.getDefaultSharedPreferences(context)
+            .getString(PREFERENCE_BLACKLIST, (Context::class.java.getDeclaredMethod(
+                "getSharedPreferences", File::class.java, Int::class.java).invoke(context,
+                File("/product/etc/" + context.packageName + "/blacklist.xml"),
+                Context.MODE_PRIVATE) as SharedPreferences).getString(PREFERENCE_BLACKLIST, ""))
         return try {
-            if (rawBlacklist.isEmpty())
+            if (rawBlacklist!!.isEmpty())
                 mutableSetOf()
             else
                 gson.fromJson(rawBlacklist, object : TypeToken<Set<String?>?>() {}.type)
@@ -54,20 +61,22 @@ class BlacklistProvider private constructor(var context: Context) {
     }
 
     fun blacklist(packageName: String) {
-        val oldBlackList: MutableSet<String> = getBlackList()
-        oldBlackList.add(packageName)
-        save(oldBlackList)
+        blacklist(setOf(packageName))
     }
 
     fun whitelist(packageName: String) {
-        val oldBlackList: MutableSet<String> = getBlackList()
-        oldBlackList.remove(packageName)
-        save(oldBlackList)
+        whitelist(setOf(packageName))
     }
 
     fun blacklist(packageNames: Set<String>) {
         val oldBlackList: MutableSet<String> = getBlackList()
         oldBlackList.addAll(packageNames)
+        save(oldBlackList)
+    }
+
+    fun whitelist(packageNames: Set<String>) {
+        val oldBlackList: MutableSet<String> = getBlackList()
+        oldBlackList.removeAll(packageNames)
         save(oldBlackList)
     }
 
