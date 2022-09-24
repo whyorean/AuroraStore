@@ -274,7 +274,6 @@
     <string name="pref_abandon_session">Примусово очистити сеанси встановлення</string>
     <string name="onboarding_permission_installer_desc">Дозволити встановлення програм з Aurora Store</string>
     <string name="onboarding_permission_installer">Дозвіл встановлювача</string>
-    <string name="onboarding_permission_esm_desc">Обов’язково на пристроях з ОС Android R +, додатково до зовнішнього доступу до сховища</string>
     <string name="onboarding_permission_esm">Менеджер зовнішнього сховища</string>
     <string name="onboarding_permission_esa_desc">Щоб зберігати завантаження (APK &amp; OBB), експортувати та імпортувати конфігурації пристроїв на та із зовнішнього сховища.</string>
     <string name="onboarding_permission_esa">Доступ до зовнішнього сховища</string>

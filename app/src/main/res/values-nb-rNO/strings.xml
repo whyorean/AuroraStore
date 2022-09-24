@@ -293,7 +293,6 @@
     <string name="pref_common_advance">Avansere</string>
     <string name="pref_abandon_session_desc">Fjern forlatte eller ventende installasjonsøkter</string>
     <string name="pref_abandon_session">Tving frem klare installasjonsøkter</string>
-    <string name="onboarding_permission_esm_desc">Påkrevd på enheter som kjører Android R+, i tillegg til ekstern lagringstilgang</string>
     <string name="installer_service_misconfigured">Sett opp Aurora-tjenester og innvilg alle tilganger først.</string>
     <string name="toast_apk_copy_failed">Kunne ikke eksportere APK</string>
     <string name="toast_abandon_sessions">Gamle installasjonsøkter ble glemt</string>

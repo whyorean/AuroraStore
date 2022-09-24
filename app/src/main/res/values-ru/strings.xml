@@ -270,7 +270,6 @@
     <string name="pref_abandon_session">Принудительно очистить сеансы установки</string>
     <string name="onboarding_permission_installer_desc">Разрешить установку приложений из Aurora Store</string>
     <string name="onboarding_permission_installer">Разрешения установщика</string>
-    <string name="onboarding_permission_esm_desc">Требуется на устройствах под управлением Android R+ в дополнение к доступу к памяти</string>
     <string name="onboarding_permission_esm">Менеджер памяти</string>
     <string name="onboarding_permission_esa_desc">Чтобы сохранить загрузки (APK и OBB), экспортируйте и импортируйте конфигурации устройств во внешнее хранилище.</string>
     <string name="onboarding_permission_esa">Доступ к памяти</string>

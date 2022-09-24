@@ -1,6 +1,7 @@
 /*
  * Aurora Store
  *  Copyright (C) 2021, Rahul Kumar Patel <whyorean@gmail.com>
+ *  Copyright (C) 2022, The Calyx Institute
  *
  *  Aurora Store is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -121,8 +122,11 @@ class MainActivity : BaseActivity() {
 
         /*Check only if download to external storage is enabled*/
         if (Preferences.getBoolean(this, Preferences.PREFERENCE_DOWNLOAD_EXTERNAL)) {
-            checkExternalStorageAccessPermission()
-            checkExternalStorageManagerPermission()
+            if (isRAndAbove()) {
+                checkExternalStorageManagerPermission()
+            } else {
+                checkExternalStorageAccessPermission()
+            }
         }
 
         /* Check self update only for stable release, skip debug & nightlies*/

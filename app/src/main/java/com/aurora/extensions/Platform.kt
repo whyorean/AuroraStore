@@ -1,6 +1,7 @@
 /*
  * Aurora Store
  *  Copyright (C) 2021, Rahul Kumar Patel <whyorean@gmail.com>
+ *  Copyright (C) 2022, The Calyx Institute
  *
  *  Aurora Store is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -54,6 +55,10 @@ fun isRAndAbove(): Boolean {
 
 fun isSAndAbove(): Boolean {
     return Build.VERSION.SDK_INT >= Build.VERSION_CODES.S
+}
+
+fun isTAndAbove(): Boolean {
+    return Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU
 }
 
 fun isMIUI(): Boolean {

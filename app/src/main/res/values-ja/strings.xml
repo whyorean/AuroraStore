@@ -230,7 +230,6 @@
     <string name="action_accept">承認</string>
     <string name="account_logout">Auroraからログアウトする</string>
     <string name="title_device">端末</string>
-    <string name="onboarding_permission_esm_desc">Android R(11) 以降の端末では外部ストレージアクセスに加えて必要</string>
     <string name="onboarding_permission_esa_desc">ダウンロードしたAPK、OBBの保存、端末設定のインポート、エクスポートに必要。</string>
     <string name="toast_purchase_blocked">匿名アカウントではアプリ購入はできません。</string>
     <string name="toast_spoof_applied">端末偽装を適用しました。</string>

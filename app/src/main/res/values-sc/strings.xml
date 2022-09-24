@@ -118,7 +118,6 @@
     <string name="onboarding_permission_esa">Atzessu a sa memòria esterna</string>
     <string name="onboarding_permission_esa_desc">Pro sarvare sos iscarrigamentos (APK e OBB), esportare e importare sas configuratziones de su dispositivu a e dae sa memòria esterna.</string>
     <string name="onboarding_permission_esm">Gestore de sa memòria esterna</string>
-    <string name="onboarding_permission_esm_desc">Netzessàriu in sos dispositivos cun Android R+, paris a s\'atzessu a sa memòria esterna</string>
     <string name="onboarding_permission_installer">Permissu de s\'installadore</string>
     <string name="onboarding_permission_installer_desc">Permite s\'installatzione de aplicatziones dae s\'Aurora Store</string>
     <string name="pref_abandon_session_desc">Isbòida sas sessiones de installatzione in suspesu o abbandonadas</string>

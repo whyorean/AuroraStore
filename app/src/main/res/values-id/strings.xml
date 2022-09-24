@@ -170,7 +170,6 @@
     <string name="pref_abandon_session">Paksa sesi instalasi yang jelas</string>
     <string name="onboarding_permission_installer_desc">Izinkan menginstal aplikasi dari Aurora Store</string>
     <string name="onboarding_permission_installer">Izin Pemasang</string>
-    <string name="onboarding_permission_esm_desc">Diperlukan pada perangkat yang menjalankan Android R+, tambahan untuk Akses Penyimpanan Eksternal</string>
     <string name="onboarding_permission_esm">Manajer Penyimpanan Eksternal</string>
     <string name="onboarding_permission_esa_desc">Untuk menyimpan unduhan (APK &amp; OBB), ekspor &amp; impor konfigurasi perangkat ke dan dari penyimpanan eksternal.</string>
     <string name="onboarding_permission_esa">Akses Penyimpanan Eksternal</string>

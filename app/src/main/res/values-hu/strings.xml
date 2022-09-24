@@ -305,7 +305,6 @@
     <string name="pref_abandon_session">Kényszeríti a telepítések törlését</string>
     <string name="onboarding_permission_installer_desc">Lehetővé teszi az Aurora Store-ból származó appok telepítését</string>
     <string name="onboarding_permission_installer">Telepítési engedély</string>
-    <string name="onboarding_permission_esm_desc">Android R+ rendszert futtató eszközökön szükséges, a külső tárhely-hozzáférés mellett</string>
     <string name="onboarding_permission_esm">Külső tárhely kezelő</string>
     <string name="onboarding_permission_esa_desc">A letöltések mentéséhez (APK &amp; OBB), exportálja &amp; importálja az eszközkonfigurációkat a külső tárhelyre.</string>
     <string name="onboarding_permission_esa">Külső tárhely elérés</string>

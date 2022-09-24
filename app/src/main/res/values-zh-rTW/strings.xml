@@ -209,7 +209,6 @@
     <string name="pref_abandon_session">強制清除安裝階段</string>
     <string name="onboarding_permission_installer_desc">允許從 Aurora Store 安裝應用程式</string>
     <string name="onboarding_permission_installer">安裝器權限</string>
-    <string name="onboarding_permission_esm_desc">在 Android R 以上的裝置都需要訪問外部儲存的附加權限</string>
     <string name="onboarding_permission_esm">外部儲存管理</string>
     <string name="onboarding_permission_esa_desc">若要保存下載（APK &amp; OBB），匯出/匯入 設備配置 至/自 外部存儲。</string>
     <string name="onboarding_permission_esa">外部儲存空間存取</string>

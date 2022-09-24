@@ -280,7 +280,6 @@
     <string name="pref_abandon_session">Forcer l’effacement des sessions d’installation</string>
     <string name="onboarding_permission_installer_desc">Autoriser l’installation d’applications depuis Aurora Store</string>
     <string name="onboarding_permission_installer">Autorisation de l’installateur</string>
-    <string name="onboarding_permission_esm_desc">Nécessaire sur les appareils exécutant Android R+, en plus de l’accès au stockage externe</string>
     <string name="onboarding_permission_esm">Gestionnaire de stockage externe</string>
     <string name="onboarding_permission_esa_desc">Pour sauvegarder les téléchargements (APK et OBB), exporter et importer les configurations de l’appareil vers et depuis le stockage externe.</string>
     <string name="onboarding_permission_esa">Accès au stockage externe</string>

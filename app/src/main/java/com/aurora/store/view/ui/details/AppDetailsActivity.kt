@@ -1,6 +1,7 @@
 /*
  * Aurora Store
  *  Copyright (C) 2021, Rahul Kumar Patel <whyorean@gmail.com>
+ *  Copyright (C) 2022, The Calyx Institute
  *
  *  Aurora Store is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -26,7 +27,9 @@ import android.content.Intent
 import android.content.ServiceConnection
 import android.os.Build
 import android.os.Bundle
+import android.os.Environment
 import android.os.IBinder
+import android.provider.Settings
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -485,18 +488,30 @@ class AppDetailsActivity : BaseDetailsActivity() {
         bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
         updateActionState(State.PROGRESS)
 
-        runWithPermissions(
-            Manifest.permission.READ_EXTERNAL_STORAGE,
-            Manifest.permission.WRITE_EXTERNAL_STORAGE
-        ) {
-            if (updateService == null) {
-                listOfActionsWhenServiceAttaches.add({
-                    updateService?.updateApp(app, removeExisiting = true)
-                })
-                getUpdateServiceInstance()
+        if (isRAndAbove()) {
+            if (!Environment.isExternalStorageManager()) {
+                startActivity(Intent(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION))
             } else {
-                updateService?.updateApp(app, removeExisiting = true)
+                updateApp(app)
             }
+        } else {
+            runWithPermissions(
+                Manifest.permission.READ_EXTERNAL_STORAGE,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE
+            ) {
+                updateApp(app)
+            }
+        }
+    }
+
+    private fun updateApp(app: App) {
+        if (updateService == null) {
+            listOfActionsWhenServiceAttaches.add {
+                updateService?.updateApp(app, true)
+            }
+            getUpdateServiceInstance()
+        } else {
+            updateService?.updateApp(app, true)
         }
     }
 

@@ -88,7 +88,6 @@
     <string name="pref_abandon_session">Наметните чисте сесије инсталације</string>
     <string name="onboarding_permission_installer_desc">Дозволите инсталирање апликација из Аурора продавнице</string>
     <string name="onboarding_permission_installer">Дозвола за инсталацију</string>
-    <string name="onboarding_permission_esm_desc">Обавезно на уређајима који користе Android R+, уз приступ спољашњем складишту</string>
     <string name="onboarding_permission_esm">Спољашњи менаџер складишта</string>
     <string name="onboarding_permission_esa_desc">Да бисте сачували преузимања (АПК-ове и ОББ-ове), извезите и увезите конфигурације уређаја на спољну меморију.</string>
     <string name="onboarding_permission_esa">Приступ спољној меморији</string>

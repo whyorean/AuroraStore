@@ -317,7 +317,6 @@
     <string name="pref_abandon_session">Pakota asennussessioiden tyhjennys</string>
     <string name="onboarding_permission_installer_desc">Hyväksy sovellusten asentaminen Aurora Storen kautta</string>
     <string name="onboarding_permission_installer">Asentajan käyttöoikeus</string>
-    <string name="onboarding_permission_esm_desc">Vaaditaan Android R+ -laitteilla, ulkoisen tallennustilan käyttöoikeuden lisäksi</string>
     <string name="onboarding_permission_esm">Ulkoisen tallennustilan hallinta</string>
     <string name="onboarding_permission_esa_desc">Latausten (APK &amp; OBB), laiteasetusten viemiseen ja tuomiseen ulkoiselta tallennustilalta.</string>
     <string name="onboarding_permission_esa">Ulkoisen tallennustilan käyttö</string>

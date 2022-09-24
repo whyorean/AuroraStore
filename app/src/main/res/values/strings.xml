@@ -2,6 +2,7 @@
 <!--
   ~ Aurora Store
   ~  Copyright (C) 2021, Rahul Kumar Patel <whyorean@gmail.com>
+  ~  Copyright (C) 2022, The Calyx Institute
   ~
   ~  Aurora Store is free software: you can redistribute it and/or modify
   ~  it under the terms of the GNU General Public License as published by
@@ -256,9 +257,10 @@
     <string name="onboarding_permission_esa">"External Storage Access"</string>
     <string name="onboarding_permission_esa_desc">To save downloads (APKs &amp; OBBs), export and import device configs to and from external storage.</string>
     <string name="onboarding_permission_esm">"External Storage Manager"</string>
-    <string name="onboarding_permission_esm_desc">"Required on devices running Android R+, additional to External Storage Access"</string>
     <string name="onboarding_permission_installer">"Installer Permission"</string>
     <string name="onboarding_permission_installer_desc">"Allow installing apps from Aurora Store"</string>
+    <string name="onboarding_permission_notifications">"Notifications"</string>
+    <string name="onboarding_permission_notifications_desc">"Send notifications regarding installations status"</string>
     <string name="pref_abandon_session">"Force clear installation sessions"</string>
     <string name="pref_abandon_session_desc">"Clear abandon or pending installation sessions"</string>
     <string name="pref_app_download">"Downloads"</string>

@@ -327,7 +327,6 @@
     <string name="installer_service_misconfigured">අවුරෝරා සේවා පිහිටුවන්න හා පළමුව සියළු අවසර පිරිනමන්න.</string>
     <string name="installer_status_failure_invalid">APK වලංගු නොවේ හෝ හානි වී ඇත</string>
     <string name="onboarding_tos_desc">අපගේ සේවාවේ නියම කියවන්න හා භාවිතයට ඒවා පිළිගන්න.</string>
-    <string name="onboarding_permission_esm_desc">බාහිර ආචයන ප්‍රවේශයට අතිරේකව,ඇන්ඩ්‍රොයිඩ් ආර්+ ධාවනය වන උපාංගවලට ඇවැසිය</string>
     <string name="pref_common_extra">අමතර වැඩ</string>
     <string name="onboarding_title_accent">උදාත්තය</string>
     <string name="pref_abandon_session">ස්ථාපන වාර බලෙන් හිස් කරන්න</string>

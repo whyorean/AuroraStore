@@ -129,7 +129,6 @@
     <string name="pref_downloader_active_summary">செயலில் உள்ள பதிவிறக்கங்களின் அதிகபட்ச எண்ணிக்கை</string>
     <string name="pref_downloader_external_desc">பதிவிறக்கங்கள், ஏற்றுமதிகள் போன்றவற்றுக்கு வெளிப்புற சேமிப்பகம் பயன்படுத்தப்படுகிறது.</string>
     <string name="onboarding_tos_desc">அரோரா ஸ்டோரைப் பயன்படுத்த எங்களின் சேவை விதிமுறைகளைப் படித்து அதை ஏற்கவும்.</string>
-    <string name="onboarding_permission_esm_desc">வெளிப்புற சேமிப்பக அணுகலுடன் கூடுதலாக Android R+ இயங்கும் சாதனங்களில் தேவை</string>
     <string name="pref_filter_fdroid_title">F-Droid செயலிகளை வடிகட்டு</string>
     <string name="pref_filter_google_summary">தேடல் முடிவுகள் மற்றும் வகைப் பயன்பாடுகளில் இருந்து எல்லா Google Apps களையும் நீக்குகிறது</string>
     <string name="pref_insecure_anonymous_title">பாதுகாப்பற்ற அநாமதேய அமர்வு</string>
