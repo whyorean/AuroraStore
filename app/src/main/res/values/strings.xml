@@ -177,6 +177,9 @@
     <string name="download_completed">"Downloaded"</string>
     <string name="download_deleted">"Deleted"</string>
     <string name="download_eta_calculating">"Calculating"</string>
+    <string name="download_eta_hrs">%1$dh %2$dm %3$ds left</string>
+    <string name="download_eta_min">%1$dm %2$ds left</string>
+    <string name="download_eta_sec">%1$ds left</string>
     <string name="download_failed">"Download failed"</string>
     <string name="download_force_clear_all">"Force clear all"</string>
     <string name="download_metadata">"Getting metadata"</string>
@@ -318,6 +321,14 @@
     <string name="purchase_not_found">"App not found"</string>
     <string name="purchase_no_file">"Could not get files"</string>
     <string name="purchase_session_expired">"Session expired, re-login to obtain new session."</string>
+    <string name="session_enjoy">Login and enjoy.</string>
+    <string name="session_good">Woah! All good.</string>
+    <string name="session_init">Getting things ready…</string>
+    <string name="session_login">You need to login first</string>
+    <string name="session_login_failed_google">Failed to login via Google</string>
+    <string name="session_scrapped">Last session scrapped</string>
+    <string name="session_verifying">Verifying session</string>
+    <string name="session_verifying_google">Verifying Google Session</string>
     <string name="spoof_apply">"Make sure you re-login to apply the spoof"</string>
     <string name="insecure_anonymous_apply">"Make sure you re-login and restart app to apply changes."</string>
     <string name="tab_categories">"Categories"</string>
@@ -387,4 +398,6 @@
     <string name="ui_accent_11">Light blue</string>
     <string name="ui_accent_12">Disskord blue</string>
     <string name="ui_accent_13">Deep blue</string>
+    <string name="update_available">update available</string>
+    <string name="updates_available">updates available</string>
 </resources>

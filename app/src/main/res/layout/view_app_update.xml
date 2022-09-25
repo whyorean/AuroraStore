@@ -123,7 +123,7 @@
 
             <LinearLayout
                 android:id="@+id/layout_action"
-                android:layout_width="100dp"
+                android:layout_width="115dp"
                 android:layout_height="@dimen/height_button"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"

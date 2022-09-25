@@ -79,12 +79,12 @@ class AccountActivity : BaseActivity() {
                 }
 
                 AuthState.Available -> {
-                    updateStatus("Verifying session")
+                    updateStatus(getString(R.string.session_verifying))
                     updateActionLayout(false)
                 }
 
                 AuthState.Unavailable -> {
-                    updateStatus("You need to login first")
+                    updateStatus(getString(R.string.session_login))
                     updateActionLayout(true)
                 }
 
@@ -93,7 +93,7 @@ class AccountActivity : BaseActivity() {
                 }
 
                 AuthState.SignedOut -> {
-                    updateStatus("Last session scrapped")
+                    updateStatus(getString(R.string.session_scrapped))
                     updateActionLayout(true)
                 }
 
@@ -114,10 +114,10 @@ class AccountActivity : BaseActivity() {
         when (event) {
             is BusEvent.GoogleAAS -> {
                 if (event.success) {
-                    updateStatus("Verifying Google Session")
+                    updateStatus(getString(R.string.session_verifying_google))
                     VM.buildGoogleAuthData(event.email, event.aasToken)
                 } else {
-                    updateStatus("Failed to login via Google")
+                    updateStatus(getString(R.string.session_login_failed_google))
                 }
             }
             else -> {
@@ -129,10 +129,10 @@ class AccountActivity : BaseActivity() {
     private fun updateContents() {
         if (accountProvider.isSignedIn()) {
             B.viewFlipper.displayedChild = 1
-            updateStatus("Woah! all good.")
+            updateStatus(getString(R.string.session_good))
         } else {
             B.viewFlipper.displayedChild = 0
-            updateStatus("Login and enjoy.")
+            updateStatus(getString(R.string.session_enjoy))
         }
 
         updateUserProfile()
