@@ -154,7 +154,7 @@
     <string name="pref_abandon_session">Beenden von Installationen erzwingen</string>
     <string name="onboarding_permission_esm_desc">Erforderlich für Geräte ab Android 11 (zusätzlich zum Speicherzugriff)</string>
     <string name="onboarding_permission_esm">Speicherverwaltung</string>
-    <string name="onboarding_permission_esa_desc">Erforderlich zur Speicherung der heruntergeladenen Dateien (APKs und OBBs) sowie dem Export und Import von Gerätekonfigurationen</string>
+    <string name="onboarding_permission_esa_desc">Erforderlich zur Speicherung der heruntergeladenen APK- und OBB-Dateien sowie dem Ex- und Import von Gerätekonfigurationen</string>
     <string name="onboarding_permission_esa">Speicherzugriff</string>
     <string name="onboarding_welcome_select">Wie geht’s\?</string>
     <string name="onboarding_tos_error">Die Nutzungsbedingungen müssen zuerst als gelesen markiert werden.</string>
