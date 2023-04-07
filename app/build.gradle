@@ -31,8 +31,8 @@ project.ext {
             fetch2    : "3.1.6",
             fuel      : "2.3.0",
             glide     : "4.11.0",
-            lifecycle : '2.5.1',
-            navigation: '2.5.1',
+            lifecycle : '2.6.1',
+            navigation: '2.5.3',
             epoxy     : "4.3.1",
             libsu     : "3.0.2"
     ]
@@ -100,28 +100,27 @@ dependencies {
     implementation "androidx.multidex:multidex:2.0.1"
 
     //Protobuf
-    implementation "com.google.protobuf:protobuf-java:3.14.0"
+    implementation "com.google.protobuf:protobuf-java:3.17.2"
 
     //Apache's Goodies
-    implementation "commons-io:commons-io:2.8.0"
+    implementation "commons-io:commons-io:2.11.0"
     implementation "org.apache.commons:commons-text:1.8"
 
     //Google's Goodies
-    implementation "com.google.android.material:material:1.6.1"
+    implementation "com.google.android.material:material:1.8.0"
     implementation "com.google.android.flexbox:flexbox:3.0.0"
-    implementation "com.google.code.gson:gson:2.9.0"
+    implementation "com.google.code.gson:gson:2.10"
 
     //AndroidX
-    implementation "androidx.core:core-ktx:1.8.0"
+    implementation "androidx.core:core-ktx:1.9.0"
     implementation "androidx.viewpager2:viewpager2:1.0.0"
     implementation "androidx.vectordrawable:vectordrawable:1.1.0"
     implementation "androidx.preference:preference-ktx:1.2.0"
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
 
     //Arch LifeCycle
-    implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
-
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:${versions.lifecycle}"
+    implementation "androidx.lifecycle:lifecycle-service:${versions.lifecycle}"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:${versions.lifecycle}"
     implementation "androidx.lifecycle:lifecycle-viewmodel-savedstate:${versions.lifecycle}"
 
