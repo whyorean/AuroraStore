@@ -1,0 +1,2 @@
+• Fixed Aurora Services install
+• Updated Translations
