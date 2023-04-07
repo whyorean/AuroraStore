@@ -39,6 +39,7 @@ project.ext {
 }
 
 android {
+    namespace 'com.aurora.store'
     compileSdk 33
 
     defaultConfig {
