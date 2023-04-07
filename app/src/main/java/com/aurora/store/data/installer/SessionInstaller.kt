@@ -22,6 +22,7 @@ package com.aurora.store.data.installer
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageInstaller.PACKAGE_SOURCE_STORE
 import android.content.pm.PackageInstaller.SessionParams
 import android.net.Uri
 import android.os.Build
@@ -30,6 +31,7 @@ import androidx.core.content.FileProvider
 import com.aurora.extensions.isMAndAbove
 import com.aurora.extensions.isNAndAbove
 import com.aurora.extensions.isSAndAbove
+import com.aurora.extensions.isTAndAbove
 import com.aurora.store.BuildConfig
 import com.aurora.store.util.Log
 import org.apache.commons.io.IOUtils
@@ -67,6 +69,9 @@ class SessionInstaller(context: Context) : InstallerBase(context) {
             }
             if (isSAndAbove()) {
                 setRequireUserAction(SessionParams.USER_ACTION_NOT_REQUIRED)
+            }
+            if (isTAndAbove()) {
+                setPackageSource(PACKAGE_SOURCE_STORE)
             }
         }
         val sessionId = packageInstaller.createSession(sessionParams)
