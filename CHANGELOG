@@ -1,3 +1,20 @@
+Changelog : v4.2.0 (42)
+• Target Android 13
+• Enable localization of multiple strings
+• Add monochrome icon for Android 13
+• Update dependencies to latest version
+• Show Terms of Service prompt on launch immediately
+• Allow to go forward without granting permissions during initial setup
+• Read system xml denylist as default for excluding from updates
+• Show the correct title on the 5th setup page
+• Enable forward button on setup when going back
+• Replace checkboxes in setup installer with radio buttons
+• Use stroke color for background of setup tabs
+• Fix no-theme bug in setup by using radio buttons
+• Do not use new GSF & Vending versions
+• Refactor storage related permissions setup
+• Translation updates
+
 Changelog : v4.1.1 (41)
 • Hotfix - FCs for some devices
 
