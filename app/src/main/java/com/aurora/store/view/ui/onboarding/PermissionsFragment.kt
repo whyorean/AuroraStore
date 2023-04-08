@@ -119,15 +119,6 @@ class PermissionsFragment : BaseFragment() {
             ) == PackageManager.PERMISSION_GRANTED else true
             val storageManager = if (isRAndAbove()) Environment.isExternalStorageManager() else true
             val canInstallPackages = if (isOAndAbove()) requireContext().packageManager.canRequestPackageInstalls() else true
-            canGoForward = writeExternalStorage && storageManager && canInstallPackages
-            if (canGoForwardInitial == null) {
-                canGoForwardInitial = canGoForward
-            }
-            if (canGoForward && canGoForwardInitial == false) {
-                if (activity is OnboardingActivity) {
-                    (activity!! as OnboardingActivity).refreshButtonState()
-                }
-            }
             setFilterDuplicates(true)
             installerList.forEach {
                 add(
@@ -212,10 +203,4 @@ class PermissionsFragment : BaseFragment() {
         }
     }
 
-    private var canGoForward = false
-    private var canGoForwardInitial: Boolean? = null
-
-    fun canGoForward(): Boolean {
-        return canGoForward
-    }
 }

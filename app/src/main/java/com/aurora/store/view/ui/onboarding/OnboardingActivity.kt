@@ -143,12 +143,6 @@ class OnboardingActivity : BaseActivity() {
                 save(PREFERENCE_INTRO, true)
                 open(SplashActivity::class.java, true)
             }
-            for (fragment in supportFragmentManager.fragments) {
-                if (fragment is PermissionsFragment) {
-                    B.btnForward.isEnabled = fragment.canGoForward()
-                    break
-                }
-            }
         } else {
             B.btnForward.text = getString(R.string.action_next)
             B.btnForward.setOnClickListener {
