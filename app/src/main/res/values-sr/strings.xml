@@ -349,8 +349,6 @@
     <string name="toast_export_success">Конфигурација уређаја је успешно извезена</string>
     <string name="pref_updates_extended_desc">Омогућите за проверу ажурирања за онемогућене апликације</string>
     <string name="pref_updates_extended">Проширена ажурирања</string>
-    <string name="app_updater_service_notif_text"/>
     <string name="ui_accent_2"/>
-    <string name="ui_accent_7"/>
     <string name="ui_accent_13"/>
 </resources>

@@ -334,12 +334,8 @@
     <string name="ui_accent_2">Purpurinė</string>
     <string name="ui_accent_5">Žalia</string>
     <string name="ui_accent_11">Šviesiai mėlyna</string>
-    <string name="onboarding_tos_confirmation"/>
     <string name="device_miui_description"/>
-    <string name="details_no_whitelist"/>
     <string name="toast_spoof_applied"/>
-    <string name="pref_install_mode_session"/>
     <string name="pref_downloader_active_title"/>
-    <string name="pref_install_mode_native"/>
     <string name="pref_common_extra"/>
 </resources>

@@ -276,27 +276,15 @@
     <string name="onboarding_installer_select">Atlasīt piemērotu uzstādītāju</string>
     <string name="pref_abandon_session">Piespiest notīrīt uzstādīšanas sesijas</string>
     <string name="pref_abandon_session_desc">Notīrīt pamestās vai neuzsāktās uzstādīšanas sesijas</string>
-    <string name="pref_install_mode_services"/>
     <string name="pref_downloader_external"/>
-    <string name="pref_install_profile_summary"/>
     <string name="details_dependencies"/>
-    <string name="ui_accent_7"/>
     <string name="pref_install_mode_summary"/>
-    <string name="details_beta_delay"/>
     <string name="ui_accent_2"/>
-    <string name="pref_filter_search_summary"/>
     <string name="details_gsf_dependent"/>
-    <string name="pref_ui_accent_title"/>
     <string name="onboarding_permission_installer"/>
-    <string name="device_huawei_description"/>
     <string name="installer_am_unavailable"/>
-    <string name="pref_install_mode_native"/>
     <string name="ui_accent_6"/>
-    <string name="action_get_local_apk"/>
     <string name="installer_root_available"/>
-    <string name="pref_downloader_active_summary"/>
     <string name="insecure_anonymous_apply"/>
-    <string name="toast_spoof_applied"/>
     <string name="onboarding_permission_esa_desc"/>
-    <string name="toast_export_success"/>
 </resources>

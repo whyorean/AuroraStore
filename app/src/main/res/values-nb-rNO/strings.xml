@@ -355,7 +355,5 @@
     <string name="pref_install_mode_am">AM installatør.</string>
     <string name="installer_am_unavailable">Installer App Manager eller endre installasjonsprogrammet.</string>
     <string name="account_anonymous_insecure">Anonym (usikkert)</string>
-    <string name="ui_accent_8"/>
     <string name="ui_accent_12"/>
-    <string name="ui_accent_7"/>
 </resources>
