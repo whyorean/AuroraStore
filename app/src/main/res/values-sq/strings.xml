@@ -365,7 +365,5 @@
     <string name="account_anonymous_insecure">Anonime (jo e sigurt)</string>
     <string name="pref_install_mode_am">Instalues AM.</string>
     <string name="installer_am_unavailable">Instaloni Përgjegjës Aplikacionesh, ose ndryshoni instaluesin.</string>
-    <string name="pref_common_advance"></string>
-    <string name="pref_ui_quick_exit_desc"></string>
-    <string name="ui_accent_9"></string>
+    <string name="pref_ui_quick_exit_desc"/>
 </resources>

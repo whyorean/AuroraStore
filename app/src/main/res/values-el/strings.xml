@@ -367,5 +367,4 @@
     <string name="pref_ui_quick_exit_desc">Έξοδος με μονό πάτημα πίσω</string>
     <string name="installer_am_unavailable">Εγκατάσταση Διαχειριστή εφαρμογών ή άλλαξε το πρόγραμμα εγκατάστασης.</string>
     <string name="pref_abandon_session">Εξαναγκασμός εκκαθάρισης συνεδριάσεων</string>
-    <string name="pref_install_mode_am"></string>
 </resources>
