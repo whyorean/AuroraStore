@@ -2,15 +2,9 @@
 <resources>
     <string name="details_dev_email">ఈ-మెయిల్</string>
     <string name="details_dev_website">వెబ్‌సైటు</string>
-    <string name="about_libera"/>
     <string name="download_canceled"/>
-    <string name="details_no_ads"/>
     <string name="details_ratings"/>
-    <string name="pref_ui_layout"/>
     <string name="download_progress"/>
-    <string name="details_more_about_app"/>
     <string name="action_join"/>
-    <string name="action_purchase"/>
     <string name="action_close"/>
-    <string name="details_reviews_about_app"/>
 </resources>

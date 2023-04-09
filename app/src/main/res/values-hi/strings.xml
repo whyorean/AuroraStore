@@ -79,13 +79,8 @@
     <string name="action_done">हो गया</string>
     <string name="action_discover">डिस्कवर</string>
     <string name="action_discard">रद्द करें</string>
-    <string name="installer_status_user_action"/>
     <string name="device_miui_description"/>
-    <string name="pref_install_delete_summary"/>
     <string name="ui_accent_10"/>
-    <string name="notification_channel_alert"/>
     <string name="onboarding_installer_select"/>
-    <string name="action_sign_in"/>
     <string name="filter_review_critical"/>
-    <string name="pref_ui_theme_darkord"/>
 </resources>

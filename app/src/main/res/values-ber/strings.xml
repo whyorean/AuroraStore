@@ -1,14 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="onboarding_permission_installer"/>
     <string name="onboarding_tos"/>
-    <string name="toast_abandon_sessions"/>
     <string name="pref_ui_theme_black"/>
-    <string name="purchase_not_found"/>
     <string name="exodus_progress"/>
-    <string name="action_next"/>
     <string name="tab_trending"/>
-    <string name="about_telegram_summary"/>
     <string name="toast_anonymous_restriction"/>
-    <string name="title_purchase_history"/>
 </resources>

@@ -120,11 +120,7 @@
     <string name="title_updates">Актуализации</string>
     <string name="pref_updates_extended">Разширени актуализации</string>
     <string name="title_language">Език</string>
-    <string name="download_deleted"/>
     <string name="pref_install_mode_summary"/>
-    <string name="onboarding_permission_installer_desc"/>
     <string name="toast_spoof_applied"/>
-    <string name="toast_manual_unavailable"/>
     <string name="installer_status_failure_session"/>
-    <string name="details_no_updates"/>
 </resources>

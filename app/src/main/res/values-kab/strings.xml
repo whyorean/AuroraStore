@@ -87,12 +87,8 @@
     <string name="download_canceled">Yettwasefsex</string>
     <string name="download_completed">Yettwasider-d</string>
     <string name="filter_review_all">Akk</string>
-    <string name="notification_channel_general"/>
     <string name="details_others_think"/>
-    <string name="toast_export_success"/>
     <string name="pref_abandon_session"/>
-    <string name="action_installing"/>
     <string name="action_discard"/>
-    <string name="tab_for_you"/>
     <string name="tab_trending"/>
 </resources>

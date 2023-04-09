@@ -19,14 +19,9 @@
     <string name="action_logging_in">Initiar session</string>
     <string name="action_manual">Discarga manual</string>
     <string name="about_bhim">BHIM - UPI</string>
-    <string name="spoof_apply"/>
     <string name="pref_install_auto_title"/>
-    <string name="action_resend"/>
     <string name="onboarding_title_welcome"/>
-    <string name="about_fdroid"/>
     <string name="action_import"/>
-    <string name="details_dev_email"/>
     <string name="filter_review_one"/>
-    <string name="notification_installation_auto"/>
     <string name="insecure_anonymous_apply"/>
 </resources>

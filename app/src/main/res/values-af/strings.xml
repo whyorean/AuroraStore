@@ -2,15 +2,9 @@
 <resources>
     <string name="details_dev_website">Webwerf</string>
     <string name="details_dev_email">E-pos</string>
-    <string name="toast_rated_success"/>
     <string name="action_pending"/>
-    <string name="action_post"/>
     <string name="details_more_about_app"/>
-    <string name="pref_downloader_external"/>
     <string name="pref_filter_fdroid_title"/>
-    <string name="purchase_not_found"/>
     <string name="action_uninstall"/>
-    <string name="ui_accent_4"/>
     <string name="action_copy_link"/>
-    <string name="installer_service_available"/>
 </resources>

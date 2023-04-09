@@ -132,11 +132,7 @@
     <string name="title_details">Detay</string>
     <string name="title_apps">Aplikasyon yo</string>
     <string name="title_about">Enfomasyon</string>
-    <string name="device_huawei_subtitle"/>
     <string name="account_anonymous_insecure"/>
-    <string name="action_finish"/>
     <string name="pref_ui_theme_system"/>
-    <string name="pref_ui_no_for_you_desc"/>
     <string name="action_resume"/>
-    <string name="toast_developer_setting_failed"/>
 </resources>

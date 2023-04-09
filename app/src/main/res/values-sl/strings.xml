@@ -218,8 +218,6 @@
     <string name="installer_status_failure_blocked">Namestitev je bila blokirana</string>
     <string name="installer_status_user_action">Čakam na potrditev uporabnika</string>
     <string name="device_miui_description">Prosimo, izključite optimizacije MIUI, da omogočite nameščanje ali uporabite nameščanje s servisom ali korensko nameščanje.</string>
-    <string name="pref_ui_quick_exit_desc"/>
     <string name="onboarding_installer_select"/>
-    <string name="onboarding_title_accent"/>
     <string name="tab_top_grossing"/>
 </resources>

@@ -32,14 +32,9 @@
     <string name="title_manual_download">Descarga manual</string>
     <string name="action_all_reviews">Toles reseñes</string>
     <string name="action_accounts">Cuentes</string>
-    <string name="toast_clipboard_copied"/>
     <string name="action_finish"/>
-    <string name="toast_manual_available"/>
     <string name="action_filter_misc"/>
-    <string name="details_rate_stars_first"/>
     <string name="download_pause_all"/>
-    <string name="download_failed"/>
     <string name="title_apps_sale"/>
-    <string name="action_leave"/>
     <string name="action_grant"/>
 </resources>

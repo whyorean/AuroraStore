@@ -6,15 +6,9 @@
     <string name="about_telegram">Telegram</string>
     <string name="about_bitcoin_btc">Bitcoin</string>
     <string name="about_bitcoin_bch">เงิน Bitcoin</string>
-    <string name="ui_accent_4"/>
     <string name="action_cancel"/>
-    <string name="action_wishlist_add"/>
     <string name="pref_abandon_session"/>
-    <string name="pref_network_title"/>
     <string name="action_pending"/>
-    <string name="title_device"/>
     <string name="pref_ui_theme_system"/>
-    <string name="action_accounts"/>
     <string name="download_force_clear_all"/>
-    <string name="device_huawei_description"/>
 </resources>

@@ -104,12 +104,8 @@
     <string name="action_apply">আবেদন</string>
     <string name="action_accounts">অ্যাকাউন্ট</string>
     <string name="account_google">গুগল</string>
-    <string name="dialog_desc_self_update"/>
     <string name="pref_install_mode_services"/>
-    <string name="list_update_all_txt_one"/>
     <string name="action_wishlist_add"/>
-    <string name="onboarding_title_installer"/>
     <string name="toast_manual_available"/>
-    <string name="filter_review_three"/>
     <string name="toast_rated_failed"/>
 </resources>
