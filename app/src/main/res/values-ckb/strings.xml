@@ -116,7 +116,5 @@
     <string name="details_contains_ads">ڕیکلامی هەیە</string>
     <string name="details_changelog_unavailable">تۆماری گۆڕانکاری بەردەست نییە</string>
     <string name="details_changelog">تۆماری گۆڕانکاری</string>
-    <string name="toast_abandon_sessions"/>
     <string name="installer_am_unavailable"/>
-    <string name="pref_ui_quick_exit_desc"/>
 </resources>

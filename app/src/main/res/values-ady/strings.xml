@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="download_clear_completed"/>
     <string name="spoof_apply"/>
-    <string name="pref_ui_no_for_you"/>
     <string name="details_beta_delay"/>
-    <string name="title_library"/>
 </resources>

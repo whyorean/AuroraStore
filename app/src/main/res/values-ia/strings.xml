@@ -19,9 +19,6 @@
     <string name="action_logging_in">Initiar session</string>
     <string name="action_manual">Discarga manual</string>
     <string name="about_bhim">BHIM - UPI</string>
-    <string name="pref_install_auto_title"/>
     <string name="onboarding_title_welcome"/>
-    <string name="action_import"/>
     <string name="filter_review_one"/>
-    <string name="insecure_anonymous_apply"/>
 </resources>

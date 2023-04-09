@@ -79,8 +79,6 @@
     <string name="action_done">हो गया</string>
     <string name="action_discover">डिस्कवर</string>
     <string name="action_discard">रद्द करें</string>
-    <string name="device_miui_description"/>
     <string name="ui_accent_10"/>
-    <string name="onboarding_installer_select"/>
     <string name="filter_review_critical"/>
 </resources>

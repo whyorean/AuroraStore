@@ -132,7 +132,5 @@
     <string name="title_details">Detay</string>
     <string name="title_apps">Aplikasyon yo</string>
     <string name="title_about">Enfomasyon</string>
-    <string name="account_anonymous_insecure"/>
     <string name="pref_ui_theme_system"/>
-    <string name="action_resume"/>
 </resources>

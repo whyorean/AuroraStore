@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="onboarding_tos"/>
     <string name="pref_ui_theme_black"/>
-    <string name="exodus_progress"/>
     <string name="tab_trending"/>
-    <string name="toast_anonymous_restriction"/>
 </resources>

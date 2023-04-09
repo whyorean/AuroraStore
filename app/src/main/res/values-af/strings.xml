@@ -2,9 +2,6 @@
 <resources>
     <string name="details_dev_website">Webwerf</string>
     <string name="details_dev_email">E-pos</string>
-    <string name="action_pending"/>
     <string name="details_more_about_app"/>
-    <string name="pref_filter_fdroid_title"/>
     <string name="action_uninstall"/>
-    <string name="action_copy_link"/>
 </resources>

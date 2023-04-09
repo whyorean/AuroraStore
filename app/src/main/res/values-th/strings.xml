@@ -6,9 +6,6 @@
     <string name="about_telegram">Telegram</string>
     <string name="about_bitcoin_btc">Bitcoin</string>
     <string name="about_bitcoin_bch">เงิน Bitcoin</string>
-    <string name="action_cancel"/>
     <string name="pref_abandon_session"/>
-    <string name="action_pending"/>
     <string name="pref_ui_theme_system"/>
-    <string name="download_force_clear_all"/>
 </resources>

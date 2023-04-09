@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="title_updates"/>
     <string name="download_pause"/>
-    <string name="action_wait"/>
     <string name="action_spoofed"/>
-    <string name="details_dev_reply"/>
 </resources>

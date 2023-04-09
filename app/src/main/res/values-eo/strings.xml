@@ -252,5 +252,4 @@
     <string name="details_beta_available">Ĉu aniĝi betan programon\?</string>
     <string name="details_no_permission">Sen permesoj</string>
     <string name="about_gitlab_summary">Akiri la Aurora Store fontkodon el Aurora OSS ĉe GitLab.</string>
-    <string name="pref_install_auto_summary"/>
 </resources>

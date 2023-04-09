@@ -2,9 +2,6 @@
 <resources>
     <string name="details_dev_email">ఈ-మెయిల్</string>
     <string name="details_dev_website">వెబ్‌సైటు</string>
-    <string name="download_canceled"/>
     <string name="details_ratings"/>
-    <string name="download_progress"/>
     <string name="action_join"/>
-    <string name="action_close"/>
 </resources>
