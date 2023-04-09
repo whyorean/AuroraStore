@@ -116,19 +116,11 @@
     <string name="details_contains_ads">ڕیکلامی هەیە</string>
     <string name="details_changelog_unavailable">تۆماری گۆڕانکاری بەردەست نییە</string>
     <string name="details_changelog">تۆماری گۆڕانکاری</string>
-    <string name="exodus_view_report"/>
     <string name="onboarding_title_accent"/>
-    <string name="download_pause_all"/>
     <string name="toast_abandon_sessions"/>
-    <string name="installer_service_available"/>
     <string name="ui_accent_9"/>
-    <string name="pref_ui_similar_apps_desc"/>
     <string name="installer_am_unavailable"/>
-    <string name="title_purchase_history"/>
     <string name="pref_install_mode_session"/>
-    <string name="notification_channel_updater_service"/>
     <string name="pref_ui_quick_exit_desc"/>
-    <string name="about_libera"/>
     <string name="purchase_session_expired"/>
-    <string name="title_library"/>
 </resources>

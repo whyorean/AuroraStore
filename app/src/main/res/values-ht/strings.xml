@@ -132,18 +132,11 @@
     <string name="title_details">Detay</string>
     <string name="title_apps">Aplikasyon yo</string>
     <string name="title_about">Enfomasyon</string>
-    <string name="download_progress"/>
     <string name="device_huawei_subtitle"/>
-    <string name="filter_review_five"/>
     <string name="account_anonymous_insecure"/>
-    <string name="onboarding_permission_esa"/>
     <string name="action_finish"/>
-    <string name="installer_service_available"/>
     <string name="pref_ui_theme_system"/>
-    <string name="purchase_no_file"/>
     <string name="pref_ui_no_for_you_desc"/>
-    <string name="title_device"/>
     <string name="action_resume"/>
-    <string name="pref_install_auto_summary"/>
     <string name="toast_developer_setting_failed"/>
 </resources>

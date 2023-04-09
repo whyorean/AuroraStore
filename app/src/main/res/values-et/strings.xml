@@ -5,26 +5,15 @@
     <string name="about_bhim">BHIM - UPI</string>
     <string name="details_dev_website">Veebisait</string>
     <string name="details_dev_email">E-post</string>
-    <string name="installer_root_unavailable"/>
     <string name="device_miui_title"/>
-    <string name="download_none"/>
     <string name="title_apps_games"/>
-    <string name="onboarding_permission_esm_desc"/>
     <string name="notification_channel_alert"/>
-    <string name="action_installed"/>
     <string name="download_metadata"/>
-    <string name="details_no_ads"/>
     <string name="ui_accent_6"/>
-    <string name="action_manual"/>
     <string name="action_disable"/>
-    <string name="action_install"/>
     <string name="pref_ui_similar_apps_desc"/>
-    <string name="onboarding_welcome_select"/>
     <string name="toast_export_failed"/>
-    <string name="filter_review_five"/>
     <string name="ui_accent_9"/>
-    <string name="about_telegram"/>
     <string name="action_skip"/>
-    <string name="action_previous"/>
     <string name="installer_service_misconfigured"/>
 </resources>

@@ -2,26 +2,15 @@
 <resources>
     <string name="details_dev_website">Webwerf</string>
     <string name="details_dev_email">E-pos</string>
-    <string name="notification_channel_alert"/>
     <string name="toast_rated_success"/>
-    <string name="pref_abandon_session_desc"/>
     <string name="action_pending"/>
-    <string name="toast_abandon_sessions"/>
     <string name="action_post"/>
-    <string name="about_fdroid"/>
     <string name="details_more_about_app"/>
-    <string name="details_changelog_unavailable"/>
     <string name="pref_downloader_external"/>
-    <string name="pref_ui_quick_exit_desc"/>
     <string name="pref_filter_fdroid_title"/>
-    <string name="download_failed"/>
     <string name="purchase_not_found"/>
-    <string name="pref_install_delete_title"/>
     <string name="action_uninstall"/>
-    <string name="details_dev_address"/>
     <string name="ui_accent_4"/>
-    <string name="action_install"/>
     <string name="action_copy_link"/>
-    <string name="details_ratings"/>
     <string name="installer_service_available"/>
 </resources>

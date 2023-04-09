@@ -276,9 +276,6 @@
     <string name="onboarding_installer_select">Atlasīt piemērotu uzstādītāju</string>
     <string name="pref_abandon_session">Piespiest notīrīt uzstādīšanas sesijas</string>
     <string name="pref_abandon_session_desc">Notīrīt pamestās vai neuzsāktās uzstādīšanas sesijas</string>
-    <string name="details_dependencies"/>
     <string name="ui_accent_2"/>
-    <string name="onboarding_permission_installer"/>
     <string name="ui_accent_6"/>
-    <string name="insecure_anonymous_apply"/>
 </resources>

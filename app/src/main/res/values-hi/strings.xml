@@ -79,22 +79,13 @@
     <string name="action_done">हो गया</string>
     <string name="action_discover">डिस्कवर</string>
     <string name="action_discard">रद्द करें</string>
-    <string name="details_reviews"/>
     <string name="installer_status_user_action"/>
-    <string name="tab_for_you"/>
     <string name="device_miui_description"/>
-    <string name="action_updates"/>
     <string name="pref_install_delete_summary"/>
-    <string name="pref_install_profile_title"/>
     <string name="ui_accent_10"/>
-    <string name="tab_categories"/>
     <string name="notification_channel_alert"/>
-    <string name="onboarding_tos_error"/>
     <string name="onboarding_installer_select"/>
-    <string name="download_paused"/>
     <string name="action_sign_in"/>
-    <string name="ui_accent_7"/>
     <string name="filter_review_critical"/>
-    <string name="tab_top_paid"/>
     <string name="pref_ui_theme_darkord"/>
 </resources>

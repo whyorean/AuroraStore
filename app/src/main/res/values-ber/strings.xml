@@ -1,26 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="toast_apk_copy_failed"/>
     <string name="onboarding_permission_installer"/>
-    <string name="pref_ui_theme_dark"/>
     <string name="onboarding_tos"/>
-    <string name="pref_install_mode_root"/>
     <string name="toast_abandon_sessions"/>
-    <string name="action_resume"/>
     <string name="pref_ui_theme_black"/>
-    <string name="pref_filter_search_title"/>
     <string name="purchase_not_found"/>
-    <string name="exodus_view_report"/>
     <string name="exodus_progress"/>
-    <string name="details_more_about_app"/>
     <string name="action_next"/>
-    <string name="installer_status_failure_session"/>
     <string name="tab_trending"/>
-    <string name="action_copy"/>
     <string name="about_telegram_summary"/>
-    <string name="download_metadata"/>
     <string name="toast_anonymous_restriction"/>
-    <string name="title_apps_library"/>
     <string name="title_purchase_history"/>
-    <string name="pref_ui_theme_darkord"/>
 </resources>

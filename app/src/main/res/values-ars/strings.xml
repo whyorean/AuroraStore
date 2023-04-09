@@ -1,26 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="pref_downloader_active_summary"/>
     <string name="details_dependencies"/>
-    <string name="action_copy_link"/>
     <string name="title_updates"/>
-    <string name="pref_ui_theme_dark"/>
     <string name="action_ignore"/>
-    <string name="tab_top_free"/>
     <string name="download_pause"/>
-    <string name="action_clear_all"/>
     <string name="ui_accent_11"/>
-    <string name="about_bitcoin_btc_summary"/>
     <string name="action_wait"/>
-    <string name="onboarding_welcome_select"/>
     <string name="about_fdroid_summary"/>
-    <string name="action_download"/>
     <string name="action_spoofed"/>
-    <string name="installer_service_available"/>
     <string name="title_apps"/>
-    <string name="toast_export_failed"/>
     <string name="details_dev_reply"/>
-    <string name="download_cancel_all"/>
     <string name="filter_review_three"/>
-    <string name="download_completed"/>
 </resources>

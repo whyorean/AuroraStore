@@ -6,26 +6,15 @@
     <string name="about_telegram">Telegram</string>
     <string name="about_bitcoin_btc">Bitcoin</string>
     <string name="about_bitcoin_bch">เงิน Bitcoin</string>
-    <string name="action_logging_in"/>
     <string name="ui_accent_4"/>
-    <string name="pref_install_mode_summary"/>
     <string name="action_cancel"/>
-    <string name="title_installer"/>
     <string name="action_wishlist_add"/>
-    <string name="tab_top_free"/>
     <string name="pref_abandon_session"/>
-    <string name="insecure_anonymous_apply"/>
     <string name="pref_network_title"/>
-    <string name="details_no_dependencies"/>
     <string name="action_pending"/>
-    <string name="toast_aas_token_failed"/>
     <string name="title_device"/>
-    <string name="exodus_title"/>
     <string name="pref_ui_theme_system"/>
-    <string name="title_apps_library"/>
     <string name="action_accounts"/>
-    <string name="details_permission"/>
     <string name="download_force_clear_all"/>
-    <string name="filter_review_positive"/>
     <string name="device_huawei_description"/>
 </resources>

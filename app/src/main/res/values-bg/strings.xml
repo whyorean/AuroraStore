@@ -120,19 +120,11 @@
     <string name="title_updates">Актуализации</string>
     <string name="pref_updates_extended">Разширени актуализации</string>
     <string name="title_language">Език</string>
-    <string name="pref_dialog_to_apply_restart"/>
     <string name="download_deleted"/>
-    <string name="title_apps_sale"/>
     <string name="pref_install_mode_summary"/>
-    <string name="ui_accent_8"/>
     <string name="onboarding_permission_installer_desc"/>
-    <string name="installer_status_failure_aborted"/>
     <string name="toast_spoof_applied"/>
-    <string name="details_permission"/>
     <string name="toast_manual_unavailable"/>
-    <string name="pref_install_auto_summary"/>
     <string name="installer_status_failure_session"/>
-    <string name="onboarding_tos_error"/>
     <string name="details_no_updates"/>
-    <string name="pref_ui_layout"/>
 </resources>

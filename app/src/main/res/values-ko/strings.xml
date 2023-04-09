@@ -173,16 +173,10 @@
     <string name="download_speed_estimating">평가</string>
     <string name="exodus_no_report">사용 가능한 보고서 없음</string>
     <string name="exodus_no_tracker">추적기가 없습니다.</string>
-    <string name="installer_status_failure_incompatible"/>
     <string name="title_language"/>
-    <string name="menu_terms"/>
     <string name="toast_apk_blacklisted"/>
-    <string name="title_installation"/>
     <string name="onboarding_title_permissions"/>
-    <string name="installer_status_success"/>
     <string name="ui_accent_13"/>
-    <string name="purchase_not_found"/>
     <string name="notification_installation_auto"/>
-    <string name="title_manual_download"/>
     <string name="toast_export_success"/>
 </resources>

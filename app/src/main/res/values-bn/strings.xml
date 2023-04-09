@@ -104,20 +104,12 @@
     <string name="action_apply">আবেদন</string>
     <string name="action_accounts">অ্যাকাউন্ট</string>
     <string name="account_google">গুগল</string>
-    <string name="details_ratings"/>
     <string name="dialog_desc_self_update"/>
-    <string name="filter_review_critical"/>
     <string name="pref_install_mode_services"/>
-    <string name="details_no_previews"/>
     <string name="list_update_all_txt_one"/>
-    <string name="pref_ui_similar_apps"/>
     <string name="action_wishlist_add"/>
-    <string name="toast_apk_whitelisted"/>
     <string name="onboarding_title_installer"/>
-    <string name="tab_top_grossing"/>
     <string name="toast_manual_available"/>
-    <string name="title_settings"/>
     <string name="filter_review_three"/>
-    <string name="pref_ui_layout_tab"/>
     <string name="toast_rated_failed"/>
 </resources>

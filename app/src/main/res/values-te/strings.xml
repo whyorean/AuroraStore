@@ -2,26 +2,15 @@
 <resources>
     <string name="details_dev_email">ఈ-మెయిల్</string>
     <string name="details_dev_website">వెబ్‌సైటు</string>
-    <string name="toast_apk_copy_success"/>
     <string name="about_libera"/>
-    <string name="installer_status_failure_blocked"/>
     <string name="download_canceled"/>
-    <string name="action_filter_apps_with_ads"/>
     <string name="details_no_ads"/>
-    <string name="pref_ui_accent_title"/>
     <string name="details_ratings"/>
-    <string name="toast_developer_setting_failed"/>
     <string name="pref_ui_layout"/>
-    <string name="pref_downloader_active_summary"/>
     <string name="download_progress"/>
-    <string name="filter_review_five"/>
     <string name="details_more_about_app"/>
-    <string name="pref_filter_fdroid_summary"/>
     <string name="action_join"/>
-    <string name="download_none"/>
     <string name="action_purchase"/>
-    <string name="title_installed"/>
     <string name="action_close"/>
-    <string name="purchase_invalid"/>
     <string name="details_reviews_about_app"/>
 </resources>

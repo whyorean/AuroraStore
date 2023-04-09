@@ -32,25 +32,14 @@
     <string name="title_manual_download">Descarga manual</string>
     <string name="action_all_reviews">Toles reseñes</string>
     <string name="action_accounts">Cuentes</string>
-    <string name="toast_apk_copy_success"/>
     <string name="toast_clipboard_copied"/>
-    <string name="title_updates"/>
     <string name="action_finish"/>
-    <string name="title_apps_library"/>
     <string name="toast_manual_available"/>
-    <string name="details_dependencies"/>
     <string name="action_filter_misc"/>
-    <string name="onboarding_tos_confirmation"/>
     <string name="details_rate_stars_first"/>
-    <string name="filter_review_all"/>
     <string name="download_pause_all"/>
-    <string name="installer_status_failure_incompatible"/>
     <string name="download_failed"/>
-    <string name="details_no_app"/>
     <string name="title_apps_sale"/>
-    <string name="pref_abandon_session_desc"/>
     <string name="action_leave"/>
-    <string name="details_no_app_match"/>
     <string name="action_grant"/>
-    <string name="pref_ui_theme_darkord"/>
 </resources>
