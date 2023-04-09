@@ -349,13 +349,8 @@
     <string name="dialog_desc_native_split">Hûn nikarin bi navgîniya Sazkerê Xwecihî sepanên hevgirtî (parvekirî) saz bikin. Sazkerê xwe bi Danişîn, Xizmet an Rehê biguherînin.</string>
     <string name="details_no_app_match">Sepaneke lihevhatî nehat dîtin</string>
     <string name="action_check">Kontrol bike</string>
-    <string name="ui_accent_11"/>
     <string name="account_anonymous_insecure"/>
-    <string name="ui_accent_13"/>
     <string name="ui_accent_8"/>
-    <string name="ui_accent_5"/>
     <string name="ui_accent_7"/>
-    <string name="ui_accent_4"/>
     <string name="ui_accent_6"/>
-    <string name="app_updater_service_notif_text"/>
 </resources>

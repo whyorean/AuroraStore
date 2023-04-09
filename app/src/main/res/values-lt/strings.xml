@@ -334,21 +334,12 @@
     <string name="ui_accent_2">Purpurinė</string>
     <string name="ui_accent_5">Žalia</string>
     <string name="ui_accent_11">Šviesiai mėlyna</string>
-    <string name="installer_root_available"/>
     <string name="onboarding_tos_confirmation"/>
-    <string name="action_spoofed"/>
     <string name="device_miui_description"/>
-    <string name="device_huawei_description"/>
     <string name="details_no_whitelist"/>
-    <string name="dialog_desc_native_split"/>
     <string name="toast_spoof_applied"/>
-    <string name="toast_developer_setting_failed"/>
     <string name="pref_install_mode_session"/>
-    <string name="device_miui_extra"/>
     <string name="pref_downloader_active_title"/>
-    <string name="details_in_app_purchase"/>
     <string name="pref_install_mode_native"/>
-    <string name="onboarding_title_accent"/>
     <string name="pref_common_extra"/>
-    <string name="pref_install_mode_root"/>
 </resources>
