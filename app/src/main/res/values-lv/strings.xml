@@ -276,15 +276,9 @@
     <string name="onboarding_installer_select">Atlasīt piemērotu uzstādītāju</string>
     <string name="pref_abandon_session">Piespiest notīrīt uzstādīšanas sesijas</string>
     <string name="pref_abandon_session_desc">Notīrīt pamestās vai neuzsāktās uzstādīšanas sesijas</string>
-    <string name="pref_downloader_external"/>
     <string name="details_dependencies"/>
-    <string name="pref_install_mode_summary"/>
     <string name="ui_accent_2"/>
-    <string name="details_gsf_dependent"/>
     <string name="onboarding_permission_installer"/>
-    <string name="installer_am_unavailable"/>
     <string name="ui_accent_6"/>
-    <string name="installer_root_available"/>
     <string name="insecure_anonymous_apply"/>
-    <string name="onboarding_permission_esa_desc"/>
 </resources>

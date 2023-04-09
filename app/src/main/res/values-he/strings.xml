@@ -340,7 +340,5 @@
     <string name="notification_channel_general">התראות כלליות</string>
     <string name="pref_install_auto_title">התקן אוטומטית אפליקציות לאחר ההורדה</string>
     <string name="toast_spoof_applied">זיוף המכשיר הוחל.</string>
-    <string name="toast_abandon_sessions"/>
     <string name="pref_filter_search_title"/>
-    <string name="app_updater_service_notif_text"/>
 </resources>
