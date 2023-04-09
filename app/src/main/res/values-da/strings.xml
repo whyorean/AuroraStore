@@ -367,4 +367,5 @@
     <string name="notification_channel_updater_service">Tjeneste som downloader apps i baggrunden</string>
     <string name="app_updater_service_notif_title">Downloader app i baggrund</string>
     <string name="app_updater_service_notif_text">Slå download af app i baggrunden til</string>
+    <string name="title_about"></string>
 </resources>
