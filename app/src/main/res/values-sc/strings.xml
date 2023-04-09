@@ -140,7 +140,7 @@
     <string name="pref_network_title">Retze</string>
     <string name="pref_ui_accent_title">Colore</string>
     <string name="pref_ui_theme_dark_x">Iscuru X</string>
-    <string name="pref_ui_theme_darkord">Disskord</string>
+    <string name="pref_ui_theme_darkord">Discord</string>
     <string name="pref_ui_theme_system">Sighi su sistema</string>
     <string name="pref_ui_title">Personalizatzione</string>
     <string name="pref_ui_layout">Dispositzione</string>
@@ -241,7 +241,7 @@
     <string name="action_update">Agiorna</string>
     <string name="download_cancel_all">Annulla totu</string>
     <string name="download_clear_completed">Boga sos acabados</string>
-    <string name="download_completed">Acabadu</string>
+    <string name="download_completed">Iscarrigamentu acabadu</string>
     <string name="download_force_clear_all">Fortza Iscantzella totu</string>
     <string name="download_pause_all">Pone totu in pàusa</string>
     <string name="download_paused">In pàusa</string>
@@ -367,4 +367,5 @@
     <string name="ui_accent_11">Biaitu craru</string>
     <string name="ui_accent_12">Biaitu Disskord</string>
     <string name="ui_accent_2">Frùsia</string>
+    <string name="title_about">Informatziones</string>
 </resources>
