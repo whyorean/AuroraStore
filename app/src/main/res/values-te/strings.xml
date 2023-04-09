@@ -2,6 +2,5 @@
 <resources>
     <string name="details_dev_email">ఈ-మెయిల్</string>
     <string name="details_dev_website">వెబ్‌సైటు</string>
-    <string name="details_ratings"/>
     <string name="action_join"/>
 </resources>

@@ -5,6 +5,5 @@
     <string name="about_bhim">BHIM - UPI</string>
     <string name="details_dev_website">Veebisait</string>
     <string name="details_dev_email">E-post</string>
-    <string name="download_metadata"/>
     <string name="toast_export_failed"/>
 </resources>

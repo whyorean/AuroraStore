@@ -2,6 +2,5 @@
 <resources>
     <string name="details_dev_website">Webwerf</string>
     <string name="details_dev_email">E-pos</string>
-    <string name="details_more_about_app"/>
     <string name="action_uninstall"/>
 </resources>

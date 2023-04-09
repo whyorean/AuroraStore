@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="pref_ui_theme_black"/>
     <string name="tab_trending"/>
 </resources>

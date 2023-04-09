@@ -79,6 +79,5 @@
     <string name="action_done">हो गया</string>
     <string name="action_discover">डिस्कवर</string>
     <string name="action_discard">रद्द करें</string>
-    <string name="ui_accent_10"/>
     <string name="filter_review_critical"/>
 </resources>
