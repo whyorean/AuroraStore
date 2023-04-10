@@ -97,7 +97,7 @@
     <string name="filter_review_four">Четыре</string>
     <string name="filter_review_five">Пять</string>
     <string name="filter_review_all">Все</string>
-    <string name="exodus_view_report">Посмотреть отчет</string>
+    <string name="exodus_view_report">Посмотреть отчёт</string>
     <string name="exodus_view_more">Посмотреть</string>
     <string name="exodus_title">Защита Aurora</string>
     <string name="exodus_substring">найден(-ы) трекер(-ы)</string>
@@ -182,7 +182,7 @@
     <string name="pref_install_mode_session">Установка</string>
     <string name="device_huawei_description">Вам предлагается использовать подмену устройства, если у вас одна из новых моделей Huawei. Включить функцию подмены сейчас\?</string>
     <string name="menu_terms">Условия предоставления услуг</string>
-    <string name="installer_root_available">Root-доступ разрешен</string>
+    <string name="installer_root_available">Root-доступ разрешён</string>
     <string name="filter_review_positive">Положительный</string>
     <string name="filter_review_critical">Отрицательный</string>
     <string name="exodus_title_alt">Отчет Exodus</string>
@@ -244,7 +244,7 @@
     <string name="pref_ui_theme_dark">Темная</string>
     <string name="pref_ui_theme_black">Черная</string>
     <string name="pref_ui_theme_light">Светлая</string>
-    <string name="pref_ui_theme_darkord">Darkоrd</string>
+    <string name="pref_ui_theme_darkord">Discord</string>
     <string name="pref_ui_accent_title">Акцент</string>
     <string name="pref_install_profile_title">Установочные профили (экспериментальная функция)</string>
     <string name="pref_install_mode_title">Способ установки</string>
