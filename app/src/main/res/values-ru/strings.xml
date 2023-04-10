@@ -63,8 +63,8 @@
     <string name="about_bhim">BHIM - UPI</string>
     <string name="about_bitcoin_bch">Bitcoin Сash</string>
     <string name="about_telegram">Telegram</string>
-    <string name="action_blacklist_add">Добавить в черный список</string>
-    <string name="action_blacklist">Черный список</string>
+    <string name="action_blacklist_add">Добавить в чёрный список</string>
+    <string name="action_blacklist">Чёрный список</string>
     <string name="action_back">Назад</string>
     <string name="action_all_reviews">Все отзывы</string>
     <string name="action_accounts">Аккаунты</string>
@@ -117,10 +117,10 @@
     <string name="download_metadata">Получение метаданных</string>
     <string name="download_force_clear_all">Принудительно очистить все</string>
     <string name="download_failed">Ошибка загрузки</string>
-    <string name="download_eta_calculating">Расчет</string>
+    <string name="download_eta_calculating">Расчёт</string>
     <string name="download_deleted">Удалено</string>
-    <string name="download_completed">Загрузка завершена</string>
-    <string name="download_clear_completed">Убрать завершенные</string>
+    <string name="download_completed">Загружено</string>
+    <string name="download_clear_completed">Убрать завершённые</string>
     <string name="download_canceled">Отменено</string>
     <string name="download_cancel_all">Отменить все</string>
     <string name="details_think_this_app">Что вы думаете об этом приложении\?</string>
@@ -130,7 +130,7 @@
     <string name="details_review_submitted">Отзыв отправлен</string>
     <string name="details_ratings">Рейтинг и отзывы</string>
     <string name="details_rate_this_app">Оцените это приложение</string>
-    <string name="details_rate_stars_first">Укажите оценку в звездах</string>
+    <string name="details_rate_stars_first">Укажите оценку в звёздах</string>
     <string name="details_privacy">Конфиденциальность</string>
     <string name="details_permission">Разрешение</string>
     <string name="details_paid">Платное</string>
@@ -186,7 +186,7 @@
     <string name="filter_review_positive">Положительный</string>
     <string name="filter_review_critical">Отрицательный</string>
     <string name="exodus_title_alt">Отчёт Exodus</string>
-    <string name="exodus_report">Отчет Exodus</string>
+    <string name="exodus_report">Отчёт Exodus</string>
     <string name="action_spoofed">Подмена</string>
     <string name="action_resend">Переотправить</string>
     <string name="action_post">Отправить</string>
@@ -354,7 +354,7 @@
     <string name="notification_channel_updater_service">Служба фоновой загрузки приложений</string>
     <string name="account_anonymous_insecure">Анонимный (небезопасно)</string>
     <string name="installer_am_unavailable">Установите Менеджер Приложений или смените установщик.</string>
-    <string name="pref_install_mode_am">Установщик МП.</string>
+    <string name="pref_install_mode_am">Установщик МП</string>
     <string name="ui_accent_1">Синий</string>
     <string name="ui_accent_2">Пурпурный</string>
     <string name="ui_accent_3">Красный</string>
