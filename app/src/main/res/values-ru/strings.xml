@@ -244,7 +244,7 @@
     <string name="pref_ui_theme_dark">Темная</string>
     <string name="pref_ui_theme_black">Черная</string>
     <string name="pref_ui_theme_light">Светлая</string>
-    <string name="pref_ui_theme_darkord">Discord</string>
+    <string name="pref_ui_theme_darkord">Darkоrd</string>
     <string name="pref_ui_accent_title">Акцент</string>
     <string name="pref_install_profile_title">Установочные профили (экспериментальная функция)</string>
     <string name="pref_install_mode_title">Способ установки</string>
@@ -366,6 +366,6 @@
     <string name="ui_accent_9">Лайм</string>
     <string name="ui_accent_10">Оранжевый</string>
     <string name="ui_accent_11">Светло-синий</string>
-    <string name="ui_accent_13">Темно-синий</string>
+    <string name="ui_accent_13">Тёмно-синий</string>
     <string name="ui_accent_12">Насыщенно-синий</string>
 </resources>
