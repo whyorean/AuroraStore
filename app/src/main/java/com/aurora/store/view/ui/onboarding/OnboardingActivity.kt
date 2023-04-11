@@ -139,6 +139,7 @@ class OnboardingActivity : BaseActivity() {
         B.btnForward.isEnabled = lastPosition != 4
         if (lastPosition == 4) {
             B.btnForward.text = getString(R.string.action_finish)
+            B.btnForward.isEnabled = true
             B.btnForward.setOnClickListener {
                 save(PREFERENCE_INTRO, true)
                 open(SplashActivity::class.java, true)
