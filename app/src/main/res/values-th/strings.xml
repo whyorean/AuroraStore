@@ -6,4 +6,5 @@
     <string name="about_telegram">Telegram</string>
     <string name="about_bitcoin_btc">Bitcoin</string>
     <string name="about_bitcoin_bch">เงิน Bitcoin</string>
+    <string name="details_dev_email">อีเมล</string>
 </resources>
