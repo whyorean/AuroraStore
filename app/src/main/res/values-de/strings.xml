@@ -38,7 +38,7 @@
     <string name="about_libera">Liberapay</string>
     <string name="about_gitlab">GitLab</string>
     <string name="about_bitcoin_eth">Ethereum</string>
-    <string name="about_fdroid_summary">Aurora Store über F-Droid herunterladen</string>
+    <string name="about_fdroid_summary">Lade Aurora Store über F-Droid herunter.</string>
     <string name="about_fdroid">F-Droid</string>
     <string name="about_bitcoin_btc">Bitcoin</string>
     <string name="details_dev_website">Website</string>
@@ -51,7 +51,7 @@
     <string name="action_back">Zurück</string>
     <string name="action_discard">Verwerfen</string>
     <string name="action_done">Fertig</string>
-    <string name="about_gitlab_summary">Den Aurora Store-Quellcode von Aurora OSS bei GitLab herunterladen</string>
+    <string name="about_gitlab_summary">Lade den Aurora Store-Quellcode von Aurora OSS bei GitLab herunter.</string>
     <string name="about_bitcoin_btc_summary">Mit Bitcoin spenden (BTC)</string>
     <string name="about_bitcoin_bch_summary">Mit Bitcoin Cash spenden (BCH)</string>
     <string name="about_bhim_summary">Mit UPI spenden</string>
