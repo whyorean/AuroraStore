@@ -162,14 +162,14 @@
     <string name="onboarding_tos_desc">Um den Aurora Store nutzen zu können, bitte unsere Nutzungsbedingungen sorgfältig durchlesen und diese akzeptieren.</string>
     <string name="onboarding_tos">Nutzungsbedingungen</string>
     <string name="onboarding_title_welcome">Willkommen</string>
-    <string name="onboarding_title_theme">Darstellungsart</string>
+    <string name="onboarding_title_theme">Darstellung</string>
     <string name="onboarding_title_permissions">Berechtigungen</string>
-    <string name="onboarding_theme_select">Wählen Sie, was Ihnen gefällt</string>
+    <string name="onboarding_theme_select">Wähle aus, was dir am besten gefällt</string>
     <string name="onboarding_permission_select">Erforderliche Berechtigungen erteilen</string>
     <string name="onboarding_installer_select">Eine passende Methode auswählen</string>
     <string name="notification_installation_auto">Zum Installieren anklicken</string>
     <string name="notification_channel_general">Allgemeine Benachrichtigung</string>
-    <string name="notification_channel_alert">Kurznachricht</string>
+    <string name="notification_channel_alert">Kurze Benachrichtigung</string>
     <string name="list_update_all_txt_one">Update verfügbar</string>
     <string name="dialog_desc_self_update">Soll jetzt aktualisiert werden\?</string>
     <string name="dialog_title_self_update">Neues Update verfügbar</string>
