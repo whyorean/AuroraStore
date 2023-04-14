@@ -102,7 +102,7 @@
     <string name="action_apply">Anwenden</string>
     <string name="toast_spoof_applied">Gerätevortäuschung angewendet</string>
     <string name="toast_permission_granted">Berechtigung gewährt</string>
-    <string name="toast_developer_setting_failed">Die Entwickleroptionen in den Geräteeinstellungen aktivieren, um sie zu öffnen.</string>
+    <string name="toast_developer_setting_failed">Entwickleroptionen in den Geräteeinstellungen aktivieren, um sie zu öffnen.</string>
     <string name="toast_apk_copy_success">APK-Datei wurde exportiert</string>
     <string name="toast_apk_copy_failed">APK-Datei konnte nicht exportiert werden</string>
     <string name="toast_apk_blacklisted">Auf der Sperrliste</string>
