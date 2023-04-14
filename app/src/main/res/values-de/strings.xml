@@ -178,7 +178,7 @@
     <string name="device_miui_subtitle">Die Sitzungs-Installation kann aufgrund von MIUI-Optimierungen keine Apps installieren.</string>
     <string name="device_miui_title">MIUI erkannt!</string>
     <string name="device_huawei_description">Wir empfehlen Ihnen, die Gerätevortäuschung zu verwenden, wenn Sie ein aktuelles Huawei-Gerät haben. Möchten Sie das Vortäuschen jetzt anwenden\?</string>
-    <string name="device_huawei_subtitle">Anscheinend wird ein Huawei-Gerät verwendet. Aufgrund der jüngsten Einschränkungen durch Google kann man sich möglicherweise deswegen nicht anmelden.</string>
+    <string name="device_huawei_subtitle">Anscheinend wird ein Huawei-Gerät verwendet. Aufgrund der jüngsten Einschränkungen durch Google ist eine Anmeldung eventuell nicht möglich.</string>
     <string name="device_huawei_title">Huawei erkannt!</string>
     <string name="menu_terms">Nutzungsbedingungen</string>
     <string name="menu_license">Lizenz</string>
