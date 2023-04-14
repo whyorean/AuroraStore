@@ -79,7 +79,7 @@
     <string name="purchase_not_found">App nicht gefunden</string>
     <string name="purchase_unsupported">App wird nicht unterstützt</string>
     <string name="purchase_invalid">App nicht gekauft</string>
-    <string name="pref_install_profile_summary">Wählen Sie das Zielprofil aus, um Apps zu installieren. Dies funktioniert nur mit der Root-Installationsmethode.</string>
+    <string name="pref_install_profile_summary">Das Zielprofil auswählen, um Apps zu installieren. Dies funktioniert nur mit der Root-Installationsmethode.</string>
     <string name="pref_install_auto_summary">Apps werden sofort nach dem Download installiert</string>
     <string name="pref_filter_google_title">Google-Apps filtern</string>
     <string name="pref_filter_google_summary">Alle Google-Apps aus den Suchergebnissen und Kategorien entfernen</string>
@@ -102,7 +102,7 @@
     <string name="action_apply">Anwenden</string>
     <string name="toast_spoof_applied">Gerätevortäuschung angewendet</string>
     <string name="toast_permission_granted">Berechtigung gewährt</string>
-    <string name="toast_developer_setting_failed">Aktivieren Sie die Entwickleroptionen in den Geräteeinstellungen, um sie zu öffnen.</string>
+    <string name="toast_developer_setting_failed">Die Entwickleroptionen in den Geräteeinstellungen aktivieren, um sie zu öffnen.</string>
     <string name="toast_apk_copy_success">APK-Datei wurde exportiert</string>
     <string name="toast_apk_copy_failed">APK-Datei konnte nicht exportiert werden</string>
     <string name="toast_apk_blacklisted">Auf der Sperrliste</string>
@@ -131,7 +131,7 @@
     <string name="tab_for_you">Für dich</string>
     <string name="tab_categories">Kategorien</string>
     <string name="spoof_apply">Bitte neu anmelden, damit die Vortäuschung wirksam wird</string>
-    <string name="purchase_session_expired">Die Sitzung ist abgelaufen. Melden Sie sich wieder an, um eine neue Sitzung zu starten.</string>
+    <string name="purchase_session_expired">Die Sitzung ist abgelaufen. Erneut anmelden, um eine neue Sitzung zu starten.</string>
     <string name="purchase_no_file">Keine Dateien erhalten</string>
     <string name="purchase_failed">Download fehlgeschlagen</string>
     <string name="pref_ui_title">Anpassung</string>
