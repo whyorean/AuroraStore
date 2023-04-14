@@ -159,14 +159,14 @@
     <string name="onboarding_welcome_select">Wie geht’s\?</string>
     <string name="onboarding_tos_error">Die Nutzungsbedingungen müssen zuerst als gelesen markiert werden.</string>
     <string name="onboarding_tos_confirmation">Ich habe die Nutzungsbedingungen des Aurora Stores gelesen.</string>
-    <string name="onboarding_tos_desc">Um den Aurora Store nutzen zu können, lesen Sie sich bitte unsere Nutzungsbedingungen sorgfältig durch und akzeptieren diese.</string>
+    <string name="onboarding_tos_desc">Um den Aurora Store nutzen zu können, bitte unsere Nutzungsbedingungen sorgfältig durchlesen und diese akzeptieren.</string>
     <string name="onboarding_tos">Nutzungsbedingungen</string>
     <string name="onboarding_title_welcome">Willkommen</string>
     <string name="onboarding_title_theme">Darstellungsart</string>
     <string name="onboarding_title_permissions">Berechtigungen</string>
     <string name="onboarding_theme_select">Wählen Sie, was Ihnen gefällt</string>
-    <string name="onboarding_permission_select">Erteilen Sie erforderliche Berechtigungen</string>
-    <string name="onboarding_installer_select">Wählen Sie eine passende Methode</string>
+    <string name="onboarding_permission_select">Erforderliche Berechtigungen erteilen</string>
+    <string name="onboarding_installer_select">Eine passende Methode auswählen</string>
     <string name="notification_installation_auto">Zum Installieren anklicken</string>
     <string name="notification_channel_general">Allgemeine Benachrichtigung</string>
     <string name="notification_channel_alert">Kurznachricht</string>
