@@ -7,7 +7,7 @@
     <string name="action_installations">Installationen</string>
     <string name="action_install">Installieren</string>
     <string name="action_import">Importieren</string>
-    <string name="action_ignore_version">Version überspringen</string>
+    <string name="action_ignore_version">Diese Version überspringen</string>
     <string name="action_ignore">Ignorieren</string>
     <string name="action_home">Start</string>
     <string name="action_granted">Erlaubt</string>
@@ -56,8 +56,8 @@
     <string name="about_bitcoin_bch_summary">Mit Bitcoin Cash spenden (BCH)</string>
     <string name="about_bhim_summary">Mit UPI spenden</string>
     <string name="about_bhim">BHIM - UPI</string>
-    <string name="details_think_this_app">Wie finden Sie diese App\?</string>
-    <string name="details_others_think">Was andere über diese App denken</string>
+    <string name="details_think_this_app">Was hältst du von dieser App\?</string>
+    <string name="details_others_think">Was andere von dieser App halten</string>
     <string name="details_rate_stars_first">Zuerst die Sternebewertung abgeben</string>
     <string name="details_privacy">Datenschutz</string>
     <string name="details_permission">Berechtigungen</string>
@@ -272,7 +272,7 @@
     <string name="about_xda">XDA Entwickler-Forum</string>
     <string name="about_telegram_summary">Der Aurora-Support-Gruppe für Diskussionen oder Vorschläge beitreten</string>
     <string name="action_uninstall">Deinstallieren</string>
-    <string name="action_try_later">Später versuchen</string>
+    <string name="action_try_later">Versuche es später nochmal</string>
     <string name="action_submit">Absenden</string>
     <string name="action_spoofed">Vortäuschen</string>
     <string name="action_skip">Überspringen</string>
@@ -344,7 +344,7 @@
     <string name="toast_double_press_to_exit">Zum Beenden doppelt klicken</string>
     <string name="toast_page_unavailable">Seite nicht verfügbar</string>
     <string name="toast_rated_success">Bewertet</string>
-    <string name="toast_rated_failed">Bewertung konnte nicht übermittelt werden</string>
+    <string name="toast_rated_failed">Bewertung konnte nicht gesendet werden</string>
     <string name="toast_aas_token_failed">AAS-Token konnte nicht erstellt werden</string>
     <string name="toast_export_failed">Gerätekonfiguration konnte nicht exportiert werden</string>
     <string name="toast_export_success">Gerätekonfiguration wurde exportiert</string>
