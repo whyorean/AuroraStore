@@ -159,7 +159,7 @@
     <string name="onboarding_welcome_select">Wie geht’s\?</string>
     <string name="onboarding_tos_error">Die Nutzungsbedingungen müssen zuerst als gelesen markiert werden.</string>
     <string name="onboarding_tos_confirmation">Ich habe die Nutzungsbedingungen des Aurora Stores gelesen.</string>
-    <string name="onboarding_tos_desc">Um den Aurora Store nutzen zu können, bitte unsere Nutzungsbedingungen sorgfältig durchlesen und diese akzeptieren.</string>
+    <string name="onboarding_tos_desc">Um den Aurora Store nutzen zu können, bitte unsere Nutzungsbedingungen sorgfältig durchlesen und akzeptieren.</string>
     <string name="onboarding_tos">Nutzungsbedingungen</string>
     <string name="onboarding_title_welcome">Willkommen</string>
     <string name="onboarding_title_theme">Darstellung</string>
