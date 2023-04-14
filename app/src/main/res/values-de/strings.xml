@@ -173,7 +173,7 @@
     <string name="list_update_all_txt_one">Update verfügbar</string>
     <string name="dialog_desc_self_update">Möchten Sie jetzt aktualisieren\?</string>
     <string name="dialog_title_self_update">Neues Update verfügbar</string>
-    <string name="device_miui_extra">Optional kann man die systemeigene Installation auswählen, jedoch können dann keine zusammengefassten/geteilten APK-Dateien installiert werden. Die Entscheidung liegt also bei Ihnen.</string>
+    <string name="device_miui_extra">Optional kann die systemeigene Installationsmethode ausgewählt werden, jedoch können dann keine gebündelten/geteilten (split) APK-Dateien installiert werden.</string>
     <string name="device_miui_description">Um Installationen zu ermöglichen, bitte die MIUI-Optimierungen deaktivieren oder die Root- oder Services-Installationsmethode auswählen.</string>
     <string name="device_miui_subtitle">Die Sitzungs-Installation kann aufgrund von MIUI-Optimierungen keine Apps installieren.</string>
     <string name="device_miui_title">MIUI erkannt!</string>
