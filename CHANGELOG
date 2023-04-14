@@ -1,3 +1,7 @@
+Changelog : v4.2.1 (43)
+• Always enable finish button on permission fragment (fixes new user's onboarding)
+• Keep GSON library's TypeToken while optimizing build (fixes startup crash)
+
 Changelog : v4.2.0 (42)
 • Target Android 13
 • Enable localization of multiple strings

@@ -1,0 +1,2 @@
+• Always enable finish button on permission fragment (fixes new user's onboarding)
+• Keep GSON library's TypeToken while optimizing build (fixes startup crash)
