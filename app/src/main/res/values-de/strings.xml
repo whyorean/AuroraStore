@@ -317,7 +317,7 @@
     <string name="onboarding_permission_installer">Installation unbekannter Apps</string>
     <string name="onboarding_title_installer">Installationsmethode</string>
     <string name="onboarding_title_accent">Akzentfarbe</string>
-    <string name="toast_purchase_blocked">App-Käufe sind für anonyme Konten nicht verfügbar</string>
+    <string name="toast_purchase_blocked">App-Käufe sind für anonyme Konten nicht verfügbar.</string>
     <string name="insecure_anonymous_apply">Bitte neu anmelden und die App neu starten, um die Änderungen zu übernehmen.</string>
     <string name="pref_network_title">Netzwerk</string>
     <string name="pref_insecure_anonymous_title">Unsichere anonyme Sitzungen</string>
