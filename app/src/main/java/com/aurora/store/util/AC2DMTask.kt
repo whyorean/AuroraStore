@@ -32,7 +32,7 @@ class AC2DMTask {
         params["lang"] = Locale.getDefault().toString().replace("_", "-")
         params["google_play_services_version"] = PLAY_SERVICES_VERSION_CODE
         params["sdk_version"] = BUILD_VERSION_SDK
-        params["device_country"] = Locale.getDefault().country.toLowerCase(Locale.US)
+        params["device_country"] = Locale.getDefault().country.lowercase(Locale.US)
         params["Email"] = email
         params["service"] = "ac2dm"
         params["get_accountid"] = 1

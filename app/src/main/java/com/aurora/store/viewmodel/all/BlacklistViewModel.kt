@@ -71,7 +71,7 @@ class BlacklistViewModel(application: Application) : BaseAndroidViewModel(applic
                             }
                             blackList.add(black)
                         }
-                    liveData.postValue(blackList.sortedBy { it.displayName.toLowerCase(Locale.getDefault()) })
+                    liveData.postValue(blackList.sortedBy { it.displayName.lowercase(Locale.getDefault()) })
                     requestState = RequestState.Complete
                 } catch (e: Exception) {
                     e.printStackTrace()

@@ -70,7 +70,7 @@ class UpdatesViewModel(application: Application) : BaseAppsViewModel(application
             } else {
                 false
             }
-        }.sortedBy { it.displayName.toLowerCase(Locale.getDefault()) }.also { apps ->
+        }.sortedBy { it.displayName.lowercase(Locale.getDefault()) }.also { apps ->
             updateFileMap.clear()
 
             apps.forEach {

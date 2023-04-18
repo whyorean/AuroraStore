@@ -63,9 +63,9 @@ open class BaseFragment : Fragment() {
     }
 
     fun openStreamBrowseActivity(browseUrl: String, title: String = "") {
-        val intent = if (browseUrl.toLowerCase().contains("expanded"))
+        val intent = if (browseUrl.lowercase().contains("expanded"))
             Intent(requireContext(), ExpandedStreamBrowseActivity::class.java)
-        else if (browseUrl.toLowerCase().contains("developer"))
+        else if (browseUrl.lowercase().contains("developer"))
             Intent(requireContext(), DevProfileActivity::class.java)
         else
             Intent(requireContext(), StreamBrowseActivity::class.java)

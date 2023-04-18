@@ -63,7 +63,7 @@ class InfoView : RelativeLayout {
     fun badge(info: Map.Entry<String, String>) {
         B.txtTitle.text = info.key
             .replace("_", " ")
-            .toLowerCase(Locale.getDefault())
+            .lowercase(Locale.getDefault())
             .capitalize(Locale.getDefault())
         B.txtSubtitle.text = info.value
     }

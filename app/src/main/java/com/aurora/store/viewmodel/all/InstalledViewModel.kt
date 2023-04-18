@@ -44,7 +44,7 @@ class InstalledViewModel(application: Application) : BaseAppsViewModel(applicati
         viewModelScope.launch(Dispatchers.IO) {
             try {
                 appList.flushAndAdd(getFilteredApps())
-                liveData.postValue(appList.sortedBy { it.displayName.toLowerCase(Locale.getDefault()) })
+                liveData.postValue(appList.sortedBy { it.displayName.lowercase(Locale.getDefault()) })
                 requestState = RequestState.Complete
             } catch (e: Exception) {
                 requestState = RequestState.Pending
@@ -79,7 +79,7 @@ class InstalledViewModel(application: Application) : BaseAppsViewModel(applicati
         appList.flushAndAdd(updatedList)
 
         //Post new update list
-        liveData.postValue(appList.sortedBy { it.displayName.toLowerCase(Locale.getDefault()) })
+        liveData.postValue(appList.sortedBy { it.displayName.lowercase(Locale.getDefault()) })
     }
 
     override fun onCleared() {

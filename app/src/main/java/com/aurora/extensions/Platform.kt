@@ -66,9 +66,9 @@ fun isMIUI(): Boolean {
 }
 
 fun isHuawei(): Boolean {
-    return Build.MANUFACTURER.toLowerCase(Locale.getDefault()).contains("huawei")
-            || Build.HARDWARE.toLowerCase(Locale.getDefault()).contains("kirin")
-            || Build.HARDWARE.toLowerCase(Locale.getDefault()).contains("hi3")
+    return Build.MANUFACTURER.lowercase(Locale.getDefault()).contains("huawei")
+            || Build.HARDWARE.lowercase(Locale.getDefault()).contains("kirin")
+            || Build.HARDWARE.lowercase(Locale.getDefault()).contains("hi3")
 }
 
 fun getMIUIVersion(): String {

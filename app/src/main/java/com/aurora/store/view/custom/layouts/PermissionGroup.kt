@@ -156,7 +156,7 @@ class PermissionGroup : LinearLayout {
                 if (label.startsWith(it)) {
                     return it.replace(it, "")
                         .replace("_", " ")
-                        .toLowerCase(Locale.getDefault())
+                        .lowercase(Locale.getDefault())
                         .capitalize(Locale.getDefault())
                 }
             }
