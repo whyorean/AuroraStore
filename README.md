@@ -41,7 +41,7 @@ Please only download the latest stable releases from GitLab or one of these sour
 
 Nightlies are released here:
 
-- AuroraOSS: [Nightlies](https://files.auroraoss.com/AuroraStore/Nightly/)
+- AuroraOSS: [Nightlies](https://files.auroraoss.com/?folder=AuroraStore/Nightly)
 
 `Aurora Store v4 is still in on-going development! Bugs are to be expected! Any bug reports are appreciated.`
 
