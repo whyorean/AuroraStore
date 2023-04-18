@@ -5,7 +5,7 @@
     <string name="action_update">Aktualizovat</string>
     <string name="action_blacklist">Černá Listina</string>
     <string name="action_blacklist_add">Přidat na blacklist</string>
-    <string name="title_blacklist_manager">Správce blacklist</string>
+    <string name="title_blacklist_manager">Správa černé listiny</string>
     <string name="toast_apk_blacklisted">Na blacklist</string>
     <string name="details_no_whitelist">Na whitelistu nejsou žádné aplikace</string>
     <string name="action_whitelist">Bílá Listina</string>
@@ -22,10 +22,10 @@
     <string name="toast_clipboard_copied">Zkopírováno do schránky</string>
     <string name="toast_apk_copy_success">APK exportován</string>
     <string name="toast_anonymous_restriction">Není k dispozici na anonymních účtech</string>
-    <string name="toast_abandon_sessions">Přerušené instalace</string>
+    <string name="toast_abandon_sessions">Staré relace instalací zrušeny</string>
     <string name="title_manual_download">Ruční stažení</string>
     <string name="title_updates">Aktualizace</string>
-    <string name="title_spoof_manager">Spoof manažer</string>
+    <string name="title_spoof_manager">Správa falšování</string>
     <string name="title_settings">Nastavení</string>
     <string name="title_purchase_history">Historie nákupů</string>
     <string name="title_no_network">Žádná síť</string>
@@ -54,7 +54,7 @@
     <string name="tab_editor_choice">Výběr redakce</string>
     <string name="tab_categories">Kategorie</string>
     <string name="spoof_apply">Chcete-li použít device spoof, nezapomeňte se znovu přihlásit</string>
-    <string name="purchase_session_expired">Spojení vypršelo, pro navázání nového spojení je potreba se znovu přihlásit.</string>
+    <string name="purchase_session_expired">Relace vypršela, pro vytvoření nové se znovu přihlaste.</string>
     <string name="purchase_no_file">Nelze získat soubory</string>
     <string name="purchase_not_found">Aplikace nebyla nalezena</string>
     <string name="purchase_unsupported">Aplikace není kompatibilní</string>
@@ -66,11 +66,11 @@
     <string name="pref_ui_no_for_you">Stránky pro vás</string>
     <string name="pref_ui_quick_exit_desc">Ukončení aplikace při jedné akci zpět</string>
     <string name="pref_ui_quick_exit">Rychlé ukončení</string>
-    <string name="pref_ui_layout_tab">Vyberte výchozí kartu</string>
+    <string name="pref_ui_layout_tab">Vybrat výchozí kartu</string>
     <string name="pref_ui_layout">Rozložení</string>
     <string name="pref_ui_title">Přizpůsobení</string>
     <string name="pref_ui_theme_title">Motiv</string>
-    <string name="pref_ui_theme_system">Následovat systém</string>
+    <string name="pref_ui_theme_system">Podle systému</string>
     <string name="pref_ui_theme_darkord">Šedá</string>
     <string name="pref_ui_theme_dark_x">Tmavý X</string>
     <string name="pref_ui_theme_dark">Tmavý</string>
@@ -81,7 +81,7 @@
     <string name="pref_install_profile_summary">Vyberte cílový profil, do kterého chcete nainstalovat aplikace. Funguje pouze s metodou instalace root</string>
     <string name="pref_install_mode_title">Způsob instalace</string>
     <string name="pref_install_mode_summary">Vyberte režim instalace APK</string>
-    <string name="pref_install_mode_session">Session instalátor</string>
+    <string name="pref_install_mode_session">Relační instalátor</string>
     <string name="pref_install_mode_services">Služby Aurora</string>
     <string name="pref_install_mode_root">Root instalátor</string>
     <string name="pref_install_mode_native">Nativní instalátor</string>
@@ -91,10 +91,10 @@
     <string name="pref_install_auto_summary">Aplikace se nainstalují okamžitě po dokončení stahování</string>
     <string name="pref_insecure_anonymous_title">Nezabezpečená anonymní relace</string>
     <string name="pref_insecure_anonymous_summary">Generujte GSF ID lokálně na zařízení</string>
-    <string name="pref_filter_search_title">Použijte neperzistentní vyhledávací filtr</string>
+    <string name="pref_filter_search_title">Použít neperzistentní vyhledávací filtr</string>
     <string name="pref_filter_search_summary">Filtry vyhledávání se při každém vyhledávání resetují. Vypnutím uložíte filtry vyhledávání</string>
     <string name="pref_filter_google_title">Filtrovat aplikace Google</string>
-    <string name="pref_filter_google_summary">Odebere všechny Google Apps z výsledků vyhledávání a kategorií aplikací</string>
+    <string name="pref_filter_google_summary">Odebere všechny aplikace Google z výsledků vyhledávání a kategorií aplikací</string>
     <string name="pref_filter_fdroid_title">Filtrovat aplikace F-Droid</string>
     <string name="pref_filter_fdroid_summary">Odebere aplikace F-Droid ze seznamů aplikací</string>
     <string name="pref_downloader_external_desc">Externí úložiště se používá pro stahování, export atd.</string>
@@ -105,8 +105,8 @@
     <string name="pref_common_extra">Doplňky</string>
     <string name="pref_common_advance">Pokročilý</string>
     <string name="pref_app_download">Soubory ke stažení</string>
-    <string name="pref_abandon_session_desc">Odstraňte přerušené nebo čekající instalace</string>
-    <string name="pref_abandon_session">Vynucené ukončení nedokončených instalací</string>
+    <string name="pref_abandon_session_desc">Odstranit přerušené nebo čekající instalace</string>
+    <string name="pref_abandon_session">Vynutit vymazání relací instalátoru</string>
     <string name="onboarding_permission_installer_desc">Povolit instalaci aplikací z obchodu Aurora</string>
     <string name="onboarding_permission_installer">Instalační oprávnění</string>
     <string name="onboarding_permission_esm_desc">Vyžadováno na zařízeních se systémem Android R +, doplňující přístup k externímu úložišti</string>
@@ -133,7 +133,7 @@
     <string name="dialog_title_self_update">Byla nalezena nová aktualizace</string>
     <string name="device_miui_extra">Volitelně můžete zvolit Nativní instalátor, pak ale nebude možné instalovat skupiny APK, takže výběr je na vás.</string>
     <string name="device_miui_description">Pro povolení instalací, deaktivujte optimalizaci MIUI, v opačném případě si můžete vybrat mezi Root instalátor nebo Services instalátor.</string>
-    <string name="device_miui_subtitle">Session instalátor nelze použít z důvodu optimalizace MIUI.</string>
+    <string name="device_miui_subtitle">Relační instalátor nelze použít z důvodu optimalizací MIUI.</string>
     <string name="device_miui_title">Zjištěno MIUI!</string>
     <string name="device_huawei_description">Pokud máte zařízení Huawei, doporučujeme použít device spoof. Chcete to udělat hned teď\?</string>
     <string name="device_huawei_subtitle">Zdá se, že používáte zařízení Huawei. Z důvodu nedávných zákazů Google se možná nebudete moci přihlásit.</string>
@@ -148,7 +148,7 @@
     <string name="installer_status_failure_invalid">Neplatný nebo poškozený soubor APK</string>
     <string name="installer_status_failure_incompatible">Nekompatibilní aplikace</string>
     <string name="installer_status_failure_conflict">Byl nalezen konfliktní balíček</string>
-    <string name="installer_status_failure_session">Spojení se nepodařilo navázat</string>
+    <string name="installer_status_failure_session">Nepodařilo se vytvořit relaci</string>
     <string name="installer_status_failure_blocked">Instalace byla zablokována</string>
     <string name="installer_status_failure_aborted">Instalace zrušena</string>
     <string name="installer_service_unavailable">Nainstalujte služby Aurora 1.0.9 nebo vyšší, nebo změňte instalační program.</string>
@@ -169,7 +169,7 @@
     <string name="exodus_view_report">Zobrazit hlášení</string>
     <string name="exodus_title_alt">Zpráva Exodus</string>
     <string name="exodus_title">Ochrana Aurory</string>
-    <string name="exodus_substring">trackers(s) nalezeny v</string>
+    <string name="exodus_substring">sledovacích prvků nalezeno ve verzi</string>
     <string name="exodus_report">Zpráva Exodus</string>
     <string name="exodus_no_tracker">Neobsahuje trackers</string>
     <string name="exodus_progress">Kontroluji trackers…</string>
@@ -203,7 +203,7 @@
     <string name="details_rate_stars_first">Nejprve ohodnoťte</string>
     <string name="details_privacy">Soukromí</string>
     <string name="details_permission">Oprávnění</string>
-    <string name="details_paid">Placený</string>
+    <string name="details_paid">Placené</string>
     <string name="details_others_think">Podívejte se, co si o této aplikaci myslí ostatní</string>
     <string name="details_no_updates">Nejsou k dispozici žádné aktualizace</string>
     <string name="details_no_reviews">K dispozici nejsou žádné recenze</string>
@@ -216,7 +216,7 @@
     <string name="details_more_about_app">Více o aplikaci</string>
     <string name="details_in_app_purchase">Nákup v aplikaci</string>
     <string name="details_gsf_dependent">Vyžaduje GSF</string>
-    <string name="details_free">Bezplatný</string>
+    <string name="details_free">Bezplatné</string>
     <string name="details_files">Soubory</string>
     <string name="details_dev_website">Webová stránka</string>
     <string name="details_dev_reply">Odpověď vývojáře</string>
@@ -226,7 +226,7 @@
     <string name="details_dev_address">Adresa</string>
     <string name="details_description">Popis</string>
     <string name="details_dependencies">Závislosti</string>
-    <string name="details_contains_ads">Obsahuje Ads</string>
+    <string name="details_contains_ads">Obsahuje reklamy</string>
     <string name="details_changelog_unavailable">Seznam změn není k dispozici</string>
     <string name="details_changelog">Seznam změn</string>
     <string name="details_beta_delay">Registrace může nějakou dobu trvat, stav můžete zkontrolovat později.</string>
@@ -285,10 +285,10 @@
     <string name="action_filter_paid_apps">Placené</string>
     <string name="action_filter_misc">Různé</string>
     <string name="action_filter_gsf_dependent_apps">Závisí na GSF</string>
-    <string name="action_filter_downloads">Stažené</string>
-    <string name="action_filter_apps_with_ads">Aplikace s ads</string>
+    <string name="action_filter_downloads">Počet stažení</string>
+    <string name="action_filter_apps_with_ads">Aplikace s reklamami</string>
     <string name="action_filter_apply">Použít</string>
-    <string name="action_filter_all">Všechno</string>
+    <string name="action_filter_all">Vše</string>
     <string name="action_filter">Filtry</string>
     <string name="action_favourites">Oblíbené aplikace</string>
     <string name="action_export">Exportovat</string>
@@ -314,7 +314,7 @@
     <string name="action_all_reviews">Všechna hodnocení</string>
     <string name="action_accounts">Účty</string>
     <string name="action_accept">Přijmout</string>
-    <string name="account_logout">Odhlaste se z Aurory</string>
+    <string name="account_logout">Odhlásit se z Aurory</string>
     <string name="account_login_using">Přihlaste se pomocí</string>
     <string name="account_logged_out">Jste odhlášeni</string>
     <string name="account_google">Google</string>
@@ -339,7 +339,7 @@
     <string name="about_bitcoin_bch">Bitcoinová hotovost</string>
     <string name="about_bhim_summary">Darujte prostřednictvím UPI</string>
     <string name="about_bhim">BHIM - UPI</string>
-    <string name="dialog_desc_native_split">Přes nativní instalátor nelze instalovat skupiny aplikací. Změňte instalátor na Session, Services nebo Root.</string>
+    <string name="dialog_desc_native_split">Přes nativní instalátor nelze instalovat skupiny aplikací. Změňte typ instalátoru na Relační, Služby nebo Root.</string>
     <string name="toast_aas_token_failed">Nepodařilo se vygenerovat token AAS</string>
     <string name="toast_rated_failed">Nelze odeslat hodnocení</string>
     <string name="toast_rated_success">Hodnoceno</string>
