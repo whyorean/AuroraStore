@@ -52,6 +52,7 @@ android {
 
         vectorDrawables.useSupportLibrary = true
         multiDexEnabled true
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     signingConfigs {
@@ -168,6 +169,11 @@ dependencies {
 
     //Love <3
     api "com.gitlab.AuroraOSS:gplayapi:0e224071f3"
+
+    //Test
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 }
 
 Properties props = new Properties()
