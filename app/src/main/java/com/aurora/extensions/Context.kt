@@ -62,7 +62,7 @@ fun Context.browse(url: String) {
 
 fun Context.share(app: App) {
     try {
-        ShareCompat.IntentBuilder.from(this as AppCompatActivity)
+        ShareCompat.IntentBuilder(this as AppCompatActivity)
             .setType("text/plain")
             .setChooserTitle(getString(R.string.action_share))
             .setSubject(app.displayName)
