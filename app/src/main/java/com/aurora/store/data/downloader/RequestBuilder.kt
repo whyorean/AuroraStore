@@ -58,7 +58,7 @@ object RequestBuilder {
             File.FileType.BASE,
             File.FileType.SPLIT -> PathUtil.getApkDownloadFile(context, app, file)
             File.FileType.OBB,
-            File.FileType.PATCH -> PathUtil.getObbDownloadFile(context, app, file)
+            File.FileType.PATCH -> PathUtil.getObbDownloadFile(app, file)
         }
         return Request(file.url, fileName).apply {
             attachMetaData(context, app)

@@ -86,49 +86,49 @@ inline fun ImageView.load(
     bitmap: Bitmap?,
     transitionOptions: TransitionOptions<*, Drawable>? = null,
     requestOptions: RequestOptions.() -> Unit
-): ViewTarget<ImageView, Drawable> = loadAny(bitmap, transitionOptions, requestOptions)
+): ViewTarget<ImageView, Drawable> = loadAny(bitmap, requestOptions)
 
 @JvmSynthetic
 inline fun ImageView.load(
     byteArray: ByteArray?,
     transitionOptions: TransitionOptions<*, Drawable>? = null,
     requestOptions: RequestOptions.() -> Unit
-): ViewTarget<ImageView, Drawable> = loadAny(byteArray, transitionOptions, requestOptions)
+): ViewTarget<ImageView, Drawable> = loadAny(byteArray, requestOptions)
 
 @JvmSynthetic
 inline fun ImageView.load(
     drawable: Drawable?,
     transitionOptions: TransitionOptions<*, Drawable>? = null,
     requestOptions: RequestOptions.() -> Unit
-): ViewTarget<ImageView, Drawable> = loadAny(drawable, transitionOptions, requestOptions)
+): ViewTarget<ImageView, Drawable> = loadAny(drawable, requestOptions)
 
 @JvmSynthetic
 inline fun ImageView.load(
     @RawRes @DrawableRes resourceId: Int?,
     transitionOptions: TransitionOptions<*, Drawable>? = null,
     requestOptions: RequestOptions.() -> Unit
-): ViewTarget<ImageView, Drawable> = loadAny(resourceId, transitionOptions, requestOptions)
+): ViewTarget<ImageView, Drawable> = loadAny(resourceId, requestOptions)
 
 @JvmSynthetic
 inline fun ImageView.load(
     uri: Uri?,
     transitionOptions: TransitionOptions<*, Drawable>? = null,
     requestOptions: RequestOptions.() -> Unit
-): ViewTarget<ImageView, Drawable> = loadAny(uri, transitionOptions, requestOptions)
+): ViewTarget<ImageView, Drawable> = loadAny(uri, requestOptions)
 
 @JvmSynthetic
 inline fun ImageView.load(
     string: String?,
     transitionOptions: TransitionOptions<*, Drawable>? = null,
     requestOptions: RequestOptions.() -> Unit
-): ViewTarget<ImageView, Drawable> = loadAny(string, transitionOptions, requestOptions)
+): ViewTarget<ImageView, Drawable> = loadAny(string, requestOptions)
 
 @JvmSynthetic
 inline fun ImageView.load(
     file: File?,
     transitionOptions: TransitionOptions<*, Drawable>? = null,
     requestOptions: RequestOptions.() -> Unit
-): ViewTarget<ImageView, Drawable> = loadAny(file, transitionOptions, requestOptions)
+): ViewTarget<ImageView, Drawable> = loadAny(file, requestOptions)
 
 @JvmSynthetic
 fun ImageView.loadAny(
@@ -148,7 +148,6 @@ fun ImageView.loadAny(
 @JvmSynthetic
 inline fun ImageView.loadAny(
     data: Any?,
-    transitionOptions: TransitionOptions<*, Drawable>? = null,
     requestOptions: RequestOptions.() -> Unit
 ): ViewTarget<ImageView, Drawable> {
     val factory = DrawableCrossFadeFactory.Builder().setCrossFadeEnabled(true).build()

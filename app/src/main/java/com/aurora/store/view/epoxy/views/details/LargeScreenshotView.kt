@@ -50,11 +50,11 @@ class LargeScreenshotView : RelativeLayout {
     private lateinit var B: ViewScreenshotLargeBinding
 
     constructor(context: Context?) : super(context) {
-        init(context, null)
+        init(context)
     }
 
     constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs) {
-        init(context, attrs)
+        init(context)
     }
 
     constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : super(
@@ -62,10 +62,10 @@ class LargeScreenshotView : RelativeLayout {
         attrs,
         defStyleAttr
     ) {
-        init(context, attrs)
+        init(context)
     }
 
-    private fun init(context: Context?, attrs: AttributeSet?) {
+    private fun init(context: Context?) {
         val view = inflate(context, R.layout.view_screenshot_large, this)
         B = ViewScreenshotLargeBinding.bind(view)
     }

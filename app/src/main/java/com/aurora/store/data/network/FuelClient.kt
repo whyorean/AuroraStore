@@ -48,14 +48,14 @@ object FuelClient : IHttpClient {
         val parameters = params
             .map { it.key to it.value }
             .toList()
-        val (request, response, result) = Fuel.get(url, parameters)
+        val (request, response, _) = Fuel.get(url, parameters)
             .header(headers)
             .response()
         return buildPlayResponse(response, request)
     }
 
     override fun getAuth(url: String): PlayResponse {
-        val (request, response, result) = Fuel.get(url)
+        val (request, response, _) = Fuel.get(url)
             .appendHeader(
                 "User-Agent",
                 "${BuildConfig.APPLICATION_ID}-${BuildConfig.VERSION_NAME}-${BuildConfig.VERSION_CODE}"
@@ -69,14 +69,14 @@ object FuelClient : IHttpClient {
         headers: Map<String, String>,
         paramString: String
     ): PlayResponse {
-        val (request, response, result) = Fuel.get(url + paramString)
+        val (request, response, _) = Fuel.get(url + paramString)
             .header(headers)
             .response()
         return buildPlayResponse(response, request)
     }
 
     override fun post(url: String, headers: Map<String, String>, body: ByteArray): PlayResponse {
-        val (request, response, result) = Fuel.post(url)
+        val (request, response, _) = Fuel.post(url)
             .header(headers)
             .appendHeader(Headers.CONTENT_TYPE, "application/x-protobuf")
             .body(body, Charset.defaultCharset())
@@ -92,14 +92,14 @@ object FuelClient : IHttpClient {
         val parameters = params
             .map { it.key to it.value }
             .toList()
-        val (request, response, result) = Fuel.post(url, parameters)
+        val (request, response, _) = Fuel.post(url, parameters)
             .header(headers)
             .response()
         return buildPlayResponse(response, request)
     }
 
     override fun postAuth(url: String, body: ByteArray): PlayResponse {
-        val (request, response, result) = Fuel.post(url)
+        val (request, response, _) = Fuel.post(url)
             .appendHeader(
                 "User-Agent",
                 "${BuildConfig.APPLICATION_ID}-${BuildConfig.VERSION_NAME}-${BuildConfig.VERSION_CODE}"

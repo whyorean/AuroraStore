@@ -22,7 +22,6 @@ package com.aurora.store.view.epoxy.views
 import android.content.Context
 import android.util.AttributeSet
 import android.widget.RelativeLayout
-import androidx.core.text.HtmlCompat
 import com.airbnb.epoxy.CallbackProp
 import com.airbnb.epoxy.ModelProp
 import com.airbnb.epoxy.ModelView
@@ -38,11 +37,11 @@ class EditorHeadView : RelativeLayout {
     private lateinit var B: ViewEditorHeadBinding
 
     constructor(context: Context?) : super(context) {
-        init(context, null)
+        init(context)
     }
 
     constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs) {
-        init(context, attrs)
+        init(context)
     }
 
     constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : super(
@@ -50,10 +49,10 @@ class EditorHeadView : RelativeLayout {
         attrs,
         defStyleAttr
     ) {
-        init(context, attrs)
+        init(context)
     }
 
-    private fun init(context: Context?, attrs: AttributeSet?) {
+    private fun init(context: Context?) {
         val view = inflate(context, R.layout.view_editor_head, this)
         B = ViewEditorHeadBinding.bind(view)
     }

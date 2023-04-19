@@ -22,7 +22,6 @@ package com.aurora.store.view.epoxy.views
 import android.content.Context
 import android.util.AttributeSet
 import android.widget.RelativeLayout
-import androidx.annotation.Nullable
 import com.airbnb.epoxy.CallbackProp
 import com.airbnb.epoxy.ModelProp
 import com.airbnb.epoxy.ModelView
@@ -40,11 +39,11 @@ class HeaderView : RelativeLayout {
     private lateinit var B: ViewHeaderBinding
 
     constructor(context: Context?) : super(context) {
-        init(context, null)
+        init(context)
     }
 
     constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs) {
-        init(context, attrs)
+        init(context)
     }
 
     constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : super(
@@ -52,10 +51,10 @@ class HeaderView : RelativeLayout {
         attrs,
         defStyleAttr
     ) {
-        init(context, attrs)
+        init(context)
     }
 
-    private fun init(context: Context?, attrs: AttributeSet?) {
+    private fun init(context: Context?) {
         val view = inflate(context, R.layout.view_header, this)
         B = ViewHeaderBinding.bind(view)
     }

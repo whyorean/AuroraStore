@@ -97,7 +97,7 @@ class DetailsReviewActivity : BaseActivity() {
     }
 
     private fun attachChips() {
-        B.chipGroup.setOnCheckedChangeListener { group, checkedId ->
+        B.chipGroup.setOnCheckedChangeListener { _, checkedId ->
             when (checkedId) {
                 R.id.filter_review_all -> filter = Review.Filter.ALL
                 R.id.filter_review_critical -> filter = Review.Filter.CRITICAL

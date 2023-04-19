@@ -27,7 +27,6 @@ import android.graphics.Color
 import android.os.Build
 import android.os.IBinder
 import android.util.ArrayMap
-import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
@@ -351,7 +350,7 @@ class NotificationService : Service() {
         return PendingIntent.getActivity(this, 0, intent, flags)
     }
 
-    private fun getInstallIntent(packageName: String, versionCode: String): PendingIntent {
+    private fun getInstallIntent(packageName: String): PendingIntent {
         val intent = Intent(this, InstallReceiver::class.java)
         intent.putExtra(Constants.STRING_EXTRA, packageName)
         val flags = if (isMAndAbove())

@@ -40,11 +40,11 @@ class LocaleView : RelativeLayout {
     private lateinit var B: ViewLocaleBinding
 
     constructor(context: Context?) : super(context) {
-        init(context, null)
+        init(context)
     }
 
     constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs) {
-        init(context, attrs)
+        init(context)
     }
 
     constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : super(
@@ -52,10 +52,10 @@ class LocaleView : RelativeLayout {
         attrs,
         defStyleAttr
     ) {
-        init(context, attrs)
+        init(context)
     }
 
-    private fun init(context: Context?, attrs: AttributeSet?) {
+    private fun init(context: Context?) {
         val view = inflate(context, R.layout.view_locale, this)
         B = ViewLocaleBinding.bind(view)
     }

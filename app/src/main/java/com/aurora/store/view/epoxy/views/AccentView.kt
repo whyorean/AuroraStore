@@ -41,11 +41,11 @@ class AccentView : RelativeLayout {
     private lateinit var B: ViewAccentBinding
 
     constructor(context: Context?) : super(context) {
-        init(context, null)
+        init(context)
     }
 
     constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs) {
-        init(context, attrs)
+        init(context)
     }
 
     constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : super(
@@ -53,10 +53,10 @@ class AccentView : RelativeLayout {
         attrs,
         defStyleAttr
     ) {
-        init(context, attrs)
+        init(context)
     }
 
-    private fun init(context: Context?, attrs: AttributeSet?) {
+    private fun init(context: Context?) {
         val view = inflate(context, R.layout.view_accent, this)
         B = ViewAccentBinding.bind(view)
     }

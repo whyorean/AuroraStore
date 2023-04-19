@@ -42,12 +42,12 @@ class NativeInstaller(context: Context) : InstallerBase(context) {
                     }
                 }
             }.forEach {
-                xInstall(packageName, it)
+                xInstall(it)
             }
         }
     }
 
-    private fun xInstall(packageName: String, file: File) {
+    private fun xInstall(file: File) {
         val intent: Intent
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {

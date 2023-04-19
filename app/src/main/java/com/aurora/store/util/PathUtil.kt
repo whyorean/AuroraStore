@@ -70,13 +70,13 @@ object PathUtil {
         return "${getExternalPath()}/Exports/"
     }
 
-    private fun getObbDownloadPath(context: Context, app: App): String {
+    private fun getObbDownloadPath(app: App): String {
         return Environment.getExternalStorageDirectory()
             .toString() + "/Android/obb/" + app.packageName
     }
 
-    fun getObbDownloadFile(context: Context, app: App, file: File): String {
-        val obbDir = getObbDownloadPath(context, app)
+    fun getObbDownloadFile(app: App, file: File): String {
+        val obbDir = getObbDownloadPath(app)
         return "$obbDir/${file.name}"
     }
 }

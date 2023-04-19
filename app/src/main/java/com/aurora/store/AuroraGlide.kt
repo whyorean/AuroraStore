@@ -36,11 +36,11 @@ class AuroraGlide : AppGlideModule() {
         val memoryCacheSizeBytes = 1024 * 1024 * 50
         builder.setMemoryCache(LruResourceCache(memoryCacheSizeBytes.toLong()))
         builder.setDiskCache(InternalCacheDiskCacheFactory(context, memoryCacheSizeBytes.toLong()))
-        builder.setDefaultRequestOptions(requestOptions(context))
+        builder.setDefaultRequestOptions(requestOptions())
     }
 
     companion object {
-        private fun requestOptions(context: Context): RequestOptions {
+        private fun requestOptions(): RequestOptions {
             return RequestOptions()
                 .signature(ObjectKey(System.currentTimeMillis() / (24 * 60 * 60 * 1000)))
                 .centerCrop()

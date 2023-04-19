@@ -48,7 +48,7 @@ class UIPreference : PreferenceFragmentCompat() {
 
                 save(Preferences.PREFERENCE_THEME_TYPE, themeId)
 
-                applyTheme(themeId, accentId, shouldApplyTransition = false)
+                applyTheme(themeId, shouldApplyTransition = false)
 
                 SettingsActivity.shouldRestart = true
                 true
@@ -66,7 +66,7 @@ class UIPreference : PreferenceFragmentCompat() {
 
                 save(Preferences.PREFERENCE_THEME_ACCENT, accentId)
 
-                applyTheme(themeId, accentId, shouldApplyTransition = false)
+                applyTheme(themeId, shouldApplyTransition = false)
 
                 SettingsActivity.shouldRestart = true
                 true

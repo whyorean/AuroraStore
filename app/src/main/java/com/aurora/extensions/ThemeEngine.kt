@@ -36,7 +36,6 @@ import com.aurora.store.util.CommonUtil
 
 fun Fragment.applyTheme(
     themeId: Int,
-    accentId: Int = 1,
     shouldApplyTransition: Boolean = true,
     position: Int = 2
 ) {

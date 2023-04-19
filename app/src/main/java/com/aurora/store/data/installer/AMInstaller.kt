@@ -30,11 +30,11 @@ class AMInstaller(context: Context) : InstallerBase(context) {
             }
             when {
                 fileList.size == 1 -> {
-                    xInstall(packageName, File(fileList.first()))
+                    xInstall(File(fileList.first()))
                 }
                 fileList.size > 1 -> {
                     val apks = zipFile(fileList)
-                    xInstall(packageName, apks)
+                    xInstall(apks)
                 }
                 else -> {
                     throw Exception("Invalid data, expecting non empty fileList")
@@ -43,7 +43,7 @@ class AMInstaller(context: Context) : InstallerBase(context) {
         }
     }
 
-    private fun xInstall(packageName: String, file: File) {
+    private fun xInstall(file: File) {
         val intent: Intent = Intent(Intent.ACTION_VIEW)
         intent.setDataAndType(
             FileProvider.getUriForFile(

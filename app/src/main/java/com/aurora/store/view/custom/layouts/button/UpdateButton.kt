@@ -35,11 +35,11 @@ class UpdateButton : RelativeLayout {
     private lateinit var B: ViewUpdateButtonBinding
 
     constructor(context: Context) : super(context) {
-        init(context, null)
+        init(context)
     }
 
     constructor(context: Context, attrs: AttributeSet?) : super(context, attrs) {
-        init(context, attrs)
+        init(context)
     }
 
     constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(
@@ -47,7 +47,7 @@ class UpdateButton : RelativeLayout {
         attrs,
         defStyleAttr
     ) {
-        init(context, attrs)
+        init(context)
     }
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
@@ -57,10 +57,10 @@ class UpdateButton : RelativeLayout {
         defStyleAttr: Int,
         defStyleRes: Int
     ) : super(context, attrs, defStyleAttr, defStyleRes) {
-        init(context, attrs)
+        init(context)
     }
 
-    private fun init(context: Context, attrs: AttributeSet?) {
+    private fun init(context: Context) {
         val view = inflate(context, R.layout.view_update_button, this)
         B = ViewUpdateButtonBinding.bind(view)
     }

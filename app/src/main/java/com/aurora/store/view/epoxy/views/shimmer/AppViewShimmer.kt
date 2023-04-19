@@ -36,11 +36,11 @@ class AppViewShimmer : ShimmerFrameLayout {
     private lateinit var B: ViewAppShimmerBinding
 
     constructor(context: Context?) : super(context) {
-        init(context, null)
+        init(context)
     }
 
     constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs) {
-        init(context, attrs)
+        init(context)
     }
 
     constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : super(
@@ -48,10 +48,10 @@ class AppViewShimmer : ShimmerFrameLayout {
         attrs,
         defStyleAttr
     ) {
-        init(context, attrs)
+        init(context)
     }
 
-    private fun init(context: Context?, attrs: AttributeSet?) {
+    private fun init(context: Context?) {
         val view = inflate(context, R.layout.view_app_shimmer, this)
         B = ViewAppShimmerBinding.bind(view)
     }
