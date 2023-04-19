@@ -84,7 +84,7 @@ class DevProfileActivity : BaseActivity(), GenericCarouselController.Callbacks {
                 }
                 is ViewState.Success<*> -> {
                     updateInfo(it.data as DevStream)
-                    updateController(it.data as DevStream)
+                    updateController(it.data)
                 }
             }
         })
