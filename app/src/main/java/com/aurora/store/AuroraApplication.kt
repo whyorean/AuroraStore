@@ -19,8 +19,12 @@
 
 package com.aurora.store
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.os.Build
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.multidex.MultiDexApplication
+import com.aurora.Constants
 import com.aurora.store.data.downloader.DownloadManager
 import com.aurora.store.data.providers.NetworkProvider
 import com.aurora.store.data.receiver.PackageManagerReceiver
@@ -28,6 +32,7 @@ import com.aurora.store.data.service.NotificationService
 import com.aurora.store.util.CommonUtil
 import com.aurora.store.util.PackageUtil
 import com.tonyodev.fetch2.Fetch
+import java.util.ArrayList
 import nl.komponents.kovenant.android.startKovenant
 import nl.komponents.kovenant.android.stopKovenant
 
@@ -44,6 +49,9 @@ class AuroraApplication : MultiDexApplication() {
         super.onCreate()
 
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true)
+
+        //Create Notification Channels : General & Alert
+        createNotificationChannel()
 
         NotificationService.startService(this)
 
@@ -78,5 +86,34 @@ class AuroraApplication : MultiDexApplication() {
             .with(this)
             .unbind()
         super.onLowMemory()
+    }
+
+    private fun createNotificationChannel() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val notificationManager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
+            val channels = ArrayList<NotificationChannel>()
+            channels.add(
+                NotificationChannel(
+                    Constants.NOTIFICATION_CHANNEL_ALERT,
+                    getString(R.string.notification_channel_alert),
+                    NotificationManager.IMPORTANCE_HIGH
+                )
+            )
+            channels.add(
+                NotificationChannel(
+                    Constants.NOTIFICATION_CHANNEL_GENERAL,
+                    getString(R.string.notification_channel_general),
+                    NotificationManager.IMPORTANCE_MIN
+                )
+            )
+            channels.add(
+                NotificationChannel(
+                    Constants.NOTIFICATION_CHANNEL_UPDATER_SERVICE,
+                    getString(R.string.notification_channel_updater_service),
+                    NotificationManager.IMPORTANCE_MIN
+                )
+            )
+            notificationManager.createNotificationChannels(channels)
+        }
     }
 }

@@ -92,9 +92,6 @@ class NotificationService : Service() {
 
         notificationManager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
 
-        //Create Notification Channels : General & Alert
-        createNotificationChannel()
-
         fetch = DownloadManager.with(this).fetch
 
         fetchListener = object : AbstractFetchGroupListener() {
@@ -145,34 +142,6 @@ class NotificationService : Service() {
         }
 
         fetch.addListener(fetchListener)
-    }
-
-    private fun createNotificationChannel() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val channels = ArrayList<NotificationChannel>()
-            channels.add(
-                NotificationChannel(
-                    Constants.NOTIFICATION_CHANNEL_ALERT,
-                    getString(R.string.notification_channel_alert),
-                    NotificationManager.IMPORTANCE_HIGH
-                )
-            )
-            channels.add(
-                NotificationChannel(
-                    Constants.NOTIFICATION_CHANNEL_GENERAL,
-                    getString(R.string.notification_channel_general),
-                    NotificationManager.IMPORTANCE_MIN
-                )
-            )
-            channels.add(
-                NotificationChannel(
-                    Constants.NOTIFICATION_CHANNEL_UPDATER_SERVICE,
-                    getString(R.string.notification_channel_updater_service),
-                    NotificationManager.IMPORTANCE_MIN
-                )
-            )
-            notificationManager.createNotificationChannels(channels)
-        }
     }
 
     private fun showNotification(groupId: Int, download: Download, fetchGroup: FetchGroup) {
