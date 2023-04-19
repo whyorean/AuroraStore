@@ -90,7 +90,7 @@ class MainActivity : BaseActivity() {
     companion object {
         @JvmStatic
         private fun matchDestination(
-            @NonNull destination: NavDestination?,
+            destination: NavDestination?,
             @IdRes destId: Int
         ): Boolean {
             var currentDestination = destination
