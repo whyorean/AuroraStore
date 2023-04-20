@@ -1,2 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="action_filter_misc">ଵିଵିଧ</string>
+    <string name="action_import">ଆମଦାନୀ କରିବା</string>
+    <string name="action_later">ପରେ</string>
+    <string name="action_skip">ବାଦ୍ ଦିଅ</string>
+    <string name="action_info">ଆପ୍ ସୂଚନା</string>
+    <string name="action_export">ରପ୍ତାନି କରିବା</string>
+    <string name="action_home">ଗୃହ</string>
+</resources>
