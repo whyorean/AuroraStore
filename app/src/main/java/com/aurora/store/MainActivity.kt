@@ -26,7 +26,6 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Environment
 import android.provider.Settings
-import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.ImageView
@@ -39,7 +38,7 @@ import androidx.core.view.GravityCompat
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.Navigation
-import androidx.navigation.ui.NavigationUI
+import androidx.navigation.ui.setupWithNavController
 import com.aurora.Constants
 import com.aurora.extensions.*
 import com.aurora.gplayapi.data.models.AuthData
@@ -156,35 +155,15 @@ class MainActivity : BaseActivity() {
     private fun attachNavigation() {
         val bottomNavigationView: BottomNavigationView = B.navView
         navController = Navigation.findNavController(this, R.id.nav_host_fragment)
+        bottomNavigationView.setupWithNavController(navController)
 
         val backGroundColor = getStyledAttributeColor(android.R.attr.colorBackground)
         bottomNavigationView.setBackgroundColor(ColorUtils.setAlphaComponent(backGroundColor, 245))
 
-        bottomNavigationView.setOnNavigationItemSelectedListener { item ->
-            if (item.itemId == bottomNavigationView.selectedItemId)
-                return@setOnNavigationItemSelectedListener false
-            NavigationUI.onNavDestinationSelected(item, navController)
-            true
-        }
-
-        navController.addOnDestinationChangedListener { _: NavController?, destination: NavDestination?, _: Bundle? ->
-            val menu: Menu = bottomNavigationView.menu
-            val size: Int = menu.size()
-            for (i in 0 until size) {
-                val item: MenuItem = menu.getItem(i)
-                if (matchDestination(destination, item.itemId)) {
-                    item.isChecked = true
-                }
-            }
-        }
-
         val defaultTab = Preferences.getInteger(this, Preferences.PREFERENCE_DEFAULT_SELECTED_TAB)
-
-        when (defaultTab) {
-            0 -> navController.navigate(R.id.navigation_apps)
-            1 -> navController.navigate(R.id.navigation_games)
-            2 -> navController.navigate(R.id.navigation_updates)
-        }
+        val navigationList =
+            listOf(R.id.navigation_apps, R.id.navigation_games, R.id.navigation_updates)
+        bottomNavigationView.selectedItemId = navigationList[defaultTab]
     }
 
     private fun attachDrawer() {
