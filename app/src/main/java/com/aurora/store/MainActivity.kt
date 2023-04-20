@@ -213,12 +213,11 @@ class MainActivity : BaseActivity() {
         return navController.navigateUp()
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
-        if (B.drawerLayout.isDrawerOpen(GravityCompat.START)) {
-            B.drawerLayout.close()
-        } else if (!navController.navigateUp()) {
+        if (!B.drawerLayout.isDrawerOpen(GravityCompat.START)) {
             if (Preferences.getBoolean(this, Preferences.PREFERENCE_QUICK_EXIT)) {
-                super.onBackPressed()
+                this.finish()
             } else {
                 if (lastBackPressed + 1000 > System.currentTimeMillis()) {
                     super.onBackPressed()
@@ -227,6 +226,8 @@ class MainActivity : BaseActivity() {
                     Toast.makeText(this, getString(R.string.toast_double_press_to_exit), Toast.LENGTH_SHORT).show()
                 }
             }
+        } else {
+            B.drawerLayout.close()
         }
     }
 
