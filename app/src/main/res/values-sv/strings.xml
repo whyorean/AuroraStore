@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="action_filter_paid_apps">Köpt</string>
-    <string name="account_login_using">Logga in genom att använda</string>
+    <string name="account_login_using">Logga in med</string>
     <string name="about_xda">Utv. tråd</string>
     <string name="about_telegram_summary">Gå med i Aurora\'s hjälp-grupp för diskussioner eller förslag.</string>
     <string name="about_libera_summary">Bli en patron i Liberapay</string>
@@ -58,7 +58,7 @@
     <string name="pref_ui_theme_title">Tema</string>
     <string name="pref_ui_theme_system">Följ systemet</string>
     <string name="pref_ui_theme_light">Ljus</string>
-    <string name="pref_ui_theme_darkord">Disskord</string>
+    <string name="pref_ui_theme_darkord">Darkord</string>
     <string name="pref_ui_theme_dark_x">Mörk X</string>
     <string name="pref_ui_theme_dark">Mörk</string>
     <string name="pref_ui_theme_black">Svart</string>
@@ -150,7 +150,7 @@
     <string name="download_failed">Nerladdningen misslyckades</string>
     <string name="download_eta_calculating">Beräknar</string>
     <string name="download_deleted">Togs bort</string>
-    <string name="download_completed">Nerladdat</string>
+    <string name="download_completed">Hämtningen slutförd</string>
     <string name="download_clear_completed">Rensa bort slutförda</string>
     <string name="download_canceled">Avbröts</string>
     <string name="download_cancel_all">Avbryt alla</string>
@@ -335,7 +335,7 @@
     <string name="device_miui_description">Snälla du, inaktivera MIUI-optimeringar för att tillåta installationer, annars kan du välja Root eller installationsprogrammet för Tjänster.</string>
     <string name="account_anonymous_insecure">Anonymt (osäkert)</string>
     <string name="installer_am_unavailable">Installera app-hanteraren eller ändra på installationsprogrammet.</string>
-    <string name="action_get_local_apk">Spara App-paket</string>
+    <string name="action_get_local_apk">Spara program-paket</string>
     <string name="pref_common_extra">Extra</string>
     <string name="pref_install_mode_am">AM-installatör.</string>
     <string name="pref_abandon_session_desc">Ta bort övergivna eller väntande installationssessioner</string>
@@ -362,10 +362,10 @@
     <string name="toast_aas_token_failed">Kunde inte generera AAS-symbol</string>
     <string name="ui_accent_12">Disskord-blå</string>
     <string name="pref_ui_accent_title">Brytning</string>
-    <string name="pref_ui_quick_exit_desc">Avsluta programmet vid ett enkelt tryck på Tillbaka-knappen</string>
-    <string name="title_spoof_manager">Lurendrejeri-hanterare</string>
+    <string name="pref_ui_quick_exit_desc">Avsluta appen när bakåt-knappen trycks ner en gång</string>
+    <string name="title_spoof_manager">Hanterare av lurendrejeri</string>
     <string name="toast_abandon_sessions">Gamla installationssessioner övergavs</string>
-    <string name="toast_developer_setting_failed">Skruva på inställningen för utvecklare från enhetens inställningar för att öppna dem.</string>
+    <string name="toast_developer_setting_failed">Aktivera utvecklingsinställningarna från enhetens inställningar för att öppna dem.</string>
     <string name="toast_spoof_applied">Enhetsförfalskning tillämpades.</string>
-    <string name="app_updater_service_notif_text">Aktiverar nedladdning av appar i bakgrunden</string>
+    <string name="app_updater_service_notif_text">Aktiverar app-nedladdningar i bakgrunden</string>
 </resources>
