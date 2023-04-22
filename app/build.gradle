@@ -101,7 +101,7 @@ dependencies {
     implementation "androidx.multidex:multidex:2.0.1"
 
     //Protobuf
-    implementation "com.google.protobuf:protobuf-java:3.17.2"
+    implementation "com.google.protobuf:protobuf-javalite:3.22.3"
 
     //Apache's Goodies
     implementation "commons-io:commons-io:2.11.0"
@@ -168,7 +168,7 @@ dependencies {
     implementation "com.github.topjohnwu.libsu:core:${versions.libsu}"
 
     //Love <3
-    api "com.gitlab.AuroraOSS:gplayapi:0e224071f3"
+    implementation "com.gitlab.AuroraOSS:gplayapi:3.0.1"
 
     //Test
     testImplementation 'junit:junit:4.13.2'

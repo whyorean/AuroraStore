@@ -36,7 +36,6 @@ import com.aurora.store.view.epoxy.views.details.FileViewModel_
 import com.aurora.store.view.epoxy.views.details.InfoViewModel_
 import com.aurora.store.view.epoxy.views.details.MoreBadgeViewModel_
 import com.aurora.store.view.ui.commons.BaseActivity
-import com.google.protobuf.MapEntry
 import nl.komponents.kovenant.task
 import nl.komponents.kovenant.ui.failUi
 import nl.komponents.kovenant.ui.successUi
