@@ -168,7 +168,7 @@ dependencies {
     implementation "com.github.topjohnwu.libsu:core:${versions.libsu}"
 
     //Love <3
-    implementation "com.gitlab.AuroraOSS:gplayapi:3.0.1"
+    implementation "com.gitlab.AuroraOSS:gplayapi:3.1.0"
 
     //Test
     testImplementation 'junit:junit:4.13.2'

@@ -26,8 +26,15 @@ import com.aurora.store.util.Log
 import com.github.kittinunf.fuel.Fuel
 import com.github.kittinunf.fuel.core.*
 import java.nio.charset.Charset
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 
 object FuelClient : IHttpClient {
+
+    private val _responseCode = MutableStateFlow(0)
+    override val responseCode: StateFlow<Int>
+        get() = _responseCode.asStateFlow()
 
     override fun get(url: String, headers: Map<String, String>): PlayResponse {
         return get(url, headers, hashMapOf())
@@ -104,6 +111,9 @@ object FuelClient : IHttpClient {
 
     @JvmStatic
     private fun buildPlayResponse(response: Response, request: Request): PlayResponse {
+        // Reset response code as flow doesn't sends the same value twice
+        _responseCode.value = 0
+
         return PlayResponse().apply {
             isSuccessful = response.isSuccessful
             code = response.statusCode
@@ -117,6 +127,7 @@ object FuelClient : IHttpClient {
                 errorString = String(errorBytes)
             }
         }.also {
+            _responseCode.value = response.statusCode
             Log.i("FUEL [${request.method}:${response.statusCode}] ${response.url}")
         }
     }

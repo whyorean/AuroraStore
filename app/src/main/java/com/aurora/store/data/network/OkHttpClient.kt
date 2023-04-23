@@ -31,11 +31,18 @@ import okhttp3.OkHttpClient
 import okhttp3.RequestBody.Companion.toRequestBody
 import java.io.IOException
 import java.util.concurrent.TimeUnit
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 
 object OkHttpClient : IHttpClient {
 
     private const val POST = "POST"
     private const val GET = "GET"
+
+    private val _responseCode = MutableStateFlow(100)
+    override val responseCode: StateFlow<Int>
+        get() = _responseCode.asStateFlow()
 
     private val okHttpClient = OkHttpClient().newBuilder()
         .connectTimeout(25, TimeUnit.SECONDS)
@@ -140,6 +147,9 @@ object OkHttpClient : IHttpClient {
     }
 
     private fun processRequest(request: Request): PlayResponse {
+        // Reset response code as flow doesn't sends the same value twice
+        _responseCode.value = 0
+
         val call = okHttpClient.newCall(request)
         return buildPlayResponse(call.execute())
     }
@@ -165,6 +175,7 @@ object OkHttpClient : IHttpClient {
                 errorString = response.message
             }
         }.also {
+            _responseCode.value = response.code
             Log.i("OKHTTP [${response.code}] ${response.request.url}")
         }
     }
