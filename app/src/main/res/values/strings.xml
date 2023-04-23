@@ -400,4 +400,6 @@
     <string name="ui_accent_13">Deep blue</string>
     <string name="update_available">update available</string>
     <string name="updates_available">updates available</string>
+    <string name="rate_limited">Oops, This account is rate limited!</string>
+    <string name="error">An error occurred!</string>
 </resources>

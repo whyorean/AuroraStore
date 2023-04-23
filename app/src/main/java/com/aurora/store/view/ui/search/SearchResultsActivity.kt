@@ -28,7 +28,10 @@ import android.view.KeyEvent
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.TextView
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import com.aurora.Constants
 import com.aurora.extensions.close
 import com.aurora.extensions.open
@@ -48,6 +51,7 @@ import com.aurora.store.view.ui.downloads.DownloadActivity
 import com.aurora.store.view.ui.sheets.FilterSheet
 import com.aurora.store.viewmodel.search.SearchResultViewModel
 import com.google.android.material.textfield.TextInputEditText
+import kotlinx.coroutines.launch
 
 
 class SearchResultsActivity : BaseActivity(), OnSharedPreferenceChangeListener {
@@ -101,6 +105,18 @@ class SearchResultsActivity : BaseActivity(), OnSharedPreferenceChangeListener {
         query?.let {
             updateQuery(it)
         }
+
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                VM.responseCode.collect {
+                    when (it) {
+                        429 -> attachErrorLayout(getString(R.string.rate_limited))
+                        else -> detachErrorLayout()
+                    }
+                }
+            }
+        }
+
     }
 
     override fun onDestroy() {
@@ -108,6 +124,19 @@ class SearchResultsActivity : BaseActivity(), OnSharedPreferenceChangeListener {
         if (Preferences.getBoolean(this, Preferences.PREFERENCE_FILTER_SEARCH))
             FilterProvider.with(this).saveFilter(Filter())
         super.onDestroy()
+    }
+
+    private fun attachErrorLayout(message: String) {
+        B.recycler.visibility = View.GONE
+        B.filterFab.visibility = View.GONE
+        B.errorLayout.visibility = View.VISIBLE
+        B.errorMessage.text = message
+    }
+
+    private fun detachErrorLayout() {
+        B.recycler.visibility = View.VISIBLE
+        B.filterFab.visibility = View.VISIBLE
+        B.errorLayout.visibility = View.GONE
     }
 
     private fun attachToolbar() {

@@ -20,7 +20,6 @@
 package com.aurora.store.viewmodel.search
 
 import android.app.Application
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.aurora.gplayapi.data.models.AuthData
@@ -29,11 +28,13 @@ import com.aurora.gplayapi.helpers.SearchHelper
 import com.aurora.store.data.network.HttpClient
 import com.aurora.store.data.providers.AuthProvider
 import com.aurora.extensions.flushAndAdd
+import com.aurora.store.data.RequestState
+import com.aurora.store.viewmodel.BaseAndroidViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.supervisorScope
 
-class SearchResultViewModel(application: Application) : AndroidViewModel(application) {
+class SearchResultViewModel(application: Application) : BaseAndroidViewModel(application) {
 
     private val authData: AuthData = AuthProvider
         .with(application)
@@ -90,5 +91,9 @@ class SearchResultViewModel(application: Application) : AndroidViewModel(applica
                 }
             }
         }
+    }
+
+    override fun observe() {
+        requestState = RequestState.Init
     }
 }

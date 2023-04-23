@@ -21,17 +21,24 @@ package com.aurora.store.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.viewModelScope
 import com.aurora.store.data.RequestState
+import com.aurora.store.data.network.HttpClient
 import com.aurora.store.data.providers.NetworkProvider
 import com.aurora.store.util.Log
+import com.google.android.material.snackbar.Snackbar
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import java.lang.reflect.Modifier
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 
 abstract class BaseAndroidViewModel(application: Application) : AndroidViewModel(application),
     NetworkProvider.NetworkListener {
 
     private lateinit var networkListener: NetworkProvider.NetworkListener
+
+    val responseCode = HttpClient.getPreferredClient().responseCode
 
     protected val gson: Gson = GsonBuilder()
         .excludeFieldsWithModifiers(Modifier.TRANSIENT, Modifier.STATIC)
@@ -45,6 +52,9 @@ abstract class BaseAndroidViewModel(application: Application) : AndroidViewModel
         requestState = RequestState.Init
 
         NetworkProvider.addListener(this)
+
+        // Start collecting response code for requests
+        responseCode.launchIn(viewModelScope)
     }
 
     abstract fun observe()
