@@ -318,7 +318,7 @@
     <string name="action_filter_apply">Применить</string>
     <string name="action_apply">Применить</string>
     <string name="toast_purchase_blocked">Покупка приложений недоступна для анонимных аккаунтов.</string>
-    <string name="pref_insecure_anonymous_title">Незащищенный анонимный сеанс</string>
+    <string name="pref_insecure_anonymous_title">Незащищённый анонимный сеанс</string>
     <string name="insecure_anonymous_apply">Убедитесь, что выполнили новый вход и перезапустили приложение для применения изменений.</string>
     <string name="pref_network_title">Сеть</string>
     <string name="pref_insecure_anonymous_summary">Создавать GSF ID на устройстве</string>
@@ -347,7 +347,7 @@
     <string name="toast_double_press_to_exit">Нажмите дважды для выхода</string>
     <string name="toast_export_failed">Экспорт конфигурации устройства не выполнен</string>
     <string name="toast_export_success">Конфигурация устройства успешно экспортирована</string>
-    <string name="pref_updates_extended_desc">Проверять наличие обновлений для отключенных приложений</string>
+    <string name="pref_updates_extended_desc">Проверять наличие обновлений для отключённых приложений</string>
     <string name="pref_updates_extended">Расширенное обновление</string>
     <string name="app_updater_service_notif_text">Позволяет загружать приложения в фоновом режиме</string>
     <string name="app_updater_service_notif_title">Фоновая загрузка приложений</string>
@@ -366,6 +366,6 @@
     <string name="ui_accent_9">Лайм</string>
     <string name="ui_accent_10">Оранжевый</string>
     <string name="ui_accent_11">Светло-синий</string>
-    <string name="ui_accent_13">Темно-синий</string>
+    <string name="ui_accent_13">Тёмно-синий</string>
     <string name="ui_accent_12">Насыщенно-синий</string>
 </resources>
