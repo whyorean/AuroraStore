@@ -195,12 +195,12 @@
     <string name="action_ask">Спросить</string>
     <string name="toast_spoof_applied">Подмена устройства успешно применена.</string>
     <string name="toast_permission_granted">Разрешение выдано</string>
-    <string name="toast_developer_setting_failed">Не удалось открыть настройки разработчика, убедитесь, что он включен в настройках устройства.</string>
+    <string name="toast_developer_setting_failed">Не удалось открыть настройки разработчика, убедитесь, что он включён в настройках устройства.</string>
     <string name="toast_clipboard_copied">Скопировано в буфер обмена</string>
     <string name="toast_apk_whitelisted">Добавлен в белый список</string>
     <string name="toast_apk_copy_success">APK успешно экспортирован</string>
     <string name="toast_apk_copy_failed">Ошибка экспорта APK</string>
-    <string name="toast_apk_blacklisted">Добавлен в черный список</string>
+    <string name="toast_apk_blacklisted">Добавлен в чёрный список</string>
     <string name="toast_anonymous_restriction">Недоступно на анонимных аккаунтах</string>
     <string name="toast_abandon_sessions">Прерванные предыдущие сеансы установки</string>
     <string name="title_updates">Обновления</string>
