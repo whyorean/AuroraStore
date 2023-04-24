@@ -46,6 +46,7 @@ import com.aurora.store.view.custom.recycler.EndlessRecyclerOnScrollListener
 import com.aurora.store.view.epoxy.views.AppProgressViewModel_
 import com.aurora.store.view.epoxy.views.app.AppListViewModel_
 import com.aurora.store.view.epoxy.views.app.NoAppViewModel_
+import com.aurora.store.view.epoxy.views.shimmer.AppListViewShimmerModel_
 import com.aurora.store.view.ui.commons.BaseActivity
 import com.aurora.store.view.ui.downloads.DownloadActivity
 import com.aurora.store.view.ui.sheets.FilterSheet
@@ -67,6 +68,7 @@ class SearchResultsActivity : BaseActivity(), OnSharedPreferenceChangeListener {
 
     var query: String? = null
     var searchBundle: SearchBundle = SearchBundle()
+    private var shimmerAnimationVisible = false
 
     override fun onConnected() {
         hideNetworkConnectivitySheet()
@@ -91,15 +93,20 @@ class SearchResultsActivity : BaseActivity(), OnSharedPreferenceChangeListener {
 
         setContentView(B.root)
 
-        VM.liveData.observe(this, {
-            searchBundle = it
-            updateController(searchBundle)
-        })
-
         attachToolbar()
         attachSearch()
         attachRecycler()
         attachFilter()
+
+        VM.liveData.observe(this) {
+            if (shimmerAnimationVisible) {
+                endlessRecyclerOnScrollListener.resetPageCount()
+                B.recycler.clear()
+                shimmerAnimationVisible = false
+            }
+            searchBundle = it
+            updateController(searchBundle)
+        }
 
         query = intent.getStringExtra(Constants.STRING_EXTRA)
         query?.let {
@@ -165,7 +172,17 @@ class SearchResultsActivity : BaseActivity(), OnSharedPreferenceChangeListener {
         B.recycler.addOnScrollListener(endlessRecyclerOnScrollListener)
     }
 
-    private fun updateController(searchBundle: SearchBundle) {
+    private fun updateController(searchBundle: SearchBundle?) {
+        if (searchBundle == null) {
+            shimmerAnimationVisible = true
+            B.recycler.withModels {
+                for (i in 1..10) {
+                    add(AppListViewShimmerModel_().id(i))
+                }
+            }
+            return
+        }
+
         val filteredAppList = filter(searchBundle.appList)
 
         if (filteredAppList.isEmpty()) {
@@ -257,9 +274,8 @@ class SearchResultsActivity : BaseActivity(), OnSharedPreferenceChangeListener {
     }
 
     private fun queryViewModel(query: String) {
+        updateController(null)
         VM.observeSearchResults(query)
-        endlessRecyclerOnScrollListener.resetPageCount()
-        B.recycler.clear()
     }
 
     private fun filter(appList: MutableList<App>): List<App> {
