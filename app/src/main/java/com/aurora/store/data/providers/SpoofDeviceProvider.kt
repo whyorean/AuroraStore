@@ -35,7 +35,6 @@ import java.util.jar.JarFile
 class SpoofDeviceProvider private constructor(var context: Context) {
 
     companion object : SingletonHolder<SpoofDeviceProvider, Context>(::SpoofDeviceProvider) {
-        private const val REGEX = "gplayapi_[a-zA-Z0-9_-]+\\.properties"
         private const val SUFFIX = ".properties"
 
         fun filenameValid(filename: String): Boolean {
@@ -62,10 +61,12 @@ class SpoofDeviceProvider private constructor(var context: Context) {
             val entries = jarFile.entries()
             while (entries.hasMoreElements()) {
                 val entry = entries.nextElement()
-                if (!entry.name.substringAfterLast("/").matches(Regex(REGEX))) {
-                    continue
+                if (filenameValid(entry.name)) {
+                    val properties = getProperties(jarFile, entry)
+                    if (properties.getProperty("UserReadableName") != null) {
+                        propertiesList.add(properties)
+                    }
                 }
-                propertiesList.add(getProperties(jarFile, entry))
             }
             return propertiesList
         }
