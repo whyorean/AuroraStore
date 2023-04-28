@@ -1,4 +1,12 @@
 Changelog : v4.2.1 (43)
+• Fix crash related to notification of installation services
+• Only show valid spoofing properties in app
+• Notify users when they are rate-limited during searching
+• Show a shimmer animation while searching to indicate progress
+• Fix navigation behaviour when default tab is changed
+• Fix quick exit option
+
+Changelog : v4.2.1 (43)
 • Always enable finish button on permission fragment (fixes new user's onboarding)
 • Keep GSON library's TypeToken while optimizing build (fixes startup crash)
 

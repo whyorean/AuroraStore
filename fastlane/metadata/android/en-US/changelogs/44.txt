@@ -1,0 +1,6 @@
+• Fix crash related to notification of installation services
+• Only show valid spoofing properties in app
+• Notify users when they are rate-limited during searching
+• Show a shimmer animation while searching to indicate progress
+• Fix navigation behaviour when default tab is changed
+• Fix quick exit option
