@@ -316,7 +316,7 @@ abstract class BaseDetailsActivity : BaseActivity() {
                     }
                 })
 
-            VM.liveData.observe(this, {
+            VM.liveData.observe(this) {
                 when (it) {
                     is ViewState.Empty -> {
                     }
@@ -333,7 +333,7 @@ abstract class BaseDetailsActivity : BaseActivity() {
                         carouselController.setData(it.data as StreamBundle)
                     }
                 }
-            })
+            }
 
             epoxyRecyclerView.setController(carouselController)
 

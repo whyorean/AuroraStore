@@ -58,11 +58,11 @@ class BlacklistActivity : BaseActivity() {
 
         setContentView(B.root)
 
-        VM.liveData.observe(this, {
+        VM.liveData.observe(this) {
             updateController(it.sortedByDescending { app ->
                 blacklistProvider.isBlacklisted(app.packageName)
             })
-        })
+        }
 
         attachToolbar()
 

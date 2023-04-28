@@ -71,9 +71,9 @@ class LibraryAppsFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         B.swipeRefreshLayout.isEnabled = false
-        VM.liveData.observe(viewLifecycleOwner, {
+        VM.liveData.observe(viewLifecycleOwner) {
             updateController(it)
-        })
+        }
         attachRecycler()
 
         updateController(null)

@@ -69,10 +69,10 @@ class InstalledAppsFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        VM.liveData.observe(viewLifecycleOwner, {
+        VM.liveData.observe(viewLifecycleOwner) {
             updateController(it)
             B.swipeRefreshLayout.isRefreshing = false
-        })
+        }
 
         B.swipeRefreshLayout.setOnRefreshListener {
             VM.observe()

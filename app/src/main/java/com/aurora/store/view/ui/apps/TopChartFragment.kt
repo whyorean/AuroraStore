@@ -89,14 +89,14 @@ class TopChartFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        VM.liveData.observe(viewLifecycleOwner, {
+        VM.liveData.observe(viewLifecycleOwner) {
             if (!::streamCluster.isInitialized)
                 attachRecycler()
 
             streamCluster = it
 
             updateController(streamCluster)
-        })
+        }
 
         updateController(null)
     }

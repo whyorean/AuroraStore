@@ -65,7 +65,7 @@ class StreamBrowseActivity : BaseActivity() {
 
         attachToolbar()
 
-        VM.liveData.observe(this, {
+        VM.liveData.observe(this) {
             if (!::cluster.isInitialized)
                 attachRecycler()
 
@@ -73,7 +73,7 @@ class StreamBrowseActivity : BaseActivity() {
 
             updateController(cluster)
             updateTitle(cluster)
-        })
+        }
 
         intent.apply {
             getStringExtra(Constants.BROWSE_EXTRA)?.let {

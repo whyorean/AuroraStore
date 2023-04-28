@@ -64,7 +64,7 @@ class DetailsReviewActivity : BaseActivity() {
 
         setContentView(B.root)
 
-        VM.liveData.observe(this, {
+        VM.liveData.observe(this) {
             if (!::reviewCluster.isInitialized) {
                 attachRecycler()
             }
@@ -73,7 +73,7 @@ class DetailsReviewActivity : BaseActivity() {
                 reviewCluster = it
                 updateController(reviewCluster)
             }
-        })
+        }
 
         attachChips()
 

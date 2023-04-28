@@ -80,9 +80,9 @@ class CategoryFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        VM.liveData.observe(viewLifecycleOwner, {
+        VM.liveData.observe(viewLifecycleOwner) {
             updateController(it)
-        })
+        }
     }
 
     private fun updateController(categoryList: List<Category>) {

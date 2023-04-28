@@ -69,7 +69,7 @@ class DevProfileActivity : BaseActivity(), GenericCarouselController.Callbacks {
         attachToolbar()
         attachRecycler()
 
-        VM.liveData.observe(this, {
+        VM.liveData.observe(this) {
             when (it) {
                 is ViewState.Empty -> {
                 }
@@ -87,7 +87,7 @@ class DevProfileActivity : BaseActivity(), GenericCarouselController.Callbacks {
                     updateController(it.data)
                 }
             }
-        })
+        }
 
         B.viewFlipper.displayedChild = 1
 

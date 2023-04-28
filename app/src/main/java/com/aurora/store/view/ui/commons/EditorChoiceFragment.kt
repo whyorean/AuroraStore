@@ -86,9 +86,9 @@ class EditorChoiceFragment : BaseFragment(), EditorChoiceController.Callbacks {
 
         B.recycler.setController(C)
 
-        VM.liveData.observe(viewLifecycleOwner, {
+        VM.liveData.observe(viewLifecycleOwner) {
             updateController(it)
-        })
+        }
     }
 
     private fun updateController(editorChoiceBundles: List<EditorChoiceBundle>) {

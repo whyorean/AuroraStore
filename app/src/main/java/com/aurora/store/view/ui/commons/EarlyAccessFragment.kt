@@ -92,7 +92,7 @@ class EarlyAccessFragment : BaseFragment(), GenericCarouselController.Callbacks 
 
         B.recycler.setController(C)
 
-        VM.liveData.observe(viewLifecycleOwner, {
+        VM.liveData.observe(viewLifecycleOwner) {
             when (it) {
                 is ViewState.Empty -> {
                 }
@@ -107,7 +107,7 @@ class EarlyAccessFragment : BaseFragment(), GenericCarouselController.Callbacks 
 
                 }
             }
-        })
+        }
 
         B.recycler.addOnScrollListener(object : EndlessRecyclerOnScrollListener() {
             override fun onLoadMore(currentPage: Int) {

@@ -79,7 +79,7 @@ class SplashActivity : BaseActivity() {
         //Initial status
         updateStatus(getString(R.string.session_init))
 
-        VM.liveData.observe(this, {
+        VM.liveData.observe(this) {
             when (it) {
                 AuthState.Valid -> {
                     moveToContent()
@@ -108,7 +108,7 @@ class SplashActivity : BaseActivity() {
                     updateStatus(it.status)
                 }
             }
-        })
+        }
     }
 
     override fun onResume() {

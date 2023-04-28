@@ -96,7 +96,7 @@ class CategoryBrowseActivity : BaseActivity(), GenericCarouselController.Callbac
 
         B.recycler.setController(C)
 
-        VM.liveData.observe(this, {
+        VM.liveData.observe(this) {
             when (it) {
                 is ViewState.Empty -> {
                 }
@@ -111,7 +111,7 @@ class CategoryBrowseActivity : BaseActivity(), GenericCarouselController.Callbac
                 }
                 else -> {}
             }
-        })
+        }
 
         endlessRecyclerOnScrollListener =
             object : EndlessRecyclerOnScrollListener() {

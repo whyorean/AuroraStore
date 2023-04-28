@@ -106,9 +106,9 @@ class TopChartFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        VM.liveData.observe(viewLifecycleOwner, {
+        VM.liveData.observe(viewLifecycleOwner) {
             updateController(it)
-        })
+        }
 
         B.recycler.addOnScrollListener(object : EndlessRecyclerOnScrollListener() {
             override fun onLoadMore(currentPage: Int) {

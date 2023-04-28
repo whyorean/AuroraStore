@@ -63,10 +63,10 @@ class DevAppsActivity : BaseActivity() {
 
         setContentView(B.root)
 
-        VM.liveData.observe(this, {
+        VM.liveData.observe(this) {
             searchBundle = it
             updateController(searchBundle)
-        })
+        }
 
         attachRecycler()
 

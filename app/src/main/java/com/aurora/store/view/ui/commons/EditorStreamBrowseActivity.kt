@@ -64,9 +64,9 @@ class EditorStreamBrowseActivity : BaseActivity() {
 
         attachToolbar()
 
-        VM.liveData.observe(this, {
+        VM.liveData.observe(this) {
             updateController(it)
-        })
+        }
 
         intent.apply {
             getStringExtra(Constants.BROWSE_EXTRA)?.let {

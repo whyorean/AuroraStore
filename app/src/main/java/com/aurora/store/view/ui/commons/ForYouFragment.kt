@@ -96,7 +96,7 @@ class ForYouFragment : BaseFragment(), GenericCarouselController.Callbacks {
 
         B.recycler.setController(C)
 
-        VM.liveData.observe(viewLifecycleOwner, {
+        VM.liveData.observe(viewLifecycleOwner) {
             when (it) {
                 is ViewState.Empty -> {
                 }
@@ -118,7 +118,7 @@ class ForYouFragment : BaseFragment(), GenericCarouselController.Callbacks {
                     updateController(streamBundle)
                 }
             }
-        })
+        }
     }
 
     private fun attachRecycler() {

@@ -72,7 +72,7 @@ class AccountActivity : BaseActivity() {
 
         updateContents()
 
-        VM.liveData.observe(this, {
+        VM.liveData.observe(this) {
             when (it) {
                 AuthState.Valid -> {
 
@@ -101,7 +101,7 @@ class AccountActivity : BaseActivity() {
                     updateStatus(it.status)
                 }
             }
-        })
+        }
     }
 
     override fun onDestroy() {
