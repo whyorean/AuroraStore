@@ -80,8 +80,8 @@ class EarlyAccessFragment : BaseFragment(), GenericCarouselController.Callbacks 
         }
 
         when (pageType) {
-            0 -> VM = ViewModelProvider(this).get(EarlyAccessAppsViewModel::class.java)
-            1 -> VM = ViewModelProvider(this).get(EarlyAccessGamesViewModel::class.java)
+            0 -> VM = ViewModelProvider(this)[EarlyAccessAppsViewModel::class.java]
+            1 -> VM = ViewModelProvider(this)[EarlyAccessGamesViewModel::class.java]
         }
 
         return B.root

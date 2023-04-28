@@ -58,7 +58,7 @@ class EditorStreamBrowseActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
 
         B = ActivityGenericRecyclerBinding.inflate(layoutInflater)
-        VM = ViewModelProvider(this).get(EditorBrowseViewModel::class.java)
+        VM = ViewModelProvider(this)[EditorBrowseViewModel::class.java]
 
         setContentView(B.root)
 

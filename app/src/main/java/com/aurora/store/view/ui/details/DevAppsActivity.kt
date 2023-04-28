@@ -59,7 +59,7 @@ class DevAppsActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
 
         B = ActivityGenericRecyclerBinding.inflate(layoutInflater)
-        VM = ViewModelProvider(this).get(SearchResultViewModel::class.java)
+        VM = ViewModelProvider(this)[SearchResultViewModel::class.java]
 
         setContentView(B.root)
 

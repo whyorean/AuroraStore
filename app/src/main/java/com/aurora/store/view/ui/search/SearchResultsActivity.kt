@@ -85,7 +85,7 @@ class SearchResultsActivity : BaseActivity(), OnSharedPreferenceChangeListener {
         super.onCreate(savedInstanceState)
 
         B = ActivitySearchResultBinding.inflate(layoutInflater)
-        VM = ViewModelProvider(this).get(SearchResultViewModel::class.java)
+        VM = ViewModelProvider(this)[SearchResultViewModel::class.java]
 
         sharedPreferences = Preferences.getPrefs(this)
         sharedPreferences.registerOnSharedPreferenceChangeListener(this)

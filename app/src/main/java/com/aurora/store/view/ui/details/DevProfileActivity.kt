@@ -60,7 +60,7 @@ class DevProfileActivity : BaseActivity(), GenericCarouselController.Callbacks {
         super.onCreate(savedInstanceState)
         B = ActivityDevProfileBinding.inflate(layoutInflater)
         C = DeveloperCarouselController(this)
-        VM = ViewModelProvider(this).get(DevProfileViewModel::class.java)
+        VM = ViewModelProvider(this)[DevProfileViewModel::class.java]
 
         authData = AuthProvider.with(this).getAuthData()
 

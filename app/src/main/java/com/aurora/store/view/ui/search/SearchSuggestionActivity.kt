@@ -65,7 +65,7 @@ class SearchSuggestionActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
 
         B = ActivitySearchSuggestionBinding.inflate(layoutInflater)
-        VM = ViewModelProvider(this).get(SearchSuggestionViewModel::class.java)
+        VM = ViewModelProvider(this)[SearchSuggestionViewModel::class.java]
 
         setContentView(B.root)
 

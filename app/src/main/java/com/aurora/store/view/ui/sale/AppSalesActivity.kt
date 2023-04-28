@@ -56,7 +56,7 @@ class AppSalesActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
 
         B = ActivityGenericRecyclerBinding.inflate(layoutInflater)
-        VM = ViewModelProvider(this).get(AppSalesViewModel::class.java)
+        VM = ViewModelProvider(this)[AppSalesViewModel::class.java]
 
         setContentView(B.root)
 

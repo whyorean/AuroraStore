@@ -77,10 +77,10 @@ class TopChartFragment : BaseFragment() {
         }
 
         when (chartCategory) {
-            0 -> VM = ViewModelProvider(this).get(TopFreeAppChartViewModel::class.java)
-            1 -> VM = ViewModelProvider(this).get(TopGrossingAppChartViewModel::class.java)
-            2 -> VM = ViewModelProvider(this).get(TrendingAppChartViewModel::class.java)
-            3 -> VM = ViewModelProvider(this).get(TopPaidAppChartViewModel::class.java)
+            0 -> VM = ViewModelProvider(this)[TopFreeAppChartViewModel::class.java]
+            1 -> VM = ViewModelProvider(this)[TopGrossingAppChartViewModel::class.java]
+            2 -> VM = ViewModelProvider(this)[TrendingAppChartViewModel::class.java]
+            3 -> VM = ViewModelProvider(this)[TopPaidAppChartViewModel::class.java]
         }
 
         return B.root

@@ -65,7 +65,7 @@ class SplashActivity : BaseActivity() {
         EventBus.getDefault().register(this);
 
         B = ActivitySplashBinding.inflate(layoutInflater)
-        VM = ViewModelProvider(this).get(AuthViewModel::class.java)
+        VM = ViewModelProvider(this)[AuthViewModel::class.java]
 
         setContentView(B.root)
 

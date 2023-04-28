@@ -59,7 +59,7 @@ class StreamBrowseActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
 
         B = ActivityGenericRecyclerBinding.inflate(layoutInflater)
-        VM = ViewModelProvider(this).get(StreamBrowseViewModel::class.java)
+        VM = ViewModelProvider(this)[StreamBrowseViewModel::class.java]
 
         setContentView(B.root)
 

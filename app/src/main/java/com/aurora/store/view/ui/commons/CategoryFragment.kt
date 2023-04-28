@@ -71,8 +71,8 @@ class CategoryFragment : BaseFragment() {
         }
 
         when (pageType) {
-            0 -> VM = ViewModelProvider(this).get(AppCategoryViewModel::class.java)
-            1 -> VM = ViewModelProvider(this).get(GameCategoryViewModel::class.java)
+            0 -> VM = ViewModelProvider(this)[AppCategoryViewModel::class.java]
+            1 -> VM = ViewModelProvider(this)[GameCategoryViewModel::class.java]
         }
 
         return B.root

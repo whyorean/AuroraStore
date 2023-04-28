@@ -65,7 +65,7 @@ class CategoryBrowseActivity : BaseActivity(), GenericCarouselController.Callbac
 
         B = ActivityGenericRecyclerBinding.inflate(layoutInflater)
         C = CategoryCarouselController(this)
-        VM = ViewModelProvider(this).get(SubCategoryClusterViewModel::class.java)
+        VM = ViewModelProvider(this)[SubCategoryClusterViewModel::class.java]
 
         setContentView(B.root)
 

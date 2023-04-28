@@ -53,7 +53,7 @@ class BlacklistActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
 
         B = ActivityGenericRecyclerBinding.inflate(layoutInflater)
-        VM = ViewModelProvider(this).get(BlacklistViewModel::class.java)
+        VM = ViewModelProvider(this)[BlacklistViewModel::class.java]
         blacklistProvider = BlacklistProvider.with(this)
 
         setContentView(B.root)

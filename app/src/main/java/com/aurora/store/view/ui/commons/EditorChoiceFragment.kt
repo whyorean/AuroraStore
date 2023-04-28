@@ -74,8 +74,8 @@ class EditorChoiceFragment : BaseFragment(), EditorChoiceController.Callbacks {
         }
 
         when (pageType) {
-            0 -> VM = ViewModelProvider(this).get(AppEditorChoiceViewModel::class.java)
-            1 -> VM = ViewModelProvider(this).get(GameEditorChoiceViewModel::class.java)
+            0 -> VM = ViewModelProvider(this)[AppEditorChoiceViewModel::class.java]
+            1 -> VM = ViewModelProvider(this)[GameEditorChoiceViewModel::class.java]
         }
 
         return B.root

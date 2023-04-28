@@ -289,7 +289,7 @@ abstract class BaseDetailsActivity : BaseActivity() {
 
     fun inflateAppStream(epoxyRecyclerView: EpoxyRecyclerView, app: App) {
         app.detailsStreamUrl?.let {
-            val VM = ViewModelProvider(this).get(DetailsClusterViewModel::class.java)
+            val VM = ViewModelProvider(this)[DetailsClusterViewModel::class.java]
 
             val carouselController =
                 DetailsCarouselController(object : GenericCarouselController.Callbacks {

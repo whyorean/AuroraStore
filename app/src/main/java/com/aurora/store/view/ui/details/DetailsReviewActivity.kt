@@ -60,7 +60,7 @@ class DetailsReviewActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         B = ActivityDetailsReviewBinding.inflate(layoutInflater)
-        VM = ViewModelProvider(this).get(ReviewViewModel::class.java)
+        VM = ViewModelProvider(this)[ReviewViewModel::class.java]
 
         setContentView(B.root)
 
