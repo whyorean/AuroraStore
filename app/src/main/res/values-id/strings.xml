@@ -74,7 +74,7 @@
     <string name="about_bitcoin_btc_summary">Donasi via Bitcoin (BTC)</string>
     <string name="about_bitcoin_btc">Bitcoin</string>
     <string name="about_bitcoin_bch_summary">Donasi via Bitcoin Cash (BCH)</string>
-    <string name="about_bitcoin_bch">Uang Bitcoin</string>
+    <string name="about_bitcoin_bch">Bitcoin Tunai</string>
     <string name="account_login_using">Masuk menggunakan</string>
     <string name="action_accept">Terima</string>
     <string name="account_logout">Keluar dari Aurora</string>
@@ -241,7 +241,7 @@
     <string name="download_failed">Pengunduhan gagal</string>
     <string name="download_eta_calculating">Menghitung</string>
     <string name="download_deleted">Dihapus</string>
-    <string name="download_completed">Terunduh</string>
+    <string name="download_completed">Unduhan selesai</string>
     <string name="download_clear_completed">Pembersihan selesai</string>
     <string name="download_canceled">Dibatalkan</string>
     <string name="download_cancel_all">Batalkan semua</string>
