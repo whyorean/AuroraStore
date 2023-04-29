@@ -177,7 +177,7 @@ class OnboardingActivity : BaseActivity() {
 
         /*Customization*/
         save(PREFERENCE_THEME_TYPE, 0)
-        save(PREFERENCE_THEME_ACCENT, 0)
+        save(PREFERENCE_THEME_ACCENT, 1)
         save(PREFERENCE_DEFAULT_SELECTED_TAB, 0)
         save(PREFERENCE_QUICK_EXIT, false)
         save(PREFERENCE_FOR_YOU, true)

@@ -54,7 +54,7 @@ class AccentFragment : BaseFragment() {
     private lateinit var B: FragmentOnboardingAccentBinding
 
     private var themeId: Int = 0
-    private var accentId: Int = 0
+    private var accentId: Int = 1
 
     override fun onCreateView(
         inflater: LayoutInflater,
