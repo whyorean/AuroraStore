@@ -37,6 +37,7 @@ import com.aurora.store.util.Preferences.PREFERENCE_THEME_ACCENT
 import com.aurora.store.util.Preferences.PREFERENCE_THEME_TYPE
 import com.aurora.extensions.applyTheme
 import com.aurora.extensions.hide
+import com.aurora.extensions.isSAndAbove
 import com.aurora.extensions.isVisible
 import com.aurora.extensions.show
 import com.aurora.store.util.save
@@ -54,7 +55,7 @@ class AccentFragment : BaseFragment() {
     private lateinit var B: FragmentOnboardingAccentBinding
 
     private var themeId: Int = 0
-    private var accentId: Int = 1
+    private var accentId: Int = if (isSAndAbove()) 0 else 1
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -102,6 +103,10 @@ class AccentFragment : BaseFragment() {
             setFilterDuplicates(true)
 
             accentList.forEach {
+                if (it.id == 0) {
+                    if (!isSAndAbove()) return@forEach
+                }
+
                 add(
                     AccentViewModel_()
                         .id(it.id)

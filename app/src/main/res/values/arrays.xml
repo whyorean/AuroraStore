@@ -76,6 +76,7 @@
     </string-array>
 
     <string-array name="pref_accent">
+        <item>@string/ui_accent_0</item>
         <item>@string/ui_accent_1</item>
         <item>@string/ui_accent_2</item>
         <item>@string/ui_accent_3</item>
@@ -92,6 +93,7 @@
     </string-array>
 
     <string-array name="pref_accent_values">
+        <item>0</item>
         <item>1</item>
         <item>2</item>
         <item>3</item>

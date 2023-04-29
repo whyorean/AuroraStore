@@ -24,6 +24,7 @@ import android.content.res.ColorStateList
 import android.graphics.Color
 import android.util.AttributeSet
 import android.widget.RelativeLayout
+import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.isVisible
 import com.airbnb.epoxy.CallbackProp
 import com.airbnb.epoxy.ModelProp
@@ -63,12 +64,21 @@ class AccentView : RelativeLayout {
 
     @ModelProp
     fun accent(accent: Accent) {
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
-            B.img.backgroundTintList = ColorStateList.valueOf(Color.parseColor(accent.accent))
+        if (accent.accent.isBlank()) {
+            B.img.background = ResourcesCompat.getDrawable(
+                context.resources,
+                R.drawable.ic_settings_suggest,
+                context.theme
+            )
         } else {
-            B.img.setBackgroundColor(Color.parseColor(accent.accent))
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+                B.img.backgroundTintList = ColorStateList.valueOf(Color.parseColor(accent.accent))
+            } else {
+                B.img.setBackgroundColor(Color.parseColor(accent.accent))
+            }
         }
     }
+
 
     @ModelProp
     fun markChecked(isChecked: Boolean) {

@@ -26,6 +26,7 @@ import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
 import com.aurora.Constants
+import com.aurora.extensions.isSAndAbove
 import com.aurora.extensions.open
 import com.aurora.store.R
 import com.aurora.store.databinding.ActivityOnboardingBinding
@@ -177,7 +178,7 @@ class OnboardingActivity : BaseActivity() {
 
         /*Customization*/
         save(PREFERENCE_THEME_TYPE, 0)
-        save(PREFERENCE_THEME_ACCENT, 1)
+        save(PREFERENCE_THEME_ACCENT, if (isSAndAbove()) 0 else 1)
         save(PREFERENCE_DEFAULT_SELECTED_TAB, 0)
         save(PREFERENCE_QUICK_EXIT, false)
         save(PREFERENCE_FOR_YOU, true)

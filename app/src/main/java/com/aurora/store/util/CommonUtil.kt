@@ -21,6 +21,7 @@ package com.aurora.store.util
 
 import android.content.Context
 import android.os.Build
+import com.aurora.extensions.isSAndAbove
 import com.aurora.store.R
 import java.text.DecimalFormat
 import java.util.*
@@ -164,6 +165,7 @@ object CommonUtil {
 
     fun getAccentStyleById(accentId: Int): Int {
         return when (accentId) {
+            0 -> R.style.Accent00
             1 -> R.style.Accent01
             2 -> R.style.Accent02
             3 -> R.style.Accent03
@@ -177,7 +179,7 @@ object CommonUtil {
             11 -> R.style.Accent11
             12 -> R.style.Accent12
             13 -> R.style.Accent13
-            else -> R.style.Accent01
+            else -> if (isSAndAbove()) R.style.Accent00 else R.style.Accent01
         }
     }
 }

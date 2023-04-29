@@ -19,6 +19,11 @@
 
 <resources>
 
+    <style name="Accent00">
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimary">@color/colorAccent</item>
+    </style>
+
     <style name="Accent01">
         <item name="colorAccent">@color/colorAccent01</item>
         <item name="colorPrimary">@color/colorAccent01</item>
