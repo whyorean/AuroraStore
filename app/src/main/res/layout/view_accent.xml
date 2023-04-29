@@ -36,5 +36,5 @@
         android:layout_centerInParent="true"
         android:visibility="invisible"
         app:srcCompat="@drawable/ic_check"
-        app:tint="?colorControlNormal" />
+        app:tint="@android:color/white" />
 </RelativeLayout>

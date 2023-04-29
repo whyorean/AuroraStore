@@ -35,7 +35,7 @@
             app:tabBackground="@drawable/tab_selector_onboarding"
             app:tabGravity="center"
             app:tabIndicatorHeight="0dp"
-            app:tabSelectedTextColor="?android:textColorPrimary"
+            app:tabSelectedTextColor="@android:color/white"
             app:tabTextAppearance="@style/TextAppearance.Aurora.Tab"
             app:tabTextColor="@android:color/transparent" />
 
