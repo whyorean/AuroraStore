@@ -49,9 +49,9 @@ class AccountActivity : BaseActivity() {
     private lateinit var authData: AuthData
     private lateinit var accountProvider: AccountProvider
 
-    private val URL_TOS = "https://www.google.com/mobile/android/market-tos.html"
-    private val URL_LICENSE = "https://gitlab.com/AuroraOSS/AuroraStore/raw/master/LICENSE"
-    private val URL_DISCLAIMER = "https://gitlab.com/AuroraOSS/AuroraStore/raw/master/DISCLAIMER.md"
+    private val URL_TOS = "https://play.google.com/about/play-terms/"
+    private val URL_LICENSE = "https://gitlab.com/AuroraOSS/AuroraStore/blob/master/LICENSE"
+    private val URL_DISCLAIMER = "https://gitlab.com/AuroraOSS/AuroraStore/blob/master/DISCLAIMER.md"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
