@@ -44,9 +44,6 @@ import com.aurora.store.view.custom.CubicBezierInterpolator
 import com.aurora.store.view.epoxy.views.AccentViewModel_
 import com.aurora.store.view.ui.commons.BaseFragment
 import com.gara.store.view.epoxy.controller.FlexLayoutManager
-import com.google.android.flexbox.FlexDirection
-import com.google.android.flexbox.FlexWrap
-import com.google.android.flexbox.JustifyContent
 import com.google.gson.reflect.TypeToken
 import java.nio.charset.StandardCharsets
 import kotlin.math.sqrt
@@ -96,11 +93,7 @@ class AccentFragment : BaseFragment() {
 
     private fun attachRecycler() {
         with(B.epoxyRecycler) {
-            layoutManager = FlexLayoutManager(requireContext()).apply {
-                justifyContent = JustifyContent.SPACE_BETWEEN
-                flexWrap = FlexWrap.WRAP
-                flexDirection = FlexDirection.ROW
-            }
+            layoutManager = FlexLayoutManager(requireContext())
         }
     }
 
