@@ -28,13 +28,13 @@ plugins {
 
 project.ext {
     versions = [
-            okhttp3   : "4.10.0",
+            okhttp3   : "4.11.0",
             fetch2    : "3.1.6",
-            fuel      : "2.3.0",
-            glide     : "4.11.0",
+            fuel      : "2.3.1",
+            glide     : "4.15.1",
             lifecycle : '2.6.1',
             navigation: '2.5.3',
-            epoxy     : "4.3.1",
+            epoxy     : "5.1.1",
             libsu     : "3.0.2"
     ]
 }
@@ -110,15 +110,15 @@ dependencies {
 
     //Apache's Goodies
     implementation "commons-io:commons-io:2.11.0"
-    implementation "org.apache.commons:commons-text:1.8"
+    implementation "org.apache.commons:commons-text:1.10.0"
 
     //Google's Goodies
     implementation "com.google.android.material:material:1.8.0"
     implementation "com.google.android.flexbox:flexbox:3.0.0"
-    implementation "com.google.code.gson:gson:2.10"
+    implementation "com.google.code.gson:gson:2.10.1"
 
     //AndroidX
-    implementation "androidx.core:core-ktx:1.9.0"
+    implementation "androidx.core:core-ktx:1.10.0"
     implementation "androidx.viewpager2:viewpager2:1.0.0"
     implementation "androidx.vectordrawable:vectordrawable:1.1.0"
     implementation "androidx.preference:preference-ktx:1.2.0"
@@ -139,7 +139,7 @@ dependencies {
     implementation "com.github.florent37:expansionpanel:1.2.4"
 
     //Easy Permission
-    implementation "com.github.quickpermissions:quickpermissions-kotlin:0.4.0"
+    implementation "com.github.quickpermissions:quickpermissions-kotlin:0.4.1"
 
     //Glide
     implementation "com.github.bumptech.glide:glide:${versions.glide}"
@@ -153,7 +153,7 @@ dependencies {
     kapt "com.airbnb.android:epoxy-processor:${versions.epoxy}"
 
     //Merlin
-    implementation "com.novoda:merlin:1.2.0"
+    implementation "com.novoda:merlin:1.2.1"
 
     //HTTP Clients
     implementation "com.github.kittinunf.fuel:fuel:${versions.fuel}"
@@ -167,7 +167,7 @@ dependencies {
     implementation "nl.komponents.kovenant:kovenant-android:3.3.0"
 
     //EventBus
-    implementation "org.greenrobot:eventbus:3.2.0"
+    implementation "org.greenrobot:eventbus:3.3.1"
 
     //Lib-SU
     implementation "com.github.topjohnwu.libsu:core:${versions.libsu}"
