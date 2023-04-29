@@ -32,6 +32,7 @@ import android.util.DisplayMetrics
 import android.util.TypedValue
 import android.view.LayoutInflater
 import androidx.appcompat.app.AppCompatActivity
+import androidx.browser.customtabs.CustomTabsIntent
 import androidx.core.app.ActivityOptionsCompat
 import androidx.core.app.ShareCompat
 import com.aurora.Constants
@@ -49,12 +50,9 @@ val Context.displayMetrics: DisplayMetrics
 
 fun Context.browse(url: String) {
     try {
-        startActivity(
-            Intent(
-                Intent.ACTION_VIEW,
-                Uri.parse(url)
-            )
-        )
+        CustomTabsIntent.Builder()
+            .build()
+            .launchUrl(this, Uri.parse(url))
     } catch (e: Exception) {
         Log.e(e.message)
     }

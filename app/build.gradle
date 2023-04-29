@@ -175,6 +175,9 @@ dependencies {
     //Love <3
     implementation "com.gitlab.AuroraOSS:gplayapi:3.1.0"
 
+    //Browser
+    implementation 'androidx.browser:browser:1.5.0'
+
     //Test
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
