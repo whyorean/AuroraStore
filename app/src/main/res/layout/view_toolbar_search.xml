@@ -32,6 +32,7 @@
         android:layout_centerVertical="true"
         android:layout_marginEnd="@dimen/margin_small"
         android:background="?selectableItemBackgroundBorderless"
+        android:contentDescription="@string/action_back"
         app:srcCompat="@drawable/ic_arrow_back"
         app:tint="?colorControlNormal" />
 
@@ -58,6 +59,7 @@
         android:layout_centerVertical="true"
         android:layout_marginStart="@dimen/margin_small"
         android:background="?selectableItemBackgroundBorderless"
+        android:contentDescription="@string/title_download_manager"
         app:srcCompat="@drawable/ic_arrow_download"
         app:tint="?colorControlNormal" />
 </RelativeLayout>

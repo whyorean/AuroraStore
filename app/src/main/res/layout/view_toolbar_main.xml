@@ -33,6 +33,7 @@
         android:layout_marginEnd="@dimen/margin_small"
         android:background="?selectableItemBackgroundBorderless"
         android:padding="@dimen/padding_xxsmall"
+        android:contentDescription="@string/menu"
         app:srcCompat="@drawable/ic_menu_unfold"
         app:tint="?colorControlNormal" />
 
@@ -59,6 +60,7 @@
         android:layout_marginStart="@dimen/margin_small"
         android:background="?selectableItemBackgroundBorderless"
         android:padding="@dimen/padding_xxsmall"
+        android:contentDescription="@string/title_download_manager"
         app:srcCompat="@drawable/ic_download"
         app:tint="?colorControlNormal" />
 </RelativeLayout>

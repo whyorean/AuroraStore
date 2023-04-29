@@ -33,6 +33,7 @@
         android:layout_centerVertical="true"
         android:layout_marginEnd="@dimen/margin_small"
         android:background="?selectableItemBackgroundBorderless"
+        android:contentDescription="@string/action_back"
         app:srcCompat="@drawable/ic_arrow_back"
         app:tint="?colorControlNormal" />
 
