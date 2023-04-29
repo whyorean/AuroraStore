@@ -49,7 +49,7 @@ Nightlies are released here:
 
 ## FAQs
 
-Please visit the [Aurora Wiki](https://auroraoss.com/faq/) on our website. You can also reach out to us on our support chat on [Telegram](https://t.me/AuroraSupport).
+Please visit the [Aurora Wiki](https://gitlab.com/AuroraOSS/AuroraStore/-/wikis/home) of this project for FAQs. You can also reach out to us on our support chat on [Telegram](https://t.me/AuroraSupport).
 
 ## Translations
 
