@@ -359,13 +359,13 @@
     <string name="ui_accent_2">Пурпурный</string>
     <string name="ui_accent_3">Красный</string>
     <string name="ui_accent_4">Золотой</string>
-    <string name="ui_accent_5">Зеленый</string>
+    <string name="ui_accent_5">Зелёный</string>
     <string name="ui_accent_6">Фиолетовый</string>
     <string name="ui_accent_7">Серый</string>
     <string name="ui_accent_8">Розовый</string>
     <string name="ui_accent_9">Лайм</string>
     <string name="ui_accent_10">Оранжевый</string>
     <string name="ui_accent_11">Светло-синий</string>
-    <string name="ui_accent_13">Темно-синий</string>
+    <string name="ui_accent_13">Тёмно-синий</string>
     <string name="ui_accent_12">Насыщенно-синий</string>
 </resources>
