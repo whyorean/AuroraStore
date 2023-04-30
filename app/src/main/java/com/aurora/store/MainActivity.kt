@@ -22,6 +22,7 @@ package com.aurora.store
 
 import android.Manifest
 import android.content.Intent
+import android.content.res.ColorStateList
 import android.os.Build
 import android.os.Bundle
 import android.os.Environment
@@ -158,7 +159,11 @@ class MainActivity : BaseActivity() {
         bottomNavigationView.setupWithNavController(navController)
 
         val backGroundColor = getStyledAttributeColor(android.R.attr.colorBackground)
-        bottomNavigationView.setBackgroundColor(ColorUtils.setAlphaComponent(backGroundColor, 245))
+        bottomNavigationView.apply {
+            setBackgroundColor(ColorUtils.setAlphaComponent(backGroundColor, 245))
+            val alphaColor = ColorUtils.setAlphaComponent(this@MainActivity.accentColor(), 100)
+            itemActiveIndicatorColor = ColorStateList.valueOf(alphaColor)
+        }
 
         val defaultTab = Preferences.getInteger(this, Preferences.PREFERENCE_DEFAULT_SELECTED_TAB)
         val navigationList =

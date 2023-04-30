@@ -64,15 +64,6 @@
         <item name="android:textAppearance">@style/TextAppearance.Aurora.Chip</item>
     </style>
 
-    <style name="Aurora.BottomSheetDialogStyle" parent="Widget.Design.BottomSheet.Modal">
-        <item name="android:background">@android:color/transparent</item>
-        <item name="android:padding">@dimen/padding_small</item>
-    </style>
-
-    <style name="Aurora.BottomSheetDialog" parent="Theme.Design.BottomSheetDialog">
-        <item name="bottomSheetStyle">@style/Aurora.BottomSheetDialogStyle</item>
-    </style>
-
     <style name="AuroraProgressView">
         <item name="minWidth">32dp</item>
         <item name="maxWidth">46dp</item>
