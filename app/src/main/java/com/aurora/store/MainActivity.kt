@@ -32,6 +32,7 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.addCallback
 import androidx.annotation.IdRes
 import androidx.annotation.NonNull
 import androidx.core.graphics.ColorUtils
@@ -130,8 +131,28 @@ class MainActivity : BaseActivity() {
         }
 
         /* Check self update only for stable release, skip debug & nightlies*/
-        if (BuildConfig.APPLICATION_ID == Constants.APP_ID)
-            checkSelfUpdate()
+        if (BuildConfig.APPLICATION_ID == Constants.APP_ID) checkSelfUpdate()
+
+        onBackPressedDispatcher.addCallback(this) {
+            if (!B.drawerLayout.isDrawerOpen(GravityCompat.START)) {
+                if (Preferences.getBoolean(this@MainActivity, Preferences.PREFERENCE_QUICK_EXIT)) {
+                    finish()
+                } else {
+                    if (lastBackPressed + 1000 > System.currentTimeMillis()) {
+                        finish()
+                    } else {
+                        lastBackPressed = System.currentTimeMillis()
+                        Toast.makeText(
+                            this@MainActivity,
+                            getString(R.string.toast_double_press_to_exit),
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                }
+            } else {
+                B.drawerLayout.close()
+            }
+        }
     }
 
     private fun attachToolbar() {
@@ -216,24 +237,6 @@ class MainActivity : BaseActivity() {
 
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp()
-    }
-
-    @Deprecated("Deprecated in Java")
-    override fun onBackPressed() {
-        if (!B.drawerLayout.isDrawerOpen(GravityCompat.START)) {
-            if (Preferences.getBoolean(this, Preferences.PREFERENCE_QUICK_EXIT)) {
-                this.finish()
-            } else {
-                if (lastBackPressed + 1000 > System.currentTimeMillis()) {
-                    super.onBackPressed()
-                } else {
-                    lastBackPressed = System.currentTimeMillis()
-                    Toast.makeText(this, getString(R.string.toast_double_press_to_exit), Toast.LENGTH_SHORT).show()
-                }
-            }
-        } else {
-            B.drawerLayout.close()
-        }
     }
 
     private fun checkExternalStorageAccessPermission() = runWithPermissions(

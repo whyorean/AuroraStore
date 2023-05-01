@@ -21,6 +21,7 @@ package com.aurora.store.view.ui.onboarding
 
 import android.content.Intent
 import android.os.Bundle
+import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
@@ -97,6 +98,14 @@ class OnboardingActivity : BaseActivity() {
         }
 
         onNewIntent(intent)
+
+        onBackPressedDispatcher.addCallback(this) {
+            if (B.viewpager2.currentItem == 0) {
+                finish()
+            } else {
+                B.viewpager2.currentItem = B.viewpager2.currentItem - 1
+            }
+        }
     }
 
     override fun onNewIntent(intent: Intent?) {
@@ -152,14 +161,6 @@ class OnboardingActivity : BaseActivity() {
                     B.viewpager2.currentItem + 1, true
                 )
             }
-        }
-    }
-
-    override fun onBackPressed() {
-        if (B.viewpager2.currentItem == 0) {
-            super.onBackPressed()
-        } else {
-            B.viewpager2.currentItem = B.viewpager2.currentItem - 1
         }
     }
 

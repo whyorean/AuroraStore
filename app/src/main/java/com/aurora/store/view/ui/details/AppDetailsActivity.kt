@@ -34,6 +34,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.LinearLayout
+import androidx.activity.addCallback
 import com.aurora.Constants
 import com.aurora.extensions.*
 import com.aurora.gplayapi.data.models.App
@@ -189,14 +190,14 @@ class AppDetailsActivity : BaseDetailsActivity() {
         setContentView(B.root)
 
         onNewIntent(intent)
-    }
 
-    override fun onBackPressed() {
-        if (isExternal) {
-            open(MainActivity::class.java, true)
+        onBackPressedDispatcher.addCallback(this) {
+            if (isExternal) {
+                open(MainActivity::class.java, true)
+            } else {
+                finish()
+            }
         }
-        super.onBackPressed()
-
     }
 
     override fun onResume() {
@@ -255,7 +256,7 @@ class AppDetailsActivity : BaseDetailsActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             android.R.id.home -> {
-                onBackPressed()
+                onBackPressedDispatcher.onBackPressed()
                 return true
             }
             R.id.action_share -> {
