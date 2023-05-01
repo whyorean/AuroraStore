@@ -27,6 +27,7 @@ import com.aurora.store.R
 import com.aurora.store.data.Filter
 import com.aurora.store.data.providers.FilterProvider
 import com.aurora.store.databinding.SheetFilterBinding
+import com.aurora.store.util.Log
 import com.google.android.material.chip.Chip
 
 class FilterSheet : BaseBottomSheet() {
@@ -117,8 +118,8 @@ class FilterSheet : BaseBottomSheet() {
             i++
         }
 
-        B.downloadChips.setOnCheckedChangeListener { _, id: Int ->
-            filter.downloads = downloadValues[id].toInt()
+        B.downloadChips.setOnCheckedStateChangeListener { _, checkedIds ->
+            filter.downloads = downloadValues[checkedIds[0]].toInt()
         }
 
         i = 0
@@ -131,8 +132,8 @@ class FilterSheet : BaseBottomSheet() {
             i++
         }
 
-        B.ratingChips.setOnCheckedChangeListener { _, id: Int ->
-            filter.rating = ratingValues[id].toFloat()
+        B.ratingChips.setOnCheckedStateChangeListener { _, checkedIds ->
+            filter.rating = ratingValues[checkedIds[0]].toFloat()
         }
     }
 }
