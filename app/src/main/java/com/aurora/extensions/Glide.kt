@@ -29,134 +29,156 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.TransitionOptions
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade
 import com.bumptech.glide.request.RequestOptions
-import com.bumptech.glide.request.target.ViewTarget
+import com.bumptech.glide.request.target.CustomViewTarget
 import com.bumptech.glide.request.transition.DrawableCrossFadeFactory
+import com.bumptech.glide.request.transition.Transition
 import java.io.File
 
 fun ImageView.load(
     bitmap: Bitmap?,
     transitionOptions: TransitionOptions<*, Drawable>? = null,
     requestOptions: RequestOptions? = null
-): ViewTarget<ImageView, Drawable> = loadAny(bitmap, transitionOptions, requestOptions)
+): CustomViewTarget<ImageView, Drawable> = loadAny(bitmap, transitionOptions, requestOptions)
 
 @JvmSynthetic
 fun ImageView.load(
     byteArray: ByteArray?,
     transitionOptions: TransitionOptions<*, Drawable>? = null,
     requestOptions: RequestOptions? = null
-): ViewTarget<ImageView, Drawable> = loadAny(byteArray, transitionOptions, requestOptions)
+): CustomViewTarget<ImageView, Drawable> = loadAny(byteArray, transitionOptions, requestOptions)
 
 @JvmSynthetic
 fun ImageView.load(
     drawable: Drawable?,
     transitionOptions: TransitionOptions<*, Drawable>? = null,
     requestOptions: RequestOptions? = null
-): ViewTarget<ImageView, Drawable> = loadAny(drawable, transitionOptions, requestOptions)
+): CustomViewTarget<ImageView, Drawable> = loadAny(drawable, transitionOptions, requestOptions)
 
 @JvmSynthetic
 fun ImageView.load(
     @RawRes @DrawableRes resourceId: Int?,
     transitionOptions: TransitionOptions<*, Drawable>? = null,
     requestOptions: RequestOptions? = null
-): ViewTarget<ImageView, Drawable> = loadAny(resourceId, transitionOptions, requestOptions)
+): CustomViewTarget<ImageView, Drawable> = loadAny(resourceId, transitionOptions, requestOptions)
 
 @JvmSynthetic
 fun ImageView.load(
     uri: Uri?,
     transitionOptions: TransitionOptions<*, Drawable>? = null,
     requestOptions: RequestOptions? = null
-): ViewTarget<ImageView, Drawable> = loadAny(uri, transitionOptions, requestOptions)
+): CustomViewTarget<ImageView, Drawable> = loadAny(uri, transitionOptions, requestOptions)
 
 @JvmSynthetic
 fun ImageView.load(
     string: String?,
     transitionOptions: TransitionOptions<*, Drawable>? = null,
     requestOptions: RequestOptions? = null
-): ViewTarget<ImageView, Drawable> = loadAny(string, transitionOptions, requestOptions)
+): CustomViewTarget<ImageView, Drawable> = loadAny(string, transitionOptions, requestOptions)
 
 @JvmSynthetic
 fun ImageView.load(
     file: File?,
     transitionOptions: TransitionOptions<*, Drawable>? = null,
     requestOptions: RequestOptions? = null
-): ViewTarget<ImageView, Drawable> = loadAny(file, transitionOptions, requestOptions)
+): CustomViewTarget<ImageView, Drawable> = loadAny(file, transitionOptions, requestOptions)
 
 @JvmSynthetic
 inline fun ImageView.load(
     bitmap: Bitmap?,
     transitionOptions: TransitionOptions<*, Drawable>? = null,
     requestOptions: RequestOptions.() -> Unit
-): ViewTarget<ImageView, Drawable> = loadAny(bitmap, requestOptions)
+): CustomViewTarget<ImageView, Drawable> = loadAny(bitmap, requestOptions)
 
 @JvmSynthetic
 inline fun ImageView.load(
     byteArray: ByteArray?,
     transitionOptions: TransitionOptions<*, Drawable>? = null,
     requestOptions: RequestOptions.() -> Unit
-): ViewTarget<ImageView, Drawable> = loadAny(byteArray, requestOptions)
+): CustomViewTarget<ImageView, Drawable> = loadAny(byteArray, requestOptions)
 
 @JvmSynthetic
 inline fun ImageView.load(
     drawable: Drawable?,
     transitionOptions: TransitionOptions<*, Drawable>? = null,
     requestOptions: RequestOptions.() -> Unit
-): ViewTarget<ImageView, Drawable> = loadAny(drawable, requestOptions)
+): CustomViewTarget<ImageView, Drawable> = loadAny(drawable, requestOptions)
 
 @JvmSynthetic
 inline fun ImageView.load(
     @RawRes @DrawableRes resourceId: Int?,
     transitionOptions: TransitionOptions<*, Drawable>? = null,
     requestOptions: RequestOptions.() -> Unit
-): ViewTarget<ImageView, Drawable> = loadAny(resourceId, requestOptions)
+): CustomViewTarget<ImageView, Drawable> = loadAny(resourceId, requestOptions)
 
 @JvmSynthetic
 inline fun ImageView.load(
     uri: Uri?,
     transitionOptions: TransitionOptions<*, Drawable>? = null,
     requestOptions: RequestOptions.() -> Unit
-): ViewTarget<ImageView, Drawable> = loadAny(uri, requestOptions)
+): CustomViewTarget<ImageView, Drawable> = loadAny(uri, requestOptions)
 
 @JvmSynthetic
 inline fun ImageView.load(
     string: String?,
     transitionOptions: TransitionOptions<*, Drawable>? = null,
     requestOptions: RequestOptions.() -> Unit
-): ViewTarget<ImageView, Drawable> = loadAny(string, requestOptions)
+): CustomViewTarget<ImageView, Drawable> = loadAny(string, requestOptions)
 
 @JvmSynthetic
 inline fun ImageView.load(
     file: File?,
     transitionOptions: TransitionOptions<*, Drawable>? = null,
     requestOptions: RequestOptions.() -> Unit
-): ViewTarget<ImageView, Drawable> = loadAny(file, requestOptions)
+): CustomViewTarget<ImageView, Drawable> = loadAny(file, requestOptions)
 
 @JvmSynthetic
 fun ImageView.loadAny(
     data: Any?,
     transitionOptions: TransitionOptions<*, Drawable>? = null,
     requestOptions: RequestOptions? = null
-): ViewTarget<ImageView, Drawable> {
+): CustomViewTarget<ImageView, Drawable> {
     return Glide.with(this)
+        .asDrawable()
         .load(data)
         .apply {
             transitionOptions?.let { transition(it) }
             requestOptions?.let { apply(it) }
         }
-        .into(this)
+        .into(object : CustomViewTarget<ImageView, Drawable>(this) {
+            override fun onLoadFailed(errorDrawable: Drawable?) {
+            }
+
+            override fun onResourceCleared(placeholder: Drawable?) {
+            }
+
+            override fun onResourceReady(resource: Drawable, transition: Transition<in Drawable>?) {
+                this.view.setImageDrawable(resource)
+            }
+        })
 }
 
 @JvmSynthetic
 inline fun ImageView.loadAny(
     data: Any?,
     requestOptions: RequestOptions.() -> Unit
-): ViewTarget<ImageView, Drawable> {
+): CustomViewTarget<ImageView, Drawable> {
     val factory = DrawableCrossFadeFactory.Builder().setCrossFadeEnabled(true).build()
     return Glide.with(this)
+        .asDrawable()
         .load(data)
         .transition(withCrossFade(factory))
         .apply(RequestOptions().apply(requestOptions))
-        .into(this)
-}
+        .into(object : CustomViewTarget<ImageView, Drawable>(this) {
+            override fun onLoadFailed(errorDrawable: Drawable?) {
+            }
+
+            override fun onResourceCleared(placeholder: Drawable?) {
+            }
+
+            override fun onResourceReady(resource: Drawable, transition: Transition<in Drawable>?) {
+                this.view.setImageDrawable(resource)
+            }
+        })}
 
 @JvmSynthetic
 fun ImageView.clear() {
