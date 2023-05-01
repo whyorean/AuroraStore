@@ -22,6 +22,7 @@ package com.aurora.store.util
 import android.content.Context
 import android.content.pm.PackageManager
 import com.aurora.extensions.isPAndAbove
+import com.aurora.store.util.PackageUtil.getPackageInfo
 import java.io.ByteArrayInputStream
 import java.io.InputStream
 import java.security.cert.CertificateFactory
@@ -37,21 +38,13 @@ object CertUtil {
         packageName: String
     ): List<X509Certificate> {
         val certificates: MutableList<X509Certificate> = mutableListOf()
-        val packageManager = context.applicationContext.packageManager
 
         try {
 
             val packageInfo = if (isPAndAbove()) {
-                packageManager.getPackageInfo(
-                    packageName,
-                    PackageManager.GET_SIGNING_CERTIFICATES
-                )
-            }
-            else {
-                packageManager.getPackageInfo(
-                    packageName,
-                    PackageManager.GET_SIGNATURES
-                )
+                getPackageInfo(context, packageName, PackageManager.GET_SIGNING_CERTIFICATES)
+            } else {
+                getPackageInfo(context, packageName, PackageManager.GET_SIGNATURES)
             }
 
             val certificateFactory = CertificateFactory.getInstance("X509")

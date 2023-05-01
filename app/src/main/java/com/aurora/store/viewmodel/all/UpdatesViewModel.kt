@@ -20,6 +20,7 @@
 package com.aurora.store.viewmodel.all
 
 import android.app.Application
+import androidx.core.content.pm.PackageInfoCompat
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.aurora.gplayapi.data.models.App
@@ -66,7 +67,7 @@ class UpdatesViewModel(application: Application) : BaseAppsViewModel(application
         subAppList.filter {
             val packageInfo = packageInfoMap[it.packageName]
             if (packageInfo != null) {
-                it.versionCode > packageInfo.versionCode
+                it.versionCode.toLong() > PackageInfoCompat.getLongVersionCode(packageInfo)
             } else {
                 false
             }

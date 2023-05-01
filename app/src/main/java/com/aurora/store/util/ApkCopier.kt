@@ -25,6 +25,7 @@ import android.content.pm.PackageManager
 import android.os.Build
 import androidx.annotation.RequiresApi
 import com.aurora.extensions.isLAndAbove
+import com.aurora.store.util.PackageUtil.getPackageInfo
 import org.apache.commons.io.IOUtils
 import java.io.File
 import java.io.FileOutputStream
@@ -46,10 +47,7 @@ class ApkCopier(private val context: Context, private val packageName: String) {
             }
         }
 
-        val packageInfo: PackageInfo = context.packageManager.getPackageInfo(
-            packageName,
-            PackageManager.GET_META_DATA
-        )
+        val packageInfo = getPackageInfo(context, packageName, PackageManager.GET_META_DATA)
 
         val baseApk = getBaseApk(packageInfo)
         val fileList: MutableList<File?> = mutableListOf()

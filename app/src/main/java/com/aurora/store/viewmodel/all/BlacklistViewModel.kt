@@ -21,6 +21,7 @@ package com.aurora.store.viewmodel.all
 
 import android.app.Application
 import android.content.pm.PackageManager
+import androidx.core.content.pm.PackageInfoCompat
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.aurora.store.data.RequestState
@@ -65,7 +66,7 @@ class BlacklistViewModel(application: Application) : BaseAndroidViewModel(applic
                             val black = Black(it.packageName).apply {
                                 displayName = packageManager.getApplicationLabel(it.applicationInfo)
                                     .toString()
-                                versionCode = it.versionCode
+                                versionCode = PackageInfoCompat.getLongVersionCode(it)
                                 versionName = it.versionName
                                 drawable = packageManager.getApplicationIcon(packageName)
                             }

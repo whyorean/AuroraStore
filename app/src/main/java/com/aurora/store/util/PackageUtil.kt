@@ -24,15 +24,18 @@ import android.content.Intent
 import android.content.IntentFilter
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
+import android.content.pm.PackageManager.PackageInfoFlags
 import android.content.res.Configuration
 import android.os.Build
+import androidx.core.content.pm.PackageInfoCompat
+import com.aurora.extensions.isTAndAbove
 
 
 object PackageUtil {
 
     fun isInstalled(context: Context, packageName: String): Boolean {
         return try {
-            context.packageManager.getPackageInfo(packageName, PackageManager.GET_META_DATA)
+            getPackageInfo(context, packageName, PackageManager.GET_META_DATA)
             true
         } catch (e: PackageManager.NameNotFoundException) {
             false
@@ -42,10 +45,7 @@ object PackageUtil {
     fun isInstalled(context: Context, packageName: String, versionCode: Int): Boolean {
         return try {
             val packageInfo = getPackageInfo(context, packageName)
-            if (packageInfo != null) {
-                return packageInfo.versionCode >= versionCode
-            }
-            true
+            return PackageInfoCompat.getLongVersionCode(packageInfo) >= versionCode.toLong()
         } catch (e: PackageManager.NameNotFoundException) {
             false
         }
@@ -54,10 +54,7 @@ object PackageUtil {
     fun isUpdatable(context: Context, packageName: String, versionCode: Long): Boolean {
         return try {
             val packageInfo = getPackageInfo(context, packageName)
-            if (packageInfo != null) {
-                return versionCode > packageInfo.versionCode
-            }
-            true
+            return versionCode > PackageInfoCompat.getLongVersionCode(packageInfo)
         } catch (e: PackageManager.NameNotFoundException) {
             false
         }
@@ -66,11 +63,7 @@ object PackageUtil {
     fun getInstalledVersion(context: Context, packageName: String): String {
         return try {
             val packageInfo = getPackageInfo(context, packageName)
-            if (packageInfo != null) {
-                "${packageInfo.versionName} (${packageInfo.versionCode})"
-            } else {
-                ""
-            }
+            "${packageInfo.versionName} (${PackageInfoCompat.getLongVersionCode(packageInfo)})"
         } catch (e: PackageManager.NameNotFoundException) {
             ""
         }
@@ -102,8 +95,15 @@ object PackageUtil {
     }
 
     @Throws(Exception::class)
-    fun getPackageInfo(context: Context, packageName: String?): PackageInfo? {
-        return context.packageManager.getPackageInfo(packageName!!, 0)
+    fun getPackageInfo(context: Context, packageName: String, flags: Int = 0): PackageInfo {
+        return if (isTAndAbove()) {
+            context.packageManager.getPackageInfo(
+                packageName,
+                PackageInfoFlags.of(flags.toLong())
+            )
+        } else {
+            context.packageManager.getPackageInfo(packageName, flags)
+        }
     }
 
     fun getAllPackages(context: Context): List<PackageInfo> {

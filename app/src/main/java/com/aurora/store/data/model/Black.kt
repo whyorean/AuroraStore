@@ -25,7 +25,7 @@ data class Black(val packageName: String) {
     var displayName: String = String()
     var drawable: Drawable? = null
     var versionName: String = String()
-    var versionCode: Int = 0
+    var versionCode: Long = 0
 
     override fun hashCode(): Int {
         return packageName.hashCode()
