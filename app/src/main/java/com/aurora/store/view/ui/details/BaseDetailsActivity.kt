@@ -46,7 +46,6 @@ import com.aurora.store.util.NavigationUtil
 import com.aurora.store.view.custom.RatingView
 import com.aurora.store.view.epoxy.controller.DetailsCarouselController
 import com.aurora.store.view.epoxy.controller.GenericCarouselController
-import com.aurora.store.view.epoxy.views.*
 import com.aurora.store.view.epoxy.views.details.ReviewViewModel_
 import com.aurora.store.view.epoxy.views.details.ScreenshotView
 import com.aurora.store.view.epoxy.views.details.ScreenshotViewModel_

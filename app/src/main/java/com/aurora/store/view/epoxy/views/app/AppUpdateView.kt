@@ -38,7 +38,6 @@ import com.aurora.store.databinding.ViewAppUpdateBinding
 import com.aurora.store.util.CommonUtil
 import com.aurora.store.view.epoxy.views.BaseView
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade
 
 @ModelView(
     autoLayout = ModelView.Size.MATCH_WIDTH_WRAP_HEIGHT,
@@ -76,7 +75,7 @@ class AppUpdateView : RelativeLayout {
             /*Inflate App details*/
             with(updateFile.app) {
                 B.txtLine1.text = displayName
-                B.imgIcon.load(iconArtwork.url, withCrossFade()) {
+                B.imgIcon.load(iconArtwork.url) {
                     placeholder(R.drawable.bg_placeholder)
                     transform(RoundedCorners(8.px.toInt()))
                 }

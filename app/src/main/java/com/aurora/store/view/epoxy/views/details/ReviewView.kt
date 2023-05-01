@@ -34,7 +34,6 @@ import com.aurora.extensions.load
 import com.aurora.extensions.toDate
 import com.aurora.store.view.epoxy.views.BaseView
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 
 @ModelView(
     autoLayout = ModelView.Size.MATCH_WIDTH_WRAP_HEIGHT,
@@ -71,7 +70,7 @@ class ReviewView : RelativeLayout {
         B.txtTime.text = ("${review.timeStamp.toDate()}  •  v${review.appVersion}")
         B.txtComment.text = review.comment
 
-        B.img.load(review.userPhotoUrl, DrawableTransitionOptions.withCrossFade()) {
+        B.img.load(review.userPhotoUrl) {
             placeholder(R.drawable.bg_placeholder)
             transform(RoundedCorners(32))
         }

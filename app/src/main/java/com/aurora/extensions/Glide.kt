@@ -85,49 +85,42 @@ fun ImageView.load(
 @JvmSynthetic
 inline fun ImageView.load(
     bitmap: Bitmap?,
-    transitionOptions: TransitionOptions<*, Drawable>? = null,
     requestOptions: RequestOptions.() -> Unit
 ): CustomViewTarget<ImageView, Drawable> = loadAny(bitmap, requestOptions)
 
 @JvmSynthetic
 inline fun ImageView.load(
     byteArray: ByteArray?,
-    transitionOptions: TransitionOptions<*, Drawable>? = null,
     requestOptions: RequestOptions.() -> Unit
 ): CustomViewTarget<ImageView, Drawable> = loadAny(byteArray, requestOptions)
 
 @JvmSynthetic
 inline fun ImageView.load(
     drawable: Drawable?,
-    transitionOptions: TransitionOptions<*, Drawable>? = null,
     requestOptions: RequestOptions.() -> Unit
 ): CustomViewTarget<ImageView, Drawable> = loadAny(drawable, requestOptions)
 
 @JvmSynthetic
 inline fun ImageView.load(
     @RawRes @DrawableRes resourceId: Int?,
-    transitionOptions: TransitionOptions<*, Drawable>? = null,
     requestOptions: RequestOptions.() -> Unit
 ): CustomViewTarget<ImageView, Drawable> = loadAny(resourceId, requestOptions)
 
 @JvmSynthetic
 inline fun ImageView.load(
     uri: Uri?,
-    transitionOptions: TransitionOptions<*, Drawable>? = null,
     requestOptions: RequestOptions.() -> Unit
 ): CustomViewTarget<ImageView, Drawable> = loadAny(uri, requestOptions)
 
 @JvmSynthetic
 inline fun ImageView.load(
     string: String?,
-    transitionOptions: TransitionOptions<*, Drawable>? = null,
     requestOptions: RequestOptions.() -> Unit
 ): CustomViewTarget<ImageView, Drawable> = loadAny(string, requestOptions)
 
 @JvmSynthetic
 inline fun ImageView.load(
     file: File?,
-    transitionOptions: TransitionOptions<*, Drawable>? = null,
     requestOptions: RequestOptions.() -> Unit
 ): CustomViewTarget<ImageView, Drawable> = loadAny(file, requestOptions)
 

@@ -34,7 +34,6 @@ import com.aurora.extensions.load
 import com.aurora.extensions.px
 import com.aurora.store.view.epoxy.views.BaseView
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 
 @ModelView(
     autoLayout = ModelView.Size.WRAP_WIDTH_WRAP_HEIGHT,
@@ -79,7 +78,7 @@ class ScreenshotView : RelativeLayout {
     @ModelProp
     fun artwork(artwork: Artwork) {
         normalizeSize(artwork)
-        B.img.load("${artwork.url}=rw-w480-v1-e15", DrawableTransitionOptions.withCrossFade()) {
+        B.img.load("${artwork.url}=rw-w480-v1-e15") {
             placeholder(R.drawable.bg_rounded)
             transform(RoundedCorners(8.px.toInt()))
         }

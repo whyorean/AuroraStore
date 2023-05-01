@@ -37,7 +37,6 @@ import com.aurora.store.util.CommonUtil.humanReadableByteValue
 import com.aurora.extensions.clear
 import com.aurora.extensions.load
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.tonyodev.fetch2.Status
@@ -84,7 +83,7 @@ class DownloadView : RelativeLayout {
         val app = gson.fromJson(extras, App::class.java)
 
         app?.let {
-            B.imgDownload.load(app.iconArtwork.url, DrawableTransitionOptions.withCrossFade()) {
+            B.imgDownload.load(app.iconArtwork.url) {
                 placeholder(R.drawable.bg_placeholder)
                 transform(RoundedCorners(32))
             }

@@ -26,13 +26,11 @@ import android.view.ViewGroup
 import com.aurora.Constants
 import com.aurora.extensions.copyToClipBoard
 import com.aurora.extensions.load
-import com.aurora.extensions.px
 import com.aurora.extensions.toast
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
 import com.aurora.store.databinding.SheetInstallErrorBinding
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
-import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 
 class InstallErrorDialogSheet : BaseBottomSheet() {
 

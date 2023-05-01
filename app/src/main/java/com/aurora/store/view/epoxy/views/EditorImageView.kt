@@ -33,7 +33,6 @@ import com.aurora.extensions.clear
 import com.aurora.extensions.load
 import com.aurora.extensions.px
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 
 @ModelView(
     autoLayout = ModelView.Size.WRAP_WIDTH_WRAP_HEIGHT,
@@ -72,7 +71,7 @@ class EditorImageView : RelativeLayout {
                 B.img.layoutParams.width = 192.px.toInt()
                 B.img.requestLayout()
 
-                B.img.load(artwork.url, DrawableTransitionOptions.withCrossFade()) {
+                B.img.load(artwork.url) {
                     transform(RoundedCorners(8.px.toInt()))
                 }
             }
@@ -80,7 +79,7 @@ class EditorImageView : RelativeLayout {
                 B.img.layoutParams.width = 24.px.toInt()
                 B.img.layoutParams.height = 24.px.toInt()
                 B.img.requestLayout()
-                B.img.load(artwork.url, DrawableTransitionOptions.withCrossFade()) {
+                B.img.load(artwork.url) {
                     transform(RoundedCorners(4.px.toInt()))
                 }
             }

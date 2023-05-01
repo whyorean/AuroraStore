@@ -31,7 +31,6 @@ import com.aurora.store.R
 import com.aurora.store.databinding.ViewCategoryBinding
 import com.aurora.extensions.clear
 import com.aurora.extensions.load
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 
 @ModelView(
     autoLayout = ModelView.Size.MATCH_WIDTH_WRAP_HEIGHT,
@@ -65,7 +64,7 @@ class CategoryView : RelativeLayout {
     @ModelProp
     fun category(category: Category) {
         B.txtName.text = category.title
-        B.imgBackground.load(category.imageUrl, DrawableTransitionOptions.withCrossFade()) {
+        B.imgBackground.load(category.imageUrl) {
         }
     }
 

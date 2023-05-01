@@ -34,7 +34,6 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.addCallback
 import androidx.annotation.IdRes
-import androidx.annotation.NonNull
 import androidx.core.graphics.ColorUtils
 import androidx.core.view.GravityCompat
 import androidx.navigation.NavController
