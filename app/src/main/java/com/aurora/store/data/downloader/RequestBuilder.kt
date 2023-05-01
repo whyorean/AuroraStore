@@ -31,7 +31,7 @@ import com.tonyodev.fetch2.Request
 import com.tonyodev.fetch2core.Extras
 import java.lang.reflect.Modifier
 
-private inline fun Request.attachMetaData(context: Context, app: App) {
+private fun Request.attachMetaData(context: Context, app: App) {
     apply {
         groupId = app.getGroupId(context)
         tag = app.packageName
@@ -40,7 +40,7 @@ private inline fun Request.attachMetaData(context: Context, app: App) {
     }
 }
 
-private inline fun Request.attachExtra(app: App) {
+private fun Request.attachExtra(app: App) {
     val stringMap: MutableMap<String, String> = mutableMapOf()
     val gson = GsonBuilder()
         .excludeFieldsWithModifiers(Modifier.TRANSIENT)
