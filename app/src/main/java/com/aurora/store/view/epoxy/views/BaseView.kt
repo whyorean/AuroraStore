@@ -24,7 +24,7 @@ import android.view.animation.AnimationUtils
 import com.airbnb.epoxy.EpoxyModel
 import com.aurora.store.view.epoxy.views.app.AppListView
 
-abstract class BaseView<T : View?> : EpoxyModel<T>() {
+abstract class BaseView<T : View> : EpoxyModel<T>() {
 
     override fun bind(view: T) {
         super.bind(view)
