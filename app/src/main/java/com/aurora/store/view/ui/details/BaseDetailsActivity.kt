@@ -19,7 +19,6 @@
 
 package com.aurora.store.view.ui.details
 
-import android.text.Html
 import android.view.View
 import android.widget.RelativeLayout
 import android.widget.Toast
@@ -87,7 +86,10 @@ abstract class BaseDetailsActivity : BaseActivity() {
             if (isEmpty()) {
                 B.txtChangelog.text = getString(R.string.details_changelog_unavailable)
             } else {
-                B.txtChangelog.text = Html.fromHtml(this)
+                B.txtChangelog.text = HtmlCompat.fromHtml(
+                    app.shortDescription,
+                    HtmlCompat.FROM_HTML_MODE_COMPACT
+                )
             }
         }
 
