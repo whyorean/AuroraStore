@@ -16,21 +16,21 @@
   {
     "id": "2",
     "title": "License",
-    "subtitle": "Yes we do have one ;)",
+    "subtitle": "The GNU General Public License v3.0",
     "icon": "ic_license",
     "url": "https://gitlab.com/AuroraOSS/AuroraStore/-/blob/master/LICENSE"
   },
   {
     "id": "3",
     "title": "Privacy policy",
-    "subtitle": "Find out if we have your nudes :p",
+    "subtitle": "Learn how Aurora Store uses your data",
     "icon": "ic_privacy",
     "url": "https://gitlab.com/AuroraOSS/AuroraStore/-/blob/master/POLICY.md"
   },
   {
     "id": "4",
     "title": "Disclaimer",
-    "subtitle": "Hold your own beer!",
+    "subtitle": "Accountability and responsibility",
     "icon": "ic_disclaimer",
     "url": "https://gitlab.com/AuroraOSS/AuroraStore/-/blob/master/DISCLAIMER.md"
   }
