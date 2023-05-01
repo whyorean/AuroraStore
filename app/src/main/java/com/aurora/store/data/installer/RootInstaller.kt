@@ -102,8 +102,8 @@ class RootInstaller(context: Context) : InstallerBase(context) {
         val found = sessionIdMatcher.find()
 
         if (found) {
-            val sessionId = sessionIdMatcher.group(1).toInt()
-            if (Shell.getShell().isRoot) {
+            val sessionId = sessionIdMatcher.group(1)?.toInt()
+            if (Shell.getShell().isRoot && sessionId != null) {
                 for (file in files) {
                     Shell.su("cat \"${file.absoluteFile}\" | pm install-write -S ${file.length()} $sessionId \"${file.name}\"")
                         .exec()
