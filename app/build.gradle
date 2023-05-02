@@ -39,6 +39,12 @@ project.ext {
     ]
 }
 
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(11))
+    }
+}
+
 android {
     namespace 'com.aurora.store'
     compileSdk 33
