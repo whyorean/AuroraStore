@@ -118,6 +118,7 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:padding="@dimen/margin_small"
+                android:contentDescription="@string/details_changelog"
                 app:srcCompat="@drawable/ic_arrow_right"
                 app:tint="?colorControlNormal" />
 

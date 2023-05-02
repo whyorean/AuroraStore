@@ -403,4 +403,6 @@
     <string name="updates_available">updates available</string>
     <string name="rate_limited">Oops, This account is rate limited!</string>
     <string name="error">An error occurred!</string>
+    <string name="menu">Menu</string>
+    <string name="expand">Expand</string>
 </resources>

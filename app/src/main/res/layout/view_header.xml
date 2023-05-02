@@ -59,6 +59,7 @@
         android:layout_marginStart="@dimen/margin_small"
         android:background="?selectableItemBackgroundBorderless"
         android:padding="@dimen/padding_xsmall"
+        android:contentDescription="@string/expand"
         app:srcCompat="@drawable/ic_arrow_right"
         app:tint="?android:textColorPrimary" />
 </RelativeLayout>

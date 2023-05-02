@@ -64,6 +64,7 @@
             android:layout_marginTop="@dimen/height_bottom_adj"
             android:layout_marginEnd="@dimen/margin_normal"
             android:layout_marginBottom="@dimen/height_bottom_adj"
+            android:contentDescription="@string/action_search"
             app:backgroundTint="?colorAccent"
             app:srcCompat="@drawable/ic_round_search"
             app:tint="@color/colorWhite"

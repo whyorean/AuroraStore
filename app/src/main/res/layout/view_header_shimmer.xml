@@ -64,6 +64,7 @@
             android:layout_margin="@dimen/margin_small"
             android:background="?selectableItemBackgroundBorderless"
             android:padding="@dimen/padding_xsmall"
+            android:contentDescription="@string/expand"
             app:srcCompat="@drawable/ic_arrow_right"
             app:tint="?colorShimmer" />
     </RelativeLayout>
