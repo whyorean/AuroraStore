@@ -114,6 +114,10 @@ class DetailsExodusActivity : BaseActivity() {
                 url = it.getString("website")
                 signature = it.getString("code_signature")
                 date = it.getString("creation_date")
+                description = it.getString("description")
+                networkSignature = it.getString("network_signature")
+                documentation = listOf(it.getString("documentation"))
+                categories = listOf(it.getString("categories"))
             }
         }.toList()
     }

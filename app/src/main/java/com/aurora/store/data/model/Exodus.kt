@@ -58,6 +58,10 @@ class ExodusTracker {
     var url: String = String()
     var signature: String = String()
     var date: String = String()
+    var description: String = String()
+    var networkSignature: String = String()
+    var documentation: List<String> = emptyList()
+    var categories: List<String> = emptyList()
 
     override fun hashCode(): Int {
         return id
