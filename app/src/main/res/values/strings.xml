@@ -361,6 +361,7 @@
     <string name="title_settings">"Settings"</string>
     <string name="title_spoof_manager">"Spoof manager"</string>
     <string name="title_updates">"Updates"</string>
+    <string name="title_advanced">"Advanced"</string>
     <string name="title_manual_download">"Manual download"</string>
     <string name="toast_abandon_sessions">"Old installation sessions abandoned"</string>
     <string name="toast_anonymous_restriction">"Not available on anonymous accounts"</string>

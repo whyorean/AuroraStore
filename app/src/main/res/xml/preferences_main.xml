@@ -65,4 +65,12 @@
         app:key="pref_network"
         app:layout="@layout/item_preference"
         app:title="@string/title_updates" />
+
+    <Preference
+        android:fragment="com.aurora.store.view.ui.preferences.AdvancedPreference"
+        app:icon="@drawable/ic_tune"
+        app:iconSpaceReserved="false"
+        app:key="pref_advanced"
+        app:layout="@layout/item_preference"
+        app:title="@string/title_advanced" />
 </PreferenceScreen>
