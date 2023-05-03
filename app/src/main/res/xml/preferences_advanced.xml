@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <SwitchPreferenceCompat
+        app:defaultValue="false"
+        app:iconSpaceReserved="false"
+        app:key="PREFERENCE_ADVANCED_SEARCH_IN_CTT"
+        app:summary="@string/pref_advanced_search_in_ctt_desc"
+        app:title="@string/pref_advanced_search_in_ctt" />
 
 </PreferenceScreen>

@@ -59,6 +59,8 @@ object Preferences {
 
     const val PREFERENCE_UPDATES_EXTENDED = "PREFERENCE_UPDATES_EXTENDED"
 
+    const val PREFERENCE_ADVANCED_SEARCH_IN_CTT = "PREFERENCE_ADVANCED_SEARCH_IN_CTT"
+
     const val PREFERENCE_UNIQUE_GROUP_IDS = "PREFERENCE_UNIQUE_GROUP_IDS"
 
     private var prefs: SharedPreferences? = null
