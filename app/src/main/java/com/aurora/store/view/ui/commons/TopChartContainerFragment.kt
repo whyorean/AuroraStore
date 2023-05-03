@@ -84,8 +84,8 @@ class TopChartContainerFragment : Fragment() {
 
     private fun setupViewPager() {
         B.pager.adapter = ViewPagerAdapter(childFragmentManager, lifecycle, chartType)
-        B.topTabGroup.setOnCheckedChangeListener { _, checkedId ->
-            when (checkedId) {
+        B.topTabGroup.setOnCheckedStateChangeListener { _, checkedIds ->
+            when (checkedIds[0]) {
                 R.id.tab_top_free -> B.pager.setCurrentItem(0, true)
                 R.id.tab_top_grossing -> B.pager.setCurrentItem(1, true)
                 R.id.tab_trending -> B.pager.setCurrentItem(2, true)
