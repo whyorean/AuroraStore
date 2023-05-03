@@ -71,9 +71,9 @@ class SearchSuggestionActivity : BaseActivity() {
 
         attachToolbar()
 
-        VM.liveSearchSuggestions.observe(this, {
+        VM.liveSearchSuggestions.observe(this) {
             updateController(it)
-        })
+        }
 
         setupSearch()
     }

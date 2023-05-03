@@ -63,9 +63,9 @@ class AppSalesActivity : BaseActivity() {
         attachRecycler()
         attachToolbar()
 
-        VM.liveAppList.observe(this, {
+        VM.liveAppList.observe(this) {
             updateController(it)
-        })
+        }
     }
 
     private fun attachToolbar() {
