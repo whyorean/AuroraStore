@@ -179,7 +179,7 @@
     <string name="title_spoof_manager">Менеджер подмены</string>
     <string name="spoof_apply">Убедитесь, что перезашли в аккаунт для применения подмены устройства</string>
     <string name="pref_install_profile_summary">Выберите целевой профиль для установки приложений. Работает только с методом root-установки</string>
-    <string name="pref_install_mode_session">Установка</string>
+    <string name="pref_install_mode_session">Установка с помощью сессии (Android 5+)</string>
     <string name="device_huawei_description">Вам предлагается использовать подмену устройства, если у вас одна из новых моделей Huawei. Включить функцию подмены сейчас\?</string>
     <string name="menu_terms">Условия предоставления услуг</string>
     <string name="installer_root_available">Root-доступ разрешён</string>
