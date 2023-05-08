@@ -1,4 +1,4 @@
-image: jangrewe/gitlab-ci-android
+image: theimpulson/gitlab-ci-android
 
 before_script: 
 - export GRADLE_USER_HOME=$(pwd)/.gradle
@@ -49,4 +49,3 @@ sendLogs:
   script:
   - sh ci-notify.sh --logs
   when: on_failure
-  
