@@ -1,4 +1,4 @@
-Changelog : v4.2.1 (43)
+Changelog : v4.2.2 (44)
 • Fix crash related to notification of installation services
 • Only show valid spoofing properties in app
 • Notify users when they are rate-limited during searching
