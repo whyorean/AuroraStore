@@ -305,7 +305,7 @@
     <string name="installer_status_unknown">Неизвестно</string>
     <string name="installer_status_success">Успешно установлено</string>
     <string name="installer_status_failure_storage">Недостаточно памяти</string>
-    <string name="installer_status_failure_invalid">Неправильный или поврежденный APK</string>
+    <string name="installer_status_failure_invalid">Неправильный или повреждённый APK</string>
     <string name="installer_status_failure_incompatible">Несовместимое приложение</string>
     <string name="installer_status_failure_conflict">Существует конфликтующий пакет</string>
     <string name="installer_status_failure_session">Невозможно создать сеанс</string>
