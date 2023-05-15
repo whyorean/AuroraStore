@@ -128,7 +128,6 @@ dependencies {
     implementation "com.google.protobuf:protobuf-javalite:3.22.3"
 
     //Apache's Goodies
-    implementation "commons-io:commons-io:2.11.0"
     implementation "org.apache.commons:commons-text:1.10.0"
 
     //Google's Goodies

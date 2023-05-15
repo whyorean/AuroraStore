@@ -26,7 +26,6 @@ import android.os.Build
 import androidx.annotation.RequiresApi
 import com.aurora.extensions.isLAndAbove
 import com.aurora.store.util.PackageUtil.getPackageInfo
-import org.apache.commons.io.IOUtils
 import java.io.File
 import java.io.FileOutputStream
 import java.util.*
@@ -92,10 +91,10 @@ class ApkCopier(private val context: Context, private val packageName: String) {
             val zipOutputStream = ZipOutputStream(fileOutputStream)
 
             for (file in fileList) {
-                file?.let {
+                file?.inputStream()?.use {
                     val zipEntry = ZipEntry(file.name)
                     zipOutputStream.putNextEntry(zipEntry)
-                    IOUtils.copy(it.inputStream(), zipOutputStream)
+                    it.copyTo(zipOutputStream)
                     zipOutputStream.closeEntry()
                 }
             }

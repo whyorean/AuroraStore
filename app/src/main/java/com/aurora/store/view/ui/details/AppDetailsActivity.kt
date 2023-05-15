@@ -66,10 +66,10 @@ import com.tonyodev.fetch2core.DownloadBlock
 import nl.komponents.kovenant.task
 import nl.komponents.kovenant.ui.failUi
 import nl.komponents.kovenant.ui.successUi
-import org.apache.commons.io.FileUtils
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
+import java.io.File
 
 class AppDetailsActivity : BaseDetailsActivity() {
 
@@ -323,7 +323,7 @@ class AppDetailsActivity : BaseDetailsActivity() {
         var filesExist = true
 
         files.forEach { download ->
-            filesExist = filesExist && FileUtils.getFile(download.file).exists()
+            filesExist = filesExist && File(download.file).exists()
         }
 
         if (filesExist)
@@ -683,7 +683,8 @@ class AppDetailsActivity : BaseDetailsActivity() {
                 if (groupId == app.getGroupId(this@AppDetailsActivity)) {
                     status = download.status
                     flip(1)
-                    FileUtils.touch(inProgressMarker)
+                    inProgressMarker.parentFile?.mkdirs()
+                    inProgressMarker.createNewFile()
                 }
             }
 

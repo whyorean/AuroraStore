@@ -31,10 +31,10 @@ import com.tonyodev.fetch2core.Reason
 import nl.komponents.kovenant.task
 import nl.komponents.kovenant.ui.failUi
 import nl.komponents.kovenant.ui.successUi
-import org.apache.commons.io.FileUtils
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
+import java.io.File
 import java.util.*
 import java.util.concurrent.locks.ReentrantLock
 import kotlin.concurrent.timerTask
@@ -565,7 +565,7 @@ class UpdateService: LifecycleService() {
             var filesExist = true
 
             downloads.forEach { download ->
-                filesExist = filesExist && FileUtils.getFile(download.file).exists()
+                filesExist = filesExist && File(download.file).exists()
             }
 
             if (filesExist) {

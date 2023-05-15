@@ -34,7 +34,6 @@ import com.aurora.extensions.isSAndAbove
 import com.aurora.extensions.isTAndAbove
 import com.aurora.store.BuildConfig
 import com.aurora.store.util.Log
-import org.apache.commons.io.IOUtils
 import java.io.File
 
 class SessionInstaller(context: Context) : InstallerBase(context) {
@@ -81,19 +80,12 @@ class SessionInstaller(context: Context) : InstallerBase(context) {
             Log.i("Writing splits to session for $packageName")
 
             for (uri in uriList) {
-                val inputStream = context.contentResolver.openInputStream(uri)
-                val outputStream = session.openWrite(
-                    "${packageName}_${System.currentTimeMillis()}",
-                    0,
-                    -1
-                )
-
-                IOUtils.copy(inputStream, outputStream)
-
-                session.fsync(outputStream)
-
-                IOUtils.close(inputStream)
-                IOUtils.close(outputStream)
+                context.contentResolver.openInputStream(uri)?.use { input ->
+                    session.openWrite("${packageName}_${System.currentTimeMillis()}", 0, -1).use {
+                        input.copyTo(it)
+                        session.fsync(it)
+                    }
+                }
             }
 
             val callBackIntent = Intent(context, InstallerService::class.java)

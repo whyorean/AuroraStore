@@ -50,7 +50,7 @@ import com.tonyodev.fetch2.AbstractFetchGroupListener
 import com.tonyodev.fetch2.Download
 import com.tonyodev.fetch2.FetchGroup
 import nl.komponents.kovenant.task
-import org.apache.commons.io.FileUtils
+import java.io.File
 
 class UpdatesFragment : BaseFragment() {
 
@@ -302,7 +302,7 @@ class UpdatesFragment : BaseFragment() {
             var filesExist = true
 
             downloads.forEach { download ->
-                filesExist = filesExist && FileUtils.getFile(download.file).exists()
+                filesExist = filesExist && File(download.file).exists()
             }
 
             if (filesExist) {
