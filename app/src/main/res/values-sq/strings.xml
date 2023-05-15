@@ -166,8 +166,6 @@
     <string name="download_metadata">Po merren tejtëdhëna</string>
     <string name="download_none">S’ka shkarkime</string>
     <string name="download_pause_all">Ndali krejt</string>
-    <string name="download_paused">U ndal</string>
-    <string name="download_progress">Po shkarkohet</string>
     <string name="download_queued">Në Radhë</string>
     <string name="download_resume">Rimerre</string>
     <string name="download_resume_all">Rimerri krejt</string>

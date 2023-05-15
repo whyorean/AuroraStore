@@ -186,8 +186,6 @@
     <string name="download_resume_all">ਸਾਰੇ ਚਾਲੂ ਕਰੋ</string>
     <string name="download_resume">ਡਾਊਨਲੋਡ ਚਾਲੂ ਕਰੋ</string>
     <string name="download_queued">ਕਤਾਰਬੱਧ</string>
-    <string name="download_progress">ਡਾਊਨਲੋਡ ਹੋ ਰਿਹਾ ਹੈ</string>
-    <string name="download_paused">ਡਾਊਨਲੋਡ ਰੋਕਿਆ ਗਿਆ ਹੈ</string>
     <string name="download_pause_all">ਸਾਰੇ ਰੋਕੋ</string>
     <string name="download_pause">ਰੋਕੋ</string>
     <string name="download_none">ਕੋਈ ਡਾਊਨਲੋਡ ਨਹੀਂ</string>

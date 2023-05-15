@@ -52,7 +52,6 @@
     <string name="exodus_report">එක්සෝඩස් වාර්තාව</string>
     <string name="exodus_progress">ලුහුබැඳීම් ගැන පරීක්ෂා වෙමින්…</string>
     <string name="exodus_powered">එක්සෝඩස් මගින් බලගන්වා ඇත</string>
-    <string name="download_progress">බාගත වෙමින්</string>
     <string name="download_failed">බාගතවීම අසාර්ථකයි</string>
     <string name="download_eta_calculating">ගණනය වෙමින්</string>
     <string name="download_completed">බාගත වී ඇත</string>
@@ -248,7 +247,6 @@
     <string name="download_force_clear_all">බලෙන් සියල්ල හිස් කරන්න</string>
     <string name="download_pause">විරාමය</string>
     <string name="download_pause_all">සියල්ල විරාමය</string>
-    <string name="download_paused">විරාමයි</string>
     <string name="download_resume">නැවතත්</string>
     <string name="download_resume_all">සියල්ල නැවතත්</string>
     <string name="exodus_view_report">වාර්තාව දකින්න</string>

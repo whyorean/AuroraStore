@@ -219,8 +219,6 @@
     <string name="download_resume_all">Alle fortsetzen</string>
     <string name="download_resume">Fortsetzen</string>
     <string name="download_queued">In der Warteschlange</string>
-    <string name="download_progress">Wird heruntergeladen</string>
-    <string name="download_paused">Angehalten</string>
     <string name="download_pause_all">Alle anhalten</string>
     <string name="download_pause">Anhalten</string>
     <string name="download_none">Keine heruntergeladenen Dateien</string>

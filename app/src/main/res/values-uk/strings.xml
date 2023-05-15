@@ -17,9 +17,7 @@
     <string name="download_resume_all">Продовжити все</string>
     <string name="download_resume">Продовжити</string>
     <string name="download_queued">В черзі</string>
-    <string name="download_progress">Завантаження</string>
     <string name="download_pause">Призупинити</string>
-    <string name="download_paused">Призупинено</string>
     <string name="download_pause_all">Призупинити все</string>
     <string name="download_none">Немає завантажень</string>
     <string name="download_metadata">Отримання метаданих</string>

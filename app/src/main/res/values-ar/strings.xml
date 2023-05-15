@@ -113,8 +113,6 @@
     <string name="download_resume_all">استئناف الكل</string>
     <string name="download_resume">إستئناف</string>
     <string name="download_queued">في قائمة الإنتظار</string>
-    <string name="download_progress">جارٍ التنزيل</string>
-    <string name="download_paused">متوقف</string>
     <string name="download_pause_all">إيقاف الكل مؤقتًا</string>
     <string name="download_pause">إيقاف</string>
     <string name="download_none">لا يوجد تنزيلات</string>

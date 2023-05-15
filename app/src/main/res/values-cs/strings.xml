@@ -178,8 +178,6 @@
     <string name="download_resume_all">Pokračovat vše</string>
     <string name="download_resume">Pokračovat</string>
     <string name="download_queued">Ve frontě</string>
-    <string name="download_progress">Stahuji</string>
-    <string name="download_paused">Pozastaveno</string>
     <string name="download_pause_all">Pozastavit vše</string>
     <string name="download_pause">Pozastavit</string>
     <string name="download_none">Žádné stažené</string>

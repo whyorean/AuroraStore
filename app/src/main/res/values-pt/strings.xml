@@ -209,8 +209,6 @@
     <string name="download_resume_all">Retomar todas</string>
     <string name="download_resume">Retomar</string>
     <string name="download_queued">Na fila</string>
-    <string name="download_progress">A descarregar</string>
-    <string name="download_paused">Em pausa</string>
     <string name="download_pause_all">Pausa em tudo</string>
     <string name="download_pause">Pausa</string>
     <string name="download_none">Não existem descargas</string>

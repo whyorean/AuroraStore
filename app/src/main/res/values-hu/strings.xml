@@ -177,8 +177,6 @@
     <string name="download_resume_all">Az összes folytatása</string>
     <string name="download_resume">Folytatás</string>
     <string name="download_queued">Besorolt</string>
-    <string name="download_progress">Letöltés</string>
-    <string name="download_paused">Szünetelve</string>
     <string name="download_pause_all">Az összes szüneteltetése</string>
     <string name="download_pause">Szüneteltetés</string>
     <string name="download_none">Nincs letöltés</string>

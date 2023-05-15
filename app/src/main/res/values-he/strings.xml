@@ -194,7 +194,6 @@
     <string name="title_details">פרטים</string>
     <string name="details_dev_details">יצירת קשר עם המפתחים</string>
     <string name="download_cancel_all">לבטל הכול</string>
-    <string name="download_progress">מתבצעת הורדה</string>
     <string name="onboarding_tos">תנאי השימוש</string>
     <string name="pref_install_mode_title">שיטת התקנה</string>
     <string name="tab_categories">קטגוריות</string>
@@ -204,7 +203,6 @@
     <string name="title_device">מכשיר</string>
     <string name="details_beta_available">להצטרף לתוכנית גרסת הביתא \?</string>
     <string name="details_beta_subscribed">נרשמת לתוכנית הבדיקה של גרסת הביתא</string>
-    <string name="download_paused">מושהית</string>
     <string name="exodus_view_more">הצגה</string>
     <string name="onboarding_tos_desc">נא לקרוא את תנאי השימוש שלנו ולאשר אותם כדי להשתמש בחנות Aurora.</string>
     <string name="exodus_view_report">הצגת הדו״ח</string>

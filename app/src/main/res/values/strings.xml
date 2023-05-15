@@ -17,7 +17,8 @@
   ~  You should have received a copy of the GNU General Public License
   ~  along with Aurora Store.  If not, see <http://www.gnu.org/licenses/>.
   ~
-  --><resources>
+  -->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="about_bhim">"BHIM - UPI"</string>
     <string name="about_bhim_summary">"Donate via UPI"</string>
     <string name="about_bitcoin_bch">"Bitcoin Cash"</string>
@@ -186,8 +187,8 @@
     <string name="download_none">"No downloads"</string>
     <string name="download_pause">"Pause"</string>
     <string name="download_pause_all">"Pause all"</string>
-    <string name="download_paused">"Paused"</string>
-    <string name="download_progress">"Downloading"</string>
+    <string name="download_paused">"Paused • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g>"</string>
+    <string name="download_progress">"Downloading • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g>"</string>
     <string name="download_queued">"Queued"</string>
     <string name="download_resume">"Resume"</string>
     <string name="download_resume_all">"Resume all"</string>
@@ -409,4 +410,5 @@
     <string name="menu">Menu</string>
     <string name="expand">Expand</string>
     <string name="open_in_aurora">Open in Aurora Store</string>
+    <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>
 </resources>

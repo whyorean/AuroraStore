@@ -153,8 +153,6 @@
     <string name="download_resume_all">Guztiak jarraitu</string>
     <string name="download_resume">Jarraitu</string>
     <string name="download_queued">Itxaroten</string>
-    <string name="download_progress">Deskargatzen</string>
-    <string name="download_paused">Pausaturik</string>
     <string name="download_pause_all">Guztia pausatu</string>
     <string name="download_pause">Pausatu</string>
     <string name="download_none">Ez dago deskargarik</string>

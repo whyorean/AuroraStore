@@ -165,9 +165,7 @@
     <string name="download_metadata">메타데이터 가져오기</string>
     <string name="download_none">다운로드 없음</string>
     <string name="download_pause_all">모두 일시 중지</string>
-    <string name="download_paused">일시 중지됨</string>
     <string name="download_queued">대기 중</string>
-    <string name="download_progress">다운로드 중</string>
     <string name="download_resume">재개</string>
     <string name="download_resume_all">모두 재개</string>
     <string name="download_speed_estimating">평가</string>

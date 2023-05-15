@@ -41,7 +41,6 @@
     <string name="details_dev_address">Adresas</string>
     <string name="details_think_this_app">Ką manote apie šią programėlę\?</string>
     <string name="download_pause">Pristabdyti</string>
-    <string name="download_paused">Pristabdyta</string>
     <string name="download_queued">Eilėje</string>
     <string name="download_resume">Pratęsti</string>
     <string name="installer_status_failure_invalid">Netinkamas arba pažeistas APK paketas</string>
@@ -123,7 +122,6 @@
     <string name="details_dependencies">Priklausomybės</string>
     <string name="details_dev_email">El. paštas</string>
     <string name="download_metadata">Gaunami metaduomenys</string>
-    <string name="download_progress">Atsisiunčiama</string>
     <string name="installer_status_failure_session">Nepavyko sukurti seanso</string>
     <string name="details_changelog">Keitinių žurnalas</string>
     <string name="details_files">Failai</string>

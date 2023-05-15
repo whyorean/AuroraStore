@@ -207,8 +207,6 @@
     <string name="download_resume_all">Alle voortzetten</string>
     <string name="download_resume">Voortzetten</string>
     <string name="download_queued">In de wachtrij</string>
-    <string name="download_progress">Aan het downloaden</string>
-    <string name="download_paused">Gepauzeerd</string>
     <string name="download_pause_all">Pauzeer alle</string>
     <string name="download_pause">Pauzeer</string>
     <string name="download_none">Geen installaties</string>

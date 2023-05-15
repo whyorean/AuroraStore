@@ -25,8 +25,6 @@
     <string name="download_resume">恢复</string>
     <string name="download_resume_all">恢复全部</string>
     <string name="download_queued">已加入队列</string>
-    <string name="download_progress">下载中</string>
-    <string name="download_paused">已暂停</string>
     <string name="download_pause_all">全部暂停</string>
     <string name="download_pause">暂停</string>
     <string name="download_none">无下载</string>

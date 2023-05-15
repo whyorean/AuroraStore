@@ -141,8 +141,6 @@
     <string name="download_resume_all">Reanudar todas</string>
     <string name="download_resume">Reanudar</string>
     <string name="download_queued">En espera</string>
-    <string name="download_progress">Descargando</string>
-    <string name="download_paused">Pausada</string>
     <string name="download_pause_all">Pausar todo</string>
     <string name="download_pause">Pausar</string>
     <string name="download_none">No hay descargas</string>

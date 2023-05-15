@@ -89,7 +89,6 @@
     <string name="pref_downloader_active_summary">Μέγιστος αριθμός ενεργών λήψεων</string>
     <string name="pref_app_download">Λήψεις</string>
     <string name="onboarding_permission_esa_desc">Για την αποθήκευση λήψεων (APK &amp; OBB), εξάγετε και εισάγετε τις ρυθμίσεις της συσκευής προς και από έναν εξωτερικό αποθηκευτικό χώρο.</string>
-    <string name="download_progress">Γίνεται λήψη</string>
     <string name="download_none">Δεν υπάρχουν λήψεις</string>
     <string name="download_failed">Αποτυχία λήψης</string>
     <string name="download_completed">Λήφθηκε</string>
@@ -101,7 +100,6 @@
     <string name="download_resume_all">Συνέχιση όλων</string>
     <string name="download_resume">Συνέχιση</string>
     <string name="download_queued">Σε ουρά</string>
-    <string name="download_paused">Σε παύση</string>
     <string name="download_pause_all">Παύση όλων</string>
     <string name="download_pause">Παύση</string>
     <string name="download_metadata">Λήψη μεταδεδομένων</string>

@@ -47,8 +47,6 @@
     <string name="download_metadata">Metatietoja haetaan</string>
     <string name="download_failed">Lataus epäonnistui</string>
     <string name="download_none">Ei latauksia</string>
-    <string name="download_progress">Ladataan</string>
-    <string name="download_paused">Keskeytetty</string>
     <string name="download_resume">Jatka</string>
     <string name="download_resume_all">Jatka kaikki</string>
     <string name="download_queued">Jonossa</string>

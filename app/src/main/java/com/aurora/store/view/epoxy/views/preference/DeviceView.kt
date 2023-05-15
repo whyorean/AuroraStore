@@ -29,7 +29,6 @@ import com.airbnb.epoxy.ModelView
 import com.aurora.store.R
 import com.aurora.store.databinding.ViewDeviceBinding
 import com.aurora.store.view.epoxy.views.BaseView
-import org.apache.commons.lang3.StringUtils
 import java.util.*
 
 @ModelView(
@@ -64,10 +63,10 @@ class DeviceView : RelativeLayout {
     @ModelProp
     fun properties(properties: Properties) {
         B.line1.text = properties.getProperty("UserReadableName")
-        B.line2.text = StringUtils.joinWith(
-            " \u2022 ",
+        B.line2.text = resources.getString(
+            R.string.spoof_property,
             properties.getProperty("Build.MANUFACTURER"),
-            "API " + properties.getProperty("Build.VERSION.SDK_INT")
+            properties.getProperty("Build.VERSION.SDK_INT")
         )
         B.line3.text = properties.getProperty("Platforms")
     }

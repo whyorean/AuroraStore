@@ -158,8 +158,6 @@
     <string name="download_resume_all">Настави све</string>
     <string name="download_resume">Настави</string>
     <string name="download_queued">У чекању</string>
-    <string name="download_progress">Преузимање</string>
-    <string name="download_paused">Паузирано</string>
     <string name="download_pause">Паузирај</string>
     <string name="download_pause_all">Паузирај све</string>
     <string name="download_none">Нема преузимања</string>

@@ -141,8 +141,6 @@
     <string name="download_resume_all">Återuppta alla</string>
     <string name="download_resume">Återuppta</string>
     <string name="download_queued">Köad</string>
-    <string name="download_progress">Laddar ner</string>
-    <string name="download_paused">Pausad</string>
     <string name="download_pause_all">Pausa alla</string>
     <string name="download_pause">Pausa</string>
     <string name="download_none">Inga nerladdningar</string>

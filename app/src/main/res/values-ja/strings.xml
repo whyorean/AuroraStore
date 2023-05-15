@@ -93,8 +93,6 @@
     <string name="download_resume_all">全て再開</string>
     <string name="download_resume">再開</string>
     <string name="download_queued">待機中</string>
-    <string name="download_progress">ダウンロード中</string>
-    <string name="download_paused">一時停止中</string>
     <string name="download_pause_all">全て一時停止</string>
     <string name="download_pause">一時停止</string>
     <string name="download_none">ダウンロードなし</string>

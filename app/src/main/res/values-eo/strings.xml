@@ -62,8 +62,6 @@
     <string name="download_resume">Malpaŭzigi</string>
     <string name="download_resume_all">Malpaŭzigi ĉiujn</string>
     <string name="download_queued">Envicigitaj</string>
-    <string name="download_progress">Elŝutas</string>
-    <string name="download_paused">Paŭzigitaj</string>
     <string name="download_pause_all">Paŭzigi ĉiujn</string>
     <string name="download_pause">Paŭzigi</string>
     <string name="download_none">Sen elŝutoj</string>

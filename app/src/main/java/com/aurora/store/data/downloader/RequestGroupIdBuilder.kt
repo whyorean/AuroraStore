@@ -6,7 +6,6 @@ import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_UNIQUE_GROUP_IDS
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import org.apache.commons.lang3.RandomUtils
 
 class RequestGroupIdBuilder {
 
@@ -45,9 +44,9 @@ fun App.getGroupId(context: Context): Int {
             return item.key
         }
     }
-    var randomGroupID = RandomUtils.nextInt(0, Int.MAX_VALUE)
+    var randomGroupID = (0 until Int.MAX_VALUE).random()
     while (groupIDMap.containsKey(randomGroupID)) {
-        randomGroupID = RandomUtils.nextInt(0, Int.MAX_VALUE)
+        randomGroupID = (0 until Int.MAX_VALUE).random()
     }
     groupIDMap[randomGroupID] = RequestGroupIdBuilder.AppIDnVersion(this.id, this.versionCode)
     Preferences.getPrefs(context).edit().putString(PREFERENCE_UNIQUE_GROUP_IDS, gson.toJson(groupIDMap)).apply()

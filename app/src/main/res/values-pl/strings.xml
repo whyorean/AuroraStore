@@ -287,8 +287,6 @@
     <string name="download_resume_all">Wznów wszystkie</string>
     <string name="download_resume">Wznów</string>
     <string name="download_queued">W kolejce</string>
-    <string name="download_progress">Pobieranie</string>
-    <string name="download_paused">Wstrzymane</string>
     <string name="download_pause_all">Wstrzymaj wszystkie</string>
     <string name="download_pause">Wstrzymaj</string>
     <string name="download_none">Brak pobranych</string>

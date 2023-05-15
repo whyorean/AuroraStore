@@ -229,8 +229,6 @@
     <string name="about_gitlab">GitLab</string>
     <string name="about_fdroid_summary">Télécharger Aurora Store via F-Droid.</string>
     <string name="about_fdroid">F-Droid</string>
-    <string name="download_progress">Téléchargement</string>
-    <string name="download_paused">En pause</string>
     <string name="download_pause">Pause</string>
     <string name="download_none">Aucun téléchargement</string>
     <string name="download_metadata">Obtention des métadonnées</string>

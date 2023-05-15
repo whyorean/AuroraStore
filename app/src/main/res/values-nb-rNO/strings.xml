@@ -63,9 +63,7 @@
     <string name="download_resume_all">Gjenoppta alt</string>
     <string name="download_resume">Gjenoppta</string>
     <string name="download_queued">I kø</string>
-    <string name="download_progress">Laster ned</string>
     <string name="download_pause">Sett på pause</string>
-    <string name="download_paused">Pauset</string>
     <string name="download_pause_all">Sett alt på pause</string>
     <string name="download_none">Ingen nedlastinger</string>
     <string name="download_metadata">Henter metadata</string>

@@ -85,7 +85,6 @@
     <string name="details_in_app_purchase">பயன்பாட்டில் வாங்குதல்</string>
     <string name="details_rate_this_app">இந்த பயன்பாட்டை மதிப்பிடவும்</string>
     <string name="action_whitelist">வெண்பட்டியல்</string>
-    <string name="download_progress">பதிவிறக்குகிறது</string>
     <string name="device_huawei_subtitle">நீங்கள் Huawei சாதனத்தைப் பயன்படுத்துவதாகத் தெரிகிறது, Google இன் அண்மை தடைகள் காரணமாக உங்களால் உள்நுழைய முடியாமல் போகலாம்.</string>
     <string name="action_uninstall">நிறுவல் நீக்கு</string>
     <string name="action_update_all">எல்லாம் புதுப்பி</string>
@@ -225,7 +224,6 @@
     <string name="download_none">பதிவிறக்கங்கள் இல்லை</string>
     <string name="download_pause">இடைநிறுத்தம்</string>
     <string name="download_pause_all">அனைத்தையும் இடைநிறுத்து</string>
-    <string name="download_paused">இடைநிறுத்தப்பட்டது</string>
     <string name="download_queued">வரிசையில் நிற்கிறது</string>
     <string name="download_resume_all">அனைத்தையும் மீண்டும் தொடரவும்</string>
     <string name="download_speed_estimating">மதிப்பிடுகிறது</string>

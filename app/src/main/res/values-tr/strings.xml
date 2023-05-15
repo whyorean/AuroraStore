@@ -212,8 +212,6 @@
     <string name="download_resume_all">Tümünü sürdür</string>
     <string name="download_resume">Sürdür</string>
     <string name="download_queued">Kuyruğa alındı</string>
-    <string name="download_progress">İndiriliyor</string>
-    <string name="download_paused">Duraklatıldı</string>
     <string name="download_pause_all">Tümünü duraklat</string>
     <string name="download_pause">Duraklat</string>
     <string name="download_none">İndirme yok</string>

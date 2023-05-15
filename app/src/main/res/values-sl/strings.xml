@@ -129,8 +129,6 @@
     <string name="download_metadata">Pridobivanje podatkov</string>
     <string name="download_pause">Pavza</string>
     <string name="download_pause_all">Pavza za vse</string>
-    <string name="download_paused">Pavzirano</string>
-    <string name="download_progress">Prenašanje</string>
     <string name="download_queued">V čakalni vrsti</string>
     <string name="download_resume">Nadaljuj</string>
     <string name="download_resume_all">Nadaljuj vse</string>

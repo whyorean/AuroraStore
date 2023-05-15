@@ -215,8 +215,6 @@
     <string name="download_resume_all">Vejandina hemîyan</string>
     <string name="download_resume">Dîsa vekirin</string>
     <string name="download_queued">Rêzkirin</string>
-    <string name="download_progress">Dakêşandin</string>
-    <string name="download_paused">Rawestandin</string>
     <string name="download_pause_all">Hemiyan rawestînin</string>
     <string name="download_pause">Sekinîn</string>
     <string name="download_none">Dakêşandin tune</string>

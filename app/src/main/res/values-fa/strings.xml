@@ -190,7 +190,6 @@
     <string name="download_pause_all">همه را ایست کن</string>
     <string name="details_ratings">نظرات و سنجش</string>
     <string name="details_no_whitelist">هیچ برنامه ای در لیست سفید نیست</string>
-    <string name="download_progress">در حال دانلود</string>
     <string name="exodus_progress">درحال پیدا کردن ترکرها</string>
     <string name="exodus_powered">از Exodus</string>
     <string name="details_rate_stars_first">اول سنجش ستاره ای را وارد کنید</string>
@@ -226,6 +225,5 @@
     <string name="download_resume_all">همه را ادامه بده</string>
     <string name="download_metadata">در حال گرفتن اطلاعات</string>
     <string name="download_pause">ایست</string>
-    <string name="download_paused">ایست شد</string>
     <string name="download_queued">به زودی انجام می گیرد</string>
 </resources>

@@ -281,8 +281,6 @@
     <string name="download_resume_all">Tiếp tục tất cả</string>
     <string name="download_resume">Tiếp tục</string>
     <string name="download_queued">Đang chờ</string>
-    <string name="download_progress">Đang tải xuống</string>
-    <string name="download_paused">Đã tạm dừng</string>
     <string name="download_pause_all">Tạm dừng tất cả</string>
     <string name="download_pause">Tạm dừng</string>
     <string name="download_none">Không có tải xuống</string>

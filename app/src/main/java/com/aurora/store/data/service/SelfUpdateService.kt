@@ -24,7 +24,6 @@ import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.tonyodev.fetch2.*
 import nl.komponents.kovenant.task
-import org.apache.commons.lang3.StringUtils
 import java.lang.reflect.Modifier
 import java.util.*
 import java.util.concurrent.TimeUnit
@@ -46,7 +45,7 @@ class SelfUpdateService : Service() {
 
     override fun onStartCommand(intent: Intent, flags: Int, startId: Int): Int {
         val rawSelfUpdate = intent.getStringExtra(Constants.STRING_EXTRA)
-        if (StringUtils.isNotEmpty(rawSelfUpdate)) {
+        if (rawSelfUpdate?.isNotBlank() == true) {
             val selfUpdate = gson.fromJson(rawSelfUpdate, SelfUpdate::class.java)
             selfUpdate?.let {
                 downloadAndUpdate(it)

@@ -243,8 +243,6 @@
     <string name="download_completed">Acabadu</string>
     <string name="download_force_clear_all">Fortza Iscantzella totu</string>
     <string name="download_pause_all">Pone totu in pàusa</string>
-    <string name="download_paused">In pàusa</string>
-    <string name="download_progress">Iscarrighende</string>
     <string name="download_queued">In isetu</string>
     <string name="download_resume">Sighi</string>
     <string name="download_resume_all">Sighi cun totu</string>

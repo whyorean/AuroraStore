@@ -230,8 +230,6 @@
     <string name="download_resume_all">Lanjutkan semua</string>
     <string name="download_resume">Lanjutkan</string>
     <string name="download_queued">Antrian</string>
-    <string name="download_progress">Mengunduh</string>
-    <string name="download_paused">Dijeda</string>
     <string name="download_pause_all">Jeda semua</string>
     <string name="download_pause">Jeda</string>
     <string name="download_none">Tidak ada unduhan</string>

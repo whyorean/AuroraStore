@@ -216,8 +216,6 @@
     <string name="exodus_no_report">Wax war ah lama heli karo</string>
     <string name="download_speed_estimating">Qiyaasaya</string>
     <string name="download_queued">Lahoray</string>
-    <string name="download_progress">Dajinaya</string>
-    <string name="download_paused">Laqabtay</string>
     <string name="download_pause">Qabo</string>
     <string name="download_metadata">Helaya xogta dheeraadka ah</string>
     <string name="download_failed">Dajintii maguulaysan</string>

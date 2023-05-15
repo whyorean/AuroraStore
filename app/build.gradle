@@ -127,9 +127,6 @@ dependencies {
     //Protobuf
     implementation "com.google.protobuf:protobuf-javalite:3.22.3"
 
-    //Apache's Goodies
-    implementation "org.apache.commons:commons-text:1.10.0"
-
     //Google's Goodies
     implementation "com.google.android.material:material:1.8.0"
     implementation "com.google.android.flexbox:flexbox:3.0.0"

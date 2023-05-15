@@ -51,7 +51,6 @@ import com.aurora.store.view.ui.downloads.DownloadActivity
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.tonyodev.fetch2.*
-import org.apache.commons.lang3.StringUtils
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import java.lang.reflect.Modifier
@@ -212,19 +211,13 @@ class NotificationService : Service() {
             }
 
             Status.DOWNLOADING -> {
-                val contentString = getString(R.string.download_progress)
-                val partString = StringUtils.joinWith(
-                    "/",
-                    fetchGroup.completedDownloads.size + 1,
-                    fetchGroup.downloads.size
-                )
                 val speedString: String =
                     CommonUtil.humanReadableByteSpeed(download.downloadedBytesPerSecond, true)
                 progressBigText.bigText(
-                    StringUtils.joinWith(
-                        " \u2022 ",
-                        contentString,
-                        partString,
+                    getString(
+                        R.string.download_progress,
+                        fetchGroup.completedDownloads.size + 1,
+                        fetchGroup.downloads.size,
                         speedString
                     )
                 )
@@ -252,16 +245,11 @@ class NotificationService : Service() {
 
             Status.PAUSED -> {
                 val pauseString = getString(R.string.download_paused)
-                val filesString = StringUtils.joinWith(
-                    "/",
-                    fetchGroup.completedDownloads.size,
-                    fetchGroup.downloads.size
-                )
                 progressBigText.bigText(
-                    StringUtils.joinWith(
-                        " \u2022 ",
-                        pauseString,
-                        filesString
+                    getString(
+                        R.string.download_paused,
+                        fetchGroup.completedDownloads.size,
+                        fetchGroup.downloads.size
                     )
                 )
                 builder.setStyle(progressBigText)

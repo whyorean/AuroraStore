@@ -133,8 +133,6 @@
     <string name="download_failed">Lejupielāde neizdevās</string>
     <string name="download_force_clear_all">Piespiest notīrīt visas</string>
     <string name="download_metadata">Iegūst metadatus</string>
-    <string name="download_paused">Pauzēts</string>
-    <string name="download_progress">Lejupielādē</string>
     <string name="exodus_no_report">Nav pieejamas atskaites</string>
     <string name="exodus_no_tracker">Nesatur izsekotājus</string>
     <string name="exodus_report">Exodus atskaite</string>

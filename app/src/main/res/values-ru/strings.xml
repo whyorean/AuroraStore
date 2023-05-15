@@ -107,12 +107,10 @@
     <string name="exodus_no_report">Нет доступных отчётов</string>
     <string name="download_speed_estimating">Оценка</string>
     <string name="download_pause">Приостановить</string>
-    <string name="download_paused">Приостановлено</string>
     <string name="download_pause_all">Приостановить все</string>
     <string name="download_resume_all">Продолжить все</string>
     <string name="download_resume">Продолжить</string>
     <string name="download_queued">В очереди</string>
-    <string name="download_progress">Загрузка</string>
     <string name="download_none">Нет загрузок</string>
     <string name="download_metadata">Получение метаданных</string>
     <string name="download_force_clear_all">Принудительно очистить все</string>
