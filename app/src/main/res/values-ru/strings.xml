@@ -200,7 +200,7 @@
     <string name="toast_apk_whitelisted">Добавлен в белый список</string>
     <string name="toast_apk_copy_success">APK успешно экспортирован</string>
     <string name="toast_apk_copy_failed">Ошибка экспорта APK</string>
-    <string name="toast_apk_blacklisted">Добавлен в черный список</string>
+    <string name="toast_apk_blacklisted">Добавлен в чёрный список</string>
     <string name="toast_anonymous_restriction">Недоступно на анонимных аккаунтах</string>
     <string name="toast_abandon_sessions">Прерванные предыдущие сеансы установки</string>
     <string name="title_updates">Обновления</string>
@@ -216,7 +216,7 @@
     <string name="title_download_manager">Загрузки</string>
     <string name="title_device">Устройство</string>
     <string name="title_details">Детали</string>
-    <string name="title_blacklist_manager">Менеджер черного списка</string>
+    <string name="title_blacklist_manager">Менеджер чёрного списка</string>
     <string name="title_apps_sale">Приложения со скидкой</string>
     <string name="title_apps_library">Приложения в библиотеке</string>
     <string name="title_apps_games">Мои приложения и игры</string>
@@ -231,7 +231,7 @@
     <string name="tab_top_grossing">Бестселлеры</string>
     <string name="tab_editor_choice">Выбор редакции</string>
     <string name="tab_categories">Категории</string>
-    <string name="purchase_session_expired">Срок действия сеанса истек, повторно войдите в аккаунт для возобновления сеанса.</string>
+    <string name="purchase_session_expired">Срок действия сеанса истёк, повторно войдите в аккаунт для возобновления сеанса.</string>
     <string name="purchase_no_file">Не удалось получить файлы</string>
     <string name="purchase_not_found">Приложение не найдено</string>
     <string name="purchase_unsupported">Приложение не поддерживается</string>
@@ -240,7 +240,7 @@
     <string name="pref_ui_title">Внешний вид</string>
     <string name="pref_ui_theme_title">Тема</string>
     <string name="pref_ui_theme_system">Задано системой</string>
-    <string name="pref_ui_theme_dark_x">Темная X</string>
+    <string name="pref_ui_theme_dark_x">Тёмная X</string>
     <string name="pref_ui_theme_dark">Темная</string>
     <string name="pref_ui_theme_black">Черная</string>
     <string name="pref_ui_theme_light">Светлая</string>
