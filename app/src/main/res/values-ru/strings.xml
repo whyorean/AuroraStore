@@ -241,8 +241,8 @@
     <string name="pref_ui_theme_title">Тема</string>
     <string name="pref_ui_theme_system">Задано системой</string>
     <string name="pref_ui_theme_dark_x">Тёмная X</string>
-    <string name="pref_ui_theme_dark">Темная</string>
-    <string name="pref_ui_theme_black">Черная</string>
+    <string name="pref_ui_theme_dark">Тёмная</string>
+    <string name="pref_ui_theme_black">Чёрная</string>
     <string name="pref_ui_theme_light">Светлая</string>
     <string name="pref_ui_theme_darkord">Discord</string>
     <string name="pref_ui_accent_title">Акцент</string>
@@ -266,7 +266,7 @@
     <string name="pref_downloader_active_summary">Максимальное количество активных загрузок</string>
     <string name="pref_dialog_to_apply_restart">Эта настройка будет применена после перезапуска приложения</string>
     <string name="pref_app_download">Загрузки</string>
-    <string name="pref_abandon_session_desc">Очистить отмененные или ожидающие сеансы установки</string>
+    <string name="pref_abandon_session_desc">Очистить отменённые или ожидающие сеансы установки</string>
     <string name="pref_abandon_session">Принудительно очистить сеансы установки</string>
     <string name="onboarding_permission_installer_desc">Разрешить установку приложений из Aurora Store</string>
     <string name="onboarding_permission_installer">Разрешения установщика</string>
