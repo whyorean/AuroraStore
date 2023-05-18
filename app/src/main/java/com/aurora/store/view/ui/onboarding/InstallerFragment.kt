@@ -26,13 +26,12 @@ import android.view.ViewGroup
 import com.aurora.extensions.isMIUI
 import com.aurora.extensions.isMiuiOptimizationDisabled
 import com.aurora.extensions.showDialog
-import com.aurora.store.BuildConfig
 import com.aurora.store.R
-import com.aurora.store.data.installer.AMInstaller
-import com.aurora.store.data.installer.ServiceInstaller
+import com.aurora.store.data.installer.AppInstaller.Companion.hasAppManager
+import com.aurora.store.data.installer.AppInstaller.Companion.hasRootAccess
+import com.aurora.store.data.installer.AppInstaller.Companion.hasAuroraService
 import com.aurora.store.data.model.Installer
 import com.aurora.store.databinding.FragmentOnboardingInstallerBinding
-import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_INSTALLER_ID
 import com.aurora.store.util.save
@@ -40,7 +39,6 @@ import com.aurora.store.view.epoxy.views.preference.InstallerViewModel_
 import com.aurora.store.view.ui.commons.BaseFragment
 import com.aurora.store.view.ui.sheets.DeviceMiuiSheet
 import com.google.gson.reflect.TypeToken
-import com.topjohnwu.superuser.Shell
 import java.nio.charset.StandardCharsets
 
 
@@ -110,7 +108,7 @@ class InstallerFragment : BaseFragment() {
                 save(PREFERENCE_INSTALLER_ID, installerId)
             }
             2 -> {
-                if (checkRootAvailability()) {
+                if (hasRootAccess()) {
                     this.installerId = installerId
                     save(PREFERENCE_INSTALLER_ID, installerId)
                 } else {
@@ -121,7 +119,7 @@ class InstallerFragment : BaseFragment() {
                 }
             }
             3 -> {
-                if (checkServicesAvailability()) {
+                if (hasAuroraService(requireContext())) {
                     this.installerId = installerId
                     save(PREFERENCE_INSTALLER_ID, installerId)
                 } else {
@@ -132,7 +130,7 @@ class InstallerFragment : BaseFragment() {
                 }
             }
             4 -> {
-                if (checkAMAvailability()) {
+                if (hasAppManager(requireContext())) {
                     this.installerId = installerId
                     save(Preferences.PREFERENCE_INSTALLER_ID, installerId)
                 } else {
@@ -162,33 +160,4 @@ class InstallerFragment : BaseFragment() {
         )
     }
 
-    private fun checkRootAvailability(): Boolean {
-        return Shell.getShell().isRoot
-    }
-
-    private fun checkServicesAvailability(): Boolean {
-        val isInstalled = PackageUtil.isInstalled(
-            requireContext(),
-            ServiceInstaller.PRIVILEGED_EXTENSION_PACKAGE_NAME
-        )
-
-        val isCorrectVersionInstalled =
-            PackageUtil.isInstalled(
-                requireContext(),
-                ServiceInstaller.PRIVILEGED_EXTENSION_PACKAGE_NAME,
-                if (BuildConfig.VERSION_CODE < 31) 8 else 9
-            )
-
-        return isInstalled && isCorrectVersionInstalled
-    }
-
-    private fun checkAMAvailability(): Boolean {
-        return PackageUtil.isInstalled(
-            requireContext(),
-            AMInstaller.AM_PACKAGE_NAME
-        ) or PackageUtil.isInstalled(
-            requireContext(),
-            AMInstaller.AM_DEBUG_PACKAGE_NAME
-        )
-    }
 }

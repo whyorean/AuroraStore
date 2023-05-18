@@ -21,10 +21,13 @@ package com.aurora.store.data.installer
 
 import android.content.Context
 import android.content.pm.PackageInstaller
-import android.os.Build
+import com.aurora.extensions.isLAndAbove
+import com.aurora.store.BuildConfig
 import com.aurora.store.R
+import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_INSTALLER_ID
+import com.topjohnwu.superuser.Shell
 
 open class AppInstaller private constructor(var context: Context) {
 
@@ -47,6 +50,31 @@ open class AppInstaller private constructor(var context: Context) {
             }
             return instance!!
         }
+
+        fun hasRootAccess(): Boolean {
+            return Shell.getShell().isRoot
+        }
+
+        fun hasAuroraService(context: Context): Boolean {
+            val isInstalled = PackageUtil.isInstalled(
+                context,
+                ServiceInstaller.PRIVILEGED_EXTENSION_PACKAGE_NAME
+            )
+
+            val isCorrectVersionInstalled =
+                PackageUtil.isInstalled(
+                    context,
+                    ServiceInstaller.PRIVILEGED_EXTENSION_PACKAGE_NAME,
+                    if (BuildConfig.VERSION_CODE < 31) 8 else 9
+                )
+
+            return isInstalled && isCorrectVersionInstalled
+        }
+
+        fun hasAppManager(context: Context): Boolean {
+            return PackageUtil.isInstalled(context, AMInstaller.AM_PACKAGE_NAME) or
+                    PackageUtil.isInstalled(context, AMInstaller.AM_DEBUG_PACKAGE_NAME)
+        }
     }
 
     val choiceAndInstaller = HashMap<Int, IInstaller>()
@@ -68,29 +96,45 @@ open class AppInstaller private constructor(var context: Context) {
                 installer
             }
             2 -> {
-                val installer = RootInstaller(context)
+                val installer = if (hasRootAccess()) {
+                    RootInstaller(context)
+                } else {
+                    getDefaultInstaller(context)
+                }
                 choiceAndInstaller[prefValue] = installer
                 installer
             }
             3 -> {
-                val installer = ServiceInstaller(context)
+                val installer = if (hasAuroraService(context)) {
+                    ServiceInstaller(context)
+                } else {
+                    getDefaultInstaller(context)
+                }
                 choiceAndInstaller[prefValue] = installer
                 installer
             }
             4 -> {
-                val installer = AMInstaller(context)
+                val installer = if (hasAppManager(context)) {
+                    AMInstaller(context)
+                } else {
+                    getDefaultInstaller(context)
+                }
                 choiceAndInstaller[prefValue] = installer
                 installer
             }
-            else -> if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                val installer = SessionInstaller(context)
-                choiceAndInstaller[prefValue] = installer
-                installer
-            } else {
-                val installer = NativeInstaller(context)
+            else -> {
+                val installer = getDefaultInstaller(context)
                 choiceAndInstaller[prefValue] = installer
                 installer
             }
+        }
+    }
+
+    private fun getDefaultInstaller(context: Context): InstallerBase {
+        return if (isLAndAbove()) {
+            SessionInstaller(context)
+        } else {
+            NativeInstaller(context)
         }
     }
 }
