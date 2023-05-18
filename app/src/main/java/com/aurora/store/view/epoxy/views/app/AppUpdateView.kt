@@ -21,8 +21,10 @@ package com.aurora.store.view.epoxy.views.app
 
 import android.content.Context
 import android.util.AttributeSet
+import android.view.View
 import android.widget.RelativeLayout
 import androidx.core.text.HtmlCompat
+import androidx.core.view.isVisible
 import com.airbnb.epoxy.CallbackProp
 import com.airbnb.epoxy.ModelProp
 import com.airbnb.epoxy.ModelView
@@ -92,12 +94,12 @@ class AppUpdateView : RelativeLayout {
                     context.getString(R.string.details_changelog_unavailable)
 
                 B.headerIndicator.setOnClickListener {
-                    B.expansionLayout.let {
-                        if (it.isExpanded) {
-                            it.collapse(true)
-                        } else {
-                            it.expand(true)
-                        }
+                    if (B.txtChangelog.isVisible) {
+                        B.headerIndicator.load(R.drawable.ic_arrow_down)
+                        B.txtChangelog.visibility = View.GONE
+                    } else {
+                        B.headerIndicator.load(R.drawable.ic_arrow_up)
+                        B.txtChangelog.visibility = View.VISIBLE
                     }
                 }
             }

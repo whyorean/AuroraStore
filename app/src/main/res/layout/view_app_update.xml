@@ -29,13 +29,10 @@
     android:paddingStart="@dimen/padding_normal"
     android:paddingEnd="@dimen/padding_small">
 
-    <com.github.florent37.expansionpanel.ExpansionHeader
+    <FrameLayout
         android:id="@+id/expansion_header"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:expansion_headerIndicator="@id/headerIndicator"
-        app:expansion_layout="@id/expansionLayout"
-        app:expansion_toggleOnClick="true">
+        android:layout_height="wrap_content">
 
         <RelativeLayout
             android:id="@+id/layout_content"
@@ -119,7 +116,7 @@
                 android:focusable="true"
                 android:padding="@dimen/margin_small"
                 android:contentDescription="@string/details_changelog"
-                app:srcCompat="@drawable/ic_arrow_right"
+                app:srcCompat="@drawable/ic_arrow_down"
                 app:tint="?colorControlNormal" />
 
             <LinearLayout
@@ -137,26 +134,19 @@
                     android:layout_height="wrap_content" />
             </LinearLayout>
         </RelativeLayout>
-    </com.github.florent37.expansionpanel.ExpansionHeader>
+    </FrameLayout>
 
-    <com.github.florent37.expansionpanel.ExpansionLayout
-        android:id="@+id/expansionLayout"
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txt_changelog"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/expansion_header"
-        android:layout_marginTop="@dimen/margin_small">
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/txt_changelog"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/txt_line1"
-            android:layout_alignEnd="@id/txt_line1"
-            android:background="@drawable/bg_changelog"
-            android:ellipsize="end"
-            android:minHeight="?actionBarSize"
-            android:singleLine="false"
-            android:textIsSelectable="true"
-            android:textAppearance="@style/TextAppearance.Aurora.Line2" />
-    </com.github.florent37.expansionpanel.ExpansionLayout>
+        android:layout_marginTop="@dimen/margin_small"
+        android:background="@drawable/bg_changelog"
+        android:ellipsize="end"
+        android:minHeight="?actionBarSize"
+        android:singleLine="false"
+        android:textAppearance="@style/TextAppearance.Aurora.Line2"
+        android:textIsSelectable="true"
+        android:visibility="gone" />
 </RelativeLayout>

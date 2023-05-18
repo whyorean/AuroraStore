@@ -148,9 +148,6 @@ dependencies {
     implementation "androidx.navigation:navigation-fragment-ktx:${versions.navigation}"
     implementation "androidx.navigation:navigation-ui-ktx:${versions.navigation}"
 
-    //UI Addons
-    implementation "com.github.florent37:expansionpanel:1.2.4"
-
     //Easy Permission
     implementation "com.github.quickpermissions:quickpermissions-kotlin:0.4.1"
 
