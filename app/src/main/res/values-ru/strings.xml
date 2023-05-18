@@ -200,7 +200,7 @@
     <string name="toast_apk_whitelisted">Добавлен в белый список</string>
     <string name="toast_apk_copy_success">APK успешно экспортирован</string>
     <string name="toast_apk_copy_failed">Ошибка экспорта APK</string>
-    <string name="toast_apk_blacklisted">Добавлен в черный список</string>
+    <string name="toast_apk_blacklisted">Добавлен в чёрный список</string>
     <string name="toast_anonymous_restriction">Недоступно на анонимных аккаунтах</string>
     <string name="toast_abandon_sessions">Прерванные предыдущие сеансы установки</string>
     <string name="title_updates">Обновления</string>
@@ -216,7 +216,7 @@
     <string name="title_download_manager">Загрузки</string>
     <string name="title_device">Устройство</string>
     <string name="title_details">Детали</string>
-    <string name="title_blacklist_manager">Менеджер черного списка</string>
+    <string name="title_blacklist_manager">Менеджер чёрного списка</string>
     <string name="title_apps_sale">Приложения со скидкой</string>
     <string name="title_apps_library">Приложения в библиотеке</string>
     <string name="title_apps_games">Мои приложения и игры</string>
