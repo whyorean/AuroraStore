@@ -231,7 +231,7 @@
     <string name="tab_top_grossing">Бестселлеры</string>
     <string name="tab_editor_choice">Выбор редакции</string>
     <string name="tab_categories">Категории</string>
-    <string name="purchase_session_expired">Срок действия сеанса истек, повторно войдите в аккаунт для возобновления сеанса.</string>
+    <string name="purchase_session_expired">Срок действия сеанса истёк, повторно войдите в аккаунт для возобновления сеанса.</string>
     <string name="purchase_no_file">Не удалось получить файлы</string>
     <string name="purchase_not_found">Приложение не найдено</string>
     <string name="purchase_unsupported">Приложение не поддерживается</string>
