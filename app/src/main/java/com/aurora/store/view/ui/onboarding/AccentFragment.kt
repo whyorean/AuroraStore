@@ -29,6 +29,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewAnimationUtils
 import android.view.ViewGroup
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.aurora.store.R
 import com.aurora.store.data.model.Accent
 import com.aurora.store.databinding.FragmentOnboardingAccentBinding
@@ -44,7 +45,6 @@ import com.aurora.store.util.save
 import com.aurora.store.view.custom.CubicBezierInterpolator
 import com.aurora.store.view.epoxy.views.AccentViewModel_
 import com.aurora.store.view.ui.commons.BaseFragment
-import com.gara.store.view.epoxy.controller.FlexLayoutManager
 import com.google.gson.reflect.TypeToken
 import java.nio.charset.StandardCharsets
 import kotlin.math.sqrt
@@ -94,7 +94,8 @@ class AccentFragment : BaseFragment() {
 
     private fun attachRecycler() {
         with(B.epoxyRecycler) {
-            layoutManager = FlexLayoutManager(requireContext())
+            setHasFixedSize(true)
+            layoutManager = StaggeredGridLayoutManager(5, StaggeredGridLayoutManager.VERTICAL)
         }
     }
 
