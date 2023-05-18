@@ -36,7 +36,7 @@ project.ext {
             lifecycle : '2.6.1',
             navigation: '2.5.3',
             epoxy     : "5.1.1",
-            libsu     : "3.0.2"
+            libsu     : "5.0.5"
     ]
 }
 

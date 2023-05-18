@@ -64,7 +64,7 @@ class RootInstaller(context: Context) : InstallerBase(context) {
     override fun uninstall(packageName: String) {
         if (Shell.getShell().isRoot) {
             val result: Shell.Result =
-                Shell.su("pm uninstall --user 0 $packageName")
+                Shell.cmd("pm uninstall --user 0 $packageName")
                     .exec()
             val response = result.out
 
@@ -92,7 +92,7 @@ class RootInstaller(context: Context) : InstallerBase(context) {
             totalSize += file.length().toInt()
 
         val result: Shell.Result =
-            Shell.su("pm install-create -i com.android.vending --user 0 -r -S $totalSize")
+            Shell.cmd("pm install-create -i com.android.vending --user 0 -r -S $totalSize")
                 .exec()
 
         val response = result.out
@@ -105,11 +105,11 @@ class RootInstaller(context: Context) : InstallerBase(context) {
             val sessionId = sessionIdMatcher.group(1)?.toInt()
             if (Shell.getShell().isRoot && sessionId != null) {
                 for (file in files) {
-                    Shell.su("cat \"${file.absoluteFile}\" | pm install-write -S ${file.length()} $sessionId \"${file.name}\"")
+                    Shell.cmd("cat \"${file.absoluteFile}\" | pm install-write -S ${file.length()} $sessionId \"${file.name}\"")
                         .exec()
                 }
 
-                val shellResult = Shell.su("pm install-commit $sessionId").exec()
+                val shellResult = Shell.cmd("pm install-commit $sessionId").exec()
 
                 if (!shellResult.isSuccess) {
                     removeFromInstallQueue(packageName)
@@ -140,7 +140,7 @@ class RootInstaller(context: Context) : InstallerBase(context) {
 
     private fun xInstallLegacy(packageName: String, files: List<File>) {
         if (Shell.getShell().isRoot) {
-            Shell.su("pm install -i com.android.vending --user 0 \"${files[0].name}\"").exec()
+            Shell.cmd("pm install -i com.android.vending --user 0 \"${files[0].name}\"").exec()
         } else {
             removeFromInstallQueue(packageName)
         }
