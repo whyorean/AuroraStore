@@ -27,19 +27,6 @@ plugins {
     id 'com.starter.easylauncher'
 }
 
-project.ext {
-    versions = [
-            okhttp3   : "4.11.0",
-            fetch2    : "3.1.6",
-            fuel      : "2.3.1",
-            glide     : "4.15.1",
-            lifecycle : '2.6.1',
-            navigation: '2.5.3',
-            epoxy     : "5.1.1",
-            libsu     : "5.0.5"
-    ]
-}
-
 java {
     toolchain {
         languageVersion.set(JavaLanguageVersion.of(17))
@@ -139,38 +126,42 @@ dependencies {
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
 
     //Arch LifeCycle
-    implementation "androidx.lifecycle:lifecycle-runtime-ktx:${versions.lifecycle}"
-    implementation "androidx.lifecycle:lifecycle-service:${versions.lifecycle}"
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:${versions.lifecycle}"
-    implementation "androidx.lifecycle:lifecycle-viewmodel-savedstate:${versions.lifecycle}"
+    def life_version = '2.6.1'
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$life_version"
+    implementation "androidx.lifecycle:lifecycle-service:$life_version"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$life_version"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-savedstate:$life_version"
 
     //Arch Navigation
-    implementation "androidx.navigation:navigation-fragment-ktx:${versions.navigation}"
-    implementation "androidx.navigation:navigation-ui-ktx:${versions.navigation}"
+    def nav_version = '2.5.3'
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
 
     //Easy Permission
     implementation "com.github.quickpermissions:quickpermissions-kotlin:0.4.1"
 
     //Glide
-    implementation "com.github.bumptech.glide:glide:${versions.glide}"
-    kapt "com.github.bumptech.glide:compiler:${versions.glide}"
+    def glide_version = '4.15.1'
+    implementation "com.github.bumptech.glide:glide:$glide_version"
+    kapt "com.github.bumptech.glide:compiler:$glide_version"
 
     //Shimmer
     implementation "com.facebook.shimmer:shimmer:0.5.0"
 
     //Epoxy
-    implementation "com.airbnb.android:epoxy:${versions.epoxy}"
-    kapt "com.airbnb.android:epoxy-processor:${versions.epoxy}"
+    def epoxy_version = '5.1.1'
+    implementation "com.airbnb.android:epoxy:$epoxy_version"
+    kapt "com.airbnb.android:epoxy-processor:$epoxy_version"
 
     //Merlin
     implementation "com.novoda:merlin:1.2.1"
 
     //HTTP Clients
-    implementation "com.github.kittinunf.fuel:fuel:${versions.fuel}"
-    implementation "com.squareup.okhttp3:okhttp:${versions.okhttp3}"
+    implementation "com.github.kittinunf.fuel:fuel:2.3.1"
+    implementation "com.squareup.okhttp3:okhttp:4.11.0"
 
     //Fetch - Downloader
-    implementation "androidx.tonyodev.fetch2:xfetch2:${versions.fetch2}"
+    implementation "androidx.tonyodev.fetch2:xfetch2:3.1.6"
 
     //Kovenant
     implementation "nl.komponents.kovenant:kovenant:3.3.0"
@@ -180,7 +171,7 @@ dependencies {
     implementation "org.greenrobot:eventbus:3.3.1"
 
     //Lib-SU
-    implementation "com.github.topjohnwu.libsu:core:${versions.libsu}"
+    implementation "com.github.topjohnwu.libsu:core:5.0.5"
 
     //Love <3
     implementation "com.gitlab.AuroraOSS:gplayapi:3.1.0"
