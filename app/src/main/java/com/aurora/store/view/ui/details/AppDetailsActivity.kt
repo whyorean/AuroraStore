@@ -25,6 +25,7 @@ import android.content.ActivityNotFoundException
 import android.content.ComponentName
 import android.content.Intent
 import android.content.ServiceConnection
+import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
 import android.os.Environment
@@ -35,6 +36,8 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.LinearLayout
 import androidx.activity.addCallback
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.content.ContextCompat
 import com.aurora.Constants
 import com.aurora.extensions.*
 import com.aurora.gplayapi.data.models.App
@@ -60,7 +63,6 @@ import com.aurora.store.view.ui.sheets.ManualDownloadSheet
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetBehavior.BottomSheetCallback
-import com.livinglifetechway.quickpermissions_kotlin.runWithPermissions
 import com.tonyodev.fetch2.*
 import com.tonyodev.fetch2core.DownloadBlock
 import nl.komponents.kovenant.task
@@ -75,6 +77,11 @@ class AppDetailsActivity : BaseDetailsActivity() {
 
     private lateinit var B: ActivityDetailsBinding
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<LinearLayout>
+
+    private val startForPermissions =
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) {
+            if (it) updateApp(app) else toast(R.string.permissions_denied)
+        }
 
     private lateinit var authData: AuthData
     private lateinit var app: App
@@ -496,11 +503,14 @@ class AppDetailsActivity : BaseDetailsActivity() {
                 updateApp(app)
             }
         } else {
-            runWithPermissions(
-                Manifest.permission.READ_EXTERNAL_STORAGE,
-                Manifest.permission.WRITE_EXTERNAL_STORAGE
+            if (ContextCompat.checkSelfPermission(
+                    this,
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE
+                ) == PackageManager.PERMISSION_GRANTED
             ) {
                 updateApp(app)
+            } else {
+                startForPermissions.launch(Manifest.permission.WRITE_EXTERNAL_STORAGE)
             }
         }
     }

@@ -22,6 +22,7 @@ package com.aurora.store.view.ui.sheets
 
 import android.Manifest
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.os.Environment
 import android.provider.Settings
@@ -29,6 +30,8 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.content.ContextCompat
 import com.aurora.Constants
 import com.aurora.extensions.isRAndAbove
 import com.aurora.gplayapi.data.models.App
@@ -41,7 +44,6 @@ import com.aurora.store.util.ApkCopier
 import com.aurora.store.util.PackageUtil
 import com.aurora.extensions.openInfo
 import com.aurora.extensions.toast
-import com.livinglifetechway.quickpermissions_kotlin.runWithPermissions
 import nl.komponents.kovenant.task
 import org.greenrobot.eventbus.EventBus
 
@@ -49,6 +51,15 @@ class AppMenuSheet : BaseBottomSheet() {
 
     private lateinit var B: SheetAppMenuBinding
     private lateinit var app: App
+
+    private val startForPermissions =
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) {
+            if (it) {
+                task { ApkCopier(requireContext(), app.packageName).copy() }
+            } else {
+                toast(R.string.permissions_denied)
+            }
+        }
 
     override fun onCreateContentView(
         inflater: LayoutInflater,
@@ -138,13 +149,14 @@ class AppMenuSheet : BaseBottomSheet() {
                 }
             }
         } else {
-            runWithPermissions(
-                Manifest.permission.READ_EXTERNAL_STORAGE,
-                Manifest.permission.WRITE_EXTERNAL_STORAGE
+            if (ContextCompat.checkSelfPermission(
+                    requireContext(),
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE
+                ) == PackageManager.PERMISSION_GRANTED
             ) {
-                task {
-                    ApkCopier(requireContext(), app.packageName).copy()
-                }
+                task { ApkCopier(requireContext(), app.packageName).copy() }
+            } else {
+                startForPermissions.launch(Manifest.permission.WRITE_EXTERNAL_STORAGE)
             }
         }
     }

@@ -24,13 +24,13 @@ import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
-import android.os.Build
 import android.os.Bundle
 import android.os.Environment
 import android.provider.Settings
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import com.aurora.extensions.isOAndAbove
 import com.aurora.extensions.isRAndAbove
@@ -42,12 +42,35 @@ import com.aurora.store.data.model.Permission
 import com.aurora.store.databinding.FragmentOnboardingPermissionsBinding
 import com.aurora.store.view.epoxy.views.preference.PermissionViewModel_
 import com.aurora.store.view.ui.commons.BaseFragment
-import com.livinglifetechway.quickpermissions_kotlin.runWithPermissions
 
 
 class PermissionsFragment : BaseFragment() {
 
     private lateinit var B: FragmentOnboardingPermissionsBinding
+
+    private val startForPackageManagerResult =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+            if (isOAndAbove() && requireContext().packageManager.canRequestPackageInstalls()) {
+                toast(R.string.toast_permission_granted)
+                B.epoxyRecycler.requestModelBuild()
+            }
+        }
+    private val startForStorageManagerResult =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+            if (isRAndAbove() && Environment.isExternalStorageManager()) {
+                toast(R.string.toast_permission_granted)
+                B.epoxyRecycler.requestModelBuild()
+            }
+        }
+    private val startForPermissions =
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) {
+            if (it) {
+                toast(R.string.toast_permission_granted)
+                B.epoxyRecycler.requestModelBuild()
+            } else {
+                toast(R.string.permissions_denied)
+            }
+        }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -137,8 +160,8 @@ class PermissionsFragment : BaseFragment() {
                         .click { _ ->
                             when (it.id) {
                                 0 -> checkStorageAccessPermission()
-                                1 -> checkStorageManagerPermission()
-                                2 -> checkUnknownResourceInstallation()
+                                1 -> requestStorageManagerPermission()
+                                2 -> requestPackageManagerPermission()
                                 3 -> checkPostNotificationsPermission()
                             }
                         }
@@ -147,59 +170,32 @@ class PermissionsFragment : BaseFragment() {
         }
     }
 
-    private fun checkStorageAccessPermission() = runWithPermissions(
-        Manifest.permission.WRITE_EXTERNAL_STORAGE,
-        Manifest.permission.READ_EXTERNAL_STORAGE
-    ) {
-        toast(R.string.toast_permission_granted)
-        B.epoxyRecycler.requestModelBuild()
+    private fun checkStorageAccessPermission() {
+        startForPermissions.launch(Manifest.permission.WRITE_EXTERNAL_STORAGE)
     }
 
     private fun checkPostNotificationsPermission() {
         if (isTAndAbove()) {
-            runWithPermissions(
-                Manifest.permission.POST_NOTIFICATIONS
-            ) {
-                toast(R.string.toast_permission_granted)
-                B.epoxyRecycler.requestModelBuild()
-            }
+            startForPermissions.launch(Manifest.permission.POST_NOTIFICATIONS)
         }
     }
 
-    private fun checkStorageManagerPermission() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            if (Environment.isExternalStorageManager()) {
-                toast("Permission granted")
-            } else {
-                startActivityForResult(
-                    Intent(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION),
-                    99
-                )
-            }
+    private fun requestStorageManagerPermission() {
+        if (isRAndAbove()) {
+            startForStorageManagerResult.launch(
+                Intent(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION)
+            )
         }
     }
 
-    private fun checkUnknownResourceInstallation() {
+    private fun requestPackageManagerPermission() {
         if (isOAndAbove()) {
-            startActivityForResult(
+            startForPackageManagerResult.launch(
                 Intent(
                     Settings.ACTION_MANAGE_UNKNOWN_APP_SOURCES,
                     Uri.parse("package:${BuildConfig.APPLICATION_ID}")
-                ),
-                999
+                )
             )
-        } else {
-            toast("Permission granted")
-        }
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        when (requestCode) {
-            99, 999 -> {
-                toast(R.string.toast_permission_granted)
-                B.epoxyRecycler.requestModelBuild()
-            }
         }
     }
 

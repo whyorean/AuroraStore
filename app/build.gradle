@@ -137,9 +137,6 @@ dependencies {
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
 
-    //Easy Permission
-    implementation "com.github.quickpermissions:quickpermissions-kotlin:0.4.1"
-
     //Glide
     def glide_version = '4.15.1'
     implementation "com.github.bumptech.glide:glide:$glide_version"

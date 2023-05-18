@@ -22,6 +22,7 @@ package com.aurora.store
 
 import android.Manifest
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.content.res.ColorStateList
 import android.os.Build
 import android.os.Bundle
@@ -33,7 +34,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.addCallback
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.IdRes
+import androidx.core.content.ContextCompat
 import androidx.core.graphics.ColorUtils
 import androidx.core.view.GravityCompat
 import androidx.navigation.NavController
@@ -63,7 +66,6 @@ import com.aurora.store.view.ui.sheets.SelfUpdateSheet
 import com.aurora.store.view.ui.spoof.SpoofActivity
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.livinglifetechway.quickpermissions_kotlin.runWithPermissions
 import nl.komponents.kovenant.task
 import nl.komponents.kovenant.ui.successUi
 
@@ -75,6 +77,11 @@ class MainActivity : BaseActivity() {
     private lateinit var authData: AuthData
 
     private var lastBackPressed = 0L
+
+    private val startForPermissions =
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) {
+            if (!it) toast(R.string.permissions_denied)
+        }
 
     override fun onConnected() {
         hideNetworkConnectivitySheet()
@@ -125,7 +132,13 @@ class MainActivity : BaseActivity() {
             if (isRAndAbove()) {
                 checkExternalStorageManagerPermission()
             } else {
-                checkExternalStorageAccessPermission()
+                if (ContextCompat.checkSelfPermission(
+                        this,
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE
+                    ) == PackageManager.PERMISSION_GRANTED
+                ) {
+                    startForPermissions.launch(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                }
             }
         }
 
@@ -236,13 +249,6 @@ class MainActivity : BaseActivity() {
 
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp()
-    }
-
-    private fun checkExternalStorageAccessPermission() = runWithPermissions(
-        Manifest.permission.READ_EXTERNAL_STORAGE,
-        Manifest.permission.WRITE_EXTERNAL_STORAGE
-    ) {
-        Log.i("Required permissions available")
     }
 
     private fun checkExternalStorageManagerPermission() {
