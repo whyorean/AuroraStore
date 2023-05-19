@@ -1,22 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="account_logout">Clauder le session de Aurora</string>
-    <string name="action_accounts">Contos</string>
     <string name="action_cancel">Cancellar</string>
     <string name="action_finish">Finir</string>
     <string name="action_grant">Permitter</string>
     <string name="action_install">Installar</string>
     <string name="action_logout">Clauder session</string>
-    <string name="action_more">Plus</string>
-    <string name="action_previous">Previe</string>
     <string name="about_fdroid_summary">Discarga le Aurora Store via F-Droid</string>
     <string name="account_login_using">Initiar session con</string>
     <string name="action_close">Clauder</string>
-    <string name="action_download">Discargar</string>
     <string name="action_filter_downloads">Discargas</string>
     <string name="action_open">Aperir</string>
-    <string name="action_home">Initio</string>
-    <string name="action_logging_in">Initiar session</string>
-    <string name="action_manual">Discarga manual</string>
     <string name="about_bhim">BHIM - UPI</string>
 </resources>

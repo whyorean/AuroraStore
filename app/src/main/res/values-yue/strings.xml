@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="about_telegram">Telegram</string>
-    <string name="action_done">搞掂</string>
     <string name="about_fdroid">F-Droid</string>
     <string name="about_gitlab">GitLab</string>
     <string name="about_paypal">PayPal</string>
@@ -9,19 +8,14 @@
     <string name="account_logged_out">您已經登出咗</string>
     <string name="account_logout">登出 Aurora</string>
     <string name="action_accept">接受</string>
-    <string name="action_accounts">帳戶</string>
-    <string name="action_all_reviews">所有評論</string>
     <string name="action_apply">套用</string>
     <string name="action_back">返轉頭</string>
-    <string name="action_buy">購買</string>
     <string name="action_cancel">取消</string>
     <string name="action_check">檢查</string>
     <string name="action_close">關閉</string>
     <string name="action_copy">複製</string>
     <string name="action_deny">拒絕</string>
     <string name="action_disable">停用</string>
-    <string name="action_download">下載</string>
-    <string name="action_enable">啟用</string>
     <string name="action_export">匯出</string>
     <string name="action_filter_all">全部</string>
     <string name="action_filter_apply">套用</string>
