@@ -19,14 +19,21 @@
 
 package com.aurora.store.view.ui.spoof
 
+import android.Manifest
+import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
+import android.os.Environment
+import android.provider.Settings
 import android.view.Menu
 import android.view.MenuItem
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.aurora.extensions.close
+import com.aurora.extensions.isRAndAbove
 import com.aurora.extensions.toast
 import com.aurora.store.R
 import com.aurora.store.data.providers.NativeDeviceInfoProvider
@@ -43,6 +50,19 @@ import java.io.FileOutputStream
 class SpoofActivity : BaseActivity() {
 
     private lateinit var B: ActivityGenericPagerBinding
+
+    private val startForStorageManagerResult =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+            if (isRAndAbove() && Environment.isExternalStorageManager()) {
+                exportDeviceConfig()
+            } else {
+                toast(R.string.permissions_denied)
+            }
+        }
+    private val startForPermissions =
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) {
+            if (it) exportDeviceConfig() else toast(R.string.permissions_denied)
+        }
 
     override fun onConnected() {
 
@@ -76,7 +96,25 @@ class SpoofActivity : BaseActivity() {
                 return true
             }
             R.id.action_export -> {
-                exportDeviceConfig()
+                if (isRAndAbove()) {
+                    if (Environment.isExternalStorageManager()) {
+                        exportDeviceConfig()
+                    } else {
+                        startForStorageManagerResult.launch(
+                            Intent(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION)
+                        )
+                    }
+                } else {
+                    if (ContextCompat.checkSelfPermission(
+                            this,
+                            Manifest.permission.WRITE_EXTERNAL_STORAGE
+                        ) == PackageManager.PERMISSION_GRANTED
+                    ) {
+                        exportDeviceConfig()
+                    } else {
+                        startForPermissions.launch(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                    }
+                }
             }
         }
         return super.onOptionsItemSelected(item)

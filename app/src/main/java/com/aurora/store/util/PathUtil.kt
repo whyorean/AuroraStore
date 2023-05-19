@@ -63,7 +63,10 @@ object PathUtil {
     }
 
     fun getExternalPath(): String {
-        return Environment.getExternalStorageDirectory().toString() + "/Aurora/Store"
+        val auroraDir =
+            java.io.File("${Environment.getExternalStorageDirectory().absolutePath}/Aurora/Store")
+        auroraDir.mkdirs()
+        return auroraDir.absolutePath
     }
 
     fun getBaseCopyDirectory(): String {
