@@ -121,7 +121,7 @@
     <string name="download_failed">فشل التنزيل</string>
     <string name="download_eta_calculating">يتم الحساب</string>
     <string name="download_deleted">تم الحذف</string>
-    <string name="download_completed">تم تنزيله</string>
+    <string name="download_completed">اكتمل التنزيل</string>
     <string name="download_clear_completed">اكتمل المسح</string>
     <string name="download_canceled">ألغيت</string>
     <string name="download_cancel_all">إلغاء الكل</string>

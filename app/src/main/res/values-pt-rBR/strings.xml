@@ -18,8 +18,8 @@
     <string name="title_download_playstore">Play Store</string>
     <string name="title_download_manager">Downloads</string>
     <string name="title_apps">Aplicativos</string>
-    <string name="pref_ui_theme_darkord">Disscord</string>
-    <string name="pref_install_mode_services">Serviços Aurora (Núcleo)</string>
+    <string name="pref_ui_theme_darkord">Discord</string>
+    <string name="pref_install_mode_services">Serviços Aurora</string>
     <string name="pref_app_download">Baixados</string>
     <string name="exodus_title">Proteção Aurora</string>
     <string name="action_filter_downloads">Baixados</string>
@@ -29,7 +29,7 @@
     <string name="about_fdroid">F-Droid</string>
     <string name="about_bitcoin_eth">Ethereum</string>
     <string name="about_bitcoin_btc">Bitcoin</string>
-    <string name="about_bitcoin_bch">Dinheiro em Bitcoin</string>
+    <string name="about_bitcoin_bch">Bitcoin Cash</string>
     <string name="about_bhim">BHIM - UPI</string>
     <string name="action_spoofed">Falsificar</string>
     <string name="action_ok">OK</string>
@@ -50,7 +50,7 @@
     <string name="toast_apk_whitelisted">Na lista de permissão</string>
     <string name="toast_apk_copy_success">APK exportado</string>
     <string name="toast_apk_copy_failed">Não foi possível exportar o APK</string>
-    <string name="toast_apk_blacklisted">Na lista negra</string>
+    <string name="toast_apk_blacklisted">Na lista de bloqueio</string>
     <string name="toast_anonymous_restriction">Não disponível em contas anônimas</string>
     <string name="toast_abandon_sessions">Sessões de instalações antigas abandonadas</string>
     <string name="title_updates">Atualizações</string>
@@ -143,7 +143,7 @@
     <string name="download_failed">Falha ao baixar</string>
     <string name="download_eta_calculating">Calculando</string>
     <string name="download_deleted">Apagados</string>
-    <string name="download_completed">Baixado</string>
+    <string name="download_completed">Download concluído</string>
     <string name="download_clear_completed">Limpar concluído</string>
     <string name="download_canceled">Cancelado</string>
     <string name="download_cancel_all">Cancelar tudo</string>
@@ -267,7 +267,7 @@
     <string name="about_fdroid_summary">Obtenha a Aurora Store no F-Droid.</string>
     <string name="about_bitcoin_eth_summary">Doar via Ethereum (ETH)</string>
     <string name="about_bitcoin_btc_summary">Doar via Bitcoin (BTC)</string>
-    <string name="about_bitcoin_bch_summary">Doar via pagamento em Bitcoin (BCH)</string>
+    <string name="about_bitcoin_bch_summary">Doar via Bitcoin Cash (BCH)</string>
     <string name="about_bhim_summary">Doar via UPI</string>
     <string name="title_device">Aparelho</string>
     <string name="title_details">Detalhes</string>

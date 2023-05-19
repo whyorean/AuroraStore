@@ -28,7 +28,7 @@
     <string name="details_files">Ficheiros</string>
     <string name="about_bhim">BHIM - UPI</string>
     <string name="title_download_playstore">Play Store</string>
-    <string name="pref_ui_theme_darkord">Disskord</string>
+    <string name="pref_ui_theme_darkord">Discórdia</string>
     <string name="pref_ui_accent_title">Cor de destaque</string>
     <string name="onboarding_title_accent">Cor de destaque</string>
     <string name="title_apps_sale">Aplicações em promoção</string>
@@ -40,7 +40,7 @@
     <string name="action_filter_paid_apps">Paga</string>
     <string name="action_filter_apps_with_ads">Aplicações com publicidade</string>
     <string name="action_favourites">Aplicações favoritas</string>
-    <string name="pref_install_mode_services">Aurora Services</string>
+    <string name="pref_install_mode_services">Serviços Aurora</string>
     <string name="download_speed_estimating">A estimar</string>
     <string name="action_spoofed">Disfarce</string>
     <string name="toast_aas_token_failed">Não foi possível gerar o Token AAS</string>
@@ -217,7 +217,7 @@
     <string name="download_failed">Falha ao descarregar</string>
     <string name="download_eta_calculating">A calcular</string>
     <string name="download_deleted">Removidas</string>
-    <string name="download_completed">Descarregadas</string>
+    <string name="download_completed">Transferência concluída</string>
     <string name="download_clear_completed">Limpar terminadas</string>
     <string name="download_canceled">Cancelada</string>
     <string name="download_cancel_all">Cancelar tudo</string>
@@ -364,5 +364,5 @@
     <string name="ui_accent_11">Azul claro</string>
     <string name="ui_accent_12">Azul disskord</string>
     <string name="ui_accent_13">Azul escuro</string>
-    <string name="ui_accent_2">Fuchsia</string>
+    <string name="ui_accent_2">Fúcsia</string>
 </resources>

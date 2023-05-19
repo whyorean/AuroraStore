@@ -46,7 +46,7 @@
     <string name="download_failed">Trasferimento fallito</string>
     <string name="download_eta_calculating">Calcolo in corso</string>
     <string name="download_deleted">Eliminato</string>
-    <string name="download_completed">Scaricato</string>
+    <string name="download_completed">Scaricamento completato</string>
     <string name="download_canceled">Annullato/i</string>
     <string name="download_cancel_all">Annulla tutti</string>
     <string name="action_manual">Scaricamento manuale</string>
@@ -238,7 +238,7 @@
     <string name="pref_ui_theme_title">Tema</string>
     <string name="pref_ui_theme_system">Segui il sistema</string>
     <string name="pref_ui_theme_light">Chiaro</string>
-    <string name="pref_ui_theme_darkord">Disskord</string>
+    <string name="pref_ui_theme_darkord">Discord</string>
     <string name="pref_ui_theme_dark_x">Scuro X</string>
     <string name="pref_ui_theme_dark">Scuro</string>
     <string name="pref_ui_theme_black">Nero</string>

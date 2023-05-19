@@ -195,7 +195,7 @@
     <string name="details_think_this_app">Bu tətbiq haqqında nə düşünürsünüz\?</string>
     <string name="download_cancel_all">Hamısını ləğv edin</string>
     <string name="download_canceled">Ləğv edildi</string>
-    <string name="download_completed">Endirildi</string>
+    <string name="download_completed">Yükləmə bitdi</string>
     <string name="download_deleted">Silindi</string>
     <string name="download_failed">Endirmə uğursuz oldu</string>
     <string name="download_force_clear_all">Hamısını silməyə zorla</string>
@@ -364,4 +364,5 @@
     <string name="about_paypal_summary">PayPal vasitəsilə ianə edin</string>
     <string name="about_telegram">Telegram</string>
     <string name="about_telegram_summary">Müzakirələr və ya təkliflər üçün Aurora Dəstək qrupuna qoşulun.</string>
+    <string name="title_about">Haqqında</string>
 </resources>

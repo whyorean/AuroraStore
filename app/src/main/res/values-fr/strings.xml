@@ -80,7 +80,7 @@
     <string name="about_bitcoin_bch">Bitcoin Cash</string>
     <string name="about_bhim_summary">Faire un don via UPI</string>
     <string name="about_bhim">BHIM - UPI</string>
-    <string name="download_completed">Téléchargé</string>
+    <string name="download_completed">Téléchargement terminé</string>
     <string name="download_clear_completed">Effacer les téléchargements terminés</string>
     <string name="download_canceled">Annulé</string>
     <string name="download_cancel_all">Tout annuler</string>
@@ -254,7 +254,7 @@
     <string name="device_miui_extra">Si vous voulez, vous pouvez choisir le programme d’installation natif, mais vous ne pouvez pas installer d’APK groupés (fractionnés) ; c’est vous qui avez le choix.</string>
     <string name="device_miui_description">Veuillez désactiver les optimisations MIUI pour autoriser les installations, sinon vous pouvez choisir le programme d’installation racine ou services.</string>
     <string name="device_miui_subtitle">Le programme d’installation de session ne peut pas installer d’applications en raison des optimisations MIUI.</string>
-    <string name="pref_ui_theme_darkord">Disskord</string>
+    <string name="pref_ui_theme_darkord">Discord</string>
     <string name="pref_ui_accent_title">Couleur</string>
     <string name="pref_install_profile_title">Profils d’installation (expérimental)</string>
     <string name="pref_install_profile_summary">Sélectionnez le profil cible pour installer les applications ; fonctionne uniquement avec la méthode d’installation racine</string>

@@ -175,7 +175,7 @@
     <string name="download_cancel_all">"Cancel all"</string>
     <string name="download_canceled">"Cancelled"</string>
     <string name="download_clear_completed">"Clear completed"</string>
-    <string name="download_completed">"Downloaded"</string>
+    <string name="download_completed">Download completed</string>
     <string name="download_deleted">"Deleted"</string>
     <string name="download_eta_calculating">"Calculating"</string>
     <string name="download_eta_hrs">%1$dh %2$dm %3$ds left</string>
@@ -301,7 +301,7 @@
     <string name="pref_ui_theme_black">"Black"</string>
     <string name="pref_ui_theme_dark">"Dark"</string>
     <string name="pref_ui_theme_dark_x">"Dark X"</string>
-    <string name="pref_ui_theme_darkord">"Disskord"</string>
+    <string name="pref_ui_theme_darkord">Discord</string>
     <string name="pref_ui_theme_light">"Light"</string>
     <string name="pref_ui_theme_system">"Follow System"</string>
     <string name="pref_ui_theme_title">"Theme"</string>

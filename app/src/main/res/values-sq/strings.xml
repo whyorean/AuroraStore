@@ -158,7 +158,7 @@
     <string name="download_cancel_all">Anuloji krejt</string>
     <string name="download_canceled">Anuluar</string>
     <string name="download_clear_completed">Spastro të plotësuarat</string>
-    <string name="download_completed">Të shkarkuara</string>
+    <string name="download_completed">Shkarkim i plotësuar</string>
     <string name="download_deleted">E fshirë</string>
     <string name="download_eta_calculating">Po llogaritet</string>
     <string name="download_failed">Shkarkimi dështoi</string>
@@ -272,7 +272,7 @@
     <string name="pref_ui_theme_black">E zezë</string>
     <string name="pref_ui_theme_dark">E errët</string>
     <string name="pref_ui_theme_dark_x">Dark X</string>
-    <string name="pref_ui_theme_darkord">Disskord</string>
+    <string name="pref_ui_theme_darkord">Discord</string>
     <string name="pref_ui_theme_light">E çelët</string>
     <string name="pref_ui_theme_system">Përdor të Sistemit</string>
     <string name="pref_ui_theme_title">Temë</string>
@@ -347,4 +347,19 @@
     <string name="notification_channel_updater_service">Shërbim shkarkimesh aplikacionesh në prapaskenë</string>
     <string name="app_updater_service_notif_title">Shkarkim aplikacioni në prapaskenë</string>
     <string name="app_updater_service_notif_text">Aktivizon shkarkim në prapaskenë të aplikacionit</string>
+    <string name="ui_accent_1">Blu</string>
+    <string name="ui_accent_4">E artë</string>
+    <string name="ui_accent_5">E gjelbër</string>
+    <string name="ui_accent_6">E purpur</string>
+    <string name="ui_accent_3">E kuqe</string>
+    <string name="ui_accent_7">Gri</string>
+    <string name="ui_accent_8">Rozë</string>
+    <string name="ui_accent_2">Manushaqe</string>
+    <string name="ui_accent_10">Portokalli</string>
+    <string name="ui_accent_11">E kaltër</string>
+    <string name="ui_accent_12">Blu Disskord-i</string>
+    <string name="ui_accent_13">Blu e zënë</string>
+    <string name="account_anonymous_insecure">Anonime (jo e sigurt)</string>
+    <string name="pref_install_mode_am">Instalues AM.</string>
+    <string name="installer_am_unavailable">Instaloni Përgjegjës Aplikacionesh, ose ndryshoni instaluesin.</string>
 </resources>

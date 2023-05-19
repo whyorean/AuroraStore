@@ -33,7 +33,7 @@
     <string name="download_failed">下载失败</string>
     <string name="download_eta_calculating">计算中</string>
     <string name="download_deleted">已删除</string>
-    <string name="download_completed">已下载</string>
+    <string name="download_completed">下载完毕</string>
     <string name="download_clear_completed">清除已完成</string>
     <string name="download_canceled">已取消</string>
     <string name="download_cancel_all">全部取消</string>
@@ -75,9 +75,9 @@
     <string name="details_changelog">更新日志</string>
     <string name="details_beta_delay">加入测试可能需要一些时间，您可以稍后查看状态。</string>
     <string name="details_beta_description">您会先于公众发现新功能和错误。向开发者提供反馈，以帮助他们改进。</string>
-    <string name="details_beta_available">要加入 Beta 版计划吗？</string>
-    <string name="details_beta_subscribed">您已成为 Beta 版测试人员</string>
-    <string name="details_beta">Beta 版计划</string>
+    <string name="details_beta_available">要加入预览版计划吗？</string>
+    <string name="details_beta_subscribed">您已成为预览版测试人员</string>
+    <string name="details_beta">预览版计划</string>
     <string name="action_wishlist_add">添加到白名单</string>
     <string name="action_whitelist">白名单</string>
     <string name="action_wait">等待</string>

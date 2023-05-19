@@ -25,7 +25,7 @@
     <string name="download_failed">Помилка завантаження</string>
     <string name="download_eta_calculating">Обчислюється</string>
     <string name="download_deleted">Видалено</string>
-    <string name="download_completed">Завантажено</string>
+    <string name="download_completed">Завантаження завершено</string>
     <string name="download_clear_completed">Очистити завершені</string>
     <string name="download_cancel_all">Скасувати всі</string>
     <string name="download_canceled">Скасовано</string>
@@ -246,7 +246,7 @@
     <string name="pref_ui_theme_black">Чорна</string>
     <string name="pref_ui_theme_title">Тема</string>
     <string name="pref_ui_theme_system">Визначається системою</string>
-    <string name="pref_ui_theme_darkord">Disskord</string>
+    <string name="pref_ui_theme_darkord">Discord</string>
     <string name="pref_ui_accent_title">Основний колір</string>
     <string name="pref_network_title">Мережа</string>
     <string name="pref_install_profile_title">Профілі встановлення (Експериментально)</string>

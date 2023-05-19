@@ -156,7 +156,7 @@
     <string name="download_cancel_all">모두 취소</string>
     <string name="download_canceled">취소 된</string>
     <string name="download_clear_completed">명확한 완료</string>
-    <string name="download_completed">완료</string>
+    <string name="download_completed">다운로드 완료</string>
     <string name="download_deleted">삭제됨</string>
     <string name="download_eta_calculating">계산중</string>
     <string name="download_failed">다운로드 실패</string>
@@ -170,5 +170,21 @@
     <string name="download_resume_all">모두 재개</string>
     <string name="download_speed_estimating">평가</string>
     <string name="exodus_no_report">사용 가능한 보고서 없음</string>
-    <string name="exodus_no_tracker">추적기가 없습니다.</string>
+    <string name="exodus_no_tracker">트래커가 없습니다</string>
+    <string name="exodus_progress">트래커를 확인중…</string>
+    <string name="filter_review_positive">긍정적</string>
+    <string name="filter_review_two">별 2개</string>
+    <string name="exodus_view_report">보고서 보기</string>
+    <string name="exodus_title">Aurora 프로텍트</string>
+    <string name="exodus_title_alt">Exodus 보고서</string>
+    <string name="exodus_report">Exodus 보고서</string>
+    <string name="filter_review_all">전부</string>
+    <string name="exodus_powered">Exodus 제공</string>
+    <string name="filter_review_four">별 4개</string>
+    <string name="exodus_substring">트래커가 발견됨</string>
+    <string name="exodus_view_more">보기</string>
+    <string name="filter_review_critical">부정적</string>
+    <string name="filter_review_five">별 5개</string>
+    <string name="filter_review_one">별 1개</string>
+    <string name="filter_review_three">별 3개</string>
 </resources>
