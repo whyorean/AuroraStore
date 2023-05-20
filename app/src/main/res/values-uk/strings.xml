@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="details_dev_website">Вебсайт</string>
     <string name="details_dev_email">Електронна пошта</string>
     <string name="filter_review_all">Все</string>
@@ -301,4 +301,33 @@
     <string name="ui_accent_10">Жовтогарячий</string>
     <string name="ui_accent_12">Насичений синій</string>
     <string name="ui_accent_13">Темно-синій</string>
+    <string name="download_eta_min">Залишилося %1$dхв %2$dс</string>
+    <string name="session_init">Приготування…</string>
+    <string name="session_login">Спочатку ввійдіть</string>
+    <string name="session_login_failed_google">Не вдалось увійти через Google</string>
+    <string name="session_scrapped">Останній сеанс скасовано</string>
+    <string name="session_verifying">Перевірка сеансу</string>
+    <string name="session_verifying_google">Перевірка сеансу Google</string>
+    <string name="rate_limited">На жаль, для цього облікового запису є обмеження!</string>
+    <string name="error">Сталася помилка!</string>
+    <string name="menu">Меню</string>
+    <string name="search_hint">Пошук застосунків та іграх</string>
+    <string name="onboarding_permission_notifications">Сповіщення</string>
+    <string name="download_eta_sec">Залишилося %1$dс</string>
+    <string name="download_paused">Призупинено • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
+    <string name="download_eta_hrs">Залишилося %1$dгод %2$dхв %3$dс</string>
+    <string name="download_progress">Завантаження • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
+    <string name="onboarding_permission_notifications_desc">Надсилати сповіщення про стан встановлення</string>
+    <string name="pref_advanced_search_in_ctt">Пошук на власній вкладці</string>
+    <string name="session_good">Вау! Усе добре.</string>
+    <string name="update_available">доступне оновлення</string>
+    <string name="session_enjoy">Увійдіть і насолоджуйтесь.</string>
+    <string name="pref_advanced_search_in_ctt_desc">Відкриває результати пошуку у власній вкладці браузера</string>
+    <string name="title_advanced">Розширені</string>
+    <string name="ui_accent_0">Системна</string>
+    <string name="updates_available">доступні оновлення</string>
+    <string name="expand">Розгорнути</string>
+    <string name="open_in_aurora">Відкрити в Aurora Store</string>
+    <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>
+    <string name="permissions_denied">У наданні необхідних дозволів відмовлено. Надайте їх, щоб продовжити дію</string>
 </resources>
