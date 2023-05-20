@@ -56,7 +56,7 @@ Please visit the [Aurora Wiki](https://gitlab.com/AuroraOSS/AuroraStore/-/wikis/
 Don't see your preferred language? Click on the widget below to help translate Aurora Store!
 
 <a href="https://hosted.weblate.org/engage/aurora-store/">
-  <img src="https://hosted.weblate.org/widgets/aurora-store/-/strings/horizontal-auto.svg" alt="Translation status" />
+  <img src="https://hosted.weblate.org/widgets/aurora-store/-/287x66-grey.png" alt="Translation status" />
 </a>
 
 ## Project references
