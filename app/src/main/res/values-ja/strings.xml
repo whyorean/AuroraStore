@@ -283,7 +283,7 @@
     <string name="pref_ui_theme_title">テーマ</string>
     <string name="pref_ui_theme_system">システム設定に従う</string>
     <string name="pref_ui_theme_light">ライト</string>
-    <string name="pref_ui_theme_darkord">Disskord</string>
+    <string name="pref_ui_theme_darkord">ディスコード</string>
     <string name="pref_ui_theme_dark_x">ダークX</string>
     <string name="pref_ui_theme_black">ブラック</string>
     <string name="pref_ui_theme_dark">ダーク</string>
