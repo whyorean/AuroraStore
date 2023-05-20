@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="action_leave">Verlassen</string>
     <string name="action_later">Später</string>
     <string name="action_installations">Installationen</string>
@@ -28,17 +28,17 @@
     <string name="about_libera">Liberapay</string>
     <string name="about_gitlab">GitLab</string>
     <string name="about_bitcoin_eth">Ethereum</string>
-    <string name="about_fdroid_summary">Aurora Store über F-Droid herunterladen</string>
+    <string name="about_fdroid_summary">Aurora Store über F-Droid herunterladen.</string>
     <string name="about_fdroid">F-Droid</string>
     <string name="about_bitcoin_btc">Bitcoin</string>
-    <string name="details_dev_website">Website</string>
+    <string name="details_dev_website">Webseite</string>
     <string name="details_dev_email">E-Mail</string>
     <string name="about_bitcoin_eth_summary">Mit Ethereum spenden (ETH)</string>
     <string name="account_anonymous">Anonym</string>
     <string name="action_blacklist_add">Zur Sperrliste hinzufügen</string>
     <string name="action_blacklist">Sperrliste</string>
     <string name="action_back">Zurück</string>
-    <string name="about_gitlab_summary">Den Aurora Store-Quellcode von Aurora OSS bei GitLab herunterladen</string>
+    <string name="about_gitlab_summary">Aurora Store-Quellcode von Aurora OSS bei GitLab herunterladen.</string>
     <string name="about_bitcoin_btc_summary">Mit Bitcoin spenden (BTC)</string>
     <string name="about_bitcoin_bch_summary">Mit Bitcoin Cash spenden (BCH)</string>
     <string name="about_bhim_summary">Mit UPI spenden</string>
@@ -61,13 +61,13 @@
     <string name="purchase_not_found">App nicht gefunden</string>
     <string name="purchase_unsupported">App wird nicht unterstützt</string>
     <string name="purchase_invalid">App nicht gekauft</string>
-    <string name="pref_install_profile_summary">Das Zielprofil auswählen, um Apps zu installieren. Dies funktioniert nur mit der Root-Installationsmethode.</string>
+    <string name="pref_install_profile_summary">Das Zielprofil auswählen, um Apps zu installieren. Dies funktioniert nur mit der Root-Installationsmethode</string>
     <string name="pref_install_auto_summary">Apps werden sofort nach dem Download installiert</string>
     <string name="pref_filter_google_title">Google-Apps filtern</string>
     <string name="pref_filter_google_summary">Alle Google-Apps aus den Suchergebnissen und Kategorien entfernen</string>
     <string name="pref_filter_fdroid_title">F-Droid-Apps filtern</string>
     <string name="pref_filter_fdroid_summary">F-Droid-Apps in allen App-Listen ausblenden</string>
-    <string name="pref_dialog_to_apply_restart">Die Einstellung wird nach einem Neustart der App übernommen.</string>
+    <string name="pref_dialog_to_apply_restart">Die Einstellung wird nach einem Neustart der App übernommen</string>
     <string name="pref_app_download">Downloads</string>
     <string name="onboarding_permission_installer_desc">Erforderlich für die Installation von Apps aus dem Aurora Store</string>
     <string name="installer_status_failure_incompatible">Inkompatible App</string>
@@ -76,7 +76,7 @@
     <string name="action_filter_gsf_dependent_apps">Erfordert GSF</string>
     <string name="action_filter_apply">Anwenden</string>
     <string name="action_apply">Anwenden</string>
-    <string name="toast_spoof_applied">Gerätevortäuschung angewendet</string>
+    <string name="toast_spoof_applied">Gerätevortäuschung angewendet.</string>
     <string name="toast_permission_granted">Berechtigung gewährt</string>
     <string name="toast_developer_setting_failed">Entwickleroptionen in den Geräteeinstellungen aktivieren, um sie zu öffnen.</string>
     <string name="toast_apk_blacklisted">Auf der Sperrliste</string>
@@ -126,7 +126,7 @@
     <string name="pref_abandon_session_desc">Abgebrochene oder ausstehende Installationen jetzt sofort beenden</string>
     <string name="pref_abandon_session">Beenden von Installationen erzwingen</string>
     <string name="onboarding_permission_esm">Speicherverwaltung</string>
-    <string name="onboarding_permission_esa_desc">Erforderlich zum Speichern heruntergeladener APK- und OBB-Dateien sowie zum Exportieren und Importieren von Gerätekonfigurationen</string>
+    <string name="onboarding_permission_esa_desc">Erforderlich zum Speichern heruntergeladener APK- und OBB-Dateien sowie zum Exportieren und Importieren von Gerätekonfigurationen.</string>
     <string name="onboarding_permission_esa">Speicherzugriff</string>
     <string name="onboarding_welcome_select">Wie geht’s\?</string>
     <string name="onboarding_tos_error">Die Nutzungsbedingungen müssen zuerst als gelesen markiert werden.</string>
@@ -181,7 +181,7 @@
     <string name="download_resume_all">Alle fortsetzen</string>
     <string name="download_queued">In der Warteschlange</string>
     <string name="download_pause_all">Alle anhalten</string>
-    <string name="download_none">Keine heruntergeladenen Dateien</string>
+    <string name="download_none">Keine Downloads</string>
     <string name="download_metadata">Metadaten werden geladen</string>
     <string name="download_force_clear_all">Alle löschen</string>
     <string name="download_failed">Download fehlgeschlagen</string>
@@ -201,7 +201,7 @@
     <string name="details_dependencies">Abhängigkeiten</string>
     <string name="details_contains_ads">Enthält Werbung</string>
     <string name="details_changelog_unavailable">Kein Changelog vorhanden</string>
-    <string name="details_changelog">Update-Changelog</string>
+    <string name="details_changelog">Changelog</string>
     <string name="details_beta_delay">Die Registrierung kann einige Zeit dauern. Der Status der Registrierung kann später überprüft werden.</string>
     <string name="details_beta_description">Du bekommst neue Funktionen sowie Fehler vor der Öffentlichkeit zu sehen. Um den Entwicklern zu helfen, kannst du ihnen Feedback senden.</string>
     <string name="details_beta_available">Am Betatest teilnehmen\?</string>
@@ -215,9 +215,9 @@
     <string name="action_next">Weiter</string>
     <string name="action_join">Beitreten</string>
     <string name="action_get_local_apk">App-Paket speichern</string>
-    <string name="about_xda_summary">Den Aurora Store-XDA-Themenbereich für Diskussionen oder Vorschläge besuchen</string>
+    <string name="about_xda_summary">Den Aurora Store-XDA-Themenbereich für Diskussionen oder Vorschläge besuchen.</string>
     <string name="about_xda">XDA Entwickler-Forum</string>
-    <string name="about_telegram_summary">Der Aurora-Support-Gruppe für Diskussionen oder Vorschläge beitreten</string>
+    <string name="about_telegram_summary">Der Aurora-Support-Gruppe für Diskussionen oder Vorschläge beitreten.</string>
     <string name="action_uninstall">Deinstallieren</string>
     <string name="action_try_later">Versuche es später nochmal</string>
     <string name="action_share">Teilen</string>
@@ -236,7 +236,7 @@
     <string name="account_logout">Von Aurora abmelden</string>
     <string name="action_accept">Akzeptieren</string>
     <string name="account_login_using">Anmelden mit</string>
-    <string name="account_logged_out">Du bist nicht angemeldet.</string>
+    <string name="account_logged_out">Du bist nicht angemeldet</string>
     <string name="about_paypal_summary">Mit PayPal spenden</string>
     <string name="tab_top_grossing">Erfolgreich</string>
     <string name="tab_editor_choice">Auswahl der Redaktion</string>
@@ -269,8 +269,8 @@
 \n(Suchfilter bleibt bei ausgeschalteter Option erhalten)</string>
     <string name="pref_common_extra">Extras</string>
     <string name="details_no_app_match">Keine passende App gefunden</string>
-    <string name="toast_manual_available">Angeforderte Version ist verfügbar und wird jetzt heruntergeladen</string>
-    <string name="toast_manual_unavailable">Angeforderte Version ist nicht verfügbar</string>
+    <string name="toast_manual_available">Angeforderte Version ist verfügbar und wird jetzt heruntergeladen.</string>
+    <string name="toast_manual_unavailable">Angeforderte Version ist nicht verfügbar.</string>
     <string name="title_manual_download">Version auswählen</string>
     <string name="action_check">Prüfen</string>
     <string name="dialog_desc_native_split">Gebündelte/geteilte (split) APK-Dateien können nicht mit der systemeigenen Installationsmethode installiert werden. Bitte die Installationsmethode zu Sitzung, Services oder Root ändern.</string>
@@ -302,4 +302,33 @@
     <string name="ui_accent_11">Hellblau</string>
     <string name="ui_accent_12">Discord-Blau</string>
     <string name="ui_accent_13">Dunkelblau</string>
+    <string name="session_enjoy">Anmelden und genießen.</string>
+    <string name="session_good">Wahnsinn! Alles gut.</string>
+    <string name="session_init">Ich bereite alles vor…</string>
+    <string name="session_login">Du musst dich zuerst anmelden</string>
+    <string name="session_login_failed_google">Anmeldung über Google fehlgeschlagen</string>
+    <string name="session_scrapped">Letzte Sitzung abgebrochen</string>
+    <string name="session_verifying">Überprüfung der Sitzung</string>
+    <string name="rate_limited">Hoppla, für dieses Konto ist der Tarif begrenzt!</string>
+    <string name="menu">Menü</string>
+    <string name="open_in_aurora">Im Aurora Store öffnen</string>
+    <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>
+    <string name="search_hint">Suche nach Apps &amp; Spielen</string>
+    <string name="download_paused">Angehalten • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
+    <string name="download_progress">Wird heruntergeladen • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
+    <string name="onboarding_permission_notifications">Benachrichtigungen</string>
+    <string name="onboarding_permission_notifications_desc">Benachrichtigungen über den Installationsstatus senden</string>
+    <string name="pref_advanced_search_in_ctt">Suche im benutzerdefinierten Tab</string>
+    <string name="pref_advanced_search_in_ctt_desc">Öffnet Suchergebnisse im benutzerdefinierten Tab eines Browsers</string>
+    <string name="session_verifying_google">Überprüfung der Google-Sitzung</string>
+    <string name="title_advanced">Erweitert</string>
+    <string name="ui_accent_0">System</string>
+    <string name="updates_available">Updates verfügbar</string>
+    <string name="error">Es ist ein Fehler aufgetreten!</string>
+    <string name="update_available">Update verfügbar</string>
+    <string name="expand">Erweitern</string>
+    <string name="permissions_denied">Erforderliche Berechtigungen wurden verweigert. Bitte erteile diese, um die Aktion fortzusetzen</string>
+    <string name="download_eta_hrs">%1$dh %2$dm %3$ds verbleibened</string>
+    <string name="download_eta_min">%1$dm %2$ds verbleibened</string>
+    <string name="download_eta_sec">%1$ds verbleibened</string>
 </resources>
