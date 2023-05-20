@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="details_dev_details">Kontakt podaci programera</string>
     <string name="details_description">Opis</string>
     <string name="details_dependencies">Zavisnosti</string>
@@ -280,7 +280,7 @@
     <string name="toast_rated_success">Ocjenjeno</string>
     <string name="toast_export_failed">Neuspio izvoz konfiguracije uređaja</string>
     <string name="toast_export_success">Konfiguracija uređaja izvezena</string>
-    <string name="pref_updates_extended_desc">Traži nove verzije za deaktivirane programe</string>
+    <string name="pref_updates_extended_desc">Traži nove verzije i za deaktivirane programe</string>
     <string name="pref_updates_extended">Proširena aktualiziranja</string>
     <string name="app_updater_service_notif_text">Omogućuje preuzimanje programa u pozadini</string>
     <string name="app_updater_service_notif_title">Preuzimanje programa u pozadini</string>
@@ -301,4 +301,33 @@
     <string name="ui_accent_6">Ljubičasta</string>
     <string name="ui_accent_7">Siva</string>
     <string name="ui_accent_11">Svjetloplava</string>
+    <string name="download_eta_sec">Preostalo: %1$d s</string>
+    <string name="pref_advanced_search_in_ctt_desc">Otvara rezultate pretrage u prilagođenoj kartici preglednika</string>
+    <string name="session_init">Pripremanje …</string>
+    <string name="session_login">Najprije se moraš prijaviti</string>
+    <string name="session_scrapped">Zadnja izbrisana sesija</string>
+    <string name="session_verifying">Provjeravanje sesije</string>
+    <string name="session_verifying_google">Provjeravanje Google sesije</string>
+    <string name="rate_limited">Nažalost, za ovaj račun postoji ograničenje!</string>
+    <string name="menu">Izbronik</string>
+    <string name="expand">Proširi</string>
+    <string name="open_in_aurora">Otvori u Aurora Store</string>
+    <string name="permissions_denied">Potrebne dozvole su odbijene. Odobri ih za nastavljanje radnje</string>
+    <string name="search_hint">Traži programe i igre</string>
+    <string name="title_advanced">Napredno</string>
+    <string name="download_eta_hrs">Preostalo: %1$d h %2$d min %3$d s</string>
+    <string name="download_eta_min">Preostalo: %1$d min %2$d s</string>
+    <string name="download_paused">Zaustavljeno • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
+    <string name="pref_advanced_search_in_ctt">Pretraga u prilagođenoj kartici</string>
+    <string name="download_progress">Preuzimanje • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
+    <string name="onboarding_permission_notifications">Obavijesti</string>
+    <string name="onboarding_permission_notifications_desc">Poüalji obavijesti o stanju instalacije</string>
+    <string name="session_enjoy">Prijavi se i uživaj.</string>
+    <string name="session_login_failed_google">Prijava putem Googlea nije uspjela</string>
+    <string name="session_good">Super! Sve je u redu.</string>
+    <string name="ui_accent_0">Sustav</string>
+    <string name="update_available">dostupna je nova verzija</string>
+    <string name="updates_available">dostupne su nove verzije</string>
+    <string name="error">Dogodila se greška!</string>
+    <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>
 </resources>
