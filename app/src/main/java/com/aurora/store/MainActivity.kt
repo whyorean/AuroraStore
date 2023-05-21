@@ -41,7 +41,7 @@ import androidx.core.graphics.ColorUtils
 import androidx.core.view.GravityCompat
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
-import androidx.navigation.Navigation
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.aurora.Constants
 import com.aurora.extensions.*
@@ -188,7 +188,9 @@ class MainActivity : BaseActivity() {
 
     private fun attachNavigation() {
         val bottomNavigationView: BottomNavigationView = B.navView
-        navController = Navigation.findNavController(this, R.id.nav_host_fragment)
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+        navController = navHostFragment.navController
         bottomNavigationView.setupWithNavController(navController)
 
         val backGroundColor = getStyledAttributeColor(android.R.attr.colorBackground)

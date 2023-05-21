@@ -37,7 +37,7 @@
                 android:id="@+id/view_toolbar"
                 layout="@layout/view_toolbar_main" />
 
-            <fragment
+            <androidx.fragment.app.FragmentContainerView
                 android:id="@+id/nav_host_fragment"
                 android:name="androidx.navigation.fragment.NavHostFragment"
                 android:layout_width="match_parent"
