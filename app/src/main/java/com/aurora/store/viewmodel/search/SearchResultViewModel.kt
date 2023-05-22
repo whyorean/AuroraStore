@@ -20,6 +20,7 @@
 package com.aurora.store.viewmodel.search
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.aurora.gplayapi.data.models.AuthData
@@ -36,6 +37,7 @@ import kotlinx.coroutines.supervisorScope
 
 class SearchResultViewModel(application: Application) : BaseAndroidViewModel(application) {
 
+    private val TAG = SearchResultViewModel::class.java.simpleName
     private val authData: AuthData = AuthProvider
         .with(application)
         .getAuthData()
@@ -75,7 +77,7 @@ class SearchResultViewModel(application: Application) : BaseAndroidViewModel(app
         viewModelScope.launch(Dispatchers.IO) {
             supervisorScope {
                 try {
-                    if (nextSubBundleSet.isNotEmpty()) {
+                    if (nextSubBundleSet.isNotEmpty() && responseCode.value != 429) {
                         val newSearchBundle = searchHelper.next(nextSubBundleSet)
                         if (newSearchBundle.appList.isNotEmpty()) {
                             searchBundle.apply {
@@ -87,7 +89,7 @@ class SearchResultViewModel(application: Application) : BaseAndroidViewModel(app
                         }
                     }
                 } catch (e: Exception) {
-
+                    Log.d(TAG, "Response code: ${responseCode.value}", e)
                 }
             }
         }
