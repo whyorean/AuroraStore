@@ -313,7 +313,7 @@
     <string name="menu">Menü</string>
     <string name="open_in_aurora">Im Aurora Store öffnen</string>
     <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>
-    <string name="search_hint">Nach Apps &amp; Spiele suchen</string>
+    <string name="search_hint">Nach Apps &amp; Spielen suchen</string>
     <string name="download_paused">Angehalten • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
     <string name="download_progress">Wird heruntergeladen • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
     <string name="onboarding_permission_notifications">Benachrichtigungen</string>
