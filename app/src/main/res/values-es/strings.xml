@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="toast_spoof_applied">Suplantación de identidad del dispositivo aplicada.</string>
     <string name="toast_permission_granted">Permiso concedido</string>
     <string name="toast_developer_setting_failed">Active los ajustes de desarrollador desde las opciones del dispositivo.</string>
@@ -301,4 +301,33 @@
     <string name="ui_accent_9">Lima</string>
     <string name="ui_accent_10">Naranja</string>
     <string name="ui_accent_13">Azul oscuro</string>
+    <string name="download_paused">En pausa • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
+    <string name="download_eta_hrs">Quedan %1$d horas, %2$d minutos, %3$d segundos</string>
+    <string name="download_eta_min">Quedan %1$d minutos %2$d segundos</string>
+    <string name="download_eta_sec">Quedan %1$d segundos</string>
+    <string name="download_progress">Descargando • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
+    <string name="onboarding_permission_notifications">Notificaciones</string>
+    <string name="session_good">¡Guau! Todo está bien.</string>
+    <string name="session_init">Preparando las cosas…</string>
+    <string name="session_login">Necesitas iniciar sesión primero</string>
+    <string name="session_scrapped">Última sesión eliminada</string>
+    <string name="session_verifying">Verificando la sesión</string>
+    <string name="session_verifying_google">Verificando la sesión de Google</string>
+    <string name="title_advanced">Avanzado</string>
+    <string name="ui_accent_0">Sistema</string>
+    <string name="expand">Expandir</string>
+    <string name="permissions_denied">Se han denegado los permisos necesarios. Por favor, concédelos para continuar la acción</string>
+    <string name="search_hint">Buscar las aplicaciones y los juegos</string>
+    <string name="onboarding_permission_notifications_desc">Enviar notificaciones sobre el estado de las instalaciones</string>
+    <string name="pref_advanced_search_in_ctt">Buscar en la pestaña personalizada</string>
+    <string name="rate_limited">Vaya, ¡esta cuenta tiene una tarifa limitada!</string>
+    <string name="pref_advanced_search_in_ctt_desc">Abre los resultados de la búsqueda en la pestaña personalizada de un navegador</string>
+    <string name="open_in_aurora">Abrir en Aurora Store</string>
+    <string name="session_enjoy">Inicia sesión y disfruta.</string>
+    <string name="update_available">actualización disponible</string>
+    <string name="error">¡Ocurrió un error!</string>
+    <string name="menu">Menú</string>
+    <string name="session_login_failed_google">Error al iniciar sesión a través de Google</string>
+    <string name="updates_available">actualizaciones disponibles</string>
+    <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>
 </resources>

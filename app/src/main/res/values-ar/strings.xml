@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="details_dev_website">الموقع الإلكتروني</string>
     <string name="details_dev_email">البريد الإلكتروني</string>
     <string name="details_no_dependencies">لا توجد اعتماديات</string>
@@ -301,4 +301,33 @@
     <string name="ui_accent_9">جير</string>
     <string name="ui_accent_10">برتقالي</string>
     <string name="ui_accent_11">أزرق فاتح</string>
+    <string name="download_paused">متوقف مؤقتا • <xliff:g id="completed_downloads"> %1$d </xliff:g> / <xliff:g id="all_downloads"> %2$d </xliff:g></string>
+    <string name="download_eta_min">بقي %1$d دقيقة %2$d ثانية</string>
+    <string name="download_eta_sec">بقي %1$d ثانية</string>
+    <string name="pref_advanced_search_in_ctt">البحث في علامة التبويب المخصصة</string>
+    <string name="pref_advanced_search_in_ctt_desc">يفتح نتائج البحث في علامة التبويب المخصصة للمتصفح</string>
+    <string name="session_login_failed_google">فشل تسجيل الدخول عبر جوجل</string>
+    <string name="session_scrapped">تم إلغاء الجلسة الأخيرة</string>
+    <string name="session_verifying">التحقق من الجلسة</string>
+    <string name="session_verifying_google">التحقق من جلسة قوقل</string>
+    <string name="rate_limited">عفوا ، هذا الحساب محدود السعة!</string>
+    <string name="error">حدث خطأ!</string>
+    <string name="menu">القائمة</string>
+    <string name="expand">توسع</string>
+    <string name="open_in_aurora">افتح في متجر Aurora</string>
+    <string name="permissions_denied">تم رفض الإذن المطلوب يرجى منحها لمواصلة العمل</string>
+    <string name="search_hint">البحث عن التطبيقات والألعاب</string>
+    <string name="download_progress">جار التحميل • <xliff:g id="completed_downloads"> %1$d </xliff:g> / <xliff:g id="all_downloads"> %2$d </xliff:g> • <xliff:g id="speed"> %3$s </xliff:g></string>
+    <string name="session_login">تحتاج إلى تسجيل الدخول أولا</string>
+    <string name="onboarding_permission_notifications">الإخطارات</string>
+    <string name="onboarding_permission_notifications_desc">إرسال إشعارات بخصوص حالة التثبيت</string>
+    <string name="session_enjoy">تسجيل الدخول والاستمتاع.</string>
+    <string name="session_good">واو! كل شيء جيد.</string>
+    <string name="session_init">تجهيز الأمور…</string>
+    <string name="title_advanced">متقدم</string>
+    <string name="ui_accent_0">النظام</string>
+    <string name="updates_available">التحديثات المتاحة</string>
+    <string name="update_available">التحديث متاح</string>
+    <string name="download_eta_hrs">بقي %1$d ساعة %2$d دقيقة %3$d ثانية</string>
+    <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • معرف الخدمة الفريد <xliff:g id="api">%2$s</xliff:g></string>
 </resources>
