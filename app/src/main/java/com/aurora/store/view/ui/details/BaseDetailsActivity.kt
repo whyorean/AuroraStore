@@ -87,7 +87,7 @@ abstract class BaseDetailsActivity : BaseActivity() {
                 B.txtChangelog.text = getString(R.string.details_changelog_unavailable)
             } else {
                 B.txtChangelog.text = HtmlCompat.fromHtml(
-                    app.shortDescription,
+                    this,
                     HtmlCompat.FROM_HTML_MODE_COMPACT
                 )
             }
