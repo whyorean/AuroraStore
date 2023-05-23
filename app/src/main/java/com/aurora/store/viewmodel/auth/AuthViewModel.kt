@@ -91,7 +91,7 @@ class AuthViewModel(application: Application) : BaseAndroidViewModel(application
         Preferences.putBoolean(
             getApplication(),
             Preferences.PREFERENCE_ADVANCED_SEARCH_IN_CTT,
-            true
+            false
         )
 
         if (insecure) {
