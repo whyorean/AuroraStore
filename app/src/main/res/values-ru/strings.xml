@@ -139,10 +139,10 @@
     <string name="action_get_local_apk">Сохранить APK приложения</string>
     <string name="toast_spoof_applied">Подмена устройства успешно применена.</string>
     <string name="toast_permission_granted">Разрешение выдано</string>
-    <string name="toast_developer_setting_failed">Не удалось открыть настройки разработчика, убедитесь, что он включен в настройках устройства.</string>
+    <string name="toast_developer_setting_failed">Не удалось открыть настройки разработчика, убедитесь, что он включён в настройках устройства.</string>
     <string name="toast_clipboard_copied">Скопировано в буфер обмена</string>
     <string name="toast_apk_whitelisted">Добавлен в белый список</string>
-    <string name="toast_apk_blacklisted">Добавлен в черный список</string>
+    <string name="toast_apk_blacklisted">Добавлен в чёрный список</string>
     <string name="toast_anonymous_restriction">Недоступно на анонимных аккаунтах</string>
     <string name="toast_abandon_sessions">Прерванные предыдущие сеансы установки</string>
     <string name="title_updates">Обновления</string>
@@ -252,7 +252,7 @@
     <string name="action_filter_apply">Применить</string>
     <string name="action_apply">Применить</string>
     <string name="toast_purchase_blocked">Покупка приложений недоступна для анонимных аккаунтов.</string>
-    <string name="pref_insecure_anonymous_title">Незащищенный анонимный сеанс</string>
+    <string name="pref_insecure_anonymous_title">Незащищённый анонимный сеанс</string>
     <string name="insecure_anonymous_apply">Убедитесь, что выполнили новый вход и перезапустили приложение для применения изменений.</string>
     <string name="pref_network_title">Сеть</string>
     <string name="pref_insecure_anonymous_summary">Создавать GSF ID на устройстве</string>
