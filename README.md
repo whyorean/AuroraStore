@@ -81,3 +81,8 @@ Don't see your preffered language? Click on the widget below to help translate A
 - [SAI](https://github.com/Aefyr/SAI)
 
 </details>
+
+## Active Development on GitLab
+
+The source code for Aurora Store is actively developed on GitLab. You can find the latest updates, contribute to development, and track the progress on the [Aurora Store GitLab repository](https://gitlab.com/AuroraOSS/AuroraStore).
+
