@@ -127,7 +127,6 @@
     <string name="title_library">पुस्तकालय</string>
     <string name="pref_ui_accent_title">रंग</string>
     <string name="title_language">भाषा</string>
-    <string name="download_progress">डाउनलोड कर रहे</string>
     <string name="notification_channel_alert">तुरंत सूचना</string>
     <string name="pref_ui_layout">खाका</string>
     <string name="ui_accent_13">गहरा नीला</string>
