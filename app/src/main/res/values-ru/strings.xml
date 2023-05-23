@@ -75,7 +75,7 @@
     <string name="filter_review_four">Четыре</string>
     <string name="filter_review_five">Пять</string>
     <string name="filter_review_all">Все</string>
-    <string name="exodus_view_report">Посмотреть отчет</string>
+    <string name="exodus_view_report">Посмотреть отчёт</string>
     <string name="exodus_substring">найден(-ы) трекер(-ы)</string>
     <string name="exodus_progress">Проверка трекеров…</string>
     <string name="exodus_powered">При поддержке Exodus</string>
@@ -90,7 +90,7 @@
     <string name="download_failed">Ошибка загрузки</string>
     <string name="download_eta_calculating">Расчёт</string>
     <string name="download_completed">Загружено</string>
-    <string name="download_clear_completed">Убрать завершенные</string>
+    <string name="download_clear_completed">Убрать завершённые</string>
     <string name="download_canceled">Отменено</string>
     <string name="download_cancel_all">Отменить все</string>
     <string name="details_think_this_app">Что вы думаете об этом приложении\?</string>
@@ -172,7 +172,7 @@
     <string name="tab_top_grossing">Бестселлеры</string>
     <string name="tab_editor_choice">Выбор редакции</string>
     <string name="tab_categories">Категории</string>
-    <string name="purchase_session_expired">Срок действия сеанса истек, повторно войдите в аккаунт для возобновления сеанса.</string>
+    <string name="purchase_session_expired">Срок действия сеанса истёк, повторно войдите в аккаунт для возобновления сеанса.</string>
     <string name="purchase_no_file">Не удалось получить файлы</string>
     <string name="purchase_not_found">Приложение не найдено</string>
     <string name="purchase_unsupported">Приложение не поддерживается</string>
@@ -181,9 +181,9 @@
     <string name="pref_ui_title">Внешний вид</string>
     <string name="pref_ui_theme_title">Тема</string>
     <string name="pref_ui_theme_system">Задано системой</string>
-    <string name="pref_ui_theme_dark_x">Темная X</string>
-    <string name="pref_ui_theme_dark">Темная</string>
-    <string name="pref_ui_theme_black">Черная</string>
+    <string name="pref_ui_theme_dark_x">Тёмная X</string>
+    <string name="pref_ui_theme_dark">Тёмная</string>
+    <string name="pref_ui_theme_black">Чёрная</string>
     <string name="pref_ui_theme_light">Светлая</string>
     <string name="pref_ui_theme_darkord">Discord</string>
     <string name="pref_ui_accent_title">Акцент</string>
@@ -207,7 +207,7 @@
     <string name="pref_downloader_active_summary">Максимальное количество активных загрузок</string>
     <string name="pref_dialog_to_apply_restart">Эта настройка будет применена после перезапуска приложения</string>
     <string name="pref_app_download">Загрузки</string>
-    <string name="pref_abandon_session_desc">Очистить отмененные или ожидающие сеансы установки</string>
+    <string name="pref_abandon_session_desc">Очистить отменённые или ожидающие сеансы установки</string>
     <string name="pref_abandon_session">Принудительно очистить сеансы установки</string>
     <string name="onboarding_permission_installer_desc">Разрешить установку приложений из Aurora Store</string>
     <string name="onboarding_permission_installer">Разрешения установщика</string>
@@ -241,7 +241,7 @@
     <string name="installer_status_user_action">Ожидание подтверждения пользователя</string>
     <string name="installer_status_success">Успешно установлено</string>
     <string name="installer_status_failure_storage">Недостаточно памяти</string>
-    <string name="installer_status_failure_invalid">Неправильный или поврежденный APK</string>
+    <string name="installer_status_failure_invalid">Неправильный или повреждённый APK</string>
     <string name="installer_status_failure_incompatible">Несовместимое приложение</string>
     <string name="installer_status_failure_conflict">Существует конфликтующий пакет</string>
     <string name="installer_status_failure_session">Невозможно создать сеанс</string>
@@ -292,14 +292,14 @@
     <string name="ui_accent_2">Пурпурный</string>
     <string name="ui_accent_3">Красный</string>
     <string name="ui_accent_4">Золотой</string>
-    <string name="ui_accent_5">Зеленый</string>
+    <string name="ui_accent_5">Зелёный</string>
     <string name="ui_accent_6">Фиолетовый</string>
     <string name="ui_accent_7">Серый</string>
     <string name="ui_accent_8">Розовый</string>
     <string name="ui_accent_9">Лайм</string>
     <string name="ui_accent_10">Оранжевый</string>
     <string name="ui_accent_11">Светло-синий</string>
-    <string name="ui_accent_13">Темно-синий</string>
+    <string name="ui_accent_13">Тёмно-синий</string>
     <string name="ui_accent_12">Насыщенно-синий</string>
     <string name="download_paused">Приостановлено • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
     <string name="download_progress">Загрузка • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
@@ -311,9 +311,9 @@
     <string name="expand">Развернуть</string>
     <string name="open_in_aurora">Открыть в Aurora Store</string>
     <string name="onboarding_permission_notifications_desc">Показывать уведомления о состоянии установки</string>
-    <string name="download_eta_hrs">Осталось %1$d час %2$d мин %3$d сек</string>
-    <string name="download_eta_min">Осталось %1$d мин %2$d сек</string>
-    <string name="download_eta_sec">Осталось %1$d сек</string>
+    <string name="download_eta_hrs">Ещё %1$d ч. %2$d м. %3$d с.</string>
+    <string name="download_eta_min">Ещё %1$d м. %2$d с.</string>
+    <string name="download_eta_sec">Ещё %1$d с.</string>
     <string name="onboarding_permission_notifications">Уведомления</string>
     <string name="session_good">Отлично.</string>
     <string name="session_init">Подготовка…</string>
