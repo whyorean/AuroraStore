@@ -44,8 +44,8 @@
     <string name="about_bhim">BHIM - UPI</string>
     <string name="about_bitcoin_bch">Bitcoin Сash</string>
     <string name="about_telegram">Telegram</string>
-    <string name="action_blacklist_add">Добавить в черный список</string>
-    <string name="action_blacklist">Черный список</string>
+    <string name="action_blacklist_add">Добавить в чёрный список</string>
+    <string name="action_blacklist">Чёрный список</string>
     <string name="action_back">Назад</string>
     <string name="action_accept">Принять</string>
     <string name="account_logout">Выйти из Aurora</string>
@@ -88,7 +88,7 @@
     <string name="download_metadata">Получение метаданных</string>
     <string name="download_force_clear_all">Принудительно очистить все</string>
     <string name="download_failed">Ошибка загрузки</string>
-    <string name="download_eta_calculating">Расчет</string>
+    <string name="download_eta_calculating">Расчёт</string>
     <string name="download_completed">Загружено</string>
     <string name="download_clear_completed">Убрать завершенные</string>
     <string name="download_canceled">Отменено</string>
@@ -292,7 +292,7 @@
     <string name="ui_accent_2">Пурпурный</string>
     <string name="ui_accent_3">Красный</string>
     <string name="ui_accent_4">Золотой</string>
-    <string name="ui_accent_5">Зеленый</string>
+    <string name="ui_accent_5">Зелёный</string>
     <string name="ui_accent_6">Фиолетовый</string>
     <string name="ui_accent_7">Серый</string>
     <string name="ui_accent_8">Розовый</string>
