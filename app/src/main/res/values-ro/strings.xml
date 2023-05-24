@@ -11,4 +11,7 @@
     <string name="about_bitcoin_eth_summary">Donează prin Ethereum (ETH)</string>
     <string name="about_paypal_summary">Donează prin PayPal</string>
     <string name="about_telegram_summary">Alătură-te grupului de suport Aurora pentru discuții sau sugestii.</string>
+    <string name="about_xda_summary">Consultă forumul XDA Aurora Store pentru discuții sau sugestii.</string>
+    <string name="account_anonymous">Anonim</string>
+    <string name="about_xda">Forum</string>
 </resources>
