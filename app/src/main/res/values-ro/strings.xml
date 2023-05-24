@@ -1,2 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="about_gitlab_summary">Obține codul sursă Aurora Store de la Aurora OSS pe GitLab.</string>
+    <string name="about_libera_summary">Devino patron pe Liberapay</string>
+    <string name="about_bitcoin_btc_summary">Donează prin Bitcoin (BTC)</string>
+    <string name="about_bhim_summary">Donează prin UPI</string>
+    <string name="about_bitcoin_bch">Bitcoin Cash</string>
+    <string name="about_fdroid_summary">Obține Aurora Store prin intermediul F-Droid.</string>
+    <string name="about_bhim">BHIM - UPI</string>
+    <string name="about_bitcoin_bch_summary">Donează prin Bitcoin Cash (BCH)</string>
+    <string name="about_bitcoin_eth_summary">Donează prin Ethereum (ETH)</string>
+    <string name="about_paypal_summary">Donează prin PayPal</string>
+    <string name="about_telegram_summary">Alătură-te grupului de suport Aurora pentru discuții sau sugestii.</string>
+</resources>
