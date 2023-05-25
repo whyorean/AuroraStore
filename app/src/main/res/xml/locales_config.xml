@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Arrange by language code to keep things uniform -->
 <locale-config xmlns:android="http://schemas.android.com/apk/res/android">
     <locale android:name="ady"/>
     <locale android:name="af"/>
@@ -15,6 +16,7 @@
     <locale android:name="da"/>
     <locale android:name="de"/>
     <locale android:name="el"/>
+    <locale android:name="en"/>
     <locale android:name="eo"/>
     <locale android:name="es"/>
     <locale android:name="et"/>
@@ -45,6 +47,7 @@
     <locale android:name="pl"/>
     <locale android:name="pt"/>
     <locale android:name="pt-rBR"/>
+    <locale android:name="ro"/>
     <locale android:name="ru"/>
     <locale android:name="sc"/>
     <locale android:name="si"/>
