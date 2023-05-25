@@ -60,7 +60,6 @@ class BlacklistViewModel(application: Application) : BaseAndroidViewModel(applic
                             it.packageName != null
                                     && it.versionName != null
                                     && it.applicationInfo != null
-                                    && it.applicationInfo.enabled
                         }
                         .forEach {
                             val black = Black(it.packageName).apply {
