@@ -213,7 +213,7 @@
     <string name="pref_app_download">Завантаження</string>
     <string name="pref_abandon_session_desc">Видалення сеансів черги встановлень або відкладених</string>
     <string name="pref_abandon_session">Примусово очистити сеанси встановлення</string>
-    <string name="onboarding_permission_installer_desc">Дозволити встановлення програм з Aurora Store</string>
+    <string name="onboarding_permission_installer_desc">Дозволити встановлення застосунків з Aurora Store</string>
     <string name="onboarding_permission_installer">Дозвіл встановлювача</string>
     <string name="onboarding_permission_esm">Менеджер зовнішнього сховища</string>
     <string name="onboarding_permission_esa_desc">Щоб зберігати завантаження (APK &amp; OBB), експортувати та імпортувати конфігурації пристроїв на та із зовнішнього сховища.</string>
@@ -233,11 +233,11 @@
     <string name="onboarding_installer_select">Виберіть відповідний встановлювач</string>
     <string name="notification_channel_general">Загальне сповіщення</string>
     <string name="notification_channel_alert">Швидке сповіщення</string>
-    <string name="dialog_desc_native_split">Неможливо встановити пакети застосунків (split) через системний установник Android. Змініть установник на Session, служби Aurora або Root.</string>
+    <string name="dialog_desc_native_split">Неможливо встановити пакети застосунків (split) через системний встановлювач Android. Змініть встановлювач на Session, служби Aurora або Root.</string>
     <string name="dialog_title_self_update">Доступне нове оновлення</string>
     <string name="device_miui_extra">За бажанням ви можете вибрати власний встановлювач, але тоді ви не можете встановлювати розділені (split) APK, тому вибір за вами.</string>
     <string name="device_miui_description">Вимкніть оптимізацію MIUI, щоб дозволити встановлення, інакше ви можете вибрати встановлювач Root або Services.</string>
-    <string name="device_miui_subtitle">Установник Android не може встановлювати застосунки через оптимізацію MIUI.</string>
+    <string name="device_miui_subtitle">Встановлювач Android не може встановлювати застосунки через оптимізацію MIUI.</string>
     <string name="device_miui_title">Виявлено MIUI!</string>
     <string name="device_huawei_description">Ми радимо користуватися функцією підміни пристрою, якщо у вас новіший пристрій Huawei. Ви хочете застосувати функцію підміни зараз\?</string>
     <string name="device_huawei_subtitle">Здається, ви користуєтеся пристроєм Huawei, через нещодавні заборони Google ви не зможете ввійти в систему.</string>
@@ -266,12 +266,12 @@
     <string name="filter_review_five">П’ять</string>
     <string name="filter_review_critical">Критичні</string>
     <string name="pref_filter_fdroid_title">Фільтрувати застосунки F-Droid</string>
-    <string name="pref_filter_fdroid_summary">Вилучає програми F-Droid зі списків застосунків</string>
+    <string name="pref_filter_fdroid_summary">Вилучає застосунки F-Droid зі списків застосунків</string>
     <string name="pref_downloader_external_desc">Зовнішнє сховище застосовується для завантажень, експорту тощо.</string>
     <string name="pref_downloader_external">Зовнішнє сховище</string>
     <string name="pref_downloader_active_title">Активні завантаження</string>
     <string name="pref_downloader_active_summary">Найбільша кількість активних завантажень</string>
-    <string name="pref_dialog_to_apply_restart">Цей параметр буде застосовано після перезапуску програми</string>
+    <string name="pref_dialog_to_apply_restart">Цей параметр буде застосовано після перезапуску застосунку</string>
     <string name="pref_common_extra">Додаткові</string>
     <string name="toast_aas_token_failed">Не вдалося створити токен AAS</string>
     <string name="toast_rated_failed">Не вдалося надіслати оцінку</string>
@@ -287,7 +287,7 @@
     <string name="notification_channel_updater_service">Служба фонового завантаження застосунків</string>
     <string name="pref_install_mode_am">Інсталятор менеджера застосунків.</string>
     <string name="account_anonymous_insecure">Анонімно (незахищено)</string>
-    <string name="installer_am_unavailable">Установити Менеджер застосунків або змінити інсталятор.</string>
+    <string name="installer_am_unavailable">Встановити Менеджер застосунків або змінити встановлювач.</string>
     <string name="ui_accent_1">Синій</string>
     <string name="ui_accent_4">Золотий</string>
     <string name="ui_accent_2">Пурпуровий</string>
