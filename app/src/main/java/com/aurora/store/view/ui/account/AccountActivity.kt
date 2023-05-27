@@ -19,11 +19,14 @@
 
 package com.aurora.store.view.ui.account
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.lifecycle.ViewModelProvider
 import com.aurora.extensions.browse
 import com.aurora.extensions.close
+import com.aurora.extensions.getEmptyActivityAnimation
 import com.aurora.extensions.load
 import com.aurora.gplayapi.data.models.AuthData
 import com.aurora.store.R
@@ -32,6 +35,7 @@ import com.aurora.store.data.event.BusEvent
 import com.aurora.store.data.providers.AccountProvider
 import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.databinding.ActivityAccountBinding
+import com.aurora.store.util.Preferences
 import com.aurora.store.view.ui.commons.BaseActivity
 import com.aurora.store.viewmodel.auth.AuthViewModel
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
@@ -52,6 +56,15 @@ class AccountActivity : BaseActivity() {
     private val URL_TOS = "https://play.google.com/about/play-terms/"
     private val URL_LICENSE = "https://gitlab.com/AuroraOSS/AuroraStore/blob/master/LICENSE"
     private val URL_DISCLAIMER = "https://gitlab.com/AuroraOSS/AuroraStore/blob/master/DISCLAIMER.md"
+
+    private val startForResult =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+            if (it.resultCode == RESULT_CANCELED) {
+                resetActions()
+            } else {
+                B.btnGoogle.updateProgress(true)
+            }
+        }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -74,6 +87,9 @@ class AccountActivity : BaseActivity() {
 
         VM.liveData.observe(this) {
             when (it) {
+                AuthState.Fetching -> {
+                    updateStatus(getString(R.string.requesting_new_session))
+                }
                 AuthState.Valid -> {
 
                 }
@@ -99,6 +115,7 @@ class AccountActivity : BaseActivity() {
 
                 is AuthState.Status -> {
                     updateStatus(it.status)
+                    resetActions()
                 }
             }
         }
@@ -173,13 +190,19 @@ class AccountActivity : BaseActivity() {
         B.btnGoogle.updateProgress(false)
 
         B.btnAnonymous.addOnClickListener {
-            B.btnAnonymous.updateProgress(true)
-            VM.buildAnonymousAuthData()
+            if (VM.liveData.value != AuthState.Fetching) {
+                B.btnAnonymous.updateProgress(true)
+                VM.buildAnonymousAuthData()
+            }
         }
 
         B.btnGoogle.addOnClickListener {
-            B.btnGoogle.updateProgress(true)
-            openGoogleActivity()
+            if (VM.liveData.value != AuthState.Fetching) {
+                B.btnGoogle.updateProgress(true)
+                Preferences.putBoolean(this, Preferences.PREFERENCE_ADVANCED_SEARCH_IN_CTT, false)
+                val intent = Intent(this, GoogleActivity::class.java)
+                startForResult.launch(intent, getEmptyActivityAnimation())
+            }
         }
 
         B.btnLogout.addOnClickListener {
@@ -192,6 +215,18 @@ class AccountActivity : BaseActivity() {
             } failUi {
 
             }
+        }
+    }
+
+    private fun resetActions() {
+        B.btnGoogle.apply {
+            updateProgress(false)
+            isEnabled = true
+        }
+
+        B.btnAnonymous.apply {
+            updateProgress(false)
+            isEnabled = true
         }
     }
 

@@ -20,6 +20,7 @@
 package com.aurora.store.viewmodel.auth
 
 import android.app.Application
+import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.aurora.Constants
@@ -28,6 +29,7 @@ import com.aurora.gplayapi.data.providers.DeviceInfoProvider
 import com.aurora.gplayapi.helpers.AuthHelper
 import com.aurora.gplayapi.helpers.AuthValidator
 import com.aurora.store.AccountType
+import com.aurora.store.R
 import com.aurora.store.data.AuthState
 import com.aurora.store.data.RequestState
 import com.aurora.store.data.model.InsecureAuth
@@ -102,7 +104,7 @@ class AuthViewModel(application: Application) : BaseAndroidViewModel(application
     }
 
     private fun buildSecureAnonymousAuthData() {
-        updateStatus("Requesting new session")
+        liveData.postValue(AuthState.Fetching)
 
         task {
             var properties = NativeDeviceInfoProvider(getApplication())
@@ -127,6 +129,9 @@ class AuthViewModel(application: Application) : BaseAndroidViewModel(application
                 when (playResponse.code) {
                     404 -> throw Exception("Server unreachable")
                     429 -> throw Exception("Oops, You are rate limited")
+                    503 -> throw Exception(
+                        (getApplication() as Context).getString(R.string.server_maintenance)
+                    )
                     else -> throw Exception(playResponse.errorString)
                 }
             }
@@ -140,7 +145,7 @@ class AuthViewModel(application: Application) : BaseAndroidViewModel(application
     }
 
     fun buildInSecureAnonymousAuthData() {
-        updateStatus("Requesting new session")
+        liveData.postValue(AuthState.Fetching)
 
         task {
             var properties = NativeDeviceInfoProvider(getApplication())
@@ -166,6 +171,9 @@ class AuthViewModel(application: Application) : BaseAndroidViewModel(application
                 when (playResponse.code) {
                     404 -> throw Exception("Server unreachable")
                     429 -> throw Exception("Oops, You are rate limited")
+                    503 -> throw Exception(
+                        (getApplication() as Context).getString(R.string.server_maintenance)
+                    )
                     else -> throw Exception(playResponse.errorString)
                 }
             }

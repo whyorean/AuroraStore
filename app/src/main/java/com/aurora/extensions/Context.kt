@@ -127,6 +127,14 @@ fun Context.restartApp() {
     exitProcess(0)
 }
 
+fun Context.getEmptyActivityAnimation(): ActivityOptionsCompat {
+    return ActivityOptionsCompat.makeCustomAnimation(
+        this,
+        android.R.anim.fade_in,
+        android.R.anim.fade_out
+    )
+}
+
 fun Context.getEmptyActivityBundle(): Bundle? {
     return ActivityOptionsCompat.makeCustomAnimation(
         this,

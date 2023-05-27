@@ -19,10 +19,13 @@
 
 package com.aurora.store.view.ui.splash
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.lifecycle.ViewModelProvider
+import com.aurora.extensions.getEmptyActivityAnimation
 import com.aurora.extensions.hide
 import com.aurora.extensions.load
 import com.aurora.extensions.open
@@ -32,7 +35,9 @@ import com.aurora.store.R
 import com.aurora.store.data.AuthState
 import com.aurora.store.data.event.BusEvent
 import com.aurora.store.databinding.ActivitySplashBinding
+import com.aurora.store.util.Preferences
 import com.aurora.store.view.ui.account.AccountActivity
+import com.aurora.store.view.ui.account.GoogleActivity
 import com.aurora.store.view.ui.commons.BaseActivity
 import com.aurora.store.view.ui.commons.BlacklistActivity
 import com.aurora.store.view.ui.preferences.SettingsActivity
@@ -46,6 +51,15 @@ class SplashActivity : BaseActivity() {
 
     private lateinit var VM: AuthViewModel
     private lateinit var B: ActivitySplashBinding
+
+    private val startForResult =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+            if (it.resultCode == RESULT_CANCELED) {
+                resetActions()
+            } else {
+                B.btnGoogle.updateProgress(true)
+            }
+        }
 
     override fun onConnected() {
         hideNetworkConnectivitySheet()
@@ -81,6 +95,9 @@ class SplashActivity : BaseActivity() {
 
         VM.liveData.observe(this) {
             when (it) {
+                AuthState.Fetching -> {
+                    updateStatus(getString(R.string.requesting_new_session))
+                }
                 AuthState.Valid -> {
                     moveToContent()
                 }
@@ -106,6 +123,7 @@ class SplashActivity : BaseActivity() {
 
                 is AuthState.Status -> {
                     updateStatus(it.status)
+                    resetActions()
                 }
             }
         }
@@ -194,18 +212,43 @@ class SplashActivity : BaseActivity() {
 
     private fun attachActions() {
         B.btnAnonymous.addOnClickListener {
-            B.btnAnonymous.updateProgress(true)
-            VM.buildAnonymousAuthData()
+            if (VM.liveData.value != AuthState.Fetching) {
+                B.btnAnonymous.updateProgress(true)
+                VM.buildAnonymousAuthData()
+            }
         }
 
         B.btnAnonymousInsecure.addOnClickListener {
-            B.btnAnonymousInsecure.updateProgress(true)
-            VM.buildInSecureAnonymousAuthData()
+            if (VM.liveData.value != AuthState.Fetching) {
+                B.btnAnonymousInsecure.updateProgress(true)
+                VM.buildInSecureAnonymousAuthData()
+            }
         }
 
         B.btnGoogle.addOnClickListener {
-            B.btnGoogle.updateProgress(true)
-            openGoogleActivity()
+            if (VM.liveData.value != AuthState.Fetching) {
+                B.btnGoogle.updateProgress(true)
+                Preferences.putBoolean(this, Preferences.PREFERENCE_ADVANCED_SEARCH_IN_CTT, false)
+                val intent = Intent(this, GoogleActivity::class.java)
+                startForResult.launch(intent, getEmptyActivityAnimation())
+            }
+        }
+    }
+
+    private fun resetActions() {
+        B.btnGoogle.apply {
+            updateProgress(false)
+            isEnabled = true
+        }
+
+        B.btnAnonymous.apply {
+            updateProgress(false)
+            isEnabled = true
+        }
+
+        B.btnAnonymousInsecure.apply {
+            updateProgress(false)
+            isEnabled = true
         }
     }
 
