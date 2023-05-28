@@ -330,4 +330,6 @@
     <string name="session_login_failed_google">Error al iniciar sesión a través de Google</string>
     <string name="updates_available">actualizaciones disponibles</string>
     <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>
+    <string name="requesting_new_session">Solicitando una nueva sesión</string>
+    <string name="server_maintenance">El servidor no disponible por mantenimiento</string>
 </resources>
