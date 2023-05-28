@@ -27,6 +27,7 @@ import android.webkit.WebSettings
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.aurora.Constants
 import com.aurora.extensions.close
 import com.aurora.extensions.isLAndAbove
@@ -125,6 +126,7 @@ class GoogleActivity : BaseActivity() {
             }
 
             //Close Activity
+            setResult(RESULT_OK)
             close()
         } fail {
             Toast.makeText(this, getString(R.string.toast_aas_token_failed), Toast.LENGTH_LONG)
@@ -132,6 +134,7 @@ class GoogleActivity : BaseActivity() {
             EventBus.getDefault().post(BusEvent.GoogleAAS(false))
 
             //Close Activity
+            setResult(RESULT_CANCELED)
             close()
         }
     }

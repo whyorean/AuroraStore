@@ -27,7 +27,6 @@ import androidx.appcompat.app.AppCompatActivity
 
 
 fun AppCompatActivity.close() {
-    setResult(AppCompatActivity.RESULT_OK)
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
         finishAfterTransition()
     } else {
