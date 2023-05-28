@@ -330,4 +330,6 @@
     <string name="expand">Genişlet</string>
     <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>
     <string name="permissions_denied">Gerekli izinler reddedildi. İşleme devam etmek için lütfen bu izinleri verin</string>
+    <string name="requesting_new_session">Yeni oturum isteniyor</string>
+    <string name="server_maintenance">Sunucu bakım için kapalı</string>
 </resources>
