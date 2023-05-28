@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="installer_service_available">Aurora 服务已可用并准备安装。</string>
     <string name="installer_root_unavailable">无 Root 权限。授予 Root 权限或更改安装程序。</string>
     <string name="filter_review_two">2★</string>
@@ -301,4 +301,35 @@
     <string name="ui_accent_11">淡蓝</string>
     <string name="ui_accent_12">Disskord 蓝</string>
     <string name="ui_accent_13">深蓝</string>
+    <string name="download_paused">已暂停 • <xliff:g id="completed_downloads">%1$d</xliff:g>/<xliff:g id="all_downloads">%2$d</xliff:g></string>
+    <string name="requesting_new_session">正在请求新会话</string>
+    <string name="server_maintenance">服务器下线进行维护</string>
+    <string name="download_progress">正在下载 • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
+    <string name="pref_advanced_search_in_ctt_desc">在浏览器自定义标签页中打开搜索结果</string>
+    <string name="download_eta_sec">还剩 %1$d秒</string>
+    <string name="onboarding_permission_notifications_desc">不论何种安装状态均发送通知</string>
+    <string name="onboarding_permission_notifications">通知</string>
+    <string name="session_verifying">正在验证会话</string>
+    <string name="open_in_aurora">在 Aurora Store 中打开</string>
+    <string name="session_verifying_google">正在验证 Google 会话</string>
+    <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>
+    <string name="permissions_denied">必需的权限被拒绝。为了继续操作请授予这些权限</string>
+    <string name="download_eta_hrs">还剩 %1$d小时 %2$d分钟 %3$d秒</string>
+    <string name="download_eta_min">还剩 %1$d分钟 %2$d秒</string>
+    <string name="pref_advanced_search_in_ctt">在自定义标签页中搜索</string>
+    <string name="session_enjoy">登录并享受。</string>
+    <string name="session_good">哇哦！一切正常。</string>
+    <string name="session_login">你首先需要登录</string>
+    <string name="session_login_failed_google">通过 Google 登录失败</string>
+    <string name="session_scrapped">上次会话报废</string>
+    <string name="session_init">准备中…</string>
+    <string name="title_advanced">高级</string>
+    <string name="ui_accent_0">系统</string>
+    <string name="updates_available">有更新可用</string>
+    <string name="rate_limited">哎呦，此账户被限制速率了！</string>
+    <string name="update_available">有更新可用</string>
+    <string name="error">出错了！</string>
+    <string name="menu">菜单</string>
+    <string name="expand">展开</string>
+    <string name="search_hint">搜索应用和游戏</string>
 </resources>
