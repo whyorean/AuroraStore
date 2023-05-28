@@ -323,7 +323,7 @@
     <string name="session_verifying_google">Weryfikacja sesji Google</string>
     <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>
     <string name="session_good">Łał! Wszystko dobrze.</string>
-    <string name="session_login">Musisz najpierw się zalogować</string>
+    <string name="session_login">Najpierw musisz się zalogować</string>
     <string name="pref_advanced_search_in_ctt">Szukaj w niestandardowej karcie</string>
     <string name="session_init">Przygotowuję…</string>
     <string name="session_scrapped">Ostatnia sesja została zezłomowana</string>

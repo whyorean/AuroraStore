@@ -327,7 +327,7 @@
     <string name="error">Es ist ein Fehler aufgetreten!</string>
     <string name="update_available">Update verfügbar</string>
     <string name="expand">Erweitern</string>
-    <string name="permissions_denied">Erforderliche Berechtigungen wurden verweigert. Bitte erteile diese, um die Aktion fortzusetzen</string>
+    <string name="permissions_denied">Erforderliche Berechtigungen wurden verweigert. Bitte erteile diese, um die Aktion fortzusetzen.</string>
     <string name="download_eta_hrs">noch %1$dh %2$dm %3$ds</string>
     <string name="download_eta_min">noch %1$dm %2$ds</string>
     <string name="download_eta_sec">noch %1$ds</string>
