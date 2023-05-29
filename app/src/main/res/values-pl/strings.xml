@@ -330,4 +330,6 @@
     <string name="rate_limited">Ups, to konto ma ograniczoną przepustowość!</string>
     <string name="permissions_denied">Odmówiono wymaganych uprawnień. Przyznaj je, aby kontynuować akcję</string>
     <string name="session_login_failed_google">Nie udało się zalogować za pomocą konta Google</string>
+    <string name="server_maintenance">Serwer wyłączony z powodu prac konserwacyjnych</string>
+    <string name="requesting_new_session">Żądanie nowej sesji</string>
 </resources>
