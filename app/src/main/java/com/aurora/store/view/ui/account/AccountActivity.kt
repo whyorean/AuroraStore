@@ -245,7 +245,10 @@ class AccountActivity : BaseActivity() {
                 else
                     it.name
 
-                B.txtEmail.text = it.email
+                B.txtEmail.text = if (authData.isAnonymous)
+                    "anonymous@gmail.com"
+                else
+                    it.email
             }
         } else {
             B.imgAvatar.load(R.mipmap.ic_launcher) {
