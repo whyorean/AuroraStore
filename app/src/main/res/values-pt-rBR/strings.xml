@@ -301,4 +301,7 @@
     <string name="installer_am_unavailable">Instale o Gerenciador de Aplicativos ou mude o instalador.</string>
     <string name="ui_accent_2">Magenta</string>
     <string name="ui_accent_12">Azul disskord</string>
+    <string name="onboarding_permission_notifications">Notificações</string>
+    <string name="pref_advanced_search_in_ctt_desc">Abrir resultados da pesquisa em uma aba customizada no navegador</string>
+    <string name="session_init">Preparando as coisas…</string>
 </resources>

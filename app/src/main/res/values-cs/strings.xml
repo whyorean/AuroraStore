@@ -330,4 +330,6 @@
     <string name="menu">Nabídka</string>
     <string name="rate_limited">Jejda, tento účet je omezen!</string>
     <string name="error">Vyskytla se chyba!</string>
+    <string name="server_maintenance">Výpadek serveru z důvodu údržby</string>
+    <string name="requesting_new_session">Žádost o novou relaci</string>
 </resources>

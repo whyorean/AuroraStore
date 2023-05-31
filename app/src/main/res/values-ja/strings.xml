@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="details_dev_website">ウェブサイト</string>
     <string name="details_dev_email">電子メール</string>
     <string name="account_login_using">次の方法でログイン</string>
@@ -95,7 +95,7 @@
     <string name="details_think_this_app">アプリについてどう思いますか？</string>
     <string name="details_ratings">評価とレビュー</string>
     <string name="details_privacy">プライバシー</string>
-    <string name="details_permission">許可</string>
+    <string name="details_permission">権限</string>
     <string name="details_paid">有料</string>
     <string name="details_no_updates">更新はありません</string>
     <string name="details_no_permission">権限がありません</string>
@@ -301,4 +301,35 @@
     <string name="ui_accent_12">Disskordブルー</string>
     <string name="ui_accent_13">ディープブルー</string>
     <string name="ui_accent_11">ライトブルー</string>
+    <string name="download_progress">ダウンロード中 • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
+    <string name="download_paused">一時停止 • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
+    <string name="server_maintenance">サーバーがメンテナンスのため停止しています</string>
+    <string name="download_eta_hrs">残り%1$d時間%2$d分%3$d秒</string>
+    <string name="download_eta_min">残り%1$d分%2$d秒</string>
+    <string name="download_eta_sec">残り%1$d秒</string>
+    <string name="pref_advanced_search_in_ctt">カスタムタブで検索</string>
+    <string name="pref_advanced_search_in_ctt_desc">ブラウザのカスタムタブで検索結果を開く</string>
+    <string name="session_enjoy">ログインしてお楽しみください。</string>
+    <string name="update_available">更新があります</string>
+    <string name="session_verifying_google">Googleセッションを認証中</string>
+    <string name="updates_available">更新があります</string>
+    <string name="rate_limited">おっと、このアカウントはレート制限されています！</string>
+    <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>
+    <string name="search_hint">アプリ・ゲームを検索</string>
+    <string name="requesting_new_session">新しいセッションを要求中</string>
+    <string name="onboarding_permission_notifications">通知</string>
+    <string name="onboarding_permission_notifications_desc">インストール状況の通知を送る</string>
+    <string name="session_init">準備中…</string>
+    <string name="session_login">まずログインする必要があります</string>
+    <string name="session_login_failed_google">Googleへのログインに失敗しました</string>
+    <string name="session_scrapped">セッションを破棄しました</string>
+    <string name="session_verifying">セッションを認証中</string>
+    <string name="title_advanced">高度な設定</string>
+    <string name="session_good">おお！全て順調。</string>
+    <string name="ui_accent_0">システム</string>
+    <string name="error">エラーが発生しました！</string>
+    <string name="menu">メニュー</string>
+    <string name="expand">展開する</string>
+    <string name="open_in_aurora">Aurora Storeで開く</string>
+    <string name="permissions_denied">必要な権限が拒否されました。続けるためには許可してください</string>
 </resources>
