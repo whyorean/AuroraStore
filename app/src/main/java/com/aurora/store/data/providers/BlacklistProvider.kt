@@ -22,6 +22,7 @@ package com.aurora.store.data.providers
 import android.content.Context
 import android.content.SharedPreferences
 import androidx.preference.PreferenceManager
+import com.aurora.extensions.isNAndAbove
 import com.aurora.store.data.SingletonHolder
 import com.aurora.store.util.Preferences
 import com.google.gson.Gson
@@ -41,12 +42,27 @@ class BlacklistProvider private constructor(var context: Context) {
         .create()
 
     fun getBlackList(): MutableSet<String> {
-        val rawBlacklist = PreferenceManager.getDefaultSharedPreferences(context)
-            .getString(PREFERENCE_BLACKLIST, (Context::class.java.getDeclaredMethod(
-                "getSharedPreferences", File::class.java, Int::class.java).invoke(context,
-                File("/product/etc/" + context.packageName + "/blacklist.xml"),
-                Context.MODE_PRIVATE) as SharedPreferences).getString(PREFERENCE_BLACKLIST, ""))
         return try {
+            val rawBlacklist = if (isNAndAbove()) {
+                val refMethod = Context::class.java.getDeclaredMethod(
+                    "getSharedPreferences",
+                    File::class.java,
+                    Int::class.java
+                )
+                val refSharedPreferences = refMethod.invoke(
+                    context,
+                    File("/product/etc/" + context.packageName + "/blacklist.xml"),
+                    Context.MODE_PRIVATE
+                ) as SharedPreferences
+
+                PreferenceManager.getDefaultSharedPreferences(context)
+                    .getString(
+                        PREFERENCE_BLACKLIST,
+                        refSharedPreferences.getString(PREFERENCE_BLACKLIST, "")
+                    )
+            } else {
+                Preferences.getString(context, PREFERENCE_BLACKLIST)
+            }
             if (rawBlacklist!!.isEmpty())
                 mutableSetOf()
             else
