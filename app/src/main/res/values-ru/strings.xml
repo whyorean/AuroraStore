@@ -330,6 +330,6 @@
     <string name="pref_advanced_search_in_ctt">Поиск во вкладке браузера</string>
     <string name="search_hint">Поиск в Приложениях и Играх</string>
     <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>
-    <string name="requesting_new_session">Запрос новой сессии</string>
-    <string name="server_maintenance">Сервер отключен на техобслуживание</string>
+    <string name="requesting_new_session">Запрос на новую сессию</string>
+    <string name="server_maintenance">Сервер отключён на техобслуживание</string>
 </resources>
