@@ -9,6 +9,7 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.LifecycleService
 import androidx.lifecycle.MutableLiveData
 import com.aurora.Constants
+import com.aurora.extensions.isOAndAbove
 import com.aurora.extensions.stackTraceToString
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.AuthData
@@ -24,6 +25,7 @@ import com.aurora.store.data.model.UpdateFile
 import com.aurora.store.data.network.HttpClient
 import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.util.Log
+import com.aurora.store.util.PackageUtil.isSharedLibraryInstalled
 import com.tonyodev.fetch2.*
 import com.tonyodev.fetch2core.DownloadBlock
 import com.tonyodev.fetch2core.FetchObserver
@@ -480,6 +482,19 @@ class UpdateService: LifecycleService() {
                 app.versionCode,
                 app.offerType
             )
+
+            if (app.dependencies.dependentLibraries.isNotEmpty() && isOAndAbove()) {
+                app.dependencies.dependentLibraries.forEach {
+                    if (!isSharedLibraryInstalled(this,  it.packageName, it.versionCode)) {
+                        updateApp(it, removeExisiting)
+                        while (containsInInstalling(it.packageName) ||
+                            !isSharedLibraryInstalled(this, it.packageName, it.versionCode)
+                        ) {
+                            Thread.sleep(1000)
+                        }
+                    }
+                }
+            }
 
             files.filter { it.url.isNotEmpty() }
                 .map { RequestBuilder.buildRequest(this, app, it) }
