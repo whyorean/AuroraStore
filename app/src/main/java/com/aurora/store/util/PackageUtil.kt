@@ -25,10 +25,13 @@ import android.content.IntentFilter
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import android.content.pm.PackageManager.PackageInfoFlags
+import android.content.pm.SharedLibraryInfo
 import android.content.res.Configuration
 import android.os.Build
 import androidx.core.content.pm.PackageInfoCompat
+import com.aurora.extensions.isOAndAbove
 import com.aurora.extensions.isTAndAbove
+import okhttp3.internal.immutableListOf
 
 
 object PackageUtil {
@@ -48,6 +51,17 @@ object PackageUtil {
             return PackageInfoCompat.getLongVersionCode(packageInfo) >= versionCode.toLong()
         } catch (e: PackageManager.NameNotFoundException) {
             false
+        }
+    }
+
+    fun isSharedLibraryInstalled(context: Context, packageName: String, versionCode: Int): Boolean {
+        if (isOAndAbove()) {
+            val sharedLibraries = getAllSharedLibraries(context)
+            return sharedLibraries.any {
+                it.name == packageName && it.version == versionCode
+            }
+        } else {
+            return false
         }
     }
 
@@ -103,6 +117,16 @@ object PackageUtil {
             )
         } else {
             context.packageManager.getPackageInfo(packageName, flags)
+        }
+    }
+
+    private fun getAllSharedLibraries(context: Context, flags: Int = 0): List<SharedLibraryInfo> {
+        return if (isTAndAbove()) {
+            context.packageManager.getSharedLibraries(PackageInfoFlags.of(flags.toLong()))
+        } else if (isOAndAbove()) {
+            context.packageManager.getSharedLibraries(flags)
+        } else {
+            emptyList()
         }
     }
 
