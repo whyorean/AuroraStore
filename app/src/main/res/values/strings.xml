@@ -351,4 +351,5 @@
     <string name="search_hint">Search for Apps &amp; Games</string>
     <string name="requesting_new_session">Requesting new session</string>
     <string name="server_maintenance">Server down for maintenance</string>
+    <string name="downloading_dep">Downloading additional files for <xliff:g id="app">%1$s</xliff:g></string>
 </resources>

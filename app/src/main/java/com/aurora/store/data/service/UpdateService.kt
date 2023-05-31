@@ -486,6 +486,9 @@ class UpdateService: LifecycleService() {
             if (app.dependencies.dependentLibraries.isNotEmpty() && isOAndAbove()) {
                 app.dependencies.dependentLibraries.forEach {
                     if (!isSharedLibraryInstalled(this,  it.packageName, it.versionCode)) {
+                        it.displayName = getString(R.string.downloading_dep, app.displayName)
+                        it.iconArtwork = app.iconArtwork
+
                         updateApp(it, removeExisiting)
                         while (containsInInstalling(it.packageName) ||
                             !isSharedLibraryInstalled(this, it.packageName, it.versionCode)
