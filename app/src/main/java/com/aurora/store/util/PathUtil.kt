@@ -24,6 +24,7 @@ import android.os.Environment
 import com.aurora.extensions.isLAndAbove
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.File
+import java.util.UUID
 
 fun Context.getInternalBaseDirectory(): String {
     return (getExternalFilesDir(null) ?: filesDir).path
@@ -85,6 +86,17 @@ object PathUtil {
 
     fun needsStorageManagerPerm(fileList: List<File>): Boolean {
         return fileList.any { it.type == File.FileType.OBB || it.type == File.FileType.PATCH }
+    }
+
+    fun getSpoofDirectory(context: Context): String {
+        return "${context.getInternalBaseDirectory()}/SpoofConfigs"
+    }
+
+    fun getNewEmptySpoofConfig(context: Context): java.io.File {
+        val file = java.io.File("${getSpoofDirectory(context)}/${UUID.randomUUID()}.properties")
+        file.parentFile?.mkdirs()
+        file.createNewFile()
+        return file
     }
 }
 

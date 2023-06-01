@@ -33,6 +33,7 @@ import com.aurora.extensions.toast
 import com.aurora.store.R
 import com.aurora.store.data.providers.NativeDeviceInfoProvider
 import com.aurora.store.databinding.ActivityGenericPagerBinding
+import com.aurora.store.util.PathUtil
 import com.aurora.store.view.ui.commons.BaseActivity
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
@@ -44,8 +45,17 @@ class SpoofActivity : BaseActivity() {
 
     private lateinit var B: ActivityGenericPagerBinding
 
-    private val startForDocument =
-        registerForActivityResult(ActivityResultContracts.CreateDocument("text/x-java-properties")) {
+    // Android is weird, even if export device config with proper mime type, it will refuse to open
+    // it again with same mime type
+    private val importMimeType = "application/octet-stream"
+    private val exportMimeType = "text/x-java-properties"
+
+    private val startForDocumentImport =
+        registerForActivityResult(ActivityResultContracts.OpenDocument()) {
+            if (it != null) importDeviceConfig(it) else toast(R.string.toast_import_failed)
+        }
+    private val startForDocumentExport =
+        registerForActivityResult(ActivityResultContracts.CreateDocument(exportMimeType)) {
             if (it != null) exportDeviceConfig(it) else toast(R.string.toast_export_failed)
         }
 
@@ -80,8 +90,12 @@ class SpoofActivity : BaseActivity() {
                 onBackPressedDispatcher.onBackPressed()
                 return true
             }
+            R.id.action_import -> {
+                startForDocumentImport.launch(arrayOf(importMimeType))
+            }
             R.id.action_export -> {
-                startForDocument.launch("aurora_store_${Build.BRAND}_${Build.DEVICE}.properties")
+                startForDocumentExport
+                    .launch("aurora_store_${Build.BRAND}_${Build.DEVICE}.properties")
             }
         }
         return super.onOptionsItemSelected(item)
@@ -109,6 +123,22 @@ class SpoofActivity : BaseActivity() {
                 }
             }
         }.attach()
+    }
+
+    private fun importDeviceConfig(uri: Uri) {
+        task {
+            contentResolver.openInputStream(uri)?.use { input ->
+                PathUtil.getNewEmptySpoofConfig(this).outputStream().use {
+                    input.copyTo(it)
+                }
+            }
+        } successUi {
+            toast(R.string.toast_import_success)
+            recreate()
+        } failUi {
+            it.printStackTrace()
+            toast(R.string.toast_import_failed)
+        }
     }
 
     private fun exportDeviceConfig(uri: Uri) {
