@@ -87,7 +87,8 @@
             android:name=".MainActivity"
             android:launchMode="singleTask" />
 
-        <activity android:name=".view.ui.details.AppDetailsActivity"
+        <activity android:name=".view.ui.details.EmptyAppDetailsActivity"
+            android:noHistory="true"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
@@ -119,6 +120,9 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".view.ui.details.AppDetailsActivity"
+            android:exported="false">
+        </activity>
 
         <activity android:name=".view.ui.details.DevProfileActivity"
             android:exported="true">

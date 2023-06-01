@@ -229,11 +229,6 @@ class AppDetailsActivity : BaseDetailsActivity() {
                 }
                 fetchCompleteApp()
             }
-
-            intent.data?.let {
-                autoDownload = it.getBooleanQueryParameter("download", false)
-                downloadOnly = it.getBooleanQueryParameter("install", false)
-            }
         } else {
             val rawApp: String? = intent.getStringExtra(Constants.STRING_EXTRA)
             if (rawApp != null) {
