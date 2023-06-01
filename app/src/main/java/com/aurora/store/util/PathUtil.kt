@@ -82,6 +82,10 @@ object PathUtil {
         val obbDir = getObbDownloadPath(app)
         return "$obbDir/${file.name}"
     }
+
+    fun needsStorageManagerPerm(fileList: List<File>): Boolean {
+        return fileList.any { it.type == File.FileType.OBB || it.type == File.FileType.PATCH }
+    }
 }
 
 fun Context.isExternalStorageEnable(): Boolean {

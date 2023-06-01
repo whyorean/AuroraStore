@@ -491,22 +491,26 @@ class AppDetailsActivity : BaseDetailsActivity() {
         bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
         updateActionState(State.PROGRESS)
 
-        if (isRAndAbove()) {
-            if (!Environment.isExternalStorageManager()) {
-                startActivity(Intent(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION))
+        if (PathUtil.needsStorageManagerPerm(app.fileList) || this.isExternalStorageEnable()) {
+            if (isRAndAbove()) {
+                if (!Environment.isExternalStorageManager()) {
+                    startActivity(Intent(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION))
+                } else {
+                    updateApp(app)
+                }
             } else {
-                updateApp(app)
+                if (ContextCompat.checkSelfPermission(
+                        this,
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE
+                    ) == PackageManager.PERMISSION_GRANTED
+                ) {
+                    updateApp(app)
+                } else {
+                    startForPermissions.launch(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                }
             }
         } else {
-            if (ContextCompat.checkSelfPermission(
-                    this,
-                    Manifest.permission.WRITE_EXTERNAL_STORAGE
-                ) == PackageManager.PERMISSION_GRANTED
-            ) {
-                updateApp(app)
-            } else {
-                startForPermissions.launch(Manifest.permission.WRITE_EXTERNAL_STORAGE)
-            }
+            updateApp(app)
         }
     }
 
