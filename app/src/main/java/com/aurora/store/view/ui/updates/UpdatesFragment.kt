@@ -19,17 +19,25 @@
 
 package com.aurora.store.view.ui.updates
 
+import android.Manifest
 import android.content.ComponentName
 import android.content.Intent
 import android.content.ServiceConnection
+import android.content.pm.PackageManager
 import android.os.Bundle
+import android.os.Environment
 import android.os.IBinder
+import android.provider.Settings
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import com.aurora.Constants
+import com.aurora.extensions.isRAndAbove
 import com.aurora.extensions.stackTraceToString
+import com.aurora.extensions.toast
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
 import com.aurora.store.State
@@ -39,6 +47,8 @@ import com.aurora.store.data.model.UpdateFile
 import com.aurora.store.data.service.UpdateService
 import com.aurora.store.databinding.FragmentUpdatesBinding
 import com.aurora.store.util.Log
+import com.aurora.store.util.PathUtil
+import com.aurora.store.util.isExternalStorageEnable
 import com.aurora.store.view.epoxy.views.UpdateHeaderViewModel_
 import com.aurora.store.view.epoxy.views.app.AppUpdateViewModel_
 import com.aurora.store.view.epoxy.views.app.NoAppViewModel_
@@ -56,9 +66,25 @@ class UpdatesFragment : BaseFragment() {
 
     private lateinit var B: FragmentUpdatesBinding
     private lateinit var VM: UpdatesViewModel
+    private lateinit var app: App
+
+    private val startForStorageManagerResult =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+            if (isRAndAbove() && Environment.isExternalStorageManager()) {
+                updateSingle(app)
+            } else {
+                toast(R.string.permissions_denied)
+            }
+        }
+    private val startForPermissions =
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) { perm ->
+            if (perm) updateSingle(app) else toast(R.string.permissions_denied)
+        }
 
     val listOfActionsWhenServiceAttaches = ArrayList<Runnable>()
     private lateinit var fetchListener: AbstractFetchGroupListener
+
+    private var updateService: UpdateService? = null
     private var attachToServiceCalled = false
     private var serviceConnection = object : ServiceConnection {
         override fun onServiceConnected(name: ComponentName, binder: IBinder) {
@@ -212,7 +238,7 @@ class UpdatesFragment : BaseFragment() {
                                 if (VM.updateAllEnqueued)
                                     cancelAll()
                                 else
-                                    updateAll()
+                                    updateFileMap.values.forEach { updateSingle(it.app, true) }
 
                                 requestModelBuild()
                             }
@@ -244,8 +270,6 @@ class UpdatesFragment : BaseFragment() {
         }
     }
 
-    private var updateService: UpdateService? = null
-
     fun runInService(runnable: Runnable) {
         if (updateService == null) {
             listOfActionsWhenServiceAttaches.add(runnable)
@@ -255,24 +279,42 @@ class UpdatesFragment : BaseFragment() {
         }
     }
 
-    private fun updateSingle(app: App) {
+    private fun updateSingle(app: App, updateAll: Boolean = false) {
+        this.app = app
         runInService {
             VM.updateState(app.getGroupId(requireContext()), State.QUEUED)
+            VM.updateAllEnqueued = updateAll
 
-            updateService?.updateApp(app)
+            if (PathUtil.needsStorageManagerPerm(app.fileList) ||
+                requireContext().isExternalStorageEnable()) {
+                if (isRAndAbove()) {
+                    if (!Environment.isExternalStorageManager()) {
+                        startForStorageManagerResult.launch(
+                            Intent(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION)
+                        )
+                    } else {
+                        updateService?.updateApp(app)
+                    }
+                } else {
+                    if (ContextCompat.checkSelfPermission(
+                            requireContext(),
+                            Manifest.permission.WRITE_EXTERNAL_STORAGE
+                        ) == PackageManager.PERMISSION_GRANTED
+                    ) {
+                        updateService?.updateApp(app)
+                    } else {
+                        startForPermissions.launch(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                    }
+                }
+            } else {
+                updateService?.updateApp(app)
+            }
         }
     }
 
     private fun cancelSingle(app: App) {
         runInService {
             updateService?.fetch?.cancelGroup(app.getGroupId(requireContext()))
-        }
-    }
-
-    private fun updateAll() {
-        runInService {
-            updateService?.updateAll(updateFileMap)
-            VM.updateAllEnqueued = true
         }
     }
 
