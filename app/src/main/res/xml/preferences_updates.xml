@@ -21,6 +21,7 @@
 
     <SwitchPreference
         app:defaultValue="false"
+        app:iconSpaceReserved="false"
         app:key="PREFERENCE_UPDATES_EXTENDED"
         app:summary="@string/pref_updates_extended_desc"
         app:title="@string/pref_updates_extended" />
