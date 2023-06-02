@@ -78,6 +78,14 @@ class AppDetailsActivity : BaseDetailsActivity() {
     private lateinit var B: ActivityDetailsBinding
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<LinearLayout>
 
+    private val startForStorageManagerResult =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+            if (isRAndAbove() && Environment.isExternalStorageManager()) {
+                updateApp(app)
+            } else {
+                toast(R.string.permissions_denied)
+            }
+        }
     private val startForPermissions =
         registerForActivityResult(ActivityResultContracts.RequestPermission()) {
             if (it) updateApp(app) else toast(R.string.permissions_denied)
@@ -494,7 +502,9 @@ class AppDetailsActivity : BaseDetailsActivity() {
         if (PathUtil.needsStorageManagerPerm(app.fileList) || this.isExternalStorageEnable()) {
             if (isRAndAbove()) {
                 if (!Environment.isExternalStorageManager()) {
-                    startActivity(Intent(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION))
+                    startForStorageManagerResult.launch(
+                        Intent(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION)
+                    )
                 } else {
                     updateApp(app)
                 }
