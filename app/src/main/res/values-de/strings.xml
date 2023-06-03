@@ -333,8 +333,8 @@
     <string name="download_eta_sec">noch %1$ds</string>
     <string name="server_maintenance">Server wegen Wartungsarbeiten nicht verfügbar</string>
     <string name="requesting_new_session">Anforderung einer neuen Sitzung</string>
-    <string name="toast_import_success">Gerätekonfiguration importiert</string>
+    <string name="toast_import_success">Gerätekonfiguration wurde importiert</string>
     <string name="action_import">Importieren</string>
     <string name="toast_import_failed">Gerätekonfiguration konnte nicht importiert werden</string>
-    <string name="downloading_dep">Herunterladen zusätzlicher Dateien für <xliff:g id="app">%1$s</xliff:g></string>
+    <string name="downloading_dep">Für <xliff:g id="app">%1$s</xliff:g> werden zusätzliche Dateien heruntergeladen</string>
 </resources>
