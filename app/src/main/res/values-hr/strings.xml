@@ -332,4 +332,8 @@
     <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>
     <string name="requesting_new_session">Zahtijevanje nove sesije</string>
     <string name="server_maintenance">Server je isključen zbog održavanja</string>
+    <string name="downloading_dep">Preuzimanje dodatnih datoteka za <xliff:g id="app">%1$s</xliff:g></string>
+    <string name="toast_import_success">Konfiguracija uređaja je uvezena</string>
+    <string name="action_import">Uvezi</string>
+    <string name="toast_import_failed">Nije bilo moguće uvesti konfiguraciju uređaja</string>
 </resources>
