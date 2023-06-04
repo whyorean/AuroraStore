@@ -21,4 +21,6 @@
     <string name="action_filter_apply">套用</string>
     <string name="action_filter_downloads">下載</string>
     <string name="action_filter_misc">其他</string>
+    <string name="details_dev_email">電子郵件</string>
+    <string name="details_dev_website">網站</string>
 </resources>
