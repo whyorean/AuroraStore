@@ -302,13 +302,13 @@
     <string name="ui_accent_13">Bleu foncé</string>
     <string name="ui_accent_11">Bleu clair</string>
     <string name="download_paused">En pause • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
-    <string name="pref_advanced_search_in_ctt_desc">Ouvre les résultats de recherche dans une nouvelle fenêtre personnalisée d\'un navigateur</string>
+    <string name="pref_advanced_search_in_ctt_desc">Ouvre les résultats de recherche dans une nouvelle fenêtre personnalisée d’un navigateur</string>
     <string name="session_enjoy">Connectez-vous et amusez-vous.</string>
     <string name="session_verifying">Vérification de la session</string>
     <string name="session_verifying_google">Vérification de la Session Google</string>
-    <string name="download_eta_hrs">%1$dh %2$dm %3$ds restants</string>
+    <string name="download_eta_hrs">%1$d h %2$d min %3$ds restants</string>
     <string name="onboarding_permission_notifications">Notifications</string>
-    <string name="download_eta_min">%1$dm %2$ds restants</string>
+    <string name="download_eta_min">%1$d min %2$d s restantes</string>
     <string name="download_progress">Téléchargement • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
     <string name="onboarding_permission_notifications_desc">Envoyer des notifications concernant le statut des installations</string>
     <string name="session_good">Waouh ! Tout va bien.</string>
@@ -317,19 +317,23 @@
     <string name="title_advanced">Avancé</string>
     <string name="ui_accent_0">Système</string>
     <string name="menu">Menu</string>
-    <string name="open_in_aurora">Ouvrir dans l\'Aurora Store</string>
+    <string name="open_in_aurora">Ouvrir dans Aurora Store</string>
     <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>
-    <string name="requesting_new_session">Requête d\'une nouvelle session</string>
-    <string name="download_eta_sec">%1$ds restantes</string>
-    <string name="pref_advanced_search_in_ctt">Rechercher dans l\'Onglet Personnalisé</string>
+    <string name="requesting_new_session">Demande d’une nouvelle session</string>
+    <string name="download_eta_sec">%1$d s restantes</string>
+    <string name="pref_advanced_search_in_ctt">Rechercher dans l’onglet personnalisé</string>
     <string name="session_init">Préparation en cours…</string>
-    <string name="session_login">Vous devez d\'abord vous connecter</string>
-    <string name="session_login_failed_google">Echec de la connection via Google</string>
+    <string name="session_login">Vous devez d’abord vous connecter</string>
+    <string name="session_login_failed_google">Échec de la connexion via Google</string>
     <string name="session_scrapped">Dernière session supprimée</string>
     <string name="update_available">mise à jour disponible</string>
     <string name="updates_available">mises à jour disponibles</string>
-    <string name="rate_limited">Oups, Ce compte a un débit limité !</string>
-    <string name="error">Une erreur s\'est produite !</string>
-    <string name="permissions_denied">Les autorisations requises ont été refusées. Veuillez les accorder afin de poursuivre l\'action</string>
-    <string name="search_hint">Rechercher des Applications &amp; des Jeux</string>
+    <string name="rate_limited">Oups, ce compte a un débit limité !</string>
+    <string name="error">Une erreur s’est produite !</string>
+    <string name="permissions_denied">Les autorisations requises ont été refusées. Veuillez les accorder afin de poursuivre l’action</string>
+    <string name="search_hint">Rechercher des applis et des jeux</string>
+    <string name="toast_import_success">Configuration de l’appareil importée</string>
+    <string name="toast_import_failed">Impossible d’importer la configuration de l’appareil</string>
+    <string name="downloading_dep">Téléchargement de fichiers supplémentaires pour <xliff:g id="app">%1$s</xliff:g></string>
+    <string name="action_import">Importer</string>
 </resources>
