@@ -332,4 +332,8 @@
     <string name="permissions_denied">У наданні необхідних дозволів відмовлено. Надайте їх, щоб продовжити дію</string>
     <string name="server_maintenance">Сервер вимкнено для технічного обслуговування</string>
     <string name="requesting_new_session">Запит нового сеансу</string>
+    <string name="toast_import_success">Імпортовано конфігурацію пристрою</string>
+    <string name="toast_import_failed">Не вдалося імпортувати конфігурацію пристрою</string>
+    <string name="downloading_dep">Завантаження додаткових файлів для <xliff:g id="app">%1$s</xliff:g></string>
+    <string name="action_import">Імпорт</string>
 </resources>
