@@ -30,6 +30,7 @@
         <item name="colorShimmer">@color/colorShimmer</item>
         <item name="colorStroke">@color/colorStroke</item>
         <item name="chipStyle">@style/Widget.Aurora.Chip</item>
+        <item name="preferenceTheme">@style/AppTheme.PreferenceThemeOverlay</item>
     </style>
 
     <style name="AppTheme.Light" parent="Theme.Material3.Light.NoActionBar">
@@ -47,6 +48,7 @@
         <item name="colorShimmer">@color/colorShimmer</item>
         <item name="colorStroke">@color/colorStroke</item>
         <item name="chipStyle">@style/Widget.Aurora.Chip</item>
+        <item name="preferenceTheme">@style/AppTheme.PreferenceThemeOverlay</item>
     </style>
 
     <style name="AppTheme.Dark" parent="Theme.Material3.Dark.NoActionBar">
@@ -65,6 +67,7 @@
         <item name="colorShimmer">@color/colorShimmerDark</item>
         <item name="colorStroke">@color/colorStrokeDark</item>
         <item name="chipStyle">@style/Widget.Aurora.Chip</item>
+        <item name="preferenceTheme">@style/AppTheme.PreferenceThemeOverlay</item>
     </style>
 
     <style name="AppTheme.DarkX" parent="AppTheme.Dark">
@@ -75,6 +78,7 @@
         <item name="android:navigationBarColor">@color/colorDarkXPrimaryDark</item>
         <item name="colorShimmer">@color/colorShimmerDarkX</item>
         <item name="colorStroke">@color/colorStrokeDarkX</item>
+        <item name="preferenceTheme">@style/AppTheme.PreferenceThemeOverlay</item>
     </style>
 
     <style name="AppTheme.Darkord" parent="AppTheme.Dark">
@@ -85,6 +89,7 @@
         <item name="android:navigationBarColor">@color/colorDarkordPrimaryDark</item>
         <item name="colorShimmer">@color/colorShimmerDarkord</item>
         <item name="colorStroke">@color/colorStrokeDarkord</item>
+        <item name="preferenceTheme">@style/AppTheme.PreferenceThemeOverlay</item>
     </style>
 
     <style name="AppTheme.Black" parent="AppTheme.Dark">
@@ -95,5 +100,14 @@
         <item name="android:navigationBarColor">@color/colorBlack</item>
         <item name="colorShimmer">@color/colorShimmerBlack</item>
         <item name="colorStroke">@color/colorStrokeBlack</item>
+        <item name="preferenceTheme">@style/AppTheme.PreferenceThemeOverlay</item>
+    </style>
+
+    <style name="AppTheme.PreferenceThemeOverlay" parent="@style/PreferenceThemeOverlay">
+        <item name="switchPreferenceCompatStyle">@style/AppTheme.SwitchPreference</item>
+    </style>
+
+    <style name="AppTheme.SwitchPreference" parent="@style/Preference.SwitchPreferenceCompat.Material">
+        <item name="widgetLayout">@layout/preference_material_switch</item>
     </style>
 </resources>
