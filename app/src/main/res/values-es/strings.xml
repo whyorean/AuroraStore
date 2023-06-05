@@ -246,7 +246,7 @@
     <string name="about_bitcoin_btc_summary">Donar mediante Bitcoin (BTC)</string>
     <string name="about_bitcoin_btc">Bitcoin</string>
     <string name="about_bitcoin_bch_summary">Donar mediante Bitcoin Cash (BCH)</string>
-    <string name="about_bitcoin_bch">Bitcoin Cash</string>
+    <string name="about_bitcoin_bch">Bitcoin</string>
     <string name="about_bhim_summary">Donar mediante UPI</string>
     <string name="purchase_not_found">Aplicación no encontrada</string>
     <string name="purchase_session_expired">La sesión expiró, vuelva a iniciar sesión para obtener una nueva sesión.</string>
@@ -332,4 +332,8 @@
     <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>
     <string name="requesting_new_session">Solicitando una nueva sesión</string>
     <string name="server_maintenance">El servidor no disponible por mantenimiento</string>
+    <string name="action_import">Importar</string>
+    <string name="toast_import_failed">No se pudo importar la configuración del dispositivo</string>
+    <string name="toast_import_success">La configuración del dispositivo ha sido importada</string>
+    <string name="downloading_dep">Descargando los archivos adicionales para <xliff:g id="app">%1$s</xliff:g></string>
 </resources>

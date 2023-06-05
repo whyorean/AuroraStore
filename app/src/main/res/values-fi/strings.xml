@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="action_filter_all">Kaikki</string>
     <string name="action_copy_link">Kopioi linkki</string>
     <string name="action_copy">Kopioi</string>
@@ -301,4 +301,39 @@
     <string name="ui_accent_9">Limetinvihreä</string>
     <string name="ui_accent_12">Disskord-sininen</string>
     <string name="ui_accent_13">Tummansininen</string>
+    <string name="download_progress">Lataus • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
+    <string name="onboarding_permission_notifications">Ilmoitukset</string>
+    <string name="session_enjoy">Kirjaudu sisään ja nauti.</string>
+    <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>
+    <string name="session_good">Vau! Kaikki hyvin.</string>
+    <string name="requesting_new_session">Uutta istuntoa pyydetään</string>
+    <string name="session_init">Valmistellaan asioita…</string>
+    <string name="toast_import_failed">Laitteen konfiguraatiota ei voitu tuoda</string>
+    <string name="session_login_failed_google">Kirjautuminen Googlen kautta epäonnistui</string>
+    <string name="session_scrapped">Viimeinen istunto romutettu</string>
+    <string name="toast_import_success">Laitteen konfiguraatio tuotu</string>
+    <string name="update_available">päivitys saatavilla</string>
+    <string name="download_paused">Keskeytetty • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
+    <string name="server_maintenance">Palvelin poissa käytöstä huollon vuoksi</string>
+    <string name="action_import">Tuo</string>
+    <string name="download_eta_hrs">%1$d t %2$d min %3$d s jäljellä</string>
+    <string name="download_eta_min">%1$d min %2$d s jäljellä</string>
+    <string name="download_eta_sec">%1$d s jäljellä</string>
+    <string name="onboarding_permission_notifications_desc">Lähetä ilmoituksia asennusten tilasta</string>
+    <string name="pref_advanced_search_in_ctt">Hae mukautetusta välilehdestä</string>
+    <string name="pref_advanced_search_in_ctt_desc">Avaa hakutulokset selaimen mukautetussa välilehdessä</string>
+    <string name="session_login">Sinun täytyy kirjautua sisään ensin</string>
+    <string name="session_verifying">Vahvistetaan istuntoa</string>
+    <string name="session_verifying_google">Googlen istuntoa tarkistetaan</string>
+    <string name="title_advanced">Edistynyt</string>
+    <string name="ui_accent_0">Järjestelmä</string>
+    <string name="updates_available">päivityksiä saatavilla</string>
+    <string name="rate_limited">Upsi, tämä tili on rajoitettu!</string>
+    <string name="error">Tapahtui virhe!</string>
+    <string name="menu">Valikko</string>
+    <string name="expand">Laajenna</string>
+    <string name="open_in_aurora">Avaa Aurora Storessa</string>
+    <string name="permissions_denied">Tarvittavat oikeudet evättiin. Myönnä ne, jotta voit jatkaa toimenpidettä</string>
+    <string name="search_hint">Etsi sovelluksia ja pelejä</string>
+    <string name="downloading_dep">Lisätiedostoja ladataan kohteelle <xliff:g id="app">%1$s</xliff:g></string>
 </resources>

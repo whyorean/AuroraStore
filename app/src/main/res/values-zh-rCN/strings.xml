@@ -332,4 +332,8 @@
     <string name="menu">菜单</string>
     <string name="expand">展开</string>
     <string name="search_hint">搜索应用和游戏</string>
+    <string name="toast_import_success">导入了设备配置文件</string>
+    <string name="action_import">导入</string>
+    <string name="toast_import_failed">无法导入设备配置文件</string>
+    <string name="downloading_dep">正在下载 <xliff:g id="app">%1$s</xliff:g> 的额外文件</string>
 </resources>

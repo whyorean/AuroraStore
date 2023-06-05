@@ -332,4 +332,8 @@
     <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • معرف الخدمة الفريد <xliff:g id="api">%2$s</xliff:g></string>
     <string name="requesting_new_session">طلب جلسة جديدة</string>
     <string name="server_maintenance">الخادم معطل للصيانة</string>
+    <string name="action_import">استيراد</string>
+    <string name="toast_import_failed">تعذر استيراد تكوين الجهاز</string>
+    <string name="downloading_dep">تنزيل ملفات إضافية لـ <xliff:g id="app"> %1$s </xliff:g></string>
+    <string name="toast_import_success">تم استيراد تكوين الجهاز</string>
 </resources>

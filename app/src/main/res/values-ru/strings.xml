@@ -332,4 +332,7 @@
     <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>
     <string name="requesting_new_session">Запрос на новую сессию</string>
     <string name="server_maintenance">Сервер отключён на техобслуживание</string>
+    <string name="action_import">Импортировать</string>
+    <string name="toast_import_success">Профиль устройства импортирован</string>
+    <string name="toast_import_failed">Не удалось импортировать профиль устройства</string>
 </resources>
