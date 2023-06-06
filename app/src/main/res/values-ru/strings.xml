@@ -335,4 +335,5 @@
     <string name="action_import">Импортировать</string>
     <string name="toast_import_success">Профиль устройства импортирован</string>
     <string name="toast_import_failed">Не удалось импортировать профиль устройства</string>
+    <string name="downloading_dep">Загрузка дополнительных файлов для <xliff:g id="app">%1$s</xliff:g></string>
 </resources>
