@@ -318,8 +318,8 @@
     <string name="download_progress">Wird heruntergeladen • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
     <string name="onboarding_permission_notifications">Benachrichtigungen</string>
     <string name="onboarding_permission_notifications_desc">Benachrichtigungen zum Stand der Installationen senden</string>
-    <string name="pref_advanced_search_in_ctt">In der benutzerdefinierter Registerkarte suchen</string>
-    <string name="pref_advanced_search_in_ctt_desc">Suchergebnisse werden in der benutzerdefinierter Registerkarte eines Browsers geöffnet</string>
+    <string name="pref_advanced_search_in_ctt">Im benutzerdefinierten Tab suchen</string>
+    <string name="pref_advanced_search_in_ctt_desc">Suchergebnisse werden im benutzerdefinierten Tab eines Browsers geöffnet</string>
     <string name="session_verifying_google">Überprüfung der Google-Sitzung</string>
     <string name="title_advanced">Erweitert</string>
     <string name="ui_accent_0">System</string>
@@ -328,9 +328,9 @@
     <string name="update_available">Update verfügbar</string>
     <string name="expand">Erweitern</string>
     <string name="permissions_denied">Erforderliche Berechtigungen wurden verweigert. Bitte erteile diese, um die Aktion fortzusetzen.</string>
-    <string name="download_eta_hrs">noch %1$d h %2$d min%3$d s</string>
-    <string name="download_eta_min">noch %1$d min %2$d s</string>
-    <string name="download_eta_sec">noch %1$d s</string>
+    <string name="download_eta_hrs">noch %1$d h %2$d min %3$d s</string>
+    <string name="download_eta_min">noch %1$d min %2$d s</string>
+    <string name="download_eta_sec">noch %1$d s</string>
     <string name="server_maintenance">Server wegen Wartungsarbeiten nicht verfügbar</string>
     <string name="requesting_new_session">Anforderung einer neuen Sitzung</string>
     <string name="toast_import_success">Gerätekonfiguration wurde importiert</string>
