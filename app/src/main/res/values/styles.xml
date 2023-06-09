@@ -104,7 +104,6 @@
     </style>
 
     <style name="AppTheme.PreferenceThemeOverlay" parent="@style/PreferenceThemeOverlay">
-        <item name="switchPreferenceStyle">@style/AppTheme.SwitchPreference</item>
         <item name="switchPreferenceCompatStyle">@style/AppTheme.SwitchPreference</item>
     </style>
 
