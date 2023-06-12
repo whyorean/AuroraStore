@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="device_miui_subtitle">Saio instalatzailea ezin da erabili MIUI-ren optimizazioen erruz.</string>
     <string name="installer_service_available">Aurora zerbitzuak eskuragarri eta instalatzeko prest daude.</string>
     <string name="installer_root_unavailable">Ez dago root sarbiderik. Eman root sarbidea edo aldatu instalatzailea.</string>
@@ -52,7 +52,7 @@
     <string name="pref_ui_theme_title">Diseinua</string>
     <string name="pref_ui_theme_system">Sistemaren berdina</string>
     <string name="pref_ui_theme_light">Argitsua</string>
-    <string name="pref_ui_theme_darkord">Disskord</string>
+    <string name="pref_ui_theme_darkord">Discord</string>
     <string name="pref_ui_theme_dark_x">Ilun X</string>
     <string name="pref_ui_theme_dark">Iluna</string>
     <string name="pref_ui_theme_black">Beltza</string>
@@ -144,7 +144,7 @@
     <string name="download_force_clear_all">Guztiaren garbiketa behartu</string>
     <string name="download_failed">Alferrikako deskarga</string>
     <string name="download_eta_calculating">Kalkulatzen</string>
-    <string name="download_completed">Desgargaturik</string>
+    <string name="download_completed">Deskarga osatu da</string>
     <string name="download_clear_completed">Garbiketa bukatuta</string>
     <string name="download_canceled">Ezeztatuta</string>
     <string name="download_cancel_all">Guztiak bertan behera utzi</string>
@@ -249,8 +249,8 @@
     <string name="about_bitcoin_btc_summary">Eman Bitcoin (BTC)</string>
     <string name="about_bitcoin_btc">Bitcoin</string>
     <string name="about_bitcoin_bch_summary">Dohaintza Bitcoin Cash (BCH) bidez</string>
-    <string name="about_bitcoin_bch">Bitcoin Cash</string>
-    <string name="about_bhim_summary">Eman donazioa UPI-ren bidez</string>
+    <string name="about_bitcoin_bch">Bitcoin</string>
+    <string name="about_bhim_summary">Egin doaintza UPI-ren bidez</string>
     <string name="about_bhim">BHIM - UPI</string>
     <string name="toast_export_failed">Ezin izan da esportatu gailuaren konfigurazioa</string>
     <string name="toast_export_success">Gailuaren konfigurazioa esportatuta</string>
@@ -301,4 +301,39 @@
     <string name="pref_install_mode_am">AM instalatzailea.</string>
     <string name="notification_channel_updater_service">Aplikazioak bigarren mailan deskargatzeko zerbitzua</string>
     <string name="app_updater_service_notif_title">Bigarren mailako aplikazio deskarga</string>
+    <string name="download_paused">Geldituta • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
+    <string name="download_progress">Deskargatzen • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
+    <string name="onboarding_permission_notifications">Jakinarazpenak</string>
+    <string name="onboarding_permission_notifications_desc">Bidali jakinarazpenak instalazioen egoerari buruz</string>
+    <string name="pref_advanced_search_in_ctt">Bilatu Fitxa Pertsonalizatuan</string>
+    <string name="pref_advanced_search_in_ctt_desc">Ireki bilaketa-emaitzak nabigatzaileko fitxa pertsonalizatuan</string>
+    <string name="session_enjoy">Hasi saioa eta gozatu.</string>
+    <string name="session_good">Itzel! Dena ondo.</string>
+    <string name="session_init">Prestatzen eta txukuntzen…</string>
+    <string name="session_login">Saioa hasi behar duzu lehenik</string>
+    <string name="session_login_failed_google">Huts egitea Google bidez saioa hastean</string>
+    <string name="title_advanced">Aurreratua</string>
+    <string name="toast_import_success">Gailuaren konfigurazioa inportatuta</string>
+    <string name="toast_import_failed">Ezin izan da gailuaren konfigurazioa inportatu</string>
+    <string name="ui_accent_0">Sistema</string>
+    <string name="rate_limited">Hara, kontu honek tasa mugatua du!</string>
+    <string name="error">Errore bat gertatu da!</string>
+    <string name="menu">Menua</string>
+    <string name="expand">Zabaldu</string>
+    <string name="open_in_aurora">Ireki Aurora Storen</string>
+    <string name="permissions_denied">Beharrezko baimenak ukatuak izan dira. Mesedez, baimendu itzazu ekintzarekin jarraitzeko.</string>
+    <string name="search_hint">Bilatu aplikazioak eta jokoak</string>
+    <string name="requesting_new_session">Saio berria eskatzen</string>
+    <string name="server_maintenance">Zerbitzaria ez dago erabilgarri mantentze-lanengatik</string>
+    <string name="downloading_dep">Fitxategi gehigarriak deskargatzen honetarako: <xliff:g id="app">%1$s</xliff:g></string>
+    <string name="session_verifying_google">Googleko saioa egiaztatzen</string>
+    <string name="update_available">eguneraketa eskuragarri</string>
+    <string name="updates_available">eguneraketa eskuragarri</string>
+    <string name="download_eta_min">%1$dm %2$ds faltan</string>
+    <string name="download_eta_hrs">%1$dh %2$dm %3$ds faltan</string>
+    <string name="action_import">Inportatu</string>
+    <string name="download_eta_sec">%1$ds faltan</string>
+    <string name="session_scrapped">Azken saioa ezabatuta</string>
+    <string name="session_verifying">Saioa egiaztatzen</string>
+    <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>
 </resources>
