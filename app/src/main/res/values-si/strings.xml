@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="details_dev_website">වියමන අඩවිය</string>
     <string name="details_dev_email">විද්‍යුත් තැපෑල</string>
     <string name="action_install">ස්ථාපනය</string>
@@ -45,7 +45,7 @@
     <string name="exodus_powered">එක්සෝඩස් මගින් බලගන්වා ඇත</string>
     <string name="download_failed">බාගතවීම අසාර්ථකයි</string>
     <string name="download_eta_calculating">ගණනය වෙමින්</string>
-    <string name="download_completed">බාගත වී ඇත</string>
+    <string name="download_completed">බාගැනීම සම්පූර්ණයි</string>
     <string name="download_clear_completed">සම්පූර්ණ දෑ හිස් කරන්න</string>
     <string name="download_cancel_all">සියල්ල අවලංගු කරන්න</string>
     <string name="details_think_this_app">මෙම යෙදුම ගැන ඔබ සිතන්නේ කුමක්ද\?</string>
@@ -98,7 +98,7 @@
     <string name="pref_ui_no_for_you">ඔබගේ පිටු සඳහා</string>
     <string name="purchase_failed">බාගැනීම අසාර්ථකයි</string>
     <string name="pref_ui_theme_title">තේමාව</string>
-    <string name="pref_ui_theme_darkord">ඩිස්ස්කෝඩ්</string>
+    <string name="pref_ui_theme_darkord">ඩිස්කෝඩ්</string>
     <string name="pref_ui_theme_dark_x">අඳුරු එක්ස්</string>
     <string name="pref_ui_theme_dark">අඳුරු</string>
     <string name="pref_ui_theme_black">කළු</string>
@@ -151,9 +151,9 @@
     <string name="purchase_no_file">ගොනු ගැනීමට නොහැකි විය</string>
     <string name="toast_developer_setting_failed">ඒවා විවෘත කිරීමට උපාංගයේ සැකසුම් වලින් සංවර්ධක සැකසුම් සක්‍රීය කරන්න.</string>
     <string name="toast_clipboard_copied">පසුරු පුවරුවට පිටපත් විය</string>
-    <string name="app_updater_service_notif_text">පසුබිමේ යෙදුම් බාගතවීම සබල කරයි</string>
-    <string name="app_updater_service_notif_title">පසුබිමේ යෙදුම් බාගතවීම</string>
-    <string name="notification_channel_updater_service">යෙදුම් පසුබිමේ බාගැනීම් සේවාව</string>
+    <string name="app_updater_service_notif_text">යෙදුම් පසුබිමින් බාගැනීම සබල කරයි</string>
+    <string name="app_updater_service_notif_title">යෙදුම් පසුබිමින් බාගැනීම</string>
+    <string name="notification_channel_updater_service">යෙදුම් පසුබිමේ බාගැනීමේ සේවාව</string>
     <string name="about_bitcoin_eth">ඊතරම්</string>
     <string name="onboarding_permission_esa_desc">බාගැනීම් (APKs හා OBBs) සුරැකීමට, උපාංගයේ වින්‍යාස බාහිර ආචයනයට හා වෙතින් ආයාත සහ නිර්යාත කරන්න.</string>
     <string name="toast_export_success">උපාංගයේ වින්‍යාසය නිර්යාත කෙරිණි</string>
@@ -293,4 +293,47 @@
     <string name="dialog_desc_native_split">නිසග ස්ථාපකය හරහා පොදි(පංගු) යෙදුම් ස්ථාපනය කිරීමට නොහැකිය. ස්ථාපකය මූල, සේවා හෝ වාරය ට වෙනස් කරන්න.</string>
     <string name="device_miui_extra">වෛකල්පිතව, ඔබට නිසග ස්ථාපකය තේරීමට හැකිය නමුත් ඊළඟට ඔබට පොදි(පංගු) APKs ස්ථානය කිරීමට නොහැකිය, තීරණය ඔබ සතුය.</string>
     <string name="toast_page_unavailable">පිරික්සන ලද පිටුව නොතිබේ</string>
+    <string name="exodus_substring">මෙහි ලුහුබැඳීම් හමුවිය</string>
+    <string name="pref_install_delete_summary">පෙරනිමි ලෙස APKs මකා දැමෙයි</string>
+    <string name="details_beta_description">පොදු ජනතාව දැකීමට පෙර ඔබ නව විශේෂාංග හා දෝෂ දකිනු ඇත. වැඩිදියුණු කිරීමට ඔබගේ ප්‍රතිපෝෂණ සපයන්න.</string>
+    <string name="pref_install_delete_title">පසු-ස්ථාපන APK මකන්න</string>
+    <string name="toast_aas_token_failed">AAS නිමිත්ත උත්පාදනයට නොහැකි විය</string>
+    <string name="requesting_new_session">නව වාරයක් ඉල්ලමින්</string>
+    <string name="server_maintenance">සේවාදායකය නඩත්තු කෙරේ</string>
+    <string name="action_import">ආයාතය</string>
+    <string name="download_eta_hrs">පැ.%1$d වි.%2$d ත.%3$ds ඉතිරිය</string>
+    <string name="download_eta_min">වි.%1$d ත.%2$ds ඉතිරිය</string>
+    <string name="download_eta_sec">ත.%1$d ඉතිරිය</string>
+    <string name="onboarding_permission_notifications">දැනුම්දීම්</string>
+    <string name="pref_ui_similar_apps_desc">යෙදුමේ විස්තර පිටුවේ සමාන හා ආශ්‍රිත පර්ෂද පෙන්වන්න</string>
+    <string name="pref_advanced_search_in_ctt">අභිරුචි පටිත්තක සොයන්න</string>
+    <string name="pref_advanced_search_in_ctt_desc">සෙවුම් ප්‍රතිඵල අතිරික්සුවේ පටිත්තක අරින්න</string>
+    <string name="session_good">ඔක්කොම හරි!</string>
+    <string name="session_enjoy">ඇතුළු වී අත්විඳින්න.</string>
+    <string name="session_init">සූදානම් කෙරෙමින්…</string>
+    <string name="session_login">පළමුව පිවිසෙන්න</string>
+    <string name="tab_top_charts">ප්‍රචලිත දෑ</string>
+    <string name="tab_top_grossing">නැගී එන</string>
+    <string name="title_advanced">වැඩිදුර</string>
+    <string name="toast_import_success">උපාගයේ වින්‍යාසය ආයාත කෙරිණි</string>
+    <string name="toast_import_failed">උපාංගයේ වින්‍යාසය ආයාත නොවිණි</string>
+    <string name="update_available">යාවත්කාලයක් තිබේ</string>
+    <string name="updates_available">යාවත්කාල තිබේ</string>
+    <string name="menu">වට්ටෝරුව</string>
+    <string name="error">දෝෂයක් සිදු විය!</string>
+    <string name="rate_limited">මෙම ගිණුම අනුපාතනය වී ඇත!</string>
+    <string name="open_in_aurora">අවුරෝරා ස්ටෝර් හි බලන්න</string>
+    <string name="search_hint">යෙදුම් හා ක්‍රීඩා සොයන්න</string>
+    <string name="session_login_failed_google">ගූගල් හරහා පිවිසීමට අසමත්!</string>
+    <string name="session_scrapped">අවසාන වාරය ඉවතලිණි</string>
+    <string name="session_verifying_google">ගූගල් වාරය සත්‍යාපනය</string>
+    <string name="session_verifying">වාරය සත්‍යාපනය</string>
+    <string name="ui_accent_0">පද්ධතිය</string>
+    <string name="download_paused">විරාමයි • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
+    <string name="download_progress">බාගැනෙමින් • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
+    <string name="expand">විහිදන්න</string>
+    <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • යෙ.ක්‍ර.මු. <xliff:g id="api">%2$s</xliff:g></string>
+    <string name="permissions_denied">අවශ්‍ය අවසර ප්‍රතික්‍ෂේප කර ඇත. ක්‍රියාමාර්ගය උදෙසා එම අවසර ලබා දෙන්න</string>
+    <string name="downloading_dep"><xliff:g id="app">%1$s</xliff:g> සඳහා අතිරේක ගොනු බාගැනෙමින්</string>
+    <string name="onboarding_permission_notifications_desc">ස්ථාපන තත්‍වය පිළිබඳව දැනුම්දීම් එවන්න</string>
 </resources>
