@@ -19,17 +19,21 @@
 
 package com.aurora.store.view.ui.onboarding
 
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.aurora.extensions.isMIUI
 import com.aurora.extensions.isMiuiOptimizationDisabled
+import com.aurora.extensions.isOAndAbove
 import com.aurora.extensions.showDialog
 import com.aurora.store.R
 import com.aurora.store.data.installer.AppInstaller.Companion.hasAppManager
 import com.aurora.store.data.installer.AppInstaller.Companion.hasRootAccess
 import com.aurora.store.data.installer.AppInstaller.Companion.hasAuroraService
+import com.aurora.store.data.installer.AppInstaller.Companion.hasShizuku
+import com.aurora.store.data.installer.AppInstaller.Companion.hasShizukuPerm
 import com.aurora.store.data.model.Installer
 import com.aurora.store.databinding.FragmentOnboardingInstallerBinding
 import com.aurora.store.util.Preferences
@@ -39,6 +43,7 @@ import com.aurora.store.view.epoxy.views.preference.InstallerViewModel_
 import com.aurora.store.view.ui.commons.BaseFragment
 import com.aurora.store.view.ui.sheets.DeviceMiuiSheet
 import com.google.gson.reflect.TypeToken
+import rikka.shizuku.Shizuku
 import java.nio.charset.StandardCharsets
 
 
@@ -48,11 +53,25 @@ class InstallerFragment : BaseFragment() {
 
     var installerId: Int = 0
 
+    private val shizukuResultListener =
+        Shizuku.OnRequestPermissionResultListener { _: Int, result: Int ->
+            if (result == PackageManager.PERMISSION_GRANTED) {
+                this.installerId = 5
+                save(PREFERENCE_INSTALLER_ID, 5)
+            } else {
+                showDialog(
+                    R.string.action_installations,
+                    R.string.installer_shizuku_unavailable
+                )
+            }
+        }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        Shizuku.addRequestPermissionResultListener(shizukuResultListener)
         B = FragmentOnboardingInstallerBinding.bind(
             inflater.inflate(
                 R.layout.fragment_onboarding_installer,
@@ -74,6 +93,11 @@ class InstallerFragment : BaseFragment() {
 
         val installerList = loadInstallersFromAssets()
         updateController(installerList)
+    }
+
+    override fun onDestroy() {
+        Shizuku.removeRequestPermissionResultListener(shizukuResultListener)
+        super.onDestroy()
     }
 
     private fun updateController(installerList: List<Installer>) {
@@ -137,6 +161,26 @@ class InstallerFragment : BaseFragment() {
                     showDialog(
                         R.string.action_installations,
                         R.string.installer_am_unavailable
+                    )
+                }
+            }
+            5 -> {
+                if (hasShizuku(requireContext()) && isOAndAbove()) {
+                    if (hasShizukuPerm()) {
+                        this.installerId = installerId
+                        save(PREFERENCE_INSTALLER_ID, installerId)
+                    } else if (Shizuku.shouldShowRequestPermissionRationale()) {
+                        Shizuku.requestPermission(9000)
+                    } else {
+                        showDialog(
+                            R.string.action_installations,
+                            R.string.installer_shizuku_unavailable
+                        )
+                    }
+                } else {
+                    showDialog(
+                        R.string.action_installations,
+                        R.string.installer_shizuku_unavailable
                     )
                 }
             }

@@ -19,6 +19,7 @@
 
 package com.aurora.store.view.ui.preferences
 
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.View
 import androidx.preference.Preference
@@ -30,12 +31,14 @@ import com.aurora.store.BuildConfig
 import com.aurora.store.R
 import com.aurora.store.data.installer.AMInstaller
 import com.aurora.store.data.installer.ServiceInstaller
+import com.aurora.store.data.installer.ShizukuInstaller
 import com.aurora.store.util.CommonUtil
 import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.save
 import com.aurora.store.view.custom.preference.AuroraListPreference
 import com.topjohnwu.superuser.Shell
+import rikka.shizuku.Shizuku
 
 
 class InstallationPreference : PreferenceFragmentCompat() {
@@ -100,6 +103,17 @@ class InstallationPreference : PreferenceFragmentCompat() {
                             )
                             false
                         }
+                    } else if (selectedId == 5) {
+                        if (checkShizukuAvailability()) {
+                            save(Preferences.PREFERENCE_INSTALLER_ID, selectedId)
+                            true
+                        } else {
+                            showDialog(
+                                R.string.action_installations,
+                                R.string.installer_shizuku_unavailable
+                            )
+                            false
+                        }
                     } else {
                         save(Preferences.PREFERENCE_INSTALLER_ID, selectedId)
                         true
@@ -136,5 +150,10 @@ class InstallationPreference : PreferenceFragmentCompat() {
             requireContext(),
             AMInstaller.AM_DEBUG_PACKAGE_NAME
         )
+    }
+
+    private fun checkShizukuAvailability(): Boolean {
+        return PackageUtil.isInstalled(requireContext(), ShizukuInstaller.SHIZUKU_PACKAGE_NAME) &&
+                Shizuku.checkSelfPermission() == PackageManager.PERMISSION_GRANTED
     }
 }

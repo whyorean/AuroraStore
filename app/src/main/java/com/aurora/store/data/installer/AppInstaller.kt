@@ -1,6 +1,7 @@
 /*
  * Aurora Store
  *  Copyright (C) 2021, Rahul Kumar Patel <whyorean@gmail.com>
+ *  Copyright (C) 2023, grrfe <grrfe@420blaze.it>
  *
  *  Aurora Store is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -21,13 +22,16 @@ package com.aurora.store.data.installer
 
 import android.content.Context
 import android.content.pm.PackageInstaller
+import android.content.pm.PackageManager
 import com.aurora.extensions.isLAndAbove
+import com.aurora.extensions.isOAndAbove
 import com.aurora.store.BuildConfig
 import com.aurora.store.R
 import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_INSTALLER_ID
 import com.topjohnwu.superuser.Shell
+import rikka.shizuku.Shizuku
 
 open class AppInstaller private constructor(var context: Context) {
 
@@ -75,6 +79,15 @@ open class AppInstaller private constructor(var context: Context) {
             return PackageUtil.isInstalled(context, AMInstaller.AM_PACKAGE_NAME) or
                     PackageUtil.isInstalled(context, AMInstaller.AM_DEBUG_PACKAGE_NAME)
         }
+
+        fun hasShizuku(context: Context): Boolean {
+            return PackageUtil.isInstalled(context, ShizukuInstaller.SHIZUKU_PACKAGE_NAME)
+        }
+
+        fun hasShizukuPerm(): Boolean {
+            return Shizuku.checkSelfPermission() == PackageManager.PERMISSION_GRANTED
+        }
+
     }
 
     val choiceAndInstaller = HashMap<Int, IInstaller>()
@@ -121,6 +134,19 @@ open class AppInstaller private constructor(var context: Context) {
                 }
                 choiceAndInstaller[prefValue] = installer
                 installer
+            }
+            5 -> {
+                if (isOAndAbove()) {
+                    val installer = if (hasShizuku(context) && hasShizukuPerm()) {
+                        ShizukuInstaller(context)
+                    } else {
+                        getDefaultInstaller(context)
+                    }
+                    choiceAndInstaller[prefValue] = installer
+                    installer
+                } else {
+                    getDefaultInstaller(context)
+                }
             }
             else -> {
                 val installer = getDefaultInstaller(context)

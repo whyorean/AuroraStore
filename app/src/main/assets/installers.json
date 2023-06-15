@@ -30,5 +30,11 @@
     "title": "AM Installer",
     "subtitle": "Install use App Manager",
     "description": "You must have App Manager. Need adb/root mode to install when miui optimization is on."
+  },
+  {
+    "id": "5",
+    "title": "Shizuku Installer",
+    "subtitle": "Install using Shizuku",
+    "description": "Requires an active Shizuku installation, supports Android 8.0+"
   }
 ]

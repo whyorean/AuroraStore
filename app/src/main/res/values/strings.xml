@@ -3,6 +3,7 @@
   ~ Aurora Store
   ~  Copyright (C) 2021, Rahul Kumar Patel <whyorean@gmail.com>
   ~  Copyright (C) 2022, The Calyx Institute
+  ~  Copyright (C) 2023, grrfe <grrfe@420blaze.it>
   ~
   ~  Aurora Store is free software: you can redistribute it and/or modify
   ~  it under the terms of the GNU General Public License as published by
@@ -160,6 +161,7 @@
     <string name="filter_review_two">"Two"</string>
     <string name="installer_am_unavailable">Install App Manager or change the installer.</string>
     <string name="installer_root_unavailable">No root access. Grant it or change the installer.</string>
+    <string name="installer_shizuku_unavailable">Shizuku is not installed or set up properly.</string>
     <string name="installer_service_available">"Aurora services is available and ready to install."</string>
     <string name="installer_service_unavailable">Install Aurora services 1.0.9 or above, or change the installer.</string>
     <string name="installer_service_misconfigured">Set up Aurora services and grant all permissions first.</string>
@@ -228,6 +230,7 @@
     <string name="pref_install_delete_summary">"APKs will be deleted by default"</string>
     <string name="pref_install_delete_title">"Delete APK post-install"</string>
     <string name="pref_install_mode_am">AM installer.</string>
+    <string name="pref_install_mode_shizuku">Shizuku installer</string>
     <string name="pref_install_mode_native">"Native installer"</string>
     <string name="pref_install_mode_root">"Root installer"</string>
     <string name="pref_install_mode_services">"Aurora Services"</string>

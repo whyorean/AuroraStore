@@ -1,6 +1,7 @@
 /*
  * Aurora Store
  *  Copyright (C) 2021, Rahul Kumar Patel <whyorean@gmail.com>
+ *  Copyright (C) 2023, grrfe <grrfe@420blaze.it>
  *
  *  Aurora Store is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -25,6 +26,7 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.multidex.MultiDexApplication
 import com.aurora.Constants
+import com.aurora.extensions.isPAndAbove
 import com.aurora.store.data.downloader.DownloadManager
 import com.aurora.store.data.providers.NetworkProvider
 import com.aurora.store.data.receiver.PackageManagerReceiver
@@ -35,6 +37,7 @@ import com.tonyodev.fetch2.Fetch
 import java.util.ArrayList
 import nl.komponents.kovenant.android.startKovenant
 import nl.komponents.kovenant.android.stopKovenant
+import org.lsposed.hiddenapibypass.HiddenApiBypass
 
 class AuroraApplication : MultiDexApplication() {
 
@@ -47,6 +50,12 @@ class AuroraApplication : MultiDexApplication() {
 
     override fun onCreate() {
         super.onCreate()
+
+        // TODO: Only exempt required APIs
+        // Required for Shizuku installer
+        if (isPAndAbove()) {
+            HiddenApiBypass.addHiddenApiExemptions("")
+        }
 
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true)
 
