@@ -133,7 +133,6 @@ abstract class BaseActivity : AppCompatActivity(), NetworkProvider.NetworkListen
     }
 
     fun openGoogleActivity() {
-        Preferences.putBoolean(this, Preferences.PREFERENCE_ADVANCED_SEARCH_IN_CTT, false)
         val intent = Intent(this, GoogleActivity::class.java)
         startActivity(
             intent,

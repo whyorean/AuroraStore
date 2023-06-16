@@ -228,7 +228,6 @@ class SplashActivity : BaseActivity() {
         B.btnGoogle.addOnClickListener {
             if (VM.liveData.value != AuthState.Fetching) {
                 B.btnGoogle.updateProgress(true)
-                Preferences.putBoolean(this, Preferences.PREFERENCE_ADVANCED_SEARCH_IN_CTT, false)
                 val intent = Intent(this, GoogleActivity::class.java)
                 startForResult.launch(intent, getEmptyActivityAnimation())
             }

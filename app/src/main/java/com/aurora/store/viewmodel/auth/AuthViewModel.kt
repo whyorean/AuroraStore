@@ -90,12 +90,6 @@ class AuthViewModel(application: Application) : BaseAndroidViewModel(application
             Preferences.PREFERENCE_INSECURE_ANONYMOUS
         )
 
-        Preferences.putBoolean(
-            getApplication(),
-            Preferences.PREFERENCE_ADVANCED_SEARCH_IN_CTT,
-            false
-        )
-
         if (insecure) {
             buildInSecureAnonymousAuthData()
         } else {
