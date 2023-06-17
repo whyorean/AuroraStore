@@ -143,6 +143,8 @@ abstract class BaseDetailsActivity : BaseActivity() {
 
         val authData = AuthProvider.with(this).getAuthData()
 
+        B.layoutUserReview.visibility = if (authData.isAnonymous) View.GONE else View.VISIBLE
+
         B.btnPostReview.setOnClickListener {
             if (authData.isAnonymous) {
                 toast(R.string.toast_anonymous_restriction)
