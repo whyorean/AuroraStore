@@ -30,6 +30,7 @@ import com.aurora.Constants
 import com.aurora.extensions.isSAndAbove
 import com.aurora.extensions.open
 import com.aurora.store.R
+import com.aurora.store.data.work.UpdateWorker
 import com.aurora.store.databinding.ActivityOnboardingBinding
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_AUTO_DELETE
@@ -48,6 +49,7 @@ import com.aurora.store.util.Preferences.PREFERENCE_QUICK_EXIT
 import com.aurora.store.util.Preferences.PREFERENCE_SIMILAR
 import com.aurora.store.util.Preferences.PREFERENCE_THEME_ACCENT
 import com.aurora.store.util.Preferences.PREFERENCE_THEME_TYPE
+import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_CHECK
 import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_EXTENDED
 import com.aurora.store.util.save
 import com.aurora.store.view.ui.commons.BaseActivity
@@ -152,6 +154,7 @@ class OnboardingActivity : BaseActivity() {
             B.btnForward.isEnabled = true
             B.btnForward.setOnClickListener {
                 save(PREFERENCE_INTRO, true)
+                UpdateWorker.scheduleAutomatedCheck(this)
                 open(SplashActivity::class.java, true)
             }
         } else {
@@ -191,6 +194,7 @@ class OnboardingActivity : BaseActivity() {
 
         /*Updates*/
         save(PREFERENCE_UPDATES_EXTENDED, false)
+        save(PREFERENCE_UPDATES_CHECK, true)
     }
 
     internal class PagerAdapter(fragmentActivity: FragmentActivity) :

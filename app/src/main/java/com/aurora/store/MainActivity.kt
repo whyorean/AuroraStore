@@ -165,6 +165,12 @@ class MainActivity : BaseActivity() {
                 B.drawerLayout.close()
             }
         }
+
+        // Handle intents
+        when (intent?.action) {
+            Constants.NAVIGATION_UPDATES -> B.navView.selectedItemId = R.id.navigation_updates
+            else -> Log.i("Unhandled intent action: ${intent.action}")
+        }
     }
 
     private fun attachToolbar() {

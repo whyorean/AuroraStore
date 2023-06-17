@@ -27,4 +27,11 @@
         app:summary="@string/pref_updates_extended_desc"
         app:title="@string/pref_updates_extended" />
 
+    <SwitchPreferenceCompat
+        app:defaultValue="true"
+        app:iconSpaceReserved="false"
+        app:key="PREFERENCE_UPDATES_CHECK"
+        app:summary="@string/pref_updates_check_desc"
+        app:title="@string/pref_updates_check" />
+
 </androidx.preference.PreferenceScreen>

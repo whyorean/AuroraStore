@@ -113,6 +113,13 @@ class AuroraApplication : MultiDexApplication() {
                     NotificationManager.IMPORTANCE_MIN
                 )
             )
+            channels.add(
+                NotificationChannel(
+                    Constants.NOTIFICATION_CHANNEL_UPDATES,
+                    getString(R.string.notification_channel_updates),
+                    NotificationManager.IMPORTANCE_DEFAULT
+                )
+            )
             notificationManager.createNotificationChannels(channels)
         }
     }

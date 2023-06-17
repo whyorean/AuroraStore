@@ -20,16 +20,25 @@
 package com.aurora.store.view.ui.preferences
 
 import android.os.Bundle
-import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
-import com.aurora.extensions.runOnUiThread
-import com.aurora.extensions.toast
+import androidx.preference.SwitchPreferenceCompat
 import com.aurora.store.R
-import com.aurora.store.util.CommonUtil
-import com.aurora.store.util.Preferences
+import com.aurora.store.data.work.UpdateWorker
+import com.aurora.store.util.Log
+import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_CHECK
 
 class UpdatesPreference : PreferenceFragmentCompat() {
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.preferences_updates, rootKey)
+
+        findPreference<SwitchPreferenceCompat>(PREFERENCE_UPDATES_CHECK)
+            ?.setOnPreferenceChangeListener { _, newValue ->
+                if (newValue.toString().toBoolean()) {
+                    UpdateWorker.scheduleAutomatedCheck(requireContext())
+                } else {
+                    UpdateWorker.cancelAutomatedCheck(requireContext())
+                }
+                true
+            }
     }
 }
