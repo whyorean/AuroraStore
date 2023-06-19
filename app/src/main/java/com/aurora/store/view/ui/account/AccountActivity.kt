@@ -91,7 +91,11 @@ class AccountActivity : BaseActivity() {
                     updateStatus(getString(R.string.requesting_new_session))
                 }
                 AuthState.Valid -> {
+                    updateContents()
+                }
 
+                AuthState.InValid -> {
+                    updateStatus(getString(R.string.failed_validating_account))
                 }
 
                 AuthState.Available -> {
@@ -105,7 +109,7 @@ class AccountActivity : BaseActivity() {
                 }
 
                 AuthState.SignedIn -> {
-                    updateContents()
+                    VM.observe()
                 }
 
                 AuthState.SignedOut -> {

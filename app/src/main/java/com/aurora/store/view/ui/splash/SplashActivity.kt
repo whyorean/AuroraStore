@@ -102,6 +102,11 @@ class SplashActivity : BaseActivity() {
                     moveToContent()
                 }
 
+                AuthState.InValid -> {
+                    updateStatus(getString(R.string.failed_validating_account))
+                    updateActionLayout(true)
+                }
+
                 AuthState.Available -> {
                     updateStatus(getString(R.string.session_verifying))
                     updateActionLayout(false)
@@ -113,7 +118,7 @@ class SplashActivity : BaseActivity() {
                 }
 
                 AuthState.SignedIn -> {
-                    moveToContent()
+                    VM.observe()
                 }
 
                 AuthState.SignedOut -> {
