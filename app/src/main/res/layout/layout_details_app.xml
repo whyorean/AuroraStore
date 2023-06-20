@@ -53,10 +53,21 @@
         tools:text="Company Name" />
 
     <TextView
-        android:id="@+id/txt_line3"
+        android:id="@+id/packageName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/txt_line2"
+        android:layout_alignStart="@id/txt_line1"
+        android:layout_alignEnd="@id/txt_line1"
+        android:textAlignment="viewStart"
+        android:textAppearance="@style/TextAppearance.Aurora.Line3"
+        tools:text="com.aurora.store" />
+
+    <TextView
+        android:id="@+id/txt_line3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/packageName"
         android:layout_alignStart="@id/txt_line1"
         android:layout_alignEnd="@id/txt_line1"
         android:textAlignment="viewStart"

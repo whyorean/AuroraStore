@@ -430,6 +430,7 @@ class AppDetailsActivity : BaseDetailsActivity() {
                 )
             }
             txtLine3.text = ("${app.versionName} (${app.versionCode})")
+            packageName.text = app.packageName
 
             val tags = mutableListOf<String>()
             if (app.isFree)
