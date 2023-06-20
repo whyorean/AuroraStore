@@ -166,10 +166,16 @@ class UpdateWorker(private val appContext: Context, workerParams: WorkerParamete
         return NotificationCompat.Builder(appContext, Constants.NOTIFICATION_CHANNEL_UPDATES)
             .setSmallIcon(R.drawable.ic_logo)
             .setContentTitle(
-                appContext.getString(
-                    R.string.notification_updates_available,
-                    updatesList.size
-                )
+                if (updatesList.size == 1)
+                    appContext.getString(
+                        R.string.notification_updates_available_1,
+                        updatesList.size
+                    )
+                else
+                    appContext.getString(
+                        R.string.notification_updates_available,
+                        updatesList.size
+                    )
             )
             .setContentText(
                 when (updatesList.size) {
