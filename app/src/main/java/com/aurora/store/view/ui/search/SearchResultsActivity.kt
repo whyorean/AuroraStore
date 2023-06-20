@@ -28,6 +28,7 @@ import android.view.KeyEvent
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.TextView
+import androidx.core.view.isVisible
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
@@ -51,6 +52,7 @@ import com.aurora.store.view.ui.commons.BaseActivity
 import com.aurora.store.view.ui.downloads.DownloadActivity
 import com.aurora.store.view.ui.sheets.FilterSheet
 import com.aurora.store.viewmodel.search.SearchResultViewModel
+import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
 import kotlinx.coroutines.launch
 
@@ -69,6 +71,7 @@ class SearchResultsActivity : BaseActivity(), OnSharedPreferenceChangeListener {
     var query: String? = null
     var searchBundle: SearchBundle = SearchBundle()
     private var shimmerAnimationVisible = false
+    private var snackbar: Snackbar? = null
 
     override fun onConnected() {
         hideNetworkConnectivitySheet()
@@ -117,8 +120,22 @@ class SearchResultsActivity : BaseActivity(), OnSharedPreferenceChangeListener {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 VM.responseCode.collect {
                     when (it) {
-                        429 -> attachErrorLayout(getString(R.string.rate_limited))
-                        else -> detachErrorLayout()
+                        429 -> {
+                            if (VM.liveData.value?.appList?.isEmpty() == true) {
+                                attachErrorLayout(getString(R.string.rate_limited))
+                            } else {
+                                snackbar = Snackbar.make(
+                                    B.root,
+                                    getString(R.string.rate_limited),
+                                    Snackbar.LENGTH_INDEFINITE
+                                )
+                                snackbar?.show()
+                            }
+                        }
+                        else -> {
+                            if (B.errorLayout.isVisible) detachErrorLayout()
+                            if (snackbar != null && snackbar?.isShown == true) snackbar?.dismiss()
+                        }
                     }
                 }
             }
