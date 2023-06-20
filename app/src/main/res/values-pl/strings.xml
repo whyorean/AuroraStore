@@ -83,7 +83,7 @@
     <string name="about_paypal">PayPal</string>
     <string name="about_libera_summary">Zostań patronem w Liberapay</string>
     <string name="about_libera">Liberapay</string>
-    <string name="about_gitlab_summary">Pobierz kod źródłowy Aurora Store z Aurora OOS na GitLabie.</string>
+    <string name="about_gitlab_summary">Pobierz kod źródłowy Aurora Store z Aurora OSS na GitLabie.</string>
     <string name="about_gitlab">GitLab</string>
     <string name="about_fdroid_summary">Pobierz Aurora Store z repozytorium F-Droid.</string>
     <string name="about_fdroid">F-Droid</string>
