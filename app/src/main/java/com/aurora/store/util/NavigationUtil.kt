@@ -29,7 +29,6 @@ import com.aurora.store.data.model.Report
 import com.aurora.store.view.ui.details.AppDetailsActivity
 import com.aurora.store.view.ui.details.DetailsExodusActivity
 import com.aurora.store.view.ui.details.DevAppsActivity
-import com.aurora.store.view.ui.search.SearchResultsActivity
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import java.lang.reflect.Modifier
@@ -67,15 +66,6 @@ object NavigationUtil {
             putExtra(Constants.STRING_APP, gson.toJson(app))
             putExtra(Constants.STRING_EXTRA, gson.toJson(report))
         }
-        val options = ActivityOptions.makeSceneTransitionAnimation(context as AppCompatActivity)
-        context.startActivity(intent, options.toBundle())
-    }
-
-    fun openSearchActivity(context: Context) {
-        val intent = Intent(
-            context,
-            SearchResultsActivity::class.java
-        )
         val options = ActivityOptions.makeSceneTransitionAnimation(context as AppCompatActivity)
         context.startActivity(intent, options.toBundle())
     }

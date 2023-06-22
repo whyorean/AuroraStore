@@ -79,5 +79,18 @@
         android:id="@+id/searchSuggestionFragment"
         android:name="com.aurora.store.view.ui.search.SearchSuggestionFragment"
         android:label="@string/title_search_suggestion"
-        tools:layout="@layout/fragment_search_suggestion" />
+        tools:layout="@layout/fragment_search_suggestion">
+        <action
+            android:id="@+id/action_searchSuggestionFragment_to_searchResultsFragment"
+            app:destination="@id/searchResultsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchResultsFragment"
+        android:name="com.aurora.store.view.ui.search.SearchResultsFragment"
+        android:label="@string/title_search_results"
+        tools:layout="@layout/fragment_search_result">
+        <argument
+            android:name="query"
+            app:argType="string" />
+    </fragment>
 </navigation>

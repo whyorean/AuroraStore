@@ -33,6 +33,8 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.aurora.Constants
 import com.aurora.extensions.open
 import com.aurora.gplayapi.data.models.App
@@ -40,14 +42,14 @@ import com.aurora.gplayapi.data.models.SearchBundle
 import com.aurora.store.R
 import com.aurora.store.data.Filter
 import com.aurora.store.data.providers.FilterProvider
-import com.aurora.store.databinding.ActivitySearchResultBinding
+import com.aurora.store.databinding.FragmentSearchResultBinding
 import com.aurora.store.util.Preferences
 import com.aurora.store.view.custom.recycler.EndlessRecyclerOnScrollListener
 import com.aurora.store.view.epoxy.views.AppProgressViewModel_
 import com.aurora.store.view.epoxy.views.app.AppListViewModel_
 import com.aurora.store.view.epoxy.views.app.NoAppViewModel_
 import com.aurora.store.view.epoxy.views.shimmer.AppListViewShimmerModel_
-import com.aurora.store.view.ui.commons.BaseActivity
+import com.aurora.store.view.ui.commons.BaseFragment
 import com.aurora.store.view.ui.downloads.DownloadActivity
 import com.aurora.store.view.ui.sheets.FilterSheet
 import com.aurora.store.viewmodel.search.SearchResultViewModel
@@ -56,9 +58,15 @@ import com.google.android.material.textfield.TextInputEditText
 import kotlinx.coroutines.launch
 
 
-class SearchResultsActivity : BaseActivity(), OnSharedPreferenceChangeListener {
+class SearchResultsFragment : BaseFragment(R.layout.fragment_search_result),
+    OnSharedPreferenceChangeListener {
 
-    lateinit var B: ActivitySearchResultBinding
+    private var _binding: FragmentSearchResultBinding? = null
+    private val binding: FragmentSearchResultBinding
+        get() = _binding!!
+
+    private val args: SearchResultsFragmentArgs by navArgs()
+
     lateinit var VM: SearchResultViewModel
 
     lateinit var endlessRecyclerOnScrollListener: EndlessRecyclerOnScrollListener
@@ -69,51 +77,59 @@ class SearchResultsActivity : BaseActivity(), OnSharedPreferenceChangeListener {
 
     var query: String? = null
     var searchBundle: SearchBundle = SearchBundle()
+
     private var shimmerAnimationVisible = false
     private var snackbar: Snackbar? = null
 
-    override fun onConnected() {
-        hideNetworkConnectivitySheet()
-    }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-    override fun onDisconnected() {
-        showNetworkConnectivitySheet()
-    }
-
-    override fun onReconnected() {
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        B = ActivitySearchResultBinding.inflate(layoutInflater)
+        _binding = FragmentSearchResultBinding.bind(view)
         VM = ViewModelProvider(this)[SearchResultViewModel::class.java]
 
-        sharedPreferences = Preferences.getPrefs(this)
+        sharedPreferences = Preferences.getPrefs(view.context)
         sharedPreferences.registerOnSharedPreferenceChangeListener(this)
-        filter = FilterProvider.with(this).getSavedFilter()
+        filter = FilterProvider.with(view.context).getSavedFilter()
 
-        setContentView(B.root)
+        // Toolbar
+        binding.layoutViewToolbar.apply {
+            searchView = inputSearch
+            imgActionPrimary.setOnClickListener {
+                findNavController().navigateUp()
+            }
+            imgActionSecondary.setOnClickListener {
+                activity?.open(DownloadActivity::class.java)
+            }
+        }
 
-        attachToolbar()
+        // Search
         attachSearch()
-        attachRecycler()
-        attachFilter()
 
-        VM.liveData.observe(this) {
+        // RecyclerView
+        endlessRecyclerOnScrollListener = object : EndlessRecyclerOnScrollListener() {
+            override fun onLoadMore(currentPage: Int) {
+                VM.next(searchBundle.subBundles)
+            }
+        }
+        binding.recycler.addOnScrollListener(endlessRecyclerOnScrollListener)
+
+        // Filter
+        binding.filterFab.setOnClickListener {
+            FilterSheet.newInstance().show(childFragmentManager, FilterSheet.TAG)
+        }
+
+        VM.liveData.observe(viewLifecycleOwner) {
             if (shimmerAnimationVisible) {
                 endlessRecyclerOnScrollListener.resetPageCount()
-                B.recycler.clear()
+                binding.recycler.clear()
                 shimmerAnimationVisible = false
             }
             searchBundle = it
             updateController(searchBundle)
         }
 
-        query = intent.getStringExtra(Constants.STRING_EXTRA)
-        query?.let {
-            updateQuery(it)
-        }
+        query = args.query
+        query?.let { updateQuery(it) }
 
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
@@ -124,74 +140,52 @@ class SearchResultsActivity : BaseActivity(), OnSharedPreferenceChangeListener {
                                 attachErrorLayout(getString(R.string.rate_limited))
                             } else {
                                 snackbar = Snackbar.make(
-                                    B.root,
+                                    binding.root,
                                     getString(R.string.rate_limited),
                                     Snackbar.LENGTH_INDEFINITE
                                 )
                                 snackbar?.show()
                             }
                         }
+
                         else -> {
-                            if (B.errorLayout.isVisible) detachErrorLayout()
+                            if (binding.errorLayout.isVisible) detachErrorLayout()
                             if (snackbar != null && snackbar?.isShown == true) snackbar?.dismiss()
                         }
                     }
                 }
             }
         }
-
     }
 
-    override fun onDestroy() {
-        sharedPreferences.unregisterOnSharedPreferenceChangeListener(this)
-        if (Preferences.getBoolean(this, Preferences.PREFERENCE_FILTER_SEARCH))
-            FilterProvider.with(this).saveFilter(Filter())
-        super.onDestroy()
+    override fun onDestroyView() {
+        context?.let {
+            sharedPreferences.unregisterOnSharedPreferenceChangeListener(this)
+            if (Preferences.getBoolean(it, Preferences.PREFERENCE_FILTER_SEARCH)) {
+                FilterProvider.with(it).saveFilter(Filter())
+            }
+        }
+        super.onDestroyView()
+        _binding = null
     }
 
     private fun attachErrorLayout(message: String) {
-        B.recycler.visibility = View.GONE
-        B.filterFab.visibility = View.GONE
-        B.errorLayout.visibility = View.VISIBLE
-        B.errorMessage.text = message
+        binding.recycler.visibility = View.GONE
+        binding.filterFab.visibility = View.GONE
+        binding.errorLayout.visibility = View.VISIBLE
+        binding.errorMessage.text = message
     }
 
     private fun detachErrorLayout() {
-        B.recycler.visibility = View.VISIBLE
-        B.filterFab.visibility = View.VISIBLE
-        B.errorLayout.visibility = View.GONE
-    }
-
-    private fun attachToolbar() {
-        searchView = B.layoutViewToolbar.inputSearch
-
-        B.layoutViewToolbar.imgActionPrimary.setOnClickListener {
-            finishAfterTransition()
-        }
-        B.layoutViewToolbar.imgActionSecondary.setOnClickListener {
-            open(DownloadActivity::class.java)
-        }
-    }
-
-    private fun attachFilter() {
-        B.filterFab.setOnClickListener {
-            FilterSheet.newInstance().show(supportFragmentManager, FilterSheet.TAG)
-        }
-    }
-
-    private fun attachRecycler() {
-        endlessRecyclerOnScrollListener = object : EndlessRecyclerOnScrollListener() {
-            override fun onLoadMore(currentPage: Int) {
-                VM.next(searchBundle.subBundles)
-            }
-        }
-        B.recycler.addOnScrollListener(endlessRecyclerOnScrollListener)
+        binding.recycler.visibility = View.VISIBLE
+        binding.filterFab.visibility = View.VISIBLE
+        binding.errorLayout.visibility = View.GONE
     }
 
     private fun updateController(searchBundle: SearchBundle?) {
         if (searchBundle == null) {
             shimmerAnimationVisible = true
-            B.recycler.withModels {
+            binding.recycler.withModels {
                 for (i in 1..10) {
                     add(AppListViewShimmerModel_().id(i))
                 }
@@ -204,7 +198,7 @@ class SearchResultsActivity : BaseActivity(), OnSharedPreferenceChangeListener {
         if (filteredAppList.isEmpty()) {
             if (searchBundle.subBundles.isNotEmpty()) {
                 VM.next(searchBundle.subBundles)
-                B.recycler.withModels {
+                binding.recycler.withModels {
                     setFilterDuplicates(true)
                     add(
                         AppProgressViewModel_()
@@ -212,10 +206,10 @@ class SearchResultsActivity : BaseActivity(), OnSharedPreferenceChangeListener {
                     )
                 }
             } else {
-                B.recycler.adapter?.let {
+                binding.recycler.adapter?.let {
                     /*Show empty search list if nothing found or no app matches filter criterion*/
                     if (it.itemCount == 1 && searchBundle.subBundles.isEmpty()) {
-                        B.recycler.withModels {
+                        binding.recycler.withModels {
                             add(
                                 NoAppViewModel_()
                                     .id("no_app")
@@ -227,7 +221,7 @@ class SearchResultsActivity : BaseActivity(), OnSharedPreferenceChangeListener {
                 }
             }
         } else {
-            B.recycler
+            binding.recycler
                 .withModels {
                     setFilterDuplicates(true)
 
@@ -250,7 +244,7 @@ class SearchResultsActivity : BaseActivity(), OnSharedPreferenceChangeListener {
                     }
                 }
 
-            B.recycler.adapter?.let {
+            binding.recycler.adapter?.let {
                 if (it.itemCount < 10) {
                     VM.next(searchBundle.subBundles)
                 }
@@ -295,7 +289,7 @@ class SearchResultsActivity : BaseActivity(), OnSharedPreferenceChangeListener {
     }
 
     private fun filter(appList: MutableList<App>): List<App> {
-        filter = FilterProvider.with(this).getSavedFilter()
+        filter = FilterProvider.with(requireContext()).getSavedFilter()
         return appList
             .asSequence()
             .filter { if (!filter.paidApps) it.isFree else true }
@@ -308,7 +302,7 @@ class SearchResultsActivity : BaseActivity(), OnSharedPreferenceChangeListener {
 
     override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences?, key: String?) {
         if (key == FilterProvider.PREFERENCE_FILTER) {
-            filter = FilterProvider.with(this).getSavedFilter()
+            filter = FilterProvider.with(requireContext()).getSavedFilter()
             query?.let {
                 queryViewModel(it)
             }

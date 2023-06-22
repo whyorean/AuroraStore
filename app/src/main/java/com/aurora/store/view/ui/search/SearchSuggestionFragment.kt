@@ -152,9 +152,10 @@ class SearchSuggestionFragment : Fragment(R.layout.fragment_search_suggestion) {
         ) {
             requireContext().browse("${Constants.PLAY_QUERY_URL}$query", true)
         } else {
-            val intent = Intent(requireContext(), SearchResultsActivity::class.java)
-            intent.putExtra(Constants.STRING_EXTRA, query)
-            startActivity(intent, requireContext().getEmptyActivityBundle())
+            findNavController().navigate(
+                SearchSuggestionFragmentDirections
+                    .actionSearchSuggestionFragmentToSearchResultsFragment(query)
+            )
         }
     }
 }
