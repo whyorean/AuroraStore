@@ -41,6 +41,7 @@ import androidx.core.graphics.ColorUtils
 import androidx.core.view.GravityCompat
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.aurora.Constants
@@ -55,7 +56,6 @@ import com.aurora.store.util.Log
 import com.aurora.store.util.Preferences
 import com.aurora.store.view.ui.commons.BaseActivity
 import com.aurora.store.view.ui.downloads.DownloadActivity
-import com.aurora.store.view.ui.search.SearchSuggestionActivity
 import com.aurora.store.view.ui.sheets.SelfUpdateSheet
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -196,10 +196,7 @@ class MainActivity : BaseActivity() {
 
     private fun attachSearch() {
         B.searchFab.setOnClickListener {
-            startActivity(
-                Intent(this, SearchSuggestionActivity::class.java),
-                getEmptyActivityBundle()
-            )
+            navController.navigate(R.id.searchSuggestionFragment)
         }
     }
 

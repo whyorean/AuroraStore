@@ -144,7 +144,6 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".view.ui.search.SearchSuggestionActivity" />
         <activity android:name=".view.ui.search.SearchResultsActivity" />
         <activity android:name=".view.ui.commons.StreamBrowseActivity" />
         <activity android:name=".view.ui.details.ScreenshotActivity" />

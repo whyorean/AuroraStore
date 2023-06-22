@@ -24,55 +24,56 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.KeyEvent
+import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.TextView
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.aurora.Constants
 import com.aurora.extensions.browse
 import com.aurora.extensions.getEmptyActivityBundle
 import com.aurora.extensions.open
 import com.aurora.extensions.showKeyboard
 import com.aurora.gplayapi.SearchSuggestEntry
-import com.aurora.store.databinding.ActivitySearchSuggestionBinding
+import com.aurora.store.R
+import com.aurora.store.databinding.FragmentSearchSuggestionBinding
 import com.aurora.store.util.Preferences
 import com.aurora.store.view.epoxy.views.SearchSuggestionViewModel_
-import com.aurora.store.view.ui.commons.BaseActivity
 import com.aurora.store.view.ui.downloads.DownloadActivity
 import com.aurora.store.viewmodel.search.SearchSuggestionViewModel
 import com.google.android.material.textfield.TextInputEditText
 
 
-class SearchSuggestionActivity : BaseActivity() {
+class SearchSuggestionFragment : Fragment(R.layout.fragment_search_suggestion) {
 
-    lateinit var B: ActivitySearchSuggestionBinding
+    private var _binding: FragmentSearchSuggestionBinding? = null
+    private val binding: FragmentSearchSuggestionBinding
+        get() = _binding!!
+
     lateinit var VM: SearchSuggestionViewModel
-
     lateinit var searchView: TextInputEditText
 
     var query: String = String()
 
-    override fun onConnected() {
-        hideNetworkConnectivitySheet()
-    }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-    override fun onDisconnected() {
-        showNetworkConnectivitySheet()
-    }
-
-    override fun onReconnected() {
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        B = ActivitySearchSuggestionBinding.inflate(layoutInflater)
+        _binding = FragmentSearchSuggestionBinding.bind(view)
         VM = ViewModelProvider(this)[SearchSuggestionViewModel::class.java]
 
-        setContentView(B.root)
+        // Toolbar
+        binding.layoutToolbarSearch.apply {
+            searchView = inputSearch
+            imgActionPrimary.setOnClickListener {
+                findNavController().navigateUp()
+            }
+            imgActionSecondary.setOnClickListener {
+                activity?.open(DownloadActivity::class.java)
+            }
+        }
 
-        attachToolbar()
-
-        VM.liveSearchSuggestions.observe(this) {
+        VM.liveSearchSuggestions.observe(viewLifecycleOwner) {
             updateController(it)
         }
 
@@ -86,19 +87,13 @@ class SearchSuggestionActivity : BaseActivity() {
         }
     }
 
-    private fun attachToolbar() {
-        searchView = B.layoutToolbarSearch.inputSearch
-
-        B.layoutToolbarSearch.imgActionPrimary.setOnClickListener {
-            finishAfterTransition()
-        }
-        B.layoutToolbarSearch.imgActionSecondary.setOnClickListener {
-            open(DownloadActivity::class.java)
-        }
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     private fun updateController(searchSuggestions: List<SearchSuggestEntry>) {
-        B.recycler.withModels {
+        binding.recycler.withModels {
             setFilterDuplicates(true)
             searchSuggestions.forEach {
                 add(
@@ -150,12 +145,16 @@ class SearchSuggestionActivity : BaseActivity() {
     }
 
     private fun search(query: String) {
-        if (Preferences.getBoolean(this, Preferences.PREFERENCE_ADVANCED_SEARCH_IN_CTT)) {
-            this.browse("${Constants.PLAY_QUERY_URL}$query", true)
+        if (Preferences.getBoolean(
+                requireContext(),
+                Preferences.PREFERENCE_ADVANCED_SEARCH_IN_CTT
+            )
+        ) {
+            requireContext().browse("${Constants.PLAY_QUERY_URL}$query", true)
         } else {
-            val intent = Intent(this, SearchResultsActivity::class.java)
+            val intent = Intent(requireContext(), SearchResultsActivity::class.java)
             intent.putExtra(Constants.STRING_EXTRA, query)
-            startActivity(intent, getEmptyActivityBundle())
+            startActivity(intent, requireContext().getEmptyActivityBundle())
         }
     }
 }
