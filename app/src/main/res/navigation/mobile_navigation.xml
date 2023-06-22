@@ -70,4 +70,9 @@
         android:name="com.aurora.store.view.ui.account.AccountFragment"
         android:label="@string/title_account_manager"
         tools:layout="@layout/fragment_account" />
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.aurora.store.view.ui.preferences.SettingsFragment"
+        android:label="@string/title_settings"
+        tools:layout="@layout/fragment_setting" />
 </navigation>

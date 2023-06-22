@@ -53,10 +53,8 @@ import com.aurora.store.databinding.ActivityMainBinding
 import com.aurora.store.util.CertUtil.isFDroidApp
 import com.aurora.store.util.Log
 import com.aurora.store.util.Preferences
-import com.aurora.store.view.ui.account.AccountFragment
 import com.aurora.store.view.ui.commons.BaseActivity
 import com.aurora.store.view.ui.downloads.DownloadActivity
-import com.aurora.store.view.ui.preferences.SettingsActivity
 import com.aurora.store.view.ui.search.SearchSuggestionActivity
 import com.aurora.store.view.ui.sheets.SelfUpdateSheet
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
@@ -263,7 +261,8 @@ class MainActivity : BaseActivity() {
                     B.drawerLayout.close()
                 }
                 R.id.menu_settings -> {
-                    open(SettingsActivity::class.java)
+                    navController.navigate(R.id.settingsFragment)
+                    B.drawerLayout.close()
                 }
                 R.id.menu_about -> {
                     navController.navigate(R.id.aboutFragment)

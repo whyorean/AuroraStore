@@ -50,7 +50,7 @@ class UIPreference : PreferenceFragmentCompat() {
 
                 applyTheme(themeId, shouldApplyTransition = false)
 
-                SettingsActivity.shouldRestart = true
+                SettingsFragment.shouldRestart = true
                 true
             }
         }
@@ -68,7 +68,7 @@ class UIPreference : PreferenceFragmentCompat() {
 
                 applyTheme(themeId, shouldApplyTransition = false)
 
-                SettingsActivity.shouldRestart = true
+                SettingsFragment.shouldRestart = true
                 true
             }
         }

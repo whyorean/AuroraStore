@@ -19,103 +19,81 @@
 
 package com.aurora.store.view.ui.preferences
 
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.view.MenuItem
+import android.view.View
+import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
+import com.aurora.extensions.getStyledAttributeColor
 import com.aurora.extensions.restartApp
 import com.aurora.store.R
-import com.aurora.store.databinding.ActivitySettingBinding
-import com.aurora.store.view.ui.commons.BaseActivity
+import com.aurora.store.databinding.FragmentSettingBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
-class SettingsActivity : BaseActivity(),
+class SettingsFragment : Fragment(R.layout.fragment_setting),
     PreferenceFragmentCompat.OnPreferenceStartFragmentCallback {
 
-    private lateinit var B: ActivitySettingBinding
+    private var _binding: FragmentSettingBinding? = null
+    private val binding: FragmentSettingBinding
+        get() = _binding!!
 
     companion object {
         var shouldRestart = false
         const val titleTag = "titleTag"
     }
 
-    override fun onConnected() {
-    }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-    override fun onDisconnected() {
-    }
-
-    override fun onReconnected() {
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        B = ActivitySettingBinding.inflate(layoutInflater)
-        setContentView(B.root)
+        _binding = FragmentSettingBinding.bind(view)
 
         if (savedInstanceState == null) {
-            supportFragmentManager
+            childFragmentManager
                 .beginTransaction()
                 .replace(R.id.settings, MainPreference())
                 .commit()
         } else {
-            title = savedInstanceState.getCharSequence(titleTag)
+            binding.layoutToolbarAction.toolbar.title = savedInstanceState.getCharSequence(titleTag)
         }
 
-        supportFragmentManager.addOnBackStackChangedListener {
-            if (supportFragmentManager.backStackEntryCount == 0) {
-                B.layoutToolbarAction.toolbar.setTitle(R.string.title_settings)
-                if (shouldRestart)
-                    askRestart()
+        childFragmentManager.addOnBackStackChangedListener {
+            if (childFragmentManager.backStackEntryCount == 0) {
+                binding.layoutToolbarAction.toolbar.title = getString(R.string.title_settings)
+                if (shouldRestart) askRestart()
             }
         }
 
-        attachToolbar()
+        // Toolbar
+        binding.layoutToolbarAction.toolbar.apply {
+            elevation = 0f
+            title = getString(R.string.title_settings)
+            navigationIcon = ContextCompat.getDrawable(view.context, R.drawable.ic_arrow_back)
+            setNavigationOnClickListener { findNavController().navigateUp() }
+        }
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            android.R.id.home -> {
-                onBackPressedDispatcher.onBackPressed()
-                return true
-            }
-        }
-        return super.onOptionsItemSelected(item)
-    }
-
-    private fun attachToolbar() {
-        setSupportActionBar(B.layoutToolbarAction.toolbar)
-        val actionBar = supportActionBar
-        if (actionBar != null) {
-            actionBar.setDisplayShowCustomEnabled(true)
-            actionBar.setDisplayHomeAsUpEnabled(true)
-            actionBar.elevation = 0f
-            actionBar.setTitle(R.string.title_settings)
-        }
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        outState.putCharSequence(titleTag, title)
-    }
-
-    override fun onSupportNavigateUp(): Boolean {
-        if (supportFragmentManager.popBackStackImmediate()) {
-            return true
-        }
-        return super.onSupportNavigateUp()
+        outState.putCharSequence(titleTag, binding.layoutToolbarAction.toolbar.title)
     }
 
     override fun onPreferenceStartFragment(
         caller: PreferenceFragmentCompat,
         preference: Preference
     ): Boolean {
-        with(supportFragmentManager) {
+        with(childFragmentManager) {
             val args = preference.extras
 
             val fragment = fragmentFactory.instantiate(
-                classLoader,
+                this@SettingsFragment.javaClass.classLoader!!,
                 preference.fragment.toString()
             ).apply {
                 arguments = args
@@ -124,24 +102,27 @@ class SettingsActivity : BaseActivity(),
 
             beginTransaction()
                 .replace(R.id.settings, fragment)
-                .addToBackStack(null)
+                .addToBackStack(preference.key)
                 .commit()
 
-            B.layoutToolbarAction.toolbar.title = preference.title
+            binding.layoutToolbarAction.toolbar.title = preference.title
         }
 
         return true
     }
 
     private fun askRestart() {
-        val builder = MaterialAlertDialogBuilder(this)
+        val builder = MaterialAlertDialogBuilder(requireContext())
             .setTitle(getString(R.string.action_restart))
             .setMessage(getString(R.string.pref_dialog_to_apply_restart))
             .setPositiveButton(getString(R.string.action_restart)) { _, _ ->
                 shouldRestart = false
-                restartApp()
+                requireContext().restartApp()
             }
             .setNegativeButton(getString(R.string.action_later)) { dialog, _ -> dialog.dismiss() }
+        val backGroundColor =
+            requireContext().getStyledAttributeColor(android.R.attr.colorBackground)
+        builder.background = ColorDrawable(backGroundColor)
         builder.create()
         builder.show()
     }
