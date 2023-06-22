@@ -149,7 +149,6 @@
         <activity android:name=".view.ui.commons.StreamBrowseActivity" />
         <activity android:name=".view.ui.sale.AppSalesActivity" />
         <activity android:name=".view.ui.details.ScreenshotActivity" />
-        <activity android:name=".view.ui.all.AppsGamesActivity" />
         <activity android:name=".view.ui.commons.CategoryBrowseActivity" />
         <activity android:name=".view.ui.details.DetailsMoreActivity" />
         <activity android:name=".view.ui.details.DetailsReviewActivity" />

@@ -20,78 +20,64 @@
 package com.aurora.store.view.ui.all
 
 import android.os.Bundle
-import android.view.MenuItem
+import android.view.View
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
+import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.aurora.gplayapi.data.models.AuthData
 import com.aurora.store.R
 import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.databinding.ActivityGenericPagerBinding
-import com.aurora.store.view.ui.commons.BaseActivity
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 
-class AppsGamesActivity : BaseActivity() {
+class AppsGamesFragment : Fragment(R.layout.activity_generic_pager) {
 
-    private lateinit var B: ActivityGenericPagerBinding
+    private var _binding: ActivityGenericPagerBinding? = null
+    private val binding: ActivityGenericPagerBinding
+        get() = _binding!!
+
     private lateinit var authData: AuthData
 
-    override fun onConnected() {
-        hideNetworkConnectivitySheet()
-    }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        _binding = ActivityGenericPagerBinding.bind(view)
+        authData = AuthProvider.with(view.context).getAuthData()
 
-    override fun onDisconnected() {
-        showNetworkConnectivitySheet()
-    }
-
-    override fun onReconnected() {
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        B = ActivityGenericPagerBinding.inflate(layoutInflater)
-        authData = AuthProvider.with(this).getAuthData()
-
-        setContentView(B.root)
-        attachToolbar()
-        attachViewPager()
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            android.R.id.home -> {
-                onBackPressedDispatcher.onBackPressed()
-                return true
-            }
+        // Toolbar
+        binding.layoutActionToolbar.toolbar.apply {
+            elevation = 0f
+            title = getString(R.string.title_apps_games)
+            navigationIcon = ContextCompat.getDrawable(view.context, R.drawable.ic_arrow_back)
+            setNavigationOnClickListener { findNavController().navigateUp() }
         }
-        return super.onOptionsItemSelected(item)
-    }
 
-    private fun attachToolbar() {
-        setSupportActionBar(B.layoutActionToolbar.toolbar)
-        val actionBar = supportActionBar
-        if (actionBar != null) {
-            actionBar.setDisplayShowCustomEnabled(true)
-            actionBar.setDisplayHomeAsUpEnabled(true)
-            actionBar.elevation = 0f
-            actionBar.title = getString(R.string.title_apps_games)
+        // ViewPager
+        binding.pager.apply {
+            isUserInputEnabled = false
+            adapter = ViewPagerAdapter(childFragmentManager, lifecycle, authData.isAnonymous)
         }
-    }
 
-    private fun attachViewPager() {
-        B.pager.adapter = ViewPagerAdapter(supportFragmentManager, lifecycle, authData.isAnonymous)
-        B.pager.isUserInputEnabled = false
-        TabLayoutMediator(B.tabLayout, B.pager, true) { tab: TabLayout.Tab, position: Int ->
+        TabLayoutMediator(
+            binding.tabLayout,
+            binding.pager,
+            true
+        ) { tab: TabLayout.Tab, position: Int ->
             when (position) {
                 0 -> tab.text = getString(R.string.title_installed)
                 1 -> tab.text = getString(R.string.title_library)
                 2 -> tab.text = getString(R.string.title_purchase_history)
-                else -> {
-                }
+                else -> {}
             }
         }.attach()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     internal class ViewPagerAdapter(
@@ -110,10 +96,7 @@ class AppsGamesActivity : BaseActivity() {
         }
 
         override fun getItemCount(): Int {
-            return if (isAnonymous)
-                1
-            else
-                3
+            return if (isAnonymous) 1 else 3
         }
     }
 }

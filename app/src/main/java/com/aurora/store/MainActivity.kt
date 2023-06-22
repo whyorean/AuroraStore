@@ -54,7 +54,7 @@ import com.aurora.store.util.CertUtil.isFDroidApp
 import com.aurora.store.util.Log
 import com.aurora.store.util.Preferences
 import com.aurora.store.view.ui.account.AccountActivity
-import com.aurora.store.view.ui.all.AppsGamesActivity
+import com.aurora.store.view.ui.all.AppsGamesFragment
 import com.aurora.store.view.ui.commons.BaseActivity
 import com.aurora.store.view.ui.commons.BlacklistActivity
 import com.aurora.store.view.ui.downloads.DownloadActivity
@@ -244,7 +244,8 @@ class MainActivity : BaseActivity() {
         B.navigation.setNavigationItemSelectedListener { item: MenuItem ->
             when (item.itemId) {
                 R.id.menu_apps_games -> {
-                    open(AppsGamesActivity::class.java)
+                    navController.navigate(R.id.appsGamesFragment)
+                    B.drawerLayout.close()
                 }
                 R.id.menu_apps_sale -> {
                     open(AppSalesActivity::class.java)
