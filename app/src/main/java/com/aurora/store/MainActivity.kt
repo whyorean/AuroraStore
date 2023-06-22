@@ -171,6 +171,24 @@ class MainActivity : BaseActivity() {
             Constants.NAVIGATION_UPDATES -> B.navView.selectedItemId = R.id.navigation_updates
             else -> Log.i("Unhandled intent action: ${intent.action}")
         }
+
+        // Handle views on fragments
+        navController.addOnDestinationChangedListener { _, navDestination, _ ->
+            when (navDestination.id) {
+                R.id.navigation_apps,
+                R.id.navigation_games,
+                R.id.navigation_updates -> {
+                    B.searchFab.visibility = View.VISIBLE
+                    B.navView.visibility = View.VISIBLE
+                    B.viewToolbar.root.visibility = View.VISIBLE
+                }
+                else -> {
+                    B.searchFab.visibility = View.GONE
+                    B.navView.visibility = View.GONE
+                    B.viewToolbar.root.visibility = View.GONE
+                }
+            }
+        }
     }
 
     private fun attachToolbar() {
