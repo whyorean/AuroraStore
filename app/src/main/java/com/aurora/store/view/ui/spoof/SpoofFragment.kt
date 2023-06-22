@@ -22,28 +22,30 @@ package com.aurora.store.view.ui.spoof
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
+import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
+import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.aurora.extensions.toast
 import com.aurora.store.R
 import com.aurora.store.data.providers.NativeDeviceInfoProvider
 import com.aurora.store.databinding.ActivityGenericPagerBinding
 import com.aurora.store.util.PathUtil
-import com.aurora.store.view.ui.commons.BaseActivity
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import nl.komponents.kovenant.task
 import nl.komponents.kovenant.ui.failUi
 import nl.komponents.kovenant.ui.successUi
 
-class SpoofActivity : BaseActivity() {
+class SpoofFragment : Fragment(R.layout.activity_generic_pager) {
 
-    private lateinit var B: ActivityGenericPagerBinding
+    private var _binding: ActivityGenericPagerBinding? = null
+    private val binding: ActivityGenericPagerBinding
+        get() = _binding!!
 
     // Android is weird, even if export device config with proper mime type, it will refuse to open
     // it again with same mime type
@@ -59,63 +61,40 @@ class SpoofActivity : BaseActivity() {
             if (it != null) exportDeviceConfig(it) else toast(R.string.toast_export_failed)
         }
 
-    override fun onConnected() {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        _binding = ActivityGenericPagerBinding.bind(view)
 
-    }
+        // Toolbar
+        binding.layoutActionToolbar.toolbar.apply {
+            elevation = 0f
+            title = getString(R.string.title_spoof_manager)
+            navigationIcon = ContextCompat.getDrawable(view.context, R.drawable.ic_arrow_back)
+            inflateMenu(R.menu.menu_spoof)
+            setNavigationOnClickListener { findNavController().navigateUp() }
+            setOnMenuItemClickListener {
+                when (it.itemId) {
+                    R.id.action_import -> {
+                        startForDocumentImport.launch(arrayOf(importMimeType))
+                    }
 
-    override fun onDisconnected() {
-
-    }
-
-    override fun onReconnected() {
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        B = ActivityGenericPagerBinding.inflate(layoutInflater)
-        setContentView(B.root)
-
-        attachToolbar()
-        attachViewPager()
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu_spoof, menu)
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            android.R.id.home -> {
-                onBackPressedDispatcher.onBackPressed()
-                return true
-            }
-            R.id.action_import -> {
-                startForDocumentImport.launch(arrayOf(importMimeType))
-            }
-            R.id.action_export -> {
-                startForDocumentExport
-                    .launch("aurora_store_${Build.BRAND}_${Build.DEVICE}.properties")
+                    R.id.action_export -> {
+                        startForDocumentExport
+                            .launch("aurora_store_${Build.BRAND}_${Build.DEVICE}.properties")
+                    }
+                }
+                true
             }
         }
-        return super.onOptionsItemSelected(item)
-    }
 
-    private fun attachToolbar() {
-        setSupportActionBar(B.layoutActionToolbar.toolbar)
-        val actionBar = supportActionBar
-        if (actionBar != null) {
-            actionBar.setDisplayShowCustomEnabled(true)
-            actionBar.setDisplayHomeAsUpEnabled(true)
-            actionBar.elevation = 0f
-            actionBar.title = getString(R.string.title_spoof_manager)
-        }
-    }
+        // ViewPager
+        binding.pager.adapter = ViewPagerAdapter(childFragmentManager, lifecycle)
 
-    private fun attachViewPager() {
-        B.pager.adapter = ViewPagerAdapter(supportFragmentManager, lifecycle)
-
-        TabLayoutMediator(B.tabLayout, B.pager, true) { tab: TabLayout.Tab, position: Int ->
+        TabLayoutMediator(
+            binding.tabLayout,
+            binding.pager,
+            true
+        ) { tab: TabLayout.Tab, position: Int ->
             when (position) {
                 0 -> tab.text = getString(R.string.title_device)
                 1 -> tab.text = getString(R.string.title_language)
@@ -125,16 +104,21 @@ class SpoofActivity : BaseActivity() {
         }.attach()
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
     private fun importDeviceConfig(uri: Uri) {
         task {
-            contentResolver.openInputStream(uri)?.use { input ->
-                PathUtil.getNewEmptySpoofConfig(this).outputStream().use {
+            context?.contentResolver?.openInputStream(uri)?.use { input ->
+                PathUtil.getNewEmptySpoofConfig(requireContext()).outputStream().use {
                     input.copyTo(it)
                 }
             }
         } successUi {
             toast(R.string.toast_import_success)
-            recreate()
+            activity?.recreate()
         } failUi {
             it.printStackTrace()
             toast(R.string.toast_import_failed)
@@ -143,9 +127,9 @@ class SpoofActivity : BaseActivity() {
 
     private fun exportDeviceConfig(uri: Uri) {
         task {
-            NativeDeviceInfoProvider(this)
+            NativeDeviceInfoProvider(requireContext())
                 .getNativeDeviceProperties()
-                .store(contentResolver.openOutputStream(uri), "DEVICE_CONFIG")
+                .store(context?.contentResolver?.openOutputStream(uri), "DEVICE_CONFIG")
         } successUi {
             toast(R.string.toast_export_success)
         } failUi {

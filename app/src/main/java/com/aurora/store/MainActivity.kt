@@ -58,10 +58,9 @@ import com.aurora.store.view.ui.commons.BaseActivity
 import com.aurora.store.view.ui.commons.BlacklistActivity
 import com.aurora.store.view.ui.downloads.DownloadActivity
 import com.aurora.store.view.ui.preferences.SettingsActivity
-import com.aurora.store.view.ui.sale.AppSalesFragment
 import com.aurora.store.view.ui.search.SearchSuggestionActivity
 import com.aurora.store.view.ui.sheets.SelfUpdateSheet
-import com.aurora.store.view.ui.spoof.SpoofActivity
+import com.aurora.store.view.ui.spoof.SpoofFragment
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import nl.komponents.kovenant.task
@@ -257,7 +256,8 @@ class MainActivity : BaseActivity() {
                     open(DownloadActivity::class.java)
                 }
                 R.id.menu_spoof_manager -> {
-                    open(SpoofActivity::class.java)
+                    navController.navigate(R.id.spoofFragment)
+                    B.drawerLayout.close()
                 }
                 R.id.menu_account_manager -> {
                     open(AccountActivity::class.java)

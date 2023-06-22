@@ -153,7 +153,6 @@
         <activity android:name=".view.ui.details.DetailsReviewActivity" />
         <activity android:name=".view.ui.downloads.DownloadActivity" />
         <activity android:name=".view.ui.account.GoogleActivity" />
-        <activity android:name=".view.ui.spoof.SpoofActivity" />
         <activity android:name=".view.ui.account.AccountActivity" />
         <activity android:name=".view.ui.details.DetailsExodusActivity" />
         <activity android:name=".view.ui.details.DevAppsActivity" />
