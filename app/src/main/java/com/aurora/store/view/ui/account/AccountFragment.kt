@@ -19,11 +19,14 @@
 
 package com.aurora.store.view.ui.account
 
+import android.app.Activity.RESULT_CANCELED
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.aurora.extensions.browse
 import com.aurora.extensions.getEmptyActivityAnimation
 import com.aurora.extensions.load
@@ -33,9 +36,7 @@ import com.aurora.store.data.AuthState
 import com.aurora.store.data.event.BusEvent
 import com.aurora.store.data.providers.AccountProvider
 import com.aurora.store.data.providers.AuthProvider
-import com.aurora.store.databinding.ActivityAccountBinding
-import com.aurora.store.util.Preferences
-import com.aurora.store.view.ui.commons.BaseActivity
+import com.aurora.store.databinding.FragmentAccountBinding
 import com.aurora.store.viewmodel.auth.AuthViewModel
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import nl.komponents.kovenant.task
@@ -44,51 +45,65 @@ import nl.komponents.kovenant.ui.successUi
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 
-class AccountActivity : BaseActivity() {
+class AccountFragment : Fragment(R.layout.fragment_account) {
+
+    private var _binding: FragmentAccountBinding? = null
+    private val binding: FragmentAccountBinding
+        get() = _binding!!
 
     private lateinit var VM: AuthViewModel
-    private lateinit var B: ActivityAccountBinding
 
     private lateinit var authData: AuthData
     private lateinit var accountProvider: AccountProvider
 
     private val URL_TOS = "https://play.google.com/about/play-terms/"
     private val URL_LICENSE = "https://gitlab.com/AuroraOSS/AuroraStore/blob/master/LICENSE"
-    private val URL_DISCLAIMER = "https://gitlab.com/AuroraOSS/AuroraStore/blob/master/DISCLAIMER.md"
+    private val URL_DISCLAIMER =
+        "https://gitlab.com/AuroraOSS/AuroraStore/blob/master/DISCLAIMER.md"
 
     private val startForResult =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
             if (it.resultCode == RESULT_CANCELED) {
                 resetActions()
             } else {
-                B.btnGoogle.updateProgress(true)
+                binding.btnGoogle.updateProgress(true)
             }
         }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-        EventBus.getDefault().register(this);
+        EventBus.getDefault().register(this)
 
-        B = ActivityAccountBinding.inflate(layoutInflater)
+        _binding = FragmentAccountBinding.bind(view)
         VM = ViewModelProvider(this)[AuthViewModel::class.java]
 
-        setContentView(B.root)
+        authData = AuthProvider.with(view.context).getAuthData()
+        accountProvider = AccountProvider.with(view.context)
 
-        authData = AuthProvider.with(this).getAuthData()
-        accountProvider = AccountProvider.with(this)
+        // Toolbar
+        binding.layoutToolbarAction.txtTitle.text = getString(R.string.title_account_manager)
+        binding.layoutToolbarAction.imgActionPrimary.setOnClickListener {
+            findNavController().navigateUp()
+        }
 
-        attachToolbar()
-        attachChips()
+        // Chips
+        view.context.apply {
+            binding.chipDisclaimer.setOnClickListener { browse(URL_DISCLAIMER) }
+            binding.chipLicense.setOnClickListener { browse(URL_LICENSE) }
+            binding.chipTos.setOnClickListener { browse(URL_TOS) }
+        }
+
         attachActions()
 
         updateContents()
 
-        VM.liveData.observe(this) {
+        VM.liveData.observe(viewLifecycleOwner) {
             when (it) {
                 AuthState.Fetching -> {
                     updateStatus(getString(R.string.requesting_new_session))
                 }
+
                 AuthState.Valid -> {
 
                 }
@@ -120,9 +135,10 @@ class AccountActivity : BaseActivity() {
         }
     }
 
-    override fun onDestroy() {
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
         EventBus.getDefault().unregister(this)
-        super.onDestroy()
     }
 
     @Subscribe()
@@ -136,6 +152,7 @@ class AccountActivity : BaseActivity() {
                     updateStatus(getString(R.string.session_login_failed_google))
                 }
             }
+
             else -> {
 
             }
@@ -144,10 +161,10 @@ class AccountActivity : BaseActivity() {
 
     private fun updateContents() {
         if (accountProvider.isSignedIn()) {
-            B.viewFlipper.displayedChild = 1
+            binding.viewFlipper.displayedChild = 1
             updateStatus(getString(R.string.session_good))
         } else {
-            B.viewFlipper.displayedChild = 0
+            binding.viewFlipper.displayedChild = 0
             updateStatus(getString(R.string.session_enjoy))
         }
 
@@ -155,8 +172,8 @@ class AccountActivity : BaseActivity() {
     }
 
     private fun updateStatus(string: String?) {
-        runOnUiThread {
-            B.txtStatus.apply {
+        activity?.runOnUiThread {
+            binding.txtStatus.apply {
                 text = string
             }
         }
@@ -164,51 +181,37 @@ class AccountActivity : BaseActivity() {
 
     private fun updateActionLayout(isVisible: Boolean) {
         if (isVisible) {
-            B.layoutAction.visibility = View.VISIBLE
+            binding.layoutAction.visibility = View.VISIBLE
         } else {
-            B.layoutAction.visibility = View.INVISIBLE
+            binding.layoutAction.visibility = View.INVISIBLE
         }
     }
-
-    private fun attachToolbar() {
-        B.layoutToolbarAction.txtTitle.text = getString(R.string.title_account_manager)
-        B.layoutToolbarAction.imgActionPrimary.setOnClickListener {
-            finishAfterTransition()
-        }
-    }
-
-    private fun attachChips() {
-        B.chipDisclaimer.setOnClickListener { browse(URL_DISCLAIMER) }
-        B.chipLicense.setOnClickListener { browse(URL_LICENSE) }
-        B.chipTos.setOnClickListener { browse(URL_TOS) }
-    }
-
 
     private fun attachActions() {
-        B.btnAnonymous.updateProgress(false)
-        B.btnGoogle.updateProgress(false)
+        binding.btnAnonymous.updateProgress(false)
+        binding.btnGoogle.updateProgress(false)
 
-        B.btnAnonymous.addOnClickListener {
+        binding.btnAnonymous.addOnClickListener {
             if (VM.liveData.value != AuthState.Fetching) {
-                B.btnAnonymous.updateProgress(true)
+                binding.btnAnonymous.updateProgress(true)
                 VM.buildAnonymousAuthData()
             }
         }
 
-        B.btnGoogle.addOnClickListener {
+        binding.btnGoogle.addOnClickListener {
             if (VM.liveData.value != AuthState.Fetching) {
-                B.btnGoogle.updateProgress(true)
-                val intent = Intent(this, GoogleActivity::class.java)
-                startForResult.launch(intent, getEmptyActivityAnimation())
+                binding.btnGoogle.updateProgress(true)
+                val intent = Intent(requireContext(), GoogleActivity::class.java)
+                startForResult.launch(intent, requireContext().getEmptyActivityAnimation())
             }
         }
 
-        B.btnLogout.addOnClickListener {
+        binding.btnLogout.addOnClickListener {
             task {
-                AccountProvider.with(this).logout()
+                AccountProvider.with(it.context).logout()
             } successUi {
-                B.btnAnonymous.updateProgress(false)
-                B.btnGoogle.updateProgress(false)
+                binding.btnAnonymous.updateProgress(false)
+                binding.btnGoogle.updateProgress(false)
                 updateContents()
             } failUi {
 
@@ -217,55 +220,43 @@ class AccountActivity : BaseActivity() {
     }
 
     private fun resetActions() {
-        B.btnGoogle.apply {
+        binding.btnGoogle.apply {
             updateProgress(false)
             isEnabled = true
         }
 
-        B.btnAnonymous.apply {
+        binding.btnAnonymous.apply {
             updateProgress(false)
             isEnabled = true
         }
     }
 
     private fun updateUserProfile() {
-        authData = AuthProvider.with(this).getAuthData()
+        authData = AuthProvider.with(requireContext()).getAuthData()
 
         if (accountProvider.isSignedIn()) {
             authData.userProfile?.let {
-                B.imgAvatar.load(it.artwork.url) {
+                binding.imgAvatar.load(it.artwork.url) {
                     placeholder(R.drawable.bg_placeholder)
                     transform(RoundedCorners(32))
                 }
 
-                B.txtName.text = if (authData.isAnonymous)
+                binding.txtName.text = if (authData.isAnonymous)
                     "Anonymous"
                 else
                     it.name
 
-                B.txtEmail.text = if (authData.isAnonymous)
+                binding.txtEmail.text = if (authData.isAnonymous)
                     "anonymous@gmail.com"
                 else
                     it.email
             }
         } else {
-            B.imgAvatar.load(R.mipmap.ic_launcher) {
+            binding.imgAvatar.load(R.mipmap.ic_launcher) {
                 transform(RoundedCorners(32))
             }
-            B.txtName.text = getString(R.string.app_name)
-            B.txtEmail.text = getString(R.string.account_logged_out)
+            binding.txtName.text = getString(R.string.app_name)
+            binding.txtEmail.text = getString(R.string.account_logged_out)
         }
-    }
-
-    override fun onConnected() {
-        hideNetworkConnectivitySheet()
-    }
-
-    override fun onDisconnected() {
-        showNetworkConnectivitySheet()
-    }
-
-    override fun onReconnected() {
-
     }
 }

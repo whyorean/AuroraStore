@@ -53,9 +53,8 @@ import com.aurora.store.databinding.ActivityMainBinding
 import com.aurora.store.util.CertUtil.isFDroidApp
 import com.aurora.store.util.Log
 import com.aurora.store.util.Preferences
-import com.aurora.store.view.ui.account.AccountActivity
+import com.aurora.store.view.ui.account.AccountFragment
 import com.aurora.store.view.ui.commons.BaseActivity
-import com.aurora.store.view.ui.commons.BlacklistFragment
 import com.aurora.store.view.ui.downloads.DownloadActivity
 import com.aurora.store.view.ui.preferences.SettingsActivity
 import com.aurora.store.view.ui.search.SearchSuggestionActivity
@@ -260,7 +259,8 @@ class MainActivity : BaseActivity() {
                     B.drawerLayout.close()
                 }
                 R.id.menu_account_manager -> {
-                    open(AccountActivity::class.java)
+                    navController.navigate(R.id.accountFragment)
+                    B.drawerLayout.close()
                 }
                 R.id.menu_settings -> {
                     open(SettingsActivity::class.java)

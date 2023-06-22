@@ -65,4 +65,9 @@
         android:name="com.aurora.store.view.ui.commons.BlacklistFragment"
         android:label="@string/title_blacklist_manager"
         tools:layout="@layout/activity_generic_recycler" />
+    <fragment
+        android:id="@+id/accountFragment"
+        android:name="com.aurora.store.view.ui.account.AccountFragment"
+        android:label="@string/title_account_manager"
+        tools:layout="@layout/fragment_account" />
 </navigation>
