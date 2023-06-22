@@ -60,4 +60,9 @@
         android:name="com.aurora.store.view.ui.spoof.SpoofFragment"
         android:label="@string/title_spoof_manager"
         tools:layout="@layout/activity_generic_pager" />
+    <fragment
+        android:id="@+id/blacklistFragment"
+        android:name="com.aurora.store.view.ui.commons.BlacklistFragment"
+        android:label="@string/title_blacklist_manager"
+        tools:layout="@layout/activity_generic_recycler" />
 </navigation>

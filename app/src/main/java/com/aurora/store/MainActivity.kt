@@ -55,12 +55,11 @@ import com.aurora.store.util.Log
 import com.aurora.store.util.Preferences
 import com.aurora.store.view.ui.account.AccountActivity
 import com.aurora.store.view.ui.commons.BaseActivity
-import com.aurora.store.view.ui.commons.BlacklistActivity
+import com.aurora.store.view.ui.commons.BlacklistFragment
 import com.aurora.store.view.ui.downloads.DownloadActivity
 import com.aurora.store.view.ui.preferences.SettingsActivity
 import com.aurora.store.view.ui.search.SearchSuggestionActivity
 import com.aurora.store.view.ui.sheets.SelfUpdateSheet
-import com.aurora.store.view.ui.spoof.SpoofFragment
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import nl.komponents.kovenant.task
@@ -250,7 +249,8 @@ class MainActivity : BaseActivity() {
                     B.drawerLayout.close()
                 }
                 R.id.menu_blacklist_manager -> {
-                    open(BlacklistActivity::class.java)
+                    navController.navigate(R.id.blacklistFragment)
+                    B.drawerLayout.close()
                 }
                 R.id.menu_download_manager -> {
                     open(DownloadActivity::class.java)

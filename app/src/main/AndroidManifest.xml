@@ -156,7 +156,6 @@
         <activity android:name=".view.ui.account.AccountActivity" />
         <activity android:name=".view.ui.details.DetailsExodusActivity" />
         <activity android:name=".view.ui.details.DevAppsActivity" />
-        <activity android:name=".view.ui.commons.BlacklistActivity" />
         <activity android:name=".view.ui.preferences.SettingsActivity" />
         <activity android:name=".view.ui.commons.ExpandedStreamBrowseActivity" />
         <activity android:name=".view.ui.commons.EditorStreamBrowseActivity" />

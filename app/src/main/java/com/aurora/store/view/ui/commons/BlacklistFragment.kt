@@ -20,7 +20,10 @@
 package com.aurora.store.view.ui.commons
 
 import android.os.Bundle
+import android.view.View
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.aurora.store.R
 import com.aurora.store.data.model.Black
 import com.aurora.store.data.providers.BlacklistProvider
@@ -30,58 +33,45 @@ import com.aurora.store.view.epoxy.views.shimmer.AppListViewShimmerModel_
 import com.aurora.store.viewmodel.all.BlacklistViewModel
 
 
-class BlacklistActivity : BaseActivity() {
+class BlacklistFragment : Fragment(R.layout.activity_generic_recycler) {
 
-    private lateinit var B: ActivityGenericRecyclerBinding
+    private var _binding: ActivityGenericRecyclerBinding? = null
+    private val binding: ActivityGenericRecyclerBinding
+        get() = _binding!!
+
     private lateinit var VM: BlacklistViewModel
     private lateinit var blacklistProvider: BlacklistProvider
 
-    override fun onConnected() {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-    }
-
-    override fun onDisconnected() {
-
-    }
-
-    override fun onReconnected() {
-
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        B = ActivityGenericRecyclerBinding.inflate(layoutInflater)
+        _binding = ActivityGenericRecyclerBinding.bind(view)
         VM = ViewModelProvider(this)[BlacklistViewModel::class.java]
-        blacklistProvider = BlacklistProvider.with(this)
+        blacklistProvider = BlacklistProvider.with(view.context)
 
-        setContentView(B.root)
-
-        VM.liveData.observe(this) {
+        VM.liveData.observe(viewLifecycleOwner) {
             updateController(it.sortedByDescending { app ->
                 blacklistProvider.isBlacklisted(app.packageName)
             })
         }
 
-        attachToolbar()
+        // Toolbar
+        binding.layoutToolbarAction.txtTitle.text = getString(R.string.title_blacklist_manager)
+        binding.layoutToolbarAction.imgActionPrimary.setOnClickListener {
+            findNavController().navigateUp()
+        }
 
         updateController(null)
     }
 
-    override fun onDestroy() {
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
         blacklistProvider.save(VM.selected)
-        super.onDestroy()
-    }
-
-    private fun attachToolbar() {
-        B.layoutToolbarAction.txtTitle.text = getString(R.string.title_blacklist_manager)
-        B.layoutToolbarAction.imgActionPrimary.setOnClickListener {
-            finishAfterTransition()
-        }
     }
 
     private fun updateController(blackList: List<Black>?) {
-        B.recycler.withModels {
+        binding.recycler.withModels {
             setFilterDuplicates(true)
             if (blackList == null) {
                 for (i in 1..6) {
