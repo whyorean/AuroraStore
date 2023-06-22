@@ -53,7 +53,6 @@ import com.aurora.store.databinding.ActivityMainBinding
 import com.aurora.store.util.CertUtil.isFDroidApp
 import com.aurora.store.util.Log
 import com.aurora.store.util.Preferences
-import com.aurora.store.view.ui.about.AboutActivity
 import com.aurora.store.view.ui.account.AccountActivity
 import com.aurora.store.view.ui.all.AppsGamesActivity
 import com.aurora.store.view.ui.commons.BaseActivity
@@ -266,7 +265,8 @@ class MainActivity : BaseActivity() {
                     open(SettingsActivity::class.java)
                 }
                 R.id.menu_about -> {
-                    open(AboutActivity::class.java)
+                    navController.navigate(R.id.aboutFragment)
+                    B.drawerLayout.close()
                 }
             }
             false

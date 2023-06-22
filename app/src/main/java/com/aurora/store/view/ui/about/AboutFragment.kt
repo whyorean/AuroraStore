@@ -20,65 +20,49 @@
 package com.aurora.store.view.ui.about
 
 import android.os.Bundle
+import android.view.View
+import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.aurora.store.BuildConfig
-import com.aurora.store.R
-import com.aurora.store.data.model.Link
-import com.aurora.store.databinding.ActivityAboutBinding
 import com.aurora.extensions.browse
 import com.aurora.extensions.copyToClipBoard
 import com.aurora.extensions.load
+import com.aurora.store.BuildConfig
+import com.aurora.store.R
+import com.aurora.store.data.model.Link
+import com.aurora.store.databinding.FragmentAboutBinding
 import com.aurora.store.view.epoxy.views.preference.LinkViewModel_
-import com.aurora.store.view.ui.commons.BaseActivity
 
-class AboutActivity : BaseActivity() {
+class AboutFragment : Fragment(R.layout.fragment_about) {
 
-    private lateinit var B: ActivityAboutBinding
+    private var _binding: FragmentAboutBinding? = null
+    private val binding: FragmentAboutBinding
+        get() = _binding!!
 
-    override fun onConnected() {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        _binding = FragmentAboutBinding.bind(view)
 
-    }
+        // Toolbar
+        binding.layoutToolbarAction.txtTitle.text = getString(R.string.title_about)
+        binding.layoutToolbarAction.imgActionPrimary.setOnClickListener {
+            findNavController().navigateUp()
+        }
 
-    override fun onDisconnected() {
+        // About Details
+        binding.imgIcon.load(R.drawable.ic_logo)
+        binding.line2.text = ("v${BuildConfig.VERSION_NAME}(${BuildConfig.VERSION_CODE})")
 
-    }
-
-    override fun onReconnected() {
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        B = ActivityAboutBinding.inflate(layoutInflater)
-        setContentView(B.root)
-
-        attachToolbar()
-        attachAppDetails()
-        attachRecycler()
+        binding.epoxyRecycler.layoutManager =
+            LinearLayoutManager(view.context, RecyclerView.VERTICAL, false)
 
         updateController()
     }
 
-    private fun attachToolbar() {
-        B.layoutToolbarAction.txtTitle.text = getString(R.string.title_about)
-        B.layoutToolbarAction.imgActionPrimary.setOnClickListener {
-            finishAfterTransition()
-        }
-    }
-
-    private fun attachAppDetails() {
-        B.imgIcon.load(R.drawable.ic_logo)
-        B.line2.text = ("v${BuildConfig.VERSION_NAME}(${BuildConfig.VERSION_CODE})")
-    }
-
-    private fun attachRecycler() {
-        with(B.epoxyRecycler) {
-            layoutManager = LinearLayoutManager(
-                this@AboutActivity,
-                RecyclerView.VERTICAL,
-                false
-            )
-        }
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     private fun updateController() {
@@ -99,7 +83,7 @@ class AboutActivity : BaseActivity() {
             R.drawable.ic_fdroid
         )
 
-        B.epoxyRecycler.withModels {
+        binding.epoxyRecycler.withModels {
             for (i in linkURLS.indices) {
                 val link = Link(
                     id = i,
@@ -120,9 +104,9 @@ class AboutActivity : BaseActivity() {
 
     private fun processUrl(url: String) {
         when {
-            url.startsWith("http") -> browse(url)
-            url.startsWith("upi") -> browse(url)
-            else -> copyToClipBoard(url)
+            url.startsWith("http") -> context?.browse(url)
+            url.startsWith("upi") -> context?.browse(url)
+            else -> context?.copyToClipBoard(url)
         }
     }
 }

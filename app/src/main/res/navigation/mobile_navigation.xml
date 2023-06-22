@@ -40,4 +40,9 @@
         android:name="com.aurora.store.view.ui.updates.UpdatesFragment"
         android:label="@string/title_updates"
         tools:layout="@layout/fragment_updates" />
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="com.aurora.store.view.ui.about.AboutFragment"
+        android:label="@string/title_about"
+        tools:layout="@layout/fragment_about" />
 </navigation>
