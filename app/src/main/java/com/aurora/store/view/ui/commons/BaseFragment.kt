@@ -21,6 +21,7 @@ package com.aurora.store.view.ui.commons
 
 import android.app.ActivityOptions
 import android.content.Intent
+import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
 import com.aurora.Constants
 import com.aurora.extensions.getEmptyActivityBundle
@@ -32,7 +33,11 @@ import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import java.lang.reflect.Modifier
 
-open class BaseFragment : Fragment() {
+open class BaseFragment : Fragment {
+
+    constructor(): super()
+
+    constructor(@LayoutRes contentLayoutId: Int) : super(contentLayoutId)
 
     var gson: Gson = GsonBuilder().excludeFieldsWithModifiers(
         Modifier.TRANSIENT

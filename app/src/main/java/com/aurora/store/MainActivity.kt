@@ -54,12 +54,11 @@ import com.aurora.store.util.CertUtil.isFDroidApp
 import com.aurora.store.util.Log
 import com.aurora.store.util.Preferences
 import com.aurora.store.view.ui.account.AccountActivity
-import com.aurora.store.view.ui.all.AppsGamesFragment
 import com.aurora.store.view.ui.commons.BaseActivity
 import com.aurora.store.view.ui.commons.BlacklistActivity
 import com.aurora.store.view.ui.downloads.DownloadActivity
 import com.aurora.store.view.ui.preferences.SettingsActivity
-import com.aurora.store.view.ui.sale.AppSalesActivity
+import com.aurora.store.view.ui.sale.AppSalesFragment
 import com.aurora.store.view.ui.search.SearchSuggestionActivity
 import com.aurora.store.view.ui.sheets.SelfUpdateSheet
 import com.aurora.store.view.ui.spoof.SpoofActivity
@@ -248,7 +247,8 @@ class MainActivity : BaseActivity() {
                     B.drawerLayout.close()
                 }
                 R.id.menu_apps_sale -> {
-                    open(AppSalesActivity::class.java)
+                    navController.navigate(R.id.appSalesFragment)
+                    B.drawerLayout.close()
                 }
                 R.id.menu_blacklist_manager -> {
                     open(BlacklistActivity::class.java)

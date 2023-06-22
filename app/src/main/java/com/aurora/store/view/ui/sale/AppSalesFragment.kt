@@ -20,72 +20,61 @@
 package com.aurora.store.view.ui.sale
 
 import android.os.Bundle
+import android.view.View
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
 import com.aurora.store.databinding.ActivityGenericRecyclerBinding
 import com.aurora.store.view.custom.recycler.EndlessRecyclerOnScrollListener
-import com.aurora.store.view.epoxy.views.app.AppListViewModel_
 import com.aurora.store.view.epoxy.views.AppProgressViewModel_
+import com.aurora.store.view.epoxy.views.app.AppListViewModel_
 import com.aurora.store.view.epoxy.views.shimmer.AppListViewShimmerModel_
-import com.aurora.store.view.ui.commons.BaseActivity
+import com.aurora.store.view.ui.commons.BaseFragment
 import com.aurora.store.viewmodel.sale.AppSalesViewModel
 
 
-class AppSalesActivity : BaseActivity() {
+class AppSalesFragment : BaseFragment(R.layout.activity_generic_recycler) {
 
-    lateinit var B: ActivityGenericRecyclerBinding
+    private var _binding: ActivityGenericRecyclerBinding? = null
+    private val binding: ActivityGenericRecyclerBinding
+        get() = _binding!!
+
     lateinit var VM: AppSalesViewModel
 
     lateinit var endlessRecyclerOnScrollListener: EndlessRecyclerOnScrollListener
 
-    override fun onConnected() {
-        hideNetworkConnectivitySheet()
-    }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-    override fun onDisconnected() {
-        showNetworkConnectivitySheet()
-    }
-
-    override fun onReconnected() {
-
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        B = ActivityGenericRecyclerBinding.inflate(layoutInflater)
+        _binding = ActivityGenericRecyclerBinding.bind(view)
         VM = ViewModelProvider(this)[AppSalesViewModel::class.java]
 
-        setContentView(B.root)
-
-        attachRecycler()
-        attachToolbar()
-
-        VM.liveAppList.observe(this) {
-            updateController(it)
+        binding.layoutToolbarAction.txtTitle.text = getString(R.string.title_apps_sale)
+        binding.layoutToolbarAction.imgActionPrimary.setOnClickListener {
+            findNavController().navigateUp()
         }
-    }
 
-    private fun attachToolbar() {
-        B.layoutToolbarAction.txtTitle.text = getString(R.string.title_apps_sale)
-        B.layoutToolbarAction.imgActionPrimary.setOnClickListener {
-            finishAfterTransition()
-        }
-    }
-
-    private fun attachRecycler() {
         endlessRecyclerOnScrollListener = object : EndlessRecyclerOnScrollListener() {
             override fun onLoadMore(currentPage: Int) {
                 VM.next()
             }
         }
-        B.recycler.addOnScrollListener(endlessRecyclerOnScrollListener)
+        binding.recycler.addOnScrollListener(endlessRecyclerOnScrollListener)
         updateController(null)
+
+        VM.liveAppList.observe(viewLifecycleOwner) {
+            updateController(it)
+        }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     private fun updateController(appList: List<App>?) {
-        B.recycler
+        binding.recycler
             .withModels {
                 setFilterDuplicates(true)
                 if (appList == null) {

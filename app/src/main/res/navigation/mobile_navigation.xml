@@ -50,4 +50,9 @@
         android:name="com.aurora.store.view.ui.all.AppsGamesFragment"
         android:label="@string/title_apps_games"
         tools:layout="@layout/activity_generic_pager" />
+    <fragment
+        android:id="@+id/appSalesFragment"
+        android:name="com.aurora.store.view.ui.sale.AppSalesFragment"
+        android:label="@string/title_apps_sale"
+        tools:layout="@layout/activity_generic_recycler" />
 </navigation>
