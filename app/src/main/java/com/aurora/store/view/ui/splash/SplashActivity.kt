@@ -35,13 +35,8 @@ import com.aurora.store.R
 import com.aurora.store.data.AuthState
 import com.aurora.store.data.event.BusEvent
 import com.aurora.store.databinding.ActivitySplashBinding
-import com.aurora.store.util.Preferences
-import com.aurora.store.view.ui.account.AccountActivity
 import com.aurora.store.view.ui.account.GoogleActivity
 import com.aurora.store.view.ui.commons.BaseActivity
-import com.aurora.store.view.ui.commons.BlacklistActivity
-import com.aurora.store.view.ui.preferences.SettingsActivity
-import com.aurora.store.view.ui.spoof.SpoofActivity
 import com.aurora.store.viewmodel.auth.AuthViewModel
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import org.greenrobot.eventbus.EventBus
@@ -134,33 +129,6 @@ class SplashActivity : BaseActivity() {
             VM.observe()
         }
         super.onResume()
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu_splash, menu)
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.menu_blacklist_manager -> {
-                open(BlacklistActivity::class.java)
-                return true
-            }
-            R.id.menu_spoof_manager -> {
-                open(SpoofActivity::class.java)
-                return true
-            }
-            R.id.menu_account_manager -> {
-                open(AccountActivity::class.java)
-                return true
-            }
-            R.id.menu_settings -> {
-                open(SettingsActivity::class.java)
-                return true
-            }
-        }
-        return super.onOptionsItemSelected(item)
     }
 
     private fun attachToolbar() {
