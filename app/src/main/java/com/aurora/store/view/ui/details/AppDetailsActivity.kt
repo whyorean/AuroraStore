@@ -57,7 +57,6 @@ import com.aurora.store.data.service.AppMetadataStatusListener
 import com.aurora.store.data.service.UpdateService
 import com.aurora.store.databinding.ActivityDetailsBinding
 import com.aurora.store.util.*
-import com.aurora.store.view.ui.downloads.DownloadActivity
 import com.aurora.store.view.ui.sheets.InstallErrorDialogSheet
 import com.aurora.store.view.ui.sheets.ManualDownloadSheet
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
@@ -281,10 +280,6 @@ class AppDetailsActivity : BaseDetailsActivity() {
                 val sheet = ManualDownloadSheet.newInstance(app)
                 sheet.isCancelable = false
                 sheet.show(supportFragmentManager, ManualDownloadSheet.TAG)
-                return true
-            }
-            R.id.menu_download_manager -> {
-                open(DownloadActivity::class.java)
                 return true
             }
             R.id.action_playstore -> {

@@ -19,7 +19,6 @@
 
 package com.aurora.store.view.ui.search
 
-import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -32,15 +31,12 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.aurora.Constants
 import com.aurora.extensions.browse
-import com.aurora.extensions.getEmptyActivityBundle
-import com.aurora.extensions.open
 import com.aurora.extensions.showKeyboard
 import com.aurora.gplayapi.SearchSuggestEntry
 import com.aurora.store.R
 import com.aurora.store.databinding.FragmentSearchSuggestionBinding
 import com.aurora.store.util.Preferences
 import com.aurora.store.view.epoxy.views.SearchSuggestionViewModel_
-import com.aurora.store.view.ui.downloads.DownloadActivity
 import com.aurora.store.viewmodel.search.SearchSuggestionViewModel
 import com.google.android.material.textfield.TextInputEditText
 
@@ -69,7 +65,7 @@ class SearchSuggestionFragment : Fragment(R.layout.fragment_search_suggestion) {
                 findNavController().navigateUp()
             }
             imgActionSecondary.setOnClickListener {
-                activity?.open(DownloadActivity::class.java)
+                findNavController().navigate(R.id.downloadFragment)
             }
         }
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="details_dev_email">ईमेल</string>
     <string name="about_bhim">भीम - यूपीआई</string>
     <string name="action_disable">अक्षम करें</string>
@@ -190,7 +190,7 @@
     <string name="pref_install_mode_title">इंस्टॉल करने का तरीका</string>
     <string name="title_account_manager">खाते</string>
     <string name="title_apps_sale">ऐप छूट पर</string>
-    <string name="download_paused">रोके गए</string>
+    <string name="download_paused">रोके गए <xliff:g id="completed_downloads"> %1$d </xliff:g> / <xliff:g id="all_downloads"> %2$d </xliff:g></string>
     <string name="installer_status_failure_incompatible">डिवाइस पर नहीं काम करते ऐप</string>
     <string name="menu_license">लाइसेंस</string>
     <string name="pref_install_mode_summary">एपीके इंस्टॉल का मोड चुनें</string>

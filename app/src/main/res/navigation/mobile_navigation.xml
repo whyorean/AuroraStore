@@ -93,4 +93,9 @@
             android:name="query"
             app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/downloadFragment"
+        android:name="com.aurora.store.view.ui.downloads.DownloadFragment"
+        android:label="@string/title_download_manager"
+        tools:layout="@layout/fragment_download" />
 </navigation>

@@ -35,8 +35,6 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.aurora.Constants
-import com.aurora.extensions.open
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.SearchBundle
 import com.aurora.store.R
@@ -50,7 +48,6 @@ import com.aurora.store.view.epoxy.views.app.AppListViewModel_
 import com.aurora.store.view.epoxy.views.app.NoAppViewModel_
 import com.aurora.store.view.epoxy.views.shimmer.AppListViewShimmerModel_
 import com.aurora.store.view.ui.commons.BaseFragment
-import com.aurora.store.view.ui.downloads.DownloadActivity
 import com.aurora.store.view.ui.sheets.FilterSheet
 import com.aurora.store.viewmodel.search.SearchResultViewModel
 import com.google.android.material.snackbar.Snackbar
@@ -98,7 +95,7 @@ class SearchResultsFragment : BaseFragment(R.layout.fragment_search_result),
                 findNavController().navigateUp()
             }
             imgActionSecondary.setOnClickListener {
-                activity?.open(DownloadActivity::class.java)
+                findNavController().navigate(R.id.downloadFragment)
             }
         }
 

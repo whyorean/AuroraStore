@@ -41,7 +41,6 @@ import androidx.core.graphics.ColorUtils
 import androidx.core.view.GravityCompat
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.aurora.Constants
@@ -55,7 +54,6 @@ import com.aurora.store.util.CertUtil.isFDroidApp
 import com.aurora.store.util.Log
 import com.aurora.store.util.Preferences
 import com.aurora.store.view.ui.commons.BaseActivity
-import com.aurora.store.view.ui.downloads.DownloadActivity
 import com.aurora.store.view.ui.sheets.SelfUpdateSheet
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -190,7 +188,7 @@ class MainActivity : BaseActivity() {
         }
 
         B.viewToolbar.imgActionSecondary.setOnClickListener {
-            open(DownloadActivity::class.java)
+            navController.navigate(R.id.downloadFragment)
         }
     }
 
@@ -247,7 +245,8 @@ class MainActivity : BaseActivity() {
                     B.drawerLayout.close()
                 }
                 R.id.menu_download_manager -> {
-                    open(DownloadActivity::class.java)
+                    navController.navigate(R.id.downloadFragment)
+                    B.drawerLayout.close()
                 }
                 R.id.menu_spoof_manager -> {
                     navController.navigate(R.id.spoofFragment)

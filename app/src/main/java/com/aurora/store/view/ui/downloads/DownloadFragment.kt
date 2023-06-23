@@ -20,24 +20,34 @@
 package com.aurora.store.view.ui.downloads
 
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
+import android.view.View
+import androidx.core.content.ContextCompat
+import androidx.navigation.fragment.findNavController
 import com.aurora.Constants
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
 import com.aurora.store.data.downloader.DownloadManager
 import com.aurora.store.data.model.DownloadFile
-import com.aurora.store.databinding.ActivityDownloadBinding
+import com.aurora.store.databinding.FragmentDownloadBinding
 import com.aurora.store.util.Preferences
 import com.aurora.store.view.epoxy.views.DownloadViewModel_
 import com.aurora.store.view.epoxy.views.app.NoAppViewModel_
-import com.aurora.store.view.ui.commons.BaseActivity
+import com.aurora.store.view.ui.commons.BaseFragment
 import com.aurora.store.view.ui.sheets.DownloadMenuSheet
-import com.tonyodev.fetch2.*
+import com.tonyodev.fetch2.AbstractFetchListener
+import com.tonyodev.fetch2.BuildConfig
+import com.tonyodev.fetch2.Download
+import com.tonyodev.fetch2.Error
+import com.tonyodev.fetch2.Fetch
+import com.tonyodev.fetch2.FetchListener
+import com.tonyodev.fetch2.Status
 
-class DownloadActivity : BaseActivity() {
+class DownloadFragment : BaseFragment(R.layout.fragment_download) {
 
-    private lateinit var B: ActivityDownloadBinding
+    private var _binding: FragmentDownloadBinding? = null
+    private val binding: FragmentDownloadBinding
+        get() = _binding!!
+
     private lateinit var fetch: Fetch
 
     private var fetchListener: FetchListener = object : AbstractFetchListener() {
@@ -86,30 +96,52 @@ class DownloadActivity : BaseActivity() {
         }
     }
 
-    override fun onConnected() {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-    }
+        _binding = FragmentDownloadBinding.bind(view)
 
-    override fun onDisconnected() {
+        // Toolbar
+        binding.layoutToolbarAction.toolbar.apply {
+            elevation = 0f
+            title = getString(R.string.title_download_manager)
+            navigationIcon = ContextCompat.getDrawable(view.context, R.drawable.ic_arrow_back)
+            inflateMenu(R.menu.menu_download_main)
+            setNavigationOnClickListener { findNavController().navigateUp() }
+            setOnMenuItemClickListener {
+                when (it.itemId) {
+                    R.id.action_pause_all -> {
+                        fetch.pauseAll()
+                    }
 
-    }
+                    R.id.action_resume_all -> {
+                        fetch.resumeAll()
+                    }
 
-    override fun onReconnected() {
+                    R.id.action_cancel_all -> {
+                        fetch.cancelAll()
+                    }
 
-    }
+                    R.id.action_clear_completed -> {
+                        fetch.removeAllWithStatus(Status.COMPLETED)
+                        Preferences.getPrefs(view.context).edit()
+                            .remove(Preferences.PREFERENCE_UNIQUE_GROUP_IDS).apply()
+                    }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+                    R.id.action_force_clear_all -> {
+                        fetch.deleteAll()
+                        Preferences.getPrefs(view.context).edit()
+                            .remove(Preferences.PREFERENCE_UNIQUE_GROUP_IDS).apply()
+                    }
+                }
+                true
+            }
+        }
 
-        B = ActivityDownloadBinding.inflate(layoutInflater)
-        setContentView(B.root)
-
-        attachToolbar()
-
-        fetch = DownloadManager.with(this).fetch
+        fetch = DownloadManager.with(view.context).fetch
         updateDownloadsList()
 
-        B.swipeRefreshLayout.setOnRefreshListener {
+        binding.swipeRefreshLayout.setOnRefreshListener {
             updateDownloadsList()
         }
     }
@@ -126,58 +158,10 @@ class DownloadActivity : BaseActivity() {
         super.onPause()
     }
 
-    override fun onDestroy() {
-        if (::fetch.isInitialized)
-            fetch.removeListener(fetchListener)
-        super.onDestroy()
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu_download_main, menu)
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            android.R.id.home -> {
-                onBackPressedDispatcher.onBackPressed()
-                return true
-            }
-            R.id.action_pause_all -> {
-                fetch.pauseAll()
-                return true
-            }
-            R.id.action_resume_all -> {
-                fetch.resumeAll()
-                return true
-            }
-            R.id.action_cancel_all -> {
-                fetch.cancelAll()
-                return true
-            }
-            R.id.action_clear_completed -> {
-                fetch.removeAllWithStatus(Status.COMPLETED)
-                Preferences.getPrefs(this).edit().remove(Preferences.PREFERENCE_UNIQUE_GROUP_IDS).apply()
-                return true
-            }
-            R.id.action_force_clear_all -> {
-                fetch.deleteAll()
-                Preferences.getPrefs(this).edit().remove(Preferences.PREFERENCE_UNIQUE_GROUP_IDS).apply()
-                return true
-            }
-        }
-        return super.onOptionsItemSelected(item)
-    }
-
-    private fun attachToolbar() {
-        setSupportActionBar(B.layoutToolbarAction.toolbar)
-        val actionBar = supportActionBar
-        if (actionBar != null) {
-            actionBar.setDisplayShowCustomEnabled(true)
-            actionBar.setDisplayHomeAsUpEnabled(true)
-            actionBar.elevation = 0f
-            actionBar.setTitle(R.string.title_download_manager)
-        }
+    override fun onDestroyView() {
+        if (::fetch.isInitialized) fetch.removeListener(fetchListener)
+        super.onDestroyView()
+        _binding = null
     }
 
     private fun updateDownloadsList() {
@@ -193,7 +177,7 @@ class DownloadActivity : BaseActivity() {
     }
 
     private fun updateController(downloads: List<DownloadFile>) {
-        B.recycler.withModels {
+        binding.recycler.withModels {
             if (downloads.isEmpty()) {
                 add(
                     NoAppViewModel_()
@@ -215,7 +199,7 @@ class DownloadActivity : BaseActivity() {
                 }
             }
         }
-        B.swipeRefreshLayout.isRefreshing = false
+        binding.swipeRefreshLayout.isRefreshing = false
     }
 
     private fun openDetailsActivity(downloadFile: DownloadFile) {
@@ -228,9 +212,9 @@ class DownloadActivity : BaseActivity() {
 
     private fun openDownloadMenuSheet(downloadFile: DownloadFile) {
         with(downloadFile) {
-            val fragment = supportFragmentManager.findFragmentByTag(DownloadMenuSheet.TAG)
+            val fragment = childFragmentManager.findFragmentByTag(DownloadMenuSheet.TAG)
             if (fragment != null)
-                supportFragmentManager.beginTransaction().remove(fragment)
+                childFragmentManager.beginTransaction().remove(fragment).commitAllowingStateLoss()
 
             DownloadMenuSheet().apply {
                 arguments = Bundle().apply {
@@ -239,7 +223,7 @@ class DownloadActivity : BaseActivity() {
                     putString(DownloadMenuSheet.DOWNLOAD_URL, download.url)
                 }
             }.show(
-                supportFragmentManager,
+                childFragmentManager,
                 DownloadMenuSheet.TAG
             )
         }

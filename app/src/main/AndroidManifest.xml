@@ -149,7 +149,6 @@
         <activity android:name=".view.ui.commons.CategoryBrowseActivity" />
         <activity android:name=".view.ui.details.DetailsMoreActivity" />
         <activity android:name=".view.ui.details.DetailsReviewActivity" />
-        <activity android:name=".view.ui.downloads.DownloadActivity" />
         <activity android:name=".view.ui.account.GoogleActivity" />
         <activity android:name=".view.ui.details.DetailsExodusActivity" />
         <activity android:name=".view.ui.details.DevAppsActivity" />
