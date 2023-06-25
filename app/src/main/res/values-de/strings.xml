@@ -337,4 +337,6 @@
     <string name="action_import">Importieren</string>
     <string name="toast_import_failed">Gerätekonfiguration konnte nicht importiert werden</string>
     <string name="downloading_dep">Für <xliff:g id="app">%1$s</xliff:g> werden zusätzliche Dateien heruntergeladen</string>
+    <string name="installer_shizuku_unavailable">Shiziku ist nicht installiert oder richtig eingerichtet.</string>
+    <string name="pref_install_mode_shizuku">Shizuku-Installer</string>
 </resources>
