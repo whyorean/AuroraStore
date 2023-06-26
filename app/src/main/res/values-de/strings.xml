@@ -115,7 +115,7 @@
     <string name="pref_install_profile_title">Installationsprofile (experimentell)</string>
     <string name="pref_install_mode_title">Installationsmethode</string>
     <string name="pref_install_mode_summary">Methode der APK-Installation wählen</string>
-    <string name="pref_install_mode_services">Aurora-Services</string>
+    <string name="pref_install_mode_services">Mit Aurora Services</string>
     <string name="about_libera_summary">Unterstützer auf Liberapay werden</string>
     <string name="pref_install_delete_title">APK-Datei nach der Installation löschen</string>
     <string name="pref_install_delete_summary">APK-Dateien automatisch löschen</string>
@@ -160,9 +160,9 @@
     <string name="installer_status_failure_session">Sitzung konnte nicht erstellt werden</string>
     <string name="installer_status_failure_blocked">Installation wurde blockiert</string>
     <string name="installer_status_failure">Installationsmethode fehlgeschlagen</string>
-    <string name="installer_service_misconfigured">Bitte zuerst die Aurora-Services einrichten und alle Berechtigungen erteilen.</string>
-    <string name="installer_service_unavailable">Diese Methode ist für Installationen nicht verfügbar. Die Aurora-Services 1.0.9 oder höher installieren oder die Installationsmethode ändern.</string>
-    <string name="installer_service_available">Aurora-Services sind verfügbar und bereit zur Installation.</string>
+    <string name="installer_service_misconfigured">Bitte zuerst Aurora Services einrichten und alle Berechtigungen erteilen.</string>
+    <string name="installer_service_unavailable">Diese Methode ist für Installationen nicht verfügbar. Aurora-Services 1.0.9 oder höher installieren oder die Installationsmethode ändern.</string>
+    <string name="installer_service_available">Aurora Services sind verfügbar und bereit zur Installation.</string>
     <string name="installer_root_unavailable">Diese Methode ist für Installationen nicht verfügbar. Bitte den Root-Zugriff ermöglichen oder die Installationsmethode ändern.</string>
     <string name="filter_review_two">Zwei</string>
     <string name="filter_review_three">Drei</string>
@@ -288,7 +288,7 @@
     <string name="app_updater_service_notif_text">Ermöglicht den Download von Apps im Hintergrund</string>
     <string name="account_anonymous_insecure">Anonym (unsicher)</string>
     <string name="installer_am_unavailable">Diese Methode ist für Installationen nicht verfügbar. Den »App Manager« installieren oder die Installationsmethode ändern.</string>
-    <string name="pref_install_mode_am">AM-Installation</string>
+    <string name="pref_install_mode_am">Mit App Manager</string>
     <string name="ui_accent_1">Blau</string>
     <string name="ui_accent_2">Magenta</string>
     <string name="ui_accent_3">Rot</string>
@@ -337,6 +337,18 @@
     <string name="action_import">Importieren</string>
     <string name="toast_import_failed">Gerätekonfiguration konnte nicht importiert werden</string>
     <string name="downloading_dep">Für <xliff:g id="app">%1$s</xliff:g> werden zusätzliche Dateien heruntergeladen</string>
-    <string name="installer_shizuku_unavailable">Shiziku ist nicht installiert oder richtig eingerichtet.</string>
-    <string name="pref_install_mode_shizuku">Shizuku-Installer</string>
+    <string name="installer_shizuku_unavailable">Shizuku ist nicht installiert oder nicht richtig eingerichtet.</string>
+    <string name="pref_install_mode_shizuku">Mit Shizuku</string>
+    <string name="notification_channel_updates">Update-Benachrichtigungen</string>
+    <string name="notification_updates_available_1"><xliff:g id="apps_count">%1$d</xliff:g> vorhandenes Update</string>
+    <string name="notification_updates_available_desc_3"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g> und <xliff:g id="app_three_name">%3$s</xliff:g></string>
+    <string name="notification_updates_available_desc_1">Eine neue Version von <xliff:g id="app_one_name">%1$s</xliff:g> ist verfügbar</string>
+    <string name="checking_for_updates">Update-Überprüfung</string>
+    <string name="notification_updates_available_desc_4"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g>, <xliff:g id="app_three_name">%3$s</xliff:g> und <xliff:g id="apps_count">%4$d</xliff:g> weitere</string>
+    <string name="failed_validating_account">Kontoüberprüfung fehlgeschlagen, mögliche Tarifbeschränkung.
+\nBitte neu anmelden!</string>
+    <string name="notification_updates_available"><xliff:g id="apps_count">%1$d</xliff:g> vorhandene Updates</string>
+    <string name="notification_updates_available_desc_2"><xliff:g id="app_one_name">%1$s</xliff:g> und <xliff:g id="app_two_name">%2$s</xliff:g></string>
+    <string name="pref_updates_check">Automatische Update-Überprüfung</string>
+    <string name="pref_updates_check_desc">Regelmäßige automatische Prüfung und Benachrichtigung zu neuen App-Updates</string>
 </resources>
