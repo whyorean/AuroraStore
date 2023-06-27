@@ -115,7 +115,7 @@
     <string name="pref_install_profile_title">Installationsprofile (experimentell)</string>
     <string name="pref_install_mode_title">Installationsmethode</string>
     <string name="pref_install_mode_summary">Methode der APK-Installation wählen</string>
-    <string name="pref_install_mode_services">Mit Aurora-Services</string>
+    <string name="pref_install_mode_services">Mit Aurora Services</string>
     <string name="about_libera_summary">Unterstützer auf Liberapay werden</string>
     <string name="pref_install_delete_title">APK-Datei nach der Installation löschen</string>
     <string name="pref_install_delete_summary">APK-Dateien automatisch löschen</string>
