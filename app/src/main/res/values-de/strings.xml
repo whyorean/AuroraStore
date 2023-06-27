@@ -115,7 +115,7 @@
     <string name="pref_install_profile_title">Installationsprofile (experimentell)</string>
     <string name="pref_install_mode_title">Installationsmethode</string>
     <string name="pref_install_mode_summary">Methode der APK-Installation wählen</string>
-    <string name="pref_install_mode_services">Mit Aurora Services</string>
+    <string name="pref_install_mode_services">Mit Aurora-Services</string>
     <string name="about_libera_summary">Unterstützer auf Liberapay werden</string>
     <string name="pref_install_delete_title">APK-Datei nach der Installation löschen</string>
     <string name="pref_install_delete_summary">APK-Dateien automatisch löschen</string>
@@ -160,9 +160,9 @@
     <string name="installer_status_failure_session">Sitzung konnte nicht erstellt werden</string>
     <string name="installer_status_failure_blocked">Installation wurde blockiert</string>
     <string name="installer_status_failure">Installationsmethode fehlgeschlagen</string>
-    <string name="installer_service_misconfigured">Bitte zuerst Aurora Services einrichten und alle Berechtigungen erteilen.</string>
+    <string name="installer_service_misconfigured">Bitte zuerst Aurora-Services einrichten und alle Berechtigungen erteilen.</string>
     <string name="installer_service_unavailable">Diese Methode ist für Installationen nicht verfügbar. Aurora-Services 1.0.9 oder höher installieren oder die Installationsmethode ändern.</string>
-    <string name="installer_service_available">Aurora Services sind verfügbar und bereit zur Installation.</string>
+    <string name="installer_service_available">Aurora-Services sind verfügbar und bereit zur Installation.</string>
     <string name="installer_root_unavailable">Diese Methode ist für Installationen nicht verfügbar. Bitte den Root-Zugriff ermöglichen oder die Installationsmethode ändern.</string>
     <string name="filter_review_two">Zwei</string>
     <string name="filter_review_three">Drei</string>
