@@ -336,4 +336,18 @@
     <string name="toast_import_failed">No se pudo importar la configuración del dispositivo</string>
     <string name="toast_import_success">La configuración del dispositivo ha sido importada</string>
     <string name="downloading_dep">Descargando los archivos adicionales para <xliff:g id="app">%1$s</xliff:g></string>
+    <string name="notification_updates_available_1"><xliff:g id="apps_count">%1$d</xliff:g> actualización disponible</string>
+    <string name="notification_updates_available_desc_2"><xliff:g id="app_one_name">%1$s</xliff:g> y <xliff:g id="app_two_name">%2$s</xliff:g></string>
+    <string name="notification_updates_available_desc_4"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g>, <xliff:g id="app_three_name">%3$s</xliff:g> y <xliff:g id="apps_count">%4$d</xliff:g> más</string>
+    <string name="checking_for_updates">Comprobando las actualizaciones</string>
+    <string name="pref_updates_check">Comprobación automática de actualizaciones</string>
+    <string name="pref_updates_check_desc">Comprobación automática y notificación periódica de nuevas actualizaciones de la aplicación</string>
+    <string name="failed_validating_account">No se ha podido validar la cuenta, puede que la tarifa esté limitada.
+\n¡Vuelve a iniciar sesión!</string>
+    <string name="notification_channel_updates">Notificaciones de actualizaciones</string>
+    <string name="notification_updates_available"><xliff:g id="apps_count">%1$d</xliff:g> actualizaciones disponibles</string>
+    <string name="notification_updates_available_desc_1">Una nueva versión de <xliff:g id="app_one_name">%1$s</xliff:g> está disponible</string>
+    <string name="notification_updates_available_desc_3"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g> y <xliff:g id="app_three_name">%3$s</xliff:g></string>
+    <string name="pref_install_mode_shizuku">Instalador de Shizuku</string>
+    <string name="installer_shizuku_unavailable">Shizuku no está instalado o configurado correctamente.</string>
 </resources>

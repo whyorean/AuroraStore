@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="title_about">Over</string>
     <string name="title_apps">Apps</string>
     <string name="title_account_manager">Accounts</string>
@@ -93,7 +93,7 @@
     <string name="pref_ui_theme_title">Thema</string>
     <string name="pref_ui_theme_system">Volg systeem</string>
     <string name="pref_ui_theme_light">Licht</string>
-    <string name="pref_ui_theme_darkord">Disskord</string>
+    <string name="pref_ui_theme_darkord">Discord</string>
     <string name="pref_ui_theme_dark_x">Donker X</string>
     <string name="pref_ui_theme_dark">Donker</string>
     <string name="pref_ui_theme_black">Zwart</string>
@@ -191,7 +191,7 @@
     <string name="download_force_clear_all">Forceer verwijder alle</string>
     <string name="download_failed">Installatie mislukt</string>
     <string name="download_eta_calculating">Aan het berekenen</string>
-    <string name="download_completed">Geïnstalleerd</string>
+    <string name="download_completed">Download voltooid</string>
     <string name="download_clear_completed">Verwijdering voltooid</string>
     <string name="download_canceled">Afgebroken</string>
     <string name="download_cancel_all">Annuleer alle</string>
@@ -301,4 +301,53 @@
     <string name="ui_accent_8">Roze</string>
     <string name="ui_accent_6">Paars</string>
     <string name="ui_accent_7">Grijs</string>
+    <string name="action_import">Importeren</string>
+    <string name="download_eta_min">nog %1$dm %2$ds</string>
+    <string name="download_eta_hrs">nog %1$dh %2$dm %3$ds</string>
+    <string name="download_eta_sec">nog %1$ds</string>
+    <string name="download_paused">Gepauzeerd • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
+    <string name="session_scrapped">Laatste sessie afgebroken</string>
+    <string name="session_verifying">Sessie verifiëren</string>
+    <string name="session_verifying_google">Google-sessie verifiëren</string>
+    <string name="ui_accent_0">Systeem</string>
+    <string name="server_maintenance">Server buiten gebruik voor werkzaamheden</string>
+    <string name="failed_validating_account">Account valideren mislukt, kan mogelijk tariefbeperkt zijn.
+\nLog alstublieft opnieuw in!</string>
+    <string name="download_progress">Aan het downloaden • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
+    <string name="installer_shizuku_unavailable">Shizuku is niet geïnstalleerd of niet goed ingesteld.</string>
+    <string name="onboarding_permission_notifications">Meldingen</string>
+    <string name="pref_advanced_search_in_ctt_desc">Opent zoekresultaten in een aangepast tabblad van een browser</string>
+    <string name="session_login">U moet eerst aanmelden</string>
+    <string name="session_login_failed_google">Aanmelden via Google mislukt</string>
+    <string name="toast_import_success">Apparaatconfiguratie geïmporteerd</string>
+    <string name="toast_import_failed">Kon de apparaatconfiguratie niet importeren</string>
+    <string name="updates_available">updates beschikbaar</string>
+    <string name="update_available">update beschikbaar</string>
+    <string name="notification_updates_available_1"><xliff:g id="apps_count">%1$d</xliff:g> update beschikbaar</string>
+    <string name="pref_updates_check_desc">Automatisch regelmatig controleren &amp; melden voor nieuwe app-updates</string>
+    <string name="notification_updates_available_desc_4"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g>, <xliff:g id="app_three_name">%3$s</xliff:g> en <xliff:g id="apps_count">%4$d</xliff:g> more</string>
+    <string name="notification_updates_available_desc_3"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g> en <xliff:g id="app_three_name">%3$s</xliff:g></string>
+    <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>
+    <string name="onboarding_permission_notifications_desc">Meldingen voor de status van installaties verzenden</string>
+    <string name="pref_install_mode_shizuku">Shizuku installatieprogramma</string>
+    <string name="pref_advanced_search_in_ctt">Zoeken in aangepaste tabblad</string>
+    <string name="session_enjoy">Aanmelden en genieten.</string>
+    <string name="session_good">Wow! Alles goed.</string>
+    <string name="session_init">Voorbereiden…</string>
+    <string name="title_advanced">Geavanceerd</string>
+    <string name="rate_limited">Oeps, het tarief voor dit account is beperkt!</string>
+    <string name="error">Er is een fout opgetreden!</string>
+    <string name="menu">Menu</string>
+    <string name="expand">Uitbreiden</string>
+    <string name="open_in_aurora">In Aurora Store openen</string>
+    <string name="permissions_denied">Vereiste rechten zijn geweigerd. Verleen deze alstublieft om verder te gaan met de actie</string>
+    <string name="search_hint">Zoeken naar Apps &amp; Spellen</string>
+    <string name="requesting_new_session">Nieuwe sessie aanvragen</string>
+    <string name="downloading_dep">Extra bestanden downloaden voor <xliff:g id="app">%1$s</xliff:g></string>
+    <string name="notification_channel_updates">Meldingen voor updates</string>
+    <string name="notification_updates_available"><xliff:g id="apps_count">%1$d</xliff:g> updates beschikbaar</string>
+    <string name="notification_updates_available_desc_1">Een nieuwere versie van <xliff:g id="app_one_name">%1$s</xliff:g> is beschikbaar</string>
+    <string name="notification_updates_available_desc_2"><xliff:g id="app_one_name">%1$s</xliff:g> en <xliff:g id="app_two_name">%2$s</xliff:g></string>
+    <string name="checking_for_updates">Controleren op updates</string>
+    <string name="pref_updates_check">Automatische controle voor updates</string>
 </resources>

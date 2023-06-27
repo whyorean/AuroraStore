@@ -327,7 +327,7 @@
     <string name="pref_advanced_search_in_ctt">Szukaj w niestandardowej karcie</string>
     <string name="session_init">Przygotowuję…</string>
     <string name="session_scrapped">Ostatnia sesja została zezłomowana</string>
-    <string name="rate_limited">Ups, to konto ma ograniczoną przepustowość!</string>
+    <string name="rate_limited">Ups, to konto ma ograniczoną liczbę żądań!</string>
     <string name="permissions_denied">Odmówiono wymaganych uprawnień. Przyznaj je, aby kontynuować akcję</string>
     <string name="session_login_failed_google">Nie udało się zalogować za pomocą konta Google</string>
     <string name="server_maintenance">Serwer wyłączony z powodu prac konserwacyjnych</string>
@@ -336,4 +336,18 @@
     <string name="downloading_dep">Pobieranie dodatkowych plików dla <xliff:g id="app">%1$s</xliff:g></string>
     <string name="toast_import_success">Zaimportowano konfigurację urządzenia</string>
     <string name="toast_import_failed">Nie można zaimportować konfiguracji urządzenia</string>
+    <string name="notification_updates_available_1"><xliff:g id="apps_count">%1$d</xliff:g> dostępna aktualizacja</string>
+    <string name="failed_validating_account">Nie udało się zweryfikować konta (możesz mieć ograniczoną liczbę żądań).
+\nZaloguj się ponownie!</string>
+    <string name="notification_updates_available"><xliff:g id="apps_count">%1$d</xliff:g> dostępne aktualizacje</string>
+    <string name="notification_updates_available_desc_4"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g>, <xliff:g id="app_three_name">%3$s</xliff:g> oraz <xliff:g id="apps_count">%4$d</xliff:g> innych</string>
+    <string name="notification_channel_updates">Powiadomienia o aktualizacjach</string>
+    <string name="notification_updates_available_desc_1">Dostępna jest nowa wersja <xliff:g id="app_one_name">%1$s</xliff:g></string>
+    <string name="notification_updates_available_desc_2"><xliff:g id="app_one_name">%1$s</xliff:g> oraz <xliff:g id="app_two_name">%2$s</xliff:g></string>
+    <string name="notification_updates_available_desc_3"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g> oraz <xliff:g id="app_three_name">%3$s</xliff:g></string>
+    <string name="checking_for_updates">Sprawdzanie dostępności aktualizacji</string>
+    <string name="pref_updates_check">Automatyczne sprawdzanie aktualizacji</string>
+    <string name="pref_updates_check_desc">Automatycznie sprawdzaj i powiadamiaj o nowych aktualizacjach aplikacji</string>
+    <string name="pref_install_mode_shizuku">Instalator Shizuku</string>
+    <string name="installer_shizuku_unavailable">Shizuku nie jest prawidłowo zainstalowany lub skonfigurowany.</string>
 </resources>

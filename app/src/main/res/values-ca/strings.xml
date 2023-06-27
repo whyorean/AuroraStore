@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="details_description">Descripció</string>
     <string name="details_dev_address">Adreça</string>
     <string name="details_dev_website">Lloc web</string>
@@ -301,4 +301,12 @@
     <string name="purchase_invalid">Aplicació no comprada</string>
     <string name="pref_updates_extended_desc">També cerca versions noves d\'aplicacions inhabilitades</string>
     <string name="title_about">Quant a</string>
+    <string name="download_paused">En pausa • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
+    <string name="action_import">Importa</string>
+    <string name="download_eta_hrs">Falten %1$d hores, %2$d minuts i %3$d segons</string>
+    <string name="download_eta_min">Falten %1$d minuts i %2$d segons</string>
+    <string name="download_eta_sec">Falten %1$d segons</string>
+    <string name="download_progress">Descarregant • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
+    <string name="onboarding_permission_notifications">Notificacions</string>
+    <string name="pref_install_mode_shizuku">Instal·lador de Shizuku</string>
 </resources>
