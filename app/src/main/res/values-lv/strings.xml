@@ -81,7 +81,7 @@
     <string name="details_more_about_app">Vairāk par lietotni</string>
     <string name="details_no_ads">Nav reklāmu</string>
     <string name="details_no_permission">Nav atļauju</string>
-    <string name="details_no_updates">Nav pieejami atjauninājumi</string>
+    <string name="details_no_updates">Nav atjauninājumu</string>
     <string name="details_paid">Maksāts</string>
     <string name="details_permission">Atļauja</string>
     <string name="details_privacy">Privātums</string>
@@ -104,8 +104,8 @@
     <string name="filter_review_one">Viens</string>
     <string name="filter_review_positive">Pozitīvs</string>
     <string name="filter_review_two">Divi</string>
-    <string name="installer_status_failure">Instalēšana neizdevāds</string>
-    <string name="installer_status_failure_blocked">Instalēšana nobloķēta</string>
+    <string name="installer_status_failure">Uzstādīšana neizdevās</string>
+    <string name="installer_status_failure_blocked">Uzstādīšana tika aizturēta</string>
     <string name="installer_status_failure_session">Nevarēja uzsākt sesiju</string>
     <string name="installer_status_failure_conflict">Pretrunīga lietotne eksistē</string>
     <string name="installer_status_failure_incompatible">Nesaderīga lietotne</string>
@@ -114,11 +114,11 @@
     <string name="installer_status_success">Veiksmīgi uzstādīts</string>
     <string name="installer_status_user_action">Gaida lietotāja apstiprinājumu</string>
     <string name="device_huawei_subtitle">Šķiet, ka tiek izmantota Huawei ierīce, tāpēc neseno Google aizliegumu dēļ, iespējams, nevarēs pieteikties.</string>
-    <string name="dialog_title_self_update">Jauns atjauninājums pieejams</string>
+    <string name="dialog_title_self_update">Pieejams jauns atjauninājums</string>
     <string name="notification_channel_alert">Ātrā notifikācija</string>
     <string name="onboarding_theme_select">Izvēlaties</string>
     <string name="onboarding_title_accent">Akcents</string>
-    <string name="onboarding_title_installer">Instalētājs</string>
+    <string name="onboarding_title_installer">Uzstādītājs</string>
     <string name="onboarding_title_permissions">Atļaujas</string>
     <string name="onboarding_title_theme">Motīvs</string>
     <string name="onboarding_title_welcome">Laipni lūgti</string>
@@ -158,7 +158,7 @@
     <string name="title_device">Ierīce</string>
     <string name="title_download_manager">Lejupielādes</string>
     <string name="title_games">Spēles</string>
-    <string name="title_installation">Instalācija</string>
+    <string name="title_installation">Uzstādīšana</string>
     <string name="title_installed">Uzstādīts</string>
     <string name="title_installer">Lietotņu uzstādītājs</string>
     <string name="title_language">Valodas</string>
@@ -248,4 +248,36 @@
     <string name="toast_manual_unavailable">Pieprasītais laidiens nav pieejams.</string>
     <string name="toast_manual_available">Apsveicam! Pieprasītais laidiens ir pieejams, tas tiek tagad lejupielādēts.</string>
     <string name="installer_shizuku_unavailable">Shizuku nav uzstādīta vai pareizi iestatīta.</string>
+    <string name="pref_install_profile_summary">Atlasīt profilu, kurā uzstādīt lietotnes. Darbojas tikai ar superlietotāja uzstādīšanas veidu</string>
+    <string name="about_xda_summary">Skatīt apspriedes un ieteikumus Aurora veikala XDA pavedienā.</string>
+    <string name="about_bhim">BHIM - UPI</string>
+    <string name="about_xda">Izstrādātāju pavediens</string>
+    <string name="device_miui_description">Lūgums atspējot MIUI uzlabojumus, lai ļaut uzstādīšanu, pretējā gadījumā var izvēlēties superlietotāja vai pakalpojumu uzstādītāju.</string>
+    <string name="account_anonymous_insecure">Anonīms (nedrošs)</string>
+    <string name="dialog_desc_native_split">Nav iespējams uzstādīt apvienotās (sastāvošas no vairākām daļām) lietotnes ar iebūvēto uzstādītāju. Tas ir jānomaina uz sesijas, pakalpojumu vai superlietotāja uzstādītāju.</string>
+    <string name="action_get_local_apk">Saglabāt lietotnes kopu</string>
+    <string name="action_filter_misc">Dažādi</string>
+    <string name="action_filter_gsf_dependent_apps">Atkarīgs no GSF</string>
+    <string name="installer_service_available">Aurora pakalpojumi ir pieejami un gatavi uzstādīšanai.</string>
+    <string name="action_import">Ievietot</string>
+    <string name="action_whitelist">Baltais saraksts</string>
+    <string name="installer_service_unavailable">Jāuzstāda Aurora pakalpojumi 1.0.9 vai jaunāki vai jānomaina uzstādītājs.</string>
+    <string name="onboarding_permission_installer">Uzstādītāja atļauja</string>
+    <string name="onboarding_permission_installer_desc">Atļaut lietotņu uzstādīšanu no Aurora Store</string>
+    <string name="onboarding_permission_notifications_desc">Sūtīt paziņojumus par uzstādīšanas stāvokli</string>
+    <string name="pref_install_auto_title">Automātiski uzstādīt APK pēc lejupielādes</string>
+    <string name="pref_install_delete_title">Izdzēst APK pēc uzstādīšanas</string>
+    <string name="pref_install_mode_am">AM uzstādītājs.</string>
+    <string name="pref_install_mode_shizuku">Shizuku uzstādītājs</string>
+    <string name="pref_install_mode_native">Iebūvētais uzstādītājs</string>
+    <string name="pref_install_mode_root">Superlietotāja uzstādītājs</string>
+    <string name="pref_install_mode_session">Sesijas uzstādītājs</string>
+    <string name="pref_install_mode_summary">Atlasīt APK uzstādīšanas veidu</string>
+    <string name="pref_install_mode_title">Uzstādīšanas veids</string>
+    <string name="pref_install_profile_title">Uzstādīšanas profili (izmēģinājuma)</string>
+    <string name="update_available">pieejams atjauninājums</string>
+    <string name="updates_available">pieejami atjauninājumi</string>
+    <string name="notification_updates_available">Pieejami <xliff:g id="apps_count">%1$d</xliff:g> atjauninājumi</string>
+    <string name="notification_updates_available_1">Pieejams <xliff:g id="apps_count">%1$d</xliff:g> atjauninājums</string>
+    <string name="device_miui_extra">Ir iespējams izvēlēties arī iebūvēto uzstādītāju, bet tad nevarēs uzstādīt apvienotos (sastāvošus no vairākām daļām) APK, tā ka izvēle ir paša ziņā.</string>
 </resources>
