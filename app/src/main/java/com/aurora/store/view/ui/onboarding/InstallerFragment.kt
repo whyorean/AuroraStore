@@ -36,6 +36,7 @@ import com.aurora.store.data.installer.AppInstaller.Companion.hasShizuku
 import com.aurora.store.data.installer.AppInstaller.Companion.hasShizukuPerm
 import com.aurora.store.data.model.Installer
 import com.aurora.store.databinding.FragmentOnboardingInstallerBinding
+import com.aurora.store.util.Log
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_INSTALLER_ID
 import com.aurora.store.util.save
@@ -53,11 +54,22 @@ class InstallerFragment : BaseFragment() {
 
     var installerId: Int = 0
 
+    private var shizukuAlive = false
+    private val shizukuAliveListener = Shizuku.OnBinderReceivedListener {
+        Log.d("ShizukuInstaller Alive!")
+        shizukuAlive = true
+    }
+    private val shizukuDeadListener = Shizuku.OnBinderDeadListener {
+        Log.d("ShizukuInstaller Dead!")
+        shizukuAlive = false
+    }
+
     private val shizukuResultListener =
         Shizuku.OnRequestPermissionResultListener { _: Int, result: Int ->
             if (result == PackageManager.PERMISSION_GRANTED) {
                 this.installerId = 5
                 save(PREFERENCE_INSTALLER_ID, 5)
+                B.epoxyRecycler.requestModelBuild()
             } else {
                 showDialog(
                     R.string.action_installations,
@@ -71,7 +83,11 @@ class InstallerFragment : BaseFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+
+        Shizuku.addBinderReceivedListenerSticky(shizukuAliveListener)
+        Shizuku.addBinderDeadListener(shizukuDeadListener)
         Shizuku.addRequestPermissionResultListener(shizukuResultListener)
+
         B = FragmentOnboardingInstallerBinding.bind(
             inflater.inflate(
                 R.layout.fragment_onboarding_installer,
@@ -166,10 +182,10 @@ class InstallerFragment : BaseFragment() {
             }
             5 -> {
                 if (hasShizuku(requireContext()) && isOAndAbove()) {
-                    if (hasShizukuPerm()) {
+                    if (shizukuAlive && hasShizukuPerm()) {
                         this.installerId = installerId
                         save(PREFERENCE_INSTALLER_ID, installerId)
-                    } else if (Shizuku.shouldShowRequestPermissionRationale()) {
+                    } else if (shizukuAlive && !Shizuku.shouldShowRequestPermissionRationale()) {
                         Shizuku.requestPermission(9000)
                     } else {
                         showDialog(

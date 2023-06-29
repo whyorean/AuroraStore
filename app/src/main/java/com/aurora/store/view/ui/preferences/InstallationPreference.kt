@@ -24,15 +24,18 @@ import android.os.Bundle
 import android.view.View
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
+import com.aurora.extensions.isOAndAbove
 import com.aurora.extensions.runOnUiThread
 import com.aurora.extensions.showDialog
 import com.aurora.extensions.toast
 import com.aurora.store.BuildConfig
 import com.aurora.store.R
 import com.aurora.store.data.installer.AMInstaller
+import com.aurora.store.data.installer.AppInstaller
 import com.aurora.store.data.installer.ServiceInstaller
 import com.aurora.store.data.installer.ShizukuInstaller
 import com.aurora.store.util.CommonUtil
+import com.aurora.store.util.Log
 import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.save
@@ -42,12 +45,39 @@ import rikka.shizuku.Shizuku
 
 
 class InstallationPreference : PreferenceFragmentCompat() {
+
+    private var shizukuAlive = false
+    private val shizukuAliveListener = Shizuku.OnBinderReceivedListener {
+        Log.d("ShizukuInstaller Alive!")
+        shizukuAlive = true
+    }
+    private val shizukuDeadListener = Shizuku.OnBinderDeadListener {
+        Log.d("ShizukuInstaller Dead!")
+        shizukuAlive = false
+    }
+    private val shizukuResultListener =
+        Shizuku.OnRequestPermissionResultListener { _: Int, result: Int ->
+            if (result == PackageManager.PERMISSION_GRANTED) {
+                save(Preferences.PREFERENCE_INSTALLER_ID, 5)
+                activity?.recreate()
+            } else {
+                showDialog(
+                    R.string.action_installations,
+                    R.string.installer_shizuku_unavailable
+                )
+            }
+        }
+
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.preferences_installation, rootKey)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        Shizuku.addBinderReceivedListenerSticky(shizukuAliveListener)
+        Shizuku.addBinderDeadListener(shizukuDeadListener)
+        Shizuku.addRequestPermissionResultListener(shizukuResultListener)
 
         val abandonPreference: Preference? =
             findPreference(Preferences.INSTALLATION_ABANDON_SESSION)
@@ -104,9 +134,20 @@ class InstallationPreference : PreferenceFragmentCompat() {
                             false
                         }
                     } else if (selectedId == 5) {
-                        if (checkShizukuAvailability()) {
-                            save(Preferences.PREFERENCE_INSTALLER_ID, selectedId)
-                            true
+                        if (AppInstaller.hasShizuku(requireContext()) && isOAndAbove()) {
+                            if (shizukuAlive && AppInstaller.hasShizukuPerm()) {
+                                save(Preferences.PREFERENCE_INSTALLER_ID, selectedId)
+                                true
+                            } else if (shizukuAlive && !Shizuku.shouldShowRequestPermissionRationale()) {
+                                Shizuku.requestPermission(9000)
+                                false
+                            } else {
+                                showDialog(
+                                    R.string.action_installations,
+                                    R.string.installer_shizuku_unavailable
+                                )
+                                false
+                            }
                         } else {
                             showDialog(
                                 R.string.action_installations,
@@ -154,6 +195,6 @@ class InstallationPreference : PreferenceFragmentCompat() {
 
     private fun checkShizukuAvailability(): Boolean {
         return PackageUtil.isInstalled(requireContext(), ShizukuInstaller.SHIZUKU_PACKAGE_NAME) &&
-                Shizuku.checkSelfPermission() == PackageManager.PERMISSION_GRANTED
+                shizukuAlive && Shizuku.checkSelfPermission() == PackageManager.PERMISSION_GRANTED
     }
 }
