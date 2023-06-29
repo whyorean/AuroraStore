@@ -137,16 +137,14 @@ object CommonUtil {
     }
 
     fun cleanupInstallationSessions(context: Context) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            val packageInstaller = context.packageManager.packageInstaller
-            for (sessionInfo in packageInstaller.mySessions) {
-                try {
-                    val sessionId = sessionInfo.sessionId
-                    packageInstaller.abandonSession(sessionInfo.sessionId)
-                    Log.i("Abandoned session id -> %d", sessionId)
-                } catch (e: Exception) {
+        val packageInstaller = context.packageManager.packageInstaller
+        for (sessionInfo in packageInstaller.mySessions) {
+            try {
+                val sessionId = sessionInfo.sessionId
+                packageInstaller.abandonSession(sessionInfo.sessionId)
+                Log.i("Abandoned session id -> %d", sessionId)
+            } catch (e: Exception) {
 
-                }
             }
         }
     }

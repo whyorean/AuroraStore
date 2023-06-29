@@ -19,16 +19,11 @@
 
 package com.aurora.store.data.network
 
-import android.os.Build
 import com.aurora.gplayapi.network.IHttpClient
 
 object HttpClient {
 
     fun getPreferredClient(): IHttpClient {
-        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            OkHttpClient
-        } else {
-            FuelClient
-        }
+        return OkHttpClient
     }
 }

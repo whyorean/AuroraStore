@@ -33,7 +33,7 @@
         android:layout_height="@dimen/icon_size_default"
         android:layout_gravity="center"
         android:layout_marginStart="@dimen/margin_small"
-        app:tint="@color/colorAccent"
+        app:tint="?android:attr/colorAccent"
         app:tintMode="src_in" />
 
     <RelativeLayout

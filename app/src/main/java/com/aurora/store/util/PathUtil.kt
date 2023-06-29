@@ -21,7 +21,6 @@ package com.aurora.store.util
 
 import android.content.Context
 import android.os.Environment
-import com.aurora.extensions.isLAndAbove
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.File
 import java.util.UUID
@@ -33,13 +32,10 @@ fun Context.getInternalBaseDirectory(): String {
 object PathUtil {
 
     private fun getDownloadDirectory(context: Context): String {
-        return if (isLAndAbove()) {
-            if (context.isExternalStorageEnable())
-                getExternalPath()
-            else
-                context.getInternalBaseDirectory()
-        } else {
+        return if (context.isExternalStorageEnable()) {
             getExternalPath()
+        } else {
+            context.getInternalBaseDirectory()
         }
     }
 

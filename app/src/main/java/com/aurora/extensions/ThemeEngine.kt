@@ -121,7 +121,7 @@ private fun AppCompatActivity.setLightConfigurationO() {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
         setLightStatusBar()
         setLightNavigationBar()
-    } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+    } else {
         window.statusBarColor = ColorUtils.setAlphaComponent(Color.BLACK, 120)
     }
 }

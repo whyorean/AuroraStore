@@ -3,7 +3,6 @@ package com.aurora.store.view.ui.details
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.aurora.extensions.close
 import com.aurora.store.R
 
 class EmptyAppDetailsActivity: AppCompatActivity(R.layout.activity_details) {
@@ -19,7 +18,7 @@ class EmptyAppDetailsActivity: AppCompatActivity(R.layout.activity_details) {
 
         if (intent != null && validSchemes.any { it == intent.scheme }) {
             if (intent.data!!.getQueryParameter("id").isNullOrEmpty()) {
-                close()
+                finishAfterTransition()
             } else {
                 // Construct a new intent manually to avoid accepting extras from external apps
                 Intent(this, AppDetailsActivity::class.java).also { extIntent ->

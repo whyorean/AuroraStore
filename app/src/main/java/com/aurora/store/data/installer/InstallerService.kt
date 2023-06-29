@@ -22,9 +22,7 @@ package com.aurora.store.data.installer
 import android.app.Service
 import android.content.Intent
 import android.content.pm.PackageInstaller
-import android.os.Build
 import android.os.IBinder
-import androidx.annotation.RequiresApi
 import com.aurora.store.R
 import com.aurora.store.data.event.InstallerEvent
 import com.aurora.store.util.Log
@@ -32,7 +30,6 @@ import org.greenrobot.eventbus.EventBus
 
 class InstallerService : Service() {
 
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     override fun onStartCommand(intent: Intent, flags: Int, startId: Int): Int {
         val status = intent.getIntExtra(PackageInstaller.EXTRA_STATUS, -69)
         val packageName = intent.getStringExtra(PackageInstaller.EXTRA_PACKAGE_NAME)

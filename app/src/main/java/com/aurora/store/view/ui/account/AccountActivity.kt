@@ -25,7 +25,6 @@ import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.lifecycle.ViewModelProvider
 import com.aurora.extensions.browse
-import com.aurora.extensions.close
 import com.aurora.extensions.getEmptyActivityAnimation
 import com.aurora.extensions.load
 import com.aurora.gplayapi.data.models.AuthData
@@ -178,7 +177,7 @@ class AccountActivity : BaseActivity() {
     private fun attachToolbar() {
         B.layoutToolbarAction.txtTitle.text = getString(R.string.title_account_manager)
         B.layoutToolbarAction.imgActionPrimary.setOnClickListener {
-            close()
+            finishAfterTransition()
         }
     }
 

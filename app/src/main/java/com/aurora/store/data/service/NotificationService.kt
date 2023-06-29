@@ -24,7 +24,6 @@ import android.app.*
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
-import android.os.Build
 import android.os.IBinder
 import android.util.ArrayMap
 import androidx.core.app.NotificationCompat
@@ -32,7 +31,6 @@ import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
 import com.aurora.Constants
 import com.aurora.extensions.getStyledAttributeColor
-import com.aurora.extensions.isLAndAbove
 import com.aurora.extensions.isMAndAbove
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
@@ -54,7 +52,6 @@ import com.tonyodev.fetch2.*
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import java.lang.reflect.Modifier
-import java.util.*
 
 class NotificationService : Service() {
 
@@ -272,12 +269,10 @@ class NotificationService : Service() {
             }
         }
 
-        if (isLAndAbove()) {
-            when (status) {
-                Status.DOWNLOADING -> builder.setCategory(Notification.CATEGORY_PROGRESS)
-                Status.FAILED, Status.CANCELLED -> builder.setCategory(Notification.CATEGORY_ERROR)
-                else -> builder.setCategory(Notification.CATEGORY_STATUS)
-            }
+        when (status) {
+            Status.DOWNLOADING -> builder.setCategory(Notification.CATEGORY_PROGRESS)
+            Status.FAILED, Status.CANCELLED -> builder.setCategory(Notification.CATEGORY_ERROR)
+            else -> builder.setCategory(Notification.CATEGORY_STATUS)
         }
 
         if (NotificationManagerCompat.from(this).areNotificationsEnabled()) {

@@ -27,7 +27,6 @@ import com.aurora.store.R
 import com.aurora.store.data.model.Link
 import com.aurora.store.databinding.ActivityAboutBinding
 import com.aurora.extensions.browse
-import com.aurora.extensions.close
 import com.aurora.extensions.copyToClipBoard
 import com.aurora.extensions.load
 import com.aurora.store.view.epoxy.views.preference.LinkViewModel_
@@ -63,7 +62,7 @@ class AboutActivity : BaseActivity() {
     private fun attachToolbar() {
         B.layoutToolbarAction.txtTitle.text = getString(R.string.title_about)
         B.layoutToolbarAction.imgActionPrimary.setOnClickListener {
-            close()
+            finishAfterTransition()
         }
     }
 

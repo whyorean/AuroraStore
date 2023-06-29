@@ -25,7 +25,6 @@ import com.aurora.store.R
 import com.aurora.store.data.model.Black
 import com.aurora.store.data.providers.BlacklistProvider
 import com.aurora.store.databinding.ActivityGenericRecyclerBinding
-import com.aurora.extensions.close
 import com.aurora.store.view.epoxy.views.BlackListViewModel_
 import com.aurora.store.view.epoxy.views.shimmer.AppListViewShimmerModel_
 import com.aurora.store.viewmodel.all.BlacklistViewModel
@@ -77,7 +76,7 @@ class BlacklistActivity : BaseActivity() {
     private fun attachToolbar() {
         B.layoutToolbarAction.txtTitle.text = getString(R.string.title_blacklist_manager)
         B.layoutToolbarAction.imgActionPrimary.setOnClickListener {
-            close()
+            finishAfterTransition()
         }
     }
 

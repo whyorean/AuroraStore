@@ -89,13 +89,8 @@ object PackageUtil {
     }
 
     fun getLaunchIntent(context: Context, packageName: String?): Intent? {
-        val isTv = Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && isTv(context)
-        val intent = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            if (isTv) {
-                context.packageManager.getLeanbackLaunchIntentForPackage(packageName!!)
-            } else {
-                context.packageManager.getLaunchIntentForPackage(packageName!!)
-            }
+        val intent = if (isTv(context)) {
+            context.packageManager.getLeanbackLaunchIntentForPackage(packageName!!)
         } else {
             context.packageManager.getLaunchIntentForPackage(packageName!!)
         }
@@ -103,7 +98,7 @@ object PackageUtil {
         return if (intent == null) {
             null
         } else {
-            intent.addCategory(if (isTv) Intent.CATEGORY_LEANBACK_LAUNCHER else Intent.CATEGORY_LAUNCHER)
+            intent.addCategory(if (isTv(context)) Intent.CATEGORY_LEANBACK_LAUNCHER else Intent.CATEGORY_LAUNCHER)
             intent
         }
     }

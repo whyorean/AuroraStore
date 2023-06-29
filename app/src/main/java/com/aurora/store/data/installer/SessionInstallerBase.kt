@@ -35,7 +35,6 @@ import java.io.File
 
 abstract class SessionInstallerBase(context: Context) : InstallerBase(context) {
 
-    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     protected fun xInstall(
         sessionId: Int,
         session: PackageInstaller.Session,

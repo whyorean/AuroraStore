@@ -34,7 +34,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.aurora.Constants
-import com.aurora.extensions.close
 import com.aurora.extensions.open
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.SearchBundle
@@ -167,7 +166,7 @@ class SearchResultsActivity : BaseActivity(), OnSharedPreferenceChangeListener {
         searchView = B.layoutViewToolbar.inputSearch
 
         B.layoutViewToolbar.imgActionPrimary.setOnClickListener {
-            close()
+            finishAfterTransition()
         }
         B.layoutViewToolbar.imgActionSecondary.setOnClickListener {
             open(DownloadActivity::class.java)

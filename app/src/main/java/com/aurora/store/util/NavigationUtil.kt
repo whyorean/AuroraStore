@@ -22,7 +22,6 @@ package com.aurora.store.util
 import android.app.ActivityOptions
 import android.content.Context
 import android.content.Intent
-import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import com.aurora.Constants
 import com.aurora.gplayapi.data.models.App
@@ -45,12 +44,8 @@ object NavigationUtil {
         ).apply {
             putExtra(Constants.STRING_EXTRA, gson.toJson(app))
         }
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            val options = ActivityOptions.makeSceneTransitionAnimation(context as AppCompatActivity)
-            context.startActivity(intent, options.toBundle())
-        } else {
-            context.startActivity(intent)
-        }
+        val options = ActivityOptions.makeSceneTransitionAnimation(context as AppCompatActivity)
+        context.startActivity(intent, options.toBundle())
     }
 
     fun openDevAppsActivity(context: Context, app: App) {
@@ -60,12 +55,8 @@ object NavigationUtil {
         ).apply {
             putExtra(Constants.STRING_APP, gson.toJson(app))
         }
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            val options = ActivityOptions.makeSceneTransitionAnimation(context as AppCompatActivity)
-            context.startActivity(intent, options.toBundle())
-        } else {
-            context.startActivity(intent)
-        }
+        val options = ActivityOptions.makeSceneTransitionAnimation(context as AppCompatActivity)
+        context.startActivity(intent, options.toBundle())
     }
 
     fun openExodusActivity(context: Context, app: App, report: Report) {
@@ -76,12 +67,8 @@ object NavigationUtil {
             putExtra(Constants.STRING_APP, gson.toJson(app))
             putExtra(Constants.STRING_EXTRA, gson.toJson(report))
         }
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            val options = ActivityOptions.makeSceneTransitionAnimation(context as AppCompatActivity)
-            context.startActivity(intent, options.toBundle())
-        } else {
-            context.startActivity(intent)
-        }
+        val options = ActivityOptions.makeSceneTransitionAnimation(context as AppCompatActivity)
+        context.startActivity(intent, options.toBundle())
     }
 
     fun openSearchActivity(context: Context) {
@@ -89,11 +76,7 @@ object NavigationUtil {
             context,
             SearchResultsActivity::class.java
         )
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            val options = ActivityOptions.makeSceneTransitionAnimation(context as AppCompatActivity)
-            context.startActivity(intent, options.toBundle())
-        } else {
-            context.startActivity(intent)
-        }
+        val options = ActivityOptions.makeSceneTransitionAnimation(context as AppCompatActivity)
+        context.startActivity(intent, options.toBundle())
     }
 }

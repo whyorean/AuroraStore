@@ -31,7 +31,6 @@ import com.aurora.store.R
 import com.aurora.store.data.ViewState
 import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.databinding.ActivityDevProfileBinding
-import com.aurora.extensions.close
 import com.aurora.extensions.load
 import com.aurora.store.view.epoxy.controller.DeveloperCarouselController
 import com.aurora.store.view.epoxy.controller.GenericCarouselController
@@ -100,7 +99,7 @@ class DevProfileActivity : BaseActivity(), GenericCarouselController.Callbacks {
             if (intent.scheme != null && (intent.scheme == "http" || intent.scheme == "https")) {
                 val devId = intent.data!!.getQueryParameter("id")
                 if (devId.isNullOrEmpty()) {
-                    close()
+                    finishAfterTransition()
                 } else {
                     VM.getStreamBundle(devId)
                 }
@@ -113,13 +112,13 @@ class DevProfileActivity : BaseActivity(), GenericCarouselController.Callbacks {
                 }
             }
         } else {
-            close()
+            finishAfterTransition()
         }
     }
 
     private fun attachToolbar() {
         B.layoutToolbarAction.toolbar.setOnClickListener {
-            close()
+            finishAfterTransition()
         }
         B.layoutToolbarAction.txtTitle.text = getString(R.string.details_dev_profile)
     }

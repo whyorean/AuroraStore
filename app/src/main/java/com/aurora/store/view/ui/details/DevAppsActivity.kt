@@ -27,7 +27,6 @@ import com.aurora.Constants
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.SearchBundle
 import com.aurora.store.databinding.ActivityGenericRecyclerBinding
-import com.aurora.extensions.close
 import com.aurora.store.view.custom.recycler.EndlessRecyclerOnScrollListener
 import com.aurora.store.view.epoxy.views.app.AppListViewModel_
 import com.aurora.store.view.epoxy.views.AppProgressViewModel_
@@ -87,7 +86,7 @@ class DevAppsActivity : BaseActivity() {
 
     private fun attachToolbar() {
         B.layoutToolbarAction.toolbar.setOnClickListener {
-            close()
+            finishAfterTransition()
         }
         B.layoutToolbarAction.txtTitle.text = app.developerName
     }

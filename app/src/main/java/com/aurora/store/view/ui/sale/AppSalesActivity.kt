@@ -24,7 +24,6 @@ import androidx.lifecycle.ViewModelProvider
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
 import com.aurora.store.databinding.ActivityGenericRecyclerBinding
-import com.aurora.extensions.close
 import com.aurora.store.view.custom.recycler.EndlessRecyclerOnScrollListener
 import com.aurora.store.view.epoxy.views.app.AppListViewModel_
 import com.aurora.store.view.epoxy.views.AppProgressViewModel_
@@ -71,7 +70,7 @@ class AppSalesActivity : BaseActivity() {
     private fun attachToolbar() {
         B.layoutToolbarAction.txtTitle.text = getString(R.string.title_apps_sale)
         B.layoutToolbarAction.imgActionPrimary.setOnClickListener {
-            close()
+            finishAfterTransition()
         }
     }
 

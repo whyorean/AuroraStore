@@ -29,7 +29,7 @@
         android:layout_width="@dimen/icon_size_default"
         android:layout_height="@dimen/icon_size_default"
         android:layout_centerVertical="true"
-        app:tint="@color/colorAccent" />
+        app:tint="?colorAccent" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/line1"

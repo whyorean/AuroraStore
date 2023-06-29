@@ -40,7 +40,6 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/margin_small"
         android:maxLines="2"
-        android:scrollHorizontally="true"
         android:textAppearance="@style/TextAppearance.Aurora.Line2"
         android:textColor="?android:textColorPrimary"
         tools:text="App Name" />

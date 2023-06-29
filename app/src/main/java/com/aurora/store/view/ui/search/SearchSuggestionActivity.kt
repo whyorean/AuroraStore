@@ -29,7 +29,6 @@ import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
 import com.aurora.Constants
 import com.aurora.extensions.browse
-import com.aurora.extensions.close
 import com.aurora.extensions.getEmptyActivityBundle
 import com.aurora.extensions.open
 import com.aurora.extensions.showKeyboard
@@ -91,7 +90,7 @@ class SearchSuggestionActivity : BaseActivity() {
         searchView = B.layoutToolbarSearch.inputSearch
 
         B.layoutToolbarSearch.imgActionPrimary.setOnClickListener {
-            close()
+            finishAfterTransition()
         }
         B.layoutToolbarSearch.imgActionSecondary.setOnClickListener {
             open(DownloadActivity::class.java)

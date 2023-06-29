@@ -24,7 +24,7 @@
             android:shape="ring"
             android:thickness="12dp"
             android:useLevel="false">
-            <solid android:color="@color/colorAccent" />
+            <solid android:color="?colorAccent" />
         </shape>
     </item>
 </layer-list>

@@ -71,11 +71,7 @@ class AccentView : RelativeLayout {
                 context.theme
             )
         } else {
-            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
-                B.img.backgroundTintList = ColorStateList.valueOf(Color.parseColor(accent.accent))
-            } else {
-                B.img.setBackgroundColor(Color.parseColor(accent.accent))
-            }
+            B.img.backgroundTintList = ColorStateList.valueOf(Color.parseColor(accent.accent))
         }
     }
 

@@ -130,52 +130,50 @@ class AccentFragment : BaseFragment() {
     }
 
     private fun animate(view: View) {
-        if (Build.VERSION.SDK_INT >= 21) {
-            if (B.themeSwitchImage.isVisible()) {
-                return;
-            }
-            try {
-                val pos = IntArray(2)
-                view.getLocationInWindow(pos)
-                val w: Int = B.root.measuredWidth
-                val h: Int = B.root.measuredHeight
+        if (B.themeSwitchImage.isVisible()) {
+            return;
+        }
+        try {
+            val pos = IntArray(2)
+            view.getLocationInWindow(pos)
+            val w: Int = B.root.measuredWidth
+            val h: Int = B.root.measuredHeight
 
-                val bitmap = Bitmap.createBitmap(
-                    B.root.measuredWidth,
-                    B.root.measuredHeight,
-                    Bitmap.Config.ARGB_8888
-                )
+            val bitmap = Bitmap.createBitmap(
+                B.root.measuredWidth,
+                B.root.measuredHeight,
+                Bitmap.Config.ARGB_8888
+            )
 
-                val canvas = Canvas(bitmap)
-                B.root.draw(canvas)
-                B.themeSwitchImage.setImageBitmap(bitmap)
-                B.themeSwitchImage.show()
+            val canvas = Canvas(bitmap)
+            B.root.draw(canvas)
+            B.themeSwitchImage.setImageBitmap(bitmap)
+            B.themeSwitchImage.show()
 
-                val finalRadius = sqrt(
-                    ((w - pos[0]) * (w - pos[0]) + (h - pos[1]) * (h - pos[1])).toDouble()
-                ).coerceAtLeast(
-                    sqrt((pos[0] * pos[0] + (h - pos[1]) * (h - pos[1])).toDouble())
-                ).toFloat()
+            val finalRadius = sqrt(
+                ((w - pos[0]) * (w - pos[0]) + (h - pos[1]) * (h - pos[1])).toDouble()
+            ).coerceAtLeast(
+                sqrt((pos[0] * pos[0] + (h - pos[1]) * (h - pos[1])).toDouble())
+            ).toFloat()
 
-                val anim: Animator = ViewAnimationUtils.createCircularReveal(
-                    B.root,
-                    pos[0],
-                    pos[1],
-                    0f,
-                    finalRadius
-                )
+            val anim: Animator = ViewAnimationUtils.createCircularReveal(
+                B.root,
+                pos[0],
+                pos[1],
+                0f,
+                finalRadius
+            )
 
-                anim.duration = 450
-                anim.interpolator = CubicBezierInterpolator.EASE_IN_OUT_QUAD
-                anim.addListener(object : AnimatorListenerAdapter() {
-                    override fun onAnimationEnd(animation: Animator) {
-                        B.themeSwitchImage.setImageDrawable(null)
-                        B.themeSwitchImage.hide()
-                    }
-                })
-                anim.start()
-            } catch (ignore: Throwable) {
-            }
+            anim.duration = 450
+            anim.interpolator = CubicBezierInterpolator.EASE_IN_OUT_QUAD
+            anim.addListener(object : AnimatorListenerAdapter() {
+                override fun onAnimationEnd(animation: Animator) {
+                    B.themeSwitchImage.setImageDrawable(null)
+                    B.themeSwitchImage.hide()
+                }
+            })
+            anim.start()
+        } catch (ignore: Throwable) {
         }
     }
 

@@ -55,7 +55,6 @@ class ServiceInstaller(context: Context) : InstallerBase(context) {
         const val PRIVILEGED_EXTENSION_SERVICE_INTENT = "com.aurora.services.IPrivilegedService"
     }
 
-    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun install(packageName: String, files: List<Any>) {
 
         when {
@@ -175,7 +174,6 @@ class ServiceInstaller(context: Context) : InstallerBase(context) {
         }
     }
 
-    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     private fun xInstall(packageName: String, uriList: List<Uri>, fileList: List<String>) {
         executor.execute {
             val readyWithAction = AtomicBoolean(false)

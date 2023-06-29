@@ -27,7 +27,6 @@ import android.widget.RelativeLayout
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import com.aurora.extensions.getString
-import com.aurora.extensions.isLAndAbove
 import com.aurora.extensions.runOnUiThread
 import com.aurora.store.R
 import com.aurora.store.State
@@ -55,7 +54,6 @@ class ActionButton : RelativeLayout {
         init(context, attrs)
     }
 
-    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     constructor(
         context: Context,
         attrs: AttributeSet?,
@@ -101,9 +99,7 @@ class ActionButton : RelativeLayout {
         B.btn.text = btnTxt
         B.btn.setTextColor(stateColor)
         B.img.setImageDrawable(ContextCompat.getDrawable(context, stateIcon))
-        if (isLAndAbove()) {
-            B.img.imageTintList = ColorStateList.valueOf(stateColor)
-        }
+        B.img.imageTintList = ColorStateList.valueOf(stateColor)
 
         typedArray.recycle()
     }

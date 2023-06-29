@@ -82,7 +82,6 @@ public class AuroraProgressView extends View {
         init(context, attrs, defStyleAttr, R.style.AuroraProgressView);
     }
 
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public AuroraProgressView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         init(context, attrs, defStyleAttr, R.style.AuroraProgressView);
@@ -362,7 +361,6 @@ public class AuroraProgressView extends View {
         }
     }
 
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @Override
     public void drawableHotspotChanged(float x, float y) {
         super.drawableHotspotChanged(x, y);

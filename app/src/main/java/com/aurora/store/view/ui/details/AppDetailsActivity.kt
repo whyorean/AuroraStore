@@ -228,7 +228,7 @@ class AppDetailsActivity : BaseDetailsActivity() {
             val packageName = intent.data!!.getQueryParameter("id")
             val packageVersion = intent.data!!.getQueryParameter("v")
             if (packageName.isNullOrEmpty()) {
-                close()
+                finishAfterTransition()
             } else {
                 isExternal = true
                 app = App(packageName)
@@ -246,7 +246,7 @@ class AppDetailsActivity : BaseDetailsActivity() {
                 inflatePartialApp()
                 fetchCompleteApp()
             } else {
-                close()
+                finishAfterTransition()
             }
         }
     }

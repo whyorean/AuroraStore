@@ -25,10 +25,6 @@ import android.os.Build
 import java.util.*
 
 
-fun isLAndAbove(): Boolean {
-    return Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP
-}
-
 fun isMAndAbove(): Boolean {
     return Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
 }

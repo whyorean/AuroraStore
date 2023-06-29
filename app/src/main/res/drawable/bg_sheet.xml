@@ -21,6 +21,7 @@
     <item>
         <shape android:shape="rectangle">
             <corners android:radius="16dp" />
+            <solid android:color="?android:colorBackground" />
         </shape>
     </item>
 </layer-list>

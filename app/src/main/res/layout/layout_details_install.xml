@@ -23,7 +23,7 @@
     android:id="@+id/bottomSheet"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="?colorAccent"
+    android:background="@drawable/bg_bottomsheet"
     android:divider="@drawable/divider"
     android:orientation="vertical"
     android:paddingStart="@dimen/padding_small"
@@ -67,6 +67,7 @@
                 android:layout_height="@dimen/icon_size_small"
                 android:layout_centerVertical="true"
                 android:layout_toStartOf="@id/img_cancel"
+                android:indeterminateTint="@color/colorScrim"
                 android:progressDrawable="@drawable/progressbar_bg"
                 tools:progress="40" />
 

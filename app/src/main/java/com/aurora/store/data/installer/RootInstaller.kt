@@ -20,7 +20,6 @@
 package com.aurora.store.data.installer
 
 import android.content.Context
-import com.aurora.extensions.isLAndAbove
 import com.aurora.store.R
 import com.aurora.store.data.event.InstallerEvent
 import com.aurora.store.util.Log
@@ -45,10 +44,7 @@ class RootInstaller(context: Context) : InstallerBase(context) {
                         }
                     }
                 }.let {
-                    if (isLAndAbove())
-                        xInstall(packageName, it)
-                    else
-                        xInstallLegacy(packageName, it)
+                    xInstall(packageName, it)
                 }
             } else {
                 postError(
@@ -135,14 +131,6 @@ class RootInstaller(context: Context) : InstallerBase(context) {
                 context.getString(R.string.installer_status_failure),
                 context.getString(R.string.installer_status_failure_session)
             )
-        }
-    }
-
-    private fun xInstallLegacy(packageName: String, files: List<File>) {
-        if (Shell.getShell().isRoot) {
-            Shell.cmd("pm install -i com.android.vending --user 0 \"${files[0].name}\"").exec()
-        } else {
-            removeFromInstallQueue(packageName)
         }
     }
 

@@ -24,7 +24,6 @@ import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import android.os.Build
 import androidx.annotation.RequiresApi
-import com.aurora.extensions.isLAndAbove
 import com.aurora.store.util.PackageUtil.getPackageInfo
 import java.io.File
 import java.io.FileOutputStream
@@ -54,16 +53,12 @@ class ApkCopier(private val context: Context, private val packageName: String) {
         /*Add base APK*/
         fileList.add(baseApk)
 
-        if (isLAndAbove()) {
-            val splitSourceDirs = packageInfo.applicationInfo.splitSourceDirs
-            if (splitSourceDirs != null && splitSourceDirs.isNotEmpty()) {
-                /*Add Split APKs*/
-                fileList.addAll(getSplitAPKs(packageInfo))
-            }
-            bundleAllAPKs(fileList)
-        } else {
-            bundleAllAPKs(fileList)
+        val splitSourceDirs = packageInfo.applicationInfo.splitSourceDirs
+        if (splitSourceDirs != null && splitSourceDirs.isNotEmpty()) {
+            /*Add Split APKs*/
+            fileList.addAll(getSplitAPKs(packageInfo))
         }
+        bundleAllAPKs(fileList)
     }
 
     private fun getBaseApk(packageInfo: PackageInfo?): File? {
@@ -74,7 +69,6 @@ class ApkCopier(private val context: Context, private val packageName: String) {
         }
     }
 
-    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     private fun getSplitAPKs(packageInfo: PackageInfo): MutableList<File> {
         val fileList: MutableList<File> = ArrayList()
         val splitSourceDirs = packageInfo.applicationInfo.splitSourceDirs

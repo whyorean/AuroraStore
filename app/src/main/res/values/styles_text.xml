@@ -46,6 +46,7 @@
     </style>
 
     <style name="TextAppearance.Aurora.Title" parent="TextAppearance.AppCompat.Medium">
+        <item name="android:letterSpacing">0.05</item>
         <item name="android:maxLines">1</item>
         <item name="android:ellipsize">end</item>
         <item name="android:textSize">20sp</item>
@@ -81,10 +82,12 @@
     </style>
 
     <style name="TextAppearance.Aurora.SubTitle" parent="TextAppearance.Aurora.Title">
+        <item name="android:letterSpacing">0.025</item>
         <item name="android:textSize">16sp</item>
     </style>
 
     <style name="TextAppearance.Aurora.SubTitle.Alt" parent="TextAppearance.Aurora.Title">
+        <item name="android:letterSpacing">0.005</item>
         <item name="android:fontFamily">@font/montserrat_regular</item>
         <item name="android:textSize">18sp</item>
     </style>
@@ -129,7 +132,10 @@
     </style>
 
     <style name="TextAppearance.Aurora.Tab.Title" parent="TextAppearance.Aurora.Tab">
+        <item name="android:letterSpacing">0.075</item>
         <item name="textAllCaps">false</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">14sp</item>
     </style>
 
     <style name="TextAppearance.Aurora.Chip" parent="TextAppearance.Aurora.SubTitle">

@@ -22,7 +22,6 @@ package com.aurora.store.view.ui.details
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
 import com.aurora.Constants
-import com.aurora.extensions.close
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.Review
 import com.aurora.gplayapi.data.models.ReviewCluster
@@ -91,7 +90,7 @@ class DetailsReviewActivity : BaseActivity() {
 
     private fun attachToolbar() {
         B.layoutToolbarActionReview.toolbar.setOnClickListener {
-            close()
+            finishAfterTransition()
         }
         B.layoutToolbarActionReview.txtTitle.text = app.displayName
     }

@@ -33,7 +33,6 @@ import com.aurora.store.util.Log
 
 class SessionInstaller(context: Context) : SessionInstallerBase(context) {
 
-    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun install(packageName: String, files: List<Any>) {
         if (isAlreadyQueued(packageName)) {
             Log.i("$packageName already queued")

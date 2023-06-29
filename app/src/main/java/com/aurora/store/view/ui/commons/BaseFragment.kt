@@ -21,7 +21,6 @@ package com.aurora.store.view.ui.commons
 
 import android.app.ActivityOptions
 import android.content.Intent
-import android.os.Build
 import androidx.fragment.app.Fragment
 import com.aurora.Constants
 import com.aurora.extensions.getEmptyActivityBundle
@@ -42,24 +41,16 @@ open class BaseFragment : Fragment() {
     fun openDetailsActivity(app: App) {
         val intent = Intent(context, AppDetailsActivity::class.java)
         intent.putExtra(Constants.STRING_EXTRA, Gson().toJson(app))
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            val options = ActivityOptions.makeSceneTransitionAnimation(requireActivity())
-            startActivity(intent, options.toBundle())
-        } else {
-            startActivity(intent)
-        }
+        val options = ActivityOptions.makeSceneTransitionAnimation(requireActivity())
+        startActivity(intent, options.toBundle())
     }
 
     fun openCategoryBrowseActivity(category: Category) {
         val intent = Intent(context, CategoryBrowseActivity::class.java)
         intent.putExtra(Constants.STRING_EXTRA, category.title)
         intent.putExtra(Constants.BROWSE_EXTRA, category.browseUrl)
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            val options = ActivityOptions.makeSceneTransitionAnimation(requireActivity())
-            startActivity(intent, options.toBundle())
-        } else {
-            startActivity(intent)
-        }
+        val options = ActivityOptions.makeSceneTransitionAnimation(requireActivity())
+        startActivity(intent, options.toBundle())
     }
 
     fun openStreamBrowseActivity(browseUrl: String, title: String = "") {

@@ -27,10 +27,7 @@ import android.webkit.WebSettings
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import com.aurora.Constants
-import com.aurora.extensions.close
-import com.aurora.extensions.isLAndAbove
 import com.aurora.store.R
 import com.aurora.store.data.event.BusEvent
 import com.aurora.store.databinding.ActivityGoogleBinding
@@ -68,11 +65,9 @@ class GoogleActivity : BaseActivity() {
 
     @SuppressLint("SetJavaScriptEnabled")
     private fun setupWebView() {
-        if (isLAndAbove()) {
-            cookieManager.removeAllCookies(null)
-            cookieManager.acceptThirdPartyCookies(B.webview)
-            cookieManager.setAcceptThirdPartyCookies(B.webview, true)
-        }
+        cookieManager.removeAllCookies(null)
+        cookieManager.acceptThirdPartyCookies(B.webview)
+        cookieManager.setAcceptThirdPartyCookies(B.webview, true)
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             B.webview.settings.safeBrowsingEnabled = false
@@ -127,7 +122,7 @@ class GoogleActivity : BaseActivity() {
 
             //Close Activity
             setResult(RESULT_OK)
-            close()
+            finishAfterTransition()
         } fail {
             Toast.makeText(this, getString(R.string.toast_aas_token_failed), Toast.LENGTH_LONG)
                 .show()
@@ -135,7 +130,7 @@ class GoogleActivity : BaseActivity() {
 
             //Close Activity
             setResult(RESULT_CANCELED)
-            close()
+            finishAfterTransition()
         }
     }
 

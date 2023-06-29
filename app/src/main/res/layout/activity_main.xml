@@ -76,9 +76,10 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:background="?android:attr/colorBackground"
+        android:background="?android:attr/windowBackground"
         android:overScrollMode="never"
         app:headerLayout="@layout/layout_nav_header"
+        app:itemIconTint="?android:attr/colorAccent"
         app:itemTextAppearance="@style/TextAppearance.Aurora.Line1"
         app:menu="@menu/menu_drawer" />
 </androidx.drawerlayout.widget.DrawerLayout>

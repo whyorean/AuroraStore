@@ -28,7 +28,6 @@ import com.aurora.gplayapi.helpers.AppDetailsHelper
 import com.aurora.store.R
 import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.databinding.ActivityDetailsMoreBinding
-import com.aurora.extensions.close
 import com.aurora.store.view.epoxy.views.HeaderViewModel_
 import com.aurora.store.view.epoxy.views.app.NoAppAltViewModel_
 import com.aurora.store.view.epoxy.views.details.AppDependentViewModel_
@@ -77,7 +76,7 @@ class DetailsMoreActivity : BaseActivity() {
 
     private fun attachToolbar() {
         B.layoutToolbarActionMore.toolbar.setOnClickListener {
-            close()
+            finishAfterTransition()
         }
     }
 

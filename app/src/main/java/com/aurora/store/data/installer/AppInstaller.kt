@@ -23,7 +23,6 @@ package com.aurora.store.data.installer
 import android.content.Context
 import android.content.pm.PackageInstaller
 import android.content.pm.PackageManager
-import com.aurora.extensions.isLAndAbove
 import com.aurora.extensions.isOAndAbove
 import com.aurora.store.BuildConfig
 import com.aurora.store.R
@@ -112,7 +111,7 @@ open class AppInstaller private constructor(var context: Context) {
                 val installer = if (hasRootAccess()) {
                     RootInstaller(context)
                 } else {
-                    getDefaultInstaller(context)
+                    SessionInstaller(context)
                 }
                 choiceAndInstaller[prefValue] = installer
                 installer
@@ -121,7 +120,7 @@ open class AppInstaller private constructor(var context: Context) {
                 val installer = if (hasAuroraService(context)) {
                     ServiceInstaller(context)
                 } else {
-                    getDefaultInstaller(context)
+                    SessionInstaller(context)
                 }
                 choiceAndInstaller[prefValue] = installer
                 installer
@@ -130,7 +129,7 @@ open class AppInstaller private constructor(var context: Context) {
                 val installer = if (hasAppManager(context)) {
                     AMInstaller(context)
                 } else {
-                    getDefaultInstaller(context)
+                    SessionInstaller(context)
                 }
                 choiceAndInstaller[prefValue] = installer
                 installer
@@ -140,27 +139,19 @@ open class AppInstaller private constructor(var context: Context) {
                     val installer = if (hasShizuku(context) && hasShizukuPerm()) {
                         ShizukuInstaller(context)
                     } else {
-                        getDefaultInstaller(context)
+                        SessionInstaller(context)
                     }
                     choiceAndInstaller[prefValue] = installer
                     installer
                 } else {
-                    getDefaultInstaller(context)
+                    SessionInstaller(context)
                 }
             }
             else -> {
-                val installer = getDefaultInstaller(context)
+                val installer = SessionInstaller(context)
                 choiceAndInstaller[prefValue] = installer
                 installer
             }
-        }
-    }
-
-    private fun getDefaultInstaller(context: Context): InstallerBase {
-        return if (isLAndAbove()) {
-            SessionInstaller(context)
-        } else {
-            NativeInstaller(context)
         }
     }
 }

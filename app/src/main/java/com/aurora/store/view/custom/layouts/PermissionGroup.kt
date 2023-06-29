@@ -18,6 +18,7 @@
  */
 package com.aurora.store.view.custom.layouts
 
+import android.annotation.SuppressLint
 import android.annotation.TargetApi
 import android.content.Context
 import android.content.pm.PackageManager
@@ -50,7 +51,6 @@ class PermissionGroup : LinearLayout {
         init()
     }
 
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : super(
         context,
         attrs,
@@ -59,7 +59,6 @@ class PermissionGroup : LinearLayout {
         init()
     }
 
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     constructor(
         context: Context?,
         attrs: AttributeSet?,

@@ -28,7 +28,6 @@ import com.aurora.store.data.model.Report
 import com.aurora.store.data.providers.ExodusDataProvider
 import com.aurora.store.databinding.ActivityGenericRecyclerBinding
 import com.aurora.extensions.browse
-import com.aurora.extensions.close
 import com.aurora.store.view.epoxy.views.HeaderViewModel_
 import com.aurora.store.view.epoxy.views.details.ExodusViewModel_
 import com.aurora.store.view.ui.commons.BaseActivity
@@ -78,7 +77,7 @@ class DetailsExodusActivity : BaseActivity() {
 
     private fun attachToolbar() {
         B.layoutToolbarAction.toolbar.setOnClickListener {
-            close()
+            finishAfterTransition()
         }
         B.layoutToolbarAction.txtTitle.text = app.displayName
     }

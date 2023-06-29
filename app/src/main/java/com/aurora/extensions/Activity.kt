@@ -21,18 +21,9 @@ package com.aurora.extensions
 
 import android.app.Activity
 import android.content.Intent
-import android.os.Build
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 
-
-fun AppCompatActivity.close() {
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-        finishAfterTransition()
-    } else {
-        finish()
-    }
-}
 
 fun AppCompatActivity.restart() {
     val intent = intent

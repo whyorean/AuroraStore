@@ -71,19 +71,7 @@ class NativeDeviceInfoProvider(context: Context) : ContextWrapper(context) {
 
 
             //Supported Platforms
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                setProperty("Platforms", Build.SUPPORTED_ABIS.joinToString(separator = ","))
-            } else {
-                val platform = mutableListOf<String>()
-                if (!TextUtils.isEmpty(Build.CPU_ABI)) {
-                    platform.add(Build.CPU_ABI)
-                }
-                if (!TextUtils.isEmpty(Build.CPU_ABI2)) {
-                    platform.add(Build.CPU_ABI2)
-                }
-
-                setProperty("Platforms", platform.joinToString(separator = ","))
-            }
+            setProperty("Platforms", Build.SUPPORTED_ABIS.joinToString(separator = ","))
             //Supported Features
             setProperty("Features", getFeatures().joinToString(separator = ","))
             //Shared Locales
@@ -140,13 +128,7 @@ class NativeDeviceInfoProvider(context: Context) : ContextWrapper(context) {
 
     private fun getLocales(): List<String> {
         val localeList: MutableList<String> = ArrayList()
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            localeList.addAll(listOf(*applicationContext.assets.locales))
-        } else {
-            for (locale in Locale.getAvailableLocales()) {
-                localeList.add(locale.toString())
-            }
-        }
+        localeList.addAll(listOf(*applicationContext.assets.locales))
         val locales: MutableList<String> = ArrayList()
         for (locale in localeList) {
             if (TextUtils.isEmpty(locale)) {

@@ -27,7 +27,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.aurora.Constants
 import com.aurora.gplayapi.data.models.Artwork
 import com.aurora.store.databinding.ActivityScreenshotBinding
-import com.aurora.extensions.close
 import com.aurora.store.view.epoxy.views.details.LargeScreenshotViewModel_
 import com.aurora.store.view.ui.commons.BaseActivity
 import com.google.gson.reflect.TypeToken
@@ -54,7 +53,7 @@ class ScreenshotActivity : BaseActivity() {
             artworks = gson.fromJson(rawArtWorks, object : TypeToken<List<Artwork?>?>() {}.type)
             updateController(artworks, position)
         } else {
-            close()
+            finishAfterTransition()
         }
     }
 

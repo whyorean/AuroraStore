@@ -23,7 +23,6 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.aurora.Constants
-import com.aurora.extensions.close
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.StreamBundle
 import com.aurora.gplayapi.data.models.StreamCluster
@@ -88,7 +87,7 @@ class CategoryBrowseActivity : BaseActivity(), GenericCarouselController.Callbac
 
     private fun attachToolbar() {
         B.layoutToolbarAction.imgActionPrimary.setOnClickListener {
-            close()
+            finishAfterTransition()
         }
     }
 

@@ -25,7 +25,6 @@ import com.airbnb.epoxy.EpoxyModel
 import com.aurora.Constants
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.databinding.ActivityGenericRecyclerBinding
-import com.aurora.extensions.close
 import com.aurora.store.view.epoxy.groups.CarouselHorizontalModel_
 import com.aurora.store.view.epoxy.views.EditorHeadViewModel_
 import com.aurora.store.view.epoxy.views.HorizontalDividerViewModel_
@@ -82,7 +81,7 @@ class EditorStreamBrowseActivity : BaseActivity() {
 
     private fun attachToolbar() {
         B.layoutToolbarAction.imgActionPrimary.setOnClickListener {
-            close()
+            finishAfterTransition()
         }
     }
 

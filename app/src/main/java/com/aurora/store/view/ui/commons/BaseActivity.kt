@@ -56,88 +56,51 @@ abstract class BaseActivity : AppCompatActivity(), NetworkProvider.NetworkListen
     }
 
     fun openDetailsActivity(app: App) {
-        val intent = Intent(
-            this,
-            AppDetailsActivity::class.java
-        )
+        val intent = Intent(this, AppDetailsActivity::class.java)
         intent.putExtra(Constants.STRING_EXTRA, gson.toJson(app))
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            val options =
-                ActivityOptions.makeSceneTransitionAnimation(this)
-            startActivity(intent, options.toBundle())
-        } else {
-            startActivity(intent)
-        }
+        val options = ActivityOptions.makeSceneTransitionAnimation(this)
+        startActivity(intent, options.toBundle())
     }
 
     fun openDetailsMoreActivity(app: App) {
-        val intent = Intent(
-            this,
-            DetailsMoreActivity::class.java
-        )
+        val intent = Intent(this, DetailsMoreActivity::class.java)
         intent.putExtra(Constants.STRING_EXTRA, gson.toJson(app))
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            val options =
-                ActivityOptions.makeSceneTransitionAnimation(this)
-            startActivity(intent, options.toBundle())
-        } else {
-            startActivity(intent)
-        }
+        val options = ActivityOptions.makeSceneTransitionAnimation(this)
+        startActivity(intent, options.toBundle())
     }
 
     fun openDetailsReviewActivity(app: App) {
-        val intent = Intent(
-            this,
-            DetailsReviewActivity::class.java
-        )
+        val intent = Intent(this, DetailsReviewActivity::class.java)
         intent.putExtra(Constants.STRING_EXTRA, gson.toJson(app))
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            val options =
-                ActivityOptions.makeSceneTransitionAnimation(this)
-            startActivity(intent, options.toBundle())
-        } else {
-            startActivity(intent)
-        }
+        val options = ActivityOptions.makeSceneTransitionAnimation(this)
+        startActivity(intent, options.toBundle())
     }
 
     fun openStreamBrowseActivity(browseUrl: String, title: String = "") {
-        val intent = if (browseUrl.lowercase().contains("expanded"))
+        val intent = if (browseUrl.lowercase().contains("expanded")) {
             Intent(this, ExpandedStreamBrowseActivity::class.java)
-        else if (browseUrl.lowercase().contains("developer"))
+        } else if (browseUrl.lowercase().contains("developer")) {
             Intent(this, DevProfileActivity::class.java)
-        else
+        } else {
             Intent(this, StreamBrowseActivity::class.java)
+        }
         intent.putExtra(Constants.BROWSE_EXTRA, browseUrl)
         intent.putExtra(Constants.STRING_EXTRA, title)
-        startActivity(
-            intent,
-            getEmptyActivityBundle()
-        )
+        startActivity(intent, getEmptyActivityBundle())
     }
 
     fun openScreenshotActivity(app: App, position: Int) {
-        val intent = Intent(
-            this,
-            ScreenshotActivity::class.java
-        ).apply {
+        val intent = Intent(this, ScreenshotActivity::class.java).apply {
             putExtra(Constants.STRING_EXTRA, gson.toJson(app.screenshots))
             putExtra(Constants.INT_EXTRA, position)
         }
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            val options =
-                ActivityOptions.makeSceneTransitionAnimation(this)
-            startActivity(intent, options.toBundle())
-        } else {
-            startActivity(intent)
-        }
+        val options = ActivityOptions.makeSceneTransitionAnimation(this)
+        startActivity(intent, options.toBundle())
     }
 
     fun openGoogleActivity() {
         val intent = Intent(this, GoogleActivity::class.java)
-        startActivity(
-            intent,
-            getEmptyActivityBundle()
-        )
+        startActivity(intent, getEmptyActivityBundle())
     }
 
     fun askToReadTOS() {
