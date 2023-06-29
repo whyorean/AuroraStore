@@ -19,8 +19,9 @@
 
 package com.aurora.store.util
 
-import com.github.kittinunf.fuel.Fuel
+import com.aurora.store.data.network.OkHttpClient
 import java.util.*
+import okhttp3.RequestBody.Companion.toRequestBody
 
 class AC2DMTask {
     @Throws(Exception::class)
@@ -44,18 +45,19 @@ class AC2DMTask {
 
         val body = params.map { "${it.key}=${it.value}" }.joinToString(separator = "&")
 
-        val response = Fuel.post(TOKEN_AUTH_URL)
-            .body(body)
-            .header("app" to "com.google.android.gms")
-            .header("User-Agent" to "")
-            .header("Content-Type" to "application/x-www-form-urlencoded")
-            .response()
+        val header = mapOf(
+            "app" to "com.google.android.gms",
+            "User-Agent" to "",
+            "Content-Type" to "application/x-www-form-urlencoded"
+        )
 
-        return response.third.fold(success = {
-            AC2DMUtil.parseResponse(String(it))
-        }, failure = {
+        val response = OkHttpClient.post(TOKEN_AUTH_URL, header, body.toRequestBody())
+
+        return if (response.isSuccessful) {
+            AC2DMUtil.parseResponse(String(response.responseBytes))
+        } else {
             mapOf()
-        })
+        }
     }
 
     companion object {

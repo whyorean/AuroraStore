@@ -157,7 +157,6 @@ dependencies {
     implementation "com.novoda:merlin:1.2.1"
 
     //HTTP Clients
-    implementation "com.github.kittinunf.fuel:fuel:2.3.1"
     implementation "com.squareup.okhttp3:okhttp:4.11.0"
 
     //Fetch - Downloader
