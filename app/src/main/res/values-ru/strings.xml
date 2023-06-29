@@ -212,7 +212,7 @@
     <string name="onboarding_permission_installer_desc">Разрешить установку приложений из Aurora Store</string>
     <string name="onboarding_permission_installer">Разрешения установщика</string>
     <string name="onboarding_permission_esm">Менеджер памяти</string>
-    <string name="onboarding_permission_esa_desc">Чтобы сохранить загрузки (APK и OBB), экспортиртировать и импортировать конфигурации устройств во внешнее хранилище.</string>
+    <string name="onboarding_permission_esa_desc">Для сохранения загрузок (APK и OBB), экспорта и импорта конфигураций устройства во внешнее хранилище.</string>
     <string name="onboarding_permission_esa">Доступ к памяти</string>
     <string name="onboarding_welcome_select">Как дела\?</string>
     <string name="onboarding_tos_error">Сначала нужно отметить \"Условия предоставления услуг\" как прочитанное.</string>
