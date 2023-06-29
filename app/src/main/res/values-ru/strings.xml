@@ -215,7 +215,7 @@
     <string name="onboarding_permission_esa_desc">Для сохранения загрузок (APK и OBB), экспорта и импорта конфигураций устройства во внешнее хранилище.</string>
     <string name="onboarding_permission_esa">Доступ к памяти</string>
     <string name="onboarding_welcome_select">Как дела\?</string>
-    <string name="onboarding_tos_error">Сначала нужно отметить \"Условия предоставления услуг\" как прочитанное.</string>
+    <string name="onboarding_tos_error">Сначала нужно отметить Условия предоставления услуг прочитанными.</string>
     <string name="onboarding_tos_confirmation">Я прочитал Условия предоставления услуг Aurora Store.</string>
     <string name="onboarding_tos_desc">Пожалуйста, прочтите наши Условия предоставления услуг и примите их, чтобы использовать Aurora Store.</string>
     <string name="onboarding_tos">Условия предоставления услуг</string>
