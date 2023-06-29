@@ -144,7 +144,7 @@
     <string name="toast_apk_whitelisted">Добавлен в белый список</string>
     <string name="toast_apk_blacklisted">Добавлен в черный список</string>
     <string name="toast_anonymous_restriction">Недоступно на анонимных аккаунтах</string>
-    <string name="toast_abandon_sessions">Прерванные предыдущие сеансы установки</string>
+    <string name="toast_abandon_sessions">Предыдущие сеансы установки отменены</string>
     <string name="title_updates">Обновления</string>
     <string name="title_settings">Настройки</string>
     <string name="title_purchase_history">История покупок</string>
@@ -212,7 +212,7 @@
     <string name="onboarding_permission_installer_desc">Разрешить установку приложений из Aurora Store</string>
     <string name="onboarding_permission_installer">Разрешения установщика</string>
     <string name="onboarding_permission_esm">Менеджер памяти</string>
-    <string name="onboarding_permission_esa_desc">Чтобы сохранить загрузки (APK и OBB), экспортируйте и импортируйте конфигурации устройств во внешнее хранилище.</string>
+    <string name="onboarding_permission_esa_desc">Чтобы сохранить загрузки (APK и OBB), экспортиртировать и импортировать конфигурации устройств во внешнее хранилище.</string>
     <string name="onboarding_permission_esa">Доступ к памяти</string>
     <string name="onboarding_welcome_select">Как дела\?</string>
     <string name="onboarding_tos_error">Сначала нужно отметить \"Условия предоставления услуг\" как прочитанное.</string>
@@ -330,7 +330,7 @@
     <string name="pref_advanced_search_in_ctt">Поиск во вкладке браузера</string>
     <string name="search_hint">Поиск в Приложениях и Играх</string>
     <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>
-    <string name="requesting_new_session">Запрос на новую сессию</string>
+    <string name="requesting_new_session">Запрос новой сессии</string>
     <string name="server_maintenance">Сервер отключён на техобслуживание</string>
     <string name="action_import">Импортировать</string>
     <string name="toast_import_success">Профиль устройства импортирован</string>
