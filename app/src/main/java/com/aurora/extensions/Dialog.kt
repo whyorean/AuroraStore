@@ -21,7 +21,6 @@ package com.aurora.extensions
 
 import android.content.Context
 import android.content.DialogInterface
-import android.graphics.drawable.ColorDrawable
 import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -41,7 +40,6 @@ fun Context.showDialog(
     negativeListener: DialogInterface.OnClickListener?
 ) {
     runOnUiThread {
-        val backgroundColor: Int = getStyledAttributeColor(android.R.attr.colorBackground)
         val builder = MaterialAlertDialogBuilder(this).apply {
             setTitle(title)
             setMessage(message)
@@ -56,7 +54,6 @@ fun Context.showDialog(
                 setNegativeButton(android.R.string.cancel, negativeListener)
             }
 
-            background = ColorDrawable(backgroundColor)
         }.create()
 
         builder.show()
