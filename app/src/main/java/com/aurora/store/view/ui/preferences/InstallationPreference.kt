@@ -75,9 +75,11 @@ class InstallationPreference : PreferenceFragmentCompat() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        Shizuku.addBinderReceivedListenerSticky(shizukuAliveListener)
-        Shizuku.addBinderDeadListener(shizukuDeadListener)
-        Shizuku.addRequestPermissionResultListener(shizukuResultListener)
+        if (isOAndAbove()) {
+            Shizuku.addBinderReceivedListenerSticky(shizukuAliveListener)
+            Shizuku.addBinderDeadListener(shizukuDeadListener)
+            Shizuku.addRequestPermissionResultListener(shizukuResultListener)
+        }
 
         val abandonPreference: Preference? =
             findPreference(Preferences.INSTALLATION_ABANDON_SESSION)
@@ -161,6 +163,15 @@ class InstallationPreference : PreferenceFragmentCompat() {
                     }
                 }
         }
+    }
+
+    override fun onDestroy() {
+        if (isOAndAbove()) {
+            Shizuku.removeBinderReceivedListener(shizukuAliveListener)
+            Shizuku.removeBinderDeadListener(shizukuDeadListener)
+            Shizuku.removeRequestPermissionResultListener(shizukuResultListener)
+        }
+        super.onDestroy()
     }
 
     private fun checkRootAvailability(): Boolean {

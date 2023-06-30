@@ -84,9 +84,11 @@ class InstallerFragment : BaseFragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        Shizuku.addBinderReceivedListenerSticky(shizukuAliveListener)
-        Shizuku.addBinderDeadListener(shizukuDeadListener)
-        Shizuku.addRequestPermissionResultListener(shizukuResultListener)
+        if (isOAndAbove()) {
+            Shizuku.addBinderReceivedListenerSticky(shizukuAliveListener)
+            Shizuku.addBinderDeadListener(shizukuDeadListener)
+            Shizuku.addRequestPermissionResultListener(shizukuResultListener)
+        }
 
         B = FragmentOnboardingInstallerBinding.bind(
             inflater.inflate(
@@ -112,7 +114,11 @@ class InstallerFragment : BaseFragment() {
     }
 
     override fun onDestroy() {
-        Shizuku.removeRequestPermissionResultListener(shizukuResultListener)
+        if (isOAndAbove()) {
+            Shizuku.removeBinderReceivedListener(shizukuAliveListener)
+            Shizuku.removeBinderDeadListener(shizukuDeadListener)
+            Shizuku.removeRequestPermissionResultListener(shizukuResultListener)
+        }
         super.onDestroy()
     }
 
