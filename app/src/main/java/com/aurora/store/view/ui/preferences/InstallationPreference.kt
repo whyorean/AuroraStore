@@ -75,7 +75,7 @@ class InstallationPreference : PreferenceFragmentCompat() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        if (isOAndAbove()) {
+        if (AppInstaller.hasShizuku(requireContext()) && isOAndAbove()) {
             Shizuku.addBinderReceivedListenerSticky(shizukuAliveListener)
             Shizuku.addBinderDeadListener(shizukuDeadListener)
             Shizuku.addRequestPermissionResultListener(shizukuResultListener)
@@ -166,7 +166,7 @@ class InstallationPreference : PreferenceFragmentCompat() {
     }
 
     override fun onDestroy() {
-        if (isOAndAbove()) {
+        if (AppInstaller.hasShizuku(requireContext()) && isOAndAbove()) {
             Shizuku.removeBinderReceivedListener(shizukuAliveListener)
             Shizuku.removeBinderDeadListener(shizukuDeadListener)
             Shizuku.removeRequestPermissionResultListener(shizukuResultListener)

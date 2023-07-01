@@ -84,7 +84,7 @@ class InstallerFragment : BaseFragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        if (isOAndAbove()) {
+        if (hasShizuku(requireContext()) && isOAndAbove()) {
             Shizuku.addBinderReceivedListenerSticky(shizukuAliveListener)
             Shizuku.addBinderDeadListener(shizukuDeadListener)
             Shizuku.addRequestPermissionResultListener(shizukuResultListener)
@@ -114,7 +114,7 @@ class InstallerFragment : BaseFragment() {
     }
 
     override fun onDestroy() {
-        if (isOAndAbove()) {
+        if (hasShizuku(requireContext()) && isOAndAbove()) {
             Shizuku.removeBinderReceivedListener(shizukuAliveListener)
             Shizuku.removeBinderDeadListener(shizukuDeadListener)
             Shizuku.removeRequestPermissionResultListener(shizukuResultListener)
