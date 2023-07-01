@@ -7,7 +7,7 @@
     <string name="action_pending">Ожидает</string>
     <string name="action_pause">Пауза</string>
     <string name="action_open">Открыть</string>
-    <string name="action_ok">Хорошо</string>
+    <string name="action_ok">OK</string>
     <string name="action_next">Далее</string>
     <string name="action_logout">Выйти</string>
     <string name="action_leave">Покинуть</string>
@@ -30,8 +30,8 @@
     <string name="action_export">Экспортировать</string>
     <string name="action_disable">Отключить</string>
     <string name="action_deny">Отказаться</string>
-    <string name="action_copy_link">Копировать ссылку</string>
-    <string name="action_copy">Копировать</string>
+    <string name="action_copy_link">Скопировать ссылку</string>
+    <string name="action_copy">Скопировать</string>
     <string name="action_close">Закрыть</string>
     <string name="action_clear">Очистить</string>
     <string name="action_cancel">Отмена</string>
