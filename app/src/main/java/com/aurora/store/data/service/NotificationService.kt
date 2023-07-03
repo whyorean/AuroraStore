@@ -29,6 +29,7 @@ import android.util.ArrayMap
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
+import androidx.core.os.bundleOf
 import androidx.navigation.NavDeepLinkBuilder
 import com.aurora.Constants
 import com.aurora.extensions.getStyledAttributeColor
@@ -46,7 +47,6 @@ import com.aurora.store.data.receiver.DownloadResumeReceiver
 import com.aurora.store.data.receiver.InstallReceiver
 import com.aurora.store.util.CommonUtil
 import com.aurora.store.util.Log
-import com.aurora.store.view.ui.details.AppDetailsActivity
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.tonyodev.fetch2.*
@@ -313,17 +313,12 @@ class NotificationService : Service() {
     }
 
     private fun getContentIntentForDetails(app: App?): PendingIntent {
-        val intent = Intent(this, AppDetailsActivity::class.java)
-        intent.putExtra(Constants.STRING_EXTRA, gson.toJson(app))
-        val flags = if (isMAndAbove())
-            PendingIntent.FLAG_CANCEL_CURRENT or PendingIntent.FLAG_IMMUTABLE
-        else PendingIntent.FLAG_CANCEL_CURRENT
-        return PendingIntent.getActivity(
-            this,
-            packageName.hashCode(),
-            intent,
-            flags
-        )
+        return NavDeepLinkBuilder(this)
+            .setGraph(R.navigation.mobile_navigation)
+            .setDestination(R.id.appDetailsFragment)
+            .setComponentName(MainActivity::class.java)
+            .setArguments(bundleOf("packageName" to app!!.packageName))
+            .createPendingIntent()
     }
 
     private fun getContentIntentForDownloads(): PendingIntent {

@@ -92,43 +92,6 @@
             android:name=".MainActivity"
             android:launchMode="singleTask" />
 
-        <activity android:name=".view.ui.details.EmptyAppDetailsActivity"
-            android:noHistory="true"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="market" android:host="details" />
-            </intent-filter>
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-
-                <data android:scheme="http" />
-                <data android:scheme="https" />
-                <data android:host="market.android.com" />
-                <data android:path="/store/apps/details" />
-            </intent-filter>
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-
-                <data android:scheme="http" />
-                <data android:scheme="https" />
-                <data android:host="play.google.com" />
-                <data android:path="/store/apps/details" />
-            </intent-filter>
-        </activity>
-
-        <activity android:name=".view.ui.details.AppDetailsActivity"
-            android:exported="false">
-        </activity>
-
         <activity android:name=".view.ui.details.DevProfileActivity"
             android:exported="true">
             <intent-filter>

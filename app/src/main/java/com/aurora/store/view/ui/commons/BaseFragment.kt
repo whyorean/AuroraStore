@@ -23,11 +23,12 @@ import android.app.ActivityOptions
 import android.content.Intent
 import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.aurora.Constants
 import com.aurora.extensions.getEmptyActivityBundle
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.Category
-import com.aurora.store.view.ui.details.AppDetailsActivity
+import com.aurora.store.MobileNavigationDirections
 import com.aurora.store.view.ui.details.DevProfileActivity
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
@@ -44,10 +45,9 @@ open class BaseFragment : Fragment {
     ).create()
 
     fun openDetailsActivity(app: App) {
-        val intent = Intent(context, AppDetailsActivity::class.java)
-        intent.putExtra(Constants.STRING_EXTRA, Gson().toJson(app))
-        val options = ActivityOptions.makeSceneTransitionAnimation(requireActivity())
-        startActivity(intent, options.toBundle())
+        findNavController().navigate(
+            MobileNavigationDirections.actionGlobalAppDetailsFragment(app.packageName)
+        )
     }
 
     fun openCategoryBrowseActivity(category: Category) {

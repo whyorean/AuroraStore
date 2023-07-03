@@ -26,7 +26,6 @@ import androidx.appcompat.app.AppCompatActivity
 import com.aurora.Constants
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.data.model.Report
-import com.aurora.store.view.ui.details.AppDetailsActivity
 import com.aurora.store.view.ui.details.DetailsExodusActivity
 import com.aurora.store.view.ui.details.DevAppsActivity
 import com.google.gson.Gson
@@ -35,17 +34,6 @@ import java.lang.reflect.Modifier
 
 object NavigationUtil {
     val gson: Gson = GsonBuilder().excludeFieldsWithModifiers(Modifier.TRANSIENT).create()
-
-    fun openDetailsActivity(context: Context, app: App) {
-        val intent = Intent(
-            context,
-            AppDetailsActivity::class.java
-        ).apply {
-            putExtra(Constants.STRING_EXTRA, gson.toJson(app))
-        }
-        val options = ActivityOptions.makeSceneTransitionAnimation(context as AppCompatActivity)
-        context.startActivity(intent, options.toBundle())
-    }
 
     fun openDevAppsActivity(context: Context, app: App) {
         val intent = Intent(

@@ -98,4 +98,18 @@
         android:name="com.aurora.store.view.ui.downloads.DownloadFragment"
         android:label="@string/title_download_manager"
         tools:layout="@layout/fragment_download" />
+    <fragment
+        android:id="@+id/appDetailsFragment"
+        android:name="com.aurora.store.view.ui.details.AppDetailsFragment"
+        tools:layout="@layout/fragment_details" >
+        <argument
+            android:name="packageName"
+            app:argType="string" />
+        <deepLink
+            app:action="android.intent.action.VIEW"
+            app:uri="play.google.com/store/apps/details?id={packageName}" />
+    </fragment>
+    <action
+        android:id="@+id/action_global_appDetailsFragment"
+        app:destination="@id/appDetailsFragment" />
 </navigation>

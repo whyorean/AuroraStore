@@ -37,13 +37,13 @@ import androidx.core.app.ActivityOptionsCompat
 import androidx.core.app.ShareCompat
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toBitmap
+import androidx.navigation.NavDeepLinkBuilder
 import com.aurora.Constants
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.MainActivity
 import com.aurora.store.R
 import com.aurora.store.util.Log
 import com.aurora.store.util.Preferences
-import com.aurora.store.view.ui.details.AppDetailsActivity
 import kotlin.system.exitProcess
 
 val Context.inflater: LayoutInflater
@@ -58,12 +58,11 @@ fun Context.browse(url: String, showOpenInAuroraAction: Boolean = false) {
         if (showOpenInAuroraAction) {
             val icon =
                 ContextCompat.getDrawable(this, R.drawable.ic_open_in_new)?.toBitmap()
-            val pendingIntent = PendingIntent.getActivity(
-                this,
-                0,
-                Intent(this, AppDetailsActivity::class.java),
-                PendingIntent.FLAG_MUTABLE
-            )
+            val pendingIntent = NavDeepLinkBuilder(this)
+                .setGraph(R.navigation.mobile_navigation)
+                .setDestination(R.id.appDetailsFragment)
+                .setComponentName(MainActivity::class.java)
+                .createPendingIntent()
             customTabsIntent.setActionButton(
                 icon!!,
                 this.getString(R.string.open_in_aurora),
