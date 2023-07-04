@@ -336,4 +336,18 @@
     <string name="permissions_denied">Tarvittavat oikeudet evättiin. Myönnä ne, jotta voit jatkaa toimenpidettä</string>
     <string name="search_hint">Etsi sovelluksia ja pelejä</string>
     <string name="downloading_dep">Lisätiedostoja ladataan kohteelle <xliff:g id="app">%1$s</xliff:g></string>
+    <string name="notification_channel_updates">Päivitysten ilmoitukset</string>
+    <string name="notification_updates_available_desc_1"><xliff:g id="app_one_name">%1$s</xliff:g>:n uusi versio on saatavilla</string>
+    <string name="notification_updates_available_desc_2"><xliff:g id="app_one_name">%1$s</xliff:g> ja <xliff:g id="app_two_name">%2$s</xliff:g></string>
+    <string name="notification_updates_available_1"><xliff:g id="apps_count">%1$d</xliff:g> päivitys saatavilla</string>
+    <string name="checking_for_updates">Päivitysten tarkistaminen</string>
+    <string name="pref_updates_check">Automaattinen päivitysten tarkistus</string>
+    <string name="notification_updates_available_desc_4"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g>, <xliff:g id="app_three_name">%3$s</xliff:g> ja <xliff:g id="apps_count">%4$d</xliff:g> lisää</string>
+    <string name="pref_updates_check_desc">Tarkista ja ilmoita uusista sovelluspäivityksistä automaattisesti säännöllisesti</string>
+    <string name="failed_validating_account">Tiliä ei onnistuttu vahvistamaan, saattaa olla rajoitettu.
+\nKirjaudu uudelleen!</string>
+    <string name="pref_install_mode_shizuku">Shizukun asennusohjelma</string>
+    <string name="notification_updates_available"><xliff:g id="apps_count">%1$d</xliff:g> päivitystä saatavilla</string>
+    <string name="notification_updates_available_desc_3"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g> ja <xliff:g id="app_three_name">%3$s</xliff:g></string>
+    <string name="installer_shizuku_unavailable">Shizuku ei ole asennettu tai asetettu oikein.</string>
 </resources>

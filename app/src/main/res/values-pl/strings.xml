@@ -113,7 +113,7 @@
     <string name="title_spoof_manager">Menedżer podmiany</string>
     <string name="title_settings">Ustawienia</string>
     <string name="title_purchase_history">Historia zakupów</string>
-    <string name="title_no_network">Brak sieci</string>
+    <string name="title_no_network">Brak internetu</string>
     <string name="title_library">Biblioteka</string>
     <string name="title_language">Język</string>
     <string name="title_installer">Instalator aplikacji</string>

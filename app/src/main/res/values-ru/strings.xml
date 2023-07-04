@@ -7,7 +7,7 @@
     <string name="action_pending">Ожидает</string>
     <string name="action_pause">Пауза</string>
     <string name="action_open">Открыть</string>
-    <string name="action_ok">Хорошо</string>
+    <string name="action_ok">OK</string>
     <string name="action_next">Далее</string>
     <string name="action_logout">Выйти</string>
     <string name="action_leave">Покинуть</string>
@@ -30,8 +30,8 @@
     <string name="action_export">Экспортировать</string>
     <string name="action_disable">Отключить</string>
     <string name="action_deny">Отказаться</string>
-    <string name="action_copy_link">Копировать ссылку</string>
-    <string name="action_copy">Копировать</string>
+    <string name="action_copy_link">Скопировать ссылку</string>
+    <string name="action_copy">Скопировать</string>
     <string name="action_close">Закрыть</string>
     <string name="action_clear">Очистить</string>
     <string name="action_cancel">Отмена</string>
@@ -144,7 +144,7 @@
     <string name="toast_apk_whitelisted">Добавлен в белый список</string>
     <string name="toast_apk_blacklisted">Добавлен в черный список</string>
     <string name="toast_anonymous_restriction">Недоступно на анонимных аккаунтах</string>
-    <string name="toast_abandon_sessions">Прерванные предыдущие сеансы установки</string>
+    <string name="toast_abandon_sessions">Предыдущие сеансы установки отменены</string>
     <string name="title_updates">Обновления</string>
     <string name="title_settings">Настройки</string>
     <string name="title_purchase_history">История покупок</string>
@@ -212,10 +212,10 @@
     <string name="onboarding_permission_installer_desc">Разрешить установку приложений из Aurora Store</string>
     <string name="onboarding_permission_installer">Разрешения установщика</string>
     <string name="onboarding_permission_esm">Менеджер памяти</string>
-    <string name="onboarding_permission_esa_desc">Чтобы сохранить загрузки (APK и OBB), экспортируйте и импортируйте конфигурации устройств во внешнее хранилище.</string>
+    <string name="onboarding_permission_esa_desc">Для сохранения загрузок (APK и OBB), экспорта и импорта конфигураций устройства во внешнее хранилище.</string>
     <string name="onboarding_permission_esa">Доступ к памяти</string>
     <string name="onboarding_welcome_select">Как дела\?</string>
-    <string name="onboarding_tos_error">Сначала нужно отметить \"Условия предоставления услуг\" как прочитанное.</string>
+    <string name="onboarding_tos_error">Сначала нужно отметить Условия предоставления услуг прочитанными.</string>
     <string name="onboarding_tos_confirmation">Я прочитал Условия предоставления услуг Aurora Store.</string>
     <string name="onboarding_tos_desc">Пожалуйста, прочтите наши Условия предоставления услуг и примите их, чтобы использовать Aurora Store.</string>
     <string name="onboarding_tos">Условия предоставления услуг</string>
@@ -272,7 +272,7 @@
     <string name="toast_manual_unavailable">Запрошенный вами код версии недоступен.</string>
     <string name="title_manual_download">Ручная загрузка</string>
     <string name="action_check">Проверить</string>
-    <string name="dialog_desc_native_split">Сборные приложения (app bundles, сплиты) через системный установщик Android установить невозможно. Используйте метод установки Aurora, сервисы Aurora или root.</string>
+    <string name="dialog_desc_native_split">Сборные приложения (app bundles, сплиты) через системный установщик Android установить невозможно. Измените метод установки на Сессионный, сервисы Aurora или root.</string>
     <string name="toast_aas_token_failed">Не удалось сгенерировать AAS-токен</string>
     <string name="toast_rated_failed">Не удалось поставить оценку</string>
     <string name="toast_rated_success">Оценка принята</string>
@@ -330,7 +330,7 @@
     <string name="pref_advanced_search_in_ctt">Поиск во вкладке браузера</string>
     <string name="search_hint">Поиск в Приложениях и Играх</string>
     <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>
-    <string name="requesting_new_session">Запрос на новую сессию</string>
+    <string name="requesting_new_session">Запрос новой сессии</string>
     <string name="server_maintenance">Сервер отключён на техобслуживание</string>
     <string name="action_import">Импортировать</string>
     <string name="toast_import_success">Профиль устройства импортирован</string>
@@ -349,4 +349,5 @@
     <string name="pref_updates_check_desc">Периодическая автопроверка и уведомление об обновлениях приложений</string>
     <string name="installer_shizuku_unavailable">Shizuku не установлено или не настроено правильно.</string>
     <string name="pref_install_mode_shizuku">Установщик Shizuku</string>
+    <string name="notification_updates_available_desc_4"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g>, <xliff:g id="app_three_name">%3$s</xliff:g> и ещё <xliff:g id="apps_count">%4$d</xliff:g> приложений</string>
 </resources>
