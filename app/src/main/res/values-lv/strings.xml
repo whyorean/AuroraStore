@@ -89,7 +89,7 @@
     <string name="download_cancel_all">Pārtraukt visas</string>
     <string name="download_canceled">Pārtraukts</string>
     <string name="download_clear_completed">Notīrīt pabeigtās</string>
-    <string name="download_completed">Lejupielādēts</string>
+    <string name="download_completed">Lejupielādēte pabeigta</string>
     <string name="download_failed">Lejupielāde neizdevās</string>
     <string name="download_force_clear_all">Piespiest notīrīt visas</string>
     <string name="download_metadata">Iegūst metadatus</string>
@@ -127,7 +127,7 @@
     <string name="onboarding_tos_confirmation">Es izlasīju Aurora Store Lietošanas noteikumus.</string>
     <string name="pref_app_download">Lejupielādes</string>
     <string name="pref_ui_theme_black">Melns</string>
-    <string name="pref_ui_theme_darkord">Disskord</string>
+    <string name="pref_ui_theme_darkord">Discord</string>
     <string name="pref_ui_theme_title">Motīvs</string>
     <string name="pref_ui_layout_tab">Izvēlēties noklusējuma lapu</string>
     <string name="pref_ui_quick_exit_desc">Pamest lietotni ar vienu atpakaļ pogas nospiešanu</string>
@@ -224,7 +224,7 @@
     <string name="exodus_powered">Nodrošina Exodus</string>
     <string name="installer_am_unavailable">Jāuzstāda App Manager vai jānomaina uzstādītājs.</string>
     <string name="title_blacklist_manager">Melnā saraksta pārvaldnieks</string>
-    <string name="notification_updates_available_desc_1">Ir pieejams jauns &lt;xliff:g xmlns:xliff=\"urn:oasis:names:tc:xliff:document:1.2\" id=\"app_one_name\"&gt; laidiens</string>
+    <string name="notification_updates_available_desc_1">Ir pieejams jauns <xliff:g id="app_one_name">%1$s</xliff:g> laidiens</string>
     <string name="tab_editor_choice">Redaktora izvēle</string>
     <string name="session_login_failed_google">Neizdevās pieteikties ar Google</string>
     <string name="session_enjoy">Piesakies un izbaudi!</string>
@@ -280,4 +280,74 @@
     <string name="notification_updates_available">Pieejami <xliff:g id="apps_count">%1$d</xliff:g> atjauninājumi</string>
     <string name="notification_updates_available_1">Pieejams <xliff:g id="apps_count">%1$d</xliff:g> atjauninājums</string>
     <string name="device_miui_extra">Ir iespējams izvēlēties arī iebūvēto uzstādītāju, bet tad nevarēs uzstādīt apvienotos (sastāvošus no vairākām daļām) APK, tā ka izvēle ir paša ziņā.</string>
+    <string name="ui_accent_3">Sarkans</string>
+    <string name="ui_accent_4">Zelta</string>
+    <string name="download_progress">Lejupielādē • <xliff:g id="completed_downloads">%1$d</xliff:g>/<xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
+    <string name="pref_install_delete_summary">APK tiks izdzēsti pēc noklusējuma</string>
+    <string name="pref_install_mode_services">Aurora pakalpojumi</string>
+    <string name="details_dependencies">Atkarības</string>
+    <string name="details_beta_delay">Ievietošana sarakstā var aizņemt kādu laiku, vēlāk var pārbaudīt stāvokli.</string>
+    <string name="pref_filter_fdroid_summary">Neiekļauj sarakstos F-Droid lietotnes</string>
+    <string name="pref_filter_search_summary">Meklēšanas nosacījumi tiek atiestatīti katrā meklēšanas reizē. Izslēgt, lai saglabāt meklēšanas nosacījumus</string>
+    <string name="ui_accent_12">Discord zils</string>
+    <string name="pref_downloader_external_desc">Ārējā krātuve tiek izmantota lejupielādēm, izguvēm utml.</string>
+    <string name="download_paused">Apturēta • <xliff:g id="completed_downloads">%1$d</xliff:g>/<xliff:g id="all_downloads">%2$d</xliff:g></string>
+    <string name="details_beta_description">Būs pieejamas jaunas iespējas un nepilnības pirms publicēšanas. Sniedzot atgriezenisko saiti izstrādātājiem tiks palīdzēts viņiem veikt uzlabojumus.</string>
+    <string name="details_gsf_dependent">Nepieciešams GSF</string>
+    <string name="download_eta_hrs">Atlicis %1$dh %2$dm %3$ds</string>
+    <string name="download_eta_min">Atlicis %1$dm %2$ds</string>
+    <string name="download_eta_sec">Atlikušas %1$ds</string>
+    <string name="installer_service_misconfigured">Vispirms jāuzstāda Aurora pakalpojumi un jānodrošina visas atļaujas.</string>
+    <string name="pref_insecure_anonymous_title">Nedroša anonīmā sesija</string>
+    <string name="toast_export_success">Ierīces uzstādījumi ir izgūti</string>
+    <string name="ui_accent_7">Pelēks</string>
+    <string name="details_no_dependencies">Nav atkarību</string>
+    <string name="details_no_app_match">Atbilstība lietotnei netika atrasta</string>
+    <string name="pref_downloader_active_summary">Lielākais pieļaujamais notiekošu lejupielāžu skaits</string>
+    <string name="toast_export_failed">Nebija iespējams izgūt ierīces uzstādījumus</string>
+    <string name="ui_accent_5">Zaļš</string>
+    <string name="ui_accent_8">Rozā</string>
+    <string name="server_maintenance">Serveris nav pieejams uzturēšanas darbu dēļ</string>
+    <string name="ui_accent_6">Violets</string>
+    <string name="notification_channel_updates">Atjauninājumu paziņojumi</string>
+    <string name="requesting_new_session">Pieprasa jaunu sesiju</string>
+    <string name="downloading_dep">Lejupielādē <xliff:g id="app">%1$s</xliff:g> papildu datnes</string>
+    <string name="notification_updates_available_desc_2"><xliff:g id="app_one_name">%1$s</xliff:g> un <xliff:g id="app_two_name">%2$s</xliff:g></string>
+    <string name="checking_for_updates">Pārbauda, vai ir pieejami atjauninājumi</string>
+    <string name="notification_updates_available_desc_3"><xliff:g id="app_one_name">%1$s</xliff:g>,<xliff:g id="app_two_name">%2$s</xliff:g> un <xliff:g id="app_three_name">%3$s</xliff:g></string>
+    <string name="notification_updates_available_desc_4"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g>, <xliff:g id="app_three_name">%3$s</xliff:g> un vēl <xliff:g id="apps_count">%4$d</xliff:g></string>
+    <string name="pref_updates_check">Automātiska atjauninājumu pārbaudīšana</string>
+    <string name="pref_updates_check_desc">Automātiski un regulāri pārbauda un paziņo par jauniem lietotņu atjauninājumiem</string>
+    <string name="onboarding_permission_esm">Ārējās krātuves pārvaldnieks</string>
+    <string name="device_huawei_description">Mēs iesakām izmantot ierīces atdarināšanu gadījumā, ja tiek izmantota nesena Huawei ierīce. Vai tagad pielietot atdarināšanu\?</string>
+    <string name="onboarding_permission_esa_desc">Lai saglabātu lejupielādes (APK un OBB), jāizgūst un jāievieto ierīces konfigurācijas no ārējās krātuves.</string>
+    <string name="onboarding_permission_notifications">Paziņojumi</string>
+    <string name="pref_downloader_active_title">Notiekoša lejupielāde</string>
+    <string name="pref_downloader_external">Lietotāja ārējā krātuve</string>
+    <string name="pref_filter_fdroid_title">Atlasīt F-Droid lietotnes</string>
+    <string name="pref_filter_search_title">Izmantot nepaliekošus meklēšanas nosacījumus</string>
+    <string name="pref_insecure_anonymous_summary">Veidot vietēju GSF ID ierīcē</string>
+    <string name="pref_network_title">Tīklošana</string>
+    <string name="pref_ui_accent_title">Uzsvara krāsa</string>
+    <string name="toast_page_unavailable">Pārlūkošanas lapa nav pieejama</string>
+    <string name="toast_aas_token_failed">Nebija iespējams izveidot AAS piekļuves pilnvaru</string>
+    <string name="toast_import_success">Ierīces uzstādījumi ir ievietoti</string>
+    <string name="toast_import_failed">Nebija iespējams ievietot ierīces uzstādījumus</string>
+    <string name="ui_accent_0">Sistēmas</string>
+    <string name="ui_accent_1">Zils</string>
+    <string name="ui_accent_2">Fuksija</string>
+    <string name="ui_accent_9">Gaiši zaļš</string>
+    <string name="ui_accent_10">Oranžs</string>
+    <string name="ui_accent_11">Gaiši zils</string>
+    <string name="ui_accent_13">Dziļi zils</string>
+    <string name="rate_limited">Ak vai, šis konts ir ierobežots!</string>
+    <string name="error">Gadījās kļūda.</string>
+    <string name="menu">Izvēlne</string>
+    <string name="expand">Izvērst</string>
+    <string name="open_in_aurora">Atvērt Aurora Store</string>
+    <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>
+    <string name="permissions_denied">Nepieciešamās atļaujas tika noraidītas. Lūgums tās nodrošināt, lai turpinātu darbību</string>
+    <string name="search_hint">Meklēt lietotnes un spēles</string>
+    <string name="failed_validating_account">Neizdevās pārbaudīt kontu, tam varētu būt pieprasījumu ierobežojumi.
+\nLūgums pieteikties vēlreiz.</string>
 </resources>
