@@ -101,7 +101,7 @@
     <fragment
         android:id="@+id/appDetailsFragment"
         android:name="com.aurora.store.view.ui.details.AppDetailsFragment"
-        tools:layout="@layout/fragment_details" >
+        tools:layout="@layout/fragment_details">
         <argument
             android:name="packageName"
             app:argType="string" />
@@ -109,7 +109,21 @@
             app:action="android.intent.action.VIEW"
             app:uri="play.google.com/store/apps/details?id={packageName}" />
     </fragment>
+    <fragment
+        android:id="@+id/categoryBrowseFragment"
+        android:name="com.aurora.store.view.ui.commons.CategoryBrowseFragment"
+        tools:layout="@layout/activity_generic_recycler" >
+        <argument
+            android:name="title"
+            app:argType="string" />
+        <argument
+            android:name="browseUrl"
+            app:argType="string" />
+    </fragment>
     <action
         android:id="@+id/action_global_appDetailsFragment"
         app:destination="@id/appDetailsFragment" />
+    <action
+        android:id="@+id/action_global_categoryBrowseFragment"
+        app:destination="@id/categoryBrowseFragment" />
 </navigation>

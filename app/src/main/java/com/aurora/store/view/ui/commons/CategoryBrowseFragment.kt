@@ -20,9 +20,11 @@
 package com.aurora.store.view.ui.commons
 
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
-import com.aurora.Constants
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.StreamBundle
 import com.aurora.gplayapi.data.models.StreamCluster
@@ -36,78 +38,53 @@ import com.aurora.store.view.ui.sheets.AppPeekDialogSheet
 import com.aurora.store.viewmodel.subcategory.SubCategoryClusterViewModel
 
 
-class CategoryBrowseActivity : BaseActivity(), GenericCarouselController.Callbacks {
+class CategoryBrowseFragment : BaseFragment(R.layout.activity_generic_recycler),
+    GenericCarouselController.Callbacks {
 
-    lateinit var B: ActivityGenericRecyclerBinding
+    private var _binding: ActivityGenericRecyclerBinding? = null
+    private val binding: ActivityGenericRecyclerBinding
+        get() = _binding!!
+
+    private val args: CategoryBrowseFragmentArgs by navArgs()
+
     lateinit var C: GenericCarouselController
     lateinit var VM: SubCategoryClusterViewModel
 
     lateinit var endlessRecyclerOnScrollListener: EndlessRecyclerOnScrollListener
 
-    lateinit var title: String
-    lateinit var homeUrl: String
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-    override fun onConnected() {
-        hideNetworkConnectivitySheet()
-    }
-
-    override fun onDisconnected() {
-        showNetworkConnectivitySheet()
-    }
-
-    override fun onReconnected() {
-
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        B = ActivityGenericRecyclerBinding.inflate(layoutInflater)
+        _binding = ActivityGenericRecyclerBinding.bind(view)
         C = CategoryCarouselController(this)
         VM = ViewModelProvider(this)[SubCategoryClusterViewModel::class.java]
 
-        setContentView(B.root)
-
-        attachToolbar()
-        attachRecycler()
-
-        intent.apply {
-            homeUrl = getStringExtra(Constants.BROWSE_EXTRA).toString()
-            title = getStringExtra(Constants.STRING_EXTRA).toString()
-            VM.observeCategory(homeUrl)
-            updateTitle(title)
+        // Toolbar
+        binding.layoutToolbarAction.apply {
+            txtTitle.text = args.title
+            imgActionPrimary.setOnClickListener { findNavController().navigateUp() }
         }
 
-        updateController(null)
-    }
+        // RecyclerView
+        binding.recycler.setController(C)
 
-    private fun updateTitle(title: String) {
-        B.layoutToolbarAction.txtTitle.text = title
-    }
-
-    private fun attachToolbar() {
-        B.layoutToolbarAction.imgActionPrimary.setOnClickListener {
-            finishAfterTransition()
-        }
-    }
-
-    private fun attachRecycler() {
-
-        B.recycler.setController(C)
-
-        VM.liveData.observe(this) {
+        VM.liveData.observe(viewLifecycleOwner) {
             when (it) {
                 is ViewState.Empty -> {
                 }
+
                 is ViewState.Loading -> {
                     updateController(null)
                 }
+
                 is ViewState.Error -> {
 
                 }
+
                 is ViewState.Success<*> -> {
                     updateController(it.data as StreamBundle)
                 }
+
                 else -> {}
             }
         }
@@ -120,8 +97,15 @@ class CategoryBrowseActivity : BaseActivity(), GenericCarouselController.Callbac
             }
 
         endlessRecyclerOnScrollListener.disable()
+        binding.recycler.addOnScrollListener(endlessRecyclerOnScrollListener)
 
-        B.recycler.addOnScrollListener(endlessRecyclerOnScrollListener)
+        VM.observeCategory(args.browseUrl)
+        updateController(null)
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     private fun updateController(streamBundle: StreamBundle?) {
@@ -134,7 +118,11 @@ class CategoryBrowseActivity : BaseActivity(), GenericCarouselController.Callbac
         if (streamCluster.clusterBrowseUrl.isNotEmpty())
             openStreamBrowseActivity(streamCluster.clusterBrowseUrl)
         else
-            Toast.makeText(this, getString(R.string.toast_page_unavailable), Toast.LENGTH_SHORT)
+            Toast.makeText(
+                requireContext(),
+                getString(R.string.toast_page_unavailable),
+                Toast.LENGTH_SHORT
+            )
                 .show()
     }
 
@@ -147,6 +135,6 @@ class CategoryBrowseActivity : BaseActivity(), GenericCarouselController.Callbac
     }
 
     override fun onAppLongClick(app: App) {
-        AppPeekDialogSheet.newInstance(app).show(supportFragmentManager, "APDS")
+        AppPeekDialogSheet.newInstance(app).show(childFragmentManager, "APDS")
     }
 }

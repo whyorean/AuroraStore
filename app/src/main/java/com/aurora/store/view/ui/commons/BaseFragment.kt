@@ -19,7 +19,6 @@
 
 package com.aurora.store.view.ui.commons
 
-import android.app.ActivityOptions
 import android.content.Intent
 import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
@@ -51,11 +50,12 @@ open class BaseFragment : Fragment {
     }
 
     fun openCategoryBrowseActivity(category: Category) {
-        val intent = Intent(context, CategoryBrowseActivity::class.java)
-        intent.putExtra(Constants.STRING_EXTRA, category.title)
-        intent.putExtra(Constants.BROWSE_EXTRA, category.browseUrl)
-        val options = ActivityOptions.makeSceneTransitionAnimation(requireActivity())
-        startActivity(intent, options.toBundle())
+        findNavController().navigate(
+            MobileNavigationDirections.actionGlobalCategoryBrowseFragment(
+                category.title,
+                category.browseUrl
+            )
+        )
     }
 
     fun openStreamBrowseActivity(browseUrl: String, title: String = "") {
