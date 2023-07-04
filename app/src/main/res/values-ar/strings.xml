@@ -341,8 +341,6 @@
     <string name="checking_for_updates">التحقق من وجود تحديثات</string>
     <string name="pref_updates_check">التحقق من التحديثات تلقائيا</string>
     <string name="pref_updates_check_desc">إجراء فحص آلي \" لإشعار بالتحديثات الجديدة \" بصورة دورية</string>
-    <string name="failed_validating_account">فشل التحقق من صحة الحساب ، قد يكون محدودا في السعة.
-\nيرجى تسجيل الدخول مرة أخرى!</string>
     <string name="notification_channel_updates">إشعارات التحديثات</string>
     <string name="notification_updates_available_1">تحديث <xliff:g id="apps_count"> %1$d </xliff:g> متاح</string>
     <string name="notification_updates_available">تحديثات <xliff:g id="apps_count"> %1$d </xliff:g> متوفرة</string>

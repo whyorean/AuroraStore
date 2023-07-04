@@ -340,8 +340,6 @@
     <string name="pref_updates_check">ස්වයංක්‍රීය යාවත්කාල පරීක්‍ෂාව</string>
     <string name="pref_updates_check_desc">වරින් වර නව යෙදුම් යාවත්කාල පරීක්‍ෂා කර දැනුම් දෙයි</string>
     <string name="checking_for_updates">යාවත්කාල බලමින්</string>
-    <string name="failed_validating_account">ගිණුම වලංගුකරණයට අසමත් විය, අනුපාත සීමාව විය හැකිය.
-\nනැවත පිවිසෙන්න!</string>
     <string name="notification_updates_available">යාවත්කාල <xliff:g id="apps_count">%1$d</xliff:g> ක් තිබේ</string>
     <string name="installer_shizuku_unavailable">ෂිසුකු හරියාකාරව සකසා හෝ ස්ථාපනය කර නැත.</string>
     <string name="pref_install_mode_shizuku">ෂිසුකු ස්ථාපකය</string>

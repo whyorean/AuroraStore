@@ -337,8 +337,6 @@
     <string name="toast_import_success">Zaimportowano konfigurację urządzenia</string>
     <string name="toast_import_failed">Nie można zaimportować konfiguracji urządzenia</string>
     <string name="notification_updates_available_1"><xliff:g id="apps_count">%1$d</xliff:g> dostępna aktualizacja</string>
-    <string name="failed_validating_account">Nie udało się zweryfikować konta (możesz mieć ograniczoną liczbę żądań).
-\nZaloguj się ponownie!</string>
     <string name="notification_updates_available"><xliff:g id="apps_count">%1$d</xliff:g> dostępne aktualizacje</string>
     <string name="notification_updates_available_desc_4"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g>, <xliff:g id="app_three_name">%3$s</xliff:g> oraz <xliff:g id="apps_count">%4$d</xliff:g> innych</string>
     <string name="notification_channel_updates">Powiadomienia o aktualizacjach</string>

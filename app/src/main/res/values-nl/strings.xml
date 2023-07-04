@@ -311,8 +311,6 @@
     <string name="session_verifying_google">Google-sessie verifiëren</string>
     <string name="ui_accent_0">Systeem</string>
     <string name="server_maintenance">Server buiten gebruik voor werkzaamheden</string>
-    <string name="failed_validating_account">Account valideren mislukt, kan mogelijk tariefbeperkt zijn.
-\nLog alstublieft opnieuw in!</string>
     <string name="download_progress">Aan het downloaden • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
     <string name="installer_shizuku_unavailable">Shizuku is niet geïnstalleerd of niet goed ingesteld.</string>
     <string name="onboarding_permission_notifications">Meldingen</string>

@@ -215,7 +215,7 @@ class AuthViewModel(application: Application) : BaseAndroidViewModel(application
                                 buildGoogleAuthData(email, aasToken)
                             }
                             AccountType.ANONYMOUS -> {
-                                liveData.postValue(AuthState.InValid)
+                                buildAnonymousAuthData()
                             }
                         }
                     }

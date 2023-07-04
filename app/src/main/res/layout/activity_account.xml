@@ -156,9 +156,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
-                android:layout_marginHorizontal="@dimen/margin_large"
-                android:layout_marginVertical="@dimen/margin_small"
-                android:maxLines="2"
+                android:layout_marginTop="@dimen/margin_small"
                 android:textAlignment="center"
                 tools:text="Status" />
         </RelativeLayout>

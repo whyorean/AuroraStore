@@ -348,6 +348,4 @@
     <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>
     <string name="permissions_denied">Nepieciešamās atļaujas tika noraidītas. Lūgums tās nodrošināt, lai turpinātu darbību</string>
     <string name="search_hint">Meklēt lietotnes un spēles</string>
-    <string name="failed_validating_account">Neizdevās pārbaudīt kontu, tam varētu būt pieprasījumu ierobežojumi.
-\nLūgums pieteikties vēlreiz.</string>
 </resources>
