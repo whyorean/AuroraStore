@@ -90,21 +90,8 @@
 
         <activity
             android:name=".MainActivity"
-            android:launchMode="singleTask" />
-
-        <activity android:name=".view.ui.details.DevProfileActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-
-                <data android:scheme="http" />
-                <data android:scheme="https" />
-                <data android:host="play.google.com" />
-                <data android:path="/store/apps/dev" />
-            </intent-filter>
+            <nav-graph android:value="@navigation/mobile_navigation" />
         </activity>
 
         <activity android:name=".view.ui.commons.StreamBrowseActivity" />

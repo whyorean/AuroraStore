@@ -24,7 +24,8 @@
     android:layout_height="match_parent"
     android:divider="@drawable/divider"
     android:orientation="vertical"
-    android:showDividers="middle">
+    android:showDividers="middle"
+    tools:context=".view.ui.details.DevProfileFragment">
 
     <include
         android:id="@+id/layout_toolbar_action"

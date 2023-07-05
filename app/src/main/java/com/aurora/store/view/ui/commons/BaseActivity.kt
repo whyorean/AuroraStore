@@ -25,13 +25,11 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.aurora.Constants
 import com.aurora.extensions.applyTheme
-import com.aurora.extensions.getEmptyActivityBundle
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.data.providers.NetworkProvider
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_THEME_ACCENT
 import com.aurora.store.util.Preferences.PREFERENCE_THEME_TYPE
-import com.aurora.store.view.ui.account.GoogleActivity
 import com.aurora.store.view.ui.details.*
 import com.aurora.store.view.ui.sheets.NetworkDialogSheet
 import com.aurora.store.view.ui.sheets.TOSSheet
@@ -70,24 +68,6 @@ abstract class BaseActivity : AppCompatActivity(), NetworkProvider.NetworkListen
         intent.putExtra(Constants.STRING_EXTRA, gson.toJson(app))
         val options = ActivityOptions.makeSceneTransitionAnimation(this)
         startActivity(intent, options.toBundle())
-    }
-
-    fun openStreamBrowseActivity(browseUrl: String, title: String = "") {
-        val intent = if (browseUrl.lowercase().contains("expanded")) {
-            Intent(this, ExpandedStreamBrowseFragment::class.java)
-        } else if (browseUrl.lowercase().contains("developer")) {
-            Intent(this, DevProfileActivity::class.java)
-        } else {
-            Intent(this, StreamBrowseActivity::class.java)
-        }
-        intent.putExtra(Constants.BROWSE_EXTRA, browseUrl)
-        intent.putExtra(Constants.STRING_EXTRA, title)
-        startActivity(intent, getEmptyActivityBundle())
-    }
-
-    fun openGoogleActivity() {
-        val intent = Intent(this, GoogleActivity::class.java)
-        startActivity(intent, getEmptyActivityBundle())
     }
 
     fun askToReadTOS() {

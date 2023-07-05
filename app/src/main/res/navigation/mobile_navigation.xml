@@ -151,6 +151,23 @@
             android:name="rawArtWorks"
             app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/devProfileFragment"
+        android:name="com.aurora.store.view.ui.details.DevProfileFragment"
+        android:label="fragment_dev_profile"
+        tools:layout="@layout/fragment_dev_profile" >
+        <argument
+            android:name="devId"
+            app:argType="string" />
+        <argument
+            android:name="title"
+            android:defaultValue=""
+            app:argType="string"
+            app:nullable="true" />
+        <deepLink
+            app:action="android.intent.action.VIEW"
+            app:uri="play.google.com/store/apps/dev?id={devId}" />
+    </fragment>
     <action
         android:id="@+id/action_global_appDetailsFragment"
         app:destination="@id/appDetailsFragment" />
@@ -166,4 +183,7 @@
     <action
         android:id="@+id/action_global_screenshotFragment"
         app:destination="@id/screenshotFragment" />
+    <action
+        android:id="@+id/action_global_devProfileFragment"
+        app:destination="@id/devProfileFragment" />
 </navigation>

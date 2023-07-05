@@ -19,7 +19,6 @@
 
 package com.aurora.store.view.ui.commons
 
-import android.app.ActivityOptions
 import android.content.Intent
 import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
@@ -29,8 +28,7 @@ import com.aurora.extensions.getEmptyActivityBundle
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.Category
 import com.aurora.store.MobileNavigationDirections
-import com.aurora.store.view.ui.details.DevProfileActivity
-import com.aurora.store.view.ui.details.ScreenshotFragment
+import com.aurora.store.view.ui.details.DevProfileFragment
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import java.lang.reflect.Modifier
@@ -68,12 +66,15 @@ open class BaseFragment : Fragment {
                     browseUrl
                 )
             )
+        } else if (browseUrl.lowercase().contains("developer")) {
+            findNavController().navigate(
+                MobileNavigationDirections.actionGlobalDevProfileFragment(
+                    browseUrl.substringAfter("developer-"),
+                    title
+                )
+            )
         } else {
-            val intent = if (browseUrl.lowercase().contains("developer"))
-                Intent(requireContext(), DevProfileActivity::class.java)
-            else
-                Intent(requireContext(), StreamBrowseActivity::class.java)
-
+            val intent = Intent(requireContext(), StreamBrowseActivity::class.java)
             intent.putExtra(Constants.BROWSE_EXTRA, browseUrl)
             intent.putExtra(Constants.STRING_EXTRA, title)
             startActivity(intent, requireContext().getEmptyActivityBundle())
