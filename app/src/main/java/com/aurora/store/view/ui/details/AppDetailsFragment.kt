@@ -922,7 +922,9 @@ class AppDetailsFragment : BaseFragment(R.layout.fragment_details) {
         }
 
         B.headerDescription.addClickListener {
-            (activity as MainActivity).openDetailsMoreActivity(app)
+            findNavController().navigate(
+                AppDetailsFragmentDirections.actionAppDetailsFragmentToDetailsMoreFragment(app)
+            )
         }
 
         B.epoxyRecycler.withModels {

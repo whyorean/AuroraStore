@@ -20,76 +20,64 @@
 package com.aurora.store.view.ui.details
 
 import android.os.Bundle
+import android.view.View
 import androidx.core.text.HtmlCompat
-import com.aurora.Constants
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.AuthData
 import com.aurora.gplayapi.helpers.AppDetailsHelper
 import com.aurora.store.R
 import com.aurora.store.data.providers.AuthProvider
-import com.aurora.store.databinding.ActivityDetailsMoreBinding
+import com.aurora.store.databinding.FragmentDetailsMoreBinding
 import com.aurora.store.view.epoxy.views.HeaderViewModel_
 import com.aurora.store.view.epoxy.views.app.NoAppAltViewModel_
 import com.aurora.store.view.epoxy.views.details.AppDependentViewModel_
 import com.aurora.store.view.epoxy.views.details.FileViewModel_
 import com.aurora.store.view.epoxy.views.details.InfoViewModel_
 import com.aurora.store.view.epoxy.views.details.MoreBadgeViewModel_
-import com.aurora.store.view.ui.commons.BaseActivity
+import com.aurora.store.view.ui.commons.BaseFragment
 import nl.komponents.kovenant.task
 import nl.komponents.kovenant.ui.failUi
 import nl.komponents.kovenant.ui.successUi
 
-class DetailsMoreActivity : BaseActivity() {
+class DetailsMoreFragment : BaseFragment(R.layout.fragment_details_more) {
 
-    private lateinit var B: ActivityDetailsMoreBinding
-    private lateinit var app: App
+    private var _binding: FragmentDetailsMoreBinding? = null
+    private val binding: FragmentDetailsMoreBinding
+        get() = _binding!!
 
-    override fun onConnected() {
+    private val args: DetailsMoreFragmentArgs by navArgs()
 
-    }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        _binding = FragmentDetailsMoreBinding.bind(view)
 
-    override fun onDisconnected() {
-
-    }
-
-    override fun onReconnected() {
-
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        B = ActivityDetailsMoreBinding.inflate(layoutInflater)
-        setContentView(B.root)
-
-        attachToolbar()
-
-        val itemRaw: String? = intent.getStringExtra(Constants.STRING_EXTRA)
-        if (itemRaw != null) {
-            app = gson.fromJson(itemRaw, App::class.java)
-            app.let {
-                inflateDescription(app)
-                inflateFiles(app)
-                fetchDependentApps(app)
-            }
+        // Toolbar
+        binding.layoutToolbarActionMore.toolbar.setOnClickListener {
+            findNavController().navigateUp()
         }
+
+        inflateDescription(args.app)
+        inflateFiles(args.app)
+        fetchDependentApps(args.app)
     }
 
-    private fun attachToolbar() {
-        B.layoutToolbarActionMore.toolbar.setOnClickListener {
-            finishAfterTransition()
-        }
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     private fun inflateDescription(app: App) {
-        B.layoutToolbarActionMore.txtTitle.text = app.displayName
-        B.txtDescription.text = HtmlCompat.fromHtml(
+        binding.layoutToolbarActionMore.txtTitle.text = app.displayName
+        binding.txtDescription.text = HtmlCompat.fromHtml(
             app.description,
             HtmlCompat.FROM_HTML_MODE_COMPACT
         )
     }
 
     private fun inflateFiles(app: App) {
-        B.recyclerMore.withModels {
+        binding.recyclerMore.withModels {
             //Add dependent files
             if (app.fileList.isNotEmpty()) {
                 add(
@@ -136,13 +124,13 @@ class DetailsMoreActivity : BaseActivity() {
                 }
             }
 
-            if (app.appInfo.appInfoMap.isNotEmpty()){
+            if (app.appInfo.appInfoMap.isNotEmpty()) {
                 add(
                     HeaderViewModel_()
                         .id("info_header")
                         .title("Info")
                 )
-                app.appInfo.appInfoMap.forEach{
+                app.appInfo.appInfoMap.forEach {
                     add(
                         InfoViewModel_()
                             .id(it.key)
@@ -155,13 +143,13 @@ class DetailsMoreActivity : BaseActivity() {
 
     private fun fetchDependentApps(app: App) {
         val authData: AuthData = AuthProvider
-            .with(this)
+            .with(requireContext())
             .getAuthData()
         task {
             AppDetailsHelper(authData)
                 .getAppByPackageName(app.dependencies.dependentPackages)
         } successUi {
-            B.recyclerDependency.withModels {
+            binding.recyclerDependency.withModels {
                 if (it.isNotEmpty()) {
                     it.filter { it.displayName.isNotEmpty() }.forEach {
                         add(
@@ -180,7 +168,7 @@ class DetailsMoreActivity : BaseActivity() {
                 }
             }
         } failUi {
-            B.recyclerDependency.withModels {
+            binding.recyclerDependency.withModels {
                 add(
                     NoAppAltViewModel_()
                         .id("no_app")

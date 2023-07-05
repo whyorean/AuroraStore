@@ -111,6 +111,9 @@
         <action
             android:id="@+id/action_appDetailsFragment_to_devAppsFragment"
             app:destination="@id/devAppsFragment" />
+        <action
+            android:id="@+id/action_appDetailsFragment_to_detailsMoreFragment"
+            app:destination="@id/detailsMoreFragment" />
     </fragment>
     <fragment
         android:id="@+id/categoryBrowseFragment"
@@ -189,6 +192,15 @@
         <argument
             android:name="developerName"
             app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailsMoreFragment"
+        android:name="com.aurora.store.view.ui.details.DetailsMoreFragment"
+        android:label="fragment_details_more"
+        tools:layout="@layout/fragment_details_more" >
+        <argument
+            android:name="app"
+            app:argType="com.aurora.gplayapi.data.models.App" />
     </fragment>
     <action
         android:id="@+id/action_global_appDetailsFragment"

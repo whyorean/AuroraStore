@@ -56,13 +56,6 @@ abstract class BaseActivity : AppCompatActivity(), NetworkProvider.NetworkListen
         startActivity(intent, options.toBundle())
     }
 
-    fun openDetailsMoreActivity(app: App) {
-        val intent = Intent(this, DetailsMoreActivity::class.java)
-        intent.putExtra(Constants.STRING_EXTRA, gson.toJson(app))
-        val options = ActivityOptions.makeSceneTransitionAnimation(this)
-        startActivity(intent, options.toBundle())
-    }
-
     fun openDetailsReviewActivity(app: App) {
         val intent = Intent(this, DetailsReviewActivity::class.java)
         intent.putExtra(Constants.STRING_EXTRA, gson.toJson(app))
