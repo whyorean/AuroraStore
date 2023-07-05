@@ -938,7 +938,7 @@ class AppDetailsFragment : BaseFragment(R.layout.fragment_details) {
                             .position(position++)
                             .callback(object : ScreenshotView.ScreenshotCallback {
                                 override fun onClick(position: Int) {
-                                    (activity as MainActivity).openScreenshotActivity(app, position)
+                                    openScreenshotFragment(app, position)
                                 }
                             })
                     )

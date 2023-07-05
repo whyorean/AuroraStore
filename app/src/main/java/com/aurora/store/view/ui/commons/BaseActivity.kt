@@ -85,15 +85,6 @@ abstract class BaseActivity : AppCompatActivity(), NetworkProvider.NetworkListen
         startActivity(intent, getEmptyActivityBundle())
     }
 
-    fun openScreenshotActivity(app: App, position: Int) {
-        val intent = Intent(this, ScreenshotActivity::class.java).apply {
-            putExtra(Constants.STRING_EXTRA, gson.toJson(app.screenshots))
-            putExtra(Constants.INT_EXTRA, position)
-        }
-        val options = ActivityOptions.makeSceneTransitionAnimation(this)
-        startActivity(intent, options.toBundle())
-    }
-
     fun openGoogleActivity() {
         val intent = Intent(this, GoogleActivity::class.java)
         startActivity(intent, getEmptyActivityBundle())

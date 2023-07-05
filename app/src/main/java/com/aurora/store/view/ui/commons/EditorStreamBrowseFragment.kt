@@ -26,7 +26,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.airbnb.epoxy.EpoxyModel
 import com.aurora.gplayapi.data.models.App
-import com.aurora.store.MainActivity
 import com.aurora.store.R
 import com.aurora.store.databinding.ActivityGenericRecyclerBinding
 import com.aurora.store.view.epoxy.groups.CarouselHorizontalModel_
@@ -99,10 +98,7 @@ class EditorStreamBrowseFragment : BaseFragment(R.layout.activity_generic_recycl
                                 .artwork(artwork)
                                 .callback(object : MiniScreenshotView.ScreenshotCallback {
                                     override fun onClick(position: Int) {
-                                        (activity as MainActivity).openScreenshotActivity(
-                                            app,
-                                            position
-                                        )
+                                        openScreenshotFragment(app, position)
                                     }
                                 })
                         )

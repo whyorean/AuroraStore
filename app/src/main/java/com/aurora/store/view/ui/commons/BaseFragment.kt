@@ -19,6 +19,7 @@
 
 package com.aurora.store.view.ui.commons
 
+import android.app.ActivityOptions
 import android.content.Intent
 import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
@@ -29,6 +30,7 @@ import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.Category
 import com.aurora.store.MobileNavigationDirections
 import com.aurora.store.view.ui.details.DevProfileActivity
+import com.aurora.store.view.ui.details.ScreenshotFragment
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import java.lang.reflect.Modifier
@@ -81,6 +83,15 @@ open class BaseFragment : Fragment {
     fun openEditorStreamBrowseActivity(browseUrl: String, title: String = "") {
         findNavController().navigate(
             MobileNavigationDirections.actionGlobalEditorStreamBrowseFragment(title, browseUrl)
+        )
+    }
+
+    fun openScreenshotFragment(app: App, position: Int) {
+        findNavController().navigate(
+            MobileNavigationDirections.actionGlobalScreenshotFragment(
+                position,
+                gson.toJson(app.screenshots)
+            )
         )
     }
 }

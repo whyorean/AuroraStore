@@ -1,0 +1,85 @@
+/*
+ * Aurora Store
+ *  Copyright (C) 2021, Rahul Kumar Patel <whyorean@gmail.com>
+ *
+ *  Aurora Store is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 2 of the License, or
+ *  (at your option) any later version.
+ *
+ *  Aurora Store is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with Aurora Store.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ */
+
+package com.aurora.store.view.ui.details
+
+import android.os.Bundle
+import android.view.View
+import androidx.core.content.ContextCompat
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.PagerSnapHelper
+import androidx.recyclerview.widget.RecyclerView
+import com.aurora.gplayapi.data.models.Artwork
+import com.aurora.store.R
+import com.aurora.store.databinding.FragmentScreenshotBinding
+import com.aurora.store.view.epoxy.views.details.LargeScreenshotViewModel_
+import com.aurora.store.view.ui.commons.BaseFragment
+import com.google.gson.reflect.TypeToken
+
+class ScreenshotFragment : BaseFragment(R.layout.fragment_screenshot) {
+
+    private var _binding: FragmentScreenshotBinding? = null
+    private val binding: FragmentScreenshotBinding
+        get() = _binding!!
+
+    private val args: ScreenshotFragmentArgs by navArgs()
+
+    private lateinit var artworks: MutableList<Artwork>
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        _binding = FragmentScreenshotBinding.bind(view)
+
+        // Toolbar
+        binding.toolbar.apply {
+            elevation = 0f
+            navigationIcon = ContextCompat.getDrawable(view.context, R.drawable.ic_arrow_back)
+            setNavigationOnClickListener { findNavController().navigateUp() }
+        }
+
+        // Recycler View
+        binding.recyclerView.apply {
+            layoutManager = LinearLayoutManager(view.context, RecyclerView.HORIZONTAL, false)
+            PagerSnapHelper().attachToRecyclerView(this)
+        }
+
+        artworks = gson.fromJson(args.rawArtWorks, object : TypeToken<List<Artwork?>?>() {}.type)
+        updateController(artworks, args.position)
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
+    private fun updateController(artworks: MutableList<Artwork>, position: Int) {
+        binding.recyclerView.withModels {
+            artworks.forEach {
+                add(
+                    LargeScreenshotViewModel_()
+                        .id(it.url)
+                        .artwork(it)
+                )
+            }
+            binding.recyclerView.scrollToPosition(position)
+        }
+    }
+}

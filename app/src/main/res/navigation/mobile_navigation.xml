@@ -140,6 +140,17 @@
             android:name="expandedStreamUrl"
             app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/screenshotFragment"
+        android:name="com.aurora.store.view.ui.details.ScreenshotFragment"
+        tools:layout="@layout/fragment_screenshot" >
+        <argument
+            android:name="position"
+            app:argType="integer" />
+        <argument
+            android:name="rawArtWorks"
+            app:argType="string" />
+    </fragment>
     <action
         android:id="@+id/action_global_appDetailsFragment"
         app:destination="@id/appDetailsFragment" />
@@ -152,4 +163,7 @@
     <action
         android:id="@+id/action_global_expandedStreamBrowseFragment"
         app:destination="@id/expandedStreamBrowseFragment" />
+    <action
+        android:id="@+id/action_global_screenshotFragment"
+        app:destination="@id/screenshotFragment" />
 </navigation>
