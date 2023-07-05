@@ -59,16 +59,23 @@ open class BaseFragment : Fragment {
     }
 
     fun openStreamBrowseActivity(browseUrl: String, title: String = "") {
-        val intent = if (browseUrl.lowercase().contains("expanded"))
-            Intent(requireContext(), ExpandedStreamBrowseActivity::class.java)
-        else if (browseUrl.lowercase().contains("developer"))
-            Intent(requireContext(), DevProfileActivity::class.java)
-        else
-            Intent(requireContext(), StreamBrowseActivity::class.java)
+        if (browseUrl.lowercase().contains("expanded")) {
+            findNavController().navigate(
+                MobileNavigationDirections.actionGlobalExpandedStreamBrowseFragment(
+                    title,
+                    browseUrl
+                )
+            )
+        } else {
+            val intent = if (browseUrl.lowercase().contains("developer"))
+                Intent(requireContext(), DevProfileActivity::class.java)
+            else
+                Intent(requireContext(), StreamBrowseActivity::class.java)
 
-        intent.putExtra(Constants.BROWSE_EXTRA, browseUrl)
-        intent.putExtra(Constants.STRING_EXTRA, title)
-        startActivity(intent, requireContext().getEmptyActivityBundle())
+            intent.putExtra(Constants.BROWSE_EXTRA, browseUrl)
+            intent.putExtra(Constants.STRING_EXTRA, title)
+            startActivity(intent, requireContext().getEmptyActivityBundle())
+        }
     }
 
     fun openEditorStreamBrowseActivity(browseUrl: String, title: String = "") {

@@ -114,7 +114,6 @@
         <activity android:name=".view.ui.account.GoogleActivity" />
         <activity android:name=".view.ui.details.DetailsExodusActivity" />
         <activity android:name=".view.ui.details.DevAppsActivity" />
-        <activity android:name=".view.ui.commons.ExpandedStreamBrowseActivity" />
 
         <service android:name=".data.service.NotificationService" />
         <service android:name=".data.installer.InstallerService" />

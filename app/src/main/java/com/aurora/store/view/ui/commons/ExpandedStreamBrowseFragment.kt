@@ -20,10 +20,14 @@
 package com.aurora.store.view.ui.commons
 
 import android.os.Bundle
+import android.view.View
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.airbnb.epoxy.EpoxyModel
-import com.aurora.Constants
 import com.aurora.gplayapi.data.models.StreamCluster
+import com.aurora.store.MainActivity
+import com.aurora.store.R
 import com.aurora.store.databinding.ActivityGenericRecyclerBinding
 import com.aurora.store.view.custom.recycler.EndlessRecyclerOnScrollListener
 import com.aurora.store.view.epoxy.groups.CarouselHorizontalModel_
@@ -35,69 +39,53 @@ import com.aurora.store.view.epoxy.views.shimmer.AppListViewShimmerModel_
 import com.aurora.store.viewmodel.browse.ExpandedStreamBrowseViewModel
 
 
-class ExpandedStreamBrowseActivity : BaseActivity() {
+class ExpandedStreamBrowseFragment : BaseFragment(R.layout.activity_generic_recycler) {
 
-    lateinit var B: ActivityGenericRecyclerBinding
+    private var _binding: ActivityGenericRecyclerBinding? = null
+    private val binding: ActivityGenericRecyclerBinding
+        get() = _binding!!
+
+    private val args: ExpandedStreamBrowseFragmentArgs by navArgs()
+
     lateinit var VM: ExpandedStreamBrowseViewModel
-
     lateinit var endlessRecyclerOnScrollListener: EndlessRecyclerOnScrollListener
 
     lateinit var title: String
     lateinit var cluster: StreamCluster
 
-    override fun onConnected() {
-        hideNetworkConnectivitySheet()
-    }
-
-    override fun onDisconnected() {
-        showNetworkConnectivitySheet()
-    }
-
-    override fun onReconnected() {
-
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        B = ActivityGenericRecyclerBinding.inflate(layoutInflater)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        _binding = ActivityGenericRecyclerBinding.bind(view)
         VM = ViewModelProvider(this)[ExpandedStreamBrowseViewModel::class.java]
 
-        setContentView(B.root)
+        // Toolbar
+        binding.layoutToolbarAction.apply {
+            txtTitle.text = args.title
+            imgActionPrimary.setOnClickListener {
+                findNavController().navigateUp()
+            }
+        }
 
-        attachToolbar()
-
-        VM.liveData.observe(this) {
-            if (!::cluster.isInitialized)
-                attachRecycler()
-
+        VM.liveData.observe(viewLifecycleOwner) {
+            if (!::cluster.isInitialized) attachRecycler()
             cluster = it
 
             updateController(cluster)
             updateTitle(cluster)
         }
 
-        intent.apply {
-            getStringExtra(Constants.BROWSE_EXTRA)?.let {
-                VM.getInitialCluster(it)
-            }
-            getStringExtra(Constants.STRING_EXTRA)?.let {
-                B.layoutToolbarAction.txtTitle.text = it
-            }
-        }
-
+        VM.getInitialCluster(args.expandedStreamUrl)
         updateController(null)
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     private fun updateTitle(streamCluster: StreamCluster) {
         if (streamCluster.clusterTitle.isNotEmpty())
-            B.layoutToolbarAction.txtTitle.text = streamCluster.clusterTitle
-    }
-
-    private fun attachToolbar() {
-        B.layoutToolbarAction.imgActionPrimary.setOnClickListener {
-            finishAfterTransition()
-        }
+            binding.layoutToolbarAction.txtTitle.text = streamCluster.clusterTitle
     }
 
     private fun attachRecycler() {
@@ -106,11 +94,11 @@ class ExpandedStreamBrowseActivity : BaseActivity() {
                 VM.next()
             }
         }
-        B.recycler.addOnScrollListener(endlessRecyclerOnScrollListener)
+        binding.recycler.addOnScrollListener(endlessRecyclerOnScrollListener)
     }
 
     private fun updateController(streamCluster: StreamCluster?) {
-        B.recycler.withModels {
+        binding.recycler.withModels {
             setFilterDuplicates(true)
             if (streamCluster == null) {
                 for (i in 1..6) {
@@ -131,7 +119,10 @@ class ExpandedStreamBrowseActivity : BaseActivity() {
                                 .artwork(artwork)
                                 .callback(object : MiniScreenshotView.ScreenshotCallback {
                                     override fun onClick(position: Int) {
-                                        openScreenshotActivity(it, position)
+                                        (activity as MainActivity).openScreenshotActivity(
+                                            it,
+                                            position
+                                        )
                                     }
                                 })
                         )

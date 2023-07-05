@@ -74,7 +74,7 @@ abstract class BaseActivity : AppCompatActivity(), NetworkProvider.NetworkListen
 
     fun openStreamBrowseActivity(browseUrl: String, title: String = "") {
         val intent = if (browseUrl.lowercase().contains("expanded")) {
-            Intent(this, ExpandedStreamBrowseActivity::class.java)
+            Intent(this, ExpandedStreamBrowseFragment::class.java)
         } else if (browseUrl.lowercase().contains("developer")) {
             Intent(this, DevProfileActivity::class.java)
         } else {
