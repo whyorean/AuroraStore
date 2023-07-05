@@ -1126,7 +1126,7 @@ class AppDetailsFragment : BaseFragment(R.layout.fragment_details) {
                 DetailsCarouselController(object : GenericCarouselController.Callbacks {
                     override fun onHeaderClicked(streamCluster: StreamCluster) {
                         if (streamCluster.clusterBrowseUrl.isNotEmpty())
-                            openStreamBrowseActivity(
+                            openStreamBrowseFragment(
                                 streamCluster.clusterBrowseUrl,
                                 streamCluster.clusterTitle
                             )

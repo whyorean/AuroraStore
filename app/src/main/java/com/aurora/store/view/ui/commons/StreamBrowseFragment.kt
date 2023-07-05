@@ -20,9 +20,13 @@
 package com.aurora.store.view.ui.commons
 
 import android.os.Bundle
+import android.view.View
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.aurora.Constants
 import com.aurora.gplayapi.data.models.StreamCluster
+import com.aurora.store.R
 import com.aurora.store.databinding.ActivityGenericRecyclerBinding
 import com.aurora.store.view.custom.recycler.EndlessRecyclerOnScrollListener
 import com.aurora.store.view.epoxy.views.AppProgressViewModel_
@@ -31,9 +35,14 @@ import com.aurora.store.view.epoxy.views.shimmer.AppListViewShimmerModel_
 import com.aurora.store.viewmodel.browse.StreamBrowseViewModel
 
 
-class StreamBrowseActivity : BaseActivity() {
+class StreamBrowseFragment : BaseFragment(R.layout.activity_generic_recycler) {
 
-    lateinit var B: ActivityGenericRecyclerBinding
+    private var _binding: ActivityGenericRecyclerBinding? = null
+    private val binding: ActivityGenericRecyclerBinding
+        get() = _binding!!
+
+    private val args: StreamBrowseFragmentArgs by navArgs()
+
     lateinit var VM: StreamBrowseViewModel
 
     lateinit var endlessRecyclerOnScrollListener: EndlessRecyclerOnScrollListener
@@ -41,69 +50,46 @@ class StreamBrowseActivity : BaseActivity() {
     lateinit var title: String
     lateinit var cluster: StreamCluster
 
-    override fun onConnected() {
-        hideNetworkConnectivitySheet()
-    }
-
-    override fun onDisconnected() {
-        showNetworkConnectivitySheet()
-    }
-
-    override fun onReconnected() {
-
-    }
-
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        B = ActivityGenericRecyclerBinding.inflate(layoutInflater)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        _binding = ActivityGenericRecyclerBinding.bind(view)
         VM = ViewModelProvider(this)[StreamBrowseViewModel::class.java]
 
-        setContentView(B.root)
+        // Toolbar
+        binding.layoutToolbarAction.apply {
+            txtTitle.text = args.title
+            imgActionPrimary.setOnClickListener {
+                findNavController().navigateUp()
+            }
+        }
 
-        attachToolbar()
-
-        VM.liveData.observe(this) {
-            if (!::cluster.isInitialized)
-                attachRecycler()
+        VM.liveData.observe(viewLifecycleOwner) {
+            if (!::cluster.isInitialized) {
+                endlessRecyclerOnScrollListener = object : EndlessRecyclerOnScrollListener() {
+                    override fun onLoadMore(currentPage: Int) {
+                        VM.nextCluster()
+                    }
+                }
+                binding.recycler.addOnScrollListener(endlessRecyclerOnScrollListener)
+            }
 
             cluster = it
 
             updateController(cluster)
-            updateTitle(cluster)
+            binding.layoutToolbarAction.txtTitle.text = it.clusterTitle
         }
 
-        intent.apply {
-            getStringExtra(Constants.BROWSE_EXTRA)?.let {
-                VM.getStreamBundle(it)
-            }
-        }
-
+        VM.getStreamBundle(args.browseUrl)
         updateController(null)
     }
 
-    private fun updateTitle(streamCluster: StreamCluster) {
-        B.layoutToolbarAction.txtTitle.text = streamCluster.clusterTitle
-    }
-
-    private fun attachToolbar() {
-        B.layoutToolbarAction.imgActionPrimary.setOnClickListener {
-            finishAfterTransition()
-        }
-    }
-
-    private fun attachRecycler() {
-        endlessRecyclerOnScrollListener = object : EndlessRecyclerOnScrollListener() {
-            override fun onLoadMore(currentPage: Int) {
-                VM.nextCluster()
-            }
-        }
-        B.recycler.addOnScrollListener(endlessRecyclerOnScrollListener)
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     private fun updateController(streamCluster: StreamCluster?) {
-        B.recycler.withModels {
+        binding.recycler.withModels {
             setFilterDuplicates(true)
             if (streamCluster == null) {
                 for (i in 1..6) {

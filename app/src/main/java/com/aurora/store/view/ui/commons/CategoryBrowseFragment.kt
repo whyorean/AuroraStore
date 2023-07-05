@@ -116,7 +116,7 @@ class CategoryBrowseFragment : BaseFragment(R.layout.activity_generic_recycler),
 
     override fun onHeaderClicked(streamCluster: StreamCluster) {
         if (streamCluster.clusterBrowseUrl.isNotEmpty())
-            openStreamBrowseActivity(streamCluster.clusterBrowseUrl)
+            openStreamBrowseFragment(streamCluster.clusterBrowseUrl)
         else
             Toast.makeText(
                 requireContext(),

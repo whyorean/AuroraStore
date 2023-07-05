@@ -33,7 +33,6 @@ import com.aurora.store.data.ViewState
 import com.aurora.store.databinding.FragmentForYouBinding
 import com.aurora.store.view.custom.recycler.EndlessRecyclerOnScrollListener
 import com.aurora.store.view.epoxy.controller.GenericCarouselController
-import com.aurora.store.view.ui.sheets.AppPeekDialogSheet
 import com.aurora.store.viewmodel.homestream.AppsForYouViewModel
 import com.aurora.store.viewmodel.homestream.BaseClusterViewModel
 import com.aurora.store.viewmodel.homestream.GamesForYouViewModel
@@ -138,7 +137,7 @@ class ForYouFragment : BaseFragment(), GenericCarouselController.Callbacks {
 
     override fun onHeaderClicked(streamCluster: StreamCluster) {
         if (streamCluster.clusterBrowseUrl.isNotEmpty())
-            openStreamBrowseActivity(streamCluster.clusterBrowseUrl, streamCluster.clusterTitle)
+            openStreamBrowseFragment(streamCluster.clusterBrowseUrl, streamCluster.clusterTitle)
     }
 
     override fun onClusterScrolled(streamCluster: StreamCluster) {

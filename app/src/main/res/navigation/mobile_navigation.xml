@@ -168,6 +168,17 @@
             app:action="android.intent.action.VIEW"
             app:uri="play.google.com/store/apps/dev?id={devId}" />
     </fragment>
+    <fragment
+        android:id="@+id/streamBrowseFragment"
+        android:name="com.aurora.store.view.ui.commons.StreamBrowseFragment"
+        tools:layout="@layout/activity_generic_recycler" >
+        <argument
+            android:name="browseUrl"
+            app:argType="string" />
+        <argument
+            android:name="title"
+            app:argType="string" />
+    </fragment>
     <action
         android:id="@+id/action_global_appDetailsFragment"
         app:destination="@id/appDetailsFragment" />
@@ -186,4 +197,7 @@
     <action
         android:id="@+id/action_global_devProfileFragment"
         app:destination="@id/devProfileFragment" />
+    <action
+        android:id="@+id/action_global_streamBrowseFragment"
+        app:destination="@id/streamBrowseFragment" />
 </navigation>

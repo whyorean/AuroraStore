@@ -19,16 +19,12 @@
 
 package com.aurora.store.view.ui.commons
 
-import android.content.Intent
 import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.aurora.Constants
-import com.aurora.extensions.getEmptyActivityBundle
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.Category
 import com.aurora.store.MobileNavigationDirections
-import com.aurora.store.view.ui.details.DevProfileFragment
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import java.lang.reflect.Modifier
@@ -58,7 +54,7 @@ open class BaseFragment : Fragment {
         )
     }
 
-    fun openStreamBrowseActivity(browseUrl: String, title: String = "") {
+    fun openStreamBrowseFragment(browseUrl: String, title: String = "") {
         if (browseUrl.lowercase().contains("expanded")) {
             findNavController().navigate(
                 MobileNavigationDirections.actionGlobalExpandedStreamBrowseFragment(
@@ -74,10 +70,12 @@ open class BaseFragment : Fragment {
                 )
             )
         } else {
-            val intent = Intent(requireContext(), StreamBrowseActivity::class.java)
-            intent.putExtra(Constants.BROWSE_EXTRA, browseUrl)
-            intent.putExtra(Constants.STRING_EXTRA, title)
-            startActivity(intent, requireContext().getEmptyActivityBundle())
+            findNavController().navigate(
+                MobileNavigationDirections.actionGlobalStreamBrowseFragment(
+                    browseUrl,
+                    title
+                )
+            )
         }
     }
 

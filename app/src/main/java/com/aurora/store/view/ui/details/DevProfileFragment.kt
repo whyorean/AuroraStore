@@ -109,7 +109,7 @@ class DevProfileFragment : BaseFragment(R.layout.fragment_dev_profile),
     }
 
     override fun onHeaderClicked(streamCluster: StreamCluster) {
-        openStreamBrowseActivity(streamCluster.clusterBrowseUrl, streamCluster.clusterTitle)
+        openStreamBrowseFragment(streamCluster.clusterBrowseUrl, streamCluster.clusterTitle)
     }
 
     override fun onClusterScrolled(streamCluster: StreamCluster) {

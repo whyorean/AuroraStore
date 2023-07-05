@@ -122,7 +122,7 @@ class EarlyAccessFragment : BaseFragment(), GenericCarouselController.Callbacks 
 
     override fun onHeaderClicked(streamCluster: StreamCluster) {
         if (streamCluster.clusterBrowseUrl.isNotEmpty())
-            openStreamBrowseActivity(streamCluster.clusterBrowseUrl)
+            openStreamBrowseFragment(streamCluster.clusterBrowseUrl)
     }
 
     override fun onClusterScrolled(streamCluster: StreamCluster) {
