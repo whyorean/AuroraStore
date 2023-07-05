@@ -72,9 +72,8 @@ open class BaseFragment : Fragment {
     }
 
     fun openEditorStreamBrowseActivity(browseUrl: String, title: String = "") {
-        val intent = Intent(requireContext(), EditorStreamBrowseActivity::class.java)
-        intent.putExtra(Constants.BROWSE_EXTRA, browseUrl)
-        intent.putExtra(Constants.STRING_EXTRA, title)
-        startActivity(intent, requireContext().getEmptyActivityBundle())
+        findNavController().navigate(
+            MobileNavigationDirections.actionGlobalEditorStreamBrowseFragment(title, browseUrl)
+        )
     }
 }

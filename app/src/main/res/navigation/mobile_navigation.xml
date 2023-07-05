@@ -120,10 +120,23 @@
             android:name="browseUrl"
             app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/editorStreamBrowseFragment"
+        android:name="com.aurora.store.view.ui.commons.EditorStreamBrowseFragment"
+        tools:layout="@layout/activity_generic_recycler" >
+        <argument android:name="title"
+            app:argType="string" />
+        <argument
+            android:name="browseUrl"
+            app:argType="string" />
+    </fragment>
     <action
         android:id="@+id/action_global_appDetailsFragment"
         app:destination="@id/appDetailsFragment" />
     <action
         android:id="@+id/action_global_categoryBrowseFragment"
         app:destination="@id/categoryBrowseFragment" />
+    <action
+        android:id="@+id/action_global_editorStreamBrowseFragment"
+        app:destination="@id/editorStreamBrowseFragment" />
 </navigation>

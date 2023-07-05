@@ -20,10 +20,14 @@
 package com.aurora.store.view.ui.commons
 
 import android.os.Bundle
+import android.view.View
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.airbnb.epoxy.EpoxyModel
-import com.aurora.Constants
 import com.aurora.gplayapi.data.models.App
+import com.aurora.store.MainActivity
+import com.aurora.store.R
 import com.aurora.store.databinding.ActivityGenericRecyclerBinding
 import com.aurora.store.view.epoxy.groups.CarouselHorizontalModel_
 import com.aurora.store.view.epoxy.views.EditorHeadViewModel_
@@ -35,58 +39,46 @@ import com.aurora.store.view.epoxy.views.shimmer.AppListViewShimmerModel_
 import com.aurora.store.viewmodel.editorschoice.EditorBrowseViewModel
 
 
-class EditorStreamBrowseActivity : BaseActivity() {
+class EditorStreamBrowseFragment : BaseFragment(R.layout.activity_generic_recycler) {
 
-    lateinit var B: ActivityGenericRecyclerBinding
+    private var _binding: ActivityGenericRecyclerBinding? = null
+    private val binding: ActivityGenericRecyclerBinding
+        get() = _binding!!
+
+    private val args: EditorStreamBrowseFragmentArgs by navArgs()
+
     lateinit var VM: EditorBrowseViewModel
     lateinit var title: String
 
-    override fun onConnected() {
-        hideNetworkConnectivitySheet()
-    }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-    override fun onDisconnected() {
-        showNetworkConnectivitySheet()
-    }
-
-    override fun onReconnected() {
-
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        B = ActivityGenericRecyclerBinding.inflate(layoutInflater)
+        _binding = ActivityGenericRecyclerBinding.bind(view)
         VM = ViewModelProvider(this)[EditorBrowseViewModel::class.java]
 
-        setContentView(B.root)
+        // Toolbar
+        binding.layoutToolbarAction.apply {
+            txtTitle.text = args.title
+            imgActionPrimary.setOnClickListener {
+                findNavController().navigateUp()
+            }
+        }
 
-        attachToolbar()
-
-        VM.liveData.observe(this) {
+        VM.liveData.observe(viewLifecycleOwner) {
             updateController(it)
         }
 
-        intent.apply {
-            getStringExtra(Constants.BROWSE_EXTRA)?.let {
-                VM.getEditorStreamBundle(it)
-            }
-            getStringExtra(Constants.STRING_EXTRA)?.let {
-                B.layoutToolbarAction.txtTitle.text = it
-            }
-        }
-
+        VM.getEditorStreamBundle(args.browseUrl)
         updateController(null)
     }
 
-    private fun attachToolbar() {
-        B.layoutToolbarAction.imgActionPrimary.setOnClickListener {
-            finishAfterTransition()
-        }
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     private fun updateController(appList: MutableList<App>?) {
-        B.recycler.withModels {
+        binding.recycler.withModels {
             setFilterDuplicates(true)
             if (appList == null) {
                 for (i in 1..6) {
@@ -107,7 +99,10 @@ class EditorStreamBrowseActivity : BaseActivity() {
                                 .artwork(artwork)
                                 .callback(object : MiniScreenshotView.ScreenshotCallback {
                                     override fun onClick(position: Int) {
-                                        openScreenshotActivity(app, position)
+                                        (activity as MainActivity).openScreenshotActivity(
+                                            app,
+                                            position
+                                        )
                                     }
                                 })
                         )
