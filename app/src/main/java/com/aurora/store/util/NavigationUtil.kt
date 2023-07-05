@@ -27,24 +27,12 @@ import com.aurora.Constants
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.data.model.Report
 import com.aurora.store.view.ui.details.DetailsExodusActivity
-import com.aurora.store.view.ui.details.DevAppsActivity
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import java.lang.reflect.Modifier
 
 object NavigationUtil {
     val gson: Gson = GsonBuilder().excludeFieldsWithModifiers(Modifier.TRANSIENT).create()
-
-    fun openDevAppsActivity(context: Context, app: App) {
-        val intent = Intent(
-            context,
-            DevAppsActivity::class.java
-        ).apply {
-            putExtra(Constants.STRING_APP, gson.toJson(app))
-        }
-        val options = ActivityOptions.makeSceneTransitionAnimation(context as AppCompatActivity)
-        context.startActivity(intent, options.toBundle())
-    }
 
     fun openExodusActivity(context: Context, app: App, report: Report) {
         val intent = Intent(

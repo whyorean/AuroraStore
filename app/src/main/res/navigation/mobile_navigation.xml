@@ -108,6 +108,9 @@
         <deepLink
             app:action="android.intent.action.VIEW"
             app:uri="play.google.com/store/apps/details?id={packageName}" />
+        <action
+            android:id="@+id/action_appDetailsFragment_to_devAppsFragment"
+            app:destination="@id/devAppsFragment" />
     </fragment>
     <fragment
         android:id="@+id/categoryBrowseFragment"
@@ -177,6 +180,14 @@
             app:argType="string" />
         <argument
             android:name="title"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/devAppsFragment"
+        android:name="com.aurora.store.view.ui.details.DevAppsFragment"
+        tools:layout="@layout/activity_generic_recycler" >
+        <argument
+            android:name="developerName"
             app:argType="string" />
     </fragment>
     <action

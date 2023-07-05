@@ -460,9 +460,9 @@ class AppDetailsFragment : BaseFragment(R.layout.fragment_details) {
             txtLine1.text = app.displayName
             txtLine2.text = app.developerName
             txtLine2.setOnClickListener {
-                NavigationUtil.openDevAppsActivity(
-                    requireContext(),
-                    app
+                findNavController().navigate(
+                    AppDetailsFragmentDirections
+                        .actionAppDetailsFragmentToDevAppsFragment(app.developerName)
                 )
             }
             txtLine3.text = ("${app.versionName} (${app.versionCode})")
