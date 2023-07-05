@@ -988,7 +988,12 @@ class AppDetailsFragment : BaseFragment(R.layout.fragment_details) {
         }
 
         B.headerRatingReviews.addClickListener {
-            (activity as MainActivity).openDetailsReviewActivity(app)
+            findNavController().navigate(
+                AppDetailsFragmentDirections.actionAppDetailsFragmentToDetailsReviewFragment(
+                    app.displayName,
+                    app.packageName
+                )
+            )
         }
 
         task {

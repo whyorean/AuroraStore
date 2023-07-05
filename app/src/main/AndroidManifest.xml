@@ -94,7 +94,6 @@
             <nav-graph android:value="@navigation/mobile_navigation" />
         </activity>
 
-        <activity android:name=".view.ui.details.DetailsReviewActivity" />
         <activity android:name=".view.ui.account.GoogleActivity" />
         <activity android:name=".view.ui.details.DetailsExodusActivity" />
 

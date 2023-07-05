@@ -20,52 +20,58 @@
 package com.aurora.store.view.ui.details
 
 import android.os.Bundle
+import android.view.View
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.aurora.Constants
-import com.aurora.gplayapi.data.models.App
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.aurora.gplayapi.data.models.Review
 import com.aurora.gplayapi.data.models.ReviewCluster
 import com.aurora.store.R
-import com.aurora.store.databinding.ActivityDetailsReviewBinding
+import com.aurora.store.databinding.FragmentDetailsReviewBinding
 import com.aurora.store.view.custom.recycler.EndlessRecyclerOnScrollListener
 import com.aurora.store.view.epoxy.views.AppProgressViewModel_
 import com.aurora.store.view.epoxy.views.details.ReviewViewModel_
-import com.aurora.store.view.ui.commons.BaseActivity
 import com.aurora.store.viewmodel.review.ReviewViewModel
 
-class DetailsReviewActivity : BaseActivity() {
+class DetailsReviewFragment : Fragment(R.layout.fragment_details_review) {
 
-    private lateinit var B: ActivityDetailsReviewBinding
+    private var _binding: FragmentDetailsReviewBinding? = null
+    private val binding: FragmentDetailsReviewBinding
+        get() = _binding!!
+
+    private val args: DetailsReviewFragmentArgs by navArgs()
+
     private lateinit var VM: ReviewViewModel
 
     private lateinit var endlessRecyclerOnScrollListener: EndlessRecyclerOnScrollListener
 
-    private lateinit var app: App
     private lateinit var filter: Review.Filter
     private lateinit var reviewCluster: ReviewCluster
 
-    override fun onConnected() {
-
-    }
-
-    override fun onDisconnected() {
-
-    }
-
-    override fun onReconnected() {
-
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        B = ActivityDetailsReviewBinding.inflate(layoutInflater)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        _binding = FragmentDetailsReviewBinding.bind(view)
         VM = ViewModelProvider(this)[ReviewViewModel::class.java]
 
-        setContentView(B.root)
+        // Toolbar
+        binding.layoutToolbarActionReview.apply {
+            txtTitle.text = args.displayName
+            toolbar.setOnClickListener {
+                findNavController().navigateUp()
+            }
+        }
 
-        VM.liveData.observe(this) {
+        VM.liveData.observe(viewLifecycleOwner) {
             if (!::reviewCluster.isInitialized) {
-                attachRecycler()
+                endlessRecyclerOnScrollListener = object : EndlessRecyclerOnScrollListener() {
+                    override fun onLoadMore(currentPage: Int) {
+                        if (::reviewCluster.isInitialized) {
+                            VM.next(reviewCluster.nextPageUrl)
+                        }
+                    }
+                }
+                binding.recycler.addOnScrollListener(endlessRecyclerOnScrollListener)
             }
 
             it?.let {
@@ -74,29 +80,12 @@ class DetailsReviewActivity : BaseActivity() {
             }
         }
 
-        attachChips()
+        // Fetch Reviews
+        filter = Review.Filter.ALL
+        VM.fetchReview(args.packageName, filter)
 
-        val itemRaw: String? = intent.getStringExtra(Constants.STRING_EXTRA)
-        if (itemRaw != null) {
-            app = gson.fromJson(itemRaw, App::class.java)
-            filter = Review.Filter.ALL
-
-            app.let {
-                attachToolbar()
-                fetchReviews()
-            }
-        }
-    }
-
-    private fun attachToolbar() {
-        B.layoutToolbarActionReview.toolbar.setOnClickListener {
-            finishAfterTransition()
-        }
-        B.layoutToolbarActionReview.txtTitle.text = app.displayName
-    }
-
-    private fun attachChips() {
-        B.chipGroup.setOnCheckedStateChangeListener { _, checkedIds ->
+        // Chips
+        binding.chipGroup.setOnCheckedStateChangeListener { _, checkedIds ->
             when (checkedIds[0]) {
                 R.id.filter_review_all -> filter = Review.Filter.ALL
                 R.id.filter_review_critical -> filter = Review.Filter.CRITICAL
@@ -108,24 +97,18 @@ class DetailsReviewActivity : BaseActivity() {
                 R.id.filter_review_one -> filter = Review.Filter.ONE
             }
 
-            resetPage()
-            fetchReviews()
+            endlessRecyclerOnScrollListener.resetPageCount()
+            VM.fetchReview(args.packageName, filter)
         }
     }
 
-    private fun attachRecycler() {
-        endlessRecyclerOnScrollListener = object : EndlessRecyclerOnScrollListener() {
-            override fun onLoadMore(currentPage: Int) {
-                if (::reviewCluster.isInitialized) {
-                    VM.next(reviewCluster.nextPageUrl)
-                }
-            }
-        }
-        B.recycler.addOnScrollListener(endlessRecyclerOnScrollListener)
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     private fun updateController(reviewCluster: ReviewCluster) {
-        B.recycler.withModels {
+        binding.recycler.withModels {
             setFilterDuplicates(true)
             reviewCluster.reviewList.forEach {
                 add(
@@ -135,20 +118,12 @@ class DetailsReviewActivity : BaseActivity() {
                 )
             }
 
-            if (reviewCluster.hasNext()){
+            if (reviewCluster.hasNext()) {
                 add(
                     AppProgressViewModel_()
                         .id("progress")
                 )
             }
         }
-    }
-
-    private fun fetchReviews() {
-        VM.fetchReview(app.packageName, filter)
-    }
-
-    private fun resetPage() {
-        endlessRecyclerOnScrollListener.resetPageCount()
     }
 }
