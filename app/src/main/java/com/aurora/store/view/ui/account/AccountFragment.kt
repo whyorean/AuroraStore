@@ -201,7 +201,7 @@ class AccountFragment : Fragment(R.layout.fragment_account) {
         binding.btnGoogle.addOnClickListener {
             if (VM.liveData.value != AuthState.Fetching) {
                 binding.btnGoogle.updateProgress(true)
-                val intent = Intent(requireContext(), GoogleActivity::class.java)
+                val intent = Intent(requireContext(), GoogleFragment::class.java)
                 startForResult.launch(intent, requireContext().getEmptyActivityAnimation())
             }
         }

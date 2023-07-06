@@ -90,8 +90,6 @@
             <nav-graph android:value="@navigation/mobile_navigation" />
         </activity>
 
-        <activity android:name=".view.ui.account.GoogleActivity" />
-
         <service android:name=".data.service.NotificationService" />
         <service android:name=".data.installer.InstallerService" />
         <service android:name=".data.service.UpdateService" />

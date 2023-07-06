@@ -19,15 +19,11 @@
 
 package com.aurora.store.view.ui.splash
 
-import android.app.Activity.RESULT_CANCELED
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
-import com.aurora.extensions.getEmptyActivityAnimation
 import com.aurora.extensions.hide
 import com.aurora.extensions.load
 import com.aurora.extensions.show
@@ -35,7 +31,6 @@ import com.aurora.store.R
 import com.aurora.store.data.AuthState
 import com.aurora.store.data.event.BusEvent
 import com.aurora.store.databinding.FragmentSplashBinding
-import com.aurora.store.view.ui.account.GoogleActivity
 import com.aurora.store.viewmodel.auth.AuthViewModel
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import org.greenrobot.eventbus.EventBus
@@ -47,21 +42,11 @@ class SplashFragment : Fragment(R.layout.fragment_splash) {
     private val binding: FragmentSplashBinding
         get() = _binding!!
 
-    private lateinit var VM: AuthViewModel
-
-    private val startForResult =
-        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-            if (it.resultCode == RESULT_CANCELED) {
-                resetActions()
-            } else {
-                binding.btnGoogle.updateProgress(true)
-            }
-        }
+    private val viewModel: AuthViewModel by activityViewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentSplashBinding.bind(view)
-        VM = ViewModelProvider(this)[AuthViewModel::class.java]
 
         binding.imgIcon.load(R.drawable.ic_logo) {
             transform(RoundedCorners(32))
@@ -75,7 +60,7 @@ class SplashFragment : Fragment(R.layout.fragment_splash) {
         //Initial status
         updateStatus(getString(R.string.session_init))
 
-        VM.liveData.observe(viewLifecycleOwner) {
+        viewModel.liveData.observe(viewLifecycleOwner) {
             when (it) {
                 AuthState.Fetching -> {
                     updateStatus(getString(R.string.requesting_new_session))
@@ -114,11 +99,9 @@ class SplashFragment : Fragment(R.layout.fragment_splash) {
                 }
             }
         }
-    }
 
-    override fun onResume() {
-        if (::VM.isInitialized) VM.observe()
-        super.onResume()
+        // Check authentication status
+        viewModel.observe()
     }
 
     override fun onDestroyView() {
@@ -133,7 +116,7 @@ class SplashFragment : Fragment(R.layout.fragment_splash) {
             is BusEvent.GoogleAAS -> {
                 if (event.success) {
                     updateStatus(getString(R.string.session_verifying_google))
-                    VM.buildGoogleAuthData(event.email, event.aasToken)
+                    viewModel.buildGoogleAuthData(event.email, event.aasToken)
                 } else {
                     updateStatus(getString(R.string.session_login_failed_google))
                 }
@@ -163,24 +146,23 @@ class SplashFragment : Fragment(R.layout.fragment_splash) {
 
     private fun attachActions() {
         binding.btnAnonymous.addOnClickListener {
-            if (VM.liveData.value != AuthState.Fetching) {
+            if (viewModel.liveData.value != AuthState.Fetching) {
                 binding.btnAnonymous.updateProgress(true)
-                VM.buildAnonymousAuthData()
+                viewModel.buildAnonymousAuthData()
             }
         }
 
         binding.btnAnonymousInsecure.addOnClickListener {
-            if (VM.liveData.value != AuthState.Fetching) {
+            if (viewModel.liveData.value != AuthState.Fetching) {
                 binding.btnAnonymousInsecure.updateProgress(true)
-                VM.buildInSecureAnonymousAuthData()
+                viewModel.buildInSecureAnonymousAuthData()
             }
         }
 
         binding.btnGoogle.addOnClickListener {
-            if (VM.liveData.value != AuthState.Fetching) {
+            if (viewModel.liveData.value != AuthState.Fetching) {
                 binding.btnGoogle.updateProgress(true)
-                val intent = Intent(requireContext(), GoogleActivity::class.java)
-                startForResult.launch(intent, activity?.getEmptyActivityAnimation())
+                findNavController().navigate(R.id.googleFragment)
             }
         }
     }

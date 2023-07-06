@@ -59,17 +59,19 @@ class AuthViewModel(application: Application) : BaseAndroidViewModel(application
     }
 
     override fun observe() {
-        val signedIn = Preferences.getBoolean(getApplication(), Constants.ACCOUNT_SIGNED_IN)
-        if (signedIn) {
-            liveData.postValue(AuthState.Available)
-            buildSavedAuthData()
-        } else {
-            liveData.postValue(AuthState.Unavailable)
+        if (liveData.value != AuthState.Fetching) {
+            val signedIn = Preferences.getBoolean(getApplication(), Constants.ACCOUNT_SIGNED_IN)
+            if (signedIn) {
+                liveData.postValue(AuthState.Available)
+                buildSavedAuthData()
+            } else {
+                liveData.postValue(AuthState.Unavailable)
+            }
         }
     }
 
     fun buildGoogleAuthData(email: String, aasToken: String) {
-        updateStatus("Requesting new session")
+        liveData.postValue(AuthState.Fetching)
 
         task {
             var properties = NativeDeviceInfoProvider(getApplication()).getNativeDeviceProperties()
