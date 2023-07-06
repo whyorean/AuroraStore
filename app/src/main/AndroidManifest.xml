@@ -74,7 +74,8 @@
         android:dataExtractionRules="@xml/backup_rules"
         tools:targetApi="m">
 
-        <activity android:name=".view.ui.onboarding.OnboardingActivity"
+        <activity
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -82,11 +83,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
                 <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
             </intent-filter>
-        </activity>
-
-        <activity
-            android:name=".MainActivity"
-            android:exported="true">
             <nav-graph android:value="@navigation/mobile_navigation" />
         </activity>
 

@@ -19,20 +19,18 @@
 
 package com.aurora.store.view.ui.onboarding
 
-import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
+import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
-import com.aurora.Constants
 import com.aurora.extensions.isSAndAbove
-import com.aurora.extensions.open
-import com.aurora.store.MainActivity
 import com.aurora.store.R
 import com.aurora.store.data.work.UpdateWorker
-import com.aurora.store.databinding.ActivityOnboardingBinding
+import com.aurora.store.databinding.FragmentOnboardingBinding
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_AUTO_DELETE
 import com.aurora.store.util.Preferences.PREFERENCE_DEFAULT
@@ -52,115 +50,94 @@ import com.aurora.store.util.Preferences.PREFERENCE_THEME_TYPE
 import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_CHECK
 import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_EXTENDED
 import com.aurora.store.util.save
-import com.aurora.store.view.ui.commons.BaseActivity
 import com.google.android.material.tabs.TabLayoutMediator
 
-class OnboardingActivity : BaseActivity() {
+class OnboardingFragment : Fragment(R.layout.fragment_onboarding) {
 
-    lateinit var B: ActivityOnboardingBinding
+    private var _binding: FragmentOnboardingBinding? = null
+    private val binding: FragmentOnboardingBinding
+        get() = _binding!!
 
-    override fun onConnected() {}
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        _binding = FragmentOnboardingBinding.bind(view)
 
-    override fun onDisconnected() {}
-
-    override fun onReconnected() {}
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        val isIntroDone = Preferences.getBoolean(this, PREFERENCE_INTRO)
-        if (isIntroDone) {
-            runOnUiThread { open(MainActivity::class.java, true) }
-            return
-        }
-
-        val isDefaultPrefLoaded = Preferences.getBoolean(this, PREFERENCE_DEFAULT)
+        val isDefaultPrefLoaded = Preferences.getBoolean(requireContext(), PREFERENCE_DEFAULT)
         if (!isDefaultPrefLoaded) {
             save(PREFERENCE_DEFAULT, true)
             loadDefaultPreferences()
         }
 
-        B = ActivityOnboardingBinding.inflate(layoutInflater)
-
-        setContentView(B.root)
-
         attachViewPager()
 
-        B.btnForward.setOnClickListener {
+        binding.btnForward.setOnClickListener {
             moveForward()
         }
 
-        B.btnBackward.setOnClickListener {
+        binding.btnBackward.setOnClickListener {
             moveBackward()
         }
 
-        if (!Preferences.getBoolean(this, Preferences.PREFERENCE_TOS_READ)) {
-            askToReadTOS()
-        }
-
-        onNewIntent(intent)
-
-        onBackPressedDispatcher.addCallback(this) {
-            if (B.viewpager2.currentItem == 0) {
-                finish()
+        activity?.onBackPressedDispatcher?.addCallback(this) {
+            if (binding.viewpager2.currentItem == 0) {
+                activity?.finish()
             } else {
-                B.viewpager2.currentItem = B.viewpager2.currentItem - 1
+                binding.viewpager2.currentItem = binding.viewpager2.currentItem - 1
             }
         }
     }
 
-    override fun onNewIntent(intent: Intent?) {
-        super.onNewIntent(intent)
-        intent?.let {
-            val pos = intent.getIntExtra(Constants.INT_EXTRA, 0)
-            B.viewpager2.setCurrentItem(pos, false)
-        }
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     private fun attachViewPager() {
-        B.viewpager2.adapter = PagerAdapter(this)
-        B.viewpager2.isUserInputEnabled = false
-        B.viewpager2.setCurrentItem(0, true)
-        B.viewpager2.registerOnPageChangeCallback(object : OnPageChangeCallback() {
+        binding.viewpager2.adapter = PagerAdapter(requireActivity())
+        binding.viewpager2.isUserInputEnabled = false
+        binding.viewpager2.setCurrentItem(0, true)
+        binding.viewpager2.registerOnPageChangeCallback(object : OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
-                runOnUiThread {
+                activity?.runOnUiThread {
                     lastPosition = position
                     refreshButtonState()
                 }
             }
         })
 
-        TabLayoutMediator(B.tabLayout, B.viewpager2, true) { tab, position ->
+        TabLayoutMediator(binding.tabLayout, binding.viewpager2, true) { tab, position ->
             tab.text = (position + 1).toString()
         }.attach()
     }
 
     private fun moveForward() {
-        B.viewpager2.setCurrentItem(B.viewpager2.currentItem + 1, true)
+        binding.viewpager2.setCurrentItem(binding.viewpager2.currentItem + 1, true)
     }
 
     private fun moveBackward() {
-        B.viewpager2.setCurrentItem(B.viewpager2.currentItem - 1, true)
+        binding.viewpager2.setCurrentItem(binding.viewpager2.currentItem - 1, true)
     }
 
     var lastPosition = 0
 
     fun refreshButtonState() {
-        B.btnBackward.isEnabled = lastPosition != 0
-        B.btnForward.isEnabled = lastPosition != 4
+        binding.btnBackward.isEnabled = lastPosition != 0
+        binding.btnForward.isEnabled = lastPosition != 4
         if (lastPosition == 4) {
-            B.btnForward.text = getString(R.string.action_finish)
-            B.btnForward.isEnabled = true
-            B.btnForward.setOnClickListener {
+            binding.btnForward.text = getString(R.string.action_finish)
+            binding.btnForward.isEnabled = true
+            binding.btnForward.setOnClickListener {
                 save(PREFERENCE_INTRO, true)
-                UpdateWorker.scheduleAutomatedCheck(this)
-                open(MainActivity::class.java, true)
+                UpdateWorker.scheduleAutomatedCheck(requireContext())
+                findNavController().navigate(
+                    OnboardingFragmentDirections.actionOnboardingFragmentToSplashFragment()
+                )
             }
         } else {
-            B.btnForward.text = getString(R.string.action_next)
-            B.btnForward.setOnClickListener {
-                B.viewpager2.setCurrentItem(
-                    B.viewpager2.currentItem + 1, true
+            binding.btnForward.text = getString(R.string.action_next)
+            binding.btnForward.setOnClickListener {
+                binding.viewpager2.setCurrentItem(
+                    binding.viewpager2.currentItem + 1, true
                 )
             }
         }
