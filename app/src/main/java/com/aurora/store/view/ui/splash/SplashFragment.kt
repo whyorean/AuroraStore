@@ -55,7 +55,27 @@ class SplashFragment : Fragment(R.layout.fragment_splash) {
         }
 
         // Toolbar
-        binding.layoutToolbarAction.toolbar.elevation = 0f
+        binding.layoutToolbarAction.toolbar.apply {
+            elevation = 0f
+            inflateMenu(R.menu.menu_splash)
+            setOnMenuItemClickListener {
+                when (it.itemId) {
+                    R.id.menu_blacklist_manager -> {
+                        findNavController().navigate(R.id.blacklistFragment)
+                    }
+                    R.id.menu_spoof_manager -> {
+                        findNavController().navigate(R.id.spoofFragment)
+                    }
+                    R.id.menu_account_manager -> {
+                        findNavController().navigate(R.id.accountFragment)
+                    }
+                    R.id.menu_settings -> {
+                        findNavController().navigate(R.id.settingsFragment)
+                    }
+                }
+                true
+            }
+        }
 
         if (!Preferences.getBoolean(requireContext(), PREFERENCE_INTRO)) {
             findNavController().navigate(
@@ -128,8 +148,10 @@ class SplashFragment : Fragment(R.layout.fragment_splash) {
     private fun updateActionLayout(isVisible: Boolean) {
         if (isVisible) {
             binding.layoutAction.show()
+            binding.layoutToolbarAction.toolbar.invalidateMenu()
         } else {
             binding.layoutAction.hide()
+            binding.layoutToolbarAction.toolbar.menu.clear()
         }
     }
 
