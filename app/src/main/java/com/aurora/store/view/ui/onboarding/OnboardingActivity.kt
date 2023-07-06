@@ -29,6 +29,7 @@ import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
 import com.aurora.Constants
 import com.aurora.extensions.isSAndAbove
 import com.aurora.extensions.open
+import com.aurora.store.MainActivity
 import com.aurora.store.R
 import com.aurora.store.data.work.UpdateWorker
 import com.aurora.store.databinding.ActivityOnboardingBinding
@@ -52,7 +53,6 @@ import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_CHECK
 import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_EXTENDED
 import com.aurora.store.util.save
 import com.aurora.store.view.ui.commons.BaseActivity
-import com.aurora.store.view.ui.splash.SplashActivity
 import com.google.android.material.tabs.TabLayoutMediator
 
 class OnboardingActivity : BaseActivity() {
@@ -70,7 +70,7 @@ class OnboardingActivity : BaseActivity() {
 
         val isIntroDone = Preferences.getBoolean(this, PREFERENCE_INTRO)
         if (isIntroDone) {
-            runOnUiThread { open(SplashActivity::class.java, true) }
+            runOnUiThread { open(MainActivity::class.java, true) }
             return
         }
 
@@ -154,7 +154,7 @@ class OnboardingActivity : BaseActivity() {
             B.btnForward.setOnClickListener {
                 save(PREFERENCE_INTRO, true)
                 UpdateWorker.scheduleAutomatedCheck(this)
-                open(SplashActivity::class.java, true)
+                open(MainActivity::class.java, true)
             }
         } else {
             B.btnForward.text = getString(R.string.action_next)

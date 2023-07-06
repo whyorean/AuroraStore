@@ -21,7 +21,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_apps">
+    app:startDestination="@id/splashFragment">
 
     <fragment
         android:id="@+id/navigation_apps"
@@ -229,6 +229,17 @@
         <argument
             android:name="report"
             app:argType="com.aurora.store.data.model.Report" />
+    </fragment>
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.aurora.store.view.ui.splash.SplashFragment"
+        android:label="fragment_splash"
+        tools:layout="@layout/fragment_splash" >
+        <action
+            android:id="@+id/action_splashFragment_to_navigation_apps"
+            app:destination="@id/navigation_apps"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <action
         android:id="@+id/action_global_appDetailsFragment"

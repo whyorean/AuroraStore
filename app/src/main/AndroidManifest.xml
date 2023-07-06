@@ -85,10 +85,6 @@
         </activity>
 
         <activity
-            android:name=".view.ui.splash.SplashActivity"
-            android:launchMode="singleTask" />
-
-        <activity
             android:name=".MainActivity"
             android:exported="true">
             <nav-graph android:value="@navigation/mobile_navigation" />

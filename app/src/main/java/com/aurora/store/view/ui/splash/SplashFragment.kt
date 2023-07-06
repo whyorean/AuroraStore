@@ -19,82 +19,72 @@
 
 package com.aurora.store.view.ui.splash
 
+import android.app.Activity.RESULT_CANCELED
 import android.content.Intent
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
+import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.aurora.extensions.getEmptyActivityAnimation
 import com.aurora.extensions.hide
 import com.aurora.extensions.load
-import com.aurora.extensions.open
 import com.aurora.extensions.show
-import com.aurora.store.MainActivity
 import com.aurora.store.R
 import com.aurora.store.data.AuthState
 import com.aurora.store.data.event.BusEvent
-import com.aurora.store.databinding.ActivitySplashBinding
+import com.aurora.store.databinding.FragmentSplashBinding
 import com.aurora.store.view.ui.account.GoogleActivity
-import com.aurora.store.view.ui.commons.BaseActivity
 import com.aurora.store.viewmodel.auth.AuthViewModel
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 
-class SplashActivity : BaseActivity() {
+class SplashFragment : Fragment(R.layout.fragment_splash) {
+
+    private var _binding: FragmentSplashBinding? = null
+    private val binding: FragmentSplashBinding
+        get() = _binding!!
 
     private lateinit var VM: AuthViewModel
-    private lateinit var B: ActivitySplashBinding
 
     private val startForResult =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
             if (it.resultCode == RESULT_CANCELED) {
                 resetActions()
             } else {
-                B.btnGoogle.updateProgress(true)
+                binding.btnGoogle.updateProgress(true)
             }
         }
 
-    override fun onConnected() {
-        hideNetworkConnectivitySheet()
-    }
-
-    override fun onDisconnected() {
-        showNetworkConnectivitySheet()
-    }
-
-    override fun onReconnected() {
-
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        EventBus.getDefault().register(this);
-
-        B = ActivitySplashBinding.inflate(layoutInflater)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        _binding = FragmentSplashBinding.bind(view)
         VM = ViewModelProvider(this)[AuthViewModel::class.java]
 
-        setContentView(B.root)
-
-        B.imgIcon.load(R.drawable.ic_logo) {
+        binding.imgIcon.load(R.drawable.ic_logo) {
             transform(RoundedCorners(32))
         }
 
-        attachToolbar()
+        // Toolbar
+        binding.layoutToolbarAction.toolbar.elevation = 0f
+
         attachActions()
 
         //Initial status
         updateStatus(getString(R.string.session_init))
 
-        VM.liveData.observe(this) {
+        VM.liveData.observe(viewLifecycleOwner) {
             when (it) {
                 AuthState.Fetching -> {
                     updateStatus(getString(R.string.requesting_new_session))
                 }
+
                 AuthState.Valid -> {
-                    moveToContent()
+                    findNavController().navigate(
+                        SplashFragmentDirections.actionSplashFragmentToNavigationApps()
+                    )
                 }
 
                 AuthState.Available -> {
@@ -108,7 +98,9 @@ class SplashActivity : BaseActivity() {
                 }
 
                 AuthState.SignedIn -> {
-                    moveToContent()
+                    findNavController().navigate(
+                        SplashFragmentDirections.actionSplashFragmentToNavigationApps()
+                    )
                 }
 
                 AuthState.SignedOut -> {
@@ -125,24 +117,14 @@ class SplashActivity : BaseActivity() {
     }
 
     override fun onResume() {
-        if (::VM.isInitialized) {
-            VM.observe()
-        }
+        if (::VM.isInitialized) VM.observe()
         super.onResume()
     }
 
-    private fun attachToolbar() {
-        setSupportActionBar(B.layoutToolbarAction.toolbar)
-        val actionBar = supportActionBar
-        if (actionBar != null) {
-            actionBar.elevation = 0f
-            actionBar.title = ""
-        }
-    }
-
-    override fun onDestroy() {
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
         EventBus.getDefault().unregister(this)
-        super.onDestroy()
     }
 
     @Subscribe()
@@ -156,6 +138,7 @@ class SplashActivity : BaseActivity() {
                     updateStatus(getString(R.string.session_login_failed_google))
                 }
             }
+
             else -> {
 
             }
@@ -163,8 +146,8 @@ class SplashActivity : BaseActivity() {
     }
 
     private fun updateStatus(string: String?) {
-        runOnUiThread {
-            B.txtStatus.apply {
+        activity?.runOnUiThread {
+            binding.txtStatus.apply {
                 text = string
             }
         }
@@ -172,54 +155,50 @@ class SplashActivity : BaseActivity() {
 
     private fun updateActionLayout(isVisible: Boolean) {
         if (isVisible) {
-            B.layoutAction.show()
+            binding.layoutAction.show()
         } else {
-            B.layoutAction.hide()
+            binding.layoutAction.hide()
         }
     }
 
     private fun attachActions() {
-        B.btnAnonymous.addOnClickListener {
+        binding.btnAnonymous.addOnClickListener {
             if (VM.liveData.value != AuthState.Fetching) {
-                B.btnAnonymous.updateProgress(true)
+                binding.btnAnonymous.updateProgress(true)
                 VM.buildAnonymousAuthData()
             }
         }
 
-        B.btnAnonymousInsecure.addOnClickListener {
+        binding.btnAnonymousInsecure.addOnClickListener {
             if (VM.liveData.value != AuthState.Fetching) {
-                B.btnAnonymousInsecure.updateProgress(true)
+                binding.btnAnonymousInsecure.updateProgress(true)
                 VM.buildInSecureAnonymousAuthData()
             }
         }
 
-        B.btnGoogle.addOnClickListener {
+        binding.btnGoogle.addOnClickListener {
             if (VM.liveData.value != AuthState.Fetching) {
-                B.btnGoogle.updateProgress(true)
-                val intent = Intent(this, GoogleActivity::class.java)
-                startForResult.launch(intent, getEmptyActivityAnimation())
+                binding.btnGoogle.updateProgress(true)
+                val intent = Intent(requireContext(), GoogleActivity::class.java)
+                startForResult.launch(intent, activity?.getEmptyActivityAnimation())
             }
         }
     }
 
     private fun resetActions() {
-        B.btnGoogle.apply {
+        binding.btnGoogle.apply {
             updateProgress(false)
             isEnabled = true
         }
 
-        B.btnAnonymous.apply {
+        binding.btnAnonymous.apply {
             updateProgress(false)
             isEnabled = true
         }
 
-        B.btnAnonymousInsecure.apply {
+        binding.btnAnonymousInsecure.apply {
             updateProgress(false)
             isEnabled = true
         }
-    }
-
-    private fun moveToContent() {
-        runOnUiThread { open(MainActivity::class.java, true) }
     }
 }
