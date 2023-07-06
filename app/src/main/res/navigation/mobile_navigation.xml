@@ -120,6 +120,11 @@
         <action
             android:id="@+id/action_appDetailsFragment_to_detailsExodusFragment"
             app:destination="@id/detailsExodusFragment" />
+        <argument
+            android:name="app"
+            app:argType="com.aurora.gplayapi.data.models.App"
+            app:nullable="true"
+            android:defaultValue="@null" />
     </fragment>
     <fragment
         android:id="@+id/categoryBrowseFragment"

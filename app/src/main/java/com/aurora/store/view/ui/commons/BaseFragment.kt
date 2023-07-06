@@ -41,7 +41,7 @@ open class BaseFragment : Fragment {
 
     fun openDetailsFragment(app: App) {
         findNavController().navigate(
-            MobileNavigationDirections.actionGlobalAppDetailsFragment(app.packageName)
+            MobileNavigationDirections.actionGlobalAppDetailsFragment(app.packageName, app)
         )
     }
 

@@ -254,10 +254,17 @@ class AppDetailsFragment : BaseFragment(R.layout.fragment_details) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentDetailsBinding.bind(view)
 
-        // TODO: Parcel app class to better handle onNewIntent fun
-        isExternal = true
-        app = App(args.packageName)
-        fetchCompleteApp()
+        if (args.app != null) {
+            app = args.app!!
+            isInstalled = PackageUtil.isInstalled(requireContext(), app.packageName)
+
+            inflatePartialApp()
+            fetchCompleteApp()
+        } else {
+            isExternal = true
+            app = App(args.packageName)
+            fetchCompleteApp()
+        }
 
         // Toolbar
         binding.layoutDetailsToolbar.toolbar.apply {
@@ -310,34 +317,6 @@ class AppDetailsFragment : BaseFragment(R.layout.fragment_details) {
         getUpdateServiceInstance()
         checkAndSetupInstall()
         super.onResume()
-    }
-
-    private fun onNewIntent(intent: Intent) {
-        if (intent.scheme != null && (intent.scheme == "market" || intent.scheme == "http" || intent.scheme == "https")) {
-            val packageName = intent.data!!.getQueryParameter("id")
-            val packageVersion = intent.data!!.getQueryParameter("v")
-            if (packageName.isNullOrEmpty()) {
-                activity?.finishAfterTransition()
-            } else {
-                isExternal = true
-                app = App(packageName)
-                if (!packageVersion.isNullOrEmpty()) {
-                    app.versionCode = packageVersion.toInt()
-                }
-                fetchCompleteApp()
-            }
-        } else {
-            val rawApp: String? = intent.getStringExtra(Constants.STRING_EXTRA)
-            if (rawApp != null) {
-                app = gson.fromJson(rawApp, App::class.java)
-                isInstalled = PackageUtil.isInstalled(requireContext(), app.packageName)
-
-                inflatePartialApp()
-                fetchCompleteApp()
-            } else {
-                activity?.finishAfterTransition()
-            }
-        }
     }
 
     private fun attachActions() {
