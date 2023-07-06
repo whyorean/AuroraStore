@@ -136,7 +136,7 @@ class ExpandedStreamBrowseFragment : BaseFragment(R.layout.activity_generic_recy
                         AppListViewModel_()
                             .id(it.packageName.hashCode())
                             .app(it)
-                            .click { _ -> openDetailsActivity(it) }
+                            .click { _ -> openDetailsFragment(it) }
                     )
                 }
 

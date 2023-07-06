@@ -249,7 +249,7 @@ class UpdatesFragment : BaseFragment() {
                             AppUpdateViewModel_()
                                 .id(updateFile.hashCode())
                                 .updateFile(updateFile)
-                                .click { _ -> openDetailsActivity(updateFile.app) }
+                                .click { _ -> openDetailsFragment(updateFile.app) }
                                 .longClick { _ ->
                                     openAppMenuSheet(updateFile.app)
                                     false

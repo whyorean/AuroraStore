@@ -131,7 +131,7 @@ class CategoryBrowseFragment : BaseFragment(R.layout.activity_generic_recycler),
     }
 
     override fun onAppClick(app: App) {
-        openDetailsActivity(app)
+        openDetailsFragment(app)
     }
 
     override fun onAppLongClick(app: App) {

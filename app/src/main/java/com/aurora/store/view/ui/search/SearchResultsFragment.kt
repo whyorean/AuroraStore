@@ -228,7 +228,7 @@ class SearchResultsFragment : BaseFragment(R.layout.fragment_search_result),
                                 .id(app.id)
                                 .app(app)
                                 .click(View.OnClickListener {
-                                    openDetailsActivity(app)
+                                    openDetailsFragment(app)
                                 })
                         )
                     }

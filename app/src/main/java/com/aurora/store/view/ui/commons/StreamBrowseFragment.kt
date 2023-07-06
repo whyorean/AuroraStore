@@ -24,7 +24,6 @@ import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.aurora.Constants
 import com.aurora.gplayapi.data.models.StreamCluster
 import com.aurora.store.R
 import com.aurora.store.databinding.ActivityGenericRecyclerBinding
@@ -104,7 +103,7 @@ class StreamBrowseFragment : BaseFragment(R.layout.activity_generic_recycler) {
                         AppListViewModel_()
                             .id(it.packageName.hashCode())
                             .app(it)
-                            .click { _ -> openDetailsActivity(it) }
+                            .click { _ -> openDetailsFragment(it) }
                     )
                 }
 

@@ -39,13 +39,13 @@ open class BaseFragment : Fragment {
         Modifier.TRANSIENT
     ).create()
 
-    fun openDetailsActivity(app: App) {
+    fun openDetailsFragment(app: App) {
         findNavController().navigate(
             MobileNavigationDirections.actionGlobalAppDetailsFragment(app.packageName)
         )
     }
 
-    fun openCategoryBrowseActivity(category: Category) {
+    fun openCategoryBrowseFragment(category: Category) {
         findNavController().navigate(
             MobileNavigationDirections.actionGlobalCategoryBrowseFragment(
                 category.title,
@@ -79,7 +79,7 @@ open class BaseFragment : Fragment {
         }
     }
 
-    fun openEditorStreamBrowseActivity(browseUrl: String, title: String = "") {
+    fun openEditorStreamBrowseFragment(browseUrl: String, title: String = "") {
         findNavController().navigate(
             MobileNavigationDirections.actionGlobalEditorStreamBrowseFragment(title, browseUrl)
         )

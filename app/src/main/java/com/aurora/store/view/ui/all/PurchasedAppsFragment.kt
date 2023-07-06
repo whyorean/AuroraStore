@@ -34,7 +34,6 @@ import com.aurora.store.view.epoxy.views.HeaderViewModel_
 import com.aurora.store.view.epoxy.views.shimmer.AppListViewShimmerModel_
 import com.aurora.store.view.ui.commons.BaseFragment
 import com.aurora.store.view.ui.sheets.AppMenuSheet
-import com.aurora.store.viewmodel.all.InstalledViewModel
 import com.aurora.store.viewmodel.all.PurchasedViewModel
 
 class PurchasedAppsFragment : BaseFragment() {
@@ -117,7 +116,7 @@ class PurchasedAppsFragment : BaseFragment() {
                         AppListViewModel_()
                             .id(app.id)
                             .app(app)
-                            .click { _ -> openDetailsActivity(app) }
+                            .click { _ -> openDetailsFragment(app) }
                             .longClick { _ ->
                                 openAppMenuSheet(app)
                                 false

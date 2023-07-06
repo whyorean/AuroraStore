@@ -19,18 +19,13 @@
 
 package com.aurora.store.view.ui.commons
 
-import android.app.ActivityOptions
-import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.aurora.Constants
 import com.aurora.extensions.applyTheme
-import com.aurora.gplayapi.data.models.App
 import com.aurora.store.data.providers.NetworkProvider
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_THEME_ACCENT
 import com.aurora.store.util.Preferences.PREFERENCE_THEME_TYPE
-import com.aurora.store.view.ui.details.*
 import com.aurora.store.view.ui.sheets.NetworkDialogSheet
 import com.aurora.store.view.ui.sheets.TOSSheet
 import com.google.gson.Gson
@@ -47,13 +42,6 @@ abstract class BaseActivity : AppCompatActivity(), NetworkProvider.NetworkListen
         val accentId = Preferences.getInteger(this, PREFERENCE_THEME_ACCENT)
         applyTheme(themeId, accentId)
         super.onCreate(savedInstanceState)
-    }
-
-    fun openDetailsActivity(app: App) {
-        val intent = Intent(this, AppDetailsFragment::class.java)
-        intent.putExtra(Constants.STRING_EXTRA, gson.toJson(app))
-        val options = ActivityOptions.makeSceneTransitionAnimation(this)
-        startActivity(intent, options.toBundle())
     }
 
     fun askToReadTOS() {

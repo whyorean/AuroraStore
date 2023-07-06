@@ -93,7 +93,7 @@ class CategoryFragment : BaseFragment() {
                     CategoryViewModel_()
                         .id(it.title)
                         .category(it)
-                        .click { _ -> openCategoryBrowseActivity(it) }
+                        .click { _ -> openCategoryBrowseFragment(it) }
                 )
             }
         }

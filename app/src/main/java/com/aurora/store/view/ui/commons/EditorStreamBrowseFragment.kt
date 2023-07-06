@@ -108,7 +108,7 @@ class EditorStreamBrowseFragment : BaseFragment(R.layout.activity_generic_recycl
                         AppListViewModel_()
                             .id("app_${app.id}")
                             .app(app)
-                            .click { _ -> openDetailsActivity(app) }
+                            .click { _ -> openDetailsFragment(app) }
                     )
 
                     app.editorReason?.let { editorReason ->
@@ -120,7 +120,7 @@ class EditorStreamBrowseFragment : BaseFragment(R.layout.activity_generic_recycl
                                         .joinToString(transform = { "\n• $it" })
                                         .substringAfter(delimiter = "\n")
                                 )
-                                .click { _ -> openDetailsActivity(app) }
+                                .click { _ -> openDetailsFragment(app) }
                         )
                     }
 
@@ -138,7 +138,7 @@ class EditorStreamBrowseFragment : BaseFragment(R.layout.activity_generic_recycl
                                 EditorHeadViewModel_()
                                     .id("description_${app.id}")
                                     .title(editorReason.description)
-                                    .click { _ -> openDetailsActivity(app) }
+                                    .click { _ -> openDetailsFragment(app) }
                             )
                         }
                     }

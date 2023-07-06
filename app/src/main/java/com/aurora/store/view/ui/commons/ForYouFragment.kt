@@ -145,7 +145,7 @@ class ForYouFragment : BaseFragment(), GenericCarouselController.Callbacks {
     }
 
     override fun onAppClick(app: App) {
-        openDetailsActivity(app)
+        openDetailsFragment(app)
     }
 
     override fun onAppLongClick(app: App) {

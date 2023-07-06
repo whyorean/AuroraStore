@@ -102,7 +102,7 @@ class InstalledAppsFragment : BaseFragment() {
                         AppListViewModel_()
                             .id(app.id)
                             .app(app)
-                            .click { _ -> openDetailsActivity(app) }
+                            .click { _ -> openDetailsFragment(app) }
                             .longClick { _ ->
                                 openAppMenuSheet(app)
                                 false

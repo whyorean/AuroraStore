@@ -117,7 +117,7 @@ class DevProfileFragment : BaseFragment(R.layout.fragment_dev_profile),
     }
 
     override fun onAppClick(app: App) {
-        openDetailsActivity(app)
+        openDetailsFragment(app)
     }
 
     override fun onAppLongClick(app: App) {

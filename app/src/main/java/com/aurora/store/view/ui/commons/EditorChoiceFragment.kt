@@ -96,7 +96,7 @@ class EditorChoiceFragment : BaseFragment(), EditorChoiceController.Callbacks {
     }
 
     override fun onClick(editorChoiceCluster: EditorChoiceCluster) {
-        openEditorStreamBrowseActivity(
+        openEditorStreamBrowseFragment(
             editorChoiceCluster.clusterBrowseUrl,
             editorChoiceCluster.clusterTitle
         )

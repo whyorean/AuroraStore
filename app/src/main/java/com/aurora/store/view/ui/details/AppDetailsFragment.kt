@@ -1147,7 +1147,7 @@ class AppDetailsFragment : BaseFragment(R.layout.fragment_details) {
                     }
 
                     override fun onAppClick(app: App) {
-                        openDetailsActivity(app)
+                        openDetailsFragment(app)
                     }
 
                     override fun onAppLongClick(app: App) {

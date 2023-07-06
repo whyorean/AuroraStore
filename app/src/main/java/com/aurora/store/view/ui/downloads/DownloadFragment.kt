@@ -207,7 +207,7 @@ class DownloadFragment : BaseFragment(R.layout.fragment_download) {
             downloadFile.download.extras.getString(Constants.STRING_EXTRA, "{}"),
             App::class.java
         )
-        openDetailsActivity(app)
+        openDetailsFragment(app)
     }
 
     private fun openDownloadMenuSheet(downloadFile: DownloadFile) {
