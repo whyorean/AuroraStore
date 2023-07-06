@@ -34,6 +34,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.IdRes
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.ColorUtils
 import androidx.core.view.GravityCompat
@@ -47,37 +48,56 @@ import com.aurora.gplayapi.data.models.AuthData
 import com.aurora.store.data.model.SelfUpdate
 import com.aurora.store.data.network.HttpClient
 import com.aurora.store.data.providers.AuthProvider
+import com.aurora.store.data.providers.NetworkProvider
 import com.aurora.store.databinding.ActivityMainBinding
 import com.aurora.store.util.CertUtil.isFDroidApp
 import com.aurora.store.util.Log
 import com.aurora.store.util.Preferences
-import com.aurora.store.view.ui.commons.BaseActivity
+import com.aurora.store.view.ui.sheets.NetworkDialogSheet
 import com.aurora.store.view.ui.sheets.SelfUpdateSheet
+import com.aurora.store.view.ui.sheets.TOSSheet
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.gson.Gson
+import com.google.gson.GsonBuilder
 import nl.komponents.kovenant.task
 import nl.komponents.kovenant.ui.successUi
+import java.lang.reflect.Modifier
 
 
-class MainActivity : BaseActivity() {
+class MainActivity : AppCompatActivity(), NetworkProvider.NetworkListener {
 
     private lateinit var B: ActivityMainBinding
     private lateinit var navController: NavController
     private lateinit var authData: AuthData
-
-    private var lastBackPressed = 0L
 
     private val startForPermissions =
         registerForActivityResult(ActivityResultContracts.RequestPermission()) {
             if (!it) toast(R.string.permissions_denied)
         }
 
+    private val gson: Gson = GsonBuilder().excludeFieldsWithModifiers(Modifier.TRANSIENT).create()
+
     override fun onConnected() {
-        hideNetworkConnectivitySheet()
+        runOnUiThread {
+            if (!supportFragmentManager.isDestroyed) {
+                val fragment = supportFragmentManager.findFragmentByTag(NetworkDialogSheet.TAG)
+                fragment?.let {
+                    supportFragmentManager.beginTransaction().remove(fragment)
+                        .commitAllowingStateLoss()
+                }
+            }
+        }
     }
 
     override fun onDisconnected() {
-        showNetworkConnectivitySheet()
+        runOnUiThread {
+            if (!supportFragmentManager.isDestroyed) {
+                supportFragmentManager.beginTransaction()
+                    .add(NetworkDialogSheet.newInstance(), NetworkDialogSheet.TAG)
+                    .commitAllowingStateLoss()
+            }
+        }
     }
 
     override fun onReconnected() {
@@ -99,6 +119,9 @@ class MainActivity : BaseActivity() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        val themeId = Preferences.getInteger(this, Preferences.PREFERENCE_THEME_TYPE)
+        val accentId = Preferences.getInteger(this, Preferences.PREFERENCE_THEME_ACCENT)
+        applyTheme(themeId, accentId)
         super.onCreate(savedInstanceState)
 
         B = ActivityMainBinding.inflate(layoutInflater)
@@ -113,7 +136,13 @@ class MainActivity : BaseActivity() {
         attachSearch()
 
         if (!Preferences.getBoolean(this, Preferences.PREFERENCE_TOS_READ)) {
-            askToReadTOS()
+            runOnUiThread {
+                if (!supportFragmentManager.isDestroyed) {
+                    val sheet = TOSSheet.newInstance()
+                    sheet.isCancelable = false
+                    sheet.show(supportFragmentManager, TOSSheet.TAG)
+                }
+            }
         }
 
         /*Check only if download to external storage is enabled*/
@@ -294,5 +323,15 @@ class MainActivity : BaseActivity() {
             sheet.isCancelable = false
             sheet.show(supportFragmentManager, SelfUpdateSheet.TAG)
         }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        NetworkProvider.addListener(this)
+    }
+
+    override fun onStop() {
+        NetworkProvider.removeListener(this)
+        super.onStop()
     }
 }
