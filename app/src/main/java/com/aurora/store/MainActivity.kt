@@ -217,11 +217,6 @@ class MainActivity : AppCompatActivity(), NetworkProvider.NetworkListener {
             val alphaColor = ColorUtils.setAlphaComponent(this@MainActivity.accentColor(), 100)
             itemActiveIndicatorColor = ColorStateList.valueOf(alphaColor)
         }
-//
-//        val defaultTab = Preferences.getInteger(this, Preferences.PREFERENCE_DEFAULT_SELECTED_TAB)
-//        val navigationList =
-//            listOf(R.id.navigation_apps, R.id.navigation_games, R.id.navigation_updates)
-//        bottomNavigationView.selectedItemId = navigationList[defaultTab]
     }
 
     private fun attachDrawer() {

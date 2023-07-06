@@ -198,7 +198,6 @@
     <string name="pref_filter_fdroid_summary">Αφαιρεί εφαρμογές F-Droid από της λίστες εφαρμογών</string>
     <string name="pref_dialog_to_apply_restart">Αυτή η ρύθμιση θα εφαρμοστεί μετά την επανεκκίνηση της εφαρμογής</string>
     <string name="pref_ui_theme_system">Σύμφωνα με το σύστημα</string>
-    <string name="pref_ui_layout_tab">Επιλέξτε προεπιλεγμένη καρτέλα</string>
     <string name="pref_filter_google_title">Φιλτράρετε τις εφαρμογές Google</string>
     <string name="pref_filter_search_summary">Τα φίλτρα αναζήτησης επαναφέρονται σε κάθε αναζήτηση. Απενεργοποιήστε τα για να τα αποθηκεύσετε</string>
     <string name="pref_install_delete_summary">Τα APK θα διαγραφούν από προεπιλογή</string>
@@ -232,7 +231,6 @@
     <string name="title_updates">Ενημερώσεις</string>
     <string name="toast_abandon_sessions">Οι παλιές συνεδρίες εγκατάστασης ακυρώθηκαν</string>
     <string name="pref_filter_fdroid_title">Φιλτράρετε εφαρμογές F-Droid</string>
-    <string name="pref_ui_layout">Διάταξη</string>
     <string name="pref_install_mode_summary">Επιλέξτε τον τρόπο εγκατάστασης του APK</string>
     <string name="pref_install_mode_title">Μέθοδος εγκατάστασης</string>
     <string name="pref_ui_theme_light">Φωτεινό</string>

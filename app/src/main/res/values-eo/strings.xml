@@ -139,7 +139,6 @@
     <string name="pref_ui_theme_dark_x">Malluma Ĵ</string>
     <string name="pref_ui_theme_darkord">Diskokordo</string>
     <string name="pref_ui_theme_system">Laŭ operaciumo</string>
-    <string name="pref_ui_layout">Aranĝo</string>
     <string name="purchase_failed">Elŝuto malsukcesa</string>
     <string name="purchase_unsupported">Aplikaĵo ne subtenata</string>
     <string name="purchase_not_found">Aplikaĵo netrovita</string>

@@ -263,8 +263,6 @@
     <string name="pref_ui_similar_apps">Slični i povezani programi</string>
     <string name="pref_ui_no_for_you_desc">Prikaži „Za tvoje stranice” na početnom ekranu</string>
     <string name="pref_ui_no_for_you">Za tvoje stranice</string>
-    <string name="pref_ui_layout_tab">Odaberi standardnu karticu</string>
-    <string name="pref_ui_layout">Raspored</string>
     <string name="details_no_app_match">Nema odgovarajućeg programa</string>
     <string name="action_check">Označi</string>
     <string name="pref_common_extra">Dodatno</string>

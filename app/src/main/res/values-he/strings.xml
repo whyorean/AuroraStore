@@ -103,7 +103,6 @@
     <string name="download_failed">ההורדה נכשלה</string>
     <string name="title_download_manager">הורדות</string>
     <string name="action_copy">העתקה</string>
-    <string name="pref_ui_layout">פריסה</string>
     <string name="title_library">ספרייה</string>
     <string name="tab_top_paid">המובילים בתשלום</string>
     <string name="toast_clipboard_copied">הועתק ללוח</string>
@@ -262,7 +261,6 @@
     <string name="pref_install_auto_summary">אפליקציות מותקנות מיידית לאחר סיום ההורדה</string>
     <string name="pref_install_mode_am">מתקין AM.</string>
     <string name="pref_install_mode_session">מתקין מערכת</string>
-    <string name="pref_ui_layout_tab">בחר עמוד ברירת מחדל</string>
     <string name="pref_ui_no_for_you_desc">הצג את \"בשבילך\" במסך הבית</string>
     <string name="pref_ui_similar_apps_desc">יישומים דומים וקשורים במסך פרטי היישום</string>
     <string name="title_spoof_manager">מנהל הזיוף</string>

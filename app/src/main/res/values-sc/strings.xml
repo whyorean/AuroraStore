@@ -110,7 +110,6 @@
     <string name="pref_ui_theme_darkord">Discord</string>
     <string name="pref_ui_theme_system">Sighi su sistema</string>
     <string name="pref_ui_title">Personalizatzione</string>
-    <string name="pref_ui_layout">Dispositzione</string>
     <string name="pref_ui_no_for_you">Pàginas pro tene</string>
     <string name="pref_ui_no_for_you_desc">Ammustra sas pàginas pro tene in s\'ischermada printzipale</string>
     <string name="pref_ui_similar_apps">Aplicatziones simigiantes e ligadas</string>
@@ -234,7 +233,6 @@
     <string name="pref_ui_theme_dark">Iscuru</string>
     <string name="pref_ui_theme_black">Nieddu</string>
     <string name="action_close">Serra</string>
-    <string name="pref_ui_layout_tab">Ischerta s\'ischeda prefefinida</string>
     <string name="download_none">Perunu iscarrigamentu</string>
     <string name="details_permission">Permissu</string>
     <string name="title_download_playstore">Play Store</string>

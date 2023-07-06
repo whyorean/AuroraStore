@@ -258,8 +258,6 @@
     <string name="pref_insecure_anonymous_summary">Создавать GSF ID на устройстве</string>
     <string name="pref_ui_similar_apps_desc">Показать секции похожих и связанных на странице приложения</string>
     <string name="pref_ui_no_for_you_desc">Показать страницу рекомендаций на основном экране</string>
-    <string name="pref_ui_layout_tab">Выбрать вкладку по умолчанию</string>
-    <string name="pref_ui_layout">Вкладки</string>
     <string name="pref_filter_search_title">Не сохранять поисковый фильтр</string>
     <string name="pref_common_extra">Дополнительно</string>
     <string name="pref_ui_similar_apps">Похожие и связанные приложения</string>

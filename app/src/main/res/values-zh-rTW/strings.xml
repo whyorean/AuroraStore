@@ -132,8 +132,6 @@
     <string name="pref_ui_similar_apps">相似及相關的程式</string>
     <string name="pref_ui_no_for_you_desc">在首頁顯示「為你精選」頁面</string>
     <string name="pref_ui_no_for_you">為你精選頁面</string>
-    <string name="pref_ui_layout_tab">選擇預設標籤</string>
-    <string name="pref_ui_layout">佈局</string>
     <string name="pref_ui_title">個人化</string>
     <string name="pref_ui_theme_title">主題</string>
     <string name="pref_ui_theme_system">跟隨系統</string>

@@ -47,8 +47,6 @@
     <string name="pref_updates_extended_desc">Söker också efter nya versioner av inaktiverade appar</string>
     <string name="pref_updates_extended">Förlängda uppdateringar</string>
     <string name="pref_ui_similar_apps">Liknande och relaterade appar</string>
-    <string name="pref_ui_layout_tab">Välj standardflik</string>
-    <string name="pref_ui_layout">Layout</string>
     <string name="pref_ui_title">Anpassning</string>
     <string name="pref_ui_theme_title">Tema</string>
     <string name="pref_ui_theme_system">Följ systemet</string>

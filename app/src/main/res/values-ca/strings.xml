@@ -219,8 +219,6 @@
     <string name="pref_ui_theme_system">Seguir el sistema</string>
     <string name="pref_ui_theme_title">Tema</string>
     <string name="pref_ui_title">Personalització</string>
-    <string name="pref_ui_layout">Disposició</string>
-    <string name="pref_ui_layout_tab">Seleccionar la pestanya per defecte</string>
     <string name="pref_ui_no_for_you">Pàgines per a tu</string>
     <string name="pref_ui_similar_apps">Aplicacions similars i relacionades</string>
     <string name="purchase_unsupported">Aplicació no compatible</string>

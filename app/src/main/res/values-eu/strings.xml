@@ -268,8 +268,6 @@
     <string name="pref_ui_similar_apps">Antzeko aplikazioak eta erlazionatuak</string>
     <string name="pref_ui_no_for_you_desc">Erakutsi zuretzako orriak hasierako pantailan</string>
     <string name="pref_ui_no_for_you">Zuretzako orrialdeak</string>
-    <string name="pref_ui_layout_tab">Fitxa lehentsia hautatu</string>
-    <string name="pref_ui_layout">Diseinua</string>
     <string name="pref_network_title">Sarea</string>
     <string name="pref_insecure_anonymous_title">Saio anonimo ez segurua</string>
     <string name="pref_insecure_anonymous_summary">GSF ID-a gailuan lokalki sortu</string>

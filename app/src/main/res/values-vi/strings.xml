@@ -271,8 +271,6 @@
     <string name="pref_ui_similar_apps">Các ứng dụng tương tự và liên quan</string>
     <string name="pref_ui_no_for_you_desc">Hiển thị trang Cho bạn trên màn hình chính</string>
     <string name="pref_ui_no_for_you">Trang Cho Bạn</string>
-    <string name="pref_ui_layout_tab">Chọn tab mặc định</string>
-    <string name="pref_ui_layout">Bố cục</string>
     <string name="pref_ui_accent_title">Màu nổi bật</string>
     <string name="onboarding_title_accent">Màu nổi bật</string>
     <string name="toast_export_failed">Không thể xuất thiết lập thiết bị</string>

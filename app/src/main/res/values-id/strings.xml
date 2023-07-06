@@ -233,8 +233,6 @@
     <string name="pref_ui_similar_apps">Aplikasi serupa dan terkait</string>
     <string name="pref_ui_no_for_you_desc">Tampilan Halaman Anda di layar beranda</string>
     <string name="pref_ui_no_for_you">Untuk Anda</string>
-    <string name="pref_ui_layout_tab">Pilih tab bawaan</string>
-    <string name="pref_ui_layout">Tata letak</string>
     <string name="pref_ui_title">Kostumisasi</string>
     <string name="pref_ui_theme_title">Tema</string>
     <string name="pref_ui_theme_system">Mengikuti Sistem</string>

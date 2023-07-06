@@ -260,8 +260,6 @@
     <string name="pref_ui_similar_apps">Applicazioni simili e correlate</string>
     <string name="pref_ui_no_for_you_desc">Visualizza le pagine «Per te» sulla schermata iniziale</string>
     <string name="pref_ui_no_for_you">Pagine «Per te»</string>
-    <string name="pref_ui_layout_tab">Seleziona la scheda predefinita</string>
-    <string name="pref_ui_layout">Disposizione</string>
     <string name="pref_filter_search_title">Usa filtro di ricerca non persistente</string>
     <string name="pref_filter_search_summary">I filtri di ricerca vengono reimpostati ad ogni ricerca. Disattivare per salvare i filtri di ricerca</string>
     <string name="pref_common_extra">Extra</string>

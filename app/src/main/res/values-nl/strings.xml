@@ -84,8 +84,6 @@
     <string name="pref_ui_similar_apps">Vergelijkbare en gerelateerde apps</string>
     <string name="pref_ui_no_for_you_desc">Toon Voor Jou Pagina\'s op thuisscherm</string>
     <string name="pref_ui_no_for_you">Voor Jou Pagina\'s</string>
-    <string name="pref_ui_layout_tab">Selecteer standaard tabblad</string>
-    <string name="pref_ui_layout">Lay-out</string>
     <string name="pref_ui_title">Aanpassing</string>
     <string name="pref_ui_theme_title">Thema</string>
     <string name="pref_ui_theme_system">Volg systeem</string>

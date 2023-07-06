@@ -129,7 +129,6 @@
     <string name="pref_ui_theme_black">Melns</string>
     <string name="pref_ui_theme_darkord">Discord</string>
     <string name="pref_ui_theme_title">Motīvs</string>
-    <string name="pref_ui_layout_tab">Izvēlēties noklusējuma lapu</string>
     <string name="pref_ui_no_for_you">For You lapa</string>
     <string name="pref_ui_no_for_you_desc">Rādīt For You lapu sākuma ekrānā</string>
     <string name="pref_ui_similar_apps">Līdzīgas un saistītas lietotnes</string>
@@ -189,7 +188,6 @@
     <string name="onboarding_tos_error">Vispirms ir jāatzīmē, ka ir izlasīti LN.</string>
     <string name="pref_dialog_to_apply_restart">Šis iestatījums tiks piemērots pēc lietotnes restartēšanas</string>
     <string name="pref_ui_theme_light">Gaišs</string>
-    <string name="pref_ui_layout">Izkārtojums</string>
     <string name="pref_filter_google_summary">Noņem visas Google lietotnes no meklēšanas rezultātiem</string>
     <string name="pref_filter_google_title">Filtrēt Google lietotnes</string>
     <string name="pref_ui_theme_dark">Tumšs</string>

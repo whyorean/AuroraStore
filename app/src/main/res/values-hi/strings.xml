@@ -106,7 +106,6 @@
     <string name="ui_accent_9">नींबू</string>
     <string name="pref_filter_google_title">गूगल ऐप फिल्टर करें</string>
     <string name="pref_install_mode_native">मूल इंस्टॉलर</string>
-    <string name="pref_ui_layout_tab">डिफॉल्ट टैब चुनें</string>
     <string name="dialog_title_self_update">नया अपडेट मौजूद</string>
     <string name="ui_accent_10">संतरा</string>
     <string name="pref_ui_no_for_you_desc">घर पर आपके लिए पन्ने दिखाएं</string>
@@ -125,7 +124,6 @@
     <string name="pref_ui_accent_title">रंग</string>
     <string name="title_language">भाषा</string>
     <string name="notification_channel_alert">तुरंत सूचना</string>
-    <string name="pref_ui_layout">खाका</string>
     <string name="ui_accent_13">गहरा नीला</string>
     <string name="action_update">अपडेट करें</string>
     <string name="onboarding_tos_error">आप पहले सेवा के नियम पढ़ा निशान लगना पड़ेगा।</string>

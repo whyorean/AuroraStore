@@ -269,8 +269,6 @@
     <string name="purchase_no_file">Nu s-au putut obține fișiere</string>
     <string name="session_enjoy">Autentifică-te și savurează.</string>
     <string name="pref_ui_theme_dark">Întunecată</string>
-    <string name="pref_ui_layout">Aspect</string>
-    <string name="pref_ui_layout_tab">Selectează fila implicită</string>
     <string name="pref_ui_no_for_you_desc">Afișare Recomandări pe ecranul de pornire</string>
     <string name="pref_ui_no_for_you">Pagina de recomandări</string>
     <string name="purchase_failed">Descărcare eșuată</string>

@@ -58,8 +58,6 @@
     <string name="pref_ui_similar_apps">Podobné a související aplikace</string>
     <string name="pref_ui_no_for_you_desc">Zobrazení stránek pro vás na domovské obrazovce</string>
     <string name="pref_ui_no_for_you">Stránky pro vás</string>
-    <string name="pref_ui_layout_tab">Vybrat výchozí kartu</string>
-    <string name="pref_ui_layout">Rozložení</string>
     <string name="pref_ui_title">Přizpůsobení</string>
     <string name="pref_ui_theme_title">Motiv</string>
     <string name="pref_ui_theme_system">Podle systému</string>
