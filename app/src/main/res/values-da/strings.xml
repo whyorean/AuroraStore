@@ -227,8 +227,6 @@
     <string name="pref_ui_theme_light">Lys</string>
     <string name="pref_ui_title">Tilpasning</string>
     <string name="pref_ui_layout_tab">Vælg standardfanen</string>
-    <string name="pref_ui_quick_exit">Hurtig afslutning</string>
-    <string name="pref_ui_quick_exit_desc">Afslut app med et enkelt tilbagetryk</string>
     <string name="pref_ui_no_for_you">\"Til dig\" sider</string>
     <string name="pref_ui_no_for_you_desc">Vis \"til dig\" sider på startskærmen</string>
     <string name="pref_ui_similar_apps">Lignende og relaterede apps</string>
@@ -290,7 +288,6 @@
     <string name="details_paid">Betalt</string>
     <string name="toast_manual_unavailable">Versionskoden du beder om er utilgængelig.</string>
     <string name="toast_manual_available">Tillykke, den ønskede versionskode er tilgængelig, downloader nu.</string>
-    <string name="toast_double_press_to_exit">Klik to gange for at afslutte</string>
     <string name="toast_page_unavailable">Udforskningssiden er utilgængelig</string>
     <string name="toast_rated_success">Vurderet</string>
     <string name="toast_rated_failed">Kunne ikke indsende vurderingen</string>

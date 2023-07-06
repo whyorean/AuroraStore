@@ -52,8 +52,6 @@
     <string name="pref_install_mode_services">خدمات آرورا</string>
     <string name="pref_install_mode_root">نصب کننده روت</string>
     <string name="pref_ui_no_for_you">برگه‌های برای شما</string>
-    <string name="pref_ui_quick_exit_desc">خروج از برنامه در یک اقدام برگشتی</string>
-    <string name="pref_ui_quick_exit">خروج سریع</string>
     <string name="pref_ui_layout_tab">برگزیدن برگه پیش فرض</string>
     <string name="pref_ui_title">سفارشی سازی</string>
     <string name="pref_ui_theme_title">پوسته</string>
@@ -66,7 +64,6 @@
     <string name="tab_top_charts">جدول برترین‌ها</string>
     <string name="toast_clipboard_copied">در بریده‌دان کپی شد</string>
     <string name="toast_page_unavailable">صفحه موجود نیست</string>
-    <string name="toast_double_press_to_exit">برای خروج دوبار کلیک کنید</string>
     <string name="toast_manual_available">تبریک ، کد نسخه درخواستی شما موجود است و اکنون بارگیری می شود.</string>
     <string name="toast_manual_unavailable">کد نسخه درخواستی شما در دسترس نیست.</string>
     <string name="toast_purchase_blocked">پرداخت‌های برنامه در حساب های ناشناس در دسترس نیست.</string>

@@ -251,8 +251,6 @@
     <string name="pref_ui_title">"Customization"</string>
     <string name="pref_ui_layout">"Layout"</string>
     <string name="pref_ui_layout_tab">"Select default tab"</string>
-    <string name="pref_ui_quick_exit">"Quick exit"</string>
-    <string name="pref_ui_quick_exit_desc">"Exit app on single back action"</string>
     <string name="pref_ui_no_for_you">"For You Pages"</string>
     <string name="pref_ui_no_for_you_desc">"Display For You Pages on home screen"</string>
     <string name="pref_ui_similar_apps">"Similar and related apps"</string>
@@ -321,7 +319,6 @@
     <string name="toast_purchase_blocked">"App purchases not available on Anonymous accounts."</string>
     <string name="toast_manual_unavailable">"The version code you are requesting is unavailable."</string>
     <string name="toast_manual_available">"Congrats, requested version code is available, downloading now."</string>
-    <string name="toast_double_press_to_exit" translatable="false">Click twice to exit</string>
     <string name="toast_page_unavailable">Browse page unavailable</string>
     <string name="toast_rated_success">Rated</string>
     <string name="toast_rated_failed">Could not submit rating</string>

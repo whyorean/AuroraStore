@@ -62,7 +62,6 @@
     <string name="toast_rated_failed">Lama gudbin karo qiimaynta</string>
     <string name="toast_rated_success">Laqiimeeyay</string>
     <string name="toast_page_unavailable">Bogga Dhexmushaax lama heli karo</string>
-    <string name="toast_double_press_to_exit">Laba jeer kudhufo saad oga baxdo</string>
     <string name="toast_manual_available">Hambalyo, lambarka tirsiga waa laheli karaa waana la dajinayaa.</string>
     <string name="toast_manual_unavailable">Lambarka tirsiga aad codsanayso lama helikaro.</string>
     <string name="toast_purchase_blocked">Iibsashada appska looma heli karo akoonada garanwaaga ah.</string>
@@ -101,8 +100,6 @@
     <string name="pref_ui_similar_apps">Lamid ah &amp; laxidhiidha</string>
     <string name="pref_ui_no_for_you_desc">Boggaga Adiga shaashada hore soodhig</string>
     <string name="pref_ui_no_for_you">Boggaga Adiga</string>
-    <string name="pref_ui_quick_exit_desc">Kaga bax appka halmar ood meesha kanoqoshada taabato</string>
-    <string name="pref_ui_quick_exit">Durba kabax</string>
     <string name="pref_ui_layout">Qaabka</string>
     <string name="pref_ui_title">Habaynta</string>
     <string name="pref_ui_theme_title">Nashqada</string>

@@ -92,7 +92,6 @@
     <string name="about_bhim">BHIM - UPI</string>
     <string name="onboarding_title_welcome">Byenvini</string>
     <string name="onboarding_tos_error">Ou dwa make CI li an premye.</string>
-    <string name="toast_double_press_to_exit">Klike de fwa pou sòti</string>
     <string name="toast_clipboard_copied">Kopye nan prèspapye</string>
     <string name="toast_permission_granted">Pèmisyon akòde</string>
     <string name="toast_manual_unavailable">Vèsyon kòd ap mande a pa disponib.</string>

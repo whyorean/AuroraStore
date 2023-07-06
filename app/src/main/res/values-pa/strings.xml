@@ -11,7 +11,6 @@
     <string name="toast_rated_failed">ਰੇਟਿੰਗ ਜਮ੍ਹਾਂ ਕਰਨ ਚ ਅਸਫਲ</string>
     <string name="toast_rated_success">ਰੇਟਿੰਗ ਸਫਲ</string>
     <string name="toast_page_unavailable">ਇਹ ਪੰਨਾ ਉਪਲਬੱਧ ਨਹੀਂ ਹੈ</string>
-    <string name="toast_double_press_to_exit">ਐਪ ਚੋਂ ਬਾਹਰ ਜਾਣ ਲਈ ਦੋਬਾਰਾ ਦਬਾਓ</string>
     <string name="toast_manual_available">ਮੁਬਾਰਕ ਹੋ, ਤੁਹਾਡੇ ਵੱਲੋਂ ਬੇਨਤੀ ਕੀਤਾ ਗਿਆ ਐਪ ਸੰਸਕਰਣ ਕੋਡ ਉਪਲਬੱਧ ਹੈ ਅਤੇ ਡਾਊਨਲੋਡ ਹੋ ਰਿਹਾ ਹੈ।</string>
     <string name="toast_manual_unavailable">ਜਿਸ ਐਪ ਸੰਸਕਰਣ ਕੋਡ ਦੀ ਤੁਸੀਂ ਬੇਨਤੀ ਕੀਤੀ ਹੈ, ਉਹ ਉਪਲਬੱਧ ਨਹੀਂ ਹੈ।</string>
     <string name="toast_purchase_blocked">ਅਗਿਆਤ ਲੌਗ-ਇਨ ਜ਼ਰੀਏ ਐਪਸ ਖਰੀਦਣਾ ਮੁਮਕਿਨ ਨਹੀਂ ਹੈ।</string>
@@ -65,8 +64,6 @@
     <string name="pref_ui_similar_apps">ਇਸੇ ਸ਼੍ਰੇਣੀ ਦੇ ਕੁੱਝ ਹੋਰ ਐਪਸ</string>
     <string name="pref_ui_no_for_you_desc">ਖਾਸ ਤੁਹਾਡੇ ਲਈ ਚੁਣੇ ਹੋਏ ਐਪਸ ਵਾਲਾ ਪੰਨਾ ਵਿਖਾਓ</string>
     <string name="pref_ui_no_for_you">ਤੁਹਾਡੇ ਲਈ ਚੁਣੇ ਹੋਏ ਐਪਸ</string>
-    <string name="pref_ui_quick_exit_desc">ਇੱਕ ਵਾਰ ਬੈਕ ਬਟਨ ਦੱਬਣ ਤੇ ਐਪ ਚੋਂ ਬਾਹਰ ਆਓ</string>
-    <string name="pref_ui_quick_exit">ਜਲਦੀ ਬਾਹਰ ਆਓ</string>
     <string name="pref_ui_layout_tab">ਮੂਲ Tab ਚੁਣੋ</string>
     <string name="pref_ui_layout">ਇੰਟਰਫੇਸ ਸਟਾਈਲ</string>
     <string name="pref_ui_title">ਪਸੰਦੀਦਾ ਇੰਟਰਫੇਸ</string>

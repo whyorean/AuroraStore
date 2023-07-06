@@ -262,7 +262,6 @@
     <string name="dialog_desc_native_split">Bạn không thể cài đặt ứng dụng gói(tách) bằng trình cài đặt gốc. Hãy thay đổi trình cài đặt thành Phiên, Dịch vụ hoặc Root.</string>
     <string name="details_no_app_match">Không tìm thấy ứng dụng nào trùng khớp</string>
     <string name="toast_page_unavailable">Trang đang duyệt không có sẵn</string>
-    <string name="toast_double_press_to_exit">Nhấn hai lần để thoát</string>
     <string name="toast_manual_available">Chúc mừng, mã phiên bản được yêu cầu đang có sẵn, đang tải xuống ngay bây giờ.</string>
     <string name="toast_manual_unavailable">Mã phiên bản bạn đang yêu cầu không có sẵn.</string>
     <string name="title_manual_download">Tải xuống thủ công</string>
@@ -272,8 +271,6 @@
     <string name="pref_ui_similar_apps">Các ứng dụng tương tự và liên quan</string>
     <string name="pref_ui_no_for_you_desc">Hiển thị trang Cho bạn trên màn hình chính</string>
     <string name="pref_ui_no_for_you">Trang Cho Bạn</string>
-    <string name="pref_ui_quick_exit_desc">Thoát ứng dụng khi \'quay lại\' một lần</string>
-    <string name="pref_ui_quick_exit">Thoát nhanh</string>
     <string name="pref_ui_layout_tab">Chọn tab mặc định</string>
     <string name="pref_ui_layout">Bố cục</string>
     <string name="pref_ui_accent_title">Màu nổi bật</string>

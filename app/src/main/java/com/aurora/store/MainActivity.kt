@@ -32,8 +32,6 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
-import androidx.activity.addCallback
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.IdRes
 import androidx.core.content.ContextCompat
@@ -135,27 +133,6 @@ class MainActivity : BaseActivity() {
 
         /* Check self update only for stable release, skip debug & nightlies*/
         if (BuildConfig.APPLICATION_ID == Constants.APP_ID) checkSelfUpdate()
-
-        onBackPressedDispatcher.addCallback(this) {
-            if (!B.drawerLayout.isDrawerOpen(GravityCompat.START)) {
-                if (Preferences.getBoolean(this@MainActivity, Preferences.PREFERENCE_QUICK_EXIT)) {
-                    finish()
-                } else {
-                    if (lastBackPressed + 1000 > System.currentTimeMillis()) {
-                        finish()
-                    } else {
-                        lastBackPressed = System.currentTimeMillis()
-                        Toast.makeText(
-                            this@MainActivity,
-                            getString(R.string.toast_double_press_to_exit),
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    }
-                }
-            } else {
-                B.drawerLayout.close()
-            }
-        }
 
         // Handle intents
         when (intent?.action) {

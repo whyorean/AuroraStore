@@ -263,8 +263,6 @@
     <string name="pref_ui_similar_apps">Aplicaciones similares y relacionadas</string>
     <string name="pref_ui_no_for_you_desc">Mostrar páginas Para usted en la pantalla de inicio</string>
     <string name="pref_ui_no_for_you">Páginas para ti</string>
-    <string name="pref_ui_quick_exit_desc">Salir de la aplicación con una sola acción hacia atrás</string>
-    <string name="pref_ui_quick_exit">Salida rápida</string>
     <string name="pref_ui_layout_tab">Elegir pestaña predeterminada</string>
     <string name="pref_ui_layout">Disposición</string>
     <string name="pref_filter_search_title">Utilizar un filtro de búsqueda no persistente</string>
@@ -277,7 +275,6 @@
     <string name="toast_rated_failed">No se pudo enviar la calificación</string>
     <string name="toast_rated_success">Calificado</string>
     <string name="toast_page_unavailable">Página de navegación no disponible</string>
-    <string name="toast_double_press_to_exit">Pulse dos veces para salir</string>
     <string name="toast_export_failed">No se ha podido exportar la configuración del dispositivo</string>
     <string name="toast_export_success">Configuración del dispositivo exportada</string>
     <string name="pref_updates_extended_desc">También busca nuevas versiones de aplicaciones deshabilitadas</string>

@@ -260,8 +260,6 @@
     <string name="pref_ui_similar_apps">Hasonló és kapcsolódó appok</string>
     <string name="pref_ui_no_for_you_desc">Oldalak neked megjelenítés a Kezdőlapon</string>
     <string name="pref_ui_no_for_you">Oldalak neked</string>
-    <string name="pref_ui_quick_exit_desc">Kilépés egyetlen Vissza művelettel</string>
-    <string name="pref_ui_quick_exit">Gyors kilépés</string>
     <string name="pref_ui_layout_tab">Alapért. fül kiválasztása</string>
     <string name="pref_ui_layout">Elrendezés</string>
     <string name="pref_filter_search_title">Használjon nem állandó kereső szűrőt</string>
@@ -276,7 +274,6 @@
     <string name="toast_rated_failed">Az értékelést nem sikerült elküldeni</string>
     <string name="toast_rated_success">Értékelve</string>
     <string name="toast_page_unavailable">A böngésző lap nem érhető el</string>
-    <string name="toast_double_press_to_exit">Kattints kétszer a kilépéshez</string>
     <string name="dialog_desc_native_split">A Native Installer segítségével nem lehet telepíteni a kötegelt (osztott) alkalmazásokat. Változtasd a telepítőt Session, Services vagy Root-ra.</string>
     <string name="toast_export_failed">Nem sikerült az eszköz konfig. exportálása</string>
     <string name="toast_export_success">Eszköz konfig. sikeresen exportálva</string>

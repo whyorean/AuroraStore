@@ -259,12 +259,10 @@
     <string name="pref_common_extra">Dodatkowe</string>
     <string name="pref_filter_search_title">Użyj nietrwałego filtra wyszukiwania</string>
     <string name="pref_filter_search_summary">Filtry wyszukiwania są resetowane przy każdym wyszukiwaniu. Wyłącz, aby zapisywać filtry wyszukiwania</string>
-    <string name="pref_ui_quick_exit_desc">Wyjdź z aplikacji przy pojedynczej akcji wstecz</string>
     <string name="pref_ui_no_for_you">Strony dla Ciebie</string>
     <string name="pref_ui_no_for_you_desc">Wyświetl strony „Dla Ciebie” na ekranie głównym</string>
     <string name="pref_ui_similar_apps_desc">Wyświetl grupy podobnych i powiązanych na stronie szczegółów aplikacji</string>
     <string name="pref_ui_similar_apps">Aplikacje podobne i powiązane</string>
-    <string name="pref_ui_quick_exit">Szybkie wyjście</string>
     <string name="pref_ui_layout_tab">Wybierz domyślną kartę</string>
     <string name="pref_ui_layout">Układ</string>
     <string name="details_no_app_match">Nie znaleziono pasującej aplikacji</string>
@@ -276,7 +274,6 @@
     <string name="toast_page_unavailable">Przeglądana strona jest niedostępna</string>
     <string name="toast_rated_success">Oceniono</string>
     <string name="toast_aas_token_failed">Nie można wygenerować tokenu AAS</string>
-    <string name="toast_double_press_to_exit">Naciśnij dwukrotnie, aby wyjść</string>
     <string name="toast_rated_failed">Nie można przesłać oceny</string>
     <string name="toast_export_failed">Nie można wyeksportować konfiguracji urządzenia</string>
     <string name="toast_export_success">Wyeksportowano konfigurację urządzenia</string>

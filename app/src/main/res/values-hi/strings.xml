@@ -78,14 +78,12 @@
     <string name="toast_spoof_applied">डिवाइस मखौटा लगाया गया।</string>
     <string name="toast_rated_failed">रेट जमा नहीं कर पाएं</string>
     <string name="action_share">शेयर करें</string>
-    <string name="pref_ui_quick_exit_desc">एक बार बैक बटन दबाने पर ऐप से निकलें</string>
     <string name="title_manual_download">मैनुअल डाउनलोड</string>
     <string name="action_wishlist_add">इच्छासूची में जोड़ें</string>
     <string name="toast_apk_blacklisted">ब्लॉकसूची में जोड़ा गया</string>
     <string name="download_force_clear_all">ज़बरदस्ती सब साफ करें</string>
     <string name="action_try_later">बाद में कोशिश करें</string>
     <string name="tab_for_you">आपके लिए</string>
-    <string name="pref_ui_quick_exit">तुरंत निकलें</string>
     <string name="purchase_invalid">ऐप नहीं खरीदा गया</string>
     <string name="details_contains_ads">विज्ञापन है</string>
     <string name="pref_filter_google_summary">खोज नतीजे और श्रेणी ऐप से सारे गूगल ऐप हटाएं</string>
@@ -97,7 +95,6 @@
     <string name="action_uninstall">अनइंस्टॉल करें</string>
     <string name="download_cancel_all">सब रद्द करें</string>
     <string name="download_canceled">रद्द</string>
-    <string name="toast_double_press_to_exit">दो बार दबाएं निकलने के लिए</string>
     <string name="details_privacy">निजता</string>
     <string name="action_open">खोलें</string>
     <string name="app_updater_service_notif_title">बैकग्राउंड ऐप डाउनलोड</string>

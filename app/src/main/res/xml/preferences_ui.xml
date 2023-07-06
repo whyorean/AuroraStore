@@ -57,13 +57,6 @@
         app:title="@string/pref_common_extra" />
 
     <SwitchPreferenceCompat
-        app:defaultValue="false"
-        app:iconSpaceReserved="false"
-        app:key="PREFERENCE_QUICK_EXIT"
-        app:summary="@string/pref_ui_quick_exit_desc"
-        app:title="@string/pref_ui_quick_exit" />
-
-    <SwitchPreferenceCompat
         app:defaultValue="true"
         app:iconSpaceReserved="false"
         app:key="PREFERENCE_FOR_YOU"

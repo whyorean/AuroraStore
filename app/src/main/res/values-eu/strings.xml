@@ -258,7 +258,6 @@
     <string name="toast_rated_failed">Ezin izan da kalifikazioa bidali</string>
     <string name="toast_rated_success">Kalifikatuta</string>
     <string name="toast_page_unavailable">Nabigazio-orria ez dago eskuragarri</string>
-    <string name="toast_double_press_to_exit">Sakatu bi aldiz irteteko</string>
     <string name="toast_manual_available">Zorionak, eskatutako bertsio kodea erabilgarri dago, deskargatzen ari da orain.</string>
     <string name="toast_manual_unavailable">Eskatzen ari zaren bertsio kodea ez dago erabilgarri.</string>
     <string name="title_manual_download">Eskuzko deskargatzea</string>
@@ -269,8 +268,6 @@
     <string name="pref_ui_similar_apps">Antzeko aplikazioak eta erlazionatuak</string>
     <string name="pref_ui_no_for_you_desc">Erakutsi zuretzako orriak hasierako pantailan</string>
     <string name="pref_ui_no_for_you">Zuretzako orrialdeak</string>
-    <string name="pref_ui_quick_exit_desc">Aplikaziotik atzeranzko ekintza bakarrarekin irten</string>
-    <string name="pref_ui_quick_exit">Irteera azkarra</string>
     <string name="pref_ui_layout_tab">Fitxa lehentsia hautatu</string>
     <string name="pref_ui_layout">Diseinua</string>
     <string name="pref_network_title">Sarea</string>

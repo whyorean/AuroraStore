@@ -260,8 +260,6 @@
     <string name="pref_ui_similar_apps">Applicazioni simili e correlate</string>
     <string name="pref_ui_no_for_you_desc">Visualizza le pagine «Per te» sulla schermata iniziale</string>
     <string name="pref_ui_no_for_you">Pagine «Per te»</string>
-    <string name="pref_ui_quick_exit_desc">Esci dall’app con una singola azione di ritorno</string>
-    <string name="pref_ui_quick_exit">Uscita rapida</string>
     <string name="pref_ui_layout_tab">Seleziona la scheda predefinita</string>
     <string name="pref_ui_layout">Disposizione</string>
     <string name="pref_filter_search_title">Usa filtro di ricerca non persistente</string>
@@ -277,7 +275,6 @@
     <string name="toast_rated_failed">Impossibile inviare la valutazione</string>
     <string name="toast_rated_success">Valutato</string>
     <string name="toast_page_unavailable">Pagina non disponibile</string>
-    <string name="toast_double_press_to_exit">Clicca due volte per uscire</string>
     <string name="toast_export_failed">Impossibile esportare la configurazione del dispositivo</string>
     <string name="toast_export_success">Configurazione del dispositivo esportata</string>
     <string name="pref_updates_extended_desc">Cerca anche nuove versioni delle app disabilitate</string>

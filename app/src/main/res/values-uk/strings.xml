@@ -178,8 +178,6 @@
     <string name="pref_ui_similar_apps">Подібні та пов’язані застосунки</string>
     <string name="pref_ui_no_for_you_desc">Показувати сторінки на головному екрані</string>
     <string name="pref_ui_no_for_you">Сторінки для вас</string>
-    <string name="pref_ui_quick_exit_desc">Вихід із застосунку одним торканням до кнопки «Назад»</string>
-    <string name="pref_ui_quick_exit">Швидкий вихід</string>
     <string name="pref_ui_layout_tab">Виберіть типову вкладку</string>
     <string name="pref_ui_layout">Макет</string>
     <string name="pref_ui_title">Зовнішній вигляд</string>
@@ -277,7 +275,6 @@
     <string name="toast_rated_failed">Не вдалося надіслати оцінку</string>
     <string name="toast_rated_success">Оцінено</string>
     <string name="toast_page_unavailable">Сторінка огляду недоступна</string>
-    <string name="toast_double_press_to_exit">Клацніть двічі, щоб вийти</string>
     <string name="toast_export_failed">Не вдалося експортувати конфігурацію пристрою</string>
     <string name="toast_export_success">Конфігурацію пристрою експортовано</string>
     <string name="pref_updates_extended_desc">Також шукає нові версії вимкнених застосунків</string>

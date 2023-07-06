@@ -58,8 +58,6 @@
     <string name="pref_ui_similar_apps">Podobné a související aplikace</string>
     <string name="pref_ui_no_for_you_desc">Zobrazení stránek pro vás na domovské obrazovce</string>
     <string name="pref_ui_no_for_you">Stránky pro vás</string>
-    <string name="pref_ui_quick_exit_desc">Ukončení aplikace při jedné akci zpět</string>
-    <string name="pref_ui_quick_exit">Rychlé ukončení</string>
     <string name="pref_ui_layout_tab">Vybrat výchozí kartu</string>
     <string name="pref_ui_layout">Rozložení</string>
     <string name="pref_ui_title">Přizpůsobení</string>
@@ -277,7 +275,6 @@
     <string name="toast_rated_failed">Nelze odeslat hodnocení</string>
     <string name="toast_rated_success">Hodnoceno</string>
     <string name="toast_page_unavailable">Procházet stránku není k dispozici</string>
-    <string name="toast_double_press_to_exit">Chcete-li ukončit program, klepněte dvakrát</string>
     <string name="toast_export_failed">Nelze exportovat konfiguraci zařízení</string>
     <string name="toast_export_success">Konfigurace zařízení exportována</string>
     <string name="pref_updates_extended_desc">Vyhledá nové verze zakázaných aplikací</string>

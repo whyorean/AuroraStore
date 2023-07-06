@@ -8,7 +8,6 @@
     <string name="about_gitlab_summary">Hämta källkoden för Aurora-butiken från Aurora OSS i GitLab.</string>
     <string name="toast_rated_success">Betygssattes</string>
     <string name="toast_page_unavailable">Bläddringssidan otillgänglig</string>
-    <string name="toast_double_press_to_exit">Klicka två gånger för att avsluta</string>
     <string name="toast_manual_available">Grattis, den efterfrågade versionskoden är tillgänglig, laddar ner nu.</string>
     <string name="toast_manual_unavailable">Versionskoden som du frågar efter är otillgänglig.</string>
     <string name="toast_purchase_blocked">Köp av appar är inte tillgängligt på anonyma konton.</string>
@@ -48,7 +47,6 @@
     <string name="pref_updates_extended_desc">Söker också efter nya versioner av inaktiverade appar</string>
     <string name="pref_updates_extended">Förlängda uppdateringar</string>
     <string name="pref_ui_similar_apps">Liknande och relaterade appar</string>
-    <string name="pref_ui_quick_exit">Snabbt avslut</string>
     <string name="pref_ui_layout_tab">Välj standardflik</string>
     <string name="pref_ui_layout">Layout</string>
     <string name="pref_ui_title">Anpassning</string>
@@ -295,7 +293,6 @@
     <string name="toast_aas_token_failed">Kunde inte generera AAS-symbol</string>
     <string name="ui_accent_12">Disskord-blå</string>
     <string name="pref_ui_accent_title">Brytning</string>
-    <string name="pref_ui_quick_exit_desc">Avsluta appen när bakåt-knappen trycks ner en gång</string>
     <string name="title_spoof_manager">Hanterare av lurendrejeri</string>
     <string name="toast_abandon_sessions">Gamla installationssessioner övergavs</string>
     <string name="toast_developer_setting_failed">Aktivera utvecklingsinställningarna från enhetens inställningar för att öppna dem.</string>

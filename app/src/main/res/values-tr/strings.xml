@@ -87,8 +87,6 @@
     <string name="pref_ui_similar_apps">Benzer ve ilgili uygulamalar</string>
     <string name="pref_ui_no_for_you_desc">Ana ekranda Sana Özel Sayfalar\'ı göster</string>
     <string name="pref_ui_no_for_you">Sana Özel Sayfalar</string>
-    <string name="pref_ui_quick_exit_desc">Tek eylemde uygulamadan çık</string>
-    <string name="pref_ui_quick_exit">Hızlı çıkış</string>
     <string name="pref_ui_layout_tab">Öntanımlı sekmeyi seç</string>
     <string name="pref_ui_layout">Yerleşim</string>
     <string name="pref_ui_title">Özelleştirme</string>
@@ -276,7 +274,6 @@
     <string name="toast_rated_failed">Derecelendirme gönderilemedi</string>
     <string name="toast_rated_success">Derecelendirildi</string>
     <string name="toast_page_unavailable">Göz atma sayfası kullanılamıyor</string>
-    <string name="toast_double_press_to_exit">Çıkmak için iki kez tıkla</string>
     <string name="dialog_desc_native_split">Paketlenmiş (bölünmüş) uygulamaları Yerel Kurucu aracılığıyla kuramazsınız. Kurucunuzu Oturum, Hizmetler veya Kök olarak değiştirin.</string>
     <string name="toast_export_failed">Aygıt yapılandırması dışa aktarılamadı</string>
     <string name="toast_export_success">Aygıt yapılandırması dışarı aktarıldı</string>

@@ -219,7 +219,6 @@
     <string name="pref_ui_title">Përshtatje</string>
     <string name="pref_ui_layout">Skemë</string>
     <string name="pref_ui_layout_tab">Përzgjidhni skedën parazgjedhje</string>
-    <string name="pref_ui_quick_exit">Dalje e shpejtë</string>
     <string name="pref_ui_no_for_you">Faqe “Për Ju”</string>
     <string name="pref_ui_no_for_you_desc">Shfaq te skena e kreut Faqe “Për Ju”</string>
     <string name="pref_ui_similar_apps">Aplikacione të ngjashme dhe të afërta</string>
@@ -274,7 +273,6 @@
     <string name="toast_purchase_blocked">S’mund të bëhen blerje aplikacionesh nga llogari anonime.</string>
     <string name="toast_manual_unavailable">Kodi i versionit që po kërkoni s’është i passhëm.</string>
     <string name="toast_manual_available">Përgëzime, kodi i versionit të kërkuar është i passhëm, po shkarkohet tani.</string>
-    <string name="toast_double_press_to_exit">Dyklikoni që të dilet</string>
     <string name="toast_page_unavailable">Faqja e shfletimit s’është gati</string>
     <string name="toast_rated_success">U vlerësua</string>
     <string name="toast_rated_failed">S’u parashtrua dot vlerësim</string>

@@ -83,7 +83,6 @@
     <string name="title_settings">Tənzimləmələr</string>
     <string name="toast_clipboard_copied">Buferə yapışdırıldı</string>
     <string name="toast_permission_granted">İcazə verildi</string>
-    <string name="toast_double_press_to_exit">Çıxmaq üçün iki dəfə klikləyin</string>
     <string name="device_huawei_subtitle">Siz Huawei cihazından istifadə edirsiniz, Google tərəfindən son qadağalar səbəbindən daxil olmaya bilərsiniz.</string>
     <string name="device_miui_extra">İstəkə bağlı olaraq, Yerli quraşdırıcını seçə bilərsiniz, lakin sonra birləşdirilmiş (bölünmüş) APK-ları quraşdıra bilməzsiniz, buna görə seçim sizindir.</string>
     <string name="device_miui_subtitle">Hesab qurucu MIUI Optimizasiyasına görə tətbiqləri quraşdıra bilmir.</string>
@@ -232,8 +231,6 @@
     <string name="pref_ui_title">Fərdiləşdirmə</string>
     <string name="pref_ui_layout">Yerləşmə</string>
     <string name="pref_ui_layout_tab">Defolt nişanı seçin</string>
-    <string name="pref_ui_quick_exit">Sürətli çıxış</string>
-    <string name="pref_ui_quick_exit_desc">Geri düyməsinə tək vuruşda tətbiqdən çıxın</string>
     <string name="pref_ui_similar_apps">Oxşar və əlaqəli tətbiqlər</string>
     <string name="pref_ui_similar_apps_desc">Tətbiq təfərrüatları səhifəsində oxşar və əlaqəli klasterləri göstərin</string>
     <string name="pref_updates_extended_desc">Deaktiv edilən tətbiqlərində yeni versiyalarını axtarır</string>

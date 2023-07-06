@@ -264,8 +264,6 @@
     <string name="pref_ui_similar_apps">似たアプリ</string>
     <string name="pref_ui_no_for_you_desc">ホーム画面におすすめページを表示する</string>
     <string name="pref_ui_no_for_you">おすすめページ</string>
-    <string name="pref_ui_quick_exit_desc">一度の「戻る」でアプリを終了する</string>
-    <string name="pref_ui_quick_exit">クイック終了</string>
     <string name="pref_ui_layout_tab">デフォルトタブを設定</string>
     <string name="pref_ui_layout">レイアウト</string>
     <string name="pref_filter_search_title">非永続検索フィルタ</string>
@@ -277,7 +275,6 @@
     <string name="toast_rated_failed">評価に失敗しました</string>
     <string name="toast_rated_success">評価完了</string>
     <string name="toast_page_unavailable">閲覧ページがありません</string>
-    <string name="toast_double_press_to_exit">2回タップして終了</string>
     <string name="app_updater_service_notif_text">バックグラウンドアプリダウンロードを有効化する</string>
     <string name="app_updater_service_notif_title">バックグラウンドアプリダウンロード</string>
     <string name="notification_channel_updater_service">アプリのバックグラウンドダウンロードサービス</string>

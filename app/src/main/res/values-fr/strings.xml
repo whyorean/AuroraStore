@@ -260,8 +260,6 @@
     <string name="pref_ui_similar_apps_desc">Afficher les grappes similaires et connexes sur la page de détails de l’application</string>
     <string name="pref_ui_similar_apps">Applications similaires et connexes</string>
     <string name="pref_ui_no_for_you_desc">Afficher les pages « Pour vous » sur l’écran d’accueil</string>
-    <string name="pref_ui_quick_exit_desc">Quitter l’application par une seule action de retour</string>
-    <string name="pref_ui_quick_exit">Sortie rapide</string>
     <string name="pref_ui_layout_tab">Sélectionner l’onglet par défaut</string>
     <string name="pref_ui_layout">Disposition</string>
     <string name="pref_filter_search_title">Utiliser un filtre de recherche non persistant</string>
@@ -277,7 +275,6 @@
     <string name="toast_rated_failed">Impossible de soumettre l’évaluation</string>
     <string name="toast_rated_success">Évalué</string>
     <string name="toast_page_unavailable">Page de navigation indisponible</string>
-    <string name="toast_double_press_to_exit">Cliquez deux fois pour quitter</string>
     <string name="toast_export_failed">Impossible d’exporter la configuration du dispositif</string>
     <string name="toast_export_success">Configuration de l’appareil exportée</string>
     <string name="pref_updates_extended_desc">Recherche également les nouvelles versions des applications désactivées</string>

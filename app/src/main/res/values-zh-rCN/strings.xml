@@ -260,8 +260,6 @@
     <string name="pref_ui_similar_apps">相似及相关应用</string>
     <string name="pref_ui_no_for_you_desc">在主页展示 For You 页面</string>
     <string name="pref_ui_no_for_you">For You 页面</string>
-    <string name="pref_ui_quick_exit_desc">单次返回操作即可退出应用</string>
-    <string name="pref_ui_quick_exit">快速退出</string>
     <string name="pref_ui_layout_tab">选择默认标签</string>
     <string name="pref_ui_layout">布局</string>
     <string name="pref_filter_search_title">使用非永久性搜索过滤器</string>
@@ -277,7 +275,6 @@
     <string name="toast_rated_failed">提交评分失败</string>
     <string name="toast_rated_success">已打分</string>
     <string name="toast_page_unavailable">浏览页不可用</string>
-    <string name="toast_double_press_to_exit">点击两次退出</string>
     <string name="toast_export_failed">无法导出设备配置</string>
     <string name="toast_export_success">设备配置已导出</string>
     <string name="pref_updates_extended_desc">同样查找已禁用应用程序的新版本</string>

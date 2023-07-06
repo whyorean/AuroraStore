@@ -263,8 +263,6 @@
     <string name="pref_ui_similar_apps">Slični i povezani programi</string>
     <string name="pref_ui_no_for_you_desc">Prikaži „Za tvoje stranice” na početnom ekranu</string>
     <string name="pref_ui_no_for_you">Za tvoje stranice</string>
-    <string name="pref_ui_quick_exit_desc">Brzo zatvaranje programa s radnjom natrag</string>
-    <string name="pref_ui_quick_exit">Brzo zatvaranje programa</string>
     <string name="pref_ui_layout_tab">Odaberi standardnu karticu</string>
     <string name="pref_ui_layout">Raspored</string>
     <string name="details_no_app_match">Nema odgovarajućeg programa</string>
@@ -274,7 +272,6 @@
     <string name="pref_filter_search_title">Koristi ne trajni filtar pretrage</string>
     <string name="pref_filter_search_summary">Filtri pretrage obnavljaju se nakon svakog pretraživanja. Isključi za spremanje filtara pretrage</string>
     <string name="toast_page_unavailable">Stranica pretraživanja nedostupna</string>
-    <string name="toast_double_press_to_exit">Pritisni dvaput za zatvaranje programa</string>
     <string name="toast_aas_token_failed">Neuspjelo generiranje AAS tokena</string>
     <string name="toast_rated_failed">Neuspjelo slanje ocjene</string>
     <string name="toast_rated_success">Ocjenjeno</string>

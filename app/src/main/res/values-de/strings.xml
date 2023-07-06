@@ -260,8 +260,6 @@
     <string name="pref_ui_similar_apps">Ähnliche Apps</string>
     <string name="pref_ui_no_for_you_desc">»Für dich«-Tab auf der Startseite anzeigen</string>
     <string name="pref_ui_no_for_you">»Für dich«-Tab</string>
-    <string name="pref_ui_quick_exit_desc">Aurora Store mit einmaligem »Zurück« beenden</string>
-    <string name="pref_ui_quick_exit">Schnelles Beenden</string>
     <string name="pref_ui_layout_tab">Startseite</string>
     <string name="pref_ui_layout">Seitengestaltung</string>
     <string name="pref_filter_search_title">Suchfilter jedes Mal zurücksetzen</string>
@@ -274,7 +272,6 @@
     <string name="title_manual_download">Version auswählen</string>
     <string name="action_check">Prüfen</string>
     <string name="dialog_desc_native_split">Gebündelte/geteilte (Split-)APK-Dateien können nicht mit der systemeigenen Installationsmethode installiert werden. Bitte die Installationsmethode zu Sitzung, Services oder Root ändern.</string>
-    <string name="toast_double_press_to_exit">Zum Beenden doppelt klicken</string>
     <string name="toast_page_unavailable">Seite nicht verfügbar</string>
     <string name="toast_rated_success">Bewertet</string>
     <string name="toast_rated_failed">Bewertung konnte nicht gesendet werden</string>

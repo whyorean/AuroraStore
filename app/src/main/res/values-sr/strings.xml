@@ -257,7 +257,6 @@
     <string name="toast_rated_failed">Слање оцене није успело</string>
     <string name="toast_rated_success">Оцењивање успешно</string>
     <string name="toast_page_unavailable">Страница за преглед није доступна</string>
-    <string name="toast_double_press_to_exit">Кликните два пута за излаз</string>
     <string name="toast_manual_available">Честитамо, тражени код верзије је доступан, преузима се сада.</string>
     <string name="toast_manual_unavailable">Код верзије који тражите није доступан.</string>
     <string name="title_manual_download">Ручно преузимање</string>
@@ -266,10 +265,8 @@
     <string name="pref_ui_similar_apps">Сличне и сродне апликације</string>
     <string name="pref_ui_no_for_you_desc">Прикажи странице за Вас на почетном екрану</string>
     <string name="pref_ui_no_for_you">За Ваше странице</string>
-    <string name="pref_ui_quick_exit_desc">Изађите из апликације брзо једним кораком уназад</string>
     <string name="pref_ui_layout">Распоред</string>
     <string name="pref_filter_search_summary">Филтeри за претрагу се ресетују при свакој претрази. Искључите да бисте сачували филтере за претрагу</string>
-    <string name="pref_ui_quick_exit">Брзи излаз</string>
     <string name="pref_ui_layout_tab">Изаберите подразумевану картицу</string>
     <string name="pref_network_title">Умрежавање</string>
     <string name="pref_insecure_anonymous_title">Небезбедна анонимна сесија</string>

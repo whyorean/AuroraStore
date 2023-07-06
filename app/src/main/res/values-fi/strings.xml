@@ -189,7 +189,6 @@
     <string name="toast_aas_token_failed">AAS-tokenin luonti epäonnistui</string>
     <string name="toast_rated_failed">Arvion lähettäminen epäonnistui</string>
     <string name="toast_page_unavailable">Hakusivu ei saatavilla</string>
-    <string name="toast_double_press_to_exit">Klikkaa kahdesti poistuaksesi</string>
     <string name="toast_manual_available">Onneksi olkoon, pyydetty versiokoodi on saatavilla, ladataan.</string>
     <string name="toast_spoof_applied">Laitehuijaus otettu käyttöön.</string>
     <string name="toast_developer_setting_failed">Ota kehittäjäasetukset käyttöön laitteen asetuksista avataksesi ne.</string>
@@ -214,8 +213,6 @@
     <string name="pref_updates_extended">Laajennetut päivitykset</string>
     <string name="pref_ui_similar_apps_desc">Näytä sovelluksen lisätietosivulla sen kanssa samankaltaisia ja siihen liittyviä sovelluksia</string>
     <string name="pref_ui_no_for_you_desc">Näytä Sinulle räätälöity-sivut kotinäytöllä</string>
-    <string name="pref_ui_quick_exit_desc">Poistu sovelluksesta yhdellä takaisin-painikkeen painalluksella</string>
-    <string name="pref_ui_quick_exit">Nopea poistuminen</string>
     <string name="pref_ui_layout_tab">Valitse oletusvälilehti</string>
     <string name="pref_ui_layout">Ulkoasu</string>
     <string name="pref_ui_title">Mukauttaminen</string>

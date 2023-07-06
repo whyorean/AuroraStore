@@ -92,9 +92,7 @@
     <string name="details_changelog_unavailable">වෙනස්කම් සටහනක් ලබාදී නැත</string>
     <string name="details_changelog">වෙනස්කම් සටහන</string>
     <string name="details_beta_available">බීටා වැඩසටහනට එක්වෙනවාද\?</string>
-    <string name="toast_double_press_to_exit">පිටවීමට දෙවරක් ඔබන්න</string>
     <string name="toast_apk_whitelisted">සුදු ලේඛනගතයි</string>
-    <string name="pref_ui_quick_exit">ක්‍ෂණික පිටවීම</string>
     <string name="pref_ui_no_for_you">ඔබගේ පිටු සඳහා</string>
     <string name="purchase_failed">බාගැනීම අසාර්ථකයි</string>
     <string name="pref_ui_theme_title">තේමාව</string>
@@ -142,7 +140,6 @@
     <string name="pref_ui_theme_system">පද්ධතිය අනුගමනය කරන්න</string>
     <string name="pref_ui_title">අභිරුචිකරණය</string>
     <string name="pref_ui_layout">පිරිසැලසුම</string>
-    <string name="pref_ui_quick_exit_desc">තනි ආපසු එබීමකදී යෙදුමෙන් පිටවන්න</string>
     <string name="pref_ui_no_for_you_desc">මුල් තිරය මත ඔබ සඳහා පිටු ප්‍රදර්ශනය කරන්න</string>
     <string name="pref_ui_similar_apps">සමාන සහ ආශ්‍රිත යෙදුම්</string>
     <string name="pref_updates_extended">දීර්ඝ කළ යාවත්කාල</string>

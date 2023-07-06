@@ -259,8 +259,6 @@
     <string name="title_manual_download">Baixar manualmente</string>
     <string name="pref_ui_similar_apps_desc">Exibir grupos semelhantes e relacionados na página de detalhes do aplicativo</string>
     <string name="pref_ui_no_for_you_desc">Exibe uma aba de sugestões Para Você na tela inicial</string>
-    <string name="pref_ui_quick_exit_desc">Sair do aplicativo com um único toque em voltar</string>
-    <string name="pref_ui_quick_exit">Saída rápida</string>
     <string name="pref_network_title">Gerenciamento</string>
     <string name="pref_insecure_anonymous_title">Sessão anônima insegura</string>
     <string name="pref_insecure_anonymous_summary">Gerar ID GSF localmente no dispositivo</string>
@@ -277,7 +275,6 @@
     <string name="toast_rated_failed">Não foi possível submeter a classificação</string>
     <string name="toast_rated_success">Classificado</string>
     <string name="toast_page_unavailable">Página indisponível</string>
-    <string name="toast_double_press_to_exit">Clique duas vezes para sair</string>
     <string name="toast_export_failed">Não foi possível exportar a configuração do dispositivo</string>
     <string name="toast_export_success">Configuração do dispositivo exportado</string>
     <string name="pref_updates_extended_desc">Procurar novas versões de aplicativos desativados também</string>

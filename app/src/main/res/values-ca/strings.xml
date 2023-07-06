@@ -221,8 +221,6 @@
     <string name="pref_ui_title">Personalització</string>
     <string name="pref_ui_layout">Disposició</string>
     <string name="pref_ui_layout_tab">Seleccionar la pestanya per defecte</string>
-    <string name="pref_ui_quick_exit">Sortida ràpida</string>
-    <string name="pref_ui_quick_exit_desc">Surt de l\'aplicació en una sola acció enrere</string>
     <string name="pref_ui_no_for_you">Pàgines per a tu</string>
     <string name="pref_ui_similar_apps">Aplicacions similars i relacionades</string>
     <string name="purchase_unsupported">Aplicació no compatible</string>
@@ -262,7 +260,6 @@
     <string name="toast_purchase_blocked">Les compres d\'aplicacions no estan disponibles en comptes anònims.</string>
     <string name="toast_manual_unavailable">El codi de versió que sol·licites no està disponible.</string>
     <string name="toast_manual_available">Felicitats, el codi de versió sol·licitat està disponible, descarregant-la ara.</string>
-    <string name="toast_double_press_to_exit">Fes clic dues vegades per a sortir</string>
     <string name="toast_page_unavailable">Pàgina de navegació no disponible</string>
     <string name="toast_rated_failed">No s\'ha pogut enviar la qualificació</string>
     <string name="toast_aas_token_failed">No s\'ha pogut generar el testimoni AAS</string>

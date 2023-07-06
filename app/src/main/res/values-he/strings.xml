@@ -222,7 +222,6 @@
     <string name="pref_downloader_active_title">הורדה פעילה</string>
     <string name="pref_filter_fdroid_title">סינון יישומי F-Droid</string>
     <string name="pref_install_profile_title">פרופילי התקנה (ניסיוני)</string>
-    <string name="pref_ui_quick_exit">יציאה מהירה</string>
     <string name="pref_ui_similar_apps">יישומים דומים וקשורים</string>
     <string name="purchase_unsupported">היישום לא נתמך</string>
     <string name="title_installation">התקנה</string>
@@ -264,7 +263,6 @@
     <string name="pref_install_mode_am">מתקין AM.</string>
     <string name="pref_install_mode_session">מתקין מערכת</string>
     <string name="pref_ui_layout_tab">בחר עמוד ברירת מחדל</string>
-    <string name="pref_ui_quick_exit_desc">יציאה מהאפליקציה בלחיצה בודדת על מקש חזור</string>
     <string name="pref_ui_no_for_you_desc">הצג את \"בשבילך\" במסך הבית</string>
     <string name="pref_ui_similar_apps_desc">יישומים דומים וקשורים במסך פרטי היישום</string>
     <string name="title_spoof_manager">מנהל הזיוף</string>

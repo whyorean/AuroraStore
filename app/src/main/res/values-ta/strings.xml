@@ -129,7 +129,6 @@
     <string name="title_library">நூலகம்</string>
     <string name="title_blacklist_manager">கரும்பட்டியல் நிர்வாகி</string>
     <string name="title_language">மொழி</string>
-    <string name="toast_double_press_to_exit">வெளியேற இரண்டு முறை கிளிக் செய்யவும்</string>
     <string name="toast_rated_failed">மதிப்பீட்டைச் சமர்ப்பிக்க முடியவில்லை</string>
     <string name="toast_apk_blacklisted">கரும்பட்டியலிடப்பட்டது</string>
     <string name="toast_manual_unavailable">நீங்கள் கோரும் பதிப்புக் குறியீடு கிடைக்கவில்லை.</string>
@@ -236,8 +235,6 @@
     <string name="pref_ui_theme_darkord">டிசுகார்டு</string>
     <string name="pref_ui_theme_system">முறைமையைப் பின்பற்றவும்</string>
     <string name="pref_ui_theme_title">தோற்றம்</string>
-    <string name="pref_ui_quick_exit">விரைவு வெளியேற்றம்</string>
-    <string name="pref_ui_quick_exit_desc">ஒற்றை பின் செயலில் பயன்பாட்டிலிருந்து வெளியேறவும்</string>
     <string name="pref_ui_no_for_you">உங்களுக்கான பக்கங்கள்</string>
     <string name="pref_ui_no_for_you_desc">முகப்புத் திரையில் உங்களுக்கான பக்கங்களைக் காட்டவும்</string>
     <string name="pref_updates_extended">நீடித்த புதுப்பிப்புகள்</string>

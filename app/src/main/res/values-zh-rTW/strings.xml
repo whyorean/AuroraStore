@@ -77,7 +77,6 @@
     <string name="toast_rated_failed">無法提交評分</string>
     <string name="toast_rated_success">已評分</string>
     <string name="toast_page_unavailable">瀏覽頁面不可用</string>
-    <string name="toast_double_press_to_exit">再一次以退出程式</string>
     <string name="toast_manual_available">恭喜！要求版本代碼可用，且正在下載。</string>
     <string name="toast_manual_unavailable">你正在要求的版本代碼不可用。</string>
     <string name="toast_purchase_blocked">應用購買在匿名帳戶上不可用。</string>
@@ -133,8 +132,6 @@
     <string name="pref_ui_similar_apps">相似及相關的程式</string>
     <string name="pref_ui_no_for_you_desc">在首頁顯示「為你精選」頁面</string>
     <string name="pref_ui_no_for_you">為你精選頁面</string>
-    <string name="pref_ui_quick_exit_desc">以單個動作退出程式</string>
-    <string name="pref_ui_quick_exit">快速退出</string>
     <string name="pref_ui_layout_tab">選擇預設標籤</string>
     <string name="pref_ui_layout">佈局</string>
     <string name="pref_ui_title">個人化</string>

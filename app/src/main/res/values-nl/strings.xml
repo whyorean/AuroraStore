@@ -36,7 +36,6 @@
     <string name="toast_aas_token_failed">Kon geen AAS Token genereren</string>
     <string name="toast_rated_failed">Kon beoordeling niet versturen</string>
     <string name="toast_page_unavailable">Blader pagina niet beschikbaar</string>
-    <string name="toast_double_press_to_exit">Klik twee keer om te sluiten</string>
     <string name="toast_manual_available">Gefeliciteerd, de aangevraagde versie code is beschikbaar, nu aan het downloaden.</string>
     <string name="toast_manual_unavailable">De versie code die u verzoekt is niet beschikbaar.</string>
     <string name="toast_purchase_blocked">App aankopen niet beschikbaar op Anonieme accounts.</string>
@@ -85,8 +84,6 @@
     <string name="pref_ui_similar_apps">Vergelijkbare en gerelateerde apps</string>
     <string name="pref_ui_no_for_you_desc">Toon Voor Jou Pagina\'s op thuisscherm</string>
     <string name="pref_ui_no_for_you">Voor Jou Pagina\'s</string>
-    <string name="pref_ui_quick_exit_desc">Sluit app op eenmalige terug actie</string>
-    <string name="pref_ui_quick_exit">Snel afsluiten</string>
     <string name="pref_ui_layout_tab">Selecteer standaard tabblad</string>
     <string name="pref_ui_layout">Lay-out</string>
     <string name="pref_ui_title">Aanpassing</string>

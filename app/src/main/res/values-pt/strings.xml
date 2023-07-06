@@ -42,7 +42,6 @@
     <string name="toast_aas_token_failed">Não foi possível gerar o Token AAS</string>
     <string name="toast_rated_success">Avaliação submetida</string>
     <string name="toast_page_unavailable">Página de navegação indisponível</string>
-    <string name="toast_double_press_to_exit">Clique duas vezes para sair</string>
     <string name="toast_manual_available">Parabéns, o código da versão solicitada está disponível. A descarregar neste momento.</string>
     <string name="toast_manual_unavailable">O código da versão solicitada não está disponível.</string>
     <string name="toast_purchase_blocked">A compra de aplicações não está disponível em contas anónimas.</string>
@@ -93,8 +92,6 @@
     <string name="pref_ui_similar_apps">Aplicações semelhantes e relacionadas</string>
     <string name="pref_ui_no_for_you_desc">Mostrar sugestões no ecrã inicial</string>
     <string name="pref_ui_no_for_you">Sugestões para si</string>
-    <string name="pref_ui_quick_exit_desc">Sair da aplicação com um toque na tecla Recuar</string>
-    <string name="pref_ui_quick_exit">Saída rápida</string>
     <string name="pref_ui_layout_tab">Selecione o separador padrão</string>
     <string name="pref_ui_theme_system">Definido pelo sistema</string>
     <string name="pref_ui_layout">Apresentação</string>

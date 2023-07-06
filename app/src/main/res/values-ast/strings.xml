@@ -198,7 +198,6 @@
     <string name="pref_ui_no_for_you_desc">Amuesa les páxines «Pa ti» na pantalla d\'aniciu</string>
     <string name="pref_advanced_search_in_ctt_desc">Abre los resultaos de la busca nuna llingüeta personalizada del restolador</string>
     <string name="pref_ui_accent_title">Color de l\'acentuación</string>
-    <string name="pref_ui_quick_exit_desc">Cola de l\'aplicación al calcar una vegada nel botón «Atrás»</string>
     <string name="purchase_failed">La descarga falló</string>
     <string name="purchase_not_found">Nun s\'atopó l\'aplicación</string>
     <string name="purchase_no_file">Nun se pudieron consiguir los ficheros</string>
@@ -229,7 +228,6 @@
     <string name="pref_install_mode_summary">Seleiciona\'l métodu d\'instalación de los ficheros APK</string>
     <string name="pref_ui_theme_black">Prietu</string>
     <string name="pref_ui_theme_dark_x">Escuridá X</string>
-    <string name="pref_ui_quick_exit">Salida rápida</string>
     <string name="pref_ui_similar_apps">Aplicaciones asemeyaes ya rellacionaes</string>
     <string name="pref_ui_similar_apps_desc">Amuesa les aplicaciones asemeyaes ya rellacionaes nes páxines de detalles de les aplicaciones</string>
     <string name="tab_for_you">Pa ti</string>

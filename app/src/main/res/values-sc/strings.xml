@@ -111,7 +111,6 @@
     <string name="pref_ui_theme_system">Sighi su sistema</string>
     <string name="pref_ui_title">Personalizatzione</string>
     <string name="pref_ui_layout">Dispositzione</string>
-    <string name="pref_ui_quick_exit">Essida lestra</string>
     <string name="pref_ui_no_for_you">Pàginas pro tene</string>
     <string name="pref_ui_no_for_you_desc">Ammustra sas pàginas pro tene in s\'ischermada printzipale</string>
     <string name="pref_ui_similar_apps">Aplicatziones simigiantes e ligadas</string>
@@ -143,7 +142,6 @@
     <string name="toast_purchase_blocked">Sas còmporas de aplicatziones non sunt a disponimentu in sos contos anònimos.</string>
     <string name="toast_manual_unavailable">Su còdighe de sa versione chi ses pedende no est a disponimentu.</string>
     <string name="toast_manual_available">Bene meda, su còdighe de sa versione est a disponimentu. Iscarrigamentu in cursu.</string>
-    <string name="toast_double_press_to_exit">Incarca duas bortas pro essire</string>
     <string name="toast_rated_success">Valutadu</string>
     <string name="toast_rated_failed">Imbiu de sa valutatzione fallidu</string>
     <string name="toast_aas_token_failed">Generatzione de su getone AAS fallidu</string>
@@ -276,7 +274,6 @@
     <string name="pref_filter_search_summary">Sos filtros de chirca benint resetados pro cada chirca. Istuda·lu pro sarvare sos filtros de chirca</string>
     <string name="pref_install_mode_services">Servìtzios de Aurora</string>
     <string name="title_installation">Installatzione</string>
-    <string name="pref_ui_quick_exit_desc">Essi dae s\'aplicatzione cun un\'atzione de torrada ebbia</string>
     <string name="title_library">Biblioteca</string>
     <string name="title_purchase_history">Cronologia de sas còmporas</string>
     <string name="title_spoof_manager">Gestore de simulatzione</string>
