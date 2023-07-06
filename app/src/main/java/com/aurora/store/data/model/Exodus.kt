@@ -19,25 +19,29 @@
 
 package com.aurora.store.data.model
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
 import java.text.DateFormat
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
 
-class ExodusReport {
-    val creator: String = String()
-    val name: String = String()
+data class ExodusReport(
+    val creator: String = String(),
+    val name: String = String(),
     val reports: List<Report> = listOf()
-}
+)
 
-class Report {
-    val id: Int = 0
-    val downloads: String = String()
-    val version: String = String()
-    val creationDate: String = String()
-    val updatedAt: String = String()
-    val versionCode: String = String()
+@Parcelize
+data class Report(
+    val id: Int = 0,
+    val downloads: String = String(),
+    val version: String = String(),
+    val creationDate: String = String(),
+    val updatedAt: String = String(),
+    val versionCode: String = String(),
     val trackers: List<Int> = listOf()
+) : Parcelable {
 
     fun getFormattedCreationDate(): String {
         return try {
@@ -52,16 +56,17 @@ class Report {
     }
 }
 
-class ExodusTracker {
-    var id: Int = 0
-    var name: String = String()
-    var url: String = String()
-    var signature: String = String()
-    var date: String = String()
-    var description: String = String()
-    var networkSignature: String = String()
-    var documentation: List<String> = emptyList()
+data class ExodusTracker(
+    var id: Int = 0,
+    var name: String = String(),
+    var url: String = String(),
+    var signature: String = String(),
+    var date: String = String(),
+    var description: String = String(),
+    var networkSignature: String = String(),
+    var documentation: List<String> = emptyList(),
     var categories: List<String> = emptyList()
+) {
 
     override fun hashCode(): Int {
         return id

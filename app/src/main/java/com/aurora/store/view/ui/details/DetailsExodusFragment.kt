@@ -20,76 +20,57 @@
 package com.aurora.store.view.ui.details
 
 import android.os.Bundle
+import android.view.View
+import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.aurora.Constants
-import com.aurora.gplayapi.data.models.App
+import com.aurora.extensions.browse
 import com.aurora.store.R
 import com.aurora.store.data.model.ExodusTracker
 import com.aurora.store.data.model.Report
 import com.aurora.store.data.providers.ExodusDataProvider
 import com.aurora.store.databinding.ActivityGenericRecyclerBinding
-import com.aurora.extensions.browse
 import com.aurora.store.view.epoxy.views.HeaderViewModel_
 import com.aurora.store.view.epoxy.views.details.ExodusViewModel_
-import com.aurora.store.view.ui.commons.BaseActivity
 import org.json.JSONObject
 
-class DetailsExodusActivity : BaseActivity() {
+class DetailsExodusFragment : Fragment(R.layout.activity_generic_recycler) {
 
-    private lateinit var B: ActivityGenericRecyclerBinding
-    private lateinit var app: App
-    private lateinit var report: Report
+    private var _binding: ActivityGenericRecyclerBinding? = null
+    private val binding: ActivityGenericRecyclerBinding
+        get() = _binding!!
 
-    override fun onConnected() {
+    private val args: DetailsExodusFragmentArgs by navArgs()
 
-    }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        _binding = ActivityGenericRecyclerBinding.bind(view)
 
-    override fun onDisconnected() {
-
-    }
-
-    override fun onReconnected() {
-
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        B = ActivityGenericRecyclerBinding.inflate(layoutInflater)
-
-        setContentView(B.root)
-
-        val rawApp: String? = intent.getStringExtra(Constants.STRING_APP)
-        val rawExodusTrackers: String? = intent.getStringExtra(Constants.STRING_EXTRA)
-
-        if (rawApp != null) {
-            app = gson.fromJson(rawApp, App::class.java)
-            report = gson.fromJson(
-                rawExodusTrackers,
-                Report::class.java
-            )
-            app.let {
-                attachToolbar()
-                report.let {
-                    updateController(getExodusTrackersFromReport(report))
-                }
+        // Toolbar
+        binding.layoutToolbarAction.apply {
+            txtTitle.text = ""
+            toolbar.setOnClickListener {
+                findNavController().navigateUp()
             }
         }
+
+        updateController(getExodusTrackersFromReport(args.report))
     }
 
-    private fun attachToolbar() {
-        B.layoutToolbarAction.toolbar.setOnClickListener {
-            finishAfterTransition()
-        }
-        B.layoutToolbarAction.txtTitle.text = app.displayName
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     private fun updateController(reviews: List<ExodusTracker>) {
-        B.recycler.withModels {
+        binding.recycler.withModels {
             add(
                 HeaderViewModel_()
                     .id("header")
                     .title(getString(R.string.exodus_view_report))
                     .browseUrl("browse")
-                    .click { _ -> browse(Constants.EXODUS_REPORT_URL + report.id) }
+                    .click { _ -> context?.browse(Constants.EXODUS_REPORT_URL + args.report.id) }
             )
             reviews.forEach {
                 add(
@@ -97,7 +78,7 @@ class DetailsExodusActivity : BaseActivity() {
                         .id(it.id)
                         .tracker(it)
                         .click { _ ->
-                            browse(it.url)
+                            context?.browse(it.url)
                         }
                 )
             }
@@ -124,7 +105,7 @@ class DetailsExodusActivity : BaseActivity() {
     private fun fetchLocalTrackers(trackerIds: List<Int>): List<JSONObject> {
         return try {
             ExodusDataProvider
-                .with(this)
+                .with(requireContext())
                 .getFilteredTrackers(trackerIds)
         } catch (e: Exception) {
             emptyList()

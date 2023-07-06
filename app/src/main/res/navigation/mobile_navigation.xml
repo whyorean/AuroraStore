@@ -117,6 +117,9 @@
         <action
             android:id="@+id/action_appDetailsFragment_to_detailsReviewFragment"
             app:destination="@id/detailsReviewFragment" />
+        <action
+            android:id="@+id/action_appDetailsFragment_to_detailsExodusFragment"
+            app:destination="@id/detailsExodusFragment" />
     </fragment>
     <fragment
         android:id="@+id/categoryBrowseFragment"
@@ -199,7 +202,6 @@
     <fragment
         android:id="@+id/detailsMoreFragment"
         android:name="com.aurora.store.view.ui.details.DetailsMoreFragment"
-        android:label="fragment_details_more"
         tools:layout="@layout/fragment_details_more" >
         <argument
             android:name="app"
@@ -214,6 +216,14 @@
             app:argType="string" />
         <argument android:name="packageName"
             app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailsExodusFragment"
+        android:name="com.aurora.store.view.ui.details.DetailsExodusFragment"
+        tools:layout="@layout/activity_generic_recycler" >
+        <argument
+            android:name="report"
+            app:argType="com.aurora.store.data.model.Report" />
     </fragment>
     <action
         android:id="@+id/action_global_appDetailsFragment"

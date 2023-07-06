@@ -62,7 +62,6 @@ import com.aurora.gplayapi.data.models.StreamBundle
 import com.aurora.gplayapi.data.models.StreamCluster
 import com.aurora.gplayapi.helpers.AppDetailsHelper
 import com.aurora.gplayapi.helpers.ReviewsHelper
-import com.aurora.store.MainActivity
 import com.aurora.store.R
 import com.aurora.store.State
 import com.aurora.store.data.ViewState
@@ -86,7 +85,6 @@ import com.aurora.store.databinding.LayoutDetailsPrivacyBinding
 import com.aurora.store.databinding.LayoutDetailsReviewBinding
 import com.aurora.store.util.CommonUtil
 import com.aurora.store.util.Log
-import com.aurora.store.util.NavigationUtil
 import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.PathUtil
 import com.aurora.store.util.Preferences
@@ -1036,7 +1034,10 @@ class AppDetailsFragment : BaseFragment(R.layout.fragment_details) {
                 }
 
                 B.headerPrivacy.addClickListener {
-                    NavigationUtil.openExodusActivity(requireContext(), app, report)
+                    findNavController().navigate(
+                        AppDetailsFragmentDirections
+                            .actionAppDetailsFragmentToDetailsExodusFragment(report)
+                    )
                 }
             } else {
                 B.txtStatus.apply {
