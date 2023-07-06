@@ -30,6 +30,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.aurora.Constants
 import com.aurora.store.R
 import com.aurora.store.data.event.BusEvent
@@ -40,9 +41,12 @@ import com.aurora.store.util.Preferences
 import com.aurora.store.viewmodel.auth.AuthViewModel
 import nl.komponents.kovenant.task
 import org.greenrobot.eventbus.EventBus
+import org.greenrobot.eventbus.Subscribe
+import org.greenrobot.eventbus.ThreadMode
 
 class GoogleFragment : Fragment(R.layout.fragment_google) {
 
+    private val args: GoogleFragmentArgs by navArgs()
     private val viewModel: AuthViewModel by activityViewModels()
 
     companion object {
@@ -94,6 +98,39 @@ class GoogleFragment : Fragment(R.layout.fragment_google) {
         }
     }
 
+    override fun onStart() {
+        super.onStart()
+        EventBus.getDefault().register(this)
+    }
+
+    override fun onStop() {
+        super.onStop()
+        EventBus.getDefault().unregister(this)
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    fun onEventReceived(event: BusEvent) {
+        when (event) {
+            is BusEvent.GoogleAAS -> {
+                if (event.success) viewModel.buildGoogleAuthData(event.email, event.aasToken)
+                when (args.destination) {
+                    R.id.splashFragment -> {
+                        findNavController().navigate(
+                            GoogleFragmentDirections.actionGoogleFragmentToSplashFragment()
+                        )
+                    }
+                    R.id.accountFragment -> {
+                        findNavController().navigate(
+                            GoogleFragmentDirections.actionGoogleFragmentToAccountFragment()
+                        )
+                    }
+                }
+            }
+
+            else -> {}
+        }
+    }
+
     private fun buildAuthData(email: String, oauthToken: String?) {
         task {
             AC2DMTask().getAC2DMResponse(email, oauthToken)
@@ -104,7 +141,6 @@ class GoogleFragment : Fragment(R.layout.fragment_google) {
                     Preferences.putString(requireContext(), Constants.ACCOUNT_EMAIL_PLAIN, email)
                     Preferences.putString(requireContext(), Constants.ACCOUNT_AAS_PLAIN, aasToken)
                     EventBus.getDefault().post(BusEvent.GoogleAAS(true, email, aasToken))
-                    viewModel.buildGoogleAuthData(email, aasToken)
                 } else {
                     Preferences.putString(requireContext(), Constants.ACCOUNT_EMAIL_PLAIN, "")
                     Preferences.putString(requireContext(), Constants.ACCOUNT_AAS_PLAIN, "")
@@ -118,9 +154,6 @@ class GoogleFragment : Fragment(R.layout.fragment_google) {
                 ).show()
                 EventBus.getDefault().post(BusEvent.GoogleAAS(false))
             }
-            findNavController().navigate(
-                GoogleFragmentDirections.actionGoogleFragmentToSplashFragment()
-            )
         } fail {
             Toast.makeText(
                 requireContext(),
@@ -128,9 +161,6 @@ class GoogleFragment : Fragment(R.layout.fragment_google) {
                 Toast.LENGTH_LONG
             ).show()
             EventBus.getDefault().post(BusEvent.GoogleAAS(false))
-            findNavController().navigate(
-                GoogleFragmentDirections.actionGoogleFragmentToSplashFragment()
-            )
         }
     }
 }

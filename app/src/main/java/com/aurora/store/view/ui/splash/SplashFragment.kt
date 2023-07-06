@@ -115,25 +115,6 @@ class SplashFragment : Fragment(R.layout.fragment_splash) {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-        EventBus.getDefault().unregister(this)
-    }
-
-    @Subscribe()
-    fun onEventReceived(event: BusEvent) {
-        when (event) {
-            is BusEvent.GoogleAAS -> {
-                if (event.success) {
-                    updateStatus(getString(R.string.session_verifying_google))
-                    viewModel.buildGoogleAuthData(event.email, event.aasToken)
-                } else {
-                    updateStatus(getString(R.string.session_login_failed_google))
-                }
-            }
-
-            else -> {
-
-            }
-        }
     }
 
     private fun updateStatus(string: String?) {
@@ -170,7 +151,11 @@ class SplashFragment : Fragment(R.layout.fragment_splash) {
         binding.btnGoogle.addOnClickListener {
             if (viewModel.liveData.value != AuthState.Fetching) {
                 binding.btnGoogle.updateProgress(true)
-                findNavController().navigate(R.id.googleFragment)
+                findNavController().navigate(
+                    SplashFragmentDirections.actionSplashFragmentToGoogleFragment(
+                        R.id.splashFragment
+                    )
+                )
             }
         }
     }
