@@ -289,6 +289,10 @@ class AppDetailsFragment : BaseFragment(R.layout.fragment_details) {
                         sheet.show(childFragmentManager, ManualDownloadSheet.TAG)
                     }
 
+                    R.id.menu_download_manager -> {
+                        findNavController().navigate(R.id.downloadFragment)
+                    }
+
                     R.id.action_playstore -> {
                         view.context.browse("${Constants.SHARE_URL}${app.packageName}")
                     }
