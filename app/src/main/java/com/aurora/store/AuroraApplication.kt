@@ -20,11 +20,11 @@
 
 package com.aurora.store
 
+import android.app.Application
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.os.Build
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.multidex.MultiDexApplication
 import com.aurora.Constants
 import com.aurora.extensions.isPAndAbove
 import com.aurora.store.data.downloader.DownloadManager
@@ -39,7 +39,7 @@ import nl.komponents.kovenant.android.startKovenant
 import nl.komponents.kovenant.android.stopKovenant
 import org.lsposed.hiddenapibypass.HiddenApiBypass
 
-class AuroraApplication : MultiDexApplication() {
+class AuroraApplication : Application() {
 
     private lateinit var fetch: Fetch
     private lateinit var packageManagerReceiver: PackageManagerReceiver

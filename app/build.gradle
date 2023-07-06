@@ -48,7 +48,6 @@ android {
         versionName "4.2.3"
 
         vectorDrawables.useSupportLibrary = true
-        multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -111,8 +110,6 @@ easylauncher {
 }
 
 dependencies {
-    //MultiDex for Kitkat support
-    implementation "androidx.multidex:multidex:2.0.1"
 
     //Protobuf
     implementation "com.google.protobuf:protobuf-javalite:3.22.3"
