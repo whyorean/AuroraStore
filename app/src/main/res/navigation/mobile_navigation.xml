@@ -24,19 +24,17 @@
     app:startDestination="@id/splashFragment">
 
     <fragment
-        android:id="@+id/navigation_apps"
+        android:id="@+id/appsContainerFragment"
         android:name="com.aurora.store.view.ui.apps.AppsContainerFragment"
         android:label="@string/title_apps"
         tools:layout="@layout/fragment_apps_games" />
-
     <fragment
-        android:id="@+id/navigation_games"
+        android:id="@+id/gamesContainerFragment"
         android:name="com.aurora.store.view.ui.games.GamesContainerFragment"
         android:label="@string/title_games"
         tools:layout="@layout/fragment_apps_games" />
-
     <fragment
-        android:id="@+id/navigation_updates"
+        android:id="@+id/updatesFragment"
         android:name="com.aurora.store.view.ui.updates.UpdatesFragment"
         android:label="@string/title_updates"
         tools:layout="@layout/fragment_updates" />
@@ -240,7 +238,7 @@
         tools:layout="@layout/fragment_splash" >
         <action
             android:id="@+id/action_splashFragment_to_navigation_apps"
-            app:destination="@id/navigation_apps"
+            app:destination="@id/appsContainerFragment"
             app:launchSingleTop="true"
             app:popUpTo="@id/mobile_navigation"
             app:popUpToInclusive="true" />

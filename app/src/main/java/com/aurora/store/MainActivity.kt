@@ -165,16 +165,16 @@ class MainActivity : AppCompatActivity(), NetworkProvider.NetworkListener {
 
         // Handle intents
         when (intent?.action) {
-            Constants.NAVIGATION_UPDATES -> B.navView.selectedItemId = R.id.navigation_updates
+            Constants.NAVIGATION_UPDATES -> B.navView.selectedItemId = R.id.updatesFragment
             else -> Log.i("Unhandled intent action: ${intent.action}")
         }
 
         // Handle views on fragments
         navController.addOnDestinationChangedListener { _, navDestination, _ ->
             when (navDestination.id) {
-                R.id.navigation_apps,
-                R.id.navigation_games,
-                R.id.navigation_updates -> {
+                R.id.appsContainerFragment,
+                R.id.gamesContainerFragment,
+                R.id.updatesFragment -> {
                     B.searchFab.visibility = View.VISIBLE
                     B.navView.visibility = View.VISIBLE
                     B.viewToolbar.root.visibility = View.VISIBLE

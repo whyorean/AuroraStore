@@ -20,17 +20,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/navigation_apps"
+        android:id="@id/appsContainerFragment"
         android:icon="@drawable/ic_apps"
         android:title="@string/title_apps" />
 
     <item
-        android:id="@+id/navigation_games"
+        android:id="@id/gamesContainerFragment"
         android:icon="@drawable/ic_games"
         android:title="@string/title_games" />
 
     <item
-        android:id="@+id/navigation_updates"
+        android:id="@id/updatesFragment"
         android:icon="@drawable/ic_updates"
         android:title="@string/title_updates" />
 
