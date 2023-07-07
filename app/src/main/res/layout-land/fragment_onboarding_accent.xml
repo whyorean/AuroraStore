@@ -49,8 +49,7 @@
                 android:text="@string/onboarding_title_accent"
                 android:textAlignment="textStart"
                 android:textColor="?colorAccent"
-                android:textSize="42sp"
-                app:fontFamily="@font/montserrat_regular" />
+                android:textSize="42sp" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 style="@style/AuroraTextStyle.Subtitle.Alt"
