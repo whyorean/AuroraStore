@@ -58,6 +58,7 @@ import com.aurora.store.view.ui.sheets.SelfUpdateSheet
 import com.aurora.store.view.ui.sheets.TOSSheet
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.elevation.SurfaceColors
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import nl.komponents.kovenant.task
@@ -178,14 +179,24 @@ class MainActivity : AppCompatActivity(), NetworkProvider.NetworkListener {
                     B.searchFab.visibility = View.VISIBLE
                     B.navView.visibility = View.VISIBLE
                     B.viewToolbar.root.visibility = View.VISIBLE
+                    window.navigationBarColor = SurfaceColors.SURFACE_2.getColor(this)
+                }
+                R.id.appDetailsFragment -> {
+                    hideTopLevelOnlyViews()
+                    window.navigationBarColor = this.accentColor()
                 }
                 else -> {
-                    B.searchFab.visibility = View.GONE
-                    B.navView.visibility = View.GONE
-                    B.viewToolbar.root.visibility = View.GONE
+                    hideTopLevelOnlyViews()
+                    window.navigationBarColor = getStyledAttributeColor(android.R.attr.colorBackground)
                 }
             }
         }
+    }
+
+    private fun hideTopLevelOnlyViews() {
+        B.searchFab.visibility = View.GONE
+        B.navView.visibility = View.GONE
+        B.viewToolbar.root.visibility = View.GONE
     }
 
     private fun attachToolbar() {
@@ -211,9 +222,7 @@ class MainActivity : AppCompatActivity(), NetworkProvider.NetworkListener {
         navController = navHostFragment.navController
         bottomNavigationView.setupWithNavController(navController)
 
-        val backGroundColor = getStyledAttributeColor(android.R.attr.colorBackground)
         bottomNavigationView.apply {
-            setBackgroundColor(ColorUtils.setAlphaComponent(backGroundColor, 245))
             val alphaColor = ColorUtils.setAlphaComponent(this@MainActivity.accentColor(), 100)
             itemActiveIndicatorColor = ColorStateList.valueOf(alphaColor)
         }
