@@ -346,4 +346,6 @@
     <string name="ui_accent_0">Sistema</string>
     <string name="rate_limited">Ops, esta conta tem limite de taxa!</string>
     <string name="downloading_dep">Baixando arquivos adicionais para <xliff:g id="app">%1$s</xliff:g></string>
+    <string name="menu">Menu</string>
+    <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>
 </resources>
