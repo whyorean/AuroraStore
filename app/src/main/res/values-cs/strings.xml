@@ -53,7 +53,7 @@
     <string name="purchase_not_found">Aplikace nebyla nalezena</string>
     <string name="purchase_unsupported">Aplikace není kompatibilní</string>
     <string name="purchase_invalid">Aplikace nebyla zakoupena</string>
-    <string name="purchase_failed">Stažení se nezdařilo</string>
+    <string name="purchase_failed">Stažení se Nezdařilo</string>
     <string name="pref_ui_similar_apps_desc">Zobrazit podobné a související skupiny na stránce s detaily aplikace</string>
     <string name="pref_ui_similar_apps">Podobné a související aplikace</string>
     <string name="pref_ui_no_for_you_desc">Zobrazení stránek pro vás na domovské obrazovce</string>
@@ -287,7 +287,7 @@
     <string name="notification_channel_updater_service">Služba stahování aplikací na pozadí</string>
     <string name="installer_am_unavailable">Nainstalujte si aplikaci App Manager nebo změnte instalátor.</string>
     <string name="account_anonymous_insecure">Anonymní (Nedůvěryhodné)</string>
-    <string name="pref_install_mode_am">AM instalátor</string>
+    <string name="pref_install_mode_am">AM instalátor.</string>
     <string name="ui_accent_1">Modrá</string>
     <string name="ui_accent_2">Fuchsie</string>
     <string name="ui_accent_3">Červená</string>

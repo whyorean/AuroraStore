@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="details_dev_website">Site</string>
     <string name="details_dev_profile">Perfil do desenvolvedor</string>
     <string name="details_dev_details">Contato do desenvolvedor</string>
@@ -304,4 +304,48 @@
     <string name="onboarding_permission_notifications">Notificações</string>
     <string name="pref_advanced_search_in_ctt_desc">Abrir resultados da pesquisa em uma aba customizada no navegador</string>
     <string name="session_init">Preparando as coisas…</string>
+    <string name="download_paused">Pausado • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
+    <string name="action_import">Importar</string>
+    <string name="pref_updates_check">Verificação automática de atualizações</string>
+    <string name="checking_for_updates">Verificando atualizações</string>
+    <string name="download_eta_hrs">%1$dh %2$dm %3$ds restando</string>
+    <string name="download_eta_min">%1$dm %2$ds restando</string>
+    <string name="download_eta_sec">%1$ds restando</string>
+    <string name="pref_advanced_search_in_ctt">Pesquisar em Aba Personalizada</string>
+    <string name="session_good">Uau! Tudo certo.</string>
+    <string name="session_login">Você precisa fazer login primeiro</string>
+    <string name="session_login_failed_google">Falhou ao fazer login via Google</string>
+    <string name="session_verifying">Verificando sessão</string>
+    <string name="session_scrapped">Última sessão descartada</string>
+    <string name="updates_available">atualizações disponíveis</string>
+    <string name="permissions_denied">As permissões necessárias foram negadas. Por favor as conceda para continuar a ação</string>
+    <string name="pref_updates_check_desc">Automaticamente checar e notificar novas atualizações de apps periodicamente</string>
+    <string name="notification_updates_available"><xliff:g id="apps_count">%1$d</xliff:g> atualizações disponíveis</string>
+    <string name="notification_updates_available_desc_4"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g>, <xliff:g id="app_three_name">%3$s</xliff:g> e <xliff:g id="apps_count">%4$d</xliff:g> mais</string>
+    <string name="notification_updates_available_desc_2"><xliff:g id="app_one_name">%1$s</xliff:g> e <xliff:g id="app_two_name">%2$s</xliff:g></string>
+    <string name="notification_updates_available_desc_3"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g> e <xliff:g id="app_three_name">%3$s</xliff:g></string>
+    <string name="download_progress">Baixando • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
+    <string name="installer_shizuku_unavailable">Shizuku não está instalado ou configurado corretamente.</string>
+    <string name="onboarding_permission_notifications_desc">Enviar notificações a respeito do status de instalação</string>
+    <string name="pref_install_mode_shizuku">Instalador Shizuku</string>
+    <string name="session_enjoy">Faça login e aproveite.</string>
+    <string name="session_verifying_google">Verificando sessão Google</string>
+    <string name="title_advanced">Avançado</string>
+    <string name="toast_import_failed">Não foi possível importar configurações do dispositivo</string>
+    <string name="toast_import_success">Configurações do dispositivo importadas</string>
+    <string name="requesting_new_session">Solicitando nova sessão</string>
+    <string name="server_maintenance">Servidor indisponível por manutenção</string>
+    <string name="error">Ocorreu um erro!</string>
+    <string name="update_available">atualização disponível</string>
+    <string name="search_hint">Pesquisar por Apps &amp; Jogos</string>
+    <string name="expand">Expandir</string>
+    <string name="open_in_aurora">Abrir na Aurora Store</string>
+    <string name="notification_channel_updates">Atualiza notificações</string>
+    <string name="notification_updates_available_1"><xliff:g id="apps_count">%1$d</xliff:g> atualização disponível</string>
+    <string name="notification_updates_available_desc_1">Uma nova versão de <xliff:g id="app_one_name">%1$s</xliff:g> está disponível</string>
+    <string name="ui_accent_0">Sistema</string>
+    <string name="rate_limited">Ops, esta conta tem limite de taxa!</string>
+    <string name="downloading_dep">Baixando arquivos adicionais para <xliff:g id="app">%1$s</xliff:g></string>
+    <string name="menu">Menu</string>
+    <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>
 </resources>
