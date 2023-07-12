@@ -1,0 +1,8 @@
+• Avoid asking storage permission until required
+• Reworked spoof configuration to avoid storage permission for import-export
+• Add option to automatically check for app updates (requires a working account logged in)
+• Fixed issue where required libraries weren't being installed with apps like chrome & trichrome library
+• Ignore downloads directory from backups when backing up Aurora Store
+• Implement Shizuku installer (requires Android 8.0+)
+• Drop support for Android 4.4. Minimum required Android version is 5.0+.
+• Minor bugfixes & improvements
