@@ -167,8 +167,8 @@
             android:name="position"
             app:argType="integer" />
         <argument
-            android:name="rawArtWorks"
-            app:argType="string" />
+            android:name="arrayOfArtwork"
+            app:argType="com.aurora.gplayapi.data.models.Artwork[]" />
     </fragment>
     <fragment
         android:id="@+id/devProfileFragment"

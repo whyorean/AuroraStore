@@ -89,7 +89,7 @@ open class BaseFragment : Fragment {
         findNavController().navigate(
             MobileNavigationDirections.actionGlobalScreenshotFragment(
                 position,
-                gson.toJson(app.screenshots)
+                app.screenshots.toTypedArray()
             )
         )
     }

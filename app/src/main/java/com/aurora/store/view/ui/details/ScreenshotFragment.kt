@@ -22,6 +22,7 @@ package com.aurora.store.view.ui.details
 import android.os.Bundle
 import android.view.View
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -31,18 +32,14 @@ import com.aurora.gplayapi.data.models.Artwork
 import com.aurora.store.R
 import com.aurora.store.databinding.FragmentScreenshotBinding
 import com.aurora.store.view.epoxy.views.details.LargeScreenshotViewModel_
-import com.aurora.store.view.ui.commons.BaseFragment
-import com.google.gson.reflect.TypeToken
 
-class ScreenshotFragment : BaseFragment(R.layout.fragment_screenshot) {
+class ScreenshotFragment : Fragment(R.layout.fragment_screenshot) {
 
     private var _binding: FragmentScreenshotBinding? = null
     private val binding: FragmentScreenshotBinding
         get() = _binding!!
 
     private val args: ScreenshotFragmentArgs by navArgs()
-
-    private lateinit var artworks: MutableList<Artwork>
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -61,8 +58,7 @@ class ScreenshotFragment : BaseFragment(R.layout.fragment_screenshot) {
             PagerSnapHelper().attachToRecyclerView(this)
         }
 
-        artworks = gson.fromJson(args.rawArtWorks, object : TypeToken<List<Artwork?>?>() {}.type)
-        updateController(artworks, args.position)
+        updateController(args.arrayOfArtwork, args.position)
     }
 
     override fun onDestroyView() {
@@ -70,7 +66,7 @@ class ScreenshotFragment : BaseFragment(R.layout.fragment_screenshot) {
         _binding = null
     }
 
-    private fun updateController(artworks: MutableList<Artwork>, position: Int) {
+    private fun updateController(artworks: Array<Artwork>, position: Int) {
         binding.recyclerView.withModels {
             artworks.forEach {
                 add(
