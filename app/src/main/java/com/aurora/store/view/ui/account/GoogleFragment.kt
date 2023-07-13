@@ -23,10 +23,12 @@ import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.webkit.CookieManager
+import android.webkit.WebChromeClient
 import android.webkit.WebSettings
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -71,6 +73,23 @@ class GoogleFragment : Fragment(R.layout.fragment_google) {
             cookieManager.removeAllCookies(null)
             cookieManager.acceptThirdPartyCookies(this)
             cookieManager.setAcceptThirdPartyCookies(this, true)
+
+            webChromeClient = object : WebChromeClient() {
+                override fun onProgressChanged(view: WebView?, newProgress: Int) {
+                    super.onProgressChanged(view, newProgress)
+
+                    if (newProgress != 0) {
+                        binding.progressBar.also {
+                            it.isVisible = newProgress < 100
+                            it.isIndeterminate = false
+                            it.max = 100
+                            it.progress = newProgress
+                        }
+                    } else {
+                        binding.progressBar.isIndeterminate = true
+                    }
+                }
+            }
 
             webViewClient = object : WebViewClient() {
                 override fun onPageFinished(view: WebView, url: String) {
@@ -119,6 +138,7 @@ class GoogleFragment : Fragment(R.layout.fragment_google) {
                             GoogleFragmentDirections.actionGoogleFragmentToSplashFragment()
                         )
                     }
+
                     R.id.accountFragment -> {
                         findNavController().navigate(
                             GoogleFragmentDirections.actionGoogleFragmentToAccountFragment()
