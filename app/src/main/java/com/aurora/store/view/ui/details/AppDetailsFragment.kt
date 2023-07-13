@@ -270,7 +270,13 @@ class AppDetailsFragment : BaseFragment(R.layout.fragment_details) {
         binding.layoutDetailsToolbar.toolbar.apply {
             elevation = 0f
             navigationIcon = ContextCompat.getDrawable(view.context, R.drawable.ic_arrow_back)
-            setNavigationOnClickListener { findNavController().navigateUp() }
+            setNavigationOnClickListener {
+                if (isExternal) {
+                    activity?.finish()
+                } else {
+                    findNavController().navigateUp()
+                }
+            }
             inflateMenu(R.menu.menu_details)
 
             setOnMenuItemClickListener {
@@ -304,15 +310,6 @@ class AppDetailsFragment : BaseFragment(R.layout.fragment_details) {
                 val installed = PackageUtil.isInstalled(requireContext(), app.packageName)
                 menu?.findItem(R.id.action_uninstall)?.isVisible = installed
                 uninstallActionEnabled = installed
-            }
-        }
-
-
-        activity?.onBackPressedDispatcher?.addCallback(this) {
-            if (isExternal) {
-                activity?.finish()
-            } else {
-                findNavController().navigateUp()
             }
         }
     }

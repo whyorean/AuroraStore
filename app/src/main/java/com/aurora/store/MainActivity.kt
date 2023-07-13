@@ -32,6 +32,7 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.activity.addCallback
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.IdRes
 import androidx.appcompat.app.AppCompatActivity
@@ -82,6 +83,13 @@ class MainActivity : AppCompatActivity(), NetworkProvider.NetworkListener {
         }
 
     private val gson: Gson = GsonBuilder().excludeFieldsWithModifiers(Modifier.TRANSIENT).create()
+
+    // TopLevelFragments
+    private val topLevelFrags = listOf(
+        R.id.appsContainerFragment,
+        R.id.gamesContainerFragment,
+        R.id.updatesFragment
+    )
 
     private lateinit var appConfig: AppBarConfiguration
 
@@ -178,6 +186,23 @@ class MainActivity : AppCompatActivity(), NetworkProvider.NetworkListener {
         /* Check self update only for stable release, skip debug & nightlies*/
         if (BuildConfig.APPLICATION_ID == Constants.APP_ID) checkSelfUpdate()
 
+        // Handle quick exit from back actions
+        onBackPressedDispatcher.addCallback(this) {
+            if (!B.drawerLayout.isOpen) {
+                if (navController.currentDestination?.id in topLevelFrags) {
+                    if (navController.currentDestination?.id == R.id.appsContainerFragment) {
+                        finish()
+                    } else {
+                        navController.navigate(R.id.appsContainerFragment)
+                    }
+                } else {
+                    navController.navigateUp()
+                }
+            } else {
+                B.drawerLayout.close()
+            }
+        }
+
         // Handle intents
         when (intent?.action) {
             Constants.NAVIGATION_UPDATES -> B.navView.selectedItemId = R.id.updatesFragment
@@ -187,9 +212,7 @@ class MainActivity : AppCompatActivity(), NetworkProvider.NetworkListener {
         // Handle views on fragments
         navController.addOnDestinationChangedListener { _, navDestination, _ ->
             when (navDestination.id) {
-                R.id.appsContainerFragment,
-                R.id.gamesContainerFragment,
-                R.id.updatesFragment -> {
+                in topLevelFrags -> {
                     B.searchFab.visibility = View.VISIBLE
                     B.navView.visibility = View.VISIBLE
                     B.toolbar.visibility = View.VISIBLE
@@ -244,11 +267,9 @@ class MainActivity : AppCompatActivity(), NetworkProvider.NetworkListener {
                 ("v${BuildConfig.VERSION_NAME}.${BuildConfig.VERSION_CODE}")
         }
 
-        appConfig = AppBarConfiguration.Builder(
-            R.id.appsContainerFragment,
-            R.id.gamesContainerFragment,
-            R.id.updatesFragment
-        ).setOpenableLayout(B.root).build()
+        appConfig = AppBarConfiguration.Builder(topLevelFrags.toSet())
+            .setOpenableLayout(B.root)
+            .build()
         setupActionBarWithNavController(navController, appConfig)
         B.navigation.setupWithNavController(navController)
     }

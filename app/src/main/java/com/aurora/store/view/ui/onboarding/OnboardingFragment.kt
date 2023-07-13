@@ -21,7 +21,6 @@ package com.aurora.store.view.ui.onboarding
 
 import android.os.Bundle
 import android.view.View
-import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.navigation.fragment.findNavController
@@ -75,14 +74,6 @@ class OnboardingFragment : Fragment(R.layout.fragment_onboarding) {
 
         binding.btnBackward.setOnClickListener {
             moveBackward()
-        }
-
-        activity?.onBackPressedDispatcher?.addCallback(this) {
-            if (binding.viewpager2.currentItem == 0) {
-                activity?.finish()
-            } else {
-                binding.viewpager2.currentItem = binding.viewpager2.currentItem - 1
-            }
         }
     }
 
