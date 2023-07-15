@@ -145,7 +145,7 @@
     <string name="onboarding_tos">Ketentuan layanan</string>
     <string name="onboarding_title_welcome">Selamat Datang</string>
     <string name="onboarding_title_theme">Tema</string>
-    <string name="onboarding_title_permissions">Izin</string>
+    <string name="onboarding_title_permissions">Perizinan</string>
     <string name="onboarding_theme_select">Pilih yang anda suka</string>
     <string name="dialog_title_self_update">Pembaruan tersedia</string>
     <string name="notification_channel_general">Pemberitahuan umum</string>
