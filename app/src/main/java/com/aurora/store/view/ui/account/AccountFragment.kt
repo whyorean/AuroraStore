@@ -34,9 +34,6 @@ import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.databinding.FragmentAccountBinding
 import com.aurora.store.viewmodel.auth.AuthViewModel
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
-import nl.komponents.kovenant.task
-import nl.komponents.kovenant.ui.failUi
-import nl.komponents.kovenant.ui.successUi
 
 class AccountFragment : Fragment(R.layout.fragment_account) {
 
@@ -171,15 +168,10 @@ class AccountFragment : Fragment(R.layout.fragment_account) {
         }
 
         binding.btnLogout.addOnClickListener {
-            task {
-                AccountProvider.with(it.context).logout()
-            } successUi {
-                binding.btnAnonymous.updateProgress(false)
-                binding.btnGoogle.updateProgress(false)
-                updateContents()
-            } failUi {
-
-            }
+            AccountProvider.with(it.context).logout()
+            binding.btnAnonymous.updateProgress(false)
+            binding.btnGoogle.updateProgress(false)
+            updateContents()
         }
     }
 
