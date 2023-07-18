@@ -33,9 +33,12 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <include
-                android:id="@+id/view_toolbar"
-                layout="@layout/view_toolbar_main" />
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:navigationIcon="@drawable/ic_menu_unfold"
+                app:title="@string/app_name" />
 
             <androidx.fragment.app.FragmentContainerView
                 android:id="@+id/nav_host_fragment"
@@ -43,7 +46,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_above="@id/nav_view"
-                android:layout_below="@+id/view_toolbar"
+                android:layout_below="@+id/toolbar"
                 app:defaultNavHost="true"
                 app:navGraph="@navigation/mobile_navigation" />
 

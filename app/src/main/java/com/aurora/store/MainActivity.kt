@@ -41,6 +41,7 @@ import androidx.core.view.GravityCompat
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.aurora.Constants
 import com.aurora.extensions.*
@@ -131,7 +132,14 @@ class MainActivity : AppCompatActivity(), NetworkProvider.NetworkListener {
 
         authData = AuthProvider.with(this).getAuthData()
 
-        attachToolbar()
+        // Toolbar
+        B.toolbar.apply {
+            elevation = 0f
+            setNavigationOnClickListener {
+                B.drawerLayout.openDrawer(GravityCompat.START, true)
+            }
+        }
+
         attachNavigation()
         attachDrawer()
         attachSearch()
@@ -178,7 +186,7 @@ class MainActivity : AppCompatActivity(), NetworkProvider.NetworkListener {
                 R.id.updatesFragment -> {
                     B.searchFab.visibility = View.VISIBLE
                     B.navView.visibility = View.VISIBLE
-                    B.viewToolbar.root.visibility = View.VISIBLE
+                    B.toolbar.visibility = View.VISIBLE
                     window.navigationBarColor = SurfaceColors.SURFACE_2.getColor(this)
                 }
                 R.id.appDetailsFragment -> {
@@ -196,17 +204,7 @@ class MainActivity : AppCompatActivity(), NetworkProvider.NetworkListener {
     private fun hideTopLevelOnlyViews() {
         B.searchFab.visibility = View.GONE
         B.navView.visibility = View.GONE
-        B.viewToolbar.root.visibility = View.GONE
-    }
-
-    private fun attachToolbar() {
-        B.viewToolbar.imgActionPrimary.setOnClickListener {
-            B.drawerLayout.openDrawer(GravityCompat.START, true)
-        }
-
-        B.viewToolbar.imgActionSecondary.setOnClickListener {
-            navController.navigate(R.id.downloadFragment)
-        }
+        B.toolbar.visibility = View.GONE
     }
 
     private fun attachSearch() {
