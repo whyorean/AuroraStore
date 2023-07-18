@@ -20,47 +20,47 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group android:id="@+id/group1">
         <item
-            android:id="@+id/menu_apps_games"
+            android:id="@id/appsGamesFragment"
             android:icon="@drawable/ic_apps"
             android:title="@string/title_apps_games" />
 
         <item
-            android:id="@+id/menu_apps_sale"
+            android:id="@id/appSalesFragment"
             android:icon="@drawable/ic_sale"
             android:title="@string/title_apps_sale" />
     </group>
 
     <group android:id="@+id/group2">
         <item
-            android:id="@+id/menu_blacklist_manager"
+            android:id="@id/blacklistFragment"
             android:icon="@drawable/ic_blacklist"
             android:title="@string/title_blacklist_manager" />
         <item
-            android:id="@+id/menu_spoof_manager"
+            android:id="@id/spoofFragment"
             android:icon="@drawable/ic_anonymous"
             android:title="@string/title_spoof_manager" />
     </group>
 
     <group android:id="@+id/group3">
         <item
-            android:id="@+id/menu_download_manager"
+            android:id="@id/downloadFragment"
             android:icon="@drawable/ic_download_manager"
             android:title="@string/title_download_manager" />
 
         <item
-            android:id="@+id/menu_account_manager"
+            android:id="@id/accountFragment"
             android:icon="@drawable/ic_account_manager"
             android:title="@string/title_account_manager" />
     </group>
 
     <group android:id="@+id/group4">
         <item
-            android:id="@+id/menu_settings"
+            android:id="@id/settingsFragment"
             android:icon="@drawable/ic_menu_settings"
             android:title="@string/title_settings" />
 
         <item
-            android:id="@+id/menu_about"
+            android:id="@id/aboutFragment"
             android:icon="@drawable/ic_menu_about"
             android:title="@string/title_about" />
     </group>

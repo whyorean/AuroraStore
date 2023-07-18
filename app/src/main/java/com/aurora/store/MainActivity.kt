@@ -42,6 +42,9 @@ import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.navigateUp
+import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.aurora.Constants
 import com.aurora.extensions.*
@@ -79,6 +82,8 @@ class MainActivity : AppCompatActivity(), NetworkProvider.NetworkListener {
         }
 
     private val gson: Gson = GsonBuilder().excludeFieldsWithModifiers(Modifier.TRANSIENT).create()
+
+    private lateinit var appConfig: AppBarConfiguration
 
     override fun onConnected() {
         runOnUiThread {
@@ -133,6 +138,7 @@ class MainActivity : AppCompatActivity(), NetworkProvider.NetworkListener {
         authData = AuthProvider.with(this).getAuthData()
 
         // Toolbar
+        setSupportActionBar(B.toolbar)
         B.toolbar.apply {
             elevation = 0f
             setNavigationOnClickListener {
@@ -238,47 +244,17 @@ class MainActivity : AppCompatActivity(), NetworkProvider.NetworkListener {
                 ("v${BuildConfig.VERSION_NAME}.${BuildConfig.VERSION_CODE}")
         }
 
-        B.navigation.setNavigationItemSelectedListener { item: MenuItem ->
-            when (item.itemId) {
-                R.id.menu_apps_games -> {
-                    navController.navigate(R.id.appsGamesFragment)
-                    B.drawerLayout.close()
-                }
-                R.id.menu_apps_sale -> {
-                    navController.navigate(R.id.appSalesFragment)
-                    B.drawerLayout.close()
-                }
-                R.id.menu_blacklist_manager -> {
-                    navController.navigate(R.id.blacklistFragment)
-                    B.drawerLayout.close()
-                }
-                R.id.menu_download_manager -> {
-                    navController.navigate(R.id.downloadFragment)
-                    B.drawerLayout.close()
-                }
-                R.id.menu_spoof_manager -> {
-                    navController.navigate(R.id.spoofFragment)
-                    B.drawerLayout.close()
-                }
-                R.id.menu_account_manager -> {
-                    navController.navigate(R.id.accountFragment)
-                    B.drawerLayout.close()
-                }
-                R.id.menu_settings -> {
-                    navController.navigate(R.id.settingsFragment)
-                    B.drawerLayout.close()
-                }
-                R.id.menu_about -> {
-                    navController.navigate(R.id.aboutFragment)
-                    B.drawerLayout.close()
-                }
-            }
-            false
-        }
+        appConfig = AppBarConfiguration.Builder(
+            R.id.appsContainerFragment,
+            R.id.gamesContainerFragment,
+            R.id.updatesFragment
+        ).setOpenableLayout(B.root).build()
+        setupActionBarWithNavController(navController, appConfig)
+        B.navigation.setupWithNavController(navController)
     }
 
     override fun onSupportNavigateUp(): Boolean {
-        return navController.navigateUp()
+        return navController.navigateUp(appConfig)
     }
 
     private fun checkExternalStorageManagerPermission() {
