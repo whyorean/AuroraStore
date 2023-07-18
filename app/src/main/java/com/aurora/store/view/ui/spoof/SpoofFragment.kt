@@ -22,6 +22,7 @@ package com.aurora.store.view.ui.spoof
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
@@ -37,15 +38,14 @@ import com.aurora.store.databinding.ActivityGenericPagerBinding
 import com.aurora.store.util.PathUtil
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
-import nl.komponents.kovenant.task
-import nl.komponents.kovenant.ui.failUi
-import nl.komponents.kovenant.ui.successUi
 
 class SpoofFragment : Fragment(R.layout.activity_generic_pager) {
 
     private var _binding: ActivityGenericPagerBinding? = null
     private val binding: ActivityGenericPagerBinding
         get() = _binding!!
+
+    private val TAG = SpoofFragment::class.java.simpleName
 
     // Android is weird, even if export device config with proper mime type, it will refuse to open
     // it again with same mime type
@@ -110,30 +110,28 @@ class SpoofFragment : Fragment(R.layout.activity_generic_pager) {
     }
 
     private fun importDeviceConfig(uri: Uri) {
-        task {
+        try {
             context?.contentResolver?.openInputStream(uri)?.use { input ->
                 PathUtil.getNewEmptySpoofConfig(requireContext()).outputStream().use {
                     input.copyTo(it)
                 }
             }
-        } successUi {
             toast(R.string.toast_import_success)
             activity?.recreate()
-        } failUi {
-            it.printStackTrace()
+        } catch (exception: Exception) {
+            Log.e(TAG, "Failed to import device config", exception)
             toast(R.string.toast_import_failed)
         }
     }
 
     private fun exportDeviceConfig(uri: Uri) {
-        task {
+        try {
             NativeDeviceInfoProvider(requireContext())
                 .getNativeDeviceProperties()
                 .store(context?.contentResolver?.openOutputStream(uri), "DEVICE_CONFIG")
-        } successUi {
             toast(R.string.toast_export_success)
-        } failUi {
-            it.printStackTrace()
+        } catch (exception: Exception) {
+            Log.e(TAG, "Failed to export device config", exception)
             toast(R.string.toast_export_failed)
         }
     }
