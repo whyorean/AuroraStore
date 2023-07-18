@@ -23,19 +23,20 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import com.aurora.extensions.toast
 import com.aurora.store.R
 import com.aurora.store.data.providers.NativeDeviceInfoProvider
-import com.aurora.store.data.providers.SpoofDeviceProvider
 import com.aurora.store.data.providers.SpoofProvider
 import com.aurora.store.databinding.FragmentGenericRecyclerBinding
-import com.aurora.store.util.Log
 import com.aurora.store.view.epoxy.views.preference.DeviceViewModel_
 import com.aurora.store.view.ui.commons.BaseFragment
-import nl.komponents.kovenant.task
-import nl.komponents.kovenant.ui.failUi
-import nl.komponents.kovenant.ui.successUi
+import com.aurora.store.viewmodel.spoof.SpoofViewModel
 import java.util.*
+import kotlinx.coroutines.launch
 
 
 class DeviceSpoofFragment : BaseFragment() {
@@ -44,6 +45,8 @@ class DeviceSpoofFragment : BaseFragment() {
     private lateinit var spoofProvider: SpoofProvider
 
     private var properties: Properties = Properties()
+
+    private val viewModel: SpoofViewModel by viewModels()
 
     companion object {
         @JvmStatic
@@ -79,13 +82,12 @@ class DeviceSpoofFragment : BaseFragment() {
         if (spoofProvider.isDeviceSpoofEnabled())
             properties = spoofProvider.getSpoofDeviceProperties()
 
-        task {
-            fetchAvailableDevices()
-        } successUi {
-            updateController(it)
-        } failUi {
-            Log.e("Could not get spoof device properties")
+        viewLifecycleOwner.lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.availableDevices.collect { updateController(it) }
+            }
         }
+        viewModel.fetchAvailableDevices(view.context)
     }
 
     private fun updateController(locales: List<Properties>) {
@@ -113,10 +115,6 @@ class DeviceSpoofFragment : BaseFragment() {
                     )
                 }
         }
-    }
-
-    private fun fetchAvailableDevices(): List<Properties> {
-        return SpoofDeviceProvider.with(requireContext()).availableDevice
     }
 
     private fun saveSelection(properties: Properties) {
