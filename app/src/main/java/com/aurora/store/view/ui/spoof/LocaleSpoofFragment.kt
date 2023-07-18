@@ -20,19 +20,16 @@
 package com.aurora.store.view.ui.spoof
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.aurora.store.R
 import com.aurora.store.data.providers.SpoofProvider
 import com.aurora.store.databinding.FragmentGenericRecyclerBinding
-import com.aurora.store.util.Log
 import com.aurora.extensions.toast
 import com.aurora.store.view.epoxy.views.preference.LocaleViewModel_
 import com.aurora.store.view.ui.commons.BaseFragment
-import nl.komponents.kovenant.task
-import nl.komponents.kovenant.ui.failUi
-import nl.komponents.kovenant.ui.successUi
 import java.util.*
 
 
@@ -42,6 +39,8 @@ class LocaleSpoofFragment : BaseFragment() {
     private lateinit var spoofProvider: SpoofProvider
 
     private var locale: Locale = Locale.getDefault()
+
+    private val TAG = LocaleSpoofFragment::class.java.simpleName
 
     companion object {
         @JvmStatic
@@ -76,12 +75,10 @@ class LocaleSpoofFragment : BaseFragment() {
         if (spoofProvider.isLocaleSpoofEnabled())
             locale = spoofProvider.getSpoofLocale()
 
-        task {
-            fetchAvailableLocales()
-        } successUi {
-            updateController(it)
-        } failUi {
-            Log.e("Could not get available locales")
+        try {
+            updateController(fetchAvailableLocales())
+        } catch (exception: Exception) {
+            Log.e(TAG, "Could not get available locales", exception)
         }
     }
 
