@@ -19,32 +19,30 @@
  */
 package com.aurora.store.view.ui.sheets
 
+import android.app.Dialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import com.aurora.Constants
 import com.aurora.extensions.load
 import com.aurora.extensions.toast
 import com.aurora.gplayapi.data.models.App
-import com.aurora.gplayapi.data.models.AuthData
-import com.aurora.gplayapi.helpers.PurchaseHelper
 import com.aurora.store.R
-import com.aurora.store.data.event.BusEvent
-import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.databinding.SheetManualDownloadBinding
+import com.aurora.store.viewmodel.sheets.SheetsViewModel
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
-import nl.komponents.kovenant.task
-import nl.komponents.kovenant.ui.failUi
-import nl.komponents.kovenant.ui.successUi
-import org.greenrobot.eventbus.EventBus
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 class ManualDownloadSheet : BaseBottomSheet() {
 
     private lateinit var B: SheetManualDownloadBinding
     private lateinit var app: App
-    private lateinit var authData: AuthData
-    private lateinit var purchaseHelper: PurchaseHelper
+
+    private val viewModel: SheetsViewModel by viewModels()
 
     companion object {
 
@@ -68,8 +66,6 @@ class ManualDownloadSheet : BaseBottomSheet() {
         savedInstanceState: Bundle?
     ): View {
         B = SheetManualDownloadBinding.inflate(inflater)
-        authData = AuthProvider.with(requireContext()).getAuthData()
-        purchaseHelper = PurchaseHelper(authData)
         return B.root
     }
 
@@ -86,6 +82,20 @@ class ManualDownloadSheet : BaseBottomSheet() {
                 dismissAllowingStateLoss()
             }
         }
+    }
+
+    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+        this.lifecycleScope.launch {
+            viewModel.purchaseStatus.collectLatest {
+                if (it) {
+                    toast(R.string.toast_manual_available)
+                    dismissAllowingStateLoss()
+                } else {
+                    toast(R.string.toast_manual_unavailable)
+                }
+            }
+        }
+        return super.onCreateDialog(savedInstanceState)
     }
 
     private fun inflateData() {
@@ -108,21 +118,7 @@ class ManualDownloadSheet : BaseBottomSheet() {
             if (customVersionString.isEmpty())
                 B.versionCodeInp.error = "Enter version code"
             else {
-                val customVersion = customVersionString.toInt()
-
-                task {
-                    purchaseHelper.purchase(app.packageName, customVersion, app.offerType)
-                } successUi {
-                    if (it.isNotEmpty()) {
-                        toast(R.string.toast_manual_available)
-                        EventBus.getDefault().post(BusEvent.ManualDownload(app.packageName, customVersion))
-                        dismissAllowingStateLoss()
-                    } else {
-                        toast(R.string.toast_manual_unavailable)
-                    }
-                } failUi {
-                    toast(R.string.toast_manual_unavailable)
-                }
+                viewModel.purchase(requireContext(), app, customVersionString.toInt())
             }
         }
 
