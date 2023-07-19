@@ -21,6 +21,7 @@ package com.aurora.store.viewmodel.auth
 
 import android.app.Application
 import android.content.Context
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.aurora.Constants
@@ -32,11 +33,13 @@ import com.aurora.store.AccountType
 import com.aurora.store.R
 import com.aurora.store.data.AuthState
 import com.aurora.store.data.RequestState
+import com.aurora.store.data.event.BusEvent
 import com.aurora.store.data.model.InsecureAuth
 import com.aurora.store.data.network.HttpClient
 import com.aurora.store.data.providers.AccountProvider
 import com.aurora.store.data.providers.NativeDeviceInfoProvider
 import com.aurora.store.data.providers.SpoofProvider
+import com.aurora.store.util.AC2DMTask
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_AUTH_DATA
 import com.aurora.store.viewmodel.BaseAndroidViewModel
@@ -47,8 +50,11 @@ import nl.komponents.kovenant.task
 import java.net.ConnectException
 import java.net.UnknownHostException
 import java.util.*
+import org.greenrobot.eventbus.EventBus
 
 class AuthViewModel(application: Application) : BaseAndroidViewModel(application) {
+
+    private val TAG = AuthViewModel::class.java.simpleName
 
     private val spoofProvider = SpoofProvider(getApplication())
 
@@ -188,6 +194,31 @@ class AuthViewModel(application: Application) : BaseAndroidViewModel(application
             verifyAndSaveAuth(it, AccountType.ANONYMOUS)
         } fail {
             updateStatus(it.message.toString())
+        }
+    }
+
+    fun buildAuthData(context: Context, email: String, oauthToken: String?) {
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                val response = AC2DMTask().getAC2DMResponse(email, oauthToken)
+                if (response.isNotEmpty()) {
+                    val aasToken = response["Token"]
+                    if (aasToken != null) {
+                        Preferences.putString(context, Constants.ACCOUNT_EMAIL_PLAIN, email)
+                        Preferences.putString(context, Constants.ACCOUNT_AAS_PLAIN, aasToken)
+                        EventBus.getDefault().post(BusEvent.GoogleAAS(true, email, aasToken))
+                    } else {
+                        Preferences.putString(context, Constants.ACCOUNT_EMAIL_PLAIN, "")
+                        Preferences.putString(context, Constants.ACCOUNT_AAS_PLAIN, "")
+                        EventBus.getDefault().post(BusEvent.GoogleAAS(false))
+                    }
+                } else {
+                    EventBus.getDefault().post(BusEvent.GoogleAAS(false))
+                }
+            } catch (exception: Exception) {
+                Log.e(TAG, "Failed to build AuthData", exception)
+                EventBus.getDefault().post(BusEvent.GoogleAAS(false))
+            }
         }
     }
 

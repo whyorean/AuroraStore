@@ -33,15 +33,11 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.aurora.Constants
 import com.aurora.store.R
 import com.aurora.store.data.event.BusEvent
 import com.aurora.store.databinding.FragmentGoogleBinding
-import com.aurora.store.util.AC2DMTask
 import com.aurora.store.util.AC2DMUtil
-import com.aurora.store.util.Preferences
 import com.aurora.store.viewmodel.auth.AuthViewModel
-import nl.komponents.kovenant.task
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
@@ -99,7 +95,7 @@ class GoogleFragment : Fragment(R.layout.fragment_google) {
                         val oauthToken = cookieMap[AUTH_TOKEN]
                         evaluateJavascript(JS_SCRIPT) {
                             val email = it.replace("\"".toRegex(), "")
-                            buildAuthData(email, oauthToken)
+                            viewModel.buildAuthData(view.context, email, oauthToken)
                         }
                     }
                 }
@@ -131,7 +127,16 @@ class GoogleFragment : Fragment(R.layout.fragment_google) {
     fun onEventReceived(event: BusEvent) {
         when (event) {
             is BusEvent.GoogleAAS -> {
-                if (event.success) viewModel.buildGoogleAuthData(event.email, event.aasToken)
+                if (event.success) {
+                    viewModel.buildGoogleAuthData(event.email, event.aasToken)
+                } else {
+                    Toast.makeText(
+                        requireContext(),
+                        getString(R.string.toast_aas_token_failed),
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+
                 when (args.destination) {
                     R.id.splashFragment -> {
                         findNavController().navigate(
@@ -148,39 +153,6 @@ class GoogleFragment : Fragment(R.layout.fragment_google) {
             }
 
             else -> {}
-        }
-    }
-
-    private fun buildAuthData(email: String, oauthToken: String?) {
-        task {
-            AC2DMTask().getAC2DMResponse(email, oauthToken)
-        } success {
-            if (it.isNotEmpty()) {
-                val aasToken = it["Token"]
-                if (aasToken != null) {
-                    Preferences.putString(requireContext(), Constants.ACCOUNT_EMAIL_PLAIN, email)
-                    Preferences.putString(requireContext(), Constants.ACCOUNT_AAS_PLAIN, aasToken)
-                    EventBus.getDefault().post(BusEvent.GoogleAAS(true, email, aasToken))
-                } else {
-                    Preferences.putString(requireContext(), Constants.ACCOUNT_EMAIL_PLAIN, "")
-                    Preferences.putString(requireContext(), Constants.ACCOUNT_AAS_PLAIN, "")
-                    EventBus.getDefault().post(BusEvent.GoogleAAS(false))
-                }
-            } else {
-                Toast.makeText(
-                    requireContext(),
-                    getString(R.string.toast_aas_token_failed),
-                    Toast.LENGTH_LONG
-                ).show()
-                EventBus.getDefault().post(BusEvent.GoogleAAS(false))
-            }
-        } fail {
-            Toast.makeText(
-                requireContext(),
-                getString(R.string.toast_aas_token_failed),
-                Toast.LENGTH_LONG
-            ).show()
-            EventBus.getDefault().post(BusEvent.GoogleAAS(false))
         }
     }
 }
