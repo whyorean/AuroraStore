@@ -59,7 +59,7 @@
     <string name="about_libera">Liberapay</string>
     <string name="about_gitlab_summary">從 GitLab 上的 Aurora OSS 取得 Aurora 商店的原始碼。</string>
     <string name="about_gitlab">GitLab</string>
-    <string name="about_fdroid_summary">透過 F-Droid 取得 Aurora Store</string>
+    <string name="about_fdroid_summary">透過 F-Droid 取得 Aurora Store。</string>
     <string name="about_fdroid">F-Droid</string>
     <string name="about_bitcoin_eth_summary">透過 Ethereum (ETH) 捐款</string>
     <string name="about_bitcoin_eth">Ethereum</string>
