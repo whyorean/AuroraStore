@@ -22,6 +22,8 @@ package com.aurora.store.view.ui.details
 import android.os.Bundle
 import android.view.View
 import androidx.core.text.HtmlCompat
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.aurora.gplayapi.data.models.App
@@ -37,15 +39,18 @@ import com.aurora.store.view.epoxy.views.details.FileViewModel_
 import com.aurora.store.view.epoxy.views.details.InfoViewModel_
 import com.aurora.store.view.epoxy.views.details.MoreBadgeViewModel_
 import com.aurora.store.view.ui.commons.BaseFragment
-import nl.komponents.kovenant.task
-import nl.komponents.kovenant.ui.failUi
-import nl.komponents.kovenant.ui.successUi
+import com.aurora.store.viewmodel.details.DetailsMoreViewModel
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.drop
+import kotlinx.coroutines.launch
 
 class DetailsMoreFragment : BaseFragment(R.layout.fragment_details_more) {
 
     private var _binding: FragmentDetailsMoreBinding? = null
     private val binding: FragmentDetailsMoreBinding
         get() = _binding!!
+
+    private val viewModel: DetailsMoreViewModel by viewModels()
 
     private val args: DetailsMoreFragmentArgs by navArgs()
 
@@ -60,7 +65,32 @@ class DetailsMoreFragment : BaseFragment(R.layout.fragment_details_more) {
 
         inflateDescription(args.app)
         inflateFiles(args.app)
-        fetchDependentApps(args.app)
+        viewModel.fetchDependentApps(view.context, args.app)
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.dependentApps.collect { list ->
+                if (list.isNotEmpty()) {
+                    binding.recyclerDependency.withModels {
+                        list.filter { it.displayName.isNotEmpty() }.forEach {
+                            add(
+                                AppDependentViewModel_()
+                                    .id(it.id)
+                                    .app(it)
+                                    .click { _ -> openDetailsFragment(it) }
+                            )
+                        }
+                    }
+                } else {
+                    binding.recyclerDependency.withModels {
+                        add(
+                            NoAppAltViewModel_()
+                                .id("no_app")
+                                .message(getString(R.string.details_no_dependencies))
+                        )
+                    }
+                }
+            }
+        }
     }
 
     override fun onDestroyView() {
@@ -137,43 +167,6 @@ class DetailsMoreFragment : BaseFragment(R.layout.fragment_details_more) {
                             .badge(it)
                     )
                 }
-            }
-        }
-    }
-
-    private fun fetchDependentApps(app: App) {
-        val authData: AuthData = AuthProvider
-            .with(requireContext())
-            .getAuthData()
-        task {
-            AppDetailsHelper(authData)
-                .getAppByPackageName(app.dependencies.dependentPackages)
-        } successUi {
-            binding.recyclerDependency.withModels {
-                if (it.isNotEmpty()) {
-                    it.filter { it.displayName.isNotEmpty() }.forEach {
-                        add(
-                            AppDependentViewModel_()
-                                .id(it.id)
-                                .app(it)
-                                .click { _ -> openDetailsFragment(it) }
-                        )
-                    }
-                } else {
-                    add(
-                        NoAppAltViewModel_()
-                            .id("no_app")
-                            .message(getString(R.string.details_no_dependencies))
-                    )
-                }
-            }
-        } failUi {
-            binding.recyclerDependency.withModels {
-                add(
-                    NoAppAltViewModel_()
-                        .id("no_app")
-                        .message(getString(R.string.details_no_dependencies))
-                )
             }
         }
     }
