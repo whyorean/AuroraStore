@@ -28,7 +28,7 @@
     <string name="about_libera">Liberapay</string>
     <string name="about_gitlab">GitLab</string>
     <string name="about_bitcoin_eth">Ethereum</string>
-    <string name="about_fdroid_summary">Aurora Store über F-Droid herunterladen</string>
+    <string name="about_fdroid_summary">Aurora Store über F-Droid herunterladen.</string>
     <string name="about_fdroid">F-Droid</string>
     <string name="about_bitcoin_btc">Bitcoin</string>
     <string name="details_dev_website">Website</string>
@@ -38,7 +38,7 @@
     <string name="action_blacklist_add">Zur Sperrliste hinzufügen</string>
     <string name="action_blacklist">Sperrliste</string>
     <string name="action_back">Zurück</string>
-    <string name="about_gitlab_summary">Aurora Store-Quellcode von Aurora OSS bei GitLab herunterladen</string>
+    <string name="about_gitlab_summary">Aurora Store-Quellcode von Aurora OSS bei GitLab herunterladen.</string>
     <string name="about_bitcoin_btc_summary">Mit Bitcoin spenden (BTC)</string>
     <string name="about_bitcoin_bch_summary">Mit Bitcoin Cash spenden (BCH)</string>
     <string name="about_bhim_summary">Mit UPI spenden</string>
@@ -217,7 +217,7 @@
     <string name="action_get_local_apk">App-Paket speichern</string>
     <string name="about_xda_summary">Den Aurora Store-XDA-Themenbereich für Diskussionen oder Vorschläge besuchen</string>
     <string name="about_xda">XDA Entwickler-Forum</string>
-    <string name="about_telegram_summary">Der Aurora-Support-Gruppe für Diskussionen oder Vorschläge beitreten</string>
+    <string name="about_telegram_summary">Der Aurora-Support-Gruppe für Diskussionen oder Vorschläge beitreten.</string>
     <string name="action_uninstall">Deinstallieren</string>
     <string name="action_try_later">Später versuchen</string>
     <string name="action_share">Teilen</string>
