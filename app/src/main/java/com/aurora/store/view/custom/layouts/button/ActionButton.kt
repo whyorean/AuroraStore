@@ -21,18 +21,14 @@ package com.aurora.store.view.custom.layouts.button
 
 import android.content.Context
 import android.content.res.ColorStateList
-import android.os.Build
 import android.util.AttributeSet
 import android.widget.RelativeLayout
-import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import com.aurora.extensions.getString
 import com.aurora.extensions.runOnUiThread
 import com.aurora.store.R
 import com.aurora.store.State
 import com.aurora.store.databinding.ViewActionButtonBinding
-import nl.komponents.kovenant.task
-import java.util.concurrent.TimeUnit
 
 class ActionButton : RelativeLayout {
 
@@ -125,17 +121,8 @@ class ActionButton : RelativeLayout {
         if (B.viewFlipper.displayedChild != displayChild) {
             runOnUiThread {
                 B.viewFlipper.displayedChild = displayChild
-                if (displayChild == 2)
-                    switchToIdle()
+                if (displayChild == 2) updateState(State.IDLE)
             }
-        }
-    }
-
-    private fun switchToIdle() {
-        task {
-            TimeUnit.SECONDS.sleep(3)
-        } success {
-            updateState(State.IDLE)
         }
     }
 
