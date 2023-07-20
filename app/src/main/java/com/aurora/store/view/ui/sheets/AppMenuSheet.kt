@@ -32,6 +32,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.viewModels
 import com.aurora.Constants
 import com.aurora.extensions.isRAndAbove
 import com.aurora.gplayapi.data.models.App
@@ -40,11 +41,10 @@ import com.aurora.store.data.event.BusEvent
 import com.aurora.store.data.installer.AppInstaller
 import com.aurora.store.data.providers.BlacklistProvider
 import com.aurora.store.databinding.SheetAppMenuBinding
-import com.aurora.store.util.ApkCopier
 import com.aurora.store.util.PackageUtil
 import com.aurora.extensions.openInfo
 import com.aurora.extensions.toast
-import nl.komponents.kovenant.task
+import com.aurora.store.viewmodel.sheets.SheetsViewModel
 import org.greenrobot.eventbus.EventBus
 
 class AppMenuSheet : BaseBottomSheet() {
@@ -52,10 +52,12 @@ class AppMenuSheet : BaseBottomSheet() {
     private lateinit var B: SheetAppMenuBinding
     private lateinit var app: App
 
+    private val viewModel: SheetsViewModel by viewModels()
+
     private val startForPermissions =
         registerForActivityResult(ActivityResultContracts.RequestPermission()) {
             if (it) {
-                task { ApkCopier(requireContext(), app.packageName).copy() }
+                viewModel.copyApk(requireContext(), app.packageName)
             } else {
                 toast(R.string.permissions_denied)
             }
@@ -123,10 +125,8 @@ class AppMenuSheet : BaseBottomSheet() {
                     }
 
                     R.id.action_uninstall -> {
-                        task {
-                            AppInstaller.getInstance(requireContext())
-                                .getPreferredInstaller().uninstall(app.packageName)
-                        }
+                        AppInstaller.getInstance(requireContext())
+                            .getPreferredInstaller().uninstall(app.packageName)
                     }
 
                     R.id.action_info -> {
@@ -144,9 +144,7 @@ class AppMenuSheet : BaseBottomSheet() {
             if (!Environment.isExternalStorageManager()) {
                 startActivity(Intent(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION))
             } else {
-                task {
-                    ApkCopier(requireContext(), app.packageName).copy()
-                }
+                viewModel.copyApk(requireContext(), app.packageName)
             }
         } else {
             if (ContextCompat.checkSelfPermission(
@@ -154,7 +152,7 @@ class AppMenuSheet : BaseBottomSheet() {
                     Manifest.permission.WRITE_EXTERNAL_STORAGE
                 ) == PackageManager.PERMISSION_GRANTED
             ) {
-                task { ApkCopier(requireContext(), app.packageName).copy() }
+                viewModel.copyApk(requireContext(), app.packageName)
             } else {
                 startForPermissions.launch(Manifest.permission.WRITE_EXTERNAL_STORAGE)
             }

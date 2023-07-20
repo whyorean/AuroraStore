@@ -8,6 +8,7 @@ import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.helpers.PurchaseHelper
 import com.aurora.store.data.event.BusEvent
 import com.aurora.store.data.providers.AuthProvider
+import com.aurora.store.util.ApkCopier
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -37,6 +38,12 @@ class SheetsViewModel : ViewModel() {
                 _purchaseStatus.emit(false)
                 Log.e(TAG, "Failed to find version: $customVersion", exception)
             }
+        }
+    }
+
+    fun copyApk(context: Context, packageName: String) {
+        viewModelScope.launch(Dispatchers.IO) {
+            ApkCopier(context, packageName).copy()
         }
     }
 }
