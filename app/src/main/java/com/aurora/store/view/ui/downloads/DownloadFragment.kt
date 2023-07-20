@@ -23,8 +23,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
-import com.aurora.Constants
-import com.aurora.gplayapi.data.models.App
+import com.aurora.store.MobileNavigationDirections
 import com.aurora.store.R
 import com.aurora.store.data.downloader.DownloadManager
 import com.aurora.store.data.model.DownloadFile
@@ -203,11 +202,9 @@ class DownloadFragment : BaseFragment(R.layout.fragment_download) {
     }
 
     private fun openDetailsActivity(downloadFile: DownloadFile) {
-        val app: App = gson.fromJson(
-            downloadFile.download.extras.getString(Constants.STRING_EXTRA, "{}"),
-            App::class.java
+        findNavController().navigate(
+            MobileNavigationDirections.actionGlobalAppDetailsFragment(downloadFile.download.tag!!)
         )
-        openDetailsFragment(app)
     }
 
     private fun openDownloadMenuSheet(downloadFile: DownloadFile) {
