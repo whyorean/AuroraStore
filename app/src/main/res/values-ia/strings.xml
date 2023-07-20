@@ -6,10 +6,11 @@
     <string name="action_grant">Permitter</string>
     <string name="action_install">Installar</string>
     <string name="action_logout">Clauder session</string>
-    <string name="about_fdroid_summary">Discarga le Aurora Store via F-Droid</string>
+    <string name="about_fdroid_summary">Discarga le Aurora Store via F-Droid.</string>
     <string name="account_login_using">Initiar session con</string>
     <string name="action_close">Clauder</string>
     <string name="action_filter_downloads">Discargas</string>
     <string name="action_open">Aperir</string>
     <string name="about_bhim">BHIM - UPI</string>
+    <string name="about_gitlab">GitLab</string>
 </resources>
