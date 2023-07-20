@@ -36,17 +36,14 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import com.aurora.Constants
 import com.aurora.extensions.isRAndAbove
-import com.aurora.extensions.stackTraceToString
 import com.aurora.extensions.toast
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
 import com.aurora.store.State
 import com.aurora.store.data.downloader.getGroupId
-import com.aurora.store.data.installer.AppInstaller
 import com.aurora.store.data.model.UpdateFile
 import com.aurora.store.data.service.UpdateService
 import com.aurora.store.databinding.FragmentUpdatesBinding
-import com.aurora.store.util.Log
 import com.aurora.store.util.PathUtil
 import com.aurora.store.util.isExternalStorageEnable
 import com.aurora.store.view.epoxy.views.UpdateHeaderViewModel_
@@ -59,8 +56,6 @@ import com.aurora.store.viewmodel.all.UpdatesViewModel
 import com.tonyodev.fetch2.AbstractFetchGroupListener
 import com.tonyodev.fetch2.Download
 import com.tonyodev.fetch2.FetchGroup
-import nl.komponents.kovenant.task
-import java.io.File
 
 class UpdatesFragment : BaseFragment() {
 
@@ -257,10 +252,9 @@ class UpdatesFragment : BaseFragment() {
                                 .positiveAction { _ -> updateSingle(updateFile.app) }
                                 .negativeAction { _ -> cancelSingle(updateFile.app) }
                                 .installAction { _ ->
-                                    install(
-                                        updateFile.app.packageName,
-                                        updateFile.group?.downloads
-                                    )
+                                    updateFile.group?.downloads?.let {
+                                        VM.install(requireContext(), updateFile.app.packageName, it)
+                                    }
                                 }
                                 .state(updateFile.state)
                         )
@@ -335,32 +329,6 @@ class UpdatesFragment : BaseFragment() {
                 serviceConnection,
                 0
             )
-        }
-    }
-
-    @Synchronized
-    private fun install(packageName: String, files: List<Download>?) {
-        files?.let { downloads ->
-            var filesExist = true
-
-            downloads.forEach { download ->
-                filesExist = filesExist && File(download.file).exists()
-            }
-
-            if (filesExist) {
-                task {
-                    AppInstaller.getInstance(requireContext())
-                        .getPreferredInstaller()
-                        .install(
-                            packageName,
-                            files
-                                .filter { it.file.endsWith(".apk") }
-                                .map { it.file }.toList()
-                        )
-                } fail {
-                    Log.e(it.stackTraceToString())
-                }
-            }
         }
     }
 

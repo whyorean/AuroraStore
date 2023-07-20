@@ -20,6 +20,8 @@
 package com.aurora.store.viewmodel.all
 
 import android.app.Application
+import android.content.Context
+import android.util.Log
 import androidx.core.content.pm.PackageInfoCompat
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -30,8 +32,11 @@ import com.aurora.store.data.downloader.RequestGroupIdBuilder
 import com.aurora.store.data.downloader.getGroupId
 import com.aurora.store.data.event.BusEvent
 import com.aurora.store.data.event.InstallerEvent
+import com.aurora.store.data.installer.AppInstaller
 import com.aurora.store.data.model.UpdateFile
+import com.tonyodev.fetch2.Download
 import com.tonyodev.fetch2.FetchGroup
+import java.io.File
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import org.greenrobot.eventbus.EventBus
@@ -40,6 +45,8 @@ import org.greenrobot.eventbus.ThreadMode
 import java.util.*
 
 class UpdatesViewModel(application: Application) : BaseAppsViewModel(application) {
+
+    private val TAG = UpdatesViewModel::class.java.simpleName
 
     var updateFileMap: MutableMap<Int, UpdateFile> = mutableMapOf()
     var liveUpdateData: MutableLiveData<MutableMap<Int, UpdateFile>> = MutableLiveData()
@@ -149,6 +156,24 @@ class UpdatesViewModel(application: Application) : BaseAppsViewModel(application
         }
 
         liveUpdateData.postValue(updateFileMap)
+    }
+
+    @Synchronized
+    fun install(context: Context, packageName: String, files: List<Download>) {
+        if (files.all { File(it.file).exists() }) {
+            viewModelScope.launch(Dispatchers.IO) {
+                try {
+                    AppInstaller.getInstance(context).getPreferredInstaller().install(
+                        packageName,
+                        files.filter { it.file.endsWith(".apk") }.map { it.file }.toList()
+                    )
+                } catch (exception: Exception) {
+                    Log.e(TAG, "Failed to install $packageName", exception)
+                }
+            }
+        } else {
+            Log.e(TAG, "Given files doesn't exists!")
+        }
     }
 
     private fun updateListAndPost(packageName: String) {
