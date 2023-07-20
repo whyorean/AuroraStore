@@ -46,7 +46,6 @@ import com.aurora.store.viewmodel.BaseAndroidViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.supervisorScope
-import nl.komponents.kovenant.task
 import java.net.ConnectException
 import java.net.UnknownHostException
 import java.util.*
@@ -78,17 +77,18 @@ class AuthViewModel(application: Application) : BaseAndroidViewModel(application
 
     fun buildGoogleAuthData(email: String, aasToken: String) {
         liveData.postValue(AuthState.Fetching)
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                var properties = NativeDeviceInfoProvider(getApplication()).getNativeDeviceProperties()
+                if (spoofProvider.isDeviceSpoofEnabled())
+                    properties = spoofProvider.getSpoofDeviceProperties()
 
-        task {
-            var properties = NativeDeviceInfoProvider(getApplication()).getNativeDeviceProperties()
-            if (spoofProvider.isDeviceSpoofEnabled())
-                properties = spoofProvider.getSpoofDeviceProperties()
-
-            return@task AuthHelper.build(email, aasToken, properties)
-        } success {
-            verifyAndSaveAuth(it, AccountType.GOOGLE)
-        } fail {
-            updateStatus("Failed to generate Session")
+                val authData = AuthHelper.build(email, aasToken, properties)
+                verifyAndSaveAuth(authData, AccountType.GOOGLE)
+            } catch (exception: Exception) {
+                updateStatus("Failed to generate Session")
+                Log.e(TAG, "Failed to generate Session", exception)
+            }
         }
     }
 
@@ -107,93 +107,97 @@ class AuthViewModel(application: Application) : BaseAndroidViewModel(application
 
     private fun buildSecureAnonymousAuthData() {
         liveData.postValue(AuthState.Fetching)
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                var properties = NativeDeviceInfoProvider(getApplication())
+                    .getNativeDeviceProperties()
 
-        task {
-            var properties = NativeDeviceInfoProvider(getApplication())
-                .getNativeDeviceProperties()
+                if (spoofProvider.isDeviceSpoofEnabled())
+                    properties = spoofProvider.getSpoofDeviceProperties()
 
-            if (spoofProvider.isDeviceSpoofEnabled())
-                properties = spoofProvider.getSpoofDeviceProperties()
-
-            val playResponse = HttpClient
-                .getPreferredClient()
-                .postAuth(
-                    Constants.URL_DISPENSER,
-                    gson.toJson(properties).toByteArray()
-                )
-
-            if (playResponse.isSuccessful) {
-                return@task gson.fromJson(
-                    String(playResponse.responseBytes),
-                    AuthData::class.java
-                )
-            } else {
-                when (playResponse.code) {
-                    404 -> throw Exception("Server unreachable")
-                    429 -> throw Exception("Oops, You are rate limited")
-                    503 -> throw Exception(
-                        (getApplication() as Context).getString(R.string.server_maintenance)
+                val playResponse = HttpClient
+                    .getPreferredClient()
+                    .postAuth(
+                        Constants.URL_DISPENSER,
+                        gson.toJson(properties).toByteArray()
                     )
-                    else -> throw Exception(playResponse.errorString)
+
+                if (playResponse.isSuccessful) {
+                    val authData = gson.fromJson(
+                        String(playResponse.responseBytes),
+                        AuthData::class.java
+                    )
+
+                    //Set AuthData as anonymous
+                    authData.isAnonymous = true
+                    verifyAndSaveAuth(authData, AccountType.ANONYMOUS)
+                } else {
+                    val ctx = getApplication() as Context
+                    when (playResponse.code) {
+                        404 -> throw Exception("Server unreachable")
+                        429 -> throw Exception("Oops, You are rate limited")
+                        503 -> throw Exception(ctx.getString(R.string.server_maintenance))
+                        else -> throw Exception(playResponse.errorString)
+                    }
                 }
+            } catch (exception: Exception) {
+                updateStatus(exception.message.toString())
+                Log.e(TAG, "Failed to generate Session", exception)
             }
-        } success {
-            //Set AuthData as anonymous
-            it.isAnonymous = true
-            verifyAndSaveAuth(it, AccountType.ANONYMOUS)
-        } fail {
-            updateStatus(it.message.toString())
         }
     }
 
     fun buildInSecureAnonymousAuthData() {
         liveData.postValue(AuthState.Fetching)
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                var properties = NativeDeviceInfoProvider(getApplication())
+                    .getNativeDeviceProperties()
 
-        task {
-            var properties = NativeDeviceInfoProvider(getApplication())
-                .getNativeDeviceProperties()
+                if (spoofProvider.isDeviceSpoofEnabled())
+                    properties = spoofProvider.getSpoofDeviceProperties()
 
-            if (spoofProvider.isDeviceSpoofEnabled())
-                properties = spoofProvider.getSpoofDeviceProperties()
-
-            val playResponse = HttpClient
-                .getPreferredClient()
-                .getAuth(
-                    Constants.URL_DISPENSER
-                )
-
-            val insecureAuth: InsecureAuth
-
-            if (playResponse.isSuccessful) {
-                insecureAuth = gson.fromJson(
-                    String(playResponse.responseBytes),
-                    InsecureAuth::class.java
-                )
-            } else {
-                when (playResponse.code) {
-                    404 -> throw Exception("Server unreachable")
-                    429 -> throw Exception("Oops, You are rate limited")
-                    503 -> throw Exception(
-                        (getApplication() as Context).getString(R.string.server_maintenance)
+                val playResponse = HttpClient
+                    .getPreferredClient()
+                    .getAuth(
+                        Constants.URL_DISPENSER
                     )
-                    else -> throw Exception(playResponse.errorString)
+
+                val insecureAuth: InsecureAuth
+
+                if (playResponse.isSuccessful) {
+                    insecureAuth = gson.fromJson(
+                        String(playResponse.responseBytes),
+                        InsecureAuth::class.java
+                    )
+                } else {
+                    when (playResponse.code) {
+                        404 -> throw Exception("Server unreachable")
+                        429 -> throw Exception("Oops, You are rate limited")
+                        503 -> throw Exception(
+                            (getApplication() as Context).getString(R.string.server_maintenance)
+                        )
+
+                        else -> throw Exception(playResponse.errorString)
+                    }
                 }
+
+                val deviceInfoProvider =
+                    DeviceInfoProvider(properties, Locale.getDefault().toString())
+                val authData = AuthHelper.buildInsecure(
+                    insecureAuth.email,
+                    insecureAuth.auth,
+                    Locale.getDefault(),
+                    deviceInfoProvider
+                )
+
+                //Set AuthData as anonymous
+                authData.isAnonymous = true
+                verifyAndSaveAuth(authData, AccountType.ANONYMOUS)
+            } catch (exception: Exception) {
+                updateStatus(exception.message.toString())
+                Log.e(TAG, "Failed to generate Session", exception)
             }
-
-            val deviceInfoProvider = DeviceInfoProvider(properties, Locale.getDefault().toString())
-
-            AuthHelper.buildInsecure(
-                insecureAuth.email,
-                insecureAuth.auth,
-                Locale.getDefault(),
-                deviceInfoProvider
-            )
-        } success {
-            //Set AuthData as anonymous
-            it.isAnonymous = true
-            verifyAndSaveAuth(it, AccountType.ANONYMOUS)
-        } fail {
-            updateStatus(it.message.toString())
         }
     }
 
