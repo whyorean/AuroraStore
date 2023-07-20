@@ -35,11 +35,12 @@ import android.view.View
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import android.widget.Toast
-import androidx.activity.addCallback
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.core.text.HtmlCompat
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.airbnb.epoxy.EpoxyRecyclerView
@@ -53,15 +54,12 @@ import com.aurora.extensions.runOnUiThread
 import com.aurora.extensions.share
 import com.aurora.extensions.show
 import com.aurora.extensions.showDialog
-import com.aurora.extensions.stackTraceToString
 import com.aurora.extensions.toast
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.AuthData
 import com.aurora.gplayapi.data.models.Review
 import com.aurora.gplayapi.data.models.StreamBundle
 import com.aurora.gplayapi.data.models.StreamCluster
-import com.aurora.gplayapi.helpers.AppDetailsHelper
-import com.aurora.gplayapi.helpers.ReviewsHelper
 import com.aurora.store.R
 import com.aurora.store.State
 import com.aurora.store.data.ViewState
@@ -70,9 +68,6 @@ import com.aurora.store.data.downloader.getGroupId
 import com.aurora.store.data.event.BusEvent
 import com.aurora.store.data.event.InstallerEvent
 import com.aurora.store.data.installer.AppInstaller
-import com.aurora.store.data.model.ExodusReport
-import com.aurora.store.data.model.Report
-import com.aurora.store.data.network.HttpClient
 import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.data.service.AppMetadataStatusListener
 import com.aurora.store.data.service.UpdateService
@@ -81,7 +76,6 @@ import com.aurora.store.databinding.LayoutDetailsBetaBinding
 import com.aurora.store.databinding.LayoutDetailsDescriptionBinding
 import com.aurora.store.databinding.LayoutDetailsDevBinding
 import com.aurora.store.databinding.LayoutDetailsPermissionsBinding
-import com.aurora.store.databinding.LayoutDetailsPrivacyBinding
 import com.aurora.store.databinding.LayoutDetailsReviewBinding
 import com.aurora.store.util.CommonUtil
 import com.aurora.store.util.Log
@@ -99,6 +93,7 @@ import com.aurora.store.view.ui.commons.BaseFragment
 import com.aurora.store.view.ui.sheets.InstallErrorDialogSheet
 import com.aurora.store.view.ui.sheets.ManualDownloadSheet
 import com.aurora.store.view.ui.sheets.PermissionBottomSheet
+import com.aurora.store.viewmodel.details.AppDetailsViewModel
 import com.aurora.store.viewmodel.details.DetailsClusterViewModel
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.google.android.material.bottomsheet.BottomSheetBehavior
@@ -111,15 +106,12 @@ import com.tonyodev.fetch2.FetchGroup
 import com.tonyodev.fetch2.FetchGroupListener
 import com.tonyodev.fetch2.Status
 import com.tonyodev.fetch2core.DownloadBlock
-import nl.komponents.kovenant.task
-import nl.komponents.kovenant.ui.failUi
-import nl.komponents.kovenant.ui.successUi
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
-import org.json.JSONObject
 import java.io.File
 import java.util.Locale
+import kotlinx.coroutines.launch
 
 class AppDetailsFragment : BaseFragment(R.layout.fragment_details) {
 
@@ -127,12 +119,11 @@ class AppDetailsFragment : BaseFragment(R.layout.fragment_details) {
     private val binding: FragmentDetailsBinding
         get() = _binding!!
 
+    private val viewModel: AppDetailsViewModel by viewModels()
+
     private val args: AppDetailsFragmentArgs by navArgs()
 
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<LinearLayout>
-
-    private val exodusBaseUrl = "https://reports.exodus-privacy.eu.org/api/search/"
-    private val exodusApiKey = "Token bbe6ebae4ad45a9cbacb17d69739799b8df2c7ae"
 
     private val startForStorageManagerResult =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
@@ -254,16 +245,119 @@ class AppDetailsFragment : BaseFragment(R.layout.fragment_details) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentDetailsBinding.bind(view)
 
+        // TODO: Move to viewModel
+        authData = AuthProvider.with(view.context).getAuthData()
+
         if (args.app != null) {
             app = args.app!!
             isInstalled = PackageUtil.isInstalled(requireContext(), app.packageName)
 
             inflatePartialApp()
-            fetchCompleteApp()
         } else {
             isExternal = true
             app = App(args.packageName)
-            fetchCompleteApp()
+        }
+
+        // App Details
+        viewModel.fetchAppDetails(view.context, app.packageName)
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.app.collect {
+                if (app.packageName.isNotBlank()) {
+                    if (isExternal) {
+                        app = it
+                        inflatePartialApp()
+                    }
+                    inflateExtraDetails(it)
+                    viewModel.fetchAppReviews(view.context, app.packageName)
+                } else {
+                    toast("Failed to fetch app details")
+                }
+            }
+        }
+
+        // Reviews
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.reviews.collect {
+                binding.layoutDetailsReview.epoxyRecycler.withModels {
+                    it.take(4).forEach { add(ReviewViewModel_().id(it.timeStamp).review(it)) }
+                }
+            }
+        }
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.userReview.collect {
+                if (it.timeStamp == 0L) {
+                    binding.layoutDetailsReview.userStars.rating = it.rating.toFloat()
+                    Toast.makeText(
+                        requireContext(),
+                        getString(R.string.toast_rated_success),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                } else {
+                    Toast.makeText(
+                        requireContext(),
+                        getString(R.string.toast_rated_failed),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+        }
+
+        // Report (Exodus Privacy)
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.report.collect { report ->
+                if (report == null) {
+                    binding.layoutDetailsPrivacy.txtStatus.text =
+                        getString(R.string.failed_to_fetch_report)
+                    return@collect
+                }
+
+                if (report.trackers.isNotEmpty()) {
+                    binding.layoutDetailsPrivacy.txtStatus.apply {
+                        setTextColor(
+                            ContextCompat.getColor(
+                                requireContext(),
+                                if (report.trackers.size > 4)
+                                    R.color.colorRed
+                                else
+                                    R.color.colorOrange
+                            )
+                        )
+                        text = "${report.trackers.size} ${getString(R.string.exodus_substring)} ${report.version}"
+                    }
+
+                    binding.layoutDetailsPrivacy.headerPrivacy.addClickListener {
+                        findNavController().navigate(AppDetailsFragmentDirections
+                                .actionAppDetailsFragmentToDetailsExodusFragment(report)
+                        )
+                    }
+                } else {
+                    binding.layoutDetailsPrivacy.txtStatus.apply {
+                        setTextColor(ContextCompat.getColor(requireContext(), R.color.colorGreen))
+                        text = getString(R.string.exodus_no_tracker)
+                    }
+                }
+            }
+        }
+
+        // Beta program
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.testingProgramStatus.collect {
+                if (it != null) {
+                    binding.layoutDetailsBeta.btnBetaAction.isEnabled = true
+                    if (it.subscribed) {
+                        updateBetaActions(binding.layoutDetailsBeta, true)
+                    }
+                    if (it.unsubscribed) {
+                        updateBetaActions(binding.layoutDetailsBeta, false)
+                    }
+                } else {
+                    app.testingProgram?.let { testingProgram ->
+                        updateBetaActions(binding.layoutDetailsBeta, testingProgram.isSubscribed)
+                        toast(getString(R.string.details_beta_delay))
+                    }
+                }
+            }
         }
 
         // Toolbar
@@ -367,16 +461,7 @@ class AppDetailsFragment : BaseFragment(R.layout.fragment_details) {
         if (apkFiles.size > 1 && preferredInstaller == 1) {
             showDialog(R.string.title_installer, R.string.dialog_desc_native_split)
         } else {
-            task {
-                AppInstaller.getInstance(requireContext())
-                    .getPreferredInstaller()
-                    .install(
-                        app.packageName,
-                        apkFiles.map { it.file }
-                    )
-            } fail {
-                Log.e(it.stackTraceToString())
-            }
+            viewModel.install(requireContext(), app.packageName, apkFiles.map { it.file })
 
             runOnUiThread {
                 binding.layoutDetailsInstall.btnDownload.setText(getString(R.string.action_installing))
@@ -386,32 +471,12 @@ class AppDetailsFragment : BaseFragment(R.layout.fragment_details) {
 
     @Synchronized
     private fun uninstallApp() {
-        task {
-            AppInstaller.getInstance(requireContext())
-                .getPreferredInstaller()
-                .uninstall(app.packageName)
-        }
+        AppInstaller.getInstance(requireContext()).getPreferredInstaller()
+            .uninstall(app.packageName)
     }
 
     private fun attachWhiteListStatus() {
 
-    }
-
-    private fun fetchCompleteApp() {
-        task {
-            authData = AuthProvider.with(requireContext()).getAuthData()
-            return@task AppDetailsHelper(authData)
-                .using(HttpClient.getPreferredClient())
-                .getAppByPackageName(app.packageName)
-        } successUi {
-            if (isExternal) {
-                app = it
-                inflatePartialApp()
-            }
-            inflateExtraDetails(it)
-        } failUi {
-            toast("Failed to fetch app details")
-        }
     }
 
     private fun inflatePartialApp() {
@@ -467,7 +532,7 @@ class AppDetailsFragment : BaseFragment(R.layout.fragment_details) {
             inflateAppDescription(binding.layoutDetailDescription, app)
             inflateAppRatingAndReviews(binding.layoutDetailsReview, app)
             inflateAppDevInfo(binding.layoutDetailsDev, app)
-            inflateAppPrivacy(binding.layoutDetailsPrivacy, app)
+            inflateAppPrivacy(app)
             inflateAppPermission(binding.layoutDetailsPermissions, app)
 
             if (!authData.isAnonymous) {
@@ -957,7 +1022,7 @@ class AppDetailsFragment : BaseFragment(R.layout.fragment_details) {
             if (authData.isAnonymous) {
                 toast(R.string.toast_anonymous_restriction)
             } else {
-                addOrUpdateReview(B, app, Review().apply {
+                addOrUpdateReview(app, Review().apply {
                     title = authData.userProfile!!.name
                     rating = B.userStars.rating.toInt()
                     comment = B.inputReview.text.toString()
@@ -973,66 +1038,10 @@ class AppDetailsFragment : BaseFragment(R.layout.fragment_details) {
                 )
             )
         }
-
-        task {
-            fetchReviewSummary(app)
-        } successUi {
-            B.epoxyRecycler.withModels {
-                it.take(4)
-                    .forEach {
-                        add(
-                            ReviewViewModel_()
-                                .id(it.timeStamp)
-                                .review(it)
-                        )
-                    }
-            }
-        } failUi {
-
-        }
-
     }
 
-    private fun inflateAppPrivacy(B: LayoutDetailsPrivacyBinding, app: App) {
-
-        task {
-            fetchReport(app.packageName)
-        } successUi { report ->
-            if (report.trackers.isNotEmpty()) {
-                B.txtStatus.apply {
-                    setTextColor(
-                        ContextCompat.getColor(
-                            requireContext(),
-                            if (report.trackers.size > 4)
-                                R.color.colorRed
-                            else
-                                R.color.colorOrange
-                        )
-                    )
-                    text =
-                        ("${report.trackers.size} ${getString(R.string.exodus_substring)} ${report.version}")
-                }
-
-                B.headerPrivacy.addClickListener {
-                    findNavController().navigate(
-                        AppDetailsFragmentDirections
-                            .actionAppDetailsFragmentToDetailsExodusFragment(report)
-                    )
-                }
-            } else {
-                B.txtStatus.apply {
-                    setTextColor(
-                        ContextCompat.getColor(
-                            requireContext(),
-                            R.color.colorGreen
-                        )
-                    )
-                    text = getString(R.string.exodus_no_tracker)
-                }
-            }
-        } failUi {
-            B.txtStatus.text = it.message
-        }
+    private fun inflateAppPrivacy(app: App) {
+        viewModel.fetchAppReport(app.packageName)
     }
 
     private fun inflateAppDevInfo(B: LayoutDetailsDevBinding, app: App) {
@@ -1079,26 +1088,13 @@ class AppDetailsFragment : BaseFragment(R.layout.fragment_details) {
                 }
 
                 B.btnBetaAction.setOnClickListener {
-                    val authData = AuthProvider.with(requireContext()).getAuthData()
-                    task {
-                        B.btnBetaAction.text = getString(R.string.action_pending)
-                        B.btnBetaAction.isEnabled = false
-                        AppDetailsHelper(authData).testingProgram(
-                            app.packageName,
-                            !betaProgram.isSubscribed
-                        )
-                    } successUi {
-                        B.btnBetaAction.isEnabled = true
-                        if (it.subscribed) {
-                            updateBetaActions(B, true)
-                        }
-                        if (it.unsubscribed) {
-                            updateBetaActions(B, false)
-                        }
-                    } failUi {
-                        updateBetaActions(B, betaProgram.isSubscribed)
-                        toast(getString(R.string.details_beta_delay))
-                    }
+                    B.btnBetaAction.text = getString(R.string.action_pending)
+                    B.btnBetaAction.isEnabled = false
+                    viewModel.fetchTestingProgramStatus(
+                        requireContext(),
+                        app.packageName,
+                        !betaProgram.isSubscribed
+                    )
                 }
             } else {
                 B.root.hide()
@@ -1190,82 +1186,7 @@ class AppDetailsFragment : BaseFragment(R.layout.fragment_details) {
         return RatingView(requireContext(), number, max.toInt(), rating.toInt())
     }
 
-    private fun addOrUpdateReview(
-        B: LayoutDetailsReviewBinding,
-        app: App,
-        review: Review,
-        isBeta: Boolean = false
-    ) {
-        task {
-            val authData = AuthProvider.with(requireContext()).getAuthData()
-            ReviewsHelper(authData)
-                .using(HttpClient.getPreferredClient())
-                .addOrEditReview(
-                    app.packageName,
-                    review.title,
-                    review.comment,
-                    review.rating,
-                    isBeta
-                )
-        }.successUi {
-            it?.let {
-                B.userStars.rating = it.rating.toFloat()
-                Toast.makeText(
-                    requireContext(),
-                    getString(R.string.toast_rated_success),
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
-        }.failUi {
-            Toast.makeText(
-                requireContext(),
-                getString(R.string.toast_rated_failed),
-                Toast.LENGTH_SHORT
-            ).show()
-        }
-    }
-
-    private fun fetchReviewSummary(app: App): List<Review> {
-        val authData = AuthProvider
-            .with(requireContext())
-            .getAuthData()
-        val reviewsHelper = ReviewsHelper(authData)
-            .using(HttpClient.getPreferredClient())
-        return reviewsHelper.getReviewSummary(app.packageName)
-    }
-
-    /* App Privacy Helpers */
-
-    private fun parseResponse(response: String, packageName: String): List<Report> {
-        try {
-            val jsonObject = JSONObject(response)
-            val exodusObject = jsonObject.getJSONObject(packageName)
-            val exodusReport: ExodusReport = gson.fromJson(
-                exodusObject.toString(),
-                ExodusReport::class.java
-            )
-            return exodusReport.reports
-        } catch (e: Exception) {
-            throw Exception("No reports found")
-        }
-    }
-
-    private fun fetchReport(packageName: String): Report {
-        val headers: MutableMap<String, String> = mutableMapOf()
-        headers["Content-Type"] = "application/json"
-        headers["Accept"] = "application/json"
-        headers["Authorization"] = exodusApiKey
-
-        val url = exodusBaseUrl + packageName
-
-        val playResponse = HttpClient
-            .getPreferredClient()
-            .get(url, headers)
-
-        if (playResponse.isSuccessful) {
-            return parseResponse(String(playResponse.responseBytes), packageName)[0]
-        } else {
-            throw Exception("Failed to fetch report")
-        }
+    private fun addOrUpdateReview(app: App, review: Review, isBeta: Boolean = false) {
+        viewModel.postAppReview(requireContext(), app.packageName, review, isBeta)
     }
 }

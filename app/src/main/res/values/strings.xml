@@ -365,4 +365,5 @@
     <string name="checking_for_updates">Checking for updates</string>
     <string name="pref_updates_check">Automated updates check</string>
     <string name="pref_updates_check_desc">Automatically check &amp; notify for new app updates periodically</string>
+    <string name="failed_to_fetch_report">Failed to fetch privacy report</string>
 </resources>
