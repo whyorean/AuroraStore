@@ -39,7 +39,7 @@
     <string name="action_install">Pasang</string>
     <string name="action_ignore_version">Abaikan versi</string>
     <string name="action_ignore">Abaikan</string>
-    <string name="action_granted">Diberikan</string>
+    <string name="action_granted">Diizinkan</string>
     <string name="action_get_local_apk">Simpan App bundle</string>
     <string name="action_finish">Selesai</string>
     <string name="action_filter_rating">Penilaian</string>
@@ -79,7 +79,7 @@
     <string name="action_pause">Jeda</string>
     <string name="action_open">Buka</string>
     <string name="action_ok">Oke</string>
-    <string name="action_next">Selanjutnya</string>
+    <string name="action_next">Lanjut</string>
     <string name="action_grant">Izinkan</string>
     <string name="toast_page_unavailable">Halaman telusur tidak tersedia</string>
     <string name="toast_double_press_to_exit">Ketuk dua kali untuk keluar</string>
@@ -91,7 +91,7 @@
     <string name="title_blacklist_manager">Manajer daftar hitam</string>
     <string name="title_apps_sale">Aplikasi obral</string>
     <string name="title_apps_library">Aplikasi di perpustakaan</string>
-    <string name="title_apps_games">Aplikasi &amp; permainan saya</string>
+    <string name="title_apps_games">Aplikasi &amp; permainan Saya</string>
     <string name="title_apps">Aplikasi</string>
     <string name="title_account_manager">Akun</string>
     <string name="title_about">Tentang</string>
@@ -112,13 +112,13 @@
     <string name="title_manual_download">Unduh manual</string>
     <string name="toast_developer_setting_failed">Aktifkan pengaturan pengembang dari pengaturan perangkat untuk membukanya.</string>
     <string name="toast_rated_success">Dinilai</string>
-    <string name="toast_rated_failed">Tidak bisa mengirimkan peringkat</string>
+    <string name="toast_rated_failed">Tidak dapat mengirimkan peringkat</string>
     <string name="toast_manual_available">Selamat, kode versi yang diminta tersedia, unduh sekarang.</string>
     <string name="toast_manual_unavailable">Kode versi yang Anda minta tidak tersedia.</string>
     <string name="toast_purchase_blocked">Pembelian aplikasi tidak tersedia di akun Anonim.</string>
     <string name="toast_spoof_applied">Spoof perangkat diterapkan.</string>
     <string name="toast_permission_granted">Izin diberikan</string>
-    <string name="toast_aas_token_failed">Tidak bisa membuat Token AAS</string>
+    <string name="toast_aas_token_failed">Tidak dapat membuat Token AAS</string>
     <string name="pref_install_mode_title">Metode pemasangan</string>
     <string name="pref_filter_google_title">Filter aplikasi Google</string>
     <string name="pref_filter_google_summary">Hapus semua Aplikasi Google dari hasil pencarian dan kategori aplikasi</string>
@@ -146,7 +146,7 @@
     <string name="onboarding_title_welcome">Selamat Datang</string>
     <string name="onboarding_title_theme">Tema</string>
     <string name="onboarding_title_permissions">Perizinan</string>
-    <string name="onboarding_theme_select">Pilih yang anda suka</string>
+    <string name="onboarding_theme_select">Pilih yang Anda suka</string>
     <string name="dialog_title_self_update">Pembaruan tersedia</string>
     <string name="notification_channel_general">Pemberitahuan umum</string>
     <string name="notification_channel_alert">Pemberitahuan cepat</string>
@@ -165,7 +165,7 @@
     <string name="device_huawei_title">Huawei terdeteksi!</string>
     <string name="menu_terms">Ketentuan layanan</string>
     <string name="menu_license">Lisensi</string>
-    <string name="menu_disclaimer">Penafian</string>
+    <string name="menu_disclaimer">Penyanggahan</string>
     <string name="filter_review_two">Dua</string>
     <string name="filter_review_three">Tiga</string>
     <string name="filter_review_positive">Positif</string>
@@ -174,7 +174,7 @@
     <string name="filter_review_five">Lima</string>
     <string name="filter_review_critical">Kritis</string>
     <string name="filter_review_all">Semua</string>
-    <string name="exodus_view_report">Lihat Laporan</string>
+    <string name="exodus_view_report">Lihat laporan</string>
     <string name="exodus_substring">pelacak yang ditemukan di</string>
     <string name="exodus_progress">Memeriksa pelacak…</string>
     <string name="exodus_powered">Diberdayakan oleh Exodus</string>
@@ -195,7 +195,7 @@
     <string name="details_think_this_app">Apa pendapat Anda tentang aplikasi ini\?</string>
     <string name="details_ratings">Peringkat dan ulasan</string>
     <string name="details_privacy">Privasi</string>
-    <string name="details_permission">Izin</string>
+    <string name="details_permission">Perizinan</string>
     <string name="details_paid">Berbayar</string>
     <string name="details_no_updates">Tidak pembaruan tersedia</string>
     <string name="details_no_permission">Tidak ada izin</string>
@@ -214,19 +214,19 @@
     <string name="details_changelog_unavailable">Daftar perubahan tidak disediakan</string>
     <string name="details_changelog">Daftar perubahan</string>
     <string name="details_beta_delay">Pendaftaran mungkin membutuhkan waktu, Anda dapat memeriksa statusnya nanti.</string>
-    <string name="details_beta_description">Anda akan melihat fitur baru dan bug sebelum dirilis ke publik, Berikan umpan balik anda ke pengembang untuk bantu mereka meningkatkannya.</string>
+    <string name="details_beta_description">Anda akan melihat fitur baru dan bug sebelum dirilis ke publik, Berikan masukan Anda ke pengembang untuk bantu mereka meningkatkannya.</string>
     <string name="details_beta_available">Bergabung dengan program beta\?</string>
     <string name="details_beta_subscribed">Anda adalah penguji beta</string>
     <string name="tab_top_grossing">Terlaris</string>
     <string name="tab_top_free">Teratas gratis</string>
     <string name="tab_top_charts">Teratas</string>
-    <string name="tab_for_you">Untuk anda</string>
+    <string name="tab_for_you">Untuk Anda</string>
     <string name="tab_editor_choice">Pilihan Editor</string>
     <string name="tab_categories">Kategori</string>
     <string name="insecure_anonymous_apply">Pastikan Anda masuk kembali dan memulai ulang aplikasi untuk menerapkan perubahan.</string>
     <string name="spoof_apply">Pastikan Anda masuk kembali untuk menerapkan spoof</string>
     <string name="purchase_session_expired">Sesi berakhir, masuk kembali untuk mendapatkan sesi baru.</string>
-    <string name="purchase_no_file">Tidak bisa mendapatkan file</string>
+    <string name="purchase_no_file">Tidak dapat mendapatkan berkas</string>
     <string name="purchase_not_found">Aplikasi tidak ditemukan</string>
     <string name="purchase_unsupported">Aplikasi tidak didukung</string>
     <string name="purchase_invalid">Aplikasi tidak dibeli</string>
@@ -238,7 +238,7 @@
     <string name="pref_ui_quick_exit">Keluar cepat</string>
     <string name="pref_ui_layout_tab">Pilih tab bawaan</string>
     <string name="pref_ui_layout">Tata letak</string>
-    <string name="pref_ui_title">Kostumisasi</string>
+    <string name="pref_ui_title">Kustomisasi</string>
     <string name="pref_ui_theme_title">Tema</string>
     <string name="pref_ui_theme_system">Mengikuti Sistem</string>
     <string name="pref_ui_theme_light">Terang</string>
@@ -265,8 +265,8 @@
     <string name="pref_filter_search_summary">Filter pencarian diatur ulang pada setiap pencarian. Matikan untuk menyimpan filter pencarian</string>
     <string name="dialog_desc_native_split">Anda tidak dapat memasang aplikasi bundled(split) melalui Native Installer. Ubah pemasang Anda ke Sesi, Layanan, atau Root.</string>
     <string name="device_miui_extra">Anda juga dapat memilih Pemasang asli, tetapi Anda tidak akan dapat menginstal APK yang dibundel (terpisah), jadi pilihan ada di tangan Anda.</string>
-    <string name="device_miui_description">Harap nonaktifkan pengoptimalan MIUI untuk mengizinkan pemasangan, jika tidak, Anda dapat memilih pemasang Root atau Layanan.</string>
-    <string name="device_miui_subtitle">Pemasang sesi tidak dapat memasang aplikasi karena Pengoptimalan MIUI.</string>
+    <string name="device_miui_description">Harap nonaktifkan optimisasi MIUI untuk mengizinkan pemasangan, jika tidak, Anda dapat memilih pemasang Root atau Layanan.</string>
+    <string name="device_miui_subtitle">Pemasang sesi tidak dapat memasang aplikasi karena Optimisasi MIUI.</string>
     <string name="device_huawei_description">Kami sarankan untuk menggunakan spoof perangkat jika Anda memiliki perangkat Huawei terbaru. Apakah Anda ingin menerapkan spoof sekarang\?</string>
     <string name="installer_service_unavailable">Pasang layanan Aurora 1.0.9 atau lebih baru atau ubah pemasang.</string>
     <string name="tab_trending">Sedang tren</string>
@@ -275,19 +275,19 @@
     <string name="onboarding_title_installer">Pemasang</string>
     <string name="onboarding_title_accent">Aksen</string>
     <string name="onboarding_permission_select">Aurora Store memerlukan izin sebagai berikut</string>
-    <string name="device_huawei_subtitle">Sepertinya anda menggunakan perangkat Huawei, karena pelarangan baru dari Google anda tidak dapat masuk.</string>
+    <string name="device_huawei_subtitle">Sepertinya Anda menggunakan perangkat Huawei, karena pelarangan baru dari Google Anda tidak dapat masuk.</string>
     <string name="installer_service_misconfigured">Atur layanan Aurora dan berikan seluruh izin terlebih dahulu.</string>
     <string name="purchase_failed">Pengunduhan Gagal</string>
-    <string name="toast_export_failed">Tidak bisa mengekspor konfigurasi perangkat</string>
+    <string name="toast_export_failed">Tidak dapat mengekspor konfigurasi perangkat</string>
     <string name="toast_export_success">Konfigurasi perangkat diekspor</string>
     <string name="pref_updates_extended_desc">Lihat untuk versi terbaru dari aplikasi yang dimatikan juga</string>
-    <string name="pref_updates_extended">pembaruan yang diperluas</string>
+    <string name="pref_updates_extended">Pembaruan yang diperluas</string>
     <string name="app_updater_service_notif_text">Aktifkan unduhan aplikasi di latar belakang</string>
     <string name="app_updater_service_notif_title">Unduhan aplikasi di latar belakang</string>
     <string name="notification_channel_updater_service">Layanan unduhan aplikasi di latar belakang</string>
     <string name="pref_install_mode_am">Pemasang AM.</string>
     <string name="account_anonymous_insecure">Anonim (tidak aman)</string>
-    <string name="installer_am_unavailable">Pasang Manajer Aplikasi atau ubah pemasang.</string>
+    <string name="installer_am_unavailable">Pasang App Manager atau ubah pemasang.</string>
     <string name="ui_accent_1">Biru</string>
     <string name="ui_accent_3">Merah</string>
     <string name="ui_accent_4">Emas</string>
@@ -323,11 +323,29 @@
     <string name="download_progress">Mengunduh • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
     <string name="session_scrapped">Sesi terakhir dihapus</string>
     <string name="pref_advanced_search_in_ctt_desc">Buka hasil pencarian di tab khusus perambah</string>
-    <string name="session_login_failed_google">Gagal bergabung melalui google</string>
+    <string name="session_login_failed_google">Gagal bergabung melalui Google</string>
     <string name="session_init">Sedang mempersiapkan…</string>
-    <string name="session_verifying_google">Memverifikasi sesi google</string>
-    <string name="title_advanced">Selanjutnya</string>
+    <string name="session_verifying_google">Memverifikasi sesi Google</string>
+    <string name="title_advanced">Lanjutan</string>
     <string name="update_available">Pembaruan tersedia</string>
     <string name="ui_accent_0">Sistem</string>
     <string name="expand">Memperluas</string>
+    <string name="pref_install_mode_shizuku">Pemasang Shizuku</string>
+    <string name="notification_updates_available_1"><xliff:g id="apps_count">%1$d</xliff:g> pembaruan tersedia</string>
+    <string name="notification_updates_available_desc_2"><xliff:g id="app_one_name">%1$s</xliff:g> dan <xliff:g id="app_two_name">%2$s</xliff:g></string>
+    <string name="notification_updates_available_desc_3"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g> dan <xliff:g id="app_three_name">%3$s</xliff:g></string>
+    <string name="requesting_new_session">Meminta sesi baru</string>
+    <string name="action_import">Impor</string>
+    <string name="downloading_dep">Mengunduh berkas tambahan untuk <xliff:g id="app">%1$s</xliff:g></string>
+    <string name="notification_updates_available"><xliff:g id="apps_count">%1$d</xliff:g> pembaruan tersedia</string>
+    <string name="pref_updates_check_desc">Secara otomatis memeriksa &amp; memberi tahu pembaruan aplikasi baru secara berkala</string>
+    <string name="installer_shizuku_unavailable">Shizuku tidak terpasang atau belum diatur dengan benar.</string>
+    <string name="toast_import_success">Konfigurasi perangkat diimpor</string>
+    <string name="toast_import_failed">Tidak dapat mengimpor konfigurasi perangkat</string>
+    <string name="notification_channel_updates">Notifikasi pembaruan</string>
+    <string name="server_maintenance">Server mati untuk pemeliharaan</string>
+    <string name="checking_for_updates">Mengecek pembaruan</string>
+    <string name="notification_updates_available_desc_1">Versi terbaru <xliff:g id="app_one_name">%1$s</xliff:g> sudah tersedia</string>
+    <string name="notification_updates_available_desc_4"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g>, <xliff:g id="app_three_name">%3$s</xliff:g> dan <xliff:g id="apps_count">%4$d</xliff:g> lainnya</string>
+    <string name="pref_updates_check">Cek pembaruan otomatis</string>
 </resources>
