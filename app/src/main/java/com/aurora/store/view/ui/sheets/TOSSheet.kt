@@ -29,9 +29,6 @@ import com.aurora.extensions.toast
 import com.aurora.store.R
 import com.aurora.store.databinding.SheetTosBinding
 import com.aurora.store.util.Preferences
-import nl.komponents.kovenant.task
-import java.util.concurrent.TimeUnit
-import kotlin.system.exitProcess
 
 class TOSSheet : BaseBottomSheet() {
 
@@ -82,13 +79,7 @@ class TOSSheet : BaseBottomSheet() {
         }
 
         B.btnSecondary.setOnClickListener {
-            toast("Bye Bye")
-            task {
-                TimeUnit.SECONDS.sleep(2)
-            } success {
-                requireActivity().finish();
-                exitProcess(0);
-            }
+            requireActivity().finish()
         }
     }
 }
