@@ -12,8 +12,8 @@
     <string name="toast_rated_success">ਰੇਟਿੰਗ ਸਫਲ</string>
     <string name="toast_page_unavailable">ਇਹ ਪੰਨਾ ਉਪਲਬੱਧ ਨਹੀਂ ਹੈ</string>
     <string name="toast_double_press_to_exit">ਐਪ ਚੋਂ ਬਾਹਰ ਜਾਣ ਲਈ ਦੋਬਾਰਾ ਦਬਾਓ</string>
-    <string name="toast_manual_available">ਮੁਬਾਰਕ ਹੋ, ਤੁਹਾਡੇ ਵੱਲੋਂ ਬੇਨਤੀ ਕੀਤਾ ਗਿਆ ਐਪ ਸੰਸਕਰਣ ਕੋਡ ਉਪਲਬੱਧ ਹੈ ਅਤੇ ਡਾਊਨਲੋਡ ਹੋ ਰਿਹਾ ਹੈ।</string>
-    <string name="toast_manual_unavailable">ਜਿਸ ਐਪ ਸੰਸਕਰਣ ਕੋਡ ਦੀ ਤੁਸੀਂ ਬੇਨਤੀ ਕੀਤੀ ਹੈ, ਉਹ ਉਪਲਬੱਧ ਨਹੀਂ ਹੈ।</string>
+    <string name="toast_manual_available">ਮੁਬਾਰਕ ਹੋ, ਤੁਹਾਡੇ ਵੱਲੋਂ ਬੇਨਤੀ ਕੀਤਾ ਗਿਆ ਸੰਸਕਰਣ ਕੋਡ ਉਪਲਬੱਧ ਹੈ ਅਤੇ ਡਾਊਨਲੋਡ ਹੋ ਰਿਹਾ ਹੈ।</string>
+    <string name="toast_manual_unavailable">ਜਿਸ ਸੰਸਕਰਣ ਕੋਡ ਦੀ ਤੁਸੀਂ ਬੇਨਤੀ ਕੀਤੀ ਹੈ, ਉਹ ਮੌਜੂਦ ਨਹੀਂ।</string>
     <string name="toast_purchase_blocked">ਅਗਿਆਤ ਲੌਗ-ਇਨ ਜ਼ਰੀਏ ਐਪਸ ਖਰੀਦਣਾ ਮੁਮਕਿਨ ਨਹੀਂ ਹੈ।</string>
     <string name="toast_spoof_applied">ਡਿਵਾਈਸ ਧੋਖਾ ਮੋਡ ਲਾਗੂ ਹੋ ਗਿਆ ਹੈ।</string>
     <string name="toast_developer_setting_failed">ਪਹਿਲਾਂ ਡਿਵਾਈਸ ਸੈਟਿੰਗਾਂ ਚੋਂ ਡਿਵੈਲਪਰ ਸੈਟਿੰਗਾਂ ਨੂੰ ਚਾਲੂ ਕਰੋ।</string>
@@ -31,7 +31,7 @@
     <string name="title_library">ਲਾਇਬ੍ਰੇਰੀ</string>
     <string name="title_language">ਭਾਸ਼ਾ</string>
     <string name="title_installer">ਐਪ ਇੰਸਟਾਲਰ</string>
-    <string name="title_installed">ਇੰਸਟਾਲਡ</string>
+    <string name="title_installed">ਇੰਸਟਾਲ ਕੀਤੇ</string>
     <string name="title_installation">ਇੰਸਟਾਲੇਸ਼ਨ</string>
     <string name="title_games">ਗੇਮਜ਼</string>
     <string name="title_download_playstore">ਪਲੇਅ ਸਟੋਰ</string>
@@ -45,7 +45,7 @@
     <string name="title_account_manager">ਸਾਰੇ ਖ਼ਾਤੇ</string>
     <string name="title_about">ਇਸ ਐਪ ਬਾਰੇ ਹੋਰ ਜਾਣੋ</string>
     <string name="tab_trending">ਰੁਝਾਨ ਵਿੱਚ</string>
-    <string name="tab_top_grossing">ਕੁੱਲ ਟੌਪ</string>
+    <string name="tab_top_grossing">ਟੌਪ ਕਮਾਈ ਵਾਲੇ</string>
     <string name="tab_top_free">ਟੌਪ ਫ੍ਰੀ ਐਪਸ</string>
     <string name="tab_top_charts">ਟੌਪ ਸੂਚੀ</string>
     <string name="tab_for_you">ਖ਼ਾਸ ਤੁਹਾਡੇ ਵਾਸਤੇ</string>
@@ -56,7 +56,7 @@
     <string name="purchase_session_expired">ਪੁਰਾਣੇ ਸੈਸ਼ਨ ਦੀ ਮਿਆਦ ਖ਼ਤਮ, ਨਵਾਂ ਸੈਸ਼ਨ ਪ੍ਰਾਪਤ ਕਰਨ ਲਈ ਕਿਰਪਾ ਕਰਕੇ ਦੋਬਾਰਾ ਲੌਗ-ਇਨ ਕਰੋ।</string>
     <string name="purchase_no_file">ਫਾਈਲ ਡਾਊਨਲੋਡ ਕਰਨ ਚ ਅਸਮਰੱਥ</string>
     <string name="purchase_not_found">ਕੋਈ ਮੇਲ ਖਾਂਦੀ ਐਪ ਮੌਜੂਦ ਨਹੀਂ ਹੈ</string>
-    <string name="purchase_unsupported">ਇਹ ਐਪ ਇਸ ਫੋਨ ਨਾਲ ਮੇਲ ਨਹੀਂ ਖਾਂਦੀ</string>
+    <string name="purchase_unsupported">ਐਪ ਸਪੋਰਟਡ ਨਹੀਂ</string>
     <string name="purchase_invalid">ਇਹ ਐਪ ਅਜੇ ਤੁਹਾਡੇ ਵਲੋਂ ਖਰੀਦਿਆ ਨਹੀਂ ਗਿਆ</string>
     <string name="purchase_failed">ਡਾਊਨਲੋਡ ਫੇਲ੍ਹ</string>
     <string name="pref_updates_extended_desc">ਸਿਸਟਮ ਵਲੋਂ ਬੰਦ ਕੀਤੀਆਂ ਗਈਆਂ ਐਪਸ ਦੇ ਅੱਪਡੇਟ ਵੀ ਸੂਚੀ ਵਿੱਚ ਵਿਖਾਓ</string>
@@ -184,7 +184,7 @@
     <string name="details_ratings">ਰੇਟਿੰਗਸ ਤੇ ਸਮੀਖਿਆਵਾਂ</string>
     <string name="details_privacy">ਨਿੱਜਤਾ</string>
     <string name="details_permission">ਆਗਿਆਵਾਂ</string>
-    <string name="tab_top_paid">ਟੌਪ ਖ੍ਰੀਦਣਯੋਗ</string>
+    <string name="tab_top_paid">ਟੌਪ ਖ੍ਰੀਦੇ ਜਾਣ ਵਾਲੇ</string>
     <string name="details_paid">ਭੁਗਤਾਨ</string>
     <string name="details_no_updates">ਕੋਈ ਅੱਪਡੇਟ ਨਹੀਂ ਉਪਲਬੱਧ</string>
     <string name="details_no_permission">ਕੋਈ ਆਗਿਆਵਾਂ ਨਹੀਂ</string>
