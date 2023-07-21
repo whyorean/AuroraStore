@@ -160,10 +160,6 @@ dependencies {
     //Fetch - Downloader
     implementation "androidx.tonyodev.fetch2:xfetch2:3.1.6"
 
-    //Kovenant
-    implementation "nl.komponents.kovenant:kovenant:3.3.0"
-    implementation "nl.komponents.kovenant:kovenant-android:3.3.0"
-
     //EventBus
     implementation "org.greenrobot:eventbus:3.3.1"
 

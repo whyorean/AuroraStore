@@ -35,8 +35,6 @@ import com.aurora.store.util.CommonUtil
 import com.aurora.store.util.PackageUtil
 import com.tonyodev.fetch2.Fetch
 import java.util.ArrayList
-import nl.komponents.kovenant.android.startKovenant
-import nl.komponents.kovenant.android.stopKovenant
 import org.lsposed.hiddenapibypass.HiddenApiBypass
 
 class AuroraApplication : Application() {
@@ -77,8 +75,6 @@ class AuroraApplication : Application() {
             .with(this)
             .bind()
 
-        startKovenant()
-
         CommonUtil.cleanupInstallationSessions(applicationContext)
     }
 
@@ -86,7 +82,6 @@ class AuroraApplication : Application() {
         NetworkProvider
             .with(this)
             .unbind()
-        stopKovenant()
         super.onTerminate()
     }
 

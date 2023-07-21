@@ -81,10 +81,6 @@
 -dontwarn retrofit2.KotlinExtensions
 -dontwarn retrofit2.KotlinExtensions$*
 
-#Kovenant
--dontwarn rx.internal.util.unsafe.**
--dontwarn nl.komponents.kovenant.unsafe.**
-
 -dontwarn okio.**
 -keep class com.google.**
 -dontwarn com.google.**
