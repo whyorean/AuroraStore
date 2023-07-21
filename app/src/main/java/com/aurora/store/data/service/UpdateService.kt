@@ -30,9 +30,11 @@ import com.tonyodev.fetch2.*
 import com.tonyodev.fetch2core.DownloadBlock
 import com.tonyodev.fetch2core.FetchObserver
 import com.tonyodev.fetch2core.Reason
-import nl.komponents.kovenant.task
-import nl.komponents.kovenant.ui.failUi
-import nl.komponents.kovenant.ui.successUi
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
@@ -80,6 +82,10 @@ class UpdateService: LifecycleService() {
 
     private var installing = HashSet<String>()
     private var lock = ReentrantLock()
+
+    // Coroutine
+    private val job = SupervisorJob()
+    private val serviceScope = CoroutineScope(Dispatchers.IO + job)
 
     fun putInInstalling(packageName: String?) {
         if (packageName == null) {
@@ -476,84 +482,102 @@ class UpdateService: LifecycleService() {
 
     fun updateApp(app: App, removeExisiting: Boolean = false) {
         putInInstalling(app.packageName)
-        task {
-            val files = purchaseHelper.purchase(
-                app.packageName,
-                app.versionCode,
-                app.offerType
-            )
+        serviceScope.launch {
+            try {
+                val files = purchaseHelper.purchase(
+                    app.packageName,
+                    app.versionCode,
+                    app.offerType
+                )
 
-            if (app.dependencies.dependentLibraries.isNotEmpty() && isOAndAbove()) {
-                app.dependencies.dependentLibraries.forEach {
-                    if (!isSharedLibraryInstalled(this,  it.packageName, it.versionCode)) {
-                        it.displayName = getString(R.string.downloading_dep, app.displayName)
-                        it.iconArtwork = app.iconArtwork
-
-                        updateApp(it, removeExisiting)
-                        while (containsInInstalling(it.packageName) ||
-                            !isSharedLibraryInstalled(this, it.packageName, it.versionCode)
+                if (app.dependencies.dependentLibraries.isNotEmpty() && isOAndAbove()) {
+                    app.dependencies.dependentLibraries.forEach {
+                        if (!isSharedLibraryInstalled(
+                                this@UpdateService,
+                                it.packageName,
+                                it.versionCode
+                            )
                         ) {
-                            Thread.sleep(1000)
+                            it.displayName = getString(R.string.downloading_dep, app.displayName)
+                            it.iconArtwork = app.iconArtwork
+
+                            updateApp(it, removeExisiting)
+                            while (containsInInstalling(it.packageName) ||
+                                !isSharedLibraryInstalled(
+                                    this@UpdateService,
+                                    it.packageName,
+                                    it.versionCode
+                                )
+                            ) {
+                                delay(1000)
+                            }
                         }
                     }
                 }
-            }
 
-            files.filter { it.url.isNotEmpty() }
-                .map { RequestBuilder.buildRequest(this, app, it) }
-                .toList()
-        } successUi { requests ->
-            if (requests.isNotEmpty()) {
-                if (removeExisiting) {
-                    /*Remove old fetch group if downloaded earlier, mostly in case of updates*/
-                    fetch.deleteGroup(app.getGroupId(this))
+                val requests = files.filter { it.url.isNotEmpty() }
+                    .map { RequestBuilder.buildRequest(this@UpdateService, app, it) }
+                    .toList()
+
+                if (requests.isNotEmpty()) {
+                    if (removeExisiting) {
+                        /*Remove old fetch group if downloaded earlier, mostly in case of updates*/
+                        fetch.deleteGroup(app.getGroupId(this@UpdateService))
+                    }
+                    fetch.enqueue(requests) {
+                        Log.i("Updating ${app.displayName}")
+                    }
+                } else {
+                    removeFromInstalling(app.packageName)
+                    Log.e("Failed to download : ${app.displayName}")
+                    appMetadataListeners.forEach {
+                        it.onAppMetadataStatusError(
+                            getString(R.string.purchase_session_expired),
+                            app
+                        )
+                    }
+
+                    if (appMetadataListeners.isEmpty()) {
+                        appMetadataPendingEvents.add(
+                            AppMetadataStatus(
+                                getString(R.string.purchase_session_expired),
+                                app
+                            )
+                        )
+                    }
                 }
-                fetch.enqueue(requests) {
-                    Log.i("Updating ${app.displayName}")
-                }
-            } else {
+            } catch (exception: Exception) {
                 removeFromInstalling(app.packageName)
-                Log.e("Failed to download : ${app.displayName}")
+                var reason = "Unknown"
+
+                when (exception) {
+                    is ApiException.AppNotPurchased -> {
+                        reason = getString(R.string.purchase_invalid)
+                    }
+
+                    is ApiException.AppNotFound -> {
+                        reason = getString(R.string.purchase_not_found)
+                    }
+
+                    is ApiException.AppNotSupported -> {
+                        reason = getString(R.string.purchase_unsupported)
+                    }
+
+                    is ApiException.EmptyDownloads -> {
+                        reason = getString(R.string.purchase_no_file)
+                    }
+                }
+
                 appMetadataListeners.forEach {
-                    it.onAppMetadataStatusError(getString(R.string.purchase_session_expired), app)
+                    it.onAppMetadataStatusError(reason, app)
                 }
 
                 if (appMetadataListeners.isEmpty()) {
-                    appMetadataPendingEvents.add(AppMetadataStatus(getString(R.string.purchase_session_expired), app))
+                    appMetadataPendingEvents.add(AppMetadataStatus(reason, app))
                 }
+
+                Log.e("Failed to purchase ${app.displayName} : $reason")
             }
-        } failUi { failException ->
-            removeFromInstalling(app.packageName)
-            var reason = "Unknown"
-
-            when (failException) {
-                is ApiException.AppNotPurchased -> {
-                    reason = getString(R.string.purchase_invalid)
-                }
-
-                is ApiException.AppNotFound -> {
-                    reason = getString(R.string.purchase_not_found)
-                }
-
-                is ApiException.AppNotSupported -> {
-                    reason = getString(R.string.purchase_unsupported)
-                }
-
-                is ApiException.EmptyDownloads -> {
-                    reason = getString(R.string.purchase_no_file)
-                }
-            }
-
-            appMetadataListeners.forEach {
-                it.onAppMetadataStatusError(reason, app)
-            }
-
-            if (appMetadataListeners.isEmpty()) {
-                appMetadataPendingEvents.add(AppMetadataStatus(reason, app))
-            }
-
-
-            Log.e("Failed to purchase ${app.displayName} : $reason")
         }
     }
 
@@ -580,30 +604,18 @@ class UpdateService: LifecycleService() {
         }
         putInInstalling(packageName)
         files?.let { downloads ->
-            var filesExist = true
-
-            downloads.forEach { download ->
-                filesExist = filesExist && File(download.file).exists()
-            }
-
-            if (filesExist) {
-                task {
+            if (downloads.all { File(it.file).exists() }) {
+                serviceScope.launch {
                     try {
-                        val installer = AppInstaller.getInstance(this)
-                            .getPreferredInstaller()
-                        installer.install(
-                            packageName,
-                            files
-                                .filter { it.file.endsWith(".apk") }
-                                .map { it.file }.toList()
-                        )
-                    } catch (th: Throwable) {
+                        AppInstaller.getInstance(this@UpdateService).getPreferredInstaller()
+                            .install(
+                                packageName,
+                                files.filter { it.file.endsWith(".apk") }.map { it.file }.toList()
+                            )
+                    } catch (exception: Exception) {
                         removeFromInstalling(packageName)
-                        th.printStackTrace()
+                        Log.e(exception.stackTraceToString())
                     }
-                }.fail {
-                    removeFromInstalling(packageName)
-                    Log.e(it.stackTraceToString())
                 }
             } else {
                 removeFromInstalling(packageName)
