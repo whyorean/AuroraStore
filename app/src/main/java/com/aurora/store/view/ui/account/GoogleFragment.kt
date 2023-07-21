@@ -90,12 +90,15 @@ class GoogleFragment : Fragment(R.layout.fragment_google) {
             webViewClient = object : WebViewClient() {
                 override fun onPageFinished(view: WebView, url: String) {
                     val cookies = CookieManager.getInstance().getCookie(url)
-                    val cookieMap = AC2DMUtil.parseCookieString(cookies)
-                    if (cookieMap.isNotEmpty() && cookieMap[AUTH_TOKEN] != null) {
-                        val oauthToken = cookieMap[AUTH_TOKEN]
-                        evaluateJavascript(JS_SCRIPT) {
-                            val email = it.replace("\"".toRegex(), "")
-                            viewModel.buildAuthData(view.context, email, oauthToken)
+                    // cookies can be null if there is an error
+                    if (cookies != null) {
+                        val cookieMap = AC2DMUtil.parseCookieString(cookies)
+                        if (cookieMap.isNotEmpty() && cookieMap[AUTH_TOKEN] != null) {
+                            val oauthToken = cookieMap[AUTH_TOKEN]
+                            evaluateJavascript(JS_SCRIPT) {
+                                val email = it.replace("\"".toRegex(), "")
+                                viewModel.buildAuthData(view.context, email, oauthToken)
+                            }
                         }
                     }
                 }
