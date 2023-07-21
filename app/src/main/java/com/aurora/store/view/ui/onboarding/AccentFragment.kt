@@ -125,7 +125,7 @@ class AccentFragment : BaseFragment() {
     }
 
     private fun updateAccent(accentId: Int) {
-        applyTheme(themeId, position = 3)
+        applyTheme(themeId, false)
         save(PREFERENCE_THEME_ACCENT, accentId)
     }
 
