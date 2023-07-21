@@ -366,4 +366,9 @@
     <string name="pref_updates_check">Automated updates check</string>
     <string name="pref_updates_check_desc">Automatically check &amp; notify for new app updates periodically</string>
     <string name="failed_to_fetch_report">Failed to fetch privacy report</string>
+    <string name="access_denied_using_vpn">Access denied! Are you using VPN or Tor?</string>
+    <string name="bad_request">Internal error! Please retry after sometime</string>
+    <string name="login_rate_limited">Oops, You are rate limited</string>
+    <string name="server_unreachable">Server unreachable</string>
+    <string name="failed_generating_session">Failed to generate session, error code: <xliff:g id="status_code">%1$d</xliff:g></string>
 </resources>

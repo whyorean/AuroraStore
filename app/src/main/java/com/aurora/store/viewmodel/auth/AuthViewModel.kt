@@ -26,6 +26,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.aurora.Constants
 import com.aurora.gplayapi.data.models.AuthData
+import com.aurora.gplayapi.data.models.PlayResponse
 import com.aurora.gplayapi.data.providers.DeviceInfoProvider
 import com.aurora.gplayapi.helpers.AuthHelper
 import com.aurora.gplayapi.helpers.AuthValidator
@@ -132,13 +133,7 @@ class AuthViewModel(application: Application) : BaseAndroidViewModel(application
                     authData.isAnonymous = true
                     verifyAndSaveAuth(authData, AccountType.ANONYMOUS)
                 } else {
-                    val ctx = getApplication() as Context
-                    when (playResponse.code) {
-                        404 -> throw Exception("Server unreachable")
-                        429 -> throw Exception("Oops, You are rate limited")
-                        503 -> throw Exception(ctx.getString(R.string.server_maintenance))
-                        else -> throw Exception(playResponse.errorString)
-                    }
+                    throwError(playResponse, getApplication())
                 }
             } catch (exception: Exception) {
                 updateStatus(exception.message.toString())
@@ -163,37 +158,27 @@ class AuthViewModel(application: Application) : BaseAndroidViewModel(application
                         Constants.URL_DISPENSER
                     )
 
-                val insecureAuth: InsecureAuth
-
                 if (playResponse.isSuccessful) {
-                    insecureAuth = gson.fromJson(
+                    val insecureAuth = gson.fromJson(
                         String(playResponse.responseBytes),
                         InsecureAuth::class.java
                     )
+
+                    val deviceInfoProvider =
+                        DeviceInfoProvider(properties, Locale.getDefault().toString())
+                    val authData = AuthHelper.buildInsecure(
+                        insecureAuth.email,
+                        insecureAuth.auth,
+                        Locale.getDefault(),
+                        deviceInfoProvider
+                    )
+
+                    //Set AuthData as anonymous
+                    authData.isAnonymous = true
+                    verifyAndSaveAuth(authData, AccountType.ANONYMOUS)
                 } else {
-                    when (playResponse.code) {
-                        404 -> throw Exception("Server unreachable")
-                        429 -> throw Exception("Oops, You are rate limited")
-                        503 -> throw Exception(
-                            (getApplication() as Context).getString(R.string.server_maintenance)
-                        )
-
-                        else -> throw Exception(playResponse.errorString)
-                    }
+                    throwError(playResponse, getApplication())
                 }
-
-                val deviceInfoProvider =
-                    DeviceInfoProvider(properties, Locale.getDefault().toString())
-                val authData = AuthHelper.buildInsecure(
-                    insecureAuth.email,
-                    insecureAuth.auth,
-                    Locale.getDefault(),
-                    deviceInfoProvider
-                )
-
-                //Set AuthData as anonymous
-                authData.isAnonymous = true
-                verifyAndSaveAuth(authData, AccountType.ANONYMOUS)
             } catch (exception: Exception) {
                 updateStatus(exception.message.toString())
                 Log.e(TAG, "Failed to generate Session", exception)
@@ -331,5 +316,28 @@ class AuthViewModel(application: Application) : BaseAndroidViewModel(application
 
     private fun updateStatus(status: String) {
         liveData.postValue(AuthState.Status(status))
+    }
+
+    @Throws(Exception::class)
+    private fun throwError(playResponse: PlayResponse, context: Context) {
+        when (playResponse.code) {
+            400 -> throw Exception(context.getString(R.string.bad_request))
+            403 -> throw Exception(context.getString(R.string.access_denied_using_vpn))
+            404 -> throw Exception(context.getString(R.string.server_unreachable))
+            429 -> throw Exception(context.getString(R.string.login_rate_limited))
+            503 -> throw Exception(context.getString(R.string.server_maintenance))
+            else -> {
+                if (playResponse.errorString.isNotBlank()) {
+                    throw Exception(playResponse.errorString)
+                } else {
+                    throw Exception(
+                        context.getString(
+                            R.string.failed_generating_session,
+                            playResponse.code
+                        )
+                    )
+                }
+            }
+        }
     }
 }
