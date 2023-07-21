@@ -110,4 +110,8 @@
     <style name="AppTheme.SwitchPreference" parent="@style/Preference.SwitchPreferenceCompat.Material">
         <item name="widgetLayout">@layout/preference_material_switch</item>
     </style>
+
+    <style name="AppTheme.BottomSheet" parent="ThemeOverlay.Material3.DayNight.BottomSheetDialog">
+        <item name="android:navigationBarColor">?colorSurface</item>
+    </style>
 </resources>

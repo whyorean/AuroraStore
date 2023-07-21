@@ -45,7 +45,7 @@ abstract class BaseBottomSheet : BottomSheetDialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val bottomSheetDialog = BottomSheetDialog(
             requireContext(),
-            R.style.Theme_Material3_DayNight_BottomSheetDialog
+            R.style.AppTheme_BottomSheet
         )
 
         VM = SheetBaseBinding.inflate(layoutInflater)
