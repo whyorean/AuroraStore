@@ -28,21 +28,21 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Environment
 import android.provider.Settings
-import android.view.MenuItem
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.addCallback
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.activity.viewModels
 import androidx.annotation.IdRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.ColorUtils
 import androidx.core.view.GravityCompat
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -51,23 +51,22 @@ import com.aurora.Constants
 import com.aurora.extensions.*
 import com.aurora.gplayapi.data.models.AuthData
 import com.aurora.store.data.model.SelfUpdate
-import com.aurora.store.data.network.HttpClient
 import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.data.providers.NetworkProvider
 import com.aurora.store.databinding.ActivityMainBinding
-import com.aurora.store.util.CertUtil.isFDroidApp
 import com.aurora.store.util.Log
 import com.aurora.store.util.Preferences
 import com.aurora.store.view.ui.sheets.NetworkDialogSheet
 import com.aurora.store.view.ui.sheets.SelfUpdateSheet
 import com.aurora.store.view.ui.sheets.TOSSheet
+import com.aurora.store.viewmodel.MainViewModel
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.elevation.SurfaceColors
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
-import nl.komponents.kovenant.task
-import nl.komponents.kovenant.ui.successUi
+import kotlinx.coroutines.flow.drop
+import kotlinx.coroutines.launch
 import java.lang.reflect.Modifier
 
 
@@ -76,6 +75,8 @@ class MainActivity : AppCompatActivity(), NetworkProvider.NetworkListener {
     private lateinit var B: ActivityMainBinding
     private lateinit var navController: NavController
     private lateinit var authData: AuthData
+
+    private val viewModel: MainViewModel by viewModels()
 
     private val startForPermissions =
         registerForActivityResult(ActivityResultContracts.RequestPermission()) {
@@ -184,7 +185,16 @@ class MainActivity : AppCompatActivity(), NetworkProvider.NetworkListener {
         }
 
         /* Check self update only for stable release, skip debug & nightlies*/
-        if (BuildConfig.APPLICATION_ID == Constants.APP_ID) checkSelfUpdate()
+        if (BuildConfig.APPLICATION_ID == Constants.APP_ID) viewModel.checkSelfUpdate(this)
+        this.lifecycleScope.launch {
+            viewModel.selfUpdateAvailable.collect {
+                if (it != null) {
+                    showUpdatesSheet(it)
+                } else {
+                    Log.i("No self-update available")
+                }
+            }
+        }
 
         // Handle quick exit from back actions
         onBackPressedDispatcher.addCallback(this) {
@@ -282,37 +292,6 @@ class MainActivity : AppCompatActivity(), NetworkProvider.NetworkListener {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             if (!Environment.isExternalStorageManager())
                 startActivity(Intent(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION))
-        }
-    }
-
-    private fun checkSelfUpdate() {
-        task {
-            HttpClient.getPreferredClient().get(Constants.UPDATE_URL, mapOf())
-        } successUi { playResponse ->
-            if (playResponse.isSuccessful) {
-                val selfUpdate = gson.fromJson(
-                    String(playResponse.responseBytes),
-                    SelfUpdate::class.java
-                )
-
-                selfUpdate?.let { it ->
-                    if (it.versionCode > BuildConfig.VERSION_CODE) {
-                        if (isFDroidApp(this, BuildConfig.APPLICATION_ID)) {
-                            if (it.fdroidBuild.isNotEmpty()) {
-                                showUpdatesSheet(it)
-                            }
-                        } else if (it.auroraBuild.isNotEmpty()) {
-                            showUpdatesSheet(it)
-                        } else {
-                            Log.i(getString(R.string.details_no_updates))
-                        }
-                    } else {
-                        Log.i(getString(R.string.details_no_updates))
-                    }
-                }
-            } else {
-                Log.e("Failed to check self update")
-            }
         }
     }
 
