@@ -1,13 +1,13 @@
 package com.aurora.store.data.service
 
 import android.app.Notification
-import android.app.Service
 import android.content.Intent
 import android.os.Build
 import android.os.IBinder
 import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.LifecycleService
 import com.aurora.Constants
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.File
@@ -23,12 +23,15 @@ import com.aurora.store.util.Log
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.tonyodev.fetch2.*
-import nl.komponents.kovenant.task
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import java.lang.reflect.Modifier
 import java.util.*
-import java.util.concurrent.TimeUnit
 
-class SelfUpdateService : Service() {
+class SelfUpdateService : LifecycleService() {
     private lateinit var app: App
     private lateinit var fetch: Fetch
     private lateinit var fetchListener: FetchListener
@@ -39,12 +42,18 @@ class SelfUpdateService : Service() {
 
     private val hashCode = BuildConfig.APPLICATION_ID.hashCode()
 
+    // Coroutine
+    private val job = SupervisorJob()
+    private val serviceScope = CoroutineScope(Dispatchers.IO + job)
+
     override fun onBind(intent: Intent): IBinder? {
+        super.onBind(intent)
         return null
     }
 
-    override fun onStartCommand(intent: Intent, flags: Int, startId: Int): Int {
-        val rawSelfUpdate = intent.getStringExtra(Constants.STRING_EXTRA)
+    override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
+        super.onStartCommand(intent, flags, startId)
+        val rawSelfUpdate = intent?.getStringExtra(Constants.STRING_EXTRA)
         if (rawSelfUpdate?.isNotBlank() == true) {
             val selfUpdate = gson.fromJson(rawSelfUpdate, SelfUpdate::class.java)
             selfUpdate?.let {
@@ -67,6 +76,11 @@ class SelfUpdateService : Service() {
             )
             startForeground(1, notification)
         }
+    }
+
+    override fun onDestroy() {
+        job.cancel()
+        super.onDestroy()
     }
 
     private fun destroyService() {
@@ -154,9 +168,8 @@ class SelfUpdateService : Service() {
                         Log.e("Self update : ${e.stackTraceToString()}")
                     }
 
-                    task {
-                        TimeUnit.SECONDS.sleep(10)
-                    } success {
+                    serviceScope.launch {
+                        delay(10000)
                         destroyService()
                     }
                 }
