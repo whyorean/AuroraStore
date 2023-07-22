@@ -321,7 +321,7 @@
     <string name="session_scrapped">L’ultima sessione è stata annullata</string>
     <string name="session_verifying_google">Verifica della sessione di Google</string>
     <string name="update_available">aggiornamento disponibile</string>
-    <string name="rate_limited">Ops, questo conto è a debito limitato!</string>
+    <string name="rate_limited">Ops, questo account è stato limitato!</string>
     <string name="error">Si è verificato un errore!</string>
     <string name="menu">Menù</string>
     <string name="expand">Espandi</string>
