@@ -119,7 +119,6 @@
     <string name="onboarding_permission_installer_desc">Разрешете инсталирането на приложения от Aurora Store</string>
     <string name="pref_common_extra">Екстри</string>
     <string name="details_privacy">поверителност</string>
-    <string name="pref_ui_quick_exit">Бърз изход</string>
     <string name="toast_abandon_sessions">Старите инсталационни сесии са изоставени</string>
     <string name="download_cancel_all">Отмени всички</string>
     <string name="action_search">Търси</string>
@@ -298,11 +297,8 @@
     <string name="pref_install_delete_title">Изтриване на APK след инсталиране</string>
     <string name="pref_install_profile_summary">Изберете целевия профил, в който да инсталирате приложения. Работи само с root инсталационния метод</string>
     <string name="pref_install_profile_title">Инсталационни профили (експериментално)</string>
-    <string name="pref_ui_layout">Оформление</string>
-    <string name="pref_ui_quick_exit_desc">Изход от приложението при еднократно действие назад</string>
     <string name="pref_ui_theme_dark">Тъмно</string>
     <string name="pref_ui_theme_title">Тема</string>
-    <string name="pref_ui_layout_tab">Изберете раздела по подразбиране</string>
     <string name="pref_ui_title">Персонализиране</string>
     <string name="pref_ui_no_for_you">Страници за вас</string>
     <string name="pref_advanced_search_in_ctt_desc">Отваря резултатите от търсенето в персонализирания раздел на браузъра</string>
