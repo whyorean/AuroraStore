@@ -332,4 +332,20 @@
     <string name="expand">展開する</string>
     <string name="open_in_aurora">Aurora Storeで開く</string>
     <string name="permissions_denied">必要な権限が拒否されました。続けるためには許可してください</string>
+    <string name="notification_updates_available">更新があります：<xliff:g id="apps_count">%1$d</xliff:g></string>
+    <string name="pref_install_mode_shizuku">Shizuku インストーラー</string>
+    <string name="installer_shizuku_unavailable">Shizuku がインストールされていないか、正常に動作していません。</string>
+    <string name="downloading_dep">追加ファイルをダウンロードしています：<xliff:g id="app">%1$s</xliff:g></string>
+    <string name="notification_updates_available_desc_3"><xliff:g id="app_one_name">%1$s</xliff:g> と <xliff:g id="app_two_name">%2$s</xliff:g> 及び <xliff:g id="app_three_name">%3$s</xliff:g></string>
+    <string name="notification_updates_available_desc_4"><xliff:g id="app_one_name">%1$s</xliff:g> と <xliff:g id="app_two_name">%2$s</xliff:g> ､ <xliff:g id="app_three_name">%3$s</xliff:g> 及び <xliff:g id="apps_count">%4$d</xliff:g> その他</string>
+    <string name="action_import">インポート</string>
+    <string name="notification_channel_updates">通知の更新</string>
+    <string name="notification_updates_available_1">更新があります：<xliff:g id="apps_count">%1$d</xliff:g></string>
+    <string name="notification_updates_available_desc_1">新しいバージョンがあります：<xliff:g id="app_one_name">%1$s</xliff:g></string>
+    <string name="checking_for_updates">更新を確認しています</string>
+    <string name="pref_updates_check">自動で更新を確認する</string>
+    <string name="pref_updates_check_desc">自動で更新を確認し、アプリの更新を通知します</string>
+    <string name="toast_import_success">端末設定をインポートしました</string>
+    <string name="toast_import_failed">端末設定をインポートできませんでした</string>
+    <string name="notification_updates_available_desc_2"><xliff:g id="app_one_name">%1$s</xliff:g> と <xliff:g id="app_two_name">%2$s</xliff:g></string>
 </resources>
