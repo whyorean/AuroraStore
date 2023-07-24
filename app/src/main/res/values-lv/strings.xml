@@ -246,7 +246,7 @@
     <string name="toast_developer_setting_failed">Ierīcē jāieslēdz izstrādātāja iestatījumi, lai tos varētu atvērt.</string>
     <string name="toast_spoof_applied">Ierīces atdarināšana ir spēkā.</string>
     <string name="toast_manual_unavailable">Pieprasītais laidiens nav pieejams.</string>
-    <string name="toast_manual_available">Apsveicam! Pieprasītais laidiens ir pieejams, tas tiek tagad lejupielādēts.</string>
+    <string name="toast_manual_available">Apsveicam! Pieprasītais laidiens ir pieejams, tas tagad tiek lejupielādēts.</string>
     <string name="installer_shizuku_unavailable">Shizuku nav uzstādīta vai pareizi iestatīta.</string>
     <string name="pref_install_profile_summary">Atlasīt profilu, kurā uzstādīt lietotnes. Darbojas tikai ar superlietotāja uzstādīšanas veidu</string>
     <string name="about_xda_summary">Skatīt apspriedes un ieteikumus Aurora veikala XDA pavedienā.</string>
