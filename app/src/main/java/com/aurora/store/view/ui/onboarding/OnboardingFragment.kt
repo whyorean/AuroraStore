@@ -75,6 +75,10 @@ class OnboardingFragment : Fragment(R.layout.fragment_onboarding) {
         binding.btnBackward.setOnClickListener {
             moveBackward()
         }
+
+        if (!Preferences.getBoolean(view.context, Preferences.PREFERENCE_TOS_READ)) {
+            findNavController().navigate(R.id.TOSSheet)
+        }
     }
 
     override fun onDestroyView() {

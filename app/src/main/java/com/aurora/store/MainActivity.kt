@@ -58,14 +58,12 @@ import com.aurora.store.util.Log
 import com.aurora.store.util.Preferences
 import com.aurora.store.view.ui.sheets.NetworkDialogSheet
 import com.aurora.store.view.ui.sheets.SelfUpdateSheet
-import com.aurora.store.view.ui.sheets.TOSSheet
 import com.aurora.store.viewmodel.MainViewModel
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.elevation.SurfaceColors
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
-import kotlinx.coroutines.flow.drop
 import kotlinx.coroutines.launch
 import java.lang.reflect.Modifier
 
@@ -158,16 +156,6 @@ class MainActivity : AppCompatActivity(), NetworkProvider.NetworkListener {
         attachNavigation()
         attachDrawer()
         attachSearch()
-
-        if (!Preferences.getBoolean(this, Preferences.PREFERENCE_TOS_READ)) {
-            runOnUiThread {
-                if (!supportFragmentManager.isDestroyed) {
-                    val sheet = TOSSheet.newInstance()
-                    sheet.isCancelable = false
-                    sheet.show(supportFragmentManager, TOSSheet.TAG)
-                }
-            }
-        }
 
         /*Check only if download to external storage is enabled*/
         if (Preferences.getBoolean(this, Preferences.PREFERENCE_DOWNLOAD_EXTERNAL)) {
