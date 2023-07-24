@@ -22,6 +22,8 @@ package com.aurora.store.view.ui.preferences
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.widget.Toolbar
+import androidx.navigation.fragment.findNavController
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import com.aurora.extensions.isOAndAbove
@@ -74,6 +76,11 @@ class InstallationPreference : PreferenceFragmentCompat() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        view.findViewById<Toolbar>(R.id.toolbar)?.apply {
+            title = getString(R.string.title_installation)
+            setNavigationOnClickListener { findNavController().navigateUp() }
+        }
 
         if (AppInstaller.hasShizuku(requireContext()) && isOAndAbove()) {
             Shizuku.addBinderReceivedListenerSticky(shizukuAliveListener)

@@ -21,6 +21,8 @@ package com.aurora.store.view.ui.preferences
 
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.widget.Toolbar
+import androidx.navigation.fragment.findNavController
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.SwitchPreferenceCompat
@@ -35,6 +37,11 @@ class DownloadPreference : PreferenceFragmentCompat() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        view.findViewById<Toolbar>(R.id.toolbar)?.apply {
+            title = getString(R.string.pref_app_download)
+            setNavigationOnClickListener { findNavController().navigateUp() }
+        }
 
         val downloadExternalPreference: SwitchPreferenceCompat? =
             findPreference(Preferences.PREFERENCE_DOWNLOAD_EXTERNAL)

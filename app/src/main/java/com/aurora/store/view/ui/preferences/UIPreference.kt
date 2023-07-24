@@ -21,6 +21,8 @@ package com.aurora.store.view.ui.preferences
 
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.widget.Toolbar
+import androidx.navigation.fragment.findNavController
 import androidx.preference.ListPreference
 import androidx.preference.PreferenceFragmentCompat
 import com.aurora.store.R
@@ -30,6 +32,7 @@ import com.aurora.store.util.save
 
 
 class UIPreference : PreferenceFragmentCompat() {
+
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.preferences_ui, rootKey)
     }
@@ -37,20 +40,18 @@ class UIPreference : PreferenceFragmentCompat() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        view.findViewById<Toolbar>(R.id.toolbar)?.apply {
+            title = getString(R.string.pref_ui_title)
+            setNavigationOnClickListener { findNavController().navigateUp() }
+        }
+
         val themePreference: ListPreference? = findPreference(Preferences.PREFERENCE_THEME_TYPE)
         themePreference?.let {
             it.setOnPreferenceChangeListener { _, newValue ->
                 val themeId = Integer.parseInt(newValue.toString())
-                val accentId = Preferences.getInteger(
-                    requireContext(),
-                    Preferences.PREFERENCE_THEME_ACCENT
-                )
 
                 save(Preferences.PREFERENCE_THEME_TYPE, themeId)
-
                 applyTheme(themeId, shouldApplyTransition = false)
-
-                SettingsFragment.shouldRestart = true
                 true
             }
         }
@@ -65,10 +66,7 @@ class UIPreference : PreferenceFragmentCompat() {
                 val accentId = Integer.parseInt(newValue.toString())
 
                 save(Preferences.PREFERENCE_THEME_ACCENT, accentId)
-
                 applyTheme(themeId, shouldApplyTransition = false)
-
-                SettingsFragment.shouldRestart = true
                 true
             }
         }

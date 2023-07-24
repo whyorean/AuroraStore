@@ -104,6 +104,7 @@
     </style>
 
     <style name="AppTheme.PreferenceThemeOverlay" parent="@style/PreferenceThemeOverlay">
+        <item name="android:layout">@layout/fragment_setting</item>
         <item name="switchPreferenceCompatStyle">@style/AppTheme.SwitchPreference</item>
     </style>
 

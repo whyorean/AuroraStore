@@ -17,17 +17,14 @@
   ~
   -->
 
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
     <Preference
-        android:fragment="com.aurora.store.view.ui.preferences.FilterPreference"
         app:icon="@drawable/ic_filter"
         app:key="pref_filter"
         app:layout="@layout/item_preference"
         app:title="@string/action_filter" />
 
     <Preference
-        android:fragment="com.aurora.store.view.ui.preferences.InstallationPreference"
         app:icon="@drawable/ic_installation"
         app:iconSpaceReserved="false"
         app:key="pref_install"
@@ -35,7 +32,6 @@
         app:title="@string/title_installation" />
 
     <Preference
-        android:fragment="com.aurora.store.view.ui.preferences.UIPreference"
         app:icon="@drawable/ic_ui"
         app:iconSpaceReserved="false"
         app:key="pref_ui"
@@ -43,7 +39,6 @@
         app:title="@string/pref_ui_title" />
 
     <Preference
-        android:fragment="com.aurora.store.view.ui.preferences.DownloadPreference"
         app:icon="@drawable/ic_download_manager"
         app:iconSpaceReserved="false"
         app:key="pref_download"
@@ -51,7 +46,6 @@
         app:title="@string/pref_app_download" />
 
     <Preference
-        android:fragment="com.aurora.store.view.ui.preferences.NetworkPreference"
         app:icon="@drawable/ic_network"
         app:iconSpaceReserved="false"
         app:key="pref_network"
@@ -59,15 +53,13 @@
         app:title="@string/pref_network_title" />
 
     <Preference
-        android:fragment="com.aurora.store.view.ui.preferences.UpdatesPreference"
         app:icon="@drawable/ic_updates"
         app:iconSpaceReserved="false"
-        app:key="pref_network"
+        app:key="pref_updates"
         app:layout="@layout/item_preference"
         app:title="@string/title_updates" />
 
     <Preference
-        android:fragment="com.aurora.store.view.ui.preferences.AdvancedPreference"
         app:icon="@drawable/ic_tune"
         app:iconSpaceReserved="false"
         app:key="pref_advanced"
