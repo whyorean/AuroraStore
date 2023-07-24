@@ -99,7 +99,7 @@
     <string name="action_blacklist">Чорний список</string>
     <string name="action_back">Назад</string>
     <string name="action_apply">Застосувати</string>
-    <string name="action_accept">Прийняти</string>
+    <string name="action_accept">Погодитись</string>
     <string name="account_logout">Вийти з Aurora</string>
     <string name="account_login_using">Увійти за допомогою</string>
     <string name="account_logged_out">Ви вийшли з акаунта</string>
@@ -220,8 +220,8 @@
     <string name="onboarding_permission_esa">Доступ до зовнішнього сховища</string>
     <string name="onboarding_welcome_select">Як справи\?</string>
     <string name="onboarding_tos_error">Спочатку ви повинні позначити, що прочитали умови надання послуг.</string>
-    <string name="onboarding_tos_confirmation">Я прочитав Умови надання послуг Aurora Store.</string>
-    <string name="onboarding_tos_desc">Будь ласка, прочитайте наші Умови надання послуг і прийміть їх для користування Aurora Store.</string>
+    <string name="onboarding_tos_confirmation">Мною прочитано Умови надання послуг Aurora Store.</string>
+    <string name="onboarding_tos_desc">Будь ласка, прочитайте наші Умови надання послуг і погодьтеся на них, щоб користуватись Aurora Store.</string>
     <string name="onboarding_tos">Умови надання послуг</string>
     <string name="onboarding_title_welcome">Вітаємо</string>
     <string name="onboarding_title_theme">Теми</string>
