@@ -34,18 +34,9 @@ class TOSSheet : BaseBottomSheet() {
 
     private lateinit var B: SheetTosBinding
 
-    companion object {
-
-        const val TAG = "TOSSheet"
-
-        @JvmStatic
-        fun newInstance(): TOSSheet {
-            return TOSSheet().apply {
-                arguments = Bundle().apply {
-
-                }
-            }
-        }
+    override fun onStart() {
+        super.onStart()
+        isCancelable = false
     }
 
     override fun onCreateContentView(

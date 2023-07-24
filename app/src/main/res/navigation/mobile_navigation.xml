@@ -336,4 +336,9 @@
             app:popUpTo="@id/mobile_navigation"
             app:popUpToInclusive="true" />
     </fragment>
+    <dialog
+        android:id="@+id/TOSSheet"
+        android:name="com.aurora.store.view.ui.sheets.TOSSheet"
+        android:label="TOSSheet"
+        tools:layout="@layout/sheet_tos" />
 </navigation>
