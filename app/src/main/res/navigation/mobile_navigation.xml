@@ -23,6 +23,27 @@
     android:id="@+id/mobile_navigation"
     app:startDestination="@id/splashFragment">
 
+    <action
+        android:id="@+id/action_global_appDetailsFragment"
+        app:destination="@id/appDetailsFragment" />
+    <action
+        android:id="@+id/action_global_categoryBrowseFragment"
+        app:destination="@id/categoryBrowseFragment" />
+    <action
+        android:id="@+id/action_global_editorStreamBrowseFragment"
+        app:destination="@id/editorStreamBrowseFragment" />
+    <action
+        android:id="@+id/action_global_expandedStreamBrowseFragment"
+        app:destination="@id/expandedStreamBrowseFragment" />
+    <action
+        android:id="@+id/action_global_screenshotFragment"
+        app:destination="@id/screenshotFragment" />
+    <action
+        android:id="@+id/action_global_devProfileFragment"
+        app:destination="@id/devProfileFragment" />
+    <action
+        android:id="@+id/action_global_streamBrowseFragment"
+        app:destination="@id/streamBrowseFragment" />
     <fragment
         android:id="@+id/appsContainerFragment"
         android:name="com.aurora.store.view.ui.apps.AppsContainerFragment"
@@ -315,25 +336,4 @@
             app:popUpTo="@id/mobile_navigation"
             app:popUpToInclusive="true" />
     </fragment>
-    <action
-        android:id="@+id/action_global_appDetailsFragment"
-        app:destination="@id/appDetailsFragment" />
-    <action
-        android:id="@+id/action_global_categoryBrowseFragment"
-        app:destination="@id/categoryBrowseFragment" />
-    <action
-        android:id="@+id/action_global_editorStreamBrowseFragment"
-        app:destination="@id/editorStreamBrowseFragment" />
-    <action
-        android:id="@+id/action_global_expandedStreamBrowseFragment"
-        app:destination="@id/expandedStreamBrowseFragment" />
-    <action
-        android:id="@+id/action_global_screenshotFragment"
-        app:destination="@id/screenshotFragment" />
-    <action
-        android:id="@+id/action_global_devProfileFragment"
-        app:destination="@id/devProfileFragment" />
-    <action
-        android:id="@+id/action_global_streamBrowseFragment"
-        app:destination="@id/streamBrowseFragment" />
 </navigation>
