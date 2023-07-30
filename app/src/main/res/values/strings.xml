@@ -18,8 +18,7 @@
   ~  You should have received a copy of the GNU General Public License
   ~  along with Aurora Store.  If not, see <http://www.gnu.org/licenses/>.
   ~
-  -->
-<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  --><resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="about_bhim">"BHIM - UPI"</string>
     <string name="about_bhim_summary">"Donate via UPI"</string>
     <string name="about_bitcoin_bch">"Bitcoin Cash"</string>
@@ -149,7 +148,7 @@
     <string name="exodus_no_tracker">"Contains no trackers"</string>
     <string name="exodus_powered">"Powered by Exodus"</string>
     <string name="exodus_progress">"Checking for trackers…"</string>
-    <string name="exodus_substring">"trackers(s) found in"</string>
+    <string name="exodus_substring">trackers(s) found in</string>
     <string name="exodus_view_report">"View report"</string>
     <string name="filter_review_all">"All"</string>
     <string name="filter_review_critical">"Critical"</string>

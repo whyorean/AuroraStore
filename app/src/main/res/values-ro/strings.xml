@@ -258,7 +258,7 @@
     <string name="pref_ui_similar_apps_desc">Afișare grupuri similare și asociate pe pagina de detalii a aplicației</string>
     <string name="pref_network_title">Rețea</string>
     <string name="pref_ui_theme_darkord">Discord</string>
-    <string name="pref_ui_theme_system">Sistem</string>
+    <string name="pref_ui_theme_system">Setat de sistem</string>
     <string name="session_good">Vai! Toate bune.</string>
     <string name="title_purchase_history">Istoricul achizițiilor</string>
     <string name="pref_ui_accent_title">Accent</string>
@@ -325,4 +325,22 @@
     <string name="ui_accent_13">Albastru închis</string>
     <string name="update_available">actualizare disponibilă</string>
     <string name="expand">Extinde</string>
+    <string name="requesting_new_session">Se solicită o nouă sesiune</string>
+    <string name="server_maintenance">Server oprit pentru întreținere</string>
+    <string name="action_import">Import</string>
+    <string name="toast_import_success">Configurarea dispozitivului importată</string>
+    <string name="toast_import_failed">Nu s-a putut importa configurarea dispozitivului</string>
+    <string name="checking_for_updates">Se verifică actualizările</string>
+    <string name="pref_updates_check_desc">Verifică automat și notifică periodic despre actualizările noi ale aplicațiilor</string>
+    <string name="pref_updates_check">Verificare automată a actualizărilor</string>
+    <string name="pref_install_mode_shizuku">Instalator Shizuku</string>
+    <string name="notification_channel_updates">Notificări despre actualizări</string>
+    <string name="notification_updates_available_desc_1">Este disponibilă o nouă versiune pentru <xliff:g id="app_one_name">%1$s</xliff:g></string>
+    <string name="installer_shizuku_unavailable">Shizuku nu este instalat sau configurat corect.</string>
+    <string name="downloading_dep">Se descarcă fișiere suplimentare pentru <xliff:g id="app">%1$s</xliff:g></string>
+    <string name="notification_updates_available"><xliff:g id="apps_count">%1$d</xliff:g> actualizări disponibile</string>
+    <string name="notification_updates_available_1"><xliff:g id="apps_count">%1$d</xliff:g> actualizare disponibilă</string>
+    <string name="notification_updates_available_desc_2"><xliff:g id="app_one_name">%1$s</xliff:g> și <xliff:g id="app_two_name">%2$s</xliff:g></string>
+    <string name="notification_updates_available_desc_4"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g>, <xliff:g id="app_three_name">%3$s</xliff:g> și încă <xliff:g id="apps_count">%4$d</xliff:g></string>
+    <string name="notification_updates_available_desc_3"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g> și <xliff:g id="app_three_name">%3$s</xliff:g></string>
 </resources>

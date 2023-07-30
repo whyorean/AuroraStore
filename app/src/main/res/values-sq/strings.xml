@@ -124,7 +124,7 @@
     <string name="exodus_no_tracker">S’përmban gjurmues</string>
     <string name="exodus_powered">Bazuar në Exodus</string>
     <string name="exodus_progress">Po kontrollohet për gjurmues…</string>
-    <string name="exodus_substring">U gjetën gjurmues</string>
+    <string name="exodus_substring">u gjetën gjurmues() në</string>
     <string name="exodus_view_report">Shiheni raportimin</string>
     <string name="filter_review_all">Krejt</string>
     <string name="filter_review_critical">Kritike</string>

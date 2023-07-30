@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="details_dev_email">電子郵件</string>
     <string name="details_dev_website">網站</string>
     <string name="action_share">分享</string>
@@ -59,7 +59,7 @@
     <string name="about_libera">Liberapay</string>
     <string name="about_gitlab_summary">從 GitLab 上的 Aurora OSS 取得 Aurora 商店的原始碼。</string>
     <string name="about_gitlab">GitLab</string>
-    <string name="about_fdroid_summary">透過 F-Droid 取得 Aurora Store</string>
+    <string name="about_fdroid_summary">透過 F-Droid 取得 Aurora Store。</string>
     <string name="about_fdroid">F-Droid</string>
     <string name="about_bitcoin_eth_summary">透過 Ethereum (ETH) 捐款</string>
     <string name="about_bitcoin_eth">Ethereum</string>
@@ -94,7 +94,7 @@
     <string name="title_settings">設定</string>
     <string name="title_purchase_history">購買歷史</string>
     <string name="title_no_network">無網路</string>
-    <string name="title_apps_library">媒體庫內的應用</string>
+    <string name="title_apps_library">媒體庫中的應用程式</string>
     <string name="title_library">媒體庫</string>
     <string name="title_language">語言</string>
     <string name="title_installer">程式安裝器</string>
@@ -110,11 +110,11 @@
     <string name="title_apps">應用</string>
     <string name="title_account_manager">帳戶</string>
     <string name="title_about">關於</string>
-    <string name="tab_trending">熱門排行榜</string>
+    <string name="tab_trending">流行趨勢</string>
     <string name="tab_top_paid">熱門付費</string>
     <string name="tab_top_grossing">最高收益</string>
     <string name="tab_top_free">熱門免費</string>
-    <string name="tab_top_charts">熱門排行榜</string>
+    <string name="tab_top_charts">熱門排行</string>
     <string name="tab_for_you">為你精選</string>
     <string name="tab_editor_choice">編輯者推薦</string>
     <string name="tab_categories">類別</string>
@@ -166,7 +166,7 @@
     <string name="pref_downloader_active_title">活動中的下載</string>
     <string name="pref_downloader_active_summary">分段下載最大數目</string>
     <string name="pref_dialog_to_apply_restart">設定將會在你重新啟動應用後生效</string>
-    <string name="pref_common_extra">額外的</string>
+    <string name="pref_common_extra">額外功能</string>
     <string name="pref_app_download">下載</string>
     <string name="pref_abandon_session_desc">清除已遺棄或等待中的安裝階段</string>
     <string name="pref_abandon_session">強制清除安裝階段</string>
@@ -233,7 +233,7 @@
     <string name="download_force_clear_all">強制清除全部</string>
     <string name="download_failed">下載失敗</string>
     <string name="download_eta_calculating">計算中</string>
-    <string name="download_completed">已下載</string>
+    <string name="download_completed">下載完成</string>
     <string name="download_clear_completed">清除已完成</string>
     <string name="download_canceled">已取消</string>
     <string name="download_cancel_all">取消全部</string>
@@ -278,4 +278,69 @@
     <string name="onboarding_title_installer">安裝方式</string>
     <string name="onboarding_title_accent">強調色</string>
     <string name="onboarding_theme_select">選下你中意的</string>
+    <string name="about_bhim">BHIM - UPI</string>
+    <string name="ui_accent_2">紫紅色</string>
+    <string name="download_progress">正在下載 • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
+    <string name="account_anonymous_insecure">匿名（不安全）</string>
+    <string name="ui_accent_1">藍色</string>
+    <string name="pref_ui_theme_darkord">Discord</string>
+    <string name="rate_limited">哎呀，此帳戶已達到速率限制！</string>
+    <string name="search_hint">搜尋應用程式與遊戲</string>
+    <string name="pref_install_mode_am">AM 安裝程式。</string>
+    <string name="pref_install_mode_shizuku">Shizuku 安裝程式</string>
+    <string name="session_good">哇！一切良好。</string>
+    <string name="title_advanced">進階</string>
+    <string name="toast_import_success">已匯入裝置設定</string>
+    <string name="toast_import_failed">無法匯入裝置設定</string>
+    <string name="ui_accent_0">系統</string>
+    <string name="updates_available">有多個更新可用</string>
+    <string name="error">發生錯誤！</string>
+    <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>
+    <string name="permissions_denied">所需的權限被拒絕。請授予它們以繼續操作</string>
+    <string name="requesting_new_session">正在請求新的工作階段</string>
+    <string name="server_maintenance">伺服器正在進行維護</string>
+    <string name="downloading_dep">正在下載 <xliff:g id="app">%1$s</xliff:g> 的額外檔案</string>
+    <string name="notification_updates_available">有 <xliff:g id="apps_count">%1$d</xliff:g> 個更新可用</string>
+    <string name="notification_updates_available_1">有 <xliff:g id="apps_count">%1$d</xliff:g> 個更新可用</string>
+    <string name="notification_updates_available_desc_1"><xliff:g id="app_one_name">%1$s</xliff:g> 有新版本可用</string>
+    <string name="notification_updates_available_desc_2"><xliff:g id="app_one_name">%1$s</xliff:g> 和 <xliff:g id="app_two_name">%2$s</xliff:g></string>
+    <string name="notification_updates_available_desc_3"><xliff:g id="app_one_name">%1$s</xliff:g>、<xliff:g id="app_two_name">%2$s</xliff:g> 和 <xliff:g id="app_three_name">%3$s</xliff:g></string>
+    <string name="notification_updates_available_desc_4"><xliff:g id="app_one_name">%1$s</xliff:g>、<xliff:g id="app_two_name">%2$s</xliff:g>、<xliff:g id="app_three_name">%3$s</xliff:g> 和其他 <xliff:g id="apps_count">%4$d</xliff:g> 個應用程式</string>
+    <string name="pref_updates_check_desc">定期自動檢查並通知新的應用程式更新</string>
+    <string name="action_import">匯入</string>
+    <string name="download_eta_hrs">剩餘 %1$dh %2$dm %3$ds</string>
+    <string name="download_eta_min">剩餘 %1$dm %2$ds</string>
+    <string name="download_eta_sec">剩餘 %1$ds</string>
+    <string name="download_paused">已暫停 • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
+    <string name="installer_am_unavailable">請安裝 App 管理器或更換安裝程式。</string>
+    <string name="onboarding_permission_notifications">通知</string>
+    <string name="onboarding_permission_notifications_desc">發送有關安裝狀態的通知</string>
+    <string name="pref_advanced_search_in_ctt">在自訂分頁中搜尋</string>
+    <string name="session_init">正在準備…</string>
+    <string name="session_login">您需要先登入</string>
+    <string name="session_login_failed_google">透過 Google 登入失敗</string>
+    <string name="session_scrapped">最後的工作階段已被取消</string>
+    <string name="session_verifying">正在驗證工作階段</string>
+    <string name="session_verifying_google">正在驗證 Google 工作階段</string>
+    <string name="ui_accent_4">金色</string>
+    <string name="ui_accent_5">綠色</string>
+    <string name="ui_accent_10">橙色</string>
+    <string name="ui_accent_11">淺藍色</string>
+    <string name="ui_accent_12">Disskord 藍色</string>
+    <string name="ui_accent_13">深藍色</string>
+    <string name="menu">選單</string>
+    <string name="expand">展開</string>
+    <string name="open_in_aurora">在 Aurora 商店中開啟</string>
+    <string name="notification_channel_updates">更新通知</string>
+    <string name="checking_for_updates">正在檢查更新</string>
+    <string name="pref_updates_check">自動檢查更新</string>
+    <string name="ui_accent_6">紫色</string>
+    <string name="ui_accent_7">灰色</string>
+    <string name="ui_accent_8">粉紅色</string>
+    <string name="ui_accent_9">萊姆色</string>
+    <string name="installer_shizuku_unavailable">Shizuku 未安裝或設定不正確。</string>
+    <string name="pref_advanced_search_in_ctt_desc">在瀏覽器的自訂分頁中開啟搜尋結果</string>
+    <string name="session_enjoy">登入並享用。</string>
+    <string name="ui_accent_3">紅色</string>
+    <string name="update_available">有更新可用</string>
 </resources>
