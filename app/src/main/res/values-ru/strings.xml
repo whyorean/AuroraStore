@@ -268,7 +268,7 @@
     <string name="toast_manual_unavailable">Запрошенный вами код версии недоступен.</string>
     <string name="title_manual_download">Ручная загрузка</string>
     <string name="action_check">Проверить</string>
-    <string name="dialog_desc_native_split">Сборные приложения (app bundles, сплиты) через системный установщик Android установить невозможно. Измените метод установки на Сессионный, сервисы Aurora или root.</string>
+    <string name="dialog_desc_native_split">Сборные приложения (app bundles, сплиты) через системный установщик Android установить невозможно. Измените метод установки на Сессионный, Сервисы Aurora или Root.</string>
     <string name="toast_aas_token_failed">Не удалось сгенерировать AAS-токен</string>
     <string name="toast_rated_failed">Не удалось поставить оценку</string>
     <string name="toast_rated_success">Оценка принята</string>
@@ -343,4 +343,12 @@
     <string name="installer_shizuku_unavailable">Shizuku не установлено или не настроено правильно.</string>
     <string name="pref_install_mode_shizuku">Установщик Shizuku</string>
     <string name="notification_updates_available_desc_4"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g>, <xliff:g id="app_three_name">%3$s</xliff:g> и ещё <xliff:g id="apps_count">%4$d</xliff:g> приложений</string>
+    <string name="title_search_suggestion">Поисковый запрос</string>
+    <string name="title_search_results">Результаты поиска</string>
+    <string name="bad_request">Внутренняя ошибка! Пожалуйста, повторите несколько позже</string>
+    <string name="login_rate_limited">Опаньки, слишком много попыток входа</string>
+    <string name="server_unreachable">Сервер недоступен</string>
+    <string name="failed_generating_session">Не удалось создать сессию, код ошибки: <xliff:g id="status_code">%1$d</xliff:g></string>
+    <string name="failed_to_fetch_report">Не удалось создать отчёт приватности</string>
+    <string name="access_denied_using_vpn">Доступ запрещён! Вы используете VPN или Tor\?</string>
 </resources>
