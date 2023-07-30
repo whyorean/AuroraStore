@@ -151,7 +151,7 @@
     <string name="details_beta_description">Ще видите нови функции и грешки преди обществеността. Дайте вашите отзиви на разработчиците, за да им помогнете да се подобрят.</string>
     <string name="details_no_app_match">Не е намерено съответствие на приложението</string>
     <string name="download_eta_calculating">Изчисляване</string>
-    <string name="download_paused">На пауза</string>
+    <string name="download_paused">На пауза • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
     <string name="exodus_powered">Осъществено от Exodus</string>
     <string name="exodus_progress">Проверява се за тракери…</string>
     <string name="pref_downloader_active_summary">Максимален брой активни изтегляния</string>
