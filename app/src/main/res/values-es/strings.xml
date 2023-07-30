@@ -40,7 +40,7 @@
     <string name="spoof_apply">Asegúrese de volver a acceder a su cuenta para aplicar la simulación</string>
     <string name="purchase_no_file">No se pueden obtener los archivos</string>
     <string name="purchase_invalid">Aplicación no adquirida</string>
-    <string name="purchase_failed">Descarga fallida</string>
+    <string name="purchase_failed">La descarga falló</string>
     <string name="pref_ui_title">Personalización</string>
     <string name="pref_ui_theme_title">Tema</string>
     <string name="pref_ui_theme_system">Seguir al sistema</string>
@@ -130,7 +130,7 @@
     <string name="download_none">No hay descargas</string>
     <string name="download_metadata">Obteniendo metadatos</string>
     <string name="download_force_clear_all">Forzar limpiado de todo</string>
-    <string name="download_failed">Descarga fallida</string>
+    <string name="download_failed">Falló la descarga</string>
     <string name="download_eta_calculating">Calculando</string>
     <string name="download_completed">Descarga completa</string>
     <string name="download_clear_completed">Limpieza completada</string>
@@ -343,4 +343,12 @@
     <string name="notification_updates_available_desc_3"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g> y <xliff:g id="app_three_name">%3$s</xliff:g></string>
     <string name="pref_install_mode_shizuku">Instalador de Shizuku</string>
     <string name="installer_shizuku_unavailable">Shizuku no está instalado o configurado correctamente.</string>
+    <string name="title_search_results">Resultados de la búsqueda</string>
+    <string name="bad_request">¡Error interno!. Por favor, vuelve a intentarlo después de algún tiempo</string>
+    <string name="login_rate_limited">Ups, demasiado intentos</string>
+    <string name="server_unreachable">Servidor no accesible</string>
+    <string name="title_search_suggestion">Sugerencias para la búsqueda</string>
+    <string name="failed_to_fetch_report">No se ha podido obtener el informe de privacidad</string>
+    <string name="access_denied_using_vpn">¡Acceso denegado! ¿Estás usando una VPN o Tor\?</string>
+    <string name="failed_generating_session">Fallo al generar la sesión, código de error: <xliff:g id="status_code">%1$d</xliff:g></string>
 </resources>
