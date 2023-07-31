@@ -343,4 +343,12 @@
     <string name="notification_updates_available"><xliff:g id="apps_count">%1$d</xliff:g> dostupných aktualizací</string>
     <string name="installer_shizuku_unavailable">Skizuku není nainstalováno nebo správně nastaveno.</string>
     <string name="pref_install_mode_shizuku">Shizuku instalátor</string>
+    <string name="title_search_suggestion">Návrh vyhledávání</string>
+    <string name="title_search_results">Výsledky vyhledávání</string>
+    <string name="login_rate_limited">Jejda, váš účet je omezen</string>
+    <string name="failed_generating_session">Nepodařilo se vygenerovat relaci, kód chyby: <xliff:g id="status_code">%1$d</xliff:g></string>
+    <string name="access_denied_using_vpn">Přístup zamítnut! Používáte VPN nebo Tor\?</string>
+    <string name="server_unreachable">Server je nedostupný</string>
+    <string name="failed_to_fetch_report">Nepodařilo se načíst hlášení o soukromí</string>
+    <string name="bad_request">Interní chyba! Zkuste to prosím znovu za chvíli</string>
 </resources>
