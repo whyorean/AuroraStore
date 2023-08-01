@@ -343,4 +343,12 @@
     <string name="notification_updates_available_desc_3"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g> و <xliff:g id="app_three_name">%3$s</xliff:g></string>
     <string name="pref_install_mode_shizuku">مثبت شيزوكو</string>
     <string name="installer_shizuku_unavailable">لم يتم تثبيت Shizuku أو إعداده بشكل صحيح.</string>
+    <string name="title_search_suggestion">اقتراح البحث</string>
+    <string name="bad_request">خطأ داخلي! من فضلك أعد المحاولة بعد فترة</string>
+    <string name="login_rate_limited">عفوا ، الحساب محدود</string>
+    <string name="title_search_results">نتائج البحث</string>
+    <string name="failed_to_fetch_report">فشل في الحصول على تقرير الخصوصية</string>
+    <string name="access_denied_using_vpn">تم رفض الوصول! هل تستخدم VPN أو Tor؟</string>
+    <string name="server_unreachable">لا يمكن الوصول إلى الخادم</string>
+    <string name="failed_generating_session">فشل إنشاء جلسة عمل، رمز الخطأ: <xliff:g id="status_code"> %1$d </xliff:g></string>
 </resources>

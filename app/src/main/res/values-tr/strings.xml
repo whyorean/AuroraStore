@@ -343,4 +343,12 @@
     <string name="notification_updates_available_desc_4"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g>, <xliff:g id="app_three_name">%3$s</xliff:g> ve <xliff:g id="apps_count">%4$d</xliff:g> tane daha</string>
     <string name="pref_install_mode_shizuku">Shizuku kurucu</string>
     <string name="installer_shizuku_unavailable">Shizuku düzgün kurulmadı veya ayarlanmadı.</string>
+    <string name="title_search_suggestion">Arama önerisi</string>
+    <string name="title_search_results">Arama sonuçları</string>
+    <string name="login_rate_limited">Hız sınırlamanız var</string>
+    <string name="server_unreachable">Sunucuya ulaşılamıyor</string>
+    <string name="failed_generating_session">Oturum oluşturulamadı, hata kodu: <xliff:g id="status_code">%1$d</xliff:g></string>
+    <string name="failed_to_fetch_report">Gizlilik raporu alınamadı</string>
+    <string name="access_denied_using_vpn">Erişim reddedildi! VPN veya Tor kullanıyor musunuz\?</string>
+    <string name="bad_request">Dahili hata! Lütfen bir süre sonra tekrar deneyin</string>
 </resources>

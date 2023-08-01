@@ -304,7 +304,7 @@
     <string name="session_login_failed_google">Anmeldung über Google fehlgeschlagen</string>
     <string name="session_scrapped">Letzte Sitzung wurde abgebrochen</string>
     <string name="session_verifying">Überprüfung der Sitzung</string>
-    <string name="rate_limited">Hoppla, der Tarif für dieses Konto ist begrenzt!</string>
+    <string name="rate_limited">Hoppla, die Anfragehäufigkeit für dieses Konto ist begrenzt!</string>
     <string name="menu">Menü</string>
     <string name="open_in_aurora">Im Aurora Store öffnen</string>
     <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>
@@ -344,4 +344,12 @@
     <string name="notification_updates_available_desc_2"><xliff:g id="app_one_name">%1$s</xliff:g> und <xliff:g id="app_two_name">%2$s</xliff:g></string>
     <string name="pref_updates_check">Automatische Update-Überprüfung</string>
     <string name="pref_updates_check_desc">Regelmäßige automatische Prüfung und Benachrichtigung zu neuen App-Updates</string>
+    <string name="access_denied_using_vpn">Zugang verweigert! Verwendest du ein VPN oder Tor\?</string>
+    <string name="login_rate_limited">Hoppla, deine Anfragehäufigkeit ist begrenzt</string>
+    <string name="failed_to_fetch_report">Datenschutzbericht konnte nicht abgerufen werden</string>
+    <string name="title_search_suggestion">Suchvorschlag</string>
+    <string name="title_search_results">Suchergebnisse</string>
+    <string name="bad_request">Interner Fehler! Bitte versuche es nach einiger Zeit erneut.</string>
+    <string name="failed_generating_session">Sitzung konnte nicht erstellt werden, Fehlercode: <xliff:g id="status_code">%1$d</xliff:g></string>
+    <string name="server_unreachable">Server nicht erreichbar</string>
 </resources>

@@ -343,4 +343,12 @@
     <string name="notification_updates_available_desc_3"><xliff:g id="app_one_name">%1$s</xliff:g>、 <xliff:g id="app_two_name">%2$s</xliff:g> 和 <xliff:g id="app_three_name">%3$s</xliff:g></string>
     <string name="pref_install_mode_shizuku">Shizuku 安装器</string>
     <string name="installer_shizuku_unavailable">未安装或正确设置 Shizuku。</string>
+    <string name="title_search_suggestion">搜索建议</string>
+    <string name="title_search_results">搜索结果</string>
+    <string name="failed_to_fetch_report">获取隐私报告失败</string>
+    <string name="access_denied_using_vpn">访问被拒！你在使用 VPN 或 Tor 吗？</string>
+    <string name="bad_request">内部错误！请在将来某个时刻重试</string>
+    <string name="login_rate_limited">啊偶，你被限制速率了</string>
+    <string name="server_unreachable">服务器不可达</string>
+    <string name="failed_generating_session">未能生成会话，错误码：<xliff:g id="status_code">%1$d</xliff:g></string>
 </resources>
