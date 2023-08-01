@@ -343,4 +343,12 @@
     <string name="downloading_dep">Baixando arquivos adicionais para <xliff:g id="app">%1$s</xliff:g></string>
     <string name="menu">Menu</string>
     <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>
+    <string name="title_search_suggestion">Sugestão de pesquisa</string>
+    <string name="title_search_results">Resultados da pesquisa</string>
+    <string name="failed_to_fetch_report">Falhou em obter o relatório de privacidade</string>
+    <string name="access_denied_using_vpn">Acesso negado! Está usando VPN ou Tor\?</string>
+    <string name="bad_request">Erro interno! Por favor tente novamente após um tempo</string>
+    <string name="login_rate_limited">Ops, você está com limite de taxa</string>
+    <string name="server_unreachable">Servidor inalcançável</string>
+    <string name="failed_generating_session">Falhou em gerar sessão, código de erro: <xliff:g id="status_code">%1$d</xliff:g></string>
 </resources>
