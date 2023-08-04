@@ -34,7 +34,6 @@ import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
-import com.aurora.Constants
 import com.aurora.extensions.isRAndAbove
 import com.aurora.extensions.toast
 import com.aurora.gplayapi.data.models.App
@@ -51,7 +50,6 @@ import com.aurora.store.view.epoxy.views.app.AppUpdateViewModel_
 import com.aurora.store.view.epoxy.views.app.NoAppViewModel_
 import com.aurora.store.view.epoxy.views.shimmer.AppListViewShimmerModel_
 import com.aurora.store.view.ui.commons.BaseFragment
-import com.aurora.store.view.ui.sheets.AppMenuSheet
 import com.aurora.store.viewmodel.all.UpdatesViewModel
 import com.tonyodev.fetch2.AbstractFetchGroupListener
 import com.tonyodev.fetch2.Download
@@ -330,20 +328,5 @@ class UpdatesFragment : BaseFragment() {
                 0
             )
         }
-    }
-
-    private fun openAppMenuSheet(app: App) {
-        val fragment = childFragmentManager.findFragmentByTag(AppMenuSheet.TAG)
-        if (fragment != null)
-            childFragmentManager.beginTransaction().remove(fragment)
-
-        AppMenuSheet().apply {
-            arguments = Bundle().apply {
-                putString(Constants.STRING_EXTRA, gson.toJson(app))
-            }
-        }.show(
-            childFragmentManager,
-            AppMenuSheet.TAG
-        )
     }
 }

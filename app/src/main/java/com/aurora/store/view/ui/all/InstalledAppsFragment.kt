@@ -24,7 +24,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
-import com.aurora.Constants
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
 import com.aurora.store.databinding.FragmentUpdatesBinding
@@ -32,7 +31,6 @@ import com.aurora.store.view.epoxy.views.app.AppListViewModel_
 import com.aurora.store.view.epoxy.views.HeaderViewModel_
 import com.aurora.store.view.epoxy.views.shimmer.AppListViewShimmerModel_
 import com.aurora.store.view.ui.commons.BaseFragment
-import com.aurora.store.view.ui.sheets.AppMenuSheet
 import com.aurora.store.viewmodel.all.InstalledViewModel
 
 class InstalledAppsFragment : BaseFragment() {
@@ -111,20 +109,5 @@ class InstalledAppsFragment : BaseFragment() {
                 }
             }
         }
-    }
-
-    private fun openAppMenuSheet(app: App) {
-        val fragment = childFragmentManager.findFragmentByTag(AppMenuSheet.TAG)
-        if (fragment != null)
-            childFragmentManager.beginTransaction().remove(fragment)
-
-        AppMenuSheet().apply {
-            arguments = Bundle().apply {
-                putString(Constants.STRING_EXTRA, gson.toJson(app))
-            }
-        }.show(
-            childFragmentManager,
-            AppMenuSheet.TAG
-        )
     }
 }

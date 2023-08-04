@@ -93,4 +93,8 @@ open class BaseFragment : Fragment {
             )
         )
     }
+
+    fun openAppMenuSheet(app: App) {
+        findNavController().navigate(MobileNavigationDirections.actionGlobalAppMenuSheet(app))
+    }
 }
