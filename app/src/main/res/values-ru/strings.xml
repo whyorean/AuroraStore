@@ -65,7 +65,7 @@
     <string name="about_bitcoin_bch_summary">Пожертвовать через Bitcoin Cash (BCH)</string>
     <string name="about_bhim_summary">Пожертвовать через UPI</string>
     <string name="installer_status_failure_blocked">Установка заблокирована</string>
-    <string name="installer_service_misconfigured">Сначала установите сервисы Aurora и выдайте и все разрешения.</string>
+    <string name="installer_service_misconfigured">Сначала установите сервисы Aurora и предоставьте все разрешения.</string>
     <string name="installer_service_unavailable">Установите сервисы Aurora 1.0.9 или новее, либо смените установщик.</string>
     <string name="installer_service_available">Сервисы Aurora доступны и готовы к установке.</string>
     <string name="installer_root_unavailable">Нет root-доступа. Предоставьте его или смените программу-установщик.</string>
@@ -268,7 +268,7 @@
     <string name="toast_manual_unavailable">Запрошенный вами код версии недоступен.</string>
     <string name="title_manual_download">Ручная загрузка</string>
     <string name="action_check">Проверить</string>
-    <string name="dialog_desc_native_split">Сборные приложения (app bundles, сплиты) через системный установщик Android установить невозможно. Измените метод установки на Сессионный, Сервисы Aurora или Root.</string>
+    <string name="dialog_desc_native_split">Пакетные (сплит-) приложения через системный установщик установить невозможно. Измените метод установки на Сессионный, Сервисы Aurora или Root.</string>
     <string name="toast_aas_token_failed">Не удалось сгенерировать AAS-токен</string>
     <string name="toast_rated_failed">Не удалось поставить оценку</string>
     <string name="toast_rated_success">Оценка принята</string>
@@ -315,11 +315,11 @@
     <string name="session_login">Необходимо выполнить вход</string>
     <string name="session_login_failed_google">Невозможно войти через Google</string>
     <string name="title_advanced">Дополнительно</string>
-    <string name="update_available">доступно обновление</string>
-    <string name="updates_available">доступны обновления</string>
+    <string name="update_available">обновление</string>
+    <string name="updates_available">обновления(-ий)</string>
     <string name="error">Произошла ошибка!</string>
     <string name="ui_accent_0">Система</string>
-    <string name="rate_limited">Ошибка. Этот аккаунт ограничен!</string>
+    <string name="rate_limited">Сожалеем, аккаунт имеет слишком много попыток входа!</string>
     <string name="permissions_denied">Необходимые разрешения были отклонены. Пожалуйста, предоставьте их, чтобы продолжить действие</string>
     <string name="pref_advanced_search_in_ctt_desc">Открывает результаты поиска во вкладке браузера</string>
     <string name="pref_advanced_search_in_ctt">Поиск во вкладке браузера</string>
@@ -335,7 +335,7 @@
     <string name="notification_updates_available_desc_1">Новая версия <xliff:g id="app_one_name">%1$s</xliff:g> доступна</string>
     <string name="checking_for_updates">Проверка обновлений</string>
     <string name="notification_channel_updates">Уведомления об обновлениях</string>
-    <string name="notification_updates_available"><xliff:g id="apps_count">%1$d</xliff:g> доступны обновления</string>
+    <string name="notification_updates_available"><xliff:g id="apps_count">%1$d</xliff:g> обновления доступно</string>
     <string name="notification_updates_available_desc_2"><xliff:g id="app_one_name">%1$s</xliff:g> и <xliff:g id="app_two_name">%2$s</xliff:g></string>
     <string name="notification_updates_available_desc_3"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g> и <xliff:g id="app_three_name">%3$s</xliff:g></string>
     <string name="pref_updates_check">Автоматическая проверка обновлений</string>
@@ -343,12 +343,12 @@
     <string name="installer_shizuku_unavailable">Shizuku не установлено или не настроено правильно.</string>
     <string name="pref_install_mode_shizuku">Установщик Shizuku</string>
     <string name="notification_updates_available_desc_4"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g>, <xliff:g id="app_three_name">%3$s</xliff:g> и ещё <xliff:g id="apps_count">%4$d</xliff:g> приложений</string>
-    <string name="title_search_suggestion">Поисковый запрос</string>
+    <string name="title_search_suggestion">Поисковое предложение</string>
     <string name="title_search_results">Результаты поиска</string>
-    <string name="bad_request">Внутренняя ошибка! Пожалуйста, повторите несколько позже</string>
-    <string name="login_rate_limited">Опаньки, слишком много попыток входа</string>
+    <string name="bad_request">Внутренняя ошибка! Пожалуйста, повторите попытку через некоторое время</string>
+    <string name="login_rate_limited">Сожалеем, слишком много попыток входа</string>
     <string name="server_unreachable">Сервер недоступен</string>
     <string name="failed_generating_session">Не удалось создать сессию, код ошибки: <xliff:g id="status_code">%1$d</xliff:g></string>
-    <string name="failed_to_fetch_report">Не удалось создать отчёт приватности</string>
-    <string name="access_denied_using_vpn">Доступ запрещён! Вы используете VPN или Tor\?</string>
+    <string name="failed_to_fetch_report">Не удалось получить отчет о конфиденциальности</string>
+    <string name="access_denied_using_vpn">Доступ запрещен! Вы используете VPN или Tor\?</string>
 </resources>

@@ -22,7 +22,7 @@
     <string name="details_beta_subscribed">Jesteś beta testerem</string>
     <string name="details_beta">Program beta</string>
     <string name="action_wishlist_add">Dodaj do listy życzeń</string>
-    <string name="action_whitelist">Dodaj do listy dozwolonych</string>
+    <string name="action_whitelist">Biała lista</string>
     <string name="action_update_all">Aktualizuj wszystkie</string>
     <string name="action_update">Aktualizuj</string>
     <string name="action_info">O aplikacji</string>
@@ -105,7 +105,7 @@
     <string name="toast_permission_granted">Przyznano uprawnienie</string>
     <string name="toast_developer_setting_failed">Włącz ustawienia programisty w ustawieniach urządzenia, aby je otworzyć.</string>
     <string name="toast_clipboard_copied">Skopiowano do schowka</string>
-    <string name="toast_apk_whitelisted">Dodano do listy dozwolonych</string>
+    <string name="toast_apk_whitelisted">Dodano do białej listy</string>
     <string name="toast_apk_blacklisted">Dodano do czarnej listy</string>
     <string name="toast_anonymous_restriction">Niedostępne na kontach anonimowych</string>
     <string name="toast_abandon_sessions">Porzucono stare sesje instalacyjne</string>
@@ -343,4 +343,12 @@
     <string name="pref_updates_check_desc">Automatycznie sprawdzaj i powiadamiaj o nowych aktualizacjach aplikacji</string>
     <string name="pref_install_mode_shizuku">Instalator Shizuku</string>
     <string name="installer_shizuku_unavailable">Shizuku nie jest prawidłowo zainstalowany lub skonfigurowany.</string>
+    <string name="title_search_suggestion">Podpowiedzi wyszukiwania</string>
+    <string name="access_denied_using_vpn">Odmowa dostępu! Czy używasz VPN lub Tor\?</string>
+    <string name="bad_request">Błąd wewnętrzny! Spróbuj ponownie później</string>
+    <string name="login_rate_limited">Ups, masz ograniczoną liczbę żądań</string>
+    <string name="server_unreachable">Serwer jest niedostępny</string>
+    <string name="failed_generating_session">Nie udało się wygenerować sesji, kod błędu: <xliff:g id="status_code">%1$d</xliff:g></string>
+    <string name="title_search_results">Wyniki wyszukiwania</string>
+    <string name="failed_to_fetch_report">Nie udało się pobrać raportu prywatności</string>
 </resources>
