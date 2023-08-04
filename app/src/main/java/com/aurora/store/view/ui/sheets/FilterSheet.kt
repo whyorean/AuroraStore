@@ -27,27 +27,12 @@ import com.aurora.store.R
 import com.aurora.store.data.Filter
 import com.aurora.store.data.providers.FilterProvider
 import com.aurora.store.databinding.SheetFilterBinding
-import com.aurora.store.util.Log
 import com.google.android.material.chip.Chip
 
 class FilterSheet : BaseBottomSheet() {
 
     private lateinit var B: SheetFilterBinding
     private lateinit var filter: Filter
-
-    companion object {
-
-        const val TAG = "FilterSheet"
-
-        @JvmStatic
-        fun newInstance(): FilterSheet {
-            return FilterSheet().apply {
-                arguments = Bundle().apply {
-
-                }
-            }
-        }
-    }
 
     override fun onCreateContentView(
         inflater: LayoutInflater,

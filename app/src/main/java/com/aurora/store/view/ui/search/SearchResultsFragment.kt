@@ -48,7 +48,6 @@ import com.aurora.store.view.epoxy.views.app.AppListViewModel_
 import com.aurora.store.view.epoxy.views.app.NoAppViewModel_
 import com.aurora.store.view.epoxy.views.shimmer.AppListViewShimmerModel_
 import com.aurora.store.view.ui.commons.BaseFragment
-import com.aurora.store.view.ui.sheets.FilterSheet
 import com.aurora.store.viewmodel.search.SearchResultViewModel
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
@@ -112,7 +111,7 @@ class SearchResultsFragment : BaseFragment(R.layout.fragment_search_result),
 
         // Filter
         binding.filterFab.setOnClickListener {
-            FilterSheet.newInstance().show(childFragmentManager, FilterSheet.TAG)
+            findNavController().navigate(R.id.filterSheet)
         }
 
         VM.liveData.observe(viewLifecycleOwner) {

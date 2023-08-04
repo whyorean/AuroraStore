@@ -364,4 +364,9 @@
             android:name="app"
             app:argType="com.aurora.gplayapi.data.models.App" />
     </dialog>
+    <dialog
+        android:id="@+id/filterSheet"
+        android:name="com.aurora.store.view.ui.sheets.FilterSheet"
+        android:label="FilterSheet"
+        tools:layout="@layout/sheet_filter" />
 </navigation>
