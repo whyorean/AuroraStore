@@ -34,7 +34,6 @@ import com.aurora.store.databinding.ActivityGenericRecyclerBinding
 import com.aurora.store.view.custom.recycler.EndlessRecyclerOnScrollListener
 import com.aurora.store.view.epoxy.controller.CategoryCarouselController
 import com.aurora.store.view.epoxy.controller.GenericCarouselController
-import com.aurora.store.view.ui.sheets.AppPeekDialogSheet
 import com.aurora.store.viewmodel.subcategory.SubCategoryClusterViewModel
 
 
@@ -135,6 +134,8 @@ class CategoryBrowseFragment : BaseFragment(R.layout.activity_generic_recycler),
     }
 
     override fun onAppLongClick(app: App) {
-        AppPeekDialogSheet.newInstance(app).show(childFragmentManager, "APDS")
+        findNavController().navigate(
+            CategoryBrowseFragmentDirections.actionCategoryBrowseFragmentToAppPeekDialogSheet(app)
+        )
     }
 }
