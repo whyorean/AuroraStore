@@ -44,6 +44,9 @@
     <action
         android:id="@+id/action_global_streamBrowseFragment"
         app:destination="@id/streamBrowseFragment" />
+    <action
+        android:id="@+id/action_global_appMenuSheet"
+        app:destination="@id/appMenuSheet" />
     <fragment
         android:id="@+id/appsContainerFragment"
         android:name="com.aurora.store.view.ui.apps.AppsContainerFragment"
@@ -341,4 +344,13 @@
         android:name="com.aurora.store.view.ui.sheets.TOSSheet"
         android:label="TOSSheet"
         tools:layout="@layout/sheet_tos" />
+    <dialog
+        android:id="@+id/appMenuSheet"
+        android:name="com.aurora.store.view.ui.sheets.AppMenuSheet"
+        android:label="AppMenuSheet"
+        tools:layout="@layout/sheet_app_menu" >
+        <argument
+            android:name="app"
+            app:argType="com.aurora.gplayapi.data.models.App" />
+    </dialog>
 </navigation>
