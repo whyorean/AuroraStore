@@ -343,4 +343,9 @@
     <string name="notification_updates_available"><xliff:g id="apps_count">%1$d</xliff:g> päivitystä saatavilla</string>
     <string name="notification_updates_available_desc_3"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g> ja <xliff:g id="app_three_name">%3$s</xliff:g></string>
     <string name="installer_shizuku_unavailable">Shizuku ei ole asennettu tai asetettu oikein.</string>
+    <string name="failed_to_fetch_report">Yksityisyysraportin hakeminen epäonnistui</string>
+    <string name="title_search_suggestion">Hakuehdotus</string>
+    <string name="title_search_results">Hakutulokset</string>
+    <string name="access_denied_using_vpn">Saatavuus kiellettiin! Käytätkö VPN:tä vai Tor\?</string>
+    <string name="bad_request">Sisäinen virhe! Yritä uudelleen myöhemmin</string>
 </resources>
