@@ -197,6 +197,9 @@
         <argument
             android:name="browseUrl"
             app:argType="string" />
+        <action
+            android:id="@+id/action_categoryBrowseFragment_to_appPeekDialogSheet"
+            app:destination="@id/appPeekDialogSheet" />
     </fragment>
     <fragment
         android:id="@+id/editorStreamBrowseFragment"
@@ -349,6 +352,14 @@
         android:name="com.aurora.store.view.ui.sheets.AppMenuSheet"
         android:label="AppMenuSheet"
         tools:layout="@layout/sheet_app_menu" >
+        <argument
+            android:name="app"
+            app:argType="com.aurora.gplayapi.data.models.App" />
+    </dialog>
+    <dialog
+        android:id="@+id/appPeekDialogSheet"
+        android:name="com.aurora.store.view.ui.sheets.AppPeekDialogSheet"
+        android:label="AppPeekDialogSheet" >
         <argument
             android:name="app"
             app:argType="com.aurora.gplayapi.data.models.App" />

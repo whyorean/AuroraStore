@@ -23,71 +23,39 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.aurora.Constants
-import com.aurora.gplayapi.data.models.App
+import androidx.navigation.fragment.navArgs
+import com.aurora.extensions.load
 import com.aurora.store.R
 import com.aurora.store.databinding.SheetAppPeekBinding
 import com.aurora.store.util.CommonUtil
-import com.aurora.extensions.load
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 
 class AppPeekDialogSheet : BaseBottomSheet() {
 
     lateinit var B: SheetAppPeekBinding
-    lateinit var app: App
 
-    private var rawApp = String()
-
-    companion object {
-        @JvmStatic
-        fun newInstance(app: App): AppPeekDialogSheet {
-            return AppPeekDialogSheet().apply {
-                arguments = Bundle().apply {
-                    putString(Constants.STRING_EXTRA, gson.toJson(app))
-                }
-            }
-        }
-    }
+    private val args: AppPeekDialogSheetArgs by navArgs()
 
     override fun onCreateContentView(
         inflater: LayoutInflater,
         container: ViewGroup,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         B = SheetAppPeekBinding.inflate(inflater, container, false)
-        val bundle = arguments
-        if (bundle != null) {
-            rawApp = bundle.getString(Constants.STRING_EXTRA, "")
-            if (rawApp.isNotEmpty()) {
-                app = gson.fromJson(rawApp, App::class.java)
-                if (app.packageName.isNotEmpty()) {
-                    draw()
-                } else {
-                    dismissAllowingStateLoss()
-                }
-            } else {
-                dismissAllowingStateLoss()
-            }
-        }
-
         return B.root
     }
 
     override fun onContentViewCreated(view: View, savedInstanceState: Bundle?) {
-
-    }
-
-    private fun draw() {
-        B.txtLine1.text = app.displayName
-        B.imgIcon.load(app.iconArtwork.url) {
+        B.txtLine1.text = args.app.displayName
+        B.imgIcon.load(args.app.iconArtwork.url) {
             transform(RoundedCorners(25))
         }
-        B.txtLine2.text = app.developerName
+        B.txtLine2.text = args.app.developerName
         B.txtLine3.text = String.format(
             requireContext().getString(R.string.app_list_rating),
-            CommonUtil.addSiPrefix(app.size),
-            app.labeledRating,
-            if (app.isFree)
+            CommonUtil.addSiPrefix(args.app.size),
+            args.app.labeledRating,
+            if (args.app.isFree)
                 "Free"
             else
                 "Paid"
