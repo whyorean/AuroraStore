@@ -349,6 +349,6 @@
     <string name="login_rate_limited">Oops, la tua velocità è stata limitata</string>
     <string name="server_unreachable">Server non raggiungibile</string>
     <string name="failed_to_fetch_report">Errore nel recupero del rapporto sulla privacy</string>
-    <string name="bad_request">Errore interno! Si prega di riprovare tra un po\' di tempo</string>
+    <string name="bad_request">Errore interno! Si prega di riprovare tra un po’ di tempo</string>
     <string name="failed_generating_session">Errore nella generazione della sessione, codice: <xliff:g id="status_code">%1$d</xliff:g></string>
 </resources>
