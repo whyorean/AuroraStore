@@ -343,4 +343,12 @@
     <string name="pref_updates_check_desc">Vérifier et notifier automatiquement les nouvelles mises à jour de l’application à intervalles réguliers</string>
     <string name="notification_updates_available_1"><xliff:g id="apps_count">%1$d</xliff:g> mise à jour disponible</string>
     <string name="notification_updates_available_desc_4"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g>, <xliff:g id="app_three_name">%3$s</xliff:g> et <xliff:g id="apps_count">%4$d</xliff:g> plus</string>
+    <string name="title_search_suggestion">Suggestion de recherche</string>
+    <string name="title_search_results">Résultats de la recherche</string>
+    <string name="failed_generating_session">Échec de la génération de session, code d’erreur : <xliff:g id="status_code">%1$d</xliff:g></string>
+    <string name="failed_to_fetch_report">Échec de la récuperation du rapport de confidentialité</string>
+    <string name="access_denied_using_vpn">Accès refusé ! Utilisez-vous un RPV ou Tor \?</string>
+    <string name="bad_request">Erreur interne ! Veuillez réessayer plus tard</string>
+    <string name="login_rate_limited">Oups, votre débit est limité</string>
+    <string name="server_unreachable">Serveur injoignable</string>
 </resources>
