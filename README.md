@@ -33,15 +33,15 @@ For those concerned with privacy, **Aurora Store** does not require Google's pro
 Please only download the latest stable releases from GitLab or one of these sources:
 
 - GitLab: [Releases](https://gitlab.com/AuroraOSS/AuroraStore/-/releases)
-- AuroraOSS: [Downloads](https://files.auroraoss.com)
-- AuroraOSS: [Stable](https://files.auroraoss.com/AuroraStore/Stable/)
+- AuroraOSS: [Downloads](https://auroraoss.com/AuroraStore/)
+- AuroraOSS: [Stable](https://auroraoss.com/AuroraStore/Stable/)
 - F-Droid: [Link](https://f-droid.org/en/packages/com.aurora.store/)
 - Telegram: [Channel](https://t.me/AuroraOfficial)
 - XDA Forum: [Thread](https://forum.xda-developers.com/t/app-4-4-aurora-store-open-source-play-store-client-april-8-2021.3739733/)
 
 Nightlies are released here:
 
-- AuroraOSS: [Nightlies](https://files.auroraoss.com/?folder=AuroraStore/Nightly)
+- AuroraOSS: [Nightlies](https://auroraoss.com/AuroraStore/Nightly)
 
 `Aurora Store v4 is still in on-going development! Bugs are to be expected! Any bug reports are appreciated.`
 
