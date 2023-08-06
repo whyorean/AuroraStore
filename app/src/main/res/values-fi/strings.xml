@@ -346,6 +346,9 @@
     <string name="failed_to_fetch_report">Yksityisyysraportin hakeminen epäonnistui</string>
     <string name="title_search_suggestion">Hakuehdotus</string>
     <string name="title_search_results">Hakutulokset</string>
-    <string name="access_denied_using_vpn">Saatavuus kiellettiin! Käytätkö VPN:tä vai Tor\?</string>
+    <string name="access_denied_using_vpn">Käyttö estetty! Onko käytössäsi VPN tai Tor\?</string>
     <string name="bad_request">Sisäinen virhe! Yritä uudelleen myöhemmin</string>
+    <string name="failed_generating_session">Istunnon luominen epäonnistui, virhekoodi: <xliff:g id="status_code">%1$d</xliff:g></string>
+    <string name="login_rate_limited">Ups, käyttösi on rajoitettu</string>
+    <string name="server_unreachable">Palvelimeen ei saada yhteyttä</string>
 </resources>
