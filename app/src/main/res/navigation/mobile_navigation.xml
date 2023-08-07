@@ -351,6 +351,9 @@
             app:launchSingleTop="true"
             app:popUpTo="@id/mobile_navigation"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_onboardingFragment_to_deviceMiuiSheet"
+            app:destination="@id/deviceMiuiSheet" />
     </fragment>
     <dialog
         android:id="@+id/TOSSheet"
@@ -405,4 +408,9 @@
             android:name="downloadFile"
             app:argType="com.aurora.store.data.model.DownloadFile" />
     </dialog>
+    <dialog
+        android:id="@+id/deviceMiuiSheet"
+        android:name="com.aurora.store.view.ui.sheets.DeviceMiuiSheet"
+        android:label="DeviceMiuiSheet"
+        tools:layout="@layout/sheet_device_miui" />
 </navigation>

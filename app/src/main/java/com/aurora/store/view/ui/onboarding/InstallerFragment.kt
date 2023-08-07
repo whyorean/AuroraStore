@@ -24,6 +24,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.aurora.extensions.isMIUI
 import com.aurora.extensions.isMiuiOptimizationDisabled
 import com.aurora.extensions.isOAndAbove
@@ -42,7 +43,6 @@ import com.aurora.store.util.Preferences.PREFERENCE_INSTALLER_ID
 import com.aurora.store.util.save
 import com.aurora.store.view.epoxy.views.preference.InstallerViewModel_
 import com.aurora.store.view.ui.commons.BaseFragment
-import com.aurora.store.view.ui.sheets.DeviceMiuiSheet
 import com.google.gson.reflect.TypeToken
 import rikka.shizuku.Shizuku
 import java.nio.charset.StandardCharsets
@@ -140,7 +140,9 @@ class InstallerFragment : BaseFragment() {
         }
 
         if (isMIUI() && !isMiuiOptimizationDisabled()) {
-            DeviceMiuiSheet.newInstance().show(childFragmentManager, DeviceMiuiSheet.TAG)
+            findNavController().navigate(
+                OnboardingFragmentDirections.actionOnboardingFragmentToDeviceMiuiSheet()
+            )
         }
     }
 
@@ -148,7 +150,9 @@ class InstallerFragment : BaseFragment() {
         when (installerId) {
             0 -> {
                 if (isMIUI() && !isMiuiOptimizationDisabled()) {
-                    DeviceMiuiSheet.newInstance().show(childFragmentManager, DeviceMiuiSheet.TAG)
+                    findNavController().navigate(
+                        OnboardingFragmentDirections.actionOnboardingFragmentToDeviceMiuiSheet()
+                    )
                 }
                 this.installerId = installerId
                 save(PREFERENCE_INSTALLER_ID, installerId)
