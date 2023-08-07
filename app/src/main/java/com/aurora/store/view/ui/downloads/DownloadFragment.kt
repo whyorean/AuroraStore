@@ -32,7 +32,6 @@ import com.aurora.store.util.Preferences
 import com.aurora.store.view.epoxy.views.DownloadViewModel_
 import com.aurora.store.view.epoxy.views.app.NoAppViewModel_
 import com.aurora.store.view.ui.commons.BaseFragment
-import com.aurora.store.view.ui.sheets.DownloadMenuSheet
 import com.tonyodev.fetch2.AbstractFetchListener
 import com.tonyodev.fetch2.BuildConfig
 import com.tonyodev.fetch2.Download
@@ -208,21 +207,8 @@ class DownloadFragment : BaseFragment(R.layout.fragment_download) {
     }
 
     private fun openDownloadMenuSheet(downloadFile: DownloadFile) {
-        with(downloadFile) {
-            val fragment = childFragmentManager.findFragmentByTag(DownloadMenuSheet.TAG)
-            if (fragment != null)
-                childFragmentManager.beginTransaction().remove(fragment).commitAllowingStateLoss()
-
-            DownloadMenuSheet().apply {
-                arguments = Bundle().apply {
-                    putInt(DownloadMenuSheet.DOWNLOAD_ID, download.id)
-                    putInt(DownloadMenuSheet.DOWNLOAD_STATUS, download.status.value)
-                    putString(DownloadMenuSheet.DOWNLOAD_URL, download.url)
-                }
-            }.show(
-                childFragmentManager,
-                DownloadMenuSheet.TAG
-            )
-        }
+        findNavController().navigate(
+            DownloadFragmentDirections.actionDownloadFragmentToDownloadMenuSheet(downloadFile)
+        )
     }
 }
