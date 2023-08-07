@@ -90,7 +90,6 @@ import com.aurora.store.view.epoxy.views.details.ReviewViewModel_
 import com.aurora.store.view.epoxy.views.details.ScreenshotView
 import com.aurora.store.view.epoxy.views.details.ScreenshotViewModel_
 import com.aurora.store.view.ui.commons.BaseFragment
-import com.aurora.store.view.ui.sheets.InstallErrorDialogSheet
 import com.aurora.store.viewmodel.details.AppDetailsViewModel
 import com.aurora.store.viewmodel.details.DetailsClusterViewModel
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
@@ -221,16 +220,14 @@ class AppDetailsFragment : BaseFragment(R.layout.fragment_details) {
             }
 
             is InstallerEvent.Failed -> {
-                if (app.packageName == event.packageName) {
-                    InstallErrorDialogSheet.newInstance(
+                findNavController().navigate(
+                    AppDetailsFragmentDirections.actionAppDetailsFragmentToInstallErrorDialogSheet(
                         app,
-                        event.packageName,
-                        event.error,
-                        event.extra
-                    ).show(childFragmentManager, "SED")
-                    attachActions()
-                    updateActionState(State.IDLE)
-                }
+                        event.packageName ?: "",
+                        event.error ?: "",
+                        event.extra ?: ""
+                    )
+                )
             }
 
             else -> {

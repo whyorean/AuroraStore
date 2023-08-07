@@ -196,6 +196,9 @@
         <action
             android:id="@+id/action_appDetailsFragment_to_permissionBottomSheet"
             app:destination="@id/permissionBottomSheet" />
+        <action
+            android:id="@+id/action_appDetailsFragment_to_installErrorDialogSheet"
+            app:destination="@id/installErrorDialogSheet" />
     </fragment>
     <fragment
         android:id="@+id/categoryBrowseFragment"
@@ -413,4 +416,22 @@
         android:name="com.aurora.store.view.ui.sheets.DeviceMiuiSheet"
         android:label="DeviceMiuiSheet"
         tools:layout="@layout/sheet_device_miui" />
+    <dialog
+        android:id="@+id/installErrorDialogSheet"
+        android:name="com.aurora.store.view.ui.sheets.InstallErrorDialogSheet"
+        android:label="InstallErrorDialogSheet"
+        tools:layout="@layout/sheet_install_error">
+        <argument
+            android:name="app"
+            app:argType="com.aurora.gplayapi.data.models.App" />
+        <argument
+            android:name="title"
+            app:argType="string" />
+        <argument
+            android:name="error"
+            app:argType="string" />
+        <argument
+            android:name="extra"
+            app:argType="string" />
+    </dialog>
 </navigation>
