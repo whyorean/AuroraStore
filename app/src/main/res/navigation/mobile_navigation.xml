@@ -189,6 +189,9 @@
         <action
             android:id="@+id/action_appDetailsFragment_to_manualDownloadSheet"
             app:destination="@id/manualDownloadSheet" />
+        <action
+            android:id="@+id/action_appDetailsFragment_to_permissionBottomSheet"
+            app:destination="@id/permissionBottomSheet" />
     </fragment>
     <fragment
         android:id="@+id/categoryBrowseFragment"
@@ -377,6 +380,14 @@
         android:name="com.aurora.store.view.ui.sheets.ManualDownloadSheet"
         android:label="ManualDownloadSheet"
         tools:layout="@layout/sheet_manual_download">
+        <argument
+            android:name="app"
+            app:argType="com.aurora.gplayapi.data.models.App" />
+    </dialog>
+    <dialog
+        android:id="@+id/permissionBottomSheet"
+        android:name="com.aurora.store.view.ui.sheets.PermissionBottomSheet"
+        tools:layout="@layout/sheet_permissions">
         <argument
             android:name="app"
             app:argType="com.aurora.gplayapi.data.models.App" />

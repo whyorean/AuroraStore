@@ -91,7 +91,6 @@ import com.aurora.store.view.epoxy.views.details.ScreenshotView
 import com.aurora.store.view.epoxy.views.details.ScreenshotViewModel_
 import com.aurora.store.view.ui.commons.BaseFragment
 import com.aurora.store.view.ui.sheets.InstallErrorDialogSheet
-import com.aurora.store.view.ui.sheets.PermissionBottomSheet
 import com.aurora.store.viewmodel.details.AppDetailsViewModel
 import com.aurora.store.viewmodel.details.DetailsClusterViewModel
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
@@ -1163,8 +1162,11 @@ class AppDetailsFragment : BaseFragment(R.layout.fragment_details) {
     private fun inflateAppPermission(B: LayoutDetailsPermissionsBinding, app: App) {
         B.headerPermission.addClickListener {
             if (app.permissions.size > 0) {
-                PermissionBottomSheet.newInstance(app)
-                    .show(childFragmentManager, PermissionBottomSheet.TAG)
+                findNavController().navigate(
+                    AppDetailsFragmentDirections.actionAppDetailsFragmentToPermissionBottomSheet(
+                        app
+                    )
+                )
             }
         }
         B.txtPermissionCount.text = ("${app.permissions.size} permissions")

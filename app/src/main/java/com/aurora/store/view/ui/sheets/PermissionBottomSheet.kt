@@ -27,10 +27,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
-import com.aurora.Constants
+import androidx.navigation.fragment.navArgs
 import com.aurora.extensions.hide
 import com.aurora.extensions.show
-import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
 import com.aurora.store.databinding.SheetPermissionsBinding
 import com.aurora.store.view.custom.layouts.PermissionGroup
@@ -39,24 +38,9 @@ import java.util.*
 class PermissionBottomSheet : BaseBottomSheet() {
 
     private lateinit var B: SheetPermissionsBinding
-    private lateinit var app: App
     private lateinit var packageManager: PackageManager
 
-    companion object {
-
-        const val TAG = "PermissionBottomSheet"
-
-        @JvmStatic
-        fun newInstance(
-            app: App
-        ): PermissionBottomSheet {
-            return PermissionBottomSheet().apply {
-                arguments = Bundle().apply {
-                    putString(Constants.STRING_APP, gson.toJson(app))
-                }
-            }
-        }
-    }
+    private val args: PermissionBottomSheetArgs by navArgs()
 
     override fun onCreateContentView(
         inflater: LayoutInflater,
@@ -69,16 +53,7 @@ class PermissionBottomSheet : BaseBottomSheet() {
 
     override fun onContentViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val bundle = arguments
-        bundle?.let {
-            val rawApp = bundle.getString(Constants.STRING_APP, "{}")
-            app = gson.fromJson(rawApp, App::class.java)
-            if (app.packageName.isNotEmpty()) {
-                inflateData()
-            } else {
-                dismissAllowingStateLoss()
-            }
-        }
+        inflateData()
     }
 
     private fun inflateData() {
@@ -86,7 +61,7 @@ class PermissionBottomSheet : BaseBottomSheet() {
 
         val permissionGroupWidgets: MutableMap<String, PermissionGroup?> =
             HashMap<String, PermissionGroup?>()
-        for (permissionName in app.permissions) {
+        for (permissionName in args.app.permissions) {
 
             val permissionInfo = getPermissionInfo(permissionName) ?: continue
             val permissionGroupInfo = getPermissionGroupInfo(permissionInfo)
