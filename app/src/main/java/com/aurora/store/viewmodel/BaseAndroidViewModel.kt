@@ -33,10 +33,7 @@ import java.lang.reflect.Modifier
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 
-abstract class BaseAndroidViewModel(application: Application) : AndroidViewModel(application),
-    NetworkProvider.NetworkListener {
-
-    private lateinit var networkListener: NetworkProvider.NetworkListener
+abstract class BaseAndroidViewModel(application: Application) : AndroidViewModel(application) {
 
     val responseCode = HttpClient.getPreferredClient().responseCode
 
@@ -51,25 +48,11 @@ abstract class BaseAndroidViewModel(application: Application) : AndroidViewModel
 
         requestState = RequestState.Init
 
-        NetworkProvider.addListener(this)
-
         // Start collecting response code for requests
         responseCode.launchIn(viewModelScope)
     }
 
     abstract fun observe()
-
-    override fun onConnected() {
-
-    }
-
-    override fun onDisconnected() {
-
-    }
-
-    override fun onReconnected() {
-        redoLastNetworkTask()
-    }
 
     private fun redoLastNetworkTask() {
         when (requestState) {
@@ -80,11 +63,5 @@ abstract class BaseAndroidViewModel(application: Application) : AndroidViewModel
 
             }
         }
-    }
-
-    override fun onCleared() {
-        Log.i("${javaClass.simpleName} Destroyed")
-        NetworkProvider.removeListener(this)
-        super.onCleared()
     }
 }

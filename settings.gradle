@@ -29,7 +29,7 @@ dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
         google()
-        jcenter() // Required for com.novoda:merlin:1.2.0
+        jcenter() // Required for androidx.tonyodev.fetch2
         mavenCentral()
         maven {
             name 'JitPack'

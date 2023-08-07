@@ -20,82 +20,57 @@
 package com.aurora.store.data.providers
 
 import android.content.Context
-import com.aurora.store.data.SingletonHolder
-import com.aurora.store.util.Log
-import com.novoda.merlin.Merlin
+import android.net.ConnectivityManager
+import android.net.Network
+import android.net.NetworkCapabilities
+import android.net.NetworkRequest
+import android.util.Log
+import com.aurora.extensions.isMAndAbove
+import com.aurora.store.data.model.NetworkStatus
+import kotlinx.coroutines.DelicateCoroutinesApi
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.launchIn
 
-class NetworkProvider(var context: Context) {
+@OptIn(DelicateCoroutinesApi::class)
+class NetworkProvider(context: Context) {
 
-    companion object : SingletonHolder<NetworkProvider, Context>(::NetworkProvider) {
+    private val TAG = NetworkProvider::class.java.simpleName
 
-        private var networkListeners: MutableList<NetworkListener> = mutableListOf()
+    private val _networkStatus = MutableStateFlow(NetworkStatus.AVAILABLE)
+    val networkStatus = _networkStatus.asStateFlow()
 
-        fun addListener(networkListener: NetworkListener) {
-            Log.i("Network-Provider added to ${networkListener.javaClass.simpleName}")
-            networkListeners.add(networkListener)
-        }
+    private val connectivityManager =
+        context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
 
-        fun removeListener(networkListener: NetworkListener) {
-            Log.i("Network-Provider removed from ${networkListener.javaClass.simpleName}")
-            networkListeners.remove(networkListener)
-        }
+    init {
+        networkStatus.launchIn(GlobalScope)
+
+        // Monitor network
+        connectivityManager.registerNetworkCallback(getNetworkRequest(),
+            object : ConnectivityManager.NetworkCallback() {
+                override fun onAvailable(network: Network) {
+                    super.onAvailable(network)
+                    Log.d(TAG, "Network available!")
+                    _networkStatus.value = NetworkStatus.AVAILABLE
+                }
+
+                override fun onLost(network: Network) {
+                    super.onLost(network)
+                    Log.d(TAG, "Network unavailable!")
+                    _networkStatus.value = NetworkStatus.LOST
+                }
+            })
     }
 
-    private var merlin: Merlin = Merlin.Builder()
-        .withAllCallbacks()
-        .build(context)
+    private fun getNetworkRequest(): NetworkRequest {
+        val networkRequest = NetworkRequest.Builder()
+            .addCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
 
-    private var isDisconnected = true
-
-    fun bind() {
-        merlin.bind()
-
-        merlin.registerConnectable {
-            if (isDisconnected) {
-                isDisconnected = false
-                onReConnected()
-            } else {
-                onConnected()
-            }
+        if (isMAndAbove()) {
+            networkRequest.addCapability(NetworkCapabilities.NET_CAPABILITY_VALIDATED)
         }
-
-        merlin.registerDisconnectable {
-            isDisconnected = true
-            onDisconnected()
-        }
-    }
-
-    fun unbind() {
-        networkListeners.clear()
-        merlin.unbind()
-        Log.i("Network-Provider destroyed")
-    }
-
-    private fun onConnected() {
-        Log.i("Network-Provider connected")
-        isDisconnected = false
-        networkListeners.forEach {
-            it.onConnected()
-        }
-    }
-
-    private fun onReConnected() {
-        Log.i("Network-Provider reconnected")
-        networkListeners.forEach {
-            it.onReconnected()
-        }
-    }
-
-    private fun onDisconnected() {
-        Log.e("Network-Provider disconnected")
-        networkListeners.forEach {
-            it.onDisconnected()
-        }
-    }
-
-    interface NetworkListener {
-        fun onConnected()
-        fun onDisconnected()
-        fun onReconnected()
+        return  networkRequest.build()
     }
 }

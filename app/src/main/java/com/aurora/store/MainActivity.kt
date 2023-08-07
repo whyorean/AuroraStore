@@ -39,7 +39,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.ColorUtils
 import androidx.core.view.GravityCompat
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.fragment.NavHostFragment
@@ -50,6 +52,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.aurora.Constants
 import com.aurora.extensions.*
 import com.aurora.gplayapi.data.models.AuthData
+import com.aurora.store.data.model.NetworkStatus
 import com.aurora.store.data.model.SelfUpdate
 import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.data.providers.NetworkProvider
@@ -68,7 +71,7 @@ import kotlinx.coroutines.launch
 import java.lang.reflect.Modifier
 
 
-class MainActivity : AppCompatActivity(), NetworkProvider.NetworkListener {
+class MainActivity : AppCompatActivity() {
 
     private lateinit var B: ActivityMainBinding
     private lateinit var navController: NavController
@@ -91,32 +94,6 @@ class MainActivity : AppCompatActivity(), NetworkProvider.NetworkListener {
     )
 
     private lateinit var appConfig: AppBarConfiguration
-
-    override fun onConnected() {
-        runOnUiThread {
-            if (!supportFragmentManager.isDestroyed) {
-                val fragment = supportFragmentManager.findFragmentByTag(NetworkDialogSheet.TAG)
-                fragment?.let {
-                    supportFragmentManager.beginTransaction().remove(fragment)
-                        .commitAllowingStateLoss()
-                }
-            }
-        }
-    }
-
-    override fun onDisconnected() {
-        runOnUiThread {
-            if (!supportFragmentManager.isDestroyed) {
-                supportFragmentManager.beginTransaction()
-                    .add(NetworkDialogSheet.newInstance(), NetworkDialogSheet.TAG)
-                    .commitAllowingStateLoss()
-            }
-        }
-    }
-
-    override fun onReconnected() {
-
-    }
 
     companion object {
         @JvmStatic
@@ -141,6 +118,31 @@ class MainActivity : AppCompatActivity(), NetworkProvider.NetworkListener {
         B = ActivityMainBinding.inflate(layoutInflater)
 
         setContentView(B.root)
+
+        this.lifecycleScope.launch {
+            NetworkProvider(this@MainActivity).networkStatus.collect {
+                when(it) {
+                    NetworkStatus.AVAILABLE -> {
+                        if (!supportFragmentManager.isDestroyed) {
+                            val fragment = supportFragmentManager
+                                .findFragmentByTag(NetworkDialogSheet.TAG)
+                            fragment?.let {
+                                supportFragmentManager.beginTransaction()
+                                    .remove(fragment)
+                                    .commitAllowingStateLoss()
+                            }
+                        }
+                    }
+                    NetworkStatus.LOST -> {
+                        if (!supportFragmentManager.isDestroyed) {
+                            supportFragmentManager.beginTransaction()
+                                .add(NetworkDialogSheet.newInstance(), NetworkDialogSheet.TAG)
+                                .commitAllowingStateLoss()
+                        }
+                    }
+                }
+            }
+        }
 
         authData = AuthProvider.with(this).getAuthData()
 
@@ -289,15 +291,5 @@ class MainActivity : AppCompatActivity(), NetworkProvider.NetworkListener {
             sheet.isCancelable = false
             sheet.show(supportFragmentManager, SelfUpdateSheet.TAG)
         }
-    }
-
-    override fun onStart() {
-        super.onStart()
-        NetworkProvider.addListener(this)
-    }
-
-    override fun onStop() {
-        NetworkProvider.removeListener(this)
-        super.onStop()
     }
 }
