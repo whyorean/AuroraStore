@@ -186,6 +186,9 @@
             app:argType="com.aurora.gplayapi.data.models.App"
             app:nullable="true"
             android:defaultValue="@null" />
+        <action
+            android:id="@+id/action_appDetailsFragment_to_manualDownloadSheet"
+            app:destination="@id/manualDownloadSheet" />
     </fragment>
     <fragment
         android:id="@+id/categoryBrowseFragment"
@@ -369,4 +372,13 @@
         android:name="com.aurora.store.view.ui.sheets.FilterSheet"
         android:label="FilterSheet"
         tools:layout="@layout/sheet_filter" />
+    <dialog
+        android:id="@+id/manualDownloadSheet"
+        android:name="com.aurora.store.view.ui.sheets.ManualDownloadSheet"
+        android:label="ManualDownloadSheet"
+        tools:layout="@layout/sheet_manual_download">
+        <argument
+            android:name="app"
+            app:argType="com.aurora.gplayapi.data.models.App" />
+    </dialog>
 </navigation>

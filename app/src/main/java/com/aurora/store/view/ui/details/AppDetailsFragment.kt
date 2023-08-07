@@ -91,7 +91,6 @@ import com.aurora.store.view.epoxy.views.details.ScreenshotView
 import com.aurora.store.view.epoxy.views.details.ScreenshotViewModel_
 import com.aurora.store.view.ui.commons.BaseFragment
 import com.aurora.store.view.ui.sheets.InstallErrorDialogSheet
-import com.aurora.store.view.ui.sheets.ManualDownloadSheet
 import com.aurora.store.view.ui.sheets.PermissionBottomSheet
 import com.aurora.store.viewmodel.details.AppDetailsViewModel
 import com.aurora.store.viewmodel.details.DetailsClusterViewModel
@@ -384,9 +383,10 @@ class AppDetailsFragment : BaseFragment(R.layout.fragment_details) {
                     }
 
                     R.id.menu_download_manual -> {
-                        val sheet = ManualDownloadSheet.newInstance(app)
-                        sheet.isCancelable = false
-                        sheet.show(childFragmentManager, ManualDownloadSheet.TAG)
+                        findNavController().navigate(
+                            AppDetailsFragmentDirections
+                                .actionAppDetailsFragmentToManualDownloadSheet(app)
+                        )
                     }
 
                     R.id.menu_download_manager -> {

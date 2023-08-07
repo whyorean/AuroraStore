@@ -26,10 +26,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import com.aurora.Constants
+import androidx.navigation.fragment.navArgs
 import com.aurora.extensions.load
 import com.aurora.extensions.toast
-import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
 import com.aurora.store.databinding.SheetManualDownloadBinding
 import com.aurora.store.viewmodel.sheets.SheetsViewModel
@@ -40,25 +39,9 @@ import kotlinx.coroutines.launch
 class ManualDownloadSheet : BaseBottomSheet() {
 
     private lateinit var B: SheetManualDownloadBinding
-    private lateinit var app: App
 
     private val viewModel: SheetsViewModel by viewModels()
-
-    companion object {
-
-        const val TAG = "ManualDownloadSheet"
-
-        @JvmStatic
-        fun newInstance(
-            app: App
-        ): ManualDownloadSheet {
-            return ManualDownloadSheet().apply {
-                arguments = Bundle().apply {
-                    putString(Constants.STRING_APP, gson.toJson(app))
-                }
-            }
-        }
-    }
+    private val args: ManualDownloadSheetArgs by navArgs()
 
     override fun onCreateContentView(
         inflater: LayoutInflater,
@@ -71,17 +54,11 @@ class ManualDownloadSheet : BaseBottomSheet() {
 
     override fun onContentViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val bundle = arguments
-        bundle?.let {
-            val rawApp = bundle.getString(Constants.STRING_APP, "{}")
-            app = gson.fromJson(rawApp, App::class.java)
-            if (app.packageName.isNotEmpty()) {
-                inflateData()
-                attachActions()
-            } else {
-                dismissAllowingStateLoss()
-            }
-        }
+
+        isCancelable = false
+
+        inflateData()
+        attachActions()
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
@@ -99,17 +76,17 @@ class ManualDownloadSheet : BaseBottomSheet() {
     }
 
     private fun inflateData() {
-        B.imgIcon.load(app.iconArtwork.url) {
+        B.imgIcon.load(args.app.iconArtwork.url) {
             placeholder(R.drawable.bg_placeholder)
             transform(RoundedCorners(32))
         }
 
-        B.txtLine1.text = app.displayName
-        B.txtLine2.text = app.packageName
-        B.txtLine3.text = ("${app.versionName} (${app.versionCode})")
+        B.txtLine1.text = args.app.displayName
+        B.txtLine2.text = args.app.packageName
+        B.txtLine3.text = ("${args.app.versionName} (${args.app.versionCode})")
 
-        B.versionCodeLayout.hint = "${app.versionCode}"
-        B.versionCodeLayout.editText?.setText("${app.versionCode}")
+        B.versionCodeLayout.hint = "${args.app.versionCode}"
+        B.versionCodeLayout.editText?.setText("${args.app.versionCode}")
     }
 
     private fun attachActions() {
@@ -118,7 +95,7 @@ class ManualDownloadSheet : BaseBottomSheet() {
             if (customVersionString.isEmpty())
                 B.versionCodeInp.error = "Enter version code"
             else {
-                viewModel.purchase(requireContext(), app, customVersionString.toInt())
+                viewModel.purchase(requireContext(), args.app, customVersionString.toInt())
             }
         }
 
