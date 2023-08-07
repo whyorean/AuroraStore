@@ -10,7 +10,6 @@
     <string name="action_blacklist">Kara Liste</string>
     <string name="action_blacklist_add">Kara listeye ekle</string>
     <string name="action_back">Geri</string>
-    <string name="action_apply">Uygula</string>
     <string name="action_accept">Kabul et</string>
     <string name="account_logout">Aurora\'dan çıkış yap</string>
     <string name="account_login_using">Şununla giriş yap</string>
@@ -151,9 +150,6 @@
     <string name="device_miui_description">Lütfen kurulumlara izin vermek için MIUI iyileştirmelerini devre dışı bırakın, ya da Kök veya Hizmetler kurucusunu seçebilirsiniz.</string>
     <string name="device_miui_subtitle">Oturum kurucu, MIUI iyileştirmeleri nedeniyle uygulamaları kuramıyor.</string>
     <string name="device_miui_title">MIUI algılandı!</string>
-    <string name="device_huawei_description">Güncel Huawei modellerinde kandırıcıyı kullanmanı öneriyoruz. Kandırıcıyı kullanmak ister misin\?</string>
-    <string name="device_huawei_subtitle">Huawei kullanıyorsunuz gibi görünüyor, Google\'ın kısıtlamalarından dolayı giriş yapamayabilirsiniz.</string>
-    <string name="device_huawei_title">Huawei algılandı!</string>
     <string name="menu_terms">Hizmet koşulları</string>
     <string name="menu_license">Lisans</string>
     <string name="menu_disclaimer">Sorumluluk reddi</string>

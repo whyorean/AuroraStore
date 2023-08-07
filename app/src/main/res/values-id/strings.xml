@@ -27,7 +27,6 @@
     <string name="action_blacklist_add">Tambahkan ke daftar blokir</string>
     <string name="action_blacklist">Daftar blokir</string>
     <string name="action_back">Kembali</string>
-    <string name="action_apply">Terapkan</string>
     <string name="about_telegram_summary">Bergabunglah di grup dukungan Aurora untuk diskusi dan saran.</string>
     <string name="about_telegram">Telegram</string>
     <string name="action_logout">Keluar</string>
@@ -161,7 +160,6 @@
     <string name="installer_status_failure">Pemasangan gagal</string>
     <string name="installer_service_available">Layanan Aurora tersedia dan siap dipasang.</string>
     <string name="installer_root_unavailable">Tidak ada akses Root. Berikan aksesnya atau ubah pemasang.</string>
-    <string name="device_huawei_title">Huawei terdeteksi!</string>
     <string name="menu_terms">Ketentuan layanan</string>
     <string name="menu_license">Lisensi</string>
     <string name="menu_disclaimer">Penyanggahan</string>
@@ -262,7 +260,6 @@
     <string name="device_miui_extra">Anda juga dapat memilih Pemasang asli, tetapi Anda tidak akan dapat menginstal APK yang dibundel (terpisah), jadi pilihan ada di tangan Anda.</string>
     <string name="device_miui_description">Harap nonaktifkan optimisasi MIUI untuk mengizinkan pemasangan, jika tidak, Anda dapat memilih pemasang Root atau Layanan.</string>
     <string name="device_miui_subtitle">Pemasang sesi tidak dapat memasang aplikasi karena Optimisasi MIUI.</string>
-    <string name="device_huawei_description">Kami sarankan untuk menggunakan spoof perangkat jika Anda memiliki perangkat Huawei terbaru. Apakah Anda ingin menerapkan spoof sekarang\?</string>
     <string name="installer_service_unavailable">Pasang layanan Aurora 1.0.9 atau lebih baru atau ubah pemasang.</string>
     <string name="tab_trending">Sedang tren</string>
     <string name="tab_top_paid">Berbayar teratas</string>
@@ -270,7 +267,6 @@
     <string name="onboarding_title_installer">Pemasang</string>
     <string name="onboarding_title_accent">Aksen</string>
     <string name="onboarding_permission_select">Aurora Store memerlukan izin sebagai berikut</string>
-    <string name="device_huawei_subtitle">Sepertinya Anda menggunakan perangkat Huawei, karena pelarangan baru dari Google Anda tidak dapat masuk.</string>
     <string name="installer_service_misconfigured">Atur layanan Aurora dan berikan seluruh izin terlebih dahulu.</string>
     <string name="purchase_failed">Pengunduhan Gagal</string>
     <string name="toast_export_failed">Tidak dapat mengekspor konfigurasi perangkat</string>

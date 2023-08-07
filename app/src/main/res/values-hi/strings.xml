@@ -12,7 +12,6 @@
     <string name="action_blacklist_add">ब्लॉकसूची में डालें</string>
     <string name="action_blacklist">ब्लॉकसूची</string>
     <string name="action_back">वापस जाएं</string>
-    <string name="action_apply">लागू करें</string>
     <string name="action_accept">मानें</string>
     <string name="account_logout">अरोरा से लॉगआउट हो</string>
     <string name="account_login_using">लॉगइन इस्तेमाल करके</string>
@@ -202,7 +201,6 @@
     <string name="details_dev_profile">डेवलपर प्रोफाइल</string>
     <string name="toast_anonymous_restriction">अज्ञात खाते पर नहीं मौजूद</string>
     <string name="installer_status_failure_conflict">परस्पर विरोधी पैकेज मौजूद हैं</string>
-    <string name="device_huawei_title">हुआवेई मिला!</string>
     <string name="onboarding_permission_installer_desc">ऑरोरा स्टोर से ऐप इंस्टॉल करने की अनुमति दें</string>
     <string name="pref_install_auto_title">डाउनलोड होने पर अपने आप एपीके इंस्टॉल करें</string>
     <string name="ui_accent_2">फ्यूशिया</string>
@@ -257,10 +255,8 @@
     <string name="installer_status_failure_session">सत्र नहीं बना सके</string>
     <string name="installer_status_failure_storage">नाकाफी मेमरी जगह</string>
     <string name="installer_status_success">सफलतापूर्वक इंस्टॉल किया</string>
-    <string name="device_huawei_subtitle">लगता है आप हुआवेई का डिवाइस इस्तेमाल कर रहे हैं, गूगल के हाल के बैन की वजह से आप शायद लॉगइन नहीं कर पाएंगे।</string>
     <string name="installer_status_user_action">यूज़र सत्यापन का इंतज़ार कर रहे</string>
     <string name="device_miui_description">कृपया, इंस्टॉल करने के लिए शाओमी ऑपटीमाइज़ेशन अक्षम करें, या फिर आप रूट या सेवा इंस्टॉलर चुन सकते हैं।</string>
-    <string name="device_huawei_description">हमारी सलाह है की अगर आपके पास हुआवेई का डिवाइस हैं तो आप डिवाइस मखौटा इस्तेमाल करें। क्या आप अभी मखौटा लगाना चाहेंगे\?</string>
     <string name="onboarding_tos_confirmation">हमने अरोरा स्टोर के सेवा के नियम पढ़ लिए है।</string>
     <string name="device_miui_subtitle">सत्र इंस्टॉलर शाओमी ऑपटीमाइज़ेशन की वजह से ऐप इंस्टॉल नहीं कर सका।</string>
     <string name="device_miui_extra">आप मूल इंस्टॉलर भी चुन सकते हैं, लेकिन तब आप बंडल (स्प्लिट) एपीके इंस्टॉल नहीं कर पाएंगे, चुनना आपको है।</string>

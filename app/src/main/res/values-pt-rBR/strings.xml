@@ -83,9 +83,6 @@
     <string name="device_miui_description">Por favor, desative as Otimizações MIUI para permitir as instalações, caso contrário, você pode escolher o instalador Root ou Serviços.</string>
     <string name="device_miui_subtitle">O instalador de sessão não pode instalar aplicativos devido a Otimizações MIUI.</string>
     <string name="device_miui_title">MIUI detectado!</string>
-    <string name="device_huawei_description">Sugerimos que você use a Simulação de dispositivo caso tenha um dispositivo Huawei recente. Você deseja aplicar a Simulação agora\?</string>
-    <string name="device_huawei_subtitle">Parece que você está usando um dispositivo Huawei, devido a recentes banimentos do Google, você pode não conseguir fazer o login.</string>
-    <string name="device_huawei_title">Huawei detectado!</string>
     <string name="menu_terms">Termos de serviço</string>
     <string name="menu_license">Licença</string>
     <string name="menu_disclaimer">Isenção de responsabilidade</string>
@@ -193,7 +190,6 @@
     <string name="action_cancel">Cancelar</string>
     <string name="action_blacklist">Lista de bloqueio</string>
     <string name="action_back">Voltar</string>
-    <string name="action_apply">Aplicar</string>
     <string name="action_accept">Aceitar</string>
     <string name="account_logged_out">Você está desconectado</string>
     <string name="account_anonymous">Anônimo</string>

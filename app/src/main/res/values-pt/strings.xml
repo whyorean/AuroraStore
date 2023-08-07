@@ -150,9 +150,6 @@
     <string name="device_miui_extra">Opcionalmente, poderá escolher o instalador nativo, mas este não permite instalar conjuntos de APKs.</string>
     <string name="device_miui_description">Desative as otimizações MIUI para permitir instalações. Caso contrário, escolha os instaladores root ou de serviço.</string>
     <string name="device_miui_title">MIUI detetado!</string>
-    <string name="device_huawei_description">Sugerimos que use um disfarce, caso possua um dispositivo Huawei recente. Deseja aplicar um disfarce agora\?</string>
-    <string name="device_huawei_subtitle">Parece que utiliza um dispositivo Huawei. Poderá não conseguir iniciar sessão devido à recente proibição da Google.</string>
-    <string name="device_huawei_title">Huawei detetado!</string>
     <string name="menu_terms">Termos do serviço</string>
     <string name="menu_license">Licença</string>
     <string name="menu_disclaimer">Isenção de responsabilidade</string>
@@ -268,7 +265,6 @@
     <string name="action_blacklist_add">Adicionar à lista negra</string>
     <string name="action_blacklist">Lista negra</string>
     <string name="action_back">Recuar</string>
-    <string name="action_apply">Aplicar</string>
     <string name="action_accept">Aceitar</string>
     <string name="account_logout">Terminar sessão</string>
     <string name="account_login_using">Iniciar sessão com</string>

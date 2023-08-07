@@ -131,7 +131,6 @@
     <string name="spoof_apply">Убедитесь, что перезашли в аккаунт для применения подмены устройства</string>
     <string name="pref_install_profile_summary">Выберите целевой профиль для установки приложений. Работает только с методом root-установки</string>
     <string name="pref_install_mode_session">Установка с помощью сессии (Android 5+)</string>
-    <string name="device_huawei_description">Вам предлагается использовать подмену устройства, если у вас одна из новых моделей Huawei. Включить функцию подмены сейчас\?</string>
     <string name="menu_terms">Условия предоставления услуг</string>
     <string name="filter_review_positive">Положительный</string>
     <string name="filter_review_critical">Отрицательный</string>
@@ -234,8 +233,6 @@
     <string name="device_miui_description">Отключите оптимизацию MIUI, чтобы разрешить установку. В ином случае вы можете выбрать root-установщик или сервисы Aurora.</string>
     <string name="device_miui_subtitle">Установщик сеанса не может устанавливать приложения из-за оптимизации MIUI.</string>
     <string name="device_miui_title">Обнаружен MIUI!</string>
-    <string name="device_huawei_subtitle">Похоже, вы используете устройство Huawei, из-за недавних запретов Google вы не можете войти в аккаунт.</string>
-    <string name="device_huawei_title">Обнаружен Huawei!</string>
     <string name="menu_license">Лицензия</string>
     <string name="menu_disclaimer">Отказ от ответственности</string>
     <string name="installer_status_user_action">Ожидание подтверждения пользователя</string>
@@ -250,7 +247,6 @@
     <string name="action_ignore_version">Игнорировать версию</string>
     <string name="action_filter_misc">Разное</string>
     <string name="action_filter_apply">Применить</string>
-    <string name="action_apply">Применить</string>
     <string name="toast_purchase_blocked">Покупка приложений недоступна для анонимных аккаунтов.</string>
     <string name="pref_insecure_anonymous_title">Незащищенный анонимный сеанс</string>
     <string name="insecure_anonymous_apply">Убедитесь, что выполнили новый вход и перезапустили приложение для применения изменений.</string>

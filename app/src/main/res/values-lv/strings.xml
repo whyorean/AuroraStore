@@ -55,7 +55,6 @@
     <string name="about_bitcoin_eth">Ethereum</string>
     <string name="about_telegram">Telegram</string>
     <string name="details_beta_available">Pievienoties Beta programmai\?</string>
-    <string name="action_apply">Apstiprināt</string>
     <string name="action_pause">Pauzēt</string>
     <string name="action_post">Publicēt</string>
     <string name="action_restart">Restartēt</string>
@@ -113,7 +112,6 @@
     <string name="installer_status_failure_storage">Nepietiek atmiņas</string>
     <string name="installer_status_success">Veiksmīgi uzstādīts</string>
     <string name="installer_status_user_action">Gaida lietotāja apstiprinājumu</string>
-    <string name="device_huawei_subtitle">Šķiet, ka tiek izmantota Huawei ierīce, tāpēc neseno Google aizliegumu dēļ, iespējams, nevarēs pieteikties.</string>
     <string name="dialog_title_self_update">Pieejams jauns atjauninājums</string>
     <string name="notification_channel_alert">Ātrā notifikācija</string>
     <string name="onboarding_theme_select">Izvēlaties</string>
@@ -181,7 +179,6 @@
     <string name="download_pause_all">Apturēt visas</string>
     <string name="download_resume_all">Turpināt visas</string>
     <string name="menu_disclaimer">Brīdinājums</string>
-    <string name="device_huawei_title">Huawei detektēts!</string>
     <string name="notification_channel_general">Ģenerālā notifikācija</string>
     <string name="pref_common_extra">Papildus</string>
     <string name="onboarding_permission_select">Aurora Store ir nepieciešamas šādas atļaujas</string>
@@ -314,7 +311,6 @@
     <string name="pref_updates_check">Automātiska atjauninājumu pārbaudīšana</string>
     <string name="pref_updates_check_desc">Automātiski un regulāri pārbauda un paziņo par jauniem lietotņu atjauninājumiem</string>
     <string name="onboarding_permission_esm">Ārējās krātuves pārvaldnieks</string>
-    <string name="device_huawei_description">Mēs iesakām izmantot ierīces atdarināšanu gadījumā, ja tiek izmantota nesena Huawei ierīce. Vai tagad pielietot atdarināšanu\?</string>
     <string name="onboarding_permission_esa_desc">Lai saglabātu lejupielādes (APK un OBB), jāizgūst un jāievieto ierīces konfigurācijas no ārējās krātuves.</string>
     <string name="onboarding_permission_notifications">Paziņojumi</string>
     <string name="pref_downloader_active_title">Notiekoša lejupielāde</string>

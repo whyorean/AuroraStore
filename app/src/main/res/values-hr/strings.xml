@@ -61,7 +61,6 @@
     <string name="action_blacklist_add">Dodaj u nepoželjne</string>
     <string name="action_blacklist">Nepoželjni</string>
     <string name="action_back">Natrag</string>
-    <string name="action_apply">Primijeni</string>
     <string name="action_accept">Prihvati</string>
     <string name="account_logout">Odjavi se iz Aurore</string>
     <string name="account_login_using">Prijavi se, koristeći</string>
@@ -199,9 +198,6 @@
     <string name="device_miui_description">Za instaliranje deaktiviraj MIUI optimizaciju ili odaberi instalaciju Administrator ili Usluge.</string>
     <string name="device_miui_subtitle">Instalacija sesija ne može instalirati programe zbog MIUI optimizacije.</string>
     <string name="device_miui_title">Otkriven je MIUI!</string>
-    <string name="device_huawei_description">Predlažemo da koristiš simuliranje uređaja ako imaš noviji Huawei uređaj. Želiš li sada primijeniti simuliranje uređaja\?</string>
-    <string name="device_huawei_subtitle">Čini se da koristiš Huawei uređaj. Zbog nedavnih Googleovih zabrana možda se nećeš moći prijaviti.</string>
-    <string name="device_huawei_title">Otkriven je Huawei!</string>
     <string name="menu_terms">Uvjeti usluge</string>
     <string name="menu_license">Licenca</string>
     <string name="menu_disclaimer">Izjava o odricanju odgovornosti</string>

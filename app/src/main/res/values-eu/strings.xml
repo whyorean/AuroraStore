@@ -105,9 +105,6 @@
     <string name="device_miui_extra">Berezko instalatzailea ere aukera dezakezu, baina holan egiten baduzu, ezin izango dituzu zatitutako APK-ak instalatu. Zurea da erabakia.</string>
     <string name="device_miui_description">Mesedez desaktibatu MIUI-ren optimizazioak edo aukeratu root edo zerbitzu instalatzailea.</string>
     <string name="device_miui_title">Miui aurkitu da!</string>
-    <string name="device_huawei_description">Huawei gailua badaukazu simulazioa erabil dezazun iradokitzen dizugu. Egin nahi al duzu oraintxe bertan\?</string>
-    <string name="device_huawei_subtitle">Huawei gailua erabiltzen ari zarela dirudi. Google-ek egindako debekuak direla medio, ezinezkoa izan dezakezu saoia hastea.</string>
-    <string name="device_huawei_title">Huawei detektatuta!</string>
     <string name="menu_terms">Zerbitzuaren baldintzak</string>
     <string name="menu_license">Lizentzia</string>
     <string name="menu_disclaimer">Abisua</string>
@@ -225,7 +222,6 @@
     <string name="action_blacklist_add">Zerrenda beltzan sartu</string>
     <string name="action_blacklist">Zerrenda beltza</string>
     <string name="action_back">Atzera</string>
-    <string name="action_apply">Aplikatu</string>
     <string name="action_accept">Onartu</string>
     <string name="account_logout">Auroraren saioa itxi</string>
     <string name="account_login_using">Saioa hasi hau erabiliz</string>

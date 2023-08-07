@@ -69,7 +69,6 @@
     <string name="action_filter_gsf_dependent_apps">Dipendente da GSF</string>
     <string name="action_filter_apps_with_ads">Applicazioni con annunci</string>
     <string name="action_filter_apply">Applica</string>
-    <string name="action_apply">Applica</string>
     <string name="exodus_progress">Controllo della presenza di traccianti…</string>
     <string name="exodus_powered">Dati forniti da Exodus</string>
     <string name="exodus_no_tracker">Non contiene traccianti</string>
@@ -223,9 +222,6 @@
     <string name="device_miui_description">Si prega di disabilitare le ottimizzazioni MIUI per consentire le installazioni, altrimenti è possibile scegliere l’installatore Root o Servizi.</string>
     <string name="device_miui_subtitle">Non è possibile installare le applicazioni tramite l’installatore di sessione a causa delle ottimizzazioni MIUI.</string>
     <string name="device_miui_title">Dispositivo MIUI rilevato!</string>
-    <string name="device_huawei_description">Ti suggeriamo di usare la simulazione del dispositivo in caso tu abbia un dispositivo Huawei recente. Vuoi applicare la simulazione ora\?</string>
-    <string name="device_huawei_subtitle">Sembra che tu stia usando un dispositivo Huawei: a causa dei recenti divieti di Google è possibile che tu non riesca ad accedere.</string>
-    <string name="device_huawei_title">Dispositivo Huawei rilevato!</string>
     <string name="menu_terms">Termini di servizio</string>
     <string name="menu_license">Licenza</string>
     <string name="menu_disclaimer">Avvertenza</string>

@@ -117,7 +117,6 @@
     <string name="about_bhim_summary">通过 UPI 捐款</string>
     <string name="about_bhim">BHIM - UPI</string>
     <string name="about_paypal">PayPal</string>
-    <string name="action_apply">应用</string>
     <string name="action_disable">禁用</string>
     <string name="action_deny">拒绝</string>
     <string name="action_copy_link">复制链接</string>
@@ -235,9 +234,6 @@
     <string name="device_miui_description">请禁用 MIUI 优化以允许安装，否则，您可以选择 Root 或 Services 安装程序。</string>
     <string name="device_miui_subtitle">由于 MIUI 优化，会话安装程序 (Session) 无法安装应用。</string>
     <string name="device_miui_title">检测到 MIUI！</string>
-    <string name="device_huawei_description">如果您有最近的华为设备，我们建议您使用设备伪装。立即使用伪装吗？</string>
-    <string name="device_huawei_subtitle">您似乎正在使用华为设备，由于 Google 最近的禁令，您可能无法登录。</string>
-    <string name="device_huawei_title">检测到华为设备！</string>
     <string name="menu_terms">服务条款</string>
     <string name="menu_license">许可证</string>
     <string name="menu_disclaimer">免责声明</string>

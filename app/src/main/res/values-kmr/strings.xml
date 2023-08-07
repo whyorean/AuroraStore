@@ -143,9 +143,6 @@
     <string name="device_miui_description">Ji kerema xwe, optimîzasyonên MIUI-yê nehêlin ku destûrê bidin sazkirinê, nexwe hûn dikarin sazkerê Root an Xizmetan hilbijêrin.</string>
     <string name="device_miui_subtitle">Sazkerê danişînê ji ber Optîmîzasyonên MIUI nikare sepanan saz bike.</string>
     <string name="device_miui_title">MIUI kifş kir!</string>
-    <string name="device_huawei_description">Em pêşniyar dikin ku hûn hacetê amûrekê Huawei-yê vê dawiyê bikar bînin ku hûn qelpezanî alavê bikar bînin. Ma hûn dixwazin nuha hîleyan bikin\?</string>
-    <string name="device_huawei_subtitle">Hûn xuya dikin ku hûn amûrek Huawei bikar tînin, ji ber qedexeyên vê dawiyê yên Google dibe ku hûn nekarin têkevin.</string>
-    <string name="device_huawei_title">Huawei tesbît kirin!</string>
     <string name="menu_terms">Mercên karûbar</string>
     <string name="menu_license">Lîsans</string>
     <string name="menu_disclaimer">Destkêşname</string>
@@ -220,7 +217,6 @@
     <string name="action_blacklist_add">Zêdekirin nav Lîsteya Reş</string>
     <string name="action_blacklist">Lîsteya reş</string>
     <string name="action_back">Paş</string>
-    <string name="action_apply">Bikaranîn</string>
     <string name="action_accept">Baweranîn</string>
     <string name="account_logout">ji Aurora-yê derkeve</string>
     <string name="account_login_using">Bikaranîna têketinê</string>

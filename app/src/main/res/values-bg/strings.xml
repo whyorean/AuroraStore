@@ -31,7 +31,6 @@
     <string name="account_login_using">Влизане чрез</string>
     <string name="account_logout">Излизане от Aurora</string>
     <string name="action_accept">Приемане</string>
-    <string name="action_apply">Прилагане</string>
     <string name="action_back">Назад</string>
     <string name="action_blacklist">Черен списък</string>
     <string name="action_blacklist_add">Добавяне към черен списък</string>
@@ -133,7 +132,6 @@
     <string name="download_clear_completed">Изчистването е завършено</string>
     <string name="exodus_substring">тракер(и), намерени в</string>
     <string name="download_pause_all">Пауза на всички</string>
-    <string name="device_huawei_title">Huawei открит!</string>
     <string name="exodus_no_tracker">Не съдържа тракери</string>
     <string name="details_changelog">Списък на промените</string>
     <string name="action_leave">Напускане</string>
@@ -210,7 +208,6 @@
     <string name="installer_status_failure_invalid">Невалиден или повреден APK</string>
     <string name="installer_status_success">Успешно инсталиранe</string>
     <string name="menu_terms">Условия за ползване</string>
-    <string name="device_huawei_subtitle">Изглежда, че използвате устройство Huawei, поради скорошни забрани от Google може да не успеете да влезете.</string>
     <string name="device_miui_subtitle">Програмата за инсталиране на сесии не може да инсталира приложения поради MIUI оптимизации.</string>
     <string name="notification_channel_general">Общо известие</string>
     <string name="onboarding_permission_select">Aurora Store изисква следните разрешения</string>
@@ -277,7 +274,6 @@
     <string name="installer_status_failure_session">Не можа да се създаде сесия</string>
     <string name="device_miui_description">Деактивирайте MIUI оптимизациите, за да позволите инсталации, в противен случай можете да изберете Root или Services installer.</string>
     <string name="onboarding_permission_esm">Мениджър на външно съхранение</string>
-    <string name="device_huawei_description">Предлагаме ви да използвате устройство spoof, в случай че имате скорошно устройство Huawei. Искате ли да приложите spoof сега\?</string>
     <string name="dialog_title_self_update">Налична е нова актуализация</string>
     <string name="dialog_desc_native_split">Не можете да инсталирате пакетни (разделени) приложения чрез Native Installer. Променете инсталатора си на Session, Services или Root.</string>
     <string name="notification_channel_alert">Бързо известяване</string>

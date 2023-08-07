@@ -133,9 +133,6 @@
     <string name="device_miui_extra">ਤੁਸੀਂ ਨੇਟਿਵ ਇੰਸਟਾਲਰ ਵੀ ਵਰਤ ਸਕਦੇ ਹੋ, ਪਰ ਉਸ ਜ਼ਰੀਏ ਤੁਸੀਂ split/bundled APK ਇੰਸਟਾਲ ਨਹੀਂ ਕਰ ਸਕਦੇ। ਸੋ ਫੈਸਲਾ ਤੁਹਾਡਾ ਹੈ ਤੁਸੀਂ ਕਿਸ ਇੰਸਟਾਲੇਸ਼ਨ ਵਿਧੀ ਨਾਲ ਜਾਣਾ ਚਾਹੁੰਦੇ ਹੋ।</string>
     <string name="device_miui_subtitle">MIUI Optimizations ਕਾਰਨ ਤੁਸੀਂ ਸੈਸ਼ਨ ਐਪ ਇੰਸਟਾਲੇਸ਼ਨ ਵਿਧੀ ਜ਼ਰੀਏ ਐਪਸ ਇੰਸਟਾਲ ਨਹੀਂ ਕਰ ਸਕਦੇ।</string>
     <string name="device_miui_title">ਇਹ ਇੱਕ MIUI ਦਾ ਫੋਨ ਹੈ !</string>
-    <string name="device_huawei_description">ਜੇਕਰ ਤੁਹਾਡੇ ਕੋਲ ਨਵਾਂ Huawei ਦਾ ਫੋਨ ਹੈ ਤਾਂ ਸਾਡਾ ਸੁਝਾਅ ਹੈ ਕਿ ਤੁਸੀਂ ਡੀਵਾਇਸ ਧੋਖਾ ਸੈਟਿੰਗਾਂ ਵਿੱਚ ਜਾ ਕੇ ਫੋਨ ਮਾਡਲ ਨੂੰ ਬਦਲੋ। ਕੀ ਤੁਸੀਂ ਹੁਣੇ ਇਸ ਸੈਟਿੰਗ ਨੂੰ ਚਾਲੂ ਕਰਨਾ ਚਾਹੁੰਦੇ ਹੋ \?</string>
-    <string name="device_huawei_subtitle">ਇਹ ਇੱਕ Huawei ਦਾ ਫੋਨ ਲੱਗ ਰਿਹਾ ਹੈ, ਹਾਲ ਹੀ ਵਿੱਚ ਗੂਗਲ ਵਲੋਂ ਇਸ ਕੰਪਨੀ ਦੇ ਫੋਨ ਬੈਨ ਕਰ ਦਿੱਤੇ ਗਏ ਹਨ ਜਿਸ ਕਾਰਨ ਤੁਸੀਂ ਸ਼ਾਇਦ ਲੌਗ-ਇਨ ਨਾ ਕਰ ਪਾਓ।</string>
-    <string name="device_huawei_title">ਇਹ ਇੱਕ Huawei ਦਾ ਫੋਨ ਹੈ !</string>
     <string name="menu_terms">ਸੇਵਾ ਦੀਆਂ ਸ਼ਰਤਾਂ</string>
     <string name="menu_license">ਲਾਈਸੈਂਸ</string>
     <string name="menu_disclaimer">ਬੇਦਾਅਵਾ</string>
@@ -256,7 +253,6 @@
     <string name="action_blacklist_add">ਬਲੈਕ ਲਿਸਟ ਵਿੱਚ ਸ਼ਾਮਿਲ ਕਰੋ</string>
     <string name="action_blacklist">ਬਲੈਕ ਲਿਸਟ</string>
     <string name="action_back">ਪਿੱਛੇ</string>
-    <string name="action_apply">ਲਾਗੂ ਕਰੋ</string>
     <string name="action_accept">ਮੈਂ ਸਹਿਮਤ ਹਾਂ</string>
     <string name="account_logout">ਲੌਗ-ਆਊਟ ਕਰੋ</string>
     <string name="account_login_using">ਕਿਰਪਾ ਕਰਕੇ ਲੌਗ-ਇਨ ਕਰਨ ਦਾ ਜ਼ਰੀਆ ਚੁਣੋ</string>

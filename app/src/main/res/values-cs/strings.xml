@@ -121,9 +121,6 @@
     <string name="device_miui_description">Pro povolení instalací, deaktivujte optimalizaci MIUI, v opačném případě si můžete vybrat mezi Root instalátor nebo Services instalátor.</string>
     <string name="device_miui_subtitle">Relační instalátor nelze použít z důvodu optimalizací MIUI.</string>
     <string name="device_miui_title">Zjištěno MIUI!</string>
-    <string name="device_huawei_description">Pokud máte zařízení Huawei, doporučujeme použít device spoof. Chcete to udělat hned teď\?</string>
-    <string name="device_huawei_subtitle">Zdá se, že používáte zařízení Huawei. Z důvodu nedávných zákazů Google se možná nebudete moci přihlásit.</string>
-    <string name="device_huawei_title">Huawei detekován!</string>
     <string name="menu_terms">Všeobecné smluvní podmínky</string>
     <string name="menu_license">Licence</string>
     <string name="menu_disclaimer">Varování</string>
@@ -241,7 +238,6 @@
     <string name="action_check">Obnovit</string>
     <string name="action_cancel">Zrušit</string>
     <string name="action_back">Zpět</string>
-    <string name="action_apply">Použít</string>
     <string name="action_accept">Přijmout</string>
     <string name="account_logout">Odhlásit se z Aurory</string>
     <string name="account_login_using">Přihlaste se pomocí</string>

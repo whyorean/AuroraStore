@@ -74,7 +74,6 @@
     <string name="action_cancel">বাতিল</string>
     <string name="action_blacklist">অবরোধ তালিকা</string>
     <string name="action_back">পিছনে</string>
-    <string name="action_apply">আবেদন</string>
     <string name="account_google">গুগল</string>
     <string name="about_telegram_summary">অরোরা সহায়তা দলে যোগ দাও আলোচনা বা পরামর্শের জন্য।</string>
 </resources>

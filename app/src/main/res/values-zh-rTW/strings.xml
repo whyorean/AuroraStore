@@ -44,7 +44,6 @@
     <string name="action_blacklist_add">加入黑名單</string>
     <string name="action_blacklist">黑名單</string>
     <string name="action_back">返回</string>
-    <string name="action_apply">套用</string>
     <string name="action_accept">接受</string>
     <string name="account_logout">登出 Aurora</string>
     <string name="account_login_using">登入通過</string>
@@ -192,9 +191,6 @@
     <string name="device_miui_extra">另外你可以選原生安裝器，但如此你就無法安裝分裂的 APK 了，所以由你決定。</string>
     <string name="device_miui_description">請禁用 MIUI 最佳化以允許安裝，另外你可以選 Root 或者 Aurora 服務安裝器。</string>
     <string name="device_miui_title">偵測到 MIUI！</string>
-    <string name="device_huawei_description">由於你用著華為電話，我們建議你使用設備偽裝，你想不想？</string>
-    <string name="device_huawei_subtitle">你好似用著華為裝置，由於 Google 的禁令，你可能無法登入。</string>
-    <string name="device_huawei_title">偵測到華為！</string>
     <string name="menu_terms">服務條款</string>
     <string name="menu_license">授權執照</string>
     <string name="menu_disclaimer">免責聲明</string>

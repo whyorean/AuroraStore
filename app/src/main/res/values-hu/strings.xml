@@ -58,7 +58,6 @@
     <string name="action_blacklist_add">Hozzáadás a tiltólistához</string>
     <string name="action_blacklist">Tiltólista</string>
     <string name="action_back">Vissza</string>
-    <string name="action_apply">Alkalmaz</string>
     <string name="action_accept">Elfogadom</string>
     <string name="account_logout">Kijelentkezés az Aurorából</string>
     <string name="account_login_using">Bejelentkezés ezzel</string>
@@ -102,9 +101,6 @@
     <string name="device_miui_description">Kérünk, tiltsd le a MIUI optimalizálást a telepítések engedélyezéséhez, vagy válaszd a root vagy Szolgáltatások telepítési módszert.</string>
     <string name="device_miui_subtitle">A munkemeneti telepítő nem képes alkalmazásokat telepíteni a MIUI optimalizálás miatt.</string>
     <string name="device_miui_title">MIUI észlelve!</string>
-    <string name="device_huawei_description">Javasoljuk, hogy használd az eszközhamisítást abban az esetben, ha újabb Huawei készüléked van. Szeretnéd most alkalmazni a hamisítást\?</string>
-    <string name="device_huawei_subtitle">Úgy tűnik, hogy Huawei eszközt használsz. A Google legutóbbi tiltásai miatt előfordulhat, hogy nem fogsz tudni bejelentkezni.</string>
-    <string name="device_huawei_title">Huawei észlelve!</string>
     <string name="menu_terms">Felhasználási feltételek</string>
     <string name="menu_license">Licensz</string>
     <string name="menu_disclaimer">Jogi nyilatkozat</string>

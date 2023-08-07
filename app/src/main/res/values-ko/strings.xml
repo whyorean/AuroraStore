@@ -44,7 +44,6 @@
     <string name="account_login_using">다음을 사용하여 로그인</string>
     <string name="account_logout">오로라에서 로그아웃</string>
     <string name="action_accept">받아들이다</string>
-    <string name="action_apply">적용</string>
     <string name="action_check">검사</string>
     <string name="action_clear">지우기</string>
     <string name="action_close">닫기</string>

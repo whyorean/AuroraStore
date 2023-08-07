@@ -57,7 +57,6 @@
     <string name="installer_status_failure_storage">Riittämätön muistitila</string>
     <string name="installer_status_failure_invalid">Virheellinen tai vioittunut APK</string>
     <string name="installer_status_user_action">Käyttäjän vahvistusta odotetaan</string>
-    <string name="device_huawei_title">Huawei havaittu!</string>
     <string name="menu_terms">Käyttöehdot</string>
     <string name="menu_license">Lisenssi</string>
     <string name="dialog_title_self_update">Uusi päivitys saatavilla</string>
@@ -179,7 +178,6 @@
     <string name="action_disable">Poista käytöstä</string>
     <string name="action_deny">Kiellä</string>
     <string name="action_clear">Tyhjennä</string>
-    <string name="action_apply">Käytä</string>
     <string name="account_anonymous">Anonyymi</string>
     <string name="about_telegram_summary">Liity Auroran tukiryhmään keskusteluja tai ehdotuksia varten.</string>
     <string name="toast_rated_success">Arvioitu</string>
@@ -265,8 +263,6 @@
     <string name="device_miui_description">Ota MIUI-optimoinnit pois käytöstä hyväksyäksesi asennukset tai valitse Root- tai Services-asentaja.</string>
     <string name="device_miui_subtitle">Sessioasentaja ei voi asentaa sovelluksia MIUI:n optimoinneista johtuen.</string>
     <string name="device_miui_title">MIUI havaittu!</string>
-    <string name="device_huawei_description">Suosittelemme, että asetat laitehuijauksen, jos sinulla on melko tuore Huawein laite. Haluatko ottaa huijauksen käyttöön nyt\?</string>
-    <string name="device_huawei_subtitle">Näytät käyttävän Huawei-merkkistä laitetta. Googlen viimeaikaisten käyttöestojen vuoksi et välttämättä pysty kirjautumaan.</string>
     <string name="menu_disclaimer">Vastuuvapauslauseke</string>
     <string name="installer_status_failure_conflict">Löytyi ristiriitainen asennuspaketti</string>
     <string name="installer_service_misconfigured">Asenna ensin Aurora Services ja anna kaikki käyttöoikeudet.</string>

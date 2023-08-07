@@ -24,7 +24,6 @@
     <string name="account_logged_out">Trenutno ste odjavljeni</string>
     <string name="account_logout">Odjavite se iz Aurora</string>
     <string name="action_accept">Strinjam se</string>
-    <string name="action_apply">Uporabi</string>
     <string name="action_back">Nazaj</string>
     <string name="action_blacklist">Črni seznam</string>
     <string name="action_blacklist_add">Dodaj na črni seznam</string>
@@ -112,9 +111,6 @@
     <string name="menu_disclaimer">Zavrnitev odgovornosti</string>
     <string name="menu_license">Licenca</string>
     <string name="menu_terms">Pogoji storitve</string>
-    <string name="device_huawei_subtitle">Videti je, da uporabljate napravo Huawei, zaradi nedavnih prepovedi Googla se morda ne boste mogli prijaviti.</string>
-    <string name="device_huawei_title">Zaznana je naprava Huawei!</string>
-    <string name="device_huawei_description">Predlagamo, da uporabite pretvarjanje, če imate novejšo napravo Huawei. Želite zdaj uporabiti pretvarjanje\?</string>
     <string name="device_miui_title">Zaznan je MIUI!</string>
     <string name="device_miui_subtitle">Nameščanje s sejo ne more namestiti aplikacij zaradi optimizacij MIUI.</string>
     <string name="device_miui_extra">Izberete lahko izvorni namestitveni program, vendar s tem ne morete namestiti svežnjev (razdeljenih) APK-jev. Izbira je vaša.</string>
