@@ -61,7 +61,6 @@
     <string name="action_update">更新</string>
     <string name="action_info">应用信息</string>
     <string name="action_uninstall">卸载</string>
-    <string name="action_try_later">稍后再试</string>
     <string name="action_share">分享</string>
     <string name="action_search">搜索</string>
     <string name="action_post">发布</string>

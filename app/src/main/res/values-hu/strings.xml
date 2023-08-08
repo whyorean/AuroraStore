@@ -18,7 +18,6 @@
     <string name="action_update">Frissítés</string>
     <string name="action_info">Alkalmazásinformáció</string>
     <string name="action_uninstall">Eltávolítás</string>
-    <string name="action_try_later">Próbáld újra később</string>
     <string name="action_share">Megosztás</string>
     <string name="action_search">Keresés</string>
     <string name="action_resume">Folytatás</string>

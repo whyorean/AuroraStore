@@ -129,7 +129,6 @@
     <string name="action_update">تحديث</string>
     <string name="action_info">معلومات التطبيق</string>
     <string name="action_uninstall">إلغاء التثبيت</string>
-    <string name="action_try_later">حاول لاحقا</string>
     <string name="action_share">مشاركة</string>
     <string name="action_search">البحث</string>
     <string name="action_resume">إستئناف</string>

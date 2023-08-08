@@ -153,7 +153,6 @@
     <string name="action_update">Actualizar</string>
     <string name="action_info">Información da aplicación</string>
     <string name="action_uninstall">Desinstalar</string>
-    <string name="action_try_later">Ténteo máis tarde</string>
     <string name="action_share">Compartillar</string>
     <string name="action_resume">Continuar</string>
     <string name="action_restart">Reiniciar</string>

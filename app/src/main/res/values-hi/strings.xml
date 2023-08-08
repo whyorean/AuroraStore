@@ -81,7 +81,6 @@
     <string name="action_wishlist_add">इच्छासूची में जोड़ें</string>
     <string name="toast_apk_blacklisted">ब्लैकलिस्ट में डाला</string>
     <string name="download_force_clear_all">ज़बरदस्ती सब साफ करें</string>
-    <string name="action_try_later">बाद में कोशिश करें</string>
     <string name="tab_for_you">आपके लिए</string>
     <string name="purchase_invalid">ऐप नहीं खरीदा गया</string>
     <string name="details_contains_ads">विज्ञापन हैं</string>

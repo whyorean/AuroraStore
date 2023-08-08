@@ -105,7 +105,6 @@
     <string name="action_update">Mettre à jour</string>
     <string name="action_info">Infos de l’appli</string>
     <string name="action_uninstall">Désinstaller</string>
-    <string name="action_try_later">Essayer plus tard</string>
     <string name="action_share">Partager</string>
     <string name="action_search">Rechercher</string>
     <string name="action_resume">Reprendre</string>

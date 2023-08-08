@@ -223,7 +223,6 @@
     <string name="action_update">Atualizar</string>
     <string name="action_info">Informações da aplicação</string>
     <string name="action_uninstall">Desinstalar</string>
-    <string name="action_try_later">Tentar mais tarde</string>
     <string name="action_share">Partilhar</string>
     <string name="action_search">Pesquisar</string>
     <string name="action_resume">Retomar</string>

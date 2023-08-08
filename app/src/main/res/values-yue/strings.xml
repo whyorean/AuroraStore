@@ -186,7 +186,6 @@
     <string name="action_leave">退出</string>
     <string name="action_pending">仲要等等</string>
     <string name="action_post">發表</string>
-    <string name="action_try_later">遲啲再試過啦</string>
     <string name="action_info">個 app 詳細</string>
     <string name="details_gsf_dependent">要有 GSF 至得</string>
     <string name="details_beta_delay">報名要啲時間處理，您可以轉頭返嚟再睇過個狀態吖。</string>

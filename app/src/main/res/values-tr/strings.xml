@@ -224,7 +224,6 @@
     <string name="action_update">Güncelle</string>
     <string name="action_info">Uygulama Bilgisi</string>
     <string name="action_uninstall">Kaldır</string>
-    <string name="action_try_later">Daha sonra dene</string>
     <string name="action_share">Paylaş</string>
     <string name="action_search">Ara</string>
     <string name="action_resume">Sürdür</string>

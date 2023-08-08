@@ -144,7 +144,6 @@
     <string name="action_update">Päivitä</string>
     <string name="action_info">Sovelluksen tiedot</string>
     <string name="action_uninstall">Poista asennus</string>
-    <string name="action_try_later">Yritä myöhemmin</string>
     <string name="action_share">Jaa</string>
     <string name="action_search">Hae</string>
     <string name="action_resume">Jatka</string>

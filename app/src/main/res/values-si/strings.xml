@@ -57,7 +57,6 @@
     <string name="action_update">යාවත්කාලය</string>
     <string name="action_info">යෙදුමේ තොරතුරු</string>
     <string name="action_uninstall">අස්ථාපනය</string>
-    <string name="action_try_later">පසුව උත්සාහ කරන්න</string>
     <string name="action_share">බෙදාගන්න</string>
     <string name="action_search">සොයන්න</string>
     <string name="action_restart">නැවත අරඹන්න</string>

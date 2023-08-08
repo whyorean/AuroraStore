@@ -91,7 +91,6 @@
     <string name="action_resume">"Resume"</string>
     <string name="action_search">"Search"</string>
     <string name="action_share">"Share"</string>
-    <string name="action_try_later">"Try later"</string>
     <string name="action_uninstall">"Uninstall"</string>
     <string name="action_info">"App Info"</string>
     <string name="action_update">"Update"</string>
@@ -366,4 +365,5 @@
     <string name="login_rate_limited">Oops, You are rate limited</string>
     <string name="server_unreachable">Server unreachable</string>
     <string name="failed_generating_session">Failed to generate session, error code: <xliff:g id="status_code">%1$d</xliff:g></string>
+    <string name="check_connectivity">Check internet connectivity</string>
 </resources>

@@ -265,7 +265,6 @@
     <string name="action_update">更新</string>
     <string name="action_info">應用程式資訊</string>
     <string name="action_uninstall">解除安裝</string>
-    <string name="action_try_later">稍後再試</string>
     <string name="action_get_local_apk">保存 App bundle（程式捆包）</string>
     <string name="action_filter_misc">更多選項</string>
     <string name="about_xda">開發者討論串</string>

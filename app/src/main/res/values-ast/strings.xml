@@ -166,7 +166,6 @@
     <string name="action_restart">Reaniciar</string>
     <string name="action_resume">Siguir</string>
     <string name="action_search">Buscar</string>
-    <string name="action_try_later">Try later</string>
     <string name="action_uninstall">Uninstall</string>
     <string name="action_info">App Info</string>
     <string name="action_whitelist">Whitelist</string>

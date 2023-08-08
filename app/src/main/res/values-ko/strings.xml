@@ -78,7 +78,6 @@
     <string name="action_resume">재개</string>
     <string name="action_search">검색</string>
     <string name="action_share">공유</string>
-    <string name="action_try_later">나중에 시도</string>
     <string name="action_uninstall">제거</string>
     <string name="action_info">앱 정보</string>
     <string name="action_update">업데이트</string>

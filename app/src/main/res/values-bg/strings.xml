@@ -103,7 +103,6 @@
     <string name="pref_ui_similar_apps">Подобни и свързани приложения</string>
     <string name="title_installation">Инсталация</string>
     <string name="action_restart">Рестартиране</string>
-    <string name="action_try_later">Опитайте по-късно</string>
     <string name="action_join">Присъединяване</string>
     <string name="action_next">Следващо</string>
     <string name="action_info">Информация за приложението</string>

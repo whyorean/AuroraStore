@@ -63,7 +63,6 @@
     <string name="action_next">Næste</string>
     <string name="action_restart">Genstart</string>
     <string name="action_resume">Genoptag</string>
-    <string name="action_try_later">Prøv senere</string>
     <string name="action_uninstall">Afinstaller</string>
     <string name="action_update">Opdater</string>
     <string name="details_beta_subscribed">Du er en betatester</string>

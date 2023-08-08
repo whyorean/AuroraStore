@@ -214,7 +214,6 @@
     <string name="action_update">Werk bij</string>
     <string name="action_info">App Informatie</string>
     <string name="action_uninstall">Deïnstalleren</string>
-    <string name="action_try_later">Later opnieuw proberen</string>
     <string name="action_share">Deel</string>
     <string name="action_resume">Hervat</string>
     <string name="action_restart">Herstart</string>

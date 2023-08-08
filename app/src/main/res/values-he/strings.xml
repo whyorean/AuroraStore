@@ -168,7 +168,6 @@
     <string name="onboarding_permission_esm">מנהל אחסון חיצוני</string>
     <string name="purchase_not_found">היישום לא נמצא</string>
     <string name="installer_status_failure">ההתקנה נכשלה</string>
-    <string name="action_try_later">נא לנסות שוב מאוחר יותר</string>
     <string name="exodus_substring">עוקבנים נמצאו</string>
     <string name="download_queued">מחכה בתור</string>
     <string name="pref_install_delete_title">מחיקת קובצי ה־APK לאחר ההתקנה</string>

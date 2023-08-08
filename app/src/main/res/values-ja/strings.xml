@@ -120,7 +120,6 @@
     <string name="action_update">更新</string>
     <string name="action_info">情報</string>
     <string name="action_uninstall">アンインストール</string>
-    <string name="action_try_later">後で</string>
     <string name="action_share">共有</string>
     <string name="action_search">検索</string>
     <string name="action_restart">再スタート</string>
