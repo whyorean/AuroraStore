@@ -45,6 +45,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -123,7 +124,7 @@ class MainActivity : AppCompatActivity() {
             NetworkProvider(this@MainActivity).networkStatus.collect {
                 when(it) {
                     NetworkStatus.AVAILABLE -> {
-                        if (!supportFragmentManager.isDestroyed) {
+                        if (!supportFragmentManager.isDestroyed && isIntroDone()) {
                             val fragment = supportFragmentManager
                                 .findFragmentByTag(NetworkDialogSheet.TAG)
                             fragment?.let {
@@ -134,7 +135,7 @@ class MainActivity : AppCompatActivity() {
                         }
                     }
                     NetworkStatus.LOST -> {
-                        if (!supportFragmentManager.isDestroyed) {
+                        if (!supportFragmentManager.isDestroyed && isIntroDone()) {
                             supportFragmentManager.beginTransaction()
                                 .add(NetworkDialogSheet.newInstance(), NetworkDialogSheet.TAG)
                                 .commitAllowingStateLoss()
@@ -291,5 +292,9 @@ class MainActivity : AppCompatActivity() {
             sheet.isCancelable = false
             sheet.show(supportFragmentManager, SelfUpdateSheet.TAG)
         }
+    }
+
+    private fun isIntroDone(): Boolean {
+        return Preferences.getBoolean(this@MainActivity, Preferences.PREFERENCE_INTRO)
     }
 }
