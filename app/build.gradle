@@ -60,7 +60,6 @@ android {
         release {
             minifyEnabled true
             shrinkResources true
-            zipAlignEnabled true
             signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
