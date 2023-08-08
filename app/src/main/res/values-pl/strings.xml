@@ -19,7 +19,7 @@
     <string name="details_beta_delay">Rekrutacja może trochę potrwać. Status zgłoszenia możesz sprawdzić później.</string>
     <string name="details_beta_description">Zobaczysz nowe funkcje i błędy zanim zrobi to opinia publiczna. Przekaż swoją opinię programistom, aby pomóc im wprowadzić ulepszenia.</string>
     <string name="details_beta_available">Chcesz dołączyć do programu beta\?</string>
-    <string name="details_beta_subscribed">Jesteś beta testerem</string>
+    <string name="details_beta_subscribed">Jesteś betatesterem</string>
     <string name="details_beta">Program beta</string>
     <string name="action_wishlist_add">Dodaj do listy życzeń</string>
     <string name="action_whitelist">Biała lista</string>
@@ -38,7 +38,7 @@
     <string name="action_ok">OK</string>
     <string name="action_next">Następna</string>
     <string name="action_logout">Wyloguj się</string>
-    <string name="action_leave">Opuść</string>
+    <string name="action_leave">Zrezygnuj</string>
     <string name="action_later">Później</string>
     <string name="action_join">Dołącz</string>
     <string name="action_installing">Instalowanie</string>

@@ -97,7 +97,7 @@
     <string name="pref_ui_theme_dark">අඳුරු</string>
     <string name="pref_ui_theme_black">කළු</string>
     <string name="pref_filter_google_title">ගූගල් යෙදුම් පෙරන්න</string>
-    <string name="pref_filter_google_summary">සෙවුම් ප්‍රතිඵල සහ ප්‍රවර්ග යෙදුම් වලින් සියලුම ගූගල් යෙදුම් ඉවත් කරයි</string>
+    <string name="pref_filter_google_summary">සෙවුම් ප්‍රතිඵල සහ යෙදුම් ප්‍රවර්ග වලින් සියළුම ගූගල් යෙදුම් ඉවත් කරයි</string>
     <string name="pref_filter_fdroid_title">එෆ්-ඩ්‍රොයිඩ් යෙදුම් පෙරන්න</string>
     <string name="pref_app_download">බාගැනීම්</string>
     <string name="onboarding_title_installer">ස්ථාපකය</string>
@@ -338,4 +338,12 @@
     <string name="notification_updates_available_desc_3"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g> හා <xliff:g id="app_three_name">%3$s</xliff:g></string>
     <string name="notification_updates_available_desc_2"><xliff:g id="app_one_name">%1$s</xliff:g> හා <xliff:g id="app_two_name">%2$s</xliff:g></string>
     <string name="notification_updates_available_desc_4"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g>, <xliff:g id="app_three_name">%3$s</xliff:g> හා තවත් <xliff:g id="apps_count">%4$d</xliff:g></string>
+    <string name="access_denied_using_vpn">ප්‍රවේශය ප්‍රතික්‍ෂේපිතයි! අ.පෞ.ජා. (VPN) හෝ ටෝර් භාවිතා කරන්නේද\?</string>
+    <string name="failed_generating_session">වාරය උත්පාදනයට අසමත් විය, දෝෂයේ කේතය: <xliff:g id="status_code">%1$d</xliff:g></string>
+    <string name="title_search_results">සෙවුම් ප්‍රතිඵල</string>
+    <string name="title_search_suggestion">සෙවුම් යෝජනා</string>
+    <string name="failed_to_fetch_report">පෞද්. වාර්තාව ගැනීමට නොහැකි විය</string>
+    <string name="bad_request">අභ්‍යන්තර දෝෂයකි! ටික වේලාවකින් බලන්න</string>
+    <string name="login_rate_limited">ඔබව අනුපාතනය වී ඇත</string>
+    <string name="server_unreachable">සේවාදායකයට ළඟා වීමට නොහැකිය</string>
 </resources>

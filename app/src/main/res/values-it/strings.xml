@@ -338,4 +338,12 @@
     <string name="notification_updates_available_desc_1">È disponibile una nuova versione di <xliff:g id="app_one_name">%1$s</xliff:g></string>
     <string name="notification_updates_available_desc_2"><xliff:g id="app_one_name">%1$s</xliff:g> e <xliff:g id="app_two_name">%2$s</xliff:g></string>
     <string name="notification_updates_available_desc_4"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g> , <xliff:g id="app_three_name">%3$s</xliff:g> e <xliff:g id="apps_count">%4$d</xliff:g> più</string>
+    <string name="title_search_suggestion">Suggerimenti di ricerca</string>
+    <string name="title_search_results">Risultati della ricerca</string>
+    <string name="access_denied_using_vpn">Accesso negato! Stai usando VPN o Tor\?</string>
+    <string name="login_rate_limited">Oops, la tua velocità è stata limitata</string>
+    <string name="server_unreachable">Server non raggiungibile</string>
+    <string name="failed_to_fetch_report">Errore nel recupero del rapporto sulla privacy</string>
+    <string name="bad_request">Errore interno! Si prega di riprovare tra un po’ di tempo</string>
+    <string name="failed_generating_session">Errore nella generazione della sessione, codice: <xliff:g id="status_code">%1$d</xliff:g></string>
 </resources>
