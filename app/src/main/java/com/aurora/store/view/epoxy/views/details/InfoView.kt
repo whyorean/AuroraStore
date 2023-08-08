@@ -59,7 +59,7 @@ class InfoView : RelativeLayout {
         B = ViewInfoBinding.bind(view)
     }
 
-    @ModelProp
+    @ModelProp(options = [ModelProp.Option.IgnoreRequireHashCode])
     fun badge(info: Map.Entry<String, String>) {
         B.txtTitle.text = info.key
             .replace("_", " ")

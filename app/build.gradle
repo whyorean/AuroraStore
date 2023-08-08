@@ -153,7 +153,7 @@ dependencies {
     //Epoxy
     def epoxy_version = '5.1.2'
     implementation "com.airbnb.android:epoxy:$epoxy_version"
-    kapt "com.airbnb.android:epoxy-processor:$epoxy_version"
+    ksp "com.airbnb.android:epoxy-processor:$epoxy_version"
 
     //HTTP Clients
     implementation "com.squareup.okhttp3:okhttp:4.11.0"
