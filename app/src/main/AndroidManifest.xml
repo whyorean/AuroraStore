@@ -111,16 +111,6 @@
             android:permission="android.permission.INTERACT_ACROSS_USERS_FULL"
             tools:ignore="MissingClass" />
 
-        <receiver android:name=".data.receiver.PackageManagerReceiver"
-            android:exported="false">
-            <intent-filter>
-                <action android:name="android.intent.action.PACKAGE_ADDED" />
-                <action android:name="android.intent.action.PACKAGE_CHANGED" />
-                <action android:name="android.intent.action.PACKAGE_REMOVED" />
-
-                <data android:scheme="package" />
-            </intent-filter>
-        </receiver>
         <receiver android:name=".data.receiver.DownloadResumeReceiver" />
         <receiver android:name=".data.receiver.DownloadPauseReceiver" />
         <receiver android:name=".data.receiver.DownloadCancelReceiver" />
