@@ -24,7 +24,6 @@
     <string name="action_update">نوێکردنەوە</string>
     <string name="action_info">زانیاری بەرنامە</string>
     <string name="action_uninstall">سڕینەوە</string>
-    <string name="action_try_later">دواتر هەوڵبدە</string>
     <string name="action_share">بڵاوکردنەوە</string>
     <string name="action_search">گەڕان</string>
     <string name="action_resume">بەردەوامبون</string>
@@ -68,7 +67,6 @@
     <string name="action_blacklist_add">زیادکردن بۆ لیستی ڕەش</string>
     <string name="action_blacklist">لیستی ڕەش</string>
     <string name="action_back">گەڕانەوە</string>
-    <string name="action_apply">جێبەجێکردن</string>
     <string name="action_accept">ڕازیم</string>
     <string name="account_logout">دەرچوون لە ئەرۆرا</string>
     <string name="account_login_using">چونەژوورەوە لەڕێی</string>

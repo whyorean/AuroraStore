@@ -14,7 +14,6 @@
     <string name="about_xda_summary">Consultă forumul XDA Aurora Store pentru discuții sau sugestii.</string>
     <string name="account_anonymous">Anonim</string>
     <string name="about_xda">Forum</string>
-    <string name="action_apply">Aplică</string>
     <string name="action_get_local_apk">Se salvează pachetul aplicației</string>
     <string name="action_pause">Întrerupe</string>
     <string name="details_changelog">Jurnalul modificărilor</string>
@@ -25,7 +24,6 @@
     <string name="action_resume">Reia</string>
     <string name="action_search">Căutare</string>
     <string name="action_share">Distribuie</string>
-    <string name="action_try_later">Încearcă mai târziu</string>
     <string name="action_uninstall">Dezinstalează</string>
     <string name="action_info">Informații despre aplicație</string>
     <string name="action_update">Actualizează</string>
@@ -52,8 +50,6 @@
     <string name="filter_review_positive">Pozitiv</string>
     <string name="filter_review_three">Trei</string>
     <string name="installer_status_failure">Instalare eșuată</string>
-    <string name="device_huawei_subtitle">Se pare că utilizezi un dispozitiv Huawei, din cauza interdicțiilor recente ale Google, este posibil să nu te poți conecta.</string>
-    <string name="device_huawei_description">Îți sugerăm să utilizezi falsificarea dispozitivului în cazul în care ai un dispozitiv Huawei recent. Vrei să aplici falsificarea acum\?</string>
     <string name="device_miui_title">MIUI detectat!</string>
     <string name="device_miui_subtitle">Programul de instalare a sesiunii nu poate instala aplicații din cauza optimizărilor MIUI.</string>
     <string name="device_miui_description">Dezactivează optimizările MIUI pentru a permite instalările, altfel poți alege programul de instalare Root sau Servicii.</string>
@@ -165,7 +161,6 @@
     <string name="menu_terms">Termeni și condiții</string>
     <string name="installer_status_failure_conflict">Există un pachet conflictual</string>
     <string name="menu_license">Licență</string>
-    <string name="device_huawei_title">Huawei detectat!</string>
     <string name="onboarding_permission_select">Aurora Store necesită următoarele permisiuni</string>
     <string name="onboarding_title_accent">Accent</string>
     <string name="onboarding_theme_select">Selectează ceea ce îți place</string>

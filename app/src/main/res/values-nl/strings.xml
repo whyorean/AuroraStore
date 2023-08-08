@@ -19,12 +19,10 @@
     <string name="about_bitcoin_btc_summary">Doneer met Bitcoin (BTC)</string>
     <string name="about_bhim_summary">Doneer met UPI</string>
     <string name="onboarding_tos_error">U moet eerst de servicevoorwaarden lezen markeren.</string>
-    <string name="device_huawei_subtitle">U lijkt een Huawei apparaat te gebruiken, vanwege de recente verbanningen van Google zou u mogelijk niet kunnen inloggen.</string>
     <string name="installer_root_unavailable">Geen root toegang. Geef het of verander de installateur.</string>
     <string name="about_gitlab_summary">Verkrijg de Aurora Store broncode van Aurora OSS op GitLab.</string>
     <string name="about_fdroid_summary">Haal de Aurora Store op F-Droid.</string>
     <string name="tab_top_charts">Top hitlijsten</string>
-    <string name="device_huawei_description">We adviseren u om apparaat vervalsing te gebruiken in het geval dat u een recent Huawei apparaat heeft. Wenst u deze vervalsing nu toe te passen\?</string>
     <string name="action_search">Zoek</string>
     <string name="action_filter_misc">Overig</string>
     <string name="action_get_local_apk">Applicatie bundel opslaan</string>
@@ -148,7 +146,6 @@
     <string name="device_miui_description">Schakel alstublieft MIUI optimalisatie uit voor het accepteren van installaties, kies anders Root of Service installatie.</string>
     <string name="device_miui_subtitle">Session installateur kan geen apps installeren door MIUI Optimalisaties.</string>
     <string name="device_miui_title">MIUI gedetecteerd!</string>
-    <string name="device_huawei_title">Huawei gedetecteerd!</string>
     <string name="menu_terms">Servicevoorwaarden</string>
     <string name="menu_license">Licentie</string>
     <string name="menu_disclaimer">Waarschuwing</string>
@@ -217,7 +214,6 @@
     <string name="action_update">Werk bij</string>
     <string name="action_info">App Informatie</string>
     <string name="action_uninstall">Deïnstalleren</string>
-    <string name="action_try_later">Later opnieuw proberen</string>
     <string name="action_share">Deel</string>
     <string name="action_resume">Hervat</string>
     <string name="action_restart">Herstart</string>
@@ -256,7 +252,6 @@
     <string name="action_check">Kijk na</string>
     <string name="action_cancel">Afbreken</string>
     <string name="action_back">Terug</string>
-    <string name="action_apply">Voeg toe</string>
     <string name="account_logout">Log uit van Aurora</string>
     <string name="account_login_using">Login met</string>
     <string name="account_google">Google</string>

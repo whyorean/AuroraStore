@@ -45,7 +45,6 @@
     <string name="details_beta_available">¿Quies xunite al programa Beta\?</string>
     <string name="details_no_ads">Nun contién anuncios</string>
     <string name="details_no_updates">Nun hai nengún anovamientu disponible</string>
-    <string name="device_huawei_title">Preséu de Huawei</string>
     <string name="pref_filter_fdroid_summary">Quita les aplicaciones de F-Droid de les llistes</string>
     <string name="pref_filter_fdroid_title">Peñerar les aplicaciones de F-Droid</string>
     <string name="title_apps_games">Aplicaciones ya xuegos de mio</string>
@@ -115,7 +114,6 @@
     <string name="about_fdroid">F-Droid</string>
     <string name="action_blacklist">Blacklist</string>
     <string name="details_ratings">Valoración ya reseñes</string>
-    <string name="action_apply">Aplicar</string>
     <string name="action_ignore_version">Inorar la versión</string>
     <string name="action_filter">Peñeres</string>
     <string name="details_free">Free</string>
@@ -168,7 +166,6 @@
     <string name="action_restart">Reaniciar</string>
     <string name="action_resume">Siguir</string>
     <string name="action_search">Buscar</string>
-    <string name="action_try_later">Try later</string>
     <string name="action_uninstall">Uninstall</string>
     <string name="action_info">App Info</string>
     <string name="action_whitelist">Whitelist</string>
@@ -274,8 +271,6 @@
     <string name="installer_status_user_action">Esperando pola confirmación del usuariu</string>
     <string name="menu_disclaimer">Disclaimer</string>
     <string name="menu_terms">Términos del serviciu</string>
-    <string name="device_huawei_subtitle">Paez qu\'uses un preséu de Huawei. Pola mor de les torgues de recién de Google, ye posible que nun puedas ser a aniciar la sesión.</string>
-    <string name="device_huawei_description">Suxerímoste qu\'uses una suplantación nel casu de tener un preséu Huawei recién. ¿Quies aplicar la suplantación agora\?</string>
     <string name="device_miui_title">¡Detectóse MIUI!</string>
     <string name="device_miui_subtitle">L\'instalador de la sesión nun pue instalar aplicaciones pola mor de les optimizaciones de MIUI.</string>
     <string name="device_miui_description">Desactiva les optimizaciones de MIUI pa permitir les instalaciones, sinón pues escoyer l\'instalador root o\'l de los servicios d\'Aurora.</string>

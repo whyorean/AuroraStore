@@ -8,7 +8,6 @@
     <string name="account_logged_out">您已經登出咗</string>
     <string name="account_logout">登出 Aurora</string>
     <string name="action_accept">接受</string>
-    <string name="action_apply">套用</string>
     <string name="action_back">返轉頭</string>
     <string name="action_cancel">取消</string>
     <string name="action_check">檢查</string>
@@ -187,7 +186,6 @@
     <string name="action_leave">退出</string>
     <string name="action_pending">仲要等等</string>
     <string name="action_post">發表</string>
-    <string name="action_try_later">遲啲再試過啦</string>
     <string name="action_info">個 app 詳細</string>
     <string name="details_gsf_dependent">要有 GSF 至得</string>
     <string name="details_beta_delay">報名要啲時間處理，您可以轉頭返嚟再睇過個狀態吖。</string>

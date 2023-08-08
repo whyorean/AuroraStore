@@ -17,7 +17,7 @@
   ~
   -->
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -28,27 +28,30 @@
         android:id="@+id/img"
         android:layout_width="@dimen/icon_size_avatar"
         android:layout_height="@dimen/icon_size_avatar"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/margin_normal"
-        android:layout_marginBottom="@dimen/margin_normal"
-        app:srcCompat="@drawable/bg_placeholder" />
+        android:layout_marginTop="@dimen/margin_xlarge"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_network"
+        app:tint="?android:attr/colorControlNormal" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/txt_warning"
         style="@style/AuroraTextStyle.Subtitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/img"
         android:text="@string/title_no_network"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img" />
 
     <com.google.android.material.button.MaterialButton
-        style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
         android:id="@+id/btn_action"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/txt_warning"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/margin_normal"
-        android:text="@string/action_try_later" />
-</RelativeLayout>
+        android:text="@string/check_connectivity"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_warning" />
+</androidx.constraintlayout.widget.ConstraintLayout>

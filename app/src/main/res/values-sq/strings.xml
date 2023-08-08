@@ -34,7 +34,6 @@
     <string name="account_login_using">Bëni hyrjen duke përdorur</string>
     <string name="account_logout">Dil nga Aurora</string>
     <string name="action_accept">Pranoje</string>
-    <string name="action_apply">Aplikoje</string>
     <string name="action_back">Mbprasht</string>
     <string name="action_blacklist">Listë bllokimesh</string>
     <string name="action_blacklist_add">Shtoje në Listë Bllokimesh</string>
@@ -79,7 +78,6 @@
     <string name="action_resume">Rimerre</string>
     <string name="action_search">Kërko</string>
     <string name="action_share">Ndajeni</string>
-    <string name="action_try_later">Provoni më vonë</string>
     <string name="action_uninstall">Çinstaloje</string>
     <string name="action_info">Hollësi Aplikacioni</string>
     <string name="action_update">Përditësoje</string>
@@ -151,9 +149,6 @@
     <string name="menu_disclaimer">Klauzolë</string>
     <string name="menu_license">Licencë</string>
     <string name="menu_terms">Kushte shërbimi</string>
-    <string name="device_huawei_title">U pikas Huawei!</string>
-    <string name="device_huawei_subtitle">Duket sikur po përdorni një pajisje Huawei, për shkak dëbimesh të fundit nga Google, mund të mos jeni në gjendje të bëni hyrjen.</string>
-    <string name="device_huawei_description">Sugjerojmë të përdorni maskim pajisjeje, në rast se keni një pajisje Huawei nga të fundit. Doni të aplikohet maskim tani\?</string>
     <string name="device_miui_title">U pikas MIUI!</string>
     <string name="device_miui_subtitle">Instaluesi i sesionit s’mund të instalojë aplikacione, për shkak Optimizimesh MIUI.</string>
     <string name="device_miui_description">Ju lutemi, çaktivizoni optimizimet MIUI, që të lejohen instalime, ndryshe mund të zgjidhni instalues Rrënjë ose Shërbimesh.</string>

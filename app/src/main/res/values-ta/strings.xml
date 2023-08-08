@@ -41,7 +41,6 @@
     <string name="action_filter">வடிகட்டிகள்</string>
     <string name="action_export">ஏற்றுமதி</string>
     <string name="action_back">பின்செல்க</string>
-    <string name="action_apply">விண்ணப்பிக்கவும்</string>
     <string name="action_accept">ஏற்றுக்கொள்</string>
     <string name="account_logout">அரோராவிலிருந்து வெளியேறவும்</string>
     <string name="account_login_using">பயன்படுத்தி உள்நுழையவும்</string>
@@ -67,7 +66,6 @@
     <string name="about_bitcoin_eth_summary">Ethereum (ETH) வழியாக நன்கொடை அளிக்கவும்</string>
     <string name="about_bitcoin_eth">ஈத்யூரம்</string>
     <string name="action_whitelist">வெண்பட்டியல்</string>
-    <string name="device_huawei_subtitle">நீங்கள் Huawei சாதனத்தைப் பயன்படுத்துவதாகத் தெரிகிறது, Google இன் அண்மை தடைகள் காரணமாக உங்களால் உள்நுழைய முடியாமல் போகலாம்.</string>
     <string name="action_uninstall">நிறுவல் நீக்கு</string>
     <string name="action_update_all">எல்லாம் புதுப்பி</string>
     <string name="details_beta">பீட்டா திட்டம்</string>
@@ -89,9 +87,7 @@
     <string name="installer_status_failure_blocked">நிறுவல் தடுக்கப்பட்டது</string>
     <string name="installer_status_failure_invalid">செல்லாத அல்லது சிதைந்த APK</string>
     <string name="installer_status_success">வெற்றிகரமாக நிறுவப்பட்டது</string>
-    <string name="device_huawei_title">Huawei கண்டறியப்பட்டது!</string>
     <string name="filter_review_one">ஒன்று</string>
-    <string name="device_huawei_description">உங்களிடம் சமீபத்திய Huawei சாதனம் இருந்தால், டிவைஸ் ஸ்பூப் பயன்படுத்துமாறு பரிந்துரைக்கிறோம். நீங்கள் இப்போது ஸ்பூஃப் விண்ணப்பிக்க விரும்புகிறீர்களா\?</string>
     <string name="device_miui_description">நிறுவல்களை அனுமதிக்க, MIUI மேம்படுத்தல்களை முடக்கவும், இல்லையெனில் நீங்கள் ரூட் அல்லது சேவைகள் நிறுவியை தேர்வு செய்யலாம்.</string>
     <string name="menu_disclaimer">பொறுப்புத்துறப்பு</string>
     <string name="device_miui_extra">விருப்பமாக நீங்கள் நேட்டிவ் இன்ஸ்டாலரைத் தேர்வு செய்யலாம், ஆனால் நீங்கள் தொகுக்கப்பட்ட (பிளவு) APKகளை நிறுவ முடியாது, எனவே தேர்வு உங்களுடையது.</string>
@@ -139,7 +135,6 @@
     <string name="action_restart">மறுதுவக்கு</string>
     <string name="action_granted">வழங்கப்பட்டது</string>
     <string name="action_post">இடுகையிடு</string>
-    <string name="action_try_later">பின்னர் முயல்</string>
     <string name="action_info">பயன்பாட்டுத் தகவல்</string>
     <string name="action_update">புதுப்பிப்புகள்</string>
     <string name="action_wishlist_add">விருப்பப்பட்டியலில் சேர்</string>

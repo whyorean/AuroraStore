@@ -33,7 +33,6 @@
     <string name="action_post">Paylaşın</string>
     <string name="action_resume">Davam edin</string>
     <string name="action_share">Paylaşın</string>
-    <string name="action_try_later">Daha sonra cəhd edin</string>
     <string name="action_uninstall">Silin</string>
     <string name="action_info">Tətbiq Məlumatı</string>
     <string name="details_beta_available">Beta proqramına qoşulsun\?</string>
@@ -83,7 +82,6 @@
     <string name="title_settings">Tənzimləmələr</string>
     <string name="toast_clipboard_copied">Buferə yapışdırıldı</string>
     <string name="toast_permission_granted">İcazə verildi</string>
-    <string name="device_huawei_subtitle">Siz Huawei cihazından istifadə edirsiniz, Google tərəfindən son qadağalar səbəbindən daxil olmaya bilərsiniz.</string>
     <string name="device_miui_extra">İstəkə bağlı olaraq, Yerli quraşdırıcını seçə bilərsiniz, lakin sonra birləşdirilmiş (bölünmüş) APK-ları quraşdıra bilməzsiniz, buna görə seçim sizindir.</string>
     <string name="device_miui_subtitle">Hesab qurucu MIUI Optimizasiyasına görə tətbiqləri quraşdıra bilmir.</string>
     <string name="ui_accent_1">Mavi</string>
@@ -120,7 +118,6 @@
     <string name="account_login_using">... ilə daxil olun</string>
     <string name="account_logout">Aurora-dan çıxın</string>
     <string name="action_accept">Qəbul edin</string>
-    <string name="action_apply">Tətbiq edin</string>
     <string name="action_back">Geri</string>
     <string name="action_blacklist">Qara siyahı</string>
     <string name="action_blacklist_add">Qara siyahıya əlavə edin</string>
@@ -177,8 +174,6 @@
     <string name="menu_disclaimer">İmtina edirəm</string>
     <string name="menu_license">Lisenziya</string>
     <string name="menu_terms">Xidmət Şərtləri</string>
-    <string name="device_huawei_title">Huawei aşkarlandı!</string>
-    <string name="device_huawei_description">Ən son Huawei cihazınız varsa, cihaz hiyləsindən istifadə etməyi təklif edirik. İndi hiylə tətbiq etmək istəyirsiniz\?</string>
     <string name="device_miui_title">MIUI aşkar edildi!</string>
     <string name="device_miui_description">Quraşdırmalara icazə vermək üçün MIUI optimallaşdırmasını deaktiv edin, əks halda Kök və ya Xidmətlər quraşdırıcısını seçə bilərsiniz.</string>
     <string name="dialog_title_self_update">Yeni yeniləmə mövcuddur</string>

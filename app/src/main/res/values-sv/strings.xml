@@ -92,8 +92,6 @@
     <string name="notification_channel_alert">Snabb avisering</string>
     <string name="dialog_title_self_update">Ny uppdatering tillgänglig</string>
     <string name="device_miui_title">MIUI upptäckt!</string>
-    <string name="device_huawei_subtitle">Du verkar använda en Huawei-enhet, på grund av de senaste bannlysningarna från Google så kanske du inte kan logga in.</string>
-    <string name="device_huawei_title">Huawei upptäckt!</string>
     <string name="menu_terms">Tjänstevillkor</string>
     <string name="menu_license">Licens</string>
     <string name="installer_status_user_action">Väntar på användarens bekräftelse</string>
@@ -160,7 +158,6 @@
     <string name="action_update">Uppdatera</string>
     <string name="action_info">Info om app</string>
     <string name="action_uninstall">Avinstallera</string>
-    <string name="action_try_later">Försök igen senare</string>
     <string name="action_share">Dela</string>
     <string name="action_search">Sök</string>
     <string name="action_resume">Återuppta</string>
@@ -201,7 +198,6 @@
     <string name="action_blacklist_add">Lägg till i Svartlista</string>
     <string name="action_blacklist">Svartlista</string>
     <string name="action_back">Bakåt</string>
-    <string name="action_apply">Verkställ</string>
     <string name="action_accept">Acceptera</string>
     <string name="account_logout">Logga ut från Aurora</string>
     <string name="account_logged_out">Du är utloggad</string>
@@ -259,7 +255,6 @@
     <string name="pref_abandon_session">Påtvinga rensning av installations-sessioner</string>
     <string name="action_post">Skicka in</string>
     <string name="device_miui_extra">Alternativt kan du välja Inbyggt installationsprogram, men då kan du inte installera buntade (delade) APK-filer, så valet är ditt.</string>
-    <string name="device_huawei_description">Vi föreslår att du använder enhetsförfalskning om du skulle ha den senaste Huawei-enheten. Vill du verkställa förfalskning nu\?</string>
     <string name="installer_service_misconfigured">Ställ in Aurora-tjänster och godkänn alla åtkomster först.</string>
     <string name="device_miui_description">Snälla du, inaktivera MIUI-optimeringar för att tillåta installationer, annars kan du välja Root eller installationsprogrammet för Tjänster.</string>
     <string name="account_anonymous_insecure">Anonymt (osäkert)</string>

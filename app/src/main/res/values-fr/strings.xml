@@ -18,9 +18,6 @@
     <string name="menu_disclaimer">Avertissement</string>
     <string name="installer_status_user_action">En attente de confirmation de l’utilisateur</string>
     <string name="device_miui_title">MIUI détecté !</string>
-    <string name="device_huawei_description">Nous vous suggérons d’utiliser l’usurpation d’appareil si vous possédez un appareil Huawei récent. Souhaitez-vous appliquer l’usurpation maintenant \?</string>
-    <string name="device_huawei_subtitle">Vous semblez utiliser un appareil Huawei, en raison des récentes interdictions de Google, vous ne pourrez peut-être pas vous connecter.</string>
-    <string name="device_huawei_title">Huawei détecté !</string>
     <string name="menu_terms">Conditions d’utilisation</string>
     <string name="menu_license">Licence</string>
     <string name="notification_channel_alert">Notification rapide</string>
@@ -108,7 +105,6 @@
     <string name="action_update">Mettre à jour</string>
     <string name="action_info">Infos de l’appli</string>
     <string name="action_uninstall">Désinstaller</string>
-    <string name="action_try_later">Essayer plus tard</string>
     <string name="action_share">Partager</string>
     <string name="action_search">Rechercher</string>
     <string name="action_resume">Reprendre</string>
@@ -149,7 +145,6 @@
     <string name="action_blacklist_add">Ajouter à la liste noire</string>
     <string name="action_blacklist">Liste noire</string>
     <string name="action_back">Retour</string>
-    <string name="action_apply">Appliquer</string>
     <string name="account_logout">Se déconnecter d’Aurora</string>
     <string name="account_login_using">Se connecter via</string>
     <string name="pref_ui_theme_dark">Sombre</string>

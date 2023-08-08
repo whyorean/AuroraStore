@@ -12,7 +12,6 @@
     <string name="action_close">වසන්න</string>
     <string name="action_cancel">අවලංගු</string>
     <string name="action_back">ආපසු</string>
-    <string name="action_apply">යොදන්න</string>
     <string name="action_accept">පිළිගන්න</string>
     <string name="account_google">ගූගල්</string>
     <string name="account_anonymous">නිර්නාමික</string>
@@ -27,8 +26,6 @@
     <string name="onboarding_title_permissions">අවසර</string>
     <string name="onboarding_theme_select">ඔබ කැමති දෑ තෝරන්න</string>
     <string name="notification_channel_alert">ක්‍ෂණික දැනුම්දීම</string>
-    <string name="device_huawei_subtitle">ඔබ හුආවෙයි උපාංගයක් භාවිතා කරන බව පෙනේ, ගූගල් විසින් මෑතකදී කරන ලද තහනම හේතුවෙන් ඔබට පූරනය වීමට නොහැකි විය හැකිය.</string>
-    <string name="device_huawei_title">හුආවෙයි අනාවරණය විය!</string>
     <string name="menu_terms">සේවාවේ නියම</string>
     <string name="menu_license">බලපත්‍රය</string>
     <string name="menu_disclaimer">වියාචනය</string>
@@ -60,7 +57,6 @@
     <string name="action_update">යාවත්කාලය</string>
     <string name="action_info">යෙදුමේ තොරතුරු</string>
     <string name="action_uninstall">අස්ථාපනය</string>
-    <string name="action_try_later">පසුව උත්සාහ කරන්න</string>
     <string name="action_share">බෙදාගන්න</string>
     <string name="action_search">සොයන්න</string>
     <string name="action_restart">නැවත අරඹන්න</string>
@@ -239,7 +235,6 @@
     <string name="installer_service_unavailable">අවුරෝරා සේවා 1.0.9 හෝ ඉහළ ස්ථාපනය, හෝ ස්ථාපකය වෙනස් කරන්න.</string>
     <string name="installer_status_failure_incompatible">අනනුකූල යෙදුමකි</string>
     <string name="device_miui_title">MIUI අනාවරණය විය!</string>
-    <string name="device_huawei_description">ඔබ සතුව මෑත හුආවේ උපාංගයක් තිබෙන බැවින් උපාංග රැවටීම භාවිතයට යෝජනා කරන්නෙමු. එය දැන් යොදනවාද\?\?</string>
     <string name="pref_dialog_to_apply_restart">ඔබ යෙදුම යළිි ඇරඹූ පසු මෙම සැකසුම් යෙදෙනු ඇත</string>
     <string name="notification_channel_general">පොදු දැනුම්දීම</string>
     <string name="onboarding_installer_select">සුදුසු ස්ථාපකයක් තෝරන්න</string>

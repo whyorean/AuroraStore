@@ -23,6 +23,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.navArgs
 import com.aurora.store.R
 import com.aurora.store.data.downloader.DownloadManager
 import com.aurora.store.databinding.SheetDownloadMenuBinding
@@ -30,16 +31,15 @@ import com.aurora.extensions.copyToClipBoard
 import com.aurora.extensions.toast
 import com.tonyodev.fetch2.Fetch
 import com.tonyodev.fetch2.Status
+import kotlin.properties.Delegates
 
 class DownloadMenuSheet : BaseBottomSheet() {
 
     private lateinit var B: SheetDownloadMenuBinding
     private lateinit var fetch: Fetch
 
-    private var downloadId = 0
-    private var status = 0
-    private var url: String? = null
-
+    private val args: DownloadMenuSheetArgs by navArgs()
+    private var status by Delegates.notNull<Int>()
 
     override fun onCreateContentView(
         inflater: LayoutInflater,
@@ -57,19 +57,8 @@ class DownloadMenuSheet : BaseBottomSheet() {
             .with(requireContext())
             .getFetchInstance()
 
-        if (arguments != null) {
-            val bundle = arguments
-            if (bundle != null) {
-                downloadId = bundle.getInt(DOWNLOAD_ID)
-                status = bundle.getInt(DOWNLOAD_STATUS)
-                url = bundle.getString(DOWNLOAD_URL)
-                attachNavigation()
-            } else {
-                dismissAllowingStateLoss()
-            }
-        } else {
-            dismissAllowingStateLoss()
-        }
+        status = args.downloadFile.download.status.value
+        attachNavigation()
     }
 
     private fun attachNavigation() {
@@ -89,34 +78,27 @@ class DownloadMenuSheet : BaseBottomSheet() {
             setNavigationItemSelectedListener { item ->
                 when (item.itemId) {
                     R.id.action_copy -> {
-                        requireContext().copyToClipBoard(url)
+                        requireContext().copyToClipBoard(args.downloadFile.download.url)
                         requireContext().toast(requireContext().getString(R.string.toast_clipboard_copied))
                     }
                     R.id.action_pause -> {
-                        fetch.pause(downloadId)
+                        fetch.pause(args.downloadFile.download.id)
                     }
                     R.id.action_resume -> if (status == Status.FAILED.value || status == Status.CANCELLED.value) {
-                        fetch.retry(downloadId)
+                        fetch.retry(args.downloadFile.download.id)
                     } else {
-                        fetch.resume(downloadId)
+                        fetch.resume(args.downloadFile.download.id)
                     }
                     R.id.action_cancel -> {
-                        fetch.cancel(downloadId)
+                        fetch.cancel(args.downloadFile.download.id)
                     }
                     R.id.action_clear -> {
-                        fetch.delete(downloadId)
+                        fetch.delete(args.downloadFile.download.id)
                     }
                 }
                 dismissAllowingStateLoss()
                 false
             }
         }
-    }
-
-    companion object {
-        const val TAG = "DOWNLOAD_MENU_SHEET"
-        const val DOWNLOAD_ID = "DOWNLOAD_ID"
-        const val DOWNLOAD_STATUS = "DOWNLOAD_STATUS"
-        const val DOWNLOAD_URL = "DOWNLOAD_URL"
     }
 }

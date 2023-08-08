@@ -105,9 +105,6 @@
     <string name="device_miui_description">Молимо вас, онемогућите MIUI оптимизацију да бисте дозволили инсталације, у супротном можете да изаберете Root или инсталатор услуга.</string>
     <string name="device_miui_subtitle">Инсталатор сесије не може да инсталира апликације због MIUI оптимизација.</string>
     <string name="device_miui_title">Откривен MIUI!</string>
-    <string name="device_huawei_description">Предлажемо вам да користите подваљавање уређаја у случају да имате новији Huawei уређај. Да ли желите да примените подваљавање уређаја сада\?</string>
-    <string name="device_huawei_subtitle">Изгледа да користите Huawei уређај, због недавних забрана од стране Google-а можда нећете моћи да се пријавите.</string>
-    <string name="device_huawei_title">Откривен Huawei!</string>
     <string name="menu_terms">Услови коришћења</string>
     <string name="menu_license">Лиценца</string>
     <string name="menu_disclaimer">Изјава о одрицању одговорности</string>
@@ -183,7 +180,6 @@
     <string name="action_update">Ажурирај</string>
     <string name="action_info">Више о апликацији</string>
     <string name="action_uninstall">Деинсталирај</string>
-    <string name="action_try_later">Пробај касније</string>
     <string name="action_share">Објави</string>
     <string name="action_search">Претражи</string>
     <string name="action_resume">Настави</string>
@@ -226,7 +222,6 @@
     <string name="action_blacklist_add">Додај на црну листу</string>
     <string name="action_blacklist">Црна листа</string>
     <string name="action_back">Назад</string>
-    <string name="action_apply">Примени</string>
     <string name="action_accept">Прихвати</string>
     <string name="account_logout">Одјава из Ауроре</string>
     <string name="account_login_using">Пријави се користећи</string>

@@ -53,7 +53,6 @@
     <string name="action_update">Оновити</string>
     <string name="action_info">Відомості про застосунок</string>
     <string name="action_uninstall">Видалити</string>
-    <string name="action_try_later">Спробувати пізніше</string>
     <string name="action_share">Поділитися</string>
     <string name="action_search">Пошук</string>
     <string name="action_resume">Продовжити</string>
@@ -98,7 +97,6 @@
     <string name="action_blacklist_add">Додати до чорного списку</string>
     <string name="action_blacklist">Чорний список</string>
     <string name="action_back">Назад</string>
-    <string name="action_apply">Застосувати</string>
     <string name="action_accept">Погодитись</string>
     <string name="account_logout">Вийти з Aurora</string>
     <string name="account_login_using">Увійти за допомогою</string>
@@ -235,9 +233,6 @@
     <string name="device_miui_description">Вимкніть оптимізацію MIUI, щоб дозволити встановлення, інакше ви можете вибрати встановлювач Root або Services.</string>
     <string name="device_miui_subtitle">Встановлювач Android не може встановлювати застосунки через оптимізацію MIUI.</string>
     <string name="device_miui_title">Виявлено MIUI!</string>
-    <string name="device_huawei_description">Ми радимо користуватися функцією підміни пристрою, якщо у вас новіший пристрій Huawei. Ви хочете застосувати функцію підміни зараз\?</string>
-    <string name="device_huawei_subtitle">Здається, ви користуєтеся пристроєм Huawei, через нещодавні заборони Google ви не зможете ввійти в систему.</string>
-    <string name="device_huawei_title">Виявлено Huawei!</string>
     <string name="menu_terms">Умови надання послуг</string>
     <string name="menu_license">Ліцензія</string>
     <string name="menu_disclaimer">Відмова від відповідальності</string>

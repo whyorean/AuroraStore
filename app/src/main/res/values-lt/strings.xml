@@ -10,7 +10,6 @@
     <string name="about_fdroid">F-Droid</string>
     <string name="about_gitlab">GitLab</string>
     <string name="about_telegram">Telegram</string>
-    <string name="action_apply">Taikyti</string>
     <string name="action_back">Atgal</string>
     <string name="action_export">Eksportuoti</string>
     <string name="action_filter_apply">Taikyti</string>
@@ -103,8 +102,6 @@
     <string name="details_privacy">Privatumas</string>
     <string name="installer_status_failure_conflict">Yra konfliktuojantis paketas</string>
     <string name="installer_status_failure_incompatible">Nesuderinama programėlė</string>
-    <string name="device_huawei_subtitle">Atrodo, kad naudojatės „Huawei“ įrenginiu. Dėl neseniai įsigaliojusių „Google“ draudimų, jums gali nepavykti prisijungti.</string>
-    <string name="device_huawei_title">Aptiktas „Huawei“!</string>
     <string name="pref_app_download">Atsiuntimai</string>
     <string name="pref_ui_theme_dark_x">Tamsus X</string>
     <string name="onboarding_title_installer">Diegimo programa</string>

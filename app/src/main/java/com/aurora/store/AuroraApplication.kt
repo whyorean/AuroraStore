@@ -28,7 +28,6 @@ import androidx.appcompat.app.AppCompatDelegate
 import com.aurora.Constants
 import com.aurora.extensions.isPAndAbove
 import com.aurora.store.data.downloader.DownloadManager
-import com.aurora.store.data.providers.NetworkProvider
 import com.aurora.store.data.receiver.PackageManagerReceiver
 import com.aurora.store.data.service.NotificationService
 import com.aurora.store.util.CommonUtil
@@ -71,25 +70,7 @@ class AuroraApplication : Application() {
         //Register broadcast receiver for package install/uninstall
         registerReceiver(packageManagerReceiver, PackageUtil.getFilter())
 
-        NetworkProvider
-            .with(this)
-            .bind()
-
         CommonUtil.cleanupInstallationSessions(applicationContext)
-    }
-
-    override fun onTerminate() {
-        NetworkProvider
-            .with(this)
-            .unbind()
-        super.onTerminate()
-    }
-
-    override fun onLowMemory() {
-        NetworkProvider
-            .with(this)
-            .unbind()
-        super.onLowMemory()
     }
 
     private fun createNotificationChannel() {

@@ -99,9 +99,6 @@
     <string name="device_miui_description">Por favor, desactive las optimizaciones de MIUI para permitir las instalaciones, de lo contrario puede elegir el instalador de root o de los servicios.</string>
     <string name="device_miui_subtitle">El instalador de sesión no puede instalar aplicaciones debido a las optimizaciones de MIUI.</string>
     <string name="device_miui_title">¡MIUI detectado!</string>
-    <string name="device_huawei_description">Le sugerimos que utilice la simulación de dispositivo en caso de que tenga un dispositivo Huawei reciente. ¿Desea aplicar la simulación ahora\?</string>
-    <string name="device_huawei_subtitle">Parece que utiliza un dispositivo Huawei, debido a las recientes prohibiciones de Google es posible que no pueda iniciar sesión.</string>
-    <string name="device_huawei_title">¡Huawei detectado!</string>
     <string name="menu_terms">Términos del servicio</string>
     <string name="menu_license">Licencia</string>
     <string name="menu_disclaimer">Descargo de responsabilidad</string>
@@ -182,7 +179,6 @@
     <string name="action_update">Actualizar</string>
     <string name="action_info">Información de aplicación</string>
     <string name="action_uninstall">Desinstalar</string>
-    <string name="action_try_later">Inténtalo más tarde</string>
     <string name="action_share">Compartir</string>
     <string name="action_search">Buscar</string>
     <string name="action_resume">Reanudar</string>
@@ -223,7 +219,6 @@
     <string name="action_blacklist_add">Añadir a la lista negra</string>
     <string name="action_blacklist">Lista negra</string>
     <string name="action_back">Atrás</string>
-    <string name="action_apply">Aplicar</string>
     <string name="account_logout">Cerrar sesión de Aurora</string>
     <string name="account_login_using">Iniciar sesión con</string>
     <string name="account_logged_out">Ha cerrado la sesión</string>

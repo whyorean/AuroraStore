@@ -19,9 +19,12 @@
 
 package com.aurora.store.data.model
 
+import android.os.Parcelable
 import com.tonyodev.fetch2.Download
+import kotlinx.parcelize.Parcelize
 
-data class DownloadFile(val download: Download) {
+@Parcelize
+data class DownloadFile(val download: Download) : Parcelable {
 
     override fun hashCode(): Int {
         return download.id

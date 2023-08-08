@@ -25,7 +25,6 @@
     <string name="about_telegram">Telegram</string>
     <string name="about_gitlab_summary">Obteniu el codi font de l\'Aurora Store des d\'Aurora OSS a GitLab.</string>
     <string name="about_paypal_summary">Dona a través de PayPal</string>
-    <string name="action_apply">Aplicar</string>
     <string name="account_anonymous_insecure">Anònim (insegur)</string>
     <string name="account_google">Google</string>
     <string name="account_logged_out">Heu tancat la sessió</string>
@@ -121,7 +120,6 @@
     <string name="action_post">Publicar</string>
     <string name="action_search">Cercar</string>
     <string name="action_share">Compartir</string>
-    <string name="action_try_later">Provar més tard</string>
     <string name="action_uninstall">Desinstal·lar</string>
     <string name="action_info">Informació de l\'aplicació</string>
     <string name="action_update">Actualitzar</string>
@@ -165,9 +163,6 @@
     <string name="menu_disclaimer">Avís</string>
     <string name="menu_license">Llicència</string>
     <string name="menu_terms">Termes del servei</string>
-    <string name="device_huawei_title">Huawei detectat!</string>
-    <string name="device_huawei_subtitle">Sembla que utilitzeu un dispositiu Huawei, a causa de les prohibicions recents de Google, és possible que no pugueu iniciar la sessió.</string>
-    <string name="device_huawei_description">Us recomanem que utilitzeu la falsificació de dispositiu en cas que tingueu un dispositiu Huawei recent. Vol aplicar la falsificació ara\?</string>
     <string name="device_miui_title">S\'ha detectat MIUI!</string>
     <string name="device_miui_subtitle">L\'instal·lador de sessions no pot instal·lar aplicacions a causa de les optimitzacions MIUI.</string>
     <string name="device_miui_description">Deshabiliteu les optimitzacions MIUI per permetre les instal·lacions, en cas contrari podeu triar l\'instal·lador root o serveis.</string>

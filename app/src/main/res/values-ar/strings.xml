@@ -81,7 +81,6 @@
     <string name="dialog_title_self_update">تحديث جديد متوفر</string>
     <string name="device_miui_description">الرجاء تعطيل تحسينات MIUI للسماح بالتثبيتات، وإلا يمكنك اختيار مثبت الجذر أو الخدمات.</string>
     <string name="device_miui_title">تم الكشف عن جهاز MIUI!</string>
-    <string name="device_huawei_title">تم الكشف عن جهاز هواوي!</string>
     <string name="menu_terms">شروط الخدمة</string>
     <string name="menu_license">الرخصة</string>
     <string name="menu_disclaimer">اخلاء المسؤوليه</string>
@@ -130,7 +129,6 @@
     <string name="action_update">تحديث</string>
     <string name="action_info">معلومات التطبيق</string>
     <string name="action_uninstall">إلغاء التثبيت</string>
-    <string name="action_try_later">حاول لاحقا</string>
     <string name="action_share">مشاركة</string>
     <string name="action_search">البحث</string>
     <string name="action_resume">إستئناف</string>
@@ -198,8 +196,6 @@
     <string name="device_miui_extra">اختياريا يمكنك اختيار المثبت الأصلي، ولكن بعد ذلك لا يمكنك تثبيت التطبيقات المجمعة (تقسيم) APKs، لذلك الخيار لك.</string>
     <string name="installer_service_unavailable">ثبت خدمات أورورا 1.0.9 أو أعلى، أو تغيير المثبت.</string>
     <string name="details_beta_description">سترى ميزات وأخطاء جديدة قبل أن يراها المستخدمون. قدم ملاحظاتك للمطورين لمساعدتهم على التحسين من جودة تطبيقاتهم.</string>
-    <string name="device_huawei_subtitle">يبدو أنك تستخدم جهاز Huawei، نظرًا للحظر الذي فرضته Google مؤخرًا على اجهزة هواوي ، فقد لا تتمكن من تسجيل الدخول.</string>
-    <string name="device_huawei_description">نقترح عليك استخدام محاكاة تحايلية للجهاز في حالة كون جهازك من اجهزة Huawei الحديثه. هل ترغب في تطبيق المحاكاة التحايلية الآن؟</string>
     <string name="about_bhim">BHIM - UPI</string>
     <string name="toast_spoof_applied">تم تطبيق المحاكاة التحايلية للجهاز .</string>
     <string name="toast_abandon_sessions">جلسات التثبيت القديمة التي تم التخلي عنها</string>
@@ -221,7 +217,6 @@
     <string name="action_blacklist_add">أضف إلى القائمة السوداء</string>
     <string name="action_blacklist">القائمة السوداء</string>
     <string name="action_back">رجوع</string>
-    <string name="action_apply">تطبيق</string>
     <string name="action_accept">قبول</string>
     <string name="account_logout">تسجيل الخروج من Aurora</string>
     <string name="account_login_using">تسجيل الدخول باستخدام</string>

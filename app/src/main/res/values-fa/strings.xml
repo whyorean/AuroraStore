@@ -103,7 +103,6 @@
     <string name="action_update">بروز رسانی</string>
     <string name="details_beta_description">شما ویژگیهای جدید و ایرادات را زودتر از بقیه میبینید. به توسعه دهندگان آنها را اطلاع دهید تا به آنها جهت بهبود برنامه کمک کنید.</string>
     <string name="action_filter_apps_with_ads">برنامه های تبلیغ دار</string>
-    <string name="action_try_later">بعدا امتحان نمایید</string>
     <string name="action_open">باز کردن</string>
     <string name="about_bitcoin_eth">اتریوم</string>
     <string name="action_restart">شروع مجدد</string>
@@ -121,7 +120,6 @@
     <string name="action_filter_downloads">دانلودها</string>
     <string name="about_telegram">تلگرام</string>
     <string name="about_gitlab_summary">کد منبع فروشگاه آرورا را از Aurora OSS در گیت‌لب دریافت نمایید.</string>
-    <string name="action_apply">اعمال</string>
     <string name="action_filter">فیلترها</string>
     <string name="about_bhim">BHIM - UPI</string>
     <string name="about_bhim_summary">حمایت از طریق UPI</string>
@@ -201,7 +199,6 @@
     <string name="onboarding_installer_select">نصب کننده مناسب را انتخاب کنید</string>
     <string name="pref_common_extra">موارد اضافی</string>
     <string name="toast_apk_whitelisted">در لیست سفید قرار گرفت</string>
-    <string name="device_huawei_title">هوآوی شناسایی شد!</string>
     <string name="toast_export_failed">پیکربندی دستگاه صادر نشد</string>
     <string name="pref_network_title">شبکه سازی</string>
     <string name="insecure_anonymous_apply">مطمئن شوید که مجددا وارد سیستم شده اید و برنامه را مجددا راه اندازی کرده اید تا تغییرات اعمال شوند.</string>
@@ -254,9 +251,7 @@
     <string name="toast_anonymous_restriction">در حساب های ناشناس در دسترس نیست</string>
     <string name="toast_rated_success">ارزیابی شده</string>
     <string name="app_updater_service_notif_title">دانلود برنامه پس زمینه</string>
-    <string name="device_huawei_subtitle">به نظر می رسد شما از یک دستگاه هواوی استفاده می کنید، به دلیل ممنوعیت های اخیر توسط Google ممکن است نتوانید وارد شوید.</string>
     <string name="installer_status_failure_storage">فضای حافظه ناکافی</string>
-    <string name="device_huawei_description">پیشنهاد می کنیم در صورتی که اخیراً دستگاه هوآوی دارید، از پارامتر جعل دستگاه استفاده کنید. آیا می خواهید اکنون پارامتر جعلی را اعمال کنید؟</string>
     <string name="device_miui_extra">در صورت تمایل می توانید نصب کننده بومی را انتخاب کنید، اما پس از آن نمی توانید APKs های همراه (تقسیم شده) را نصب کنید، بنابراین انتخاب با شماست.</string>
     <string name="onboarding_welcome_select">حال شما چطور است؟</string>
     <string name="onboarding_tos_desc">لطفاً شرایط خدمات ما را بخوانید و آن را برای استفاده از فروشگاه آرورا بپذیرید.</string>

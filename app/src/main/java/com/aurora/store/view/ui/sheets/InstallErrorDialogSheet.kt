@@ -23,11 +23,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.aurora.Constants
+import androidx.navigation.fragment.navArgs
 import com.aurora.extensions.copyToClipBoard
 import com.aurora.extensions.load
 import com.aurora.extensions.toast
-import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
 import com.aurora.store.databinding.SheetInstallErrorBinding
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
@@ -36,35 +35,7 @@ class InstallErrorDialogSheet : BaseBottomSheet() {
 
     private lateinit var B: SheetInstallErrorBinding
 
-    private lateinit var app: App
-    private lateinit var title: String
-    private lateinit var error: String
-    private lateinit var extra: String
-
-    private var rawApp = String()
-
-    companion object {
-        private const val DIALOG_TITLE = "DIALOG_TITLE"
-        private const val DIALOG_ERROR = "DIALOG_ERROR"
-        private const val DIALOG_EXTRA = "DIALOG_EXTRA"
-
-        @JvmStatic
-        fun newInstance(
-            app: App,
-            title: String?,
-            error: String?,
-            extra: String?
-        ): InstallErrorDialogSheet {
-            return InstallErrorDialogSheet().apply {
-                arguments = Bundle().apply {
-                    putString(Constants.STRING_EXTRA, gson.toJson(app))
-                    putString(DIALOG_TITLE, title)
-                    putString(DIALOG_ERROR, error)
-                    putString(DIALOG_EXTRA, extra)
-                }
-            }
-        }
-    }
+    private val args: InstallErrorDialogSheetArgs by navArgs()
 
     override fun onCreateContentView(
         inflater: LayoutInflater,
@@ -72,22 +43,7 @@ class InstallErrorDialogSheet : BaseBottomSheet() {
         savedInstanceState: Bundle?
     ): View {
         B = SheetInstallErrorBinding.inflate(inflater, container, false)
-
-        val bundle = arguments
-        bundle?.let {
-            rawApp = bundle.getString(Constants.STRING_EXTRA, "{}")
-            app = gson.fromJson(rawApp, App::class.java)
-            title = bundle.getString(DIALOG_TITLE, "")
-            error = bundle.getString(DIALOG_ERROR, "")
-            extra = bundle.getString(DIALOG_EXTRA, "")
-
-            if (app.packageName.isNotEmpty()) {
-                inflateData()
-            } else {
-                dismissAllowingStateLoss()
-            }
-        }
-
+        inflateData()
         attachAction()
 
         return B.root
@@ -98,13 +54,13 @@ class InstallErrorDialogSheet : BaseBottomSheet() {
     }
 
     private fun inflateData() {
-        B.imgIcon.load(app.iconArtwork.url) {
+        B.imgIcon.load(args.app.iconArtwork.url) {
             transform(CircleCrop())
         }
 
-        B.txtLine1.text = app.displayName
-        B.txtLine2.text = error
-        B.txtLine3.text = extra
+        B.txtLine1.text = args.app.displayName
+        B.txtLine2.text = args.error
+        B.txtLine3.text = args.extra
     }
 
     private fun attachAction() {
@@ -113,10 +69,8 @@ class InstallErrorDialogSheet : BaseBottomSheet() {
         }
 
         B.btnSecondary.setOnClickListener {
-            if (::extra.isInitialized) {
-                requireContext().copyToClipBoard(extra)
-                requireContext().toast(R.string.toast_clipboard_copied)
-            }
+            requireContext().copyToClipBoard(args.extra)
+            requireContext().toast(R.string.toast_clipboard_copied)
         }
     }
 }

@@ -25,7 +25,6 @@
     <string name="spoof_apply">Xaqiiji inaad dib usoo gasho akoonka si uu iska-dhigdhigidu u hirgalo</string>
     <string name="toast_spoof_applied">Iska-dhigida aalada waa la hirgaliyay.</string>
     <string name="title_spoof_manager">Maamulaha iska-dhigaha</string>
-    <string name="device_huawei_description">Waxaan kuusoo jeedinaynaa inaad isticmaasho iska-dhidhigaha aallada lacala hadaad haysato Huawei noocyadii dambe. Ma rabtaa inaad iska-dhigiga hadda fuliso\?</string>
     <string name="about_libera">Liberapay</string>
     <string name="toast_apk_blacklisted">Laxanibay</string>
     <string name="title_blacklist_manager">Maamulaha xannibaada</string>
@@ -157,8 +156,6 @@
     <string name="device_miui_description">Fadlan xidh MIUI Optimizations si kushubidu ushaqayso, hadiikale waxaad dooran kartaa Root ama Adeega kushubaha.</string>
     <string name="device_miui_subtitle">Kushubuhan kuma shubi karo wax app ah ayadooy ugu wacantahay MIUI Optimizations.</string>
     <string name="device_miui_title">Waxaad isticmaalaysaa MIUI!</string>
-    <string name="device_huawei_subtitle">Waxay umuuqataa inaad isticmaalayso aallad Huawei ah, ayadooy ugu wacantahay xannibaad ay Google kusoo rogtay, ma gali kartid akoonka.</string>
-    <string name="device_huawei_title">Huawei ayaad isticmaalaysaa!</string>
     <string name="menu_terms">Shuruudaha adeega</string>
     <string name="menu_license">Laysan</string>
     <string name="menu_disclaimer">Afeef</string>
@@ -228,7 +225,6 @@
     <string name="action_update_all">Wada cusboonaysii</string>
     <string name="action_update">Cusboonaysii</string>
     <string name="action_info">Faahfaahinta Appka</string>
-    <string name="action_try_later">Hadhow iskuday</string>
     <string name="action_share">La wadaag</string>
     <string name="action_search">Raadi</string>
     <string name="action_restart">Dib usoobilow</string>
@@ -266,7 +262,6 @@
     <string name="action_check">Hubi</string>
     <string name="action_cancel">Kanoqo</string>
     <string name="action_back">Kanoqo</string>
-    <string name="action_apply">Fulli</string>
     <string name="action_accept">Aqbal</string>
     <string name="account_logout">Kabax Aurora</string>
     <string name="account_login_using">Gal adoo isticmaalaya</string>

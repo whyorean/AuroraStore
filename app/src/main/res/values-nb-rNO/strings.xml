@@ -34,7 +34,6 @@
     <string name="onboarding_title_welcome">Velkommen</string>
     <string name="onboarding_title_theme">Drakter</string>
     <string name="onboarding_title_permissions">Tilganger</string>
-    <string name="device_huawei_title">Huawei oppdaget!</string>
     <string name="menu_terms">Tjenestevilkår</string>
     <string name="menu_license">Lisens</string>
     <string name="menu_disclaimer">Ansvarsfraskrivelse</string>
@@ -85,7 +84,6 @@
     <string name="action_update_all">Oppgrader alle</string>
     <string name="action_info">Programinfo</string>
     <string name="action_uninstall">Avinstaller</string>
-    <string name="action_try_later">Prøv igjen senere</string>
     <string name="action_share">Del</string>
     <string name="action_search">Søk</string>
     <string name="action_resume">Fortsett</string>
@@ -125,7 +123,6 @@
     <string name="action_blacklist_add">Legg til i svartelisten</string>
     <string name="action_blacklist">Svartelist</string>
     <string name="action_back">Tilbake</string>
-    <string name="action_apply">Bruk</string>
     <string name="action_accept">Godta</string>
     <string name="account_login_using">Logg inn med</string>
     <string name="account_logged_out">Du er utlogget</string>
@@ -189,8 +186,6 @@
     <string name="onboarding_permission_select">Aurora Store krever følgende tillatelser</string>
     <string name="dialog_title_self_update">Ny oppdatering tilgjengelig</string>
     <string name="device_miui_title">MIUI oppdaget!</string>
-    <string name="device_huawei_description">Vi foreslår at du bruker enhetspoof i tilfelle du har en nylig Huawei-enhet. Ønsker du å bruke spoof nå\?</string>
-    <string name="device_huawei_subtitle">Det ser ut til at du bruker en Huawei-enhet. På grunn av nylige forbud fra Google kan du kanskje ikke logge inn.</string>
     <string name="installer_status_user_action">Venter på brukerbekreftelse</string>
     <string name="installer_status_success">Installert</string>
     <string name="installer_status_failure_conflict">Motstridende pakke eksisterer</string>

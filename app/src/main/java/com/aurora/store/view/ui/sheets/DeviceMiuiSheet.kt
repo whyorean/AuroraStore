@@ -35,20 +35,6 @@ class DeviceMiuiSheet : BaseBottomSheet() {
 
     private lateinit var B: SheetDeviceMiuiBinding
 
-    companion object {
-
-        const val TAG = "DeviceMiuiSheet"
-
-        @JvmStatic
-        fun newInstance(): DeviceMiuiSheet {
-            return DeviceMiuiSheet().apply {
-                arguments = Bundle().apply {
-
-                }
-            }
-        }
-    }
-
     override fun onCreateContentView(
         inflater: LayoutInflater,
         container: ViewGroup,

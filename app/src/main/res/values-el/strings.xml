@@ -36,7 +36,6 @@
     <string name="action_blacklist_add">Προσθήκη στη μαύρη λίστα</string>
     <string name="action_blacklist">Μαύρη λίστα</string>
     <string name="action_back">Επιστροφή</string>
-    <string name="action_apply">Εφαρμογή</string>
     <string name="action_accept">Αποδοχή</string>
     <string name="account_logout">Αποσυνδεθείτε</string>
     <string name="account_login_using">Συνδεθείτε χρησιμοποιώντας</string>
@@ -119,7 +118,6 @@
     <string name="action_update">Ενημέρωση</string>
     <string name="action_info">Πληροφορίες εφαρμογής</string>
     <string name="action_uninstall">Απεγκατάσταση</string>
-    <string name="action_try_later">Δοκιμάστε αργότερα</string>
     <string name="action_share">Κοινοποίηση</string>
     <string name="action_search">Αναζήτηση</string>
     <string name="action_resume">Συνέχεια</string>
@@ -150,9 +148,6 @@
     <string name="filter_review_five">Πέντε</string>
     <string name="installer_status_user_action">Αναμονή για επιβεβαίωση χρήστη</string>
     <string name="menu_disclaimer">Αποποίηση ευθυνών</string>
-    <string name="device_huawei_title">Εντοπίστηκε Huawei!</string>
-    <string name="device_huawei_subtitle">Φαίνεται ότι χρησιμοποιείτε συσκευή Huawei, λόγω των πρόσφατων απαγορεύσεων από την Google ενδέχεται να μην μπορείτε να συνδεθείτε.</string>
-    <string name="device_huawei_description">Σας προτείνουμε να χρησιμοποιήσετε πλαστογράφηση συσκευής σε περίπτωση που έχετε πρόσφατη συσκευή Huawei. Θέλετε να κάνετε πλαστογράφηση τώρα;</string>
     <string name="device_miui_title">Εντοπίστηκε MIUI!</string>
     <string name="device_miui_subtitle">Το πρόγραμμα εγκατάστασης δεν μπορεί να εγκαταστήσει εφαρμογές λόγω βελτιστοποιήσεων της MIUI.</string>
     <string name="notification_channel_alert">Γρήγορη ειδοποίηση</string>

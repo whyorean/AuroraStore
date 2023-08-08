@@ -75,7 +75,6 @@
     <string name="action_info">Infos zur App</string>
     <string name="action_filter_gsf_dependent_apps">Erfordert GSF</string>
     <string name="action_filter_apply">Anwenden</string>
-    <string name="action_apply">Anwenden</string>
     <string name="toast_spoof_applied">Gerätevortäuschung angewendet</string>
     <string name="toast_permission_granted">Berechtigung gewährt</string>
     <string name="toast_developer_setting_failed">Entwickleroptionen in den Geräteeinstellungen aktivieren, um sie zu öffnen.</string>
@@ -146,9 +145,6 @@
     <string name="device_miui_description">Um Installationen zu ermöglichen, bitte die MIUI-Optimierungen deaktivieren oder die Root- oder Services-Installationsmethode auswählen.</string>
     <string name="device_miui_subtitle">Die Sitzungs-Installation kann aufgrund von MIUI-Optimierungen keine Apps installieren.</string>
     <string name="device_miui_title">MIUI erkannt!</string>
-    <string name="device_huawei_description">Es wird empfohlen, bei einem aktuellen Huawei-Gerät die Gerätevortäuschung zu verwenden. Soll das Vortäuschen jetzt angewendet werden\?</string>
-    <string name="device_huawei_subtitle">Anscheinend wird ein Huawei-Gerät verwendet. Aufgrund der jüngsten Einschränkungen durch Google ist eine Anmeldung eventuell nicht möglich.</string>
-    <string name="device_huawei_title">Huawei erkannt!</string>
     <string name="menu_terms">Nutzungsbedingungen</string>
     <string name="menu_license">Lizenz</string>
     <string name="menu_disclaimer">Haftungsausschluss</string>
@@ -219,7 +215,6 @@
     <string name="about_xda">XDA Entwickler-Forum</string>
     <string name="about_telegram_summary">Der Aurora-Support-Gruppe für Diskussionen oder Vorschläge beitreten</string>
     <string name="action_uninstall">Deinstallieren</string>
-    <string name="action_try_later">Später versuchen</string>
     <string name="action_share">Teilen</string>
     <string name="action_search">Suchen</string>
     <string name="action_resume">Fortsetzen</string>

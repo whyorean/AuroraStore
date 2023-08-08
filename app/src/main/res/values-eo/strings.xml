@@ -37,7 +37,6 @@
     <string name="action_check">Kontroli</string>
     <string name="action_cancel">Nuligi</string>
     <string name="action_back">Reen</string>
-    <string name="action_apply">Apliki</string>
     <string name="action_accept">Akcepti</string>
     <string name="account_logout">Elsaluti el Aurora</string>
     <string name="account_login_using">Ensaluti per</string>
@@ -70,7 +69,6 @@
     <string name="action_update">Ĝisdatigi</string>
     <string name="action_info">Aplikaĵa informo</string>
     <string name="action_uninstall">Malinstali</string>
-    <string name="action_try_later">Klopodi poste</string>
     <string name="action_share">Kunigi</string>
     <string name="action_search">Serĉi</string>
     <string name="action_resume">Malpaŭzigi</string>
@@ -112,7 +110,6 @@
     <string name="installer_status_user_action">Atendas uzantan konfirmon</string>
     <string name="menu_disclaimer">Malgarantio</string>
     <string name="menu_license">Permesilo</string>
-    <string name="device_huawei_title">Huawei detektita!</string>
     <string name="device_miui_title">MIUI detektita!</string>
     <string name="dialog_title_self_update">Nova ĝisdatigo disponeblas</string>
     <string name="notification_channel_alert">Rapida sciigo</string>

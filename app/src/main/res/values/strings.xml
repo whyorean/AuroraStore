@@ -46,7 +46,6 @@
     <string name="account_login_using">Log in using</string>
     <string name="account_logout">Log out from Aurora</string>
     <string name="action_accept">"Accept"</string>
-    <string name="action_apply">"Apply"</string>
     <string name="action_back">"Back"</string>
     <string name="action_blacklist">"Blacklist"</string>
     <string name="action_blacklist_add">"Add to Blacklist"</string>
@@ -92,7 +91,6 @@
     <string name="action_resume">"Resume"</string>
     <string name="action_search">"Search"</string>
     <string name="action_share">"Share"</string>
-    <string name="action_try_later">"Try later"</string>
     <string name="action_uninstall">"Uninstall"</string>
     <string name="action_info">"App Info"</string>
     <string name="action_update">"Update"</string>
@@ -176,9 +174,6 @@
     <string name="menu_disclaimer">"Disclaimer"</string>
     <string name="menu_license">"License"</string>
     <string name="menu_terms">"Terms of service"</string>
-    <string name="device_huawei_title">"Huawei detected!"</string>
-    <string name="device_huawei_subtitle">"You seem to be using a Huawei device, due to recent bans by Google you may not be able to login."</string>
-    <string name="device_huawei_description">"We suggest you to use device spoof in case you have a recent Huawei device. Do you wish to apply spoof now?"</string>
     <string name="device_miui_title">"MIUI detected!"</string>
     <string name="device_miui_subtitle">"Session installer can not install apps due to MIUI Optimizations."</string>
     <string name="device_miui_description">"Please, disable MIUI optimizations to allow installations, otherwise you can choose Root or Services installer."</string>
@@ -370,4 +365,5 @@
     <string name="login_rate_limited">Oops, You are rate limited</string>
     <string name="server_unreachable">Server unreachable</string>
     <string name="failed_generating_session">Failed to generate session, error code: <xliff:g id="status_code">%1$d</xliff:g></string>
+    <string name="check_connectivity">Check internet connectivity</string>
 </resources>

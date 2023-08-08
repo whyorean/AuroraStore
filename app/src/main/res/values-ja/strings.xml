@@ -47,9 +47,6 @@
     <string name="device_miui_description">インストールするにはMIUI optimizationを無効化するか、RootあるいはServiceインストーラを選択してください。</string>
     <string name="device_miui_subtitle">MIUI Optimizationのためセッションインストーラでアプリをインストールできません。</string>
     <string name="device_miui_title">MIUI検出！</string>
-    <string name="device_huawei_description">最近のファーウェイ製端末を使用している場合、端末偽装をおすすめします。偽装しますか？</string>
-    <string name="device_huawei_title">ファーウェイ検出！</string>
-    <string name="device_huawei_subtitle">ファーウェイ製端末を使用しているようです。最近のGoogleの規制によりログインできない可能性があります。</string>
     <string name="menu_terms">利用規約</string>
     <string name="menu_license">ライセンス</string>
     <string name="menu_disclaimer">免責</string>
@@ -123,7 +120,6 @@
     <string name="action_update">更新</string>
     <string name="action_info">情報</string>
     <string name="action_uninstall">アンインストール</string>
-    <string name="action_try_later">後で</string>
     <string name="action_share">共有</string>
     <string name="action_search">検索</string>
     <string name="action_restart">再スタート</string>
@@ -167,7 +163,6 @@
     <string name="action_blacklist_add">ブラックリストに加える</string>
     <string name="action_blacklist">ブラックリスト</string>
     <string name="action_back">戻る</string>
-    <string name="action_apply">適用</string>
     <string name="action_accept">承認</string>
     <string name="account_logout">Auroraからログアウトする</string>
     <string name="title_device">端末</string>
