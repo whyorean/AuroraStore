@@ -51,7 +51,7 @@ class BlacklistProvider private constructor(var context: Context) {
                 )
                 val refSharedPreferences = refMethod.invoke(
                     context,
-                    File("/product/etc/" + context.packageName + "/blacklist.xml"),
+                    File("/product/etc/com.aurora.store/blacklist.xml"),
                     Context.MODE_PRIVATE
                 ) as SharedPreferences
 
