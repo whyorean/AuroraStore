@@ -37,6 +37,11 @@
         app:title="@string/pref_ui_accent_title"
         app:useSimpleSummaryProvider="true" />
 
+    <Preference
+        app:iconSpaceReserved="false"
+        app:key="PREFERENCE_APP_LANGUAGE"
+        app:title="@string/app_language" />
+
     <PreferenceCategory
         app:iconSpaceReserved="false"
         app:singleLineTitle="false"

@@ -366,4 +366,5 @@
     <string name="server_unreachable">Server unreachable</string>
     <string name="failed_generating_session">Failed to generate session, error code: <xliff:g id="status_code">%1$d</xliff:g></string>
     <string name="check_connectivity">Check internet connectivity</string>
+    <string name="app_language">App Language</string>
 </resources>
