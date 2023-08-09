@@ -118,5 +118,5 @@
 -keep,allowobfuscation,allowshrinking class com.google.gson.reflect.TypeToken
 -keep,allowobfuscation,allowshrinking class * extends com.google.gson.reflect.TypeToken
 
-# Aurora Store
--keep class com.aurora.store.data.model.Report
+# Aurora Store (models)
+-keep class com.aurora.store.data.model.*
