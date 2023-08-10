@@ -346,4 +346,6 @@
     <string name="failed_to_fetch_report">Gizlilik raporu alınamadı</string>
     <string name="access_denied_using_vpn">Erişim reddedildi! VPN veya Tor kullanıyor musunuz\?</string>
     <string name="bad_request">Dahili hata! Lütfen bir süre sonra tekrar deneyin</string>
+    <string name="app_language">Uygulama Dili</string>
+    <string name="check_connectivity">İnternet bağlantısını denetle</string>
 </resources>
