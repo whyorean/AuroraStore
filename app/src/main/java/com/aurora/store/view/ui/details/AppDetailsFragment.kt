@@ -203,12 +203,18 @@ class AppDetailsFragment : BaseFragment(R.layout.fragment_details) {
             is BusEvent.InstallEvent -> {
                 if (app.packageName == event.packageName) {
                     attachActions()
+                    binding.layoutDetailsToolbar.toolbar.menu.apply {
+                        findItem(R.id.action_uninstall)?.isVisible = true
+                    }
                 }
             }
 
             is BusEvent.UninstallEvent -> {
                 if (app.packageName == event.packageName) {
                     attachActions()
+                    binding.layoutDetailsToolbar.toolbar.menu.apply {
+                        findItem(R.id.action_uninstall)?.isVisible = false
+                    }
                 }
             }
 
