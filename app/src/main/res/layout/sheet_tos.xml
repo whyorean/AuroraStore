@@ -40,7 +40,7 @@
                 android:layout_width="@dimen/icon_size_category"
                 android:layout_height="@dimen/icon_size_category"
                 android:layout_centerVertical="true"
-                app:srcCompat="@drawable/ic_logo" />
+                app:srcCompat="@mipmap/ic_launcher" />
 
             <TextView
                 android:id="@+id/txt_header"

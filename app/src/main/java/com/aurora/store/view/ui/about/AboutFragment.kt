@@ -51,7 +51,7 @@ class AboutFragment : Fragment(R.layout.fragment_about) {
         }
 
         // About Details
-        binding.imgIcon.load(R.drawable.ic_logo)
+        binding.imgIcon.load(R.mipmap.ic_launcher)
         binding.line2.text = ("v${BuildConfig.VERSION_NAME}(${BuildConfig.VERSION_CODE})")
 
         binding.epoxyRecycler.layoutManager =

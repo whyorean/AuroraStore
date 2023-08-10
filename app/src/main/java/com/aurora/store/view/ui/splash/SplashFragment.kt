@@ -50,7 +50,7 @@ class SplashFragment : Fragment(R.layout.fragment_splash) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentSplashBinding.bind(view)
 
-        binding.imgIcon.load(R.drawable.ic_logo) {
+        binding.imgIcon.load(R.mipmap.ic_launcher) {
             transform(RoundedCorners(32))
         }
 
