@@ -1,6 +1,7 @@
 package com.aurora.store.data.service
 
 import android.app.Notification
+import android.content.Context
 import android.content.Intent
 import android.os.*
 import androidx.annotation.RequiresApi
@@ -26,6 +27,8 @@ import com.aurora.store.data.network.HttpClient
 import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.util.Log
 import com.aurora.store.util.PackageUtil.isSharedLibraryInstalled
+import com.aurora.store.util.PathUtil
+import com.aurora.store.util.Preferences
 import com.tonyodev.fetch2.*
 import com.tonyodev.fetch2core.DownloadBlock
 import com.tonyodev.fetch2core.FetchObserver
@@ -511,6 +514,9 @@ class UpdateService: LifecycleService() {
                             ) {
                                 delay(1000)
                             }
+
+                            // Clear library downloads
+                            clearDownloadsIfRequired(it.packageName)
                         }
                     }
                 }
@@ -728,5 +734,17 @@ class UpdateService: LifecycleService() {
 
     fun updateAll(updateFileMap: MutableMap<Int, UpdateFile>) {
         updateFileMap.values.forEach { updateApp(it.app) }
+    }
+
+    private fun clearDownloadsIfRequired(packageName: String) {
+        if (Preferences.getBoolean(this, Preferences.PREFERENCE_AUTO_DELETE)) {
+            try {
+                val rootDirPath = PathUtil.getPackageDirectory(this, packageName)
+                val rootDir = File(rootDirPath)
+                if (rootDir.exists()) rootDir.deleteRecursively()
+            } catch (e: Exception) {
+                Log.d("Failed to clear downloads!", e)
+            }
+        }
     }
 }
