@@ -346,4 +346,6 @@
     <string name="login_rate_limited">啊偶，你被限制速率了</string>
     <string name="server_unreachable">服务器不可达</string>
     <string name="failed_generating_session">未能生成会话，错误码：<xliff:g id="status_code">%1$d</xliff:g></string>
+    <string name="check_connectivity">检查互联网连接</string>
+    <string name="app_language">语言</string>
 </resources>
