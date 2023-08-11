@@ -346,4 +346,6 @@
     <string name="bad_request">Iekšēja kļūda. Lūgums pēc kāda laika mēģināt vēlreiz</string>
     <string name="login_rate_limited">Ak vai, piemērots ierobežojums!</string>
     <string name="server_unreachable">Serveris nav sasniedzams</string>
+    <string name="check_connectivity">Jāpārbauda interneta savienojums</string>
+    <string name="app_language">Lietotnes valoda</string>
 </resources>
