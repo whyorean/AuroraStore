@@ -73,8 +73,16 @@ class ShizukuInstaller(context: Context) : SessionInstallerBase(context) {
             Log.i("Received session install request for $packageName")
 
             val (sessionId, session) = kotlin.runCatching {
-                val sessionId =
-                    packageInstaller!!.createSession(SessionParams(SessionParams.MODE_FULL_INSTALL))
+                val params = SessionParams(SessionParams.MODE_FULL_INSTALL)
+
+                // Replace existing app (Updates)
+                var flags = Refine
+                    .unsafeCast<PackageInstallerHidden.SessionParamsHidden>(params).installFlags
+                flags = flags or PackageManagerHidden.INSTALL_REPLACE_EXISTING
+                Refine.unsafeCast<PackageInstallerHidden.SessionParamsHidden>(params).installFlags =
+                    flags
+
+                val sessionId = packageInstaller!!.createSession(params)
                 val iSession = IPackageInstallerSession.Stub.asInterface(
                     iPackageInstaller.openSession(sessionId).asShizukuBinder()
                 )
