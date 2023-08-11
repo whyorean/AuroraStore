@@ -34,18 +34,13 @@ import android.widget.TextView
 import androidx.activity.addCallback
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
-import androidx.annotation.IdRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.ColorUtils
 import androidx.core.view.GravityCompat
-import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.NavController
-import androidx.navigation.NavDestination
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -66,10 +61,7 @@ import com.aurora.store.viewmodel.MainViewModel
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.elevation.SurfaceColors
-import com.google.gson.Gson
-import com.google.gson.GsonBuilder
 import kotlinx.coroutines.launch
-import java.lang.reflect.Modifier
 
 
 class MainActivity : AppCompatActivity() {
@@ -77,6 +69,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var B: ActivityMainBinding
     private lateinit var navController: NavController
     private lateinit var authData: AuthData
+    private lateinit var appConfig: AppBarConfiguration
 
     private val viewModel: MainViewModel by viewModels()
 
@@ -85,30 +78,12 @@ class MainActivity : AppCompatActivity() {
             if (!it) toast(R.string.permissions_denied)
         }
 
-    private val gson: Gson = GsonBuilder().excludeFieldsWithModifiers(Modifier.TRANSIENT).create()
-
     // TopLevelFragments
     private val topLevelFrags = listOf(
         R.id.appsContainerFragment,
         R.id.gamesContainerFragment,
         R.id.updatesFragment
     )
-
-    private lateinit var appConfig: AppBarConfiguration
-
-    companion object {
-        @JvmStatic
-        private fun matchDestination(
-            destination: NavDestination?,
-            @IdRes destId: Int
-        ): Boolean {
-            var currentDestination = destination
-            while (currentDestination?.id != destId && currentDestination?.parent != null) {
-                currentDestination = currentDestination.parent
-            }
-            return currentDestination?.id == destId
-        }
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         val themeId = Preferences.getInteger(this, Preferences.PREFERENCE_THEME_TYPE)
@@ -117,7 +92,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         B = ActivityMainBinding.inflate(layoutInflater)
-
         setContentView(B.root)
 
         this.lifecycleScope.launch {
@@ -149,12 +123,6 @@ class MainActivity : AppCompatActivity() {
 
         // Toolbar
         setSupportActionBar(B.toolbar)
-        B.toolbar.apply {
-            elevation = 0f
-            setNavigationOnClickListener {
-                B.drawerLayout.openDrawer(GravityCompat.START, true)
-            }
-        }
 
         attachNavigation()
         attachDrawer()
