@@ -346,4 +346,6 @@
     <string name="failed_generating_session">Nie udało się wygenerować sesji, kod błędu: <xliff:g id="status_code">%1$d</xliff:g></string>
     <string name="title_search_results">Wyniki wyszukiwania</string>
     <string name="failed_to_fetch_report">Nie udało się pobrać raportu prywatności</string>
+    <string name="app_language">Język aplikacji</string>
+    <string name="check_connectivity">Sprawdź połączenie z Internetem</string>
 </resources>

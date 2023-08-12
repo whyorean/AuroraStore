@@ -346,4 +346,6 @@
     <string name="failed_generating_session">Не удалось создать сессию, код ошибки: <xliff:g id="status_code">%1$d</xliff:g></string>
     <string name="failed_to_fetch_report">Не удалось получить отчет о конфиденциальности</string>
     <string name="access_denied_using_vpn">Доступ запрещен! Вы используете VPN или Tor\?</string>
+    <string name="check_connectivity">Проверьте соединение с интернетом</string>
+    <string name="app_language">Язык приложения</string>
 </resources>

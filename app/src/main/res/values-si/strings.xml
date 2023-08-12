@@ -346,4 +346,6 @@
     <string name="bad_request">අභ්‍යන්තර දෝෂයකි! ටික වේලාවකින් බලන්න</string>
     <string name="login_rate_limited">ඔබව අනුපාතනය වී ඇත</string>
     <string name="server_unreachable">සේවාදායකයට ළඟා වීමට නොහැකිය</string>
+    <string name="check_connectivity">සම්බන්ධතාව පරීක්‍ෂා කරන්න</string>
+    <string name="app_language">යෙදුමේ භාෂාව</string>
 </resources>

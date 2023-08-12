@@ -346,4 +346,6 @@
     <string name="access_denied_using_vpn">تم رفض الوصول! هل تستخدم VPN أو Tor؟</string>
     <string name="server_unreachable">لا يمكن الوصول إلى الخادم</string>
     <string name="failed_generating_session">فشل إنشاء جلسة عمل، رمز الخطأ: <xliff:g id="status_code"> %1$d </xliff:g></string>
+    <string name="app_language">لغة التطبيق</string>
+    <string name="check_connectivity">التحقق من اتصال الإنترنت</string>
 </resources>

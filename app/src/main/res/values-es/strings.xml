@@ -346,4 +346,6 @@
     <string name="failed_to_fetch_report">No se ha podido obtener el informe de privacidad</string>
     <string name="access_denied_using_vpn">¡Acceso denegado! ¿Estás usando una VPN o Tor\?</string>
     <string name="failed_generating_session">Fallo al generar la sesión, código de error: <xliff:g id="status_code">%1$d</xliff:g></string>
+    <string name="app_language">Idioma de la aplicación</string>
+    <string name="check_connectivity">Comprobar la conexión</string>
 </resources>

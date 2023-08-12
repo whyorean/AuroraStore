@@ -346,4 +346,6 @@
     <string name="server_unreachable">Server je nedostupný</string>
     <string name="failed_to_fetch_report">Nepodařilo se načíst hlášení o soukromí</string>
     <string name="bad_request">Interní chyba! Zkuste to prosím znovu za chvíli</string>
+    <string name="check_connectivity">Zkontrolujte připojení k internetu</string>
+    <string name="app_language">Jazyk aplikace</string>
 </resources>

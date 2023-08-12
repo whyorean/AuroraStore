@@ -347,4 +347,6 @@
     <string name="bad_request">Interner Fehler! Bitte versuche es nach einiger Zeit erneut.</string>
     <string name="failed_generating_session">Sitzung konnte nicht erstellt werden, Fehlercode: <xliff:g id="status_code">%1$d</xliff:g></string>
     <string name="server_unreachable">Server nicht erreichbar</string>
+    <string name="check_connectivity">Überprüfe die Internetverbindung</string>
+    <string name="app_language">App-Sprache</string>
 </resources>
