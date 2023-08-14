@@ -189,15 +189,12 @@ class MainActivity : AppCompatActivity() {
                     B.searchFab.visibility = View.VISIBLE
                     B.navView.visibility = View.VISIBLE
                     B.toolbar.visibility = View.VISIBLE
-                    window.navigationBarColor = SurfaceColors.SURFACE_2.getColor(this)
                 }
                 R.id.appDetailsFragment -> {
                     hideTopLevelOnlyViews()
-                    window.navigationBarColor = this.accentColor()
                 }
                 else -> {
                     hideTopLevelOnlyViews()
-                    window.navigationBarColor = getStyledAttributeColor(android.R.attr.colorBackground)
                 }
             }
         }
