@@ -33,6 +33,7 @@ import com.aurora.store.databinding.FragmentOnboardingBinding
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_AUTO_DELETE
 import com.aurora.store.util.Preferences.PREFERENCE_DEFAULT
+import com.aurora.store.util.Preferences.PREFERENCE_DEFAULT_SELECTED_TAB
 import com.aurora.store.util.Preferences.PREFERENCE_DOWNLOAD_ACTIVE
 import com.aurora.store.util.Preferences.PREFERENCE_DOWNLOAD_EXTERNAL
 import com.aurora.store.util.Preferences.PREFERENCE_FILTER_FDROID
@@ -153,6 +154,7 @@ class OnboardingFragment : Fragment(R.layout.fragment_onboarding) {
         /*Customization*/
         save(PREFERENCE_THEME_TYPE, 0)
         save(PREFERENCE_THEME_ACCENT, if (isSAndAbove()) 0 else 1)
+        save(PREFERENCE_DEFAULT_SELECTED_TAB, 0)
         save(PREFERENCE_FOR_YOU, true)
         save(PREFERENCE_SIMILAR, true)
 

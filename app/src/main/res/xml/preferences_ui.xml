@@ -45,6 +45,20 @@
     <PreferenceCategory
         app:iconSpaceReserved="false"
         app:singleLineTitle="false"
+        app:title="@string/pref_ui_layout" />
+
+    <com.aurora.store.view.custom.preference.AuroraListPreference
+        app:defaultValue="0"
+        app:entries="@array/pref_default_tab"
+        app:entryValues="@array/pref_default_tab_values"
+        app:iconSpaceReserved="false"
+        app:key="PREFERENCE_DEFAULT_SELECTED_TAB"
+        app:title="@string/pref_ui_layout_tab"
+        app:useSimpleSummaryProvider="true" />
+
+    <PreferenceCategory
+        app:iconSpaceReserved="false"
+        app:singleLineTitle="false"
         app:title="@string/pref_common_extra" />
 
     <SwitchPreferenceCompat

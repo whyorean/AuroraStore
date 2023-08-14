@@ -318,6 +318,18 @@
             app:popUpTo="@id/mobile_navigation"
             app:popUpToInclusive="true" />
         <action
+            android:id="@+id/action_splashFragment_to_gamesContainerFragment"
+            app:destination="@id/gamesContainerFragment"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/mobile_navigation"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_splashFragment_to_updatesFragment"
+            app:destination="@id/updatesFragment"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/mobile_navigation"
+            app:popUpToInclusive="true" />
+        <action
             android:id="@+id/action_splashFragment_to_onboardingFragment"
             app:destination="@id/onboardingFragment"
             app:launchSingleTop="true"

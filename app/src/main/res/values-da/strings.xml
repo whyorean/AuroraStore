@@ -115,6 +115,7 @@
     <string name="pref_ui_theme_dark">Mørk</string>
     <string name="pref_ui_theme_system">Følg systemet</string>
     <string name="pref_ui_theme_title">Tema</string>
+    <string name="pref_ui_layout">Layout</string>
     <string name="purchase_not_found">Appen kunne ikke findes</string>
     <string name="pref_ui_similar_apps_desc">Vis lignende og relaterede klynger på appens detaljeside</string>
     <string name="spoof_apply">Husk at logge ind igen for at anvende den nye forfalskning</string>
@@ -220,6 +221,7 @@
     <string name="pref_ui_theme_darkord">Disskord</string>
     <string name="pref_ui_theme_light">Lys</string>
     <string name="pref_ui_title">Tilpasning</string>
+    <string name="pref_ui_layout_tab">Vælg standardfanen</string>
     <string name="pref_ui_no_for_you">\"Til dig\" sider</string>
     <string name="pref_ui_no_for_you_desc">Vis \"til dig\" sider på startskærmen</string>
     <string name="pref_ui_similar_apps">Lignende og relaterede apps</string>

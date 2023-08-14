@@ -135,6 +135,7 @@
     <string name="pref_ui_theme_light">දීප්තිමත්</string>
     <string name="pref_ui_theme_system">පද්ධතිය අනුගමනය කරන්න</string>
     <string name="pref_ui_title">අභිරුචිකරණය</string>
+    <string name="pref_ui_layout">පිරිසැලසුම</string>
     <string name="pref_ui_no_for_you_desc">මුල් තිරය මත ඔබ සඳහා පිටු ප්‍රදර්ශනය කරන්න</string>
     <string name="pref_ui_similar_apps">සමාන සහ ආශ්‍රිත යෙදුම්</string>
     <string name="pref_updates_extended">දීර්ඝ කළ යාවත්කාල</string>
@@ -195,6 +196,7 @@
     <string name="pref_insecure_anonymous_title">අනාරක්‍ෂිත නිර්නාමික වාරය</string>
     <string name="pref_install_profile_title">ස්ථාපන පැතිකඩ (පරීක්‍ෂාත්මක)</string>
     <string name="pref_network_title">ජාලකරණය</string>
+    <string name="pref_ui_layout_tab">පෙරනිමි පටිත්ත තෝරන්න</string>
     <string name="tab_trending">නැගී එන</string>
     <string name="purchase_not_found">යෙදුම හමු නොවිණි</string>
     <string name="tab_top_free">ප්‍රචලිත නොමිලේ</string>

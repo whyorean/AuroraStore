@@ -260,7 +260,9 @@
     <string name="pref_ui_similar_apps">Сличне и сродне апликације</string>
     <string name="pref_ui_no_for_you_desc">Прикажи странице за Вас на почетном екрану</string>
     <string name="pref_ui_no_for_you">За Ваше странице</string>
+    <string name="pref_ui_layout">Распоред</string>
     <string name="pref_filter_search_summary">Филтeри за претрагу се ресетују при свакој претрази. Искључите да бисте сачували филтере за претрагу</string>
+    <string name="pref_ui_layout_tab">Изаберите подразумевану картицу</string>
     <string name="pref_network_title">Умрежавање</string>
     <string name="pref_insecure_anonymous_title">Небезбедна анонимна сесија</string>
     <string name="pref_insecure_anonymous_summary">Генеришите ГСФ ИД локално на уређају</string>

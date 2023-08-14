@@ -64,6 +64,8 @@
     <string name="pref_ui_similar_apps">ਇਸੇ ਸ਼੍ਰੇਣੀ ਦੇ ਕੁੱਝ ਹੋਰ ਐਪਸ</string>
     <string name="pref_ui_no_for_you_desc">ਖਾਸ ਤੁਹਾਡੇ ਲਈ ਚੁਣੇ ਹੋਏ ਐਪਸ ਵਾਲਾ ਪੰਨਾ ਵਿਖਾਓ</string>
     <string name="pref_ui_no_for_you">ਤੁਹਾਡੇ ਲਈ ਚੁਣੇ ਹੋਏ ਐਪਸ</string>
+    <string name="pref_ui_layout_tab">ਮੂਲ Tab ਚੁਣੋ</string>
+    <string name="pref_ui_layout">ਇੰਟਰਫੇਸ ਸਟਾਈਲ</string>
     <string name="pref_ui_title">ਪਸੰਦੀਦਾ ਇੰਟਰਫੇਸ</string>
     <string name="pref_ui_theme_title">ਥੀਮ</string>
     <string name="pref_ui_theme_system">ਸਿਸਟਮ ਅਨੁਸਾਰ</string>

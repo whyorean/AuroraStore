@@ -114,6 +114,8 @@
     <string name="purchase_session_expired">அமர்வு காலாவதியானது, புதிய அமர்வைப் பெற மீண்டும் உள்நுழைக.</string>
     <string name="spoof_apply">ஸ்பூப்பைப் பயன்படுத்த நீங்கள் மீண்டும் உள்நுழைந்திருப்பதை உறுதிசெய்யவும்</string>
     <string name="pref_ui_theme_light">ஒளிர்ந்த</string>
+    <string name="pref_ui_layout">தளவமைப்பு</string>
+    <string name="pref_ui_layout_tab">இயல்புநிலை தாவலைத் தேர்ந்தெடுக்கவும்</string>
     <string name="pref_ui_similar_apps">ஒத்த மற்றும் தொடர்புடைய பயன்பாடுகள்</string>
     <string name="pref_ui_similar_apps_desc">செயலி விவரங்கள் பக்கத்தில் ஒத்த மற்றும் தொடர்புடைய கொத்துகளைக் காண்பி</string>
     <string name="purchase_not_found">பயன்பாடு கிடைக்கவில்லை</string>

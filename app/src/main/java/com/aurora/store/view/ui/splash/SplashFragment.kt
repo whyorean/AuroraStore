@@ -31,6 +31,7 @@ import com.aurora.store.R
 import com.aurora.store.data.AuthState
 import com.aurora.store.databinding.FragmentSplashBinding
 import com.aurora.store.util.Preferences
+import com.aurora.store.util.Preferences.PREFERENCE_DEFAULT_SELECTED_TAB
 import com.aurora.store.util.Preferences.PREFERENCE_INTRO
 import com.aurora.store.viewmodel.auth.AuthViewModel
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
@@ -92,9 +93,7 @@ class SplashFragment : Fragment(R.layout.fragment_splash) {
                 }
 
                 AuthState.Valid -> {
-                    findNavController().navigate(
-                        SplashFragmentDirections.actionSplashFragmentToNavigationApps()
-                    )
+                    navigateToDefaultTab()
                 }
 
                 AuthState.Available -> {
@@ -108,9 +107,7 @@ class SplashFragment : Fragment(R.layout.fragment_splash) {
                 }
 
                 AuthState.SignedIn -> {
-                    findNavController().navigate(
-                        SplashFragmentDirections.actionSplashFragmentToNavigationApps()
-                    )
+                    navigateToDefaultTab()
                 }
 
                 AuthState.SignedOut -> {
@@ -194,5 +191,15 @@ class SplashFragment : Fragment(R.layout.fragment_splash) {
             updateProgress(false)
             isEnabled = true
         }
+    }
+
+    private fun navigateToDefaultTab() {
+        val directions =
+            when (Preferences.getInteger(requireContext(), PREFERENCE_DEFAULT_SELECTED_TAB)) {
+                1 -> SplashFragmentDirections.actionSplashFragmentToGamesContainerFragment()
+                2 -> SplashFragmentDirections.actionSplashFragmentToUpdatesFragment()
+                else -> SplashFragmentDirections.actionSplashFragmentToNavigationApps()
+            }
+        findNavController().navigate(directions)
     }
 }

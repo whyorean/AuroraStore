@@ -59,6 +59,7 @@ import com.aurora.store.data.providers.NetworkProvider
 import com.aurora.store.databinding.ActivityMainBinding
 import com.aurora.store.util.Log
 import com.aurora.store.util.Preferences
+import com.aurora.store.util.Preferences.PREFERENCE_DEFAULT_SELECTED_TAB
 import com.aurora.store.view.ui.sheets.NetworkDialogSheet
 import com.aurora.store.view.ui.sheets.SelfUpdateSheet
 import com.aurora.store.viewmodel.MainViewModel
@@ -160,13 +161,18 @@ class MainActivity : AppCompatActivity() {
         }
 
         // Handle quick exit from back actions
+        val defaultTab = when (Preferences.getInteger(this, PREFERENCE_DEFAULT_SELECTED_TAB)) {
+            1 -> R.id.gamesContainerFragment
+            2 -> R.id.updatesFragment
+            else -> R.id.appsContainerFragment
+        }
         onBackPressedDispatcher.addCallback(this) {
             if (!B.drawerLayout.isOpen) {
                 if (navController.currentDestination?.id in topLevelFrags) {
-                    if (navController.currentDestination?.id == R.id.appsContainerFragment) {
+                    if (navController.currentDestination?.id == defaultTab) {
                         finish()
                     } else {
-                        navController.navigate(R.id.appsContainerFragment)
+                        navController.navigate(defaultTab)
                     }
                 } else {
                     navController.navigateUp()

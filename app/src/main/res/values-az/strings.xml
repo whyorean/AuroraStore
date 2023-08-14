@@ -224,6 +224,8 @@
     <string name="pref_ui_theme_light">İşıqlı</string>
     <string name="pref_ui_theme_title">Mövzu</string>
     <string name="pref_ui_title">Fərdiləşdirmə</string>
+    <string name="pref_ui_layout">Yerləşmə</string>
+    <string name="pref_ui_layout_tab">Defolt nişanı seçin</string>
     <string name="pref_ui_similar_apps">Oxşar və əlaqəli tətbiqlər</string>
     <string name="pref_ui_similar_apps_desc">Tətbiq təfərrüatları səhifəsində oxşar və əlaqəli klasterləri göstərin</string>
     <string name="pref_updates_extended_desc">Deaktiv edilən tətbiqlərində yeni versiyalarını axtarır</string>

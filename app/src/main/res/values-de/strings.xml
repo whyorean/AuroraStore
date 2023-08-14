@@ -255,6 +255,8 @@
     <string name="pref_ui_similar_apps">Ähnliche Apps</string>
     <string name="pref_ui_no_for_you_desc">»Für dich«-Tab auf der Startseite anzeigen</string>
     <string name="pref_ui_no_for_you">»Für dich«-Tab</string>
+    <string name="pref_ui_layout_tab">Startseite</string>
+    <string name="pref_ui_layout">Seitengestaltung</string>
     <string name="pref_filter_search_title">Suchfilter jedes Mal zurücksetzen</string>
     <string name="pref_filter_search_summary">Suchfilter bei jeder Suche zurücksetzen
 \n(Suchfilter bleibt bei ausgeschalteter Option erhalten)</string>

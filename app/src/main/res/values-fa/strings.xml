@@ -52,8 +52,10 @@
     <string name="pref_install_mode_services">خدمات آرورا</string>
     <string name="pref_install_mode_root">نصب کننده روت</string>
     <string name="pref_ui_no_for_you">برگه‌های برای شما</string>
+    <string name="pref_ui_layout_tab">برگزیدن برگه پیش فرض</string>
     <string name="pref_ui_title">سفارشی سازی</string>
     <string name="pref_ui_theme_title">پوسته</string>
+    <string name="pref_ui_layout">چیدمان</string>
     <string name="purchase_failed">بارگیری شکست خورد</string>
     <string name="tab_trending">پرطرفدار</string>
     <string name="tab_top_paid">برترین پولی‌ها</string>

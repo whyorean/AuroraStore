@@ -86,6 +86,8 @@
     <string name="pref_ui_similar_apps">Benzer ve ilgili uygulamalar</string>
     <string name="pref_ui_no_for_you_desc">Ana ekranda Sana Özel Sayfalar\'ı göster</string>
     <string name="pref_ui_no_for_you">Sana Özel Sayfalar</string>
+    <string name="pref_ui_layout_tab">Öntanımlı sekmeyi seç</string>
+    <string name="pref_ui_layout">Yerleşim</string>
     <string name="pref_ui_title">Özelleştirme</string>
     <string name="pref_ui_theme_title">Tema</string>
     <string name="pref_ui_theme_system">Sistemi İzle</string>

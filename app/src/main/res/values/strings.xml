@@ -367,4 +367,6 @@
     <string name="failed_generating_session">Failed to generate session, error code: <xliff:g id="status_code">%1$d</xliff:g></string>
     <string name="check_connectivity">Check internet connectivity</string>
     <string name="app_language">App Language</string>
+    <string name="pref_ui_layout">Layout</string>
+    <string name="pref_ui_layout_tab">Select default tab</string>
 </resources>
