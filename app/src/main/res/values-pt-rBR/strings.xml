@@ -348,4 +348,6 @@
     <string name="login_rate_limited">Ops, você está com limite de taxa</string>
     <string name="server_unreachable">Servidor inalcançável</string>
     <string name="failed_generating_session">Falhou em gerar sessão, código de erro: <xliff:g id="status_code">%1$d</xliff:g></string>
+    <string name="app_language">Idioma do App</string>
+    <string name="check_connectivity">Verificar conectividade de internet</string>
 </resources>
