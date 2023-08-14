@@ -346,4 +346,6 @@
     <string name="failed_generating_session">Istunnon luominen epäonnistui, virhekoodi: <xliff:g id="status_code">%1$d</xliff:g></string>
     <string name="login_rate_limited">Ups, käyttösi on rajoitettu</string>
     <string name="server_unreachable">Palvelimeen ei saada yhteyttä</string>
+    <string name="check_connectivity">Tarkista verkkoyhteys</string>
+    <string name="app_language">Sovelluksen kieli</string>
 </resources>

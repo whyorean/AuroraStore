@@ -346,4 +346,6 @@
     <string name="failed_generating_session">Не вдалося згенерувати сеанс, код помилки: <xliff:g id="status_code">%1$d</xliff:g></string>
     <string name="bad_request">Внутрішня помилка! Повторіть спробу трохи згодом</string>
     <string name="server_unreachable">Сервер недоступний</string>
+    <string name="check_connectivity">Перевірте інтернет-з\'єднання</string>
+    <string name="app_language">Мова застосунку</string>
 </resources>
