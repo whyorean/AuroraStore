@@ -1,0 +1,3 @@
+• Major internal changes related to UI
+• Translation updates
+• Minor bugfixes & improvements
