@@ -25,8 +25,10 @@ import android.content.Intent
 import android.content.ServiceConnection
 import android.content.pm.PackageInstaller
 import android.net.Uri
-import android.os.*
-import androidx.annotation.RequiresApi
+import android.os.Handler
+import android.os.IBinder
+import android.os.Looper
+import android.os.RemoteException
 import androidx.core.content.FileProvider
 import com.aurora.services.IPrivilegedCallback
 import com.aurora.services.IPrivilegedService

@@ -30,7 +30,6 @@ import com.aurora.store.data.providers.BlacklistProvider
 import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.Preferences
 import com.aurora.store.viewmodel.BaseAndroidViewModel
-import java.util.*
 
 abstract class BaseAppsViewModel(application: Application) : BaseAndroidViewModel(application) {
 

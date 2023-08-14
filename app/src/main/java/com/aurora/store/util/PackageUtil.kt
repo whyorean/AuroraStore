@@ -31,7 +31,6 @@ import android.os.Build
 import androidx.core.content.pm.PackageInfoCompat
 import com.aurora.extensions.isOAndAbove
 import com.aurora.extensions.isTAndAbove
-import okhttp3.internal.immutableListOf
 
 
 object PackageUtil {

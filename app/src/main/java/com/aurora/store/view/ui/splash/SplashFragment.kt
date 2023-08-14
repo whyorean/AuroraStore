@@ -29,14 +29,11 @@ import com.aurora.extensions.load
 import com.aurora.extensions.show
 import com.aurora.store.R
 import com.aurora.store.data.AuthState
-import com.aurora.store.data.event.BusEvent
 import com.aurora.store.databinding.FragmentSplashBinding
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_INTRO
 import com.aurora.store.viewmodel.auth.AuthViewModel
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
-import org.greenrobot.eventbus.EventBus
-import org.greenrobot.eventbus.Subscribe
 
 class SplashFragment : Fragment(R.layout.fragment_splash) {
 

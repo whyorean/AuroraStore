@@ -24,11 +24,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.navArgs
+import com.aurora.extensions.copyToClipBoard
+import com.aurora.extensions.toast
 import com.aurora.store.R
 import com.aurora.store.data.downloader.DownloadManager
 import com.aurora.store.databinding.SheetDownloadMenuBinding
-import com.aurora.extensions.copyToClipBoard
-import com.aurora.extensions.toast
 import com.tonyodev.fetch2.Fetch
 import com.tonyodev.fetch2.Status
 import kotlin.properties.Delegates

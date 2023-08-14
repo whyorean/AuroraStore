@@ -28,7 +28,7 @@ import com.airbnb.epoxy.OnViewRecycled
 import com.aurora.store.R
 import com.aurora.store.databinding.ViewInfoBinding
 import com.aurora.store.view.epoxy.views.BaseView
-import java.util.*
+import java.util.Locale
 
 @ModelView(
     autoLayout = ModelView.Size.MATCH_WIDTH_WRAP_HEIGHT,

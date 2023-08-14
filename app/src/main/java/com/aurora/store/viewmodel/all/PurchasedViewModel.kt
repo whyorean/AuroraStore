@@ -31,7 +31,6 @@ import com.aurora.store.viewmodel.BaseAndroidViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.supervisorScope
-import org.greenrobot.eventbus.EventBus
 
 class PurchasedViewModel(application: Application) : BaseAndroidViewModel(application) {
 

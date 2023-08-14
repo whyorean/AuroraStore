@@ -33,7 +33,15 @@ import com.aurora.store.view.epoxy.views.AppProgressViewModel_
 import com.aurora.store.view.epoxy.views.app.AppListViewModel_
 import com.aurora.store.view.epoxy.views.shimmer.AppListViewShimmerModel_
 import com.aurora.store.view.ui.commons.BaseFragment
-import com.aurora.store.viewmodel.topchart.*
+import com.aurora.store.viewmodel.topchart.BaseChartViewModel
+import com.aurora.store.viewmodel.topchart.TopFreeAppChartViewModel
+import com.aurora.store.viewmodel.topchart.TopFreeGameChartViewModel
+import com.aurora.store.viewmodel.topchart.TopGrossingAppChartViewModel
+import com.aurora.store.viewmodel.topchart.TopGrossingGameChartViewModel
+import com.aurora.store.viewmodel.topchart.TopPaidAppChartViewModel
+import com.aurora.store.viewmodel.topchart.TopPaidGameChartViewModel
+import com.aurora.store.viewmodel.topchart.TrendingAppChartViewModel
+import com.aurora.store.viewmodel.topchart.TrendingGameChartViewModel
 
 class TopChartFragment : BaseFragment() {
 

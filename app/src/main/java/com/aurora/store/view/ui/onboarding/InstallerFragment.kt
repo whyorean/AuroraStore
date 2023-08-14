@@ -31,8 +31,8 @@ import com.aurora.extensions.isOAndAbove
 import com.aurora.extensions.showDialog
 import com.aurora.store.R
 import com.aurora.store.data.installer.AppInstaller.Companion.hasAppManager
-import com.aurora.store.data.installer.AppInstaller.Companion.hasRootAccess
 import com.aurora.store.data.installer.AppInstaller.Companion.hasAuroraService
+import com.aurora.store.data.installer.AppInstaller.Companion.hasRootAccess
 import com.aurora.store.data.installer.AppInstaller.Companion.hasShizuku
 import com.aurora.store.data.installer.AppInstaller.Companion.hasShizukuPerm
 import com.aurora.store.data.model.Installer

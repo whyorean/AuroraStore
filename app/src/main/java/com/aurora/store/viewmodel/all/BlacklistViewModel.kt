@@ -32,7 +32,7 @@ import com.aurora.store.viewmodel.BaseAndroidViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.supervisorScope
-import java.util.*
+import java.util.Locale
 
 class BlacklistViewModel(application: Application) : BaseAndroidViewModel(application) {
 

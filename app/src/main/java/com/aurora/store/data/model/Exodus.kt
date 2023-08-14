@@ -24,7 +24,7 @@ import kotlinx.parcelize.Parcelize
 import java.text.DateFormat
 import java.text.ParseException
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Locale
 
 data class ExodusReport(
     val creator: String = String(),

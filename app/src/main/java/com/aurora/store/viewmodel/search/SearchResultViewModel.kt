@@ -23,13 +23,13 @@ import android.app.Application
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.aurora.extensions.flushAndAdd
 import com.aurora.gplayapi.data.models.AuthData
 import com.aurora.gplayapi.data.models.SearchBundle
 import com.aurora.gplayapi.helpers.SearchHelper
+import com.aurora.store.data.RequestState
 import com.aurora.store.data.network.HttpClient
 import com.aurora.store.data.providers.AuthProvider
-import com.aurora.extensions.flushAndAdd
-import com.aurora.store.data.RequestState
 import com.aurora.store.viewmodel.BaseAndroidViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

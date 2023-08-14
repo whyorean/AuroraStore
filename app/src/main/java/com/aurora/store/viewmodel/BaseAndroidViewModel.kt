@@ -24,14 +24,11 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.aurora.store.data.RequestState
 import com.aurora.store.data.network.HttpClient
-import com.aurora.store.data.providers.NetworkProvider
 import com.aurora.store.util.Log
-import com.google.android.material.snackbar.Snackbar
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
-import java.lang.reflect.Modifier
 import kotlinx.coroutines.flow.launchIn
-import kotlinx.coroutines.flow.onEach
+import java.lang.reflect.Modifier
 
 abstract class BaseAndroidViewModel(application: Application) : AndroidViewModel(application) {
 

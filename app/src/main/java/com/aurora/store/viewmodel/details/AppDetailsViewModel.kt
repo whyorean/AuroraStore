@@ -15,12 +15,12 @@ import com.aurora.store.data.model.Report
 import com.aurora.store.data.network.HttpClient
 import com.aurora.store.data.providers.AuthProvider
 import com.google.gson.GsonBuilder
-import java.lang.reflect.Modifier
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.launch
 import org.json.JSONObject
+import java.lang.reflect.Modifier
 
 class AppDetailsViewModel : ViewModel() {
 

@@ -47,10 +47,10 @@ import com.aurora.store.viewmodel.BaseAndroidViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.supervisorScope
+import org.greenrobot.eventbus.EventBus
 import java.net.ConnectException
 import java.net.UnknownHostException
 import java.util.*
-import org.greenrobot.eventbus.EventBus
 
 class AuthViewModel(application: Application) : BaseAndroidViewModel(application) {
 

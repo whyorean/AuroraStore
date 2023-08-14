@@ -20,7 +20,10 @@
 
 package com.aurora.store.data.service
 
-import android.app.*
+import android.app.Notification
+import android.app.NotificationManager
+import android.app.PendingIntent
+import android.app.Service
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
@@ -49,7 +52,12 @@ import com.aurora.store.util.CommonUtil
 import com.aurora.store.util.Log
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
-import com.tonyodev.fetch2.*
+import com.tonyodev.fetch2.AbstractFetchGroupListener
+import com.tonyodev.fetch2.Download
+import com.tonyodev.fetch2.Error
+import com.tonyodev.fetch2.Fetch
+import com.tonyodev.fetch2.FetchGroup
+import com.tonyodev.fetch2.Status
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import java.lang.reflect.Modifier

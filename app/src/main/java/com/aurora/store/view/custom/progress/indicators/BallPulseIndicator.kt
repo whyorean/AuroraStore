@@ -3,7 +3,6 @@ package com.aurora.store.view.custom.progress.indicators
 import android.animation.ValueAnimator
 import android.graphics.Canvas
 import android.graphics.Paint
-import java.util.*
 
 class BallPulseIndicator : Indicator() {
 

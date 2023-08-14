@@ -25,12 +25,12 @@ import android.widget.RelativeLayout
 import com.airbnb.epoxy.CallbackProp
 import com.airbnb.epoxy.ModelProp
 import com.airbnb.epoxy.ModelView
-import com.aurora.store.R
-import com.aurora.store.data.model.Link
-import com.aurora.store.databinding.ViewLinkBinding
 import com.aurora.extensions.hide
 import com.aurora.extensions.load
 import com.aurora.extensions.show
+import com.aurora.store.R
+import com.aurora.store.data.model.Link
+import com.aurora.store.databinding.ViewLinkBinding
 import com.aurora.store.view.epoxy.views.BaseView
 
 @ModelView(

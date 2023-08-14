@@ -20,11 +20,10 @@
 package com.aurora.store.util
 
 import android.content.Context
-import android.os.Build
 import com.aurora.extensions.isSAndAbove
 import com.aurora.store.R
 import java.text.DecimalFormat
-import java.util.*
+import java.util.Locale
 import kotlin.math.ln
 import kotlin.math.pow
 

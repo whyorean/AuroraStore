@@ -23,8 +23,6 @@ package com.aurora.store.data.installer
 import android.content.Context
 import android.content.pm.PackageInstaller.PACKAGE_SOURCE_STORE
 import android.content.pm.PackageInstaller.SessionParams
-import android.os.Build
-import androidx.annotation.RequiresApi
 import com.aurora.extensions.isNAndAbove
 import com.aurora.extensions.isSAndAbove
 import com.aurora.extensions.isTAndAbove

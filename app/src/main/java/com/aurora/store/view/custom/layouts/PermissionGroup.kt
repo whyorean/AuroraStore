@@ -18,8 +18,6 @@
  */
 package com.aurora.store.view.custom.layouts
 
-import android.annotation.SuppressLint
-import android.annotation.TargetApi
 import android.content.Context
 import android.content.pm.PackageManager
 import android.content.pm.PermissionGroupInfo
@@ -34,7 +32,7 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import com.aurora.extensions.showDialog
 import com.aurora.store.R
-import java.util.*
+import java.util.Locale
 
 class PermissionGroup : LinearLayout {
 

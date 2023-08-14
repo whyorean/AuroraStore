@@ -29,10 +29,10 @@ import androidx.navigation.fragment.findNavController
 import androidx.preference.ListPreference
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
-import com.aurora.store.R
-import com.aurora.store.util.Preferences
 import com.aurora.extensions.applyTheme
 import com.aurora.extensions.isTAndAbove
+import com.aurora.store.R
+import com.aurora.store.util.Preferences
 import com.aurora.store.util.save
 import java.util.Locale
 

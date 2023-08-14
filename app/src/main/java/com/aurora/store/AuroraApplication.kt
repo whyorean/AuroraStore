@@ -33,7 +33,6 @@ import com.aurora.store.data.service.NotificationService
 import com.aurora.store.util.CommonUtil
 import com.aurora.store.util.PackageUtil
 import com.tonyodev.fetch2.Fetch
-import java.util.ArrayList
 import org.lsposed.hiddenapibypass.HiddenApiBypass
 
 class AuroraApplication : Application() {

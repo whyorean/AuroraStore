@@ -27,10 +27,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.aurora.gplayapi.data.models.App
-import com.aurora.gplayapi.data.models.AuthData
-import com.aurora.gplayapi.helpers.AppDetailsHelper
 import com.aurora.store.R
-import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.databinding.FragmentDetailsMoreBinding
 import com.aurora.store.view.epoxy.views.HeaderViewModel_
 import com.aurora.store.view.epoxy.views.app.NoAppAltViewModel_
@@ -40,8 +37,6 @@ import com.aurora.store.view.epoxy.views.details.InfoViewModel_
 import com.aurora.store.view.epoxy.views.details.MoreBadgeViewModel_
 import com.aurora.store.view.ui.commons.BaseFragment
 import com.aurora.store.viewmodel.details.DetailsMoreViewModel
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.drop
 import kotlinx.coroutines.launch
 
 class DetailsMoreFragment : BaseFragment(R.layout.fragment_details_more) {

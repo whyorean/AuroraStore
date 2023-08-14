@@ -26,8 +26,8 @@ import com.aurora.store.R
 import com.aurora.store.util.Log
 import com.aurora.store.view.epoxy.controller.GenericCarouselController
 import com.aurora.store.view.epoxy.views.AppProgressViewModel_
-import com.aurora.store.view.epoxy.views.app.AppViewModel_
 import com.aurora.store.view.epoxy.views.HeaderViewModel_
+import com.aurora.store.view.epoxy.views.app.AppViewModel_
 
 class CarouselModelGroup(
     streamCluster: StreamCluster,

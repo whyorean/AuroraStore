@@ -25,7 +25,7 @@ import android.content.res.Configuration
 import android.os.Build
 import android.text.TextUtils
 import com.aurora.extensions.isHuawei
-import java.util.*
+import java.util.Properties
 
 class NativeDeviceInfoProvider(context: Context) : ContextWrapper(context) {
 

@@ -24,7 +24,8 @@ import com.aurora.store.util.Preferences
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import java.lang.reflect.Modifier
-import java.util.*
+import java.util.Locale
+import java.util.Properties
 
 class SpoofProvider constructor(var context: Context) {
 

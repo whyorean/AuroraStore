@@ -22,12 +22,9 @@ package com.aurora.store.util
 import android.content.Context
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
-import android.os.Build
-import androidx.annotation.RequiresApi
 import com.aurora.store.util.PackageUtil.getPackageInfo
 import java.io.File
 import java.io.FileOutputStream
-import java.util.*
 import java.util.zip.ZipEntry
 import java.util.zip.ZipOutputStream
 

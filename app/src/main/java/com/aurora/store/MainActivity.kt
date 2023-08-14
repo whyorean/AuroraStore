@@ -37,7 +37,6 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.ColorUtils
-import androidx.core.view.GravityCompat
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
@@ -46,7 +45,12 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.aurora.Constants
-import com.aurora.extensions.*
+import com.aurora.extensions.accentColor
+import com.aurora.extensions.applyTheme
+import com.aurora.extensions.getStyledAttributeColor
+import com.aurora.extensions.isRAndAbove
+import com.aurora.extensions.load
+import com.aurora.extensions.toast
 import com.aurora.gplayapi.data.models.AuthData
 import com.aurora.store.data.model.NetworkStatus
 import com.aurora.store.data.model.SelfUpdate

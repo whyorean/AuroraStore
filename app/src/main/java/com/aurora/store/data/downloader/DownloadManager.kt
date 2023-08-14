@@ -22,7 +22,12 @@ package com.aurora.store.data.downloader
 import android.content.Context
 import com.aurora.store.data.SingletonHolder
 import com.aurora.store.util.Preferences
-import com.tonyodev.fetch2.*
+import com.tonyodev.fetch2.BuildConfig
+import com.tonyodev.fetch2.Download
+import com.tonyodev.fetch2.Fetch
+import com.tonyodev.fetch2.FetchConfiguration
+import com.tonyodev.fetch2.FetchGroup
+import com.tonyodev.fetch2.FetchListener
 import com.tonyodev.fetch2core.DefaultStorageResolver
 import com.tonyodev.fetch2core.getFileTempDir
 

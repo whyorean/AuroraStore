@@ -24,13 +24,13 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.aurora.extensions.toast
 import com.aurora.store.R
 import com.aurora.store.data.providers.SpoofProvider
 import com.aurora.store.databinding.FragmentGenericRecyclerBinding
-import com.aurora.extensions.toast
 import com.aurora.store.view.epoxy.views.preference.LocaleViewModel_
 import com.aurora.store.view.ui.commons.BaseFragment
-import java.util.*
+import java.util.Locale
 
 
 class LocaleSpoofFragment : BaseFragment() {

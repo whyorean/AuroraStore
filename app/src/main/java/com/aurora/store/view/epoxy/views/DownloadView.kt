@@ -27,6 +27,8 @@ import com.airbnb.epoxy.ModelProp
 import com.airbnb.epoxy.ModelView
 import com.airbnb.epoxy.OnViewRecycled
 import com.aurora.Constants
+import com.aurora.extensions.clear
+import com.aurora.extensions.load
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
 import com.aurora.store.data.model.DownloadFile
@@ -34,14 +36,12 @@ import com.aurora.store.databinding.ViewDownloadBinding
 import com.aurora.store.util.CommonUtil.getDownloadSpeedString
 import com.aurora.store.util.CommonUtil.getETAString
 import com.aurora.store.util.CommonUtil.humanReadableByteValue
-import com.aurora.extensions.clear
-import com.aurora.extensions.load
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.tonyodev.fetch2.Status
 import java.lang.reflect.Modifier
-import java.util.*
+import java.util.Locale
 
 @ModelView(
     autoLayout = ModelView.Size.MATCH_WIDTH_WRAP_HEIGHT,

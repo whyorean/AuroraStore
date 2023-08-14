@@ -28,7 +28,6 @@ import androidx.preference.PreferenceFragmentCompat
 import com.aurora.extensions.runOnUiThread
 import com.aurora.extensions.toast
 import com.aurora.store.R
-import com.aurora.store.util.CommonUtil
 import com.aurora.store.util.Preferences
 
 class NetworkPreference : PreferenceFragmentCompat() {

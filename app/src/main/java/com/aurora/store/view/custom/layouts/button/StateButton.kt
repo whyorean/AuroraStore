@@ -20,11 +20,9 @@
 package com.aurora.store.view.custom.layouts.button
 
 import android.content.Context
-import android.os.Build
 import android.util.AttributeSet
 import android.view.View
 import android.widget.RelativeLayout
-import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import com.aurora.store.R
 import com.aurora.store.databinding.ViewStateButtonBinding

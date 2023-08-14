@@ -23,7 +23,6 @@ import android.content.Context
 import android.content.SharedPreferences
 import androidx.fragment.app.Fragment
 import androidx.preference.PreferenceManager
-import com.google.gson.Gson
 
 
 object Preferences {

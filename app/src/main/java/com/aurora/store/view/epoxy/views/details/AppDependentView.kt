@@ -26,11 +26,11 @@ import com.airbnb.epoxy.CallbackProp
 import com.airbnb.epoxy.ModelProp
 import com.airbnb.epoxy.ModelView
 import com.airbnb.epoxy.OnViewRecycled
+import com.aurora.extensions.clear
+import com.aurora.extensions.load
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
 import com.aurora.store.databinding.ViewAppDependentBinding
-import com.aurora.extensions.clear
-import com.aurora.extensions.load
 import com.aurora.store.view.epoxy.views.BaseView
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 

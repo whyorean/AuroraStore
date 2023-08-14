@@ -27,7 +27,7 @@ import java.io.ByteArrayInputStream
 import java.io.InputStream
 import java.security.cert.CertificateFactory
 import java.security.cert.X509Certificate
-import java.util.*
+import java.util.Locale
 
 object CertUtil {
     private const val FDROID = "FDROID"

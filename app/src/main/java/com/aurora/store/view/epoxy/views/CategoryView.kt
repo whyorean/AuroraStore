@@ -26,11 +26,11 @@ import com.airbnb.epoxy.CallbackProp
 import com.airbnb.epoxy.ModelProp
 import com.airbnb.epoxy.ModelView
 import com.airbnb.epoxy.OnViewRecycled
+import com.aurora.extensions.clear
+import com.aurora.extensions.load
 import com.aurora.gplayapi.data.models.Category
 import com.aurora.store.R
 import com.aurora.store.databinding.ViewCategoryBinding
-import com.aurora.extensions.clear
-import com.aurora.extensions.load
 
 @ModelView(
     autoLayout = ModelView.Size.MATCH_WIDTH_WRAP_HEIGHT,

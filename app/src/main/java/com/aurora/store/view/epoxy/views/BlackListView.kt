@@ -27,11 +27,11 @@ import com.airbnb.epoxy.CallbackProp
 import com.airbnb.epoxy.ModelProp
 import com.airbnb.epoxy.ModelView
 import com.airbnb.epoxy.OnViewRecycled
+import com.aurora.extensions.clear
+import com.aurora.extensions.load
 import com.aurora.store.R
 import com.aurora.store.data.model.Black
 import com.aurora.store.databinding.ViewBlackBinding
-import com.aurora.extensions.clear
-import com.aurora.extensions.load
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 
 @ModelView(

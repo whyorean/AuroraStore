@@ -36,13 +36,13 @@ import com.aurora.store.data.installer.AppInstaller
 import com.aurora.store.data.model.UpdateFile
 import com.tonyodev.fetch2.Download
 import com.tonyodev.fetch2.FetchGroup
-import java.io.File
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
-import java.util.*
+import java.io.File
+import java.util.Locale
 
 class UpdatesViewModel(application: Application) : BaseAppsViewModel(application) {
 

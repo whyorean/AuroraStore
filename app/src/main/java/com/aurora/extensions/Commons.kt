@@ -22,7 +22,8 @@ package com.aurora.extensions
 import android.text.format.DateFormat
 import java.io.PrintWriter
 import java.io.StringWriter
-import java.util.*
+import java.util.Calendar
+import java.util.Locale
 
 fun Long.toDate(): String {
     val calendar = Calendar.getInstance(Locale.getDefault())

@@ -24,8 +24,7 @@ import com.airbnb.epoxy.EpoxyModelGroup
 import com.aurora.store.R
 import com.aurora.store.view.epoxy.views.shimmer.AppViewShimmerModel_
 import com.aurora.store.view.epoxy.views.shimmer.HeaderViewShimmerModel_
-import java.util.*
-import kotlin.collections.ArrayList
+import java.util.UUID
 
 class CarouselShimmerGroup() :
     EpoxyModelGroup(

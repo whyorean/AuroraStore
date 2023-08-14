@@ -29,7 +29,7 @@ import kotlinx.coroutines.launch
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
-import java.util.*
+import java.util.Locale
 
 class InstalledViewModel(application: Application) : BaseAppsViewModel(application) {
 

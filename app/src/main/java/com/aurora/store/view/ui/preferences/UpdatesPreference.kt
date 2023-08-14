@@ -27,7 +27,6 @@ import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.SwitchPreferenceCompat
 import com.aurora.store.R
 import com.aurora.store.data.work.UpdateWorker
-import com.aurora.store.util.Log
 import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_CHECK
 
 class UpdatesPreference : PreferenceFragmentCompat() {
