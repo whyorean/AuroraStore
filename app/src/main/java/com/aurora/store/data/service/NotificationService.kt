@@ -400,7 +400,7 @@ class NotificationService : Service() {
 
     private fun notifyInstallationStatus(app: App, status: String?) {
         val builder = NotificationCompat.Builder(this, Constants.NOTIFICATION_CHANNEL_ALERT)
-        builder.color = getStyledAttributeColor(R.attr.colorAccent)
+        builder.color = getStyledAttributeColor(R.color.colorAccent)
         builder.setSmallIcon(R.drawable.ic_install)
         builder.setContentTitle(app.displayName)
         builder.setContentText(status)
