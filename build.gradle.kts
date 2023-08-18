@@ -20,16 +20,12 @@
  */
 
 plugins {
-    id 'com.android.application' version '8.1.0' apply false
-    id 'org.jetbrains.kotlin.android' version '1.9.0' apply false
-    id 'org.jetbrains.kotlin.plugin.parcelize' version '1.9.0' apply false
-    id 'com.google.devtools.ksp' version '1.9.0-1.0.13' apply false
-    id 'androidx.navigation.safeargs.kotlin' version '2.6.0' apply false
-    id 'org.jlleitschuh.gradle.ktlint' version '11.4.0' apply false
-    id 'com.starter.easylauncher' version '6.2.0' apply false
-    id 'dev.rikka.tools.refine' version '4.3.0' apply false
-}
-
-task clean(type: Delete) {
-    delete rootProject.buildDir
+    id("com.android.application") version "8.1.0" apply false
+    id("org.jetbrains.kotlin.android") version "1.9.0" apply false
+    id("org.jetbrains.kotlin.plugin.parcelize") version "1.9.0" apply false
+    id("com.google.devtools.ksp") version "1.9.0-1.0.13" apply false
+    id("androidx.navigation.safeargs.kotlin") version "2.6.0" apply false
+    id("org.jlleitschuh.gradle.ktlint") version "11.4.0" apply false
+    id("com.starter.easylauncher") version "6.2.0" apply false
+    id("dev.rikka.tools.refine") version "4.3.0" apply false
 }

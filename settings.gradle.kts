@@ -31,15 +31,9 @@ dependencyResolutionManagement {
         google()
         jcenter() // Required for androidx.tonyodev.fetch2
         mavenCentral()
-        maven {
-            name 'JitPack'
-            url 'https://jitpack.io/'
-        }
-        maven {
-            name 'Google'
-            url 'https://maven.google.com/'
-        }
+        maven("https://jitpack.io/")
+        maven("https://maven.google.com/")
     }
 }
-include ':app'
+include(":app")
 rootProject.name = "AuroraStore4"
