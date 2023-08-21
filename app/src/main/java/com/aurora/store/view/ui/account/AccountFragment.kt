@@ -104,8 +104,13 @@ class AccountFragment : Fragment(R.layout.fragment_account) {
                     updateActionLayout(true)
                 }
 
-                is AuthState.Status -> {
+                AuthState.Verifying -> {
+                    updateStatus(getString(R.string.verifying_new_session))
+                }
+
+                is AuthState.Failed -> {
                     updateStatus(it.status)
+                    updateActionLayout(true)
                     resetActions()
                 }
             }

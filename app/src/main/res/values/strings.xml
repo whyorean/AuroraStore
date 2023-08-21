@@ -364,6 +364,8 @@
     <string name="bad_request">Internal error! Please retry after sometime</string>
     <string name="login_rate_limited">Oops, You are rate limited</string>
     <string name="server_unreachable">Server unreachable</string>
+    <string name="failed_to_generate_session">Failed to generate Session</string>
+    <string name="verifying_new_session">Verifying new session</string>
     <string name="failed_generating_session">Failed to generate session, error code: <xliff:g id="status_code">%1$d</xliff:g></string>
     <string name="check_connectivity">Check internet connectivity</string>
     <string name="app_language">App Language</string>

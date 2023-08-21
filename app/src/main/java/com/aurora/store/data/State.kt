@@ -41,5 +41,6 @@ sealed class AuthState {
     object SignedOut : AuthState()
     object Valid : AuthState()
     object Fetching: AuthState()
-    data class Status(val status: String?) : AuthState()
+    object Verifying: AuthState()
+    data class Failed(val status: String) : AuthState()
 }

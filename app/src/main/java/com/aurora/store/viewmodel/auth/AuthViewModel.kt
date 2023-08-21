@@ -87,7 +87,11 @@ class AuthViewModel(application: Application) : BaseAndroidViewModel(application
                 val authData = AuthHelper.build(email, aasToken, properties)
                 verifyAndSaveAuth(authData, AccountType.GOOGLE)
             } catch (exception: Exception) {
-                updateStatus("Failed to generate Session")
+                liveData.postValue(
+                    AuthState.Failed(
+                        (getApplication() as Context).getString(R.string.failed_to_generate_session)
+                    )
+                )
                 Log.e(TAG, "Failed to generate Session", exception)
             }
         }
@@ -136,7 +140,7 @@ class AuthViewModel(application: Application) : BaseAndroidViewModel(application
                     throwError(playResponse, getApplication())
                 }
             } catch (exception: Exception) {
-                updateStatus(exception.message.toString())
+                liveData.postValue(AuthState.Failed(exception.message.toString()))
                 Log.e(TAG, "Failed to generate Session", exception)
             }
         }
@@ -180,7 +184,7 @@ class AuthViewModel(application: Application) : BaseAndroidViewModel(application
                     throwError(playResponse, getApplication())
                 }
             } catch (exception: Exception) {
-                updateStatus(exception.message.toString())
+                liveData.postValue(AuthState.Failed(exception.message.toString()))
                 Log.e(TAG, "Failed to generate Session", exception)
             }
         }
@@ -242,11 +246,18 @@ class AuthViewModel(application: Application) : BaseAndroidViewModel(application
                         }
                     }
                 } catch (e: Exception) {
-                    when (e) {
-                        is UnknownHostException -> updateStatus("No network")
-                        is ConnectException -> updateStatus("Could not connect to server")
-                        else -> updateStatus("Unknown error")
+                    val error = when (e) {
+                        is UnknownHostException -> {
+                            (getApplication() as Context).getString(R.string.title_no_network)
+                        }
+                        is ConnectException -> {
+                            (getApplication() as Context).getString(R.string.server_unreachable)
+                        }
+                        else -> {
+                            (getApplication() as Context).getString(R.string.bad_request)
+                        }
                     }
+                    liveData.postValue(AuthState.Failed(error))
                     requestState = RequestState.Pending
                 }
             }
@@ -272,7 +283,7 @@ class AuthViewModel(application: Application) : BaseAndroidViewModel(application
     }
 
     private fun verifyAndSaveAuth(authData: AuthData, type: AccountType) {
-        updateStatus("Verifying new session")
+        liveData.postValue(AuthState.Verifying)
 
         if (spoofProvider.isLocaleSpoofEnabled()) {
             authData.locale = spoofProvider.getSpoofLocale()
@@ -289,7 +300,11 @@ class AuthViewModel(application: Application) : BaseAndroidViewModel(application
             liveData.postValue(AuthState.SignedOut)
             requestState = RequestState.Pending
 
-            updateStatus("Failed to verify session")
+            liveData.postValue(
+                AuthState.Failed(
+                    (getApplication() as Context).getString(R.string.failed_to_generate_session)
+                )
+            )
         }
     }
 
@@ -312,10 +327,6 @@ class AuthViewModel(application: Application) : BaseAndroidViewModel(application
 
         //Save Auth Status
         Preferences.putBoolean(getApplication(), Constants.ACCOUNT_SIGNED_IN, signedIn)
-    }
-
-    private fun updateStatus(status: String) {
-        liveData.postValue(AuthState.Status(status))
     }
 
     @Throws(Exception::class)
