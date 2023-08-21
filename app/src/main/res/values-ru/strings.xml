@@ -351,11 +351,11 @@
     <string name="check_connectivity">Проверьте соединение с интернетом</string>
     <string name="app_language">Язык приложения</string>
     <string name="action_enable">Включить</string>
-    <string name="failed_to_generate_session">Не удалось создать Сессию</string>
+    <string name="failed_to_generate_session">Не удалось создать сессию</string>
     <string name="verifying_new_session">Проверка новой сессии</string>
     <string name="app_links_desc">Aurora Store может открывать поддерживаемые ссылки</string>
-    <string name="app_link_enabled">Ссылка для приложения установлена!</string>
-    <string name="app_links_title">Ссылки для приложения</string>
+    <string name="app_link_enabled">Ссылка на приложение включена!</string>
+    <string name="app_links_title">Ссылки на приложения</string>
     <string name="action_enabled">Включено</string>
-    <string name="google_play_store_desc">Google Play, также известный как Google Play Store и прежде — Android Market</string>
+    <string name="google_play_store_desc">Google Play, также известный как Google Play Store, а ранее - Android Market.</string>
 </resources>
