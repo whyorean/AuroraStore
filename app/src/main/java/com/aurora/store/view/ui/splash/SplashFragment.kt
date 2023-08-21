@@ -64,9 +64,6 @@ class SplashFragment : Fragment(R.layout.fragment_splash) {
                     R.id.menu_spoof_manager -> {
                         findNavController().navigate(R.id.spoofFragment)
                     }
-                    R.id.menu_account_manager -> {
-                        findNavController().navigate(R.id.accountFragment)
-                    }
                     R.id.menu_settings -> {
                         findNavController().navigate(R.id.settingsFragment)
                     }

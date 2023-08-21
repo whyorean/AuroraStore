@@ -30,11 +30,6 @@
         android:title="@string/title_spoof_manager" />
 
     <item
-        android:id="@+id/menu_account_manager"
-        android:icon="@drawable/ic_account_manager"
-        android:title="@string/title_account_manager" />
-
-    <item
         android:id="@+id/menu_settings"
         android:icon="@drawable/ic_menu_settings"
         android:title="@string/title_settings" />
