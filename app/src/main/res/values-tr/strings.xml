@@ -350,4 +350,12 @@
     <string name="bad_request">Dahili hata! Lütfen bir süre sonra tekrar deneyin</string>
     <string name="app_language">Uygulama Dili</string>
     <string name="check_connectivity">İnternet bağlantısını denetle</string>
+    <string name="failed_to_generate_session">Oturum oluşturulamadı</string>
+    <string name="app_links_desc">Aurora Store desteklenen bağlantıları açabilir</string>
+    <string name="action_enabled">Etkinleştirildi</string>
+    <string name="app_link_enabled">Uygulama bağlantısı etkinleştirildi!</string>
+    <string name="action_enable">Etkinleştir</string>
+    <string name="verifying_new_session">Yeni oturum doğrulanıyor</string>
+    <string name="app_links_title">Uygulama Bağlantıları</string>
+    <string name="google_play_store_desc">Google Play, Google Play Store ve eski adıyla Android Market olarak da bilinir.</string>
 </resources>
