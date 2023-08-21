@@ -12,7 +12,7 @@
     <string name="filter_review_five">خمس</string>
     <string name="download_speed_estimating">يتم التقدير</string>
     <string name="account_google">حساب قوقل</string>
-    <string name="exodus_substring">من برمجيات التتبع تم العثور عليها بإصدار التطبيق</string>
+    <string name="exodus_substring">برمجيات التتبع الموجودة في</string>
     <string name="title_spoof_manager">مدير المحاكاة الوهمية</string>
     <string name="toast_permission_granted">الإذن الممنوح</string>
     <string name="toast_developer_setting_failed">قم بتشغيل إعدادات المطور من إعدادات الجهاز لفتحها.</string>
@@ -57,7 +57,7 @@
     <string name="pref_install_profile_title">ملفات تثبيت التعريفات (تجريبي)</string>
     <string name="pref_install_mode_title">طريقة التثبيت</string>
     <string name="pref_install_mode_session">مثبت الجلسة</string>
-    <string name="pref_install_mode_services">خدمات أورورا</string>
+    <string name="pref_install_mode_services">خدمات Aurora</string>
     <string name="pref_install_mode_root">مثبت الجذر</string>
     <string name="pref_install_mode_native">المثبت الأصلي</string>
     <string name="pref_install_delete_title">حذف APK بعد التثبيت</string>
@@ -76,9 +76,9 @@
     <string name="onboarding_title_permissions">الأذونات</string>
     <string name="onboarding_title_installer">المثبت</string>
     <string name="onboarding_title_accent">اللون الثانوي</string>
-    <string name="notification_channel_general">إخطار عام</string>
-    <string name="notification_channel_alert">إخطار سريع</string>
-    <string name="dialog_title_self_update">تحديث جديد متوفر</string>
+    <string name="notification_channel_general">إشعار عام</string>
+    <string name="notification_channel_alert">إشعار سريع</string>
+    <string name="dialog_title_self_update">متوفر تحديث جديد</string>
     <string name="device_miui_description">الرجاء تعطيل تحسينات MIUI للسماح بالتثبيتات، وإلا يمكنك اختيار مثبت الجذر أو الخدمات.</string>
     <string name="device_miui_title">تم الكشف عن جهاز MIUI!</string>
     <string name="menu_terms">شروط الخدمة</string>
@@ -88,7 +88,7 @@
     <string name="installer_status_failure_storage">مساحة التخزين غير كافية</string>
     <string name="installer_status_failure_incompatible">تطبيق غير متوافق</string>
     <string name="installer_status_failure_conflict">توجد حزمة متعارضة</string>
-    <string name="installer_status_failure_blocked">تم حظر التثبيت</string>
+    <string name="installer_status_failure_blocked">حُظر التثبيت</string>
     <string name="installer_status_failure">فشل التثبيت</string>
     <string name="filter_review_positive">إيجابية</string>
     <string name="filter_review_critical">الحرجه</string>
@@ -104,7 +104,7 @@
     <string name="download_metadata">الحصول على البيانات الوصفية</string>
     <string name="download_force_clear_all">فرض مسح الكل</string>
     <string name="download_failed">فشل التنزيل</string>
-    <string name="download_eta_calculating">يتم الحساب</string>
+    <string name="download_eta_calculating">جارِ الحساب</string>
     <string name="download_completed">اكتمل التنزيل</string>
     <string name="download_clear_completed">اكتمل المسح</string>
     <string name="download_canceled">ألغيت</string>
@@ -123,7 +123,7 @@
     <string name="details_description">الوصف</string>
     <string name="details_contains_ads">يحتوي على إعلانات</string>
     <string name="details_changelog">سجل التغييرات</string>
-    <string name="details_beta">برنامج بيتا</string>
+    <string name="details_beta">برنامج تجريبي</string>
     <string name="action_whitelist">القائمة البيضاء</string>
     <string name="action_update_all">تحديث الكل</string>
     <string name="action_update">تحديث</string>
@@ -165,13 +165,13 @@
     <string name="action_get_local_apk">حفظ حزمة التطبيق</string>
     <string name="action_filter_apps_with_ads">التطبيقات التي تتضمن إعلانات</string>
     <string name="installer_status_failure_session">تعذر إنشاء الجلسة</string>
-    <string name="details_beta_available">الانضمام إلى البرنامج التجريبي بيتا؟</string>
+    <string name="details_beta_available">الانضمام إلى البرنامج التجريبي؟</string>
     <string name="details_beta_subscribed">أنت أحد مختبري الإصدارات التجريبية</string>
     <string name="toast_anonymous_restriction">غير متوفر في الحسابات المجهولة</string>
     <string name="pref_install_mode_summary">حدد وضع تثبيت حزمة التطبيقات APK</string>
     <string name="pref_install_auto_title">تثبيت تلقائي APKs بعد التنزيل</string>
     <string name="pref_downloader_active_summary">الحد الأقصى لعدد التنزيلات النشطة</string>
-    <string name="onboarding_permission_select">متجر أورورا يتطلب الأذونات التالية</string>
+    <string name="onboarding_permission_select">متجر Aurora يتطلب الأذونات التالية</string>
     <string name="pref_install_delete_summary">سيتم حذف APK بشكل افتراضي</string>
     <string name="pref_filter_fdroid_summary">إزالة تطبيقات F-Droid من قوائم التطبيقات</string>
     <string name="pref_abandon_session_desc">مسح جلسات التثبيت المعلقة أو التي تم التخلي عنها</string>
@@ -184,17 +184,17 @@
     <string name="spoof_apply">تأكد من إعادة تسجيل الدخول لتطبيق المحاكاة التحايلية</string>
     <string name="installer_service_available">خدمات Aurora متاحة وجاهزة للتثبيت.</string>
     <string name="pref_downloader_external_desc">تُستخدم وحدة التخزين الخارجية للتنزيلات والتصدير وما إلى ذلك.</string>
-    <string name="installer_root_unavailable">لا توجد صلاحيات الروت ، امنح حق الوصول إلى الروت أو قم بتغيير المثبت.</string>
+    <string name="installer_root_unavailable">لا توجد صلاحيات الجذر (root)، امنح حق الوصول إلى الجذر أو قم بتغيير المثبت.</string>
     <string name="pref_filter_google_summary">إزالة جميع تطبيقات Google من نتائج البحث وفئات التطبيقات</string>
     <string name="pref_dialog_to_apply_restart">سيتم تطبيق هذا الإعداد بعد إعادة تشغيل التطبيق</string>
     <string name="device_miui_subtitle">لا يمكن لمثبت الجلسة تثبيت التطبيقات بسبب تحسينات MIUI.</string>
     <string name="details_beta_delay">قد يستغرق التسجيل بعض الوقت ، يمكنك التحقق من الحالة لاحقًا.</string>
     <string name="onboarding_tos_desc">يرجى قراءة شروط الخدمة الخاصة بنا وقبولها لاستخدام متجر Aurora.</string>
     <string name="onboarding_permission_esa_desc">لحفظ التحميلات (APKs وOBBs)، قم بتصدير واستيراد تكوينات الأجهزة من وإلى التخزين الخارجي.</string>
-    <string name="installer_service_misconfigured">إعداد خدمات أورورا ومنح كافة الأذونات أولا.</string>
-    <string name="pref_install_profile_summary">حدد ملف التعريف الهدف لتثبيت التطبيقات عليه. يعمل فقط مع طريقة تثبيت الروت</string>
+    <string name="installer_service_misconfigured">إعداد خدمات Aurora ومنح كافة الأذونات أولا.</string>
+    <string name="pref_install_profile_summary">حدد ملف التعريف الهدف لتثبيت التطبيقات عليه. يعمل فقط مع طريقة تثبيت بالجذر</string>
     <string name="device_miui_extra">اختياريا يمكنك اختيار المثبت الأصلي، ولكن بعد ذلك لا يمكنك تثبيت التطبيقات المجمعة (تقسيم) APKs، لذلك الخيار لك.</string>
-    <string name="installer_service_unavailable">ثبت خدمات أورورا 1.0.9 أو أعلى، أو تغيير المثبت.</string>
+    <string name="installer_service_unavailable">ثبت خدمات Aurora 1.0.9 أو أعلى، أو تغيير المثبت.</string>
     <string name="details_beta_description">سترى ميزات وأخطاء جديدة قبل أن يراها المستخدمون. قدم ملاحظاتك للمطورين لمساعدتهم على التحسين من جودة تطبيقاتهم.</string>
     <string name="about_bhim">BHIM - UPI</string>
     <string name="toast_spoof_applied">تم تطبيق المحاكاة التحايلية للجهاز .</string>
@@ -230,7 +230,7 @@
     <string name="about_paypal">باي بال</string>
     <string name="about_libera_summary">كن داعما على Liberapay</string>
     <string name="about_libera">ليبراباي</string>
-    <string name="about_gitlab_summary">احصل على الشفرة المصدرية لمتجر أورورا من Aurora OSS على GitLab.</string>
+    <string name="about_gitlab_summary">احصل على الشفرة المصدرية لمتجر Aurora من Aurora OSS على GitLab.</string>
     <string name="about_gitlab">جيت لاب</string>
     <string name="about_fdroid_summary">احصل على متجر Aurora عبر F-Droid.</string>
     <string name="about_fdroid">اف-درويد</string>
@@ -250,7 +250,7 @@
     <string name="insecure_anonymous_apply">تأكد من إعادة تسجيل الدخول وإعادة تشغيل التطبيق لتطبيق التغييرات.</string>
     <string name="pref_network_title">الشبكات</string>
     <string name="pref_insecure_anonymous_title">جلسة مجهولة غير آمنة</string>
-    <string name="pref_insecure_anonymous_summary">إنشاء معرف GSF محلياً على الجهاز</string>
+    <string name="pref_insecure_anonymous_summary">ولّد معرف GSF محلياً على الجهاز</string>
     <string name="pref_ui_similar_apps_desc">عرض مجموعات متشابهة وذات صلة في صفحة تفاصيل التطبيق</string>
     <string name="pref_ui_similar_apps">تطبيقات مشابهة و ذات صلة</string>
     <string name="pref_ui_no_for_you_desc">عرض صفحات لك على الشاشة الرئيسية</string>
@@ -259,14 +259,14 @@
     <string name="pref_ui_layout">التخطيط</string>
     <string name="pref_filter_search_title">استخدام عامل تصفية البحث غير الدائم</string>
     <string name="pref_filter_search_summary">يتم إعادة تعيين عوامل تصفية البحث في كل بحث. قم بإيقاف التشغيل لحفظ عوامل تصفية البحث</string>
-    <string name="pref_common_extra">إضافية</string>
+    <string name="pref_common_extra">الإضافات</string>
     <string name="details_no_app_match">لم يتم العثور على تطبيق مماثل</string>
     <string name="action_check">فحص</string>
     <string name="toast_manual_available">تهانينا ، كود الإصدار المطلوب متاح ، يتم تنزيله الآن.</string>
     <string name="toast_manual_unavailable">رمز الإصدار الذي تطلبه غير متوفر.</string>
     <string name="title_manual_download">تحميل يدوي</string>
     <string name="dialog_desc_native_split">لا يمكنك تثبيت تطبيقات المجمعة او (المقسمة) عبر Native Installer. قم بتغيير المثبت الخاص بك إلى جلسة أو خدمات أو الجذر.</string>
-    <string name="toast_aas_token_failed">تعذر إنشاء الرمز المميز ل AAS</string>
+    <string name="toast_aas_token_failed">تعذر توليد الرمز المميز ل AAS</string>
     <string name="toast_rated_failed">تعذر إرسال التقييم</string>
     <string name="toast_rated_success">تم التقييم</string>
     <string name="toast_page_unavailable">صفحة المتصفح غير متوفرة</string>
@@ -275,7 +275,7 @@
     <string name="pref_updates_extended_desc">البحث عن إصدارات جديدة من التطبيقات المعطلة أيضا</string>
     <string name="pref_updates_extended">التحديثات الموسعة</string>
     <string name="app_updater_service_notif_title">تنزيل تطبيق في الخلفية</string>
-    <string name="app_updater_service_notif_text">تمكين تنزيل تطبيق في الخلفية</string>
+    <string name="app_updater_service_notif_text">تفعيل تنزيل التطبيق في الخلفية</string>
     <string name="notification_channel_updater_service">خدمة تنزيل التطبيق في الخلفية</string>
     <string name="installer_am_unavailable">قم بتثبيت مدير التطبيقات أو تغيير المثبت.</string>
     <string name="pref_install_mode_am">AM المثبت.</string>
@@ -311,7 +311,7 @@
     <string name="search_hint">البحث عن التطبيقات والألعاب</string>
     <string name="download_progress">جار التحميل • <xliff:g id="completed_downloads"> %1$d </xliff:g> / <xliff:g id="all_downloads"> %2$d </xliff:g> • <xliff:g id="speed"> %3$s </xliff:g></string>
     <string name="session_login">تحتاج إلى تسجيل الدخول أولا</string>
-    <string name="onboarding_permission_notifications">الإخطارات</string>
+    <string name="onboarding_permission_notifications">الإشعارات</string>
     <string name="onboarding_permission_notifications_desc">إرسال إشعارات بخصوص حالة التثبيت</string>
     <string name="session_enjoy">تسجيل الدخول والاستمتاع.</string>
     <string name="session_good">واو! كل شيء جيد.</string>
@@ -334,7 +334,7 @@
     <string name="pref_updates_check">التحقق من التحديثات تلقائيا</string>
     <string name="pref_updates_check_desc">إجراء فحص آلي \" لإشعار بالتحديثات الجديدة \" بصورة دورية</string>
     <string name="notification_channel_updates">إشعارات التحديثات</string>
-    <string name="notification_updates_available_1">تحديث <xliff:g id="apps_count"> %1$d </xliff:g> متاح</string>
+    <string name="notification_updates_available_1">تحديث <xliff:g id="apps_count"> %1$d </xliff:g> متوفر</string>
     <string name="notification_updates_available">تحديثات <xliff:g id="apps_count"> %1$d </xliff:g> متوفرة</string>
     <string name="notification_updates_available_desc_2"><xliff:g id="app_one_name">%1$s</xliff:g> و <xliff:g id="app_two_name">%2$s</xliff:g></string>
     <string name="notification_updates_available_desc_3"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g> و <xliff:g id="app_three_name">%3$s</xliff:g></string>
@@ -347,7 +347,15 @@
     <string name="failed_to_fetch_report">فشل في الحصول على تقرير الخصوصية</string>
     <string name="access_denied_using_vpn">تم رفض الوصول! هل تستخدم VPN أو Tor؟</string>
     <string name="server_unreachable">لا يمكن الوصول إلى الخادم</string>
-    <string name="failed_generating_session">فشل إنشاء جلسة عمل، رمز الخطأ: <xliff:g id="status_code"> %1$d </xliff:g></string>
+    <string name="failed_generating_session">فشل توليد جلسة عمل، رمز الخطأ: <xliff:g id="status_code"> %1$d </xliff:g></string>
     <string name="app_language">لغة التطبيق</string>
     <string name="check_connectivity">التحقق من اتصال الإنترنت</string>
+    <string name="failed_to_generate_session">فشل توليد الجلسة</string>
+    <string name="verifying_new_session">جارِ التحقق من جلسة جديدة</string>
+    <string name="app_links_title">روابط التطبيق</string>
+    <string name="app_links_desc">يمكن لمتجر Aurora فتح الروابط المدعومة</string>
+    <string name="action_enable">تفعيل</string>
+    <string name="action_enabled">‎مفعّل</string>
+    <string name="app_link_enabled">رابط التطبيق مفعّل!</string>
+    <string name="google_play_store_desc">Google Play، المعروف أيضًا باسم متجر Google Play و Android Market سابقًا.</string>
 </resources>
