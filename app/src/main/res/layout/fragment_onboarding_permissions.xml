@@ -57,6 +57,6 @@
         android:padding="@dimen/padding_normal"
         android:scrollbars="none"
         app:itemSpacing="@dimen/margin_small"
-        tools:listitem="@layout/view_installer" />
+        tools:listitem="@layout/view_permission" />
 
 </LinearLayout>
