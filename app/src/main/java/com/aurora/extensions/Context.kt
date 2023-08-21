@@ -58,11 +58,12 @@ fun Context.browse(url: String, showOpenInAuroraAction: Boolean = false) {
         if (showOpenInAuroraAction) {
             val icon =
                 ContextCompat.getDrawable(this, R.drawable.ic_open_in_new)?.toBitmap()
-            val pendingIntent = NavDeepLinkBuilder(this)
-                .setGraph(R.navigation.mobile_navigation)
-                .setDestination(R.id.appDetailsFragment)
-                .setComponentName(MainActivity::class.java)
-                .createPendingIntent()
+            val pendingIntent = PendingIntent.getActivity(
+                this,
+                0,
+                Intent(this, MainActivity::class.java),
+                PendingIntent.FLAG_MUTABLE
+            )
             customTabsIntent.setActionButton(
                 icon!!,
                 this.getString(R.string.open_in_aurora),
