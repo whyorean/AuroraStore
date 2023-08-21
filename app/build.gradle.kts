@@ -29,7 +29,6 @@ plugins {
     id("org.jetbrains.kotlin.kapt")
     id("androidx.navigation.safeargs.kotlin")
     id("org.jlleitschuh.gradle.ktlint")
-    id("com.starter.easylauncher")
     id("dev.rikka.tools.refine")
 }
 
@@ -119,17 +118,6 @@ android {
 
 kapt {
     correctErrorTypes = true
-}
-
-easylauncher {
-    buildTypes {
-        register("nightly") {
-            setFilters(chromeLike())
-        }
-        register("debug") {
-            setFilters(chromeLike())
-        }
-    }
 }
 
 dependencies {
