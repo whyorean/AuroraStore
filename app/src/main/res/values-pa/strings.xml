@@ -350,4 +350,12 @@
     <string name="failed_generating_session">ਸੈਸ਼ਨ ਬਣਾਉਣ ਵਿੱਚ ਅਸਫਲ, ਗਲਤੀ ਕੋਡ: <xliff:g id="status_code">%1$d</xliff:g></string>
     <string name="check_connectivity">ਇੰਟਰਨੈੱਟ ਕਨੈਕਟੀਵਿਟੀ ਦੀ ਜਾਂਚ ਕਰੋ</string>
     <string name="app_language">ਐਪ ਦੀ ਭਾਸ਼ਾ</string>
+    <string name="failed_to_generate_session">ਸੈਸ਼ਨ ਬਣਾਉਣ ਵਿੱਚ ਅਸਫਲ</string>
+    <string name="app_links_title">ਐਪ ਲਿੰਕ</string>
+    <string name="app_links_desc">ਔਰੋਰਾ ਸਟੋਰ ਸਮਰਥਿਤ ਲਿੰਕ ਖੋਲ੍ਹ ਸਕਦਾ ਹੈ</string>
+    <string name="verifying_new_session">ਨਵੇਂ ਸੈਸ਼ਨ ਦੀ ਪੁਸ਼ਟੀ ਕੀਤੀ ਜਾ ਰਹੀ ਹੈ</string>
+    <string name="action_enable">ਸਮਰੱਥ ਕਰੋ</string>
+    <string name="app_link_enabled">ਐਪ ਲਿੰਕ ਸਮਰਥਿਤ ਹੈ!</string>
+    <string name="action_enabled">ਸਮਰਥਿਤ ਕੀਤਾ</string>
+    <string name="google_play_store_desc">Google Play, ਜੋ ਕਿ Google Play Store ਅਤੇ ਪਹਿਲਾਂ Android Market ਵਜੋਂ ਵੀ ਜਾਣਿਆ ਜਾਂਦਾ ਹੈ।</string>
 </resources>
