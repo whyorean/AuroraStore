@@ -353,7 +353,7 @@
     <string name="failed_to_generate_session">فشل توليد الجلسة</string>
     <string name="verifying_new_session">جارِ التحقق من جلسة جديدة</string>
     <string name="app_links_title">روابط التطبيق</string>
-    <string name="app_links_desc">يمكن لمتجر Aurora فتح الروابط المدعومة</string>
+    <string name="app_links_desc">السماح لمتجر Aurora بفتح الروابط المدعومة</string>
     <string name="action_enable">تفعيل</string>
     <string name="action_enabled">‎مفعّل</string>
     <string name="app_link_enabled">رابط التطبيق مفعّل!</string>
