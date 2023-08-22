@@ -352,7 +352,7 @@
     <string name="app_language">ਐਪ ਦੀ ਭਾਸ਼ਾ</string>
     <string name="failed_to_generate_session">ਸੈਸ਼ਨ ਬਣਾਉਣ ਵਿੱਚ ਅਸਫਲ</string>
     <string name="app_links_title">ਐਪ ਲਿੰਕ</string>
-    <string name="app_links_desc">ਔਰੋਰਾ ਸਟੋਰ ਸਮਰਥਿਤ ਲਿੰਕ ਖੋਲ੍ਹ ਸਕਦਾ ਹੈ</string>
+    <string name="app_links_desc">ਔਰੋਰਾ ਸਟੋਰ ਨੂੰ ਸਮਰਥਿਤ ਲਿੰਕ ਖੋਲ੍ਹਣ ਦੀ ਇਜਾਜ਼ਤ ਦਿਓ</string>
     <string name="verifying_new_session">ਨਵੇਂ ਸੈਸ਼ਨ ਦੀ ਪੁਸ਼ਟੀ ਕੀਤੀ ਜਾ ਰਹੀ ਹੈ</string>
     <string name="action_enable">ਸਮਰੱਥ ਕਰੋ</string>
     <string name="app_link_enabled">ਐਪ ਲਿੰਕ ਸਮਰਥਿਤ ਹੈ!</string>
