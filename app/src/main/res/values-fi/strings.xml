@@ -350,4 +350,12 @@
     <string name="server_unreachable">Palvelimeen ei saada yhteyttä</string>
     <string name="check_connectivity">Tarkista verkkoyhteys</string>
     <string name="app_language">Sovelluksen kieli</string>
+    <string name="failed_to_generate_session">Epäonnistunut luomaan istuntoa</string>
+    <string name="app_links_title">Sovelluslinkit</string>
+    <string name="verifying_new_session">Vahvistetaan uutta istuntoa</string>
+    <string name="app_links_desc">Salli Aurora Storen avata tuetut linkit</string>
+    <string name="action_enable">Ota käyttöön</string>
+    <string name="action_enabled">Käytössä</string>
+    <string name="app_link_enabled">Sovelluslinkki on käytössä!</string>
+    <string name="google_play_store_desc">Google Play, joka tunnetaan myös nimellä Google Play Store ja entinen Android Market.</string>
 </resources>
