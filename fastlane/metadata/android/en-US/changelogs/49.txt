@@ -1,0 +1,4 @@
+• Major internal changes related to UI
+• Allow users to enable app links during first-time setup
+• Translation updates
+• Minor bugfixes & improvements
