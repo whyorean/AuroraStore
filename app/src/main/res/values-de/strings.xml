@@ -351,7 +351,7 @@
     <string name="server_unreachable">Server nicht erreichbar</string>
     <string name="check_connectivity">Überprüfe die Internetverbindung</string>
     <string name="app_language">App-Sprache</string>
-    <string name="failed_to_generate_session">Sitzung konnte nicht erzeugt werden</string>
+    <string name="failed_to_generate_session">Sitzung konnte nicht erstellt werden</string>
     <string name="app_links_title">App-Links</string>
     <string name="verifying_new_session">Neue Sitzung wird überprüft</string>
     <string name="app_links_desc">Erlaubt Aurora Store, unterstützte Links zu öffnen</string>
