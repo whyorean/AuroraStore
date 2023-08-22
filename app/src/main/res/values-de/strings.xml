@@ -354,4 +354,9 @@
     <string name="failed_to_generate_session">Sitzung konnte nicht erzeugt werden</string>
     <string name="app_links_title">App-Links</string>
     <string name="verifying_new_session">Neue Sitzung wird überprüft</string>
+    <string name="app_links_desc">Erlaubt Aurora Store, unterstützte Links zu öffnen</string>
+    <string name="action_enable">Aktivieren</string>
+    <string name="action_enabled">Aktiviert</string>
+    <string name="app_link_enabled">App-Link aktiviert!</string>
+    <string name="google_play_store_desc">Google Play, auch bekannt als Google Play Store (ehemals Android Market).</string>
 </resources>
