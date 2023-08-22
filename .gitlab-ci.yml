@@ -1,4 +1,4 @@
-image: theimpulson/gitlab-ci-android
+image: "theimpulson/gitlab-ci-android:android-34"
 
 before_script: 
 - export GRADLE_USER_HOME=$(pwd)/.gradle
