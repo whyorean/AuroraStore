@@ -348,4 +348,14 @@
     <string name="bad_request">Erreur interne ! Veuillez réessayer plus tard</string>
     <string name="login_rate_limited">Oups, votre débit est limité</string>
     <string name="server_unreachable">Serveur injoignable</string>
+    <string name="app_links_desc">Autoriser Aurora Store à ouvrir les liens pris en charge</string>
+    <string name="check_connectivity">Vérifiez votre connexion Internet</string>
+    <string name="app_language">Langue de l\'appli</string>
+    <string name="failed_to_generate_session">La session n\'a pas pu être générée</string>
+    <string name="verifying_new_session">Vérification de la nouvelle session</string>
+    <string name="app_links_title">Liens de l\'appli</string>
+    <string name="action_enable">Activer</string>
+    <string name="action_enabled">Activé</string>
+    <string name="app_link_enabled">Lien de l\'appli activé !</string>
+    <string name="google_play_store_desc">Google Play, également connu sous le nom de Google Play Store et anciennement Android Market.</string>
 </resources>
