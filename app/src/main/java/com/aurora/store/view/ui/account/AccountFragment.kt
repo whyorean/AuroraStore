@@ -24,8 +24,9 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import coil.load
+import coil.transform.RoundedCornersTransformation
 import com.aurora.extensions.browse
-import com.aurora.extensions.load
 import com.aurora.gplayapi.data.models.AuthData
 import com.aurora.store.R
 import com.aurora.store.data.AuthState
@@ -33,7 +34,6 @@ import com.aurora.store.data.providers.AccountProvider
 import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.databinding.FragmentAccountBinding
 import com.aurora.store.viewmodel.auth.AuthViewModel
-import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 
 class AccountFragment : Fragment(R.layout.fragment_account) {
 
@@ -199,7 +199,7 @@ class AccountFragment : Fragment(R.layout.fragment_account) {
             authData.userProfile?.let {
                 binding.imgAvatar.load(it.artwork.url) {
                     placeholder(R.drawable.bg_placeholder)
-                    transform(RoundedCorners(32))
+                    transformations(RoundedCornersTransformation(32F))
                 }
 
                 binding.txtName.text = if (authData.isAnonymous)
@@ -214,7 +214,7 @@ class AccountFragment : Fragment(R.layout.fragment_account) {
             }
         } else {
             binding.imgAvatar.load(R.mipmap.ic_launcher) {
-                transform(RoundedCorners(32))
+                transformations(RoundedCornersTransformation(32F))
             }
             binding.txtName.text = getString(R.string.app_name)
             binding.txtEmail.text = getString(R.string.account_logged_out)

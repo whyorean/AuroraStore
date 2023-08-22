@@ -24,8 +24,9 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import coil.load
+import coil.transform.RoundedCornersTransformation
 import com.aurora.extensions.hide
-import com.aurora.extensions.load
 import com.aurora.extensions.show
 import com.aurora.store.R
 import com.aurora.store.data.AuthState
@@ -34,7 +35,6 @@ import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_DEFAULT_SELECTED_TAB
 import com.aurora.store.util.Preferences.PREFERENCE_INTRO
 import com.aurora.store.viewmodel.auth.AuthViewModel
-import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 
 class SplashFragment : Fragment(R.layout.fragment_splash) {
 
@@ -49,7 +49,7 @@ class SplashFragment : Fragment(R.layout.fragment_splash) {
         _binding = FragmentSplashBinding.bind(view)
 
         binding.imgIcon.load(R.mipmap.ic_launcher) {
-            transform(RoundedCorners(32))
+            transformations(RoundedCornersTransformation(32F))
         }
 
         // Toolbar

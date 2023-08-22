@@ -22,18 +22,16 @@ package com.aurora.store.view.epoxy.views.details
 import android.content.Context
 import android.util.AttributeSet
 import android.widget.RelativeLayout
+import coil.load
+import coil.transform.RoundedCornersTransformation
 import com.airbnb.epoxy.CallbackProp
 import com.airbnb.epoxy.ModelProp
 import com.airbnb.epoxy.ModelView
-import com.airbnb.epoxy.OnViewRecycled
-import com.aurora.extensions.clear
-import com.aurora.extensions.load
 import com.aurora.extensions.px
 import com.aurora.gplayapi.data.models.Artwork
 import com.aurora.store.R
 import com.aurora.store.databinding.ViewScreenshotMiniBinding
 import com.aurora.store.view.epoxy.views.BaseView
-import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 
 @ModelView(
     autoLayout = ModelView.Size.WRAP_WIDTH_WRAP_HEIGHT,
@@ -80,7 +78,7 @@ class MiniScreenshotView : RelativeLayout {
         normalizeSize(artwork)
         B.img.load("${artwork.url}=rw-w480-v1-e15") {
             placeholder(R.drawable.bg_rounded)
-            transform(RoundedCorners(8.px.toInt()))
+            transformations(RoundedCornersTransformation(8.px.toFloat()))
         }
     }
 
@@ -116,10 +114,5 @@ class MiniScreenshotView : RelativeLayout {
         B.img.setOnClickListener {
             screenshotCallback?.onClick(position)
         }
-    }
-
-    @OnViewRecycled
-    fun clear() {
-        B.img.clear()
     }
 }

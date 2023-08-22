@@ -22,11 +22,11 @@ package com.aurora.store.view.epoxy.views.preference
 import android.content.Context
 import android.util.AttributeSet
 import android.widget.RelativeLayout
+import coil.load
 import com.airbnb.epoxy.CallbackProp
 import com.airbnb.epoxy.ModelProp
 import com.airbnb.epoxy.ModelView
 import com.aurora.extensions.hide
-import com.aurora.extensions.load
 import com.aurora.extensions.show
 import com.aurora.store.R
 import com.aurora.store.data.model.Link

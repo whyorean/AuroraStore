@@ -23,16 +23,14 @@ import android.content.Context
 import android.util.AttributeSet
 import android.widget.RelativeLayout
 import androidx.core.content.ContextCompat
+import coil.load
+import coil.transform.RoundedCornersTransformation
 import com.airbnb.epoxy.CallbackProp
 import com.airbnb.epoxy.ModelProp
 import com.airbnb.epoxy.ModelView
-import com.airbnb.epoxy.OnViewRecycled
-import com.aurora.extensions.clear
-import com.aurora.extensions.load
 import com.aurora.gplayapi.SearchSuggestEntry
 import com.aurora.store.R
 import com.aurora.store.databinding.ViewSearchSuggestionBinding
-import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 
 @ModelView(
     autoLayout = ModelView.Size.MATCH_WIDTH_WRAP_HEIGHT,
@@ -67,7 +65,7 @@ class SearchSuggestionView : RelativeLayout {
     fun entry(searchSuggestEntry: SearchSuggestEntry) {
         if (searchSuggestEntry.hasImageContainer()) {
             B.img.load(searchSuggestEntry.imageContainer.imageUrl) {
-                transform(RoundedCorners(8))
+                transformations(RoundedCornersTransformation(8F))
             }
         } else {
             B.img.setImageDrawable(
@@ -89,10 +87,5 @@ class SearchSuggestionView : RelativeLayout {
     @CallbackProp
     fun action(onClickListener: OnClickListener?) {
         B.action.setOnClickListener(onClickListener)
-    }
-
-    @OnViewRecycled
-    fun clear() {
-        B.img.clear()
     }
 }

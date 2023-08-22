@@ -24,11 +24,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.navArgs
-import com.aurora.extensions.load
+import coil.load
+import coil.transform.RoundedCornersTransformation
 import com.aurora.store.R
 import com.aurora.store.databinding.SheetAppPeekBinding
 import com.aurora.store.util.CommonUtil
-import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 
 class AppPeekDialogSheet : BaseBottomSheet() {
 
@@ -48,7 +48,7 @@ class AppPeekDialogSheet : BaseBottomSheet() {
     override fun onContentViewCreated(view: View, savedInstanceState: Bundle?) {
         B.txtLine1.text = args.app.displayName
         B.imgIcon.load(args.app.iconArtwork.url) {
-            transform(RoundedCorners(25))
+            transformations(RoundedCornersTransformation(25F))
         }
         B.txtLine2.text = args.app.developerName
         B.txtLine3.text = String.format(

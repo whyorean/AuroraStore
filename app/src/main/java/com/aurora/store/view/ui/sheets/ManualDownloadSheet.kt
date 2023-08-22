@@ -27,12 +27,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
-import com.aurora.extensions.load
+import coil.load
+import coil.transform.RoundedCornersTransformation
 import com.aurora.extensions.toast
 import com.aurora.store.R
 import com.aurora.store.databinding.SheetManualDownloadBinding
 import com.aurora.store.viewmodel.sheets.SheetsViewModel
-import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
@@ -78,7 +78,7 @@ class ManualDownloadSheet : BaseBottomSheet() {
     private fun inflateData() {
         B.imgIcon.load(args.app.iconArtwork.url) {
             placeholder(R.drawable.bg_placeholder)
-            transform(RoundedCorners(32))
+            transformations(RoundedCornersTransformation(32F))
         }
 
         B.txtLine1.text = args.app.displayName

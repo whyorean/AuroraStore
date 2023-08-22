@@ -22,12 +22,10 @@ package com.aurora.store.view.epoxy.views
 import android.content.Context
 import android.util.AttributeSet
 import android.widget.RelativeLayout
+import coil.load
 import com.airbnb.epoxy.CallbackProp
 import com.airbnb.epoxy.ModelProp
 import com.airbnb.epoxy.ModelView
-import com.airbnb.epoxy.OnViewRecycled
-import com.aurora.extensions.clear
-import com.aurora.extensions.load
 import com.aurora.gplayapi.data.models.Category
 import com.aurora.store.R
 import com.aurora.store.databinding.ViewCategoryBinding
@@ -64,17 +62,11 @@ class CategoryView : RelativeLayout {
     @ModelProp
     fun category(category: Category) {
         B.txtName.text = category.title
-        B.imgBackground.load(category.imageUrl) {
-        }
+        B.imgBackground.load(category.imageUrl)
     }
 
     @CallbackProp
     fun click(onClickListener: OnClickListener?) {
         B.root.setOnClickListener(onClickListener)
-    }
-
-    @OnViewRecycled
-    fun clear() {
-        B.imgBackground.clear()
     }
 }

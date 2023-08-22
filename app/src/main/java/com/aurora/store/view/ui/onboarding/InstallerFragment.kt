@@ -44,8 +44,8 @@ import com.aurora.store.util.save
 import com.aurora.store.view.epoxy.views.preference.InstallerViewModel_
 import com.aurora.store.view.ui.commons.BaseFragment
 import com.google.gson.reflect.TypeToken
-import rikka.shizuku.Shizuku
 import java.nio.charset.StandardCharsets
+import rikka.shizuku.Shizuku
 
 
 class InstallerFragment : BaseFragment() {

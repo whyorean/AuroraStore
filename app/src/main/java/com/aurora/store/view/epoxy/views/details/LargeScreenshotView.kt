@@ -21,25 +21,15 @@ package com.aurora.store.view.epoxy.views.details
 
 import android.content.Context
 import android.content.res.Resources
-import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.widget.RelativeLayout
+import coil.load
 import com.airbnb.epoxy.ModelProp
 import com.airbnb.epoxy.ModelView
-import com.airbnb.epoxy.OnViewRecycled
-import com.aurora.extensions.clear
-import com.aurora.extensions.px
-import com.aurora.extensions.runOnUiThread
 import com.aurora.gplayapi.data.models.Artwork
-import com.aurora.store.GlideApp
 import com.aurora.store.R
 import com.aurora.store.databinding.ViewScreenshotLargeBinding
 import com.aurora.store.view.epoxy.views.BaseView
-import com.bumptech.glide.load.DataSource
-import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.bumptech.glide.load.engine.GlideException
-import com.bumptech.glide.request.RequestListener
-import com.bumptech.glide.request.target.Target
 
 @ModelView(
     autoLayout = ModelView.Size.MATCH_WIDTH_MATCH_HEIGHT,
@@ -73,47 +63,8 @@ class LargeScreenshotView : RelativeLayout {
     @ModelProp
     fun artwork(artwork: Artwork) {
         val displayMetrics = Resources.getSystem().displayMetrics
-        GlideApp.with(context)
-            .load("${artwork.url}=rw-w${displayMetrics.widthPixels}-v1-e15")
-            .placeholder(R.drawable.bg_placeholder)
-            .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
-            .addListener(object : RequestListener<Drawable> {
-                override fun onLoadFailed(
-                    e: GlideException?,
-                    model: Any,
-                    target: Target<Drawable>,
-                    isFirstResource: Boolean
-                ): Boolean {
-                    return false
-                }
-
-                override fun onResourceReady(
-                    drawable: Drawable,
-                    model: Any,
-                    target: Target<Drawable?>,
-                    dataSource: DataSource,
-                    isFirstResource: Boolean
-                ): Boolean {
-                    runOnUiThread {
-                        if (artwork.height != 0 && artwork.width != 0) {
-                            B.img.layoutParams.height = artwork.height.px.toInt()
-                            B.img.layoutParams.width = artwork.width.px.toInt()
-                        } else {
-                            val height = displayMetrics.heightPixels
-                            val width = displayMetrics.widthPixels
-                            B.img.layoutParams.width = width
-                            B.img.layoutParams.height = height
-                        }
-                        B.img.setImageDrawable(drawable)
-                        B.img.requestLayout()
-                    }
-                    return false
-                }
-            }).submit()
-    }
-
-    @OnViewRecycled
-    fun clear() {
-        B.img.clear()
+        B.img.load("${artwork.url}=rw-w${displayMetrics.widthPixels}-v1-e15") {
+            placeholder(R.drawable.bg_placeholder)
+        }
     }
 }

@@ -22,19 +22,17 @@ package com.aurora.store.view.epoxy.views.app
 import android.content.Context
 import android.util.AttributeSet
 import android.widget.RelativeLayout
+import coil.load
+import coil.transform.RoundedCornersTransformation
 import com.airbnb.epoxy.CallbackProp
 import com.airbnb.epoxy.ModelProp
 import com.airbnb.epoxy.ModelView
-import com.airbnb.epoxy.OnViewRecycled
-import com.aurora.extensions.clear
 import com.aurora.extensions.getString
-import com.aurora.extensions.load
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
 import com.aurora.store.databinding.ViewAppListBinding
 import com.aurora.store.util.CommonUtil
 import com.aurora.store.view.epoxy.views.BaseView
-import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 
 @ModelView(
     autoLayout = ModelView.Size.MATCH_WIDTH_WRAP_HEIGHT,
@@ -69,7 +67,7 @@ class AppListView : RelativeLayout {
     fun app(app: App) {
         B.imgIcon.load(app.iconArtwork.url) {
             placeholder(R.drawable.bg_placeholder)
-            transform(RoundedCorners(25))
+            transformations(RoundedCornersTransformation(25F))
         }
 
         B.txtLine1.text = app.displayName
@@ -102,10 +100,5 @@ class AppListView : RelativeLayout {
     @CallbackProp
     fun longClick(onClickListener: OnLongClickListener?) {
         B.root.setOnLongClickListener(onClickListener)
-    }
-
-    @OnViewRecycled
-    fun clear() {
-        B.imgIcon.clear()
     }
 }

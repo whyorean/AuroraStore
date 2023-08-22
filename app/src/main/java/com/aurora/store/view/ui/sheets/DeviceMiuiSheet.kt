@@ -25,11 +25,11 @@ import android.provider.Settings
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.aurora.extensions.load
+import coil.load
+import coil.transform.CircleCropTransformation
 import com.aurora.extensions.toast
 import com.aurora.store.R
 import com.aurora.store.databinding.SheetDeviceMiuiBinding
-import com.bumptech.glide.load.resource.bitmap.CircleCrop
 
 class DeviceMiuiSheet : BaseBottomSheet() {
 
@@ -54,7 +54,7 @@ class DeviceMiuiSheet : BaseBottomSheet() {
 
     private fun inflateData() {
         B.imgIcon.load(R.drawable.ic_xiaomi_logo) {
-            transform(CircleCrop())
+            transformations(CircleCropTransformation())
         }
     }
 

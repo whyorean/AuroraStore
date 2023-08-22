@@ -24,12 +24,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.navArgs
+import coil.load
+import coil.transform.CircleCropTransformation
 import com.aurora.extensions.copyToClipBoard
-import com.aurora.extensions.load
 import com.aurora.extensions.toast
 import com.aurora.store.R
 import com.aurora.store.databinding.SheetInstallErrorBinding
-import com.bumptech.glide.load.resource.bitmap.CircleCrop
 
 class InstallErrorDialogSheet : BaseBottomSheet() {
 
@@ -55,7 +55,7 @@ class InstallErrorDialogSheet : BaseBottomSheet() {
 
     private fun inflateData() {
         B.imgIcon.load(args.app.iconArtwork.url) {
-            transform(CircleCrop())
+            transformations(CircleCropTransformation())
         }
 
         B.txtLine1.text = args.app.displayName

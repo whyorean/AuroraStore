@@ -25,12 +25,13 @@ import android.view.View
 import android.widget.RelativeLayout
 import androidx.core.text.HtmlCompat
 import androidx.core.view.isVisible
+import coil.load
+import coil.transform.RoundedCornersTransformation
 import com.airbnb.epoxy.CallbackProp
 import com.airbnb.epoxy.ModelProp
 import com.airbnb.epoxy.ModelView
 import com.airbnb.epoxy.OnViewRecycled
 import com.aurora.extensions.invisible
-import com.aurora.extensions.load
 import com.aurora.extensions.px
 import com.aurora.extensions.show
 import com.aurora.store.R
@@ -39,7 +40,6 @@ import com.aurora.store.data.model.UpdateFile
 import com.aurora.store.databinding.ViewAppUpdateBinding
 import com.aurora.store.util.CommonUtil
 import com.aurora.store.view.epoxy.views.BaseView
-import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 
 @ModelView(
     autoLayout = ModelView.Size.MATCH_WIDTH_WRAP_HEIGHT,
@@ -79,7 +79,7 @@ class AppUpdateView : RelativeLayout {
                 B.txtLine1.text = displayName
                 B.imgIcon.load(iconArtwork.url) {
                     placeholder(R.drawable.bg_placeholder)
-                    transform(RoundedCorners(8.px.toInt()))
+                    transformations(RoundedCornersTransformation(8.px.toFloat()))
                 }
 
                 B.txtLine2.text = developerName

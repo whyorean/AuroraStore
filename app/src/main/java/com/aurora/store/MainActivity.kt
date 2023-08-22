@@ -44,12 +44,12 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import coil.load
+import coil.transform.RoundedCornersTransformation
 import com.aurora.Constants
 import com.aurora.extensions.accentColor
 import com.aurora.extensions.applyTheme
-import com.aurora.extensions.getStyledAttributeColor
 import com.aurora.extensions.isRAndAbove
-import com.aurora.extensions.load
 import com.aurora.extensions.toast
 import com.aurora.gplayapi.data.models.AuthData
 import com.aurora.store.data.model.NetworkStatus
@@ -63,9 +63,7 @@ import com.aurora.store.util.Preferences.PREFERENCE_DEFAULT_SELECTED_TAB
 import com.aurora.store.view.ui.sheets.NetworkDialogSheet
 import com.aurora.store.view.ui.sheets.SelfUpdateSheet
 import com.aurora.store.viewmodel.MainViewModel
-import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.elevation.SurfaceColors
 import kotlinx.coroutines.launch
 
 
@@ -236,7 +234,7 @@ class MainActivity : AppCompatActivity() {
 
         headerView.let {
             it.findViewById<ImageView>(R.id.img)?.load(R.mipmap.ic_launcher) {
-                transform(RoundedCorners(8))
+                transformations(RoundedCornersTransformation(8F))
             }
             it.findViewById<TextView>(R.id.txt_name)?.text = getString(R.string.app_name)
             it.findViewById<TextView>(R.id.txt_email)?.text =
