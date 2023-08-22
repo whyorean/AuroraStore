@@ -133,7 +133,7 @@ dependencies {
     implementation("androidx.core:core-ktx:1.10.1")
     implementation("androidx.viewpager2:viewpager2:1.0.0")
     implementation("androidx.vectordrawable:vectordrawable:1.1.0")
-    implementation("androidx.preference:preference-ktx:1.2.0")
+    implementation("androidx.preference:preference-ktx:1.2.1")
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
 
     //Arch LifeCycle
@@ -144,7 +144,7 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel-savedstate:$life_version")
 
     //Arch Navigation
-    val nav_version = "2.6.0"
+    val nav_version = "2.7.0"
     implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
     implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
 
@@ -177,7 +177,7 @@ dependencies {
     implementation("com.gitlab.AuroraOSS:gplayapi:3.1.4")
 
     //Browser
-    implementation("androidx.browser:browser:1.5.0")
+    implementation("androidx.browser:browser:1.6.0")
 
     //Shizuku
     val shizuku_version = "13.1.1"
