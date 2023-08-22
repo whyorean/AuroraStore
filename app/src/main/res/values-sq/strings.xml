@@ -292,4 +292,5 @@
     <string name="account_anonymous_insecure">Anonime (jo e sigurt)</string>
     <string name="pref_install_mode_am">Instalues AM.</string>
     <string name="installer_am_unavailable">Instaloni Përgjegjës Aplikacionesh, ose ndryshoni instaluesin.</string>
+    <string name="app_links_desc">Lejojeni Shitoren Aurora të hapë lidhjet që mbulohen</string>
 </resources>
