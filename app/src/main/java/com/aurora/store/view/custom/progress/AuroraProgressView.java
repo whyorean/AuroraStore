@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.Rect;
 import android.graphics.drawable.Animatable;
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
@@ -149,12 +148,10 @@ public class AuroraProgressView extends View {
         drawableClassName.append(indicatorName);
         try {
             Class<?> drawableClass = Class.forName(drawableClassName.toString());
-            Indicator indicator = (Indicator) drawableClass.newInstance();
+            Indicator indicator = (Indicator) drawableClass.getDeclaredConstructor().newInstance();
             setIndicator(indicator);
-        } catch (ClassNotFoundException e) {
-            Log.e(TAG, "Didn't find your class , check the name again !");
-        } catch (InstantiationException | IllegalAccessException e) {
-            e.printStackTrace();
+        } catch (Exception exception) {
+            Log.e(TAG, "Failed to set indicator!", exception);
         }
     }
 
@@ -249,12 +246,7 @@ public class AuroraProgressView extends View {
     @Override
     public void invalidateDrawable(Drawable dr) {
         if (verifyDrawable(dr)) {
-            final Rect dirty = dr.getBounds();
-            final int scrollX = getScrollX() + getPaddingLeft();
-            final int scrollY = getScrollY() + getPaddingTop();
-
-            invalidate(dirty.left + scrollX, dirty.top + scrollY,
-                    dirty.right + scrollX, dirty.bottom + scrollY);
+            invalidate();
         } else {
             super.invalidateDrawable(dr);
         }

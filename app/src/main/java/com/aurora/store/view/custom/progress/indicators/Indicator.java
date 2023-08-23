@@ -51,6 +51,7 @@ public abstract class Indicator extends Drawable implements Animatable {
     }
 
     @Override
+    @SuppressWarnings({"RedundantSuppression", "deprecation"})
     public int getOpacity() {
         return PixelFormat.OPAQUE;
     }
