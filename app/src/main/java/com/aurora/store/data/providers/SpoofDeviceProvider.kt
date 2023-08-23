@@ -109,24 +109,6 @@ class SpoofDeviceProvider private constructor(var context: Context) {
         return properties
     }
 
-    private val devicesFromApk: Map<String, String>
-        get() {
-            val deviceNames: MutableMap<String, String> = HashMap()
-            val jarFile = apkAsJar ?: return deviceNames
-
-            val entries = jarFile.entries()
-            while (entries.hasMoreElements()) {
-                val entry = entries.nextElement()
-                if (!filenameValid(entry.name)) {
-                    continue
-                }
-
-                deviceNames[entry.name] =
-                    getProperties(jarFile, entry).getProperty("UserReadableName")
-            }
-            return deviceNames
-        }
-
     private val apkAsJar: JarFile?
         get() {
             val file = apkFile
@@ -157,22 +139,4 @@ class SpoofDeviceProvider private constructor(var context: Context) {
             return null
         }
 
-    private val devicesFromDownloadDirectory: Map<String, String>
-        get() {
-            val deviceNames: MutableMap<String, String> = HashMap()
-            val defaultDir = File(PathUtil.getExternalPath())
-            if (!defaultDir.exists() || null == defaultDir.listFiles()) {
-                return deviceNames
-            }
-            for (file in defaultDir.listFiles()) {
-                if (!file.isFile || !filenameValid(file.name)) {
-                    continue
-                }
-                val name = getProperties(file).getProperty("UserReadableName")
-                if (name != null) {
-                    deviceNames[file.name] = name
-                }
-            }
-            return deviceNames
-        }
 }
