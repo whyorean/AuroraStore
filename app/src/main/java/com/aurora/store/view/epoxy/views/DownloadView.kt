@@ -90,7 +90,13 @@ class DownloadView : RelativeLayout {
 
         B.txtStatus.text = download.status.name
             .lowercase(Locale.getDefault())
-            .capitalize(Locale.getDefault())
+            .replaceFirstChar {
+                if (it.isLowerCase()) {
+                    it.titlecase(Locale.getDefault())
+                } else {
+                    it.toString()
+                }
+            }
 
         B.txtSize.text = StringBuilder()
             .append(humanReadableByteValue(download.downloaded, true))

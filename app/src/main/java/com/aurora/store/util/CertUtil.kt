@@ -82,7 +82,7 @@ object CertUtil {
             val cert = certificates[0]
 
             if (cert.subjectDN != null) {
-                val DN = cert.subjectDN.name.toUpperCase(Locale.getDefault())
+                val DN = cert.subjectDN.name.uppercase(Locale.getDefault())
                 DN.contains(FDROID) || DN.contains(GUARDIAN)
             } else {
                 false

@@ -118,7 +118,13 @@ class PermissionGroup : LinearLayout {
                 title = "Android"
             }
 
-            title = title.capitalize(Locale.getDefault())
+            title = title.replaceFirstChar {
+                if (it.isLowerCase()) {
+                    it.titlecase(Locale.getDefault())
+                } else {
+                    it.toString()
+                }
+            }
 
             context.showDialog(title, description)
         }
@@ -154,10 +160,22 @@ class PermissionGroup : LinearLayout {
                     return it.replace(it, "")
                         .replace("_", " ")
                         .lowercase(Locale.getDefault())
-                        .capitalize(Locale.getDefault())
+                        .replaceFirstChar {
+                            if (it.isLowerCase()) {
+                                it.titlecase(Locale.getDefault())
+                            } else {
+                                it.toString()
+                            }
+                        }
                 }
             }
 
-        return label.capitalize(Locale.getDefault())
+        return label.replaceFirstChar {
+            if (it.isLowerCase()) {
+                it.titlecase(Locale.getDefault())
+            } else {
+                it.toString()
+            }
+        }
     }
 }

@@ -64,7 +64,13 @@ class InfoView : RelativeLayout {
         B.txtTitle.text = info.key
             .replace("_", " ")
             .lowercase(Locale.getDefault())
-            .capitalize(Locale.getDefault())
+            .replaceFirstChar {
+                if (it.isLowerCase()) {
+                    it.titlecase(Locale.getDefault())
+                } else {
+                    it.toString()
+                }
+            }
         B.txtSubtitle.text = info.value
     }
 
