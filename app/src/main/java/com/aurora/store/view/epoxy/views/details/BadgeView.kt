@@ -23,10 +23,8 @@ import android.content.Context
 import android.util.AttributeSet
 import android.widget.RelativeLayout
 import coil.load
-import com.airbnb.epoxy.CallbackProp
 import com.airbnb.epoxy.ModelProp
 import com.airbnb.epoxy.ModelView
-import com.airbnb.epoxy.OnViewRecycled
 import com.aurora.gplayapi.data.models.details.Badge
 import com.aurora.store.R
 import com.aurora.store.databinding.ViewBadgeBinding
@@ -76,14 +74,5 @@ class BadgeView : RelativeLayout {
         badge.artwork?.let {
             B.img.load(it.url)
         }
-    }
-
-    @CallbackProp
-    fun click(onClickListener: OnClickListener?) {
-
-    }
-
-    @OnViewRecycled
-    fun clear() {
     }
 }

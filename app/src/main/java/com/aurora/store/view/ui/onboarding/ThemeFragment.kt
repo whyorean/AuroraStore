@@ -110,7 +110,7 @@ class ThemeFragment : BaseFragment() {
     }
 
     private fun update(themeId: Int) {
-        applyTheme(themeId, false)
+        applyTheme(themeId)
         save(PREFERENCE_THEME_TYPE, themeId)
     }
 

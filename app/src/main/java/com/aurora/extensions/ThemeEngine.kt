@@ -19,7 +19,6 @@
 
 package com.aurora.extensions
 
-import android.content.Intent
 import android.content.res.Configuration
 import android.graphics.Color
 import android.os.Build
@@ -30,15 +29,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.graphics.ColorUtils
 import androidx.fragment.app.Fragment
-import com.aurora.Constants
-import com.aurora.store.R
 import com.aurora.store.util.CommonUtil
 
-fun Fragment.applyTheme(
-    themeId: Int,
-    shouldApplyTransition: Boolean = true,
-    position: Int = 2
-) {
+fun Fragment.applyTheme(themeId: Int) {
     val themeStyle = CommonUtil.getThemeStyleById(themeId)
 
     if (themeId == 0) {
@@ -50,24 +43,11 @@ fun Fragment.applyTheme(
 
     /*Apply Theme*/
     requireContext().theme.applyStyle(themeStyle, true)
-
-    /*Apply transition only on AppCompatActivity*/
-    if (shouldApplyTransition)
-        (requireActivity() as AppCompatActivity).transitionRecreate(position)
-    else
-        (requireActivity() as AppCompatActivity).recreate()
+    (requireActivity() as AppCompatActivity).recreate()
 
     if (themeId == 1) {
         (requireActivity() as AppCompatActivity).setLightConfiguration()
     }
-}
-
-fun AppCompatActivity.transitionRecreate(position: Int = 2) {
-    val intent = Intent(this, javaClass)
-    intent.putExtra(Constants.INT_EXTRA, position)
-    //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-    startActivity(intent)
-    overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
 }
 
 fun AppCompatActivity.applyTheme(themeId: Int, accentId: Int = 1) {

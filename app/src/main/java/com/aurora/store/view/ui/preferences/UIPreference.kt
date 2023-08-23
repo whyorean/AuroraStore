@@ -71,7 +71,7 @@ class UIPreference : PreferenceFragmentCompat() {
                 val themeId = Integer.parseInt(newValue.toString())
 
                 save(Preferences.PREFERENCE_THEME_TYPE, themeId)
-                applyTheme(themeId, shouldApplyTransition = false)
+                applyTheme(themeId)
                 true
             }
         }
@@ -86,7 +86,7 @@ class UIPreference : PreferenceFragmentCompat() {
                 val accentId = Integer.parseInt(newValue.toString())
 
                 save(Preferences.PREFERENCE_THEME_ACCENT, accentId)
-                applyTheme(themeId, shouldApplyTransition = false)
+                applyTheme(themeId)
                 true
             }
         }

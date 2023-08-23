@@ -250,7 +250,6 @@ class NotificationService : Service() {
             }
 
             Status.PAUSED -> {
-                val pauseString = getString(R.string.download_paused)
                 progressBigText.bigText(
                     getString(
                         R.string.download_paused,
