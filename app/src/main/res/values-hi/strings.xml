@@ -350,4 +350,12 @@
     <string name="failed_generating_session">सत्र, त्रुटि कोड उत्पन्न करने में विफल: <xliff:g id="status_code">%1$d</xliff:g></string>
     <string name="app_language">एप्लिकेशन की भाषा</string>
     <string name="check_connectivity">इंटरनेट कनेक्टिविटी की जाँच करें</string>
+    <string name="failed_to_generate_session">सत्र जनरेट करने में विफल</string>
+    <string name="verifying_new_session">नये सत्र का सत्यापन किया जा रहा है</string>
+    <string name="app_links_title">ऐप लिंक्स</string>
+    <string name="app_links_desc">ऑरोरा स्टोर समर्थित लिंक खोल सकता है</string>
+    <string name="action_enabled">सक्रिय किया गया</string>
+    <string name="action_enable">सक्रिय करें</string>
+    <string name="app_link_enabled">ऐप लिंक सक्रिय किया गया!</string>
+    <string name="google_play_store_desc">Google Play, जिसे Google Play Store और पूर्व में Android Market के नाम से भी जाना जाता है।</string>
 </resources>

@@ -50,7 +50,7 @@
     <string name="action_filter_rating">Oceny</string>
     <string name="action_filter_paid_apps">Płatne</string>
     <string name="action_filter_misc">Różne</string>
-    <string name="action_filter_gsf_dependent_apps">Zależny od GSF</string>
+    <string name="action_filter_gsf_dependent_apps">Zależne od GSF</string>
     <string name="action_filter_downloads">Pobrane</string>
     <string name="action_filter_apps_with_ads">Aplikacje z reklamami</string>
     <string name="action_filter_apply">Zastosuj</string>
@@ -221,7 +221,7 @@
     <string name="filter_review_four">Cztery</string>
     <string name="filter_review_five">Pięć</string>
     <string name="filter_review_critical">Negatywne</string>
-    <string name="filter_review_all">Wszystko</string>
+    <string name="filter_review_all">Wszystkie</string>
     <string name="exodus_view_report">Zobacz raport</string>
     <string name="exodus_substring">elementy śledzące w</string>
     <string name="exodus_progress">Sprawdzam usługi śledzące…</string>
@@ -248,7 +248,7 @@
     <string name="details_no_updates">Brak dostępnych aktualizacji</string>
     <string name="toast_purchase_blocked">Zakup aplikacji nie jest dostępny na kontach anonimowych.</string>
     <string name="insecure_anonymous_apply">Zaloguj się ponownie i zrestartuj aplikację, aby zastosować zmiany.</string>
-    <string name="pref_insecure_anonymous_summary">Wygeneruj GSF ID na urządzeniu</string>
+    <string name="pref_insecure_anonymous_summary">Wygeneruj identyfikator GSF na urządzeniu</string>
     <string name="pref_network_title">Sieć</string>
     <string name="pref_insecure_anonymous_title">Niezabezpieczona sesja anonimowa</string>
     <string name="pref_common_extra">Dodatkowe</string>
@@ -268,7 +268,7 @@
     <string name="dialog_desc_native_split">Nie można instalować pakietów aplikacji (dzielonych) za pośrednictwem natywnego instalatora. Zmień instalator na sesję, usługi lub root.</string>
     <string name="toast_page_unavailable">Przeglądana strona jest niedostępna</string>
     <string name="toast_rated_success">Oceniono</string>
-    <string name="toast_aas_token_failed">Nie można wygenerować tokenu AAS</string>
+    <string name="toast_aas_token_failed">Nie można wygenerować tokena AAS</string>
     <string name="toast_rated_failed">Nie można przesłać oceny</string>
     <string name="toast_export_failed">Nie można wyeksportować konfiguracji urządzenia</string>
     <string name="toast_export_success">Wyeksportowano konfigurację urządzenia</string>
@@ -350,4 +350,12 @@
     <string name="failed_to_fetch_report">Nie udało się pobrać raportu prywatności</string>
     <string name="app_language">Język aplikacji</string>
     <string name="check_connectivity">Sprawdź połączenie z Internetem</string>
+    <string name="failed_to_generate_session">Nie udało się wygenerować sesji</string>
+    <string name="google_play_store_desc">Google Play, znany również jako Sklep Google Play, dawniej Android Market.</string>
+    <string name="action_enable">Włącz</string>
+    <string name="action_enabled">Włączone</string>
+    <string name="app_links_desc">Aurora Store może otwierać obsługiwane linki</string>
+    <string name="app_links_title">Linki aplikacji</string>
+    <string name="verifying_new_session">Weryfikowanie nowej sesji</string>
+    <string name="app_link_enabled">Link do aplikacji włączony!</string>
 </resources>

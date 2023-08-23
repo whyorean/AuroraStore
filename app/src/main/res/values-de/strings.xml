@@ -300,7 +300,7 @@
     <string name="session_login">Du musst dich zuerst anmelden</string>
     <string name="session_login_failed_google">Anmeldung über Google fehlgeschlagen</string>
     <string name="session_scrapped">Letzte Sitzung wurde abgebrochen</string>
-    <string name="session_verifying">Überprüfung der Sitzung</string>
+    <string name="session_verifying">Sitzung wird überprüft</string>
     <string name="rate_limited">Hoppla, die Anfragehäufigkeit für dieses Konto ist begrenzt!</string>
     <string name="menu">Menü</string>
     <string name="open_in_aurora">Im Aurora Store öffnen</string>
@@ -312,7 +312,7 @@
     <string name="onboarding_permission_notifications_desc">Benachrichtigungen zum Stand der Installationen senden</string>
     <string name="pref_advanced_search_in_ctt">Im benutzerdefinierten Tab suchen</string>
     <string name="pref_advanced_search_in_ctt_desc">Suchergebnisse werden im benutzerdefinierten Tab eines Browsers geöffnet</string>
-    <string name="session_verifying_google">Überprüfung der Google-Sitzung</string>
+    <string name="session_verifying_google">Google-Sitzung wird überprüft</string>
     <string name="title_advanced">Erweitert</string>
     <string name="ui_accent_0">System</string>
     <string name="updates_available">Updates verfügbar</string>
@@ -324,7 +324,7 @@
     <string name="download_eta_min">noch %1$d min %2$d s</string>
     <string name="download_eta_sec">noch %1$d s</string>
     <string name="server_maintenance">Server wegen Wartungsarbeiten nicht verfügbar</string>
-    <string name="requesting_new_session">Anforderung einer neuen Sitzung</string>
+    <string name="requesting_new_session">Neue Sitzung wird angefordert</string>
     <string name="toast_import_success">Gerätekonfiguration wurde importiert</string>
     <string name="action_import">Importieren</string>
     <string name="toast_import_failed">Gerätekonfiguration konnte nicht importiert werden</string>
@@ -351,4 +351,7 @@
     <string name="server_unreachable">Server nicht erreichbar</string>
     <string name="check_connectivity">Überprüfe die Internetverbindung</string>
     <string name="app_language">App-Sprache</string>
+    <string name="failed_to_generate_session">Sitzung konnte nicht erzeugt werden</string>
+    <string name="app_links_title">App-Links</string>
+    <string name="verifying_new_session">Neue Sitzung wird überprüft</string>
 </resources>
