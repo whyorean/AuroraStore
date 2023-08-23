@@ -353,7 +353,7 @@
     <string name="action_enable">Включить</string>
     <string name="failed_to_generate_session">Не удалось создать сессию</string>
     <string name="verifying_new_session">Проверка новой сессии</string>
-    <string name="app_links_desc">Aurora Store может открывать поддерживаемые ссылки</string>
+    <string name="app_links_desc">Разрешить Aurora Store открывать поддерживаемые ссылки</string>
     <string name="app_link_enabled">Ссылка на приложение включена!</string>
     <string name="app_links_title">Ссылки на приложения</string>
     <string name="action_enabled">Включено</string>
