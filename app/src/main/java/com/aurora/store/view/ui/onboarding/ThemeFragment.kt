@@ -28,7 +28,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewAnimationUtils
 import android.view.ViewGroup
-import com.aurora.extensions.applyTheme
 import com.aurora.extensions.hide
 import com.aurora.extensions.isVisible
 import com.aurora.extensions.show
@@ -110,7 +109,7 @@ class ThemeFragment : BaseFragment() {
     }
 
     private fun update(themeId: Int) {
-        applyTheme(themeId)
+        requireActivity().recreate()
         save(PREFERENCE_THEME_TYPE, themeId)
     }
 

@@ -29,7 +29,6 @@ import android.view.View
 import android.view.ViewAnimationUtils
 import android.view.ViewGroup
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import com.aurora.extensions.applyTheme
 import com.aurora.extensions.hide
 import com.aurora.extensions.isSAndAbove
 import com.aurora.extensions.isVisible
@@ -124,7 +123,7 @@ class AccentFragment : BaseFragment() {
     }
 
     private fun updateAccent(accentId: Int) {
-        applyTheme(themeId)
+        requireActivity().recreate()
         save(PREFERENCE_THEME_ACCENT, accentId)
     }
 

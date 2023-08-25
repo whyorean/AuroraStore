@@ -37,6 +37,10 @@ fun isOAndAbove(): Boolean {
     return Build.VERSION.SDK_INT >= Build.VERSION_CODES.O
 }
 
+fun isOMR1AndAbove(): Boolean {
+    return Build.VERSION.SDK_INT >= Build.VERSION_CODES.O_MR1
+}
+
 fun isPAndAbove(): Boolean {
     return Build.VERSION.SDK_INT >= Build.VERSION_CODES.P
 }

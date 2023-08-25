@@ -29,7 +29,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.preference.ListPreference
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
-import com.aurora.extensions.applyTheme
 import com.aurora.extensions.isTAndAbove
 import com.aurora.store.R
 import com.aurora.store.util.Preferences
@@ -71,7 +70,7 @@ class UIPreference : PreferenceFragmentCompat() {
                 val themeId = Integer.parseInt(newValue.toString())
 
                 save(Preferences.PREFERENCE_THEME_TYPE, themeId)
-                applyTheme(themeId)
+                requireActivity().recreate()
                 true
             }
         }
@@ -79,14 +78,10 @@ class UIPreference : PreferenceFragmentCompat() {
         val accentPreference: ListPreference? = findPreference(Preferences.PREFERENCE_THEME_ACCENT)
         accentPreference?.let {
             it.setOnPreferenceChangeListener { _, newValue ->
-                val themeId = Preferences.getInteger(
-                    requireContext(),
-                    Preferences.PREFERENCE_THEME_TYPE
-                )
                 val accentId = Integer.parseInt(newValue.toString())
 
                 save(Preferences.PREFERENCE_THEME_ACCENT, accentId)
-                applyTheme(themeId)
+                requireActivity().recreate()
                 true
             }
         }

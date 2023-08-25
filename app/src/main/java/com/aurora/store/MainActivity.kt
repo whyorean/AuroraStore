@@ -48,7 +48,7 @@ import coil.load
 import coil.transform.RoundedCornersTransformation
 import com.aurora.Constants
 import com.aurora.extensions.accentColor
-import com.aurora.extensions.applyTheme
+import com.aurora.extensions.applyThemeAccent
 import com.aurora.extensions.isRAndAbove
 import com.aurora.extensions.toast
 import com.aurora.gplayapi.data.models.AuthData
@@ -89,9 +89,7 @@ class MainActivity : AppCompatActivity() {
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        val themeId = Preferences.getInteger(this, Preferences.PREFERENCE_THEME_TYPE)
-        val accentId = Preferences.getInteger(this, Preferences.PREFERENCE_THEME_ACCENT)
-        applyTheme(themeId, accentId)
+        applyThemeAccent()
         super.onCreate(savedInstanceState)
 
         B = ActivityMainBinding.inflate(layoutInflater)

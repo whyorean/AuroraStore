@@ -19,106 +19,70 @@
 
 package com.aurora.extensions
 
-import android.content.res.Configuration
+import android.app.UiModeManager
+import android.content.Context
 import android.graphics.Color
-import android.os.Build
-import android.view.View
-import android.view.WindowInsetsController
-import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.graphics.ColorUtils
-import androidx.fragment.app.Fragment
+import androidx.core.view.WindowInsetsControllerCompat
 import com.aurora.store.util.CommonUtil
+import com.aurora.store.util.Preferences
 
-fun Fragment.applyTheme(themeId: Int) {
-    val themeStyle = CommonUtil.getThemeStyleById(themeId)
+fun AppCompatActivity.applyThemeAccent() {
+    val themeId = Preferences.getInteger(this, Preferences.PREFERENCE_THEME_TYPE)
+    val accentId = Preferences.getInteger(this, Preferences.PREFERENCE_THEME_ACCENT)
+    val uiModeManager = getSystemService(Context.UI_MODE_SERVICE) as UiModeManager
 
-    if (themeId == 0) {
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
-        (requireActivity() as AppCompatActivity).applyDayNightMask()
-    } else {
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-    }
-
-    /*Apply Theme*/
-    requireContext().theme.applyStyle(themeStyle, true)
-    (requireActivity() as AppCompatActivity).recreate()
-
-    if (themeId == 1) {
-        (requireActivity() as AppCompatActivity).setLightConfiguration()
-    }
-}
-
-fun AppCompatActivity.applyTheme(themeId: Int, accentId: Int = 1) {
     val themeStyle = CommonUtil.getThemeStyleById(themeId)
     val accentStyle = CommonUtil.getAccentStyleById(accentId)
 
-    if (themeId == 0) {
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
-        applyDayNightMask()
-    } else {
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-    }
-
     /*Apply Theme*/
     setTheme(themeStyle)
-
-    /*Apply Accent*/
     theme.applyStyle(accentStyle, true)
 
-    /*Apply Light Configuration*/
-    if (themeId == 1) {
-        setLightConfiguration()
+    when (themeId) {
+        0 -> {
+            if (isSAndAbove()) {
+                uiModeManager.setApplicationNightMode(UiModeManager.MODE_NIGHT_CUSTOM)
+            } else {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
+            }
+        }
+
+        1 -> {
+            setSystemBarConfiguration(light = true)
+            if (isSAndAbove()) {
+                uiModeManager.setApplicationNightMode(UiModeManager.MODE_NIGHT_NO)
+            } else {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            }
+        }
+
+        else -> {
+            setSystemBarConfiguration(light = false)
+            if (isSAndAbove()) {
+                uiModeManager.setApplicationNightMode(UiModeManager.MODE_NIGHT_YES)
+            } else {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            }
+        }
     }
 }
 
-fun AppCompatActivity.applyDayNightMask() {
-    val currentNightMode = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
-    if (currentNightMode == Configuration.UI_MODE_NIGHT_NO) {
-        setLightConfiguration()
-    }
-}
+private fun AppCompatActivity.setSystemBarConfiguration(light: Boolean) {
+    WindowInsetsControllerCompat(this.window, this.window.decorView.rootView).apply {
+        // Status bar color
+        if (isMAndAbove()) {
+            isAppearanceLightStatusBars = light
+        } else {
+            window.statusBarColor = ColorUtils.setAlphaComponent(Color.BLACK, 120)
+        }
 
-fun AppCompatActivity.setLightConfiguration() {
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-        setLightConfigurationO()
-    } else {
-        setLightConfigurationO()
+        // Navigation bar color
+        if (isOMR1AndAbove()) {
+            isAppearanceLightNavigationBars = light
+            window.navigationBarColor = getStyledAttributeColor(android.R.attr.colorBackground)
+        }
     }
-}
-
-@RequiresApi(Build.VERSION_CODES.R)
-private fun AppCompatActivity.setLightConfigurationR() {
-    window?.insetsController?.setSystemBarsAppearance(
-        WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS
-                or WindowInsetsController.APPEARANCE_LIGHT_NAVIGATION_BARS,
-        WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS
-    )
-}
-
-private fun AppCompatActivity.setLightConfigurationO() {
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-        setLightStatusBar()
-        setLightNavigationBar()
-    } else {
-        window.statusBarColor = ColorUtils.setAlphaComponent(Color.BLACK, 120)
-    }
-}
-
-private fun AppCompatActivity.setLightStatusBar() {
-    var flags = window.decorView.systemUiVisibility
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-        flags = flags or View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
-    }
-    window.decorView.systemUiVisibility = flags
-}
-
-private fun AppCompatActivity.setLightNavigationBar() {
-    var flags = window.decorView.systemUiVisibility
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-        window.navigationBarColor = getStyledAttributeColor(android.R.attr.colorBackground)
-        flags = flags or View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR
-    }
-    window.decorView.systemUiVisibility = flags
 }

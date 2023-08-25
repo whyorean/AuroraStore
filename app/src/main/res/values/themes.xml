@@ -19,10 +19,11 @@
 
 <resources>
 
-    <style name="AppTheme" parent="Theme.Material3.DayNight.NoActionBar">
+    <!-- Base application theme. -->
+    <style name="BaseTheme" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="colorAccent">@color/colorAccent</item>
         <item name="colorPrimary">@color/colorAccent</item>
-        <item name="colorPrimaryDark">?android:colorBackground</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="scrim">@color/colorScrim</item>
         <item name="scrimAccent">@color/colorScrimAccent</item>
         <item name="scrimAlt">@color/colorScrimAlt</item>
@@ -33,13 +34,15 @@
         <item name="preferenceTheme">@style/AppTheme.PreferenceThemeOverlay</item>
     </style>
 
+    <style name="AppTheme" parent="BaseTheme" />
+
+    <!-- Custom Themes -->
     <style name="AppTheme.Light" parent="Theme.Material3.Light.NoActionBar">
         <item name="colorAccent">@color/colorAccent</item>
         <item name="colorPrimary">@color/colorAccent</item>
         <item name="colorPrimaryDark">@color/colorWhite</item>
         <item name="android:windowBackground">@color/colorWhite</item>
         <item name="android:colorBackground">@color/colorWhite</item>
-        <item name="android:windowLightNavigationBar">true</item>
         <item name="android:navigationBarColor">@color/colorWhite</item>
         <item name="scrim">@color/colorScrim</item>
         <item name="scrimAccent">@color/colorScrimAccent</item>
@@ -58,7 +61,6 @@
         <item name="colorBackgroundFloating">@color/colorDarkBackground</item>
         <item name="android:windowBackground">@color/colorDarkWindowBackground</item>
         <item name="android:colorBackground">@color/colorDarkBackground</item>
-        <item name="android:windowLightNavigationBar">false</item>
         <item name="android:navigationBarColor">@color/colorDarkPrimaryDark</item>
         <item name="scrim">@color/colorScrim</item>
         <item name="scrimAccent">@color/colorScrimAccent</item>
@@ -78,7 +80,6 @@
         <item name="android:navigationBarColor">@color/colorDarkXPrimaryDark</item>
         <item name="colorShimmer">@color/colorShimmerDarkX</item>
         <item name="colorStroke">@color/colorStrokeDarkX</item>
-        <item name="preferenceTheme">@style/AppTheme.PreferenceThemeOverlay</item>
     </style>
 
     <style name="AppTheme.Darkord" parent="AppTheme.Dark">
@@ -89,7 +90,6 @@
         <item name="android:navigationBarColor">@color/colorDarkordPrimaryDark</item>
         <item name="colorShimmer">@color/colorShimmerDarkord</item>
         <item name="colorStroke">@color/colorStrokeDarkord</item>
-        <item name="preferenceTheme">@style/AppTheme.PreferenceThemeOverlay</item>
     </style>
 
     <style name="AppTheme.Black" parent="AppTheme.Dark">
@@ -100,7 +100,6 @@
         <item name="android:navigationBarColor">@color/colorBlack</item>
         <item name="colorShimmer">@color/colorShimmerBlack</item>
         <item name="colorStroke">@color/colorStrokeBlack</item>
-        <item name="preferenceTheme">@style/AppTheme.PreferenceThemeOverlay</item>
     </style>
 
     <style name="AppTheme.PreferenceThemeOverlay" parent="@style/PreferenceThemeOverlay">
