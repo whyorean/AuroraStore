@@ -350,4 +350,12 @@
     <string name="failed_generating_session">Falhou em gerar sessão, código de erro: <xliff:g id="status_code">%1$d</xliff:g></string>
     <string name="app_language">Idioma do App</string>
     <string name="check_connectivity">Verificar conectividade de internet</string>
+    <string name="verifying_new_session">Verificando nova sessão</string>
+    <string name="app_link_enabled">Link de app ativado!</string>
+    <string name="app_links_title">Links de App</string>
+    <string name="app_links_desc">Permitir que a Aurora Store abra links suportados</string>
+    <string name="action_enabled">Ativado</string>
+    <string name="google_play_store_desc">Google Play, também conhecido como Google Play Store e anteriormente Android Market.</string>
+    <string name="failed_to_generate_session">Falha ao gerar Sessão</string>
+    <string name="action_enable">Ativar</string>
 </resources>
