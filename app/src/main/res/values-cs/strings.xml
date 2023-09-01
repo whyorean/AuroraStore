@@ -350,4 +350,12 @@
     <string name="bad_request">Interní chyba! Zkuste to prosím znovu za chvíli</string>
     <string name="check_connectivity">Zkontrolujte připojení k internetu</string>
     <string name="app_language">Jazyk aplikace</string>
+    <string name="app_links_desc">Povolit aplikaci Aurora Store otevírat podporované odkazy</string>
+    <string name="action_enabled">Povoleno</string>
+    <string name="failed_to_generate_session">Nepodařilo se vygenerovat relaci</string>
+    <string name="verifying_new_session">Ověřování nové relace</string>
+    <string name="app_links_title">Odkazy aplikací</string>
+    <string name="action_enable">Povolit</string>
+    <string name="app_link_enabled">Odkaz aplikací povolen!</string>
+    <string name="google_play_store_desc">Google Play, také známý jako Obchod Google Play a původně jako Android Market.</string>
 </resources>

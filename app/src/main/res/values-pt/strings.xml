@@ -340,4 +340,22 @@
     <string name="checking_for_updates">A procurar atualizações</string>
     <string name="pref_updates_check">Verificação automática de atualizações</string>
     <string name="pref_updates_check_desc">Procurar e notificar se existirem novas versões das aplicações</string>
+    <string name="app_links_desc">Permitir abertura de ligações através de Aurora</string>
+    <string name="failed_to_fetch_report">Não foi possível obter o relatório de privacidade</string>
+    <string name="access_denied_using_vpn">Acesso recusado. Está a usar uma VPN ou Tor\?</string>
+    <string name="bad_request">Erro interno. Experimente mais tarde.</string>
+    <string name="login_rate_limited">Parece que a sua rede tem limites</string>
+    <string name="server_unreachable">Servidor inacessível</string>
+    <string name="failed_generating_session">Falha ao gerar a sessão. Código de erro: <xliff:g id="status_code">%1$d</xliff:g></string>
+    <string name="check_connectivity">Verificar ligação</string>
+    <string name="app_language">Idioma</string>
+    <string name="title_search_suggestion">Sugestão de pesquisa</string>
+    <string name="title_search_results">Resultados da pesquisa</string>
+    <string name="failed_to_generate_session">Falha ao gerar a sessão</string>
+    <string name="verifying_new_session">A tentar nova sessão</string>
+    <string name="app_links_title">Ligações</string>
+    <string name="action_enable">Ativar</string>
+    <string name="action_enabled">Ativado</string>
+    <string name="app_link_enabled">Ligações ativadas!</string>
+    <string name="google_play_store_desc">Google Play, também conhecida como Google Play Store e, anteriormente, Android Market.</string>
 </resources>

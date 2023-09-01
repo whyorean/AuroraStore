@@ -353,7 +353,7 @@
     <string name="failed_to_generate_session">生成会话失败</string>
     <string name="verifying_new_session">正在验证新会话</string>
     <string name="app_links_title">应用链接</string>
-    <string name="app_links_desc">Aurora 商店可以打开受支持的链接</string>
+    <string name="app_links_desc">允许 Aurora 商店打开受支持的链接</string>
     <string name="action_enable">启用</string>
     <string name="action_enabled">已启用</string>
     <string name="app_link_enabled">已启用应用链接！</string>

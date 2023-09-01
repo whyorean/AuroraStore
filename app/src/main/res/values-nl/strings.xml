@@ -340,4 +340,22 @@
     <string name="notification_updates_available_desc_2"><xliff:g id="app_one_name">%1$s</xliff:g> en <xliff:g id="app_two_name">%2$s</xliff:g></string>
     <string name="checking_for_updates">Controleren op updates</string>
     <string name="pref_updates_check">Automatische controle voor updates</string>
+    <string name="check_connectivity">Controleer internetconnectiviteit</string>
+    <string name="app_language">App Taal</string>
+    <string name="app_link_enabled">App-link ingeschakeld!</string>
+    <string name="app_links_desc">Aurora Store toestaan om ondersteunde links te openen</string>
+    <string name="title_search_suggestion">Zoeksuggestie</string>
+    <string name="title_search_results">Zoekresultaten</string>
+    <string name="failed_to_fetch_report">Mislukt bij het ophalen van privacyrapport</string>
+    <string name="server_unreachable">Server onbereikbaar</string>
+    <string name="failed_generating_session">Sessie genereren mislukt, foutcode: <xliff:g id="status_code">%1$d</xliff:g></string>
+    <string name="login_rate_limited">Oeps, je bent in snelheid beperkt</string>
+    <string name="access_denied_using_vpn">Toegang geweigerd! Gebruik je een VPN of Tor\?</string>
+    <string name="bad_request">Interne fout! Probeer het opnieuw na enige tijd</string>
+    <string name="failed_to_generate_session">Sessie kan niet worden gegenereerd</string>
+    <string name="verifying_new_session">Nieuwe sessie verifiëren</string>
+    <string name="app_links_title">App koppelingen</string>
+    <string name="action_enable">Inschakelen</string>
+    <string name="action_enabled">Ingeschakeld</string>
+    <string name="google_play_store_desc">Google Play, ook bekend als de Google Play Store en voorheen Android Market.</string>
 </resources>

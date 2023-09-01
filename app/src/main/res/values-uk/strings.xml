@@ -351,7 +351,7 @@
     <string name="check_connectivity">Перевірте інтернет-з\'єднання</string>
     <string name="app_language">Мова застосунку</string>
     <string name="failed_to_generate_session">Не вдалося згенерувати сеанс</string>
-    <string name="app_links_desc">Aurora Store може відкривати підтримувані посилання</string>
+    <string name="app_links_desc">Дозволити Aurora Store відкривати підтримувані посилання</string>
     <string name="verifying_new_session">Підтвердження нового сеансу</string>
     <string name="app_links_title">Посилання на застосунки</string>
     <string name="action_enable">Увімкнути</string>

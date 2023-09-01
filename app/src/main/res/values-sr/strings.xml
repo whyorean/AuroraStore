@@ -10,7 +10,7 @@
     <string name="toast_apk_whitelisted">На белој листи</string>
     <string name="toast_apk_blacklisted">На црној листи</string>
     <string name="toast_anonymous_restriction">Није доступно на анонимним налозима</string>
-    <string name="toast_abandon_sessions">Напуштене старе инсталационе сесије</string>
+    <string name="toast_abandon_sessions">Старе инсталационе сесије су напуштене</string>
     <string name="title_updates">Ажурирања</string>
     <string name="title_spoof_manager">Менаџер лажне верзије</string>
     <string name="title_settings">Подешавања</string>
@@ -64,7 +64,7 @@
     <string name="pref_install_mode_services">Aurora услуге</string>
     <string name="pref_install_mode_root">Програм за инсталацију „Root”</string>
     <string name="pref_install_mode_native">„Изворни” програм за инсталацију</string>
-    <string name="pref_install_delete_title">Избришите APK након инсталације</string>
+    <string name="pref_install_delete_title">Избриши APK након инсталације</string>
     <string name="pref_install_delete_summary">APK-ови ће подразумевано бити избрисани</string>
     <string name="pref_install_auto_title">Аутоматски инсталирајте APK-ове након преузимања</string>
     <string name="pref_install_auto_summary">Апликације се инсталирају одмах по завршетку преузимања</string>
@@ -262,7 +262,7 @@
     <string name="pref_ui_no_for_you">Странице за Вас</string>
     <string name="pref_ui_layout">Распоред</string>
     <string name="pref_filter_search_summary">Филтeри за претрагу се ресетују при свакој претрази. Искључите да бисте сачували филтере за претрагу</string>
-    <string name="pref_ui_layout_tab">Изаберите подразумевану картицу</string>
+    <string name="pref_ui_layout_tab">Избор подразумеване картице</string>
     <string name="pref_network_title">Умрежавање</string>
     <string name="pref_insecure_anonymous_title">Несигурна анонимна сесија</string>
     <string name="pref_insecure_anonymous_summary">Генерисање GSF ID-а локално на уређају</string>
@@ -330,7 +330,7 @@
     <string name="ui_accent_0">Системски</string>
     <string name="rate_limited">Упс, овај налог је ограничен!</string>
     <string name="permissions_denied">Потребне дозволе су одбијене. Одобрите их да бисте наставили акцију</string>
-    <string name="ui_accent_2">Fuchsia</string>
+    <string name="ui_accent_2">Фуксија</string>
     <string name="error">Дошло је до грешке!</string>
     <string name="menu">Мени</string>
     <string name="ui_accent_3">Црвена</string>
@@ -386,4 +386,12 @@
     <string name="installer_shizuku_unavailable">Shizuku није правилно инсталиран или подешен.</string>
     <string name="pref_install_mode_am">Програм за инсталацију „AM”.</string>
     <string name="pref_install_mode_shizuku">Програм за инсталацију „Shizuku”</string>
+    <string name="app_links_desc">Дозволите Aurora Store-у да отвара подржане везе</string>
+    <string name="app_link_enabled">Веза за апликацију је омогућена!</string>
+    <string name="google_play_store_desc">Google Play, такође познат као Google Play Store и раније Android Market.</string>
+    <string name="failed_to_generate_session">Генерисање сесије није успело</string>
+    <string name="verifying_new_session">Верификација нове сесије</string>
+    <string name="app_links_title">Везе апликација</string>
+    <string name="action_enable">Омогући</string>
+    <string name="action_enabled">Омогућено</string>
 </resources>
