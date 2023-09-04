@@ -23,7 +23,6 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
 import coil.load
 import coil.transform.RoundedCornersTransformation
 import com.aurora.extensions.hide
@@ -44,7 +43,6 @@ class SplashFragment : BaseFragment(R.layout.fragment_splash) {
         get() = _binding!!
 
     private val viewModel: AuthViewModel by activityViewModels()
-    private val args: SplashFragmentArgs by navArgs()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -92,10 +90,12 @@ class SplashFragment : BaseFragment(R.layout.fragment_splash) {
                 }
 
                 AuthState.Valid -> {
-                    if (args.packageName.isBlank()) {
+                    val packageName = requireArguments().getString("packageName") ?: ""
+                    if (packageName.isBlank()) {
                         navigateToDefaultTab()
                     } else {
-                        openDetailsFragment(args.packageName)
+                        requireArguments().remove("packageName")
+                        openDetailsFragment(packageName)
                     }
                 }
 
@@ -110,10 +110,12 @@ class SplashFragment : BaseFragment(R.layout.fragment_splash) {
                 }
 
                 AuthState.SignedIn -> {
-                    if (args.packageName.isBlank()) {
+                    val packageName = requireArguments().getString("packageName") ?: ""
+                    if (packageName.isBlank()) {
                         navigateToDefaultTab()
                     } else {
-                        openDetailsFragment(args.packageName)
+                        requireArguments().remove("packageName")
+                        openDetailsFragment(packageName)
                     }
                 }
 
