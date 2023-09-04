@@ -37,6 +37,8 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.ColorUtils
+import androidx.drawerlayout.widget.DrawerLayout.LOCK_MODE_LOCKED_CLOSED
+import androidx.drawerlayout.widget.DrawerLayout.LOCK_MODE_UNLOCKED
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.FloatingWindow
 import androidx.navigation.NavController
@@ -193,9 +195,7 @@ class MainActivity : AppCompatActivity() {
                         B.searchFab.visibility = View.VISIBLE
                         B.navView.visibility = View.VISIBLE
                         B.toolbar.visibility = View.VISIBLE
-                    }
-                    R.id.appDetailsFragment -> {
-                        hideTopLevelOnlyViews()
+                        B.drawerLayout.setDrawerLockMode(LOCK_MODE_UNLOCKED)
                     }
                     else -> {
                         hideTopLevelOnlyViews()
@@ -209,6 +209,7 @@ class MainActivity : AppCompatActivity() {
         B.searchFab.visibility = View.GONE
         B.navView.visibility = View.GONE
         B.toolbar.visibility = View.GONE
+        B.drawerLayout.setDrawerLockMode(LOCK_MODE_LOCKED_CLOSED)
     }
 
     private fun attachSearch() {
