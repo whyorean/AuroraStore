@@ -98,6 +98,10 @@ class MainActivity : AppCompatActivity() {
         B = ActivityMainBinding.inflate(layoutInflater)
         setContentView(B.root)
 
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+        navController = navHostFragment.navController
+
         this.lifecycleScope.launch {
             NetworkProvider(this@MainActivity).networkStatus.collect {
                 when(it) {
@@ -173,6 +177,9 @@ class MainActivity : AppCompatActivity() {
                     } else {
                         navController.navigate(defaultTab)
                     }
+                } else if (navHostFragment.childFragmentManager.backStackEntryCount == 0) {
+                    // We are on either on onboarding or splash fragment
+                    finish()
                 } else {
                     navController.navigateUp()
                 }
@@ -220,9 +227,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun attachNavigation() {
         val bottomNavigationView: BottomNavigationView = B.navView
-        val navHostFragment =
-            supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
-        navController = navHostFragment.navController
         bottomNavigationView.setupWithNavController(navController)
 
         bottomNavigationView.apply {
