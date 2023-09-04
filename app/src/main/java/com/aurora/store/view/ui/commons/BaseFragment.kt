@@ -39,9 +39,9 @@ open class BaseFragment : Fragment {
         Modifier.TRANSIENT
     ).create()
 
-    fun openDetailsFragment(app: App) {
+    fun openDetailsFragment(packageName: String, app: App? = null) {
         findNavController().navigate(
-            MobileNavigationDirections.actionGlobalAppDetailsFragment(app.packageName, app)
+            MobileNavigationDirections.actionGlobalAppDetailsFragment(packageName, app)
         )
     }
 

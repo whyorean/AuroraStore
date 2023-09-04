@@ -143,7 +143,7 @@ class TopChartFragment : BaseFragment() {
                         AppListViewModel_()
                             .id(app.id)
                             .app(app)
-                            .click { _ -> openDetailsFragment(app) }
+                            .click { _ -> openDetailsFragment(app.packageName, app) }
                     )
                 }
 

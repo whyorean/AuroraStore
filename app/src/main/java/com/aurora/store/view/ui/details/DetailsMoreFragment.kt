@@ -71,7 +71,7 @@ class DetailsMoreFragment : BaseFragment(R.layout.fragment_details_more) {
                                 AppDependentViewModel_()
                                     .id(it.id)
                                     .app(it)
-                                    .click { _ -> openDetailsFragment(it) }
+                                    .click { _ -> openDetailsFragment(it.packageName, it) }
                             )
                         }
                     }

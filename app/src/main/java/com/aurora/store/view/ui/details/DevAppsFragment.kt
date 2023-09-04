@@ -88,7 +88,7 @@ class DevAppsFragment : BaseFragment(R.layout.activity_generic_recycler) {
                             .id(app.id)
                             .app(app)
                             .click(View.OnClickListener {
-                                openDetailsFragment(app)
+                                openDetailsFragment(app.packageName, app)
                             })
                     )
                 }

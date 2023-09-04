@@ -92,7 +92,7 @@ class AppSalesFragment : BaseFragment(R.layout.activity_generic_recycler) {
                                 AppListViewModel_()
                                     .id(it.packageName.hashCode())
                                     .app(it)
-                                    .click { _ -> openDetailsFragment(it) }
+                                    .click { _ -> openDetailsFragment(it.packageName, it) }
                             )
                             setFilterDuplicates(true)
                         }
