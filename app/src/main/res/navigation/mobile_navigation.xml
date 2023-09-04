@@ -170,9 +170,6 @@
         <argument
             android:name="packageName"
             app:argType="string" />
-        <deepLink
-            app:action="android.intent.action.VIEW"
-            app:uri="play.google.com/store/apps/details?id={packageName}" />
         <action
             android:id="@+id/action_appDetailsFragment_to_devAppsFragment"
             app:destination="@id/devAppsFragment" />
@@ -311,6 +308,13 @@
         android:id="@+id/splashFragment"
         android:name="com.aurora.store.view.ui.splash.SplashFragment"
         tools:layout="@layout/fragment_splash" >
+        <argument
+            android:name="packageName"
+            android:defaultValue=""
+            app:argType="string" />
+        <deepLink
+            app:action="android.intent.action.VIEW"
+            app:uri="play.google.com/store/apps/details?id={packageName}" />
         <action
             android:id="@+id/action_splashFragment_to_navigation_apps"
             app:destination="@id/appsContainerFragment"

@@ -21,9 +21,9 @@ package com.aurora.store.view.ui.splash
 
 import android.os.Bundle
 import android.view.View
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import coil.load
 import coil.transform.RoundedCornersTransformation
 import com.aurora.extensions.hide
@@ -34,15 +34,17 @@ import com.aurora.store.databinding.FragmentSplashBinding
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_DEFAULT_SELECTED_TAB
 import com.aurora.store.util.Preferences.PREFERENCE_INTRO
+import com.aurora.store.view.ui.commons.BaseFragment
 import com.aurora.store.viewmodel.auth.AuthViewModel
 
-class SplashFragment : Fragment(R.layout.fragment_splash) {
+class SplashFragment : BaseFragment(R.layout.fragment_splash) {
 
     private var _binding: FragmentSplashBinding? = null
     private val binding: FragmentSplashBinding
         get() = _binding!!
 
     private val viewModel: AuthViewModel by activityViewModels()
+    private val args: SplashFragmentArgs by navArgs()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -90,7 +92,11 @@ class SplashFragment : Fragment(R.layout.fragment_splash) {
                 }
 
                 AuthState.Valid -> {
-                    navigateToDefaultTab()
+                    if (args.packageName.isBlank()) {
+                        navigateToDefaultTab()
+                    } else {
+                        openDetailsFragment(args.packageName)
+                    }
                 }
 
                 AuthState.Available -> {
@@ -104,7 +110,11 @@ class SplashFragment : Fragment(R.layout.fragment_splash) {
                 }
 
                 AuthState.SignedIn -> {
-                    navigateToDefaultTab()
+                    if (args.packageName.isBlank()) {
+                        navigateToDefaultTab()
+                    } else {
+                        openDetailsFragment(args.packageName)
+                    }
                 }
 
                 AuthState.SignedOut -> {
