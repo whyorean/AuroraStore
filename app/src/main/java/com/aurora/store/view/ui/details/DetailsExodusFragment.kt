@@ -49,7 +49,7 @@ class DetailsExodusFragment : Fragment(R.layout.activity_generic_recycler) {
 
         // Toolbar
         binding.layoutToolbarAction.apply {
-            txtTitle.text = ""
+            txtTitle.text = args.displayName
             toolbar.setOnClickListener {
                 findNavController().navigateUp()
             }

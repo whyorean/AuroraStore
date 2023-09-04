@@ -328,8 +328,12 @@ class AppDetailsFragment : BaseFragment(R.layout.fragment_details) {
                     }
 
                     binding.layoutDetailsPrivacy.headerPrivacy.addClickListener {
-                        findNavController().navigate(AppDetailsFragmentDirections
-                                .actionAppDetailsFragmentToDetailsExodusFragment(report)
+                        findNavController().navigate(
+                            AppDetailsFragmentDirections
+                                .actionAppDetailsFragmentToDetailsExodusFragment(
+                                    app.displayName,
+                                    report
+                                )
                         )
                     }
                 } else {
