@@ -348,4 +348,14 @@
     <string name="pref_install_mode_shizuku">Shizuku telepítő</string>
     <string name="session_good">Azta! Minden rendben.</string>
     <string name="session_scrapped">Az utolsó munkamenet törölve</string>
+    <string name="app_links_desc">Aurora Store által támogatott linkek megnyitásának engedélyezése</string>
+    <string name="check_connectivity">Ellenőrizze az internetkapcsolatot</string>
+    <string name="action_enabled">Engedélyezve</string>
+    <string name="google_play_store_desc">A Google Play, avagy a Google Play Store és korábban Android Market.</string>
+    <string name="app_link_enabled">Alkalmazás link engedélyezve!</string>
+    <string name="failed_to_generate_session">Nem sikerült munkamenetet létrehozni</string>
+    <string name="verifying_new_session">Új munkamenet hitelesítése</string>
+    <string name="app_language">Alkalmazás nyelve</string>
+    <string name="app_links_title">Alkalmazás linkek</string>
+    <string name="action_enable">Engedélyezés</string>
 </resources>
