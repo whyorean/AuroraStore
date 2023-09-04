@@ -353,7 +353,7 @@
     <string name="failed_to_generate_session">सत्र जनरेट करने में विफल</string>
     <string name="verifying_new_session">नये सत्र का सत्यापन किया जा रहा है</string>
     <string name="app_links_title">ऐप लिंक्स</string>
-    <string name="app_links_desc">ऑरोरा स्टोर समर्थित लिंक खोल सकता है</string>
+    <string name="app_links_desc">अरोरा स्टोर को समर्थित लिंक खोलने की अनुमति दें</string>
     <string name="action_enabled">सक्रिय किया गया</string>
     <string name="action_enable">सक्रिय करें</string>
     <string name="app_link_enabled">ऐप लिंक सक्रिय किया गया!</string>
