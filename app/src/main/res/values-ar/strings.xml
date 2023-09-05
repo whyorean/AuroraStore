@@ -298,7 +298,7 @@
     <string name="download_eta_sec">بقي %1$d ثانية</string>
     <string name="pref_advanced_search_in_ctt">البحث في علامة التبويب المخصصة</string>
     <string name="pref_advanced_search_in_ctt_desc">يفتح نتائج البحث في علامة التبويب المخصصة للمتصفح</string>
-    <string name="session_login_failed_google">فشل تسجيل الدخول عبر جوجل</string>
+    <string name="session_login_failed_google">تعذّر تسجيل الدخول عبر جوجل</string>
     <string name="session_scrapped">تم إلغاء الجلسة الأخيرة</string>
     <string name="session_verifying">التحقق من الجلسة</string>
     <string name="session_verifying_google">التحقق من جلسة قوقل</string>
@@ -310,10 +310,10 @@
     <string name="permissions_denied">تم رفض الإذن المطلوب يرجى منحها لمواصلة العمل</string>
     <string name="search_hint">البحث عن التطبيقات والألعاب</string>
     <string name="download_progress">جار التحميل • <xliff:g id="completed_downloads"> %1$d </xliff:g> / <xliff:g id="all_downloads"> %2$d </xliff:g> • <xliff:g id="speed"> %3$s </xliff:g></string>
-    <string name="session_login">تحتاج إلى تسجيل الدخول أولا</string>
+    <string name="session_login">سجيل الدخول أولا</string>
     <string name="onboarding_permission_notifications">الإشعارات</string>
     <string name="onboarding_permission_notifications_desc">إرسال إشعارات بخصوص حالة التثبيت</string>
-    <string name="session_enjoy">تسجيل الدخول والاستمتاع.</string>
+    <string name="session_enjoy">سجيل الدخول واستمتع.</string>
     <string name="session_good">واو! كل شيء جيد.</string>
     <string name="session_init">تجهيز الأمور…</string>
     <string name="title_advanced">متقدم</string>
@@ -350,7 +350,7 @@
     <string name="failed_generating_session">فشل توليد جلسة عمل، رمز الخطأ: <xliff:g id="status_code"> %1$d </xliff:g></string>
     <string name="app_language">لغة التطبيق</string>
     <string name="check_connectivity">التحقق من اتصال الإنترنت</string>
-    <string name="failed_to_generate_session">فشل توليد الجلسة</string>
+    <string name="failed_to_generate_session">تعذّر توليد الجلسة</string>
     <string name="verifying_new_session">جارِ التحقق من جلسة جديدة</string>
     <string name="app_links_title">روابط التطبيق</string>
     <string name="app_links_desc">السماح لمتجر Aurora بفتح الروابط المدعومة</string>
