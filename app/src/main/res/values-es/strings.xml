@@ -301,7 +301,7 @@
     <string name="onboarding_permission_notifications">Notificaciones</string>
     <string name="session_good">¡Guau! Todo está bien.</string>
     <string name="session_init">Preparando las cosas…</string>
-    <string name="session_login">Necesitas iniciar sesión primero</string>
+    <string name="session_login">Conéctate primero</string>
     <string name="session_scrapped">Última sesión eliminada</string>
     <string name="session_verifying">Verificando la sesión</string>
     <string name="session_verifying_google">Verificando la sesión de Google</string>
@@ -319,7 +319,7 @@
     <string name="update_available">actualización disponible</string>
     <string name="error">¡Ocurrió un error!</string>
     <string name="menu">Menú</string>
-    <string name="session_login_failed_google">Error al iniciar sesión a través de Google</string>
+    <string name="session_login_failed_google">No se puede iniciar sesión a través de Google</string>
     <string name="updates_available">actualizaciones disponibles</string>
     <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>
     <string name="requesting_new_session">Solicitando una nueva sesión</string>
@@ -351,7 +351,7 @@
     <string name="app_language">Idioma de la aplicación</string>
     <string name="check_connectivity">Comprobar la conexión</string>
     <string name="app_links_desc">Permitir que Aurora Store abra enlaces compatibles</string>
-    <string name="failed_to_generate_session">Error al generar la sesión</string>
+    <string name="failed_to_generate_session">No se pudo generar la sesión</string>
     <string name="verifying_new_session">Verificando la nueva sesión</string>
     <string name="app_links_title">Enlaces de la aplicación</string>
     <string name="action_enable">Activar</string>
