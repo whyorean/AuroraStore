@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="details_free">Gratis</string>
     <string name="details_dev_website">Nettsted</string>
     <string name="details_dev_profile">Utviklerprofil</string>
@@ -97,12 +97,12 @@
     <string name="action_leave">Forlat</string>
     <string name="action_later">Senere</string>
     <string name="action_join">Ta del</string>
-    <string name="action_installing">Installerer</string>
+    <string name="action_installing">Installerer …</string>
     <string name="action_installations">Installasjoner</string>
     <string name="action_install">Installer</string>
     <string name="action_ignore_version">Ignorer versjon</string>
     <string name="action_ignore">Ignorer</string>
-    <string name="action_granted">Innvilgjet</string>
+    <string name="action_granted">Innvilget</string>
     <string name="action_grant">Innvilg</string>
     <string name="action_finish">Fullfør</string>
     <string name="action_filter_rating">Vurderinger</string>
@@ -200,7 +200,7 @@
     <string name="action_filter_gsf_dependent_apps">GSF avhengig</string>
     <string name="action_disable">Deaktiver</string>
     <string name="account_logout">Logg ut fra Aurora</string>
-    <string name="about_xda_summary">Se Aurora Store XDA-tråden for diskusjoner eller forslag.</string>
+    <string name="about_xda_summary">Se Aurora Store-tråden på XDA for diskusjoner eller forslag.</string>
     <string name="about_telegram_summary">Bli med i Aurora Support-gruppen for diskusjoner eller forslag.</string>
     <string name="about_gitlab_summary">Få kildekoden til Aurora Store fra Aurora OSS på GitLab.</string>
     <string name="about_fdroid_summary">Få Aurora Store via F-Droid.</string>
@@ -280,4 +280,38 @@
     <string name="pref_install_mode_am">AM installatør.</string>
     <string name="installer_am_unavailable">Installer App Manager eller endre installasjonsprogrammet.</string>
     <string name="account_anonymous_insecure">Anonym (usikkert)</string>
+    <string name="installer_shizuku_unavailable">Shizuku er enten ikke installert eller satt opp på riktig vis.</string>
+    <string name="ui_accent_7">Grå</string>
+    <string name="ui_accent_1">Blå</string>
+    <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>
+    <string name="pref_advanced_search_in_ctt">Søk i egendefinert fane</string>
+    <string name="session_verifying">Bekrefter økt …</string>
+    <string name="ui_accent_0">System</string>
+    <string name="session_login">Logg inn først</string>
+    <string name="onboarding_permission_notifications">Merknader</string>
+    <string name="toast_import_failed">Kunne ikke importere enhetsoppsett</string>
+    <string name="ui_accent_5">Grønn</string>
+    <string name="download_eta_sec">%1$d s igjen</string>
+    <string name="app_links_desc">Tillat Aurora Store å åpne støttede lenker</string>
+    <string name="requesting_new_session">Forespør ny økt …</string>
+    <string name="action_import">Importer</string>
+    <string name="title_search_suggestion">Søkeforslag</string>
+    <string name="title_advanced">Avansert</string>
+    <string name="ui_accent_8">Rosa</string>
+    <string name="menu">Meny</string>
+    <string name="download_eta_min">%1$d m %2$d s igjen</string>
+    <string name="ui_accent_6">Lilla</string>
+    <string name="app_links_title">Programlenker</string>
+    <string name="open_in_aurora">Åpne i Aurora Store</string>
+    <string name="ui_accent_11">Lyseblå</string>
+    <string name="verifying_new_session">Bekrefter ny økt …</string>
+    <string name="download_eta_hrs">%1$d t %2$d m %3$d s igjen</string>
+    <string name="session_init">Klargjør …</string>
+    <string name="session_verifying_google">Bekrefter Google-økt …</string>
+    <string name="expand">Utvid</string>
+    <string name="title_search_results">Søkeresultater</string>
+    <string name="ui_accent_3">Rød</string>
+    <string name="onboarding_permission_notifications_desc">Send merknader om installasjonsstatus.</string>
+    <string name="ui_accent_10">Oransje</string>
+    <string name="app_language">Programspråk</string>
 </resources>

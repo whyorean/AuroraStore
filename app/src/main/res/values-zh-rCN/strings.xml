@@ -311,7 +311,7 @@
     <string name="pref_advanced_search_in_ctt">在自定义标签页中搜索</string>
     <string name="session_enjoy">登录并享受。</string>
     <string name="session_good">哇哦！一切正常。</string>
-    <string name="session_login">你首先需要登录</string>
+    <string name="session_login">请先登录</string>
     <string name="session_login_failed_google">通过 Google 登录失败</string>
     <string name="session_scrapped">上次会话报废</string>
     <string name="session_init">准备中…</string>
@@ -350,7 +350,7 @@
     <string name="failed_generating_session">未能生成会话，错误码：<xliff:g id="status_code">%1$d</xliff:g></string>
     <string name="check_connectivity">检查互联网连接</string>
     <string name="app_language">语言</string>
-    <string name="failed_to_generate_session">生成会话失败</string>
+    <string name="failed_to_generate_session">无法生成会话</string>
     <string name="verifying_new_session">正在验证新会话</string>
     <string name="app_links_title">应用链接</string>
     <string name="app_links_desc">允许 Aurora 商店打开受支持的链接</string>

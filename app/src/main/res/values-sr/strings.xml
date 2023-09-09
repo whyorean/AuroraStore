@@ -215,7 +215,7 @@
     <string name="action_export">Извези</string>
     <string name="action_disable">Онемогући</string>
     <string name="action_deny">Одбиј</string>
-    <string name="action_copy_link">Копирај везу</string>
+    <string name="action_copy_link">Копирај линк</string>
     <string name="action_copy">Копирај</string>
     <string name="action_close">Затвори</string>
     <string name="action_cancel">Откажи</string>
@@ -238,11 +238,11 @@
     <string name="about_gitlab_summary">Набавите Aurora Stote изворни код од Aurora OSS на GitLab-у.</string>
     <string name="about_gitlab">GitLab</string>
     <string name="about_bhim_summary">Донирајте преко UPI-ја</string>
-    <string name="about_bitcoin_bch_summary">Донирајте преко Биткојн кеша (BCH)</string>
-    <string name="about_bitcoin_btc_summary">Донирајте преко Биткојна (BTC)</string>
+    <string name="about_bitcoin_bch_summary">Донирајте преко Bitcoin Cash-а (BCH)</string>
+    <string name="about_bitcoin_btc_summary">Донирајте преко Bitcoin-а (BTC)</string>
     <string name="about_fdroid_summary">Набавите Aurora Store преко F-Droid-а.</string>
     <string name="about_fdroid">F-Droid</string>
-    <string name="about_bitcoin_eth_summary">Донирајте преко Етеријума (ETH)</string>
+    <string name="about_bitcoin_eth_summary">Донирајте преко Ethereum-а (ETH)</string>
     <string name="about_bitcoin_eth">Етеријум</string>
     <string name="about_bitcoin_btc">Биткојн</string>
     <string name="about_bitcoin_bch">Биткојн кеш</string>
@@ -281,7 +281,7 @@
 \n<xliff:g id="all_downloads">
 \n%2$d</xliff:g></string>
     <string name="session_init">Припремање ствари…</string>
-    <string name="session_login_failed_google">Пријављивање преко Google није успело</string>
+    <string name="session_login_failed_google">Није могуће пријавити се преко Google-а</string>
     <string name="session_verifying_google">Верификација Google сесије</string>
     <string name="title_search_suggestion">Предлог за претрагу</string>
     <string name="title_search_results">Резултати претраге</string>
@@ -318,7 +318,7 @@
     <string name="onboarding_permission_notifications_desc">Слање обавештења о статусу инсталације</string>
     <string name="pref_advanced_search_in_ctt">Претраживање у прилагођеној картици</string>
     <string name="pref_advanced_search_in_ctt_desc">Отвара резултате претраге у прилагођеној картици претраживача</string>
-    <string name="session_login">Прво се морате пријавити</string>
+    <string name="session_login">Прво се пријавите</string>
     <string name="session_scrapped">Последња сесија је отказана</string>
     <string name="session_verifying">Верификација сесије</string>
     <string name="title_advanced">Напредно</string>
@@ -386,12 +386,12 @@
     <string name="installer_shizuku_unavailable">Shizuku није правилно инсталиран или подешен.</string>
     <string name="pref_install_mode_am">Програм за инсталацију „AM”.</string>
     <string name="pref_install_mode_shizuku">Програм за инсталацију „Shizuku”</string>
-    <string name="app_links_desc">Дозволите Aurora Store-у да отвара подржане везе</string>
-    <string name="app_link_enabled">Веза за апликацију је омогућена!</string>
+    <string name="app_links_desc">Дозволите Aurora Store-у да отвара подржане линкове</string>
+    <string name="app_link_enabled">Линк за апликацију је омогућен!</string>
     <string name="google_play_store_desc">Google Play, такође познат као Google Play Store и раније Android Market.</string>
-    <string name="failed_to_generate_session">Генерисање сесије није успело</string>
+    <string name="failed_to_generate_session">Није могуће генерисати сесију</string>
     <string name="verifying_new_session">Верификација нове сесије</string>
-    <string name="app_links_title">Везе апликација</string>
+    <string name="app_links_title">Линкови апликација</string>
     <string name="action_enable">Омогући</string>
     <string name="action_enabled">Омогућено</string>
 </resources>

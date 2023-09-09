@@ -305,7 +305,7 @@
     <string name="download_eta_sec">%1$ds restando</string>
     <string name="pref_advanced_search_in_ctt">Pesquisar em Aba Personalizada</string>
     <string name="session_good">Uau! Tudo certo.</string>
-    <string name="session_login">Você precisa fazer login primeiro</string>
+    <string name="session_login">Faça login primeiro</string>
     <string name="session_login_failed_google">Falhou ao fazer login via Google</string>
     <string name="session_verifying">Verificando sessão</string>
     <string name="session_scrapped">Última sessão descartada</string>
@@ -356,6 +356,6 @@
     <string name="app_links_desc">Permitir que a Aurora Store abra links suportados</string>
     <string name="action_enabled">Ativado</string>
     <string name="google_play_store_desc">Google Play, também conhecido como Google Play Store e anteriormente Android Market.</string>
-    <string name="failed_to_generate_session">Falha ao gerar Sessão</string>
+    <string name="failed_to_generate_session">Não foi possível gerar Sessão</string>
     <string name="action_enable">Ativar</string>
 </resources>

@@ -277,7 +277,7 @@
     <string name="app_updater_service_notif_text">Pobieranie aplikacji w tle włączone</string>
     <string name="app_updater_service_notif_title">Pobieranie aplikacji w tle</string>
     <string name="notification_channel_updater_service">Usługa pobierania aplikacji w tle</string>
-    <string name="pref_install_mode_am">Instalator menedżera aplikacji.</string>
+    <string name="pref_install_mode_am">Instalator menedżera aplikacji</string>
     <string name="installer_am_unavailable">Zainstaluj menedżera aplikacji lub zmień instalator.</string>
     <string name="account_anonymous_insecure">Anonimowe (niezabezpieczone)</string>
     <string name="ui_accent_1">Niebieski</string>
@@ -315,13 +315,13 @@
     <string name="session_verifying_google">Weryfikacja sesji Google</string>
     <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>
     <string name="session_good">Łał! Wszystko dobrze.</string>
-    <string name="session_login">Najpierw musisz się zalogować</string>
+    <string name="session_login">Najpierw zaloguj się</string>
     <string name="pref_advanced_search_in_ctt">Szukaj w niestandardowej karcie</string>
     <string name="session_init">Przygotowuję…</string>
     <string name="session_scrapped">Ostatnia sesja została zezłomowana</string>
     <string name="rate_limited">Ups, to konto ma ograniczoną liczbę żądań!</string>
     <string name="permissions_denied">Odmówiono wymaganych uprawnień. Przyznaj je, aby kontynuować akcję</string>
-    <string name="session_login_failed_google">Nie udało się zalogować za pomocą konta Google</string>
+    <string name="session_login_failed_google">Nie można zalogować się za pomocą konta Google</string>
     <string name="server_maintenance">Serwer wyłączony z powodu prac konserwacyjnych</string>
     <string name="requesting_new_session">Żądanie nowej sesji</string>
     <string name="action_import">Importuj</string>
@@ -350,11 +350,11 @@
     <string name="failed_to_fetch_report">Nie udało się pobrać raportu prywatności</string>
     <string name="app_language">Język aplikacji</string>
     <string name="check_connectivity">Sprawdź połączenie z Internetem</string>
-    <string name="failed_to_generate_session">Nie udało się wygenerować sesji</string>
+    <string name="failed_to_generate_session">Nie można wygenerować sesji</string>
     <string name="google_play_store_desc">Google Play, znany również jako Sklep Google Play, dawniej Android Market.</string>
     <string name="action_enable">Włącz</string>
     <string name="action_enabled">Włączone</string>
-    <string name="app_links_desc">Zezwól aplikacji Aurora Store na otwieranie obsługiwanych linków</string>
+    <string name="app_links_desc">Zezwól Aurora Store na otwieranie obsługiwanych linków</string>
     <string name="app_links_title">Linki aplikacji</string>
     <string name="verifying_new_session">Weryfikowanie nowej sesji</string>
     <string name="app_link_enabled">Link do aplikacji włączony!</string>

@@ -298,7 +298,7 @@
     <string name="installer_am_unavailable">ਐਪ ਮੈਨੇਜਰ ਨੂੰ ਇੰਸਟਾਲ ਕਰੋ ਜਾਂ ਇੰਸਟਾਲਰ ਬਦਲੋ।</string>
     <string name="ui_accent_7">ਸਲੇਟੀ</string>
     <string name="requesting_new_session">ਨਵੇਂ ਸੈਸ਼ਨ ਲਈ ਬੇਨਤੀ ਕੀਤੀ ਜਾ ਰਹੀ</string>
-    <string name="session_login_failed_google">ਗੂਗਲ ਰਾਹੀਂ ਲੌਗਇਨ ਕਰਨ ਵਿੱਚ ਅਸਫਲ</string>
+    <string name="session_login_failed_google">ਗੂਗਲ ਰਾਹੀਂ ਲਾਗ-ਇਨ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਿਆ</string>
     <string name="session_scrapped">ਪਿਛਲਾ ਸੈਸ਼ਨ ਰੱਦ</string>
     <string name="action_import">ਇੰਮਪੋਰਟ ਕਰੋ</string>
     <string name="menu">ਮੀਨੂ</string>
@@ -315,7 +315,7 @@
     <string name="pref_advanced_search_in_ctt_desc">ਬ੍ਰਾਊਜ਼ਰ ਕਸਟਮ ਟੈਬ ਵਿੱਚ ਖੋਜ ਨਤੀਜੇ ਖੋਲ੍ਹੋ</string>
     <string name="session_enjoy">ਲੌਗਇਨ ਕਰੋ ਤੇ ਆਨੰਦ ਮਾਣੋ।</string>
     <string name="session_good">ਵਾਹ! ਸਭ ਕੁਝ ਵਧੀਆ।</string>
-    <string name="session_login">ਤੁਹਾਨੂੰ ਪਹਿਲਾਂ ਲੌਗਇਨ ਕਰਨ ਦੀ ਲੋੜ ਹੈ</string>
+    <string name="session_login">ਪਹਿਲਾਂ ਲਾਗ-ਇਨ ਕਰੋ</string>
     <string name="session_verifying_google">ਗੂਗਲ ਸੈਸ਼ਨ ਦੀ ਪੁਸ਼ਟੀ ਹੋ ਰਹੀ</string>
     <string name="session_init">ਤਿਆਰੀ ਹੋ ਰਹੀ…</string>
     <string name="title_advanced">ਐਡਵਾਂਸਡ</string>
@@ -350,7 +350,7 @@
     <string name="failed_generating_session">ਸੈਸ਼ਨ ਬਣਾਉਣ ਵਿੱਚ ਅਸਫਲ, ਗਲਤੀ ਕੋਡ: <xliff:g id="status_code">%1$d</xliff:g></string>
     <string name="check_connectivity">ਇੰਟਰਨੈੱਟ ਕਨੈਕਟੀਵਿਟੀ ਦੀ ਜਾਂਚ ਕਰੋ</string>
     <string name="app_language">ਐਪ ਦੀ ਭਾਸ਼ਾ</string>
-    <string name="failed_to_generate_session">ਸੈਸ਼ਨ ਬਣਾਉਣ ਵਿੱਚ ਅਸਫਲ</string>
+    <string name="failed_to_generate_session">ਸੈਸ਼ਨ ਨਹੀਂ ਬਣਾਇਆ ਜਾ ਸਕਿਆ</string>
     <string name="app_links_title">ਐਪ ਲਿੰਕ</string>
     <string name="app_links_desc">ਔਰੋਰਾ ਸਟੋਰ ਨੂੰ ਸਮਰਥਿਤ ਲਿੰਕ ਖੋਲ੍ਹਣ ਦੀ ਇਜਾਜ਼ਤ ਦਿਓ</string>
     <string name="verifying_new_session">ਨਵੇਂ ਸੈਸ਼ਨ ਦੀ ਪੁਸ਼ਟੀ ਕੀਤੀ ਜਾ ਰਹੀ ਹੈ</string>

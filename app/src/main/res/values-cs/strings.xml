@@ -310,7 +310,7 @@
     <string name="onboarding_permission_notifications_desc">Odesílat oznámení o stavu instalace</string>
     <string name="pref_advanced_search_in_ctt_desc">Otevře výsledky vyhledávání ve vlastní kartě prohlížeče</string>
     <string name="session_init">Příprava…</string>
-    <string name="session_login">Nejprve se musíte přihlásit</string>
+    <string name="session_login">Nejprve se přihlaste</string>
     <string name="session_login_failed_google">Nepodařilo se přihlásit přes Google</string>
     <string name="session_good">Páni! Všechno funguje.</string>
     <string name="updates_available">dostupných aktualizací</string>
