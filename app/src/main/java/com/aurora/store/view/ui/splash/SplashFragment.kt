@@ -39,14 +39,20 @@ import com.aurora.store.viewmodel.auth.AuthViewModel
 class SplashFragment : BaseFragment(R.layout.fragment_splash) {
 
     private var _binding: FragmentSplashBinding? = null
-    private val binding: FragmentSplashBinding
-        get() = _binding!!
+    private val binding get() = _binding!!
 
     private val viewModel: AuthViewModel by activityViewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentSplashBinding.bind(view)
+
+        if (!Preferences.getBoolean(requireContext(), PREFERENCE_INTRO)) {
+            findNavController().navigate(
+                SplashFragmentDirections.actionSplashFragmentToOnboardingFragment()
+            )
+            return
+        }
 
         binding.imgIcon.load(R.mipmap.ic_launcher) {
             transformations(RoundedCornersTransformation(32F))
@@ -70,12 +76,6 @@ class SplashFragment : BaseFragment(R.layout.fragment_splash) {
                 }
                 true
             }
-        }
-
-        if (!Preferences.getBoolean(requireContext(), PREFERENCE_INTRO)) {
-            findNavController().navigate(
-                SplashFragmentDirections.actionSplashFragmentToOnboardingFragment()
-            )
         }
 
         attachActions()
