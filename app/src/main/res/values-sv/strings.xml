@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="action_filter_paid_apps">Köpt</string>
     <string name="account_login_using">Logga in med</string>
     <string name="about_xda">Utv. tråd</string>
@@ -293,4 +293,62 @@
     <string name="toast_developer_setting_failed">Aktivera utvecklingsinställningarna från enhetens inställningar för att öppna dem.</string>
     <string name="toast_spoof_applied">Enhetsförfalskning tillämpades.</string>
     <string name="app_updater_service_notif_text">Aktiverar app-nedladdningar i bakgrunden</string>
+    <string name="installer_shizuku_unavailable">Shizuku är inte installerat eller korrekt inställt.</string>
+    <string name="pref_advanced_search_in_ctt_desc">Öppnar sökresultaten i webbläsarens anpassade flik</string>
+    <string name="login_rate_limited">Hoppsan, du är hastighetsbegränsad</string>
+    <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>
+    <string name="server_unreachable">Servern kunde inte nås</string>
+    <string name="notification_updates_available_desc_4"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g>, <xliff:g id="app_three_name">%3$s</xliff:g> och <xliff:g id="apps_count">%4$d</xliff:g> mer</string>
+    <string name="downloading_dep">Hämtar ytterligare filer för <xliff:g id="app">%1$s</xliff:g></string>
+    <string name="failed_generating_session">Genereringen av sessionen misslyckades, fel-kod: <xliff:g id="status_code">%1$d</xliff:g></string>
+    <string name="pref_advanced_search_in_ctt">Sök i Anpassad flik</string>
+    <string name="failed_to_generate_session">Sessionen kunde inte genereras</string>
+    <string name="session_verifying">Bekräftar sessionen</string>
+    <string name="app_link_enabled">App-länkningen aktiverades!</string>
+    <string name="ui_accent_0">System</string>
+    <string name="session_login">Logga in först</string>
+    <string name="onboarding_permission_notifications">Aviseringar</string>
+    <string name="notification_updates_available_desc_1">En ny version av <xliff:g id="app_one_name">%1$s</xliff:g> är tillgänglig</string>
+    <string name="action_enable">Aktivera</string>
+    <string name="toast_import_failed">Kunde inte importera enhetens konfig</string>
+    <string name="checking_for_updates">Söker efter uppdateringar</string>
+    <string name="download_eta_sec">%1$ds kvar</string>
+    <string name="app_links_desc">Tillåt Aurora-butiken att öppna länkar som stöds</string>
+    <string name="requesting_new_session">Begär en ny session</string>
+    <string name="bad_request">Internt fel! Vänligen försök igen efter ett tag</string>
+    <string name="update_available">uppdatering tillgänglig</string>
+    <string name="search_hint">Sök efter appar &amp; spel</string>
+    <string name="action_import">Importera</string>
+    <string name="title_search_suggestion">Sökförslag</string>
+    <string name="title_advanced">Avancerat</string>
+    <string name="session_login_failed_google">Kunde inte logga in via Google</string>
+    <string name="menu">Meny</string>
+    <string name="download_eta_min">%1$dm %2$ds kvar</string>
+    <string name="open_in_aurora">Öppna i Aurora-butiken</string>
+    <string name="download_paused">Pausad • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
+    <string name="session_scrapped">Senaste sessionen skrotades</string>
+    <string name="updates_available">uppdateringar tillgängliga</string>
+    <string name="google_play_store_desc">Google Play, också känd som Google\'s Play-butik och tidigare Android Market.</string>
+    <string name="session_good">Oj! Allt gott.</string>
+    <string name="failed_to_fetch_report">Hämtningen av sekretessrapporten misslyckades</string>
+    <string name="verifying_new_session">Bekräftar den nya sessionen</string>
+    <string name="action_enabled">Aktiverades</string>
+    <string name="download_eta_hrs">%1$dh %2$dm %3$d kvar</string>
+    <string name="session_init">Gör i ordning saker…</string>
+    <string name="session_enjoy">Logga in och njut.</string>
+    <string name="server_maintenance">Servern ligger nere för underhåll</string>
+    <string name="session_verifying_google">Bekräftar Google-sessionen</string>
+    <string name="error">Ett fel inträffade!</string>
+    <string name="notification_updates_available_desc_3"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g> och <xliff:g id="app_three_name">%3$s</xliff:g></string>
+    <string name="notification_updates_available"><xliff:g id="apps_count">%1$d</xliff:g> uppdateringar tillgängliga</string>
+    <string name="expand">Expandera</string>
+    <string name="title_search_results">Sökresultat</string>
+    <string name="download_progress">Hämtar • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
+    <string name="onboarding_permission_notifications_desc">Skicka aviseringar gällande installationens status</string>
+    <string name="pref_updates_check_desc">Sök automatiskt och avisera periodiskt för nya appar</string>
+    <string name="access_denied_using_vpn">Åtkomsten nekades! Använder du VPN eller Tor\?</string>
+    <string name="pref_updates_check">Automatisk sökning efter uppdateringar</string>
+    <string name="app_language">Appens språk</string>
+    <string name="notification_updates_available_desc_2"><xliff:g id="app_one_name">%1$s</xliff:g> och <xliff:g id="app_two_name">%2$s</xliff:g></string>
+    <string name="notification_updates_available_1"><xliff:g id="apps_count">%1$d</xliff:g> uppdatering tillgänglig</string>
 </resources>

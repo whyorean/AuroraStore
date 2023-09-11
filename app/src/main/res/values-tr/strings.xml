@@ -304,7 +304,7 @@
     <string name="menu">Menü</string>
     <string name="download_eta_sec">%1$dsn kaldı</string>
     <string name="download_eta_hrs">%1$dsa %2$ddak %3$dsn kaldı</string>
-    <string name="session_enjoy">Oturum açın ve keyfini çıkarın.</string>
+    <string name="session_enjoy">Oturum aç ve keyfini çıkar.</string>
     <string name="download_eta_min">%1$ddak %2$dsn kaldı</string>
     <string name="onboarding_permission_notifications">Bildirimler</string>
     <string name="onboarding_permission_notifications_desc">Kurulum durumuyla ilgili bildirimler gönder</string>
@@ -312,7 +312,7 @@
     <string name="download_progress">İndiriliyor • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
     <string name="pref_advanced_search_in_ctt_desc">Arama sonuçlarını tarayıcının özel sekmesinde açar</string>
     <string name="session_good">Vay canına! Her şey yolunda.</string>
-    <string name="session_login">Önce oturum açmanız gerekiyor</string>
+    <string name="session_login">Öncelikle oturum aç</string>
     <string name="session_login_failed_google">Google aracılığıyla oturum açılamadı</string>
     <string name="session_init">Hazırlanıyor…</string>
     <string name="open_in_aurora">Aurora Store\'da Aç</string>
