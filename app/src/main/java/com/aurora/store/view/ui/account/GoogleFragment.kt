@@ -116,6 +116,11 @@ class GoogleFragment : Fragment(R.layout.fragment_google) {
         }
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
     override fun onStart() {
         super.onStart()
         EventBus.getDefault().register(this)
