@@ -21,9 +21,7 @@ package com.aurora.store.view.ui.onboarding
 
 import android.content.pm.PackageManager
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.aurora.extensions.isMIUI
 import com.aurora.extensions.isMiuiOptimizationDisabled
@@ -44,15 +42,16 @@ import com.aurora.store.util.save
 import com.aurora.store.view.epoxy.views.preference.InstallerViewModel_
 import com.aurora.store.view.ui.commons.BaseFragment
 import com.google.gson.reflect.TypeToken
-import java.nio.charset.StandardCharsets
 import rikka.shizuku.Shizuku
+import java.nio.charset.StandardCharsets
 
 
-class InstallerFragment : BaseFragment() {
+class InstallerFragment : BaseFragment(R.layout.fragment_onboarding_installer) {
 
-    private lateinit var B: FragmentOnboardingInstallerBinding
+    private var _binding: FragmentOnboardingInstallerBinding? = null
+    private val binding get() = _binding!!
 
-    var installerId: Int = 0
+    private var installerId: Int = 0
 
     private var shizukuAlive = false
     private val shizukuAliveListener = Shizuku.OnBinderReceivedListener {
@@ -69,7 +68,7 @@ class InstallerFragment : BaseFragment() {
             if (result == PackageManager.PERMISSION_GRANTED) {
                 this.installerId = 5
                 save(PREFERENCE_INSTALLER_ID, 5)
-                B.epoxyRecycler.requestModelBuild()
+                binding.epoxyRecycler.requestModelBuild()
             } else {
                 showDialog(
                     R.string.action_installations,
@@ -78,54 +77,16 @@ class InstallerFragment : BaseFragment() {
             }
         }
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-
-        if (hasShizuku(requireContext()) && isOAndAbove()) {
-            Shizuku.addBinderReceivedListenerSticky(shizukuAliveListener)
-            Shizuku.addBinderDeadListener(shizukuDeadListener)
-            Shizuku.addRequestPermissionResultListener(shizukuResultListener)
-        }
-
-        B = FragmentOnboardingInstallerBinding.bind(
-            inflater.inflate(
-                R.layout.fragment_onboarding_installer,
-                container,
-                false
-            )
-        )
-
-        return B.root
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        _binding = FragmentOnboardingInstallerBinding.bind(view)
 
-        installerId = Preferences.getInteger(
-            requireContext(),
-            PREFERENCE_INSTALLER_ID
-        )
+        installerId = Preferences.getInteger(requireContext(), PREFERENCE_INSTALLER_ID)
 
-        val installerList = loadInstallersFromAssets()
-        updateController(installerList)
-    }
-
-    override fun onDestroy() {
-        if (hasShizuku(requireContext()) && isOAndAbove()) {
-            Shizuku.removeBinderReceivedListener(shizukuAliveListener)
-            Shizuku.removeBinderDeadListener(shizukuDeadListener)
-            Shizuku.removeRequestPermissionResultListener(shizukuResultListener)
-        }
-        super.onDestroy()
-    }
-
-    private fun updateController(installerList: List<Installer>) {
-        B.epoxyRecycler.withModels {
+        // RecyclerView
+        binding.epoxyRecycler.withModels {
             setFilterDuplicates(true)
-            installerList.forEach {
+            loadInstallersFromAssets().forEach {
                 add(
                     InstallerViewModel_()
                         .id(it.id)
@@ -144,6 +105,20 @@ class InstallerFragment : BaseFragment() {
                 OnboardingFragmentDirections.actionOnboardingFragmentToDeviceMiuiSheet()
             )
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
+    override fun onDestroy() {
+        if (hasShizuku(requireContext()) && isOAndAbove()) {
+            Shizuku.removeBinderReceivedListener(shizukuAliveListener)
+            Shizuku.removeBinderDeadListener(shizukuDeadListener)
+            Shizuku.removeRequestPermissionResultListener(shizukuResultListener)
+        }
+        super.onDestroy()
     }
 
     private fun save(installerId: Int) {

@@ -20,9 +20,7 @@
 package com.aurora.store.view.ui.onboarding
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import com.aurora.extensions.browse
 import com.aurora.store.R
 import com.aurora.store.data.model.Dash
@@ -32,18 +30,12 @@ import com.aurora.store.view.ui.commons.BaseFragment
 import com.google.gson.reflect.TypeToken
 import java.nio.charset.StandardCharsets
 
-class WelcomeFragment : BaseFragment() {
+class WelcomeFragment : BaseFragment(R.layout.fragment_onboarding_welcome) {
 
-    private lateinit var B: FragmentOnboardingWelcomeBinding
+    private var _binding: FragmentOnboardingWelcomeBinding? = null
+    private val binding get() = _binding!!
 
     companion object {
-        @JvmStatic
-        fun newInstance(): WelcomeFragment {
-            return WelcomeFragment().apply {
-
-            }
-        }
-
         val icMap: MutableMap<String, Int> = mutableMapOf(
             "ic_faq" to R.drawable.ic_faq,
             "ic_code" to R.drawable.ic_code,
@@ -53,32 +45,14 @@ class WelcomeFragment : BaseFragment() {
         )
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        B = FragmentOnboardingWelcomeBinding.bind(
-            inflater.inflate(
-                R.layout.fragment_onboarding_welcome,
-                container,
-                false
-            )
-        )
-
-        return B.root
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val dashList = loadDashFromAssets()
-        updateController(dashList)
-    }
+        _binding = FragmentOnboardingWelcomeBinding.bind(view)
 
-    private fun updateController(dashList: List<Dash>) {
-        B.epoxyRecycler.withModels {
+        // RecyclerView
+        binding.epoxyRecycler.withModels {
             setFilterDuplicates(true)
-            dashList.forEach {
+            loadDashFromAssets().forEach {
                 add(
                     DashViewModel_()
                         .id(it.id)
@@ -100,5 +74,10 @@ class WelcomeFragment : BaseFragment() {
             json,
             object : TypeToken<MutableList<Dash?>?>() {}.type
         )
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

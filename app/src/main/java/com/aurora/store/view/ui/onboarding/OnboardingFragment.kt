@@ -54,8 +54,7 @@ import com.google.android.material.tabs.TabLayoutMediator
 class OnboardingFragment : Fragment(R.layout.fragment_onboarding) {
 
     private var _binding: FragmentOnboardingBinding? = null
-    private val binding: FragmentOnboardingBinding
-        get() = _binding!!
+    private val binding get() = _binding!!
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

@@ -24,10 +24,8 @@ import android.animation.AnimatorListenerAdapter
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewAnimationUtils
-import android.view.ViewGroup
 import com.aurora.extensions.hide
 import com.aurora.extensions.isVisible
 import com.aurora.extensions.show
@@ -46,50 +44,25 @@ import java.nio.charset.StandardCharsets
 import kotlin.math.sqrt
 
 
-class ThemeFragment : BaseFragment() {
+class ThemeFragment : BaseFragment(R.layout.fragment_onboarding_theme) {
 
-    private lateinit var B: FragmentOnboardingThemeBinding
+    private var _binding: FragmentOnboardingThemeBinding? = null
+    private val binding get() = _binding!!
 
     private var themeId: Int = 0
     private var accentId: Int = 0
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        B = FragmentOnboardingThemeBinding.bind(
-            inflater.inflate(
-                R.layout.fragment_onboarding_theme,
-                container,
-                false
-            )
-        )
-
-        return B.root
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        _binding = FragmentOnboardingThemeBinding.bind(view)
 
-        themeId = Preferences.getInteger(
-            requireContext(),
-            PREFERENCE_THEME_TYPE
-        )
+        themeId = Preferences.getInteger(requireContext(), PREFERENCE_THEME_TYPE)
+        accentId = Preferences.getInteger(requireContext(), PREFERENCE_THEME_ACCENT)
 
-        accentId = Preferences.getInteger(
-            requireContext(),
-            PREFERENCE_THEME_ACCENT
-        )
-
-        val themeList = loadThemesFromAssets()
-        updateController(themeList)
-    }
-
-    private fun updateController(themeList: List<Theme>) {
-        B.epoxyRecycler.withModels {
+        // RecyclerView
+        binding.epoxyRecycler.withModels {
             setFilterDuplicates(true)
-            themeList.forEach {
+            loadThemesFromAssets().forEach {
                 add(
                     ThemeViewModel_()
                         .id(it.id)
@@ -108,31 +81,36 @@ class ThemeFragment : BaseFragment() {
         }
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
     private fun update(themeId: Int) {
         requireActivity().recreate()
         save(PREFERENCE_THEME_TYPE, themeId)
     }
 
     private fun animate(view: View) {
-        if (B.themeSwitchImage.isVisible()) {
+        if (binding.themeSwitchImage.isVisible()) {
             return;
         }
         try {
             val pos = IntArray(2)
             view.getLocationInWindow(pos)
-            val w: Int = B.root.measuredWidth
-            val h: Int = B.root.measuredHeight
+            val w: Int = binding.root.measuredWidth
+            val h: Int = binding.root.measuredHeight
 
             val bitmap = Bitmap.createBitmap(
-                B.root.measuredWidth,
-                B.root.measuredHeight,
+                binding.root.measuredWidth,
+                binding.root.measuredHeight,
                 Bitmap.Config.ARGB_8888
             )
 
             val canvas = Canvas(bitmap)
-            B.root.draw(canvas)
-            B.themeSwitchImage.setImageBitmap(bitmap)
-            B.themeSwitchImage.show()
+            binding.root.draw(canvas)
+            binding.themeSwitchImage.setImageBitmap(bitmap)
+            binding.themeSwitchImage.show()
 
             val finalRadius = sqrt(
                 ((w - pos[0]) * (w - pos[0]) + (h - pos[1]) * (h - pos[1])).toDouble()
@@ -141,7 +119,7 @@ class ThemeFragment : BaseFragment() {
             ).toFloat()
 
             val anim: Animator = ViewAnimationUtils.createCircularReveal(
-                B.root,
+                binding.root,
                 pos[0],
                 pos[1],
                 0f,
@@ -152,8 +130,8 @@ class ThemeFragment : BaseFragment() {
             anim.interpolator = CubicBezierInterpolator.EASE_IN_OUT_QUAD
             anim.addListener(object : AnimatorListenerAdapter() {
                 override fun onAnimationEnd(animation: Animator) {
-                    B.themeSwitchImage.setImageDrawable(null)
-                    B.themeSwitchImage.hide()
+                    binding.themeSwitchImage.setImageDrawable(null)
+                    binding.themeSwitchImage.hide()
                 }
             })
             anim.start()

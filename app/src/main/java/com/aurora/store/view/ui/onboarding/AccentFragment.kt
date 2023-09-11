@@ -24,10 +24,8 @@ import android.animation.AnimatorListenerAdapter
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewAnimationUtils
-import android.view.ViewGroup
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.aurora.extensions.hide
 import com.aurora.extensions.isSAndAbove
@@ -48,60 +46,31 @@ import java.nio.charset.StandardCharsets
 import kotlin.math.sqrt
 
 
-class AccentFragment : BaseFragment() {
+class AccentFragment : BaseFragment(R.layout.fragment_onboarding_accent) {
 
-    private lateinit var B: FragmentOnboardingAccentBinding
+    private var _binding: FragmentOnboardingAccentBinding? = null
+    private val binding get() = _binding!!
 
     private var themeId: Int = 0
     private var accentId: Int = if (isSAndAbove()) 0 else 1
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        B = FragmentOnboardingAccentBinding.bind(
-            inflater.inflate(
-                R.layout.fragment_onboarding_accent,
-                container,
-                false
-            )
-        )
-
-        return B.root
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        _binding = FragmentOnboardingAccentBinding.bind(view)
 
-        themeId = Preferences.getInteger(
-            requireContext(),
-            PREFERENCE_THEME_TYPE
-        )
+        themeId = Preferences.getInteger(requireContext(), PREFERENCE_THEME_TYPE)
+        accentId = Preferences.getInteger(requireContext(), PREFERENCE_THEME_ACCENT)
 
-        accentId = Preferences.getInteger(
-            requireContext(),
-            PREFERENCE_THEME_ACCENT
-        )
-
-        attachRecycler()
-
-        val accentList = loadAccentsFromAssets()
-        updateController(accentList)
-    }
-
-    private fun attachRecycler() {
-        with(B.epoxyRecycler) {
+        // RecyclerView
+        with(binding.epoxyRecycler) {
             setHasFixedSize(true)
             layoutManager = StaggeredGridLayoutManager(5, StaggeredGridLayoutManager.VERTICAL)
         }
-    }
 
-    private fun updateController(accentList: List<Accent>) {
-        B.epoxyRecycler.withModels {
+        binding.epoxyRecycler.withModels {
             setFilterDuplicates(true)
 
-            accentList.forEach {
+            loadAccentsFromAssets().forEach {
                 if (it.id == 0) {
                     if (!isSAndAbove()) return@forEach
                 }
@@ -128,25 +97,25 @@ class AccentFragment : BaseFragment() {
     }
 
     private fun animate(view: View) {
-        if (B.themeSwitchImage.isVisible()) {
+        if (binding.themeSwitchImage.isVisible()) {
             return;
         }
         try {
             val pos = IntArray(2)
             view.getLocationInWindow(pos)
-            val w: Int = B.root.measuredWidth
-            val h: Int = B.root.measuredHeight
+            val w: Int = binding.root.measuredWidth
+            val h: Int = binding.root.measuredHeight
 
             val bitmap = Bitmap.createBitmap(
-                B.root.measuredWidth,
-                B.root.measuredHeight,
+                binding.root.measuredWidth,
+                binding.root.measuredHeight,
                 Bitmap.Config.ARGB_8888
             )
 
             val canvas = Canvas(bitmap)
-            B.root.draw(canvas)
-            B.themeSwitchImage.setImageBitmap(bitmap)
-            B.themeSwitchImage.show()
+            binding.root.draw(canvas)
+            binding.themeSwitchImage.setImageBitmap(bitmap)
+            binding.themeSwitchImage.show()
 
             val finalRadius = sqrt(
                 ((w - pos[0]) * (w - pos[0]) + (h - pos[1]) * (h - pos[1])).toDouble()
@@ -155,7 +124,7 @@ class AccentFragment : BaseFragment() {
             ).toFloat()
 
             val anim: Animator = ViewAnimationUtils.createCircularReveal(
-                B.root,
+                binding.root,
                 pos[0],
                 pos[1],
                 0f,
@@ -166,8 +135,8 @@ class AccentFragment : BaseFragment() {
             anim.interpolator = CubicBezierInterpolator.EASE_IN_OUT_QUAD
             anim.addListener(object : AnimatorListenerAdapter() {
                 override fun onAnimationEnd(animation: Animator) {
-                    B.themeSwitchImage.setImageDrawable(null)
-                    B.themeSwitchImage.hide()
+                    binding.themeSwitchImage.setImageDrawable(null)
+                    binding.themeSwitchImage.hide()
                 }
             })
             anim.start()

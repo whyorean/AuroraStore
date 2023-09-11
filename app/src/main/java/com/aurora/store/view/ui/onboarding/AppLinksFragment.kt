@@ -17,8 +17,7 @@ import com.aurora.store.databinding.FragmentAppLinksBinding
 class AppLinksFragment : Fragment(R.layout.fragment_app_links) {
 
     private var _binding: FragmentAppLinksBinding? = null
-    private val binding: FragmentAppLinksBinding
-        get() = _binding!!
+    private val binding get() = _binding!!
 
     private val playStoreDomain = "play.google.com"
 

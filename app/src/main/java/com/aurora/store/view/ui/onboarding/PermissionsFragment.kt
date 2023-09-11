@@ -27,9 +27,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
 import android.provider.Settings
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import com.aurora.extensions.isOAndAbove
@@ -44,57 +42,40 @@ import com.aurora.store.view.epoxy.views.preference.PermissionViewModel_
 import com.aurora.store.view.ui.commons.BaseFragment
 
 
-class PermissionsFragment : BaseFragment() {
+class PermissionsFragment : BaseFragment(R.layout.fragment_onboarding_permissions) {
 
-    private lateinit var B: FragmentOnboardingPermissionsBinding
+    private var _binding: FragmentOnboardingPermissionsBinding? = null
+    private val binding get() = _binding!!
 
     private val startForPackageManagerResult =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
             if (isOAndAbove() && requireContext().packageManager.canRequestPackageInstalls()) {
                 toast(R.string.toast_permission_granted)
-                B.epoxyRecycler.requestModelBuild()
+                binding.epoxyRecycler.requestModelBuild()
             }
         }
     private val startForStorageManagerResult =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
             if (isRAndAbove() && Environment.isExternalStorageManager()) {
                 toast(R.string.toast_permission_granted)
-                B.epoxyRecycler.requestModelBuild()
+                binding.epoxyRecycler.requestModelBuild()
             }
         }
     private val startForPermissions =
         registerForActivityResult(ActivityResultContracts.RequestPermission()) {
             if (it) {
                 toast(R.string.toast_permission_granted)
-                B.epoxyRecycler.requestModelBuild()
+                binding.epoxyRecycler.requestModelBuild()
             } else {
                 toast(R.string.permissions_denied)
             }
         }
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        B = FragmentOnboardingPermissionsBinding.bind(
-            inflater.inflate(
-                R.layout.fragment_onboarding_permissions,
-                container,
-                false
-            )
-        )
-
-        return B.root
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        updateController()
-    }
+        _binding = FragmentOnboardingPermissionsBinding.bind(view)
 
-    private fun updateController() {
-
+        // RecyclerView
         val installerList = mutableListOf(
             Permission(
                 2,
@@ -131,7 +112,7 @@ class PermissionsFragment : BaseFragment() {
             )
         }
 
-        B.epoxyRecycler.withModels {
+        binding.epoxyRecycler.withModels {
             val writeExternalStorage = if (!isRAndAbove()) ActivityCompat.checkSelfPermission(
                 requireContext(),
                 Manifest.permission.WRITE_EXTERNAL_STORAGE
@@ -141,7 +122,12 @@ class PermissionsFragment : BaseFragment() {
                 Manifest.permission.POST_NOTIFICATIONS
             ) == PackageManager.PERMISSION_GRANTED else true
             val storageManager = if (isRAndAbove()) Environment.isExternalStorageManager() else true
-            val canInstallPackages = if (isOAndAbove()) requireContext().packageManager.canRequestPackageInstalls() else true
+            val canInstallPackages = if (isOAndAbove()) {
+                requireContext().packageManager.canRequestPackageInstalls()
+            } else {
+                true
+            }
+
             setFilterDuplicates(true)
             installerList.forEach {
                 add(
@@ -168,6 +154,11 @@ class PermissionsFragment : BaseFragment() {
                 )
             }
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     private fun checkStorageAccessPermission() {
