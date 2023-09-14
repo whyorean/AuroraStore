@@ -235,7 +235,7 @@
     <string name="about_paypal_summary">Донирајте преко PayPal-а</string>
     <string name="about_libera_summary">Постаните покровитељ на Liberapay-у</string>
     <string name="about_libera">Liberapay</string>
-    <string name="about_gitlab_summary">Набавите Aurora Stote изворни код од Aurora OSS на GitLab-у.</string>
+    <string name="about_gitlab_summary">Набавите изворни кôд Aurora Store-а путем Aurora OSS на GitLab-у.</string>
     <string name="about_gitlab">GitLab</string>
     <string name="about_bhim_summary">Донирајте преко UPI-ја</string>
     <string name="about_bitcoin_bch_summary">Донирајте преко Bitcoin Cash-а (BCH)</string>
@@ -251,9 +251,9 @@
     <string name="toast_aas_token_failed">Није могуће генерисати AAS токен</string>
     <string name="toast_rated_failed">Није могуће послати оцену</string>
     <string name="toast_rated_success">Оцењено</string>
-    <string name="toast_page_unavailable">Страница претраживања није доступна</string>
-    <string name="toast_manual_available">Честитамо, тражени код верзије је доступан, управо се преузимa.</string>
-    <string name="toast_manual_unavailable">Код верзије који тражите није доступан.</string>
+    <string name="toast_page_unavailable">Страница за прегледање није доступна</string>
+    <string name="toast_manual_available">Честитамо, тражени кôд верзије је доступан, управо се преузимa.</string>
+    <string name="toast_manual_unavailable">Кôд верзије који тражите није доступан.</string>
     <string name="title_manual_download">Ручно преузимање</string>
     <string name="insecure_anonymous_apply">Обавезно се поново пријавите и поново покрените апликацију да бисте применили промене.</string>
     <string name="pref_ui_similar_apps_desc">Прикажите сличне и сродне скупове на страници с детаљима о апликацији</string>
@@ -317,7 +317,7 @@
     <string name="onboarding_permission_notifications">Обавештења</string>
     <string name="onboarding_permission_notifications_desc">Слање обавештења о статусу инсталације</string>
     <string name="pref_advanced_search_in_ctt">Претраживање у прилагођеној картици</string>
-    <string name="pref_advanced_search_in_ctt_desc">Отвара резултате претраге у прилагођеној картици претраживача</string>
+    <string name="pref_advanced_search_in_ctt_desc">Отвара резултате претраге у прилагођеној картици прегледача</string>
     <string name="session_login">Прво се пријавите</string>
     <string name="session_scrapped">Последња сесија је отказана</string>
     <string name="session_verifying">Верификација сесије</string>
@@ -361,7 +361,7 @@
     <string name="updates_available">ажурирања су доступна</string>
     <string name="access_denied_using_vpn">Приступ одбијен! Да ли користите VPN или Tor\?</string>
     <string name="server_unreachable">Сервер недоступан</string>
-    <string name="failed_generating_session">Генерисање сесије није успело, код грешке:
+    <string name="failed_generating_session">Генерисање сесије није успело, кôд грешке:
 \n<xliff:g id="status_code">
 \n%1$d</xliff:g></string>
     <string name="check_connectivity">Проверите интернет везу</string>
