@@ -295,7 +295,7 @@
     <string name="ui_accent_11">Bleu clair</string>
     <string name="download_paused">En pause • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
     <string name="pref_advanced_search_in_ctt_desc">Ouvre les résultats de recherche dans une nouvelle fenêtre personnalisée d’un navigateur</string>
-    <string name="session_enjoy">Connectez-vous et amusez-vous.</string>
+    <string name="session_enjoy">Connectez-vous et profitez.</string>
     <string name="session_verifying">Vérification de la session</string>
     <string name="session_verifying_google">Vérification de la Session Google</string>
     <string name="download_eta_hrs">%1$d h %2$d min %3$ds restants</string>
@@ -315,8 +315,8 @@
     <string name="download_eta_sec">%1$d s restantes</string>
     <string name="pref_advanced_search_in_ctt">Rechercher dans l’onglet personnalisé</string>
     <string name="session_init">Préparation en cours…</string>
-    <string name="session_login">Vous devez d’abord vous connecter</string>
-    <string name="session_login_failed_google">Échec de la connexion via Google</string>
+    <string name="session_login">Connectez-vous d’abord</string>
+    <string name="session_login_failed_google">Impossible de se connecter via Google</string>
     <string name="session_scrapped">Dernière session supprimée</string>
     <string name="update_available">mise à jour disponible</string>
     <string name="updates_available">mises à jour disponibles</string>
@@ -351,7 +351,7 @@
     <string name="app_links_desc">Autoriser Aurora Store à ouvrir les liens pris en charge</string>
     <string name="check_connectivity">Vérifiez votre connexion Internet</string>
     <string name="app_language">Langue de l\'appli</string>
-    <string name="failed_to_generate_session">La session n\'a pas pu être générée</string>
+    <string name="failed_to_generate_session">Impossible de générer la session</string>
     <string name="verifying_new_session">Vérification de la nouvelle session</string>
     <string name="app_links_title">Liens de l\'appli</string>
     <string name="action_enable">Activer</string>
