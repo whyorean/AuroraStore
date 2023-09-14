@@ -309,7 +309,7 @@
     <string name="requesting_new_session">Richiesta di una nuova sessione</string>
     <string name="server_maintenance">Server inattivo per manutenzione</string>
     <string name="onboarding_permission_notifications">Notifiche</string>
-    <string name="session_login_failed_google">Accesso non riuscito tramite Google</string>
+    <string name="session_login_failed_google">Non è stato possibile accedere tramite Google</string>
     <string name="session_scrapped">L’ultima sessione è stata annullata</string>
     <string name="session_verifying_google">Verifica della sessione di Google</string>
     <string name="update_available">aggiornamento disponibile</string>
@@ -324,10 +324,10 @@
     <string name="download_eta_sec">%1$d s rimasti</string>
     <string name="pref_advanced_search_in_ctt">Ricerca nella scheda personalizzata</string>
     <string name="pref_advanced_search_in_ctt_desc">Apre i risultati della ricerca in una scheda personalizzata del browser</string>
-    <string name="session_enjoy">Accedi e divertiti.</string>
+    <string name="session_enjoy">Accedi e goditi.</string>
     <string name="session_good">Wow! Tutto bene.</string>
     <string name="session_init">Preparazione delle cose…</string>
-    <string name="session_login">Prima è necessario effettuare l’accesso</string>
+    <string name="session_login">Prima effettua l’accesso</string>
     <string name="notification_updates_available"><xliff:g id="apps_count">%1$d</xliff:g> aggiornamenti disponibili</string>
     <string name="checking_for_updates">Controllo degli aggiornamenti</string>
     <string name="pref_updates_check">Controllo automatico degli aggiornamenti</string>
