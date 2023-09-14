@@ -351,4 +351,10 @@
     <string name="app_language">Appens språk</string>
     <string name="notification_updates_available_desc_2"><xliff:g id="app_one_name">%1$s</xliff:g> och <xliff:g id="app_two_name">%2$s</xliff:g></string>
     <string name="notification_updates_available_1"><xliff:g id="apps_count">%1$d</xliff:g> uppdatering tillgänglig</string>
+    <string name="check_connectivity">Kolla anslutbarheten mot internet</string>
+    <string name="app_links_title">App-länkar</string>
+    <string name="toast_import_success">Enhetens konfiguration importerades</string>
+    <string name="rate_limited">Hoppsan, det här kontot är hastighetsbegränsat!</string>
+    <string name="notification_channel_updates">Aviseringar om uppdateringar</string>
+    <string name="permissions_denied">Tillstånd som behövs nekades. Vänligen godkänn dessa för att fortsätta åtgärden</string>
 </resources>
