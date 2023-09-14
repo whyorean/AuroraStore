@@ -314,7 +314,7 @@
     <string name="onboarding_permission_notifications_desc">Lähetä ilmoituksia asennusten tilasta</string>
     <string name="pref_advanced_search_in_ctt">Hae mukautetusta välilehdestä</string>
     <string name="pref_advanced_search_in_ctt_desc">Avaa hakutulokset selaimen mukautetussa välilehdessä</string>
-    <string name="session_login">Sinun täytyy kirjautua sisään ensin</string>
+    <string name="session_login">Kirjaudu sisään ensin</string>
     <string name="session_verifying">Vahvistetaan istuntoa</string>
     <string name="session_verifying_google">Googlen istuntoa tarkistetaan</string>
     <string name="title_advanced">Edistynyt</string>
@@ -350,7 +350,7 @@
     <string name="server_unreachable">Palvelimeen ei saada yhteyttä</string>
     <string name="check_connectivity">Tarkista verkkoyhteys</string>
     <string name="app_language">Sovelluksen kieli</string>
-    <string name="failed_to_generate_session">Epäonnistunut luomaan istuntoa</string>
+    <string name="failed_to_generate_session">Ei voi luoda istuntoa</string>
     <string name="app_links_title">Sovelluslinkit</string>
     <string name="verifying_new_session">Vahvistetaan uutta istuntoa</string>
     <string name="app_links_desc">Salli Aurora Storen avata tuetut linkit</string>
