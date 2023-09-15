@@ -1,3 +1,14 @@
+Changelog : v4.3.2 (50)
+• Switching to the system theme from a dark theme updates the UI properly
+• Dialogs on the home screen no longer hide certain views
+• Opening a Google Play link now ensures a valid & working account is present
+• The navigation drawer is only openable on the main screen
+• Back action now properly exits the app on certain screens
+• Settings buttons now have a proper tint in the dark theme
+• App name is visible again in toolbar for exodus reports
+• Internal improvements related to images
+• Translation updates
+
 Changelog : v4.3.1 (49)
 • Allow users to enable app links during first-time setup
 • Translation updates
