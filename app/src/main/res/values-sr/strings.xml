@@ -101,7 +101,7 @@
     <string name="notification_channel_general">Опште обавештење</string>
     <string name="notification_channel_alert">Брзо обавештење</string>
     <string name="dialog_title_self_update">Ново ажурирање је доступно</string>
-    <string name="device_miui_extra">Опционо можете изабрати „Изворни” програм за инсталацију, али тада не можете инсталирати пакете (подељене) APK-ова, тако да је избор на Вама.</string>
+    <string name="device_miui_extra">Опционо можете изабрати „Изворни” програм за инсталацију, али тада не можете инсталирати пакете (подељене) APK-ова, тако да је избор на вама.</string>
     <string name="device_miui_description">Онемогућите MIUI оптимизацију да бисте дозволили инсталације, у супротном можете изабрати програм за инсталацију „Root” или програм за инсталацију „Услуга”.</string>
     <string name="device_miui_subtitle">Програм за инсталацију „Сесија” не може да инсталира апликације због MIUI оптимизације.</string>
     <string name="device_miui_title">Откривен је MIUI!</string>
