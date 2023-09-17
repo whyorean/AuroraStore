@@ -315,6 +315,14 @@
             android:name="packageName"
             android:defaultValue=""
             app:argType="string" />
+        <!-- Android Market (deprecated) -->
+        <deepLink
+            app:action="android.intent.action.VIEW"
+            app:uri="market:///details?id={packageName}" />
+        <deepLink
+            app:action="android.intent.action.VIEW"
+            app:uri="market.android.com/details?id={packageName}" />
+        <!-- Google Play (formerly Android Market) -->
         <deepLink
             app:action="android.intent.action.VIEW"
             app:uri="play.google.com/store/apps/details?id={packageName}" />

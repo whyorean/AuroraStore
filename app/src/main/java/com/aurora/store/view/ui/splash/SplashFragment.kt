@@ -90,7 +90,7 @@ class SplashFragment : BaseFragment(R.layout.fragment_splash) {
                 }
 
                 AuthState.Valid -> {
-                    val packageName = requireArguments().getString("packageName") ?: ""
+                    val packageName = getPackageName()
                     if (packageName.isBlank()) {
                         navigateToDefaultTab()
                     } else {
@@ -110,7 +110,7 @@ class SplashFragment : BaseFragment(R.layout.fragment_splash) {
                 }
 
                 AuthState.SignedIn -> {
-                    val packageName = requireArguments().getString("packageName") ?: ""
+                    val packageName = getPackageName()
                     if (packageName.isBlank()) {
                         navigateToDefaultTab()
                     } else {
@@ -215,5 +215,14 @@ class SplashFragment : BaseFragment(R.layout.fragment_splash) {
                 else -> SplashFragmentDirections.actionSplashFragmentToNavigationApps()
             }
         findNavController().navigate(directions)
+    }
+
+    private fun getPackageName(): String {
+        // Navigation component cannot handle market scheme as its missing a valid host
+        return if (activity?.intent != null && activity?.intent?.scheme == "market") {
+            requireActivity().intent.data!!.getQueryParameter("id") ?: ""
+        } else {
+            requireArguments().getString("packageName") ?: ""
+        }
     }
 }

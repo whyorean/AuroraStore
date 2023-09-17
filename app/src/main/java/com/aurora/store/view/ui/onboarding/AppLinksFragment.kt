@@ -20,10 +20,17 @@ class AppLinksFragment : Fragment(R.layout.fragment_app_links) {
     private val binding get() = _binding!!
 
     private val playStoreDomain = "play.google.com"
+    private val marketDomain = "market.android.com"
+
+    // AppLink buttons
+    private var buttons = mapOf(
+        playStoreDomain to binding.playStoreButton,
+        marketDomain to binding.marketButton
+    )
 
     private val startForResult =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-            if (isSAndAbove() && playStoreDomainVerified()) {
+            if (isSAndAbove() && buttons.keys.any { domainVerified(it) }) {
                 toast(R.string.app_link_enabled)
             }
             updateButtonState()
@@ -35,38 +42,45 @@ class AppLinksFragment : Fragment(R.layout.fragment_app_links) {
 
         updateButtonState()
         if (isSAndAbove()) {
-            binding.btnAction.setOnClickListener {
-                val intent = Intent(
-                    ACTION_APP_OPEN_BY_DEFAULT_SETTINGS,
-                    Uri.parse("package:${view.context.packageName}")
-                )
-                startForResult.launch(intent)
+            buttons.values.forEach {
+                it.setOnClickListener {
+                    val intent = Intent(
+                        ACTION_APP_OPEN_BY_DEFAULT_SETTINGS,
+                        Uri.parse("package:${view.context.packageName}")
+                    )
+                    startForResult.launch(intent)
+                }
             }
         }
     }
 
     override fun onDestroyView() {
+        buttons = emptyMap()
         _binding = null
         super.onDestroyView()
     }
 
     private fun updateButtonState() {
         if (isSAndAbove()) {
-            if (playStoreDomainVerified()) {
-                binding.btnAction.apply {
+            buttons.forEach { (domain, button) ->
+                if (domainVerified(domain)) {
+                    button.apply {
+                        text = getString(R.string.action_enabled)
+                        isEnabled = false
+                    }
+                }
+            }
+        } else {
+            buttons.forEach { (_, button) ->
+                button.apply {
                     text = getString(R.string.action_enabled)
                     isEnabled = false
                 }
             }
-        } else {
-            binding.btnAction.apply {
-                text = getString(R.string.action_enabled)
-                isEnabled = false
-            }
         }
     }
 
-    private fun playStoreDomainVerified(): Boolean {
+    private fun domainVerified(domain: String): Boolean {
         return if (isSAndAbove()) {
             val domainVerificationManager = requireContext().getSystemService(
                 DomainVerificationManager::class.java
@@ -75,8 +89,8 @@ class AppLinksFragment : Fragment(R.layout.fragment_app_links) {
                 requireContext().packageName
             )
 
-            val playStoreDomain = userState?.hostToStateMap?.filterKeys { it == playStoreDomain }
-            playStoreDomain?.values?.first() == DomainVerificationUserState.DOMAIN_STATE_SELECTED
+            val domainMap = userState?.hostToStateMap?.filterKeys { it == domain }
+            domainMap?.values?.first() == DomainVerificationUserState.DOMAIN_STATE_SELECTED
         } else {
             true
         }
