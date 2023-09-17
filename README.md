@@ -1,55 +1,42 @@
-<div align="right">
-  <img src="https://www.gnu.org/graphics/gplv3-88x31.png" alt="GPL v3 Logo" />
-</div>
-<div align="center">
-  <img src="app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" title="AuroraStoreLogo" alt="AuroraStoreLogo" />
-</div>
+# Aurora Store
 
-# Aurora Store: A Google Playstore Client
-
-**Aurora Store** is an unofficial, FOSS client to Google's Play Store with an elegant design. Not only does Aurora Store download, update, and search for apps like the Play Store, it also empowers the user with new features.
-
-For those concerned with privacy, **Aurora Store** does not require Google's proprietary framework (spyware?) to operate. It works perfectly fine with or without Google Play Services or [MicroG](https://microg.org/).
-
-**Aurora Store** was originally based on Sergei Yeriomin's [Yalp store](https://github.com/yeriomin/YalpStore). **Aurora Store** v4.0 is a rewrite of version 3 in Kotlin and runs on all devices running Android 4.4+. Read the roadmap page on our Wiki for more info!
-
-## Screenshots
-
-<img src="screenshots/account.png" height="400">
-<img src="screenshots/home.png" height="400">
-<img src="screenshots/sidebar.png" height="400">
-<img src="screenshots/spoof.png" height="400">
-
-## Features
-
-- Free/Libre software — Has GPLv3 licence
-- Beautiful design — Built upon latest Material Design guidelines
-- Anonymous accounts — You can log in and download with anonymous accounts so you don't have to use your own account
-- Personal account login — You can download purchased apps or access your wishlist by using your own Google account
-- [Exodus](https://exodus-privacy.eu.org/) integration — Instantly see trackers an app is hiding in its code
-
-## Downloads
-
-Please only download the latest stable releases from GitLab or one of these sources:
-
-- GitLab: [Releases](https://gitlab.com/AuroraOSS/AuroraStore/-/releases)
-- AuroraOSS: [Downloads](https://auroraoss.com/AuroraStore/)
-- AuroraOSS: [Stable](https://auroraoss.com/AuroraStore/Stable/)
-- F-Droid: [Link](https://f-droid.org/en/packages/com.aurora.store/)
-- Telegram: [Channel](https://t.me/AuroraOfficial)
-- XDA Forum: [Thread](https://forum.xda-developers.com/t/app-4-4-aurora-store-open-source-play-store-client-april-8-2021.3739733/)
-
-Nightlies are released here:
-
-- AuroraOSS: [Nightlies](https://auroraoss.com/AuroraStore/Nightly)
-
-`Aurora Store v4 is still in on-going development! Bugs are to be expected! Any bug reports are appreciated.`
+**Aurora Store** is an unofficial, FOSS client to Google Play with an elegant design. Aurora Store
+allows users to download, update, and search for apps like the Play Store. It works perfectly fine
+with or without Google Play Services or MicroG.
 
 [<img src="https://f-droid.org/badge/get-it-on.png" alt="Get it on F-Droid" height="60">](https://f-droid.org/en/packages/com.aurora.store/)
 
-## FAQs
+## Features
 
-Please visit the [Aurora Wiki](https://gitlab.com/AuroraOSS/AuroraStore/-/wikis/home) of this project for FAQs. You can also reach out to us on our support chat on [Telegram](https://t.me/AuroraSupport).
+- FOSS: Has GPLv3 licence
+- Beautiful design: Built upon latest Material 3 guidelines
+- Account login: You can login with either personal or an anonymous account
+- Device & Locale spoofing: Change your device and/or locale to access geo locked apps
+- [Exodus Privacy](https://exodus-privacy.eu.org/) integration: Instantly see trackers in app
+- Updates blacklisting: Ignore updates for specific apps
+
+## Downloads
+
+Please only download the latest stable releases from one of these sources:
+
+- [F-Droid](https://f-droid.org/en/packages/com.aurora.store/) (Recommended)
+- [AuroraOSS](https://auroraoss.com/AuroraStore/)
+- [GitLab Releases](https://gitlab.com/AuroraOSS/AuroraStore/-/releases)
+
+## Support
+
+Aurora Store v4 is still in on-going development! Bugs are to be expected! Any bug reports are appreciated.
+Please visit [Aurora Wiki](https://gitlab.com/AuroraOSS/AuroraStore/-/wikis/home) for FAQs.
+
+- [Telegram](https://t.me/AuroraSupport)
+- [XDA Developers](https://forum.xda-developers.com/t/app-5-0-aurora-store-open-source-google-play-client.3739733/)
+
+## Screenshots
+
+<img src="fastlane/metadata/android/en-US/images/phoneScreenshots/screenshot-01.png" height="400">
+<img src="fastlane/metadata/android/en-US/images/phoneScreenshots/screenshot-03.png" height="400">
+<img src="fastlane/metadata/android/en-US/images/phoneScreenshots/screenshot-07.png" height="400">
+<img src="fastlane/metadata/android/en-US/images/phoneScreenshots/screenshot-08.png" height="400">
 
 ## Translations
 
@@ -61,23 +48,9 @@ Don't see your preferred language? Click on the widget below to help translate A
 
 ## Project references
 
-<details><summary>Open Source libraries Aurora Store uses</summary>
-
-- [RX-Java](https://github.com/ReactiveX/RxJava)
-- [ButterKnife](https://github.com/JakeWharton/butterknife)
-- [OkHttp3](https://square.github.io/okhttp/)
-- [Glide](https://github.com/bumptech/glide)
-- [Fetch2](https://github.com/tonyofrancis/Fetch)
-- [GPlayApi](https://gitlab.com/AuroraOSS/gplayapi)
-- [PlayStoreApi-v2](https://github.com/whyorean/playstore-api-v2) (Deprecated! Used up till v3)
-
-</details>
-
-<details><summary>Aurora Store is based on these projects</summary>
+Aurora Store is based on these projects
 
 - [YalpStore](https://github.com/yeriomin/YalpStore)
 - [AppCrawler](https://github.com/Akdeniz/google-play-crawler)
 - [Raccoon](https://github.com/onyxbits/raccoon4)
 - [SAI](https://github.com/Aefyr/SAI)
-
-</details>

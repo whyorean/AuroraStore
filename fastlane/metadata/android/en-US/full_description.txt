@@ -1,10 +1,12 @@
-Aurora Store is an open-source alternative Google Play Store frontend client with privacy and modern design in mind.
-Not only does Aurora Store download, update, and search for apps like the Play Store, it also empowers the user with useful features.
+Aurora Store is an unofficial, FOSS client to Google Play with an elegant design. Aurora Store
+allows users to download, update, and search for apps like the Play Store. It works perfectly fine
+with or without Google Play Services or MicroG.
 
 <b>Features:</b>
 
-• Anonymous login: Login anonymously so that you stay private.
-• Google login: Access your paid apps and install beta apps.
-• Device spoofing: App not available for your device? Use available device configurations to spoof you device!
-• Filter F-Droid app: Don't want F-Droid apps to be in your update list? Use the filter to exclude them.
-• Blacklist apps: By blacklisting apps, Google will not know that the selected apps are installed on your device.
+• FOSS: Has GPLv3 licence
+• Beautiful design: Built upon latest Material 3 guidelines
+• Account login: You can login with either personal or an anonymous account
+• Device & Locale spoofing: Change your device and/or locale to access geo locked apps
+• [Exodus Privacy](https://exodus-privacy.eu.org/) integration: Instantly see trackers in app
+• Updates blacklisting: Ignore updates for specific apps

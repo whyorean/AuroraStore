@@ -1,1 +1,1 @@
-An open-source alternative to Google Play Store with privacy and modern design
+An unofficial FOSS client to Google Play with an elegant design and privacy
