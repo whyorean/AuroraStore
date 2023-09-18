@@ -21,11 +21,13 @@ class AppLinksFragment : Fragment(R.layout.fragment_app_links) {
 
     private val playStoreDomain = "play.google.com"
     private val marketDomain = "market.android.com"
+    private val amazonAppStoreDomain = "www.amazon.com"
 
     // AppLink buttons
     private var buttons = mapOf(
         playStoreDomain to binding.playStoreButton,
-        marketDomain to binding.marketButton
+        marketDomain to binding.marketButton,
+        amazonAppStoreDomain to binding.amazonAppStoreButton
     )
 
     private val startForResult =

@@ -380,4 +380,6 @@
     <string name="google_play_store_desc">Google Play, also known as the Google Play Store and formerly Android Market.</string>
     <string name="app_link_android_market" translatable="false">market.android.com</string>
     <string name="android_market_desc">Android Market was an online store offering software applications designed for Android devices, retired in 2017.</string>
+    <string name="app_link_amazon_appstore" translatable="false">www.amazon.com</string>
+    <string name="amazon_appstore_desc">Amazon Appstore is an app store for Android-compatible platforms operated by Amazon.</string>
 </resources>
