@@ -394,4 +394,6 @@
     <string name="app_links_title">Линкови апликација</string>
     <string name="action_enable">Омогући</string>
     <string name="action_enabled">Омогућено</string>
+    <string name="amazon_appstore_desc">Amazon Appstore је продавница апликација за платформе компатибилне са Android-ом, којом управља Amazon.</string>
+    <string name="android_market_desc">Android Market је била онлајн продавница која је нудила софтверске апликације дизајниране за Android уређаје, пензионисана 2017. године.</string>
 </resources>
