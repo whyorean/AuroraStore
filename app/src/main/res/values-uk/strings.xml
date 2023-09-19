@@ -358,4 +358,6 @@
     <string name="action_enabled">Увімкнено</string>
     <string name="app_link_enabled">Посилання на застосунок увімкнено!</string>
     <string name="google_play_store_desc">Google Play, також відомий як Google Play Маркет, а раніше - Android Market.</string>
+    <string name="amazon_appstore_desc">Amazon Appstore — крамниця застосунків для Android-сумісних платформ, що працюють на Amazon.</string>
+    <string name="android_market_desc">Android Маркет — інтернет-магазин, що пропонував програмне забезпечення для Android-пристроїв, припинив свою діяльність у 2017 році.</string>
 </resources>
