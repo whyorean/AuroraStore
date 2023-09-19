@@ -13,6 +13,7 @@ import com.aurora.extensions.isSAndAbove
 import com.aurora.extensions.toast
 import com.aurora.store.R
 import com.aurora.store.databinding.FragmentAppLinksBinding
+import com.google.android.material.button.MaterialButton
 
 class AppLinksFragment : Fragment(R.layout.fragment_app_links) {
 
@@ -24,11 +25,7 @@ class AppLinksFragment : Fragment(R.layout.fragment_app_links) {
     private val amazonAppStoreDomain = "www.amazon.com"
 
     // AppLink buttons
-    private var buttons = mapOf(
-        playStoreDomain to binding.playStoreButton,
-        marketDomain to binding.marketButton,
-        amazonAppStoreDomain to binding.amazonAppStoreButton
-    )
+    private lateinit var buttons: Map<String, MaterialButton>
 
     private val startForResult =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
@@ -41,6 +38,12 @@ class AppLinksFragment : Fragment(R.layout.fragment_app_links) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentAppLinksBinding.bind(view)
+
+        buttons = mapOf(
+            playStoreDomain to binding.playStoreButton,
+            marketDomain to binding.marketButton,
+            amazonAppStoreDomain to binding.amazonAppStoreButton
+        )
 
         updateButtonState()
         if (isSAndAbove()) {
