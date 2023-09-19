@@ -358,4 +358,6 @@
     <string name="action_enabled">已启用</string>
     <string name="app_link_enabled">已启用应用链接！</string>
     <string name="google_play_store_desc">Google Play，也称 Google Play 商店，之前叫 Android Market。</string>
+    <string name="amazon_appstore_desc">Amazon Appstore 是亚马逊公司运营的兼容安卓平台的应用商店。</string>
+    <string name="android_market_desc">Android Market 是一个提供为 Android 设备设计的软件应用程序的在线商店，于 2017 年退役。</string>
 </resources>
