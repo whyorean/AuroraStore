@@ -19,18 +19,11 @@
 
 package com.aurora.store.view.ui.onboarding
 
-import android.animation.Animator
-import android.animation.AnimatorListenerAdapter
-import android.graphics.Bitmap
-import android.graphics.Canvas
+import android.content.Context
 import android.os.Bundle
 import android.view.View
-import android.view.ViewAnimationUtils
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import com.aurora.extensions.hide
 import com.aurora.extensions.isSAndAbove
-import com.aurora.extensions.isVisible
-import com.aurora.extensions.show
 import com.aurora.store.R
 import com.aurora.store.data.model.Accent
 import com.aurora.store.databinding.FragmentOnboardingAccentBinding
@@ -38,12 +31,10 @@ import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_THEME_ACCENT
 import com.aurora.store.util.Preferences.PREFERENCE_THEME_TYPE
 import com.aurora.store.util.save
-import com.aurora.store.view.custom.CubicBezierInterpolator
 import com.aurora.store.view.epoxy.views.AccentViewModel_
 import com.aurora.store.view.ui.commons.BaseFragment
 import com.google.gson.reflect.TypeToken
 import java.nio.charset.StandardCharsets
-import kotlin.math.sqrt
 
 
 class AccentFragment : BaseFragment(R.layout.fragment_onboarding_accent) {
@@ -58,8 +49,8 @@ class AccentFragment : BaseFragment(R.layout.fragment_onboarding_accent) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentOnboardingAccentBinding.bind(view)
 
-        themeId = Preferences.getInteger(requireContext(), PREFERENCE_THEME_TYPE)
-        accentId = Preferences.getInteger(requireContext(), PREFERENCE_THEME_ACCENT)
+        themeId = Preferences.getInteger(view.context, PREFERENCE_THEME_TYPE)
+        accentId = Preferences.getInteger(view.context, PREFERENCE_THEME_ACCENT)
 
         // RecyclerView
         with(binding.epoxyRecycler) {
@@ -70,7 +61,7 @@ class AccentFragment : BaseFragment(R.layout.fragment_onboarding_accent) {
         binding.epoxyRecycler.withModels {
             setFilterDuplicates(true)
 
-            loadAccentsFromAssets().forEach {
+            loadAccentsFromAssets(view.context).forEach {
                 if (it.id == 0) {
                     if (!isSAndAbove()) return@forEach
                 }
@@ -84,7 +75,6 @@ class AccentFragment : BaseFragment(R.layout.fragment_onboarding_accent) {
                             accentId = it.id
                             updateAccent(accentId)
                             requestModelBuild()
-                            animate(v)
                         }
                 )
             }
@@ -96,56 +86,8 @@ class AccentFragment : BaseFragment(R.layout.fragment_onboarding_accent) {
         save(PREFERENCE_THEME_ACCENT, accentId)
     }
 
-    private fun animate(view: View) {
-        if (binding.themeSwitchImage.isVisible()) {
-            return;
-        }
-        try {
-            val pos = IntArray(2)
-            view.getLocationInWindow(pos)
-            val w: Int = binding.root.measuredWidth
-            val h: Int = binding.root.measuredHeight
-
-            val bitmap = Bitmap.createBitmap(
-                binding.root.measuredWidth,
-                binding.root.measuredHeight,
-                Bitmap.Config.ARGB_8888
-            )
-
-            val canvas = Canvas(bitmap)
-            binding.root.draw(canvas)
-            binding.themeSwitchImage.setImageBitmap(bitmap)
-            binding.themeSwitchImage.show()
-
-            val finalRadius = sqrt(
-                ((w - pos[0]) * (w - pos[0]) + (h - pos[1]) * (h - pos[1])).toDouble()
-            ).coerceAtLeast(
-                sqrt((pos[0] * pos[0] + (h - pos[1]) * (h - pos[1])).toDouble())
-            ).toFloat()
-
-            val anim: Animator = ViewAnimationUtils.createCircularReveal(
-                binding.root,
-                pos[0],
-                pos[1],
-                0f,
-                finalRadius
-            )
-
-            anim.duration = 450
-            anim.interpolator = CubicBezierInterpolator.EASE_IN_OUT_QUAD
-            anim.addListener(object : AnimatorListenerAdapter() {
-                override fun onAnimationEnd(animation: Animator) {
-                    binding.themeSwitchImage.setImageDrawable(null)
-                    binding.themeSwitchImage.hide()
-                }
-            })
-            anim.start()
-        } catch (ignore: Throwable) {
-        }
-    }
-
-    private fun loadAccentsFromAssets(): List<Accent> {
-        val inputStream = requireContext().assets.open("accent.json")
+    private fun loadAccentsFromAssets(context: Context): List<Accent> {
+        val inputStream = context.assets.open("accent.json")
         val bytes = ByteArray(inputStream.available())
         inputStream.read(bytes)
         inputStream.close()
