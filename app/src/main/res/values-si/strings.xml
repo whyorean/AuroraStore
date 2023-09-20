@@ -350,4 +350,10 @@
     <string name="server_unreachable">සේවාදායකයට ළඟා වීමට නොහැකිය</string>
     <string name="check_connectivity">සම්බන්ධතාව පරීක්‍ෂා කරන්න</string>
     <string name="app_language">යෙදුමේ භාෂාව</string>
+    <string name="failed_to_generate_session">වාරය උත්පාදනයට නොහැකි විය</string>
+    <string name="action_enable">සබල කරන්න</string>
+    <string name="app_links_desc">අවුරෝරා ස්ටෝර් සහාය දක්වන සබැඳි ඇරීමට ඉඩදෙන්න</string>
+    <string name="app_links_title">යෙදුමේ සබැඳි</string>
+    <string name="verifying_new_session">නව වාරය සත්‍යාපනය වෙමින්</string>
+    <string name="action_enabled">සබලයි</string>
 </resources>
