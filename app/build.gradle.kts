@@ -188,4 +188,7 @@ dependencies {
 
     //WorkManager
     implementation("androidx.work:work-runtime-ktx:2.8.1")
+
+    // LeakCanary
+    debugImplementation("com.squareup.leakcanary:leakcanary-android:2.12")
 }
