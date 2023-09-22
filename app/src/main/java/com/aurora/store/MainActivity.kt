@@ -103,7 +103,7 @@ class MainActivity : AppCompatActivity() {
         navController = navHostFragment.navController
 
         this.lifecycleScope.launch {
-            NetworkProvider(this@MainActivity).networkStatus.collect {
+            NetworkProvider(applicationContext).networkStatus.collect {
                 when(it) {
                     NetworkStatus.AVAILABLE -> {
                         if (!supportFragmentManager.isDestroyed && isIntroDone()) {
