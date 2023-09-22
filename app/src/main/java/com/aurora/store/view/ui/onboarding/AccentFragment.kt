@@ -81,6 +81,11 @@ class AccentFragment : BaseFragment(R.layout.fragment_onboarding_accent) {
         }
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
     private fun updateAccent(accentId: Int) {
         requireActivity().recreate()
         save(PREFERENCE_THEME_ACCENT, accentId)
