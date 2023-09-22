@@ -74,7 +74,6 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var B: ActivityMainBinding
     private lateinit var navController: NavController
-    private lateinit var authData: AuthData
     private lateinit var appConfig: AppBarConfiguration
 
     private val viewModel: MainViewModel by viewModels()
@@ -126,8 +125,6 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
-
-        authData = AuthProvider.with(this).getAuthData()
 
         // Toolbar
         setSupportActionBar(B.toolbar)
