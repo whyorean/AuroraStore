@@ -9,6 +9,7 @@ import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.LifecycleService
 import com.aurora.Constants
+import com.aurora.extensions.isNAndAbove
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.File
 import com.aurora.store.BuildConfig
@@ -86,7 +87,11 @@ class SelfUpdateService : LifecycleService() {
     private fun destroyService() {
         Log.d("Self-update service destroyed")
         fetch.removeListener(fetchListener)
-        stopForeground(true)
+        if (isNAndAbove()) {
+            stopForeground(STOP_FOREGROUND_REMOVE)
+        } else {
+            stopForeground(true)
+        }
         stopSelf()
     }
 
