@@ -53,8 +53,6 @@ class AuroraApplication : Application() {
             HiddenApiBypass.addHiddenApiExemptions("")
         }
 
-        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true)
-
         //Create Notification Channels : General & Alert
         createNotificationChannel()
 
