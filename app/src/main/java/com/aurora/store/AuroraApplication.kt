@@ -25,6 +25,7 @@ import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.os.Build
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.content.ContextCompat
 import com.aurora.Constants
 import com.aurora.extensions.isPAndAbove
 import com.aurora.store.data.downloader.DownloadManager
@@ -38,7 +39,6 @@ import org.lsposed.hiddenapibypass.HiddenApiBypass
 class AuroraApplication : Application() {
 
     private lateinit var fetch: Fetch
-    private lateinit var packageManagerReceiver: PackageManagerReceiver
 
     companion object{
         val enqueuedInstalls: MutableSet<String> = mutableSetOf()
@@ -62,12 +62,13 @@ class AuroraApplication : Application() {
 
         fetch = DownloadManager.with(this).fetch
 
-        packageManagerReceiver = object : PackageManagerReceiver() {
-
-        }
-
         //Register broadcast receiver for package install/uninstall
-        registerReceiver(packageManagerReceiver, PackageUtil.getFilter())
+        ContextCompat.registerReceiver(
+            this,
+            object : PackageManagerReceiver() {},
+            PackageUtil.getFilter(),
+            ContextCompat.RECEIVER_NOT_EXPORTED
+        )
 
         CommonUtil.cleanupInstallationSessions(applicationContext)
     }
