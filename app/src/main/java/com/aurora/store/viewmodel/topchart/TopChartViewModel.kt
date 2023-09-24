@@ -33,35 +33,27 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.supervisorScope
 
-abstract class BaseChartViewModel(application: Application) : BaseAndroidViewModel(application) {
+class TopChartViewModel(application: Application) : BaseAndroidViewModel(application) {
 
     private val authData: AuthData = AuthProvider.with(application).getAuthData()
     private val topChartsHelper: TopChartsHelper =
         TopChartsHelper(authData).using(HttpClient.getPreferredClient(application))
 
-    lateinit var type: TopChartsHelper.Type
-    lateinit var chart: TopChartsHelper.Chart
-
     val liveData: MutableLiveData<StreamCluster> = MutableLiveData()
     var streamCluster: StreamCluster = StreamCluster()
 
-    fun getStreamCluster(
-        type: TopChartsHelper.Type,
-        chart: TopChartsHelper.Chart
-    ): StreamCluster {
-        return topChartsHelper.getCluster(type, chart)
-    }
-
-    override fun observe() {
+    fun getStreamCluster(type: TopChartsHelper.Type, chart: TopChartsHelper.Chart) {
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                streamCluster = getStreamCluster(type, chart)
+                streamCluster = topChartsHelper.getCluster(type, chart)
                 liveData.postValue(streamCluster)
             } catch (e: Exception) {
                 requestState = RequestState.Pending
             }
         }
     }
+
+    override fun observe() {}
 
     fun nextCluster() {
         viewModelScope.launch(Dispatchers.IO) {

@@ -17,34 +17,29 @@
  *
  */
 
-package com.aurora.store.view.ui.apps
+package com.aurora.store.view.ui.commons
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import com.aurora.Constants
 import com.aurora.gplayapi.data.models.StreamCluster
+import com.aurora.gplayapi.helpers.TopChartsHelper.Chart
+import com.aurora.gplayapi.helpers.TopChartsHelper.Type
 import com.aurora.store.R
 import com.aurora.store.databinding.FragmentTopContainerBinding
 import com.aurora.store.view.custom.recycler.EndlessRecyclerOnScrollListener
 import com.aurora.store.view.epoxy.views.AppProgressViewModel_
 import com.aurora.store.view.epoxy.views.app.AppListViewModel_
 import com.aurora.store.view.epoxy.views.shimmer.AppListViewShimmerModel_
-import com.aurora.store.view.ui.commons.BaseFragment
-import com.aurora.store.viewmodel.topchart.BaseChartViewModel
-import com.aurora.store.viewmodel.topchart.TopFreeAppChartViewModel
-import com.aurora.store.viewmodel.topchart.TopGrossingAppChartViewModel
-import com.aurora.store.viewmodel.topchart.TopPaidAppChartViewModel
-import com.aurora.store.viewmodel.topchart.TrendingAppChartViewModel
+import com.aurora.store.viewmodel.topchart.TopChartViewModel
 
-class TopChartFragment : BaseFragment() {
+class TopChartFragment : BaseFragment(R.layout.fragment_top_container) {
 
-    private lateinit var VM: BaseChartViewModel
-    private lateinit var B: FragmentTopContainerBinding
+    private var _binding: FragmentTopContainerBinding? = null
+    private val binding get() = _binding!!
 
-    private lateinit var streamCluster: StreamCluster
+    private val viewModel: TopChartViewModel by viewModels()
 
     private var chartType = 0
     private var chartCategory = 0
@@ -61,18 +56,9 @@ class TopChartFragment : BaseFragment() {
         }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        B = FragmentTopContainerBinding.bind(
-            inflater.inflate(
-                R.layout.fragment_top_container,
-                container,
-                false
-            )
-        )
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        _binding = FragmentTopContainerBinding.bind(view)
 
         val bundle = arguments
         if (bundle != null) {
@@ -80,41 +66,42 @@ class TopChartFragment : BaseFragment() {
             chartCategory = bundle.getInt(Constants.TOP_CHART_CATEGORY, 0)
         }
 
-        when (chartCategory) {
-            0 -> VM = ViewModelProvider(this)[TopFreeAppChartViewModel::class.java]
-            1 -> VM = ViewModelProvider(this)[TopGrossingAppChartViewModel::class.java]
-            2 -> VM = ViewModelProvider(this)[TrendingAppChartViewModel::class.java]
-            3 -> VM = ViewModelProvider(this)[TopPaidAppChartViewModel::class.java]
+        when (chartType) {
+            0 -> when (chartCategory) {
+                0 -> viewModel.getStreamCluster(Type.APPLICATION, Chart.TOP_SELLING_FREE)
+                1 -> viewModel.getStreamCluster(Type.APPLICATION, Chart.TOP_GROSSING)
+                2 -> viewModel.getStreamCluster(Type.APPLICATION, Chart.MOVERS_SHAKERS)
+                3 -> viewModel.getStreamCluster(Type.APPLICATION, Chart.TOP_SELLING_PAID)
+            }
+
+            1 -> when (chartCategory) {
+                0 -> viewModel.getStreamCluster(Type.GAME, Chart.TOP_SELLING_FREE)
+                1 -> viewModel.getStreamCluster(Type.GAME, Chart.TOP_GROSSING)
+                2 -> viewModel.getStreamCluster(Type.GAME, Chart.MOVERS_SHAKERS)
+                3 -> viewModel.getStreamCluster(Type.GAME, Chart.TOP_SELLING_PAID)
+            }
         }
 
-        return B.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        VM.liveData.observe(viewLifecycleOwner) {
-            if (!::streamCluster.isInitialized)
-                attachRecycler()
-
-            streamCluster = it
-
-            updateController(streamCluster)
+        viewModel.liveData.observe(viewLifecycleOwner) {
+            updateController(it)
         }
+
+        binding.recycler.addOnScrollListener(object : EndlessRecyclerOnScrollListener() {
+            override fun onLoadMore(currentPage: Int) {
+                viewModel.nextCluster()
+            }
+        })
 
         updateController(null)
     }
 
-    private fun attachRecycler() {
-        B.recycler.addOnScrollListener(object : EndlessRecyclerOnScrollListener() {
-            override fun onLoadMore(currentPage: Int) {
-                VM.nextCluster()
-            }
-        })
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     private fun updateController(streamCluster: StreamCluster?) {
-        B.recycler.withModels {
+        binding.recycler.withModels {
             setFilterDuplicates(true)
             if (streamCluster == null) {
                 for (i in 1..6) {
