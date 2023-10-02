@@ -166,7 +166,7 @@ dependencies {
     implementation("com.github.topjohnwu.libsu:core:5.0.5")
 
     //Love <3
-    implementation("com.gitlab.AuroraOSS:gplayapi:3.1.4")
+    implementation("com.gitlab.AuroraOSS:gplayapi:3.2.0")
 
     //Browser
     implementation("androidx.browser:browser:1.6.0")

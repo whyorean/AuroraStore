@@ -8,4 +8,11 @@
         app:summary="@string/pref_advanced_search_in_ctt_desc"
         app:title="@string/pref_advanced_search_in_ctt" />
 
+    <SwitchPreferenceCompat
+        app:defaultValue="false"
+        app:iconSpaceReserved="false"
+        app:key="PREFERENCE_ADVANCED_USE_WEB_API"
+        app:summary="@string/pref_advanced_use_web_api_desc"
+        app:title="@string/pref_advanced_use_web_api" />
+
 </PreferenceScreen>
