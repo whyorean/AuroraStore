@@ -58,6 +58,7 @@
         android:name=".AuroraApplication"
         android:allowBackup="true"
         android:banner="@drawable/ic_tv_banner"
+        android:enableOnBackInvokedCallback="true"
         android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"
         android:killAfterRestore="false"
@@ -70,7 +71,7 @@
         android:theme="@style/AppTheme"
         android:fullBackupContent="@xml/backup_rules_legacy"
         android:dataExtractionRules="@xml/backup_rules"
-        tools:targetApi="m">
+        tools:targetApi="tiramisu">
 
         <activity
             android:name=".MainActivity"
