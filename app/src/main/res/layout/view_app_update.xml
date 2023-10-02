@@ -105,19 +105,15 @@
                 android:singleLine="true"
                 android:textAppearance="@style/TextAppearance.Aurora.Line3" />
 
-            <androidx.appcompat.widget.AppCompatImageView
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/headerIndicator"
+                style="@style/Widget.Material3.Button.IconButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignBottom="@id/layout_action"
                 android:layout_toStartOf="@id/layout_action"
-                android:adjustViewBounds="true"
-                android:clickable="true"
-                android:focusable="true"
-                android:padding="@dimen/margin_small"
                 android:contentDescription="@string/details_changelog"
-                app:srcCompat="@drawable/ic_arrow_down"
-                app:tint="?colorControlNormal" />
+                app:icon="@drawable/ic_arrow_down" />
 
             <LinearLayout
                 android:id="@+id/layout_action"

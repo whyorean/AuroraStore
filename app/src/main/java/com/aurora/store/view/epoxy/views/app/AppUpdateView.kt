@@ -23,6 +23,7 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.View
 import android.widget.RelativeLayout
+import androidx.core.content.ContextCompat
 import androidx.core.text.HtmlCompat
 import androidx.core.view.isVisible
 import coil.load
@@ -95,10 +96,10 @@ class AppUpdateView : RelativeLayout {
 
                 B.headerIndicator.setOnClickListener {
                     if (B.txtChangelog.isVisible) {
-                        B.headerIndicator.load(R.drawable.ic_arrow_down)
+                        B.headerIndicator.icon = ContextCompat.getDrawable(context, R.drawable.ic_arrow_down)
                         B.txtChangelog.visibility = View.GONE
                     } else {
-                        B.headerIndicator.load(R.drawable.ic_arrow_up)
+                        B.headerIndicator.icon = ContextCompat.getDrawable(context, R.drawable.ic_arrow_up)
                         B.txtChangelog.visibility = View.VISIBLE
                     }
                 }
