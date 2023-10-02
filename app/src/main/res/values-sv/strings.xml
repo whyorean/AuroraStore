@@ -84,7 +84,7 @@
     <string name="onboarding_tos">Tjänstevillkor</string>
     <string name="onboarding_title_welcome">Välkommen</string>
     <string name="onboarding_title_theme">Teman</string>
-    <string name="onboarding_title_permissions">Tillstånd</string>
+    <string name="onboarding_title_permissions">Behörigheter</string>
     <string name="onboarding_title_installer">Installatör</string>
     <string name="onboarding_title_accent">Dialekt</string>
     <string name="onboarding_theme_select">Välj det du tycker om</string>
@@ -94,7 +94,7 @@
     <string name="notification_channel_alert">Snabb avisering</string>
     <string name="dialog_title_self_update">Ny uppdatering tillgänglig</string>
     <string name="device_miui_title">MIUI upptäckt!</string>
-    <string name="menu_terms">Tjänstevillkor</string>
+    <string name="menu_terms">Villkor för användning</string>
     <string name="menu_license">Licens</string>
     <string name="installer_status_user_action">Väntar på användarens bekräftelse</string>
     <string name="installer_status_failure_storage">Otillräckligt minnesutrymme</string>
@@ -126,7 +126,7 @@
     <string name="download_pause_all">Pausa alla</string>
     <string name="download_none">Inga nerladdningar</string>
     <string name="download_metadata">Hämtar metadata</string>
-    <string name="download_failed">Nerladdningen misslyckades</string>
+    <string name="download_failed">Hämtningen misslyckades</string>
     <string name="download_eta_calculating">Beräknar</string>
     <string name="download_completed">Hämtningen slutförd</string>
     <string name="download_clear_completed">Rensa bort slutförda</string>
@@ -134,7 +134,7 @@
     <string name="download_cancel_all">Avbryt alla</string>
     <string name="details_think_this_app">Vad tycker du om den här appen\?</string>
     <string name="details_privacy">Integritet</string>
-    <string name="details_permission">Tillstånd</string>
+    <string name="details_permission">Behörighet</string>
     <string name="details_no_updates">Inga uppdateringar tillgängliga</string>
     <string name="details_no_dependencies">Inga beroenden</string>
     <string name="details_no_ads">Inga annonser</string>
@@ -353,8 +353,11 @@
     <string name="notification_updates_available_1"><xliff:g id="apps_count">%1$d</xliff:g> uppdatering tillgänglig</string>
     <string name="check_connectivity">Kolla anslutbarheten mot internet</string>
     <string name="app_links_title">App-länkar</string>
-    <string name="toast_import_success">Enhetens konfiguration importerades</string>
+    <string name="toast_import_success">Enhetskonfigurationen importerades</string>
     <string name="rate_limited">Hoppsan, det här kontot är hastighetsbegränsat!</string>
     <string name="notification_channel_updates">Aviseringar om uppdateringar</string>
     <string name="permissions_denied">Tillstånd som behövs nekades. Vänligen godkänn dessa för att fortsätta åtgärden</string>
+    <string name="pref_install_mode_shizuku">Installationsprogram för Shizuku</string>
+    <string name="amazon_appstore_desc">Amazon Appstore är en app-butik för Android-kompatibla plattformar som sköts av Amazon.</string>
+    <string name="android_market_desc">Android Market som gick i pension 2017 var en nätbaserad butik som erbjöd mjukvaru-applikationer gjorda för Android-enheter.</string>
 </resources>

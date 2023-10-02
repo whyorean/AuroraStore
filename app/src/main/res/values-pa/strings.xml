@@ -69,7 +69,7 @@
     <string name="pref_ui_title">ਪਸੰਦੀਦਾ ਇੰਟਰਫੇਸ</string>
     <string name="pref_ui_theme_title">ਥੀਮ</string>
     <string name="pref_ui_theme_system">ਸਿਸਟਮ ਅਨੁਸਾਰ</string>
-    <string name="pref_ui_theme_light">ਸਫੈਦ</string>
+    <string name="pref_ui_theme_light">ਸਫ਼ੈਦ</string>
     <string name="pref_ui_theme_darkord">ਡਿਸਕੌਰਡ</string>
     <string name="pref_ui_theme_dark_x">ਗੂੜ੍ਹਾ X</string>
     <string name="pref_ui_theme_dark">ਗੂੜ੍ਹਾ</string>
@@ -330,7 +330,7 @@
     <string name="ui_accent_8">ਗੁਲਾਬੀ</string>
     <string name="ui_accent_9">ਨਿੰਬੂ ਰੰਗਾ</string>
     <string name="ui_accent_10">ਸੰਤਰੀ</string>
-    <string name="ui_accent_11">ਅਸਮਾਨੀ ਨੀਲਾ</string>
+    <string name="ui_accent_11">ਹਲਕਾ ਨੀਲਾ</string>
     <string name="ui_accent_12">ਵੈਂਗਣੀ ਨੀਲਾ</string>
     <string name="pref_updates_check_desc">ਸਮੇਂ-ਸਮੇਂ \'ਤੇ ਨਵੇਂ ਐਪ ਅੱਪਡੇਟ ਲਈ ਆਟੋਮੈਟਿਕ ਜਾਂਚ ਕਰੋ ਅਤੇ ਸੂਚਿਤ ਕਰੋ</string>
     <string name="notification_updates_available_desc_3"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g> ਅਤੇ <xliff:g id="app_three_name">%3$s</xliff:g></string>

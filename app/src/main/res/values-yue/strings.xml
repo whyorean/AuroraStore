@@ -135,7 +135,7 @@
     <string name="installer_status_failure_incompatible">個 app 唔兼容</string>
     <string name="onboarding_tos_desc">請詳閱我哋嘅《服務條款》，同意嘅話先至用得 Aurora Store。</string>
     <string name="purchase_failed">下載失敗</string>
-    <string name="session_login">您要登入咗先</string>
+    <string name="session_login">登入先再講</string>
     <string name="title_settings">設定</string>
     <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>
     <string name="action_granted">畀咗權限</string>
@@ -208,4 +208,38 @@
     <string name="ui_accent_8">粉紅</string>
     <string name="ui_accent_10">橙色</string>
     <string name="installer_shizuku_unavailable">Shizuku 未安裝或者未設定好。</string>
+    <string name="check_connectivity">睇下上唔上到網</string>
+    <string name="failed_generating_session">產生唔到工作階段，錯誤碼：<xliff:g id="status_code">%1$d</xliff:g></string>
+    <string name="toast_aas_token_failed">產生唔到 AAS 權仗</string>
+    <string name="failed_to_generate_session">產生唔到工作階段</string>
+    <string name="session_verifying">驗證緊工作階段</string>
+    <string name="toast_rated_failed">遞交唔到評分</string>
+    <string name="notification_updates_available_desc_1"><xliff:g id="app_one_name">%1$s</xliff:g> 出咗更新喇</string>
+    <string name="action_enable">啟用</string>
+    <string name="pref_filter_fdroid_title">飛起 F-Droid 啲 app</string>
+    <string name="checking_for_updates">睇緊有冇更新</string>
+    <string name="exodus_progress">檢查緊有冇追蹤器…</string>
+    <string name="update_available">個更新出咗喇</string>
+    <string name="toast_page_unavailable">遊覽頁欠奉</string>
+    <string name="installer_status_failure_session">建立唔到工作階段</string>
+    <string name="session_login_failed_google">用 Google 登入唔到</string>
+    <string name="pref_network_title">上網</string>
+    <string name="exodus_no_tracker">未有內藏追蹤器</string>
+    <string name="updates_available">個更新出咗喇</string>
+    <string name="toast_purchase_blocked">無名氏帳戶冇得用 App 購買。</string>
+    <string name="failed_to_fetch_report">攞唔到私隱報告</string>
+    <string name="pref_ui_layout_tab">揀選預設分頁</string>
+    <string name="verifying_new_session">驗證緊新嘅工作階段</string>
+    <string name="action_enabled">已啟用</string>
+    <string name="toast_anonymous_restriction">無名氏帳戶冇得用</string>
+    <string name="details_think_this_app">呢個 app 您點睇？</string>
+    <string name="session_init">幫緊您幫緊您…</string>
+    <string name="toast_manual_unavailable">您請求嘅版本號欠奉。</string>
+    <string name="session_verifying_google">驗證緊 Google 工作階段</string>
+    <string name="pref_filter_google_title">飛起 Google 啲 app</string>
+    <string name="notification_updates_available"><xliff:g id="apps_count">%1$d</xliff:g> 個更新出咗喇</string>
+    <string name="exodus_substring">個追蹤器發現潛伏喺</string>
+    <string name="exodus_powered">由 Exodus 技術協力</string>
+    <string name="app_language">個 App 用咩文</string>
+    <string name="notification_updates_available_1"><xliff:g id="apps_count">%1$d</xliff:g> 個更新出咗喇</string>
 </resources>
