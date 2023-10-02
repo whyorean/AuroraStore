@@ -28,12 +28,10 @@ import android.os.Bundle
 import android.os.Environment
 import android.os.IBinder
 import android.provider.Settings
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import com.aurora.extensions.isRAndAbove
 import com.aurora.extensions.toast
 import com.aurora.gplayapi.data.models.App
@@ -55,11 +53,14 @@ import com.tonyodev.fetch2.AbstractFetchGroupListener
 import com.tonyodev.fetch2.Download
 import com.tonyodev.fetch2.FetchGroup
 
-class UpdatesFragment : BaseFragment() {
+class UpdatesFragment : BaseFragment(R.layout.fragment_updates) {
 
-    private lateinit var B: FragmentUpdatesBinding
-    private lateinit var VM: UpdatesViewModel
     private lateinit var app: App
+
+    private var _binding: FragmentUpdatesBinding? = null
+    private val binding get() = _binding!!
+
+    private val viewModel: UpdatesViewModel by viewModels()
 
     private val startForStorageManagerResult =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
@@ -101,58 +102,6 @@ class UpdatesFragment : BaseFragment() {
 
     private var updateFileMap: MutableMap<Int, UpdateFile> = mutableMapOf()
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        B = FragmentUpdatesBinding.bind(
-            inflater.inflate(
-                R.layout.fragment_updates,
-                container,
-                false
-            )
-        )
-
-        VM = ViewModelProvider(requireActivity()).get(UpdatesViewModel::class.java)
-
-
-        fetchListener = object : AbstractFetchGroupListener() {
-
-            override fun onAdded(groupId: Int, download: Download, fetchGroup: FetchGroup) {
-                VM.updateDownload(groupId, fetchGroup)
-            }
-
-            override fun onProgress(
-                groupId: Int,
-                download: Download,
-                etaInMilliSeconds: Long,
-                downloadedBytesPerSecond: Long,
-                fetchGroup: FetchGroup
-            ) {
-                VM.updateDownload(groupId, fetchGroup)
-            }
-
-            override fun onCompleted(groupId: Int, download: Download, fetchGroup: FetchGroup) {
-                if (fetchGroup.groupDownloadProgress == 100) {
-                    VM.updateDownload(groupId, fetchGroup, isComplete = true)
-                }
-            }
-
-            override fun onCancelled(groupId: Int, download: Download, fetchGroup: FetchGroup) {
-                VM.updateDownload(groupId, fetchGroup, isCancelled = true)
-            }
-
-            override fun onDeleted(groupId: Int, download: Download, fetchGroup: FetchGroup) {
-                VM.updateDownload(groupId, fetchGroup, isCancelled = true)
-            }
-        }
-
-        getUpdateServiceInstance()
-
-        return B.root
-    }
-
     override fun onResume() {
         getUpdateServiceInstance()
         super.onResume()
@@ -167,6 +116,11 @@ class UpdatesFragment : BaseFragment() {
         super.onPause()
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
     override fun onDestroy() {
         super.onDestroy()
         if (updateService != null) {
@@ -178,23 +132,57 @@ class UpdatesFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        _binding = FragmentUpdatesBinding.bind(view)
 
-        VM.liveUpdateData.observe(viewLifecycleOwner) {
+        fetchListener = object : AbstractFetchGroupListener() {
+
+            override fun onAdded(groupId: Int, download: Download, fetchGroup: FetchGroup) {
+                viewModel.updateDownload(groupId, fetchGroup)
+            }
+
+            override fun onProgress(
+                groupId: Int,
+                download: Download,
+                etaInMilliSeconds: Long,
+                downloadedBytesPerSecond: Long,
+                fetchGroup: FetchGroup
+            ) {
+                viewModel.updateDownload(groupId, fetchGroup)
+            }
+
+            override fun onCompleted(groupId: Int, download: Download, fetchGroup: FetchGroup) {
+                if (fetchGroup.groupDownloadProgress == 100) {
+                    viewModel.updateDownload(groupId, fetchGroup, isComplete = true)
+                }
+            }
+
+            override fun onCancelled(groupId: Int, download: Download, fetchGroup: FetchGroup) {
+                viewModel.updateDownload(groupId, fetchGroup, isCancelled = true)
+            }
+
+            override fun onDeleted(groupId: Int, download: Download, fetchGroup: FetchGroup) {
+                viewModel.updateDownload(groupId, fetchGroup, isCancelled = true)
+            }
+        }
+
+        getUpdateServiceInstance()
+
+        viewModel.liveUpdateData.observe(viewLifecycleOwner) {
             updateFileMap = it
             updateController(updateFileMap)
-            B.swipeRefreshLayout.isRefreshing = false
+            binding.swipeRefreshLayout.isRefreshing = false
             updateService?.liveUpdateData?.postValue(updateFileMap)
         }
 
-        B.swipeRefreshLayout.setOnRefreshListener {
-            VM.observe()
+        binding.swipeRefreshLayout.setOnRefreshListener {
+            viewModel.observe()
         }
 
         updateController(null)
     }
 
     private fun updateController(updateFileMap: MutableMap<Int, UpdateFile>?) {
-        B.recycler.withModels {
+        binding.recycler.withModels {
             setFilterDuplicates(true)
             if (updateFileMap == null) {
                 for (i in 1..6) {
@@ -215,20 +203,21 @@ class UpdatesFragment : BaseFragment() {
                     add(
                         UpdateHeaderViewModel_()
                             .id("header_all")
-                            .title("${updateFileMap.size} " +
-                                if (updateFileMap.size == 1)
-                                    getString(R.string.update_available)
-                                else
-                                    getString(R.string.updates_available)
+                            .title(
+                                "${updateFileMap.size} " +
+                                        if (updateFileMap.size == 1)
+                                            getString(R.string.update_available)
+                                        else
+                                            getString(R.string.updates_available)
                             )
                             .action(
-                                if (VM.updateAllEnqueued)
+                                if (viewModel.updateAllEnqueued)
                                     getString(R.string.action_cancel)
                                 else
                                     getString(R.string.action_update_all)
                             )
                             .click { _ ->
-                                if (VM.updateAllEnqueued)
+                                if (viewModel.updateAllEnqueued)
                                     cancelAll()
                                 else
                                     updateFileMap.values.forEach { updateSingle(it.app, true) }
@@ -256,7 +245,11 @@ class UpdatesFragment : BaseFragment() {
                                 .negativeAction { _ -> cancelSingle(updateFile.app) }
                                 .installAction { _ ->
                                     updateFile.group?.downloads?.let {
-                                        VM.install(requireContext(), updateFile.app.packageName, it)
+                                        viewModel.install(
+                                            requireContext(),
+                                            updateFile.app.packageName,
+                                            it
+                                        )
                                     }
                                 }
                                 .state(updateFile.state)
@@ -267,7 +260,7 @@ class UpdatesFragment : BaseFragment() {
         }
     }
 
-    fun runInService(runnable: Runnable) {
+    private fun runInService(runnable: Runnable) {
         if (updateService == null) {
             listOfActionsWhenServiceAttaches.add(runnable)
             getUpdateServiceInstance()
@@ -279,11 +272,12 @@ class UpdatesFragment : BaseFragment() {
     private fun updateSingle(app: App, updateAll: Boolean = false) {
         this.app = app
         runInService {
-            VM.updateState(app.getGroupId(requireContext()), State.QUEUED)
-            VM.updateAllEnqueued = updateAll
+            viewModel.updateState(app.getGroupId(requireContext()), State.QUEUED)
+            viewModel.updateAllEnqueued = updateAll
 
             if (PathUtil.needsStorageManagerPerm(app.fileList) ||
-                requireContext().isExternalStorageEnable()) {
+                requireContext().isExternalStorageEnable()
+            ) {
                 if (isRAndAbove()) {
                     if (!Environment.isExternalStorageManager()) {
                         startForStorageManagerResult.launch(
@@ -317,12 +311,18 @@ class UpdatesFragment : BaseFragment() {
 
     private fun cancelAll() {
         runInService {
-            VM.updateAllEnqueued = false
-            updateFileMap.values.forEach { updateService?.fetch?.cancelGroup(it.app.getGroupId(requireContext())) }
+            viewModel.updateAllEnqueued = false
+            updateFileMap.values.forEach {
+                updateService?.fetch?.cancelGroup(
+                    it.app.getGroupId(
+                        requireContext()
+                    )
+                )
+            }
         }
     }
 
-    fun getUpdateServiceInstance() {
+    private fun getUpdateServiceInstance() {
         if (updateService == null && !attachToServiceCalled) {
             attachToServiceCalled = true
             val intent = Intent(requireContext(), UpdateService::class.java)
