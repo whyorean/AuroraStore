@@ -34,7 +34,6 @@ import com.aurora.store.data.RequestState
 import com.aurora.store.data.network.HttpClient
 import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.viewmodel.BaseAndroidViewModel
-import java.util.UUID
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.supervisorScope

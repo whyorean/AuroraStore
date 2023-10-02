@@ -24,7 +24,6 @@ import android.app.Application
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.os.Build
-import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.ContextCompat
 import com.aurora.Constants
 import com.aurora.extensions.isPAndAbove

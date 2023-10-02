@@ -103,12 +103,12 @@ import com.tonyodev.fetch2.FetchGroup
 import com.tonyodev.fetch2.FetchGroupListener
 import com.tonyodev.fetch2.Status
 import com.tonyodev.fetch2core.DownloadBlock
-import java.io.File
-import java.util.Locale
 import kotlinx.coroutines.launch
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
+import java.io.File
+import java.util.Locale
 
 class AppDetailsFragment : BaseFragment(R.layout.fragment_details) {
 

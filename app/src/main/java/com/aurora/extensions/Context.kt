@@ -37,7 +37,6 @@ import androidx.core.app.ActivityOptionsCompat
 import androidx.core.app.ShareCompat
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toBitmap
-import androidx.navigation.NavDeepLinkBuilder
 import com.aurora.Constants
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.MainActivity

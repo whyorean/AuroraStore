@@ -54,10 +54,8 @@ import com.aurora.extensions.accentColor
 import com.aurora.extensions.applyThemeAccent
 import com.aurora.extensions.isRAndAbove
 import com.aurora.extensions.toast
-import com.aurora.gplayapi.data.models.AuthData
 import com.aurora.store.data.model.NetworkStatus
 import com.aurora.store.data.model.SelfUpdate
-import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.data.providers.NetworkProvider
 import com.aurora.store.databinding.ActivityMainBinding
 import com.aurora.store.util.Log
