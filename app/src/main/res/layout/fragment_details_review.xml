@@ -42,6 +42,7 @@
             android:paddingStart="@dimen/margin_normal"
             android:paddingEnd="@dimen/margin_normal"
             app:checkedChip="@id/filter_review_all"
+            app:selectionRequired="true"
             app:singleLine="true"
             app:singleSelection="true">
 
