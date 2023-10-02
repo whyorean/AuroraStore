@@ -117,28 +117,28 @@ android {
 dependencies {
 
     //Protobuf
-    implementation("com.google.protobuf:protobuf-javalite:3.22.3")
+    implementation("com.google.protobuf:protobuf-javalite:3.24.2")
 
     //Google's Goodies
     implementation("com.google.android.material:material:1.9.0")
     implementation("com.google.code.gson:gson:2.10.1")
 
     //AndroidX
-    implementation("androidx.core:core-ktx:1.10.1")
+    implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.viewpager2:viewpager2:1.0.0")
     implementation("androidx.vectordrawable:vectordrawable:1.1.0")
     implementation("androidx.preference:preference-ktx:1.2.1")
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
 
     //Arch LifeCycle
-    val life_version = "2.6.1"
+    val life_version = "2.6.2"
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:$life_version")
     implementation("androidx.lifecycle:lifecycle-service:$life_version")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$life_version")
     implementation("androidx.lifecycle:lifecycle-viewmodel-savedstate:$life_version")
 
     //Arch Navigation
-    val nav_version = "2.7.0"
+    val nav_version = "2.7.3"
     implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
     implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
 
