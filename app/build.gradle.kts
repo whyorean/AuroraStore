@@ -31,10 +31,8 @@ plugins {
     id("dev.rikka.tools.refine")
 }
 
-java {
-    toolchain {
-        languageVersion.set(JavaLanguageVersion.of(17))
-    }
+kotlin {
+    jvmToolchain(17)
 }
 
 android {
