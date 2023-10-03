@@ -360,4 +360,6 @@
     <string name="google_play_store_desc">Google Play, ਜੋ ਕਿ Google Play Store ਅਤੇ ਪਹਿਲਾਂ Android Market ਵਜੋਂ ਵੀ ਜਾਣਿਆ ਜਾਂਦਾ ਹੈ।</string>
     <string name="amazon_appstore_desc">ਐਮੇਜ਼ੌਨ ਐਪਸਟੋਰ, ਐਮੇਜ਼ੌਨ ਦੁਆਰਾ ਸੰਚਾਲਿਤ ਐਂਡਰਾਇਡ ਪਲੇਟਫਾਰਮਾਂ ਲਈ ਇੱਕ ਐਪ ਸਟੋਰ ਹੈ।</string>
     <string name="android_market_desc">ਐਂਡਰਾਇਡ ਮਾਰਕੀਟ ਐਂਡਰੌਇਡ ਡਿਵਾਈਸਾਂ ਲਈ ਡਿਜ਼ਾਈਨ ਕੀਤੀਆਂ ਗਈਆਂ ਸਾਫ਼ਟਵੇਅਰ ਐਪਲੀਕੇਸ਼ਨਾਂ ਪੇਸ਼ ਕਰਨ ਵਾਲਾ ਇੱਕ ਆਨਲਾਈਨ ਸਟੋਰ ਸੀ, ਜੋ 2017 ਵਿੱਚ ਬੰਦ ਹੋ ਗਿਆ।</string>
+    <string name="pref_advanced_use_web_api_desc">ਗੂਗਲ ਪਲੇਅ ਨੂੰ ਬੇਨਤੀ ਕਰਨ ਵੇਲੇ ਜਿੱਥੇ ਵੀ ਸੰਭਵ ਹੋਵੇ ਵੈੱਬ API \'ਤੇ ਸਵਿਚ ਕਰਦਾ ਹੈ (ਗੁੰਮਨਾਮਤਾ ਵਧਾਉਂਦਾ ਹੈ, ਪਰ ਅਸਥਿਰ ਹੋ ਸਕਦਾ ਹੈ)।</string>
+    <string name="pref_advanced_use_web_api">ਵੈੱਬ API ਦੀ ਵਰਤੋਂ ਕਰੋ</string>
 </resources>

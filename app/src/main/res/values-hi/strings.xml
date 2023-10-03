@@ -360,4 +360,6 @@
     <string name="google_play_store_desc">Google Play, जिसे Google Play Store और पूर्व में Android Market के नाम से भी जाना जाता है।</string>
     <string name="amazon_appstore_desc">अमेज़ोॅन ऐपस्टोर अमेज़ोॅन द्वारा संचालित एंड्रॉइड-संगत प्लेटफार्मों के लिए एक ऐप स्टोर है।</string>
     <string name="android_market_desc">एंड्रॉइड मार्केट एंड्रॉइड डिवाइसों के लिए डिज़ाइन किए गए सॉफ़्टवेयर एप्लिकेशन पेश करने वाला एक ऑनलाइन स्टोर था, जो 2017 में बंद हो गया।</string>
+    <string name="pref_advanced_use_web_api_desc">गूगल प्ले पर अनुरोध करते समय जहां भी संभव हो वेब एपीआई पर स्विच करता है (गुमनामता बढ़ाता है, लेकिन अस्थिर हो सकता है)।</string>
+    <string name="pref_advanced_use_web_api">वेब एपीआई का इस्तेमाल करें</string>
 </resources>
