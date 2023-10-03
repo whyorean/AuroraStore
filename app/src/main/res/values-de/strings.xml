@@ -361,4 +361,6 @@
     <string name="google_play_store_desc">Google Play, auch bekannt als Google Play Store (ehemals Android Market).</string>
     <string name="amazon_appstore_desc">Amazon Appstore ist ein von Amazon betriebener App-Store für Android-kompatible Plattformen.</string>
     <string name="android_market_desc">Android Market war ein Online-Store, der Softwareanwendungen für Android-Geräte anbot und 2017 eingestellt wurde.</string>
+    <string name="pref_advanced_use_web_api_desc">Wenn möglich, wird auf Web-APIs umgeschaltet, wenn eine Anfrage an Google Play gestellt wird (erhöht die Anonymität, kann aber instabil sein).</string>
+    <string name="pref_advanced_use_web_api">Web-APIs verwenden</string>
 </resources>
