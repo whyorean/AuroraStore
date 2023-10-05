@@ -360,4 +360,6 @@
     <string name="action_enable">Ativar</string>
     <string name="amazon_appstore_desc">Amazon Appstore é uma loja de apps para dispositivos compatíveis com Android operada pela Amazon.</string>
     <string name="android_market_desc">Android Market foi uma loja on-line que oferecia aplicativos de software feitos para dispositivos Android, fechada em 2017.</string>
+    <string name="pref_advanced_use_web_api_desc">Muda para APIs Web sempre que possível ao fazer uma solicitação ao Google Play (aumenta a anonimidade, mas pode ser instável.)</string>
+    <string name="pref_advanced_use_web_api">Usar APIs Web</string>
 </resources>
