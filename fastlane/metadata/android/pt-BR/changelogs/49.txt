@@ -1,0 +1,4 @@
+• Grandes mudanças internas relativas à interface de usuário
+• Permite usuários ativarem os links do app durante a configuração inicial
+• Atualizações de traduções
+• Pequenas correções de bugs e melhorias
