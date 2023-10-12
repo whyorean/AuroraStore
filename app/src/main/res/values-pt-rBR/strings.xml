@@ -321,7 +321,7 @@
     <string name="session_enjoy">Faça login e aproveite.</string>
     <string name="session_verifying_google">Verificando sessão Google</string>
     <string name="title_advanced">Avançado</string>
-    <string name="toast_import_failed">Não foi possível importar configurações do dispositivo</string>
+    <string name="toast_import_failed">Não foi possível importar as configurações do dispositivo</string>
     <string name="toast_import_success">Configurações do dispositivo importadas</string>
     <string name="requesting_new_session">Solicitando nova sessão</string>
     <string name="server_maintenance">Servidor indisponível por manutenção</string>

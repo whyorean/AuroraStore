@@ -358,4 +358,6 @@
     <string name="verifying_new_session">Pārbauda jauno sesiju</string>
     <string name="action_enabled">Iespējots</string>
     <string name="android_market_desc">Android Market bija tiešsaistes veikals, kas piedāvāja lietotnes, kas ir paredzētas Android ierīcēm, pārstāja darboties 2017. gadā.</string>
+    <string name="pref_advanced_use_web_api_desc">Pārslēdzas uz tīmekļa API, kad vien tas ir iespējams, kad tiek veikts pieprasījums Google Play (palielina anonimitāti, bet var darboties nepastāvīgi).</string>
+    <string name="pref_advanced_use_web_api">Izmantot tīmekļa API</string>
 </resources>
