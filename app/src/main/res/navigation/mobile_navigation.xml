@@ -393,11 +393,6 @@
             app:destination="@id/deviceMiuiSheet" />
     </fragment>
     <dialog
-        android:id="@+id/TOSSheet"
-        android:name="com.aurora.store.view.ui.sheets.TOSSheet"
-        android:label="TOSSheet"
-        tools:layout="@layout/sheet_tos" />
-    <dialog
         android:id="@+id/appMenuSheet"
         android:name="com.aurora.store.view.ui.sheets.AppMenuSheet"
         android:label="AppMenuSheet"

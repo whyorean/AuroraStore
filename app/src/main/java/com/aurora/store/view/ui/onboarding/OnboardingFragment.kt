@@ -114,10 +114,6 @@ class OnboardingFragment : Fragment(R.layout.fragment_onboarding) {
         binding.btnBackward.setOnClickListener {
             binding.viewpager2.setCurrentItem(binding.viewpager2.currentItem - 1, true)
         }
-
-        if (!Preferences.getBoolean(view.context, Preferences.PREFERENCE_TOS_READ)) {
-            findNavController().navigate(R.id.TOSSheet)
-        }
     }
 
     override fun onDestroyView() {
