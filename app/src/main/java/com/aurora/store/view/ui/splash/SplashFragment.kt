@@ -27,6 +27,7 @@ import androidx.navigation.fragment.findNavController
 import coil.load
 import coil.transform.RoundedCornersTransformation
 import com.aurora.extensions.hide
+import com.aurora.extensions.isValidPackageName
 import com.aurora.extensions.show
 import com.aurora.store.R
 import com.aurora.store.data.AuthState
@@ -227,7 +228,8 @@ class SplashFragment : BaseFragment(R.layout.fragment_splash) {
         } else if (activity?.intent != null && activity?.intent?.action == Intent.ACTION_SEND) {
             val clipData = requireActivity().intent.clipData?.getItemAt(0)?.text.toString()
             if (clipData.contains("/store/apps/details?id=")) {
-                clipData.split("id=").last().trim()
+                val packageName = clipData.split("id=").last().trim()
+                if (isValidPackageName(packageName)) packageName else ""
             } else {
                 ""
             }

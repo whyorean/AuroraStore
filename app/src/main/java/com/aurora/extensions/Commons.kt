@@ -38,3 +38,8 @@ fun Throwable.stackTraceToString(): String {
     printWriter.close()
     return stringWriter.toString()
 }
+
+fun isValidPackageName(packageName: String): Boolean {
+    val packageRegex = "^[a-zA-Z][a-zA-Z0-9_]*(\\.[a-zA-Z][a-zA-Z0-9_]*)*$".toRegex()
+    return packageName.matches(packageRegex)
+}
