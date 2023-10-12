@@ -28,7 +28,6 @@ import com.aurora.gplayapi.data.models.AuthData
 import com.aurora.gplayapi.data.models.SearchBundle
 import com.aurora.gplayapi.helpers.WebSearchHelper
 import com.aurora.store.data.RequestState
-import com.aurora.store.data.network.HttpClient
 import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.viewmodel.BaseAndroidViewModel
 import kotlinx.coroutines.Dispatchers
@@ -42,8 +41,7 @@ class SearchResultViewModel(application: Application) : BaseAndroidViewModel(app
         .with(application)
         .getAuthData()
 
-    private val searchHelper = WebSearchHelper(authData)
-        .using(HttpClient.getPreferredClient())
+    private val searchHelper: WebSearchHelper = WebSearchHelper(authData)
 
     val liveData: MutableLiveData<SearchBundle> = MutableLiveData()
 

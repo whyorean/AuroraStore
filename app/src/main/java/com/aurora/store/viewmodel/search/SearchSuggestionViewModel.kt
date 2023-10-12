@@ -26,7 +26,6 @@ import androidx.lifecycle.viewModelScope
 import com.aurora.gplayapi.SearchSuggestEntry
 import com.aurora.gplayapi.data.models.AuthData
 import com.aurora.gplayapi.helpers.WebSearchHelper
-import com.aurora.store.data.network.HttpClient
 import com.aurora.store.data.providers.AuthProvider
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -37,8 +36,7 @@ class SearchSuggestionViewModel(application: Application) : AndroidViewModel(app
         .with(application)
         .getAuthData()
 
-    private val searchHelper = WebSearchHelper(authData)
-        .using(HttpClient.getPreferredClient())
+    private val searchHelper: WebSearchHelper = WebSearchHelper(authData)
 
     val liveSearchSuggestions: MutableLiveData<List<SearchSuggestEntry>> = MutableLiveData()
 
