@@ -262,7 +262,10 @@ class SearchResultsFragment : BaseFragment(R.layout.fragment_search_result),
         })
 
         searchView.setOnEditorActionListener { _: TextView?, actionId: Int, _: KeyEvent? ->
-            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+            if (actionId == EditorInfo.IME_ACTION_SEARCH
+                || actionId == KeyEvent.ACTION_DOWN
+                || actionId == KeyEvent.KEYCODE_ENTER
+            ) {
                 query = searchView.text.toString()
                 query?.let {
                     queryViewModel(it)
