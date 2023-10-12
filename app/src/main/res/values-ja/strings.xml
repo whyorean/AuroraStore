@@ -299,8 +299,6 @@
     <string name="download_eta_hrs">残り%1$d時間%2$d分%3$d秒</string>
     <string name="download_eta_min">残り%1$d分%2$d秒</string>
     <string name="download_eta_sec">残り%1$d秒</string>
-    <string name="pref_advanced_search_in_ctt">カスタムタブで検索</string>
-    <string name="pref_advanced_search_in_ctt_desc">ブラウザのカスタムタブで検索結果を開く</string>
     <string name="session_enjoy">ログインしてお楽しみください。</string>
     <string name="update_available">更新があります</string>
     <string name="session_verifying_google">Googleセッションを認証中</string>

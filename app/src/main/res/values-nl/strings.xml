@@ -306,7 +306,6 @@
     <string name="download_progress">Aan het downloaden • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
     <string name="installer_shizuku_unavailable">Shizuku is niet geïnstalleerd of niet goed ingesteld.</string>
     <string name="onboarding_permission_notifications">Meldingen</string>
-    <string name="pref_advanced_search_in_ctt_desc">Opent zoekresultaten in een aangepast tabblad van een browser</string>
     <string name="session_login">U moet eerst aanmelden</string>
     <string name="session_login_failed_google">Aanmelden via Google mislukt</string>
     <string name="toast_import_success">Apparaatconfiguratie geïmporteerd</string>
@@ -320,7 +319,6 @@
     <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>
     <string name="onboarding_permission_notifications_desc">Meldingen voor de status van installaties verzenden</string>
     <string name="pref_install_mode_shizuku">Shizuku installatieprogramma</string>
-    <string name="pref_advanced_search_in_ctt">Zoeken in aangepaste tabblad</string>
     <string name="session_enjoy">Aanmelden en genieten.</string>
     <string name="session_good">Wow! Alles goed.</string>
     <string name="session_init">Voorbereiden…</string>

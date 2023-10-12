@@ -309,14 +309,12 @@
     <string name="download_eta_min">Pozostało %1$dm %2$ds</string>
     <string name="onboarding_permission_notifications">Powiadomienia</string>
     <string name="onboarding_permission_notifications_desc">Wysyłaj powiadomienia o stanie instalacji</string>
-    <string name="pref_advanced_search_in_ctt_desc">Otwiera wyniki wyszukiwania w niestandardowej karcie przeglądarki</string>
     <string name="search_hint">Szukaj gier i aplikacji</string>
     <string name="session_verifying">Weryfikacja sesji</string>
     <string name="session_verifying_google">Weryfikacja sesji Google</string>
     <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>
     <string name="session_good">Łał! Wszystko dobrze.</string>
     <string name="session_login">Najpierw zaloguj się</string>
-    <string name="pref_advanced_search_in_ctt">Szukaj w niestandardowej karcie</string>
     <string name="session_init">Przygotowuję…</string>
     <string name="session_scrapped">Ostatnia sesja została zezłomowana</string>
     <string name="rate_limited">Ups, to konto ma ograniczoną liczbę żądań!</string>
@@ -360,6 +358,4 @@
     <string name="app_link_enabled">Link do aplikacji włączony!</string>
     <string name="amazon_appstore_desc">Amazon Appstore to sklep z aplikacjami dla platform kompatybilnych z systemem Android obsługiwany przez Amazon.</string>
     <string name="android_market_desc">Android Market był sklepem internetowym oferującym aplikacje przeznaczone na urządzenia z systemem Android, wycofanym w 2017 roku.</string>
-    <string name="pref_advanced_use_web_api_desc">Jeśli to możliwe, przełącza się na Web API podczas wysyłania żądania do Google Play (zwiększa anonimowość, ale może działać niestabilnie).</string>
-    <string name="pref_advanced_use_web_api">Użyj Web API</string>
 </resources>

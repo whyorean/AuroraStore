@@ -249,10 +249,6 @@
     <string name="pref_ui_similar_apps_desc">"Display similar and related clusters on app details page"</string>
     <string name="pref_updates_extended">Extended updates</string>
     <string name="pref_updates_extended_desc">Looks for new versions of disabled apps too</string>
-    <string name="pref_advanced_search_in_ctt">Search in Custom Tab</string>
-    <string name="pref_advanced_search_in_ctt_desc">Opens search results in a browser\'s custom tab</string>
-    <string name="pref_advanced_use_web_api">Use Web APIs</string>
-    <string name="pref_advanced_use_web_api_desc">Switches to Web APIs wherever possible when making a request to Google Play (Increases anonymity, but can be unstable).</string>
     <string name="purchase_failed">"Download Failed"</string>
     <string name="purchase_invalid">"App not purchased"</string>
     <string name="purchase_unsupported">"App not supported"</string>

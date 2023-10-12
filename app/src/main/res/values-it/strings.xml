@@ -322,8 +322,6 @@
     <string name="download_eta_hrs">%1$d o %2$d min %3$d s rimasti</string>
     <string name="download_eta_min">%1$d min %2$d s rimasti</string>
     <string name="download_eta_sec">%1$d s rimasti</string>
-    <string name="pref_advanced_search_in_ctt">Ricerca nella scheda personalizzata</string>
-    <string name="pref_advanced_search_in_ctt_desc">Apre i risultati della ricerca in una scheda personalizzata del browser</string>
     <string name="session_enjoy">Accedi e goditi.</string>
     <string name="session_good">Wow! Tutto bene.</string>
     <string name="session_init">Preparazione delle cose…</string>

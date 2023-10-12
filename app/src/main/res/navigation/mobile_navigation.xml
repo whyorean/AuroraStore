@@ -102,11 +102,6 @@
         android:label="@string/title_settings"
         tools:layout="@layout/fragment_setting" />
     <fragment
-        android:id="@+id/advancedPreference"
-        android:name="com.aurora.store.view.ui.preferences.AdvancedPreference"
-        android:label="AdvancedPreference"
-        tools:layout="@layout/fragment_setting" />
-    <fragment
         android:id="@+id/downloadPreference"
         android:name="com.aurora.store.view.ui.preferences.DownloadPreference"
         android:label="DownloadPreference"

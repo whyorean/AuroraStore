@@ -284,7 +284,6 @@
     <string name="ui_accent_7">Grå</string>
     <string name="ui_accent_1">Blå</string>
     <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>
-    <string name="pref_advanced_search_in_ctt">Søk i egendefinert fane</string>
     <string name="session_verifying">Bekrefter økt …</string>
     <string name="ui_accent_0">System</string>
     <string name="session_login">Logg inn først</string>

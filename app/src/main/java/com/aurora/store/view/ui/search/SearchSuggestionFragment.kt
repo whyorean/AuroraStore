@@ -141,17 +141,9 @@ class SearchSuggestionFragment : Fragment(R.layout.fragment_search_suggestion) {
     }
 
     private fun search(query: String) {
-        if (Preferences.getBoolean(
-                requireContext(),
-                Preferences.PREFERENCE_ADVANCED_SEARCH_IN_CTT
-            )
-        ) {
-            requireContext().browse("${Constants.PLAY_QUERY_URL}$query", true)
-        } else {
-            findNavController().navigate(
-                SearchSuggestionFragmentDirections
-                    .actionSearchSuggestionFragmentToSearchResultsFragment(query)
-            )
-        }
+        findNavController().navigate(
+            SearchSuggestionFragmentDirections
+                .actionSearchSuggestionFragmentToSearchResultsFragment(query)
+        )
     }
 }

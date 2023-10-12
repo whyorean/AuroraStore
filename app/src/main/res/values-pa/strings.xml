@@ -311,8 +311,6 @@
     <string name="permissions_denied">ਲੋੜੀਂਦੀਆਂ ਇਜਾਜ਼ਤਾਂ ਨੂੰ ਅਸਵੀਕਾਰ ਕੀਤਾ ਗਿਆ ਸੀ। ਕਿਰਪਾ ਕਰਕੇ ਕਾਰਵਾਈ ਜਾਰੀ ਰੱਖਣ ਲਈ ਉਹਨਾਂ ਨੂੰ ਮਨਜ਼ੂਰੀ ਦਿਓ</string>
     <string name="installer_shizuku_unavailable">Shizuku ਜਾਂ ਤਾਂ ਇੰਸਟਾਲ ਨਹੀਂ ਜਾਂ ਸਹੀ ਢੰਗ ਨਾਲ ਸੈੱਟਅੱਪ ਨਹੀਂ ਕੀਤਾ।</string>
     <string name="pref_install_mode_shizuku">Shizuku ਇੰਸਟਾਲਰ</string>
-    <string name="pref_advanced_search_in_ctt">ਕਸਟਮ ਟੈਬ ਵਿੱਚ ਖੋਜ ਕਰੋ</string>
-    <string name="pref_advanced_search_in_ctt_desc">ਬ੍ਰਾਊਜ਼ਰ ਕਸਟਮ ਟੈਬ ਵਿੱਚ ਖੋਜ ਨਤੀਜੇ ਖੋਲ੍ਹੋ</string>
     <string name="session_enjoy">ਲੌਗਇਨ ਕਰੋ ਤੇ ਆਨੰਦ ਮਾਣੋ।</string>
     <string name="session_good">ਵਾਹ! ਸਭ ਕੁਝ ਵਧੀਆ।</string>
     <string name="session_login">ਪਹਿਲਾਂ ਲਾਗ-ਇਨ ਕਰੋ</string>
@@ -360,6 +358,4 @@
     <string name="google_play_store_desc">Google Play, ਜੋ ਕਿ Google Play Store ਅਤੇ ਪਹਿਲਾਂ Android Market ਵਜੋਂ ਵੀ ਜਾਣਿਆ ਜਾਂਦਾ ਹੈ।</string>
     <string name="amazon_appstore_desc">ਐਮੇਜ਼ੌਨ ਐਪਸਟੋਰ, ਐਮੇਜ਼ੌਨ ਦੁਆਰਾ ਸੰਚਾਲਿਤ ਐਂਡਰਾਇਡ ਪਲੇਟਫਾਰਮਾਂ ਲਈ ਇੱਕ ਐਪ ਸਟੋਰ ਹੈ।</string>
     <string name="android_market_desc">ਐਂਡਰਾਇਡ ਮਾਰਕੀਟ ਐਂਡਰੌਇਡ ਡਿਵਾਈਸਾਂ ਲਈ ਡਿਜ਼ਾਈਨ ਕੀਤੀਆਂ ਗਈਆਂ ਸਾਫ਼ਟਵੇਅਰ ਐਪਲੀਕੇਸ਼ਨਾਂ ਪੇਸ਼ ਕਰਨ ਵਾਲਾ ਇੱਕ ਆਨਲਾਈਨ ਸਟੋਰ ਸੀ, ਜੋ 2017 ਵਿੱਚ ਬੰਦ ਹੋ ਗਿਆ।</string>
-    <string name="pref_advanced_use_web_api_desc">ਗੂਗਲ ਪਲੇਅ ਨੂੰ ਬੇਨਤੀ ਕਰਨ ਵੇਲੇ ਜਿੱਥੇ ਵੀ ਸੰਭਵ ਹੋਵੇ ਵੈੱਬ API \'ਤੇ ਸਵਿਚ ਕਰਦਾ ਹੈ (ਗੁੰਮਨਾਮਤਾ ਵਧਾਉਂਦਾ ਹੈ, ਪਰ ਅਸਥਿਰ ਹੋ ਸਕਦਾ ਹੈ)।</string>
-    <string name="pref_advanced_use_web_api">ਵੈੱਬ API ਦੀ ਵਰਤੋਂ ਕਰੋ</string>
 </resources>

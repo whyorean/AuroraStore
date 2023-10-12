@@ -208,8 +208,6 @@
     <string name="pref_install_mode_services">Servicii Aurora</string>
     <string name="pref_install_mode_summary">Selectează modul de instalare APK</string>
     <string name="pref_updates_extended_desc">Căutare actualizări și pentru aplicațiile dezactivate</string>
-    <string name="pref_advanced_search_in_ctt">Căutare în fila personalizată</string>
-    <string name="pref_advanced_search_in_ctt_desc">Deschide rezultatele căutării în fila personalizată a unui browser</string>
     <string name="purchase_session_expired">Sesiunea a expirat, autentifică-te din nou pentru a obține o nouă sesiune.</string>
     <string name="session_login_failed_google">Nu s-a putut conecta prin Google</string>
     <string name="session_scrapped">Ultima sesiune a fost eliminată</string>

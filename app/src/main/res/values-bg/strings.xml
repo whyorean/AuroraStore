@@ -161,7 +161,6 @@
     <string name="pref_install_mode_summary">Изберете режим на инсталиране на APK</string>
     <string name="pref_ui_no_for_you_desc">Показва страници за вас на началния екран</string>
     <string name="pref_ui_similar_apps_desc">Показва подобни и свързани клъстери на страницата с подробности за приложението</string>
-    <string name="pref_advanced_search_in_ctt">Търсете в персонализирания раздел</string>
     <string name="purchase_failed">Изтеглянето се провали</string>
     <string name="purchase_unsupported">Приложението не се поддържа</string>
     <string name="purchase_not_found">Приложението не е намерено</string>
@@ -296,7 +295,6 @@
     <string name="pref_ui_theme_title">Тема</string>
     <string name="pref_ui_title">Персонализиране</string>
     <string name="pref_ui_no_for_you">Страници за вас</string>
-    <string name="pref_advanced_search_in_ctt_desc">Отваря резултатите от търсенето в персонализирания раздел на браузъра</string>
     <string name="session_init">Подготвяме нещата…</string>
     <string name="session_login_failed_google">Неуспешно влизане през Google</string>
     <string name="purchase_invalid">Приложението не е закупено</string>

@@ -293,8 +293,6 @@
     <string name="notification_channel_updater_service">سرویس دانلود پس زمینه برنامه</string>
     <string name="app_updater_service_notif_text">امکان دانلود برنامه پس زمینه را فراهم می کند</string>
     <string name="pref_ui_theme_darkord">دیسکورد</string>
-    <string name="pref_advanced_search_in_ctt">جستجو در زبانه سفارشی</string>
-    <string name="pref_advanced_search_in_ctt_desc">نتایج جستجو را در برگه سفارشی مرورگر باز می کند</string>
     <string name="session_enjoy">وارد شوید و لذت ببرید.</string>
     <string name="session_good">وای! همه چی خوبه.</string>
     <string name="ui_accent_0">سیستم</string>
