@@ -316,10 +316,8 @@
     <string name="session_login">Tem que iniciar sessão</string>
     <string name="session_enjoy">Inicie sessão e desfrute.</string>
     <string name="title_advanced">Avançado</string>
-    <string name="pref_advanced_search_in_ctt">Pesquisa em separador personalizado</string>
     <string name="installer_shizuku_unavailable">Shizuku não instalado ou configurado erradamente.</string>
     <string name="pref_install_mode_shizuku">Instalador Shizuku</string>
-    <string name="pref_advanced_search_in_ctt_desc">Abre os resultados da pesquisa num separador do navegador</string>
     <string name="session_good">Tudo ok!</string>
     <string name="session_init">A preparar a aplicação…</string>
     <string name="session_login_failed_google">Falha ao iniciar sessão via Google</string>

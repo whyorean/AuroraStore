@@ -316,8 +316,6 @@
     <string name="installer_am_unavailable">Инсталирајте App Manager или промените програм за инсталацију.</string>
     <string name="onboarding_permission_notifications">Обавештења</string>
     <string name="onboarding_permission_notifications_desc">Слање обавештења о статусу инсталације</string>
-    <string name="pref_advanced_search_in_ctt">Претраживање у прилагођеној картици</string>
-    <string name="pref_advanced_search_in_ctt_desc">Отвара резултате претраге у прилагођеној картици прегледача</string>
     <string name="session_login">Прво се пријавите</string>
     <string name="session_scrapped">Последња сесија је отказана</string>
     <string name="session_verifying">Верификација сесије</string>
@@ -396,6 +394,4 @@
     <string name="action_enabled">Омогућено</string>
     <string name="amazon_appstore_desc">Amazon Appstore је продавница апликација за платформе компатибилне са Android-ом, којом управља Amazon.</string>
     <string name="android_market_desc">Android Market је била онлајн продавница која је нудила софтверске апликације дизајниране за Android уређаје, пензионисана 2017. године.</string>
-    <string name="pref_advanced_use_web_api_desc">Пребацује се на веб API-је где год је то могуће, када шаљете захтев Google Play-у (повећава анонимност, али може бити нестабилно).</string>
-    <string name="pref_advanced_use_web_api">Користи веб API-је</string>
 </resources>

@@ -298,7 +298,6 @@
     <string name="download_eta_hrs">%1$ds %2$dd %3$ds qalıb</string>
     <string name="download_eta_sec">%1$ds qalıb</string>
     <string name="action_import">İdxal et</string>
-    <string name="pref_advanced_search_in_ctt">Fərdi Paneldə Axtar</string>
     <string name="installer_shizuku_unavailable">Shizuku düzgün quraşdırılmayıb və ya tənzimlənməyib.</string>
     <string name="onboarding_permission_notifications_desc">Quraşdırmalar vəziyyəti haqqında bildirişlər göndər</string>
     <string name="download_eta_min">%1$dd %2$ds qalıb</string>

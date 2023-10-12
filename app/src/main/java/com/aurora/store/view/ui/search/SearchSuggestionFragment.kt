@@ -29,13 +29,10 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.aurora.Constants
-import com.aurora.extensions.browse
 import com.aurora.extensions.showKeyboard
 import com.aurora.gplayapi.SearchSuggestEntry
 import com.aurora.store.R
 import com.aurora.store.databinding.FragmentSearchSuggestionBinding
-import com.aurora.store.util.Preferences
 import com.aurora.store.view.epoxy.views.SearchSuggestionViewModel_
 import com.aurora.store.viewmodel.search.SearchSuggestionViewModel
 import com.google.android.material.textfield.TextInputEditText
@@ -124,7 +121,10 @@ class SearchSuggestionFragment : Fragment(R.layout.fragment_search_suggestion) {
         })
 
         searchView.setOnEditorActionListener { _: TextView?, actionId: Int, _: KeyEvent? ->
-            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+            if (actionId == EditorInfo.IME_ACTION_SEARCH
+                || actionId == KeyEvent.ACTION_DOWN
+                || actionId == KeyEvent.KEYCODE_ENTER
+            ) {
                 query = searchView.text.toString()
                 if (query.isNotEmpty()) {
                     search(query)
@@ -141,17 +141,9 @@ class SearchSuggestionFragment : Fragment(R.layout.fragment_search_suggestion) {
     }
 
     private fun search(query: String) {
-        if (Preferences.getBoolean(
-                requireContext(),
-                Preferences.PREFERENCE_ADVANCED_SEARCH_IN_CTT
-            )
-        ) {
-            requireContext().browse("${Constants.PLAY_QUERY_URL}$query", true)
-        } else {
-            findNavController().navigate(
-                SearchSuggestionFragmentDirections
-                    .actionSearchSuggestionFragmentToSearchResultsFragment(query)
-            )
-        }
+        findNavController().navigate(
+            SearchSuggestionFragmentDirections
+                .actionSearchSuggestionFragmentToSearchResultsFragment(query)
+        )
     }
 }

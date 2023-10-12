@@ -43,7 +43,6 @@ import com.aurora.store.MainActivity
 import com.aurora.store.R
 import com.aurora.store.util.Log
 import com.aurora.store.util.Preferences
-import com.aurora.store.util.Preferences.PREFERENCE_ADVANCED_USE_WEB_API
 import kotlin.system.exitProcess
 
 val Context.inflater: LayoutInflater
@@ -175,8 +174,4 @@ fun Context.accentColor(): Int {
         else -> if (isSAndAbove()) R.color.colorAccent else R.color.colorAccent01
     }
     return ContextCompat.getColor(this, color)
-}
-
-fun Context.shouldUseWebAPI(): Boolean {
-    return Preferences.getBoolean(this, PREFERENCE_ADVANCED_USE_WEB_API)
 }

@@ -44,8 +44,8 @@ android {
         minSdk = 21
         targetSdk = 33
 
-        versionCode = 50
-        versionName = "4.3.2"
+        versionCode = 51
+        versionName = "4.3.3"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -118,7 +118,7 @@ dependencies {
     implementation("com.google.protobuf:protobuf-javalite:3.24.2")
 
     //Google's Goodies
-    implementation("com.google.android.material:material:1.9.0")
+    implementation("com.google.android.material:material:1.10.0")
     implementation("com.google.code.gson:gson:2.10.1")
 
     //AndroidX
@@ -164,7 +164,7 @@ dependencies {
     implementation("com.github.topjohnwu.libsu:core:5.0.5")
 
     //Love <3
-    implementation("com.gitlab.AuroraOSS:gplayapi:3.2.0")
+    implementation("com.gitlab.AuroraOSS:gplayapi:3.2.2")
 
     //Browser
     implementation("androidx.browser:browser:1.6.0")

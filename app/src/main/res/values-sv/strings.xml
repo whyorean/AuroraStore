@@ -294,14 +294,12 @@
     <string name="toast_spoof_applied">Enhetsförfalskning tillämpades.</string>
     <string name="app_updater_service_notif_text">Aktiverar app-nedladdningar i bakgrunden</string>
     <string name="installer_shizuku_unavailable">Shizuku är inte installerat eller korrekt inställt.</string>
-    <string name="pref_advanced_search_in_ctt_desc">Öppnar sökresultaten i webbläsarens anpassade flik</string>
     <string name="login_rate_limited">Hoppsan, du är hastighetsbegränsad</string>
     <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>
     <string name="server_unreachable">Servern kunde inte nås</string>
     <string name="notification_updates_available_desc_4"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g>, <xliff:g id="app_three_name">%3$s</xliff:g> och <xliff:g id="apps_count">%4$d</xliff:g> mer</string>
     <string name="downloading_dep">Hämtar ytterligare filer för <xliff:g id="app">%1$s</xliff:g></string>
     <string name="failed_generating_session">Genereringen av sessionen misslyckades, fel-kod: <xliff:g id="status_code">%1$d</xliff:g></string>
-    <string name="pref_advanced_search_in_ctt">Sök i Anpassad flik</string>
     <string name="failed_to_generate_session">Sessionen kunde inte genereras</string>
     <string name="session_verifying">Bekräftar sessionen</string>
     <string name="app_link_enabled">App-länkningen aktiverades!</string>

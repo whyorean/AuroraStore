@@ -56,10 +56,6 @@ class SettingsFragment : PreferenceFragmentCompat() {
             findNavController().navigate(R.id.updatesPreference)
             true
         }
-        findPreference<Preference>("pref_advanced")?.setOnPreferenceClickListener {
-            findNavController().navigate(R.id.advancedPreference)
-            true
-        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

@@ -262,7 +262,10 @@ class SearchResultsFragment : BaseFragment(R.layout.fragment_search_result),
         })
 
         searchView.setOnEditorActionListener { _: TextView?, actionId: Int, _: KeyEvent? ->
-            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+            if (actionId == EditorInfo.IME_ACTION_SEARCH
+                || actionId == KeyEvent.ACTION_DOWN
+                || actionId == KeyEvent.KEYCODE_ENTER
+            ) {
                 query = searchView.text.toString()
                 query?.let {
                     queryViewModel(it)
@@ -288,6 +291,7 @@ class SearchResultsFragment : BaseFragment(R.layout.fragment_search_result),
         filter = FilterProvider.with(requireContext()).getSavedFilter()
         return appList
             .asSequence()
+            .filter { it.displayName.isNotEmpty() } // Some of the apps may not have metadata
             .filter { if (!filter.paidApps) it.isFree else true }
             .filter { if (!filter.appsWithAds) !it.containsAds else true }
             .filter { if (!filter.gsfDependentApps) it.dependencies.dependentPackages.isEmpty() else true }

@@ -307,14 +307,12 @@
     <string name="session_enjoy">Gabung dan nikmati.</string>
     <string name="search_hint">Cari Aplikasi &amp; Permainan</string>
     <string name="download_eta_hrs">%1$dj %2$dm %3$dd tersisa</string>
-    <string name="pref_advanced_search_in_ctt">Cari di Tab Khusus</string>
     <string name="updates_available">Pembaruan tersedia</string>
     <string name="session_login">Anda perlu bergabung terlebih dahulu</string>
     <string name="rate_limited">Ups, Akun ini dibatasi!</string>
     <string name="download_eta_sec">%1$dd tersisa</string>
     <string name="download_progress">Mengunduh • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
     <string name="session_scrapped">Sesi terakhir dihapus</string>
-    <string name="pref_advanced_search_in_ctt_desc">Buka hasil pencarian di tab khusus perambah</string>
     <string name="session_login_failed_google">Gagal bergabung melalui Google</string>
     <string name="session_init">Sedang mempersiapkan…</string>
     <string name="session_verifying_google">Memverifikasi sesi Google</string>

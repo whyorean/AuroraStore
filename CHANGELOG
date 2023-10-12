@@ -1,3 +1,6 @@
+Changelog : v4.3.3 (51)
+• Fix search issue, uses WebAPI data
+
 Changelog : v4.3.2 (50)
 • Switching to the system theme from a dark theme updates the UI properly
 • Dialogs on the home screen no longer hide certain views

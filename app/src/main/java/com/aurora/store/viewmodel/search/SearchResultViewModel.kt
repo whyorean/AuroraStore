@@ -20,18 +20,14 @@
 package com.aurora.store.viewmodel.search
 
 import android.app.Application
-import android.content.Context
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.aurora.extensions.flushAndAdd
-import com.aurora.extensions.shouldUseWebAPI
 import com.aurora.gplayapi.data.models.AuthData
 import com.aurora.gplayapi.data.models.SearchBundle
-import com.aurora.gplayapi.helpers.SearchHelper
 import com.aurora.gplayapi.helpers.WebSearchHelper
 import com.aurora.store.data.RequestState
-import com.aurora.store.data.network.HttpClient
 import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.viewmodel.BaseAndroidViewModel
 import kotlinx.coroutines.Dispatchers
@@ -45,10 +41,7 @@ class SearchResultViewModel(application: Application) : BaseAndroidViewModel(app
         .with(application)
         .getAuthData()
 
-    private val searchHelper: SearchHelper = SearchHelper(authData)
-        .using(HttpClient.getPreferredClient())
-
-    private val webSearchHelper = WebSearchHelper()
+    private val searchHelper: WebSearchHelper = WebSearchHelper(authData)
 
     val liveData: MutableLiveData<SearchBundle> = MutableLiveData()
 
@@ -74,17 +67,7 @@ class SearchResultViewModel(application: Application) : BaseAndroidViewModel(app
     private fun search(
         query: String
     ): SearchBundle {
-        return if ((getApplication() as Context).shouldUseWebAPI()) {
-            val result = webSearchHelper.searchResults(query)
-            val searchBundle = SearchBundle().apply {
-                this.id = 100
-                this.query = query
-                appList = result.values.flatten().toSet().toMutableList()
-            }
-            return searchBundle
-        } else {
-            searchHelper.searchResults(query)
-        }
+        return searchHelper.searchResults(query)
     }
 
     @Synchronized

@@ -333,9 +333,7 @@
     <string name="notification_channel_updates">Értesítések frissítése</string>
     <string name="installer_shizuku_unavailable">A Shizuku nincs telepítve vagy megfelelően beállítva.</string>
     <string name="download_progress">Letöltés alatt • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
-    <string name="pref_advanced_search_in_ctt">Keresés az Egyéni lapon</string>
     <string name="session_login_failed_google">Nem sikerült bejelentkezni a Google-on keresztül</string>
-    <string name="pref_advanced_search_in_ctt_desc">Keresési eredmények megnyitása egy böngésző egyedi lapján</string>
     <string name="update_available">elérhető frissítés</string>
     <string name="server_unreachable">A szerver nem érhető el</string>
     <string name="title_search_suggestion">Keresési javaslat</string>

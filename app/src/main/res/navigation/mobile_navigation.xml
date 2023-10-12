@@ -102,11 +102,6 @@
         android:label="@string/title_settings"
         tools:layout="@layout/fragment_setting" />
     <fragment
-        android:id="@+id/advancedPreference"
-        android:name="com.aurora.store.view.ui.preferences.AdvancedPreference"
-        android:label="AdvancedPreference"
-        tools:layout="@layout/fragment_setting" />
-    <fragment
         android:id="@+id/downloadPreference"
         android:name="com.aurora.store.view.ui.preferences.DownloadPreference"
         android:label="DownloadPreference"
@@ -392,11 +387,6 @@
             android:id="@+id/action_onboardingFragment_to_deviceMiuiSheet"
             app:destination="@id/deviceMiuiSheet" />
     </fragment>
-    <dialog
-        android:id="@+id/TOSSheet"
-        android:name="com.aurora.store.view.ui.sheets.TOSSheet"
-        android:label="TOSSheet"
-        tools:layout="@layout/sheet_tos" />
     <dialog
         android:id="@+id/appMenuSheet"
         android:name="com.aurora.store.view.ui.sheets.AppMenuSheet"

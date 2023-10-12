@@ -245,7 +245,6 @@
     <string name="ui_accent_7">Siva</string>
     <string name="ui_accent_8">Roza</string>
     <string name="updates_available">na voljo posodobitve</string>
-    <string name="pref_advanced_search_in_ctt_desc">Odpre rezultate iskanja na zavihku po meri v brskalniku</string>
     <string name="purchase_failed">Prenos ni uspel</string>
     <string name="purchase_invalid">Aplikacija ni bila kupljena</string>
     <string name="purchase_unsupported">Aplikacija ni podprta</string>
@@ -343,7 +342,6 @@
     <string name="pref_ui_no_for_you">Strani za vas</string>
     <string name="pref_ui_similar_apps_desc">Prikaži podobne in sorodne gruče na strani s podrobnostmi o aplikaciji</string>
     <string name="pref_updates_extended_desc">Išče tudi nove različice onemogočenih aplikacij</string>
-    <string name="pref_advanced_search_in_ctt">Iskanje v zavihku po meri</string>
     <string name="rate_limited">Ups, ta račun ima omejeno stopnjo!</string>
     <string name="menu">Meni</string>
 </resources>

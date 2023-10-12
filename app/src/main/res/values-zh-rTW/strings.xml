@@ -312,7 +312,6 @@
     <string name="installer_am_unavailable">請安裝 App 管理器或更換安裝程式。</string>
     <string name="onboarding_permission_notifications">通知</string>
     <string name="onboarding_permission_notifications_desc">發送有關安裝狀態的通知</string>
-    <string name="pref_advanced_search_in_ctt">在自訂分頁中搜尋</string>
     <string name="session_init">正在準備…</string>
     <string name="session_login">您需要先登入</string>
     <string name="session_login_failed_google">透過 Google 登入失敗</string>
@@ -336,7 +335,6 @@
     <string name="ui_accent_8">粉紅色</string>
     <string name="ui_accent_9">萊姆色</string>
     <string name="installer_shizuku_unavailable">Shizuku 未安裝或設定不正確。</string>
-    <string name="pref_advanced_search_in_ctt_desc">在瀏覽器的自訂分頁中開啟搜尋結果</string>
     <string name="session_enjoy">登入並享用。</string>
     <string name="ui_accent_3">紅色</string>
     <string name="update_available">有更新可用</string>

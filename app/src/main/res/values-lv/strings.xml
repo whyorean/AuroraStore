@@ -221,11 +221,9 @@
     <string name="tab_editor_choice">Redaktora izvēle</string>
     <string name="session_login_failed_google">Neizdevās pieteikties ar Google</string>
     <string name="session_enjoy">Piesakies un izbaudi!</string>
-    <string name="pref_advanced_search_in_ctt">Meklēt pielāgotā cilnē</string>
     <string name="session_verifying">Pārbauda sesiju</string>
     <string name="toast_apk_whitelisted">Ievietots baltajā sarakstā</string>
     <string name="pref_install_auto_summary">Lietotnes tiek uzstādītas uzreiz pēc lejupielādes pabeigšanās</string>
-    <string name="pref_advanced_search_in_ctt_desc">Meklēšanas iznākums tiks atvērts pielāgotā pārlūka cilnē</string>
     <string name="session_good">Vā! Viss kārtībā.</string>
     <string name="session_init">Tiek sagatavots nepieciešamais…</string>
     <string name="session_login">Vispirms ir jāpiesakās</string>

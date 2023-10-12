@@ -310,11 +310,9 @@
     <string name="download_eta_hrs">Залишилося %1$dгод %2$dхв %3$dс</string>
     <string name="download_progress">Завантаження • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
     <string name="onboarding_permission_notifications_desc">Надсилати сповіщення про стан встановлення</string>
-    <string name="pref_advanced_search_in_ctt">Пошук на власній вкладці</string>
     <string name="session_good">Вау! Усе добре.</string>
     <string name="update_available">доступне оновлення</string>
     <string name="session_enjoy">Увійдіть і насолоджуйтесь.</string>
-    <string name="pref_advanced_search_in_ctt_desc">Відкриває результати пошуку у власній вкладці браузера</string>
     <string name="title_advanced">Розширені</string>
     <string name="ui_accent_0">Системна</string>
     <string name="updates_available">доступні оновлення</string>
@@ -360,6 +358,4 @@
     <string name="google_play_store_desc">Google Play, також відомий як Google Play Маркет, а раніше - Android Market.</string>
     <string name="amazon_appstore_desc">Amazon Appstore — крамниця застосунків для Android-сумісних платформ, що працюють на Amazon.</string>
     <string name="android_market_desc">Android Маркет — інтернет-магазин, що пропонував програмне забезпечення для Android-пристроїв, припинив свою діяльність у 2017 році.</string>
-    <string name="pref_advanced_use_web_api_desc">Перемикається на Web API, де це можливо, під час запиту до Google Play (підвищує анонімність, але може працювати нестабільно).</string>
-    <string name="pref_advanced_use_web_api">Використовувати Web API</string>
 </resources>
