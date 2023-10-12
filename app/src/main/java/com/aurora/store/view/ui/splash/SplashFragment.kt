@@ -227,7 +227,7 @@ class SplashFragment : BaseFragment(R.layout.fragment_splash) {
         } else if (activity?.intent != null && activity?.intent?.action == Intent.ACTION_SEND) {
             val clipData = requireActivity().intent.clipData?.getItemAt(0)?.text.toString()
             if (clipData.contains("/store/apps/details?id=")) {
-                clipData.split("id=").last()
+                clipData.split("id=").last().trim()
             } else {
                 ""
             }
