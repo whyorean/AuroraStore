@@ -20,15 +20,12 @@
 package com.aurora.store.viewmodel.search
 
 import android.app.Application
-import android.content.Context
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.aurora.extensions.shouldUseWebAPI
 import com.aurora.gplayapi.SearchSuggestEntry
 import com.aurora.gplayapi.data.models.AuthData
-import com.aurora.gplayapi.helpers.SearchHelper
-import com.aurora.gplayapi.helpers.WebSearchSuggestionHelper
+import com.aurora.gplayapi.helpers.WebSearchHelper
 import com.aurora.store.data.network.HttpClient
 import com.aurora.store.data.providers.AuthProvider
 import kotlinx.coroutines.Dispatchers
@@ -40,10 +37,8 @@ class SearchSuggestionViewModel(application: Application) : AndroidViewModel(app
         .with(application)
         .getAuthData()
 
-    private val searchHelper: SearchHelper = SearchHelper(authData)
+    private val searchHelper = WebSearchHelper(authData)
         .using(HttpClient.getPreferredClient())
-
-    private val webSearchSuggestionHelper = WebSearchSuggestionHelper()
 
     val liveSearchSuggestions: MutableLiveData<List<SearchSuggestEntry>> = MutableLiveData()
 
@@ -56,10 +51,6 @@ class SearchSuggestionViewModel(application: Application) : AndroidViewModel(app
     private fun getSearchSuggestions(
         query: String
     ): List<SearchSuggestEntry> {
-        return if ((getApplication() as Context).shouldUseWebAPI()) {
-            webSearchSuggestionHelper.searchSuggestions(query)
-        } else {
-            searchHelper.searchSuggestions(query)
-        }
+        return searchHelper.searchSuggestions(query)
     }
 }
