@@ -356,4 +356,8 @@
     <string name="action_enabled">Ativado</string>
     <string name="app_link_enabled">Ligações ativadas!</string>
     <string name="google_play_store_desc">Google Play, também conhecida como Google Play Store e, anteriormente, Android Market.</string>
+    <string name="pref_advanced_use_web_api_desc">Ao efetuar um pedido à Google Play, sempre que possível, trocar para a Web API (melhora o anonimato, mas pode ser instável).</string>
+    <string name="amazon_appstore_desc">A Amazon Appstore é uma loja de aplicações para plataformas compatíveis com Android e é disponibilizada pela Amazon.</string>
+    <string name="pref_advanced_use_web_api">Usar Web API</string>
+    <string name="android_market_desc">O Android Market foi uma loja online que oferecia aplicações para dispositivos Android, descontinuada em 2017.</string>
 </resources>
