@@ -48,21 +48,12 @@ abstract class EndlessRecyclerOnScrollListener : RecyclerView.OnScrollListener {
 
     constructor()
 
-    constructor(layoutManager: RecyclerView.LayoutManager) {
-        this.layoutManager = layoutManager
-    }
-
     constructor(visibleThreshold: Int) {
         this.visibleThreshold = visibleThreshold
     }
 
-    constructor(layoutManager: RecyclerView.LayoutManager, visibleThreshold: Int) {
-        this.layoutManager = layoutManager
-        this.visibleThreshold = visibleThreshold
-    }
-
     private fun findFirstVisibleItemPosition(recyclerView: RecyclerView): Int {
-        val child = findOneVisibleChild(0, layoutManager.childCount, false, true)
+        val child = findOneVisibleChild(0, layoutManager.childCount, true, false)
         return if (child == null) RecyclerView.NO_POSITION else recyclerView.getChildAdapterPosition(
             child
         )

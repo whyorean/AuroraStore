@@ -18,17 +18,19 @@
   -->
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_gravity="center_horizontal"
-    android:layout_margin="@dimen/margin_xsmall">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <ProgressBar
-        android:id="@+id/img_icon"
-        android:layout_width="@dimen/icon_size_cluster"
-        android:layout_height="@dimen/icon_size_cluster"
-        android:scaleX="0.5"
-        android:scaleY="0.5"
-        android:layout_centerInParent="true" />
+    <com.airbnb.epoxy.EpoxyRecyclerView
+        android:id="@+id/recycler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        app:itemSpacing="@dimen/margin_normal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:stackFromEnd="false"
+        tools:listitem="@layout/view_app_list" />
 </RelativeLayout>

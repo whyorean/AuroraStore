@@ -24,28 +24,26 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
-import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
-import com.aurora.store.databinding.FragmentUpdatesBinding
+import com.aurora.store.databinding.FragmentAppsBinding
 import com.aurora.store.view.custom.recycler.EndlessRecyclerOnScrollListener
-import com.aurora.store.view.epoxy.views.HeaderViewModel_
+import com.aurora.store.view.epoxy.views.AppProgressViewModel_
 import com.aurora.store.view.epoxy.views.app.AppListViewModel_
 import com.aurora.store.view.epoxy.views.shimmer.AppListViewShimmerModel_
 import com.aurora.store.view.ui.commons.BaseFragment
+import com.aurora.store.viewmodel.all.PaginatedAppList
 import com.aurora.store.viewmodel.all.PurchasedViewModel
 
 class PurchasedAppsFragment : BaseFragment() {
 
     private lateinit var VM: PurchasedViewModel
-    private lateinit var B: FragmentUpdatesBinding
+    private lateinit var B: FragmentAppsBinding
     lateinit var endlessRecyclerOnScrollListener: EndlessRecyclerOnScrollListener
 
     companion object {
         @JvmStatic
         fun newInstance(): PurchasedAppsFragment {
-            return PurchasedAppsFragment().apply {
-
-            }
+            return PurchasedAppsFragment()
         }
     }
 
@@ -54,15 +52,15 @@ class PurchasedAppsFragment : BaseFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        B = FragmentUpdatesBinding.bind(
+        B = FragmentAppsBinding.bind(
             inflater.inflate(
-                R.layout.fragment_updates,
+                R.layout.fragment_apps,
                 container,
                 false
             )
         )
 
-        VM = ViewModelProvider(requireActivity()).get(PurchasedViewModel::class.java)
+        VM = ViewModelProvider(requireActivity())[PurchasedViewModel::class.java]
 
         return B.root
     }
@@ -71,11 +69,6 @@ class PurchasedAppsFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         VM.liveData.observe(viewLifecycleOwner) {
             updateController(it)
-            B.swipeRefreshLayout.isRefreshing = false
-        }
-
-        B.swipeRefreshLayout.setOnRefreshListener {
-            VM.observe()
         }
 
         attachRecycler()
@@ -84,32 +77,28 @@ class PurchasedAppsFragment : BaseFragment() {
     }
 
     private fun attachRecycler() {
-        endlessRecyclerOnScrollListener = object : EndlessRecyclerOnScrollListener() {
+        val endlessRecyclerOnScrollListener = object : EndlessRecyclerOnScrollListener(8) {
             override fun onLoadMore(currentPage: Int) {
                 VM.observe()
             }
         }
+
         B.recycler.addOnScrollListener(endlessRecyclerOnScrollListener)
     }
 
 
-    private fun updateController(appList: List<App>?) {
+    private fun updateController(paginatedAppList: PaginatedAppList?) {
         B.recycler.withModels {
             setFilterDuplicates(true)
-            if (appList == null) {
-                for (i in 1..6) {
+            if (paginatedAppList == null) {
+                for (i in 1..10) {
                     add(
                         AppListViewShimmerModel_()
                             .id(i)
                     )
                 }
             } else {
-                add(
-                    HeaderViewModel_()
-                        .id("header")
-                        .title("${appList.size} apps purchased")
-                )
-                appList.forEach { app ->
+                paginatedAppList.appList.forEach { app ->
                     add(
                         AppListViewModel_()
                             .id(app.id)
@@ -119,6 +108,13 @@ class PurchasedAppsFragment : BaseFragment() {
                                 openAppMenuSheet(app)
                                 false
                             }
+                    )
+                }
+
+                if (paginatedAppList.hasMore){
+                    add(
+                        AppProgressViewModel_()
+                            .id("progress")
                     )
                 }
             }

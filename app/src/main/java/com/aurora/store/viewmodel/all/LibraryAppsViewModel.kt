@@ -43,7 +43,7 @@ class LibraryAppsViewModel(application: Application) : BaseAndroidViewModel(appl
     var streamCluster: StreamCluster = StreamCluster()
 
     init {
-        observe()
+        requestState = RequestState.Init
     }
 
     override fun observe() {

@@ -74,7 +74,7 @@ class BlacklistFragment : Fragment(R.layout.activity_generic_recycler) {
         binding.recycler.withModels {
             setFilterDuplicates(true)
             if (blackList == null) {
-                for (i in 1..6) {
+                for (i in 1..10) {
                     add(
                         AppListViewShimmerModel_()
                             .id(i)

@@ -32,39 +32,51 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.supervisorScope
 
+data class PaginatedAppList(
+    var appList: MutableList<App> = mutableListOf(),
+    var hasMore: Boolean
+)
+
 class PurchasedViewModel(application: Application) : BaseAndroidViewModel(application) {
 
-    private val authData = AuthProvider
-        .with(application)
-        .getAuthData()
+    private val authData = AuthProvider.with(application).getAuthData()
 
-    private val purchaseHelper = PurchaseHelper(authData)
-        .using(HttpClient.getPreferredClient())
+    private val purchaseHelper = PurchaseHelper(authData).using(HttpClient.getPreferredClient())
 
-    val liveData: MutableLiveData<List<App>> = MutableLiveData()
+    private var appList: MutableList<App> = mutableListOf()
 
-    var appList: MutableList<App> = mutableListOf()
+    val liveData: MutableLiveData<PaginatedAppList> = MutableLiveData()
 
     init {
         requestState = RequestState.Init
-        observe()
     }
 
     override fun observe() {
         viewModelScope.launch(Dispatchers.IO) {
             supervisorScope {
-                try {
-                    appList.addAll(purchaseHelper.getPurchaseHistory(appList.size))
-                    liveData.postValue(appList)
-                    requestState = RequestState.Complete
+                requestState = try {
+                    val nextAppList = purchaseHelper.getPurchaseHistory(appList.size)
+                        .filter { it.displayName.isNotEmpty() }
+
+                    if (nextAppList.isEmpty()) {
+                        liveData.postValue(PaginatedAppList(
+                            appList,
+                            false
+                        ))
+                    } else {
+                        appList.addAll(nextAppList)
+                        liveData.postValue(
+                            PaginatedAppList(
+                                appList,
+                                true
+                            )
+                        )
+                    }
+                    RequestState.Complete
                 } catch (e: Exception) {
-                    requestState = RequestState.Pending
+                    RequestState.Pending
                 }
             }
         }
-    }
-
-    override fun onCleared() {
-        super.onCleared()
     }
 }

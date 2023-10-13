@@ -185,7 +185,7 @@ class UpdatesFragment : BaseFragment(R.layout.fragment_updates) {
         binding.recycler.withModels {
             setFilterDuplicates(true)
             if (updateFileMap == null) {
-                for (i in 1..6) {
+                for (i in 1..10) {
                     add(
                         AppListViewShimmerModel_()
                             .id(i)
