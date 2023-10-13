@@ -26,7 +26,6 @@ import com.aurora.gplayapi.data.models.StreamCluster
 import com.aurora.store.R
 import com.aurora.store.view.epoxy.groups.CarouselModelGroup
 import com.aurora.store.view.epoxy.groups.CarouselShimmerGroup
-import com.aurora.store.view.epoxy.views.AppProgressViewModel_
 import com.aurora.store.view.epoxy.views.app.AppListViewModel_
 import com.aurora.store.view.epoxy.views.app.NoAppViewModel_
 
@@ -50,7 +49,7 @@ open class GenericCarouselController(private val callbacks: Callbacks) :
     override fun buildModels(streamBundle: StreamBundle?) {
         setFilterDuplicates(true)
         if (streamBundle == null) {
-            for (i in 1..2) {
+            for (i in 1..4) {
                 add(
                     CarouselShimmerGroup()
                         .id(i)
@@ -93,7 +92,7 @@ open class GenericCarouselController(private val callbacks: Callbacks) :
                 }
                 if (streamBundle.hasNext())
                     add(
-                        AppProgressViewModel_()
+                        CarouselShimmerGroup()
                             .id("progress")
                     )
             }
