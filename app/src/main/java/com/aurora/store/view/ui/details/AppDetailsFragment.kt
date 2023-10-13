@@ -287,7 +287,7 @@ class AppDetailsFragment : BaseFragment(R.layout.fragment_details) {
 
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.userReview.collect {
-                if (it.timeStamp == 0L) {
+                if (it.commentId.isNotEmpty()) {
                     binding.layoutDetailsReview.userStars.rating = it.rating.toFloat()
                     Toast.makeText(
                         requireContext(),
@@ -1029,7 +1029,7 @@ class AppDetailsFragment : BaseFragment(R.layout.fragment_details) {
                 toast(R.string.toast_anonymous_restriction)
             } else {
                 addOrUpdateReview(app, Review().apply {
-                    title = authData.userProfile!!.name
+                    title = B.inputTitle.text.toString()
                     rating = B.userStars.rating.toInt()
                     comment = B.inputReview.text.toString()
                 })

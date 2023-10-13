@@ -124,6 +124,7 @@
     <string name="details_permission">"Permission"</string>
     <string name="details_privacy">"Privacy"</string>
     <string name="details_ratings">"Rating and reviews"</string>
+    <string name="details_ratings_title_hint">"Review title"</string>
     <string name="details_think_this_app">"What do you think about this app?"</string>
     <string name="download_cancel_all">"Cancel all"</string>
     <string name="download_canceled">"Cancelled"</string>
@@ -310,7 +311,7 @@
     <string name="toast_manual_unavailable">"The version code you are requesting is unavailable."</string>
     <string name="toast_manual_available">"Congrats, requested version code is available, downloading now."</string>
     <string name="toast_page_unavailable">Browse page unavailable</string>
-    <string name="toast_rated_success">Rated</string>
+    <string name="toast_rated_success">Rated, it may take a while to show</string>
     <string name="toast_rated_failed">Could not submit rating</string>
     <string name="toast_aas_token_failed">Could not generate AAS Token</string>
     <string name="toast_export_success">Device config exported</string>

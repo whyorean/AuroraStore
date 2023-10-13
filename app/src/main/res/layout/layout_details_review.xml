@@ -52,20 +52,32 @@
             android:scaleY=".75"
             android:stepSize="1" />
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginBottom="@dimen/margin_normal"
+            android:orientation="vertical"
             android:divider="@drawable/divider"
-            android:orientation="horizontal"
             android:showDividers="middle">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/input_title"
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:background="@drawable/bg_search"
+                android:gravity="center_vertical|center_horizontal"
+                android:hint="@string/details_ratings_title_hint"
+                android:imeOptions="flagNoExtractUi|actionDone"
+                android:inputType="text"
+                android:paddingStart="@dimen/padding_large"
+                android:paddingEnd="@dimen/padding_normal"
+                android:singleLine="true"
+                android:textAppearance="@style/TextAppearance.Aurora.Line2" />
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/input_review"
                 android:layout_width="match_parent"
                 android:layout_height="42dp"
-                android:layout_centerVertical="true"
-                android:layout_toStartOf="@id/btn_post_review"
                 android:background="@drawable/bg_search"
                 android:gravity="center_vertical|center_horizontal"
                 android:hint="@string/details_think_this_app"
@@ -78,15 +90,13 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_post_review"
-                style="@style/Widget.MaterialComponents.Button.TextButton.Dialog.Flush"
-                android:layout_width="wrap_content"
-                android:layout_height="42dp"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                app:cornerRadius="@dimen/margin_small"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_marginStart="@dimen/margin_xsmall"
                 android:text="@string/action_post" />
-        </RelativeLayout>
+        </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
