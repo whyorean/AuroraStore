@@ -173,6 +173,7 @@ class AppUpdateView : RelativeLayout {
     @OnViewRecycled
     fun clear() {
         B.headerIndicator.removeCallbacks { }
+        B.progressDownload.progress = 0
         B.progressDownload.invisible()
     }
 }

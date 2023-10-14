@@ -50,14 +50,16 @@
                     android:layout_width="@dimen/icon_size_medium"
                     android:layout_height="@dimen/icon_size_medium" />
 
-                <ProgressBar
+                <com.google.android.material.progressindicator.CircularProgressIndicator
                     android:id="@+id/progress_download"
-                    style="@style/Widget.AppCompat.ProgressBar"
+                    style="@style/Widget.Material3.CircularProgressIndicator"
                     android:layout_width="@dimen/icon_size_medium"
                     android:layout_height="@dimen/icon_size_medium"
                     android:layout_centerInParent="true"
                     android:background="@drawable/progressbar_bg"
+                    android:indeterminate="false"
                     android:visibility="invisible"
+                    app:trackThickness="24dp"
                     tools:progress="40" />
             </RelativeLayout>
 
