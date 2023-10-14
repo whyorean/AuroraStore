@@ -33,6 +33,7 @@ import com.aurora.store.data.work.UpdateWorker
 import com.aurora.store.databinding.FragmentOnboardingBinding
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_AUTO_DELETE
+import com.aurora.store.util.Preferences.PREFERENCE_AUTO_INSTALL
 import com.aurora.store.util.Preferences.PREFERENCE_DEFAULT
 import com.aurora.store.util.Preferences.PREFERENCE_DEFAULT_SELECTED_TAB
 import com.aurora.store.util.Preferences.PREFERENCE_DOWNLOAD_ACTIVE
@@ -167,6 +168,7 @@ class OnboardingFragment : Fragment(R.layout.fragment_onboarding) {
 
         /*Installer*/
         save(PREFERENCE_AUTO_DELETE, true)
+        save(PREFERENCE_AUTO_INSTALL, true)
         save(PREFERENCE_INSTALLER_ID, 0)
 
         /*Updates*/

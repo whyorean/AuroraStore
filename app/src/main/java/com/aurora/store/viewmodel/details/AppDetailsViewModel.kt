@@ -14,6 +14,7 @@ import com.aurora.store.data.model.ExodusReport
 import com.aurora.store.data.model.Report
 import com.aurora.store.data.network.HttpClient
 import com.aurora.store.data.providers.AuthProvider
+import com.aurora.store.util.Preferences
 import com.google.gson.GsonBuilder
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -131,6 +132,12 @@ class AppDetailsViewModel : ViewModel() {
 
     @Synchronized
     fun install(context: Context, packageName: String, files: List<Any>) {
+        val autoInstall = Preferences.getBoolean(context, Preferences.PREFERENCE_AUTO_INSTALL)
+
+        if (!autoInstall) {
+            return
+        }
+
         try {
             viewModelScope.launch(Dispatchers.IO) {
                 AppInstaller.getInstance(context).getPreferredInstaller()

@@ -179,7 +179,7 @@ class AppDetailsFragment : BaseFragment(R.layout.fragment_details) {
     private var isInstalled: Boolean = false
     private var isUpdatable: Boolean = false
     private var autoDownload: Boolean = false
-    private var downloadOnly: Boolean = false
+    private var autoInstall: Boolean = true
     private var uninstallActionEnabled = false
 
     val listOfActionsWhenServiceAttaches = ArrayList<Runnable>()
@@ -441,7 +441,9 @@ class AppDetailsFragment : BaseFragment(R.layout.fragment_details) {
     }
 
     private fun verifyAndInstall(files: List<Download>) {
-        if (downloadOnly)
+        autoInstall = Preferences.getBoolean(requireContext(), Preferences.PREFERENCE_AUTO_INSTALL)
+
+        if (!autoInstall)
             return
 
         var filesExist = true
