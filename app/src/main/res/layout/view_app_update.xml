@@ -52,11 +52,11 @@
 
                 <ProgressBar
                     android:id="@+id/progress_download"
-                    style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                    style="@style/Widget.AppCompat.ProgressBar"
                     android:layout_width="@dimen/icon_size_medium"
                     android:layout_height="@dimen/icon_size_medium"
                     android:layout_centerInParent="true"
-                    android:progressDrawable="@drawable/progressbar_bg"
+                    android:background="@drawable/progressbar_bg"
                     android:visibility="invisible"
                     tools:progress="40" />
             </RelativeLayout>
