@@ -1,0 +1,12 @@
+Aurora Store ist ein inoffizieller FOSS-Client für Google Play mit elegantem Design. Aurora Store
+ermöglicht Benutzern das Herunterladen, Aktualisieren und Suchen nach Apps wie dem Play Store. Es funktioniert einwandfrei
+mit oder ohne Google Play Services oder MicroG.
+
+<b>Eigenschaften:</b>
+
+• FOSS: Verfügt über eine GPLv3-Lizenz
+• Schönes Design: Basierend auf den neuesten Material 3-Richtlinien
+• Kontoanmeldung: Sie können sich entweder mit einem persönlichen oder einem anonymen Konto anmelden
+• Geräte- und Gebietsschema-Spoofing: Ändern Sie Ihr Gerät und/oder Ihr Gebietsschema, um auf geografisch gesperrte Apps zuzugreifen
+• [Exodus Privacy](https://exodus-privacy.eu.org/) Integration: Tracker sofort in der App sehen
+• Blacklisting für Updates: Updates für bestimmte Apps ignorieren

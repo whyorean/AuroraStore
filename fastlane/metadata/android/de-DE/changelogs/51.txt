@@ -1,0 +1,1 @@
+• Suchproblem behoben, WebAPI-Daten werden verwendet
