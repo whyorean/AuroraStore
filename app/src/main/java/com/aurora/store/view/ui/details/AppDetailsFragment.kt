@@ -324,7 +324,8 @@ class AppDetailsFragment : BaseFragment(R.layout.fragment_details) {
                                     R.color.colorOrange
                             )
                         )
-                        text = "${report.trackers.size} ${getString(R.string.exodus_substring)} ${report.version}"
+                        text =
+                            "${report.trackers.size} ${getString(R.string.exodus_substring)} ${report.version}"
                     }
 
                     binding.layoutDetailsPrivacy.headerPrivacy.addClickListener {
@@ -662,63 +663,67 @@ class AppDetailsFragment : BaseFragment(R.layout.fragment_details) {
     }
 
     private fun expandBottomSheet(message: String?) {
-        bottomSheetBehavior.isHideable = false
-        bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
+        runOnUiThread {
+            bottomSheetBehavior.isHideable = false
+            bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
 
-        with(binding.layoutDetailsInstall) {
-            txtPurchaseError.text = message
-            btnDownload.updateState(State.IDLE)
-            if (app.isFree)
-                btnDownload.setText(R.string.action_install)
-            else
-                btnDownload.setText(app.price)
+            with(binding.layoutDetailsInstall) {
+                txtPurchaseError.text = message
+                btnDownload.updateState(State.IDLE)
+                if (app.isFree)
+                    btnDownload.setText(R.string.action_install)
+                else
+                    btnDownload.setText(app.price)
+            }
         }
     }
 
     private fun checkAndSetupInstall() {
-        isInstalled = PackageUtil.isInstalled(requireContext(), app.packageName)
+        runOnUiThread {
+            isInstalled = PackageUtil.isInstalled(requireContext(), app.packageName)
 
-        binding.layoutDetailsInstall.btnDownload.let { btn ->
-            if (isInstalled) {
-                isUpdatable = PackageUtil.isUpdatable(
-                    requireContext(),
-                    app.packageName,
-                    app.versionCode.toLong()
-                )
+            binding.layoutDetailsInstall.btnDownload.let { btn ->
+                if (isInstalled) {
+                    isUpdatable = PackageUtil.isUpdatable(
+                        requireContext(),
+                        app.packageName,
+                        app.versionCode.toLong()
+                    )
 
-                val installedVersion =
-                    PackageUtil.getInstalledVersion(requireContext(), app.packageName)
+                    val installedVersion =
+                        PackageUtil.getInstalledVersion(requireContext(), app.packageName)
 
-                if (isUpdatable) {
-                    binding.layoutDetailsApp.txtLine3.text =
-                        ("$installedVersion ➔ ${app.versionName} (${app.versionCode})")
-                    btn.setText(R.string.action_update)
-                    btn.addOnClickListener { startDownload() }
-                } else {
-                    binding.layoutDetailsApp.txtLine3.text = installedVersion
-                    btn.setText(R.string.action_open)
-                    btn.addOnClickListener { openApp() }
-                }
-                if (!uninstallActionEnabled) {
-                    binding.layoutDetailsToolbar.toolbar.invalidateMenu()
-                }
-            } else {
-                if (app.isFree) {
-                    btn.setText(R.string.action_install)
-                } else {
-                    btn.setText(app.price)
-                }
-
-                btn.addOnClickListener {
-                    if (authData.isAnonymous && !app.isFree) {
-                        toast(R.string.toast_purchase_blocked)
+                    if (isUpdatable) {
+                        binding.layoutDetailsApp.txtLine3.text =
+                            ("$installedVersion ➔ ${app.versionName} (${app.versionCode})")
+                        btn.setText(R.string.action_update)
+                        btn.addOnClickListener { startDownload() }
                     } else {
-                        btn.setText(R.string.download_metadata)
-                        startDownload()
+                        binding.layoutDetailsApp.txtLine3.text = installedVersion
+                        btn.setText(R.string.action_open)
+                        btn.addOnClickListener { openApp() }
                     }
-                }
-                if (uninstallActionEnabled) {
-                    binding.layoutDetailsToolbar.toolbar.invalidateMenu()
+                    if (!uninstallActionEnabled) {
+                        binding.layoutDetailsToolbar.toolbar.invalidateMenu()
+                    }
+                } else {
+                    if (app.isFree) {
+                        btn.setText(R.string.action_install)
+                    } else {
+                        btn.setText(app.price)
+                    }
+
+                    btn.addOnClickListener {
+                        if (authData.isAnonymous && !app.isFree) {
+                            toast(R.string.toast_purchase_blocked)
+                        } else {
+                            btn.setText(R.string.download_metadata)
+                            startDownload()
+                        }
+                    }
+                    if (uninstallActionEnabled) {
+                        binding.layoutDetailsToolbar.toolbar.invalidateMenu()
+                    }
                 }
             }
         }
