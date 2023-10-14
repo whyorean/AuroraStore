@@ -79,7 +79,9 @@ class AuroraApplication : Application() {
                     Constants.NOTIFICATION_CHANNEL_ALERT,
                     getString(R.string.notification_channel_alert),
                     NotificationManager.IMPORTANCE_HIGH
-                )
+                ).apply {
+                    setSound(null, null)
+                }
             )
             channels.add(
                 NotificationChannel(
@@ -100,7 +102,9 @@ class AuroraApplication : Application() {
                     Constants.NOTIFICATION_CHANNEL_UPDATES,
                     getString(R.string.notification_channel_updates),
                     NotificationManager.IMPORTANCE_DEFAULT
-                )
+                ).apply {
+                    setSound(null, null)
+                }
             )
             notificationManager.createNotificationChannels(channels)
         }
