@@ -11,10 +11,10 @@
     <string name="filter_review_critical">差评</string>
     <string name="filter_review_all">全部</string>
     <string name="exodus_view_report">查看报告</string>
-    <string name="exodus_substring">个跟踪器位于版本</string>
+    <string name="exodus_substring">应用中的已知跟踪器数为</string>
     <string name="exodus_progress">正在检查跟踪器…</string>
     <string name="exodus_powered">由 Exodus 提供支持</string>
-    <string name="exodus_no_tracker">不包含跟踪器</string>
+    <string name="exodus_no_tracker">不包含已知的跟踪器</string>
     <string name="download_speed_estimating">估算中</string>
     <string name="download_resume_all">恢复全部</string>
     <string name="download_queued">已加入队列</string>
@@ -268,7 +268,7 @@
     <string name="dialog_desc_native_split">不能通过原生安装程序安装捆绑（拆分）的应用程序，请将选定的安装程序更改为会话安装器、Aurora 服务或 Root 安装器</string>
     <string name="toast_aas_token_failed">无法生成 AAS 令牌</string>
     <string name="toast_rated_failed">提交评分失败</string>
-    <string name="toast_rated_success">已打分</string>
+    <string name="toast_rated_success">已打分，可能需要一会儿才显示出来</string>
     <string name="toast_page_unavailable">浏览页不可用</string>
     <string name="toast_export_failed">无法导出设备配置</string>
     <string name="toast_export_success">设备配置已导出</string>
@@ -358,4 +358,5 @@
     <string name="google_play_store_desc">Google Play，也称 Google Play 商店，之前叫 Android Market。</string>
     <string name="amazon_appstore_desc">Amazon Appstore 是亚马逊公司运营的兼容安卓平台的应用商店。</string>
     <string name="android_market_desc">Android Market 是一个提供为 Android 设备设计的软件应用程序的在线商店，于 2017 年退役。</string>
+    <string name="details_ratings_title_hint">评价标题</string>
 </resources>
