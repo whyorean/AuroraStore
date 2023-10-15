@@ -1,0 +1,4 @@
+• Hlavní interní změny týkající se uživatelského rozhraní
+• Umožnit uživatelům povolit odkazy na aplikace při prvním nastavení
+• Aktualizace překladu
+• Drobné opravy a vylepšení

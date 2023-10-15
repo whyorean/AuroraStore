@@ -1,0 +1,6 @@
+• Oprava pádu souvisejícího s oznámením instalačních služeb
+• Zobrazení pouze platných vlastností spoofingu v aplikaci
+• Upozorňovat uživatele, když je během vyhledávání omezena rychlost
+• Zobrazení animace mihotání při vyhledávání, která indikuje průběh vyhledávání
+• Oprava chování navigace při změně výchozí karty
+• Opravit možnost rychlého ukončení
