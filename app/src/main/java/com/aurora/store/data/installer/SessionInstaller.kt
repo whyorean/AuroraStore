@@ -23,7 +23,9 @@ package com.aurora.store.data.installer
 import android.content.Context
 import android.content.pm.PackageInstaller.PACKAGE_SOURCE_STORE
 import android.content.pm.PackageInstaller.SessionParams
+import android.content.pm.PackageManager
 import com.aurora.extensions.isNAndAbove
+import com.aurora.extensions.isOAndAbove
 import com.aurora.extensions.isSAndAbove
 import com.aurora.extensions.isTAndAbove
 import com.aurora.store.util.Log
@@ -40,6 +42,9 @@ class SessionInstaller(context: Context) : SessionInstallerBase(context) {
             val packageInstaller = context.packageManager.packageInstaller
             val sessionParams = SessionParams(SessionParams.MODE_FULL_INSTALL).apply {
                 setAppPackageName(packageName)
+                if (isOAndAbove()) {
+                    setInstallReason(PackageManager.INSTALL_REASON_USER)
+                }
                 if (isNAndAbove()) {
                     setOriginatingUid(android.os.Process.myUid())
                 }
