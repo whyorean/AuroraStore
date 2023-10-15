@@ -121,6 +121,7 @@
     <string name="details_no_dependencies">"No Dependencies"</string>
     <string name="details_no_permission">"No permissions"</string>
     <string name="details_no_updates">"No updates available"</string>
+    <string name="details_no_apps_on_sale">"No apps found on sale"</string>
     <string name="details_paid">"Paid"</string>
     <string name="details_permission">"Permission"</string>
     <string name="details_privacy">"Privacy"</string>
@@ -281,6 +282,7 @@
     <string name="title_apps_games">"My apps &amp; games"</string>
     <string name="title_apps_library">"Apps in library"</string>
     <string name="title_apps_sale">"Apps on sale"</string>
+    <string name="title_apps_sale_provider">"Provider - bestappsales.com"</string>
     <string name="title_blacklist_manager">"Blacklist manager"</string>
     <string name="title_device">"Device"</string>
     <string name="title_download_manager">"Downloads"</string>

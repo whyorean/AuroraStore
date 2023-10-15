@@ -20,52 +20,74 @@
 package com.aurora.store.viewmodel.sale
 
 import android.app.Application
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.AuthData
 import com.aurora.gplayapi.helpers.AppSalesHelper
+import com.aurora.store.data.RequestState
 import com.aurora.store.data.network.HttpClient
 import com.aurora.store.data.providers.AuthProvider
+import com.aurora.store.viewmodel.BaseAndroidViewModel
+import com.aurora.store.viewmodel.all.PaginatedAppList
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.supervisorScope
 
-class AppSalesViewModel(application: Application) : AndroidViewModel(application) {
+class AppSalesViewModel(application: Application) : BaseAndroidViewModel(application) {
 
     private val authData: AuthData = AuthProvider.with(application).getAuthData()
     private val appSalesHelper: AppSalesHelper =
         AppSalesHelper(authData).using(HttpClient.getPreferredClient())
 
-    val liveAppList: MutableLiveData<List<App>> = MutableLiveData()
-
     private var page: Int = 0
     private val appList: MutableList<App> = mutableListOf()
 
+    val liveData: MutableLiveData<PaginatedAppList> = MutableLiveData()
+
     init {
-        observeAppSales()
+        requestState = RequestState.Init
+        observe()
     }
 
-    private fun observeAppSales() {
-        appList.clear()
+    override fun observe() {
         viewModelScope.launch(Dispatchers.IO) {
-            appList.addAll(getSearchResults())
-            liveAppList.postValue(appList)
+            supervisorScope {
+                requestState = try {
+                    val nextAppList = getSearchResults()
+
+                    if (nextAppList.isEmpty()) {
+                        liveData.postValue(
+                            PaginatedAppList(
+                                appList,
+                                hasMore = false
+                            )
+                        )
+                    } else {
+                        appList.addAll(nextAppList)
+                        liveData.postValue(
+                            PaginatedAppList(
+                                appList,
+                                hasMore = true
+                            )
+                        )
+                    }
+
+                    RequestState.Complete
+                } catch (e: Exception) {
+                    RequestState.Pending
+                }
+            }
         }
     }
 
     private fun getSearchResults(
     ): List<App> {
-        return appSalesHelper.getAppsOnSale(page = page++, offer = 100)
-    }
-
-    fun next() {
-        viewModelScope.launch(Dispatchers.IO) {
-            val newAppList = getSearchResults()
-            if (newAppList.isNotEmpty()) {
-                appList.addAll(getSearchResults())
-                liveAppList.postValue(appList)
-            }
+        return try {
+            appSalesHelper.getAppsOnSale(page = page++, offer = 100)
+        } catch (e: Exception) {
+            e.printStackTrace()
+            emptyList()
         }
     }
 }

@@ -23,14 +23,16 @@ import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
 import com.aurora.store.databinding.ActivityGenericRecyclerBinding
 import com.aurora.store.view.custom.recycler.EndlessRecyclerOnScrollListener
 import com.aurora.store.view.epoxy.views.AppProgressViewModel_
+import com.aurora.store.view.epoxy.views.HeaderViewModel_
 import com.aurora.store.view.epoxy.views.app.AppListViewModel_
+import com.aurora.store.view.epoxy.views.app.NoAppViewModel_
 import com.aurora.store.view.epoxy.views.shimmer.AppListViewShimmerModel_
 import com.aurora.store.view.ui.commons.BaseFragment
+import com.aurora.store.viewmodel.all.PaginatedAppList
 import com.aurora.store.viewmodel.sale.AppSalesViewModel
 
 
@@ -57,13 +59,13 @@ class AppSalesFragment : BaseFragment(R.layout.activity_generic_recycler) {
 
         endlessRecyclerOnScrollListener = object : EndlessRecyclerOnScrollListener() {
             override fun onLoadMore(currentPage: Int) {
-                VM.next()
+                VM.observe()
             }
         }
         binding.recycler.addOnScrollListener(endlessRecyclerOnScrollListener)
         updateController(null)
 
-        VM.liveAppList.observe(viewLifecycleOwner) {
+        VM.liveData.observe(viewLifecycleOwner) {
             updateController(it)
         }
     }
@@ -73,11 +75,11 @@ class AppSalesFragment : BaseFragment(R.layout.activity_generic_recycler) {
         _binding = null
     }
 
-    private fun updateController(appList: List<App>?) {
+    private fun updateController(paginatedAppList: PaginatedAppList?) {
         binding.recycler
             .withModels {
                 setFilterDuplicates(true)
-                if (appList == null) {
+                if (paginatedAppList == null) {
                     for (i in 1..6) {
                         add(
                             AppListViewShimmerModel_()
@@ -85,7 +87,13 @@ class AppSalesFragment : BaseFragment(R.layout.activity_generic_recycler) {
                         )
                     }
                 } else {
-                    appList
+                    add(
+                        HeaderViewModel_()
+                            .id("header")
+                            .title(getString(R.string.title_apps_sale_provider))
+                    )
+
+                    paginatedAppList.appList
                         .filter { it.packageName.isNotEmpty() }
                         .forEach {
                             add(
@@ -97,10 +105,19 @@ class AppSalesFragment : BaseFragment(R.layout.activity_generic_recycler) {
                             setFilterDuplicates(true)
                         }
 
-                    if (appList.isNotEmpty()) {
+                    if (paginatedAppList.hasMore) {
                         add(
                             AppProgressViewModel_()
                                 .id("progress")
+                        )
+                    }
+
+                    if (!paginatedAppList.hasMore && paginatedAppList.appList.isEmpty()) {
+                        add(
+                            NoAppViewModel_()
+                                .id("no_app_sale")
+                                .icon(R.drawable.ic_apps)
+                                .message(getString(R.string.details_no_apps_on_sale))
                         )
                     }
                 }
