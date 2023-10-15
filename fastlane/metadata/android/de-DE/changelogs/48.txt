@@ -1,0 +1,3 @@
+• Wichtige interne Änderungen im Zusammenhang mit der Benutzeroberfläche
+• Übersetzungsaktualisierungen
+• Kleinere Fehlerbehebungen und Verbesserungen

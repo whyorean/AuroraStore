@@ -63,7 +63,7 @@
     <string name="action_pause">විරාම</string>
     <string name="action_open">විවෘත කරන්න</string>
     <string name="action_ok">හරි</string>
-    <string name="action_next">ඊලඟ</string>
+    <string name="action_next">ඊළඟ</string>
     <string name="action_logout">නික්මෙන්න</string>
     <string name="action_leave">හැරයන්න</string>
     <string name="action_later">පසුව</string>
@@ -77,7 +77,7 @@
     <string name="action_disable">අබල කරන්න</string>
     <string name="action_clear">හිස් කරන්න</string>
     <string name="details_no_updates">යාවත්කාල නැත</string>
-    <string name="exodus_no_tracker">ලුහුබැඳීම් අන්තර්ගත නොවේ</string>
+    <string name="exodus_no_tracker">දන්නා ලුහුබැඳීම් අන්තර්ගත නොවේ</string>
     <string name="download_speed_estimating">තක්සේරු වෙමින්</string>
     <string name="download_none">බාගැනීම් නැත</string>
     <string name="details_more_about_app">යෙදුම ගැන තවත්</string>
@@ -354,4 +354,8 @@
     <string name="app_links_title">යෙදුමේ සබැඳි</string>
     <string name="verifying_new_session">නව වාරය සත්‍යාපනය වෙමින්</string>
     <string name="action_enabled">සබලයි</string>
+    <string name="details_ratings_title_hint">සමාලෝචනයේ සිරැසිය</string>
+    <string name="amazon_appstore_desc">ඇමසන් ඇප් ස්ටෝර් යනු ඇමසන් හරහා ක්‍රියාත්මක කරන ඇන්ඩ්‍රොයිඩ් පාදක වේදිකා සඳහා වන යෙදුම් ගබඩාවකි.</string>
+    <string name="google_play_store_desc">ගූගල් ප්ලේ, ගූගල් ප්ලේ ස්ටෝර් සහ කලින් ඇන්ඩ්‍රොයිඩ් මාර්කට් ලෙස හඳුන්වයි.</string>
+    <string name="android_market_desc">ඇන්ඩ්‍රොයිඩ් මාර්කට් යනු 2017 දී නවතා දැමූ ඇන්ඩ්‍රොයිඩ් උපාංග සඳහා නිර්මාණය කරන යෙදුම් බෙදාහරින මාර්ගගත වෙළඳසැලකි.</string>
 </resources>

@@ -1,0 +1,8 @@
+• Nicht um eine Speichererlaubnis verlangen, bis diese erforderlich ist
+• Überarbeitete Spoof-Konfiguration, um Speicherberechtigungen für Import-Export zu vermeiden
+• Option hinzufügen, um automatisch nach App-Updates zu suchen (erfordert ein angemeldetes Arbeitskonto)
+• Problem behoben, bei dem erforderliche Bibliotheken nicht mit Apps wie der Chrome- und Trichrome-Bibliothek installiert wurden
+• Ignorieren Sie das Download-Verzeichnis aus Backups, wenn Sie den Aurora Store sichern
+• Shizuku-Installationsprogramm implementieren (erfordert Android 8.0+)
+• Einstellung der Unterstützung für Android 4.4. Die mindestens erforderliche Android-Version ist 5.0+.
+• Kleinere Fehlerbehebungen und Verbesserungen

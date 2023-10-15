@@ -12,7 +12,7 @@
     <string name="filter_review_five">خمس</string>
     <string name="download_speed_estimating">يتم التقدير</string>
     <string name="account_google">حساب قوقل</string>
-    <string name="exodus_substring">برمجيات التتبع الموجودة في</string>
+    <string name="exodus_substring">برمجيات التتبع المعروفة الموجودة في</string>
     <string name="title_spoof_manager">مدير المحاكاة الوهمية</string>
     <string name="toast_permission_granted">الإذن الممنوح</string>
     <string name="toast_developer_setting_failed">قم بتشغيل إعدادات المطور من إعدادات الجهاز لفتحها.</string>
@@ -96,7 +96,7 @@
     <string name="exodus_view_report">عرض التقرير</string>
     <string name="exodus_progress">التحقق من وجود برمجيات تتبع…</string>
     <string name="exodus_powered">بدعم من Exodus</string>
-    <string name="exodus_no_tracker">لا يحتوي على برمجيات تتبع</string>
+    <string name="exodus_no_tracker">لا يحتوي على برمجيات تتبع معروفة</string>
     <string name="download_resume_all">استئناف الكل</string>
     <string name="download_queued">في قائمة الإنتظار</string>
     <string name="download_pause_all">إيقاف الكل مؤقتًا</string>
@@ -268,7 +268,7 @@
     <string name="dialog_desc_native_split">لا يمكنك تثبيت تطبيقات المجمعة او (المقسمة) عبر Native Installer. قم بتغيير المثبت الخاص بك إلى جلسة أو خدمات أو الجذر.</string>
     <string name="toast_aas_token_failed">تعذر توليد الرمز المميز ل AAS</string>
     <string name="toast_rated_failed">تعذر إرسال التقييم</string>
-    <string name="toast_rated_success">تم التقييم</string>
+    <string name="toast_rated_success">تم التقييم، قد يستغرق الأمر بعض الوقت لعرضه</string>
     <string name="toast_page_unavailable">صفحة المتصفح غير متوفرة</string>
     <string name="toast_export_failed">تعذر تصدير تكوين الجهاز</string>
     <string name="toast_export_success">تم تصدير اعدادات الجهاز</string>
@@ -358,4 +358,5 @@
     <string name="google_play_store_desc">Google Play، المعروف أيضًا باسم متجر Google Play و Android Market سابقًا.</string>
     <string name="amazon_appstore_desc">Amazon Appstore هو متجر تطبيقات لمنصات Android المتوافقة التي تديرها أمازون.</string>
     <string name="android_market_desc">Android Market هو متجر على الإنترنت يقدم تطبيقات برمجية مصممة لأجهزة Android، وتم إيقافه في عام 2017.</string>
+    <string name="details_ratings_title_hint">عنوان المراجعة</string>
 </resources>

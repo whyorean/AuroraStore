@@ -108,10 +108,10 @@
     <string name="filter_review_critical">Crítico</string>
     <string name="filter_review_all">Tudo</string>
     <string name="exodus_view_report">Ver relatório</string>
-    <string name="exodus_substring">rastreador(es) encontrado(s) em</string>
+    <string name="exodus_substring">rastreador(es) conhecido(s) encontrado(s) em</string>
     <string name="exodus_progress">Verificando rastreadores…</string>
     <string name="exodus_powered">Disponibilizado por Exodus</string>
-    <string name="exodus_no_tracker">Não contém rastreadores</string>
+    <string name="exodus_no_tracker">Não contém rastreadores conhecidos</string>
     <string name="download_speed_estimating">Estimando</string>
     <string name="download_resume_all">Retomar todos</string>
     <string name="download_queued">Em fila</string>
@@ -268,7 +268,7 @@
     <string name="dialog_desc_native_split">Você não pode instalar pacote de aplicativos (divididos) por meio do Instalador nativo. Mude seu instalador para Sessão, Serviços ou Root.</string>
     <string name="toast_aas_token_failed">Não foi possível gerar o Token AAS</string>
     <string name="toast_rated_failed">Não foi possível submeter a classificação</string>
-    <string name="toast_rated_success">Classificado</string>
+    <string name="toast_rated_success">Classificado, pode levar um tempo até aparecer</string>
     <string name="toast_page_unavailable">Página indisponível</string>
     <string name="toast_export_failed">Não foi possível exportar a configuração do dispositivo</string>
     <string name="toast_export_success">Configuração do dispositivo exportado</string>
@@ -358,4 +358,5 @@
     <string name="action_enable">Ativar</string>
     <string name="amazon_appstore_desc">Amazon Appstore é uma loja de apps para dispositivos compatíveis com Android operada pela Amazon.</string>
     <string name="android_market_desc">Android Market foi uma loja on-line que oferecia aplicativos de software feitos para dispositivos Android, fechada em 2017.</string>
+    <string name="details_ratings_title_hint">Título da análise</string>
 </resources>
