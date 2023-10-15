@@ -288,8 +288,11 @@ class SearchResultsFragment : BaseFragment(R.layout.fragment_search_result),
     }
 
     private fun filter(appList: MutableList<App>): List<App> {
+        val tempList:MutableList<App> = mutableListOf()
+        tempList.addAll(appList)
+
         filter = FilterProvider.with(requireContext()).getSavedFilter()
-        return appList
+        return tempList
             .asSequence()
             .filter { it.displayName.isNotEmpty() } // Some of the apps may not have metadata
             .filter { if (!filter.paidApps) it.isFree else true }
