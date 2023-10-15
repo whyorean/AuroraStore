@@ -28,6 +28,8 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Environment
 import android.provider.Settings
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
@@ -101,7 +103,7 @@ class MainActivity : AppCompatActivity() {
 
         this.lifecycleScope.launch {
             NetworkProvider(applicationContext).networkStatus.collect {
-                when(it) {
+                when (it) {
                     NetworkStatus.AVAILABLE -> {
                         if (!supportFragmentManager.isDestroyed && isIntroDone()) {
                             val fragment = supportFragmentManager
@@ -113,6 +115,7 @@ class MainActivity : AppCompatActivity() {
                             }
                         }
                     }
+
                     NetworkStatus.LOST -> {
                         if (!supportFragmentManager.isDestroyed && isIntroDone()) {
                             supportFragmentManager.beginTransaction()
@@ -199,12 +202,28 @@ class MainActivity : AppCompatActivity() {
                         B.toolbar.visibility = View.VISIBLE
                         B.drawerLayout.setDrawerLockMode(LOCK_MODE_UNLOCKED)
                     }
+
                     else -> {
                         hideTopLevelOnlyViews()
                     }
                 }
             }
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.menu_main, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.menu_download_manager -> {
+                navController.navigate(R.id.downloadFragment)
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     private fun hideTopLevelOnlyViews() {
