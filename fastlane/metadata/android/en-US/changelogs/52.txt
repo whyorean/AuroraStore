@@ -1,0 +1,6 @@
+• Fix crash on some devices while searching non-english keywords
+• Improve Apps & Games page
+• Add back toggle for auto install post app download
+• Do not play notification sound when app is installed or updated
+• Fix crash on some devices while opening app details
+• Add uninstall confirmation dialog if using root installer
