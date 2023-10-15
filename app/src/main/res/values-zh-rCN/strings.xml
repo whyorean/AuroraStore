@@ -359,4 +359,5 @@
     <string name="amazon_appstore_desc">Amazon Appstore 是亚马逊公司运营的兼容安卓平台的应用商店。</string>
     <string name="android_market_desc">Android Market 是一个提供为 Android 设备设计的软件应用程序的在线商店，于 2017 年退役。</string>
     <string name="details_ratings_title_hint">评价标题</string>
+    <string name="action_uninstall_confirmation">你想卸载此应用吗？</string>
 </resources>
