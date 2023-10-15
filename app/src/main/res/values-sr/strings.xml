@@ -130,10 +130,10 @@
     <string name="filter_review_critical">Критично</string>
     <string name="filter_review_all">Све</string>
     <string name="exodus_view_report">Погледај извештај</string>
-    <string name="exodus_substring">програм(и) за праћење пронађен(и) у</string>
+    <string name="exodus_substring">познати(x) програм(а) за праћење пронађено је у</string>
     <string name="exodus_progress">Проверавање програма за праћење…</string>
     <string name="exodus_powered">Покреће га Exodus</string>
-    <string name="exodus_no_tracker">Не садржи програме за праћење</string>
+    <string name="exodus_no_tracker">Не садржи познате програме за праћење</string>
     <string name="download_speed_estimating">Процењивање</string>
     <string name="download_resume_all">Настави све</string>
     <string name="download_queued">У реду чекања</string>
@@ -250,7 +250,7 @@
     <string name="dialog_desc_native_split">Не можете инсталирати пакет (подељени) апликација преко „Изворног” програма за инсталацију. Промените програм за инсталацију у „Сесијa”, „Услуге” или „Root”.</string>
     <string name="toast_aas_token_failed">Није могуће генерисати AAS токен</string>
     <string name="toast_rated_failed">Није могуће послати оцену</string>
-    <string name="toast_rated_success">Оцењено</string>
+    <string name="toast_rated_success">Оцењено, можда ће бити потребно неко време да се прикаже</string>
     <string name="toast_page_unavailable">Страница за прегледање није доступна</string>
     <string name="toast_manual_available">Честитамо, тражени кôд верзије је доступан, управо се преузимa.</string>
     <string name="toast_manual_unavailable">Кôд верзије који тражите није доступан.</string>
@@ -394,4 +394,5 @@
     <string name="action_enabled">Омогућено</string>
     <string name="amazon_appstore_desc">Amazon Appstore је продавница апликација за платформе компатибилне са Android-ом, којом управља Amazon.</string>
     <string name="android_market_desc">Android Market је била онлајн продавница која је нудила софтверске апликације дизајниране за Android уређаје, пензионисана 2017. године.</string>
+    <string name="details_ratings_title_hint">Прегледај наслов</string>
 </resources>
