@@ -26,8 +26,10 @@ import androidx.lifecycle.viewModelScope
 import com.aurora.extensions.flushAndAdd
 import com.aurora.gplayapi.data.models.AuthData
 import com.aurora.gplayapi.data.models.SearchBundle
+import com.aurora.gplayapi.helpers.SearchHelper
 import com.aurora.gplayapi.helpers.WebSearchHelper
 import com.aurora.store.data.RequestState
+import com.aurora.store.data.network.HttpClient
 import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.viewmodel.BaseAndroidViewModel
 import kotlinx.coroutines.Dispatchers
@@ -41,11 +43,21 @@ class SearchResultViewModel(application: Application) : BaseAndroidViewModel(app
         .with(application)
         .getAuthData()
 
-    private val searchHelper: WebSearchHelper = WebSearchHelper(authData)
+    private val webSearchHelper: WebSearchHelper = WebSearchHelper(authData)
+    private val searchHelper: SearchHelper = SearchHelper(authData)
+        .using(HttpClient.getPreferredClient())
 
     val liveData: MutableLiveData<SearchBundle> = MutableLiveData()
 
     private var searchBundle: SearchBundle = SearchBundle()
+
+    fun helper(): SearchHelper {
+        return if (authData.isAnonymous) {
+            webSearchHelper
+        } else {
+            searchHelper
+        }
+    }
 
     fun observeSearchResults(query: String) {
         //Clear old results
@@ -67,7 +79,7 @@ class SearchResultViewModel(application: Application) : BaseAndroidViewModel(app
     private fun search(
         query: String
     ): SearchBundle {
-        return searchHelper.searchResults(query)
+        return helper().searchResults(query)
     }
 
     @Synchronized
@@ -76,7 +88,7 @@ class SearchResultViewModel(application: Application) : BaseAndroidViewModel(app
             supervisorScope {
                 try {
                     if (nextSubBundleSet.isNotEmpty() && responseCode.value != 429) {
-                        val newSearchBundle = searchHelper.next(nextSubBundleSet)
+                        val newSearchBundle = helper().next(nextSubBundleSet)
                         if (newSearchBundle.appList.isNotEmpty()) {
                             searchBundle.apply {
                                 subBundles.flushAndAdd(newSearchBundle.subBundles)
