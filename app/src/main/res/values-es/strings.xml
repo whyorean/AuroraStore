@@ -359,4 +359,5 @@
     <string name="amazon_appstore_desc">Amazon Appstore es una tienda de aplicaciones para plataformas compatibles con Android de Amazon.</string>
     <string name="android_market_desc">Android Market era una tienda online que ofrecía aplicaciones de software diseñadas para dispositivos Android, retirada en 2017.</string>
     <string name="details_ratings_title_hint">Revisar el título</string>
+    <string name="action_uninstall_confirmation">¿Quieres desinstalar esta aplicación\?</string>
 </resources>
