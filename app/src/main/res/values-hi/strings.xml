@@ -97,7 +97,7 @@
     <string name="action_open">खोलें</string>
     <string name="app_updater_service_notif_title">बैकग्राउंड ऐप डाउनलोड</string>
     <string name="title_blacklist_manager">ब्लॉकसूची मैनेजर</string>
-    <string name="exodus_substring">ट्रैकर मिले</string>
+    <string name="exodus_substring">ज्ञात ट्रैकर्स पाए गए</string>
     <string name="pref_ui_no_for_you">आपके लिए पन्ने</string>
     <string name="pref_install_profile_title">इंस्टॉलेशन प्रोफाइलें (प्रयोगात्मक)</string>
     <string name="pref_ui_similar_apps">मिलते-जुलते और संबंधित ऐप</string>
@@ -243,7 +243,7 @@
     <string name="details_more_about_app">ऐप के बारे में और</string>
     <string name="details_no_dependencies">कोई निर्भरता नहीं</string>
     <string name="download_metadata">मेटाडाटा ला रहे</string>
-    <string name="exodus_no_tracker">कोई ट्रैकर नहीं</string>
+    <string name="exodus_no_tracker">इसमें कोई ज्ञात ट्रैकर शामिल नहीं है</string>
     <string name="download_completed">डाउनलोड हो गया</string>
     <string name="exodus_progress">ट्रैकर के लिए जांच रहे…</string>
     <string name="filter_review_all">सारे</string>
@@ -287,7 +287,7 @@
     <string name="title_purchase_history">खरीद इतिहास</string>
     <string name="toast_developer_setting_failed">डेवलपर सेटिंग खोलने के लिए डिवाइस सेटिंग से उसे ऑन करें।</string>
     <string name="toast_manual_unavailable">आप जो संस्करण कोड मांग रहे हैं वो मौजूद नहीं।</string>
-    <string name="toast_rated_success">रेट किया गया</string>
+    <string name="toast_rated_success">रेट किया गया, इसे प्रदर्शित होने में कुछ समय लग सकता है</string>
     <string name="ui_accent_11">हलका नीला</string>
     <string name="toast_aas_token_failed">एएएस टोकन नहीं बना सके</string>
     <string name="app_updater_service_notif_text">बैकग्राउंड ऐप डाउनलोड सक्षम करेगा</string>
@@ -358,4 +358,6 @@
     <string name="google_play_store_desc">Google Play, जिसे Google Play Store और पूर्व में Android Market के नाम से भी जाना जाता है।</string>
     <string name="amazon_appstore_desc">अमेज़ोॅन ऐपस्टोर अमेज़ोॅन द्वारा संचालित एंड्रॉइड-संगत प्लेटफार्मों के लिए एक ऐप स्टोर है।</string>
     <string name="android_market_desc">एंड्रॉइड मार्केट एंड्रॉइड डिवाइसों के लिए डिज़ाइन किए गए सॉफ़्टवेयर एप्लिकेशन पेश करने वाला एक ऑनलाइन स्टोर था, जो 2017 में बंद हो गया।</string>
+    <string name="details_ratings_title_hint">समीक्षा शीर्षक</string>
+    <string name="action_uninstall_confirmation">क्या आप इस ऐप को अनइंस्टॉल करना चाहते हैं\?</string>
 </resources>
