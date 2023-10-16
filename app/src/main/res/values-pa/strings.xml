@@ -9,7 +9,7 @@
     <string name="toast_export_failed">ਡਿਵਾਈਸ ਸੰਰਚਨਾ ਐਕਸਪੋਰਟ ਵਿੱਚ ਅਸਫਲ</string>
     <string name="toast_aas_token_failed">AAS ਟੋਕਨ ਬਣਾਉਣ ਵਿੱਚ ਅਸਮਰੱਥ</string>
     <string name="toast_rated_failed">ਰੇਟਿੰਗ ਜਮ੍ਹਾਂ ਕਰਨ ਚ ਅਸਫਲ</string>
-    <string name="toast_rated_success">ਰੇਟਿੰਗ ਸਫਲ</string>
+    <string name="toast_rated_success">ਰੇਟਿੰਗ ਸਫਲ, ਇਸ ਨੂੰ ਵਿਖਾਉਣ ਵਿੱਚ ਕੁਝ ਸਮਾਂ ਲੱਗ ਸਕਦਾ ਹੈ</string>
     <string name="toast_page_unavailable">ਇਹ ਪੰਨਾ ਉਪਲਬੱਧ ਨਹੀਂ ਹੈ</string>
     <string name="toast_manual_available">ਮੁਬਾਰਕ ਹੋ, ਤੁਹਾਡੇ ਵੱਲੋਂ ਬੇਨਤੀ ਕੀਤਾ ਗਿਆ ਐਪ ਸੰਸਕਰਣ ਕੋਡ ਉਪਲਬੱਧ ਹੈ ਅਤੇ ਡਾਊਨਲੋਡ ਹੋ ਰਿਹਾ ਹੈ।</string>
     <string name="toast_manual_unavailable">ਜਿਸ ਐਪ ਸੰਸਕਰਣ ਕੋਡ ਦੀ ਤੁਸੀਂ ਬੇਨਤੀ ਕੀਤੀ ਹੈ, ਉਹ ਉਪਲਬੱਧ ਨਹੀਂ ਹੈ।</string>
@@ -157,10 +157,10 @@
     <string name="filter_review_critical">ਮਦਦਗਾਰ</string>
     <string name="filter_review_all">ਸਾਰੇ</string>
     <string name="exodus_view_report">ਵਿਸਥਾਰਿਤ ਰਿਪੋਰਟ ਵੇਖੋ</string>
-    <string name="exodus_substring">ਟਰੈਕਰ ਮਿਲੇ</string>
+    <string name="exodus_substring">ਇਸ ਵਿੱਚ ਗਿਆਤ ਟਰੈਕਰ ਮਿਲੇ ਹਨ</string>
     <string name="exodus_powered">Exodus ਵਲੋਂ ਜਾਰੀ</string>
     <string name="exodus_progress">ਐਪ ਟਰੈਕਰ ਦੀ ਜਾਂਚ ਜਾਰੀ…</string>
-    <string name="exodus_no_tracker">ਇਸ ਐਪ ਵਿੱਚ ਕੋਈ ਟਰੈਕਰ ਨਹੀਂ ਹੈ</string>
+    <string name="exodus_no_tracker">ਕੋਈ ਗਿਆਤ ਟਰੈਕਰ ਸ਼ਾਮਲ ਨਹੀਂ ਹੈ</string>
     <string name="download_speed_estimating">ਅਨੁਮਾਨ ਲਗਾਇਆ ਜਾ ਰਿਹਾ ਹੈ</string>
     <string name="download_resume_all">ਸਾਰੇ ਚਾਲੂ ਕਰੋ</string>
     <string name="download_queued">ਕਤਾਰਬੱਧ</string>
@@ -358,4 +358,6 @@
     <string name="google_play_store_desc">Google Play, ਜੋ ਕਿ Google Play Store ਅਤੇ ਪਹਿਲਾਂ Android Market ਵਜੋਂ ਵੀ ਜਾਣਿਆ ਜਾਂਦਾ ਹੈ।</string>
     <string name="amazon_appstore_desc">ਐਮੇਜ਼ੌਨ ਐਪਸਟੋਰ, ਐਮੇਜ਼ੌਨ ਦੁਆਰਾ ਸੰਚਾਲਿਤ ਐਂਡਰਾਇਡ ਪਲੇਟਫਾਰਮਾਂ ਲਈ ਇੱਕ ਐਪ ਸਟੋਰ ਹੈ।</string>
     <string name="android_market_desc">ਐਂਡਰਾਇਡ ਮਾਰਕੀਟ ਐਂਡਰੌਇਡ ਡਿਵਾਈਸਾਂ ਲਈ ਡਿਜ਼ਾਈਨ ਕੀਤੀਆਂ ਗਈਆਂ ਸਾਫ਼ਟਵੇਅਰ ਐਪਲੀਕੇਸ਼ਨਾਂ ਪੇਸ਼ ਕਰਨ ਵਾਲਾ ਇੱਕ ਆਨਲਾਈਨ ਸਟੋਰ ਸੀ, ਜੋ 2017 ਵਿੱਚ ਬੰਦ ਹੋ ਗਿਆ।</string>
+    <string name="details_ratings_title_hint">ਸਮੀਖਿਆ ਸਿਰਲੇਖ</string>
+    <string name="action_uninstall_confirmation">ਕੀ ਤੁਸੀਂ ਇਸ ਐਪ ਨੂੰ ਅਣਇੰਸਟਾਲ ਕਰਨਾ ਚਾਹੁੰਦੇ ਹੋ\?</string>
 </resources>
