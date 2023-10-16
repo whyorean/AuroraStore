@@ -1,6 +1,6 @@
 # Aurora Store
 
-**Aurora Store** is an unofficial, FOSS client to Google Play with an elegant design. Aurora Store
+**Aurora Store** is an unofficial, FOSS client to Google Play with bare minimum features. Aurora Store
 allows users to download, update, and search for apps like the Play Store. It works perfectly fine
 with or without Google Play Services or MicroG.
 
@@ -14,6 +14,24 @@ with or without Google Play Services or MicroG.
 - Device & Locale spoofing: Change your device and/or locale to access geo locked apps
 - [Exodus Privacy](https://exodus-privacy.eu.org/) integration: Instantly see trackers in app
 - Updates blacklisting: Ignore updates for specific apps
+- Download manager
+- Manual downloads: allows you to download older version of apps, provided
+  - The APKs are available with Google
+  - You know the version codes for older versions 
+
+## Limitations
+
+- Underlying API used is reversed engineered from PlayStore, changes on side may break it.
+- Provides only base minimum features
+  - Can not download or update paid apps.
+  - Can not update apps/games with [Play Assset Delivery](https://developer.android.com/guide/playcore/asset-delivery)
+- Multiple in-app features are not available if logged-in as Anonymous.
+  - Library
+  - Purchase History
+  - Editor's Choise
+  - Beta Programs
+  - Review Add/Update
+- Token Dispenser Server is not super reliable, downtimes are expected.  
 
 ## Downloads
 
