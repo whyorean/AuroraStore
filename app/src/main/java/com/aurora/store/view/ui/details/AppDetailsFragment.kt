@@ -26,6 +26,7 @@ import android.content.ComponentName
 import android.content.Intent
 import android.content.ServiceConnection
 import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.os.Environment
@@ -399,6 +400,15 @@ class AppDetailsFragment : BaseFragment(R.layout.fragment_details) {
                         )
                     }
 
+                    R.id.menu_app_settings -> {
+                        val intent = Intent().apply {
+                            action = Settings.ACTION_APPLICATION_DETAILS_SETTINGS
+                            data = Uri.fromParts("package", app.packageName, null)
+                        }
+
+                        startActivity(intent)
+                    }
+
                     R.id.menu_download_manager -> {
                         findNavController().navigate(R.id.downloadFragment)
                     }
@@ -413,6 +423,7 @@ class AppDetailsFragment : BaseFragment(R.layout.fragment_details) {
             if (::app.isInitialized) {
                 val installed = PackageUtil.isInstalled(requireContext(), app.packageName)
                 menu?.findItem(R.id.action_uninstall)?.isVisible = installed
+                menu?.findItem(R.id.menu_app_settings)?.isVisible = installed
                 uninstallActionEnabled = installed
             }
         }

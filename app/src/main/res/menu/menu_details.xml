@@ -24,6 +24,7 @@
         android:icon="@drawable/ic_share"
         android:title="@string/action_share"
         app:showAsAction="ifRoom" />
+
     <item
         android:id="@+id/action_uninstall"
         android:title="@string/action_uninstall" />
@@ -35,6 +36,10 @@
     <item
         android:id="@+id/menu_download_manager"
         android:title="@string/title_download_manager" />
+
+    <item
+        android:id="@+id/menu_app_settings"
+        android:title="@string/title_app_settings" />
 
     <item
         android:id="@+id/action_playstore"

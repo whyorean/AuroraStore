@@ -282,6 +282,7 @@
     <string name="title_about">About</string>
     <string name="title_account_manager">"Accounts"</string>
     <string name="title_apps">"Apps"</string>
+    <string name="title_app_settings">"App Settings"</string>
     <string name="title_apps_games">"My apps &amp; games"</string>
     <string name="title_apps_library">"Apps in library"</string>
     <string name="title_apps_sale">"Apps on sale"</string>
