@@ -45,7 +45,7 @@ import java.util.*
 import java.util.concurrent.locks.ReentrantLock
 import kotlin.concurrent.timerTask
 
-class UpdateService : LifecycleService() {
+class UpdateService: LifecycleService() {
 
     lateinit var fetch: Fetch
     lateinit var downloadManager: DownloadManager
@@ -53,7 +53,7 @@ class UpdateService : LifecycleService() {
     private var fetchActiveDownloadObserver = object : FetchObserver<Boolean> {
         override fun onChanged(data: Boolean, reason: Reason) {
             if (!data && isEmptyInstalling() && fetchListeners.isEmpty() && appMetadataListeners.isEmpty()) {
-                Handler(Looper.getMainLooper()).postDelayed({
+                Handler(Looper.getMainLooper()).postDelayed ({
                     if (isEmptyInstalling() && fetchListeners.isEmpty() && appMetadataListeners.isEmpty()) {
                         stopSelf()
                     }
@@ -74,7 +74,7 @@ class UpdateService : LifecycleService() {
     var liveUpdateData: MutableLiveData<MutableMap<Int, UpdateFile>> = MutableLiveData()
 
     inner class UpdateServiceBinder : Binder() {
-        fun getUpdateService(): UpdateService {
+        fun getUpdateService() : UpdateService {
             return this@UpdateService
         }
     }
@@ -181,11 +181,9 @@ class UpdateService : LifecycleService() {
     private lateinit var authData: AuthData
 
 
-    data class AppDownloadStatus(
-        val download: Download, val fetchGroup: FetchGroup,
-        val isCancelled: Boolean = false,
-        val isComplete: Boolean = false
-    )
+    data class AppDownloadStatus(val download: Download, val fetchGroup: FetchGroup,
+                                 val isCancelled: Boolean = false,
+                                 val isComplete: Boolean = false)
 
     data class AppMetadataStatus(val reason: String, val app: App)
 
@@ -254,32 +252,17 @@ class UpdateService : LifecycleService() {
                 fetchGroup: FetchGroup
             ) {
                 fetchListeners.forEach {
-                    it.onProgress(
-                        groupId,
-                        download,
-                        etaInMilliSeconds,
-                        downloadedBytesPerSecond,
-                        fetchGroup
-                    )
+                    it.onProgress(groupId, download, etaInMilliSeconds, downloadedBytesPerSecond, fetchGroup)
                 }
             }
 
-            override fun onProgress(
-                download: Download,
-                etaInMilliSeconds: Long,
-                downloadedBytesPerSecond: Long
-            ) {
+            override fun onProgress(download: Download, etaInMilliSeconds: Long, downloadedBytesPerSecond: Long) {
                 fetchListeners.forEach {
                     it.onProgress(download, etaInMilliSeconds, downloadedBytesPerSecond)
                 }
             }
 
-            override fun onQueued(
-                groupId: Int,
-                download: Download,
-                waitingNetwork: Boolean,
-                fetchGroup: FetchGroup
-            ) {
+            override fun onQueued(groupId: Int, download: Download, waitingNetwork: Boolean, fetchGroup: FetchGroup) {
                 fetchListeners.forEach {
                     it.onQueued(groupId, download, waitingNetwork, fetchGroup)
                 }
@@ -328,30 +311,20 @@ class UpdateService : LifecycleService() {
                         download,
                         downloadBlocks,
                         totalBlocks,
-                        fetchGroup
-                    )
+                        fetchGroup)
                 }
             }
 
-            override fun onStarted(
-                download: Download,
-                downloadBlocks: List<DownloadBlock>,
-                totalBlocks: Int
-            ) {
+            override fun onStarted(download: Download, downloadBlocks: List<DownloadBlock>, totalBlocks: Int) {
                 fetchListeners.forEach {
                     it.onStarted(
                         download,
                         downloadBlocks,
-                        totalBlocks
-                    )
+                        totalBlocks)
                 }
             }
 
-            override fun onWaitingNetwork(
-                groupId: Int,
-                download: Download,
-                fetchGroup: FetchGroup
-            ) {
+            override fun onWaitingNetwork(groupId: Int, download: Download, fetchGroup: FetchGroup) {
                 fetchListeners.forEach {
                     it.onWaitingNetwork(groupId, download, fetchGroup)
                 }
@@ -368,8 +341,7 @@ class UpdateService : LifecycleService() {
                     it.onCompleted(groupId, download, fetchGroup)
                 }
                 if (fetchListeners.isEmpty()) {
-                    fetchPendingEvents[groupId] =
-                        AppDownloadStatus(download, fetchGroup, isComplete = true)
+                    fetchPendingEvents[groupId] = AppDownloadStatus(download, fetchGroup, isComplete = true)
                 }
                 var packageDownloadFilesWhichCompleted = downloadsInCompletedGroup[download.tag!!]
                 if (packageDownloadFilesWhichCompleted == null) {
@@ -377,11 +349,7 @@ class UpdateService : LifecycleService() {
                     downloadsInCompletedGroup[download.tag!!] = packageDownloadFilesWhichCompleted
                 }
                 packageDownloadFilesWhichCompleted.add(download.file)
-                if (fetchGroup.groupDownloadProgress == 100 && fetchGroup.downloads.all {
-                        packageDownloadFilesWhichCompleted.contains(
-                            it.file
-                        )
-                    }) {
+                if (fetchGroup.groupDownloadProgress == 100 && fetchGroup.downloads.all { packageDownloadFilesWhichCompleted.contains(it.file) }) {
                     downloadsInCompletedGroup.remove(download.tag!!)
                     if (download.tag != null) {
                         removeFromInstalling(download.tag, runFromCurrentThread = true)
@@ -413,8 +381,7 @@ class UpdateService : LifecycleService() {
                     it.onCancelled(groupId, download, fetchGroup)
                 }
                 if (fetchListeners.isEmpty()) {
-                    fetchPendingEvents[groupId] =
-                        AppDownloadStatus(download, fetchGroup, isCancelled = true)
+                    fetchPendingEvents[groupId] = AppDownloadStatus(download, fetchGroup, isCancelled = true)
                 }
             }
 
@@ -429,8 +396,7 @@ class UpdateService : LifecycleService() {
                     it.onDeleted(groupId, download, fetchGroup)
                 }
                 if (fetchListeners.isEmpty()) {
-                    fetchPendingEvents[groupId] =
-                        AppDownloadStatus(download, fetchGroup, isCancelled = true)
+                    fetchPendingEvents[groupId] = AppDownloadStatus(download, fetchGroup, isCancelled = true)
                 }
             }
 
@@ -458,11 +424,7 @@ class UpdateService : LifecycleService() {
                 }
             }
 
-            override fun onDownloadBlockUpdated(
-                download: Download,
-                downloadBlock: DownloadBlock,
-                totalBlocks: Int
-            ) {
+            override fun onDownloadBlockUpdated(download: Download, downloadBlock: DownloadBlock, totalBlocks: Int) {
                 fetchListeners.forEach {
                     it.onDownloadBlockUpdated(
                         download,
@@ -650,19 +612,11 @@ class UpdateService : LifecycleService() {
             if (downloads.all { File(it.file).exists() }) {
                 serviceScope.launch {
                     try {
-                        val autoInstall = Preferences.getBoolean(
-                            this@UpdateService,
-                            Preferences.PREFERENCE_AUTO_INSTALL
-                        )
-
-                        if (autoInstall) {
-                            AppInstaller.getInstance(this@UpdateService).getPreferredInstaller()
-                                .install(
-                                    packageName,
-                                    files.filter { it.file.endsWith(".apk") }.map { it.file }
-                                        .toList()
-                                )
-                        }
+                        AppInstaller.getInstance(this@UpdateService).getPreferredInstaller()
+                            .install(
+                                packageName,
+                                files.filter { it.file.endsWith(".apk") }.map { it.file }.toList()
+                            )
                     } catch (exception: Exception) {
                         removeFromInstalling(packageName)
                         Log.e(exception.stackTraceToString())
@@ -691,16 +645,16 @@ class UpdateService : LifecycleService() {
                     removeFromInstalling(this)
                 }
                 synchronized(timerLock) {
-                    timer = if (timer != null) {
+                    if (timer != null) {
                         timer!!.cancel()
-                        null
-                    } else {
-                        Timer()
+                        timer = null
+                    }
+                    if (timer == null) {
+                        timer = Timer()
                     }
                     timer!!.schedule(timerTask { timerTaskRun.run() }, 5 * 1000)
                 }
             }
-
             else -> {
 
             }
