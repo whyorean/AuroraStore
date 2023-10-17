@@ -24,6 +24,7 @@ import com.aurora.Constants
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.File
 import com.aurora.store.util.PathUtil
+import com.aurora.store.util.Preferences
 import com.google.gson.GsonBuilder
 import com.tonyodev.fetch2.EnqueueAction
 import com.tonyodev.fetch2.NetworkType
@@ -32,11 +33,13 @@ import com.tonyodev.fetch2core.Extras
 import java.lang.reflect.Modifier
 
 private fun Request.attachMetaData(context: Context, app: App) {
+    val isWifiOnly = Preferences.getBoolean(context, Preferences.PREFERENCE_DOWNLOAD_WIFI_ONLY)
+
     apply {
         groupId = app.getGroupId(context)
         tag = app.packageName
         enqueueAction = EnqueueAction.UPDATE_ACCORDINGLY
-        networkType = NetworkType.ALL
+        networkType = if (isWifiOnly) NetworkType.WIFI_ONLY else NetworkType.ALL
     }
 }
 

@@ -215,6 +215,7 @@
     <string name="pref_downloader_external">"User external storage"</string>
     <string name="pref_downloader_external_desc">External storage is used for downloads, exports, etc.</string>
     <string name="pref_downloader_path_title">"Download path"</string>
+    <string name="pref_downloader_wifi_title">"Download using WiFi only"</string>
     <string name="pref_download_directory_error">"Selected path is not writable"</string>
     <string name="pref_filter_fdroid_summary">"Removes F-Droid apps from app lists"</string>
     <string name="pref_filter_fdroid_title">"Filter F-Droid apps"</string>
