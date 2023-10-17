@@ -1,0 +1,4 @@
+• Stora interna förändringar relaterade till UI
+• Tillåt användare att aktivera applänkar under förstagångsinstallationen
+• Översättningsuppdateringar
+• Mindre buggfixar och förbättringar

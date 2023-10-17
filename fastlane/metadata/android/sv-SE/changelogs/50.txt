@@ -1,0 +1,9 @@
+• Att byta till systemtemat från ett mörkt tema uppdaterar användargränssnittet korrekt
+• Dialogrutor på startskärmen döljer inte längre vissa vyer
+• Genom att öppna en Google Play-länk nu säkerställs att ett giltigt och fungerande konto finns
+• Navigationslådan kan endast öppnas på huvudskärmen
+• Back action avslutar nu appen korrekt på vissa skärmar
+• Inställningsknappar har nu en ordentlig nyans i det mörka temat
+• Appens namn är synligt igen i verktygsfältet för utvandringsrapporter
+• Interna förbättringar relaterade till bilder
+• Översättningsuppdateringar
