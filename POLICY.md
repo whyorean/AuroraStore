@@ -75,6 +75,8 @@ All accounts being used within **Aurora Store** are saved onto the device as AAS
 - MCC: Mobile Country Code 
 - MNC: Mobile Network Code
 
+Above fields are sent to Google as encoded-protobuf, you can find a sample device config used in Aurora Store [here](https://gitlab.com/AuroraOSS/gplayapi/-/blob/master/lib/src/main/res/raw/gplayapi_px_7a.properties).
+
 ------------------------------------------------------------------------
 
 ## User data sent to our server by default
