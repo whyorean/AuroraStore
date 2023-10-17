@@ -38,6 +38,7 @@ import com.aurora.store.BuildConfig
 import com.aurora.store.R
 import com.aurora.store.data.model.Permission
 import com.aurora.store.databinding.FragmentOnboardingPermissionsBinding
+import com.aurora.store.util.isExternalStorageAccessible
 import com.aurora.store.view.epoxy.views.preference.PermissionViewModel_
 import com.aurora.store.view.ui.commons.BaseFragment
 
@@ -113,10 +114,8 @@ class PermissionsFragment : BaseFragment(R.layout.fragment_onboarding_permission
         }
 
         binding.epoxyRecycler.withModels {
-            val writeExternalStorage = if (!isRAndAbove()) ActivityCompat.checkSelfPermission(
-                requireContext(),
-                Manifest.permission.WRITE_EXTERNAL_STORAGE
-            ) == PackageManager.PERMISSION_GRANTED else true
+            val writeExternalStorage =
+                if (!isRAndAbove()) isExternalStorageAccessible(requireContext()) else true
             val postNotifications = if (isTAndAbove()) ActivityCompat.checkSelfPermission(
                 requireContext(),
                 Manifest.permission.POST_NOTIFICATIONS

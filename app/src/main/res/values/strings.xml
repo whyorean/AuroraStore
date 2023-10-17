@@ -131,7 +131,7 @@
     <string name="download_cancel_all">"Cancel all"</string>
     <string name="download_canceled">"Cancelled"</string>
     <string name="download_clear_completed">"Clear completed"</string>
-    <string name="download_completed">Download completed</string>
+    <string name="download_completed">"Download completed"</string>
     <string name="download_eta_calculating">"Calculating"</string>
     <string name="download_eta_hrs">%1$dh %2$dm %3$ds left</string>
     <string name="download_eta_min">%1$dm %2$ds left</string>
@@ -214,6 +214,8 @@
     <string name="pref_downloader_active_title">"Active download"</string>
     <string name="pref_downloader_external">"User external storage"</string>
     <string name="pref_downloader_external_desc">External storage is used for downloads, exports, etc.</string>
+    <string name="pref_downloader_path_title">"Download path"</string>
+    <string name="pref_download_directory_error">"Selected path is not writable"</string>
     <string name="pref_filter_fdroid_summary">"Removes F-Droid apps from app lists"</string>
     <string name="pref_filter_fdroid_title">"Filter F-Droid apps"</string>
     <string name="pref_filter_google_summary">"Removes all Google Apps from search results and category apps"</string>

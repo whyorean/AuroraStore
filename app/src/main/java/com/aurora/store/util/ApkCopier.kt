@@ -31,7 +31,7 @@ import java.util.zip.ZipOutputStream
 class ApkCopier(private val context: Context, private val packageName: String) {
 
     fun copy() {
-        val destination = File(PathUtil.getBaseCopyDirectory())
+        val destination = File(PathUtil.getBaseCopyDirectory(context))
 
         destination.let {
             if (it.exists()) {
@@ -55,7 +55,7 @@ class ApkCopier(private val context: Context, private val packageName: String) {
             /*Add Split APKs*/
             fileList.addAll(getSplitAPKs(packageInfo))
         }
-        bundleAllAPKs(fileList)
+        bundleAllAPKs(context, fileList)
     }
 
     private fun getBaseApk(packageInfo: PackageInfo?): File? {
@@ -75,10 +75,10 @@ class ApkCopier(private val context: Context, private val packageName: String) {
         return fileList
     }
 
-    private fun bundleAllAPKs(fileList: List<File?>) {
+    private fun bundleAllAPKs(context: Context, fileList: List<File?>) {
         try {
             val fileOutputStream =
-                FileOutputStream(PathUtil.getBaseCopyDirectory() + "$packageName.zip")
+                FileOutputStream(PathUtil.getBaseCopyDirectory(context) + "$packageName.zip")
             val zipOutputStream = ZipOutputStream(fileOutputStream)
 
             for (file in fileList) {

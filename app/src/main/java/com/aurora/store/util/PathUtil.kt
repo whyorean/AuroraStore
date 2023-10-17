@@ -21,6 +21,7 @@ package com.aurora.store.util
 
 import android.content.Context
 import android.os.Environment
+import com.aurora.extensions.isRAndAbove
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.File
 import java.util.UUID
@@ -33,7 +34,7 @@ object PathUtil {
 
     private fun getDownloadDirectory(context: Context): String {
         return if (context.isExternalStorageEnable()) {
-            getExternalPath()
+            getExternalPath(context)
         } else {
             context.getInternalBaseDirectory()
         }
@@ -59,15 +60,22 @@ object PathUtil {
         return getVersionDirectory(context, packageName, versionCode)
     }
 
-    fun getExternalPath(): String {
-        val auroraDir =
+    fun getExternalPath(context: Context): String {
+        val defaultDir =
             java.io.File("${Environment.getExternalStorageDirectory().absolutePath}/Aurora/Store")
-        auroraDir.mkdirs()
-        return auroraDir.absolutePath
+
+        if (!defaultDir.exists())
+            defaultDir.mkdirs()
+
+        return Preferences.getString(
+            context,
+            Preferences.PREFERENCE_DOWNLOAD_DIRECTORY,
+            defaultDir.absolutePath
+        )
     }
 
-    fun getBaseCopyDirectory(): String {
-        return "${getExternalPath()}/Exports/"
+    fun getBaseCopyDirectory(context: Context): String {
+        return "${getExternalPath(context)}/Exports/"
     }
 
     private fun getObbDownloadPath(app: App): String {
@@ -93,6 +101,20 @@ object PathUtil {
         file.parentFile?.mkdirs()
         file.createNewFile()
         return file
+    }
+
+    fun canWriteToDirectory(context: Context, directoryPath: String): Boolean {
+        val directory = if (directoryPath.startsWith("/")) {
+            java.io.File(directoryPath)
+        } else {
+            java.io.File(context.getExternalFilesDir(null), directoryPath)
+        }
+
+        return if (isRAndAbove()) {
+            Environment.isExternalStorageManager() && directory.exists() && directory.canWrite()
+        } else {
+            isExternalStorageAccessible(context) && directory.exists() && directory.canWrite()
+        }
     }
 }
 

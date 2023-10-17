@@ -49,6 +49,7 @@ object Preferences {
 
     const val PREFERENCE_DOWNLOAD_ACTIVE = "PREFERENCE_DOWNLOAD_ACTIVE"
     const val PREFERENCE_DOWNLOAD_EXTERNAL = "PREFERENCE_DOWNLOAD_EXTERNAL"
+    const val PREFERENCE_DOWNLOAD_DIRECTORY = "PREFERENCE_DOWNLOAD_DIRECTORY"
     const val PREFERENCE_DOWNLOAD_WIFI = "PREFERENCE_DOWNLOAD_WIFI"
 
     const val PREFERENCE_TOS_READ = "PREFERENCE_TOS_READ"
@@ -89,8 +90,8 @@ object Preferences {
         getPrefs(context).edit().putBoolean(key, value).apply()
     }
 
-    fun getString(context: Context, key: String): String {
-        return getPrefs(context).getString(key, "").toString()
+    fun getString(context: Context, key: String, default: String = ""): String {
+        return getPrefs(context).getString(key, default).toString()
     }
 
     fun getInteger(context: Context, key: String): Int {

@@ -20,6 +20,7 @@
 package com.aurora.store.view.ui.onboarding
 
 import android.os.Bundle
+import android.os.Environment
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
@@ -31,12 +32,14 @@ import com.aurora.extensions.isSAndAbove
 import com.aurora.store.R
 import com.aurora.store.data.work.UpdateWorker
 import com.aurora.store.databinding.FragmentOnboardingBinding
+import com.aurora.store.util.PathUtil
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_AUTO_DELETE
 import com.aurora.store.util.Preferences.PREFERENCE_AUTO_INSTALL
 import com.aurora.store.util.Preferences.PREFERENCE_DEFAULT
 import com.aurora.store.util.Preferences.PREFERENCE_DEFAULT_SELECTED_TAB
 import com.aurora.store.util.Preferences.PREFERENCE_DOWNLOAD_ACTIVE
+import com.aurora.store.util.Preferences.PREFERENCE_DOWNLOAD_DIRECTORY
 import com.aurora.store.util.Preferences.PREFERENCE_DOWNLOAD_EXTERNAL
 import com.aurora.store.util.Preferences.PREFERENCE_FILTER_FDROID
 import com.aurora.store.util.Preferences.PREFERENCE_FILTER_GOOGLE
@@ -155,6 +158,7 @@ class OnboardingFragment : Fragment(R.layout.fragment_onboarding) {
         /*Downloader*/
         save(PREFERENCE_DOWNLOAD_ACTIVE, 3)
         save(PREFERENCE_DOWNLOAD_EXTERNAL, false)
+        save(PREFERENCE_DOWNLOAD_DIRECTORY, PathUtil.getExternalPath(requireContext()))
 
         /*Network*/
         save(PREFERENCE_INSECURE_ANONYMOUS, false)
