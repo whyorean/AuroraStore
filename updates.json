@@ -1,7 +1,7 @@
 {
-  "version_name": "4.3.4",
-  "version_code": 52,
-  "aurora_build": "https://gitlab.com/AuroraOSS/AuroraStore/uploads/93f6afb6962637124d8ebcf4d95dc16e/AuroraStore_4.3.4.apk",
+  "version_name": "4.3.5",
+  "version_code": 53,
+  "aurora_build": "https://gitlab.com/AuroraOSS/AuroraStore/uploads/ac32503aee88c6d1067dad57f3f92e09/AuroraStore_4.3.5.apk",
   "fdroid_build": "",
-  "changelog": "Changelog : v4.3.3\n • Fix crash on some devices while searching non-english keywords\n • Improve Apps & Games page\n • Add back toggle for auto install post app download\n • Do not play notification sound when app is installed or updated\n • Fix crash on some devices while opening app details\n • Add uninstall confirmation dialog if using root installer"
+  "changelog": "Changelog : v4.3.3\n • Fix apps not installing post download\n • Allow choosing custom download directory\n • Add Wifi-only download option"
 }
