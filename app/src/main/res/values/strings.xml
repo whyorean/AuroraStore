@@ -217,9 +217,9 @@
     <string name="pref_downloader_path_title">"Download path"</string>
     <string name="pref_downloader_wifi_title">"Download using WiFi only"</string>
     <string name="pref_download_directory_error">"Selected path is not writable"</string>
-    <string name="pref_filter_fdroid_summary">"Removes F-Droid apps from app lists"</string>
+    <string name="pref_filter_fdroid_summary">"Ignore F-Droid apps from Updates and Installed apps"</string>
     <string name="pref_filter_fdroid_title">"Filter F-Droid apps"</string>
-    <string name="pref_filter_google_summary">"Removes all Google Apps from search results and category apps"</string>
+    <string name="pref_filter_google_summary">"Ignore Google apps from Updates and Installed apps"</string>
     <string name="pref_filter_google_title">"Filter Google apps"</string>
     <string name="pref_filter_search_summary">"Search filters are reset on each search. Turn off to save search filters"</string>
     <string name="pref_filter_search_title">"Use non-persistent search filter"</string>
@@ -254,7 +254,9 @@
     <string name="pref_ui_similar_apps">"Similar and related apps"</string>
     <string name="pref_ui_similar_apps_desc">"Display similar and related clusters on app details page"</string>
     <string name="pref_updates_extended">Extended updates</string>
-    <string name="pref_updates_extended_desc">Looks for new versions of disabled apps too</string>
+    <string name="pref_updates_extended_desc">Look for new versions of disabled apps and games</string>
+    <string name="pref_aurora_only">Aurora Store apps only</string>
+    <string name="pref_aurora_only_desc">Show only Aurora Store installed apps in Updates and Installed apps</string>
     <string name="purchase_failed">"Download Failed"</string>
     <string name="purchase_invalid">"App not purchased"</string>
     <string name="purchase_unsupported">"App not supported"</string>

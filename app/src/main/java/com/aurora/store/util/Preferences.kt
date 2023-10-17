@@ -41,6 +41,7 @@ object Preferences {
     const val PREFERENCE_FILTER_GOOGLE = "PREFERENCE_FILTER_GOOGLE"
     const val PREFERENCE_FILTER_FDROID = "PREFERENCE_FILTER_FDROID"
     const val PREFERENCE_FILTER_SEARCH = "PREFERENCE_FILTER_SEARCH"
+    const val PREFERENCE_FILTER_AURORA_ONLY = "PREFERENCE_FILTER_AURORA_ONLY"
 
     const val PREFERENCE_AUTO_INSTALL = "PREFERENCE_AUTO_INSTALL"
     const val PREFERENCE_AUTO_DELETE = "PREFERENCE_AUTO_DELETE"
@@ -107,8 +108,8 @@ object Preferences {
         return getPrefs(context).getLong(key, 0L)
     }
 
-    fun getBoolean(context: Context, key: String): Boolean {
-        return getPrefs(context).getBoolean(key, false)
+    fun getBoolean(context: Context, key: String, default: Boolean = false): Boolean {
+        return getPrefs(context).getBoolean(key, default)
     }
 }
 

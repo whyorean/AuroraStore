@@ -61,6 +61,10 @@ fun isTAndAbove(): Boolean {
     return Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU
 }
 
+fun isUAndAbove(): Boolean {
+    return Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE
+}
+
 fun isMIUI(): Boolean {
     return getSystemProperty("ro.miui.ui.version.name").isNotEmpty()
 }

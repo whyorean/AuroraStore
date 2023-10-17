@@ -61,7 +61,7 @@ class NativeInstaller(context: Context) : InstallerBase(context) {
         }
 
         intent.putExtra(Intent.EXTRA_NOT_UNKNOWN_SOURCE, true)
-        intent.putExtra(Intent.EXTRA_INSTALLER_PACKAGE_NAME, "com.android.vending")
+        intent.putExtra(Intent.EXTRA_INSTALLER_PACKAGE_NAME, context.packageName)
         context.startActivity(intent)
     }
 }

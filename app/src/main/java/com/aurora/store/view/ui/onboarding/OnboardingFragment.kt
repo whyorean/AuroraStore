@@ -40,6 +40,7 @@ import com.aurora.store.util.Preferences.PREFERENCE_DOWNLOAD_ACTIVE
 import com.aurora.store.util.Preferences.PREFERENCE_DOWNLOAD_DIRECTORY
 import com.aurora.store.util.Preferences.PREFERENCE_DOWNLOAD_EXTERNAL
 import com.aurora.store.util.Preferences.PREFERENCE_DOWNLOAD_WIFI_ONLY
+import com.aurora.store.util.Preferences.PREFERENCE_FILTER_AURORA_ONLY
 import com.aurora.store.util.Preferences.PREFERENCE_FILTER_FDROID
 import com.aurora.store.util.Preferences.PREFERENCE_FILTER_GOOGLE
 import com.aurora.store.util.Preferences.PREFERENCE_FILTER_SEARCH
@@ -151,6 +152,7 @@ class OnboardingFragment : Fragment(R.layout.fragment_onboarding) {
 
     private fun loadDefaultPreferences() {
         /*Filters*/
+        save(PREFERENCE_FILTER_AURORA_ONLY, false)
         save(PREFERENCE_FILTER_FDROID, true)
         save(PREFERENCE_FILTER_GOOGLE, false)
         save(PREFERENCE_FILTER_SEARCH, true)

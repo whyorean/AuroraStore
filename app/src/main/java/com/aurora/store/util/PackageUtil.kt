@@ -143,7 +143,18 @@ object PackageUtil {
         val flags: Int = PackageManager.GET_META_DATA
         var packageInfoList: List<PackageInfo> = packageManager.getInstalledPackages(flags)
 
-        val isFdroidFilterEnabled = Preferences.getBoolean(
+        val isGoogleFilterEnabled = Preferences.getBoolean(
+            context,
+            Preferences.PREFERENCE_FILTER_GOOGLE
+        )
+
+        val isAuroraOnlyUpdateEnabled = Preferences.getBoolean(
+            context,
+            Preferences.PREFERENCE_FILTER_AURORA_ONLY,
+            false
+        )
+
+        val isFDroidFilterEnabled = Preferences.getBoolean(
             context,
             Preferences.PREFERENCE_FILTER_FDROID
         )
@@ -154,18 +165,54 @@ object PackageUtil {
         )
 
         packageInfoList = packageInfoList.filter {
-            it.packageName != null && it.applicationInfo != null
+            it.packageName != null
+                    && it.applicationInfo != null
+                    && packageManager.getLaunchIntentForPackage(it.packageName) != null
+        }
+
+        /*Filter google apps*/
+        if (isGoogleFilterEnabled) {
+            packageInfoList = packageInfoList
+                .filter {
+                    !listOf(
+                        "com.chrome.beta",
+                        "com.chrome.canary",
+                        "com.chrome.dev",
+                        "com.android.chrome",
+                        "com.niksoftware.snapseed",
+                        "com.google.toontastic",
+                    ).contains(it.packageName)
+                }.filter {
+                    it.packageName?.contains("com.google") == false
+                }
+        }
+
+        /*Select only Aurora STore installed apps*/
+        if (isAuroraOnlyUpdateEnabled) {
+            packageInfoList = packageInfoList
+                .filter {
+                    val packageInstaller = packageManager.getInstallerPackageName(it.packageName)
+                    listOf(
+                        "com.aurora.store",
+                        "com.aurora.store.nightly",
+                        "com.aurora.services"
+                    ).contains(packageInstaller)
+                }
         }
 
         if (!isExtendedUpdateEnabled) {
             packageInfoList = packageInfoList.filter { it.applicationInfo.enabled }
         }
 
-        if (isFdroidFilterEnabled) {
+        /*Filter F-Droid apps*/
+        if (isFDroidFilterEnabled) {
             packageInfoList = packageInfoList
                 .filter {
                     val packageInstaller = packageManager.getInstallerPackageName(it.packageName)
-                    packageInstaller != "org.fdroid.fdroid.privileged"
+                    !listOf(
+                        "org.fdroid.fdroid",
+                        "org.fdroid.fdroid.privileged"
+                    ).contains(packageInstaller)
                 }.filter {
                     !CertUtil.isFDroidApp(context, it.packageName)
                 }

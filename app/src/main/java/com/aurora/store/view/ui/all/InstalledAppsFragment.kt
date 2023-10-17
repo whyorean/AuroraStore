@@ -59,6 +59,7 @@ class InstalledAppsFragment : BaseFragment() {
         )
 
         VM = ViewModelProvider(requireActivity())[InstalledViewModel::class.java]
+        VM.observe()
 
         return B.root
     }

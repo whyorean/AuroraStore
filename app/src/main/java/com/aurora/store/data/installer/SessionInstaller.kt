@@ -28,6 +28,7 @@ import com.aurora.extensions.isNAndAbove
 import com.aurora.extensions.isOAndAbove
 import com.aurora.extensions.isSAndAbove
 import com.aurora.extensions.isTAndAbove
+import com.aurora.extensions.isUAndAbove
 import com.aurora.store.util.Log
 
 
@@ -53,6 +54,9 @@ class SessionInstaller(context: Context) : SessionInstallerBase(context) {
                 }
                 if (isTAndAbove()) {
                     setPackageSource(PACKAGE_SOURCE_STORE)
+                }
+                if (isUAndAbove()) {
+                    setInstallerPackageName(context.packageName)
                 }
             }
 
