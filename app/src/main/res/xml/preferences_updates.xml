@@ -17,8 +17,8 @@
   ~
   -->
 
-<androidx.preference.PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<androidx.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <SwitchPreferenceCompat
         app:defaultValue="false"
@@ -29,9 +29,21 @@
 
     <SwitchPreferenceCompat
         app:defaultValue="true"
+        app:disableDependentsState="false"
         app:iconSpaceReserved="false"
         app:key="PREFERENCE_UPDATES_CHECK"
         app:summary="@string/pref_updates_check_desc"
         app:title="@string/pref_updates_check" />
 
+    <SeekBarPreference
+        android:defaultValue="3"
+        android:dependency="PREFERENCE_UPDATES_CHECK"
+        android:key="PREFERENCE_UPDATES_CHECK_INTERVAL"
+        android:max="24"
+        android:summary="@string/pref_updates_check_frequency_desc"
+        android:title="@string/pref_updates_check_frequency"
+        app:adjustable="true"
+        app:iconSpaceReserved="false"
+        app:min="1"
+        app:showSeekBarValue="true" />
 </androidx.preference.PreferenceScreen>

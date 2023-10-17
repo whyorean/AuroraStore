@@ -20,7 +20,6 @@
 package com.aurora.store.view.ui.onboarding
 
 import android.os.Bundle
-import android.os.Environment
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
@@ -52,6 +51,7 @@ import com.aurora.store.util.Preferences.PREFERENCE_SIMILAR
 import com.aurora.store.util.Preferences.PREFERENCE_THEME_ACCENT
 import com.aurora.store.util.Preferences.PREFERENCE_THEME_TYPE
 import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_CHECK
+import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_CHECK_INTERVAL
 import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_EXTENDED
 import com.aurora.store.util.save
 import com.google.android.material.tabs.TabLayoutMediator
@@ -178,5 +178,6 @@ class OnboardingFragment : Fragment(R.layout.fragment_onboarding) {
         /*Updates*/
         save(PREFERENCE_UPDATES_EXTENDED, false)
         save(PREFERENCE_UPDATES_CHECK, true)
+        save(PREFERENCE_UPDATES_CHECK_INTERVAL, 3)
     }
 }

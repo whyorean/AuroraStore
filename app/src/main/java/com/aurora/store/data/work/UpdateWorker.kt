@@ -49,13 +49,20 @@ class UpdateWorker(private val appContext: Context, workerParams: WorkerParamete
         fun scheduleAutomatedCheck(context: Context) {
             Log.i("Scheduling periodic app updates check!")
 
+            val updateCheckInterval = Preferences.getInteger(
+                context,
+                Preferences.PREFERENCE_UPDATES_CHECK_INTERVAL,
+                3
+            ).toLong()
+
             val constraints = Constraints.Builder()
                 .setRequiredNetworkType(NetworkType.UNMETERED)
                 .setRequiresDeviceIdle(true)
                 .setRequiresBatteryNotLow(true)
                 .build()
+
             val workRequest = PeriodicWorkRequestBuilder<UpdateWorker>(
-                repeatInterval = 3,
+                repeatInterval = updateCheckInterval,
                 repeatIntervalTimeUnit = HOURS,
                 flexTimeInterval = 30,
                 flexTimeIntervalUnit = MINUTES

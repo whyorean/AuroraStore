@@ -58,6 +58,7 @@ object Preferences {
 
     const val PREFERENCE_UPDATES_EXTENDED = "PREFERENCE_UPDATES_EXTENDED"
     const val PREFERENCE_UPDATES_CHECK = "PREFERENCE_UPDATES_CHECK"
+    const val PREFERENCE_UPDATES_CHECK_INTERVAL = "PREFERENCE_UPDATES_CHECK_INTERVAL"
 
     const val PREFERENCE_UNIQUE_GROUP_IDS = "PREFERENCE_UNIQUE_GROUP_IDS"
 
@@ -94,8 +95,8 @@ object Preferences {
         return getPrefs(context).getString(key, default).toString()
     }
 
-    fun getInteger(context: Context, key: String): Int {
-        return getPrefs(context).getInt(key, 0)
+    fun getInteger(context: Context, key: String, default: Int = 0): Int {
+        return getPrefs(context).getInt(key, default)
     }
 
     fun getFloat(context: Context, key: String): Float {
