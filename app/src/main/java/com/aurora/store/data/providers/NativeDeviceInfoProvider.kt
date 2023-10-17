@@ -153,15 +153,15 @@ class NativeDeviceInfoProvider(context: Context) : ContextWrapper(context) {
     }
 
     private fun stripHuaweiProperties(properties: Properties): Properties {
-        //Add i-Phoney properties
-        properties["Build.HARDWARE"] = "unknown"
-        properties["Build.BOOTLOADER"] = "unknown"
-        properties["Build.BRAND"] = "PassionFruit"
-        properties["Build.DEVICE"] = "ProPlus5GFold"
-        properties["Build.MODEL"] = "iPhoney"
-        properties["Build.MANUFACTURER"] = "PassionFruit"
-        properties["Build.PRODUCT"] = "iPhoney_24"
-        properties["Build.ID"] = "ABC.123"
+        //Add Pixel 7a properties
+        properties["Build.HARDWARE"] = "lynx"
+        properties["Build.BOOTLOADER"] = "lynx-1.0-9716681"
+        properties["Build.BRAND"] = "google"
+        properties["Build.DEVICE"] = "lynx"
+        properties["Build.MODEL"] = "Pixel 7a"
+        properties["Build.MANUFACTURER"] = "Google"
+        properties["Build.PRODUCT"] = "lynx"
+        properties["Build.ID"] = "TQ2A.230505.002"
         return properties
     }
 }
