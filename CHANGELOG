@@ -1,3 +1,8 @@
+Changelog : v4.3.5 (53)
+• Fix apps not installing post download
+• Allow choosing custom download directory
+• Add Wifi-only download option
+
 Changelog : v4.3.4 (52)
 • Fix crash on some devices while searching non-english keywords
 • Improve Apps & Games page

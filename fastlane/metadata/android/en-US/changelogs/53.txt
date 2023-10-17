@@ -1,0 +1,3 @@
+• Fix apps not installing post download
+• Allow choosing custom download directory
+• Add Wifi-only download option
