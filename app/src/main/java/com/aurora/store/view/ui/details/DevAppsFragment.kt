@@ -32,6 +32,7 @@ import com.aurora.store.view.epoxy.views.AppProgressViewModel_
 import com.aurora.store.view.epoxy.views.app.AppListViewModel_
 import com.aurora.store.view.ui.commons.BaseFragment
 import com.aurora.store.viewmodel.search.SearchResultViewModel
+import okhttp3.internal.filterList
 
 class DevAppsFragment : BaseFragment(R.layout.activity_generic_recycler) {
 
@@ -82,7 +83,9 @@ class DevAppsFragment : BaseFragment(R.layout.activity_generic_recycler) {
         binding.recycler
             .withModels {
                 setFilterDuplicates(true)
-                searchBundle.appList.forEach { app ->
+                searchBundle.appList
+                    .filter { it.displayName.isNotEmpty() }
+                    .forEach { app ->
                     add(
                         AppListViewModel_()
                             .id(app.id)
