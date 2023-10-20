@@ -58,7 +58,7 @@
     <string name="purchase_unsupported">ਐਪ ਸਪੋਰਟਡ ਨਹੀਂ</string>
     <string name="purchase_invalid">ਇਹ ਐਪ ਅਜੇ ਤੁਹਾਡੇ ਵਲੋਂ ਖਰੀਦਿਆ ਨਹੀਂ ਗਿਆ</string>
     <string name="purchase_failed">ਡਾਊਨਲੋਡ ਫੇਲ੍ਹ</string>
-    <string name="pref_updates_extended_desc">ਸਿਸਟਮ ਵਲੋਂ ਬੰਦ ਕੀਤੀਆਂ ਗਈਆਂ ਐਪਸ ਦੇ ਅੱਪਡੇਟ ਵੀ ਸੂਚੀ ਵਿੱਚ ਵਿਖਾਓ</string>
+    <string name="pref_updates_extended_desc">ਡਿਸੇਬਲ ਐਪਾਂ ਅਤੇ ਗੇਮਾਂ ਦੇ ਨਵੇਂ ਸੰਸਕਰਣਾਂ ਦੀ ਭਾਲ ਕਰੋ</string>
     <string name="pref_updates_extended">Extended ਅੱਪਡੇਟਸ</string>
     <string name="pref_ui_similar_apps_desc">ਐਪ ਜਾਣਕਾਰੀ ਵਾਲੇ ਪੇਜ ਤੇ ਇਸੇ ਸ਼੍ਰੇਣੀ ਦੇ ਕੁੱਝ ਹੋਰ ਐਪਸ ਵਾਲਾ ਖ਼ਾਨਾ ਵਿਖਾਓ</string>
     <string name="pref_ui_similar_apps">ਇਸੇ ਸ਼੍ਰੇਣੀ ਦੇ ਕੁੱਝ ਹੋਰ ਐਪਸ</string>
@@ -98,9 +98,9 @@
     <string name="pref_filter_search_title">ਨਿਰੰਤਰ ਨਾ ਰਹਿਣ ਵਾਲੇ ਖ਼ੋਜ ਫਿਲਟਰ ਦੀ ਵਰਤੋਂ ਕਰੋ</string>
     <string name="pref_filter_search_summary">ਖ਼ੋਜ ਫਿਲਟਰ ਹਰੇਕ ਖ਼ੋਜ ਉਤੇ ਰੀਸੈਟ ਕੀਤੇ ਜਾਣਗੇ। ਖ਼ੋਜ ਫਿਲਟਰਸ ਨੂੰ ਯਾਦ ਰੱਖਣ ਲਈ ਇਸਨੂੰ ਬੰਦ ਕਰੋ</string>
     <string name="pref_filter_google_title">ਫਿਲਟਰ ਗੂਗਲ ਐਪਸ</string>
-    <string name="pref_filter_google_summary">ਖੋਜ ਨਤੀਜਿਆਂ ਅਤੇ ਸ਼੍ਰੇਣੀ ਸੂਚੀ ਚੋਂ ਸਾਰੇ ਗੂਗਲ ਐਪਸ ਹਟਾਓ</string>
+    <string name="pref_filter_google_summary">ਅੱਪਡੇਟਸ ਅਤੇ ਇੰਸਟਾਲ ਐਪ ਟੈਬ ਚੋਂ ਗੂਗਲ ਐਪਸ ਅਣਡਿੱਠ ਕਰੋ</string>
     <string name="pref_filter_fdroid_title">ਫਿਲਟਰ F-Droid ਐਪਸ</string>
-    <string name="pref_filter_fdroid_summary">ਐਪ ਲਿਸਟ ਚੋਂ F-Droid ਐਪਸ ਹਟਾਓ</string>
+    <string name="pref_filter_fdroid_summary">ਅੱਪਡੇਟਸ ਅਤੇ ਇੰਸਟਾਲ ਐਪ ਟੈਬ ਚੋਂ F-Droid ਐਪਸ ਅਣਡਿੱਠ ਕਰੋ</string>
     <string name="pref_downloader_external_desc">ਡਾਊਨਲੋਡਸ ਅਤੇ ਐਕਸਪੋਰਟ ਵਗੈਰਾ ਲਈ ਬਾਹਰੀ (external) ਸਟੋਰੇਜ਼ ਵਰਤਿਆ ਜਾਵੇਗਾ।</string>
     <string name="pref_downloader_external">ਡਾਊਨਲੋਡ ਵਾਸਤੇ ਬਾਹਰੀ (external) ਸਟੋਰੇਜ ਵਰਤੋ</string>
     <string name="pref_downloader_active_title">ਚੱਲ ਰਹੀਆਂ ਡਾਊਨਲੋਡਸ</string>
@@ -360,4 +360,14 @@
     <string name="android_market_desc">ਐਂਡਰਾਇਡ ਮਾਰਕੀਟ ਐਂਡਰੌਇਡ ਡਿਵਾਈਸਾਂ ਲਈ ਡਿਜ਼ਾਈਨ ਕੀਤੀਆਂ ਗਈਆਂ ਸਾਫ਼ਟਵੇਅਰ ਐਪਲੀਕੇਸ਼ਨਾਂ ਪੇਸ਼ ਕਰਨ ਵਾਲਾ ਇੱਕ ਆਨਲਾਈਨ ਸਟੋਰ ਸੀ, ਜੋ 2017 ਵਿੱਚ ਬੰਦ ਹੋ ਗਿਆ।</string>
     <string name="details_ratings_title_hint">ਸਮੀਖਿਆ ਸਿਰਲੇਖ</string>
     <string name="action_uninstall_confirmation">ਕੀ ਤੁਸੀਂ ਇਸ ਐਪ ਨੂੰ ਅਣਇੰਸਟਾਲ ਕਰਨਾ ਚਾਹੁੰਦੇ ਹੋ\?</string>
+    <string name="pref_updates_check_frequency_desc">ਘੰਟਿਆਂ ਵਿੱਚ ਆਟੋ ਅੱਪਡੇਟਸ ਚੈੱਕ ਲਈ ਅੰਤਰਾਲ ਕੌਂਫਿਗਰ ਕਰੋ।</string>
+    <string name="pref_aurora_only">ਸਿਰਫ਼ ਔਰੋਰਾ ਸਟੋਰ ਐਪਸ</string>
+    <string name="pref_aurora_only_desc">ਅੱਪਡੇਟਸ ਅਤੇ ਇੰਸਟਾਲ ਐਪ ਟੈਬ ਵਿੱਚ ਸਿਰਫ਼ ਔਰੋਰਾ ਸਟੋਰ ਇੰਸਟਾਲ ਐਪਾਂ ਵਿਖਾਓ</string>
+    <string name="title_app_settings">ਐਪ ਸੈਟਿੰਗਾਂ</string>
+    <string name="title_apps_sale_provider">ਪ੍ਰੋਵਾਈਡਰ - bestappsales.com</string>
+    <string name="details_no_apps_on_sale">ਵਿਕਰੀ \'ਤੇ ਕੋਈ ਐਪ ਨਹੀਂ ਮਿਲੀ</string>
+    <string name="pref_downloader_path_title">ਡਾਊਨਲੋਡ ਮਾਰਗ</string>
+    <string name="pref_updates_check_frequency">ਆਟੋਮੈਟਿਕ ਅੱਪਡੇਟਾਂ ਦੀ ਫਰੀਕੁਐਂਸੀ</string>
+    <string name="pref_download_directory_error">ਚੁਣਿਆ ਗਿਆ ਮਾਰਗ ਲਿਖਣਯੋਗ ਨਹੀਂ ਹੈ</string>
+    <string name="pref_downloader_wifi_title">ਸਿਰਫ਼ ਵਾਈਫਾਈ ਦੀ ਵਰਤੋਂ ਕਰਕੇ ਡਾਊਨਲੋਡ ਕਰੋ</string>
 </resources>
