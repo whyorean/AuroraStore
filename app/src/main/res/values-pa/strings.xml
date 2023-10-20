@@ -360,14 +360,14 @@
     <string name="android_market_desc">ਐਂਡਰਾਇਡ ਮਾਰਕੀਟ ਐਂਡਰੌਇਡ ਡਿਵਾਈਸਾਂ ਲਈ ਡਿਜ਼ਾਈਨ ਕੀਤੀਆਂ ਗਈਆਂ ਸਾਫ਼ਟਵੇਅਰ ਐਪਲੀਕੇਸ਼ਨਾਂ ਪੇਸ਼ ਕਰਨ ਵਾਲਾ ਇੱਕ ਆਨਲਾਈਨ ਸਟੋਰ ਸੀ, ਜੋ 2017 ਵਿੱਚ ਬੰਦ ਹੋ ਗਿਆ।</string>
     <string name="details_ratings_title_hint">ਸਮੀਖਿਆ ਸਿਰਲੇਖ</string>
     <string name="action_uninstall_confirmation">ਕੀ ਤੁਸੀਂ ਇਸ ਐਪ ਨੂੰ ਅਣਇੰਸਟਾਲ ਕਰਨਾ ਚਾਹੁੰਦੇ ਹੋ\?</string>
-    <string name="pref_updates_check_frequency_desc">ਘੰਟਿਆਂ ਵਿੱਚ ਆਟੋ ਅੱਪਡੇਟਸ ਚੈੱਕ ਲਈ ਅੰਤਰਾਲ ਕੌਂਫਿਗਰ ਕਰੋ।</string>
+    <string name="pref_updates_check_frequency_desc">ਘੰਟਿਆਂ ਵਿੱਚ, ਆਟੋ ਅੱਪਡੇਟਸ ਚੈੱਕ ਲਈ ਅੰਤਰਾਲ ਕੌਂਫਿਗਰ ਕਰੋ।</string>
     <string name="pref_aurora_only">ਸਿਰਫ਼ ਔਰੋਰਾ ਸਟੋਰ ਐਪਸ</string>
     <string name="pref_aurora_only_desc">ਅੱਪਡੇਟਸ ਅਤੇ ਇੰਸਟਾਲ ਐਪ ਟੈਬ ਵਿੱਚ ਸਿਰਫ਼ ਔਰੋਰਾ ਸਟੋਰ ਇੰਸਟਾਲ ਐਪਾਂ ਵਿਖਾਓ</string>
     <string name="title_app_settings">ਐਪ ਸੈਟਿੰਗਾਂ</string>
     <string name="title_apps_sale_provider">ਪ੍ਰੋਵਾਈਡਰ - bestappsales.com</string>
     <string name="details_no_apps_on_sale">ਵਿਕਰੀ \'ਤੇ ਕੋਈ ਐਪ ਨਹੀਂ ਮਿਲੀ</string>
     <string name="pref_downloader_path_title">ਡਾਊਨਲੋਡ ਮਾਰਗ</string>
-    <string name="pref_updates_check_frequency">ਆਟੋਮੈਟਿਕ ਅੱਪਡੇਟਾਂ ਦੀ ਫਰੀਕੁਐਂਸੀ</string>
+    <string name="pref_updates_check_frequency">ਆਟੋਮੈਟਿਕ ਅੱਪਡੇਟ ਆਵ੍ਰਿਤੀ</string>
     <string name="pref_download_directory_error">ਚੁਣਿਆ ਗਿਆ ਮਾਰਗ ਲਿਖਣਯੋਗ ਨਹੀਂ ਹੈ</string>
     <string name="pref_downloader_wifi_title">ਸਿਰਫ਼ ਵਾਈਫਾਈ ਦੀ ਵਰਤੋਂ ਕਰਕੇ ਡਾਊਨਲੋਡ ਕਰੋ</string>
 </resources>
