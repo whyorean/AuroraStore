@@ -64,7 +64,7 @@
     <string name="pref_install_profile_summary">Das Zielprofil auswählen, um Apps zu installieren. Dies funktioniert nur mit der Root-Installationsmethode.</string>
     <string name="pref_install_auto_summary">Apps werden sofort nach dem Download installiert</string>
     <string name="pref_filter_google_title">Google-Apps filtern</string>
-    <string name="pref_filter_google_summary">Alle Google-Apps aus den Suchergebnissen und Kategorien entfernen</string>
+    <string name="pref_filter_google_summary">Alle Google-Apps aus den Suchergebnissen und Kategorien ausblenden</string>
     <string name="pref_filter_fdroid_title">F-Droid-Apps filtern</string>
     <string name="pref_filter_fdroid_summary">F-Droid-Apps in allen App-Listen ausblenden</string>
     <string name="pref_dialog_to_apply_restart">Die Einstellung wird nach einem Neustart der App übernommen.</string>
@@ -365,4 +365,6 @@
     <string name="details_no_apps_on_sale">Keine Apps im Angebot gefunden</string>
     <string name="pref_downloader_path_title">Download-Verzeichnis</string>
     <string name="pref_download_directory_error">Gewähltes Verzeichnis ist schreibgeschützt</string>
+    <string name="title_app_settings">App Einstellungen</string>
+    <string name="pref_downloader_wifi_title">Download nur über WiFi</string>
 </resources>
