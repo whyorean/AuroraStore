@@ -240,9 +240,9 @@
     <string name="pref_install_auto_title">Instalar APKs automaticamente após o baixamento</string>
     <string name="pref_install_auto_summary">Os aplicativos são instalados instantaneamente após a conclusão do baixamento</string>
     <string name="pref_filter_google_title">Filtrar aplicativos do Google</string>
-    <string name="pref_filter_google_summary">Remove todos os aplicativos do Google dos resultados de pesquisa e categorias</string>
+    <string name="pref_filter_google_summary">Ignorar apps do Google das Atualizações e dos apps Instalados</string>
     <string name="pref_filter_fdroid_title">Filtrar aplicativos F-Droid</string>
-    <string name="pref_filter_fdroid_summary">Remove aplicativos F-Droid das listas de aplicativos</string>
+    <string name="pref_filter_fdroid_summary">Remove aplicativos F-Droid das listas de Atualizações e Instalados</string>
     <string name="pref_downloader_external_desc">O armazenamento externo é utilizado para downloads, exportações, etc.</string>
     <string name="pref_downloader_external">Armazenamento externo do usuário</string>
     <string name="pref_downloader_active_title">Baixamento ativo</string>
@@ -272,7 +272,7 @@
     <string name="toast_page_unavailable">Página indisponível</string>
     <string name="toast_export_failed">Não foi possível exportar a configuração do dispositivo</string>
     <string name="toast_export_success">Configuração do dispositivo exportado</string>
-    <string name="pref_updates_extended_desc">Procurar novas versões de aplicativos desativados também</string>
+    <string name="pref_updates_extended_desc">Procurar novas versões de apps e jogos desativados</string>
     <string name="pref_updates_extended">Atualizações estendidas</string>
     <string name="app_updater_service_notif_text">Ativa o download de aplicativos em segundo plano</string>
     <string name="app_updater_service_notif_title">Download de aplicativo em segundo plano</string>
@@ -364,4 +364,10 @@
     <string name="details_no_apps_on_sale">Nenhum app à venda encontrado</string>
     <string name="pref_downloader_path_title">Caminho de download</string>
     <string name="pref_download_directory_error">O caminho selecionado não pode ser escrito</string>
+    <string name="pref_updates_check_frequency_desc">Configure intervalos para atualizações automáticas, em hora.</string>
+    <string name="pref_aurora_only">Apenas apps da Aurora Store</string>
+    <string name="pref_aurora_only_desc">Mostrar apenas apps instalados pela Aurora Store nas Atualizações e apps Instalados</string>
+    <string name="title_app_settings">Configurações do App</string>
+    <string name="pref_updates_check_frequency">Frequência de atualizações automáticas</string>
+    <string name="pref_downloader_wifi_title">Baixar usando apenas Wi-Fi</string>
 </resources>
