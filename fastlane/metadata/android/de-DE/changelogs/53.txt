@@ -1,0 +1,3 @@
+• Behoben, dass Apps nach dem Download nicht installiert wurden
+• Die Auswahl eines eigenen Download-Verzeichnisses ermöglicht
+• Option „Download nur über WLAN“ hinzugefügt
