@@ -84,7 +84,7 @@
     <string name="tab_for_you">आपके लिए</string>
     <string name="purchase_invalid">ऐप नहीं खरीदा गया</string>
     <string name="details_contains_ads">विज्ञापन हैं</string>
-    <string name="pref_filter_google_summary">खोज नतीजे और श्रेणी ऐप से सारे गूगल ऐप्स को हटाता है</string>
+    <string name="pref_filter_google_summary">अपडेटस और इंस्टॉलड ऐप्स में से गूगल ऐप्स को अनदेखा करें</string>
     <string name="details_think_this_app">आप इस ऐप के बारे में क्या सोचते हैं\?</string>
     <string name="onboarding_welcome_select">क्या हालचाल है\?</string>
     <string name="onboarding_permission_esm">बाहरी स्टोरेज मैनेजर</string>
@@ -146,7 +146,7 @@
     <string name="tab_trending">ट्रेंड में</string>
     <string name="onboarding_tos_desc">ऑरोरा स्टोर इस्तेमाल करने को कृपया हमारे सेवा के नियम पढ़े और उन्हे मानें।</string>
     <string name="download_clear_completed">पूरे हुए साफ करें</string>
-    <string name="pref_filter_fdroid_summary">ऐप सूची से F-Droid के ऐप्स को हटाता है</string>
+    <string name="pref_filter_fdroid_summary">अपडेटस और इंस्टॉलड ऐप्स में से F-Droid ऐप्स को अनदेखा करें</string>
     <string name="pref_ui_theme_title">थीम</string>
     <string name="title_games">गेम्स</string>
     <string name="title_settings">सेटिंग</string>
@@ -292,7 +292,7 @@
     <string name="toast_aas_token_failed">एएएस टोकन नहीं बना सके</string>
     <string name="app_updater_service_notif_text">बैकग्राउंड ऐप डाउनलोड सक्षम करेगा</string>
     <string name="pref_updates_extended">Extended अपडेटस</string>
-    <string name="pref_updates_extended_desc">अक्षम ऐप्स के नए संस्करण के लिए भी देखें</string>
+    <string name="pref_updates_extended_desc">अक्षम ऐप्स और गेम्स के नए संस्करणों के लिए देखें</string>
     <string name="account_anonymous_insecure">अज्ञात (असुरक्षित)</string>
     <string name="download_progress">डाउनलोड हो रहे • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
     <string name="installer_shizuku_unavailable">शिज़ुकु इंस्टाल नहीं या ठीक से सेटअप नहीं किया।</string>
@@ -360,4 +360,13 @@
     <string name="android_market_desc">एंड्रॉइड मार्केट एंड्रॉइड डिवाइसों के लिए डिज़ाइन किए गए सॉफ़्टवेयर एप्लिकेशन पेश करने वाला एक ऑनलाइन स्टोर था, जो 2017 में बंद हो गया।</string>
     <string name="details_ratings_title_hint">समीक्षा शीर्षक</string>
     <string name="action_uninstall_confirmation">क्या आप इस ऐप को अनइंस्टॉल करना चाहते हैं\?</string>
+    <string name="pref_aurora_only">केवल अरोरा स्टोर ऐप्स</string>
+    <string name="pref_aurora_only_desc">अपडेटस और इंस्टॉलड ऐप्स में केवल ऑरोरा स्टोर से इंस्टॉल किए गए ऐप्स दिखाएं</string>
+    <string name="title_app_settings">ऐप सेटिंग्स</string>
+    <string name="title_apps_sale_provider">प्रोवाइडर - bestappsales.com</string>
+    <string name="details_no_apps_on_sale">बिक्री पर कोई ऐप नहीं मिला</string>
+    <string name="pref_downloader_path_title">डाउनलोड पथ</string>
+    <string name="pref_updates_check_frequency">स्वचालित अपडेट आवृत्ति</string>
+    <string name="pref_download_directory_error">चयनित पथ लिखने योग्य नहीं है</string>
+    <string name="pref_downloader_wifi_title">केवल वाई-फ़ाई का उपयोग करके डाउनलोड करें</string>
 </resources>
