@@ -1,0 +1,6 @@
+• Naprawiono awarię na niektórych urządzeniach podczas wyszukiwania nieanglojęzycznych słów kluczowych
+• Ulepszono stronę Gry i Aplikacje
+• Add back toggle for auto install post app download
+• Do not play notification sound when app is installed or updated
+• Naprawiono awarię aplikacji na niektórych urządzeniach podczas otwierania szczegółów aplikacji
+• Dodano okno potwierdzające chęć odinstalowania aplikacji w przypadku korzystania z instalatora root
