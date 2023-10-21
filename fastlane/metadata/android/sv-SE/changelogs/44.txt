@@ -1,0 +1,6 @@
+• Fixa krasch relaterad till avisering av installationstjänster
+• Visa endast giltiga spoofingsegenskaper i appen
+• Meddela användare när de är hastighetsbegränsade under sökning
+• Visa en skimrande animation medan du söker för att indikera framsteg
+• Åtgärda navigeringsbeteende när standardfliken ändras
+• Fixa alternativet för snabbt avslut

@@ -69,9 +69,9 @@
     <string name="pref_install_auto_title">Аутоматски инсталирајте APK-ове након преузимања</string>
     <string name="pref_install_auto_summary">Апликације се инсталирају одмах по завршетку преузимања</string>
     <string name="pref_filter_google_title">Филтрирај Google апликације</string>
-    <string name="pref_filter_google_summary">Уклања све Google апликације из резултата претраживања и категорија апликација</string>
+    <string name="pref_filter_google_summary">Игноришите Google апликације из ажурирања и инсталираних апликација</string>
     <string name="pref_filter_fdroid_title">Филтрирај F-Droid апликације</string>
-    <string name="pref_filter_fdroid_summary">Уклања F-Droid апликације с листа апликација</string>
+    <string name="pref_filter_fdroid_summary">Игноришите F-Droid апликације из ажурирања и инсталираних апликација</string>
     <string name="pref_downloader_external_desc">Спољна меморија се користи за преузимања, извозе итд.</string>
     <string name="pref_downloader_external">Спољна меморија корисника</string>
     <string name="pref_downloader_active_title">Активно преузимање</string>
@@ -243,9 +243,9 @@
     <string name="about_fdroid_summary">Набавите Aurora Store преко F-Droid-а.</string>
     <string name="about_fdroid">F-Droid</string>
     <string name="about_bitcoin_eth_summary">Донирајте преко Ethereum-а (ETH)</string>
-    <string name="about_bitcoin_eth">Етеријум</string>
-    <string name="about_bitcoin_btc">Биткојн</string>
-    <string name="about_bitcoin_bch">Биткојн кеш</string>
+    <string name="about_bitcoin_eth">Ethereum</string>
+    <string name="about_bitcoin_btc">Bitcoin</string>
+    <string name="about_bitcoin_bch">Bitcoin Cash</string>
     <string name="about_bhim">BHIM - UPI</string>
     <string name="dialog_desc_native_split">Не можете инсталирати пакет (подељени) апликација преко „Изворног” програма за инсталацију. Промените програм за инсталацију у „Сесијa”, „Услуге” или „Root”.</string>
     <string name="toast_aas_token_failed">Није могуће генерисати AAS токен</string>
@@ -272,7 +272,7 @@
     <string name="action_check">Провери</string>
     <string name="toast_export_failed">Није могуће извести конфигурацију уређаја</string>
     <string name="toast_export_success">Конфигурација уређаја је извезена</string>
-    <string name="pref_updates_extended_desc">Проналажење нових верзија и за онемогућене апликације</string>
+    <string name="pref_updates_extended_desc">Потражите нове верзије онемогућених апликација и игара</string>
     <string name="pref_updates_extended">Проширена ажурирања</string>
     <string name="account_anonymous_insecure">Анонимно (несигурно)</string>
     <string name="download_paused">Паузирано •
@@ -395,4 +395,15 @@
     <string name="amazon_appstore_desc">Amazon Appstore је продавница апликација за платформе компатибилне са Android-ом, којом управља Amazon.</string>
     <string name="android_market_desc">Android Market је била онлајн продавница која је нудила софтверске апликације дизајниране за Android уређаје, пензионисана 2017. године.</string>
     <string name="details_ratings_title_hint">Прегледај наслов</string>
+    <string name="action_uninstall_confirmation">Желите ли да деинсталирате ову апликацију\?</string>
+    <string name="title_apps_sale_provider">Пружалац - bestappsales.com</string>
+    <string name="details_no_apps_on_sale">Није пронађена ниједна апликација на распродаји</string>
+    <string name="pref_downloader_path_title">Путања преузимања</string>
+    <string name="pref_download_directory_error">Изабрана путања није уписива</string>
+    <string name="pref_updates_check_frequency_desc">Конфигуришите интервале за аутоматска ажурирања, у сатима.</string>
+    <string name="pref_aurora_only">Само Aurora Store апликације</string>
+    <string name="pref_aurora_only_desc">Прикажите само инсталиране апликације помоћу Aurora Store у ажурирањима и инсталираним апликацијама</string>
+    <string name="title_app_settings">Подешавања апликације</string>
+    <string name="pref_updates_check_frequency">Учесталост аутоматског ажурирања</string>
+    <string name="pref_downloader_wifi_title">Преузми само користећи Wi-Fi</string>
 </resources>

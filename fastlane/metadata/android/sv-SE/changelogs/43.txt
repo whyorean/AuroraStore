@@ -1,0 +1,2 @@
+• Aktivera alltid slutför-knapp på behörighetsfragment (fixar nya användares introduktion)
+• Behåll GSON-bibliotekets TypeToken medan du optimerar bygge (fixar startkrasch)

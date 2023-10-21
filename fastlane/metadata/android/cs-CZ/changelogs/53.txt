@@ -1,0 +1,3 @@
+• Opraveno nenainstalování aplikací po jejich stažení
+• Umožnění vybrání vlastního adresáře stahování
+• Přidána možnost stahování pouze přes Wi-Fi

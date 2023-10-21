@@ -1,9 +1,9 @@
-• Wenn Sie von einem dunklen Design zum Systemdesign wechseln, wird die Benutzeroberfläche ordnungsgemäß aktualisiert
-• Dialoge auf dem Startbildschirm verbergen bestimmte Ansichten nicht mehr
-• Wenn Sie jetzt einen Google Play-Link öffnen, stellen Sie sicher, dass ein gültiges und funktionierendes Konto vorhanden ist
-• Die Navigationsleiste kann nur auf dem Hauptbildschirm geöffnet werden
-• Durch die Zurück-Aktion wird die App auf bestimmten Bildschirmen jetzt ordnungsgemäß beendet
-• Die Einstellungsschaltflächen haben jetzt im dunklen Design den richtigen Farbton
+• Beim Wechsel vom dunklen Design zum Systemdesign, wird die Bedienoberfläche korrekt aktualisiert
+• Dialoge auf dem Startbildschirm verbergen nicht mehr bestimmte Ansichten
+• Das Öffnen eines Google-Play-Links stellt nun sicher, dass ein gültiges und funktionierendes Konto vorhanden ist
+• Die Navigationsleiste kann nur noch auf dem Hauptbildschirm geöffnet werden
+• Die Zurück-Aktion beendet die App auf bestimmten Bildschirmen jetzt ordnungsgemäß
+• Die Einstellungsschaltflächen haben im dunklen Design jetzt den richtigen Farbton
 • Der App-Name ist in der Symbolleiste für Exodus-Berichte wieder sichtbar
 • Interne Verbesserungen im Zusammenhang mit Bildern
 • Übersetzungsaktualisierungen

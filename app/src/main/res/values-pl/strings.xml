@@ -160,9 +160,9 @@
     <string name="pref_install_auto_title">Automatyczna instalacja plików APK po pobraniu</string>
     <string name="pref_install_auto_summary">Aplikacje będą instalowane natychmiast po zakończeniu pobierania</string>
     <string name="pref_filter_google_title">Filtruj aplikacje Google</string>
-    <string name="pref_filter_google_summary">Usuń wszystkie aplikacje Google z wyników wyszukiwania i kategorii aplikacji</string>
+    <string name="pref_filter_google_summary">Ignoruj aplikacje Google w Aktualizacjach i Zainstalowanych aplikacjach</string>
     <string name="pref_filter_fdroid_title">Filtruj aplikacje F-Droid</string>
-    <string name="pref_filter_fdroid_summary">Usuń aplikacje F-Droid z listy aplikacji</string>
+    <string name="pref_filter_fdroid_summary">Ignoruj aplikacje F-Droid w Aktualizacjach i Zainstalowanych aplikacjach</string>
     <string name="pref_downloader_external_desc">Pamięć zewnętrzna jest używana do pobierania, eksportowania itp.</string>
     <string name="pref_downloader_external">Pamięć zewnętrzna</string>
     <string name="pref_downloader_active_summary">Maksymalna liczba aktywnych pobierań</string>
@@ -223,10 +223,10 @@
     <string name="filter_review_critical">Negatywne</string>
     <string name="filter_review_all">Wszystkie</string>
     <string name="exodus_view_report">Zobacz raport</string>
-    <string name="exodus_substring">elementy śledzące w</string>
+    <string name="exodus_substring">znane elementy śledzące w</string>
     <string name="exodus_progress">Sprawdzam usługi śledzące…</string>
     <string name="exodus_powered">Na podstawie Exodus</string>
-    <string name="exodus_no_tracker">Nie zawiera usług śledzących</string>
+    <string name="exodus_no_tracker">Nie zawiera znanych usług śledzących</string>
     <string name="download_speed_estimating">Szacowanie</string>
     <string name="download_resume_all">Wznów wszystko</string>
     <string name="download_queued">W kolejce</string>
@@ -267,13 +267,13 @@
     <string name="action_check">Sprawdź</string>
     <string name="dialog_desc_native_split">Nie można instalować pakietów aplikacji (dzielonych) za pośrednictwem natywnego instalatora. Zmień instalator na sesję, usługi lub root.</string>
     <string name="toast_page_unavailable">Przeglądana strona jest niedostępna</string>
-    <string name="toast_rated_success">Oceniono</string>
+    <string name="toast_rated_success">Oceniono (może upłynąć trochę czasu, zanim recenzja się pojawi)</string>
     <string name="toast_aas_token_failed">Nie można wygenerować tokena AAS</string>
     <string name="toast_rated_failed">Nie można przesłać oceny</string>
     <string name="toast_export_failed">Nie można wyeksportować konfiguracji urządzenia</string>
     <string name="toast_export_success">Wyeksportowano konfigurację urządzenia</string>
-    <string name="pref_updates_extended_desc">Wyszukaj nowe wersje wyłączonych aplikacji</string>
-    <string name="pref_updates_extended">Rozszerz aktualizacje</string>
+    <string name="pref_updates_extended_desc">Szukaj nowych wersji wyłączonych gier i aplikacji</string>
+    <string name="pref_updates_extended">Rozszerzone aktualizacje</string>
     <string name="app_updater_service_notif_text">Pobieranie aplikacji w tle włączone</string>
     <string name="app_updater_service_notif_title">Pobieranie aplikacji w tle</string>
     <string name="notification_channel_updater_service">Usługa pobierania aplikacji w tle</string>
@@ -358,4 +358,15 @@
     <string name="app_link_enabled">Link do aplikacji włączony!</string>
     <string name="amazon_appstore_desc">Amazon Appstore to sklep z aplikacjami dla platform kompatybilnych z systemem Android obsługiwany przez Amazon.</string>
     <string name="android_market_desc">Android Market był sklepem internetowym oferującym aplikacje przeznaczone na urządzenia z systemem Android, wycofanym w 2017 roku.</string>
+    <string name="details_ratings_title_hint">Tytuł recenzji</string>
+    <string name="action_uninstall_confirmation">Czy chcesz odinstalować tę aplikację\?</string>
+    <string name="title_apps_sale_provider">Dostawca - bestappsales.com</string>
+    <string name="details_no_apps_on_sale">Nie znaleziono aplikacji na wyprzedaży</string>
+    <string name="pref_downloader_path_title">Ścieżka pobierania</string>
+    <string name="pref_download_directory_error">Wybrana ścieżka nie umożliwia zapisu</string>
+    <string name="pref_updates_check_frequency_desc">Skonfiguruj częstotliwość automatycznych aktualizacji (w godzinach).</string>
+    <string name="pref_aurora_only">Tylko aplikacje Aurora Store</string>
+    <string name="title_app_settings">Ustawienia aplikacji</string>
+    <string name="pref_updates_check_frequency">Częstotliwość automatycznych aktualizacji</string>
+    <string name="pref_downloader_wifi_title">Pobieraj tylko przez Wi-Fi</string>
 </resources>

@@ -63,9 +63,9 @@
     <string name="pref_install_auto_title">Instalar automáticamente APK después de descargarlos</string>
     <string name="pref_install_auto_summary">Las apps se instalan al instante una vez finalizada la descarga</string>
     <string name="pref_filter_google_title">Filtrar las apps de Google</string>
-    <string name="pref_filter_google_summary">Elimina todas las aplicaciones de Google de los resultados de búsqueda y de las categorías de aplicaciones</string>
+    <string name="pref_filter_google_summary">Ignorar las aplicaciones de Google de las actualizaciones y las aplicaciones instaladas</string>
     <string name="pref_filter_fdroid_title">Filtrar las apps de F-Droid</string>
-    <string name="pref_filter_fdroid_summary">Elimina las aplicaciones de F-Droid de las listas de apps</string>
+    <string name="pref_filter_fdroid_summary">Ignorar las aplicaciones de F-Droid, las Actualizaciones y las aplicaciones instaladas</string>
     <string name="pref_downloader_external_desc">El almacenamiento externo se utiliza para las descargas, exportaciones, etc.</string>
     <string name="pref_downloader_external">Almacenamiento externo del usuario</string>
     <string name="pref_downloader_active_title">Descarga activa</string>
@@ -272,7 +272,7 @@
     <string name="toast_page_unavailable">Página de navegación no disponible</string>
     <string name="toast_export_failed">No se ha podido exportar la configuración del dispositivo</string>
     <string name="toast_export_success">Configuración del dispositivo exportada</string>
-    <string name="pref_updates_extended_desc">También busca nuevas versiones de aplicaciones deshabilitadas</string>
+    <string name="pref_updates_extended_desc">Busca nuevas versiones de aplicaciones y juegos desactivados</string>
     <string name="pref_updates_extended">Aplicaciones extendidas</string>
     <string name="app_updater_service_notif_text">Activa la descarga de aplicaciones en segundo plano</string>
     <string name="app_updater_service_notif_title">Descarga de aplicaciones en segundo plano</string>
@@ -359,4 +359,15 @@
     <string name="amazon_appstore_desc">Amazon Appstore es una tienda de aplicaciones para plataformas compatibles con Android de Amazon.</string>
     <string name="android_market_desc">Android Market era una tienda online que ofrecía aplicaciones de software diseñadas para dispositivos Android, retirada en 2017.</string>
     <string name="details_ratings_title_hint">Revisar el título</string>
+    <string name="action_uninstall_confirmation">¿Quieres desinstalar esta aplicación\?</string>
+    <string name="title_apps_sale_provider">Proveedor - bestappsales.com</string>
+    <string name="details_no_apps_on_sale">No se han encontrado aplicaciones a la venta</string>
+    <string name="pref_downloader_path_title">Ruta de la descarga</string>
+    <string name="pref_download_directory_error">La ruta seleccionada no se puede escribir</string>
+    <string name="pref_updates_check_frequency_desc">Configure los intervalos para las actualizaciones automáticas, en horas.</string>
+    <string name="pref_aurora_only">Sólo aplicaciones de Aurora Store</string>
+    <string name="pref_aurora_only_desc">Mostrar sólo las aplicaciones instaladas en Aurora Store en Actualizaciones y Aplicaciones instaladas</string>
+    <string name="title_app_settings">Ajustes de la aplicación</string>
+    <string name="pref_updates_check_frequency">Frecuencia de las actualizaciones automáticas</string>
+    <string name="pref_downloader_wifi_title">Descarga sólo por WiFi</string>
 </resources>

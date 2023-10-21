@@ -1,0 +1,8 @@
+• Undvik att fråga om lagringstillstånd tills det krävs
+• Omarbetad förfalskningskonfiguration för att undvika lagringstillstånd för import-export
+• Lägg till alternativ för att automatiskt söka efter appuppdateringar (kräver ett fungerande konto inloggat)
+• Fixat problem där obligatoriska bibliotek inte installerades med appar som chrome & trichrome library
+• Ignorera nedladdningskatalogen från säkerhetskopior när du säkerhetskopierar Aurora Store
+• Implementera Shizuku installationsprogram (kräver Android 8.0+)
+• Stödjer inte längre Android 4.4. Minsta nödvändiga Android-version är 5.0+.
+• Mindre buggfixar och förbättringar

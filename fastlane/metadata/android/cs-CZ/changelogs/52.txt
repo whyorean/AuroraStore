@@ -1,0 +1,6 @@
+• Opraven pád na některých zařízeních při vyhledávání neanglických slov
+• Vylepšena stránka Aplikace a hry
+• Přidán zpět přepínač pro automatickou instalaci po stažení aplikace
+• Při instalaci nebo aktualizaci nebude přehrán zvuk oznámení
+• Opraven pád na některých zařízeních při otevření podrobností o aplikaci
+• Přidán dialog s potvrzením o odinstalaci při používání root instalátoru

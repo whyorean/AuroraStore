@@ -6,7 +6,7 @@
     <string name="about_telegram_summary">Gå med i Aurora\'s hjälp-grupp för diskussioner eller förslag.</string>
     <string name="about_libera_summary">Bli en patron i Liberapay</string>
     <string name="about_gitlab_summary">Hämta källkoden för Aurora-butiken från Aurora OSS i GitLab.</string>
-    <string name="toast_rated_success">Betygssattes</string>
+    <string name="toast_rated_success">Betygsatt, det kan ta ett tag innan det visas</string>
     <string name="toast_page_unavailable">Bläddringssidan otillgänglig</string>
     <string name="toast_manual_available">Grattis, den efterfrågade versionskoden är tillgänglig, laddar ner nu.</string>
     <string name="toast_manual_unavailable">Versionskoden som du frågar efter är otillgänglig.</string>
@@ -116,10 +116,10 @@
     <string name="filter_review_critical">Kritiskt</string>
     <string name="filter_review_all">Alla</string>
     <string name="exodus_view_report">Visa rapport</string>
-    <string name="exodus_substring">spårare hittades i</string>
+    <string name="exodus_substring">kända spårare hittades i</string>
     <string name="exodus_progress">Söker efter spårare…</string>
     <string name="exodus_powered">Drivs av Exodus</string>
-    <string name="exodus_no_tracker">Innehåller inga spårare</string>
+    <string name="exodus_no_tracker">Innehåller inga kända spårare</string>
     <string name="download_speed_estimating">Uppskattar</string>
     <string name="download_resume_all">Återuppta alla</string>
     <string name="download_queued">Köad</string>
@@ -358,4 +358,10 @@
     <string name="pref_install_mode_shizuku">Installationsprogram för Shizuku</string>
     <string name="amazon_appstore_desc">Amazon Appstore är en app-butik för Android-kompatibla plattformar som sköts av Amazon.</string>
     <string name="android_market_desc">Android Market som gick i pension 2017 var en nätbaserad butik som erbjöd mjukvaru-applikationer gjorda för Android-enheter.</string>
+    <string name="details_ratings_title_hint">Recensera titel</string>
+    <string name="title_apps_sale_provider">Leverantör - bestappsales.com</string>
+    <string name="details_no_apps_on_sale">Inga appar hittades på rea</string>
+    <string name="pref_downloader_path_title">Nedladdnings sökväg</string>
+    <string name="pref_download_directory_error">Den valda sökvägen är inte skrivbar</string>
+    <string name="action_uninstall_confirmation">Vill du avinstallera denna app \?</string>
 </resources>

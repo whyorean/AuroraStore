@@ -1,15 +1,15 @@
-• Ziel Android 13
-• Aktivieren Sie die Lokalisierung mehrerer Zeichenfolgen
-• Monochromes Symbol für Android 13 hinzufügen
-• Abhängigkeiten auf die neueste Version aktualisieren
-• Beim Start sofort die Aufforderung zu den Nutzungsbedingungen anzeigen
-• Erlauben Sie, bei der Ersteinrichtung fortzufahren, ohne Berechtigungen zu erteilen
-• Lesen Sie die XML-Denylist des Systems als Standard für den Ausschluss von Updates
-• Zeigen Sie den korrekten Titel auf der 5. Setup-Seite an
-• Aktivieren Sie die Vorwärtstaste im Setup, wenn Sie zurückgehen
-• Ersetzen Sie die Kontrollkästchen im Setup-Installationsprogramm durch Optionsfelder
-• Verwenden Sie die Strichfarbe für den Hintergrund der Setup-Registerkarten
-• Beheben Sie den No-Theme-Fehler im Setup mithilfe von Optionsfeldern
-• Verwenden Sie keine neuen GSF- und Vending-Versionen
+• Zielvorgabe Android 13
+• Die Lokalisierung mehrerer Zeichenfolgen aktiviert
+• Monochromes Symbol für Android 13 hinzugefügt
+• Abhängigkeiten auf die neueste Version aktualisiert
+• Beim Start wird sofort die Aufforderung zu den Nutzungsbedingungen angezeigt
+• Die Ersteinrichtung ohne Erteilen von Berechtigungen ermöglicht
+• System-XML-Denylist wird standardmäßig gelesen, um Updates auszuschließen
+• Der korrekte Titel wird nun auf der 5. Setup-Seite angezeigt
+• Die Vorwärts-Schaltfläche im Setup aktiviert, wenn man zurückgeht
+• Kontrollkästchen im Setup-Installationsprogramm durch Optionsfelder ersetzt
+• Strichfarbe wird für den Hintergrund der Setup-Registerkarten verwendet
+• Den No-Theme-Fehler im Setup mithilfe von Optionsfeldern behoben
+• Keine neuen GSF- & Vending-Versionen verwendet
 • Einrichtung von Refactor-Speicherberechtigungen
 • Übersetzungsaktualisierungen

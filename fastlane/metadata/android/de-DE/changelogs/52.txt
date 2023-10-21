@@ -1,0 +1,6 @@
+• Den Absturz von einigen Geräten bei der Suche nach nicht-englischen Stichwörtern behoben
+• Die Seite Apps & Spiele verbessert
+• Zurück-Schaltfläche für die automatische Installation nach dem App-Download hinzugefügt
+• Benachrichtigungston wird nicht mehr abgespielt, wenn eine App installiert oder aktualisiert wird
+• Den Absturz von einigen Geräten beim Öffnen der App-Details behoben
+• Bestätigungsdialog für die Deinstallation bei der Root-Installationsmethode hinzugefügt

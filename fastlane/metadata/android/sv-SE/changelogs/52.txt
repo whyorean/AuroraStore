@@ -1,0 +1,6 @@
+• Åtgärdade kraschar på vissa enheter när du söker efter icke-engelska nyckelord
+• Förbättra sidan för appar och spel
+• Lägg till bakåtväxling för automatisk installation efter app-nedladdning
+• Spela inte aviseringsljud när appen är installerad eller uppdaterad
+• Åtgärdade kraschar på vissa enheter när du öppnar appinformation
+• Lägg till bekräftelsedialogruta för avinstallation om du använder rootinstallationsprogram

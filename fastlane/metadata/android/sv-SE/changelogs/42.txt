@@ -1,0 +1,15 @@
+• Inriktad på Android 13
+• Aktivera lokalisering av flera strängar
+• Lägg till monokrom ikon för Android 13
+• Uppdatera beroenden till senaste versionen
+• Visa användarvillkoren direkt vid lansering
+• Tillåt att gå framåt utan att ge behörigheter under den första installationen
+• Läs system xml denylist som standard för att utesluta från uppdateringar
+• Visa rätt titel på den 5:e inställningssidan
+• Aktivera framåtknapp på inställningen när du går tillbaka
+• Byt ut kryssrutor i installationsprogrammet med radioknappar
+• Använd streckfärg för bakgrund av inställningsflikar
+• Åtgärda fel utan tema i installationen genom att använda radioknappar
+• Använd inte nya GSF & Vending-versioner
+• Refaktorerade lagringsrelaterade behörighetsinställningar
+• Översättningsuppdateringar

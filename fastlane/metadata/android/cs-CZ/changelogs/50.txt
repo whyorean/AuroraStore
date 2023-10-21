@@ -1,0 +1,9 @@
+• Přepnutí na systémové téma z tmavého tématu správně aktualizuje uživatelské rozhraní
+• Dialogy na domovské obrazovce již neskrývají některá zobrazení
+• Otevření odkazu Google Play nyní zajišťuje přítomnost platného a funkčního účtu.
+• Navigační zásuvku lze otevřít pouze na hlavní obrazovce
+• Akce Zpět nyní správně ukončuje aplikaci na některých obrazovkách
+• Tlačítka nastavení mají nyní v tmavém motivu správný odstín.
+• Název aplikace je opět viditelný na panelu nástrojů pro zprávy exodu
+•
+•

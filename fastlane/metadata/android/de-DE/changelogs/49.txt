@@ -1,4 +1,4 @@
-• Wichtige interne Änderungen im Zusammenhang mit der Benutzeroberfläche
-• Ermöglichen Sie Benutzern, App-Links während der Ersteinrichtung zu aktivieren
+• Wichtige interne Änderungen im Zusammenhang mit der Bedienoberfläche
+• Benutzern ermöglicht, App-Links während der Ersteinrichtung zu aktivieren
 • Übersetzungsaktualisierungen
 • Kleinere Fehlerbehebungen und Verbesserungen

@@ -1,0 +1,8 @@
+• Nežádejte o povolení ke skladování, dokud to není nutné
+• Přepracovaná konfigurace spoofu, aby se zabránilo povolení k ukládání pro import-export
+• Přidána možnost automatické kontroly aktualizací aplikací (vyžaduje přihlášení k funkčnímu účtu)
+• Opraven problém, kdy se požadované knihovny neinstalovaly s aplikacemi, jako je knihovna chrome a trichrome
+• Ignorování adresáře se staženými soubory ze záloh při zálohování obchodu Aurora
+• Implementace instalátoru Shizuku
+•
+•

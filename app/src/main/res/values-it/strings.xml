@@ -71,7 +71,7 @@
     <string name="action_filter_apply">Applica</string>
     <string name="exodus_progress">Controllo della presenza di traccianti…</string>
     <string name="exodus_powered">Dati forniti da Exodus</string>
-    <string name="exodus_no_tracker">Non contiene traccianti</string>
+    <string name="exodus_no_tracker">Non contiene tracker conosciuti</string>
     <string name="download_speed_estimating">Stima in corso</string>
     <string name="download_force_clear_all">Rimuovi tutti</string>
     <string name="download_clear_completed">Rimuovi completati</string>
@@ -157,7 +157,7 @@
     <string name="about_bitcoin_btc_summary">Dona via Bitcoin (BTC)</string>
     <string name="about_bitcoin_btc">Bitcoin</string>
     <string name="about_bitcoin_bch_summary">Dona via Bitcoin Cash (BCH)</string>
-    <string name="about_bitcoin_bch">Bitcoin Cash</string>
+    <string name="about_bitcoin_bch">Bitcoin Contanti</string>
     <string name="about_bhim_summary">Dona via UPI</string>
     <string name="about_bhim">BHIM - UPI</string>
     <string name="toast_spoof_applied">Simulazione del dispositivo applicata.</string>
@@ -238,14 +238,14 @@
     <string name="installer_root_unavailable">Nessun accesso root. Consentilo o cambia l’installatore.</string>
     <string name="filter_review_two">Due</string>
     <string name="filter_review_three">Tre</string>
-    <string name="filter_review_positive">Positive</string>
+    <string name="filter_review_positive">Positivo</string>
     <string name="filter_review_one">Uno</string>
     <string name="filter_review_four">Quattro</string>
     <string name="filter_review_five">Cinque</string>
     <string name="filter_review_critical">Critiche</string>
     <string name="filter_review_all">Tutte</string>
     <string name="exodus_view_report">Visualizza rapporto</string>
-    <string name="exodus_substring">tracciante/i trovato/i in</string>
+    <string name="exodus_substring">tracker conosciuti trovati in</string>
     <string name="toast_purchase_blocked">Acquisti di applicazioni non disponibili su profili anonimi.</string>
     <string name="insecure_anonymous_apply">Assicurati di effettuare nuovamente l’accesso e riavviare l’applicazione per applicare le modifiche.</string>
     <string name="pref_network_title">Rete</string>
@@ -268,7 +268,7 @@
     <string name="dialog_desc_native_split">Non puoi installare le applicazioni aggregate (divise) con l’installatore nativo. Cambia l’installatore in Sessione, Servizi o Root.</string>
     <string name="toast_aas_token_failed">Impossibile generare un token AAS</string>
     <string name="toast_rated_failed">Impossibile inviare la valutazione</string>
-    <string name="toast_rated_success">Valutato</string>
+    <string name="toast_rated_success">Valutato, potrebbe volerci del tempo per mostrarlo</string>
     <string name="toast_page_unavailable">Pagina non disponibile</string>
     <string name="toast_export_failed">Impossibile esportare la configurazione del dispositivo</string>
     <string name="toast_export_success">Configurazione del dispositivo esportata</string>
@@ -356,4 +356,12 @@
     <string name="action_enabled">Abilitato</string>
     <string name="app_link_enabled">Collegamento app abilitato!</string>
     <string name="google_play_store_desc">Google Play, noto anche come Google Play Store e precedentemente Android Market.</string>
+    <string name="details_ratings_title_hint">Titolo della recensione</string>
+    <string name="amazon_appstore_desc">Amazon Appstore è un negozio digitale per piattaforme compatibili con Android, gestito da Amazon.</string>
+    <string name="title_apps_sale_provider">Fornitore: bestappsales.com</string>
+    <string name="details_no_apps_on_sale">Nessuna app trovata in vendita</string>
+    <string name="pref_downloader_path_title">Scarica il percorso</string>
+    <string name="pref_download_directory_error">Il percorso selezionato non è scrivibile</string>
+    <string name="action_uninstall_confirmation">Vuoi disinstallare questa app\?</string>
+    <string name="android_market_desc">Android Market è stato un negozio online che offriva applicazioni software progettate per dispositivi Android, discontinuato nel 2017.</string>
 </resources>
