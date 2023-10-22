@@ -268,7 +268,7 @@
     <string name="pref_common_extra">Додаткові</string>
     <string name="toast_aas_token_failed">Не вдалося створити токен AAS</string>
     <string name="toast_rated_failed">Не вдалося надіслати оцінку</string>
-    <string name="toast_rated_success">Оцінено, показ може зайняти деякий час</string>
+    <string name="toast_rated_success">Оцінено, оцінка може з\'явитися не одразу</string>
     <string name="toast_page_unavailable">Сторінка огляду недоступна</string>
     <string name="toast_export_failed">Не вдалося експортувати конфігурацію пристрою</string>
     <string name="toast_export_success">Конфігурацію пристрою експортовано</string>
