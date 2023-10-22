@@ -370,4 +370,11 @@
     <string name="pref_download_directory_error">Вибраний шлях недоступний для запису</string>
     <string name="action_uninstall_confirmation">Ви хочете видалити цей застосунок\?</string>
     <string name="pref_downloader_wifi_title">Завантаження лише за допомогою Wi-Fi</string>
+    <string name="pref_network_proxy_enable">Увімкнути проксі</string>
+    <string name="pref_network_proxy_url">URL Proxy</string>
+    <string name="pref_network_proxy_title">Проксі</string>
+    <string name="toast_proxy_invalid">Неправильна URL-адреса проксі, перевірте формат!</string>
+    <string name="toast_proxy_success">Проксі успішно налаштовано</string>
+    <string name="toast_proxy_failed">Не вдалося налаштувати проксі</string>
+    <string name="pref_network_proxy_enable_desc">Дозволити всьому трафіку із застосунку проходити через проксі</string>
 </resources>
