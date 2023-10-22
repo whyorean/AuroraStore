@@ -369,4 +369,11 @@
     <string name="title_app_settings">Ustawienia aplikacji</string>
     <string name="pref_updates_check_frequency">Częstotliwość automatycznych aktualizacji</string>
     <string name="pref_downloader_wifi_title">Pobieraj tylko przez Wi-Fi</string>
+    <string name="pref_network_proxy_enable">Włącz proxy</string>
+    <string name="pref_network_proxy_url">Adres URL serwera proxy</string>
+    <string name="pref_network_proxy_title">Proxy (serwer pośredniczący)</string>
+    <string name="toast_proxy_invalid">Nieprawidłowy adres URL serwera proxy, sprawdź format!</string>
+    <string name="toast_proxy_success">Ustawiono serwer proxy</string>
+    <string name="toast_proxy_failed">Nie udało się ustawić serwera proxy</string>
+    <string name="pref_network_proxy_enable_desc">Zezwól, aby cały ruch z aplikacji przechodził przez serwer proxy</string>
 </resources>
