@@ -191,7 +191,7 @@ object CommonUtil {
 
         return when {
             match != null -> {
-                val protocol = match.groupValues[1].toUpperCase()
+                val protocol = match.groupValues[1].uppercase()
                 val username = match.groupValues[2]
                 val password = match.groupValues[3]
                 val url = match.groupValues[4]

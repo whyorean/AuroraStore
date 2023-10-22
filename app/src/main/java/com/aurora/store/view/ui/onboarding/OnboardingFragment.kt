@@ -49,6 +49,8 @@ import com.aurora.store.util.Preferences.PREFERENCE_INSECURE_ANONYMOUS
 import com.aurora.store.util.Preferences.PREFERENCE_INSTALLER_ID
 import com.aurora.store.util.Preferences.PREFERENCE_INTRO
 import com.aurora.store.util.Preferences.PREFERENCE_PROXY_ENABLED
+import com.aurora.store.util.Preferences.PREFERENCE_PROXY_INFO
+import com.aurora.store.util.Preferences.PREFERENCE_PROXY_URL
 import com.aurora.store.util.Preferences.PREFERENCE_SIMILAR
 import com.aurora.store.util.Preferences.PREFERENCE_THEME_ACCENT
 import com.aurora.store.util.Preferences.PREFERENCE_THEME_TYPE
@@ -167,6 +169,8 @@ class OnboardingFragment : Fragment(R.layout.fragment_onboarding) {
         /*Network*/
         save(PREFERENCE_INSECURE_ANONYMOUS, false)
         save(PREFERENCE_PROXY_ENABLED, false)
+        save(PREFERENCE_PROXY_URL, "")
+        save(PREFERENCE_PROXY_INFO, "{}")
 
         /*Customization*/
         save(PREFERENCE_THEME_TYPE, 0)

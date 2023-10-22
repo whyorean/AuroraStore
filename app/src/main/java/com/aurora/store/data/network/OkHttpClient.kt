@@ -56,7 +56,7 @@ object OkHttpClient : IProxyHttpClient {
 
     override fun setProxy(proxyInfo: ProxyInfo): OkHttpClient {
         val proxy = Proxy(
-            if (proxyInfo.protocol == "socks") Proxy.Type.SOCKS else Proxy.Type.HTTP,
+            if (proxyInfo.protocol == "SOCKS") Proxy.Type.SOCKS else Proxy.Type.HTTP,
             InetSocketAddress.createUnresolved(
                 proxyInfo.host,
                 proxyInfo.port

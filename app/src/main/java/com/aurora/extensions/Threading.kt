@@ -23,7 +23,6 @@ import android.os.Handler
 import android.os.Looper
 
 fun runAsync(action: () -> Unit) = Thread(Runnable(action)).start()
-fun runAsyncResult(action: () -> Boolean) = Thread { action() }.apply { start() }
 
 fun runOnUiThread(action: () -> Unit) {
     when {
