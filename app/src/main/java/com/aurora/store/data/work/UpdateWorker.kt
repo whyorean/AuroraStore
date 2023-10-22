@@ -104,7 +104,7 @@ class UpdateWorker(private val appContext: Context, workerParams: WorkerParamete
             Log.i("Checking for app updates")
 
             val appDetailsHelper = AppDetailsHelper(authData)
-                .using(HttpClient.getPreferredClient())
+                .using(HttpClient.getPreferredClient(appContext))
 
             val isGoogleFilterEnabled = Preferences.getBoolean(
                 appContext,
@@ -153,7 +153,7 @@ class UpdateWorker(private val appContext: Context, workerParams: WorkerParamete
     private fun isValid(authData: AuthData): Boolean {
         return try {
             AuthValidator(authData)
-                .using(HttpClient.getPreferredClient())
+                .using(HttpClient.getPreferredClient(appContext))
                 .isValid()
         } catch (e: Exception) {
             false

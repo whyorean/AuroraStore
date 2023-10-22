@@ -45,7 +45,7 @@ class SearchResultViewModel(application: Application) : BaseAndroidViewModel(app
 
     private val webSearchHelper: WebSearchHelper = WebSearchHelper(authData)
     private val searchHelper: SearchHelper = SearchHelper(authData)
-        .using(HttpClient.getPreferredClient())
+        .using(HttpClient.getPreferredClient(application))
 
     val liveData: MutableLiveData<SearchBundle> = MutableLiveData()
 

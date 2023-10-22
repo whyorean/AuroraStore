@@ -220,7 +220,7 @@ class UpdateService: LifecycleService() {
         }
         EventBus.getDefault().register(this)
         authData = AuthProvider.with(this).getAuthData()
-        purchaseHelper = PurchaseHelper(authData).using(HttpClient.getPreferredClient())
+        purchaseHelper = PurchaseHelper(authData).using(HttpClient.getPreferredClient(this))
         downloadManager = DownloadManager.with(this)
         fetch = downloadManager.fetch
         fetchListener = object : FetchGroupListener {

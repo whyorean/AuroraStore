@@ -32,7 +32,7 @@ import java.lang.reflect.Modifier
 
 abstract class BaseAndroidViewModel(application: Application) : AndroidViewModel(application) {
 
-    val responseCode = HttpClient.getPreferredClient().responseCode
+    val responseCode = HttpClient.getPreferredClient(application).responseCode
 
     protected val gson: Gson = GsonBuilder()
         .excludeFieldsWithModifiers(Modifier.TRANSIENT, Modifier.STATIC)

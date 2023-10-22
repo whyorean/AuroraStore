@@ -41,7 +41,7 @@ import kotlinx.coroutines.supervisorScope
 class DevProfileViewModel(application: Application) : BaseAndroidViewModel(application) {
 
     private var authData: AuthData = AuthProvider.with(application).getAuthData()
-    private var appDetailsHelper = AppDetailsHelper(authData).using(HttpClient.getPreferredClient())
+    private var appDetailsHelper = AppDetailsHelper(authData).using(HttpClient.getPreferredClient(application))
     private var streamHelper = StreamHelper(authData)
 
     val liveData: MutableLiveData<ViewState> = MutableLiveData()

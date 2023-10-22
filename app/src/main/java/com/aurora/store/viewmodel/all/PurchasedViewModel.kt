@@ -41,7 +41,7 @@ class PurchasedViewModel(application: Application) : BaseAndroidViewModel(applic
 
     private val authData = AuthProvider.with(application).getAuthData()
 
-    private val purchaseHelper = PurchaseHelper(authData).using(HttpClient.getPreferredClient())
+    private val purchaseHelper = PurchaseHelper(authData).using(HttpClient.getPreferredClient(application))
 
     private var appList: MutableList<App> = mutableListOf()
 

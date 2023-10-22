@@ -1081,7 +1081,7 @@ class AppDetailsFragment : BaseFragment(R.layout.fragment_details) {
     }
 
     private fun inflateAppPrivacy(app: App) {
-        viewModel.fetchAppReport(app.packageName)
+        viewModel.fetchAppReport(requireContext(), app.packageName)
     }
 
     private fun inflateAppDevInfo(B: LayoutDetailsDevBinding, app: App) {

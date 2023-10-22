@@ -37,7 +37,7 @@ class EditorBrowseViewModel(application: Application) : BaseAndroidViewModel(app
 
     private val authData: AuthData = AuthProvider.with(application).getAuthData()
     private val streamHelper: StreamHelper = StreamHelper(authData)
-        .using(HttpClient.getPreferredClient())
+        .using(HttpClient.getPreferredClient(application))
 
     val liveData: MutableLiveData<MutableList<App>> = MutableLiveData()
     val appList: MutableList<App> = mutableListOf()

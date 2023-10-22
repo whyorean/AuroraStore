@@ -240,6 +240,10 @@
     <string name="pref_install_profile_summary">"Select the target profile to install apps to. Only works with the root installation method"</string>
     <string name="pref_install_profile_title">"Installation profiles (Experimental)"</string>
     <string name="pref_network_title">"Networking"</string>
+    <string name="pref_network_proxy_title">Proxy</string>
+    <string name="pref_network_proxy_enable">"Enable proxy"</string>
+    <string name="pref_network_proxy_enable_desc">"Allow all traffic from app to go through the proxy"</string>
+    <string name="pref_network_proxy_url">"Proxy URL"</string>
     <string name="pref_ui_accent_title">"Accent"</string>
     <string name="pref_ui_theme_black">"Black"</string>
     <string name="pref_ui_theme_dark">"Dark"</string>
@@ -326,7 +330,10 @@
     <string name="toast_export_success">Device config exported</string>
     <string name="toast_export_failed">Could not export device config</string>
     <string name="toast_import_success">Device config imported</string>
-    <string name="toast_import_failed">Could not import device config</string>
+    <string name="toast_import_failed">"Could not import device config"</string>
+    <string name="toast_proxy_invalid">"Invalid proxy URL, check format!"</string>
+    <string name="toast_proxy_success">"Proxy set successfully"</string>
+    <string name="toast_proxy_failed">"Failed to set proxy"</string>
     <string name="notification_channel_updater_service">App background download service</string>
     <string name="app_updater_service_notif_title">Background app download</string>
     <string name="app_updater_service_notif_text">Enables background app download</string>

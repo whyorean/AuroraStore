@@ -22,6 +22,7 @@ package com.aurora.store.util
 import android.content.Context
 import com.aurora.extensions.isSAndAbove
 import com.aurora.store.R
+import com.aurora.store.data.model.ProxyInfo
 import java.text.DecimalFormat
 import java.util.Locale
 import kotlin.math.ln
@@ -82,9 +83,11 @@ object CommonUtil {
             hours > 0 -> {
                 context.getString(R.string.download_eta_hrs, hours, minutes, seconds)
             }
+
             minutes > 0 -> {
                 context.getString(R.string.download_eta_min, minutes, seconds)
             }
+
             else -> {
                 context.getString(R.string.download_eta_sec, seconds)
             }
@@ -126,9 +129,11 @@ object CommonUtil {
             mb >= 1 -> {
                 context.getString(R.string.download_speed_mb, decimalFormat.format(mb))
             }
+
             kb >= 1 -> {
                 context.getString(R.string.download_speed_kb, decimalFormat.format(kb))
             }
+
             else -> {
                 context.getString(R.string.download_speed_bytes, downloadedBytesPerSecond)
             }
@@ -177,6 +182,31 @@ object CommonUtil {
             12 -> R.style.Accent12
             13 -> R.style.Accent13
             else -> if (isSAndAbove()) R.style.Accent00 else R.style.Accent01
+        }
+    }
+
+    fun parseProxyUrl(proxyUrl: String): ProxyInfo? {
+        val pattern = """^(https?|socks)://(?:([^\s:@]+):([^\s:@]+)@)?([^\s:@]+):(\d+)$""".toRegex()
+        val match = pattern.find(proxyUrl)
+
+        return when {
+            match != null -> {
+                val protocol = match.groupValues[1].toUpperCase()
+                val username = match.groupValues[2]
+                val password = match.groupValues[3]
+                val url = match.groupValues[4]
+                val port = match.groupValues[5]
+
+                ProxyInfo(
+                    protocol,
+                    url,
+                    port.toInt(),
+                    username,
+                    password
+                )
+            }
+
+            else -> null
         }
     }
 }

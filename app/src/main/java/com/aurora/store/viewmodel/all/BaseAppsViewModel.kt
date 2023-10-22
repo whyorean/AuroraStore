@@ -37,7 +37,7 @@ abstract class BaseAppsViewModel(application: Application) : BaseAndroidViewMode
         .getAuthData()
 
     private val appDetailsHelper = AppDetailsHelper(authData)
-        .using(HttpClient.getPreferredClient())
+        .using(HttpClient.getPreferredClient(application))
 
     var blacklistProvider = BlacklistProvider
         .with(application)

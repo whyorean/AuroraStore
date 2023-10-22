@@ -39,8 +39,9 @@ import kotlinx.coroutines.supervisorScope
 abstract class BaseClusterViewModel(application: Application) : BaseAndroidViewModel(application) {
 
     var authData: AuthData = AuthProvider.with(application).getAuthData()
+
     var streamHelper: StreamHelper = StreamHelper(authData)
-        .using(HttpClient.getPreferredClient())
+        .using(HttpClient.getPreferredClient(application))
 
     val liveData: MutableLiveData<ViewState> = MutableLiveData()
     var streamBundle: StreamBundle = StreamBundle()

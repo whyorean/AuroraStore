@@ -21,6 +21,7 @@ package com.aurora.store.data.network
 
 import com.aurora.gplayapi.data.models.PlayResponse
 import com.aurora.store.BuildConfig
+import com.aurora.store.data.model.ProxyInfo
 import com.aurora.store.util.Log
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -31,6 +32,7 @@ import okhttp3.HttpUrl.Companion.toHttpUrl
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.RequestBody.Companion.toRequestBody
 import java.io.IOException
+import java.net.InetSocketAddress
 import java.net.Proxy
 import java.util.concurrent.TimeUnit
 
@@ -52,13 +54,29 @@ object OkHttpClient : IProxyHttpClient {
         .followRedirects(true)
         .followSslRedirects(true)
 
-    override fun setProxy(
-        proxy: Proxy, proxyUser: String?, proxyPassword: String?
-    ): IProxyHttpClient {
-        if (proxyUser != null) {
-            okHttpClientBuilder.proxyAuthenticator { route, response ->
-                val credential = Credentials.basic(proxyUser, proxyPassword.orEmpty())
-                response.request.newBuilder().header("Proxy-Authorization", credential).build()
+    override fun setProxy(proxyInfo: ProxyInfo): OkHttpClient {
+        val proxy = Proxy(
+            if (proxyInfo.protocol == "socks") Proxy.Type.SOCKS else Proxy.Type.HTTP,
+            InetSocketAddress.createUnresolved(
+                proxyInfo.host,
+                proxyInfo.port
+            )
+        )
+
+        val proxyUser = proxyInfo.proxyUser
+        val proxyPassword = proxyInfo.proxyPassword
+
+        if (proxyUser != null && proxyPassword != null) {
+            okHttpClientBuilder.proxyAuthenticator { _, response ->
+                if (response.request.header("Proxy-Authorization") != null) {
+                    return@proxyAuthenticator null
+                }
+
+                val credential = Credentials.basic(proxyUser, proxyPassword)
+                response.request
+                    .newBuilder()
+                    .header("Proxy-Authorization", credential)
+                    .build()
             }
         }
 

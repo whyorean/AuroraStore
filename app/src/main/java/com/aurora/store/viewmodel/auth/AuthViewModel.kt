@@ -121,7 +121,7 @@ class AuthViewModel(application: Application) : BaseAndroidViewModel(application
                     properties = spoofProvider.getSpoofDeviceProperties()
 
                 val playResponse = HttpClient
-                    .getPreferredClient()
+                    .getPreferredClient(getApplication())
                     .postAuth(
                         Constants.URL_DISPENSER,
                         gson.toJson(properties).toByteArray()
@@ -157,7 +157,7 @@ class AuthViewModel(application: Application) : BaseAndroidViewModel(application
                     properties = spoofProvider.getSpoofDeviceProperties()
 
                 val playResponse = HttpClient
-                    .getPreferredClient()
+                    .getPreferredClient(getApplication())
                     .getAuth(
                         Constants.URL_DISPENSER
                     )
@@ -275,7 +275,7 @@ class AuthViewModel(application: Application) : BaseAndroidViewModel(application
     private fun isValid(authData: AuthData): Boolean {
         return try {
             AuthValidator(authData)
-                .using(HttpClient.getPreferredClient())
+                .using(HttpClient.getPreferredClient(getApplication()))
                 .isValid()
         } catch (e: Exception) {
             false
