@@ -59,7 +59,7 @@
     <string name="tab_categories">分類</string>
     <string name="title_about">關於</string>
     <string name="title_account_manager">帳戶</string>
-    <string name="title_apps">Apps</string>
+    <string name="title_apps">App</string>
     <string name="title_apps_games">我啲 app 同遊戲</string>
     <string name="title_download_manager">下載</string>
     <string name="title_games">遊戲</string>
@@ -69,7 +69,7 @@
     <string name="title_updates">更新</string>
     <string name="title_advanced">進階</string>
     <string name="title_manual_download">手動下載</string>
-    <string name="toast_rated_success">畀咗評分</string>
+    <string name="toast_rated_success">評咗分，可能要等等至騷出嚟</string>
     <string name="notification_channel_updater_service">App 幕後下載服務</string>
     <string name="app_updater_service_notif_title">幕後 app 下載</string>
     <string name="app_updater_service_notif_text">啟用幕後 app 下載</string>
@@ -224,7 +224,7 @@
     <string name="installer_status_failure_session">建立唔到工作階段</string>
     <string name="session_login_failed_google">用 Google 登入唔到</string>
     <string name="pref_network_title">上網</string>
-    <string name="exodus_no_tracker">未有內藏追蹤器</string>
+    <string name="exodus_no_tracker">未內藏已知追蹤器</string>
     <string name="updates_available">個更新出咗喇</string>
     <string name="toast_purchase_blocked">無名氏帳戶冇得用 App 購買。</string>
     <string name="failed_to_fetch_report">攞唔到私隱報告</string>
@@ -238,8 +238,35 @@
     <string name="session_verifying_google">驗證緊 Google 工作階段</string>
     <string name="pref_filter_google_title">飛起 Google 啲 app</string>
     <string name="notification_updates_available"><xliff:g id="apps_count">%1$d</xliff:g> 個更新出咗喇</string>
-    <string name="exodus_substring">個追蹤器發現潛伏喺</string>
+    <string name="exodus_substring">個已知追蹤器發現潛伏喺</string>
     <string name="exodus_powered">由 Exodus 技術協力</string>
     <string name="app_language">個 App 用咩文</string>
     <string name="notification_updates_available_1"><xliff:g id="apps_count">%1$d</xliff:g> 個更新出咗喇</string>
+    <string name="pref_common_extra">其他</string>
+    <string name="pref_network_proxy_enable">啟用代理伺服器</string>
+    <string name="details_ratings_title_hint">評論標題</string>
+    <string name="pref_network_proxy_url">代理伺服器 URL</string>
+    <string name="pref_network_proxy_title">代理伺服器</string>
+    <string name="pref_ui_title">自訂</string>
+    <string name="ui_accent_2">紫紅</string>
+    <string name="ui_accent_13">深藍</string>
+    <string name="toast_proxy_invalid">代理伺服器 URL 無效，請睇過個格式！</string>
+    <string name="ui_accent_9">青綠</string>
+    <string name="pref_insecure_anonymous_summary">喺返本機產生 GSF ID</string>
+    <string name="toast_proxy_success">代理伺服器設定成功</string>
+    <string name="ui_accent_11">淺藍</string>
+    <string name="pref_install_auto_summary">下載完成後就即刻安裝啲 app</string>
+    <string name="session_scrapped">對上一個工作階段已經報銷</string>
+    <string name="pref_install_auto_title">下載之後自動安裝啲 APK</string>
+    <string name="title_app_settings">App 設定</string>
+    <string name="title_apps_sale_provider">提供：bestappsales.com</string>
+    <string name="pref_downloader_path_title">下載路徑</string>
+    <string name="pref_download_directory_error">揀選嘅路徑寫入唔到</string>
+    <string name="toast_proxy_failed">設定唔到代理伺服器</string>
+    <string name="pref_network_proxy_enable_desc">等個 app 所有網絡通訊都流經代理伺服器</string>
+    <string name="pref_install_mode_title">安裝方法</string>
+    <string name="pref_install_delete_summary">預設會剷走啲 APK</string>
+    <string name="action_uninstall_confirmation">係咪要解除安裝呢個 app？</string>
+    <string name="pref_downloader_wifi_title">淨係用 WiFi 下載</string>
+    <string name="pref_install_delete_title">安裝之後剷走 APK</string>
 </resources>
