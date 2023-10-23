@@ -370,4 +370,11 @@
     <string name="title_app_settings">إعدادات التطبيقات</string>
     <string name="pref_updates_check_frequency">تردد التحديثات التلقائية</string>
     <string name="pref_downloader_wifi_title">التنزيل باستخدام WiFi فقط</string>
+    <string name="pref_network_proxy_enable">تفعيل الوكيل</string>
+    <string name="pref_network_proxy_url">عنوان URL الوكيل</string>
+    <string name="pref_network_proxy_title">وكيل</string>
+    <string name="toast_proxy_invalid">عنوان URL للوكيل غير صالح، تحقق من التنسيق!</string>
+    <string name="toast_proxy_success">عينت الوكيل بنجاح</string>
+    <string name="toast_proxy_failed">فشل في تعيين الوكيل</string>
+    <string name="pref_network_proxy_enable_desc">السماح لجميع حركة المرور من التطبيق بالمرور عبر الوكيل</string>
 </resources>
