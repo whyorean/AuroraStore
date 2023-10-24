@@ -7,23 +7,10 @@
     "url": "https://developer.android.com/reference/android/content/pm/PackageInstaller.Session"
   },
   {
-    "id": "1",
-    "title": "Native installer",
-    "subtitle": "Intent based installer, available on all devices",
-    "description": "Best suited for devices running below Android 4.4",
-    "url": "https://developer.android.com/reference/android/content/Intent#setDataAndType"
-  },
-  {
     "id": "2",
     "title": "Root installer",
     "subtitle": "Installer for background installations",
     "description": "Requires root, supports all Android versions."
-  },
-  {
-    "id": "3",
-    "title": "Aurora Service",
-    "subtitle": "Installer for background installations",
-    "description": "Requires Aurora Services to be installed as system app."
   },
   {
     "id": "4",

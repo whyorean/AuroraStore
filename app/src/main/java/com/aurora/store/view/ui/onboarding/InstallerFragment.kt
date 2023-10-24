@@ -29,7 +29,6 @@ import com.aurora.extensions.isOAndAbove
 import com.aurora.extensions.showDialog
 import com.aurora.store.R
 import com.aurora.store.data.installer.AppInstaller.Companion.hasAppManager
-import com.aurora.store.data.installer.AppInstaller.Companion.hasAuroraService
 import com.aurora.store.data.installer.AppInstaller.Companion.hasRootAccess
 import com.aurora.store.data.installer.AppInstaller.Companion.hasShizuku
 import com.aurora.store.data.installer.AppInstaller.Companion.hasShizukuPerm
@@ -143,21 +142,10 @@ class InstallerFragment : BaseFragment(R.layout.fragment_onboarding_installer) {
                     )
                 }
             }
-            3 -> {
-                if (hasAuroraService(requireContext())) {
-                    this.installerId = installerId
-                    save(PREFERENCE_INSTALLER_ID, installerId)
-                } else {
-                    showDialog(
-                        R.string.action_installations,
-                        R.string.installer_service_unavailable
-                    )
-                }
-            }
             4 -> {
                 if (hasAppManager(requireContext())) {
                     this.installerId = installerId
-                    save(Preferences.PREFERENCE_INSTALLER_ID, installerId)
+                    save(PREFERENCE_INSTALLER_ID, installerId)
                 } else {
                     showDialog(
                         R.string.action_installations,
