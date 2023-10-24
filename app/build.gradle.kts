@@ -129,16 +129,16 @@ dependencies {
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
 
     //Arch LifeCycle
-    val life_version = "2.6.2"
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:$life_version")
-    implementation("androidx.lifecycle:lifecycle-service:$life_version")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$life_version")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-savedstate:$life_version")
+    val lifeVersion = "2.6.2"
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:$lifeVersion")
+    implementation("androidx.lifecycle:lifecycle-service:$lifeVersion")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifeVersion")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-savedstate:$lifeVersion")
 
     //Arch Navigation
-    val nav_version = "2.7.3"
-    implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
-    implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
+    val navVersion = "2.7.4"
+    implementation("androidx.navigation:navigation-fragment-ktx:$navVersion")
+    implementation("androidx.navigation:navigation-ui-ktx:$navVersion")
 
     //Coil
     implementation("io.coil-kt:coil:2.4.0")
@@ -147,9 +147,9 @@ dependencies {
     implementation("com.facebook.shimmer:shimmer:0.5.0")
 
     //Epoxy
-    val epoxy_version = "5.1.2"
-    implementation("com.airbnb.android:epoxy:$epoxy_version")
-    ksp("com.airbnb.android:epoxy-processor:$epoxy_version")
+    val epoxyVersion = "5.1.2"
+    implementation("com.airbnb.android:epoxy:$epoxyVersion")
+    ksp("com.airbnb.android:epoxy-processor:$epoxyVersion")
 
     //HTTP Clients
     implementation("com.squareup.okhttp3:okhttp:4.11.0")
@@ -164,17 +164,17 @@ dependencies {
     implementation("com.github.topjohnwu.libsu:core:5.0.5")
 
     //Love <3
-    implementation("com.gitlab.AuroraOSS:gplayapi:3.2.4")
+    implementation("com.gitlab.AuroraOSS:gplayapi:3.2.5")
 
     //Browser
     implementation("androidx.browser:browser:1.6.0")
 
     //Shizuku
-    val shizuku_version = "13.1.1"
+    val shizukuVersion = "13.1.1"
     compileOnly("dev.rikka.hidden:stub:4.2.0")
     implementation("dev.rikka.tools.refine:runtime:4.3.0")
-    implementation("dev.rikka.shizuku:api:${shizuku_version}")
-    implementation("dev.rikka.shizuku:provider:${shizuku_version}")
+    implementation("dev.rikka.shizuku:api:${shizukuVersion}")
+    implementation("dev.rikka.shizuku:provider:${shizukuVersion}")
 
     implementation("org.lsposed.hiddenapibypass:hiddenapibypass:4.3")
 
