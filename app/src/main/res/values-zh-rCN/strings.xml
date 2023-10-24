@@ -90,7 +90,6 @@
     <string name="action_blacklist_add">加入黑名单</string>
     <string name="action_blacklist">黑名单</string>
     <string name="action_back">返回</string>
-    <string name="action_accept">接受</string>
     <string name="account_logout">登出 Aurora</string>
     <string name="account_login_using">登录方式</string>
     <string name="account_logged_out">您已退出登录</string>
@@ -117,7 +116,6 @@
     <string name="about_bhim">BHIM - UPI</string>
     <string name="about_paypal">PayPal</string>
     <string name="action_disable">禁用</string>
-    <string name="action_deny">拒绝</string>
     <string name="action_copy_link">复制链接</string>
     <string name="action_copy">复制</string>
     <string name="action_close">关闭</string>
@@ -214,10 +212,6 @@
     <string name="onboarding_permission_esm">外部存储管理器</string>
     <string name="onboarding_permission_esa_desc">保存下载项 (APKs 和 OBBs)，将设备配置导出到外部存储和从外部存储导入设备配置。</string>
     <string name="onboarding_permission_esa">访问外部存储</string>
-    <string name="onboarding_tos_error">请先勾选已阅读服务条款。</string>
-    <string name="onboarding_tos_confirmation">我已阅读 Aurora Store 的服务条款。</string>
-    <string name="onboarding_tos_desc">请阅读并接受我们的服务条款以使用 Aurora Store。</string>
-    <string name="onboarding_tos">服务条款</string>
     <string name="onboarding_title_welcome">欢迎</string>
     <string name="onboarding_title_theme">主题</string>
     <string name="onboarding_title_permissions">权限</string>

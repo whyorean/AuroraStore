@@ -26,7 +26,6 @@
     <string name="action_filter">Φίλτρα</string>
     <string name="action_export">Εξαγωγή</string>
     <string name="action_disable">Απενεργοποίηση</string>
-    <string name="action_deny">Άρνηση</string>
     <string name="action_copy_link">Αντιγραφή συνδέσμου</string>
     <string name="action_copy">Αντιγραφή</string>
     <string name="action_close">Κλείσιμο</string>
@@ -36,7 +35,6 @@
     <string name="action_blacklist_add">Προσθήκη στη μαύρη λίστα</string>
     <string name="action_blacklist">Μαύρη λίστα</string>
     <string name="action_back">Επιστροφή</string>
-    <string name="action_accept">Αποδοχή</string>
     <string name="account_logout">Αποσυνδεθείτε</string>
     <string name="account_login_using">Συνδεθείτε χρησιμοποιώντας</string>
     <string name="account_logged_out">Έχετε αποσυνδεθεί</string>
@@ -177,10 +175,6 @@
     <string name="installer_status_failure">Ο εγκαταστάτης απέτυχε</string>
     <string name="installer_status_failure_blocked">Η εγκατάσταση μπλοκαρίστηκε</string>
     <string name="installer_status_failure_session">Δεν ήταν δυνατή η δημιουργία περιόδου σύνδεσης</string>
-    <string name="onboarding_tos">Όροι παροχής υπηρεσιών</string>
-    <string name="onboarding_tos_error">Πρέπει πρώτα να επιλέξετε το TOS.</string>
-    <string name="onboarding_tos_desc">Διαβάστε τους Όρους Παροχής Υπηρεσιών και αποδεχτείτε τους για τη χρήση του Aurora Store.</string>
-    <string name="onboarding_tos_confirmation">Έχω διαβάσει τους Όρους Παροχής Υπηρεσιών του Aurora Store.</string>
     <string name="tab_categories">Κατηγορίες</string>
     <string name="purchase_no_file">Δεν ήταν δυνατή η λήψη αρχείων</string>
     <string name="onboarding_permission_esa">Πρόσβαση εξωτερικού χώρου αποθήκευσης</string>

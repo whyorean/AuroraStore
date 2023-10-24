@@ -104,10 +104,6 @@
     <string name="onboarding_permission_esa_desc">Ukládání stažených souborů (APK a OBB), export a import konfigurací zařízení do externího úložiště a z něj.</string>
     <string name="onboarding_permission_esa">Přístup k externímu úložišti</string>
     <string name="onboarding_welcome_select">Jak se vám daří\?</string>
-    <string name="onboarding_tos_error">Než budete pokračovat, přečtěte si všeobecné smluvní podmínky.</string>
-    <string name="onboarding_tos_confirmation">Přečetl jsem si všeobecné smluvní podmínky obchodu Aurora.</string>
-    <string name="onboarding_tos_desc">Přečtěte si prosím všeobecné smluvní podmínky obchodu Aurora a souhlaste s nimi.</string>
-    <string name="onboarding_tos">Všeobecné smluvní podmínky</string>
     <string name="onboarding_title_welcome">Vítejte</string>
     <string name="onboarding_title_theme">Motivy</string>
     <string name="onboarding_title_permissions">Oprávnění</string>
@@ -231,7 +227,6 @@
     <string name="action_filter">Filtry</string>
     <string name="action_export">Exportovat</string>
     <string name="action_disable">Zakázat</string>
-    <string name="action_deny">Odmítnout</string>
     <string name="action_copy_link">Kopírovat Link</string>
     <string name="action_copy">Kopírovat</string>
     <string name="action_close">Zavřít</string>
@@ -239,7 +234,6 @@
     <string name="action_check">Obnovit</string>
     <string name="action_cancel">Zrušit</string>
     <string name="action_back">Zpět</string>
-    <string name="action_accept">Přijmout</string>
     <string name="account_logout">Odhlásit se z Aurory</string>
     <string name="account_login_using">Přihlaste se pomocí</string>
     <string name="account_logged_out">Jste odhlášeni</string>

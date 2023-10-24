@@ -57,7 +57,6 @@
     <string name="action_blacklist_add">Hozzáadás a tiltólistához</string>
     <string name="action_blacklist">Tiltólista</string>
     <string name="action_back">Vissza</string>
-    <string name="action_accept">Elfogadom</string>
     <string name="account_logout">Kijelentkezés az Aurorából</string>
     <string name="account_login_using">Bejelentkezés ezzel</string>
     <string name="account_logged_out">Ki lettél jelentkeztetve</string>
@@ -84,7 +83,6 @@
     <string name="about_bhim_summary">UPI adományozás</string>
     <string name="about_bhim">BHIM - UPI</string>
     <string name="details_dev_email">E-mail</string>
-    <string name="onboarding_tos">Általános szerződési feltételek</string>
     <string name="onboarding_title_welcome">Üdvözlünk</string>
     <string name="onboarding_title_theme">Témák</string>
     <string name="onboarding_title_permissions">Engedélyek</string>
@@ -243,13 +241,9 @@
     <string name="onboarding_permission_esa_desc">A letöltések mentéséhez (APK &amp; OBB), exportálja és importálja az eszközkonfigurációkat a külső tárhelyre és onnan vissza.</string>
     <string name="onboarding_permission_esa">Külső tárhely elérés</string>
     <string name="onboarding_welcome_select">Hogy vagy\?</string>
-    <string name="onboarding_tos_error">Először el kell olvasni a TOS-t.</string>
-    <string name="onboarding_tos_confirmation">Elolvastam az Aurora Store Általános Szerződési Feltételeit.</string>
-    <string name="onboarding_tos_desc">Kérjük olvasd el az ÁSzF-et és fogadd el az Aurora Store használatához.</string>
     <string name="download_clear_completed">Törlés befejezve</string>
     <string name="action_installations">Telepítések</string>
     <string name="action_disable">Tilt</string>
-    <string name="action_deny">Elutasít</string>
     <string name="action_clear">Töröl</string>
     <string name="pref_ui_similar_apps_desc">Hasonló és kapcsolódó csoportok megjelenítése a részletek lapon</string>
     <string name="pref_ui_similar_apps">Hasonló és kapcsolódó appok</string>

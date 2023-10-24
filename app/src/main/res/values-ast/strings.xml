@@ -63,7 +63,6 @@
     <string name="pref_ui_no_for_you">Páxines «Pa ti»</string>
     <string name="filter_review_one">Una estrella</string>
     <string name="pref_install_delete_title">Desaniciar les APKs dempués d\'instalales</string>
-    <string name="action_accept">Aceptar</string>
     <string name="action_ok">D\'acuerdu</string>
     <string name="toast_purchase_blocked">La compra d\'aplicaciones nun ta disponible nes cuentes anónimes.</string>
     <string name="title_apps_sale">Aplicaciones en venta</string>
@@ -96,7 +95,6 @@
     <string name="action_granted">Concedióse</string>
     <string name="installer_status_failure">L\'instalador falló</string>
     <string name="toast_apk_blacklisted">Blacklisted</string>
-    <string name="action_deny">Negar</string>
     <string name="action_join">Xunise</string>
     <string name="download_none">Nun hai descargues</string>
     <string name="about_fdroid_summary">Consigui Aurora Store per F-Droid.</string>
@@ -126,7 +124,6 @@
     <string name="account_google">Google</string>
     <string name="action_back">Atrás</string>
     <string name="action_open">Abrir</string>
-    <string name="onboarding_tos">Términos del serviciu</string>
     <string name="onboarding_permission_esa">Accesu al almacenamientu esternu</string>
     <string name="title_spoof_manager">Xestor de suplantaciones</string>
     <string name="tab_trending">En tendencia</string>
@@ -178,8 +175,6 @@
     <string name="download_metadata">Consiguiendo los metadatos</string>
     <string name="download_pause_all">Posar too</string>
     <string name="download_completed">Completóse la descarga</string>
-    <string name="onboarding_tos_confirmation">Lleí los términos del serviciu d\'Aurora Store.</string>
-    <string name="onboarding_tos_error">Tienes de confirmar la llectura de los TdS primero.</string>
     <string name="onboarding_welcome_select">¿Alcuéntreste\?</string>
     <string name="onboarding_permission_esm">Xestor del almacenamientu esternu</string>
     <string name="onboarding_permission_installer">Permisu del instalador</string>
@@ -280,7 +275,6 @@
     <string name="onboarding_theme_select">Seleiciona l\'aspeutu que te presta</string>
     <string name="onboarding_title_accent">Color de l\'acentuación</string>
     <string name="onboarding_title_welcome">Acoyida</string>
-    <string name="onboarding_tos_desc">Llei los nuesos Términos del Serviciu ya acéptalos pa usar Aurora Store.</string>
     <string name="insecure_anonymous_apply">Asegúrate de que vuelves aniciar la sesión ya reanicies l\'aplicación p\'aplicar los cambeos.</string>
     <string name="tab_editor_choice">Escoyeta de los editores</string>
     <string name="tab_top_charts">Llistes destacaes</string>

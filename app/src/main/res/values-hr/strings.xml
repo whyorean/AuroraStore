@@ -51,7 +51,6 @@
     <string name="action_filter">Filtri</string>
     <string name="action_export">Izvezi</string>
     <string name="action_disable">Deaktiviraj</string>
-    <string name="action_deny">Odbij</string>
     <string name="action_copy_link">Kopiraj poveznicu</string>
     <string name="action_copy">Kopiraj</string>
     <string name="action_close">Zatvori</string>
@@ -60,7 +59,6 @@
     <string name="action_blacklist_add">Dodaj u nepoželjne</string>
     <string name="action_blacklist">Nepoželjni</string>
     <string name="action_back">Natrag</string>
-    <string name="action_accept">Prihvati</string>
     <string name="account_logout">Odjavi se iz Aurore</string>
     <string name="account_login_using">Prijavi se, koristeći</string>
     <string name="account_logged_out">Odjavljen/a si</string>
@@ -178,10 +176,6 @@
     <string name="onboarding_permission_esa_desc">Za spremanje preuzimanja (APK i OBB datoteke), izvezi i uvezi konfiguracije uređaja u i iz vanjske memorije.</string>
     <string name="onboarding_permission_esa">Pristup vanjskoj memoriji</string>
     <string name="onboarding_welcome_select">Kako si\?</string>
-    <string name="onboarding_tos_error">Najprije moraš prihvatiti uvjete usluge.</string>
-    <string name="onboarding_tos_confirmation">Pročitao/la sam uvjete usluge Aurora trgovine.</string>
-    <string name="onboarding_tos_desc">Pročitaj naše uvjete usluge i prihvati ih za korištenje Aurora trgovine.</string>
-    <string name="onboarding_tos">Uvjeti usluga</string>
     <string name="onboarding_title_welcome">Dobro došao, dobro došla</string>
     <string name="onboarding_title_theme">Teme</string>
     <string name="onboarding_title_permissions">Dozvole</string>

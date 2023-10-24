@@ -3,7 +3,6 @@
     <string name="details_dev_email">ईमेल</string>
     <string name="about_bhim">भीम - यूपीआई</string>
     <string name="action_disable">अक्षम करें</string>
-    <string name="action_deny">मना करें</string>
     <string name="action_copy_link">लिंक कॉपी करें</string>
     <string name="action_copy">कॉपी करें</string>
     <string name="action_close">बंद करें</string>
@@ -12,7 +11,6 @@
     <string name="action_blacklist_add">ब्लॉकसूची में डालें</string>
     <string name="action_blacklist">ब्लॉकसूची</string>
     <string name="action_back">वापस जाएं</string>
-    <string name="action_accept">मानें</string>
     <string name="account_logout">अरोरा से लॉगआउट हो</string>
     <string name="account_login_using">लॉगइन इस्तेमाल करके</string>
     <string name="account_logged_out">आप लॉगआउट हैं</string>
@@ -126,7 +124,6 @@
     <string name="pref_ui_layout">खाका</string>
     <string name="ui_accent_13">गहरा नीला</string>
     <string name="action_update">अपडेट करें</string>
-    <string name="onboarding_tos_error">आपको पहले सेवा के नियम पड़ लिए का निशान लगाना पड़ेगा।</string>
     <string name="filter_review_one">एक</string>
     <string name="pref_filter_fdroid_title">F-Droid ऐप्स फिल्टर करें</string>
     <string name="action_next">अगला</string>
@@ -144,7 +141,6 @@
     <string name="toast_abandon_sessions">पुराने इंस्टॉलेशन सत्र छोड़े गए</string>
     <string name="notification_channel_updater_service">ऐप बैकग्राउंड डाउनलोड सेवा</string>
     <string name="tab_trending">ट्रेंड में</string>
-    <string name="onboarding_tos_desc">ऑरोरा स्टोर इस्तेमाल करने को कृपया हमारे सेवा के नियम पढ़े और उन्हे मानें।</string>
     <string name="download_clear_completed">पूरे हुए साफ करें</string>
     <string name="pref_filter_fdroid_summary">अपडेटस और इंस्टॉलड ऐप्स में से F-Droid ऐप्स को अनदेखा करें</string>
     <string name="pref_ui_theme_title">थीम</string>
@@ -177,7 +173,6 @@
     <string name="toast_page_unavailable">पन्ना ब्राउज़ मौजूद नहीं</string>
     <string name="pref_install_mode_session">सत्र इंस्टॉलर</string>
     <string name="pref_ui_title">पसंद का इंटरफेस</string>
-    <string name="onboarding_tos">सेवा के नियम</string>
     <string name="download_speed_estimating">अनुमान लगा रहे</string>
     <string name="action_ok">ठीक है</string>
     <string name="onboarding_installer_select">एक इंस्टॉलर चुनें</string>
@@ -258,7 +253,6 @@
     <string name="installer_status_success">सफलतापूर्वक इंस्टॉल किया</string>
     <string name="installer_status_user_action">यूज़र सत्यापन का इंतज़ार कर रहे</string>
     <string name="device_miui_description">कृपया, इंस्टॉल करने के लिए शाओमी ऑपटीमाइज़ेशन अक्षम करें, या फिर आप रूट या सेवा इंस्टॉलर चुन सकते हैं।</string>
-    <string name="onboarding_tos_confirmation">हमने अरोरा स्टोर के सेवा के नियम पढ़ लिए है।</string>
     <string name="device_miui_subtitle">सत्र इंस्टॉलर शाओमी ऑपटीमाइज़ेशन की वजह से ऐप इंस्टॉल नहीं कर सका।</string>
     <string name="device_miui_extra">आप मूल इंस्टॉलर भी चुन सकते हैं, लेकिन तब आप बंडल (स्प्लिट) एपीके इंस्टॉल नहीं कर पाएंगे, चुनना आपको है।</string>
     <string name="dialog_desc_native_split">आप बंडल (स्प्लिट) ऐप मूल इंस्टॉलर से इंस्टॉल नहीं कर सकते। अपना इंस्टॉलर सत्र, सेवा या रूट में बदलें।</string>

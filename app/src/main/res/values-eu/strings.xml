@@ -87,10 +87,6 @@
     <string name="onboarding_permission_esa_desc">Kanpoko memorian deskargak gordetzeko (APK-k eta OBB-ak) eta konfigurazioa esportatzeko eta inportatzeko.</string>
     <string name="onboarding_permission_esa">Kanpoko memoriarako sarbidea</string>
     <string name="onboarding_welcome_select">Zer moduz zaude\?</string>
-    <string name="onboarding_tos_error">Lehenik baldintzak irakurri dituzu adierazi behar duzu.</string>
-    <string name="onboarding_tos_confirmation">Aurora Store-en zerbitzu baldintzak irakurri ditut.</string>
-    <string name="onboarding_tos_desc">Mesedez, irakurri eta onartu zerbitzuaren baldintzak Aurora Store erabiltzeko.</string>
-    <string name="onboarding_tos">Zerbitzuaren baldintzak</string>
     <string name="onboarding_title_welcome">Ongi etorri</string>
     <string name="onboarding_title_theme">Diseinuak</string>
     <string name="onboarding_title_permissions">Baimenak</string>
@@ -212,7 +208,6 @@
     <string name="action_filter">Iragazkiak</string>
     <string name="action_export">Esportatu</string>
     <string name="action_disable">Desgaitu</string>
-    <string name="action_deny">Ukatu</string>
     <string name="action_copy_link">Esteka kopiatu</string>
     <string name="action_copy">Kopiatu</string>
     <string name="action_close">Itxi</string>
@@ -221,7 +216,6 @@
     <string name="action_blacklist_add">Zerrenda beltzan sartu</string>
     <string name="action_blacklist">Zerrenda beltza</string>
     <string name="action_back">Atzera</string>
-    <string name="action_accept">Onartu</string>
     <string name="account_logout">Auroraren saioa itxi</string>
     <string name="account_login_using">Saioa hasi hau erabiliz</string>
     <string name="account_logged_out">Saioa bertan utzi duzu</string>

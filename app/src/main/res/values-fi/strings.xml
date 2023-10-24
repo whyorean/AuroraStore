@@ -8,7 +8,6 @@
     <string name="action_blacklist">Musta lista</string>
     <string name="action_blacklist_add">Lisää mustalle listalle</string>
     <string name="action_back">Takaisin</string>
-    <string name="action_accept">Hyväksy</string>
     <string name="account_logout">Kirjaudu ulos Aurorasta</string>
     <string name="account_login_using">Kirjaudu sisään käyttäen</string>
     <string name="account_logged_out">Olet kirjautunut ulos</string>
@@ -62,9 +61,7 @@
     <string name="dialog_title_self_update">Uusi päivitys saatavilla</string>
     <string name="notification_channel_general">Yleinen ilmoitus</string>
     <string name="notification_channel_alert">Nopea ilmoitus</string>
-    <string name="onboarding_tos">Palveluehdot</string>
     <string name="onboarding_title_welcome">Tervetuloa</string>
-    <string name="onboarding_tos_confirmation">Olen lukenut Aurora Storen käyttöehdot.</string>
     <string name="pref_app_download">Lataukset</string>
     <string name="pref_downloader_active_summary">Aktiivisten latausten enimmäismäärä</string>
     <string name="pref_filter_fdroid_summary">Poistaa F-Droid-sovellukset sovellusluetteloista</string>
@@ -175,7 +172,6 @@
     <string name="action_filter">Suodattimet</string>
     <string name="action_export">Vie</string>
     <string name="action_disable">Poista käytöstä</string>
-    <string name="action_deny">Kiellä</string>
     <string name="action_clear">Tyhjennä</string>
     <string name="account_anonymous">Anonyymi</string>
     <string name="about_telegram_summary">Liity Auroran tukiryhmään keskusteluja tai ehdotuksia varten.</string>
@@ -250,8 +246,6 @@
     <string name="onboarding_permission_esa_desc">Latausten (APK &amp; OBB), laiteasetusten viemiseen ja tuomiseen ulkoiselta tallennustilalta.</string>
     <string name="onboarding_permission_esa">Ulkoisen tallennustilan käyttö</string>
     <string name="onboarding_welcome_select">Miten menee\?</string>
-    <string name="onboarding_tos_error">Merkkaa käyttöehdot luetuksi.</string>
-    <string name="onboarding_tos_desc">Ole hyvä, lue käyttöehdot ja hyväksy ne käyttääksesi Aurora Storea.</string>
     <string name="onboarding_title_theme">Teemat</string>
     <string name="onboarding_title_permissions">Käyttöoikeudet</string>
     <string name="onboarding_title_installer">Asentaja</string>

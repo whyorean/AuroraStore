@@ -30,7 +30,6 @@
     <string name="action_filter">Filtri</string>
     <string name="action_export">Eskportēt</string>
     <string name="action_disable">Izslēgt</string>
-    <string name="action_deny">Noliegt</string>
     <string name="action_copy_link">Kopēt saiti</string>
     <string name="action_copy">Kopēt</string>
     <string name="action_close">Aizvērt</string>
@@ -40,7 +39,6 @@
     <string name="action_blacklist_add">Pievienot Melnajam sarakstam</string>
     <string name="action_blacklist">Melnais saraksts</string>
     <string name="action_back">Atpakaļ</string>
-    <string name="action_accept">Piekrist</string>
     <string name="account_logout">Atteikties no Aurora</string>
     <string name="account_login_using">Pieteikties ar</string>
     <string name="account_logged_out">Atteicies</string>
@@ -119,9 +117,6 @@
     <string name="onboarding_title_permissions">Atļaujas</string>
     <string name="onboarding_title_theme">Motīvs</string>
     <string name="onboarding_title_welcome">Laipni lūgti</string>
-    <string name="onboarding_tos">Lietošanas noteikumi</string>
-    <string name="onboarding_tos_desc">Lūdzu, izlasiet mūsu Lietošanas noteikumus un pieņemiet tos, lai izmantotu Aurora Store.</string>
-    <string name="onboarding_tos_confirmation">Es izlasīju Aurora Store Lietošanas noteikumus.</string>
     <string name="pref_app_download">Lejupielādes</string>
     <string name="pref_ui_theme_black">Melns</string>
     <string name="pref_ui_theme_darkord">Discord</string>
@@ -182,7 +177,6 @@
     <string name="notification_channel_general">Ģenerālā notifikācija</string>
     <string name="pref_common_extra">Papildus</string>
     <string name="onboarding_permission_select">Aurora Store ir nepieciešamas šādas atļaujas</string>
-    <string name="onboarding_tos_error">Vispirms ir jāatzīmē, ka ir izlasīti LN.</string>
     <string name="pref_dialog_to_apply_restart">Šis iestatījums tiks piemērots pēc lietotnes restartēšanas</string>
     <string name="pref_ui_theme_light">Gaišs</string>
     <string name="pref_ui_layout">Izkārtojums</string>

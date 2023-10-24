@@ -30,7 +30,6 @@
     <string name="pref_install_mode_services">Aurora-tjenester</string>
     <string name="pref_downloader_active_title">Aktiv nedlasting</string>
     <string name="pref_app_download">Nedlastinger</string>
-    <string name="onboarding_tos">Tjenestevilkår</string>
     <string name="onboarding_title_welcome">Velkommen</string>
     <string name="onboarding_title_theme">Drakter</string>
     <string name="onboarding_title_permissions">Tilganger</string>
@@ -114,7 +113,6 @@
     <string name="action_filter_all">Alle</string>
     <string name="action_filter">Filter</string>
     <string name="action_export">Eksporter</string>
-    <string name="action_deny">Nekt</string>
     <string name="action_copy_link">Kopier lenke</string>
     <string name="action_copy">Kopier</string>
     <string name="action_close">Lukk</string>
@@ -123,7 +121,6 @@
     <string name="action_blacklist_add">Legg til i svartelisten</string>
     <string name="action_blacklist">Svartelist</string>
     <string name="action_back">Tilbake</string>
-    <string name="action_accept">Godta</string>
     <string name="account_login_using">Logg inn med</string>
     <string name="account_logged_out">Du er utlogget</string>
     <string name="account_google">Google</string>
@@ -178,9 +175,6 @@
     <string name="pref_downloader_active_summary">Maksimalt antall aktive nedlastinger</string>
     <string name="onboarding_permission_installer_desc">Tillat å installere apper fra Aurora Store</string>
     <string name="onboarding_welcome_select">Hvordan går det\?</string>
-    <string name="onboarding_tos_error">Du må merke TOS lest først.</string>
-    <string name="onboarding_tos_confirmation">Jeg har lest Aurora Stores vilkår for bruk.</string>
-    <string name="onboarding_tos_desc">Les våre vilkår for bruk og godta det for å bruke Aurora Store.</string>
     <string name="onboarding_title_accent">Aksent</string>
     <string name="onboarding_theme_select">Velg hva du liker</string>
     <string name="onboarding_permission_select">Aurora Store krever følgende tillatelser</string>

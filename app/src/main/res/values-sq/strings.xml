@@ -33,7 +33,6 @@
     <string name="account_logged_out">Keni dalë nga llogaria</string>
     <string name="account_login_using">Bëni hyrjen duke përdorur</string>
     <string name="account_logout">Dil nga Aurora</string>
-    <string name="action_accept">Pranoje</string>
     <string name="action_back">Mbprasht</string>
     <string name="action_blacklist">Listë bllokimesh</string>
     <string name="action_blacklist_add">Shtoje në Listë Bllokimesh</string>
@@ -43,7 +42,6 @@
     <string name="action_close">Mbylle</string>
     <string name="action_copy">Kopjoje</string>
     <string name="action_copy_link">Kopjoji Lidhjen</string>
-    <string name="action_deny">Hidhe poshtë</string>
     <string name="action_disable">Çaktivizoje</string>
     <string name="action_export">Eksportoje</string>
     <string name="action_filter">Filtra</string>
@@ -163,10 +161,6 @@
     <string name="onboarding_title_permissions">Leje</string>
     <string name="onboarding_title_theme">Tema</string>
     <string name="onboarding_title_welcome">Mirë se vini</string>
-    <string name="onboarding_tos">Kushte shërbimi</string>
-    <string name="onboarding_tos_desc">Që të përdorni Shitoren Aurora, ju lutemi, lexoni dhe pranoni Kushtet tonë të Shërbimit.</string>
-    <string name="onboarding_tos_confirmation">I kam lexuar dhe pajtohem me Kushtet e Shërbimit të Aurora Store-it.</string>
-    <string name="onboarding_tos_error">Lypset së pari ta bëni TOS-in të lexueshëm.</string>
     <string name="onboarding_welcome_select">Si ia çoni\?</string>
     <string name="pref_abandon_session">Spastro me detyrim sesione instalimi</string>
     <string name="pref_abandon_session_desc">Spastro sesione instalimesh të braktisur ose pezull</string>

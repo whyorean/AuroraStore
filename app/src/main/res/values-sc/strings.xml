@@ -11,7 +11,6 @@
     <string name="action_blacklist_add">Annanghe a sa lista niedda</string>
     <string name="action_check">Verìfica</string>
     <string name="action_copy">Còpia</string>
-    <string name="action_deny">Dennega</string>
     <string name="action_finish">Acabba</string>
     <string name="action_get_local_apk">Sarva su pachete de aplicatziones</string>
     <string name="action_grant">Fruni</string>
@@ -74,10 +73,6 @@
     <string name="onboarding_title_accent">Colore</string>
     <string name="onboarding_title_installer">Installadore</string>
     <string name="onboarding_title_theme">Temas</string>
-    <string name="onboarding_tos">Tèrmines de impreu</string>
-    <string name="onboarding_tos_desc">Leghe sos Tèrmines de impreu nostros e atzeta·los pro impreare Aurora Store.</string>
-    <string name="onboarding_tos_confirmation">Apo lèghidu sos tèrmines de impreu de Aurora Store.</string>
-    <string name="onboarding_tos_error">In antis ti depes lèghere sos tèrmines de impreu.</string>
     <string name="onboarding_welcome_select">Comente andat\?</string>
     <string name="onboarding_permission_esa">Atzessu a sa memòria esterna</string>
     <string name="onboarding_permission_esa_desc">Pro sarvare sos iscarrigamentos (APK e OBB), esportare e importare sas configuratziones de su dispositivu a e dae sa memòria esterna.</string>
@@ -254,7 +249,6 @@
     <string name="filter_review_positive">Positiva</string>
     <string name="notification_channel_alert">Notìficas lestras</string>
     <string name="notification_channel_general">Notìficas generales</string>
-    <string name="action_accept">Atzeta</string>
     <string name="about_bitcoin_btc">Bitcoin</string>
     <string name="about_bitcoin_btc_summary">Dona pro mèdiu de Bitcoin (BTC)</string>
     <string name="about_bitcoin_bch">Bitcoin Cash</string>

@@ -30,14 +30,12 @@
     <string name="action_filter">Filtriloj</string>
     <string name="action_export">Elporti</string>
     <string name="action_disable">Malŝalti</string>
-    <string name="action_deny">Malkonsenti</string>
     <string name="action_copy_link">Kopii ligilon</string>
     <string name="action_copy">Kopii</string>
     <string name="action_close">Fermi</string>
     <string name="action_check">Kontroli</string>
     <string name="action_cancel">Nuligi</string>
     <string name="action_back">Reen</string>
-    <string name="action_accept">Akcepti</string>
     <string name="account_logout">Elsaluti el Aurora</string>
     <string name="account_login_using">Ensaluti per</string>
     <string name="account_anonymous">Anonima</string>

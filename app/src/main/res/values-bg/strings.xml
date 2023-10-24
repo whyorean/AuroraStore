@@ -30,7 +30,6 @@
     <string name="account_logged_out">Вие сте излезли</string>
     <string name="account_login_using">Влизане чрез</string>
     <string name="account_logout">Излизане от Aurora</string>
-    <string name="action_accept">Приемане</string>
     <string name="action_back">Назад</string>
     <string name="action_blacklist">Черен списък</string>
     <string name="action_blacklist_add">Добавяне към черен списък</string>
@@ -39,7 +38,6 @@
     <string name="action_clear">Изчистване</string>
     <string name="action_close">Затваряне</string>
     <string name="action_copy">Копиране</string>
-    <string name="action_deny">Отказване</string>
     <string name="action_disable">Изключване</string>
     <string name="action_filter">Филтри</string>
     <string name="action_filter_all">Всички</string>
@@ -192,7 +190,6 @@
     <string name="onboarding_installer_select">Изберете подходящ инсталатор</string>
     <string name="action_pause">Пауза</string>
     <string name="details_description">Описание</string>
-    <string name="onboarding_tos_error">Първо трябва да маркирате TOS прочетени.</string>
     <string name="onboarding_welcome_select">Как си\?</string>
     <string name="toast_permission_granted">Разрешение дадено</string>
     <string name="toast_spoof_applied">Приложена е измама на устройството.</string>
@@ -214,8 +211,6 @@
     <string name="onboarding_title_installer">Инсталатор</string>
     <string name="onboarding_title_permissions">Разрешения</string>
     <string name="onboarding_title_welcome">Добре дошли</string>
-    <string name="onboarding_tos_desc">Моля, прочетете нашите Условия за ползване и ги приемете, за да използвате Aurora Store.</string>
-    <string name="onboarding_tos_confirmation">Прочетох Общите условия на Aurora Store.</string>
     <string name="onboarding_permission_esa">Достъп до външно хранилище</string>
     <string name="onboarding_permission_notifications">Известия</string>
     <string name="onboarding_permission_notifications_desc">Изпращайте известия относно състоянието на инсталациите</string>
@@ -275,7 +270,6 @@
     <string name="dialog_title_self_update">Налична е нова актуализация</string>
     <string name="dialog_desc_native_split">Не можете да инсталирате пакетни (разделени) приложения чрез Native Installer. Променете инсталатора си на Session, Services или Root.</string>
     <string name="notification_channel_alert">Бързо известяване</string>
-    <string name="onboarding_tos">Условия на услугите</string>
     <string name="onboarding_permission_esa_desc">За да запазите изтеглянията (APK и OBB), експортирайте и импортирайте конфигурациите на устройството към и от външно хранилище.</string>
     <string name="onboarding_permission_installer">Разрешение за инсталиране</string>
     <string name="pref_install_delete_summary">APK файловете ще бъдат изтрити по подразбиране</string>

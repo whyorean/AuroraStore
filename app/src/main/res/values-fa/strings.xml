@@ -82,7 +82,6 @@
     <string name="action_filter_rating">امتیازها</string>
     <string name="about_bitcoin_eth_summary">حمایت از طریق اتریوم (ETH)</string>
     <string name="action_wishlist_add">افزودن به خواسته ها</string>
-    <string name="action_accept">پذیرفتن</string>
     <string name="action_ok">تایید</string>
     <string name="action_whitelist">لیست سفید</string>
     <string name="details_beta_subscribed">شما یه آزمایش کننده هستید</string>
@@ -115,7 +114,6 @@
     <string name="action_back">عقب</string>
     <string name="about_bitcoin_bch_summary">حمایت از طریق بیتکوین کش (BCH)</string>
     <string name="account_logged_out">شما خارج شدید</string>
-    <string name="action_deny">رد</string>
     <string name="action_granted">مجوز داده شد</string>
     <string name="action_close">بستن</string>
     <string name="account_logout">خروج از آرورا</string>
@@ -181,7 +179,6 @@
     <string name="pref_abandon_session">پاکسازی اجباری جلسات نصب</string>
     <string name="installer_service_available">خدمات آرورا در دسترس و آماده نصب است.</string>
     <string name="notification_channel_alert">اطلاع رسانی سریع</string>
-    <string name="onboarding_tos">شرایط خدمات</string>
     <string name="tab_categories">دسته بندی ها</string>
     <string name="download_speed_estimating">برآورد</string>
     <string name="installer_status_failure_session">جلسه ایجاد نشد</string>
@@ -256,7 +253,6 @@
     <string name="installer_status_failure_storage">فضای حافظه ناکافی</string>
     <string name="device_miui_extra">در صورت تمایل می توانید نصب کننده بومی را انتخاب کنید، اما پس از آن نمی توانید APKs های همراه (تقسیم شده) را نصب کنید، بنابراین انتخاب با شماست.</string>
     <string name="onboarding_welcome_select">حال شما چطور است؟</string>
-    <string name="onboarding_tos_desc">لطفاً شرایط خدمات ما را بخوانید و آن را برای استفاده از فروشگاه آرورا بپذیرید.</string>
     <string name="onboarding_permission_esa_desc">برای ذخیره بارگیری‌های (APKs و OBBs)، پیکربندی برون‌بری و درون‌ریزی به حافظه خارجی را انجام دهید.</string>
     <string name="onboarding_permission_esm">مدیر ذخیره سازی خارجی</string>
     <string name="details_beta_delay">ثبت نام ممکن است کمی طول بکشد، می توانید بعداً وضعیت را بررسی کنید.</string>
@@ -271,8 +267,6 @@
     <string name="onboarding_theme_select">آنچه را که دوست دارید انتخاب کنید</string>
     <string name="onboarding_title_accent">رنگ‌بندی</string>
     <string name="onboarding_title_installer">نصب کننده</string>
-    <string name="onboarding_tos_confirmation">من شرایط خدمات فروشگاه آرورا را خوانده ام.</string>
-    <string name="onboarding_tos_error">ابتدا باید خواندن TOS را علامت بزنید.</string>
     <string name="onboarding_permission_installer_desc">اجازه نصب برنامه‌ها از فروشگاه آرورا</string>
     <string name="pref_downloader_external">حافظه خارجی کاربر</string>
     <string name="pref_filter_google_summary">حذف همه برنامه‌های گوگل از نتایج جستجو و دسته‌بندی برنامه‌ها</string>

@@ -12,7 +12,6 @@
     <string name="action_close">වසන්න</string>
     <string name="action_cancel">අවලංගු</string>
     <string name="action_back">ආපසු</string>
-    <string name="action_accept">පිළිගන්න</string>
     <string name="account_google">ගූගල්</string>
     <string name="account_anonymous">නිර්නාමික</string>
     <string name="about_telegram">ටෙලිග්‍රෑම්</string>
@@ -20,7 +19,6 @@
     <string name="about_gitlab">ගිට්ලැබ්</string>
     <string name="about_fdroid">එෆ්-ඩ්‍රොයිඩ්</string>
     <string name="about_bitcoin_btc">බිට්කොයින්</string>
-    <string name="onboarding_tos">සේවාවේ නියම</string>
     <string name="onboarding_title_welcome">සාදරයෙන් පිළිගනිමු</string>
     <string name="onboarding_title_theme">තේමා</string>
     <string name="onboarding_title_permissions">අවසර</string>
@@ -119,7 +117,6 @@
     <string name="title_apps">යෙදුම්</string>
     <string name="title_account_manager">ගිණුම්</string>
     <string name="title_about">පිළිබඳව</string>
-    <string name="action_deny">ප්‍රතිෂේධනය</string>
     <string name="action_check">පරීක්ෂා කරන්න</string>
     <string name="action_blacklist_add">කළු ලේඛනයට දමන්න</string>
     <string name="action_blacklist">කළු ලේඛනය</string>
@@ -240,9 +237,7 @@
     <string name="pref_dialog_to_apply_restart">ඔබ යෙදුම යළිි ඇරඹූ පසු මෙම සැකසුම් යෙදෙනු ඇත</string>
     <string name="notification_channel_general">පොදු දැනුම්දීම</string>
     <string name="onboarding_installer_select">සුදුසු ස්ථාපකයක් තෝරන්න</string>
-    <string name="onboarding_tos_confirmation">මම අවුරෝරා ස්ටෝර් හි සේවාවේ නියම කියෙව්වෙමි.</string>
     <string name="onboarding_permission_select">අවුරෝරා ස්ටෝර් සඳහා පහත අවසර වුවමනාය</string>
-    <string name="onboarding_tos_error">පළමුව ඔබ නියම කියවූ බව ලකුණු කළ යුතුය.</string>
     <string name="onboarding_permission_esm">බාහිර ආචයන කළමණාකරු</string>
     <string name="pref_downloader_active_title">ක්‍රියාත්මක බාගැනීම්</string>
     <string name="pref_downloader_active_summary">උපරිම ක්‍රියාත්මක බාගැනීම් ගණන</string>
@@ -255,7 +250,6 @@
     <string name="onboarding_welcome_select">ඔබට කොහොමද\?</string>
     <string name="installer_service_misconfigured">අවුරෝරා සේවා පිහිටුවන්න හා පළමුව සියළු අවසර පිරිනමන්න.</string>
     <string name="installer_status_failure_invalid">APK වලංගු නොවේ හෝ හානි වී ඇත</string>
-    <string name="onboarding_tos_desc">අපගේ සේවාවේ නියම කියවන්න හා භාවිතයට ඒවා පිළිගන්න.</string>
     <string name="pref_common_extra">අමතර වැඩ</string>
     <string name="onboarding_title_accent">උදාත්තය</string>
     <string name="pref_abandon_session">ස්ථාපන වාර බලෙන් හිස් කරන්න</string>

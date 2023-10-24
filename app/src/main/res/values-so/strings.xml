@@ -139,10 +139,6 @@
     <string name="onboarding_permission_esa_desc">Si aad ukaydiso soodajinta (APK-yada &amp; OBB-yada), ugudbiso ood uga soogaliso fadhiga aallada kaydka dibada.</string>
     <string name="onboarding_permission_esa">Ogolaansha Kaydka Dibada</string>
     <string name="onboarding_welcome_select">Seetahay\?</string>
-    <string name="onboarding_tos_error">Marka hore ucalaamadi shuruudaha adeega inaad akhriday.</string>
-    <string name="onboarding_tos_confirmation">Waan akhriyay shuruudaha Dukaanka Aurora.</string>
-    <string name="onboarding_tos_desc">Fadlan akhri shuruudaha adeeganaga oo aqbal si aad u isticmaasho Dukaanka Aurora.</string>
-    <string name="onboarding_tos">Shuruudaha adeega</string>
     <string name="onboarding_title_welcome">Soodhawoow</string>
     <string name="onboarding_title_theme">Nashqadaha</string>
     <string name="onboarding_title_permissions">Ogolaanshaha</string>
@@ -256,7 +252,6 @@
     <string name="action_filter_all">Dhammaan</string>
     <string name="action_export">Gudbi</string>
     <string name="action_disable">Xidh</string>
-    <string name="action_deny">Diid</string>
     <string name="action_copy_link">Koobiyee Tixraaca</string>
     <string name="action_copy">Koobiyee</string>
     <string name="action_close">Xidh</string>
@@ -264,7 +259,6 @@
     <string name="action_check">Hubi</string>
     <string name="action_cancel">Kanoqo</string>
     <string name="action_back">Kanoqo</string>
-    <string name="action_accept">Aqbal</string>
     <string name="account_logout">Kabax Aurora</string>
     <string name="account_login_using">Gal adoo isticmaalaya</string>
     <string name="account_logged_out">Waad ka baxday</string>

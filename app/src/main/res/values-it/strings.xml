@@ -128,7 +128,6 @@
     <string name="action_filter">Filtri</string>
     <string name="action_export">Esporta</string>
     <string name="action_disable">Disabilita</string>
-    <string name="action_deny">Rifiuta</string>
     <string name="action_copy_link">Copia link</string>
     <string name="action_copy">Copia</string>
     <string name="action_close">Chiudi</string>
@@ -137,7 +136,6 @@
     <string name="action_blacklist_add">Aggiungi alla lista nera</string>
     <string name="action_blacklist">Lista nera</string>
     <string name="action_back">Indietro</string>
-    <string name="action_accept">Accetta</string>
     <string name="account_logout">Esci da Aurora</string>
     <string name="account_login_using">Accedi usando</string>
     <string name="account_logged_out">Sei stato/a disconnesso/a</string>
@@ -202,10 +200,6 @@
     <string name="onboarding_permission_esm">Gestore archiviazione esterna</string>
     <string name="onboarding_permission_esa">Accesso archiviazione esterna</string>
     <string name="onboarding_welcome_select">Come va\?</string>
-    <string name="onboarding_tos_error">È necessario prima contrassegnare la lettura dei termini di servizio.</string>
-    <string name="onboarding_tos_confirmation">Ho letto i termini di servizio di Aurora Store.</string>
-    <string name="onboarding_tos_desc">Si prega di leggere i termini di servizio e di accettarli per poter usare Aurora Store.</string>
-    <string name="onboarding_tos">Termini di servizio</string>
     <string name="onboarding_title_welcome">Benvenuti</string>
     <string name="onboarding_title_theme">Temi</string>
     <string name="onboarding_title_permissions">Autorizzazioni</string>

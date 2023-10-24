@@ -18,7 +18,6 @@
     <string name="action_pause">Întrerupe</string>
     <string name="details_changelog">Jurnalul modificărilor</string>
     <string name="exodus_powered">Susținut de Exodus</string>
-    <string name="action_deny">Refuză</string>
     <string name="action_disable">Dezactivează</string>
     <string name="action_restart">Repornește</string>
     <string name="action_resume">Reia</string>
@@ -58,10 +57,6 @@
     <string name="dialog_desc_native_split">Nu poți instala aplicații incluse (divizate) prin intermediul programului de instalare nativ. Schimbă programul de instalare la Sesiune, Servicii sau Root.</string>
     <string name="notification_channel_alert">Notificare rapidă</string>
     <string name="notification_channel_general">Notificare generală</string>
-    <string name="onboarding_tos">Termeni și condiții</string>
-    <string name="onboarding_tos_desc">Citește Termenii de utilizare și acceptă-i pentru a utiliza Aurora Store.</string>
-    <string name="onboarding_tos_confirmation">Am citit Termenii de utilizare a Magazinului Aurora.</string>
-    <string name="onboarding_tos_error">Trebuie să bifezi TC citit mai întâi.</string>
     <string name="onboarding_welcome_select">Ce mai faci\?</string>
     <string name="onboarding_permission_esa">Acces la stocare</string>
     <string name="onboarding_permission_esm">Manager de stocare externă</string>
@@ -78,7 +73,6 @@
     <string name="account_login_using">Conectează-te utilizând</string>
     <string name="download_force_clear_all">Șterge forțat totul</string>
     <string name="account_logout">Deconectează-te de la Aurora</string>
-    <string name="action_accept">Acceptă</string>
     <string name="download_clear_completed">Șterge pe cele finalizate</string>
     <string name="action_back">Înapoi</string>
     <string name="action_blacklist">Lista neagră</string>

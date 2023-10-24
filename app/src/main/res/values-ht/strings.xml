@@ -56,7 +56,6 @@
     <string name="action_filter">Filte</string>
     <string name="action_export">Ekspòte</string>
     <string name="action_disable">Dezaktive</string>
-    <string name="action_deny">Refize</string>
     <string name="action_copy_link">Kopi lyen</string>
     <string name="action_copy">Kopi</string>
     <string name="action_close">Fèmen</string>
@@ -65,7 +64,6 @@
     <string name="action_blacklist_add">Ajoute nan lis nwa</string>
     <string name="action_blacklist">Lis nwa</string>
     <string name="action_back">Retounen</string>
-    <string name="action_accept">Aksepte</string>
     <string name="account_login_using">Konèkte avèk</string>
     <string name="account_logged_out">Ou se dekonekte</string>
     <string name="account_google">Google</string>
@@ -90,7 +88,6 @@
     <string name="about_bitcoin_bch">Bitcoin Cash</string>
     <string name="about_bhim">BHIM - UPI</string>
     <string name="onboarding_title_welcome">Byenvini</string>
-    <string name="onboarding_tos_error">Ou dwa make CI li an premye.</string>
     <string name="toast_clipboard_copied">Kopye nan prèspapye</string>
     <string name="toast_permission_granted">Pèmisyon akòde</string>
     <string name="toast_manual_unavailable">Vèsyon kòd ap mande a pa disponib.</string>

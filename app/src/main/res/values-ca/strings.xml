@@ -30,7 +30,6 @@
     <string name="account_logged_out">Heu tancat la sessió</string>
     <string name="account_login_using">Inicia la sessió via</string>
     <string name="account_logout">Sortir d\'Aurora</string>
-    <string name="action_accept">Acceptar</string>
     <string name="action_next">Següent</string>
     <string name="action_blacklist">Llista negra</string>
     <string name="action_leave">Sortir</string>
@@ -69,7 +68,6 @@
     <string name="onboarding_title_theme">Temes</string>
     <string name="installer_status_success">Instal·lat correctament</string>
     <string name="onboarding_installer_select">Seleccioneu un instal·lador adequat</string>
-    <string name="onboarding_tos_desc">Llegiu els nostres termes de servei i accepteu-ho per utilitzar Aurora Store.</string>
     <string name="dialog_desc_native_split">No podeu instal·lar aplicacions agrupades (dividir) mitjançant l\'instal·lador natiu. Canvieu el vostre instal·lador a Sessió, Serveis o Root.</string>
     <string name="notification_channel_alert">Notificació ràpida</string>
     <string name="onboarding_theme_select">Seleccioneu el que us agradi més</string>
@@ -77,8 +75,6 @@
     <string name="onboarding_title_accent">Accent</string>
     <string name="onboarding_title_permissions">Permisos</string>
     <string name="onboarding_title_welcome">Benvingut</string>
-    <string name="onboarding_tos">Termes de serveis</string>
-    <string name="onboarding_tos_confirmation">He llegit els termes de servei d\'Aurora Store.</string>
     <string name="onboarding_permission_esa">Accés a l\'emmagatzematge extern</string>
     <string name="action_restart">Reiniciar</string>
     <string name="action_resume">Reprendre</string>
@@ -90,7 +86,6 @@
     <string name="action_close">Tancar</string>
     <string name="action_copy">Copiar</string>
     <string name="action_copy_link">Copiar l\'enllaç</string>
-    <string name="action_deny">Denegar</string>
     <string name="action_disable">Desactivar</string>
     <string name="action_export">Exportar</string>
     <string name="action_filter">Filtres</string>
@@ -168,7 +163,6 @@
     <string name="device_miui_description">Deshabiliteu les optimitzacions MIUI per permetre les instal·lacions, en cas contrari podeu triar l\'instal·lador root o serveis.</string>
     <string name="device_miui_extra">Opcionalment, podeu triar l\'instal·lador natiu, però no podreu instal·lar APK agrupats (dividits), de manera que l\'elecció és vostra.</string>
     <string name="dialog_title_self_update">Nova actualització disponible</string>
-    <string name="onboarding_tos_error">Primer heu de marcar el TDS com a llegit.</string>
     <string name="onboarding_welcome_select">Com va\?</string>
     <string name="app_updater_service_notif_text">Habilita la baixada d\'aplicacions en segon pla</string>
     <string name="pref_install_auto_summary">Les aplicacions s\'instal·len a l\'instant un cop finalitzada la descàrrega</string>

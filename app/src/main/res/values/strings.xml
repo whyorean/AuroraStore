@@ -45,7 +45,6 @@
     <string name="account_logged_out">"You are logged out"</string>
     <string name="account_login_using">Log in using</string>
     <string name="account_logout">Log out from Aurora</string>
-    <string name="action_accept">"Accept"</string>
     <string name="action_back">"Back"</string>
     <string name="action_blacklist">"Blacklist"</string>
     <string name="action_blacklist_add">"Add to Blacklist"</string>
@@ -55,7 +54,6 @@
     <string name="action_close">"Close"</string>
     <string name="action_copy">"Copy"</string>
     <string name="action_copy_link">"Copy Link"</string>
-    <string name="action_deny">"Deny"</string>
     <string name="action_disable">"Disable"</string>
     <string name="action_export">"Export"</string>
     <string name="action_import">"Import"</string>
@@ -193,10 +191,6 @@
     <string name="onboarding_title_permissions">"Permissions"</string>
     <string name="onboarding_title_theme">"Themes"</string>
     <string name="onboarding_title_welcome">"Welcome"</string>
-    <string name="onboarding_tos">"Terms of services"</string>
-    <string name="onboarding_tos_desc">"Please read our Terms of Service and accept it to use Aurora Store."</string>
-    <string name="onboarding_tos_confirmation">"I have read the Aurora Store's Terms of Service."</string>
-    <string name="onboarding_tos_error">"You need to mark TOS read first."</string>
     <string name="onboarding_welcome_select">"How you doing?"</string>
     <string name="onboarding_permission_esa">"External Storage Access"</string>
     <string name="onboarding_permission_esa_desc">To save downloads (APKs &amp; OBBs), export and import device configs to and from external storage.</string>

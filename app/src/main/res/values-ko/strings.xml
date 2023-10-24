@@ -39,11 +39,9 @@
     <string name="action_cancel">취소</string>
     <string name="action_copy">복사</string>
     <string name="action_copy_link">링크 복사</string>
-    <string name="action_deny">거절</string>
     <string name="account_anonymous_insecure">익명 (안전하지 않음)</string>
     <string name="account_login_using">다음을 사용하여 로그인</string>
     <string name="account_logout">오로라에서 로그아웃</string>
-    <string name="action_accept">받아들이다</string>
     <string name="action_check">검사</string>
     <string name="action_clear">지우기</string>
     <string name="action_close">닫기</string>
@@ -132,7 +130,6 @@
     <string name="filter_review_one">별 1개</string>
     <string name="filter_review_three">별 3개</string>
     <string name="pref_install_auto_title">다운로드 후 APK 자동 설치</string>
-    <string name="onboarding_tos_error">먼저 이용 약관을 읽었음을 표시해야 합니다.</string>
     <string name="notification_channel_alert">빠른 알림</string>
     <string name="installer_service_available">Aurora 서비스를 사용할 수 있으며 설치할 준비가 되었습니다.</string>
     <string name="installer_status_user_action">사용자의 승인 대기 중</string>
@@ -161,9 +158,6 @@
     <string name="onboarding_title_permissions">권한</string>
     <string name="onboarding_title_theme">테마</string>
     <string name="onboarding_title_welcome">환영합니다</string>
-    <string name="onboarding_tos">이용 약관</string>
-    <string name="onboarding_tos_desc">Aurora Store를 이용하려면 이용 약관을 읽고 동의해 주세요.</string>
-    <string name="onboarding_tos_confirmation">Aurora Store의 이용 약관을 읽었습니다.</string>
     <string name="onboarding_welcome_select">어떻게 지내세요\?</string>
     <string name="onboarding_permission_esa">외부 저장소 액세스</string>
     <string name="onboarding_permission_esm">외부 저장소 관리자</string>

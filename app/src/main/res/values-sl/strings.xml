@@ -23,12 +23,10 @@
     <string name="account_anonymous_insecure">Anonimno (ni varno)</string>
     <string name="account_logged_out">Trenutno ste odjavljeni</string>
     <string name="account_logout">Odjavite se iz Aurora</string>
-    <string name="action_accept">Strinjam se</string>
     <string name="action_back">Nazaj</string>
     <string name="action_blacklist">Črni seznam</string>
     <string name="action_blacklist_add">Dodaj na črni seznam</string>
     <string name="action_copy_link">Kopiraj povezavo</string>
-    <string name="action_deny">Zanikaj</string>
     <string name="action_disable">Onemogoči</string>
     <string name="action_filter_gsf_dependent_apps">Zahteva GSF</string>
     <string name="action_filter_misc">Razno</string>
@@ -189,7 +187,6 @@
     <string name="download_eta_min">še %1$dm %2$ds</string>
     <string name="download_eta_sec">še %1$ds</string>
     <string name="download_progress">Prenašanje • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
-    <string name="onboarding_tos">Pogoji storitev</string>
     <string name="pref_filter_google_title">Filtrirajte Googlove aplikacije</string>
     <string name="pref_install_mode_session">Sejni namestitveni program</string>
     <string name="pref_install_mode_summary">Izberite način namestitve APK</string>
@@ -213,7 +210,6 @@
     <string name="search_hint">Poiščite aplikacije in igre</string>
     <string name="requesting_new_session">Zahtevaj novo sejo</string>
     <string name="notification_channel_updates">Obvestila o posodobitvah</string>
-    <string name="onboarding_tos_error">Najprej morate TOS označiti kot prebrane.</string>
     <string name="onboarding_welcome_select">Kako si kaj\?</string>
     <string name="onboarding_permission_esa">Dostop do zunanjega pomnilnika</string>
     <string name="pref_abandon_session_desc">Počistite opuščene ali čakajoče namestitvene seje</string>
@@ -318,8 +314,6 @@
     <string name="onboarding_title_accent">Naglas</string>
     <string name="onboarding_title_theme">Teme</string>
     <string name="onboarding_title_welcome">Dobrodošli</string>
-    <string name="onboarding_tos_desc">Prosimo, preberite naše pogoje storitve in jih sprejmite, če želite uporabljati trgovino Aurora Store.</string>
-    <string name="onboarding_tos_confirmation">Prebral sem pogoje storitve trgovine Aurora.</string>
     <string name="onboarding_permission_esa_desc">Če želite shraniti prenose (APK-je in OBB-je), izvozite in uvozite nastavitve naprave v zunanji pomnilnik in iz njega.</string>
     <string name="onboarding_permission_esm">Upravitelj zunanjega pomnilnika</string>
     <string name="onboarding_permission_installer">Dovoljenje namestitvenega programa</string>

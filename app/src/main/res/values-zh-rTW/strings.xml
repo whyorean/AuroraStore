@@ -34,7 +34,6 @@
     <string name="action_filter">過濾</string>
     <string name="action_export">匯出</string>
     <string name="action_disable">停用</string>
-    <string name="action_deny">拒絕</string>
     <string name="action_copy_link">複製連結</string>
     <string name="action_copy">複製</string>
     <string name="action_close">關閉</string>
@@ -44,7 +43,6 @@
     <string name="action_blacklist_add">加入黑名單</string>
     <string name="action_blacklist">黑名單</string>
     <string name="action_back">返回</string>
-    <string name="action_accept">接受</string>
     <string name="account_logout">登出 Aurora</string>
     <string name="account_login_using">登入通過</string>
     <string name="account_logged_out">您已經登出了</string>
@@ -177,10 +175,6 @@
     <string name="onboarding_permission_esa_desc">若要保存下載（APK &amp; OBB），匯出/匯入 設備配置 至/自 外部存儲。</string>
     <string name="onboarding_permission_esa">外部儲存空間存取</string>
     <string name="onboarding_welcome_select">食飽未？</string>
-    <string name="onboarding_tos_error">須先勾選已讀服務條款。</string>
-    <string name="onboarding_tos_confirmation">我已讀 Aurora Store 服務條款。</string>
-    <string name="onboarding_tos_desc">請閱讀服務條款並同意以使用 Aurora Store。</string>
-    <string name="onboarding_tos">服務條款</string>
     <string name="onboarding_title_welcome">歡迎</string>
     <string name="onboarding_title_theme">主題</string>
     <string name="onboarding_permission_select">Aurora Store 需要以下權限</string>

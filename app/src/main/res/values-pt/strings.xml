@@ -135,10 +135,6 @@
     <string name="onboarding_permission_esa_desc">Para guardar os ficheiros (APK &amp; OBB), exporte e importe as configurações do dispositivo de e para o armazenamento externo.</string>
     <string name="onboarding_permission_esa">Acesso a armazenamento externo</string>
     <string name="onboarding_welcome_select">Como está\?</string>
-    <string name="onboarding_tos_error">Tem de confirmar a leitura dos termos do serviço.</string>
-    <string name="onboarding_tos_confirmation">Eu li os termos do serviço Aurora Store.</string>
-    <string name="onboarding_tos_desc">Deve ler e aceitar os termos do serviço para poder utilizar Aurora Store.</string>
-    <string name="onboarding_tos">Termos dos serviços</string>
     <string name="onboarding_title_welcome">Bem-vindo</string>
     <string name="onboarding_title_theme">Temas</string>
     <string name="onboarding_title_permissions">Permissões</string>
@@ -256,7 +252,6 @@
     <string name="action_filter">Filtros</string>
     <string name="action_export">Exportar</string>
     <string name="action_disable">Desativar</string>
-    <string name="action_deny">Recusar</string>
     <string name="action_copy_link">Copiar ligação</string>
     <string name="action_copy">Copiar</string>
     <string name="action_close">Fechar</string>
@@ -266,7 +261,6 @@
     <string name="action_blacklist_add">Adicionar à lista negra</string>
     <string name="action_blacklist">Lista negra</string>
     <string name="action_back">Recuar</string>
-    <string name="action_accept">Aceitar</string>
     <string name="account_logout">Terminar sessão</string>
     <string name="account_login_using">Iniciar sessão com</string>
     <string name="account_logged_out">Sem sessão iniciada</string>

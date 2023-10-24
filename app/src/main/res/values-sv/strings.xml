@@ -79,9 +79,6 @@
     <string name="onboarding_permission_installer_desc">Tillåt att installera appar från Aurora-butiken</string>
     <string name="onboarding_permission_esa_desc">För att spara nerladdningar (APK:er och OBB:er), exportera och importera enhetskonfigurationer till och från externt lagringsutrymme.</string>
     <string name="onboarding_welcome_select">Hur går det\?</string>
-    <string name="onboarding_tos_confirmation">Jag har läst tjänstevillkoret för Aurora-butiken.</string>
-    <string name="onboarding_tos_desc">Vänligen läs våra tjänstevillkor och acceptera det för att använda Aurora-butiken.</string>
-    <string name="onboarding_tos">Tjänstevillkor</string>
     <string name="onboarding_title_welcome">Välkommen</string>
     <string name="onboarding_title_theme">Teman</string>
     <string name="onboarding_title_permissions">Behörigheter</string>
@@ -190,7 +187,6 @@
     <string name="action_filter">Filter</string>
     <string name="action_export">Exportera</string>
     <string name="action_disable">Stäng av</string>
-    <string name="action_deny">Neka</string>
     <string name="action_copy_link">Kopiera länk</string>
     <string name="action_copy">Kopiera</string>
     <string name="action_close">Stäng</string>
@@ -200,7 +196,6 @@
     <string name="action_blacklist_add">Lägg till i Svartlista</string>
     <string name="action_blacklist">Svartlista</string>
     <string name="action_back">Bakåt</string>
-    <string name="action_accept">Acceptera</string>
     <string name="account_logout">Logga ut från Aurora</string>
     <string name="account_logged_out">Du är utloggad</string>
     <string name="account_google">Google</string>
@@ -253,7 +248,6 @@
     <string name="download_force_clear_all">Påtvinga rensning av allt</string>
     <string name="menu_disclaimer">Ansvarsfriskrivning</string>
     <string name="device_miui_subtitle">Sessions-installatören kan inte installera appar på grund av MIUI-optimiseringar.</string>
-    <string name="onboarding_tos_error">Du behöver markera TOS som läst först.</string>
     <string name="pref_abandon_session">Påtvinga rensning av installations-sessioner</string>
     <string name="action_post">Skicka in</string>
     <string name="device_miui_extra">Alternativt kan du välja Inbyggt installationsprogram, men då kan du inte installera buntade (delade) APK-filer, så valet är ditt.</string>

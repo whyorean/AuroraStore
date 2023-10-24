@@ -15,7 +15,6 @@
     <string name="action_filter_all">Alle</string>
     <string name="action_filter">Filter</string>
     <string name="action_disable">Deaktivieren</string>
-    <string name="action_deny">Ablehnen</string>
     <string name="action_copy_link">Link kopieren</string>
     <string name="action_copy">Kopieren</string>
     <string name="action_close">Schließen</string>
@@ -128,10 +127,6 @@
     <string name="onboarding_permission_esa_desc">Erforderlich zum Speichern heruntergeladener APK- und OBB-Dateien sowie zum Ex- und Importieren von Gerätekonfigurationen</string>
     <string name="onboarding_permission_esa">Speicherzugriff</string>
     <string name="onboarding_welcome_select">Wie geht’s\?</string>
-    <string name="onboarding_tos_error">Die Nutzungsbedingungen müssen zuerst als gelesen markiert werden.</string>
-    <string name="onboarding_tos_confirmation">Ich habe die Nutzungsbedingungen des Aurora Stores gelesen.</string>
-    <string name="onboarding_tos_desc">Um den Aurora Store nutzen zu können, bitte unsere Nutzungsbedingungen sorgfältig durchlesen und akzeptieren.</string>
-    <string name="onboarding_tos">Nutzungsbedingungen</string>
     <string name="onboarding_title_welcome">Willkommen</string>
     <string name="onboarding_title_theme">Darstellung</string>
     <string name="onboarding_title_permissions">Berechtigungen</string>
@@ -229,7 +224,6 @@
     <string name="action_filter_downloads">Anzahl Downloads</string>
     <string name="action_export">Exportieren</string>
     <string name="account_logout">Von Aurora abmelden</string>
-    <string name="action_accept">Akzeptieren</string>
     <string name="account_login_using">Anmelden mit</string>
     <string name="account_logged_out">Du bist nicht angemeldet</string>
     <string name="about_paypal_summary">Mit PayPal spenden</string>

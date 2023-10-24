@@ -183,8 +183,6 @@
     <string name="details_beta_description">Vous verrez de nouvelles fonctionnalités et des erreurs avant que le public le fasse. Donnez votre avis aux développeurs pour les aider à améliorer les choses.</string>
     <string name="action_granted">Accordé</string>
     <string name="action_grant">Accorder</string>
-    <string name="action_deny">Refuser</string>
-    <string name="action_accept">Accepter</string>
     <string name="toast_permission_granted">Autorisation accordée</string>
     <string name="tab_top_paid">Top payant</string>
     <string name="tab_top_grossing">Top rentable</string>
@@ -221,10 +219,6 @@
     <string name="onboarding_permission_esm">Gestionnaire de stockage externe</string>
     <string name="onboarding_permission_esa_desc">Pour sauvegarder les téléchargements (APK et OBB), exporter et importer les configurations de l’appareil vers et depuis le stockage externe.</string>
     <string name="onboarding_permission_esa">Accès au stockage externe</string>
-    <string name="onboarding_tos_error">Vous devez d’abord marquer les CdU comme lues.</string>
-    <string name="onboarding_tos_confirmation">J’ai lu les conditions d’utilisation d’Aurora Store.</string>
-    <string name="onboarding_tos_desc">Veuillez lire nos conditions d’utilisation et les accepter pour utiliser Aurora Store.</string>
-    <string name="onboarding_tos">Conditions d’utilisation</string>
     <string name="onboarding_title_permissions">Autorisations</string>
     <string name="onboarding_title_accent">Couleur</string>
     <string name="onboarding_permission_select">Aurora Store utilise les autorisations suivantes</string>

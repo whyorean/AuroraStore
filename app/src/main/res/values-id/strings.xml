@@ -17,7 +17,6 @@
     <string name="action_filter">Saring</string>
     <string name="action_export">Ekspor</string>
     <string name="action_disable">Nonaktifkan</string>
-    <string name="action_deny">Tolak</string>
     <string name="action_copy_link">Salin Tautan</string>
     <string name="action_copy">Salin</string>
     <string name="action_close">Tutup</string>
@@ -58,7 +57,6 @@
     <string name="about_bitcoin_bch_summary">Donasi via Bitcoin Cash (BCH)</string>
     <string name="about_bitcoin_bch">Bitcoin Cash</string>
     <string name="account_login_using">Masuk menggunakan</string>
-    <string name="action_accept">Terima</string>
     <string name="account_logout">Keluar dari Aurora</string>
     <string name="about_libera_summary">Jadilah patron di Liberapay</string>
     <string name="details_beta">Program beta</string>
@@ -136,10 +134,6 @@
     <string name="onboarding_permission_esa_desc">Untuk menyimpan unduhan (APK &amp; OBB), ekspor &amp; impor konfigurasi perangkat ke dan dari penyimpanan eksternal.</string>
     <string name="onboarding_permission_esa">Akses Penyimpanan Eksternal</string>
     <string name="onboarding_welcome_select">Apa kabar\?</string>
-    <string name="onboarding_tos_error">Anda perlu menandai TOS terlebih dahulu.</string>
-    <string name="onboarding_tos_confirmation">Saya telah membaca Ketentuan Layanan Aurora Store.</string>
-    <string name="onboarding_tos_desc">Harap baca Ketentuan Layanan kami dan setujui untuk menggunakan Aurora Store.</string>
-    <string name="onboarding_tos">Ketentuan layanan</string>
     <string name="onboarding_title_welcome">Selamat Datang</string>
     <string name="onboarding_title_theme">Tema</string>
     <string name="onboarding_title_permissions">Perizinan</string>

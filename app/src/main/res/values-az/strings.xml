@@ -89,7 +89,6 @@
     <string name="onboarding_title_accent">Vurğu</string>
     <string name="onboarding_title_installer">Quraşdırıcı</string>
     <string name="onboarding_title_permissions">İcazələr</string>
-    <string name="onboarding_tos_confirmation">Mən Aurora Mağazasının Xidmət Şərtlərini oxudum.</string>
     <string name="onboarding_permission_installer_desc">Aurora Mağazasından tətbiqlərin quraşdırılmasına icazə verin</string>
     <string name="pref_downloader_active_summary">Maksimum aktiv endirmələr sayı</string>
     <string name="pref_app_download">Endirmələr</string>
@@ -117,7 +116,6 @@
     <string name="account_google">Google</string>
     <string name="account_login_using">... ilə daxil olun</string>
     <string name="account_logout">Aurora-dan çıxın</string>
-    <string name="action_accept">Qəbul edin</string>
     <string name="action_back">Geri</string>
     <string name="action_blacklist">Qara siyahı</string>
     <string name="action_blacklist_add">Qara siyahıya əlavə edin</string>
@@ -127,7 +125,6 @@
     <string name="action_close">Bağla</string>
     <string name="action_copy">Kopyalayın</string>
     <string name="action_copy_link">Linki Kopyalayın</string>
-    <string name="action_deny">İmtina</string>
     <string name="action_disable">Deaktiv edin</string>
     <string name="account_logged_out">Çıxıldı</string>
     <string name="account_anonymous_insecure">Anonim (təhlükəli)</string>
@@ -185,9 +182,6 @@
     <string name="onboarding_theme_select">Nəyi bəyəndiyinizi seçin</string>
     <string name="onboarding_title_theme">Mövzular</string>
     <string name="onboarding_title_welcome">Xoş Gəldiniz</string>
-    <string name="onboarding_tos">Xidmət şərtləri</string>
-    <string name="onboarding_tos_desc">Lütfən, Xidmət Şərtlərimizi oxuyun və Aurora Mağazasından istifadə etmək üçün onu qəbul edin.</string>
-    <string name="onboarding_tos_error">Əvvəlcə XŞ-imizi oxunmuş kimi qeyd etməlisiniz.</string>
     <string name="onboarding_welcome_select">Nə etmək istəyirsən\?</string>
     <string name="onboarding_permission_esa">Xarici Yaddaş Girişi</string>
     <string name="onboarding_permission_esa_desc">Cihaz tənzimləmələrini ixrac etmək və yükləmələri (APK və OBB) xarici yaddaşda saxlamaq üçün.</string>

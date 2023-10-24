@@ -57,7 +57,6 @@
     <string name="action_filter">ڕێگریکردن</string>
     <string name="action_export">هەڵگرتن</string>
     <string name="action_disable">ناچالاک</string>
-    <string name="action_deny">ڕەتکردنەوە</string>
     <string name="action_copy_link">لەبەرگرتنەوەی بەستەر</string>
     <string name="action_copy">لەبەرگرتنەوە</string>
     <string name="action_close">داخستن</string>
@@ -67,7 +66,6 @@
     <string name="action_blacklist_add">زیادکردن بۆ لیستی ڕەش</string>
     <string name="action_blacklist">لیستی ڕەش</string>
     <string name="action_back">گەڕانەوە</string>
-    <string name="action_accept">ڕازیم</string>
     <string name="account_logout">دەرچوون لە ئەرۆرا</string>
     <string name="account_login_using">چونەژوورەوە لەڕێی</string>
     <string name="account_logged_out">دەرچوویت لە هەژمار</string>

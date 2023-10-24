@@ -58,7 +58,6 @@
     <string name="action_filter">Filtry</string>
     <string name="action_export">Eksportuj</string>
     <string name="action_disable">Wyłącz</string>
-    <string name="action_deny">Odmów</string>
     <string name="action_copy_link">Kopiuj link</string>
     <string name="action_copy">Kopiuj</string>
     <string name="action_close">Zamknij</string>
@@ -67,7 +66,6 @@
     <string name="action_blacklist_add">Dodaj do czarnej listy</string>
     <string name="action_blacklist">Czarna lista</string>
     <string name="action_back">Wstecz</string>
-    <string name="action_accept">Akceptuj</string>
     <string name="account_logout">Wyloguj się z Aurory</string>
     <string name="account_login_using">Zaloguj się za pomocą konta</string>
     <string name="account_logged_out">Nie jesteś zalogowany</string>
@@ -179,10 +177,6 @@
     <string name="onboarding_permission_esm">Menedżer pamięci zewnętrznej</string>
     <string name="onboarding_permission_esa_desc">Aby zapisać pobrane pliki (APK i OBB), wyeksportować i zaimportować konfiguracje urządzenia do i z pamięci zewnętrznej.</string>
     <string name="onboarding_permission_esa">Dostęp do pamięci zewnętrznej</string>
-    <string name="onboarding_tos_error">Najpierw zaznacz, że przeczytałeś Warunki Świadczenia Usługi.</string>
-    <string name="onboarding_tos_confirmation">Zapoznałem się z Warunkami Świadczenia Usługi dla Aurora Store.</string>
-    <string name="onboarding_tos">Warunki Świadczenia Usługi</string>
-    <string name="onboarding_tos_desc">Przeczytaj nasze Warunki Świadczenia Usługi i zaakceptuj je, aby korzystać z Aurora Store.</string>
     <string name="onboarding_title_permissions">Uprawnienia</string>
     <string name="onboarding_permission_select">Aurora Store wymaga następujących uprawnień</string>
     <string name="onboarding_title_theme">Motywy</string>

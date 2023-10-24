@@ -28,10 +28,6 @@
     <string name="about_bhim">BHIM - UPI</string>
     <string name="onboarding_permission_esa">外部ストレージへのアクセス</string>
     <string name="onboarding_welcome_select">ようこそ</string>
-    <string name="onboarding_tos_error">利用規約を読み、チェックしてください。</string>
-    <string name="onboarding_tos_confirmation">Aurora Storeの利用規約を読みました。</string>
-    <string name="onboarding_tos_desc">Aurora Storeを使用する前に利用規約を読み、同意してください。</string>
-    <string name="onboarding_tos">利用規約</string>
     <string name="onboarding_title_welcome">ようこそ</string>
     <string name="onboarding_title_theme">テーマ</string>
     <string name="onboarding_title_permissions">権限</string>
@@ -154,7 +150,6 @@
     <string name="action_filter">フィルター</string>
     <string name="action_export">エクスポート</string>
     <string name="action_disable">無効化</string>
-    <string name="action_deny">同意しない</string>
     <string name="action_copy_link">リンクをコピー</string>
     <string name="action_copy">コピー</string>
     <string name="action_close">閉じる</string>
@@ -163,7 +158,6 @@
     <string name="action_blacklist_add">ブラックリストに追加</string>
     <string name="action_blacklist">ブラックリスト</string>
     <string name="action_back">戻る</string>
-    <string name="action_accept">同意する</string>
     <string name="account_logout">Aurora からログアウトする</string>
     <string name="title_device">端末</string>
     <string name="onboarding_permission_esa_desc">ダウンロードしたAPK、OBBの保存、端末設定のインポート、エクスポートに必要。</string>

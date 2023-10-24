@@ -12,7 +12,6 @@
     <string name="pref_ui_theme_black">Preto</string>
     <string name="pref_ui_accent_title">Cor de Realce</string>
     <string name="onboarding_title_accent">Cor de Realce</string>
-    <string name="onboarding_tos_confirmation">Eu li os Termos de Serviço da Loja Aurora.</string>
     <string name="pref_ui_theme_dark_x">Escuro X</string>
     <string name="title_download_playstore">Play Store</string>
     <string name="title_download_manager">Downloads</string>
@@ -66,9 +65,6 @@
     <string name="onboarding_permission_esa_desc">Para salvar downloads (APKs e OBBs), exporte e importe configurações do dispositivo para e do armazenamento externo.</string>
     <string name="onboarding_permission_esa">Acesso de armazenamento externo</string>
     <string name="onboarding_welcome_select">Como você está\?</string>
-    <string name="onboarding_tos_error">Você precisa marcar TOS como lido primeiro.</string>
-    <string name="onboarding_tos_desc">Por favor, leia nossos Termos de Serviço e aceite-os para usar a Aurora Store.</string>
-    <string name="onboarding_tos">Termos de serviço</string>
     <string name="onboarding_title_welcome">Saudações</string>
     <string name="onboarding_title_theme">Temas</string>
     <string name="onboarding_title_permissions">Permissões</string>
@@ -181,7 +177,6 @@
     <string name="action_filter_all">Tudo</string>
     <string name="action_filter">Filtros</string>
     <string name="action_disable">Desativar</string>
-    <string name="action_deny">Negar</string>
     <string name="action_copy_link">Copiar Link</string>
     <string name="action_copy">Copiar</string>
     <string name="action_close">Fechar</string>
@@ -189,7 +184,6 @@
     <string name="action_cancel">Cancelar</string>
     <string name="action_blacklist">Lista de bloqueio</string>
     <string name="action_back">Voltar</string>
-    <string name="action_accept">Aceitar</string>
     <string name="account_logged_out">Você está desconectado</string>
     <string name="account_anonymous">Anônimo</string>
     <string name="about_xda_summary">Veja o tópico da Aurora Store no XDA para discussões ou sugestões.</string>

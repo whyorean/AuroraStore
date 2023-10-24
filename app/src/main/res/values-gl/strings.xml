@@ -70,10 +70,6 @@
     <string name="onboarding_permission_esa_desc">Para gardar descargas (APKs &amp; OBBs), exporte e importe as configuracións de dispositivos no almacenamento externo.</string>
     <string name="onboarding_permission_esa">Acceso a almacenamento externo</string>
     <string name="onboarding_welcome_select">Como está\?</string>
-    <string name="onboarding_tos_error">Debe confirmar a lectura das Condicións do Servizo.</string>
-    <string name="onboarding_tos_confirmation">Lin as Condicións do Servizo da Aurora Store.</string>
-    <string name="onboarding_tos_desc">Por favor, lea e e acepte as nosas Condicións do Servizo para usar Aurora Store.</string>
-    <string name="onboarding_tos">Condicións do servizo</string>
     <string name="onboarding_title_welcome">Benvido/a</string>
     <string name="onboarding_title_theme">Temas</string>
     <string name="onboarding_title_permissions">Permisos</string>
@@ -192,7 +188,6 @@
     <string name="action_blacklist_add">Engadir á lista negra</string>
     <string name="action_blacklist">Lista negra</string>
     <string name="action_back">Volver</string>
-    <string name="action_accept">Aceptar</string>
     <string name="account_logout">Fechar sesión</string>
     <string name="account_login_using">Iniciar sesión con</string>
     <string name="account_logged_out">Fechou a sesión</string>
@@ -230,7 +225,6 @@
     <string name="action_whitelist">Lista branca</string>
     <string name="action_update_all">Actualizar todo</string>
     <string name="action_search">Procurar</string>
-    <string name="action_deny">Denegar</string>
     <string name="action_copy_link">Copiar ligazón</string>
     <string name="action_copy">Copiar</string>
     <string name="action_close">Fechar</string>

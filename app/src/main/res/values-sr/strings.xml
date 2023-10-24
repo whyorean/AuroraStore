@@ -86,10 +86,6 @@
     <string name="onboarding_permission_esa_desc">Да бисте сачували преузимања (APK-ове и OBB-ове), извезите и увезите конфигурације уређаја у и из спољне меморије.</string>
     <string name="onboarding_permission_esa">Приступ спољној меморији</string>
     <string name="onboarding_welcome_select">Шта има\?</string>
-    <string name="onboarding_tos_error">Прво треба да означите услове коришћења као прочитано.</string>
-    <string name="onboarding_tos_confirmation">Прочитао сам услове коришћења Aurora Store-а.</string>
-    <string name="onboarding_tos_desc">Прочитајте наше услове коришћења и прихватите их да бисте користили Aurora Store.</string>
-    <string name="onboarding_tos">Услови коришћења</string>
     <string name="onboarding_title_welcome">Добро дошли</string>
     <string name="onboarding_title_theme">Теме</string>
     <string name="onboarding_title_permissions">Дозволе</string>
@@ -214,7 +210,6 @@
     <string name="action_filter">Филтери</string>
     <string name="action_export">Извези</string>
     <string name="action_disable">Онемогући</string>
-    <string name="action_deny">Одбиј</string>
     <string name="action_copy_link">Копирај линк</string>
     <string name="action_copy">Копирај</string>
     <string name="action_close">Затвори</string>
@@ -222,7 +217,6 @@
     <string name="action_blacklist_add">Додај на црну листу</string>
     <string name="action_blacklist">Црна листа</string>
     <string name="action_back">Назад</string>
-    <string name="action_accept">Прихвати</string>
     <string name="account_logout">Одјавите се из Aurore</string>
     <string name="account_login_using">Пријавите се користећи</string>
     <string name="account_logged_out">Одјављени сте</string>

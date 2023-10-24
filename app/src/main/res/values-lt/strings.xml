@@ -39,7 +39,6 @@
     <string name="device_miui_subtitle">Seanso diegimo programa negali įdiegti programėlių dėl „MIUI“ optimizavimų.</string>
     <string name="dialog_title_self_update">Yra prieinamas naujas atnaujinimas</string>
     <string name="onboarding_title_welcome">Sveiki</string>
-    <string name="onboarding_tos">Paslaugų teikimo sąlygos</string>
     <string name="onboarding_permission_installer">Diegimo programos leidimas</string>
     <string name="pref_dialog_to_apply_restart">Šis nustatymas įsigalios po to, kai paleisite programėlę iš naujo</string>
     <string name="pref_downloader_active_summary">Didžiausias aktyvių atsiuntimų skaičius</string>
@@ -83,7 +82,6 @@
     <string name="action_close">Užverti</string>
     <string name="action_copy">Kopijuoti</string>
     <string name="action_copy_link">Kopijuoti nuorodą</string>
-    <string name="action_deny">Atmesti</string>
     <string name="action_disable">Išjungti</string>
     <string name="pref_ui_title">Tinkinimas</string>
     <string name="purchase_not_found">Programėlė nerasta</string>
@@ -162,7 +160,6 @@
     <string name="about_fdroid_summary">Gauti Aurora Store per F-Droid.</string>
     <string name="about_libera_summary">Tapti rėmėju naudojant Liberapay</string>
     <string name="about_xda">Plėtotojų gija</string>
-    <string name="action_accept">Priimti</string>
     <string name="action_filter">Filtrai</string>
     <string name="action_search">Ieškoti</string>
     <string name="action_join">Prisijungti</string>

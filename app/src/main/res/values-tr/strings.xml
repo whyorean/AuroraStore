@@ -10,7 +10,6 @@
     <string name="action_blacklist">Kara Liste</string>
     <string name="action_blacklist_add">Kara listeye ekle</string>
     <string name="action_back">Geri</string>
-    <string name="action_accept">Kabul et</string>
     <string name="account_logout">Aurora\'dan çıkış yap</string>
     <string name="account_login_using">Şununla giriş yap</string>
     <string name="account_logged_out">Çıkış yaptınız</string>
@@ -133,10 +132,6 @@
     <string name="onboarding_permission_esa_desc">Dış depolamaya aygıt ayarlarını aktarmak ve indirmeleri (APK\'ler ve OBB\'ler) kaydetmek için.</string>
     <string name="onboarding_permission_esa">Dış Depolama Erişimi</string>
     <string name="onboarding_welcome_select">Neler yapıyorsun\?</string>
-    <string name="onboarding_tos_error">Hizmet Koşullarını okuduğunuzu imlemeniz gerekiyor.</string>
-    <string name="onboarding_tos_confirmation">Aurora Store\'un Hizmet Koşullarını okudum.</string>
-    <string name="onboarding_tos_desc">Aurora Store\'u kullanabilmek için lütfen Hizmet Koşullarımızı okuyup kabul edin.</string>
-    <string name="onboarding_tos">Hizmet koşulları</string>
     <string name="onboarding_title_welcome">Hoş geldiniz</string>
     <string name="onboarding_title_theme">Temalar</string>
     <string name="onboarding_title_permissions">İzinler</string>
@@ -260,7 +255,6 @@
     <string name="action_filter">Süzgeçler</string>
     <string name="action_export">Dışa Aktar</string>
     <string name="action_disable">Devre dışı bırak</string>
-    <string name="action_deny">Reddet</string>
     <string name="action_copy_link">Bağlantıyı kopyala</string>
     <string name="action_copy">Kopyala</string>
     <string name="action_close">Kapat</string>

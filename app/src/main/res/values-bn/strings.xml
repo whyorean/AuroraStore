@@ -66,8 +66,6 @@
     <string name="action_filter">ছাঁকন</string>
     <string name="action_export">রপ্তানি</string>
     <string name="action_disable">নিষ্ক্রিয়</string>
-    <string name="action_deny">প্রত্যাখ্যান</string>
-    <string name="action_accept">সম্মত</string>
     <string name="action_copy">অনুলিপি</string>
     <string name="action_close">বন্ধ</string>
     <string name="action_clear">পরিষ্কার</string>

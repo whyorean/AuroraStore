@@ -123,10 +123,6 @@
     <string name="onboarding_permission_esa_desc">Ji bo barkirina dakêşanan (APK &amp; OBBs), vesazkirin û vesazkirina amûrê li ser depoya derveyî.</string>
     <string name="onboarding_permission_esa">Gihîştina depoya derveyî</string>
     <string name="onboarding_welcome_select">Çawa ne\?</string>
-    <string name="onboarding_tos_error">Pêdivî ye ku hûn yekem TOS-ê wekî xwendî nîşan bikin.</string>
-    <string name="onboarding_tos_confirmation">Min Mercên Xizmeta Aurora Store-ê xwendiye.</string>
-    <string name="onboarding_tos_desc">Ji kerema xwe Mercên Xizmeta me bixwînin û qebûl bikin ku hûn Firotgeha Aurora bikar bînin.</string>
-    <string name="onboarding_tos">Mercên karûbar</string>
     <string name="onboarding_title_welcome">Bi xêr hatî</string>
     <string name="onboarding_title_theme">Mijar</string>
     <string name="onboarding_title_permissions">Destûrên</string>
@@ -207,7 +203,6 @@
     <string name="action_filter">Parzûnan</string>
     <string name="action_export">Îxrac</string>
     <string name="action_disable">Neçalak bike</string>
-    <string name="action_deny">Înkarkirin</string>
     <string name="action_copy_link">Lînk Kopî Bikin</string>
     <string name="action_copy">Kopî</string>
     <string name="action_close">Girtin</string>
@@ -216,7 +211,6 @@
     <string name="action_blacklist_add">Zêdekirin nav Lîsteya Reş</string>
     <string name="action_blacklist">Lîsteya reş</string>
     <string name="action_back">Paş</string>
-    <string name="action_accept">Baweranîn</string>
     <string name="account_logout">ji Aurora-yê derkeve</string>
     <string name="account_login_using">Bikaranîna têketinê</string>
     <string name="account_logged_out">Hûn derketin</string>

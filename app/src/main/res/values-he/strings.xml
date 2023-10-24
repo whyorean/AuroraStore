@@ -67,7 +67,6 @@
     <string name="action_back">חזרה</string>
     <string name="action_blacklist_add">הוסף לרשימה השחורה</string>
     <string name="action_blacklist">רשימה שחורה</string>
-    <string name="action_accept">קבל</string>
     <string name="about_telegram_summary">הצטרף לקבוצת Aurora Support לדיונים או הצעות.</string>
     <string name="about_libera_summary">תמיכה ב-Liberapay</string>
     <string name="about_gitlab_summary">השג את קוד המקור של Aurora Store מ-Aurora OSS ב-GitLab.</string>
@@ -112,7 +111,6 @@
     <string name="action_leave">עזיבה</string>
     <string name="onboarding_title_permissions">הרשאות</string>
     <string name="action_join">הצטרפות</string>
-    <string name="action_deny">דחייה</string>
     <string name="download_resume_all">להמשיך הכול</string>
     <string name="details_changelog">יומן שינויים</string>
     <string name="toast_apk_blacklisted">ברשימת החסימה</string>
@@ -146,7 +144,6 @@
     <string name="title_apps_sale">יישומים במבצע</string>
     <string name="details_dev_details">יצירת קשר עם המפתחים</string>
     <string name="download_cancel_all">לבטל הכול</string>
-    <string name="onboarding_tos">תנאי השימוש</string>
     <string name="pref_install_mode_title">שיטת התקנה</string>
     <string name="tab_categories">קטגוריות</string>
     <string name="title_apps">יישומים</string>
@@ -155,7 +152,6 @@
     <string name="title_device">מכשיר</string>
     <string name="details_beta_available">להצטרף לתוכנית גרסת הביתא \?</string>
     <string name="details_beta_subscribed">נרשמת לתוכנית הבדיקה של גרסת הביתא</string>
-    <string name="onboarding_tos_desc">נא לקרוא את תנאי השימוש שלנו ולאשר אותם כדי להשתמש בחנות Aurora.</string>
     <string name="exodus_view_report">הצגת הדו״ח</string>
     <string name="download_metadata">נתוני העל מתקבלים</string>
     <string name="pref_filter_fdroid_summary">להסרת יישומי F-Droid מרשימות היישומים</string>
@@ -213,8 +209,6 @@
     <string name="installer_status_failure_conflict">קיימת חבילה מתנגשת</string>
     <string name="installer_status_failure_session">לא היה ניתן ליצור הפעלה</string>
     <string name="onboarding_title_accent">צבע נושא</string>
-    <string name="onboarding_tos_confirmation">קראתי את תנאי השימוש של חנות Aurora.</string>
-    <string name="onboarding_tos_error">יש לסמן שקראת את תנאי השימוש תחילה.</string>
     <string name="pref_downloader_active_title">הורדה פעילה</string>
     <string name="pref_filter_fdroid_title">סינון יישומי F-Droid</string>
     <string name="pref_install_profile_title">פרופילי התקנה (ניסיוני)</string>

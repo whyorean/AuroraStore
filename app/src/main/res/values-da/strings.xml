@@ -16,7 +16,6 @@
     <string name="details_dev_email">E-mail</string>
     <string name="details_description">Beskrivelse</string>
     <string name="about_bhim_summary">Doner via UPI</string>
-    <string name="action_deny">Afvis</string>
     <string name="action_filter_gsf_dependent_apps">Kræver GSF</string>
     <string name="action_blacklist_add">Føj til Blacklist</string>
     <string name="action_cancel">Afbryd</string>
@@ -185,10 +184,6 @@
     <string name="onboarding_title_permissions">Tilladelser</string>
     <string name="onboarding_title_theme">Temaer</string>
     <string name="onboarding_title_welcome">Velkommen</string>
-    <string name="onboarding_tos">Servicevilkår</string>
-    <string name="onboarding_tos_desc">Venligst læs, vores servicevilkår og accepter, dem for at bruge Aurora Store.</string>
-    <string name="onboarding_tos_confirmation">Jeg har læst Aurora Stores servicevilkår.</string>
-    <string name="onboarding_tos_error">Du skal markere servicevilkårene først.</string>
     <string name="onboarding_welcome_select">Hvordan går det\?</string>
     <string name="onboarding_permission_esa">Adgang til ekstern lagring</string>
     <string name="onboarding_permission_esm">Ekstern opbevaringsmanager</string>
@@ -279,7 +274,6 @@
     <string name="account_anonymous">Anonym</string>
     <string name="account_logged_out">Du er logget ud</string>
     <string name="account_login_using">Log ind med</string>
-    <string name="action_accept">Accepter</string>
     <string name="details_paid">Betalt</string>
     <string name="toast_manual_unavailable">Versionskoden du beder om er utilgængelig.</string>
     <string name="toast_manual_available">Tillykke, den ønskede versionskode er tilgængelig, downloader nu.</string>

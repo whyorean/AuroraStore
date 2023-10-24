@@ -23,7 +23,6 @@
     <string name="action_filter_downloads">தரவிறக்கங்கள்</string>
     <string name="action_filter_apps_with_ads">விளம்பரங்களுடன் பயன்பாடுகள்</string>
     <string name="action_disable">முடக்கு</string>
-    <string name="action_deny">நிராகரி</string>
     <string name="action_copy_link">இணைப்பை நகலெடு</string>
     <string name="action_copy">நகல்</string>
     <string name="account_anonymous">பெயர் அறியப்படாத</string>
@@ -41,7 +40,6 @@
     <string name="action_filter">வடிகட்டிகள்</string>
     <string name="action_export">ஏற்றுமதி</string>
     <string name="action_back">பின்செல்க</string>
-    <string name="action_accept">ஏற்றுக்கொள்</string>
     <string name="account_logout">அரோராவிலிருந்து வெளியேறவும்</string>
     <string name="account_login_using">பயன்படுத்தி உள்நுழையவும்</string>
     <string name="account_logged_out">நீங்கள் வெளியேறிவிட்டீர்கள்</string>
@@ -91,7 +89,6 @@
     <string name="device_miui_description">நிறுவல்களை அனுமதிக்க, MIUI மேம்படுத்தல்களை முடக்கவும், இல்லையெனில் நீங்கள் ரூட் அல்லது சேவைகள் நிறுவியை தேர்வு செய்யலாம்.</string>
     <string name="menu_disclaimer">பொறுப்புத்துறப்பு</string>
     <string name="device_miui_extra">விருப்பமாக நீங்கள் நேட்டிவ் இன்ஸ்டாலரைத் தேர்வு செய்யலாம், ஆனால் நீங்கள் தொகுக்கப்பட்ட (பிளவு) APKகளை நிறுவ முடியாது, எனவே தேர்வு உங்களுடையது.</string>
-    <string name="onboarding_tos_error">முதலில் TOS படித்ததாகக் குறிக்க வேண்டும்.</string>
     <string name="onboarding_permission_esa_desc">பதிவிறக்கங்களைச் சேமிக்க (APKகள் &amp; OBBகள்), வெளிப்புறச் சேமிப்பகத்திற்கு மற்றும் அதிலிருந்து சாதன கட்டமைப்புகளை ஏற்றுமதி மற்றும் இறக்குமதி செய்யவும்.</string>
     <string name="onboarding_installer_select">பொருத்தமான நிறுவியைத் தேர்ந்தெடுக்கவும்</string>
     <string name="pref_filter_google_title">கூகுள் செயலிகளை வடிகட்டு</string>
@@ -99,7 +96,6 @@
     <string name="pref_abandon_session">நிறுவல் அமர்வுகள் துடைப்பதைக் கட்டாயப்படுத்து</string>
     <string name="pref_downloader_active_summary">செயலில் உள்ள பதிவிறக்கங்களின் அதிகபட்ச எண்ணிக்கை</string>
     <string name="pref_downloader_external_desc">பதிவிறக்கங்கள், ஏற்றுமதிகள் போன்றவற்றுக்கு வெளிப்புற சேமிப்பகம் பயன்படுத்தப்படுகிறது.</string>
-    <string name="onboarding_tos_desc">அரோரா ஸ்டோரைப் பயன்படுத்த எங்களின் சேவை விதிமுறைகளைப் படித்து அதை ஏற்கவும்.</string>
     <string name="pref_filter_fdroid_title">F-Droid செயலிகளை வடிகட்டு</string>
     <string name="pref_filter_google_summary">தேடல் முடிவுகள் மற்றும் வகைப் பயன்பாடுகளில் இருந்து எல்லா Google Apps களையும் நீக்குகிறது</string>
     <string name="pref_insecure_anonymous_title">பாதுகாப்பற்ற அநாமதேய அமர்வு</string>
@@ -198,8 +194,6 @@
     <string name="onboarding_title_permissions">அனுமதிகள்</string>
     <string name="onboarding_title_theme">தோற்றங்கள்</string>
     <string name="onboarding_title_welcome">வருக</string>
-    <string name="onboarding_tos">சேவை விதிமுறைகள்</string>
-    <string name="onboarding_tos_confirmation">நான் அரோரா ஸ்டோரின் சேவை விதிமுறைகளைப் படித்தேன்.</string>
     <string name="onboarding_welcome_select">எப்படி உள்ளீர்கள்\?</string>
     <string name="onboarding_permission_esa">வெளிப்புற சேமிப்பிட அணுகல்</string>
     <string name="onboarding_permission_esm">வெளிப்புற சேமிப்பக மேலாளர்</string>

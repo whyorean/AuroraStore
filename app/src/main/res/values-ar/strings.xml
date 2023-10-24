@@ -70,8 +70,6 @@
     <string name="onboarding_permission_esm">مدير التخزين الخارجي</string>
     <string name="onboarding_permission_esa">الوصول إلى وحدة التخزين الخارجية</string>
     <string name="onboarding_welcome_select">كيف حالك؟</string>
-    <string name="onboarding_tos_confirmation">لقد قرأت شروط خدمة متجر Aurora.</string>
-    <string name="onboarding_tos">شروط الخدمة</string>
     <string name="onboarding_title_welcome">أهلًا وسهلًا</string>
     <string name="onboarding_title_permissions">الأذونات</string>
     <string name="onboarding_title_installer">المثبت</string>
@@ -179,7 +177,6 @@
     <string name="toast_purchase_blocked">لا تتوفر عمليات شراء التطبيقات على الحسابات المجهولة.</string>
     <string name="purchase_session_expired">انتهت صلاحية جلسة العمل، إعادة تسجيل الدخول للحصول على جلسة عمل جديدة.</string>
     <string name="pref_install_auto_summary">يتم تثبيت التطبيقات على الفور بعد اكتمال التنزيل</string>
-    <string name="onboarding_tos_error">تحتاج إلى وضع علامة TOS على أنها مقروءة أولاً.</string>
     <string name="details_think_this_app">ما رأيك في هذا التطبيق؟</string>
     <string name="spoof_apply">تأكد من إعادة تسجيل الدخول لتطبيق المحاكاة التحايلية</string>
     <string name="installer_service_available">خدمات Aurora متاحة وجاهزة للتثبيت.</string>
@@ -189,7 +186,6 @@
     <string name="pref_dialog_to_apply_restart">سيتم تطبيق هذا الإعداد بعد إعادة تشغيل التطبيق</string>
     <string name="device_miui_subtitle">لا يمكن لمثبت الجلسة تثبيت التطبيقات بسبب تحسينات MIUI.</string>
     <string name="details_beta_delay">قد يستغرق التسجيل بعض الوقت ، يمكنك التحقق من الحالة لاحقًا.</string>
-    <string name="onboarding_tos_desc">يرجى قراءة شروط الخدمة الخاصة بنا وقبولها لاستخدام متجر Aurora.</string>
     <string name="onboarding_permission_esa_desc">لحفظ التحميلات (APKs وOBBs)، قم بتصدير واستيراد تكوينات الأجهزة من وإلى التخزين الخارجي.</string>
     <string name="installer_service_misconfigured">إعداد خدمات Aurora ومنح كافة الأذونات أولا.</string>
     <string name="pref_install_profile_summary">حدد ملف التعريف الهدف لتثبيت التطبيقات عليه. يعمل فقط مع طريقة تثبيت بالجذر</string>
@@ -208,7 +204,6 @@
     <string name="installer_status_failure_invalid">حزمة APK غير صالحة أو تالفة</string>
     <string name="action_export">تصدير</string>
     <string name="action_disable">تعطيل</string>
-    <string name="action_deny">رفض</string>
     <string name="action_copy_link">انسخ الرابط</string>
     <string name="action_copy">إنسخ</string>
     <string name="action_close">اغلاق</string>
@@ -217,7 +212,6 @@
     <string name="action_blacklist_add">أضف إلى القائمة السوداء</string>
     <string name="action_blacklist">القائمة السوداء</string>
     <string name="action_back">رجوع</string>
-    <string name="action_accept">قبول</string>
     <string name="account_logout">تسجيل الخروج من Aurora</string>
     <string name="account_login_using">تسجيل الدخول باستخدام</string>
     <string name="account_logged_out">لقد تم تسجيل خروجك</string>

@@ -80,10 +80,6 @@
     <string name="onboarding_permission_esa_desc">Para guardar descargas (APKs y OBBs), exportar e importar configuraciones de dispositivos en el almacenamiento externo.</string>
     <string name="onboarding_permission_esa">Acceso al almacenamiento externo</string>
     <string name="onboarding_welcome_select">¿Cómo le va\?</string>
-    <string name="onboarding_tos_error">Primero hay que marcar los TDS como leídos.</string>
-    <string name="onboarding_tos_confirmation">He leído las condiciones de servicio de Aurora Store.</string>
-    <string name="onboarding_tos_desc">Por favor, lea nuestras condiciones de servicio y acéptelas para utilizar Aurora Store.</string>
-    <string name="onboarding_tos">Términos del servicio</string>
     <string name="onboarding_title_welcome">Bienvenido/a</string>
     <string name="onboarding_title_theme">Temas</string>
     <string name="onboarding_title_permissions">Permisos</string>
@@ -136,8 +132,6 @@
     <string name="details_think_this_app">¿Qué opina de esta aplicación\?</string>
     <string name="action_granted">Permitido</string>
     <string name="action_grant">Permitir</string>
-    <string name="action_deny">Denegar</string>
-    <string name="action_accept">Aceptar</string>
     <string name="about_bhim">BHIM - UPI</string>
     <string name="filter_review_two">Dos</string>
     <string name="filter_review_three">Tres</string>

@@ -29,7 +29,6 @@
     <string name="action_filter">Фильтры</string>
     <string name="action_export">Экспортировать</string>
     <string name="action_disable">Отключить</string>
-    <string name="action_deny">Отказаться</string>
     <string name="action_copy_link">Скопировать ссылку</string>
     <string name="action_copy">Скопировать</string>
     <string name="action_close">Закрыть</string>
@@ -47,7 +46,6 @@
     <string name="action_blacklist_add">Добавить в черный список</string>
     <string name="action_blacklist">Черный список</string>
     <string name="action_back">Назад</string>
-    <string name="action_accept">Принять</string>
     <string name="account_logout">Выйти из Aurora</string>
     <string name="account_login_using">Войти с помощью</string>
     <string name="account_logged_out">Вы вышли из аккаунта</string>
@@ -213,10 +211,6 @@
     <string name="onboarding_permission_esa_desc">Для сохранения загрузок (APK и OBB), экспорта и импорта конфигураций устройства во внешнее хранилище.</string>
     <string name="onboarding_permission_esa">Доступ к памяти</string>
     <string name="onboarding_welcome_select">Как дела\?</string>
-    <string name="onboarding_tos_error">Сначала нужно отметить Условия предоставления услуг прочитанными.</string>
-    <string name="onboarding_tos_confirmation">Я прочитал Условия предоставления услуг Aurora Store.</string>
-    <string name="onboarding_tos_desc">Пожалуйста, прочтите наши Условия предоставления услуг и примите их, чтобы использовать Aurora Store.</string>
-    <string name="onboarding_tos">Условия предоставления услуг</string>
     <string name="onboarding_title_welcome">Добро пожаловать</string>
     <string name="onboarding_title_theme">Темы</string>
     <string name="onboarding_title_permissions">Разрешения</string>
