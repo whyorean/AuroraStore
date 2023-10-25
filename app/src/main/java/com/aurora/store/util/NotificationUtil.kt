@@ -13,12 +13,14 @@ import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
 import androidx.navigation.NavDeepLinkBuilder
+import androidx.work.WorkManager
 import com.aurora.Constants
 import com.aurora.extensions.getStyledAttributeColor
 import com.aurora.extensions.isMAndAbove
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.MainActivity
 import com.aurora.store.R
+import com.aurora.store.data.model.DownloadStatus
 import com.aurora.store.data.receiver.DownloadCancelReceiver
 import com.aurora.store.data.receiver.DownloadPauseReceiver
 import com.aurora.store.data.receiver.DownloadResumeReceiver
@@ -26,6 +28,7 @@ import com.aurora.store.data.receiver.InstallReceiver
 import com.tonyodev.fetch2.Download
 import com.tonyodev.fetch2.FetchGroup
 import com.tonyodev.fetch2.Status
+import java.util.UUID
 
 object NotificationUtil {
 
@@ -192,6 +195,68 @@ object NotificationUtil {
             else -> builder.setCategory(Notification.CATEGORY_STATUS)
         }
 
+        return builder.build()
+    }
+
+    fun getDownloadNotification(
+        context: Context,
+        app: App,
+        status: DownloadStatus,
+        progress: Int,
+        workID: UUID
+    ): Notification {
+        val builder = NotificationCompat.Builder(context, Constants.NOTIFICATION_CHANNEL_GENERAL)
+        builder.setContentTitle(app.displayName)
+        builder.color = ContextCompat.getColor(context, R.color.colorAccent)
+        builder.setContentIntent(getContentIntentForDownloads(context))
+
+        when (status) {
+            DownloadStatus.CANCELLED -> {
+                builder.setSmallIcon(R.drawable.ic_download_cancel)
+                builder.setContentText(context.getString(R.string.download_canceled))
+                builder.color = Color.RED
+                builder.setCategory(Notification.CATEGORY_ERROR)
+            }
+
+            DownloadStatus.FAILED -> {
+                builder.setSmallIcon(R.drawable.ic_download_fail)
+                builder.setContentText(context.getString(R.string.download_failed))
+                builder.color = Color.RED
+                builder.setCategory(Notification.CATEGORY_ERROR)
+            }
+
+            DownloadStatus.COMPLETED -> if (progress == 100) {
+                builder.setSmallIcon(android.R.drawable.stat_sys_download_done)
+                builder.setContentText(context.getString(R.string.download_completed))
+                builder.setAutoCancel(true)
+                builder.setCategory(Notification.CATEGORY_STATUS)
+                builder.setContentIntent(getContentIntentForDetails(context, app))
+            }
+
+            DownloadStatus.DOWNLOADING, DownloadStatus.QUEUED -> {
+                builder.setSmallIcon(android.R.drawable.stat_sys_download)
+                builder.setContentText(
+                    if (progress == 0) {
+                        context.getString(R.string.download_queued)
+                    } else {
+                        context.getString(R.string.alt_download_progress)
+                    }
+                )
+                builder.setOngoing(true)
+                builder.setCategory(Notification.CATEGORY_PROGRESS)
+                builder.setProgress(100, progress, progress == 0)
+                builder.foregroundServiceBehavior = NotificationCompat.FOREGROUND_SERVICE_IMMEDIATE
+                builder.addAction(
+                    NotificationCompat.Action.Builder(
+                        R.drawable.ic_download_cancel,
+                        context.getString(R.string.action_cancel),
+                        WorkManager.getInstance(context).createCancelPendingIntent(workID)
+                    ).build()
+                )
+            }
+
+            else -> {}
+        }
         return builder.build()
     }
 

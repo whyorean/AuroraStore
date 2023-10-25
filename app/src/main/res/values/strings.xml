@@ -141,6 +141,7 @@
     <string name="download_pause_all">"Pause all"</string>
     <string name="download_paused">"Paused • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g>"</string>
     <string name="download_progress">"Downloading • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g>"</string>
+    <string name="alt_download_progress">"Downloading"</string>
     <string name="download_queued">"Queued"</string>
     <string name="download_resume_all">"Resume all"</string>
     <string name="download_speed_estimating">"Estimating"</string>
