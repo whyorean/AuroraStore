@@ -129,4 +129,8 @@ class ActionButton : RelativeLayout {
     fun addOnClickListener(onClickListener: OnClickListener?) {
         B.btn.setOnClickListener(onClickListener)
     }
+
+    fun addOnLongClickListener(onLongClickListener: OnLongClickListener?) {
+        B.btn.setOnLongClickListener(onLongClickListener)
+    }
 }
