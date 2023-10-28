@@ -91,6 +91,11 @@
             <nav-graph android:value="@navigation/mobile_navigation" />
         </activity>
 
+        <activity
+            android:name=".data.activity.InstallActivity"
+            android:exported="false"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
         <service android:name=".data.service.NotificationService" />
         <service android:name=".data.installer.InstallerService" />
         <service android:name=".data.service.UpdateService" />
@@ -123,5 +128,8 @@
         <receiver android:name=".data.receiver.DownloadResumeReceiver" />
         <receiver android:name=".data.receiver.DownloadPauseReceiver" />
         <receiver android:name=".data.receiver.DownloadCancelReceiver" />
+        <receiver
+            android:name=".data.receiver.InstallReceiver"
+            android:exported="false" />
     </application>
 </manifest>

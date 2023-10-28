@@ -23,6 +23,7 @@ object Constants {
     const val INT_EXTRA = "INT_EXTRA"
     const val FLOAT_EXTRA = "FLOAT_EXTRA"
     const val STRING_APP = "STRING_APP"
+    const val STRING_VERSION = "STRING_VERSION"
     const val STRING_EXTRA = "STRING_EXTRA"
     const val BROWSE_EXTRA = "BROWSE_EXTRA"
 

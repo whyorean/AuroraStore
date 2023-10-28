@@ -20,11 +20,11 @@ import com.aurora.extensions.isMAndAbove
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.MainActivity
 import com.aurora.store.R
+import com.aurora.store.data.activity.InstallActivity
 import com.aurora.store.data.model.DownloadStatus
 import com.aurora.store.data.receiver.DownloadCancelReceiver
 import com.aurora.store.data.receiver.DownloadPauseReceiver
 import com.aurora.store.data.receiver.DownloadResumeReceiver
-import com.aurora.store.data.receiver.InstallReceiver
 import com.tonyodev.fetch2.Download
 import com.tonyodev.fetch2.FetchGroup
 import com.tonyodev.fetch2.Status
@@ -231,6 +231,13 @@ object NotificationUtil {
                 builder.setAutoCancel(true)
                 builder.setCategory(Notification.CATEGORY_STATUS)
                 builder.setContentIntent(getContentIntentForDetails(context, app))
+                builder.addAction(
+                    NotificationCompat.Action.Builder(
+                        R.drawable.ic_install,
+                        context.getString(R.string.action_install),
+                        getInstallIntent(context, app.packageName, app.versionCode)
+                    ).build()
+                )
             }
 
             DownloadStatus.DOWNLOADING, DownloadStatus.QUEUED -> {
@@ -314,17 +321,22 @@ object NotificationUtil {
             .createPendingIntent()
     }
 
-    private fun getInstallIntent(context: Context, packageName: String): PendingIntent {
-        val intent = Intent(context, InstallReceiver::class.java)
-        intent.putExtra(Constants.STRING_EXTRA, packageName)
-        val flags = if (isMAndAbove())
+    private fun getInstallIntent(
+        context: Context,
+        packageName: String,
+        version: Int
+    ): PendingIntent {
+        val intent = Intent(context, InstallActivity::class.java).apply {
+            putExtra(Constants.STRING_APP, packageName)
+            putExtra(Constants.STRING_VERSION, version)
+        }
+        val flags = if (isMAndAbove()) {
             PendingIntent.FLAG_CANCEL_CURRENT or PendingIntent.FLAG_IMMUTABLE
-        else PendingIntent.FLAG_CANCEL_CURRENT
-        return PendingIntent.getBroadcast(
-            context,
-            packageName.hashCode(),
-            intent,
-            flags
+        } else {
+            PendingIntent.FLAG_CANCEL_CURRENT
+        }
+        return PendingIntent.getActivity(
+            context, packageName.hashCode(), intent, flags
         )
     }
 }

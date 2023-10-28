@@ -3,6 +3,7 @@ package com.aurora.store.data.work
 import android.app.NotificationManager
 import android.app.Service
 import android.content.Context
+import android.content.Intent
 import android.content.pm.ServiceInfo.FOREGROUND_SERVICE_TYPE_DATA_SYNC
 import android.util.Log
 import androidx.work.CoroutineWorker
@@ -13,6 +14,7 @@ import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.OutOfQuotaPolicy
 import androidx.work.WorkManager
 import androidx.work.WorkerParameters
+import com.aurora.Constants
 import com.aurora.extensions.copyTo
 import com.aurora.extensions.isQAndAbove
 import com.aurora.gplayapi.data.models.App
@@ -21,6 +23,7 @@ import com.aurora.store.data.model.DownloadStatus
 import com.aurora.store.data.model.Request
 import com.aurora.store.data.network.HttpClient
 import com.aurora.store.data.providers.AuthProvider
+import com.aurora.store.data.receiver.InstallReceiver
 import com.aurora.store.util.NotificationUtil
 import com.aurora.store.util.PathUtil
 import com.google.gson.Gson
@@ -63,7 +66,6 @@ class DownloadWorker(private val appContext: Context, workerParams: WorkerParame
     }
 
     private lateinit var app: App
-    private lateinit var appDownloadDir: Path
     private var downloading = false
 
     private val TAG = DownloadWorker::class.java.simpleName
@@ -81,7 +83,6 @@ class DownloadWorker(private val appContext: Context, workerParams: WorkerParame
         withContext(Dispatchers.Default) {
             try {
                 app = gson.fromJson(inputData.getString(DOWNLOAD_DATA), App::class.java)
-                appDownloadDir = Path(PathUtil.getPackageDirectory(appContext, app.packageName))
             } catch (exception: Exception) {
                 Log.e(TAG, "Failed parsing requested app!", exception)
                 notifyStatus(DownloadStatus.FAILED)
@@ -101,7 +102,7 @@ class DownloadWorker(private val appContext: Context, workerParams: WorkerParame
         }
 
         // Download and verify all files exists
-        Path(appDownloadDir.absolutePathString(), app.versionCode.toString()).createDirectories()
+        PathUtil.getAppDownloadDir(appContext, app.packageName, app.versionCode).createDirectories()
 
         val requestList = getDownloadRequest(files)
         requestList.forEach { request ->
@@ -115,6 +116,14 @@ class DownloadWorker(private val appContext: Context, workerParams: WorkerParame
         // Mark download as completed
         notifyStatus(DownloadStatus.COMPLETED)
         Log.i(TAG, "Finished downloading ${app.packageName}")
+
+        // Notify for installation
+        Intent(appContext, InstallReceiver::class.java).also {
+            it.putExtra(Constants.STRING_APP, app.packageName)
+            it.putExtra(Constants.STRING_VERSION, app.versionCode)
+            appContext.sendBroadcast(it)
+
+        }
         return Result.success()
     }
 

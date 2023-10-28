@@ -24,7 +24,9 @@ import android.os.Environment
 import com.aurora.extensions.isRAndAbove
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.File
+import java.nio.file.Path
 import java.util.UUID
+import kotlin.io.path.Path
 
 fun Context.getInternalBaseDirectory(): String {
     return (getExternalFilesDir(null) ?: filesDir).path
@@ -50,6 +52,10 @@ object PathUtil {
         versionCode: Int
     ): String {
         return getPackageDirectory(context, packageName) + "/$versionCode"
+    }
+
+    fun getAppDownloadDir(context: Context, packageName: String, versionCode: Int): Path {
+        return Path(getPackageDirectory(context, packageName), versionCode.toString())
     }
 
     fun getApkDownloadFile(context: Context, app: App, file: File): String {

@@ -21,16 +21,32 @@ package com.aurora.store.data.receiver
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import android.util.Log
+import com.aurora.Constants
+import com.aurora.store.data.installer.AppInstaller
+import com.aurora.store.util.PathUtil
+import java.io.File
+import kotlin.io.path.pathString
 
 class InstallReceiver : BroadcastReceiver() {
+
+    private val TAG = InstallReceiver::class.java.simpleName
+
     override fun onReceive(context: Context, intent: Intent) {
-        val extras = intent.extras
-        if (extras != null) {
-            /*val packageName = extras.getString(Constants.INTENT_PACKAGE_NAME, "")
-            val versionString = extras.getString(Constants.DOWNLOAD_VERSION_CODE)
-            if (!packageName.isEmpty() && versionString != null) {
-                AuroraApplication.getInstaller().installSplit(packageName, versionString.toInt())
-            }*/
+        val packageName = intent.extras?.getString(Constants.STRING_APP) ?: String()
+        val version = intent.extras?.getInt(Constants.STRING_VERSION)
+        if (packageName.isNotBlank() && version != null) {
+            try {
+                val downloadDir =
+                    File(PathUtil.getAppDownloadDir(context, packageName, version).pathString)
+                AppInstaller.getInstance(context).getPreferredInstaller()
+                    .install(
+                        packageName,
+                        downloadDir.listFiles()!!.filter { it.path.endsWith(".apk") }
+                    )
+            } catch (exception: Exception) {
+                Log.e(TAG, "Failed to install $packageName")
+            }
         }
     }
 }
