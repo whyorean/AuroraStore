@@ -27,16 +27,15 @@ import com.aurora.store.data.receiver.InstallReceiver
 import com.aurora.store.util.NotificationUtil
 import com.aurora.store.util.PathUtil
 import com.google.gson.Gson
-import java.io.File
-import java.net.URL
-import java.nio.file.Path
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.withContext
-import kotlin.io.path.Path
-import kotlin.io.path.absolutePathString
+import java.io.File
+import java.net.URL
+import kotlin.io.path.ExperimentalPathApi
 import kotlin.io.path.createDirectories
+import kotlin.io.path.deleteRecursively
 import com.aurora.gplayapi.data.models.File as GPlayFile
 
 class DownloadWorker(private val appContext: Context, workerParams: WorkerParameters) :
@@ -66,6 +65,7 @@ class DownloadWorker(private val appContext: Context, workerParams: WorkerParame
     }
 
     private lateinit var app: App
+    private lateinit var notificationManager: NotificationManager
     private var downloading = false
 
     private val TAG = DownloadWorker::class.java.simpleName
@@ -78,6 +78,9 @@ class DownloadWorker(private val appContext: Context, workerParams: WorkerParame
         val authData = AuthProvider.with(appContext).getAuthData()
         val purchaseHelper = PurchaseHelper(authData)
             .using(HttpClient.getPreferredClient(appContext))
+
+        notificationManager =
+            appContext.getSystemService(Service.NOTIFICATION_SERVICE) as NotificationManager
 
         // Try to parse input data into a valid app
         withContext(Dispatchers.Default) {
@@ -107,11 +110,24 @@ class DownloadWorker(private val appContext: Context, workerParams: WorkerParame
         val requestList = getDownloadRequest(files)
         requestList.forEach { request ->
             downloading = true
-            downloadFile(request)
-            while (downloading && !isStopped) {
+            runCatching { downloadFile(request) }
+                .onSuccess { downloading = false }
+                .onFailure {
+                    Log.e(TAG, "Failed to download ${app.packageName}", it)
+                    downloading = false
+                    onFailure()
+                    return Result.failure()
+                }
+            while (downloading) {
                 delay(1000)
+                if (isStopped) {
+                    onFailure()
+                    break
+                }
             }
         }
+
+        if (!requestList.all { File(it.filePath).exists() }) return Result.failure()
 
         // Mark download as completed
         notifyStatus(DownloadStatus.COMPLETED)
@@ -125,6 +141,14 @@ class DownloadWorker(private val appContext: Context, workerParams: WorkerParame
 
         }
         return Result.success()
+    }
+
+    @OptIn(ExperimentalPathApi::class)
+    private fun onFailure() {
+        Log.i(TAG, "Cleaning up!")
+        PathUtil.getAppDownloadDir(appContext, app.packageName, app.versionCode)
+            .deleteRecursively()
+        notificationManager.cancel(notificationID)
     }
 
     private fun getDownloadRequest(files: List<GPlayFile>): List<Request> {
@@ -156,24 +180,23 @@ class DownloadWorker(private val appContext: Context, workerParams: WorkerParame
                 if (!File(request.filePath).exists()) {
                     Log.e(TAG, "Failed to find downloaded file at ${request.filePath}")
                     notifyStatus(DownloadStatus.FAILED)
-                    downloading = false
                     return@withContext Result.failure()
                 }
-                downloading = false
                 return@withContext Result.success()
             } catch (exception: Exception) {
                 Log.e(TAG, "Failed to download ${request.filePath}!", exception)
                 requestFile.delete()
                 notifyStatus(DownloadStatus.FAILED)
-                downloading = false
                 return@withContext Result.failure()
             }
         }
     }
 
     private suspend fun onProgress(progress: Int) {
-        setProgress(Data.Builder().putInt(DOWNLOAD_PROGRESS, progress).build())
-        notifyStatus(DownloadStatus.DOWNLOADING, progress, notificationID)
+        if (!isStopped) {
+            setProgress(Data.Builder().putInt(DOWNLOAD_PROGRESS, progress).build())
+            notifyStatus(DownloadStatus.DOWNLOADING, progress, notificationID)
+        }
     }
 
     override suspend fun getForegroundInfo(): ForegroundInfo {
@@ -192,8 +215,6 @@ class DownloadWorker(private val appContext: Context, workerParams: WorkerParame
     }
 
     private fun notifyStatus(status: DownloadStatus, progress: Int = 100, dID: Int = -1) {
-        val notificationManager =
-            appContext.getSystemService(Service.NOTIFICATION_SERVICE) as NotificationManager
         val notification =
             NotificationUtil.getDownloadNotification(appContext, app, status, progress, id)
         notificationManager.notify(if (dID != -1) dID else app.packageName.hashCode(), notification)
