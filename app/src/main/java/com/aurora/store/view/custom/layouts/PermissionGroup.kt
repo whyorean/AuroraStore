@@ -20,11 +20,8 @@ package com.aurora.store.view.custom.layouts
 
 import android.content.Context
 import android.content.pm.PackageManager
-import android.content.pm.PermissionGroupInfo
 import android.content.pm.PermissionInfo
-import android.content.res.Resources.NotFoundException
 import android.graphics.drawable.Drawable
-import android.os.Build
 import android.util.AttributeSet
 import android.widget.ImageView
 import android.widget.LinearLayout
@@ -32,6 +29,7 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import com.aurora.extensions.showDialog
 import com.aurora.store.R
+import com.aurora.store.data.model.PermissionGroupInfo
 import java.util.Locale
 
 class PermissionGroup : LinearLayout {
@@ -112,7 +110,7 @@ class PermissionGroup : LinearLayout {
         val textView = TextView(context)
         textView.text = label
         textView.setOnClickListener {
-            var title: String = permissionGroupInfo.loadLabel(packageManager).toString()
+            var title: String = permissionGroupInfo.label
 
             if (title.contains("UNDEFINED")) {
                 title = "Android"
@@ -132,15 +130,8 @@ class PermissionGroup : LinearLayout {
         permissionLabelsView.addView(textView)
     }
 
-    private fun getPermissionGroupIcon(permissionGroupInfo: PermissionGroupInfo?): Drawable? {
-        return try {
-            ContextCompat.getDrawable(context, permissionGroupInfo!!.icon)
-        } catch (e: NotFoundException) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP_MR1)
-                permissionGroupInfo!!.loadUnbadgedIcon(packageManager)
-            else
-                permissionGroupInfo!!.loadIcon(packageManager)
-        }
+    private fun getPermissionGroupIcon(permissionGroupInfo: PermissionGroupInfo): Drawable? {
+        return ContextCompat.getDrawable(context, permissionGroupInfo.icon)
     }
 
     private fun getReadableLabel(label: String, packageName: String): String {
