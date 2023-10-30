@@ -71,7 +71,7 @@ class AccentFragment : BaseFragment(R.layout.fragment_onboarding_accent) {
                         .id(it.id)
                         .accent(it)
                         .markChecked(accentId == it.id)
-                        .click { v ->
+                        .click { _ ->
                             accentId = it.id
                             updateAccent(accentId)
                             requestModelBuild()
