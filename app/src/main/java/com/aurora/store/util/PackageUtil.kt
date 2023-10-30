@@ -27,7 +27,6 @@ import android.content.pm.PackageManager
 import android.content.pm.PackageManager.PackageInfoFlags
 import android.content.pm.SharedLibraryInfo
 import android.content.res.Configuration
-import android.os.Build
 import androidx.core.content.pm.PackageInfoCompat
 import com.aurora.extensions.getInstallerPackageNameCompat
 import com.aurora.extensions.isOAndAbove
@@ -123,19 +122,6 @@ object PackageUtil {
         } else {
             emptyList()
         }
-    }
-
-    fun getAllPackages(context: Context): List<PackageInfo> {
-        val packageInfoSet: MutableList<PackageInfo> = mutableListOf()
-        val packageManager: PackageManager = context.packageManager
-        val flags: Int = getAllFlags()
-        val packageInfoList: List<PackageInfo> = packageManager.getInstalledPackages(flags)
-        for (packageInfo in packageInfoList) {
-            if (packageInfo.packageName != null && packageInfo.applicationInfo != null) {
-                packageInfoSet.add(packageInfo)
-            }
-        }
-        return packageInfoSet
     }
 
     fun getPackageInfoMap(context: Context): MutableMap<String, PackageInfo> {
@@ -234,17 +220,5 @@ object PackageUtil {
         filter.addAction(Intent.ACTION_PACKAGE_ADDED)
         filter.addAction(Intent.ACTION_PACKAGE_REMOVED)
         return filter
-    }
-
-    private fun getAllFlags(): Int {
-        var flags = (PackageManager.GET_META_DATA)
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
-            flags = flags or PackageManager.GET_DISABLED_COMPONENTS
-            flags = flags or PackageManager.GET_UNINSTALLED_PACKAGES
-        } else {
-            flags = flags or PackageManager.MATCH_DISABLED_COMPONENTS
-            flags = flags or PackageManager.MATCH_UNINSTALLED_PACKAGES
-        }
-        return flags
     }
 }
