@@ -222,7 +222,7 @@
     <string name="pref_install_mode_services">Aurora Services</string>
     <string name="pref_install_mode_root">Rootインストーラ</string>
     <string name="pref_install_mode_native">ネイティブインストーラ</string>
-    <string name="pref_install_delete_title">インストール後APK削除</string>
+    <string name="pref_install_delete_title">インストール後にAPKを削除</string>
     <string name="pref_install_delete_summary">APKはデフォルトで削除されます</string>
     <string name="pref_install_auto_title">APKダウンロード後自動インストール</string>
     <string name="pref_install_auto_summary">アプリはダウンロード完了後すぐにインストールされます</string>
@@ -296,7 +296,7 @@
     <string name="session_enjoy">ログインしてお楽しみください。</string>
     <string name="update_available">更新があります</string>
     <string name="session_verifying_google">Googleセッションを認証中</string>
-    <string name="updates_available">更新があります</string>
+    <string name="updates_available">個の更新があります</string>
     <string name="rate_limited">おっと、このアカウントはレート制限されています！</string>
     <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>
     <string name="search_hint">アプリ・ゲームを検索</string>
@@ -316,7 +316,7 @@
     <string name="expand">展開する</string>
     <string name="open_in_aurora">Aurora Storeで開く</string>
     <string name="permissions_denied">必要な権限が拒否されました。続けるためには許可してください</string>
-    <string name="notification_updates_available">更新があります：<xliff:g id="apps_count">%1$d</xliff:g></string>
+    <string name="notification_updates_available"><xliff:g id="apps_count">%1$d</xliff:g>個の更新があります</string>
     <string name="pref_install_mode_shizuku">Shizuku インストーラー</string>
     <string name="installer_shizuku_unavailable">Shizuku がインストールされていないか、正常に動作していません。</string>
     <string name="downloading_dep">追加ファイルをダウンロードしています：<xliff:g id="app">%1$s</xliff:g></string>
@@ -324,11 +324,11 @@
     <string name="notification_updates_available_desc_4"><xliff:g id="app_one_name">%1$s</xliff:g> と <xliff:g id="app_two_name">%2$s</xliff:g> ､ <xliff:g id="app_three_name">%3$s</xliff:g> 及び <xliff:g id="apps_count">%4$d</xliff:g> その他</string>
     <string name="action_import">インポート</string>
     <string name="notification_channel_updates">通知の更新</string>
-    <string name="notification_updates_available_1">更新があります：<xliff:g id="apps_count">%1$d</xliff:g></string>
+    <string name="notification_updates_available_1"><xliff:g id="apps_count">%1$d</xliff:g>個の更新があります</string>
     <string name="notification_updates_available_desc_1">新しいバージョンがあります：<xliff:g id="app_one_name">%1$s</xliff:g></string>
     <string name="checking_for_updates">更新を確認しています</string>
-    <string name="pref_updates_check">自動で更新を確認する</string>
-    <string name="pref_updates_check_desc">自動で更新を確認し、アプリの更新を通知します</string>
+    <string name="pref_updates_check">自動更新チェック</string>
+    <string name="pref_updates_check_desc">アプリの更新を自動で確認して通知する</string>
     <string name="toast_import_success">端末設定をインポートしました</string>
     <string name="toast_import_failed">端末設定をインポートできませんでした</string>
     <string name="notification_updates_available_desc_2"><xliff:g id="app_one_name">%1$s</xliff:g> と <xliff:g id="app_two_name">%2$s</xliff:g></string>
@@ -357,4 +357,18 @@
     <string name="action_uninstall_confirmation">このアプリをアンインストールしますか？</string>
     <string name="android_market_desc">Android マーケットは、Androidデバイス用にデザインされたソフトウェア アプリケーションを提供するオンラインストアでしたが、2017年に廃止されました。</string>
     <string name="pref_downloader_wifi_title">WiFiのみを使用してダウンロードする</string>
+    <string name="pref_network_proxy_enable">プロキシを有効化</string>
+    <string name="details_ratings_title_hint">評価タイトル</string>
+    <string name="pref_network_proxy_url">プロキシURL</string>
+    <string name="pref_updates_check_frequency_desc">自動更新の間隔を設定 [時間]</string>
+    <string name="pref_aurora_only">Aurora Storeアプリのみ</string>
+    <string name="pref_network_proxy_title">プロキシ</string>
+    <string name="toast_proxy_invalid">プロキシURLが無効です。形式を確認してください！</string>
+    <string name="pref_aurora_only_desc">Aurora Storeでインストールしたアプリのみを更新とインストール済みアプリに表示</string>
+    <string name="toast_proxy_success">プロキシの設定に成功しました</string>
+    <string name="title_apps_sale_provider">提供：bestappsales.com</string>
+    <string name="details_no_apps_on_sale">セール中のアプリがありません</string>
+    <string name="pref_updates_check_frequency">自動更新周期</string>
+    <string name="toast_proxy_failed">プロキシの設定に失敗しました</string>
+    <string name="pref_network_proxy_enable_desc">アプリからの全てのトラフィックをプロキシに通す</string>
 </resources>
