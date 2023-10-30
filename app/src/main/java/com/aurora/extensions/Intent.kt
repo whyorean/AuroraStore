@@ -40,3 +40,13 @@ inline fun <reified T : Context> Context.newIntent(flags: Int, extras: Bundle): 
     intent.putExtras(extras)
     return intent
 }
+
+fun Intent.applyUninstallActionCompat() {
+    if (isPAndAbove()) {
+        action = Intent.ACTION_DELETE
+    } else {
+        @Suppress("DEPRECATION")
+        action = Intent.ACTION_UNINSTALL_PACKAGE
+        putExtra(Intent.EXTRA_RETURN_RESULT, true)
+    }
+}

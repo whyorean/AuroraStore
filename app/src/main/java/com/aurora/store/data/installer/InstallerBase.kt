@@ -22,8 +22,8 @@ package com.aurora.store.data.installer
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
-import android.os.Build
 import androidx.core.content.FileProvider
+import com.aurora.extensions.applyUninstallActionCompat
 import com.aurora.store.AuroraApplication
 import com.aurora.store.BuildConfig
 import com.aurora.store.data.event.InstallerEvent
@@ -50,13 +50,7 @@ abstract class InstallerBase(protected var context: Context) : IInstaller {
         val intent = Intent().apply {
             data = uri
             addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-        }
-
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.P) {
-            intent.action = Intent.ACTION_DELETE
-        } else {
-            intent.action = Intent.ACTION_UNINSTALL_PACKAGE
-            intent.putExtra(Intent.EXTRA_RETURN_RESULT, true)
+            applyUninstallActionCompat()
         }
 
         context.startActivity(intent)

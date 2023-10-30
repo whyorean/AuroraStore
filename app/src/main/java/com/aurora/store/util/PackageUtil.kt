@@ -29,6 +29,7 @@ import android.content.pm.SharedLibraryInfo
 import android.content.res.Configuration
 import android.os.Build
 import androidx.core.content.pm.PackageInfoCompat
+import com.aurora.extensions.getInstallerPackageNameCompat
 import com.aurora.extensions.isOAndAbove
 import com.aurora.extensions.isTAndAbove
 
@@ -191,7 +192,7 @@ object PackageUtil {
         if (isAuroraOnlyUpdateEnabled) {
             packageInfoList = packageInfoList
                 .filter {
-                    val packageInstaller = packageManager.getInstallerPackageName(it.packageName)
+                    val packageInstaller = packageManager.getInstallerPackageNameCompat(it.packageName)
                     listOf(
                         "com.aurora.store",
                         "com.aurora.store.nightly",
@@ -208,7 +209,7 @@ object PackageUtil {
         if (isFDroidFilterEnabled) {
             packageInfoList = packageInfoList
                 .filter {
-                    val packageInstaller = packageManager.getInstallerPackageName(it.packageName)
+                    val packageInstaller = packageManager.getInstallerPackageNameCompat(it.packageName)
                     !listOf(
                         "org.fdroid.fdroid",
                         "org.fdroid.fdroid.privileged"
