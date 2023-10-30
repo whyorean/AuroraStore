@@ -364,4 +364,11 @@
     <string name="title_app_settings">设置</string>
     <string name="pref_updates_check_frequency">自动更新频率</string>
     <string name="pref_downloader_wifi_title">只使用 WiFi 下载</string>
+    <string name="pref_network_proxy_enable">启用代理</string>
+    <string name="pref_network_proxy_url">代理 URL</string>
+    <string name="pref_network_proxy_title">代理</string>
+    <string name="toast_proxy_invalid">无效的代理 URL,请检查格式！</string>
+    <string name="toast_proxy_success">成功设置了代理</string>
+    <string name="toast_proxy_failed">设置代理失败</string>
+    <string name="pref_network_proxy_enable_desc">允许本应用所有流量经代理服务器发出</string>
 </resources>

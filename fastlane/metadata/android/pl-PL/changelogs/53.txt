@@ -1,0 +1,3 @@
+• Naprawiono problem, który powodował, że aplikacje nie instalowały się po pobraniu
+• Zezwolono na wybór niestandardowego katalogu pobierania
+• Dodano możliwość pobierania tylko przez Wi-Fi

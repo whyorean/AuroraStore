@@ -1,0 +1,3 @@
+• Duże zmiany wewnątrz aplikacji związane z interfejsem użytkownika
+• Zaktualizowano tłumaczenia
+• Drobne poprawki i ulepszenia

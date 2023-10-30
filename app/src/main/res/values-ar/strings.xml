@@ -171,7 +171,7 @@
     <string name="pref_downloader_active_summary">الحد الأقصى لعدد التنزيلات النشطة</string>
     <string name="onboarding_permission_select">متجر Aurora يتطلب الأذونات التالية</string>
     <string name="pref_install_delete_summary">سيتم حذف APK بشكل افتراضي</string>
-    <string name="pref_filter_fdroid_summary">إزالة تطبيقات F-Droid من قوائم التطبيقات</string>
+    <string name="pref_filter_fdroid_summary">تجاهل تطبيقات F-Droid من التحديثات والتطبيقات المثبتة</string>
     <string name="pref_abandon_session_desc">مسح جلسات التثبيت المعلقة أو التي تم التخلي عنها</string>
     <string name="onboarding_permission_installer_desc">السماح بتثبيت التطبيقات من متجر Aurora</string>
     <string name="toast_purchase_blocked">لا تتوفر عمليات شراء التطبيقات على الحسابات المجهولة.</string>
@@ -182,7 +182,7 @@
     <string name="installer_service_available">خدمات Aurora متاحة وجاهزة للتثبيت.</string>
     <string name="pref_downloader_external_desc">تُستخدم وحدة التخزين الخارجية للتنزيلات والتصدير وما إلى ذلك.</string>
     <string name="installer_root_unavailable">لا توجد صلاحيات الجذر (root)، امنح حق الوصول إلى الجذر أو قم بتغيير المثبت.</string>
-    <string name="pref_filter_google_summary">إزالة جميع تطبيقات Google من نتائج البحث وفئات التطبيقات</string>
+    <string name="pref_filter_google_summary">تجاهل تطبيقات Google من نتائج البحث وفئات التطبيقات</string>
     <string name="pref_dialog_to_apply_restart">سيتم تطبيق هذا الإعداد بعد إعادة تشغيل التطبيق</string>
     <string name="device_miui_subtitle">لا يمكن لمثبت الجلسة تثبيت التطبيقات بسبب تحسينات MIUI.</string>
     <string name="details_beta_delay">قد يستغرق التسجيل بعض الوقت ، يمكنك التحقق من الحالة لاحقًا.</string>
@@ -266,7 +266,7 @@
     <string name="toast_page_unavailable">صفحة المتصفح غير متوفرة</string>
     <string name="toast_export_failed">تعذر تصدير تكوين الجهاز</string>
     <string name="toast_export_success">تم تصدير اعدادات الجهاز</string>
-    <string name="pref_updates_extended_desc">البحث عن إصدارات جديدة من التطبيقات المعطلة أيضا</string>
+    <string name="pref_updates_extended_desc">البحث عن إصدارات جديدة من التطبيقات والالعاب المعطلة أيضا</string>
     <string name="pref_updates_extended">التحديثات الموسعة</string>
     <string name="app_updater_service_notif_title">تنزيل تطبيق في الخلفية</string>
     <string name="app_updater_service_notif_text">تفعيل تنزيل التطبيق في الخلفية</string>
@@ -358,4 +358,17 @@
     <string name="pref_downloader_path_title">مسار التنزيل</string>
     <string name="pref_download_directory_error">المسار المحدد غير قابل للكتابة</string>
     <string name="action_uninstall_confirmation">هل تريد إلغاء تثبيت هذا التطبيق؟</string>
+    <string name="pref_updates_check_frequency_desc">‬قم بتكوين الفواصل الزمنية للتحديثات التلقائية، بالساعة.</string>
+    <string name="pref_aurora_only">تطبيقات متجر Aurora فقط</string>
+    <string name="pref_aurora_only_desc">قم بعرض التطبيقات المثبتة بمتحر اورورا فقط في التحديثات والتطبيقات المثبتة</string>
+    <string name="title_app_settings">إعدادات التطبيقات</string>
+    <string name="pref_updates_check_frequency">تردد التحديثات التلقائية</string>
+    <string name="pref_downloader_wifi_title">التنزيل باستخدام WiFi فقط</string>
+    <string name="pref_network_proxy_enable">تفعيل الوكيل</string>
+    <string name="pref_network_proxy_url">عنوان URL الوكيل</string>
+    <string name="pref_network_proxy_title">وكيل</string>
+    <string name="toast_proxy_invalid">عنوان URL للوكيل غير صالح، تحقق من التنسيق!</string>
+    <string name="toast_proxy_success">عينت الوكيل بنجاح</string>
+    <string name="toast_proxy_failed">فشل في تعيين الوكيل</string>
+    <string name="pref_network_proxy_enable_desc">السماح لجميع حركة المرور من التطبيق بالمرور عبر الوكيل</string>
 </resources>

@@ -68,10 +68,10 @@
     <string name="filter_review_critical">低評価</string>
     <string name="filter_review_all">全て</string>
     <string name="exodus_view_report">レポートを見る</string>
-    <string name="exodus_substring">個のトラッカーが見つかりました：</string>
+    <string name="exodus_substring">個の既知のトラッカーが見つかりました：</string>
     <string name="exodus_progress">トラッカーを確認中…</string>
     <string name="exodus_powered">Powered by Exodus</string>
-    <string name="exodus_no_tracker">トラッカーを含んでいません</string>
+    <string name="exodus_no_tracker">既知のトラッカーを含んでいません</string>
     <string name="download_speed_estimating">計算中</string>
     <string name="download_resume_all">全て再開</string>
     <string name="download_queued">待機中</string>
@@ -227,9 +227,9 @@
     <string name="pref_install_auto_title">APKダウンロード後自動インストール</string>
     <string name="pref_install_auto_summary">アプリはダウンロード完了後すぐにインストールされます</string>
     <string name="pref_filter_google_title">Googleアプリ除去</string>
-    <string name="pref_filter_google_summary">全てのGoogleアプリを検索結果、カテゴリ表示から取り除く</string>
+    <string name="pref_filter_google_summary">全てのGoogleアプリを検索結果、カテゴリ表示から無視する</string>
     <string name="pref_filter_fdroid_title">F-Droidアプリ除去</string>
-    <string name="pref_filter_fdroid_summary">F-Droidアプリをリストから取り除く</string>
+    <string name="pref_filter_fdroid_summary">アップデートとインストール済みアプリでF-Droidアプリを無視する</string>
     <string name="pref_downloader_external_desc">ダウンロード、エクスポートなどに外部ストレージを使用する</string>
     <string name="pref_downloader_external">外部ストレージ</string>
     <string name="pref_downloader_active_title">同時ダウンロード</string>
@@ -262,14 +262,14 @@
     <string name="dialog_desc_native_split">ネイティブインストーラではバンドル(分割された)アプリをインストールできません。インストーラをセッション、Service、Rootのいずれかに変更してください。</string>
     <string name="toast_aas_token_failed">AASトークンを生成できませんでした</string>
     <string name="toast_rated_failed">評価に失敗しました</string>
-    <string name="toast_rated_success">評価完了</string>
+    <string name="toast_rated_success">評価完了、表示まで時間がかかる場合があります</string>
     <string name="toast_page_unavailable">閲覧ページがありません</string>
     <string name="app_updater_service_notif_text">バックグラウンドアプリダウンロードを有効化する</string>
     <string name="app_updater_service_notif_title">バックグラウンドアプリダウンロード</string>
     <string name="notification_channel_updater_service">アプリのバックグラウンドダウンロードサービス</string>
     <string name="toast_export_failed">端末設定をエクスポートできませんでした</string>
     <string name="toast_export_success">端末設定をエクスポートしました</string>
-    <string name="pref_updates_extended_desc">無効化したアプリの更新も確認する</string>
+    <string name="pref_updates_extended_desc">無効化したアプリとゲームの更新も確認する</string>
     <string name="pref_updates_extended">追加アップデート</string>
     <string name="account_anonymous_insecure">匿名 (非セキュア)</string>
     <string name="installer_am_unavailable">App Managerをインストールするかインストーラを変更してください。</string>
@@ -350,4 +350,11 @@
     <string name="verifying_new_session">新しいセッションを検証中</string>
     <string name="action_enabled">有効</string>
     <string name="app_language">アプリの言語</string>
+    <string name="amazon_appstore_desc">Amazon Appstoreは、Amazonが運営する Android対応プラットフォーム向けのアプリストアです。</string>
+    <string name="title_app_settings">アプリ設定</string>
+    <string name="pref_downloader_path_title">ダウンロードパス</string>
+    <string name="pref_download_directory_error">選択されたパスは書き込み可能ではありません</string>
+    <string name="action_uninstall_confirmation">このアプリをアンインストールしますか？</string>
+    <string name="android_market_desc">Android マーケットは、Androidデバイス用にデザインされたソフトウェア アプリケーションを提供するオンラインストアでしたが、2017年に廃止されました。</string>
+    <string name="pref_downloader_wifi_title">WiFiのみを使用してダウンロードする</string>
 </resources>

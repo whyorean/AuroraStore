@@ -1,0 +1,3 @@
+• Corrige apps não instalando após o download
+• Permite escolher diretório personalizado de download
+• Adiciona opção de download usando apenas Wi-Fi

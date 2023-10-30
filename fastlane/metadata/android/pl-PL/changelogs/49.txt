@@ -1,0 +1,4 @@
+• Duże zmiany wewnątrz aplikacji związane z interfejsem użytkownika
+• Umożliwiono użytkownikom włączanie linków do aplikacji podczas pierwszej konfiguracji
+• Zaktualizowano tłumaczenia
+• Drobne poprawki i ulepszenia
