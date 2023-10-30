@@ -266,7 +266,7 @@
     <string name="toast_page_unavailable">Страница недоступна</string>
     <string name="toast_export_failed">Экспорт конфигурации устройства не выполнен</string>
     <string name="toast_export_success">Конфигурация устройства успешно экспортирована</string>
-    <string name="pref_updates_extended_desc">Проверять наличие обновлений для отключенных приложений</string>
+    <string name="pref_updates_extended_desc">Проверять наличие обновлений для отключённых приложений</string>
     <string name="pref_updates_extended">Расширенное обновление</string>
     <string name="app_updater_service_notif_text">Позволяет загружать приложения в фоновом режиме</string>
     <string name="app_updater_service_notif_title">Фоновая загрузка приложений</string>
@@ -354,4 +354,17 @@
     <string name="android_market_desc">Android Market - магазин приложений для устройств под управлением ОС Android, закрытый в 2017 году.</string>
     <string name="details_ratings_title_hint">Заголовок отзыва</string>
     <string name="action_uninstall_confirmation">Вы хотите удалить это приложение\?</string>
+    <string name="pref_network_proxy_enable">Включить прокси</string>
+    <string name="pref_network_proxy_url">Proxy URL</string>
+    <string name="pref_updates_check_frequency_desc">Настроить часовой интервал для автообновлений.</string>
+    <string name="pref_network_proxy_title">Прокси</string>
+    <string name="toast_proxy_invalid">Неверный URL, проверьте правильность ввода!</string>
+    <string name="pref_aurora_only_desc">Показывать только те приложения, которые установлены через Aurora Store в обновлениях и установленных приложениях</string>
+    <string name="toast_proxy_success">Прокси успешно установлен</string>
+    <string name="title_app_settings">Параметры приложения</string>
+    <string name="title_apps_sale_provider">Provider - bestappsales.com</string>
+    <string name="pref_updates_check_frequency">Частота автоматических обновлений</string>
+    <string name="pref_download_directory_error">Выбранный путь недоступен для записи</string>
+    <string name="toast_proxy_failed">Не удалось установить прокси</string>
+    <string name="pref_downloader_wifi_title">Загружать только по Wi-Fi</string>
 </resources>
