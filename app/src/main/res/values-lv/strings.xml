@@ -91,7 +91,7 @@
     <string name="download_metadata">Iegūst metadatus</string>
     <string name="exodus_no_tracker">Nesatur zināmus izsekotājus</string>
     <string name="exodus_progress">Pārbauda lietotnes okšķerējumus…</string>
-    <string name="exodus_substring">okšķerējums(i) atrasts(i)</string>
+    <string name="exodus_substring">zināms(i) izsekotāj(s) atrasts(i)</string>
     <string name="exodus_view_report">Apskatīt atskaiti</string>
     <string name="filter_review_all">Visi</string>
     <string name="filter_review_critical">Kritiski</string>
@@ -130,7 +130,7 @@
     <string name="tab_top_paid">Top maksas</string>
     <string name="tab_trending">Populāri</string>
     <string name="title_about">Par</string>
-    <string name="toast_rated_success">Vērtēts</string>
+    <string name="toast_rated_success">Vērtēts, var būt nepieciešams laiks, lai parādītu</string>
     <string name="toast_rated_failed">Nevarēja iesniegt vērtējumu</string>
     <string name="purchase_invalid">Lietotne nav nopirkta</string>
     <string name="title_settings">Iestatījumi</string>
@@ -155,7 +155,7 @@
     <string name="title_library">Bibliotēka</string>
     <string name="title_no_network">Nav interneta</string>
     <string name="title_purchase_history">Pirkumu vēsture</string>
-    <string name="pref_updates_extended_desc">Meklēt jaunus laidienus arī atspējotām lietotnēm</string>
+    <string name="pref_updates_extended_desc">Meklēt jaunas versijas arī atspējotām lietotnēm un spēlēm</string>
     <string name="toast_clipboard_copied">Ievietots starpliktuvē</string>
     <string name="toast_permission_granted">Atļauja nodrošināta</string>
     <string name="app_updater_service_notif_text">Ieslēdz fona lietotņu lejupielādi</string>
@@ -180,7 +180,7 @@
     <string name="pref_dialog_to_apply_restart">Šis iestatījums tiks piemērots pēc lietotnes restartēšanas</string>
     <string name="pref_ui_theme_light">Gaišs</string>
     <string name="pref_ui_layout">Izkārtojums</string>
-    <string name="pref_filter_google_summary">Noņem visas Google lietotnes no meklēšanas rezultātiem</string>
+    <string name="pref_filter_google_summary">Neņemt vērā Google lietotnes no Atjauninājumi un uzstādītās lietotnes</string>
     <string name="pref_filter_google_title">Filtrēt Google lietotnes</string>
     <string name="pref_ui_theme_dark">Tumšs</string>
     <string name="pref_ui_theme_dark_x">Tumšs X</string>
@@ -211,7 +211,7 @@
     <string name="exodus_powered">Nodrošina Exodus</string>
     <string name="installer_am_unavailable">Jāuzstāda App Manager vai jānomaina uzstādītājs.</string>
     <string name="title_blacklist_manager">Melnā saraksta pārvaldnieks</string>
-    <string name="notification_updates_available_desc_1">Ir pieejams jauns <xliff:g id="app_one_name">%1$s</xliff:g> laidiens</string>
+    <string name="notification_updates_available_desc_1">Ir pieejama jauna <xliff:g id="app_one_name">%1$s</xliff:g> versija</string>
     <string name="tab_editor_choice">Redaktora izvēle</string>
     <string name="session_login_failed_google">Neizdevās pieteikties ar Google</string>
     <string name="session_enjoy">Piesakies un izbaudi!</string>
@@ -230,8 +230,8 @@
     <string name="toast_anonymous_restriction">Nav pieejams anonīmiem kontiem</string>
     <string name="toast_developer_setting_failed">Ierīcē jāieslēdz izstrādātāja iestatījumi, lai tos varētu atvērt.</string>
     <string name="toast_spoof_applied">Ierīces atdarināšana ir spēkā.</string>
-    <string name="toast_manual_unavailable">Pieprasītais laidiens nav pieejams.</string>
-    <string name="toast_manual_available">Apsveicam! Pieprasītais laidiens ir pieejams, tas tagad tiek lejupielādēts.</string>
+    <string name="toast_manual_unavailable">Pieprasītā versija nav pieejama.</string>
+    <string name="toast_manual_available">Apsveicam! Pieprasītā versija ir pieejama, tā tagad tiek lejupielādēta.</string>
     <string name="installer_shizuku_unavailable">Shizuku nav uzstādīta vai pareizi iestatīta.</string>
     <string name="pref_install_profile_summary">Atlasīt profilu, kurā uzstādīt lietotnes. Darbojas tikai ar superlietotāja uzstādīšanas veidu</string>
     <string name="about_xda_summary">Skatīt apspriedes un ieteikumus Aurora veikala XDA pavedienā.</string>
@@ -272,7 +272,7 @@
     <string name="pref_install_mode_services">Aurora pakalpojumi</string>
     <string name="details_dependencies">Atkarības</string>
     <string name="details_beta_delay">Ievietošana sarakstā var aizņemt kādu laiku, vēlāk var pārbaudīt stāvokli.</string>
-    <string name="pref_filter_fdroid_summary">Neiekļauj sarakstos F-Droid lietotnes</string>
+    <string name="pref_filter_fdroid_summary">Neņemt vērā F-Droid lietotnes no Atjauninājumi un uzstādītās lietotnes</string>
     <string name="pref_filter_search_summary">Meklēšanas nosacījumi tiek atiestatīti katrā meklēšanas reizē. Izslēgt, lai saglabāt meklēšanas nosacījumus</string>
     <string name="ui_accent_12">Discord zils</string>
     <string name="pref_downloader_external_desc">Ārējā krātuve tiek izmantota lejupielādēm, izguvēm utml.</string>
@@ -355,4 +355,20 @@
     <string name="details_ratings_title_hint">Apskata nosaukums</string>
     <string name="details_no_apps_on_sale">Netika atrastas izpārdošanā esošas lietotnes</string>
     <string name="action_uninstall_confirmation">Vai noņemt šo lietotni\?</string>
+    <string name="pref_network_proxy_enable">Iespējot starpniekserveri</string>
+    <string name="pref_network_proxy_url">Starpniekservera URL</string>
+    <string name="pref_updates_check_frequency_desc">Norādīt laika posmu stundās starp automātiskajiem atjauninājumiem.</string>
+    <string name="pref_aurora_only">Tikai Aurora Store lietotnes</string>
+    <string name="pref_network_proxy_title">Starpniekserveris</string>
+    <string name="toast_proxy_invalid">Nederīgs starpniekservera URL, jāpārbauda pieraksts.</string>
+    <string name="pref_aurora_only_desc">Sadaļā Atjauninājumi un uzstādītās lietotnes rādīt tikai Aurora Store uzstādītās lietotnes</string>
+    <string name="toast_proxy_success">Starpniekserveris veiksmīgi iestatīts</string>
+    <string name="title_app_settings">Lietotnes iestatījumi</string>
+    <string name="title_apps_sale_provider">Nodrošinātājs - bestappsales.com</string>
+    <string name="pref_downloader_path_title">Lejupielāžu ceļš</string>
+    <string name="pref_updates_check_frequency">Automātisko atjauninājumu biežums</string>
+    <string name="pref_download_directory_error">Izvēlētais ceļš nav rakstāms</string>
+    <string name="toast_proxy_failed">Neizdevās iestatīt starpniekserveri</string>
+    <string name="pref_network_proxy_enable_desc">Atļaut visu lietotnes datplūsmu sūtīt caur starpniekserveri</string>
+    <string name="pref_downloader_wifi_title">Lejupielādēt tikai izmantojot WiFi</string>
 </resources>
