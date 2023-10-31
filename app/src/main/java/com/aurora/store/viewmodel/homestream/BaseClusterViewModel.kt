@@ -36,12 +36,12 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.supervisorScope
 
-abstract class BaseClusterViewModel(application: Application) : BaseAndroidViewModel(application) {
+class BaseClusterViewModel(application: Application) : BaseAndroidViewModel(application) {
 
     var authData: AuthData = AuthProvider.with(application).getAuthData()
 
-    var streamHelper: StreamHelper = StreamHelper(authData)
-        .using(HttpClient.getPreferredClient(application))
+    var streamHelper: StreamHelper =
+        StreamHelper(authData).using(HttpClient.getPreferredClient(application))
 
     val liveData: MutableLiveData<ViewState> = MutableLiveData()
     var streamBundle: StreamBundle = StreamBundle()
@@ -49,15 +49,11 @@ abstract class BaseClusterViewModel(application: Application) : BaseAndroidViewM
     lateinit var type: StreamHelper.Type
     lateinit var category: StreamHelper.Category
 
-    open fun getStreamBundle(
-        nextPageUrl: String,
-        category: StreamHelper.Category,
-        type: StreamHelper.Type
-    ): StreamBundle {
-        return if (streamBundle.streamClusters.isEmpty())
-            streamHelper.getNavStream(type, category)
-        else
-            streamHelper.next(nextPageUrl)
+    fun getStreamBundle(category: StreamHelper.Category, type: StreamHelper.Type) {
+        this.type = type
+        this.category = category
+        liveData.postValue(ViewState.Loading)
+        observe()
     }
 
     override fun observe() {
@@ -67,11 +63,11 @@ abstract class BaseClusterViewModel(application: Application) : BaseAndroidViewM
                     if (!streamBundle.hasCluster() || streamBundle.hasNext()) {
 
                         //Fetch new stream bundle
-                        val newBundle = getStreamBundle(
-                            streamBundle.streamNextPageUrl,
-                            category,
-                            type
-                        )
+                        val newBundle = if (streamBundle.streamClusters.isEmpty()) {
+                            streamHelper.getNavStream(type, category)
+                        } else {
+                            streamHelper.next(streamBundle.streamNextPageUrl)
+                        }
 
                         //Update old bundle
                         streamBundle.apply {

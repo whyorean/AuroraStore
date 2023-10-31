@@ -20,32 +20,32 @@
 package com.aurora.store.view.ui.commons
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import com.aurora.Constants
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.StreamBundle
 import com.aurora.gplayapi.data.models.StreamCluster
+import com.aurora.gplayapi.helpers.StreamHelper.Category
+import com.aurora.gplayapi.helpers.StreamHelper.Type
 import com.aurora.store.R
 import com.aurora.store.data.ViewState
 import com.aurora.store.databinding.FragmentForYouBinding
 import com.aurora.store.view.custom.recycler.EndlessRecyclerOnScrollListener
 import com.aurora.store.view.epoxy.controller.GenericCarouselController
-import com.aurora.store.viewmodel.homestream.AppsForYouViewModel
 import com.aurora.store.viewmodel.homestream.BaseClusterViewModel
-import com.aurora.store.viewmodel.homestream.GamesForYouViewModel
 
 
-class ForYouFragment : BaseFragment(), GenericCarouselController.Callbacks {
+class ForYouFragment : BaseFragment(R.layout.fragment_for_you),
+    GenericCarouselController.Callbacks {
 
-    private lateinit var B: FragmentForYouBinding
+    private var _binding: FragmentForYouBinding? = null
+    private val binding get() = _binding!!
+
+    private val viewModel: BaseClusterViewModel by viewModels()
+
     private lateinit var C: GenericCarouselController
-    private lateinit var VM: BaseClusterViewModel
-
     private lateinit var streamBundle: StreamBundle
-    private lateinit var endlessRecyclerOnScrollListener: EndlessRecyclerOnScrollListener
 
     private var pageType = 0
 
@@ -60,18 +60,9 @@ class ForYouFragment : BaseFragment(), GenericCarouselController.Callbacks {
         }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        B = FragmentForYouBinding.bind(
-            inflater.inflate(
-                R.layout.fragment_for_you,
-                container,
-                false
-            )
-        )
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        _binding = FragmentForYouBinding.bind(view)
 
         C = GenericCarouselController(this)
 
@@ -81,36 +72,39 @@ class ForYouFragment : BaseFragment(), GenericCarouselController.Callbacks {
         }
 
         when (pageType) {
-            0 -> VM =
-                ViewModelProvider(requireActivity()).get(AppsForYouViewModel::class.java)
-            1 -> VM =
-                ViewModelProvider(requireActivity()).get(GamesForYouViewModel::class.java)
+            0 -> viewModel.getStreamBundle(Category.APPLICATION, Type.HOME)
+            1 -> viewModel.getStreamBundle(Category.GAME, Type.HOME)
         }
 
-        return B.root
-    }
+        binding.recycler.setController(C)
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        B.recycler.setController(C)
-
-        VM.liveData.observe(viewLifecycleOwner) {
+        viewModel.liveData.observe(viewLifecycleOwner) {
             when (it) {
                 is ViewState.Empty -> {
                 }
+
                 is ViewState.Loading -> {
                     updateController(null)
                 }
+
                 is ViewState.Error -> {
 
                 }
+
                 is ViewState.Status -> {
 
                 }
+
                 is ViewState.Success<*> -> {
-                    if (!::streamBundle.isInitialized)
-                        attachRecycler()
+                    if (!::streamBundle.isInitialized) {
+                        binding.recycler.addOnScrollListener(
+                            object : EndlessRecyclerOnScrollListener() {
+                                override fun onLoadMore(currentPage: Int) {
+                                    viewModel.observe()
+                                }
+                            }
+                        )
+                    }
 
                     streamBundle = it.data as StreamBundle
 
@@ -120,15 +114,9 @@ class ForYouFragment : BaseFragment(), GenericCarouselController.Callbacks {
         }
     }
 
-    private fun attachRecycler() {
-        endlessRecyclerOnScrollListener =
-            object : EndlessRecyclerOnScrollListener() {
-                override fun onLoadMore(currentPage: Int) {
-                    VM.observe()
-                }
-            }
-
-        B.recycler.addOnScrollListener(endlessRecyclerOnScrollListener)
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     private fun updateController(streamBundle: StreamBundle?) {
@@ -141,7 +129,7 @@ class ForYouFragment : BaseFragment(), GenericCarouselController.Callbacks {
     }
 
     override fun onClusterScrolled(streamCluster: StreamCluster) {
-        VM.observeCluster(streamCluster)
+        viewModel.observeCluster(streamCluster)
     }
 
     override fun onAppClick(app: App) {
