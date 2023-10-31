@@ -89,7 +89,7 @@
     <string name="download_failed">Lejupielāde neizdevās</string>
     <string name="download_force_clear_all">Piespiest notīrīt visas</string>
     <string name="download_metadata">Iegūst metadatus</string>
-    <string name="exodus_no_tracker">Nesatur izsekotājus</string>
+    <string name="exodus_no_tracker">Nesatur zināmus izsekotājus</string>
     <string name="exodus_progress">Pārbauda lietotnes okšķerējumus…</string>
     <string name="exodus_substring">okšķerējums(i) atrasts(i)</string>
     <string name="exodus_view_report">Apskatīt atskaiti</string>
@@ -352,4 +352,7 @@
     <string name="verifying_new_session">Pārbauda jauno sesiju</string>
     <string name="action_enabled">Iespējots</string>
     <string name="android_market_desc">Android Market bija tiešsaistes veikals, kas piedāvāja lietotnes, kas ir paredzētas Android ierīcēm, pārstāja darboties 2017. gadā.</string>
+    <string name="details_ratings_title_hint">Apskata nosaukums</string>
+    <string name="details_no_apps_on_sale">Netika atrastas izpārdošanā esošas lietotnes</string>
+    <string name="action_uninstall_confirmation">Vai noņemt šo lietotni\?</string>
 </resources>
