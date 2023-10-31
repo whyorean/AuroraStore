@@ -370,6 +370,6 @@
     <string name="pref_network_proxy_title">Proxy</string>
     <string name="toast_proxy_invalid">Ungültige Proxy-URL, bitte die Formatierung überprüfen!</string>
     <string name="toast_proxy_success">Proxy erfolgreich festgelegt</string>
-    <string name="toast_proxy_failed">Fehler beim Festlegen des Proxy</string>
+    <string name="toast_proxy_failed">Fehler beim Festlegen des Proxys</string>
     <string name="pref_network_proxy_enable_desc">Gesamten Netzwerkverkehr der App über den Proxyserver leiten</string>
 </resources>
