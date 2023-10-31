@@ -40,7 +40,7 @@
     <string name="pref_install_mode_services">Aurora Services</string>
     <string name="download_speed_estimating">A estimar</string>
     <string name="toast_aas_token_failed">Não foi possível gerar o Token AAS</string>
-    <string name="toast_rated_success">Avaliada</string>
+    <string name="toast_rated_success">Avaliada, pode levar algum tempo pa mostrar</string>
     <string name="toast_page_unavailable">Página de navegação indisponível</string>
     <string name="toast_manual_available">Parabéns, o código da versão solicitada está disponível. A descarregar neste momento.</string>
     <string name="toast_manual_unavailable">O código da versão solicitada não está disponível.</string>
@@ -118,8 +118,8 @@
     <string name="pref_filter_search_title">Filtros de pesquisa não persistentes</string>
     <string name="pref_filter_search_summary">Os filtros de pesquisa são esquecidos a cada nova pesquisa. Desative esta opção para guardar os filtros de pesquisa</string>
     <string name="pref_filter_google_title">Filtrar aplicações Google</string>
-    <string name="pref_filter_google_summary">Remove todas as aplicações Google dos resultados de pesquisa e categorias</string>
-    <string name="pref_filter_fdroid_summary">Remover, da lista, as aplicações que forem instaladas através de F-Droid</string>
+    <string name="pref_filter_google_summary">Ignorar aplicações Google das atualizações e das aplicações instaladas</string>
+    <string name="pref_filter_fdroid_summary">Ignorar aplicações F-Droid das atualizações e das aplicações instaladas</string>
     <string name="pref_filter_fdroid_title">Filtrar aplicações F-Droid</string>
     <string name="pref_downloader_external_desc">O armazenamento externo é usado para descargas, exportações, etc.</string>
     <string name="pref_downloader_external">Armazenamento externo do utilizador</string>
@@ -176,7 +176,7 @@
     <string name="exodus_powered">Serviço disponibilizado por Exodus</string>
     <string name="exodus_substring">rastreador(es) encontrado(s) em</string>
     <string name="exodus_progress">A verificar rastreadores…</string>
-    <string name="exodus_no_tracker">Não contém rastreadores</string>
+    <string name="exodus_no_tracker">Contém rastreadores não conhecidos</string>
     <string name="download_resume_all">Retomar todas</string>
     <string name="download_queued">Na fila</string>
     <string name="download_pause_all">Pausa em tudo</string>
@@ -244,8 +244,8 @@
     <string name="action_grant">Permitir</string>
     <string name="action_get_local_apk">Guardar pacote de aplicações</string>
     <string name="action_finish">Terminar</string>
-    <string name="action_filter_misc">Diversos</string>
-    <string name="action_filter_gsf_dependent_apps">Dependente de GSF</string>
+    <string name="action_filter_misc">Outro</string>
+    <string name="action_filter_gsf_dependent_apps">Depende de GSF</string>
     <string name="action_filter_downloads">Descargas</string>
     <string name="action_filter_apply">Aplicar</string>
     <string name="action_filter_all">Tudo</string>
@@ -266,7 +266,7 @@
     <string name="account_logged_out">Sem sessão iniciada</string>
     <string name="toast_export_failed">Não foi possível exportar as definições</string>
     <string name="toast_export_success">Definições exportadas</string>
-    <string name="pref_updates_extended_desc">Pesquisar por novas versões de aplicações desativadas</string>
+    <string name="pref_updates_extended_desc">Pesquisar por novas versões de aplicações desativadas e jogos</string>
     <string name="pref_updates_extended">Atualizações alargadas</string>
     <string name="app_updater_service_notif_text">Permite descarregar aplicações em segundo plano</string>
     <string name="app_updater_service_notif_title">Descarregar aplicação em segundo plano</string>
@@ -335,7 +335,7 @@
     <string name="app_links_desc">Permitir abertura de ligações através de Aurora</string>
     <string name="failed_to_fetch_report">Não foi possível obter o relatório de privacidade</string>
     <string name="access_denied_using_vpn">Acesso recusado. Está a usar uma VPN ou Tor\?</string>
-    <string name="bad_request">Erro interno. Experimente mais tarde.</string>
+    <string name="bad_request">Erro interno. Tente mais tarde.</string>
     <string name="login_rate_limited">Parece que a sua rede tem limites</string>
     <string name="server_unreachable">Servidor inacessível</string>
     <string name="failed_generating_session">Falha ao gerar a sessão. Código de erro: <xliff:g id="status_code">%1$d</xliff:g></string>
@@ -352,4 +352,23 @@
     <string name="google_play_store_desc">Google Play, também conhecida como Google Play Store e, anteriormente, Android Market.</string>
     <string name="amazon_appstore_desc">A Amazon Appstore é uma loja de aplicações para plataformas compatíveis com Android e é disponibilizada pela Amazon.</string>
     <string name="android_market_desc">O Android Market foi uma loja online que oferecia aplicações para dispositivos Android, descontinuada em 2017.</string>
+    <string name="pref_network_proxy_enable">Ativar proxy</string>
+    <string name="details_ratings_title_hint">Título da avaliação</string>
+    <string name="pref_network_proxy_url">URL do proxy</string>
+    <string name="pref_updates_check_frequency_desc">Configurar tempo de intervalo para procurar atualizações (em horas)</string>
+    <string name="pref_aurora_only">Apenas aplicações Aurora Store</string>
+    <string name="pref_network_proxy_title">Proxy</string>
+    <string name="toast_proxy_invalid">URL inválido. Verifique o formato!</string>
+    <string name="pref_aurora_only_desc">Mostrar apenas aplicações instaladas via Aurora Store</string>
+    <string name="toast_proxy_success">Proxy definido com sucesso</string>
+    <string name="title_app_settings">Definições</string>
+    <string name="title_apps_sale_provider">Serviço - bestappsales.com</string>
+    <string name="details_no_apps_on_sale">Não há aplicações à venda</string>
+    <string name="pref_downloader_path_title">Caminho para as descargas</string>
+    <string name="pref_updates_check_frequency">Frequência das atualizações automáticas</string>
+    <string name="pref_download_directory_error">Não é possível guardar no caminho escolhido</string>
+    <string name="toast_proxy_failed">Falha ao definir o proxy</string>
+    <string name="pref_network_proxy_enable_desc">Permite que o tráfego da aplicação seja através de um proxy</string>
+    <string name="action_uninstall_confirmation">Deseja desinstalar esta aplicação\?</string>
+    <string name="pref_downloader_wifi_title">Descarregar apenas por Wi-fi</string>
 </resources>
