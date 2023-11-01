@@ -28,3 +28,15 @@ fun <T> MutableSet<T>.flushAndAdd(list: Set<T>) {
     clear()
     addAll(list)
 }
+
+fun <T> MutableSet<T>.copyAndAdd(element: T): MutableSet<T> {
+    val newSet = this.toMutableSet()
+    newSet.add(element)
+    return newSet
+}
+
+fun <T> MutableSet<T>.copyAndRemove(element: T): MutableSet<T> {
+    val newSet = this.toMutableSet()
+    newSet.remove(element)
+    return newSet
+}

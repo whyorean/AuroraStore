@@ -38,7 +38,6 @@ import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_AUTO_DELETE
 import com.aurora.store.util.Preferences.PREFERENCE_DEFAULT
 import com.aurora.store.util.Preferences.PREFERENCE_DEFAULT_SELECTED_TAB
-import com.aurora.store.util.Preferences.PREFERENCE_DOWNLOAD_ACTIVE
 import com.aurora.store.util.Preferences.PREFERENCE_DOWNLOAD_DIRECTORY
 import com.aurora.store.util.Preferences.PREFERENCE_DOWNLOAD_EXTERNAL
 import com.aurora.store.util.Preferences.PREFERENCE_DOWNLOAD_WIFI_ONLY
@@ -165,7 +164,6 @@ class OnboardingFragment : Fragment(R.layout.fragment_onboarding) {
         save(PREFERENCE_FILTER_SEARCH, true)
 
         /*Downloader*/
-        save(PREFERENCE_DOWNLOAD_ACTIVE, 3)
         save(PREFERENCE_DOWNLOAD_EXTERNAL, false)
         save(PREFERENCE_DOWNLOAD_DIRECTORY, PathUtil.getExternalPath(requireContext()))
         save(PREFERENCE_DOWNLOAD_WIFI_ONLY, false)

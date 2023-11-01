@@ -47,14 +47,4 @@
         app:key="PREFERENCE_DOWNLOAD_WIFI_ONLY"
         app:title="@string/pref_downloader_wifi_title" />
 
-    <SeekBarPreference
-        android:defaultValue="3"
-        android:key="PREFERENCE_DOWNLOAD_ACTIVE"
-        android:max="12"
-        android:summary="@string/pref_downloader_active_summary"
-        android:title="@string/pref_downloader_active_title"
-        app:adjustable="true"
-        app:iconSpaceReserved="false"
-        app:min="1"
-        app:showSeekBarValue="true" />
 </androidx.preference.PreferenceScreen>

@@ -23,6 +23,7 @@ package com.aurora.store
 import android.app.Application
 import androidx.core.content.ContextCompat
 import com.aurora.extensions.isPAndAbove
+import com.aurora.gplayapi.data.models.App
 import com.aurora.store.data.downloader.DownloadManager
 import com.aurora.store.data.receiver.PackageManagerReceiver
 import com.aurora.store.data.service.NotificationService
@@ -30,6 +31,7 @@ import com.aurora.store.util.CommonUtil
 import com.aurora.store.util.NotificationUtil
 import com.aurora.store.util.PackageUtil
 import com.tonyodev.fetch2.Fetch
+import kotlinx.coroutines.flow.MutableStateFlow
 import org.lsposed.hiddenapibypass.HiddenApiBypass
 
 class AuroraApplication : Application() {
@@ -37,6 +39,7 @@ class AuroraApplication : Application() {
     private lateinit var fetch: Fetch
 
     companion object{
+        val enqueuedDownloads = MutableStateFlow<MutableSet<App>>(mutableSetOf())
         val enqueuedInstalls: MutableSet<String> = mutableSetOf()
     }
 

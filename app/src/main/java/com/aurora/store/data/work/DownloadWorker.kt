@@ -8,17 +8,20 @@ import android.content.pm.ServiceInfo.FOREGROUND_SERVICE_TYPE_DATA_SYNC
 import android.util.Log
 import androidx.work.CoroutineWorker
 import androidx.work.Data
-import androidx.work.ExistingWorkPolicy.REPLACE
+import androidx.work.ExistingWorkPolicy.KEEP
 import androidx.work.ForegroundInfo
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.OutOfQuotaPolicy
 import androidx.work.WorkManager
 import androidx.work.WorkerParameters
 import com.aurora.Constants
+import com.aurora.extensions.copyAndAdd
 import com.aurora.extensions.copyTo
 import com.aurora.extensions.isQAndAbove
+import com.aurora.extensions.copyAndRemove
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.helpers.PurchaseHelper
+import com.aurora.store.AuroraApplication
 import com.aurora.store.data.model.DownloadStatus
 import com.aurora.store.data.model.Request
 import com.aurora.store.data.network.HttpClient
@@ -26,13 +29,13 @@ import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.data.receiver.InstallReceiver
 import com.aurora.store.util.NotificationUtil
 import com.aurora.store.util.PathUtil
-import com.google.gson.Gson
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.withContext
 import java.io.File
 import java.net.URL
+import kotlinx.coroutines.flow.update
 import kotlin.io.path.ExperimentalPathApi
 import kotlin.io.path.createDirectories
 import kotlin.io.path.deleteRecursively
@@ -42,25 +45,27 @@ class DownloadWorker(private val appContext: Context, workerParams: WorkerParame
     CoroutineWorker(appContext, workerParams) {
 
     companion object {
-        const val DOWNLOAD_DATA = "DOWNLOAD_DATA"
+        const val DOWNLOAD_WORKER = "DOWNLOAD_WORKER"
         const val DOWNLOAD_PROGRESS = "DOWNLOAD_PROGRESS"
 
-        private const val TAG = "DownloadWorker"
+        fun enqueueApp(app: App) {
+            AuroraApplication.enqueuedDownloads.update { it.copyAndAdd(app) }
+        }
 
+        /**
+         * Downloads and install an [App]
+         *
+         * Triggers Immediate downloads and installation. In most cases, you don't need to call
+         * this method. Consider using [enqueueApp] instead.
+         */
         fun downloadApp(context: Context, app: App) {
-            Log.i(TAG, "Downloading ${app.packageName}")
-
-            val downloadData = Data.Builder()
-                .putString(DOWNLOAD_DATA, Gson().toJson(app))
-                .build()
-
             val work = OneTimeWorkRequestBuilder<DownloadWorker>()
-                .setInputData(downloadData)
+                .addTag(app.packageName)
                 .addTag(app.versionCode.toString())
                 .setExpedited(OutOfQuotaPolicy.DROP_WORK_REQUEST)
                 .build()
 
-            WorkManager.getInstance(context).enqueueUniqueWork(app.packageName, REPLACE, work)
+            WorkManager.getInstance(context).enqueueUniqueWork(DOWNLOAD_WORKER, KEEP, work)
         }
     }
 
@@ -70,8 +75,6 @@ class DownloadWorker(private val appContext: Context, workerParams: WorkerParame
 
     private val TAG = DownloadWorker::class.java.simpleName
     private val notificationID = 200
-
-    private val gson = Gson()
 
     override suspend fun doWork(): Result {
         // Purchase the app (free apps needs to be purchased too)
@@ -83,14 +86,11 @@ class DownloadWorker(private val appContext: Context, workerParams: WorkerParame
             appContext.getSystemService(Service.NOTIFICATION_SERVICE) as NotificationManager
 
         // Try to parse input data into a valid app
-        withContext(Dispatchers.Default) {
-            try {
-                app = gson.fromJson(inputData.getString(DOWNLOAD_DATA), App::class.java)
-            } catch (exception: Exception) {
-                Log.e(TAG, "Failed parsing requested app!", exception)
-                notifyStatus(DownloadStatus.FAILED)
-                return@withContext Result.failure()
-            }
+        try {
+            app = AuroraApplication.enqueuedDownloads.value.first()
+        } catch (exception: Exception) {
+            Log.e(TAG, "No apps enqueued for downloads", exception)
+            return Result.failure()
         }
 
         // Set work/service to foreground on < Android 12.0
@@ -140,6 +140,9 @@ class DownloadWorker(private val appContext: Context, workerParams: WorkerParame
             appContext.sendBroadcast(it)
 
         }
+
+        // Remove the app from the list
+        AuroraApplication.enqueuedDownloads.update { it.copyAndRemove(app) }
         return Result.success()
     }
 
@@ -149,6 +152,7 @@ class DownloadWorker(private val appContext: Context, workerParams: WorkerParame
         PathUtil.getAppDownloadDir(appContext, app.packageName, app.versionCode)
             .deleteRecursively()
         notificationManager.cancel(notificationID)
+        AuroraApplication.enqueuedDownloads.update { it.copyAndRemove(app) }
     }
 
     private fun getDownloadRequest(files: List<GPlayFile>): List<Request> {
