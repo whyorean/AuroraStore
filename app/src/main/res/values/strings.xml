@@ -200,6 +200,8 @@
     <string name="onboarding_permission_installer_desc">"Allow installing apps from Aurora Store"</string>
     <string name="onboarding_permission_notifications">"Notifications"</string>
     <string name="onboarding_permission_notifications_desc">"Send notifications regarding installations status"</string>
+    <string name="onboarding_permission_doze">"Background Downloads"</string>
+    <string name="onboarding_permission_doze_desc">"Allow Aurora Store to download and update apps in background"</string>
     <string name="pref_abandon_session">"Force clear installation sessions"</string>
     <string name="pref_abandon_session_desc">"Clear abandon or pending installation sessions"</string>
     <string name="pref_app_download">"Downloads"</string>
