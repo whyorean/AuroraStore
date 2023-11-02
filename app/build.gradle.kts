@@ -134,6 +134,7 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-service:$lifeVersion")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifeVersion")
     implementation("androidx.lifecycle:lifecycle-viewmodel-savedstate:$lifeVersion")
+    implementation("androidx.lifecycle:lifecycle-process:$lifeVersion")
 
     //Arch Navigation
     val navVersion = "2.7.5"

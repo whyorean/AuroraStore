@@ -28,6 +28,7 @@ import android.net.Uri
 import androidx.core.content.FileProvider
 import com.aurora.extensions.isSAndAbove
 import com.aurora.store.BuildConfig
+import com.aurora.store.data.receiver.InstallReceiver
 import com.aurora.store.util.Log
 import java.io.File
 
@@ -61,12 +62,17 @@ abstract class SessionInstallerBase(context: Context) : InstallerBase(context) {
                 }
             }
 
-            val callBackIntent = Intent(context, InstallerService::class.java)
+            val callBackIntent = Intent(context, InstallReceiver::class.java).apply {
+                action = InstallReceiver.ACTION_INSTALL_STATUS
+                setPackage(context.packageName)
+                putExtra(PackageInstaller.EXTRA_PACKAGE_NAME, packageName)
+                addFlags(Intent.FLAG_RECEIVER_FOREGROUND)
+            }
             val flags = if (isSAndAbove())
                 PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_MUTABLE else
                 PendingIntent.FLAG_UPDATE_CURRENT
 
-            val pendingIntent = PendingIntent.getService(
+            val pendingIntent = PendingIntent.getBroadcast(
                 context,
                 sessionId,
                 callBackIntent,

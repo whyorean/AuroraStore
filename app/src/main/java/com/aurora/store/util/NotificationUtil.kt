@@ -268,12 +268,15 @@ object NotificationUtil {
     }
 
     fun getInstallNotification(context: Context, app: App, content: String?): Notification {
-        val builder = NotificationCompat.Builder(context, Constants.NOTIFICATION_CHANNEL_ALERT)
-        builder.color = context.getStyledAttributeColor(R.color.colorAccent)
-        builder.setSmallIcon(R.drawable.ic_install)
-        builder.setContentTitle(app.displayName)
-        builder.setContentText(content)
-        builder.setSubText(app.packageName)
+        val builder =
+            NotificationCompat.Builder(context, Constants.NOTIFICATION_CHANNEL_ALERT).apply {
+                color = context.getStyledAttributeColor(R.color.colorAccent)
+                setSmallIcon(R.drawable.ic_install)
+                setContentTitle(app.displayName)
+                setContentText(content)
+                setContentIntent(getContentIntentForDetails(context, app))
+                setSubText(app.packageName)
+            }
         return builder.build()
     }
 

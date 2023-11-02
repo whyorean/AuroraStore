@@ -135,10 +135,10 @@ class DownloadWorker(private val appContext: Context, workerParams: WorkerParame
 
         // Notify for installation
         Intent(appContext, InstallReceiver::class.java).also {
+            it.action = InstallReceiver.ACTION_INSTALL_APP
             it.putExtra(Constants.STRING_APP, app.packageName)
             it.putExtra(Constants.STRING_VERSION, app.versionCode)
             appContext.sendBroadcast(it)
-
         }
 
         // Remove the app from the list
