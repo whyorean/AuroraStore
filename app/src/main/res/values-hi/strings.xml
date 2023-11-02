@@ -364,4 +364,11 @@
     <string name="pref_download_directory_error">चयनित पथ लिखने योग्य नहीं है</string>
     <string name="pref_downloader_wifi_title">केवल वाई-फ़ाई का उपयोग करके डाउनलोड करें</string>
     <string name="pref_updates_check_frequency_desc">घंटों में, ऑटो अपडेट के लिए अंतराल कॉन्फ़िगर करें।</string>
+    <string name="pref_network_proxy_enable">प्रॉक्सी चालू करें</string>
+    <string name="pref_network_proxy_url">प्रॉक्सी URL</string>
+    <string name="pref_network_proxy_title">प्रॉक्सी</string>
+    <string name="toast_proxy_invalid">अमान्य प्रॉक्सी URL, प्रारूप जांचें!</string>
+    <string name="toast_proxy_success">प्रॉक्सी सफलतापूर्वक सेट हो गई</string>
+    <string name="toast_proxy_failed">प्रॉक्सी सेट करने में विफल</string>
+    <string name="pref_network_proxy_enable_desc">ऐप से सभी ट्रैफ़िक को प्रॉक्सी के माध्यम से जाने की अनुमति दें</string>
 </resources>
