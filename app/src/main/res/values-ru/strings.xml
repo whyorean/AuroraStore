@@ -194,7 +194,7 @@
     <string name="pref_install_auto_title">Автоматическая установка APK-файлов после загрузки</string>
     <string name="pref_install_auto_summary">Приложения устанавливаются сразу после завершения загрузки</string>
     <string name="pref_filter_google_title">Фильтр приложений Google</string>
-    <string name="pref_filter_google_summary">Игнорировать Google приложения в Обновлениях и Установленных приложениях</string>
+    <string name="pref_filter_google_summary">Игнорировать приложения Google в обновлениях и установленных приложениях</string>
     <string name="pref_filter_fdroid_title">Фильтр приложений F-Droid</string>
     <string name="pref_filter_fdroid_summary">Игнорировать F-Droid приложения в Обновлениях и Установленных приложениях</string>
     <string name="pref_downloader_external_desc">Внешнее хранилище будет использоваться для загрузки, экспорта и т. д.</string>
@@ -266,7 +266,7 @@
     <string name="toast_page_unavailable">Страница недоступна</string>
     <string name="toast_export_failed">Экспорт конфигурации устройства не выполнен</string>
     <string name="toast_export_success">Конфигурация устройства успешно экспортирована</string>
-    <string name="pref_updates_extended_desc">Проверять наличие обновлений для отключённых приложений</string>
+    <string name="pref_updates_extended_desc">Проверять наличие обновлений для отключенных приложений</string>
     <string name="pref_updates_extended">Расширенное обновление</string>
     <string name="app_updater_service_notif_text">Позволяет загружать приложения в фоновом режиме</string>
     <string name="app_updater_service_notif_title">Фоновая загрузка приложений</string>
@@ -315,7 +315,7 @@
     <string name="search_hint">Поиск в Приложениях и Играх</string>
     <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>
     <string name="requesting_new_session">Запрос новой сессии</string>
-    <string name="server_maintenance">Сервер отключён на техобслуживание</string>
+    <string name="server_maintenance">Сервер отключен на техобслуживание</string>
     <string name="action_import">Импортировать</string>
     <string name="toast_import_success">Профиль устройства импортирован</string>
     <string name="toast_import_failed">Не удалось импортировать профиль устройства</string>
@@ -331,7 +331,7 @@
     <string name="pref_updates_check_desc">Периодическая автопроверка и уведомление об обновлениях приложений</string>
     <string name="installer_shizuku_unavailable">Shizuku не установлено или не настроено правильно.</string>
     <string name="pref_install_mode_shizuku">Установщик Shizuku</string>
-    <string name="notification_updates_available_desc_4"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g>, <xliff:g id="app_three_name">%3$s</xliff:g> и ещё <xliff:g id="apps_count">%4$d</xliff:g> приложений</string>
+    <string name="notification_updates_available_desc_4"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g>, <xliff:g id="app_three_name">%3$s</xliff:g> и еще <xliff:g id="apps_count">%4$d</xliff:g> приложений</string>
     <string name="title_search_suggestion">Поисковое предложение</string>
     <string name="title_search_results">Результаты поиска</string>
     <string name="bad_request">Внутренняя ошибка! Пожалуйста, повторите попытку через некоторое время</string>
@@ -355,17 +355,17 @@
     <string name="details_ratings_title_hint">Заголовок отзыва</string>
     <string name="action_uninstall_confirmation">Вы хотите удалить это приложение\?</string>
     <string name="pref_network_proxy_enable">Включить прокси</string>
-    <string name="pref_network_proxy_url">Proxy URL</string>
-    <string name="pref_updates_check_frequency_desc">Настроить часовой интервал для автообновлений.</string>
+    <string name="pref_network_proxy_url">URL прокси</string>
+    <string name="pref_updates_check_frequency_desc">Настроить интервал автоматического обновления в часах.</string>
     <string name="pref_network_proxy_title">Прокси</string>
-    <string name="toast_proxy_invalid">Неверный URL, проверьте правильность ввода!</string>
-    <string name="pref_aurora_only_desc">Показывать только те приложения, которые установлены через Aurora Store в обновлениях и установленных приложениях</string>
-    <string name="toast_proxy_success">Прокси успешно установлен</string>
-    <string name="title_app_settings">Параметры приложения</string>
-    <string name="title_apps_sale_provider">Provider - bestappsales.com</string>
+    <string name="toast_proxy_invalid">Неверный URL прокси, проверьте формат!</string>
+    <string name="pref_aurora_only_desc">Показать только приложения, установленные из Aurora Store, в разделе обновлений и установленных приложений</string>
+    <string name="toast_proxy_success">Прокси успешно настроен</string>
+    <string name="title_app_settings">Настройки приложения</string>
+    <string name="title_apps_sale_provider">Провайдер - bestappsales.com</string>
     <string name="pref_updates_check_frequency">Частота автоматических обновлений</string>
     <string name="pref_download_directory_error">Выбранный путь недоступен для записи</string>
-    <string name="toast_proxy_failed">Не удалось установить прокси</string>
+    <string name="toast_proxy_failed">Не удалось настроить прокси</string>
     <string name="pref_downloader_wifi_title">Загружать только по Wi-Fi</string>
     <string name="pref_aurora_only">Только приложения из Aurora Store</string>
     <string name="details_no_apps_on_sale">Приложений в продаже не найдено</string>
