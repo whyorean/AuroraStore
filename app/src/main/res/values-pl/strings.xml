@@ -95,7 +95,7 @@
     <string name="action_granted">Zgoda udzielona</string>
     <string name="action_grant">Udziel zgody</string>
     <string name="device_miui_description">Wyłącz optymalizację MIUI, aby zezwolić na instalacje, w przeciwnym razie wybierz instalator root lub usługi Aurora.</string>
-    <string name="device_miui_extra">Opcjonalnie możesz wybrać natywny instalator, ale wtedy nie będziesz w stanie instalować pakietów APK (podzielonych), więc wybór należy do Ciebie.</string>
+    <string name="device_miui_extra">Opcjonalnie możesz wybrać Natywny instalator, ale wtedy nie będziesz w stanie instalować pakietów APK (podzielonych), więc wybór należy do Ciebie.</string>
     <string name="toast_spoof_applied">Zastosowano podmianę urządzenia.</string>
     <string name="toast_permission_granted">Przyznano uprawnienie</string>
     <string name="toast_developer_setting_failed">Włącz ustawienia programisty w ustawieniach urządzenia, aby je otworzyć.</string>
@@ -158,9 +158,9 @@
     <string name="pref_install_auto_title">Automatyczna instalacja plików APK po pobraniu</string>
     <string name="pref_install_auto_summary">Aplikacje będą instalowane natychmiast po zakończeniu pobierania</string>
     <string name="pref_filter_google_title">Filtruj aplikacje Google</string>
-    <string name="pref_filter_google_summary">Ignoruj aplikacje Google w Aktualizacjach i Zainstalowanych aplikacjach</string>
+    <string name="pref_filter_google_summary">Ignoruj aplikacje od Google w Aktualizacjach i Zainstalowanych aplikacjach</string>
     <string name="pref_filter_fdroid_title">Filtruj aplikacje F-Droid</string>
-    <string name="pref_filter_fdroid_summary">Ignoruj aplikacje F-Droid w Aktualizacjach i Zainstalowanych aplikacjach</string>
+    <string name="pref_filter_fdroid_summary">Ignoruj aplikacje od F-Droid w Aktualizacjach i Zainstalowanych aplikacjach</string>
     <string name="pref_downloader_external_desc">Pamięć zewnętrzna jest używana do pobierania, eksportowania itp.</string>
     <string name="pref_downloader_external">Pamięć zewnętrzna</string>
     <string name="pref_downloader_active_summary">Maksymalna liczba aktywnych pobierań</string>
@@ -189,7 +189,7 @@
     <string name="notification_channel_general">Ogólne powiadomienie</string>
     <string name="notification_channel_alert">Szybkie powiadomienie</string>
     <string name="dialog_title_self_update">Dostępna jest nowa aktualizacja</string>
-    <string name="device_miui_subtitle">Instalator sesji nie będzie mógł instalować aplikacji z powodu włączonej optymalizacji MIUI.</string>
+    <string name="device_miui_subtitle">Instalator sesji nie może zainstalować aplikacji z powodu Optymalizacji MIUI.</string>
     <string name="device_miui_title">Wykryto MIUI!</string>
     <string name="menu_terms">Warunki świadczenia usługi</string>
     <string name="menu_license">Licencja</string>
@@ -247,9 +247,9 @@
     <string name="pref_insecure_anonymous_title">Niezabezpieczona sesja anonimowa</string>
     <string name="pref_common_extra">Dodatkowe</string>
     <string name="pref_filter_search_title">Użyj nietrwałego filtra wyszukiwania</string>
-    <string name="pref_filter_search_summary">Filtry wyszukiwania są resetowane przy każdym wyszukiwaniu. Wyłącz, aby zapisywać filtry wyszukiwania</string>
+    <string name="pref_filter_search_summary">Filtry wyszukiwania są resetowane po każdym wyszukiwaniu. Wyłącz, aby zapisywać filtry wyszukiwania</string>
     <string name="pref_ui_no_for_you">Strony dla Ciebie</string>
-    <string name="pref_ui_no_for_you_desc">Wyświetl strony „Dla Ciebie” na ekranie głównym</string>
+    <string name="pref_ui_no_for_you_desc">Wyświetl strony Dla Ciebie na ekranie głównym</string>
     <string name="pref_ui_similar_apps_desc">Wyświetl grupy podobnych i powiązanych na stronie szczegółów aplikacji</string>
     <string name="pref_ui_similar_apps">Aplikacje podobne i powiązane</string>
     <string name="pref_ui_layout_tab">Wybierz domyślną kartę</string>
@@ -259,7 +259,7 @@
     <string name="toast_manual_unavailable">Żądany kod wersji jest niedostępny.</string>
     <string name="title_manual_download">Pobierz ręcznie</string>
     <string name="action_check">Sprawdź</string>
-    <string name="dialog_desc_native_split">Nie można instalować pakietów aplikacji (dzielonych) za pośrednictwem natywnego instalatora. Zmień instalator na sesję, usługi lub root.</string>
+    <string name="dialog_desc_native_split">Nie można instalować pakietów aplikacji (dzielonych) za pośrednictwem Natywnego instalatora. Zmień instalator na Sesję, Usługi lub Root.</string>
     <string name="toast_page_unavailable">Przeglądana strona jest niedostępna</string>
     <string name="toast_rated_success">Oceniono (może upłynąć trochę czasu, zanim recenzja się pojawi)</string>
     <string name="toast_aas_token_failed">Nie można wygenerować tokena AAS</string>
@@ -272,7 +272,7 @@
     <string name="app_updater_service_notif_title">Pobieranie aplikacji w tle</string>
     <string name="notification_channel_updater_service">Usługa pobierania aplikacji w tle</string>
     <string name="pref_install_mode_am">Instalator menedżera aplikacji</string>
-    <string name="installer_am_unavailable">Zainstaluj menedżera aplikacji lub zmień instalator.</string>
+    <string name="installer_am_unavailable">Zainstaluj Menedżera Aplikacji lub zmień instalator.</string>
     <string name="account_anonymous_insecure">Anonimowe (niezabezpieczone)</string>
     <string name="ui_accent_1">Niebieski</string>
     <string name="ui_accent_2">Fuksja</string>
@@ -370,4 +370,5 @@
     <string name="toast_proxy_success">Ustawiono serwer proxy</string>
     <string name="toast_proxy_failed">Nie udało się ustawić serwera proxy</string>
     <string name="pref_network_proxy_enable_desc">Zezwól, aby cały ruch z aplikacji przechodził przez serwer proxy</string>
+    <string name="pref_aurora_only_desc">Pokaż tylko aplikacje zainstalowane przez Aurora Store w Aktualizacjach i Zainstalowanych aplikacjach</string>
 </resources>
