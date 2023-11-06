@@ -22,6 +22,7 @@ import com.aurora.extensions.copyAndRemove
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.helpers.PurchaseHelper
 import com.aurora.store.AuroraApplication
+import com.aurora.store.data.model.DownloadInfo
 import com.aurora.store.data.model.DownloadStatus
 import com.aurora.store.data.model.Request
 import com.aurora.store.data.network.HttpClient
@@ -39,6 +40,7 @@ import kotlinx.coroutines.flow.update
 import kotlin.io.path.ExperimentalPathApi
 import kotlin.io.path.createDirectories
 import kotlin.io.path.deleteRecursively
+import kotlin.properties.Delegates
 import com.aurora.gplayapi.data.models.File as GPlayFile
 
 class DownloadWorker(private val appContext: Context, workerParams: WorkerParameters) :
@@ -47,6 +49,8 @@ class DownloadWorker(private val appContext: Context, workerParams: WorkerParame
     companion object {
         const val DOWNLOAD_WORKER = "DOWNLOAD_WORKER"
         const val DOWNLOAD_PROGRESS = "DOWNLOAD_PROGRESS"
+        const val DOWNLOAD_TIME = "DOWNLOAD_TIME"
+        const val DOWNLOAD_SPEED = "DOWNLOAD_SPEED"
 
         fun enqueueApp(app: App) {
             AuroraApplication.enqueuedDownloads.update { it.copyAndAdd(app) }
@@ -72,6 +76,10 @@ class DownloadWorker(private val appContext: Context, workerParams: WorkerParame
     private lateinit var app: App
     private lateinit var notificationManager: NotificationManager
     private var downloading = false
+
+    private var totalBytes by Delegates.notNull<Long>()
+    private var totalProgress = 0
+    private var downloadedBytes = 0L
 
     private val TAG = DownloadWorker::class.java.simpleName
     private val notificationID = 200
@@ -105,6 +113,7 @@ class DownloadWorker(private val appContext: Context, workerParams: WorkerParame
         }
 
         // Download and verify all files exists
+        totalBytes = files.sumOf { it.size }
         PathUtil.getAppDownloadDir(appContext, app.packageName, app.versionCode).createDirectories()
 
         val requestList = getDownloadRequest(files)
@@ -196,10 +205,30 @@ class DownloadWorker(private val appContext: Context, workerParams: WorkerParame
         }
     }
 
-    private suspend fun onProgress(progress: Int) {
+    private suspend fun onProgress(downloadInfo: DownloadInfo) {
         if (!isStopped) {
-            setProgress(Data.Builder().putInt(DOWNLOAD_PROGRESS, progress).build())
-            notifyStatus(DownloadStatus.DOWNLOADING, progress, notificationID)
+            val progress = ((downloadedBytes + downloadInfo.bytesCopied) * 100 / totalBytes).toInt()
+
+            // Individual file progress can be negligible in contrast to total progress
+            // Only notify the UI if progress is greater to avoid being rate-limited by Android
+            if (progress > totalProgress) {
+                val bytesRemaining = totalBytes - (downloadedBytes + downloadInfo.bytesCopied)
+                val speed = if (downloadInfo.speed == 0L) 1 else downloadInfo.speed
+
+                if (downloadInfo.progress == 100) {
+                    downloadedBytes += downloadInfo.bytesCopied
+                }
+
+                val data = Data.Builder()
+                    .putInt(DOWNLOAD_PROGRESS, progress)
+                    .putLong(DOWNLOAD_SPEED, downloadInfo.speed)
+                    .putLong(DOWNLOAD_TIME, bytesRemaining / speed * 1000)
+                    .build()
+
+                setProgress(data)
+                notifyStatus(DownloadStatus.DOWNLOADING, progress, notificationID)
+                totalProgress = progress
+            }
         }
     }
 
