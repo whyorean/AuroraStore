@@ -89,6 +89,14 @@ object PathUtil {
             .toString() + "/Android/obb/" + app.packageName
     }
 
+    fun getObbDownloadDir(packageName: String): Path {
+        return Path(
+            Environment.getExternalStorageDirectory().absolutePath,
+            "/Android/obb/",
+            packageName
+        )
+    }
+
     fun getObbDownloadFile(app: App, file: File): String {
         val obbDir = getObbDownloadPath(app)
         return "$obbDir/${file.name}"

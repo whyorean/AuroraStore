@@ -114,7 +114,11 @@ class DownloadWorker(private val appContext: Context, workerParams: WorkerParame
 
         // Download and verify all files exists
         totalBytes = files.sumOf { it.size }
+
         PathUtil.getAppDownloadDir(appContext, app.packageName, app.versionCode).createDirectories()
+        if (files.any { it.type == GPlayFile.FileType.OBB || it.type == GPlayFile.FileType.PATCH }) {
+            PathUtil.getObbDownloadDir(app.packageName).createDirectories()
+        }
 
         val requestList = getDownloadRequest(files)
         requestList.forEach { request ->
