@@ -180,7 +180,6 @@ class AppDetailsFragment : BaseFragment(R.layout.fragment_details) {
     private var isExternal = false
     private var isNone = false
     private var status = Status.NONE
-    private var isInstalled: Boolean = false
     private var isUpdatable: Boolean = false
     private var autoDownload: Boolean = false
     private var downloadOnly: Boolean = false
@@ -255,13 +254,14 @@ class AppDetailsFragment : BaseFragment(R.layout.fragment_details) {
 
         if (args.app != null) {
             app = args.app!!
-            isInstalled = PackageUtil.isInstalled(requireContext(), app.packageName)
-
             inflatePartialApp()
         } else {
             isExternal = true
             app = App(args.packageName)
         }
+
+        // Check whether app is installed or not
+        app.isInstalled = PackageUtil.isInstalled(requireContext(), app.packageName)
 
         // App Details
         viewModel.fetchAppDetails(view.context, app.packageName)
@@ -421,10 +421,11 @@ class AppDetailsFragment : BaseFragment(R.layout.fragment_details) {
             }
 
             if (::app.isInitialized) {
-                val installed = PackageUtil.isInstalled(requireContext(), app.packageName)
-                menu?.findItem(R.id.action_uninstall)?.isVisible = installed
-                menu?.findItem(R.id.menu_app_settings)?.isVisible = installed
-                uninstallActionEnabled = installed
+                app.isInstalled = PackageUtil.isInstalled(requireContext(), app.packageName)
+
+                menu?.findItem(R.id.action_uninstall)?.isVisible = app.isInstalled
+                menu?.findItem(R.id.menu_app_settings)?.isVisible = app.isInstalled
+                uninstallActionEnabled = app.isInstalled
             }
         }
     }
@@ -706,11 +707,11 @@ class AppDetailsFragment : BaseFragment(R.layout.fragment_details) {
     }
 
     private fun checkAndSetupInstall() {
-        runOnUiThread {
-            isInstalled = PackageUtil.isInstalled(requireContext(), app.packageName)
+        app.isInstalled = PackageUtil.isInstalled(requireContext(), app.packageName)
 
+        runOnUiThread {
             binding.layoutDetailsInstall.btnDownload.let { btn ->
-                if (isInstalled) {
+                if (app.isInstalled) {
                     isUpdatable = PackageUtil.isUpdatable(
                         requireContext(),
                         app.packageName,

@@ -61,6 +61,10 @@ abstract class BaseAppsViewModel(application: Application) : BaseAndroidViewMode
             return appDetailsHelper
                 .getAppByPackageName(filtersPackages)
                 .filter { it.displayName.isNotEmpty() }
+                .map {
+                    it.isInstalled = true
+                    it
+                }
         }
     }
 }
