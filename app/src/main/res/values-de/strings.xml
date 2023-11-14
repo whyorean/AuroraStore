@@ -368,7 +368,7 @@
     <string name="pref_network_proxy_enable">Proxy aktivieren</string>
     <string name="pref_network_proxy_url">URL des Proxyservers</string>
     <string name="pref_network_proxy_title">Proxy</string>
-    <string name="toast_proxy_invalid">Ungültige Proxy-URL, bitte die Formatierung überprüfen!</string>
+    <string name="toast_proxy_invalid">Ungültige Proxy-URL, bitte Aufbau der URL überprüfen!</string>
     <string name="toast_proxy_success">Proxy erfolgreich festgelegt</string>
     <string name="toast_proxy_failed">Fehler beim Festlegen des Proxys</string>
     <string name="pref_network_proxy_enable_desc">Gesamten Netzwerkverkehr der App über den Proxyserver leiten</string>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="about_bitcoin_btc">Bitcoin</string>
     <string name="action_install">Įdiegti</string>
     <string name="about_bhim_summary">Paaukoti per UPI</string>
@@ -133,7 +133,7 @@
     <string name="installer_service_available">Aurora tarnybos yra prieinamos ir paruoštos įdiegti.</string>
     <string name="title_blacklist_manager">Juodojo sąrašo tvarkytuvė</string>
     <string name="title_no_network">Nėra interneto</string>
-    <string name="toast_rated_success">Įvertinta</string>
+    <string name="toast_rated_success">Įvertinta, gali šiek tiek užtrukti, kol bus rodoma</string>
     <string name="toast_rated_failed">Nepavyko pateikti įvertinimo</string>
     <string name="action_finish">Užbaigti</string>
     <string name="about_telegram_summary">Prisijunkite prie Aurora palaikymo grupės, norėdami diskutuoti ir teikti pasiūlymus.</string>
@@ -173,7 +173,7 @@
     <string name="download_pause_all">Pristabdyti visus</string>
     <string name="pref_ui_no_for_you">„Jums“ puslapiai</string>
     <string name="pref_ui_similar_apps_desc">Rodyti programėlės puslapyje panašių ir susijusių programėlių rinkinį</string>
-    <string name="pref_updates_extended_desc">Tikrinti, ar yra atnaujinimų išjungtoms programėlėms</string>
+    <string name="pref_updates_extended_desc">Tikrinti, ar yra atnaujinimų išjungtoms programėlėms ir žaidimams</string>
     <string name="tab_editor_choice">Redaktoriaus pasirinkimas</string>
     <string name="tab_for_you">Jums</string>
     <string name="title_apps_library">Programėlės bibliotekoje</string>
@@ -205,9 +205,9 @@
     <string name="download_cancel_all">Atsisakyti visų</string>
     <string name="download_resume_all">Pratęsti visus</string>
     <string name="download_speed_estimating">Apskaičiuojama</string>
-    <string name="exodus_no_tracker">Programėlėje nėra seklių</string>
+    <string name="exodus_no_tracker">Programėlėje nėra žinomų seklių</string>
     <string name="exodus_progress">Tikrinama, ar yra seklių…</string>
-    <string name="exodus_substring">sekliai(-ių) rasti versijoje</string>
+    <string name="exodus_substring">žinomi sekliai(-ių) rasti versijoje</string>
     <string name="filter_review_all">Visi</string>
     <string name="filter_review_critical">Neigiami</string>
     <string name="installer_status_failure_blocked">Įdiegimas buvo užblokuotas</string>
@@ -264,4 +264,49 @@
     <string name="ui_accent_2">Purpurinė</string>
     <string name="ui_accent_5">Žalia</string>
     <string name="ui_accent_11">Šviesiai mėlyna</string>
+    <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>
+    <string name="server_unreachable">Serveris nepasiekiamas</string>
+    <string name="notification_updates_available_desc_4"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g>, <xliff:g id="app_three_name">%3$s</xliff:g> ir dar <xliff:g id="apps_count">%4$d</xliff:g></string>
+    <string name="downloading_dep">Atsiunčiami papildomi failai, skirti <xliff:g id="app">%1$s</xliff:g></string>
+    <string name="pref_network_proxy_enable">Įjungti įgaliotąjį serverį</string>
+    <string name="check_connectivity">Tikrinti interneto jungiamumą</string>
+    <string name="failed_generating_session">Nepavyko sugeneruoti seanso, klaidos kodas: <xliff:g id="status_code">%1$d</xliff:g></string>
+    <string name="failed_to_generate_session">Nepavyko sugeneruoti seanso</string>
+    <string name="pref_network_proxy_url">Įgaliotojo serverio URL</string>
+    <string name="ui_accent_0">Sistema</string>
+    <string name="pref_network_proxy_title">Įgaliotasis serveris</string>
+    <string name="session_login">Iš pradžių, prisijunkite</string>
+    <string name="onboarding_permission_notifications">Pranešimai</string>
+    <string name="notification_updates_available_desc_1">Yra prieinama nauja <xliff:g id="app_one_name">%1$s</xliff:g> versija</string>
+    <string name="action_enable">Įjungti</string>
+    <string name="toast_import_failed">Nepavyko importuoti įrenginio konfigūracijos</string>
+    <string name="checking_for_updates">Tikrinama, ar yra atnaujinimų</string>
+    <string name="requesting_new_session">Užklausiama naujo seanso</string>
+    <string name="bad_request">Vidinė klaida! Praėjus kažkuriam laikui bandykite dar kartą</string>
+    <string name="search_hint">Ieškoti programėlių ir žaidimų</string>
+    <string name="action_import">Importuoti</string>
+    <string name="toast_proxy_invalid">Neteisingas įgaliotojo serverio URL, patikrinkite formatą!</string>
+    <string name="title_advanced">Išplėstiniai</string>
+    <string name="menu">Meniu</string>
+    <string name="toast_proxy_success">Įgaliotasis serveris sėkmingai nustatytas</string>
+    <string name="download_paused">Pristabdyta • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
+    <string name="session_good">Valio! Viskas gerai.</string>
+    <string name="action_enabled">Įjungta</string>
+    <string name="toast_import_success">Įrenginio konfigūracija importuota</string>
+    <string name="title_app_settings">Programėlės nustatymai</string>
+    <string name="title_apps_sale_provider">Teikėjas – bestappsales.com</string>
+    <string name="session_enjoy">Prisijunkite ir mėgaukitės.</string>
+    <string name="error">Įvyko klaida!</string>
+    <string name="notification_updates_available_desc_3"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g> ir <xliff:g id="app_three_name">%3$s</xliff:g></string>
+    <string name="toast_proxy_failed">Nepavyko nustatyti įgaliotojo serverio</string>
+    <string name="title_search_results">Paieškos rezultatai</string>
+    <string name="notification_channel_updates">Pranešimai apie atnaujinimus</string>
+    <string name="download_progress">Atsiunčiama • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
+    <string name="pref_network_proxy_enable_desc">Leisti visam interneto duomenų srautui iš programėlės eiti per įgaliotąjį serverį</string>
+    <string name="onboarding_permission_notifications_desc">Siųsti pranešimus apie įdiegimo būseną</string>
+    <string name="action_uninstall_confirmation">Ar norite pašalinti šią programėlę\?</string>
+    <string name="access_denied_using_vpn">Prieiga negalima! Ar jūs naudojate VPN arba Tor\?</string>
+    <string name="pref_updates_check">Automatinis atnaujinimų tikrinimas</string>
+    <string name="app_language">Programėlės kalba</string>
+    <string name="notification_updates_available_desc_2"><xliff:g id="app_one_name">%1$s</xliff:g> ir <xliff:g id="app_two_name">%2$s</xliff:g></string>
 </resources>
