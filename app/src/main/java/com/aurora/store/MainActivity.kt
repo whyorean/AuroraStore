@@ -60,9 +60,11 @@ import com.aurora.store.data.model.NetworkStatus
 import com.aurora.store.data.model.SelfUpdate
 import com.aurora.store.data.providers.NetworkProvider
 import com.aurora.store.databinding.ActivityMainBinding
+import com.aurora.store.util.CertUtil
 import com.aurora.store.util.Log
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_DEFAULT_SELECTED_TAB
+import com.aurora.store.util.Preferences.PREFERENCE_SELF_UPDATE
 import com.aurora.store.view.ui.sheets.NetworkDialogSheet
 import com.aurora.store.view.ui.sheets.SelfUpdateSheet
 import com.aurora.store.viewmodel.MainViewModel
@@ -150,13 +152,15 @@ class MainActivity : AppCompatActivity() {
         }
 
         /* Check self update only for stable release, skip debug & nightlies*/
-        if (BuildConfig.APPLICATION_ID == Constants.APP_ID) viewModel.checkSelfUpdate(this)
-        this.lifecycleScope.launch {
-            viewModel.selfUpdateAvailable.collect {
-                if (it != null) {
-                    showUpdatesSheet(it)
-                } else {
-                    Log.i("No self-update available")
+        if (Preferences.getBoolean(this, PREFERENCE_SELF_UPDATE)) {
+            if (BuildConfig.APPLICATION_ID == Constants.APP_ID) viewModel.checkSelfUpdate(this)
+            this.lifecycleScope.launch {
+                viewModel.selfUpdateAvailable.collect {
+                    if (it != null) {
+                        showUpdatesSheet(it)
+                    } else {
+                        Log.i("No self-update available")
+                    }
                 }
             }
         }

@@ -25,14 +25,29 @@ import androidx.appcompat.widget.Toolbar
 import androidx.navigation.fragment.findNavController
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.SwitchPreferenceCompat
+import com.aurora.store.BuildConfig
 import com.aurora.store.R
 import com.aurora.store.data.work.UpdateWorker
+import com.aurora.store.util.CertUtil
 import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_CHECK
+import com.aurora.store.util.Preferences.PREFERENCE_SELF_UPDATE
+import com.aurora.store.util.save
 
 class UpdatesPreference : PreferenceFragmentCompat() {
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.preferences_updates, rootKey)
+
+        findPreference<SwitchPreferenceCompat>(PREFERENCE_SELF_UPDATE)?.let {
+            if (CertUtil.isFDroidApp(requireContext(), BuildConfig.APPLICATION_ID)) {
+                it.isVisible = false
+            }
+
+            it.setOnPreferenceChangeListener { _, newValue ->
+                save(PREFERENCE_SELF_UPDATE, newValue.toString().toBoolean())
+                true
+            }
+        }
 
         findPreference<SwitchPreferenceCompat>(PREFERENCE_UPDATES_CHECK)
             ?.setOnPreferenceChangeListener { _, newValue ->
