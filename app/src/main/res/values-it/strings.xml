@@ -54,9 +54,9 @@
     <string name="pref_install_profile_summary">Selezionare il profilo di destinazione in cui installare le applicazioni. Funziona solo con il metodo di installazione root</string>
     <string name="pref_install_auto_summary">Le applicazioni vengono installate immediatamente al termine del trasferimento</string>
     <string name="pref_filter_google_title">Filtra le applicazioni Google</string>
-    <string name="pref_filter_google_summary">Rimuove tutte le applicazioni Google dai risultati di ricerca e dalle applicazioni di categoria</string>
+    <string name="pref_filter_google_summary">Ignora le applicazioni di Google dalle liste degli Aggiornamenti e delle applicazioni già installate</string>
     <string name="pref_filter_fdroid_title">Filtra le applicazioni F-Droid</string>
-    <string name="pref_filter_fdroid_summary">Rimuove le applicazioni F-Droid dalle liste di applicazioni</string>
+    <string name="pref_filter_fdroid_summary">Ignora le applicazioni F-Droid dalle liste degli Aggiornamenti e delle applicazioni già installate</string>
     <string name="pref_dialog_to_apply_restart">Questa impostazione verrà applicata dopo il riavvio dell’applicazione</string>
     <string name="pref_app_download">Trasferimenti</string>
     <string name="onboarding_permission_installer_desc">Consenti l’installazione di app da Aurora Store</string>
@@ -266,7 +266,7 @@
     <string name="toast_page_unavailable">Pagina non disponibile</string>
     <string name="toast_export_failed">Impossibile esportare la configurazione del dispositivo</string>
     <string name="toast_export_success">Configurazione del dispositivo esportata</string>
-    <string name="pref_updates_extended_desc">Cerca anche nuove versioni delle app disabilitate</string>
+    <string name="pref_updates_extended_desc">Cerca anche nuove versioni dei giochi e delle app disabilitate</string>
     <string name="pref_updates_extended">Aggiornamenti estesi</string>
     <string name="app_updater_service_notif_text">Abilita lo scaricamento di app in background</string>
     <string name="app_updater_service_notif_title">Scaricamento delle app in background</string>
@@ -358,4 +358,13 @@
     <string name="pref_download_directory_error">Il percorso selezionato non è scrivibile</string>
     <string name="action_uninstall_confirmation">Vuoi disinstallare questa app\?</string>
     <string name="android_market_desc">Android Market è stato un negozio online che offriva applicazioni software progettate per dispositivi Android, discontinuato nel 2017.</string>
+    <string name="pref_network_proxy_enable">Abilita proxy</string>
+    <string name="pref_network_proxy_url">URL del proxy</string>
+    <string name="pref_updates_check_frequency_desc">Configurazione della frequenza per gli aggiornamenti automatici, in ore.</string>
+    <string name="pref_network_proxy_title">Proxy</string>
+    <string name="toast_proxy_success">Proxy impostato con successo</string>
+    <string name="title_app_settings">Impostazioni app</string>
+    <string name="pref_updates_check_frequency">Frequenza per gli aggiornamenti automatici</string>
+    <string name="toast_proxy_failed">È stato impossibile impostare il proxy</string>
+    <string name="pref_downloader_wifi_title">Scarica usando esclusivamente il WiFi</string>
 </resources>
