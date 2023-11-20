@@ -123,10 +123,10 @@
     <string name="filter_review_critical">Kritikus</string>
     <string name="filter_review_all">Összes</string>
     <string name="exodus_view_report">Jelentés megtekintése</string>
-    <string name="exodus_substring">nyomkövető található itt,</string>
+    <string name="exodus_substring">ismert nyomkövető található itt,</string>
     <string name="exodus_progress">Nyomkövetők keresése…</string>
     <string name="exodus_powered">Működteti az Exodus</string>
-    <string name="exodus_no_tracker">Nincs nyomkövető</string>
+    <string name="exodus_no_tracker">Nincs ismert nyomkövető</string>
     <string name="download_speed_estimating">Becslés</string>
     <string name="download_resume_all">Az összes folytatása</string>
     <string name="download_queued">Besorolt</string>
@@ -224,9 +224,9 @@
     <string name="pref_insecure_anonymous_title">Bizonytalan névtelen eljárás</string>
     <string name="pref_insecure_anonymous_summary">GSF azonosító generálása helyben az eszközön</string>
     <string name="pref_filter_google_title">Google app szűrő</string>
-    <string name="pref_filter_google_summary">Eltávolít minden Google appot a keresési eredményekből és app kategóriákból</string>
+    <string name="pref_filter_google_summary">Google alkalmazások kihagyása a frissítés és telepített alkalmazás listákról</string>
     <string name="pref_filter_fdroid_title">F-Droid appok szűrése</string>
-    <string name="pref_filter_fdroid_summary">Eltávolítja az F-Droid appokat az app listákról</string>
+    <string name="pref_filter_fdroid_summary">F-Droid alkalmazások kihagyása a frissítés és telepített alkalmazás listákról</string>
     <string name="pref_downloader_external_desc">Külső tárhelyet van használatban letöltésekhez, exportáláshoz, stb.</string>
     <string name="pref_downloader_external">Felhasználó külső tárhelye</string>
     <string name="pref_downloader_active_title">Aktív letöltés</string>
@@ -261,12 +261,12 @@
     <string name="action_check">Ellenőrzés</string>
     <string name="toast_aas_token_failed">Nem sikerült az AAS Token generálása</string>
     <string name="toast_rated_failed">Az értékelést nem sikerült elküldeni</string>
-    <string name="toast_rated_success">Értékelve</string>
+    <string name="toast_rated_success">Értékelve, lehet, hogy időbeteleik míg megjelenik</string>
     <string name="toast_page_unavailable">A böngésző lap nem érhető el</string>
     <string name="dialog_desc_native_split">A Native Installer segítségével nem lehet telepíteni a kötegelt (osztott) alkalmazásokat. Változtasd a telepítőt Session, Services vagy Root-ra.</string>
     <string name="toast_export_failed">Nem sikerült az eszköz konfig. exportálása</string>
     <string name="toast_export_success">Eszköz konfig. sikeresen exportálva</string>
-    <string name="pref_updates_extended_desc">Letiltott appok frissítéseinek ellenőrzése</string>
+    <string name="pref_updates_extended_desc">Letiltott appok és játékok frissítéseinek ellenőrzése</string>
     <string name="pref_updates_extended">Kiterjesztett frissítések</string>
     <string name="app_updater_service_notif_text">Lehetővé teszi a háttérben történő alkalmazásletöltést</string>
     <string name="app_updater_service_notif_title">Háttérbeli alkalmazásletöltés</string>
@@ -298,7 +298,7 @@
     <string name="notification_updates_available_desc_1">A(z) <xliff:g id="app_one_name">%1$s</xliff:g> új verziója elérhető</string>
     <string name="notification_updates_available_desc_3"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g> és <xliff:g id="app_three_name">%3$s</xliff:g></string>
     <string name="session_init">Dolgok előkészítése…</string>
-    <string name="session_login">Először be kell jelentkeznie</string>
+    <string name="session_login">Először jelentkezz be</string>
     <string name="session_verifying">Munkamenet hitelesítése</string>
     <string name="session_verifying_google">A Google-munkamenet hitelesítése</string>
     <string name="title_search_results">Keresési eredmények</string>
@@ -350,4 +350,24 @@
     <string name="app_language">Alkalmazás nyelve</string>
     <string name="app_links_title">Alkalmazás linkek</string>
     <string name="action_enable">Engedélyezés</string>
+    <string name="pref_network_proxy_enable">Proxy engedélyezése</string>
+    <string name="pref_network_proxy_url">Proxy URL-címe</string>
+    <string name="pref_updates_check_frequency_desc">Az automatikus frissítések intervallumainak konfigurálása, órákban.</string>
+    <string name="pref_aurora_only">Csak Aurora Store alkalmazások</string>
+    <string name="pref_network_proxy_title">Proxy</string>
+    <string name="amazon_appstore_desc">Az Amazon Appstore egy alkalmazásbolt az Amazon által üzemeltetett Android-kompatibilis platformokhoz.</string>
+    <string name="toast_proxy_invalid">Érvénytelen proxy URL, ellenőrizze a formátumot!</string>
+    <string name="pref_aurora_only_desc">Csak az Aurora Store telepített alkalmazások megjelenítése a frissítésekben és a telepített alkalmazásokban</string>
+    <string name="toast_proxy_success">Proxy sikeresen beállítva</string>
+    <string name="title_app_settings">Alkalmazás beállítások</string>
+    <string name="title_apps_sale_provider">Szolgáltató - bestappsales.com</string>
+    <string name="details_no_apps_on_sale">Nincs leértékelt alkalmazás</string>
+    <string name="pref_downloader_path_title">Letöltési útvonal</string>
+    <string name="pref_updates_check_frequency">Automatikus frissítések gyakorisága</string>
+    <string name="pref_download_directory_error">A kiválasztott út nem írható</string>
+    <string name="toast_proxy_failed">A proxy beállítása sikertelen</string>
+    <string name="pref_network_proxy_enable_desc">Engedje meg az összes forgalmat az alkalmazásból, hogy átmenjen a proxyn</string>
+    <string name="action_uninstall_confirmation">Szeretné eltávolítani ezt az alkalmazást?</string>
+    <string name="android_market_desc">Az Android Market egy online áruház volt, amely szoftveralkalmazásokat kínált az Android készülékekhez, 2017-ben visszavonult.</string>
+    <string name="pref_downloader_wifi_title">Letöltés csak wifi használatával</string>
 </resources>
