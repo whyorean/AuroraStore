@@ -136,12 +136,12 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel-savedstate:$lifeVersion")
 
     //Arch Navigation
-    val navVersion = "2.7.4"
+    val navVersion = "2.7.5"
     implementation("androidx.navigation:navigation-fragment-ktx:$navVersion")
     implementation("androidx.navigation:navigation-ui-ktx:$navVersion")
 
     //Coil
-    implementation("io.coil-kt:coil:2.4.0")
+    implementation("io.coil-kt:coil:2.5.0")
 
     //Shimmer
     implementation("com.facebook.shimmer:shimmer:0.5.0")
@@ -152,7 +152,7 @@ dependencies {
     ksp("com.airbnb.android:epoxy-processor:$epoxyVersion")
 
     //HTTP Clients
-    implementation("com.squareup.okhttp3:okhttp:4.11.0")
+    implementation("com.squareup.okhttp3:okhttp:4.12.0")
 
     //Fetch - Downloader
     implementation("androidx.tonyodev.fetch2:xfetch2:3.1.6")
@@ -167,7 +167,7 @@ dependencies {
     implementation("com.gitlab.AuroraOSS:gplayapi:3.2.5")
 
     //Browser
-    implementation("androidx.browser:browser:1.6.0")
+    implementation("androidx.browser:browser:1.7.0")
 
     //Shizuku
     val shizukuVersion = "13.1.1"
