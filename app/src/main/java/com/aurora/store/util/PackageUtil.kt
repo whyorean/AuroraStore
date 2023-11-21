@@ -152,9 +152,7 @@ object PackageUtil {
         )
 
         packageInfoList = packageInfoList.filter {
-            it.packageName != null
-                    && it.applicationInfo != null
-                    && packageManager.getLaunchIntentForPackage(it.packageName) != null
+            it.packageName != null && it.applicationInfo != null
         }
 
         /*Filter google apps*/
