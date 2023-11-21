@@ -1,2 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="action_filter">Filtre</string>
+    <string name="title_updates">Aktualizácie</string>
+    <string name="details_no_updates">Žiadne dostupné aktualizácie</string>
+    <string name="title_apps_sale">Zľavnené aplikácie</string>
+    <string name="pref_ui_title">Prispôsobenie</string>
+    <string name="notification_updates_available_desc_1">Je dostupná nová verzia aplikácie <xliff:g id="app_one_name">%1$s</xliff:g></string>
+    <string name="title_blacklist_manager">Blacklist</string>
+    <string name="title_download_manager">Stiahnuté</string>
+    <string name="download_none">Žiadne stiahnuté</string>
+    <string name="title_apps_library">Aplikácie v knižnici</string>
+    <string name="update_available">dostupná aktualizácia</string>
+    <string name="search_hint">Hľadať aplikácie a hry</string>
+    <string name="title_about">O aplikácii</string>
+    <string name="pref_app_download">Sťahovanie</string>
+    <string name="pref_network_title">Sieťovanie</string>
+    <string name="pref_downloader_active_summary">Maximálny počet aktívnych sťahovaní</string>
+    <string name="title_apps_games">Moje aplikácie a hry</string>
+    <string name="download_paused">Pozastavené • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
+    <string name="title_library">Knižnica</string>
+    <string name="updates_available">dostupné aktualizácie</string>
+    <string name="title_account_manager">Účty</string>
+    <string name="title_installation">Inštalácia</string>
+    <string name="action_update_all">Aktualizovať všetko</string>
+    <string name="title_app_settings">Nastavenia aplikácie</string>
+    <string name="title_installed">Nainštalované</string>
+    <string name="details_no_apps_on_sale">Žiadne zľavnené</string>
+    <string name="title_device">Zariadenie</string>
+    <string name="title_language">Jazyk</string>
+    <string name="notification_updates_available"><xliff:g id="apps_count">%1$d</xliff:g> dostupné aktualizácie</string>
+    <string name="title_games">Hry</string>
+    <string name="download_progress">Sťahované • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
+    <string name="title_settings">Nastavenia</string>
+    <string name="title_apps">Aplikácie</string>
+    <string name="action_filter_downloads">Počet stiahnutí</string>
+    <string name="title_spoof_manager">Spoofing</string>
+    <string name="dialog_title_self_update">Nová dostupná aktualizácia</string>
+    <string name="action_update">Aktualizovať</string>
+    <string name="notification_updates_available_desc_2"><xliff:g id="app_one_name">%1$s</xliff:g> a <xliff:g id="app_two_name">%2$s</xliff:g></string>
+    <string name="notification_updates_available_1"><xliff:g id="apps_count">%1$d</xliff:g> dostupná aktualizácia</string>
+</resources>
