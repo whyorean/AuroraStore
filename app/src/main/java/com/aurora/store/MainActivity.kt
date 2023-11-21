@@ -159,7 +159,7 @@ class MainActivity : AppCompatActivity() {
                     if (it != null) {
                         showUpdatesSheet(it)
                     } else {
-                        Log.i("No self-update available")
+                        Log.i("No Aurora Store update available")
                     }
                 }
             }

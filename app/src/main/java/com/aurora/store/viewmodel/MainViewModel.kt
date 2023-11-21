@@ -25,6 +25,7 @@ class MainViewModel : ViewModel() {
     val selfUpdateAvailable = _selfUpdateAvailable.asSharedFlow()
 
     fun checkSelfUpdate(context: Context) {
+        Log.i(TAG, "Checking for Aurora Store updates")
         viewModelScope.launch(Dispatchers.IO) {
             try {
                 val gson: Gson =
@@ -48,7 +49,7 @@ class MainViewModel : ViewModel() {
                 }
             } catch (exception: Exception) {
                 _selfUpdateAvailable.emit(null)
-                Log.d(TAG, "Failed to check self-update", exception)
+                Log.d(TAG, "Failed to check Aurora Store updates", exception)
             }
         }
     }
