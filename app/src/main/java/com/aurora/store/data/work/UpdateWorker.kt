@@ -147,7 +147,7 @@ class UpdateWorker(private val appContext: Context, workerParams: WorkerParamete
                 return@withContext Result.success()
             }
         }
-        return Result.failure()
+        return Result.success()
     }
 
     private fun isValid(authData: AuthData): Boolean {
