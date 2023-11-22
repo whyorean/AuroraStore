@@ -225,9 +225,9 @@
     <string name="pref_install_delete_title">"Delete APK post-install"</string>
     <string name="pref_install_mode_am">AM installer.</string>
     <string name="pref_install_mode_shizuku">Shizuku installer</string>
-    <string name="pref_install_mode_native">"Native installer"</string>
+    <string name="pref_install_mode_native">"Native installer (Deprecated)"</string>
     <string name="pref_install_mode_root">"Root installer"</string>
-    <string name="pref_install_mode_services">"Aurora Services"</string>
+    <string name="pref_install_mode_services">"Aurora Services (Deprecated)"</string>
     <string name="pref_install_mode_session">"Session installer"</string>
     <string name="pref_install_mode_summary">"Select mode of APK installation"</string>
     <string name="pref_install_mode_title">"Installation method"</string>

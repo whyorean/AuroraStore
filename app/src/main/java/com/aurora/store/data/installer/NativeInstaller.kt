@@ -26,6 +26,7 @@ import android.os.Build
 import com.aurora.store.util.Log
 import java.io.File
 
+@Deprecated("Deprecated in favour of SessionInstaller")
 class NativeInstaller(context: Context) : InstallerBase(context) {
 
     override fun install(packageName: String, files: List<Any>) {

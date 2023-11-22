@@ -46,6 +46,7 @@ import java.util.concurrent.ThreadPoolExecutor
 import java.util.concurrent.TimeUnit
 import java.util.concurrent.atomic.AtomicBoolean
 
+@Deprecated("Deprecated in favour of RootInstaller")
 class ServiceInstaller(context: Context) : InstallerBase(context) {
 
     private lateinit var serviceConnection: ServiceConnection
