@@ -57,9 +57,9 @@
     <string name="pref_install_profile_title">ملفات تثبيت التعريفات (تجريبي)</string>
     <string name="pref_install_mode_title">طريقة التثبيت</string>
     <string name="pref_install_mode_session">مثبت الجلسة</string>
-    <string name="pref_install_mode_services">خدمات Aurora</string>
+    <string name="pref_install_mode_services">خدمات Aurora(مهمل)</string>
     <string name="pref_install_mode_root">مثبت الجذر</string>
-    <string name="pref_install_mode_native">المثبت الأصلي</string>
+    <string name="pref_install_mode_native">المثبت الأصلي(مهمل)</string>
     <string name="pref_install_delete_title">حذف APK بعد التثبيت</string>
     <string name="pref_filter_google_title">تصفية تطبيقات قوقل</string>
     <string name="pref_filter_fdroid_title">تصفية تطبيقات F-Droid</string>
@@ -371,4 +371,6 @@
     <string name="toast_proxy_success">عينت الوكيل بنجاح</string>
     <string name="toast_proxy_failed">فشل في تعيين الوكيل</string>
     <string name="pref_network_proxy_enable_desc">السماح لجميع حركة المرور من التطبيق بالمرور عبر الوكيل</string>
+    <string name="pref_self_update_title">التحديثات الذاتية</string>
+    <string name="pref_self_update_summary">التحقق من توفر إصدار جديد من Aurora Store وإبلاغي بذلك</string>
 </resources>
