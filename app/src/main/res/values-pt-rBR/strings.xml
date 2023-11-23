@@ -17,7 +17,7 @@
     <string name="title_download_manager">Downloads</string>
     <string name="title_apps">Aplicativos</string>
     <string name="pref_ui_theme_darkord">Discord</string>
-    <string name="pref_install_mode_services">Serviços Aurora</string>
+    <string name="pref_install_mode_services">Serviços Aurora (Preterido)</string>
     <string name="pref_app_download">Baixados</string>
     <string name="action_filter_downloads">Baixados</string>
     <string name="about_telegram">Telegram</string>
@@ -228,7 +228,7 @@
     <string name="pref_install_mode_summary">Selecione o modo de instalação do APK</string>
     <string name="pref_install_mode_session">Instalador de sessão</string>
     <string name="pref_install_mode_root">Instalador root</string>
-    <string name="pref_install_mode_native">Instalador nativo</string>
+    <string name="pref_install_mode_native">Instalador nativo (Preterido)</string>
     <string name="pref_install_delete_title">Excluir APK pós-instalação</string>
     <string name="pref_install_delete_summary">APKs serão excluídos por padrão</string>
     <string name="pref_install_auto_title">Instalar APKs automaticamente após o baixamento</string>
