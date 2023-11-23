@@ -74,9 +74,9 @@
     <string name="pref_install_mode_title">Způsob instalace</string>
     <string name="pref_install_mode_summary">Vyberte režim instalace APK</string>
     <string name="pref_install_mode_session">Relační instalátor</string>
-    <string name="pref_install_mode_services">Služby Aurora</string>
+    <string name="pref_install_mode_services">Služby Aurora (zastaralé)</string>
     <string name="pref_install_mode_root">Root instalátor</string>
-    <string name="pref_install_mode_native">Nativní instalátor</string>
+    <string name="pref_install_mode_native">Nativní instalátor (zastaralý)</string>
     <string name="pref_install_delete_title">Odstraňte soubor APK po instalaci</string>
     <string name="pref_install_delete_summary">Soubory APK budou ve výchozím nastavení odstraněny</string>
     <string name="pref_install_auto_title">Automatická instalace APK po stažení</string>
@@ -107,7 +107,7 @@
     <string name="onboarding_title_welcome">Vítejte</string>
     <string name="onboarding_title_theme">Motivy</string>
     <string name="onboarding_title_permissions">Oprávnění</string>
-    <string name="onboarding_title_installer">Instalace</string>
+    <string name="onboarding_title_installer">Instalátor</string>
     <string name="onboarding_title_accent">Barva</string>
     <string name="onboarding_theme_select">Vyberte, co se vám líbí</string>
     <string name="onboarding_permission_select">Obchod Aurora vyžaduje následující oprávnění</string>
