@@ -188,9 +188,9 @@
     <string name="pref_install_mode_title">安装方式</string>
     <string name="pref_install_mode_summary">选择 APK 安装模式</string>
     <string name="pref_install_mode_session">会话安装器</string>
-    <string name="pref_install_mode_services">Aurora 服务</string>
+    <string name="pref_install_mode_services">Aurora 服务（已废弃）</string>
     <string name="pref_install_mode_root">Root 安装器</string>
-    <string name="pref_install_mode_native">原生安装器</string>
+    <string name="pref_install_mode_native">原生安装程序（已废弃）</string>
     <string name="pref_install_delete_title">安装后删除 APK</string>
     <string name="pref_install_delete_summary">默认将删除 APK</string>
     <string name="pref_install_auto_title">下载后自动安装 APK</string>
