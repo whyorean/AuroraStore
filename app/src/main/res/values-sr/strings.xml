@@ -61,9 +61,9 @@
     <string name="pref_install_mode_title">Начин инсталације</string>
     <string name="pref_install_mode_summary">Изаберите начин инсталације APK-а</string>
     <string name="pref_install_mode_session">Програм за инсталацију „Сесија”</string>
-    <string name="pref_install_mode_services">Aurora услуге</string>
+    <string name="pref_install_mode_services">Aurora услуге (застареле)</string>
     <string name="pref_install_mode_root">Програм за инсталацију „Root”</string>
-    <string name="pref_install_mode_native">„Изворни” програм за инсталацију</string>
+    <string name="pref_install_mode_native">„Изворни” програм за инсталацију (застарео)</string>
     <string name="pref_install_delete_title">Избриши APK након инсталације</string>
     <string name="pref_install_delete_summary">APK-ови ће подразумевано бити избрисани</string>
     <string name="pref_install_auto_title">Аутоматски инсталирајте APK-ове након преузимања</string>
