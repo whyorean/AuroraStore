@@ -101,7 +101,7 @@
     <string name="pref_ui_similar_apps">मिलते-जुलते और संबंधित ऐप</string>
     <string name="ui_accent_9">नींबू</string>
     <string name="pref_filter_google_title">गूगल ऐप्स फिल्टर करें</string>
-    <string name="pref_install_mode_native">मूल इंस्टॉलर</string>
+    <string name="pref_install_mode_native">मूल इंस्टॉलर (डेप्रकेटड)</string>
     <string name="pref_ui_layout_tab">डिफॉल्ट टैब चुनें</string>
     <string name="dialog_title_self_update">नया अपडेट मौजूद</string>
     <string name="ui_accent_10">संतरा</string>
@@ -267,7 +267,7 @@
     <string name="pref_install_delete_title">इंस्टॉल के बाद एपीके मिटाएं</string>
     <string name="pref_ui_theme_system">सिस्टम अनुसार</string>
     <string name="pref_install_mode_root">रूट इंस्टॉलर</string>
-    <string name="pref_install_mode_services">ऑरोरा सेवाएं</string>
+    <string name="pref_install_mode_services">ऑरोरा सेवाएं (डेप्रकेटड)</string>
     <string name="pref_ui_theme_darkord">डिस्कॉर्ड</string>
     <string name="pref_install_profile_summary">ऐप्स इंस्टॉल करने के लिए लक्ष्य प्रोफ़ाइल का चयन करें। केवल रूट इंस्टॉलेशन विधि के साथ काम करता है</string>
     <string name="purchase_session_expired">सत्र एक्सपायर हुआ, नया सत्र लेने के लिए फिर लॉगइन करें।</string>
@@ -371,4 +371,6 @@
     <string name="toast_proxy_success">प्रॉक्सी सफलतापूर्वक सेट हो गई</string>
     <string name="toast_proxy_failed">प्रॉक्सी सेट करने में विफल</string>
     <string name="pref_network_proxy_enable_desc">ऐप से सभी ट्रैफ़िक को प्रॉक्सी के माध्यम से जाने की अनुमति दें</string>
+    <string name="pref_self_update_title">स्वयं अपडेटस</string>
+    <string name="pref_self_update_summary">जांचें और सूचित करें कि क्या ऑरोरा स्टोर का नया स्थिर संस्करण उपलब्ध है</string>
 </resources>
