@@ -191,9 +191,9 @@
     <string name="pref_install_mode_title">Спосіб встановлення</string>
     <string name="pref_install_mode_summary">Виберіть режим встановлення APK</string>
     <string name="pref_install_mode_session">Установник Android</string>
-    <string name="pref_install_mode_services">Служби Aurora</string>
+    <string name="pref_install_mode_services">Служби Aurora (Застарілі)</string>
     <string name="pref_install_mode_root">Кореневий встановлювач</string>
-    <string name="pref_install_mode_native">Власний встановлювач</string>
+    <string name="pref_install_mode_native">Власний встановлювач (Застарілий)</string>
     <string name="pref_install_delete_title">Видалити APK після встановлення</string>
     <string name="pref_install_delete_summary">Типово APK буде видалено</string>
     <string name="pref_install_auto_title">Автоматичне встановлення APK після завантаження</string>
@@ -371,4 +371,6 @@
     <string name="toast_proxy_success">Проксі успішно налаштовано</string>
     <string name="toast_proxy_failed">Не вдалося налаштувати проксі</string>
     <string name="pref_network_proxy_enable_desc">Дозволити всьому трафіку із застосунку проходити через проксі</string>
+    <string name="pref_self_update_title">Автооновлення</string>
+    <string name="pref_self_update_summary">Перевіряти та повідомляти, чи доступна нова стабільна версія Aurora Store</string>
 </resources>
