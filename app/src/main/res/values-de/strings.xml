@@ -372,4 +372,6 @@
     <string name="toast_proxy_success">Proxy erfolgreich festgelegt</string>
     <string name="toast_proxy_failed">Fehler beim Festlegen des Proxys</string>
     <string name="pref_network_proxy_enable_desc">Gesamten Netzwerkverkehr der App über den Proxyserver leiten</string>
+    <string name="pref_self_update_title">Selbständige Updates</string>
+    <string name="pref_self_update_summary">Prüfen und benachrichtigen, ob eine neue stabile Version von Aurora Store verfügbar ist</string>
 </resources>
