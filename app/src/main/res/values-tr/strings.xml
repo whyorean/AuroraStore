@@ -102,9 +102,9 @@
     <string name="pref_install_mode_title">Kurulum yöntemi</string>
     <string name="pref_install_mode_summary">APK kurulum kipini seç</string>
     <string name="pref_install_mode_session">Oturum kurucu</string>
-    <string name="pref_install_mode_services">Aurora Hizmetleri</string>
+    <string name="pref_install_mode_services">Aurora Hizmetleri (Kullanılmıyor)</string>
     <string name="pref_install_mode_root">Kök kurucu</string>
-    <string name="pref_install_mode_native">Yerel kurucu</string>
+    <string name="pref_install_mode_native">Yerel kurucu (Kullanılmıyor)</string>
     <string name="pref_install_delete_title">Kurduktan sonra APK\'yi sil</string>
     <string name="pref_install_delete_summary">APK\'ler öntanımlı olarak silinecek</string>
     <string name="pref_install_auto_title">İndirdikten sonra APK\'leri kendiliğinden kur</string>
@@ -371,4 +371,6 @@
     <string name="toast_proxy_success">Vekil belirleme başarılı</string>
     <string name="toast_proxy_failed">Vekil belirlenemedi</string>
     <string name="pref_network_proxy_enable_desc">Uygulamadan tüm trafiğin vekilden gitmesini sağla</string>
+    <string name="pref_self_update_title">Otomatik güncellemeler</string>
+    <string name="pref_self_update_summary">Aurora Store\'un yeni ve kararlı bir sürümünün mevcut olup olmadığını kontrol edin ve bildirin</string>
 </resources>

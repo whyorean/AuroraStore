@@ -86,9 +86,9 @@
     <string name="pref_install_mode_title">ਇੰਸਟਾਲੇਸ਼ਨ ਦੀ ਵਿਧੀ</string>
     <string name="pref_install_mode_summary">ਐਪ ਇੰਸਟਾਲ ਕਰਨ ਦੀ ਵਿਧੀ ਚੁਣੋ</string>
     <string name="pref_install_mode_session">ਸੈਸ਼ਨ ਇੰਸਟਾਲਰ</string>
-    <string name="pref_install_mode_services">ਔਰੋਰਾ ਸਰਵਿਸਿਜ਼</string>
+    <string name="pref_install_mode_services">ਔਰੋਰਾ ਸਰਵਿਸਿਜ਼(ਡੇਪ੍ਰਕੇਟਡ)</string>
     <string name="pref_install_mode_root">ਰੂਟ ਇੰਸਟਾਲਰ</string>
-    <string name="pref_install_mode_native">ਨੇਟਿਵ ਇੰਸਟਾਲਰ</string>
+    <string name="pref_install_mode_native">ਨੇਟਿਵ ਇੰਸਟਾਲਰ (ਡੇਪ੍ਰਕੇਟਡ)</string>
     <string name="pref_install_delete_title">ਇੰਸਟਾਲ ਤੋਂ ਬਾਅਦ APK ਨੂੰ ਮਿਟਾਓ</string>
     <string name="pref_install_delete_summary">ਐਪ ਇੰਸਟਾਲ ਹੋਣ ਦੇ ਬਾਅਦ ਉਸਦਾ APK ਸੈੱਟਅਪ ਮਿਟਾ ਦਿਤਾ ਜਾਵੇਗਾ</string>
     <string name="pref_install_auto_title">ਡਾਊਨਲੋਡ ਤੋਂ ਬਾਅਦ ਐਪਸ ਆਟੋ ਇੰਸਟਾਲ ਕਰੋ</string>
@@ -371,4 +371,6 @@
     <string name="toast_proxy_success">ਪ੍ਰੌਕਸੀ ਸਫਲਤਾਪੂਰਵਕ ਸੈੱਟ ਕੀਤੀ ਗਈ</string>
     <string name="toast_proxy_failed">ਪ੍ਰੌਕਸੀ ਸੈੱਟ ਕਰਨ ਵਿੱਚ ਅਸਫਲ</string>
     <string name="pref_network_proxy_enable_desc">ਐਪ ਤੋਂ ਸਾਰੇ ਟ੍ਰੈਫਿਕ ਨੂੰ ਪ੍ਰੌਕਸੀ ਰਾਹੀਂ ਜਾਣ ਦਿਓ</string>
+    <string name="pref_self_update_title">ਸਵੈ-ਅੱਪਡੇਟ</string>
+    <string name="pref_self_update_summary">ਜਾਂਚ ਕਰੋ ਅਤੇ ਸੂਚਿਤ ਕਰੋ ਕਿ ਕੀ ਔਰੋਰਾ ਸਟੋਰ ਦਾ ਨਵਾਂ ਸਥਿਰ ਸੰਸਕਰਣ ਉਪਲਬਧ ਹੈ</string>
 </resources>

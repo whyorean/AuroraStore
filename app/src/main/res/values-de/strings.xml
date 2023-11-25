@@ -113,7 +113,7 @@
     <string name="pref_install_profile_title">Installationsprofile (experimentell)</string>
     <string name="pref_install_mode_title">Installationsmethode</string>
     <string name="pref_install_mode_summary">Methode der APK-Installation wählen</string>
-    <string name="pref_install_mode_services">Mit Aurora Services</string>
+    <string name="pref_install_mode_services">Mit Aurora Services (Veraltet)</string>
     <string name="about_libera_summary">Unterstützer auf Liberapay werden</string>
     <string name="pref_install_delete_title">APK-Datei nach der Installation löschen</string>
     <string name="pref_install_delete_summary">APK-Dateien automatisch löschen</string>
@@ -235,7 +235,7 @@
     <string name="pref_ui_accent_title">Akzentfarbe</string>
     <string name="pref_install_mode_session">Sitzungs-Installation</string>
     <string name="pref_install_mode_root">Root-Installation</string>
-    <string name="pref_install_mode_native">Systemeigene Installation</string>
+    <string name="pref_install_mode_native">Systemeigene Installation (Veraltet)</string>
     <string name="pref_downloader_external">Externer Speicher</string>
     <string name="onboarding_permission_installer">Installation unbekannter Apps</string>
     <string name="onboarding_title_installer">Installationsmethode</string>

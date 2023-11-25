@@ -44,7 +44,7 @@
     <string name="purchase_unsupported">Appen stöds inte</string>
     <string name="purchase_invalid">Appen är inte köpt</string>
     <string name="purchase_failed">Nerladdningen misslyckades</string>
-    <string name="pref_updates_extended_desc">Söker också efter nya versioner av inaktiverade appar</string>
+    <string name="pref_updates_extended_desc">Leta efter nya versioner av inaktiverade appar och spel</string>
     <string name="pref_updates_extended">Förlängda uppdateringar</string>
     <string name="pref_ui_similar_apps">Liknande och relaterade appar</string>
     <string name="pref_ui_layout_tab">Välj standardflik</string>
@@ -62,7 +62,7 @@
     <string name="pref_install_mode_title">Installationsmetod</string>
     <string name="pref_install_mode_summary">Välj läge för APK-installation</string>
     <string name="pref_install_mode_session">Sessionsinstallatör</string>
-    <string name="pref_install_mode_services">Aurora-tjänster</string>
+    <string name="pref_install_mode_services">Aurora-tjänster (föråldrat)</string>
     <string name="pref_install_mode_root">Root-installatör</string>
     <string name="pref_install_delete_title">Ta bort APK efter installation</string>
     <string name="pref_install_delete_summary">APK:er kommer att tas bort som standard</string>
@@ -225,7 +225,7 @@
     <string name="pref_ui_no_for_you_desc">Visa för dig-sidor på startskärmen</string>
     <string name="pref_ui_no_for_you">För dig sidor</string>
     <string name="pref_filter_search_title">Använd icke-beständigt sökfilter</string>
-    <string name="pref_filter_fdroid_summary">Tar bort F-Droid-appar från app-listan</string>
+    <string name="pref_filter_fdroid_summary">Ignorera F-Droid-appar från uppdateringar och installerade appar</string>
     <string name="pref_downloader_active_summary">Maximalt antal aktiva nedladdningar</string>
     <string name="onboarding_permission_installer">Installatörsbehörighet</string>
     <string name="onboarding_permission_esa">Extern lagringsåtkomst</string>
@@ -239,7 +239,7 @@
     <string name="toast_apk_blacklisted">Svartlistad</string>
     <string name="pref_ui_similar_apps_desc">Visa liknande och relaterade klustrar på appens detaljsida</string>
     <string name="pref_filter_search_summary">Sök-filtren återställs vid varje sökning. Stäng av för att spara sök-filter</string>
-    <string name="pref_filter_google_summary">Tar bort alla Google-appar från sökresultaten och i kategorin appar</string>
+    <string name="pref_filter_google_summary">Ignorera Google-appar från Uppdateringar och Installerade appar</string>
     <string name="pref_downloader_active_title">Aktiv nerladdning</string>
     <string name="onboarding_permission_esm">Hanterare av externt lagringsutrymme</string>
     <string name="details_no_permission">Inga tillstånd</string>
@@ -259,7 +259,7 @@
     <string name="pref_common_extra">Extra</string>
     <string name="pref_install_mode_am">AM-installatör.</string>
     <string name="pref_abandon_session_desc">Ta bort övergivna eller väntande installationssessioner</string>
-    <string name="pref_install_mode_native">Systemspecifik installerare</string>
+    <string name="pref_install_mode_native">Inbyggt installationsprogram (föråldrat)</string>
     <string name="title_installer">App-installerare</string>
     <string name="pref_install_profile_summary">Välj målprofilen som appar ska installeras till. Fungerar endast med installationsmetoden som root</string>
     <string name="dialog_desc_native_split">Du kan inte installera medföljande (delade) appar via Systemspecifik installerare. Ändra installationsprogrammet till Session, Tjänster eller Root.</string>
@@ -358,4 +358,19 @@
     <string name="pref_downloader_path_title">Nedladdnings sökväg</string>
     <string name="pref_download_directory_error">Den valda sökvägen är inte skrivbar</string>
     <string name="action_uninstall_confirmation">Vill du avinstallera denna app \?</string>
+    <string name="pref_network_proxy_enable">Aktivera proxy</string>
+    <string name="pref_network_proxy_url">Proxy URL</string>
+    <string name="pref_updates_check_frequency_desc">Konfigurera intervall för automatiska uppdateringar, i timmar.</string>
+    <string name="pref_aurora_only">Aurora Store appar endast</string>
+    <string name="pref_network_proxy_title">Proxy</string>
+    <string name="toast_proxy_invalid">Ogiltig proxy-URL, kontrollera format!</string>
+    <string name="pref_self_update_title">Själv-uppdateringar</string>
+    <string name="pref_aurora_only_desc">Visa endast Aurora Store-installerade appar i Uppdateringar och Installerade appar</string>
+    <string name="toast_proxy_success">Proxy har ställts in framgångsrikt</string>
+    <string name="pref_self_update_summary">Kontrollera och meddela om en ny stabil version av Aurora Store är tillgänglig</string>
+    <string name="title_app_settings">App inställningar</string>
+    <string name="pref_updates_check_frequency">Automatisk uppdateringsfrekvens</string>
+    <string name="toast_proxy_failed">Misslyckades att ställa in proxy</string>
+    <string name="pref_network_proxy_enable_desc">Tillåt all trafik från appen att gå genom proxyn</string>
+    <string name="pref_downloader_wifi_title">Ladda ner endast via WiFi</string>
 </resources>

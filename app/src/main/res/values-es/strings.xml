@@ -55,9 +55,9 @@
     <string name="pref_install_mode_title">Método de instalación</string>
     <string name="pref_install_mode_summary">Seleccione el modo de instalación del APK</string>
     <string name="pref_install_mode_session">Instalador de sesión</string>
-    <string name="pref_install_mode_services">Servicios de Aurora</string>
+    <string name="pref_install_mode_services">Servicios de Aurora (Obsoleto)</string>
     <string name="pref_install_mode_root">Instalador root</string>
-    <string name="pref_install_mode_native">Instalador nativo</string>
+    <string name="pref_install_mode_native">Instalador nativo (obsoleto)</string>
     <string name="pref_install_delete_title">Eliminar el APK después de la instalación</string>
     <string name="pref_install_delete_summary">Los APK se eliminarán de manera predeterminada</string>
     <string name="pref_install_auto_title">Instalar automáticamente APK después de descargarlos</string>

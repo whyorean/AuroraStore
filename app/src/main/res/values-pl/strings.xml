@@ -150,9 +150,9 @@
     <string name="pref_install_profile_summary">Wybierz profil, na którym chcesz instalować aplikacje. Działa tylko z metodą instalacji poprzez roota</string>
     <string name="pref_install_mode_summary">Wybierz tryb instalacji plików APK</string>
     <string name="pref_install_mode_session">Instalator sesji</string>
-    <string name="pref_install_mode_services">Usługi Aurora</string>
+    <string name="pref_install_mode_services">Usługi Aurora (przestarzały)</string>
     <string name="pref_install_mode_root">Instalator root</string>
-    <string name="pref_install_mode_native">Instalator natywny</string>
+    <string name="pref_install_mode_native">Instalator natywny (przestarzały)</string>
     <string name="pref_install_delete_title">Usuń APK po zainstalowaniu</string>
     <string name="pref_install_delete_summary">Pliki APK będą domyślnie usuwane</string>
     <string name="pref_install_auto_title">Automatyczna instalacja plików APK po pobraniu</string>
@@ -329,7 +329,7 @@
     <string name="notification_updates_available_desc_3"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g> oraz <xliff:g id="app_three_name">%3$s</xliff:g></string>
     <string name="checking_for_updates">Sprawdzanie dostępności aktualizacji</string>
     <string name="pref_updates_check">Automatyczne sprawdzanie aktualizacji</string>
-    <string name="pref_updates_check_desc">Automatycznie sprawdzaj i powiadamiaj o nowych aktualizacjach aplikacji</string>
+    <string name="pref_updates_check_desc">Automatycznie sprawdzaj i okresowo powiadamiaj o nowych aktualizacjach aplikacji</string>
     <string name="pref_install_mode_shizuku">Instalator Shizuku</string>
     <string name="installer_shizuku_unavailable">Shizuku nie jest prawidłowo zainstalowany lub skonfigurowany.</string>
     <string name="title_search_suggestion">Podpowiedzi wyszukiwania</string>
@@ -371,4 +371,6 @@
     <string name="toast_proxy_failed">Nie udało się ustawić serwera proxy</string>
     <string name="pref_network_proxy_enable_desc">Zezwól, aby cały ruch z aplikacji przechodził przez serwer proxy</string>
     <string name="pref_aurora_only_desc">Pokaż tylko aplikacje zainstalowane przez Aurora Store w Aktualizacjach i Zainstalowanych aplikacjach</string>
+    <string name="pref_self_update_title">Samoaktualizacja</string>
+    <string name="pref_self_update_summary">Sprawdź i powiadom jeśli dostępna jest nowa stabilna wersja Aurora Store</string>
 </resources>
