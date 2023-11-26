@@ -274,6 +274,8 @@
     <string name="pref_install_mode_am">Інсталятор менеджера застосунків.</string>
     <string name="account_anonymous_insecure">Анонімно (незахищено)</string>
     <string name="installer_am_unavailable">Встановити Менеджер застосунків або змінити встановлювач.</string>
+    <string name="pref_vending_version_title">Версія Google Play</string>
+    <string name="pref_vending_version_device">За замовчуванням (з конфігурації пристрою)</string>
     <string name="ui_accent_1">Синій</string>
     <string name="ui_accent_4">Золотий</string>
     <string name="ui_accent_2">Пурпуровий</string>

@@ -113,6 +113,19 @@ class NetworkPreference : PreferenceFragmentCompat() {
                     false
                 }
         }
+
+        val vendingVersion: Preference? =
+            findPreference(Preferences.PREFERENCE_VENDING_VERSION)
+
+        vendingVersion?.let {
+            it.setOnPreferenceChangeListener { _, newValue ->
+                save(Preferences.PREFERENCE_VENDING_VERSION, Integer.parseInt(newValue.toString()))
+                runOnUiThread {
+                    requireContext().toast(R.string.insecure_anonymous_apply)
+                }
+                true
+            }
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

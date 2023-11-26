@@ -224,4 +224,22 @@
         <item> > 50 M </item>
         <item> > 100 M </item>
     </string-array>
+
+    <string-array name="pref_vending_version" translatable="false">
+        <item>@string/pref_vending_version_device</item>
+        <item>7.9.80.Q-all [0] [PR] 159305549</item>
+        <item>22.0.17-21 [0] [PR] 332555730</item>
+    </string-array>
+
+    <string-array name="pref_vending_version_codes" translatable="false">
+        <item>-1</item>
+        <item>80798000</item>
+        <item>82201710</item>
+    </string-array>
+
+    <string-array name="pref_vending_version_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
 </resources>
