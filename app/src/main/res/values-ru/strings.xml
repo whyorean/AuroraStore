@@ -274,8 +274,6 @@
     <string name="account_anonymous_insecure">Анонимный (небезопасно)</string>
     <string name="installer_am_unavailable">Установите Менеджер Приложений или смените установщик.</string>
     <string name="pref_install_mode_am">Установщик МП.</string>
-    <string name="pref_vending_version_title">Версия Google Play</string>
-    <string name="pref_vending_version_device">По умолчанию (с конфигурации устройства)</string>
     <string name="ui_accent_1">Синий</string>
     <string name="ui_accent_2">Пурпурный</string>
     <string name="ui_accent_3">Красный</string>

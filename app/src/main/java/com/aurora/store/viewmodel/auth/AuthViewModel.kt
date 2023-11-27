@@ -291,17 +291,22 @@ class AuthViewModel(application: Application) : BaseAndroidViewModel(application
             authData.locale = Locale.getDefault()
         }
 
-        val versionId = Preferences.getInteger(getApplication(), Preferences.PREFERENCE_VENDING_VERSION)
-        if(versionId > 0) {
+        val versionId =
+            Preferences.getInteger(getApplication(), Preferences.PREFERENCE_VENDING_VERSION)
+        if (versionId != 0) {
             val resources = (getApplication() as Context).resources
 
-            authData.deviceInfoProvider?.properties?.setProperty(
-                "Vending.version",
-                resources.getStringArray(R.array.pref_vending_version_codes)[versionId])
+            authData.deviceInfoProvider?.properties?.let {
+                it.setProperty(
+                    "Vending.version",
+                    resources.getStringArray(R.array.pref_vending_version_codes)[versionId]
+                )
 
-            authData.deviceInfoProvider?.properties?.setProperty(
-                "Vending.versionString",
-                resources.getStringArray(R.array.pref_vending_version)[versionId])
+                it.setProperty(
+                    "Vending.versionString",
+                    resources.getStringArray(R.array.pref_vending_version)[versionId]
+                )
+            }
         }
 
         if (authData.authToken.isNotEmpty() && authData.deviceConfigToken.isNotEmpty()) {

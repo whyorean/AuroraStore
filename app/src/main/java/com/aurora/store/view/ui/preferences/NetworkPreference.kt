@@ -114,10 +114,7 @@ class NetworkPreference : PreferenceFragmentCompat() {
                 }
         }
 
-        val vendingVersion: Preference? =
-            findPreference(Preferences.PREFERENCE_VENDING_VERSION)
-
-        vendingVersion?.let {
+        findPreference<Preference>(Preferences.PREFERENCE_VENDING_VERSION)?.let {
             it.setOnPreferenceChangeListener { _, newValue ->
                 save(Preferences.PREFERENCE_VENDING_VERSION, Integer.parseInt(newValue.toString()))
                 runOnUiThread {
