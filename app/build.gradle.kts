@@ -147,7 +147,7 @@ dependencies {
     implementation("com.facebook.shimmer:shimmer:0.5.0")
 
     //Epoxy
-    val epoxyVersion = "5.1.2"
+    val epoxyVersion = "5.1.3"
     implementation("com.airbnb.android:epoxy:$epoxyVersion")
     ksp("com.airbnb.android:epoxy-processor:$epoxyVersion")
 
@@ -170,9 +170,9 @@ dependencies {
     implementation("androidx.browser:browser:1.7.0")
 
     //Shizuku
-    val shizukuVersion = "13.1.1"
-    compileOnly("dev.rikka.hidden:stub:4.2.0")
-    implementation("dev.rikka.tools.refine:runtime:4.3.0")
+    val shizukuVersion = "13.1.5"
+    compileOnly("dev.rikka.hidden:stub:4.3.2")
+    implementation("dev.rikka.tools.refine:runtime:4.4.0")
     implementation("dev.rikka.shizuku:api:${shizukuVersion}")
     implementation("dev.rikka.shizuku:provider:${shizukuVersion}")
 
