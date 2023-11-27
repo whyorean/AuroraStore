@@ -233,6 +233,8 @@
     <string name="pref_install_mode_title">"Installation method"</string>
     <string name="pref_install_profile_summary">"Select the target profile to install apps to. Only works with the root installation method"</string>
     <string name="pref_install_profile_title">"Installation profiles (Experimental)"</string>
+    <string name="pref_vending_version_title">Google Play Version</string>
+    <string name="pref_vending_version_device">Default (from device config)</string>
     <string name="pref_network_title">"Networking"</string>
     <string name="pref_network_proxy_title">Proxy</string>
     <string name="pref_network_proxy_enable">"Enable proxy"</string>

@@ -113,6 +113,16 @@ class NetworkPreference : PreferenceFragmentCompat() {
                     false
                 }
         }
+
+        findPreference<Preference>(Preferences.PREFERENCE_VENDING_VERSION)?.let {
+            it.setOnPreferenceChangeListener { _, newValue ->
+                save(Preferences.PREFERENCE_VENDING_VERSION, Integer.parseInt(newValue.toString()))
+                runOnUiThread {
+                    requireContext().toast(R.string.insecure_anonymous_apply)
+                }
+                true
+            }
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

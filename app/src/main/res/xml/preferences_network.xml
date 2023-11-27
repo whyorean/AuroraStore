@@ -47,4 +47,13 @@
         app:key="PREFERENCE_INSECURE_ANONYMOUS"
         app:summary="@string/pref_insecure_anonymous_summary"
         app:title="@string/pref_insecure_anonymous_title" />
+
+    <com.aurora.store.view.custom.preference.AuroraListPreference
+        app:defaultValue="0"
+        app:entries="@array/pref_vending_version"
+        app:entryValues="@array/pref_vending_version_values"
+        app:iconSpaceReserved="false"
+        app:key="PREFERENCE_VENDING_VERSION"
+        app:title="@string/pref_vending_version_title"
+        app:useSimpleSummaryProvider="true" />
 </PreferenceScreen>
