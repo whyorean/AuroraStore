@@ -63,10 +63,7 @@ class LocaleView : RelativeLayout {
     @ModelProp
     fun locale(locale: Locale) {
         B.line1.text = locale.displayName
-        B.line2.text = if (locale.displayCountry.isNotEmpty())
-            locale.displayCountry
-        else
-            locale.displayLanguage
+        B.line2.text = locale.getDisplayLanguage(locale)
     }
 
     @ModelProp

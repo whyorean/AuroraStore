@@ -39,7 +39,9 @@
         android:layout_below="@+id/line1"
         android:layout_alignStart="@id/line1"
         android:layout_alignEnd="@id/line1"
-        android:layout_marginTop="@dimen/margin_xxsmall" />
+        android:layout_marginTop="@dimen/margin_xxsmall"
+        android:textAlignment="viewStart"
+        android:textDirection="locale" />
 
     <com.google.android.material.checkbox.MaterialCheckBox
         android:id="@+id/checkbox"
