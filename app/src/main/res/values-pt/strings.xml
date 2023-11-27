@@ -37,7 +37,7 @@
     <string name="device_miui_subtitle">O instalador de sessão não pode instalar aplicações devido às otimizações MIUI.</string>
     <string name="action_filter_paid_apps">Paga</string>
     <string name="action_filter_apps_with_ads">Aplicações com anúncios</string>
-    <string name="pref_install_mode_services">Aurora Services</string>
+    <string name="pref_install_mode_services">Aurora Services (descontinuado)</string>
     <string name="download_speed_estimating">A estimar</string>
     <string name="toast_aas_token_failed">Não foi possível gerar o Token AAS</string>
     <string name="toast_rated_success">Avaliada, pode levar algum tempo pa mostrar</string>
@@ -108,7 +108,7 @@
     <string name="pref_install_mode_summary">Selecione o modo de instalação de APK</string>
     <string name="pref_install_mode_session">Instalador de sessão</string>
     <string name="pref_install_mode_root">Instalador root</string>
-    <string name="pref_install_mode_native">Instalador nativo</string>
+    <string name="pref_install_mode_native">Instalador nativo (descontinuado)</string>
     <string name="pref_install_delete_title">Apagar APK após a instalação</string>
     <string name="pref_install_delete_summary">Por definição, as APK serão apagadas</string>
     <string name="pref_install_auto_title">Instalar APK após descarregar</string>
