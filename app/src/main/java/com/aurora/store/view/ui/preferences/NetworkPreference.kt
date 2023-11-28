@@ -23,6 +23,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.widget.Toolbar
 import androidx.navigation.fragment.findNavController
+import androidx.preference.ListPreference
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import com.aurora.Constants
@@ -34,6 +35,8 @@ import com.aurora.store.data.network.HttpClient
 import com.aurora.store.util.CommonUtil
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.save
+import com.aurora.store.view.custom.preference.ListPreferenceMaterialDialogFragmentCompat
+import com.aurora.store.view.custom.preference.ListPreferenceMaterialDialogFragmentCompat.Companion.PREFERENCE_DIALOG_FRAGMENT_TAG
 import com.google.gson.Gson
 
 class NetworkPreference : PreferenceFragmentCompat() {
@@ -122,6 +125,16 @@ class NetworkPreference : PreferenceFragmentCompat() {
                 }
                 true
             }
+        }
+    }
+
+    override fun onDisplayPreferenceDialog(preference: Preference) {
+        if (preference is ListPreference) {
+            val dialogFragment = ListPreferenceMaterialDialogFragmentCompat.newInstance(preference.getKey())
+            dialogFragment.setTargetFragment(this, 0)
+            dialogFragment.show(parentFragmentManager, PREFERENCE_DIALOG_FRAGMENT_TAG)
+        } else {
+            super.onDisplayPreferenceDialog(preference)
         }
     }
 
