@@ -373,4 +373,6 @@
     <string name="pref_network_proxy_enable_desc">Přesměrovat veškerý síťový provoz skrz proxy</string>
     <string name="pref_self_update_title">Aktualizace Aurora Store</string>
     <string name="pref_self_update_summary">Zkontrolovat a oznámit, pokud bude dostupná nová stabilní verze aplikace Aurora Store</string>
+    <string name="pref_vending_version_device">Výchozí (z konfigurace zařízení)</string>
+    <string name="pref_vending_version_title">Verze z Google Play</string>
 </resources>
