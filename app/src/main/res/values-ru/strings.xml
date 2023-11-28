@@ -186,9 +186,9 @@
     <string name="pref_install_profile_title">Установочные профили (экспериментальная функция)</string>
     <string name="pref_install_mode_title">Способ установки</string>
     <string name="pref_install_mode_summary">Выберите режим установки APK</string>
-    <string name="pref_install_mode_services">Сервисы Aurora</string>
+    <string name="pref_install_mode_services">Сервисы Aurora (Устарел)</string>
     <string name="pref_install_mode_root">Root-установщик</string>
-    <string name="pref_install_mode_native">Системный установщик</string>
+    <string name="pref_install_mode_native">Системный установщик (Устарел)</string>
     <string name="pref_install_delete_title">Удалить APK-файлы после установки</string>
     <string name="pref_install_delete_summary">APK-файлы будут удалены по умолчанию</string>
     <string name="pref_install_auto_title">Автоматическая установка APK-файлов после загрузки</string>
@@ -371,4 +371,6 @@
     <string name="details_no_apps_on_sale">Приложений в продаже не найдено</string>
     <string name="pref_downloader_path_title">Путь загрузки</string>
     <string name="pref_network_proxy_enable_desc">Разрешить трафику приложения проходить через прокси</string>
+    <string name="pref_self_update_title">Самообновления</string>
+    <string name="pref_self_update_summary">Проверка и уведомление при появлении новой стабильной версии Aurora Store</string>
 </resources>
