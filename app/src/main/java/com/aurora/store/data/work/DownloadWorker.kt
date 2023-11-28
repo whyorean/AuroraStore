@@ -94,7 +94,9 @@ class DownloadWorker(private val appContext: Context, workerParams: WorkerParame
                 .keepResultsForAtLeast(7.days.toJavaDuration())
                 .build()
 
-            WorkManager.getInstance(context).enqueueUniqueWork(DOWNLOAD_WORKER, KEEP, work)
+            // Ensure all app downloads are unique to preserve individual records
+            WorkManager.getInstance(context)
+                .enqueueUniqueWork("${DOWNLOAD_WORKER}/${app.packageName}", KEEP, work)
         }
     }
 
