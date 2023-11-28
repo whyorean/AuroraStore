@@ -373,4 +373,6 @@
     <string name="pref_network_proxy_enable_desc">Разрешить трафику приложения проходить через прокси</string>
     <string name="pref_self_update_title">Самообновления</string>
     <string name="pref_self_update_summary">Проверка и уведомление при появлении новой стабильной версии Aurora Store</string>
+    <string name="pref_vending_version_device">По умолчанию (с конфигурации устройства)</string>
+    <string name="pref_vending_version_title">Версия Google Play</string>
 </resources>
