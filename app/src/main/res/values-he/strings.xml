@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="title_about">על אודות</string>
     <string name="details_think_this_app">מה דעתך על היישום הזה\?</string>
     <string name="about_telegram">טלגרם</string>
@@ -154,10 +154,10 @@
     <string name="details_beta_subscribed">נרשמת לתוכנית הבדיקה של גרסת הביתא</string>
     <string name="exodus_view_report">הצגת הדו״ח</string>
     <string name="download_metadata">נתוני העל מתקבלים</string>
-    <string name="pref_filter_fdroid_summary">להסרת יישומי F-Droid מרשימות היישומים</string>
+    <string name="pref_filter_fdroid_summary">התעלם מיישומי F-Droid מעדכונים ויישומים מותקנים</string>
     <string name="onboarding_title_installer">שיטת התקנה</string>
     <string name="download_clear_completed">הניקוי הושלם</string>
-    <string name="download_completed">הורדו</string>
+    <string name="download_completed">הורדה הושלמה</string>
     <string name="download_canceled">בוטל</string>
     <string name="pref_ui_accent_title">צבע נושא</string>
     <string name="download_none">אין הורדות</string>
@@ -165,12 +165,12 @@
     <string name="onboarding_permission_esm">מנהל אחסון חיצוני</string>
     <string name="purchase_not_found">היישום לא נמצא</string>
     <string name="installer_status_failure">ההתקנה נכשלה</string>
-    <string name="exodus_substring">עוקבנים נמצאו</string>
+    <string name="exodus_substring">עוקבנים ידועים נמצאו</string>
     <string name="download_queued">מחכה בתור</string>
     <string name="pref_install_delete_title">מחיקת קובצי ה־APK לאחר ההתקנה</string>
     <string name="pref_updates_extended">עדכונים מורחבים</string>
-    <string name="pref_updates_extended_desc">האם לחפש עדכונים גם ליישומים מושבתים</string>
-    <string name="pref_install_mode_services">שירותי Aurora</string>
+    <string name="pref_updates_extended_desc">חפש עדכונים גם ליישומים ומשחקים מושבתים</string>
+    <string name="pref_install_mode_services">שירותי Aurora (לא עדכני)</string>
     <string name="pref_network_title">תעבורת רשת</string>
     <string name="pref_downloader_active_summary">מספר מרבי של הורדות פעילות</string>
     <string name="title_manual_download">הורדה ידנית</string>
@@ -204,7 +204,7 @@
     <string name="details_dev_profile">פרופיל המפתח</string>
     <string name="details_gsf_dependent">נדרש GSF</string>
     <string name="download_force_clear_all">לכפות ניקוי של הכול</string>
-    <string name="exodus_no_tracker">לא מכילה עוקבנים</string>
+    <string name="exodus_no_tracker">לא מכילה עוקבנים ידועים</string>
     <string name="exodus_powered">מופעל באמצעות Exodus</string>
     <string name="installer_status_failure_conflict">קיימת חבילה מתנגשת</string>
     <string name="installer_status_failure_session">לא היה ניתן ליצור הפעלה</string>
@@ -217,7 +217,7 @@
     <string name="title_installation">התקנה</string>
     <string name="title_installer">מתקין היישומים</string>
     <string name="title_purchase_history">היסטוריית רכישות</string>
-    <string name="pref_filter_google_summary">להסרת כל יישומי Google מתוצאות החיפוש ומהקטגוריות</string>
+    <string name="pref_filter_google_summary">התעלם מיישומי Google בעדכונים וביישומים המותקנים</string>
     <string name="toast_permission_granted">הוענקה הרשאת גישה</string>
     <string name="toast_rated_failed">לא היה ניתן לשלוח את הדירוג</string>
     <string name="app_updater_service_notif_title">הורדת יישומים ברקע</string>
@@ -227,7 +227,7 @@
     <string name="spoof_apply">וודא שאתה מתחבר מחדש כדי להחיל את הזיוף</string>
     <string name="onboarding_permission_installer_desc">אשר התקנת אפליקציות מחנות אורורה</string>
     <string name="pref_install_mode_summary">בחר שיטה להתקנות APK</string>
-    <string name="pref_install_mode_native">מתקין נתיב</string>
+    <string name="pref_install_mode_native">מתקין Native (לא עדכני)</string>
     <string name="pref_downloader_external_desc">נעשה שימוש באחסון חיצוני בשביל הורדות, ייצוא, וכו\'.</string>
     <string name="device_miui_description">בבקשה, השבת את האופטימיזציה של שיאומי כדי לאשר התקנות, אחרת אתה יכול לבחור מתקין רוט, או שירותי אורורה.</string>
     <string name="toast_manual_unavailable">קוד הגרסה שביקשת לא זמין.</string>
@@ -263,4 +263,114 @@
     <string name="notification_channel_general">התראות כלליות</string>
     <string name="pref_install_auto_title">התקן אוטומטית אפליקציות לאחר ההורדה</string>
     <string name="toast_spoof_applied">זיוף המכשיר הוחל.</string>
+    <string name="installer_shizuku_unavailable">Shizuku לא מותקן או לא הוגדר כראוי.</string>
+    <string name="login_rate_limited">אופס, אתה בעל דירוג מוגבל</string>
+    <string name="pref_common_extra">תוספים</string>
+    <string name="toast_export_failed">לא הצליח לייצא תצורת מכשיר</string>
+    <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>
+    <string name="server_unreachable">לא ניתן לגשת לשרת</string>
+    <string name="notification_updates_available_desc_4"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g>, <xliff:g id="app_three_name">%3$s</xliff:g> ו <xliff:g id="apps_count">%4$d</xliff:g> ועוד</string>
+    <string name="downloading_dep">מוריד קבצים נוספים בשביל \u0020<xliff:g id="app">%1$s</xliff:g></string>
+    <string name="pref_network_proxy_enable">הפעל פרוקסי</string>
+    <string name="app_updater_service_notif_text">מאפשר הורדת יישום ברקע</string>
+    <string name="check_connectivity">בדוק התחברות אינטרנט</string>
+    <string name="failed_generating_session">לא הצליח ליצור כניסה, קוד תקלה: <xliff:g id="status_code">%1$d</xliff:g></string>
+    <string name="toast_aas_token_failed">לא הצליח ליצור טוקן AAS</string>
+    <string name="failed_to_generate_session">לא הצליח ליצור כניסה</string>
+    <string name="session_verifying">מאמת כניסה</string>
+    <string name="details_ratings_title_hint">כותרת סקירה</string>
+    <string name="app_link_enabled">קישורי אפליקציה מופעלים!</string>
+    <string name="pref_network_proxy_url">URL פרוקסי</string>
+    <string name="pref_updates_check_frequency_desc">הגדר תכיפות עדכונים אוטומטיים, כל שעה.</string>
+    <string name="pref_aurora_only">יישומי חנות Aurora בלבד</string>
+    <string name="ui_accent_0">מערכת</string>
+    <string name="pref_network_proxy_title">פרוקסי</string>
+    <string name="session_login">קודם כל תיכנס</string>
+    <string name="pref_install_mode_shizuku">מתקין Shizuku</string>
+    <string name="action_post">פרסום</string>
+    <string name="onboarding_permission_notifications">התראות</string>
+    <string name="notification_updates_available_desc_1">קיימת גרסה חדשה ל <xliff:g id="app_one_name">%1$s</xliff:g></string>
+    <string name="action_enable">אפשר</string>
+    <string name="toast_import_failed">לא הצליח לייבא תצורת מכשיר</string>
+    <string name="checking_for_updates">מחפש עדכונים</string>
+    <string name="download_eta_sec">%1$dשנ נותרו</string>
+    <string name="ui_accent_12">כחול דיסקורד</string>
+    <string name="app_links_desc">אשר לחנות Aurora לפתוח קישורים נתמכים</string>
+    <string name="requesting_new_session">מבקש כניסה חדשה</string>
+    <string name="amazon_appstore_desc">Amazon Appstore זאת חנות היישומים לפלטפורמות תואמות אנדרואיד שמופעלת ע\"י אמזון.</string>
+    <string name="bad_request">תקלה פנימית! בבקשה נסה שוב אחרי זמן מה</string>
+    <string name="update_available">עדכון נמצא</string>
+    <string name="search_hint">‬חפש אפליקציות ומשחקים</string>
+    <string name="action_import">ייבוא</string>
+    <string name="toast_proxy_invalid">URL פרוקסי לא תקין, בדוק פורמט</string>
+    <string name="toast_page_unavailable">עמוד הדפדוף לא קיים</string>
+    <string name="title_search_suggestion">הצעות חיפוש</string>
+    <string name="title_advanced">מתקדם</string>
+    <string name="pref_self_update_title">עדכון-עצמי</string>
+    <string name="pref_aurora_only_desc">הצג רק יישומים שהותקנו מחנות Aurora בעדכונים וביישומים המותקנים</string>
+    <string name="session_login_failed_google">‏לא הצליח להיכנס עם גוגל</string>
+    <string name="menu">תפריט</string>
+    <string name="download_eta_min">%1$dדק %2$dשנ נותרו</string>
+    <string name="pref_insecure_anonymous_summary">צור מזהה GSF מקומי על המכשיר</string>
+    <string name="toast_proxy_success">פרוקסי הוגדר בהצלחה</string>
+    <string name="app_links_title">קישורי האפליקציה</string>
+    <string name="toast_export_success">ייצוא תצורת מכשיר בוצעה בהצלחה</string>
+    <string name="open_in_aurora">בפתח בחנות Aurora</string>
+    <string name="download_paused">מושהה • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
+    <string name="toast_rated_success">דורג, אולי יקח לזה זמן עד שיוצג</string>
+    <string name="pref_filter_search_title">השתמש הפילטרים לא קבועים בחיפוש</string>
+    <string name="session_scrapped">כניסה אחרונה אבדה</string>
+    <string name="updates_available">עדכונים נמצאו</string>
+    <string name="google_play_store_desc">גוגל פליי, ידוע גם כ-Play Store של גוגל ובתור החנות האידיאלית של אנדרואיד.</string>
+    <string name="session_good">וואה! הכל טוב.</string>
+    <string name="failed_to_fetch_report">לא הצליח להשיג דיווח פרטיות</string>
+    <string name="toast_abandon_sessions">עונות התקנה ישנות ננטשו</string>
+    <string name="action_get_local_apk">שמור באנדל של אפליקציה</string>
+    <string name="verifying_new_session">מאמת כניסה חדשה</string>
+    <string name="action_enabled">מאופשר</string>
+    <string name="toast_import_success">ייבוא תצורת מכשיר בוצעה בהצלחה</string>
+    <string name="download_eta_hrs">%1$dש %2$dדק %3$dשנ left</string>
+    <string name="pref_self_update_summary">בדוק והודיע אם קיימת גרסה חדשה יציבה לחנות Aurora</string>
+    <string name="title_app_settings">הגדרות יישום</string>
+    <string name="notification_channel_updater_service">שרות הורדת יישום ברקע</string>
+    <string name="dialog_desc_native_split">אתה לא יכול להתקין אפליקציות באנדל (מפוצלות) עם מתקין Native Installer, שנה את המתקין ל-Session, Services או Root.</string>
+    <string name="title_apps_sale_provider">משווק - bestappsales.com</string>
+    <string name="session_init">מכין כמה דברים…</string>
+    <string name="about_xda">עמוד המפתח</string>
+    <string name="details_no_apps_on_sale">לא נמצאו אפליקציות במבצע</string>
+    <string name="session_enjoy">כנס ותהנה.</string>
+    <string name="server_maintenance">השרת מושבת לצורך תחזוקה</string>
+    <string name="pref_abandon_session">‏כפה ניקוי עונות התקנה</string>
+    <string name="pref_downloader_path_title">נתיב הורדה</string>
+    <string name="pref_install_profile_summary">בחר פרופיל יעד להתקין אפליקציות דרכו. עובד רק התקנות בשיטת root.</string>
+    <string name="toast_manual_available">אחלה, קוד הגרסה המבוקשת קיים, מוריד עכשיו.</string>
+    <string name="session_verifying_google">מאמת כניסת גוגל</string>
+    <string name="rate_limited">אופס, החשבון הזה בעל דירוג מוגבל!</string>
+    <string name="pref_updates_check_frequency">תכיפות עדכונים אוטומטיים</string>
+    <string name="error">קרתה תקלה!</string>
+    <string name="notification_updates_available_desc_3"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g> ו <xliff:g id="app_three_name">%3$s</xliff:g></string>
+    <string name="pref_download_directory_error">הנתיב שנבחר חסום לכתיבה</string>
+    <string name="notification_updates_available"><xliff:g id="apps_count">%1$d</xliff:g> עדכונים נמצאים</string>
+    <string name="toast_proxy_failed">לא הצליח להגדיר פרוקסי</string>
+    <string name="expand">הרחב</string>
+    <string name="title_search_results">תוצאות חיפוש</string>
+    <string name="notification_channel_updates">התראות עדכונים</string>
+    <string name="download_progress">מוריד • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
+    <string name="pref_network_proxy_enable_desc">אפשר את כל התעבורה מהיישום שתעבור דרך פרוקסי</string>
+    <string name="pref_filter_search_summary">פילטרים בחיפוש מתאספים בכל חיפוש. כבה כדי לשמור את הפילטרים בחיפוש</string>
+    <string name="onboarding_permission_notifications_desc">שלח התראות לגבי מצב ההתקנה</string>
+    <string name="action_uninstall_confirmation">‏האם אתה רוצה להסיר את היישום הזה?</string>
+    <string name="pref_updates_check_desc">אוטומטית בדוק והודיע על עדכון חדש ליישום תקופתית</string>
+    <string name="android_market_desc">החנות של אנדרואיד היתה חנות אונליין שמציעה אפליקציות שעוצבו למכשירי אנדרואיד, עד 2017.</string>
+    <string name="about_xda_summary">הצג את העמוד של Aurora Store בפורום XDA לשוחח ולהציע הצעות.</string>
+    <string name="about_bhim">BHIM - UPI</string>
+    <string name="permissions_denied">ההרשאות הנדרשות נדחו. אנא אשר אותן בשביל המשך הפעולה</string>
+    <string name="access_denied_using_vpn">גישה נדחתה! אתה משתמש ב-VPN או Tor?</string>
+    <string name="pref_abandon_session_desc">הסר התקנות מושהות או נטושות</string>
+    <string name="pref_updates_check">חיפוש עדכונים אוטומטית</string>
+    <string name="pref_downloader_wifi_title">הורד רק דרך WiFi</string>
+    <string name="app_language">שפת האפליקציה</string>
+    <string name="notification_updates_available_desc_2"><xliff:g id="app_one_name">%1$s</xliff:g> ו <xliff:g id="app_two_name">%2$s</xliff:g></string>
+    <string name="purchase_session_expired">פג תוקף כניסה, הכנס מחדש כדי לקבל כניסה חדשה.</string>
+    <string name="notification_updates_available_1"><xliff:g id="apps_count">%1$d</xliff:g> עדכון נמצא</string>
 </resources>
