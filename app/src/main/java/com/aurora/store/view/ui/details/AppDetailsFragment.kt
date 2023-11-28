@@ -208,6 +208,7 @@ class AppDetailsFragment : BaseFragment(R.layout.fragment_details) {
                     attachActions()
                     binding.layoutDetailsToolbar.toolbar.menu.apply {
                         findItem(R.id.action_uninstall)?.isVisible = true
+                        findItem(R.id.menu_app_settings)?.isVisible = true
                     }
                 }
             }
@@ -217,6 +218,7 @@ class AppDetailsFragment : BaseFragment(R.layout.fragment_details) {
                     attachActions()
                     binding.layoutDetailsToolbar.toolbar.menu.apply {
                         findItem(R.id.action_uninstall)?.isVisible = false
+                        findItem(R.id.menu_app_settings)?.isVisible = false
                     }
                 }
             }
