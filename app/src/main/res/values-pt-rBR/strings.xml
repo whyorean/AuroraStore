@@ -281,7 +281,7 @@
     <string name="ui_accent_11">Azul claro</string>
     <string name="ui_accent_13">Azul escuro</string>
     <string name="account_anonymous_insecure">Anônimo (inseguro)</string>
-    <string name="pref_install_mode_am">Instalador AM.</string>
+    <string name="pref_install_mode_am">Instalador AM</string>
     <string name="installer_am_unavailable">Instale o Gerenciador de Aplicativos ou mude o instalador.</string>
     <string name="ui_accent_2">Magenta</string>
     <string name="ui_accent_12">Azul disskord</string>
@@ -373,4 +373,7 @@
     <string name="pref_self_update_summary">Checar e notificar se uma nova versão da Aurora Store estiver disponível</string>
     <string name="pref_vending_version_device">Padrão (da configuração do dispositivo)</string>
     <string name="pref_vending_version_title">Versão do Google Play</string>
+    <string name="onboarding_permission_doze">Downloads em Segundo Plano</string>
+    <string name="alt_download_progress">Baixando</string>
+    <string name="onboarding_permission_doze_desc">Permitir que a Aurora Store baixe e atualize apps em segundo plano</string>
 </resources>
