@@ -45,7 +45,6 @@
     <string name="filter_review_critical">Dhaliilaha</string>
     <string name="app_updater_service_notif_text">Wuxuu ogolaadaa in appka dajintiisa xaga dambe laga wado</string>
     <string name="app_updater_service_notif_title">Dajinta appka xaga dambe</string>
-    <string name="pref_downloader_active_title">Dajinta socota markiiba</string>
     <string name="pref_ui_layout_tab">Bogga joogtada ah</string>
     <string name="pref_insecure_anonymous_title">Xidhiidhka garanwaaga aan amniga ahayn</string>
     <string name="pref_filter_search_title">Shaandhaynta aan joogtada ahayn</string>
@@ -127,7 +126,6 @@
     <string name="pref_filter_fdroid_summary">Wuxuu liistada kasaaraa appska F-Droid</string>
     <string name="pref_downloader_external_desc">Kaydka dibada ah waxaa loo isticmaalaa soodajinta, gudbinta iwm.</string>
     <string name="pref_downloader_external">Kaydka dibada ee isticmaalaha</string>
-    <string name="pref_downloader_active_summary">Tirada ugu saraysa soodajinta ee halmar wada socon karta</string>
     <string name="pref_dialog_to_apply_restart">Fadhigan waxaa la fulin doonaa markaad appka dibusoo bilowdo</string>
     <string name="pref_common_extra">Dheeraad</string>
     <string name="pref_app_download">Soodajinta</string>

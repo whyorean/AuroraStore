@@ -210,7 +210,6 @@
     <string name="installer_status_failure_incompatible">برنامه ناسازگار</string>
     <string name="filter_review_critical">بحرانی</string>
     <string name="installer_service_misconfigured">خدمات آرورا را راه اندازی کنید و ابتدا همه مجوزها را اعطا کنید.</string>
-    <string name="pref_downloader_active_title">دانلود فعال</string>
     <string name="pref_install_profile_summary">نمایه مورد نظر را برای نصب برنامه ها انتخاب کنید. فقط با روش نصب روت کار می کند</string>
     <string name="onboarding_title_permissions">دسترسی ها</string>
     <string name="toast_aas_token_failed">کد AAS ایجاد نشد</string>
@@ -223,7 +222,6 @@
     <string name="pref_filter_fdroid_title">فیلتر کردن برنامه های F-Droid</string>
     <string name="onboarding_title_theme">تم ها</string>
     <string name="menu_terms">شرایط استفاده از خدمات</string>
-    <string name="pref_downloader_active_summary">حداکثر تعداد دانلودهای فعال</string>
     <string name="toast_developer_setting_failed">تنظیمات توسعه دهنده را از تنظیمات دستگاه روشن کنید تا آنها را باز کنید.</string>
     <string name="toast_rated_failed">نمی تواند امتیاز را ارسال کند</string>
     <string name="installer_status_failure">نصب کننده ناموفق بود</string>

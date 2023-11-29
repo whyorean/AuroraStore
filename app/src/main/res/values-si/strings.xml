@@ -239,8 +239,6 @@
     <string name="onboarding_installer_select">සුදුසු ස්ථාපකයක් තෝරන්න</string>
     <string name="onboarding_permission_select">අවුරෝරා ස්ටෝර් සඳහා පහත අවසර වුවමනාය</string>
     <string name="onboarding_permission_esm">බාහිර ආචයන කළමණාකරු</string>
-    <string name="pref_downloader_active_title">ක්‍රියාත්මක බාගැනීම්</string>
-    <string name="pref_downloader_active_summary">උපරිම ක්‍රියාත්මක බාගැනීම් ගණන</string>
     <string name="spoof_apply">රැවටීම යෙදීමට නැවත පිවිසෙන්න</string>
     <string name="action_grant">ප්‍රදානය</string>
     <string name="insecure_anonymous_apply">වෙනස්කම් යෙදීමට ඔබ යළි-පිවිස යෙදුම නැවත ඇරඹිය යුතුය.</string>

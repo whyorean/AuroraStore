@@ -166,8 +166,6 @@
     <string name="onboarding_permission_esa_desc">Pentru a salva descărcări (APK și OBB), a exporta și a importa configurații de dispozitiv în și din memoria externă.</string>
     <string name="onboarding_permission_installer">Permisiune de instalare</string>
     <string name="pref_abandon_session_desc">Șterge sesiunile de instalare abandonate sau în așteptare</string>
-    <string name="pref_downloader_active_summary">Numărul maxim de descărcări active</string>
-    <string name="pref_downloader_active_title">Descărcare activă</string>
     <string name="onboarding_permission_notifications">Notificări</string>
     <string name="onboarding_permission_notifications_desc">Trimite notificări cu privire la starea instalărilor</string>
     <string name="pref_app_download">Descărcări</string>

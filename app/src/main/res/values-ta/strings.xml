@@ -94,7 +94,6 @@
     <string name="pref_filter_google_title">கூகுள் செயலிகளை வடிகட்டு</string>
     <string name="onboarding_theme_select">நீங்கள் விரும்புவதைத் தேர்ந்தெடுக்கவும்</string>
     <string name="pref_abandon_session">நிறுவல் அமர்வுகள் துடைப்பதைக் கட்டாயப்படுத்து</string>
-    <string name="pref_downloader_active_summary">செயலில் உள்ள பதிவிறக்கங்களின் அதிகபட்ச எண்ணிக்கை</string>
     <string name="pref_downloader_external_desc">பதிவிறக்கங்கள், ஏற்றுமதிகள் போன்றவற்றுக்கு வெளிப்புற சேமிப்பகம் பயன்படுத்தப்படுகிறது.</string>
     <string name="pref_filter_fdroid_title">F-Droid செயலிகளை வடிகட்டு</string>
     <string name="pref_filter_google_summary">தேடல் முடிவுகள் மற்றும் வகைப் பயன்பாடுகளில் இருந்து எல்லா Google Apps களையும் நீக்குகிறது</string>
@@ -203,7 +202,6 @@
     <string name="pref_app_download">பதிவிறக்கங்கள்</string>
     <string name="pref_common_extra">கூடுதல்</string>
     <string name="pref_dialog_to_apply_restart">நீங்கள் பயன்பாட்டை மறுதொடக்கம் செய்த பிறகு இந்த அமைப்பு பயன்படுத்தப்படும்</string>
-    <string name="pref_downloader_active_title">செயலில் பதிவிறக்கம்</string>
     <string name="pref_downloader_external">பயனர் வெளிப்புற சேமிப்பு</string>
     <string name="pref_filter_fdroid_summary">பயன்பாட்டு பட்டியல்களில் இருந்து F-Droid பயன்பாடுகளை நீக்குகிறது</string>
     <string name="pref_filter_search_title">நிலையான தேடல் வடிப்பானைப் பயன்படுத்தவும்</string>

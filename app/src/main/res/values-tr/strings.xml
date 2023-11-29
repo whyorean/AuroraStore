@@ -119,8 +119,6 @@
     <string name="pref_filter_fdroid_summary">F-Droid uygulamalarını Güncellemeler ve Kurulu uygulamalarda görmezden gel</string>
     <string name="pref_downloader_external_desc">Dış depolama indirilenler, dışa aktarmalar vb. için kullanılır.</string>
     <string name="pref_downloader_external">Dış depolama kullanıcısı</string>
-    <string name="pref_downloader_active_title">Etkin indirme</string>
-    <string name="pref_downloader_active_summary">En çok etkin indirme sayısı</string>
     <string name="pref_dialog_to_apply_restart">Bu seçenek uygulamayı yeniden başlattıktan sonra uygulanacak</string>
     <string name="pref_common_extra">Ekler</string>
     <string name="pref_app_download">İndirilenler</string>

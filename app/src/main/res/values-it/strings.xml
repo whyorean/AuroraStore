@@ -29,8 +29,6 @@
     <string name="purchase_failed">Trasferimento fallito</string>
     <string name="pref_install_auto_title">Installa automaticamente gli APK dopo il trasferimento</string>
     <string name="pref_downloader_external_desc">L’archiviazione esterna viene utilizzata per scaricamenti, esportazioni, ecc.</string>
-    <string name="pref_downloader_active_title">Trasferimento attivo</string>
-    <string name="pref_downloader_active_summary">Numero massimo di trasferimenti attivi</string>
     <string name="onboarding_permission_esa_desc">Per salvare gli scaricamenti (APK e OBB), esportare e importare le configurazioni del dispositivo da e verso l’archiviazione esterna.</string>
     <string name="download_resume_all">Riprendi tutti</string>
     <string name="download_queued">In coda</string>

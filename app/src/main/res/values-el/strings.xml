@@ -64,8 +64,6 @@
     <string name="pref_install_auto_summary">Οι εφαρμογές εγκαθίστανται αμέσως μετά την ολοκλήρωση των λήψεων</string>
     <string name="pref_downloader_external_desc">Ο εξωτερικός αποθηκευτικός χώρος χρησιμοποιείται για λήψεις, εξαγωγές κ.τ.λ.</string>
     <string name="pref_downloader_external">Εξωτερικός αποθηκευτικός χώρος χρήστη</string>
-    <string name="pref_downloader_active_title">Ενεργή λήψη</string>
-    <string name="pref_downloader_active_summary">Μέγιστος αριθμός ενεργών λήψεων</string>
     <string name="pref_app_download">Λήψεις</string>
     <string name="onboarding_permission_esa_desc">Για την αποθήκευση λήψεων (APK &amp; OBB), εξάγετε και εισάγετε τις ρυθμίσεις της συσκευής προς και από έναν εξωτερικό αποθηκευτικό χώρο.</string>
     <string name="download_none">Δεν υπάρχουν λήψεις</string>

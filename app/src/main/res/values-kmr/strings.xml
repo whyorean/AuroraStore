@@ -111,8 +111,6 @@
     <string name="pref_filter_fdroid_summary">Sepanên F-Droid-ê ji navnîşên sepanan radike</string>
     <string name="pref_downloader_external_desc">Dê depoya derveyî ji bo dakêşandin, hinardekirin û hwd.</string>
     <string name="pref_downloader_external">Depoya derveyî ya bikarhêner</string>
-    <string name="pref_downloader_active_title">Dakêşana çalak</string>
-    <string name="pref_downloader_active_summary">Hejmara herî zêde ya dakêşanên çalak</string>
     <string name="pref_dialog_to_apply_restart">Ev mîheng dê piştî ku hûn sepanê ji nû ve bidin dest pê kirin</string>
     <string name="pref_app_download">Dakêşandin</string>
     <string name="pref_abandon_session_desc">Danişînên sazkirinê yên dev jê berdidin an jî li bendê ne</string>

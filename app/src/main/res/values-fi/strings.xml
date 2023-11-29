@@ -63,9 +63,7 @@
     <string name="notification_channel_alert">Nopea ilmoitus</string>
     <string name="onboarding_title_welcome">Tervetuloa</string>
     <string name="pref_app_download">Lataukset</string>
-    <string name="pref_downloader_active_summary">Aktiivisten latausten enimmäismäärä</string>
     <string name="pref_filter_fdroid_summary">Poistaa F-Droid-sovellukset sovellusluetteloista</string>
-    <string name="pref_downloader_active_title">Aktiivinen lataus</string>
     <string name="pref_filter_fdroid_title">Suodata F-Droidi-sovellukset</string>
     <string name="pref_ui_theme_darkord">Discord</string>
     <string name="pref_ui_theme_black">Musta</string>

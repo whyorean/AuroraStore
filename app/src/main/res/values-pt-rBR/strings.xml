@@ -239,8 +239,6 @@
     <string name="pref_filter_fdroid_summary">Remove aplicativos F-Droid das listas de Atualizações e Instalados</string>
     <string name="pref_downloader_external_desc">O armazenamento externo é utilizado para downloads, exportações, etc.</string>
     <string name="pref_downloader_external">Armazenamento externo do usuário</string>
-    <string name="pref_downloader_active_title">Baixamento ativo</string>
-    <string name="pref_downloader_active_summary">Número máximo de baixamentos ativos</string>
     <string name="insecure_anonymous_apply">Tenha certeza que você se reconectou e reinicie o aplicativo para aplicar as mudanças.</string>
     <string name="pref_ui_no_for_you">Pagina Para Você</string>
     <string name="toast_manual_available">Parabéns, o código da versão solicitada está disponível, baixando agora.</string>

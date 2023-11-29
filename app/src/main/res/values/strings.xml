@@ -207,8 +207,6 @@
     <string name="pref_app_download">"Downloads"</string>
     <string name="pref_common_extra">"Extras"</string>
     <string name="pref_dialog_to_apply_restart">"This setting will be applied after you restart the app"</string>
-    <string name="pref_downloader_active_summary">"Maximum number of active downloads"</string>
-    <string name="pref_downloader_active_title">"Active download"</string>
     <string name="pref_downloader_external">"User external storage"</string>
     <string name="pref_downloader_external_desc">External storage is used for downloads, exports, etc.</string>
     <string name="pref_downloader_path_title">"Download path"</string>

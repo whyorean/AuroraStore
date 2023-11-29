@@ -41,7 +41,6 @@
     <string name="onboarding_title_welcome">Sveiki</string>
     <string name="onboarding_permission_installer">Diegimo programos leidimas</string>
     <string name="pref_dialog_to_apply_restart">Šis nustatymas įsigalios po to, kai paleisite programėlę iš naujo</string>
-    <string name="pref_downloader_active_summary">Didžiausias aktyvių atsiuntimų skaičius</string>
     <string name="pref_ui_accent_title">Paryškinimas</string>
     <string name="pref_ui_theme_dark">Tamsus</string>
     <string name="pref_ui_theme_light">Šviesus</string>

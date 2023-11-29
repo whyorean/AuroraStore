@@ -163,8 +163,6 @@
     <string name="pref_filter_fdroid_summary">Ignoruj aplikacje od F-Droid w Aktualizacjach i Zainstalowanych aplikacjach</string>
     <string name="pref_downloader_external_desc">Pamięć zewnętrzna jest używana do pobierania, eksportowania itp.</string>
     <string name="pref_downloader_external">Pamięć zewnętrzna</string>
-    <string name="pref_downloader_active_summary">Maksymalna liczba aktywnych pobierań</string>
-    <string name="pref_downloader_active_title">Aktywne pobieranie</string>
     <string name="title_installation">Instalacja</string>
     <string name="pref_install_mode_title">Metoda instalacji</string>
     <string name="pref_ui_title">Dostosowywanie</string>

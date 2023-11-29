@@ -172,7 +172,6 @@
     <string name="pref_updates_extended_desc">חפש עדכונים גם ליישומים ומשחקים מושבתים</string>
     <string name="pref_install_mode_services">שירותי Aurora (לא עדכני)</string>
     <string name="pref_network_title">תעבורת רשת</string>
-    <string name="pref_downloader_active_summary">מספר מרבי של הורדות פעילות</string>
     <string name="title_manual_download">הורדה ידנית</string>
     <string name="ui_accent_1">כחול</string>
     <string name="ui_accent_2">פוקסיה</string>
@@ -209,7 +208,6 @@
     <string name="installer_status_failure_conflict">קיימת חבילה מתנגשת</string>
     <string name="installer_status_failure_session">לא היה ניתן ליצור הפעלה</string>
     <string name="onboarding_title_accent">צבע נושא</string>
-    <string name="pref_downloader_active_title">הורדה פעילה</string>
     <string name="pref_filter_fdroid_title">סינון יישומי F-Droid</string>
     <string name="pref_install_profile_title">פרופילי התקנה (ניסיוני)</string>
     <string name="pref_ui_similar_apps">יישומים דומים וקשורים</string>

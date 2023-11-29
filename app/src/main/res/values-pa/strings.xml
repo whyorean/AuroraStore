@@ -103,8 +103,6 @@
     <string name="pref_filter_fdroid_summary">ਅੱਪਡੇਟਸ ਅਤੇ ਇੰਸਟਾਲ ਐਪ ਟੈਬ ਚੋਂ F-Droid ਐਪਸ ਅਣਡਿੱਠ ਕਰੋ</string>
     <string name="pref_downloader_external_desc">ਡਾਊਨਲੋਡਸ ਅਤੇ ਐਕਸਪੋਰਟ ਵਗੈਰਾ ਲਈ ਬਾਹਰੀ (external) ਸਟੋਰੇਜ਼ ਵਰਤਿਆ ਜਾਵੇਗਾ।</string>
     <string name="pref_downloader_external">ਡਾਊਨਲੋਡ ਵਾਸਤੇ ਬਾਹਰੀ (external) ਸਟੋਰੇਜ ਵਰਤੋ</string>
-    <string name="pref_downloader_active_title">ਚੱਲ ਰਹੀਆਂ ਡਾਊਨਲੋਡਸ</string>
-    <string name="pref_downloader_active_summary">ਚਾਲੂ ਡਾਊਨਲੋਡਸ ਦੀ ਅਧਿਕਤਮ ਗਿਣਤੀ</string>
     <string name="pref_dialog_to_apply_restart">ਐਪ ਦੇ ਮੁੜ ਚਾਲੂ ਹੋਣ ਤੇ ਇਹ ਸੈਟਿੰਗ ਲਾਗੂ ਕੀਤੀ ਜਾਵੇਗੀ</string>
     <string name="pref_common_extra">ਕੁੱਝ ਹੋਰ</string>
     <string name="pref_app_download">ਡਾਊਨਲੋਡ ਬਾਰੇ</string>

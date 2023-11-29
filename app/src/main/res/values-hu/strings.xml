@@ -229,8 +229,6 @@
     <string name="pref_filter_fdroid_summary">F-Droid alkalmazások kihagyása a frissítés és telepített alkalmazás listákról</string>
     <string name="pref_downloader_external_desc">Külső tárhelyet van használatban letöltésekhez, exportáláshoz, stb.</string>
     <string name="pref_downloader_external">Felhasználó külső tárhelye</string>
-    <string name="pref_downloader_active_title">Aktív letöltés</string>
-    <string name="pref_downloader_active_summary">Az aktív letöltések max. száma</string>
     <string name="pref_dialog_to_apply_restart">Ez a beállítás az app újraindítása után kerül alkalmazásra</string>
     <string name="pref_app_download">Letöltések</string>
     <string name="pref_abandon_session_desc">Törli az elhagyott vagy függőben lévő telepítéseket</string>

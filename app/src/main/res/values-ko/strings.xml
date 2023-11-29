@@ -170,7 +170,6 @@
     <string name="pref_app_download">다운로드</string>
     <string name="pref_common_extra">추가 기능</string>
     <string name="pref_dialog_to_apply_restart">이 설정은 앱을 다시 시작한 후에 적용됩니다</string>
-    <string name="pref_downloader_active_summary">최대 활성 다운로드 수</string>
     <string name="pref_downloader_external">사용자 외부 저장소</string>
     <string name="pref_downloader_external_desc">외부 저장소는 다운로드, 내보내기 등에 사용됩니다.</string>
     <string name="pref_filter_fdroid_summary">앱 목록에서 F-Droid 앱 제거</string>
@@ -189,7 +188,6 @@
     <string name="installer_status_failure_invalid">유효하지 않거나 손상된 APK</string>
     <string name="menu_terms">이용 약관</string>
     <string name="action_import">불러오기</string>
-    <string name="pref_downloader_active_title">활성 다운로드</string>
     <string name="device_miui_description">설치를 허용하려면 MIUI Optimization을 비활성화하세요. 그렇지 않으면 루트 또는 서비스 설치 프로그램을 선택할 수 있습니다.</string>
     <string name="pref_insecure_anonymous_title">안전하지 않은 익명 세션</string>
     <string name="download_eta_hrs">%1$d시간 %2$d분 %3$d초 남음</string>

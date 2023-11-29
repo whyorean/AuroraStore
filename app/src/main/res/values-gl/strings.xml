@@ -57,8 +57,6 @@
     <string name="pref_filter_fdroid_summary">Borra as aplicacións instaladas por F-Droid da lista de aplicacións</string>
     <string name="pref_downloader_external_desc">O almacenamento externo é empregado para descargas, exportacións, etc.</string>
     <string name="pref_downloader_external">Almacenamento externo do usuario</string>
-    <string name="pref_downloader_active_title">Descarga activa</string>
-    <string name="pref_downloader_active_summary">Número máximo de descargas activas</string>
     <string name="pref_dialog_to_apply_restart">Esta configuración será aplicada após reiniciar a aplicación</string>
     <string name="pref_common_extra">Extras</string>
     <string name="pref_app_download">Descargas</string>

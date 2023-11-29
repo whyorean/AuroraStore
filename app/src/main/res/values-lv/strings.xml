@@ -288,7 +288,6 @@
     <string name="ui_accent_7">Pelēks</string>
     <string name="details_no_dependencies">Nav atkarību</string>
     <string name="details_no_app_match">Atbilstība lietotnei netika atrasta</string>
-    <string name="pref_downloader_active_summary">Lielākais pieļaujamais notiekošu lejupielāžu skaits</string>
     <string name="toast_export_failed">Nebija iespējams izgūt ierīces uzstādījumus</string>
     <string name="ui_accent_5">Zaļš</string>
     <string name="ui_accent_8">Rozā</string>
@@ -306,7 +305,6 @@
     <string name="onboarding_permission_esm">Ārējās krātuves pārvaldnieks</string>
     <string name="onboarding_permission_esa_desc">Lai saglabātu lejupielādes (APK un OBB), jāizgūst un jāievieto ierīces konfigurācijas no ārējās krātuves.</string>
     <string name="onboarding_permission_notifications">Paziņojumi</string>
-    <string name="pref_downloader_active_title">Notiekoša lejupielāde</string>
     <string name="pref_downloader_external">Lietotāja ārējā krātuve</string>
     <string name="pref_filter_fdroid_title">Atlasīt F-Droid lietotnes</string>
     <string name="pref_filter_search_title">Izmantot nepaliekošus meklēšanas nosacījumus</string>

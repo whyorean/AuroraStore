@@ -116,7 +116,6 @@
     <string name="details_permission">अनुमति</string>
     <string name="title_apps_games">मेरे ऐप्स और गेम्स</string>
     <string name="ui_accent_8">गुलाबी</string>
-    <string name="pref_downloader_active_summary">सक्रिय डाउनलोडस की अधिकतम सीमा</string>
     <string name="title_library">लाईब्रेरी</string>
     <string name="pref_ui_accent_title">रंग</string>
     <string name="title_language">भाषा</string>
@@ -260,7 +259,6 @@
     <string name="onboarding_permission_esa_desc">बाहरी स्टोरेज में डाउनलोड (एपीके और ओबीबी) सेव करने और डिवाइस संरचना इंपोर्ट और एक्सपोर्ट करने के लिए अनुमित दें।</string>
     <string name="pref_abandon_session_desc">छोड़े या बचे इंस्टॉलेशन सत्र साफ करें</string>
     <string name="pref_dialog_to_apply_restart">ये सेटिंग आपके ऐप रिस्टार्ट करने के बाद लागू हो जाएंगी</string>
-    <string name="pref_downloader_active_title">सक्रीय डाउनलोड</string>
     <string name="pref_insecure_anonymous_title">असुरक्षित अज्ञात सत्र</string>
     <string name="pref_filter_search_summary">खोज फिल्टर हर खोज पर रीसेट होते हैं। खोज फिल्टर सेव करने को बंद करें</string>
     <string name="pref_install_delete_summary">एपीके डिफॉल्ट रूप से मिटा दिए जाएंगे</string>

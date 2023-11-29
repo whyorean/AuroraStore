@@ -232,8 +232,6 @@
     <string name="pref_filter_fdroid_summary">アップデートとインストール済みアプリで F-Droid アプリを無視する</string>
     <string name="pref_downloader_external_desc">ダウンロード、エクスポートなどに外部ストレージを使用する</string>
     <string name="pref_downloader_external">外部ストレージ</string>
-    <string name="pref_downloader_active_title">同時ダウンロード</string>
-    <string name="pref_downloader_active_summary">最大同時ダウンロード数</string>
     <string name="pref_dialog_to_apply_restart">この設定はアプリの再起動後に適用されます</string>
     <string name="pref_app_download">ダウンロード</string>
     <string name="pref_abandon_session_desc">中止、中断したインストールセッションをクリア</string>

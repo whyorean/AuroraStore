@@ -28,7 +28,6 @@
     <string name="pref_ui_theme_dark">Mørk</string>
     <string name="pref_ui_theme_black">Svart</string>
     <string name="pref_install_mode_services">Aurora-tjenester</string>
-    <string name="pref_downloader_active_title">Aktiv nedlasting</string>
     <string name="pref_app_download">Nedlastinger</string>
     <string name="onboarding_title_welcome">Velkommen</string>
     <string name="onboarding_title_theme">Drakter</string>
@@ -172,7 +171,6 @@
     <string name="pref_install_auto_summary">Apper installeres umiddelbart etter at nedlastingen er fullført</string>
     <string name="pref_insecure_anonymous_title">Usikker anonym økt</string>
     <string name="pref_filter_google_summary">Fjerner alle Google Apps fra søkeresultater og kategori apper</string>
-    <string name="pref_downloader_active_summary">Maksimalt antall aktive nedlastinger</string>
     <string name="onboarding_permission_installer_desc">Tillat å installere apper fra Aurora Store</string>
     <string name="onboarding_welcome_select">Hvordan går det\?</string>
     <string name="onboarding_title_accent">Aksent</string>

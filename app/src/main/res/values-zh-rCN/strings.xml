@@ -201,8 +201,6 @@
     <string name="pref_filter_fdroid_summary">在更新和已安装应用中忽略 F-Droid 应用</string>
     <string name="pref_downloader_external_desc">外部存储用于下载、导出等操作。</string>
     <string name="pref_downloader_external">使用外部存储</string>
-    <string name="pref_downloader_active_title">同时下载</string>
-    <string name="pref_downloader_active_summary">最多同时下载数</string>
     <string name="pref_dialog_to_apply_restart">在您重新启动应用后，此设置将被应用</string>
     <string name="pref_app_download">下载</string>
     <string name="pref_abandon_session_desc">清除放弃或挂起的安装会话</string>

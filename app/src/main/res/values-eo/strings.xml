@@ -118,7 +118,6 @@
     <string name="onboarding_welcome_select">Kiel vi fartas\?</string>
     <string name="onboarding_permission_installer">Instalila permeso</string>
     <string name="pref_app_download">Elŝutoj</string>
-    <string name="pref_downloader_active_title">Aktiva elŝuto</string>
     <string name="pref_filter_fdroid_summary">Forigas F-Droid aplikaĵojn el aplikaĵlistoj</string>
     <string name="pref_filter_fdroid_title">Filtri F-Droid aplikaĵojn</string>
     <string name="pref_filter_google_summary">Forigas ĉiujn Googlajn aplikaĵojn el serĉrezultoj kaj kategoriaj aplikaĵoj</string>

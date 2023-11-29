@@ -171,7 +171,6 @@
     <string name="pref_ui_theme_darkord">Discord</string>
     <string name="ui_accent_4">Zlata</string>
     <string name="onboarding_title_installer">Namestitveni program</string>
-    <string name="pref_downloader_active_title">Aktivni prenos</string>
     <string name="onboarding_permission_select">Trgovina Aurora zahteva naslednja dovoljenja</string>
     <string name="onboarding_title_permissions">Dovoljenja</string>
     <string name="pref_app_download">Prenosi</string>
@@ -322,7 +321,6 @@
     <string name="onboarding_permission_notifications_desc">Pošiljanje obvestil o statusu namestitve</string>
     <string name="pref_abandon_session">Vsili brisanje namestitvenih sej</string>
     <string name="pref_dialog_to_apply_restart">Ta nastavitev bo uporabljena, ko znova zaženete aplikacijo</string>
-    <string name="pref_downloader_active_summary">Največje število aktivnih prenosov</string>
     <string name="pref_downloader_external">Uporabniški zunanji pomnilnik</string>
     <string name="pref_downloader_external_desc">Zunanji pomnilnik se uporablja za prenose, izvoze, itd.</string>
     <string name="pref_filter_fdroid_summary">Odstrani F-Droid aplikacije s seznamov aplikacij</string>

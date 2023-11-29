@@ -91,8 +91,6 @@
     <string name="pref_filter_fdroid_summary">Ignorovat aplikace ze služby F-Droid z karty Aktualizace a Nainstalované</string>
     <string name="pref_downloader_external_desc">Externí úložiště se používá pro stahování, export atd.</string>
     <string name="pref_downloader_external">Externí úložiště uživatele</string>
-    <string name="pref_downloader_active_title">Aktivní stahování</string>
-    <string name="pref_downloader_active_summary">Maximální počet aktivních stahování</string>
     <string name="pref_dialog_to_apply_restart">Toto nastavení se aplikuje po restartování aplikace</string>
     <string name="pref_common_extra">Doplňky</string>
     <string name="pref_app_download">Soubory ke stažení</string>

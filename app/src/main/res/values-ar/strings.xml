@@ -64,7 +64,6 @@
     <string name="pref_filter_google_title">تصفية تطبيقات قوقل</string>
     <string name="pref_filter_fdroid_title">تصفية تطبيقات F-Droid</string>
     <string name="pref_downloader_external">استخدم وحدة التخزين الخارجي</string>
-    <string name="pref_downloader_active_title">التنزيل النشط</string>
     <string name="pref_app_download">التنزيلات</string>
     <string name="onboarding_permission_installer">إذن المثبت</string>
     <string name="onboarding_permission_esm">مدير التخزين الخارجي</string>
@@ -168,7 +167,6 @@
     <string name="toast_anonymous_restriction">غير متوفر في الحسابات المجهولة</string>
     <string name="pref_install_mode_summary">حدد وضع تثبيت حزمة التطبيقات APK</string>
     <string name="pref_install_auto_title">تثبيت تلقائي APKs بعد التنزيل</string>
-    <string name="pref_downloader_active_summary">الحد الأقصى لعدد التنزيلات النشطة</string>
     <string name="onboarding_permission_select">متجر Aurora يتطلب الأذونات التالية</string>
     <string name="pref_install_delete_summary">سيتم حذف APK بشكل افتراضي</string>
     <string name="pref_filter_fdroid_summary">تجاهل تطبيقات F-Droid من التحديثات والتطبيقات المثبتة</string>

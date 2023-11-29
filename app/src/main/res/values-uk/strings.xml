@@ -256,8 +256,6 @@
     <string name="pref_filter_fdroid_summary">Ігнорувати застосунки F-Droid з Оновлень та Встановлених застосунків</string>
     <string name="pref_downloader_external_desc">Зовнішнє сховище застосовується для завантажень, експорту тощо.</string>
     <string name="pref_downloader_external">Зовнішнє сховище</string>
-    <string name="pref_downloader_active_title">Активні завантаження</string>
-    <string name="pref_downloader_active_summary">Найбільша кількість активних завантажень</string>
     <string name="pref_dialog_to_apply_restart">Цей параметр буде застосовано після перезапуску застосунку</string>
     <string name="pref_common_extra">Додаткові</string>
     <string name="toast_aas_token_failed">Не вдалося створити токен AAS</string>

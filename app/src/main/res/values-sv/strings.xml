@@ -226,7 +226,6 @@
     <string name="pref_ui_no_for_you">För dig sidor</string>
     <string name="pref_filter_search_title">Använd icke-beständigt sökfilter</string>
     <string name="pref_filter_fdroid_summary">Ignorera F-Droid-appar från uppdateringar och installerade appar</string>
-    <string name="pref_downloader_active_summary">Maximalt antal aktiva nedladdningar</string>
     <string name="onboarding_permission_installer">Installatörsbehörighet</string>
     <string name="onboarding_permission_esa">Extern lagringsåtkomst</string>
     <string name="installer_status_success">Framgångsrikt installerad</string>
@@ -240,7 +239,6 @@
     <string name="pref_ui_similar_apps_desc">Visa liknande och relaterade klustrar på appens detaljsida</string>
     <string name="pref_filter_search_summary">Sök-filtren återställs vid varje sökning. Stäng av för att spara sök-filter</string>
     <string name="pref_filter_google_summary">Ignorera Google-appar från Uppdateringar och Installerade appar</string>
-    <string name="pref_downloader_active_title">Aktiv nerladdning</string>
     <string name="onboarding_permission_esm">Hanterare av externt lagringsutrymme</string>
     <string name="details_no_permission">Inga tillstånd</string>
     <string name="action_pending">Avvaktande</string>

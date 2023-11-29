@@ -209,8 +209,6 @@
     <string name="pref_filter_fdroid_summary">Ignorer les applications F-droid dans Mises à jour et Applications installées</string>
     <string name="pref_downloader_external_desc">Le stockage externe est utilisé pour les téléchargements, les exportations, etc.</string>
     <string name="pref_downloader_external">Stockage externe de l’utilisateur</string>
-    <string name="pref_downloader_active_title">Téléchargement actif</string>
-    <string name="pref_downloader_active_summary">Nombre maximal de téléchargements actifs</string>
     <string name="pref_dialog_to_apply_restart">Ce paramètre sera appliqué après le redémarrage de l’application</string>
     <string name="pref_abandon_session_desc">Effacer les sessions d’installation abandonnées ou en attente</string>
     <string name="pref_abandon_session">Forcer l’effacement des sessions d’installation</string>

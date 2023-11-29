@@ -169,7 +169,6 @@
     <string name="pref_insecure_anonymous_title">Sessió anònima insegura</string>
     <string name="onboarding_permission_esm">Gestor d\'emmagatzematge extern</string>
     <string name="onboarding_permission_esa_desc">Per desar les descàrregues (APKs i OBBs), exporteu i importeu les configuracions del dispositiu a i des d\'emmagatzematge extern.</string>
-    <string name="pref_downloader_active_title">Baixada activa</string>
     <string name="pref_filter_google_summary">Elimina totes les aplicacions de Google dels resultats de cerca i de les categories d\'aplicacions</string>
     <string name="pref_install_mode_root">Instal·lador root</string>
     <string name="pref_network_title">Xarxes</string>
@@ -183,7 +182,6 @@
     <string name="pref_app_download">Baixades</string>
     <string name="pref_common_extra">Extres</string>
     <string name="pref_dialog_to_apply_restart">Aquesta configuració s\'aplicarà després de reiniciar l\'aplicació</string>
-    <string name="pref_downloader_active_summary">Nombre màxim de baixades actives</string>
     <string name="pref_downloader_external_desc">L\'emmagatzematge extern s\'utilitza per a descàrregues, exportacions, etc.</string>
     <string name="pref_filter_fdroid_summary">Suprimeix les aplicacions F-Droid de les llistes d\'aplicacions</string>
     <string name="pref_filter_fdroid_title">Filtra les aplicacions de F-Droid</string>

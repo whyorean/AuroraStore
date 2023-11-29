@@ -184,7 +184,6 @@
     <string name="pref_abandon_session">Forciar el borráu de les sesiones d\'instalación</string>
     <string name="pref_abandon_session_desc">Borra les sesiones d\'instalación abandonaes o pendientes</string>
     <string name="pref_common_extra">Configuración adicional</string>
-    <string name="pref_downloader_active_summary">El númberu de descargues n\'activo</string>
     <string name="pref_install_mode_root">Instalador root</string>
     <string name="pref_filter_google_summary">Quita toles aplicaciones de Google de los resultaos de busca ya de les categoríes d\'aplicaciones</string>
     <string name="pref_ui_no_for_you_desc">Amuesa les páxines «Pa ti» na pantalla d\'aniciu</string>
@@ -210,7 +209,6 @@
     <string name="details_think_this_app">¿Qué pienses d\'esta aplicación\?</string>
     <string name="exodus_substring">ye\'l númberu de rastrexadores atopaos</string>
     <string name="filter_review_critical">Reseña crítica</string>
-    <string name="pref_downloader_active_title">Descargues n\'activo</string>
     <string name="pref_downloader_external">Usar l\'almacenamientu esternu</string>
     <string name="pref_filter_search_summary">Search filters are reset on each search. Turn off to save search filters</string>
     <string name="pref_install_delete_summary">Les APKs desaníciense por defeutu</string>

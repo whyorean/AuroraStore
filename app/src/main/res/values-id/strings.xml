@@ -121,8 +121,6 @@
     <string name="pref_filter_fdroid_summary">Hapus F-Droid dari daftar aplikasi</string>
     <string name="pref_downloader_external_desc">Penyimpanan eksternal digunakan untuk unduhan, ekspor, dll.</string>
     <string name="pref_downloader_external">Penyimpanan eksternal pengguna</string>
-    <string name="pref_downloader_active_title">Unduhan aktif</string>
-    <string name="pref_downloader_active_summary">Jumlah maksimum unduhan aktif</string>
     <string name="pref_dialog_to_apply_restart">Pengaturan ini akan diterapkan setelah Anda memulai ulang aplikasi</string>
     <string name="pref_common_extra">Ekstra</string>
     <string name="pref_app_download">Unduhan</string>

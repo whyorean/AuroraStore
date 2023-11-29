@@ -166,8 +166,6 @@
     <string name="pref_filter_fdroid_summary">Không bao gồm các ứng dụng của F-Droid trong danh sách ứng dụng</string>
     <string name="pref_downloader_external_desc">Bộ nhớ ngoài được sử dụng để tải xuống, xuất, v.v.</string>
     <string name="pref_downloader_external">Bộ nhớ ngoài của người dùng</string>
-    <string name="pref_downloader_active_title">Đang tải xuống</string>
-    <string name="pref_downloader_active_summary">Số lượng tải xuống cùng lúc tối đa</string>
     <string name="pref_dialog_to_apply_restart">Cài đặt này sẽ được áp dụng sau khi bạn khởi động lại ứng dụng</string>
     <string name="pref_app_download">Tải xuống</string>
     <string name="pref_abandon_session">Buộc xóa các phiên cài đặt</string>

@@ -75,8 +75,6 @@
     <string name="pref_filter_fdroid_summary">F-Droid aplikazioak zerrendeetatik ezabatzen ditu</string>
     <string name="pref_downloader_external_desc">Kanpoko memoria deskargak egiteko, esportatzeko eta abar erabiliko da.</string>
     <string name="pref_downloader_external">Erabiltzailearen kanpoko memoria</string>
-    <string name="pref_downloader_active_title">Deskarga aktiboa</string>
-    <string name="pref_downloader_active_summary">Gehienezko deskargak</string>
     <string name="pref_dialog_to_apply_restart">Konfigurazio hau aplikatuko da aplikazioa berriro ireki ondoren</string>
     <string name="pref_app_download">Deskargak</string>
     <string name="pref_abandon_session_desc">Bertan utzitako instalazio saioak garbitu</string>

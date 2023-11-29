@@ -162,8 +162,6 @@
     <string name="pref_filter_fdroid_summary">從應用程式列表中移除 F-Droid 應用程式</string>
     <string name="pref_downloader_external_desc">外部儲存被用於下載、匯出等。</string>
     <string name="pref_downloader_external">用戶外部儲存</string>
-    <string name="pref_downloader_active_title">活動中的下載</string>
-    <string name="pref_downloader_active_summary">分段下載最大數目</string>
     <string name="pref_dialog_to_apply_restart">設定將會在你重新啟動應用後生效</string>
     <string name="pref_common_extra">額外功能</string>
     <string name="pref_app_download">下載</string>

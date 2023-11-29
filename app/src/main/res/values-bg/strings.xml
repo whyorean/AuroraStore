@@ -149,7 +149,6 @@
     <string name="download_paused">На пауза • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
     <string name="exodus_powered">Осъществено от Exodus</string>
     <string name="exodus_progress">Проверява се за тракери…</string>
-    <string name="pref_downloader_active_summary">Максимален брой активни изтегляния</string>
     <string name="pref_downloader_external_desc">Външното хранилище се използва за изтегляния, експорти и др.</string>
     <string name="pref_filter_fdroid_summary">Премахва приложенията на F-Droid от списъците с приложения</string>
     <string name="pref_insecure_anonymous_summary">Генерирайте GSF ID локално на устройството</string>
@@ -274,7 +273,6 @@
     <string name="onboarding_permission_installer">Разрешение за инсталиране</string>
     <string name="pref_install_delete_summary">APK файловете ще бъдат изтрити по подразбиране</string>
     <string name="pref_abandon_session">Принудително изчистване на инсталационните сесии</string>
-    <string name="pref_downloader_active_title">Активно изтегляне</string>
     <string name="pref_filter_fdroid_title">Филтриране на F-Droid приложения</string>
     <string name="pref_filter_search_title">Използвайте непостоянен филтър за търсене</string>
     <string name="pref_install_auto_title">Автоматично инсталиране на APK след изтегляне</string>

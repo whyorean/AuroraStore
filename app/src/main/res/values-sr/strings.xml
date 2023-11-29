@@ -74,8 +74,6 @@
     <string name="pref_filter_fdroid_summary">Игноришите F-Droid апликације из ажурирања и инсталираних апликација</string>
     <string name="pref_downloader_external_desc">Спољна меморија се користи за преузимања, извозе итд.</string>
     <string name="pref_downloader_external">Спољна меморија корисника</string>
-    <string name="pref_downloader_active_title">Активно преузимање</string>
-    <string name="pref_downloader_active_summary">Максималан број активних преузимања</string>
     <string name="pref_dialog_to_apply_restart">Ово подешавање ће се применити након што поново покренете апликацију</string>
     <string name="pref_app_download">Преузимања</string>
     <string name="pref_abandon_session_desc">Очистите напуштене инсталационе сесије или инсталационе сесије на чекању</string>

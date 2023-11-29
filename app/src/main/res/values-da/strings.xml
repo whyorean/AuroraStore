@@ -154,7 +154,6 @@
     <string name="pref_app_download">Downloads</string>
     <string name="pref_common_extra">Ekstra</string>
     <string name="pref_dialog_to_apply_restart">Denne indstilling bliver udført efter du genstarter appen</string>
-    <string name="pref_downloader_active_title">Aktivt download</string>
     <string name="toast_apk_blacklisted">Blacklistet</string>
     <string name="account_anonymous_insecure">Anonyn (usikker)</string>
     <string name="action_filter_apply">Anvend</string>
@@ -192,7 +191,6 @@
     <string name="onboarding_permission_esa_desc">For at gemme downloads (APK og OBB) skal du, eksportere og importere enhedskonfigurationer til og fra ekstern lagring.</string>
     <string name="onboarding_permission_installer">Installatørtilladelse</string>
     <string name="onboarding_permission_installer_desc">Tillad at installere apps fra Aurora Store</string>
-    <string name="pref_downloader_active_summary">Højeste antal af aktive downloads</string>
     <string name="pref_filter_fdroid_title">Filtrer F-Droid apps</string>
     <string name="pref_filter_search_title">Brug et uvedvarende søgefilter</string>
     <string name="pref_insecure_anonymous_summary">Skab et GSF ID lokalt på enheden</string>
