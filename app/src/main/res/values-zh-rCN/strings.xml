@@ -373,4 +373,6 @@
     <string name="pref_network_proxy_enable_desc">允许本应用所有流量经代理服务器发出</string>
     <string name="pref_self_update_title">自更新</string>
     <string name="pref_self_update_summary">检查并在新版 Aurora Store 可用时进行通知</string>
+    <string name="pref_vending_version_device">默认（来自设备配置）</string>
+    <string name="pref_vending_version_title">Google Play 版本</string>
 </resources>

@@ -373,4 +373,6 @@
     <string name="pref_network_proxy_enable_desc">السماح لجميع حركة المرور من التطبيق بالمرور عبر الوكيل</string>
     <string name="pref_self_update_title">التحديثات الذاتية</string>
     <string name="pref_self_update_summary">التحقق من توفر إصدار جديد من Aurora Store وإبلاغي بذلك</string>
+    <string name="pref_vending_version_device">الافتراضي (من تكوين الجهاز)</string>
+    <string name="pref_vending_version_title">نسخة جوجل بلاي</string>
 </resources>

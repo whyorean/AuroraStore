@@ -373,4 +373,6 @@
     <string name="pref_aurora_only_desc">Pokaż tylko aplikacje zainstalowane przez Aurora Store w Aktualizacjach i Zainstalowanych aplikacjach</string>
     <string name="pref_self_update_title">Samoaktualizacja</string>
     <string name="pref_self_update_summary">Sprawdź i powiadom jeśli dostępna jest nowa stabilna wersja Aurora Store</string>
+    <string name="pref_vending_version_device">Domyślny (z konfiguracji urządzenia)</string>
+    <string name="pref_vending_version_title">Wersja Google Play</string>
 </resources>

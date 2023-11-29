@@ -373,4 +373,6 @@
     <string name="toast_proxy_failed">Misslyckades att ställa in proxy</string>
     <string name="pref_network_proxy_enable_desc">Tillåt all trafik från appen att gå genom proxyn</string>
     <string name="pref_downloader_wifi_title">Ladda ner endast via WiFi</string>
+    <string name="pref_vending_version_device">Standard (från enhetskonfiguration)</string>
+    <string name="pref_vending_version_title">Google Play Version</string>
 </resources>

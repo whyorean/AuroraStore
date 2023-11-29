@@ -373,4 +373,6 @@
     <string name="pref_downloader_wifi_title">Descarregar apenas por Wi-fi</string>
     <string name="pref_self_update_title">Atualização automática</string>
     <string name="pref_self_update_summary">Verificar e notificar se existe uma nova versão de Aurora Store</string>
+    <string name="pref_vending_version_device">Padrão (configuração do dispositivo)</string>
+    <string name="pref_vending_version_title">Versão Google Play</string>
 </resources>
