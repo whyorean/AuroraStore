@@ -27,11 +27,11 @@ import com.aurora.gplayapi.data.models.App
 import com.aurora.store.data.downloader.DownloadManager
 import com.aurora.store.data.receiver.PackageManagerReceiver
 import com.aurora.store.data.service.NotificationService
+import com.aurora.store.data.work.DownloadWorker
 import com.aurora.store.util.CommonUtil
 import com.aurora.store.util.NotificationUtil
 import com.aurora.store.util.PackageUtil
 import com.tonyodev.fetch2.Fetch
-import kotlinx.coroutines.flow.MutableStateFlow
 import org.lsposed.hiddenapibypass.HiddenApiBypass
 
 class AuroraApplication : Application() {
@@ -39,7 +39,7 @@ class AuroraApplication : Application() {
     private lateinit var fetch: Fetch
 
     companion object{
-        val enqueuedDownloads = MutableStateFlow<MutableSet<App>>(mutableSetOf())
+        val enqueuedDownloads = mutableSetOf<App>()
         val enqueuedInstalls: MutableSet<String> = mutableSetOf()
     }
 
@@ -57,6 +57,9 @@ class AuroraApplication : Application() {
         NotificationService.startService(this)
 
         fetch = DownloadManager.with(this).fetch
+
+        // Initialize DownloadWorker to observe and trigger downloads
+        DownloadWorker.initDownloadWorker(applicationContext)
 
         //Register broadcast receiver for package install/uninstall
         ContextCompat.registerReceiver(

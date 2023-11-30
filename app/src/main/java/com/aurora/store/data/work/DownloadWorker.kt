@@ -12,13 +12,12 @@ import androidx.work.ExistingWorkPolicy.KEEP
 import androidx.work.ForegroundInfo
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.OutOfQuotaPolicy
+import androidx.work.WorkInfo
 import androidx.work.WorkManager
 import androidx.work.WorkerParameters
 import com.aurora.Constants
-import com.aurora.extensions.copyAndAdd
 import com.aurora.extensions.copyTo
 import com.aurora.extensions.isQAndAbove
-import com.aurora.extensions.copyAndRemove
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.helpers.PurchaseHelper
 import com.aurora.store.AuroraApplication
@@ -36,7 +35,8 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.withContext
 import java.io.File
 import java.net.URL
-import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import kotlin.io.path.ExperimentalPathApi
 import kotlin.io.path.createDirectories
 import kotlin.io.path.deleteRecursively
@@ -58,16 +58,54 @@ class DownloadWorker(private val appContext: Context, workerParams: WorkerParame
         private const val DOWNLOAD_APP = "DOWNLOAD_APP"
         private const val DOWNLOAD_UPDATE = "DOWNLOAD_UPDATE"
 
-        fun isEnqueued(packageName: String): Boolean {
-            return AuroraApplication.enqueuedDownloads.value.any { it.packageName == packageName }
+        private const val notificationID = 200
+        private val cleanupStates = listOf(
+            WorkInfo.State.CANCELLED,
+            WorkInfo.State.FAILED
+        )
+
+        fun initDownloadWorker(applicationContext: Context) {
+            GlobalScope.launch {
+                WorkManager.getInstance(applicationContext)
+                    .getWorkInfosByTagFlow(DOWNLOAD_WORKER)
+                    .collectLatest { downloadsList ->
+                        try {
+                            if (downloadsList.all { it.state.isFinished }) {
+                                // Do cleanup for last download if required
+                                downloadsList.getOrNull(0)?.let { workInfo ->
+                                    if (workInfo.state in cleanupStates) {
+                                        onFailure(
+                                            applicationContext,
+                                            AuroraApplication.enqueuedDownloads.first()
+                                        )
+                                    }
+                                }
+
+                                // Check and trigger download if enqueue list is not empty
+                                if (AuroraApplication.enqueuedDownloads.isNotEmpty()) {
+                                    val app = AuroraApplication.enqueuedDownloads.first()
+                                    Log.i(DOWNLOAD_WORKER, "Downloading ${app.packageName}")
+                                    downloadApp(applicationContext, app)
+                                }
+                            }
+                        } catch (exception: Exception) {
+                            Log.i(DOWNLOAD_WORKER, "Failed to download enqueued apps", exception)
+                        }
+                    }
+
+            }
         }
 
-        fun enqueueApp(app: App) {
-            AuroraApplication.enqueuedDownloads.update { it.copyAndAdd(app) }
+        fun isEnqueued(packageName: String): Boolean {
+            return AuroraApplication.enqueuedDownloads.any { it.packageName == packageName }
+        }
+
+        fun enqueueApp(context: Context, app: App) {
+            if (AuroraApplication.enqueuedDownloads.isEmpty()) downloadApp(context, app)
+            AuroraApplication.enqueuedDownloads.add(app)
         }
 
         fun cancelDownload(context: Context, app: App) {
-            AuroraApplication.enqueuedDownloads.update {it.copyAndRemove(app) }
             WorkManager.getInstance(context).cancelAllWorkByTag(app.packageName)
         }
 
@@ -78,13 +116,7 @@ class DownloadWorker(private val appContext: Context, workerParams: WorkerParame
             if (updates) workManager.cancelAllWorkByTag(DOWNLOAD_UPDATE)
         }
 
-        /**
-         * Downloads and install an [App]
-         *
-         * Triggers Immediate downloads and installation. In most cases, you don't need to call
-         * this method. Consider using [enqueueApp] instead.
-         */
-        fun downloadApp(context: Context, app: App) {
+        private fun downloadApp(context: Context, app: App) {
             val work = OneTimeWorkRequestBuilder<DownloadWorker>()
                 .addTag(DOWNLOAD_WORKER)
                 .addTag(app.packageName)
@@ -98,6 +130,17 @@ class DownloadWorker(private val appContext: Context, workerParams: WorkerParame
             WorkManager.getInstance(context)
                 .enqueueUniqueWork("${DOWNLOAD_WORKER}/${app.packageName}", KEEP, work)
         }
+
+        @OptIn(ExperimentalPathApi::class)
+        private fun onFailure(context: Context, app: App) {
+            Log.i(DOWNLOAD_WORKER, "Cleaning up!")
+            PathUtil.getAppDownloadDir(context, app.packageName, app.versionCode)
+                .deleteRecursively()
+            with (context.getSystemService(Service.NOTIFICATION_SERVICE) as NotificationManager) {
+                cancel(notificationID)
+            }
+            AuroraApplication.enqueuedDownloads.remove(app)
+        }
     }
 
     private lateinit var app: App
@@ -109,7 +152,6 @@ class DownloadWorker(private val appContext: Context, workerParams: WorkerParame
     private var downloadedBytes = 0L
 
     private val TAG = DownloadWorker::class.java.simpleName
-    private val notificationID = 200
 
     override suspend fun doWork(): Result {
         // Purchase the app (free apps needs to be purchased too)
@@ -122,7 +164,7 @@ class DownloadWorker(private val appContext: Context, workerParams: WorkerParame
 
         // Try to parse input data into a valid app
         try {
-            app = AuroraApplication.enqueuedDownloads.value.first()
+            app = AuroraApplication.enqueuedDownloads.first()
         } catch (exception: Exception) {
             Log.e(TAG, "No apps enqueued for downloads", exception)
             return Result.failure()
@@ -155,13 +197,11 @@ class DownloadWorker(private val appContext: Context, workerParams: WorkerParame
                 .onFailure {
                     Log.e(TAG, "Failed to download ${app.packageName}", it)
                     downloading = false
-                    onFailure()
                     return Result.failure()
                 }
             while (downloading) {
                 delay(1000)
                 if (isStopped) {
-                    onFailure()
                     break
                 }
             }
@@ -182,17 +222,8 @@ class DownloadWorker(private val appContext: Context, workerParams: WorkerParame
         }
 
         // Remove the app from the list
-        AuroraApplication.enqueuedDownloads.update { it.copyAndRemove(app) }
+        AuroraApplication.enqueuedDownloads.remove(app)
         return Result.success()
-    }
-
-    @OptIn(ExperimentalPathApi::class)
-    private fun onFailure() {
-        Log.i(TAG, "Cleaning up!")
-        PathUtil.getAppDownloadDir(appContext, app.packageName, app.versionCode)
-            .deleteRecursively()
-        notificationManager.cancel(notificationID)
-        AuroraApplication.enqueuedDownloads.update { it.copyAndRemove(app) }
     }
 
     private fun getDownloadRequest(files: List<GPlayFile>): List<Request> {

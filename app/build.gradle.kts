@@ -185,7 +185,7 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
     //WorkManager
-    implementation("androidx.work:work-runtime-ktx:2.8.1")
+    implementation("androidx.work:work-runtime-ktx:2.9.0-rc01")
 
     // LeakCanary
     debugImplementation("com.squareup.leakcanary:leakcanary-android:2.12")
