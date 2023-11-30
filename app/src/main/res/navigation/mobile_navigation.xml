@@ -458,4 +458,9 @@
             android:name="extra"
             app:argType="string" />
     </dialog>
+    <dialog
+        android:id="@+id/dozeWarningSheet"
+        android:name="com.aurora.store.view.ui.sheets.DozeWarningSheet"
+        android:label="DozeWarningSheet"
+        tools:layout="@layout/sheet_doze_warning"/>
 </navigation>
