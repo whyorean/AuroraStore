@@ -115,7 +115,7 @@ android {
 dependencies {
 
     //Protobuf
-    implementation("com.google.protobuf:protobuf-javalite:3.24.2")
+    implementation("com.google.protobuf:protobuf-javalite:3.25.1")
 
     //Google's Goodies
     implementation("com.google.android.material:material:1.10.0")
@@ -185,7 +185,7 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
     //WorkManager
-    implementation("androidx.work:work-runtime-ktx:2.9.0-rc01")
+    implementation("androidx.work:work-runtime-ktx:2.9.0")
 
     // LeakCanary
     debugImplementation("com.squareup.leakcanary:leakcanary-android:2.12")
