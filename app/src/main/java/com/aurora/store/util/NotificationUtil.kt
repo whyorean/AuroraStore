@@ -19,6 +19,7 @@ import com.aurora.extensions.getStyledAttributeColor
 import com.aurora.extensions.isMAndAbove
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.MainActivity
+import com.aurora.store.data.room.download.Download as AuroraDownload
 import com.aurora.store.R
 import com.aurora.store.data.activity.InstallActivity
 import com.aurora.store.data.model.DownloadStatus
@@ -180,7 +181,7 @@ object NotificationUtil {
 
             Status.COMPLETED -> if (fetchGroup.groupDownloadProgress == 100) {
                 builder.setAutoCancel(true)
-                builder.setContentIntent(getContentIntentForDetails(context, app))
+                builder.setContentIntent(getContentIntentForDetails(context, app.packageName))
                 builder.setStyle(progressBigText)
             }
 
@@ -200,17 +201,15 @@ object NotificationUtil {
 
     fun getDownloadNotification(
         context: Context,
-        app: App,
-        status: DownloadStatus,
-        progress: Int,
+        download: AuroraDownload,
         workID: UUID
     ): Notification {
         val builder = NotificationCompat.Builder(context, Constants.NOTIFICATION_CHANNEL_GENERAL)
-        builder.setContentTitle(app.displayName)
+        builder.setContentTitle(download.displayName)
         builder.color = ContextCompat.getColor(context, R.color.colorAccent)
         builder.setContentIntent(getContentIntentForDownloads(context))
 
-        when (status) {
+        when (download.status) {
             DownloadStatus.CANCELLED -> {
                 builder.setSmallIcon(R.drawable.ic_download_cancel)
                 builder.setContentText(context.getString(R.string.download_canceled))
@@ -225,17 +224,17 @@ object NotificationUtil {
                 builder.setCategory(Notification.CATEGORY_ERROR)
             }
 
-            DownloadStatus.COMPLETED -> if (progress == 100) {
+            DownloadStatus.COMPLETED -> if (download.progress == 100) {
                 builder.setSmallIcon(android.R.drawable.stat_sys_download_done)
                 builder.setContentText(context.getString(R.string.download_completed))
                 builder.setAutoCancel(true)
                 builder.setCategory(Notification.CATEGORY_STATUS)
-                builder.setContentIntent(getContentIntentForDetails(context, app))
+                builder.setContentIntent(getContentIntentForDetails(context, download.packageName))
                 builder.addAction(
                     NotificationCompat.Action.Builder(
                         R.drawable.ic_install,
                         context.getString(R.string.action_install),
-                        getInstallIntent(context, app.packageName, app.versionCode)
+                        getInstallIntent(context, download.packageName, download.versionCode)
                     ).build()
                 )
             }
@@ -243,15 +242,20 @@ object NotificationUtil {
             DownloadStatus.DOWNLOADING, DownloadStatus.QUEUED -> {
                 builder.setSmallIcon(android.R.drawable.stat_sys_download)
                 builder.setContentText(
-                    if (progress == 0) {
+                    if (download.progress == 0) {
                         context.getString(R.string.download_queued)
                     } else {
-                        context.getString(R.string.alt_download_progress)
+                        context.getString(
+                            R.string.download_progress,
+                            download.downloadedFiles,
+                            download.totalFiles,
+                            CommonUtil.humanReadableByteSpeed(download.speed, true)
+                        )
                     }
                 )
                 builder.setOngoing(true)
                 builder.setCategory(Notification.CATEGORY_PROGRESS)
-                builder.setProgress(100, progress, progress == 0)
+                builder.setProgress(100, download.progress, download.progress == 0)
                 builder.foregroundServiceBehavior = NotificationCompat.FOREGROUND_SERVICE_IMMEDIATE
                 builder.addAction(
                     NotificationCompat.Action.Builder(
@@ -274,7 +278,7 @@ object NotificationUtil {
                 setSmallIcon(R.drawable.ic_install)
                 setContentTitle(app.displayName)
                 setContentText(content)
-                setContentIntent(getContentIntentForDetails(context, app))
+                setContentIntent(getContentIntentForDetails(context, app.packageName))
                 setSubText(app.packageName)
             }
         return builder.build()
@@ -307,12 +311,12 @@ object NotificationUtil {
         return PendingIntent.getBroadcast(context, groupId, intent, flags)
     }
 
-    private fun getContentIntentForDetails(context: Context, app: App?): PendingIntent {
+    private fun getContentIntentForDetails(context: Context, packageName: String): PendingIntent {
         return NavDeepLinkBuilder(context)
             .setGraph(R.navigation.mobile_navigation)
             .setDestination(R.id.appDetailsFragment)
             .setComponentName(MainActivity::class.java)
-            .setArguments(bundleOf("packageName" to app!!.packageName))
+            .setArguments(bundleOf("packageName" to packageName))
             .createPendingIntent()
     }
 

@@ -22,26 +22,39 @@ package com.aurora.store
 
 import android.app.Application
 import androidx.core.content.ContextCompat
+import androidx.hilt.work.HiltWorkerFactory
+import androidx.work.Configuration
 import com.aurora.extensions.isPAndAbove
-import com.aurora.gplayapi.data.models.App
 import com.aurora.store.data.downloader.DownloadManager
 import com.aurora.store.data.receiver.PackageManagerReceiver
 import com.aurora.store.data.service.NotificationService
-import com.aurora.store.data.work.DownloadWorker
 import com.aurora.store.util.CommonUtil
+import com.aurora.store.util.DownloadWorkerUtil
 import com.aurora.store.util.NotificationUtil
 import com.aurora.store.util.PackageUtil
 import com.tonyodev.fetch2.Fetch
 import dagger.hilt.android.HiltAndroidApp
+import javax.inject.Inject
 import org.lsposed.hiddenapibypass.HiddenApiBypass
 
 @HiltAndroidApp
-class AuroraApplication : Application() {
+class AuroraApplication : Application(), Configuration.Provider {
+
+    @Inject
+    lateinit var workerFactory: HiltWorkerFactory
+
+    @Inject
+    lateinit var downloadWorkerUtil: DownloadWorkerUtil
+
+    override val workManagerConfiguration: Configuration
+        get() = Configuration.Builder()
+            .setMinimumLoggingLevel(android.util.Log.INFO)
+            .setWorkerFactory(workerFactory)
+            .build()
 
     private lateinit var fetch: Fetch
 
-    companion object{
-        val enqueuedDownloads = mutableSetOf<App>()
+    companion object {
         val enqueuedInstalls: MutableSet<String> = mutableSetOf()
     }
 
@@ -61,7 +74,7 @@ class AuroraApplication : Application() {
         fetch = DownloadManager.with(this).fetch
 
         // Initialize DownloadWorker to observe and trigger downloads
-        DownloadWorker.initDownloadWorker(applicationContext)
+        downloadWorkerUtil.init()
 
         //Register broadcast receiver for package install/uninstall
         ContextCompat.registerReceiver(

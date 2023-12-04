@@ -58,8 +58,13 @@ object PathUtil {
         return Path(getPackageDirectory(context, packageName), versionCode.toString())
     }
 
-    fun getApkDownloadFile(context: Context, app: App, file: File): String {
-        return getVersionDirectory(context, app.packageName, app.versionCode) + "/${file.name}"
+    fun getApkDownloadFile(
+        context: Context,
+        packageName: String,
+        versionCode: Int,
+        file: File
+    ): String {
+        return getVersionDirectory(context, packageName, versionCode) + "/${file.name}"
     }
 
     fun getApkDownloadFile(context: Context, packageName: String, versionCode: Int): String {
@@ -84,9 +89,9 @@ object PathUtil {
         return "${getExternalPath(context)}/Exports/"
     }
 
-    private fun getObbDownloadPath(app: App): String {
+    private fun getObbDownloadPath(packageName: String): String {
         return Environment.getExternalStorageDirectory()
-            .toString() + "/Android/obb/" + app.packageName
+            .toString() + "/Android/obb/" + packageName
     }
 
     fun getObbDownloadDir(packageName: String): Path {
@@ -97,8 +102,8 @@ object PathUtil {
         )
     }
 
-    fun getObbDownloadFile(app: App, file: File): String {
-        val obbDir = getObbDownloadPath(app)
+    fun getObbDownloadFile(packageName: String, file: File): String {
+        val obbDir = getObbDownloadPath(packageName)
         return "$obbDir/${file.name}"
     }
 

@@ -193,6 +193,16 @@ dependencies {
     ksp("com.google.dagger:hilt-android-compiler:$hiltVersion")
     implementation("com.google.dagger:hilt-android:$hiltVersion")
 
+    val hiltWorkVersion = "1.1.0"
+    ksp("androidx.hilt:hilt-compiler:$hiltWorkVersion")
+    implementation("androidx.hilt:hilt-work:$hiltWorkVersion")
+
+    //Room
+    val roomVersion = "2.6.1"
+    ksp("androidx.room:room-compiler:$roomVersion")
+    implementation("androidx.room:room-ktx:$roomVersion")
+    implementation("androidx.room:room-runtime:$roomVersion")
+
     // LeakCanary
     debugImplementation("com.squareup.leakcanary:leakcanary-android:2.12")
 }

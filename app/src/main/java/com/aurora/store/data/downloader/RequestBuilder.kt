@@ -59,9 +59,9 @@ object RequestBuilder {
     fun buildRequest(context: Context, app: App, file: File): Request {
         val fileName = when (file.type) {
             File.FileType.BASE,
-            File.FileType.SPLIT -> PathUtil.getApkDownloadFile(context, app, file)
+            File.FileType.SPLIT -> PathUtil.getApkDownloadFile(context, app.packageName, app.versionCode, file)
             File.FileType.OBB,
-            File.FileType.PATCH -> PathUtil.getObbDownloadFile(app, file)
+            File.FileType.PATCH -> PathUtil.getObbDownloadFile(app.packageName, file)
         }
         return Request(file.url, fileName).apply {
             attachMetaData(context, app)

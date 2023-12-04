@@ -14,15 +14,21 @@ import com.aurora.store.data.model.ExodusReport
 import com.aurora.store.data.model.Report
 import com.aurora.store.data.network.HttpClient
 import com.aurora.store.data.providers.AuthProvider
+import com.aurora.store.util.DownloadWorkerUtil
 import com.google.gson.GsonBuilder
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.launch
 import org.json.JSONObject
 import java.lang.reflect.Modifier
+import javax.inject.Inject
 
-class AppDetailsViewModel : ViewModel() {
+@HiltViewModel
+class AppDetailsViewModel @Inject constructor(
+    private val downloadWorkerUtil: DownloadWorkerUtil
+) : ViewModel() {
 
     private val TAG = AppDetailsViewModel::class.java.simpleName
 
@@ -43,6 +49,8 @@ class AppDetailsViewModel : ViewModel() {
 
     private val _testingProgramStatus = MutableSharedFlow<TestingProgramStatus?>()
     val testingProgramStatus = _testingProgramStatus.asSharedFlow()
+
+    val downloadsList get() = downloadWorkerUtil.downloadsList
 
     fun fetchAppDetails(context: Context, packageName: String) {
         viewModelScope.launch(Dispatchers.IO) {
@@ -127,6 +135,14 @@ class AppDetailsViewModel : ViewModel() {
                 _testingProgramStatus.emit(null)
             }
         }
+    }
+
+    fun download(app: App) {
+        viewModelScope.launch { downloadWorkerUtil.enqueueApp(app) }
+    }
+
+    fun cancelDownload(app: App) {
+        viewModelScope.launch { downloadWorkerUtil.cancelDownload(app.packageName) }
     }
 
     @Synchronized

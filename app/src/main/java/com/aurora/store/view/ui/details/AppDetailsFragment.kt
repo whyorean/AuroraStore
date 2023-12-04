@@ -41,8 +41,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import androidx.work.WorkInfo
-import androidx.work.WorkManager
 import coil.load
 import coil.transform.RoundedCornersTransformation
 import com.airbnb.epoxy.EpoxyRecyclerView
@@ -70,7 +68,6 @@ import com.aurora.store.data.installer.AppInstaller
 import com.aurora.store.data.installer.RootInstaller
 import com.aurora.store.data.model.DownloadStatus
 import com.aurora.store.data.providers.AuthProvider
-import com.aurora.store.data.work.DownloadWorker
 import com.aurora.store.databinding.FragmentDetailsBinding
 import com.aurora.store.databinding.LayoutDetailsBetaBinding
 import com.aurora.store.databinding.LayoutDetailsDescriptionBinding
@@ -101,6 +98,8 @@ import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
 import java.io.File
 import java.util.Locale
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.filter
 import kotlin.io.path.pathString
 
 @AndroidEntryPoint
@@ -119,7 +118,7 @@ class AppDetailsFragment : BaseFragment(R.layout.fragment_details) {
     private val startForStorageManagerResult =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
             if (isRAndAbove() && Environment.isExternalStorageManager()) {
-                DownloadWorker.enqueueApp(requireContext(), app)
+                viewModel.download(app)
             } else {
                 toast(R.string.permissions_denied)
             }
@@ -127,7 +126,7 @@ class AppDetailsFragment : BaseFragment(R.layout.fragment_details) {
     private val startForPermissions =
         registerForActivityResult(ActivityResultContracts.RequestPermission()) {
             if (it) {
-                DownloadWorker.enqueueApp(requireContext(), app)
+                viewModel.download(app)
             } else {
                 toast(R.string.permissions_denied)
             }
@@ -239,35 +238,30 @@ class AppDetailsFragment : BaseFragment(R.layout.fragment_details) {
 
         // Downloads
         binding.layoutDetailsInstall.imgCancel.setOnClickListener {
-            DownloadWorker.cancelDownload(it.context, app)
+            viewModel.cancelDownload(app)
             if (downloadStatus != DownloadStatus.DOWNLOADING) flip(0)
         }
 
-        val uniqueWorkName = "${DownloadWorker.DOWNLOAD_WORKER}/${app.packageName}"
-        WorkManager.getInstance(view.context)
-            .getWorkInfosForUniqueWorkLiveData(uniqueWorkName)
-            .observe(viewLifecycleOwner) { workList ->
-                workList.getOrNull(0)?.let {
-                    if (it.state.isFinished) flip(0) else flip(1)
-                    when (it.state) {
-                        WorkInfo.State.ENQUEUED,
-                        WorkInfo.State.RUNNING -> {
-                            downloadStatus = DownloadStatus.DOWNLOADING
-                            updateProgress(
-                                it.progress.getInt(DownloadWorker.DOWNLOAD_PROGRESS, 0),
-                                it.progress.getLong(DownloadWorker.DOWNLOAD_SPEED, -1),
-                                it.progress.getLong(DownloadWorker.DOWNLOAD_TIME, -1)
-                            )
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.downloadsList
+                .filter { list -> list.any { it.packageName == app.packageName } }
+                .collectLatest { downloadsList ->
+                    val download = downloadsList.find { it.packageName == app.packageName }
+                    download?.let {
+                        downloadStatus = it.status
+
+                        if (it.isFinished) flip(0) else flip(1)
+                        when (it.status) {
+                            DownloadStatus.QUEUED,
+                            DownloadStatus.DOWNLOADING -> {
+                                updateProgress(it.progress, it.speed, it.timeRemaining)
+                            }
+
+                            else -> {}
                         }
-
-                        WorkInfo.State.FAILED -> downloadStatus = DownloadStatus.FAILED
-                        WorkInfo.State.CANCELLED -> downloadStatus = DownloadStatus.CANCELLED
-                        WorkInfo.State.SUCCEEDED -> downloadStatus = DownloadStatus.COMPLETED
-
-                        else -> {}
                     }
                 }
-            }
+        }
 
         // Reviews
         viewLifecycleOwner.lifecycleScope.launch {
@@ -587,6 +581,7 @@ class AppDetailsFragment : BaseFragment(R.layout.fragment_details) {
             }
 
             else -> {
+                flip(1)
                 purchase()
             }
         }
@@ -604,7 +599,7 @@ class AppDetailsFragment : BaseFragment(R.layout.fragment_details) {
                         Intent(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION)
                     )
                 } else {
-                    DownloadWorker.enqueueApp(requireContext(), app)
+                    viewModel.download(app)
                 }
             } else {
                 if (ContextCompat.checkSelfPermission(
@@ -612,13 +607,13 @@ class AppDetailsFragment : BaseFragment(R.layout.fragment_details) {
                         Manifest.permission.WRITE_EXTERNAL_STORAGE
                     ) == PackageManager.PERMISSION_GRANTED
                 ) {
-                    DownloadWorker.enqueueApp(requireContext(), app)
+                    viewModel.download(app)
                 } else {
                     startForPermissions.launch(Manifest.permission.WRITE_EXTERNAL_STORAGE)
                 }
             }
         } else {
-            DownloadWorker.enqueueApp(requireContext(), app)
+            viewModel.download(app)
         }
     }
 
@@ -679,8 +674,7 @@ class AppDetailsFragment : BaseFragment(R.layout.fragment_details) {
                         binding.layoutDetailsToolbar.toolbar.invalidateMenu()
                     }
                 } else {
-                    val downloading = downloadStatus == DownloadStatus.DOWNLOADING
-                    if (DownloadWorker.isEnqueued(app.packageName) && !downloading) {
+                    if (downloadStatus == DownloadStatus.QUEUED) {
                         flip(1)
                     } else if (app.isFree) {
                         btn.setText(R.string.action_install)

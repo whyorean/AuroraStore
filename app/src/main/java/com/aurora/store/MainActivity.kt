@@ -72,7 +72,6 @@ import com.aurora.store.view.ui.sheets.SelfUpdateSheet
 import com.aurora.store.viewmodel.MainViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -96,7 +95,6 @@ class MainActivity : AppCompatActivity() {
         R.id.updatesFragment
     )
 
-    @OptIn(DelicateCoroutinesApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         applyThemeAccent()
         super.onCreate(savedInstanceState)

@@ -6,5 +6,9 @@ enum class DownloadStatus {
     CANCELLED,
     COMPLETED,
     QUEUED,
-    UNAVAILABLE
+    UNAVAILABLE;
+
+    companion object {
+        val finished = listOf(FAILED, CANCELLED, COMPLETED)
+    }
 }
