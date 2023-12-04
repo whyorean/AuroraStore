@@ -255,7 +255,7 @@
     <string name="installer_am_unavailable">Installera app-hanteraren eller ändra på installationsprogrammet.</string>
     <string name="action_get_local_apk">Spara program-paket</string>
     <string name="pref_common_extra">Extra</string>
-    <string name="pref_install_mode_am">AM-installatör.</string>
+    <string name="pref_install_mode_am">AM-installatör</string>
     <string name="pref_abandon_session_desc">Ta bort övergivna eller väntande installationssessioner</string>
     <string name="pref_install_mode_native">Inbyggt installationsprogram (föråldrat)</string>
     <string name="title_installer">App-installerare</string>
@@ -373,4 +373,7 @@
     <string name="pref_downloader_wifi_title">Ladda ner endast via WiFi</string>
     <string name="pref_vending_version_device">Standard (från enhetskonfiguration)</string>
     <string name="pref_vending_version_title">Google Play Version</string>
+    <string name="onboarding_permission_doze">Bakgrundsnedladdningar</string>
+    <string name="alt_download_progress">Laddar ner</string>
+    <string name="onboarding_permission_doze_desc">Tillåt Aurora Store att ladda ner och uppdatera appar i bakgrunden</string>
 </resources>

@@ -271,7 +271,7 @@
     <string name="notification_channel_updater_service">Služba stahování aplikací na pozadí</string>
     <string name="installer_am_unavailable">Nainstalujte si aplikaci App Manager nebo změnte instalátor.</string>
     <string name="account_anonymous_insecure">Anonymní (Nedůvěryhodné)</string>
-    <string name="pref_install_mode_am">AM instalátor.</string>
+    <string name="pref_install_mode_am">AM instalátor</string>
     <string name="ui_accent_1">Modrá</string>
     <string name="ui_accent_2">Fuchsie</string>
     <string name="ui_accent_3">Červená</string>
@@ -373,4 +373,7 @@
     <string name="pref_self_update_summary">Zkontrolovat a oznámit, pokud bude dostupná nová stabilní verze aplikace Aurora Store</string>
     <string name="pref_vending_version_device">Výchozí (z konfigurace zařízení)</string>
     <string name="pref_vending_version_title">Verze z Google Play</string>
+    <string name="onboarding_permission_doze">Stahování na pozadí</string>
+    <string name="alt_download_progress">Stahování</string>
+    <string name="onboarding_permission_doze_desc">Umožnit aplikaci Aurora Store stahovat a aktualizovat aplikace na pozadí</string>
 </resources>

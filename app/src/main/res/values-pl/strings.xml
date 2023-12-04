@@ -166,7 +166,7 @@
     <string name="title_installation">Instalacja</string>
     <string name="pref_install_mode_title">Metoda instalacji</string>
     <string name="pref_ui_title">Dostosowywanie</string>
-    <string name="pref_app_download">Pobieranie</string>
+    <string name="pref_app_download">Pobrane</string>
     <string name="pref_dialog_to_apply_restart">Zmiany zaczną obowiązywać po ponownym uruchomieniu aplikacji</string>
     <string name="pref_abandon_session_desc">Wyczyść porzucone lub oczekujące sesje instalacyjne</string>
     <string name="pref_abandon_session">Wymuś czyszczenie sesji instalacyjnych</string>
@@ -371,6 +371,9 @@
     <string name="pref_aurora_only_desc">Pokaż tylko aplikacje zainstalowane przez Aurora Store w Aktualizacjach i Zainstalowanych aplikacjach</string>
     <string name="pref_self_update_title">Samoaktualizacja</string>
     <string name="pref_self_update_summary">Sprawdź i powiadom jeśli dostępna jest nowa stabilna wersja Aurora Store</string>
-    <string name="pref_vending_version_device">Domyślny (z konfiguracji urządzenia)</string>
+    <string name="pref_vending_version_device">Domyślna (z konfiguracji urządzenia)</string>
     <string name="pref_vending_version_title">Wersja Google Play</string>
+    <string name="onboarding_permission_doze">Pobieranie w tle</string>
+    <string name="alt_download_progress">Pobieranie</string>
+    <string name="onboarding_permission_doze_desc">Zezwól Aurora Store na pobieranie i aktualizowanie aplikacji w tle</string>
 </resources>

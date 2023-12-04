@@ -374,7 +374,7 @@
     <string name="search_hint">Претражите апликације и игре</string>
     <string name="failed_to_fetch_report">Прикупљање извештаја о приватности није успело</string>
     <string name="installer_shizuku_unavailable">„Shizuku“ није правилно инсталиран или подешен.</string>
-    <string name="pref_install_mode_am">Програм за инсталацију „AM”.</string>
+    <string name="pref_install_mode_am">Програм за инсталацију „AM”</string>
     <string name="pref_install_mode_shizuku">Програм за инсталацију „Shizuku”</string>
     <string name="app_links_desc">Дозволите Aurora Store-у да отвара подржане линкове</string>
     <string name="app_link_enabled">Линк за апликацију је омогућен!</string>
@@ -409,4 +409,7 @@
     <string name="pref_self_update_summary">Проверава и обавештава ако је доступна нова стабилна верзија Aurora Store-а</string>
     <string name="pref_vending_version_device">Подразумевано (из конфигурације уређаја)</string>
     <string name="pref_vending_version_title">Верзија Google Play-а</string>
+    <string name="onboarding_permission_doze">Преузимања у позадини</string>
+    <string name="alt_download_progress">Преузимање</string>
+    <string name="onboarding_permission_doze_desc">Дозволите Aurora Store-у да преузима и ажурира апликације у позадини</string>
 </resources>

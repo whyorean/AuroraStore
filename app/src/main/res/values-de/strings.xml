@@ -372,4 +372,9 @@
     <string name="pref_network_proxy_enable_desc">Gesamten Netzwerkverkehr der App über den Proxyserver leiten</string>
     <string name="pref_self_update_title">Selbständige Updates</string>
     <string name="pref_self_update_summary">Prüfen und benachrichtigen, ob eine neue stabile Version von Aurora Store verfügbar ist</string>
+    <string name="pref_vending_version_device">Standard (aus Gerätekonfiguration)</string>
+    <string name="pref_vending_version_title">Google-Play-Version</string>
+    <string name="onboarding_permission_doze">Downloads im Hintergrund</string>
+    <string name="alt_download_progress">Wird heruntergeladen</string>
+    <string name="onboarding_permission_doze_desc">Aurora Store das Herunterladen und Aktualisieren von Apps im Hintergrund erlauben</string>
 </resources>
