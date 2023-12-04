@@ -39,9 +39,13 @@ import com.aurora.store.view.custom.preference.ListPreferenceMaterialDialogFragm
 import com.aurora.store.view.custom.preference.ListPreferenceMaterialDialogFragmentCompat.Companion.PREFERENCE_DIALOG_FRAGMENT_TAG
 import com.google.gson.Gson
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class NetworkPreference : PreferenceFragmentCompat() {
+
+    @Inject
+    lateinit var gson: Gson
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.preferences_network, rootKey)
@@ -81,7 +85,7 @@ class NetworkPreference : PreferenceFragmentCompat() {
                                         save(Preferences.PREFERENCE_PROXY_URL, newProxyUrl)
                                         save(
                                             Preferences.PREFERENCE_PROXY_INFO,
-                                            Gson().toJson(newProxyInfo)
+                                            gson.toJson(newProxyInfo)
                                         )
 
                                         preference.summary = newProxyUrl

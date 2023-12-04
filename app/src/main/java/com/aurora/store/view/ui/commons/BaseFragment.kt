@@ -26,18 +26,16 @@ import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.Category
 import com.aurora.store.MobileNavigationDirections
 import com.google.gson.Gson
-import com.google.gson.GsonBuilder
-import java.lang.reflect.Modifier
+import javax.inject.Inject
 
-open class BaseFragment : Fragment {
+abstract class BaseFragment : Fragment {
 
     constructor(): super()
 
     constructor(@LayoutRes contentLayoutId: Int) : super(contentLayoutId)
 
-    var gson: Gson = GsonBuilder().excludeFieldsWithModifiers(
-        Modifier.TRANSIENT
-    ).create()
+    @Inject
+    lateinit var gson: Gson
 
     fun openDetailsFragment(packageName: String, app: App? = null) {
         findNavController().navigate(
