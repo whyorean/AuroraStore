@@ -42,11 +42,12 @@ import com.aurora.store.util.save
 import com.aurora.store.view.epoxy.views.preference.InstallerViewModel_
 import com.aurora.store.view.ui.commons.BaseFragment
 import com.google.gson.reflect.TypeToken
+import dagger.hilt.android.AndroidEntryPoint
 import rikka.shizuku.Shizuku
 import rikka.sui.Sui
 import java.nio.charset.StandardCharsets
 
-
+@AndroidEntryPoint
 class InstallerFragment : BaseFragment(R.layout.fragment_onboarding_installer) {
 
     private var _binding: FragmentOnboardingInstallerBinding? = null

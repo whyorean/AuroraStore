@@ -43,10 +43,12 @@ import com.tonyodev.fetch2.Error
 import com.tonyodev.fetch2.Fetch
 import com.tonyodev.fetch2.FetchGroup
 import com.tonyodev.fetch2.Status
+import dagger.hilt.android.AndroidEntryPoint
 import java.lang.reflect.Modifier
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 
+@AndroidEntryPoint
 class NotificationService : Service() {
 
     companion object {

@@ -39,8 +39,9 @@ import com.aurora.store.util.PathUtil
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.isExternalStorageAccessible
 import com.aurora.store.util.save
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class DownloadPreference : PreferenceFragmentCompat() {
     private lateinit var startForStorageManagerResult: ActivityResultLauncher<Intent>
     private lateinit var startForPermissions: ActivityResultLauncher<String>

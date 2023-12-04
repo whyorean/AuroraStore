@@ -30,9 +30,11 @@ import com.aurora.store.data.event.BusEvent.UninstallEvent
 import com.aurora.store.data.installer.AppInstaller
 import com.aurora.store.util.PathUtil
 import com.aurora.store.util.Preferences
+import dagger.hilt.android.AndroidEntryPoint
 import org.greenrobot.eventbus.EventBus
 import java.io.File
 
+@AndroidEntryPoint
 open class PackageManagerReceiver : BroadcastReceiver() {
 
     override fun onReceive(context: Context, intent: Intent) {

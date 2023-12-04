@@ -33,7 +33,9 @@ import com.aurora.store.view.epoxy.views.AppProgressViewModel_
 import com.aurora.store.view.epoxy.views.app.AppListViewModel_
 import com.aurora.store.view.epoxy.views.shimmer.AppListViewShimmerModel_
 import com.aurora.store.viewmodel.topchart.TopChartViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class TopChartFragment : BaseFragment(R.layout.fragment_top_container) {
 
     private var _binding: FragmentTopContainerBinding? = null

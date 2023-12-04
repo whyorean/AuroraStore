@@ -29,6 +29,7 @@ plugins {
     id("androidx.navigation.safeargs.kotlin")
     id("org.jlleitschuh.gradle.ktlint")
     id("dev.rikka.tools.refine")
+    id("com.google.dagger.hilt.android")
 }
 
 kotlin {
@@ -186,6 +187,11 @@ dependencies {
 
     //WorkManager
     implementation("androidx.work:work-runtime-ktx:2.9.0")
+
+    //Hilt
+    val hiltVersion = "2.49"
+    ksp("com.google.dagger:hilt-android-compiler:$hiltVersion")
+    implementation("com.google.dagger:hilt-android:$hiltVersion")
 
     // LeakCanary
     debugImplementation("com.squareup.leakcanary:leakcanary-android:2.12")

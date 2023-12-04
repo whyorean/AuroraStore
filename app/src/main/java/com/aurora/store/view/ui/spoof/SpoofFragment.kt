@@ -38,7 +38,9 @@ import com.aurora.store.databinding.ActivityGenericPagerBinding
 import com.aurora.store.util.PathUtil
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SpoofFragment : Fragment(R.layout.activity_generic_pager) {
 
     private var _binding: ActivityGenericPagerBinding? = null

@@ -51,9 +51,10 @@ import com.aurora.store.view.ui.commons.BaseFragment
 import com.aurora.store.viewmodel.search.SearchResultViewModel
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
-
+@AndroidEntryPoint
 class SearchResultsFragment : BaseFragment(R.layout.fragment_search_result),
     OnSharedPreferenceChangeListener {
 

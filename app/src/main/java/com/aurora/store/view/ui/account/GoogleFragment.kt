@@ -38,10 +38,12 @@ import com.aurora.store.data.event.BusEvent
 import com.aurora.store.databinding.FragmentGoogleBinding
 import com.aurora.store.util.AC2DMUtil
 import com.aurora.store.viewmodel.auth.AuthViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
 
+@AndroidEntryPoint
 class GoogleFragment : Fragment(R.layout.fragment_google) {
 
     private val args: GoogleFragmentArgs by navArgs()

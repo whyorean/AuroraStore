@@ -35,9 +35,10 @@ import com.aurora.store.util.Preferences
 import com.aurora.store.util.save
 import com.aurora.store.view.custom.preference.ListPreferenceMaterialDialogFragmentCompat
 import com.aurora.store.view.custom.preference.ListPreferenceMaterialDialogFragmentCompat.Companion.PREFERENCE_DIALOG_FRAGMENT_TAG
+import dagger.hilt.android.AndroidEntryPoint
 import java.util.Locale
 
-
+@AndroidEntryPoint
 class UIPreference : PreferenceFragmentCompat() {
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {

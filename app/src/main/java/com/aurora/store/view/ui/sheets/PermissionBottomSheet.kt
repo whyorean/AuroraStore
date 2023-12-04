@@ -33,8 +33,10 @@ import com.aurora.store.R
 import com.aurora.store.data.model.PermissionGroupInfo
 import com.aurora.store.databinding.SheetPermissionsBinding
 import com.aurora.store.view.custom.layouts.PermissionGroup
+import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
 
+@AndroidEntryPoint
 class PermissionBottomSheet : BaseBottomSheet() {
 
     private lateinit var B: SheetPermissionsBinding

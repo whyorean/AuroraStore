@@ -32,9 +32,10 @@ import com.aurora.store.util.save
 import com.aurora.store.view.epoxy.views.ThemeViewModel_
 import com.aurora.store.view.ui.commons.BaseFragment
 import com.google.gson.reflect.TypeToken
+import dagger.hilt.android.AndroidEntryPoint
 import java.nio.charset.StandardCharsets
 
-
+@AndroidEntryPoint
 class ThemeFragment : BaseFragment(R.layout.fragment_onboarding_theme) {
 
     private var _binding: FragmentOnboardingThemeBinding? = null

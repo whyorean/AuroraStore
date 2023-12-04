@@ -33,7 +33,9 @@ import com.aurora.store.view.epoxy.controller.EditorChoiceController
 import com.aurora.store.viewmodel.editorschoice.AppEditorChoiceViewModel
 import com.aurora.store.viewmodel.editorschoice.BaseEditorChoiceViewModel
 import com.aurora.store.viewmodel.editorschoice.GameEditorChoiceViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class EditorChoiceFragment : BaseFragment(), EditorChoiceController.Callbacks {
 
     private lateinit var B: FragmentForYouBinding

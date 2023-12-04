@@ -32,8 +32,9 @@ import com.aurora.store.view.epoxy.views.AppProgressViewModel_
 import com.aurora.store.view.epoxy.views.app.AppListViewModel_
 import com.aurora.store.view.epoxy.views.shimmer.AppListViewShimmerModel_
 import com.aurora.store.viewmodel.browse.StreamBrowseViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class StreamBrowseFragment : BaseFragment(R.layout.activity_generic_recycler) {
 
     private var _binding: ActivityGenericRecyclerBinding? = null

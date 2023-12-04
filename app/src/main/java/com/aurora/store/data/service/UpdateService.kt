@@ -33,6 +33,7 @@ import com.tonyodev.fetch2.*
 import com.tonyodev.fetch2core.DownloadBlock
 import com.tonyodev.fetch2core.FetchObserver
 import com.tonyodev.fetch2core.Reason
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -46,6 +47,7 @@ import java.util.*
 import java.util.concurrent.locks.ReentrantLock
 import kotlin.concurrent.timerTask
 
+@AndroidEntryPoint
 class UpdateService: LifecycleService() {
 
     lateinit var fetch: Fetch

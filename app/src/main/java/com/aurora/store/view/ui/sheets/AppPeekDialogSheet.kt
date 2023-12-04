@@ -29,7 +29,9 @@ import coil.transform.RoundedCornersTransformation
 import com.aurora.store.R
 import com.aurora.store.databinding.SheetAppPeekBinding
 import com.aurora.store.util.CommonUtil
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class AppPeekDialogSheet : BaseBottomSheet() {
 
     lateinit var B: SheetAppPeekBinding

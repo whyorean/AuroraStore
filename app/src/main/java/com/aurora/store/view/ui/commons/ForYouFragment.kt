@@ -34,8 +34,9 @@ import com.aurora.store.databinding.FragmentForYouBinding
 import com.aurora.store.view.custom.recycler.EndlessRecyclerOnScrollListener
 import com.aurora.store.view.epoxy.controller.GenericCarouselController
 import com.aurora.store.viewmodel.homestream.BaseClusterViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class ForYouFragment : BaseFragment(R.layout.fragment_for_you),
     GenericCarouselController.Callbacks {
 

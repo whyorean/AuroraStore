@@ -35,10 +35,11 @@ import com.aurora.store.databinding.FragmentGenericRecyclerBinding
 import com.aurora.store.view.epoxy.views.preference.DeviceViewModel_
 import com.aurora.store.view.ui.commons.BaseFragment
 import com.aurora.store.viewmodel.spoof.SpoofViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import java.util.Properties
 
-
+@AndroidEntryPoint
 class DeviceSpoofFragment : BaseFragment() {
 
     private lateinit var B: FragmentGenericRecyclerBinding

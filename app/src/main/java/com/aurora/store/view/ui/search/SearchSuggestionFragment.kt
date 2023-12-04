@@ -36,8 +36,9 @@ import com.aurora.store.databinding.FragmentSearchSuggestionBinding
 import com.aurora.store.view.epoxy.views.SearchSuggestionViewModel_
 import com.aurora.store.viewmodel.search.SearchSuggestionViewModel
 import com.google.android.material.textfield.TextInputEditText
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class SearchSuggestionFragment : Fragment(R.layout.fragment_search_suggestion) {
 
     private var _binding: FragmentSearchSuggestionBinding? = null

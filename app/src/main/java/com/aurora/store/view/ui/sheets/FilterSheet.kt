@@ -28,7 +28,9 @@ import com.aurora.store.data.Filter
 import com.aurora.store.data.providers.FilterProvider
 import com.aurora.store.databinding.SheetFilterBinding
 import com.google.android.material.chip.Chip
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class FilterSheet : BaseBottomSheet() {
 
     private lateinit var B: SheetFilterBinding

@@ -32,7 +32,9 @@ import com.aurora.store.util.CertUtil
 import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_CHECK
 import com.aurora.store.util.Preferences.PREFERENCE_SELF_UPDATE
 import com.aurora.store.util.save
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class UpdatesPreference : PreferenceFragmentCompat() {
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {

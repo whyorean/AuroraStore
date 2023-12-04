@@ -46,10 +46,11 @@ import com.aurora.store.view.custom.preference.AuroraListPreference
 import com.aurora.store.view.custom.preference.ListPreferenceMaterialDialogFragmentCompat
 import com.aurora.store.view.custom.preference.ListPreferenceMaterialDialogFragmentCompat.Companion.PREFERENCE_DIALOG_FRAGMENT_TAG
 import com.topjohnwu.superuser.Shell
+import dagger.hilt.android.AndroidEntryPoint
 import rikka.shizuku.Shizuku
 import rikka.sui.Sui
 
-
+@AndroidEntryPoint
 class InstallationPreference : PreferenceFragmentCompat() {
 
     private var shizukuAlive = Sui.isSui()

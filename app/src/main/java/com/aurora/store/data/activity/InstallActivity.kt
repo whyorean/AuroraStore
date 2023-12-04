@@ -1,15 +1,17 @@
 package com.aurora.store.data.activity
 
-import android.app.Activity
 import android.os.Bundle
 import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import com.aurora.Constants
 import com.aurora.store.data.installer.AppInstaller
 import com.aurora.store.util.PathUtil
+import dagger.hilt.android.AndroidEntryPoint
 import java.io.File
 import kotlin.io.path.pathString
 
-class InstallActivity : Activity() {
+@AndroidEntryPoint
+class InstallActivity : AppCompatActivity() {
 
     private val TAG = InstallActivity::class.java.simpleName
 

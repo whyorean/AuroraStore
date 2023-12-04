@@ -27,4 +27,5 @@ plugins {
     id("androidx.navigation.safeargs.kotlin") version "2.7.5" apply false
     id("org.jlleitschuh.gradle.ktlint") version "11.6.1" apply false
     id("dev.rikka.tools.refine") version "4.4.0" apply false
+    id("com.google.dagger.hilt.android") version "2.49" apply false
 }

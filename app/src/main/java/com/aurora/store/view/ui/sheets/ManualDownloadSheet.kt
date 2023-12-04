@@ -33,9 +33,11 @@ import com.aurora.extensions.toast
 import com.aurora.store.R
 import com.aurora.store.databinding.SheetManualDownloadBinding
 import com.aurora.store.viewmodel.sheets.SheetsViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class ManualDownloadSheet : BaseBottomSheet() {
 
     private lateinit var B: SheetManualDownloadBinding

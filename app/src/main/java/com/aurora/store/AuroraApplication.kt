@@ -32,8 +32,10 @@ import com.aurora.store.util.CommonUtil
 import com.aurora.store.util.NotificationUtil
 import com.aurora.store.util.PackageUtil
 import com.tonyodev.fetch2.Fetch
+import dagger.hilt.android.HiltAndroidApp
 import org.lsposed.hiddenapibypass.HiddenApiBypass
 
+@HiltAndroidApp
 class AuroraApplication : Application() {
 
     private lateinit var fetch: Fetch

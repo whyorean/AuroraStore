@@ -37,7 +37,9 @@ import com.aurora.store.util.Preferences.PREFERENCE_DEFAULT_SELECTED_TAB
 import com.aurora.store.util.Preferences.PREFERENCE_INTRO
 import com.aurora.store.view.ui.commons.BaseFragment
 import com.aurora.store.viewmodel.auth.AuthViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SplashFragment : BaseFragment(R.layout.fragment_splash) {
 
     private var _binding: FragmentSplashBinding? = null

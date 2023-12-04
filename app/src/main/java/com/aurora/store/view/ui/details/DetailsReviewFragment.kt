@@ -33,7 +33,9 @@ import com.aurora.store.view.custom.recycler.EndlessRecyclerOnScrollListener
 import com.aurora.store.view.epoxy.views.AppProgressViewModel_
 import com.aurora.store.view.epoxy.views.details.ReviewViewModel_
 import com.aurora.store.viewmodel.review.ReviewViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class DetailsReviewFragment : Fragment(R.layout.fragment_details_review) {
 
     private var _binding: FragmentDetailsReviewBinding? = null

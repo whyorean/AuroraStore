@@ -33,7 +33,9 @@ import com.aurora.store.view.epoxy.views.shimmer.AppListViewShimmerModel_
 import com.aurora.store.view.ui.commons.BaseFragment
 import com.aurora.store.viewmodel.all.PaginatedAppList
 import com.aurora.store.viewmodel.all.PurchasedViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class PurchasedAppsFragment : BaseFragment() {
 
     private lateinit var VM: PurchasedViewModel

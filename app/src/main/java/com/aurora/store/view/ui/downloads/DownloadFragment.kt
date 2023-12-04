@@ -39,7 +39,9 @@ import com.tonyodev.fetch2.Error
 import com.tonyodev.fetch2.Fetch
 import com.tonyodev.fetch2.FetchListener
 import com.tonyodev.fetch2.Status
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class DownloadFragment : BaseFragment(R.layout.fragment_download) {
 
     private var _binding: FragmentDownloadBinding? = null

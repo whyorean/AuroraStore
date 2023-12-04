@@ -34,10 +34,12 @@ import com.aurora.store.data.event.InstallerEvent
 import com.aurora.store.data.installer.AppInstaller
 import com.aurora.store.util.NotificationUtil
 import com.aurora.store.util.PathUtil
+import dagger.hilt.android.AndroidEntryPoint
 import java.io.File
 import org.greenrobot.eventbus.EventBus
 import kotlin.io.path.pathString
 
+@AndroidEntryPoint
 class InstallReceiver : BroadcastReceiver() {
 
     companion object {

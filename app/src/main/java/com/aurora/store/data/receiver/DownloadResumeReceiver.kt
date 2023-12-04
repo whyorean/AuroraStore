@@ -23,7 +23,9 @@ import android.content.Context
 import android.content.Intent
 import com.aurora.Constants.FETCH_GROUP_ID
 import com.aurora.store.data.downloader.DownloadManager
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class DownloadResumeReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
         val extras = intent.extras

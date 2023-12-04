@@ -30,7 +30,9 @@ import com.aurora.extensions.copyToClipBoard
 import com.aurora.extensions.toast
 import com.aurora.store.R
 import com.aurora.store.databinding.SheetInstallErrorBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class InstallErrorDialogSheet : BaseBottomSheet() {
 
     private lateinit var B: SheetInstallErrorBinding

@@ -33,8 +33,10 @@ import com.aurora.store.data.providers.ExodusDataProvider
 import com.aurora.store.databinding.ActivityGenericRecyclerBinding
 import com.aurora.store.view.epoxy.views.HeaderViewModel_
 import com.aurora.store.view.epoxy.views.details.ExodusViewModel_
+import dagger.hilt.android.AndroidEntryPoint
 import org.json.JSONObject
 
+@AndroidEntryPoint
 class DetailsExodusFragment : Fragment(R.layout.activity_generic_recycler) {
 
     private var _binding: ActivityGenericRecyclerBinding? = null

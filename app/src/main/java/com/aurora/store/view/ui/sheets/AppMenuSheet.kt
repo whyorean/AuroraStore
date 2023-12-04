@@ -44,8 +44,10 @@ import com.aurora.store.data.providers.BlacklistProvider
 import com.aurora.store.databinding.SheetAppMenuBinding
 import com.aurora.store.util.PackageUtil
 import com.aurora.store.viewmodel.sheets.SheetsViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import org.greenrobot.eventbus.EventBus
 
+@AndroidEntryPoint
 class AppMenuSheet : BaseBottomSheet() {
 
     private lateinit var B: SheetAppMenuBinding

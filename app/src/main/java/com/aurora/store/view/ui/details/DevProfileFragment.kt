@@ -37,7 +37,9 @@ import com.aurora.store.view.epoxy.controller.DeveloperCarouselController
 import com.aurora.store.view.epoxy.controller.GenericCarouselController
 import com.aurora.store.view.ui.commons.BaseFragment
 import com.aurora.store.viewmodel.details.DevProfileViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class DevProfileFragment : BaseFragment(R.layout.fragment_dev_profile),
     GenericCarouselController.Callbacks {
 

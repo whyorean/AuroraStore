@@ -29,8 +29,9 @@ import androidx.viewpager2.widget.ViewPager2
 import com.aurora.Constants
 import com.aurora.store.R
 import com.aurora.store.databinding.FragmentTopChartBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class TopChartContainerFragment : Fragment(R.layout.fragment_top_chart) {
 
     private var _binding: FragmentTopChartBinding? = null

@@ -35,8 +35,9 @@ import com.aurora.store.view.ui.commons.ForYouFragment
 import com.aurora.store.view.ui.commons.TopChartContainerFragment
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class GamesContainerFragment : Fragment(R.layout.fragment_apps_games) {
 
     private var _binding: FragmentAppsGamesBinding? = null

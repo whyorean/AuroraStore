@@ -28,8 +28,10 @@ import com.aurora.store.databinding.FragmentOnboardingWelcomeBinding
 import com.aurora.store.view.epoxy.views.preference.DashViewModel_
 import com.aurora.store.view.ui.commons.BaseFragment
 import com.google.gson.reflect.TypeToken
+import dagger.hilt.android.AndroidEntryPoint
 import java.nio.charset.StandardCharsets
 
+@AndroidEntryPoint
 class WelcomeFragment : BaseFragment(R.layout.fragment_onboarding_welcome) {
 
     private var _binding: FragmentOnboardingWelcomeBinding? = null

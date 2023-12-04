@@ -44,8 +44,9 @@ import com.aurora.store.databinding.FragmentOnboardingPermissionsBinding
 import com.aurora.store.util.isExternalStorageAccessible
 import com.aurora.store.view.epoxy.views.preference.PermissionViewModel_
 import com.aurora.store.view.ui.commons.BaseFragment
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class PermissionsFragment : BaseFragment(R.layout.fragment_onboarding_permissions) {
 
     private var _binding: FragmentOnboardingPermissionsBinding? = null

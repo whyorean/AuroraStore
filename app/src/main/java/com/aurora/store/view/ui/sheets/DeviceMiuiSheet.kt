@@ -30,7 +30,9 @@ import coil.transform.CircleCropTransformation
 import com.aurora.extensions.toast
 import com.aurora.store.R
 import com.aurora.store.databinding.SheetDeviceMiuiBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class DeviceMiuiSheet : BaseBottomSheet() {
 
     private lateinit var B: SheetDeviceMiuiBinding

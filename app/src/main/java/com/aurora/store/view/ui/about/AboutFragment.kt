@@ -33,7 +33,9 @@ import com.aurora.store.R
 import com.aurora.store.data.model.Link
 import com.aurora.store.databinding.FragmentAboutBinding
 import com.aurora.store.view.epoxy.views.preference.LinkViewModel_
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class AboutFragment : Fragment(R.layout.fragment_about) {
 
     private var _binding: FragmentAboutBinding? = null

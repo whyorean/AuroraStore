@@ -32,8 +32,10 @@ import com.aurora.store.view.epoxy.views.AppProgressViewModel_
 import com.aurora.store.view.epoxy.views.app.AppListViewModel_
 import com.aurora.store.view.ui.commons.BaseFragment
 import com.aurora.store.viewmodel.search.SearchResultViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import okhttp3.internal.filterList
 
+@AndroidEntryPoint
 class DevAppsFragment : BaseFragment(R.layout.activity_generic_recycler) {
 
     private var _binding: ActivityGenericRecyclerBinding? = null

@@ -36,8 +36,9 @@ import com.aurora.store.view.epoxy.views.details.MiniScreenshotView
 import com.aurora.store.view.epoxy.views.details.MiniScreenshotViewModel_
 import com.aurora.store.view.epoxy.views.shimmer.AppListViewShimmerModel_
 import com.aurora.store.viewmodel.editorschoice.EditorBrowseViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class EditorStreamBrowseFragment : BaseFragment(R.layout.activity_generic_recycler) {
 
     private var _binding: ActivityGenericRecyclerBinding? = null

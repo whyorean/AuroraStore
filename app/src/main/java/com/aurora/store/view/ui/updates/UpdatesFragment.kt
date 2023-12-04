@@ -52,7 +52,9 @@ import com.aurora.store.viewmodel.all.UpdatesViewModel
 import com.tonyodev.fetch2.AbstractFetchGroupListener
 import com.tonyodev.fetch2.Download
 import com.tonyodev.fetch2.FetchGroup
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class UpdatesFragment : BaseFragment(R.layout.fragment_updates) {
 
     private lateinit var app: App

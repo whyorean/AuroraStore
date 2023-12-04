@@ -24,6 +24,7 @@ import com.aurora.store.util.Log
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.tonyodev.fetch2.*
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -32,6 +33,7 @@ import kotlinx.coroutines.launch
 import java.lang.reflect.Modifier
 import java.util.*
 
+@AndroidEntryPoint
 class SelfUpdateService : LifecycleService() {
     private lateinit var app: App
     private lateinit var fetch: Fetch

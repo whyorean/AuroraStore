@@ -29,7 +29,9 @@ import com.aurora.store.R
 import com.aurora.store.data.model.SelfUpdate
 import com.aurora.store.data.service.SelfUpdateService
 import com.aurora.store.databinding.SheetSelfUpdateBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SelfUpdateSheet : BaseBottomSheet() {
 
     private lateinit var B: SheetSelfUpdateBinding

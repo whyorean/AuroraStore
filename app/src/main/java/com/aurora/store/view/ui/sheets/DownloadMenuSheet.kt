@@ -31,8 +31,10 @@ import com.aurora.store.data.downloader.DownloadManager
 import com.aurora.store.databinding.SheetDownloadMenuBinding
 import com.tonyodev.fetch2.Fetch
 import com.tonyodev.fetch2.Status
+import dagger.hilt.android.AndroidEntryPoint
 import kotlin.properties.Delegates
 
+@AndroidEntryPoint
 class DownloadMenuSheet : BaseBottomSheet() {
 
     private lateinit var B: SheetDownloadMenuBinding

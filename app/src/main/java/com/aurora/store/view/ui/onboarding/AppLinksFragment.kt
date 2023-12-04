@@ -14,7 +14,9 @@ import com.aurora.extensions.toast
 import com.aurora.store.R
 import com.aurora.store.databinding.FragmentAppLinksBinding
 import com.google.android.material.button.MaterialButton
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class AppLinksFragment : Fragment(R.layout.fragment_app_links) {
 
     private var _binding: FragmentAppLinksBinding? = null

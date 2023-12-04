@@ -32,7 +32,9 @@ import com.aurora.gplayapi.data.models.Artwork
 import com.aurora.store.R
 import com.aurora.store.databinding.FragmentScreenshotBinding
 import com.aurora.store.view.epoxy.views.details.LargeScreenshotViewModel_
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ScreenshotFragment : Fragment(R.layout.fragment_screenshot) {
 
     private var _binding: FragmentScreenshotBinding? = null
