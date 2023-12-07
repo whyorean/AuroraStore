@@ -31,6 +31,7 @@ import com.aurora.store.R
 import com.aurora.store.data.installer.AppInstaller.Companion.hasAppManager
 import com.aurora.store.data.installer.AppInstaller.Companion.hasRootAccess
 import com.aurora.store.data.installer.AppInstaller.Companion.hasShizuku
+import com.aurora.store.data.installer.AppInstaller.Companion.hasShizukuOrSui
 import com.aurora.store.data.installer.AppInstaller.Companion.hasShizukuPerm
 import com.aurora.store.data.model.Installer
 import com.aurora.store.databinding.FragmentOnboardingInstallerBinding
@@ -42,6 +43,7 @@ import com.aurora.store.view.epoxy.views.preference.InstallerViewModel_
 import com.aurora.store.view.ui.commons.BaseFragment
 import com.google.gson.reflect.TypeToken
 import rikka.shizuku.Shizuku
+import rikka.sui.Sui
 import java.nio.charset.StandardCharsets
 
 
@@ -52,7 +54,7 @@ class InstallerFragment : BaseFragment(R.layout.fragment_onboarding_installer) {
 
     private var installerId: Int = 0
 
-    private var shizukuAlive = false
+    private var shizukuAlive = Sui.isSui()
     private val shizukuAliveListener = Shizuku.OnBinderReceivedListener {
         Log.d("ShizukuInstaller Alive!")
         shizukuAlive = true
@@ -154,7 +156,7 @@ class InstallerFragment : BaseFragment(R.layout.fragment_onboarding_installer) {
                 }
             }
             5 -> {
-                if (hasShizuku(requireContext()) && isOAndAbove()) {
+                if (hasShizukuOrSui(requireContext()) && isOAndAbove()) {
                     if (shizukuAlive && hasShizukuPerm()) {
                         this.installerId = installerId
                         save(PREFERENCE_INSTALLER_ID, installerId)

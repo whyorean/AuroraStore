@@ -47,11 +47,12 @@ import com.aurora.store.view.custom.preference.ListPreferenceMaterialDialogFragm
 import com.aurora.store.view.custom.preference.ListPreferenceMaterialDialogFragmentCompat.Companion.PREFERENCE_DIALOG_FRAGMENT_TAG
 import com.topjohnwu.superuser.Shell
 import rikka.shizuku.Shizuku
+import rikka.sui.Sui
 
 
 class InstallationPreference : PreferenceFragmentCompat() {
 
-    private var shizukuAlive = false
+    private var shizukuAlive = Sui.isSui()
     private val shizukuAliveListener = Shizuku.OnBinderReceivedListener {
         Log.d("ShizukuInstaller Alive!")
         shizukuAlive = true
@@ -156,7 +157,7 @@ class InstallationPreference : PreferenceFragmentCompat() {
                             false
                         }
                     } else if (selectedId == 5) {
-                        if (AppInstaller.hasShizuku(requireContext()) && isOAndAbove()) {
+                        if (AppInstaller.hasShizukuOrSui(requireContext()) && isOAndAbove()) {
                             if (shizukuAlive && AppInstaller.hasShizukuPerm()) {
                                 save(Preferences.PREFERENCE_INSTALLER_ID, selectedId)
                                 true
@@ -225,7 +226,7 @@ class InstallationPreference : PreferenceFragmentCompat() {
     }
 
     private fun checkShizukuAvailability(): Boolean {
-        return PackageUtil.isInstalled(requireContext(), ShizukuInstaller.SHIZUKU_PACKAGE_NAME) &&
+        return (PackageUtil.isInstalled(requireContext(), ShizukuInstaller.SHIZUKU_PACKAGE_NAME) || Sui.isSui()) &&
                 shizukuAlive && Shizuku.checkSelfPermission() == PackageManager.PERMISSION_GRANTED
     }
 }
