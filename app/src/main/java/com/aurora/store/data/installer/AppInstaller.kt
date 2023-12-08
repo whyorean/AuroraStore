@@ -31,6 +31,7 @@ import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_INSTALLER_ID
 import com.topjohnwu.superuser.Shell
 import rikka.shizuku.Shizuku
+import rikka.sui.Sui
 
 open class AppInstaller private constructor(var context: Context) {
 
@@ -81,6 +82,10 @@ open class AppInstaller private constructor(var context: Context) {
 
         fun hasShizuku(context: Context): Boolean {
             return PackageUtil.isInstalled(context, ShizukuInstaller.SHIZUKU_PACKAGE_NAME)
+        }
+
+        fun hasShizukuOrSui(context: Context): Boolean {
+            return hasShizuku(context) || Sui.isSui()
         }
 
         fun hasShizukuPerm(): Boolean {
@@ -136,7 +141,7 @@ open class AppInstaller private constructor(var context: Context) {
             }
             5 -> {
                 if (isOAndAbove()) {
-                    val installer = if (hasShizuku(context) && hasShizukuPerm()) {
+                    val installer = if (hasShizukuOrSui(context) && hasShizukuPerm()) {
                         ShizukuInstaller(context)
                     } else {
                         SessionInstaller(context)
