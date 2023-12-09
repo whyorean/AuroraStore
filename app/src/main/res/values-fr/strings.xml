@@ -361,12 +361,12 @@
     <string name="title_app_settings">Paramètres de l\'application</string>
     <string name="title_apps_sale_provider">Fournisseur - bestappsales.com</string>
     <string name="details_no_apps_on_sale">Aucune application en vente trouvée</string>
-    <string name="pref_downloader_path_title">Chemin de téléchargement</string>
+    <string name="pref_downloader_path_title">Dossier de téléchargement</string>
     <string name="pref_updates_check_frequency">Fréquence des mises à jour automatiques</string>
-    <string name="pref_download_directory_error">Impossible d\'écrire dans le chemin sélectionné</string>
+    <string name="pref_download_directory_error">Le dossier sélectionné n\'est pas utilisable</string>
     <string name="toast_proxy_failed">Échec de la configuration du proxy</string>
     <string name="pref_network_proxy_enable_desc">Autoriser tout le trafic de l\'application à passer par le proxy</string>
     <string name="action_uninstall_confirmation">Voulez-vous désinstaller cette application \?</string>
     <string name="android_market_desc">Android Market était une boutique en ligne offrant des applications logicielles conçues pour les appareils Android, retirée en 2017.</string>
-    <string name="pref_downloader_wifi_title">Télécharger uniquement via WiFi</string>
+    <string name="pref_downloader_wifi_title">Télécharger en utilisant uniquement le réseau WiFi</string>
 </resources>
