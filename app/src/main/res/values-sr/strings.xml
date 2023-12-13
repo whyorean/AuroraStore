@@ -399,7 +399,7 @@
     <string name="pref_updates_check_frequency">Учесталост аутоматског ажурирања</string>
     <string name="pref_downloader_wifi_title">Преузми само користећи Wi-Fi</string>
     <string name="pref_network_proxy_enable">Омогући прокси</string>
-    <string name="pref_network_proxy_url">URL проксија</string>
+    <string name="pref_network_proxy_url">URL адреса проксија</string>
     <string name="pref_network_proxy_title">Прокси</string>
     <string name="toast_proxy_invalid">Неважећи URL проксија, проверите формат!</string>
     <string name="toast_proxy_success">Прокси је успешно подешен</string>

@@ -269,7 +269,7 @@
     <string name="app_updater_service_notif_text">Вмикає фонове завантаження застосунків</string>
     <string name="app_updater_service_notif_title">Фонове завантаження застосунку</string>
     <string name="notification_channel_updater_service">Служба фонового завантаження застосунків</string>
-    <string name="pref_install_mode_am">Інсталятор менеджера застосунків.</string>
+    <string name="pref_install_mode_am">Інсталятор менеджера застосунків</string>
     <string name="account_anonymous_insecure">Анонімно (незахищено)</string>
     <string name="installer_am_unavailable">Встановити Менеджер застосунків або змінити встановлювач.</string>
     <string name="ui_accent_1">Синій</string>
@@ -373,4 +373,7 @@
     <string name="pref_self_update_summary">Перевіряти та повідомляти, чи доступна нова стабільна версія Aurora Store</string>
     <string name="pref_vending_version_device">Типово (з конфігурації пристрою)</string>
     <string name="pref_vending_version_title">Версія Google Play</string>
+    <string name="onboarding_permission_doze">Завантаження у фоні</string>
+    <string name="alt_download_progress">Завантаження</string>
+    <string name="onboarding_permission_doze_desc">Дозволити Aurora Store завантажувати й оновлювати застосунки у фоновому режимі</string>
 </resources>

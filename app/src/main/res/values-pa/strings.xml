@@ -281,7 +281,7 @@
     <string name="download_progress">ਡਾਊਨਲੋਡ ਕਰ ਰਿਹਾ • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
     <string name="account_anonymous_insecure">ਗੁੰਮਨਾਮ (ਅਸੁਰੱਖਿਅਤ)</string>
     <string name="ui_accent_13">ਗੂੜ੍ਹਾ ਨੀਲਾ</string>
-    <string name="pref_install_mode_am">AM ਇੰਸਟਾਲਰ।</string>
+    <string name="pref_install_mode_am">AM ਇੰਸਟਾਲਰ</string>
     <string name="ui_accent_3">ਲਾਲ</string>
     <string name="ui_accent_1">ਨੀਲਾ</string>
     <string name="ui_accent_5">ਹਰਾ</string>
@@ -371,4 +371,9 @@
     <string name="pref_network_proxy_enable_desc">ਐਪ ਤੋਂ ਸਾਰੇ ਟ੍ਰੈਫਿਕ ਨੂੰ ਪ੍ਰੌਕਸੀ ਰਾਹੀਂ ਜਾਣ ਦਿਓ</string>
     <string name="pref_self_update_title">ਸਵੈ-ਅੱਪਡੇਟ</string>
     <string name="pref_self_update_summary">ਜਾਂਚ ਕਰੋ ਅਤੇ ਸੂਚਿਤ ਕਰੋ ਕਿ ਕੀ ਔਰੋਰਾ ਸਟੋਰ ਦਾ ਨਵਾਂ ਸਥਿਰ ਸੰਸਕਰਣ ਉਪਲਬਧ ਹੈ</string>
+    <string name="pref_vending_version_device">ਪੂਰਵ-ਨਿਰਧਾਰਤ (ਡਿਵਾਈਸ ਸੰਰਚਨਾ ਤੋਂ)</string>
+    <string name="pref_vending_version_title">ਗੂਗਲ ਪਲੇ ਸੰਸਕਰਣ</string>
+    <string name="onboarding_permission_doze">ਬੈਕਗ੍ਰਾਊਂਡ ਡਾਊਨਲੋਡ</string>
+    <string name="alt_download_progress">ਡਾਊਨਲੋਡ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ</string>
+    <string name="onboarding_permission_doze_desc">ਔਰੋਰਾ ਸਟੋਰ ਨੂੰ ਬੈਕਗ੍ਰਾਊਂਡ ਵਿੱਚ ਐਪਸ ਨੂੰ ਡਾਊਨਲੋਡ ਅਤੇ ਅੱਪਡੇਟ ਕਰਨ ਦਿਓ</string>
 </resources>

@@ -186,9 +186,9 @@
     <string name="pref_install_mode_title">Metodo di installazione</string>
     <string name="pref_install_mode_summary">Selezionare modalità di installazione degli APK</string>
     <string name="pref_install_mode_session">Installatore Sessione</string>
-    <string name="pref_install_mode_services">Servizi Aurora</string>
+    <string name="pref_install_mode_services">Servizi Aurora (Deprecato)</string>
     <string name="pref_install_mode_root">Installatore Root</string>
-    <string name="pref_install_mode_native">Installatore Nativo</string>
+    <string name="pref_install_mode_native">Installatore nativo (Deprecato)</string>
     <string name="pref_install_delete_title">Elimina gli APK dopo l’installazione</string>
     <string name="pref_install_delete_summary">Gli APK verranno eliminati per impostazione predefinita</string>
     <string name="pref_downloader_external">Archiviazione esterna dell’utente</string>
@@ -269,7 +269,7 @@
     <string name="app_updater_service_notif_text">Abilita lo scaricamento di app in background</string>
     <string name="app_updater_service_notif_title">Scaricamento delle app in background</string>
     <string name="notification_channel_updater_service">Servizio di scaricamento delle app in background</string>
-    <string name="pref_install_mode_am">Installatore AM.</string>
+    <string name="pref_install_mode_am">Installatore AM</string>
     <string name="account_anonymous_insecure">Anonimo (non sicuro)</string>
     <string name="installer_am_unavailable">Installa App Manager o cambia il programma di installazione.</string>
     <string name="ui_accent_1">Blu</string>
@@ -365,4 +365,15 @@
     <string name="pref_updates_check_frequency">Frequenza per gli aggiornamenti automatici</string>
     <string name="toast_proxy_failed">È stato impossibile impostare il proxy</string>
     <string name="pref_downloader_wifi_title">Scarica usando esclusivamente il WiFi</string>
+    <string name="pref_vending_version_device">Default (da configurazione dispositivo)</string>
+    <string name="pref_vending_version_title">Versione Google Play</string>
+    <string name="pref_aurora_only">Solo apps di Aurora Store</string>
+    <string name="onboarding_permission_doze">Trasferimenti in background</string>
+    <string name="toast_proxy_invalid">URL proxy non valido, controlla il formato!</string>
+    <string name="pref_self_update_title">Auto-aggiornamento</string>
+    <string name="pref_aurora_only_desc">Mostra solo le app installate da Aurora Store in Aggiornamenti e app installate</string>
+    <string name="alt_download_progress">Trasferimento</string>
+    <string name="onboarding_permission_doze_desc">Consenti ad Aurora Store di scaricare e aggiornare le app in background</string>
+    <string name="pref_self_update_summary">Controlla e avvisa se è disponibile una nuova versione stabile di Aurora Store</string>
+    <string name="pref_network_proxy_enable_desc">Consenti a tutto il traffico dall\'app di passare attraverso il proxy</string>
 </resources>
