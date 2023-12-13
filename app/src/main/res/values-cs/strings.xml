@@ -374,6 +374,5 @@
     <string name="pref_vending_version_device">Výchozí (z konfigurace zařízení)</string>
     <string name="pref_vending_version_title">Verze z Google Play</string>
     <string name="onboarding_permission_doze">Stahování na pozadí</string>
-    <string name="alt_download_progress">Stahování</string>
     <string name="onboarding_permission_doze_desc">Umožnit aplikaci Aurora Store stahovat a aktualizovat aplikace na pozadí</string>
 </resources>

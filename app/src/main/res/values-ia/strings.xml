@@ -49,7 +49,6 @@
     <string name="action_restart">Reinitiar</string>
     <string name="open_in_aurora">Aperir in Aurora Store</string>
     <string name="action_uninstall">Disinstallar</string>
-    <string name="alt_download_progress">Discargante</string>
     <string name="title_library">Bibliotheca</string>
     <string name="details_beta_subscribed">Tu es un usator beta</string>
     <string name="action_get_local_apk">Salvar pacchetto del application</string>

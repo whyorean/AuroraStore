@@ -374,6 +374,5 @@
     <string name="pref_vending_version_device">डिफ़ॉल्ट (डिवाइस कॉन्फ़िगरेशन से)</string>
     <string name="pref_vending_version_title">गूगल प्ले संस्करण</string>
     <string name="onboarding_permission_doze">बेकग्राउंड डाउनलोड</string>
-    <string name="alt_download_progress">डाउनलोडिंग</string>
     <string name="onboarding_permission_doze_desc">ऑरोरा स्टोर को पृष्ठभूमि में ऐप्स डाउनलोड करने और अपडेट करने की अनुमति दें</string>
 </resources>

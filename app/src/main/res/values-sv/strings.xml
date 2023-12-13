@@ -374,6 +374,5 @@
     <string name="pref_vending_version_device">Standard (från enhetskonfiguration)</string>
     <string name="pref_vending_version_title">Google Play Version</string>
     <string name="onboarding_permission_doze">Bakgrundsnedladdningar</string>
-    <string name="alt_download_progress">Laddar ner</string>
     <string name="onboarding_permission_doze_desc">Tillåt Aurora Store att ladda ner och uppdatera appar i bakgrunden</string>
 </resources>

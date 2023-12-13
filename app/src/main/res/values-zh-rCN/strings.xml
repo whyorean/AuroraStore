@@ -374,6 +374,5 @@
     <string name="pref_vending_version_device">默认（来自设备配置）</string>
     <string name="pref_vending_version_title">Google Play 版本</string>
     <string name="onboarding_permission_doze">后台下载</string>
-    <string name="alt_download_progress">下载中</string>
     <string name="onboarding_permission_doze_desc">允许 Aurora Store 在后台下载并更新应用</string>
 </resources>

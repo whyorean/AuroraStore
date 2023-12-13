@@ -334,7 +334,6 @@
     <string name="title_search_suggestion">Bilaketarako iradokizuna</string>
     <string name="pref_aurora_only_desc">Erakutsi soilik Aurora Store-rekin instalatutako aplikazioak \"Eguneratzeak\" eta \"Instalatutakoak\" ataletan</string>
     <string name="toast_proxy_success">Proxy-a ezarri da</string>
-    <string name="alt_download_progress">Deskargatzen</string>
     <string name="onboarding_permission_doze_desc">Onartu Aurora Store-ri aplikazioak atzeko planoan deskargatzea eta eguneratzea</string>
     <string name="title_app_settings">Aplikazioaren ezarpenak</string>
     <string name="title_apps_sale_provider">Hornitzailea: bestappsales.com</string>
