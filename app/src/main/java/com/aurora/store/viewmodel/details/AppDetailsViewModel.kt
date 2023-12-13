@@ -17,6 +17,7 @@ import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.util.DownloadWorkerUtil
 import com.google.gson.GsonBuilder
 import dagger.hilt.android.lifecycle.HiltViewModel
+import java.io.File
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
@@ -146,7 +147,7 @@ class AppDetailsViewModel @Inject constructor(
     }
 
     @Synchronized
-    fun install(context: Context, packageName: String, files: List<Any>) {
+    fun install(context: Context, packageName: String, files: List<File>) {
         try {
             viewModelScope.launch(Dispatchers.IO) {
                 AppInstaller.getInstance(context).getPreferredInstaller()

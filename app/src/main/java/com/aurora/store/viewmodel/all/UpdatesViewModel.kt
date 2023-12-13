@@ -23,172 +23,74 @@ import android.app.Application
 import android.content.Context
 import android.util.Log
 import androidx.core.content.pm.PackageInfoCompat
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.aurora.gplayapi.data.models.App
-import com.aurora.store.State
-import com.aurora.store.data.RequestState
-import com.aurora.store.data.downloader.RequestGroupIdBuilder
-import com.aurora.store.data.downloader.getGroupId
-import com.aurora.store.data.event.BusEvent
-import com.aurora.store.data.event.InstallerEvent
 import com.aurora.store.data.installer.AppInstaller
-import com.aurora.store.data.model.UpdateFile
-import com.tonyodev.fetch2.Download
-import com.tonyodev.fetch2.FetchGroup
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import org.greenrobot.eventbus.EventBus
-import org.greenrobot.eventbus.Subscribe
-import org.greenrobot.eventbus.ThreadMode
+import com.aurora.store.util.DownloadWorkerUtil
+import dagger.hilt.android.lifecycle.HiltViewModel
 import java.io.File
 import java.util.Locale
+import javax.inject.Inject
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.asSharedFlow
+import kotlinx.coroutines.launch
 
-class UpdatesViewModel(application: Application) : BaseAppsViewModel(application) {
+@HiltViewModel
+class UpdatesViewModel @Inject constructor(
+    application: Application,
+    private val downloadWorkerUtil: DownloadWorkerUtil
+) : BaseAppsViewModel(application) {
 
     private val TAG = UpdatesViewModel::class.java.simpleName
 
-    var updateFileMap: MutableMap<Int, UpdateFile> = mutableMapOf()
-    var liveUpdateData: MutableLiveData<MutableMap<Int, UpdateFile>> = MutableLiveData()
     var updateAllEnqueued: Boolean = false
 
-    init {
-        EventBus.getDefault().register(this)
+    private val _updates = MutableSharedFlow<List<App>?>()
+    val updates = _updates.asSharedFlow()
 
-        requestState = RequestState.Init
-        observe()
-    }
+    val downloadsList get() = downloadWorkerUtil.downloadsList
 
     override fun observe() {
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                val marketApps = getFilteredApps()
-                checkUpdate(marketApps)
-            } catch (e: Exception) {
-                requestState = RequestState.Pending
-            }
-        }
-    }
-
-    private fun checkUpdate(subAppList: List<App>) {
-        subAppList.filter {
-            val packageInfo = packageInfoMap[it.packageName]
-            if (packageInfo != null) {
-                it.versionCode.toLong() > PackageInfoCompat.getLongVersionCode(packageInfo)
-            } else {
-                false
-            }
-        }.sortedBy { it.displayName.lowercase(Locale.getDefault()) }.also { apps ->
-            updateFileMap.clear()
-
-            apps.forEach {
-                updateFileMap[it.getGroupId(getApplication<Application>().applicationContext)] = UpdateFile(it)
-            }
-
-            liveUpdateData.postValue(updateFileMap)
-            requestState = RequestState.Complete
-        }
-    }
-
-    @Subscribe(threadMode = ThreadMode.BACKGROUND)
-    fun onBusEvent(event: BusEvent) {
-        when (event) {
-            is BusEvent.InstallEvent -> {
-                updateListAndPost(event.packageName)
-            }
-            is BusEvent.UninstallEvent -> {
-                updateListAndPost(event.packageName)
-            }
-            is BusEvent.Blacklisted -> {
-                updateListAndPost(event.packageName)
-            }
-            else -> {
-
-            }
-        }
-    }
-
-    @Subscribe(threadMode = ThreadMode.BACKGROUND)
-    fun onInstallerEvent(event: InstallerEvent) {
-        when (event) {
-            is InstallerEvent.Success -> {
-
-            }
-            is InstallerEvent.Cancelled -> {
-
-            }
-            is InstallerEvent.Failed -> {
-                val packageName = event.packageName
-                packageName?.let {
-                    val groupIDsOfPackageName = RequestGroupIdBuilder.getGroupIDsForApp(getApplication<Application>().applicationContext, packageName.hashCode())
-                    groupIDsOfPackageName.forEach {
-                        updateDownload(it, null, true)
+                getFilteredApps().filter {
+                    val packageInfo = packageInfoMap[it.packageName]
+                    if (packageInfo != null) {
+                        it.versionCode.toLong() > PackageInfoCompat.getLongVersionCode(packageInfo)
+                    } else {
+                        false
                     }
+                }.sortedBy { it.displayName.lowercase(Locale.getDefault()) }.also { apps ->
+                    _updates.emit(apps)
                 }
+            } catch (exception: Exception) {
+                Log.d(TAG, "Failed to get updates", exception)
             }
         }
-    }
-
-    fun updateState(id: Int, state: State) {
-        updateFileMap[id]?.state = state
-        liveUpdateData.postValue(updateFileMap)
-    }
-
-    fun updateDownload(
-        id: Int,
-        group: FetchGroup?,
-        isCancelled: Boolean = false,
-        isComplete: Boolean = false
-    ) {
-        when {
-            isCancelled -> {
-                updateFileMap[id]?.state = State.IDLE
-                updateFileMap[id]?.group = null
-            }
-            isComplete -> {
-                updateFileMap[id]?.state = State.COMPLETE
-                updateFileMap[id]?.group = group
-            }
-            else -> {
-                updateFileMap[id]?.state = State.PROGRESS
-                updateFileMap[id]?.group = group
-            }
-        }
-
-        liveUpdateData.postValue(updateFileMap)
     }
 
     @Synchronized
-    fun install(context: Context, packageName: String, files: List<Download>) {
-        if (files.all { File(it.file).exists() }) {
+    fun install(context: Context, packageName: String, files: List<File>) {
+        try {
             viewModelScope.launch(Dispatchers.IO) {
-                try {
-                    AppInstaller.getInstance(context).getPreferredInstaller().install(
-                        packageName,
-                        files.filter { it.file.endsWith(".apk") }.map { it.file }.toList()
-                    )
-                } catch (exception: Exception) {
-                    Log.e(TAG, "Failed to install $packageName", exception)
-                }
+                AppInstaller.getInstance(context).getPreferredInstaller()
+                    .install(packageName, files)
             }
-        } else {
-            Log.e(TAG, "Given files doesn't exists!")
+        } catch (exception: Exception) {
+            Log.e(TAG, "Failed to install app", exception)
         }
     }
 
-    private fun updateListAndPost(packageName: String) {
-        val groupIDsOfPackageName = RequestGroupIdBuilder.getGroupIDsForApp(getApplication<Application>().applicationContext, packageName.hashCode())
-        groupIDsOfPackageName.forEach {
-            //Remove from map
-            updateFileMap.remove(it)
-        }
-
-        //Post new update list
-        liveUpdateData.postValue(updateFileMap)
+    fun download(app: App) {
+        viewModelScope.launch { downloadWorkerUtil.enqueueApp(app) }
     }
 
-    override fun onCleared() {
-        EventBus.getDefault().unregister(this)
-        super.onCleared()
+    fun cancelDownload(app: App) {
+        viewModelScope.launch { downloadWorkerUtil.cancelDownload(app.packageName) }
+    }
+
+    fun cancelAll() {
+        viewModelScope.launch { downloadWorkerUtil.cancelAll() }
     }
 }

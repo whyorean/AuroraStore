@@ -26,6 +26,7 @@ import com.aurora.extensions.getString
 import com.aurora.extensions.runOnUiThread
 import com.aurora.store.R
 import com.aurora.store.State
+import com.aurora.store.data.model.DownloadStatus
 import com.aurora.store.databinding.ViewUpdateButtonBinding
 
 class UpdateButton : RelativeLayout {
@@ -72,12 +73,12 @@ class UpdateButton : RelativeLayout {
         B.btnPositive.text = getString(text)
     }
 
-    fun updateState(state: State) {
-        val displayChild = when (state) {
-            State.IDLE, State.CANCELED -> 0
-            State.QUEUED -> 1
-            State.PROGRESS -> 2
-            State.COMPLETE -> 3
+    fun updateState(downloadStatus: DownloadStatus) {
+        val displayChild = when (downloadStatus) {
+            DownloadStatus.QUEUED,
+            DownloadStatus.DOWNLOADING -> 2
+            DownloadStatus.COMPLETED -> 3
+            else -> 0
         }
 
         if (B.viewFlipper.displayedChild != displayChild) {
