@@ -257,7 +257,7 @@
     <string name="toast_manual_unavailable">你请求的版本代码不可用。</string>
     <string name="title_manual_download">手动下载</string>
     <string name="action_check">检查</string>
-    <string name="dialog_desc_native_split">不能通过原生安装程序安装捆绑（拆分）的应用程序，请将选定的安装程序更改为会话安装器、Aurora 服务或 Root 安装器</string>
+    <string name="dialog_desc_native_split">不能通过原生安装程序安装捆绑（拆分）的应用程序，请将选定的安装程序更改为会话安装器、Aurora 服务或 Root 安装器。</string>
     <string name="toast_aas_token_failed">无法生成 AAS 令牌</string>
     <string name="toast_rated_failed">提交评分失败</string>
     <string name="toast_rated_success">已打分，可能需要一会儿才显示出来</string>
