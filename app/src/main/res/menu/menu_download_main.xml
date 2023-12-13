@@ -19,18 +19,9 @@
 
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/action_pause_all"
-        android:title="@string/download_pause_all" />
-    <item
-        android:id="@+id/action_resume_all"
-        android:title="@string/download_resume_all" />
-    <item
         android:id="@+id/action_cancel_all"
         android:title="@string/download_cancel_all" />
     <item
         android:id="@+id/action_clear_completed"
         android:title="@string/download_clear_completed" />
-    <item
-        android:id="@+id/action_force_clear_all"
-        android:title="@string/download_force_clear_all" />
 </menu>

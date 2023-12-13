@@ -23,84 +23,82 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.findViewTreeLifecycleOwner
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
 import com.aurora.extensions.copyToClipBoard
 import com.aurora.extensions.toast
 import com.aurora.store.R
 import com.aurora.store.data.downloader.DownloadManager
+import com.aurora.store.data.model.DownloadStatus
 import com.aurora.store.databinding.SheetDownloadMenuBinding
+import com.aurora.store.util.DownloadWorkerUtil
 import com.tonyodev.fetch2.Fetch
 import com.tonyodev.fetch2.Status
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
+import kotlinx.coroutines.NonCancellable
+import kotlinx.coroutines.launch
 import kotlin.properties.Delegates
 
 @AndroidEntryPoint
 class DownloadMenuSheet : BaseBottomSheet() {
 
-    private lateinit var B: SheetDownloadMenuBinding
-    private lateinit var fetch: Fetch
+    private var _binding: SheetDownloadMenuBinding? = null
+    private val binding get() = _binding!!
 
     private val args: DownloadMenuSheetArgs by navArgs()
-    private var status by Delegates.notNull<Int>()
+    private val playStoreURL = "https://play.google.com/store/apps/details?id="
+
+    @Inject
+    lateinit var downloadWorkerUtil: DownloadWorkerUtil
 
     override fun onCreateContentView(
         inflater: LayoutInflater,
         container: ViewGroup,
         savedInstanceState: Bundle?
     ): View {
-        B = SheetDownloadMenuBinding.inflate(layoutInflater)
-        return B.root
+        _binding = SheetDownloadMenuBinding.inflate(layoutInflater)
+        return binding.root
     }
 
     override fun onContentViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        fetch = DownloadManager
-            .with(requireContext())
-            .getFetchInstance()
-
-        status = args.downloadFile.download.status.value
-        attachNavigation()
-    }
-
-    private fun attachNavigation() {
-        with(B.navigationView) {
-            if (status == Status.PAUSED.value || status == Status.COMPLETED.value || status == Status.CANCELLED.value) {
-                menu.findItem(R.id.action_pause).isVisible = false
-            }
-
-            if (status == Status.DOWNLOADING.value || status == Status.COMPLETED.value || status == Status.QUEUED.value) {
-                menu.findItem(R.id.action_resume).isVisible = false
-            }
-
-            if (status == Status.COMPLETED.value || status == Status.CANCELLED.value) {
-                menu.findItem(R.id.action_cancel).isVisible = false
-            }
+        with(binding.navigationView) {
+            menu.findItem(R.id.action_cancel).isVisible = !args.download.isFinished
+            menu.findItem(R.id.action_clear).isVisible = args.download.isFinished
 
             setNavigationItemSelectedListener { item ->
                 when (item.itemId) {
                     R.id.action_copy -> {
-                        requireContext().copyToClipBoard(args.downloadFile.download.url)
+                        requireContext().copyToClipBoard(
+                            "${playStoreURL}${args.download.packageName}"
+                        )
                         requireContext().toast(requireContext().getString(R.string.toast_clipboard_copied))
                     }
-                    R.id.action_pause -> {
-                        fetch.pause(args.downloadFile.download.id)
-                    }
-                    R.id.action_resume -> if (status == Status.FAILED.value || status == Status.CANCELLED.value) {
-                        fetch.retry(args.downloadFile.download.id)
-                    } else {
-                        fetch.resume(args.downloadFile.download.id)
-                    }
                     R.id.action_cancel -> {
-                        fetch.cancel(args.downloadFile.download.id)
+                        findViewTreeLifecycleOwner()?.lifecycleScope?.launch(NonCancellable) {
+                            downloadWorkerUtil.cancelDownload(args.download.packageName)
+                        }
                     }
                     R.id.action_clear -> {
-                        fetch.delete(args.downloadFile.download.id)
+                        findViewTreeLifecycleOwner()?.lifecycleScope?.launch(NonCancellable) {
+                            downloadWorkerUtil.clearDownload(
+                                args.download.packageName,
+                                args.download.versionCode
+                            )
+                        }
                     }
                 }
                 dismissAllowingStateLoss()
                 false
             }
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

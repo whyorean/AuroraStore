@@ -432,8 +432,8 @@
         android:label="DownloadMenuSheet"
         tools:layout="@layout/sheet_download_menu">
         <argument
-            android:name="downloadFile"
-            app:argType="com.aurora.store.data.model.DownloadFile" />
+            android:name="download"
+            app:argType="com.aurora.store.data.room.download.Download" />
     </dialog>
     <dialog
         android:id="@+id/deviceMiuiSheet"

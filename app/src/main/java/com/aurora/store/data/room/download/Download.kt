@@ -1,10 +1,13 @@
 package com.aurora.store.data.room.download
 
+import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.data.model.DownloadStatus
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 @Entity(tableName = "download")
 data class Download(
     @PrimaryKey val packageName: String,
@@ -21,7 +24,7 @@ data class Download(
     var timeRemaining: Long,
     var totalFiles: Int,
     var downloadedFiles: Int
-) {
+) : Parcelable {
     val isFinished get() = status in DownloadStatus.finished
 
     companion object {

@@ -51,43 +51,15 @@
             android:textAlignment="viewStart"
             tools:text="App Name" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:weightSum="2">
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/txt_status"
-                style="@style/AuroraTextStyle.Line2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ellipsize="end"
-                android:singleLine="true"
-                android:textAlignment="viewStart"
-                tools:text="Status" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/txt_size"
-                style="@style/AuroraTextStyle.Line2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ellipsize="end"
-                android:singleLine="true"
-                android:textAlignment="viewEnd"
-                tools:text="33 MB" />
-        </LinearLayout>
-
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/txt_file"
-            style="@style/AuroraTextStyle.Line3"
-            android:layout_width="match_parent"
-            android:layout_height="17dp"
+            android:id="@+id/txt_status"
+            style="@style/AuroraTextStyle.Line2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:ellipsize="end"
             android:singleLine="true"
-            tools:text="File path" />
+            android:textAlignment="viewStart"
+            tools:text="Status" />
 
         <ProgressBar
             android:id="@+id/progress_download"

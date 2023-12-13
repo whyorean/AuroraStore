@@ -21,6 +21,8 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
+import kotlin.io.path.ExperimentalPathApi
+import kotlin.io.path.deleteRecursively
 
 @OptIn(DelicateCoroutinesApi::class)
 class DownloadWorkerUtil @Inject constructor(
@@ -41,6 +43,8 @@ class DownloadWorkerUtil @Inject constructor(
 
     val downloadsList = downloadDao.downloads()
         .stateIn(GlobalScope, SharingStarted.WhileSubscribed(), emptyList())
+
+    private val TAG = DownloadWorkerUtil::class.java.simpleName
 
     fun init() {
         // Run cleanup for last finished download and drop it database
@@ -68,13 +72,35 @@ class DownloadWorkerUtil @Inject constructor(
         downloadDao.insert(Download.fromApp(app))
     }
 
-    fun cancelDownload(packageName: String) {
+    suspend fun cancelDownload(packageName: String) {
+        Log.i(TAG, "Cancelling download for $packageName")
         WorkManager.getInstance(context).cancelAllWorkByTag("$PACKAGE_NAME:$packageName")
+        downloadsList.value
+            .find { it.packageName == packageName && it.status == DownloadStatus.QUEUED }
+            ?.let { downloadDao.update(it.copy(status = DownloadStatus.CANCELLED)) }
     }
 
-    fun cancelAll(context: Context, downloads: Boolean = true, updates: Boolean = true) {
-        val workManager = WorkManager.getInstance(context)
+    @OptIn(ExperimentalPathApi::class)
+    suspend fun clearDownload(packageName: String, versionCode: Int) {
+        Log.i(TAG, "Clearing downloads for $packageName ($versionCode)")
+        downloadDao.delete(packageName)
+        PathUtil.getAppDownloadDir(context, packageName, versionCode)
+            .deleteRecursively()
+    }
 
+    suspend fun clearFinishedDownloads() {
+        downloadsList.value.filter { it.isFinished }.forEach {
+            clearDownload(it.packageName, it.versionCode)
+        }
+    }
+
+    suspend fun cancelAll(downloads: Boolean = true, updates: Boolean = true) {
+        // Cancel all enqueued downloads first to avoid triggering re-download
+        downloadsList.value.filter { it.status == DownloadStatus.QUEUED }.forEach {
+            downloadDao.update(it.copy(status = DownloadStatus.CANCELLED))
+        }
+
+        val workManager = WorkManager.getInstance(context)
         if (downloads) workManager.cancelAllWorkByTag(DOWNLOAD_APP)
         if (updates) workManager.cancelAllWorkByTag(DOWNLOAD_UPDATE)
     }
