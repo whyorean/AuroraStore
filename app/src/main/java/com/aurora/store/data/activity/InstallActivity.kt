@@ -6,11 +6,9 @@ import androidx.appcompat.app.AppCompatActivity
 import com.aurora.Constants
 import com.aurora.store.data.installer.AppInstaller
 import com.aurora.store.util.PathUtil
-import dagger.hilt.android.AndroidEntryPoint
 import java.io.File
 import kotlin.io.path.pathString
 
-@AndroidEntryPoint
 class InstallActivity : AppCompatActivity() {
 
     private val TAG = InstallActivity::class.java.simpleName
