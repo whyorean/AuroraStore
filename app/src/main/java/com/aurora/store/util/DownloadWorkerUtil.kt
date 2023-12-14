@@ -7,6 +7,7 @@ import androidx.work.ExistingWorkPolicy
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.OutOfQuotaPolicy
 import androidx.work.WorkManager
+import com.aurora.extensions.isIgnoringBatteryOptimizations
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.data.model.DownloadStatus
 import com.aurora.store.data.room.download.Download
@@ -17,6 +18,7 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.cancel
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.stateIn
@@ -56,8 +58,13 @@ class DownloadWorkerUtil @Inject constructor(
                         val enqueuedDownloads = list.filter { it.status == DownloadStatus.QUEUED }
                         enqueuedDownloads.firstOrNull()?.let {
                             try {
-                                Log.i(DOWNLOAD_WORKER, "Downloading ${it.packageName}")
-                                trigger(it)
+                                if (context.isIgnoringBatteryOptimizations() || CommonUtil.inForeground()) {
+                                    Log.i(DOWNLOAD_WORKER, "Downloading ${it.packageName}")
+                                    trigger(it)
+                                } else {
+                                    Log.i(TAG, "Not in foreground or ignoring battery optimization")
+                                    cancel()
+                                }
                             } catch (exception: Exception) {
                                 Log.i(DOWNLOAD_WORKER, "Failed to download app", exception)
                                 downloadDao.delete(it.packageName)

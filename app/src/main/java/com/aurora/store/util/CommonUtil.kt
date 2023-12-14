@@ -20,6 +20,8 @@
 package com.aurora.store.util
 
 import android.content.Context
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.ProcessLifecycleOwner
 import com.aurora.extensions.isSAndAbove
 import com.aurora.store.R
 import com.aurora.store.data.model.ProxyInfo
@@ -208,5 +210,9 @@ object CommonUtil {
 
             else -> null
         }
+    }
+
+    fun inForeground(): Boolean {
+        return ProcessLifecycleOwner.get().lifecycle.currentState.isAtLeast(Lifecycle.State.CREATED)
     }
 }

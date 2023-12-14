@@ -28,6 +28,7 @@ import android.content.Intent
 import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
+import android.os.PowerManager
 import android.util.DisplayMetrics
 import android.util.TypedValue
 import android.view.LayoutInflater
@@ -174,4 +175,10 @@ fun Context.accentColor(): Int {
         else -> if (isSAndAbove()) R.color.colorAccent else R.color.colorAccent01
     }
     return ContextCompat.getColor(this, color)
+}
+
+fun Context.isIgnoringBatteryOptimizations(): Boolean {
+    if (!isMAndAbove()) return true
+    return !(getSystemService(Context.POWER_SERVICE) as PowerManager)
+        .isIgnoringBatteryOptimizations(packageName)
 }
