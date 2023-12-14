@@ -20,10 +20,14 @@
 package com.aurora.store.view.epoxy.views.app
 
 import android.content.Context
+import android.graphics.Color
+import android.graphics.PorterDuff
+import android.graphics.PorterDuffColorFilter
 import android.util.AttributeSet
 import android.view.View
 import android.widget.RelativeLayout
 import androidx.core.content.ContextCompat
+import androidx.core.graphics.ColorUtils
 import androidx.core.text.HtmlCompat
 import androidx.core.view.isVisible
 import coil.load
@@ -36,7 +40,6 @@ import com.aurora.extensions.invisible
 import com.aurora.extensions.px
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
-import com.aurora.store.State
 import com.aurora.store.data.model.DownloadStatus
 import com.aurora.store.data.room.download.Download
 import com.aurora.store.databinding.ViewAppUpdateBinding
@@ -73,6 +76,11 @@ class AppUpdateView : RelativeLayout {
     private fun init(context: Context?) {
         val view = inflate(context, R.layout.view_app_update, this)
         B = ViewAppUpdateBinding.bind(view)
+
+        B.progressDownload.progressDrawable?.apply {
+            val alphaColor = ColorUtils.setAlphaComponent(Color.GRAY, 100)
+            colorFilter = PorterDuffColorFilter(alphaColor, PorterDuff.Mode.SRC_IN)
+        }
     }
 
     @ModelProp
