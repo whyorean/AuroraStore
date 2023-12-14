@@ -7,8 +7,10 @@ import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
+import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.os.Build
+import android.util.Log
 import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
@@ -29,9 +31,12 @@ import com.aurora.store.data.receiver.DownloadResumeReceiver
 import com.tonyodev.fetch2.Download
 import com.tonyodev.fetch2.FetchGroup
 import com.tonyodev.fetch2.Status
+import java.net.URL
 import java.util.UUID
 
 object NotificationUtil {
+
+    private const val TAG = "NotificationUtil"
 
     fun createNotificationChannel(context: Context) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -208,6 +213,14 @@ object NotificationUtil {
         builder.setContentTitle(download.displayName)
         builder.color = ContextCompat.getColor(context, R.color.colorAccent)
         builder.setContentIntent(getContentIntentForDownloads(context))
+
+        // Set big icon for download
+        try {
+            val bitmap = BitmapFactory.decodeStream(URL(download.iconURL).openStream())
+            builder.setLargeIcon(bitmap)
+        } catch (exception: Exception) {
+            Log.i(TAG, "Failed to set big icon", exception)
+        }
 
         when (download.status) {
             DownloadStatus.CANCELLED -> {
