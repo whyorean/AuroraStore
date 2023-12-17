@@ -375,4 +375,8 @@
     <string name="pref_vending_version_title">गूगल प्ले संस्करण</string>
     <string name="onboarding_permission_doze">बेकग्राउंड डाउनलोड</string>
     <string name="onboarding_permission_doze_desc">ऑरोरा स्टोर को पृष्ठभूमि में ऐप्स डाउनलोड करने और अपडेट करने की अनुमति दें</string>
+    <string name="device_doze_description">कृपया, पृष्ठभूमि संचालन की अनुमति के लिए बैटरी ऑप्टिमाइज़ेशन अक्षम करें।</string>
+    <string name="device_doze_title">बैटरी ऑप्टिमाइज़ेशन का पता चला!</string>
+    <string name="device_doze_extra">वैकल्पिक रूप से आप ऑप्टिमाइज़ेशन को सक्षम रखना चुन सकते हैं, लेकिन तब आप पृष्ठभूमि डाउनलोड और स्वचालित अपडेट का लाभ नहीं ले पाएंगे, इसलिए चुनाव आपका है।</string>
+    <string name="device_doze_subtitle">बैटरी ऑप्टिमाइज़ेशन के कारण ऑरोरा स्टोर बैकग्राउंड में डाउनलोड या अपडेट ऐप्स इंस्टॉल नहीं कर सकता है।</string>
 </resources>
