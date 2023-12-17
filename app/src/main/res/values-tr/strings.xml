@@ -375,4 +375,8 @@
     <string name="pref_vending_version_title">Google Play Sürümü</string>
     <string name="onboarding_permission_doze">Arka Plan İndirmeleri</string>
     <string name="onboarding_permission_doze_desc">Aurora Store\'un arka planda uygulama indirme ve güncellemesini sağla</string>
+    <string name="device_doze_description">Lütfen arka plan işlemlerine izin vermek için pil iyileştirmelerini devre dışı bırakın.</string>
+    <string name="device_doze_title">Pil iyileştirmeleri tespit edildi!</string>
+    <string name="device_doze_extra">İsteğe bağlı olarak iyileştirmeleri etkin tutmayı seçebilirsiniz, ancak bu durumda arka planda indirme ve otomatik güncellemelerden yararlanamazsınız, bu nedenle seçim sizin.</string>
+    <string name="device_doze_subtitle">Aurora Store, pil iyileştirmeleri nedeniyle uygulamaları arka planda kuramıyor veya güncelleyemiyor.</string>
 </resources>
