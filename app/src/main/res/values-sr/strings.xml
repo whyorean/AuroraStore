@@ -411,4 +411,8 @@
     <string name="pref_vending_version_title">Верзија Google Play-а</string>
     <string name="onboarding_permission_doze">Преузимања у позадини</string>
     <string name="onboarding_permission_doze_desc">Дозволите Aurora Store-у да преузима и ажурира апликације у позадини</string>
+    <string name="device_doze_description">Онемогућите оптимизацију батерије да бисте омогућили рад у позадини.</string>
+    <string name="device_doze_title">Откривена оптимизација батерије!</string>
+    <string name="device_doze_extra">Опционално, можете изабрати да оставите омогућене оптимизације, али тада нећете моћи да искористите предности преузимања у позадини и аутоматизованих ажурирања, тако да је избор на вама.</string>
+    <string name="device_doze_subtitle">Aurora Store не може да инсталира преузимање или ажурирање апликација у позадини због оптимизације батерије.</string>
 </resources>
