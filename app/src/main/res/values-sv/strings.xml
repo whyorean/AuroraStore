@@ -335,9 +335,7 @@
     <string name="title_search_results">Sökresultat</string>
     <string name="download_progress">Hämtar • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
     <string name="onboarding_permission_notifications_desc">Skicka aviseringar gällande installationens status</string>
-    <string name="pref_updates_check_desc">Sök automatiskt och avisera periodiskt för nya appar</string>
     <string name="access_denied_using_vpn">Åtkomsten nekades! Använder du VPN eller Tor\?</string>
-    <string name="pref_updates_check">Automatisk sökning efter uppdateringar</string>
     <string name="app_language">Appens språk</string>
     <string name="notification_updates_available_desc_2"><xliff:g id="app_one_name">%1$s</xliff:g> och <xliff:g id="app_two_name">%2$s</xliff:g></string>
     <string name="notification_updates_available_1"><xliff:g id="apps_count">%1$d</xliff:g> uppdatering tillgänglig</string>

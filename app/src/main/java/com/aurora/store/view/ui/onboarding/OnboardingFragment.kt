@@ -56,7 +56,7 @@ import com.aurora.store.util.Preferences.PREFERENCE_SELF_UPDATE
 import com.aurora.store.util.Preferences.PREFERENCE_SIMILAR
 import com.aurora.store.util.Preferences.PREFERENCE_THEME_ACCENT
 import com.aurora.store.util.Preferences.PREFERENCE_THEME_TYPE
-import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_CHECK
+import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_AUTO
 import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_CHECK_INTERVAL
 import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_EXTENDED
 import com.aurora.store.util.Preferences.PREFERENCE_VENDING_VERSION
@@ -190,7 +190,7 @@ class OnboardingFragment : Fragment(R.layout.fragment_onboarding) {
 
         /*Updates*/
         save(PREFERENCE_UPDATES_EXTENDED, false)
-        save(PREFERENCE_UPDATES_CHECK, true)
+        save(PREFERENCE_UPDATES_AUTO, 2)
         save(PREFERENCE_UPDATES_CHECK_INTERVAL, 3)
         save(
             PREFERENCE_SELF_UPDATE,

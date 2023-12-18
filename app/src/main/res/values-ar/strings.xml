@@ -321,8 +321,6 @@
     <string name="notification_updates_available_desc_1">يتوفر أصدار جديد من <xliff:g id="app_one_name">%1$s</xliff:g> متاح</string>
     <string name="notification_updates_available_desc_4"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g>, <xliff:g id="app_three_name">%3$s</xliff:g> والمزيد <xliff:g id="apps_count">%4$d</xliff:g></string>
     <string name="checking_for_updates">التحقق من وجود تحديثات</string>
-    <string name="pref_updates_check">التحقق من التحديثات تلقائيا</string>
-    <string name="pref_updates_check_desc">إجراء فحص آلي \" لإشعار بالتحديثات الجديدة \" بصورة دورية</string>
     <string name="notification_channel_updates">إشعارات التحديثات</string>
     <string name="notification_updates_available_1">تحديث <xliff:g id="apps_count"> %1$d </xliff:g> متوفر</string>
     <string name="notification_updates_available">تحديثات <xliff:g id="apps_count"> %1$d </xliff:g> متوفرة</string>

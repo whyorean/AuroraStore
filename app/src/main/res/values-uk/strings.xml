@@ -321,13 +321,11 @@
     <string name="notification_updates_available_1">Доступне <xliff:g id="apps_count">%1$d</xliff:g> оновлення</string>
     <string name="notification_updates_available_desc_1">Доступна нова версія <xliff:g id="app_one_name">%1$s</xliff:g></string>
     <string name="notification_updates_available_desc_2"><xliff:g id="app_one_name">%1$s</xliff:g> та <xliff:g id="app_two_name">%2$s</xliff:g></string>
-    <string name="pref_updates_check">Автоматична перевірка оновлень</string>
     <string name="notification_channel_updates">Сповіщення про оновлення</string>
     <string name="notification_updates_available">Доступно <xliff:g id="apps_count">%1$d</xliff:g> оновлень</string>
     <string name="notification_updates_available_desc_3"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g> та <xliff:g id="app_three_name">%3$s</xliff:g></string>
     <string name="notification_updates_available_desc_4"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g>, <xliff:g id="app_three_name">%3$s</xliff:g> та ще <xliff:g id="apps_count">%4$d</xliff:g></string>
     <string name="checking_for_updates">Перевірка наявності оновлень</string>
-    <string name="pref_updates_check_desc">Періодична автоматична перевірка та сповіщення про нові оновлення застосунку</string>
     <string name="installer_shizuku_unavailable">Shizuku не встановлено або не налаштовано належним чином.</string>
     <string name="pref_install_mode_shizuku">Інсталятор Shizuku</string>
     <string name="title_search_suggestion">Пошукова пропозиція</string>

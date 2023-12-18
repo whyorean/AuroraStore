@@ -295,7 +295,6 @@
     <string name="notification_updates_available_desc_2"><xliff:g id="app_one_name">%1$s</xliff:g> 和 <xliff:g id="app_two_name">%2$s</xliff:g></string>
     <string name="notification_updates_available_desc_3"><xliff:g id="app_one_name">%1$s</xliff:g>、<xliff:g id="app_two_name">%2$s</xliff:g> 和 <xliff:g id="app_three_name">%3$s</xliff:g></string>
     <string name="notification_updates_available_desc_4"><xliff:g id="app_one_name">%1$s</xliff:g>、<xliff:g id="app_two_name">%2$s</xliff:g>、<xliff:g id="app_three_name">%3$s</xliff:g> 和其他 <xliff:g id="apps_count">%4$d</xliff:g> 個應用程式</string>
-    <string name="pref_updates_check_desc">定期自動檢查並通知新的應用程式更新</string>
     <string name="action_import">匯入</string>
     <string name="download_eta_hrs">剩餘 %1$dh %2$dm %3$ds</string>
     <string name="download_eta_min">剩餘 %1$dm %2$ds</string>
@@ -321,7 +320,6 @@
     <string name="open_in_aurora">在 Aurora 商店中開啟</string>
     <string name="notification_channel_updates">更新通知</string>
     <string name="checking_for_updates">正在檢查更新</string>
-    <string name="pref_updates_check">自動檢查更新</string>
     <string name="ui_accent_6">紫色</string>
     <string name="ui_accent_7">灰色</string>
     <string name="ui_accent_8">粉紅色</string>

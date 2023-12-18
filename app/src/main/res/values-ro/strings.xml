@@ -318,8 +318,6 @@
     <string name="toast_import_success">Configurarea dispozitivului importată</string>
     <string name="toast_import_failed">Nu s-a putut importa configurarea dispozitivului</string>
     <string name="checking_for_updates">Se verifică actualizările</string>
-    <string name="pref_updates_check_desc">Verifică automat și notifică periodic despre actualizările noi ale aplicațiilor</string>
-    <string name="pref_updates_check">Verificare automată a actualizărilor</string>
     <string name="pref_install_mode_shizuku">Instalator Shizuku</string>
     <string name="notification_channel_updates">Notificări despre actualizări</string>
     <string name="notification_updates_available_desc_1">Este disponibilă o nouă versiune pentru <xliff:g id="app_one_name">%1$s</xliff:g></string>

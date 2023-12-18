@@ -322,10 +322,8 @@
     <string name="ui_accent_10">ਸੰਤਰੀ</string>
     <string name="ui_accent_11">ਹਲਕਾ ਨੀਲਾ</string>
     <string name="ui_accent_12">ਵੈਂਗਣੀ ਨੀਲਾ</string>
-    <string name="pref_updates_check_desc">ਸਮੇਂ-ਸਮੇਂ \'ਤੇ ਨਵੇਂ ਐਪ ਅੱਪਡੇਟ ਲਈ ਆਟੋਮੈਟਿਕ ਜਾਂਚ ਕਰੋ ਅਤੇ ਸੂਚਿਤ ਕਰੋ</string>
     <string name="notification_updates_available_desc_3"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g> ਅਤੇ <xliff:g id="app_three_name">%3$s</xliff:g></string>
     <string name="checking_for_updates">ਅੱਪਡੇਟਸ ਲਈ ਜਾਂਚ ਕਰ ਰਿਹਾ</string>
-    <string name="pref_updates_check">ਸਵੈਚਾਲਿਤ ਅੱਪਡੇਟ ਜਾਂਚ</string>
     <string name="download_eta_hrs">%1$dh %2$dm %3$ds ਬਾਕੀ</string>
     <string name="download_eta_min">%1$dm %2$ds ਬਾਕੀ</string>
     <string name="download_eta_sec">%1$ds ਬਾਕੀ</string>

@@ -301,8 +301,6 @@
 \n<xliff:g id="app_three_name">
 \n%3$s</xliff:g></string>
     <string name="checking_for_updates">Провера ажурирања</string>
-    <string name="pref_updates_check">Аутоматска провера ажурирања</string>
-    <string name="pref_updates_check_desc">Аутоматско повремено проверавање и обавештавање о новим ажурирањима апликације</string>
     <string name="download_eta_hrs">Преостало: %1$d %2$d %3$d</string>
     <string name="download_eta_min">Преостало: %1$d %2$d</string>
     <string name="installer_am_unavailable">Инсталирајте App Manager или промените програм за инсталацију.</string>

@@ -35,17 +35,17 @@
         app:summary="@string/pref_updates_extended_desc"
         app:title="@string/pref_updates_extended" />
 
-    <SwitchPreferenceCompat
-        app:defaultValue="true"
-        app:disableDependentsState="false"
+    <com.aurora.store.view.custom.preference.AuroraListPreference
+        app:defaultValue="2"
+        app:entries="@array/pref_updates_auto"
+        app:entryValues="@array/pref_updates_auto_values"
         app:iconSpaceReserved="false"
-        app:key="PREFERENCE_UPDATES_CHECK"
-        app:summary="@string/pref_updates_check_desc"
-        app:title="@string/pref_updates_check" />
+        app:key="PREFERENCE_UPDATES_AUTO"
+        app:summary="@string/pref_updates_auto_desc"
+        app:title="@string/pref_updates_auto" />
 
     <SeekBarPreference
         android:defaultValue="3"
-        android:dependency="PREFERENCE_UPDATES_CHECK"
         android:key="PREFERENCE_UPDATES_CHECK_INTERVAL"
         android:max="24"
         android:summary="@string/pref_updates_check_frequency_desc"

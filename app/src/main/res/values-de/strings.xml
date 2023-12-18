@@ -329,8 +329,6 @@
     <string name="notification_updates_available_desc_4"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g>, <xliff:g id="app_three_name">%3$s</xliff:g> und <xliff:g id="apps_count">%4$d</xliff:g> weitere</string>
     <string name="notification_updates_available"><xliff:g id="apps_count">%1$d</xliff:g> vorhandene Updates</string>
     <string name="notification_updates_available_desc_2"><xliff:g id="app_one_name">%1$s</xliff:g> und <xliff:g id="app_two_name">%2$s</xliff:g></string>
-    <string name="pref_updates_check">Automatische Update-Überprüfung</string>
-    <string name="pref_updates_check_desc">Regelmäßige automatische Prüfung und Benachrichtigung zu neuen App-Updates</string>
     <string name="access_denied_using_vpn">Zugriff verweigert! Verwendest du ein VPN oder Tor\?</string>
     <string name="login_rate_limited">Hoppla, deine Anfragehäufigkeit ist begrenzt</string>
     <string name="failed_to_fetch_report">Datenschutzbericht konnte nicht abgerufen werden</string>

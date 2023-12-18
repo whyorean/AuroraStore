@@ -326,8 +326,6 @@
     <string name="notification_updates_available_desc_2"><xliff:g id="app_one_name">%1$s</xliff:g> oraz <xliff:g id="app_two_name">%2$s</xliff:g></string>
     <string name="notification_updates_available_desc_3"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g> oraz <xliff:g id="app_three_name">%3$s</xliff:g></string>
     <string name="checking_for_updates">Sprawdzanie dostępności aktualizacji</string>
-    <string name="pref_updates_check">Automatyczne sprawdzanie aktualizacji</string>
-    <string name="pref_updates_check_desc">Automatycznie sprawdzaj i okresowo powiadamiaj o nowych aktualizacjach aplikacji</string>
     <string name="pref_install_mode_shizuku">Instalator Shizuku</string>
     <string name="installer_shizuku_unavailable">Shizuku nie jest prawidłowo zainstalowany lub skonfigurowany.</string>
     <string name="title_search_suggestion">Podpowiedzi wyszukiwania</string>

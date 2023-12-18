@@ -358,14 +358,12 @@
     <string name="pref_filter_search_summary">פילטרים בחיפוש מתאספים בכל חיפוש. כבה כדי לשמור את הפילטרים בחיפוש</string>
     <string name="onboarding_permission_notifications_desc">שלח התראות לגבי מצב ההתקנה</string>
     <string name="action_uninstall_confirmation">‏האם אתה רוצה להסיר את היישום הזה?</string>
-    <string name="pref_updates_check_desc">אוטומטית בדוק והודיע על עדכון חדש ליישום תקופתית</string>
     <string name="android_market_desc">החנות של אנדרואיד היתה חנות אונליין שמציעה אפליקציות שעוצבו למכשירי אנדרואיד, עד 2017.</string>
     <string name="about_xda_summary">הצג את העמוד של Aurora Store בפורום XDA לשוחח ולהציע הצעות.</string>
     <string name="about_bhim">BHIM - UPI</string>
     <string name="permissions_denied">ההרשאות הנדרשות נדחו. אנא אשר אותן בשביל המשך הפעולה</string>
     <string name="access_denied_using_vpn">גישה נדחתה! אתה משתמש ב-VPN או Tor?</string>
     <string name="pref_abandon_session_desc">הסר התקנות מושהות או נטושות</string>
-    <string name="pref_updates_check">חיפוש עדכונים אוטומטית</string>
     <string name="pref_downloader_wifi_title">הורד רק דרך WiFi</string>
     <string name="app_language">שפת האפליקציה</string>
     <string name="notification_updates_available_desc_2"><xliff:g id="app_one_name">%1$s</xliff:g> ו <xliff:g id="app_two_name">%2$s</xliff:g></string>

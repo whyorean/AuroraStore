@@ -324,7 +324,6 @@
     <string name="title_search_results">Resultados da busca</string>
     <string name="notification_updates_available_desc_1">Unha nova versión de <xliff:g id="app_one_name">%1$s</xliff:g> está dispoñíbel</string>
     <string name="notification_updates_available_desc_3"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g> e <xliff:g id="app_three_name">%3$s</xliff:g></string>
-    <string name="pref_updates_check_desc">Verificar e notificar novas versións das aplicacións periodicamente</string>
     <string name="failed_to_fetch_report">Non foi posíbel obter o informe de privacidade</string>
     <string name="access_denied_using_vpn">Acceso denegado! Está a usar unha VPN ou Tor\?</string>
     <string name="bad_request">Erro interno! Por favor, volva intentalo máis tarde</string>
@@ -332,7 +331,6 @@
     <string name="server_unreachable">Servidor inaccesíbel</string>
     <string name="installer_shizuku_unavailable">Shuzuku non está instalado ou configurado correctamente.</string>
     <string name="pref_install_mode_shizuku">Instalador Shizuku</string>
-    <string name="pref_updates_check">Verificación automática de actualizacións</string>
     <string name="notification_updates_available"><xliff:g id="apps_count">%1$d</xliff:g> actualizacións dispoñíbeis</string>
     <string name="notification_updates_available_desc_2"><xliff:g id="app_one_name">%1$s</xliff:g> e <xliff:g id="app_two_name">%2$s</xliff:g></string>
     <string name="notification_updates_available_1"><xliff:g id="apps_count">%1$d</xliff:g> actualización dispoñíbel</string>

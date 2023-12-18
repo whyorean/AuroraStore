@@ -320,7 +320,6 @@
     <string name="action_import">Impor</string>
     <string name="downloading_dep">Mengunduh berkas tambahan untuk <xliff:g id="app">%1$s</xliff:g></string>
     <string name="notification_updates_available"><xliff:g id="apps_count">%1$d</xliff:g> pembaruan tersedia</string>
-    <string name="pref_updates_check_desc">Secara otomatis memeriksa &amp; memberi tahu pembaruan aplikasi baru secara berkala</string>
     <string name="installer_shizuku_unavailable">Shizuku tidak terpasang atau belum diatur dengan benar.</string>
     <string name="toast_import_success">Konfigurasi perangkat diimpor</string>
     <string name="toast_import_failed">Tidak dapat mengimpor konfigurasi perangkat</string>
@@ -329,7 +328,6 @@
     <string name="checking_for_updates">Mengecek pembaruan</string>
     <string name="notification_updates_available_desc_1">Versi terbaru <xliff:g id="app_one_name">%1$s</xliff:g> sudah tersedia</string>
     <string name="notification_updates_available_desc_4"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g>, <xliff:g id="app_three_name">%3$s</xliff:g> dan <xliff:g id="apps_count">%4$d</xliff:g> lainnya</string>
-    <string name="pref_updates_check">Cek pembaruan otomatis</string>
     <string name="title_search_suggestion">Saran pencarian</string>
     <string name="title_search_results">Hasil pencarian</string>
     <string name="access_denied_using_vpn">Akses ditolak! Apakah Anda menggunakan VPN atau Tor\?</string>
