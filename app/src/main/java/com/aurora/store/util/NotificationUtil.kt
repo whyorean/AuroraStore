@@ -79,6 +79,16 @@ object NotificationUtil {
         }
     }
 
+    fun getDownloadNotification(context: Context): Notification {
+        return NotificationCompat.Builder(context, Constants.NOTIFICATION_CHANNEL_GENERAL)
+            .setSmallIcon(android.R.drawable.stat_sys_download)
+            .setColor(ContextCompat.getColor(context, R.color.colorAccent))
+            .setContentTitle(context.getString(R.string.app_updater_service_notif_title))
+            .setContentText(context.getString(R.string.app_updater_service_notif_text))
+            .setOngoing(true)
+            .build()
+    }
+
     fun getDownloadNotification(
         context: Context,
         app: App,

@@ -224,7 +224,11 @@ class DownloadWorker @AssistedInject constructor(
     }
 
     override suspend fun getForegroundInfo(): ForegroundInfo {
-        val notification = NotificationUtil.getDownloadNotification(appContext, download, id)
+        val notification = if (this::download.isInitialized) {
+            NotificationUtil.getDownloadNotification(appContext, download, id)
+        } else {
+            NotificationUtil.getDownloadNotification(appContext)
+        }
         return if (isQAndAbove()) {
             ForegroundInfo(NOTIFICATION_ID, notification, FOREGROUND_SERVICE_TYPE_DATA_SYNC)
         } else {
