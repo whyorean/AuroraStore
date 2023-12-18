@@ -1,0 +1,4 @@
+• Grandes mudanças internas relativas à interface de utilizador
+• Permite utilizadores ativarem as ligações da app durante a configuração inicial
+• Atualizações de traduções
+• Pequenas correções de bugs e melhorias

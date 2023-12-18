@@ -1,0 +1,2 @@
+• Permite sempre botão de terminar no fragmento de permissão (corrige a entrada de novos utilizadores)
+• Mantém a biblioteca GSON TypeToken enquanto otimiza a compilação (corrige crash ao iniciar)

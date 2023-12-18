@@ -1,0 +1,6 @@
+• Corrige crash relativo à notificação de serviços de instalação
+• Apenas mostra propriedades de spoofing válidas no app
+• Notifica utilizadores quando estão com limitação de taxa ao buscar
+• Mostra uma animação de brilho ao pesquisar para indicar progresso
+• Corrige comportamento de navegação quando guia padrão é mudada
+• Corrige opção de saída rápida
