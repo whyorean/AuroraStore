@@ -376,4 +376,8 @@
     <string name="pref_vending_version_title">Google-Play-Version</string>
     <string name="onboarding_permission_doze">Downloads im Hintergrund</string>
     <string name="onboarding_permission_doze_desc">Aurora Store das Herunterladen und Aktualisieren von Apps im Hintergrund erlauben</string>
+    <string name="device_doze_description">Bitte deaktiviere die Akkuoptimierung, um Hintergrundoperationen zu ermöglichen.</string>
+    <string name="device_doze_title">Akkuoptimierungen erkannt!</string>
+    <string name="device_doze_extra">Optional kannst du die Optimierungen aktiviert lassen, jedoch können dann die Vorteile von Downloads im Hintergrund und automatischen Updates nicht genutzt werden – du hast also die Wahl.</string>
+    <string name="device_doze_subtitle">Aurora Store kann aufgrund von Akkuoptimierungen keine Apps im Hintergrund herunterladen oder aktualisieren.</string>
 </resources>
