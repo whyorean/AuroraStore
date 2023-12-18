@@ -44,6 +44,7 @@ import com.aurora.gplayapi.data.models.File as GPlayFile
 @HiltWorker
 class DownloadWorker @AssistedInject constructor(
     private val downloadDao: DownloadDao,
+    private val gson: Gson,
     @Assisted private val appContext: Context,
     @Assisted workerParams: WorkerParameters
 ) : CoroutineWorker(appContext, workerParams) {
@@ -64,7 +65,7 @@ class DownloadWorker @AssistedInject constructor(
         // Try to parse input data into a valid app
         try {
             val downloadData = inputData.getString(DownloadWorkerUtil.DOWNLOAD_DATA)
-            download = Gson().fromJson(downloadData, Download::class.java)
+            download = gson.fromJson(downloadData, Download::class.java)
         } catch (exception: Exception) {
             Log.e(TAG, "Failed to parse download data", exception)
             return Result.failure()
