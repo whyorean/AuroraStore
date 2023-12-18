@@ -97,7 +97,7 @@ class InstallationPreference : PreferenceFragmentCompat() {
             setNavigationOnClickListener { findNavController().navigateUp() }
         }
 
-        if (AppInstaller.hasShizuku(requireContext()) && isOAndAbove()) {
+        if (AppInstaller.hasShizukuOrSui(requireContext()) && isOAndAbove()) {
             Shizuku.addBinderReceivedListenerSticky(shizukuAliveListener)
             Shizuku.addBinderDeadListener(shizukuDeadListener)
             Shizuku.addRequestPermissionResultListener(shizukuResultListener)
@@ -188,7 +188,7 @@ class InstallationPreference : PreferenceFragmentCompat() {
     }
 
     override fun onDestroy() {
-        if (AppInstaller.hasShizuku(requireContext()) && isOAndAbove()) {
+        if (AppInstaller.hasShizukuOrSui(requireContext()) && isOAndAbove()) {
             Shizuku.removeBinderReceivedListener(shizukuAliveListener)
             Shizuku.removeBinderDeadListener(shizukuDeadListener)
             Shizuku.removeRequestPermissionResultListener(shizukuResultListener)

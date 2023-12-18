@@ -80,12 +80,11 @@ open class AppInstaller private constructor(var context: Context) {
                     PackageUtil.isInstalled(context, AMInstaller.AM_DEBUG_PACKAGE_NAME)
         }
 
-        fun hasShizuku(context: Context): Boolean {
-            return PackageUtil.isInstalled(context, ShizukuInstaller.SHIZUKU_PACKAGE_NAME)
-        }
-
         fun hasShizukuOrSui(context: Context): Boolean {
-            return hasShizuku(context) || Sui.isSui()
+            return PackageUtil.isInstalled(
+                context,
+                ShizukuInstaller.SHIZUKU_PACKAGE_NAME
+            ) || Sui.isSui()
         }
 
         fun hasShizukuPerm(): Boolean {

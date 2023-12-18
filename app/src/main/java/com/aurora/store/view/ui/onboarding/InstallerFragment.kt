@@ -28,9 +28,9 @@ import com.aurora.extensions.isMiuiOptimizationDisabled
 import com.aurora.extensions.isOAndAbove
 import com.aurora.extensions.showDialog
 import com.aurora.store.R
+import com.aurora.store.data.installer.AppInstaller
 import com.aurora.store.data.installer.AppInstaller.Companion.hasAppManager
 import com.aurora.store.data.installer.AppInstaller.Companion.hasRootAccess
-import com.aurora.store.data.installer.AppInstaller.Companion.hasShizuku
 import com.aurora.store.data.installer.AppInstaller.Companion.hasShizukuOrSui
 import com.aurora.store.data.installer.AppInstaller.Companion.hasShizukuPerm
 import com.aurora.store.data.model.Installer
@@ -85,6 +85,12 @@ class InstallerFragment : BaseFragment(R.layout.fragment_onboarding_installer) {
 
         installerId = Preferences.getInteger(requireContext(), PREFERENCE_INSTALLER_ID)
 
+        if (hasShizukuOrSui(requireContext()) && isOAndAbove()) {
+            Shizuku.addBinderReceivedListenerSticky(shizukuAliveListener)
+            Shizuku.addBinderDeadListener(shizukuDeadListener)
+            Shizuku.addRequestPermissionResultListener(shizukuResultListener)
+        }
+
         // RecyclerView
         binding.epoxyRecycler.withModels {
             setFilterDuplicates(true)
@@ -115,7 +121,7 @@ class InstallerFragment : BaseFragment(R.layout.fragment_onboarding_installer) {
     }
 
     override fun onDestroy() {
-        if (hasShizuku(requireContext()) && isOAndAbove()) {
+        if (hasShizukuOrSui(requireContext()) && isOAndAbove()) {
             Shizuku.removeBinderReceivedListener(shizukuAliveListener)
             Shizuku.removeBinderDeadListener(shizukuDeadListener)
             Shizuku.removeRequestPermissionResultListener(shizukuResultListener)
