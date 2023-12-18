@@ -2,6 +2,6 @@
 <resources>
 
     <style name="AppTheme" parent="BaseTheme">
-        <item name="android:statusBarColor">@color/colorTransparent</item>
+        <item name="android:statusBarColor">@color/colorScrimAlt</item>
     </style>
 </resources>
