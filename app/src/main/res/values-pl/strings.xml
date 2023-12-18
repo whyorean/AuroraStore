@@ -375,4 +375,8 @@
     <string name="pref_vending_version_title">Wersja Google Play</string>
     <string name="onboarding_permission_doze">Pobieranie w tle</string>
     <string name="onboarding_permission_doze_desc">Zezwól Aurora Store na pobieranie i aktualizowanie aplikacji w tle</string>
+    <string name="device_doze_description">Wyłącz optymalizację baterii, aby umożliwić działanie w tle.</string>
+    <string name="device_doze_title">Wykryto optymalizację baterii!</string>
+    <string name="device_doze_extra">Opcjonalnie możesz pozostawić włączoną optymalizację, ale wtedy nie będziesz mógł korzystać z pobierania w tle i automatycznych aktualizacji, więc wybór należy do Ciebie.</string>
+    <string name="device_doze_subtitle">Aurora Store nie może pobierać, instalować ani aktualizować aplikacji w tle ze względu na optymalizację baterii.</string>
 </resources>

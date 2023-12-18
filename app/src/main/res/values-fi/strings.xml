@@ -101,7 +101,7 @@
     <string name="exodus_substring">seurantasovelluksia löytyi</string>
     <string name="exodus_progress">Tarkistetaan seurantasovelluksia…</string>
     <string name="exodus_powered">Voimanlähteenä Exodus</string>
-    <string name="exodus_no_tracker">Ei sisällä seurantasovelluksia</string>
+    <string name="exodus_no_tracker">Ei sisällä tunnettuja seurantasovelluksia</string>
     <string name="download_speed_estimating">Arviointi</string>
     <string name="download_pause_all">Tauota kaikki</string>
     <string name="download_force_clear_all">Pakota tyhjentämään kaikki</string>
@@ -130,7 +130,7 @@
     <string name="details_changelog">Muutosloki</string>
     <string name="details_beta_delay">Ilmoittautuminen voi viedä jonkin aikaa, voit tarkistaa tilan myöhemmin.</string>
     <string name="details_beta_description">Näet uusia ominaisuuksia ja virheitä ennen kuin yleisö näkee. Anna palautetta kehittäjille, jotta he voivat kehittyä.</string>
-    <string name="details_beta_available">Liitytkö beetaohjelmaan \?</string>
+    <string name="details_beta_available">Liity beetaohjelmaan ?</string>
     <string name="details_beta_subscribed">Olet beetatestaaja</string>
     <string name="details_beta">Beetaohjelmisto</string>
     <string name="action_wishlist_add">Lisää toivelistalle</string>
@@ -270,7 +270,7 @@
     <string name="app_updater_service_notif_text">Mahdollistaa sovellusten lataamisen taustalla</string>
     <string name="app_updater_service_notif_title">Taustalla sovelluksen lataaminen</string>
     <string name="installer_am_unavailable">Asenna App Manager tai vaihda asennusohjelmaa.</string>
-    <string name="pref_install_mode_am">AM-asennusohjelma.</string>
+    <string name="pref_install_mode_am">AM-asennusohjelma</string>
     <string name="account_anonymous_insecure">Anonyymi (epävarma)</string>
     <string name="ui_accent_11">Vaaleansininen</string>
     <string name="ui_accent_1">Sininen</string>
@@ -350,4 +350,8 @@
     <string name="google_play_store_desc">Google Play, joka tunnetaan myös nimellä Google Play Store ja entinen Android Market.</string>
     <string name="amazon_appstore_desc">Amazon Appstore on Amazonin ylläpitämä sovelluskauppa Android-yhteensopiville sovelluksille.</string>
     <string name="android_market_desc">Android Market oli vuonna 2017 toimintansa päättänyt verkkokauppa, joka tarjosi sovelluksia Android-laitteille.</string>
+    <string name="details_ratings_title_hint">Arvostele sovellus</string>
+    <string name="pref_aurora_only">Vain Aurora Storen sovellukset</string>
+    <string name="pref_network_proxy_title">Välityspalvelin</string>
+    <string name="onboarding_permission_doze_desc">Salli Aurora Storen ladata ja päivittää sovelluksia taustalla</string>
 </resources>

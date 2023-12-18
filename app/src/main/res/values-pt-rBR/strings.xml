@@ -375,4 +375,8 @@
     <string name="pref_vending_version_title">Versão do Google Play</string>
     <string name="onboarding_permission_doze">Downloads em Segundo Plano</string>
     <string name="onboarding_permission_doze_desc">Permitir que a Aurora Store baixe e atualize apps em segundo plano</string>
+    <string name="device_doze_description">Por favor, desative as otimizações de bateria para permitir operações em plano de fundo.</string>
+    <string name="device_doze_title">Otimizações de bateria detectadas!</string>
+    <string name="device_doze_extra">Opcionalmente, você pode escolher manter as otimizações ativas, mas então não será capaz de fazer uso dos downloads em plano de fundo e atualizações automáticas, a escolha é sua.</string>
+    <string name="device_doze_subtitle">Aurora Store não pode instalar, baixar ou atualizar apps no plano de fundo devido a otimizações de bateria.</string>
 </resources>
