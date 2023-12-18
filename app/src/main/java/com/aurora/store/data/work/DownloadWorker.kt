@@ -36,8 +36,6 @@ import java.io.File
 import java.net.URL
 import kotlinx.coroutines.NonCancellable
 import kotlin.io.path.ExperimentalPathApi
-import kotlin.io.path.createDirectories
-import kotlin.io.path.deleteRecursively
 import kotlin.properties.Delegates
 import com.aurora.gplayapi.data.models.File as GPlayFile
 
@@ -94,10 +92,9 @@ class DownloadWorker @AssistedInject constructor(
         // Download and verify all files exists
         totalBytes = files.sumOf { it.size }
 
-        PathUtil.getAppDownloadDir(appContext, download.packageName, download.versionCode)
-            .createDirectories()
+        PathUtil.getAppDownloadDir(appContext, download.packageName, download.versionCode).mkdirs()
         if (files.any { it.type == GPlayFile.FileType.OBB || it.type == GPlayFile.FileType.PATCH }) {
-            PathUtil.getObbDownloadDir(download.packageName).createDirectories()
+            PathUtil.getObbDownloadDir(download.packageName).mkdirs()
         }
 
         val requestList = getDownloadRequest(files)

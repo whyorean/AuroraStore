@@ -49,7 +49,6 @@ import java.io.File
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.launch
-import kotlin.io.path.pathString
 
 @AndroidEntryPoint
 class UpdatesFragment : BaseFragment(R.layout.fragment_updates) {
@@ -166,7 +165,7 @@ class UpdatesFragment : BaseFragment(R.layout.fragment_updates) {
                                             requireContext(),
                                             app.packageName,
                                             app.versionCode
-                                        ).pathString
+                                        ).path
                                     ).listFiles()
 
                                     // Downloaded files are missing, trigger re-download

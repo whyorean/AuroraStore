@@ -37,7 +37,6 @@ import com.aurora.store.util.PathUtil
 import dagger.hilt.android.AndroidEntryPoint
 import java.io.File
 import org.greenrobot.eventbus.EventBus
-import kotlin.io.path.pathString
 
 @AndroidEntryPoint
 class InstallReceiver : BroadcastReceiver() {
@@ -58,13 +57,7 @@ class InstallReceiver : BroadcastReceiver() {
                 if (packageName.isNotBlank() && version != null) {
                     try {
                         val downloadDir =
-                            File(
-                                PathUtil.getAppDownloadDir(
-                                    context,
-                                    packageName,
-                                    version
-                                ).pathString
-                            )
+                            File(PathUtil.getAppDownloadDir(context, packageName, version).path)
                         AppInstaller.getInstance(context).getPreferredInstaller()
                             .install(
                                 packageName,

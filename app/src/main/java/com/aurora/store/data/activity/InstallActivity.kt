@@ -7,7 +7,6 @@ import com.aurora.Constants
 import com.aurora.store.data.installer.AppInstaller
 import com.aurora.store.util.PathUtil
 import java.io.File
-import kotlin.io.path.pathString
 
 class InstallActivity : AppCompatActivity() {
 
@@ -22,8 +21,7 @@ class InstallActivity : AppCompatActivity() {
         val version = intent.extras?.getInt(Constants.STRING_VERSION)
         if (packageName.isNotBlank() && version != null) {
             try {
-                val downloadDir =
-                    File(PathUtil.getAppDownloadDir(this, packageName, version).pathString)
+                val downloadDir = File(PathUtil.getAppDownloadDir(this, packageName, version).path)
                 AppInstaller.getInstance(this).getPreferredInstaller()
                     .install(
                         packageName,

@@ -23,8 +23,6 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
-import kotlin.io.path.ExperimentalPathApi
-import kotlin.io.path.deleteRecursively
 
 @OptIn(DelicateCoroutinesApi::class)
 class DownloadWorkerUtil @Inject constructor(
@@ -87,7 +85,6 @@ class DownloadWorkerUtil @Inject constructor(
             ?.let { downloadDao.update(it.copy(status = DownloadStatus.CANCELLED)) }
     }
 
-    @OptIn(ExperimentalPathApi::class)
     suspend fun clearDownload(packageName: String, versionCode: Int) {
         Log.i(TAG, "Clearing downloads for $packageName ($versionCode)")
         downloadDao.delete(packageName)

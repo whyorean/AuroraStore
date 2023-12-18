@@ -100,7 +100,6 @@ import java.io.File
 import java.util.Locale
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.filter
-import kotlin.io.path.pathString
 
 @AndroidEntryPoint
 class AppDetailsFragment : BaseFragment(R.layout.fragment_details) {
@@ -445,7 +444,7 @@ class AppDetailsFragment : BaseFragment(R.layout.fragment_details) {
                 requireContext(),
                 app.packageName,
                 app.versionCode
-            ).pathString
+            ).path
         ).listFiles() ?: return
 
         val apkFiles = files.filter { it.path.endsWith(".apk") }
@@ -574,7 +573,7 @@ class AppDetailsFragment : BaseFragment(R.layout.fragment_details) {
                         requireContext(),
                         app.packageName,
                         app.versionCode
-                    ).pathString
+                    ).path
                 ).listFiles()
 
                 if (files?.isNotEmpty() == true) install() else purchase()

@@ -22,11 +22,9 @@ package com.aurora.store.util
 import android.content.Context
 import android.os.Environment
 import com.aurora.extensions.isRAndAbove
-import com.aurora.gplayapi.data.models.App
-import com.aurora.gplayapi.data.models.File
-import java.nio.file.Path
+import java.io.File
 import java.util.UUID
-import kotlin.io.path.Path
+import com.aurora.gplayapi.data.models.File as GPlayFile
 
 fun Context.getInternalBaseDirectory(): String {
     return (getExternalFilesDir(null) ?: filesDir).path
@@ -54,15 +52,15 @@ object PathUtil {
         return getPackageDirectory(context, packageName) + "/$versionCode"
     }
 
-    fun getAppDownloadDir(context: Context, packageName: String, versionCode: Int): Path {
-        return Path(getPackageDirectory(context, packageName), versionCode.toString())
+    fun getAppDownloadDir(context: Context, packageName: String, versionCode: Int): File {
+        return File(getPackageDirectory(context, packageName), versionCode.toString())
     }
 
     fun getApkDownloadFile(
         context: Context,
         packageName: String,
         versionCode: Int,
-        file: File
+        file: GPlayFile
     ): String {
         return getVersionDirectory(context, packageName, versionCode) + "/${file.name}"
     }
@@ -94,21 +92,20 @@ object PathUtil {
             .toString() + "/Android/obb/" + packageName
     }
 
-    fun getObbDownloadDir(packageName: String): Path {
-        return Path(
+    fun getObbDownloadDir(packageName: String): File {
+        return File(
             Environment.getExternalStorageDirectory().absolutePath,
-            "/Android/obb/",
-            packageName
+            "/Android/obb/$packageName"
         )
     }
 
-    fun getObbDownloadFile(packageName: String, file: File): String {
+    fun getObbDownloadFile(packageName: String, file: GPlayFile): String {
         val obbDir = getObbDownloadPath(packageName)
         return "$obbDir/${file.name}"
     }
 
-    fun needsStorageManagerPerm(fileList: List<File>): Boolean {
-        return fileList.any { it.type == File.FileType.OBB || it.type == File.FileType.PATCH }
+    fun needsStorageManagerPerm(fileList: List<GPlayFile>): Boolean {
+        return fileList.any { it.type == GPlayFile.FileType.OBB || it.type == GPlayFile.FileType.PATCH }
     }
 
     fun getSpoofDirectory(context: Context): String {

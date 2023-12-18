@@ -47,7 +47,6 @@ import com.aurora.store.util.CommonUtil
 import com.aurora.store.util.PathUtil
 import com.aurora.store.view.epoxy.views.BaseView
 import java.io.File
-import kotlin.io.path.pathString
 
 @ModelView(
     autoLayout = ModelView.Size.MATCH_WIDTH_WRAP_HEIGHT,
@@ -146,7 +145,7 @@ class AppUpdateView : RelativeLayout {
                             context,
                             download.packageName,
                             download.versionCode
-                        ).pathString
+                        ).path
                     ).listFiles()
                     if (files.isNullOrEmpty()) B.btnAction.updateState(DownloadStatus.UNAVAILABLE)
                 }
