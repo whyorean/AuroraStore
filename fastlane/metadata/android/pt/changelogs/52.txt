@@ -1,0 +1,6 @@
+• Corrige crash em alguns dispositivos ao pesquisar por palavras-chave não inglesas
+• Melhora página Apps & Jogos
+• Adiciona opção de instalar automaticamente após a descarga da app
+• Não toca som de notificação quando o app é instalado ou atualizado
+• Corrige crash em alguns dispositivos ao abrir pormenores do app
+• Adiciona diálogo de confirmação de desinstalação se estiver usando instalador de root

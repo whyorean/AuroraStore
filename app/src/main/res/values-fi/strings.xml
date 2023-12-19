@@ -354,4 +354,8 @@
     <string name="pref_aurora_only">Vain Aurora Storen sovellukset</string>
     <string name="pref_network_proxy_title">Välityspalvelin</string>
     <string name="onboarding_permission_doze_desc">Salli Aurora Storen ladata ja päivittää sovelluksia taustalla</string>
+    <string name="pref_network_proxy_enable">Ota välityspalvelin käyttöön</string>
+    <string name="pref_network_proxy_url">Välityspalvelimen URL-osoite</string>
+    <string name="title_apps_sale_provider">Tarjoaja - bestappsales.com</string>
+    <string name="pref_downloader_wifi_title">Lataa vain Wifi-verkon kautta</string>
 </resources>

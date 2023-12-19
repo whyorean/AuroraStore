@@ -1,0 +1,13 @@
+Aurora Store é um cliente FOSS não oficial com um design elegante.
+Aurora Store
+permite que utilizadores descarreguem, atualizem, e pesquisem por apps assim como a Play Store. Ele funciona perfeitamente bem
+sem o Google Play Services ou MicroG.
+
+<b>Funcionalidades:</b>
+
+• FOSS: usa a licença GPLv3
+• Design lindo: construído sobre as diretrizes do Material Design 3
+• Login com conta: Pode fazer login com uma conta pessoal ou anônima
+• Mascaramento de dispositivo e localidade: Mude o seu dispositivo ou localidade para aceder apps bloqueados por geolocalização
+• Integração com Exodus Privacy (https://exodus-privacy.eu.org/): Instantaneamente veja rastreadores no app
+• Lista negra de atualizações: Ignore atualizações de apps específicos

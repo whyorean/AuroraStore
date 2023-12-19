@@ -68,7 +68,7 @@
     <string name="pref_ui_theme_dark">Tmavý</string>
     <string name="pref_ui_theme_black">Černý</string>
     <string name="pref_ui_accent_title">Barva</string>
-    <string name="pref_network_title">Síťování</string>
+    <string name="pref_network_title">Síť</string>
     <string name="pref_install_profile_title">Instalační profily (experimentální)</string>
     <string name="pref_install_profile_summary">Vyberte cílový profil, do kterého chcete nainstalovat aplikace. Funguje pouze s metodou instalace root</string>
     <string name="pref_install_mode_title">Způsob instalace</string>
@@ -77,7 +77,7 @@
     <string name="pref_install_mode_services">Služby Aurora (zastaralé)</string>
     <string name="pref_install_mode_root">Root instalátor</string>
     <string name="pref_install_mode_native">Nativní instalátor (zastaralý)</string>
-    <string name="pref_install_delete_title">Odstraňte soubor APK po instalaci</string>
+    <string name="pref_install_delete_title">Odstranit soubor APK po instalaci</string>
     <string name="pref_install_delete_summary">Soubory APK budou ve výchozím nastavení odstraněny</string>
     <string name="pref_install_auto_title">Automatická instalace APK po stažení</string>
     <string name="pref_install_auto_summary">Aplikace se nainstalují okamžitě po dokončení stahování</string>
@@ -93,13 +93,13 @@
     <string name="pref_downloader_external">Externí úložiště uživatele</string>
     <string name="pref_dialog_to_apply_restart">Toto nastavení se aplikuje po restartování aplikace</string>
     <string name="pref_common_extra">Doplňky</string>
-    <string name="pref_app_download">Soubory ke stažení</string>
+    <string name="pref_app_download">Stahované soubory</string>
     <string name="pref_abandon_session_desc">Odstranit přerušené nebo čekající instalace</string>
     <string name="pref_abandon_session">Vynutit vymazání relací instalátoru</string>
     <string name="onboarding_permission_installer_desc">Povolit instalaci aplikací z obchodu Aurora</string>
     <string name="onboarding_permission_installer">Instalační oprávnění</string>
     <string name="onboarding_permission_esm">Správce externího úložiště</string>
-    <string name="onboarding_permission_esa_desc">Ukládání stažených souborů (APK a OBB), export a import konfigurací zařízení do externího úložiště a z něj.</string>
+    <string name="onboarding_permission_esa_desc">Pro uložení stažených souborů (APK a OBB), exportujte a importujte konfiguraci zařízení do a z externího úložiště.</string>
     <string name="onboarding_permission_esa">Přístup k externímu úložišti</string>
     <string name="onboarding_welcome_select">Jak se vám daří\?</string>
     <string name="onboarding_title_welcome">Vítejte</string>
@@ -168,7 +168,7 @@
     <string name="details_no_permission">Žádná oprávnění</string>
     <string name="details_no_dependencies">Žádné závislosti</string>
     <string name="details_no_app_match">Nebyly nalezeny žádné shody</string>
-    <string name="details_no_ads">Bez ads</string>
+    <string name="details_no_ads">Bez reklam</string>
     <string name="details_more_about_app">Více o aplikaci</string>
     <string name="details_gsf_dependent">Vyžaduje GSF</string>
     <string name="details_free">Bezplatné</string>
@@ -354,7 +354,7 @@
     <string name="action_uninstall_confirmation">Chcete odinstalovat tuto aplikaci\?</string>
     <string name="title_apps_sale_provider">Poskytovatel - bestappsales.com</string>
     <string name="details_no_apps_on_sale">Nenalezeny žádné aplikace ve slevě</string>
-    <string name="pref_downloader_path_title">Cesta ke stahování</string>
+    <string name="pref_downloader_path_title">Cesta pro stahování</string>
     <string name="pref_download_directory_error">Vybraná cesta není zapisovatelná</string>
     <string name="pref_updates_check_frequency_desc">Nastavit intervaly pro automatické aktualizace, v hodinách.</string>
     <string name="pref_aurora_only">Pouze aplikace Aurora Store</string>
@@ -377,6 +377,6 @@
     <string name="onboarding_permission_doze_desc">Umožnit aplikaci Aurora Store stahovat a aktualizovat aplikace na pozadí</string>
     <string name="device_doze_description">Pro povolení operací na pozadí prosím povolte optimalizace baterie.</string>
     <string name="device_doze_title">Detekovány optimalizace baterie!</string>
-    <string name="device_doze_extra">Můžete také optimalizace nechat zapnuté, aplikace ale nebude moci stahovat a aktualizovat aplikace na pozadí.</string>
+    <string name="device_doze_extra">Můžete nechat optimalizace zapnuté, aplikace ale nebude moci stahovat a aktualizovat aplikace na pozadí.</string>
     <string name="device_doze_subtitle">Aurora Store nemůže stahovat, instalovat ani aktualizovat aplikace na pozadí kvůli optimalizacím baterie.</string>
 </resources>

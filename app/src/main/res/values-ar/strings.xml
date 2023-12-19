@@ -375,4 +375,8 @@
     <string name="pref_vending_version_title">نسخة جوجل بلاي</string>
     <string name="onboarding_permission_doze">تنزيلات الخلفية</string>
     <string name="onboarding_permission_doze_desc">السماح لـAurora Store بتنزيل التطبيقات وتحديثها في الخلفية</string>
+    <string name="device_doze_description">من فضلك، قم بتعطيل تحسينات البطارية للسماح بعمليات الخلفية.</string>
+    <string name="device_doze_title">تم اكتشاف تحسينات البطارية!</string>
+    <string name="device_doze_extra">اختياريًا، يمكنك اختيار إبقاء التحسينات ممكنة، ولكن بعد ذلك لن تتمكن من الاستفادة من التنزيلات في الخلفية والتحديثات التلقائية، لذا فالخيار لك.</string>
+    <string name="device_doze_subtitle">لا يستطيع Aurora Store تثبيت تطبيقات التنزيل أو التحديث في الخلفية بسبب تحسينات البطارية.</string>
 </resources>
