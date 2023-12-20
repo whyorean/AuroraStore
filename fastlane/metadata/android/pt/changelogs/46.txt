@@ -1,0 +1,6 @@
+• Evitar pedir permissão de armazenamento exceto se for necessário
+• Configuração de spoof retrabalhado para evitar a permissão de armazenamento para importação-exportação
+• Adicionar opção para verificar atualizações de apps automaticamente (requer uma conta de trabalho ativa)
+• Problema fixo onde as bibliotecas necessárias não são instaladas com apps como a biblioteca cromada & trichrome
+• Ignorar o diretório de descargas dos backups ao fazer backup da Aurora Store
+...
