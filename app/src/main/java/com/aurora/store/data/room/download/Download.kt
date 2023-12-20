@@ -23,7 +23,8 @@ data class Download(
     var speed: Long,
     var timeRemaining: Long,
     var totalFiles: Int,
-    var downloadedFiles: Int
+    var downloadedFiles: Int,
+    val sharedLibs: List<SharedLib>
 ) : Parcelable {
     val isFinished get() = status in DownloadStatus.finished
 
@@ -43,7 +44,8 @@ data class Download(
                 0L,
                 0L,
                 0,
-                0
+                0,
+                app.dependencies.dependentLibraries.map { SharedLib.fromApp(it) }
             )
         }
     }

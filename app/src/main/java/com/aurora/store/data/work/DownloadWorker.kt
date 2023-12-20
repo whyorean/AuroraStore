@@ -35,7 +35,6 @@ import kotlinx.coroutines.withContext
 import java.io.File
 import java.net.URL
 import kotlinx.coroutines.NonCancellable
-import kotlin.io.path.ExperimentalPathApi
 import kotlin.properties.Delegates
 import com.aurora.gplayapi.data.models.File as GPlayFile
 
@@ -89,16 +88,33 @@ class DownloadWorker @AssistedInject constructor(
             return Result.failure()
         }
 
-        // Download and verify all files exists
-        totalBytes = files.sumOf { it.size }
-
+        // Create dirs & generate download request for files and shared libs (if any)
         PathUtil.getAppDownloadDir(appContext, download.packageName, download.versionCode).mkdirs()
         if (files.any { it.type == GPlayFile.FileType.OBB || it.type == GPlayFile.FileType.PATCH }) {
             PathUtil.getObbDownloadDir(download.packageName).mkdirs()
         }
 
-        val requestList = getDownloadRequest(files)
+        val requestList = mutableListOf<Request>()
+        if (download.sharedLibs.isNotEmpty()) {
+            // Purchase and append shared libs data to existing request
+            download.sharedLibs.forEach {
+                PathUtil.getLibDownloadDir(
+                    appContext,
+                    download.packageName,
+                    download.versionCode,
+                    it.packageName
+                ).mkdirs()
+                val libs = purchaseHelper.purchase(it.packageName, it.versionCode, 0)
+                requestList.addAll(getDownloadRequest(libs, it.packageName))
+            }
+        }
+        requestList.addAll(getDownloadRequest(files, null))
+
+        // Update data for notification
         download.totalFiles = requestList.size
+        totalBytes = requestList.sumOf { it.size }
+
+        // Download and verify all files exists
         requestList.forEach { request ->
             downloading = true
             runCatching { downloadFile(request); download.downloadedFiles++ }
@@ -134,7 +150,6 @@ class DownloadWorker @AssistedInject constructor(
         return Result.success()
     }
 
-    @OptIn(ExperimentalPathApi::class)
     private suspend fun onFailure() {
         withContext(NonCancellable) {
             Log.i(TAG, "Cleaning up!")
@@ -147,13 +162,13 @@ class DownloadWorker @AssistedInject constructor(
         }
     }
 
-    private fun getDownloadRequest(files: List<GPlayFile>): List<Request> {
+    private fun getDownloadRequest(files: List<GPlayFile>, libPackageName: String?): List<Request> {
         val downloadList = mutableListOf<Request>()
         files.filter { it.url.isNotBlank() }.forEach {
             val filePath = when (it.type) {
                 GPlayFile.FileType.BASE, GPlayFile.FileType.SPLIT -> {
                     PathUtil.getApkDownloadFile(
-                        appContext, download.packageName, download.versionCode, it
+                        appContext, download.packageName, download.versionCode, it, libPackageName
                     )
                 }
 
