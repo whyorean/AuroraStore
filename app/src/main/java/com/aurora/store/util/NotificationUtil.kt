@@ -247,7 +247,7 @@ object NotificationUtil {
                 builder.setCategory(Notification.CATEGORY_ERROR)
             }
 
-            DownloadStatus.COMPLETED -> if (download.progress == 100) {
+            DownloadStatus.COMPLETED -> {
                 builder.setSmallIcon(android.R.drawable.stat_sys_download_done)
                 builder.setContentText(context.getString(R.string.download_completed))
                 builder.setAutoCancel(true)

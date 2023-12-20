@@ -193,7 +193,7 @@ class DownloadWorker @AssistedInject constructor(
     }
 
     private suspend fun onProgress(downloadInfo: DownloadInfo) {
-        if (!isStopped) {
+        if (!isStopped && !download.isFinished) {
             val progress = ((downloadedBytes + downloadInfo.bytesCopied) * 100 / totalBytes).toInt()
 
             // Individual file progress can be negligible in contrast to total progress
@@ -236,7 +236,10 @@ class DownloadWorker @AssistedInject constructor(
     private suspend fun notifyStatus(status: DownloadStatus, dID: Int = -1) {
         // Update database for all status except downloading which is handled onProgress
         if (status != DownloadStatus.DOWNLOADING) {
-            download.status = status
+            download.apply {
+                this.status = status
+                if (download.status == DownloadStatus.COMPLETED) this.progress = 100
+            }
             downloadDao.update(download)
         }
 
