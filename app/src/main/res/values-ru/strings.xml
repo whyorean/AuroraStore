@@ -271,7 +271,7 @@
     <string name="notification_channel_updater_service">Служба фоновой загрузки приложений</string>
     <string name="account_anonymous_insecure">Анонимный (небезопасно)</string>
     <string name="installer_am_unavailable">Установите Менеджер Приложений или смените установщик.</string>
-    <string name="pref_install_mode_am">Установщик МП.</string>
+    <string name="pref_install_mode_am">Установщик МП</string>
     <string name="ui_accent_1">Синий</string>
     <string name="ui_accent_2">Пурпурный</string>
     <string name="ui_accent_3">Красный</string>
@@ -373,4 +373,10 @@
     <string name="pref_self_update_summary">Проверка и уведомление при появлении новой стабильной версии Aurora Store</string>
     <string name="pref_vending_version_device">По умолчанию (с конфигурации устройства)</string>
     <string name="pref_vending_version_title">Версия Google Play</string>
+    <string name="device_doze_description">Пожалуйста, отключите оптимизацию батареи чтобы разрешить фоновые операции.</string>
+    <string name="onboarding_permission_doze">Фоновые загрузки</string>
+    <string name="device_doze_title">Обнаружена оптимизация батареи!</string>
+    <string name="device_doze_extra">При желании вы можете оставить оптимизацию включённой, но тогда вы не сможете извлечь пользу из фоновых загрузок и автоматических обновлений, так что выбор за вами.</string>
+    <string name="onboarding_permission_doze_desc">Разрешить Aurora Store загружать и обновлять приложения в фоне</string>
+    <string name="device_doze_subtitle">Из-за оптимизации батареи Aurora Store не может загружать или обновлять приложения в фоне.</string>
 </resources>
