@@ -30,6 +30,7 @@ import androidx.preference.SeekBarPreference
 import androidx.preference.SwitchPreferenceCompat
 import com.aurora.store.BuildConfig
 import com.aurora.store.R
+import com.aurora.store.data.work.SelfUpdateWorker
 import com.aurora.store.data.work.UpdateWorker
 import com.aurora.store.util.CertUtil
 import com.aurora.store.util.Preferences
@@ -55,6 +56,11 @@ class UpdatesPreference : PreferenceFragmentCompat() {
             }
 
             it.setOnPreferenceChangeListener { _, newValue ->
+                if (newValue.toString().toBoolean()) {
+                    SelfUpdateWorker.scheduleAutomatedCheck(requireContext())
+                } else {
+                    SelfUpdateWorker.cancelAutomatedCheck(requireContext())
+                }
                 save(PREFERENCE_SELF_UPDATE, newValue.toString().toBoolean())
                 true
             }

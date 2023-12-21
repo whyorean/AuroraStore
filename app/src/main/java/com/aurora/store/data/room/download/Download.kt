@@ -4,6 +4,7 @@ import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.aurora.gplayapi.data.models.App
+import com.aurora.gplayapi.data.models.File
 import com.aurora.store.data.model.DownloadStatus
 import kotlinx.parcelize.Parcelize
 
@@ -24,6 +25,7 @@ data class Download(
     var timeRemaining: Long,
     var totalFiles: Int,
     var downloadedFiles: Int,
+    var fileList: List<File>,
     val sharedLibs: List<SharedLib>
 ) : Parcelable {
     val isFinished get() = status in DownloadStatus.finished
@@ -45,6 +47,7 @@ data class Download(
                 0L,
                 0,
                 0,
+                app.fileList.filterNot { it.url.isBlank() },
                 app.dependencies.dependentLibraries.map { SharedLib.fromApp(it) }
             )
         }

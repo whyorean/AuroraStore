@@ -13,6 +13,7 @@ import androidx.work.WorkerParameters
 import com.aurora.Constants
 import com.aurora.extensions.copyTo
 import com.aurora.extensions.isQAndAbove
+import com.aurora.extensions.requiresObbDir
 import com.aurora.gplayapi.helpers.PurchaseHelper
 import com.aurora.store.data.model.DownloadInfo
 import com.aurora.store.data.model.DownloadStatus
@@ -80,9 +81,10 @@ class DownloadWorker @AssistedInject constructor(
             appContext.getSystemService(Service.NOTIFICATION_SERVICE) as NotificationManager
 
         // Bail out if file list is empty
-        val files =
+        download.fileList = download.fileList.ifEmpty {
             purchaseHelper.purchase(download.packageName, download.versionCode, download.offerType)
-        if (files.isEmpty()) {
+        }
+        if (download.fileList.isEmpty()) {
             Log.i(TAG, "Nothing to download!")
             notifyStatus(DownloadStatus.FAILED)
             return Result.failure()
@@ -90,7 +92,7 @@ class DownloadWorker @AssistedInject constructor(
 
         // Create dirs & generate download request for files and shared libs (if any)
         PathUtil.getAppDownloadDir(appContext, download.packageName, download.versionCode).mkdirs()
-        if (files.any { it.type == GPlayFile.FileType.OBB || it.type == GPlayFile.FileType.PATCH }) {
+        if (download.fileList.requiresObbDir()) {
             PathUtil.getObbDownloadDir(download.packageName).mkdirs()
         }
 
@@ -104,11 +106,13 @@ class DownloadWorker @AssistedInject constructor(
                     download.versionCode,
                     it.packageName
                 ).mkdirs()
-                val libs = purchaseHelper.purchase(it.packageName, it.versionCode, 0)
-                requestList.addAll(getDownloadRequest(libs, it.packageName))
+                it.fileList = it.fileList.ifEmpty {
+                    purchaseHelper.purchase(it.packageName, it.versionCode, 0)
+                }
+                requestList.addAll(getDownloadRequest(it.fileList, it.packageName))
             }
         }
-        requestList.addAll(getDownloadRequest(files, null))
+        requestList.addAll(getDownloadRequest(download.fileList, null))
 
         // Update data for notification
         download.totalFiles = requestList.size

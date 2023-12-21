@@ -19,21 +19,53 @@
 
 package com.aurora.store.data.model
 
+import android.content.Context
+import com.aurora.Constants
+import com.aurora.gplayapi.data.models.App
+import com.aurora.gplayapi.data.models.Artwork
+import com.aurora.gplayapi.data.models.File
+import com.aurora.store.BuildConfig
+import com.aurora.store.R
+import com.aurora.store.util.CertUtil
 import com.google.gson.annotations.SerializedName
 
-class SelfUpdate {
-    @SerializedName("version_name")
-    var versionName: String = String()
+data class SelfUpdate(
+    @SerializedName("version_name") var versionName: String = String(),
+    @SerializedName("version_code") var versionCode: Int = 0,
+    @SerializedName("aurora_build") var auroraBuild: String = String(),
+    @SerializedName("fdroid_build") var fdroidBuild: String = String(),
+    val changelog: String = String(),
+    val size: Long = 0L
+) {
+    companion object {
+        private const val BASE_URL = "https://gitlab.com/AuroraOSS/AuroraStore/-/raw/master"
 
-    @SerializedName("version_code")
-    var versionCode: Int = 0
+        fun toApp(selfUpdate: SelfUpdate, context: Context): App {
+            // Keep paths updated with fastlane data on project
+            val icon = "fastlane/metadata/android/en-US/images/icon.png"
 
-    @SerializedName("aurora_build")
-    var auroraBuild: String = String()
+            val downloadURL = if (CertUtil.isFDroidApp(context, BuildConfig.APPLICATION_ID)) {
+                selfUpdate.fdroidBuild
+            } else {
+                selfUpdate.auroraBuild
+            }
 
-    @SerializedName("fdroid_build")
-    var fdroidBuild: String = String()
-
-    @SerializedName("changelog")
-    var changelog: String = String()
+            return App(
+                packageName = Constants.APP_ID,
+                versionCode = selfUpdate.versionCode,
+                versionName = selfUpdate.versionName,
+                changes = selfUpdate.changelog,
+                size = selfUpdate.size,
+                displayName = context.getString(R.string.app_name),
+                iconArtwork = Artwork(url = "$BASE_URL/$icon"),
+                fileList = mutableListOf(
+                    File(
+                        name = "${Constants.APP_ID}.apk",
+                        url = downloadURL,
+                        size = selfUpdate.size
+                    )
+                )
+            )
+        }
+    }
 }
