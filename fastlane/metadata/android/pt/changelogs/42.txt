@@ -1,0 +1,9 @@
+• Alvo Android 13
+• Ativar a localização de várias cadeias de caracteres
+• Adicionar ícone monocromático para Android 13
+• Atualizar dependências para a versão mais recente
+• Mostrar imediatamente aviso de Termos de Serviço no lançamento
+• Permitir avançar sem conceder permissões durante a configuração inicial
+• Leia lista de recusas de xml do sistema como padrão para excluir atualizações
+• Mostrar o título correto na 5a página de configuração
+...
