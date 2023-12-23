@@ -85,4 +85,20 @@
     <string name="action_disable">Disactivar</string>
     <string name="onboarding_title_theme">Themas</string>
     <string name="purchase_not_found">Application non trovate</string>
+    <string name="details_no_updates">Necun actualisationes disponibile</string>
+    <string name="installer_status_failure">Falleva le installator</string>
+    <string name="action_clear">Rader</string>
+    <string name="about_libera">Liberapay</string>
+    <string name="filter_review_all">Toto</string>
+    <string name="about_fdroid">F-Droid</string>
+    <string name="about_paypal">PayPal</string>
+    <string name="action_copy_link">Copiar ligamine</string>
+    <string name="details_permission">Permission</string>
+    <string name="action_installing">Installation in curso</string>
+    <string name="account_google">Google</string>
+    <string name="action_pause">Pausar</string>
+    <string name="about_telegram">Telegram</string>
+    <string name="download_pause_all">Pausar toto</string>
+    <string name="action_copy">Copiar</string>
+    <string name="details_privacy">Confidentialitate</string>
 </resources>
