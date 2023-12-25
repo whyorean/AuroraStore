@@ -156,9 +156,6 @@ dependencies {
     //HTTP Clients
     implementation("com.squareup.okhttp3:okhttp:4.12.0")
 
-    //Fetch - Downloader
-    implementation("androidx.tonyodev.fetch2:xfetch2:3.1.6")
-
     //EventBus
     implementation("org.greenrobot:eventbus:3.3.1")
 

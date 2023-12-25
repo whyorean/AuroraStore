@@ -19,12 +19,10 @@
 
 package com.aurora.store.data.receiver
 
-import android.app.NotificationManager
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import com.aurora.store.BuildConfig
-import com.aurora.store.data.downloader.RequestGroupIdBuilder
 import com.aurora.store.data.event.BusEvent.InstallEvent
 import com.aurora.store.data.event.BusEvent.UninstallEvent
 import com.aurora.store.data.installer.AppInstaller
@@ -56,8 +54,6 @@ open class PackageManagerReceiver : BroadcastReceiver() {
                 .getPreferredInstaller()
                 .removeFromInstallQueue(packageName)
 
-            //clearNotification(context, packageName)
-
             val isAutoDeleteAPKEnabled = Preferences.getBoolean(
                 context,
                 Preferences.PREFERENCE_AUTO_DELETE
@@ -69,15 +65,6 @@ open class PackageManagerReceiver : BroadcastReceiver() {
             //Clear self update apk
             if (packageName == BuildConfig.APPLICATION_ID)
                 clearDownloads(context, packageName)
-        }
-    }
-
-    private fun clearNotification(context: Context, packageName: String) {
-        val notificationManager = context.applicationContext
-            .getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-        val groupIDsOfPackageName = RequestGroupIdBuilder.getGroupIDsForApp(context, packageName.hashCode())
-        groupIDsOfPackageName.forEach {
-            notificationManager.cancel(packageName, it)
         }
     }
 

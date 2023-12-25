@@ -25,12 +25,6 @@ import com.aurora.store.data.room.download.Download as AuroraDownload
 import com.aurora.store.R
 import com.aurora.store.data.activity.InstallActivity
 import com.aurora.store.data.model.DownloadStatus
-import com.aurora.store.data.receiver.DownloadCancelReceiver
-import com.aurora.store.data.receiver.DownloadPauseReceiver
-import com.aurora.store.data.receiver.DownloadResumeReceiver
-import com.tonyodev.fetch2.Download
-import com.tonyodev.fetch2.FetchGroup
-import com.tonyodev.fetch2.Status
 import java.net.URL
 import java.util.UUID
 
@@ -87,131 +81,6 @@ object NotificationUtil {
             .setContentText(context.getString(R.string.app_updater_service_notif_text))
             .setOngoing(true)
             .build()
-    }
-
-    fun getDownloadNotification(
-        context: Context,
-        app: App,
-        groupId: Int,
-        download: Download,
-        fetchGroup: FetchGroup
-    ): Notification {
-        val status = download.status
-
-        val builder = NotificationCompat.Builder(context, Constants.NOTIFICATION_CHANNEL_GENERAL)
-        builder.setContentTitle(app.displayName)
-        builder.setSmallIcon(R.drawable.ic_notification_outlined)
-        builder.color = ContextCompat.getColor(context, R.color.colorAccent)
-        builder.setWhen(download.created)
-        builder.setContentIntent(getContentIntentForDownloads(context))
-
-        when (status) {
-            Status.PAUSED -> {
-                builder.setSmallIcon(R.drawable.ic_download_pause)
-                builder.setContentText(context.getString(R.string.download_paused))
-            }
-
-            Status.CANCELLED -> {
-                builder.setSmallIcon(R.drawable.ic_download_cancel)
-                builder.setContentText(context.getString(R.string.download_canceled))
-                builder.color = Color.RED
-            }
-
-            Status.FAILED -> {
-                builder.setSmallIcon(R.drawable.ic_download_fail)
-                builder.setContentText(context.getString(R.string.download_failed))
-                builder.color = Color.RED
-            }
-
-            Status.COMPLETED -> if (fetchGroup.groupDownloadProgress == 100) {
-                builder.setSmallIcon(android.R.drawable.stat_sys_download_done)
-                builder.setContentText(context.getString(R.string.download_completed))
-            }
-
-            else -> {
-                builder.setSmallIcon(android.R.drawable.stat_sys_download)
-                builder.setContentText(context.getString(R.string.download_metadata))
-            }
-        }
-        val progress = fetchGroup.groupDownloadProgress
-        val progressBigText = NotificationCompat.BigTextStyle()
-
-        when (status) {
-            Status.QUEUED -> {
-                builder.setProgress(100, 0, true)
-                progressBigText.bigText(context.getString(R.string.download_queued))
-                builder.setStyle(progressBigText)
-            }
-
-            Status.DOWNLOADING -> {
-                val speedString: String =
-                    CommonUtil.humanReadableByteSpeed(download.downloadedBytesPerSecond, true)
-                progressBigText.bigText(
-                    context.getString(
-                        R.string.download_progress,
-                        fetchGroup.completedDownloads.size + 1,
-                        fetchGroup.downloads.size,
-                        speedString
-                    )
-                )
-                builder.setStyle(progressBigText)
-                builder.addAction(
-                    NotificationCompat.Action.Builder(
-                        R.drawable.ic_download_pause,
-                        context.getString(R.string.action_pause),
-                        getPauseIntent(context, groupId)
-                    ).build()
-                )
-                builder.addAction(
-                    NotificationCompat.Action.Builder(
-                        R.drawable.ic_download_cancel,
-                        context.getString(R.string.action_cancel),
-                        getCancelIntent(context, groupId)
-                    ).build()
-                )
-                if (progress < 0) builder.setProgress(
-                    100,
-                    0,
-                    true
-                ) else builder.setProgress(100, progress, false)
-            }
-
-            Status.PAUSED -> {
-                progressBigText.bigText(
-                    context.getString(
-                        R.string.download_paused,
-                        fetchGroup.completedDownloads.size,
-                        fetchGroup.downloads.size
-                    )
-                )
-                builder.setStyle(progressBigText)
-                builder.addAction(
-                    NotificationCompat.Action.Builder(
-                        R.drawable.ic_download_pause,
-                        context.getString(R.string.action_resume),
-                        getResumeIntent(context, groupId)
-                    ).build()
-                )
-            }
-
-            Status.COMPLETED -> if (fetchGroup.groupDownloadProgress == 100) {
-                builder.setAutoCancel(true)
-                builder.setContentIntent(getContentIntentForDetails(context, app.packageName))
-                builder.setStyle(progressBigText)
-            }
-
-            else -> {
-
-            }
-        }
-
-        when (status) {
-            Status.DOWNLOADING -> builder.setCategory(Notification.CATEGORY_PROGRESS)
-            Status.FAILED, Status.CANCELLED -> builder.setCategory(Notification.CATEGORY_ERROR)
-            else -> builder.setCategory(Notification.CATEGORY_STATUS)
-        }
-
-        return builder.build()
     }
 
     fun getDownloadNotification(
@@ -305,33 +174,6 @@ object NotificationUtil {
                 setSubText(app.packageName)
             }
         return builder.build()
-    }
-
-    private fun getPauseIntent(context: Context, groupId: Int): PendingIntent {
-        val intent = Intent(context, DownloadPauseReceiver::class.java)
-        intent.putExtra(Constants.FETCH_GROUP_ID, groupId)
-        val flags = if (isMAndAbove())
-            PendingIntent.FLAG_CANCEL_CURRENT or PendingIntent.FLAG_IMMUTABLE
-        else PendingIntent.FLAG_CANCEL_CURRENT
-        return PendingIntent.getBroadcast(context, groupId, intent, flags)
-    }
-
-    private fun getResumeIntent(context: Context, groupId: Int): PendingIntent {
-        val intent = Intent(context, DownloadResumeReceiver::class.java)
-        intent.putExtra(Constants.FETCH_GROUP_ID, groupId)
-        val flags = if (isMAndAbove())
-            PendingIntent.FLAG_CANCEL_CURRENT or PendingIntent.FLAG_IMMUTABLE
-        else PendingIntent.FLAG_CANCEL_CURRENT
-        return PendingIntent.getBroadcast(context, groupId, intent, flags)
-    }
-
-    private fun getCancelIntent(context: Context, groupId: Int): PendingIntent {
-        val intent = Intent(context, DownloadCancelReceiver::class.java)
-        intent.putExtra(Constants.FETCH_GROUP_ID, groupId)
-        val flags = if (isMAndAbove())
-            PendingIntent.FLAG_CANCEL_CURRENT or PendingIntent.FLAG_IMMUTABLE
-        else PendingIntent.FLAG_CANCEL_CURRENT
-        return PendingIntent.getBroadcast(context, groupId, intent, flags)
     }
 
     private fun getContentIntentForDetails(context: Context, packageName: String): PendingIntent {

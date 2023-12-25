@@ -97,11 +97,6 @@
             android:exported="false"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
 
-        <service android:name=".data.service.NotificationService" />
-        <service android:name=".data.installer.InstallerService" />
-        <service android:name=".data.service.UpdateService" />
-        <service android:name=".data.service.SelfUpdateService" />
-
         <service
             android:name="androidx.work.impl.foreground.SystemForegroundService"
             android:foregroundServiceType="dataSync"
@@ -139,9 +134,6 @@
                 tools:node="remove" />
         </provider>
 
-        <receiver android:name=".data.receiver.DownloadResumeReceiver" />
-        <receiver android:name=".data.receiver.DownloadPauseReceiver" />
-        <receiver android:name=".data.receiver.DownloadCancelReceiver" />
         <receiver
             android:name=".data.receiver.InstallReceiver"
             android:exported="false" />

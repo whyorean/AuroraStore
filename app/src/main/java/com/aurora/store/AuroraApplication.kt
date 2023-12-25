@@ -25,14 +25,11 @@ import androidx.core.content.ContextCompat
 import androidx.hilt.work.HiltWorkerFactory
 import androidx.work.Configuration
 import com.aurora.extensions.isPAndAbove
-import com.aurora.store.data.downloader.DownloadManager
 import com.aurora.store.data.receiver.PackageManagerReceiver
-import com.aurora.store.data.service.NotificationService
 import com.aurora.store.util.CommonUtil
 import com.aurora.store.util.DownloadWorkerUtil
 import com.aurora.store.util.NotificationUtil
 import com.aurora.store.util.PackageUtil
-import com.tonyodev.fetch2.Fetch
 import dagger.hilt.android.HiltAndroidApp
 import javax.inject.Inject
 import org.lsposed.hiddenapibypass.HiddenApiBypass
@@ -52,8 +49,6 @@ class AuroraApplication : Application(), Configuration.Provider {
             .setWorkerFactory(workerFactory)
             .build()
 
-    private lateinit var fetch: Fetch
-
     companion object {
         val enqueuedInstalls: MutableSet<String> = mutableSetOf()
     }
@@ -69,9 +64,6 @@ class AuroraApplication : Application(), Configuration.Provider {
 
         //Create Notification Channels : General & Alert
         NotificationUtil.createNotificationChannel(this)
-        NotificationService.startService(this)
-
-        fetch = DownloadManager.with(this).fetch
 
         // Initialize DownloadWorker to observe and trigger downloads
         downloadWorkerUtil.init()

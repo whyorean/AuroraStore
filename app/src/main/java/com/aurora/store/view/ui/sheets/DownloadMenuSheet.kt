@@ -29,17 +29,12 @@ import androidx.navigation.fragment.navArgs
 import com.aurora.extensions.copyToClipBoard
 import com.aurora.extensions.toast
 import com.aurora.store.R
-import com.aurora.store.data.downloader.DownloadManager
-import com.aurora.store.data.model.DownloadStatus
 import com.aurora.store.databinding.SheetDownloadMenuBinding
 import com.aurora.store.util.DownloadWorkerUtil
-import com.tonyodev.fetch2.Fetch
-import com.tonyodev.fetch2.Status
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 import kotlinx.coroutines.NonCancellable
 import kotlinx.coroutines.launch
-import kotlin.properties.Delegates
 
 @AndroidEntryPoint
 class DownloadMenuSheet : BaseBottomSheet() {
