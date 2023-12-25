@@ -125,16 +125,12 @@ dependencies {
     //AndroidX
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.viewpager2:viewpager2:1.0.0")
-    implementation("androidx.vectordrawable:vectordrawable:1.1.0")
     implementation("androidx.preference:preference-ktx:1.2.1")
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
 
     //Arch LifeCycle
     val lifeVersion = "2.6.2"
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:$lifeVersion")
-    implementation("androidx.lifecycle:lifecycle-service:$lifeVersion")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifeVersion")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-savedstate:$lifeVersion")
     implementation("androidx.lifecycle:lifecycle-process:$lifeVersion")
 
     //Arch Navigation
