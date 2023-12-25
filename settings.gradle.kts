@@ -29,7 +29,6 @@ dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
         google()
-        jcenter() // Required for androidx.tonyodev.fetch2
         mavenCentral()
         maven("https://jitpack.io/")
         maven("https://maven.google.com/")
