@@ -119,7 +119,7 @@ dependencies {
     implementation("com.google.protobuf:protobuf-javalite:3.25.1")
 
     //Google's Goodies
-    implementation("com.google.android.material:material:1.10.0")
+    implementation("com.google.android.material:material:1.11.0")
     implementation("com.google.code.gson:gson:2.10.1")
 
     //AndroidX
@@ -138,7 +138,7 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-process:$lifeVersion")
 
     //Arch Navigation
-    val navVersion = "2.7.5"
+    val navVersion = "2.7.6"
     implementation("androidx.navigation:navigation-fragment-ktx:$navVersion")
     implementation("androidx.navigation:navigation-ui-ktx:$navVersion")
 
@@ -166,7 +166,7 @@ dependencies {
     implementation("com.github.topjohnwu.libsu:core:5.0.5")
 
     //Love <3
-    implementation("com.gitlab.AuroraOSS:gplayapi:3.2.5")
+    implementation("com.gitlab.AuroraOSS:gplayapi:3.2.6")
 
     //Browser
     implementation("androidx.browser:browser:1.7.0")
