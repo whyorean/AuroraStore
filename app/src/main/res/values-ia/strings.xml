@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="account_logout">Clauder le session de Aurora</string>
     <string name="action_cancel">Cancellar</string>
     <string name="action_finish">Finir</string>
@@ -85,4 +85,71 @@
     <string name="action_disable">Disactivar</string>
     <string name="onboarding_title_theme">Themas</string>
     <string name="purchase_not_found">Application non trovate</string>
+    <string name="details_no_updates">Necun actualisationes disponibile</string>
+    <string name="installer_status_failure">Falleva le installator</string>
+    <string name="action_clear">Rader</string>
+    <string name="about_libera">Liberapay</string>
+    <string name="filter_review_all">Toto</string>
+    <string name="about_fdroid">F-Droid</string>
+    <string name="about_paypal">PayPal</string>
+    <string name="action_copy_link">Copiar ligamine</string>
+    <string name="details_permission">Permission</string>
+    <string name="action_installing">Installation in curso</string>
+    <string name="account_google">Google</string>
+    <string name="action_pause">Pausar</string>
+    <string name="about_telegram">Telegram</string>
+    <string name="download_pause_all">Pausar toto</string>
+    <string name="action_copy">Copiar</string>
+    <string name="details_privacy">Confidentialitate</string>
+    <string name="details_dev_email">E-mail</string>
+    <string name="about_bitcoin_bch_summary">Facer un donation via Bitcoin Cash (BCH)</string>
+    <string name="about_bitcoin_eth">Ethereum</string>
+    <string name="details_no_dependencies">Sin dependentias</string>
+    <string name="action_ignore_version">Ignorar le version</string>
+    <string name="about_paypal_summary">Facer un donation via PayPal</string>
+    <string name="details_no_ads">Sin avisos publicitari</string>
+    <string name="details_free">Gratuite</string>
+    <string name="download_completed">Discargamento completate</string>
+    <string name="about_bitcoin_eth_summary">Facer un donation via Ethereum (ETH)</string>
+    <string name="about_bitcoin_btc_summary">Facer un donation via Bitcoin (BTC)</string>
+    <string name="action_ignore">Ignorar</string>
+    <string name="details_dependencies">Dependentias</string>
+    <string name="about_bhim_summary">Facer un donation via UPI</string>
+    <string name="details_contains_ads">Contine avisos publicitari</string>
+    <string name="details_paid">De pagamento</string>
+    <string name="about_bitcoin_btc">Bitcoin</string>
+    <string name="about_xda">Topico de disveloppamento</string>
+    <string name="action_filter_misc">Miscellanea</string>
+    <string name="action_filter_apps_with_ads">Applicationes con publicitate</string>
+    <string name="about_bitcoin_bch">Bitcoin Cash</string>
+    <string name="action_uninstall_confirmation">Desira tu vermente disinstallar iste application?</string>
+    <string name="details_no_permission">Sin permissiones</string>
+    <string name="details_description">Description</string>
+    <string name="downloading_dep">Discargante files additional pro <xliff:g id="app">%1$s</xliff:g></string>
+    <string name="pref_network_proxy_enable">Activar le proxy</string>
+    <string name="tab_for_you">Pro te</string>
+    <string name="check_connectivity">Verificar connexion a Internet</string>
+    <string name="pref_network_proxy_url">URL de proxy</string>
+    <string name="pref_aurora_only">Solmente applicationes de Aurora Store</string>
+    <string name="ui_accent_0">Systema</string>
+    <string name="pref_network_proxy_title">Proxy</string>
+    <string name="notification_updates_available_desc_1">Un nove version de <xliff:g id="app_one_name">%1$s</xliff:g> es disponibile</string>
+    <string name="action_enable">Activar</string>
+    <string name="checking_for_updates">Verificante actualisationes</string>
+    <string name="update_available">actualisation disponibile</string>
+    <string name="menu">Menu</string>
+    <string name="pref_network_title">Retes</string>
+    <string name="app_links_title">Ligamines de application</string>
+    <string name="updates_available">actualisationes disponibile</string>
+    <string name="pref_ui_layout_tab">Seliger scheda per predefinition</string>
+    <string name="action_enabled">Activate</string>
+    <string name="pref_self_update_summary">Verificar e notificar si es disponibile un nove version stabile de Aurora Store</string>
+    <string name="pref_updates_check_frequency">Frequentia de actualisationes automatic</string>
+    <string name="notification_updates_available_desc_3"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g> e <xliff:g id="app_three_name">%3$s</xliff:g></string>
+    <string name="notification_updates_available"><xliff:g id="apps_count">%1$d</xliff:g> actualisationes disponibile</string>
+    <string name="pref_updates_check">Verification automatic de applicationes</string>
+    <string name="app_language">Lingua del application</string>
+    <string name="notification_updates_available_desc_2"><xliff:g id="app_one_name">%1$s</xliff:g> e <xliff:g id="app_two_name">%2$s</xliff:g></string>
+    <string name="tab_trending">Tendentias</string>
+    <string name="notification_updates_available_1"><xliff:g id="apps_count">%1$d</xliff:g> actualisation disponibile</string>
 </resources>
