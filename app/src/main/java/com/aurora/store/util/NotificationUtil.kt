@@ -163,6 +163,25 @@ object NotificationUtil {
         return builder.build()
     }
 
+    fun getInstallNotification(context: Context, download: AuroraDownload): Notification {
+        val builder = NotificationCompat.Builder(context, Constants.NOTIFICATION_CHANNEL_ALERT)
+
+        // Set big icon for download
+        try {
+            val bitmap = BitmapFactory.decodeStream(URL(download.iconURL).openStream())
+            builder.setLargeIcon(bitmap)
+        } catch (exception: Exception) {
+            Log.i(TAG, "Failed to set big icon", exception)
+        }
+
+        return builder.setSmallIcon(R.drawable.ic_install)
+            .setColor(context.getStyledAttributeColor(R.color.colorAccent))
+            .setContentTitle(download.displayName)
+            .setContentText(context.getString(R.string.installer_status_success))
+            .setContentIntent(getContentIntentForDetails(context, download.packageName))
+            .build()
+    }
+
     fun getInstallerStatusNotification(context: Context, app: App, content: String?): Notification {
         val builder =
             NotificationCompat.Builder(context, Constants.NOTIFICATION_CHANNEL_ALERT).apply {
