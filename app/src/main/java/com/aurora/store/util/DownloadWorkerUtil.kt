@@ -21,6 +21,8 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.filter
+import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
@@ -80,8 +82,8 @@ class DownloadWorkerUtil @Inject constructor(
     suspend fun cancelDownload(packageName: String) {
         Log.i(TAG, "Cancelling download for $packageName")
         WorkManager.getInstance(context).cancelAllWorkByTag("$PACKAGE_NAME:$packageName")
-        downloadsList.value
-            .find { it.packageName == packageName && it.status == DownloadStatus.QUEUED }
+        downloadsList.filter { it.isNotEmpty() }.firstOrNull()
+            ?.find { it.packageName == packageName && it.status == DownloadStatus.QUEUED }
             ?.let { downloadDao.update(it.copy(status = DownloadStatus.CANCELLED)) }
     }
 
