@@ -163,7 +163,7 @@ object NotificationUtil {
         return builder.build()
     }
 
-    fun getInstallNotification(context: Context, app: App, content: String?): Notification {
+    fun getInstallerStatusNotification(context: Context, app: App, content: String?): Notification {
         val builder =
             NotificationCompat.Builder(context, Constants.NOTIFICATION_CHANNEL_ALERT).apply {
                 color = context.getStyledAttributeColor(R.color.colorAccent)

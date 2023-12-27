@@ -25,91 +25,56 @@ import android.content.Intent
 import android.content.pm.PackageInstaller
 import android.util.Log
 import androidx.core.content.IntentCompat
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.ProcessLifecycleOwner
-import com.aurora.Constants
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
 import com.aurora.store.data.event.InstallerEvent
 import com.aurora.store.data.installer.AppInstaller
+import com.aurora.store.util.CommonUtil.inForeground
 import com.aurora.store.util.NotificationUtil
-import com.aurora.store.util.PathUtil
 import dagger.hilt.android.AndroidEntryPoint
-import java.io.File
 import org.greenrobot.eventbus.EventBus
 
 @AndroidEntryPoint
-class InstallReceiver : BroadcastReceiver() {
+class InstallerStatusReceiver : BroadcastReceiver() {
 
     companion object {
-        const val ACTION_INSTALL_APP = "com.aurora.store.data.receiver.InstallReceiver.INSTALL_APP"
         const val ACTION_INSTALL_STATUS =
             "com.aurora.store.data.receiver.InstallReceiver.INSTALL_STATUS"
     }
 
-    private val TAG = InstallReceiver::class.java.simpleName
+    private val TAG = InstallerStatusReceiver::class.java.simpleName
 
     override fun onReceive(context: Context, intent: Intent) {
-        when (intent.action) {
-            ACTION_INSTALL_APP -> {
-                val packageName = intent.extras?.getString(Constants.STRING_APP) ?: String()
-                val version = intent.extras?.getInt(Constants.STRING_VERSION)
-                if (packageName.isNotBlank() && version != null) {
-                    try {
-                        val downloadDir =
-                            File(PathUtil.getAppDownloadDir(context, packageName, version).path)
-                        AppInstaller.getInstance(context).getPreferredInstaller()
-                            .install(
-                                packageName,
-                                downloadDir.listFiles()!!.filter { it.path.endsWith(".apk") }
-                            )
-                    } catch (exception: Exception) {
-                        Log.e(TAG, "Failed to install $packageName")
-                    }
-                }
-            }
+        if (intent.action == ACTION_INSTALL_STATUS) {
+            val packageName = intent.getStringExtra(PackageInstaller.EXTRA_PACKAGE_NAME)
+            val status = intent.getIntExtra(PackageInstaller.EXTRA_STATUS, -1)
+            val extra = intent.getStringExtra(PackageInstaller.EXTRA_STATUS_MESSAGE)
 
-            ACTION_INSTALL_STATUS -> {
-                val packageName = intent.getStringExtra(PackageInstaller.EXTRA_PACKAGE_NAME)
-                val status = intent.getIntExtra(PackageInstaller.EXTRA_STATUS, -1)
-                val extra = intent.getStringExtra(PackageInstaller.EXTRA_STATUS_MESSAGE)
+            // Exit early if package was successfully installed, nothing to do
+            if (status == PackageInstaller.STATUS_SUCCESS) return
 
-                if (inForeground() && status == PackageInstaller.STATUS_PENDING_USER_ACTION) {
-                    promptUser(intent, context)
-                } else {
-                    postStatus(status, packageName, extra, context)
-                    notifyInstallation(context, packageName!!, status)
-                }
+            if (inForeground() && status == PackageInstaller.STATUS_PENDING_USER_ACTION) {
+                promptUser(intent, context)
+            } else {
+                postStatus(status, packageName, extra, context)
+                notifyUser(context, packageName!!, status)
             }
         }
     }
 
-    private fun notifyInstallation(context: Context, packageName: String, status: Int) {
+    private fun notifyUser(context: Context, packageName: String, status: Int) {
         val notificationManager =
             context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-        val content = if (status == PackageInstaller.STATUS_SUCCESS) {
-            context.getString(R.string.installer_status_success)
-        } else {
-            AppInstaller.getErrorString(context, status)
-        }
-        val notification = NotificationUtil.getInstallNotification(
+        val notification = NotificationUtil.getInstallerStatusNotification(
             context,
-            App(packageName).apply {
-                if (status == PackageInstaller.STATUS_SUCCESS) {
-                    val appInfo = context.packageManager.getApplicationInfo(packageName, 0)
-                    displayName = context.packageManager.getApplicationLabel(appInfo).toString()
-                }
-            },
-            content
+            App(packageName),
+            AppInstaller.getErrorString(context, status)
         )
         notificationManager.notify(packageName.hashCode(), notification)
     }
 
     private fun promptUser(intent: Intent, context: Context) {
-        val confirmationIntent =
-            IntentCompat.getParcelableExtra(intent, Intent.EXTRA_INTENT, Intent::class.java)
-
-        confirmationIntent?.let {
+        IntentCompat.getParcelableExtra(intent, Intent.EXTRA_INTENT, Intent::class.java)?.let {
             it.putExtra(Intent.EXTRA_NOT_UNKNOWN_SOURCE, true)
             it.putExtra(Intent.EXTRA_INSTALLER_PACKAGE_NAME, "com.android.vending")
             it.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
@@ -152,9 +117,5 @@ class InstallReceiver : BroadcastReceiver() {
                 )
             }
         }
-    }
-
-    private fun inForeground(): Boolean {
-        return ProcessLifecycleOwner.get().lifecycle.currentState.isAtLeast(Lifecycle.State.CREATED)
     }
 }

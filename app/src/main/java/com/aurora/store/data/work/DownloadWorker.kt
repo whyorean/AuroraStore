@@ -3,24 +3,22 @@ package com.aurora.store.data.work
 import android.app.NotificationManager
 import android.app.Service
 import android.content.Context
-import android.content.Intent
 import android.content.pm.ServiceInfo.FOREGROUND_SERVICE_TYPE_DATA_SYNC
 import android.util.Log
 import androidx.hilt.work.HiltWorker
 import androidx.work.CoroutineWorker
 import androidx.work.ForegroundInfo
 import androidx.work.WorkerParameters
-import com.aurora.Constants
 import com.aurora.extensions.copyTo
 import com.aurora.extensions.isQAndAbove
 import com.aurora.extensions.requiresObbDir
 import com.aurora.gplayapi.helpers.PurchaseHelper
+import com.aurora.store.data.installer.AppInstaller
 import com.aurora.store.data.model.DownloadInfo
 import com.aurora.store.data.model.DownloadStatus
 import com.aurora.store.data.model.Request
 import com.aurora.store.data.network.HttpClient
 import com.aurora.store.data.providers.AuthProvider
-import com.aurora.store.data.receiver.InstallReceiver
 import com.aurora.store.data.room.download.Download
 import com.aurora.store.data.room.download.DownloadDao
 import com.aurora.store.util.DownloadWorkerUtil
@@ -143,15 +141,28 @@ class DownloadWorker @AssistedInject constructor(
         // Mark download as completed
         notifyStatus(DownloadStatus.COMPLETED)
         Log.i(TAG, "Finished downloading ${download.packageName}")
-
-        // Notify for installation
-        Intent(appContext, InstallReceiver::class.java).also {
-            it.action = InstallReceiver.ACTION_INSTALL_APP
-            it.putExtra(Constants.STRING_APP, download.packageName)
-            it.putExtra(Constants.STRING_VERSION, download.versionCode)
-            appContext.sendBroadcast(it)
-        }
+        onSuccess()
         return Result.success()
+    }
+
+    private suspend fun onSuccess() {
+        withContext(NonCancellable) {
+            try {
+                val downloadDir = PathUtil.getAppDownloadDir(
+                    appContext,
+                    download.packageName,
+                    download.versionCode
+                )
+                AppInstaller.getInstance(appContext)
+                    .getPreferredInstaller()
+                    .install(
+                        download.packageName,
+                        downloadDir.listFiles()!!.filter { it.path.endsWith(".apk") }
+                    )
+            } catch (exception: Exception) {
+                Log.e(TAG, "Failed to install ${download.packageName}", exception)
+            }
+        }
     }
 
     private suspend fun onFailure() {

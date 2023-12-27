@@ -135,7 +135,7 @@
         </provider>
 
         <receiver
-            android:name=".data.receiver.InstallReceiver"
+            android:name=".data.receiver.InstallerStatusReceiver"
             android:exported="false" />
     </application>
 </manifest>
