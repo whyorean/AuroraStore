@@ -98,7 +98,7 @@
     <string name="toast_manual_unavailable">Pyytämäsi versiokoodi ei ole saatavilla.</string>
     <string name="action_check">Tarkista</string>
     <string name="filter_review_critical">Kriittinen</string>
-    <string name="exodus_substring">seurantasovelluksia löytyi</string>
+    <string name="exodus_substring">tunnettu(a) seurantasovellus(ta) löydetty versiossa</string>
     <string name="exodus_progress">Tarkistetaan seurantasovelluksia…</string>
     <string name="exodus_powered">Voimanlähteenä Exodus</string>
     <string name="exodus_no_tracker">Ei sisällä tunnettuja seurantasovelluksia</string>
@@ -129,7 +129,7 @@
     <string name="details_changelog_unavailable">Muutoslokia ei tarjota</string>
     <string name="details_changelog">Muutosloki</string>
     <string name="details_beta_delay">Ilmoittautuminen voi viedä jonkin aikaa, voit tarkistaa tilan myöhemmin.</string>
-    <string name="details_beta_description">Näet uusia ominaisuuksia ja virheitä ennen kuin yleisö näkee. Anna palautetta kehittäjille, jotta he voivat kehittyä.</string>
+    <string name="details_beta_description">Näet uusia ominaisuuksia ja virheitä ennen muuta yleisöä. Anna palautetta kehittäjille, jotta he voivat kehittyä.</string>
     <string name="details_beta_available">Liity beetaohjelmaan ?</string>
     <string name="details_beta_subscribed">Olet beetatestaaja</string>
     <string name="details_beta">Beetaohjelmisto</string>
@@ -371,4 +371,5 @@
     <string name="pref_updates_auto_desc">Automaattisten päivitysten määrittäminen</string>
     <string name="action_uninstall_confirmation">Haluatko poistaa tämän sovelluksen?</string>
     <string name="pref_updates_auto_install">Tarkista ja asenna saatavilla olevat päivitykset automaattisesti</string>
+    <string name="pref_downloader_path_title">Latauskansio</string>
 </resources>
