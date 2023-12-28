@@ -30,6 +30,7 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        maven("https://gitlab.com/api/v4/projects/18497829/packages/maven")
         maven("https://jitpack.io/")
         maven("https://maven.google.com/")
     }
