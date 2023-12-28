@@ -30,13 +30,11 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.findNavController
 import com.aurora.extensions.isRAndAbove
 import com.aurora.extensions.toast
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
 import com.aurora.store.data.event.BusEvent
-import com.aurora.store.data.event.InstallerEvent
 import com.aurora.store.data.room.download.Download
 import com.aurora.store.databinding.FragmentUpdatesBinding
 import com.aurora.store.util.PathUtil
@@ -48,7 +46,6 @@ import com.aurora.store.view.epoxy.views.shimmer.AppListViewShimmerModel_
 import com.aurora.store.view.ui.commons.BaseFragment
 import com.aurora.store.viewmodel.all.UpdatesViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import java.io.File
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.launch
@@ -186,24 +183,6 @@ class UpdatesFragment : BaseFragment(R.layout.fragment_updates) {
                                 }
                                 .positiveAction { _ -> updateSingle(app) }
                                 .negativeAction { _ -> cancelSingle(app) }
-                                .installAction { _ ->
-                                    val files = File(
-                                        PathUtil.getAppDownloadDir(
-                                            requireContext(),
-                                            app.packageName,
-                                            app.versionCode
-                                        ).path
-                                    ).listFiles()
-
-                                    // Downloaded files are missing, trigger re-download
-                                    if (files.isNullOrEmpty()) {
-                                        updateSingle(app)
-                                        return@installAction
-                                    }
-
-                                    val apkFiles = files.filter { it.path.endsWith(".apk") }
-                                    viewModel.install(requireContext(), app.packageName, apkFiles)
-                                }
                         )
                     }
                 }

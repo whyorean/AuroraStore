@@ -52,7 +52,6 @@ import com.aurora.extensions.isRAndAbove
 import com.aurora.extensions.runOnUiThread
 import com.aurora.extensions.share
 import com.aurora.extensions.show
-import com.aurora.extensions.showDialog
 import com.aurora.extensions.toast
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.AuthData
@@ -96,7 +95,6 @@ import kotlinx.coroutines.launch
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
-import java.io.File
 import java.util.Locale
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.filter
@@ -438,31 +436,6 @@ class AppDetailsFragment : BaseFragment(R.layout.fragment_details) {
     }
 
     @Synchronized
-    private fun install() {
-        val files = File(
-            PathUtil.getAppDownloadDir(
-                requireContext(),
-                app.packageName,
-                app.versionCode
-            ).path
-        ).listFiles() ?: return
-
-        val apkFiles = files.filter { it.path.endsWith(".apk") }
-        val preferredInstaller =
-            Preferences.getInteger(requireContext(), Preferences.PREFERENCE_INSTALLER_ID)
-
-        if (apkFiles.size > 1 && preferredInstaller == 1) {
-            showDialog(R.string.title_installer, R.string.dialog_desc_native_split)
-        } else {
-            viewModel.install(requireContext(), app.packageName, apkFiles)
-
-            runOnUiThread {
-                binding.layoutDetailsInstall.btnDownload.setText(getString(R.string.action_installing))
-            }
-        }
-    }
-
-    @Synchronized
     private fun uninstallApp() {
         val installer = AppInstaller.getInstance(requireContext()).getPreferredInstaller()
 
@@ -554,29 +527,11 @@ class AppDetailsFragment : BaseFragment(R.layout.fragment_details) {
     }
 
     @Synchronized
-    private fun startDownload(forceDownload: Boolean = false) {
+    private fun startDownload() {
         when (downloadStatus) {
             DownloadStatus.DOWNLOADING -> {
                 flip(1)
                 toast("Already downloading")
-            }
-
-            DownloadStatus.COMPLETED -> {
-                if (forceDownload) {
-                    purchase()
-                    return
-                }
-
-                // Check if files are still present, else proceed to re-download the app
-                val files = File(
-                    PathUtil.getAppDownloadDir(
-                        requireContext(),
-                        app.packageName,
-                        app.versionCode
-                    ).path
-                ).listFiles()
-
-                if (files?.isNotEmpty() == true) install() else purchase()
             }
 
             else -> {
@@ -660,10 +615,6 @@ class AppDetailsFragment : BaseFragment(R.layout.fragment_details) {
                             ("$installedVersion ➔ ${app.versionName} (${app.versionCode})")
                         btn.setText(R.string.action_update)
                         btn.addOnClickListener { startDownload() }
-                        btn.addOnLongClickListener {
-                            startDownload(true)
-                            true
-                        }
                     } else {
                         binding.layoutDetailsApp.txtLine3.text = installedVersion
                         btn.setText(R.string.action_open)
@@ -688,15 +639,6 @@ class AppDetailsFragment : BaseFragment(R.layout.fragment_details) {
                             btn.setText(R.string.download_metadata)
                             startDownload()
                         }
-                    }
-                    btn.addOnLongClickListener {
-                        if (authData.isAnonymous && !app.isFree) {
-                            toast(R.string.toast_purchase_blocked)
-                        } else {
-                            btn.setText(R.string.download_metadata)
-                            startDownload(true)
-                        }
-                        true
                     }
                     if (uninstallActionEnabled) {
                         binding.layoutDetailsToolbar.toolbar.invalidateMenu()

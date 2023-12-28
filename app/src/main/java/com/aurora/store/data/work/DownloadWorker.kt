@@ -33,6 +33,8 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.withContext
 import java.io.File
 import java.net.URL
+import java.security.DigestInputStream
+import java.security.MessageDigest
 import kotlinx.coroutines.NonCancellable
 import kotlin.properties.Delegates
 import com.aurora.gplayapi.data.models.File as GPlayFile
@@ -191,27 +193,40 @@ class DownloadWorker @AssistedInject constructor(
                     PathUtil.getObbDownloadFile(download.packageName, it)
                 }
             }
-            downloadList.add(Request(it.url, filePath, it.size))
+            downloadList.add(Request(it.url, filePath, it.size, it.sha1, it.sha256))
         }
         return downloadList
     }
 
+    @OptIn(ExperimentalStdlibApi::class)
     private suspend fun downloadFile(request: Request): Result {
         return withContext(Dispatchers.IO) {
             val requestFile = File(request.filePath)
+
+            // If file exists, no need to download again
+            if (!shouldDownload(request)) {
+                Log.i(TAG, "$requestFile already exists")
+                return@withContext Result.success()
+            }
+
             try {
+                val algorithm = if (request.sha256.isBlank()) "SHA-1" else "SHA-256"
+                val messageDigest = MessageDigest.getInstance(algorithm)
+
                 requestFile.createNewFile()
-                URL(request.url).openStream().use { input ->
+                DigestInputStream(URL(request.url).openStream(), messageDigest).use { input ->
                     requestFile.outputStream().use {
                         input.copyTo(it, request.size).collectLatest { p -> onProgress(p) }
                     }
                 }
-                // Ensure downloaded file exists
-                if (!File(request.filePath).exists()) {
-                    Log.e(TAG, "Failed to find downloaded file at ${request.filePath}")
+
+                val sha = messageDigest.digest().toHexString()
+                if (!File(request.filePath).exists() || !(sha == request.sha1 || sha == request.sha256)) {
+                    Log.e(TAG, "$requestFile is either missing or corrupt")
                     notifyStatus(DownloadStatus.FAILED)
                     return@withContext Result.failure()
                 }
+
                 return@withContext Result.success()
             } catch (exception: Exception) {
                 Log.e(TAG, "Failed to download ${request.filePath}!", exception)
@@ -276,5 +291,27 @@ class DownloadWorker @AssistedInject constructor(
         val notification = NotificationUtil.getDownloadNotification(appContext, download, id)
         val notificationID = if (dID != -1) dID else download.packageName.hashCode()
         notificationManager.notify(notificationID, notification)
+    }
+
+    @OptIn(ExperimentalStdlibApi::class)
+    private suspend fun shouldDownload(request: Request): Boolean {
+        return withContext(Dispatchers.IO) {
+            val file = File(request.filePath)
+            if (file.exists()) {
+                val algorithm = if (request.sha256.isBlank()) "SHA-1" else "SHA-256"
+                val messageDigest = MessageDigest.getInstance(algorithm)
+                DigestInputStream(file.inputStream(), messageDigest).use { input ->
+                    val buffer = ByteArray(DEFAULT_BUFFER_SIZE)
+                    var read = input.read(buffer, 0, DEFAULT_BUFFER_SIZE)
+                    while (read > -1) {
+                        read = input.read(buffer, 0, DEFAULT_BUFFER_SIZE)
+                    }
+                }
+                val sha = messageDigest.digest().toHexString()
+                return@withContext !(sha == request.sha1 || sha == request.sha256)
+            } else {
+                return@withContext true
+            }
+        }
     }
 }

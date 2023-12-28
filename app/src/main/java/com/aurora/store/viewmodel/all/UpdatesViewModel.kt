@@ -20,15 +20,12 @@
 package com.aurora.store.viewmodel.all
 
 import android.app.Application
-import android.content.Context
 import android.util.Log
 import androidx.core.content.pm.PackageInfoCompat
 import androidx.lifecycle.viewModelScope
 import com.aurora.gplayapi.data.models.App
-import com.aurora.store.data.installer.AppInstaller
 import com.aurora.store.util.DownloadWorkerUtil
 import dagger.hilt.android.lifecycle.HiltViewModel
-import java.io.File
 import java.util.Locale
 import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
@@ -67,18 +64,6 @@ class UpdatesViewModel @Inject constructor(
             } catch (exception: Exception) {
                 Log.d(TAG, "Failed to get updates", exception)
             }
-        }
-    }
-
-    @Synchronized
-    fun install(context: Context, packageName: String, files: List<File>) {
-        try {
-            viewModelScope.launch(Dispatchers.IO) {
-                AppInstaller.getInstance(context).getPreferredInstaller()
-                    .install(packageName, files)
-            }
-        } catch (exception: Exception) {
-            Log.e(TAG, "Failed to install app", exception)
         }
     }
 

@@ -70,18 +70,6 @@
                 android:textAppearance="@style/TextAppearance.Aurora.Line1" />
         </RelativeLayout>
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_install"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/action_install"
-                android:textAppearance="@style/TextAppearance.Aurora.Line1" />
-        </RelativeLayout>
     </ViewFlipper>
 </RelativeLayout>
 

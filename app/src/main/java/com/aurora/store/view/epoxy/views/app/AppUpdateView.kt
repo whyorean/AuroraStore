@@ -44,9 +44,7 @@ import com.aurora.store.data.model.DownloadStatus
 import com.aurora.store.data.room.download.Download
 import com.aurora.store.databinding.ViewAppUpdateBinding
 import com.aurora.store.util.CommonUtil
-import com.aurora.store.util.PathUtil
 import com.aurora.store.view.epoxy.views.BaseView
-import java.io.File
 
 @ModelView(
     autoLayout = ModelView.Size.MATCH_WIDTH_WRAP_HEIGHT,
@@ -135,20 +133,6 @@ class AppUpdateView : RelativeLayout {
                         }
                     }
                 }
-                DownloadStatus.COMPLETED -> {
-                    B.progressDownload.invisible()
-
-                    // It is possible that while the app was downloaded in past, files have been removed
-                    // Check once again to reflect appropriate status
-                    val files = File(
-                        PathUtil.getAppDownloadDir(
-                            context,
-                            download.packageName,
-                            download.versionCode
-                        ).path
-                    ).listFiles()
-                    if (files.isNullOrEmpty()) B.btnAction.updateState(DownloadStatus.UNAVAILABLE)
-                }
                 else -> {
                     B.progressDownload.progress = 0
                     B.progressDownload.invisible()
@@ -170,11 +154,6 @@ class AppUpdateView : RelativeLayout {
     @CallbackProp
     fun negativeAction(onClickListener: OnClickListener?) {
         B.btnAction.addNegativeOnClickListener(onClickListener)
-    }
-
-    @CallbackProp
-    fun installAction(onClickListener: OnClickListener?) {
-        B.btnAction.addInstallOnClickListener(onClickListener)
     }
 
     @CallbackProp

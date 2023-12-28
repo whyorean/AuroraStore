@@ -25,7 +25,6 @@ import android.widget.RelativeLayout
 import com.aurora.extensions.getString
 import com.aurora.extensions.runOnUiThread
 import com.aurora.store.R
-import com.aurora.store.State
 import com.aurora.store.data.model.DownloadStatus
 import com.aurora.store.databinding.ViewUpdateButtonBinding
 
@@ -77,7 +76,6 @@ class UpdateButton : RelativeLayout {
         val displayChild = when (downloadStatus) {
             DownloadStatus.QUEUED,
             DownloadStatus.DOWNLOADING -> 2
-            DownloadStatus.COMPLETED -> 3
             else -> 0
         }
 
@@ -94,9 +92,5 @@ class UpdateButton : RelativeLayout {
 
     fun addNegativeOnClickListener(onClickListener: OnClickListener?) {
         B.btnNegative.setOnClickListener(onClickListener)
-    }
-
-    fun addInstallOnClickListener(onClickListener: OnClickListener?) {
-        B.btnInstall.setOnClickListener(onClickListener)
     }
 }

@@ -9,7 +9,6 @@ import com.aurora.gplayapi.data.models.Review
 import com.aurora.gplayapi.data.models.details.TestingProgramStatus
 import com.aurora.gplayapi.helpers.AppDetailsHelper
 import com.aurora.gplayapi.helpers.ReviewsHelper
-import com.aurora.store.data.installer.AppInstaller
 import com.aurora.store.data.model.ExodusReport
 import com.aurora.store.data.model.Report
 import com.aurora.store.data.network.HttpClient
@@ -17,7 +16,6 @@ import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.util.DownloadWorkerUtil
 import com.google.gson.GsonBuilder
 import dagger.hilt.android.lifecycle.HiltViewModel
-import java.io.File
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
@@ -144,18 +142,6 @@ class AppDetailsViewModel @Inject constructor(
 
     fun cancelDownload(app: App) {
         viewModelScope.launch { downloadWorkerUtil.cancelDownload(app.packageName) }
-    }
-
-    @Synchronized
-    fun install(context: Context, packageName: String, files: List<File>) {
-        try {
-            viewModelScope.launch(Dispatchers.IO) {
-                AppInstaller.getInstance(context).getPreferredInstaller()
-                    .install(packageName, files)
-            }
-        } catch (exception: Exception) {
-            Log.e(TAG, "Failed to install app", exception)
-        }
     }
 
     private fun parseResponse(response: String, packageName: String): List<Report> {
