@@ -369,7 +369,7 @@
     <string name="onboarding_permission_doze">Trasferimenti in background</string>
     <string name="toast_proxy_invalid">URL proxy non valido, controlla il formato!</string>
     <string name="pref_self_update_title">Auto-aggiornamento</string>
-    <string name="pref_aurora_only_desc">Mostra solo le app installate da Aurora Store in Aggiornamenti e app installate</string>
+    <string name="pref_aurora_only_desc">Mostra solamente le app installate da Aurora Store nella pagine degli Aggiornamenti e delle App Installate</string>
     <string name="onboarding_permission_doze_desc">Consenti ad Aurora Store di scaricare e aggiornare le app in background</string>
     <string name="pref_self_update_summary">Controlla e avvisa se è disponibile una nuova versione stabile di Aurora Store</string>
     <string name="pref_network_proxy_enable_desc">Permetti a tutti i dati di quest\'applicazione di passare tramite proxy</string>
