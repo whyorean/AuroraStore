@@ -59,7 +59,7 @@
     <string name="pref_app_download">Trasferimenti</string>
     <string name="onboarding_permission_installer_desc">Consenti l’installazione di app da Aurora Store</string>
     <string name="installer_status_failure_incompatible">Applicazione incompatibile</string>
-    <string name="details_think_this_app">Cosa ne pensi di questa applicazione\?</string>
+    <string name="details_think_this_app">Cosa pensi di questa applicazione?</string>
     <string name="details_more_about_app">Altre informazioni sull’app</string>
     <string name="action_info">Informazioni sull’app</string>
     <string name="action_get_local_apk">Salva pacchetto di app</string>
@@ -350,7 +350,7 @@
     <string name="amazon_appstore_desc">Amazon Appstore è un negozio digitale per piattaforme compatibili con Android, gestito da Amazon.</string>
     <string name="title_apps_sale_provider">Fornitore: bestappsales.com</string>
     <string name="details_no_apps_on_sale">Nessuna app trovata in vendita</string>
-    <string name="pref_downloader_path_title">Scarica il percorso</string>
+    <string name="pref_downloader_path_title">Percorso di scaricamento</string>
     <string name="pref_download_directory_error">Il percorso selezionato non è scrivibile</string>
     <string name="action_uninstall_confirmation">Vuoi disinstallare questa app\?</string>
     <string name="android_market_desc">Android Market è stato un negozio online che offriva applicazioni software progettate per dispositivi Android, discontinuato nel 2017.</string>
@@ -362,15 +362,24 @@
     <string name="title_app_settings">Impostazioni app</string>
     <string name="pref_updates_check_frequency">Frequenza per gli aggiornamenti automatici</string>
     <string name="toast_proxy_failed">È stato impossibile impostare il proxy</string>
-    <string name="pref_downloader_wifi_title">Scarica usando esclusivamente il WiFi</string>
-    <string name="pref_vending_version_device">Default (da configurazione dispositivo)</string>
+    <string name="pref_downloader_wifi_title">Scarica usando esclusivamente il Wi-Fi</string>
+    <string name="pref_vending_version_device">Predefinito (dalla configurazione dispositivo)</string>
     <string name="pref_vending_version_title">Versione Google Play</string>
-    <string name="pref_aurora_only">Solo apps di Aurora Store</string>
+    <string name="pref_aurora_only">Esclusivamente app da Aurora Store</string>
     <string name="onboarding_permission_doze">Trasferimenti in background</string>
     <string name="toast_proxy_invalid">URL proxy non valido, controlla il formato!</string>
     <string name="pref_self_update_title">Auto-aggiornamento</string>
-    <string name="pref_aurora_only_desc">Mostra solo le app installate da Aurora Store in Aggiornamenti e app installate</string>
+    <string name="pref_aurora_only_desc">Mostra solamente le app installate da Aurora Store nella pagine degli Aggiornamenti e delle App installate</string>
     <string name="onboarding_permission_doze_desc">Consenti ad Aurora Store di scaricare e aggiornare le app in background</string>
     <string name="pref_self_update_summary">Controlla e avvisa se è disponibile una nuova versione stabile di Aurora Store</string>
-    <string name="pref_network_proxy_enable_desc">Consenti a tutto il traffico dall\'app di passare attraverso il proxy</string>
+    <string name="pref_network_proxy_enable_desc">Permetti a tutti i dati di quest\'applicazione di passare tramite proxy</string>
+    <string name="device_doze_description">Si prega di disabilitare le ottimizzazioni della batteria per consentire le operazioni di sfondo.</string>
+    <string name="pref_updates_auto">Aggiorna le app automaticamente</string>
+    <string name="device_doze_title">Ottimizzazione della batteria rilevata!</string>
+    <string name="pref_updates_auto_notify">Controlla e segnala gli aggiornamenti disponibili</string>
+    <string name="pref_updates_auto_off">Non aggiornare le app automaticamente</string>
+    <string name="device_doze_extra">Opzionalmente è possibile scegliere di mantenere le ottimizzazioni abilitate, ma poi non sarà in grado di beneficiare degli scaricamenti di sfondo e aggiornamenti automatizzati, quindi la scelta è tua.</string>
+    <string name="device_doze_subtitle">Aurora Store non può installare scaricamenti o aggiornare applicazioni a causa delle ottimizzazioni della batteria.</string>
+    <string name="pref_updates_auto_desc">Configura il comportamento degli aggiornamenti automatici</string>
+    <string name="pref_updates_auto_install">Controlla e installa gli aggiornamenti disponibili automaticamente</string>
 </resources>
