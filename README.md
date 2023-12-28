@@ -24,7 +24,7 @@ with or without Google Play Services or MicroG.
 - Underlying API used is reversed engineered from PlayStore, changes on side may break it.
 - Provides only base minimum features
   - Can not download or update paid apps.
-  - Can not update apps/games with [Play Assset Delivery](https://developer.android.com/guide/playcore/asset-delivery)
+  - Can not update apps/games with [Play Asset Delivery](https://developer.android.com/guide/playcore/asset-delivery)
 - Multiple in-app features are not available if logged-in as Anonymous.
   - Library
   - Purchase History
