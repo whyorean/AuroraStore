@@ -349,7 +349,7 @@
     <string name="google_play_store_desc">Google Play, auch bekannt als Google Play Store (ehemals Android Market).</string>
     <string name="amazon_appstore_desc">Amazon Appstore ist ein von Amazon betriebener App-Store für Android-kompatible Plattformen.</string>
     <string name="android_market_desc">Android Market war ein Online-Store, der Softwareanwendungen für Android-Geräte anbot und 2017 eingestellt wurde.</string>
-    <string name="details_ratings_title_hint">Titel bewerten</string>
+    <string name="details_ratings_title_hint">Titel der Bewertung</string>
     <string name="action_uninstall_confirmation">Soll diese App deinstalliert werden\?</string>
     <string name="title_apps_sale_provider">Provider: bestappsales.com</string>
     <string name="details_no_apps_on_sale">Keine Apps im Angebot gefunden</string>
@@ -378,4 +378,8 @@
     <string name="device_doze_title">Akkuoptimierungen erkannt!</string>
     <string name="device_doze_extra">Optional kannst du die Optimierungen aktiviert lassen, jedoch können dann die Vorteile von Downloads im Hintergrund und automatischen Updates nicht genutzt werden – du hast also die Wahl.</string>
     <string name="device_doze_subtitle">Aurora Store kann aufgrund von Akkuoptimierungen keine Apps im Hintergrund herunterladen oder aktualisieren.</string>
+    <string name="pref_updates_auto">Anwendungen automatisch aktualisieren</string>
+    <string name="pref_updates_auto_notify">Verfügbare Updates überprüfen und benachrichtigen</string>
+    <string name="pref_updates_auto_off">Anwendungen nicht automatisch aktualisieren</string>
+    <string name="pref_updates_auto_install">Verfügbare Updates automatisch überprüfen</string>
 </resources>
