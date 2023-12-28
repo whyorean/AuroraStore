@@ -372,7 +372,7 @@
     <string name="pref_aurora_only_desc">Mostra solo le app installate da Aurora Store in Aggiornamenti e app installate</string>
     <string name="onboarding_permission_doze_desc">Consenti ad Aurora Store di scaricare e aggiornare le app in background</string>
     <string name="pref_self_update_summary">Controlla e avvisa se è disponibile una nuova versione stabile di Aurora Store</string>
-    <string name="pref_network_proxy_enable_desc">Consenti a tutto il traffico dall\'app di passare attraverso il proxy</string>
+    <string name="pref_network_proxy_enable_desc">Permetti a tutti i dati di quest\'applicazione di passare tramite proxy</string>
     <string name="device_doze_description">Si prega di disabilitare le ottimizzazioni della batteria per consentire le operazioni di sfondo.</string>
     <string name="pref_updates_auto">Aggiorna le app automaticamente</string>
     <string name="device_doze_title">Ottimizzazione della batteria rilevata!</string>
