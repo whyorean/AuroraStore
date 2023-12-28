@@ -365,7 +365,7 @@
     <string name="pref_downloader_wifi_title">Scarica usando esclusivamente il Wi-Fi</string>
     <string name="pref_vending_version_device">Predefinito (dalla configurazione dispositivo)</string>
     <string name="pref_vending_version_title">Versione Google Play</string>
-    <string name="pref_aurora_only">Solo apps di Aurora Store</string>
+    <string name="pref_aurora_only">Esclusivamente app da Aurora Store</string>
     <string name="onboarding_permission_doze">Trasferimenti in background</string>
     <string name="toast_proxy_invalid">URL proxy non valido, controlla il formato!</string>
     <string name="pref_self_update_title">Auto-aggiornamento</string>
