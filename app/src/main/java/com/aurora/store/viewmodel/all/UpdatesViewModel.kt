@@ -24,6 +24,7 @@ import android.util.Log
 import androidx.core.content.pm.PackageInfoCompat
 import androidx.lifecycle.viewModelScope
 import com.aurora.gplayapi.data.models.App
+import com.aurora.store.util.CertUtil
 import com.aurora.store.util.DownloadWorkerUtil
 import dagger.hilt.android.lifecycle.HiltViewModel
 import java.util.Locale
@@ -57,6 +58,13 @@ class UpdatesViewModel @Inject constructor(
                         it.versionCode.toLong() > PackageInfoCompat.getLongVersionCode(packageInfo)
                     } else {
                         false
+                    }
+                }.filter { app ->
+                    app.certificateSetList.any {
+                        it.certificateSet in CertUtil.getEncodedCertificateHashes(
+                            getApplication(),
+                            app.packageName
+                        )
                     }
                 }.sortedBy { it.displayName.lowercase(Locale.getDefault()) }.also { apps ->
                     _updates.emit(apps)

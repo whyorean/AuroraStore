@@ -12,6 +12,7 @@ import androidx.work.CoroutineWorker
 import androidx.work.ForegroundInfo
 import androidx.work.WorkerParameters
 import com.aurora.extensions.copyTo
+import com.aurora.extensions.isPAndAbove
 import com.aurora.extensions.isQAndAbove
 import com.aurora.extensions.requiresObbDir
 import com.aurora.gplayapi.helpers.PurchaseHelper
@@ -23,6 +24,7 @@ import com.aurora.store.data.network.HttpClient
 import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.data.room.download.Download
 import com.aurora.store.data.room.download.DownloadDao
+import com.aurora.store.util.CertUtil
 import com.aurora.store.util.DownloadWorkerUtil
 import com.aurora.store.util.NotificationUtil
 import com.aurora.store.util.PathUtil
@@ -52,6 +54,7 @@ class DownloadWorker @AssistedInject constructor(
     private lateinit var download: Download
     private lateinit var notificationManager: NotificationManager
     private lateinit var icon: Bitmap
+    private lateinit var purchaseHelper: PurchaseHelper
 
     private val NOTIFICATION_ID = 200
 
@@ -80,7 +83,7 @@ class DownloadWorker @AssistedInject constructor(
 
         // Purchase the app (free apps needs to be purchased too)
         val authData = AuthProvider.with(appContext).getAuthData()
-        val purchaseHelper = PurchaseHelper(authData)
+        purchaseHelper = PurchaseHelper(authData)
             .using(HttpClient.getPreferredClient(appContext))
 
         notificationManager =
@@ -88,7 +91,7 @@ class DownloadWorker @AssistedInject constructor(
 
         // Bail out if file list is empty
         download.fileList = download.fileList.ifEmpty {
-            purchaseHelper.purchase(download.packageName, download.versionCode, download.offerType)
+            purchase(download.packageName, download.versionCode, download.offerType)
         }
         if (download.fileList.isEmpty()) {
             Log.i(TAG, "Nothing to download!")
@@ -112,9 +115,7 @@ class DownloadWorker @AssistedInject constructor(
                     download.versionCode,
                     it.packageName
                 ).mkdirs()
-                it.fileList = it.fileList.ifEmpty {
-                    purchaseHelper.purchase(it.packageName, it.versionCode, 0)
-                }
+                it.fileList = it.fileList.ifEmpty { purchase(it.packageName, it.versionCode, 0) }
                 requestList.addAll(getDownloadRequest(it.fileList, it.packageName))
             }
         }
@@ -182,6 +183,20 @@ class DownloadWorker @AssistedInject constructor(
             with(appContext.getSystemService(Service.NOTIFICATION_SERVICE) as NotificationManager) {
                 cancel(NOTIFICATION_ID)
             }
+        }
+    }
+
+    private fun purchase(packageName: String, versionCode: Int, offerType: Int): List<GPlayFile> {
+        // Android 9.0+ supports key rotation, so purchase with latest certificate's hash
+        return if (isPAndAbove() && download.isInstalled) {
+            purchaseHelper.purchase(
+                packageName,
+                versionCode,
+                offerType,
+                CertUtil.getEncodedCertificateHashes(appContext, download.packageName).last()
+            )
+        } else {
+            purchaseHelper.purchase(packageName, versionCode, offerType)
         }
     }
 

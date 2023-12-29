@@ -20,73 +20,69 @@
 package com.aurora.store.util
 
 import android.content.Context
+import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
+import android.util.Base64
+import android.util.Log
+import com.aurora.extensions.generateX509Certificate
 import com.aurora.extensions.isPAndAbove
 import com.aurora.store.util.PackageUtil.getPackageInfo
-import java.io.ByteArrayInputStream
-import java.io.InputStream
-import java.security.cert.CertificateFactory
+import java.security.MessageDigest
 import java.security.cert.X509Certificate
 import java.util.Locale
 
 object CertUtil {
-    private const val FDROID = "FDROID"
-    private const val GUARDIAN = "GUARDIANPROJECT.INFO"
 
-    private fun getX509Certificates(
-        context: Context,
-        packageName: String
-    ): List<X509Certificate> {
-        val certificates: MutableList<X509Certificate> = mutableListOf()
-
-        try {
-
-            val packageInfo = if (isPAndAbove()) {
-                getPackageInfo(context, packageName, PackageManager.GET_SIGNING_CERTIFICATES)
-            } else {
-                getPackageInfo(context, packageName, PackageManager.GET_SIGNATURES)
-            }
-
-            val certificateFactory = CertificateFactory.getInstance("X509")
-
-            if (isPAndAbove()) {
-                packageInfo.signingInfo.apkContentsSigners.forEach {
-                    val bytes = it.toByteArray()
-                    val inputStream: InputStream = ByteArrayInputStream(bytes)
-                    certificates.add(
-                        certificateFactory!!.generateCertificate(inputStream) as X509Certificate
-                    )
-                }
-            } else {
-                for (i in packageInfo.signatures.indices) {
-                    val bytes = packageInfo.signatures[i].toByteArray()
-                    val inStream: InputStream = ByteArrayInputStream(bytes)
-                    certificates.add(
-                        certificateFactory!!.generateCertificate(inStream) as X509Certificate
-                    )
-                }
-            }
-        } catch (e: Exception) {
-
-        }
-
-        return certificates
-    }
+    private val TAG = "CertUtil"
+    private val fdroidSubjects = listOf("FDROID", "GUARDIANPROJECT.INFO")
 
     fun isFDroidApp(context: Context, packageName: String): Boolean {
-        val certificates = getX509Certificates(context, packageName)
+        return getX509Certificates(
+            context,
+            packageName
+        ).any { it.subjectDN.name.uppercase(Locale.getDefault()) in fdroidSubjects }
+    }
 
-        return if (certificates.isEmpty())
-            false
-        else {
-            val cert = certificates[0]
-
-            if (cert.subjectDN != null) {
-                val DN = cert.subjectDN.name.uppercase(Locale.getDefault())
-                DN.contains(FDROID) || DN.contains(GUARDIAN)
-            } else {
-                false
+    fun getEncodedCertificateHashes(context: Context, packageName: String): List<String> {
+        return try {
+            val certificates = getX509Certificates(context, packageName)
+            certificates.map {
+                val messageDigest = MessageDigest.getInstance("SHA")
+                messageDigest.update(it.encoded)
+                Base64.encodeToString(
+                    messageDigest.digest(),
+                    Base64.URL_SAFE or Base64.NO_PADDING or Base64.NO_WRAP
+                )
             }
+        } catch (exception: Exception) {
+            Log.e(TAG, "Failed to get SHA256 certificate hash", exception)
+            emptyList()
+        }
+    }
+
+    private fun getX509Certificates(context: Context, packageName: String): List<X509Certificate> {
+        return try {
+            val packageInfo = getPackageInfoWithSignature(context, packageName)
+            if (isPAndAbove()) {
+                if (packageInfo.signingInfo.hasMultipleSigners()) {
+                    packageInfo.signingInfo.apkContentsSigners.map { it.generateX509Certificate() }
+                } else {
+                    packageInfo.signingInfo.signingCertificateHistory.map { it.generateX509Certificate() }
+                }
+            } else {
+                packageInfo.signatures.map { it.generateX509Certificate() }
+            }
+        } catch (exception: Exception) {
+            Log.e(TAG, "Failed to get X509 certificates", exception)
+            emptyList()
+        }
+    }
+
+    private fun getPackageInfoWithSignature(context: Context, packageName: String): PackageInfo {
+        return if (isPAndAbove()) {
+            getPackageInfo(context, packageName, PackageManager.GET_SIGNING_CERTIFICATES)
+        } else {
+            getPackageInfo(context, packageName, PackageManager.GET_SIGNATURES)
         }
     }
 }

@@ -28,6 +28,7 @@ import com.aurora.store.R
 import com.aurora.store.data.network.HttpClient
 import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.data.providers.BlacklistProvider
+import com.aurora.store.util.CertUtil
 import com.aurora.store.util.DownloadWorkerUtil
 import com.aurora.store.util.Log
 import com.aurora.store.util.PackageUtil
@@ -150,6 +151,13 @@ class UpdateWorker @AssistedInject constructor(
                         it.versionCode.toLong() > PackageInfoCompat.getLongVersionCode(packageInfo)
                     } else {
                         false
+                    }
+                }.filter { app ->
+                    app.certificateSetList.any {
+                        it.certificateSet in CertUtil.getEncodedCertificateHashes(
+                            appContext,
+                            app.packageName
+                        )
                     }
                 }
 
