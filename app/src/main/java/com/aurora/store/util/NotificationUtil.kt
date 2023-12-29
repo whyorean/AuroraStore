@@ -7,6 +7,7 @@ import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
+import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.os.Build
@@ -86,20 +87,14 @@ object NotificationUtil {
     fun getDownloadNotification(
         context: Context,
         download: AuroraDownload,
-        workID: UUID
+        workID: UUID,
+        largeIcon: Bitmap? = null
     ): Notification {
         val builder = NotificationCompat.Builder(context, Constants.NOTIFICATION_CHANNEL_GENERAL)
         builder.setContentTitle(download.displayName)
         builder.color = ContextCompat.getColor(context, R.color.colorAccent)
         builder.setContentIntent(getContentIntentForDownloads(context))
-
-        // Set big icon for download
-        try {
-            val bitmap = BitmapFactory.decodeStream(URL(download.iconURL).openStream())
-            builder.setLargeIcon(bitmap)
-        } catch (exception: Exception) {
-            Log.i(TAG, "Failed to set big icon", exception)
-        }
+        builder.setLargeIcon(largeIcon)
 
         when (download.status) {
             DownloadStatus.CANCELLED -> {
@@ -166,10 +161,10 @@ object NotificationUtil {
     fun getInstallNotification(context: Context, download: AuroraDownload): Notification {
         val builder = NotificationCompat.Builder(context, Constants.NOTIFICATION_CHANNEL_ALERT)
 
-        // Set big icon for download
+        // Set scaled big icon for download
         try {
             val bitmap = BitmapFactory.decodeStream(URL(download.iconURL).openStream())
-            builder.setLargeIcon(bitmap)
+            builder.setLargeIcon(Bitmap.createScaledBitmap(bitmap, 96, 96, true))
         } catch (exception: Exception) {
             Log.i(TAG, "Failed to set big icon", exception)
         }

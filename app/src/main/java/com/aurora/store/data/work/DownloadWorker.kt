@@ -4,6 +4,8 @@ import android.app.NotificationManager
 import android.app.Service
 import android.content.Context
 import android.content.pm.ServiceInfo.FOREGROUND_SERVICE_TYPE_DATA_SYNC
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.util.Log
 import androidx.hilt.work.HiltWorker
 import androidx.work.CoroutineWorker
@@ -49,10 +51,11 @@ class DownloadWorker @AssistedInject constructor(
 
     private lateinit var download: Download
     private lateinit var notificationManager: NotificationManager
-    private var downloading = false
+    private lateinit var icon: Bitmap
 
     private val NOTIFICATION_ID = 200
 
+    private var downloading = false
     private var totalBytes by Delegates.notNull<Long>()
     private var totalProgress = 0
     private var downloadedBytes = 0L
@@ -64,6 +67,9 @@ class DownloadWorker @AssistedInject constructor(
         try {
             val downloadData = inputData.getString(DownloadWorkerUtil.DOWNLOAD_DATA)
             download = gson.fromJson(downloadData, Download::class.java)
+
+            val bitmap = BitmapFactory.decodeStream(URL(download.iconURL).openStream())
+            icon = Bitmap.createScaledBitmap(bitmap, 96, 96, true)
         } catch (exception: Exception) {
             Log.e(TAG, "Failed to parse download data", exception)
             return Result.failure()
@@ -267,7 +273,7 @@ class DownloadWorker @AssistedInject constructor(
 
     override suspend fun getForegroundInfo(): ForegroundInfo {
         val notification = if (this::download.isInitialized) {
-            NotificationUtil.getDownloadNotification(appContext, download, id)
+            NotificationUtil.getDownloadNotification(appContext, download, id, icon)
         } else {
             NotificationUtil.getDownloadNotification(appContext)
         }
@@ -288,7 +294,7 @@ class DownloadWorker @AssistedInject constructor(
             downloadDao.update(download)
         }
 
-        val notification = NotificationUtil.getDownloadNotification(appContext, download, id)
+        val notification = NotificationUtil.getDownloadNotification(appContext, download, id, icon)
         val notificationID = if (dID != -1) dID else download.packageName.hashCode()
         notificationManager.notify(notificationID, notification)
     }
