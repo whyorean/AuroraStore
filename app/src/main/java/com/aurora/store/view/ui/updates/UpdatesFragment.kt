@@ -35,6 +35,7 @@ import com.aurora.extensions.toast
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
 import com.aurora.store.data.event.BusEvent
+import com.aurora.store.data.model.DownloadStatus
 import com.aurora.store.data.room.download.Download
 import com.aurora.store.databinding.FragmentUpdatesBinding
 import com.aurora.store.util.PathUtil
@@ -91,9 +92,10 @@ class UpdatesFragment : BaseFragment(R.layout.fragment_updates) {
                 uList?.associateWith { a ->
                     dList.find { it.packageName == a.packageName && it.versionCode == a.versionCode }
                 }
-            }.collectLatest {
-                updateController(it)
+            }.collectLatest { map ->
+                updateController(map)
                 binding.swipeRefreshLayout.isRefreshing = false
+                viewModel.updateAllEnqueued = map?.values?.all { it?.isFinished != true } ?: false
             }
         }
 
