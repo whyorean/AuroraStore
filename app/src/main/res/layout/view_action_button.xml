@@ -53,18 +53,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <com.aurora.store.view.custom.progress.AuroraProgressView
-                android:id="@+id/progress"
-                android:layout_width="@dimen/icon_size_small"
-                android:layout_height="@dimen/icon_size_small"
-                android:layout_centerInParent="true"
-                tools:indicatorColor="@color/colorAccent" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/img"
                 android:layout_width="wrap_content"
