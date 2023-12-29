@@ -377,4 +377,9 @@
     <string name="device_doze_title">ਬੈਟਰੀ ਓਪਟੀਮਾਈਜੇਸ਼ਨ ਦਾ ਪਤਾ ਲਗਾਇਆ ਗਿਆ!</string>
     <string name="device_doze_extra">ਵਿਕਲਪਿਕ ਤੌਰ \'ਤੇ ਤੁਸੀਂ ਆਪਟੀਮਾਈਜ਼ੇਸ਼ਨਾਂ ਨੂੰ ਸਮਰੱਥ ਰੱਖਣ ਦੀ ਚੋਣ ਕਰ ਸਕਦੇ ਹੋ, ਪਰ ਫਿਰ ਤੁਸੀਂ ਬੈਕਗ੍ਰਾਉਂਡ ਡਾਉਨਲੋਡਸ ਅਤੇ ਸਵੈਚਲਿਤ ਅਪਡੇਟਾਂ ਦਾ ਲਾਭ ਲੈਣ ਦੇ ਯੋਗ ਨਹੀਂ ਹੋਵੋਗੇ, ਇਸ ਲਈ ਚੋਣ ਤੁਹਾਡੀ ਹੈ।</string>
     <string name="device_doze_subtitle">ਔਰੋਰਾ ਸਟੋਰ ਬੈਟਰੀ ਓਪਟੀਮਾਈਜੇਸ਼ਨ ਦੇ ਕਾਰਨ ਬੈਕਗ੍ਰਾਊਂਡ ਵਿੱਚ ਐਪਸ ਨੂੰ ਡਾਊਨਲੋਡ ਜਾਂ ਅੱਪਡੇਟ ਨਹੀਂ ਕਰ ਸਕਦਾ ਹੈ।</string>
+    <string name="pref_updates_auto">ਐਪਾਂ ਆਟੋ ਅੱਪਡੇਟ ਕਰੋ</string>
+    <string name="pref_updates_auto_notify">ਉਪਲਬਧ ਅੱਪਡੇਟਾਂ ਲਈ ਜਾਂਚਕੇ ਸੂਚਿਤ ਕਰੋ</string>
+    <string name="pref_updates_auto_off">ਐਪਾਂ ਨੂੰ ਆਟੋ-ਅੱਪਡੇਟ ਨਾ ਕਰੋ</string>
+    <string name="pref_updates_auto_desc">ਆਟੋ-ਅੱਪਡੇਟ ਵਿਵਹਾਰ ਨੂੰ ਕੌਨਫਿਗਰ ਕਰੋ</string>
+    <string name="pref_updates_auto_install">ਉਪਲਬਧ ਅੱਪਡੇਟਾਂ ਨੂੰ ਸਵੈਚਲਿਤ ਤੌਰ \'ਤੇ ਚੈੱਕ ਕਰੋ ਅਤੇ ਇੰਸਟਾਲ ਕਰੋ</string>
 </resources>
