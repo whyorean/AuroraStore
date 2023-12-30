@@ -38,7 +38,7 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn"
-                style="@style/Widget.MaterialComponents.Button.TextButton.Dialog.Flush"
+                style="@style/Widget.Material3.Button.TextButton.Dialog.Flush"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_centerHorizontal="true"

@@ -25,7 +25,7 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn"
-        style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
+        style="@style/Widget.Material3.Button.OutlinedButton.Icon"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"

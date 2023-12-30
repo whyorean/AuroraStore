@@ -103,7 +103,7 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_secondary"
-            style="@style/Widget.MaterialComponents.Button.TextButton.Dialog.Flush"
+            style="@style/Widget.Material3.Button.TextButton.Dialog.Flush"
             android:layout_width="0dp"
             android:layout_height="@dimen/height_button"
             android:layout_weight="1"
@@ -111,7 +111,7 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_primary"
-            style="@style/Widget.MaterialComponents.Button.TextButton.Dialog.Flush"
+            style="@style/Widget.Material3.Button.TextButton.Dialog.Flush"
             android:layout_width="0dp"
             android:layout_height="@dimen/height_button"
             android:layout_weight="1"

@@ -142,7 +142,7 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_positive"
-            style="@style/Widget.MaterialComponents.Button.TextButton"
+            style="@style/Widget.Material3.Button.TextButton"
             android:layout_width="0dp"
             android:layout_height="@dimen/height_button"
             android:text="@string/action_filter_apply"
@@ -154,7 +154,7 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_negative"
-            style="@style/Widget.MaterialComponents.Button.TextButton"
+            style="@style/Widget.Material3.Button.TextButton"
             android:layout_width="0dp"
             android:layout_height="@dimen/height_button"
             android:text="@string/action_close"
