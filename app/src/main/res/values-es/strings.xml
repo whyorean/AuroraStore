@@ -377,4 +377,9 @@
     <string name="device_doze_title">¡Se detectaron optimizaciones de la batería!</string>
     <string name="device_doze_extra">Puede elegir a mantener activada las optimizaciones, pero no disfrutará descargas de segundo plano y actualizas automática. La elección es suya.</string>
     <string name="device_doze_subtitle">Aurora Store no puede instalar, descargar o actualizar las apps en segundo plano por las optimizaciones de batería.</string>
+    <string name="pref_updates_auto">Actualización automática de las aplicaciones</string>
+    <string name="pref_updates_auto_notify">Comprobación y notificación de actualizaciones disponibles</string>
+    <string name="pref_updates_auto_off">No actualizar automáticamente las aplicaciones</string>
+    <string name="pref_updates_auto_desc">Configurar el comportamiento de las actualizaciones automáticas</string>
+    <string name="pref_updates_auto_install">Compruebe e instale automáticamente las actualizaciones disponibles</string>
 </resources>
