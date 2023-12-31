@@ -55,11 +55,8 @@ class AuroraApplication : Application(), Configuration.Provider {
     override fun onCreate() {
         super.onCreate()
 
-        // TODO: Only exempt required APIs
         // Required for Shizuku installer
-        if (isPAndAbove()) {
-            HiddenApiBypass.addHiddenApiExemptions("")
-        }
+        if (isPAndAbove()) HiddenApiBypass.addHiddenApiExemptions("I", "L")
 
         // Initialize DownloadWorker to observe and trigger downloads
         downloadWorkerUtil.init()
