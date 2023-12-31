@@ -18,6 +18,8 @@
   -->
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginStart="@dimen/margin_normal"
@@ -34,12 +36,21 @@
         android:textColor="?android:attr/textColorPrimary"
         android:textStyle="bold" />
 
-    <ProgressBar
+    <com.google.android.material.progressindicator.LinearProgressIndicator
         android:id="@+id/avg_rating"
-        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
         android:layout_width="match_parent"
-        android:layout_height="8dp"
+        android:layout_height="match_parent"
         android:layout_centerVertical="true"
         android:layout_toEndOf="@+id/avg_num"
-        android:progressDrawable="@drawable/bg_progressbar" />
+        android:indeterminate="false"
+        app:indicatorColor="@color/colorAccent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:trackColor="@android:color/darker_gray"
+        app:trackCornerRadius="10dp"
+        app:trackThickness="8dp"
+        tools:progress="40" />
+
 </RelativeLayout>

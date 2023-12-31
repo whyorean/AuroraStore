@@ -249,7 +249,9 @@ class AppDetailsFragment : BaseFragment(R.layout.fragment_details) {
 
                         if (it.isFinished) flip(0) else flip(1)
                         when (it.status) {
-                            DownloadStatus.QUEUED,
+                            DownloadStatus.QUEUED -> {
+                                updateProgress(it.progress)
+                            }
                             DownloadStatus.DOWNLOADING -> {
                                 updateProgress(it.progress, it.speed, it.timeRemaining)
                             }
@@ -580,13 +582,10 @@ class AppDetailsFragment : BaseFragment(R.layout.fragment_details) {
 
             binding.layoutDetailsInstall.apply {
                 txtProgressPercent.text = ("${progress}%")
-
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                    progressDownload.setProgress(progress, true)
-                } else {
-                    progressDownload.progress = progress
+                progressDownload.apply {
+                    this.progress = progress
+                    isIndeterminate = progress < 1
                 }
-
                 txtEta.text = CommonUtil.getETAString(requireContext(), timeRemaining)
                 txtSpeed.text = CommonUtil.getDownloadSpeedString(requireContext(), speed)
             }

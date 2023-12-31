@@ -60,15 +60,22 @@
             android:gravity="center_vertical"
             android:weightSum="4">
 
-            <ProgressBar
+            <com.google.android.material.progressindicator.LinearProgressIndicator
                 android:id="@+id/progress_download"
-                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/icon_size_small"
+                android:layout_height="match_parent"
                 android:layout_centerVertical="true"
                 android:layout_toStartOf="@id/img_cancel"
-                android:indeterminateTint="@color/colorScrim"
-                android:progressDrawable="@drawable/progressbar_bg"
+                android:indeterminate="true"
+                android:indeterminateTint="@color/colorScrimAlt"
+                app:indicatorColor="@color/colorScrimAlt"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:trackColor="@color/colorScrim"
+                app:trackCornerRadius="10dp"
+                app:trackThickness="@dimen/icon_size_small"
                 tools:progress="40" />
 
             <LinearLayout

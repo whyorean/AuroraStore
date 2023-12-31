@@ -52,14 +52,15 @@
 
                 <com.google.android.material.progressindicator.CircularProgressIndicator
                     android:id="@+id/progress_download"
-                    style="@style/Widget.Material3.CircularProgressIndicator"
-                    android:layout_width="@dimen/icon_size_medium"
-                    android:layout_height="@dimen/icon_size_medium"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_centerInParent="true"
-                    android:background="@drawable/progressbar_bg"
-                    android:indeterminate="false"
-                    android:visibility="invisible"
-                    app:trackThickness="24dp"
+                    android:indeterminate="true"
+                    android:indeterminateTint="@color/colorScrimAlt"
+                    android:visibility="gone"
+                    app:indicatorColor="@color/colorScrimAlt"
+                    app:trackColor="@color/colorScrim"
+                    app:trackThickness="@dimen/icon_size_default"
                     tools:progress="40" />
             </RelativeLayout>
 
