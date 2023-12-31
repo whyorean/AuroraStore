@@ -28,7 +28,6 @@ import com.aurora.extensions.isPAndAbove
 import com.aurora.store.data.receiver.PackageManagerReceiver
 import com.aurora.store.util.CommonUtil
 import com.aurora.store.util.DownloadWorkerUtil
-import com.aurora.store.util.NotificationUtil
 import com.aurora.store.util.PackageUtil
 import dagger.hilt.android.HiltAndroidApp
 import javax.inject.Inject
@@ -61,9 +60,6 @@ class AuroraApplication : Application(), Configuration.Provider {
         if (isPAndAbove()) {
             HiddenApiBypass.addHiddenApiExemptions("")
         }
-
-        //Create Notification Channels : General & Alert
-        NotificationUtil.createNotificationChannel(this)
 
         // Initialize DownloadWorker to observe and trigger downloads
         downloadWorkerUtil.init()
