@@ -10,10 +10,13 @@ import android.util.Log
 import androidx.hilt.work.HiltWorker
 import androidx.work.CoroutineWorker
 import androidx.work.ForegroundInfo
+import androidx.work.WorkInfo.Companion.STOP_REASON_CANCELLED_BY_APP
+import androidx.work.WorkInfo.Companion.STOP_REASON_USER
 import androidx.work.WorkerParameters
 import com.aurora.extensions.copyTo
 import com.aurora.extensions.isPAndAbove
 import com.aurora.extensions.isQAndAbove
+import com.aurora.extensions.isSAndAbove
 import com.aurora.extensions.requiresObbDir
 import com.aurora.gplayapi.helpers.PurchaseHelper
 import com.aurora.store.data.installer.AppInstaller
@@ -177,7 +180,14 @@ class DownloadWorker @AssistedInject constructor(
     private suspend fun onFailure() {
         withContext(NonCancellable) {
             Log.i(TAG, "Cleaning up!")
-            notifyStatus(DownloadStatus.FAILED)
+            val cancelReasons = listOf(STOP_REASON_USER, STOP_REASON_CANCELLED_BY_APP)
+            val status = if (isSAndAbove() && stopReason in cancelReasons) {
+                DownloadStatus.CANCELLED
+            } else {
+                DownloadStatus.FAILED
+            }
+
+            notifyStatus(status)
             PathUtil.getAppDownloadDir(appContext, download.packageName, download.versionCode)
                 .deleteRecursively()
             with(appContext.getSystemService(Service.NOTIFICATION_SERVICE) as NotificationManager) {
@@ -308,6 +318,8 @@ class DownloadWorker @AssistedInject constructor(
             }
             downloadDao.update(download)
         }
+
+        if (status == DownloadStatus.CANCELLED) return
 
         val notification = NotificationUtil.getDownloadNotification(appContext, download, id, icon)
         val notificationID = if (dID != -1) dID else download.packageName.hashCode()
