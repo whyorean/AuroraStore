@@ -162,7 +162,7 @@ class UpdateWorker @AssistedInject constructor(
                 }
 
                 if (updatesList.isNotEmpty()) {
-                    if (autoUpdatesMode == 2) {
+                    if (autoUpdatesMode == 1) {
                         Log.i("Found updates, notifying!")
                         val notifyManager = appContext.getSystemService(Context.NOTIFICATION_SERVICE)
                                 as NotificationManager
