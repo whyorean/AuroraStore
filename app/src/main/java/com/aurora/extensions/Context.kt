@@ -32,10 +32,8 @@ import android.os.PowerManager
 import android.util.DisplayMetrics
 import android.util.TypedValue
 import android.view.LayoutInflater
-import androidx.appcompat.app.AppCompatActivity
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.core.app.ActivityOptionsCompat
-import androidx.core.app.ShareCompat
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toBitmap
 import com.aurora.Constants
@@ -79,14 +77,15 @@ fun Context.browse(url: String, showOpenInAuroraAction: Boolean = false) {
 
 fun Context.share(app: App) {
     try {
-        ShareCompat.IntentBuilder(this as AppCompatActivity)
-            .setType("text/plain")
-            .setChooserTitle(getString(R.string.action_share))
-            .setSubject(app.displayName)
-            .setText(Constants.SHARE_URL + app.packageName)
-            .startChooser()
-    } catch (e: Exception) {
-
+        val sendIntent = Intent().apply {
+            action = Intent.ACTION_SEND
+            putExtra(Intent.EXTRA_SUBJECT, app.displayName)
+            putExtra(Intent.EXTRA_TEXT, "${Constants.SHARE_URL}${app.packageName}")
+            type = "text/plain"
+        }
+        startActivity(Intent.createChooser(sendIntent, getString(R.string.action_share)))
+    } catch (exception: Exception) {
+        Log.e("Failed to share app", exception)
     }
 }
 
