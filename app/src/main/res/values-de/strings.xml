@@ -357,7 +357,7 @@
     <string name="pref_download_directory_error">Gewähltes Verzeichnis ist schreibgeschützt</string>
     <string name="title_app_settings">App-Einstellungen</string>
     <string name="pref_downloader_wifi_title">Download nur über WLAN</string>
-    <string name="pref_updates_check_frequency_desc">Intervall für automatische Updates (in Stunden) festlegen</string>
+    <string name="pref_updates_check_frequency_desc">Intervall für die Suche nach Updates (in Stunden) festlegen</string>
     <string name="pref_aurora_only">Nur Aurora-Store-Apps</string>
     <string name="pref_aurora_only_desc">Nur durch Aurora Store installierte Apps unter Updates und Installationen anzeigen</string>
     <string name="pref_updates_check_frequency">Häufigkeit für automatische Updates</string>
@@ -379,7 +379,8 @@
     <string name="device_doze_extra">Optional kannst du die Optimierungen aktiviert lassen, jedoch können dann die Vorteile von Downloads im Hintergrund und automatischen Updates nicht genutzt werden – du hast also die Wahl.</string>
     <string name="device_doze_subtitle">Aurora Store kann aufgrund von Akkuoptimierungen keine Apps im Hintergrund herunterladen oder aktualisieren.</string>
     <string name="pref_updates_auto">Apps automatisch aktualisieren</string>
-    <string name="pref_updates_auto_notify">Benachrichtigung über verfügbare Updates</string>
+    <string name="pref_updates_auto_notify">Bei verfügbaren Updates nur benachrichtigen</string>
     <string name="pref_updates_auto_off">Apps nicht automatisch aktualisieren</string>
     <string name="pref_updates_auto_install">Verfügbare Updates automatisch installieren</string>
+    <string name="pref_updates_auto_desc">Verhalten von automatischen Updates konfigurieren</string>
 </resources>

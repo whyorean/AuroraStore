@@ -151,4 +151,31 @@
     <string name="notification_updates_available_desc_2"><xliff:g id="app_one_name">%1$s</xliff:g> e <xliff:g id="app_two_name">%2$s</xliff:g></string>
     <string name="tab_trending">Tendentias</string>
     <string name="notification_updates_available_1"><xliff:g id="apps_count">%1$d</xliff:g> actualisation disponibile</string>
+    <string name="download_canceled">Cancellate</string>
+    <string name="installer_shizuku_unavailable">Shizuku non es installate o ben configurate.</string>
+    <string name="pref_ui_no_for_you">Paginas pro te</string>
+    <string name="pref_common_extra">Extras</string>
+    <string name="pref_install_mode_root">Installator root</string>
+    <string name="notification_updates_available_desc_4"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g>, <xliff:g id="app_three_name">%3$s</xliff:g> e <xliff:g id="apps_count">%4$d</xliff:g> plus</string>
+    <string name="tab_categories">Categorias</string>
+    <string name="onboarding_permission_notifications">Notificationes</string>
+    <string name="action_leave">Sortir</string>
+    <string name="toast_import_failed">Non poteva importar le configuration del apparato</string>
+    <string name="notification_channel_general">Notification general</string>
+    <string name="toast_page_unavailable">Pagina de navigation non disponibile</string>
+    <string name="pref_updates_auto">Actualisation automatic del applicationes</string>
+    <string name="pref_install_mode_am">Installator AM</string>
+    <string name="download_paused">In pausa • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
+    <string name="title_manual_download">Discarga manual</string>
+    <string name="toast_import_success">Configuration del apparato importate</string>
+    <string name="installer_status_failure_blocked">Le installation esseva blocate</string>
+    <string name="title_search_results">Resultatos del recerca</string>
+    <string name="notification_channel_updates">Notificationes de actualisationes</string>
+    <string name="download_progress">Discargante • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
+    <string name="installer_status_failure_incompatible">Application non compatibile</string>
+    <string name="download_metadata">⁹</string>
+    <string name="pref_ui_theme_darkord">Discord</string>
+    <string name="installer_service_available">Le servicios de Aurora es disponibile e preste pro installar.</string>
+    <string name="title_installer">Installator de applicationes</string>
+    <string name="pref_downloader_external">Immagazinage externe de usator</string>
 </resources>

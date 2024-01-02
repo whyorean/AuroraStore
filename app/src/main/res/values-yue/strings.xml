@@ -191,7 +191,7 @@
     <string name="onboarding_theme_select">隨您心水揀返個啦</string>
     <string name="onboarding_title_accent">配色</string>
     <string name="pref_downloader_external">使用者外置儲存空間</string>
-    <string name="pref_install_mode_services">Aurora 服務</string>
+    <string name="pref_install_mode_services">Aurora 服務 (已過氣)</string>
     <string name="purchase_invalid">個 app 未有購買</string>
     <string name="purchase_unsupported">個 app 唔支援</string>
     <string name="ui_accent_3">紅色</string>
@@ -263,4 +263,5 @@
     <string name="action_uninstall_confirmation">係咪要解除安裝呢個 app？</string>
     <string name="pref_downloader_wifi_title">淨係用 WiFi 下載</string>
     <string name="pref_install_delete_title">安裝之後剷走 APK</string>
+    <string name="pref_vending_version_title">Google Play 版本</string>
 </resources>
