@@ -214,9 +214,9 @@
     <string name="pref_install_profile_summary">Válassz ki célprofilt, amelyre appokat kívánsz telepíteni. Csak a root telepítési módszerrel működik</string>
     <string name="pref_install_mode_title">Telepítés módja</string>
     <string name="pref_install_mode_summary">APK fájlok telepítési módja</string>
-    <string name="pref_install_mode_services">Aurora Szolgáltatások</string>
+    <string name="pref_install_mode_services">Aurora Szolgáltatások (Elavult)</string>
     <string name="pref_install_mode_root">Root telepítő</string>
-    <string name="pref_install_mode_native">Natív telepítő</string>
+    <string name="pref_install_mode_native">Natív telepítő (Elavult)</string>
     <string name="pref_install_delete_title">APK törlés telepítés után</string>
     <string name="pref_install_delete_summary">Az APK-k törlődnek alapértelmezés szerint</string>
     <string name="pref_install_auto_title">APK-k auto. telepítése letöltésük után</string>
@@ -281,7 +281,7 @@
     <string name="ui_accent_13">Mélykék</string>
     <string name="account_anonymous_insecure">Névtelen (bizonytalan)</string>
     <string name="installer_am_unavailable">Telepítse az App Manager-t vagy változtassa meg a telepítőt.</string>
-    <string name="pref_install_mode_am">AM telepítő.</string>
+    <string name="pref_install_mode_am">AM telepítő</string>
     <string name="ui_accent_6">Lila</string>
     <string name="ui_accent_8">Rózsaszín</string>
     <string name="ui_accent_9">Lime</string>
@@ -366,4 +366,20 @@
     <string name="action_uninstall_confirmation">Szeretné eltávolítani ezt az alkalmazást?</string>
     <string name="android_market_desc">Az Android Market egy online áruház volt, amely szoftveralkalmazásokat kínált az Android készülékekhez, 2017-ben visszavonult.</string>
     <string name="pref_downloader_wifi_title">Letöltés csak wifi használatával</string>
+    <string name="device_doze_description">Kérjük, tiltsa le az akkumulátor optimalizálását a háttérben végzett műveletek engedélyezéséhez.</string>
+    <string name="pref_vending_version_device">Alapértelmezett (a készülék konfigurációjából)</string>
+    <string name="pref_vending_version_title">Google Play verzió</string>
+    <string name="details_ratings_title_hint">Értékelés címe</string>
+    <string name="onboarding_permission_doze">Háttér letöltések</string>
+    <string name="pref_updates_auto">Automatikus alkalmazásfrissítés</string>
+    <string name="pref_self_update_title">Önfrissítések</string>
+    <string name="device_doze_title">Akkumulátor optimalizálás észlelve!</string>
+    <string name="pref_updates_auto_notify">Ellenőrizze és értesítsen a rendelkezésre álló frissítésekről</string>
+    <string name="pref_updates_auto_off">Ne frissítse automatikusan az alkalmazásokat</string>
+    <string name="device_doze_extra">Opcionálisan úgy is dönthet, hogy az optimalizálásokat engedélyezve hagyja, de akkor nem fogja tudni kihasználni a háttérben történő letöltések és az automatikus frissítések előnyeit, így a választás az öné.</string>
+    <string name="onboarding_permission_doze_desc">Engedélyezze, hogy az Aurora Store a háttérben töltsön le és frissítsen alkalmazásokat</string>
+    <string name="pref_self_update_summary">Ellenőrizze és értesítsen, ha az Aurora Store új stabil verziója elérhetővé vált</string>
+    <string name="device_doze_subtitle">Az Aurora Store az akkumulátor optimalizálás miatt nem tud alkalmazásokat telepíteni, letölteni vagy frissíteni a háttérben.</string>
+    <string name="pref_updates_auto_desc">Automatikus frissítések viselkedésének beállítása</string>
+    <string name="pref_updates_auto_install">Ellenőrizze és automatikusan telepítse a rendelkezésre álló frissítéseket</string>
 </resources>
