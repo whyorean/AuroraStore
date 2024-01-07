@@ -35,7 +35,7 @@
     <string name="toast_manual_available">Tebrikler, aradığınız sürüm kodu bulundu. Şimdi indiriliyor.</string>
     <string name="toast_manual_unavailable">Aradığınız sürüm kodu bulunamadı.</string>
     <string name="toast_purchase_blocked">Uygulama satın alma anonim hesaplarda kullanılamaz.</string>
-    <string name="toast_spoof_applied">Aygıt kandırması uygulandı.</string>
+    <string name="toast_spoof_applied">Cihaz kandırması uygulandı.</string>
     <string name="toast_permission_granted">İzin verildi</string>
     <string name="toast_developer_setting_failed">Açmak için aygıt ayarlarından geliştirici ayarlarını açın.</string>
     <string name="toast_clipboard_copied">Panoya kopyalandı</string>
@@ -57,7 +57,7 @@
     <string name="title_games">Oyunlar</string>
     <string name="title_download_playstore">Play Mağaza</string>
     <string name="title_download_manager">İndirilenler</string>
-    <string name="title_device">Aygıt</string>
+    <string name="title_device">Cihaz</string>
     <string name="title_blacklist_manager">Kara liste yöneticisi</string>
     <string name="title_apps_sale">Satıştaki uygulamalar</string>
     <string name="title_apps_library">Kütüphanedeki uygulamalar</string>
@@ -85,7 +85,7 @@
     <string name="pref_ui_similar_apps">Benzer ve ilgili uygulamalar</string>
     <string name="pref_ui_no_for_you_desc">Ana ekranda Sana Özel Sayfalar\'ı göster</string>
     <string name="pref_ui_no_for_you">Sana Özel Sayfalar</string>
-    <string name="pref_ui_layout_tab">Öntanımlı sekmeyi seç</string>
+    <string name="pref_ui_layout_tab">Varsayılan sekmeyi seç</string>
     <string name="pref_ui_layout">Yerleşim</string>
     <string name="pref_ui_title">Özelleştirme</string>
     <string name="pref_ui_theme_title">Tema</string>
@@ -106,18 +106,18 @@
     <string name="pref_install_mode_root">Kök kurucu</string>
     <string name="pref_install_mode_native">Yerel kurucu (Kullanılmıyor)</string>
     <string name="pref_install_delete_title">Kurduktan sonra APK\'yi sil</string>
-    <string name="pref_install_delete_summary">APK\'ler öntanımlı olarak silinecek</string>
-    <string name="pref_install_auto_title">İndirdikten sonra APK\'leri kendiliğinden kur</string>
+    <string name="pref_install_delete_summary">APK\'ler varsayılan olarak silinecek</string>
+    <string name="pref_install_auto_title">İndirdikten sonra APK\'ları otomatik olarak yükle</string>
     <string name="pref_install_auto_summary">İndirme tamamlandıktan sonra uygulamalar anında kurulur</string>
     <string name="pref_insecure_anonymous_title">Güvensiz anonim oturum</string>
     <string name="pref_insecure_anonymous_summary">Aygıtta yerel olarak GSF kimliği oluştur</string>
-    <string name="pref_filter_search_title">Kalıcı olmayan arama süzgeci kullan</string>
-    <string name="pref_filter_search_summary">Arama süzgeçleri her aramada sıfırlanır. Arama süzgeçlerini kaydetmek için bunu kapat</string>
-    <string name="pref_filter_google_title">Google uygulamalarını süz</string>
+    <string name="pref_filter_search_title">Kalıcı olmayan arama filtresini kullan</string>
+    <string name="pref_filter_search_summary">Arama filtreleri her aramada sıfırlanır. Arama filtrelerini kaydetmek için bunu kapatın</string>
+    <string name="pref_filter_google_title">Google uygulamalarını filtrele</string>
     <string name="pref_filter_google_summary">Google uygulamalarını Güncellemeler ve Kurulu uygulamalarda görmezden gel</string>
     <string name="pref_filter_fdroid_title">F-Droid uygulamalarını süz</string>
     <string name="pref_filter_fdroid_summary">F-Droid uygulamalarını Güncellemeler ve Kurulu uygulamalarda görmezden gel</string>
-    <string name="pref_downloader_external_desc">Dış depolama indirilenler, dışa aktarmalar vb. için kullanılır.</string>
+    <string name="pref_downloader_external_desc">Harici depolama, indirmeler, dışa aktarmalar vb. için kullanılır.</string>
     <string name="pref_downloader_external">Dış depolama kullanıcısı</string>
     <string name="pref_dialog_to_apply_restart">Bu seçenek uygulamayı yeniden başlattıktan sonra uygulanacak</string>
     <string name="pref_common_extra">Ekler</string>
@@ -126,9 +126,9 @@
     <string name="pref_abandon_session">Kurulum oturumlarını zorla temizle</string>
     <string name="onboarding_permission_installer_desc">Aurora Store\'dan uygulama kurmaya izin ver</string>
     <string name="onboarding_permission_installer">Kurucu İzni</string>
-    <string name="onboarding_permission_esm">Dış Depolama Yöneticisi</string>
+    <string name="onboarding_permission_esm">Harici Depolama Yöneticisi</string>
     <string name="onboarding_permission_esa_desc">Dış depolamaya aygıt ayarlarını aktarmak ve indirmeleri (APK\'ler ve OBB\'ler) kaydetmek için.</string>
-    <string name="onboarding_permission_esa">Dış Depolama Erişimi</string>
+    <string name="onboarding_permission_esa">Harici Depolama Erişimi</string>
     <string name="onboarding_welcome_select">Neler yapıyorsun\?</string>
     <string name="onboarding_title_welcome">Hoş geldiniz</string>
     <string name="onboarding_title_theme">Temalar</string>
@@ -136,7 +136,7 @@
     <string name="onboarding_title_installer">Kurucu</string>
     <string name="onboarding_title_accent">Vurgu</string>
     <string name="onboarding_theme_select">Neyi sevdiğini seç</string>
-    <string name="onboarding_permission_select">Aurora Store listelenen izinlere gereksiniyor</string>
+    <string name="onboarding_permission_select">Aurora Mağazası aşağıdaki izinleri gerektirir</string>
     <string name="onboarding_installer_select">Uygun kurucu seç</string>
     <string name="notification_channel_general">Genel bildirim</string>
     <string name="notification_channel_alert">Hızlı bildirim</string>
@@ -197,7 +197,7 @@
     <string name="details_no_dependencies">Bağımlılık Yok</string>
     <string name="details_no_app_match">Eşleşen uygulama bulunamadı</string>
     <string name="details_no_ads">Reklam yok</string>
-    <string name="details_more_about_app">Uygulamayla ilgili daha çok</string>
+    <string name="details_more_about_app">Uygulama hakkında daha fazla</string>
     <string name="details_gsf_dependent">GSF Gerekir</string>
     <string name="details_free">Ücretsiz</string>
     <string name="details_dev_profile">Geliştirici profili</string>
@@ -262,8 +262,8 @@
     <string name="toast_rated_success">Derecelendirildi, gösterilmesi biraz zaman alabilir</string>
     <string name="toast_page_unavailable">Göz atma sayfası kullanılamıyor</string>
     <string name="dialog_desc_native_split">Paketlenmiş (bölünmüş) uygulamaları Yerel Kurucu aracılığıyla kuramazsınız. Kurucunuzu Oturum, Hizmetler veya Kök olarak değiştirin.</string>
-    <string name="toast_export_failed">Aygıt yapılandırması dışa aktarılamadı</string>
-    <string name="toast_export_success">Aygıt yapılandırması dışarı aktarıldı</string>
+    <string name="toast_export_failed">Cihaz yapılandırması dışa aktarılamadı</string>
+    <string name="toast_export_success">Cihaz yapılandırması dışarı aktarıldı</string>
     <string name="pref_updates_extended_desc">Devre dışı uygulama ve oyunların yeni sürümlerine bak</string>
     <string name="pref_updates_extended">Genişletilmiş güncellemeler</string>
     <string name="app_updater_service_notif_text">Arka planda uygulama indirmeyi etkinleştirir</string>
@@ -314,8 +314,8 @@
     <string name="permissions_denied">Gerekli izinler reddedildi. İşlemi sürdürmek için lütfen bu izinleri verin</string>
     <string name="requesting_new_session">Yeni oturum isteniyor</string>
     <string name="server_maintenance">Sunucu bakım için kapalı</string>
-    <string name="toast_import_success">Aygıt yapılandırması içe aktarıldı</string>
-    <string name="toast_import_failed">Aygıt yapılandırması içe aktarılamadı</string>
+    <string name="toast_import_success">Cihaz yapılandırması içe aktarıldı</string>
+    <string name="toast_import_failed">Cihaz yapılandırması içe aktarılamadı</string>
     <string name="downloading_dep"><xliff:g id="app">%1$s</xliff:g> için ek dosyalar indiriliyor</string>
     <string name="action_import">İçe Aktar</string>
     <string name="checking_for_updates">Güncellemeler denetleniyor</string>
@@ -369,10 +369,10 @@
     <string name="pref_network_proxy_enable_desc">Uygulamadan tüm trafiğin vekilden gitmesini sağla</string>
     <string name="pref_self_update_title">Otomatik güncellemeler</string>
     <string name="pref_self_update_summary">Aurora Store\'un yeni ve kararlı bir sürümünün mevcut olup olmadığını kontrol edin ve bildirin</string>
-    <string name="pref_vending_version_device">Öntanımlı (aygıt yapılandırmasından)</string>
+    <string name="pref_vending_version_device">Varsayılan (cihaz yapılandırmasından)</string>
     <string name="pref_vending_version_title">Google Play Sürümü</string>
     <string name="onboarding_permission_doze">Arka Plan İndirmeleri</string>
-    <string name="onboarding_permission_doze_desc">Aurora Store\'un arka planda uygulama indirme ve güncellemesini sağla</string>
+    <string name="onboarding_permission_doze_desc">Aurora Store\'un arka planda uygulamaları indirmesine ve güncellemesine izin ver</string>
     <string name="device_doze_description">Lütfen arka plan işlemlerine izin vermek için pil iyileştirmelerini devre dışı bırakın.</string>
     <string name="device_doze_title">Pil iyileştirmeleri tespit edildi!</string>
     <string name="device_doze_extra">İsteğe bağlı olarak iyileştirmeleri etkin tutmayı seçebilirsiniz, ancak bu durumda arka planda indirme ve otomatik güncellemelerden yararlanamazsınız, bu nedenle seçim sizin.</string>
