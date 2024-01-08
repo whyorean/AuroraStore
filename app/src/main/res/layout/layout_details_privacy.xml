@@ -51,15 +51,13 @@
         android:text="@string/exodus_progress"
         android:textAppearance="@style/TextAppearance.Aurora.Line1" />
 
-    <com.airbnb.epoxy.EpoxyRecyclerView
-        android:id="@+id/epoxy_recycler"
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_request_analysis"
+        style="@style/Widget.Material3.Button.OutlinedButton"
+        app:cornerRadius="@dimen/margin_small"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:clipToPadding="false"
-        android:orientation="vertical"
-        android:overScrollMode="never"
-        app:itemSpacing="@dimen/margin_small"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:itemCount="4"
-        tools:listitem="@layout/view_exodus" />
+        android:layout_gravity="center_vertical"
+        android:text="@string/action_request_analysis" />
+
 </LinearLayout>

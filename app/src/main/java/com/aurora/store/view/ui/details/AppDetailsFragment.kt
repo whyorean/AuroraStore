@@ -45,6 +45,7 @@ import coil.load
 import coil.transform.RoundedCornersTransformation
 import com.airbnb.epoxy.EpoxyRecyclerView
 import com.aurora.Constants
+import com.aurora.Constants.EXODUS_SUBMIT_PAGE
 import com.aurora.extensions.browse
 import com.aurora.extensions.getString
 import com.aurora.extensions.hide
@@ -291,6 +292,9 @@ class AppDetailsFragment : BaseFragment(R.layout.fragment_details) {
         }
 
         // Report (Exodus Privacy)
+        binding.layoutDetailsPrivacy.btnRequestAnalysis.setOnClickListener {
+            it.context.browse("${EXODUS_SUBMIT_PAGE}${app.packageName}")
+        }
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.report.collect { report ->
                 if (report == null) {

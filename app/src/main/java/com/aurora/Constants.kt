@@ -30,6 +30,7 @@ object Constants {
     const val FETCH_GROUP_ID = "FETCH_GROUP_ID"
     const val APP_ID = "com.aurora.store"
 
+    const val EXODUS_SUBMIT_PAGE = "https://reports.exodus-privacy.eu.org/analysis/submit/#"
     const val EXODUS_BASE_URL = "https://reports.exodus-privacy.eu.org/api/search/"
     const val EXODUS_REPORT_URL = "https://reports.exodus-privacy.eu.org/reports/"
     const val SHARE_URL = "https://play.google.com/store/apps/details?id="

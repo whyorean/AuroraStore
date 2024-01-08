@@ -85,6 +85,7 @@
     <string name="action_pause">"Pause"</string>
     <string name="action_pending">"Pending"</string>
     <string name="action_post">"Post"</string>
+    <string name="action_request_analysis">Request new analysis</string>
     <string name="action_restart">"Restart"</string>
     <string name="action_resume">"Resume"</string>
     <string name="action_search">"Search"</string>
