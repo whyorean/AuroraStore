@@ -49,6 +49,7 @@ class DownloadFragment : BaseFragment(R.layout.fragment_download) {
 
     @Inject
     lateinit var downloadWorkerUtil: DownloadWorkerUtil
+    lateinit var downloadList: List<Download>
 
     private val AURORA_STORE_URL = "https://gitlab.com/AuroraOSS/AuroraStore"
 
@@ -82,7 +83,10 @@ class DownloadFragment : BaseFragment(R.layout.fragment_download) {
         }
 
         viewLifecycleOwner.lifecycleScope.launch {
-            downloadWorkerUtil.downloadsList.collectLatest { updateController(it) }
+            downloadWorkerUtil.downloadsList.collectLatest {
+                downloadList = it
+                updateController(it)
+            }
         }
     }
 
@@ -113,7 +117,7 @@ class DownloadFragment : BaseFragment(R.layout.fragment_download) {
                                 }
                             }
                             .longClick { _ ->
-                                openDownloadMenuSheet(it)
+                                openDownloadMenuSheet(it.packageName)
                                 true
                             }
                     )
@@ -123,7 +127,8 @@ class DownloadFragment : BaseFragment(R.layout.fragment_download) {
         binding.swipeRefreshLayout.isRefreshing = false
     }
 
-    private fun openDownloadMenuSheet(download: Download) {
+    private fun openDownloadMenuSheet(packageName: String) {
+        val download = downloadList.find { it.packageName == packageName }!!
         findNavController().navigate(
             DownloadFragmentDirections.actionDownloadFragmentToDownloadMenuSheet(download)
         )
