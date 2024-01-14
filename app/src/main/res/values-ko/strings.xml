@@ -206,4 +206,6 @@
     <string name="pref_install_mode_native">네이티브 설치기 (지원 중단)</string>
     <string name="pref_install_mode_root">루트 설치기</string>
     <string name="pref_downloader_wifi_title">WiFi에서만 다운로드</string>
+    <string name="pref_install_mode_services">Aurora 서비스 (지원 중단)</string>
+    <string name="pref_install_mode_session">세션 설치기</string>
 </resources>
