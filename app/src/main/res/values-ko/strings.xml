@@ -208,4 +208,23 @@
     <string name="pref_downloader_wifi_title">WiFi에서만 다운로드</string>
     <string name="pref_install_mode_services">Aurora 서비스 (지원 중단)</string>
     <string name="pref_install_mode_session">세션 설치기</string>
+    <string name="pref_install_mode_title">설치 방식</string>
+    <string name="pref_install_profile_summary">앱을 설치할 대상 프로필을 선택하세요. 루트 설치 방법에서만 작동합니다</string>
+    <string name="pref_ui_theme_dark">다크</string>
+    <string name="pref_vending_version_title">Google Play 버전</string>
+    <string name="pref_network_proxy_enable">프록시 켜기</string>
+    <string name="pref_network_proxy_enable_desc">앱의 모든 트래픽이 프록시를 통과하도록 허용</string>
+    <string name="pref_network_proxy_url">프록시 URL</string>
+    <string name="pref_ui_accent_title">악센트</string>
+    <string name="pref_ui_theme_light">밝은</string>
+    <string name="pref_ui_theme_system">시스템 설정을 따름</string>
+    <string name="pref_ui_theme_title">테마</string>
+    <string name="pref_install_profile_title">설치 프로필 (실험적)</string>
+    <string name="pref_network_title">네트워킹</string>
+    <string name="pref_network_proxy_title">프록시</string>
+    <string name="pref_ui_theme_black">검정</string>
+    <string name="pref_ui_theme_dark_x">다크 X</string>
+    <string name="pref_ui_title">맞춤화</string>
+    <string name="pref_ui_no_for_you">For You 페이지</string>
+    <string name="pref_vending_version_device">기본값 (디바이스 구성에서)</string>
 </resources>
