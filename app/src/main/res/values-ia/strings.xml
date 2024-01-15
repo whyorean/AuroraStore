@@ -196,4 +196,26 @@
     <string name="action_granted">Concedite</string>
     <string name="device_miui_title">MIUI detegite!</string>
     <string name="pref_install_delete_title">Deler le APK depost le installation</string>
+    <string name="title_apps_sale_provider">Fornitor - bestappsales.com</string>
+    <string name="action_filter_apply">Applicar</string>
+    <string name="onboarding_installer_select">Selige un installator adequate</string>
+    <string name="action_filter">Filtros</string>
+    <string name="action_whitelist">Lista blanc</string>
+    <string name="details_changelog_unavailable">Novitates non fornite</string>
+    <string name="pref_filter_fdroid_title">Filtrar le applicationes de F-Droid</string>
+    <string name="session_verifying">Verificante le session</string>
+    <string name="session_verifying_google">Verificante le session de Google</string>
+    <string name="toast_anonymous_restriction">Non disponibile in contos anonyme</string>
+    <string name="action_post">Publicar</string>
+    <string name="session_login">Prime initia le session</string>
+    <string name="installer_am_unavailable">Installar Gestor de applicationes o cambiar le installator.</string>
+    <string name="installer_status_failure_session">Non poteva crear le session</string>
+    <string name="onboarding_permission_esa">Acceso a immagazinage externe</string>
+    <string name="pref_filter_google_title">Filtrar le applicationes de Google</string>
+    <string name="pref_ui_no_for_you_desc">Monstrar le paginas \"Pro te\" in le schermo de initio</string>
+    <string name="title_blacklist_manager">Gestor de listas nigre</string>
+    <string name="toast_apk_blacklisted">In le lista nigre</string>
+    <string name="session_login_failed_google">Non poteva initiar le session via Google</string>
+    <string name="onboarding_permission_doze">Discargamentos in secunde fundo</string>
+    <string name="onboarding_permission_doze_desc">Permitter Aurora Store le discargas e actualisationes in secunde fundo</string>
 </resources>

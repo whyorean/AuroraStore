@@ -382,4 +382,5 @@
     <string name="pref_updates_auto_off">No actualizar automáticamente las aplicaciones</string>
     <string name="pref_updates_auto_desc">Configurar el comportamiento de las actualizaciones automáticas</string>
     <string name="pref_updates_auto_install">Compruebe e instale automáticamente las actualizaciones disponibles</string>
+    <string name="action_request_analysis">Solicitar un nuevo análisis</string>
 </resources>
