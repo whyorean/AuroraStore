@@ -3,7 +3,8 @@
   https://auroraoss.com/guides/wiki-home/
 - Provide a general summary of the issue in the Title above.
 - Check if your issue or something similar has been reported before (if yes upvote/comment there)
-- Please use the latest stable release and note that we don't accept any bug reports for v.1.*, v.2.* & v.3.* anymore!
+- If you are on latest stable release, please also check if the issue is reproducible on the latest nightly build from here: https://auroraoss.com/AuroraStore/Nightly/
+- Make sure you have read [wiki](https://gitlab.com/AuroraOSS/AuroraStore/-/wikis/home) especially FAQs
 - If you did not know already, everything between "<!---" & "~->" are comments in Markdown. These will not be visible unless when editing or viewed as raw file.
 -->
 
@@ -38,16 +39,18 @@ Include as many relevant details about the environment you experienced the bug i
 For example:
 * Device model & codename: OnePlus 8T "instantnoodle"
 * Android version: 11.0.0
-* Arch: armeabi, armeabi-v7a, arm64-v8a
 * Aurora Store version: 4.0.2
-* Installation method: root/session/native/Aurora Services
+* Nightly date: 2024-01-15
+* Account Type: Anonymous
+* Installation method: root/session/shizuku/app manager
 * OS: OxygenOS 11.0.1 (Android skin)
 -->
-
 
 * Device model & codename:
 * Android version:
 * Aurora Store version:
+* Nightly date:
+* Account Type:
 * Installation method:
 * OS:
 
