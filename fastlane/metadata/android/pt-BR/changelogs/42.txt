@@ -1,0 +1,15 @@
+• Alvo Android 13
+• Habilitar localização de múltiplas strings
+• Adicionar ícone monocromático para Android 13
+• Atualizar dependências para a versão mais recente
+• Mostrar aviso dos Termos de Serviço no lançamento imediato
+• Permitir avançar sem conceder permissões durante a configuração inicial
+• Leia a lista de bloqueios xml do sistema como padrão para excluir atualizações
+• Mostrar o título correto na 5ª página de configuração
+• Ative o botão avançar na configuração ao voltar
+• Substitua as caixas de seleção no instalador de configuração por botões de opção
+• Use a cor do traço para o plano de fundo das guias de configuração
+• Corrigir bug sem tema na configuração usando botões de opção
+• Não use novas versões do GSF e Vending
+• Refatorar a configuração de permissões relacionadas ao armazenamento
+• Atualizações de tradução
