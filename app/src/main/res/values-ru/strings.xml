@@ -382,4 +382,5 @@
     <string name="pref_updates_auto_off">Не обновлять приложения автоматически</string>
     <string name="pref_updates_auto_desc">Настройка поведения автоматических обновлений</string>
     <string name="pref_updates_auto_install">Проверять доступные обновления и устанавливать их автоматически</string>
+    <string name="action_request_analysis">Запросить новый анализ</string>
 </resources>
