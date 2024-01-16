@@ -20,6 +20,7 @@
 package com.aurora.store.view.ui.sheets
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -29,8 +30,11 @@ import androidx.navigation.fragment.navArgs
 import com.aurora.extensions.copyToClipBoard
 import com.aurora.extensions.toast
 import com.aurora.store.R
+import com.aurora.store.data.installer.AppInstaller
+import com.aurora.store.data.model.DownloadStatus
 import com.aurora.store.databinding.SheetDownloadMenuBinding
 import com.aurora.store.util.DownloadWorkerUtil
+import com.aurora.store.util.PathUtil
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 import kotlinx.coroutines.NonCancellable
@@ -38,6 +42,8 @@ import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class DownloadMenuSheet : BaseBottomSheet() {
+
+    private val TAG = DownloadMenuSheet::class.java.simpleName
 
     private var _binding: SheetDownloadMenuBinding? = null
     private val binding get() = _binding!!
@@ -63,9 +69,12 @@ class DownloadMenuSheet : BaseBottomSheet() {
         with(binding.navigationView) {
             menu.findItem(R.id.action_cancel).isVisible = !args.download.isFinished
             menu.findItem(R.id.action_clear).isVisible = args.download.isFinished
+            menu.findItem(R.id.action_install).isVisible =
+                args.download.downloadStatus == DownloadStatus.COMPLETED
 
             setNavigationItemSelectedListener { item ->
                 when (item.itemId) {
+                    R.id.action_install -> install()
                     R.id.action_copy -> {
                         requireContext().copyToClipBoard(
                             "${playStoreURL}${args.download.packageName}"
@@ -95,5 +104,23 @@ class DownloadMenuSheet : BaseBottomSheet() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun install() {
+        try {
+            val downloadDir = PathUtil.getAppDownloadDir(
+                requireContext(),
+                args.download.packageName,
+                args.download.versionCode
+            )
+            AppInstaller.getInstance(requireContext())
+                .getPreferredInstaller()
+                .install(
+                    args.download.packageName,
+                    downloadDir.listFiles()!!.filter { it.path.endsWith(".apk") }
+                )
+        } catch (exception: Exception) {
+            Log.e(TAG, "Failed to install ${args.download.packageName}", exception)
+        }
     }
 }
