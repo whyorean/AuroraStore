@@ -19,7 +19,7 @@ data class Download(
     val iconURL: String,
     val size: Long,
     val id: Int,
-    var status: DownloadStatus,
+    var downloadStatus: DownloadStatus,
     var progress: Int,
     var speed: Long,
     var timeRemaining: Long,
@@ -28,7 +28,7 @@ data class Download(
     var fileList: List<File>,
     val sharedLibs: List<SharedLib>
 ) : Parcelable {
-    val isFinished get() = status in DownloadStatus.finished
+    val isFinished get() = downloadStatus in DownloadStatus.finished
 
     companion object {
         fun fromApp(app: App): Download {

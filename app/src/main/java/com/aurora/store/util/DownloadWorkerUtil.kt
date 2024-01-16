@@ -54,8 +54,8 @@ class DownloadWorkerUtil @Inject constructor(
             downloadDao.downloads()
                 .collectLatest { list ->
                     // Check and trigger next download in queue, if any
-                    if (!list.any { it.status == DownloadStatus.DOWNLOADING }) {
-                        val enqueuedDownloads = list.filter { it.status == DownloadStatus.QUEUED }
+                    if (!list.any { it.downloadStatus == DownloadStatus.DOWNLOADING }) {
+                        val enqueuedDownloads = list.filter { it.downloadStatus == DownloadStatus.QUEUED }
                         enqueuedDownloads.firstOrNull()?.let {
                             try {
                                 if (context.isIgnoringBatteryOptimizations() || CommonUtil.inForeground()) {
@@ -83,8 +83,8 @@ class DownloadWorkerUtil @Inject constructor(
         Log.i(TAG, "Cancelling download for $packageName")
         WorkManager.getInstance(context).cancelAllWorkByTag("$PACKAGE_NAME:$packageName")
         downloadsList.filter { it.isNotEmpty() }.firstOrNull()
-            ?.find { it.packageName == packageName && it.status == DownloadStatus.QUEUED }
-            ?.let { downloadDao.update(it.copy(status = DownloadStatus.CANCELLED)) }
+            ?.find { it.packageName == packageName && it.downloadStatus == DownloadStatus.QUEUED }
+            ?.let { downloadDao.update(it.copy(downloadStatus = DownloadStatus.CANCELLED)) }
     }
 
     suspend fun clearDownload(packageName: String, versionCode: Int) {
@@ -102,8 +102,8 @@ class DownloadWorkerUtil @Inject constructor(
 
     suspend fun cancelAll(downloads: Boolean = true, updates: Boolean = true) {
         // Cancel all enqueued downloads first to avoid triggering re-download
-        downloadsList.value.filter { it.status == DownloadStatus.QUEUED }.forEach {
-            downloadDao.update(it.copy(status = DownloadStatus.CANCELLED))
+        downloadsList.value.filter { it.downloadStatus == DownloadStatus.QUEUED }.forEach {
+            downloadDao.update(it.copy(downloadStatus = DownloadStatus.CANCELLED))
         }
 
         val workManager = WorkManager.getInstance(context)

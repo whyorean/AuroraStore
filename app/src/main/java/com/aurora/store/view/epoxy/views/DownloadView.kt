@@ -33,9 +33,6 @@ import com.aurora.store.data.room.download.Download
 import com.aurora.store.databinding.ViewDownloadBinding
 import com.aurora.store.util.CommonUtil.getDownloadSpeedString
 import com.aurora.store.util.CommonUtil.getETAString
-import com.google.gson.Gson
-import com.google.gson.GsonBuilder
-import java.lang.reflect.Modifier
 import java.util.Locale
 
 @ModelView(
@@ -75,7 +72,7 @@ class DownloadView : RelativeLayout {
         }
         B.txtTitle.text = download.displayName
 
-        B.txtStatus.text = download.status.name
+        B.txtStatus.text = download.downloadStatus.name
             .lowercase(Locale.getDefault())
             .replaceFirstChar {
                 if (it.isLowerCase()) {
@@ -97,7 +94,7 @@ class DownloadView : RelativeLayout {
             download.speed
         )
 
-        when (download.status) {
+        when (download.downloadStatus) {
             DownloadStatus.DOWNLOADING, DownloadStatus.QUEUED -> {
                 B.txtSpeed.visibility = VISIBLE
                 B.txtEta.visibility = VISIBLE

@@ -96,7 +96,7 @@ object NotificationUtil {
         builder.setContentIntent(getContentIntentForDownloads(context))
         builder.setLargeIcon(largeIcon)
 
-        when (download.status) {
+        when (download.downloadStatus) {
             DownloadStatus.CANCELLED -> {
                 builder.setSmallIcon(R.drawable.ic_download_cancel)
                 builder.setContentText(context.getString(R.string.download_canceled))

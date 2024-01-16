@@ -25,7 +25,6 @@ import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
-import android.os.Build
 import android.os.Bundle
 import android.os.Environment
 import android.provider.Settings
@@ -246,10 +245,10 @@ class AppDetailsFragment : BaseFragment(R.layout.fragment_details) {
                 .collectLatest { downloadsList ->
                     val download = downloadsList.find { it.packageName == app.packageName }
                     download?.let {
-                        downloadStatus = it.status
+                        downloadStatus = it.downloadStatus
 
                         if (it.isFinished) flip(0) else flip(1)
-                        when (it.status) {
+                        when (it.downloadStatus) {
                             DownloadStatus.QUEUED -> {
                                 updateProgress(it.progress)
                             }

@@ -283,7 +283,7 @@ class DownloadWorker @AssistedInject constructor(
                 }
 
                 download.apply {
-                    this.status = DownloadStatus.DOWNLOADING
+                    this.downloadStatus = DownloadStatus.DOWNLOADING
                     this.progress = progress
                     this.speed = downloadInfo.speed
                     this.timeRemaining = bytesRemaining / speed * 1000
@@ -313,8 +313,8 @@ class DownloadWorker @AssistedInject constructor(
         // Update database for all status except downloading which is handled onProgress
         if (status != DownloadStatus.DOWNLOADING) {
             download.apply {
-                this.status = status
-                if (download.status == DownloadStatus.COMPLETED) this.progress = 100
+                this.downloadStatus = status
+                if (download.downloadStatus == DownloadStatus.COMPLETED) this.progress = 100
             }
             downloadDao.update(download)
         }

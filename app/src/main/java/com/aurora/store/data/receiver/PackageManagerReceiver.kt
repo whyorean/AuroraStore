@@ -59,7 +59,7 @@ open class PackageManagerReceiver : BroadcastReceiver() {
                     EventBus.getDefault().post(InstallEvent(packageName, ""))
 
                     downloadWorkerUtil.downloadsList.filter { it.isNotEmpty() }.firstOrNull()
-                        ?.find { it.packageName == packageName && it.status == DownloadStatus.COMPLETED }
+                        ?.find { it.packageName == packageName && it.downloadStatus == DownloadStatus.COMPLETED }
                         ?.let {
                             notifyInstallation(context, it)
                             if (Preferences.getBoolean(context, PREFERENCE_AUTO_DELETE)) {

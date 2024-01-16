@@ -108,9 +108,9 @@ class AppUpdateView : RelativeLayout {
     fun download(download: Download?) {
         if (download != null) {
             /*Inflate Download details*/
-            B.btnAction.updateState(download.status)
+            B.btnAction.updateState(download.downloadStatus)
             B.progressDownload.isIndeterminate = download.progress < 1
-            when (download.status) {
+            when (download.downloadStatus) {
                 DownloadStatus.QUEUED -> {
                     B.progressDownload.progress = 0
                     B.progressDownload.show()
