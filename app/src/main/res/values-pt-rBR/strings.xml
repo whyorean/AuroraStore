@@ -18,8 +18,8 @@
     <string name="title_apps">Aplicativos</string>
     <string name="pref_ui_theme_darkord">Discord</string>
     <string name="pref_install_mode_services">Serviços Aurora (Preterido)</string>
-    <string name="pref_app_download">Baixados</string>
-    <string name="action_filter_downloads">Baixados</string>
+    <string name="pref_app_download">Download</string>
+    <string name="action_filter_downloads">Download</string>
     <string name="about_telegram">Telegram</string>
     <string name="about_paypal">PayPal</string>
     <string name="about_gitlab">GitLab</string>
@@ -112,7 +112,7 @@
     <string name="download_resume_all">Retomar todos</string>
     <string name="download_queued">Em fila</string>
     <string name="download_pause_all">Pausar todos</string>
-    <string name="download_none">Sem baixados</string>
+    <string name="download_none">Não há downloads</string>
     <string name="download_metadata">Obtendo metadados</string>
     <string name="download_force_clear_all">Limpar todos à força</string>
     <string name="download_failed">Falha ao baixar</string>
@@ -126,7 +126,7 @@
     <string name="details_privacy">Privacidade</string>
     <string name="details_permission">Permissão</string>
     <string name="details_paid">Pago</string>
-    <string name="details_no_updates">Sem atualizações disponíveis</string>
+    <string name="details_no_updates">Não há atualizações disponíveis</string>
     <string name="details_no_permission">Nenhuma permissão</string>
     <string name="details_no_dependencies">Sem dependências</string>
     <string name="details_no_ads">Sem propaganda</string>
@@ -231,12 +231,12 @@
     <string name="pref_install_mode_native">Instalador nativo (Preterido)</string>
     <string name="pref_install_delete_title">Excluir APK pós-instalação</string>
     <string name="pref_install_delete_summary">APKs serão excluídos por padrão</string>
-    <string name="pref_install_auto_title">Instalar APKs automaticamente após o baixamento</string>
-    <string name="pref_install_auto_summary">Os aplicativos são instalados instantaneamente após a conclusão do baixamento</string>
+    <string name="pref_install_auto_title">Instalar APKs automaticamente após download</string>
+    <string name="pref_install_auto_summary">Os aplicativos são instalados instantaneamente após a conclusão do download</string>
     <string name="pref_filter_google_title">Filtrar aplicativos do Google</string>
-    <string name="pref_filter_google_summary">Ignorar apps do Google das Atualizações e dos apps Instalados</string>
+    <string name="pref_filter_google_summary">Ignorar aplicativos do Google das atualizações e dos aplicativos instalados</string>
     <string name="pref_filter_fdroid_title">Filtrar aplicativos F-Droid</string>
-    <string name="pref_filter_fdroid_summary">Remove aplicativos F-Droid das listas de Atualizações e Instalados</string>
+    <string name="pref_filter_fdroid_summary">Remove aplicativos do F-Droid das listas de atualizações e de aplicativos instalados</string>
     <string name="pref_downloader_external_desc">O armazenamento externo é utilizado para downloads, exportações, etc.</string>
     <string name="pref_downloader_external">Armazenamento externo do usuário</string>
     <string name="insecure_anonymous_apply">Tenha certeza que você se reconectou e reinicie o aplicativo para aplicar as mudanças.</string>
@@ -354,9 +354,9 @@
     <string name="details_no_apps_on_sale">Nenhum app à venda encontrado</string>
     <string name="pref_downloader_path_title">Caminho de download</string>
     <string name="pref_download_directory_error">O caminho selecionado não pode ser escrito</string>
-    <string name="pref_updates_check_frequency_desc">Configure intervalos para atualizações automáticas, em hora.</string>
+    <string name="pref_updates_check_frequency_desc">Configure intervalos para atualizações automáticas em horas.</string>
     <string name="pref_aurora_only">Apenas apps da Aurora Store</string>
-    <string name="pref_aurora_only_desc">Mostrar apenas apps instalados pela Aurora Store nas Atualizações e apps Instalados</string>
+    <string name="pref_aurora_only_desc">Mostrar apenas aplicativos instalados pelo Aurora Store nas atualizações e aplicativos instalados</string>
     <string name="title_app_settings">Configurações do App</string>
     <string name="pref_updates_check_frequency">Frequência de atualizações automáticas</string>
     <string name="pref_downloader_wifi_title">Baixar usando apenas Wi-Fi</string>
@@ -367,7 +367,7 @@
     <string name="toast_proxy_success">Proxy definido com sucesso</string>
     <string name="toast_proxy_failed">Falha ao definir proxy</string>
     <string name="pref_network_proxy_enable_desc">Permitir todo o tráfego do app passar pelo proxy</string>
-    <string name="pref_self_update_title">Autoatualizações</string>
+    <string name="pref_self_update_title">Auto-atualizações</string>
     <string name="pref_self_update_summary">Checar e notificar se uma nova versão da Aurora Store estiver disponível</string>
     <string name="pref_vending_version_device">Padrão (da configuração do dispositivo)</string>
     <string name="pref_vending_version_title">Versão do Google Play</string>
@@ -375,7 +375,7 @@
     <string name="onboarding_permission_doze_desc">Permitir que a Aurora Store baixe e atualize apps em segundo plano</string>
     <string name="device_doze_description">Por favor, desative as otimizações de bateria para permitir operações em plano de fundo.</string>
     <string name="device_doze_title">Otimizações de bateria detectadas!</string>
-    <string name="device_doze_extra">Opcionalmente, você pode escolher manter as otimizações ativas, mas então não será capaz de fazer uso dos downloads em plano de fundo e atualizações automáticas, a escolha é sua.</string>
+    <string name="device_doze_extra">Opcionalmente, você pode escolher manter as otimizações ativas, mas dessa forma não será possível usar utilizar downloads em segundo-plano e atualizações automáticas, a escolha é sua.</string>
     <string name="device_doze_subtitle">Aurora Store não pode instalar, baixar ou atualizar apps no plano de fundo devido a otimizações de bateria.</string>
     <string name="pref_updates_auto">Atualizar apps automaticamente</string>
     <string name="pref_updates_auto_notify">Checar e notificar atualizações disponíveis</string>
