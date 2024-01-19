@@ -271,7 +271,7 @@
     <string name="pref_updates_extended">追加アップデート</string>
     <string name="account_anonymous_insecure">匿名 (非セキュア)</string>
     <string name="installer_am_unavailable">App Manager をインストールするかインストーラーを変更してください。</string>
-    <string name="pref_install_mode_am">AM インストーラー</string>
+    <string name="pref_install_mode_am">AM インストーラー:</string>
     <string name="ui_accent_6">紫</string>
     <string name="ui_accent_1">ブルー</string>
     <string name="ui_accent_2">フクシャ</string>
@@ -369,4 +369,18 @@
     <string name="pref_network_proxy_enable_desc">アプリからのすべてのトラフィックをプロキシに通す</string>
     <string name="pref_self_update_title">自己アップデート</string>
     <string name="pref_self_update_summary">Aurora Store の新しい安定版が利用可能かどうかを確認して通知します</string>
+    <string name="pref_updates_auto">アプリの自動更新</string>
+    <string name="onboarding_permission_doze">バックグラウンドダウンロード</string>
+    <string name="pref_updates_auto_desc">自動更新の動作を設定する</string>
+    <string name="device_doze_title">バッテリーの最適化を検知しました！</string>
+    <string name="action_request_analysis">分析を要求</string>
+    <string name="pref_vending_version_title">Google Play バージョン</string>
+    <string name="pref_vending_version_device">デフォルト (端末設定による)</string>
+    <string name="device_doze_subtitle">バッテリーの最適化のためAurora Storeはバックグラウンドでアプリをダウンロード、インストールできません。</string>
+    <string name="pref_updates_auto_install">更新を確認して自動でインストールする</string>
+    <string name="pref_updates_auto_notify">更新を確認して通知する</string>
+    <string name="pref_updates_auto_off">自動更新しない</string>
+    <string name="onboarding_permission_doze_desc">Aurora Storeがバックグラウンドでダウンロード、更新することを許可する</string>
+    <string name="device_doze_description">バックグラウンドの動作を許可するにはバッテリーの最適化を無効化してください。</string>
+    <string name="device_doze_extra">最適化を有効にしておくこともできますが、バックグラウンドのダウンロードと自動更新を利用することはできません。</string>
 </resources>

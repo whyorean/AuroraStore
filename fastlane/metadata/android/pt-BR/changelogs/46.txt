@@ -1,0 +1,8 @@
+• Evite pedir permissão de armazenamento até que seja necessário
+• Configuração de falsificação reformulada para evitar permissão de armazenamento para importação e exportação
+• Adicionada opção para verificar automaticamente atualizações de aplicativos (requer uma conta ativa conectada)
+• Corrigido o problema em que as bibliotecas necessárias não estavam sendo instaladas com aplicativos como a biblioteca Chrome e Trichrome
+• Ignorar o diretório de downloads dos backups ao fazer backup do Aurora Store
+• Implementar o instalador Shizuku (requer Android 8.0+)
+• Eliminar o suporte para Android 4.4. A versão mínima necessária do Android é 5.0+.
+• Pequenas correções de bugs e melhorias

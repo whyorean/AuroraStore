@@ -382,4 +382,5 @@
     <string name="pref_updates_auto_off">ऐप्स को ऑटो-अपडेट न करें</string>
     <string name="pref_updates_auto_desc">ऑटो-अपडेट व्यवहार कॉन्फ़िगर करें</string>
     <string name="pref_updates_auto_install">उपलब्ध अपडेट को स्वचालित रूप से जांचें और इंस्टॉल करें</string>
+    <string name="action_request_analysis">नए विश्लेषण का अनुरोध करें</string>
 </resources>
