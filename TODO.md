@@ -1,2 +1,0 @@
-- [ ] screenshots
-- [ ] ratelimiting policy
