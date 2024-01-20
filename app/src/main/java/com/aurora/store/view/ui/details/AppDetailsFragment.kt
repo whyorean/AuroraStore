@@ -64,7 +64,6 @@ import com.aurora.store.data.ViewState
 import com.aurora.store.data.event.BusEvent
 import com.aurora.store.data.event.InstallerEvent
 import com.aurora.store.data.installer.AppInstaller
-import com.aurora.store.data.installer.RootInstaller
 import com.aurora.store.data.model.DownloadStatus
 import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.databinding.FragmentDetailsBinding
@@ -89,7 +88,6 @@ import com.aurora.store.viewmodel.details.AppDetailsViewModel
 import com.aurora.store.viewmodel.details.DetailsClusterViewModel
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetBehavior.BottomSheetCallback
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import org.greenrobot.eventbus.EventBus
@@ -375,7 +373,7 @@ class AppDetailsFragment : BaseFragment(R.layout.fragment_details) {
                     }
 
                     R.id.action_uninstall -> {
-                        uninstallApp()
+                        AppInstaller.uninstall(requireContext(), app.packageName)
                     }
 
                     R.id.menu_download_manual -> {
@@ -437,27 +435,6 @@ class AppDetailsFragment : BaseFragment(R.layout.fragment_details) {
             } catch (e: ActivityNotFoundException) {
                 toast("Unable to open app")
             }
-        }
-    }
-
-    @Synchronized
-    private fun uninstallApp() {
-        val installer = AppInstaller.getInstance(requireContext()).getPreferredInstaller()
-
-        if (installer is RootInstaller) {
-            MaterialAlertDialogBuilder(requireContext())
-                .setTitle(app.displayName)
-                .setMessage(requireContext().getString(R.string.action_uninstall_confirmation))
-                .setPositiveButton(requireContext().getString(android.R.string.ok)) { _, _ ->
-                    installer.uninstall(app.packageName)
-                }
-                .setNegativeButton(requireContext().getString(android.R.string.cancel)) { dialog, _ ->
-                    dialog.dismiss()
-                }
-                .create()
-                .show()
-        } else {
-            installer.uninstall(app.packageName)
         }
     }
 

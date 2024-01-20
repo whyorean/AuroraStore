@@ -115,8 +115,7 @@ class AppMenuSheet : BaseBottomSheet() {
                     }
 
                     R.id.action_uninstall -> {
-                        AppInstaller.getInstance(requireContext())
-                            .getPreferredInstaller().uninstall(args.app.packageName)
+                        AppInstaller.uninstall(requireContext(), args.app.packageName)
                     }
 
                     R.id.action_info -> {

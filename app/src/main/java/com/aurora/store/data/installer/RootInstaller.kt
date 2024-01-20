@@ -57,30 +57,6 @@ class RootInstaller(context: Context) : InstallerBase(context) {
         }
     }
 
-    override fun uninstall(packageName: String) {
-        if (Shell.getShell().isRoot) {
-            val result: Shell.Result =
-                Shell.cmd("pm uninstall --user 0 $packageName")
-                    .exec()
-            val response = result.out
-
-            if (response[0] != "Success") {
-                postError(
-                    packageName,
-                    context.getString(R.string.installer_status_failure),
-                    parseError(result)
-                )
-            }
-        } else {
-            postError(
-                packageName,
-                context.getString(R.string.installer_status_failure),
-                context.getString(R.string.installer_root_unavailable)
-            )
-            Log.e(" >>>>>>>>>>>>>>>>>>>>>>>>>> NO ROOT ACCESS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<")
-        }
-    }
-
     private fun xInstall(packageName: String, files: List<File>) {
         var totalSize = 0
 

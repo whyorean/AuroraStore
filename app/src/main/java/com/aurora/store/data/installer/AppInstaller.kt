@@ -21,9 +21,12 @@
 package com.aurora.store.data.installer
 
 import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageInstaller
 import android.content.pm.PackageManager
+import android.net.Uri
 import com.aurora.extensions.isOAndAbove
+import com.aurora.extensions.isPAndAbove
 import com.aurora.store.BuildConfig
 import com.aurora.store.R
 import com.aurora.store.util.PackageUtil
@@ -91,6 +94,20 @@ open class AppInstaller private constructor(var context: Context) {
             return Shizuku.checkSelfPermission() == PackageManager.PERMISSION_GRANTED
         }
 
+        fun uninstall(context: Context, packageName: String) {
+            val intent = Intent().apply {
+                data = Uri.fromParts("package", packageName, null)
+                addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                if (isPAndAbove()) {
+                    action = Intent.ACTION_DELETE
+                } else {
+                    @Suppress("DEPRECATION")
+                    action = Intent.ACTION_UNINSTALL_PACKAGE
+                    putExtra(Intent.EXTRA_RETURN_RESULT, true)
+                }
+            }
+            context.startActivity(intent)
+        }
     }
 
     val choiceAndInstaller = HashMap<Int, IInstaller>()

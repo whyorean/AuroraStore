@@ -21,8 +21,6 @@ package com.aurora.store.data.installer
 
 interface IInstaller {
     fun install(packageName: String, files: List<Any>)
-    fun uninstall(packageName: String)
-
     fun clearQueue()
     fun isAlreadyQueued(packageName: String): Boolean
     fun removeFromInstallQueue(packageName: String)

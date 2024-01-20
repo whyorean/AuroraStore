@@ -20,10 +20,8 @@
 package com.aurora.store.data.installer
 
 import android.content.Context
-import android.content.Intent
 import android.net.Uri
 import androidx.core.content.FileProvider
-import com.aurora.extensions.applyUninstallActionCompat
 import com.aurora.store.AuroraApplication
 import com.aurora.store.BuildConfig
 import com.aurora.store.data.event.InstallerEvent
@@ -43,17 +41,6 @@ abstract class InstallerBase(protected var context: Context) : IInstaller {
 
     override fun removeFromInstallQueue(packageName: String) {
         AuroraApplication.enqueuedInstalls.remove(packageName)
-    }
-
-    override fun uninstall(packageName: String) {
-        val uri = Uri.fromParts("package", packageName, null)
-        val intent = Intent().apply {
-            data = uri
-            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-            applyUninstallActionCompat()
-        }
-
-        context.startActivity(intent)
     }
 
     open fun postError(packageName: String, error: String?, extra: String?) {
