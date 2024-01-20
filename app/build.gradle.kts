@@ -116,7 +116,7 @@ android {
 dependencies {
 
     //Protobuf
-    implementation("com.google.protobuf:protobuf-javalite:3.25.1")
+    implementation("com.google.protobuf:protobuf-javalite:3.25.2")
 
     //Google's Goodies
     implementation("com.google.android.material:material:1.11.0")
@@ -129,7 +129,7 @@ dependencies {
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
 
     //Arch LifeCycle
-    val lifeVersion = "2.6.2"
+    val lifeVersion = "2.7.0"
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifeVersion")
     implementation("androidx.lifecycle:lifecycle-process:$lifeVersion")
 
@@ -182,7 +182,7 @@ dependencies {
     implementation("androidx.work:work-runtime-ktx:2.9.0")
 
     //Hilt
-    val hiltVersion = "2.49"
+    val hiltVersion = "2.50"
     ksp("com.google.dagger:hilt-android-compiler:$hiltVersion")
     implementation("com.google.dagger:hilt-android:$hiltVersion")
 
