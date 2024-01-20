@@ -11,41 +11,11 @@ cache:
 
 stages:
 - build
-# - test
-- notify
-
-# lintDebug:
-#   stage: build
-#   script:
-#   - ./gradlew -Pci --console=plain :app:lintDebug -PbuildDir=lint
 
 assembleDebug:
   stage: build
   script:
-  - script -c "bash -x ci-notify.sh --build" > ci-logs.log
   - ./gradlew assembleDebug
   artifacts:
     paths:
-    - app/build/outputs/
-    - ci-logs.log
-
-# testDebug:
-#   stage: test
-#   script:
-#   - ./gradlew -Pci --console=plain :app:testDebug
-
-# Once build finished or failed, notify using Telegram
-notifyTelegram:
-  stage: notify
-  script:
-  - script -c "bash -x ci-notify.sh --notify" > ci-logs.log # build succeeded with apk file attached or failed
-  artifacts:
-    paths:
-      - ci-logs.log
-
-# if all build fails send log
-sendLogs:
-  stage: notify
-  script:
-  - sh ci-notify.sh --logs
-  when: on_failure
+    - app/build/outputs/apk/debug/app-debug.apk
