@@ -49,6 +49,9 @@ open class PackageManagerReceiver : BroadcastReceiver() {
     @Inject
     lateinit var downloadWorkerUtil: DownloadWorkerUtil
 
+    @Inject
+    lateinit var appInstaller: AppInstaller
+
     override fun onReceive(context: Context, intent: Intent) = goAsync {
         if (intent.action != null && intent.data != null) {
             val packageName = intent.data!!.encodedSchemeSpecificPart
@@ -74,9 +77,7 @@ open class PackageManagerReceiver : BroadcastReceiver() {
             }
 
             //Clear installation queue
-            AppInstaller.getInstance(context)
-                .getPreferredInstaller()
-                .removeFromInstallQueue(packageName)
+            appInstaller.getPreferredInstaller().removeFromInstallQueue(packageName)
         }
     }
 

@@ -50,6 +50,7 @@ import com.aurora.gplayapi.data.models.File as GPlayFile
 class DownloadWorker @AssistedInject constructor(
     private val downloadDao: DownloadDao,
     private val gson: Gson,
+    private val appInstaller: AppInstaller,
     @Assisted private val appContext: Context,
     @Assisted workerParams: WorkerParameters
 ) : CoroutineWorker(appContext, workerParams) {
@@ -161,16 +162,12 @@ class DownloadWorker @AssistedInject constructor(
         withContext(NonCancellable) {
             try {
                 val downloadDir = PathUtil.getAppDownloadDir(
-                    appContext,
-                    download.packageName,
-                    download.versionCode
+                    appContext, download.packageName, download.versionCode
                 )
-                AppInstaller.getInstance(appContext)
-                    .getPreferredInstaller()
-                    .install(
-                        download.packageName,
-                        downloadDir.listFiles()!!.filter { it.path.endsWith(".apk") }
-                    )
+                appInstaller.getPreferredInstaller().install(
+                    download.packageName,
+                    downloadDir.listFiles()!!.filter { it.path.endsWith(".apk") }
+                )
             } catch (exception: Exception) {
                 Log.e(TAG, "Failed to install ${download.packageName}", exception)
             }

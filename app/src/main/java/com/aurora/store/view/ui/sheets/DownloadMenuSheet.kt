@@ -54,6 +54,9 @@ class DownloadMenuSheet : BaseBottomSheet() {
     @Inject
     lateinit var downloadWorkerUtil: DownloadWorkerUtil
 
+    @Inject
+    lateinit var appInstaller: AppInstaller
+
     override fun onCreateContentView(
         inflater: LayoutInflater,
         container: ViewGroup,
@@ -113,12 +116,10 @@ class DownloadMenuSheet : BaseBottomSheet() {
                 args.download.packageName,
                 args.download.versionCode
             )
-            AppInstaller.getInstance(requireContext())
-                .getPreferredInstaller()
-                .install(
-                    args.download.packageName,
-                    downloadDir.listFiles()!!.filter { it.path.endsWith(".apk") }
-                )
+            appInstaller.getPreferredInstaller().install(
+                args.download.packageName,
+                downloadDir.listFiles()!!.filter { it.path.endsWith(".apk") }
+            )
         } catch (exception: Exception) {
             Log.e(TAG, "Failed to install ${args.download.packageName}", exception)
         }

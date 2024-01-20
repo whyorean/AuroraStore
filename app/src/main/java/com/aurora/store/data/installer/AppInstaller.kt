@@ -33,13 +33,14 @@ import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_INSTALLER_ID
 import com.topjohnwu.superuser.Shell
+import dagger.hilt.android.qualifiers.ApplicationContext
 import rikka.shizuku.Shizuku
 import rikka.sui.Sui
+import javax.inject.Inject
 
-open class AppInstaller private constructor(var context: Context) {
+class AppInstaller @Inject constructor(@ApplicationContext private val context: Context) {
 
     companion object {
-        private var instance: AppInstaller? = null
         fun getErrorString(context: Context, status: Int): String {
             return when (status) {
                 PackageInstaller.STATUS_FAILURE_ABORTED -> context.getString(R.string.installer_status_user_action)
@@ -50,12 +51,6 @@ open class AppInstaller private constructor(var context: Context) {
                 PackageInstaller.STATUS_FAILURE_STORAGE -> context.getString(R.string.installer_status_failure_storage)
                 else -> context.getString(R.string.installer_status_failure)
             }
-        }
-        fun getInstance(context: Context): AppInstaller {
-            if (instance == null) {
-                instance = AppInstaller(context.applicationContext)
-            }
-            return instance!!
         }
 
         fun hasRootAccess(): Boolean {
