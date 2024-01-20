@@ -89,16 +89,19 @@
             <nav-graph android:value="@navigation/mobile_navigation" />
         </activity>
 
+        <!-- Notification Action (Download Complete) -->
         <activity
             android:name=".data.activity.InstallActivity"
             android:exported="false"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
 
+        <!-- DownloadWorker -->
         <service
             android:name="androidx.work.impl.foreground.SystemForegroundService"
             android:foregroundServiceType="dataSync"
             tools:node="merge" />
 
+        <!-- Third-party installers -->
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.fileProvider"
@@ -109,6 +112,7 @@
                 android:resource="@xml/paths" />
         </provider>
 
+        <!-- Shizuku (Installer) -->
         <provider
             android:name="rikka.shizuku.ShizukuProvider"
             android:authorities="${applicationId}.shizuku"
@@ -124,13 +128,14 @@
             android:authorities="${applicationId}.androidx-startup"
             android:exported="false"
             tools:node="merge">
-            <!-- If you are using androidx.startup to initialize other components -->
+            <!-- Lifecycle (isForeground method in CommonUtils) -->
             <meta-data
                 android:name="androidx.work.WorkManagerInitializer"
                 android:value="androidx.startup"
                 tools:node="remove" />
         </provider>
 
+        <!-- Installation Status Receiver (Session Installer) -->
         <receiver
             android:name=".data.receiver.InstallerStatusReceiver"
             android:exported="false" />
