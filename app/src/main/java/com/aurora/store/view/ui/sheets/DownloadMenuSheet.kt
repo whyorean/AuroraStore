@@ -122,6 +122,9 @@ class DownloadMenuSheet : BaseBottomSheet() {
             )
         } catch (exception: Exception) {
             Log.e(TAG, "Failed to install ${args.download.packageName}", exception)
+            if (exception is NullPointerException) {
+                requireContext().toast(R.string.installer_status_failure_invalid)
+            }
         }
     }
 }
