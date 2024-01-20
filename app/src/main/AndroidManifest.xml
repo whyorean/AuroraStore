@@ -93,7 +93,7 @@
         <activity
             android:name=".data.activity.InstallActivity"
             android:exported="false"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+            android:theme="@style/AppTheme.Translucent" />
 
         <!-- DownloadWorker -->
         <service

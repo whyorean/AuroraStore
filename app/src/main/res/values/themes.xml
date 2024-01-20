@@ -36,6 +36,16 @@
 
     <style name="AppTheme" parent="BaseTheme" />
 
+    <style name="AppTheme.Translucent" parent="BaseTheme">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+    </style>
+
     <!-- Custom Themes -->
     <style name="AppTheme.Light" parent="Theme.Material3.Light.NoActionBar">
         <item name="colorAccent">@color/colorAccent</item>
