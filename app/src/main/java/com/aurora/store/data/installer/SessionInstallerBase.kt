@@ -24,10 +24,7 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageInstaller
-import android.net.Uri
-import androidx.core.content.FileProvider
 import com.aurora.extensions.isSAndAbove
-import com.aurora.store.BuildConfig
 import com.aurora.store.data.receiver.InstallerStatusReceiver
 import com.aurora.store.util.Log
 import java.io.File
@@ -38,26 +35,17 @@ abstract class SessionInstallerBase(context: Context) : InstallerBase(context) {
         sessionId: Int,
         session: PackageInstaller.Session,
         packageName: String,
-        files: List<Any>
+        files: List<File>
     ) {
-        val uriList = files.map {
-            when (it) {
-                is File -> getUri(it)
-                is String -> getUri(File(it))
-                else -> {
-                    throw Exception("Invalid data, expecting listOf() File or String")
-                }
-            }
-        }
 
         try {
             Log.i("Writing splits to session for $packageName")
 
-            for (uri in uriList) {
-                context.contentResolver.openInputStream(uri)?.use { input ->
-                    session.openWrite("${packageName}_${System.currentTimeMillis()}", 0, -1).use {
-                        input.copyTo(it)
-                        session.fsync(it)
+            files.forEach {
+                it.inputStream().use { input ->
+                    session.openWrite("${packageName}_${System.currentTimeMillis()}", 0, -1).use { output ->
+                        input.copyTo(output)
+                        session.fsync(output)
                     }
                 }
             }
@@ -92,21 +80,5 @@ abstract class SessionInstallerBase(context: Context) : InstallerBase(context) {
                 e.stackTraceToString()
             )
         }
-    }
-
-    override fun getUri(file: File): Uri {
-        val uri = FileProvider.getUriForFile(
-            context,
-            "${BuildConfig.APPLICATION_ID}.fileProvider",
-            file
-        )
-
-        context.grantUriPermission(
-            BuildConfig.APPLICATION_ID,
-            uri,
-            Intent.FLAG_GRANT_READ_URI_PERMISSION or Intent.FLAG_GRANT_WRITE_URI_PERMISSION
-        )
-
-        return uri
     }
 }

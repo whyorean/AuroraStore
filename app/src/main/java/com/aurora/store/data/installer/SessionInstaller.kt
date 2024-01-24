@@ -29,6 +29,7 @@ import com.aurora.extensions.isOAndAbove
 import com.aurora.extensions.isSAndAbove
 import com.aurora.extensions.isTAndAbove
 import com.aurora.extensions.isUAndAbove
+import com.aurora.store.data.room.download.Download
 import com.aurora.store.util.Log
 import kotlin.properties.Delegates
 
@@ -37,15 +38,15 @@ class SessionInstaller(context: Context) : SessionInstallerBase(context) {
 
     var sessionId by Delegates.notNull<Int>()
 
-    override fun install(packageName: String, files: List<Any>) {
-        if (isAlreadyQueued(packageName)) {
-            Log.i("$packageName already queued")
+    override fun install(download: Download) {
+        if (isAlreadyQueued(download.packageName)) {
+            Log.i("${download.packageName} already queued")
         } else {
-            Log.i("Received session install request for $packageName")
+            Log.i("Received session install request for ${download.packageName}")
 
             val packageInstaller = context.packageManager.packageInstaller
             val sessionParams = SessionParams(SessionParams.MODE_FULL_INSTALL).apply {
-                setAppPackageName(packageName)
+                setAppPackageName(download.packageName)
                 if (isOAndAbove()) {
                     setInstallReason(PackageManager.INSTALL_REASON_USER)
                 }
@@ -66,7 +67,12 @@ class SessionInstaller(context: Context) : SessionInstallerBase(context) {
             sessionId = packageInstaller.createSession(sessionParams)
             val session = packageInstaller.openSession(sessionId)
 
-            xInstall(sessionId, session, packageName, files)
+            xInstall(
+                sessionId,
+                session,
+                download.packageName,
+                getFiles(download.packageName, download.versionCode)
+            )
         }
     }
 }

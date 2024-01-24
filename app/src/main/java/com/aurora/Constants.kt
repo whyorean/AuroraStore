@@ -24,6 +24,7 @@ object Constants {
     const val FLOAT_EXTRA = "FLOAT_EXTRA"
     const val STRING_APP = "STRING_APP"
     const val STRING_VERSION = "STRING_VERSION"
+    const val PARCEL_DOWNLOAD = "PARCEL_DOWNLOAD"
     const val STRING_EXTRA = "STRING_EXTRA"
     const val BROWSE_EXTRA = "BROWSE_EXTRA"
 

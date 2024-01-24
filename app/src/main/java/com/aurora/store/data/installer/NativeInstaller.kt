@@ -23,28 +23,19 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Build
+import com.aurora.store.data.room.download.Download
 import com.aurora.store.util.Log
 import java.io.File
 
 @Deprecated("Deprecated in favour of SessionInstaller")
 class NativeInstaller(context: Context) : InstallerBase(context) {
 
-    override fun install(packageName: String, files: List<Any>) {
-        if (isAlreadyQueued(packageName)) {
-            Log.i("$packageName already queued")
+    override fun install(download: Download) {
+        if (isAlreadyQueued(download.packageName)) {
+            Log.i("${download.packageName} already queued")
         } else {
-            Log.i("Received native install request for $packageName")
-            files.map {
-                when (it) {
-                    is File -> it
-                    is String -> File(it)
-                    else -> {
-                        throw Exception("Invalid data, expecting listOf() File or String")
-                    }
-                }
-            }.forEach {
-                xInstall(it)
-            }
+            Log.i("Received native install request for ${download.packageName}")
+            getFiles(download.packageName, download.versionCode).forEach { xInstall(it) }
         }
     }
 

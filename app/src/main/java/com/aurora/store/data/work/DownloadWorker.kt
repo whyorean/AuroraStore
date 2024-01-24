@@ -161,13 +161,7 @@ class DownloadWorker @AssistedInject constructor(
     private suspend fun onSuccess() {
         withContext(NonCancellable) {
             try {
-                val downloadDir = PathUtil.getAppDownloadDir(
-                    appContext, download.packageName, download.versionCode
-                )
-                appInstaller.getPreferredInstaller().install(
-                    download.packageName,
-                    downloadDir.listFiles()!!.filter { it.path.endsWith(".apk") }
-                )
+                appInstaller.getPreferredInstaller().install(download)
             } catch (exception: Exception) {
                 Log.e(TAG, "Failed to install ${download.packageName}", exception)
             }

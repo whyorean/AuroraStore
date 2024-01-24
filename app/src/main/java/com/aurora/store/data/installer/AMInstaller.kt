@@ -3,6 +3,7 @@ package com.aurora.store.data.installer
 import android.content.Context
 import android.content.Intent
 import androidx.core.content.FileProvider
+import com.aurora.store.data.room.download.Download
 import com.aurora.store.util.Log
 import java.io.*
 import java.util.zip.ZipEntry
@@ -14,20 +15,13 @@ class AMInstaller(context: Context) : InstallerBase(context) {
         const val AM_DEBUG_PACKAGE_NAME = "io.github.muntashirakon.AppManager.debug"
     }
 
-    override fun install(packageName: String, files: List<Any>) {
-        if (isAlreadyQueued(packageName)) {
-            Log.i("$packageName already queued")
+    override fun install(download: Download) {
+        if (isAlreadyQueued(download.packageName)) {
+            Log.i("${download.packageName} already queued")
         } else {
-            Log.i("Received AM install request for $packageName")
-            val fileList = files.map {
-                when (it) {
-                    is File -> it.absolutePath
-                    is String -> File(it).absolutePath
-                    else -> {
-                        throw Exception("Invalid data, expecting listOf() File or String")
-                    }
-                }
-            }
+            Log.i("Received AM install request for ${download.packageName}")
+            val fileList =
+                getFiles(download.packageName, download.versionCode).map { it.absolutePath }
             when {
                 fileList.size == 1 -> {
                     xInstall(File(fileList.first()))
@@ -44,7 +38,7 @@ class AMInstaller(context: Context) : InstallerBase(context) {
     }
 
     private fun xInstall(file: File) {
-        val intent: Intent = Intent(Intent.ACTION_VIEW)
+        val intent = Intent(Intent.ACTION_VIEW)
         intent.setDataAndType(
             FileProvider.getUriForFile(
                 context,

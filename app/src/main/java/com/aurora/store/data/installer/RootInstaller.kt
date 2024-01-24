@@ -22,6 +22,7 @@ package com.aurora.store.data.installer
 import android.content.Context
 import com.aurora.store.R
 import com.aurora.store.data.event.InstallerEvent
+import com.aurora.store.data.room.download.Download
 import com.aurora.store.util.Log
 import com.topjohnwu.superuser.Shell
 import org.greenrobot.eventbus.EventBus
@@ -30,25 +31,15 @@ import java.util.regex.Pattern
 
 class RootInstaller(context: Context) : InstallerBase(context) {
 
-    override fun install(packageName: String, files: List<Any>) {
-        if (isAlreadyQueued(packageName)) {
-            Log.i("$packageName already queued")
+    override fun install(download: Download) {
+        if (isAlreadyQueued(download.packageName)) {
+            Log.i("${download.packageName} already queued")
         } else {
             if (Shell.getShell().isRoot) {
-                files.map {
-                    when (it) {
-                        is File -> it
-                        is String -> File(it)
-                        else -> {
-                            throw Exception("Invalid data, expecting listOf() File or String")
-                        }
-                    }
-                }.let {
-                    xInstall(packageName, it)
-                }
+                xInstall(download.packageName, getFiles(download.packageName, download.versionCode))
             } else {
                 postError(
-                    packageName,
+                    download.packageName,
                     context.getString(R.string.installer_status_failure),
                     context.getString(R.string.installer_root_unavailable)
                 )

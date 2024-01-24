@@ -34,7 +34,6 @@ import com.aurora.store.data.installer.AppInstaller
 import com.aurora.store.data.model.DownloadStatus
 import com.aurora.store.databinding.SheetDownloadMenuBinding
 import com.aurora.store.util.DownloadWorkerUtil
-import com.aurora.store.util.PathUtil
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 import kotlinx.coroutines.NonCancellable
@@ -111,15 +110,7 @@ class DownloadMenuSheet : BaseBottomSheet() {
 
     private fun install() {
         try {
-            val downloadDir = PathUtil.getAppDownloadDir(
-                requireContext(),
-                args.download.packageName,
-                args.download.versionCode
-            )
-            appInstaller.getPreferredInstaller().install(
-                args.download.packageName,
-                downloadDir.listFiles()!!.filter { it.path.endsWith(".apk") }
-            )
+            appInstaller.getPreferredInstaller().install(args.download)
         } catch (exception: Exception) {
             Log.e(TAG, "Failed to install ${args.download.packageName}", exception)
             if (exception is NullPointerException) {

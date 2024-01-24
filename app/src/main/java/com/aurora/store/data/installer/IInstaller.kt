@@ -19,8 +19,10 @@
 
 package com.aurora.store.data.installer
 
+import com.aurora.store.data.room.download.Download
+
 interface IInstaller {
-    fun install(packageName: String, files: List<Any>)
+    fun install(download: Download)
     fun clearQueue()
     fun isAlreadyQueued(packageName: String): Boolean
     fun removeFromInstallQueue(packageName: String)

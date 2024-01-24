@@ -4,9 +4,10 @@ import android.content.pm.PackageInstaller
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.IntentCompat
 import com.aurora.Constants
 import com.aurora.store.data.installer.SessionInstaller
-import com.aurora.store.util.PathUtil
+import com.aurora.store.data.room.download.Download
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -19,9 +20,10 @@ class InstallActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val packageName = intent.extras?.getString(Constants.STRING_APP) ?: String()
-        val versionCode = intent.extras?.getInt(Constants.STRING_VERSION)
-        if (packageName.isNotBlank() && versionCode != null) {
+        val download =
+            IntentCompat.getParcelableExtra(intent, Constants.PARCEL_DOWNLOAD, Download::class.java)
+
+        if (download != null) {
             val callback = object : PackageInstaller.SessionCallback() {
                 override fun onCreated(sessionId: Int) {}
 
@@ -39,15 +41,14 @@ class InstallActivity : AppCompatActivity() {
                 }
             }
             packageManager.packageInstaller.registerSessionCallback(callback)
-            install(packageName, versionCode)
+            install(download)
         }
     }
 
-    private fun install(packageName: String, versionCode: Int) {
+    private fun install(download: Download) {
         sessionInstaller = SessionInstaller(this)
         try {
-            val files = PathUtil.getAppDownloadDir(this, packageName, versionCode).listFiles()
-            sessionInstaller.install(packageName, files!!.filter { it.path.endsWith(".apk") })
+            sessionInstaller.install(download)
         } catch (exception: Exception) {
             Log.e(TAG, "Failed to install $packageName")
             finish()

@@ -29,11 +29,11 @@ import androidx.annotation.RequiresApi
 import com.aurora.extensions.isOAndAbove
 import com.aurora.extensions.isSAndAbove
 import com.aurora.store.R
+import com.aurora.store.data.room.download.Download
 import com.aurora.store.util.Log
 import dev.rikka.tools.refine.Refine
 import rikka.shizuku.ShizukuBinderWrapper
 import rikka.shizuku.SystemServiceHelper
-
 
 class ShizukuInstaller(context: Context) : SessionInstallerBase(context) {
 
@@ -66,11 +66,11 @@ class ShizukuInstaller(context: Context) : SessionInstallerBase(context) {
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    override fun install(packageName: String, files: List<Any>) {
-        if (isAlreadyQueued(packageName)) {
-            Log.i("$packageName already queued")
+    override fun install(download: Download) {
+        if (isAlreadyQueued(download.packageName)) {
+            Log.i("${download.packageName} already queued")
         } else {
-            Log.i("Received session install request for $packageName")
+            Log.i("Received session install request for ${download.packageName}")
 
             val (sessionId, session) = kotlin.runCatching {
                 val params = SessionParams(SessionParams.MODE_FULL_INSTALL)
@@ -94,14 +94,19 @@ class ShizukuInstaller(context: Context) : SessionInstallerBase(context) {
             }.getOrElse { ex ->
                 ex.printStackTrace()
                 postError(
-                    packageName,
+                    download.packageName,
                     context.getString(R.string.installer_status_failure),
                     context.getString(R.string.installer_shizuku_unavailable)
                 )
                 return
             }
 
-            xInstall(sessionId, session, packageName, files)
+            xInstall(
+                sessionId,
+                session,
+                download.packageName,
+                getFiles(download.packageName, download.versionCode)
+            )
         }
     }
 }

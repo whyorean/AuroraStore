@@ -26,6 +26,7 @@ import com.aurora.store.data.room.download.Download as AuroraDownload
 import com.aurora.store.R
 import com.aurora.store.data.activity.InstallActivity
 import com.aurora.store.data.model.DownloadStatus
+import com.aurora.store.data.room.download.Download
 import java.net.URL
 import java.util.UUID
 
@@ -121,7 +122,7 @@ object NotificationUtil {
                     NotificationCompat.Action.Builder(
                         R.drawable.ic_install,
                         context.getString(R.string.action_install),
-                        getInstallIntent(context, download.packageName, download.versionCode)
+                        getInstallIntent(context, download)
                     ).build()
                 )
             }
@@ -207,14 +208,9 @@ object NotificationUtil {
             .createPendingIntent()
     }
 
-    private fun getInstallIntent(
-        context: Context,
-        packageName: String,
-        version: Int
-    ): PendingIntent {
+    private fun getInstallIntent(context: Context, download: Download): PendingIntent {
         val intent = Intent(context, InstallActivity::class.java).apply {
-            putExtra(Constants.STRING_APP, packageName)
-            putExtra(Constants.STRING_VERSION, version)
+            putExtra(Constants.PARCEL_DOWNLOAD, download)
         }
         val flags = if (isMAndAbove()) {
             PendingIntent.FLAG_CANCEL_CURRENT or PendingIntent.FLAG_IMMUTABLE
@@ -222,7 +218,7 @@ object NotificationUtil {
             PendingIntent.FLAG_CANCEL_CURRENT
         }
         return PendingIntent.getActivity(
-            context, packageName.hashCode(), intent, flags
+            context, download.packageName.hashCode(), intent, flags
         )
     }
 }

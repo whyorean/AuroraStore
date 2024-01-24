@@ -25,7 +25,9 @@ import androidx.core.content.FileProvider
 import com.aurora.store.AuroraApplication
 import com.aurora.store.BuildConfig
 import com.aurora.store.data.event.InstallerEvent
+import com.aurora.store.data.room.download.Download
 import com.aurora.store.util.Log
+import com.aurora.store.util.PathUtil
 import org.greenrobot.eventbus.EventBus
 import java.io.File
 
@@ -53,6 +55,15 @@ abstract class InstallerBase(protected var context: Context) : IInstaller {
         )
 
         EventBus.getDefault().post(event)
+    }
+
+    open fun getFiles(packageName: String, versionCode: Int, sharedLibPackageName: String = ""): List<File> {
+        val downloadDir = if (sharedLibPackageName.isNotBlank()) {
+            PathUtil.getLibDownloadDir(context, packageName, versionCode, sharedLibPackageName)
+        } else {
+            PathUtil.getAppDownloadDir(context, packageName, versionCode)
+        }
+        return downloadDir.listFiles()!!.filter { it.path.endsWith(".apk") }
     }
 
     open fun getUri(file: File): Uri {

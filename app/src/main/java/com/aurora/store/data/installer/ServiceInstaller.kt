@@ -37,6 +37,7 @@ import com.aurora.store.BuildConfig
 import com.aurora.store.R
 import com.aurora.store.data.event.BusEvent
 import com.aurora.store.data.event.InstallerEvent
+import com.aurora.store.data.room.download.Download
 import com.aurora.store.util.Log
 import com.aurora.store.util.PackageUtil
 import org.greenrobot.eventbus.EventBus
@@ -58,39 +59,25 @@ class ServiceInstaller(context: Context) : InstallerBase(context) {
         const val PRIVILEGED_EXTENSION_SERVICE_INTENT = "com.aurora.services.IPrivilegedService"
     }
 
-    override fun install(packageName: String, files: List<Any>) {
+    override fun install(download: Download) {
 
         when {
-            isAlreadyQueued(packageName) -> {
-                Log.i("$packageName already queued")
+            isAlreadyQueued(download.packageName) -> {
+                Log.i("${download.packageName} already queued")
             }
 
             PackageUtil.isInstalled(context, PRIVILEGED_EXTENSION_PACKAGE_NAME) -> {
-                Log.i("Received service install request for $packageName")
-                val uriList = files.map {
-                    when (it) {
-                        is File -> getUri(it)
-                        is String -> getUri(File(it))
-                        else -> {
-                            throw Exception("Invalid data, expecting listOf() File or String")
-                        }
-                    }
-                }
-                val fileList = files.map {
-                    when (it) {
-                        is File -> it.absolutePath
-                        is String -> File(it).absolutePath
-                        else -> {
-                            throw Exception("Invalid data, expecting listOf() File or String")
-                        }
-                    }
-                }
-
-                xInstall(packageName, uriList, fileList)
+                Log.i("Received service install request for ${download.packageName}")
+                val fileList = getFiles(download.packageName, download.versionCode)
+                xInstall(
+                    download.packageName,
+                    fileList.map { getUri(it) },
+                    fileList.map { it.absolutePath }
+                )
             }
             else -> {
                 postError(
-                    packageName,
+                    download.packageName,
                     context.getString(R.string.installer_status_failure),
                     context.getString(R.string.installer_service_unavailable)
                 )
