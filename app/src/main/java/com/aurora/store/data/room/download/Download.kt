@@ -29,6 +29,7 @@ data class Download(
     val sharedLibs: List<SharedLib>
 ) : Parcelable {
     val isFinished get() = downloadStatus in DownloadStatus.finished
+    val isRunning get() = downloadStatus in DownloadStatus.running
 
     companion object {
         fun fromApp(app: App): Download {

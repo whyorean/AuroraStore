@@ -95,7 +95,7 @@ class UpdatesFragment : BaseFragment(R.layout.fragment_updates) {
             }.collectLatest { map ->
                 updateController(map)
                 binding.swipeRefreshLayout.isRefreshing = false
-                viewModel.updateAllEnqueued = map?.values?.all { it?.isFinished != true } ?: false
+                viewModel.updateAllEnqueued = map?.values?.all { it?.isRunning == true } ?: false
             }
         }
 

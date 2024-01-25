@@ -10,5 +10,6 @@ enum class DownloadStatus {
 
     companion object {
         val finished = listOf(FAILED, CANCELLED, COMPLETED)
+        val running = listOf(QUEUED, DOWNLOADING)
     }
 }
