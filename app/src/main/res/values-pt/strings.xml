@@ -382,4 +382,5 @@
     <string name="pref_updates_auto_notify">Verificar e notificar sobre atualizações disponíveis</string>
     <string name="pref_updates_auto_install">Verificar e instalar atualizações disponíveis automaticamente</string>
     <string name="pref_updates_auto_off">Não atualizar apps automaticamente</string>
+    <string name="action_request_analysis">Requisitar nova análise</string>
 </resources>
