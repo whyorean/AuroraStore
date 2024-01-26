@@ -34,7 +34,7 @@ class InstallActivity : AppCompatActivity() {
                 override fun onProgressChanged(sessionId: Int, progress: Float) {}
 
                 override fun onFinished(sessionId: Int, success: Boolean) {
-                    if (sessionInstaller.sessionId == sessionId) {
+                    if (sessionInstaller.parentSessionId == sessionId) {
                         Log.i(TAG, "Install finished with status code: $success")
                         finish()
                     }

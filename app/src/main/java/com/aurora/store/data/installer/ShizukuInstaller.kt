@@ -19,7 +19,9 @@
 
 package com.aurora.store.data.installer
 
+import android.app.PendingIntent
 import android.content.Context
+import android.content.Intent
 import android.content.pm.*
 import android.content.pm.PackageInstaller.SessionParams
 import android.os.Build
@@ -29,13 +31,16 @@ import androidx.annotation.RequiresApi
 import com.aurora.extensions.isOAndAbove
 import com.aurora.extensions.isSAndAbove
 import com.aurora.store.R
+import com.aurora.store.data.receiver.InstallerStatusReceiver
 import com.aurora.store.data.room.download.Download
 import com.aurora.store.util.Log
+import com.aurora.store.util.PackageUtil.isSharedLibraryInstalled
 import dev.rikka.tools.refine.Refine
 import rikka.shizuku.ShizukuBinderWrapper
 import rikka.shizuku.SystemServiceHelper
 
-class ShizukuInstaller(context: Context) : SessionInstallerBase(context) {
+@RequiresApi(Build.VERSION_CODES.O)
+class ShizukuInstaller(context: Context) : InstallerBase(context) {
 
     companion object {
         const val SHIZUKU_PACKAGE_NAME = "moe.shizuku.privileged.api"
@@ -65,48 +70,89 @@ class ShizukuInstaller(context: Context) : SessionInstallerBase(context) {
         } else null
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
     override fun install(download: Download) {
         if (isAlreadyQueued(download.packageName)) {
             Log.i("${download.packageName} already queued")
         } else {
-            Log.i("Received session install request for ${download.packageName}")
+            download.sharedLibs.forEach {
+                // Shared library packages cannot be updated
+                if (!isSharedLibraryInstalled(context, it.packageName, it.versionCode)) {
+                    install(download.packageName, download.versionCode, it.packageName)
+                }
+            }
+            install(download.packageName, download.versionCode)
+        }
+    }
 
-            val (sessionId, session) = kotlin.runCatching {
-                val params = SessionParams(SessionParams.MODE_FULL_INSTALL)
+    private fun install(packageName: String, versionCode: Int, sharedLibPkgName: String = "") {
+        Log.i("Received session install request for ${sharedLibPkgName.ifBlank { packageName }}")
 
-                // Replace existing app (Updates)
-                var flags = Refine
-                    .unsafeCast<PackageInstallerHidden.SessionParamsHidden>(params).installFlags
-                flags = flags or PackageManagerHidden.INSTALL_REPLACE_EXISTING
-                Refine.unsafeCast<PackageInstallerHidden.SessionParamsHidden>(params).installFlags =
-                    flags
+        val (sessionId, session) = kotlin.runCatching {
+            val params = SessionParams(SessionParams.MODE_FULL_INSTALL)
 
-                val sessionId = packageInstaller!!.createSession(params)
-                val iSession = IPackageInstallerSession.Stub.asInterface(
-                    iPackageInstaller.openSession(sessionId).asShizukuBinder()
-                )
-                val session = Refine.unsafeCast<PackageInstaller.Session>(
-                    PackageInstallerHidden.SessionHidden(iSession)
-                )
+            // Replace existing app (Updates)
+            var flags = Refine
+                .unsafeCast<PackageInstallerHidden.SessionParamsHidden>(params).installFlags
+            flags = flags or PackageManagerHidden.INSTALL_REPLACE_EXISTING
+            Refine.unsafeCast<PackageInstallerHidden.SessionParamsHidden>(params).installFlags =
+                flags
 
-                sessionId to session
-            }.getOrElse { ex ->
-                ex.printStackTrace()
-                postError(
-                    download.packageName,
-                    context.getString(R.string.installer_status_failure),
-                    context.getString(R.string.installer_shizuku_unavailable)
-                )
-                return
+            val sessionId = packageInstaller!!.createSession(params)
+            val iSession = IPackageInstallerSession.Stub.asInterface(
+                iPackageInstaller.openSession(sessionId).asShizukuBinder()
+            )
+            val session = Refine.unsafeCast<PackageInstaller.Session>(
+                PackageInstallerHidden.SessionHidden(iSession)
+            )
+
+            sessionId to session
+        }.getOrElse { ex ->
+            ex.printStackTrace()
+            postError(
+                packageName,
+                context.getString(R.string.installer_status_failure),
+                context.getString(R.string.installer_shizuku_unavailable)
+            )
+            return
+        }
+
+        try {
+            Log.i("Writing splits to session for ${sharedLibPkgName.ifBlank { packageName }}")
+            getFiles(packageName, versionCode, sharedLibPkgName).forEach {
+                it.inputStream().use { input ->
+                    session.openWrite("${sharedLibPkgName.ifBlank { packageName }}_${System.currentTimeMillis()}", 0, -1).use { output ->
+                        input.copyTo(output)
+                        session.fsync(output)
+                    }
+                }
             }
 
-            xInstall(
+            val callBackIntent = Intent(context, InstallerStatusReceiver::class.java).apply {
+                action = InstallerStatusReceiver.ACTION_INSTALL_STATUS
+                setPackage(context.packageName)
+                addFlags(Intent.FLAG_RECEIVER_FOREGROUND)
+                putExtra(PackageInstaller.EXTRA_PACKAGE_NAME, sharedLibPkgName.ifBlank { packageName })
+            }
+            val flags = if (isSAndAbove()) {
+                PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_MUTABLE
+            } else {
+                PendingIntent.FLAG_UPDATE_CURRENT
+            }
+
+            val pendingIntent = PendingIntent.getBroadcast(
+                context,
                 sessionId,
-                session,
-                download.packageName,
-                getFiles(download.packageName, download.versionCode)
+                callBackIntent,
+                flags
             )
+
+            Log.i("Starting install session for $packageName")
+            session.commit(pendingIntent.intentSender)
+            session.close()
+        } catch (exception: Exception) {
+            session.abandon()
+            removeFromInstallQueue(packageName)
+            postError(packageName, exception.localizedMessage, exception.stackTraceToString())
         }
     }
 }

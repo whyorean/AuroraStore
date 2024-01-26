@@ -20,6 +20,7 @@ import com.aurora.extensions.isSAndAbove
 import com.aurora.extensions.requiresObbDir
 import com.aurora.gplayapi.helpers.PurchaseHelper
 import com.aurora.store.data.installer.AppInstaller
+import com.aurora.store.data.installer.SessionInstaller
 import com.aurora.store.data.model.DownloadInfo
 import com.aurora.store.data.model.DownloadStatus
 import com.aurora.store.data.model.Request
@@ -42,6 +43,7 @@ import java.io.File
 import java.net.URL
 import java.security.DigestInputStream
 import java.security.MessageDigest
+import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.NonCancellable
 import kotlin.properties.Delegates
 import com.aurora.gplayapi.data.models.File as GPlayFile
@@ -159,9 +161,11 @@ class DownloadWorker @AssistedInject constructor(
     }
 
     private suspend fun onSuccess() {
-        withContext(NonCancellable) {
+        val installer = appInstaller.getPreferredInstaller()
+        val dispatcher = if (installer is SessionInstaller) Dispatchers.Main else NonCancellable
+        withContext(dispatcher) {
             try {
-                appInstaller.getPreferredInstaller().install(download)
+                installer.install(download)
             } catch (exception: Exception) {
                 Log.e(TAG, "Failed to install ${download.packageName}", exception)
             }

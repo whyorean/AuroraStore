@@ -53,14 +53,22 @@ object PackageUtil {
         }
     }
 
+    fun isSharedLibrary(context: Context, packageName: String): Boolean {
+        return if (isOAndAbove()) {
+            getAllSharedLibraries(context).any { it.name == packageName }
+        } else {
+            false
+        }
+    }
+
     fun isSharedLibraryInstalled(context: Context, packageName: String, versionCode: Int): Boolean {
-        if (isOAndAbove()) {
+        return if (isOAndAbove()) {
             val sharedLibraries = getAllSharedLibraries(context)
-            return sharedLibraries.any {
+            sharedLibraries.any {
                 it.name == packageName && it.version == versionCode
             }
         } else {
-            return false
+            false
         }
     }
 

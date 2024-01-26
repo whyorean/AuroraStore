@@ -20,23 +20,31 @@
 
 package com.aurora.store.data.installer
 
+import android.app.PendingIntent
 import android.content.Context
+import android.content.Intent
+import android.content.pm.PackageInstaller
 import android.content.pm.PackageInstaller.PACKAGE_SOURCE_STORE
 import android.content.pm.PackageInstaller.SessionParams
 import android.content.pm.PackageManager
+import android.os.Process
 import com.aurora.extensions.isNAndAbove
 import com.aurora.extensions.isOAndAbove
 import com.aurora.extensions.isSAndAbove
 import com.aurora.extensions.isTAndAbove
 import com.aurora.extensions.isUAndAbove
+import com.aurora.store.data.receiver.InstallerStatusReceiver
 import com.aurora.store.data.room.download.Download
 import com.aurora.store.util.Log
+import com.aurora.store.util.PackageUtil.isSharedLibraryInstalled
 import kotlin.properties.Delegates
 
+class SessionInstaller(context: Context) : InstallerBase(context) {
 
-class SessionInstaller(context: Context) : SessionInstallerBase(context) {
+    var parentSessionId by Delegates.notNull<Int>()
 
-    var sessionId by Delegates.notNull<Int>()
+    private val packageInstaller = context.packageManager.packageInstaller
+    private val sessionIdMap = mutableMapOf<Int, String>()
 
     override fun install(download: Download) {
         if (isAlreadyQueued(download.packageName)) {
@@ -44,35 +52,109 @@ class SessionInstaller(context: Context) : SessionInstallerBase(context) {
         } else {
             Log.i("Received session install request for ${download.packageName}")
 
-            val packageInstaller = context.packageManager.packageInstaller
-            val sessionParams = SessionParams(SessionParams.MODE_FULL_INSTALL).apply {
-                setAppPackageName(download.packageName)
-                if (isOAndAbove()) {
-                    setInstallReason(PackageManager.INSTALL_REASON_USER)
-                }
-                if (isNAndAbove()) {
-                    setOriginatingUid(android.os.Process.myUid())
-                }
-                if (isSAndAbove()) {
-                    setRequireUserAction(SessionParams.USER_ACTION_NOT_REQUIRED)
-                }
-                if (isTAndAbove()) {
-                    setPackageSource(PACKAGE_SOURCE_STORE)
-                }
-                if (isUAndAbove()) {
-                    setInstallerPackageName(context.packageName)
+            val callback = object : PackageInstaller.SessionCallback() {
+                override fun onCreated(sessionId: Int) {}
+
+                override fun onBadgingChanged(sessionId: Int) {}
+
+                override fun onActiveChanged(sessionId: Int, active: Boolean) {}
+
+                override fun onProgressChanged(sessionId: Int, progress: Float) {}
+
+                override fun onFinished(sessionId: Int, success: Boolean) {
+                    if (sessionId in sessionIdMap.keys && success) {
+                        sessionIdMap.remove(sessionId)
+                        if (sessionIdMap.isNotEmpty()) {
+                            val nextSession = sessionIdMap.keys.first()
+                            commitInstall(sessionIdMap.getValue(nextSession), nextSession)
+                        } else {
+                            packageInstaller.unregisterSessionCallback(this)
+                        }
+                    }
                 }
             }
 
-            sessionId = packageInstaller.createSession(sessionParams)
-            val session = packageInstaller.openSession(sessionId)
+            download.sharedLibs.forEach {
+                // Shared library packages cannot be updated
+                if (!isSharedLibraryInstalled(context, it.packageName, it.versionCode)) {
+                    stageInstall(download.packageName, download.versionCode, it.packageName)
+                }
+            }
+            stageInstall(download.packageName, download.versionCode)
 
-            xInstall(
-                sessionId,
-                session,
-                download.packageName,
-                getFiles(download.packageName, download.versionCode)
+            if (sessionIdMap.size > 1) packageInstaller.registerSessionCallback(callback)
+            commitInstall(
+                sessionIdMap.getValue(sessionIdMap.keys.first()),
+                sessionIdMap.keys.first()
             )
         }
+    }
+
+    private fun stageInstall(packageName: String, versionCode: Int, sharedLibPkgName: String = "") {
+        val packageInstaller = context.packageManager.packageInstaller
+
+        val sessionParams = SessionParams(SessionParams.MODE_FULL_INSTALL).apply {
+            setAppPackageName(sharedLibPkgName.ifBlank { packageName })
+            if (isOAndAbove()) {
+                setInstallReason(PackageManager.INSTALL_REASON_USER)
+            }
+            if (isNAndAbove()) {
+                setOriginatingUid(Process.myUid())
+            }
+            if (isSAndAbove()) {
+                setRequireUserAction(SessionParams.USER_ACTION_NOT_REQUIRED)
+            }
+            if (isTAndAbove()) {
+                setPackageSource(PACKAGE_SOURCE_STORE)
+            }
+            if (isUAndAbove()) {
+                setInstallerPackageName(context.packageName)
+            }
+        }
+        val sessionId = packageInstaller.createSession(sessionParams)
+        val session = packageInstaller.openSession(sessionId)
+
+        try {
+            Log.i("Writing splits to session for $packageName")
+            getFiles(packageName, versionCode, sharedLibPkgName).forEach {
+                it.inputStream().use { input ->
+                    session.openWrite("${sharedLibPkgName.ifBlank { packageName }}_${System.currentTimeMillis()}", 0, -1).use { output ->
+                        input.copyTo(output)
+                        session.fsync(output)
+                    }
+                }
+            }
+
+            // Add session to list of staged sessions
+            sessionIdMap[sessionId] = packageName
+            if (sharedLibPkgName.isBlank()) parentSessionId = sessionId
+        } catch (exception: Exception) {
+            session.abandon()
+            removeFromInstallQueue(packageName)
+            postError(packageName, exception.localizedMessage, exception.stackTraceToString())
+        }
+    }
+
+    private fun commitInstall(packageName: String, sessionId: Int) {
+        Log.i("Starting install session for $packageName")
+        val session = packageInstaller.openSession(sessionId)
+        session.commit(getCallBackIntent(packageName).intentSender)
+        session.close()
+    }
+
+    private fun getCallBackIntent(packageName: String): PendingIntent {
+        val callBackIntent = Intent(context, InstallerStatusReceiver::class.java).apply {
+            action = InstallerStatusReceiver.ACTION_INSTALL_STATUS
+            setPackage(context.packageName)
+            putExtra(PackageInstaller.EXTRA_PACKAGE_NAME, packageName)
+            addFlags(Intent.FLAG_RECEIVER_FOREGROUND)
+        }
+        val flags = if (isSAndAbove()) {
+            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_MUTABLE
+        } else {
+            PendingIntent.FLAG_UPDATE_CURRENT
+        }
+
+        return PendingIntent.getBroadcast(context, parentSessionId, callBackIntent, flags)
     }
 }

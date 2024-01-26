@@ -32,11 +32,14 @@ import com.aurora.store.data.model.DownloadStatus
 import com.aurora.store.data.room.download.Download
 import com.aurora.store.util.DownloadWorkerUtil
 import com.aurora.store.util.NotificationUtil
+import com.aurora.store.util.PackageUtil.isSharedLibrary
 import com.aurora.store.util.PathUtil
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_AUTO_DELETE
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.cancel
 import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.firstOrNull
 import org.greenrobot.eventbus.EventBus
@@ -55,6 +58,9 @@ open class PackageManagerReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) = goAsync {
         if (intent.action != null && intent.data != null) {
             val packageName = intent.data!!.encodedSchemeSpecificPart
+
+            // We don't care about shared libraries, bail out
+            if (isSharedLibrary(context, packageName)) return@goAsync
 
             when (intent.action) {
                 Intent.ACTION_PACKAGE_ADDED -> {

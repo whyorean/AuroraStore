@@ -24,9 +24,9 @@ import com.aurora.store.R
 import com.aurora.store.data.event.InstallerEvent
 import com.aurora.store.data.room.download.Download
 import com.aurora.store.util.Log
+import com.aurora.store.util.PackageUtil.isSharedLibraryInstalled
 import com.topjohnwu.superuser.Shell
 import org.greenrobot.eventbus.EventBus
-import java.io.File
 import java.util.regex.Pattern
 
 class RootInstaller(context: Context) : InstallerBase(context) {
@@ -36,7 +36,13 @@ class RootInstaller(context: Context) : InstallerBase(context) {
             Log.i("${download.packageName} already queued")
         } else {
             if (Shell.getShell().isRoot) {
-                xInstall(download.packageName, getFiles(download.packageName, download.versionCode))
+                download.sharedLibs.forEach {
+                    // Shared library packages cannot be updated
+                    if (!isSharedLibraryInstalled(context, it.packageName, it.versionCode)) {
+                        xInstall(download.packageName, download.versionCode, it.packageName)
+                    }
+                }
+                xInstall(download.packageName, download.versionCode)
             } else {
                 postError(
                     download.packageName,
@@ -48,10 +54,10 @@ class RootInstaller(context: Context) : InstallerBase(context) {
         }
     }
 
-    private fun xInstall(packageName: String, files: List<File>) {
+    private fun xInstall(packageName: String, versionCode: Int, sharedLibPkgName: String = "") {
         var totalSize = 0
 
-        for (file in files)
+        for (file in getFiles(packageName, versionCode, sharedLibPkgName))
             totalSize += file.length().toInt()
 
         val result: Shell.Result =
@@ -67,7 +73,7 @@ class RootInstaller(context: Context) : InstallerBase(context) {
         if (found) {
             val sessionId = sessionIdMatcher.group(1)?.toInt()
             if (Shell.getShell().isRoot && sessionId != null) {
-                for (file in files) {
+                for (file in getFiles(packageName, versionCode, sharedLibPkgName)) {
                     Shell.cmd("cat \"${file.absoluteFile}\" | pm install-write -S ${file.length()} $sessionId \"${file.name}\"")
                         .exec()
                 }
