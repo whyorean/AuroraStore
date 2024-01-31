@@ -382,4 +382,5 @@
     <string name="pref_updates_auto_off">Не оновлювати застосунки автоматично</string>
     <string name="pref_updates_auto_desc">Налаштувати поведінку автооновлень</string>
     <string name="pref_updates_auto_install">Автоматична перевірка та встановлення доступних оновлень</string>
+    <string name="action_request_analysis">Запросити новий аналіз</string>
 </resources>

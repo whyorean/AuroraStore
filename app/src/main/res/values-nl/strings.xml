@@ -165,7 +165,7 @@
     <string name="filter_review_critical">Kritieke</string>
     <string name="filter_review_all">Alle</string>
     <string name="exodus_view_report">Bekijk rapport</string>
-    <string name="exodus_substring">tracker(s) gevonden in</string>
+    <string name="exodus_substring">bekende tracker(s) gevonden in</string>
     <string name="exodus_progress">Controleren voor trackers…</string>
     <string name="exodus_powered">Mogelijk gemaakt door Exodus</string>
     <string name="exodus_no_tracker">Bevat geen trackers</string>
@@ -346,4 +346,8 @@
     <string name="action_enable">Inschakelen</string>
     <string name="action_enabled">Ingeschakeld</string>
     <string name="google_play_store_desc">Google Play, ook bekend als de Google Play Store en voorheen Android Market.</string>
+    <string name="action_uninstall_confirmation">Wilt u deze app verwijderen?</string>
+    <string name="action_request_analysis">Nieuwe analyse aanvragen</string>
+    <string name="onboarding_permission_doze">Downloads in achtergrond</string>
+    <string name="onboarding_permission_doze_desc">Sta Aurora Store toe om apps te downloaden en updaten in de achtergrond</string>
 </resources>
