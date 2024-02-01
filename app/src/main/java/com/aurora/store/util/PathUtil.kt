@@ -90,10 +90,6 @@ object PathUtil {
         ) + "/${file.name}"
     }
 
-    fun getApkDownloadFile(context: Context, packageName: String, versionCode: Int): String {
-        return getVersionDirectory(context, packageName, versionCode)
-    }
-
     fun getExternalPath(context: Context): String {
         val defaultDir =
             File("${Environment.getExternalStorageDirectory().absolutePath}/Aurora/Store")
@@ -106,10 +102,6 @@ object PathUtil {
             Preferences.PREFERENCE_DOWNLOAD_DIRECTORY,
             defaultDir.absolutePath
         )
-    }
-
-    fun getBaseCopyDirectory(context: Context): String {
-        return "${getExternalPath(context)}/Exports/"
     }
 
     private fun getObbDownloadPath(packageName: String): String {

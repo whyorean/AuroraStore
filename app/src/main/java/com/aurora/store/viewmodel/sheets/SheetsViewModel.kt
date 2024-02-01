@@ -1,6 +1,7 @@
 package com.aurora.store.viewmodel.sheets
 
 import android.content.Context
+import android.net.Uri
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -39,9 +40,9 @@ class SheetsViewModel : ViewModel() {
         }
     }
 
-    fun copyApk(context: Context, packageName: String) {
+    fun copyApk(context: Context, packageName: String, uri: Uri) {
         viewModelScope.launch(Dispatchers.IO) {
-            ApkCopier(context, packageName).copy()
+            ApkCopier.copy(context, packageName, uri)
         }
     }
 }

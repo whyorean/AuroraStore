@@ -22,40 +22,29 @@ package com.aurora.store.util
 import android.content.Context
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
+import android.net.Uri
+import android.util.Log
 import com.aurora.store.util.PackageUtil.getPackageInfo
 import java.io.File
-import java.io.FileOutputStream
 import java.util.zip.ZipEntry
 import java.util.zip.ZipOutputStream
 
-class ApkCopier(private val context: Context, private val packageName: String) {
+object ApkCopier {
 
-    fun copy() {
-        val destination = File(PathUtil.getBaseCopyDirectory(context))
+    private const val TAG = "ApkCopier"
 
-        destination.let {
-            if (it.exists()) {
-                Log.i("Base copy directory is available")
-            } else {
-                it.mkdirs()
-                Log.e("Base copy directory is created : ${it.path}")
-            }
-        }
-
+    fun copy(context: Context, packageName: String, uri: Uri) {
         val packageInfo = getPackageInfo(context, packageName, PackageManager.GET_META_DATA)
-
         val baseApk = getBaseApk(packageInfo)
         val fileList: MutableList<File?> = mutableListOf()
 
         /*Add base APK*/
         fileList.add(baseApk)
 
-        val splitSourceDirs = packageInfo.applicationInfo.splitSourceDirs
-        if (splitSourceDirs != null && splitSourceDirs.isNotEmpty()) {
-            /*Add Split APKs*/
+        if (!packageInfo.applicationInfo.splitSourceDirs.isNullOrEmpty()) {
             fileList.addAll(getSplitAPKs(packageInfo))
         }
-        bundleAllAPKs(context, fileList)
+        bundleAllAPKs(context, fileList.filterNotNull(), uri)
     }
 
     private fun getBaseApk(packageInfo: PackageInfo?): File? {
@@ -75,25 +64,22 @@ class ApkCopier(private val context: Context, private val packageName: String) {
         return fileList
     }
 
-    private fun bundleAllAPKs(context: Context, fileList: List<File?>) {
+    private fun bundleAllAPKs(context: Context, fileList: List<File>, uri: Uri) {
         try {
-            val fileOutputStream =
-                FileOutputStream(PathUtil.getBaseCopyDirectory(context) + "$packageName.zip")
-            val zipOutputStream = ZipOutputStream(fileOutputStream)
+            val zipOutputStream = ZipOutputStream(context.contentResolver.openOutputStream(uri))
 
-            for (file in fileList) {
-                file?.inputStream()?.use {
+            fileList.forEach {  file ->
+                file.inputStream().use { output ->
                     val zipEntry = ZipEntry(file.name)
                     zipOutputStream.putNextEntry(zipEntry)
-                    it.copyTo(zipOutputStream)
+                    output.copyTo(zipOutputStream)
                     zipOutputStream.closeEntry()
                 }
             }
 
             zipOutputStream.close()
-        } catch (e: Exception) {
-            e.printStackTrace()
-            Log.e("ApkCopier : %s", e.message)
+        } catch (exception: Exception) {
+            Log.e(TAG, "Failed to copy app bundles", exception)
         }
     }
 }

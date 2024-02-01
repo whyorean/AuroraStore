@@ -20,21 +20,14 @@
 
 package com.aurora.store.view.ui.sheets
 
-import android.Manifest
-import android.content.Intent
-import android.content.pm.PackageManager
 import android.os.Bundle
-import android.os.Environment
-import android.provider.Settings
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
-import com.aurora.extensions.isRAndAbove
 import com.aurora.extensions.openInfo
 import com.aurora.extensions.toast
 import com.aurora.store.R
@@ -54,14 +47,16 @@ class AppMenuSheet : BaseBottomSheet() {
 
     private val viewModel: SheetsViewModel by viewModels()
     private val args: AppMenuSheetArgs by navArgs()
+    private val exportMimeType = "application/zip"
 
-    private val startForPermissions =
-        registerForActivityResult(ActivityResultContracts.RequestPermission()) {
-            if (it) {
-                viewModel.copyApk(requireContext(), args.app.packageName)
+    private val requestDocumentCreation =
+        registerForActivityResult(ActivityResultContracts.CreateDocument(exportMimeType)) {
+            if (it != null) {
+                viewModel.copyApk(requireContext(), args.app.packageName, it)
             } else {
-                toast(R.string.permissions_denied)
+                toast(R.string.failed_apk_export)
             }
+            dismissAllowingStateLoss()
         }
 
     override fun onCreateContentView(
@@ -106,44 +101,26 @@ class AppMenuSheet : BaseBottomSheet() {
                             requireContext().toast(R.string.toast_apk_blacklisted)
                         }
 
+                        dismissAllowingStateLoss()
                         EventBus.getDefault()
                             .post(BusEvent.Blacklisted(args.app.packageName, ""))
                     }
 
                     R.id.action_local -> {
-                        export()
+                        requestDocumentCreation.launch("${args.app.packageName}.zip")
                     }
 
                     R.id.action_uninstall -> {
                         AppInstaller.uninstall(requireContext(), args.app.packageName)
+                        dismissAllowingStateLoss()
                     }
 
                     R.id.action_info -> {
                         requireContext().openInfo(args.app.packageName)
+                        dismissAllowingStateLoss()
                     }
                 }
-                dismissAllowingStateLoss()
                 false
-            }
-        }
-    }
-
-    private fun export() {
-        if (isRAndAbove()) {
-            if (!Environment.isExternalStorageManager()) {
-                startActivity(Intent(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION))
-            } else {
-                viewModel.copyApk(requireContext(), args.app.packageName)
-            }
-        } else {
-            if (ContextCompat.checkSelfPermission(
-                    requireContext(),
-                    Manifest.permission.WRITE_EXTERNAL_STORAGE
-                ) == PackageManager.PERMISSION_GRANTED
-            ) {
-                viewModel.copyApk(requireContext(), args.app.packageName)
-            } else {
-                startForPermissions.launch(Manifest.permission.WRITE_EXTERNAL_STORAGE)
             }
         }
     }
