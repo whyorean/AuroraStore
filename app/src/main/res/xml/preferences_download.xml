@@ -41,10 +41,4 @@
         app:summary="@string/pref_install_delete_summary"
         app:title="@string/pref_install_delete_title" />
 
-    <SwitchPreferenceCompat
-        app:defaultValue="false"
-        app:iconSpaceReserved="false"
-        app:key="PREFERENCE_DOWNLOAD_WIFI_ONLY"
-        app:title="@string/pref_downloader_wifi_title" />
-
 </androidx.preference.PreferenceScreen>
