@@ -4,7 +4,7 @@
     <string name="about_paypal">PayPal</string>
     <string name="about_libera">Liberapay</string>
     <string name="about_gitlab">GitLab</string>
-    <string name="about_fdroid_summary">Iegūstiet Aurora Store ar F-Droid.</string>
+    <string name="about_fdroid_summary">Iegūt Aurora Store no F-Droid.</string>
     <string name="about_fdroid">F-Droid</string>
     <string name="about_bitcoin_btc_summary">Ziedot ar Bitcoin (BTC)</string>
     <string name="about_bitcoin_btc">Bitcoin</string>
@@ -19,7 +19,7 @@
     <string name="action_installations">Instalācijas</string>
     <string name="action_install">Uzstādīt</string>
     <string name="action_ignore_version">Neņemt vērā laidienu</string>
-    <string name="action_ignore">Ignorēt</string>
+    <string name="action_ignore">Neņemt vērā</string>
     <string name="action_granted">Iedots</string>
     <string name="action_grant">Dot</string>
     <string name="action_filter_rating">Reitingi</string>
@@ -47,7 +47,7 @@
     <string name="about_telegram_summary">Pievienojaties Aurora Atbalsta grupai priekš diskusijām vai ieteikumiem.</string>
     <string name="about_paypal_summary">Ziedot ar PayPal</string>
     <string name="about_libera_summary">Kļūstiet par patronu uz Liberapay</string>
-    <string name="about_gitlab_summary">Iegūstiet Aurora Store avota kodu no Aurora OSS, no GitLab.</string>
+    <string name="about_gitlab_summary">Iegūt Aurora Store pirmkodu no Aurora OSS GitLab.</string>
     <string name="details_dev_website">Tīmekļa vietne</string>
     <string name="about_bitcoin_eth_summary">Ziedot ar Ethereum (ETH)</string>
     <string name="about_bitcoin_eth">Ethereum</string>
@@ -234,7 +234,7 @@
     <string name="toast_manual_available">Apsveicam! Pieprasītā versija ir pieejama, tā tagad tiek lejupielādēta.</string>
     <string name="installer_shizuku_unavailable">Shizuku nav uzstādīta vai pareizi iestatīta.</string>
     <string name="pref_install_profile_summary">Atlasīt profilu, kurā uzstādīt lietotnes. Darbojas tikai ar superlietotāja uzstādīšanas veidu</string>
-    <string name="about_xda_summary">Skatīt apspriedes un ieteikumus Aurora veikala XDA pavedienā.</string>
+    <string name="about_xda_summary">Skatīt apspriedes un ieteikumus Aurora Store XDA pavedienā.</string>
     <string name="about_bhim">BHIM - UPI</string>
     <string name="about_xda">Izstrādātāju pavediens</string>
     <string name="device_miui_description">Lūgums atspējot MIUI uzlabojumus, lai ļaut uzstādīšanu, pretējā gadījumā var izvēlēties superlietotāja vai pakalpojumu uzstādītāju.</string>
@@ -252,9 +252,9 @@
     <string name="onboarding_permission_notifications_desc">Sūtīt paziņojumus par uzstādīšanas stāvokli</string>
     <string name="pref_install_auto_title">Automātiski uzstādīt APK pēc lejupielādes</string>
     <string name="pref_install_delete_title">Izdzēst APK pēc uzstādīšanas</string>
-    <string name="pref_install_mode_am">AM uzstādītājs.</string>
+    <string name="pref_install_mode_am">AM uzstādītājs</string>
     <string name="pref_install_mode_shizuku">Shizuku uzstādītājs</string>
-    <string name="pref_install_mode_native">Iebūvētais uzstādītājs</string>
+    <string name="pref_install_mode_native">Iebūvētais uzstādītājs (novecojis)</string>
     <string name="pref_install_mode_root">Superlietotāja uzstādītājs</string>
     <string name="pref_install_mode_session">Sesijas uzstādītājs</string>
     <string name="pref_install_mode_summary">Atlasīt APK uzstādīšanas veidu</string>
@@ -269,7 +269,7 @@
     <string name="ui_accent_4">Zelta</string>
     <string name="download_progress">Lejupielādē • <xliff:g id="completed_downloads">%1$d</xliff:g>/<xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
     <string name="pref_install_delete_summary">APK tiks izdzēsti pēc noklusējuma</string>
-    <string name="pref_install_mode_services">Aurora pakalpojumi</string>
+    <string name="pref_install_mode_services">Aurora pakalpojumi (novecojuši)</string>
     <string name="details_dependencies">Atkarības</string>
     <string name="details_beta_delay">Ievietošana sarakstā var aizņemt kādu laiku, vēlāk var pārbaudīt stāvokli.</string>
     <string name="pref_filter_fdroid_summary">Neņemt vērā F-Droid lietotnes no Atjauninājumi un uzstādītās lietotnes</string>
@@ -324,7 +324,7 @@
     <string name="error">Gadījās kļūda.</string>
     <string name="menu">Izvēlne</string>
     <string name="expand">Izvērst</string>
-    <string name="open_in_aurora">Atvērt Aurora Store</string>
+    <string name="open_in_aurora">Atvērt ar Aurora Store</string>
     <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>
     <string name="permissions_denied">Nepieciešamās atļaujas tika noraidītas. Lūgums tās nodrošināt, lai turpinātu darbību</string>
     <string name="search_hint">Meklēt lietotnes un spēles</string>
@@ -367,4 +367,20 @@
     <string name="toast_proxy_failed">Neizdevās iestatīt starpniekserveri</string>
     <string name="pref_network_proxy_enable_desc">Atļaut visu lietotnes datplūsmu sūtīt caur starpniekserveri</string>
     <string name="pref_downloader_wifi_title">Lejupielādēt tikai izmantojot WiFi</string>
+    <string name="action_request_analysis">Pieprasīt jaunu izvērtējumu</string>
+    <string name="onboarding_permission_doze">Fona lejupielādes</string>
+    <string name="onboarding_permission_doze_desc">Ļaut Aurora Store lejupielādēt un atjaunināt lietotnes fonā</string>
+    <string name="pref_vending_version_title">Google Play versija</string>
+    <string name="pref_updates_auto">Automātiski atjaunināt lietotnes</string>
+    <string name="pref_updates_auto_off">Neatjaunināt lietotnes automātiski</string>
+    <string name="pref_updates_auto_install">Pārbaudīt un automātiski uzstādīt pieejamos atjauninājumus</string>
+    <string name="pref_updates_auto_notify">Pārbaudīt un ziņot par pieejamajiem atjauninājumiem</string>
+    <string name="device_doze_description">Lūgums atspējot akumulatora optimizēšanu, lai atļautu darbības fonā.</string>
+    <string name="device_doze_title">Noteikta akumulatora optimizēšana.</string>
+    <string name="device_doze_subtitle">Aurora Store nevar lejupielādēt un uzstādīt vai atjaunināt lietotnes fonā akumulatora optimizēšanas dēļ.</string>
+    <string name="pref_updates_auto_desc">Konfigurēt automātisko atjauninājumu uzvedību</string>
+    <string name="pref_self_update_title">Pašatjaunināšanās</string>
+    <string name="pref_self_update_summary">Pārbaudīt un paziņot, ja ir pieejama jauna noturīgā Aurora Store versija</string>
+    <string name="device_doze_extra">Pēc izvēles var izvēlēties paturēt optimizēšanu iespējotu, bet tad nebūs iespējams gūt labumu no fona lejupielādēm un automātiskajiem atjauninājumiem, tā ka izvēle ir paša ziņā.</string>
+    <string name="pref_vending_version_device">Noklusējuma (no ierīces konfigurācijas)</string>
 </resources>
