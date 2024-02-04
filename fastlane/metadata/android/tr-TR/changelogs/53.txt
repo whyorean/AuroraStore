@@ -1,0 +1,3 @@
+• İndirme sonrası kurulmayan uygulamalar düzeltildi
+• Özel indirme dizini seçmeye izin ver
+• Yalnızca Wi-Fi indirme seçeneği eklendi

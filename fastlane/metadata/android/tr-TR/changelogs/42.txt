@@ -1,0 +1,15 @@
+• Android 13'ü hedefle
+• Birden fazla dizgenin yerelleştirilmesi etkinleştirildi
+• Android 13 için tek renkli simge eklendi
+• Bağımlılıklar en son sürüme güncellendi
+• Açılışta Hizmet Şartları istemini hemen göster
+• İlk kurulum sırasında izinler verilmeden ilerlemeye izin ver
+• Güncellemelerden hariç tutmak için öntanımlı olarak sistem xml reddetme listesini oku
+• 5. kurulum sayfasında doğru başlığı göster
+• Kurulum sırasında geri dönerken ileri düğmesi etkinleştirildi
+• Kurulum yükleyicisindeki onay kutuları radyo düğmeleriyle değiştirildi
+• Kurulum sekmelerinin arka planı için kontur rengini kullan
+• Radyo düğmelerini kullanarak kurulumda tema yok hatası düzeltildi
+• Yeni GSF & Vending versiyonlarını kullanma
+• Depolama ile ilgili izin ayarları yeniden düzenlendi
+• Çeviri güncellemeleri
