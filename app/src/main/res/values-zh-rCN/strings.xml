@@ -383,4 +383,5 @@
     <string name="pref_updates_auto_desc">配置自动更新行为</string>
     <string name="pref_updates_auto_install">自动检查并安装可用更新</string>
     <string name="action_request_analysis">请求新分析</string>
+    <string name="failed_apk_export">导出 APK 失败</string>
 </resources>
