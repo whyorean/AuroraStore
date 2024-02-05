@@ -383,4 +383,5 @@
     <string name="pref_updates_auto_desc">Skonfiguruj zachowanie automatycznych aktualizacji</string>
     <string name="pref_updates_auto_install">Sprawdź i automatycznie zainstaluj dostępne aktualizacje</string>
     <string name="action_request_analysis">Poproś o nową analizę</string>
+    <string name="failed_apk_export">Nie udało się wyeksportować plików APK</string>
 </resources>

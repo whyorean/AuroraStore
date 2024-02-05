@@ -1,0 +1,6 @@
+• Kurulum hizmetlerinin bildirimiyle ilgili çökme düzeltildi
+• Uygulamada yalnızca geçerli gizleme özelliklerini göster
+• Arama sırasında hızları sınırlandığında kullanıcıları bilgilendir
+• İlerlemeyi göstermek için arama sırasında bir parıltı animasyonu göster
+• Öntanımlı sekme değiştirildiğinde gezinme davranışı düzeltildi
+• Hızlı çıkış seçeneği düzeltildi

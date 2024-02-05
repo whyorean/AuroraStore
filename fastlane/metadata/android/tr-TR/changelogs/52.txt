@@ -1,0 +1,6 @@
+• İngilizce olmayan anahtar sözcükler aranırken bazı aygıtlarda oluşan çökme düzeltildi
+• Uygulamalar ve Oyunlar sayfası iyileştirildi
+• Uygulama indirme sonrası otomatik kurma için geri dönme düğmesi eklendi
+• Uygulama kurulduğunda veya güncellendiğinde bildirim sesi çalınmasın
+• Uygulama ayrıntılarını açarken bazı aygıtlarda oluşan çökme düzeltildi
+• Kök kurucu kullanılıyorsa kaldırma onay iletişim kutusu eklendi

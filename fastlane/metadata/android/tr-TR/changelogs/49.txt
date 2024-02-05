@@ -1,0 +1,4 @@
+• Kullanıcı arayüzüyle ilgili önemli dahili değişiklikler
+• Kullanıcıların ilk kurulum sırasında uygulama bağlantılarını etkinleştirmesine izin verildi
+• Çeviri güncellemeleri
+• Küçük hata düzeltmeleri ve iyileştirmeler

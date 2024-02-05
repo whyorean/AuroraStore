@@ -1,0 +1,3 @@
+• Kullanıcı arayüzüyle ilgili önemli dahili değişiklikler
+• Çeviri güncellemeleri
+• Küçük hata düzeltmeleri ve iyileştirmeler

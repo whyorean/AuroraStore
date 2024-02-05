@@ -1,0 +1,8 @@
+• Gerekmedikçe depolama izni istemekten kaçın
+• İçe-dışa aktarma için depolama izninden kaçınmak için gizleme yapılandırması yeniden düzenlendi 
+• Uygulama güncellemelerini otomatik olarak denetleme seçeneği eklendi (çalışan bir hesabın oturum açmış olmasını gerektirir)
+• Chrome ve trichrome kütüphanesi gibi uygulamalarla birlikte gerekli kütüphanelerin kurulmaması sorunu düzeltildi
+• Aurora Store'u yedeklerken indirilenler dizinini yedeklemelerden yok say
+• Shizuku kurucusu eklendi (Android 8.0+ gerektirir)
+• Android 4.4 için destek bırakıldı. Gerekli en düşük Android sürümü 5.0+'dır.
+• Küçük hata düzeltmeleri ve iyileştirmeler
