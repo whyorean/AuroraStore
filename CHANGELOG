@@ -1,3 +1,23 @@
+Changelog : v4.4.0 (54)
+• Major internal changes to the downloads system
+  • Aurora Store now requires new permission to download in the background
+  • Pause and Resume features have been deprecated for downloads
+  • Concurrent downloads have been deprecated (limited to one download at a time)
+  • Automatic SHA256 & SHA1 verification for downloaded files
+  • Better support for apps with shared libraries such as Chrome and WebView
+• Major changes to the updates system
+  • New automatic updates for apps (enabled by default)
+  • New automatic certificate verification for updates
+  • Support for updates with signing key rotation (introduced after Android 9.0+)
+  • Self-Updates (Aurora Store) has been disabled by default (enable in settings > update)
+• Native Installer and Aurora Services have been deprecated
+• Exporting installed apps doesn't requires storage permissions anymore
+• The minimum required Android version for apps is now visible on the app details page (More about this app > Info)
+• Translation updates & major bug fixes
+• Support for installing apps with Sui (Shizuku Magisk Module)
+• Ability to override the GMS version from Settings > Network
+• Material3 is now being used in more places
+
 Changelog : v4.3.5 (53)
 • Fix apps not installing post download
 • Allow choosing custom download directory
