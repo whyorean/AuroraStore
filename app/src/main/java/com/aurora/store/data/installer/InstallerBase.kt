@@ -25,7 +25,6 @@ import androidx.core.content.FileProvider
 import com.aurora.store.AuroraApplication
 import com.aurora.store.BuildConfig
 import com.aurora.store.data.event.InstallerEvent
-import com.aurora.store.data.room.download.Download
 import com.aurora.store.util.Log
 import com.aurora.store.util.PathUtil
 import org.greenrobot.eventbus.EventBus

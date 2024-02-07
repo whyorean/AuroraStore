@@ -90,6 +90,20 @@ object PathUtil {
         ) + "/${file.name}"
     }
 
+    fun getZipFile(
+        context: Context,
+        packageName: String,
+        versionCode: Int
+    ): File {
+        return File(
+            getAppDownloadDir(
+                context,
+                packageName,
+                versionCode,
+            ), "${packageName}_${versionCode}.apks"
+        )
+    }
+
     fun getExternalPath(context: Context): String {
         val defaultDir =
             File("${Environment.getExternalStorageDirectory().absolutePath}/Aurora/Store")
