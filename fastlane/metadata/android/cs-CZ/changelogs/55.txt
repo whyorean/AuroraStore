@@ -1,0 +1,9 @@
+• Velké interní změny v systému stahování
+• Velké změny v systému aktualizací
+• Nativní instalátor a Služby Aurora již nejsou podporovány
+• Export nainstalovaných aplikací již nevyžduje oprávnění k úložišti
+• Minimální požadovaná verze systému Android je nyní zobrazena na stránce s podrobnostmi o aplikaci
+• Aktualizace překladů a velké opravy chyb
+• Podpora instalace aplikací pomocí Sui (Shizuku Magisk)
+• Možnost přepsat verzi GMS v Nastavení > Síť
+• Material Design 3 je použit na více místech
