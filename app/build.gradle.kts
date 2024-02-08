@@ -43,7 +43,7 @@ android {
     defaultConfig {
         applicationId = "com.aurora.store"
         minSdk = 21
-        targetSdk = 33
+        targetSdk = 34
 
         versionCode = 55
         versionName = "4.4.1"
