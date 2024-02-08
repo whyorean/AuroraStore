@@ -1,3 +1,6 @@
+Changelog : v4.4.1 (55)
+• Switch to jitpack again for syncing gplayapi
+
 Changelog : v4.4.0 (54)
 • Major internal changes to the downloads system
   • Aurora Store now requires new permission to download in the background
