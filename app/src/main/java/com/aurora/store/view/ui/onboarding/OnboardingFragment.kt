@@ -34,7 +34,6 @@ import com.aurora.store.data.work.SelfUpdateWorker
 import com.aurora.store.data.work.UpdateWorker
 import com.aurora.store.databinding.FragmentOnboardingBinding
 import com.aurora.store.util.CertUtil
-import com.aurora.store.util.NotificationUtil
 import com.aurora.store.util.PathUtil
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_AUTO_DELETE
@@ -148,14 +147,8 @@ class OnboardingFragment : Fragment(R.layout.fragment_onboarding) {
             binding.btnForward.isEnabled = true
             binding.btnForward.setOnClickListener {
                 save(PREFERENCE_INTRO, true)
-
-                //Create Notification Channels : General & Alert
-                NotificationUtil.createNotificationChannel(requireContext())
-
-                // Schedule required update workers
                 UpdateWorker.scheduleAutomatedCheck(requireContext())
                 if (shouldSelfUpdate) SelfUpdateWorker.scheduleAutomatedCheck(requireContext())
-
                 findNavController().navigate(
                     OnboardingFragmentDirections.actionOnboardingFragmentToSplashFragment()
                 )

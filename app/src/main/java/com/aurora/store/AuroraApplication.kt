@@ -28,6 +28,7 @@ import com.aurora.extensions.isPAndAbove
 import com.aurora.store.data.receiver.PackageManagerReceiver
 import com.aurora.store.util.CommonUtil
 import com.aurora.store.util.DownloadWorkerUtil
+import com.aurora.store.util.NotificationUtil
 import com.aurora.store.util.PackageUtil
 import dagger.hilt.android.HiltAndroidApp
 import javax.inject.Inject
@@ -57,6 +58,9 @@ class AuroraApplication : Application(), Configuration.Provider {
 
         // Required for Shizuku installer
         if (isPAndAbove()) HiddenApiBypass.addHiddenApiExemptions("I", "L")
+
+        //Create Notification Channels
+        NotificationUtil.createNotificationChannel(this)
 
         // Initialize DownloadWorker to observe and trigger downloads
         downloadWorkerUtil.init()
